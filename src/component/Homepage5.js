@@ -30,11 +30,17 @@ const Homepage5 = () => {
                                     <label className="labels" for="email">Email</label><br />
                                     <input type="email" name="email" placeholder="xyz@mail.com"></input>
                                 </div>
+                                <div className="inputArea">
+                                    <label className="labels" for="phone" name="phone">Number</label><br />
+                                    <input type="tel" placeholder="9876556765" pattern="[0-9]{10}"></input><br />
+                                </div>
+
+                                <div className="button-class">
+                                    <div className="button-text"><a href="">CONTACT US</a></div>
+                                    <div className="button-icon"><i class="fas fa-long-arrow-alt-right"></i></div>
+                                </div>
                             </form>
-                            <div className="button-class">
-                                <div className="button-text"><a href="">CONTACT US</a></div>
-                                <div className="button-icon"><i class="fas fa-long-arrow-alt-right"></i></div>
-                            </div>
+
                         </div>
                     </div>
                 </div>

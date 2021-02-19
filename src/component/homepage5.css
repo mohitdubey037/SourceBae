@@ -9,7 +9,8 @@
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
+  /* overflow: hidden; */
 }
 .main-container {
   width: 100%;
@@ -61,22 +62,22 @@ body {
   font-weight: bold;
 }
 form {
-  margin-top: 3.7rem;
+  margin-top: 3.5rem;
+}
+.inputArea {
+  margin: 1.8rem 0 1rem 0;
 }
 .labels {
   color: #686c76;
   font-size: 1.8rem;
   font-family: "Work Sans", sans-serif;
   font-weight: bold;
-  margin-bottom: 50px;
-}
-.inputArea {
-  margin: 3.5rem 0;
+  /* margin-bottom: 50px; */
 }
 input {
   margin-top: 0.8rem;
   height: 4rem;
-  width: 100%;
+  width: 90%;
   outline: none;
   border-radius: 8px;
   box-shadow: 0 0 8px #051f1f;
@@ -175,7 +176,7 @@ input::placeholder {
 }
 .left-inner-container .photo {
   position: absolute;
-  left: 20%;
+  left: 26%;
   top: 8%;
   /* mix-blend-mode: multiply; */
 }
