@@ -182,4 +182,21 @@ input::placeholder {
 }
 
 @media (max-width: 768px) {
+  .left-inner-container {
+    display: none;
+  }
+  .right-inner-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .right-content {
+    width: 80%;
+    margin: 15% auto 10% auto;
+  }
+  .right-content h1 {
+    /* text-align: center; */
+    font-size: 3rem;
+  }
 }
