@@ -2,9 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './homepage59r.css';
 import leftImage from '../assests/Images/onlyphoto.png';
+import RequirementSelectbtn from './RequirementSelectbtn';
 
 
-const Homepage5 = () => {
+
+const Requirement = () => {
     return (
         <>
             <div className="main-container">
@@ -20,26 +22,30 @@ const Homepage5 = () => {
                     </div>
                     <div className="right-inner-container">
                         <div className="right-content">
-                            <h1>Register as Client </h1>
+                            <h1>Your Requirement </h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
                             <form>
                                 <div className="inputArea">
-                                    <label className="labels" for="fname" name="fname">Name</label><br />
-                                    <input type="text" placeholder="Jonny Holland"></input><br />
+                                    <label className="labels" for="Skills" name="Skills">Skills</label><br />
+                                    <input type="text" placeholder="Select"></input><br />
                                 </div>
                                 <div className="inputArea">
-                                    <label className="labels" for="email">Email</label><br />
-                                    <input type="email" name="email" placeholder="xyz@mail.com"></input>
+                                    <label className="labels" for="Experience">Experience</label><br />
+                                    <RequirementSelectbtn />
                                 </div>
                                 <div className="inputArea">
-                                    <label className="labels" for="phone" name="phone">Mobile No.</label><br />
-                                    <input type="tel" placeholder="9876556765" pattern="[0-9]{10}"></input><br />
+                                    <label className="labels" for="Budget" name="Budget">Budget per resource</label><br />
+                                    <input type="text" placeholder="Select"></input><br />
                                 </div>
 
-                                <div className="btn-position-hp9">
-                                    <NavLink className="button-class" to="/requirement">
+                                <div className="btn-position">
+                                    <NavLink className="button-class" to="/next_page">
+                                        <div className="button-text"><a>Previous</a></div>
+                                        <div className="button-icon"><i class="fas fa-long-arrow-alt-right previous-icon"></i></div>
+                                    </NavLink>
+                                    <NavLink className="button-class" to="/description">
                                         <div className="button-text"><a>Next</a></div>
-                                        <div className="button-icon"><i class="fas fa-long-arrow-alt-right"></i></div>
+                                        <div className="button-icon"><i class="fas fa-long-arrow-alt-right next-icon"></i></div>
                                     </NavLink>
                                 </div>
 
@@ -53,4 +59,5 @@ const Homepage5 = () => {
     );
 }
 
-export default Homepage5;
+export default Requirement;
+

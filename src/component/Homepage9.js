@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './homepage59r.css';
+
 import leftImage from '../assests/Images/onlyphoto.png';
+import './homepage59r.css';
 
-
-const Homepage5 = () => {
+const Homepage9 = () => {
     return (
         <>
             <div className="main-container">
@@ -20,7 +20,7 @@ const Homepage5 = () => {
                     </div>
                     <div className="right-inner-container">
                         <div className="right-content">
-                            <h1>Register as Client </h1>
+                            <h1>Register as Agency </h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
                             <form>
                                 <div className="inputArea">
@@ -37,7 +37,7 @@ const Homepage5 = () => {
                                 </div>
 
                                 <div className="btn-position-hp9">
-                                    <NavLink className="button-class" to="/requirement">
+                                    <NavLink className="button-class" to="/next_page">
                                         <div className="button-text"><a>Next</a></div>
                                         <div className="button-icon"><i class="fas fa-long-arrow-alt-right"></i></div>
                                     </NavLink>
@@ -53,4 +53,4 @@ const Homepage5 = () => {
     );
 }
 
-export default Homepage5;
+export default Homepage9;

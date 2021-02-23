@@ -2,9 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './homepage59r.css';
 import leftImage from '../assests/Images/onlyphoto.png';
+import DescriptionSelectbtn from './DescriptionSelectbtn';
 
 
-const Homepage5 = () => {
+const Description = () => {
     return (
         <>
             <div className="main-container">
@@ -19,21 +20,27 @@ const Homepage5 = () => {
                         </div>
                     </div>
                     <div className="right-inner-container">
-                        <div className="right-content">
-                            <h1>Register as Client </h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-                            <form>
+                        <div className="right-content right-content-description">
+                            {/* <h1>Register as Client </h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p> */}
+                            <form className="form-description">
                                 <div className="inputArea">
-                                    <label className="labels" for="fname" name="fname">Name</label><br />
-                                    <input type="text" placeholder="Jonny Holland"></input><br />
+                                    <label className="labels" for="Description" name="Description">Company Description</label><br />
+                                    {/* <input type="text" placeholder="describe..." className="input-description"></input><br /> */}
+                                    <textarea class="input-description" placeholder="describe..."></textarea>
                                 </div>
                                 <div className="inputArea">
-                                    <label className="labels" for="email">Email</label><br />
-                                    <input type="email" name="email" placeholder="xyz@mail.com"></input>
+                                    <label className="labels" for="Team" name="Team">Team</label><br />
+                                    <DescriptionSelectbtn />
+                                    {/* <input type="text" placeholder="Jonny Holland"></input><br /> */}
                                 </div>
                                 <div className="inputArea">
-                                    <label className="labels" for="phone" name="phone">Mobile No.</label><br />
-                                    <input type="tel" placeholder="9876556765" pattern="[0-9]{10}"></input><br />
+                                    <label className="labels" for="email">Location</label><br />
+                                    <input type="text" placeholder="Select"></input>
+                                </div>
+                                <div className="inputArea">
+                                    <label className="labels" for="phone" name="phone">Experience in industry</label><br />
+                                    <input type="text" placeholder="Select"></input><br />
                                 </div>
 
                                 <div className="btn-position-hp9">
@@ -53,4 +60,4 @@ const Homepage5 = () => {
     );
 }
 
-export default Homepage5;
+export default Description;
