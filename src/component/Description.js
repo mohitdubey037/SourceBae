@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './homepage59r.css';
 import leftImage from '../assests/Images/onlyphoto.png';
 import DescriptionSelectbtn from './DescriptionSelectbtn';
 
+import ReactDOM from 'react-dom';
+import TimezoneSelect from 'react-timezone-select';
+
 
 const Description = () => {
+    const [selectedTimezone, setSelectedTimezone] = useState('')
+
     return (
         <>
             <div className="main-container">
@@ -25,33 +30,38 @@ const Description = () => {
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p> */}
                             <form className="form-description">
                                 <div className="inputArea">
-                                    <label className="labels" for="Description" name="Description">Company Description</label><br />
-                                    {/* <input type="text" placeholder="describe..." className="input-description"></input><br /> */}
-                                    <textarea class="input-description" placeholder="describe..."></textarea>
-                                </div>
-                                <div className="inputArea">
                                     <label className="labels" for="Team" name="Team">Team</label><br />
                                     <DescriptionSelectbtn />
-                                    {/* <input type="text" placeholder="Jonny Holland"></input><br /> */}
                                 </div>
                                 <div className="inputArea">
-                                    <label className="labels" for="email">Location</label><br />
+                                    <label className="labels" for="location">Location</label><br />
                                     <input type="text" placeholder="Select"></input>
                                 </div>
                                 <div className="inputArea">
-                                    <label className="labels" for="phone" name="phone">Experience in industry</label><br />
+                                    <label className="labels" for="Expertise" name="expertise">Expertise</label><br />
+                                    <input type="text" placeholder="e.g- E-commerces"></input>
+                                </div>
+                                <div className="inputArea">
+                                    <label className="labels" for="techstack" name="techstack">Techstack</label><br />
                                     <input type="text" placeholder="Select"></input><br />
                                 </div>
+                                <div className="inputArea">
+                                    <label className="labels" for="timezone" name="timezone">Timezone</label><br />
+                                    <TimezoneSelect className="timezone"
+                                        value={selectedTimezone}
+                                        onChange={setSelectedTimezone}
+                                    /><br />
+                                </div>
 
-                                <div className="btn-position-hp9">
-                                    <NavLink className="button-class" to="/requirement">
+
+                                <div className="btn-position-agency-client-description">
+                                    <NavLink className="button-class" to="/">
                                         <div className="button-text"><a>Next</a></div>
                                         <div className="button-icon"><i class="fas fa-long-arrow-alt-right"></i></div>
                                     </NavLink>
                                 </div>
 
                             </form>
-
                         </div>
                     </div>
                 </div>

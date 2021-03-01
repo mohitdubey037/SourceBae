@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './homepage59r.css';
 import leftImage from '../assests/Images/onlyphoto.png';
 import RequirementSelectbtn from './RequirementSelectbtn';
 
 
+import ReactDOM from 'react-dom';
+import TimezoneSelect from 'react-timezone-select';
 
 const Requirement = () => {
+    const [selectedTimezone, setSelectedTimezone] = useState('')
     return (
         <>
             <div className="main-container">
@@ -26,7 +29,7 @@ const Requirement = () => {
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
                             <form>
                                 <div className="inputArea">
-                                    <label className="labels" for="Skills" name="Skills">Skills</label><br />
+                                    <label className="labels" for="Tech" name="Tech">Tech</label><br />
                                     <input type="text" placeholder="Select"></input><br />
                                 </div>
                                 <div className="inputArea">
@@ -37,13 +40,20 @@ const Requirement = () => {
                                     <label className="labels" for="Budget" name="Budget">Budget per resource</label><br />
                                     <input type="text" placeholder="Select"></input><br />
                                 </div>
+                                <div className="inputArea">
+                                    <label className="labels" for="timezone" name="timezone">Timezone</label><br />
+                                    <TimezoneSelect className="timezone"
+                                        value={selectedTimezone}
+                                        onChange={setSelectedTimezone}
+                                    /><br />
+                                </div>
 
-                                <div className="btn-position">
-                                    <NavLink className="button-class" to="/next_page">
+                                <div className="btn-position-requirement">
+                                    <NavLink className="button-class" to="/client">
                                         <div className="button-text"><a>Previous</a></div>
                                         <div className="button-icon"><i class="fas fa-long-arrow-alt-right previous-icon"></i></div>
                                     </NavLink>
-                                    <NavLink className="button-class" to="/description">
+                                    <NavLink className="button-class" to="/requirementex">
                                         <div className="button-text"><a>Next</a></div>
                                         <div className="button-icon"><i class="fas fa-long-arrow-alt-right next-icon"></i></div>
                                     </NavLink>
