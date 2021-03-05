@@ -75,22 +75,22 @@ const Mainhomepage = () => {
 
     return (
         <>
-            <section class="header">
-                <div class="inner_header">
-                    <div class="header_image">
+            <section className="header">
+                <div className="inner_header">
+                    <div className="header_image">
                         <img src={logo2} alt="logo2" />
                     </div>
-                    <div class="header_btn">
+                    <div className="header_btn">
                         <a href="#">Developer</a>
                     </div>
                 </div>
             </section>
 
-            <section class="landing_page">
-                <div class="inner_landingPage">
-                    <div class="info_div">
-                        <div class="info_text_div">
-                            <div class="info_heading">
+            <section className="landing_page">
+                <div className="inner_landingPage">
+                    <div className="info_div">
+                        <div className="info_text_div">
+                            <div className="info_heading">
                                 <h1>
                                     All your <br />
                                     <b>resource needs,</b>
@@ -99,14 +99,14 @@ const Mainhomepage = () => {
                                     in one <b>place</b>
                                 </h1>
                             </div>
-                            <div class="info_para">
+                            <div className="info_para">
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
                                     ea maiores corrupti perspiciatis sequi obcaecati consequatur
                                     soluta in aliquid facilis!
                                 </p>
                             </div>
-                            <div class="info_buttons">
+                            <div className="info_buttons">
                                 <NavLink to="/agency">
                                     Agency
                                 </NavLink>
@@ -120,12 +120,12 @@ const Mainhomepage = () => {
                                 </NavLink>
                             </div>
                         </div>
-                        <div class="scroll_div">
-                            <div class="scroll_area">
-                                <div class="scroll_icon">
-                                    <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                        <div className="scroll_div">
+                            <div className="scroll_area">
+                                <div className="scroll_icon">
+                                    <i className="fa fa-long-arrow-down" aria-hidden="true"></i>
                                 </div>
-                                <div class="scroll_text">
+                                <div className="scroll_text">
                                     <h3>Scroll Down</h3>
                                     <p>
                                         Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -135,86 +135,86 @@ const Mainhomepage = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="image_div">
-                        <div class="bg_white_Circle"></div>
+                    <div className="image_div">
+                        <div className="bg_white_Circle"></div>
                         <img src={illustration} alt="" />
                     </div>
                 </div>
             </section>
 
-            <section class="process_main">
-                <div class="bg_circle"></div>
-                <div class="main_dots_second">
+            <section className="process_main">
+                <div className="bg_circle"></div>
+                <div className="main_dots_second">
                     <img src={main_dots} alt="main_dots" />
                 </div>
-                <div class="inner_process">
-                    <div class="process_heading">
+                <div className="inner_process">
+                    <div className="process_heading">
                         <h1>Features to help you focus and work better</h1>
                         <p>
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni
                             reprehenderit quo quaerat!
                         </p>
                     </div>
-                    <div class="process_cards">
-                        <div class="left_cards">
-                            <div class="process_card">
-                                <div class="card_number">
+                    <div className="process_cards">
+                        <div className="left_cards">
+                            <div className="process_card">
+                                <div className="card_number">
                                     <h2>02</h2>
                                 </div>
-                                <div class="process_image">
+                                <div className="process_image">
                                     <img src={work2} alt="work2" />
                                 </div>
-                                <div class="process_text">
+                                <div className="process_text">
                                     <h3>Manage Leads</h3>
                                     <p>Lorem ipsum dolor sit amet.</p>
                                 </div>
                             </div>
-                            <div class="process_card">
-                                <div class="card_number">
+                            <div className="process_card">
+                                <div className="card_number">
                                     <h2>04</h2>
                                 </div>
-                                <div class="process_image">
+                                <div className="process_image">
                                     <img src={work4} alt="work4" />
                                 </div>
-                                <div class="process_text">
+                                <div className="process_text">
                                     <h3>Manage Leads</h3>
                                     <p>Lorem ipsum dolor sit amet.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="right_cards">
-                            <div class="process_card">
-                                <div class="card_number">
+                        <div className="right_cards">
+                            <div className="process_card">
+                                <div className="card_number">
                                     <h2>01</h2>
                                 </div>
-                                <div class="process_image">
+                                <div className="process_image">
                                     <img src={work} alt="work" />
                                 </div>
-                                <div class="process_text">
+                                <div className="process_text">
                                     <h3>Manage Leads</h3>
                                     <p>Lorem ipsum dolor sit amet.</p>
                                 </div>
                             </div>
-                            <div class="process_card">
-                                <div class="card_number">
+                            <div className="process_card">
+                                <div className="card_number">
                                     <h2>03</h2>
                                 </div>
-                                <div class="process_image">
+                                <div className="process_image">
                                     <img src={work3} alt="work3" />
                                 </div>
-                                <div class="process_text">
+                                <div className="process_text">
                                     <h3>Manage Leads</h3>
                                     <p>Lorem ipsum dolor sit amet.</p>
                                 </div>
                             </div>
-                            <div class="process_card">
-                                <div class="card_number">
+                            <div className="process_card">
+                                <div className="card_number">
                                     <h2>05</h2>
                                 </div>
-                                <div class="process_image">
+                                <div className="process_image">
                                     <img src={work5} alt="work5" />
                                 </div>
-                                <div class="process_text">
+                                <div className="process_text">
                                     <h3>Manage Leads</h3>
                                     <p>Lorem ipsum dolor sit amet.</p>
                                 </div>
@@ -224,9 +224,9 @@ const Mainhomepage = () => {
                 </div>
             </section>
 
-            <section class="multiple_domain">
-                <div class="inner_multipleDomain">
-                    <div class="multipleDomain_heading">
+            <section className="multiple_domain">
+                <div className="inner_multipleDomain">
+                    <div className="multipleDomain_heading">
                         <h2>Serving the clients across multiple domains</h2>
                         <p>
                             SheThink helps startups to craft ultimate products that are ready
@@ -236,24 +236,24 @@ const Mainhomepage = () => {
                             products.
                         </p>
                     </div>
-                    <div class="multipleDomains_items">
-                        <div class="single_items">
-                            <div class="domain_card">
-                                <div class="domain_icon">
+                    <div className="multipleDomains_items">
+                        <div className="single_items">
+                            <div className="domain_card">
+                                <div className="domain_icon">
                                     <img src={e_commerce} alt="e_commerce" />
                                 </div>
-                                <div class="domain_text">
+                                <div className="domain_text">
                                     <h3>E-Commerce</h3>
                                     <p>
                                         30+ e-commerce solutions, 12 fintech top-funded products
                                     </p>
                                 </div>
                             </div>
-                            <div class="domain_card">
-                                <div class="domain_icon">
+                            <div className="domain_card">
+                                <div className="domain_icon">
                                     <img src={e_learning} alt="" />
                                 </div>
-                                <div class="domain_text">
+                                <div className="domain_text">
                                     <h3>E-learning and education</h3>
                                     <p>
                                         we provide e-learning solutions to boost growth and
@@ -262,12 +262,12 @@ const Mainhomepage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="single_items">
-                            <div class="domain_card">
-                                <div class="domain_icon">
+                        <div className="single_items">
+                            <div className="domain_card">
+                                <div className="domain_icon">
                                     <img src={food} alt="food" />
                                 </div>
-                                <div class="domain_text">
+                                <div className="domain_text">
                                     <h3>Food & Restaurant</h3>
                                     <p>
                                         we have a team of experts who understands order management,
@@ -275,11 +275,11 @@ const Mainhomepage = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div class="domain_card">
-                                <div class="domain_icon">
+                            <div className="domain_card">
+                                <div className="domain_icon">
                                     <img src={travel} alt="travel" />
                                 </div>
-                                <div class="domain_text">
+                                <div className="domain_text">
                                     <h3>Travel</h3>
                                     <p>
                                         we provide innovative ideas and technologies for travel
@@ -288,12 +288,12 @@ const Mainhomepage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="single_items">
-                            <div class="domain_card">
-                                <div class="domain_icon">
+                        <div className="single_items">
+                            <div className="domain_card">
+                                <div className="domain_icon">
                                     <img src={stethoscope} alt="stethoscope" />
                                 </div>
-                                <div class="domain_text">
+                                <div className="domain_text">
                                     <h3>Healthcare</h3>
                                     <p>
                                         we provide uttermost healthcare IT consulting, technology
@@ -301,11 +301,11 @@ const Mainhomepage = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div class="domain_card">
-                                <div class="domain_icon">
+                            <div className="domain_card">
+                                <div className="domain_icon">
                                     <img src={fintech} alt="fintech" />
                                 </div>
-                                <div class="domain_text">
+                                <div className="domain_text">
                                     <h3>Fintech</h3>
                                     <p>
                                         We have around 12 well-funded fintech products as per your
@@ -318,12 +318,12 @@ const Mainhomepage = () => {
                 </div>
             </section>
 
-            <section class="remote_main">
-                <div class="ripple">
+            <section className="remote_main">
+                <div className="ripple">
                     <img src={ripple} alt="fintech" />
                 </div>
-                <div class="inner_remote">
-                    <div class="remote_heading">
+                <div className="inner_remote">
+                    <div className="remote_heading">
                         <h5>Why remote</h5>
                         <h1>
                             Experience the Remote <br />
@@ -331,12 +331,12 @@ const Mainhomepage = () => {
                         </h1>
                     </div>
 
-                    <div class="remote_cards_area">
-                        <div class="remote_card">
-                            <div class="remote_icon">
+                    <div className="remote_cards_area">
+                        <div className="remote_card">
+                            <div className="remote_icon">
                                 <img src={layer} alt="layer" />
                             </div>
-                            <div class="remote_info">
+                            <div className="remote_info">
                                 <h2>Global Infrastructure</h2>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
@@ -345,11 +345,11 @@ const Mainhomepage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div class="remote_card">
-                            <div class="remote_icon">
+                        <div className="remote_card">
+                            <div className="remote_icon">
                                 <img src={dollar} alt="dollar" />
                             </div>
-                            <div class="remote_info">
+                            <div className="remote_info">
                                 <h2>Global Infrastructure</h2>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
@@ -358,11 +358,11 @@ const Mainhomepage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div class="remote_card">
-                            <div class="remote_icon">
+                        <div className="remote_card">
+                            <div className="remote_icon">
                                 <img src={documents} alt="document" />
                             </div>
-                            <div class="remote_info">
+                            <div className="remote_info">
                                 <h2>Global Infrastructure</h2>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
@@ -371,11 +371,11 @@ const Mainhomepage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div class="remote_card">
-                            <div class="remote_icon">
+                        <div className="remote_card">
+                            <div className="remote_icon">
                                 <img src={svg4} alt="svg4" />
                             </div>
-                            <div class="remote_info">
+                            <div className="remote_info">
                                 <h2>Global Infrastructure</h2>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
@@ -384,11 +384,11 @@ const Mainhomepage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div class="remote_card">
-                            <div class="remote_icon">
+                        <div className="remote_card">
+                            <div className="remote_icon">
                                 <img src={svg5} alt="svg5" />
                             </div>
-                            <div class="remote_info">
+                            <div className="remote_info">
                                 <h2>Global Infrastructure</h2>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
@@ -397,11 +397,11 @@ const Mainhomepage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div class="remote_card">
-                            <div class="remote_icon">
+                        <div className="remote_card">
+                            <div className="remote_icon">
                                 <img src={svg6} alt="svg6" />
                             </div>
-                            <div class="remote_info">
+                            <div className="remote_info">
                                 <h2>Global Infrastructure</h2>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
@@ -416,77 +416,77 @@ const Mainhomepage = () => {
 
             {/* <!-- testimonials section --> */}
 
-            <section class="testimonials_main">
-                <div class="inner_testimonials">
-                    <div class="testimonial_heading">
+            <section className="testimonials_main">
+                <div className="inner_testimonials">
+                    <div className="testimonial_heading">
                         <p>Lorem ipsum dolor sit.</p>
-                        <div class="heading_testimonial">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        <div className="heading_testimonial">
+                            <i className="fa fa-quote-left" aria-hidden="true"></i>
                             <h2>Testimonials</h2>
-                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+                            <i className="fa fa-quote-right" aria-hidden="true"></i>
                         </div>
                     </div>
-                    <div class="testimonial_cards">
-                        <div class="testimonialCard firstCard">
-                            <div class="testi_icon">
+                    <div className="testimonial_cards">
+                        <div className="testimonialCard firstCard">
+                            <div className="testi_icon">
                                 <img src={hangouts} alt="hangouts" />
                             </div>
-                            <div class="testi_info">
+                            <div className="testi_info">
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                     Harum in nulla dolorum minima nesciunt modi dicta, facere iste
                                     aut a quibusdam unde eum voluptates architecto delectus libero
                                     voluptatem consectetur. Maiores?
                                 </p>
-                                <div class="testi_image">
-                                    <div class="testi_profile">
+                                <div className="testi_image">
+                                    <div className="testi_profile">
                                         <img src={alex} alt="alex" />
                                     </div>
-                                    <div class="testi_name">
+                                    <div className="testi_name">
                                         <h5>Sofia Nadel</h5>
                                         <h2>Corporate Office,CAN</h2>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonialCard middle_card">
-                            <div class="testi_icon">
+                        <div className="testimonialCard middle_card">
+                            <div className="testi_icon">
                                 <img src={hangouts_middle} alt="hangouts_middle" />
                             </div>
-                            <div class="testi_info">
+                            <div className="testi_info">
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                     Harum in nulla dolorum minima nesciunt modi dicta, facere iste
                                     aut a quibusdam unde eum voluptates architecto delectus libero
                                     voluptatem consectetur. Maiores?
                                 </p>
-                                <div class="testi_image">
-                                    <div class="testi_profile">
+                                <div className="testi_image">
+                                    <div className="testi_profile">
                                         <img src={alex} alt="alex" />
                                     </div>
-                                    <div class="testi_name" style={{ marginRight: 20 }}>
+                                    <div className="testi_name" style={{ marginRight: 20 }}>
                                         <h5>Sofia Nadel</h5>
                                         <h2>Corporate Office,CAN</h2>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonialCard lastCard">
-                            <div class="testi_icon">
+                        <div className="testimonialCard lastCard">
+                            <div className="testi_icon">
                                 <img src={hangouts} alt="hangouts" />
                             </div>
-                            <div class="testi_info">
+                            <div className="testi_info">
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                     Harum in nulla dolorum minima nesciunt modi dicta, facere iste
                                     aut a quibusdam unde eum voluptates architecto delectus libero
                                     voluptatem consectetur. Maiores?
                                  </p>
-                                <div class="testi_image">
-                                    <div class="testi_profile">
+                                <div className="testi_image">
+                                    <div className="testi_profile">
                                         <img src={alex} alt="alex" />
                                     </div>
-                                    <div class="testi_name">
+                                    <div className="testi_name">
                                         <h5>Sofia Nadel</h5>
                                         <h2>Corporate Office,CAN</h2>
                                     </div>
@@ -500,20 +500,20 @@ const Mainhomepage = () => {
 
             <!-- carousel section --> */}
 
-            <section class="our_clients">
-                <div class="big_circle"></div>
-                <div class="inner_ourClients">
-                    <div class="ourClients_heading">
+            <section className="our_clients">
+                <div className="big_circle"></div>
+                <div className="inner_ourClients">
+                    <div className="ourClients_heading">
                         <h2>
                             Companies who can rely <br />
                             on us.
                         </h2>
                         <p>We are growing day by day</p>
                     </div>
-                    <div class="our_clients_inner">
-                        <div class="ourClients_images">
+                    <div className="our_clients_inner">
+                        <div className="ourClients_images">
                             <h4>Companies are</h4>
-                            <div class="clients_images">
+                            <div className="clients_images">
                                 <img src={amazon} alt="" />
                                 <img src={office} alt="" />
                                 <img src={fedex} alt="" />
@@ -522,7 +522,7 @@ const Mainhomepage = () => {
                                 <img src={kodak} alt="" />
                             </div>
                         </div>
-                        <div class="ourClients_gifs">
+                        <div className="ourClients_gifs">
                             <img src={clients} alt="" />
                         </div>
                     </div>
@@ -532,20 +532,20 @@ const Mainhomepage = () => {
             {/* <!-- carousel section end-->
 
             <!-- FAQ  --> */}
-            <section class="faq">
-                <div class="inner_faq">
-                    <div class="faq_heading">
-                        <div class="heading_faq">
+            <section className="faq">
+                <div className="inner_faq">
+                    <div className="faq_heading">
+                        <div className="heading_faq">
                             <h2>FAQ</h2>
                             <img src={faq} alt="" />
                         </div>
                         <p>We have answers to all your question.</p>
                     </div>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
+                    <div className="accordion" id="accordionExample">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingOne">
                                 <button
-                                    class="accordion-button"
+                                    className="accordion-button"
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne"
@@ -557,15 +557,15 @@ const Mainhomepage = () => {
                             </h2>
                             <div
                                 id="collapseOne"
-                                class="accordion-collapse collapse show"
+                                className="accordion-collapse collapse show"
                                 aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample"
                             >
-                                <div class="accordion-body">
+                                <div className="accordion-body">
                                     <strong>This is the first item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
-                  appropriate classes that we use to style each element. These
-                  classes control the overall appearance, as well as the showing
+                  appropriate classNamees that we use to style each element. These
+                  classNamees control the overall appearance, as well as the showing
                   and hiding via CSS transitions. You can modify any of this
                   with custom CSS or overriding our default variables. It's also
                   worth noting that just about any HTML can go within the
@@ -574,10 +574,10 @@ const Mainhomepage = () => {
                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingTwo">
                                 <button
-                                    class="accordion-button collapsed"
+                                    className="accordion-button collapsed"
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo"
@@ -589,15 +589,15 @@ const Mainhomepage = () => {
                             </h2>
                             <div
                                 id="collapseTwo"
-                                class="accordion-collapse collapse"
+                                className="accordion-collapse collapse"
                                 aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample"
                             >
-                                <div class="accordion-body">
+                                <div className="accordion-body">
                                     <strong>This is the second item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
-                  appropriate classes that we use to style each element. These
-                  classes control the overall appearance, as well as the showing
+                  appropriate classNamees that we use to style each element. These
+                  classNamees control the overall appearance, as well as the showing
                   and hiding via CSS transitions. You can modify any of this
                   with custom CSS or overriding our default variables. It's also
                   worth noting that just about any HTML can go within the
@@ -606,10 +606,10 @@ const Mainhomepage = () => {
                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingThree">
                                 <button
-                                    class="accordion-button collapsed"
+                                    className="accordion-button collapsed"
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree"
@@ -621,15 +621,15 @@ const Mainhomepage = () => {
                             </h2>
                             <div
                                 id="collapseThree"
-                                class="accordion-collapse collapse"
+                                className="accordion-collapse collapse"
                                 aria-labelledby="headingThree"
                                 data-bs-parent="#accordionExample"
                             >
-                                <div class="accordion-body">
+                                <div className="accordion-body">
                                     <strong>This is the third item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
-                  appropriate classes that we use to style each element. These
-                  classes control the overall appearance, as well as the showing
+                  appropriate classNamees that we use to style each element. These
+                  classNamees control the overall appearance, as well as the showing
                   and hiding via CSS transitions. You can modify any of this
                   with custom CSS or overriding our default variables. It's also
                   worth noting that just about any HTML can go within the
@@ -644,36 +644,36 @@ const Mainhomepage = () => {
 
             {/* <!-- contact Us  --> */}
 
-            <section class="contact_us">
-                <div class="donut_shape"></div>
-                <div class="inner_contactUs">
-                    <div class="contactUs_heading">
+            <section className="contact_us">
+                <div className="donut_shape"></div>
+                <div className="inner_contactUs">
+                    <div className="contactUs_heading">
                         <h1>Discover how Remote can help you grow your global team</h1>
                     </div>
-                    <div class="contactUs_btn">
-                        <a href="#"> Get Started Today<i class="fa fa-angle-right right-arr" aria-hidden="true"></i></a>
+                    <div className="contactUs_btn">
+                        <a href="#"> Get Started Today<i className="fa fa-angle-right right-arr" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </section>
 
             {/* <!-- footer section --> */}
 
-            <footer class="main_footer">
-                <div class="inner_footer">
-                    <div class="social_links">
-                        {/* <div class="social_div">
+            <footer className="main_footer">
+                <div className="inner_footer">
+                    <div className="social_links">
+                        {/* <div className="social_div">
                             <img src={twitter} alt="" />
                             <img src={facebook} alt="" />
                             <img src={linkedin} alt="" />
                         </div> */}
                     </div>
-                    <div class="hire_developers">
+                    <div className="hire_developers">
                         <h2 onClick={() => setHireDeveloper(!hireDeveloper)} >
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i> Hire Developers</h2>
+                            <i className="fa fa-angle-double-right" aria-hidden="true"></i> Hire Developers</h2>
                         {
                             hireDeveloper === true ? (
-                                <div class="hire_developers_points">
-                                    <div class="main_points">
+                                <div className="hire_developers_points">
+                                    <div className="main_points">
                                         <p>Hire PHP Developers</p>
                                         <p>Hire AngularJS Developers</p>
                                         <p>Hire Python Developers</p>
@@ -685,7 +685,7 @@ const Mainhomepage = () => {
                                         <p>Hire MERN Stack Development</p>
                                         <p>Hire Laravel Development</p>
                                     </div>
-                                    <div class="main_points">
+                                    <div className="main_points">
                                         <p>Hire WordPress Developers</p>
                                         <p>Hire Machine Learning Experts</p>
                                         <p>Hire Golang Developers</p>
@@ -700,12 +700,12 @@ const Mainhomepage = () => {
                             ) : null
                         }
                     </div>
-                    <div class="industry_exp">
+                    <div className="industry_exp">
                         <h2 onClick={() => setIndustryExperience(!industryExperience)}>
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>{" "}Industry Experience</h2>
+                            <i className="fa fa-angle-double-right" aria-hidden="true"></i>{" "}Industry Experience</h2>
                         {
                             industryExperience === true ? (
-                                <div class="industry_exp_points">
+                                <div className="industry_exp_points">
                                     <p>Healthcare</p>
                                     <p>Food & Restaurant</p>
                                     <p>LMS & eLearning</p>
@@ -717,20 +717,20 @@ const Mainhomepage = () => {
                             ) : null
                         }
                     </div>
-                    <div class="contact_links">
+                    <div className="contact_links">
                         <h2 onClick={() => setContactUs(!contactUs)}>
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>{" "} Contact Us</h2>
+                            <i className="fa fa-angle-double-right" aria-hidden="true"></i>{" "} Contact Us</h2>
                         {
                             contactUs === true ? (<div>
-                                <div class="contact_links_heading">
+                                <div className="contact_links_heading">
                                     <h4>Sales:</h4>
                                     <h4>India: +91-7417537175</h4>
                                 </div>
-                                <div class="contact_links_heading">
+                                <div className="contact_links_heading">
                                     <h4>For Business:</h4>
                                     <h4>mzaid6961@gmail.com</h4>
                                 </div>
-                                <div class="contact_links_heading">
+                                <div className="contact_links_heading">
                                     <h4>For Job & Internships</h4>
                                     <h4>careers@gmail.com</h4>
                                 </div>

@@ -10,6 +10,14 @@ body {
   margin: 0;
   padding: 0;
 }
+@font-face {
+  font-family: "Genericons";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/genericons-regular-webfont.eot");
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/genericons-regular-webfont.woff")
+      format("woff"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/genericons-regular-webfont.eot")
+      format("truetype");
+}
 .main-container {
   width: 100%;
   display: flex;
@@ -133,16 +141,20 @@ input::placeholder {
 .MuiRadio-colorSecondary.Mui-checked {
   color: #fff !important;
 }
-/* Requirement and Experience radio button custom css */
+/* Requirement and Experience radio button custom css end*/
 
 /* btn css for client and agency */
 .btn-position-agency-client-description {
   width: 85%;
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
+  justify-content: space-between;
+
   align-items: center;
 }
-
+.description-btn {
+  justify-content: flex-end;
+}
 /* btn css for requirement */
 .btn-position-requirement {
   width: 85%;
@@ -162,6 +174,10 @@ input::placeholder {
   padding: 0.6rem 1rem 0.6rem 1.3rem;
   cursor: pointer;
   text-decoration: none;
+  outline: none;
+  border: none;
+}
+.button-class:focus {
   outline: none;
   border: none;
 }
@@ -247,6 +263,61 @@ input::placeholder {
   top: 8%;
 }
 
+/* thank you page css */
+.thank-you-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.thankyou-text {
+  margin-top: 5rem;
+}
+.thankyou-text h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+.thankyou-text .tick {
+  color: white !important;
+  margin-bottom: 4rem;
+  margin-top: 1.5rem;
+}
+.thankyou-text p {
+  margin: 0;
+  font-family: "Poppins";
+  color: white;
+  font-weight: lighter;
+}
+.thanku-btn {
+  justify-content: center;
+}
+.star1,
+.star2,
+.star3,
+.star4 {
+  position: absolute;
+  color: #0918cd;
+}
+.star1 {
+  top: 0%;
+  left: 40%;
+}
+.star2 {
+  top: 12%;
+  left: 0%;
+}
+.star3 {
+  top: 12%;
+  right: 12%;
+}
+.star4 {
+  top: 24%;
+  right: 5%;
+}
+/* thank you page css end */
+
 @media (max-width: 1250px) {
   .left-inner-container {
     display: none;
@@ -270,7 +341,8 @@ input::placeholder {
     width: 90%;
   }
   input,
-  .input-description {
+  .input-description,
+  .timezone {
     width: 90%;
   }
   .right-content-description {
@@ -320,14 +392,16 @@ input::placeholder {
 @media (max-width: 550px) {
   /* btn css for requirement */
   input,
-  .input-description {
+  .input-description,
+  .timezone {
     width: 100%;
   }
   .btn-position-agency-client-description,
   .btn-position-requirement {
     width: 100%;
   }
-  .btn-position-requirement {
+  .btn-position-requirement,
+  .btn-position-agency-client-description {
     justify-content: center;
     flex-direction: column;
   }
