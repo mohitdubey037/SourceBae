@@ -3,6 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import leftImage from '../assests/Images/onlyphoto.png';
+import thankyou from '../assests/thankyou.gif';
 import './homepage59r.css';
 
 const ThankyouPage = () => {
@@ -28,7 +29,10 @@ const ThankyouPage = () => {
                             <div className="thankyou-text">
                                 <h1>Thank You</h1>
                                 <h1>For Registration</h1>
-                                <i class="fas fa-check-circle fa-7x tick"></i>
+                                <div className="thankyou_Image">
+                                    <img src={thankyou} className="thankyou_gif" />
+                                </div>
+                                {/* <i class="fas fa-check-circle fa-7x tick"></i> */}
                                 <p>Need help right now?</p>
                                 <p>Use the chat window below to talk to an expert developer.</p>
                             </div>

@@ -27,7 +27,7 @@ const Client = () => {
             redirect: 'follow'
         };
 
-        fetch("http://13.235.79.27:8000/users/register", requestOptions)
+        fetch("https://api.onesourcing.in/users/register", requestOptions)
             .then(response => response.json())
             .then(result => (console.log(result),
                 result.status == true ? (

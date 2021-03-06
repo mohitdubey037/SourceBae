@@ -49,7 +49,7 @@ const RequirementExtended = () => {
             body: raw,
             redirect: 'follow'
         };
-        fetch("http://13.235.79.27:8000/client/register/2", requestOptions)
+        fetch("https://api.onesourcing.in/client/register/2", requestOptions)
             .then(response => response.json())
             .then((result) => (
                 result.status == true ? (toast.success("WoooHooo"),

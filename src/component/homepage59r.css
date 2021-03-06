@@ -279,11 +279,22 @@ input::placeholder {
   font-size: 4rem;
   font-weight: bold;
 }
-.thankyou-text .tick {
+.thankyou_Image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.thankyou_gif {
+  width: 25%;
+  height: 25%;
+  object-fit: contain;
+}
+/* .thankyou-text .tick {
   color: white !important;
   margin-bottom: 4rem;
   margin-top: 1.5rem;
-}
+} */
 .thankyou-text p {
   margin: 0;
   font-family: "Poppins";
@@ -299,10 +310,19 @@ input::placeholder {
 .star4 {
   position: absolute;
   color: #0918cd;
+  animation: zoom_toggle 1s infinite;
 }
 .star1 {
   top: 0%;
   left: 40%;
+}
+@keyframes zoom_toggle {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 .star2 {
   top: 12%;

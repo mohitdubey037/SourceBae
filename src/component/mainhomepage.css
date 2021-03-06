@@ -72,7 +72,6 @@ body::-webkit-scrollbar {
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
   color: #fff;
-  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 

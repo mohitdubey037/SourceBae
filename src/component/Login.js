@@ -26,7 +26,7 @@ const Login = () => {
             redirect: 'follow'
         };
 
-        fetch("http://13.235.79.27:8000/users/login", requestOptions)
+        fetch("https://api.onesourcing.in/users/login", requestOptions)
             .then(response => response.json())
             .then((result) => {
                 console.log(result)

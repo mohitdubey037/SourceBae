@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './homepage59r.css';
 import leftImage from '../assests/Images/onlyphoto.png';
 // import DescriptionSelectbtn from './DescriptionSelectbtn';
@@ -16,6 +16,7 @@ import TimezoneSelect from 'react-timezone-select';
 
 
 const Description = () => {
+    const history = useHistory();
     const [selectedTimezone, setSelectedTimezone] = useState('');
     const [value, setValue] = React.useState('5-10');
     const [location, setLocation] = useState('')
@@ -46,12 +47,13 @@ const Description = () => {
             redirect: 'follow'
         };
 
-        fetch("http://13.235.79.27:8000/agency/register", requestOptions)
+        fetch("https://api.onesourcing.in/agency/register", requestOptions)
             .then(response => response.json())
-            .then((result) => {
-                console.log(result)
-                result.status == true ? toast.success("Completed") : toast.error("Try Again")
-            })
+            .then((result) => (
+                console.log(result),
+                result.status == true ? (toast.success('Completed'),
+                    history.push('/thankyoupage')) : toast.error('Try Again')
+            ))
             .catch(error => console.log('error', error));
 
     }
