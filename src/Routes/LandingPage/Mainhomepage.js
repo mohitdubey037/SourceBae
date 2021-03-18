@@ -38,8 +38,9 @@ import svg5 from "../../assests/images/LandingPage/svg5.svg";
 import svg6 from "../../assests/images/LandingPage/svg6.svg";
 import hangouts from "../../assests/images/LandingPage/hangouts.png";
 import hangouts_middle from "../../assests/images/LandingPage/hangouts_middle.png";
-import amazon from "../../assests/images/LandingPage/amazon.svg";
-import office from "../../assests/images/LandingPage/office.svg";
+import samadhan from "../../assests/images/LandingPage/samadhan.png";
+import mernPlus from "../../assests/images/LandingPage/mp.png";
+import tealBox from "../../assests/images/LandingPage/tealBox.jpg";
 import fedex from "../../assests/images/LandingPage/fedex.svg";
 import dhl from "../../assests/images/LandingPage/dhl.svg";
 import express from "../../assests/images/LandingPage/express.svg";
@@ -185,7 +186,7 @@ const Mainhomepage = () => {
                                 <span className="count__detail">Partnered Agencies</span>
                             </div>
                             <div className="counter__container">
-                                <span className="count" data-target = '42'>0</span>
+                                <span className="count" data-target = '29'>0</span>
                                 <span className="count__detail">Completed Projects</span>
                             </div>
                         </div>
@@ -198,8 +199,9 @@ const Mainhomepage = () => {
                                 <span className="count__detail">Hired Developers</span>
                             </div>
                             <div className="counter__container">
-                                <span>$<span className="count" data-target = '100'>0</span>K</span>
-                                <span className="count__detail">Project Worth</span>
+                                <span class ="counts" style={{fontSize:"36px"}}>100K</span>
+                                {/* <span className="counts" data-target = '100'>100</span>K</span> */}
+                                <span className="count__detail">Project Worth($)</span>
                             </div>
                         </div>
                     </div>
@@ -528,18 +530,17 @@ const Mainhomepage = () => {
                             </div>
                             <div className="testi_info">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                    Harum in nulla dolorum minima nesciunt modi dicta, facere iste
-                                    aut a quibusdam unde eum voluptates architecto delectus libero
-                                    voluptatem consectetur. Maiores?
+                                Onesourcing has provided us the highest quality candidates 
+                                that are most aligned with our business needs.
+                                 It is now an essential part of our hiring toolkit
                                 </p>
                                 <div className="testi_image">
                                     {/* <div className="testi_profile">
                                         <img src={alex} alt="alex" />
                                     </div> */}
                                     <div className="testi_name">
-                                        <h5>Sofia Nadel</h5>
-                                        <h2>Corporate Office,CAN</h2>
+                                        <h5>Varun Sogani</h5>
+                                        <h2>Samadhan,IN</h2>
                                     </div>
                                 </div>
                             </div>
@@ -550,18 +551,15 @@ const Mainhomepage = () => {
                             </div>
                             <div className="testi_info">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                    Harum in nulla dolorum minima nesciunt modi dicta, facere iste
-                                    aut a quibusdam unde eum voluptates architecto delectus libero
-                                    voluptatem consectetur. Maiores?
+                                    OneSourcing offered us some of the best remote developers out there at a rate that is not just budget-friendly for the pockets are also extremely professional in all aspects you could ask for in a work environment.
                                 </p>
                                 <div className="testi_image">
                                     {/* <div className="testi_profile">
                                         <img src={alex} alt="alex" />
                                     </div> */}
                                     <div className="testi_name">
-                                        <h5>Sofia Nadel</h5>
-                                        <h2>Corporate Office,CAN</h2>
+                                        <h5>Gavin Andrews</h5>
+                                        <h2>Gravitas Group, CAN</h2>
                                     </div>
                                 </div>
                             </div>
@@ -572,18 +570,16 @@ const Mainhomepage = () => {
                             </div>
                             <div className="testi_info">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                    Harum in nulla dolorum minima nesciunt modi dicta, facere iste
-                                    aut a quibusdam unde eum voluptates architecto delectus libero
-                                    voluptatem consectetur. Maiores?
+                                    I’m really happy that Onesourcing exists. 
+                                    We use it, it’s amazing, and it works.
                                  </p>
                                 <div className="testi_image">
                                     {/* <div className="testi_profile">
                                         <img src={alex} alt="alex" />
                                     </div> */}
                                     <div className="testi_name">
-                                        <h5>Sofia Nadel</h5>
-                                        <h2>Corporate Office,CAN</h2>
+                                        <h5>Rohit Singh </h5>
+                                        <h2>PowerAsset,LLC</h2>
                                     </div>
                                 </div>
                             </div>
@@ -611,14 +607,10 @@ const Mainhomepage = () => {
                     </div>
                     <div className="our_clients_inner">
                         <div className="ourClients_images">
-                            <h4>Companies are</h4>
                             <div className="clients_images">
-                                <img src={amazon} alt="" />
-                                <img src={office} alt="" />
-                                <img src={fedex} alt="" />
-                                <img src={dhl} alt="" />
-                                <img src={express} alt="" />
-                                <img src={kodak} alt="" />
+                                <img src={mernPlus} alt="" />
+                                <img src={samadhan} alt="" />
+                                <img src={tealBox} alt="" />
                             </div>
                         </div>
                         <div className="ourClients_gifs">
@@ -750,7 +742,8 @@ const Mainhomepage = () => {
                         <h1>Discover how Remote can help you grow your global team</h1>
                     </div>
                     <div className="contactUs_btn">
-                        <a href="#"> Get Started Today<i className="fa fa-angle-right right-arr" aria-hidden="true"></i></a>
+                        <a href="https://bit.ly/3cPvEvL" 
+                        target="blank">Hire Now<i className="fa fa-angle-right right-arr" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </section>
@@ -823,15 +816,11 @@ const Mainhomepage = () => {
                             contactUs === true ? (<div>
                                 <div className="contact_links_heading">
                                     <h4>Sales:</h4>
-                                    <h4>India: +91-7417537175</h4>
+                                    <h4>India: +91-9575517047</h4>
                                 </div>
                                 <div className="contact_links_heading">
                                     <h4>For Business:</h4>
-                                    <h4>mzaid6961@gmail.com</h4>
-                                </div>
-                                <div className="contact_links_heading">
-                                    <h4>For Job & Internships</h4>
-                                    <h4>careers@gmail.com</h4>
+                                    <h4>connect@shethink.in</h4>
                                 </div>
                             </div>
                             ) : null
