@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./mainhomepage.css";
-import { NavLink } from 'react-router-dom';
 
 
 // images link
@@ -22,6 +21,8 @@ import erp from "../../assests/images/LandingPage/erp.gif";
 import e_learning from "../../assests/images/LandingPage/Edtech.gif";
 import food from "../../assests/images/LandingPage/foodtech.gif";
 import projectMgmt from "../../assests/images/LandingPage/ProjectManagementTool.gif";
+import travel from "../../assests/images/LandingPage/travel.gif";
+import crypto from "../../assests/images/LandingPage/crypto.gif";
 
 import entertainment from "../../assests/images/LandingPage/entertainment.gif";
 import chatbots from "../../assests/images/LandingPage/Chatbots.gif"
@@ -136,21 +137,23 @@ const Mainhomepage = () => {
                             </div>
                             <div className="info_para">
                                 <p>
-                                One Sourcing is a network of Top IT Agencies, a one-stop platform for Clients to hire dedicated remote resources, make their remote teams. More features coming soon with the stable version. 
+                                OneSourcing is a network of Top IT Agencies, a one-stop platform for Clients to hire dedicated remote resources, make their remote teams. More features coming soon with the stable version. 
                                 </p>
                             </div>
                             <div className="info_buttons">
-                                <NavLink to="/agency">
-                                    Agency
-                                </NavLink>
-                                <NavLink to={{
+                                {/* <NavLink to="/agency">
+                                </NavLink> */}
+                                
+                                {/* <NavLink to={{
                                     pathname: '/client',
                                     state: {
                                         clientRole: "6038ecf6b796345b9c82bfbb"
                                     }
                                 }} >
-                                    Client
-                                </NavLink>
+                                </NavLink> */}
+                                <a href="http://bit.ly/3cPvEvL" target = "blank">Hire Developers</a>
+                                <a href="http://bit.ly/3r3Cv9D" target = "blank">Join as Agency</a>
+                                    
                             </div>
                         </div>
                         <div className="scroll_div">
@@ -174,16 +177,16 @@ const Mainhomepage = () => {
             <section className = 'leads'>
                 <div className = 'leads__innerWrapper'>
                     <p className = 'leads__title'>OUR MILESTONES</p>
-                    <p className = 'leads__titleDescription'>SHORT DESCRIPTION</p>
+                    {/* <p className = 'leads__titleDescription'>SHORT DESCRIPTION</p> */}
                     <div className="lead__details">
                         <div className = 'lead__detailsLeft'>
                             <div className="counter__container">
-                                <span className="count" data-target = '10'>0</span>
-                                <span className="count__detail">CLIENTS</span>
+                                <span className="count" data-target = '50'>0</span>
+                                <span className="count__detail">Partnered Agencies</span>
                             </div>
                             <div className="counter__container">
-                                <span className="count" data-target = '20'>0</span>
-                                <span className="count__detail">agencies</span>
+                                <span className="count" data-target = '42'>0</span>
+                                <span className="count__detail">Completed Projects</span>
                             </div>
                         </div>
                         <div className = 'leads__imageContainer'>
@@ -191,12 +194,12 @@ const Mainhomepage = () => {
                         </div>
                         <div className = 'lead__detailsRight'>
                             <div className="counter__container">
-                                <span className="count" data-target = '10'>0</span>
-                                <span className="count__detail">CLIENTS</span>
+                                <span className="count" data-target = '105'>0</span>
+                                <span className="count__detail">Hired Developers</span>
                             </div>
                             <div className="counter__container">
-                                <span className="count" data-target = '20'>0</span>
-                                <span className="count__detail">agencies</span>
+                                <span>$<span className="count" data-target = '100'>0</span>K</span>
+                                <span className="count__detail">Project Worth</span>
                             </div>
                         </div>
                     </div>
@@ -210,10 +213,10 @@ const Mainhomepage = () => {
                 </div>
                 <div className="inner_process">
                     <div className="process_heading">
-                        <h1>Features to help you focus and work better</h1>
+                        <h1>How we work</h1>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni
-                            reprehenderit quo quaerat!
+                            Checkout our simplified streamlined processes 
+                            to know how we work to provide you with better services.
                         </p>
                     </div>
                     <div className="process_cards">
@@ -288,13 +291,12 @@ const Mainhomepage = () => {
             <section className="multiple_domain">
                 <div className="inner_multipleDomain">
                     <div className="multipleDomain_heading">
-                        <h2>Serving the clients across multiple domains</h2>
+                        <h2>Driving Innovation across Different Industry Verticals</h2>
                         <p>
-                            SheThink helps startups to craft ultimate products that are ready
-                            to go directly for VC funding. Once the investment is done, we
-                            assist startups to onboard a team and grow faster. BankOpen and
-                            YourStory are some of the companies for whom we have built
-                            products.
+                         Onesourcing intends to help <b>Startups, Digital Agencies,
+                         Enterprises (big or small) and Software Product Development Companies </b> 
+                         to boost their operations 
+                        and lead market trends across different industry verticals.
                         </p>
                     </div>
                     <div className="multipleDomains_items">
@@ -339,6 +341,7 @@ const Mainhomepage = () => {
                             </div>
                         </div>
                         <div className="single_items">
+                          
                             <div className="domain_card">
                                 <div className="domain_icon">
                                     <img src={healthcare} alt="healthcare" />
@@ -348,12 +351,13 @@ const Mainhomepage = () => {
             
                                 </div>
                             </div>
+
                             <div className="domain_card">
                                 <div className="domain_icon">
-                                    <img src={fintech} alt="fintech" />
+                                    <img src={crypto} alt="fintech" />
                                 </div>
                                 <div className="domain_text">
-                                    <h3>Fintech</h3>
+                                    <h3>Crypto</h3>
                    
                                 </div>
                             </div>
@@ -372,10 +376,10 @@ const Mainhomepage = () => {
                             </div>
                             <div className="domain_card">
                                 <div className="domain_icon">
-                                    <img src={e_learning} alt="" />
+                                    <img src={travel} alt="travel" />
                                 </div>
                                 <div className="domain_text">
-                                    <h3>E-learning and education</h3>
+                                    <h3>Travel</h3>
                             
                                 </div>
                             </div>
@@ -510,7 +514,7 @@ const Mainhomepage = () => {
             <section className="testimonials_main">
                 <div className="inner_testimonials">
                     <div className="testimonial_heading">
-                        <p>Lorem ipsum dolor sit.</p>
+                        {/* <p>Lorem ipsum dolor sit.</p> */}
                         <div className="heading_testimonial">
                             <i className="fa fa-quote-left" aria-hidden="true"></i>
                             <h2>Testimonials</h2>
@@ -601,10 +605,9 @@ const Mainhomepage = () => {
                 <div className="inner_ourClients">
                     <div className="ourClients_heading">
                         <h2>
-                            Companies who can rely <br />
-                            on us.
+                        You're in Good Company
                         </h2>
-                        <p>We are growing day by day</p>
+                        <p>Trusted by tech companies on us.</p>
                     </div>
                     <div className="our_clients_inner">
                         <div className="ourClients_images">

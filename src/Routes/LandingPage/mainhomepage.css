@@ -644,7 +644,7 @@ section.coming__soon {
   margin-top: 100px;
   border-radius: 10px;
   width: 80%;
-  height: 300px;
+  height: 200px;
   background-color: #121a31;
   color: #fff;
   display: flex;
@@ -657,6 +657,7 @@ section.coming__soon {
 
 .disclaimer .no_bond{
   font-size: 2rem;
+  color:#ffd56e;
 }
 .testimonialCard {
   width: 33%;
@@ -1805,9 +1806,21 @@ section.coming__soon {
   align-items: center;
   flex: 1;
   justify-content: center;
+  padding: 0px 20px;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: max-content;
 }
 
-
+.count{
+  font-size: xxx-large;
+  color:#2b6ce2
+}
+.count__detail{
+  text-align: center;
+  color:#2f4f4f;
+}
 .info_para{
   padding-left: 0;
   border:0px;
