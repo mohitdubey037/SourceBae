@@ -188,6 +188,7 @@ section.coming__soon {
 
 .info_buttons {
   width: 100%;
+  font-size: 15px;
 }
 .info_buttons a {
   text-decoration: none;
