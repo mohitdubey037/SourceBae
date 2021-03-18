@@ -13,12 +13,19 @@ import work4 from "../../assests/images/LandingPage/work4.png";
 import work from "../../assests/images/LandingPage/work.png";
 import work3 from "../../assests/images/LandingPage/work3.png";
 import work5 from "../../assests/images/LandingPage/work5.png";
-import e_commerce from "../../assests/images/LandingPage/e_commerce.png";
-import e_learning from "../../assests/images/LandingPage/e_learning.png";
-import food from "../../assests/images/LandingPage/food.png";
-import travel from "../../assests/images/LandingPage/travel.png";
-import stethoscope from "../../assests/images/LandingPage/stethoscope.png";
-import fintech from "../../assests/images/LandingPage/fintech.png";
+
+
+import e_commerce from "../../assests/images/LandingPage/ecom.gif";
+import erp from "../../assests/images/LandingPage/erp.gif";
+import e_learning from "../../assests/images/LandingPage/Edtech.gif";
+import food from "../../assests/images/LandingPage/foodtech.gif";
+import projectMgmt from "../../assests/images/LandingPage/ProjectManagementTool.gif";
+
+import entertainment from "../../assests/images/LandingPage/entertainment.gif";
+import chatbots from "../../assests/images/LandingPage/Chatbots.gif"
+import healthcare from "../../assests/images/LandingPage/healthcare.gif";
+import logistics from "../../assests/images/LandingPage/Logistics.gif";
+import fintech from "../../assests/images/LandingPage/fintech.gif";
 import ripple from "../../assests/images/LandingPage/ripple.gif";
 import layer from "../../assests/images/LandingPage/layer.svg";
 import dollar from "../../assests/images/LandingPage/dollar.svg";
@@ -104,7 +111,7 @@ const Mainhomepage = () => {
         <>
 
             <section className = 'coming__soon'>
-                <p>COMING SOON</p>
+                <p>Uncover and hire your IT partners + Remote devs!  Beta is LIVE, stable version will be out soon.  🙌🏻🎉</p>
             </section>
 
             <section className="header">
@@ -124,18 +131,12 @@ const Mainhomepage = () => {
                         <div className="info_text_div">
                             <div className="info_heading">
                                 <h1>
-                                    All your <br />
-                                    <b>resource needs,</b>
-                                </h1>
-                                <h1>
-                                    in one <b>place</b>
+                                    <b>Unify your outsourcing needs.</b>
                                 </h1>
                             </div>
                             <div className="info_para">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-                                    ea maiores corrupti perspiciatis sequi obcaecati consequatur
-                                    soluta in aliquid facilis!
+                                One Sourcing is a network of Top IT Agencies, a one-stop platform for Clients to hire dedicated remote resources, make their remote teams. More features coming soon with the stable version. 
                                 </p>
                             </div>
                             <div className="info_buttons">
@@ -158,11 +159,7 @@ const Mainhomepage = () => {
                                     <i className="fa fa-long-arrow-down" aria-hidden="true"></i>
                                 </div>
                                 <div className="scroll_text">
-                                    <h3>Scroll Down</h3>
-                                    <p>
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        Corporis, in.
-                                    </p>
+                                    <h3>How we work: </h3>
                                 </div>
                             </div>
                         </div>
@@ -229,8 +226,8 @@ const Mainhomepage = () => {
                                     <img src={work2} alt="work2" />
                                 </div>
                                 <div className="process_text">
-                                    <h3>Manage Leads</h3>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h3>Profile Matching</h3>
+                                    <p>Making a match between the resource hirer and resource provider.</p>
                                 </div>
                             </div>
                             <div className="process_card">
@@ -241,8 +238,8 @@ const Mainhomepage = () => {
                                     <img src={work4} alt="work4" />
                                 </div>
                                 <div className="process_text">
-                                    <h3>Manage Leads</h3>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h3>Document Completion</h3>
+                                    <p>Proceed to Hiring and Document Signing.</p>
                                 </div>
                             </div>
                         </div>
@@ -255,8 +252,8 @@ const Mainhomepage = () => {
                                     <img src={work} alt="work" />
                                 </div>
                                 <div className="process_text">
-                                    <h3>Manage Leads</h3>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h3>Requirement Profiling</h3>
+                                    <p>Understanding Requirements</p>
                                 </div>
                             </div>
                             <div className="process_card">
@@ -267,8 +264,8 @@ const Mainhomepage = () => {
                                     <img src={work3} alt="work3" />
                                 </div>
                                 <div className="process_text">
-                                    <h3>Manage Leads</h3>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h3>Interview</h3>
+                                    <p>Checking the compatibility via interview process and resource screening.</p>
                                 </div>
                             </div>
                             <div className="process_card">
@@ -279,8 +276,8 @@ const Mainhomepage = () => {
                                     <img src={work5} alt="work5" />
                                 </div>
                                 <div className="process_text">
-                                    <h3>Manage Leads</h3>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h3>Finalizing</h3>
+                                    <p>Final steps towards perfect sync by setting up remote communication.</p>
                                 </div>
                             </div>
                         </div>
@@ -308,9 +305,69 @@ const Mainhomepage = () => {
                                 </div>
                                 <div className="domain_text">
                                     <h3>E-Commerce</h3>
-                                    <p>
-                                        30+ e-commerce solutions, 12 fintech top-funded products
-                                    </p>
+  
+                                </div>
+                            </div>
+                            <div className="domain_card">
+                                <div className="domain_icon">
+                                    <img src={e_learning} alt="" />
+                                </div>
+                                <div className="domain_text">
+                                    <h3>Ed-Tech</h3>
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div className="single_items">
+                            <div className="domain_card">
+                                <div className="domain_icon">
+                                    <img src={entertainment} alt="entertainment" />
+                                </div>
+                                <div className="domain_text">
+                                    <h3>Entertainment</h3>
+         
+                                </div>
+                            </div>
+                            <div className="domain_card">
+                                <div className="domain_icon">
+                                    <img src={erp} alt="erp" />
+                                </div>
+                                <div className="domain_text">
+                                    <h3>ERP/CRM Software</h3>
+       
+                                </div>
+                            </div>
+                        </div>
+                        <div className="single_items">
+                            <div className="domain_card">
+                                <div className="domain_icon">
+                                    <img src={healthcare} alt="healthcare" />
+                                </div>
+                                <div className="domain_text">
+                                    <h3>Healthcare</h3>
+            
+                                </div>
+                            </div>
+                            <div className="domain_card">
+                                <div className="domain_icon">
+                                    <img src={fintech} alt="fintech" />
+                                </div>
+                                <div className="domain_text">
+                                    <h3>Fintech</h3>
+                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="multipleDomains_items">
+                        <div className="single_items">
+                            <div className="domain_card">
+                                <div className="domain_icon">
+                                    <img src={chatbots} alt="chatbots" />
+                                </div>
+                                <div className="domain_text">
+                                    <h3>Chatbots</h3>
+                              
                                 </div>
                             </div>
                             <div className="domain_card">
@@ -319,10 +376,7 @@ const Mainhomepage = () => {
                                 </div>
                                 <div className="domain_text">
                                     <h3>E-learning and education</h3>
-                                    <p>
-                                        we provide e-learning solutions to boost growth and
-                                        performance
-                                    </p>
+                            
                                 </div>
                             </div>
                         </div>
@@ -332,37 +386,28 @@ const Mainhomepage = () => {
                                     <img src={food} alt="food" />
                                 </div>
                                 <div className="domain_text">
-                                    <h3>Food & Restaurant</h3>
-                                    <p>
-                                        we have a team of experts who understands order management,
-                                        android and iOS app development, delivery and more
-                                    </p>
+                                    <h3>Food-Tech</h3>
+                       
                                 </div>
                             </div>
                             <div className="domain_card">
                                 <div className="domain_icon">
-                                    <img src={travel} alt="travel" />
+                                    <img src={projectMgmt} alt="Project Managment" />
                                 </div>
                                 <div className="domain_text">
-                                    <h3>Travel</h3>
-                                    <p>
-                                        we provide innovative ideas and technologies for travel
-                                        application development, review management and other
-                                    </p>
+                                    <h3>Project Management Tool</h3>
+                                 
                                 </div>
                             </div>
                         </div>
                         <div className="single_items">
                             <div className="domain_card">
                                 <div className="domain_icon">
-                                    <img src={stethoscope} alt="stethoscope" />
+                                    <img src={logistics} alt="logistics" />
                                 </div>
                                 <div className="domain_text">
-                                    <h3>Healthcare</h3>
-                                    <p>
-                                        we provide uttermost healthcare IT consulting, technology
-                                        solutions like building medical apps and more
-                                    </p>
+                                    <h3>Logistics</h3>
+                               
                                 </div>
                             </div>
                             <div className="domain_card">
@@ -371,14 +416,12 @@ const Mainhomepage = () => {
                                 </div>
                                 <div className="domain_text">
                                     <h3>Fintech</h3>
-                                    <p>
-                                        We have around 12 well-funded fintech products as per your
-                                        requirement
-                                    </p>
+                             
                                 </div>
                             </div>
                         </div>
                     </div>
+               
                 </div>
             </section>
 
@@ -388,10 +431,8 @@ const Mainhomepage = () => {
                 </div>
                 <div className="inner_remote">
                     <div className="remote_heading">
-                        <h5>Why remote</h5>
                         <h1>
-                            Experience the Remote <br />
-                            difference
+                        Why hire with us?
                         </h1>
                     </div>
 
@@ -401,11 +442,9 @@ const Mainhomepage = () => {
                                 <img src={layer} alt="layer" />
                             </div>
                             <div className="remote_info">
-                                <h2>Global Infrastructure</h2>
+                                <h2>Trust and Transparency:</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                                    soluta quaerat nesciunt animi possimus temporibus doloribus
-                                    modi nam repellendus consequuntur!
+                                Trust and transparency always summit our list of services. We collaborate with full transparency and thus have achieved the trust of our partners over time.
                                 </p>
                             </div>
                         </div>
@@ -414,11 +453,9 @@ const Mainhomepage = () => {
                                 <img src={dollar} alt="dollar" />
                             </div>
                             <div className="remote_info">
-                                <h2>Global Infrastructure</h2>
+                                <h2>Flexible hiring Models:</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                                    soluta quaerat nesciunt animi possimus temporibus doloribus
-                                    modi nam repellendus consequuntur!
+                                We and the agencies we work with completely understand your changing requirements and hence have very flexible hiring models. 
                                 </p>
                             </div>
                         </div>
@@ -427,11 +464,9 @@ const Mainhomepage = () => {
                                 <img src={documents} alt="document" />
                             </div>
                             <div className="remote_info">
-                                <h2>Global Infrastructure</h2>
+                                <h2>Affordable Resources:</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                                    soluta quaerat nesciunt animi possimus temporibus doloribus
-                                    modi nam repellendus consequuntur!
+                                Get top-quality resources at affordable costs. Agencies are able to cut the costs up to 2X with us.
                                 </p>
                             </div>
                         </div>
@@ -440,11 +475,9 @@ const Mainhomepage = () => {
                                 <img src={svg4} alt="svg4" />
                             </div>
                             <div className="remote_info">
-                                <h2>Global Infrastructure</h2>
+                                <h2>Constant Support</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                                    soluta quaerat nesciunt animi possimus temporibus doloribus
-                                    modi nam repellendus consequuntur!
+                                Technical support is just one chat away. Get on chat with our developers who have all the answers to your tech-related issues.
                                 </p>
                             </div>
                         </div>
@@ -453,11 +486,9 @@ const Mainhomepage = () => {
                                 <img src={svg5} alt="svg5" />
                             </div>
                             <div className="remote_info">
-                                <h2>Global Infrastructure</h2>
+                                <h2>Coding Practices</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                                    soluta quaerat nesciunt animi possimus temporibus doloribus
-                                    modi nam repellendus consequuntur!
+                                Our verified pool of developers follows modern coding practices to ensure the product’s quality, compatibility and security.
                                 </p>
                             </div>
                         </div>
@@ -466,11 +497,9 @@ const Mainhomepage = () => {
                                 <img src={svg6} alt="svg6" />
                             </div>
                             <div className="remote_info">
-                                <h2>Global Infrastructure</h2>
+                                <h2>Innovation-driven:</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                                    soluta quaerat nesciunt animi possimus temporibus doloribus
-                                    modi nam repellendus consequuntur!
+                                We and our verified resources are innovation-driven. We are always looking up to providing the best and modern features.
                                 </p>
                             </div>
                         </div>
@@ -503,9 +532,9 @@ const Mainhomepage = () => {
                                     voluptatem consectetur. Maiores?
                                 </p>
                                 <div className="testi_image">
-                                    <div className="testi_profile">
+                                    {/* <div className="testi_profile">
                                         <img src={alex} alt="alex" />
-                                    </div>
+                                    </div> */}
                                     <div className="testi_name">
                                         <h5>Sofia Nadel</h5>
                                         <h2>Corporate Office,CAN</h2>
@@ -525,10 +554,10 @@ const Mainhomepage = () => {
                                     voluptatem consectetur. Maiores?
                                 </p>
                                 <div className="testi_image">
-                                    <div className="testi_profile">
+                                    {/* <div className="testi_profile">
                                         <img src={alex} alt="alex" />
-                                    </div>
-                                    <div className="testi_name" style={{ marginRight: 20 }}>
+                                    </div> */}
+                                    <div className="testi_name">
                                         <h5>Sofia Nadel</h5>
                                         <h2>Corporate Office,CAN</h2>
                                     </div>
@@ -547,9 +576,9 @@ const Mainhomepage = () => {
                                     voluptatem consectetur. Maiores?
                                  </p>
                                 <div className="testi_image">
-                                    <div className="testi_profile">
+                                    {/* <div className="testi_profile">
                                         <img src={alex} alt="alex" />
-                                    </div>
+                                    </div> */}
                                     <div className="testi_name">
                                         <h5>Sofia Nadel</h5>
                                         <h2>Corporate Office,CAN</h2>
@@ -557,6 +586,11 @@ const Mainhomepage = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div className="disclaimer">
+                        <span className = "no_bond">No Bond Policy</span>
+                        <p>If the resource doesn't perform then the contract will be terminated within 1 month of notice.</p>
                     </div>
                 </div>
             </section>
