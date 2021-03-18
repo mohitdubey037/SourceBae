@@ -4,42 +4,42 @@ import { NavLink } from 'react-router-dom';
 
 
 // images link
-import secondIllustration from '../assests/img/secondSlideImage.svg'
-import logo2 from "../assests/img/logo.png";
-import illustration from "../assests/img/ill3.png";
-import main_dots from "../assests/img/main_dots.png";
-import work2 from "../assests/img/work2.png";
-import work4 from "../assests/img/work4.png";
-import work from "../assests/img/work.png";
-import work3 from "../assests/img/work3.png";
-import work5 from "../assests/img/work5.png";
-import e_commerce from "../assests/img/e_commerce.png";
-import e_learning from "../assests/img/e_learning.png";
-import food from "../assests/img/food.png";
-import travel from "../assests/img/travel.png";
-import stethoscope from "../assests/img/stethoscope.png";
-import fintech from "../assests/img/fintech.png";
-import ripple from "../assests/img/ripple.gif";
-import layer from "../assests/img/layer.svg";
-import dollar from "../assests/img/dollar.svg";
-import documents from "../assests/img/documents.svg";
-import svg4 from "../assests/img/svg4.svg";
-import svg5 from "../assests/img/svg5.svg";
-import svg6 from "../assests/img/svg6.svg";
-import hangouts from "../assests/img/hangouts.png";
-import alex from "../assests/img/alex.jpg";
-import hangouts_middle from "../assests/img/hangouts_middle.png";
-import amazon from "../assests/img/amazon.svg";
-import office from "../assests/img/office.svg";
-import fedex from "../assests/img/fedex.svg";
-import dhl from "../assests/img/dhl.svg";
-import express from "../assests/img/express.svg";
-import kodak from "../assests/img/kodak.svg";
-import clients from "../assests/img/clients.gif";
-import faq from "../assests/img/faq.png";
-import twitter from "../assests/img/twitter.png";
-import facebook from "../assests/img/facebook.png";
-import linkedin from "../assests/img/linkedin.png";
+import secondIllustration from '../../assests/images/LandingPage/secondSlideImage.svg'
+import logo2 from "../../assests/images/LandingPage/logo.png";
+import illustration from "../../assests/images/LandingPage/ill3.png";
+import main_dots from "../../assests/images/LandingPage/main_dots.png";
+import work2 from "../../assests/images/LandingPage/work2.png";
+import work4 from "../../assests/images/LandingPage/work4.png";
+import work from "../../assests/images/LandingPage/work.png";
+import work3 from "../../assests/images/LandingPage/work3.png";
+import work5 from "../../assests/images/LandingPage/work5.png";
+import e_commerce from "../../assests/images/LandingPage/e_commerce.png";
+import e_learning from "../../assests/images/LandingPage/e_learning.png";
+import food from "../../assests/images/LandingPage/food.png";
+import travel from "../../assests/images/LandingPage/travel.png";
+import stethoscope from "../../assests/images/LandingPage/stethoscope.png";
+import fintech from "../../assests/images/LandingPage/fintech.png";
+import ripple from "../../assests/images/LandingPage/ripple.gif";
+import layer from "../../assests/images/LandingPage/layer.svg";
+import dollar from "../../assests/images/LandingPage/dollar.svg";
+import documents from "../../assests/images/LandingPage/documents.svg";
+import svg4 from "../../assests/images/LandingPage/svg4.svg";
+import svg5 from "../../assests/images/LandingPage/svg5.svg";
+import svg6 from "../../assests/images/LandingPage/svg6.svg";
+import hangouts from "../../assests/images/LandingPage/hangouts.png";
+import alex from "../../assests/images/LandingPage/alex.jpg";
+import hangouts_middle from "../../assests/images/LandingPage/hangouts_middle.png";
+import amazon from "../../assests/images/LandingPage/amazon.svg";
+import office from "../../assests/images/LandingPage/office.svg";
+import fedex from "../../assests/images/LandingPage/fedex.svg";
+import dhl from "../../assests/images/LandingPage/dhl.svg";
+import express from "../../assests/images/LandingPage/express.svg";
+import kodak from "../../assests/images/LandingPage/kodak.svg";
+import clients from "../../assests/images/LandingPage/clients.gif";
+import faq from "../../assests/images/LandingPage/faq.png";
+// import twitter from "../assests/img/twitter.png";
+// import facebook from "../assests/img/facebook.png";
+// import linkedin from "../assests/img/linkedin.png";
 
 const Mainhomepage = () => {
 
