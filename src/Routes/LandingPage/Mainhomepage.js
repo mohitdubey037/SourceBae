@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 // images link
 import secondIllustration from '../../assests/images/LandingPage/secondSlideImage.svg'
-import logo2 from "../../assests/images/LandingPage/logo.png";
+import logo2 from "../../assests/images/LandingPage/logo2.png";
 import illustration from "../../assests/images/LandingPage/ill3.png";
 import main_dots from "../../assests/images/LandingPage/main_dots.png";
 import work2 from "../../assests/images/LandingPage/work2.png";
@@ -396,7 +396,6 @@ const Mainhomepage = () => {
                                 </div>
                                 <div className="domain_text">
                                     <h3>Project Management Tool</h3>
-                                 
                                 </div>
                             </div>
                         </div>
@@ -416,7 +415,6 @@ const Mainhomepage = () => {
                                 </div>
                                 <div className="domain_text">
                                     <h3>Fintech</h3>
-                             
                                 </div>
                             </div>
                         </div>
@@ -442,7 +440,7 @@ const Mainhomepage = () => {
                                 <img src={layer} alt="layer" />
                             </div>
                             <div className="remote_info">
-                                <h2>Trust and Transparency:</h2>
+                                <h2>Trust and Transparency</h2>
                                 <p>
                                 Trust and transparency always summit our list of services. We collaborate with full transparency and thus have achieved the trust of our partners over time.
                                 </p>
@@ -453,7 +451,7 @@ const Mainhomepage = () => {
                                 <img src={dollar} alt="dollar" />
                             </div>
                             <div className="remote_info">
-                                <h2>Flexible hiring Models:</h2>
+                                <h2>Flexible hiring Models</h2>
                                 <p>
                                 We and the agencies we work with completely understand your changing requirements and hence have very flexible hiring models. 
                                 </p>
@@ -464,7 +462,7 @@ const Mainhomepage = () => {
                                 <img src={documents} alt="document" />
                             </div>
                             <div className="remote_info">
-                                <h2>Affordable Resources:</h2>
+                                <h2>Affordable Resources</h2>
                                 <p>
                                 Get top-quality resources at affordable costs. Agencies are able to cut the costs up to 2X with us.
                                 </p>
@@ -497,7 +495,7 @@ const Mainhomepage = () => {
                                 <img src={svg6} alt="svg6" />
                             </div>
                             <div className="remote_info">
-                                <h2>Innovation-driven:</h2>
+                                <h2>Innovation-driven</h2>
                                 <p>
                                 We and our verified resources are innovation-driven. We are always looking up to providing the best and modern features.
                                 </p>

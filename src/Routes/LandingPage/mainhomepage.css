@@ -72,7 +72,7 @@ section.coming__soon {
   justify-content: center;
   align-items: center;
   background: #121a31;
-  padding-top: 15vh;
+  padding-top: 18vh;
 }
 .inner_header {
   width: 98%;
@@ -1723,8 +1723,10 @@ section.coming__soon {
 /* footer part */
 @media (max-width: 768px) {
 
+
   .coming__soon > p {
     font-size: 12px;
+    text-align: center;
   }
   .hire_developers_points {
     flex-direction: column;
@@ -1813,5 +1815,10 @@ section.coming__soon {
 
 .process_main{
   overflow-x: hidden;
+}
+
+.inner_header img {
+  height: 70%;
+  padding: 0px 0px 0px 25px;
 }
 
