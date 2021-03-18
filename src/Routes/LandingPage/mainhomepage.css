@@ -7,6 +7,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* overflow-x: hidden; */
 }
 
 body {
@@ -1726,6 +1727,10 @@ section.coming__soon {
 /* footer part */
 @media (max-width: 768px) {
 
+  
+  .remote_card{
+    height: 100%;
+  }
   .heading_testimonial h2 {
     font-size: 15px;
   }
@@ -1744,6 +1749,16 @@ section.coming__soon {
   .contact_links h2 {
     flex-direction: row;
     white-space: nowrap;
+  }
+
+  .hire_developers {
+    width: 100%;
+  }
+  .industry_exp {
+    width: 100%;
+  }
+  .contact_links {
+    width: 100%;
   }
 }
 /* footer part end */
