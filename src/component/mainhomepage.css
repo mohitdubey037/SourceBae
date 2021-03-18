@@ -1,7 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -13,6 +15,31 @@ body {
 }
 body::-webkit-scrollbar {
   display: none;
+}
+
+section.coming__soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4vh;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+  background: #c8c4da;
+}
+
+.coming__soon > p {
+  transition: .4s;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .main_dots {
@@ -41,6 +68,8 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #121a31;
+  padding-top: 10vh;
 }
 .inner_header {
   width: 98%;
@@ -49,7 +78,7 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 .inner_header img {
-  height: 100px;
+  height: 100%;
   object-fit: contain;
 }
 .header_image {
@@ -65,7 +94,7 @@ body::-webkit-scrollbar {
 }
 .header_btn a {
   text-decoration: none;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   padding: 0.6rem 3rem;
   background-color: #f37413;
   border-top-right-radius: 20px;
@@ -83,25 +112,29 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   background-color: #121a31;
-  margin-bottom: 5%;
+  margin-bottom: 1.7%;
+  overflow: hidden;
 }
 .inner_landingPage {
-  width: 93%;
+  width: 96%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .info_div {
-  width: 50%;
+  width: 50%;  
 }
 
 .image_div {
   width: 60%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  /* align-items: center; */
   position: relative;
   border-radius: 50%;
+  /* background: yellow; */
+  /* position: relative;
+  overflow: hidden; */
 }
 .bg_white_Circle {
   position: absolute;
@@ -118,10 +151,12 @@ body::-webkit-scrollbar {
   height: 100%;
   object-fit: contain;
   z-index: 1;
+  /* position: absolute; */
+  /* bottom: 0; */
 }
 .info_heading h1 {
   color: #f5f5f5;
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-size: 3rem;
   font-weight: lighter;
   line-height: 1;
@@ -142,7 +177,7 @@ body::-webkit-scrollbar {
 }
 .info_para p {
   color: #fff;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: lighter;
   letter-spacing: 1px;
 }
@@ -156,7 +191,7 @@ body::-webkit-scrollbar {
   width: 190px;
   height: 40px;
   padding: 0.8rem 2.2rem;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   margin-right: 10%;
   border-radius: 999px;
 }
@@ -199,13 +234,14 @@ body::-webkit-scrollbar {
     transform: translateY(10px);
   }
 }
+
 .scroll_text h3 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   color: #fff;
   font-size: 18px;
 }
 .scroll_text h3::after {
-  content: "";
+  content: '';
   display: block;
   width: 55px;
   height: 2px;
@@ -215,7 +251,7 @@ body::-webkit-scrollbar {
   margin-top: 10px;
 }
 .scroll_text p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #fff;
   width: 70%;
   font-size: 12px;
@@ -239,12 +275,12 @@ body::-webkit-scrollbar {
   transition: 1s ease-in-out;
 }
 .process_heading h1 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: bolder;
   transition: 1s ease-in-out;
 }
 .process_heading p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #999;
   transition: 1s ease-in-out;
 }
@@ -303,7 +339,7 @@ body::-webkit-scrollbar {
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.5);
 }
 .card_number h2 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   margin-top: 10px;
   color: #f37413;
   font-weight: bold;
@@ -312,11 +348,11 @@ body::-webkit-scrollbar {
   width: 60%;
 }
 .process_text h3 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: bold;
 }
 .process_text p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #999;
 }
 .bg_circle {
@@ -361,7 +397,7 @@ body::-webkit-scrollbar {
   margin-bottom: 30px;
 }
 .multipleDomain_heading h2 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: bold;
   font-size: 2rem;
   margin-bottom: 20px;
@@ -370,7 +406,7 @@ body::-webkit-scrollbar {
 .multipleDomain_heading p {
   text-align: center;
   width: 90%;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #444;
 }
 .multipleDomains_items {
@@ -404,12 +440,12 @@ body::-webkit-scrollbar {
   object-fit: contain;
 }
 .domain_text h3 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: 600;
   font-size: 1.4rem;
 }
 .domain_text p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 1rem;
   color: #777;
 }
@@ -451,11 +487,11 @@ body::-webkit-scrollbar {
   margin-bottom: 5%;
 }
 .remote_heading h5 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   color: #172e5e;
 }
 .remote_heading h1 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: bold;
 }
 .remote_cards_area {
@@ -489,12 +525,12 @@ body::-webkit-scrollbar {
   object-fit: contain;
 }
 .remote_info h2 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-size: 1.4rem;
   text-align: center;
 }
 .remote_info p {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-size: 15px;
   color: #999;
   text-align: center;
@@ -570,7 +606,7 @@ body::-webkit-scrollbar {
   margin-bottom: 10%;
 }
 .testimonial_heading p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #172e5e;
 }
 .heading_testimonial {
@@ -581,7 +617,7 @@ body::-webkit-scrollbar {
 .heading_testimonial h2 {
   margin-left: 30px;
   margin-right: 30px;
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-size: 3rem;
   font-weight: bold;
 }
@@ -653,11 +689,11 @@ body::-webkit-scrollbar {
   top: 160%;
 }
 .testi_info .testi_image .testi_name h5 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 12px;
 }
 .testi_info .testi_image .testi_name h2 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-size: 18px;
   margin-top: -4px;
   color: #f37413;
@@ -668,14 +704,14 @@ body::-webkit-scrollbar {
   object-fit: cover;
 }
 .firstCard p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 13px;
   position: relative;
 }
 .middle_card {
   width: 38%;
   position: absolute;
-  z-index: 999;
+  z-index: 998;
   top: 0;
   bottom: 0;
   left: 31%;
@@ -686,7 +722,7 @@ body::-webkit-scrollbar {
   padding-bottom: 30px;
 }
 .middle_card p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #fff;
   font-size: 13px;
 }
@@ -697,7 +733,7 @@ body::-webkit-scrollbar {
   padding-bottom: 30px;
 }
 .lastCard p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 13px;
 }
 /* testimonials  css  */
@@ -729,12 +765,12 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 .ourClients_heading h2 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: bold;
   font-size: 3rem;
 }
 .ourClients_heading p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 14px;
   color: #999;
   margin-bottom: 4%;
@@ -752,7 +788,7 @@ body::-webkit-scrollbar {
   justify-content: flex-start;
 }
 .ourClients_images h4 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   margin-bottom: 5%;
 }
 .clients_images {
@@ -806,7 +842,7 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 .heading_faq h2 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: bold;
   font-size: 4rem;
   margin-right: 20px;
@@ -816,7 +852,7 @@ body::-webkit-scrollbar {
   width: 80px;
 }
 .faq_heading p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #999;
   text-align: right;
 }
@@ -850,12 +886,12 @@ body::-webkit-scrollbar {
   font-weight: bold;
 }
 .accordion-item h2 {
-  font-family: "Work Sans" !important;
+  font-family: 'Work Sans' !important;
   font-weight: bold !important;
   font-size: 22px !important;
 }
 .accordion-body {
-  font-family: "Poppins";
+  font-family: 'Poppins';
 }
 
 /* contact us  */
@@ -893,7 +929,7 @@ body::-webkit-scrollbar {
   margin-bottom: 4%;
 }
 .contactUs_heading h1 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-weight: bold;
   font-size: 3rem;
   color: #ffff;
@@ -913,7 +949,7 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   border-radius: 999px;
   border: 2px solid #f37413;
   color: #f37413;
@@ -967,7 +1003,7 @@ body::-webkit-scrollbar {
 .hire_developers h2,
 .industry_exp h2,
 .contact_links h2 {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 25px;
@@ -976,7 +1012,7 @@ body::-webkit-scrollbar {
 .hire_developers p,
 .industry_exp p,
 .contact_links p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #f2f2f2;
   font-size: 0.9rem;
   letter-spacing: 1px;
@@ -985,7 +1021,7 @@ body::-webkit-scrollbar {
   margin-bottom: 20px;
 }
 .contact_links_heading h4 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 1rem;
 }
 .contact_links_heading h4:nth-child(1) {
@@ -1022,7 +1058,7 @@ body::-webkit-scrollbar {
   border-bottom-left-radius: 30px;
   background-color: #f37413;
   color: #fff;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   letter-spacing: 2px;
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-in-out;
@@ -1080,7 +1116,7 @@ body::-webkit-scrollbar {
   }
   .info_heading h1 {
     color: #f5f5f5;
-    font-family: "Work Sans";
+    font-family: 'Work Sans';
     font-size: 2.5rem;
     font-weight: lighter;
     line-height: 1;
@@ -1378,11 +1414,11 @@ body::-webkit-scrollbar {
     margin-top: 4%;
   }
   .testi_info .testi_image .testi_name h5 {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-size: 12px;
   }
   .testi_info .testi_image .testi_name h2 {
-    font-family: "Work Sans";
+    font-family: 'Work Sans';
     font-size: 18px;
     margin-top: 0;
     color: #f37413;
@@ -1393,7 +1429,7 @@ body::-webkit-scrollbar {
     object-fit: cover;
   }
   .firstCard p {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-size: 13px;
     position: relative;
   }
@@ -1409,7 +1445,7 @@ body::-webkit-scrollbar {
     padding: 1.4rem;
   }
   .middle_card p {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     color: #fff;
     font-size: 13px;
   }
@@ -1417,7 +1453,7 @@ body::-webkit-scrollbar {
     color: ivory;
   }
   .lastCard p {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-size: 13px;
   }
 }
@@ -1454,6 +1490,21 @@ body::-webkit-scrollbar {
   .ourClients_gifs {
     width: 45%;
     transform: translateY(-170px);
+  }
+}
+
+@media (max-width : 1300px) {
+  .lead__details {
+    flex-direction: column;
+  }
+
+  .lead__detailsLeft,
+  .lead__detailsRight {
+    align-items: center;
+  }
+
+  .counter__container {
+    width: 100%;
   }
 }
 @media (max-width: 1220px) {
@@ -1657,3 +1708,67 @@ body::-webkit-scrollbar {
   }
 }
 /* footer part end */
+
+
+.leads {
+  min-height: 50vh;
+  margin-bottom: 2%;
+}
+
+.leads__innerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leads__innerWrapper > p {
+  font-family: 'Poppins';
+}
+
+.leads__title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.leads__titleDescription {
+  font-size: 1.2rem;
+}
+
+.lead__details {
+  display: flex;
+  width: 100%;
+}
+
+.lead__detailsLeft,
+.lead__detailsRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lead__detailsLeft {
+  align-items: flex-end;
+}
+
+.lead__detailsRight {
+  align-items: flex-start;
+}
+
+.leads__imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.leads__imageContainer > img {
+  width: 70%;
+  height: 100%;
+}
+
+.counter__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}

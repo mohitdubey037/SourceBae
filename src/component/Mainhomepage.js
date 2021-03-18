@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 
 // images link
-import logo2 from "../assests/img/logo2.png";
-import illustration from "../assests/img/illustration.png";
+import secondIllustration from '../assests/img/secondSlideImage.svg'
+import logo2 from "../assests/img/logo.png";
+import illustration from "../assests/img/ill3.png";
 import main_dots from "../assests/img/main_dots.png";
 import work2 from "../assests/img/work2.png";
 import work4 from "../assests/img/work4.png";
@@ -48,6 +49,7 @@ const Mainhomepage = () => {
     const [innerwidth, setInnerWidth] = useState('');
     const [innerheight, setInnerHeight] = useState('');
     const [flag, setFlag] = useState(true);
+    const [counterFlag, setCounterFlag] = useState(true)
     let counter = 0;
 
     useEffect(() => {
@@ -73,16 +75,46 @@ const Mainhomepage = () => {
 
     }, [innerwidth, innerheight])
 
+    useEffect( () => {
+        if(window.scrollY > 572) {
+            if(counterFlag) {
+                let counts = document.querySelectorAll('.count')
+                counts.forEach(count => {
+                    const updateCount = () => {
+                        let currentCount = parseInt(count.innerText)
+                        let targetCount = count.getAttribute('data-target')
+                        let increaseSpeed = 10
+                        let increaseCount = parseInt(targetCount / increaseSpeed)
+
+                        if(currentCount < targetCount)
+                            count.innerText = currentCount + increaseCount
+                        else
+                            count.innerText = targetCount
+
+                        setTimeout(updateCount , 50)
+                    }
+                    updateCount()
+                })
+                setCounterFlag(false)
+            }
+        }
+    })
+
     return (
         <>
+
+            <section className = 'coming__soon'>
+                <p>COMING SOON</p>
+            </section>
+
             <section className="header">
                 <div className="inner_header">
                     <div className="header_image">
                         <img src={logo2} alt="logo2" />
                     </div>
-                    <div className="header_btn">
+                    {/* <div className="header_btn">
                         <a href="#">Developer</a>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
@@ -136,8 +168,40 @@ const Mainhomepage = () => {
                         </div>
                     </div>
                     <div className="image_div">
-                        <div className="bg_white_Circle"></div>
-                        <img src={illustration} alt="" />
+                        {/* <div className="bg_white_Circle"></div> */}
+                        <img src={illustration} alt="Error loading image" />
+                    </div>
+                </div>
+            </section>
+
+            <section className = 'leads'>
+                <div className = 'leads__innerWrapper'>
+                    <p className = 'leads__title'>OUR MILESTONES</p>
+                    <p className = 'leads__titleDescription'>SHORT DESCRIPTION</p>
+                    <div className="lead__details">
+                        <div className = 'lead__detailsLeft'>
+                            <div className="counter__container">
+                                <span className="count" data-target = '10'>0</span>
+                                <span className="count__detail">CLIENTS</span>
+                            </div>
+                            <div className="counter__container">
+                                <span className="count" data-target = '20'>0</span>
+                                <span className="count__detail">agencies</span>
+                            </div>
+                        </div>
+                        <div className = 'leads__imageContainer'>
+                            <img src={secondIllustration} alt=""/>
+                        </div>
+                        <div className = 'lead__detailsRight'>
+                            <div className="counter__container">
+                                <span className="count" data-target = '10'>0</span>
+                                <span className="count__detail">CLIENTS</span>
+                            </div>
+                            <div className="counter__container">
+                                <span className="count" data-target = '20'>0</span>
+                                <span className="count__detail">agencies</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
