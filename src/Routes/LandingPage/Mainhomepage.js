@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./mainhomepage.css";
 import { NavLink } from 'react-router-dom';
@@ -34,7 +36,6 @@ import svg4 from "../../assests/images/LandingPage/svg4.svg";
 import svg5 from "../../assests/images/LandingPage/svg5.svg";
 import svg6 from "../../assests/images/LandingPage/svg6.svg";
 import hangouts from "../../assests/images/LandingPage/hangouts.png";
-import alex from "../../assests/images/LandingPage/alex.jpg";
 import hangouts_middle from "../../assests/images/LandingPage/hangouts_middle.png";
 import amazon from "../../assests/images/LandingPage/amazon.svg";
 import office from "../../assests/images/LandingPage/office.svg";
@@ -57,7 +58,6 @@ const Mainhomepage = () => {
     const [innerheight, setInnerHeight] = useState('');
     const [flag, setFlag] = useState(true);
     const [counterFlag, setCounterFlag] = useState(true)
-    let counter = 0;
 
     useEffect(() => {
         setTimeout(() => {
@@ -166,7 +166,7 @@ const Mainhomepage = () => {
                     </div>
                     <div className="image_div">
                         {/* <div className="bg_white_Circle"></div> */}
-                        <img src={illustration} alt="Error loading image" />
+                        <img src={illustration} alt="Error loading" />
                     </div>
                 </div>
             </section>
