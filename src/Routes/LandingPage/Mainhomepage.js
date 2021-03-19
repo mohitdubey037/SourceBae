@@ -6,7 +6,7 @@ import "./mainhomepage.css";
 
 // images link
 import secondIllustration from '../../assests/images/LandingPage/secondSlideImage.svg'
-import logo2 from "../../assests/images/LandingPage/logo2.png";
+import logo2 from "../../assests/images/LandingPage/logo-crop.png";
 import illustration from "../../assests/images/LandingPage/ill3.png";
 import main_dots from "../../assests/images/LandingPage/main_dots.png";
 import work2 from "../../assests/images/LandingPage/work2.png";
@@ -41,10 +41,6 @@ import hangouts_middle from "../../assests/images/LandingPage/hangouts_middle.pn
 import samadhan from "../../assests/images/LandingPage/samadhan.png";
 import mernPlus from "../../assests/images/LandingPage/mp.png";
 import tealBox from "../../assests/images/LandingPage/tealBox.jpg";
-import fedex from "../../assests/images/LandingPage/fedex.svg";
-import dhl from "../../assests/images/LandingPage/dhl.svg";
-import express from "../../assests/images/LandingPage/express.svg";
-import kodak from "../../assests/images/LandingPage/kodak.svg";
 import clients from "../../assests/images/LandingPage/clients.gif";
 import faq from "../../assests/images/LandingPage/faq.png";
 // import twitter from "../assests/img/twitter.png";
@@ -89,6 +85,8 @@ const Mainhomepage = () => {
             if(counterFlag) {
                 let counts = document.querySelectorAll('.count')
                 counts.forEach(count => {
+                console.log(count.id)
+                    
                     const updateCount = () => {
                         let currentCount = parseInt(count.innerText)
                         let targetCount = count.getAttribute('data-target')
@@ -96,9 +94,16 @@ const Mainhomepage = () => {
                         let increaseCount = parseInt(targetCount / increaseSpeed)
 
                         if(currentCount < targetCount)
+                            if(count.id ==="k_dollars")
+                            count.innerText = currentCount + increaseCount
+                            else
                             count.innerText = currentCount + increaseCount
                         else
-                            count.innerText = targetCount
+                            if(count.id ==="k_dollars")
+                                count.innerText = 
+                            '\u0024' +targetCount + '\u0138'
+                            else
+                                count.innerText = targetCount
 
                         setTimeout(updateCount , 50)
                     }
@@ -110,7 +115,7 @@ const Mainhomepage = () => {
     })
 
     return (
-        <>
+        <div className="wrapper">
 
             <section className = 'coming__soon'>
                 <p>Uncover and hire your IT partners + Remote devs!  Beta is LIVE, stable version will be out soon.  🙌🏻🎉</p>
@@ -138,7 +143,7 @@ const Mainhomepage = () => {
                             </div>
                             <div className="info_para">
                                 <p>
-                                OneSourcing is a network of Top IT Agencies, a one-stop platform for Clients to hire dedicated remote resources, make their remote teams. More features coming soon with the stable version. 
+                                OneSourcing is a network of Top IT Agencies, a one-stop platform for Clients To choose companies who has expertise In the client’s requirement domain within the client’s budget and timeline. More features coming soon with the stable version. 
                                 </p>
                             </div>
                             <div className="info_buttons">
@@ -163,7 +168,7 @@ const Mainhomepage = () => {
                                     <i className="fa fa-long-arrow-down" aria-hidden="true"></i>
                                 </div>
                                 <div className="scroll_text">
-                                    <h3>How we work: </h3>
+                                    <h3>How we work</h3>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +204,7 @@ const Mainhomepage = () => {
                                 <span className="count__detail">Hired Developers</span>
                             </div>
                             <div className="counter__container">
-                                <span class ="counts" style={{fontSize:"36px"}}>100K</span>
+                                <span className="count" id= "k_dollars" data-target = '100'>0</span>
                                 {/* <span className="counts" data-target = '100'>100</span>K</span> */}
                                 <span className="count__detail">Project Worth($)</span>
                             </div>
@@ -293,7 +298,7 @@ const Mainhomepage = () => {
             <section className="multiple_domain">
                 <div className="inner_multipleDomain">
                     <div className="multipleDomain_heading">
-                        <h2>Driving Innovation across Different Industry Verticals</h2>
+                        <h2>Driving Innovation across different Industry Verticals</h2>
                         <p>
                          Onesourcing intends to help <b>Startups, Digital Agencies,
                          Enterprises (big or small) and Software Product Development Companies </b> 
@@ -828,7 +833,7 @@ const Mainhomepage = () => {
                     </div>
                 </div>
             </footer>
-        </>
+        </div>
     );
 };
 

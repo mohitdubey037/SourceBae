@@ -18,6 +18,9 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.wrapper{
+  overflow-x: hidden;
+}
 section.coming__soon {
   display: flex;
   align-items: center;
@@ -73,7 +76,7 @@ section.coming__soon {
   justify-content: center;
   align-items: center;
   background: #121a31;
-  padding-top: 18vh;
+  padding: 140px 0px 0px 20px;
 }
 .inner_header {
   width: 98%;
@@ -82,7 +85,7 @@ section.coming__soon {
   align-items: center;
 }
 .inner_header img {
-  height: 100%;
+  height: 80%;
   object-fit: contain;
 }
 .header_image {
@@ -124,6 +127,7 @@ section.coming__soon {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0px 20px 0px 20px;
 }
 .info_div {
   width: 50%;  
@@ -152,12 +156,11 @@ section.coming__soon {
   background-color: #fff;
 }
 .image_div img {
-  width: 70%;
+  width: 80%;
   height: 100%;
   object-fit: contain;
   z-index: 1;
-  /* position: absolute; */
-  /* bottom: 0; */
+
 }
 .info_heading h1 {
   color: #f5f5f5;
@@ -1727,7 +1730,23 @@ section.coming__soon {
 /* footer part */
 @media (max-width: 768px) {
 
-  
+  .process_text h3{
+    font-size: medium;
+    margin: 1rem 0rem 0.5rem 0rem;
+  }
+
+  .process_text p {
+    font-size: small;
+  }
+
+  .landing_page{
+    padding: 60px 0px;
+    height: auto;
+  }
+  .inner_header img {
+    height: 70%;
+    padding: 0px 0px 0px 25px;
+  }
   .remote_card{
     height: 100%;
   }
@@ -1839,7 +1858,7 @@ section.coming__soon {
 }
 
 .count{
-  font-size: xxx-large;
+  font-size: x-large;
   color:#2b6ce2;
   width:auto;
   border-radius: 50%;
@@ -1879,8 +1898,5 @@ section.coming__soon {
   overflow-x: hidden;
 }
 
-.inner_header img {
-  height: 70%;
-  padding: 0px 0px 0px 25px;
-}
+
 
