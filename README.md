@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### `Node Modules` to install
+---
+>Install these libraries before running the project.
+- **npm install _@material-ui/core_**
+    \*Code Example [material-ui](https://www.codegrepper.com/code-examples/shell/@material-ui)\*
+- **npm install *@material-ui/icons***
+- **npm install _react-circular-progressbar@2.0.3_**  
+
+
+
