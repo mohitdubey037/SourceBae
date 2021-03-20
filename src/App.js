@@ -26,7 +26,7 @@ import Filtration from './Routes/Filtration/Filtration';
 function App() {
   return (
     <Switch>
-      {/* <Route exact path = '/dashboard' component = {Dashboard} /> */}
+      <Route exact path = '/' component = {Mainhomepage} />
       <Route exact path = '/filtration' component = {Filtration} />
       <Route exact path="/dashboard" component={Dashboard} />
       {/* <Route exact path="/agency" component={Agency} />
