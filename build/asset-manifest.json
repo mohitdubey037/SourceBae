@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.8512a2d4.chunk.css",
-    "main.js": "/static/js/main.378529e1.chunk.js",
-    "main.js.map": "/static/js/main.378529e1.chunk.js.map",
+    "main.css": "/static/css/main.9d63cfba.chunk.css",
+    "main.js": "/static/js/main.0c8d8d73.chunk.js",
+    "main.js.map": "/static/js/main.0c8d8d73.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5b45a7d3.js",
     "runtime-main.js.map": "/static/js/runtime-main.5b45a7d3.js.map",
-    "static/js/2.eb9e054a.chunk.js": "/static/js/2.eb9e054a.chunk.js",
-    "static/js/2.eb9e054a.chunk.js.map": "/static/js/2.eb9e054a.chunk.js.map",
+    "static/css/2.6c0f60ba.chunk.css": "/static/css/2.6c0f60ba.chunk.css",
+    "static/js/2.dd6dbd87.chunk.js": "/static/js/2.dd6dbd87.chunk.js",
+    "static/js/2.dd6dbd87.chunk.js.map": "/static/js/2.dd6dbd87.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.8512a2d4.chunk.css.map": "/static/css/main.8512a2d4.chunk.css.map",
-    "static/js/2.eb9e054a.chunk.js.LICENSE.txt": "/static/js/2.eb9e054a.chunk.js.LICENSE.txt",
+    "static/css/2.6c0f60ba.chunk.css.map": "/static/css/2.6c0f60ba.chunk.css.map",
+    "static/css/main.9d63cfba.chunk.css.map": "/static/css/main.9d63cfba.chunk.css.map",
+    "static/js/2.dd6dbd87.chunk.js.LICENSE.txt": "/static/js/2.dd6dbd87.chunk.js.LICENSE.txt",
     "static/media/Chatbots.3785d617.gif": "/static/media/Chatbots.3785d617.gif",
     "static/media/Edtech.b9335896.gif": "/static/media/Edtech.b9335896.gif",
     "static/media/Logistics.36cb64a6.gif": "/static/media/Logistics.36cb64a6.gif",
@@ -20,11 +22,14 @@
     "static/media/dollar.31a2b2f7.svg": "/static/media/dollar.31a2b2f7.svg",
     "static/media/entertainment.f2ed0d7b.gif": "/static/media/entertainment.f2ed0d7b.gif",
     "static/media/erp.d2057f7a.gif": "/static/media/erp.d2057f7a.gif",
+    "static/media/explorer.jpg": "/static/media/explorer.68d6eb32.jpg",
     "static/media/fintech.2c6b1445.gif": "/static/media/fintech.2c6b1445.gif",
     "static/media/hangouts.7c657350.png": "/static/media/hangouts.7c657350.png",
     "static/media/ill3.92a511ee.png": "/static/media/ill3.92a511ee.png",
     "static/media/layer.0e82a81e.svg": "/static/media/layer.0e82a81e.svg",
+    "static/media/dashboard.css": "/static/media/lighthouse.3fca25cd.jpg",
     "static/media/logo-crop.8866c6ae.png": "/static/media/logo-crop.8866c6ae.png",
+    "static/media/logo.5f273d27.png": "/static/media/logo.5f273d27.png",
     "static/media/main_dots.a97b6e6e.png": "/static/media/main_dots.a97b6e6e.png",
     "static/media/mp.6b1b8787.png": "/static/media/mp.6b1b8787.png",
     "static/media/ripple.1da6968d.gif": "/static/media/ripple.1da6968d.gif",
@@ -42,8 +47,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.5b45a7d3.js",
-    "static/js/2.eb9e054a.chunk.js",
-    "static/css/main.8512a2d4.chunk.css",
-    "static/js/main.378529e1.chunk.js"
+    "static/css/2.6c0f60ba.chunk.css",
+    "static/js/2.dd6dbd87.chunk.js",
+    "static/css/main.9d63cfba.chunk.css",
+    "static/js/main.0c8d8d73.chunk.js"
   ]
 }
