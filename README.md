@@ -76,6 +76,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     \*Code Example [material-ui](https://www.codegrepper.com/code-examples/shell/@material-ui)\*
 - **npm install *@material-ui/icons***
 - **npm install _react-circular-progressbar@2.0.3_**  
+- **npm install _history react-router-dom -S_**  
 
 
 

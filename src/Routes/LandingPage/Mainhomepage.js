@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import "./mainhomepage.css";
 
-
 // images link
 import secondIllustration from '../../assests/images/LandingPage/secondSlideImage.svg'
 import logo2 from "../../assests/images/LandingPage/logo-crop.png";
@@ -43,10 +42,12 @@ import mernPlus from "../../assests/images/LandingPage/mp.png";
 import tealBox from "../../assests/images/LandingPage/tealBox.jpg";
 import clients from "../../assests/images/LandingPage/clients.gif";
 import faq from "../../assests/images/LandingPage/faq.png";
+// import { LaptopWindows } from "@material-ui/icons";
 // import twitter from "../assests/img/twitter.png";
 // import facebook from "../assests/img/facebook.png";
 // import linkedin from "../assests/img/linkedin.png";
 
+const ga = window.firebase.analytics()
 const Mainhomepage = () => {
 
     const [hireDeveloper, setHireDeveloper] = useState(true);
@@ -157,8 +158,8 @@ const Mainhomepage = () => {
                                     }
                                 }} >
                                 </NavLink> */}
-                                <a href="http://bit.ly/3cPvEvL" target = "blank">Hire Developers</a>
-                                <a href="http://bit.ly/3r3Cv9D" target = "blank">Join as Agency</a>
+                                <a href="http://bit.ly/3cPvEvL" target = "blank" onClick = {()=>ga.logEvent('link_clicked', { name: 'Hire Developers'})}>Hire Developers</a>
+                                <a href="http://bit.ly/3r3Cv9D" target = "blank"  onClick = {()=>ga.logEvent('link_clicked', { name: 'Join as Agency'})}>Join as Agency</a>
                                     
                             </div>
                         </div>
