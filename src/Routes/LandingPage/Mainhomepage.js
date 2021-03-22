@@ -127,9 +127,15 @@ const Mainhomepage = () => {
                     <div className="header_image">
                         <img src={logo2} alt="logo2" />
                     </div>
-                    {/* <div className="header_btn">
-                        <a href="#">Developer</a>
-                    </div> */}
+                    <div className="header_btn">
+                        <div className="user_btn">
+                          <a href="#">Login</a>
+                         </div>
+                        <div className="user_btn">
+                          <a href="#">Signup</a>
+                         </div>
+                    </div>
+                   
                 </div>
             </section>
 
