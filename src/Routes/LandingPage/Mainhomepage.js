@@ -158,9 +158,8 @@ const Mainhomepage = () => {
                                     }
                                 }} >
                                 </NavLink> */}
-                                <a href="http://bit.ly/3cPvEvL" target = "blank" onClick = {()=>ga.logEvent('link_clicked', { name: 'Hire Developers'})}>Hire Developers</a>
-                                <a href="http://bit.ly/3r3Cv9D" target = "blank"  onClick = {()=>ga.logEvent('link_clicked', { name: 'Join as Agency'})}>Join as Agency</a>
-                                    
+                                <a href="http://bit.ly/3cPvEvL" target = "blank" onClick = {()=>ga.logEvent('hire_developers_clicked', { name: 'Hire Developers'})}>Hire Developers</a>
+                                <a href="http://bit.ly/3r3Cv9D" target = "blank"  onClick = {()=>ga.logEvent('join_as_agency_clicked', { name: 'Join as Agency'})}>Join as Agency</a>                  
                             </div>
                         </div>
                         <div className="scroll_div">
