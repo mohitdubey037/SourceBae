@@ -1,39 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './dashboard.css'
 import './dashboardMedia.css'
-import logo from '../../assests/images/Logo/logo.png'
 import { useWindowDimensions } from '../../Utils/commonFunctions'
-import { Search , ExpandMore } from '@material-ui/icons'
-import { CircularProgressbar , buildStyles } from 'react-circular-progressbar'
+import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import colors from '../../Constants/colors'
-import { Avatar, Accordion , AccordionDetails , AccordionSummary , Typography } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-
-const i1 = require('../../assests/images/Dashboard/explorer.jpg')
+import SideDrawer from '../../Components/SideDrawer/SideDrawer'
+import ProfileHeader from '../../Components/ProfileHeader/ProfileHeader'
 
 const Dashboard = () => {
 
-    const { height , width } = useWindowDimensions()
+    const { width } = useWindowDimensions()
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-    const [searchParam, setSearchParam] = useState('')
-    const [avatar, setAvatar] = useState('')
     const [expanded, setExpanded] = useState(false)
     const [projects, setProjects] = useState(['a','b','c','a','b','c'])
 
-    const toggleSideBar = () => {
-        let sidebar = document.querySelector('.sidebar')
-        sidebar.classList.toggle('open')
-        if(width <= 500)
-            setIsDrawerOpen(!isDrawerOpen)
-    }
-
-    const handleChange = panel => (event , isExpanded) => {
-        setExpanded(isExpanded ? panel : false)
-    }
-
-
+    const getChildProps = param => setIsDrawerOpen(param)
 
     class ChangingProgressProvider extends React.Component {
         static defaultProps = {
@@ -59,67 +43,8 @@ const Dashboard = () => {
 
     return (
         <div className="page__container">
-            <div 
-                className="line__container" 
-                onClick = {toggleSideBar}
-                style = {{
-                    display : width > 500 ? 'none' : 'block'
-                }}
-            >
-                <div className="line"></div>
-            </div>
-            <nav 
-                className="sidebar"
-                style = {{
-                    position : (width > 500 || isDrawerOpen) && 'fixed'
-                }}
-            >
-                <div><img src={logo} alt="" className = 'logo'/></div>
-                <Accordion
-                    expanded = {expanded === 'panel1'}
-                    onChange = {handleChange('panel1')}
-                    style = {{
-                        background : 'transparent',
-                    }}
-                    elevation = {0}
-                    TransitionProps = {{ unmountOnExit : true }}
-                >
-                    <AccordionSummary
-                        expandIcon = {<ExpandMore style = {{ color : colors.WHITE }}/>}
-                    >
-                        <Typography
-                            style = {{
-                                color : colors.WHITE
-                            }}
-                        >General Settings</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography style = {{ color : colors.WHITE }}>dfjkslcsdbk</Typography>
-                    </AccordionDetails>
-                </Accordion>
 
-                <div className="sidebar__item" style = {{ marginTop : '2vh' , background : colors.ACTIVE_ROUTE_BGCOLOR , color : colors.ACTIVE_ROUTE_COLOR }}>
-                    <i class='bx bx-home-smile'></i>
-                    <span>Home</span>
-                </div>
-                <div className="sidebar__item">
-                    <i class='bx bxs-message-square-dots'></i>
-                    <span>Pings</span>
-                </div>
-                <div className="sidebar__item">
-                    <i class='bx bx-check-square'></i>
-                    <span>Project</span>
-                </div>
-                <div className="sidebar__item">
-                    <i class='bx bxs-time-five'></i>
-                    <span>Activity</span>
-                </div>
-                <div className="sidebar__item">
-                    <i class='bx bxs-laugh'></i>
-                    <span>Me</span>
-                </div>
-                
-            </nav>
+            <SideDrawer active = 'home' sendProps = {getChildProps} />
             
             <main
                 className="dashboard"
@@ -129,33 +54,7 @@ const Dashboard = () => {
                     marginLeft : width > 500 ? '20vw' : isDrawerOpen ? '20vw' : 0,
                 }}
             >
-                <div className="header__main">
-                    <div className="search__area">
-                        <Search style = {{ color : colors.LIGHT_GRAY }}/>
-                        <input
-                            type="text"
-                            name=""
-                            placeholder = 'Search existing teams'
-                            onChange = { e => setSearchParam(e.target.value) }
-                            style = {{
-                                color : colors.LIGHT_GRAY
-                            }}
-                        />
-                    </div>
-                    <div className="addnewteam__buttonContainer">
-                        <button
-                            className = 'new__teamButton'
-                            style = {{
-                                background : colors.PRIMARY_COLOR
-                            }}
-                        ><span className="plus__icon"><i className = 'fa fa-plus'></i></span><span>NEW</span></button>
-                    </div>
-                    <div className="header__avatar">
-                        <Avatar
-                            src = {avatar}
-                        />
-                    </div>
-                </div>
+                <ProfileHeader />
                 
                 <div className="details__wrapper">
                     <div className="team__title" style = {{ color : colors.GRAY_TEXT }}><p>xyz Team</p></div>
@@ -214,7 +113,7 @@ const Dashboard = () => {
                                 })
                             } */}
                             {
-                                projects.map( (project,index) => <Link to = '/filtration'>
+                                projects.map( (project,index) => <Link to = '/filtration' key = {index}>
                                     <div className = 'project__card'>
                                         <div className="card__modalView">
                                             <p className = 'project__title'>Project Title</p>

@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.filters {
+    padding: 3% 4% 0 4%;
+}
+
+.filters__row {
+    display: flex;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.filter {
+    margin: 0 25px 10px 0;
+    border: 1px solid #5995fd;
+    border-radius: 9px;
+    outline: none;
+    padding: 1vh 0;
+    background: none;
+    transition: .5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter:hover {
+    color: #fff;
+}
+
+.filter::before {
+    outline: none;
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: #5995fd;
+    transition: .5s ease-in-out;
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+.filter:hover::before {
+    height: 180%;
+}
+
+.filter > svg {
+    display: none;
+    
+}
+
+.filter__clicked > svg {
+    display: block;
+    transition: .4s ease-in-out;
+}
+
+.filter__clicked {
+    background: #5995fd;
+    color: #fff;
+    border: none;
+}
+
+.item {
+    background: #fff;
+    box-shadow: 3px 3px 20px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+    padding: 2%;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+.item:hover {
+    transform: scale(1.01);
+    transition: .3s ease;
+}
+
+.item__details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile__details {
+    display: flex;
+}
+
+.billing__details {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.billing__details > p{
+    margin: 0;
+    padding: 0;
+}
+
+.name__details {
+    font-family: 'Poppins' , sans-serif;
+}
+
+.name__details > h2 {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.name__details > h5 {
+    font-size: .9rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.additional__details {
+    margin-top: 1%;
+    display: flex;
+}
+
+.tech__stackList {
+    flex: 1;
+    display: flex;
+}
+
+.hiring__details {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hiring__detail {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    z-index: 5;
+    margin-left: 50px;
+}
+
+.hiring__detail > p {
+    margin: 0;
+    padding: 0;
+}
+
+.hiring__detail > svg {
+    margin-right: 5px;
+}

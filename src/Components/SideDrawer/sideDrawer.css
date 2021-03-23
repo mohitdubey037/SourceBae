@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+.page__container {
+    display: flex;
+    justify-content: flex-start;
+    /* height: 200vh; */
+    /* flex: 1; */
+}
+
+.line__container {
+    display: flex;
+    height: 16px;
+    cursor: pointer;
+    z-index: 3;
+    padding: 3vh 1%;
+    display: none;
+    transition: .4s ease;
+    position: absolute;
+}
+
+.line {
+    width: 25px;
+    height: 3px;
+    background: #000;
+    position: relative;
+    cursor: pointer;
+}
+
+.line::before {
+    position: absolute;
+    top: -10px;
+    width: 40px;
+    height: 3px;
+    content: '';
+    cursor: pointer;
+    background: #000;
+}
+
+.line::after {
+    position: absolute;
+    top: 10px;
+    width: 15px;
+    height: 3px;
+    content: '';
+    background: #000;
+    cursor: pointer;
+}
+
+.sidebar {
+    padding-top: 1vh;
+    background: #121a31;
+    min-width: 20vw;
+    max-width: 20vw;
+    height: 100vh;
+    transition: .5s ease-in-out; 
+}
+
+.logo {
+    width: 100%;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.MuiAccordionSummary-root {
+    margin-top: 5% !important;
+}
+
+.sidebar__item {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 5% 0;
+    padding-left: 10%;
+    font-size: 1.1rem;
+    margin-bottom: 3vh;
+    cursor: pointer;
+}
+
+.bx-home-smile,
+.bxs-message-square-dots,
+.bx-check-square,
+.bxs-time-five,
+.bxs-laugh {
+    margin-right: 5%;
+    font-size: 1.3rem;
+}

@@ -6,9 +6,10 @@ import { Route, Switch } from 'react-router-dom';
 import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
 import Filtration from './Routes/Filtration/Filtration';
+import Agency from './Routes/Agency/Agency';
 // import Agency from './component/Agency';
 // import Client from './component/Client';
-// import Login from './component/Login';
+import Login from './Routes/Login/Login';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -27,8 +28,10 @@ function App() {
   return (
     <Switch>
       <Route exact path = '/' component = {Mainhomepage} />
+      <Route exact path = '/login' component = {Login} />
       <Route exact path = '/filtration' component = {Filtration} />
       <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path = '/agency:name' component = {Agency} />
       {/* <Route exact path="/agency" component={Agency} />
       <Route exact path="/client" component={Client} />
       <Route exact path="/login" component={Login} />
