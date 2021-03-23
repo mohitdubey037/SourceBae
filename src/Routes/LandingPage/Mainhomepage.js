@@ -42,6 +42,7 @@ import mernPlus from "../../assests/images/LandingPage/mp.png";
 import tealBox from "../../assests/images/LandingPage/tealBox.jpg";
 import clients from "../../assests/images/LandingPage/clients.gif";
 import faq from "../../assests/images/LandingPage/faq.png";
+import { Link } from "react-router-dom";
 // import { LaptopWindows } from "@material-ui/icons";
 // import twitter from "../assests/img/twitter.png";
 // import facebook from "../assests/img/facebook.png";
@@ -129,10 +130,10 @@ const Mainhomepage = () => {
                     </div>
                     <div className="header_btn">
                         <div className="user_btn">
-                          <a href="#">Login</a>
+                          <Link to = '/login'>Login</Link>
                          </div>
-                        <div className="user_btn">
-                          <a href="#">Signup</a>
+                        <div className="user_btn"> 
+                          <Link to = '/login'>Register</Link>
                          </div>
                     </div>
                    
