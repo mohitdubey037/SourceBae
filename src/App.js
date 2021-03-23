@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom';
 
-// import ReactGA from 'react-ga';
-
 import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
 import Filtration from './Routes/Filtration/Filtration';
@@ -16,14 +14,7 @@ import Login from './Routes/Login/Login';
 // import RequirementExtended from './component/RequirementExtended';
 // import ThankyouPage from './component/ThankyouPage';
 
-// const trackingId = "G-SWJ1QYVF44";
 
-// ReactGA.initialize(trackingId);
-// ReactGA.set({
-//   userId: currentUserId(),
-//   // any data that is relevant to the user session
-//   // that you would like to track with google analytics
-// })
 function App() {
   return (
     <Switch>

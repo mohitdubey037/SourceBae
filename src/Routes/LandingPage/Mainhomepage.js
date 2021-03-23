@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import "./mainhomepage.css";
 
-
 // images link
 import secondIllustration from '../../assests/images/LandingPage/secondSlideImage.svg'
 import logo2 from "../../assests/images/LandingPage/logo-crop.png";
@@ -43,10 +42,12 @@ import mernPlus from "../../assests/images/LandingPage/mp.png";
 import tealBox from "../../assests/images/LandingPage/tealBox.jpg";
 import clients from "../../assests/images/LandingPage/clients.gif";
 import faq from "../../assests/images/LandingPage/faq.png";
+// import { LaptopWindows } from "@material-ui/icons";
 // import twitter from "../assests/img/twitter.png";
 // import facebook from "../assests/img/facebook.png";
 // import linkedin from "../assests/img/linkedin.png";
 
+const ga = window.firebase.analytics()
 const Mainhomepage = () => {
 
     const [hireDeveloper, setHireDeveloper] = useState(true);
@@ -126,9 +127,15 @@ const Mainhomepage = () => {
                     <div className="header_image">
                         <img src={logo2} alt="logo2" />
                     </div>
-                    {/* <div className="header_btn">
-                        <a href="#">Developer</a>
-                    </div> */}
+                    <div className="header_btn">
+                        <div className="user_btn">
+                          <a href="#">Login</a>
+                         </div>
+                        <div className="user_btn">
+                          <a href="#">Signup</a>
+                         </div>
+                    </div>
+                   
                 </div>
             </section>
 
@@ -157,9 +164,8 @@ const Mainhomepage = () => {
                                     }
                                 }} >
                                 </NavLink> */}
-                                <a href="http://bit.ly/3cPvEvL" target = "blank">Hire Developers</a>
-                                <a href="http://bit.ly/3r3Cv9D" target = "blank">Join as Agency</a>
-                                    
+                                <a href="http://bit.ly/3cPvEvL" target = "blank" onClick = {()=>ga.logEvent('hire_developers_clicked', { name: 'Hire Developers'})}>Hire Developers</a>
+                                <a href="http://bit.ly/3r3Cv9D" target = "blank"  onClick = {()=>ga.logEvent('join_as_agency_clicked', { name: 'Join as Agency'})}>Join as Agency</a>                  
                             </div>
                         </div>
                         <div className="scroll_div">
