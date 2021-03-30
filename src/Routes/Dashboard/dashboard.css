@@ -175,7 +175,7 @@
     margin: 20px auto 5px auto;
     /* background: #fff; */
     transition: .5s;
-    background-image: url('../../assests/images/Dashboard/lighthouse.jpg');
+    /* background-image: url('../../assests/images/Dashboard/lighthouse.jpg'); */
     background-repeat: no-repeat;
     z-index: 999;
     background-size: 150%;

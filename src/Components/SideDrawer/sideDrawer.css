@@ -50,7 +50,8 @@
 
 .sidebar {
     padding-top: 1vh;
-    background: #121a31;
+    /* background: #121a31; */
+    background: #230132;
     min-width: 20vw;
     max-width: 20vw;
     height: 100vh;

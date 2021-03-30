@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './login.css'
-// import './loginMediaQuery.css'
-import logo from "../../assests/images/Login/logo.svg"
-import register from '../../assests/images/Login/register.svg'
+import './loginMedia.css'
+// import logo from "../../assests/images/Login/logo.svg"
+// import register from '../../assests/images/Login/register.svg'
 import colors from '../../Constants/colors'
-import client from '../../assests/images/Login/client.svg'
-import agency from '../../assests/images/Login/agency.svg'
+// import client from '../../assests/images/Login/client.svg'
+// import agency from '../../assests/images/Login/agency.svg'
 import { Button, Step, StepLabel, Stepper , Typography , StepContent , TextField, Select, Input, InputLabel, FormControl } from '@material-ui/core'
 import MenuItem from '@material-ui/core/MenuItem'
 import { useHistory } from 'react-router-dom'
 import MultiSelect from "react-multi-select-component"
+import { TextFields } from '@material-ui/icons'
 
 const getSteps = () => {
     return ['A','B','C']
@@ -36,6 +37,11 @@ const Login = () => {
     const [selectedValue, setSelectedValue] = useState([])
 
     const getStepContent = step => {
+
+        const textFieldStyle = {
+            marginBottom : '15px'
+        }
+
         switch(step) {
             case 0:
                 return <>
@@ -89,13 +95,13 @@ const Login = () => {
                 return <div style = {{ display : 'flex' , flexDirection : 'column' , minHeight : '40vh'  }}>
                     {/* <div className="input__field"> */}
                         {/* <i className = 'fa fa-user'></i> */}
-                        <TextField label = 'Company Age' />
-                        <TextField label = 'Employee Strength' />
-                        <TextField label = 'LinkedIn profile' />
-                        <TextField label = 'Portfolio' />
-                        <TextField label = 'Ranking on other website' />
-                        <TextField label = 'Featured anywhere?' />
-                        <FormControl>
+                        <TextField label = 'Company Age' style = {textFieldStyle}/>
+                        <TextField label = 'Employee Strength' style = {textFieldStyle}/>
+                        <TextField label = 'LinkedIn profile' style = {textFieldStyle}/>
+                        <TextField label = 'Portfolio' style = {textFieldStyle}/>
+                        <TextField label = 'Ranking on other website' style = {textFieldStyle}/>
+                        <TextField label = 'Featured anywhere?' style = {textFieldStyle}/>
+                        <FormControl style = {textFieldStyle}>
                             <InputLabel>--Select--</InputLabel>
                             <Select
                                 input = {<Input />}
@@ -133,8 +139,8 @@ const Login = () => {
                     <label for = 'aadhar'>Upload Aadhar Card : </label>
                     <input type="file" name="aadhar" accept = 'image/png , image/jpg' />
 
-                    <TextField label = 'About Company' />
-                    <TextField label = 'Location' />
+                    <TextField label = 'About Company' style = {textFieldStyle}/>
+                    <TextField label = 'Location' style = {textFieldStyle} />
                 </div>
             default:
                 return 'Unknown'
@@ -187,10 +193,25 @@ const Login = () => {
 
     const CardComponent = ({ as , method }) => {
         return (
-            <div className = 'inner__card'>
+            <div
+                className = 'inner__card' 
+                onClick = { e => {
+                    if(as == 'Client' && method === 'register') {
+                        console.log('yessss')
+                        e.preventDefault()
+                        setShowClientForm(true)
+                    }
+                    else if(as == 'Agency' && method === 'register'){
+                        e.preventDefault()
+                        setShowAgencyForm(true)
+                    }
+                    else if(method === 'login')
+                        setShowLoginForm(true)
+                }}
+            >
                 <div className="card__imageArea">
                     {/* <p>{as}</p> */}
-                    <img src= {as == 'Client' ? client : agency} alt=""/>
+                    {/* <img src= {as == 'Client' ? client : agency} alt=""/> */}
                 </div>
                 <div className="card__textArea">
                     {/* <p>{method} as {as}</p> */}
@@ -215,7 +236,7 @@ const Login = () => {
 
     const AgencyForm = () => {
         return (
-            <>
+            <div style = {{ width : '70%' }}>
                 <h2 className="title">Sign Up as Agency</h2>
                 <Stepper activeStep={activeStep} orientation = 'vertical'>
                     {steps.map((label, index) => (
@@ -252,7 +273,7 @@ const Login = () => {
                     }}
                     style = {{ color : colors.PRIMARY_COLOR , marginTop : '2%' , cursor : 'pointer' }}
                 >Register as a Client instead?</p>
-            </>
+            </div>
         )
     }
 
@@ -315,10 +336,10 @@ const Login = () => {
                     />
                 </div>
                 <Button 
-                    style = {{ background : colors.PRIMARY_COLOR , color : colors.WHITE , width : '45%' , height : '5vh' , borderRadius : '5px' , border : 'none' , fontFamily : 'Poppins , sans-serif' , fontSize : '1.5rem' , marginTop : '3%' , textTransform : 'none' }}
+                    style = {{ background : colors.PRIMARY_COLOR , color : colors.WHITE , width : '45%' , height : '15%' , borderRadius : '5px' , border : 'none' , fontFamily : 'Poppins , sans-serif' , fontSize : '1.5rem' , marginTop : '3%' , textTransform : 'none' }}
                     onClick = { e => e.preventDefault() }
                 >
-                    Submit
+                    <span>Submit</span>
                 </Button>
                 <p className = 'registeras__agency'
                     onClick = { e => {
@@ -347,7 +368,8 @@ const Login = () => {
                         {
                             showLoginForm && 
                             <>
-                                <div className="input__field">
+                                <h2 style = {{ fontFamily : 'Poppins , sans-serif' }}>SIGN IN</h2>
+                                {/* <div className="input__field">
                                     <i className = 'fa fa-user'></i>
                                         <input 
                                         type = "text"
@@ -355,7 +377,7 @@ const Login = () => {
                                         id = ""
                                         placeholder = 'Username'
                                     />
-                                </div>
+                                </div> */}
                                 <div className="input__field">
                                     <i className = 'fa fa-envelope'></i>
                                     <input 
@@ -442,7 +464,7 @@ const Login = () => {
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, animi. Et quae similique dignissimos est?</p>
                         <button className="btn transparent" id="signup__button" onClick = {handleSignUpButtonClick}>Sign Up</button>
                     </div>
-                    <img src={logo} alt="" className = 'image'/>
+                    {/* <img src={logo} alt="" className = 'image'/> */}
                 </div>
                 <div className="panel right__panel">
                     <div className="content">
@@ -450,7 +472,7 @@ const Login = () => {
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, animi. Et quae similique dignissimos est?</p>
                         <button className="btn transparent" id="signin__button" onClick = {handleSignInButtonClick}>Sign in</button>
                     </div>
-                    <img src={register} alt="" className = 'image'/>
+                    {/* <img src={register} alt="" className = 'image'/> */}
                 </div>
             </div>
         </div>

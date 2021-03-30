@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import colors from '../../Constants/colors'
 import { useWindowDimensions } from '../../Utils/commonFunctions'
-import logo from '../../assests/images/Logo/logo.png'
+// import logo from '../../assests/images/Logo/logo.png'
 import './sideDrawer.css'
 
 const SideDrawer = ({ active , sendProps }) => {
@@ -46,7 +46,7 @@ const SideDrawer = ({ active , sendProps }) => {
                 position : (width > 500 || isDrawerOpen) && 'fixed'
             }}
         >
-            <div><Link to = '/'><img src={logo} alt="" className = 'logo'/></Link></div>
+            {/* <div><Link to = '/'><img src={logo} alt="" className = 'logo'/></Link></div> */}
             <Accordion
                 expanded = {expanded === 'panel1'}
                 onChange = {handleChange('panel1')}

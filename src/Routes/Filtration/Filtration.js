@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect , useState } from 'react'
 import ProfileHeader from '../../Components/ProfileHeader/ProfileHeader'
 import SideDrawer from '../../Components/SideDrawer/SideDrawer'
 import { useWindowDimensions } from '../../Utils/commonFunctions'
@@ -7,6 +7,7 @@ import './filtration.css'
 import colors from '../../Constants/colors'
 import { Done , LocationOn , Work , WatchLater } from '@material-ui/icons'
 import { Avatar, Slider, Tooltip, Typography , Button } from '@material-ui/core'
+import Modal from 'react-modal'
 
 const techButtonStyle = {
     border : `1px solid ${colors.LIGHT_PRIMARY_COLOR}`,
@@ -23,15 +24,28 @@ const Filtration = () => {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [filteredList, setFilteredList] = useState([1,2,3,4,5])
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [appliedFilters, setAppliedFilters] = useState([])
 
-    const { width } = useWindowDimensions()
+    const { width , height } = useWindowDimensions()
 
+    //FUNCTION TO DETERMINE WHETHER THE SIDEBAR IS OPEN OR NOT
     const getChildProps = param => setIsDrawerOpen(param)
 
+    //BUTTON COMPONENT FOR EVERY FILTER ELEMENT
     const FilterButton = ({ title }) => {
         const [filterClicked, setFilterClicked] = useState(false)
 
         const handleFilterClick = filterId => {
+
+            if(!filterClicked)
+                appliedFilters.push({
+                    id : filterId,
+                    name : title
+                })
+
+            else;
+                
             setFilterClicked(!filterClicked)
             document.getElementById(filterId).classList.toggle('filter__clicked')
         }
@@ -39,9 +53,9 @@ const Filtration = () => {
         return (
             <button 
                 className = 'filter' 
-                style = {{ width : width * 0.07 , border : filterClicked ? `1px solid ${colors.PRIMARY_COLOR}` : `1px solid ${colors.BORDER_COLOR}` }}
+                style = {{ width : '10%' , border : filterClicked ? `1px solid ${colors.PRIMARY_COLOR}` : `1px solid ${colors.BORDER_COLOR}` }}
                 id = {title}
-                onClick = { () => handleFilterClick(title)}
+                onClick = { () => handleFilterClick(title) }
             >
                 <Done style = {{ marginRight : width * 0.005 }}/>
                 {title}
@@ -84,7 +98,7 @@ const Filtration = () => {
 
     const HiringDetail = ({ title , icon }) => {
         return (
-            <div className="hiring__detail" style = {{ color : colors.LIGHT_GRAY , fontFamily : 'Poppins , sanse-serif' }}>
+            <div className="hiring__detail" style = {{ color : colors.LIGHT_GRAY , fontFamily : 'Poppins , sans-serif' }}>
                 { icon == 'Remote' ? <LocationOn /> : icon == 'fullTime' ? <Work /> : <WatchLater /> }
                 <p>{title}</p>
             </div>
@@ -148,7 +162,10 @@ const Filtration = () => {
                                                     <div className="askfor__quotation">
                                                         <Button 
                                                             style = {{ background : colors.LIGHT_PRIMARY_COLOR , marginTop : '3%' , color : colors.PRIMARY_COLOR , fontFamily : 'Poppins , sans-serif' , fontWeight : 700 , borderRadius : '7px' }}
-                                                            onClick = { e => e.preventDefault() }
+                                                            onClick = { e => {
+                                                                e.preventDefault()
+                                                                setIsModalOpen(true)
+                                                            }}
                                                         >
                                                             Ask for quotation
                                                         </Button>
@@ -171,6 +188,32 @@ const Filtration = () => {
                                     </Link>
                                 )
                             }
+                            <Modal
+                                isOpen = {isModalOpen}
+                                onRequestClose = { () => setIsModalOpen(false) }
+                                style = {{
+                                    overlay : {
+                                        zIndex : 10,
+                                        display : 'flex',
+                                        justifyContent : 'center',
+                                        background : 'rgba(0,0,0,0.5)'
+                                    },
+                                    content : {
+                                        height : '60%',
+                                        width : '20%',
+                                        position : 'relative',
+                                        alignSelf : 'center',
+                                        top : 0,
+                                        bottom : 0,
+                                        left : 0,
+                                        right : 0
+                                    }
+                                }}
+                            >
+                                <div>
+                                    <p>djdkf</p>
+                                </div>
+                            </Modal>
                         </div>
                     </div>
                 </div>                
