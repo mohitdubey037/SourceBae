@@ -9,6 +9,7 @@ import Agency from './Routes/Agency/Agency';
 // import Client from './component/Client';
 import Login from './Routes/Login/Login';
 import Signup from './Routes/SignUp/Signup';
+import Register from './Routes/Register/Register';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -19,6 +20,7 @@ const App = () => (
   <Switch>
     <Route exact path = '/' component = {Mainhomepage} />
     <Route exact path = '/signup' component = {Signup} />
+    <Route exact path = '/register:as' component = {Register} />
   </Switch>
 )
 

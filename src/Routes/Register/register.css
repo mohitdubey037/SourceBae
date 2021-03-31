@@ -1,0 +1,141 @@
+.signup__wrapper {
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    background: #e5e5e5;
+}
+
+.image__background {
+    flex: .7;
+    position: relative;
+    background: url('../../assets/images/SignUp/containerimage.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form__area {
+    min-height: 150vh;
+    flex: 1;
+    padding: 3% 3% 0 8%;
+    font-family: 'Poppins' , sans-serif;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.client__formContainer {
+    margin-top: 10vh;
+}
+
+.form__title > h6 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.title__subtext {
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+
+.title__subtext > p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #8692A6;
+}
+
+.client__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.client__form > label {
+    margin-top: 2.5vh;
+    color: #696F79;
+}
+
+.client__form > input {
+    margin-top: 1vh;
+    height: 64px;
+    width: 50%;
+    background: none;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding-left: 4%;
+}
+
+.client__form > input:focus {
+    background: #f2f2f2;
+    outline: none;
+}
+
+.forms__container {
+    display: flex;
+    position: relative;
+}
+
+.client__primaryForm {
+    z-index: 2;
+    transition: .4s ease;
+}
+
+.client__secondaryForm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.hide__primaryForm {
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.show__secondaryForm {
+    transform: translateX(0);
+    transition: .4s ease;
+}
+
+.form__2,
+.form__3,
+.form__4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.hide__form1 {
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.show__form2 {
+    transform: translateX(0);
+    transition: .4s ease;
+}
+
+.hide__form2 {
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.show__form3 {
+    transform: translateX(0);
+    transition: .4s ease;
+}
+
+.hide__form3 {
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.show__form4 {
+    transform: translateX(0);
+    transition: .4s ease;
+}
