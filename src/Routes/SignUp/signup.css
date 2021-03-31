@@ -1,12 +1,13 @@
 .signup__wrapper {
     height: 100vh;
     display: flex;
+    background: #e5e5e5;
+    overflow: hidden;
 }
 
 .image__container {
-    position: absolute;
+    position: fixed;
     width: 35vw;
-    background: #e5e5e5;
     background: url('../../assets/images/SignUp/containerimage.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,9 +25,6 @@
 }
 
 .select__area {
-    /* flex: 1; */
-    /* padding-top: 3%; */
-    /* padding-right: 3%; */
     background: #e5e5e5;
     /* padding-left: 8%; */
     font-family: 'Poppins' , sans-serif;
