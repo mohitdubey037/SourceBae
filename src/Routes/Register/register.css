@@ -99,6 +99,16 @@
     outline: none;
 }
 
+.form__2,
+.form__3,
+.form__4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
 /* .client__formsContainer {
     background: yellow;
     width: 100%;
@@ -157,3 +167,40 @@
     transform: translateX(0);
     transition: .4s ease;
 } */
+
+.form__1,
+.form__2,
+.form__3,
+.form__4 {
+    transition: .4s ease;
+}
+
+.hide__form1 {
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.show__form2 {
+    transform: translateX(0);
+    transition: .4s ease;
+}
+
+.hide__form2 {
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.show__form3 {
+    transform: translateX(0);
+    transition: .4s ease;
+}
+
+.hide__form3 {
+    transform: translateX(2000px);
+    transition: .4s ease;
+}
+
+.show__form4 {
+    transform: translateX(0);
+    transition: .4s ease;
+}
