@@ -12,8 +12,22 @@ const Register = () => {
 
     const AgencyRegistration = () => {
 
+
+        //State Variables
         const [step, setStep] = useState(1)
 
+        //State Variables to handle Form
+        const [formData, setFormData] = useState({
+            firstName: "",
+            lastName: "",
+            email:"",
+            password:"",
+
+        })
+
+        const [subForms, setSubForms] = useState([])
+
+        //Methods
         const toggleFormTwo = direction => {
             let form1 = document.querySelector('.form__1')
             let form2 = document.querySelector('.form__2')
@@ -51,46 +65,65 @@ const Register = () => {
                 setStep(prev => prev - 1)
         }
 
+        //handle onChange Events
+        const handleChange = (event)=>{
+            // console.log(event.target)
+            const {name, value} = event.target
+            setFormData(
+                {
+                    ...formData,
+                    [name]:value
+                }
+            )
+        }
+        //API calls
 
+        //JSX
         return (
             <div className = 'form__area'>
                 
                 <div className="client__form">
                     <div style = {{ width : '100%' , textAlign : 'center' , marginTop : '10%' }}>
-                        <div className="form__title"><h6>Register as a Client</h6></div>
+                        <div className="form__title"><h6>Register as an Agency</h6></div>
                         <div className="title__subtext"><p>For the purpose of industry regulation, your details <br/> are required</p></div>
                     </div>
 
                     <div className="client__formsContainer">
                         <form className = 'client__form form__1' autoComplete = 'off' >
-                            <label htmlFor = 'name'>Your fullname *</label>
+                            <label htmlFor = 'name'>Your firstname *</label>
                             <input
                                 type="text"
-                                name="name"
-                                placeholder = 'Name'
-                                onChange = {e => {
-                                    e.preventDefault()
-                                    // setName(e.target.value)
-                                    // setNameError(false)
+                                name="firstName"
+                                placeholder = 'FirstName'
+                                onChange = {(e) => {
+                                handleChange(e)
                                 }}
                                 style = {{
-                                    // border : nameError ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
 
+                            <label htmlFor = 'name'>Your lastname *</label>
+                            <input
+                                type="text"
+                                name="lastName"
+                                placeholder = 'LastName'
+                                onChange = {e => {
+                                   handleChange(e)
+                                }}
+                                style = {{
+                                    transition : '.3s ease'
+                                }}
+                            />
                             <label htmlFor = 'email'>Email Address *</label>
                             <input
                                 type="text"
                                 name="email"
                                 placeholder = 'Email'
                                 onChange = {e => {
-                                    e.preventDefault()
-                                    // setEmail(e.target.value)
-                                    // setEmailError(false)
+                                   handleChange(e)
                                 }}
                                 style = {{
-                                    // border : emailError ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
@@ -101,9 +134,7 @@ const Register = () => {
                                 name="password"
                                 placeholder = 'Create Password'
                                 onChange = {e => {
-                                    e.preventDefault()
-                                    // setPassword(e.target.value)
-                                    // setPassworderror(false)
+                                    handleChange(e)
                                 }}
                                 style = {{
                                     // border : passworderror ? '2px solid red' : '1px solid gray',
