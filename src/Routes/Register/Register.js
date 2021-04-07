@@ -1,10 +1,18 @@
-import { Button, Step , StepLabel , Stepper , Typography , StepContent , InputLabel , FormControl , TextField , Select , Input , MenuItem } from '@material-ui/core'
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+//Imports
+
+import { Button } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import logotext from '../../assets/images/SignUp/logotext.svg'
 import './register.css'
 import colors from '../../Constants/colors'
-// impot
+
+// Axios Import
+import instance from "../../Constants/axiosConstants"
+
+//Future Imports
+// Step , StepLabel , Stepper , Typography , StepContent , InputLabel , FormControl , TextField , Select , Input , MenuItem
 
 const Register = () => {
 
@@ -22,10 +30,9 @@ const Register = () => {
             lastName: "",
             email:"",
             password:"",
-
         })
 
-        const [subForms, setSubForms] = useState([])
+        // const [subForms, setSubForms] = useState([])
 
         //Methods
         const toggleFormTwo = direction => {
@@ -66,8 +73,7 @@ const Register = () => {
         }
 
         //handle onChange Events
-        const handleChange = (event)=>{
-            // console.log(event.target)
+        const handleAgencyFormChange = (event)=>{
             const {name, value} = event.target
             setFormData(
                 {
@@ -76,6 +82,7 @@ const Register = () => {
                 }
             )
         }
+
         //API calls
 
         //JSX
@@ -96,7 +103,7 @@ const Register = () => {
                                 name="firstName"
                                 placeholder = 'FirstName'
                                 onChange = {(e) => {
-                                handleChange(e)
+                                handleAgencyFormChange(e)
                                 }}
                                 style = {{
                                     transition : '.3s ease'
@@ -109,7 +116,7 @@ const Register = () => {
                                 name="lastName"
                                 placeholder = 'LastName'
                                 onChange = {e => {
-                                   handleChange(e)
+                                   handleAgencyFormChange(e)
                                 }}
                                 style = {{
                                     transition : '.3s ease'
@@ -121,7 +128,7 @@ const Register = () => {
                                 name="email"
                                 placeholder = 'Email'
                                 onChange = {e => {
-                                   handleChange(e)
+                                   handleAgencyFormChange(e)
                                 }}
                                 style = {{
                                     transition : '.3s ease'
@@ -134,7 +141,7 @@ const Register = () => {
                                 name="password"
                                 placeholder = 'Create Password'
                                 onChange = {e => {
-                                    handleChange(e)
+                                    handleAgencyFormChange(e)
                                 }}
                                 style = {{
                                     // border : passworderror ? '2px solid red' : '1px solid gray',
@@ -258,24 +265,79 @@ const Register = () => {
 
     const ClientRegistration = () => {
 
-        const [name, setName] = useState('')
-        const [email, setEmail] = useState('')
-        const [password, setPassword] = useState('')
-        const [nameError, setNameError] = useState(false)
-        const [emailError, setEmailError] = useState(false)
-        const [passworderror, setPassworderror] = useState(false)
 
+        //State Variables
+        const [clientForm, setClientForm] = useState({
+            firstName:"",
+            lastName:"",
+            userName:"",
+            userEmail:"",
+            userPhone: "",
+            countryCode: "+91",
+            password:""
+        })
+
+        const [clientFormErrors, setClientFormErrors] = useState({
+            firstNameError:false,
+            lastNameError:false,
+            emailError:false,
+            passwordError:false,
+            phoneError: false,
+            userNameError:false
+            
+        })
+
+        const [clientSubForm, setClientSubForm] = useState({
+            userDesignation: "",
+            companyName: "",
+            socialPlatformDetails: []
+        })
+
+        const [linkedIn, setLinkedIn] = useState({
+            platformId:"",
+            platformLink:""
+        })
+        const [site, setSite] = useState({
+            platformId:"",
+            platformLink:""
+        })
+    
+        const ROLE = 'client'
+        //Methods
         const toggleForms = direction => {
             let primaryForm = document.querySelector('.client__primaryForm')
             let secondaryForm = document.querySelector('.client__secondaryForm')
     
             if(direction === 'next') {
-                if(!name)
-                    setNameError(true)
-                else if(!email)
-                    setEmailError(true)
-                else if(!password)
-                    setPassworderror(true)
+                if(!clientForm.firstName)
+                    setClientFormErrors({
+                        ...clientFormErrors,
+                        firstnameError:true
+                    })
+                else if(!clientForm.lastName)
+                    setClientFormErrors({
+                        ...clientFormErrors,
+                        lastnameError:true
+                    })
+                else if(!clientForm.userEmail)
+                    setClientFormErrors({
+                        ...clientFormErrors,
+                        emailError:true
+                    })
+
+                else if(!clientForm.userPhone)
+                      setClientFormErrors({
+                        ...clientFormErrors,
+                        passwordError:true
+                    })
+
+                else if(!clientForm.password)
+                      setClientFormErrors({
+                        ...clientFormErrors,
+                        passwordError:true
+                    })
+
+
                 else {
                     primaryForm.classList.toggle('hide__primaryForm')
                     secondaryForm.classList.toggle('show__secondaryForm')
@@ -288,6 +350,82 @@ const Register = () => {
             }
         }
 
+          //handle onChange Events
+        
+        const handleClientFormChange = (event)=>{
+            const {name, value} = event.target
+            
+            setClientForm(
+                {
+                    ...clientForm,
+                    [name]:value
+                }
+            )
+        }
+
+        
+        const handleSocialPlatform = (event)=>{
+            const {name, id, value} = event.target
+            if(name==="linkedIn"){
+                setLinkedIn({
+                    platformId:id,
+                    platformLink:value
+                })
+
+            }
+            else if(name==="website"){
+
+                console.log("hiii")
+                setSite({
+                    platformId:id,
+                    platformLink:value
+                })
+
+            }
+            
+        }
+
+        
+        const handleClientSubFormChange=(event)=>{
+            const {name, value} = event.target
+                setClientSubForm(   {
+                    ...clientSubForm,
+                    [name]: value
+                } )
+            }
+
+        
+        //API call methods
+        const handleClientFormSubmit = ()=>{
+            
+          
+            instance.post(`/api/${ROLE}/auths/signup`,{...clientForm})
+            .then(function (response) {
+                console.log(response,"signup");
+                if(response.status===200 && response.data.status){
+                    alert(response.data.message)
+                    localStorage.setItem("AUTHORIZATION",response.data.data.accessToken)
+                }
+              })
+
+            instance.post(`/api/${ROLE}/clients/create`,{...clientSubForm})
+            .then(function (response) {
+                console.log(response,"create");
+                if(response.status===200 && response.data.status){
+                    alert(response.data.message)
+                }
+            })
+            console.log(clientForm)
+        }
+
+        useEffect(()=>{
+            setClientSubForm({
+                ...clientSubForm,
+                socialPlatformDetails:[linkedIn,site]
+            })
+        },[linkedIn,site])
+
+        // JSX
         return (
             <div className = 'form__area'>
                 
@@ -299,18 +437,38 @@ const Register = () => {
 
                     <div className="client__formsContainer">
                         <form className = 'client__form client__primaryForm' autoComplete = 'off' >
-                            <label htmlFor = 'name'>Your fullname *</label>
+                            <label htmlFor = 'firstName'>Your firstname *</label>
                             <input
                                 type="text"
-                                name="name"
-                                placeholder = 'Name'
-                                onChange = {e => {
-                                    e.preventDefault()
-                                    setName(e.target.value)
-                                    setNameError(false)
-                                }}
+                                name="firstName"
+                                placeholder = 'First Name'
+                                onChange = {(e) => handleClientFormChange(e)}
                                 style = {{
-                                    border : nameError ? '2px solid red' : '1px solid gray',
+                                    border : clientFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
+                                    transition : '.3s ease'
+                                }}
+                            />
+
+                            <label htmlFor = 'name'>Your lastname *</label>
+                            <input
+                                type="text"
+                                name="lastName"
+                                placeholder = 'Last Name'
+                                onChange = {(e) => handleClientFormChange(e)}
+                                style = {{
+                                    border : clientFormErrors.lastNameError ? '2px solid red' : '1px solid gray',
+                                    transition : '.3s ease'
+                                }}
+                            />
+
+                            <label htmlFor = 'name'>Username *</label>
+                            <input
+                                type="text"
+                                name="userName"
+                                placeholder = 'Username'
+                                onChange = {(e) => handleClientFormChange(e)}
+                                style = {{
+                                    border : clientFormErrors.userNameError ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
@@ -318,15 +476,23 @@ const Register = () => {
                             <label htmlFor = 'email'>Email Address *</label>
                             <input
                                 type="text"
-                                name="email"
+                                name="userEmail"
                                 placeholder = 'Email'
-                                onChange = {e => {
-                                    e.preventDefault()
-                                    setEmail(e.target.value)
-                                    setEmailError(false)
-                                }}
+                                onChange = {(e) => handleClientFormChange(e)}
                                 style = {{
-                                    border : emailError ? '2px solid red' : '1px solid gray',
+                                    border : clientFormErrors.emailError ? '2px solid red' : '1px solid gray',
+                                    transition : '.3s ease'
+                                }}
+                            />
+
+                            <label htmlFor = 'phone'>Phone No *</label>
+                            <input
+                                type="text"
+                                name="userPhone"
+                                placeholder = 'Phone No'
+                                onChange = {(e) => handleClientFormChange(e)}
+                                style = {{
+                                    border : clientFormErrors.phoneError ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
@@ -336,13 +502,9 @@ const Register = () => {
                                 type="password"
                                 name="password"
                                 placeholder = 'Create Password'
-                                onChange = {e => {
-                                    e.preventDefault()
-                                    setPassword(e.target.value)
-                                    setPassworderror(false)
-                                }}
+                                onChange = {(e) => handleClientFormChange(e)}
                                 style = {{
-                                    border : passworderror ? '2px solid red' : '1px solid gray',
+                                    border : clientFormErrors.passworderror ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
@@ -367,20 +529,20 @@ const Register = () => {
                                 </Button>
                             </div>
 
-                            <label htmlFor = 'desig'>Designation</label>
-                            <input type="text" name="desig" placeholder = 'Designation'/>
+                            <label htmlFor = 'userDesignation'>Designation</label>
+                            <input type="text" name="userDesignation" placeholder = 'Designation' onChange = {(event)=>handleClientSubFormChange(event)}/>
 
-                            <label htmlFor = 'company'>Company</label>
-                            <input type="text" name="company" placeholder = 'Company'/>
+                            <label htmlFor = 'companyName'>Company</label>
+                            <input type="text" name="companyName" placeholder = 'Company' onChange = {(event)=>handleClientSubFormChange(event)}/>
 
-                            <label htmlFor = 'social'>LinkedIn</label>
-                            <input type="text" name="social" placeholder = 'LinkedIn profile URL'/>
+                            <label htmlFor = 'socialPlatformDetails'>LinkedIn</label>
+                            <input type="text" name="linkedIn" id = "605cc02bc813cb3d2e96a326" placeholder = 'LinkedIn profile URL' value = {linkedIn.platformLink} onChange = {(event)=>handleSocialPlatform(event)}/>
 
                             <label htmlFor = 'website'>Website</label>
-                            <input type="text" name="website" placeholder = 'Website URL'/>
+                            <input type="text" name="website" id = "606d4fb838ce8802aa8f3b5f" placeholder = 'Website URL' value = {site.platformLink} onChange = {(event)=>handleSocialPlatform(event)}/>
 
                             <Button
-                                // onClick = {register}
+                                onClick = {handleClientFormSubmit}
                                 style = {{ background : colors.PRIMARY_COLOR , marginTop : '5vh' , color : colors.WHITE , height : '60px' , fontFamily : 'Poppins' , fontSize : '1.2rem' , width : '50%' , borderRadius : '8px' , marginBottom : '5%' }}
                             >
                                 SUBMIT
