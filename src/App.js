@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom';
 
 import Mainhomepage from './Routes/LandingPage/Mainhomepage'
-// import Dashboard from './Routes/Dashboard/Dashboard'
+import Dashboard from './Routes/Dashboard/Dashboard'
 // import Filtration from './Routes/Filtration/Filtration';
 // import Agency from './Routes/Agency/Agency';
 // import Agency from './component/Agency';
@@ -10,7 +10,7 @@ import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 // import Login from './Routes/Login/Login';
 import Signup from './Routes/SignUp/Signup';
 import Register from './Routes/Register/Register';
-import AddDeveloper from './Routes/Dashboard/AddDeveloper.js/AddDeveloper';
+// import AddDeveloper from './Routes/Dashboard/AddDeveloper.js/AddDeveloper';
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
 import Quotation from './Routes/Dashboard/Quotation/Quotation';
 
