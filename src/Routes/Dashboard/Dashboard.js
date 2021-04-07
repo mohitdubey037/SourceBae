@@ -1,137 +1,257 @@
 import React, { useState } from 'react'
 import './dashboard.css'
-import './dashboardMedia.css'
-import { useWindowDimensions } from '../../Utils/commonFunctions'
-import { CircularProgressbar } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
-import colors from '../../Constants/colors'
-import { Link } from 'react-router-dom'
-import SideDrawer from '../../Components/SideDrawer/SideDrawer'
-import ProfileHeader from '../../Components/ProfileHeader/ProfileHeader'
+
+import oneSourcingLogo from '../../assets/images/Logo/logo.png'
+import clientLogo from '../../assets/images/Logo/clientLogo.svg'
+import notificationIcon from '../../assets/images/Logo/notification.png'
+import clientProfile from '../../assets/images/Logo/clientProfile.jpeg'
+import quotation from '../../assets/images/Logo/quotation.png'
+import addDeveloper from '../../assets/images/Logo/addDeveloper.png'
+import teamCreation from '../../assets/images/Logo/teamCreation.png'
+
+//material-ui
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import FilterListIcon from '@material-ui/icons/FilterList';
+import IconButton from '@material-ui/core/IconButton';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import Navbar from './Navbar'
+
+
+
 
 const Dashboard = () => {
+    const ITEM_HEIGHT = 48;
+    const [anchorEl, setAnchorEl] = useState(false);
+    const [moreOption, setMoreOption] = useState(false);
 
-    const { width } = useWindowDimensions()
+    const handleClick = (event) => {
+        console.log(event)
+        setAnchorEl(event.currentTarget);
+    };
 
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-    const [expanded, setExpanded] = useState(false)
-    const [projects, setProjects] = useState(['a','b','c','a','b','c'])
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
-    const getChildProps = param => setIsDrawerOpen(param)
 
-    class ChangingProgressProvider extends React.Component {
-        static defaultProps = {
-          interval: 1000
-        };
-      
-        state = {
-          valuesIndex: 0
-        };
-      
-        componentDidMount() {
-          setTimeout(() => {
-            this.setState({
-              valuesIndex: (this.state.valuesIndex + 1) % this.props.values.length
-            });
-          }, this.props.interval);
+    const optionHandle = (value) => {
+        if (value == 'Add Developers') {
+            window.location.href = "/add-developer"
         }
-      
-        render() {
-          return this.props.children(this.props.values[this.state.valuesIndex]);
+        else if (value == 'Quotation') {
+            window.location.href = "/quotation"
         }
-      }
+        else {
+            alert(value)
+        }
+    }
+
+    const cardsArray = [
+        {
+            title: 'Quotation',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            image: quotation,
+            borderColor: `#28B3F3`,
+        },
+        {
+            title: 'Add Developers',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            image: addDeveloper,
+            borderColor: '#F57359'
+        },
+        {
+            title: 'Team Creation',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            image: teamCreation,
+            borderColor: '#AC92F5'
+        },
+    ]
+
+    const moreOptions = [
+        'None',
+        'Atria',
+        'Callisto',
+        'Dione',
+        'Ganymede',
+    ];
+    const moreHandleClick = (event) => {
+        setMoreOption(event.currentTarget);
+    };
+
+    const moreHandleClose = () => {
+        setMoreOption(null);
+    };
+
+
+    const allProjects = [
+        {
+            projectName: 'Project Name',
+            desc: '',
+            projectStatus: 'Live',
+            budget: '$96',
+            creationDate: '6 Dec 2020',
+            duration: '180 Days',
+            projectType: 'fintech'
+        },
+        {
+            projectName: 'Project Name',
+            desc: '',
+            projectStatus: 'Live',
+            budget: '$96',
+            creationDate: '6 Dec 2020',
+            duration: '180 Days',
+            projectType: 'fintech'
+        },
+        {
+            projectName: 'Project Name',
+            desc: '',
+            projectStatus: 'Completed',
+            budget: '$96',
+            creationDate: '6 Dec 2020',
+            duration: '180 Days',
+            projectType: 'fintech'
+        },
+        {
+            projectName: 'Project Name',
+            desc: '',
+            projectStatus: 'Pending',
+            budget: '$96',
+            creationDate: '6 Dec 2020',
+            duration: '180 Days',
+            projectType: 'fintech'
+        },
+        {
+            projectName: 'Project Name',
+            desc: '',
+            projectStatusText: 'Project',
+            projectStatus: 'Completed',
+            budget: '$96',
+            creationDate: '6 Dec 2020',
+            duration: '180 Days',
+            projectType: 'fintech'
+        },
+    ]
 
     return (
-        <div className="page__container">
+        <>
+            {/* Navbar  */}
+            <Navbar headingInfo="Dashboard" />
 
-            <SideDrawer active = 'home' sendProps = {getChildProps} />
-            
-            <main
-                className="dashboard"
-                style = {{
-                    position : (width < 500 && !isDrawerOpen) && 'absolute',
-                    width : width > 500 ? '100%' : isDrawerOpen ? '80vw' : '100vw',
-                    marginLeft : width > 500 ? '20vw' : isDrawerOpen ? '20vw' : 0,
-                }}
-            >
-                <ProfileHeader />
-                
-                <div className="details__wrapper">
-                    <div className="team__title" style = {{ color : colors.GRAY_TEXT }}><p>xyz Team</p></div>
-
-                    <div className="history">
-                        <div className="completed__projects">
-                            <div className="progress__circleBox">
-                                <ChangingProgressProvider values = {[0,60]}>
-                                    {
-                                        percentage => <CircularProgressbar 
-                                                        value = {percentage}
-                                                        // background
-                                                        className = 'progress__bar'
-                                                        text = '60%'
-                                                        // styles = {buildStyles({
-                                                            // backgroundColor : '#5995fda0',
-                                                            // textColor : colors.WHITE,
-                                                            // trailColor : colors.LIGHT_GRAY
-                                                        // })}
-                                                    />
-                                    }
-                                </ChangingProgressProvider>
-                            </div>
-                            <div className="completed__projectDetails">
-                                <span>Projects Completed</span>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam, quaerat?</p>
-                            </div>
-                        </div>
-                        <div className="increase">
-                            <div className="empty__container" style = {{ position : 'absolute' , left : 10 }}></div>
-                            <div><p className = 'increase__title' style = {{ color : colors.BLACK }}>Increase +2%</p>
-                            <p>Compared to previous work</p></div>
-                            <div style = {{ position : 'absolute' , right : 10 }} className = 'empty__container'></div>
-                        </div>
-                        <div className="done__projects"></div>
-                    </div>
-
-                    <div className="projects">
-                        <div className="projects__cardContainer">
-                            {/* {
-                                projects.map(project => {
-                                    return (
-                                        <div className="project__card">
-                                            <div className="face face1">
-                                                <div className="project__content">
-                                                    <h2>Project name :</h2>
-                                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, doloribus.</p>
-                                                    <a href="#">Know more</a>
-                                                </div>
-                                            </div>
-                                            <div className="face face2">
-                                                <h2>01</h2>
-                                            </div>
+            <div className="mainClientsOptions">
+                <div className="innerClientsOptions">
+                    {
+                        cardsArray.map((value, index) => {
+                            return (
+                                <div className="mainQuotationCard" key={index} onClick={() => optionHandle(value?.title)} >
+                                    <div className="leftLine" style={{
+                                        backgroundColor: value?.borderColor
+                                    }}></div>
+                                    <div className="innerQuotationCard">
+                                        <div className="quotationImage">
+                                            <img src={value?.image} alt="" />
                                         </div>
-                                    )
-                                })
-                            } */}
-                            {
-                                projects.map( (project,index) => <Link to = '/filtration' key = {index}>
-                                    <div className = 'project__card'>
-                                        <div className="card__modalView">
-                                            <p className = 'project__title'>Project Title</p>
-                                            <p><i>By&nbsp;</i><span>John Doe</span></p>
-
-                                            <div className="start__date"><p>19 March, 2021</p></div>
-
-                                            <div style = {{ marginTop : '8%' , color : colors.GRAY_TEXT }}>20 people are going</div>
+                                        <div className="quotationInfo">
+                                            <h2>{value?.title}</h2>
+                                            <p>{value?.desc}</p>
                                         </div>
                                     </div>
-                                </Link>
-                                )
-                            }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+
+
+
+            <div className="mainProjects">
+                <div className="innerProjects">
+                    <div className="projectHeading">
+                        <div>
+                            <h2>Your Projects</h2>
+                        </div>
+                        <div className="filtering">
+                            <div className="filterBtn">
+                                <h4>Filter</h4>
+                                <div> <FilterListIcon /> </div>
+                            </div>
                         </div>
                     </div>
+                    <div className="allProjects">
+                        {
+                            allProjects.map((value, index) => {
+                                return (
+                                    <div className="mainProjectCard">
+                                        <div className="innerProjectCard">
+                                            <div className="projectInformation">
+                                                <div className="projectDetails">
+                                                    <div className="projectImage">
+                                                        <img src={clientProfile} alt="" />
+                                                    </div>
+                                                    <div className="projectName">
+                                                        <h4>{value?.projectName}</h4>
+                                                    </div>
+                                                </div>
+                                                <div className="moreDetails">
+                                                    <Button
+                                                        aria-controls="long-menu"
+                                                        aria-haspopup="true"
+                                                        onClick={moreHandleClick}
+                                                    >
+                                                        <MoreHorizIcon />
+                                                    </Button>
+                                                    <Menu
+                                                        id="long-menu"
+                                                        anchorEl={moreOption}
+                                                        keepMounted
+                                                        open={moreOption}
+                                                        onClose={moreHandleClose}
+                                                    >
+                                                        {moreOptions.map((option) => (
+                                                            <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+                                                                {option}
+                                                            </MenuItem>
+                                                        ))}
+                                                    </Menu>
+                                                </div>
+                                            </div>
+                                            <div className="projectDescription">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet viverra eget ut enim, massa.</p>
+                                            </div>
+                                            <div className="projectTable">
+                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                    <h6>Project Status</h6>
+                                                    <h6 style={{ color: value?.projectStatus == "Live" ? '#5cb85c' : value?.projectStatus == 'Completed' ? '#f0ad4e' : '#d9534f', fontWeight: 'bold' }} >{value?.projectStatus}</h6>
+                                                </div>
+                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                    <h6>Budget</h6>
+                                                    <h6>{value?.budget}</h6>
+                                                </div>
+                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                    <h6>Creation Date</h6>
+                                                    <h6>{value?.creationDate}</h6>
+                                                </div>
+                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                    <h6>Duration</h6>
+                                                    <h6>{value?.duration}</h6>
+                                                </div>
+                                                <div >
+                                                    <h6>Project type</h6>
+                                                    <h6>{value?.projectType}</h6>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </>
     )
 }
 

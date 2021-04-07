@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainAddDeveloperForm{
+    width: 100%;
+    /* min-height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../assets/images/AddDeveloper/bgImage.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.innermainAddDeveloperForm{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    border-radius: 35px;
+    margin: 4rem 0;
+}
+.formArea{
+    width: 90%;
+}
+.formHeading{
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+.formHeading h2{
+    font-family: 'Josefin Sans';
+}
+.projectNameForm{
+    margin-bottom: 3%;
+}
+.projectNameForm h2{
+    font-family: 'Josefin Sans';
+    font-size: 1.3rem;
+}
+.projectNameForm input{
+    width: 90%;
+    height: 50px;
+    padding-left: 20px;
+    font-family: 'Poppins';
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+.projectNameForm input:focus{
+    outline: none;
+}
+
+.projectDescForm {
+    margin-bottom: 3%;
+}
+.projectDescForm h2{
+    font-family: 'Josefin Sans';
+    font-size: 1.3rem;
+}
+.projectDescForm textarea{
+    width: 90%;
+    height: 200px;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-family: 'Poppins';
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+.projectDescForm textarea:focus{
+    outline: none;
+}
+.limitsOfWords{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #777;
+    font-family: 'Poppins';
+}
+.MuiButtonBase-root{
+    font-family: 'Poppins' !important;
+    border: none !important;
+}
+.MuiInputBase-root{
+    font-family: 'Poppins' !important;
+    border: none !important;
+    background-color: #fff !important;
+}
+.MuiInputBase-root:focus{
+    background-color: #fff !important;
+}
+.MuiSelect-select {
+    padding-left: 10px !important;
+    background-color: #fff !important;
+    height: 30px !important;
+    font-size: 1.2rem !important;
+    margin-top: 10px !important;
+    border: 1px solid #ddd !important;
+    padding-top: 10px !important;
+}
+.MuiInputBase-root:hover{
+    border: none !important;
+    outline: none;
+}
+.MuiSelect-select:focus{
+    background-color: #f1f1f1 !important;
+}
+
+
+.nextButton{
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+.nextButton button{
+    width: 10%;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #1566D8;
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Poppins';
+}
