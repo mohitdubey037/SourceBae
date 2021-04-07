@@ -1,0 +1,116 @@
+.mainDetailHeader{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9f0ef;
+}
+.innerDetailHeader{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+.detailHeaderImage{
+    margin-right:  1.5%;
+}
+.detailHeaderImage div{ 
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+}
+.detailHeaderImage div img{
+    width: 100px;
+    object-fit: contain;
+}
+.headerInformation{
+    width: 100%;
+}
+.clientName{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.clientName div{
+    width: 50%;
+}
+.clientName h2{
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+.detailsButtons{
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+.detailsButtons button{
+    margin: 0 0.5rem;
+   padding: 0.5rem 1rem;
+   border-radius: 999px;
+   outline: none;
+   border: none;
+   background-color: #5cb85c;
+   border: 1px solid #5cb85c;
+   color: #fff;
+   font-family: 'Poppins';
+   font-weight: 600;
+   box-shadow: 0 2px 4px 2px rgba(0,0,0,0.1);
+   letter-spacing: 1px;
+}
+.detailsButtons button:nth-child(2){
+    background-color: transparent !important;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    box-shadow: none;
+}
+
+.clientExperience{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.btnInfoDiv{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.rightBorder{
+    position: absolute;
+    width: 2px;
+    height: 60%;
+    top: 0;
+    right: 0%;
+    background-color: #aaa;
+    border-radius: 999px;
+}
+.innerBtnInfoDiv{
+    margin-right: 20px;
+}
+.innerBtnInfoDiv p{
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+
+.respondDescription{
+    margin-top: 3%;
+}
+.respondDescription h2{
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+.respondDescription p{
+    font-family: 'Poppins';
+    font-weight: 400;
+    width: 80%;
+    margin-top: 1%;
+    color: #9a9a9a;
+}

@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainQuotation{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.innerQuotation{
+    width: 95%;
+    margin-top: 2%;
+}
+.nav-tabs .nav-link{
+    background-color: transparent !important;
+    outline: none !important;
+    border: none !important;
+    font-size: 1.2rem !important;
+    color: #b0b0b0 !important;
+    font-family: 'Poppins' !important;
+    margin-right: 4%;
+}
+.nav-tabs .nav-link img{
+    width: 15%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+.nav-tabs .nav-link.active{
+    border-bottom: 3px solid #000 !important;
+    color: #484848 !important;
+    font-weight: bold !important;
+}

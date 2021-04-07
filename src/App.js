@@ -10,6 +10,9 @@ import Agency from './Routes/Agency/Agency';
 import Login from './Routes/Login/Login';
 import Signup from './Routes/SignUp/Signup';
 import Register from './Routes/Register/Register';
+import AddDeveloper from './Routes/Dashboard/AddDeveloper.js/AddDeveloper';
+import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
+import Quotation from './Routes/Dashboard/Quotation/Quotation';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -18,9 +21,12 @@ import Register from './Routes/Register/Register';
 
 const App = () => (
   <Switch>
-    <Route exact path = '/' component = {Mainhomepage} />
-    <Route exact path = '/signup' component = {Signup} />
-    <Route exact path = '/register:as' component = {Register} />
+    <Route exact path='/' component={Mainhomepage} />
+    <Route exact path='/signup' component={Signup} />
+    <Route exact path='/register:as' component={Register} />
+    <Route exact path="/dashboard" component={Dashboard} />
+    <Route exact path="/add-developer" component={AddingDeveloper} />
+    <Route exact path="/quotation" component={Quotation} />
   </Switch>
 )
 
@@ -30,7 +36,6 @@ const App = () => (
 //       <Route exact path = '/' component = {Mainhomepage} />
 //       <Route exact path = '/login' component = {Login} />
 //       <Route exact path = '/filtration' component = {Filtration} />
-//       <Route exact path="/dashboard" component={Dashboard} />
 //       <Route exact path = '/agency:name' component = {Agency} />
 //       {/* <Route exact path="/agency" component={Agency} />
 //       <Route exact path="/client" component={Client} />

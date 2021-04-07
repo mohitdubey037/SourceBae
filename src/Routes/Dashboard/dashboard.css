@@ -1,241 +1,363 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
 
-.page__container {
-    display: flex;
-    justify-content: flex-start;
-    /* height: 200vh; */
-    /* flex: 1; */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.sidebar {
-    padding-top: 1vh;
-    background: #121a31;
-    min-width: 20vw;
-    max-width: 20vw;
-    height: 100vh;
-    transition: .5s ease-in-out; 
-}
 
-.logo {
+.mainNavbar{
     width: 100%;
-    z-index: 2;
-    cursor: pointer;
-}
-
-.line__container {
     display: flex;
-    height: 16px;
-    cursor: pointer;
-    z-index: 3;
-    padding: 3vh 1%;
-    display: none;
-    transition: .4s ease;
-    position: absolute;
+    justify-content: center;
+    align-items: center;
+    background: #ffff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.1);
 }
-
-.line {
-    width: 25px;
-    height: 3px;
-    background: #000;
-    position: relative;
-    cursor: pointer;
-}
-
-.line::before {
-    position: absolute;
-    top: -10px;
-    width: 40px;
-    height: 3px;
-    content: '';
-    cursor: pointer;
-    background: #000;
-}
-
-.line::after {
-    position: absolute;
-    top: 10px;
-    width: 15px;
-    height: 3px;
-    content: '';
-    background: #000;
-    cursor: pointer;
-}
-
-.dashboard {
-    transition: .5s ease-in-out;
-}
-
-.details__wrapper {
-    padding: 0 4vw;
-    padding-top: 2vh;
-}
-
-.team__title {
-    font-family: 'Poppins' , sans-serif;
-}
-
-.history {
+.innerNavbar{
+    width: 95%;
     display: flex;
-}
-
-.completed__projects,
-.done__projects {
-    flex: 3.5;
-    background: #fff;
-}
-
-.increase {
-    flex: 3;
-    background: #fff;
-}
-
-.completed__projects {
-    display: flex;
-}
-
-.progress__circleBox {
-    width: 30%;
-    height: 100%;
-    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0.6rem 0; */
+    height: 70px;
     
+}
+
+.oneSourcingLogo div img{
+    width: 70%;
+}
+
+.dashboardHeading div{
+    margin-left: 20%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-
-.progress__bar {
-    height: 60%;
-    padding: 3% 0;
+.dashboardHeading div h3{
+    font-family: 'Poppins';
+    font-weight: 800;
+    margin-top: 3%;
+    white-space: nowrap;
 }
 
-.completed__projectDetails {
+.clientInfo{
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    align-items:  center;
+    justify-content: space-between;
+    transition: 0.3s ease-in-out;
+}
+
+.clientInfo .clientCompany{
+    width: 100px;
+    height: 50px;
+    /* border: 1px solid #ddd; */
+    margin: 0 1rem;
+    overflow: hidden;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
 }
-
-.completed__projectDetails > span {
-    font-weight: 600;
-    font-size: 1.2rem;
+.clientInfo .clientCompany img{
+    width: 80px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
 }
-
-.completed__projectDetails > p {
-    margin: 0;
-    padding: 0;
-    color: gray;
-}
-
-.increase {
+.clientInfo .clientNotification{
+    margin: 0 1.2rem;
+    width: 45px;
+    height: 40px;
+    border: 2px solid #9E9E9E;
+    color: #fff;
+    border-radius: 50%;
     display: flex;
-    padding: 0 2%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+.clientInfo .clientNotification img{
+    width: 50%;
+    object-fit: contain;
+}
+.userProfile{
+    width: 30%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clientInfo .clientProfile{
+    margin: 0 0rem;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #0094FF !important;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.clientInfo .clientProfile:focus{
+    outline: none;
+}
+.clientInfo .clientProfile img{
+    width: 60%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+.MuiMenuItem-root{
+    font-family: 'Poppins' !important;
+    font-weight: 400 !important;
+    align-items: center !important;
+    font-size: 1.2rem !important;
+}
+
+@media (max-width:768px){
+    .oneSourcingLogo{
+        display: none;
+    }
+}
+@media (max-width:454px){
+    .dashboardHeading{
+        display: none;
+    }
+    .innerNavbar{
+        width: 100%;
+    }
+    .clientInfo{
+        width: 100%;
+    }
+}
+
+
+/* cards  */
+
+.mainClientsOptions{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+.innerClientsOptions{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px dashed #B4B4B4;
+    padding-bottom: 4%;
+}
+.mainQuotationCard{
+    width: 28%;
+    /* background-color: #fff; */
+    box-shadow: 0 2px 8px 2px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
     position: relative;
+    background-image: linear-gradient(45deg, rgb(255,255,255),transparent),linear-gradient(45deg, rgb(255,255,255),transparent),repeating-linear-gradient(135deg, rgba(175,175,175,0.15) 0px, rgba(175,175,175,0.15) 2px,transparent 2px, transparent 4px),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+    cursor: pointer;
+    overflow: hidden;
 }
-
-.increase > div {
+.leftLine{
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    /* background: linear-gradient(90deg, #FBC2EB 0%, #A6C1EE 100%); */
+    left: 0;
+    border-radius: 999px;
+}
+.innerQuotationCard{
+    width: 80%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
-.increase > div > p {
-    margin: 0;
-    padding: 0;
-    color: gray;
-}
-
-.increase__title {
-    font-weight: 600;
-}
-
-.empty__container {
-    width: 2px;
-    height: 70%;
-    align-self: center;
-    background: #e1e1de;
-}
-
-.projects {
-    margin-top: 4vh;
-}
-
-.projects__cardContainer {
+.quotationImage {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(350px , 1fr));
-    grid-gap: 15px;
-    margin: 0 auto;
+    place-items: center;
+    min-height: 210px;
+}
+.quotationImage img{
+    width: 70%;
+    object-fit: contain;
+    align-self: center;
+    mix-blend-mode: multiply;
+}
+.quotationInfo{
+    text-align: center;
+}
+.quotationInfo h2{
+    font-family: 'Josefin Sans';
+}
+.quotationInfo p{
+    font-family: 'Poppins';
+    color: #929292;
+    width: 100%;
 }
 
-.project__card {
-    position: relative;
-    width: 300px;
-    height: 400px;
-    margin: 20px auto 5px auto;
-    /* background: #fff; */
-    transition: .5s;
-    /* background-image: url('../../assests/images/Dashboard/lighthouse.jpg'); */
-    background-repeat: no-repeat;
-    z-index: 999;
-    background-size: 150%;
-    background-position: center;
-    border-radius: 20px;
-    overflow: hidden;
+@media(max-width:768px){
+    .innerClientsOptions{
+        flex-direction: column;
+    }
+    .mainQuotationCard{
+        width: 100%;
+        margin: 1rem 0;
+    }
+    .mainQuotationCard{
+        background-image: none;
+        background-color: #fff;
+    }
+}
+
+
+
+/* Your Projects  */
+.mainProjects{
+    width: 100%;
     display: flex;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 30px 30px rgba(0,0,0,0.2);
+    align-items: center;
+    margin-top: 2%;
 }
-
-.project__card:hover {
-    box-shadow: 0 30px 50px rgba(0,0,0,0.4);
-    transform: scaleY(1.05) scaleX(1.05);
+.innerProjects{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
-.card__modalView {
-    position: absolute;
-    bottom: 20px;
-    background: #fff;
-    height: 50%;
-    width: 80%;
-    border-radius: 25px;
-    transition: .5s;
-    overflow: hidden;
-    padding: 5% 2% 0 4%;
-    font-family: 'Poppins' , sans-serif;
+.projectHeading{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
-.card__modalView > p {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1%;
+.projectHeading h2{
+    font-family: 'Josefin Sans';
 }
-
-.project__title {
+.filtering .filterBtn{
+    display: flex;
+    padding: 0.3rem 0.7rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.filtering .filterBtn h4{
+    font-family: 'Josefin Sans';
+    transform: translateY(5px);
+    margin-right: 10px;
     font-size: 1.2rem;
-    font-weight: bolder;
-    color: #000;
 }
 
-.card__modalView > p > i,
-.card__modalView > p > span {
-    color: gray;
-}
-
-.start__date {
-    margin-top: 7%;
-    padding: 2% 0;
-    border-radius: 999px;
-    background: #f3f3f4;
-    width: 60%;
+.allProjects{
+    margin-top: 2%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    box-shadow: 3px 5px 10px 0 rgba(0,0,0,0.2);
+    align-items: center;
+    margin-bottom: 8%;
+    flex-wrap: wrap;
+    /* margin-left: 5%; */
+}
+.mainProjectCard{
+    width: 26%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #fff;
+    /* box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2); */
+    box-shadow: 1px 1px 24px 1px rgba(0,0,0,0.14);
+    margin: 1rem;
+    border-radius: 35px;
+    padding: 1rem 0;
+}
+.innerProjectCard{
+    width: 90%;
+}
+.projectInformation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+}
+.projectDetails{
+    display: flex;
+    align-items: center;
+}
+.projectDetails .projectImage{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.projectImage img{
+    width: 100%;
+    object-fit: cover;
+}
+.moreDetails button:focus{
+    border: none !important;
+    outline: none !important;
+    padding-right: 0 !important;
+}
+.MuiSvgIcon-root:focus{
+    outline: none !important;
+    border: none !important;
+}
+.projectName h4{
+    font-family: 'Josefin Sans';
+    margin-top: 5%;
 }
 
-.start__date > p {
-    margin: 0;
-    padding: 0;
-    color: #486349;
+.projectDescription{
+    margin-top: 1rem;
+}
+.projectDescription p{
+    color: #868686;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+.projectTable div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins';
+    height: 60px;
+}
+.MuiPaper-root  {
+    box-shadow: 0 1px 4px 1px rgba(0,0,0,0.1) !important;
+}
+
+@media (max-width:768px){
+    .allProjects{
+        flex-direction: column;
+        margin-left: 0;
+    }
+    .mainProjectCard{
+        width: 95%;
+    }
+    .mainProjectCard{
+        margin: 1rem 0;
+    }
 }

@@ -1,0 +1,174 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainResponded{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 8%; */
+}
+.innerResponded{
+    width: 100%;
+    margin-top: 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.respondedCard{
+    width: 30%;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px 2px rgba(0,0,0,0.2);
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5%;
+}
+.leftBorder{
+    position: absolute;
+    width: 8px;
+    height: 93%;
+    background-color: #02044a;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 999px;
+}
+.bgCircle{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    z-index: -1;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    top: -15%;
+    right: -25%;
+}
+.respondCardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.respondCardHeader h4{
+    font-family: 'Poppins';
+    font-size: 1.2rem;
+}
+.dateCreated div{
+    background-color: #02044a;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    border-radius: 999px;
+}
+.dateCreated div p{
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: bold;
+}
+.respondCardDescription{
+    margin: 0.5rem 0 0.5rem 0;
+}
+.respondCardDescription p{
+    font-family: 'Poppins';
+    font-size: 0.8rem;
+    color: #b4b4b4;
+}
+.respondCardPoints ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.respondCardPoints ul li{
+    font-family: 'Poppins';
+    font-size: 1rem;
+    font-weight:500;
+    margin-right: 20px;
+    color: #000;
+}
+.respondCardTable{
+    margin-top: 5%;
+}
+.respondCardTable div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #aaa;
+}
+.respondCardTable div p{
+    font-family: 'Poppins';
+    margin-top: 5%;
+}
+.respondCardTable div p:nth-child(1){
+    color: #02044a;
+    font-weight: 800;
+}
+
+.respondedCardButton{
+    margin-top: 6%;
+    display: flex;
+}
+.respondedCardButton div{
+    margin-right: 30px;
+}
+.respondedCardButton div button{
+    padding: 0.4rem 1.5rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-radius: 999px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 2px 8px 2px rgba(0,0,0,0.2);
+    font-family: 'Poppins';
+    color: #000;
+    font-weight: 600;
+}
+.respondedCardButton div:nth-child(1) button{
+    background-color: #02044a !important;
+    color: #fff;
+}
+.respondedCardButton div:nth-child(2) button{
+    background-color: transparent !important;
+    color: #fff;
+    box-shadow: none;
+    color: #d9534f;
+    border : 1px solid #d9534f !important;
+}
+
+@media (max-width:768px){
+    .innerResponded{
+        flex-direction: column;
+    }
+    .respondedCard{
+        width: 100%;
+    }
+}
+
+
+.mainBackBtn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5%;
+}
+.innerBackBtn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.innerBackBtn div{
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins';
+    cursor: pointer;
+    border-bottom: 1px solid #000;
+}
+.innerBackBtn div i{
+    margin-right: 10px;
+}
+
