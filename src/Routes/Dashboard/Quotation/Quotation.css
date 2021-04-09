@@ -13,6 +13,7 @@
 .innerQuotation{
     width: 95%;
     margin-top: 2%;
+    position: relative;
 }
 .nav-tabs .nav-link{
     background-color: transparent !important;
@@ -32,4 +33,23 @@
     border-bottom: 3px solid #000 !important;
     color: #484848 !important;
     font-weight: bold !important;
+}
+
+@media (max-width:768px){
+    .nav{
+        flex-wrap: nowrap !important;
+        overflow: scroll;
+        width: 100% !important;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */   
+    }
+    .nav::-webkit-scrollbar{
+        display: none;
+    }
+    .nav-tabs .nav-link{
+        font-size: 1rem !important;
+        white-space: nowrap;
+        margin-right: 2% !important;
+       padding-right: 20px;
+    }
 }

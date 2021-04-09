@@ -133,11 +133,12 @@
 }
 .respondedCardButton div:nth-child(2) button{
     background-color: transparent !important;
-    color: #fff;
     box-shadow: none;
-    color: #d9534f;
-    border : 1px solid #d9534f !important;
+    color: #aaa;
+    border : 1px solid #999 !important;
+    transition: 0.2s ease-in-out;
 }
+
 
 @media (max-width:768px){
     .innerResponded{
@@ -172,3 +173,9 @@
     margin-right: 10px;
 }
 
+@media (max-width:768px){
+    .mainBackBtn{
+        margin-top: 0;
+        margin-bottom: 5%;
+    }
+}

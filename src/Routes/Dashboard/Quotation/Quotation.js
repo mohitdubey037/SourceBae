@@ -6,6 +6,7 @@ import responded from '../../../assets/images/Quotation/responded.png'
 import matched from '../../../assets/images/Quotation/matched.png'
 import Received from './Received'
 import Responded from './Responded'
+import ProjectesMatched from './ProjectesMatched'
 
 function Quotation() {
     return (
@@ -34,7 +35,9 @@ function Quotation() {
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <Responded />
                         </div>
-                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <ProjectesMatched />
+                        </div>
                     </div>
                 </div>
             </div>
