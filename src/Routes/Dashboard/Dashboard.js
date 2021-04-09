@@ -18,13 +18,15 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Navbar from './Navbar'
 
-
+import Tooltip from 'react-power-tooltip'
 
 
 const Dashboard = () => {
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = useState(false);
     const [moreOption, setMoreOption] = useState(false);
+    const [isPopover, setIsPopover] = useState(false);
+    const [popindex, setPopIndex] = useState('');
 
     const handleClick = (event) => {
         console.log(event)
@@ -148,6 +150,23 @@ const Dashboard = () => {
                                     <div className="leftLine" style={{
                                         backgroundColor: value?.borderColor
                                     }}></div>
+                                    <div
+                                        style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                        onMouseOver={() => {
+                                            setIsPopover(true)
+                                            setPopIndex(index)
+                                        }}
+                                        onMouseLeave={() => setIsPopover(false)}>
+                                        <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
+                                        {/* ADD TOOLTIP HERE */}
+                                        {
+                                            isPopover && popindex == index
+                                            &&
+                                            <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
+                                                <span>Some text</span>
+                                            </Tooltip>
+                                        }
+                                    </div>
                                     <div className="innerQuotationCard">
                                         <div className="quotationImage">
                                             <img src={value?.image} alt="" />

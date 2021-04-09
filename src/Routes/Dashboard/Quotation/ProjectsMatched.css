@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.mainProjectsMatched{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    flex-direction: column;
+}
+.innerProjectsMatched{
+    width: 90%;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    padding: 1rem 1.2rem 1rem 0;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 5%;
+    z-index: 1;
+}
+.projectCard{
+    padding-left: 10%;
+    width: 100%;
+}
+.projectNumber{
+    position: absolute;
+}
+.projectNumber p{
+    font-size: 8rem;
+    transform: translate(-40%,-25%);
+    color: #9999;
+    /* font-family: 'Londrina Solid', cursive; */
+    font-family: 'Fredoka One', cursive;
+    transition: 0.3s ease-in-out;
+}
+.borderRightBorder{
+    position: absolute;
+    width: 8px;
+    height: 96%;
+    background-color: #02044a;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    border-radius: 999px;
+}
+.bgCircles{
+    position: absolute;
+    /* width: 250px;
+    height: 250px;
+    z-index: 1;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+   top: -15%;
+    right: -5%;
+    mix-blend-mode: color; */
+    
+}
+.innerProjectsMatched .dotImage{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 8%;
+    object-fit: contain;
+}
+.innerProjectsMatched .shapeImage{
+    position: absolute;
+    top: -11%;
+    right: -3.2%;
+    object-fit: contain;
+    z-index: -1;
+}
+
+
+.projectCardHeading{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.projectCardHeading .projectHeadingName{
+    width: 50%;
+}
+.projectCardHeading div h2{
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: #02044a;
+}
+.projectCardHeading div h2::after{
+    content: '';
+    width: 30%;
+    height: 2px;
+    background-color: #02044a;
+    display: inline-block;
+}
+.showInterestBtn{
+    width: 100%;
+}
+.showInterestBtn button{
+    font-family: 'Poppins';
+    padding: 0.3rem 1rem;
+    color: #fff;
+    border-radius: 999px;
+    /* background-color: #5bc0de; */
+    background-color: #02044a;
+    outline: none;
+    border: none;
+    /* border: 2px solid #3ab3d7; */
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+}
+
+.projectPostedDetails{
+    margin-top: 0.5%;
+    display: flex;
+}
+.projectPostedDetails div{
+    margin-right: 3%;
+}
+.projectPostedDetails div p{
+    padding: 0.3rem 1rem;
+    background-color: #5bc0de;
+    /* background-color: #e0e0e0; */
+    border-radius: 999px;
+    font-family: 'Poppins';
+    color: #fff;
+}
+.projectPostedDetails div:nth-child(1) p{
+    background-color: transparent !important;
+    border: 1px solid #5bc0de;
+    color: #666;
+}
+.projectDetailsTable {
+    margin-top: 2%;
+}
+.projectDetailsTable div{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5px solid #ebebeb;
+}
+.projectDetailsTable div div {
+    width: 50%;
+}
+.projectDetailsTable div .projectTableHeading {
+    width: 45%;
+}
+.projectDetailsTable div .projectTableHeading p{
+    color: #000;
+    font-weight: 600;
+}
+.projectDetailsTable div .projectTableContent {
+    width: 65%;
+}
+.projectDetailsTable div .projectTableContent p{
+    color: #666;
+}
+.projectDetailsTable div div p{
+    font-family: 'Poppins';
+    transform: translateY(10px);
+}
