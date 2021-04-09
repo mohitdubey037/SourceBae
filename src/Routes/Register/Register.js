@@ -18,6 +18,19 @@ const Register = () => {
 
     const registerAs = useHistory().location.pathname.charAt(useHistory().location.pathname.length - 1)
 
+    const signUp = (role, form)=>{
+
+        instance.post(`/api/${role}/auths/signup`,form)
+        .then(function (response) {
+            console.log(response,"signup");
+            if(response.status===200 && response.data.status){
+                alert(response.data.message)
+                localStorage.setItem("AUTHORIZATION",response.data.data.accessToken)
+            }
+          })
+    }
+
+
     const AgencyRegistration = () => {
 
 
@@ -25,24 +38,66 @@ const Register = () => {
         const [step, setStep] = useState(1)
 
         //State Variables to handle Form
-        const [formData, setFormData] = useState({
-            firstName: "",
-            lastName: "",
-            email:"",
-            password:"",
+        const [agencyForm, setAgencyForm] = useState({
+                firstName:"",
+                lastName:"",
+                userName:"",
+                userEmail:"",
+                userPhone: "",
+                countryCode: "+91",
+                password:""
+        })
+
+        const [agencyFormErrors, setAgencyFormErros] = useState({
+            firstNameError:false,
+            lastNameError:false,
+            emailError:false,
+            passwordError:false,
+            phoneError: false,
+            userNameError:false
+            
         })
 
         // const [subForms, setSubForms] = useState([])
 
         //Methods
         const toggleFormTwo = direction => {
+            
             let form1 = document.querySelector('.form__1')
             let form2 = document.querySelector('.form__2')
             form1.classList.toggle('hide__form1')
             form2.classList.toggle('show__form2')
 
-            if(direction === 'next')
+            if(direction === 'next'){
                 setStep(prev => prev + 1)
+                if(!agencyForm.firstName)
+                setAgencyFormErros({
+                    ...agencyFormErrors,
+                    firstnameError:true
+                })
+            else if(!agencyForm.lastName)
+                setAgencyFormErros({
+                    ...agencyFormErrors,
+                    lastnameError:true
+                })
+            else if(!agencyForm.userEmail)
+                setAgencyFormErros({
+                    ...agencyFormErrors,
+                    emailError:true
+                })
+
+            else if(!agencyForm.userPhone)
+                  setAgencyFormErros({
+                    ...agencyFormErrors,
+                    passwordError:true
+                })
+
+            else if(!agencyForm.password)
+                  setAgencyFormErros({
+                    ...agencyFormErrors,
+                    passwordError:true
+                })
+            }
             else
                 setStep(prev => prev - 1)
         }
@@ -75,15 +130,35 @@ const Register = () => {
         //handle onChange Events
         const handleAgencyFormChange = (event)=>{
             const {name, value} = event.target
-            setFormData(
+            setAgencyForm(
                 {
-                    ...formData,
+                    ...agencyForm,
                     [name]:value
                 }
             )
         }
 
-        //API calls
+    
+
+        //API call methods
+        const handleAgencyFormSubmit = ()=>{
+    
+        //Client Signup
+        //=============
+
+        signUp('Agency',agencyForm)
+
+        //Client Creation
+        //===============
+        // localStorage.getItem('AUTHORIZATION') && instance.post(`/api/${ROLE}/clients/create`,{...clientSubForm})
+        // .then(function (response) {
+        //     console.log(response,"create");
+        //     if(response.status===200 && response.data.status){
+        //         alert(response.data.message)
+        //     }
+        // })
+        console.log(agencyForm)
+    }
 
         //JSX
         return (
@@ -97,15 +172,14 @@ const Register = () => {
 
                     <div className="client__formsContainer">
                         <form className = 'client__form form__1' autoComplete = 'off' >
-                            <label htmlFor = 'name'>Your firstname *</label>
+                            <label htmlFor = 'firstName'>Your firstname *</label>
                             <input
                                 type="text"
                                 name="firstName"
-                                placeholder = 'FirstName'
-                                onChange = {(e) => {
-                                handleAgencyFormChange(e)
-                                }}
+                                placeholder = 'First Name'
+                                onChange = {(e) => handleAgencyFormChange(e)}
                                 style = {{
+                                    border : agencyFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
@@ -114,23 +188,46 @@ const Register = () => {
                             <input
                                 type="text"
                                 name="lastName"
-                                placeholder = 'LastName'
-                                onChange = {e => {
-                                   handleAgencyFormChange(e)
-                                }}
+                                placeholder = 'Last Name'
+                                onChange = {(e) => handleAgencyFormChange(e)}
                                 style = {{
+                                    border : agencyFormErrors.lastNameError ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
+
+                            <label htmlFor = 'name'>Username *</label>
+                            <input
+                                type="text"
+                                name="userName"
+                                placeholder = 'Username'
+                                onChange = {(e) => handleAgencyFormChange(e)}
+                                style = {{
+                                    border : agencyFormErrors.userNameError ? '2px solid red' : '1px solid gray',
+                                    transition : '.3s ease'
+                                }}
+                            />
+
                             <label htmlFor = 'email'>Email Address *</label>
                             <input
                                 type="text"
-                                name="email"
+                                name="userEmail"
                                 placeholder = 'Email'
-                                onChange = {e => {
-                                   handleAgencyFormChange(e)
-                                }}
+                                onChange = {(e) => handleAgencyFormChange(e)}
                                 style = {{
+                                    border : agencyFormErrors.emailError ? '2px solid red' : '1px solid gray',
+                                    transition : '.3s ease'
+                                }}
+                            />
+
+                            <label htmlFor = 'phone'>Phone No *</label>
+                            <input
+                                type="text"
+                                name="userPhone"
+                                placeholder = 'Phone No'
+                                onChange = {(e) => handleAgencyFormChange(e)}
+                                style = {{
+                                    border : agencyFormErrors.phoneError ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
@@ -140,14 +237,13 @@ const Register = () => {
                                 type="password"
                                 name="password"
                                 placeholder = 'Create Password'
-                                onChange = {e => {
-                                    handleAgencyFormChange(e)
-                                }}
+                                onChange = {(e) => handleAgencyFormChange(e)}
                                 style = {{
-                                    // border : passworderror ? '2px solid red' : '1px solid gray',
+                                    border : agencyFormErrors.passworderror ? '2px solid red' : '1px solid gray',
                                     transition : '.3s ease'
                                 }}
                             />
+
 
                             <Button
                                 onClick = { () => toggleFormTwo('next') }
@@ -242,11 +338,11 @@ const Register = () => {
                             <label htmlFor = 'social'>LinkedIn</label>
                             <input type="text" name="social" placeholder = 'LinkedIn profile URL'/>
 
-                            <label htmlFor = 'website'>Wesdvfhsgjdfjhbsite</label>
+                            <label htmlFor = 'website'>Your website</label>
                             <input type="text" name="website" placeholder = 'Website URL'/>
 
                             <Button
-                                // onClick = {register}
+                                onClick = {handleAgencyFormSubmit}
                                 style = {{ background : colors.PRIMARY_COLOR , marginTop : '5vh' , color : colors.WHITE , height : '60px' , fontFamily : 'Poppins' , fontSize : '1.2rem' , width : '50%' , borderRadius : '8px' , marginBottom : '5%' }}
                             >
                                 SUBMIT
@@ -398,7 +494,10 @@ const Register = () => {
         //API call methods
         const handleClientFormSubmit = ()=>{
             
-          
+            //Client Signup
+            //=============
+
+            signUp(ROLE,clientForm)
             instance.post(`/api/${ROLE}/auths/signup`,{...clientForm})
             .then(function (response) {
                 console.log(response,"signup");
@@ -408,7 +507,9 @@ const Register = () => {
                 }
               })
 
-            instance.post(`/api/${ROLE}/clients/create`,{...clientSubForm})
+            //Client Creation
+            //===============
+            localStorage.getItem('AUTHORIZATION') && instance.post(`/api/${ROLE}/clients/create`,{...clientSubForm})
             .then(function (response) {
                 console.log(response,"create");
                 if(response.status===200 && response.data.status){
