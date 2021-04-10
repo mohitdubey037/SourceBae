@@ -1,0 +1,150 @@
+.mainInformation{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0 5% 0;
+}
+.innerInformation{
+    width: 99%;
+
+}
+.editableBtn{
+    width: 100%;
+    margin-bottom: 3%;
+}
+.editableBtn button{
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    font-family: 'Poppins';
+    color: #fff;
+    background-color: #02044a;
+    border-radius: 999px;
+    font-weight: bold;
+    margin-right: 2%;
+}
+.editableBtn button:nth-child(2){
+    background-color: transparent;
+    border: 1px solid #5cb85c;
+    color: #5cb85c;
+    transition: 0.3s ease-in-out;
+}
+.editableBtn button:nth-child(2):hover{
+    background-color: #5cb85c;
+    color: #fff;
+}
+.editableBtn button i{
+    margin-right: 10px;
+}
+.informationForm{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.informationInputForm{
+    width: 60%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    padding: 1rem 1rem 1rem 1rem;
+    position: relative;
+    border-radius: 15px;
+}
+.informationBorder{
+    position: absolute;
+    width: 8px;
+    height: 95%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #02044a;
+    border-radius: 999px;
+}
+.informationImageForm{
+    width: 40%;
+}
+.informationInputForm div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     border-bottom: 1px solid #ebebeb;
+}
+.informationInputForm div p{
+    margin-top: 16px;
+    font-size: 1.1rem;
+    color: #999;
+}
+.informationInputForm div input{
+    width: 50%;
+    height: 40px;
+    font-family: 'Poppins';
+    padding-left: 10px;
+    font-size: 1.1rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #000;
+}
+
+.informationImageForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.informationImageForm div{
+    width: 70%;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 5%;
+    min-height: 26vh;
+    border-radius: 15px;
+    background-color: #fff;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+}
+.informationImageForm div p{
+    font-size: 2rem;
+    /* font-family: 'Fredoka One', cursive; */
+    font-family: 'Poppins';
+    font-weight: bold;
+    color:#000;
+}
+.informationImageForm div h2{
+    color: #000;
+}
+.informationImageForm div img{
+    position: absolute;
+    width: 20%;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%,-10%); */
+    bottom: 10px;
+    right: 10px;
+}
+.brochureBorder{
+    position: absolute;
+    width: 8px;
+    height: 93%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #02044a;
+    border-radius: 999px;
+}
+.roundedCircle{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    z-index: -1;
+    top: -40%;
+    left: -20%;
+}

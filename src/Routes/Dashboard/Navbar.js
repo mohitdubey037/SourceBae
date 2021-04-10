@@ -43,7 +43,7 @@ function Navbar(props) {
                     </div>
                     <div className="clientInfo">
                         <div className="clientCompany">
-                            <img src={clientLogo} alt="" />
+                            <img onClick={() => window.location.href = "/agency-profile"} src={clientLogo} alt="" />
                         </div>
                         <div className="clientNotification">
                             <img src={notificationIcon} alt="" />

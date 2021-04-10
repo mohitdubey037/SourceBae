@@ -109,6 +109,39 @@
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
 }
 
+@media (max-width:768px){
+
+    .innerProjectsMatched{
+        width: 98%;
+    }
+    .projectCard{
+        padding-left: 2%;
+    }
+    .innerProjectsMatched .shapeImage{
+       display: none;
+    }
+    .projectNumber{
+        top: 0;
+        right: 20px;
+    }
+    .projectNumber p{
+    font-size: 5rem;
+    transform: translate(0%,-20%);
+    color: #9999;
+    /* font-family: 'Londrina Solid', cursive; */
+    font-family: 'Fredoka One', cursive;
+    transition: 0.3s ease-in-out;
+    }
+    .projectCardHeading{
+        flex-direction: column-reverse;
+    }
+    .projectCardHeading .projectHeadingName{
+    width: 100%;
+    margin: 5% 0;
+    }
+    
+}
+
 .projectPostedDetails{
     margin-top: 0.5%;
     display: flex;
@@ -156,4 +189,16 @@
 .projectDetailsTable div div p{
     font-family: 'Poppins';
     transform: translateY(10px);
+}
+
+
+@media (max-width:768px){
+    .projectPostedDetails{
+    flex-direction: column;
+    width: 100%;
+    }
+    .projectPostedDetails div{
+        margin-right: 0%;
+        text-align: center;
+    }
 }

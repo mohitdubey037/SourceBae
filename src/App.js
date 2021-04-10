@@ -13,6 +13,7 @@ import Register from './Routes/Register/Register';
 // import AddDeveloper from './Routes/Dashboard/AddDeveloper.js/AddDeveloper';
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
 import Quotation from './Routes/Dashboard/Quotation/Quotation';
+import AgencyProfile from './Routes/Dashboard/AgencyProfile';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -27,6 +28,7 @@ const App = () => (
     <Route exact path="/dashboard" component={Dashboard} />
     <Route exact path="/add-developer" component={AddingDeveloper} />
     <Route exact path="/quotation" component={Quotation} />
+    <Route exact path="/agency-profile" component={AgencyProfile} />
   </Switch>
 )
 
