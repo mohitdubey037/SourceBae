@@ -68,6 +68,7 @@
     width: 80px;
     object-fit: contain;
     mix-blend-mode: multiply;
+    cursor: pointer;
 }
 .clientInfo .clientNotification{
     margin: 0 1.2rem;

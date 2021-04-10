@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.mainProfileHeaderImage{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.innerProfileHeaderImage{
+    width: 100%;
+    height: 25vh;
+    overflow: hidden;
+    background-color: #02044a;
+}
+.innerProfileHeaderImage img{
+    width: 100%;
+    object-fit: contain;
+}
+.mainAgencyProfileInfo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.innerAgencyProfileInfo{
+    width: 90%;
+    display: flex;
+}
+.mainAgencyProfileLogo{
+    width: 20%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3%;
+    transform: translateY(-50px);
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    background-color: #fff;
+}
+.innerAgencyProfileLogo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+}
+.innerAgencyProfileLogo img{
+    width: 70%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.mainAgencyProfileContent{
+    margin-top: 0.5%;
+    width: 80%;
+}
+.agencyName{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px dashed #ebebeb;
+    padding-bottom: 5px;
+}
+.agencyNameURL{
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+}
+.agencyAddress{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    /* background-color: red; */
+}
+.agencyAddress i{
+    margin-right: 10px;
+}
+.agencyAddress span{
+    font-family: 'Poppins';
+    color: #444;
+}
+.agencyName h2{
+    font-family: 'Poppins';
+    font-weight: bolder;
+}
+.agencyName p{
+    font-family: 'Poppins';
+    margin-left: 2%;
+    color: #999;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+.agencyProfileConstantPoints{
+    display: flex;
+    margin-top: 1%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.pointContent p,.pointContent h4{
+    font-family: 'Poppins';
+}
+.pointContent p{
+    color: #777;
+    font-family: 'Poppins';
+    font-size: 0.8rem;
+}
+.pointContent h4{
+    font-family: 'Poppins';
+    font-size: 1rem;
+    transform: translateY(-10px);
+}
+
+
+
+
+
+
+
+
+.mainAgencyProfileDesc{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.innerAgencyProfileDesc{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.leftAgencyProfileDesc{
+    width: 73%;
+}
+
+.innerAgencyProfileDesc h2{
+    font-family: 'Poppins';
+    font-weight: bolder;
+    color: #555;
+}
+.leftAgencyProfileDesc p{
+    font-family: 'Poppins';
+    width: 100%;
+    color: #555;
+}
+.agencyProfileIndustry{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2%;
+}
+.agencyProfileIndustry p{
+    width: 20%;
+    background-color: #5bc0de;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    font-family: 'Poppins';
+    color: #fff;
+    font-weight: bold;
+    padding: 0.2rem 0;
+}
+
+.rightAgencyProfileDesc{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.monthyView{
+    width: 80%;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    height: 150px;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    border-radius: 15px;
+}
+.monthyView h3{
+    font-family: 'Poppins';
+    color: #02044a;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.monthyView p{
+    font-size: 5rem;
+    font-family: 'Fredoka One', cursive;
+    transform: translateY(-20px);
+}
+.monthyView img{
+    position: absolute;
+    width: 30%;
+    bottom: 0;
+    right: 0;
+}
+.monthBorder{
+    position: absolute;
+    width: 8px;
+    height: 90%;
+    background-color: #02044a;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 999px;
+}
