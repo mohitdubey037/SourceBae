@@ -19,17 +19,23 @@ import instance from "../../Constants/axiosConstants"
 
 const dateStyles = makeStyles((theme) => ({
     container: {
-      display: 'flex',
-      flexWrap: 'wrap',
+        display: 'flex',
+        flexWrap: 'wrap',
+        outline: `auto`,
+        border: `1px solid gray`,
+        color: `gray`,
+        textColor: `gray`,
+        marginTop: `1vh`,
+        padding: theme.spacing(2),
     },
     textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      width: 470,
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: `28vw`,
+        textColor: `gray`
+
     },
-  }));
+}));
 
 const Register = () => {
 
@@ -68,7 +74,7 @@ const Register = () => {
             password: ""
         })
 
-        const [agencyFormErrors, setAgencyFormErros] = useState({
+        const [agencyFormErrors, setAgencyFormErrors] = useState({
             firstNameError: false,
             lastNameError: false,
             emailError: false,
@@ -78,6 +84,12 @@ const Register = () => {
 
         })
         // const [subForms, setSubForms] = useState([])
+        const [createAgencyForm, setCreateAgencyForm] = useState({
+            agencyName: "",
+            agencyTeamSize: "",
+            incorporationDate: "",
+            socialPlatformDetails: []
+        })
 
         //Methods
         const toggleFormTwo = direction => {
@@ -90,29 +102,29 @@ const Register = () => {
             if (direction === 'next') {
                 setStep(prev => prev + 1)
                 if (!agencyForm.firstName)
-                    setAgencyFormErros({
+                    setAgencyFormErrors({
                         ...agencyFormErrors,
                         firstnameError: true
                     })
                 else if (!agencyForm.lastName)
-                    setAgencyFormErros({
+                    setAgencyFormErrors({
                         ...agencyFormErrors,
                         lastnameError: true
                     })
                 else if (!agencyForm.userEmail)
-                    setAgencyFormErros({
+                    setAgencyFormErrors({
                         ...agencyFormErrors,
                         emailError: true
                     })
 
                 else if (!agencyForm.userPhone)
-                    setAgencyFormErros({
+                    setAgencyFormErrors({
                         ...agencyFormErrors,
                         passwordError: true
                     })
 
                 else if (!agencyForm.password)
-                    setAgencyFormErros({
+                    setAgencyFormErrors({
                         ...agencyFormErrors,
                         passwordError: true
                     })
@@ -132,6 +144,14 @@ const Register = () => {
             )
         }
 
+
+        const handleCreateAgencyForm = (event) => {
+            const { name, value } = event.target
+            setCreateAgencyForm({
+                ...createAgencyForm,
+                [name]: value
+            })
+        }
 
 
         //API call methods
@@ -259,16 +279,19 @@ const Register = () => {
                             <label htmlFor='social'>Team Strength</label>
                             <input type="text" name="social" placeholder='LinkedIn profile URL' />
 
+                            <label htmlFor='social'>Incorporation Date</label>
                             <form className={dateClasses.container} noValidate>
                                 <TextField
                                     id="incorporation_date"
-                                    label="Incorporation Date"
                                     type="date"
+                                    name="incorporationDate"
                                     defaultValue="2017-05-24"
+                                    value={createAgencyForm.incorporationDate}
                                     className={dateClasses.textField}
                                     InputLabelProps={{
-                                    shrink: true,
+                                        shrink: true,
                                     }}
+                                    onChange={(event) => { handleCreateAgencyForm(event) }}
                                 />
                             </form>
                             <label htmlFor='website'>Website</label>
