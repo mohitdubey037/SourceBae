@@ -1,0 +1,73 @@
+.mainRules{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0;
+    flex-direction: column;
+}
+.innerRules{
+    width: 100%;
+    
+}
+
+.rulesCard{
+    width: 100%;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    padding: 2rem;
+    border-radius: 20px;
+}
+.rulesUpper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2%;
+}
+.rulesUpper h4{
+    font-family: 'Poppins';
+    font-size: 1rem;
+    color: #999;
+}
+.rulesUpper p{
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #02044a;
+}
+.openTiming i,.weekendOpening i{
+    margin-right: 4px;
+}
+
+
+.questionPart{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2%;
+}
+.leftQuestion{
+    width: 70%;
+}
+.rulesMark{
+    width: 40%;
+    padding-left: 40px;
+    margin-top: -4px;
+}
+.rulesMark i{
+    margin-right: 10%;
+    font-size: 2rem;
+}
+.leftQuestion p{
+    font-family: 'Poppins';
+    font-size: 1.1rem;
+    color: #666;
+}
+.leftQuestion p::before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #666;
+    display: inline-block;
+    margin-right: 10px;
+}
