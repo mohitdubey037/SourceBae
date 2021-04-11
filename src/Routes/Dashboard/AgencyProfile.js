@@ -5,6 +5,7 @@ import './AgencyProfile.css'
 import profileHeader from '../../assets/images/Quotation/profileHeader.jpg'
 import agencyLogo from '../../assets/images/Logo/agencyLogo.svg'
 import growth from '../../assets/images/Logo/growth.svg'
+import document from '../../assets/images/Logo/document.png'
 import Received from './Quotation/Received'
 import Responded from './Quotation/Responded'
 import ProjectesMatched from './Quotation/ProjectesMatched'
@@ -12,6 +13,10 @@ import received from '../../assets/images/Quotation/received.png'
 import responded from '../../assets/images/Quotation/responded.png'
 import matched from '../../assets/images/Quotation/matched.png'
 import Information from './AgencyProfile/Information'
+import SkillsSet from './AgencyProfile/SkillsSet'
+import Rules from './AgencyProfile/Rules'
+
+import { FilePicker } from 'react-file-picker'
 
 function AgencyProfile() {
     return (
@@ -34,8 +39,13 @@ function AgencyProfile() {
                     <div className="mainAgencyProfileContent">
                         <div className="agencyName">
                             <div className="agencyNameURL">
-                                <h2>One Plus</h2>
-                                <p>https://oneplus.com</p>
+                                <div className="agencyDEtails">
+                                    <h2>One Plus</h2>
+                                    <p>https://oneplus.com</p>
+                                </div>
+                                <div className="verifiedStatus">
+                                    <i class="fa fa-check" aria-hidden="true"></i> <span>Verified</span>
+                                </div>
                             </div>
                             <div className="agencyAddress">
                                 <i class="fa fa-thumb-tack" aria-hidden="true"></i>
@@ -85,6 +95,24 @@ function AgencyProfile() {
                             <h3>Monthly Profile View</h3>
                             <p>05</p>
                         </div>
+                        <div className="monthyView">
+                            <div className="monthBorder"></div>
+                            <h3>Agency Document</h3>
+
+                            {/* <button> */}
+                            <img style={{ position: 'relative' }} src={document} alt="" />
+
+                            <FilePicker
+                                extensions={['pdf']}
+                                onChange={FileObject => { }}
+                                onError={errMsg => { }}
+                            >
+                                <button className="uploadButton">
+                                    <i class="fa fa-upload" aria-hidden="true"></i>Upload
+                                </button>
+
+                            </FilePicker>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,7 +129,7 @@ function AgencyProfile() {
                                 <img src={responded} alt="" /> Skills Set
                             </button>
                             <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-                                <img src={matched} alt="" /> Verification
+                                <img src={matched} alt="" /> Agency Rules
                             </button>
                         </div>
                     </nav>
@@ -110,10 +138,10 @@ function AgencyProfile() {
                             <Information />
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <Responded />
+                            <SkillsSet />
                         </div>
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <ProjectesMatched />
+                            <Rules />
                         </div>
                     </div>
                 </div>
