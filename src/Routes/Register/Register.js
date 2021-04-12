@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 
+
 // Axios Import
 import instance from "../../Constants/axiosConstants"
 
@@ -46,11 +47,7 @@ const Register = () => {
 
         instance.post(`/api/${role}/auths/signup`, form)
             .then(function (response) {
-                console.log(response, "signup");
-                if (response.status === 200 && response.data.status) {
-                    alert(response.data.message)
-                    localStorage.setItem("AUTHORIZATION", response.data.data.accessToken)
-                }
+                localStorage.setItem('AUTHORIZATION',response.token)
             })
     }
 
@@ -455,14 +452,15 @@ const Register = () => {
             //=============
 
             signUp(ROLE, clientForm)
-            instance.post(`/api/${ROLE}/auths/signup`, { ...clientForm })
-                .then(function (response) {
-                    console.log(response, "signup");
-                    if (response.status === 200 && response.data.status) {
-                        alert(response.data.message)
-                        localStorage.setItem("AUTHORIZATION", response.data.data.accessToken)
-                    }
-                })
+
+            // instance.post(`/api/${ROLE}/auths/signup`, { ...clientForm })
+            //     .then(function (response) {
+            //         console.log(response, "signup");
+            //         if (response.status === 200 && response.data.status) {
+            //             alert(response.data.message)
+            //             localStorage.setItem("AUTHORIZATION", response.data.data.accessToken)
+            //         }
+            //     })
 
             //Client Creation
             //===============
