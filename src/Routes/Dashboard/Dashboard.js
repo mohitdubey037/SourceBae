@@ -8,6 +8,7 @@ import clientProfile from '../../assets/images/Logo/clientProfile.jpeg'
 import quotation from '../../assets/images/Logo/quotation.png'
 import addDeveloper from '../../assets/images/Logo/addDeveloper.png'
 import teamCreation from '../../assets/images/Logo/teamCreation.png'
+import cancel from '../../assets/images/LandingPage/cancel.svg'
 
 //material-ui
 import Button from '@material-ui/core/Button';
@@ -140,6 +141,15 @@ const Dashboard = () => {
         <>
             {/* Navbar  */}
             <Navbar headingInfo="Dashboard" />
+
+            <div className="mainUpdateVerify">
+                <div className="innerMainVerify">
+                    {/* <div>
+                        <img src={cancel} alt="" />
+                    </div> */}
+                    <p>Please<span onClick={() => window.location.href = "/agency-form-one"} >Update & Verify </span> your profile to use our services.</p>
+                </div>
+            </div>
 
             <div className="mainClientsOptions">
                 <div className="innerClientsOptions">
