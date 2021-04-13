@@ -11,11 +11,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios'
 
-
+import { Redirect } from "react-router";
 
 // Axios Import
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
+import { toast } from 'react-toastify'
 
 //Future Imports
 // Step , StepLabel , Stepper , Typography , StepContent , InputLabel , FormControl , TextField , Select , Input , MenuItem
@@ -137,15 +138,12 @@ const Register = () => {
     }
 
     //API call methods
-    const signUp = (role, form) => {
+    const signUp = async (role, form) => {
 
         return new Promise((resolve,reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
             .then(function (response) {
-                console.log(response.accessToken,"response")
-                // localStorage.removeItem('Authorization')
                 localStorage.setItem('Authorization', response.accessToken)
-
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                 resolve(1)
             })
@@ -153,23 +151,11 @@ const Register = () => {
     }
 
 
-    // const createProfileApi = (Role, api_param_const, createForm) => {
-
-    //     console.log(api_param_const,"param")
-    //     instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
-    //         .then(function (response) {
-    //             console.log(response, "create");
-
-    //         })
-    // }
-
     const createProfileApi = (Role, api_param_const, createForm) => {
 
-        console.log(api_param_const,"param")
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
         .then(function (response) {
-            console.log(response, "create");
-
+            window.location.replace("/dashboard")
         })
     }
 
@@ -177,11 +163,9 @@ const Register = () => {
 
         const apiRole = helper.lowerize(Role)
     
-        signUp(apiRole, Form)
-        
-        // Promise.all([promise])
-        // .then( res => {
-        //     console.log(res)
+        let signUpPromise = signUp(apiRole, Form)
+        Promise.all([signUpPromise])
+        .then( ()=> {
             let api_param_const = ``
             let api_create_form = createForm
             if (apiRole === `client`)
@@ -192,21 +176,19 @@ const Register = () => {
                     "stepsCompleted": 1,
                     ...createForm
                 }
-            // }
-
-            // createProfileApi(apiRole , api_param_const , api_create_form)
-            
+                
             if(localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined)
+
             {
                 instance.defaults.headers.common['Authorization'] = "Bearer "+ localStorage.getItem('Authorization');
                 createProfileApi(apiRole, api_param_const, api_create_form)
             }
-
+    
             else{
-                console.log("Hi")
+                toast.error("Token not set",{autoClose: 2000})
             }
-        // (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) && createProfileApi(apiRole, api_param_const, api_create_form)
-        }
+            }
+        })
     }
 
 
@@ -230,7 +212,6 @@ const Register = () => {
 
         if (direction === 'next') {
             setStep(prev => prev + 1)
-            console.log(signupForm)
             if (!signupForm.firstName)
                 setSignupFormErrors({
                     ...signupFormErrors,

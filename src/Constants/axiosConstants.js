@@ -20,7 +20,6 @@ axios
   .use(function (config) {
     if (localStorage.getItem('Authorization')) {
 
-        console.log("hi")
         instance.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem('Authorization')}`
     }
     else{
