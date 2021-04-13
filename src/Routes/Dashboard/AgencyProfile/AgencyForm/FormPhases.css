@@ -1,0 +1,228 @@
+.mainFormPhase{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+}
+.innerFormPhase{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins';
+    position: relative;
+    z-index: 1;
+}
+.stragightLine{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    /* border-bottom: 1px dashed #000; */
+    z-index: -1;
+    background-color: #000;
+    top: 50%;
+    transform: translateY(-100%);
+}
+.formPhaseCards{
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+.formPhaseCards h6{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 2px;
+    font-size: 0.9rem;
+    font-family: 'Fredoka One', cursive !important;
+}
+.formPhaseCards span{
+    margin-top: -5px;
+    font-weight: bold;
+    color: #999;
+    margin-left: 10px;
+}
+
+
+
+/* Agency Form one  */
+
+.mainPersonelDetailsForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5%;
+     background-image: linear-gradient(310deg, rgba(131, 131, 131,0.02) 0%, rgba(131, 131, 131,0.02) 13%,transparent 13%, transparent 46%,rgba(112, 112, 112,0.02) 46%, rgba(112, 112, 112,0.02) 100%),linear-gradient(21deg, rgba(18, 18, 18,0.02) 0%, rgba(18, 18, 18,0.02) 47%,transparent 47%, transparent 82%,rgba(178, 178, 178,0.02) 82%, rgba(178, 178, 178,0.02) 100%),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+     padding-bottom: 5%;
+}
+.innerPersonelDetailsForm{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+}
+.innerPersonelDetailsForm p{
+    font-family: 'Josefin Sans';
+    font-size: 1.2rem;
+}
+.innerPersonelDetailsForm input{
+    font-family: 'Poppins';
+    font-size: 0.9rem;
+}
+.innerPersonelDetailsForm input:focus{
+    border: 1px solid #ebebeb !important;
+    outline: none;
+}
+.leftPersonelDetailsForm{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+.innerLeftPersonelDetailsForm{
+    width: 90%;
+}
+.rightPersonelDetailsForm{
+    width: 30%;
+    background-color: #02044a;
+    margin: 1rem 0;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    padding: 0.9rem;
+    overflow: hidden;
+    position: relative;
+}
+.innerLeftPersonelDetailsForm .formContentPartOne{
+    display: flex;
+    justify-content: space-between;
+}
+.getAgencyLogo,.getAgencyDesc{
+    width: 48%;
+}
+.getAgencyLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px dashed #000;
+}
+.getAgencyLogo img{
+    width: 20%;
+    margin-bottom: 5%;
+}
+.getAgencyLogo button{
+    padding: 0.3rem 1rem;
+    outline: none;
+    border: none;
+    background-color: #02044a;
+    color: #fff;
+    font-family: 'Poppins';
+    border-radius: 999px;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+}
+.getAgencyDesc p{
+    font-size: 1rem;
+    /* font-weight: bold; */
+}
+.getAgencyDesc textarea{
+    border: 1px solid #ebebeb;
+    width: 100%;
+    padding-left: 10px;
+}
+.getAgencyDesc textarea:focus{
+    outline: none;
+}
+.formContentPartTwo{
+    margin-top: 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.getOwnerName{
+    width: 48%;
+    line-height: 0.5;
+}
+.formContentPartTwo input{
+    width: 100%;
+    height: 45px;
+    padding: 0 0.8rem;
+    border: 1px solid #ebebeb;
+    transition: 0.3s ease-in-out;
+}
+.addressField{
+    width: 100% !important;
+}
+.addressField div{
+    width: 100% !important;
+}
+#gettingAddress{
+    width: 100% !important;
+}
+.rightPersonelDetailsForm span{
+    font-size: 1.7rem;
+    font-family: 'Poppins';
+    font-weight: bold;
+    margin-bottom: 7%;
+    margin-top: 5%;
+}
+.rightPersonelDetailsForm p{
+    font-size: 1rem;
+    font-family: 'Poppins';
+    margin-bottom: 7%;
+    text-align: center;
+    color: #fad647;
+}
+.rightPersonelDetailsForm img{
+    position: absolute;
+}
+.nextBtn{
+    width: 100%;
+    margin-top: 3%;
+    display: flex;
+    justify-content: flex-end;
+}
+.nextBtn button{
+    padding: 0.4rem 1rem;
+    background-color: #02044a;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Poppins';
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.nextBtn button i{
+    margin-left: 10px;
+    margin-top: 2px;
+}
+.businessModal{
+    width: 90%;
+    bottom: 0;
+}
+.squareShape{
+    width: 25%;
+    bottom: 20px;
+    left: 20px;
+}

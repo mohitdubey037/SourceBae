@@ -14,6 +14,8 @@ import Register from './Routes/Register/Register';
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
 import Quotation from './Routes/Dashboard/Quotation/Quotation';
 import AgencyProfile from './Routes/Dashboard/AgencyProfile';
+import AgencyForm1 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm1';
+import AgencyForm2 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm2';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -28,6 +30,8 @@ const App = () => (
     <Route exact path="/add-developer" component={AddingDeveloper} />
     <Route exact path="/quotation" component={Quotation} />
     <Route exact path="/agency-profile" component={AgencyProfile} />
+    <Route exact path="/agency-form-one" component={AgencyForm1} />
+    <Route exact path="/agency-form-two" component={AgencyForm2} />
   </Switch>
 )
 
