@@ -4,15 +4,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
+//REDUX
+
+import { Provider } from 'react-redux';
+
+import store from './redux/store';
 
 
 ReactDOM.render(
-  <BrowserRouter>
-    <ToastContainer/>
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <ToastContainer />
+      <App />
+    </BrowserRouter>
+  </Provider>
+  
   , document.getElementById('root')
 );
 
