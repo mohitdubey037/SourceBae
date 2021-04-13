@@ -1,21 +1,21 @@
-import { INCREMENT, DECREMENT } from './register.types';
+import { AGENCY, CLIENT } from './register.types';
 
 
-export const increaseCounter = () => {
+export const registerAgency = () => {
 
     return {
 
-        type: INCREMENT,
+        type: AGENCY,
 
     };
 
 };
 
-export const decreaseCounter = () => {
+export const registerClient = () => {
 
     return {
 
-       type: DECREMENT,
+       type: CLIENT,
 
     };
 

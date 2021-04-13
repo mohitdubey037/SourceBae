@@ -19,12 +19,11 @@ import AgencyProfile from './Routes/Dashboard/AgencyProfile';
 // import Description from './component/Description';
 // import RequirementExtended from './component/RequirementExtended';
 // import ThankyouPage from './component/ThankyouPage';
-
 const App = () => (
   <Switch>
     <Route exact path='/' component={Mainhomepage} />
     <Route exact path='/signup' component={Signup} />
-    <Route exact path='/register:as' component={Register} />
+    <Route exact path='/register:role' component={Register} />
     <Route exact path="/dashboard" component={Dashboard} />
     <Route exact path="/add-developer" component={AddingDeveloper} />
     <Route exact path="/quotation" component={Quotation} />

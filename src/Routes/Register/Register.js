@@ -2,18 +2,20 @@
 //Imports
 
 import { Button } from '@material-ui/core'
-import React, { useState } from 'react'
-import { useHistory } from 'react-router'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 import logotext from '../../assets/images/SignUp/logotext.svg'
 import './register.css'
 import colors from '../../Constants/colors'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import axios from 'axios'
 
 
 
 // Axios Import
 import instance from "../../Constants/axiosConstants"
+import * as helper from "../../shared/helper"
 
 //Future Imports
 // Step , StepLabel , Stepper , Typography , StepContent , InputLabel , FormControl , TextField , Select , Input , MenuItem
@@ -42,8 +44,9 @@ const Register = () => {
 
     //Regular Variables
     const dateClasses = dateStyles();
-    const registerAs = useHistory().location.pathname.charAt(useHistory().location.pathname.length - 1)
 
+    let { role } = useParams();
+    role = helper.capitalize(helper.cleanParam(role))
 
     //State Variables
     const [linkedIn, setLinkedIn] = useState({
@@ -56,38 +59,13 @@ const Register = () => {
         platformLink: ""
     })
 
-    // Agency State Variables//
-    const [agencyForm, setAgencyForm] = useState({
-        firstName: "",
-        lastName: "",
-        userName: "",
-        userEmail: "",
-        userPhone: "",
-        countryCode: "+91",
-        password: ""
-    })
 
-    const [createAgencyForm, setCreateAgencyForm] = useState({
-        agencyName: "",
-        agencyTeamSize: "",
-        incorporationDate: "",
-        socialPlatformDetails: []
-    })
-
-    const [agencyFormErrors, setAgencyFormErrors] = useState({
-        firstNameError: false,
-        lastNameError: false,
-        emailError: false,
-        passwordError: false,
-        phoneError: false,
-        userNameError: false
-
-    })
+ 
     //#######################//
-   
+
 
     //Client state varaibles//
-    const [clientForm, setClientForm] = useState({
+    const [signupForm, setSignupForm] = useState({
         firstName: "",
         lastName: "",
         userName: "",
@@ -97,13 +75,7 @@ const Register = () => {
         password: ""
     })
 
-    const [createClientForm, setCreateClientForm] = useState({
-        userDesignation: "",
-        companyName: "",
-        socialPlatformDetails: []
-    })
-
-    const [clientFormErrors, setClientFormErrors] = useState({
+    const [signupFormErrors, setSignupFormErrors] = useState({
         firstNameError: false,
         lastNameError: false,
         emailError: false,
@@ -111,45 +83,41 @@ const Register = () => {
         phoneError: false,
         userNameError: false
 
+    })
+
+    const [profileDetails, setProfileDetails] = useState({
+        socialPlatformDetails:[]
     })
 
     //#######################//
 
     //Methods
-  
-    const handleCreateProfile = (event, Role) => {
+
+    const handleCreateProfile = (event) => {
         const { name, value } = event.target
+        setProfileDetails(
+            {
+                ...profileDetails,
+                [name]:value
+            }
+        )
 
-        if(Role==='agency'){
-            setCreateAgencyForm({
-                ...createAgencyForm,
-                [name]: value
-            })
-        }
-
-        else if(Role==='client'){
-            setCreateClientForm({
-                ...createClientForm,
-                [name]: value
-            })
-        }
     }
 
 
     const handleSocialPlatform = (event) => {
-        const { name, id, value } = event.target
+        const { name, value } = event.target
         if (name === "linkedIn") {
             setLinkedIn({
-                platformId: id,
+                platformName: name,
                 platformLink: value
             })
 
         }
         else if (name === "website") {
 
-            console.log("hiii")
             setSite({
-                platformId: id,
+                platformName: name,
                 platformLink: value
             })
 
@@ -157,441 +125,172 @@ const Register = () => {
 
     }
 
-   
-
-    const setForm = (event, Role) => {
-        console.log("set Form", Role)
+    const setForm = (event) => {
         const { name, value } = event.target
-        if (Role === 'agency') {
 
-            console.log("in agency", Role)
-            setAgencyForm(
+            setSignupForm(
                 {
-                    ...agencyForm,
+                    ...signupForm,
                     [name]: value
                 }
             )
-        }
-
-        else if (Role === 'client') {
-            setClientForm({
-                ...clientForm,
-                [name]: value
-            })
-        }
     }
 
     //API call methods
     const signUp = (role, form) => {
 
-        instance.post(`/api/${role}/auths/signup`, form)
+        return new Promise((resolve,reject) => {
+            instance.post(`/api/${role}/auths/signup`, form)
             .then(function (response) {
-                localStorage.setItem('AUTHORIZATION', response.token)
+                console.log(response.accessToken,"response")
+                // localStorage.removeItem('Authorization')
+                localStorage.setItem('Authorization', response.accessToken)
+
+                axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
+                resolve(1)
             })
+        })
     }
 
-    
-    const createProfileApi = (Role, api_param_const, createForm) => {
-        instance.post(`/api/${Role}/${api_param_const}/create`, { ...createForm })
-            .then(function (response) {
-                console.log(response, "create");
 
-            })
+    // const createProfileApi = (Role, api_param_const, createForm) => {
+
+    //     console.log(api_param_const,"param")
+    //     instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
+    //         .then(function (response) {
+    //             console.log(response, "create");
+
+    //         })
+    // }
+
+    const createProfileApi = (Role, api_param_const, createForm) => {
+
+        console.log(api_param_const,"param")
+        instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
+        .then(function (response) {
+            console.log(response, "create");
+
+        })
     }
 
     const handleSubmit = (Role, Form, createForm) => {
 
+        const apiRole = helper.lowerize(role)
+    
+        let promise = signUp(apiRole, Form)
+        
+        Promise.all([promise])
+        .then( res => {
+            console.log(res)
+            let api_param_const = ``
+            let api_create_form = createForm
+            if (apiRole === `client`)
+                api_param_const = `clients`
+            else if (apiRole === `agency`){
+                api_param_const = `agencies`
+                api_create_form = {
+                    "stepsCompleted": 1,
+                    ...createForm
+                }
+            }
 
-        signUp(Role, Form)
+            // createProfileApi(apiRole , api_param_const , api_create_form)
+            
+            if(localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined)
+            {
+                instance.defaults.headers.common['Authorization'] = "Bearer "+ localStorage.getItem('Authorization');
+                createProfileApi(apiRole, api_param_const, api_create_form)
+            }
 
-        let api_param_const = ``
-
-        if (Role === `client`)
-            api_param_const = `clients`
-        else if (Role === `agency`)
-            api_param_const = `agencies`
-
-        localStorage.getItem('AUTHORIZATION') && createProfileApi(Role, api_param_const, createForm)
-
+            else{
+                console.log("Hi")
+            }
+        // (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) && createProfileApi(apiRole, api_param_const, api_create_form)
+        })
     }
 
 
+    const [step, setStep] = useState(1)
 
 
-    const AgencyRegistration = () => {
+    //Methods
 
-        const Role = `agency`
-        //State Variables
-        const [step, setStep] = useState(1)
+    const createRoleString = (role) => {
+
+        role = role.charAt(0).toUpperCase() + role.slice(1)
+        if (role === 'Agency')
+            return `an ${role}`
+        else
+            return `a ${role}`
+    }
 
 
-        //Methods
-        const toggleFormTwo = direction => {
+    const toggleForms = direction => {
 
+
+        if (direction === 'next') {
+            setStep(prev => prev + 1)
+            console.log(signupForm)
+            if (!signupForm.firstName)
+                setSignupFormErrors({
+                    ...signupFormErrors,
+                    firstnameError: true
+                })
+            else if (!signupForm.lastName)
+                setSignupFormErrors({
+                    ...signupFormErrors,
+                    lastnameError: true
+                })
+            else if (!signupForm.userEmail)
+                setSignupFormErrors({
+                    ...signupFormErrors,
+                    emailError: true
+                })
+
+            else if (!signupForm.userPhone)
+                setSignupFormErrors({
+                    ...signupFormErrors,
+                    passwordError: true
+                })
+
+            else if (!signupForm.password)
+                setSignupFormErrors({
+                    ...signupFormErrors,
+                    passwordError: true
+                })
+            else{
+                let form1 = document.querySelector('.form__1')
+                let form2 = document.querySelector('.form__2')
+                form1.classList.toggle('hide__form1')
+                form2.classList.toggle('show__form2')
+                // setStep(prev => prev + 1)
+            }
+        }
+        else {
             let form1 = document.querySelector('.form__1')
             let form2 = document.querySelector('.form__2')
             form1.classList.toggle('hide__form1')
             form2.classList.toggle('show__form2')
-
-            if (direction === 'next') {
-                setStep(prev => prev + 1)
-                if (!agencyForm.firstName)
-                    setAgencyFormErrors({
-                        ...agencyFormErrors,
-                        firstnameError: true
-                    })
-                else if (!agencyForm.lastName)
-                    setAgencyFormErrors({
-                        ...agencyFormErrors,
-                        lastnameError: true
-                    })
-                else if (!agencyForm.userEmail)
-                    setAgencyFormErrors({
-                        ...agencyFormErrors,
-                        emailError: true
-                    })
-
-                else if (!agencyForm.userPhone)
-                    setAgencyFormErrors({
-                        ...agencyFormErrors,
-                        passwordError: true
-                    })
-
-                else if (!agencyForm.password)
-                    setAgencyFormErrors({
-                        ...agencyFormErrors,
-                        passwordError: true
-                    })
-            }
-            else
-                setStep(prev => prev - 1)
+            setStep(prev => prev - 1)
         }
-
-
-        //JSX
-        return (
-            <div className='form__area'>
-
-                <div className="client__form">
-                    <div style={{ width: '100%', textAlign: 'center', marginTop: '10%' }}>
-                        <div className="form__title"><h6>Register as an Agency</h6></div>
-                        <div className="title__subtext"><p>For the purpose of industry regulation, your details <br /> are required</p></div>
-                    </div>
-
-                    <div className="client__formsContainer">
-                        <form className='client__form form__1' autoComplete='off' >
-                            <label htmlFor='firstName'>Your firstname *</label>
-                            <input
-                                type="text"
-                                name="firstName"
-                                placeholder='First Name'
-                                onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: agencyFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='name'>Your lastname *</label>
-                            <input
-                                type="text"
-                                name="lastName"
-                                placeholder='Last Name'
-                                onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: agencyFormErrors.lastNameError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='name'>Username *</label>
-                            <input
-                                type="text"
-                                name="userName"
-                                placeholder='Username'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: agencyFormErrors.userNameError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='email'>Email Address *</label>
-                            <input
-                                type="text"
-                                name="userEmail"
-                                placeholder='Email'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: agencyFormErrors.emailError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='phone'>Phone No *</label>
-                            <input
-                                type="text"
-                                name="userPhone"
-                                placeholder='Phone No'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: agencyFormErrors.phoneError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='password'>Create Password*</label>
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder='Create Password'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: agencyFormErrors.passworderror ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-
-                            <Button
-                                onClick={() => toggleFormTwo('next')}
-                                style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px' }}
-                            >
-                                NEXT
-                            </Button>
-                        </form>
-
-                        <form autoComplete='off' className="client__form form__2">
-
-                            <label htmlFor='desig'>Agency Name</label>
-                            <input type="text" name="desig" placeholder='Designation' />
-
-                            <label htmlFor='company'>Agency Location</label>
-                            <input type="text" name="company" placeholder='Company' />
-
-                            <label htmlFor='social'>Team Strength</label>
-                            <input type="number" name="social" placeholder='Team Strength' />
-
-                            <label htmlFor='social'>Incorporation Date</label>
-                            <form className={dateClasses.container} noValidate>
-                                <TextField
-                                    id="incorporation_date"
-                                    type="date"
-                                    name="incorporationDate"
-                                    defaultValue="2017-05-24"
-                                    value={createAgencyForm.incorporationDate}
-                                    className={dateClasses.textField}
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    onChange={(event, Role) => { setForm(event, Role) }}
-                                />
-                            </form>
-                            <label htmlFor='website'>Website</label>
-                            <input type="text" name="website" placeholder='Website URL' />
-
-                            <Button
-                                onClick={handleSubmit(Role, agencyForm, createAgencyForm)}
-                                style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
-                            >
-                                SUBMIT
-                            </Button>
-                        </form>
-
-                    </div>
-                </div>
-
-                <div className="existing_accountText">
-                    <p>Personal Info</p>
-                    <p>Step {step} of 4</p>
-                </div>
-            </div>
-        )
     }
 
-    const ClientRegistration = () => {
+    //#########################//
 
-        const Role = `client`
-        //Methods
-        const toggleForms = direction => {
-            let primaryForm = document.querySelector('.client__primaryForm')
-            let secondaryForm = document.querySelector('.client__secondaryForm')
+    useEffect(()=>{
+        setProfileDetails({
+            ...profileDetails,
+            socialPlatformDetails:[site]
+            
+        })
+    },[linkedIn,site])
 
-            if (direction === 'next') {
-                if (!clientForm.firstName)
-                    setClientFormErrors({
-                        ...clientFormErrors,
-                        firstnameError: true
-                    })
-                else if (!clientForm.lastName)
-                    setClientFormErrors({
-                        ...clientFormErrors,
-                        lastnameError: true
-                    })
-                else if (!clientForm.userEmail)
-                    setClientFormErrors({
-                        ...clientFormErrors,
-                        emailError: true
-                    })
+    useEffect(()=>{
+        console.log(localStorage.getItem(`Authorization`))
+        localStorage.removeItem(`Authorization`)
+    },[])
 
-                else if (!clientForm.userPhone)
-                    setClientFormErrors({
-                        ...clientFormErrors,
-                        passwordError: true
-                    })
-
-                else if (!clientForm.password)
-                    setClientFormErrors({
-                        ...clientFormErrors,
-                        passwordError: true
-                    })
-
-
-                else {
-                    primaryForm.classList.toggle('hide__primaryForm')
-                    secondaryForm.classList.toggle('show__secondaryForm')
-                }
-            }
-
-            else {
-                primaryForm.classList.toggle('hide__primaryForm')
-                secondaryForm.classList.toggle('show__secondaryForm')
-            }
-        }
-
-     
-        // JSX
-        return (
-            <div className='form__area'>
-
-                <div className="client__form">
-                    <div style={{ width: '100%', textAlign: 'center', marginTop: '10%' }}>
-                        <div className="form__title"><h6>Register as a Client</h6></div>
-                        <div className="title__subtext"><p>For the purpose of industry regulation, your details <br /> are required</p></div>
-                    </div>
-
-                    <div className="client__formsContainer">
-                        <form className='client__form client__primaryForm' autoComplete='off' >
-                            <label htmlFor='firstName'>Your firstname *</label>
-                            <input
-                                type="text"
-                                name="firstName"
-                                placeholder='First Name'
-                                onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: clientFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='name'>Your lastname *</label>
-                            <input
-                                type="text"
-                                name="lastName"
-                                placeholder='Last Name'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: clientFormErrors.lastNameError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='name'>Username *</label>
-                            <input
-                                type="text"
-                                name="userName"
-                                placeholder='Username'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: clientFormErrors.userNameError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='email'>Email Address *</label>
-                            <input
-                                type="text"
-                                name="userEmail"
-                                placeholder='Email'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: clientFormErrors.emailError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='phone'>Phone No *</label>
-                            <input
-                                type="text"
-                                name="userPhone"
-                                placeholder='Phone No'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: clientFormErrors.phoneError ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <label htmlFor='password'>Create Password*</label>
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder='Create Password'
-                                 onChange={(e) => setForm(e,Role)}
-                                style={{
-                                    border: clientFormErrors.passworderror ? '2px solid red' : '1px solid gray',
-                                    transition: '.3s ease'
-                                }}
-                            />
-
-                            <Button
-                                onClick={() => toggleForms('next')}
-                                style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px' }}
-                            >
-                                NEXT
-                            </Button>
-                        </form>
-
-                        <form autoComplete='off' className="client__form client__secondaryForm">
-
-                            <div style={{ width: '80%' }}>
-                                <Button
-                                    onClick={() => toggleForms('prev')}
-                                    // style = {{ background : colors.GRAY_TEXT , width : '8%' , color : colors.WHITE , height : '30px' , borderRadius : '999px' , border : 'none' }}
-                                    style={{ background: 'none', border: 'none' }}
-                                >
-                                    <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
-                                </Button>
-                            </div>
-
-                            <label htmlFor='userDesignation'>Designation</label>
-                            <input type="text" name="userDesignation" placeholder='Designation' onChange={(event, Role) => handleCreateProfile(event, Role)} />
-
-                            <label htmlFor='companyName'>Company</label>
-                            <input type="text" name="companyName" placeholder='Company' onChange={(event, Role) => handleCreateProfile(event, Role)} />
-
-                            <label htmlFor='socialPlatformDetails'>LinkedIn</label>
-                            <input type="text" name="linkedIn" id="605cc02bc813cb3d2e96a326" placeholder='LinkedIn profile URL' value={linkedIn.platformLink} onChange={(event,Role) => handleSocialPlatform(event, Role)} />
-
-                            <label htmlFor='website'>Website</label>
-                            <input type="text" name="website" id="606d4fb838ce8802aa8f3b5f" placeholder='Website URL' value={site.platformLink} onChange={(event, Role) => handleSocialPlatform(event, Role)} />
-
-                            <Button
-                                onClick={() => { handleSubmit(Role, clientForm, createClientForm) }}
-                                style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
-                            >
-                                SUBMIT
-                            </Button>
-                        </form>
-                    </div>
-                </div>
-
-                <div className="existing_accountText">
-                    <p>Personal Info</p>
-                </div>
-            </div>
-        )
-    }
+    const roleString = createRoleString(role)
     return (
         <div className='client__registrationContainer'>
             <div className="image__container">
@@ -603,12 +302,177 @@ const Register = () => {
             </div>
 
             <div style={{ flex: .63 }}>
-                {
-                    registerAs === 'y' ? <AgencyRegistration /> : <ClientRegistration />
-                }
+                <div className='form__area'>
+
+                    <div className="client__form">
+                        <div style={{ width: '100%', textAlign: 'center', marginTop: '10%' }}>
+                            <div className="form__title"><h6>Register as {roleString}</h6></div>
+                            <div className="title__subtext"><p>For the purpose of industry regulation, your details <br /> are required</p></div>
+                        </div>
+
+                        <div className="client__formsContainer">
+
+                            <form className='client__form form__1' autoComplete='off' >
+                                {/* <label htmlFor='firstName'>Your firstname *</label> */}
+                                <input
+                                    type="text"
+                                    name="firstName"
+                                    placeholder='First Name'
+                                    onChange={(e) => setForm(e)}
+                                    style={{
+                                        border: signupFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
+                                        transition: '.3s ease'
+                                    }}
+                                />
+
+                                {/* <label htmlFor='name'>Your lastname *</label> */}
+                                <input
+                                    type="text"
+                                    name="lastName"
+                                    placeholder='Last Name'
+                                    onChange={(e) => setForm(e)}
+                                    style={{
+                                        border: signupFormErrors.lastNameError ? '2px solid red' : '1px solid gray',
+                                        transition: '.3s ease'
+                                    }}
+                                />
+
+                                {/* <label htmlFor='name'>Username *</label> */}
+                                <input
+                                    type="text"
+                                    name="userName"
+                                    placeholder='Username'
+                                    onChange={(e) => setForm(e)}
+                                    style={{
+                                        border: signupFormErrors.userNameError ? '2px solid red' : '1px solid gray',
+                                        transition: '.3s ease'
+                                    }}
+                                />
+
+                                {/* <label htmlFor='email'>Email Address *</label> */}
+                                <input
+                                    type="text"
+                                    name="userEmail"
+                                    placeholder='Email'
+                                    onChange={(e) => setForm(e)}
+                                    style={{
+                                        border: signupFormErrors.emailError ? '2px solid red' : '1px solid gray',
+                                        transition: '.3s ease'
+                                    }}
+                                />
+
+                                {/* <label htmlFor='phone'>Phone No *</label> */}
+                                <input
+                                    type="text"
+                                    name="userPhone"
+                                    placeholder='Phone No'
+                                    onChange={(e) => setForm(e)}
+                                    style={{
+                                        border: signupFormErrors.phoneError ? '2px solid red' : '1px solid gray',
+                                        transition: '.3s ease'
+                                    }}
+                                />
+
+                                {/* <label htmlFor='password'>Create Password*</label> */}
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder='Create Password'
+                                    onChange={(e) => setForm(e)}
+                                    style={{
+                                        border: signupFormErrors.passworderror ? '2px solid red' : '1px solid gray',
+                                        transition: '.3s ease'
+                                    }}
+                                />
+
+
+                                <Button
+                                    onClick={() => toggleForms('next')}
+                                    style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px' }}
+                                >
+                                    NEXT
+                                </Button>
+                            </form>
+
+                            <form autoComplete='off' className="client__form form__2">
+                            <div style={{ width: '80%' }}>
+                                <Button
+                                    onClick={() => toggleForms('prev')}
+                                    style={{ background: 'none', border: 'none' }}
+                                >
+                                    <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
+                                </Button>
+                            </div>
+
+
+                                {
+                                    role === `Agency` ? <>
+                                        {/* <label htmlFor='agencyName'>{role} Name</label> */}
+                                        <input
+                                            type="text"
+                                            name="agencyName"
+                                            placeholder='Agency Name'
+                                            onChange={(event) => handleCreateProfile(event)} />
+
+                                        {/* <label htmlFor='social'>Team Strength</label> */}
+                                        <input
+                                            type="number"
+                                            name="agencyTeamSize"
+                                            placeholder='Team Strength'
+                                            onChange={(event) => handleCreateProfile(event)} />
+
+                                        {/* <label htmlFor='social'>Incorporation Date</label> */}
+                                        <form className={dateClasses.container} noValidate>
+                                            <TextField
+                                                id="incorporation_date"
+                                                type="date"
+                                                name="incorporationDate"
+                                                defaultValue="2017-05-24"
+                                                value={signupForm.incorporationDate}
+                                                className={dateClasses.textField}
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                                onChange={(event) => handleCreateProfile(event)} />
+                                        </form>
+                                    </>
+                                        :
+                                        <>
+                                            {/* <label htmlFor='desig'>{role} Name</label> */}
+
+                                            <input type="text" name="userDesignation" placeholder='User Designation'  onChange={(event) => handleCreateProfile(event)} />
+
+                                            {/* <label htmlFor='company'>{role} Location</label> */}
+                                            <input type="text" name="companyName" placeholder='Company Name' onChange={(event) => handleCreateProfile(event)} />
+
+                                        </>
+
+                                }
+
+
+                                {/* <label htmlFor='website'>Website</label> */}
+                                <input type="text" name="website" id="606d4fb838ce8802aa8f3b5f" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+
+                                <Button
+                                    onClick={()=>handleSubmit(role, signupForm, profileDetails)}
+                                    style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
+                                >
+                                    SUBMIT
+                                 </Button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div className="existing_accountText">
+                        <p>Personal Info</p>
+                        <p>Step {step} of 4</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
-export default React.memo(Register)
+
+export default (Register)

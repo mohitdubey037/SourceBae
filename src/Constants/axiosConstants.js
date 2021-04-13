@@ -5,22 +5,32 @@ import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 var url = config.url.API_URL
+
 const instance = axios.create({
     baseURL: url,
-    headers: {'Authorization': `Bearer ${localStorage.getItem('AUTHORIZATION')}`},
     params:{},
     data:{},
     // cancelToken: new CancelToken(function (cancel) {
     // }),
 })
 
-instance.interceptors.request.use(function (response){
-    // console.log(response)
-    return response
-}, function (error){
+axios
+  .interceptors
+  .request
+  .use(function (config) {
+    if (localStorage.getItem('Authorization')) {
 
-    return Promise.reject(error)
-})
+        console.log("hi")
+        instance.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem('Authorization')}`
+    }
+    else{
+        console.log(localStorage.getItem('Authorization'),"token")
+    }
+    return config;
+  }, function (error) {
+    return Promise.reject(error);
+  });
+
 instance.interceptors.response.use(function (response){
     if(response.status===201){
         toast.success(response.data.message, {
