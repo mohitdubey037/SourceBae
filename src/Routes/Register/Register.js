@@ -40,53 +40,190 @@ const dateStyles = makeStyles((theme) => ({
 
 const Register = () => {
 
+    //Regular Variables
     const dateClasses = dateStyles();
     const registerAs = useHistory().location.pathname.charAt(useHistory().location.pathname.length - 1)
 
+
+    //State Variables
+    const [linkedIn, setLinkedIn] = useState({
+        platformId: "",
+        platformLink: ""
+    })
+
+    const [site, setSite] = useState({
+        platformId: "",
+        platformLink: ""
+    })
+
+    // Agency State Variables//
+    const [agencyForm, setAgencyForm] = useState({
+        firstName: "",
+        lastName: "",
+        userName: "",
+        userEmail: "",
+        userPhone: "",
+        countryCode: "+91",
+        password: ""
+    })
+
+    const [createAgencyForm, setCreateAgencyForm] = useState({
+        agencyName: "",
+        agencyTeamSize: "",
+        incorporationDate: "",
+        socialPlatformDetails: []
+    })
+
+    const [agencyFormErrors, setAgencyFormErrors] = useState({
+        firstNameError: false,
+        lastNameError: false,
+        emailError: false,
+        passwordError: false,
+        phoneError: false,
+        userNameError: false
+
+    })
+    //#######################//
+   
+
+    //Client state varaibles//
+    const [clientForm, setClientForm] = useState({
+        firstName: "",
+        lastName: "",
+        userName: "",
+        userEmail: "",
+        userPhone: "",
+        countryCode: "+91",
+        password: ""
+    })
+
+    const [createClientForm, setCreateClientForm] = useState({
+        userDesignation: "",
+        companyName: "",
+        socialPlatformDetails: []
+    })
+
+    const [clientFormErrors, setClientFormErrors] = useState({
+        firstNameError: false,
+        lastNameError: false,
+        emailError: false,
+        passwordError: false,
+        phoneError: false,
+        userNameError: false
+
+    })
+
+    //#######################//
+
+    //Methods
+  
+    const handleCreateProfile = (event, Role) => {
+        const { name, value } = event.target
+
+        if(Role==='agency'){
+            setCreateAgencyForm({
+                ...createAgencyForm,
+                [name]: value
+            })
+        }
+
+        else if(Role==='client'){
+            setCreateClientForm({
+                ...createClientForm,
+                [name]: value
+            })
+        }
+    }
+
+
+    const handleSocialPlatform = (event) => {
+        const { name, id, value } = event.target
+        if (name === "linkedIn") {
+            setLinkedIn({
+                platformId: id,
+                platformLink: value
+            })
+
+        }
+        else if (name === "website") {
+
+            console.log("hiii")
+            setSite({
+                platformId: id,
+                platformLink: value
+            })
+
+        }
+
+    }
+
+   
+
+    const setForm = (event, Role) => {
+        console.log("set Form", Role)
+        const { name, value } = event.target
+        if (Role === 'agency') {
+
+            console.log("in agency", Role)
+            setAgencyForm(
+                {
+                    ...agencyForm,
+                    [name]: value
+                }
+            )
+        }
+
+        else if (Role === 'client') {
+            setClientForm({
+                ...clientForm,
+                [name]: value
+            })
+        }
+    }
+
+    //API call methods
     const signUp = (role, form) => {
 
         instance.post(`/api/${role}/auths/signup`, form)
             .then(function (response) {
-                localStorage.setItem('AUTHORIZATION',response.token)
+                localStorage.setItem('AUTHORIZATION', response.token)
             })
     }
+
+    
+    const createProfileApi = (Role, api_param_const, createForm) => {
+        instance.post(`/api/${Role}/${api_param_const}/create`, { ...createForm })
+            .then(function (response) {
+                console.log(response, "create");
+
+            })
+    }
+
+    const handleSubmit = (Role, Form, createForm) => {
+
+
+        signUp(Role, Form)
+
+        let api_param_const = ``
+
+        if (Role === `client`)
+            api_param_const = `clients`
+        else if (Role === `agency`)
+            api_param_const = `agencies`
+
+        localStorage.getItem('AUTHORIZATION') && createProfileApi(Role, api_param_const, createForm)
+
+    }
+
+
 
 
     const AgencyRegistration = () => {
 
-
+        const Role = `agency`
         //State Variables
         const [step, setStep] = useState(1)
 
-        //State Variables to handle Form
-
-
-        const [agencyForm, setAgencyForm] = useState({
-            firstName: "",
-            lastName: "",
-            userName: "",
-            userEmail: "",
-            userPhone: "",
-            countryCode: "+91",
-            password: ""
-        })
-
-        const [agencyFormErrors, setAgencyFormErrors] = useState({
-            firstNameError: false,
-            lastNameError: false,
-            emailError: false,
-            passwordError: false,
-            phoneError: false,
-            userNameError: false
-
-        })
-        // const [subForms, setSubForms] = useState([])
-        const [createAgencyForm, setCreateAgencyForm] = useState({
-            agencyName: "",
-            agencyTeamSize: "",
-            incorporationDate: "",
-            socialPlatformDetails: []
-        })
 
         //Methods
         const toggleFormTwo = direction => {
@@ -130,46 +267,6 @@ const Register = () => {
                 setStep(prev => prev - 1)
         }
 
-        //handle onChange Events
-        const handleAgencyFormChange = (event) => {
-            const { name, value } = event.target
-            setAgencyForm(
-                {
-                    ...agencyForm,
-                    [name]: value
-                }
-            )
-        }
-
-
-        const handleCreateAgencyForm = (event) => {
-            const { name, value } = event.target
-            setCreateAgencyForm({
-                ...createAgencyForm,
-                [name]: value
-            })
-        }
-
-
-        //API call methods
-        const handleAgencyFormSubmit = () => {
-
-            //Agency Signup
-            //=============
-
-            signUp('Agency', agencyForm)
-
-            //Agency Creation
-            //===============
-            // localStorage.getItem('AUTHORIZATION') && instance.post(`/api/${ROLE}/clients/create`,{...clientSubForm})
-            // .then(function (response) {
-            //     console.log(response,"create");
-            //     if(response.status===200 && response.data.status){
-            //         alert(response.data.message)
-            //     }
-            // })
-            console.log(agencyForm)
-        }
 
         //JSX
         return (
@@ -188,7 +285,7 @@ const Register = () => {
                                 type="text"
                                 name="firstName"
                                 placeholder='First Name'
-                                onChange={(e) => handleAgencyFormChange(e)}
+                                onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: agencyFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -200,7 +297,7 @@ const Register = () => {
                                 type="text"
                                 name="lastName"
                                 placeholder='Last Name'
-                                onChange={(e) => handleAgencyFormChange(e)}
+                                onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: agencyFormErrors.lastNameError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -212,7 +309,7 @@ const Register = () => {
                                 type="text"
                                 name="userName"
                                 placeholder='Username'
-                                onChange={(e) => handleAgencyFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: agencyFormErrors.userNameError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -224,7 +321,7 @@ const Register = () => {
                                 type="text"
                                 name="userEmail"
                                 placeholder='Email'
-                                onChange={(e) => handleAgencyFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: agencyFormErrors.emailError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -236,7 +333,7 @@ const Register = () => {
                                 type="text"
                                 name="userPhone"
                                 placeholder='Phone No'
-                                onChange={(e) => handleAgencyFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: agencyFormErrors.phoneError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -248,7 +345,7 @@ const Register = () => {
                                 type="password"
                                 name="password"
                                 placeholder='Create Password'
-                                onChange={(e) => handleAgencyFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: agencyFormErrors.passworderror ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -266,7 +363,6 @@ const Register = () => {
 
                         <form autoComplete='off' className="client__form form__2">
 
-
                             <label htmlFor='desig'>Agency Name</label>
                             <input type="text" name="desig" placeholder='Designation' />
 
@@ -274,7 +370,7 @@ const Register = () => {
                             <input type="text" name="company" placeholder='Company' />
 
                             <label htmlFor='social'>Team Strength</label>
-                            <input type="text" name="social" placeholder='LinkedIn profile URL' />
+                            <input type="number" name="social" placeholder='Team Strength' />
 
                             <label htmlFor='social'>Incorporation Date</label>
                             <form className={dateClasses.container} noValidate>
@@ -288,14 +384,14 @@ const Register = () => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    onChange={(event) => { handleCreateAgencyForm(event) }}
+                                    onChange={(event, Role) => { setForm(event, Role) }}
                                 />
                             </form>
                             <label htmlFor='website'>Website</label>
                             <input type="text" name="website" placeholder='Website URL' />
 
                             <Button
-                                onClick={handleAgencyFormSubmit}
+                                onClick={handleSubmit(Role, agencyForm, createAgencyForm)}
                                 style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                             >
                                 SUBMIT
@@ -315,44 +411,7 @@ const Register = () => {
 
     const ClientRegistration = () => {
 
-
-        //State Variables
-        const [clientForm, setClientForm] = useState({
-            firstName: "",
-            lastName: "",
-            userName: "",
-            userEmail: "",
-            userPhone: "",
-            countryCode: "+91",
-            password: ""
-        })
-
-        const [clientFormErrors, setClientFormErrors] = useState({
-            firstNameError: false,
-            lastNameError: false,
-            emailError: false,
-            passwordError: false,
-            phoneError: false,
-            userNameError: false
-
-        })
-
-        const [clientSubForm, setClientSubForm] = useState({
-            userDesignation: "",
-            companyName: "",
-            socialPlatformDetails: []
-        })
-
-        const [linkedIn, setLinkedIn] = useState({
-            platformId: "",
-            platformLink: ""
-        })
-        const [site, setSite] = useState({
-            platformId: "",
-            platformLink: ""
-        })
-
-        const ROLE = 'client'
+        const Role = `client`
         //Methods
         const toggleForms = direction => {
             let primaryForm = document.querySelector('.client__primaryForm')
@@ -400,87 +459,7 @@ const Register = () => {
             }
         }
 
-        //handle onChange Events
-
-        const handleClientFormChange = (event) => {
-            const { name, value } = event.target
-
-            setClientForm(
-                {
-                    ...clientForm,
-                    [name]: value
-                }
-            )
-        }
-
-
-        const handleSocialPlatform = (event) => {
-            const { name, id, value } = event.target
-            if (name === "linkedIn") {
-                setLinkedIn({
-                    platformId: id,
-                    platformLink: value
-                })
-
-            }
-            else if (name === "website") {
-
-                console.log("hiii")
-                setSite({
-                    platformId: id,
-                    platformLink: value
-                })
-
-            }
-
-        }
-
-
-        const handleClientSubFormChange = (event) => {
-            const { name, value } = event.target
-            setClientSubForm({
-                ...clientSubForm,
-                [name]: value
-            })
-        }
-
-
-        //API call methods
-        const handleClientFormSubmit = () => {
-
-            //Client Signup
-            //=============
-
-            signUp(ROLE, clientForm)
-
-            // instance.post(`/api/${ROLE}/auths/signup`, { ...clientForm })
-            //     .then(function (response) {
-            //         console.log(response, "signup");
-            //         if (response.status === 200 && response.data.status) {
-            //             alert(response.data.message)
-            //             localStorage.setItem("AUTHORIZATION", response.data.data.accessToken)
-            //         }
-            //     })
-
-            //Client Creation
-            //===============
-            localStorage.getItem('AUTHORIZATION') && instance.post(`/api/${ROLE}/clients/create`, { ...clientSubForm })
-                .then(function (response) {
-                    console.log(response, "create");
-                    if (response.status === 200 && response.data.status) {
-                        alert(response.data.message)
-                    }
-                })
-            console.log(clientForm)
-        }
-
-        useEffect(() => {
-            setClientSubForm({
-                ...clientSubForm,
-                socialPlatformDetails: [linkedIn, site]
-            })
-        }, [linkedIn, site])
-
+     
         // JSX
         return (
             <div className='form__area'>
@@ -498,7 +477,7 @@ const Register = () => {
                                 type="text"
                                 name="firstName"
                                 placeholder='First Name'
-                                onChange={(e) => handleClientFormChange(e)}
+                                onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: clientFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -510,7 +489,7 @@ const Register = () => {
                                 type="text"
                                 name="lastName"
                                 placeholder='Last Name'
-                                onChange={(e) => handleClientFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: clientFormErrors.lastNameError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -522,7 +501,7 @@ const Register = () => {
                                 type="text"
                                 name="userName"
                                 placeholder='Username'
-                                onChange={(e) => handleClientFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: clientFormErrors.userNameError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -534,7 +513,7 @@ const Register = () => {
                                 type="text"
                                 name="userEmail"
                                 placeholder='Email'
-                                onChange={(e) => handleClientFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: clientFormErrors.emailError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -546,7 +525,7 @@ const Register = () => {
                                 type="text"
                                 name="userPhone"
                                 placeholder='Phone No'
-                                onChange={(e) => handleClientFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: clientFormErrors.phoneError ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -558,7 +537,7 @@ const Register = () => {
                                 type="password"
                                 name="password"
                                 placeholder='Create Password'
-                                onChange={(e) => handleClientFormChange(e)}
+                                 onChange={(e) => setForm(e,Role)}
                                 style={{
                                     border: clientFormErrors.passworderror ? '2px solid red' : '1px solid gray',
                                     transition: '.3s ease'
@@ -586,19 +565,19 @@ const Register = () => {
                             </div>
 
                             <label htmlFor='userDesignation'>Designation</label>
-                            <input type="text" name="userDesignation" placeholder='Designation' onChange={(event) => handleClientSubFormChange(event)} />
+                            <input type="text" name="userDesignation" placeholder='Designation' onChange={(event, Role) => handleCreateProfile(event, Role)} />
 
                             <label htmlFor='companyName'>Company</label>
-                            <input type="text" name="companyName" placeholder='Company' onChange={(event) => handleClientSubFormChange(event)} />
+                            <input type="text" name="companyName" placeholder='Company' onChange={(event, Role) => handleCreateProfile(event, Role)} />
 
                             <label htmlFor='socialPlatformDetails'>LinkedIn</label>
-                            <input type="text" name="linkedIn" id="605cc02bc813cb3d2e96a326" placeholder='LinkedIn profile URL' value={linkedIn.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+                            <input type="text" name="linkedIn" id="605cc02bc813cb3d2e96a326" placeholder='LinkedIn profile URL' value={linkedIn.platformLink} onChange={(event,Role) => handleSocialPlatform(event, Role)} />
 
                             <label htmlFor='website'>Website</label>
-                            <input type="text" name="website" id="606d4fb838ce8802aa8f3b5f" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+                            <input type="text" name="website" id="606d4fb838ce8802aa8f3b5f" placeholder='Website URL' value={site.platformLink} onChange={(event, Role) => handleSocialPlatform(event, Role)} />
 
                             <Button
-                                onClick={handleClientFormSubmit}
+                                onClick={() => { handleSubmit(Role, clientForm, createClientForm) }}
                                 style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                             >
                                 SUBMIT
@@ -632,4 +611,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default React.memo(Register)
