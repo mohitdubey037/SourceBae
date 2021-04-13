@@ -175,13 +175,13 @@ const Register = () => {
 
     const handleSubmit = (Role, Form, createForm) => {
 
-        const apiRole = helper.lowerize(role)
+        const apiRole = helper.lowerize(Role)
     
-        let promise = signUp(apiRole, Form)
+        signUp(apiRole, Form)
         
-        Promise.all([promise])
-        .then( res => {
-            console.log(res)
+        // Promise.all([promise])
+        // .then( res => {
+        //     console.log(res)
             let api_param_const = ``
             let api_create_form = createForm
             if (apiRole === `client`)
@@ -192,7 +192,7 @@ const Register = () => {
                     "stepsCompleted": 1,
                     ...createForm
                 }
-            }
+            // }
 
             // createProfileApi(apiRole , api_param_const , api_create_form)
             
@@ -206,7 +206,7 @@ const Register = () => {
                 console.log("Hi")
             }
         // (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) && createProfileApi(apiRole, api_param_const, api_create_form)
-        })
+        }
     }
 
 
@@ -286,7 +286,6 @@ const Register = () => {
     },[linkedIn,site])
 
     useEffect(()=>{
-        console.log(localStorage.getItem(`Authorization`))
         localStorage.removeItem(`Authorization`)
     },[])
 
