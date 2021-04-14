@@ -91,7 +91,7 @@
 .developerTechNames p{
     padding: 0.1rem 0.5rem;
     border-radius: 999px;
-    background-color: #02044a;
+    background-color: #73c2fb;
     color: #fff;
     font-family: 'Poppins';
     margin-right: 20px;
@@ -128,7 +128,7 @@
 .developerResume div button{
     padding: 0.2rem 1rem;
     border-radius: 999px;
-    background-color: #02044a;
+    background-color: #73c2fb;
     color: #fff;
     font-family: 'Poppins';
     font-size: 0.8rem;
@@ -161,7 +161,7 @@
     white-space: nowrap;
     padding-right: 0;
     margin-right: 0;
-    border: 1px solid #f5f5f5 !important;
+    /* border: 1px solid #f5f5f5 !important; */
     margin-left: 0 ;
     padding-left: 0;
 }

@@ -53,8 +53,7 @@
     padding-left: 10px;
     font-size: 1.2rem;
     outline: none;
-    border: none;
-    border-bottom: 1px solid #000;
+    border: 1px solid #ebebeb;
     margin-bottom: 3%;
 }
 .questionFields button{
@@ -69,14 +68,14 @@
 }
 .recetlyAskedQuestion{
     margin-top: 5%;
-    border: 1px solid #ebebeb;
+    /* border: 1px solid #ebebeb; */
     padding: 1rem;
 }
 .recetlyAskedQuestion h2{
     font-family: 'Poppins';
     font-weight: bold;
     font-size: 1.2rem;
-    border-bottom:  1px solid #999;
+    border-bottom:  1px dashed #ebebeb;
 }
 .recetlyAskedQuestion div{
     margin-top: 3%;
@@ -84,7 +83,7 @@
 .recetlyAskedQuestion h3{
     font-family: 'Josefin Sans';
     color: #666;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 .recetlyAskedQuestion p{
     font-family: 'Poppins';
@@ -267,7 +266,7 @@
 }
 .agencyProfileIndustry p{
     width: 20%;
-    background-color: #5bc0de;
+    background-color: #73c2fb;
     margin-right: 5%;
     display: flex;
     justify-content: center;
