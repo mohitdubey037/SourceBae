@@ -19,6 +19,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Navbar from './Navbar'
 
+import { makeStyles } from '@material-ui/core/styles';
+import Select from '@material-ui/core/Select';
+
 import Tooltip from 'react-power-tooltip'
 
 
@@ -29,6 +32,8 @@ const Dashboard = () => {
     const [isPopover, setIsPopover] = useState(false);
     const [popindex, setPopIndex] = useState('');
 
+    const [age, setAge] = React.useState('');
+
     const handleClick = (event) => {
         console.log(event)
         setAnchorEl(event.currentTarget);
@@ -36,6 +41,10 @@ const Dashboard = () => {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleChange = (event) => {
+        setAge(event.target.value);
     };
 
 
@@ -202,10 +211,22 @@ const Dashboard = () => {
                             <h2>Your Projects</h2>
                         </div>
                         <div className="filtering">
-                            <div className="filterBtn">
+                            <div className="filterBtn" id="demo-simple-select-label">
                                 <h4>Filter</h4>
-                                <div> <FilterListIcon /> </div>
+                                {/* <div> <FilterListIcon /> </div> */}
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={age}
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value={0}>All</MenuItem>
+                                    <MenuItem value={10}>Completed</MenuItem>
+                                    <MenuItem value={20}>Pending</MenuItem>
+                                    <MenuItem value={30}>Cancelled</MenuItem>
+                                </Select>
                             </div>
+
                         </div>
                     </div>
                     <div className="allProjects">

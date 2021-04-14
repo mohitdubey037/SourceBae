@@ -31,6 +31,7 @@
 
 .oneSourcingLogo div img{
     width: 70%;
+    cursor: pointer;
 }
 
 .dashboardHeading div{
@@ -82,6 +83,7 @@
     align-items: center;
     overflow: hidden;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 .clientInfo .clientNotification img{
     width: 50%;

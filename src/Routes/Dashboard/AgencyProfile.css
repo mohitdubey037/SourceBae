@@ -11,11 +11,98 @@
     height: 25vh;
     overflow: hidden;
     background-color: #02044a;
+    position: relative;
 }
 .innerProfileHeaderImage img{
     width: 100%;
     object-fit: contain;
 }
+.innerProfileHeaderImage div{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+.innerProfileHeaderImage div p{
+    color: #fff;
+    font-family: 'Poppins';
+    text-decoration: underline;
+    cursor: pointer;
+}
+.innerProfileHeaderImage div p i{
+    margin-right: 10px;
+}
+
+
+.mainAskQuestion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.innerAskQuestion{
+    width: 100%;
+}
+.innerAskQuestion h1{
+    font-family: 'Poppins';
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.questionFields input{
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+    margin-bottom: 3%;
+}
+.questionFields button{
+    padding: 0.5rem 1rem;
+    background-color: #02044a;
+    color: #fff;
+    font-family: 'Poppins';
+    font-weight: bold;
+    border-radius: 999px;
+    outline: none;
+    border: none;
+}
+.recetlyAskedQuestion{
+    margin-top: 5%;
+    border: 1px solid #ebebeb;
+    padding: 1rem;
+}
+.recetlyAskedQuestion h2{
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom:  1px solid #999;
+}
+.recetlyAskedQuestion div{
+    margin-top: 3%;
+}
+.recetlyAskedQuestion h3{
+    font-family: 'Josefin Sans';
+    color: #666;
+    font-size: 1.5rem;
+}
+.recetlyAskedQuestion p{
+    font-family: 'Poppins';
+    color: #000;
+    font-weight: bold;
+}
+.customOverlay {
+  background: rgba(0,0,0,0.6) !important;
+}
+.customModal {
+  background: #fff !important;
+  min-width: 70vw !important;
+  width: 100%;
+  border-radius: 20px;
+}
+
+
+
 .mainAgencyProfileInfo{
     width: 100%;
     display: flex;
