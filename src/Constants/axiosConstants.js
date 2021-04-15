@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 var url = config.url.API_URL
 
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
 const instance = axios.create({
     baseURL: url,
     params:{},
@@ -13,22 +14,6 @@ const instance = axios.create({
     // cancelToken: new CancelToken(function (cancel) {
     // }),
 })
-
-axios
-  .interceptors
-  .request
-  .use(function (config) {
-    if (localStorage.getItem('Authorization')) {
-
-        instance.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem('Authorization')}`
-    }
-    else{
-        console.log(localStorage.getItem('Authorization'),"token")
-    }
-    return config;
-  }, function (error) {
-    return Promise.reject(error);
-  });
 
 instance.interceptors.response.use(function (response){
     if(response.status===201 || response.status===200){
