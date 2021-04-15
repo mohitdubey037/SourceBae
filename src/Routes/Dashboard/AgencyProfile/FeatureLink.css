@@ -1,0 +1,75 @@
+
+
+.mainFeatureLink{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.innerFeatureLink{
+    width: 85%;
+}
+.featureCard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 220px;
+    background-color: #fff;
+    box-shadow: 0 1px 26px 1px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 5%;
+}
+.featureCardDetail{
+    width: 65%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+}
+.featureCardImage{
+    width: 35%;
+    /* overflow: hidden; */
+    height: inherit;
+    min-height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.featureCardImage img{
+    width: 100%;
+    min-height: 220px;
+    object-fit: cover;
+    transition: 0.3s ease-in-out;
+}
+.featureCardDate{
+    width: 30%;
+}
+.featureCardDetail h6{
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: #999;
+}
+.featureCardDetail h6::after{
+    content: '';
+    display: inline-block;
+    height: 40px;
+    width: 2px;
+    margin-left: 10px;
+    background-color: #ebebeb;
+    align-items: center;
+    transform: translateY(13px);
+}
+.featureCardDetail h1{
+    font-family: 'Poppins';
+    font-weight: bold;
+    margin-left: 10px;
+}
+.featureCard:hover{
+    /* box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2); */
+}
+.featureCard:hover img{
+    transform: scale(1.1);
+}

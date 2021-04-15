@@ -13,10 +13,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+
+
+const useStyles = makeStyles((theme) => ({
+    typography: {
+        padding: theme.spacing(2),
+    },
+}));
+
 
 function Navbar(props) {
-
+    const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(false);
+    const [isNotification, setIsNotification] = React.useState(null);
 
     const handleClick = (event) => {
         console.log(event)
@@ -27,13 +39,29 @@ function Navbar(props) {
         setAnchorEl(null);
     };
 
+
+    const handleNotification = (event) => {
+        setIsNotification(event.currentTarget);
+    };
+
+    const handleNotificationClose = () => {
+        setIsNotification(null);
+    };
+
+    const open = Boolean(isNotification);
+    const id = open ? 'simple-popover' : undefined;
+
+    const goToDashboard = () => {
+        window.location.href = "/dashboard"
+    }
+
     return (
         <>
             <div className="mainNavbar">
                 <div className="innerNavbar">
                     <div className="oneSourcingLogo">
                         <div>
-                            <img src={oneSourcingLogo} alt="" />
+                            <img onClick={goToDashboard} src={oneSourcingLogo} alt="" />
                         </div>
                     </div>
                     <div className="dashboardHeading">
@@ -45,13 +73,31 @@ function Navbar(props) {
                         <div className="clientCompany">
                             <img onClick={() => window.location.href = "/agency-profile"} src={clientLogo} alt="" />
                         </div>
-                        <div className="clientNotification">
+                        <div onClick={handleNotification} aria-describedby={id} className="clientNotification">
                             <img src={notificationIcon} alt="" />
                         </div>
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={isNotification}
+                            onClose={handleNotificationClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}
+                        >
+                            <Typography className={classes.typography}>The content of the Popover.
+                            <br />  and you are not the owner</Typography>
+                        </Popover>
                         <div className="userProfile">
                             <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className="clientProfile">
                                 <img src={clientProfile} alt="" />
                             </div>
+
                             <Menu
                                 id="simple-menu"
                                 anchorEl={anchorEl}
