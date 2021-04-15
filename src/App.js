@@ -7,7 +7,7 @@ import Dashboard from './Routes/Dashboard/Dashboard'
 // import Agency from './Routes/Agency/Agency';
 // import Agency from './component/Agency';
 // import Client from './component/Client';
-// import Login from './Routes/Login/Login';
+import Login from './Routes/Login/Login';
 import Signup from './Routes/SignUp/Signup';
 import Register from './Routes/Register/Register';
 // import AddDeveloper from './Routes/Dashboard/AddDeveloper.js/AddDeveloper';
@@ -32,6 +32,7 @@ const App = () => (
     <Route exact path="/agency-profile" component={AgencyProfile} />
     <Route exact path="/agency-form-one" component={AgencyForm1} />
     <Route exact path="/agency-form-two" component={AgencyForm2} />
+    <Route exact path="/login:role" component={Login} />
   </Switch>
 )
 

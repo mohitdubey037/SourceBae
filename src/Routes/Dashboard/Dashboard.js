@@ -1,21 +1,15 @@
 import React, { useState } from 'react'
 import './dashboard.css'
-
-import oneSourcingLogo from '../../assets/images/Logo/logo.png'
-import clientLogo from '../../assets/images/Logo/clientLogo.svg'
-import notificationIcon from '../../assets/images/Logo/notification.png'
 import clientProfile from '../../assets/images/Logo/clientProfile.jpeg'
 import quotation from '../../assets/images/Logo/quotation.png'
 import addDeveloper from '../../assets/images/Logo/addDeveloper.png'
 import teamCreation from '../../assets/images/Logo/teamCreation.png'
-import cancel from '../../assets/images/LandingPage/cancel.svg'
 
 //material-ui
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Navbar from './Navbar'
 
@@ -23,33 +17,17 @@ import Tooltip from 'react-power-tooltip'
 
 
 const Dashboard = () => {
-    const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = useState(false);
     const [moreOption, setMoreOption] = useState(false);
     const [isPopover, setIsPopover] = useState(false);
     const [popindex, setPopIndex] = useState('');
 
-    const handleClick = (event) => {
-        console.log(event)
-        setAnchorEl(event.currentTarget);
-    };
 
     const handleClose = () => {
         setAnchorEl(null);
     };
 
 
-    const optionHandle = (value) => {
-        if (value == 'Add Developers') {
-            window.location.href = "/add-developer"
-        }
-        else if (value == 'Quotation') {
-            window.location.href = "/quotation"
-        }
-        else {
-            alert(value)
-        }
-    }
 
     const cardsArray = [
         {
@@ -156,7 +134,7 @@ const Dashboard = () => {
                     {
                         cardsArray.map((value, index) => {
                             return (
-                                <div className="mainQuotationCard" key={index} onClick={() => optionHandle(value?.title)} >
+                                <div className="mainQuotationCard" key={index} >
                                     <div className="leftLine" style={{
                                         backgroundColor: value?.borderColor
                                     }}></div>
@@ -170,7 +148,7 @@ const Dashboard = () => {
                                         <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
                                         {/* ADD TOOLTIP HERE */}
                                         {
-                                            isPopover && popindex == index
+                                            isPopover && popindex === index
                                             &&
                                             <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
                                                 <span>Some text</span>
@@ -252,7 +230,7 @@ const Dashboard = () => {
                                             <div className="projectTable">
                                                 <div style={{ borderBottom: '1px solid #d3d3d3' }}>
                                                     <h6>Project Status</h6>
-                                                    <h6 style={{ color: value?.projectStatus == "Live" ? '#5cb85c' : value?.projectStatus == 'Completed' ? '#f0ad4e' : '#d9534f', fontWeight: 'bold' }} >{value?.projectStatus}</h6>
+                                                    <h6 style={{ color: value?.projectStatus === "Live" ? '#5cb85c' : value?.projectStatus === 'Completed' ? '#f0ad4e' : '#d9534f', fontWeight: 'bold' }} >{value?.projectStatus}</h6>
                                                 </div>
                                                 <div style={{ borderBottom: '1px solid #d3d3d3' }}>
                                                     <h6>Budget</h6>

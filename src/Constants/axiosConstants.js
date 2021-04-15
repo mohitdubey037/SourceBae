@@ -31,7 +31,7 @@ axios
   });
 
 instance.interceptors.response.use(function (response){
-    if(response.status===201){
+    if(response.status===201 || response.status===200){
         toast.success(response.data.message, {
             position: "top-right",
             autoClose: 2000,
@@ -42,8 +42,12 @@ instance.interceptors.response.use(function (response){
             });
         return response.data.data
     }
-    else
-        toast(response.data.message, {
+    else{
+        console.log(response)
+    }
+
+}, function (error){
+    toast(error.response.data.message, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: true,
@@ -51,8 +55,6 @@ instance.interceptors.response.use(function (response){
         pauseOnHover: true,
         draggable: true,
         });
-}, function (error){
-    
     return Promise.reject(error)
 })
 
