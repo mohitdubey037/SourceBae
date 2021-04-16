@@ -74,8 +74,8 @@
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
 }
 .innerPersonelDetailsForm p{
-    font-family: 'Josefin Sans';
-    font-size: 1.2rem;
+    font-family: 'Poppins';
+    font-size: 1.15rem;
 }
 .innerPersonelDetailsForm input{
     font-family: 'Poppins';
@@ -126,7 +126,6 @@
 }
 .getAgencyLogo img{
     width: 20%;
-    margin-bottom: 5%;
 }
 .getAgencyLogo button{
     padding: 0.3rem 1rem;
@@ -199,7 +198,7 @@
     display: flex;
     justify-content: flex-end;
 }
-.nextBtn button{
+.nextBtn a{
     padding: 0.4rem 1rem;
     background-color: #02044a;
     outline: none;
@@ -212,8 +211,9 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    text-decoration: none;
 }
-.nextBtn button i{
+.nextBtn a i{
     margin-left: 10px;
     margin-top: 2px;
 }
@@ -225,4 +225,155 @@
     width: 25%;
     bottom: 20px;
     left: 20px;
+}
+
+
+
+/* Agency Form two  */
+.mainTechStackForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+}
+.innerTechStackForm{
+    width: 80%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    /* border-radius: 25px; */
+    display: flex;
+}
+.techStackFields{
+    width: 70%;
+    border-right: 1px dashed #ebebeb;
+}
+.domainFieldsCard{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.domainsFields .domainHeading{
+    font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.domainFieldsCard div{
+    width: 22%;
+    background-color: skyblue;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    /* height: 130px; */
+    padding-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.domainFieldsCard div img{
+    width: 50%;
+    margin-bottom: 4%;
+}
+.domainFieldsCard div p{
+    font-display: initial;
+    font-family: 'Poppins';
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.domainBudget{
+    margin-top: 5%;
+}
+.domainBudget p{
+ font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: bold;   
+}
+
+
+.serivcesAgency{
+    margin-top: 5%;
+}
+.serivcesAgency .servicesHeading{
+    font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 4%;
+}
+.servicesCardsAgency{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.servicesCardsAgency div{
+    width: 22%;
+    background-color: skyblue;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    min-height: 160px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+.servicesCardsAgency div img{
+    width: 50%;
+    margin-bottom: 4%;
+}
+.servicesCardsAgency div p{
+    font-display: initial;
+    font-family: 'Poppins';
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+.servicesContainer{
+    height: 100vh;
+    overflow: scroll;
+    border: 1px dashed #ebebeb;
+    margin-left: 2px;
+}
+.UIUXServices{
+    font-family: 'Poppins';
+    margin-top: -20px;
+    padding-top: 0;
+    outline: none;
+    border: none;
+}
+.UIUXServices div{
+    outline: none;
+    border: none;
+}
+.UIUXServices input{
+    outline: none;
+    border: none;
+}
+.serviceFieldsOptions .uiuxtext{
+    font-family: 'Poppins';
+    margin-left: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.serviceSelectionInput{
+    margin-top: 10%;
+}
+
+
+.monthlyBudget{
+    margin-top: 5%;
+}
+.monthlyBudget p{
+ font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: bold;   
 }
