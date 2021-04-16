@@ -16,11 +16,11 @@ function FormPhases(props) {
                         <span>Tech Stack </span>
                     </div>
                     <div className="formPhaseCards">
-                        <h6>03</h6>
+                        <h6 style={{ backgroundColor: props?.value3 ? '#02044a' : '#999' }}>03</h6>
                         <span>Personel Details</span>
                     </div>
                     <div className="formPhaseCards">
-                        <h6>04</h6>
+                        <h6 style={{ backgroundColor: props?.value4 ? '#02044a' : '#999' }}>04</h6>
                         <span>Social Details</span>
                     </div>
                 </div>
