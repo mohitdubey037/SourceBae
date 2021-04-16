@@ -5,6 +5,7 @@ import { FilePicker } from 'react-file-picker'
 import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
 import agency3d from '../../../../assets/images/AgencyProfile/form1_3d.png'
 import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png'
+import { NavLink } from 'react-router-dom'
 
 function AgencyForm1() {
     return (
@@ -66,7 +67,7 @@ function AgencyForm1() {
                             </div>
 
                             <div className="nextBtn">
-                                <button>Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                <NavLink to="/agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
                             </div>
 
                         </div>
