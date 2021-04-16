@@ -3,6 +3,9 @@ import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
 import { NavLink } from 'react-router-dom'
 
+//axios instance
+import instance from "../../../../Constants/axiosConstants"
+
 //domains
 import food from '../../../../assets/images/agencyForm/food.png'
 import ecommerce from '../../../../assets/images/agencyForm/ecommerce.png'
@@ -32,6 +35,8 @@ import { makeStyles } from '@material-ui/core/styles';
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
 
+
+
 const useStyles = makeStyles({
     root: {
         '&:hover': {
@@ -47,6 +52,7 @@ const brr = ["Allison", "Arthur", "Beryl", "Chantal", "Cristobal", "Danielle", "
 
 function AgencyForm2() {
 
+    const Role = "agency"
     // selecting Domains
     const [isFood, setFood] = useState(false);
     const [isEcommerce, setEcommerce] = useState(false);
@@ -56,6 +62,8 @@ function AgencyForm2() {
     const [isEducation, setEducation] = useState(false);
     const [isFinance, setFinance] = useState(false);
     const [isTravel, setTravel] = useState(false);
+
+    const [allDomainsData, setAllDomainsData] = useState([])
 
     //selecting services
     const [isUiUx, setUiUx] = useState(false);
@@ -89,6 +97,51 @@ function AgencyForm2() {
         console.log(arr);
     }
 
+    //Api Calls methods
+
+    const getAllDomains = () => {
+        instance.get(`api/${Role}/domains/all`)
+            .then(function (response) {
+                
+                const domainNames = response.map((domain) => {
+                    return {
+                        ...domain,
+                        selected:false
+                    }
+                })
+                setAllDomainsData(domainNames)
+                // setAllDomains(domainNames)
+            })
+    }
+
+    const getAllServices = () => {
+        instance.get(`api/${Role}/services/all`)
+            .then(function (response) {
+                console.log(response, "services")
+                // setAllServicesData(response)
+                const servicesNames = response.map((service) => {
+                    return service.serviceName
+                })
+                // setAllServices(servicesNames)
+            })
+    }
+
+    const getAllTechs = ()=>{
+        instance.get(`api/${Role}/services/all`)
+            .then(function (response) {
+                console.log(response, "services")
+                // setAllServicesData(response)
+                const servicesNames = response.map((service) => {
+                    return service.serviceName
+                })
+                // setAllServices(servicesNames)
+            })
+    }
+
+    useState(() => {
+        getAllDomains()
+        // getAllServices()
+    }, [])
     return (
         <>
             <Navbar />
@@ -102,38 +155,17 @@ function AgencyForm2() {
                         <div className="domainsFields">
                             <p className="domainHeading">1. Which business sector are you targeting?</p>
                             <div className="domainFieldsCard">
-                                <div onClick={() => setFood(!isFood)} style={{ backgroundColor: isFood ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={food} alt="" />
-                                    <p style={{ color: isFood ? '#fff' : '#000' }}>Food</p>
-                                </div>
-                                <div onClick={() => setEcommerce(!isEcommerce)} style={{ backgroundColor: isEcommerce ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={ecommerce} alt="" />
-                                    <p style={{ color: isEcommerce ? '#fff' : '#000' }}>E-commerce</p>
-                                </div>
-                                <div onClick={() => setHealth(!isHealth)} style={{ backgroundColor: isHealth ? '#02044a' : '#D6EAF8' }}>
-                                    <img src={healthcare} alt="" />
-                                    <p style={{ color: isHealth ? '#fff' : '#000' }}>Health & Care</p>
-                                </div>
-                                <div onClick={() => setSocial(!isSocial)} style={{ backgroundColor: isSocial ? '#02044a' : '#D6EAF8' }}>
-                                    <img src={socialmedia} alt="" />
-                                    <p style={{ color: isSocial ? '#fff' : '#000' }}>Social & Media</p>
-                                </div>
-                                <div onClick={() => setEstate(!isEstate)} style={{ backgroundColor: isEstate ? '#02044a' : '#D6EAF8' }}>
-                                    <img src={realestate} alt="" />
-                                    <p style={{ color: isEstate ? '#fff' : '#000' }}>Real Estate</p>
-                                </div>
-                                <div onClick={() => setEducation(!isEducation)} style={{ backgroundColor: isEducation ? '#02044a' : '#D6EAF8' }}>
-                                    <img src={education} alt="" />
-                                    <p style={{ color: isEducation ? '#fff' : '#000' }}>Education</p>
-                                </div>
-                                <div onClick={() => setFinance(!isFinance)} style={{ backgroundColor: isFinance ? '#02044a' : '#D6EAF8' }}>
-                                    <img src={finance} alt="" />
-                                    <p style={{ color: isFinance ? '#fff' : '#000' }}>Finance</p>
-                                </div>
-                                <div onClick={() => setTravel(!isTravel)} style={{ backgroundColor: isTravel ? '#02044a' : '#D6EAF8' }}>
-                                    <img src={travel} alt="" />
-                                    <p style={{ color: isTravel ? '#fff' : '#000' }}>Travel</p>
-                                </div>
+                                {allDomainsData?.length>0 ? allDomainsData.map((domain)=>{
+                                    return(
+                                        <div onClick={() => setFood(!isFood)} style={{ backgroundColor: isFood ? '#02044a' : '#D6EAF8' }} >
+                                            <img src={domain.domainIcon} alt="" />
+                                            <p style={{ color: isFood ? '#fff' : '#000' }}>{`${domain.domainName}`}</p>
+                                        </div>
+                                    )
+                                })
+                                :
+                                <p style={{ color: isFood ? '#fff' : '#000' }}>Sorry No Data Found.</p>
+                            }
                             </div>
                         </div>
 
