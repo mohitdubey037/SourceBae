@@ -218,7 +218,7 @@ const Dashboard = () => {
                                     <div className="mainProjectCard">
                                         <div className="innerProjectCard">
                                             <div className="projectInformation">
-                                                <div className="projectDetails">
+                                                <div className="projectDetails" onClick={() => window.location.href = "/project-details"} style={{ cursor: 'pointer' }}>
                                                     <div className="projectImage">
                                                         <img src={clientProfile} alt="" />
                                                     </div>

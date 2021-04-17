@@ -67,6 +67,8 @@ function AgencyForm1() {
                             </div>
 
                             <div className="nextBtn">
+                                {/* <NavLink to="/agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
+                                <div></div>
                                 <NavLink to="/agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
                             </div>
 

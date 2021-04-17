@@ -194,9 +194,9 @@
 }
 .nextBtn{
     width: 100%;
-    margin-top: 3%;
+    margin-top: 5%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 .nextBtn a{
     padding: 0.4rem 1rem;
@@ -208,14 +208,15 @@
     font-family: 'Poppins';
     font-size: 1.2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     font-weight: bold;
     text-decoration: none;
 }
 .nextBtn a i{
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-top: 2px;
+    margin: 0 4px;
 }
 .businessModal{
     width: 90%;
@@ -458,6 +459,30 @@
     font-family: 'Poppins';
     border: 1px solid #ebebeb;
 }
+.panCardContent{
+    width: 100%;
+    border: 1px dashed #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.panCardContent img{
+    width: 20%;
+}
+.panCardContent button{
+    padding: 0.3rem 1rem;
+    background-color: #02044a;
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    font-family: 'Poppins';
+    color: #fff;
+    font-weight: bold;
+}
+.panCardContent button i{
+    margin-right: 5px;
+}
 .panDetails input:focus{
     outline: none;
     /* border: none; */
@@ -465,8 +490,6 @@
 .agencyCertification i,.agencyBrochure i{
     margin-right: 5px;
 }
-
-
 .miscellaneousArea{
     width: 30%;
     background-color: #02044a;
@@ -481,7 +504,7 @@
     margin: 5%;
     font-family: 'Poppins';
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 .miscellaneousArea img{
     position: absolute;
@@ -555,6 +578,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
 }
 .linksImages img{
     width: 4%;
@@ -565,4 +589,34 @@
     color: #242424;
     font-weight: lighter;
     font-size: 0.8rem;
+}
+.addMoreFields{
+    float: right;
+    display: flex;
+    position: absolute;
+    right: 0;
+    padding: 0.3rem 1rem;
+    background-color: #fad647;
+    border-radius: 999px;
+    font-family: 'Poppins';
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.extraFields{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.extraFields div{
+    width: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.extraFields div i{
+    margin-top: 14px;
+    font-size: 2rem;
+    cursor: pointer;
 }

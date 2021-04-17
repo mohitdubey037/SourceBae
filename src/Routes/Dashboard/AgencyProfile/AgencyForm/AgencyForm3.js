@@ -4,6 +4,7 @@ import FormPhases from './FormPhases'
 
 import agencyLogo from '../../../../assets/images/agencyForm/document.png'
 import brochure from '../../../../assets/images/agencyForm/brochure.png'
+import panCard from '../../../../assets/images/agencyForm/panCard.png'
 import privacy from '../../../../assets/images/agencyForm/privacy.svg'
 import { NavLink } from 'react-router-dom'
 
@@ -32,10 +33,14 @@ function AgencyForm3() {
                         </div>
                         <div className="panDetails">
                             <p>2. Enter your Pan Card number</p>
-                            <input type="text" placeholder="E.g- ACBPZ2854P" />
+                            <div className="panCardContent">
+                                <img src={panCard} alt="" />
+                                <button><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+                            </div>
                         </div>
 
                         <div className="nextBtn">
+                            <NavLink to="/agency-form-two" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink>
                             <NavLink to="/agency-form-four" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
                         </div>
                     </div>

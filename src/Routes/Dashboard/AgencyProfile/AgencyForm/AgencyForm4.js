@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
 
@@ -10,6 +10,28 @@ import links from '../../../../assets/images/agencyForm/links.gif'
 import { NavLink } from 'react-router-dom'
 
 function AgencyForm4() {
+
+    const [fields, setFields] = useState([{ value: null }]);
+
+    function handleChange(i, event) {
+        const values = [...fields];
+        values[i].value = event.target.value;
+        setFields(values);
+    }
+
+    function handleAdd() {
+        const values = [...fields];
+        values.push({ value: null });
+        setFields(values);
+    }
+
+    function handleRemove(i) {
+        const values = [...fields];
+        values.splice(i, 1);
+        setFields(values);
+    }
+
+
     return (
         <>
             <Navbar />
@@ -38,8 +60,20 @@ function AgencyForm4() {
                             <section className="linksImages">
                                 <img src={portfolio} alt="" />
                                 <p>Portfolio Link <span>(optional)</span></p>
+                                <div className="addMoreFields" onClick={() => handleAdd()}>+ Add More</div>
                             </section>
-                            <input placeholder="E.g - https://www.your_company.com/" type="text" name="" id="" />
+                            {
+                                fields.map((value, index) => {
+                                    return (
+                                        <div className="extraFields">
+                                            <input onChange={e => handleChange(index, e)} placeholder="E.g - https://www.your_company.com/" type="text" name="" id="" />
+                                            {
+                                                index == 0 ? null : <div><i onClick={() => handleRemove(index)} class="fa fa-times" aria-hidden="true"></i></div>
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <div>
                             <section className="linksImages">
@@ -50,6 +84,7 @@ function AgencyForm4() {
                         </div>
 
                         <div className="nextBtn">
+                            <NavLink to="/agency-form-three" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink>
                             <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
                         </div>
                     </div>
