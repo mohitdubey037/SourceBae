@@ -6,16 +6,6 @@ import { NavLink } from 'react-router-dom'
 //axios instance
 import instance from "../../../../Constants/axiosConstants"
 
-//domains
-import food from '../../../../assets/images/agencyForm/food.png'
-import ecommerce from '../../../../assets/images/agencyForm/ecommerce.png'
-import healthcare from '../../../../assets/images/agencyForm/healthcare.png'
-import socialmedia from '../../../../assets/images/agencyForm/socialmedia.png'
-import realestate from '../../../../assets/images/agencyForm/realestate.png'
-import education from '../../../../assets/images/agencyForm/education.png'
-import finance from '../../../../assets/images/agencyForm/finance.png'
-import travel from '../../../../assets/images/agencyForm/travel.png'
-
 //services
 import uiux from '../../../../assets/images/agencyForm/uiux.png'
 import webdevelopment from '../../../../assets/images/agencyForm/webdevelopment.png'
@@ -54,18 +44,14 @@ function AgencyForm2() {
 
     const Role = "agency"
     // selecting Domains
-    const [isFood, setFood] = useState(false);
-    const [isEcommerce, setEcommerce] = useState(false);
-    const [isHealth, setHealth] = useState(false);
-    const [isSocial, setSocial] = useState(false);
-    const [isEstate, setEstate] = useState(false);
-    const [isEducation, setEducation] = useState(false);
-    const [isFinance, setFinance] = useState(false);
-    const [isTravel, setTravel] = useState(false);
-
     const [allDomainsData, setAllDomainsData] = useState([])
 
     //selecting services
+    const [allServicesData, setAllServicesData] = useState([])
+
+    //selecting Techs
+    const [allTechData, setAllTechData] = useState([])
+
     const [isUiUx, setUiUx] = useState(false);
     const [isWeb, setWeb] = useState(false);
     const [isCMS, setCMS] = useState(false);
@@ -102,11 +88,11 @@ function AgencyForm2() {
     const getAllDomains = () => {
         instance.get(`api/${Role}/domains/all`)
             .then(function (response) {
-                
+
                 const domainNames = response.map((domain) => {
                     return {
                         ...domain,
-                        selected:false
+                        selected: false
                     }
                 })
                 setAllDomainsData(domainNames)
@@ -114,25 +100,62 @@ function AgencyForm2() {
             })
     }
 
+    const handleDomains = (event) => {
+        const { className } = event.target
+        console.log(className)
+        const toggledDomains = allDomainsData.map((domain) => {
+            if (domain.domainName === className)
+                return {
+                    ...domain,
+                    selected: !domain.selected
+                }
+
+            return domain
+        })
+
+        setAllDomainsData(toggledDomains)
+
+    }
+
+    const handleServices = (event) => {
+
+        // document.body.scrollIntoView({ behavior: 'smooth' })
+        const { className } = event.target
+        console.log(className)
+        const toggledServices = allServicesData.map((service) => {
+            if (service.serviceName === className)
+                return {
+                    ...service,
+                    selected: !service.selected
+                }
+
+            return service
+        })
+
+        setAllServicesData(toggledServices)
+
+    }
+
     const getAllServices = () => {
         instance.get(`api/${Role}/services/all`)
             .then(function (response) {
-                console.log(response, "services")
-                // setAllServicesData(response)
                 const servicesNames = response.map((service) => {
-                    return service.serviceName
+                    return {
+                        ...service,
+                        selected: false
+                    }
                 })
-                // setAllServices(servicesNames)
+                setAllServicesData(servicesNames)
             })
     }
 
-    const getAllTechs = ()=>{
-        instance.get(`api/${Role}/services/all`)
+    const getAllTechs = () => {
+        instance.get(`api/${Role}/technologies/all`)
             .then(function (response) {
-                console.log(response, "services")
+                console.log(response, "techs")
                 // setAllServicesData(response)
-                const servicesNames = response.map((service) => {
-                    return service.serviceName
+                const techNames = response.map((tech) => {
+                    return tech.serviceName
                 })
                 // setAllServices(servicesNames)
             })
@@ -140,7 +163,7 @@ function AgencyForm2() {
 
     useState(() => {
         getAllDomains()
-        // getAllServices()
+        getAllServices()
     }, [])
     return (
         <>
@@ -155,70 +178,46 @@ function AgencyForm2() {
                         <div className="domainsFields">
                             <p className="domainHeading">1. Which business sector are you targeting?</p>
                             <div className="domainFieldsCard">
-                                {allDomainsData?.length>0 ? allDomainsData.map((domain)=>{
-                                    return(
-                                        <div onClick={() => setFood(!isFood)} style={{ backgroundColor: isFood ? '#02044a' : '#D6EAF8' }} >
-                                            <img src={domain.domainIcon} alt="" />
-                                            <p style={{ color: isFood ? '#fff' : '#000' }}>{`${domain.domainName}`}</p>
+                                {/* {`${JSON.stringify(allDomainsData)}`} */}
+                                {allDomainsData?.length > 0 ? allDomainsData.map((domain) => {
+                                    return (
+                                        <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)} style={{ backgroundColor: domain.selected ? '#02044a' : '#D6EAF8' }} >
+                                            <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                                            <p className={`${domain.domainName}`} style={{ color: domain.selected ? '#fff' : '#000' }}>{`${domain.domainName}`}</p>
                                         </div>
                                     )
                                 })
-                                :
-                                <p style={{ color: isFood ? '#fff' : '#000' }}>Sorry No Data Found.</p>
-                            }
+                                    :
+                                    <p>Sorry No Data Found.</p>
+                                }
                             </div>
                         </div>
 
 
-                        <div className="domainBudget">
-                            <p>2. What is the budget of your domain?</p>
-
-                            <div className="domainBudgetOptions">
-                                <FormControl component="fieldset">
-                                    <RadioGroup aria-label="gender" name="gender1" value={budget} onChange={handleChangeBudget}>
-                                        <FormControlLabel color="primary" value="$5000-$10000" control={<Radio className={classes.root} />} label="$5000-$10000" />
-                                        <FormControlLabel value="$10000-$150000" control={<Radio />} label="$10000-$150000" />
-                                        <FormControlLabel value="Max $15000" control={<Radio />} label="Max $15000" />
-                                    </RadioGroup>
-                                </FormControl>
-                            </div>
-                        </div>
 
 
                         <div className="serivcesAgency">
-                            <p className="servicesHeading">3. In which services you have good command?</p>
-
+                            <p className="servicesHeading">2. In which services you have good command?</p>
                             <div className="servicesCardsAgency">
-                                <div onClick={() => (setUiUx(!isUiUx), document.body.scrollIntoView({ behavior: 'smooth' }))} style={{ backgroundColor: isUiUx ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={uiux} alt="" />
-                                    <p style={{ color: isUiUx ? '#fff' : '#000' }}>UI/UX <br /> Design</p>
-                                </div>
-                                <div onClick={() => (setWeb(!isWeb), document.body.scrollIntoView({ behavior: 'smooth' }))} style={{ backgroundColor: isWeb ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={webdevelopment} alt="" />
-                                    <p style={{ color: isWeb ? '#fff' : '#000' }}>Web <br /> Development</p>
-                                </div>
-                                <div onClick={() => setCMS(!isCMS)} style={{ backgroundColor: isCMS ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={cmsdevelopment} alt="" />
-                                    <p style={{ color: isCMS ? '#fff' : '#000' }}>CMS <br />  Development</p>
-                                </div>
-                                <div onClick={() => setMobile(!isMobile)} style={{ backgroundColor: isMobile ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={mobiledevelopment} alt="" />
-                                    <p style={{ color: isMobile ? '#fff' : '#000' }}>Mobile Development</p>
-                                </div>
-                                <div onClick={() => setDatabase(!isDatabase)} style={{ backgroundColor: isDatabase ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={database} alt="" />
-                                    <p style={{ color: isDatabase ? '#fff' : '#000' }}>Database Development</p>
-                                </div>
-                                <div onClick={() => setIOT(!isIOT)} style={{ backgroundColor: isIOT ? '#02044a' : '#D6EAF8' }} >
-                                    <img src={iot} alt="" />
-                                    <p style={{ color: isIOT ? '#fff' : '#000' }}>Iot <br /> Development</p>
-                                </div>
+
+                                {allServicesData?.length > 0 ? allServicesData.map((service) => {
+                                    return (
+                                        <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
+                                            <img className={`${service.serviceName}`} src={uiux} alt="" />
+                                            {/* <p style={{ color: isUiUx ? '#fff' : '#000' }}>UI/UX <br /> Design</p> */}
+                                            <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
+                                        </div>
+                                    )
+                                })
+                                    :
+                                    <p>Sorry No Data Found.</p>
+                                }
                             </div>
                         </div>
 
 
                         <div className="monthlyBudget">
-                            <p>4. What is the monthly budget?</p>
+                            <p>3. What is the monthly budget?</p>
 
                             <div className="domainBudgetOptions">
                                 <FormControl component="fieldset">
