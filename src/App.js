@@ -21,6 +21,9 @@ import AgencyForm4 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm4
 import RespondedDetails from './Routes/Dashboard/Quotation/RespondedDetails';
 import ProjectDetails from './Routes/Dashboard/ProjectDetails';
 
+
+import ClientDashboard from './Routes/Client/Dashboard/Dashboard'
+
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
 // import RequirementExtended from './component/RequirementExtended';
@@ -40,6 +43,11 @@ const App = () => (
     <Route exact path="/agency-form-four" component={AgencyForm4} />
     <Route exact path="/project-details" component={ProjectDetails} />
     <Route exact path="/login:role" component={Login} />
+
+    {/* Client Components  */}
+    <Route exact path="/client-dashboard" component={ClientDashboard} />
+
+
   </Switch>
 )
 
