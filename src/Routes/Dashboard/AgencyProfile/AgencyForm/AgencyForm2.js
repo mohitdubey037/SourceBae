@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
 import { NavLink } from 'react-router-dom'
@@ -49,8 +49,12 @@ function AgencyForm2() {
     //selecting services
     const [allServicesData, setAllServicesData] = useState([])
 
+    const [selectedServicesId, setSelectedServicesId] = useState([])
+
     //selecting Techs
     const [allTechData, setAllTechData] = useState([])
+    const [visibleTechData, setVisibleTechData] = useState([])
+    const [visibleTechNames, setVisibleTechNames] = useState([])
 
     const [isUiUx, setUiUx] = useState(false);
     const [isWeb, setWeb] = useState(false);
@@ -117,11 +121,24 @@ function AgencyForm2() {
 
     }
 
+    const getAllServices = () => {
+        instance.get(`api/${Role}/services/all`)
+            .then(function (response) {
+                const servicesNames = response.map((service) => {
+                    return {
+                        ...service,
+                        selected: false
+                    }
+                })
+                setAllServicesData(servicesNames)
+            })
+    }
+
+
     const handleServices = (event) => {
 
         // document.body.scrollIntoView({ behavior: 'smooth' })
         const { className } = event.target
-        console.log(className)
         const toggledServices = allServicesData.map((service) => {
             if (service.serviceName === className)
                 return {
@@ -136,35 +153,65 @@ function AgencyForm2() {
 
     }
 
-    const getAllServices = () => {
-        instance.get(`api/${Role}/services/all`)
-            .then(function (response) {
-                const servicesNames = response.map((service) => {
-                    return {
-                        ...service,
-                        selected: false
-                    }
-                })
-                setAllServicesData(servicesNames)
-            })
-    }
-
     const getAllTechs = () => {
         instance.get(`api/${Role}/technologies/all`)
             .then(function (response) {
-                console.log(response, "techs")
                 // setAllServicesData(response)
                 const techNames = response.map((tech) => {
-                    return tech.serviceName
+                    return {
+                        ...tech,
+                        selected: false
+                    }
                 })
-                // setAllServices(servicesNames)
+                setAllTechData(techNames)
             })
     }
 
-    useState(() => {
+
+
+    const handleTechs = () => {
+
+    }
+
+    function getSelectedServicesIds(allServices) {
+        return allServices
+            .filter(function (service) {
+                return service.selected === true;
+            })
+            .map(function (service) {
+                return service._id;
+            });
+    }
+
+    useEffect(() => {
         getAllDomains()
         getAllServices()
+        getAllTechs()
     }, [])
+
+    useEffect(() => {
+        setSelectedServicesId(getSelectedServicesIds(allServicesData))
+
+    }, [allServicesData])
+
+    useEffect(() => {
+        const filteredTech = allTechData.filter((tech) => {
+            if (selectedServicesId.indexOf(tech.serviceId) !== -1)
+                return tech
+        })
+
+        setVisibleTechData(filteredTech)
+    }, [selectedServicesId, allTechData])
+
+    useEffect(()=>{
+        console.log(visibleTechData)
+        setVisibleTechNames(
+            visibleTechData.map((tech)=>{
+                return tech.technologyName
+            })
+        )
+    },[visibleTechData])
+
     return (
         <>
             <Navbar />
@@ -178,7 +225,6 @@ function AgencyForm2() {
                         <div className="domainsFields">
                             <p className="domainHeading">1. Which business sector are you targeting?</p>
                             <div className="domainFieldsCard">
-                                {/* {`${JSON.stringify(allDomainsData)}`} */}
                                 {allDomainsData?.length > 0 ? allDomainsData.map((domain) => {
                                     return (
                                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)} style={{ backgroundColor: domain.selected ? '#02044a' : '#D6EAF8' }} >
@@ -242,17 +288,17 @@ function AgencyForm2() {
                         <div className="servicesContainer">
                             <div className="serviceSelectionInput">
                                 {
-                                    isUiUx ? (<>
+                                    visibleTechNames?.length ? (<>
                                         <p className="uiuxtext">Select UI/UX services</p>
                                         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleChangeSelect} options={selected} primaryColor="#D6EAF8"
+                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleChangeSelect} options={visibleTechNames} primaryColor="#D6EAF8"
                                                 secondaryColor="#02044a"
                                                 textSecondaryColor="#fff"
                                                 className="UIUXServices"
                                                 showTags={true}
                                                 textColor="#02044a" />
                                         </div>
-                                    </>) : null
+                                    </>) : <p>Please select one or more services.</p>
                                 }
                             </div>
                             <div className="serviceSelectionInput">
