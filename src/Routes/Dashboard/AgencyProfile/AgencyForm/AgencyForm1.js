@@ -157,10 +157,15 @@ function AgencyForm1() {
                             </div>
 
                             <div className="nextBtn">
+<<<<<<< HEAD
                                 <button onClick={() => handleSubmit(formData)}>
                                     Next
                                     <i class="fa fa-long-arrow-right" aria-hidden="true" />
                                 </button>
+=======
+                                {/* <NavLink to="/agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
+                                <div></div>
+>>>>>>> c84ff58cae18d0c6bfde2dd25c237de5d3275610
                                 <NavLink to="/agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
                             </div>
 

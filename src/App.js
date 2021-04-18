@@ -16,6 +16,13 @@ import Quotation from './Routes/Dashboard/Quotation/Quotation';
 import AgencyProfile from './Routes/Dashboard/AgencyProfile';
 import AgencyForm1 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm1';
 import AgencyForm2 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm2';
+import AgencyForm3 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm3';
+import AgencyForm4 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm4';
+import RespondedDetails from './Routes/Dashboard/Quotation/RespondedDetails';
+import ProjectDetails from './Routes/Dashboard/ProjectDetails';
+
+
+import ClientDashboard from './Routes/Client/Dashboard/Dashboard'
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -32,7 +39,15 @@ const App = () => (
     <Route exact path="/agency-profile" component={AgencyProfile} />
     <Route exact path="/agency-form-one" component={AgencyForm1} />
     <Route exact path="/agency-form-two" component={AgencyForm2} />
+    <Route exact path="/agency-form-three" component={AgencyForm3} />
+    <Route exact path="/agency-form-four" component={AgencyForm4} />
+    <Route exact path="/project-details" component={ProjectDetails} />
     <Route exact path="/login:role" component={Login} />
+
+    {/* Client Components  */}
+    <Route exact path="/client-dashboard" component={ClientDashboard} />
+
+
   </Switch>
 )
 
