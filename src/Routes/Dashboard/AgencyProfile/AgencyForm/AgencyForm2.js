@@ -8,18 +8,12 @@ import instance from "../../../../Constants/axiosConstants"
 
 //services
 import uiux from '../../../../assets/images/agencyForm/uiux.png'
-import webdevelopment from '../../../../assets/images/agencyForm/webdevelopment.png'
-import cmsdevelopment from '../../../../assets/images/agencyForm/cmsdevelopment.png'
-import mobiledevelopment from '../../../../assets/images/agencyForm/mobiledevelopment.png'
-import database from '../../../../assets/images/agencyForm/database.png'
-import iot from '../../../../assets/images/agencyForm/iot.png'
 
 //material-ui
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 
 //multi-select
@@ -35,10 +29,6 @@ const useStyles = makeStyles({
     },
 })
 
-
-// values for services in right
-const arr = ["Allison", "Arthur", "Beryl", "Chantal", "Cristobal", "Danielle", "Dennis", "Ernesto", "Felix", "Fay", "Grace", "Gaston", "Gert", "Gordon"]
-const brr = ["Allison", "Arthur", "Beryl", "Chantal", "Cristobal", "Danielle", "Dennis", "Ernesto", "Felix", "Fay", "Grace", "Gaston", "Gert", "Gordon"]
 
 function AgencyForm2() {
 
@@ -56,16 +46,6 @@ function AgencyForm2() {
     const [visibleTechData, setVisibleTechData] = useState([])
     const [visibleTechNames, setVisibleTechNames] = useState([])
 
-    const [isUiUx, setUiUx] = useState(false);
-    const [isWeb, setWeb] = useState(false);
-    const [isCMS, setCMS] = useState(false);
-    const [isMobile, setMobile] = useState(false);
-    const [isDatabase, setDatabase] = useState(false);
-    const [isIOT, setIOT] = useState(false);
-
-    //services-option-selection
-    const [selected, setSelected] = useState(arr);
-    const [webService, setWebservice] = useState(brr);
 
     const classes = useStyles();
 
@@ -81,9 +61,6 @@ function AgencyForm2() {
     };
 
     const handleChangeSelect = (arr) => {
-        console.log(arr);
-    }
-    const handleChangeWeb = (arr) => {
         console.log(arr);
     }
 
@@ -168,11 +145,6 @@ function AgencyForm2() {
     }
 
 
-
-    const handleTechs = () => {
-
-    }
-
     function getSelectedServicesIds(allServices) {
         return allServices
             .filter(function (service) {
@@ -195,6 +167,7 @@ function AgencyForm2() {
     }, [allServicesData])
 
     useEffect(() => {
+        // eslint-disable-next-line array-callback-return
         const filteredTech = allTechData.filter((tech) => {
             if (selectedServicesId.indexOf(tech.serviceId) !== -1)
                 return tech
@@ -295,25 +268,9 @@ function AgencyForm2() {
                                                 secondaryColor="#02044a"
                                                 textSecondaryColor="#fff"
                                                 className="UIUXServices"
-                                                showTags={true}
                                                 textColor="#02044a" />
                                         </div>
                                     </>) : <p>Please select one or more services.</p>
-                                }
-                            </div>
-                            <div className="serviceSelectionInput">
-                                {
-                                    isWeb ? (<>
-                                        <p className="uiuxtext">Select Web services</p>
-                                        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleChangeSelect} options={webService} primaryColor="#D6EAF8"
-                                                secondaryColor="#02044a"
-                                                textSecondaryColor="#fff"
-                                                className="UIUXServices"
-                                                showTags={true}
-                                                textColor="#02044a" />
-                                        </div>
-                                    </>) : null
                                 }
                             </div>
                         </div>
