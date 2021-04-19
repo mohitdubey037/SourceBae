@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React from "react";
+import {Link} from "react-router-dom"
 import "./mainhomepage.css";
 import waves from '../../assets/images/LandingPage/Vector.svg'
 import dotsleft from '../../assets/images/LandingPage/dotsleft.png'
@@ -69,7 +70,6 @@ const loginButtonStyle = {
 // import facebook from "../assests/img/facebook.png";
 // import linkedin from "../assests/img/linkedin.png";
 
-const ga = window.firebase.analytics()
 const Mainhomepage = () => {
 
     return (
@@ -113,7 +113,9 @@ const Mainhomepage = () => {
                                 <img src = {clientlogin} alt="" />
                             </div>
                             <h3>Login as a client</h3>
-                            <Button style = {loginButtonStyle}>Login</Button>
+                            <Link to ="/login:client">
+                                <Button style = {loginButtonStyle}>Login</Button>
+                            </Link>
                         </div>
 
                         <div className="login__card">
@@ -121,7 +123,9 @@ const Mainhomepage = () => {
                                 <img src = {agencylogin} alt="" />
                             </div>
                             <h3>Login as an agency</h3>
-                            <Button style = {loginButtonStyle}>Login</Button>
+                            <Link to ="/login:agency">
+                             <Button style = {loginButtonStyle}>Login</Button>
+                            </Link>
                         </div>
 
                     </div>
