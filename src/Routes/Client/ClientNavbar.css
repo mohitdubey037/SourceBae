@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
+
+.mainClientNavbar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    padding: 0.0% 0;
+}
+.innerClientNavbar{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.superSourcingLogo div img{
+    width: 70%;
+}
+.navbarOptins{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.postProject,.clientNotification,.clientProfile{
+    margin: 0 0 0 2rem;
+}
+.postProject div{
+    transform: translateY(3px);
+}
+.postProject div p{
+    margin-top: 10%;
+    padding: 0.4rem 1rem;
+    background-color: #02044a;
+    color: #fff;
+    font-family: 'Poppins';
+    font-weight: bold;
+    border-radius: 999px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+}
+.postProject div p i{
+    margin-right: 5px;
+}
+
+
+
+.mainClientCards{
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin-top: 0.1%;
+    position: relative;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(45deg, rgb(255,255,255) 0px, rgb(255,255,255) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(135deg, rgb(255,255,255) 0px, rgb(255,255,255) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(256,7%,84%),hsl(256,7%,84%));
+    padding-top: 3%;
+}
+.innerClientCards{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 3%;
+}
+.wave{
+    position: absolute;
+    top: 0;
+    left: -10%;
+    transform: rotate(-110deg);
+    z-index: 1;
+}
+.littleVector{
+    position: absolute;
+    top: 0%;
+    left: 0;
+}
+.dots{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.hireDeveloperCard,.hireAgencyCard{
+    margin: 1.5rem;
+    width: 28%;
+    background-color: #fff;
+    height: 50vh;
+    box-shadow: 0 2px 16px 2px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 25px;
+    position: relative;
+    z-index: 999;
+}
+.mainClientCards p{
+    font-family: 'Poppins';
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    background-color: #5bc0de;
+    font-weight: bold;
+    color: #fff;
+}
+.mainClientCards h5{
+    font-family: 'Poppins';
+    font-weight: bolder;
+    font-size: 2.5rem;
+}
+.mainClientCards h5::after{
+    content: '';
+    width: 100px;
+    height: 4px;
+    background-color: #000;
+    display: block;
+}
+.hireDeveloperCard .hireDeveloperImage{
+    width: 60%;
+    border-bottom: 1px solid #000;
+}
+.hireDeveloperCard img{
+    width: 100%;
+}
+.hireAgencyCard .hireAgencyImage{
+    width: 60%;
+    border-bottom: 1px solid #000;
+}
+.hireAgencyCard img{
+    width: 100%;
+}
+.hireDeveloperCard h4,.hireAgencyCard h4{
+   font-family: 'Red Hat Display', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.leftBorderHireDeveloper{
+    position: absolute;
+    width: 12px;
+    height: 93%;
+    background-color: #02044a;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    border-radius: 999px;
+}
+
+
+
+
+
+
+
+
+.mainClientProjectStatus{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3%;
+    margin-top: 0.1%;
+    background-image: repeating-linear-gradient(45deg, rgb(255,255,255) 0px, rgb(255,255,255) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(135deg, rgb(255,255,255) 0px, rgb(255,255,255) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(256,7%,84%),hsl(256,7%,84%));
+}
+.innerClientProjectStatus{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+.topHeading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filterClientProjects{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.dashboardText h4{
+    font-family: 'Poppins';
+    font-size: 2rem;
+    font-weight: bold;
+    transform: translateY(15px);
+}
+.dashboardText h4::after{
+    content: '';
+    width: 100px;
+    height: 3px;
+    display: block;
+    background-color: #000;
+}
+
+.allProjectsClients{
+    margin-top: 8%;
+}
+.clientProjectCard{
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 16px 2px rgba(0,0,0,0.2);
+    position: relative;
+    padding-left: 2%;
+    border-radius: 25px;
+    margin-bottom: 5%;
+}
+.leftBorderClientProject{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 8px;
+    height: 90%;
+    background-color: #02044a;
+    border-radius: 999px;
+}
+.cardTopPart{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.projectStage{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+.statusLine{
+    position: absolute;
+    width: 65%;
+    height: 2px;
+    background-color: #999;
+    top: 35%;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+.projectStage div{
+    display: flex;
+    margin-right: 5%;
+    align-items: flex-start;
+    z-index: 1;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #fff;
+    padding: 0 0.5rem;
+}
+
+.clientProjectInformation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.projectName h6{
+    font-size: 2rem;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+.projectStatusInfo{
+    display: flex;
+    align-items: center;
+}
+.infoImage{
+    width: 10%;
+}
+.projectStatus p{
+    padding: 0.3rem 1rem;
+    background-color: #d9534f;
+    border-radius: 999px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: #fff;
+    text-transform: capitalize;
+}
+.projectUpdateDate{
+    margin-top: 2%;
+    font-family: 'Poppins';
+}
+.projectUpdateDate p{
+    color: #999;
+}
+.projectUpdateDate p span{
+    color: #000;
+    font-weight: bold;
+}
+
+.projectStage div span{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    /* background-color: #5cb85c; */
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+.projectStage div p{
+    font-family: 'Poppins';
+    margin-top: 3px;
+    font-weight: bold;
+}
+.clientProjectInformation{
+    margin-top: 2%;
+}
+.clientProjectInformation .projectStatusInfo{
+    width: 60%;
+    background-color: #F8F9F9;
+    padding: 0.5rem;
+    font-family: 'Poppins';
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 3%;
+    position: relative;
+}
+.projectStatusInfo p{
+    font-size: 0.9rem;
+}
+.projectStatusInfo i{
+    position: absolute;
+    top: 11%;
+    left: 5px;
+    font-size: 1.5rem;
+    color: #02044a;
+}
+.clientProject div{
+    padding: 0.3rem 1rem;
+    background-color: #02044a;
+    color: #fff;
+    font-family: 'Poppins';
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.clientProject div p{
+    transform: translateY(8px);
+}
