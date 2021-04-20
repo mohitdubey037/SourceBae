@@ -198,7 +198,7 @@
     display: flex;
     justify-content: space-between;
 }
-.nextBtn a{
+.nextBtn button{
     padding: 0.4rem 1rem;
     background-color: #02044a;
     outline: none;
@@ -213,6 +213,8 @@
     font-weight: bold;
     text-decoration: none;
 }
+
+
 .nextBtn a i{
     /* margin-left: 10px; */
     margin-top: 2px;

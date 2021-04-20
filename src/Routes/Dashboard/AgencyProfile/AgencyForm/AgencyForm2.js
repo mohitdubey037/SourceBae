@@ -38,32 +38,77 @@ function AgencyForm2() {
 
     //selecting services
     const [allServicesData, setAllServicesData] = useState([])
-
     const [selectedServicesId, setSelectedServicesId] = useState([])
+    const [selectedTechName, setSelectedTechNames] = useState([])
 
     //selecting Techs
     const [allTechData, setAllTechData] = useState([])
     const [visibleTechData, setVisibleTechData] = useState([])
     const [visibleTechNames, setVisibleTechNames] = useState([])
+    const [dom, setDom] = useState([])
 
+    //API DATA STATE VARIABLES
+    const [apiData, setApiData]= useState({
+        stepsCompleted: "3",
+        agencyDomains:[],
+        agencyServices:[],
+        agencyTechnologies:[],
+        agencyMonthlyBudget:[]
+    })
 
     const classes = useStyles();
 
-    //selecting domain budget
-    const [value, setValue] = React.useState('$5000-$10000');
-    const [budget, setBudget] = useState('$5000-$10000')
-
     const handleChange = (event) => {
-        setValue(event.target.value);
-    };
-    const handleChangeBudget = (event) => {
-        setBudget(event.target.value);
+        const {name, value} = event.target
+
+        if(name==="budget")
+            setApiData(
+                {
+                    ...apiData,
+                    agencyMonthlyBudget: value
+                }
+            )
     };
 
-    const handleChangeSelect = (arr) => {
-        console.log(arr);
+    const handleTechSelect = (arr) => {  
+        setSelectedTechNames(arr)
     }
 
+    const setAgencyTechnologies = ()=>{
+        const selectedTechs = selectedTechName.map((tech)=>{
+            return visibleTechData[tech]._id
+        })
+         setApiData({
+            ...apiData,
+            agencyTechnologies:selectedTechs
+        })
+    }
+
+    const setAgencyDomains = async()=>{
+        const selects = await allDomainsData.filter((domain)=> domain.selected===true)
+        setDom(selects)
+    }
+
+    useEffect(()=>{
+        setApiData({
+            ...apiData,
+            agencyDomains:dom.map((domain)=>{
+                return {
+                    domainId: domain._id,
+                    domainBaseAmount: 100,
+                    isAmountNegotiable: true
+                }
+            })
+        })
+    },[dom])
+    
+    const handleNext = (apiCall)=>{
+
+        setAgencyDomains()
+        setAgencyTechnologies()
+        // apiCall()
+
+    }
     //Api Calls methods
 
     const getAllDomains = () => {
@@ -77,25 +122,21 @@ function AgencyForm2() {
                     }
                 })
                 setAllDomainsData(domainNames)
-                // setAllDomains(domainNames)
             })
     }
 
     const handleDomains = (event) => {
         const { className } = event.target
-        console.log(className)
         const toggledDomains = allDomainsData.map((domain) => {
-            if (domain.domainName === className)
+            if (domain.domainName === className){
                 return {
                     ...domain,
                     selected: !domain.selected
                 }
-
+            }
             return domain
         })
-
         setAllDomainsData(toggledDomains)
-
     }
 
     const getAllServices = () => {
@@ -130,10 +171,10 @@ function AgencyForm2() {
 
     }
 
+
     const getAllTechs = () => {
         instance.get(`api/${Role}/technologies/all`)
             .then(function (response) {
-                // setAllServicesData(response)
                 const techNames = response.map((tech) => {
                     return {
                         ...tech,
@@ -145,7 +186,7 @@ function AgencyForm2() {
     }
 
 
-    function getSelectedServicesIds(allServices) {
+    const getSelectedServicesIds = (allServices)=> {
         return allServices
             .filter(function (service) {
                 return service.selected === true;
@@ -155,6 +196,16 @@ function AgencyForm2() {
             });
     }
 
+    const createAgencyForm2Api = ()=>{
+        instance.post(`api/${Role}/agencies/create`, apiData)
+            .then(function (response) {
+                console.log(response)
+            })
+    }
+
+    useEffect(()=>{
+
+    },[apiData])
     useEffect(() => {
         getAllDomains()
         getAllServices()
@@ -163,28 +214,30 @@ function AgencyForm2() {
 
     useEffect(() => {
         setSelectedServicesId(getSelectedServicesIds(allServicesData))
-
+        setApiData({
+            ...apiData,
+            agencyServices:getSelectedServicesIds(allServicesData)
+        })
     }, [allServicesData])
 
     useEffect(() => {
         // eslint-disable-next-line array-callback-return
-        const filteredTech = allTechData.filter((tech) => {
-            if (selectedServicesId.indexOf(tech.serviceId) !== -1)
-                return tech
+
+        const filteredTech = {}
+        allTechData.forEach((tech)=>{
+            if (selectedServicesId.indexOf(tech.serviceId) !== -1){
+                filteredTech[tech.technologyName] = tech
+            }
         })
 
         setVisibleTechData(filteredTech)
+        setVisibleTechNames(Object.keys(filteredTech))
     }, [selectedServicesId, allTechData])
 
     useEffect(()=>{
-        console.log(visibleTechData)
-        setVisibleTechNames(
-            visibleTechData.map((tech)=>{
-                return tech.technologyName
-            })
-        )
-    },[visibleTechData])
-
+        if(apiData.agencyDomains.length!==0 && apiData.agencyServices.length!==0 && apiData.agencyTechnologies.length!==0)
+            createAgencyForm2Api()
+    },[apiData])
     return (
         <>
             <Navbar />
@@ -240,10 +293,10 @@ function AgencyForm2() {
 
                             <div className="domainBudgetOptions">
                                 <FormControl component="fieldset">
-                                    <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                        <FormControlLabel color="primary" value="$5000-$10000" control={<Radio className={classes.root} />} label="$5000-$10000" />
-                                        <FormControlLabel value="$10000-$150000" control={<Radio />} label="$10000-$150000" />
-                                        <FormControlLabel value="Max $15000" control={<Radio />} label="Max $15000" />
+                                    <RadioGroup aria-label="budget" name="budget" value={apiData.agencyMonthlyBudget} onChange={handleChange}>
+                                        <FormControlLabel color="primary" value="3500" control={<Radio className={classes.root} />} label="3500" />
+                                        <FormControlLabel value="5000" control={<Radio />} label="5000" />
+                                        <FormControlLabel value="1000" control={<Radio />} label="10000" />
                                     </RadioGroup>
                                 </FormControl>
                             </div>
@@ -251,8 +304,10 @@ function AgencyForm2() {
 
 
                         <div className="nextBtn">
-                            <NavLink to="/agency-form-one" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink>
-                            <NavLink to="/agency-form-three" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
+                            {/* <NavLink to="/agency-form-one" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
+                            <button className ="next-click" onClick = {()=>{handleNext()}} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</button>
+                            {/* <NavLink to="/agency-form-three" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
+                            <button className ="next-click" onClick = {()=>{handleNext(createAgencyForm2Api)}} >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                         </div>
 
 
@@ -262,9 +317,9 @@ function AgencyForm2() {
                             <div className="serviceSelectionInput">
                                 {
                                     visibleTechNames?.length ? (<>
-                                        <p className="uiuxtext">Select UI/UX services</p>
+                                        <p className="uiuxtext">Select Technologies</p>
                                         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleChangeSelect} options={visibleTechNames} primaryColor="#D6EAF8"
+                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleTechSelect} options={visibleTechNames} primaryColor="#D6EAF8"
                                                 secondaryColor="#02044a"
                                                 textSecondaryColor="#fff"
                                                 className="UIUXServices"
