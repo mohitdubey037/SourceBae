@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
@@ -102,11 +103,10 @@ function AgencyForm2() {
         })
     },[dom])
     
-    const handleNext = (apiCall)=>{
+    const handleNext = ()=>{
 
         setAgencyDomains()
         setAgencyTechnologies()
-        // apiCall()
 
     }
     //Api Calls methods
@@ -202,10 +202,7 @@ function AgencyForm2() {
                 console.log(response)
             })
     }
-
-    useEffect(()=>{
-
-    },[apiData])
+    
     useEffect(() => {
         getAllDomains()
         getAllServices()
