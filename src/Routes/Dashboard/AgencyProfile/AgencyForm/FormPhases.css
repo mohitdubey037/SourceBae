@@ -336,6 +336,7 @@
     font-family: 'Poppins';
     margin-top: 10px;
     font-weight: bold;
+    user-select: none;
 }
 
 
