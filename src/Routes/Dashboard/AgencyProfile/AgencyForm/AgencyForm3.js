@@ -179,7 +179,7 @@ function AgencyForm3() {
                         </div>
 
                         <div className="nextBtn">
-                            <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)}>
+                            <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
                                 <button>
                                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                 </button>
