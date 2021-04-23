@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './dashboard.css'
 import clientProfile from '../../assets/images/Logo/clientProfile.jpeg'
 import quotation from '../../assets/images/Logo/quotation.png'
@@ -9,17 +9,23 @@ import teamCreation from '../../assets/images/Logo/teamCreation.png'
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Navbar from './Navbar'
 
-import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 
 import Tooltip from 'react-power-tooltip'
 
+import instance from "../../Constants/axiosConstants"
+import * as helper from "../../shared/helper"
+
 
 const Dashboard = () => {
+
+    const Role = "agency"
+
+    const [steps, setSteps] = useState(0)
+    const [formRoute, setFormRoute] = useState("/")
     const [anchorEl, setAnchorEl] = useState(false);
     const [moreOption, setMoreOption] = useState(false);
     const [isPopover, setIsPopover] = useState(false);
@@ -128,28 +134,49 @@ const Dashboard = () => {
         },
     ]
 
+    const getStepsCompleted = () => {
+        instance.get(`api/${Role}/agencies/steps-completed`)
+            .then(function (response) {
+                if (response.stepsCompleted === response.totalSteps)
+                    setSteps(-1)
+                else{
+                    setSteps(response.stepsCompleted)
+                    let route = `/agency-form-${helper.getNumberSpell(response.stepsCompleted)}`
+                    setFormRoute(route)
+                }
+            })
+    }
+
+    useEffect(() => {
+        getStepsCompleted()
+    }, [])
+
+    useEffect(()=>{
+        console.log(formRoute)
+    },[formRoute])
+    useEffect(() => {
+        console.log(steps)
+    }, [steps])
+
     return (
         <>
             {/* Navbar  */}
             <Navbar headingInfo="Dashboard" />
 
-            <div className="mainUpdateVerify">
+            {steps !== -1 && <div className="mainUpdateVerify">
                 <div className="innerMainVerify">
-                    {/* <div>
-                        <img src={cancel} alt="" />
-                    </div> */}
-                    <p>Please<span onClick={() => window.location.href = "/agency-form-one"} >Update & Verify </span> your profile to use our services.</p>
+                    <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
                 </div>
-            </div>
+            </div>}
 
             <div className="mainClientsOptions">
                 <div className="innerClientsOptions">
                     {
                         cardsArray.map((value, index) => {
                             return (
-                                <div className="mainQuotationCard" key={index} >
+                                <div className="mainQuotationCard" key={index} style={{ filter: `${(steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                     <div className="leftLine" style={{
-                                        backgroundColor: value?.borderColor
+                                        backgroundColor: value?.borderColor,
                                     }}></div>
                                     <div
                                         style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
