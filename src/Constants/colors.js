@@ -1,6 +1,6 @@
 const colors = {
     // PRIMARY_COLOR : '#5995fd',
-    // PRIMARY_COLOR : '#230132',
+    PRIMARY_COLOR2 : '#230132',
     PRIMARY_COLOR : '#0094FF',
     WHITE : "#ffffff",
     BLACK : '#000000',
