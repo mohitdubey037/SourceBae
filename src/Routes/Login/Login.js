@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import '../Dashboard/dashboard.css'
 
+import styled from "styled-components"
+import colors from "../../Constants/colors"
 import Navbar from '../Dashboard/Navbar'
 // Axios Import
 import axios from 'axios'
@@ -12,6 +14,7 @@ import "../Login/login.css"
 import { useParams } from 'react-router'
 
 const Login = () => {
+
 
 
     let { role } = useParams();
@@ -61,6 +64,21 @@ const Login = () => {
         })
     }
 
+    const LoginButton = styled.button`
+    background: ${colors.PRIMARY_COLOR2};
+    margin: 10px 5px;
+    padding: 5px 5px;
+    border-radius:4px;
+    color: ${colors.WHITE};
+    font-family: 'Poppins';
+    font-size: 1.14rem;
+    &:hover {
+      color: #ffffff;
+      background: #f6b93b;
+      border-color: #f6b93b;
+      transition: all 0.4s ease 0s;
+    }
+  `;
     return (
         <>
             {/* Navbar  */}
@@ -98,7 +116,7 @@ const Login = () => {
                             </div>
 
                             <div className='form-group row'>
-                                <button className='btn' onClick={()=>logIn(role,form)}>Log In</button>
+                                <LoginButton onClick={()=>logIn(role,form)}>Log In</LoginButton>
                             </div>
 
                     </div>
@@ -109,6 +127,8 @@ const Login = () => {
 
         </>
     )
+
+    
 }
 
 export default Login
