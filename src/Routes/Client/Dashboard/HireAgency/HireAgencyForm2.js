@@ -165,9 +165,9 @@ function HireAgencyForm2() {
                         </div>
 
 
-                        <div className="nextBtn">
-                            <NavLink to="/hire-agency-form-one" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink>
-                            <NavLink to="/hire-agency-form-three" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
+                        <div className="nextbuttton">
+                            <div onClick={() => window.location.href = "/hire-agency-form-one"} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
+                            <div onClick={() => window.location.href = "/hire-agency-form-three"} >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
                         </div>
 
 

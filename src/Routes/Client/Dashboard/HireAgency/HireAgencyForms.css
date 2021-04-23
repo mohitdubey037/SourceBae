@@ -499,3 +499,32 @@
     font-size: 1.3rem;
     font-weight: bold;   
 }
+
+
+
+
+.nextbuttton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+    padding-right: 5%;
+}
+.nextbuttton div{
+    width: 100px;
+    height: 40px;
+    background-color: #02044a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'Poppins';
+    color:#fff;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.nextbuttton div i{
+    margin: 0 10px;
+}

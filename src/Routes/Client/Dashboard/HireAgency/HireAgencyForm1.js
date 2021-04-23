@@ -83,9 +83,9 @@ const HireAgencyForm1 = () => {
                                 <div className="downArrow" onClick={downArrow} ><i class="fa fa-angle-down" aria-hidden="true"></i></div>
                             </div>
                         </div>
-                        <div className="nextBtn">
-                            <div></div>
-                            <NavLink to="/hire-agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
+                        <div className="nextbuttton">
+                            <span></span>
+                            <div onClick={() => window.location.href = "/hire-agency-form-two"} >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
                         </div>
                     </div>
                     <div className="higherAgencyInfoArea">
