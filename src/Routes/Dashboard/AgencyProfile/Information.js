@@ -10,27 +10,27 @@ function Information(props) {
     const arr = [
         {
             title: 'Agency Name',
-            inputValue: props.data.agencyName
+            inputValue: `${props?.data.agencyName}`
         },
         {
             title: 'Date of Incorporation',
-            inputValue: props.data.incorporationDate
+            inputValue: `${props?.data?.incorporationDate}`
         },
         {
             title: 'Director Name',
-            inputValue: props.data.ownerName
+            inputValue: `${props?.data?.ownerName}`
         },
         {
             title: 'Agency Email Id',
-            inputValue: props.data.agencyEmail
+            inputValue: `${props.data.agencyEmail}`
         },
         {
             title: 'Agency Website',
-            inputValue: props.data?.socialPlatformDetails[0].platformLink
+            inputValue: `${props?.data?.socialPlatformDetails[0]?.platformLink}`
         },
         {
             title: 'Team Size',
-            inputValue: props.data.agencyTeamSize
+            inputValue: `${props?.data?.agencyTeamSize}`
         },
         {
             title: 'Fixed Budget',
@@ -42,7 +42,7 @@ function Information(props) {
         },
         {
             title: 'Contact Number',
-            inputValue: `${props.data.agencyPhone}`
+            inputValue: `${props?.data?.agencyPhone}`
         },
     ]
 
