@@ -34,6 +34,8 @@ const useStyles = makeStyles({
 function AgencyForm2() {
 
     const Role = "agency"
+
+    const [status, setStatus] = useState("Update")
     // selecting Domains
     const [allDomainsData, setAllDomainsData] = useState([])
 
@@ -104,10 +106,8 @@ function AgencyForm2() {
     },[dom])
     
     const handleNext = ()=>{
-
         setAgencyDomains()
         setAgencyTechnologies()
-
     }
     //Api Calls methods
 
@@ -199,7 +199,7 @@ function AgencyForm2() {
     const createAgencyForm2Api = ()=>{
         instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
-                console.log(response)
+                setStatus("Next")
             })
     }
     
@@ -232,9 +232,18 @@ function AgencyForm2() {
     }, [selectedServicesId, allTechData])
 
     useEffect(()=>{
-        if(apiData.agencyDomains.length!==0 && apiData.agencyServices.length!==0 && apiData.agencyTechnologies.length!==0)
+        if(apiData.agencyDomains.length!==0 && apiData.agencyServices.length!==0 && apiData.agencyTechnologies.length!==0){
             createAgencyForm2Api()
+            
+        }
     },[apiData])
+
+    const handleNav = (event)=>{
+        if(status==="Update"){
+            event.preventDefault()
+            handleNext()
+        }
+    }
     return (
         <>
             <Navbar />
@@ -302,9 +311,20 @@ function AgencyForm2() {
 
                         <div className="nextBtn">
                             {/* <NavLink to="/agency-form-one" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
-                            <button className ="next-click" onClick = {()=>{handleNext()}} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</button>
-                            {/* <NavLink to="/agency-form-three" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                            <button className ="next-click" onClick = {()=>{handleNext(createAgencyForm2Api)}} >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                            <NavLink to="/agency-form-one" style={{textDecoration:"none"}}>
+                                <button className ="next-click">
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"/>
+                                    Back
+                                </button>
+                            </NavLink>
+                            {/* <NavLink to="/agency-form-three" >
+                            Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
+                            <NavLink to="/agency-form-three" style={{textDecoration:"none"}} onClick = {(event)=>{handleNav(event)}}>
+                                <button className ="next-click">
+                                    {status}
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"/>
+                                </button>
+                            </NavLink>
                         </div>
 
 
