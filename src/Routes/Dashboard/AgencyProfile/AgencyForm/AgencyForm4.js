@@ -13,7 +13,8 @@ import instance from "../../../../Constants/axiosConstants"
 
 function AgencyForm4() {
 
-    const Role="agency"
+    const Role = "agency"
+    const [status, setStatus] = useState("Update")
     const [fields, setFields] = useState([{ value: null }]);
     const [githubLink, setGithubLink] = useState({ platformName: "github", platformLink: "" })
     const [stackoverflow, setStackoverflow] = useState({ platformName: "stackoverflow", platformLink: "" })
@@ -55,7 +56,7 @@ function AgencyForm4() {
 
         }
 
-        else if(name==="featuredLink"){
+        else if (name === "featuredLink") {
             setFeaturedLink({
                 platformName: name,
                 platformLink: value
@@ -64,29 +65,35 @@ function AgencyForm4() {
 
     }
 
-    const handleNext = ()=>{
-        const portfolios = fields.map((link, index)=>{
-            return {
-                platformName:`portfolio${index+1}`,
-                platformLink: link.value
-            }
-        })
-        const apiData = {
-            stepsCompleted: "5",
-            socialPlatformDetails:[githubLink,stackoverflow, featuredLink,...portfolios]
-        }
-        console.log(apiData,"apiData")
-        createAgencyForm4Api(apiData)
-
-    }
-
-    
-    const createAgencyForm4Api = (apiData)=>{
+    const createAgencyForm4Api = (apiData) => {
         instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
-                console.log(response)
+                setStatus("Finish")
             })
     }
+
+    const handleNext = () => {
+
+        if (status === "Update") {
+            const portfolios = fields.map((link, index) => {
+                return {
+                    platformName: `portfolio${index + 1}`,
+                    platformLink: link.value
+                }
+            })
+            const apiData = {
+                stepsCompleted: "5",
+                socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+            }
+            createAgencyForm4Api(apiData)
+        }
+        else if(status==="Finish"){
+            window.location.href = "/dashboard"
+        }
+
+    }
+
+
     return (
         <>
             <Navbar />
@@ -106,7 +113,7 @@ function AgencyForm4() {
                                 placeholder="E.g - https://www.github.com/your_name"
                                 type="text"
                                 name={githubLink.platformName}
-                                value={githubLink.platformLink} 
+                                value={githubLink.platformLink}
                                 onChange={handleSocialPlatform} />
                         </div>
                         <div>
@@ -117,7 +124,7 @@ function AgencyForm4() {
                             <input placeholder="E.g - https://www.stackoverflow.com/your_name"
                                 type="text"
                                 name={stackoverflow.platformName}
-                                value={stackoverflow.platformLink} 
+                                value={stackoverflow.platformLink}
                                 onChange={handleSocialPlatform} />
                         </div>
                         <div>
@@ -130,10 +137,10 @@ function AgencyForm4() {
                                 fields.map((value, index) => {
                                     return (
                                         <div className="extraFields">
-                                            <input 
-                                                onChange={e => handleChange(index, e)} 
-                                                placeholder="E.g - https://www.your_company.com/" 
-                                                type="text" 
+                                            <input
+                                                onChange={e => handleChange(index, e)}
+                                                placeholder="E.g - https://www.your_company.com/"
+                                                type="text"
                                                 value={value[index]}
                                                 id="" />
                                             {
@@ -157,9 +164,16 @@ function AgencyForm4() {
                         </div>
 
                         <div className="nextBtn">
-                            <NavLink to="/agency-form-three" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink>
+                            <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
+                                <button>
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                </button>
+                            </NavLink>
                             {/* <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                            <button onClick={handleNext} >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                            <button onClick={handleNext} >
+                                {status}
+                                <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                            </button>
                         </div>
                     </div>
                     <div className="socialArea">
