@@ -55,6 +55,7 @@ const Login = () => {
             instance.post(`/api/${apiRole}/auths/login`, form)
                 .then(function (response) {
                     console.log(response,"response")
+                    localStorage.removeItem('Authorization')
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                     localStorage.setItem('userId', `${response._id}`)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`

@@ -142,7 +142,8 @@ const Register = () => {
         return new Promise((resolve,reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
             .then(function (response) {
-                localStorage.setItem('Authorization', response.accessToken)
+                localStorage.removeItem('Authorization')
+                localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                 resolve(1)
             })
@@ -154,7 +155,7 @@ const Register = () => {
 
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
         .then(function (response) {
-            window.location.replace("/agency-form-two")
+            window.location.replace("/agency-form-one")
         })
     }
 
@@ -179,7 +180,7 @@ const Register = () => {
             if(localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined)
 
             {
-                instance.defaults.headers.common['Authorization'] = "Bearer "+ localStorage.getItem('Authorization');
+                instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
                 createProfileApi(apiRole, api_param_const, api_create_form)
             }
     

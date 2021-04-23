@@ -15,20 +15,20 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
 
 
 
-const useStyles = makeStyles({
-    root: {
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-    },
-})
+// const useStyles = makeStyles({
+//     root: {
+//         '&:hover': {
+//             backgroundColor: 'transparent',
+//         },
+//     },
+// })
 
 
 function AgencyForm2() {
@@ -59,7 +59,7 @@ function AgencyForm2() {
         agencyMonthlyBudget:[]
     })
 
-    const classes = useStyles();
+    // const classes = useStyles();
 
     const handleChange = (event) => {
         const {name, value} = event.target
@@ -300,9 +300,10 @@ function AgencyForm2() {
                             <div className="domainBudgetOptions">
                                 <FormControl component="fieldset">
                                     <RadioGroup aria-label="budget" name="budget" value={apiData.agencyMonthlyBudget} onChange={handleChange}>
-                                        <FormControlLabel color="primary" value="3500" control={<Radio className={classes.root} />} label="3500" />
-                                        <FormControlLabel value="5000" control={<Radio />} label="5000" />
-                                        <FormControlLabel value="1000" control={<Radio />} label="10000" />
+                                        <FormControlLabel value="1000" control={<Radio />} label="1000$-3000$" />
+                                        <FormControlLabel value="3000" control={<Radio />} label="3000$-5000$" />
+                                        <FormControlLabel value="5000" control={<Radio />} label="50000$-7000$" />
+                                        <FormControlLabel value="7000" control={<Radio />} label="7000$-10000$" />
                                     </RadioGroup>
                                 </FormControl>
                             </div>

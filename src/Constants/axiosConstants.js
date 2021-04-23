@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 var url = config.url.API_URL
 
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Authorization')}`;
+axios.defaults.headers.common['Authorization'] = `${localStorage.getItem('Authorization')}`;
 const instance = axios.create({
     baseURL: url,
     params:{},

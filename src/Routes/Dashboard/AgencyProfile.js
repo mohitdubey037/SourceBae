@@ -133,17 +133,17 @@ function AgencyProfile() {
                         <div className="agencyName">
                             <div className="agencyNameURL">
                                 <div className="agencyDEtails">
-                                    <h2>{agencyProfileData.agencyName}</h2>
+                                    <h2>{agencyProfileData?.agencyName}</h2>
                                     <p>https://oneplus.com</p>
                                 </div>
-                                <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
+                                <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
                                     <i class="fa fa-check" aria-hidden="true"/> 
-                                    <span>{`${!agencyProfileData.isAgencyVerified?agencyProfileData.verificationMessage:`Verified`}`}</span>
+                                    <span>{`${!agencyProfileData?.isAgencyVerified?agencyProfileData?.verificationMessage:`Verified`}`}</span>
                                 </div>
                             </div>
                             <div className="agencyAddress">
                                 <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                                <span>{`${agencyProfileData.agencyAddress.address}, ${agencyProfileData.agencyAddress.location}`} </span>
+                                <span>{`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`} </span>
                             </div>
                         </div>
                         <div className="agencyProfileConstantPoints">
