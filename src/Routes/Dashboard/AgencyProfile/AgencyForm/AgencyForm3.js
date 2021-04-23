@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
 
@@ -8,7 +8,135 @@ import panCard from '../../../../assets/images/agencyForm/panCard.png'
 import privacy from '../../../../assets/images/agencyForm/privacy.svg'
 import { NavLink } from 'react-router-dom'
 
+import { FilePicker } from 'react-file-picker'
+import { toast } from 'react-toastify'
+
+//axios instance
+import instance from "../../../../Constants/axiosConstants"
+
 function AgencyForm3() {
+
+    const Role = "agency"
+    const [isUpload, setIsUpload] = useState(true)
+    const [pickedAll, setPickedAll] = useState(false)
+    const [registrationCertificate, setRegistrationCertificate] = useState({
+        documentName: "Company Registration Certificate",
+        documentLink: "",
+        documentPicked: false,
+        document: ""
+    })
+
+    const [brochureDoc, setBrochureDoc] = useState({
+        documentName: "Brochure",
+        documentLink: "",
+        documentPicked: false,
+        document: ""
+    })
+
+    const [panCardDoc, setPanCardDoc] = useState({
+        documentName: "Pancard",
+        documentLink: "",
+        documentPicked: false,
+        document: ""
+    })
+
+    const handleDocumentPicker = (document, category) => {
+
+        
+        if (category === registrationCertificate.documentName) {
+            setRegistrationCertificate({
+                ...registrationCertificate,
+                documentPicked: true,
+                document
+            })
+        }
+
+        else if (category === brochureDoc.documentName) {
+            
+            setBrochureDoc({
+                ...brochureDoc,
+                documentPicked: true,
+                document
+            })
+        }
+        else if (category === panCardDoc.documentName) {
+            console.log(document)
+            setPanCardDoc({
+                ...panCardDoc,
+                documentPicked: true,
+                document
+            })
+        }
+
+    }
+
+    const handleUploadError = (error) => {
+        toast.error(error)
+    }
+    useEffect(()=>{
+        console.log(panCardDoc)
+    },[panCardDoc])
+
+    function uploadMedia(category, document) {
+
+        const formData = new FormData();
+        
+        document && formData.append(
+            "files",
+            document,
+            category
+        );
+        console.log(formData)
+        instance.post(`api/${Role}/media/create`, formData)
+            .then(function (response) {
+
+                if (category === registrationCertificate.documentName)
+                    setRegistrationCertificate({
+                        ...registrationCertificate,
+                        documentLink: response[0].mediaURL
+                    })
+
+                else if (category === brochureDoc.documentName)
+                    setBrochureDoc({
+                        ...brochureDoc,
+                        documentLink: response[0].mediaURL
+                    })
+
+                else if (category === panCardDoc.documentName)
+                    setPanCardDoc({
+                        ...panCardDoc,
+                        documentLink: response[0].mediaURL
+                    })
+            })
+
+    }
+
+    const handleUpload = (event) => {
+
+        const { name } = event.target
+        if (name === "Upload" && pickedAll) {
+            uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
+            uploadMedia(brochureDoc.documentName,brochureDoc.document)
+            uploadMedia(panCardDoc.documentName,panCardDoc.document)
+        }
+    }
+
+    const handleNavlink = (event) => {
+        if (isUpload)
+            event.preventDefault()
+    }
+
+    useEffect(() => {
+        if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
+            setPickedAll(true)
+        }
+        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "")
+            setIsUpload(false)
+    }, [registrationCertificate, brochureDoc, panCardDoc])
+
+    useEffect(()=>{
+        console.log(isUpload,"upload")
+    },[isUpload])
     return (
         <>
             <Navbar />
@@ -23,25 +151,50 @@ function AgencyForm3() {
                             <div className="agencyCertification">
                                 <span>Company Registration Certificate</span>
                                 <img src={agencyLogo} alt="" />
-                                <button><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+                                <FilePicker
+                                    extensions={['pdf', 'jpg', 'png']}
+                                    onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
+                                    onError={error => handleUploadError(error)}>
+                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                </FilePicker>
                             </div>
                             <div className="agencyBrochure">
                                 <span>Brochure</span>
                                 <img src={brochure} alt="" />
-                                <button><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+                                <FilePicker
+                                    extensions={['pdf', 'jpg', 'png']}
+                                    onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
+                                    onError={error => handleUploadError(error)}>
+                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                </FilePicker>
                             </div>
                         </div>
                         <div className="panDetails">
                             <p>2. Enter your Pan Card number</p>
                             <div className="panCardContent">
                                 <img src={panCard} alt="" />
-                                <button><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+                                <FilePicker
+                                    extensions={['pdf', 'jpg', 'png']}
+                                    onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
+                                    onError={error => handleUploadError(error)}>
+                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                </FilePicker>
                             </div>
                         </div>
 
                         <div className="nextBtn">
-                            <NavLink to="/agency-form-two" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink>
-                            <NavLink to="/agency-form-four" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
+                            <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)}>
+                                <button>
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                </button>
+                            </NavLink>
+
+                            <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} >
+                                <button onClick={handleUpload} name={isUpload ? "Upload" : "Next"}>
+                                    {isUpload ? "Upload" : "Next"}
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                </button>
+                            </NavLink>
                         </div>
                     </div>
                     <div className="miscellaneousArea">
