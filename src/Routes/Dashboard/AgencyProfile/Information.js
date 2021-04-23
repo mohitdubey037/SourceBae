@@ -4,32 +4,33 @@ import './Information.css'
 import gallery from '../../../assets/images/Logo/gallery.svg'
 import brochure from '../../../assets/images/Logo/brochure.png'
 
-function Information() {
+function Information(props) {
 
+    console.log(props,"props")
     const arr = [
         {
             title: 'Agency Name',
-            inputValue: 'SheThink Pvt Ltd.'
+            inputValue: props.data.agencyName
         },
         {
             title: 'Date of Incorporation',
-            inputValue: '09 Apr 2021'
+            inputValue: props.data.incorporationDate
         },
         {
             title: 'Director Name',
-            inputValue: 'Mohd Zaid'
+            inputValue: props.data.ownerName
         },
         {
             title: 'Agency Email Id',
-            inputValue: 'shubham@shethink.in'
+            inputValue: props.data.agencyEmail
         },
         {
             title: 'Agency Website',
-            inputValue: 'https://www.shethink.in'
+            inputValue: props.data?.socialPlatformDetails[0].platformLink
         },
         {
             title: 'Team Size',
-            inputValue: '11-22'
+            inputValue: props.data.agencyTeamSize
         },
         {
             title: 'Fixed Budget',
@@ -41,7 +42,7 @@ function Information() {
         },
         {
             title: 'Contact Number',
-            inputValue: '7417537175'
+            inputValue: `${props.data.agencyPhone}`
         },
     ]
 

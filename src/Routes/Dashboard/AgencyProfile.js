@@ -215,31 +215,31 @@ function AgencyProfile() {
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-                                <img src={received} /> Information
+                                <img src={received} alt="information" /> Information
                             </button>
                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                                <img src={responded} alt="" /> Skills Set
+                                <img src={responded} alt="skills" /> Skills Set
                             </button>
                             <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-                                <img src={matched} alt="" /> Agency Rules
+                                <img src={matched} alt="rules" /> Agency Rules
                             </button>
                             <button class="nav-link" id="nav-developer-tab" data-bs-toggle="tab" data-bs-target="#nav-developer" type="button" role="tab" aria-controls="nav-developer" aria-selected="false">
-                                <img src={matched} alt="" /> Developers
+                                <img src={matched} alt="dev" /> Developers
                             </button>
                             <button class="nav-link" id="nav-portfolio-tab" data-bs-toggle="tab" data-bs-target="#nav-portfolio" type="button" role="tab" aria-controls="nav-portfolio" aria-selected="false">
-                                <img src={matched} alt="" /> Portfolio
+                                <img src={matched} alt="portfolio" /> Portfolio
                             </button>
                             <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
-                                <img src={matched} alt="" /> Reviews
+                                <img src={matched} alt="Reviews" /> Reviews
                             </button>
                             <button class="nav-link" id="nav-question-tab" data-bs-toggle="tab" data-bs-target="#nav-question" type="button" role="tab" aria-controls="nav-question" aria-selected="false">
-                                <img src={matched} alt="" /> Feature Link
+                                <img src={matched} alt="Feature Link" /> Feature Link
                             </button>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <Information />
+                            <Information data = {agencyProfileData}/>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <SkillsSet />
