@@ -23,6 +23,9 @@ import ProjectDetails from './Routes/Dashboard/ProjectDetails';
 
 
 import ClientDashboard from './Routes/Client/Dashboard/Dashboard'
+import HireAgencyForm1 from './Routes/Client/Dashboard/HireAgency/HireAgencyForm1';
+import HireAgencyForm2 from './Routes/Client/Dashboard/HireAgency/HireAgencyForm2';
+import HireAgencyForm3 from './Routes/Client/Dashboard/HireAgency/HireAgencyForm3';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -46,6 +49,9 @@ const App = () => (
 
     {/* Client Components  */}
     <Route exact path="/client-dashboard" component={ClientDashboard} />
+    <Route exact path="/hire-agency-form-one" component={HireAgencyForm1} />
+    <Route exact path="/hire-agency-form-two" component={HireAgencyForm2} />
+    <Route exact path="/hire-agency-form-three" component={HireAgencyForm3} />
 
 
   </Switch>

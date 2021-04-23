@@ -74,7 +74,7 @@ function Dashboard() {
                                 <h4>Hire Developer</h4>
                             </div>
                         </div>
-                        <div className="hireAgencyCard">
+                        <div className="hireAgencyCard" onClick={() => window.location.href = "/hire-agency-form-one"} >
                             <div className="leftBorderHireDeveloper"></div>
                             <div className="hireAgencyImage">
                                 <img src={hireAgency} alt="" />
