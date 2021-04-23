@@ -60,7 +60,6 @@ function AgencyForm3() {
             })
         }
         else if (category === panCardDoc.documentName) {
-            console.log(document)
             setPanCardDoc({
                 ...panCardDoc,
                 documentPicked: true,
@@ -73,9 +72,6 @@ function AgencyForm3() {
     const handleUploadError = (error) => {
         toast.error(error)
     }
-    useEffect(()=>{
-        console.log(panCardDoc)
-    },[panCardDoc])
 
     function uploadMedia(category, document) {
 

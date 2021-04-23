@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
 import { FilePicker } from 'react-file-picker'
@@ -8,18 +8,28 @@ import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png
 import { NavLink } from 'react-router-dom'
 
 import instance from "../../../../Constants/axiosConstants"
+import { toast } from 'react-toastify'
 
 function AgencyForm1() {
 
     const Role = "agency"
     const api_param_const = "agencies"
+
+    const [status,setStatus] = useState("upload")
+    const [linkedIn, setLinkedIn] = useState({
+        platformName:"linkedIn",
+        platformLink:""
+    })
+
+    const [agencyLogo, setAgencyLogo] = useState(null)
     const [formData, setFormData] = useState({
         stepsCompleted: "2",
         ownerName: "",
         agencyEmail: "",
         agencyPhone: "",
         agencyDescription: "",
-        agencyLogo: "http://13.235.79.27:8000/media/images/1618496735048.png",
+        socialPlatformDetails:[],
+        agencyLogo: null,
         agencyAddress: {
             address: "",
             location: ""
@@ -27,35 +37,97 @@ function AgencyForm1() {
     })
 
     const handleSubmit = () => {
-        // toast("You need to fill this form first to move to next step.")
-       
-
+        console.log(formData, "formData")
         instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
-        .then(function (response) {
-            window.location.replace("/dashboard")
-        })
+            .then(function (response) {
+                setStatus("next")
+            })
     }
 
     const handleChange = (event) => {
-        const {id,name,value} = event.target
-        if(id==='address_location'){
+        const { id, name, value } = event.target
+        if (id === 'address_location') {
             setFormData({
                 ...formData,
-                agencyAddress:{
+                agencyAddress: {
                     ...formData.agencyAddress,
-                    [name]:value
+                    [name]: value
                 }
             })
         }
-        else{
+        else {
             setFormData({
                 ...formData,
-                [name]:value
+                [name]: value
             })
         }
 
     }
 
+    
+    const handleSocialPlatform = (event) => {
+        const { name, value } = event.target
+        if (name === "linkedIn") {
+            setLinkedIn({
+                platformName: name,
+                platformLink: value
+            })
+
+        }
+    }
+    const handleNavlink = async(e)=>{
+        if(status!=="next"){
+            e.preventDefault()
+            if(status==="upload" && agencyLogo!==null)
+                uploadMedia(agencyLogo.category,agencyLogo.document)
+            else if(status==="update")
+                handleSubmit()
+            else
+                toast.error("Something went wrong.")
+        }
+    }
+
+    const handleUploadError = (error) => {
+        toast.error(error)
+    }
+
+    const handleDocumentPicker = (document, category) => {
+        setAgencyLogo({
+            category,
+            document    
+        })
+    }
+
+    function uploadMedia(category, document) {
+
+        const data = new FormData();
+        
+        document && data.append(
+            "files",
+            document,
+            category
+        );
+        console.log(data)
+        instance.post(`api/${Role}/media/create`, data)
+            .then(function (response) {
+                
+                setFormData({
+                    ...formData,
+                    agencyLogo:response[0].mediaURL
+                })
+
+                setStatus("update")
+            })
+
+    }
+
+    useEffect(()=>{
+        setFormData({
+            ...formData,
+            socialPlatformDetails:[linkedIn]
+        })
+    },[linkedIn])
+    
     return (
         <>
             <Navbar />
@@ -72,14 +144,14 @@ function AgencyForm1() {
                                 <div className="getAgencyLogo">
                                     <img src={agencyLogo} alt="" />
                                     <FilePicker
-                                        extensions={['md']}
-                                        onChange={FileObject => { }}
-                                        onError={errMsg => { }}
-                                    >
+                                        extensions={['pdf', 'jpg', 'png']}
+                                        onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
+                                        onError={error => handleUploadError(error)}>
                                         <button>
-                                            Upload Logo
+                                            <i class="fa fa-upload" aria-hidden="true"/>
+                                            Pick File
                                         </button>
-                                    </FilePicker>
+                                </FilePicker>
                                 </div>
                                 <div className="getAgencyDesc">
                                     <p>Description</p>
@@ -87,7 +159,7 @@ function AgencyForm1() {
                                         name="agencyDescription"
                                         cols="30"
                                         rows="5"
-                                        value={formData.agencyDescription}
+                                        value={formData?.agencyDescription}
                                         onChange={(event) => handleChange(event)} />
                                 </div>
                             </div>
@@ -99,7 +171,7 @@ function AgencyForm1() {
                                         type="text"
                                         placeholder="Jack Morrison"
                                         name="ownerName"
-                                        value={formData.ownerName}
+                                        value={formData?.ownerName}
                                         onChange={(event) => handleChange(event)}
                                     />
                                 </div>
@@ -109,8 +181,8 @@ function AgencyForm1() {
                                     <input
                                         type="text"
                                         placeholder="abc@abc.in"
-                                        name="agencyEmail" 
-                                        value={formData.agencyEmail}
+                                        name="agencyEmail"
+                                        value={formData?.agencyEmail}
                                         onChange={(event) => handleChange(event)} />
                                 </div>
                             </div>
@@ -118,52 +190,60 @@ function AgencyForm1() {
                             <div className="formContentPartTwo">
                                 <div className="getOwnerName">
                                     <p>Company Phone</p>
-                                    <input 
-                                        type="text" 
-                                        placeholder="9876543210" 
-                                        name="agencyPhone" 
-                                        value={formData.agencyPhone}
+                                    <input
+                                        type="text"
+                                        placeholder="9876543210"
+                                        name="agencyPhone"
+                                        value={formData?.agencyPhone}
                                         onChange={(event) => handleChange(event)} />
                                 </div>
-
-                                {/* <div className="getOwnerName">
-                                    <p>Linkedin URL</p>
-                                    <input type="text" placeholder="https://linkedin.com/in/company" name="" id="" />
-                                </div> */}
+                                <div className="getOwnerName">
+                                    <p>LinkedIn URL</p>
+                                    <input placeholder="E.g - https://www.linkedin.com/shethink-pvt-ltd/"
+                                        type="text"
+                                        name={linkedIn?.platformName}
+                                        value={linkedIn?.platformLink}
+                                        onChange={(event) => handleSocialPlatform(event)} />
+                                </div>
                             </div>
 
-                            <div className="formContentPartTwo addressField">
-                                <div className="getOwnerName getCompanyAddress">
+                            <div className="formContentPartTwo">
+                                <div className="getOwnerName">
                                     <p>Company Address</p>
                                     <input
                                         type="text"
-                                        placeholder="scheme 54, Vijay Nagar, Indore,MP"
-                                        name="address" 
-                                        id="address_location" 
-                                        value = {formData.agencyAddress.address}
+                                        placeholder="scheme 54, Vijay Nagar"
+                                        name="address"
+                                        id="address_location"
+                                        value={formData?.agencyAddress?.address}
                                         onChange={(event) => handleChange(event)} />
                                 </div>
 
-                                <div className="getOwnerName getCompanyAddress">
+                                <div className="getOwnerName">
                                     <p>Company Location</p>
                                     <input
                                         type="text"
-                                        placeholder="scheme 54, Vijay Nagar, Indore,MP"
+                                        placeholder="Indore,MP"
                                         name="location"
-                                        id="address_location" 
-                                        value = {formData.agencyAddress.location}
+                                        id="address_location"
+                                        value={formData?.agencyAddress?.location}
                                         onChange={(event) => handleChange(event)} />
                                 </div>
                             </div>
 
                             <div className="nextBtn">
-                                <button onClick={() => handleSubmit(formData)}>
-                                    Next
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true" />
-                                </button>
-                                {/* <NavLink to="/agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                                <div></div>
-                                <NavLink to="/agency-form-two" >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink>
+                                <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
+                                    <button>
+                                        <i class="fa fa-long-arrow-left" aria-hidden="true" />
+                                        Back
+                                    </button>
+                                </NavLink>
+                                <NavLink to="/agency-form-two"  style={{ textDecoration: "none" }} onClick = {(event)=>handleNavlink(event)}>
+                                    <button>
+                                        {status}
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                    </button>
+                                </NavLink>
                             </div>
 
                         </div>

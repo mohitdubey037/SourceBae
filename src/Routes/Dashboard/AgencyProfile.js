@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import './AgencyProfile.css'
 
@@ -24,12 +24,58 @@ import FeatureLink from './AgencyProfile/FeatureLink'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
+import instance from "../../Constants/axiosConstants"
+
 function AgencyProfile() {
 
+    const Role = "agency"
     const [open, setOpen] = useState(false);
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
+    const [agencyProfileData, setAgencyProfileData]= useState({
+        ownerName: "",
+        agencyName: "",
+        agencyEmail: "",
+        agencyPhone: "",
+        agencyDescription: "",
+        agencyLogo: "",
+        incorporationDate: "",
+        agencyTeamSize: "",
+        isAgencyRegistered: "",
+        isAgencyVerified: "",
+        verificationMessage: "",
+        agencyAverageRating: "",
+        stepsCompleted: "",
+        agencyMonthlyBudget: "",
+        agencyServices: [],
+        agencyTechnologies: [],
+        _id: "6075c922cb210f7772a268df",
+        agencyDomains: [],
+        agencyDocuments: [],
+        socialPlatformDetails: [],
+        projectDetails: [],
+        agencyAddress:{
+            address: "",
+            location: "",
+            _id: ""
+        },
+        createdAt: "",
+        updatedAt: "",
+    })
+    const getAgencyProfile = ()=>{
+        const id = localStorage.getItem("userId")
+        instance.get(`/api/${Role}/agencies/get/${id}`)
+        .then(function(response){
+            console.log(response)
+            setAgencyProfileData({...response})
+        })
+    }
+
+    useEffect(()=>{
+        getAgencyProfile()
+    },[])
+
     return (
         <>
             <Navbar headingInfo="Agency Profile" />
@@ -87,16 +133,17 @@ function AgencyProfile() {
                         <div className="agencyName">
                             <div className="agencyNameURL">
                                 <div className="agencyDEtails">
-                                    <h2>One Plus</h2>
+                                    <h2>{agencyProfileData.agencyName}</h2>
                                     <p>https://oneplus.com</p>
                                 </div>
-                                <div className="verifiedStatus">
-                                    <i class="fa fa-check" aria-hidden="true"></i> <span>Verified</span>
+                                <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
+                                    <i class="fa fa-check" aria-hidden="true"/> 
+                                    <span>{`${!agencyProfileData.isAgencyVerified?agencyProfileData.verificationMessage:`Verified`}`}</span>
                                 </div>
                             </div>
                             <div className="agencyAddress">
                                 <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                                <span>302,BF-27,Scheme 54, Sica School Road, Vijay Nagar, Indore, MP,452010 </span>
+                                <span>{`${agencyProfileData.agencyAddress.address}, ${agencyProfileData.agencyAddress.location}`} </span>
                             </div>
                         </div>
                         <div className="agencyProfileConstantPoints">
@@ -106,11 +153,11 @@ function AgencyProfile() {
                             </div>
                             <div className="pointContent" >
                                 <p>Email ID</p>
-                                <h4>shubham@oneplus.com</h4>
+                                <h4>{agencyProfileData.agencyEmail}</h4>
                             </div>
                             <div className="pointContent" >
                                 <p>Agency Id</p>
-                                <h4>287639374</h4>
+                                <h4>{agencyProfileData._id}</h4>
                             </div>
                             <div className="pointContent" >
                                 <p>Total Profile Views</p>
@@ -126,9 +173,7 @@ function AgencyProfile() {
                 <div className="innerAgencyProfileDesc">
                     <div className="leftAgencyProfileDesc">
                         <h2>About us</h2>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, quod odio! Eius harum cupiditate distinctio quos unde officiis magni officia, sed temporibus fuga odio natus porro accusantium et dolores? Ea, non, eos, dolores fugiat minima adipisci quisquam quidem excepturi qui minus dolor corporis numquam corrupti porro! Sunt tenetur ipsam voluptatum.
-
-                    </p>
+                        <p>{agencyProfileData.agencyDescription}</p>
                         <div className="agencyProfileIndustry">
                             <p>Food</p>
                             <p>Fintech</p>
