@@ -65,7 +65,7 @@ const Mainhomepage = () => {
             </div>
 
             <div className="dots__leftWrapper">
-                <img src={dotsleft} alt="" style={{ zIndex: 2, width: '120%' }} />
+                <img src={dotsleft} alt="" style={{ zIndex: 2, width: '85%' }} />
             </div>
 
             <div className="dots__rightWrapper">
@@ -85,7 +85,7 @@ const Mainhomepage = () => {
                         <div className="subtext"><p>Lorem ipsum dolor sit amet consectetur adipisicing. <br /> Lorem, ipsum dolor.</p></div>
 
                         <div className="button__area">
-                            <Button style={{ background: colors.PRIMARY_COLOR, color: colors.WHITE, fontSize: '1.2rem' }}>Get started</Button>
+                            <Button style={{ background: colors.PRIMARY_COLOR, color: colors.WHITE, fontSize: '1.2rem' }} onClick = {()=>window.location.href="/client-dashboard"}>Get started</Button>
                         </div>
 
                     </div>
