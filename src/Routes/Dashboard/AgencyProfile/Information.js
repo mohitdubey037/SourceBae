@@ -34,11 +34,7 @@ function Information(props) {
         },
         {
             title: 'Fixed Budget',
-            inputValue: '$5,000-$10,000'
-        },
-        {
-            title: 'Fixed Budget',
-            inputValue: '$5,000-$10,000'
+            inputValue: `${props?.data?.agencyMonthlyBudget}$-${props?.data?.agencyMonthlyBudget + 2*1000}$`
         },
         {
             title: 'Contact Number',
