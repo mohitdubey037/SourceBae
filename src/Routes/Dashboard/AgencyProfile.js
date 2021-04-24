@@ -126,7 +126,7 @@ function AgencyProfile() {
                 <div className="innerAgencyProfileInfo">
                     <div className="mainAgencyProfileLogo">
                         <div className="innerAgencyProfileLogo">
-                            <img src={agencyLogo} alt="" />
+                            <img src={agencyProfileData.agencyLogo} alt="" />
                         </div>
                     </div>
                     <div className="mainAgencyProfileContent">
@@ -134,7 +134,7 @@ function AgencyProfile() {
                             <div className="agencyNameURL">
                                 <div className="agencyDEtails">
                                     <h2>{agencyProfileData?.agencyName}</h2>
-                                    <p>https://oneplus.com</p>
+                                    <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p>
                                 </div>
                                 <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
                                     <i class="fa fa-check" aria-hidden="true"/> 
