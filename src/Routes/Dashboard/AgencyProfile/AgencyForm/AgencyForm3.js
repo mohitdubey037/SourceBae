@@ -17,8 +17,9 @@ import instance from "../../../../Constants/axiosConstants"
 function AgencyForm3() {
 
     const Role = "agency"
-    const [isUpload, setIsUpload] = useState(true)
+    const [status, setStatus] = useState("Upload")
     const [pickedAll, setPickedAll] = useState(false)
+
     const [registrationCertificate, setRegistrationCertificate] = useState({
         documentName: "Company Registration Certificate",
         documentLink: "",
@@ -117,9 +118,26 @@ function AgencyForm3() {
         }
     }
 
+    const handleUpdate =()=>{
+        console.log("handle update")
+        const apiData ={ 
+            stepsCompleted:"4",
+            agencyDocuments:[registrationCertificate, brochureDoc, panCardDoc]
+        }
+        instance.post(`/api/${Role}/agencies/create`,apiData)
+        .then(function(response){
+            console.log(response)
+            setStatus("Next")
+        })
+    }
+
     const handleNavlink = (event) => {
-        if (isUpload)
+        if (status!=="Next")
             event.preventDefault()
+        if(status==="Update")
+            handleUpdate()
+        
+       
     }
 
     useEffect(() => {
@@ -127,12 +145,13 @@ function AgencyForm3() {
             setPickedAll(true)
         }
         if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "")
-            setIsUpload(false)
+            setStatus("Update")
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
     useEffect(()=>{
-        console.log(isUpload,"upload")
-    },[isUpload])
+        console.log(status,"upload")
+        
+    },[status])
     return (
         <>
             <Navbar />
@@ -186,8 +205,8 @@ function AgencyForm3() {
                             </NavLink>
 
                             <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} >
-                                <button onClick={handleUpload} name={isUpload ? "Upload" : "Next"}>
-                                    {isUpload ? "Upload" : "Next"}
+                                <button onClick={handleUpload} name={status}>
+                                    {status}
                                     <i class="fa fa-long-arrow-right" aria-hidden="true" />
                                 </button>
                             </NavLink>
