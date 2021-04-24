@@ -1,0 +1,153 @@
+
+.mainHireDeveloper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   margin-top: 0.2%;
+    background-image: repeating-linear-gradient(45deg, rgb(255,255,255) 0px, rgb(255,255,255) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(135deg, rgb(255,255,255) 0px, rgb(255,255,255) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(256,7%,84%),hsl(256,7%,84%));
+}
+.innerHireDeveloper{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+     margin-bottom: 5%;
+}
+.hireDeveloperForm{
+    width: 80%;
+    padding: 2rem;
+    box-shadow: 0 2px 8px 2px rgba(0,0,0,0.3);
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.hireDeveloperFormInfo h2{
+    font-family: 'Poppins';
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.hireDeveloperFormInfo h2::after{
+    content: '';
+    width: 100px;
+    height: 2px;
+    background-color: #000;
+    display: block;
+}
+.hireDeveloperFormInfo p{
+    font-family: 'Poppins';
+    color: #999;
+    font-size: 0.95rem;
+}
+
+
+.roleLooking,.resourceNumber,.skillsRequiredDeveloper,.averageExperience,.prefferedBilling,.averageBudget,.startPeriod,.contractPeriod{
+    margin-top: 5%;
+}
+.roleLooking, .resourceNumber ,.skillsRequiredDeveloper,.averageExperience,.prefferedBilling,.averageBudget,.startPeriod,.contractPeriod :is(p){
+    font-size: 1.2rem;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+.roleLooking input{
+    width: 80%;
+    height: 45px;
+    padding-left: 10px;
+    font-size: 1rem;
+    border: 1px solid #e0e0e0;
+}
+.resourceNumber input{
+    width: 80%;
+    height: 45px;
+    padding-left: 10px;
+    font-size: 1rem;
+    border: 1px solid #e0e0e0;
+}
+.skillsRequiredDeveloper input{
+     width: 80%;
+    height: 45px;
+    padding-left: 10px;
+    font-size: 1rem;
+    border: 1px solid #e0e0e0;
+}
+
+.billingOptions{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.billingButton{
+    /* margin: 0 1rem; */
+    margin-right: 1.5rem;
+    width: 30%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    cursor: pointer;
+    position: relative;
+}
+.billingButton img{
+    width: 15%;
+    object-fit: contain;
+    margin-right: 20px;
+}
+.billingButton h6{
+    font-family: 'Poppins';
+    transform: translateY(5px);
+    font-size: 1.2rem;
+    font-weight: bold;
+    user-select: none;
+}
+.billingButton i{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 2rem;
+    /* color: #2FAB73; */
+    color: #02044a;
+}
+
+
+.contractPeriod input{
+    width: 80%;
+    height: 45px;
+    padding-left: 10px;
+}
+.contractPeriod select{
+    width: 80%;
+    height: 45px;
+    padding: 0 0.5rem;
+    font-size: 1.1rem;
+    font-family: 'Poppins';
+    border: 1px solid #e0e0e0;
+}
+#contractPeriod{
+    margin-right: 10px;
+}
+#contractPeriod:focus{
+     border: 1px solid #e0e0e0;
+     outline: none;
+}
+.submitBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3%;
+}
+.submitBtn button{
+    padding: 0.6rem 1rem;
+    width: 20%;
+    font-size: 1.2rem;
+    font-family: 'Poppins';
+    background-color: #26AFFF;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+}
