@@ -27,6 +27,7 @@ import HireAgencyForm1 from './Routes/Client/Dashboard/HireAgency/HireAgencyForm
 import HireAgencyForm2 from './Routes/Client/Dashboard/HireAgency/HireAgencyForm2';
 import HireAgencyForm3 from './Routes/Client/Dashboard/HireAgency/HireAgencyForm3';
 import ShortTerm from './Routes/Client/Dashboard/ShortTerm/ShortTerm';
+import HireDeveloper from './Routes/Client/Dashboard/HireDeveloper/HireDeveloper';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -54,6 +55,7 @@ const App = () => (
     <Route exact path="/hire-agency-form-two" component={HireAgencyForm2} />
     <Route exact path="/hire-agency-form-three" component={HireAgencyForm3} />
     <Route exact path="/short-term" component={ShortTerm} />
+    <Route exact path="/hire-developer" component={HireDeveloper} />
 
 
   </Switch>

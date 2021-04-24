@@ -65,7 +65,7 @@ function Dashboard() {
                     <p>Lets Go..!!!</p>
                     <h5>How shall you like to continue.?</h5>
                     <div className="innerClientCards">
-                        <div className="hireDeveloperCard">
+                        <div className="hireDeveloperCard" onClick={() => window.location.href = "/hire-developer"} >
                             <div className="leftBorderHireDeveloper"></div>
                             <div className="hireDeveloperImage">
                                 <img src={hireDeveloper} alt="" />
