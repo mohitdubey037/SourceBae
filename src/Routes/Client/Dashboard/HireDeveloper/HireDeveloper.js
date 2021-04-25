@@ -49,6 +49,9 @@ function HireDeveloper() {
         <>
             <ClientNavbar />
             <div className="mainHireDeveloper">
+                <div className="backArrow" onClick={() => { window.location.href = "/client-dashboard" }} >
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </div>
                 <div className="innerHireDeveloper">
                     <div className="hireDeveloperForm">
                         <div className="hireDeveloperFormInfo">
