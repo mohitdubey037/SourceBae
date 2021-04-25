@@ -3,9 +3,11 @@ import './Information.css'
 
 import gallery from '../../../assets/images/Logo/gallery.svg'
 import brochure from '../../../assets/images/Logo/brochure.png'
+import moment from 'moment'
 
 function Information(props) {
 
+    const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY")
     console.log(props,"props")
     const arr = [
         {
@@ -14,7 +16,7 @@ function Information(props) {
         },
         {
             title: 'Date of Incorporation',
-            inputValue: `${props?.data?.incorporationDate}`
+            inputValue: `${day}`
         },
         {
             title: 'Director Name',
@@ -34,11 +36,7 @@ function Information(props) {
         },
         {
             title: 'Fixed Budget',
-            inputValue: '$5,000-$10,000'
-        },
-        {
-            title: 'Fixed Budget',
-            inputValue: '$5,000-$10,000'
+            inputValue: `${props?.data?.agencyMonthlyBudget}$-${props?.data?.agencyMonthlyBudget + 2*1000}$`
         },
         {
             title: 'Contact Number',
