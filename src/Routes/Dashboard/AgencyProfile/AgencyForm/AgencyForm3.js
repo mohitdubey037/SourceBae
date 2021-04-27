@@ -170,7 +170,7 @@ function AgencyForm3() {
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
                                     onError={error => handleUploadError(error)}>
-                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
                                 </FilePicker>
                             </div>
                             <div className="agencyBrochure">
@@ -180,7 +180,7 @@ function AgencyForm3() {
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
                                     onError={error => handleUploadError(error)}>
-                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
                                 </FilePicker>
                             </div>
                         </div>
@@ -192,7 +192,7 @@ function AgencyForm3() {
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
                                     onError={error => handleUploadError(error)}>
-                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
                                 </FilePicker>
                             </div>
                         </div>

@@ -155,7 +155,7 @@ const Register = () => {
 
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
         .then(function (response) {
-            window.location.replace("/agency-form-one")
+            window.location.replace("/dashboard")
         })
     }
 
