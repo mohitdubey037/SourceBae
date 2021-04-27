@@ -45,6 +45,9 @@ const HireAgencyForm1 = () => {
             <ClientNavbar />
 
             <div className="mainHireAgencyForm1">
+                <div className="backArrow" onClick={() => { window.location.href = "/client-dashboard" }} >
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </div>
                 <div className="innerHigherAgencyForm1">
                     <div className="higherAgencyFormArea">
                         <div className="stepCheck">

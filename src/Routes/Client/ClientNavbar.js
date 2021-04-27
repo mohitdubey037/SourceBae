@@ -75,7 +75,7 @@ const ClientNavbar = ({ isVisible }) => {
             <div className="mainClientNavbar">
                 <div className="innerClientNavbar">
                     <div className="superSourcingLogo">
-                        <div>
+                        <div style={{ cursor: 'pointer' }} onClick={() => window.location.href = "/client-dashboard"} >
                             <img src={Logo} alt="" />
                         </div>
                     </div>
