@@ -2,7 +2,7 @@ import React from 'react'
 import './DeveloperList.css'
 import document from '../../../assets/images/Logo/document.png'
 
-function DeveloperList() {
+function DeveloperList(props) {
 
     const arr = [1, 2, 3, 4, 5]
 

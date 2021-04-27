@@ -1,7 +1,7 @@
 import React from 'react'
 import './Rules.css'
 
-function Rules() {
+function Rules(props) {
 
     const arr = [
         {
@@ -45,9 +45,9 @@ function Rules() {
         <>
             <div className="mainRules">
                 <div className="innerRules">
-                    <div className="editableBtn">
+                {(props?.id===null || props?.id===undefined) && <div className="editableBtn">
                         <button><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button>
-                    </div>
+                    </div>}
                     <div className="rulesCard">
                         <div className="rulesUpper">
                             <div className="openTiming">

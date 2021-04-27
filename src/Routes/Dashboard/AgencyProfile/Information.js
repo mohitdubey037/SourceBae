@@ -12,35 +12,43 @@ function Information(props) {
     const arr = [
         {
             title: 'Agency Name',
-            inputValue: `${props?.data.agencyName}`
+            inputValue: `${props?.data.agencyName}`,
+            disabled: false
         },
         {
             title: 'Date of Incorporation',
-            inputValue: `${day}`
+            inputValue: `${day}`,
+            disabled: false
         },
         {
             title: 'Director Name',
-            inputValue: `${props?.data?.ownerName}`
+            inputValue: `${props?.data?.ownerName}`,
+            disabled: false
         },
         {
             title: 'Agency Email Id',
-            inputValue: `${props.data.agencyEmail}`
+            inputValue: `${props.data.agencyEmail}`,
+            disabled: props?.id ? true: false
         },
         {
             title: 'Agency Website',
-            inputValue: `${props?.data?.socialPlatformDetails[0]?.platformLink}`
+            inputValue: `${props?.data?.socialPlatformDetails[0]?.platformLink}`,
+            disabled: false
         },
         {
             title: 'Team Size',
-            inputValue: `${props?.data?.agencyTeamSize}`
+            inputValue: `${props?.data?.agencyTeamSize}`,
+            disabled: false
         },
         {
             title: 'Fixed Budget',
-            inputValue: `${props?.data?.agencyMonthlyBudget}$-${props?.data?.agencyMonthlyBudget + 2*1000}$`
+            inputValue: `${props?.data?.agencyMonthlyBudget}$-${props?.data?.agencyMonthlyBudget + 2*1000}$`,
+            disabled: props?.id ? true: false
         },
         {
             title: 'Contact Number',
-            inputValue: `${props?.data?.agencyPhone}`
+            inputValue: `${props?.data?.agencyPhone}`,
+            disabled: props?.id ? true: false
         },
     ]
 
@@ -56,7 +64,7 @@ function Information(props) {
         <>
             <div className="mainInformation">
                 <div className="innerInformation">
-                   {props?.id===null && <div className="editableBtn">
+                   {(props?.id===null || props?.id===undefined) && <div className="editableBtn">
                         <button onClick={handleDisabled} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Information</button>
                         {
                             isDisabled ? null : <button onClick={handleDisabledSave} >Save Your Information</button>
@@ -67,16 +75,19 @@ function Information(props) {
                             <span className="informationBorder"></span>
                             {
                                 arr.map((value, index) => {
+                                    if(!value.disabled){
                                     return (
-                                        <div key={index} style={{ backgroundColor: index % 2 == 0 ? '#f9f9f9' : '#fff' }}>
+                                        <div key={index} style={{ backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#fff' }}>
                                             <p>{value?.title}</p>
                                             <input style={{ outline: isDisabled ? 'none' : 'none', border: isDisabled ? 'none' : '1px solid #02044a' }} disabled={isDisabled} type="text" value={value?.inputValue} name="" id="" />
                                         </div>
-                                    )
+                                    )}
+                                    else
+                                        return ""
                                 })
                             }
                         </div>
-                        <div className="informationImageForm">
+                        {/* <div className="informationImageForm">
                             <div>
                                 <span className="brochureBorder"></span>
                                 <span className="roundedCircle"></span>
@@ -91,7 +102,7 @@ function Information(props) {
                                 <p>Brochure</p>
                                 <h2>-</h2>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>

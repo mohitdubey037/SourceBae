@@ -3,7 +3,7 @@ import './SkillsSet.css'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
-function SkillsSet() {
+function SkillsSet(props) {
 
     const [open, setOpen] = useState(false);
 
@@ -97,9 +97,9 @@ function SkillsSet() {
         <>
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
-                    <div className="editableBtn">
+                {(props?.id===null || props?.id===undefined) && <div className="editableBtn">
                         <button onClick={onOpenModal} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
-                    </div>
+                    </div>}
                     <div className="skillsSetsContent">
                         <div className="skillsSetBorder"></div>
                         <div className="skillsSetSemiCircle"></div>

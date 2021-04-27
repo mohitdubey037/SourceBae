@@ -27,15 +27,14 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
 import instance from "../../Constants/axiosConstants"
+import * as helper from "../../shared/helper"
 
 function AgencyProfile() {
 
 
     const {id} = useParams()
-    console.log(id)
     const Role = "agency"
     const [open, setOpen] = useState(false);
-    const [paramId, setParamId] = useState(null)
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
     const [agencyProfileData, setAgencyProfileData]= useState({
@@ -55,7 +54,7 @@ function AgencyProfile() {
         agencyMonthlyBudget: "",
         agencyServices: [],
         agencyTechnologies: [],
-        _id: "6075c922cb210f7772a268df",
+        _id: "",
         agencyDomains: [],
         agencyDocuments: [],
         socialPlatformDetails: [],
@@ -68,23 +67,27 @@ function AgencyProfile() {
         createdAt: "",
         updatedAt: "",
     })
-    const getAgencyProfile = ()=>{
-        const agencyId = localStorage.getItem("userId")
+    const getAgencyProfile = (agencyId)=>{
+    
         instance.get(`/api/${Role}/agencies/get/${agencyId}`)
         .then(function(response){
             setAgencyProfileData({...response})
         })
+ 
     }
 
     useEffect(()=>{
-        getAgencyProfile()
-        id && setParamId(id)
+        
+        (id!==null && id!==undefined) ? getAgencyProfile(helper.cleanParam(id)):getAgencyProfile(localStorage.getItem("userId"))
     },[])
 
     return (
         <>
             <Navbar headingInfo="Agency Profile" />
 
+        {agencyProfileData._id!=="" 
+        ? 
+        <div>
             <div className="mainProfileHeaderImage">
                 <div className="innerProfileHeaderImage">
                     <div>
@@ -151,7 +154,7 @@ function AgencyProfile() {
                                 <span>{`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`} </span>
                             </div>
                         </div>
-                        <div className="agencyProfileConstantPoints">
+                        {(id ===null || id===undefined) && <div className="agencyProfileConstantPoints">
                             <div className="pointContent" >
                                 <p>Joining Date</p>
                                 <h4>02 Jan 2021</h4>
@@ -168,7 +171,7 @@ function AgencyProfile() {
                                 <p>Total Profile Views</p>
                                 <h4>23</h4>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -228,9 +231,9 @@ function AgencyProfile() {
                             <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                                 <img src={matched} alt="rules" /> Agency Rules
                             </button>
-                            <button class="nav-link" id="nav-developer-tab" data-bs-toggle="tab" data-bs-target="#nav-developer" type="button" role="tab" aria-controls="nav-developer" aria-selected="false">
+                            {(id===null && id===undefined) &&<button class="nav-link" id="nav-developer-tab" data-bs-toggle="tab" data-bs-target="#nav-developer" type="button" role="tab" aria-controls="nav-developer" aria-selected="false">
                                 <img src={matched} alt="dev" /> Developers
-                            </button>
+                            </button>}
                             <button class="nav-link" id="nav-portfolio-tab" data-bs-toggle="tab" data-bs-target="#nav-portfolio" type="button" role="tab" aria-controls="nav-portfolio" aria-selected="false">
                                 <img src={matched} alt="portfolio" /> Portfolio
                             </button>
@@ -244,30 +247,34 @@ function AgencyProfile() {
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <Information data = {agencyProfileData} id ={paramId}/>
+                            <Information data = {agencyProfileData} id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <SkillsSet />
+                            <SkillsSet id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <Rules />
+                            <Rules id={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-developer" role="tabpanel" aria-labelledby="nav-developer-tab">
-                            <DeveloperList />
+                            <DeveloperList id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-portfolio" role="tabpanel" aria-labelledby="nav-portfolio-tab">
-                            <Portfolio />
+                            <Portfolio id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
-                            <DeveloperList />
+                            <DeveloperList id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-question" role="tabpanel" aria-labelledby="nav-question-tab">
-                            <FeatureLink />
+                            <FeatureLink id ={id}/>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+        :
+        <div style={{display:"flex", justifyContent:"center",alignItems:"center", height:"80vh"}}>
+           <h1> No agency found with this ID. </h1>
+        </div>}
         </>
     )
 }
