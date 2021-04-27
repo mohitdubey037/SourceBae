@@ -131,7 +131,7 @@
     padding: 0.3rem 1rem;
     outline: none;
     border: none;
-    background-color: #02044a;
+    background-color: #119dee;
     color: #fff;
     font-family: 'Poppins';
     border-radius: 999px;
@@ -436,16 +436,17 @@
 .agencyCertification img,.agencyBrochure img{
     width: 25%;
 }
-.agencyCertification button,.agencyBrochure button{
+.agencyCertification button,.agencyBrochure button, .panCardContent button{
     padding: 0.3rem 1rem;
     border-radius: 999px;
     outline: none;
     border: none;
     font-family: 'Poppins';
-    background-color: #02044a;
+    background-color: #119dee;
     color: #fff;
     font-weight: bold;
 }
+
 .panDetails{
     margin-top: 5%;
     margin-bottom: 20px;
@@ -473,16 +474,7 @@
 .panCardContent img{
     width: 20%;
 }
-.panCardContent button{
-    padding: 0.3rem 1rem;
-    background-color: #02044a;
-    border: none;
-    outline: none;
-    border-radius: 999px;
-    font-family: 'Poppins';
-    color: #fff;
-    font-weight: bold;
-}
+
 .panCardContent button i{
     margin-right: 5px;
 }

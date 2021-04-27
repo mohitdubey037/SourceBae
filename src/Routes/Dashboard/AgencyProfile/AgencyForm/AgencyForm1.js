@@ -97,6 +97,7 @@ function AgencyForm1() {
             category,
             document    
         })
+        console.log(document)
     }
 
     function uploadMedia(category, document) {
@@ -108,7 +109,7 @@ function AgencyForm1() {
             document,
             category
         );
-        console.log(data)
+        
         instance.post(`api/${Role}/media/create`, data)
             .then(function (response) {
                 
@@ -144,10 +145,12 @@ function AgencyForm1() {
                             <div className="formContentPartOne">
                                 <div className="getAgencyLogo">
                                     <img src={agencyLogo} alt="" />
+                                    <p>{`${agencyLogo?.document?.name??""}`}</p>
                                     <FilePicker
                                         extensions={['pdf', 'jpg', 'png']}
                                         onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
                                         onError={error => handleUploadError(error)}>
+                                            
                                         <button>
                                             <i class="fa fa-upload" aria-hidden="true"/>
                                             Pick File

@@ -166,21 +166,23 @@ function AgencyForm3() {
                             <div className="agencyCertification">
                                 <span>Company Registration Certificate</span>
                                 <img src={agencyLogo} alt="" />
+                                <p>{`${registrationCertificate?.document?.name??""}`}</p>
                                 <FilePicker
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
                                     onError={error => handleUploadError(error)}>
-                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
                                 </FilePicker>
                             </div>
                             <div className="agencyBrochure">
                                 <span>Brochure</span>
                                 <img src={brochure} alt="" />
+                                <p>{`${brochureDoc?.document?.name??""}`}</p>
                                 <FilePicker
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
                                     onError={error => handleUploadError(error)}>
-                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
                                 </FilePicker>
                             </div>
                         </div>
@@ -188,11 +190,12 @@ function AgencyForm3() {
                             <p>2. Enter your Pan Card number</p>
                             <div className="panCardContent">
                                 <img src={panCard} alt="" />
+                                <p>{`${panCardDoc?.document?.name??""}`}</p>
                                 <FilePicker
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
                                     onError={error => handleUploadError(error)}>
-                                    <button><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
                                 </FilePicker>
                             </div>
                         </div>
