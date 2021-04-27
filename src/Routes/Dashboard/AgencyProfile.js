@@ -21,6 +21,8 @@ import DeveloperList from './AgencyProfile/DeveloperList'
 import Portfolio from './AgencyProfile/Portfolio'
 import FeatureLink from './AgencyProfile/FeatureLink'
 
+import {useParams} from "react-router"
+
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
@@ -28,9 +30,12 @@ import instance from "../../Constants/axiosConstants"
 
 function AgencyProfile() {
 
+
+    const {id} = useParams()
+    console.log(id)
     const Role = "agency"
     const [open, setOpen] = useState(false);
-
+    const [paramId, setParamId] = useState(null)
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
     const [agencyProfileData, setAgencyProfileData]= useState({
@@ -64,16 +69,16 @@ function AgencyProfile() {
         updatedAt: "",
     })
     const getAgencyProfile = ()=>{
-        const id = localStorage.getItem("userId")
-        instance.get(`/api/${Role}/agencies/get/${id}`)
+        const agencyId = localStorage.getItem("userId")
+        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
         .then(function(response){
-            console.log(response)
             setAgencyProfileData({...response})
         })
     }
 
     useEffect(()=>{
         getAgencyProfile()
+        id && setParamId(id)
     },[])
 
     return (
@@ -239,7 +244,7 @@ function AgencyProfile() {
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <Information data = {agencyProfileData}/>
+                            <Information data = {agencyProfileData} id ={paramId}/>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <SkillsSet />

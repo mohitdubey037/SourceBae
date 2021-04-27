@@ -56,12 +56,12 @@ function Information(props) {
         <>
             <div className="mainInformation">
                 <div className="innerInformation">
-                    <div className="editableBtn">
+                   {props?.id===null && <div className="editableBtn">
                         <button onClick={handleDisabled} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Information</button>
                         {
                             isDisabled ? null : <button onClick={handleDisabledSave} >Save Your Information</button>
                         }
-                    </div>
+                    </div>}
                     <div className="informationForm">
                         <div className="informationInputForm">
                             <span className="informationBorder"></span>

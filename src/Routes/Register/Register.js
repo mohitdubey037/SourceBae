@@ -59,7 +59,6 @@ const Register = () => {
         platformLink: ""
     })
 
-
  
     //#######################//
 
@@ -86,6 +85,7 @@ const Register = () => {
     })
 
     const [profileDetails, setProfileDetails] = useState({
+        incorporationDate:new Date().toJSON().slice(0,10),
         socialPlatformDetails:[]
     })
 
@@ -407,8 +407,8 @@ const Register = () => {
                                                 id="incorporation_date"
                                                 type="date"
                                                 name="incorporationDate"
-                                                defaultValue="2017-05-24"
-                                                value={signupForm.incorporationDate}
+                                                defaultValue={profileDetails?.incorporationDate}
+                                                value={profileDetails?.incorporationDate}
                                                 className={dateClasses.textField}
                                                 InputLabelProps={{
                                                     shrink: true,
