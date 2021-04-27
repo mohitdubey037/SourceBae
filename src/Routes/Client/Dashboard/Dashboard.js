@@ -134,6 +134,7 @@ function Dashboard() {
                                     <div className="cardTopPart">
                                         <div className="projectName">
                                             <h6>Bandhify</h6>
+                                            <em>Hire Agency</em>
                                         </div>
                                         <div className="projectStatus">
                                             <p>No agencies picked</p>
@@ -184,6 +185,7 @@ function Dashboard() {
                                     <div className="cardTopPart">
                                         <div className="projectName">
                                             <h6>Bandhify</h6>
+                                            <em>Hire Agency</em>
                                         </div>
                                         <div className="projectStatus">
                                             <p style={{ backgroundColor: '#5cb85c' }}>awaiting proposals</p>
@@ -227,6 +229,103 @@ function Dashboard() {
                                     </div>
 
                                 </div>
+
+
+
+                                <div className="clientProjectCard">
+                                    <span className="leftBorderClientProject"></span>
+                                    <div className="cardTopPart">
+                                        <div className="projectName">
+                                            <h6>Zomato</h6>
+                                            <em>Hire Developer</em>
+                                        </div>
+                                        <div className="projectStatus">
+                                            <p style={{ backgroundColor: '#f0ad4e' }}>Searching Developer</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="projectUpdateDate">
+                                        <p>Last Edit on: <span>17 Apr 2021</span> </p>
+                                    </div>
+
+
+                                    <div className="projectStage">
+                                        {/* <span className="statusLine"></span> */}
+                                        <div>
+                                            <span style={{ backgroundColor: '#5cb85c' }}>01</span>
+                                            <p>Post Developer Form</p>
+                                        </div>
+
+                                        <div>
+                                            <span style={{ backgroundColor: '#626567' }}>02</span>
+                                            <p>Hire the best!</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="clientProjectInformation">
+                                        <div className="projectStatusInfo">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            <p>We are working in finding the suitable developer for your projects</p>
+                                        </div>
+                                        <div className="clientProject">
+                                            <div><p>View Proposal</p></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div className="clientProjectCard">
+                                    <span className="leftBorderClientProject"></span>
+                                    <div className="cardTopPart">
+                                        <div className="projectName">
+                                            <h6>Swiggy</h6>
+                                            <em>Short Term Project</em>
+                                        </div>
+                                        <div className="projectStatus">
+                                            <p style={{ backgroundColor: '#5cb85c' }}>awaiting proposals</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="projectUpdateDate">
+                                        <p>Last Edit on: <span>17 Apr 2021</span> </p>
+                                    </div>
+
+
+                                    <div className="projectStage">
+                                        <span className="statusLine"></span>
+                                        <div>
+                                            <span style={{ backgroundColor: '#5cb85c' }}>01</span>
+                                            <p>Post Project</p>
+                                        </div>
+                                        <div>
+                                            <span style={{ backgroundColor: '#5cb85c' }}>02</span>
+                                            <p>Shortlist Agency</p>
+                                        </div>
+                                        <div>
+                                            <span style={{ backgroundColor: '#5cb85c' }}>03</span>
+                                            <p>Request Quotation</p>
+                                        </div>
+                                        <div>
+                                            <span style={{ backgroundColor: '#626567' }}>04</span>
+                                            <p>Hire the best!</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="clientProjectInformation">
+                                        <div className="projectStatusInfo">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            <p>You have been matched with some expert agencies for your requirement.</p>
+                                        </div>
+                                        <div className="clientProject">
+                                            <div><p>View Proposal</p></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
 
 
                             </div>

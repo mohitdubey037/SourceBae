@@ -11,6 +11,9 @@ import Badge from '@material-ui/core/Badge';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
+
+import notification from '../../assets/images/ClientDashboard/notification.svg'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -62,12 +65,19 @@ const StyledBadge = withStyles((theme) => ({
 
 const ClientNavbar = ({ isVisible }) => {
 
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(true);
+    const [isNotification, setIsnotification] = useState(false);
 
     const showVisibility = () => {
         isVisible(!show)
         setShow(!show);
     }
+
+    const notificationPanel = (event) => {
+        setIsnotification(!isNotification)
+    }
+
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
     const classes = useStyles();
     return (
@@ -80,13 +90,19 @@ const ClientNavbar = ({ isVisible }) => {
                         </div>
                     </div>
                     <div className="navbarOptins">
+                        <div className="investmentArea">
+                            <div className="investmentButton">
+                                <p >Interested to Investment</p>
+                                <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
                         <div className="postProject">
                             <div style={{ cursor: 'pointer' }} onClick={showVisibility}>
                                 <p><i class="fa fa-plus-circle" aria-hidden="true"></i>Post Project</p>
                             </div>
                         </div>
-                        <div className="clientNotification">
-                            <div className={classes.root}>
+                        <div className="clientNotification" >
+                            <div className={classes.root} onClick={notificationPanel}>
                                 <StyledBadge
                                     overlap="circle"
                                     anchorOrigin={{
@@ -101,12 +117,44 @@ const ClientNavbar = ({ isVisible }) => {
                                 </StyledBadge>
                             </div>
                         </div>
-                        <div className="clientProfile">
+                        <div className="clientProfile" onClick={() => window.location.href = "/client-profile"} >
                             <div>
                                 <Avatar className={classes.userProfile} >
                                     <PermIdentityIcon />
                                 </Avatar>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div className={isNotification ? 'overlay' : null} ></div>
+            <div className={isNotification ? 'notificationPanel open' : 'notificationPanel'}>
+                <div className="innerNotificationPanel">
+                    <div className="notificationsCards">
+                        <div className="closeNotification">
+                            <i onClick={notificationPanel} class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div className="allNotification">
+                            <div className="allNotificationIcon">
+                                <img src={notification} alt="" />
+                            </div>
+                            <div className="allNotificationText">
+                                <p>All Notification</p>
+                            </div>
+
+                        </div>
+                        <div className="notificationsCard">
+                            {
+                                arr.map(() => {
+                                    return (
+                                        <div className="notificationPoint">
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus et officia laboriosam repellendus, sit impedit.</p>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
