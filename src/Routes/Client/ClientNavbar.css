@@ -8,6 +8,7 @@
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
     padding: 0.0% 0;
+    z-index: 1;
 }
 .innerClientNavbar{
     width: 90%;
@@ -23,11 +24,50 @@
     justify-content: center;
     align-items: center;
 }
+.investmentArea{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.investmentButton{
+    transform: translateY(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.investmentArea div p{
+    padding: 0.3rem 1rem;
+    /* background-color: #FCBE55; */
+    border: 2px solid #FCBE55;
+    color: #000;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    font-family: 'Poppins';
+    /* font-weight: bold; */
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.investmentButton span{
+    position: absolute;
+    top: -23px;
+    left: 0;
+    font-family: 'Fredoka One';
+    color: #5bc0de;
+}
+.investmentButton i{
+    transform: translateY(3px);
+}
+.investmentArea div p:hover{
+    box-shadow: inset 0 0px 10px #FCBE55;
+}
 .postProject,.clientNotification,.clientProfile{
     margin: 0 0 0 2rem;
 }
 .postProject div{
-    transform: translateY(3px);
+    transform: translateY(4px);
 }
 .postProject div p{
     margin-top: 10%;
@@ -44,6 +84,9 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 .postProject div p i{
@@ -72,6 +115,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 3%;
+    z-index: 1;
 }
 .wave{
     position: absolute;
@@ -244,15 +288,22 @@
     transform: translateY(-50%);
     z-index: 0;
 }
+.projectStage{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    width: max-content;
+}
 .projectStage div{
     display: flex;
-    margin-right: 5%;
+    /* margin-right: 5%; */
     align-items: flex-start;
-    z-index: 1;
     overflow: hidden;
-    z-index: 1;
+    z-index: 999;
     background-color: #fff;
     padding: 0 0.5rem;
+    white-space: nowrap;
 }
 
 .clientProjectInformation{
@@ -280,6 +331,7 @@
     font-weight: bold;
     color: #fff;
     text-transform: capitalize;
+    z-index: 999;
 }
 .projectUpdateDate{
     margin-top: 2%;
@@ -311,6 +363,7 @@
     font-family: 'Poppins';
     margin-top: 3px;
     font-weight: bold;
+    z-index: 999;
 }
 .clientProjectInformation{
     margin-top: 2%;
@@ -351,4 +404,129 @@
 }
 .clientProject div p{
     transform: translateY(8px);
+}
+
+
+
+
+
+
+/* Notification Panel  */
+.notificationPanel{
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    top: 0;
+    z-index: 999;
+    background-color: #fff;
+    right: -50%;
+    box-shadow: 0 2px 16px 2px rgba(0,0,0,0.2);
+    transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    /* align-items: center;s */
+}
+.notificationPanel.open{
+    right: 0;
+}
+.overlay{
+    width: 100%;
+    display: block;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+.innerNotificationPanel{
+    width: 90%;
+    margin-top: 5%;
+    height: 100vh !important;
+}
+.notificationsCards{
+    width: 100%;
+}
+.closeNotification i{
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.closeNotification i:hover{
+    transform: rotate(180deg);
+}
+
+.allNotification{
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    flex-direction: row-reverse;
+    margin-bottom: 8%;
+}
+.allNotificationIcon{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+.allNotificationIcon img{
+    width: 100%;
+    object-fit: contain;
+}
+.allNotificationText{
+    margin-right: 5%;
+}
+.allNotificationText p{
+    font-size: 2.2rem;
+    font-family: 'Poppins';
+    font-weight: bold;
+    transform: translateY(5px);
+}
+.allNotificationText p::after{
+    content: '';
+    width: 100px;
+    height: 2px;
+    background-color: #000;
+    display: block;
+    margin: auto;
+    margin-top: 4%;
+    
+}
+.notificationsCard{
+    height: 75vh;
+    background-color: #f9f9f9;
+    overflow: scroll;
+    padding: 0.8rem;
+}
+
+.notificationPoint{
+    border-bottom: 1px dashed #5bc0de;
+    padding-top: 3%;
+}
+.notificationPoint p{
+    font-family: 'Poppins';
+    font-size: 0.9rem;
+}
+
+.notificationPoint p::before{
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #999;
+    margin-right: 10px;
+}
+.notificationsCard::-webkit-scrollbar{
+    width: 6px;
+}
+.notificationsCard::-webkit-scrollbar-track {
+  background: #fff;        /* color of the tracking area */
+}
+
+.notificationsCard::-webkit-scrollbar-thumb {
+  background-color: #3498DB; 
+  border-radius: 10px;;
 }
