@@ -24,21 +24,31 @@ const dateStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        outline: `auto`,
         border: `1px solid gray`,
-        color: `gray`,
+        borderRadius: `10px`,
+        outline:"none",
         textColor: `gray`,
         marginTop: `1vh`,
-        padding: theme.spacing(2),
+        paddingLeft:`4%`,
+        paddingTop:`1%`,
+        width: `50%`,
+        height:`60px`,
+        
+
     },
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: `28vw`,
-        textColor: `gray`
-
+        color: `gray`,
+        border:"none",
+        background:"none"
     },
+    label: {
+        color:`gray`,
+    }
 }));
+
 
 const Register = () => {
 
@@ -401,20 +411,25 @@ const Register = () => {
                                             placeholder='Team Strength'
                                             onChange={(event) => handleCreateProfile(event)} />
 
-                                        {/* <label htmlFor='social'>Incorporation Date</label> */}
+
+                                        
                                         <form className={dateClasses.container} noValidate>
-                                            <TextField
+                                            <label classname = {dateClasses.label} id ="incorporationLabel" htmlFor='social'>Incorporation Date</label>
+                                            <input
                                                 id="incorporation_date"
                                                 type="date"
+                                                // label="Birthday"
                                                 name="incorporationDate"
                                                 defaultValue={profileDetails?.incorporationDate}
                                                 value={profileDetails?.incorporationDate}
                                                 className={dateClasses.textField}
+                                                placeholder = {`Incorporation Date`}
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
                                                 onChange={(event) => handleCreateProfile(event)} />
                                         </form>
+                                       
                                     </>
                                         :
                                         <>
