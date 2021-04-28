@@ -144,10 +144,10 @@ function AgencyProfile() {
                                     <h2>{agencyProfileData?.agencyName}</h2>
                                     <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p>
                                 </div>
-                                <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
+                                {(id===null && id===undefined) &&<div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
                                     <i class="fa fa-check" aria-hidden="true"/> 
                                     <span>{`${!agencyProfileData?.isAgencyVerified?agencyProfileData?.verificationMessage:`Verified`}`}</span>
-                                </div>
+                                </div>}
                             </div>
                             <div className="agencyAddress">
                                 <i class="fa fa-thumb-tack" aria-hidden="true"></i>
@@ -188,7 +188,7 @@ function AgencyProfile() {
                             <p>E-commerce</p>
                         </div>
                     </div>
-                    <div className="rightAgencyProfileDesc">
+                    {(id===null && id===undefined) &&<div className="rightAgencyProfileDesc">
                         <div className="monthyView">
                             <div className="monthBorder"></div>
                             <img src={growth} alt="" />
@@ -213,7 +213,7 @@ function AgencyProfile() {
 
                             </FilePicker>
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
 
