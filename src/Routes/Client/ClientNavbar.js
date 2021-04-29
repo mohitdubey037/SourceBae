@@ -91,7 +91,7 @@ const ClientNavbar = ({ isVisible }) => {
                     </div>
                     <div className="navbarOptins">
                         <div className="investmentArea">
-                            <div className="investmentButton">
+                            <div className="investmentButton" onClick={() => window.location.href = "/product-form"} >
                                 <p >Interested to Investment</p>
                                 <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
                             </div>
