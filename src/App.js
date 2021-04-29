@@ -45,6 +45,7 @@ const App = () => (
     <Route exact path="/add-developer" component={AddingDeveloper} />
     <Route exact path="/quotation" component={Quotation} />
     <Route exact path="/agency-profile" component={AgencyProfile} />
+    <Route exact path="/agency-profile:id" component={AgencyProfile} />
     <Route exact path="/agency-form-one" component={AgencyForm1} />
     <Route exact path="/agency-form-two" component={AgencyForm2} />
     <Route exact path="/agency-form-three" component={AgencyForm3} />

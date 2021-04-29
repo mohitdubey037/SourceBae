@@ -71,3 +71,28 @@
     display: inline-block;
     margin-right: 10px;
 }
+
+.submitEditBtn{
+    width: 100%;
+    /* margin-bottom: 3%; */
+    display: flex;
+    justify-content: flex-end;
+}
+.submitEditBtn button{
+    padding: 0.5rem 1rem;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #5cb85c;
+    color: #5cb85c;
+    transition: 0.3s ease-in-out;
+    font-family: 'Poppins';
+    border-radius: 999px;
+    font-weight: bold;
+    margin-right: 2%;
+}
+
+.submitEditBtn button:hover{
+    background-color: #5cb85c;
+    color: #fff;
+}
+

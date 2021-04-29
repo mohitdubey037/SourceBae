@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import './AgencyProfile.css'
 
-import profileHeader from '../../assets/images/Quotation/profileHeader.jpg'
-import agencyLogo from '../../assets/images/Logo/agencyLogo.svg'
+// import profileHeader from '../../assets/images/Quotation/profileHeader.jpg'
+// import agencyLogo from '../../assets/images/Logo/agencyLogo.svg'
 import growth from '../../assets/images/Logo/growth.svg'
 import document from '../../assets/images/Logo/document.png'
-import Received from './Quotation/Received'
-import Responded from './Quotation/Responded'
-import ProjectesMatched from './Quotation/ProjectesMatched'
+// import Received from './Quotation/Received'
+// import Responded from './Quotation/Responded'
+// import ProjectesMatched from './Quotation/ProjectesMatched'
 import received from '../../assets/images/Quotation/received.png'
 import responded from '../../assets/images/Quotation/responded.png'
 import matched from '../../assets/images/Quotation/matched.png'
@@ -21,16 +22,20 @@ import DeveloperList from './AgencyProfile/DeveloperList'
 import Portfolio from './AgencyProfile/Portfolio'
 import FeatureLink from './AgencyProfile/FeatureLink'
 
+import {useParams} from "react-router"
+
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
 import instance from "../../Constants/axiosConstants"
+import * as helper from "../../shared/helper"
 
 function AgencyProfile() {
 
+
+    const {id} = useParams()
     const Role = "agency"
     const [open, setOpen] = useState(false);
-
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
     const [agencyProfileData, setAgencyProfileData]= useState({
@@ -50,7 +55,7 @@ function AgencyProfile() {
         agencyMonthlyBudget: "",
         agencyServices: [],
         agencyTechnologies: [],
-        _id: "6075c922cb210f7772a268df",
+        _id: "",
         agencyDomains: [],
         agencyDocuments: [],
         socialPlatformDetails: [],
@@ -63,23 +68,27 @@ function AgencyProfile() {
         createdAt: "",
         updatedAt: "",
     })
-    const getAgencyProfile = ()=>{
-        const id = localStorage.getItem("userId")
-        instance.get(`/api/${Role}/agencies/get/${id}`)
+    const getAgencyProfile = (agencyId)=>{
+    
+        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
         .then(function(response){
-            console.log(response)
             setAgencyProfileData({...response})
         })
+ 
     }
 
     useEffect(()=>{
-        getAgencyProfile()
+        
+        (id!==null && id!==undefined) ? getAgencyProfile(helper.cleanParam(id)):getAgencyProfile(localStorage.getItem("userId"))
     },[])
 
     return (
         <>
             <Navbar headingInfo="Agency Profile" />
 
+        {agencyProfileData._id!=="" 
+        ? 
+        <div>
             <div className="mainProfileHeaderImage">
                 <div className="innerProfileHeaderImage">
                     <div>
@@ -136,17 +145,17 @@ function AgencyProfile() {
                                     <h2>{agencyProfileData?.agencyName}</h2>
                                     <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p>
                                 </div>
-                                <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
+                                {(id===null && id===undefined) &&<div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
                                     <i class="fa fa-check" aria-hidden="true"/> 
                                     <span>{`${!agencyProfileData?.isAgencyVerified?agencyProfileData?.verificationMessage:`Verified`}`}</span>
-                                </div>
+                                </div>}
                             </div>
                             <div className="agencyAddress">
                                 <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                                 <span>{`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`} </span>
                             </div>
                         </div>
-                        <div className="agencyProfileConstantPoints">
+                        {(id ===null || id===undefined) && <div className="agencyProfileConstantPoints">
                             <div className="pointContent" >
                                 <p>Joining Date</p>
                                 <h4>02 Jan 2021</h4>
@@ -163,7 +172,7 @@ function AgencyProfile() {
                                 <p>Total Profile Views</p>
                                 <h4>23</h4>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -180,7 +189,7 @@ function AgencyProfile() {
                             <p>E-commerce</p>
                         </div>
                     </div>
-                    <div className="rightAgencyProfileDesc">
+                    {(id===null && id===undefined) &&<div className="rightAgencyProfileDesc">
                         <div className="monthyView">
                             <div className="monthBorder"></div>
                             <img src={growth} alt="" />
@@ -205,7 +214,7 @@ function AgencyProfile() {
 
                             </FilePicker>
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
 
@@ -223,7 +232,7 @@ function AgencyProfile() {
                             <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                                 <img src={matched} alt="rules" /> Agency Rules
                             </button>
-                            <button class="nav-link" id="nav-developer-tab" data-bs-toggle="tab" data-bs-target="#nav-developer" type="button" role="tab" aria-controls="nav-developer" aria-selected="false">
+                           <button class="nav-link" id="nav-developer-tab" data-bs-toggle="tab" data-bs-target="#nav-developer" type="button" role="tab" aria-controls="nav-developer" aria-selected="false">
                                 <img src={matched} alt="dev" /> Developers
                             </button>
                             <button class="nav-link" id="nav-portfolio-tab" data-bs-toggle="tab" data-bs-target="#nav-portfolio" type="button" role="tab" aria-controls="nav-portfolio" aria-selected="false">
@@ -239,30 +248,34 @@ function AgencyProfile() {
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <Information data = {agencyProfileData}/>
+                            <Information data = {agencyProfileData} id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <SkillsSet />
+                            <SkillsSet id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <Rules />
+                            <Rules id={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-developer" role="tabpanel" aria-labelledby="nav-developer-tab">
-                            <DeveloperList />
+                            <DeveloperList id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-portfolio" role="tabpanel" aria-labelledby="nav-portfolio-tab">
-                            <Portfolio />
+                            <Portfolio id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
-                            <DeveloperList />
+                            <DeveloperList id ={id}/>
                         </div>
                         <div class="tab-pane fade" id="nav-question" role="tabpanel" aria-labelledby="nav-question-tab">
-                            <FeatureLink />
+                            <FeatureLink id ={id}/>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+        :
+        <div style={{display:"flex", justifyContent:"center",alignItems:"center", height:"80vh"}}>
+           <h1> No agency found with this ID. </h1>
+        </div>}
         </>
     )
 }

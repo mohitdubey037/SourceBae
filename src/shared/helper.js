@@ -31,4 +31,9 @@ const getNumberSpell = (number)=>{
     else if(number===10)
         return "ten"
 }
-export {capitalize, lowerize, cleanParam, getNumberSpell}
+
+const validateLink = (link)=>{
+    let result = (/^((http(s?)?):\/\/)?([wW]{3}\.)?[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/g.test(link))
+    return result
+}
+export {capitalize, lowerize, cleanParam, getNumberSpell, validateLink}

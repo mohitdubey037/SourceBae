@@ -71,6 +71,17 @@
     padding-left: 4%;
     height: 60px;
 }
+#incorporationLabel{
+    color:gray;
+}
+
+
+input:focus-visible, input:focus {
+    outline:none;
+  }
+ 
+
+
 
 .client__primaryForm {
     z-index: 2;
@@ -125,10 +136,7 @@
     background: red;
 }
 
-.client__form > label {
-    margin-top: 2.5vh;
-    color: #696F79;
-}
+
 
 .client__form > input {
     margin-top: 1vh;
