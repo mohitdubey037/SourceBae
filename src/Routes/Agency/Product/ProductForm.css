@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Basic:ital@1&family=Rubik&display=swap');
+
+
+.mainProductForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+.innerProductForm{
+    width: 85%;
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    overflow: hidden;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    border-radius: 25px;
+    background-color: #D6EAF8;
+}
+.productTagLine,.productIllustration{
+    width: 50%;
+}
+
+.productIllustration{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 3%; */
+}
+.productIllustration div{
+    width: 400px;
+    height: 300px;
+    /* background-color: red; */
+}
+.productIllustration img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.productTagLine{
+    padding: 3%;
+    padding-left: 8%;
+}
+.productTagLine h1{
+    font-family: 'Fredoka One';
+    font-size: 4.5rem;
+    color: #2E86C1;
+}
+.productTagLine p{
+    font-family: 'Poppins';
+    color: #999;
+}
+
+.productsHeadlines{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.innerProductHeadlines{
+    width: 85%;
+    text-align: center;
+    margin: 3% 0;
+}
+.innerProductHeadlines h3{
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.innerProductHeadlines h3::after{
+    content: '';
+    width: 20%;
+    height: 3px;
+    display: block;
+    background-color: #000;
+    margin: auto;
+    margin-top: 0px;
+}
+.innerProductHeadlines p{
+    font-family: 'Poppins';
+    color: #999;
+}
+
+
+
+
+.form_1,.form_2,.form_3{
+    margin-bottom: 7%;
+}
+
+
+.mainProductFormArea{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.innerProductFormArea{
+    width: 85%;
+    position: relative;
+}
+.straightLine{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 3px;
+    background-color: #D6EAF8;
+    display: flex;
+    flex-direction: column;
+}
+.straightLine span{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #2E86C1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-19px);
+    background-color: #2E86C1;
+    color: #ffff;
+    font-family: 'Poppins';
+    position: absolute;
+    font-family: 'Fredoka One';
+}
+.straightLine span:nth-child(1){
+    top: 0;
+}
+.straightLine span:nth-child(2){
+    top: 20%;
+}
+.straightLine span:nth-child(3){
+    top: 40%;
+}
+.straightLine span:nth-child(4){
+    top: 60%;
+}
+.straightLine span:nth-child(5){
+    top: 80%;
+}
+.form_1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+.form1_Fields{
+    width: 48%;
+}
+.illustrationArea{
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustrationArea img{
+    width: 60%;
+    object-fit: contain;
+}
+
+.form1_Fields section{
+   margin-bottom: 8%;
+    font-family: 'Poppins';
+}
+.form1_Fields section p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.form1_Fields section:nth-child(2) input{
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form1_Fields section input:focus,.form1_Fields section textarea:focus{
+    outline: none;
+}
+.form1_Fields section textarea{
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
+}
+
+
+.form_2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form2_Fields section{
+   margin-bottom: 5%;
+    font-family: 'Poppins';
+}
+.illustrationArea,.form2_Fields{
+    width: 48%;
+}
+
+.form2_Fields section input{
+    width: 100%;
+}
+
+.form2_Fields section {
+    font-family: 'Poppins';
+}
+.form2_Fields section p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.form2_Fields section input{
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.radioGroupButtons{
+    display: flex;
+}
+.radioButton{
+    margin-right: 8%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.radioButton span{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #2E86C1;
+    margin-right: 10px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.radioButton span div{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #2E86C1;
+}
+.radioButton h6{
+    transform: translateY(4px);
+    font-family: 'Poppins';
+    font-size: 1.1rem;
+    user-select: none;
+}
+.form2_Fields section input:focus{
+    outline: none;
+}
+
+
+.form_3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form3_Fields section{
+   margin-bottom: 5%;
+    font-family: 'Poppins';
+}
+.illustrationArea,.form3_Fields{
+    width: 48%;
+}
+.form3_Fields section p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.form3_Fields section input{
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.previousFunding{
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+}
+.form3_Fields section input:focus{
+    outline: none;
+}
+/* .previousFunding p{
+    transform: translateY(6px);
+} */
+.amountRaised{
+    padding-left: 5%;
+}
+.amountRaised span{
+    color: #999 !important;
+}
+
+
+
+
+.illustrationArea,.form4_Fields{
+    width: 48%;
+}
+.form_4{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5%;
+}
+.form4_Fields section{
+   margin-bottom: 5%;
+    font-family: 'Poppins';
+}
+.form4_Fields section p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.form4_Fields section input{
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form4_Fields section input:focus{
+    outline: none;
+}
+
+
+
+
+.illustrationArea,.form5_Fields{
+    width: 48%;
+}
+.form_5{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+}
+.form5_Fields section{
+   margin-bottom: 5%;
+    font-family: 'Poppins';
+}
+.form5_Fields section p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.form5_Fields section input{
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form5_Fields section input:focus{
+    outline: none;
+}
+
+.founderLink{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.founderLink input{
+    width: 90% !important;
+    margin-bottom: 4%;
+}
+.founderLink div{
+    width: 45px;
+    height: 45px;
+    background-color: #EBF5FB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+}
+.founderLink div i{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.form5_Fields button{
+    padding: 0.5rem 1rem;
+    background-color: #EBF5FB;
+    outline: none;
+    border: none;
+    color: #2E86C1;
+    font-weight: bold;
+    border: 1px solid #2E86C1;
+}
+
+
+
+
+.submitButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.innerSubmitButton{
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.subbutton{
+    width: 30%;
+}
+.subbutton p{
+    width: 100%;
+    padding: 1rem 1rem;
+    background-color: #D6EAF8;
+    color: #2E86C1;
+    font-family: 'Poppins';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+.subbutton i{
+    margin-left: 10px;
+}
