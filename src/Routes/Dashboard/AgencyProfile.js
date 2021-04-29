@@ -232,9 +232,9 @@ function AgencyProfile() {
                             <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                                 <img src={matched} alt="rules" /> Agency Rules
                             </button>
-                            {(id===null && id===undefined) &&<button class="nav-link" id="nav-developer-tab" data-bs-toggle="tab" data-bs-target="#nav-developer" type="button" role="tab" aria-controls="nav-developer" aria-selected="false">
+                           <button class="nav-link" id="nav-developer-tab" data-bs-toggle="tab" data-bs-target="#nav-developer" type="button" role="tab" aria-controls="nav-developer" aria-selected="false">
                                 <img src={matched} alt="dev" /> Developers
-                            </button>}
+                            </button>
                             <button class="nav-link" id="nav-portfolio-tab" data-bs-toggle="tab" data-bs-target="#nav-portfolio" type="button" role="tab" aria-controls="nav-portfolio" aria-selected="false">
                                 <img src={matched} alt="portfolio" /> Portfolio
                             </button>
