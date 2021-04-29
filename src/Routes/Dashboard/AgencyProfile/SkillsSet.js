@@ -6,9 +6,10 @@ import { Modal } from 'react-responsive-modal';
 function SkillsSet(props) {
 
     const [open, setOpen] = useState(false);
-
+    const [editStatus, setEditStatus] = useState(false)
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
+    const [modalTitle, setModalTitle] = useState("")
 
     const arr = [
         {
@@ -93,12 +94,22 @@ function SkillsSet(props) {
         },
     ]
 
+    const handleEdit = (status)=>{
+        setEditStatus(status)
+    }
+
+    const handleAddData = (title)=>{
+        console.log(title)
+        setModalTitle(title)
+        onOpenModal()
+    }
+
     return (
         <>
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
                 {(props?.id===null || props?.id===undefined) && <div className="editableBtn">
-                        <button onClick={onOpenModal} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                        <button onClick={()=>handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
                     </div>}
                     <div className="skillsSetsContent">
                         <div className="skillsSetBorder"></div>
@@ -119,17 +130,37 @@ function SkillsSet(props) {
                                                 })
                                             }
                                         </div>
+                                        <div className="editButtons">
+                                            <button className = {value?.title} onClick = {()=>{handleAddData(value?.title)}}>
+                                            +
+                                            </button>
+                                        </div>
                                     </div>
                                 )
                             })
                         }
-
                     </div>
                 </div>
             </div>
 
-
             <Modal open={open} onClose={onCloseModal} center focusTrapped={true} >
+                <h2 className="modalHeading">{`Add ${modalTitle}`}</h2>
+                <div className="skillsSetsContent">
+                    <div className="skillsSetBorder"/>
+                    <div className="skillsSetSemiCircle"/>
+                    <div className="skillsSetTable">
+                                    <div className="skillsSetTableHeading">
+                                        <p>{`${modalTitle}`}</p>
+                                    </div>
+                                    <div className="skillsSetTableContent">
+                        <input type = "text"/>
+                        <button>Add</button>
+                        </div>
+                        </div>
+                </div>
+            </Modal>
+       
+            {/* <Modal open={open} onClose={onCloseModal} center focusTrapped={true} >
                 <h2 className="modalHeading">Edit Your Skills</h2>
                 <div className="skillsSetsContent">
                     <div className="skillsSetBorder"></div>
@@ -157,6 +188,7 @@ function SkillsSet(props) {
 
                 </div>
             </Modal>
+        */}
         </>
     )
 }

@@ -78,3 +78,7 @@
     font-family: 'Poppins';
     font-weight: bold;
 }
+
+.editButtons{
+    z-index: 2;
+}
