@@ -118,9 +118,9 @@ function Rules(props) {
                                     )
                                 })
                             }
-                            <div className="submitEditBtn">
+                             {editRules &&  <div className="submitEditBtn">
                                 <button onClick={()=>{handleEditRules(false)}}>Submit</button>
-                            </div>
+                            </div>}
                         </div>
                     </div>
                 </div>
