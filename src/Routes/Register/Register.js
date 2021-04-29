@@ -156,6 +156,9 @@ const Register = () => {
                 localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                 resolve(1)
+                console.log(role)
+                if(role==="client")
+                    window.location.href = "/client-dashboard"
             })
         })
     }
