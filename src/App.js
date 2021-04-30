@@ -30,6 +30,8 @@ import ShortTerm from './Routes/Client/Dashboard/ShortTerm/ShortTerm';
 import HireDeveloper from './Routes/Client/Dashboard/HireDeveloper/HireDeveloper';
 import AgencyList from './Routes/Client/AgencyList/AgencyList';
 import ClientProfile from './Routes/Client/ClientProfile';
+import ProductForm from './Routes/Agency/Product/ProductForm';
+import ProductDetails from './Routes/Agency/Product/ProductDetails';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -61,6 +63,10 @@ const App = () => (
     <Route exact path="/hire-developer" component={HireDeveloper} />
     <Route exact path="/agency-list" component={AgencyList} />
     <Route exact path="/client-profile" component={ClientProfile} />
+
+    <Route exact path="/product-form" component={ProductForm} />
+    <Route exact path="/product-details" component={ProductDetails} />
+
 
 
   </Switch>
