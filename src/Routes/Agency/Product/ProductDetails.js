@@ -1,10 +1,11 @@
 import React from 'react'
+import ClientNavbar from '../../Client/ClientNavbar'
 
 function ProductDetails() {
     return (
-        <div>
-
-        </div>
+        <>
+            <ClientNavbar />
+        </>
     )
 }
 

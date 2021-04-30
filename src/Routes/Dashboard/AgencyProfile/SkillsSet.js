@@ -134,12 +134,12 @@ function SkillsSet(props) {
         <>
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
-                    {(props?.id === null || props?.id === undefined) && <div className="editableBtn">
-                        <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
-                    </div>}
-                    {(props?.id === null || props?.id === undefined) && editStatus && <div className="editableBtn">
+                    {/* {(props?.id === null || props?.id === undefined) && } */}
+                    {(props?.id === null || props?.id === undefined) && editStatus ? <div className="editableBtn">
                         <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
-                    </div>}
+                    </div> : <div className="editableBtn">
+                            <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                        </div>}
                     <div className="skillsSetsContent">
                         <div className="skillsSetBorder"></div>
                         <div className="skillsSetSemiCircle" style={{ zIndex: -1 }}></div>
@@ -160,9 +160,9 @@ function SkillsSet(props) {
                                             }
                                         </div>
                                         {editStatus && <div className="editButtons">
-                                            <button className={value?.title} onClick={() => { handleAddData(value) }}>
-                                                +
-                                            </button>
+                                            <div className={value?.title} onClick={() => { handleAddData(value) }}>
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </div>
                                         </div>}
                                     </div>
                                 )
@@ -172,11 +172,14 @@ function SkillsSet(props) {
                 </div>
             </div>
 
-            <Modal open={open} onClose={onCloseModal} center focusTrapped={true} >
+            <Modal open={open} onClose={onCloseModal} center classNames={{
+                overlay: 'customOverlay',
+                modal: 'editModal',
+            }} >
                 <h2 className="modalHeading">{`Add ${modalValue?.title}`}</h2>
-                <div className="skillsSetsContent">
+                {/* <div className="skillsSetsContent">
                     <div className="skillsSetBorder" />
-                    <div className="skillsSetSemiCircle" style={{ zIndex: -1 }} />
+                    
                     <div className="skillsSetTable">
                         <div className="skillsSetTableHeading">
                             <p>{`${modalValue?.title}`}</p>
@@ -184,6 +187,20 @@ function SkillsSet(props) {
                         <div className="skillsSetTableContent">
                             <input type="text" value={addItem} name="addItem" onChange={(e) => { setAddItem(e.target.value) }} />
                             <button onClick={() => handleAddItem(modalValue)}>Add</button>
+                        </div>
+                    </div>
+                </div> */}
+                <div className="modalEditContainer">
+                    <div className="modalQuestion">
+                        <p>{`${modalValue?.title}`}</p>
+                    </div>
+                    <div className="modaInput">
+                        <input value={addItem} name="addItem" onChange={(e) => { setAddItem(e.target.value) }} type="text" />
+                    </div>
+                    <div class="addmodalButtons">
+                        <div></div>
+                        <div className="addBtn">
+                            <p onClick={() => handleAddItem(modalValue)}>Add</p>
                         </div>
                     </div>
                 </div>

@@ -194,6 +194,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 .form1_Fields section input:focus,.form1_Fields section textarea:focus{
     outline: none;
@@ -202,6 +203,7 @@
     width: 100%;
     border: 1px solid #e0e0e0;
     padding: 1rem;
+    border-radius: 6px;
 }
 
 
@@ -237,6 +239,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 .radioGroupButtons{
     display: flex;
@@ -299,6 +302,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 .previousFunding{
     /* display: flex;
@@ -317,8 +321,28 @@
 .amountRaised span{
     color: #999 !important;
 }
-
-
+.currentStageRadios{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.currentStageRadios .radioButton{
+    margin-bottom: 15px;
+}
+.currentStageRadios .radioButton:nth-child(4){
+    margin-bottom: 0px;
+}
+.currentStageRadios .radioButton{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff;
+    padding: 0 0.5rem;
+    margin-right: 3% !important;
+    transition: 0.3s ease-in-out;
+}
+.currentStageRadios p{
+    transform: translateY(8px);
+}
 
 
 .illustrationArea,.form4_Fields{
@@ -346,6 +370,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 .form4_Fields section input:focus{
     outline: none;
@@ -379,6 +404,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
 }
 .form5_Fields section input:focus{
     outline: none;
@@ -393,6 +419,14 @@
     width: 90% !important;
     margin-bottom: 4%;
 }
+.founder_Link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.founder_Link input{
+    width: 90% !important;
+}
 .founderLink div{
     width: 45px;
     height: 45px;
@@ -401,19 +435,24 @@
     justify-content: center;
     align-items: center;
     font-family: 'Poppins';
+    border-radius: 6px;
 }
 .founderLink div i{
     font-size: 1.4rem;
     cursor: pointer;
 }
 .form5_Fields button{
-    padding: 0.5rem 1rem;
+    /* padding: 0.5rem 1rem; */
+    width: 45px;
+    height: 45px;
     background-color: #EBF5FB;
     outline: none;
     border: none;
     color: #2E86C1;
     font-weight: bold;
     border: 1px solid #2E86C1;
+    transform: translateY(-15px);
+    border-radius: 6px;
 }
 
 
