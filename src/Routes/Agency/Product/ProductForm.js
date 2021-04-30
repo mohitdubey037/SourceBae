@@ -14,6 +14,7 @@ import product2 from '../../../assets/images/ClientDashboard/product2.svg'
 import product3 from '../../../assets/images/ClientDashboard/product3.svg'
 import product4 from '../../../assets/images/ClientDashboard/product4.svg'
 import product5 from '../../../assets/images/ClientDashboard/product5.svg'
+import ClientNavbar from '../../Client/ClientNavbar';
 
 
 
@@ -98,8 +99,10 @@ function ProductForm() {
 
     return (
         <>
+            <ClientNavbar />
             <div className='mainProductForm'>
                 <div className="innerProductForm">
+                    <div className="leftBorderLineProduct"></div>
                     <div className="productTagLine">
                         <h1>we focus on <br /> Your Story</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro beatae quibusdam pariatur est quas id. Lorem, ipsum dolor sit amet</p>
