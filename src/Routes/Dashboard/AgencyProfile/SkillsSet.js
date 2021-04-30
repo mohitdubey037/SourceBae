@@ -8,10 +8,13 @@ function SkillsSet(props) {
     const [open, setOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false)
     const onOpenModal = () => setOpen(true);
-    const onCloseModal = () => setOpen(false);
-    const [modalTitle, setModalTitle] = useState("")
+    const onCloseModal = () => {
+        setAddItem("")
+        setOpen(false);
+    }
+    const [modalValue, setModalValue] = useState({})
 
-    const arr = [
+    const [arr, setArr] = useState([
         {
             title: 'Industry',
             content: [
@@ -92,28 +95,54 @@ function SkillsSet(props) {
 
             ]
         },
-    ]
+    ])
 
-    const handleEdit = (status)=>{
+    const [addItem, setAddItem] = useState("")
+
+    const handleEdit = (status) => {
         setEditStatus(status)
     }
 
-    const handleAddData = (title)=>{
-        console.log(title)
-        setModalTitle(title)
+    const handleAddData = (modalValue) => {
+        console.log(modalValue)
+        setModalValue(modalValue)
         onOpenModal()
+    }
+
+    const handleAddItem = (arrItem) => {
+        console.log(addItem)
+        let temp = arr
+        let index = temp.indexOf(arrItem)
+        if (index > -1) {
+
+            temp[index] = {
+                ...temp[index],
+                content: [
+                    ...temp[index].content,
+                    {
+                        points: addItem
+                    }
+                ]
+            }
+            setArr(temp)
+        }
+        onCloseModal()
+
     }
 
     return (
         <>
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
-                {(props?.id===null || props?.id===undefined) && <div className="editableBtn">
-                        <button onClick={()=>handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                    {(props?.id === null || props?.id === undefined) && <div className="editableBtn">
+                        <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                    </div>}
+                    {(props?.id === null || props?.id === undefined) && editStatus && <div className="editableBtn">
+                        <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
                     </div>}
                     <div className="skillsSetsContent">
                         <div className="skillsSetBorder"></div>
-                        <div className="skillsSetSemiCircle"></div>
+                        <div className="skillsSetSemiCircle" style={{ zIndex: -1 }}></div>
                         {
                             arr.map((value) => {
                                 return (
@@ -130,11 +159,11 @@ function SkillsSet(props) {
                                                 })
                                             }
                                         </div>
-                                        <div className="editButtons">
-                                            <button className = {value?.title} onClick = {()=>{handleAddData(value?.title)}}>
-                                            +
+                                        {editStatus && <div className="editButtons">
+                                            <button className={value?.title} onClick={() => { handleAddData(value) }}>
+                                                +
                                             </button>
-                                        </div>
+                                        </div>}
                                     </div>
                                 )
                             })
@@ -144,51 +173,22 @@ function SkillsSet(props) {
             </div>
 
             <Modal open={open} onClose={onCloseModal} center focusTrapped={true} >
-                <h2 className="modalHeading">{`Add ${modalTitle}`}</h2>
+                <h2 className="modalHeading">{`Add ${modalValue?.title}`}</h2>
                 <div className="skillsSetsContent">
-                    <div className="skillsSetBorder"/>
-                    <div className="skillsSetSemiCircle"/>
+                    <div className="skillsSetBorder" />
+                    <div className="skillsSetSemiCircle" style={{ zIndex: -1 }} />
                     <div className="skillsSetTable">
-                                    <div className="skillsSetTableHeading">
-                                        <p>{`${modalTitle}`}</p>
-                                    </div>
-                                    <div className="skillsSetTableContent">
-                        <input type = "text"/>
-                        <button>Add</button>
+                        <div className="skillsSetTableHeading">
+                            <p>{`${modalValue?.title}`}</p>
                         </div>
+                        <div className="skillsSetTableContent">
+                            <input type="text" value={addItem} name="addItem" onChange={(e) => { setAddItem(e.target.value) }} />
+                            <button onClick={() => handleAddItem(modalValue)}>Add</button>
                         </div>
+                    </div>
                 </div>
             </Modal>
-       
-            {/* <Modal open={open} onClose={onCloseModal} center focusTrapped={true} >
-                <h2 className="modalHeading">Edit Your Skills</h2>
-                <div className="skillsSetsContent">
-                    <div className="skillsSetBorder"></div>
-                    <div className="skillsSetSemiCircle"></div>
-                    {
-                        arr.map((value) => {
-                            return (
-                                <div className="skillsSetTable">
-                                    <div className="skillsSetTableHeading">
-                                        <p>{value?.title}</p>
-                                    </div>
-                                    <div className="skillsSetTableContent">
-                                        {
-                                            value?.content.map((item) => {
-                                                return (
-                                                    <p>{item?.points}</p>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
 
-                </div>
-            </Modal>
-        */}
         </>
     )
 }
