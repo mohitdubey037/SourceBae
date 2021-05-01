@@ -12,6 +12,7 @@ import "../Login/login.css"
 
 
 import { useParams } from 'react-router'
+import id from 'date-fns/esm/locale/id/index.js'
 
 const Login = () => {
 
@@ -60,7 +61,13 @@ const Login = () => {
                     localStorage.setItem('userId', `${response._id}`)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
-                    window.location.replace("/dashboard")
+                    
+                    if(role==="Agency")
+                        window.location.replace("/dashboard")
+                        
+                    else if(role==="Client")
+                        window.location.replace("/client-dashboard")
+
                 })
         })
     }
