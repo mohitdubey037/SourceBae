@@ -1,0 +1,389 @@
+
+
+
+.mainProductDetails{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.innerProductDetails{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 5%;
+}
+.productDetailsArea{
+    width: 70%;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    padding: 1rem 1rem;
+}
+.moreAgencies{
+    width: 28%;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 5%;
+}
+
+.productDetailsHeader{
+    display: flex;
+    align-items: flex-start;
+}
+.productDetailsImage{
+    width: 140px;
+    height: 140px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4%;
+    padding: 1rem;
+}
+.productDetailsImage img{
+    width: 100%;
+    object-fit: contain;
+}
+.peoductNameTags{
+    width: 80%;
+    position: relative;
+}
+.peoductNameTags span{
+    position: absolute;
+    top: 8px;
+    right: 0;
+    font-size: 0.8rem;
+    font-family: 'Poppins';
+    color: #2E86C1;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.peoductNameTags p{
+    font-family: 'Poppins';
+    font-size: 0.9rem;
+    color: #56636a;
+}
+.peoductNameTags h1{
+    font-family: 'Poppins';
+    font-size: 2rem;
+    font-weight: bold;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.productTags{
+    display: flex;
+}
+.productTags p{
+    margin-right: 5%;
+    font-family: 'Poppins';
+    color: #999;
+}
+.productTags i{
+    margin-right: 2px;
+}
+
+
+
+.connectButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #e0e0e0;
+}
+.connectButton div:nth-child(2){
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.connectButton div:nth-child(2) p{
+    padding: 0.5rem 1rem;
+    background-color:#fff;
+    font-family: 'Poppins';
+    color: #7DCEA0;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #7DCEA0;
+    border-radius: 4px;
+}
+.connectButton i{
+    margin-left: 5px;
+    transform: translateY(1px);
+    transition: 0.3s ease-in-out;
+}
+.connectButton div:nth-child(2):hover i{
+    transform: translate(10px,1px);
+}
+
+
+
+.productDetailsDiv{
+    margin-top: 5%;
+}
+.headerInformation h3{
+    font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.headerInformation h3::after{
+    content: '';
+    width: 50px;
+    height: 2px;
+    display: block;
+    background-color: #000;
+}
+.headerInformation p{
+    font-family: 'Poppins';
+    line-height: 2rem;
+    color: #56636a;
+}
+.productDesc{
+    display: flex;
+    margin-top: 4%;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+    flex-direction: row-reverse;
+}
+.productDescImage{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+.productDescImage div{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px dashed #e0e0e0;
+    margin-top: 5%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.productDescImage div img{
+    width: 100%;
+    object-fit: contain;
+}
+.productDescPara{
+    width: 80%;
+}
+
+
+
+
+
+.allPoints{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+}
+.allPointsCard{
+    width: 95%;
+    display: flex;
+    justify-content: space-betweena;
+    align-items: flex-start;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 2%;
+}
+.allPointCardHeading{
+    width: 35%;
+    position: relative;
+}
+.barricade{
+    position: absolute;
+    top: 0;
+    right: 15px;
+}
+.barricade i{
+    color: #56636a;
+}
+.allPointsCardContent{
+    width: 63%;
+}
+.allPointCardHeading p{
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.allPointsCardContent p{
+     font-family: 'Poppins';
+     color: #56636a;
+     word-break: break-all;
+     font-size: 0.9rem;
+}
+.allPointsCardContent a{
+    color: #56636a;
+    text-decoration: none;
+}
+
+
+.productFunding {
+    margin-top: 5%;
+}
+.productFunding h3{
+   font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.productFunding h3::after{
+    content: '';
+    width: 50px;
+    height: 2px;
+    display: block;
+    background-color: #000;
+}
+.innerProductFunding{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.totalRevenue,.totalFunding{
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.totalRevenue div,.totalFunding div{
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #56636a;
+    border-radius: 50%;
+    flex-direction: column;
+    padding: 0.5rem;
+    background: #fff;
+    z-index: 999;
+    overflow: hidden;
+}
+.totalRevenue div span,.totalFunding div span{
+    font-family: 'Poppins';
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+.totalRevenue div p,.totalFunding div p{
+    font-family: 'Fredoka One';
+    font-weight: bold;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: #2E86C1;
+}
+.middleLine{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #56636a;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+
+
+
+
+.workingStatus {
+    margin-top: 7%;
+}
+.workingStatusHeading h3{
+   font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.workingStatusHeading h3::after{
+    content: '';
+    width: 50px;
+    height: 2px;
+    display: block;
+    background-color: #000;
+}
+
+
+
+
+
+
+.innerMoreAgencies{
+    width: 90%;
+    padding: 1rem 0;
+}
+.moreAgencyHeading{
+    padding-bottom: 3%;
+    border-bottom: 1px solid #e0e0e0;
+}
+.moreAgencyHeading h3{
+    font-family: 'Poppins';
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.moreAgencyList{
+    margin-top: 5%;
+}
+.moreAgencyCard{
+    display: flex;
+    /* align-items: flex-start; */
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+.moreAgencyLogo{
+    width: 25%;
+    margin-right: 10px;
+}
+.moreAgencyLogo div{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+.moreAgencyLogo div img{
+    width: 100%;
+    object-fit: contain;
+}
+.moreAgencyInfo{
+    width: 75%;
+}
+.moreAgencyInfo h6{
+    font-family: 'Poppins';
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+.moreAgencyInfo p{
+    font-family: 'Poppins';
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #56636a;
+}
+
+.moreAgencySeeMore{
+    margin-top: 5%;
+    text-align: center;
+}
+.moreAgencySeeMore p{
+    transform: translateY(10px);
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: #2E86C1;
+}
