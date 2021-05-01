@@ -32,6 +32,7 @@ import AgencyList from './Routes/Client/AgencyList/AgencyList';
 import ClientProfile from './Routes/Client/ClientProfile';
 import ProductForm from './Routes/Agency/Product/ProductForm';
 import ProductDetails from './Routes/Agency/Product/ProductDetails';
+import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -66,6 +67,7 @@ const App = () => (
 
     <Route exact path="/product-form" component={ProductForm} />
     <Route exact path="/product-details" component={ProductDetails} />
+    <Route exact path="/product-agencies" component={ProductAgencies} />
 
 
 

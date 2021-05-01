@@ -59,8 +59,15 @@
     font-size: 0.8rem;
     font-family: 'Poppins';
     color: #2E86C1;
-    text-decoration: underline;
     cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid #2E86C1;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+.peoductNameTags span:hover{
+    background-color: #2E86C1;
+    color: #fff;
 }
 .peoductNameTags p{
     font-family: 'Poppins';

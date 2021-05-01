@@ -101,7 +101,7 @@
 .agencyProfileInfo div p{
     padding: 0.1rem 0.5rem;
     margin-right: 10px;
-    border: 1px dashed #999;
+    /* border: 1px dashed #999; */
     border-radius: 999px;
     background-color: #02044a;
     color: #fff;
@@ -122,6 +122,9 @@
     text-decoration: underline;
 }
 
+
+
+
 .middleAgencyArea{
     display: flex;
     justify-content: space-between;
@@ -133,7 +136,9 @@
     width: 48%;
     /* background-color: #f9f9f9; */
     padding: 0.5rem;
+    overflow: hidden;
 }
+
 .agencyAddressArea,.agencyTeamNumber{
     display: flex;
 }
@@ -154,7 +159,7 @@
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; 
 }
 .teamNumberPart span{
     font-weight: bold;
@@ -164,7 +169,7 @@
     width: 50%;
     border: 1px dashed #f0f0f0;
     padding: 0.5rem;
-    height: 125px;
+    height: 110px;
     overflow-y: scroll;
 }
 .agencyDescInfo::-webkit-scrollbar{
@@ -235,7 +240,6 @@
 
 
 
-
 .agencyFilterArea{
     width: 25%;
     position: relative;
@@ -244,7 +248,7 @@
 .filterForm{
     width: 100%;
     background-color: #fff;
-    height: 60vh;
+    /* height: 60vh; */
     overflow: hidden;
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
     padding: 1rem;
@@ -340,3 +344,6 @@
     font-size: 1.1rem;
     user-select: none;
 }
+
+
+

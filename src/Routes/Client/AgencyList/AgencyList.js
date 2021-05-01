@@ -64,7 +64,7 @@ function AgencyList() {
                                                         <p>146/A Umar Nagar, Hapur Road, Meerut, Uttar Pradesh</p>
                                                     </div>
                                                 </div>
-                                                <div className="agencyTeamNumber">
+                                                <div className="agencyAddressArea">
                                                     <div className="teamIcon">
                                                         <i class="fa fa-users" aria-hidden="true"></i>
                                                     </div>
