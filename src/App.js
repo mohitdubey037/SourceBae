@@ -18,7 +18,7 @@ import AgencyForm1 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm1
 import AgencyForm2 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm2';
 import AgencyForm3 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm3';
 import AgencyForm4 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm4';
-import RespondedDetails from './Routes/Dashboard/Quotation/RespondedDetails';
+// import RespondedDetails from './Routes/Dashboard/Quotation/RespondedDetails';
 import ProjectDetails from './Routes/Dashboard/ProjectDetails';
 
 
@@ -71,23 +71,5 @@ const App = () => (
 
   </Switch>
 )
-
-// function App() {
-//   return (
-//     <Switch>
-//       <Route exact path = '/' component = {Mainhomepage} />
-//       <Route exact path = '/login' component = {Login} />
-//       <Route exact path = '/filtration' component = {Filtration} />
-//       <Route exact path = '/agency:name' component = {Agency} />
-//       {/* <Route exact path="/agency" component={Agency} />
-//       <Route exact path="/client" component={Client} />
-//       <Route exact path="/login" component={Login} />
-//       <Route exact path="/requirement" component={Requirement} />
-//       <Route exact path="/requirementex" component={RequirementExtended} />
-//       <Route exact path="/description" component={Description} />
-//       <Route exact path="/thankyoupage" component={ThankyouPage} /> */}
-//     </Switch>
-//   );
-// }
 
 export default App;
