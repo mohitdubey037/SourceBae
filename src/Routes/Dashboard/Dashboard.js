@@ -32,6 +32,7 @@ const Dashboard = () => {
     const [popindex, setPopIndex] = useState('');
 
     const [age, setAge] = React.useState('');
+    const [verified, setVerified] = useState(false)
 
     const handleClick = (event) => {
         console.log(event)
@@ -147,8 +148,17 @@ const Dashboard = () => {
             })
     }
 
+    const getAgencyProfile = (agencyId)=>{
+    
+        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
+        .then(function(response){
+            setVerified(response.isAgencyVerified)
+        })
+ 
+    }
     useEffect(() => {
         getStepsCompleted()
+        getAgencyProfile(localStorage.getItem("userId"))
     }, [])
 
     useEffect(()=>{
@@ -163,9 +173,14 @@ const Dashboard = () => {
             {/* Navbar  */}
             <Navbar headingInfo="Dashboard" />
 
-            {steps !== -1 && <div className="mainUpdateVerify">
+            {(!verified || steps !== -1)&&<div className="mainUpdateVerify">
                 <div className="innerMainVerify">
-                    <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
+                    
+                    {verified?
+                        <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
+                        :
+                        <p>Please wait for your profile to be verified by us.</p>
+                    }
                 </div>
             </div>}
 
@@ -174,7 +189,7 @@ const Dashboard = () => {
                     {
                         cardsArray.map((value, index) => {
                             return (
-                                <div className="mainQuotationCard" key={index} style={{ filter: `${(steps !== -1) ? `grayscale(100%)` : `none`}` }}>
+                                <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                     <div className="leftLine" style={{
                                         backgroundColor: value?.borderColor,
                                     }}></div>
