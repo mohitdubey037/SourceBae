@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ClientNavbar from '../../Client/ClientNavbar'
 import './ProductDetails.css'
 
 import logo from '../../../assets/images/Logo/logo.png'
+
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 
 function ProductDetails() {
@@ -113,7 +116,11 @@ function ProductDetails() {
 
     ]
 
-    const crr = [1, 2, 3, 4]
+    const crr = [1, 2, 3, 4];
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
 
     return (
         <>
@@ -138,7 +145,7 @@ function ProductDetails() {
                         </div>
                         <div className="connectButton">
                             <div></div>
-                            <div>
+                            <div onClick={onOpenModal}>
                                 <p>Connect <i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
                             </div>
                         </div>
@@ -292,6 +299,38 @@ function ProductDetails() {
                     </div>
                 </div>
             </div>
+
+            <Modal open={open} onClose={onCloseModal} classNames={{
+                overlay: 'customOverlayAgencyProduct',
+                modal: 'customModalAgencyProduct',
+            }} center>
+                <div className="modalHeaderProduct">
+                    <h2>Get Connected</h2>
+                </div>
+                <div className="productModalForm">
+                    <p className="toText">To : Founder at SheThink</p>
+
+                    <div className="productModalInput">
+                        <p>Subject</p>
+                        <input type="text" placeholder="Enter your subject" />
+                    </div>
+                    <div className="productModalInput">
+                        <p>Message</p>
+                        <textarea cols="30" rows="6" type="text" placeholder="Enter your message here" />
+                    </div>
+                    <div className="productModalInput">
+                        <p>Email ID</p>
+                        <input type="text" placeholder="Enter your email" />
+                    </div>
+                    <div className="productModalInput">
+                        <p>Linkedin URL</p>
+                        <input type="text" placeholder="Enter your url" />
+                    </div>
+                </div>
+                <div className="connectedButton">
+                    <p>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                </div>
+            </Modal>
         </>
     )
 }

@@ -14,6 +14,9 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 import notification from '../../assets/images/ClientDashboard/notification.svg'
 
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -67,6 +70,10 @@ const ClientNavbar = ({ isVisible }) => {
 
     const [show, setShow] = useState(true);
     const [isNotification, setIsnotification] = useState(false);
+    const [openmodal, setOpenModal] = useState(false);
+
+    const onOpenModal = () => setOpenModal(true);
+    const onCloseModal = () => setOpenModal(false);
 
     const showVisibility = () => {
         isVisible(!show)
@@ -91,7 +98,7 @@ const ClientNavbar = ({ isVisible }) => {
                     </div>
                     <div className="navbarOptins">
                         <div className="investmentArea">
-                            <div className="investmentButton" onClick={() => window.location.href = "/product-form"} >
+                            <div className="investmentButton" onClick={onOpenModal} >
                                 <p >Interested to Investment</p>
                                 <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
                             </div>
@@ -159,6 +166,30 @@ const ClientNavbar = ({ isVisible }) => {
                     </div>
                 </div>
             </div>
+            <Modal open={openmodal} onClose={onCloseModal}
+                classNames={{
+                    overlay: 'NavbarModalLayer',
+                    modal: 'NavbarModalStyle',
+                }} center>
+                <h2 className="addyourproductext">Add your Product</h2>
+                <div className="newFeatureDiv">
+                    <p>What's <span>NEW</span> in this..?<i class="fa fa-level-down" aria-hidden="true"></i></p>
+
+                    <p className="productText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, necessitatibus! Provident, nemo. Aperiam fugiat quo earum dignissimos. Aliquid, nostrum dolorem!</p>
+
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                </div>
+                <div className="modalButton">
+                    <button onClick={() => window.location.href = "/product-agencies"} >Interested</button>
+                    <button onClick={onCloseModal} >Not Interested</button>
+                </div>
+            </Modal>
         </>
     )
 }

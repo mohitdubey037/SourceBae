@@ -21,8 +21,10 @@ import product2 from '../../../assets/images/ClientDashboard/product2.svg'
 import product3 from '../../../assets/images/ClientDashboard/product3.svg'
 import product4 from '../../../assets/images/ClientDashboard/product4.svg'
 import product5 from '../../../assets/images/ClientDashboard/product5.svg'
+import success from '../../../assets/images/agencyForm/success.gif'
 
-
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 const BlueRadio = withStyles({
     root: {
@@ -150,6 +152,10 @@ function ProductForm() {
     const [fields, setFields] = useState([{ value: null }]);
     const [totalcustomer, setTotalcustomer] = useState('');
     const [activecustomer, setActivecustomer] = useState('');
+    const [openmodal, setOpenModal] = useState(false);
+
+    const onOpenModal = () => setOpenModal(true);
+    const onCloseModal = () => setOpenModal(false);
 
     const classes = useStyles();
     const theme = useTheme();
@@ -625,11 +631,38 @@ function ProductForm() {
 
             <div className="submitButton">
                 <div className="innerSubmitButton">
-                    <div className="subbutton" onClick={() => window.location.href = "/product-agencies"} >
+                    <div className="subbutton" onClick={onOpenModal} >
                         <p>Upload Your Product <i class="fa fa-hand-pointer-o" aria-hidden="true"></i></p>
                     </div>
                 </div>
             </div>
+
+
+
+
+            <Modal open={openmodal} onClose={onCloseModal}
+                closeOnOverlayClick={false}
+                showCloseIcon={false}
+                classNames={{
+                    overlay: 'NavbarModalLayer',
+                    modal: 'NavbarModalStyle',
+                }} center>
+                <h2 className="addyourproductext">Your Product</h2>
+                <div className="successfullProduct">
+                    <div className="successImage">
+                        <div>
+                            <img src={success} alt="" />
+                        </div>
+                    </div>
+                    <div className="successfullyText">
+                        <p>Your product has been successfully uploaded.</p>
+                        <span>Wait for the client to response.</span>
+                    </div>
+                </div>
+                <div className="modalButton">
+                    <button onClick={() => window.location.href = "/agency-profile"} >Go to Profile</button>
+                </div>
+            </Modal>
         </>
     )
 }

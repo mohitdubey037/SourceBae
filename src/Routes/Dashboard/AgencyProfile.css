@@ -1,97 +1,128 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-.mainProfileHeaderImage{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.mainProfileHeaderImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.innerProfileHeaderImage{
-    width: 100%;
-    height: 25vh;
-    overflow: hidden;
-    background-color: #02044a;
-    position: relative;
+.innerProfileHeaderImage {
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+  background-color: #02044a;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.innerProfileHeaderImage img{
-    width: 100%;
-    object-fit: contain;
+.innerProfileHeaderImage img {
+  width: 100%;
+  object-fit: contain;
 }
-.innerProfileHeaderImage div{
-    position: absolute;
-    top: 15px;
-    right: 20px;
+.innerProfileHeaderImage div {
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }
-.innerProfileHeaderImage div p{
-    color: #fff;
-    font-family: 'Poppins';
-    text-decoration: underline;
-    cursor: pointer;
+.innerProfileHeaderImage div p {
+  color: #fff;
+  font-family: 'Poppins';
+  text-decoration: underline;
+  cursor: pointer;
 }
-.innerProfileHeaderImage div p i{
-    margin-right: 10px;
+.innerProfileHeaderImage div p i {
+  margin-right: 10px;
+}
+.innerProfileHeaderImage button {
+  position: absolute;
+  /* left: 50%; */
+  /* right: 50%; */
+  /* transform: translateX(-50%); */
+  /* top: 10%; */
+  bottom: 0;
+  right: 1%;
+  height: 30px;
+  padding: 0.3rem 1rem;
+  font-size: 0.9rem;
+  font-family: 'Poppins';
+  font-weight: bold;
+  outline: none;
+  border: none;
+  background-color: #aed6f1;
+  color: #2980b9;
+  border-radius: 2px;
+  transition: 0.3s ease-in-out;
+  white-space: nowrap;
+}
+.innerProfileHeaderImage button i {
+  margin-left: 10px;
+}
+.innerProfileHeaderImage span {
+  color: #fff;
+  font-family: 'Poppins';
 }
 
-
-.mainAskQuestion{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.mainAskQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.innerAskQuestion{
-    width: 100%;
+.innerAskQuestion {
+  width: 100%;
 }
-.innerAskQuestion h1{
-    font-family: 'Poppins';
-    font-weight: bold;
-    margin-bottom: 5%;
+.innerAskQuestion h1 {
+  font-family: 'Poppins';
+  font-weight: bold;
+  margin-bottom: 5%;
 }
-.questionFields input{
-    width: 100%;
-    height: 50px;
-    padding-left: 10px;
-    font-size: 1.2rem;
-    outline: none;
-    border: 1px solid #ebebeb;
-    margin-bottom: 3%;
+.questionFields input {
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  outline: none;
+  border: 1px solid #ebebeb;
+  margin-bottom: 3%;
 }
-.questionFields button{
-    padding: 0.5rem 1rem;
-    background-color: #02044a;
-    color: #fff;
-    font-family: 'Poppins';
-    font-weight: bold;
-    border-radius: 999px;
-    outline: none;
-    border: none;
+.questionFields button {
+  padding: 0.5rem 1rem;
+  background-color: #02044a;
+  color: #fff;
+  font-family: 'Poppins';
+  font-weight: bold;
+  border-radius: 999px;
+  outline: none;
+  border: none;
 }
-.recetlyAskedQuestion{
-    margin-top: 5%;
-    /* border: 1px solid #ebebeb; */
-    padding: 1rem;
+.recetlyAskedQuestion {
+  margin-top: 5%;
+  /* border: 1px solid #ebebeb; */
+  padding: 1rem;
 }
-.recetlyAskedQuestion h2{
-    font-family: 'Poppins';
-    font-weight: bold;
-    font-size: 1.2rem;
-    border-bottom:  1px dashed #ebebeb;
+.recetlyAskedQuestion h2 {
+  font-family: 'Poppins';
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom: 1px dashed #ebebeb;
 }
-.recetlyAskedQuestion div{
-    margin-top: 3%;
+.recetlyAskedQuestion div {
+  margin-top: 3%;
 }
-.recetlyAskedQuestion h3{
-    font-family: 'Josefin Sans';
-    color: #666;
-    font-size: 1.2rem;
+.recetlyAskedQuestion h3 {
+  font-family: 'Josefin Sans';
+  color: #666;
+  font-size: 1.2rem;
 }
-.recetlyAskedQuestion p{
-    font-family: 'Poppins';
-    color: #000;
-    font-weight: bold;
+.recetlyAskedQuestion p {
+  font-family: 'Poppins';
+  color: #000;
+  font-weight: bold;
 }
 .customOverlay {
-  background: rgba(0,0,0,0.6) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
 }
 .customModal {
   background: #fff !important;
@@ -100,244 +131,235 @@
   border-radius: 20px;
 }
 
-
-
-.mainAgencyProfileInfo{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.mainAgencyProfileInfo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.innerAgencyProfileInfo{
-    width: 90%;
-    display: flex;
+.innerAgencyProfileInfo {
+  width: 90%;
+  display: flex;
 }
-.mainAgencyProfileLogo{
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 3%;
-    transform: translateY(-50px);
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
-    background-color: #fff;
+.mainAgencyProfileLogo {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3%;
+  transform: translateY(-50px);
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
-.innerAgencyProfileLogo{
-    width: 80%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    
+.innerAgencyProfileLogo {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
-.innerAgencyProfileLogo img{
-    width: 70%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
+.innerAgencyProfileLogo img {
+  width: 70%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
-.mainAgencyProfileContent{
-    margin-top: 2%;
-    width: 80%;
+.mainAgencyProfileContent {
+  margin-top: 2%;
+  width: 80%;
 }
-.agencyName{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 100%;
-    border-bottom: 1px dashed #ebebeb;
-    padding-bottom: 5px;
+.agencyName {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px dashed #ebebeb;
+  padding-bottom: 5px;
 }
-.agencyNameURL{
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: space-between;
-    position: relative;
+.agencyNameURL {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
 }
-.agencyNameURL .agencyDEtails{
-    width: 100%;
-    display: flex;
-    align-items: center;
+.agencyNameURL .agencyDEtails {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
-.verifiedStatus{
-    display: flex;
-    color: #5cb85c;
-    align-items: center;
+.verifiedStatus {
+  display: flex;
+  color: #5cb85c;
+  align-items: center;
 }
-.verifiedStatus i{
-    margin-right: 5px;
-    font-size: 1rem;
+.verifiedStatus i {
+  margin-right: 5px;
+  font-size: 1rem;
 }
-.verifiedStatus span{
-    font-family: 'Poppins';
-    font-size: 0.9rem !important;
-    margin-left: 2px;
-    font-weight: bold;
-    margin-top: 2px;
-}
-
-.agencyAddress{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    /* background-color: red; */
-}
-.agencyAddress i{
-    margin-right: 10px;
-}
-.agencyAddress span{
-    font-family: 'Poppins';
-    color: #444;
-}
-.agencyName h2{
-    font-family: 'Poppins';
-    font-weight: bolder;
-}
-.agencyName p{
-    font-family: 'Poppins';
-    margin-left: 2%;
-    color: #999;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-.agencyProfileConstantPoints{
-    display: flex;
-    margin-top: 1%;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-.pointContent p,.pointContent h4{
-    font-family: 'Poppins';
-}
-.pointContent p{
-    color: #777;
-    font-family: 'Poppins';
-    font-size: 0.8rem;
-}
-.pointContent h4{
-    font-family: 'Poppins';
-    font-size: 1rem;
-    transform: translateY(-10px);
+.verifiedStatus span {
+  font-family: 'Poppins';
+  font-size: 0.9rem !important;
+  margin-left: 2px;
+  font-weight: bold;
+  margin-top: 2px;
 }
 
-
-
-
-
-
-
-
-.mainAgencyProfileDesc{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.agencyAddress {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  /* background-color: red; */
 }
-.innerAgencyProfileDesc{
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.agencyAddress i {
+  margin-right: 10px;
 }
-.leftAgencyProfileDesc{
-    width: 60%;
+.agencyAddress span {
+  font-family: 'Poppins';
+  color: #444;
 }
-
-.innerAgencyProfileDesc h2{
-    font-family: 'Poppins';
-    font-weight: bolder;
-    color: #555;
+.agencyName h2 {
+  font-family: 'Poppins';
+  font-weight: bolder;
 }
-.leftAgencyProfileDesc p{
-    font-family: 'Poppins';
-    width: 100%;
-    color: #555;
+.agencyName p {
+  font-family: 'Poppins';
+  margin-left: 2%;
+  color: #999;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
-.agencyProfileIndustry{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 2%;
+.agencyProfileConstantPoints {
+  display: flex;
+  margin-top: 1%;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-.agencyProfileIndustry p{
-    width: 20%;
-    background-color: #73c2fb;
-    margin-right: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 999px;
-    font-family: 'Poppins';
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2rem 0;
+.pointContent p,
+.pointContent h4 {
+  font-family: 'Poppins';
+}
+.pointContent p {
+  color: #777;
+  font-family: 'Poppins';
+  font-size: 0.8rem;
+}
+.pointContent h4 {
+  font-family: 'Poppins';
+  font-size: 1rem;
+  transform: translateY(-10px);
 }
 
-.rightAgencyProfileDesc{
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.mainAgencyProfileDesc {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.monthyView{
-    width: 60%;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
-    height: 150px;
-    text-align: center;
-    padding: 1rem 0;
-    position: relative;
-    border-radius: 15px;
-    margin-right: 20px;
+.innerAgencyProfileDesc {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-.monthyView h3{
-    font-family: 'Poppins';
-    color: #02044a;
-    font-weight: 600;
-    font-size: 1.1rem;
+.leftAgencyProfileDesc {
+  width: 60%;
 }
-.monthyView p{
-    font-size: 5rem;
-    font-family: 'Fredoka One', cursive;
-    transform: translateY(-20px);
+
+.innerAgencyProfileDesc h2 {
+  font-family: 'Poppins';
+  font-weight: bolder;
+  color: #555;
 }
-.monthyView img{
-    position: absolute;
-    width: 30%;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
+.leftAgencyProfileDesc p {
+  font-family: 'Poppins';
+  width: 100%;
+  color: #555;
 }
-.monthBorder{
-    position: absolute;
-    width: 8px;
-    height: 90%;
-    background-color: #02044a;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    border-radius: 999px;
+.agencyProfileIndustry {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2%;
 }
-.uploadButton{
-    position: absolute;
-    right: 5px;
-    background-color: #02044a;
-    color: #fff;
-    outline: none;
-    border: none;
-    padding: 0.3rem 1rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    bottom: 5px;
-    font-family: 'Poppins';
+.agencyProfileIndustry p {
+  width: 20%;
+  background-color: #73c2fb;
+  margin-right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  font-family: 'Poppins';
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2rem 0;
 }
-.uploadButton i{
-    margin-right: 5px;
+
+.rightAgencyProfileDesc {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.uploadButton:focus{
-    outline: none;
+.monthyView {
+  width: 60%;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  height: 150px;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  border-radius: 15px;
+  margin-right: 20px;
+}
+.monthyView h3 {
+  font-family: 'Poppins';
+  color: #02044a;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.monthyView p {
+  font-size: 5rem;
+  font-family: 'Fredoka One', cursive;
+  transform: translateY(-20px);
+}
+.monthyView img {
+  position: absolute;
+  width: 30%;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+.monthBorder {
+  position: absolute;
+  width: 8px;
+  height: 90%;
+  background-color: #02044a;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 999px;
+}
+.uploadButton {
+  position: absolute;
+  right: 5px;
+  background-color: #02044a;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  bottom: 5px;
+  font-family: 'Poppins';
+}
+.uploadButton i {
+  margin-right: 5px;
+}
+.uploadButton:focus {
+  outline: none;
 }

@@ -17,6 +17,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
 
 const useStyles = makeStyles((theme) => ({
     typography: {
@@ -29,6 +32,12 @@ function Navbar(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(false);
     const [isNotification, setIsNotification] = React.useState(null);
+
+    const [openmodal, setOpenModal] = useState(false);
+
+    const onOpenModal = () => setOpenModal(true);
+    const onCloseModal = () => setOpenModal(false);
+
 
     const handleClick = (event) => {
         console.log(event)
@@ -64,10 +73,14 @@ function Navbar(props) {
                             <img onClick={goToDashboard} src={oneSourcingLogo} alt="" />
                         </div>
                     </div>
-                    <div className="dashboardHeading">
+                    {/* <div className="dashboardHeading">
                         <div>
                             <h3>{props?.headingInfo}</h3>
                         </div>
+                    </div> */}
+                    <div className="newFeatureAdded">
+                        <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
+                        <button onClick={onOpenModal}>Add Your Product</button>
                     </div>
                     <div className="clientInfo">
                         <div className="clientCompany">
@@ -113,6 +126,31 @@ function Navbar(props) {
                     </div>
                 </div>
             </div>
+
+            <Modal open={openmodal} onClose={onCloseModal}
+                classNames={{
+                    overlay: 'NavbarModalLayer',
+                    modal: 'NavbarModalStyle',
+                }} center>
+                <h2 className="addyourproductext">Add your Product</h2>
+                <div className="newFeatureDiv">
+                    <p>What's <span>NEW</span> in this..?<i class="fa fa-level-down" aria-hidden="true"></i></p>
+
+                    <p className="productText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, necessitatibus! Provident, nemo. Aperiam fugiat quo earum dignissimos. Aliquid, nostrum dolorem!</p>
+
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                </div>
+                <div className="modalButton">
+                    <button onClick={() => window.location.href = "/product-form"} >Interested</button>
+                    <button onClick={onCloseModal} >Not Interested</button>
+                </div>
+            </Modal>
         </>
     )
 }
