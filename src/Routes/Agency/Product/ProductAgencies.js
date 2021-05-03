@@ -176,7 +176,7 @@ function ProductAgencies() {
                                         </div>
 
                                         <div className="quotationShortlistButton">
-                                            <div><p>View Product</p></div>
+                                            <div onClick={() => window.location.href = "/product-details"} ><p>View Product</p></div>
                                             <div onClick={onOpenModal}><p>Connect</p></div>
                                         </div>
                                     </div>

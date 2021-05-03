@@ -531,7 +531,7 @@ function ProductForm() {
 
             <div className="submitButton">
                 <div className="innerSubmitButton">
-                    <div className="subbutton">
+                    <div className="subbutton" onClick={() => window.location.href = "/product-agencies"} >
                         <p>Upload Your Product <i class="fa fa-hand-pointer-o" aria-hidden="true"></i></p>
                     </div>
                 </div>
