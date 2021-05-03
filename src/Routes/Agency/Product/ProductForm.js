@@ -453,40 +453,41 @@ function ProductForm() {
                                             <MenuItem value={30}>More</MenuItem>
                                         </Select>
                                     </FormControl>
-                                </section> : <section className="amountRaised">
-                                        <span> Which type of funding you are looking for?</span>
-                                        <FormControl className={classes.formControl}>
-                                            <Select
-                                                labelId="demo-mutiple-checkbox-label"
-                                                id="demo-mutiple-checkbox"
-                                                multiple
-                                                displayEmpty
-                                                value={fundtype}
-                                                onChange={handleFundType}
-                                                input={<Input />}
-                                                renderValue={(selected) => {
-                                                    if (selected.length === 0) {
-                                                        return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
-                                                    }
-
-                                                    return selected.join(', ');
-                                                }}
-                                                MenuProps={MenuProps}
-                                            >
-
-                                                {fundType.map((name) => (
-                                                    <MenuItem key={name} value={name}>
-                                                        <Checkbox color="primary" checked={personName.indexOf(name) > -1} />
-                                                        <ListItemText primary={name} />
-                                                    </MenuItem>
-                                                ))}
-                                            </Select>
-                                        </FormControl>
-                                    </section>
+                                </section> : null
                             }
+                            <section className="previousFunding">
+                                <p>9. Which type of funding you are looking for?</p>
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-mutiple-checkbox-label"
+                                        id="demo-mutiple-checkbox"
+                                        multiple
+                                        displayEmpty
+                                        value={fundtype}
+                                        onChange={handleFundType}
+                                        input={<Input />}
+                                        renderValue={(selected) => {
+                                            if (selected.length === 0) {
+                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
+                                            }
+
+                                            return selected.join(', ');
+                                        }}
+                                        MenuProps={MenuProps}
+                                    >
+
+                                        {fundType.map((name) => (
+                                            <MenuItem key={name} value={name}>
+                                                <Checkbox color="primary" checked={fundtype.indexOf(name) > -1} />
+                                                <ListItemText primary={name} />
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </section>
 
                             <section class="currentStage">
-                                <p>9. What is the current stage of product?</p>
+                                <p>10. What is the current stage of product?</p>
                                 <div className="currentStageRadios">
                                     {
                                         currentStage.map((value, index) => {
@@ -505,7 +506,7 @@ function ProductForm() {
                             </section>
 
                             <section>
-                                <p>10. How many customer you have accquired?</p>
+                                <p>11. How many customer you have accquired?</p>
                                 <FormControl className={classes.formControl}>
                                     <Select
                                         labelId="demo-simple-select-label"
@@ -527,7 +528,7 @@ function ProductForm() {
                             </section>
 
                             <section>
-                                <p>11. How many active users are there ?</p>
+                                <p>12. How many active users are there ?</p>
                                 <FormControl className={classes.formControl}>
                                     <Select
                                         labelId="demo-simple-select-label"
@@ -562,19 +563,19 @@ function ProductForm() {
                         </div>
                         <div className="form4_Fields">
                             <section>
-                                <p>12. Your Company Location</p>
+                                <p>13. Your Company Location</p>
                                 <input type="text" placeholder="Type here..." />
                             </section>
                             <section>
-                                <p>13. When was your product started?</p>
+                                <p>14. When was your product started?</p>
                                 <input type="date" name="" id="" />
                             </section>
                             <section>
-                                <p>14. Any feature link?</p>
+                                <p>15. Any feature link?</p>
                                 <input type="text" placeholder="Type here..." name="" id="" />
                             </section>
                             <section>
-                                <p>15. Any Platform link?</p>
+                                <p>16. Any Platform link?</p>
                                 <input type="text" placeholder="Type here..." name="" id="" />
                             </section>
                         </div>
@@ -584,7 +585,7 @@ function ProductForm() {
 
                         <div className="form5_Fields">
                             <section>
-                                <p>16. Founders of this product</p>
+                                <p>17. Founders of this product</p>
 
                                 <div className="">
                                     <div className="founder_Link" >
