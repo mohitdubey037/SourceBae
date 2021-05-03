@@ -64,13 +64,32 @@ const names = [
     'Virginia Andrews',
     'Kelly Snyder',
 ];
-
+const fundType = [
+    'SEED',
+    'SERIES-A',
+    'SERIES-B',
+    'SERIES-C',
+    'VENTURE-ROUND',
+    'ANGEL',
+    'CORPORATE-ROUND',
+    'DEBT-FINANCING',
+    'EQUITY-CROWDFUNDING', ,
+    'GRANT',
+    'PRE-SEED',
+];
+const bType = [
+    'B2B',
+    'B2C',
+    'B2G',
+    'B2B2C'
+]
 
 function ProductAgencies() {
 
     const [isOfficeVisit, setOfficeVisit] = useState(false);
     const [isOffsiteTravel, setOffsiteTravel] = useState(false);
-
+    const [fundtype, setFundType] = React.useState([]);
+    const [bmodal, setBmodal] = React.useState([]);
     const [open, setOpen] = useState(false);
 
     const onOpenModal = () => setOpen(true);
@@ -84,7 +103,12 @@ function ProductAgencies() {
     const handleChange = (event) => {
         setPersonName(event.target.value);
     };
-
+    const handleFundType = (event) => {
+        setFundType(event.target.value);
+    };
+    const handleBmodal = (event) => {
+        setBmodal(event.target.value);
+    };
     const handleChangeMultiple = (event) => {
         const { options } = event.target;
         const value = [];
@@ -188,7 +212,7 @@ function ProductAgencies() {
                         <div className='filterForm'>
                             <div className="filterHeading">
                                 <p className="filterText">Filter</p>
-                                <div><p>Clear All</p></div>
+                                <div style={{ cursor: 'pointer' }}><p>Clear All</p></div>
                             </div>
 
                             <div className="locationFilter">
@@ -238,7 +262,69 @@ function ProductAgencies() {
                                 </FormControl>
                             </div>
 
-                            {/*  */}
+                            <div className="officeVisitFilter">
+                                <p>Funding type:</p>
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-mutiple-checkbox-label"
+                                        id="demo-mutiple-checkbox"
+                                        multiple
+                                        value={fundtype}
+                                        onChange={handleFundType}
+                                        input={<Input />}
+                                        displayEmpty
+                                        disableUnderline
+                                        renderValue={(selected) => selected.join(', ')}
+                                        MenuProps={MenuProps}
+                                        renderValue={(selected) => {
+                                            if (selected.length === 0) {
+                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
+                                            }
+
+                                            return selected.join(', ');
+                                        }}
+                                    >
+                                        {fundType.map((name) => (
+                                            <MenuItem key={name} value={name}>
+                                                <Checkbox color="primary" checked={fundtype.indexOf(name) > -1} />
+                                                <ListItemText primary={name} />
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </div>
+
+                            <div className="officeVisitFilter">
+                                <p>Business Models:</p>
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-mutiple-checkbox-label"
+                                        id="demo-mutiple-checkbox"
+                                        multiple
+                                        value={bmodal}
+                                        onChange={handleBmodal}
+                                        input={<Input />}
+                                        displayEmpty
+                                        disableUnderline
+                                        renderValue={(selected) => selected.join(', ')}
+                                        MenuProps={MenuProps}
+                                        renderValue={(selected) => {
+                                            if (selected.length === 0) {
+                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
+                                            }
+
+                                            return selected.join(', ');
+                                        }}
+                                    >
+                                        {bType.map((name) => (
+                                            <MenuItem key={name} value={name}>
+                                                <Checkbox color="primary" checked={bmodal.indexOf(name) > -1} />
+                                                <ListItemText primary={name} />
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </div>
                         </div>
                     </div>
                 </div>

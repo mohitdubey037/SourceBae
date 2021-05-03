@@ -83,42 +83,60 @@ const names = [
     'Fintech',
     'HealthCare',
 ];
+const fundType = [
+    'SEED',
+    'SERIES-A',
+    'SERIES-B',
+    'SERIES-C',
+    'VENTURE-ROUND',
+    'ANGEL',
+    'CORPORATE-ROUND',
+    'DEBT-FINANCING',
+    'EQUITY-CROWDFUNDING', ,
+    'GRANT',
+    'PRE-SEED',
+];
+const arr = [
+    {
+        'status': false,
+        'value': 'B2B'
+    },
+    {
+        'status': false,
+        'value': 'B2C'
+    },
+    {
+        'status': false,
+        'value': 'B2B2C'
+    },
+    {
+        'status': false,
+        'value': 'B2G'
+    },
+]
+const brr = [
+    {
+        'status': false,
+        'value': 'Idea'
+    },
+    {
+        'status': false,
+        'value': 'Development'
+    },
+    {
+        'status': false,
+        'value': 'MVP'
+    },
+    {
+        'status': false,
+        'value': 'Running in Market'
+    },
+]
+
 
 
 
 function ProductForm() {
-    const arr = [
-        {
-            'status': false,
-            'value': 'B2B'
-        },
-        {
-            'status': false,
-            'value': 'B2A'
-        },
-        {
-            'status': false,
-            'value': 'B2C'
-        },
-    ]
-    const brr = [
-        {
-            'status': false,
-            'value': 'Idea'
-        },
-        {
-            'status': false,
-            'value': 'Development'
-        },
-        {
-            'status': false,
-            'value': 'MVP'
-        },
-        {
-            'status': false,
-            'value': 'Running in Market'
-        },
-    ]
 
     const [businesstype, setBusinesstype] = React.useState('');
     const [revenueGenerated, setRevenueGenerated] = useState('');
@@ -126,15 +144,21 @@ function ProductForm() {
     const [businessModal, setBusinesmodal] = useState(arr);
     const [currentStage, setCurrentStage] = useState(brr);
     const [previousFunding, setPreviousFunding] = useState('no');
+    const [personName, setPersonName] = React.useState([]);
+    const [fundtype, setFundType] = React.useState([]);
     const [stage, setStage] = useState('idea');
     const [fields, setFields] = useState([{ value: null }]);
+    const [totalcustomer, setTotalcustomer] = useState('');
+    const [activecustomer, setActivecustomer] = useState('');
 
     const classes = useStyles();
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
 
     const handleChangePerson = (event) => {
         setPersonName(event.target.value);
+    };
+    const handleFundType = (event) => {
+        setFundType(event.target.value);
     };
 
     // const handleChangeMultiple = (event) => {
@@ -149,6 +173,12 @@ function ProductForm() {
     // };
 
 
+    const handleChangeTotalCustomer = (event) => {
+        setTotalcustomer(event.target.value);
+    };
+    const handleChangeActiveCustomer = (event) => {
+        setActivecustomer(event.target.value);
+    };
     const handleChangeBusinessType = (event) => {
         setBusinesstype(event.target.value);
     };
@@ -423,7 +453,36 @@ function ProductForm() {
                                             <MenuItem value={30}>More</MenuItem>
                                         </Select>
                                     </FormControl>
-                                </section> : null
+                                </section> : <section className="amountRaised">
+                                        <span> Which type of funding you are looking for?</span>
+                                        <FormControl className={classes.formControl}>
+                                            <Select
+                                                labelId="demo-mutiple-checkbox-label"
+                                                id="demo-mutiple-checkbox"
+                                                multiple
+                                                displayEmpty
+                                                value={fundtype}
+                                                onChange={handleFundType}
+                                                input={<Input />}
+                                                renderValue={(selected) => {
+                                                    if (selected.length === 0) {
+                                                        return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
+                                                    }
+
+                                                    return selected.join(', ');
+                                                }}
+                                                MenuProps={MenuProps}
+                                            >
+
+                                                {fundType.map((name) => (
+                                                    <MenuItem key={name} value={name}>
+                                                        <Checkbox color="primary" checked={personName.indexOf(name) > -1} />
+                                                        <ListItemText primary={name} />
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </FormControl>
+                                    </section>
                             }
 
                             <section class="currentStage">
@@ -447,12 +506,46 @@ function ProductForm() {
 
                             <section>
                                 <p>10. How many customer you have accquired?</p>
-                                <input type="number" min="0" placeholder="value should be numeric value" />
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={totalcustomer}
+                                        onChange={handleChangeTotalCustomer}
+                                        displayEmpty
+                                        className={classes.inputField}
+                                    >
+                                        <MenuItem value="">
+                                            <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>
+                                        </MenuItem>
+                                        <MenuItem value={10}>0-100</MenuItem>
+                                        <MenuItem value={20}>100-200</MenuItem>
+                                        <MenuItem value={30}>200-300</MenuItem>
+                                        <MenuItem value={30}>More than 300</MenuItem>
+                                    </Select>
+                                </FormControl>
                             </section>
 
                             <section>
                                 <p>11. How many active users are there ?</p>
-                                <input type="number" placeholder="value should be numeric value" />
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={activecustomer}
+                                        onChange={handleChangeActiveCustomer}
+                                        displayEmpty
+                                        className={classes.inputField}
+                                    >
+                                        <MenuItem value="">
+                                            <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>
+                                        </MenuItem>
+                                        <MenuItem value={10}>0-100</MenuItem>
+                                        <MenuItem value={20}>100-200</MenuItem>
+                                        <MenuItem value={30}>200-300</MenuItem>
+                                        <MenuItem value={30}>More than 300</MenuItem>
+                                    </Select>
+                                </FormControl>
                             </section>
 
 

@@ -114,7 +114,7 @@
 }
 
 .innerProductFormArea{
-    width: 85%;
+    width: 90%;
     position: relative;
 }
 .straightLine{
@@ -152,10 +152,10 @@
     top: 40%;
 }
 .straightLine span:nth-child(4){
-    top: 60%;
+    top: 62%;
 }
 .straightLine span:nth-child(5){
-    top: 80%;
+    top: 82%;
 }
 .form_1{
     display: flex;
@@ -164,10 +164,10 @@
     flex-direction: row-reverse;
 }
 .form1_Fields{
-    width: 48%;
+    width: 45%;
 }
 .illustrationArea{
-    width: 48%;
+    width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,7 +217,7 @@
     font-family: 'Poppins';
 }
 .illustrationArea,.form2_Fields{
-    width: 48%;
+    width: 45%;
 }
 
 .form2_Fields section input{
@@ -288,7 +288,7 @@
     font-family: 'Poppins';
 }
 .illustrationArea,.form3_Fields{
-    width: 48%;
+    width: 45%;
 }
 .form3_Fields section p{
     font-size: 1.2rem;
@@ -346,7 +346,7 @@
 
 
 .illustrationArea,.form4_Fields{
-    width: 48%;
+    width: 45%;
 }
 .form_4{
     display: flex;
@@ -380,7 +380,8 @@
 
 
 .illustrationArea,.form5_Fields{
-    width: 48%;
+    width: 45%;
+    user-select: none;
 }
 .form_5{
     display: flex;
