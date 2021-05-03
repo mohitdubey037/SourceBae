@@ -48,6 +48,12 @@ function Navbar(props) {
         setIsNotification(null);
     };
 
+    const handleLogout = ()=>{
+        handleClose()
+        localStorage.removeItem("Authorization")
+        window.location.href = "/"
+    
+    }
     const open = Boolean(isNotification);
     const id = open ? 'simple-popover' : undefined;
 
@@ -107,7 +113,7 @@ function Navbar(props) {
                             >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={()=>handleLogout()}>Logout</MenuItem>
                             </Menu>
                         </div>
                     </div>

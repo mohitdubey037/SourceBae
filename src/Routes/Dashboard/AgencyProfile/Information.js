@@ -87,22 +87,6 @@ function Information(props) {
                                 })
                             }
                         </div>
-                        {/* <div className="informationImageForm">
-                            <div>
-                                <span className="brochureBorder"></span>
-                                <span className="roundedCircle"></span>
-                                <img src={gallery} alt="" />
-                                <p>Gallery Image</p>
-                                <h2>-</h2>
-                            </div>
-                            <div>
-                                <span className="roundedCircle "></span>
-                                <span className="brochureBorder"></span>
-                                <img src={brochure} alt="" />
-                                <p>Brochure</p>
-                                <h2>-</h2>
-                            </div>
-                        </div> */}
                     </div>
 
                 </div>

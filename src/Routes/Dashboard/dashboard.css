@@ -206,7 +206,7 @@
     border-bottom: 1px dashed #B4B4B4;
     padding-bottom: 4%;
 }
-.mainQuotationCard{
+.innerClientsOptions>a, a.mainQuotationCard{
     width: 28%;
     /* background-color: #fff; */
     box-shadow: 0 2px 8px 2px rgba(0,0,0,0.2);
