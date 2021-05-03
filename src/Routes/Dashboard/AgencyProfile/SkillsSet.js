@@ -5,6 +5,7 @@ import { Modal } from 'react-responsive-modal';
 
 function SkillsSet(props) {
 
+    console.log(props)
     const [open, setOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false)
     const onOpenModal = () => setOpen(true);
@@ -17,11 +18,11 @@ function SkillsSet(props) {
     const [arr, setArr] = useState([
         {
             title: 'Industry',
-            content: [
-                {
-                    points: 'Food'
-                }
-            ]
+            content: props.data.agencyDomains.map((domain)=>{
+                    return {
+                        points: domain.domainId.domainName
+                    }
+                })
         },
         {
             title: 'Expertise',
@@ -39,43 +40,19 @@ function SkillsSet(props) {
         },
         {
             title: 'Services',
-            content: [
-                {
-                    points: 'Web Development'
-                },
-                {
-                    points: 'Mobile Development'
-                },
-            ]
+            content: props.data.agencyServices.map((service)=>{
+                return {
+                    points: service.serviceName
+                }
+            })
         },
         {
             title: 'Technology',
-            content: [
-                {
-                    points: 'Html/Css'
-                },
-                {
-                    points: 'Php'
-                },
-                {
-                    points: 'JavaScript'
-                },
-                {
-                    points: 'ReactJs'
-                },
-                {
-                    points: 'NodeJs'
-                },
-                {
-                    points: 'Laravel'
-                },
-                {
-                    points: 'Bootstrap'
-                },
-                {
-                    points: 'React Native'
-                },
-            ]
+            content: props.data.agencyTechnologies.map((technology)=>{
+                return {
+                    points: technology.technologyName
+                }
+            })
         },
         {
             title: 'Language of Content',
@@ -96,6 +73,7 @@ function SkillsSet(props) {
             ]
         },
     ])
+
 
     const [addItem, setAddItem] = useState("")
 

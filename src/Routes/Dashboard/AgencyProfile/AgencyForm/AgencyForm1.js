@@ -7,6 +7,7 @@ import { FilePicker } from 'react-file-picker'
 import agency3d from '../../../../assets/images/AgencyProfile/form1_3d.png'
 import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png'
 import { NavLink } from 'react-router-dom'
+import Alert from '@material-ui/lab/Alert';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
@@ -37,12 +38,224 @@ function AgencyForm1() {
         },
     })
 
+    const [formDataErrors, setFormDataErrors] = useState({
+        ownerNameError: "",
+        agencyEmailError: "",
+        agencyPhoneError: "",
+        agencyDescriptionError: "",
+        socialPlatformDetailsError:"",
+        agencyAddressError: {
+            addressError: "",
+            locationError: ""
+        },
+    })
+
+    useEffect(() => {
+    }, [formData, formDataErrors]);
+
+
     const handleSubmit = () => {
-        console.log(formData, "formData")
-        instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
-            .then(function (response) {
-                setStatus("next")
-            })
+        if (formData.ownerName === "") {
+            setFormDataErrors(
+                {
+                    ownerNameError: "Owener name is required",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    }
+                }
+            )
+        }
+        else if (formData.ownerName.length < 2) {
+            setFormDataErrors(
+                {
+                    ownerNameError: "Owner name must be more than 2 characters.",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyEmail === "") {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "Email is required.",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (!/\S+@\S+\.\S+/.test(formData.agencyEmail)) {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "Invalid email address.",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyPhone === "") {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "Phone is required",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (!formData.agencyPhone === 10) {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "Phone must be of 10 digits.",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyDescription === "") {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "Description is required",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyDescription < 100 && formData.agencyDescription > 300) {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "Description must be between 100-300 characters.",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        //         else if (formData?.socialPlatformDetails[0]?.agencyAddress === "") {
+        //     setFormDataErrors(
+        //             {
+        //                 ownerNameError: "",
+        //                 agencyEmailError: "",
+        //                 agencyPhoneError: "",
+        //                 agencyDescriptionError: "",
+        //                 socialPlatformDetailsError: "",
+        //                 agencyAddressError: {
+        //                     addressError: "",
+        //                     locationError: ""
+        //                 },
+        //             }
+        //         )
+        // }
+        else if (!/^((http(s?)?):\/\/)?([wW]{3}\.)?[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/g.test(formData?.socialPlatformDetails[0]?.platformLink)) {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "Invalid website address",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyAddress.address === "") {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "Address is required",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyAddress.address > 200) {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "Address must be less than 200 characters.",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyAddress.location === "") {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: "Location is required"
+                    },
+                }
+            )
+        }
+        else {
+            instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
+                .then(function (response) {
+                    setStatus("next")
+                })
+        }
     }
 
     const handleChange = (event) => {
@@ -76,15 +289,16 @@ function AgencyForm1() {
 
         }
     }
-    const handleNavlink = async(e)=>{
-        if(status!=="next"){
+
+    const handleNavlink = async (e) => {
+        if (status !== "next") {
             e.preventDefault()
-            if(status==="upload" && agencyLogo!==null)
-                uploadMedia(agencyLogo.category,agencyLogo.document)
-            else if(status==="update")
+            if (status === "upload" && agencyLogo !== null)
+                uploadMedia(agencyLogo.category, agencyLogo.document)
+            else if (status === "update")
                 handleSubmit()
             else
-                toast.error("Something went wrong.")
+                toast.error("Upload document.")
         }
     }
 
@@ -97,7 +311,6 @@ function AgencyForm1() {
             category,
             document    
         })
-        console.log(document)
     }
 
     function uploadMedia(category, document) {
@@ -123,12 +336,12 @@ function AgencyForm1() {
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setFormData({
             ...formData,
-            socialPlatformDetails:[linkedIn]
+            socialPlatformDetails: [linkedIn]
         })
-    },[linkedIn])
+    }, [linkedIn])
     
     return (
         <>
@@ -165,6 +378,7 @@ function AgencyForm1() {
                                         rows="5"
                                         value={formData?.agencyDescription}
                                         onChange={(event) => handleChange(event)} />
+                                    {formDataErrors.agencyDescriptionError!== '' &&  <Alert severity="error">{formDataErrors.agencyDescriptionError}</Alert> }
                                 </div>
                             </div>
 
@@ -178,6 +392,7 @@ function AgencyForm1() {
                                         value={formData?.ownerName}
                                         onChange={(event) => handleChange(event)}
                                     />
+                                    {formDataErrors.ownerNameError!=='' &&  <Alert severity="error">{formDataErrors.ownerNameError}</Alert> }
                                 </div>
 
                                 <div className="getOwnerName">
@@ -188,6 +403,7 @@ function AgencyForm1() {
                                         name="agencyEmail"
                                         value={formData?.agencyEmail}
                                         onChange={(event) => handleChange(event)} />
+                                    {formDataErrors.agencyEmailError!== '' &&  <Alert severity="error">{formDataErrors.agencyEmailError}</Alert> }
                                 </div>
                             </div>
 
@@ -200,6 +416,7 @@ function AgencyForm1() {
                                         name="agencyPhone"
                                         value={formData?.agencyPhone}
                                         onChange={(event) => handleChange(event)} />
+                                    {formDataErrors.agencyPhoneError!== '' &&  <Alert severity="error">{formDataErrors.agencyPhoneError}</Alert> }
                                 </div>
                                 <div className="getOwnerName">
                                     <p>LinkedIn URL</p>
@@ -208,6 +425,7 @@ function AgencyForm1() {
                                         name={linkedIn?.platformName}
                                         value={linkedIn?.platformLink}
                                         onChange={(event) => handleSocialPlatform(event)} />
+                                    {formDataErrors.socialPlatformDetailsError!== '' &&  <Alert severity="error">{formDataErrors.socialPlatformDetailsError}</Alert> }
                                 </div>
                             </div>
 
@@ -221,6 +439,7 @@ function AgencyForm1() {
                                         id="address_location"
                                         value={formData?.agencyAddress?.address}
                                         onChange={(event) => handleChange(event)} />
+                                    {formDataErrors.agencyAddressError.addressError!== '' &&  <Alert severity="error">{formDataErrors.agencyAddressError.addressError}</Alert> }
                                 </div>
 
                                 <div className="getOwnerName">
@@ -232,6 +451,7 @@ function AgencyForm1() {
                                         id="address_location"
                                         value={formData?.agencyAddress?.location}
                                         onChange={(event) => handleChange(event)} />
+                                    {formDataErrors.agencyAddressError.locationError!== '' &&  <Alert severity="error">{formDataErrors.agencyAddressError.locationError}</Alert> }
                                 </div>
                             </div>
 

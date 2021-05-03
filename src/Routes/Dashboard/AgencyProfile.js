@@ -68,9 +68,11 @@ function AgencyProfile() {
         createdAt: "",
         updatedAt: "",
     })
-    const getAgencyProfile = (agencyId) => {
+    const getAgencyProfile = (agencyId, profileviewStatus) => {
 
-        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
+        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``
+
+        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
                 setAgencyProfileData({ ...response })
             })
@@ -79,7 +81,7 @@ function AgencyProfile() {
 
     useEffect(() => {
 
-        (id !== null && id !== undefined) ? getAgencyProfile(helper.cleanParam(id)) : getAgencyProfile(localStorage.getItem("userId"))
+        (id !== null && id !== undefined) ? getAgencyProfile(helper.cleanParam(id), true) : getAgencyProfile(localStorage.getItem("userId"), false)
     }, [])
 
     return (
@@ -147,7 +149,7 @@ function AgencyProfile() {
                                             <h2>{agencyProfileData?.agencyName}</h2>
                                             <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p>
                                         </div>
-                                        {(id === null && id === undefined) && <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
+                                        {(id === null || id === undefined) && <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
                                             <i class="fa fa-check" aria-hidden="true" />
                                             <span>{`${!agencyProfileData?.isAgencyVerified ? agencyProfileData?.verificationMessage : `Verified`}`}</span>
                                         </div>}
@@ -172,7 +174,7 @@ function AgencyProfile() {
                                     </div>
                                     <div className="pointContent" >
                                         <p>Total Profile Views</p>
-                                        <h4>23</h4>
+                                        <h4>{agencyProfileData.agencyProfileViewCount}</h4>
                                     </div>
                                 </div>}
                             </div>
@@ -186,12 +188,14 @@ function AgencyProfile() {
                                 <h2>About us</h2>
                                 <p>{agencyProfileData.agencyDescription}</p>
                                 <div className="agencyProfileIndustry">
-                                    <p>Food</p>
-                                    <p>Fintech</p>
-                                    <p>E-commerce</p>
+                                    {agencyProfileData.agencyDomains.map((domain) => {
+
+                                        return <p>{`${domain.domainId.domainName}`}</p>
+
+                                    })}
                                 </div>
                             </div>
-                            {(id === null && id === undefined) && <div className="rightAgencyProfileDesc">
+                            {(id === null || id === undefined) && <div className="rightAgencyProfileDesc">
                                 <div className="monthyView">
                                     <div className="monthBorder"></div>
                                     <img src={growth} alt="" />
@@ -253,7 +257,7 @@ function AgencyProfile() {
                                     <Information data={agencyProfileData} id={id} />
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <SkillsSet id={id} />
+                                    <SkillsSet data={agencyProfileData} id={id} />
                                 </div>
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                     <Rules id={id} />

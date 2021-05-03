@@ -15,7 +15,7 @@ import Navbar from './Navbar'
 import Select from '@material-ui/core/Select';
 
 import Tooltip from 'react-power-tooltip'
-
+import { Link } from 'react-router-dom'
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 
@@ -32,6 +32,7 @@ const Dashboard = () => {
     const [popindex, setPopIndex] = useState('');
 
     const [age, setAge] = React.useState('');
+    const [verified, setVerified] = useState(false)
 
     const handleClick = (event) => {
         console.log(event)
@@ -54,18 +55,21 @@ const Dashboard = () => {
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             image: quotation,
             borderColor: `#28B3F3`,
+            route: "/quotation"
         },
         {
             title: 'Add Developers',
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             image: addDeveloper,
-            borderColor: '#F57359'
+            borderColor: '#F57359',
+            route: "/add-developer"
         },
         {
             title: 'Team Creation',
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             image: teamCreation,
-            borderColor: '#AC92F5'
+            borderColor: '#AC92F5',
+            route: "/dashboard"
         },
     ]
 
@@ -139,7 +143,7 @@ const Dashboard = () => {
             .then(function (response) {
                 if (response.stepsCompleted === response.totalSteps)
                     setSteps(-1)
-                else{
+                else {
                     setSteps(response.stepsCompleted)
                     let route = `/agency-form-${helper.getNumberSpell(response.stepsCompleted)}`
                     setFormRoute(route)
@@ -147,13 +151,27 @@ const Dashboard = () => {
             })
     }
 
+    const getAgencyProfile = (agencyId) => {
+
+        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
+            .then(function (response) {
+                setVerified(response.isAgencyVerified)
+            })
+
+    }
+
+    const handleLink = (route)=>{
+        if(verified && steps===-1)
+            window.location.href= route
+    }
     useEffect(() => {
         getStepsCompleted()
+        getAgencyProfile(localStorage.getItem("userId"))
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(formRoute)
-    },[formRoute])
+    }, [formRoute])
     useEffect(() => {
         console.log(steps)
     }, [steps])
@@ -163,9 +181,14 @@ const Dashboard = () => {
             {/* Navbar  */}
             <Navbar headingInfo="Dashboard" />
 
-            {steps !== -1 && <div className="mainUpdateVerify">
+            {(!verified || steps !== -1) && <div className="mainUpdateVerify">
                 <div className="innerMainVerify">
-                    <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
+
+                    {verified ?
+                        <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
+                        :
+                        <p>Please wait for your profile to be verified by us.</p>
+                    }
                 </div>
             </div>}
 
@@ -174,37 +197,39 @@ const Dashboard = () => {
                     {
                         cardsArray.map((value, index) => {
                             return (
-                                <div className="mainQuotationCard" key={index} style={{ filter: `${(steps !== -1) ? `grayscale(100%)` : `none`}` }}>
-                                    <div className="leftLine" style={{
-                                        backgroundColor: value?.borderColor,
-                                    }}></div>
-                                    <div
-                                        style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                                        onMouseOver={() => {
-                                            setIsPopover(true)
-                                            setPopIndex(index)
-                                        }}
-                                        onMouseLeave={() => setIsPopover(false)}>
-                                        <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
-                                        {/* ADD TOOLTIP HERE */}
-                                        {
-                                            isPopover && popindex === index
-                                            &&
-                                            <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
-                                                <span>Some text</span>
-                                            </Tooltip>
-                                        }
-                                    </div>
-                                    <div className="innerQuotationCard">
-                                        <div className="quotationImage">
-                                            <img src={value?.image} alt="" />
+                                <Link style={{textDecoration:"none"}} onClick={()=>handleLink(value.route)}>
+                                    <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
+                                        <div className="leftLine" style={{
+                                            backgroundColor: value?.borderColor,
+                                        }}></div>
+                                        <div
+                                            style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                            onMouseOver={() => {
+                                                setIsPopover(true)
+                                                setPopIndex(index)
+                                            }}
+                                            onMouseLeave={() => setIsPopover(false)}>
+                                            <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
+                                            {/* ADD TOOLTIP HERE */}
+                                            {
+                                                isPopover && popindex === index
+                                                &&
+                                                <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
+                                                    <span>Some text</span>
+                                                </Tooltip>
+                                            }
                                         </div>
-                                        <div className="quotationInfo">
-                                            <h2>{value?.title}</h2>
-                                            <p>{value?.desc}</p>
+                                        <div className="innerQuotationCard">
+                                            <div className="quotationImage">
+                                                <img src={value?.image} alt="" />
+                                            </div>
+                                            <div className="quotationInfo">
+                                                <h2>{value?.title}</h2>
+                                                <p>{value?.desc}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             )
                         })
                     }

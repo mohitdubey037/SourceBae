@@ -35,7 +35,10 @@ instance.interceptors.response.use(function (response){
     }
 
 }, function (error){
-    toast(error?.response?.data?.message, {
+    console.log(error)
+    if(error?.response?.data?.message==="Bearer Token not found")
+        window.location.href="/"
+    toast.error(error?.response?.data?.message, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: true,
