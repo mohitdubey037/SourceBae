@@ -18,24 +18,34 @@ function Rules(props) {
 
     const handleEditRules=(value)=>{
         setEditRules(value)
+        const id = localStorage.getItem("userId")
+        instance.patch(`/api/${Role}/agencies/update/${id}`,
+            {
+                agencyRules: rules.map((rules)=>{
+                    return {
+                        ruleId:rules.ruleId._id,
+                        selection:rules.selection
+                    }
+                })
+            })
     }
 
     const handleRules = (event,rule)=>{
         const {value} = event.target
-        let index = rules.indexOf(rule)
-
         let tempArr = [...rules]
-        tempArr[index].isActive = value==="true"?true:false
+        let index = tempArr.indexOf(rule)
+
+        tempArr[index].selection = value==="true"?true:false
         setRules(tempArr)
     }
 
     useEffect(()=>{
-        instance.get(`/api/${Role}/agencies/rules/all`)
-        .then((function(response){
-            console.log(response)
-            setRules(response)
-        }))
+        setRules(props.data.agencyRules)
     },[])
+
+    useEffect(()=>{
+        console.log(rules)
+    },[rules])
 
     return (
         <>
@@ -58,18 +68,18 @@ function Rules(props) {
 
                         <div className="rulesQuestions">
                             {
-                                rules.length>0
+                               rules.length>0
                                  ? 
-                                 rules.map((value) => {
+                                rules.map((value) => {
                                     return (
                                         <div className="questionPart">
                                             <div className="leftQuestion">
-                                                <p>{value?.rule}</p>
+                                                <p>{value?.ruleId.rule}</p>
                                             </div>
 
                                         
                                             {!editRules && <div className="rulesMark">
-                                                {value?.isActive
+                                                {value?.selection
                                                 ?
                                                 <i class="fa fa-check" style={{ color:'#5cb85c'}} aria-hidden="true"/>
                                                 :
@@ -78,7 +88,7 @@ function Rules(props) {
                                             </div>}
 
                                             {editRules && <FormControl component="fieldset">
-                                                    <RadioGroup aria-label={value?._id} name={value?._id} value={`${value?.isActive}`} onChange={(event)=>handleRules(event,value)}>
+                                                    <RadioGroup aria-label={value?._id} name={value?._id} value={`${value?.selection}`} onChange={(event)=>handleRules(event,value)}>
                                                         <FormControlLabel value="true" control={<Radio />} label="Yes" />
                                                         <FormControlLabel value="false" control={<Radio />} label="No" />
                                                     </RadioGroup>

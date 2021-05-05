@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react'
 import './SkillsSet.css'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import instance from "../../../Constants/axiosConstants"
 
 function SkillsSet(props) {
 
-    console.log(props)
+    const Role = "agency"
+    const [selectedDomainId, setSelectedDomainId] = useState("")
     const [open, setOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false)
+    const [skillset, setSkillset] = useState({
+        Industry: [],
+        Services: [],
+        Technology: []
+    })
+
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {
         setAddItem("")
@@ -18,11 +27,11 @@ function SkillsSet(props) {
     const [arr, setArr] = useState([
         {
             title: 'Industry',
-            content: props.data.agencyDomains.map((domain)=>{
-                    return {
-                        points: domain.domainId.domainName
-                    }
-                })
+            content: props.data.agencyDomains.map((domain) => {
+                return {
+                    points: domain.domainId.domainName
+                }
+            })
         },
         {
             title: 'Expertise',
@@ -40,7 +49,7 @@ function SkillsSet(props) {
         },
         {
             title: 'Services',
-            content: props.data.agencyServices.map((service)=>{
+            content: props.data.agencyServices.map((service) => {
                 return {
                     points: service.serviceName
                 }
@@ -48,7 +57,7 @@ function SkillsSet(props) {
         },
         {
             title: 'Technology',
-            content: props.data.agencyTechnologies.map((technology)=>{
+            content: props.data.agencyTechnologies.map((technology) => {
                 return {
                     points: technology.technologyName
                 }
@@ -79,35 +88,139 @@ function SkillsSet(props) {
 
     const handleEdit = (status) => {
         setEditStatus(status)
+        if (status === false) {
+            updateAgency()
+        }
     }
 
     const handleAddData = (modalValue) => {
-        console.log(modalValue)
         setModalValue(modalValue)
         onOpenModal()
     }
 
     const handleAddItem = (arrItem) => {
-        console.log(addItem)
         let temp = arr
         let index = temp.indexOf(arrItem)
-        if (index > -1) {
+        if (index > -1 && addItem !== "") {
 
-            temp[index] = {
-                ...temp[index],
-                content: [
-                    ...temp[index].content,
-                    {
-                        points: addItem
+            if (temp[index].title === "Industry") {
+                if (temp[index].content.findIndex((item) => item.points === addItem) === -1) {
+                    temp[index] = {
+                        ...temp[index],
+                        content: [
+                            temp[index].content[0],
+                            {
+                                points: addItem
+                            }
+                        ]
                     }
-                ]
+                }
+
             }
+            else {
+                temp[index] = {
+                    ...temp[index],
+                    content: [
+                        ...temp[index].content,
+                        {
+                            points: addItem
+                        }
+                    ]
+                }
+            }
+
             setArr(temp)
         }
         onCloseModal()
 
     }
 
+    const handleSelect = (event) => {
+        const [id, name] = event.target.value.split(" ")
+        setSelectedDomainId(id)
+        setAddItem(name)
+    }
+
+    //Api Calls methods
+
+    const getAllIndustries = async () => {
+        instance.get(`api/${Role}/domains/all`)
+            .then(function (response) {
+
+                const domainNames = response.map((domain) => {
+                    return {
+                        ...domain,
+                        selected: false
+                    }
+                })
+                setSkillset({
+                    ...skillset,
+                    Industry: domainNames
+                })
+            })
+    }
+
+    const getAllTechs = () => {
+        instance.get(`api/${Role}/technologies/all`)
+            .then(function (response) {
+                const techNames = response.map((tech) => {
+                    return {
+                        ...tech,
+                        selected: false
+                    }
+                })
+                setSkillset({
+                    ...skillset,
+                    Technology: techNames
+                })
+            })
+    }
+
+    const getAllServices = () => {
+        instance.get(`api/${Role}/services/all`)
+            .then(function (response) {
+                const servicesNames = response.map((service) => {
+                    return {
+                        ...service,
+                        selected: false
+                    }
+                })
+                setSkillset({
+                    ...skillset,
+                    Services: servicesNames
+                })
+            })
+    }
+
+    const updateAgency = () => {
+        const id = localStorage.getItem("userId")
+        instance.patch(`/api/${Role}/agencies/update/${id}`,
+            {
+                agencyDomains: [{
+                    domainId: selectedDomainId,
+                    domainBaseAmount: 100,
+                    isAmountNegotiable: true
+                }]
+            })
+    }
+
+    useEffect(() => {
+        getAllIndustries()
+    }, [])
+
+    useEffect(() => {
+        console.log(arr)
+    }, [arr])
+
+    useEffect(() => {
+        if (skillset.Industry.length > 0 && skillset.Services.length === 0)
+            getAllServices()
+        else if (skillset.Services.length > 0 && skillset.Technology.length === 0)
+            getAllTechs()
+        // else
+        //     // console.log(skillset)
+
+    }, [skillset])
     return (
         <>
             <div className="mainSkillsSet">
@@ -116,8 +229,8 @@ function SkillsSet(props) {
                     {(props?.id === null || props?.id === undefined) && editStatus ? <div className="editableBtn">
                         <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
                     </div> : <div className="editableBtn">
-                            <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
-                        </div>}
+                        <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                    </div>}
                     <div className="skillsSetsContent">
                         <div className="skillsSetBorder"></div>
                         <div className="skillsSetSemiCircle" style={{ zIndex: -1 }}></div>
@@ -173,7 +286,43 @@ function SkillsSet(props) {
                         <p>{`${modalValue?.title}`}</p>
                     </div>
                     <div className="modaInput">
-                        <input value={addItem} name="addItem" onChange={(e) => { setAddItem(e.target.value) }} type="text" />
+                        {(modalValue?.title === "Industry")
+                            ?
+                            (
+
+                                props?.data?.agencyDomains.length < 2 ?
+                                    <select onChange={(event) => handleSelect(event)}>
+                                        <option>None</option>
+                                        {
+
+                                            skillset?.Industry && skillset?.Industry.map((domain) => {
+                                                return <option label={domain.domainName} value={`${domain._id} ${domain.domainName}`} />
+                                            })
+
+                                        }
+                                    </select>
+
+                                    :
+                                    <p>Sorry. No more Idustries can be added.</p>)
+
+                            :
+                            (modalValue?.title === "Services") &&
+                            <select onChange={(event) => handleSelect(event)}>
+                                <option>None</option>
+                                {
+
+                                    skillset?.Services
+                                    &&
+                                    skillset?.Services.map((service) => {
+                                        return <option label={service.serviceName} value={`${service._id} ${service.serviceName}`} />
+                                    })
+
+                                }
+                            </select>
+
+                        }
+
+                        {/* <input value={addItem} name="addItem" onChange={(e) => { setAddItem(e.target.value) }} type="text" /> */}
                     </div>
                     <div class="addmodalButtons">
                         <div></div>
