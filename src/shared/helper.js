@@ -36,4 +36,19 @@ const validateLink = (link)=>{
     let result = (/^((http(s?)?):\/\/)?([wW]{3}\.)?[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/g.test(link))
     return result
 }
-export {capitalize, lowerize, cleanParam, getNumberSpell, validateLink}
+
+const camelcaseToWords = (word)=>{
+    return(word.replace(/[A-Z]/g, letter => ` ${letter.toLowerCase()}`));
+}
+
+const multiwordCapitalize = (str)=>{
+   
+    const newstr = str.split(" ")
+
+    let finalStr = ""
+    newstr.forEach(element => {
+        finalStr = finalStr+" "+capitalize(element)
+    });
+    return finalStr.slice(1)
+}
+export {capitalize, lowerize, cleanParam, getNumberSpell, validateLink, camelcaseToWords, multiwordCapitalize}
