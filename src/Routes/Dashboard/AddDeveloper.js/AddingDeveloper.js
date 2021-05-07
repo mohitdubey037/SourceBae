@@ -50,8 +50,10 @@ function AddingDeveloper() {
     const [resume, setResume] = useState(null)
 
     const handleChange = (event)=>{
-        const {name, value} = event.target
+        const {name, value} = event.currentTarget
+        console.log({...event.target})
         if(name==="developerTechnologies"){
+            console.log(value)
             setDeveloperData(
                 {
                     ...developerData,
@@ -176,7 +178,7 @@ function AddingDeveloper() {
                         <div className="inputField1">
                             <div className="developerName">
                                 <h4>Technology & Skills</h4>
-                                <select name="developerTechnologies" onChange={(event) => handleChange(event)}>
+                                <select name="developerTechnologies" onChange={(event) => handleChange(event)} multiple>
                                         <option>None</option>
                                             {techs?.map((tech)=>{
                                                 return <option label={tech?.technologyName} value={tech?._id}/>
