@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import './Information.css'
 
-import gallery from '../../../assets/images/Logo/gallery.svg'
-import brochure from '../../../assets/images/Logo/brochure.png'
 import moment from 'moment'
+import instance from "../../../Constants/axiosConstants"
 
 function Information(props) {
 
+    const Role ='agency'
     const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY")
     console.log(props,"props")
-    const arr = [
+    const [arr, setArr] = useState([
         {
             title: 'Agency Name',
             inputValue: `${props?.data.agencyName}`,
@@ -50,7 +50,7 @@ function Information(props) {
             inputValue: `${props?.data?.agencyPhone}`,
             disabled: props?.id ? true: false
         },
-    ]
+    ])
 
     const [isDisabled, setIsdisabled] = useState(true);
 
@@ -59,6 +59,41 @@ function Information(props) {
     }
     const handleDisabledSave = () => {
         setIsdisabled(true)
+        updateAgency()
+    }
+
+    const permanentDisable = (name)=>{
+        if(name ==="Director Name" || name ==="Agency Website" || name==="Team Size" || name==="Agency Email Id"){
+            console.log(name)
+            return false
+        }
+        else return true
+    }
+    const handleChange = (event)=>{
+        const {name, value} = event.target
+        console.log(name,value)
+        let temp = [...arr]
+        let index = temp.findIndex((item)=> item.title===name)
+        console.log(index)
+        temp[index].inputValue = value
+        setArr(temp)
+    }
+
+    const updateAgency = () => {
+        const id = localStorage.getItem("userId")
+        instance.patch(`/api/${Role}/agencies/update/${id}`,
+        {
+            agencyTeamSize:arr[5].inputValue,
+            ownerName:arr[2].inputValue,
+            agencyEmail: arr[3].inputValue,
+            socialPlatformDetails: [
+                {
+                    platformName: "website",
+                    platformLink: arr[4].inputValue
+                }
+            ]
+        }
+            )
     }
     return (
         <>
@@ -79,7 +114,7 @@ function Information(props) {
                                     return (
                                         <div key={index} style={{ backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#fff' }}>
                                             <p>{value?.title}</p>
-                                            <input style={{ outline: isDisabled ? 'none' : 'none', border: isDisabled ? 'none' : '1px solid #02044a' }} disabled={isDisabled} type="text" value={value?.inputValue} name="" id="" />
+                                            <input style={{ outline: isDisabled ? 'none' : 'none', border: permanentDisable(value?.title) || isDisabled ? 'none' : '1px solid #02044a' }} disabled={permanentDisable(value?.title) || isDisabled} type="text" value={value?.inputValue} name={value?.title} onChange = {(event)=>handleChange(event)} id="" />
                                         </div>
                                     )}
                                     else

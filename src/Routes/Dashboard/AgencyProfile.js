@@ -260,7 +260,7 @@ function AgencyProfile() {
                                     <SkillsSet data={agencyProfileData} id={id} />
                                 </div>
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <Rules id={id} />
+                                    <Rules data={agencyProfileData} id={id} />
                                 </div>
                                 <div class="tab-pane fade" id="nav-developer" role="tabpanel" aria-labelledby="nav-developer-tab">
                                     <DeveloperList id={id} />

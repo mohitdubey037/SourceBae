@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 
 import './AddingDeveloper.css'
@@ -16,27 +16,124 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import instance from "../../../Constants/axiosConstants"
 
 function AddingDeveloper() {
 
-    const inputFileChoosen = (e) => {
-        console.log(e.target.files[0].type)
+
+    const Role= "agency"
+  
+
+    const [developerData, setDeveloperData] = useState(
+        {
+            firstName: "",
+            lastName: "",
+            agencyId: localStorage.getItem("userId")??"",
+            developerDesignation: "",
+            developerTechnologies: [
+            
+            ],
+            developerDocuments: [
+                {
+                    documentName: "",
+                    documentLink: ""
+                }
+            ],
+            developerExperience: "",
+            developerPriceRange: "",
+            developerAvailability: ""
+        })
+    
+    const [techs,setTechs] = useState([])
+    const [btnName, setBtnName] = useState("Upload")
+    const [isDisabled, setIsDisabled] = useState(true)
+    const [resume, setResume] = useState(null)
+
+    const handleChange = (event)=>{
+        const {name, value} = event.currentTarget
+        console.log({...event.target})
+        if(name==="developerTechnologies"){
+            console.log(value)
+            setDeveloperData(
+                {
+                    ...developerData,
+                    [name]:[value]
+                }
+            )
+        }
+        else{
+        setDeveloperData(
+            {
+            ...developerData,
+            [name]:value
+        })
+    }
     }
 
-    const [experienceValue, setExperineceValue] = useState('junior');
-    const [pricerange, setPricerange] = useState('2500');
-    const [availability, setAvailability] = useState('immediately');
+    const getAllTechs = () => {
+        instance.get(`api/${Role}/technologies/all`)
+            .then(function (response) {
+                setTechs(response)
+            })
+    }
 
-    const handleExperience = (event) => {
-        setExperineceValue(event.target.value);
-    };
-    const handlePrice = (event) => {
-        setPricerange(event.target.value);
-    };
-    const handleAvailability = (event) => {
-        setAvailability(event.target.value);
-    };
+    const inputFileChoosen = (e) => {
+        setResume(e.target.files[0])
+        setIsDisabled(false)
+    }
 
+    function uploadMedia() {
+
+        const formData = new FormData();
+        
+        resume && formData.append(
+            "files",
+            resume,
+            "resume"
+        );
+        instance.post(`api/${Role}/media/create`, formData)
+            .then(function (response) {
+                console.log(response)
+                setDeveloperData({
+                    ...developerData,
+                    developerDocuments:[
+                        {
+                            documentName:"Resume",
+                            documentLink: response[0].mediaURL
+                        }
+                    ]
+                })
+                setBtnName("Submit")
+            })
+
+    }
+
+    const createDeveloperApi = ()=>{
+        instance.post(`api/${Role}/developers/create`, developerData)
+            .then(function (response) {
+                console.log(response)
+                setBtnName("Next")
+            })
+    }
+    const handleAction = (name)=>{
+        if(name==="Upload"){
+            uploadMedia()
+
+        }
+        else if(name==="Submit"){
+            createDeveloperApi()
+        }
+        else if(name==="Next"){
+            window.location.href="/dashboard"
+        }
+    }
+    useEffect(()=>{
+        getAllTechs()
+    },[])
+
+    useEffect(()=>{
+        console.log(developerData)
+    }, [developerData])
     return (
         <>
             <Navbar />
@@ -66,25 +163,27 @@ function AddingDeveloper() {
                     <div className="inputForm">
                         <div className="inputField1">
                             <div className="developerName">
-                                <h4>Name</h4>
-                                <input type="text" placeholder="Name" />
+                                <h4>First Name</h4>
+                                <input type="text" placeholder="First Name" name = "firstName" value ={developerData.firstName } onChange = {(event)=>handleChange(event)}/>
+                            </div>
+                            <div className="developerName">
+                                <h4>Last Name</h4>
+                                <input type="text" placeholder="Last Name" name = "lastName" value ={developerData.lastName } onChange = {(event)=>handleChange(event)}/>
                             </div>
                             <div className="developerDesignation">
                                 <h4>Designation</h4>
-                                <input type="text" placeholder="E.g- Angular Developer" name="" id="" />
+                                <input type="text" placeholder="E.g- Angular Developer" name="developerDesignation" value ={developerData.developerDesignation } onChange = {(event)=>handleChange(event)}/>
                             </div>
                         </div>
                         <div className="inputField1">
                             <div className="developerName">
                                 <h4>Technology & Skills</h4>
-                                <input type="text" list="browsers" placeholder="Name" />
-                                <datalist id="browsers">
-                                    <option>Nodejs</option>
-                                    <option>Angular js</option>
-                                    <option>Laravel </option>
-                                    <option>Php </option>
-
-                                </datalist>
+                                <select name="developerTechnologies" onChange={(event) => handleChange(event)} multiple>
+                                        <option>None</option>
+                                            {techs?.map((tech)=>{
+                                                return <option label={tech?.technologyName} value={tech?._id}/>
+                                            })}
+                                </select>
                             </div>
                             <div className="developerDesignation">
                                 <h4>Upload Resume</h4>
@@ -94,17 +193,17 @@ function AddingDeveloper() {
                         <div className="yearsOfExperience">
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Years of Experience</FormLabel>
-                                <RadioGroup aria-label="gender" name="gender1" value={experienceValue} onChange={handleExperience}>
-                                    <FormControlLabel value="junior" control={<Radio />} label="Junior(1-3years)" />
-                                    <FormControlLabel value="midrange" control={<Radio />} label="Mid Range(3-6years)" />
-                                    <FormControlLabel value="senior" control={<Radio />} label="Senior(6-9years)" />
+                                <RadioGroup aria-label="developerExperience" name="developerExperience" value={developerData.developerExperience} onChange={(event)=>handleChange(event)}>
+                                    <FormControlLabel value="1" control={<Radio />} label="Junior(1-3years)" />
+                                    <FormControlLabel value="3" control={<Radio />} label="Mid Range(3-6years)" />
+                                    <FormControlLabel value="6" control={<Radio />} label="Senior(6-9years)" />
                                 </RadioGroup>
                             </FormControl>
                         </div>
                         <div className="priceRange">
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Price Range(Monthly)</FormLabel>
-                                <RadioGroup aria-label="gender" name="gender1" value={pricerange} onChange={handlePrice}>
+                                <RadioGroup aria-label="developerPriceRange" name="developerPriceRange" value={developerData.developerPriceRange} onChange={(event)=>handleChange(event)}>
                                     <FormControlLabel value="1500" control={<Radio />} label="less than $1500 per month" />
                                     <FormControlLabel value="2500" control={<Radio />} label="$1500-$2500 per month" />
                                     <FormControlLabel value="4000" control={<Radio />} label="$2500-$4000 per month" />
@@ -115,16 +214,16 @@ function AddingDeveloper() {
                         <div className="availabilityArea">
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Availability</FormLabel>
-                                <RadioGroup aria-label="gender" name="gender1" value={availability} onChange={handleAvailability}>
-                                    <FormControlLabel value="immediately" control={<Radio />} label="Immediately" />
-                                    <FormControlLabel value="less2week" control={<Radio />} label="less than 2 weeks" />
-                                    <FormControlLabel value="more2week" control={<Radio />} label="More than 2 weeks" />
-                                    <FormControlLabel value="negotiable" control={<Radio />} label="Negotiable" />
+                                <RadioGroup aria-label="developerAvailability" name="developerAvailability" value={developerData.developerAvailability} onChange={(event)=>handleChange(event)}>
+                                    <FormControlLabel value="0" control={<Radio />} label="Immediately" />
+                                    <FormControlLabel value="1" control={<Radio />} label="less than 2 weeks" />
+                                    <FormControlLabel value="2" control={<Radio />} label="More than 2 weeks" />
+                                    <FormControlLabel value="-1" control={<Radio />} label="Negotiable" />
                                 </RadioGroup>
                             </FormControl>
                         </div>
                         <div className="submitButton">
-                            <button>Submit</button>
+                            <button disabled = {isDisabled} onClick = {()=>handleAction(btnName)}>{`${btnName}`}</button>
                         </div>
                     </div>
                 </div>
