@@ -64,12 +64,14 @@ button {
 }
 .loginIllustrator {
   position: sticky;
-  display: flex;
-  justify-content: flex-start;
+  /* display: flex; */
+  /* justify-content: flex-start; */
   /* align-items: center; */
 }
 .loginIllustrator img {
-  width: 100%;
+  /* width: 100%; */
+  transform: translateX(-10px);
+  height: 100vh;
 }
 .loginContent {
   padding: 2rem;
@@ -117,6 +119,7 @@ button {
 .signUpOption span {
   color: #02044a;
   font-weight: bold;
+  cursor: pointer;
 }
 .loginForm {
   margin-top: 10%;
@@ -170,6 +173,7 @@ button {
   color: #7cb9e8;
   font-size: 0.9rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .googleLogin {
