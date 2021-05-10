@@ -4,7 +4,10 @@
 import { Button } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import logotext from '../../assets/images/SignUp/logotext.svg'
+import logotext from '../../assets/images/Logo/logo.png'
+import bgImage from '../../assets/images/Logo/bgImage.jpg'
+import business from '../../assets/images/Logo/sspp.png'
+import growth from '../../assets/images/Logo/growthImage.svg'
 import './register.css'
 import colors from '../../Constants/colors'
 import { makeStyles } from '@material-ui/core/styles';
@@ -92,10 +95,10 @@ const Register = () => {
 
     //Client Profile state varaibles//
     const [clientProfileDetails, setClientProfileDetails] = useState({
-        userDesignation:"",
-        companyName:"",
+        userDesignation: "",
+        companyName: "",
         socialPlatformDetails: []
-    }) 
+    })
 
     //SignUp Error state varaible//
     const [signupFormErrors, setSignupFormErrors] = useState({
@@ -159,24 +162,24 @@ const Register = () => {
 
     const handleCreateProfile = (event, role) => {
         const { name, value } = event.target
-        if(role==="Agency")
+        if (role === "Agency")
             setAgencyProfileDetails(
                 {
                     ...agencyProfileDetails,
                     [name]: value
                 }
             )
-        else if(role==="Client")
+        else if (role === "Client")
             setClientProfileDetails(
                 {
                     ...clientProfileDetails,
-                    [name]:value
+                    [name]: value
                 }
             )
 
     }
 
-  
+
     const handleErrorsValidation = (Role) => {
 
         //this object is for resetting all the errors value to empty before adding a one
@@ -189,89 +192,89 @@ const Register = () => {
             companyNameError: '',
         }
 
-        if(Role==="Agency"){
-                if (agencyProfileDetails.agencyName === "") {
-                    setProfileDetailsErrors(
-                        {
-                            ...tempProfileDetails,
-                            agencyNameError: 'Agency name is required',
-                        }
-                    )
-                }
-                else if (agencyProfileDetails.agencyName.length < 2) {
-                    setProfileDetailsErrors(
-                        {
-                            ...tempProfileDetails,
-                            agencyNameError: "Agency name must be between 2 characters.",
-                        }
-                    )
-                }
-                else if (agencyProfileDetails.agencyTeamSize === "") {
-                    setProfileDetailsErrors(
-                        {
-                            ...tempProfileDetails,
-                            teamStrengthError: 'Team strength is required',
-                        }
-                    )
-                }
-                else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
-                    setProfileDetailsErrors({
+        if (Role === "Agency") {
+            if (agencyProfileDetails.agencyName === "") {
+                setProfileDetailsErrors(
+                    {
                         ...tempProfileDetails,
-                        socialPlatformDetailsError: 'Invalid link provided.',
-                    })
-                }
-                else{
-                    return true
-                }
-                return false
+                        agencyNameError: 'Agency name is required',
+                    }
+                )
+            }
+            else if (agencyProfileDetails.agencyName.length < 2) {
+                setProfileDetailsErrors(
+                    {
+                        ...tempProfileDetails,
+                        agencyNameError: "Agency name must be between 2 characters.",
+                    }
+                )
+            }
+            else if (agencyProfileDetails.agencyTeamSize === "") {
+                setProfileDetailsErrors(
+                    {
+                        ...tempProfileDetails,
+                        teamStrengthError: 'Team strength is required',
+                    }
+                )
+            }
+            else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
+                setProfileDetailsErrors({
+                    ...tempProfileDetails,
+                    socialPlatformDetailsError: 'Invalid link provided.',
+                })
+            }
+            else {
+                return true
+            }
+            return false
         }
-        else if(Role==="Client"){
-                if (clientProfileDetails.userDesignation === "") {
-                    setProfileDetailsErrors(
-                        {
-                            ...tempProfileDetails,
-                            userDesignationError: 'User Designation Field is required',
-                        }
-                    )
-                }
-                else if (clientProfileDetails.userDesignation.length < 2) {
-                    setProfileDetailsErrors(
-                        {
-                            ...tempProfileDetails,
-                            userDesignationError: "User Designation must be between 2 characters.",
-                        }
-                    )
-                }
-                else if (clientProfileDetails.companyName === "") {
-                    setProfileDetailsErrors(
-                        {
-                            ...tempProfileDetails,
-                            companyNameError: 'Company Name Field is required',
-                        }
-                    )
-                }
-                else if (clientProfileDetails.companyName.length < 2) {
-                    setProfileDetailsErrors(
-                        {
-                            ...tempProfileDetails,
-                            agencyNameError: "Company Name must be between 2 characters.",
-                        }
-                    )
-                }
-                else if (!helper.validateLink(clientProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
-                    setProfileDetailsErrors({
+        else if (Role === "Client") {
+            if (clientProfileDetails.userDesignation === "") {
+                setProfileDetailsErrors(
+                    {
                         ...tempProfileDetails,
-                        socialPlatformDetailsError: 'Invalid link provided.',
-                    })
-                }
-                else{
-                    return true
-                }
-                return false
+                        userDesignationError: 'User Designation Field is required',
+                    }
+                )
+            }
+            else if (clientProfileDetails.userDesignation.length < 2) {
+                setProfileDetailsErrors(
+                    {
+                        ...tempProfileDetails,
+                        userDesignationError: "User Designation must be between 2 characters.",
+                    }
+                )
+            }
+            else if (clientProfileDetails.companyName === "") {
+                setProfileDetailsErrors(
+                    {
+                        ...tempProfileDetails,
+                        companyNameError: 'Company Name Field is required',
+                    }
+                )
+            }
+            else if (clientProfileDetails.companyName.length < 2) {
+                setProfileDetailsErrors(
+                    {
+                        ...tempProfileDetails,
+                        agencyNameError: "Company Name must be between 2 characters.",
+                    }
+                )
+            }
+            else if (!helper.validateLink(clientProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
+                setProfileDetailsErrors({
+                    ...tempProfileDetails,
+                    socialPlatformDetailsError: 'Invalid link provided.',
+                })
+            }
+            else {
+                return true
+            }
+            return false
         }
     }
 
-        //API call methods
+    //API call methods
     const signUpApi = async (role, form) => {
 
         return new Promise((resolve, reject) => {
@@ -298,7 +301,7 @@ const Register = () => {
 
     const handleSubmit = (Role, Form, createForm) => {
 
-        if(handleErrorsValidation(Role)){
+        if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
             let signUpPromise = signUpApi(apiRole, Form)
             Promise.all([signUpPromise])
@@ -331,7 +334,7 @@ const Register = () => {
     const [step, setStep] = useState(1)
 
 
-        //Helper Methods
+    //Helper Methods
 
     const createRoleString = (role) => {
 
@@ -515,15 +518,15 @@ const Register = () => {
 
     //============= USE-EFFECT HOOKS============//
     useEffect(() => {
-        if(role==="Agency")
+        if (role === "Agency")
             setAgencyProfileDetails({
                 ...agencyProfileDetails,
                 socialPlatformDetails: [site]
             })
-        else if(role==="Client")
+        else if (role === "Client")
             setClientProfileDetails({
                 ...clientProfileDetails,
-                socialPlatformDetails:[site]
+                socialPlatformDetails: [site]
             })
     }, [linkedIn, site])
 
@@ -538,19 +541,26 @@ const Register = () => {
         <div className='client__registrationContainer'>
             <div className="image__container">
                 {/* <img src = {bgimage} alt="" className = 'background__image'/> */}
-                <img src={logotext} alt="" />
+                <img className="hamaraLogo" src={logotext} alt="" />
+                {/* <img className="bgImage" src={bgImage} alt="" /> */}
+                {/* <div className="abigcircle"></div> */}
+                <img className="businessModals" src={business} alt="" />
+
             </div>
 
-            <div style={{ flex: .37 }}>
+            <div style={{ flex: .35 }}>
+
             </div>
 
-            <div style={{ flex: .63 }}>
+            <div style={{ flex: .65 }}>
                 <div className='form__area'>
-
+                    {/* <div className="logoPart">
+                        <img src={logotext} alt="" />
+                    </div> */}
                     <div className="client__form">
                         <div style={{ width: '100%', textAlign: 'center', marginTop: '5%' }}>
-                            <div className="form__title"><h6>Register as {roleString}</h6></div>
-                            <div className="title__subtext"><p>For the purpose of industry regulation, your details <br /> are required</p></div>
+                            <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
+                            <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
                         </div>
 
                         <div className="client__formsContainer">
@@ -619,7 +629,7 @@ const Register = () => {
 
                                 <Button
                                     onClick={() => toggleForms('next')}
-                                    style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', marginBottom: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px' }}
+                                    style={{ background: '#02044a', marginTop: '5vh', marginBottom: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '60%', borderRadius: '8px' }}
                                 >
                                     NEXT
                                     </Button>
@@ -643,7 +653,7 @@ const Register = () => {
                                             name="agencyName"
                                             placeholder='Agency Name'
                                             value={agencyProfileDetails.agencyName}
-                                            onChange={(event) => handleCreateProfile(event,role)} />
+                                            onChange={(event) => handleCreateProfile(event, role)} />
 
                                         {profileDetailsErrors.agencyNameError !== "" && <Alert severity="error">{profileDetailsErrors.agencyNameError}</Alert>}
 
@@ -652,7 +662,7 @@ const Register = () => {
                                             name="agencyTeamSize"
                                             placeholder='Team Strength'
 
-                                            onChange={(event) => handleCreateProfile(event,role)} />
+                                            onChange={(event) => handleCreateProfile(event, role)} />
 
                                         {profileDetailsErrors.teamStrengthError !== "" && <Alert severity="error">{profileDetailsErrors.teamStrengthError}</Alert>}
 
@@ -671,7 +681,7 @@ const Register = () => {
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
-                                                onChange={(event) => handleCreateProfile(event,role)} />
+                                                onChange={(event) => handleCreateProfile(event, role)} />
 
                                         </form>
                                         {profileDetailsErrors.incorporationDateError !== "" && <Alert severity="error">{profileDetailsErrors.incorporationDateError}</Alert>}
@@ -679,10 +689,10 @@ const Register = () => {
                                         :
                                         <>
 
-                                            <input type="text" name="userDesignation" placeholder='User Designation' onChange={(event) => handleCreateProfile(event,role)} />
-                                            {profileDetailsErrors.userDesignationError!==""  && <Alert severity="error">{profileDetailsErrors.userDesignationError}</Alert>}
-                                            <input type="text" name="companyName" placeholder='Company Name' onChange={(event) => handleCreateProfile(event,role)} />
-                                            {profileDetailsErrors.companyNameError!==""  && <Alert severity="error">{profileDetailsErrors.companyNameError}</Alert>}
+                                            <input type="text" name="userDesignation" placeholder='User Designation' onChange={(event) => handleCreateProfile(event, role)} />
+                                            {profileDetailsErrors.userDesignationError !== "" && <Alert severity="error">{profileDetailsErrors.userDesignationError}</Alert>}
+                                            <input type="text" name="companyName" placeholder='Company Name' onChange={(event) => handleCreateProfile(event, role)} />
+                                            {profileDetailsErrors.companyNameError !== "" && <Alert severity="error">{profileDetailsErrors.companyNameError}</Alert>}
 
                                         </>
 
@@ -693,7 +703,7 @@ const Register = () => {
 
                                 <Button
                                     onClick={() => handleSubmit(role, signupForm, agencyProfileDetails)}
-                                    style={{ background: colors.PRIMARY_COLOR, marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
+                                    style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                                 >
                                     SUBMIT
                                     </Button>
@@ -710,6 +720,6 @@ const Register = () => {
             </div>
         </div>
     )
-    }
+}
 
 export default (Register)

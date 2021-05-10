@@ -10,6 +10,8 @@ import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import "../Login/login.css"
 
+import google from '../../assets/images/Logo/google.png'
+import loginImage from '../../assets/images/Logo/loginImage.png'
 
 import { useParams } from 'react-router'
 import id from 'date-fns/esm/locale/id/index.js'
@@ -55,17 +57,17 @@ const Login = () => {
 
             instance.post(`/api/${apiRole}/auths/login`, form)
                 .then(function (response) {
-                    console.log(response,"response")
+                    console.log(response, "response")
                     localStorage.removeItem('Authorization')
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                     localStorage.setItem('userId', `${response._id}`)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
-                    
-                    if(role==="Agency")
+
+                    if (role === "Agency")
                         window.location.replace("/dashboard")
-                        
-                    else if(role==="Client")
+
+                    else if (role === "Client")
                         window.location.replace("/client-dashboard")
 
                 })
@@ -89,54 +91,93 @@ const Login = () => {
   `;
     return (
         <>
-            {/* Navbar  */}
-            <Navbar headingInfo="Login" />
 
-            <div className="mainClientsOptions">
+
+            {/* <div className="mainClientsOptions">
                 <div className="innerClientsOptions">
                     <div className="client__form">
                         <div style={{ width: '100%', textAlign: 'center', marginTop: '10%' }}>
-                            <div className="form__title"><h6>Login as {roleString}</h6></div>
+                            <div className="form__title"><h6>Login as <span> {roleString} </span></h6></div>
                             <div className="title__subtext"><p>For the purpose of industry regulation, your details <br /> are required</p></div>
                         </div>
 
-                            <h4>Welcome Back!</h4>
-                            <div className='form-group row'>
-                                <input 
-                                    className='input' 
-                                    type='text' 
-                                    placeholder='Email' 
-                                    name= "user"
-                                    value={form.user} 
-                                    onChange={(e) => { handleChange(e) }} 
-                                />
-                            </div>
+                        <h4>Welcome Back!</h4>
+                        <div className='form-group row'>
+                            <input
+                                className='input'
+                                type='text'
+                                placeholder='Email'
+                                name="user"
+                                value={form.user}
+                                onChange={(e) => { handleChange(e) }}
+                            />
+                        </div>
 
-                            <div className='form-group row'>
-                                <input 
-                                    className='input' 
-                                    type='password' 
-                                    placeholder='Password' 
-                                    name="password"
-                                    value={form.password} 
-                                    onChange={(e) => { handleChange(e) }} 
-                                />
-                            </div>
+                        <div className='form-group row'>
+                            <input
+                                className='input'
+                                type='password'
+                                placeholder='Password'
+                                name="password"
+                                value={form.password}
+                                onChange={(e) => { handleChange(e) }}
+                            />
+                        </div>
 
-                            <div className='form-group row'>
-                                <LoginButton onClick={()=>logIn(role,form)}>Log In</LoginButton>
-                            </div>
+                        <div className='form-group row'>
+                            <LoginButton onClick={() => logIn(role, form)}>Log In</LoginButton>
+                        </div>
 
                     </div>
 
 
+                </div>
+            </div> */}
+
+            <div className="mainLoginPage">
+                <div className="innerLoginPage">
+                    <div className="loginIllustrator">
+                        <img src={loginImage} alt="" />
+                    </div>
+                    <div className="loginContent">
+                        <div className="mainLoginForm">
+                            <div className="loginHeading">
+                                <h6>Login as <span> {roleString} </span></h6>
+                            </div>
+                            <div className="signUpOption">
+                                <p>Don't have an account? <span>Sign Up</span></p>
+                            </div>
+                            <div className="loginForm">
+                                <div className="emailLogin">
+                                    <p>Email</p>
+                                    <input name="user"
+                                        value={form.user}
+                                        onChange={(e) => { handleChange(e) }} type="text" placeholder="Type your email here.." />
+                                </div>
+                                <div className="passwordLogin">
+                                    <p>Password</p>
+                                    <input name="password"
+                                        value={form.password}
+                                        onChange={(e) => { handleChange(e) }} type="password" placeholder="Type your password here.." />
+                                </div>
+
+                                <button onClick={() => logIn(role, form)} type="submit">Login</button>
+                                <span>I forgot my password</span>
+                            </div>
+                        </div>
+
+                        <div className="googleLogin">
+                            <img src={google} alt="" />
+                            <p>Sign in with Google</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </>
     )
 
-    
+
 }
 
 export default Login
