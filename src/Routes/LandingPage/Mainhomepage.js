@@ -60,7 +60,7 @@ const Mainhomepage = () => {
 
     return (
         <div className='wrapper'>
-            <div className='waves__wrapper'>
+            {/* <div className='waves__wrapper'>
                 <img src={waves} alt="" className='wave' />
             </div>
 
@@ -74,29 +74,29 @@ const Mainhomepage = () => {
 
             <nav className='logo_container'>
                 <img src={logo} alt="" className='logo__image' />
-            </nav>
+            </nav> */}
 
             <div className="main__wrapper">
 
-                <div className="details">
+                {/* <div className="details">
                     <div className="details__wrapper">
 
                         <div className="title"><h3>Trust us with your <br />Project</h3></div>
                         <div className="subtext"><p>Lorem ipsum dolor sit amet consectetur adipisicing. <br /> Lorem, ipsum dolor.</p></div>
 
                         <div className="button__area">
-                            <Button style={{ background: colors.PRIMARY_COLOR, color: colors.WHITE, fontSize: '1.2rem' }} onClick = {()=>window.location.href="/client-dashboard"}>Get started</Button>
+                            <Button style={{ background: colors.PRIMARY_COLOR, color: colors.WHITE, fontSize: '1.2rem' }} onClick={() => window.location.href = "/client-dashboard"}>Get started</Button>
                         </div>
 
                     </div>
-                </div>
+                </div> */}
 
                 <div className="card__area">
                     <div className="card__innerWrapper">
 
                         <div className="login__card">
                             <div className="img__area">
-                                <img src={clientlogin} height = "130" width="200" alt="" />
+                                <img src={clientlogin} height="130" width="200" alt="" />
                             </div>
                             <h3>Login</h3>
                             <Link to="/login:client">
@@ -109,7 +109,7 @@ const Mainhomepage = () => {
 
                         <div className="login__card">
                             <div className="img__area">
-                                <img src={agencylogin} height = "130px" width="200px" alt="" />
+                                <img src={agencylogin} height="130px" width="200px" alt="" />
                             </div>
                             <h3>SignUp</h3>
                             <Link to="/register:client">

@@ -1,32 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ProjectsMatched.css'
 
 import dot1 from '../../../assets/images/Quotation/dot1.png'
 import shape from '../../../assets/images/Quotation/shape.png'
 
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
+const arr = [
+    {
+        title: 'Industry',
+        content: 'Food'
+    },
+    {
+        title: 'Fixed budget',
+        content: '$5, 000 - $10, 000'
+    },
+    {
+        title: 'Expert Categories',
+        content: 'Self-Checkout, Meal Subscriptions, Online Food Ordering, Food Delivery Tracking, Coupons & Loyalty, Menu & Reviews'
+    },
+    {
+        title: 'Services',
+        content: 'Web Development, UI/ UX Design, CMS Development, Database Development, Testing & QA, Cloud - Server Management'
+    },
+
+]
+
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
 function ProjectesMatched() {
 
-    const arr = [
-        {
-            title: 'Industry',
-            content: 'Food'
-        },
-        {
-            title: 'Fixed budget',
-            content: '$5, 000 - $10, 000'
-        },
-        {
-            title: 'Expert Categories',
-            content: 'Self-Checkout, Meal Subscriptions, Online Food Ordering, Food Delivery Tracking, Coupons & Loyalty, Menu & Reviews'
-        },
-        {
-            title: 'Services',
-            content: 'Web Development, UI/ UX Design, CMS Development, Database Development, Testing & QA, Cloud - Server Management'
-        },
+    const [open, setOpen] = useState(false);
 
-    ]
-
-    const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
 
     return (
         <>
@@ -48,7 +56,7 @@ function ProjectesMatched() {
                                         </div>
                                         <div className="projectHeadingButton">
                                             <div className="showInterestBtn">
-                                                <button>Show Interest</button>
+                                                <button onClick={onOpenModal}>Show Interest</button>
                                             </div>
                                         </div>
                                     </div>
@@ -83,6 +91,22 @@ function ProjectesMatched() {
                     })
                 }
             </div>
+
+
+
+            <Modal open={open} onClose={onCloseModal} center classNames={{
+                overlay: 'ShortListModalOverlay',
+                modal: 'ShortListModal',
+            }}>
+                <div className="shortlistModal">
+                    <h2>ShortList</h2>
+                    <div className="shortlistForm">
+                        <span>Comment Box</span>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Type from here..."></textarea>
+                        <button>Submit</button>
+                    </div>
+                </div>
+            </Modal>
         </>
     )
 }
