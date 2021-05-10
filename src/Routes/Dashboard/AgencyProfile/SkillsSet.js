@@ -8,9 +8,11 @@ import instance from "../../../Constants/axiosConstants"
 function SkillsSet(props) {
 
     const Role = "agency"
-    const [selectedDomainId, setSelectedDomainId] = useState("")
+    const [selectedId, setSelectedId] = useState("")
     const [open, setOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false)
+    const [selectedServicesId, setSelectedServicesId] = useState([])
+    const [visibleTechData, setVisibleTechData] = useState([])
     const [skillset, setSkillset] = useState({
         Industry: [],
         Services: [],
@@ -29,7 +31,8 @@ function SkillsSet(props) {
             title: 'Industry',
             content: props.data.agencyDomains.map((domain) => {
                 return {
-                    points: domain.domainId.domainName
+                    points: domain.domainId.domainName,
+                    id: domain.domainId._id
                 }
             })
         },
@@ -50,8 +53,10 @@ function SkillsSet(props) {
         {
             title: 'Services',
             content: props.data.agencyServices.map((service) => {
+
                 return {
-                    points: service.serviceName
+                    points: service.serviceName,
+                    id: service._id
                 }
             })
         },
@@ -59,7 +64,8 @@ function SkillsSet(props) {
             title: 'Technology',
             content: props.data.agencyTechnologies.map((technology) => {
                 return {
-                    points: technology.technologyName
+                    points: technology.technologyName,
+                    id: technology._id
                 }
             })
         },
@@ -104,13 +110,49 @@ function SkillsSet(props) {
         if (index > -1 && addItem !== "") {
 
             if (temp[index].title === "Industry") {
-                if (temp[index].content.findIndex((item) => item.points === addItem) === -1) {
+                if (temp[index].content.findIndex((item) => item.id === selectedId) === -1) {
                     temp[index] = {
                         ...temp[index],
                         content: [
                             temp[index].content[0],
                             {
-                                points: addItem
+                                points: addItem,
+                                id: selectedId
+                            }
+                        ]
+                    }
+                }
+
+            }
+
+            else if (temp[index].title === "Services") {
+                if (temp[index].content.findIndex((item) => item.id === selectedId) === -1) {
+
+                    setSelectedServicesId([...selectedServicesId, selectedId])
+                    temp[index] = {
+                        ...temp[index],
+                        content: [
+                            ...temp[index].content,
+                            {
+                                points: addItem,
+                                id: selectedId
+                            }
+                        ]
+                    }
+                }
+
+            }
+
+            else if (temp[index].title === "Technology") {
+                if (temp[index].content.findIndex((item) => item.id === selectedId) === -1) {
+
+                    temp[index] = {
+                        ...temp[index],
+                        content: [
+                            ...temp[index].content,
+                            {
+                                points: addItem,
+                                id: selectedId
                             }
                         ]
                     }
@@ -123,7 +165,8 @@ function SkillsSet(props) {
                     content: [
                         ...temp[index].content,
                         {
-                            points: addItem
+                            points: addItem,
+                            id:selectedId
                         }
                     ]
                 }
@@ -136,9 +179,11 @@ function SkillsSet(props) {
     }
 
     const handleSelect = (event) => {
-        const [id, name] = event.target.value.split(" ")
-        setSelectedDomainId(id)
-        setAddItem(name)
+
+        const { value } = event.target
+        const splits = value.split(" ")
+        setSelectedId(splits[0])
+        setAddItem(value.replace(splits[0], "").slice(1))
     }
 
     //Api Calls methods
@@ -190,36 +235,54 @@ function SkillsSet(props) {
                     Services: servicesNames
                 })
             })
+            console.log(selectedServicesId)
     }
 
     const updateAgency = () => {
         const id = localStorage.getItem("userId")
         instance.patch(`/api/${Role}/agencies/update/${id}`,
             {
-                agencyDomains: [{
-                    domainId: selectedDomainId,
-                    domainBaseAmount: 100,
-                    isAmountNegotiable: true
-                }]
-            })
+                agencyDomains: arr[0].content.map((domain) => {
+
+                    return {
+                        domainId: domain.id,
+                        domainBaseAmount: 100,
+                        isAmountNegotiable: true
+                    }
+                }),
+                agencyServices: arr[2].content.map((service) => {
+                    return service.id
+                }),
+
+                agencyTechnologies: arr[3].content.map((tech) => {
+                    return tech.id
+                })
+
+            }
+        )
     }
 
     useEffect(() => {
         getAllIndustries()
+        const serviceIds = []
+        props.data.agencyServices.forEach((service) => {
+            serviceIds.push(service._id)
+        })
+        setSelectedServicesId(serviceIds)
     }, [])
 
     useEffect(() => {
-        console.log(arr)
-    }, [arr])
+        setVisibleTechData(skillset.Technology.filter((tech) => selectedServicesId.indexOf(tech.serviceId) !== -1))
+    }, [selectedServicesId])
+
 
     useEffect(() => {
         if (skillset.Industry.length > 0 && skillset.Services.length === 0)
             getAllServices()
         else if (skillset.Services.length > 0 && skillset.Technology.length === 0)
             getAllTechs()
-        // else
-        //     // console.log(skillset)
 
+        setVisibleTechData(skillset.Technology.filter((tech) => selectedServicesId.indexOf(tech.serviceId) !== -1))
     }, [skillset])
     return (
         <>
@@ -268,19 +331,6 @@ function SkillsSet(props) {
                 modal: 'editModal',
             }} >
                 <h2 className="modalHeading">{`Add ${modalValue?.title}`}</h2>
-                {/* <div className="skillsSetsContent">
-                    <div className="skillsSetBorder" />
-                    
-                    <div className="skillsSetTable">
-                        <div className="skillsSetTableHeading">
-                            <p>{`${modalValue?.title}`}</p>
-                        </div>
-                        <div className="skillsSetTableContent">
-                            <input type="text" value={addItem} name="addItem" onChange={(e) => { setAddItem(e.target.value) }} />
-                            <button onClick={() => handleAddItem(modalValue)}>Add</button>
-                        </div>
-                    </div>
-                </div> */}
                 <div className="modalEditContainer">
                     <div className="modalQuestion">
                         <p>{`${modalValue?.title}`}</p>
@@ -306,20 +356,33 @@ function SkillsSet(props) {
                                     <p>Sorry. No more Idustries can be added.</p>)
 
                             :
-                            (modalValue?.title === "Services") &&
-                            <select onChange={(event) => handleSelect(event)}>
-                                <option>None</option>
-                                {
+                            (modalValue?.title === "Services")
+                                ?
+                                <select onChange={(event) => handleSelect(event)}>
+                                    <option>None</option>
+                                    {
 
-                                    skillset?.Services
-                                    &&
-                                    skillset?.Services.map((service) => {
-                                        return <option label={service.serviceName} value={`${service._id} ${service.serviceName}`} />
-                                    })
+                                        skillset?.Services
+                                        &&
+                                        skillset?.Services.map((service) => {
+                                            return <option label={service.serviceName} value={`${service._id} ${service.serviceName}`} />
+                                        })
 
-                                }
-                            </select>
+                                    }
+                                </select>
+                                :
+                                <select onChange={(event) => handleSelect(event)}>
+                                    <option>None</option>
+                                    {
 
+                                        visibleTechData
+                                        &&
+                                        visibleTechData.map((technology) => {
+                                            return <option label={technology.technologyName} value={`${technology._id} ${technology.technologyName}`} />
+                                        })
+
+                                    }
+                                </select>
                         }
 
                         {/* <input value={addItem} name="addItem" onChange={(e) => { setAddItem(e.target.value) }} type="text" /> */}

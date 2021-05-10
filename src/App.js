@@ -69,6 +69,8 @@ const App = () => (
     <Route exact path="/product-details" component={ProductDetails} />
     <Route exact path="/product-agencies" component={ProductAgencies} />
 
+    <Route component = {Mainhomepage}/>
+
 
 
   </Switch>
