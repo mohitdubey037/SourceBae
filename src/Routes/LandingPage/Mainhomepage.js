@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./mainhomepage.css";
 import waves from '../../assets/images/LandingPage/Vector.svg'
@@ -15,6 +15,11 @@ import styled from 'styled-components';
 
 
 const Mainhomepage = () => {
+
+
+    useEffect(() => {
+        localStorage.setItem("toggle", false)
+    }, [])
 
     //Styled Components
     const AgencyButton = styled.button`
@@ -59,71 +64,61 @@ const Mainhomepage = () => {
     `;
 
     return (
-        <div className='wrapper'>
-            {/* <div className='waves__wrapper'>
-                <img src={waves} alt="" className='wave' />
-            </div>
+        // <div className='wrapper'>
 
-            <div className="dots__leftWrapper">
-                <img src={dotsleft} alt="" style={{ zIndex: 2, width: '85%' }} />
-            </div>
+        //     <div className="main__wrapper">
 
-            <div className="dots__rightWrapper">
-                <img src={dotsright} alt="" style={{ zIndex: 2, width: '105%' }} />
-            </div>
+        //         <div className="card__area">
+        //             <div className="card__innerWrapper">
 
-            <nav className='logo_container'>
-                <img src={logo} alt="" className='logo__image' />
-            </nav> */}
+        //                 <div className="login__card">
+        //                     <div className="img__area">
+        //                         <img src={clientlogin} height="130" width="200" alt="" />
+        //                     </div>
+        //                     <h3>Login</h3>
+        //                     <Link to="/login:client">
+        //                         <ClientButton>Client</ClientButton>
+        //                     </Link>
+        //                     <Link to="/login:agency">
+        //                         <AgencyButton>Agency</AgencyButton>
+        //                     </Link>
+        //                 </div>
 
-            <div className="main__wrapper">
+        //                 <div className="login__card">
+        //                     <div className="img__area">
+        //                         <img src={agencylogin} height="130px" width="200px" alt="" />
+        //                     </div>
+        //                     <h3>SignUp</h3>
+        //                     <Link to="/register:client">
+        //                         <ClientButton>Client</ClientButton>
+        //                     </Link>
+        //                     <Link to="/register:agency">
+        //                         <AgencyButton>Agency</AgencyButton>
+        //                     </Link>
+        //                 </div>
 
-                {/* <div className="details">
-                    <div className="details__wrapper">
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
 
-                        <div className="title"><h3>Trust us with your <br />Project</h3></div>
-                        <div className="subtext"><p>Lorem ipsum dolor sit amet consectetur adipisicing. <br /> Lorem, ipsum dolor.</p></div>
 
-                        <div className="button__area">
-                            <Button style={{ background: colors.PRIMARY_COLOR, color: colors.WHITE, fontSize: '1.2rem' }} onClick={() => window.location.href = "/client-dashboard"}>Get started</Button>
-                        </div>
-
+        <>
+            <div className="mainHomePage">
+                <div className="innerHomePage">
+                    <div className="HomePageCard" onClick={() => window.location.href = "/login:client"} >
+                        <span className="leftHomePageBorder"></span>
+                        <p>Login</p>
                     </div>
-                </div> */}
-
-                <div className="card__area">
-                    <div className="card__innerWrapper">
-
-                        <div className="login__card">
-                            <div className="img__area">
-                                <img src={clientlogin} height="130" width="200" alt="" />
-                            </div>
-                            <h3>Login</h3>
-                            <Link to="/login:client">
-                                <ClientButton>Client</ClientButton>
-                            </Link>
-                            <Link to="/login:agency">
-                                <AgencyButton>Agency</AgencyButton>
-                            </Link>
-                        </div>
-
-                        <div className="login__card">
-                            <div className="img__area">
-                                <img src={agencylogin} height="130px" width="200px" alt="" />
-                            </div>
-                            <h3>SignUp</h3>
-                            <Link to="/register:client">
-                                <ClientButton>Client</ClientButton>
-                            </Link>
-                            <Link to="/register:agency">
-                                <AgencyButton>Agency</AgencyButton>
-                            </Link>
-                        </div>
-
+                    <div className="HomePageCard" onClick={() => window.location.href = "/register:client"} >
+                        <span className="leftHomePageBorder"></span>
+                        <p>Sign Up</p>
                     </div>
+
                 </div>
             </div>
-        </div>
+
+        </>
     );
 };
 

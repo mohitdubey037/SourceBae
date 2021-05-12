@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Dashboard/dashboard.css'
 
 import styled from "styled-components"
@@ -16,9 +16,74 @@ import loginImage from '../../assets/images/Logo/loginImage.png'
 import { useParams } from 'react-router'
 import id from 'date-fns/esm/locale/id/index.js'
 
+
+import { withStyles } from '@material-ui/core/styles';
+import { purple } from '@material-ui/core/colors';
+import FormGroup from '@material-ui/core/FormGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { Link, useHistory } from 'react-router-dom'
+
+
+
+const AntSwitch = withStyles((theme) => ({
+    root: {
+        width: 78,
+        height: 26,
+        padding: 0,
+        // display: 'flex',
+        borderColor: '#fff',
+    },
+    switchBase: {
+        padding: 2,
+        color: '#02044a',
+        '&$checked': {
+            transform: 'translateX(52px)',
+            color: '#7CB9E8',
+            '& + $track': {
+                opacity: 1,
+                backgroundColor: '#02044a',
+                borderColor: '#EBF5FB',
+            },
+            boder: '1px solid #EBF5FB'
+        },
+    },
+    thumb: {
+        width: 22,
+        height: 22,
+        boxShadow: 'none',
+    },
+    track: {
+        // border: `1px solid #02044a`,
+        borderRadius: 78 / 2,
+        opacity: 1,
+        backgroundColor: '#7CB9E8',
+    },
+    checked: {},
+}))(Switch);
+
 const Login = () => {
+    const routerHistory = useHistory();
+    const [state, setState] = React.useState({
+        checked: JSON.parse(localStorage.getItem("toggle")) || false
+    });
+    const [flag, setFlag] = useState(false);
 
+    React.useEffect(() => {
+        console.log("first", state.checked)
+        localStorage.setItem('toggle', state.checked);
+        console.log("state", state.checked)
 
+        state.checked == false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
+
+    }, [state]);
+
+    const handleChangeToggle = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked })
+        console.log("statechecked", state.checked)
+    };
 
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
@@ -141,6 +206,23 @@ const Login = () => {
                     </div>
                     <div className="loginContent">
                         <div className="mainLoginForm">
+                            <div className="toggleButton">
+                                <FormGroup>
+                                    {/* <FormControlLabel
+                                    control={<IOSSwitch checked={state.checkedB} onChange={handleChangeToggle} name="checkedB" />}
+                                    label="iOS style"
+                                /> */}
+                                    <Typography component="div">
+                                        <Grid component="label" container alignItems="center" spacing={1}>
+                                            <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
+                                            <Grid item>
+                                                <AntSwitch checked={state.checked} onChange={handleChangeToggle} name="checked" />
+                                            </Grid>
+                                            <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }}>Client</Grid>
+                                        </Grid>
+                                    </Typography>
+                                </FormGroup>
+                            </div>
                             <div className="loginHeading">
                                 <h6>Login as <span> {roleString} </span></h6>
                             </div>

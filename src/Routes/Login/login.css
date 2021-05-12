@@ -50,28 +50,44 @@ button {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  position: relative;
 }
-
+.form-check {
+  display: flex;
+}
+.form-check input {
+  margin: 0 25%;
+}
 .innerLoginPage {
   width: 100%;
   display: flex;
   justify-content: space-between;
   min-height: 100vh;
 }
+.toggleButton {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50px);
+}
 .loginIllustrator,
 .loginContent {
   width: 50%;
+  user-select: none;
 }
 .loginIllustrator {
   position: sticky;
   /* display: flex; */
   /* justify-content: flex-start; */
   /* align-items: center; */
+  user-select: none;
 }
 .loginIllustrator img {
   /* width: 100%; */
   transform: translateX(-10px);
   height: 100vh;
+  user-select: none;
 }
 .loginContent {
   padding: 2rem;
@@ -79,6 +95,7 @@ button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 3%;
 }
 .mainLoginForm,
 .googleLogin {
@@ -197,4 +214,10 @@ button {
   position: absolute;
   width: 5%;
   left: 5%;
+}
+
+@media (max-width: 768px) {
+  .loginIllustrator {
+    display: none;
+  }
 }
