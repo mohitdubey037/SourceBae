@@ -47,13 +47,18 @@ const dateStyles = makeStyles((theme) => ({
   },
 }));
 
-const Register = () => {
+const Register = (props) => {
   //=========  GLOBAL & STATE VARIABLES DECLARATION =========//
+
+  if (props.history.location.pathname !== '/register:client' && props.history.location.pathname !== '/register:agency') {
+    props.history.push('/pageNotFound');
+  }
 
   //Regular Variables
   const dateClasses = dateStyles();
 
   let { role } = useParams();
+  console.log(role);
   role = helper.capitalize(helper.cleanParam(role));
 
   //Social Media State Variables
@@ -91,7 +96,7 @@ const Register = () => {
     userDesignation: "",
     companyName: "",
     socialPlatformDetails: [],
-  }); 
+  });
 
   //SignUp Error state varaible//
   const [signupFormErrors, setSignupFormErrors] = useState({
@@ -188,18 +193,17 @@ const Register = () => {
         !helper.validateLink(
           agencyProfileDetails?.socialPlatformDetails[0]?.platformLink
         )
-      ) 
-      {
+      ) {
         setProfileDetailsErrors({
           ...tempProfileDetails,
           socialPlatformDetailsError: "Invalid link provided.",
         });
-      } 
+      }
       else {
         return true;
       }
       return false;
-    } 
+    }
 
 
     else if (Role === "Client") {
@@ -246,7 +250,7 @@ const Register = () => {
       instance
         .post(`/api/${role}/auths/signup`, form)
         .then(function (response) {
-            console.log(response);
+          console.log(response);
           localStorage.removeItem("Authorization");
           localStorage.setItem(
             "Authorization",
@@ -270,9 +274,9 @@ const Register = () => {
   };
 
   const handleSubmit = (Role, Form, createForm) => {
-      console.log(Role);
-      console.log(Form)
-      console.log(createForm);
+    console.log(Role);
+    console.log(Form)
+    console.log(createForm);
     if (handleErrorsValidation(Role)) {
       const apiRole = helper.lowerize(Role);
       console.log(apiRole);
@@ -280,8 +284,8 @@ const Register = () => {
       Promise.all([signUpPromise]).then(() => {
         let api_param_const = ``;
         let api_create_form = createForm;
-        if (apiRole === `client`) 
-            api_param_const = `clients`;
+        if (apiRole === `client`)
+          api_param_const = `clients`;
         else if (apiRole === `agency`) {
           api_param_const = `agencies`;
           api_create_form = {
@@ -292,7 +296,7 @@ const Register = () => {
             instance.defaults.headers.common["Authorization"] = localStorage.getItem("Authorization");
             createProfileApi(apiRole, api_param_const, api_create_form);
           }
-           else {
+          else {
             toast.error("Token not set", { autoClose: 2000 });
           }
         }
@@ -322,7 +326,7 @@ const Register = () => {
           phoneError: "",
           userNameError: "",
         });
-      } else if (signupForm.firstName.length < 2 ||signupForm.firstName.length > 12) {
+      } else if (signupForm.firstName.length < 2 || signupForm.firstName.length > 12) {
         setSignupFormErrors({
           firstNameError: "First name must be between 2-12 characters.",
           lastNameError: "",
@@ -502,10 +506,10 @@ const Register = () => {
                   placeholder="First Name"
                   value={signupForm.firstName}
                   onChange={(e) => setForm(e)}
-                  // style={{
-                  //     border: signupFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
-                  //     transition: '.3s ease'
-                  // }}
+                // style={{
+                //     border: signupFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
+                //     transition: '.3s ease'
+                // }}
                 />
                 {signupFormErrors.firstNameError !== "" ? (
                   <Alert severity="error">

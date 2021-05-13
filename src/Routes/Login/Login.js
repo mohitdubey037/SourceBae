@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Dashboard/dashboard.css'
 
 import styled from "styled-components"
@@ -15,9 +15,15 @@ import { useParams } from 'react-router'
 import id from 'date-fns/esm/locale/id/index.js'
 import { RotateLeft } from '@material-ui/icons'
 
-const Login = () => {
+const Login = (props) => {
 
-
+    if (props.history.location.pathname !== '/login:client' && props.history.location.pathname !== '/login:agency'){
+        props.history.push('/pageNotFound');
+    }
+    console.log(props.history.location.pathname == 'login:client')
+    console.log(props.history.location.pathname == 'login:agency')
+    
+    console.log(props.history.location.pathname);
 
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))

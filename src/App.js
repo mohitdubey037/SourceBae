@@ -33,6 +33,7 @@ import ClientProfile from './Routes/Client/ClientProfile';
 import ProductForm from './Routes/Agency/Product/ProductForm';
 import ProductDetails from './Routes/Agency/Product/ProductDetails';
 import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
+import PageNotFound from './Routes/404Page/PageNotFound';
 
 // import Requirement from './component/Requirement';
 // import Description from './component/Description';
@@ -70,7 +71,11 @@ const App = () => (
     <Route exact path="/product-agencies" component={ProductAgencies} />
 
 
+    <Route exact path='pageNotFound' component={PageNotFound} />
+    <Route exact path='*' component={PageNotFound} />
 
+
+    {/* <Route exact path='/ab' component={PageNotFound}/> */}
   </Switch>
 )
 
