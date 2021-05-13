@@ -13,6 +13,7 @@ import "../Login/login.css"
 
 import { useParams } from 'react-router'
 import id from 'date-fns/esm/locale/id/index.js'
+import { RotateLeft } from '@material-ui/icons'
 
 const Login = () => {
 
@@ -20,6 +21,7 @@ const Login = () => {
 
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
+    console.log(role);
 
     //#######################//
 
@@ -33,6 +35,7 @@ const Login = () => {
     const createRoleString = (role) => {
 
         role = role.charAt(0).toUpperCase() + role.slice(1)
+        console.log(role)
         if (role === 'Agency')
             return `an ${role}`
         else
@@ -107,7 +110,7 @@ const Login = () => {
                                     type='text' 
                                     placeholder='Email' 
                                     name= "user"
-                                    value={form.user} 
+                                    value={form.user}
                                     onChange={(e) => { handleChange(e) }} 
                                 />
                             </div>

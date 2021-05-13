@@ -85,7 +85,7 @@ function Navbar(props) {
                         </div>
                     </div> */}
                     <div className="newFeatureAdded">
-                        <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
+                        <span>New <i className="fa fa-level-down" aria-hidden="true"></i></span>
                         <button onClick={onOpenModal}>Add Your Product</button>
                     </div>
                     <div className="clientInfo">
@@ -140,7 +140,7 @@ function Navbar(props) {
                 }} center>
                 <h2 className="addyourproductext">Add your Product</h2>
                 <div className="newFeatureDiv">
-                    <p>What's <span>NEW</span> in this..?<i class="fa fa-level-down" aria-hidden="true"></i></p>
+                    <p>What's <span>NEW</span> in this..?<i className="fa fa-level-down" aria-hidden="true"></i></p>
 
                     <p className="productText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, necessitatibus! Provident, nemo. Aperiam fugiat quo earum dignissimos. Aliquid, nostrum dolorem!</p>
 

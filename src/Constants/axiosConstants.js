@@ -15,6 +15,16 @@ const instance = axios.create({
     // }),
 })
 
+instance.interceptors.request.use(request => {
+    // console.log("hi");
+    // console.log(request);
+// Edit request config
+    return request;
+}, error => {
+    console.log(error);
+    return Promise.reject(error);
+})
+
 instance.interceptors.response.use(function (response){
     if(response.status===200){
         return response.data.data
