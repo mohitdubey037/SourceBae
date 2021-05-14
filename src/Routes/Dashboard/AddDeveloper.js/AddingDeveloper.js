@@ -144,7 +144,7 @@ function AddingDeveloper() {
         resume && formData.append(
             "files",
             resume,
-            "resume"
+            "resume.pdf"
         );
         instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
