@@ -1,9 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import '../Dashboard/dashboard.css'
 
-import styled from "styled-components"
-import colors from "../../Constants/colors"
-import Navbar from '../Dashboard/Navbar'
 // Axios Import
 import axios from 'axios'
 import instance from "../../Constants/axiosConstants"
@@ -14,25 +12,22 @@ import google from '../../assets/images/Logo/google.png'
 import loginImage from '../../assets/images/Logo/loginImage.png'
 
 import { useParams } from 'react-router'
-import id from 'date-fns/esm/locale/id/index.js'
 
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { purple } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
-import { FormControl, Input, InputLabel, Button, Paper } from "@material-ui/core";
+import { Input } from "@material-ui/core";
 import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 
 
-const textDark = "#0D0D0D";
 const borderLight = "rgba(206,212,218, .993)";
 
 const AntSwitch = withStyles((theme) => ({
@@ -92,25 +87,21 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
     const classes = useStyles()
-    // if (props.history.location.pathname !== '/login:client' && props.history.location.pathname !== '/login:agency') {
-    //     props.history.push('/pageNotFound');
-    // }
-
+    
     const routerHistory = useHistory();
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false
     });
 
-    const [flag, setFlag] = useState(false);
     const [hidePassword, SetPasswordStatus] = useState(true);
     console.log(hidePassword)
 
-    React.useEffect(() => {
+    useEffect(() => {
         console.log("first", state.checked)
         localStorage.setItem('toggle', state.checked);
         console.log("state", state.checked)
 
-        state.checked == false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
+        state.checked === false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
 
     }, [state]);
 
@@ -127,6 +118,8 @@ const Login = (props) => {
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
 
+    if(!(role==="Agency" || role==="Client"))
+        window.location.href="/page-not-found"
     //#######################//
 
     const [form, setForm] = useState({
@@ -178,21 +171,6 @@ const Login = (props) => {
         })
     }
 
-    const LoginButton = styled.button`
-    background: ${colors.PRIMARY_COLOR2};
-    margin: 10px 5px;
-    padding: 5px 5px;
-    border-radius:4px;
-    color: ${colors.WHITE};
-    font-family: 'Poppins';
-    font-size: 1.14rem;
-    &:hover {
-      color: #ffffff;
-      background: #f6b93b;
-      border-color: #f6b93b;
-      transition: all 0.4s ease 0s;
-    }
-  `;
     return (
         <>
 

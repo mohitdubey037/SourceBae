@@ -69,7 +69,7 @@ const App = () => (
     <Route exact path="/product-form" component={ProductForm} />
     <Route exact path="/product-details" component={ProductDetails} />
     <Route exact path="/product-agencies" component={ProductAgencies} />
-
+    <Route exact path="/page-not-found" component = {PageNotFound} />
     <Route component={PageNotFound} />
 
     {/* <Route exact path='pageNotFound' component={PageNotFound} />
