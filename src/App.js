@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
+import PageNotFound from './Routes/PageNotFound/PageNotFound';
 // import Filtration from './Routes/Filtration/Filtration';
 // import Agency from './Routes/Agency/Agency';
 // import Agency from './component/Agency';
@@ -69,9 +70,10 @@ const App = () => (
     <Route exact path="/product-details" component={ProductDetails} />
     <Route exact path="/product-agencies" component={ProductAgencies} />
 
-    <Route component = {Mainhomepage}/>
+    <Route component={PageNotFound} />
 
-
+    {/* <Route exact path='pageNotFound' component={PageNotFound} />
+    <Route exact path='*' component={PageNotFound} /> */}
 
   </Switch>
 )

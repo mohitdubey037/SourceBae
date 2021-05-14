@@ -17,16 +17,23 @@ import { useParams } from 'react-router'
 import id from 'date-fns/esm/locale/id/index.js'
 
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { purple } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom';
+import InputAdornment from "@material-ui/core/InputAdornment";
+import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
+import { FormControl, Input, InputLabel, Button, Paper } from "@material-ui/core";
+import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
+import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 
 
+const textDark = "#0D0D0D";
+const borderLight = "rgba(206,212,218, .993)";
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -64,12 +71,39 @@ const AntSwitch = withStyles((theme) => ({
     checked: {},
 }))(Switch);
 
-const Login = () => {
+const useStyles = makeStyles((theme) => ({
+    inputs: {
+        position: "relative",
+        fontFamily: "Cutive Mono, monospace",
+        // color: textDark,
+        fontSize: "17px",
+        padding: `${theme.spacing(1.5)}px ${theme.spacing(1)}px`,
+        borderRadius: "8px",
+        border: "1.4px solid",
+        boxShadow: "1px 2px 20px rgba(169,198,217,0.29457423) ",
+        borderColor: borderLight,
+    },
+    passwordEye: {
+        color: "rgba(131,153,167,0.9)",
+        opacity: 0.9
+      }
+})
+)
+
+const Login = (props) => {
+    const classes = useStyles()
+    // if (props.history.location.pathname !== '/login:client' && props.history.location.pathname !== '/login:agency') {
+    //     props.history.push('/pageNotFound');
+    // }
+
     const routerHistory = useHistory();
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false
     });
+
     const [flag, setFlag] = useState(false);
+    const [hidePassword, SetPasswordStatus] = useState(true);
+    console.log(hidePassword)
 
     React.useEffect(() => {
         console.log("first", state.checked)
@@ -79,6 +113,11 @@ const Login = () => {
         state.checked == false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
 
     }, [state]);
+
+    const showPassword = (e) => {
+        console.log(e);
+        SetPasswordStatus(prevCheck => !prevCheck);
+    };
 
     const handleChangeToggle = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked })
@@ -230,18 +269,76 @@ const Login = () => {
                                 <p>Don't have an account? <span>Sign Up</span></p>
                             </div>
                             <div className="loginForm">
-                                <div className="emailLogin">
-                                    <p>Email</p>
-                                    <input name="user"
+                                {/* <div className="emailLogin"> */}
+                                <p style={{ marginBottom: '10px' }}>Email</p>
+                                <Input
+                                    className={classes.inputs}
+                                    placeholder='Enter an email'
+                                    variant="outlined"
+                                    type="email"
+                                    // margin="normal"
+                                    disableUnderline={true}
+                                    required
+                                    fullWidth
+                                    name="user"
+                                    autoComplete="userEmail"
+                                    autoFocus
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                    }}
+                                    endAdornment={
+                                        <InputAdornment>
+                                            <AccountCircleRoundedIcon fontSize="md" />
+                                        </InputAdornment>
+                                    }
+                                    
+                                />
+                                {/* <input name="user"
                                         value={form.user}
-                                        onChange={(e) => { handleChange(e) }} type="text" placeholder="Type your email here.." />
-                                </div>
-                                <div className="passwordLogin">
-                                    <p>Password</p>
-                                    <input name="password"
+                                        onChange={(e) => { handleChange(e) }} type="text" placeholder="Type your email here.." /> */}
+                                {/* </div> */}
+                                {/* <div className="passwordLogin"> */}
+                                <p style={{ marginTop: '20px', marginBottom: '10px' }}>Password</p>
+                                <Input
+                                    placeholder='Enter a password'
+                                    className={classes.inputs}
+                                    variant="outlined"
+                                    // margin="normal"
+                                    type={hidePassword ? "password" : "text"}
+                                    required
+                                    fullWidth
+                                    disableUnderline={true}
+                                    name="password"
+                                    autoComplete="password"
+                                    autoFocus
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                    }}
+                                    endAdornment={
+                                        hidePassword ? (
+                                            <InputAdornment position="end">
+                                                <VisibilityOffTwoToneIcon
+                                                    fontSize="default"
+                                                    className={classes.passwordEye}
+                                                    onClick={showPassword} />
+                                            </InputAdornment>
+                                        )
+                                            : (
+                                                <InputAdornment position="end">
+                                                    <VisibilityTwoToneIcon
+                                                        fontSize="default"
+                                                        className={classes.passwordEye}
+                                                        onClick={showPassword}
+                                                    />
+                                                </InputAdornment>
+                                            )
+                                    }
+                                />
+
+                                {/* <input name="password"
                                         value={form.password}
-                                        onChange={(e) => { handleChange(e) }} type="password" placeholder="Type your password here.." />
-                                </div>
+                                        onChange={(e) => { handleChange(e) }} type="password" placeholder="Type your password here.." /> */}
+                                {/* </div> */}
 
                                 <button onClick={() => logIn(role, form)} type="submit">Login</button>
                                 <span>I forgot my password</span>
