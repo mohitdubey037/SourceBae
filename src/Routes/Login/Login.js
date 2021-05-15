@@ -116,7 +116,10 @@ const Login = (props) => {
     };
 
     let { role } = useParams();
+    console.log(role);
+
     role = helper.capitalize(helper.cleanParam(role))
+    console.log(role);
 
     if(!(role==="Agency" || role==="Client"))
         window.location.href="/page-not-found"

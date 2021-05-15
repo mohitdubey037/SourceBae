@@ -261,10 +261,6 @@ function AddingDeveloper() {
                                     </Select>
                                 </FormControl>
 
-
-
-
-
                                 {/* </select> */}
                             </div>
                             <div className="developerDesignation">

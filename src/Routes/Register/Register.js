@@ -67,6 +67,9 @@ const Register = (props) => {
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
 
+    if(!(role==="Agency" || role==="Client"))
+        window.location.href="/page-not-found"
+
     //Social Media State Variables
     const [linkedIn, setLinkedIn] = useState({
         platformId: "",
