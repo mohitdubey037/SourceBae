@@ -114,7 +114,7 @@ function AgencyForm2() {
     const getAllDomains = () => {
         instance.get(`api/${Role}/domains/all`)
             .then(function (response) {
-
+                console.log(response);
                 const domainNames = response.map((domain) => {
                     return {
                         ...domain,

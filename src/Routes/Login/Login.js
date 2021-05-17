@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
     const classes = useStyles()
-    
+    const [test, setTest] = useState()
     const routerHistory = useHistory();
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false
@@ -104,6 +104,10 @@ const Login = (props) => {
         state.checked === false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
 
     }, [state]);
+
+    useEffect(()=>{
+        console.log("hi")
+    },[])
 
     const showPassword = (e) => {
         console.log(e);

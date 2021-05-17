@@ -43,7 +43,8 @@ function AgencyForm3() {
 
     const handleDocumentPicker = (document, category) => {
 
-        
+        console.log(document);
+        console.log(category);
         if (category === registrationCertificate.documentName) {
             setRegistrationCertificate({
                 ...registrationCertificate,
@@ -53,7 +54,7 @@ function AgencyForm3() {
         }
 
         else if (category === brochureDoc.documentName) {
-            
+
             setBrochureDoc({
                 ...brochureDoc,
                 documentPicked: true,
@@ -70,6 +71,9 @@ function AgencyForm3() {
 
     }
 
+    console.log(registrationCertificate);
+
+
     const handleUploadError = (error) => {
         toast.error(error)
     }
@@ -77,7 +81,7 @@ function AgencyForm3() {
     function uploadMedia(category, document) {
 
         const formData = new FormData();
-        
+
         document && formData.append(
             "files",
             document,
@@ -86,7 +90,7 @@ function AgencyForm3() {
         console.log(formData)
         instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
-
+                console.log(response);
                 if (category === registrationCertificate.documentName)
                     setRegistrationCertificate({
                         ...registrationCertificate,
@@ -113,31 +117,31 @@ function AgencyForm3() {
         const { name } = event.target
         if (name === "Upload" && pickedAll) {
             uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
-            uploadMedia(brochureDoc.documentName,brochureDoc.document)
-            uploadMedia(panCardDoc.documentName,panCardDoc.document)
+            uploadMedia(brochureDoc.documentName, brochureDoc.document)
+            uploadMedia(panCardDoc.documentName, panCardDoc.document)
         }
     }
 
-    const handleUpdate =()=>{
+    const handleUpdate = () => {
         console.log("handle update")
-        const apiData ={ 
-            stepsCompleted:"4",
-            agencyDocuments:[registrationCertificate, brochureDoc, panCardDoc]
+        const apiData = {
+            stepsCompleted: "4",
+            agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
         }
-        instance.post(`/api/${Role}/agencies/create`,apiData)
-        .then(function(response){
-            console.log(response)
-            setStatus("Next")
-        })
+        instance.post(`/api/${Role}/agencies/create`, apiData)
+            .then(function (response) {
+                console.log(response)
+                setStatus("Next")
+            })
     }
 
     const handleNavlink = (event) => {
-        if (status!=="Next")
+        if (status !== "Next")
             event.preventDefault()
-        if(status==="Update")
+        if (status === "Update")
             handleUpdate()
-        
-       
+
+
     }
 
     useEffect(() => {
@@ -148,10 +152,10 @@ function AgencyForm3() {
             setStatus("Update")
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
-    useEffect(()=>{
-        console.log(status,"upload")
-        
-    },[status])
+    useEffect(() => {
+        console.log(status, "upload")
+
+    }, [status])
     return (
         <>
             <Navbar />
@@ -166,7 +170,7 @@ function AgencyForm3() {
                             <div className="agencyCertification">
                                 <span>Company Registration Certificate</span>
                                 <img src={agencyLogo} alt="" />
-                                <p>{`${registrationCertificate?.document?.name??""}`}</p>
+                                <p>{`${registrationCertificate?.document?.name ?? ""}`}</p>
                                 <FilePicker
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
@@ -177,7 +181,7 @@ function AgencyForm3() {
                             <div className="agencyBrochure">
                                 <span>Brochure</span>
                                 <img src={brochure} alt="" />
-                                <p>{`${brochureDoc?.document?.name??""}`}</p>
+                                <p>{`${brochureDoc?.document?.name ?? ""}`}</p>
                                 <FilePicker
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
@@ -190,7 +194,7 @@ function AgencyForm3() {
                             <p>2. Enter your Pan Card number</p>
                             <div className="panCardContent">
                                 <img src={panCard} alt="" />
-                                <p>{`${panCardDoc?.document?.name??""}`}</p>
+                                <p>{`${panCardDoc?.document?.name ?? ""}`}</p>
                                 <FilePicker
                                     extensions={['pdf', 'jpg', 'png']}
                                     onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}

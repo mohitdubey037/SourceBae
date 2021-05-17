@@ -10,6 +10,8 @@ import other from '../../../../assets/images/ClientDashboard/shortTerm/other.png
 import fixed from '../../../../assets/images/ClientDashboard/shortTerm/fixed.png'
 import hour from '../../../../assets/images/ClientDashboard/shortTerm/hour.png'
 
+import { FilePicker } from 'react-file-picker'
+
 
 //material-ui
 import Radio from '@material-ui/core/Radio';
@@ -23,7 +25,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
-
+import instance from '../../../../Constants/axiosConstants';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -89,32 +91,50 @@ const BlueRadio = withStyles({
 
 
 function ShortTerm() {
+
+    const Role = 'client';
+
+
     // const [projectType, setProjectType] = useState('');
     // const [projectName, setProjectName] = useState('');
-    const [personName, setPersonName] = React.useState([]);
+    // const [personName, setPersonName] = React.useState([]);
     const [select, setSelect] = useState();
     const [selectPay, setSelectpay] = useState();
     const [value, setValue] = React.useState('$5000-$10000');
-    const [selectedFile, setSelectedFile] = useState();
+    const [services, setServices] = useState([])
 
-    let [state, setState] = useState({ value: '$5000-$10000' })
+    // const [selectedFile, setSelectedFile] = React.useState('');
+    const clientId = localStorage.getItem("userId");
+
+    let [state, setState] = useState({ clientId: clientId })
+
+    const [document, setDocument] = useState({
+        documentLink: "",
+        documentPicked: false,
+        document: ""
+    })
 
     // const [projectDescription, setProjectDescription] = useState('');
 
-    // useEffect(() => {
-    //     const allFormdata = {
-    //         projectType: projectType,
-    //         projectName: projectName,
-    //         personName: personName,
-    //         select: select,
-    //         selectPay: selectPay,
-    //         value: value,
-    //         projectDescription: projectDescription,
-    //     }
-    //     console.log('ye chala', allFormdata);
-    // })
 
-    console.log(state);
+    const getAllServices = () => {
+        instance.get(`api/${Role}/services/all`)
+            .then(function (response) {
+                console.log(response);
+                const serviceNames = response.map((service) => {
+                    return {
+                        ...service,
+                        selected: false
+                    }
+                })
+                setServices(serviceNames);
+            })
+    }
+
+
+    useEffect(() => {
+        getAllServices()
+    }, [])
 
 
     const theme = useTheme();
@@ -129,7 +149,7 @@ function ShortTerm() {
 
     const handleChangeValue = (event) => {
         const { name, value } = event.target
-        setPersonName(event.target.value);
+        // setPersonName(event.target.value);
         setState(prevState => ({ ...prevState, [name]: value }));
     };
 
@@ -138,12 +158,12 @@ function ShortTerm() {
         setState(prevState => ({ ...prevState, [name]: value }));
     };
 
-    const projectTypeHandler = (value) => {
-        // const {name, value } = event.target
-        // setProjectType(value)
-        console.log(value);
-        setState(prevState => ({ ...prevState, 'projectType': value }));
-    }
+    // const projectTypeHandler = (value) => {
+    //     // const {name, value } = event.target
+    //     // setProjectType(value)
+    //     console.log(value);
+    //     setState(prevState => ({ ...prevState, 'projectType': value }));
+    // }
 
     const selectPaying = (id, name) => {
         if (select == id) {
@@ -151,15 +171,72 @@ function ShortTerm() {
         }
         else
             setSelectpay(id)
-        setState(prevState => ({ ...prevState, 'Select Pay': name }));
+        setState(prevState => ({ ...prevState, 'projectPaymentModel': name }));
     }
 
-    const fileHandler = (event) => {
-        console.log(event.target.files[0]);
-        setSelectedFile(event.target.files[0]);
-        setState(prevState => ({ ...prevState, fileName: selectedFile }))
+    const fileHandler = (document) => {
+        setDocument({
+            ...document,
+            documentPicked: true,
+            document
+        })
+
+        // setState(prevState => ({ ...prevState, projectFiles: file }))
     }
-    console.log(selectedFile);
+
+    // console.log(document);
+
+    // useEffect(()=>{
+    //     console.log(state,"uploaded")
+    // },[state])
+
+    const selectPost = (id) => {
+        if (select == id) {
+            setSelect();
+        }
+        else
+            setSelect(id)
+        setState(prevState => ({ ...prevState, projectServicesRequired: id }));
+    }
+
+
+    const postFileUploader = async (document) => {
+        const formData = new FormData();
+        document && formData.append(
+            "files",
+            document
+        );
+        console.log(formData);
+        return new Promise((resolve, reject) => {
+            instance.post(`api/${Role}/media/create`, formData)
+                .then(function (response) {
+                    console.log(response);
+                    setDocument({
+                        ...document,
+                        documentLink: response[0].mediaURL
+                    })
+                    resolve(1)
+                })
+        })
+    }
+
+    const postProjectUploader = () => {
+        instance.post(`/api/${Role}/projects/create-short-term`, state)
+            .then(function (response) {
+                console.log(response, "response");
+            })
+    }
+
+    const handlePostButton = () => {
+        let fileUploaderPromise = postFileUploader(document.document)
+        setState(prevState => ({ ...prevState, projectFiles: document }));
+        Promise.all([fileUploaderPromise]).
+        then(() => {
+            postProjectUploader()
+        })
+    }
+
+
     console.log(state);
 
     // const projectNameHandler = (event) => {
@@ -174,16 +251,6 @@ function ShortTerm() {
     //     setState(prevState => ({...prevState, key:value}))
     // }
 
-    // const selectPost = (id) => {
-    //     if (select == id) {
-    //         setSelect();
-    //     }
-    //     else
-    //         setSelect(id)
-    //         setState(prevState => ({...prevState, key: id}));
-    // }
-
-    console.log(state);
 
     return (
         <>
@@ -202,26 +269,34 @@ function ShortTerm() {
                     </div>
 
                     <div className="shortTermProjectType">
-                        <div onClick={() => { projectTypeHandler('Development&IT') /* ; selectPost(1) */ }} name='Development&IT' style={{ backgroundColor: select == 1 ? '#3498DB' : '#fff', color: select == 1 ? '#fff' : '#000' }} id='mohit' className="shortTermProjectCard">
-                            <span className="leftLineProject"></span>
-                            <img src={development} alt="" />
-                            <h2>Development & IT</h2>
-                        </div>
-                        <div onClick={() => { projectTypeHandler('Design&Creative') /* ; selectPost(1) */ }} style={{ backgroundColor: select == 2 ? '#3498DB' : '#fff', color: select == 2 ? '#fff' : '#000' }} className="shortTermProjectCard">
-                            <span className="leftLineProject"></span>
-                            <img src={design} alt="" />
-                            <h2>Design & Creative</h2>
-                        </div>
-                        <div onClick={() => { projectTypeHandler('Sales&Marketing') /* ; selectPost(1) */ }} style={{ backgroundColor: select == 3 ? '#3498DB' : '#fff', color: select == 3 ? '#fff' : '#000' }} className="shortTermProjectCard">
-                            <span className="leftLineProject"></span>
-                            <img src={sales} alt="" />
-                            <h2>Sales & Marketing</h2>
-                        </div>
-                        <div onClick={() => { projectTypeHandler('Other') /* ; selectPost(1) */ }} style={{ backgroundColor: select == 4 ? '#3498DB' : '#fff', color: select == 4 ? '#fff' : '#000' }} className="shortTermProjectCard">
-                            <span className="leftLineProject"></span>
-                            <img src={other} alt="" />
-                            <h2>Other</h2>
-                        </div>
+                        {services?.length > 0 ? services.map((s) => {
+                            return (
+                                <div onClick={() => selectPost(s._id)} name={`${s.serviceName}`} style={{ backgroundColor: s.select == s._id ? '#3498DB' : '#fff', color: s.select == s._id ? '#fff' : '#000' }} className="shortTermProjectCard">
+                                    <span className="leftLineProject"></span>
+                                    <img className={`${s.serviceIcon}`} src={s.serviceIcon} alt="" />
+                                    <p>{`${s.serviceName}`}</p>
+                                </div>
+                            )
+                            {/* <div onClick={() => selectPost(2)} style={{ backgroundColor: select == 2 ? '#3498DB' : '#fff', color: select == 2 ? '#fff' : '#000' }} className="shortTermProjectCard">
+                                    <span className="leftLineProject"></span>
+                                    <img src={s.icon} alt="" />
+                                    <h2>Design & Creative</h2>
+                                </div>
+                                <div onClick={() => selectPost(3)} style={{ backgroundColor: select == 3 ? '#3498DB' : '#fff', color: select == 3 ? '#fff' : '#000' }} className="shortTermProjectCard">
+                                    <span className="leftLineProject"></span>
+                                    <img src={s.icon} alt="" />
+                                    <h2>Sales & Marketing</h2>
+                                </div>
+                                <div onClick={() => selectPost(4)} style={{ backgroundColor: select == 4 ? '#3498DB' : '#fff', color: select == 4 ? '#fff' : '#000' }} className="shortTermProjectCard">
+                                    <span className="leftLineProject"></span>
+                                    <img src={s.icon} alt="" />
+                                    <h2>Other</h2>
+                                </div> */}
+                            // )
+                        })
+                            :
+                            <p>Sorry No Data Found.</p>
+                        }
                     </div>
 
                     <div className="shortTermProjectName">
@@ -241,11 +316,15 @@ function ShortTerm() {
                         </div>
                     </div>
 
+                    {/* onChange={(event) => fileHandler(event)} */}
+
                     <div className="shortTermFileUpload">
                         <div className="uploadBlock">
-                            <div className="fileUploadButton">
-                                <input type='file' onChange={(event) => fileHandler(event)} />
-                            </div>
+                            <FilePicker
+                                extensions={['pdf', 'jpg', 'png']}
+                                onChange={fileObj => fileHandler(fileObj)}>
+                                <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                            </FilePicker>
                             <div className="uploadInfo">
                                 <p>Upload an image or a document that might be helpful in explaining your project in brief.</p>
                             </div>
@@ -255,10 +334,13 @@ function ShortTerm() {
                     <div className="shortTermOptionSelect">
                         <h6>What work do you need to get done?</h6>
                         <FormControl className={classes.formControl}>
-                            <Select
+                            <div className="shortTermProjectName">
+                                <input type='text' placeholder="Write here..." onChange={handleChangeValue} name='projectRequirements' />
+                            </div>
+
+                            {/* <Select
                                 labelId="demo-mutiple-name-label"
                                 id="demo-mutiple-name"
-                                name="personName"
                                 multiple
                                 displayEmpty
                                 value={personName}
@@ -278,7 +360,7 @@ function ShortTerm() {
                                         {name}
                                     </MenuItem>
                                 ))}
-                            </Select>
+                            </Select> */}
                         </FormControl>
                     </div>
 
@@ -321,10 +403,10 @@ function ShortTerm() {
                         </div>
                         <div>
                             <FormControl component="fieldset">
-                                <RadioGroup aria-label="gender" name="value" value={value} onChange={handleChange}>
-                                    <FormControlLabel color="primary" value="$5000-$10000" control={<BlueRadio className={classes.root} />} label="$5000-$10000" />
-                                    <FormControlLabel value="$10000-$150000" control={<BlueRadio />} label="$10000-$150000" />
-                                    <FormControlLabel value="Max $15000" control={<BlueRadio />} label="Max $15000" />
+                                <RadioGroup aria-label="gender" name="projectProposalCost" value={value} onChange={handleChange}>
+                                    <FormControlLabel color="primary" value="5000" control={<BlueRadio className={classes.root} />} label="$5000-$10000" />
+                                    <FormControlLabel value="10000" control={<BlueRadio />} label="$10000-$150000" />
+                                    <FormControlLabel value="15000" control={<BlueRadio />} label="Max $15000" />
                                 </RadioGroup>
                             </FormControl>
                         </div>
@@ -333,7 +415,7 @@ function ShortTerm() {
 
                     <div className="doneButton">
                         <div></div>
-                        <button>Post Project<i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                        <button onClick={handlePostButton}>Post Project<i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                     </div>
 
                 </div>
