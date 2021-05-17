@@ -11,8 +11,6 @@ const instance = axios.create({
     baseURL: url,
     params:{},
     data:{},
-    // cancelToken: new CancelToken(function (cancel) {
-    // }),
 })
 
 instance.interceptors.response.use(function (response){

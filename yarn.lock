@@ -9628,6 +9628,11 @@ react-modal@^3.12.1:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
+react-multi-search-select@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-multi-search-select/-/react-multi-search-select-1.2.2.tgz#f7849c8ae02b1b3a757549445ce99c67293747af"
+  integrity sha512-DqcvX8HWVZA+g85zcron0+8FlZuOApcQ6a1GikFxN2k75T2I6akbKXj78Tw58M0oaZXKvZ/SLEp1E/PcsaBvaA==
+
 react-multi-select-component@^3.1.6:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/react-multi-select-component/-/react-multi-select-component-3.1.6.tgz#84e148ba6c501a1c7b37743fcce0d2b3ad4dc279"
