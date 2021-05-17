@@ -110,8 +110,6 @@ function AddingDeveloper() {
         console.log(name);
         const value = event.target.value;
         if (name === "developerTechnologies") {
-            console.log("my name is anthony");
-            console.log(name, value);
             setDeveloperData({
                 ...developerData,
                 [name]: value,
@@ -246,6 +244,13 @@ function AddingDeveloper() {
                                         multiple
                                         MenuProps={MenuProps}
                                         onChange={technologyHandler}
+                                        renderValue={(selected) => {
+                                            if (selected.length === 0) {
+                                                return <em>Choose from here</em>;
+                                            }
+        
+                                            return selected.join(', ');
+                                        }}
                                         input={<Input />}
                                         value={techIds}
                                     >

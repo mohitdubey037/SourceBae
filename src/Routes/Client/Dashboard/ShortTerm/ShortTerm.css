@@ -167,7 +167,7 @@
     padding: 0.6rem 0;
 }
 .fileUploadButton{
-    width: 15%;
+    width: 28%;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -182,8 +182,17 @@
     user-select: none;
     border-radius: 10px;
 }
-.fileUploadButton div i{
-    margin-right: 5px;
+.fileUploadButton input{
+    margin-left: 5px;
+}
+/* input[type="file"] {
+    display: none;
+} */
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 .uploadInfo{
     width: 85%;
