@@ -1,215 +1,265 @@
-import React, { useState } from 'react'
-import ClientNavbar from '../../ClientNavbar'
-import { NavLink } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import ClientNavbar from "../../ClientNavbar";
+import MultiSelect from "react-multi-select-component";
+import { useParams } from 'react-router'
 
-//domains
-import food from '../../../../assets/images/agencyForm/food.png'
-import ecommerce from '../../../../assets/images/agencyForm/ecommerce.png'
-import healthcare from '../../../../assets/images/agencyForm/healthcare.png'
-import socialmedia from '../../../../assets/images/agencyForm/socialmedia.png'
-import realestate from '../../../../assets/images/agencyForm/realestate.png'
-import education from '../../../../assets/images/agencyForm/education.png'
-import finance from '../../../../assets/images/agencyForm/finance.png'
-import travel from '../../../../assets/images/agencyForm/travel.png'
-
-//services
-import uiux from '../../../../assets/images/agencyForm/uiux.png'
-import webdevelopment from '../../../../assets/images/agencyForm/webdevelopment.png'
-import cmsdevelopment from '../../../../assets/images/agencyForm/cmsdevelopment.png'
-import mobiledevelopment from '../../../../assets/images/agencyForm/mobiledevelopment.png'
-import database from '../../../../assets/images/agencyForm/database.png'
-import iot from '../../../../assets/images/agencyForm/iot.png'
-
+import * as helper from "../../../../shared/helper"
 //material-ui
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
-//multi-select
-import MultiSearchSelect from "react-search-multi-select";
+import instance from "../../../../Constants/axiosConstants";
 
 const useStyles = makeStyles({
-    root: {
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
+  root: {
+    "&:hover": {
+      backgroundColor: "transparent",
     },
-})
+  },
+});
 
 const BlueRadio = withStyles({
-    root: {
-        color: '#26AFFF',
-        '&$checked': {
-            color: '#26AFFF',
-        },
+  root: {
+    color: "#26AFFF",
+    "&$checked": {
+      color: "#26AFFF",
     },
-    checked: {},
+  },
+  checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-
-// values for services in right
-const arr = ["Allison", "Arthur", "Beryl", "Chantal", "Cristobal", "Danielle", "Dennis", "Ernesto", "Felix", "Fay", "Grace", "Gaston", "Gert", "Gordon"]
-const brr = ["Allison", "Arthur", "Beryl", "Chantal", "Cristobal", "Danielle", "Dennis", "Ernesto", "Felix", "Fay", "Grace", "Gaston", "Gert", "Gordon"]
-
 function HireAgencyForm2() {
-
-    // selecting Domains
-    const [isFood, setFood] = useState(false);
-    const [isEcommerce, setEcommerce] = useState(false);
-    const [isHealth, setHealth] = useState(false);
-    const [isSocial, setSocial] = useState(false);
-    const [isEstate, setEstate] = useState(false);
-    const [isEducation, setEducation] = useState(false);
-    const [isFinance, setFinance] = useState(false);
-    const [isTravel, setTravel] = useState(false);
-
-    //selecting services
-    const [isUiUx, setUiUx] = useState(false);
-    const [isWeb, setWeb] = useState(false);
-    const [isCMS, setCMS] = useState(false);
-    const [isMobile, setMobile] = useState(false);
-    const [isDatabase, setDatabase] = useState(false);
-    const [isIOT, setIOT] = useState(false);
-
-    //services-option-selection
-    const [selected, setSelected] = useState(arr);
-    const [webService, setWebservice] = useState(brr);
-
-    const classes = useStyles();
-
-    //selecting domain budget
-    const [value, setValue] = React.useState('$5000-$10000');
-    const [budget, setBudget] = useState('$5000-$10000')
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
-    const handleChangeBudget = (event) => {
-        setBudget(event.target.value);
-    };
-
-    const handleChangeSelect = (arr) => {
-        console.log(arr);
-    }
-    const handleChangeWeb = (arr) => {
-        console.log(arr);
-    }
-
-    return (
-        <>
-            <ClientNavbar />
-
-            <div className="mainHireAgencyFormTwo">
-                <div className="innerHireAgencyFormTwo">
-                    <div className="techStackFields">
-
-                        <div className="stepCheck">
-                            <p>Step 2</p>
-                        </div>
-
-                        <div className="serivcesHireAgency">
-                            <p className="servicesAgencyHeading">1. In which services you have good command?</p>
-
-                            <div className="servicesCardsHireAgency">
-                                <div onClick={() => (setFood(!isFood), document.body.scrollIntoView({ behavior: 'smooth' }))} style={{ backgroundColor: isFood ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={uiux} alt="" />
-                                    <p style={{ color: isFood ? '#fff' : '#000' }}>Food</p>
-                                </div>
-                                <div onClick={() => (setEcommerce(!isEcommerce), document.body.scrollIntoView({ behavior: 'smooth' }))} style={{ backgroundColor: isEcommerce ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={webdevelopment} alt="" />
-                                    <p style={{ color: isEcommerce ? '#fff' : '#000' }}>E-commerce</p>
-                                </div>
-                                <div onClick={() => setHealth(!isHealth)} style={{ backgroundColor: isHealth ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={cmsdevelopment} alt="" />
-                                    <p style={{ color: isHealth ? '#fff' : '#000' }}>CMS <br /> Health Care</p>
-                                </div>
-                                <div onClick={() => setEducation(!isEducation)} style={{ backgroundColor: isEducation ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={mobiledevelopment} alt="" />
-                                    <p style={{ color: isEducation ? '#fff' : '#000' }}>Education</p>
-                                </div>
-                                <div onClick={() => setFinance(!isFinance)} style={{ backgroundColor: isFinance ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={database} alt="" />
-                                    <p style={{ color: isFinance ? '#fff' : '#000' }}>Finance</p>
-                                </div>
-                                <div onClick={() => setTravel(!isTravel)} style={{ backgroundColor: isTravel ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={iot} alt="" />
-                                    <p style={{ color: isTravel ? '#fff' : '#000' }}>Iot <br /> Travel & Booking</p>
-                                </div>
-                                <div onClick={() => setSocial(!isSocial)} style={{ backgroundColor: isSocial ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={iot} alt="" />
-                                    <p style={{ color: isSocial ? '#fff' : '#000' }}>Iot <br /> Media & Social</p>
-                                </div>
-                                <div onClick={() => setEstate(!isEstate)} style={{ backgroundColor: isEstate ? '#26AFFF' : '#DFF5FF' }} >
-                                    <img src={iot} alt="" />
-                                    <p style={{ color: isEstate ? '#fff' : '#000' }}>Iot <br /> Real Estate</p>
-                                </div>
-                            </div>
-                        </div>
+  const Role = "client";
+  let { projectId } = useParams();
+  projectId = helper.cleanParam(projectId)
+  console.log(projectId)
+  // selecting Domains
+  const id = localStorage.getItem("userId");
+  const [apiData, setApiData] = useState({
+    stepsCompleted: 2,
+    clientId: id,
+    id: projectId,
+    projectDomainId: "",
+    projectExpertiseRequired: [],
+    agencyExperience:""
+  });
+  const [allDomainsData, setAllDomainsData] = useState([]);
+  const [selectedDomain, setSelectedDomain] = useState(null);
+  const [options, setOptions] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [buttonStatus, setButtonStatus] = useState("Submit")
 
 
-                        <div className="monthlyBudget">
-                            <p>2. How experience should the agency be in the domain of the project?</p>
-
-                            <div className="domainBudgetOptions">
-                                <FormControl component="fieldset">
-                                    <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                        <FormControlLabel color="primary" value="$5000-$10000" control={<BlueRadio className={classes.root} />} label="$5000-$10000" />
-                                        <FormControlLabel value="$10000-$150000" control={<BlueRadio />} label="$10000-$150000" />
-                                        <FormControlLabel value="Max $15000" control={<BlueRadio />} label="Max $15000" />
-                                    </RadioGroup>
-                                </FormControl>
-                            </div>
-                        </div>
+  const classes = useStyles();
 
 
-                        <div className="nextbuttton">
-                            <div onClick={() => window.location.href = "/hire-agency-form-one"} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
-                            <div onClick={() => window.location.href = "/hire-agency-form-three"} >Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
-                        </div>
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    setApiData({
+        ...apiData,
+        [name]:value
+    })
+  };
+
+  const handleDomains = (event) => {
+    const { className } = event.target;
+    const toggledDomains = allDomainsData.map((domain) => {
+      if (domain.domainName === className) {
+        setSelectedDomain(domain);
+        return {
+          ...domain,
+          selected: !domain.selected,
+        };
+      } else {
+        return {
+          ...domain,
+          selected: false,
+        };
+      }
+    });
+    setAllDomainsData(toggledDomains);
+  };
+
+  //Api Calls methods
+
+  const getAllDomains = () => {
+    instance.get(`api/${Role}/domains/all`).then(function (response) {
+      const domainNames = response.map((domain) => {
+        return {
+          ...domain,
+          selected: false,
+        };
+      });
+      setAllDomainsData(domainNames);
+    });
+  };
+
+  const getExpertiseOption = () => {
+    const options = selectedDomain?.expertise?.map((expertise) => {
+      return {
+        label: expertise.expertiseName,
+        value: expertise._id,
+      };
+    });
+    setOptions(options);
+  };
+
+  const handleButton = () => {
+    if (buttonStatus === "Submit") hireAgencyStep2();
+    else if(buttonStatus === "Next" && projectId) window.location.href=`/hire-agency-form-three`
+  };
+
+  const hireAgencyStep2 = () => {
+    console.log(apiData);
+    instance.post(`/api/${Role}/projects/create`,apiData)
+    .then(function(response){
+        setButtonStatus("Next")
+    })
+  };
+  useEffect(() => {
+    getExpertiseOption();
+    setApiData({
+        ...apiData,
+        projectDomainId:selectedDomain._id
+    })
+  }, [selectedDomain]);
 
 
-                    </div>
-                    <div className="serviceFieldsOptions">
-                        <div className="servicesHireAgencyContainer">
-                            <div className="serviceSelectionInput">
-                                {
-                                    isFood ? (<>
-                                        <p className="uiuxtext">Select Food services</p>
-                                        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleChangeSelect} options={selected} primaryColor="#D6EAF8"
-                                                secondaryColor="#02044a"
-                                                textSecondaryColor="#fff"
-                                                className="UIUXServices"
-                                                showTags={true}
-                                                textColor="#02044a" />
-                                        </div>
-                                    </>) : null
-                                }
-                            </div>
-                            <div className="serviceSelectionInput">
-                                {
-                                    isEcommerce ? (<>
-                                        <p className="uiuxtext">Select E-commerce services</p>
-                                        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleChangeSelect} options={webService} primaryColor="#D6EAF8"
-                                                secondaryColor="#02044a"
-                                                textSecondaryColor="#fff"
-                                                className="UIUXServices"
-                                                showTags={true}
-                                                textColor="#02044a" />
-                                        </div>
-                                    </>) : null
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  useEffect(()=>{
+    setApiData({
+        ...apiData,
+        projectExpertiseRequired:selected.map((service)=>{return service.value})
+    })
+  },[selected])
+
+  useEffect(() => {
+    getAllDomains();
+  }, []);
+  return (
+    <>
+      <ClientNavbar />
+
+      <div className="mainHireAgencyFormTwo">
+        <div className="innerHireAgencyFormTwo">
+          <div className="techStackFields">
+            <div className="stepCheck">
+              <p>Step 2</p>
             </div>
-        </>
-    )
+
+            <div className="serivcesHireAgency">
+              <p className="servicesAgencyHeading">
+                1. In which services you have good command?
+              </p>
+
+              <div className="servicesCardsHireAgency">
+                {allDomainsData.map((domain) => {
+                  return (
+                    <div
+                      className={`${domain.domainName}`}
+                      onClick={(event) => handleDomains(event)}
+                      style={{
+                        backgroundColor: domain.selected
+                          ? "#02044a"
+                          : "#D6EAF8",
+                      }}
+                    >
+                      <img
+                        className={`${domain.domainName}`}
+                        src={domain.domainIcon}
+                        alt=""
+                      />
+                      <p
+                        className={`${domain.domainName}`}
+                        style={{ color: domain.selected ? "#fff" : "#000" }}
+                      >{`${domain.domainName}`}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="monthlyBudget">
+              <p>
+                2. How experience should the agency be in the domain of the
+                project?
+              </p>
+
+              <div className="domainBudgetOptions">
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="agencyExperience"
+                    name="agencyExperience"
+                    value={apiData.agencyExperience}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      color="primary"
+                      value="capable"
+                      control={<BlueRadio className={classes.root} />}
+                      label="Capable"
+                    />
+                    <FormControlLabel
+                      value="skilled"
+                      control={<BlueRadio />}
+                      label="Skilled"
+                    />
+                    <FormControlLabel
+                      value="proficient"
+                      control={<BlueRadio />}
+                      label="Proficient"
+                    />
+                    <FormControlLabel
+                      value="accomplished"
+                      control={<BlueRadio />}
+                      label="Accomplished"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </div>
+            </div>
+
+            <div className="nextbuttton">
+              <div
+                onClick={() => (window.location.href = "/hire-agency-form-one")}
+              >
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+              </div>
+              <div
+                onClick={() =>
+                  handleButton()
+                }
+              >
+                {buttonStatus} <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+          <div className="serviceFieldsOptions">
+            <div className="servicesHireAgencyContainer">
+              <div className="serviceSelectionInput">
+
+                {selectedDomain && options ? (
+                  <>
+                    <p className="uiuxtext">
+                      Select {selectedDomain.domainName} services
+                    </p>
+                    <MultiSelect
+                      options={options}
+                      value={selected}
+                      onChange={setSelected}
+                      labelledBy="Select"
+                    />
+                  </>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default HireAgencyForm2
+export default HireAgencyForm2;
