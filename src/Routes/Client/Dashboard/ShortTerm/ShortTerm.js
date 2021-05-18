@@ -171,7 +171,7 @@ function ShortTerm() {
         }
         else
             setSelectpay(id)
-        setState(prevState => ({ ...prevState, 'projectPaymentModel': name }));
+        setState(prevState => ({ ...prevState, projectPaymentModel: name }));
     }
 
     const fileHandler = (document) => {
@@ -196,7 +196,9 @@ function ShortTerm() {
         }
         else
             setSelect(id)
-        setState(prevState => ({ ...prevState, projectServicesRequired: id }));
+            const idVar = []
+            idVar.push(id);
+        setState(prevState => ({ ...prevState, projectServicesRequired: idVar }));
     }
 
 
