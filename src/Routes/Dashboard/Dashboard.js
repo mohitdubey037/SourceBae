@@ -184,7 +184,7 @@ const Dashboard = () => {
             {(!verified || steps !== -1) && <div className="mainUpdateVerify">
                 <div className="innerMainVerify">
 
-                    {!verified ?
+                    {!verified && steps!==-1 ?
                         <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
                         :
                         <p>Please wait for your profile to be verified by us.</p>
