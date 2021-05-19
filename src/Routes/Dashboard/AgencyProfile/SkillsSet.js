@@ -29,10 +29,10 @@ function SkillsSet(props) {
     const [arr, setArr] = useState([
         {
             title: 'Industry',
-            content: props.data.agencyDomains.map((domain) => {
+            content: props?.data?.agencyDomains.map((domain) => {
                 return {
-                    points: domain.domainId.domainName,
-                    id: domain.domainId._id
+                    points: domain?.domainId?.domainName || "",
+                    id: domain?.domainId?._id || ""
                 }
             })
         },

@@ -188,9 +188,9 @@ function AgencyProfile() {
                                 <h2>About us</h2>
                                 <p>{agencyProfileData.agencyDescription}</p>
                                 <div className="agencyProfileIndustry">
-                                    {agencyProfileData.agencyDomains.map((domain) => {
+                                    {agencyProfileData && agencyProfileData?.agencyDomains?.map((domain) => {
 
-                                        return <p>{`${domain.domainId.domainName}`}</p>
+                                        return <p>{`${domain?.domainId?.domainName ||"" }`}</p>
 
                                     })}
                                 </div>
