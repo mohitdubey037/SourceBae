@@ -161,7 +161,7 @@ const Dashboard = () => {
     }
 
     const handleLink = (route) => {
-        if (verified && steps === -1)
+        if (verified && (steps === -1))
             window.location.href = route
     }
     useEffect(() => {
@@ -184,7 +184,7 @@ const Dashboard = () => {
             {(!verified || steps !== -1) && <div className="mainUpdateVerify">
                 <div className="innerMainVerify">
 
-                    {verified ?
+                    {!verified ?
                         <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
                         :
                         <p>Please wait for your profile to be verified by us.</p>
