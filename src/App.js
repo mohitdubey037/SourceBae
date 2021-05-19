@@ -60,7 +60,7 @@ const App = () => (
     <Route exact path="/client-dashboard" component={ClientDashboard} />
     <Route exact path="/hire-agency-form-one" component={HireAgencyForm1} />
     <Route exact path="/hire-agency-form-two:projectId" component={HireAgencyForm2} />
-    <Route exact path="/hire-agency-form-three" component={HireAgencyForm3} />
+    <Route exact path="/hire-agency-form-three:projectId" component={HireAgencyForm3} />
     <Route exact path="/short-term" component={ShortTerm} />
     <Route exact path="/hire-developer" component={HireDeveloper} />
     <Route exact path="/agency-list" component={AgencyList} />

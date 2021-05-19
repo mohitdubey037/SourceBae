@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import ClientNavbar from "../../ClientNavbar";
 import MultiSelect from "react-multi-select-component";
@@ -35,7 +36,6 @@ function HireAgencyForm2() {
   const Role = "client";
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId)
-  console.log(projectId)
   // selecting Domains
   const id = localStorage.getItem("userId");
   const [apiData, setApiData] = useState({
@@ -109,7 +109,7 @@ function HireAgencyForm2() {
 
   const handleButton = () => {
     if (buttonStatus === "Submit") hireAgencyStep2();
-    else if(buttonStatus === "Next" && projectId) window.location.href=`/hire-agency-form-three`
+    else if(buttonStatus === "Next" && projectId) window.location.href=`/hire-agency-form-three:${projectId}`
   };
 
   const hireAgencyStep2 = () => {
@@ -121,7 +121,7 @@ function HireAgencyForm2() {
   };
   useEffect(() => {
     getExpertiseOption();
-    setApiData({
+    selectedDomain?._id && setApiData({
         ...apiData,
         projectDomainId:selectedDomain._id
     })
