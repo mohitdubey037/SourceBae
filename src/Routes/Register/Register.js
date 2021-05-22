@@ -290,6 +290,7 @@ const Register = (props) => {
                 .then(function (response) {
                     localStorage.removeItem('Authorization')
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
+                    localStorage.setItem('role', role)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
                     if (role === "client")
