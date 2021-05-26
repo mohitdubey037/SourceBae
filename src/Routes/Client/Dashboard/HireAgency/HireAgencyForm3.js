@@ -68,6 +68,7 @@ function HireAgencyForm3() {
     const getAllServices = () => {
         instance.get(`api/${Role}/services/all?with_technologies=1`)
             .then(function (response) {
+                console.log(response);
                 const servicesNames = response.map((service) => {
                     return {
                         ...service,
