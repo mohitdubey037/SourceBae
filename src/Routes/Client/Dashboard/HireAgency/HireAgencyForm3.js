@@ -90,7 +90,7 @@ function HireAgencyForm3() {
         if(buttonStatus==="Next")
             hireAgencyForm3Api()
         else if(buttonStatus==="Finish")
-            window.location.href = `/client-dashboard:${projectId}`
+            window.location.href = `/agenccy-list:${projectId}`
     }
     useEffect(() => {
         getAllServices()
