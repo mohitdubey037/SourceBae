@@ -36,10 +36,6 @@ import ProductDetails from './Routes/Agency/Product/ProductDetails';
 import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
 import CustomRoute from './HOCRoute/CustomRoute';
 
-// import Requirement from './component/Requirement';
-// import Description from './component/Description';
-// import RequirementExtended from './component/RequirementExtended';
-// import ThankyouPage from './component/ThankyouPage';
 const App = () => (
 
   <Switch>
@@ -50,7 +46,6 @@ const App = () => (
     <Route exact path="/page-not-found" component = {PageNotFound} />
 
 
-    <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard}/>
     <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard} />
     <CustomRoute condition="Agency" exact path="/add-developer" component={AddingDeveloper} />
     <CustomRoute condition="Agency" exact path="/quotation" component={Quotation} />
@@ -70,7 +65,7 @@ const App = () => (
     <CustomRoute condition="Client" exact path="/hire-agency-form-three:projectId" component={HireAgencyForm3} />
     <CustomRoute condition="Client" exact path="/short-term" component={ShortTerm} />
     <CustomRoute condition="Client" exact path="/hire-developer" component={HireDeveloper} />
-    <CustomRoute condition="Client" exact path="/agency-list" component={AgencyList} />
+    <CustomRoute condition="Client" exact path="/agency-list:projectId" component={AgencyList} />
     <CustomRoute condition="Client" exact path="/client-profile" component={ClientProfile} />
 
     <CustomRoute condition="Client" exact path="/product-form" component={ProductForm} />

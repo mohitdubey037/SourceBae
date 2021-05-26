@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react'
 import ClientNavbar from '../ClientNavbar'
 import './AgencyList.css'
-
-import location from '../../../assets/images/ClientDashboard/shortTerm/location.png'
-import team from '../../../assets/images/ClientDashboard/shortTerm/team.png'
-import logo from '../../../assets/images/Logo/logo.png'
-
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
+import axios from "../../../Constants/axiosConstants"
+import { useParams } from 'react-router';
+import * as helper from "../../../shared/helper"
+
+
 
 function AgencyList() {
 
+    const Role = "client"
+    let {projectId} = useParams()
+
+    
+    projectId = projectId? helper.cleanParam(projectId):""
+    const [agencyList, setAgencyList] = useState([])
     const [isOfficeVisit, setOfficeVisit] = useState(false);
     const [isOffsiteTravel, setOffsiteTravel] = useState(false);
     const [open, setOpen] = useState(false);
@@ -24,8 +31,14 @@ function AgencyList() {
     const onOpenQuotation = () => setOpenQuotation(true);
     const onCloseQuotation = () => setOpenQuotation(false);
 
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
+    useEffect(() => {
+        axios.get(`/api/${Role}/projects/${projectId}/agencies`)
+        .then(function(response){
+            console.log(response,"response")
+            setAgencyList(response)
+        })
+    }, [])
     return (
         <>
             <ClientNavbar />
@@ -40,8 +53,8 @@ function AgencyList() {
             <div className="mainAgencyList">
                 <div className="innerAgencyList">
                     <div className="AgencyCardsArea">
-                        {
-                            arr.map((value, index) => {
+                            {
+                                agencyList?.length>0 && agencyList.map((agency)=> {
                                 return (
                                     <div className="agencyPreciseCard">
                                         <div className="agencyCardHeaderLine">
@@ -49,10 +62,10 @@ function AgencyList() {
                                         <div className="agencyCardHeaderInfo">
                                             <div className="agencyImageProfile">
                                                 <div className="agencyImageArea">
-                                                    <img src={logo} alt="" />
+                                                    <img src={agency.agencyLogo} alt="agency Logo" />
                                                 </div>
                                                 <div className="agencyProfileInfo">
-                                                    <h6>Provoz Upturn</h6>
+                                                    <h6>{agency.agencyName}</h6>
                                                     <div>
                                                         <p>Media & Social</p>
                                                         <p>Proficient</p>
@@ -72,7 +85,7 @@ function AgencyList() {
                                                         <i class="fa fa-globe" aria-hidden="true"></i>
                                                     </div>
                                                     <div className="locationText">
-                                                        <p>146/A Umar Nagar, Hapur Road, Meerut, Uttar Pradesh</p>
+                                                        <p>{`${agency?.agencyAddress?.address} ${agency?.agencyAddress?.location}`}</p>
                                                     </div>
                                                 </div>
                                                 <div className="agencyAddressArea">
@@ -80,14 +93,14 @@ function AgencyList() {
                                                         <i class="fa fa-users" aria-hidden="true"></i>
                                                     </div>
                                                     <div className="teamNumberPart">
-                                                        <p><span>11-12</span>members</p>
+                                                        <p><span>{agency.agencyTeamSize}</span>members</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="agencyDescInfo">
                                                 <h6>Description</h6>
                                                 <p>
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis consequuntur natus asperiores possimus, voluptates aliquaLorem, ipsum dolor sit amet consectetur adipisicingPe rferendis consequuntur natus asperiores possimus, voluptates aliquam?
+                                                    {agency.agencyDescription}
                                     </p>
                                             </div>
                                         </div>
@@ -143,6 +156,7 @@ function AgencyList() {
                         </div>
                     </div>
                 </div>
+            
             </div>
 
 
