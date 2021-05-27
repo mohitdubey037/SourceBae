@@ -24,6 +24,7 @@
     "react-file-picker": "^0.0.6",
     "react-ga": "^3.3.0",
     "react-modal": "^3.12.1",
+    "react-moment": "^1.1.1",
     "react-multi-search-select": "^1.2.2",
     "react-multi-select-component": "^3.1.6",
     "react-places-autocomplete": "^7.3.0",
