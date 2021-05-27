@@ -311,13 +311,7 @@ const Register = (props) => {
     }
 
 
-<<<<<<< HEAD
-    const handleSubmit = (Role, Form, createForm) => {
-        console.log(signupForm.userEmail)
-        
-=======
     const handleSubmit = (Role, Form, createAgencyForm,createClientForm) => {
->>>>>>> 4cd5cb9591b281f22137b858adebef610c0c4a54
 
         if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
