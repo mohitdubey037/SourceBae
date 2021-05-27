@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
+import * as helper from "../shared/helper"
 
 const CustomRoute = props => {
     const [returnedRoute, setReturnedRoute] = useState("");
-    const user = localStorage.getItem('role')
-
+    const user = helper.capitalize(localStorage.getItem('role'))
     useEffect(() => {
         switch (props.condition) {
             case "Agency":
