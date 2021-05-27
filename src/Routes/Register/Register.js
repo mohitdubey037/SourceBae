@@ -309,6 +309,8 @@ const Register = (props) => {
 
 
     const handleSubmit = (Role, Form, createForm) => {
+        console.log(signupForm.userEmail)
+        
 
         if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
@@ -468,7 +470,20 @@ const Register = (props) => {
                     }
                 )
             }
-            else if (!signupForm.userPhone === 10) {
+            else if (signupForm.userPhone.match(/[^0-9]/g)) {
+                setSignupFormErrors(
+                    {
+                        firstNameError: "",
+                        lastNameError: "",
+                        emailError: "",
+                        passwordError: '',
+                        phoneError: "Phone number must be digit.",
+                        userNameError: ""
+                    }
+                )
+            }
+            else if (signupForm.userPhone.length < 10) {
+                console.log('mam'); 
                 setSignupFormErrors(
                     {
                         firstNameError: "",
@@ -620,10 +635,12 @@ const Register = (props) => {
                                 <input
                                     type="tel"
                                     name="userPhone"
+                                    maxLength = '10'
                                     placeholder='Phone No'
                                     value={signupForm.userPhone}
                                     onChange={(e) => setForm(e)}
                                 />
+                                
                                 {signupFormErrors.phoneError !== "" && <Alert severity="error">{signupFormErrors.phoneError}</Alert>}
 
                                 <input
