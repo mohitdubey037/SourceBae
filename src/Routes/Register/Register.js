@@ -293,8 +293,7 @@ const Register = (props) => {
                     localStorage.setItem('role', role)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
-                    if (role === "client")
-                        window.location.href = "/client-dashboard"
+                   
                 })
         })
     }
@@ -303,12 +302,16 @@ const Register = (props) => {
 
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
-                window.location.replace("/dashboard")
+                console.log(role)
+                if (role === "Client")
+                    window.location.href = "/client-dashboard"
+                else if(role === "Agency")
+                    window.location.replace("/dashboard")
             })
     }
 
 
-    const handleSubmit = (Role, Form, createForm) => {
+    const handleSubmit = (Role, Form, createAgencyForm,createClientForm) => {
 
         if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
@@ -316,25 +319,32 @@ const Register = (props) => {
             Promise.all([signUpPromise])
                 .then(() => {
                     let api_param_const = ``
-                    let api_create_form = createForm
-                    if (apiRole === `client`)
+                    let api_create_form = {}
+                    if (apiRole === `client`){
                         api_param_const = `clients`
+                        api_create_form = {
+                            "stepsCompleted": 1,
+                            ...createClientForm
+                        }
+                    }
                     else if (apiRole === `agency`) {
                         api_param_const = `agencies`
                         api_create_form = {
                             "stepsCompleted": 1,
-                            ...createForm
-                        }
-
-                        if (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) {
-                            instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
-                            createProfileApi(apiRole, api_param_const, api_create_form)
-                        }
-
-                        else {
-                            toast.error("Token not set", { autoClose: 2000 })
+                            ...createAgencyForm
                         }
                     }
+                   
+
+                    if (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) {
+                        instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+                        createProfileApi(apiRole, api_param_const, api_create_form)
+                    }
+
+                    else {
+                        toast.error("Token not set", { autoClose: 2000 })
+                    }
+                    
                 })
         }
     }
@@ -711,7 +721,7 @@ const Register = (props) => {
                                 {profileDetailsErrors.socialPlatformDetailsError !== "" && <Alert severity="error">{profileDetailsErrors.socialPlatformDetailsError}</Alert>}
 
                                 <Button
-                                    onClick={() => handleSubmit(role, signupForm, agencyProfileDetails)}
+                                    onClick={() => handleSubmit(role, signupForm, agencyProfileDetails,clientProfileDetails)}
                                     style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                                 >
                                     SUBMIT
