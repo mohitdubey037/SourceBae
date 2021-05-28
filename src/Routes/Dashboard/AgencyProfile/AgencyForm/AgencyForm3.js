@@ -136,11 +136,12 @@ function AgencyForm3() {
     }
 
     const handleNavlink = (event) => {
-        if (status !== "Next")
-            event.preventDefault()
-        if (status === "Update")
+        event.preventDefault()
+        if (status === "Next"){
+            window.location.href = "/agency-form-four"
+        }
+        else if (status === "Update")
             handleUpdate()
-
 
     }
 

@@ -288,6 +288,8 @@ const Register = (props) => {
         return new Promise((resolve, reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
                 .then(function (response) {
+                    alert(response._id)
+                    localStorage.setItem("userId", response._id)
                     localStorage.removeItem('Authorization')
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                     localStorage.setItem('role', role)

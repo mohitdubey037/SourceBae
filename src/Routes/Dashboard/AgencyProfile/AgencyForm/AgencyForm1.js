@@ -299,6 +299,8 @@ function AgencyForm1() {
             else
                 toast.error("Upload document.")
         }
+        else if(status === "next")
+        window.location.href = "/agency-form-two"
     }
 
     const handleUploadError = (error) => {
