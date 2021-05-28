@@ -21,6 +21,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
 
+
 const useStyles = makeStyles((theme) => ({
     typography: {
         padding: theme.spacing(2),
@@ -45,6 +46,11 @@ function Navbar(props) {
     };
 
     const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleProfile = () => {
+        window.location.href='/agency-profile';
         setAnchorEl(null);
     };
 
@@ -125,7 +131,7 @@ function Navbar(props) {
                                 onClose={handleClose}
                             >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleProfile}>My account</MenuItem>
                                 <MenuItem onClick={()=>handleLogout()}>Logout</MenuItem>
                             </Menu>
                         </div>
