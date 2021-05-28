@@ -243,6 +243,8 @@ function AgencyForm2() {
             event.preventDefault()
             handleNext()
         }
+        else if(status ==="Next")
+            window.location.href = "/agency-form-three"
     }
     return (
         <>
