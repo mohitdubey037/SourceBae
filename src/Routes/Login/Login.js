@@ -154,6 +154,10 @@ const Login = (props) => {
         })
     };
 
+    // const navigator = () => {
+    //     window.location.href
+    // }
+
     const logIn = async (role, form) => {
 
         let apiRole = helper.lowerize(role)
@@ -252,7 +256,7 @@ const Login = (props) => {
                                 <h6>Login as <span> {roleString} </span></h6>
                             </div>
                             <div className="signUpOption">
-                                <p>Don't have an account? <span>Sign Up</span></p>
+                                <p>Don't have an account? <span onClick={() => window.location.href=`/register:${role.toLowerCase()}`}>Sign Up</span></p>
                             </div>
                             <div className="loginForm">
                                 {/* <div className="emailLogin"> */}
