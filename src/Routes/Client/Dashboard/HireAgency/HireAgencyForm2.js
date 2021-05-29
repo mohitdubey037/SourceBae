@@ -33,6 +33,14 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function HireAgencyForm2() {
+
+  const colors = {
+    Upload:"blue",
+    Update:"yellow",
+    Next:"green",
+    Finish:"green"
+  }
+
   const Role = "client";
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId)
@@ -228,6 +236,7 @@ function HireAgencyForm2() {
                 <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
               </div>
               <div
+                style={{backgroundColor:colors[buttonStatus]}}
                 onClick={() =>
                   handleButton()
                 }

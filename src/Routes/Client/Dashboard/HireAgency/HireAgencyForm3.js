@@ -25,6 +25,14 @@ function HireAgencyForm3() {
         stepsCompleted:3,
         projectTechnologiesRequired:[]
     })
+
+    const colors = {
+        Upload:"blue",
+        Update:"yellow",
+        Next:"green",
+        Finish:"green"
+      }
+
     const [buttonStatus, setButtonStatus] = useState("Next")
 
     //selecting domain budget
@@ -145,7 +153,7 @@ function HireAgencyForm3() {
 
                         <div className="nextbuttton">
                             <div onClick={() => window.location.href = "/hire-agency-form-two"} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
-                            <div onClick={()=>handleButton()}>{buttonStatus} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+                            <div style={{backgroundColor:colors[buttonStatus]}} onClick={()=>handleButton()}>{buttonStatus} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
                         </div>
 
 
