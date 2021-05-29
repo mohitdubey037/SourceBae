@@ -40,7 +40,7 @@ const validateLink = (link)=>{
         result = (/^((http(s?)?):\/\/)?([wW]{3}\.)?[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})|\/[^\S][a-zA-Z0-9\-_\/]/g.test(link))
         return result;
     }
-    return result;
+    return result
 }
 
 const camelcaseToWords = (word)=>{

@@ -11,6 +11,8 @@ import Badge from '@material-ui/core/Badge';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import notification from '../../assets/images/ClientDashboard/notification.svg'
 
@@ -71,6 +73,7 @@ const ClientNavbar = ({ isVisible }) => {
     const [show, setShow] = useState(true);
     const [isNotification, setIsnotification] = useState(false);
     const [openmodal, setOpenModal] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(false);
 
     const onOpenModal = () => setOpenModal(true);
     const onCloseModal = () => setOpenModal(false);
@@ -78,6 +81,26 @@ const ClientNavbar = ({ isVisible }) => {
     const showVisibility = () => {
         isVisible(!show)
         setShow(!show);
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleProfile = () => {
+        window.location.href = '/client-profile';
+        setAnchorEl(null);
+    };
+
+    const handleClick = (event) => {
+        console.log(event)
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleLogout = () => {
+        handleClose()
+        localStorage.removeItem("Authorization")
+        window.location.href = "/"
     }
 
     const notificationPanel = (event) => {
@@ -124,12 +147,25 @@ const ClientNavbar = ({ isVisible }) => {
                                 </StyledBadge>
                             </div>
                         </div>
-                        <div className="clientProfile" onClick={() => window.location.href = "/client-profile"} >
-                            <div>
+
+                        <div className="clientProfile">
+                            <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
                                 <Avatar className={classes.userProfile} >
                                     <PermIdentityIcon />
                                 </Avatar>
                             </div>
+
+                            <Menu
+                                id="simple-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={anchorEl}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                                {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+                                <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
+                            </Menu>
                         </div>
                     </div>
                 </div>
