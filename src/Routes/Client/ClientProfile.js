@@ -27,6 +27,7 @@ function ClientProfile() {
         const clientId = localStorage.getItem("userId")
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
+                console.log(response);
                 setClientData({
                     firstName: response[0].firstName,
                     lastName: response[0].lastName,

@@ -7,6 +7,7 @@ import brochure from '../../../../assets/images/agencyForm/brochure.png'
 import panCard from '../../../../assets/images/agencyForm/panCard.png'
 import privacy from '../../../../assets/images/agencyForm/privacy.svg'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios';
 
 import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
@@ -95,25 +96,25 @@ function AgencyForm3() {
             category
         );
         console.log(formData)
-        instance.post(`api/${Role}/media/create`, formData)
+        axios.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
             .then(function (response) {
                 console.log(response);
                 if (category === registrationCertificate.documentName)
                     setRegistrationCertificate({
                         ...registrationCertificate,
-                        documentLink: response[0].mediaURL
+                        documentLink: response.data.mediaURL
                     })
 
                 else if (category === brochureDoc.documentName)
                     setBrochureDoc({
                         ...brochureDoc,
-                        documentLink: response[0].mediaURL
+                        documentLink: response.data.mediaURL
                     })
 
                 else if (category === panCardDoc.documentName)
                     setPanCardDoc({
                         ...panCardDoc,
-                        documentLink: response[0].mediaURL
+                        documentLink: response.data.mediaURL
                     })
             })
 
@@ -156,6 +157,8 @@ function AgencyForm3() {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
             setPickedAll(true)
         }
+        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "")
+            toast.success('media saved successfully');
         if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "")
             setStatus("Update")
     }, [registrationCertificate, brochureDoc, panCardDoc])

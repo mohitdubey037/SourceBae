@@ -99,7 +99,7 @@ const ClientNavbar = ({ isVisible }) => {
 
     const handleLogout = () => {
         handleClose()
-        localStorage.removeItem("Authorization")
+        localStorage.removeItem("Authorization");
         window.location.href = "/"
     }
 

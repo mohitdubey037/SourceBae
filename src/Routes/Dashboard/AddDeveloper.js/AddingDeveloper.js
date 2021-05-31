@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
+import clsx from 'clsx';
 
 import './AddingDeveloper.css'
 import model from '../../../assets/images/AddDeveloper/modal3d.png'
@@ -20,23 +21,9 @@ import instance from "../../../Constants/axiosConstants";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
-import Checkbox from "@material-ui/core/Checkbox";
-import Chip from "@material-ui/core/Chip";
 
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-        maxWidth: 300,
-    },
-}));
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
 const MenuProps = {
     getContentAnchorEl: () => null,
     PaperProps: {
@@ -48,8 +35,34 @@ const MenuProps = {
     },
 };
 
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+        maxWidth: 300,
+    },
+}));
+
+function getStyles(singleTechObject, allTechnologies, theme) {
+    return {
+        fontWeight:
+            allTechnologies.indexOf(singleTechObject) === -1
+                ? theme.typography.fontWeightRegular
+                : theme.typography.fontWeightMedium,
+    };
+}
+
 
 function AddingDeveloper() {
+
+    const theme = useTheme();
+
+    const colors = {
+        Upload: "blue",
+        Update: "yellow",
+        Next: "green",
+        Finish: "orange"
+    }
 
     const classes = useStyles();
     const Role = "agency"
@@ -79,11 +92,10 @@ function AddingDeveloper() {
     const [techIds, setTechIds] = React.useState([]);
     const [btnName, setBtnName] = useState("Upload")
     const [isDisabled, setIsDisabled] = useState(true)
-    const [resume, setResume] = useState(null)
+    const [resume, setResume] = useState(null);
 
     const handleChange = (event) => {
         const { name, value } = event.currentTarget
-        console.log({ ...event.target })
         if (name === "developerTechnologies") {
             console.log(value)
             setDeveloperData(
@@ -102,7 +114,8 @@ function AddingDeveloper() {
         }
     }
 
-    const technologyHandler = (event) => {
+
+    const technologyHandler = (event, element) => {
         const name = event.target.name;
         console.log(name);
         const value = event.target.value;
@@ -111,19 +124,19 @@ function AddingDeveloper() {
                 ...developerData,
                 [name]: value,
             });
+            setTechIds(value);
         } else {
             setDeveloperData({
                 ...developerData,
                 [name]: value,
             });
         }
-        setTechIds(event.target.value);
     };
 
     const getAllTechs = () => {
         instance.get(`api/${Role}/technologies/all`)
             .then(function (response) {
-                setTechs(response)
+                setTechs(response);            
             })
     }
 
@@ -177,7 +190,7 @@ function AddingDeveloper() {
             window.location.href = "/dashboard"
         }
     }
-    
+
     useEffect(() => {
         getAllTechs()
     }, [])
@@ -240,27 +253,35 @@ function AddingDeveloper() {
                                         labelId="demo-mutiple-name"
                                         name="developerTechnologies"
                                         multiple
+                                        displayEmpty
                                         MenuProps={MenuProps}
                                         onChange={technologyHandler}
+                                        value={techIds}
+                                        input={<Input />}
                                         renderValue={(selected) => {
                                             if (selected.length === 0) {
                                                 return <em>Choose from here</em>;
                                             }
-        
-                                            return selected.join(', ');
+                                            return techs.filter(t => selected.includes(t._id)).map(t => t.technologyName).join(', ');
                                         }}
-                                        input={<Input />}
-                                        value={techIds}
+                                        inputProps={{ 'aria-label': 'Without label' }}
                                     >
-                                        {techs.map((tech) => (
+                                        <MenuItem disabled value="">
+                                            <em>Choose from here</em>
+                                        </MenuItem>
+                                        {techs.map((tech) => {
+                                            return (
                                             <MenuItem
                                                 key={tech._id}
                                                 value={tech._id}
-                                            // style={getStyles(tech, techIds, theme)}
+                                                style={getStyles(tech, techIds, theme)}
                                             >
                                                 {tech.technologyName}
                                             </MenuItem>
-                                        ))}
+                                        )
+                                    }
+                                        )
+                                    }
                                     </Select>
                                 </FormControl>
 
@@ -305,7 +326,7 @@ function AddingDeveloper() {
                             </FormControl>
                         </div>
                         <div className="submitButton">
-                            <button disabled={isDisabled} onClick={() => handleAction(btnName)}>{`${btnName}`}</button>
+                            <button style={{ backgroundColor: colors[btnName] }} disabled={isDisabled} onClick={() => handleAction(btnName)}>{`${btnName}`}</button>
                         </div>
                     </div>
                 </div>
