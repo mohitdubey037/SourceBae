@@ -115,7 +115,7 @@ function AddingDeveloper() {
     }
 
 
-    const technologyHandler = (event, element) => {
+    const technologyHandler = (event) => {
         const name = event.target.name;
         console.log(name);
         const value = event.target.value;
