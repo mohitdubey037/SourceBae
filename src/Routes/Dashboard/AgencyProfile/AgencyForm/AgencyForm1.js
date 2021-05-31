@@ -17,6 +17,14 @@ function AgencyForm1() {
     const Role = "agency"
     const api_param_const = "agencies"
 
+    const colors = {
+        upload:"blue",
+        update:"yellow",
+        next:"green",
+        finish:"green"
+      }
+
+
     const [status,setStatus] = useState("upload")
     const [linkedIn, setLinkedIn] = useState({
         platformName:"linkedIn",
@@ -49,6 +57,8 @@ function AgencyForm1() {
             locationError: ""
         },
     })
+
+    
 
     useEffect(() => {
     }, [formData, formDataErrors]);
@@ -290,6 +300,7 @@ function AgencyForm1() {
     }
 
     const handleNavlink = async (e) => {
+        console.log(status)
         if (status !== "next") {
             e.preventDefault()
             if (status === "upload" && agencyLogo !== null)
@@ -464,7 +475,7 @@ function AgencyForm1() {
                                     </button>
                                 </NavLink>
                                 <NavLink to="/agency-form-two"  style={{ textDecoration: "none" }} onClick = {(event)=>handleNavlink(event)}>
-                                    <button>
+                                    <button style={{backgroundColor:colors[status]}}>
                                         {status}
                                         <i class="fa fa-long-arrow-right" aria-hidden="true" />
                                     </button>

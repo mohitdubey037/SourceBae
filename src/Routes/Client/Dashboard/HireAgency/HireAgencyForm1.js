@@ -33,6 +33,14 @@ const HireAgencyForm1 = () => {
     projectProposalCost: "",
     projectExpectedStartingDays: 5,
   });
+
+  const colors = {
+    Upload:"blue",
+    Update:"yellow",
+    Next:"green",
+    Finish:"green"
+  }
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setData({
@@ -162,7 +170,7 @@ const HireAgencyForm1 = () => {
             </div>
             <div className="nextbuttton">
               <span></span>
-              <div onClick={() => handleButton()}>
+              <div style={{backgroundColor:colors[buttonStatus]}} onClick={() => handleButton()}>
                 {buttonStatus}{" "}
                 <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
               </div>

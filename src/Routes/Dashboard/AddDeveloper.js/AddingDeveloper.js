@@ -18,8 +18,6 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import instance from "../../../Constants/axiosConstants";
 
-
-
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -104,7 +102,6 @@ function AddingDeveloper() {
         }
     }
 
-
     const technologyHandler = (event) => {
         const name = event.target.name;
         console.log(name);
@@ -180,6 +177,7 @@ function AddingDeveloper() {
             window.location.href = "/dashboard"
         }
     }
+    
     useEffect(() => {
         getAllTechs()
     }, [])
@@ -270,7 +268,8 @@ function AddingDeveloper() {
                             </div>
                             <div className="developerDesignation">
                                 <h4>Upload Resume</h4>
-                                <input onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" />
+                                <input onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
+                                    application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                             </div>
                         </div>
                         <div className="yearsOfExperience">

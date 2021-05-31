@@ -33,6 +33,13 @@ import MultiSearchSelect from "react-search-multi-select";
 
 function AgencyForm2() {
 
+    const colors = {
+        Upload:"blue",
+        Update:"yellow",
+        Next:"green",
+        Finish:"green"
+      }
+
     const Role = "agency"
 
     const [status, setStatus] = useState("Update")
@@ -323,7 +330,7 @@ function AgencyForm2() {
                             {/* <NavLink to="/agency-form-three" >
                             Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
                             <NavLink to="/agency-form-three" style={{textDecoration:"none"}} onClick = {(event)=>{handleNav(event)}}>
-                                <button className ="next-click">
+                                <button style={{backgroundColor:colors[status]}} className ="next-click">
                                     {status}
                                     <i class="fa fa-long-arrow-right" aria-hidden="true"/>
                                 </button>

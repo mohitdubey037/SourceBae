@@ -306,7 +306,7 @@ function ProductForm() {
                         <div className="form1_Fields">
                             <section>
                                 <p>1. Upload your latest logo of product</p>
-                                <input type="file" name="" id="" />
+                                <input type="file" name="" id="" accept="image/png, image/gif, image/jpeg"/>
                             </section>
                             <section>
                                 <p>2. What's your good product name?</p>

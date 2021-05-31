@@ -16,6 +16,13 @@ import instance from "../../../../Constants/axiosConstants"
 
 function AgencyForm3() {
 
+    const colors = {
+        Upload:"blue",
+        Update:"yellow",
+        Next:"green",
+        Finish:"green"
+      }
+
     const Role = "agency"
     const [status, setStatus] = useState("Upload")
     const [pickedAll, setPickedAll] = useState(false)
@@ -213,7 +220,7 @@ function AgencyForm3() {
                             </NavLink>
 
                             <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} >
-                                <button onClick={handleUpload} name={status}>
+                                <button style={{backgroundColor:colors[status]}} onClick={handleUpload} name={status}>
                                     {status}
                                     <i class="fa fa-long-arrow-right" aria-hidden="true" />
                                 </button>

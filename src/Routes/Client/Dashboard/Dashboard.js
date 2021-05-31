@@ -154,6 +154,11 @@ function Dashboard() {
 
                         <div className="allProjectsClients">
                             {projects.map(p => {
+                                // const statusColor = 'blue'
+                                // if (p.projectCurrentStatus === 'Posted'){
+                                //     console.log('h');
+                                //     statusColor = '#5cb85c'
+                                // }
                                 return (
                                     <div className="clientProjectCard">
                                         <span className="leftBorderClientProject"></span>
@@ -172,14 +177,33 @@ function Dashboard() {
                                             <p>Last Edit on: <span><Moment format="D MMM YYYY" withTitle>{p.updatedAt}</Moment></span> </p>
                                         </div>
 
-
-                                        <div className="projectStage">
+                                        {/* <div className="projectStage">
                                             <span className="statusLine"></span>
                                             <div>
                                                 <span style={{ backgroundColor: p.projectCurrentStatus == 'Posted' ? '#5cb85c' : '#626567' }}>01</span>
                                                 <p>{p.projectCurrentStatus}</p>
                                             </div>
-                                        </div>
+                                        </div> */}
+
+                                <div className="projectStage">
+                                    <span className="statusLine"></span>
+                                    <div>
+                                        <span style={{ backgroundColor: p.projectCurrentStatus === 'Posted' ? '#5cb85c' : '#626567' }}>01</span>
+                                        <p>{p.projectCurrentStatus}</p>
+                                    </div>
+                                    <div>
+                                        <span style={{ backgroundColor: '#00ffbf' }}>02</span>
+                                        <p>Shortlist Agency</p>
+                                    </div>
+                                    <div>
+                                        <span style={{ backgroundColor: '#800000' }}>03</span>
+                                        <p>Request Quotation</p>
+                                    </div>
+                                    <div>
+                                        <span style={{ backgroundColor: '#0000ff'}}>04</span>
+                                        <p>Hire the best!</p>
+                                    </div>
+                                </div>
 
                                         <div className="clientProjectInformation">
                                             <div className="projectStatusInfo">

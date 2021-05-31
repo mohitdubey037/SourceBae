@@ -17,6 +17,13 @@ import * as helper from "../../../../shared/helper"
 
 function AgencyForm4() {
 
+    const colors = {
+        upload:"blue",
+        update:"yellow",
+        next:"green",
+        finish:"green"
+      }
+
     const Role = "agency"
     const [status, setStatus] = useState("Update")
     const [fields, setFields] = useState([{ value: null }]);
@@ -254,7 +261,7 @@ function AgencyForm4() {
                                 </button>
                             </NavLink>
                             {/* <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                            <button onClick={handleNext} >
+                            <button style={{backgroundColor:colors[status]}} onClick={handleNext} >
                                 {status}
                                 <i class="fa fa-long-arrow-right" aria-hidden="true" />
                             </button>
