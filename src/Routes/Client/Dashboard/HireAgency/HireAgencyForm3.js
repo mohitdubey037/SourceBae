@@ -84,14 +84,14 @@ function HireAgencyForm3() {
             console.log(apiData);
             instance.post(`/api/${Role}/projects/create`,apiData)
             .then(function(response){
-                setButtonStatus("Next")
+                setButtonStatus("Finish")
             })
     }
     const handleButton = ()=>{
         if(buttonStatus==="Next")
             hireAgencyForm3Api()
         else if(buttonStatus==="Finish")
-            window.location.href = `/agenccy-list:${projectId}`
+            window.location.href = `/agency-list:${projectId}`
     }
     useEffect(() => {
         getAllServices()
