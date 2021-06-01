@@ -19,6 +19,7 @@ import FormControl from '@material-ui/core/FormControl';
 
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
+import Spinner from '../../../../Components/Spinner/Spinner'
 
 
 
@@ -42,7 +43,9 @@ function AgencyForm2() {
 
     const Role = "agency"
 
+    const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState("Update")
+    
     // selecting Domains
     const [allDomainsData, setAllDomainsData] = useState([])
 
@@ -50,6 +53,7 @@ function AgencyForm2() {
     const [allServicesData, setAllServicesData] = useState([])
     const [selectedServicesId, setSelectedServicesId] = useState([])
     const [selectedTechName, setSelectedTechNames] = useState([])
+
 
     //selecting Techs
     const [allTechData, setAllTechData] = useState([])
@@ -217,6 +221,14 @@ function AgencyForm2() {
     }, [])
 
     useEffect(() => {
+
+        if (allDomainsData.length !== 0 && allTechData.length !== 0 && allServicesData.length !== 0){
+            console.log('hii');
+            setLoading(false);
+        }
+    },[allDomainsData,allServicesData, allTechData ])
+
+    useEffect(() => {
         setSelectedServicesId(getSelectedServicesIds(allServicesData))
         setApiData({
             ...apiData,
@@ -258,6 +270,8 @@ function AgencyForm2() {
             <Navbar />
 
             <FormPhases value1={true} value2={true} />
+
+            {loading ? <Spinner/> : 
 
             <div className="mainTechStackForm">
                 <div className="innerTechStackForm">
@@ -320,19 +334,19 @@ function AgencyForm2() {
 
 
                         <div className="nextBtn">
-                            {/* <NavLink to="/agency-form-one" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
+                            {/* <NavLink to="/agency-form-one" ><i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
                             <NavLink to="/agency-form-one" style={{textDecoration:"none"}}>
                                 <button className ="next-click">
-                                    <i class="fa fa-long-arrow-left" aria-hidden="true"/>
+                                    <i className="fa fa-long-arrow-left" aria-hidden="true"/>
                                     Back
                                 </button>
                             </NavLink>
                             {/* <NavLink to="/agency-form-three" >
-                            Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
+                            Next <i className="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
                             <NavLink to="/agency-form-three" style={{textDecoration:"none"}} onClick = {(event)=>{handleNav(event)}}>
                                 <button style={{backgroundColor:colors[status]}} className ="next-click">
                                     {status}
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"/>
+                                    <i className="fa fa-long-arrow-right" aria-hidden="true"/>
                                 </button>
                             </NavLink>
                         </div>
@@ -359,6 +373,7 @@ function AgencyForm2() {
                     </div>
                 </div>
             </div>
+            }
         </>
     )
 }

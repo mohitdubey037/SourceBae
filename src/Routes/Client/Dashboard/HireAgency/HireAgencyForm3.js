@@ -9,7 +9,7 @@ import MultiSelect from "react-multi-select-component";
 
 //multi-select
 import instance from "../../../../Constants/axiosConstants";
-
+import Spinner from "../../../../Components/Spinner/Spinner";
 
 
 function HireAgencyForm3() {
@@ -18,6 +18,7 @@ function HireAgencyForm3() {
     let { projectId } = useParams();
     projectId = helper.cleanParam(projectId)
 
+    const [loading, setLoading] = useState(true);
     const [allServices, setAllServices] = useState([])
     const [selected, setSelected] = useState([]);
     const [apiData , setApiData] = useState({
@@ -84,7 +85,7 @@ function HireAgencyForm3() {
                     }
                 })
                 setAllServices(servicesNames)
-            
+                setLoading(false)
             })
     }
 
@@ -92,14 +93,14 @@ function HireAgencyForm3() {
             console.log(apiData);
             instance.post(`/api/${Role}/projects/create`,apiData)
             .then(function(response){
-                setButtonStatus("Next")
+                setButtonStatus("Finish")
             })
     }
     const handleButton = ()=>{
         if(buttonStatus==="Next")
             hireAgencyForm3Api()
         else if(buttonStatus==="Finish")
-            window.location.href = `/agenccy-list:${projectId}`
+            window.location.href = `/agency-list:${projectId}`
     }
     useEffect(() => {
         getAllServices()
@@ -118,8 +119,8 @@ function HireAgencyForm3() {
 
     return (
         <>
-
             <ClientNavbar />
+            {loading ? <Spinner/> : 
             <div className="mainHireAgencyForm3">
                 <div className="innerHireAgencyForm3">
                     <div className="techStackFields">
@@ -179,6 +180,7 @@ function HireAgencyForm3() {
                     </div>
                 </div>
             </div>
+            }
         </>
     )
 }
