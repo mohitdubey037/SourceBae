@@ -6,158 +6,226 @@ import './AgencyList.css'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
-import axios from "../../../Constants/axiosConstants"
+import instance from "../../../Constants/axiosConstants"
 import { useParams } from 'react-router';
 import * as helper from "../../../shared/helper"
+import Spinner from '../../../Components/Spinner/Spinner';
 
 
 
 function AgencyList() {
 
     const Role = "client"
-    let {projectId} = useParams()
+    let { projectId } = useParams()
 
-    
-    projectId = projectId? helper.cleanParam(projectId):""
+
+    projectId = projectId ? helper.cleanParam(projectId) : ""
     const [agencyList, setAgencyList] = useState([])
     const [isOfficeVisit, setOfficeVisit] = useState(false);
     const [isOffsiteTravel, setOffsiteTravel] = useState(false);
     const [open, setOpen] = useState(false);
     const [openQuotation, setOpenQuotation] = useState(false);
+    const [loading, setLoading] = useState(true)
 
-    const onOpenModal = () => setOpen(true);
+
+    const onOpenModal = (_id) => {setOpen(true); setShortlistFormData({
+        ...shortlistFormData,
+        agencyId: _id
+    })
+}
     const onCloseModal = () => setOpen(false);
 
-    const onOpenQuotation = () => setOpenQuotation(true);
+    const onOpenQuotation = (_id) => {setOpenQuotation(true); setQuotationFormData({
+        ...QuotationFormData,
+        agencyId: _id
+    })
+}
     const onCloseQuotation = () => setOpenQuotation(false);
 
+    const [shortlistFormData, setShortlistFormData] = useState({
+        comment: '',
+        isShortListed: true,
+    })
+
+    const [QuotationFormData, setQuotationFormData] = useState({
+        isShortListed: true,
+        isAskedForQuotation: true,
+        negotiablePrice: '',
+        comment: '',
+    })
 
     useEffect(() => {
-        axios.get(`/api/${Role}/projects/${projectId}/agencies`)
-        .then(function(response){
-            console.log(response,"response")
-            setAgencyList(response)
-        })
+        instance.get(`/api/${Role}/projects/${projectId}/agencies`)
+            .then(function (response) {
+                console.log(response, "response")
+                setAgencyList(response)
+                setLoading(false);
+            })
     }, [])
+
+    const handleChange = (event) => {
+        const { name, value } = event.target
+        setShortlistFormData({
+            ...shortlistFormData,
+            [name]: value
+        })
+    }
+
+    const handleQuotationChange = (event) => {
+        const { name, value } = event.target
+        setQuotationFormData({
+            ...QuotationFormData,
+            [name]: value
+        })
+    }
+
+    const postSubmitHandler = () => {
+        instance.patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
+            .then(function (response) {
+                console.log(response);
+            })
+        onCloseModal()
+    }
+
+    const quotationSubmitHandler = () => {
+        instance.patch(`/api/${Role}/projects/propose/${projectId}`, QuotationFormData)
+            .then(function (response) {
+                console.log(response);
+            })
+        onCloseQuotation()
+    }
+
+    useEffect(() => {
+        console.log(shortlistFormData);
+    }, [shortlistFormData]);
+
+    useEffect(() => {
+        console.log(QuotationFormData);
+    }, [QuotationFormData])
+
+
     return (
         <>
             <ClientNavbar />
-
-            <div className="projectDetailsInfo">
-                <div className="innerprojectDetailsInfo">
-                    <p>One Sourcing</p>
-                    <span> <em> Buget:-</em> $5000-$1000</span>
-                </div>
-            </div>
-
-            <div className="mainAgencyList">
-                <div className="innerAgencyList">
-                    <div className="AgencyCardsArea">
-                            {
-                                agencyList?.length>0 && agencyList.map((agency)=> {
-                                return (
-                                    <div className="agencyPreciseCard">
-                                        <div className="agencyCardHeaderLine">
-                                        </div>
-                                        <div className="agencyCardHeaderInfo">
-                                            <div className="agencyImageProfile">
-                                                <div className="agencyImageArea">
-                                                    <img src={agency.agencyLogo} alt="agency Logo" />
-                                                </div>
-                                                <div className="agencyProfileInfo">
-                                                    <h6>{agency.agencyName}</h6>
-                                                    <div>
-                                                        <p>Media & Social</p>
-                                                        <p>Proficient</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="profileButton">
-                                                <p>View Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
-                                            </div>
-                                        </div>
-
-                                        <div className="middleAgencyArea">
-                                            <div className="agencyAddressTeam">
-                                                <h6>Miscellaneous Info</h6>
-                                                <div className="agencyAddressArea">
-                                                    <div className="locationIcon">
-                                                        <i class="fa fa-globe" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div className="locationText">
-                                                        <p>{`${agency?.agencyAddress?.address} ${agency?.agencyAddress?.location}`}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="agencyAddressArea">
-                                                    <div className="teamIcon">
-                                                        <i class="fa fa-users" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div className="teamNumberPart">
-                                                        <p><span>{agency.agencyTeamSize}</span>members</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="agencyDescInfo">
-                                                <h6>Description</h6>
-                                                <p>
-                                                    {agency.agencyDescription}
-                                    </p>
-                                            </div>
-                                        </div>
-
-                                        <div className="quotationShortlistButton">
-                                            <div onClick={onOpenModal}><p>Shortlist</p></div>
-                                            <div onClick={onOpenQuotation}><p>Get Quotation</p></div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
+            {loading ? <Spinner /> :
+                <>
+                    <div className="projectDetailsInfo">
+                        <div className="innerprojectDetailsInfo">
+                            <p>One Sourcing</p>
+                            <span> <em> Buget:-</em> $5000-$1000</span>
+                        </div>
                     </div>
-                    <div className="agencyFilterArea">
-                        <div className='filterForm'>
-                            <div className="filterHeading">
-                                <p className="filterText">Filter</p>
-                                <div><p>Clear All</p></div>
-                            </div>
 
-                            <div className="locationFilter">
-                                <p>Location</p>
-                                <input type="text" placeholder="Type here.." name="" id="" />
-                            </div>
+                    <div className="mainAgencyList">
+                        <div className="innerAgencyList">
+                            <div className="AgencyCardsArea">
+                                {
+                                    agencyList?.length > 0 && agencyList.map((agency) => {
+                                        return (
+                                            <div className="agencyPreciseCard">
+                                                <div className="agencyCardHeaderLine">
+                                                </div>
+                                                <div className="agencyCardHeaderInfo">
+                                                    <div className="agencyImageProfile">
+                                                        <div className="agencyImageArea">
+                                                            <img src={agency.agencyLogo} alt="agency Logo" />
+                                                        </div>
+                                                        <div className="agencyProfileInfo">
+                                                            <h6>{agency.agencyName}</h6>
+                                                            <div>
+                                                                <p>Media & Social</p>
+                                                                <p>Proficient</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="profileButton">
+                                                        <p>View Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
+                                                    </div>
+                                                </div>
 
-                            <div className="officeVisitFilter">
-                                <p>Office Visit</p>
-                                <div className="officeVisitRadio" onClick={() => setOfficeVisit(!isOfficeVisit)} >
-                                    <div className="officeVisitRadioImage" style={{ backgroundColor: isOfficeVisit ? '#3498DB' : '#fff' }} >
-                                        {
-                                            isOfficeVisit ? <i style={{ color: isOfficeVisit ? '#fff' : '#000' }} class="fa fa-check" aria-hidden="true"></i> : null
-                                        }
-                                    </div>
-                                    <div>
-                                        <span>Allowed</span>
-                                    </div>
-                                </div>
-                            </div>
+                                                <div className="middleAgencyArea">
+                                                    <div className="agencyAddressTeam">
+                                                        <h6>Miscellaneous Info</h6>
+                                                        <div className="agencyAddressArea">
+                                                            <div className="locationIcon">
+                                                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div className="locationText">
+                                                                <p>{`${agency?.agencyAddress?.address} ${agency?.agencyAddress?.location}`}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="agencyAddressArea">
+                                                            <div className="teamIcon">
+                                                                <i class="fa fa-users" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div className="teamNumberPart">
+                                                                <p><span>{agency.agencyTeamSize}</span>members</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="agencyDescInfo">
+                                                        <h6>Description</h6>
+                                                        <p>
+                                                            {agency.agencyDescription}
+                                                        </p>
+                                                    </div>
+                                                </div>
 
-                            <div className="officeVisitFilter">
-                                <p>Offsite Travel</p>
-                                <div className="officeVisitRadio" onClick={() => setOffsiteTravel(!isOffsiteTravel)} >
-                                    <div className="officeVisitRadioImage" style={{ backgroundColor: isOffsiteTravel ? '#3498DB' : '#fff' }} >
-                                        {
-                                            isOffsiteTravel ? <i style={{ color: isOffsiteTravel ? '#fff' : '#000' }} class="fa fa-check" aria-hidden="true"></i> : null
-                                        }
+                                                <div className="quotationShortlistButton">
+                                                    <div onClick={() => onOpenModal(agency._id)}><p>Shortlist</p></div>
+                                                    <div onClick={() => onOpenQuotation(agency._id)}><p>Get Quotation</p></div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div className="agencyFilterArea">
+                                <div className='filterForm'>
+                                    <div className="filterHeading">
+                                        <p className="filterText">Filter</p>
+                                        <div><p>Clear All</p></div>
                                     </div>
-                                    <div>
-                                        <span>Allowed</span>
+
+                                    <div className="locationFilter">
+                                        <p>Location</p>
+                                        <input type="text" placeholder="Type here.." name="" id="" />
+                                    </div>
+
+                                    <div className="officeVisitFilter">
+                                        <p>Office Visit</p>
+                                        <div className="officeVisitRadio" onClick={() => setOfficeVisit(!isOfficeVisit)} >
+                                            <div className="officeVisitRadioImage" style={{ backgroundColor: isOfficeVisit ? '#3498DB' : '#fff' }} >
+                                                {
+                                                    isOfficeVisit ? <i style={{ color: isOfficeVisit ? '#fff' : '#000' }} class="fa fa-check" aria-hidden="true"></i> : null
+                                                }
+                                            </div>
+                                            <div>
+                                                <span>Allowed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="officeVisitFilter">
+                                        <p>Offsite Travel</p>
+                                        <div className="officeVisitRadio" onClick={() => setOffsiteTravel(!isOffsiteTravel)} >
+                                            <div className="officeVisitRadioImage" style={{ backgroundColor: isOffsiteTravel ? '#3498DB' : '#fff' }} >
+                                                {
+                                                    isOffsiteTravel ? <i style={{ color: isOffsiteTravel ? '#fff' : '#000' }} class="fa fa-check" aria-hidden="true"></i> : null
+                                                }
+                                            </div>
+                                            <div>
+                                                <span>Allowed</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                </div>
-            
-            </div>
+                </>
+            }
 
 
             {/* Modal for shortlist  */}
@@ -168,9 +236,9 @@ function AgencyList() {
                 <div className="shortlistModal">
                     <h2>ShortList</h2>
                     <div className="shortlistForm">
-                        <span>Comment Box</span>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Type from here..."></textarea>
-                        <button>Submit</button>
+                        <span >Comment Box</span>
+                        <textarea onChange={(event) => handleChange(event)} name="comment" id="" cols="30" rows="10" placeholder="Type from here..."></textarea>
+                        <button onClick={postSubmitHandler}>Submit</button>
                     </div>
                 </div>
             </Modal>
@@ -231,21 +299,21 @@ function AgencyList() {
                                     <p>Negotiable Upto</p>
                                 </div>
                                 <div className="tableContentQuotation">
-                                    <input type="number" placeholder="Text should be number" min="0" />
+                                    <input name='negotiablePrice' onChange={handleQuotationChange} type="number" placeholder="Text should be number" min="0" />
                                 </div>
                             </div>
                             <div className="quotationTable">
                                 <div className="tableHeaderQuotation">
-                                    <p>Comment Box</p>
+                                    <p name='comment'>Comment Box</p>
                                 </div>
                                 <div className="tableContentQuotation">
-                                    <textarea name="" id="" cols="30" rows="6" placeholder="Type from here.." ></textarea>
+                                    <textarea onChange={(event) => handleQuotationChange(event)} name="comment" id="" cols="30" rows="6" placeholder="Type from here.." ></textarea>
                                 </div>
                             </div>
 
                             <div className="quotationSubmitButton">
                                 <div></div>
-                                <button>Submit</button>
+                                <button onClick={quotationSubmitHandler}>Submit</button>
                             </div>
                         </div>
                     </div>
