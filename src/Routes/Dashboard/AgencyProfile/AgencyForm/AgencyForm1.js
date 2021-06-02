@@ -12,6 +12,7 @@ import * as helper from '../../../../shared/helper';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
+import Spinner from '../../../../Components/Spinner/Spinner'
 
 function AgencyForm1() {
 
@@ -19,14 +20,14 @@ function AgencyForm1() {
     const api_param_const = "agencies"
 
     const colors = {
-        upload: "blue",
-        update: "yellow",
-        next: "green",
-        finish: "orange"
+        Upload: "blue",
+        Update: "yellow",
+        Next: "green",
+        Finish: "orange"
     }
 
-
-    const [status, setStatus] = useState("upload")
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("Upload")
     const [linkedIn, setLinkedIn] = useState({
         platformName: "linkedIn",
         platformLink: ""
@@ -216,7 +217,7 @@ function AgencyForm1() {
         //             }
         //         )
         // }
-        else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)){
+        else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)) {
             setFormDataErrors(
                 {
                     ownerNameError: "",
@@ -277,9 +278,13 @@ function AgencyForm1() {
             )
         }
         else {
+            setLoading(true);
             instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
                 .then(function (response) {
-                    setStatus("next")
+                    setStatus("Next");
+                })
+                .catch(err => {
+                    setLoading(false);
                 })
         }
     }
@@ -317,16 +322,16 @@ function AgencyForm1() {
 
     const handleNavlink = async (e) => {
         console.log(status)
-        if (status !== "next") {
+        if (status !== "Next") {
             e.preventDefault()
-            if (status === "upload" && agencyLogo !== null)
+            if (status === "Upload" && agencyLogo !== null)
                 uploadMedia(agencyLogo.category, agencyLogo.document)
-            else if (status === "update")
+            else if (status === "Update")
                 handleSubmit()
             else
                 toast.error("Upload document.")
         }
-        else if (status === "next")
+        else if (status === "Next")
             window.location.href = "/agency-form-two"
     }
 
@@ -359,7 +364,7 @@ function AgencyForm1() {
                     agencyLogo: response[0].mediaURL
                 })
 
-                setStatus("update")
+                setStatus("Update")
             })
 
     }
@@ -377,138 +382,140 @@ function AgencyForm1() {
 
             <FormPhases value1={true} />
 
+            {loading ? <Spinner /> :
 
-            <div className="mainPersonelDetailsForm">
-                <div className="innerPersonelDetailsForm">
-                    <div className="leftPersonelDetailsForm">
-                        <div className="innerLeftPersonelDetailsForm">
+                <div className="mainPersonelDetailsForm">
+                    <div className="innerPersonelDetailsForm">
+                        <div className="leftPersonelDetailsForm">
+                            <div className="innerLeftPersonelDetailsForm">
 
-                            <div className="formContentPartOne">
-                                <div className="getAgencyLogo">
-                                    <img src={agencyLogo} alt="" />
-                                    <p>{`${agencyLogo?.document?.name ?? ""}`}</p>
-                                    <FilePicker
-                                        extensions={['pdf', 'jpg', 'png']}
-                                        onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
-                                        onError={error => handleUploadError(error)}>
+                                <div className="formContentPartOne">
+                                    <div className="getAgencyLogo">
+                                        <img src={agencyLogo} alt="" />
+                                        <p>{`${agencyLogo?.document?.name ?? ""}`}</p>
+                                        <FilePicker
+                                            extensions={['pdf', 'jpg', 'png']}
+                                            onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
+                                            onError={error => handleUploadError(error)}>
 
-                                        <button>
-                                            <i class="fa fa-upload" aria-hidden="true" />
+                                            <button>
+                                                <i class="fa fa-upload" aria-hidden="true" />
                                             Pick File
                                         </button>
-                                    </FilePicker>
-                                </div>
-                                <div className="getAgencyDesc">
-                                    <p>Description</p>
-                                    <textarea
-                                        name="agencyDescription"
-                                        cols="30"
-                                        rows="5"
-                                        value={formData?.agencyDescription}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyDescriptionError !== '' && <Alert severity="error">{formDataErrors.agencyDescriptionError}</Alert>}
-                                </div>
-                            </div>
-
-                            <div className="formContentPartTwo">
-                                <div className="getOwnerName">
-                                    <p>Owner Name</p>
-                                    <input
-                                        type="text"
-                                        placeholder="Jack Morrison"
-                                        name="ownerName"
-                                        value={formData?.ownerName}
-                                        onChange={(event) => handleChange(event)}
-                                    />
-                                    {formDataErrors.ownerNameError !== '' && <Alert severity="error">{formDataErrors.ownerNameError}</Alert>}
+                                        </FilePicker>
+                                    </div>
+                                    <div className="getAgencyDesc">
+                                        <p>Description</p>
+                                        <textarea
+                                            name="agencyDescription"
+                                            cols="30"
+                                            rows="5"
+                                            value={formData?.agencyDescription}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyDescriptionError !== '' && <Alert severity="error">{formDataErrors.agencyDescriptionError}</Alert>}
+                                    </div>
                                 </div>
 
-                                <div className="getOwnerName">
-                                    <p>Company Email</p>
-                                    <input
-                                        type="text"
-                                        placeholder="abc@abc.in"
-                                        name="agencyEmail"
-                                        value={formData?.agencyEmail}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyEmailError !== '' && <Alert severity="error">{formDataErrors.agencyEmailError}</Alert>}
-                                </div>
-                            </div>
+                                <div className="formContentPartTwo">
+                                    <div className="getOwnerName">
+                                        <p>Owner Name</p>
+                                        <input
+                                            type="text"
+                                            placeholder="Jack Morrison"
+                                            name="ownerName"
+                                            value={formData?.ownerName}
+                                            onChange={(event) => handleChange(event)}
+                                        />
+                                        {formDataErrors.ownerNameError !== '' && <Alert severity="error">{formDataErrors.ownerNameError}</Alert>}
+                                    </div>
 
-                            <div className="formContentPartTwo">
-                                <div className="getOwnerName">
-                                    <p>Company Phone</p>
-                                    <input
-                                        maxLength='10'
-                                        type="text"
-                                        placeholder="9876543210"
-                                        name="agencyPhone"
-                                        value={formData?.agencyPhone}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyPhoneError !== '' && <Alert severity="error">{formDataErrors.agencyPhoneError}</Alert>}
-                                </div>
-                                <div className="getOwnerName">
-                                    <p>LinkedIn URL</p>
-                                    <input placeholder="E.g - https://www.linkedin.com/shethink-pvt-ltd/"
-                                        type="text"
-                                        name={linkedIn?.platformName}
-                                        value={linkedIn?.platformLink}
-                                        onChange={(event) => handleSocialPlatform(event)} />
-                                    {formDataErrors.socialPlatformDetailsError !== '' && <Alert severity="error">{formDataErrors.socialPlatformDetailsError}</Alert>}
-                                </div>
-                            </div>
-
-                            <div className="formContentPartTwo">
-                                <div className="getOwnerName">
-                                    <p>Company Address</p>
-                                    <input
-                                        type="text"
-                                        placeholder="scheme 54, Vijay Nagar"
-                                        name="address"
-                                        id="address_location"
-                                        value={formData?.agencyAddress?.address}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyAddressError.addressError !== '' && <Alert severity="error">{formDataErrors.agencyAddressError.addressError}</Alert>}
+                                    <div className="getOwnerName">
+                                        <p>Company Email</p>
+                                        <input
+                                            type="text"
+                                            placeholder="abc@abc.in"
+                                            name="agencyEmail"
+                                            value={formData?.agencyEmail}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyEmailError !== '' && <Alert severity="error">{formDataErrors.agencyEmailError}</Alert>}
+                                    </div>
                                 </div>
 
-                                <div className="getOwnerName">
-                                    <p>Company Location</p>
-                                    <input
-                                        type="text"
-                                        placeholder="Indore,MP"
-                                        name="location"
-                                        id="address_location"
-                                        value={formData?.agencyAddress?.location}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyAddressError.locationError !== '' && <Alert severity="error">{formDataErrors.agencyAddressError.locationError}</Alert>}
+                                <div className="formContentPartTwo">
+                                    <div className="getOwnerName">
+                                        <p>Company Phone</p>
+                                        <input
+                                            maxLength='10'
+                                            type="text"
+                                            placeholder="9876543210"
+                                            name="agencyPhone"
+                                            value={formData?.agencyPhone}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyPhoneError !== '' && <Alert severity="error">{formDataErrors.agencyPhoneError}</Alert>}
+                                    </div>
+                                    <div className="getOwnerName">
+                                        <p>LinkedIn URL</p>
+                                        <input placeholder="E.g - https://www.linkedin.com/shethink-pvt-ltd/"
+                                            type="text"
+                                            name={linkedIn?.platformName}
+                                            value={linkedIn?.platformLink}
+                                            onChange={(event) => handleSocialPlatform(event)} />
+                                        {formDataErrors.socialPlatformDetailsError !== '' && <Alert severity="error">{formDataErrors.socialPlatformDetailsError}</Alert>}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="nextBtn">
-                                <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
-                                    <button>
-                                        <i class="fa fa-long-arrow-left" aria-hidden="true" />
+                                <div className="formContentPartTwo">
+                                    <div className="getOwnerName">
+                                        <p>Company Address</p>
+                                        <input
+                                            type="text"
+                                            placeholder="scheme 54, Vijay Nagar"
+                                            name="address"
+                                            id="address_location"
+                                            value={formData?.agencyAddress?.address}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyAddressError.addressError !== '' && <Alert severity="error">{formDataErrors.agencyAddressError.addressError}</Alert>}
+                                    </div>
+
+                                    <div className="getOwnerName">
+                                        <p>Company Location</p>
+                                        <input
+                                            type="text"
+                                            placeholder="Indore,MP"
+                                            name="location"
+                                            id="address_location"
+                                            value={formData?.agencyAddress?.location}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyAddressError.locationError !== '' && <Alert severity="error">{formDataErrors.agencyAddressError.locationError}</Alert>}
+                                    </div>
+                                </div>
+
+                                <div className="nextBtn">
+                                    <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
+                                        <button>
+                                            <i class="fa fa-long-arrow-left" aria-hidden="true" />
                                         Back
                                     </button>
-                                </NavLink>
-                                <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}>
-                                    <button style={{ backgroundColor: colors[status] }}>
-                                        {status}
-                                        <i class="fa fa-long-arrow-right" aria-hidden="true" />
-                                    </button>
-                                </NavLink>
-                            </div>
+                                    </NavLink>
+                                    <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}>
+                                        <button style={{ backgroundColor: colors[status] }}>
+                                            {status}
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                        </button>
+                                    </NavLink>
+                                </div>
 
+                            </div>
+                        </div>
+                        <div className="rightPersonelDetailsForm">
+                            <span>Updating Profile</span>
+                            <p>Upadting your profile will make you visible to more clients and lead to more revenue.</p>
+                            <img className="businessModal" src={agency3d} alt="" />
+                            <img className="squareShape" src={squareShape} alt="" />
                         </div>
                     </div>
-                    <div className="rightPersonelDetailsForm">
-                        <span>Updating Profile</span>
-                        <p>Upadting your profile will make you visible to more clients and lead to more revenue.</p>
-                        <img className="businessModal" src={agency3d} alt="" />
-                        <img className="squareShape" src={squareShape} alt="" />
-                    </div>
                 </div>
-            </div>
+            }
         </>
     )
 }

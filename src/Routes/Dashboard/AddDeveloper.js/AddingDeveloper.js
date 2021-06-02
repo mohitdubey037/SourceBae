@@ -117,6 +117,10 @@ function AddingDeveloper() {
         }
     }
 
+    // useEffect(() => {
+    //     setLoading(true);
+    // })
+
 
     const technologyHandler = (event) => {
         const name = event.target.name;
@@ -171,6 +175,7 @@ function AddingDeveloper() {
                     ]
                 })
                 setBtnName("Submit")
+                setLoading(false)
             })
 
     }
@@ -179,15 +184,18 @@ function AddingDeveloper() {
         instance.post(`api/${Role}/developers/create`, developerData)
             .then(function (response) {
                 console.log(response)
-                setBtnName("Next")
+                setBtnName("Next");
+                setLoading(false);
             })
     }
     const handleAction = (name) => {
+        setLoading(true)
         if (name === "Upload") {
             uploadMedia()
 
         }
         else if (name === "Submit") {
+            setLoading(true)
             createDeveloperApi()
         }
         else if (name === "Next") {

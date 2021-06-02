@@ -14,6 +14,10 @@ import Spinner from "../../../../Components/Spinner/Spinner";
 
 function HireAgencyForm3() {
 
+    const colors = {
+        Finish:"green"
+      }
+
     const Role = "client";
     let { projectId } = useParams();
     projectId = helper.cleanParam(projectId)
@@ -27,14 +31,8 @@ function HireAgencyForm3() {
         projectTechnologiesRequired:[]
     })
 
-    const colors = {
-        Upload:"blue",
-        Update:"yellow",
-        Next:"green",
-        Finish:"green"
-      }
+    const [buttonStatus, setButtonStatus] = useState("Next");
 
-    const [buttonStatus, setButtonStatus] = useState("Next")
 
     //selecting domain budget
     const [allTechnologies,setAllTechnologies] = useState([])
@@ -90,10 +88,15 @@ function HireAgencyForm3() {
     }
 
     const hireAgencyForm3Api = ()=>{
+        setLoading(true)
             console.log(apiData);
             instance.post(`/api/${Role}/projects/create`,apiData)
             .then(function(response){
-                setButtonStatus("Finish")
+                setButtonStatus("Finish");
+                setLoading(false);
+            })
+            .catch(err => {
+                setLoading(false);
             })
     }
     const handleButton = ()=>{

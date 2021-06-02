@@ -36,10 +36,7 @@ const BlueRadio = withStyles({
 function HireAgencyForm2() {
 
   const colors = {
-    Upload:"blue",
-    Update:"yellow",
     Next:"green",
-    Finish:"green"
   }
 
   const Role = "client";
@@ -60,12 +57,9 @@ function HireAgencyForm2() {
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState([]);
   const [buttonStatus, setButtonStatus] = useState("Submit");
-  const [loading, setLoading] = useState(true);
-
-
+  const [loading, setLoading] = useState(false);
 
   const classes = useStyles();
-
 
   const handleChange = (event) => {
     const {name, value} = event.target
@@ -119,18 +113,27 @@ function HireAgencyForm2() {
     setOptions(options);
   };
 
-  const handleButton = () => {
-    if (buttonStatus === "Submit") hireAgencyStep2();
-    else if(buttonStatus === "Next" && projectId) window.location.href=`/hire-agency-form-three:${projectId}`
-  };
-
   const hireAgencyStep2 = () => {
-    console.log(apiData);
+    setLoading(true)
     instance.post(`/api/${Role}/projects/create`,apiData)
     .then(function(response){
-        setButtonStatus("Next")
+        setButtonStatus("Next");
+        setLoading(false)
+    })
+    .catch(err => {
+      setLoading(false)
     })
   };
+
+  const handleButton = () => {
+    if (buttonStatus === "Submit") {
+      hireAgencyStep2();
+    }
+    else if(buttonStatus === "Next" && projectId) {
+      window.location.href=`/hire-agency-form-three:${projectId}`
+    }
+  };
+
   useEffect(() => {
     getExpertiseOption();
     selectedDomain?._id && setApiData({

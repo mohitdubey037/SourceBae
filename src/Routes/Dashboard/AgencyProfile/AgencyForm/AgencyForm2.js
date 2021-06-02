@@ -35,10 +35,8 @@ import Spinner from '../../../../Components/Spinner/Spinner'
 function AgencyForm2() {
 
     const colors = {
-        Upload:"blue",
         Update:"yellow",
         Next:"green",
-        Finish:"green"
       }
 
     const Role = "agency"
@@ -116,9 +114,10 @@ function AgencyForm2() {
         })
     },[dom])
     
-    const handleNext = ()=>{
-        setAgencyDomains()
-        setAgencyTechnologies()
+    const handleNext = async ()=>{
+        await setAgencyDomains()
+        console.log('yee nhi pta kb chala');
+        await setAgencyTechnologies()
     }
     //Api Calls methods
 
@@ -223,7 +222,6 @@ function AgencyForm2() {
     useEffect(() => {
 
         if (allDomainsData.length !== 0 && allTechData.length !== 0 && allServicesData.length !== 0){
-            console.log('hii');
             setLoading(false);
         }
     },[allDomainsData,allServicesData, allTechData ])
@@ -261,6 +259,7 @@ function AgencyForm2() {
         if(status==="Update"){
             event.preventDefault()
             handleNext()
+            console.log('hiii peeeps');
         }
         else if(status ==="Next")
             window.location.href = "/agency-form-three"
