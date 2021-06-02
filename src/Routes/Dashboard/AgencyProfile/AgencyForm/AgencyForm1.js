@@ -282,6 +282,7 @@ function AgencyForm1() {
             instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
                 .then(function (response) {
                     setStatus("Next");
+                    setLoading(false);
                 })
                 .catch(err => {
                     setLoading(false);

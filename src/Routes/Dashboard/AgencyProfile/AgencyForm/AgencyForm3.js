@@ -20,7 +20,7 @@ function AgencyForm3() {
 
     const colors = {
         Upload: "blue",
-        Update: "yellow",
+        Update: "orange",
         Next: "green",
     }
 
@@ -51,9 +51,8 @@ function AgencyForm3() {
     })
 
     const handleDocumentPicker = (document, category) => {
-
-        console.log(document);
-        console.log(category);
+        // console.log(document);
+        // console.log(category);
         if (category === registrationCertificate.documentName) {
             setRegistrationCertificate({
                 ...registrationCertificate,
@@ -80,14 +79,14 @@ function AgencyForm3() {
 
     }
 
-    console.log(registrationCertificate);
-
 
     const handleUploadError = (error) => {
         toast.error(error)
     }
 
     function uploadMedia(category, document) {
+        // console.log(category);
+        // console.log(document);
 
         const formData = new FormData();
 
@@ -99,23 +98,23 @@ function AgencyForm3() {
         console.log(formData)
         axios.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
             .then(function (response) {
-                console.log(response);
+                console.log(response.data.data[0].mediaURL);
                 if (category === registrationCertificate.documentName)
                     setRegistrationCertificate({
                         ...registrationCertificate,
-                        documentLink: response.data.mediaURL
+                        documentLink: response.data.data[0].mediaURL
                     })
 
                 else if (category === brochureDoc.documentName)
                     setBrochureDoc({
                         ...brochureDoc,
-                        documentLink: response.data.mediaURL
+                        documentLink: response.data.data[0].mediaURL
                     })
 
                 else if (category === panCardDoc.documentName)
                     setPanCardDoc({
                         ...panCardDoc,
-                        documentLink: response.data.mediaURL
+                        documentLink: response.data.data[0].mediaURL
                     })
             })
 
@@ -125,6 +124,7 @@ function AgencyForm3() {
         setLoading(true);
         const { name } = event.target
         if (name === "Upload" && pickedAll) {
+            // console.log(registrationCertificate.documentName, registrationCertificate.document);
             uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
             uploadMedia(brochureDoc.documentName, brochureDoc.document)
             uploadMedia(panCardDoc.documentName, panCardDoc.document)
@@ -132,6 +132,9 @@ function AgencyForm3() {
     }
 
     const handleUpdate = () => {
+        // console.log(registrationCertificate);
+        // console.log(brochureDoc);
+        // console.log(panCardDoc);
         setLoading(true);
         const apiData = {
             stepsCompleted: "4",
@@ -162,12 +165,16 @@ function AgencyForm3() {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
             setPickedAll(true)
         }
-        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "")
+
+        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== ""){
+            setStatus("Update");
             toast.success('media saved successfully');
             setLoading(false);
+        }
 
-        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "")
-            setStatus("Update")
+        console.log(registrationCertificate, brochureDoc, panCardDoc);
+
+
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
     useEffect(() => {

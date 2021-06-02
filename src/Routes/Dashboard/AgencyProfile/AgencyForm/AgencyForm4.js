@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
 
@@ -13,7 +13,6 @@ import Alert from '@material-ui/lab/Alert';
 //axios instance
 import instance from "../../../../Constants/axiosConstants"
 import * as helper from "../../../../shared/helper"
-import Spinner from '../../../../Components/Spinner/Spinner'
 
 
 function AgencyForm4() {
@@ -84,6 +83,7 @@ function AgencyForm4() {
     }
 
     const createAgencyForm4Api = (apiData) => {
+        setLoading(true);
         instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 setStatus("Finish")
@@ -93,6 +93,48 @@ function AgencyForm4() {
                 setLoading(false)
             })
     }
+
+    const finishAgencyForm4Api = (apiData) => {
+        setLoading(true);
+        instance.post(`api/${Role}/agencies/create`, apiData)
+            .then(function (response) {
+                setLoading(false)
+            })
+            .catch(err => {
+                setLoading(false)
+            })
+    }
+
+    useEffect(() => {
+        if (githubLink.platformLink === "" && stackoverflow.platformLink === "" && (fields[0].value === null || fields[0].value === '') && featuredLink.platformLink === "") {
+            console.log('finish')
+            setStatus('Finish')
+        }
+        else {
+            setStatus('Update')
+        }
+    })
+
+    // useEffect(() => {
+    //     console.log(fields[0].value);
+    //     if(githubLink.platformLink === ""){
+    //         console.log('1 hi');
+    //     }
+    //     if(stackoverflow.platformLink === ""){
+    //         console.log('2 hi');
+    //     }
+    //     if(fields[0].value === ""){
+    //         console.log('3 hi');
+    //     }
+    //     if(featuredLink.platformLink === ""){
+    //         console.log(' 4 hi');
+    //     }
+    // })
+
+    // useEffect(() => {
+    //     console.log(status);
+
+    // }, status)
 
     const handleNext = () => {
 
@@ -104,185 +146,229 @@ function AgencyForm4() {
             featuredLinkError: '',
         };
 
-        if (githubLink.platformLink === "" && githubLink.platformLink < 12) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                githubLinkError: 'Github link is required.',
-            })
-
-        }
-        else if (!helper.validateLink(githubLink.platformLink)) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                githubLinkError: 'Invalid link provided.',
-            })
-
-        }
-        else if (stackoverflow.platformLink === "" && stackoverflow.platformLink < 12) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                stackoverflowLinkError: 'Stackoverflow link is required.',
-            })
-
-        }
-        else if (!helper.validateLink(stackoverflow.platformLink)) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                stackoverflowLinkError: 'Invalid link provided.',
-            })
-
-        }
-        else if (fields[0].value === "" && fields[0].value < 12) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                portfolioLinkError: 'Portfolio link is required.',
-            })
-
-        }
-        else if (!helper.validateLink(fields[0].value)) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                portfolioLinkError: 'Invalid link provided.',
-            })
-
-        }
-        else if (featuredLink.platformLink === "" && featuredLink.platformLink < 12) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                featuredLinkError: 'Featured link is required.',
-            })
-
-        }
-        else if (!helper.validateLink(featuredLink.platformLink)) {
-            setProfileLinksErrors({
-                ...tempProfileLinks,
-                featuredLinkError: 'Invalid link provided.',
-            })
-
-        }
-        else {
-            if (status === "Update") {
-                setLoading(true);
-                const portfolios = fields.map((link, index) => {
-                    return {
-                        platformName: `portfolio${index + 1}`,
-                        platformLink: link.value
-                    }
+        if (githubLink.platformLink !== "") {
+            if (!helper.validateLink(githubLink.platformLink)) {
+                setProfileLinksErrors({
+                    ...tempProfileLinks,
+                    githubLinkError: 'Invalid link provided.',
                 })
-                const apiData = {
-                    stepsCompleted: "5",
-                    socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
-                }
-                createAgencyForm4Api(apiData)
             }
-            else if (status === "Finish") {
-                window.location.href = "/dashboard"
+        }
+        if (stackoverflow.platformLink !== "") {
+            if (!helper.validateLink(stackoverflow.platformLink)) {
+                setProfileLinksErrors({
+                    ...tempProfileLinks,
+                    stackoverflowLinkError: 'Invalid link provided.',
+                })
+            }
+        }
+        if (fields[0].value !== "") {
+            if (!helper.validateLink(fields[0].value)) {
+                setProfileLinksErrors({
+                    ...tempProfileLinks,
+                    portfolioLinkError: 'Invalid link provided.',
+                })
+            }
+        }
+        if (featuredLink.platformLink !== "") {
+            if (!helper.validateLink(featuredLink.platformLink)) {
+                setProfileLinksErrors({
+                    ...tempProfileLinks,
+                    featuredLinkError: 'Invalid link provided.',
+                })
             }
         }
 
-    };
+        // if (githubLink.platformLink === "" && githubLink.platformLink < 12) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         githubLinkError: 'Github link is required.',
+        //     })
+
+        // }
+        // else if (!helper.validateLink(githubLink.platformLink)) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         githubLinkError: 'Invalid link provided.',
+        //     })
+
+        // }
+        // else if (stackoverflow.platformLink === "" && stackoverflow.platformLink < 12) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         stackoverflowLinkError: 'Stackoverflow link is required.',
+        //     })
+
+        // }
+        // else if (!helper.validateLink(stackoverflow.platformLink)) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         stackoverflowLinkError: 'Invalid link provided.',
+        //     })
+
+        // }
+        // else if (fields[0].value === "" && fields[0].value < 12) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         portfolioLinkError: 'Portfolio link is required.',
+        //     })
+
+        // }
+        // else if (!helper.validateLink(fields[0].value)) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         portfolioLinkError: 'Invalid link provided.',
+        //     })
+
+        // }
+        // else if (featuredLink.platformLink === "" && featuredLink.platformLink < 12) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         featuredLinkError: 'Featured link is required.',
+        //     })
+
+        // }
+        // else if (!helper.validateLink(featuredLink.platformLink)) {
+        //     setProfileLinksErrors({
+        //         ...tempProfileLinks,
+        //         featuredLinkError: 'Invalid link provided.',
+        //     })
+
+        // }
 
 
-    return (
-        <>
-            <Navbar />
+        if (status === "Update") {
+            const portfolios = fields.map((link, index) => {
+                return {
+                    platformName: `portfolio${index + 1}`,
+                    platformLink: link.value
+                }
+            })
+            const apiData = {
+                stepsCompleted: "5",
+                socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+            }
+            createAgencyForm4Api(apiData)
+        }
 
-            <FormPhases value1={true} value2={true} value3={true} value4={true} />
+        if (status === "Finish") {
+            const portfolios = fields.map((link, index) => {
+                return {
+                    platformName: `portfolio${index + 1}`,
+                    platformLink: link.value
+                }
+            })
+            const apiData = {
+                stepsCompleted: '5',
+                socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+            }
+            finishAgencyForm4Api(apiData);
+            // setTimeout(() => {
+            //     window.location.href = "/dashboard"
+            // }, 3000);
+        }
+    }
 
-            {loading ? <Spinner /> :
 
+return (
+    <>
+        <Navbar />
 
-                <div className="mainSocialLinks">
-                    <div className="innerSocialLinks">
-                        <div className="socialInputs">
+        <FormPhases value1={true} value2={true} value3={true} value4={true} />
 
-                            <div>
-                                <section className="linksImages">
-                                    <img src={github} alt="github logo" />
-                                    <p>Github Link <span>(optional)</span></p>
-                                </section>
-                                <input
-                                    placeholder="E.g - https://www.github.com/your_name"
-                                    type="text"
-                                    name={githubLink.platformName}
-                                    value={githubLink.platformLink}
-                                    onChange={handleSocialPlatform} />
-                                {profileLinksErrors.githubLinkError !== "" && <Alert severity="error">{profileLinksErrors.githubLinkError}</Alert>}
-                            </div>
-                            <div>
-                                <section className="linksImages">
-                                    <img src={stack} alt="stackoverflow logo" />
-                                    <p>StackOverflow Link <span>(optional)</span></p>
-                                </section>
-                                <input placeholder="E.g - https://www.stackoverflow.com/your_name"
-                                    type="text"
-                                    name={stackoverflow.platformName}
-                                    value={stackoverflow.platformLink}
-                                    onChange={handleSocialPlatform} />
-                                {profileLinksErrors.stackoverflowLinkError !== "" && <Alert severity="error">{profileLinksErrors.stackoverflowLinkError}</Alert>}
-                            </div>
-                            <div>
-                                <section className="linksImages">
-                                    <img src={portfolio} alt="portfolio logo" />
-                                    <p>Portfolio Link <span>(optional)</span></p>
-                                    <div className="addMoreFields" onClick={() => handleAdd()}>+ Add More</div>
-                                </section>
-                                {
-                                    fields.map((value, index) => {
-                                        return (
-                                            <div className="extraFields">
-                                                <input
-                                                    onChange={e => handleChange(index, e)}
-                                                    placeholder="E.g - https://www.your_company.com/"
-                                                    type="text"
-                                                    value={value[index]}
-                                                    name="portfolioLink"
-                                                    id="" />
-                                                {
-                                                    index === 0 ? null : <div><i onClick={() => handleRemove(index)} class="fa fa-times" aria-hidden="true"></i></div>
-                                                }
-                                            </div>
+        <div className="mainSocialLinks">
+            <div className="innerSocialLinks">
+                <div className="socialInputs">
 
-                                        )
-                                    })
-                                }
-                                {profileLinksErrors.portfolioLinkError !== "" && <Alert severity="error">{profileLinksErrors.portfolioLinkError}</Alert>}
-                            </div>
+                    <div>
+                        <section className="linksImages">
+                            <img src={github} alt="github logo" />
+                            <p>Github Link <span>(optional)</span></p>
+                        </section>
+                        <input
+                            placeholder="E.g - https://www.github.com/your_name"
+                            type="text"
+                            name={githubLink.platformName}
+                            value={githubLink.platformLink}
+                            onChange={handleSocialPlatform} />
+                        {profileLinksErrors.githubLinkError !== "" && <Alert severity="error">{profileLinksErrors.githubLinkError}</Alert>}
+                    </div>
 
-                            <div>
-                                <section className="linksImages">
-                                    <img src={featureLink} alt="featured link logo" />
-                                    <p>Featured Link <span>(optional)</span></p>
-                                </section>
-                                <input placeholder="E.g - https://www.company.com/your_feed"
-                                    type="text"
-                                    name={featuredLink.platformName}
-                                    value={featuredLink.platformLink}
-                                    onChange={handleSocialPlatform} />
-                                {profileLinksErrors.featuredLinkError !== "" && <Alert severity="error">{profileLinksErrors.featuredLinkError}</Alert>}
-                            </div>
+                    <div>
+                        <section className="linksImages">
+                            <img src={stack} alt="stackoverflow logo" />
+                            <p>StackOverflow Link <span>(optional)</span></p>
+                        </section>
+                        <input placeholder="E.g - https://www.stackoverflow.com/your_name"
+                            type="text"
+                            name={stackoverflow.platformName}
+                            value={stackoverflow.platformLink}
+                            onChange={handleSocialPlatform} />
+                        {profileLinksErrors.stackoverflowLinkError !== "" && <Alert severity="error">{profileLinksErrors.stackoverflowLinkError}</Alert>}
+                    </div>
 
-                            <div className="nextBtn">
-                                <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
-                                    <button>
-                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                    <div>
+                        <section className="linksImages">
+                            <img src={portfolio} alt="portfolio logo" />
+                            <p>Portfolio Link <span>(optional)</span></p>
+                            <div className="addMoreFields" onClick={() => handleAdd()}>+ Add More</div>
+                        </section>
+                        {
+                            fields.map((value, index) => {
+                                return (
+                                    <div className="extraFields">
+                                        <input
+                                            onChange={e => handleChange(index, e)}
+                                            placeholder="E.g - https://www.your_company.com/"
+                                            type="text"
+                                            value={value[index]}
+                                            name="portfolioLink"
+                                            id="" />
+                                        {
+                                            index === 0 ? null : <div><i onClick={() => handleRemove(index)} class="fa fa-times" aria-hidden="true"></i></div>
+                                        }
+                                    </div>
+
+                                )
+                            })
+                        }
+                        {profileLinksErrors.portfolioLinkError !== "" && <Alert severity="error">{profileLinksErrors.portfolioLinkError}</Alert>}
+                    </div>
+
+                    <div>
+                        <section className="linksImages">
+                            <img src={featureLink} alt="featured link logo" />
+                            <p>Featured Link <span>(optional)</span></p>
+                        </section>
+                        <input placeholder="E.g - https://www.company.com/your_feed"
+                            type="text"
+                            name={featuredLink.platformName}
+                            value={featuredLink.platformLink}
+                            onChange={handleSocialPlatform} />
+                        {profileLinksErrors.featuredLinkError !== "" && <Alert severity="error">{profileLinksErrors.featuredLinkError}</Alert>}
+                    </div>
+
+                    <div className="nextBtn">
+                        <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
+                            <button>
+                                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                 </button>
-                                </NavLink>
-                                {/* <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                                <button style={{ backgroundColor: colors[status] }} onClick={handleNext} >
-                                    {status}
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true" />
-                                </button>
-                            </div>
-                        </div>
-                        <div className="socialArea">
-                            <img src={links} alt="" />
-                        </div>
+                        </NavLink>
+                        {/* <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
+                        <button style={{ backgroundColor: colors[status] }} onClick={handleNext} >
+                            {status}
+                            <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                        </button>
                     </div>
                 </div>
-            }
-        </>
-    )
+                <div className="socialArea">
+                    <img src={links} alt="" />
+                </div>
+            </div>
+        </div>
+    </>
+)
 }
 
 export default AgencyForm4
+
