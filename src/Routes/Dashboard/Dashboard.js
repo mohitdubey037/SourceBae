@@ -15,7 +15,7 @@ import Navbar from './Navbar'
 import Select from '@material-ui/core/Select';
 
 import Tooltip from 'react-power-tooltip'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 
@@ -184,7 +184,7 @@ const Dashboard = () => {
             {(!verified || steps !== -1) && <div className="mainUpdateVerify">
                 <div className="innerMainVerify">
 
-                    {!verified && steps!==-1 ?
+                    {!verified && steps !== -1 ?
                         <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
                         :
                         <p>Please wait for your profile to be verified by us.</p>
@@ -274,9 +274,16 @@ const Dashboard = () => {
                                                     <div className="projectImage">
                                                         <img src={clientProfile} alt="" />
                                                     </div>
-                                                    <div className="projectName">
-                                                        <h4>{value?.projectName}</h4>
-                                                    </div>
+                                                    {/* <div className="projectName"> */}
+                                                        <NavLink className="projectName" to={{
+                                                            pathname: "/project-details",
+                                                            state: { ...value },
+                                                            condition: 'Agency'
+                                                        }}
+                                                        >{value?.projectName}
+                                                        </NavLink>
+                                                        {/* <h4>{value?.projectName}</h4> */}
+                                                    {/* </div> */}
                                                 </div>
                                                 <div className="moreDetails">
                                                     <Button

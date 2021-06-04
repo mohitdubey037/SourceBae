@@ -41,7 +41,6 @@ function Navbar(props) {
 
 
     const handleClick = (event) => {
-        console.log(event)
         setAnchorEl(event.currentTarget);
     };
 
@@ -65,7 +64,8 @@ function Navbar(props) {
 
     const handleLogout = ()=>{
         handleClose()
-        localStorage.removeItem("Authorization")
+        localStorage.removeItem("Authorization");
+        localStorage.removeItem('role');
         window.location.href = "/"
     
     }

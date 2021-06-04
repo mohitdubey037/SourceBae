@@ -9,7 +9,8 @@ import wave from '../../../assets/images/ClientDashboard/wave.svg'
 import littleVector from '../../../assets/images/ClientDashboard/littleVector.png'
 import dots from '../../../assets/images/ClientDashboard/dots.png'
 import info from '../../../assets/images/ClientDashboard/info.png'
-import { useHistory } from 'react-router-dom';
+import { withRouter } from "react-router";
+import { NavLink, useHistory, Link } from 'react-router-dom';
 
 
 
@@ -18,7 +19,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
 import instance from '../../../Constants/axiosConstants';
 
 
@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Dashboard() {
-    const routerHistory = useHistory();
-    
+    // const routerHistory = useHistory();
+
 
     const classes = useStyles();
     const [age, setAge] = React.useState('');
@@ -48,7 +48,7 @@ function Dashboard() {
 
     useEffect(() => {
         getAllProjects();
-        
+
     }, [])
 
     const getAllProjects = () => {
@@ -76,7 +76,7 @@ function Dashboard() {
     }
 
     const routeRedirecter = (id) => {
-        window.location.href=`/agency-list:${id}`;
+        window.location.href = `/agency-list:${id}`;
     }
 
     return (
@@ -164,7 +164,18 @@ function Dashboard() {
                                         <span className="leftBorderClientProject"></span>
                                         <div className="cardTopPart">
                                             <div className="projectName">
-                                                <h6>{p.projectName}</h6>
+                                                {/* <h6 onClick={() => <NavLink to ={{
+                                                                    pathname: "/dsfdsfjgdsjfsjfgj-details",
+                                                                    state: {...p}
+                                                                }}/>
+                                                                }>{p.projectName}</h6> */}
+                                                <Link className="projectDetailsRouter" to={{
+                                                    pathname: "/project-details",
+                                                    state: { ...p},
+                                                    condition: 'Client'
+                                                }}
+                                                >{p.projectName}
+                                                </Link>
                                                 <em>{p.projectType}</em>
                                             </div>
                                             <div className="projectStatus">
@@ -185,25 +196,25 @@ function Dashboard() {
                                             </div>
                                         </div> */}
 
-                                <div className="projectStage">
-                                    <span className="statusLine"></span>
-                                    <div>
-                                        <span style={{ backgroundColor: p.projectCurrentStatus === 'Posted' ? '#5cb85c' : '#626567' }}>01</span>
-                                        <p>{p.projectCurrentStatus}</p>
-                                    </div>
-                                    <div>
-                                        <span style={{ backgroundColor: '#00ffbf' }}>02</span>
-                                        <p>Shortlist Agency</p>
-                                    </div>
-                                    <div>
-                                        <span style={{ backgroundColor: '#800000' }}>03</span>
-                                        <p>Request Quotation</p>
-                                    </div>
-                                    <div>
-                                        <span style={{ backgroundColor: '#0000ff'}}>04</span>
-                                        <p>Hire the best!</p>
-                                    </div>
-                                </div>
+                                        <div className="projectStage">
+                                            <span className="statusLine"></span>
+                                            <div>
+                                                <span style={{ backgroundColor: p.projectCurrentStatus === 'Posted' ? '#5cb85c' : '#626567' }}>01</span>
+                                                <p>{p.projectCurrentStatus}</p>
+                                            </div>
+                                            <div>
+                                                <span style={{ backgroundColor: '#00ffbf' }}>02</span>
+                                                <p>Shortlist Agency</p>
+                                            </div>
+                                            <div>
+                                                <span style={{ backgroundColor: '#800000' }}>03</span>
+                                                <p>Request Quotation</p>
+                                            </div>
+                                            <div>
+                                                <span style={{ backgroundColor: '#0000ff' }}>04</span>
+                                                <p>Hire the best!</p>
+                                            </div>
+                                        </div>
 
                                         <div className="clientProjectInformation">
                                             <div className="projectStatusInfo">
@@ -431,4 +442,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+export default withRouter(Dashboard)
