@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Dashboard() {
-    // const routerHistory = useHistory();
 
 
     const classes = useStyles();
@@ -48,7 +47,6 @@ function Dashboard() {
 
     useEffect(() => {
         getAllProjects();
-
     }, [])
 
     const getAllProjects = () => {
@@ -169,13 +167,13 @@ function Dashboard() {
                                                                     state: {...p}
                                                                 }}/>
                                                                 }>{p.projectName}</h6> */}
-                                                <Link className="projectDetailsRouter" to={{
+                                                <NavLink className="projectDetailsRouter" to={{
                                                     pathname: "/project-details",
                                                     state: { ...p},
-                                                    condition: 'Client'
+                                                    condition: 'Client',
                                                 }}
                                                 >{p.projectName}
-                                                </Link>
+                                                </NavLink>
                                                 <em>{p.projectType}</em>
                                             </div>
                                             <div className="projectStatus">

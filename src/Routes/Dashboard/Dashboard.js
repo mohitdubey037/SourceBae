@@ -18,11 +18,14 @@ import Tooltip from 'react-power-tooltip'
 import { Link, NavLink } from 'react-router-dom'
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
+import Moment from 'react-moment';
+
 
 
 const Dashboard = () => {
 
-    const Role = "agency"
+    const Role = "agency";
+    const agencyId = localStorage.getItem('userId');
 
     const [steps, setSteps] = useState(0)
     const [formRoute, setFormRoute] = useState("/")
@@ -33,6 +36,7 @@ const Dashboard = () => {
 
     const [age, setAge] = React.useState('');
     const [verified, setVerified] = useState(false)
+    const [projects, setProjects] = useState([])
 
     const handleClick = (event) => {
         console.log(event)
@@ -47,7 +51,17 @@ const Dashboard = () => {
         setAge(event.target.value);
     };
 
+    const getAllProjects = () => {
+        instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=true`)
+            .then(function (response) {
+                setProjects(response);
+                console.log(response);
+            });
+    }
 
+    useEffect(() => {
+        getAllProjects()
+    }, [])
 
     const cardsArray = [
         {
@@ -265,79 +279,82 @@ const Dashboard = () => {
                     </div>
                     <div className="allProjects">
                         {
-                            allProjects.map((value, index) => {
-                                return (
-                                    <div className="mainProjectCard">
-                                        <div className="innerProjectCard">
-                                            <div className="projectInformation">
-                                                <div className="projectDetails" onClick={() => window.location.href = "/project-details"} style={{ cursor: 'pointer' }}>
-                                                    <div className="projectImage">
-                                                        <img src={clientProfile} alt="" />
-                                                    </div>
-                                                    {/* <div className="projectName"> */}
-                                                        <NavLink className="projectName" to={{
-                                                            pathname: "/project-details",
-                                                            state: { ...value },
-                                                            condition: 'Agency'
-                                                        }}
-                                                        >{value?.projectName}
-                                                        </NavLink>
-                                                        {/* <h4>{value?.projectName}</h4> */}
-                                                    {/* </div> */}
-                                                </div>
-                                                <div className="moreDetails">
-                                                    <Button
-                                                        aria-controls="long-menu"
-                                                        aria-haspopup="true"
-                                                        onClick={moreHandleClick}
-                                                    >
-                                                        <MoreHorizIcon />
-                                                    </Button>
-                                                    <Menu
-                                                        id="long-menu"
-                                                        anchorEl={moreOption}
-                                                        keepMounted
-                                                        open={moreOption}
-                                                        onClose={moreHandleClose}
-                                                    >
-                                                        {moreOptions.map((option) => (
-                                                            <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                                                                {option}
-                                                            </MenuItem>
-                                                        ))}
-                                                    </Menu>
-                                                </div>
-                                            </div>
-                                            <div className="projectDescription">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet viverra eget ut enim, massa.</p>
-                                            </div>
-                                            <div className="projectTable">
-                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
-                                                    <h6>Project Status</h6>
-                                                    <h6 style={{ color: value?.projectStatus === "Live" ? '#5cb85c' : value?.projectStatus === 'Completed' ? '#f0ad4e' : '#d9534f', fontWeight: 'bold' }} >{value?.projectStatus}</h6>
-                                                </div>
-                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
-                                                    <h6>Budget</h6>
-                                                    <h6>{value?.budget}</h6>
-                                                </div>
-                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
-                                                    <h6>Creation Date</h6>
-                                                    <h6>{value?.creationDate}</h6>
-                                                </div>
-                                                <div style={{ borderBottom: '1px solid #d3d3d3' }}>
-                                                    <h6>Duration</h6>
-                                                    <h6>{value?.duration}</h6>
-                                                </div>
-                                                <div >
-                                                    <h6>Project type</h6>
-                                                    <h6>{value?.projectType}</h6>
-                                                </div>
+                            projects.length > 0 ?
+                                projects.map((value, index) => {
+                                    return (
+                                        <div className="mainProjectCard">
+                                            <div className="innerProjectCard">
+                                                <div className="projectInformation">
+                                                    <div className="projectDetails">
+                                                        <div className="projectImage">
+                                                            <img src={clientProfile} alt="" />
+                                                        </div>
+                                                        <div className="projectName">
+                                                            <NavLink className="projectN" to={{
+                                                                pathname: "/project-details",
+                                                                state: { ...value },
+                                                                condition: 'Agency',
 
+                                                            }}
+                                                            >{value?.projectName}
+                                                            </NavLink>
+                                                            {/* <h4>{value?.projectName}</h4>  */}
+                                                        </div>
+                                                    </div>
+                                                    <div className="moreDetails">
+                                                        <Button
+                                                            aria-controls="long-menu"
+                                                            aria-haspopup="true"
+                                                            onClick={moreHandleClick}
+                                                        >
+                                                            <MoreHorizIcon />
+                                                        </Button>
+                                                        <Menu
+                                                            id="long-menu"
+                                                            anchorEl={moreOption}
+                                                            keepMounted
+                                                            open={moreOption}
+                                                            onClose={moreHandleClose}
+                                                        >
+                                                            {moreOptions.map((option) => (
+                                                                <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+                                                                    {option}
+                                                                </MenuItem>
+                                                            ))}
+                                                        </Menu>
+                                                    </div>
+                                                </div>
+                                                <div className="projectDescription">
+                                                    <p>{value?.projectDescription}</p>
+                                                </div>
+                                                <div className="projectTable">
+                                                    <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                        <h6>Project Status</h6>
+                                                        <h6 style={{ color: value?.projectCurrentStatus === "Live" ? '#5cb85c' : value?.projectCurrentStatus === 'Completed' ? '#f0ad4e' : '#d9534f', fontWeight: 'bold' }} >{value?.projectCurrentStatus}</h6>
+                                                    </div>
+                                                    <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                        <h6>Budget</h6>
+                                                        <h6>{value?.projectProposalCost}</h6>
+                                                    </div>
+                                                    <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                        <h6>Creation Date</h6>
+                                                        <Moment format="D MMM YYYY" withTitle><h6>{value?.createdAt}</h6></Moment>
+                                                    </div>
+                                                    <div style={{ borderBottom: '1px solid #d3d3d3' }}>
+                                                        <h6>Duration</h6>
+                                                        <h6>45</h6>
+                                                    </div>
+                                                    <div >
+                                                        <h6>Project type</h6>
+                                                        <h6>{value?.projectType}</h6>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )
-                            })
+                                    )
+                                })
+                            : <h2>No Data Found</h2>
                         }
                     </div>
                 </div>
@@ -347,3 +364,4 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+

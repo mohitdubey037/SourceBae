@@ -73,7 +73,6 @@ const App = (props) => {
     <CustomRoute condition="Client" exact path="/hire-developer" component={HireDeveloper} />
     <CustomRoute condition="Client" exact path="/agency-list:projectId" component={AgencyList} />
     <CustomRoute condition="Client" exact path="/client-profile" component={ClientProfile} />
-
     <CustomRoute condition="Client" exact path="/product-form" component={ProductForm} />
     <CustomRoute condition="Client" exact path="/product-details" component={ProductDetails} />
     <CustomRoute condition="Client" exact path="/product-agencies" component={ProductAgencies} />
