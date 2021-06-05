@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, withRouter } from "react-router-dom";
 import * as helper from "../shared/helper"
 
+
+
 const CustomRoute = props => {
-    const [returnedRoute, setReturnedRoute] = useState("");
-    const user = helper.capitalize(localStorage.getItem('role'))
-    useEffect(() => {
+    const temp = localStorage.getItem('role');
+    let user = ''
+    if (temp !== null && temp !== '' && temp !== 'undefined'){
+        user = helper.capitalize(localStorage.getItem('role'))
+    }
+    // console.log(user);
+    // console.log(props);
+    // console.log(props.condition);
         switch (props.condition) {
             case "Agency":
                 user==="Client" && alert("Invalid")
-                return setReturnedRoute(
+                return (
                     user === "Agency" ? (
                         <Route {...props} />
                     ) : (
@@ -18,7 +25,7 @@ const CustomRoute = props => {
                 );
             case "Client":
                 user==="Agency" && alert("Invalid url")
-                return setReturnedRoute(
+                return (
                     user === "Client" ? (
                         <Route {...props} />
                     ) : (
@@ -26,10 +33,8 @@ const CustomRoute = props => {
                     )
                 );
             default:
-                return setReturnedRoute(<Route {...props} />);
+                return (<Redirect to='page-not-found'/>);
         }
-    }, [user]);
-    return <>{returnedRoute}</>;
 };
 
-export default CustomRoute;
+export default withRouter(CustomRoute);

@@ -9,15 +9,20 @@ import MultiSelect from "react-multi-select-component";
 
 //multi-select
 import instance from "../../../../Constants/axiosConstants";
-
+import Spinner from "../../../../Components/Spinner/Spinner";
 
 
 function HireAgencyForm3() {
+
+    const colors = {
+        Finish:"green"
+      }
 
     const Role = "client";
     let { projectId } = useParams();
     projectId = helper.cleanParam(projectId)
 
+    const [loading, setLoading] = useState(true);
     const [allServices, setAllServices] = useState([])
     const [selected, setSelected] = useState([]);
     const [apiData , setApiData] = useState({
@@ -26,14 +31,8 @@ function HireAgencyForm3() {
         projectTechnologiesRequired:[]
     })
 
-    const colors = {
-        Upload:"blue",
-        Update:"yellow",
-        Next:"green",
-        Finish:"green"
-      }
+    const [buttonStatus, setButtonStatus] = useState("Next");
 
-    const [buttonStatus, setButtonStatus] = useState("Next")
 
     //selecting domain budget
     const [allTechnologies,setAllTechnologies] = useState([])
@@ -84,15 +83,20 @@ function HireAgencyForm3() {
                     }
                 })
                 setAllServices(servicesNames)
-            
+                setLoading(false)
             })
     }
 
     const hireAgencyForm3Api = ()=>{
+        setLoading(true)
             console.log(apiData);
             instance.post(`/api/${Role}/projects/create`,apiData)
             .then(function(response){
-                setButtonStatus("Finish")
+                setButtonStatus("Finish");
+                setLoading(false);
+            })
+            .catch(err => {
+                setLoading(false);
             })
     }
     const handleButton = ()=>{
@@ -118,8 +122,8 @@ function HireAgencyForm3() {
 
     return (
         <>
-
             <ClientNavbar />
+            {loading ? <Spinner/> : 
             <div className="mainHireAgencyForm3">
                 <div className="innerHireAgencyForm3">
                     <div className="techStackFields">
@@ -179,6 +183,7 @@ function HireAgencyForm3() {
                     </div>
                 </div>
             </div>
+            }
         </>
     )
 }

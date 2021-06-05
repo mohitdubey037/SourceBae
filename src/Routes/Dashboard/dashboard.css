@@ -475,6 +475,13 @@ a.mainQuotationCard {
   font-family: 'Josefin Sans';
   margin-top: 5%;
 }
+.projectName .projectN {
+  font-family: 'Josefin Sans';
+  font-size: 22.599px;
+  text-decoration: none;
+  color: #212529;
+  /* margin-top: 5%; */
+}
 
 .projectDescription {
   margin-top: 1rem;

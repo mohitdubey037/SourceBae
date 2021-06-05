@@ -6,6 +6,7 @@ import avatar from '../../assets/images/ClientDashboard/avatar.png'
 
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
+import Spinner from '../../Components/Spinner/Spinner'
 
 function ClientProfile() {
 
@@ -22,11 +23,13 @@ function ClientProfile() {
     })
 
     const [isEdit, setIsEdit] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const getClientProfileApi = () => {
         const clientId = localStorage.getItem("userId")
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
+                console.log(response);
                 setClientData({
                     firstName: response[0].firstName,
                     lastName: response[0].lastName,
@@ -37,6 +40,7 @@ function ClientProfile() {
                     companyName: response[0].companyName,
                     userDesignation: response[0].userDesignation,
                 })
+                setLoading(false);
             })
     }
 
@@ -62,51 +66,53 @@ function ClientProfile() {
     return (
         <>
             <ClientNavbar />
+            {loading ? <Spinner /> :
 
-            <div className="mainClientProfile">
-                <div className="innerClientProfile">
-                    <div className="clientProfileHeading">
-                        <h2>My Profile</h2>
-                    </div>
+                <div className="mainClientProfile">
+                    <div className="innerClientProfile">
+                        <div className="clientProfileHeading">
+                            <h2>My Profile</h2>
+                        </div>
 
-                    <div className="myProfileInfo">
-                        <div className="leftLineClient"></div>
+                        <div className="myProfileInfo">
+                            <div className="leftLineClient"></div>
 
-                        {
-                            isEdit === false ?
-                                <div onClick={() => setIsEdit(true)} className="profileEditBtn">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
-                                :
-                                (
-                                    <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>
-                                        <div onClick={() => updateClientApi()} className="save">Save</div>
-                                    </>)
-                        }
+                            {
+                                isEdit === false ?
+                                    <div onClick={() => setIsEdit(true)} className="profileEditBtn">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                                    :
+                                    (
+                                        <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>
+                                            <div onClick={() => updateClientApi()} className="save">Save</div>
+                                        </>)
+                            }
 
-                        <div className="myProfileCard">
-                            <div className="avatarArea">
-                                <div>
-                                    <img src={avatar} alt="" />
+                            <div className="myProfileCard">
+                                <div className="avatarArea">
+                                    <div>
+                                        <img src={avatar} alt="" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="clientProfileDetails">
-                                {Object.keys(clientData).map((key) => {
-                                    return (
-                                        <div className="clientProfilDesc">
-                                            <div className="clientFormHeading">
-                                                <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
-                                            </div>
-                                            <div className="clientFormAnswer">
-                                                {
-                                                    isEdit ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
-                                                }
-                                            </div>
-                                        </div>)
-                                })}
+                                <div className="clientProfileDetails">
+                                    {Object.keys(clientData).map((key) => {
+                                        return (
+                                            <div className="clientProfilDesc">
+                                                <div className="clientFormHeading">
+                                                    <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
+                                                </div>
+                                                <div className="clientFormAnswer">
+                                                    {
+                                                        isEdit ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
+                                                    }
+                                                </div>
+                                            </div>)
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </>
     )
 }

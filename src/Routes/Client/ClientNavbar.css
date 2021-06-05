@@ -311,7 +311,18 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .projectName h6{
+    display: block;
+    font-size: 2rem;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.projectDetailsRouter {
+    color: black;
+    text-decoration: none;
+    display: block;
     font-size: 2rem;
     font-family: 'Poppins';
     font-weight: bold;

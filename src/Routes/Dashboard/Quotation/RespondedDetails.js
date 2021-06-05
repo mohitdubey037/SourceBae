@@ -6,7 +6,8 @@ import leftQuote from '../../../assets/images/Quotation/leftQuote.png'
 import rightQuote from '../../../assets/images/Quotation/rightQuote.png'
 import agencyLogo from '../../../assets/images/Quotation/cegelec.svg'
 
-function RespondedDetails() {
+function RespondedDetails(props) {
+    console.log(props);
 
     const arr = [
         {
@@ -32,7 +33,7 @@ function RespondedDetails() {
             question: 'Can you name some similar applications or business competitors for reference?',
             answer: 'zomato'
         },
-    ]
+    ]   
 
     return (
         <>
@@ -46,7 +47,7 @@ function RespondedDetails() {
                     <div className="headerInformation">
                         <div className="clientName">
                             <div>
-                                <h2>Rahul Jayker</h2>
+                                <h2></h2>
                             </div>
                             <div className="detailsButtons">
                                 <button>Accept</button>
@@ -73,7 +74,7 @@ function RespondedDetails() {
 
             <div className="respondDescription">
                 <h2>About Your Project</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae dolore officia id expedita rem deleniti labore molestiae sed voluptas, libero quae, sit, quibusdam laboriosam! Pariatur reiciendis consequatur, vel beatae nisi magni maxime inventore, accusamus commodi ipsum dignissimos odio hic officiis.</p>
+                <p>{props.projectDescription}</p>
             </div>
 
 
@@ -177,12 +178,13 @@ function RespondedDetails() {
                         <div>
                             <h4>Technology</h4>
                             <ul>
-                                <li>React Native</li>
-                                <li>React Js</li>
+                                {props?.projectTechnologiesRequired?.map(p => {
+                                    return <li>{p?.technologyName}</li>
+                                })}
                             </ul>
                         </div>
                         <div>
-                            <h4>Document</h4>
+                            <h4>{props?.projectFiles}</h4>
                             <p>-</p>
                         </div>
                     </div>

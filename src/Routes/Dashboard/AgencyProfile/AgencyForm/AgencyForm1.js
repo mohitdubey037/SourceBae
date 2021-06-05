@@ -8,9 +8,11 @@ import agency3d from '../../../../assets/images/AgencyProfile/form1_3d.png'
 import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png'
 import { NavLink } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
+import * as helper from '../../../../shared/helper';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
+import Spinner from '../../../../Components/Spinner/Spinner'
 
 function AgencyForm1() {
 
@@ -18,17 +20,17 @@ function AgencyForm1() {
     const api_param_const = "agencies"
 
     const colors = {
-        upload:"blue",
-        update:"yellow",
-        next:"green",
-        finish:"green"
-      }
+        Upload: "blue",
+        Update: "yellow",
+        Next: "green",
+        Finish: "orange"
+    }
 
-
-    const [status,setStatus] = useState("upload")
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("Upload")
     const [linkedIn, setLinkedIn] = useState({
-        platformName:"linkedIn",
-        platformLink:""
+        platformName: "linkedIn",
+        platformLink: ""
     })
 
     const [agencyLogo, setAgencyLogo] = useState(null)
@@ -38,7 +40,7 @@ function AgencyForm1() {
         agencyEmail: "",
         agencyPhone: "",
         agencyDescription: "",
-        socialPlatformDetails:[],
+        socialPlatformDetails: [],
         agencyLogo: null,
         agencyAddress: {
             address: "",
@@ -51,14 +53,14 @@ function AgencyForm1() {
         agencyEmailError: "",
         agencyPhoneError: "",
         agencyDescriptionError: "",
-        socialPlatformDetailsError:"",
+        socialPlatformDetailsError: "",
         agencyAddressError: {
             addressError: "",
             locationError: ""
         },
     })
 
-    
+
 
     useEffect(() => {
     }, [formData, formDataErrors]);
@@ -140,12 +142,27 @@ function AgencyForm1() {
                 }
             )
         }
-        else if (!formData.agencyPhone === 10) {
+        else if (formData.agencyPhone < 10) {
             setFormDataErrors(
                 {
                     ownerNameError: "",
                     agencyEmailError: "",
                     agencyPhoneError: "Phone must be of 10 digits.",
+                    agencyDescriptionError: "",
+                    socialPlatformDetailsError: "",
+                    agencyAddressError: {
+                        addressError: "",
+                        locationError: ""
+                    },
+                }
+            )
+        }
+        else if (formData.agencyPhone.match(/[^0-9]/g)) {
+            setFormDataErrors(
+                {
+                    ownerNameError: "",
+                    agencyEmailError: "",
+                    agencyPhoneError: "Phone must be digits.",
                     agencyDescriptionError: "",
                     socialPlatformDetailsError: "",
                     agencyAddressError: {
@@ -200,7 +217,7 @@ function AgencyForm1() {
         //             }
         //         )
         // }
-        else if (!/^((http(s?)?):\/\/)?([wW]{3}\.)?[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/g.test(formData?.socialPlatformDetails[0]?.platformLink)) {
+        else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)) {
             setFormDataErrors(
                 {
                     ownerNameError: "",
@@ -261,9 +278,14 @@ function AgencyForm1() {
             )
         }
         else {
+            setLoading(true);
             instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
                 .then(function (response) {
-                    setStatus("next")
+                    setStatus("Next");
+                    setLoading(false);
+                })
+                .catch(err => {
+                    setLoading(false);
                 })
         }
     }
@@ -287,7 +309,7 @@ function AgencyForm1() {
         }
     }
 
-    
+
     const handleSocialPlatform = (event) => {
         const { name, value } = event.target
         if (name === "linkedIn") {
@@ -301,17 +323,17 @@ function AgencyForm1() {
 
     const handleNavlink = async (e) => {
         console.log(status)
-        if (status !== "next") {
+        if (status !== "Next") {
             e.preventDefault()
-            if (status === "upload" && agencyLogo !== null)
+            if (status === "Upload" && agencyLogo !== null)
                 uploadMedia(agencyLogo.category, agencyLogo.document)
-            else if (status === "update")
+            else if (status === "Update")
                 handleSubmit()
             else
                 toast.error("Upload document.")
         }
-        else if(status === "next")
-        window.location.href = "/agency-form-two"
+        else if (status === "Next")
+            window.location.href = "/agency-form-two"
     }
 
     const handleUploadError = (error) => {
@@ -321,29 +343,29 @@ function AgencyForm1() {
     const handleDocumentPicker = (document, category) => {
         setAgencyLogo({
             category,
-            document    
+            document
         })
     }
 
     function uploadMedia(category, document) {
 
         const data = new FormData();
-        
+
         document && data.append(
             "files",
             document,
             category
         );
-        
+
         instance.post(`api/${Role}/media/create`, data)
             .then(function (response) {
-                
+
                 setFormData({
                     ...formData,
-                    agencyLogo:response[0].mediaURL
+                    agencyLogo: response[0].mediaURL
                 })
 
-                setStatus("update")
+                setStatus("Update")
             })
 
     }
@@ -354,144 +376,147 @@ function AgencyForm1() {
             socialPlatformDetails: [linkedIn]
         })
     }, [linkedIn])
-    
+
     return (
         <>
             <Navbar />
 
             <FormPhases value1={true} />
 
+            {loading ? <Spinner /> :
 
-            <div className="mainPersonelDetailsForm">
-                <div className="innerPersonelDetailsForm">
-                    <div className="leftPersonelDetailsForm">
-                        <div className="innerLeftPersonelDetailsForm">
+                <div className="mainPersonelDetailsForm">
+                    <div className="innerPersonelDetailsForm">
+                        <div className="leftPersonelDetailsForm">
+                            <div className="innerLeftPersonelDetailsForm">
 
-                            <div className="formContentPartOne">
-                                <div className="getAgencyLogo">
-                                    <img src={agencyLogo} alt="" />
-                                    <p>{`${agencyLogo?.document?.name??""}`}</p>
-                                    <FilePicker
-                                        extensions={['pdf', 'jpg', 'png']}
-                                        onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
-                                        onError={error => handleUploadError(error)}>
-                                            
-                                        <button>
-                                            <i class="fa fa-upload" aria-hidden="true"/>
+                                <div className="formContentPartOne">
+                                    <div className="getAgencyLogo">
+                                        <img src={agencyLogo} alt="" />
+                                        <p>{`${agencyLogo?.document?.name ?? ""}`}</p>
+                                        <FilePicker
+                                            extensions={['pdf', 'jpg', 'png']}
+                                            onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
+                                            onError={error => handleUploadError(error)}>
+
+                                            <button>
+                                                <i class="fa fa-upload" aria-hidden="true" />
                                             Pick File
                                         </button>
-                                </FilePicker>
-                                </div>
-                                <div className="getAgencyDesc">
-                                    <p>Description</p>
-                                    <textarea
-                                        name="agencyDescription"
-                                        cols="30"
-                                        rows="5"
-                                        value={formData?.agencyDescription}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyDescriptionError!== '' &&  <Alert severity="error">{formDataErrors.agencyDescriptionError}</Alert> }
-                                </div>
-                            </div>
-
-                            <div className="formContentPartTwo">
-                                <div className="getOwnerName">
-                                    <p>Owner Name</p>
-                                    <input
-                                        type="text"
-                                        placeholder="Jack Morrison"
-                                        name="ownerName"
-                                        value={formData?.ownerName}
-                                        onChange={(event) => handleChange(event)}
-                                    />
-                                    {formDataErrors.ownerNameError!=='' &&  <Alert severity="error">{formDataErrors.ownerNameError}</Alert> }
+                                        </FilePicker>
+                                    </div>
+                                    <div className="getAgencyDesc">
+                                        <p>Description</p>
+                                        <textarea
+                                            name="agencyDescription"
+                                            cols="30"
+                                            rows="5"
+                                            value={formData?.agencyDescription}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyDescriptionError !== '' && <Alert severity="error">{formDataErrors.agencyDescriptionError}</Alert>}
+                                    </div>
                                 </div>
 
-                                <div className="getOwnerName">
-                                    <p>Company Email</p>
-                                    <input
-                                        type="text"
-                                        placeholder="abc@abc.in"
-                                        name="agencyEmail"
-                                        value={formData?.agencyEmail}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyEmailError!== '' &&  <Alert severity="error">{formDataErrors.agencyEmailError}</Alert> }
-                                </div>
-                            </div>
+                                <div className="formContentPartTwo">
+                                    <div className="getOwnerName">
+                                        <p>Owner Name</p>
+                                        <input
+                                            type="text"
+                                            placeholder="Jack Morrison"
+                                            name="ownerName"
+                                            value={formData?.ownerName}
+                                            onChange={(event) => handleChange(event)}
+                                        />
+                                        {formDataErrors.ownerNameError !== '' && <Alert severity="error">{formDataErrors.ownerNameError}</Alert>}
+                                    </div>
 
-                            <div className="formContentPartTwo">
-                                <div className="getOwnerName">
-                                    <p>Company Phone</p>
-                                    <input
-                                        type="text"
-                                        placeholder="9876543210"
-                                        name="agencyPhone"
-                                        value={formData?.agencyPhone}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyPhoneError!== '' &&  <Alert severity="error">{formDataErrors.agencyPhoneError}</Alert> }
-                                </div>
-                                <div className="getOwnerName">
-                                    <p>LinkedIn URL</p>
-                                    <input placeholder="E.g - https://www.linkedin.com/shethink-pvt-ltd/"
-                                        type="text"
-                                        name={linkedIn?.platformName}
-                                        value={linkedIn?.platformLink}
-                                        onChange={(event) => handleSocialPlatform(event)} />
-                                    {formDataErrors.socialPlatformDetailsError!== '' &&  <Alert severity="error">{formDataErrors.socialPlatformDetailsError}</Alert> }
-                                </div>
-                            </div>
-
-                            <div className="formContentPartTwo">
-                                <div className="getOwnerName">
-                                    <p>Company Address</p>
-                                    <input
-                                        type="text"
-                                        placeholder="scheme 54, Vijay Nagar"
-                                        name="address"
-                                        id="address_location"
-                                        value={formData?.agencyAddress?.address}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyAddressError.addressError!== '' &&  <Alert severity="error">{formDataErrors.agencyAddressError.addressError}</Alert> }
+                                    <div className="getOwnerName">
+                                        <p>Company Email</p>
+                                        <input
+                                            type="text"
+                                            placeholder="abc@abc.in"
+                                            name="agencyEmail"
+                                            value={formData?.agencyEmail}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyEmailError !== '' && <Alert severity="error">{formDataErrors.agencyEmailError}</Alert>}
+                                    </div>
                                 </div>
 
-                                <div className="getOwnerName">
-                                    <p>Company Location</p>
-                                    <input
-                                        type="text"
-                                        placeholder="Indore,MP"
-                                        name="location"
-                                        id="address_location"
-                                        value={formData?.agencyAddress?.location}
-                                        onChange={(event) => handleChange(event)} />
-                                    {formDataErrors.agencyAddressError.locationError!== '' &&  <Alert severity="error">{formDataErrors.agencyAddressError.locationError}</Alert> }
+                                <div className="formContentPartTwo">
+                                    <div className="getOwnerName">
+                                        <p>Company Phone</p>
+                                        <input
+                                            maxLength='10'
+                                            type="text"
+                                            placeholder="9876543210"
+                                            name="agencyPhone"
+                                            value={formData?.agencyPhone}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyPhoneError !== '' && <Alert severity="error">{formDataErrors.agencyPhoneError}</Alert>}
+                                    </div>
+                                    <div className="getOwnerName">
+                                        <p>LinkedIn URL</p>
+                                        <input placeholder="E.g - https://www.linkedin.com/shethink-pvt-ltd/"
+                                            type="text"
+                                            name={linkedIn?.platformName}
+                                            value={linkedIn?.platformLink}
+                                            onChange={(event) => handleSocialPlatform(event)} />
+                                        {formDataErrors.socialPlatformDetailsError !== '' && <Alert severity="error">{formDataErrors.socialPlatformDetailsError}</Alert>}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="nextBtn">
-                                <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
-                                    <button>
-                                        <i class="fa fa-long-arrow-left" aria-hidden="true" />
+                                <div className="formContentPartTwo">
+                                    <div className="getOwnerName">
+                                        <p>Company Address</p>
+                                        <input
+                                            type="text"
+                                            placeholder="scheme 54, Vijay Nagar"
+                                            name="address"
+                                            id="address_location"
+                                            value={formData?.agencyAddress?.address}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyAddressError.addressError !== '' && <Alert severity="error">{formDataErrors.agencyAddressError.addressError}</Alert>}
+                                    </div>
+
+                                    <div className="getOwnerName">
+                                        <p>Company Location</p>
+                                        <input
+                                            type="text"
+                                            placeholder="Indore,MP"
+                                            name="location"
+                                            id="address_location"
+                                            value={formData?.agencyAddress?.location}
+                                            onChange={(event) => handleChange(event)} />
+                                        {formDataErrors.agencyAddressError.locationError !== '' && <Alert severity="error">{formDataErrors.agencyAddressError.locationError}</Alert>}
+                                    </div>
+                                </div>
+
+                                <div className="nextBtn">
+                                    <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
+                                        <button>
+                                            <i class="fa fa-long-arrow-left" aria-hidden="true" />
                                         Back
                                     </button>
-                                </NavLink>
-                                <NavLink to="/agency-form-two"  style={{ textDecoration: "none" }} onClick = {(event)=>handleNavlink(event)}>
-                                    <button style={{backgroundColor:colors[status]}}>
-                                        {status}
-                                        <i class="fa fa-long-arrow-right" aria-hidden="true" />
-                                    </button>
-                                </NavLink>
-                            </div>
+                                    </NavLink>
+                                    <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}>
+                                        <button style={{ backgroundColor: colors[status] }}>
+                                            {status}
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                        </button>
+                                    </NavLink>
+                                </div>
 
+                            </div>
+                        </div>
+                        <div className="rightPersonelDetailsForm">
+                            <span>Updating Profile</span>
+                            <p>Upadting your profile will make you visible to more clients and lead to more revenue.</p>
+                            <img className="businessModal" src={agency3d} alt="" />
+                            <img className="squareShape" src={squareShape} alt="" />
                         </div>
                     </div>
-                    <div className="rightPersonelDetailsForm">
-                        <span>Updating Profile</span>
-                        <p>Upadting your profile will make you visible to more clients and lead to more revenue.</p>
-                        <img className="businessModal" src={agency3d} alt="" />
-                        <img className="squareShape" src={squareShape} alt="" />
-                    </div>
                 </div>
-            </div>
+            }
         </>
     )
 }

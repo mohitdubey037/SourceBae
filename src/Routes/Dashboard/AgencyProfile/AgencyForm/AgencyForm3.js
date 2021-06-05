@@ -7,25 +7,27 @@ import brochure from '../../../../assets/images/agencyForm/brochure.png'
 import panCard from '../../../../assets/images/agencyForm/panCard.png'
 import privacy from '../../../../assets/images/agencyForm/privacy.svg'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios';
 
 import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
 
 //axios instance
 import instance from "../../../../Constants/axiosConstants"
+import Spinner from '../../../../Components/Spinner/Spinner'
 
 function AgencyForm3() {
 
     const colors = {
-        Upload:"blue",
-        Update:"yellow",
-        Next:"green",
-        Finish:"green"
-      }
+        Upload: "blue",
+        Update: "orange",
+        Next: "green",
+    }
 
     const Role = "agency"
     const [status, setStatus] = useState("Upload")
     const [pickedAll, setPickedAll] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     const [registrationCertificate, setRegistrationCertificate] = useState({
         documentName: "Company Registration Certificate",
@@ -49,9 +51,8 @@ function AgencyForm3() {
     })
 
     const handleDocumentPicker = (document, category) => {
-
-        console.log(document);
-        console.log(category);
+        // console.log(document);
+        // console.log(category);
         if (category === registrationCertificate.documentName) {
             setRegistrationCertificate({
                 ...registrationCertificate,
@@ -78,14 +79,14 @@ function AgencyForm3() {
 
     }
 
-    console.log(registrationCertificate);
-
 
     const handleUploadError = (error) => {
         toast.error(error)
     }
 
     function uploadMedia(category, document) {
+        // console.log(category);
+        // console.log(document);
 
         const formData = new FormData();
 
@@ -95,34 +96,35 @@ function AgencyForm3() {
             category
         );
         console.log(formData)
-        instance.post(`api/${Role}/media/create`, formData)
+        axios.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
             .then(function (response) {
-                console.log(response);
+                console.log(response.data.data[0].mediaURL);
                 if (category === registrationCertificate.documentName)
                     setRegistrationCertificate({
                         ...registrationCertificate,
-                        documentLink: response[0].mediaURL
+                        documentLink: response.data.data[0].mediaURL
                     })
 
                 else if (category === brochureDoc.documentName)
                     setBrochureDoc({
                         ...brochureDoc,
-                        documentLink: response[0].mediaURL
+                        documentLink: response.data.data[0].mediaURL
                     })
 
                 else if (category === panCardDoc.documentName)
                     setPanCardDoc({
                         ...panCardDoc,
-                        documentLink: response[0].mediaURL
+                        documentLink: response.data.data[0].mediaURL
                     })
             })
 
     }
 
     const handleUpload = (event) => {
-
+        setLoading(true);
         const { name } = event.target
         if (name === "Upload" && pickedAll) {
+            // console.log(registrationCertificate.documentName, registrationCertificate.document);
             uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
             uploadMedia(brochureDoc.documentName, brochureDoc.document)
             uploadMedia(panCardDoc.documentName, panCardDoc.document)
@@ -130,7 +132,10 @@ function AgencyForm3() {
     }
 
     const handleUpdate = () => {
-        console.log("handle update")
+        // console.log(registrationCertificate);
+        // console.log(brochureDoc);
+        // console.log(panCardDoc);
+        setLoading(true);
         const apiData = {
             stepsCompleted: "4",
             agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
@@ -138,13 +143,17 @@ function AgencyForm3() {
         instance.post(`/api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 console.log(response)
-                setStatus("Next")
+                setStatus("Next");
+                setLoading(false);
+            })
+            .catch(err => {
+                setLoading(false);
             })
     }
 
     const handleNavlink = (event) => {
         event.preventDefault()
-        if (status === "Next"){
+        if (status === "Next") {
             window.location.href = "/agency-form-four"
         }
         else if (status === "Update")
@@ -156,8 +165,16 @@ function AgencyForm3() {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
             setPickedAll(true)
         }
-        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "")
-            setStatus("Update")
+
+        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== ""){
+            setStatus("Update");
+            toast.success('media saved successfully');
+            setLoading(false);
+        }
+
+        console.log(registrationCertificate, brochureDoc, panCardDoc);
+
+
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
     useEffect(() => {
@@ -170,69 +187,72 @@ function AgencyForm3() {
 
             <FormPhases value1={true} value2={true} value3={true} />
 
-            <div className="mainDocumentsForm">
-                <div className="innerDocumentForm">
-                    <div className="documentDetails">
-                        <p>1. Provide your Valid Document</p>
-                        <div className="documentInformation">
-                            <div className="agencyCertification">
-                                <span>Company Registration Certificate</span>
-                                <img src={agencyLogo} alt="" />
-                                <p>{`${registrationCertificate?.document?.name ?? ""}`}</p>
-                                <FilePicker
-                                    extensions={['pdf', 'jpg', 'png']}
-                                    onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
-                                    onError={error => handleUploadError(error)}>
-                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
-                                </FilePicker>
-                            </div>
-                            <div className="agencyBrochure">
-                                <span>Brochure</span>
-                                <img src={brochure} alt="" />
-                                <p>{`${brochureDoc?.document?.name ?? ""}`}</p>
-                                <FilePicker
-                                    extensions={['pdf', 'jpg', 'png']}
-                                    onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
-                                    onError={error => handleUploadError(error)}>
-                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
-                                </FilePicker>
-                            </div>
-                        </div>
-                        <div className="panDetails">
-                            <p>2. Enter your Pan Card number</p>
-                            <div className="panCardContent">
-                                <img src={panCard} alt="" />
-                                <p>{`${panCardDoc?.document?.name ?? ""}`}</p>
-                                <FilePicker
-                                    extensions={['pdf', 'jpg', 'png']}
-                                    onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
-                                    onError={error => handleUploadError(error)}>
-                                    <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
-                                </FilePicker>
-                            </div>
-                        </div>
+            {loading ? <Spinner /> :
 
-                        <div className="nextBtn">
-                            <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
-                                <button>
-                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
-                                </button>
-                            </NavLink>
+                <div className="mainDocumentsForm">
+                    <div className="innerDocumentForm">
+                        <div className="documentDetails">
+                            <p>1. Provide your Valid Document</p>
+                            <div className="documentInformation">
+                                <div className="agencyCertification">
+                                    <span>Company Registration Certificate</span>
+                                    <img src={agencyLogo} alt="" />
+                                    <p>{`${registrationCertificate?.document?.name ?? ""}`}</p>
+                                    <FilePicker
+                                        extensions={['pdf', 'jpg', 'png']}
+                                        onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
+                                        onError={error => handleUploadError(error)}>
+                                        <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    </FilePicker>
+                                </div>
+                                <div className="agencyBrochure">
+                                    <span>Brochure</span>
+                                    <img src={brochure} alt="" />
+                                    <p>{`${brochureDoc?.document?.name ?? ""}`}</p>
+                                    <FilePicker
+                                        extensions={['pdf', 'jpg', 'png']}
+                                        onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
+                                        onError={error => handleUploadError(error)}>
+                                        <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    </FilePicker>
+                                </div>
+                            </div>
+                            <div className="panDetails">
+                                <p>2. Enter your Pan Card number</p>
+                                <div className="panCardContent">
+                                    <img src={panCard} alt="" />
+                                    <p>{`${panCardDoc?.document?.name ?? ""}`}</p>
+                                    <FilePicker
+                                        extensions={['pdf', 'jpg', 'png']}
+                                        onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
+                                        onError={error => handleUploadError(error)}>
+                                        <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                    </FilePicker>
+                                </div>
+                            </div>
 
-                            <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} >
-                                <button style={{backgroundColor:colors[status]}} onClick={handleUpload} name={status}>
-                                    {status}
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                            <div className="nextBtn">
+                                <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
+                                    <button>
+                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                 </button>
-                            </NavLink>
+                                </NavLink>
+
+                                <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} >
+                                    <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
+                                        {status}
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                    </button>
+                                </NavLink>
+                            </div>
                         </div>
-                    </div>
-                    <div className="miscellaneousArea">
-                        <p>Your Information is safe with us.</p>
-                        <img src={privacy} alt="" />
+                        <div className="miscellaneousArea">
+                            <p>Your Information is safe with us.</p>
+                            <img src={privacy} alt="" />
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </>
     )
 }
