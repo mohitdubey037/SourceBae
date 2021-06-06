@@ -480,6 +480,7 @@ a.mainQuotationCard {
   font-size: 22.599px;
   text-decoration: none;
   color: #212529;
+  cursor: pointer;
   /* margin-top: 5%; */
 }
 

@@ -24,16 +24,16 @@ function RespondedDetails(props) {
         },
     ]
 
-    const briefQuestions = [
-        {
-            question: 'What stage of the project are you in now?',
-            answer: 'I have detailed requirements in mind that I can provide'
-        },
-        {
-            question: 'Can you name some similar applications or business competitors for reference?',
-            answer: 'zomato'
-        },
-    ]   
+    // const briefQuestions = [
+    //     {
+    //         question: 'What stage of the project are you in now?',
+    //         answer: 'I have detailed requirements in mind that I can provide'
+    //     },
+    //     {
+    //         question: 'Can you name some similar applications or business competitors for reference?',
+    //         answer: 'zomato'
+    //     },
+    // ]   
 
     return (
         <>
@@ -120,7 +120,7 @@ function RespondedDetails(props) {
             </div>
 
 
-            <div className="briefDetails">
+            {/* <div className="briefDetails">
                 <img src={leftQuote} className="leftQuote" alt="" />
                 <img src={rightQuote} className="rightQuote" alt="" />
                 <div className="innerBriefDetails">
@@ -143,7 +143,7 @@ function RespondedDetails(props) {
                         }
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="agencyQuotation">
                 <div className="innerAgencyQuotation">
