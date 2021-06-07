@@ -24,7 +24,7 @@ const HireAgencyForm1 = () => {
 
   const [loading, setLoading] = useState(false);
   const id = localStorage.getItem("userId");
-  const [projectId, setProjectId] = useState("")
+  // const [projectId, setProjectId] = useState("")
   const Role = "client"
   const [buttonStatus, setButtonStatus] = useState("Submit");
   const [data, setData] = useState({
@@ -36,9 +36,9 @@ const HireAgencyForm1 = () => {
     projectExpectedStartingDays: 5,
   });
 
-  const colors = {
-    Next: "green",
-  }
+  // const colors = {
+  //   Next: "green",
+  // }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -63,34 +63,49 @@ const HireAgencyForm1 = () => {
       });
   };
 
-  const hireAgencyStep1 = () => {
+  // const hireAgencyStep1 = () => {
+  //   setLoading(true)
+  //   console.log(data);
+  //   instance.post(`/api/${Role}/projects/create`, data)
+  //     .then(function (response) {
+  //       console.log(response);
+  //       console.log(buttonStatus);
+  //       setButtonStatus("Next")
+  //       setProjectId(response._id)
+  //       setLoading(false);
+  //     })
+  //     .catch(err => {
+  //       setLoading(false)
+  //     })
+  // };
+
+  // useEffect(() => {
+  //   console.log(buttonStatus);
+  // }, [buttonStatus]);
+
+  // const handleButton = () => {
+  //   if (buttonStatus === "Submit") {
+  //     hireAgencyStep1();
+  //   }
+  //   else if (buttonStatus === "Next" && projectId) {
+  //     window.location.href = `/hire-agency-form-two:${projectId}`
+  //   }
+  // };
+
+  const handleSubmit = () => {
     setLoading(true)
     console.log(data);
     instance.post(`/api/${Role}/projects/create`, data)
       .then(function (response) {
-        console.log(response);
-        console.log(buttonStatus);
-        setButtonStatus("Next")
-        setProjectId(response._id)
+        // setProjectId(response._id)
         setLoading(false);
+        window.location.href = `/hire-agency-form-two:${response._id}`
       })
       .catch(err => {
         setLoading(false)
       })
-  };
+  }
 
-  useEffect(() => {
-    console.log(buttonStatus);
-  }, [buttonStatus]);
-
-  const handleButton = () => {
-    if (buttonStatus === "Submit") {
-      hireAgencyStep1();
-    }
-    else if (buttonStatus === "Next" && projectId) {
-      window.location.href = `/hire-agency-form-two:${projectId}`
-    }
-  };
   return (
     <>
       <ClientNavbar />
@@ -187,8 +202,8 @@ const HireAgencyForm1 = () => {
               </div>
               <div className="nextbuttton">
                 <span></span>
-                <div style={{ backgroundColor: colors[buttonStatus] }} onClick={() => handleButton()}>
-                  {buttonStatus}
+                <div onClick={() => handleSubmit()}>
+                  Submit
                   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </div>
               </div>

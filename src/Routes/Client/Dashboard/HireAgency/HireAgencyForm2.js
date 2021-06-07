@@ -35,13 +35,14 @@ const BlueRadio = withStyles({
 
 function HireAgencyForm2() {
 
-  const colors = {
-    Next:"green",
-  }
+  // const colors = {
+  //   Next:"green",
+  // }
 
   const Role = "client";
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId)
+  console.log(projectId);
   // selecting Domains
   const id = localStorage.getItem("userId");
   const [apiData, setApiData] = useState({
@@ -52,6 +53,7 @@ function HireAgencyForm2() {
     projectExpertiseRequired: [],
     agencyExperience:""
   });
+
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState(null);
   const [options, setOptions] = useState([]);
@@ -114,27 +116,41 @@ function HireAgencyForm2() {
     setOptions(options);
   };
 
-  const hireAgencyStep2 = () => {
+  // const hireAgencyStep2 = () => {
+  //   setLoading(true)
+  //   instance.post(`/api/${Role}/projects/create`,apiData)
+  //   .then(function(response){
+  //       console.log(response);
+  //       setButtonStatus("Next");
+  //       setLoading(false)
+  //   })
+  //   .catch(err => {
+  //     setLoading(false)
+  //   })
+  // };
+
+  // const handleButton = () => {
+  //   if (buttonStatus === "Submit") {
+  //     hireAgencyStep2();
+  //   }
+  //   else if(buttonStatus === "Next" && projectId) {
+  //     window.location.href=`/hire-agency-form-three:${projectId}`
+  //   }
+  // };
+
+  const handleSubmit = () => {
     setLoading(true)
     instance.post(`/api/${Role}/projects/create`,apiData)
     .then(function(response){
         console.log(response);
-        setButtonStatus("Next");
-        setLoading(false)
+        // setButtonStatus("Next");
+        setLoading(false);
+        window.location.href=`/hire-agency-form-three:${projectId}`
     })
     .catch(err => {
       setLoading(false)
     })
-  };
-
-  const handleButton = () => {
-    if (buttonStatus === "Submit") {
-      hireAgencyStep2();
-    }
-    else if(buttonStatus === "Next" && projectId) {
-      window.location.href=`/hire-agency-form-three:${projectId}`
-    }
-  };
+  }
 
   useEffect(() => {
     getExpertiseOption();
@@ -250,12 +266,11 @@ function HireAgencyForm2() {
               <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
             </div>
             <div
-              style={{backgroundColor:colors[buttonStatus]}}
               onClick={() =>
-                handleButton()
+                handleSubmit()
               }
             >
-              {buttonStatus} <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
             </div>
           </div>
         </div>
