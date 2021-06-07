@@ -34,11 +34,22 @@ instance.interceptors.response.use(function (response){
 
 }, function (error){
     console.log(error)
+    let trueError = ""
     if(error?.response?.data?.message==="Bearer Token not found")
         window.location.href="/"
-    toast.error(error?.response?.data?.message, {
+        const errors = error?.response?.data?.error ?? {}
+        const errorName = Object.keys(errors)
+        if(errorName.length>0){
+            
+                trueError = trueError+errors[errorName[0]][0]
+            
+        }
+        else{
+            trueError = error?.response?.data?.message
+        }
+    toast.error(trueError, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
