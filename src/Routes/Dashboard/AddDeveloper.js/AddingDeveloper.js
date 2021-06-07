@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
-import clsx from 'clsx';
 
 import './AddingDeveloper.css'
 import model from '../../../assets/images/AddDeveloper/modal3d.png'
@@ -117,9 +116,6 @@ function AddingDeveloper() {
         }
     }
 
-    // useEffect(() => {
-    //     setLoading(true);
-    // })
 
 
     const technologyHandler = (event) => {
@@ -186,6 +182,9 @@ function AddingDeveloper() {
                 console.log(response)
                 setBtnName("Next");
                 setLoading(false);
+            })
+            .catch(e=>{
+                setLoading(false)
             })
     }
     const handleAction = (name) => {

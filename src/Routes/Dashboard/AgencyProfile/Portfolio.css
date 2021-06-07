@@ -72,3 +72,18 @@
 .portfolioDetailBtn span:hover i{
     transform: translateX(10px);
 }
+
+.addMore {
+    border: 2px solid black;
+    background-color: #02044ac2;
+    color: #fff;
+    padding: 5%;
+    box-shadow: 0 2px 2px 2px rgba(0,0,0,0.4);
+    margin: auto;
+    font-size: 5rem;
+    cursor:pointer;
+  }
+  
+  .addMore:hover{
+      background-color: #02044a;
+  }
