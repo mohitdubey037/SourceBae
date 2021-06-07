@@ -90,10 +90,10 @@ function Navbar(props) {
                             <h3>{props?.headingInfo}</h3>
                         </div>
                     </div> */}
-                    <div className="newFeatureAdded">
+                    {/* <div className="newFeatureAdded">
                         <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
                         <button onClick={onOpenModal}>Add Your Product</button>
-                    </div>
+                    </div> */}
                     <div className="clientInfo">
                         <div className="clientCompany">
                             <img onClick={() => window.location.href = "/agency-profile"} src={clientLogo} alt="" />

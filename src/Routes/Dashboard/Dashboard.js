@@ -20,6 +20,9 @@ import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import Moment from 'react-moment';
 
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal'
+
 
 
 const Dashboard = () => {
@@ -37,11 +40,10 @@ const Dashboard = () => {
     const [age, setAge] = React.useState('');
     const [verified, setVerified] = useState(false)
     const [projects, setProjects] = useState([])
+    const [openmodal, setOpenModal] = useState(false);
 
-    const handleClick = (event) => {
-        console.log(event)
-        setAnchorEl(event.currentTarget);
-    };
+    const onOpenModal = () => setOpenModal(true);
+    const onCloseModal = () => setOpenModal(false);
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -82,11 +84,11 @@ const Dashboard = () => {
             route: "/add-developer"
         },
         {
-            title: 'Team Creation',
+            title: 'Add Your Product',
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             image: teamCreation,
             borderColor: '#AC92F5',
-            route: "/dashboard"
+            route: "modal"
         },
     ]
 
@@ -106,54 +108,6 @@ const Dashboard = () => {
     };
 
 
-    // const allProjects = [
-    //     {
-    //         projectName: 'Project Name',
-    //         desc: '',
-    //         projectStatus: 'Live',
-    //         budget: '$96',
-    //         creationDate: '6 Dec 2020',
-    //         duration: '180 Days',
-    //         projectType: 'fintech'
-    //     },
-    //     {
-    //         projectName: 'Project Name',
-    //         desc: '',
-    //         projectStatus: 'Live',
-    //         budget: '$96',
-    //         creationDate: '6 Dec 2020',
-    //         duration: '180 Days',
-    //         projectType: 'fintech'
-    //     },
-    //     {
-    //         projectName: 'Project Name',
-    //         desc: '',
-    //         projectStatus: 'Completed',
-    //         budget: '$96',
-    //         creationDate: '6 Dec 2020',
-    //         duration: '180 Days',
-    //         projectType: 'fintech'
-    //     },
-    //     {
-    //         projectName: 'Project Name',
-    //         desc: '',
-    //         projectStatus: 'Pending',
-    //         budget: '$96',
-    //         creationDate: '6 Dec 2020',
-    //         duration: '180 Days',
-    //         projectType: 'fintech'
-    //     },
-    //     {
-    //         projectName: 'Project Name',
-    //         desc: '',
-    //         projectStatusText: 'Project',
-    //         projectStatus: 'Completed',
-    //         budget: '$96',
-    //         creationDate: '6 Dec 2020',
-    //         duration: '180 Days',
-    //         projectType: 'fintech'
-    //     },
-    // ]
 
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
@@ -178,8 +132,12 @@ const Dashboard = () => {
     }
 
     const handleLink = (route) => {
-        if (verified && (steps === -1))
-            window.location.href = route
+        if (verified && (steps === -1)){
+            if(route === "modal")
+            onOpenModal()
+            else
+                window.location.href = route
+        }
     }
     useEffect(() => {
         getStepsCompleted()
@@ -362,6 +320,32 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+      
+            <Modal open={openmodal} onClose={onCloseModal}
+                classNames={{
+                    overlay: 'NavbarModalLayer',
+                    modal: 'NavbarModalStyle',
+                }} center>
+                <h2 className="addyourproductext">Add your Product</h2>
+                <div className="newFeatureDiv">
+                    <p>What's <span>NEW</span> in this..?<i class="fa fa-level-down" aria-hidden="true"></i></p>
+
+                    <p className="productText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, necessitatibus! Provident, nemo. Aperiam fugiat quo earum dignissimos. Aliquid, nostrum dolorem!</p>
+
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                </div>
+                <div className="modalButton">
+                    <button onClick={() => window.location.href = "/product-agencies"} >Interested</button>
+                    <button onClick={onCloseModal} >Not Interested</button>
+                </div>
+            </Modal>
+       
         </>
     )
 }
