@@ -5,7 +5,6 @@ import Logo from '../../assets/images/Logo/logo.png'
 
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { green, pink } from '@material-ui/core/colors';
 import Avatar from '@material-ui/core/Avatar';
 import Badge from '@material-ui/core/Badge';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
@@ -228,6 +227,7 @@ const ClientNavbar = ({ isVisible }) => {
                     <button onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
+       
         </>
     )
 }
