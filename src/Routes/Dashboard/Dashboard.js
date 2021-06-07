@@ -88,7 +88,7 @@ const Dashboard = () => {
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             image: teamCreation,
             borderColor: '#AC92F5',
-            route: "modal"
+            route: "modal",
         },
     ]
 
@@ -132,9 +132,9 @@ const Dashboard = () => {
     }
 
     const handleLink = (route) => {
-        if (verified && (steps === -1)){
-            if(route === "modal")
-            onOpenModal()
+        if (verified && (steps === -1)) {
+            if (route === "modal")
+                onOpenModal()
             else
                 window.location.href = route
         }
@@ -315,12 +315,12 @@ const Dashboard = () => {
                                         </div>
                                     )
                                 })
-                            : <h2>No Data Found</h2>
+                                : <h2>No Data Found</h2>
                         }
                     </div>
                 </div>
             </div>
-      
+
             <Modal open={openmodal} onClose={onCloseModal}
                 classNames={{
                     overlay: 'NavbarModalLayer',
@@ -341,11 +341,15 @@ const Dashboard = () => {
                     </ul>
                 </div>
                 <div className="modalButton">
-                    <button onClick={() => window.location.href = "/product-agencies"} >Interested</button>
-                    <button onClick={onCloseModal} >Not Interested</button>
+                    {/* <button onClick={() => window.location.href = "/product-agencies"}>Interested</button> */}
+                    <NavLink className='modalNavLink' to={{
+                        pathname: "/product-agencies",
+                        condition: 'Agency',
+                    }}>Interested</NavLink>
+                    <button style={{marginTop: 0, marginBottom: 0}} onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
-       
+
         </>
     )
 }

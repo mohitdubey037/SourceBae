@@ -65,6 +65,7 @@ const App = (props) => {
     {/* Client Components  */}
 
     <CustomRoute condition={props.location.condition} exact path="/project-details" component={ProjectDetails} />
+    <CustomRoute condition={props.location.condition} exact path="/product-agencies" component={ProductAgencies} />
     <CustomRoute condition="Client" exact path="/client-dashboard" component={ClientDashboard} />
     <CustomRoute condition="Client" exact path="/hire-agency-form-one" component={HireAgencyForm1} />
     <CustomRoute condition="Client" exact path="/hire-agency-form-two:projectId" component={HireAgencyForm2} />
@@ -75,7 +76,6 @@ const App = (props) => {
     <CustomRoute condition="Client" exact path="/client-profile" component={ClientProfile} />
     <CustomRoute condition="Client" exact path="/product-form" component={ProductForm} />
     <CustomRoute condition="Client" exact path="/product-details" component={ProductDetails} />
-    <CustomRoute condition="Client" exact path="/product-agencies" component={ProductAgencies} />
     <CustomRoute condition="Client" component={PageNotFound} />
 
   </Switch>
