@@ -92,6 +92,7 @@ function HireAgencyForm2() {
 
   const getAllDomains = () => {
     instance.get(`api/${Role}/domains/all`).then(function (response) {
+      console.log(response);
       const domainNames = response.map((domain) => {
         return {
           ...domain,
@@ -117,6 +118,7 @@ function HireAgencyForm2() {
     setLoading(true)
     instance.post(`/api/${Role}/projects/create`,apiData)
     .then(function(response){
+        console.log(response);
         setButtonStatus("Next");
         setLoading(false)
     })
@@ -141,6 +143,10 @@ function HireAgencyForm2() {
         projectDomainId:selectedDomain._id
     })
   }, [selectedDomain]);
+
+  useEffect(() => {
+    console.log(apiData);
+  })
 
 
   useEffect(()=>{

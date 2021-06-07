@@ -43,7 +43,7 @@ function Dashboard() {
     const [age, setAge] = React.useState('');
     const [open, setOpen] = React.useState(false);
     const [isVisible, setIsVisible] = useState(true);
-    const [projects, setProjects] = useState()
+    const [projects, setProjects] = useState([])
 
     useEffect(() => {
         getAllProjects();
@@ -169,7 +169,7 @@ function Dashboard() {
                                                                 }>{p.projectName}</h6> */}
                                                 <NavLink className="projectDetailsRouter" to={{
                                                     pathname: "/project-details",
-                                                    state: { ...p},
+                                                    state: { ...p },
                                                     condition: 'Client',
                                                 }}
                                                 >{p.projectName}
@@ -228,7 +228,7 @@ function Dashboard() {
                                 )
                             })}
 
-                            <div className="clientProjectCard">
+                            {/* <div className="clientProjectCard">
                                 <span className="leftBorderClientProject"></span>
                                 <div className="cardTopPart">
                                     <div className="projectName">
@@ -276,10 +276,10 @@ function Dashboard() {
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> */}
 
 
-                            <div className="clientProjectCard">
+                            {/* <div className="clientProjectCard">
                                 <span className="leftBorderClientProject"></span>
                                 <div className="cardTopPart">
                                     <div className="projectName">
@@ -327,11 +327,11 @@ function Dashboard() {
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> */}
 
 
 
-                            <div className="clientProjectCard">
+                            {/* <div className="clientProjectCard">
                                 <span className="leftBorderClientProject"></span>
                                 <div className="cardTopPart">
                                     <div className="projectName">
@@ -342,26 +342,20 @@ function Dashboard() {
                                         <p style={{ backgroundColor: '#f0ad4e' }}>Searching Developer</p>
                                     </div>
                                 </div>
-
-
                                 <div className="projectUpdateDate">
                                     <p>Last Edit on: <span>17 Apr 2021</span> </p>
                                 </div>
-
-
                                 <div className="projectStage">
-                                    {/* <span className="statusLine"></span> */}
+                                    <span className="statusLine"></span>
                                     <div>
                                         <span style={{ backgroundColor: '#5cb85c' }}>01</span>
                                         <p>Post Developer Form</p>
                                     </div>
-
                                     <div>
                                         <span style={{ backgroundColor: '#626567' }}>02</span>
                                         <p>Hire the best!</p>
                                     </div>
                                 </div>
-
                                 <div className="clientProjectInformation">
                                     <div className="projectStatusInfo">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -371,11 +365,10 @@ function Dashboard() {
                                         <div><p>View Proposal</p></div>
                                     </div>
                                 </div>
+                            </div> */}
 
-                            </div>
 
-
-                            <div className="clientProjectCard">
+                            {/* <div className="clientProjectCard">
                                 <span className="leftBorderClientProject"></span>
                                 <div className="cardTopPart">
                                     <div className="projectName">
@@ -423,8 +416,7 @@ function Dashboard() {
                                     </div>
                                 </div>
 
-                            </div>
-
+                            </div> */}
 
 
                         </div>
