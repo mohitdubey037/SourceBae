@@ -202,7 +202,7 @@ const HireAgencyForm1 = () => {
               </div>
               <div className="nextbuttton">
                 <span></span>
-                <div onClick={() => handleSubmit()}>
+                <div /* style={{backgroundColor:colors[buttonStatus]}} */ onClick={() => handleSubmit()}>
                   Submit
                   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </div>

@@ -14,9 +14,9 @@ import Spinner from "../../../../Components/Spinner/Spinner";
 
 function HireAgencyForm3() {
 
-    const colors = {
-        Finish:"green"
-      }
+    // const colors = {
+    //     Finish:"green"
+    //   }
 
     const Role = "client";
     let { projectId } = useParams();
@@ -32,7 +32,7 @@ function HireAgencyForm3() {
         projectServicesRequired:[]
     })
 
-    const [buttonStatus, setButtonStatus] = useState("Next");
+    // const [buttonStatus, setButtonStatus] = useState("Next");
 
 
     //selecting domain budget
@@ -97,7 +97,29 @@ function HireAgencyForm3() {
             })
     }
 
-    const hireAgencyForm3Api = ()=>{
+    // const hireAgencyForm3Api = ()=>{
+    //     setLoading(true)
+    //         console.log(apiData);
+    //         instance.post(`/api/${Role}/projects/create`,apiData)
+    //         .then(function(response){
+    //             console.log(response);
+    //             setLoading(false);
+    //             window.location.href = `/agency-list:${projectId}`
+    //         })
+    //         .catch(err => {
+    //             setLoading(false);
+    //         })
+    // }
+    // const handleButton = ()=>{
+    //     if(buttonStatus==="Next")
+    //         hireAgencyForm3Api()
+    // }
+
+    // useEffect(() => {
+    //     getAllServices()
+    // }, [])
+
+    const handleSubmit = () => {
         setLoading(true)
             console.log(apiData);
             instance.post(`/api/${Role}/projects/create`,apiData)
@@ -110,13 +132,6 @@ function HireAgencyForm3() {
                 setLoading(false);
             })
     }
-    const handleButton = ()=>{
-        if(buttonStatus==="Next")
-            hireAgencyForm3Api()
-    }
-    useEffect(() => {
-        getAllServices()
-    }, [])
 
     useEffect(()=>{
         console.log(allTechnologies)
@@ -166,7 +181,7 @@ function HireAgencyForm3() {
 
                         <div className="nextbuttton">
                             <div onClick={() => window.location.href = "/hire-agency-form-two"} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
-                            <div style={{backgroundColor:colors[buttonStatus]}} onClick={()=>handleButton()}>{buttonStatus} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+                            <div /*style={{backgroundColor:colors[buttonStatus]}}*/ onClick={()=>handleSubmit()}> Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
                         </div>
 
 

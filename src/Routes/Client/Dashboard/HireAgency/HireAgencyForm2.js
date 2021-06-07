@@ -266,6 +266,7 @@ function HireAgencyForm2() {
               <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
             </div>
             <div
+              /*style={{backgroundColor:colors[buttonStatus]}}*/
               onClick={() =>
                 handleSubmit()
               }
