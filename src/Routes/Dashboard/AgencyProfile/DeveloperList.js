@@ -99,6 +99,10 @@ function DeveloperList(props) {
                             )
                         })
                     }
+
+                    <div className="addMore" onClick = {()=> window.location.href="/add-developer"}>
+                        +
+                    </div>
                 </div>
             </div>
         </>
