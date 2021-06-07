@@ -44,6 +44,7 @@ function Dashboard() {
     const [open, setOpen] = React.useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [projects, setProjects] = useState([])
+    const [statuses, setStatuses] = useState([])
 
     useEffect(() => {
         getAllProjects();
@@ -53,6 +54,7 @@ function Dashboard() {
         instance.get(`api/client/projects/all?&quotationReceived=`)
             .then(function (response) {
                 setProjects(response.projects);
+                setStatuses(response.statuses);
                 console.log(response);
             });
     }
@@ -76,6 +78,13 @@ function Dashboard() {
     const routeRedirecter = (id) => {
         window.location.href = `/agency-list:${id}`;
     }
+
+    useEffect(() => {
+        // console.log(statuses);
+    }, [statuses])
+
+    statuses.map(st => console.log(st));
+
 
     return (
         <>
@@ -138,12 +147,13 @@ function Dashboard() {
                                             value={age}
                                             onChange={handleChange}
                                         >
-                                            <MenuItem value="">
+                                            {statuses.map(st => <MenuItem>{st}</MenuItem> )}
+                                            {/* <MenuItem value="">
                                                 <em>All</em>
                                             </MenuItem>
                                             <MenuItem value={10}>Ten</MenuItem>
                                             <MenuItem value={20}>Twenty</MenuItem>
-                                            <MenuItem value={30}>Thirty</MenuItem>
+                                            <MenuItem value={30}>Thirty</MenuItem> */}
                                         </Select>
                                     </FormControl>
                                 </div>
