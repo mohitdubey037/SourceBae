@@ -170,7 +170,7 @@ function ShortTerm() {
     if (buttonStatus === "Upload") uploadMedia();
     else if (buttonStatus === "Post Project") shortTermProjectApi();
     else if (buttonStatus === "Finish")
-      window.location.href = "/client-dashboard";
+      window.location.href = "/hire-agency-form-one";
   };
 
   const handlePaymentModel = (status) => {

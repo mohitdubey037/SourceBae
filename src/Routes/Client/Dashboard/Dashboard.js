@@ -200,7 +200,7 @@ function Dashboard() {
                                                 <span style={{ backgroundColor: p.projectCurrentStatus === 'Posted' ? '#5cb85c' : '#626567' }}>01</span>
                                                 <p>{p.projectCurrentStatus}</p>
                                             </div>
-                                            <div>
+                                            {/* <div>
                                                 <span style={{ backgroundColor: '#00ffbf' }}>02</span>
                                                 <p>Shortlist Agency</p>
                                             </div>
@@ -211,7 +211,7 @@ function Dashboard() {
                                             <div>
                                                 <span style={{ backgroundColor: '#0000ff' }}>04</span>
                                                 <p>Hire the best!</p>
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         <div className="clientProjectInformation">
@@ -219,9 +219,11 @@ function Dashboard() {
                                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                                 <p>The 1 agencies you have shortlisted have been notified. Wait for 24-48 hours for their response.</p>
                                             </div>
-                                            <div className="clientProject">
-                                                <div onClick={() => routeRedirecter(p._id)}><p>View Proposal</p></div>
-                                            </div>
+                                             {/* <div className="clientProject"> */}
+                                                {/* <div onClick={() => routeRedirecter(p._id)}><p>View Proposal</p></div> */}
+                                                <div className='clientProjectLink' onClick={() => routeRedirecter(p._id)}><p>Visit More Agency </p></div>
+                                                <div className='clientProjectLink'><p>Visit Selected Agency</p></div>
+                                            {/* </div> */}
                                         </div>
 
                                     </div>

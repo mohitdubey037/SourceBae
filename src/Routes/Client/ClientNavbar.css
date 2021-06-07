@@ -417,7 +417,16 @@
     transform: translateY(8px);
 }
 
-
+.clientProjectLink {
+        padding: 0.3rem 1rem;
+        background-color: #02044a;
+        color: #fff;
+        font-family: 'Poppins';
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        border-radius: 10px;
+}
 
 
 
