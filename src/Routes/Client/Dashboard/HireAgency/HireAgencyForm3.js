@@ -92,6 +92,7 @@ function HireAgencyForm3() {
             console.log(apiData);
             instance.post(`/api/${Role}/projects/create`,apiData)
             .then(function(response){
+                console.log(response);
                 setButtonStatus("Finish");
                 setLoading(false);
             })

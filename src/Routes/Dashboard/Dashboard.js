@@ -52,11 +52,14 @@ const Dashboard = () => {
     };
 
     const getAllProjects = () => {
-        instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=true`)
+        instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=`)
             .then(function (response) {
                 setProjects(response);
                 console.log(response);
-            });
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     useEffect(() => {
@@ -103,54 +106,54 @@ const Dashboard = () => {
     };
 
 
-    const allProjects = [
-        {
-            projectName: 'Project Name',
-            desc: '',
-            projectStatus: 'Live',
-            budget: '$96',
-            creationDate: '6 Dec 2020',
-            duration: '180 Days',
-            projectType: 'fintech'
-        },
-        {
-            projectName: 'Project Name',
-            desc: '',
-            projectStatus: 'Live',
-            budget: '$96',
-            creationDate: '6 Dec 2020',
-            duration: '180 Days',
-            projectType: 'fintech'
-        },
-        {
-            projectName: 'Project Name',
-            desc: '',
-            projectStatus: 'Completed',
-            budget: '$96',
-            creationDate: '6 Dec 2020',
-            duration: '180 Days',
-            projectType: 'fintech'
-        },
-        {
-            projectName: 'Project Name',
-            desc: '',
-            projectStatus: 'Pending',
-            budget: '$96',
-            creationDate: '6 Dec 2020',
-            duration: '180 Days',
-            projectType: 'fintech'
-        },
-        {
-            projectName: 'Project Name',
-            desc: '',
-            projectStatusText: 'Project',
-            projectStatus: 'Completed',
-            budget: '$96',
-            creationDate: '6 Dec 2020',
-            duration: '180 Days',
-            projectType: 'fintech'
-        },
-    ]
+    // const allProjects = [
+    //     {
+    //         projectName: 'Project Name',
+    //         desc: '',
+    //         projectStatus: 'Live',
+    //         budget: '$96',
+    //         creationDate: '6 Dec 2020',
+    //         duration: '180 Days',
+    //         projectType: 'fintech'
+    //     },
+    //     {
+    //         projectName: 'Project Name',
+    //         desc: '',
+    //         projectStatus: 'Live',
+    //         budget: '$96',
+    //         creationDate: '6 Dec 2020',
+    //         duration: '180 Days',
+    //         projectType: 'fintech'
+    //     },
+    //     {
+    //         projectName: 'Project Name',
+    //         desc: '',
+    //         projectStatus: 'Completed',
+    //         budget: '$96',
+    //         creationDate: '6 Dec 2020',
+    //         duration: '180 Days',
+    //         projectType: 'fintech'
+    //     },
+    //     {
+    //         projectName: 'Project Name',
+    //         desc: '',
+    //         projectStatus: 'Pending',
+    //         budget: '$96',
+    //         creationDate: '6 Dec 2020',
+    //         duration: '180 Days',
+    //         projectType: 'fintech'
+    //     },
+    //     {
+    //         projectName: 'Project Name',
+    //         desc: '',
+    //         projectStatusText: 'Project',
+    //         projectStatus: 'Completed',
+    //         budget: '$96',
+    //         creationDate: '6 Dec 2020',
+    //         duration: '180 Days',
+    //         projectType: 'fintech'
+    //     },
+    // ]
 
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)

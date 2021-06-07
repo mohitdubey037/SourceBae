@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ClientNavbar from "../../ClientNavbar";
 import "./HireAgencyForms.css";
 
@@ -68,14 +68,20 @@ const HireAgencyForm1 = () => {
     console.log(data);
     instance.post(`/api/${Role}/projects/create`, data)
       .then(function (response) {
+        console.log(response);
+        console.log(buttonStatus);
         setButtonStatus("Next")
-        setProjectId(response.project._id)
+        setProjectId(response._id)
         setLoading(false);
       })
       .catch(err => {
         setLoading(false)
       })
   };
+
+  useEffect(() => {
+    console.log(buttonStatus);
+  }, [buttonStatus]);
 
   const handleButton = () => {
     if (buttonStatus === "Submit") {
@@ -182,7 +188,7 @@ const HireAgencyForm1 = () => {
               <div className="nextbuttton">
                 <span></span>
                 <div style={{ backgroundColor: colors[buttonStatus] }} onClick={() => handleButton()}>
-                  {buttonStatus}{" "}
+                  {buttonStatus}
                   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </div>
               </div>

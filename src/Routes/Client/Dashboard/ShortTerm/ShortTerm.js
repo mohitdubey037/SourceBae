@@ -120,7 +120,6 @@ function ShortTerm() {
 
   const handleServices = (event) => {
     const { className } = event.target;
-    console.log(className, "classnaem");
     const toggledServices = allServices.map((service) => {
       setApiData({
         ...apiData,
@@ -143,6 +142,7 @@ function ShortTerm() {
 
   function uploadMedia() {
     const formData = new FormData();
+    console.log(projectFiles);
 
     projectFiles && formData.append("files", projectFiles, "projectFile.pdf");
     instance
@@ -151,7 +151,7 @@ function ShortTerm() {
         console.log(response);
         setApiData({
           ...apiData,
-          projectFiles: [response[0].mediaURL]
+          projectFiles: [response[0]?.mediaURL]
         });
         setButtonStatus("Post Project");
       });
@@ -200,6 +200,7 @@ function ShortTerm() {
   };
 
   const fileHandler = (projectDoc) => {
+    console.log(fileHandler)
     setProjectFiles(projectDoc);
   };
 
