@@ -21,9 +21,9 @@ function AgencyForm1() {
 
     const colors = {
         Upload: "blue",
-        Update: "yellow",
-        Next: "green",
-        Finish: "orange"
+        Update: "Green",
+        // Next: "green",
+        // Finish: "orange"
     }
 
     const [loading, setLoading] = useState(false);
@@ -281,8 +281,9 @@ function AgencyForm1() {
             setLoading(true);
             instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
                 .then(function (response) {
-                    setStatus("Next");
+                    // setStatus("Next");
                     setLoading(false);
+                    window.location.href = "/agency-form-two"
                 })
                 .catch(err => {
                     setLoading(false);
@@ -323,17 +324,18 @@ function AgencyForm1() {
 
     const handleNavlink = async (e) => {
         console.log(status)
-        if (status !== "Next") {
-            e.preventDefault()
-            if (status === "Upload" && agencyLogo !== null)
-                uploadMedia(agencyLogo.category, agencyLogo.document)
-            else if (status === "Update")
-                handleSubmit()
-            else
-                toast.error("Upload document.")
-        }
-        else if (status === "Next")
-            window.location.href = "/agency-form-two"
+
+        // if (status !== "Next") {
+        //     e.preventDefault()
+        if (status === "Upload" && agencyLogo !== null)
+            uploadMedia(agencyLogo.category, agencyLogo.document)
+        else if (status === "Update")
+            handleSubmit()
+        else
+            toast.error("Upload document.")
+        // }
+        // else if (status === "Next")
+        //     window.location.href = "/agency-form-two"
     }
 
     const handleUploadError = (error) => {
@@ -498,12 +500,12 @@ function AgencyForm1() {
                                         Back
                                     </button>
                                     </NavLink>
-                                    <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}>
-                                        <button style={{ backgroundColor: colors[status] }}>
-                                            {status}
-                                            <i class="fa fa-long-arrow-right" aria-hidden="true" />
-                                        </button>
-                                    </NavLink>
+                                    {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}> */}
+                                    <button onClick={(event) => handleNavlink(event)} style={{ backgroundColor: colors[status] }}>
+                                        {status}
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                    </button>
+                                    {/* </NavLink> */}
                                 </div>
 
                             </div>

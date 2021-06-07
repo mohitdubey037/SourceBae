@@ -52,7 +52,7 @@ function Dashboard() {
     const getAllProjects = () => {
         instance.get(`api/client/projects/all?&quotationReceived=`)
             .then(function (response) {
-                setProjects(response);
+                setProjects(response.projects);
                 console.log(response);
             });
     }
