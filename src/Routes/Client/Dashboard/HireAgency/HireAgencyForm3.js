@@ -28,7 +28,8 @@ function HireAgencyForm3() {
     const [apiData , setApiData] = useState({
         id:projectId,
         stepsCompleted:3,
-        projectTechnologiesRequired:[]
+        projectTechnologiesRequired:[],
+        projectServicesRequired:[]
     })
 
     const [buttonStatus, setButtonStatus] = useState("Next");
@@ -40,6 +41,7 @@ function HireAgencyForm3() {
     const handleServices = (event) => {
         let technologies = []
         setAllTechnologies([])
+        let servicesRequired = []
         const { className } = event.target
         const toggledServices = allServices.map((service) => {
             const techs = service?.technologies?.map((tech)=>{
@@ -53,7 +55,9 @@ function HireAgencyForm3() {
                 if(!service.selected){
                     console.log(techs)
                     technologies = [...technologies, ...techs]
+                    servicesRequired = [...servicesRequired, service._id]
                 }
+           
                 return {
                     ...service,
                     selected: !service.selected
@@ -62,6 +66,7 @@ function HireAgencyForm3() {
             else if(service.serviceName !== className){
                 if(service.selected){
                     technologies = [...technologies, ...techs]
+                    servicesRequired = [...servicesRequired, service._id]
                 }
 
                 return service
@@ -69,8 +74,13 @@ function HireAgencyForm3() {
             return service
         })
         setAllServices(toggledServices)
+        setApiData({...apiData,projectServicesRequired:servicesRequired})
         setAllTechnologies(technologies)
     }
+
+    useEffect(()=>{
+        console.log(apiData,"apiData")
+    },[apiData])
 
     const getAllServices = () => {
         instance.get(`api/${Role}/services/all?with_technologies=1`)
@@ -93,8 +103,8 @@ function HireAgencyForm3() {
             instance.post(`/api/${Role}/projects/create`,apiData)
             .then(function(response){
                 console.log(response);
-                setButtonStatus("Finish");
                 setLoading(false);
+                window.location.href = `/agency-list:${projectId}`
             })
             .catch(err => {
                 setLoading(false);
@@ -103,8 +113,6 @@ function HireAgencyForm3() {
     const handleButton = ()=>{
         if(buttonStatus==="Next")
             hireAgencyForm3Api()
-        else if(buttonStatus==="Finish")
-            window.location.href = `/agency-list:${projectId}`
     }
     useEffect(() => {
         getAllServices()
