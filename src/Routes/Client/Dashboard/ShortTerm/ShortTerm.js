@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import ClientNavbar from "../../ClientNavbar";
 import "./ShortTerm.css";
 
-import development from "../../../../assets/images/ClientDashboard/shortTerm/development.png";
-import design from "../../../../assets/images/ClientDashboard/shortTerm/design.png";
-import sales from "../../../../assets/images/ClientDashboard/shortTerm/sales.png";
-import other from "../../../../assets/images/ClientDashboard/shortTerm/other.png";
 import fixed from "../../../../assets/images/ClientDashboard/shortTerm/fixed.png";
 import hour from "../../../../assets/images/ClientDashboard/shortTerm/hour.png";
 
@@ -14,13 +10,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
-import clsx from "clsx";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Select from "@material-ui/core/Select";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants";
 import { FilePicker } from "react-file-picker";
 
@@ -40,38 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
-
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
 
 const BlueRadio = withStyles({
   root: {
@@ -89,12 +47,6 @@ function ShortTerm() {
 
   const [allServices, setAllServices] = useState([]);
   const [buttonStatus, setButtonStatus] = useState("Upload");
-
-  const [document, setDocument] = useState({
-    documentLink: "",
-    documentPicked: false,
-    document: "",
-  });
 
   const [apiData, setApiData] = useState({
     clientId: id,
@@ -161,17 +113,14 @@ function ShortTerm() {
 
     instance.post(`api/${Role}/projects/create-short-term`, apiData)
     .then(function (response){
-        console.log('hiii');
-        setButtonStatus("Finish");
+       window.location.href = `/agency-list:${response.project._id}`
     })
   };
 
   const handleButton = () => {
     if (buttonStatus === "Upload") uploadMedia();
     else if (buttonStatus === "Post Project") shortTermProjectApi();
-    else if (buttonStatus === "Finish")
-      window.location.href = "/hire-agency-form-one";
-  };
+  }
 
   const handlePaymentModel = (status) => {
     if (status)
