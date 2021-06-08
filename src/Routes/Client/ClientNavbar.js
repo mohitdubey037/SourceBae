@@ -78,7 +78,7 @@ const ClientNavbar = ({ isVisible }) => {
     const onCloseModal = () => setOpenModal(false);
 
     const showVisibility = () => {
-        // isVisible(!show)
+        isVisible(!show)
         setShow(!show);
     }
 
