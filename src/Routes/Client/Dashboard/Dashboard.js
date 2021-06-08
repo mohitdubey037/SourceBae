@@ -21,6 +21,17 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import instance from '../../../Constants/axiosConstants';
 
+const MenuProps = {
+    getContentAnchorEl: () => null,
+    PaperProps: {
+        style: {
+            maxHeight: 215,
+            width: 200,
+            top: 350,
+        },
+    },
+};
+
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -144,6 +155,7 @@ function Dashboard() {
                                             open={open}
                                             onClose={handleClose}
                                             onOpen={handleOpen}
+                                            MenuProps={MenuProps}
                                             value={age}
                                             onChange={handleChange}
                                         >
