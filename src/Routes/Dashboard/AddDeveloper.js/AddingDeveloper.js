@@ -59,9 +59,9 @@ function AddingDeveloper() {
 
     const colors = {
         Upload: "blue",
-        Update: "yellow",
-        Next: "green",
-        Finish: "orange"
+        Update: "green",
+        // Next: "green",
+        // Finish: "orange"
     }
 
     const classes = useStyles();
@@ -90,7 +90,7 @@ function AddingDeveloper() {
 
     const [techs, setTechs] = useState([]);
     const [techIds, setTechIds] = React.useState([]);
-    const [btnName, setBtnName] = useState("Upload")
+    const [buttonStatus, setButtonStatus] = useState("Upload")
     const [isDisabled, setIsDisabled] = useState(true)
     const [resume, setResume] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -150,6 +150,7 @@ function AddingDeveloper() {
     }
 
     function uploadMedia() {
+        setLoading(true)
 
         const formData = new FormData();
 
@@ -170,35 +171,34 @@ function AddingDeveloper() {
                         }
                     ]
                 })
-                setBtnName("Submit")
+                setButtonStatus("Submit")
                 setLoading(false)
+            })
+            .catch(err => {
+                setLoading(false);
             })
 
     }
 
     const createDeveloperApi = () => {
+        setLoading(true)
         instance.post(`api/${Role}/developers/create`, developerData)
             .then(function (response) {
                 console.log(response)
-                setBtnName("Next");
                 setLoading(false);
+                window.location.href = "/dashboard"
+
             })
-            .catch(e=>{
+            .catch(error => {
                 setLoading(false)
             })
     }
     const handleAction = (name) => {
-        setLoading(true)
         if (name === "Upload") {
             uploadMedia()
-
         }
         else if (name === "Submit") {
-            setLoading(true)
             createDeveloperApi()
-        }
-        else if (name === "Next") {
-            window.location.href = "/dashboard"
         }
     }
 
@@ -340,7 +340,7 @@ function AddingDeveloper() {
                                 </FormControl>
                             </div>
                             <div className="submitButton">
-                                <button style={{ backgroundColor: colors[btnName] }} disabled={isDisabled} onClick={() => handleAction(btnName)}>{`${btnName}`}</button>
+                                <button style={{ backgroundColor: colors[buttonStatus] }} disabled={isDisabled} onClick={() => handleAction(buttonStatus)}>{`${buttonStatus}`}</button>
                             </div>
                         </div>
                     </div>

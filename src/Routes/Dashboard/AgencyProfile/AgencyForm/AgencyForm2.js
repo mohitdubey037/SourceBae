@@ -35,15 +35,15 @@ import Spinner from '../../../../Components/Spinner/Spinner'
 function AgencyForm2() {
 
     const colors = {
-        Update:"yellow",
-        Next:"green",
-      }
+        Update: "yellow",
+        Next: "green",
+    }
 
     const Role = "agency"
 
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState("Update")
-    
+
     // selecting Domains
     const [allDomainsData, setAllDomainsData] = useState([])
 
@@ -60,20 +60,20 @@ function AgencyForm2() {
     const [dom, setDom] = useState([])
 
     //API DATA STATE VARIABLES
-    const [apiData, setApiData]= useState({
+    const [apiData, setApiData] = useState({
         stepsCompleted: "3",
-        agencyDomains:[],
-        agencyServices:[],
-        agencyTechnologies:[],
-        agencyMonthlyBudget:[]
+        agencyDomains: [],
+        agencyServices: [],
+        agencyTechnologies: [],
+        agencyMonthlyBudget: []
     })
 
     // const classes = useStyles();
 
     const handleChange = (event) => {
-        const {name, value} = event.target
+        const { name, value } = event.target
 
-        if(name==="budget")
+        if (name === "budget")
             setApiData(
                 {
                     ...apiData,
@@ -82,29 +82,29 @@ function AgencyForm2() {
             )
     };
 
-    const handleTechSelect = (arr) => {  
+    const handleTechSelect = (arr) => {
         setSelectedTechNames(arr)
     }
 
-    const setAgencyTechnologies = ()=>{
-        const selectedTechs = selectedTechName.map((tech)=>{
+    const setAgencyTechnologies = () => {
+        const selectedTechs = selectedTechName.map((tech) => {
             return visibleTechData[tech]._id
         })
-         setApiData({
+        setApiData({
             ...apiData,
-            agencyTechnologies:selectedTechs
+            agencyTechnologies: selectedTechs
         })
     }
 
-    const setAgencyDomains = async()=>{
-        const selects = await allDomainsData.filter((domain)=> domain.selected===true)
+    const setAgencyDomains = async () => {
+        const selects = await allDomainsData.filter((domain) => domain.selected === true)
         setDom(selects)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setApiData({
             ...apiData,
-            agencyDomains:dom.map((domain)=>{
+            agencyDomains: dom.map((domain) => {
                 return {
                     domainId: domain._id,
                     domainBaseAmount: 100,
@@ -112,13 +112,12 @@ function AgencyForm2() {
                 }
             })
         })
-    },[dom])
-    
-    const handleNext = async ()=>{
-        await setAgencyDomains()
-        console.log('yee nhi pta kb chala');
-        await setAgencyTechnologies()
-    }
+    }, [dom])
+
+    // const handleNext = () => {
+    //     setAgencyDomains()
+    //     setAgencyTechnologies()
+    // }
     //Api Calls methods
 
     const getAllDomains = () => {
@@ -138,7 +137,7 @@ function AgencyForm2() {
     const handleDomains = (event) => {
         const { className } = event.target
         const toggledDomains = allDomainsData.map((domain) => {
-            if (domain.domainName === className){
+            if (domain.domainName === className) {
                 return {
                     ...domain,
                     selected: !domain.selected
@@ -196,7 +195,7 @@ function AgencyForm2() {
     }
 
 
-    const getSelectedServicesIds = (allServices)=> {
+    const getSelectedServicesIds = (allServices) => {
         return allServices
             .filter(function (service) {
                 return service.selected === true;
@@ -206,13 +205,19 @@ function AgencyForm2() {
             });
     }
 
-    const createAgencyForm2Api = ()=>{
+    const createAgencyForm2Api = () => {
+        setLoading(true);
         instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
-                setStatus("Next")
+                // setStatus("Next")
+                setLoading(false);
+                window.location.href = "/agency-form-three"
+            })
+            .catch(err => {
+                setLoading(false)
             })
     }
-    
+
     useEffect(() => {
         getAllDomains()
         getAllServices()
@@ -221,16 +226,16 @@ function AgencyForm2() {
 
     useEffect(() => {
 
-        if (allDomainsData.length !== 0 && allTechData.length !== 0 && allServicesData.length !== 0){
+        if (allDomainsData.length !== 0 && allTechData.length !== 0 && allServicesData.length !== 0) {
             setLoading(false);
         }
-    },[allDomainsData,allServicesData, allTechData ])
+    }, [allDomainsData, allServicesData, allTechData])
 
     useEffect(() => {
         setSelectedServicesId(getSelectedServicesIds(allServicesData))
         setApiData({
             ...apiData,
-            agencyServices:getSelectedServicesIds(allServicesData)
+            agencyServices: getSelectedServicesIds(allServicesData)
         })
     }, [allServicesData])
 
@@ -238,8 +243,8 @@ function AgencyForm2() {
         // eslint-disable-next-line array-callback-return
 
         const filteredTech = {}
-        allTechData.forEach((tech)=>{
-            if (selectedServicesId.indexOf(tech.serviceId) !== -1){
+        allTechData.forEach((tech) => {
+            if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
                 filteredTech[tech.technologyName] = tech
             }
         })
@@ -248,21 +253,23 @@ function AgencyForm2() {
         setVisibleTechNames(Object.keys(filteredTech))
     }, [selectedServicesId, allTechData])
 
-    useEffect(()=>{
-        if(apiData.agencyDomains.length!==0 && apiData.agencyServices.length!==0 && apiData.agencyTechnologies.length!==0){
+    useEffect(() => {
+        if (apiData.agencyDomains.length !== 0 && apiData.agencyServices.length !== 0 && apiData.agencyTechnologies.length !== 0) {
             createAgencyForm2Api()
-            
         }
-    },[apiData])
+    }, [apiData])
 
-    const handleNav = (event)=>{
-        if(status==="Update"){
-            event.preventDefault()
-            handleNext()
-            console.log('hiii peeeps');
-        }
-        else if(status ==="Next")
-            window.location.href = "/agency-form-three"
+    const handleNavlink = (event) => {
+        setAgencyDomains()
+        setAgencyTechnologies()
+        // if(status==="Update"){
+        //     event.preventDefault()
+        //     handleNext()
+        //     console.log('hiii peeeps');
+        // }
+        // else if(status ==="Next")
+        //     window.location.href = "/agency-form-three"
+
     }
     return (
         <>
@@ -270,108 +277,108 @@ function AgencyForm2() {
 
             <FormPhases value1={true} value2={true} />
 
-            {loading ? <Spinner/> : 
+            {loading ? <Spinner /> :
 
-            <div className="mainTechStackForm">
-                <div className="innerTechStackForm">
-                    <div className="techStackFields">
+                <div className="mainTechStackForm">
+                    <div className="innerTechStackForm">
+                        <div className="techStackFields">
 
-                        <div className="domainsFields">
-                            <p className="domainHeading">1. Which business sector are you targeting?</p>
-                            <div className="domainFieldsCard">
-                                {allDomainsData?.length > 0 ? allDomainsData.map((domain) => {
-                                    return (
-                                        <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)} style={{ backgroundColor: domain.selected ? '#02044a' : '#D6EAF8' }} >
-                                            <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
-                                            <p className={`${domain.domainName}`} style={{ color: domain.selected ? '#fff' : '#000' }}>{`${domain.domainName}`}</p>
-                                        </div>
-                                    )
-                                })
-                                    :
-                                    <p>Sorry No Data Found.</p>
-                                }
+                            <div className="domainsFields">
+                                <p className="domainHeading">1. Which business sector are you targeting?</p>
+                                <div className="domainFieldsCard">
+                                    {allDomainsData?.length > 0 ? allDomainsData.map((domain) => {
+                                        return (
+                                            <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)} style={{ backgroundColor: domain.selected ? '#02044a' : '#D6EAF8' }} >
+                                                <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                                                <p className={`${domain.domainName}`} style={{ color: domain.selected ? '#fff' : '#000' }}>{`${domain.domainName}`}</p>
+                                            </div>
+                                        )
+                                    })
+                                        :
+                                        <p>Sorry No Data Found.</p>
+                                    }
+                                </div>
                             </div>
-                        </div>
 
 
 
 
-                        <div className="serivcesAgency">
-                            <p className="servicesHeading">2. In which services you have good command?</p>
-                            <div className="servicesCardsAgency">
+                            <div className="serivcesAgency">
+                                <p className="servicesHeading">2. In which services you have good command?</p>
+                                <div className="servicesCardsAgency">
 
-                                {allServicesData?.length > 0 ? allServicesData.map((service) => {
-                                    return (
-                                        <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
-                                            <img className={`${service.serviceName}`} src={uiux} alt="" />
-                                            {/* <p style={{ color: isUiUx ? '#fff' : '#000' }}>UI/UX <br /> Design</p> */}
-                                            <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
-                                        </div>
-                                    )
-                                })
-                                    :
-                                    <p>Sorry No Data Found.</p>
-                                }
+                                    {allServicesData?.length > 0 ? allServicesData.map((service) => {
+                                        return (
+                                            <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
+                                                <img className={`${service.serviceName}`} src={uiux} alt="" />
+                                                {/* <p style={{ color: isUiUx ? '#fff' : '#000' }}>UI/UX <br /> Design</p> */}
+                                                <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
+                                            </div>
+                                        )
+                                    })
+                                        :
+                                        <p>Sorry No Data Found.</p>
+                                    }
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div className="monthlyBudget">
-                            <p>3. What is the monthly budget?</p>
+                            <div className="monthlyBudget">
+                                <p>3. What is the monthly budget?</p>
 
-                            <div className="domainBudgetOptions">
-                                <FormControl component="fieldset">
-                                    <RadioGroup aria-label="budget" name="budget" value={apiData.agencyMonthlyBudget} onChange={handleChange}>
-                                        <FormControlLabel value="1000" control={<Radio />} label="1000$-3000$" />
-                                        <FormControlLabel value="3000" control={<Radio />} label="3000$-5000$" />
-                                        <FormControlLabel value="5000" control={<Radio />} label="50000$-7000$" />
-                                        <FormControlLabel value="7000" control={<Radio />} label="7000$-10000$" />
-                                    </RadioGroup>
-                                </FormControl>
+                                <div className="domainBudgetOptions">
+                                    <FormControl component="fieldset">
+                                        <RadioGroup aria-label="budget" name="budget" value={apiData.agencyMonthlyBudget} onChange={handleChange}>
+                                            <FormControlLabel value="1000" control={<Radio />} label="1000$-3000$" />
+                                            <FormControlLabel value="3000" control={<Radio />} label="3000$-5000$" />
+                                            <FormControlLabel value="5000" control={<Radio />} label="50000$-7000$" />
+                                            <FormControlLabel value="7000" control={<Radio />} label="7000$-10000$" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div className="nextBtn">
-                            {/* <NavLink to="/agency-form-one" ><i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
-                            <NavLink to="/agency-form-one" style={{textDecoration:"none"}}>
-                                <button className ="next-click">
-                                    <i className="fa fa-long-arrow-left" aria-hidden="true"/>
+                            <div className="nextBtn">
+                                {/* <NavLink to="/agency-form-one" ><i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
+                                <NavLink to="/agency-form-one" style={{ textDecoration: "none" }}>
+                                    <button className="next-click">
+                                        <i className="fa fa-long-arrow-left" aria-hidden="true" />
                                     Back
                                 </button>
-                            </NavLink>
-                            {/* <NavLink to="/agency-form-three" >
+                                </NavLink>
+                                {/* <NavLink to="/agency-form-three" >
                             Next <i className="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                            <NavLink to="/agency-form-three" style={{textDecoration:"none"}} onClick = {(event)=>{handleNav(event)}}>
-                                <button style={{backgroundColor:colors[status]}} className ="next-click">
+                                {/* <NavLink to="/agency-form-three" style={{textDecoration:"none"}} onClick = {(event)=>{handleNav(event)}}> */}
+                                <button style={{ backgroundColor: colors[status] }} className="next-click" onClick={(event) => { handleNavlink(event) }}>
                                     {status}
-                                    <i className="fa fa-long-arrow-right" aria-hidden="true"/>
+                                    <i className="fa fa-long-arrow-right" aria-hidden="true" />
                                 </button>
-                            </NavLink>
+                                {/* </NavLink> */}
+                            </div>
+
+
                         </div>
-
-
-                    </div>
-                    <div className="serviceFieldsOptions">
-                        <div className="servicesContainer">
-                            <div className="serviceSelectionInput">
-                                {
-                                    visibleTechNames?.length ? (<>
-                                        <p className="uiuxtext">Select Technologies</p>
-                                        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                            <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleTechSelect} options={visibleTechNames} primaryColor="#D6EAF8"
-                                                secondaryColor="#02044a"
-                                                textSecondaryColor="#fff"
-                                                className="UIUXServices"
-                                                textColor="#02044a" />
-                                        </div>
-                                    </>) : <p>Please select one or more services.</p>
-                                }
+                        <div className="serviceFieldsOptions">
+                            <div className="servicesContainer">
+                                <div className="serviceSelectionInput">
+                                    {
+                                        visibleTechNames?.length ? (<>
+                                            <p className="uiuxtext">Select Technologies</p>
+                                            <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                                                <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleTechSelect} options={visibleTechNames} primaryColor="#D6EAF8"
+                                                    secondaryColor="#02044a"
+                                                    textSecondaryColor="#fff"
+                                                    className="UIUXServices"
+                                                    textColor="#02044a" />
+                                            </div>
+                                        </>) : <p>Please select one or more services.</p>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             }
         </>
     )
