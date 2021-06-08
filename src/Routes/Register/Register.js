@@ -12,8 +12,8 @@ import './register.css'
 import colors from '../../Constants/colors'
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
-import axios from 'axios'
-
+import axios from 'axios';
+import Spinner from '../../Components/Spinner/Spinner';
 
 // Axios Import
 import instance from "../../Constants/axiosConstants"
@@ -67,8 +67,8 @@ const Register = (props) => {
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
 
-    if(!(role==="Agency" || role==="Client"))
-        window.location.href="/page-not-found"
+    if (!(role === "Agency" || role === "Client"))
+        window.location.href = "/page-not-found"
 
     //Social Media State Variables
     const [linkedIn, setLinkedIn] = useState({
@@ -81,6 +81,7 @@ const Register = (props) => {
         platformLink: ""
     })
 
+    const [loading, setLoading] = useState(false);
 
     //Client state varaibles//
     const [signupForm, setSignupForm] = useState({
@@ -295,25 +296,29 @@ const Register = (props) => {
                     localStorage.setItem('role', role)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
-                   
+
                 })
         })
     }
 
     const createProfileApi = (Role, api_param_const, createForm) => {
-
+        setLoading(true);
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
+                setLoading(false);
                 console.log(role)
                 if (role === "Client")
                     window.location.href = "/client-dashboard"
-                else if(role === "Agency")
+                else if (role === "Agency")
                     window.location.replace("/dashboard")
+            })
+            .catch(err => {
+                setLoading(false)
             })
     }
 
 
-    const handleSubmit = (Role, Form, createAgencyForm,createClientForm) => {
+    const handleSubmit = (Role, Form, createAgencyForm, createClientForm) => {
 
         if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
@@ -322,7 +327,7 @@ const Register = (props) => {
                 .then(() => {
                     let api_param_const = ``
                     let api_create_form = {}
-                    if (apiRole === `client`){
+                    if (apiRole === `client`) {
                         api_param_const = `clients`
                         api_create_form = {
                             "stepsCompleted": 1,
@@ -336,7 +341,7 @@ const Register = (props) => {
                             ...createAgencyForm
                         }
                     }
-                   
+
 
                     if (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) {
                         instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
@@ -346,7 +351,7 @@ const Register = (props) => {
                     else {
                         toast.error("Token not set", { autoClose: 2000 })
                     }
-                    
+
                 })
         }
     }
@@ -493,7 +498,7 @@ const Register = (props) => {
                 )
             }
             else if (signupForm.userPhone.length < 10) {
-                console.log('mam'); 
+                console.log('mam');
                 setSignupFormErrors(
                     {
                         firstNameError: "",
@@ -587,172 +592,175 @@ const Register = (props) => {
             </div>
 
             <div style={{ flex: .65 }}>
-                <div className='form__area'>
-                    {/* <div className="logoPart">
+                {loading ? <Spinner /> :
+                    <div className='form__area'>
+                        {/* <div className="logoPart">
                         <img src={logotext} alt="" />
                     </div> */}
-                    <div className="client__form">
-                        <div style={{ width: '100%', textAlign: 'center', marginTop: '5%' }}>
-                            <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
-                            <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
-                        </div>
+                        <div className="client__form">
+                            <div style={{ width: '100%', textAlign: 'center', marginTop: '5%' }}>
+                                <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
+                                <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
+                            </div>
 
-                        <div className="client__formsContainer">
+                            <div className="client__formsContainer">
 
-                            <form className='client__form form__1' autoComplete='off' >
-                                {/* <label htmlFor='firstName'>Your firstname *</label> */}
-                                <input
-                                    required
-                                    type="text"
-                                    name="firstName"
-                                    placeholder='First Name'
-                                    value={signupForm.firstName}
-                                    onChange={(e) => setForm(e)}
-                                // style={{
-                                //     border: signupFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
-                                //     transition: '.3s ease'
-                                // }}
-                                />
-                                {signupFormErrors.firstNameError !== "" ? <Alert severity="error">{signupFormErrors.firstNameError}</Alert> : ''}
-                                {/* <label htmlFor='name'>Your lastname *</label> */}
-                                <input
-                                    type="text"
-                                    name="lastName"
-                                    placeholder='Last Name'
-                                    value={signupForm.lastName}
-                                    onChange={(e) => setForm(e)}
-                                />
-                                {signupFormErrors.lastNameError !== "" && <Alert severity="error">{signupFormErrors.lastNameError}</Alert>}
+                                <form className='client__form form__1' autoComplete='off' >
+                                    {/* <label htmlFor='firstName'>Your firstname *</label> */}
+                                    <input
+                                        required
+                                        type="text"
+                                        name="firstName"
+                                        placeholder='First Name'
+                                        value={signupForm.firstName}
+                                        onChange={(e) => setForm(e)}
+                                    // style={{
+                                    //     border: signupFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
+                                    //     transition: '.3s ease'
+                                    // }}
+                                    />
+                                    {signupFormErrors.firstNameError !== "" ? <Alert severity="error">{signupFormErrors.firstNameError}</Alert> : ''}
+                                    {/* <label htmlFor='name'>Your lastname *</label> */}
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        placeholder='Last Name'
+                                        value={signupForm.lastName}
+                                        onChange={(e) => setForm(e)}
+                                    />
+                                    {signupFormErrors.lastNameError !== "" && <Alert severity="error">{signupFormErrors.lastNameError}</Alert>}
 
-                                <input
-                                    type="text"
-                                    name="userName"
-                                    placeholder='Username'
-                                    value={signupForm.userName}
-                                    onChange={(e) => setForm(e)}
-                                />
-                                {signupFormErrors.userNameError !== "" && <Alert severity="error">{signupFormErrors.userNameError}</Alert>}
+                                    <input
+                                        type="text"
+                                        name="userName"
+                                        placeholder='Username'
+                                        value={signupForm.userName}
+                                        onChange={(e) => setForm(e)}
+                                    />
+                                    {signupFormErrors.userNameError !== "" && <Alert severity="error">{signupFormErrors.userNameError}</Alert>}
 
-                                <input
-                                    type="email"
-                                    name="userEmail"
-                                    placeholder='Email'
-                                    value={signupForm.userEmail}
-                                    onChange={(e) => setForm(e)}
-                                />
-                                {signupFormErrors.emailError !== "" && <Alert severity="error">{signupFormErrors.emailError}</Alert>}
+                                    <input
+                                        type="email"
+                                        name="userEmail"
+                                        placeholder='Email'
+                                        value={signupForm.userEmail}
+                                        onChange={(e) => setForm(e)}
+                                    />
+                                    {signupFormErrors.emailError !== "" && <Alert severity="error">{signupFormErrors.emailError}</Alert>}
 
-                                <input
-                                    type="tel"
-                                    name="userPhone"
-                                    maxLength = '10'
-                                    placeholder='Phone No'
-                                    value={signupForm.userPhone}
-                                    onChange={(e) => setForm(e)}
-                                />
-                                
-                                {signupFormErrors.phoneError !== "" && <Alert severity="error">{signupFormErrors.phoneError}</Alert>}
+                                    <input
+                                        type="tel"
+                                        name="userPhone"
+                                        maxLength='10'
+                                        placeholder='Phone No'
+                                        value={signupForm.userPhone}
+                                        onChange={(e) => setForm(e)}
+                                    />
 
-                                <input
-                                    type="password"
-                                    name="password"
-                                    placeholder='Create Password'
-                                    value={signupForm.password}
-                                    onChange={(e) => setForm(e)}
-                                />
-                                {signupFormErrors.passwordError !== "" && <Alert severity="error">{signupFormErrors.passwordError}</Alert>}
+                                    {signupFormErrors.phoneError !== "" && <Alert severity="error">{signupFormErrors.phoneError}</Alert>}
+
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder='Create Password'
+                                        value={signupForm.password}
+                                        onChange={(e) => setForm(e)}
+                                    />
+                                    {signupFormErrors.passwordError !== "" && <Alert severity="error">{signupFormErrors.passwordError}</Alert>}
 
 
-                                <Button
-                                    onClick={() => toggleForms('next')}
-                                    style={{ background: '#02044a', marginTop: '5vh', marginBottom: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '60%', borderRadius: '8px' }}
-                                >
-                                    NEXT
-                                    </Button>
-                            </form>
-
-                            <form autoComplete='off' className="client__form form__2">
-                                <div style={{ width: '80%' }}>
                                     <Button
-                                        onClick={() => toggleForms('prev')}
-                                        style={{ background: 'none', border: 'none' }}
+                                        onClick={() => toggleForms('next')}
+                                        style={{ background: '#02044a', marginTop: '5vh', marginBottom: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '60%', borderRadius: '8px' }}
                                     >
-                                        <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
+                                        NEXT
                                     </Button>
-                                </div>
+                                </form>
+
+                                <form autoComplete='off' className="client__form form__2">
+                                    <div style={{ width: '80%' }}>
+                                        <Button
+                                            onClick={() => toggleForms('prev')}
+                                            style={{ background: 'none', border: 'none' }}
+                                        >
+                                            <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
+                                        </Button>
+                                    </div>
 
 
-                                {
-                                    role === `Agency` ? <>
-                                        <input
-                                            type="text"
-                                            name="agencyName"
-                                            placeholder='Agency Name'
-                                            value={agencyProfileDetails.agencyName}
-                                            onChange={(event) => handleCreateProfile(event, role)} />
+                                    {
 
-                                        {profileDetailsErrors.agencyNameError !== "" && <Alert severity="error">{profileDetailsErrors.agencyNameError}</Alert>}
-
-                                        <input
-                                            type="number"
-                                            name="agencyTeamSize"
-                                            placeholder='Team Strength'
-
-                                            onChange={(event) => handleCreateProfile(event, role)} />
-
-                                        {profileDetailsErrors.teamStrengthError !== "" && <Alert severity="error">{profileDetailsErrors.teamStrengthError}</Alert>}
-
-                                        <form className={dateClasses.container} noValidate>
-
-                                            <label classname={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
+                                        role === `Agency` ? <>
                                             <input
-                                                id="incorporation_date"
-                                                type="date"
-                                                name="incorporationDate"
-                                                max={new Date().toJSON().slice(0, 10)}
-                                                defaultValue={agencyProfileDetails?.incorporationDate}
-                                                value={agencyProfileDetails?.incorporationDate}
-                                                className={dateClasses.textField}
-                                                placeholder={`Incorporation Date`}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
+                                                type="text"
+                                                name="agencyName"
+                                                placeholder='Agency Name'
+                                                value={agencyProfileDetails.agencyName}
                                                 onChange={(event) => handleCreateProfile(event, role)} />
 
-                                        </form>
-                                        {profileDetailsErrors.incorporationDateError !== "" && <Alert severity="error">{profileDetailsErrors.incorporationDateError}</Alert>}
-                                    </>
-                                        :
-                                        <>
+                                            {profileDetailsErrors.agencyNameError !== "" && <Alert severity="error">{profileDetailsErrors.agencyNameError}</Alert>}
 
-                                            <input type="text" name="userDesignation" placeholder='User Designation' onChange={(event) => handleCreateProfile(event, role)} />
-                                            {profileDetailsErrors.userDesignationError !== "" && <Alert severity="error">{profileDetailsErrors.userDesignationError}</Alert>}
-                                            <input type="text" name="companyName" placeholder='Company Name' onChange={(event) => handleCreateProfile(event, role)} />
-                                            {profileDetailsErrors.companyNameError !== "" && <Alert severity="error">{profileDetailsErrors.companyNameError}</Alert>}
+                                            <input
+                                                type="number"
+                                                name="agencyTeamSize"
+                                                placeholder='Team Strength'
 
+                                                onChange={(event) => handleCreateProfile(event, role)} />
+
+                                            {profileDetailsErrors.teamStrengthError !== "" && <Alert severity="error">{profileDetailsErrors.teamStrengthError}</Alert>}
+
+                                            <form className={dateClasses.container} noValidate>
+
+                                                <label classname={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
+                                                <input
+                                                    id="incorporation_date"
+                                                    type="date"
+                                                    name="incorporationDate"
+                                                    max={new Date().toJSON().slice(0, 10)}
+                                                    defaultValue={agencyProfileDetails?.incorporationDate}
+                                                    value={agencyProfileDetails?.incorporationDate}
+                                                    className={dateClasses.textField}
+                                                    placeholder={`Incorporation Date`}
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                    onChange={(event) => handleCreateProfile(event, role)} />
+
+                                            </form>
+                                            {profileDetailsErrors.incorporationDateError !== "" && <Alert severity="error">{profileDetailsErrors.incorporationDateError}</Alert>}
                                         </>
+                                            :
+                                            <>
 
-                                }
+                                                <input type="text" name="userDesignation" placeholder='User Designation' onChange={(event) => handleCreateProfile(event, role)} />
+                                                {profileDetailsErrors.userDesignationError !== "" && <Alert severity="error">{profileDetailsErrors.userDesignationError}</Alert>}
+                                                <input type="text" name="companyName" placeholder='Company Name' onChange={(event) => handleCreateProfile(event, role)} />
+                                                {profileDetailsErrors.companyNameError !== "" && <Alert severity="error">{profileDetailsErrors.companyNameError}</Alert>}
 
-                                <input type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
-                                {profileDetailsErrors.socialPlatformDetailsError !== "" && <Alert severity="error">{profileDetailsErrors.socialPlatformDetailsError}</Alert>}
+                                            </>
 
-                                <Button
-                                    onClick={() => handleSubmit(role, signupForm, agencyProfileDetails,clientProfileDetails)}
-                                    style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
-                                >
-                                    SUBMIT
+                                    }
+
+                                    <input type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+                                    {profileDetailsErrors.socialPlatformDetailsError !== "" && <Alert severity="error">{profileDetailsErrors.socialPlatformDetailsError}</Alert>}
+
+                                    <Button
+                                        onClick={() => handleSubmit(role, signupForm, agencyProfileDetails, clientProfileDetails)}
+                                        style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
+                                    >
+                                        SUBMIT
                                     </Button>
-                            </form>
+                                </form>
 
+                            </div>
+                        </div>
+
+                        <div className="existing_accountText">
+                            <p>Personal Info</p>
+                            <p>Step {step} of 4</p>
                         </div>
                     </div>
-
-                    <div className="existing_accountText">
-                        <p>Personal Info</p>
-                        <p>Step {step} of 4</p>
-                    </div>
-                </div>
+                    }
             </div>
         </div>
     )

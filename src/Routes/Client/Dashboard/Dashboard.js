@@ -11,15 +11,15 @@ import dots from '../../../assets/images/ClientDashboard/dots.png'
 import info from '../../../assets/images/ClientDashboard/info.png'
 import { withRouter } from "react-router";
 import { NavLink, useHistory, Link } from 'react-router-dom';
+import Input from "@material-ui/core/Input";
 
-
-
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import instance from '../../../Constants/axiosConstants';
+import * as helper from '../../../shared/helper';
 
 const MenuProps = {
     getContentAnchorEl: () => null,
@@ -32,7 +32,6 @@ const MenuProps = {
     },
 };
 
-
 const useStyles = makeStyles((theme) => ({
     button: {
         display: 'block',
@@ -44,18 +43,34 @@ const useStyles = makeStyles((theme) => ({
     },
     filterValue: {
         fontWeight: '100',
-    }
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
 }));
+
+function getStyles(singleTechObject, allTechnologies, theme) {
+    return {
+        fontWeight:
+            allTechnologies.indexOf(singleTechObject) === -1
+                ? theme.typography.fontWeightRegular
+                : theme.typography.fontWeightMedium,
+    };
+}
 
 function Dashboard() {
 
+    const Role = helper.lowerize(localStorage.getItem('role'));
+    const clientId = localStorage.getItem("userId")
 
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
     const [open, setOpen] = React.useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [projects, setProjects] = useState([])
     const [statuses, setStatuses] = useState([])
+    const [selectedStatus, setSelectedStatus] = React.useState('');
+
+    const theme = useTheme();
 
     useEffect(() => {
         getAllProjects();
@@ -67,11 +82,25 @@ function Dashboard() {
                 setProjects(response.projects);
                 setStatuses(response.statuses);
                 console.log(response);
-            });
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     const handleChange = (event) => {
-        setAge(event.target.value);
+        setSelectedStatus(event.target.value);
+        console.log(event.target.value);
+        instance.get(`/api/${Role}/projects/all?clientId=${clientId}&projectCurrentStatus=${event.target.value}`)
+            .then(response => {
+                console.log(response);
+                setProjects(response.projects);
+                // setStatuses(response.statuses);
+            })
+            .catch(error => {
+                setProjects([]);
+                console.log(error);
+            })
     };
 
     const handleClose = () => {
@@ -91,11 +120,8 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        // console.log(statuses);
-    }, [statuses])
-
-    statuses.map(st => console.log(st));
-
+        console.log(projects);
+    }, [statuses], [projects])
 
     return (
         <>
@@ -148,18 +174,27 @@ function Dashboard() {
                             </div> */}
                                 <div className="filterOptions">
                                     <FormControl className={classes.formControl}>
-                                        <InputLabel className={classes.filterValue} id="demo-controlled-open-select-label">Status</InputLabel>
+                                        <h6>Status</h6>
                                         <Select
-                                            labelId="demo-controlled-open-select-label"
-                                            id="demo-controlled-open-select"
-                                            open={open}
                                             onClose={handleClose}
                                             onOpen={handleOpen}
-                                            MenuProps={MenuProps}
-                                            value={age}
+                                            displayEmpty
+                                            value={selectedStatus}
+                                            className={classes.selectEmpty}
+                                            inputProps={{ 'aria-label': 'Without label' }}
                                             onChange={handleChange}
                                         >
-                                            {statuses.map(st => <MenuItem>{st}</MenuItem> )}
+                                            <MenuItem value="">
+                                                <em>All</em>
+                                            </MenuItem>
+                                            {statuses.map((st) => {
+                                                return (
+                                                    <MenuItem
+                                                        value={st}
+                                                        style={getStyles(st, selectedStatus, theme)}>{st}</MenuItem>
+                                                )
+                                            })
+                                            }
                                             {/* <MenuItem value="">
                                                 <em>All</em>
                                             </MenuItem>
@@ -174,21 +209,11 @@ function Dashboard() {
 
                         <div className="allProjectsClients">
                             {projects.map(p => {
-                                // const statusColor = 'blue'
-                                // if (p.projectCurrentStatus === 'Posted'){
-                                //     console.log('h');
-                                //     statusColor = '#5cb85c'
-                                // }
                                 return (
                                     <div className="clientProjectCard">
                                         <span className="leftBorderClientProject"></span>
                                         <div className="cardTopPart">
                                             <div className="projectName">
-                                                {/* <h6 onClick={() => <NavLink to ={{
-                                                                    pathname: "/dsfdsfjgdsjfsjfgj-details",
-                                                                    state: {...p}
-                                                                }}/>
-                                                                }>{p.projectName}</h6> */}
                                                 <NavLink className="projectDetailsRouter" to={{
                                                     pathname: "/project-details",
                                                     state: { ...p },
@@ -218,10 +243,22 @@ function Dashboard() {
 
                                         <div className="projectStage">
                                             <span className="statusLine"></span>
-                                            <div>
-                                                <span style={{ backgroundColor: p.projectCurrentStatus === 'Posted' ? '#5cb85c' : '#626567' }}>01</span>
-                                                <p>{p.projectCurrentStatus}</p>
-                                            </div>
+                                            {statuses.map((s, index, value) => {
+                                                console.log(index <= value.indexOf(p.projectCurrentStatus));
+                                                // let flag = false
+                                                // let cond = false
+                                                // if(p.projectCurrentStatus===s && !flag){
+                                                //     flag = true
+                                                // }
+                                                return (
+                                                    <div>
+                                                        <span style={{ backgroundColor: index <= value.indexOf(p.projectCurrentStatus) /* !==s && !flag*/ ? '#5cb85c' : '#626567' }}>{index + 1}</span>
+                                                        <p>{s}</p>
+                                                    </div>
+                                                )
+                                            })}
+
+
                                             {/* <div>
                                                 <span style={{ backgroundColor: '#00ffbf' }}>02</span>
                                                 <p>Shortlist Agency</p>
@@ -241,10 +278,10 @@ function Dashboard() {
                                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                                 <p>The 1 agencies you have shortlisted have been notified. Wait for 24-48 hours for their response.</p>
                                             </div>
-                                             {/* <div className="clientProject"> */}
-                                                {/* <div onClick={() => routeRedirecter(p._id)}><p>View Proposal</p></div> */}
-                                                <div className='clientProjectLink' onClick={() => routeRedirecter(p._id)}><p>Visit More Agency </p></div>
-                                                <div className='clientProjectLink'><p>Visit Selected Agency</p></div>
+                                            {/* <div className="clientProject"> */}
+                                            {/* <div onClick={() => routeRedirecter(p._id)}><p>View Proposal</p></div> */}
+                                            <div className='clientProjectLink' onClick={() => routeRedirecter(p._id)}><p>Visit More Agency </p></div>
+                                            <div className='clientProjectLink'><p>Visit Selected Agency</p></div>
                                             {/* </div> */}
                                         </div>
 

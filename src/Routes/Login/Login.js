@@ -26,7 +26,7 @@ import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import { Input } from "@material-ui/core";
 import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
-
+import Spinner from '../../Components/Spinner/Spinner';
 
 const borderLight = "rgba(206,212,218, .993)";
 
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     passwordEye: {
         color: "rgba(131,153,167,0.9)",
         opacity: 0.9
-      }
+    }
 })
 )
 
@@ -94,6 +94,7 @@ const Login = (props) => {
     });
 
     const [hidePassword, SetPasswordStatus] = useState(true);
+    const [loading, setLoading] = useState(false);
     console.log(hidePassword)
 
     useEffect(() => {
@@ -105,9 +106,9 @@ const Login = (props) => {
 
     }, [state]);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("hi")
-    },[])
+    }, [])
 
     const showPassword = (e) => {
         console.log(e);
@@ -125,8 +126,8 @@ const Login = (props) => {
     role = helper.capitalize(helper.cleanParam(role))
     console.log(role);
 
-    if(!(role==="Agency" || role==="Client"))
-        window.location.href="/page-not-found"
+    if (!(role === "Agency" || role === "Client"))
+        window.location.href = "/page-not-found"
     //#######################//
 
     const [form, setForm] = useState({
@@ -159,13 +160,13 @@ const Login = (props) => {
     // }
 
     const logIn = async (role, form) => {
-
+        setLoading(true);
         let apiRole = helper.lowerize(role)
         return new Promise((resolve, reject) => {
-
             instance.post(`/api/${apiRole}/auths/login`, form)
                 .then(function (response) {
                     console.log(response, "response")
+                    setLoading(false);
                     localStorage.removeItem('Authorization')
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                     localStorage.setItem('role', role)
@@ -173,12 +174,17 @@ const Login = (props) => {
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
 
-                    if (role === "Agency")
+                    if (role === "Agency"){
                         window.location.replace("/dashboard")
+                    }
+                    
 
                     else if (role === "Client")
                         window.location.replace("/client-dashboard")
 
+                })
+                .catch(err => {
+                    setLoading(false);
                 })
         })
     }
@@ -227,121 +233,123 @@ const Login = (props) => {
 
                 </div>
             </div> */}
+            {loading ? <Spinner /> :
 
-            <div className="mainLoginPage">
-                <div className="innerLoginPage">
-                    <div className="loginIllustrator">
-                        <img src={loginImage} alt="" />
-                    </div>
-                    <div className="loginContent">
-                        <div className="mainLoginForm">
-                            <div className="toggleButton">
-                                <FormGroup>
-                                    {/* <FormControlLabel
+                <div className="mainLoginPage">
+                    <div className="innerLoginPage">
+                        <div className="loginIllustrator">
+                            <img src={loginImage} alt="" />
+                        </div>
+                        <div className="loginContent">
+                            <div className="mainLoginForm">
+                                <div className="toggleButton">
+                                    <FormGroup>
+                                        {/* <FormControlLabel
                                     control={<IOSSwitch checked={state.checkedB} onChange={handleChangeToggle} name="checkedB" />}
                                     label="iOS style"
                                 /> */}
-                                    <Typography component="div">
-                                        <Grid component="label" container alignItems="center" spacing={1}>
-                                            <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
-                                            <Grid item>
-                                                <AntSwitch checked={state.checked} onChange={handleChangeToggle} name="checked" />
+                                        <Typography component="div">
+                                            <Grid component="label" container alignItems="center" spacing={1}>
+                                                <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
+                                                <Grid item>
+                                                    <AntSwitch checked={state.checked} onChange={handleChangeToggle} name="checked" />
+                                                </Grid>
+                                                <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }}>Client</Grid>
                                             </Grid>
-                                            <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }}>Client</Grid>
-                                        </Grid>
-                                    </Typography>
-                                </FormGroup>
-                            </div>
-                            <div className="loginHeading">
-                                <h6>Login as <span> {roleString} </span></h6>
-                            </div>
-                            <div className="signUpOption">
-                                <p>Don't have an account? <span onClick={() => window.location.href=`/register:${role.toLowerCase()}`}>Sign Up</span></p>
-                            </div>
-                            <div className="loginForm">
-                                {/* <div className="emailLogin"> */}
-                                <p style={{ marginBottom: '10px' }}>Email</p>
-                                <Input
-                                    className={classes.inputs}
-                                    placeholder='Enter an email'
-                                    variant="outlined"
-                                    type="email"
-                                    // margin="normal"
-                                    disableUnderline={true}
-                                    required
-                                    fullWidth
-                                    name="user"
-                                    autoComplete="userEmail"
-                                    autoFocus
-                                    onChange={(e) => {
-                                        handleChange(e);
-                                    }}
-                                    endAdornment={
-                                        <InputAdornment>
-                                            <AccountCircleRoundedIcon fontSize="md" />
-                                        </InputAdornment>
-                                    }
-                                    
-                                />
-                                {/* <input name="user"
+                                        </Typography>
+                                    </FormGroup>
+                                </div>
+                                <div className="loginHeading">
+                                    <h6>Login as <span> {roleString} </span></h6>
+                                </div>
+                                <div className="signUpOption">
+                                    <p>Don't have an account? <span onClick={() => window.location.href = `/register:${role.toLowerCase()}`}>Sign Up</span></p>
+                                </div>
+                                <div className="loginForm">
+                                    {/* <div className="emailLogin"> */}
+                                    <p style={{ marginBottom: '10px' }}>Email</p>
+                                    <Input
+                                        className={classes.inputs}
+                                        placeholder='Enter an email'
+                                        variant="outlined"
+                                        type="email"
+                                        // margin="normal"
+                                        disableUnderline={true}
+                                        required
+                                        fullWidth
+                                        name="user"
+                                        autoComplete="userEmail"
+                                        autoFocus
+                                        onChange={(e) => {
+                                            handleChange(e);
+                                        }}
+                                        endAdornment={
+                                            <InputAdornment>
+                                                <AccountCircleRoundedIcon fontSize="md" />
+                                            </InputAdornment>
+                                        }
+
+                                    />
+                                    {/* <input name="user"
                                         value={form.user}
                                         onChange={(e) => { handleChange(e) }} type="text" placeholder="Type your email here.." /> */}
-                                {/* </div> */}
-                                {/* <div className="passwordLogin"> */}
-                                <p style={{ marginTop: '20px', marginBottom: '10px' }}>Password</p>
-                                <Input
-                                    placeholder='Enter a password'
-                                    className={classes.inputs}
-                                    variant="outlined"
-                                    // margin="normal"
-                                    type={hidePassword ? "password" : "text"}
-                                    required
-                                    fullWidth
-                                    disableUnderline={true}
-                                    name="password"
-                                    autoComplete="password"
-                                    autoFocus
-                                    onChange={(e) => {
-                                        handleChange(e);
-                                    }}
-                                    endAdornment={
-                                        hidePassword ? (
-                                            <InputAdornment position="end">
-                                                <VisibilityOffTwoToneIcon
-                                                    fontSize="default"
-                                                    className={classes.passwordEye}
-                                                    onClick={showPassword} />
-                                            </InputAdornment>
-                                        )
-                                            : (
+                                    {/* </div> */}
+                                    {/* <div className="passwordLogin"> */}
+                                    <p style={{ marginTop: '20px', marginBottom: '10px' }}>Password</p>
+                                    <Input
+                                        placeholder='Enter a password'
+                                        className={classes.inputs}
+                                        variant="outlined"
+                                        // margin="normal"
+                                        type={hidePassword ? "password" : "text"}
+                                        required
+                                        fullWidth
+                                        disableUnderline={true}
+                                        name="password"
+                                        autoComplete="password"
+                                        autoFocus
+                                        onChange={(e) => {
+                                            handleChange(e);
+                                        }}
+                                        endAdornment={
+                                            hidePassword ? (
                                                 <InputAdornment position="end">
-                                                    <VisibilityTwoToneIcon
+                                                    <VisibilityOffTwoToneIcon
                                                         fontSize="default"
                                                         className={classes.passwordEye}
-                                                        onClick={showPassword}
-                                                    />
+                                                        onClick={showPassword} />
                                                 </InputAdornment>
                                             )
-                                    }
-                                />
+                                                : (
+                                                    <InputAdornment position="end">
+                                                        <VisibilityTwoToneIcon
+                                                            fontSize="default"
+                                                            className={classes.passwordEye}
+                                                            onClick={showPassword}
+                                                        />
+                                                    </InputAdornment>
+                                                )
+                                        }
+                                    />
 
-                                {/* <input name="password"
+                                    {/* <input name="password"
                                         value={form.password}
                                         onChange={(e) => { handleChange(e) }} type="password" placeholder="Type your password here.." /> */}
-                                {/* </div> */}
+                                    {/* </div> */}
 
-                                <button onClick={() => logIn(role, form)} type="submit">Login</button>
-                                <span>I forgot my password</span>
+                                    <button onClick={() => logIn(role, form)} type="submit">Login</button>
+                                    <span>I forgot my password</span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="googleLogin">
-                            <img src={google} alt="" />
-                            <p>Sign in with Google</p>
+                            <div className="googleLogin">
+                                <img src={google} alt="" />
+                                <p>Sign in with Google</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                }
 
         </>
     )

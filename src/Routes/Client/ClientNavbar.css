@@ -278,6 +278,7 @@
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    font-size: 12px;
 }
 .statusLine{
     position: absolute;
@@ -357,8 +358,8 @@
 }
 
 .projectStage div span{
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -427,6 +428,8 @@
         cursor: pointer;
         border-radius: 10px;
 }
+
+
 
 
 
