@@ -39,7 +39,8 @@ instance.interceptors.response.use(function (response){
         window.location.href="/"
         const errors = error?.response?.data?.error ?? {}
         const errorName = Object.keys(errors)
-        if(typeof errors === Object && errorName.length>0){
+        console.log(typeof errors)
+        if(typeof errors === "object" && errorName.length>0){
             
                 trueError = trueError+errors[errorName[0]][0]
             
