@@ -11,9 +11,11 @@ import dots from '../../../assets/images/ClientDashboard/dots.png'
 import info from '../../../assets/images/ClientDashboard/info.png'
 import { withRouter } from "react-router";
 import { NavLink, useHistory, Link } from 'react-router-dom';
-import Input from "@material-ui/core/Input";
 
+import Input from "@material-ui/core/Input";
+import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -27,10 +29,11 @@ const MenuProps = {
         style: {
             maxHeight: 215,
             width: 200,
-            top: 350,
+            top: 350
         },
     },
 };
+
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -46,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
-    },
+    }
 }));
 
 function getStyles(singleTechObject, allTechnologies, theme) {
@@ -173,13 +176,18 @@ function Dashboard() {
                                 <p>Filter</p>
                             </div> */}
                                 <div className="filterOptions">
+
                                     <FormControl className={classes.formControl}>
                                         <h6>Status</h6>
+                                        <ThemeProvider theme={theme}>
+
+                                        
                                         <Select
                                             onClose={handleClose}
                                             onOpen={handleOpen}
                                             displayEmpty
                                             value={selectedStatus}
+                                            MenuProps={MenuProps}
                                             className={classes.selectEmpty}
                                             inputProps={{ 'aria-label': 'Without label' }}
                                             onChange={handleChange}
@@ -190,6 +198,7 @@ function Dashboard() {
                                             {statuses.map((st) => {
                                                 return (
                                                     <MenuItem
+                                                        className={classes.selectOptions}
                                                         value={st}
                                                         style={getStyles(st, selectedStatus, theme)}>{st}</MenuItem>
                                                 )
@@ -202,6 +211,7 @@ function Dashboard() {
                                             <MenuItem value={20}>Twenty</MenuItem>
                                             <MenuItem value={30}>Thirty</MenuItem> */}
                                         </Select>
+                                        </ThemeProvider>
                                     </FormControl>
                                 </div>
                             </div>
