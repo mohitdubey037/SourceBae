@@ -139,7 +139,7 @@ function Navbar(props) {
                 </div>
             </div>
 
-            <Modal open={openmodal} onClose={onCloseModal}
+            {/* <Modal open={openmodal} onClose={onCloseModal}
                 classNames={{
                     overlay: 'NavbarModalLayer',
                     modal: 'NavbarModalStyle',
@@ -159,12 +159,10 @@ function Navbar(props) {
                     </ul>
                 </div>
                 <div className="modalButton">
-                    {/* <button onClick={() => window.location.href = "/product-form"} >Interested</button>
-                     */}
-                     
+                    <button onClick={() => window.location.href = "/product-form"} >Interested</button>
                     <button onClick={onCloseModal} >Not Interested</button>
                 </div>
-            </Modal>
+            </Modal> */}
         </>
     )
 }
