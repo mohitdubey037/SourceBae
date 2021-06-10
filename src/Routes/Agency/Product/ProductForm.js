@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './ProductForm.css'
-import ClientNavbar from '../../Client/ClientNavbar';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -14,6 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
+import Navbar from '../../Dashboard/Navbar';
+
 
 import product from '../../../assets/images/ClientDashboard/product.svg'
 import product1 from '../../../assets/images/ClientDashboard/product1.svg'
@@ -266,7 +267,7 @@ function ProductForm() {
 
     return (
         <>
-            <ClientNavbar />
+            <Navbar />
             <div className='mainProductForm'>
                 <div className="innerProductForm">
                     <div className="leftBorderLineProduct"></div>
