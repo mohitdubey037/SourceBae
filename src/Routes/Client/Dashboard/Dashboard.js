@@ -178,10 +178,7 @@ function Dashboard() {
                                 <div className="filterOptions">
 
                                     <FormControl className={classes.formControl}>
-                                        <h6>Status</h6>
-                                        <ThemeProvider theme={theme}>
-
-                                        
+                                        <h6>Status</h6>                                        
                                         <Select
                                             onClose={handleClose}
                                             onOpen={handleOpen}
@@ -211,7 +208,6 @@ function Dashboard() {
                                             <MenuItem value={20}>Twenty</MenuItem>
                                             <MenuItem value={30}>Thirty</MenuItem> */}
                                         </Select>
-                                        </ThemeProvider>
                                     </FormControl>
                                 </div>
                             </div>
@@ -256,10 +252,6 @@ function Dashboard() {
                                             {statuses.map((s, index, value) => {
                                                 console.log(index <= value.indexOf(p.projectCurrentStatus));
                                                 // let flag = false
-                                                // let cond = false
-                                                // if(p.projectCurrentStatus===s && !flag){
-                                                //     flag = true
-                                                // }
                                                 return (
                                                     <div>
                                                         <span style={{ backgroundColor: index <= value.indexOf(p.projectCurrentStatus) /* !==s && !flag*/ ? '#5cb85c' : '#626567' }}>{index + 1}</span>
