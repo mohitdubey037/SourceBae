@@ -13,15 +13,14 @@ import { withRouter } from "react-router";
 import { NavLink, useHistory, Link } from 'react-router-dom';
 
 import Input from "@material-ui/core/Input";
-import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import instance from '../../../Constants/axiosConstants';
 import * as helper from '../../../shared/helper';
+import clsx from 'clsx';
 
 const MenuProps = {
     getContentAnchorEl: () => null,
@@ -195,7 +194,7 @@ function Dashboard() {
                                             {statuses.map((st) => {
                                                 return (
                                                     <MenuItem
-                                                        className={classes.selectOptions}
+                                                        className={clsx('SelectClass', classes.selectOptions)}
                                                         value={st}
                                                         style={getStyles(st, selectedStatus, theme)}>{st}</MenuItem>
                                                 )

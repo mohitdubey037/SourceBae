@@ -418,6 +418,10 @@
     transform: translateY(8px);
 }
 
+.SelectClass {
+    font-size: 16px !important;
+}
+
 .clientProjectLink {
         padding: 0.3rem 1rem;
         background-color: #02044a;
