@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './ProductForm.css'
-import ClientNavbar from '../../Client/ClientNavbar';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -25,6 +24,7 @@ import success from '../../../assets/images/agencyForm/success.gif'
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import Navbar from '../../Dashboard/Navbar';
 
 const BlueRadio = withStyles({
     root: {
@@ -266,7 +266,7 @@ function ProductForm() {
 
     return (
         <>
-            <ClientNavbar />
+            <Navbar/>
             <div className='mainProductForm'>
                 <div className="innerProductForm">
                     <div className="leftBorderLineProduct"></div>
