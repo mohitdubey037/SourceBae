@@ -343,8 +343,7 @@ const Dashboard = () => {
                 <div className="modalButton">
                     {/* <button onClick={() => window.location.href = "/product-agencies"}>Interested</button> */}
                     <NavLink className='modalNavLink' to={{
-                        pathname: "/product-form",
-                        condition: 'Agency',
+                        pathname: "/product-agencies"
                     }}>Interested</NavLink>
                     <button style={{marginTop: 0, marginBottom: 0}} onClick={onCloseModal} >Not Interested</button>
                 </div>

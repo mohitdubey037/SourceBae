@@ -159,7 +159,9 @@ function Navbar(props) {
                     </ul>
                 </div>
                 <div className="modalButton">
-                    <button onClick={() => window.location.href = "/product-form"} >Interested</button>
+                    {/* <button onClick={() => window.location.href = "/product-form"} >Interested</button>
+                     */}
+                     
                     <button onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
