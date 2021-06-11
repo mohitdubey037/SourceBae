@@ -51,8 +51,6 @@ function AgencyForm3() {
     })
 
     const handleDocumentPicker = (document, category) => {
-        // console.log(document);
-        // console.log(category);
         if (category === registrationCertificate.documentName) {
             setRegistrationCertificate({
                 ...registrationCertificate,
@@ -62,7 +60,6 @@ function AgencyForm3() {
         }
 
         else if (category === brochureDoc.documentName) {
-
             setBrochureDoc({
                 ...brochureDoc,
                 documentPicked: true,
@@ -85,10 +82,8 @@ function AgencyForm3() {
     }
 
     function uploadMedia(category, document) {
-        // console.log(category);
-        // console.log(document);
-
-        const formData = new FormData();
+        return new Promise((resolve, reject) => {
+            const formData = new FormData();
 
         document && formData.append(
             "files",
@@ -116,26 +111,32 @@ function AgencyForm3() {
                         ...panCardDoc,
                         documentLink: response.data.data[0].mediaURL
                     })
+                    resolve()
             })
-
+        })
     }
 
-    const handleUpload = (event) => {
+    const handleUpload = async (event) => {
         setLoading(true);
         const { name } = event.target
-        if (name === "Upload" && pickedAll) {
+        if (status === "Upload" && pickedAll) {
             // console.log(registrationCertificate.documentName, registrationCertificate.document);
-            uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
-            uploadMedia(brochureDoc.documentName, brochureDoc.document)
-            uploadMedia(panCardDoc.documentName, panCardDoc.document)
+            await uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
+            await uploadMedia(brochureDoc.documentName, brochureDoc.document)
+            await uploadMedia(panCardDoc.documentName, panCardDoc.document)
+            toast.success('media saved successfully');
+            setLoading(false);
+        }
+        if (status === 'Next'){
+            window.location.href = "/agency-form-four"
         }
     }
 
     const handleUpdate = () => {
-        // console.log(registrationCertificate);
-        // console.log(brochureDoc);
-        // console.log(panCardDoc);
         setLoading(true);
+        console.log(registrationCertificate);
+        console.log(brochureDoc);
+        console.log(panCardDoc);
         const apiData = {
             stepsCompleted: "4",
             agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
@@ -151,15 +152,14 @@ function AgencyForm3() {
             })
     }
 
-    const handleNavlink = (event) => {
-        event.preventDefault()
-        if (status === "Next") {
-            window.location.href = "/agency-form-four"
-        }
-        else if (status === "Update")
-            handleUpdate()
-
-    }
+    // const handleNavlink = (event) => {
+    //     event.preventDefault()
+    //     if (status === "Next") {
+    //         window.location.href = "/agency-form-four"
+    //     }
+    //     // else if (status === "Update")
+    //     //     handleUpdate()
+    // }
 
     useEffect(() => {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
@@ -167,9 +167,7 @@ function AgencyForm3() {
         }
 
         if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== ""){
-            setStatus("Update");
-            toast.success('media saved successfully');
-            setLoading(false);
+            handleUpdate();
         }
 
         console.log(registrationCertificate, brochureDoc, panCardDoc);
@@ -177,10 +175,6 @@ function AgencyForm3() {
 
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
-    useEffect(() => {
-        console.log(status, "upload")
-
-    }, [status])
     return (
         <>
             <Navbar />
@@ -238,12 +232,12 @@ function AgencyForm3() {
                                 </button>
                                 </NavLink>
 
-                                <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} >
+                                {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
                                     <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
                                         {status}
                                         <i class="fa fa-long-arrow-right" aria-hidden="true" />
                                     </button>
-                                </NavLink>
+                                {/* </NavLink> */}
                             </div>
                         </div>
                         <div className="miscellaneousArea">
