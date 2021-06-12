@@ -398,7 +398,7 @@ function ProductForm() {
             <div className="form2_Fields">
               <section>
                 <p>4. What type of Business product you have?</p>
-                <FormControl className={classes.formControl}>
+                {/* <FormControl className={classes.formControl}>
                   <Select
                     labelId="demo-mutiple-checkbox-label"
                     id="demo-mutiple-checkbox"
@@ -422,15 +422,43 @@ function ProductForm() {
                       return selected.join(', ')
                     }}
                   >
-                    {/* {names.map((name) => (
-                      <MenuItem key={name} value={name}>
+                    {allDomainsData.map((ad) => (
+                      <MenuItem key={ad._id} value={ad.domainName}>
                         <Checkbox
                           color="primary"
-                          checked={personName.indexOf(name) > -1}
+                          checked={businesstype.indexOf(ad.domainName) > -1}
                         />
-                        <ListItemText primary={name} />
+                        <ListItemText primary={ad.domainName} />
                       </MenuItem>
-                    ))} */}
+                    ))}
+                  </Select>
+                </FormControl> */}
+
+                <FormControl className={classes.formControl}>
+                  <Select
+                    labelId="demo-mutiple-checkbox-label"
+                    id="demo-mutiple-checkbox"
+                    name="productBusinessModel"
+                    multiple
+                    displayEmpty
+                    value={personName}
+                    onChange={(event) => handleChange(event)}
+                    input={<Input />}
+                    renderValue={(selected) => {
+                      if (selected.length === 0) {
+                        return (
+                          <span
+                            style={{ fontFamily: "Poppins", color: "#999" }}
+                          >
+                            Select from here
+                          </span>
+                        );
+                      }
+
+                      return selected.join(", ");
+                    }}
+                    MenuProps={MenuProps}
+                  >
                     {allDomainsData.map((ad) => (
                       <MenuItem key={ad._id} value={ad.domainName}>
                         <Checkbox
