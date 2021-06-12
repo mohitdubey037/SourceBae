@@ -149,8 +149,10 @@ function AddingDeveloper() {
         setIsDisabled(false)
     }
 
+
     function uploadMedia() {
         setLoading(true)
+        console.log(resume);
 
         const formData = new FormData();
 
@@ -209,6 +211,7 @@ function AddingDeveloper() {
     useEffect(() => {
         console.log(developerData)
     }, [developerData])
+
     return (
         <>
             <Navbar />

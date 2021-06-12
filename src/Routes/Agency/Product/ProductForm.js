@@ -14,6 +14,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import Navbar from "../../Dashboard/Navbar";
+import instance from '../../../Constants/axiosConstants';
+import Spinner from '../../../Components/Spinner/Spinner';
 
 import product from "../../../assets/images/ClientDashboard/product.svg";
 import product1 from "../../../assets/images/ClientDashboard/product1.svg";
@@ -67,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
+  getContentAnchorEl: () => null,
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
@@ -136,17 +139,20 @@ const brr = [
 ];
 
 function ProductForm() {
-  const [businesstype, setBusinesstype] = React.useState("");
   const [fundingMoneyRaised, setMoneyRaised] = useState("");
   const [businessModal, setBusinesmodal] = useState(arr);
   const [currentStage, setCurrentStage] = useState(brr);
   const [personName, setPersonName] = React.useState([]);
   const [fields, setFields] = useState([{ value: null }]);
   const [openmodal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [file, setFile] = useState(null);
+  const [allDomainsData, setAllDomainsData] = useState([]);
+  const [businesstype, setBusinesstype] = React.useState([]);
 
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
-    fundingMoneyRaised:"",
+    fundingMoneyRaised: "",
     productName: "",
     productLogo: "",
     productDescription: "",
@@ -170,6 +176,7 @@ function ProductForm() {
 
   const classes = useStyles();
 
+  const Role = "agency"
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -177,13 +184,34 @@ function ProductForm() {
       ...apiData,
       [name]: value,
     });
+    setBusinesstype(value);
   };
+
+  const getAllDomains = () => {
+    setLoading(true);
+    instance.get(`api/${Role}/domains/all`)
+      .then(function (response) {
+        console.log(response);
+        // const domainNames = response.map((domain) => {
+        //   return {
+        //     ...domain,
+        //     selected: false,
+        //   };
+        // });
+        setAllDomainsData(response);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getAllDomains()
+  }, [])
 
   function handleChangeLink(i, event) {
     const values = [...fields];
     values[i].value = event.target.value;
     setFields(values);
-    setApiData({...apiData, productFounderLinkedinProfiles:values})
+    setApiData({ ...apiData, productFounderLinkedinProfiles: values })
   }
 
   function handleAdd() {
@@ -238,12 +266,48 @@ function ProductForm() {
     }
   };
 
+  const inputFileChoosen = (e) => {
+    console.log(e.target.files[0])
+    setFile(e.target.files[0]);
+  }
+
+
+
+  const updateButtonHandler = () => {
+    setLoading(true)
+    console.log(file);
+    const formData = new FormData();
+
+    file && formData.append(
+      "files",
+      file,
+      "file"
+    );
+
+    // var formdata = new FormData();
+    // file && formdata.append("files", file, "/C:/Users/delll/OneDrive/Pictures/WhatsApp Image 2021-01-26 at 2.22.17 PM.jpeg");
+
+    instance.post(`api/${Role}/media/create`, formData)
+      .then(function (response) {
+        console.log(response)
+        setApiData({
+          ...apiData,
+          productLogo: response[0].mediaURL
+        })
+        setLoading(false)
+      })
+      .catch(err => {
+        setLoading(false);
+      })
+  }
+
   useEffect(() => {
     console.log(apiData);
   }, [apiData]);
   return (
     <>
       <Navbar />
+      {loading && <Spinner />}
       <div className="mainProductForm">
         <div className="innerProductForm">
           <div className="leftBorderLineProduct"></div>
@@ -290,15 +354,18 @@ function ProductForm() {
             <div className="illustrationArea">
               <img src={product1} alt="" />
             </div>
+
             <div className="form1_Fields">
               <section>
                 <p>1. Upload your latest logo of product</p>
                 <input
+                  onChange={inputFileChoosen}
                   type="file"
                   name=""
-                  id=""
+                  id="fileInput"
                   accept="image/png, image/gif, image/jpeg"
                 />
+                <button style={{ margin: 0 }} onClick={updateButtonHandler}>Update</button>
               </section>
               <section>
                 <p>2. What's your good product name?</p>
@@ -337,9 +404,11 @@ function ProductForm() {
                     id="demo-mutiple-checkbox"
                     multiple
                     displayEmpty
-                    value={personName}
+                    value={businesstype}
                     onChange={(event) => handleChange(event)}
                     input={<Input />}
+                    name="productBusinessModel"
+                    MenuProps={MenuProps}
                     renderValue={(selected) => {
                       if (selected.length === 0) {
                         return (
@@ -350,18 +419,25 @@ function ProductForm() {
                           </span>
                         );
                       }
-
-                      return selected.join(", ");
+                      return selected.join(', ')
                     }}
-                    MenuProps={MenuProps}
                   >
-                    {names.map((name) => (
+                    {/* {names.map((name) => (
                       <MenuItem key={name} value={name}>
                         <Checkbox
                           color="primary"
                           checked={personName.indexOf(name) > -1}
                         />
                         <ListItemText primary={name} />
+                      </MenuItem>
+                    ))} */}
+                    {allDomainsData.map((ad) => (
+                      <MenuItem key={ad._id} value={ad.domainName}>
+                        <Checkbox
+                          color="primary"
+                          checked={businesstype.indexOf(ad.domainName) > -1}
+                        />
+                        <ListItemText primary={ad.domainName} />
                       </MenuItem>
                     ))}
                   </Select>
@@ -663,23 +739,24 @@ function ProductForm() {
                   </div>
                 </div>
                 {fields.map((field, idx) => {
-                    if(idx===0){
-                        return ""
-                    }
-                    else{
+                  if (idx === 0) {
+                    return ""
+                  }
+                  else {
 
-                  return (
-                    <div className="founderLink" key={`${field}-${idx}`}>
-                      <input
-                        type="text"
-                        placeholder={`Founder ${idx + 1} Linkedin Profile Link`}
-                        onChange={(e) => handleChangeLink(idx, e)}
-                      />
-                      <div onClick={() => handleRemove(idx)}>
-                        <i class="fa fa-times" aria-hidden="true"></i>
+                    return (
+                      <div className="founderLink" key={`${field}-${idx}`}>
+                        <input
+                          type="text"
+                          placeholder={`Founder ${idx + 1} Linkedin Profile Link`}
+                          onChange={(e) => handleChangeLink(idx, e)}
+                        />
+                        <div onClick={() => handleRemove(idx)}>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
                       </div>
-                    </div>
-                  );}
+                    );
+                  }
                 })}
               </section>
             </div>
