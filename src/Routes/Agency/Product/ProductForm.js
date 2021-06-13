@@ -143,15 +143,16 @@ function ProductForm() {
   const [fundingMoneyRaised, setMoneyRaised] = useState("");
   const [businessModal, setBusinesmodal] = useState(arr);
   const [currentStage, setCurrentStage] = useState(brr);
-  const [personName, setPersonName] = React.useState([]);
   const [fields, setFields] = useState([{ value: null }]);
   const [openmodal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [businesstype, setBusinesstype] = React.useState([]);
-  
-  const [errors, setErrors] = React.useState();
+
+  const [domainName, setDomainName] = React.useState('');
+
+  const [errors, setErrors] = React.useState({});
 
 
   const [apiData, setApiData] = useState({
@@ -169,7 +170,7 @@ function ProductForm() {
     productCustomerAccquired: "",
     productActiveUsers: "",
     productCompanyLocation: "",
-    productStartingDate: "2019-04-03",
+    productStartingDate: Date.now(),
     productFeatureLink: "",
     productPlatformLink: "",
     productFounderLinkedinProfiles: [],
@@ -188,7 +189,6 @@ function ProductForm() {
       [name]: value,
     });
     setBusinesstype(value);
-    setPersonName(value);
   };
 
   const handleSelectChange = (event) => {
@@ -198,6 +198,7 @@ function ProductForm() {
       [name]: value,
     });
     setBusinesstype(value);
+    setDomainName(value);
   };
 
   const getAllDomains = () => {
@@ -217,12 +218,14 @@ function ProductForm() {
   function handleChangeLink(i, event) {
     const values = [...fields];
     values[i].value = event.target.value;
+    console.log(values);
     setFields(values);
     setApiData({ ...apiData, productFounderLinkedinProfiles: values })
   }
 
   function handleAdd() {
     const values = [...fields, { value: "" }];
+    console.log(values);
     setFields(values);
   }
 
@@ -230,19 +233,6 @@ function ProductForm() {
     const values = [...fields];
     values.splice(i, 1);
     setFields(values);
-  }
-
-  const uploadProduct = () => {
-    setLoading(true);
-    instance.post(`api/${Role}/products/create`, apiData)
-    .then(response => {
-      setLoading(false);
-      onOpenModal();
-      console.log(response);
-    })
-    .catch(error => {
-      setLoading(false);
-    })
   }
 
   const handleBusinnesModal = (id) => {
@@ -263,6 +253,7 @@ function ProductForm() {
       setBusinesmodal(newarr);
     }
   };
+
   const handleCurrentStage = (id) => {
     if (currentStage[id].status === false) {
       let newarr = [...currentStage];
@@ -314,6 +305,96 @@ function ProductForm() {
       .catch(err => {
         setLoading(false);
       })
+  }
+
+  const validateInfo = () => {
+    const err = {}
+
+    if (apiData.productName.length < 3) {
+      err.productName = "Name required"
+    }
+
+    if (apiData.productDescription.length < 10) {
+      err.productDescription = 'Description required'
+    }
+
+    if (apiData.productDomain == '') {
+      err.productDomain = 'Domain required'
+    }
+
+    if (apiData.productTeamSize == '') {
+      err.productTeamSize = "Team Size required"
+    }
+
+    if (apiData.productRevenueGenerated == '') {
+      err.productRevenueGenerated = 'Revenue required'
+    }
+
+    if (apiData.productBusinessModel == '') {
+      err.productBusinessModel = "Business Model required"
+    }
+
+    if (apiData.productPreviousFunding == '') {
+      err.productPreviousFunding = 'Previous Funding required'
+    }
+
+    if (apiData.productFundingTypeLookingFor == '') {
+      err.productFundingTypeLookingFor = "Funding type required"
+    }
+
+    if (apiData.productCurrentStatus == '') {
+      err.productCurrentStatus = "Current status required"
+    }
+
+    if (apiData.productCustomerAccquired == '') {
+      err.productCustomerAccquired = "Customer field required"
+    }
+
+    if (apiData.productActiveUsers == '') {
+      err.productActiveUsers = "Active users required"
+    }
+
+    if (apiData.productCompanyLocation == '') {
+      err.productCompanyLocation = "Company Location required"
+    }
+
+    if (apiData.productFeatureLink == "") {
+      err.productFeatureLink = 'Feature Link required'
+    }
+    else if (!helper.validateLink(apiData.productFeatureLink)) {
+      err.productFeatureLink = 'Wrong Feature link Provided'
+    }
+
+    if (apiData.productPlatformLink == "") {
+      err.productPlatformLink = 'Platform Link required'
+    }
+    else if (!helper.validateLink(apiData.productPlatformLink)) {
+      err.productPlatformLink = 'Wrong Platform link Provided'
+    }
+
+    if (apiData.productFounderLinkedinProfiles == "") {
+      err.productFounderLinkedinProfiles = 'Founder Link required'
+    }
+    else if (!helper.validateLink(apiData.productFounderLinkedinProfiles)) {
+      err.productFounderLinkedinProfiles = 'Wrong link Provided'
+    }
+    setErrors(err);
+  }
+
+  const uploadProduct = () => {
+    validateInfo();
+    if (errors.length === 0) {
+      setLoading(true);
+      instance.post(`api/${Role}/products/create`, apiData)
+        .then(response => {
+          setLoading(false);
+          onOpenModal();
+          console.log(response);
+        })
+        .catch(error => {
+          setLoading(false);
+        })
+    }
   }
 
   useEffect(() => {
@@ -391,6 +472,7 @@ function ProductForm() {
                   value={apiData.productName}
                   onChange={handleChange}
                 />
+                {errors.productName && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productName}</p>}
               </section>
               <section>
                 <p>3. Describe a bit about your product.</p>
@@ -403,6 +485,7 @@ function ProductForm() {
                   rows="6"
                   maxLength='100'
                 ></textarea>
+                {errors.productDescription && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productDescription}</p>}
               </section>
             </div>
           </div>
@@ -418,15 +501,15 @@ function ProductForm() {
                 <FormControl className={classes.formControl}>
                   <Select
                     labelId="demo-mutiple-checkbox-label"
-                    id="demo-mutiple-checkbox"
+                    id="demo-checkbox"
                     name="productDomain"
-                    multiple
+                    // multiple
                     displayEmpty
-                    value={personName}
+                    value={domainName}
                     onChange={(event) => handleSelectChange(event)}
                     input={<Input />}
                     renderValue={(selected) => {
-                      if (selected.length === 0) {
+                      if (selected === '') {
                         return (
                           <span
                             style={{ fontFamily: "Poppins", color: "#999" }}
@@ -435,44 +518,22 @@ function ProductForm() {
                           </span>
                         );
                       }
-                      return selected.join(", ");
+                      return allDomainsData.filter(ad => selected.includes(ad._id)).map(t => t.domainName).join(', ');
                     }}
                     MenuProps={MenuProps}
+                    inputProps={{ 'aria-label': 'Without label' }}
                   >
-                    {/* <Select
-                    labelId="demo-mutiple-checkbox-label"
-                    id="demo-mutiple-checkbox"
-                    name="productBusinessModel"
-                    multiple
-                    displayEmpty
-                    value={personName}
-                    onChange={(event) => handleChange(event)}
-                    input={<Input />}
-                    renderValue={(selected) => {
-                      if (selected.length === 0) {
-                        return (
-                          <span
-                            style={{ fontFamily: "Poppins", color: "#999" }}
-                          >
-                            Select from here
-                          </span>
-                        );
-                      }
-
-                      return selected.join(", ");
-                    }}
-                    MenuProps={MenuProps}
-                  ></Select> */}
                     {allDomainsData.map((ad) => (
-                      <MenuItem key={ad._id} value={ad.domainName}>
+                      <MenuItem key={ad._id} value={ad._id}>
                         <Checkbox
                           color="primary"
-                          checked={businesstype.indexOf(ad.domainName) > -1}
+                          checked={businesstype.indexOf(ad._id) > -1}
                         />
                         <ListItemText primary={ad.domainName} />
                       </MenuItem>
                     ))}
                   </Select>
+                  {errors.productDomain && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productDomain}</p>}
                 </FormControl>
               </section>
               <section>
@@ -497,6 +558,7 @@ function ProductForm() {
                     <MenuItem value={"50-100"}>50-100</MenuItem>
                     <MenuItem value={"more"}>More</MenuItem>
                   </Select>
+                  {errors.productTeamSize && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productTeamSize}</p>}
                 </FormControl>
               </section>
               <section>
@@ -520,6 +582,7 @@ function ProductForm() {
                     <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
                     <MenuItem value={"more"}>More</MenuItem>
                   </Select>
+                  {errors.productRevenueGenerated && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productRevenueGenerated}</p>}
                 </FormControl>
               </section>
 
@@ -540,6 +603,7 @@ function ProductForm() {
                     );
                   })}
                 </div>
+                {errors.productBusinessModel && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productBusinessModel}</p>}
               </section>
             </div>
           </div>
@@ -556,19 +620,20 @@ function ProductForm() {
                     onChange={(event) => handleChange(event)}
                   >
                     <FormControlLabel
-                      value="yes"
+                      value="true"
                       control={<BlueRadio />}
                       label="YES"
                     />
                     <FormControlLabel
-                      value="no"
+                      value="false"
                       control={<BlueRadio />}
                       label="NO"
                     />
                   </RadioGroup>
                 </FormControl>
+                {errors.productPreviousFunding && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productPreviousFunding}</p>}
               </section>
-              {apiData.productPreviousFunding === "yes" ? (
+              {apiData.productPreviousFunding === "true" ? (
                 <section className="amountRaised">
                   <span>How much amount have you raised yet?</span>
                   <FormControl className={classes.formControl}>
@@ -627,6 +692,7 @@ function ProductForm() {
                     <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
                   </Select>
                 </FormControl>
+                {errors.productFundingTypeLookingFor && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productFundingTypeLookingFor}</p>}
               </section>
 
               <section class="currentStage">
@@ -649,6 +715,7 @@ function ProductForm() {
                     );
                   })}
                 </div>
+                {errors.productCurrentStatus && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productCurrentStatus}</p>}
               </section>
 
               <section>
@@ -673,6 +740,7 @@ function ProductForm() {
                     <MenuItem value={"200-300"}>200-300</MenuItem>
                     <MenuItem value={"More than 300"}>More than 300</MenuItem>
                   </Select>
+                  {errors.productCustomerAccquired && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productCustomerAccquired}</p>}
                 </FormControl>
               </section>
 
@@ -698,6 +766,7 @@ function ProductForm() {
                     <MenuItem value={"200-300"}>200-300</MenuItem>
                     <MenuItem value={"More than 300"}>More than 300</MenuItem>
                   </Select>
+                  {errors.productActiveUsers && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productActiveUsers}</p>}
                 </FormControl>
               </section>
             </div>
@@ -720,6 +789,7 @@ function ProductForm() {
                   value={apiData.productCompanyLocation}
                   onChange={handleChange}
                 />
+                {errors.productCompanyLocation && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productCompanyLocation}</p>}
               </section>
               <section>
                 <p>14. When was your product started?</p>
@@ -739,6 +809,7 @@ function ProductForm() {
                   value={apiData.productFeatureLink}
                   onChange={handleChange}
                 />
+                {errors.productFeatureLink && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productFeatureLink}</p>}
               </section>
               <section>
                 <p>16. Any Platform link?</p>
@@ -749,6 +820,7 @@ function ProductForm() {
                   value={apiData.productPlatformLink}
                   onChange={handleChange}
                 />
+                {errors.productPlatformLink && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productPlatformLink}</p>}
               </section>
             </div>
           </div>

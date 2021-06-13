@@ -492,7 +492,6 @@ const Register = (props) => {
                 )
             }
             else if (signupForm.userPhone.length < 10) {
-                console.log('mam');
                 setSignupFormErrors(
                     {
                         firstNameError: "",
