@@ -16,6 +16,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Navbar from "../../Dashboard/Navbar";
 import instance from '../../../Constants/axiosConstants';
 import Spinner from '../../../Components/Spinner/Spinner';
+import * as helper from '../../../shared/helper';
 
 import product from "../../../assets/images/ClientDashboard/product.svg";
 import product1 from "../../../assets/images/ClientDashboard/product1.svg";
@@ -78,16 +79,16 @@ const MenuProps = {
   },
 };
 
-const names = [
-  "Ed-Tech",
-  "IT",
-  "Travel",
-  "CRM",
-  "Food Delivery",
-  "E-commerce",
-  "Fintech",
-  "HealthCare",
-];
+// const names = [
+//   "Ed-Tech",
+//   "IT",
+//   "Travel",
+//   "CRM",
+//   "Food Delivery",
+//   "E-commerce",
+//   "Fintech",
+//   "HealthCare",
+// ];
 const fundType = [
   "SEED",
   "SERIES-A",
@@ -149,10 +150,12 @@ function ProductForm() {
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [businesstype, setBusinesstype] = React.useState([]);
+  
+  const [errors, setErrors] = React.useState();
+
 
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
-    fundingMoneyRaised: "",
     productName: "",
     productLogo: "",
     productDescription: "",
@@ -185,6 +188,16 @@ function ProductForm() {
       [name]: value,
     });
     setBusinesstype(value);
+    setPersonName(value);
+  };
+
+  const handleSelectChange = (event) => {
+    const { name, value } = event.target;
+    setApiData({
+      ...apiData,
+      [name]: value,
+    });
+    setBusinesstype(value);
   };
 
   const getAllDomains = () => {
@@ -192,12 +205,6 @@ function ProductForm() {
     instance.get(`api/${Role}/domains/all`)
       .then(function (response) {
         console.log(response);
-        // const domainNames = response.map((domain) => {
-        //   return {
-        //     ...domain,
-        //     selected: false,
-        //   };
-        // });
         setAllDomainsData(response);
         setLoading(false);
       });
@@ -223,6 +230,19 @@ function ProductForm() {
     const values = [...fields];
     values.splice(i, 1);
     setFields(values);
+  }
+
+  const uploadProduct = () => {
+    setLoading(true);
+    instance.post(`api/${Role}/products/create`, apiData)
+    .then(response => {
+      setLoading(false);
+      onOpenModal();
+      console.log(response);
+    })
+    .catch(error => {
+      setLoading(false);
+    })
   }
 
   const handleBusinnesModal = (id) => {
@@ -271,8 +291,6 @@ function ProductForm() {
     setFile(e.target.files[0]);
   }
 
-
-
   const updateButtonHandler = () => {
     setLoading(true)
     console.log(file);
@@ -283,9 +301,6 @@ function ProductForm() {
       file,
       "file"
     );
-
-    // var formdata = new FormData();
-    // file && formdata.append("files", file, "/C:/Users/delll/OneDrive/Pictures/WhatsApp Image 2021-01-26 at 2.22.17 PM.jpeg");
 
     instance.post(`api/${Role}/media/create`, formData)
       .then(function (response) {
@@ -386,6 +401,7 @@ function ProductForm() {
                   onChange={handleChange}
                   cols="30"
                   rows="6"
+                  maxLength='100'
                 ></textarea>
               </section>
             </div>
@@ -398,17 +414,17 @@ function ProductForm() {
             <div className="form2_Fields">
               <section>
                 <p>4. What type of Business product you have?</p>
-                {/* <FormControl className={classes.formControl}>
+
+                <FormControl className={classes.formControl}>
                   <Select
                     labelId="demo-mutiple-checkbox-label"
                     id="demo-mutiple-checkbox"
+                    name="productDomain"
                     multiple
                     displayEmpty
-                    value={businesstype}
-                    onChange={(event) => handleChange(event)}
+                    value={personName}
+                    onChange={(event) => handleSelectChange(event)}
                     input={<Input />}
-                    name="productBusinessModel"
-                    MenuProps={MenuProps}
                     renderValue={(selected) => {
                       if (selected.length === 0) {
                         return (
@@ -419,23 +435,11 @@ function ProductForm() {
                           </span>
                         );
                       }
-                      return selected.join(', ')
+                      return selected.join(", ");
                     }}
+                    MenuProps={MenuProps}
                   >
-                    {allDomainsData.map((ad) => (
-                      <MenuItem key={ad._id} value={ad.domainName}>
-                        <Checkbox
-                          color="primary"
-                          checked={businesstype.indexOf(ad.domainName) > -1}
-                        />
-                        <ListItemText primary={ad.domainName} />
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl> */}
-
-                <FormControl className={classes.formControl}>
-                  <Select
+                    {/* <Select
                     labelId="demo-mutiple-checkbox-label"
                     id="demo-mutiple-checkbox"
                     name="productBusinessModel"
@@ -458,7 +462,7 @@ function ProductForm() {
                       return selected.join(", ");
                     }}
                     MenuProps={MenuProps}
-                  >
+                  ></Select> */}
                     {allDomainsData.map((ad) => (
                       <MenuItem key={ad._id} value={ad.domainName}>
                         <Checkbox
@@ -797,7 +801,7 @@ function ProductForm() {
 
       <div className="submitButton">
         <div className="innerSubmitButton">
-          <div className="subbutton" onClick={onOpenModal}>
+          <div className="subbutton" onClick={uploadProduct}>
             <p>
               Upload Your Product{" "}
               <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>

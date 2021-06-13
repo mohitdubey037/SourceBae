@@ -7,9 +7,11 @@ import logo from '../../../assets/images/Logo/logo.png'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Moment from 'react-moment';
+import instance from '../../../Constants/axiosConstants';
 
 function ProductDetails(props) {
 
+    const Role = 'client'
     console.log(props)
     const details = [props.location.state];
 
@@ -39,7 +41,7 @@ function ProductDetails(props) {
                         heading: 'Active Users',
                         content: [
                             {
-                                ans: ''
+                                ans: detailsInJson.productActiveUsers
                             }
                         ]
                     },
@@ -123,10 +125,37 @@ function ProductDetails(props) {
 
         ]
 
-
-
     const crr = [1, 2, 3, 4];
     const [open, setOpen] = useState(false);
+    const [modalForm, setModalForm] = useState({});
+
+    const formHandler = (event) => {
+        const {name, value} = event.target
+        setModalForm({
+            ...modalForm,
+            [name] : value
+        })
+    }
+
+    const dummyForm = {
+
+        // clientId : details.map(d => d.agencyId._id),
+        // productId : details.map(d => d._id)
+        clientId : localStorage.getItem('userId'),
+        productId : details[0]._id
+    }
+
+    console.log(dummyForm);
+
+    const postSubmitHandler = () => {
+        instance.post(`/api/${Role}/investments/create`, dummyForm)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -325,27 +354,27 @@ function ProductDetails(props) {
                     <h2>Get Connected</h2>
                 </div>
                 <div className="productModalForm">
-                    <p className="toText">To : Founder at SheThink</p>
+                    <p onChange={formHandler} name='founderName' className="toText">To : Founder at SheThink</p>
 
                     <div className="productModalInput">
                         <p>Subject</p>
-                        <input type="text" placeholder="Enter your subject" />
+                        <input onChange={formHandler} name="subject" type="text" placeholder="Enter your subject" />
                     </div>
                     <div className="productModalInput">
                         <p>Message</p>
-                        <textarea cols="30" rows="6" type="text" placeholder="Enter your message here" />
+                        <textarea onChange={formHandler} name="message" cols="30" rows="6" type="text" placeholder="Enter your message here" />
                     </div>
                     <div className="productModalInput">
                         <p>Email ID</p>
-                        <input type="text" placeholder="Enter your email" />
+                        <input onChange={formHandler} name='emailId' type="text" placeholder="Enter your email" />
                     </div>
                     <div className="productModalInput">
                         <p>Linkedin URL</p>
-                        <input type="text" placeholder="Enter your url" />
+                        <input onChange={formHandler} name="linkedInUrl" type="text" placeholder="Enter your url" />
                     </div>
                 </div>
                 <div className="connectedButton">
-                    <p>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                    <p onClick={postSubmitHandler}>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
                 </div>
             </Modal>
         </>
