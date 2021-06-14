@@ -54,12 +54,6 @@ const dateStyles = makeStyles((theme) => ({
 
 const Register = (props) => {
 
-    // if (props.history.location.pathname !== '/register:client' && props.history.location.pathname !== '/register:agency') {
-    //     props.history.push('/pageNotFound');
-    // }
-
-    //=========  GLOBAL & STATE VARIABLES DECLARATION =========//
-
 
     //Regular Variables
     const dateClasses = dateStyles();
@@ -498,7 +492,6 @@ const Register = (props) => {
                 )
             }
             else if (signupForm.userPhone.length < 10) {
-                console.log('mam');
                 setSignupFormErrors(
                     {
                         firstNameError: "",

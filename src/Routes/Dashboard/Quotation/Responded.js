@@ -1,41 +1,80 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import instance from '../../../Constants/axiosConstants';
 import './Responded.css'
 import RespondedDetails from './RespondedDetails';
+import Moment from 'react-moment';
+import Spinner from '../../../Components/Spinner/Spinner';
+
 
 function Responded() {
 
+    const clientId = localStorage.getItem('userId');
+    const Role = localStorage.getItem('role');
+    console.log(Role);
+
+    const [projects, setProjects] = useState([]);
+    const [statuses, setStatuses] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const getAllReceivedData = () => {
+        setLoading(true)
+        instance.get(`/api/${Role}/projects/all?AgencyId=${clientId}`)
+            .then(response => {
+                setLoading(false);
+                console.log(response);
+                setProjects(response.projects);
+                setStatuses(response.statuses);
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err)
+            })
+
+    }
+
+    useEffect(() => {
+        getAllReceivedData()
+    }, [])
+
+    useEffect(() => {
+        console.log(projects)
+    }, [projects])
+
     const [isDetail, setIsdetail] = useState(false);
-    const arr = [1, 2, 3, 4]
 
     return (
         <>
-            <div className="mainResponded">
-                <div className="innerResponded">
-                    {
-                        isDetail == false ? (
-                            arr.map(() => {
-                                return (
+            {loading ? <Spinner /> :
+                <div className="mainResponded">
+                    <div className="innerResponded">
+                        {projects.map((s) => {
+                            return (
+                                isDetail == false ? (
                                     <div className="respondedCard">
                                         <div className="bgCircle"></div>
                                         <div className="leftBorder"></div>
                                         <div className="respondCardHeader">
                                             <div className="respondName">
-                                                <h4>Rahul Jaykar</h4>
+                                                <h4>{s.projectName}</h4>
+
                                             </div>
                                             <div className="dateCreated">
                                                 <div>
-                                                    <p>05 Mar 2021</p>
+                                                    <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
+
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="respondCardDescription">
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum sunt dolore ipsam qui quia doloribus, unde possimus reprehenderit! Doloribus, dolore.</p>
+                                            <p>{s.projectDescription}</p>
                                         </div>
                                         <div className="respondCardPoints">
                                             <ul>
-                                                <li>Mobile Development</li>
-                                                <li>Cloud-Server Management</li>
-                                                <li>Testing & QA</li>
+                                                {s.projectServicesRequired.map(p => {
+                                                    return (
+                                                        <li>{p.serviceName}</li>
+                                                    )
+                                                })}
                                             </ul>
                                         </div>
                                         <div className="respondCardTable">
@@ -45,7 +84,8 @@ function Responded() {
                                             </div>
                                             <div>
                                                 <p>Fixed Price</p>
-                                                <p>Min $5,000</p>
+                                                <p>{s.projectProposalCost}</p>
+
                                             </div>
                                             <div>
                                                 <p>Timeline</p>
@@ -61,25 +101,25 @@ function Responded() {
                                             </div>
                                         </div>
                                     </div>
-                                )
-                            })
-                        ) : (
-                                <>
-                                    <div className="mainBackBtn">
-                                        <div className="innerBackBtn">
-                                            <div onClick={() => setIsdetail(false)}>
-                                                <i class="fa fa-chevron-left" aria-hidden="true"></i>Back
+                                ) : (
+                                    <>
+                                        <div className="mainBackBtn">
+                                            <div className="innerBackBtn">
+                                                <div onClick={() => setIsdetail(false)}>
+                                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>Back
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <RespondedDetails />
-                                </>
+                                        <RespondedDetails details={s}/>
+                                    </>
+                                )
                             )
-                    }
+                        })
+                        }
+                    </div>
                 </div>
-            </div>
+            }
         </>
     )
 }

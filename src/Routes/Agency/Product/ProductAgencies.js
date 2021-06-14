@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AgencyList from '../../Client/AgencyList/AgencyList'
-import ClientNavbar from '../../Client/ClientNavbar'
+import ClientNavbar from '../../Client/ClientNavbar';
+import { NavLink } from 'react-router-dom';
 
 import './ProductAgencies.css'
 // also linked with AgencyList.css
@@ -8,7 +9,6 @@ import './ProductAgencies.css'
 import location from '../../../assets/images/ClientDashboard/shortTerm/location.png'
 import team from '../../../assets/images/ClientDashboard/shortTerm/team.png'
 import logo from '../../../assets/images/Logo/logo.png'
-
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -20,6 +20,7 @@ import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
 
+import instance from '../../../Constants/axiosConstants';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
@@ -86,11 +87,16 @@ const bType = [
 
 function ProductAgencies() {
 
+    const Role = localStorage.getItem('role');
+
     const [isOfficeVisit, setOfficeVisit] = useState(false);
     const [isOffsiteTravel, setOffsiteTravel] = useState(false);
     const [fundtype, setFundType] = React.useState([]);
     const [bmodal, setBmodal] = React.useState([]);
     const [open, setOpen] = useState(false);
+    const [personName, setPersonName] = React.useState([]);
+    const [loading, setLoading] = useState(false);
+    const [state, setState] = useState([]);
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -98,7 +104,6 @@ function ProductAgencies() {
     const arr = [1, 2, 3, 4, 5, 6, 7, 8];
     const classes = useStyles();
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
 
     const handleChange = (event) => {
         setPersonName(event.target.value);
@@ -109,6 +114,7 @@ function ProductAgencies() {
     const handleBmodal = (event) => {
         setBmodal(event.target.value);
     };
+
     const handleChangeMultiple = (event) => {
         const { options } = event.target;
         const value = [];
@@ -119,6 +125,31 @@ function ProductAgencies() {
         }
         setPersonName(value);
     };
+
+    const getAllProducts = () => {
+        setLoading(true)
+        instance.get(`/api/${Role}/products/all`)
+            .then(response => {
+                console.log(response);
+                setLoading(false);
+                setState(response);
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err)
+            })
+
+    }
+
+    useEffect(() => {
+        getAllProducts()
+    }, [])
+
+    useEffect(() => {
+        console.log(state)
+    }, [state])
+
+
     return (
         <>
             <ClientNavbar />
@@ -127,7 +158,8 @@ function ProductAgencies() {
                 <div className="innerAgencyList">
                     <div className="AgencyCardsArea">
                         {
-                            arr.map((value, index) => {
+                            state?.map((value, index) => {
+                                console.log(value);
                                 return (
                                     <div className="agencyPreciseCard">
                                         <div className="agencyCardHeaderLine">
@@ -138,10 +170,13 @@ function ProductAgencies() {
                                                     <img src={logo} alt="" />
                                                 </div>
                                                 <div className="agencyProfileInfo">
-                                                    <h6>Provoz Upturn</h6>
+                                                    <h6>{value.agencyId.agencyName}</h6>
                                                     <div>
-                                                        <p>Media & Social</p>
-                                                        <p>Proficient</p>
+                                                        {value.agencyId.agencyDomains.map(p => {
+                                                            return (
+                                                                <p>{p.domainId.domainName}</p>
+                                                            )
+                                                        })}
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,17 +197,17 @@ function ProductAgencies() {
                                                 <div className="productAgencyList">
                                                     <div className="productAgencyContent">
                                                         <span>Location:</span>
-                                                        <p>Bangalore, Karnataka, India</p>
+                                                        <p>{value.productCompanyLocation}</p>
                                                     </div>
                                                     <div className="productAgencyContent">
                                                         <span>Team Size</span>
-                                                        <p>11-20</p>
+                                                        <p>{value.productTeamSize}</p>
                                                     </div>
                                                 </div>
                                                 <div className="productAgencyList">
                                                     <div className="productAgencyContent">
                                                         <span>Total Funding</span>
-                                                        <p>₹ 5000k</p>
+                                                        <p>{value.productRevenueGenerated}</p>
                                                     </div>
                                                     <div className="productAgencyContent">
                                                         <span>Product Type</span>
@@ -187,20 +222,24 @@ function ProductAgencies() {
                                                 <div className="productDescArea">
                                                     <div className="productLogoHere">
                                                         <div>
-                                                            <img src={logo} alt="" />
+                                                            <img src={value.agencyId.agencyLogo} alt="" />
                                                         </div>
                                                     </div>
                                                     <div className="productAgencyDescPara">
-                                                        <p>
-                                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis consequuntur natus asperiores possimus, voluptates aliquaLorem, ipsum dolor sit amet consectetur adipisicingPe rferendis consequuntur natus asperiores possimus, voluptates aliquam?
-                                                    </p>
+                                                        <p>{value.agencyId.agencyDescription}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="quotationShortlistButton">
-                                            <div onClick={() => window.location.href = "/product-details"} ><p>View Product</p></div>
+                                            {/* <div onClick={() => window.location.href = "/product-details"} ><p>View Product</p></div> */}
+                                            <div>
+                                                <NavLink style={{textDecoration: 'none'}} to={{
+                                                pathname:'product-details',
+                                                state: {...value}
+                                            }}>View Product</NavLink>
+                                            </div>
                                             <div onClick={onOpenModal}><p>Connect</p></div>
                                         </div>
                                     </div>
