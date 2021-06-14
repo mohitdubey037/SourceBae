@@ -1,408 +1,814 @@
-import React, { useState, useEffect } from 'react'
-import AgencyList from '../../Client/AgencyList/AgencyList'
-import ClientNavbar from '../../Client/ClientNavbar';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./ProductForm.css";
 
-import './ProductAgencies.css'
-// also linked with AgencyList.css
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import { withStyles } from "@material-ui/core/styles";
 
-import location from '../../../assets/images/ClientDashboard/shortTerm/location.png'
-import team from '../../../assets/images/ClientDashboard/shortTerm/team.png'
-import logo from '../../../assets/images/Logo/logo.png'
-
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
-
+import { makeStyles } from "@material-ui/core/styles";
+import Input from "@material-ui/core/Input";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Select from "@material-ui/core/Select";
+import Checkbox from "@material-ui/core/Checkbox";
+import Navbar from "../../Dashboard/Navbar";
 import instance from '../../../Constants/axiosConstants';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
+import Spinner from '../../../Components/Spinner/Spinner';
 
+import product from "../../../assets/images/ClientDashboard/product.svg";
+import product1 from "../../../assets/images/ClientDashboard/product1.svg";
+import product2 from "../../../assets/images/ClientDashboard/product2.svg";
+import product3 from "../../../assets/images/ClientDashboard/product3.svg";
+import product4 from "../../../assets/images/ClientDashboard/product4.svg";
+import product5 from "../../../assets/images/ClientDashboard/product5.svg";
+import success from "../../../assets/images/agencyForm/success.gif";
+
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+
+const BlueRadio = withStyles({
+  root: {
+    color: "#2E86C1",
+    "&$checked": {
+      color: "#2E86C1",
+    },
+  },
+  checked: {},
+})((props) => <Radio color="default" {...props} />);
 
 const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: '100%',
-        maxWidth: '100%',
-    },
-    chips: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    chip: {
-        margin: 2,
-    },
-    noLabel: {
-        marginTop: theme.spacing(3),
-    },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: "100%",
+    maxWidth: "100%",
+  },
+  chips: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  chip: {
+    margin: 2,
+  },
+  noLabel: {
+    marginTop: theme.spacing(3),
+  },
+  menuFont: {
+    fontFamily: "Poppins",
+  },
+  inputField: {
+    fontFamily: "Poppins",
+  },
+  radioBox: {
+    borderWidth: 1,
+    borderColor: "#000",
+  },
 }));
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
+  getContentAnchorEl: () => null,
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
     },
+  },
 };
+
 const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
+  "Ed-Tech",
+  "IT",
+  "Travel",
+  "CRM",
+  "Food Delivery",
+  "E-commerce",
+  "Fintech",
+  "HealthCare",
 ];
 const fundType = [
-    'SEED',
-    'SERIES-A',
-    'SERIES-B',
-    'SERIES-C',
-    'VENTURE-ROUND',
-    'ANGEL',
-    'CORPORATE-ROUND',
-    'DEBT-FINANCING',
-    'EQUITY-CROWDFUNDING', ,
-    'GRANT',
-    'PRE-SEED',
+  "SEED",
+  "SERIES-A",
+  "SERIES-B",
+  "SERIES-C",
+  "VENTURE-ROUND",
+  "ANGEL",
+  "CORPORATE-ROUND",
+  "DEBT-FINANCING",
+  "EQUITY-CROWDFUNDING",
+  "GRANT",
+  "PRE-SEED",
 ];
-const bType = [
-    'B2B',
-    'B2C',
-    'B2G',
-    'B2B2C'
-]
+const arr = [
+  {
+    status: false,
+    value: "B2B",
+  },
+  {
+    status: false,
+    value: "B2C",
+  },
+  {
+    status: false,
+    value: "B2B2C",
+  },
+  {
+    status: false,
+    value: "B2G",
+  },
+];
+const brr = [
+  {
+    status: false,
+    value: "Idea",
+  },
+  {
+    status: false,
+    value: "Development",
+  },
+  {
+    status: false,
+    value: "MVP",
+  },
+  {
+    status: false,
+    value: "Running in Market",
+  },
+];
 
-function ProductAgencies() {
+function ProductForm() {
+  const [fundingMoneyRaised, setMoneyRaised] = useState("");
+  const [businessModal, setBusinesmodal] = useState(arr);
+  const [currentStage, setCurrentStage] = useState(brr);
+  const [personName, setPersonName] = React.useState([]);
+  const [fields, setFields] = useState([{ value: null }]);
+  const [openmodal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [file, setFile] = useState(null);
+  const [allDomainsData, setAllDomainsData] = useState([]);
+  const [businesstype, setBusinesstype] = React.useState([]);
 
-    const Role = localStorage.getItem('role');
+  const [apiData, setApiData] = useState({
+    agencyId: localStorage.getItem("userId"),
+    fundingMoneyRaised: "",
+    productName: "",
+    productLogo: "",
+    productDescription: "",
+    productDomain: "",
+    productTeamSize: "",
+    productRevenueGenerated: "",
+    productBusinessModel: "",
+    productPreviousFunding: "",
+    productFundingTypeLookingFor: "",
+    productCurrentStatus: "",
+    productCustomerAccquired: "",
+    productActiveUsers: "",
+    productCompanyLocation: "",
+    productStartingDate: "2019-04-03",
+    productFeatureLink: "",
+    productPlatformLink: "",
+    productFounderLinkedinProfiles: [],
+  });
+  const onOpenModal = () => setOpenModal(true);
+  const onCloseModal = () => setOpenModal(false);
 
-    const [isOfficeVisit, setOfficeVisit] = useState(false);
-    const [isOffsiteTravel, setOffsiteTravel] = useState(false);
-    const [fundtype, setFundType] = React.useState([]);
-    const [bmodal, setBmodal] = React.useState([]);
-    const [open, setOpen] = useState(false);
-    const [personName, setPersonName] = React.useState([]);
-    const [loading, setLoading] = useState(false);
-    const [state, setState] = useState([]);
+  const classes = useStyles();
 
-    const onOpenModal = () => setOpen(true);
-    const onCloseModal = () => setOpen(false);
+  const Role = "agency"
 
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-    const classes = useStyles();
-    const theme = useTheme();
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setApiData({
+      ...apiData,
+      [name]: value,
+    });
+    setBusinesstype(value);
+  };
 
-    const handleChange = (event) => {
-        setPersonName(event.target.value);
-    };
-    const handleFundType = (event) => {
-        setFundType(event.target.value);
-    };
-    const handleBmodal = (event) => {
-        setBmodal(event.target.value);
-    };
+  const getAllDomains = () => {
+    setLoading(true);
+    instance.get(`api/${Role}/domains/all`)
+      .then(function (response) {
+        console.log(response);
+        // const domainNames = response.map((domain) => {
+        //   return {
+        //     ...domain,
+        //     selected: false,
+        //   };
+        // });
+        setAllDomainsData(response);
+        setLoading(false);
+      });
+  };
 
-    const handleChangeMultiple = (event) => {
-        const { options } = event.target;
-        const value = [];
-        for (let i = 0, l = options.length; i < l; i += 1) {
-            if (options[i].selected) {
-                value.push(options[i].value);
-            }
-        }
-        setPersonName(value);
-    };
+  useEffect(() => {
+    getAllDomains()
+  }, [])
 
-    const getAllProducts = () => {
-        setLoading(true)
-        instance.get(`/api/${Role}/products/all`)
-            .then(response => {
-                console.log(response);
-                setLoading(false);
-                setState(response);
-            })
-            .catch(err => {
-                setLoading(false)
-                console.log(err)
-            })
+  function handleChangeLink(i, event) {
+    const values = [...fields];
+    values[i].value = event.target.value;
+    setFields(values);
+    setApiData({ ...apiData, productFounderLinkedinProfiles: values })
+  }
 
+  function handleAdd() {
+    const values = [...fields, { value: "" }];
+    setFields(values);
+  }
+
+  function handleRemove(i) {
+    const values = [...fields];
+    values.splice(i, 1);
+    setFields(values);
+  }
+
+  const handleBusinnesModal = (id) => {
+    if (businessModal[id].status === false) {
+      let newarr = [...businessModal];
+      newarr.map(function (x) {
+        x.status = false;
+        return x;
+      });
+      setApiData({ ...apiData, productBusinessModel: newarr[id].value });
+      newarr[id].status = true;
+
+      setBusinesmodal(newarr);
+    } else {
+      let newarr = [...businessModal];
+      newarr[id].status = false;
+      setApiData({ ...apiData, productBusinessModel: "" });
+      setBusinesmodal(newarr);
     }
+  };
+  const handleCurrentStage = (id) => {
+    if (currentStage[id].status === false) {
+      let newarr = [...currentStage];
+      newarr.map(function (x) {
+        x.status = false;
+        return x;
+      });
+      setApiData({ ...apiData, productCurrentStatus: newarr[id].value });
+      newarr[id].status = true;
 
-    useEffect(() => {
-        getAllProducts()
-    }, [])
+      setCurrentStage(newarr);
+    } else {
+      let newarr = [...currentStage];
+      // arr = arr;
+      newarr.map(function (x) {
+        x.status = false;
+        return x;
+      });
+      setApiData({ ...apiData, productCurrentStatus: "" });
+      setCurrentStage(newarr);
+    }
+  };
 
-    useEffect(() => {
-        console.log(state)
-    }, [state])
-
-
-    return (
-        <>
-            <ClientNavbar />
-
-            <div className="mainAgencyList">
-                <div className="innerAgencyList">
-                    <div className="AgencyCardsArea">
-                        {
-                            state?.map((value, index) => {
-                                console.log(value);
-                                return (
-                                    <div className="agencyPreciseCard">
-                                        <div className="agencyCardHeaderLine">
-                                        </div>
-                                        <div className="agencyCardHeaderInfo">
-                                            <div className="agencyImageProfile">
-                                                <div className="agencyImageArea">
-                                                    <img src={logo} alt="" />
-                                                </div>
-                                                <div className="agencyProfileInfo">
-                                                    <h6>{value.agencyId.agencyName}</h6>
-                                                    <div>
-                                                        {value.agencyId.agencyDomains.map(p => {
-                                                            return (
-                                                                <p>{p.domainId.domainName}</p>
-                                                            )
-                                                        })}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="profileButton">
-                                                <p>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
-                                            </div>
-                                        </div>
-
-                                        <div className="productInformationHeading">
-                                            <h5>Product Information</h5>
-                                        </div>
-
-                                        <div className="middleAgencyArea productAgencyMiddle">
-                                            <div className="productAgenciesTeam">
-                                                <span className="horizontalLine"></span>
-                                                <span className="verticalLine"></span>
-
-                                                <div className="productAgencyList">
-                                                    <div className="productAgencyContent">
-                                                        <span>Location:</span>
-                                                        <p>{value.productCompanyLocation}</p>
-                                                    </div>
-                                                    <div className="productAgencyContent">
-                                                        <span>Team Size</span>
-                                                        <p>{value.productTeamSize}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="productAgencyList">
-                                                    <div className="productAgencyContent">
-                                                        <span>Total Funding</span>
-                                                        <p>{value.productRevenueGenerated}</p>
-                                                    </div>
-                                                    <div className="productAgencyContent">
-                                                        <span>Product Type</span>
-                                                        <p>E-commerce</p>
-                                                    </div>
-                                                </div>
+  const inputFileChoosen = (e) => {
+    console.log(e.target.files[0])
+    setFile(e.target.files[0]);
+  }
 
 
-                                            </div>
-                                            <div className="agencyDescInfo">
 
-                                                <div className="productDescArea">
-                                                    <div className="productLogoHere">
-                                                        <div>
-                                                            <img src={value.agencyId.agencyLogo} alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="productAgencyDescPara">
-                                                        <p>{value.agencyId.agencyDescription}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+  const updateButtonHandler = () => {
+    setLoading(true)
+    console.log(file);
+    const formData = new FormData();
 
-                                        <div className="quotationShortlistButton">
-                                            {/* <div onClick={() => window.location.href = "/product-details"} ><p>View Product</p></div> */}
-                                            <div>
-                                                <NavLink style={{textDecoration: 'none'}} to={{
-                                                pathname:'product-details',
-                                                state: {...value}
-                                            }}>View Product</NavLink>
-                                            </div>
-                                            <div onClick={onOpenModal}><p>Connect</p></div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                    <div className="agencyFilterArea">
-                        <div className='filterForm'>
-                            <div className="filterHeading">
-                                <p className="filterText">Filter</p>
-                                <div style={{ cursor: 'pointer' }}><p>Clear All</p></div>
-                            </div>
+    file && formData.append(
+      "files",
+      file,
+      "file"
+    );
 
-                            <div className="locationFilter">
-                                <p>Location</p>
-                                <input type="text" placeholder="Type here.." name="" id="" />
-                            </div>
+    // var formdata = new FormData();
+    // file && formdata.append("files", file, "/C:/Users/delll/OneDrive/Pictures/WhatsApp Image 2021-01-26 at 2.22.17 PM.jpeg");
 
-                            <div className="officeVisitFilter">
-                                <p>Sort By :</p>
-                                {/* <div className="officeVisitRadio" onClick={() => setOfficeVisit(!isOfficeVisit)} >
-                                    <div className="officeVisitRadioImage" style={{ backgroundColor: isOfficeVisit ? '#3498DB' : '#fff' }} >
-                                        {
-                                            isOfficeVisit ? <i style={{ color: isOfficeVisit ? '#fff' : '#000' }} class="fa fa-check" aria-hidden="true"></i> : null
-                                        }
-                                    </div>
-                                    <div>
-                                        <span>Allowed</span>
-                                    </div>
-                                </div> */}
-                                <FormControl className={classes.formControl}>
-                                    <Select
-                                        labelId="demo-mutiple-checkbox-label"
-                                        id="demo-mutiple-checkbox"
-                                        multiple
-                                        value={personName}
-                                        onChange={handleChange}
-                                        input={<Input />}
-                                        displayEmpty
-                                        disableUnderline
-                                        renderValue={(selected) => selected.join(', ')}
-                                        MenuProps={MenuProps}
-                                        renderValue={(selected) => {
-                                            if (selected.length === 0) {
-                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
-                                            }
+    instance.post(`api/${Role}/media/create`, formData)
+      .then(function (response) {
+        console.log(response)
+        setApiData({
+          ...apiData,
+          productLogo: response[0].mediaURL
+        })
+        setLoading(false)
+      })
+      .catch(err => {
+        setLoading(false);
+      })
+  }
 
-                                            return selected.join(', ');
-                                        }}
-                                    >
-                                        {names.map((name) => (
-                                            <MenuItem key={name} value={name}>
-                                                <Checkbox color="primary" checked={personName.indexOf(name) > -1} />
-                                                <ListItemText primary={name} />
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                            </div>
+  useEffect(() => {
+    console.log(apiData);
+  }, [apiData]);
+  return (
+    <>
+      <Navbar />
+      {loading && <Spinner />}
+      <div className="mainProductForm">
+        <div className="innerProductForm">
+          <div className="leftBorderLineProduct"></div>
+          <div className="productTagLine">
+            <h1>
+              we focus on <br /> Your Story
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+              beatae quibusdam pariatur est quas id. Lorem, ipsum dolor sit amet
+            </p>
+          </div>
+          <div className="productIllustration">
+            <div>
+              <img src={product} alt="product" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-                            <div className="officeVisitFilter">
-                                <p>Funding type:</p>
-                                <FormControl className={classes.formControl}>
-                                    <Select
-                                        labelId="demo-mutiple-checkbox-label"
-                                        id="demo-mutiple-checkbox"
-                                        multiple
-                                        value={fundtype}
-                                        onChange={handleFundType}
-                                        input={<Input />}
-                                        displayEmpty
-                                        disableUnderline
-                                        renderValue={(selected) => selected.join(', ')}
-                                        MenuProps={MenuProps}
-                                        renderValue={(selected) => {
-                                            if (selected.length === 0) {
-                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
-                                            }
+      <div className="productsHeadlines">
+        <div className="innerProductHeadlines">
+          <h3>
+            {" "}
+            <span> Clients </span> want to know your product..!!{" "}
+          </h3>
+          <p>
+            Fill the form below so that client will know the details of your
+            product.
+          </p>
+        </div>
+      </div>
 
-                                            return selected.join(', ');
-                                        }}
-                                    >
-                                        {fundType.map((name) => (
-                                            <MenuItem key={name} value={name}>
-                                                <Checkbox color="primary" checked={fundtype.indexOf(name) > -1} />
-                                                <ListItemText primary={name} />
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                            </div>
-
-                            <div className="officeVisitFilter">
-                                <p>Business Models:</p>
-                                <FormControl className={classes.formControl}>
-                                    <Select
-                                        labelId="demo-mutiple-checkbox-label"
-                                        id="demo-mutiple-checkbox"
-                                        multiple
-                                        value={bmodal}
-                                        onChange={handleBmodal}
-                                        input={<Input />}
-                                        displayEmpty
-                                        disableUnderline
-                                        renderValue={(selected) => selected.join(', ')}
-                                        MenuProps={MenuProps}
-                                        renderValue={(selected) => {
-                                            if (selected.length === 0) {
-                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
-                                            }
-
-                                            return selected.join(', ');
-                                        }}
-                                    >
-                                        {bType.map((name) => (
-                                            <MenuItem key={name} value={name}>
-                                                <Checkbox color="primary" checked={bmodal.indexOf(name) > -1} />
-                                                <ListItemText primary={name} />
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div className="mainProductFormArea">
+        <div className="innerProductFormArea">
+          <div className="straightLine">
+            <span>01</span>
+            <span>02</span>
+            <span>03</span>
+            <span>04</span>
+            <span>05</span>
+          </div>
+          <div className="form_1">
+            <div className="illustrationArea">
+              <img src={product1} alt="" />
             </div>
 
+            <div className="form1_Fields">
+              <section>
+                <p>1. Upload your latest logo of product</p>
+                <input
+                  onChange={inputFileChoosen}
+                  type="file"
+                  name=""
+                  id="fileInput"
+                  accept="image/png, image/gif, image/jpeg"
+                />
+                <button style={{ margin: 0 }} onClick={updateButtonHandler}>Update</button>
+              </section>
+              <section>
+                <p>2. What's your good product name?</p>
+                <input
+                  type="text"
+                  placeholder="Type Here.."
+                  name="productName"
+                  value={apiData.productName}
+                  onChange={handleChange}
+                />
+              </section>
+              <section>
+                <p>3. Describe a bit about your product.</p>
+                <textarea
+                  placeholder="Minimum words should be 100"
+                  name="productDescription"
+                  value={apiData.productDescription}
+                  onChange={handleChange}
+                  cols="30"
+                  rows="6"
+                ></textarea>
+              </section>
+            </div>
+          </div>
 
-            <Modal open={open} onClose={onCloseModal} classNames={{
-                overlay: 'customOverlayAgencyProduct',
-                modal: 'customModalAgencyProduct',
-            }} center>
-                <div className="modalHeaderProduct">
-                    <h2>Get Connected</h2>
-                </div>
-                <div className="productModalForm">
-                    <p className="toText">To : Founder at SheThink</p>
+          <div className="form_2">
+            <div className="illustrationArea">
+              <img src={product2} alt="" />
+            </div>
+            <div className="form2_Fields">
+              <section>
+                <p>4. What type of Business product you have?</p>
+                <FormControl className={classes.formControl}>
+                  <Select
+                    labelId="demo-mutiple-checkbox-label"
+                    id="demo-mutiple-checkbox"
+                    multiple
+                    displayEmpty
+                    value={businesstype}
+                    onChange={(event) => handleChange(event)}
+                    input={<Input />}
+                    name="productBusinessModel"
+                    MenuProps={MenuProps}
+                    renderValue={(selected) => {
+                      if (selected.length === 0) {
+                        return (
+                          <span
+                            style={{ fontFamily: "Poppins", color: "#999" }}
+                          >
+                            Select from here
+                          </span>
+                        );
+                      }
+                      return selected.join(', ')
+                    }}
+                  >
+                    {/* {names.map((name) => (
+                      <MenuItem key={name} value={name}>
+                        <Checkbox
+                          color="primary"
+                          checked={personName.indexOf(name) > -1}
+                        />
+                        <ListItemText primary={name} />
+                      </MenuItem>
+                    ))} */}
+                    {allDomainsData.map((ad) => (
+                      <MenuItem key={ad._id} value={ad.domainName}>
+                        <Checkbox
+                          color="primary"
+                          checked={businesstype.indexOf(ad.domainName) > -1}
+                        />
+                        <ListItemText primary={ad.domainName} />
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </section>
+              <section>
+                <p>5. What's your good team size?</p>
+                <FormControl className={classes.formControl}>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={apiData.productTeamSize}
+                    name="productTeamSize"
+                    onChange={(event) => handleChange(event)}
+                    displayEmpty
+                    className={classes.inputField}
+                  >
+                    <MenuItem value="">
+                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                        Select from here
+                      </span>
+                    </MenuItem>
+                    <MenuItem value={"1-10"}>01-10</MenuItem>
+                    <MenuItem value={"10-50"}>10-50</MenuItem>
+                    <MenuItem value={"50-100"}>50-100</MenuItem>
+                    <MenuItem value={"more"}>More</MenuItem>
+                  </Select>
+                </FormControl>
+              </section>
+              <section>
+                <p>6. Total revenue generated till now?</p>
+                <FormControl className={classes.formControl}>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={apiData.productRevenueGenerated}
+                    name="productRevenueGenerated"
+                    onChange={(event) => handleChange(event)}
+                    displayEmpty
+                    className={classes.inputField}
+                  >
+                    <MenuItem value="">
+                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                        Select from here
+                      </span>
+                    </MenuItem>
+                    <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
+                    <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
+                    <MenuItem value={"more"}>More</MenuItem>
+                  </Select>
+                </FormControl>
+              </section>
 
-                    <div className="productModalInput">
-                        <p>Subject</p>
-                        <input type="text" placeholder="Enter your subject" />
-                    </div>
-                    <div className="productModalInput">
-                        <p>Message</p>
-                        <textarea cols="30" rows="6" type="text" placeholder="Enter your message here" />
-                    </div>
-                    <div className="productModalInput">
-                        <p>Email ID</p>
-                        <input type="text" placeholder="Enter your email" />
-                    </div>
-                    <div className="productModalInput">
-                        <p>Linkedin URL</p>
-                        <input type="text" placeholder="Enter your url" />
-                    </div>
+              <section>
+                <p>7. Which business modal does your product have?</p>
+                <div className="radioGroupButtons">
+                  {businessModal.map((value, index) => {
+                    return (
+                      <div
+                        className="radioButton"
+                        onClick={() => handleBusinnesModal(index)}
+                      >
+                        <span>
+                          {value?.status === true ? <div></div> : null}
+                        </span>
+                        <h6>{value?.value}</h6>
+                      </div>
+                    );
+                  })}
                 </div>
-                <div className="connectedButton">
-                    <p>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+              </section>
+            </div>
+          </div>
+
+          <div className="form_3">
+            <div className="form3_Fields">
+              <section className="previousFunding">
+                <p>8. Any previous funding?</p>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="gender"
+                    name="productPreviousFunding"
+                    value={apiData.productPreviousFunding}
+                    onChange={(event) => handleChange(event)}
+                  >
+                    <FormControlLabel
+                      value="yes"
+                      control={<BlueRadio />}
+                      label="YES"
+                    />
+                    <FormControlLabel
+                      value="no"
+                      control={<BlueRadio />}
+                      label="NO"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </section>
+              {apiData.productPreviousFunding === "yes" ? (
+                <section className="amountRaised">
+                  <span>How much amount have you raised yet?</span>
+                  <FormControl className={classes.formControl}>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={apiData.fundingMoneyRaised}
+                      name="fundingMoneyRaised"
+                      onChange={(event) => handleChange(event)}
+                      displayEmpty
+                      className={classes.inputField}
+                    >
+                      <MenuItem value="">
+                        <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                          Select from here
+                        </span>
+                      </MenuItem>
+                      <MenuItem value={10}>$ 0-1000</MenuItem>
+                      <MenuItem value={20}>$ 1000-10k</MenuItem>
+                      <MenuItem value={30}>More</MenuItem>
+                    </Select>
+                  </FormControl>
+                </section>
+              ) : null}
+              <section className="previousFunding">
+                <p>9. Which type of funding you are looking for?</p>
+                <FormControl className={classes.formControl}>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={apiData.productFundingTypeLookingFor}
+                    name="productFundingTypeLookingFor"
+                    onChange={(event) => handleChange(event)}
+                    displayEmpty
+                    className={classes.inputField}
+                  >
+                    <MenuItem value="">
+                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                        Select from here
+                      </span>
+                    </MenuItem>
+                    <MenuItem value={"Seed"}>SEED</MenuItem>
+                    <MenuItem value={"Series-A"}>SERIES-A</MenuItem>
+                    <MenuItem value={"Series-B"}>SERIES-B</MenuItem>
+                    <MenuItem value={"Series-C"}>SERIES-C</MenuItem>
+                    <MenuItem value={"Venture-Round"}>VENTURE-ROUND</MenuItem>
+                    <MenuItem value={"Angel"}>Angel</MenuItem>
+                    <MenuItem value={"Corporate-Round"}>
+                      Corporate-Round
+                    </MenuItem>
+                    <MenuItem value={"Debt-Financing"}>DEBT-FINANCING</MenuItem>
+                    <MenuItem value={"Equity-Crowdfunding"}>
+                      EQUITY-CROWDFUNDING
+                    </MenuItem>
+                    <MenuItem value={"Grant"}>Grant</MenuItem>
+                    <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
+                  </Select>
+                </FormControl>
+              </section>
+
+              <section class="currentStage">
+                <p>10. What is the current stage of product?</p>
+                <div className="currentStageRadios">
+                  {currentStage.map((value, index) => {
+                    return (
+                      <div
+                        style={{
+                          borderColor: value.status === true ? "#2E86C1" : null,
+                        }}
+                        className="radioButton"
+                        onClick={() => handleCurrentStage(index)}
+                      >
+                        <span>
+                          {value?.status === true ? <div></div> : null}
+                        </span>
+                        <h6>{value?.value}</h6>
+                      </div>
+                    );
+                  })}
                 </div>
-            </Modal>
-        </>
-    )
+              </section>
+
+              <section>
+                <p>11. How many customer you have accquired?</p>
+                <FormControl className={classes.formControl}>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="productCustomerAccquired"
+                    value={apiData.productCustomerAccquired}
+                    onChange={(event) => handleChange(event)}
+                    displayEmpty
+                    className={classes.inputField}
+                  >
+                    <MenuItem value="">
+                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                        Select from here
+                      </span>
+                    </MenuItem>
+                    <MenuItem value={"0-100"}>0-100</MenuItem>
+                    <MenuItem value={"100-200"}>100-200</MenuItem>
+                    <MenuItem value={"200-300"}>200-300</MenuItem>
+                    <MenuItem value={"More than 300"}>More than 300</MenuItem>
+                  </Select>
+                </FormControl>
+              </section>
+
+              <section>
+                <p>12. How many active users are there ?</p>
+                <FormControl className={classes.formControl}>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={apiData.productActiveUsers}
+                    name="productActiveUsers"
+                    onChange={(event) => handleChange(event)}
+                    displayEmpty
+                    className={classes.inputField}
+                  >
+                    <MenuItem value="">
+                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                        Select from here
+                      </span>
+                    </MenuItem>
+                    <MenuItem value={"0-100"}>0-100</MenuItem>
+                    <MenuItem value={"100-200"}>100-200</MenuItem>
+                    <MenuItem value={"200-300"}>200-300</MenuItem>
+                    <MenuItem value={"More than 300"}>More than 300</MenuItem>
+                  </Select>
+                </FormControl>
+              </section>
+            </div>
+            <div className="illustrationArea">
+              <img src={product3} alt="" />
+            </div>
+          </div>
+
+          <div className="form_4">
+            <div className="illustrationArea">
+              <img src={product4} alt="" />
+            </div>
+            <div className="form4_Fields">
+              <section>
+                <p>13. Your Company Location</p>
+                <input
+                  type="text"
+                  placeholder="Type here..."
+                  name="productCompanyLocation"
+                  value={apiData.productCompanyLocation}
+                  onChange={handleChange}
+                />
+              </section>
+              <section>
+                <p>14. When was your product started?</p>
+                <input
+                  type="date"
+                  name="productStartingDate"
+                  value={apiData.productStartingDate}
+                  onChange={handleChange}
+                />
+              </section>
+              <section>
+                <p>15. Any feature link?</p>
+                <input
+                  type="text"
+                  placeholder="Type here..."
+                  name="productFeatureLink"
+                  value={apiData.productFeatureLink}
+                  onChange={handleChange}
+                />
+              </section>
+              <section>
+                <p>16. Any Platform link?</p>
+                <input
+                  type="text"
+                  placeholder="Type here..."
+                  name="productPlatformLink"
+                  value={apiData.productPlatformLink}
+                  onChange={handleChange}
+                />
+              </section>
+            </div>
+          </div>
+
+          <div className="form_5">
+            <div className="form5_Fields">
+              <section>
+                <p>17. Founders of this product</p>
+
+                <div className="">
+                  <div className="founder_Link">
+                    <input
+                      type="text"
+                      placeholder={`Founder 1 Linkedin Profile Link`}
+                      onChange={(e) => handleChangeLink(0, e)}
+                    />
+                    <button type="button" onClick={() => handleAdd()}>
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+                {fields.map((field, idx) => {
+                  if (idx === 0) {
+                    return ""
+                  }
+                  else {
+
+                    return (
+                      <div className="founderLink" key={`${field}-${idx}`}>
+                        <input
+                          type="text"
+                          placeholder={`Founder ${idx + 1} Linkedin Profile Link`}
+                          onChange={(e) => handleChangeLink(idx, e)}
+                        />
+                        <div onClick={() => handleRemove(idx)}>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    );
+                  }
+                })}
+              </section>
+            </div>
+            <div className="illustrationArea">
+              <img src={product5} alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="submitButton">
+        <div className="innerSubmitButton">
+          <div className="subbutton" onClick={onOpenModal}>
+            <p>
+              Upload Your Product{" "}
+              <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <Modal
+        open={openmodal}
+        onClose={onCloseModal}
+        closeOnOverlayClick={false}
+        showCloseIcon={false}
+        classNames={{
+          overlay: "NavbarModalLayer",
+          modal: "NavbarModalStyle",
+        }}
+        center
+      >
+        <h2 className="addyourproductext">Your Product</h2>
+        <div className="successfullProduct">
+          <div className="successImage">
+            <div>
+              <img src={success} alt="" />
+            </div>
+          </div>
+          <div className="successfullyText">
+            <p>Your product has been successfully uploaded.</p>
+            <span>Wait for the client to response.</span>
+          </div>
+        </div>
+        <div className="modalButton">
+          <button onClick={() => (window.location.href = "/agency-profile")}>
+            Go to Profile
+          </button>
+        </div>
+      </Modal>
+    </>
+  );
 }
 
-export default ProductAgencies
+export default ProductForm;
