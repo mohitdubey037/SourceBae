@@ -220,7 +220,7 @@ function ProductForm() {
     values[i].value = event.target.value;
     console.log(values);
     setFields(values);
-    setApiData({ ...apiData, productFounderLinkedinProfiles: values })
+    setApiData({ ...apiData, productFounderLinkedinProfiles: values.map((link)=>link.value) })
   }
 
   function handleAdd() {
@@ -318,61 +318,61 @@ function ProductForm() {
       err.productDescription = 'Description required'
     }
 
-    if (apiData.productDomain == '') {
+    if (apiData.productDomain === '') {
       err.productDomain = 'Domain required'
     }
 
-    if (apiData.productTeamSize == '') {
+    if (apiData.productTeamSize === '') {
       err.productTeamSize = "Team Size required"
     }
 
-    if (apiData.productRevenueGenerated == '') {
+    if (apiData.productRevenueGenerated === '') {
       err.productRevenueGenerated = 'Revenue required'
     }
 
-    if (apiData.productBusinessModel == '') {
+    if (apiData.productBusinessModel === '') {
       err.productBusinessModel = "Business Model required"
     }
 
-    if (apiData.productPreviousFunding == '') {
+    if (apiData.productPreviousFunding === '') {
       err.productPreviousFunding = 'Previous Funding required'
     }
 
-    if (apiData.productFundingTypeLookingFor == '') {
+    if (apiData.productFundingTypeLookingFor === '') {
       err.productFundingTypeLookingFor = "Funding type required"
     }
 
-    if (apiData.productCurrentStatus == '') {
+    if (apiData.productCurrentStatus === '') {
       err.productCurrentStatus = "Current status required"
     }
 
-    if (apiData.productCustomerAccquired == '') {
+    if (apiData.productCustomerAccquired === '') {
       err.productCustomerAccquired = "Customer field required"
     }
 
-    if (apiData.productActiveUsers == '') {
+    if (apiData.productActiveUsers === '') {
       err.productActiveUsers = "Active users required"
     }
 
-    if (apiData.productCompanyLocation == '') {
+    if (apiData.productCompanyLocation === '') {
       err.productCompanyLocation = "Company Location required"
     }
 
-    if (apiData.productFeatureLink == "") {
+    if (apiData.productFeatureLink === "") {
       err.productFeatureLink = 'Feature Link required'
     }
     else if (!helper.validateLink(apiData.productFeatureLink)) {
       err.productFeatureLink = 'Wrong Feature link Provided'
     }
 
-    if (apiData.productPlatformLink == "") {
+    if (apiData.productPlatformLink === "") {
       err.productPlatformLink = 'Platform Link required'
     }
     else if (!helper.validateLink(apiData.productPlatformLink)) {
       err.productPlatformLink = 'Wrong Platform link Provided'
     }
 
-    if (apiData.productFounderLinkedinProfiles == "") {
+    if (apiData.productFounderLinkedinProfiles === "") {
       err.productFounderLinkedinProfiles = 'Founder Link required'
     }
     else if (!helper.validateLink(apiData.productFounderLinkedinProfiles)) {
@@ -382,6 +382,7 @@ function ProductForm() {
   }
 
   const uploadProduct = () => {
+    console.log(apiData)
     validateInfo();
     if (errors.length === 0) {
       setLoading(true);

@@ -39,7 +39,7 @@ const Dashboard = () => {
 
     const [age, setAge] = React.useState('');
     const [verified, setVerified] = useState(false)
-    const [projects, setProjects] = useState([])
+    const [allProjects, setProjects] = useState([])
     const [openmodal, setOpenModal] = useState(false);
 
     const onOpenModal = () => setOpenModal(true);
@@ -171,7 +171,9 @@ const Dashboard = () => {
                 <div className="innerClientsOptions">
                     {
                         cardsArray.map((value, index) => {
+                            
                             return (
+                                
                                 <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
                                     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                         <div className="leftLine" style={{
@@ -239,9 +241,10 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="allProjects">
+
                         {
-                            projects.length > 0 ?
-                                projects.map((value, index) => {
+                            allProjects?.projects?.length > 0 ?
+                            allProjects?.projects?.map((value, index) => {
                                     return (
                                         <div className="mainProjectCard">
                                             <div className="innerProjectCard">
