@@ -13,7 +13,7 @@ import Spinner from '../../../Components/Spinner/Spinner';
 
 
 
-function AgencyList() {
+function AgencyList(props) {
 
     const Role = "client"
     let { projectId } = useParams()
@@ -83,14 +83,28 @@ function AgencyList() {
         instance.patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
             .then(function (response) {
                 console.log(response);
+                props.history.push({
+                    pathname: '/project-details',
+                    condition: 'Client' 
+                  })
             })
-        onCloseModal()
+            .catch(err => {
+                console.log(err);
+            })
+        // onCloseModal()
     }
 
     const quotationSubmitHandler = () => {
         instance.patch(`/api/${Role}/projects/propose/${projectId}`, QuotationFormData)
             .then(function (response) {
                 console.log(response);
+                props.history.push({
+                    pathname: '/project-details',
+                    condition: 'Client' 
+                  })
+            })
+            .catch(err => {
+                console.log(err);
             })
         onCloseQuotation()
     }

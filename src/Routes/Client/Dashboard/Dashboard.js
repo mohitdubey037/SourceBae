@@ -28,7 +28,7 @@ const MenuProps = {
         style: {
             maxHeight: 215,
             width: 200,
-            top: 350
+            top: 360
         },
     },
 };
@@ -229,7 +229,7 @@ function Dashboard() {
                                                 <em>{p.projectType}</em>
                                             </div>
                                             <div className="projectStatus">
-                                                <p>No agencies picked</p>
+                                                <p>{p.projectCurrentStatus}</p>
                                             </div>
                                         </div>
 
@@ -253,7 +253,7 @@ function Dashboard() {
                                                 // let flag = false
                                                 return (
                                                     <div>
-                                                        <span style={{ backgroundColor: index <= value.indexOf(p.projectCurrentStatus) /* !==s && !flag*/ ? '#5cb85c' : '#626567' }}>{index + 1}</span>
+                                                        <span style={{ backgroundColor: index <= value.indexOf(p.projectCurrentStatus) ? '#5cb85c' : '#626567' }}>{index + 1}</span>
                                                         <p>{s}</p>
                                                     </div>
                                                 )
