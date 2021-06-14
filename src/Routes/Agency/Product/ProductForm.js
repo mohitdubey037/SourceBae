@@ -358,33 +358,39 @@ function ProductForm() {
       err.productCompanyLocation = "Company Location required"
     }
 
-    if (apiData.productFeatureLink === "") {
-      err.productFeatureLink = 'Feature Link required'
-    }
-    else if (!helper.validateLink(apiData.productFeatureLink)) {
-      err.productFeatureLink = 'Wrong Feature link Provided'
-    }
+    // if (apiData.productFeatureLink === "") {
+    //   err.productFeatureLink = 'Feature Link required'
+    // }
+    // else if (!helper.validateLink(apiData.productFeatureLink)) {
+    //   err.productFeatureLink = 'Wrong Feature link Provided'
+    // }
 
-    if (apiData.productPlatformLink === "") {
-      err.productPlatformLink = 'Platform Link required'
-    }
-    else if (!helper.validateLink(apiData.productPlatformLink)) {
-      err.productPlatformLink = 'Wrong Platform link Provided'
-    }
+    // if (apiData.productPlatformLink === "") {
+    //   err.productPlatformLink = 'Platform Link required'
+    // }
+    // else if (!helper.validateLink(apiData.productPlatformLink)) {
+    //   err.productPlatformLink = 'Wrong Platform link Provided'
+    // }
 
-    if (apiData.productFounderLinkedinProfiles === "") {
-      err.productFounderLinkedinProfiles = 'Founder Link required'
-    }
-    else if (!helper.validateLink(apiData.productFounderLinkedinProfiles)) {
-      err.productFounderLinkedinProfiles = 'Wrong link Provided'
-    }
+    // if (apiData.productFounderLinkedinProfiles === "") {
+    //   err.productFounderLinkedinProfiles = 'Founder Link required'
+    // }
+    // else if (!helper.validateLink(apiData.productFounderLinkedinProfiles)) {
+    //   err.productFounderLinkedinProfiles = 'Wrong link Provided'
+    // }
     setErrors(err);
+    console.log(err)
+    if (err.length === 0 ){
+      return true
+    }
+    else {
+      return false
+    }
   }
 
   const uploadProduct = () => {
     console.log(apiData)
-    validateInfo();
-    if (errors.length === 0) {
+    if (true) {
       setLoading(true);
       instance.post(`api/${Role}/products/create`, apiData)
         .then(response => {
