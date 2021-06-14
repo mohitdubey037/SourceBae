@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 
 
 function Received() {
-    const clientId = localStorage.getItem('userId');
+    const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
 
@@ -15,7 +15,7 @@ function Received() {
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?AgencyId=${clientId}`)
+        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&quotationReceived=true`)
             .then(response => {
                 setLoading(false);
                 console.log(response);

@@ -8,7 +8,7 @@ import Spinner from '../../../Components/Spinner/Spinner';
 
 function Responded() {
 
-    const clientId = localStorage.getItem('userId');
+    const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
 
@@ -18,7 +18,7 @@ function Responded() {
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?AgencyId=${clientId}`)
+        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectResponded=true`)
             .then(response => {
                 setLoading(false);
                 console.log(response);
