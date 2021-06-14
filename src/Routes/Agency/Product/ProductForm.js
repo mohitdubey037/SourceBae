@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-import './ProductForm.css'
-
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import { withStyles } from '@material-ui/core/styles';
-
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-
-import product from '../../../assets/images/ClientDashboard/product.svg'
-import product1 from '../../../assets/images/ClientDashboard/product1.svg'
-import product2 from '../../../assets/images/ClientDashboard/product2.svg'
-import product3 from '../../../assets/images/ClientDashboard/product3.svg'
-import product4 from '../../../assets/images/ClientDashboard/product4.svg'
-import product5 from '../../../assets/images/ClientDashboard/product5.svg'
-import success from '../../../assets/images/agencyForm/success.gif'
-
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import Navbar from '../../Dashboard/Navbar';
-=======
 import React, { useState, useEffect } from "react";
 import "./ProductForm.css";
 
@@ -57,7 +28,6 @@ import success from "../../../assets/images/agencyForm/success.gif";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
->>>>>>> master
 
 const BlueRadio = withStyles({
   root: {
