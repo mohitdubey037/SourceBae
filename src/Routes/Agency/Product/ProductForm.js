@@ -220,6 +220,10 @@ function ProductForm() {
     values[i].value = event.target.value;
     console.log(values);
     setFields(values);
+<<<<<<< HEAD
+=======
+    // setApiData({ ...apiData, productFounderLinkedinProfiles: values })
+>>>>>>> 7f8c384bad6f9e5d2ccf0e2d9aed351b36d8ec13
     setApiData({ ...apiData, productFounderLinkedinProfiles: values.map((link)=>link.value) })
   }
 
@@ -228,6 +232,7 @@ function ProductForm() {
     console.log(values);
     setFields(values);
   }
+
 
   function handleRemove(i) {
     const values = [...fields];
@@ -378,24 +383,31 @@ function ProductForm() {
     else if (!helper.validateLink(apiData.productFounderLinkedinProfiles)) {
       err.productFounderLinkedinProfiles = 'Wrong link Provided'
     }
+
     setErrors(err);
+    console.log(errors.length);
+    if (errors.length === 0) {
+      return true
+    }
+    else {
+      return false
+    }
   }
 
   const uploadProduct = () => {
-    console.log(apiData)
-    validateInfo();
-    if (errors.length === 0) {
-      setLoading(true);
-      instance.post(`api/${Role}/products/create`, apiData)
-        .then(response => {
-          setLoading(false);
-          onOpenModal();
-          console.log(response);
-        })
-        .catch(error => {
-          setLoading(false);
-        })
-    }
+    console.log(errors.length);
+      if (validateInfo()){
+        setLoading(true);
+        instance.post(`api/${Role}/products/create`, apiData)
+          .then(response => {
+            setLoading(false);
+            onOpenModal();
+            console.log(response);
+          })
+          .catch(error => {
+            setLoading(false);
+          })
+      }
   }
 
   useEffect(() => {

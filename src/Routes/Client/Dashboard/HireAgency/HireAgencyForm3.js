@@ -115,9 +115,9 @@ function HireAgencyForm3() {
     //         hireAgencyForm3Api()
     // }
 
-    // useEffect(() => {
-    //     getAllServices()
-    // }, [])
+    useEffect(() => {
+        getAllServices()
+    }, [])
 
     const handleSubmit = () => {
         setLoading(true)

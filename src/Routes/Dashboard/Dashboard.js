@@ -250,9 +250,9 @@ const Dashboard = () => {
                                             <div className="innerProjectCard">
                                                 <div className="projectInformation">
                                                     <div className="projectDetails">
-                                                        <div className="projectImage">
+                                                        {/* <div className="projectImage">
                                                             <img src={clientProfile} alt="" />
-                                                        </div>
+                                                        </div> */}
                                                         <div className="projectName">
                                                             <NavLink className="projectN" to={{
                                                                 pathname: "/project-details",
