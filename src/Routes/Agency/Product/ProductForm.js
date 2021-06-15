@@ -148,11 +148,11 @@ function ProductForm() {
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
-  const [businesstype, setBusinesstype] = React.useState([]);
+  const [businesstype, setBusinesstype] = useState([]);
 
-  const [domainName, setDomainName] = React.useState('');
+  const [domainName, setDomainName] = useState('');
 
-  const [errors, setErrors] = React.useState({});
+  const [errors, setErrors] = useState({});
 
 
   const [apiData, setApiData] = useState({
@@ -188,7 +188,7 @@ function ProductForm() {
       ...apiData,
       [name]: value,
     });
-    setBusinesstype(value);
+    // setBusinesstype(value);
   };
 
   const handleSelectChange = (event) => {
