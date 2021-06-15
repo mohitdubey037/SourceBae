@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import './ProjectsMatched.css';
 import instance from '../../../Constants/axiosConstants';
@@ -39,7 +40,6 @@ function ProjectesMatched() {
     console.log(Role);
 
     const [projects, setProjects] = useState([]);
-    const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const getAllReceivedData = () => {
@@ -49,7 +49,6 @@ function ProjectesMatched() {
                 setLoading(false);
                 console.log(response);
                 setProjects(response.projects);
-                setStatuses(response.statuses);
             })
             .catch(err => {
                 setLoading(false)

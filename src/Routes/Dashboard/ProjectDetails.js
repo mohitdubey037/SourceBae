@@ -6,13 +6,13 @@ import ClientNavbar from '../Client/ClientNavbar';
 import { connect } from 'react-redux';
 
 function ProjectDetails(props) {
-    const [state, setState] = useState(props.projects)
+    const state = useState(props.projects)
     const role = props.condition
     return (
         <>
-            {role == 'Client' ? <ClientNavbar/> : <Navbar />}            
+            {role === 'Client' ? <ClientNavbar/> : <Navbar />}            
             <div style={{ marginTop: '3%' }}></div>
-            <RespondedDetails {...state} key={state?.clientId}/>
+            <RespondedDetails state= {state} key={state?.clientId}/>
         </>
     )
 }
