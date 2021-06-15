@@ -5,8 +5,13 @@ import foods from '../../../assets/images/Quotation/foods.png'
 import leftQuote from '../../../assets/images/Quotation/leftQuote.png'
 import rightQuote from '../../../assets/images/Quotation/rightQuote.png'
 import agencyLogo from '../../../assets/images/Quotation/cegelec.svg'
+import { connect } from 'react-redux';
 
 function RespondedDetails(props) {
+
+    // const [state, setState] = useState(props.projects)
+    console.log(props.projects);
+    
     console.log(props);
 
     const arr = [
@@ -194,4 +199,10 @@ function RespondedDetails(props) {
     )
 }
 
-export default RespondedDetails
+const mapStateToProps = state => {
+    return {
+        projects : state.projects,
+    }
+}
+
+export default connect(mapStateToProps)(RespondedDetails)

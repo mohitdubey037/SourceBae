@@ -257,9 +257,9 @@ function AgencyProfile() {
                                         <button class="nav-link" id="nav-portfolio-tab" data-bs-toggle="tab" data-bs-target="#nav-portfolio" type="button" role="tab" aria-controls="nav-portfolio" aria-selected="false">
                                             <img src={matched} alt="portfolio" /> Portfolio
                             </button>
-                                        <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
+                                        {/* <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
                                             <img src={matched} alt="Reviews" /> Reviews
-                            </button>
+                            </button> */}
                                         <button class="nav-link" id="nav-question-tab" data-bs-toggle="tab" data-bs-target="#nav-question" type="button" role="tab" aria-controls="nav-question" aria-selected="false">
                                             <img src={matched} alt="Feature Link" /> Feature Link
                             </button>

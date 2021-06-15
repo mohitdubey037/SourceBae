@@ -37,6 +37,7 @@ const validateLink = (link)=>{
     const containSpaces = /\s/g.test(link);
     let result = false;
     if (containSpaces === false) {
+        console.log('hi');
         result = (/^((http(s?)?):\/\/)?([wW]{3}\.)?[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})|\/[^\S][a-zA-Z0-9\-_\/]/g.test(link))
         return result;
     }
