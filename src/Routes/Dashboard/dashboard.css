@@ -227,6 +227,9 @@
   align-items: center !important;
   font-size: 1.2rem !important;
 }
+.SelectClass {
+  font-size: 14px !important;
+}
 
 @media (max-width: 768px) {
   .oneSourcingLogo {

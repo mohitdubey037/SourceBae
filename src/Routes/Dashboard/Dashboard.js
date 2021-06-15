@@ -22,8 +22,18 @@ import Moment from 'react-moment';
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal'
+import clsx from 'clsx';
 
-
+const MenuProps = {
+    getContentAnchorEl: () => null,
+    PaperProps: {
+        style: {
+            maxHeight: 215,
+            width: 200,
+            top: 350
+        },
+    },
+};
 
 const Dashboard = () => {
 
@@ -36,10 +46,11 @@ const Dashboard = () => {
     const [moreOption, setMoreOption] = useState(false);
     const [isPopover, setIsPopover] = useState(false);
     const [popindex, setPopIndex] = useState('');
+    const [statuses, setStatuses] = useState([]);
 
     const [age, setAge] = React.useState('');
     const [verified, setVerified] = useState(false)
-    const [allProjects, setProjects] = useState([])
+    const [allProjects, setAllProjects] = useState([])
     const [openmodal, setOpenModal] = useState(false);
 
     const onOpenModal = () => setOpenModal(true);
@@ -56,8 +67,8 @@ const Dashboard = () => {
     const getAllProjects = () => {
         instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=`)
             .then(function (response) {
-                setProjects(response);
-                console.log(response);
+                setAllProjects(response);
+                setStatuses(response.statuses);
             })
             .catch(err => {
                 console.log(err);
@@ -67,6 +78,10 @@ const Dashboard = () => {
     useEffect(() => {
         getAllProjects()
     }, [])
+
+    useEffect(() => {
+        console.log(statuses);
+    }, [statuses])
 
     const cardsArray = [
         {
@@ -229,12 +244,17 @@ const Dashboard = () => {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     value={age}
+                                    MenuProps={MenuProps}
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value={0}>All</MenuItem>
-                                    <MenuItem value={10}>Completed</MenuItem>
+                                    {statuses.map(value => {
+                                        return ( 
+                                             <MenuItem className='SelectClass' value={value}>{value}</MenuItem> 
+                                        )
+                                    })}
+                                    {/* <MenuItem value={10}>Completed</MenuItem>
                                     <MenuItem value={20}>Pending</MenuItem>
-                                    <MenuItem value={30}>Cancelled</MenuItem>
+                                    <MenuItem value={30}>Cancelled</MenuItem> */}
                                 </Select>
                             </div>
 
