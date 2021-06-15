@@ -3,19 +3,25 @@ import Navbar from './Navbar';
 import RespondedDetails from './Quotation/RespondedDetails';
 import React, {useState} from 'react'
 import ClientNavbar from '../Client/ClientNavbar';
+import { connect } from 'react-redux';
 
 function ProjectDetails(props) {
-    console.log(props.location.state);
-    const [state, setState] = useState(props.location.state)
-    const role = localStorage.getItem('role')
-    // console.log(state);
+    const state = useState(props.projects)
+    const role = props.condition
     return (
         <>
-            {role == 'Client' ? <ClientNavbar/> : <Navbar />}            
+            {role === 'Client' ? <ClientNavbar/> : <Navbar />}            
             <div style={{ marginTop: '3%' }}></div>
-            <RespondedDetails {...state} key={state?.clientId}/>
+            <RespondedDetails state= {state} key={state?.clientId}/>
         </>
     )
 }
 
-export default ProjectDetails
+const mapStateToProps = state => {
+    return {
+        projects : state.projects,
+        condition : state.condition
+    }
+}
+
+export default connect(mapStateToProps)(ProjectDetails)

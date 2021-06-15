@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import './ProjectsMatched.css';
 import instance from '../../../Constants/axiosConstants';
@@ -34,22 +35,20 @@ import Spinner from '../../../Components/Spinner/Spinner';
 
 function ProjectesMatched() {
 
-    const clientId = localStorage.getItem('userId');
+    const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
 
     const [projects, setProjects] = useState([]);
-    const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?AgencyId=${clientId}`)
+        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectMatched=true`)
             .then(response => {
                 setLoading(false);
                 console.log(response);
                 setProjects(response.projects);
-                setStatuses(response.statuses);
             })
             .catch(err => {
                 setLoading(false)

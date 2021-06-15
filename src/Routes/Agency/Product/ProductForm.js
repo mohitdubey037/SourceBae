@@ -370,14 +370,14 @@ function ProductForm() {
     }
     else if (!helper.validateLink(apiData.productPlatformLink)) {
       err.productPlatformLink = 'Wrong Platform link Provided'
-    }
+    } 
 
-    if (apiData.productFounderLinkedinProfiles === "") {
-      err.productFounderLinkedinProfiles = 'Founder Link required'
-    }
-    else if (helper.validateLink(apiData.productFounderLinkedinProfiles)) {
-      err.productFounderLinkedinProfiles = 'Wrong link Provided'
-    }
+    // if (apiData.productFounderLinkedinProfiles === "") {
+    //   err.productFounderLinkedinProfiles = 'Founder Link required'
+    // }
+    // else if (helper.validateLink(apiData.productFounderLinkedinProfiles)) {
+    //   err.productFounderLinkedinProfiles = 'Wrong link Provided'
+    // }
     setErrors(err);
     if(Object.keys(err).length===0)
       return true

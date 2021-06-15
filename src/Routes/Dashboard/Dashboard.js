@@ -21,11 +21,22 @@ import * as helper from "../../shared/helper"
 import Moment from 'react-moment';
 
 import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal'
+import { Modal } from 'react-responsive-modal';
+import * as actions from '../../Redux/action/addProject';
+import { connect } from 'react-redux';
 
+const MenuProps = {
+    getContentAnchorEl: () => null,
+    PaperProps: {
+        style: {
+            maxHeight: 215,
+            width: 200,
+            top: 350
+        },
+    },
+};
 
-
-const Dashboard = () => {
+const Dashboard = (props) => {
 
     const Role = "agency";
     const agencyId = localStorage.getItem('userId');
@@ -36,10 +47,11 @@ const Dashboard = () => {
     const [moreOption, setMoreOption] = useState(false);
     const [isPopover, setIsPopover] = useState(false);
     const [popindex, setPopIndex] = useState('');
+    const [statuses, setStatuses] = useState([]);
 
     const [age, setAge] = React.useState('');
     const [verified, setVerified] = useState(false)
-    const [allProjects, setProjects] = useState([])
+    const [allProjects, setAllProjects] = useState([])
     const [openmodal, setOpenModal] = useState(false);
 
     const onOpenModal = () => setOpenModal(true);
@@ -56,17 +68,27 @@ const Dashboard = () => {
     const getAllProjects = () => {
         instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=`)
             .then(function (response) {
-                setProjects(response);
-                console.log(response);
+                setAllProjects(response);
+                setStatuses(response.statuses);
             })
             .catch(err => {
                 console.log(err);
             })
     }
 
+    const projectNameNavigator = (p) => {
+        console.log(p)
+        props.onAddProject(p);
+        props.history.push('/project-details');
+    }
+
     useEffect(() => {
         getAllProjects()
     }, [])
+
+    useEffect(() => {
+        console.log(statuses);
+    }, [statuses])
 
     const cardsArray = [
         {
@@ -171,9 +193,9 @@ const Dashboard = () => {
                 <div className="innerClientsOptions">
                     {
                         cardsArray.map((value, index) => {
-                            
+
                             return (
-                                
+
                                 <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
                                     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                         <div className="leftLine" style={{
@@ -229,12 +251,17 @@ const Dashboard = () => {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     value={age}
+                                    MenuProps={MenuProps}
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value={0}>All</MenuItem>
-                                    <MenuItem value={10}>Completed</MenuItem>
+                                    {statuses.map(value => {
+                                        return (
+                                            <MenuItem className='SelectClass' value={value}>{value}</MenuItem>
+                                        )
+                                    })}
+                                    {/* <MenuItem value={10}>Completed</MenuItem>
                                     <MenuItem value={20}>Pending</MenuItem>
-                                    <MenuItem value={30}>Cancelled</MenuItem>
+                                    <MenuItem value={30}>Cancelled</MenuItem> */}
                                 </Select>
                             </div>
 
@@ -244,7 +271,7 @@ const Dashboard = () => {
 
                         {
                             allProjects?.projects?.length > 0 ?
-                            allProjects?.projects?.map((value, index) => {
+                                allProjects?.projects?.map((value, index) => {
                                     return (
                                         <div className="mainProjectCard">
                                             <div className="innerProjectCard">
@@ -254,14 +281,14 @@ const Dashboard = () => {
                                                             <img src={clientProfile} alt="" />
                                                         </div> */}
                                                         <div className="projectName">
-                                                            <NavLink className="projectN" to={{
+                                                            <p onClick={() => projectNameNavigator(value)} className="projectN">{value.projectName}</p>
+                                                            {/* <NavLink className="projectN" to={{
                                                                 pathname: "/project-details",
                                                                 state: { ...value },
                                                                 condition: 'Agency',
-
                                                             }}
                                                             >{value?.projectName}
-                                                            </NavLink>
+                                                            </NavLink> */}
                                                             {/* <h4>{value?.projectName}</h4>  */}
                                                         </div>
                                                     </div>
@@ -348,7 +375,7 @@ const Dashboard = () => {
                     <NavLink className='modalNavLink' to={{
                         pathname: "/product-form"
                     }}>Interested</NavLink>
-                    <button style={{marginTop: 0, marginBottom: 0}} onClick={onCloseModal} >Not Interested</button>
+                    <button style={{ marginTop: 0, marginBottom: 0 }} onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
 
@@ -356,5 +383,11 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddProject : (projects) => dispatch(actions.addProject(projects))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Dashboard)
 

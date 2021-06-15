@@ -148,6 +148,7 @@ function AgencyForm4() {
         };
 
         if (githubLink.platformLink !== "") {
+            console.log('githubLink', !helper.validateLink(githubLink.platformLink))
             if (!helper.validateLink(githubLink.platformLink)) {
                 setProfileLinksErrors({
                     ...tempProfileLinks,
@@ -156,6 +157,7 @@ function AgencyForm4() {
             }
         }
         if (stackoverflow.platformLink !== "") {
+            console.log('stackoverflow', !helper.validateLink(stackoverflow.platformLink))
             if (!helper.validateLink(stackoverflow.platformLink)) {
                 setProfileLinksErrors({
                     ...tempProfileLinks,
@@ -164,6 +166,7 @@ function AgencyForm4() {
             }
         }
         if (fields[0].value !== "") {
+            console.log('fields', !helper.validateLink(fields[0].value))
             if (!helper.validateLink(fields[0].value)) {
                 setProfileLinksErrors({
                     ...tempProfileLinks,
@@ -172,6 +175,7 @@ function AgencyForm4() {
             }
         }
         if (featuredLink.platformLink !== "") {
+            console.log('featuredLink', !helper.validateLink(featuredLink.platformLink))
             if (!helper.validateLink(featuredLink.platformLink)) {
                 setProfileLinksErrors({
                     ...tempProfileLinks,

@@ -37,12 +37,13 @@ import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
 import CustomRoute from './HOCRoute/CustomRoute';
 
 import { withRouter } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 
 const App = (props) => {
   const {condition} = props.location;
   console.log(condition);
-
+  console.log(props.condition);
+  
   return (
   <Switch>
     <Route exact path='/' component={Mainhomepage} />
@@ -64,7 +65,7 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/product-form" component={ProductForm} />
 
     {/* Both */}
-    <CustomRoute condition={props.location.condition} exact path="/project-details" component={ProjectDetails} />
+    <CustomRoute condition={props.condition} exact path="/project-details" component={ProjectDetails} />
 
 
     {/* Client Components  */}
@@ -83,5 +84,11 @@ const App = (props) => {
   </Switch>
 )}
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return {
+    condition : state.condition
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(App));
 

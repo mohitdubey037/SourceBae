@@ -299,12 +299,17 @@ const Register = (props) => {
         setLoading(true);
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
-                setLoading(false);
                 console.log(role)
-                if (role === "Client")
-                    window.location.href = "/client-dashboard"
-                else if (role === "Agency")
-                    window.location.replace("/dashboard")
+                if (role === "Client") {
+                    // window.location.href = "/client-dashboard"
+                    props.history.push('/client-dashboard')
+                    setLoading(false);
+                }
+                else if (role === "Agency") {
+                    // window.location.replace("/dashboard")
+                    props.history.push('/dashboard');
+                    setLoading(false);
+                }
             })
             .catch(err => {
                 setLoading(false)
@@ -753,7 +758,7 @@ const Register = (props) => {
                             <p>Step {step} of 4</p>
                         </div>
                     </div>
-                    }
+                }
             </div>
         </div>
     )
