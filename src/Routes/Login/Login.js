@@ -89,12 +89,12 @@ const Login = (props) => {
     const classes = useStyles()
     const [test, setTest] = useState()
     const routerHistory = useHistory();
+    const [loading, setLoading] = useState(false);
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false
     });
 
     const [hidePassword, SetPasswordStatus] = useState(true);
-    const [loading, setLoading] = useState(false);
     console.log(hidePassword)
 
     useEffect(() => {
@@ -166,7 +166,6 @@ const Login = (props) => {
             instance.post(`/api/${apiRole}/auths/login`, form)
                 .then(function (response) {
                     console.log(response, "response")
-                    setLoading(false);
                     localStorage.removeItem('Authorization')
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                     localStorage.setItem('role', role)
@@ -174,13 +173,16 @@ const Login = (props) => {
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
 
-                    if (role === "Agency"){
-                        window.location.replace("/dashboard")
+                    if (role === "Agency") {
+                        props.history.push('/dashboard');
+                        setLoading(false);
                     }
-                    
 
-                    else if (role === "Client")
-                        window.location.replace("/client-dashboard")
+
+                    else if (role === "Client"){
+                        props.history.push('/client-dashboard');
+                        setLoading(false);
+                    }
 
                 })
                 .catch(err => {
@@ -349,7 +351,7 @@ const Login = (props) => {
                         </div>
                     </div>
                 </div>
-                }
+            }
 
         </>
     )
