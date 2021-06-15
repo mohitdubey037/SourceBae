@@ -8,8 +8,8 @@ import freelancer from '../../../assets/images/ClientDashboard/freelancer.svg'
 import wave from '../../../assets/images/ClientDashboard/wave.svg'
 import littleVector from '../../../assets/images/ClientDashboard/littleVector.png'
 import dots from '../../../assets/images/ClientDashboard/dots.png'
-import { withRouter } from "react-router";
-import { NavLink } from 'react-router-dom';
+import info from '../../../assets/images/ClientDashboard/info.png'
+import { NavLink, useHistory, Link } from 'react-router-dom';
 
 import Input from "@material-ui/core/Input";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -20,7 +20,7 @@ import instance from '../../../Constants/axiosConstants';
 import * as helper from '../../../shared/helper';
 import clsx from 'clsx';
 
-import * as actions from '../../../Redux/action/Client/addProject';
+import * as actions from '../../../Redux/action/addProject';
 import { connect } from 'react-redux';
 
 const MenuProps = {
