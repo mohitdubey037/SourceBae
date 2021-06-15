@@ -8,11 +8,14 @@ import { ToastContainer } from 'react-toastify';
 
 //REDUX
 
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import rootReducer from './Redux/rootReducer';
+import clientProjectsReducer from './Redux/Reducer/clientProjects'
 
-const store = createStore(rootReducer)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(clientProjectsReducer)
 
 ReactDOM.render(
   <Provider store={store}>

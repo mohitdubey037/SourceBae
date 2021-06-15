@@ -22,6 +22,9 @@ import instance from '../../../Constants/axiosConstants';
 import * as helper from '../../../shared/helper';
 import clsx from 'clsx';
 
+import * as actions from '../../../Redux/action/Client/addProject';
+import { connect } from 'react-redux';
+
 const MenuProps = {
     getContentAnchorEl: () => null,
     PaperProps: {
@@ -60,7 +63,7 @@ function getStyles(singleTechObject, allTechnologies, theme) {
     };
 }
 
-function Dashboard() {
+function Dashboard(props) {
 
     const Role = helper.lowerize(localStorage.getItem('role'));
     const clientId = localStorage.getItem("userId")
@@ -119,6 +122,12 @@ function Dashboard() {
 
     const routeRedirecter = (id) => {
         window.location.href = `/agency-list:${id}`;
+    }
+
+    const projectNameNavigator = (p) => {
+        console.log(p)
+        props.onAddProject(p);
+        props.history.push('/project-details');
     }
 
     useEffect(() => {
@@ -219,13 +228,14 @@ function Dashboard() {
                                         <span className="leftBorderClientProject"></span>
                                         <div className="cardTopPart">
                                             <div className="projectName">
-                                                <NavLink className="projectDetailsRouter" to={{
+                                                <p onClick={() => projectNameNavigator(p)} className="projectDetailsRouter">{p.projectName}</p>
+                                                {/* <NavLink className="projectDetailsRouter" to={{
                                                     pathname: "/project-details",
                                                     state: { ...p },
                                                     condition: 'Client',
                                                 }}
                                                 >{p.projectName}
-                                                </NavLink>
+                                                </NavLink> */}
                                                 <em>{p.projectType}</em>
                                             </div>
                                             <div className="projectStatus">
@@ -249,8 +259,6 @@ function Dashboard() {
                                         <div className="projectStage">
                                             <span className="statusLine"></span>
                                             {statuses.map((s, index, value) => {
-                                                console.log(index <= value.indexOf(p.projectCurrentStatus));
-                                                // let flag = false
                                                 return (
                                                     <div>
                                                         <span style={{ backgroundColor: index <= value.indexOf(p.projectCurrentStatus) ? '#5cb85c' : '#626567' }}>{index + 1}</span>
@@ -494,4 +502,10 @@ function Dashboard() {
     )
 }
 
-export default withRouter(Dashboard)
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddProject : (projects) => dispatch(actions.addProject(projects))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Dashboard)
