@@ -175,13 +175,15 @@ const Login = (props) => {
 
                     if (role === "Agency") {
                         setLoading(false);
-                        props.history.push('/dashboard');
+                        window.location.replace("/dashboard")
+                        // props.history.push('/dashboard');
                     }
 
 
                     else if (role === "Client"){
                         setLoading(false);
-                        props.history.push('/client-dashboard');
+                        window.location.replace("/client-dashboard")
+                        // props.history.push('/client-dashboard');
                     }
 
                 })
