@@ -1,4 +1,4 @@
-import * as actionTypes from '../action/Client/actionTypes'
+import * as actionTypes from '../action/actionTypes'
 
 const initialState = {
     projects : {},

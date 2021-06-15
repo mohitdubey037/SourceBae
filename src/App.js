@@ -40,6 +40,9 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const App = (props) => {
+  const {condition} = props.location;
+  console.log(condition);
+  console.log(props.condition);
   
   return (
   <Switch>

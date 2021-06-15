@@ -174,14 +174,14 @@ const Login = (props) => {
                     resolve(1)
 
                     if (role === "Agency") {
-                        props.history.push('/dashboard');
                         setLoading(false);
+                        props.history.push('/dashboard');
                     }
 
 
                     else if (role === "Client"){
-                        props.history.push('/client-dashboard');
                         setLoading(false);
+                        props.history.push('/client-dashboard');
                     }
 
                 })

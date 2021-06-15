@@ -9,7 +9,6 @@ import wave from '../../../assets/images/ClientDashboard/wave.svg'
 import littleVector from '../../../assets/images/ClientDashboard/littleVector.png'
 import dots from '../../../assets/images/ClientDashboard/dots.png'
 import info from '../../../assets/images/ClientDashboard/info.png'
-import { withRouter } from "react-router";
 import { NavLink, useHistory, Link } from 'react-router-dom';
 
 import Input from "@material-ui/core/Input";
@@ -22,7 +21,7 @@ import instance from '../../../Constants/axiosConstants';
 import * as helper from '../../../shared/helper';
 import clsx from 'clsx';
 
-import * as actions from '../../../Redux/action/Client/addProject';
+import * as actions from '../../../Redux/action/addProject';
 import { connect } from 'react-redux';
 
 const MenuProps = {

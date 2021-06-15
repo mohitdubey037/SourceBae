@@ -21,8 +21,9 @@ import * as helper from "../../shared/helper"
 import Moment from 'react-moment';
 
 import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal'
-import clsx from 'clsx';
+import { Modal } from 'react-responsive-modal';
+import * as actions from '../../Redux/action/addProject';
+import { connect } from 'react-redux';
 
 const MenuProps = {
     getContentAnchorEl: () => null,
@@ -35,7 +36,7 @@ const MenuProps = {
     },
 };
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
     const Role = "agency";
     const agencyId = localStorage.getItem('userId');
@@ -73,6 +74,12 @@ const Dashboard = () => {
             .catch(err => {
                 console.log(err);
             })
+    }
+
+    const projectNameNavigator = (p) => {
+        console.log(p)
+        props.onAddProject(p);
+        props.history.push('/project-details');
     }
 
     useEffect(() => {
@@ -186,9 +193,9 @@ const Dashboard = () => {
                 <div className="innerClientsOptions">
                     {
                         cardsArray.map((value, index) => {
-                            
+
                             return (
-                                
+
                                 <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
                                     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                         <div className="leftLine" style={{
@@ -248,8 +255,8 @@ const Dashboard = () => {
                                     onChange={handleChange}
                                 >
                                     {statuses.map(value => {
-                                        return ( 
-                                             <MenuItem className='SelectClass' value={value}>{value}</MenuItem> 
+                                        return (
+                                            <MenuItem className='SelectClass' value={value}>{value}</MenuItem>
                                         )
                                     })}
                                     {/* <MenuItem value={10}>Completed</MenuItem>
@@ -264,7 +271,7 @@ const Dashboard = () => {
 
                         {
                             allProjects?.projects?.length > 0 ?
-                            allProjects?.projects?.map((value, index) => {
+                                allProjects?.projects?.map((value, index) => {
                                     return (
                                         <div className="mainProjectCard">
                                             <div className="innerProjectCard">
@@ -274,14 +281,14 @@ const Dashboard = () => {
                                                             <img src={clientProfile} alt="" />
                                                         </div> */}
                                                         <div className="projectName">
-                                                            <NavLink className="projectN" to={{
+                                                            <p onClick={() => projectNameNavigator(value)} className="projectN">{value.projectName}</p>
+                                                            {/* <NavLink className="projectN" to={{
                                                                 pathname: "/project-details",
                                                                 state: { ...value },
                                                                 condition: 'Agency',
-
                                                             }}
                                                             >{value?.projectName}
-                                                            </NavLink>
+                                                            </NavLink> */}
                                                             {/* <h4>{value?.projectName}</h4>  */}
                                                         </div>
                                                     </div>
@@ -368,7 +375,7 @@ const Dashboard = () => {
                     <NavLink className='modalNavLink' to={{
                         pathname: "/product-form"
                     }}>Interested</NavLink>
-                    <button style={{marginTop: 0, marginBottom: 0}} onClick={onCloseModal} >Not Interested</button>
+                    <button style={{ marginTop: 0, marginBottom: 0 }} onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
 
@@ -376,5 +383,11 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddProject : (projects) => dispatch(actions.addProject(projects))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Dashboard)
 
