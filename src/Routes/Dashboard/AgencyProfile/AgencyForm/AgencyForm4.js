@@ -347,13 +347,13 @@ function AgencyForm4() {
                         <div className="nextBtn">
                             <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
                                 <button>
-                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                    <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                 </button>
                             </NavLink>
                             {/* <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
                             <button /*style={{ backgroundColor: colors[status] }}*/ onClick={finalUpdate} >
                                 Finish
-                                <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                <i className="fa fa-long-arrow-right" aria-hidden="true" />
                             </button>
                         </div>
                     </div>

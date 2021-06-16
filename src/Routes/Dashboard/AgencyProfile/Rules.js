@@ -93,9 +93,9 @@ function Rules(props) {
                                                 {!editRules && <div className="rulesMark">
                                                     {value?.selection
                                                         ?
-                                                        <i class="fa fa-check" style={{ color: '#5cb85c' }} aria-hidden="true" />
+                                                        <i className="fa fa-check" style={{ color: '#5cb85c' }} aria-hidden="true" />
                                                         :
-                                                        <i class="fa fa-times" style={{ color: '#d9534f' }} aria-hidden="true" />
+                                                        <i className="fa fa-times" style={{ color: '#d9534f' }} aria-hidden="true" />
                                                     }
                                                 </div>}
 

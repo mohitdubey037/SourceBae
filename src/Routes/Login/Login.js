@@ -95,20 +95,14 @@ const Login = (props) => {
     });
 
     const [hidePassword, SetPasswordStatus] = useState(true);
-    console.log(hidePassword)
 
     useEffect(() => {
-        console.log("first", state.checked)
         localStorage.setItem('toggle', state.checked);
-        console.log("state", state.checked)
 
         state.checked === false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
 
     }, [state]);
 
-    useEffect(() => {
-        console.log("hi")
-    }, [])
 
     const showPassword = (e) => {
         console.log(e);
@@ -117,14 +111,11 @@ const Login = (props) => {
 
     const handleChangeToggle = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked })
-        console.log("statechecked", state.checked)
     };
 
     let { role } = useParams();
-    console.log(role);
 
     role = helper.capitalize(helper.cleanParam(role))
-    console.log(role);
 
     if (!(role === "Agency" || role === "Client"))
         window.location.href = "/page-not-found"
@@ -174,16 +165,16 @@ const Login = (props) => {
                     resolve(1)
 
                     if (role === "Agency") {
-                        // window.location.href = "/dashboard";
+                        window.location.href = "/dashboard";
                         // setLoading(false);
-                        props.history.push('/dashboard');
+                        // props.history.push('/dashboard');
                     }
 
 
                     else if (role === "Client") {
-                        // window.location.href = "/client-dashboard";
+                        window.location.href = "/client-dashboard";
                         // setLoading(false);
-                        props.history.push('/client-dashboard');
+                        // props.history.push('/client-dashboard');
                     }
 
                 })

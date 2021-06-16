@@ -35,7 +35,7 @@ instance.interceptors.response.use(function (response){
     }
     
 }, function (error){
-    const routerHistory = useHistory(); 
+    const routerHistory = useHistory();
     console.log(error)
     let trueError = ""
     if(error?.response?.data?.message==="Bearer Token not found")
