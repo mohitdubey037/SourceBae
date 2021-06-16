@@ -131,11 +131,15 @@ const ClientNavbar = ({ isVisible }, props) => {
                                 <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
                             </div>
                         </div>
-                        <div className="postProject">
+                        {isVisible ? 
+                          <div className="postProject">
                             <div style={{ cursor: 'pointer' }} onClick={showVisibility}>
                                 <p><i class="fa fa-plus-circle" aria-hidden="true"></i>Post Project</p>
                             </div>
-                        </div>
+                            </div> 
+                            :
+                            null
+                        }
                         <div className="clientNotification" >
                             <div className={classes.root} onClick={notificationPanel}>
                                 <StyledBadge

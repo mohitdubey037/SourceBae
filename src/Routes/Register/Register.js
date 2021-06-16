@@ -106,22 +106,7 @@ const Register = (props) => {
 
     if (!(role === "Agency" || role === "Client"))
         window.location.href = "/page-not-found"
-    
-    
-    useEffect(() => {
-        console.log("first", state.checked)
-        localStorage.setItem('toggle', state.checked);
-        console.log("state", state.checked)
 
-        state.checked === false ? routerHistory.push('/register:agency') : routerHistory.push('/register:client');
-
-    }, [state]);
-
-
-    const handleChangeToggle = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked })
-        console.log("statechecked", state.checked)
-    };
 
     //Social Media State Variables
     const [linkedIn, setLinkedIn] = useState({
@@ -335,6 +320,21 @@ const Register = (props) => {
             return false
         }
     }
+
+    useEffect(() => {
+        console.log("first", state.checked)
+        localStorage.setItem('toggle', state.checked);
+        console.log("state", state.checked)
+
+        state.checked === false ? routerHistory.push('/register:agency') : routerHistory.push('/register:client');
+
+    }, [state]);
+
+
+    const handleChangeToggle = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked })
+        console.log("statechecked", state.checked)
+    };
 
     //API call methods
     const signUpApi = async (role, form) => {
