@@ -228,14 +228,14 @@ function AgencyForm3() {
                             <div className="nextBtn">
                                 <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
                                     <button>
-                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                        <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                 </button>
                                 </NavLink>
 
                                 {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
                                     <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
                                         {status}
-                                        <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                        <i className="fa fa-long-arrow-right" aria-hidden="true" />
                                     </button>
                                 {/* </NavLink> */}
                             </div>

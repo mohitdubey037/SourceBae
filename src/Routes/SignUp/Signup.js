@@ -48,7 +48,7 @@ const Signup = () => {
                             </div>
                         </Link>
 
-                        <Link to = '/register:agency' class = 'signup__link'>
+                        <Link to = '/register:agency' className = 'signup__link'>
                             <div className="signup__methodCard">
                                 <div className="method__visual">
                                     <img src = {briefcaseInPolygon} alt="" className = 'signup__polygon' />
@@ -58,7 +58,7 @@ const Signup = () => {
                                     <p style = {{ fontSize : '.85rem' , color : '#777' }}>Want to work remotely</p>
                                 </div>
                                 <div className="proceed__icon">
-                                    <i class="fas fa-long-arrow-alt-right" style = {{ color : '#1565D8' , fontSize : '1.4rem' , transform : 'scaleX(1.1)' }}></i>
+                                    <i className="fas fa-long-arrow-alt-right" style = {{ color : '#1565D8' , fontSize : '1.4rem' , transform : 'scaleX(1.1)' }}></i>
                                 </div>
                             </div>
                         </Link>

@@ -106,7 +106,7 @@ function Responded() {
                                         <div className="mainBackBtn">
                                             <div className="innerBackBtn">
                                                 <div onClick={() => setIsdetail(false)}>
-                                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>Back
+                                                    <i className="fa fa-chevron-left" aria-hidden="true"></i>Back
 
                                                 </div>
                                             </div>

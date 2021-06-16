@@ -14,8 +14,7 @@ import agencylogin from '../../assets/images/LandingPage/agencylogin.svg'
 import styled from 'styled-components';
 
 
-const Mainhomepage = () => {
-
+const Mainhomepage = (props) => {
 
     useEffect(() => {
         localStorage.setItem("toggle", false)
@@ -106,11 +105,11 @@ const Mainhomepage = () => {
         <>
             <div className="mainHomePage">
                 <div className="innerHomePage">
-                    <div className="HomePageCard" onClick={() => window.location.href = "/login:client"} >
+                    <div className="HomePageCard" onClick={() => props.history.push("/login:client")} >
                         <span className="leftHomePageBorder"></span>
                         <p>Login</p>
                     </div>
-                    <div className="HomePageCard" onClick={() => window.location.href = "/register:client"} >
+                    <div className="HomePageCard" onClick={() => props.history.push("/register:client")} >
                         <span className="leftHomePageBorder"></span>
                         <p>Sign Up</p>
                     </div>
