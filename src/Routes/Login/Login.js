@@ -280,7 +280,7 @@ const Login = (props) => {
                                         }}
                                         endAdornment={
                                             <InputAdornment>
-                                                <AccountCircleRoundedIcon fontSize="md" />
+                                                <AccountCircleRoundedIcon fontSize="default" />
                                             </InputAdornment>
                                         }
 

@@ -79,7 +79,7 @@ function ClientProfile() {
 
                             {
                                 isEdit === false ?
-                                    <div onClick={() => setIsEdit(true)} className="profileEditBtn">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                                    <div onClick={() => setIsEdit(true)} className="profileEditBtn">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>
                                     :
                                     (
                                         <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>

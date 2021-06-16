@@ -148,11 +148,11 @@ function ProductForm() {
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
-  const [businesstype, setBusinesstype] = React.useState([]);
+  const [businesstype, setBusinesstype] = useState([]);
 
-  const [domainName, setDomainName] = React.useState('');
+  const [domainName, setDomainName] = useState('');
 
-  const [errors, setErrors] = React.useState({});
+  const [errors, setErrors] = useState({});
 
 
   const [apiData, setApiData] = useState({
@@ -188,7 +188,7 @@ function ProductForm() {
       ...apiData,
       [name]: value,
     });
-    setBusinesstype(value);
+    // setBusinesstype(value);
   };
 
   const handleSelectChange = (event) => {
@@ -220,7 +220,7 @@ function ProductForm() {
     values[i].value = event.target.value;
     console.log(values);
     setFields(values);
-    setApiData({ ...apiData, productFounderLinkedinProfiles: values.map((link)=>link.value) })
+    setApiData({ ...apiData, productFounderLinkedinProfiles: values.map((link) => link.value) })
   }
 
   function handleAdd() {
@@ -361,35 +361,38 @@ function ProductForm() {
     if (apiData.productFeatureLink === "") {
       err.productFeatureLink = 'Feature Link required'
     }
-    else if (!helper.validateLink(apiData.productFeatureLink)) {
+
+    if (!helper.validateLink(apiData.productFeatureLink)) {
       err.productFeatureLink = 'Wrong Feature link Provided'
     }
 
     if (apiData.productPlatformLink === "") {
       err.productPlatformLink = 'Platform Link required'
     }
-    else if (!helper.validateLink(apiData.productPlatformLink)) {
+
+    if (!helper.validateLink(apiData.productPlatformLink)) {
       err.productPlatformLink = 'Wrong Platform link Provided'
-    } 
-    
-    // if (apiData.productFounderLinkedinProfiles === "") {
-    //   err.productFounderLinkedinProfiles = 'Founder Link required'
-    // }
-    // else if (helper.validateLink(apiData.productFounderLinkedinProfiles)) {
-    //   err.productFounderLinkedinProfiles = 'Wrong link Provided'
-    // }
+    }
+
+    if (fields[0].value === null) {
+      err.productFounderLinkedinProfiles = 'Founder link is required.'
+    }
+
+    if (!helper.validateLink(fields[0].value)) {
+      err.productFounderLinkedinProfiles = 'Invalid link provided.'
+    }
     setErrors(err);
-    if(Object.keys(err).length===0)
+    if (Object.keys(err).length === 0)
       return true
-    else 
-    return false
-    
+    else
+      return false
+
   }
 
   const uploadProduct = () => {
     console.log(apiData)
-   
-    if ( validateInfo()) {
+
+    if (validateInfo()) {
       setLoading(true);
       instance.post(`api/${Role}/products/create`, apiData)
         .then(response => {
@@ -401,7 +404,7 @@ function ProductForm() {
           setLoading(false);
         })
     }
-    else{
+    else {
       console.log(errors)
     }
   }
@@ -481,7 +484,7 @@ function ProductForm() {
                   value={apiData.productName}
                   onChange={handleChange}
                 />
-                {errors.productName && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productName}</p>}
+                {errors.productName && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productName}</p>}
               </section>
               <section>
                 <p>3. Describe a bit about your product.</p>
@@ -494,7 +497,7 @@ function ProductForm() {
                   rows="6"
                   maxLength='100'
                 ></textarea>
-                {errors.productDescription && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productDescription}</p>}
+                {errors.productDescription && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDescription}</p>}
               </section>
             </div>
           </div>
@@ -542,7 +545,7 @@ function ProductForm() {
                       </MenuItem>
                     ))}
                   </Select>
-                  {errors.productDomain && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productDomain}</p>}
+                  {errors.productDomain && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDomain}</p>}
                 </FormControl>
               </section>
               <section>
@@ -567,7 +570,7 @@ function ProductForm() {
                     <MenuItem value={"50-100"}>50-100</MenuItem>
                     <MenuItem value={"more"}>More</MenuItem>
                   </Select>
-                  {errors.productTeamSize && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productTeamSize}</p>}
+                  {errors.productTeamSize && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productTeamSize}</p>}
                 </FormControl>
               </section>
               <section>
@@ -591,7 +594,7 @@ function ProductForm() {
                     <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
                     <MenuItem value={"more"}>More</MenuItem>
                   </Select>
-                  {errors.productRevenueGenerated && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productRevenueGenerated}</p>}
+                  {errors.productRevenueGenerated && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productRevenueGenerated}</p>}
                 </FormControl>
               </section>
 
@@ -612,7 +615,7 @@ function ProductForm() {
                     );
                   })}
                 </div>
-                {errors.productBusinessModel && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productBusinessModel}</p>}
+                {errors.productBusinessModel && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productBusinessModel}</p>}
               </section>
             </div>
           </div>
@@ -640,7 +643,7 @@ function ProductForm() {
                     />
                   </RadioGroup>
                 </FormControl>
-                {errors.productPreviousFunding && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productPreviousFunding}</p>}
+                {errors.productPreviousFunding && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPreviousFunding}</p>}
               </section>
               {apiData.productPreviousFunding === "true" ? (
                 <section className="amountRaised">
@@ -701,7 +704,7 @@ function ProductForm() {
                     <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
                   </Select>
                 </FormControl>
-                {errors.productFundingTypeLookingFor && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productFundingTypeLookingFor}</p>}
+                {errors.productFundingTypeLookingFor && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFundingTypeLookingFor}</p>}
               </section>
 
               <section class="currentStage">
@@ -724,7 +727,7 @@ function ProductForm() {
                     );
                   })}
                 </div>
-                {errors.productCurrentStatus && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productCurrentStatus}</p>}
+                {errors.productCurrentStatus && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCurrentStatus}</p>}
               </section>
 
               <section>
@@ -749,7 +752,7 @@ function ProductForm() {
                     <MenuItem value={"200-300"}>200-300</MenuItem>
                     <MenuItem value={"More than 300"}>More than 300</MenuItem>
                   </Select>
-                  {errors.productCustomerAccquired && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productCustomerAccquired}</p>}
+                  {errors.productCustomerAccquired && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCustomerAccquired}</p>}
                 </FormControl>
               </section>
 
@@ -775,7 +778,7 @@ function ProductForm() {
                     <MenuItem value={"200-300"}>200-300</MenuItem>
                     <MenuItem value={"More than 300"}>More than 300</MenuItem>
                   </Select>
-                  {errors.productActiveUsers && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productActiveUsers}</p>}
+                  {errors.productActiveUsers && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productActiveUsers}</p>}
                 </FormControl>
               </section>
             </div>
@@ -798,7 +801,7 @@ function ProductForm() {
                   value={apiData.productCompanyLocation}
                   onChange={handleChange}
                 />
-                {errors.productCompanyLocation && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productCompanyLocation}</p>}
+                {errors.productCompanyLocation && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCompanyLocation}</p>}
               </section>
               <section>
                 <p>14. When was your product started?</p>
@@ -818,7 +821,7 @@ function ProductForm() {
                   value={apiData.productFeatureLink}
                   onChange={handleChange}
                 />
-                {errors.productFeatureLink && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productFeatureLink}</p>}
+                {errors.productFeatureLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFeatureLink}</p>}
               </section>
               <section>
                 <p>16. Any Platform link?</p>
@@ -829,7 +832,7 @@ function ProductForm() {
                   value={apiData.productPlatformLink}
                   onChange={handleChange}
                 />
-                {errors.productPlatformLink && <p style={{color:'red',fontWeight: 'normal', fontSize: '14px'}}>{errors.productPlatformLink}</p>}
+                {errors.productPlatformLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPlatformLink}</p>}
               </section>
             </div>
           </div>
@@ -851,6 +854,7 @@ function ProductForm() {
                     </button>
                   </div>
                 </div>
+                {errors.productFounderLinkedinProfiles && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFounderLinkedinProfiles}</p>}
                 {fields.map((field, idx) => {
                   if (idx === 0) {
                     return ""

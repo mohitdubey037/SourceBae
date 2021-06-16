@@ -129,8 +129,6 @@ const Dashboard = (props) => {
         setMoreOption(null);
     };
 
-
-
     const getStepsCompleted = useCallback(() => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
@@ -145,7 +143,6 @@ const Dashboard = (props) => {
     })
 
     const getAgencyProfile = useCallback((agencyId) => {
-        console.log('hi 1');
         instance.get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
                 setVerified(response.isAgencyVerified)
@@ -196,8 +193,40 @@ const Dashboard = (props) => {
 
                             return (
 
-                                <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
-                                    <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
+                                // <div style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
+                                //     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
+                                //         <div className="leftLine" style={{
+                                //             backgroundColor: value?.borderColor,
+                                //         }}></div>
+                                //         <div
+                                //             style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                //             onMouseOver={() => {
+                                //                 setIsPopover(true)
+                                //                 setPopIndex(index)
+                                //             }}
+                                //             onMouseLeave={() => setIsPopover(false)}>
+                                //             <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
+                                //             {/* ADD TOOLTIP HERE */}
+                                //             {
+                                //                 isPopover && popindex === index
+                                //                 &&
+                                //                 <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
+                                //                     <span>Some text</span>
+                                //                 </Tooltip>
+                                //             }
+                                //         </div>
+                                //         <div className="innerQuotationCard">
+                                //             <div className="quotationImage">
+                                //                 <img src={value?.image} alt="" />
+                                //             </div>
+                                //             <div className="quotationInfo">
+                                //                 <h2>{value?.title}</h2>
+                                //                 <p>{value?.desc}</p>
+                                //             </div>
+                                //         </div>
+                                //     </div>
+                                // </div>
+                                    <div className="mainQuotationCard" key={index} onClick={() => handleLink(value.route)} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                         <div className="leftLine" style={{
                                             backgroundColor: value?.borderColor,
                                         }}></div>
@@ -208,7 +237,7 @@ const Dashboard = (props) => {
                                                 setPopIndex(index)
                                             }}
                                             onMouseLeave={() => setIsPopover(false)}>
-                                            <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
+                                            <i style={{ fontSize: 22, color: value?.borderColor }} className="fa fa-info-circle" aria-hidden="true"></i>
                                             {/* ADD TOOLTIP HERE */}
                                             {
                                                 isPopover && popindex === index
@@ -228,7 +257,6 @@ const Dashboard = (props) => {
                                             </div>
                                         </div>
                                     </div>
-                                </Link>
                             )
                         })
                     }
@@ -281,7 +309,7 @@ const Dashboard = (props) => {
                                                             <img src={clientProfile} alt="" />
                                                         </div> */}
                                                         <div className="projectName">
-                                                            <p onClick={() => props.history.push('/agency-project-dashboard')} className="projectN">{value.projectName}</p>
+                                                            <p onClick={() => props.history.push('/agency-project-details')} className="projectN">{value.projectName}</p>
                                                             {/* <NavLink className="projectN" to={{
                                                                 pathname: "/project-details",
                                                                 state: { ...value },
