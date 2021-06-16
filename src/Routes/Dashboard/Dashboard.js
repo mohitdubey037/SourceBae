@@ -155,7 +155,7 @@ const Dashboard = (props) => {
             if (route === "modal")
                 onOpenModal()
             else
-                window.location.href = route
+                props.history.push(route);
         }
     }
     useEffect(() => {
@@ -193,7 +193,7 @@ const Dashboard = (props) => {
 
                             return (
 
-                                // <div style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
+                                // <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
                                 //     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                 //         <div className="leftLine" style={{
                                 //             backgroundColor: value?.borderColor,
@@ -225,7 +225,8 @@ const Dashboard = (props) => {
                                 //             </div>
                                 //         </div>
                                 //     </div>
-                                // </div>
+                                // </Link>
+                                
                                     <div className="mainQuotationCard" key={index} onClick={() => handleLink(value.route)} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                         <div className="leftLine" style={{
                                             backgroundColor: value?.borderColor,
@@ -252,7 +253,8 @@ const Dashboard = (props) => {
                                                 <img src={value?.image} alt="" />
                                             </div>
                                             <div className="quotationInfo">
-                                                <h2>{value?.title}</h2>
+                                                {/* <h2 className>{value?.title}</h2> */}
+                                                <h2><Link style={{textDecoration: 'none'}}>{value?.title}</Link></h2>
                                                 <p>{value?.desc}</p>
                                             </div>
                                         </div>

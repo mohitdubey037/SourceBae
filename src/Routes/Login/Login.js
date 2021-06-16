@@ -118,7 +118,7 @@ const Login = (props) => {
     role = helper.capitalize(helper.cleanParam(role))
 
     if (!(role === "Agency" || role === "Client"))
-        window.location.href = "/page-not-found"
+        props.history.push("/page-not-found");
     //#######################//
 
     const [form, setForm] = useState({
@@ -165,16 +165,16 @@ const Login = (props) => {
                     resolve(1)
 
                     if (role === "Agency") {
-                        window.location.href = "/dashboard";
+                        // window.location.href = "/dashboard";
                         // setLoading(false);
-                        // props.history.push('/dashboard');
+                        props.history.push('/dashboard');
                     }
 
 
                     else if (role === "Client") {
-                        window.location.href = "/client-dashboard";
+                        // window.location.href = "/client-dashboard";
                         // setLoading(false);
-                        // props.history.push('/client-dashboard');
+                        props.history.push('/client-dashboard');
                     }
 
                 })
@@ -258,7 +258,7 @@ const Login = (props) => {
                                     <h6>Login as <span> {roleString} </span></h6>
                                 </div>
                                 <div className="signUpOption">
-                                    <p>Don't have an account? <span onClick={() => window.location.href = `/register:${role.toLowerCase()}`}>Sign Up</span></p>
+                                    <p>Don't have an account? <span onClick={() => props.history.push(`/register:${role.toLowerCase()}`)}>Sign Up</span></p>
                                 </div>
                                 <div className="loginForm">
                                     {/* <div className="emailLogin"> */}

@@ -119,7 +119,7 @@ function Dashboard(props) {
     }
 
     const routeRedirecter = (id) => {
-        window.location.href = `/agency-list:${id}`;
+        props.history.push(`/agency-list:${id}`);
     }
 
     const projectNameNavigator = (p) => {
@@ -143,7 +143,7 @@ function Dashboard(props) {
                     <p>Lets Go..!!!</p>
                     <h5>How shall you like to continue.?</h5>
                     <div className="innerClientCards">
-                        <div className="hireDeveloperCard" onClick={() => window.location.href = "/hire-developer"} >
+                        <div className="hireDeveloperCard" onClick={() => props.history.push("/hire-developer")} >
                             <div className="leftBorderHireDeveloper"></div>
                             <div className="hireDeveloperImage">
                                 <img src={hireDeveloper} alt="" />
@@ -152,7 +152,7 @@ function Dashboard(props) {
                                 <h4>Hire Developer</h4>
                             </div>
                         </div>
-                        <div className="hireAgencyCard" onClick={() => window.location.href = "/hire-agency-form-one"} >
+                        <div className="hireAgencyCard" onClick={() => props.history.push("/hire-agency-form-one")} >
                             <div className="leftBorderHireDeveloper"></div>
                             <div className="hireAgencyImage">
                                 <img src={hireAgency} alt="" />
@@ -161,7 +161,7 @@ function Dashboard(props) {
                                 <h4>Hire Agency</h4>
                             </div>
                         </div>
-                        <div className="hireAgencyCard" onClick={() => window.location.href = "/short-term"} >
+                        <div className="hireAgencyCard" onClick={() => props.history.push("/short-term")} >
                             <div className="leftBorderHireDeveloper"></div>
                             <div className="hireAgencyImage">
                                 <img src={freelancer} alt="" />

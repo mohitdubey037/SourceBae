@@ -139,7 +139,7 @@ const brr = [
   },
 ];
 
-function ProductForm() {
+function ProductForm(props) {
   const [fundingMoneyRaised, setMoneyRaised] = useState("");
   const [businessModal, setBusinesmodal] = useState(arr);
   const [currentStage, setCurrentStage] = useState(brr);
@@ -919,7 +919,7 @@ function ProductForm() {
           </div>
         </div>
         <div className="modalButton">
-          <button onClick={() => (window.location.href = "/agency-profile")}>
+          <button onClick={() => props.history.push("/agency-profile")}>
             Go to Profile
           </button>
         </div>

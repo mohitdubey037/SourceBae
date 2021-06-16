@@ -71,12 +71,13 @@ const StyledBadge = withStyles((theme) => ({
 
 const ClientNavbar = ({ isVisible }, props) => {
 
+    const routerHistory = useHistory();
+
     const [show, setShow] = useState(true);
     const [isNotification, setIsnotification] = useState(false);
     const [openmodal, setOpenModal] = useState(false);
     const [anchorEl, setAnchorEl] = useState(false);
     const [anchr, setanchr] = useState(false);
-    const routerHistory = useHistory();
 
 
     const onOpenModal = () => setOpenModal(true);
@@ -122,7 +123,7 @@ const ClientNavbar = ({ isVisible }, props) => {
             <div className="mainClientNavbar">
                 <div className="innerClientNavbar">
                     <div className="superSourcingLogo">
-                        <div style={{ cursor: 'pointer' }} onClick={() => routerHistory("/client-dashboard")} >
+                        <div style={{ cursor: 'pointer' }} onClick={() => routerHistory.push("/client-dashboard")} >
                             <img src={Logo} alt="" />
                         </div>
                     </div>
@@ -133,11 +134,17 @@ const ClientNavbar = ({ isVisible }, props) => {
                                 <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
                             </div>
                         </div>
-                        <div className="postProject">
-                            <div style={{ cursor: 'pointer' }} onClick={showVisibility}>
-                                <p><i class="fa fa-plus-circle" aria-hidden="true"></i>Post Project</p>
+                        {/* <div className="postProject"> */}
+                        {isVisible ?
+                            <div className="postProject">
+                                <div style={{ cursor: 'pointer' }} onClick={showVisibility}>
+                                    <p><i class="fa fa-plus-circle" aria-hidden="true"></i>Post Project</p>
+                                </div>
                             </div>
-                        </div>
+                            :
+                            null
+                        }
+                        {/* </div> */}
                         <div className="clientNotification" >
                             <div className={classes.root} onClick={notificationPanel}>
                                 <StyledBadge
@@ -233,7 +240,7 @@ const ClientNavbar = ({ isVisible }, props) => {
                     <button onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
-       
+
         </>
     )
 }

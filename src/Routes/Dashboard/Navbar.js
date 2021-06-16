@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Navbar(props) {
+function Navbar() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(false);
     const [isNotification, setIsNotification] = React.useState(null);
@@ -102,7 +102,7 @@ function Navbar(props) {
                     </div> */}
                     <div className="clientInfo">
                         <div className="clientCompany">
-                            <img onClick={() => window.location.href = "/agency-profile"} src={clientLogo} alt="" />
+                            <img onClick={() => routerHistory.push("/agency-profile")} src={clientLogo} alt="" />
                         </div>
                         <div onClick={handleNotification} aria-describedby={id} className="clientNotification">
                             <img src={notificationIcon} alt="" />

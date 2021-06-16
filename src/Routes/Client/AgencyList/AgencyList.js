@@ -28,18 +28,20 @@ function AgencyList(props) {
     const [loading, setLoading] = useState(true)
 
 
-    const onOpenModal = (_id) => {setOpen(true); setShortlistFormData({
-        ...shortlistFormData,
-        agencyId: _id
-    })
-}
+    const onOpenModal = (_id) => {
+        setOpen(true); setShortlistFormData({
+            ...shortlistFormData,
+            agencyId: _id
+        })
+    }
     const onCloseModal = () => setOpen(false);
 
-    const onOpenQuotation = (_id) => {setOpenQuotation(true); setQuotationFormData({
-        ...QuotationFormData,
-        agencyId: _id
-    })
-}
+    const onOpenQuotation = (_id) => {
+        setOpenQuotation(true); setQuotationFormData({
+            ...QuotationFormData,
+            agencyId: _id
+        })
+    }
     const onCloseQuotation = () => setOpenQuotation(false);
 
     const [shortlistFormData, setShortlistFormData] = useState({
@@ -85,8 +87,8 @@ function AgencyList(props) {
                 console.log(response);
                 props.history.push({
                     pathname: '/project-details',
-                    condition: 'Client' 
-                  })
+                    condition: 'Client'
+                })
             })
             .catch(err => {
                 console.log(err);
@@ -100,22 +102,14 @@ function AgencyList(props) {
                 console.log(response);
                 props.history.push({
                     pathname: '/project-details',
-                    condition: 'Client' 
-                  })
+                    condition: 'Client'
+                })
             })
             .catch(err => {
                 console.log(err);
             })
         onCloseQuotation()
     }
-
-    useEffect(() => {
-        console.log(shortlistFormData);
-    }, [shortlistFormData]);
-
-    useEffect(() => {
-        console.log(QuotationFormData);
-    }, [QuotationFormData])
 
 
     return (
@@ -186,8 +180,19 @@ function AgencyList(props) {
                                                 </div>
 
                                                 <div className="quotationShortlistButton">
-                                                    <div onClick={() => onOpenModal(agency._id)}><p>Shortlist</p></div>
-                                                    <div onClick={() => onOpenQuotation(agency._id)}><p>Get Quotation</p></div>
+                                                    {agency.isAgencyAskedForQuotation ?
+                                                        <div><p>Show Details</p></div>
+                                                        :
+                                                        agency.isAgencyShortListed ?
+                                                            <div onClick={() => onOpenQuotation(agency._id)}><p>Get Quotation</p></div>
+                                                            :
+                                                            <>
+                                                                <div onClick={() => onOpenModal(agency._id)}><p>Shortlist</p></div>
+                                                                <div onClick={() => onOpenQuotation(agency._id)}><p>Get Quotation</p></div>
+                                                            </>
+
+
+                                                    }
                                                 </div>
                                             </div>
                                         )

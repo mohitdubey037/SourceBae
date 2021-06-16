@@ -41,7 +41,7 @@ const BlueRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-function ShortTerm() {
+function ShortTerm(props) {
   const Role = "client";
   const id = localStorage.getItem("userId");
 
@@ -113,7 +113,7 @@ function ShortTerm() {
 
     instance.post(`api/${Role}/projects/create-short-term`, apiData)
     .then(function (response){
-       window.location.href = `/agency-list:${response.project._id}`
+       props.history.push(`/agency-list:${response.project._id}`);
     })
   };
 
