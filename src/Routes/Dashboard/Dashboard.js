@@ -76,11 +76,11 @@ const Dashboard = (props) => {
             })
     }
 
-    const projectNameNavigator = (p) => {
-        console.log(p)
-        props.onAddProject(p);
-        props.history.push('/project-details');
-    }
+    // const projectNameNavigator = (p) => {
+    //     console.log(p)
+    //     props.onAddProject(p);
+    //     props.history.push('/project-details');
+    // }
 
     useEffect(() => {
         getAllProjects()
@@ -281,7 +281,7 @@ const Dashboard = (props) => {
                                                             <img src={clientProfile} alt="" />
                                                         </div> */}
                                                         <div className="projectName">
-                                                            <p onClick={() => projectNameNavigator(value)} className="projectN">{value.projectName}</p>
+                                                            <p onClick={() => props.history.push('/agency-project-dashboard')} className="projectN">{value.projectName}</p>
                                                             {/* <NavLink className="projectN" to={{
                                                                 pathname: "/project-details",
                                                                 state: { ...value },
@@ -383,11 +383,11 @@ const Dashboard = (props) => {
     )
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddProject : (projects) => dispatch(actions.addProject(projects))
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         onAddProject : (projects) => dispatch(actions.addProject(projects))
+//     }
+// }
 
-export default connect(null, mapDispatchToProps)(Dashboard)
+export default Dashboard
 
