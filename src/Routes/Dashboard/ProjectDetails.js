@@ -4,13 +4,12 @@ import React, {useState} from 'react'
 import ClientNavbar from '../Client/ClientNavbar';
 
 function ProjectDetails(props) {
-    const state = useState(props.projects)
-    const role = props.condition
+    const role = localStorage.getItem('role')
     return (
         <>
             {role === 'Client' ? <ClientNavbar/> : <Navbar />}            
             <div style={{ marginTop: '3%' }}></div>
-            <RespondedDetails state= {state} key={state?.clientId}/>
+            <RespondedDetails/>
         </>
     )
 }
