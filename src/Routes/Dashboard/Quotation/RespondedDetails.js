@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./RespondedDetails.css";
 
 import foods from "../../../assets/images/Quotation/foods.png";
 import agencyLogo from "../../../assets/images/Quotation/cegelec.svg";
 
+import {connect} from 'react-redux'
+import instance from "../../../Constants/axiosConstants"
 const CommentBox = (props) => {
   return (
     <div
@@ -49,7 +51,7 @@ const CommentBox = (props) => {
                   <h5>
                     <b>Agency: </b>
                   </h5>
-                  <textarea rows="200" cols = "50" style={{margin:"0 1rem"}} placeholder="Enter your reply"/>
+                  <textarea rows="5" cols = "50" style={{margin:"0 1rem"}} placeholder="Enter your reply"/>
                   <button style={{background:"none", minWidth:"80px", border:"2px solid black", borderRadius:"4px"}}>Reply</button>
                 </div>
               </div>
@@ -64,8 +66,11 @@ const CommentBox = (props) => {
 };
 
 function RespondedDetails(props) {
-  console.log(props);
+  console.log(props,"props");
+  const [project, setProject] = useState({})
 
+  const Role = localStorage.getItem('role')
+  const userId = localStorage.getItem('userId')
   const arr = [
     {
       title: "Food",
@@ -81,6 +86,31 @@ function RespondedDetails(props) {
     },
   ];
 
+  const getAllProjects = () => {
+    const apiParam = Role==="client"?"clientId":"agencyId"
+    instance.get(`api/${Role}/projects/all?${apiParam}=${userId}&quotationReceived=`)
+        .then(function (response) {
+            setProject(response);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+  useEffect(()=>{
+    if(Object.keys(props["projects"]).length===0){
+      console.log("empty")
+      getAllProjects()
+    }
+    else{
+      console.log("Not empty")
+      setProject(props.projects)
+    }
+   
+  },[])
+
+  useEffect(()=>{
+    console.log(project,"project")
+  },[project])
   return (
     <>
       <div className="mainDetailHeader">
@@ -186,7 +216,8 @@ function RespondedDetails(props) {
 
           <div className="agencyQuotationDesc">
             <h4>Comments and Replies</h4>
-            {props.projectProposals[0]?.isAskedForQuotation === true && (
+            
+            {props?.projectProposals && props.projectProposals[0]?.isAskedForQuotation === true && (
               <CommentBox
                 comments={props.projectProposals[0]?.comments}
                 commentType="Shortlist"
@@ -226,4 +257,11 @@ function RespondedDetails(props) {
   );
 }
 
-export default RespondedDetails;
+const mapStateToProps = state => {
+  return {
+      projects : state.projects,
+      condition : state.condition
+  }
+}
+
+export default connect(mapStateToProps)(RespondedDetails);

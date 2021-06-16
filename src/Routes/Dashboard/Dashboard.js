@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import './dashboard.css'
 import clientProfile from '../../assets/images/Logo/clientProfile.jpeg'
 import quotation from '../../assets/images/Logo/quotation.png'
@@ -131,7 +131,7 @@ const Dashboard = (props) => {
 
 
 
-    const getStepsCompleted = () => {
+    const getStepsCompleted = useCallback(() => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 if (response.stepsCompleted === response.totalSteps)
@@ -142,16 +142,16 @@ const Dashboard = (props) => {
                     setFormRoute(route)
                 }
             })
-    }
+    })
 
-    const getAgencyProfile = (agencyId) => {
-
+    const getAgencyProfile = useCallback((agencyId) => {
+        console.log('hi 1');
         instance.get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
                 setVerified(response.isAgencyVerified)
             })
 
-    }
+    })
 
     const handleLink = (route) => {
         if (verified && (steps === -1)) {
@@ -292,7 +292,7 @@ const Dashboard = (props) => {
                                                             {/* <h4>{value?.projectName}</h4>  */}
                                                         </div>
                                                     </div>
-                                                    <div className="moreDetails">
+                                                    {/* <div className="moreDetails">
                                                         <Button
                                                             aria-controls="long-menu"
                                                             aria-haspopup="true"
@@ -313,7 +313,7 @@ const Dashboard = (props) => {
                                                                 </MenuItem>
                                                             ))}
                                                         </Menu>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                                 <div className="projectDescription">
                                                     <p>{value?.projectDescription}</p>

@@ -30,12 +30,13 @@ function AgencyForm4() {
     const [stackoverflow, setStackoverflow] = useState({ platformName: "stackoverflow", platformLink: "" })
     //const [portfolioLink, setPortfolioLink] = useState({ platformName: "portfolioLink", platformLink: "" })
     const [featuredLink, setFeaturedLink] = useState({ platformName: "featuredLink", platformLink: "" })
-    const [profileLinksErrors, setProfileLinksErrors] = useState({
-        githubLinkError: '',
-        stackoverflowLinkError: '',
-        portfolioLinkError: '',
-        featuredLinkError: '',
-    })
+    // const [profileLinksErrors, setProfileLinksErrors] = useState({
+    //     githubLinkError: '',
+    //     stackoverflowLinkError: '',
+    //     portfolioLinkError: '',
+    //     featuredLinkError: '',
+    // })
+    const [errors, setErrors] = useState({})
 
     function handleChange(i, event) {
         const values = [...fields];
@@ -82,17 +83,6 @@ function AgencyForm4() {
 
     }
 
-    // const createAgencyForm4Api = (apiData) => {
-    //     setLoading(true);
-    //     instance.post(`api/${Role}/agencies/create`, apiData)
-    //         .then(function (response) {
-    //             setStatus("Finish")
-    //             setLoading(false)
-    //         })
-    //         .catch(err => {
-    //             setLoading(false)
-    //         })
-    // }
 
     const finishAgencyForm4Api = (apiData) => {
         setLoading(true);
@@ -101,7 +91,7 @@ function AgencyForm4() {
                 setLoading(false)
                 window.location.href = "/dashboard"
             })
-            .catch(err => {
+            .catch(errors => {
                 setLoading(false)
             })
     }
@@ -116,161 +106,162 @@ function AgencyForm4() {
     //     }
     // })
 
-    // useEffect(() => {
-    //     console.log(fields[0].value);
-    //     if(githubLink.platformLink === ""){
-    //         console.log('1 hi');
-    //     }
-    //     if(stackoverflow.platformLink === ""){
-    //         console.log('2 hi');
-    //     }
-    //     if(fields[0].value === ""){
-    //         console.log('3 hi');
-    //     }
-    //     if(featuredLink.platformLink === ""){
-    //         console.log(' 4 hi');
-    //     }
-    // })
+    useEffect(() => {
+        console.log(fields[0].value);
+        console.log(stackoverflow.platformLink);
+        if (githubLink.platformLink === "") {
+            console.log('1 hi');
+        }
+        if (stackoverflow.platformLink === "") {
+            console.log('2 hi');
+        }
+        if (fields[0].value === null) {
+            console.log('3 hi');
+        }
+        if (featuredLink.platformLink === "") {
+            console.log(' 4 hi');
+        }
+    })
 
-    // useEffect(() => {
-    //     console.log(status);
 
-    // }, status)
-
-    const handleNext = () => {
+    const validateInfo = () => {
+        const err = {}
 
         //this object is for resetting all the errors value to empty before adding a one
-        let tempProfileLinks = {
-            githubLinkError: '',
-            stackoverflowLinkError: '',
-            portfolioLinkError: '',
-            featuredLinkError: '',
-        };
+        // let tempProfileLinks = {
+        //     githubLinkError: '',
+        //     stackoverflowLinkError: '',
+        //     portfolioLinkError: '',
+        //     featuredLinkError: '',
+        // };
 
-        if (githubLink.platformLink !== "") {
-            console.log('githubLink', !helper.validateLink(githubLink.platformLink))
-            if (!helper.validateLink(githubLink.platformLink)) {
-                setProfileLinksErrors({
-                    ...tempProfileLinks,
-                    githubLinkError: 'Invalid link provided.',
-                })
-            }
-        }
-        if (stackoverflow.platformLink !== "") {
-            console.log('stackoverflow', !helper.validateLink(stackoverflow.platformLink))
-            if (!helper.validateLink(stackoverflow.platformLink)) {
-                setProfileLinksErrors({
-                    ...tempProfileLinks,
-                    stackoverflowLinkError: 'Invalid link provided.',
-                })
-            }
-        }
-        if (fields[0].value !== "") {
-            console.log('fields', !helper.validateLink(fields[0].value))
-            if (!helper.validateLink(fields[0].value)) {
-                setProfileLinksErrors({
-                    ...tempProfileLinks,
-                    portfolioLinkError: 'Invalid link provided.',
-                })
-            }
-        }
-        if (featuredLink.platformLink !== "") {
-            console.log('featuredLink', !helper.validateLink(featuredLink.platformLink))
-            if (!helper.validateLink(featuredLink.platformLink)) {
-                setProfileLinksErrors({
-                    ...tempProfileLinks,
-                    featuredLinkError: 'Invalid link provided.',
-                })
-            }
+        if (githubLink.platformLink === "") {
+            err.githubLinkError = 'Github link is required.'
         }
 
-        // if (githubLink.platformLink === "" && githubLink.platformLink < 12) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         githubLinkError: 'Github link is required.',
-        //     })
+        if (!helper.validateLink(githubLink.platformLink)) {
+            err.githubLinkError = 'Invalid link provided.'
+        }
 
-        // }
-        // else if (!helper.validateLink(githubLink.platformLink)) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         githubLinkError: 'Invalid link provided.',
-        //     })
+        if (stackoverflow.platformLink === "") {
+            err.stackoverflowLinkError = 'Stackoverflow link is required.'
+        }
 
-        // }
-        // else if (stackoverflow.platformLink === "" && stackoverflow.platformLink < 12) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         stackoverflowLinkError: 'Stackoverflow link is required.',
-        //     })
+        if (!helper.validateLink(stackoverflow.platformLink)) {
+            err.stackoverflowLinkError = 'Invalid link provided.'
+        }
 
-        // }
-        // else if (!helper.validateLink(stackoverflow.platformLink)) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         stackoverflowLinkError: 'Invalid link provided.',
-        //     })
+        if (fields[0].value === null) {
+            err.portfolioLinkError = 'Portfolio link is required.'
+        }
 
-        // }
-        // else if (fields[0].value === "" && fields[0].value < 12) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         portfolioLinkError: 'Portfolio link is required.',
-        //     })
+        if (!helper.validateLink(fields[0].value)) {
+            err.portfolioLinkError = 'Invalid link provided.'
+        }
 
-        // }
-        // else if (!helper.validateLink(fields[0].value)) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         portfolioLinkError: 'Invalid link provided.',
-        //     })
+        if (featuredLink.platformLink === "") {
+            err.featuredLinkError = 'Featured link is required'
+        }
 
-        // }
-        // else if (featuredLink.platformLink === "" && featuredLink.platformLink < 12) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         featuredLinkError: 'Featured link is required.',
-        //     })
-
-        // }
-        // else if (!helper.validateLink(featuredLink.platformLink)) {
-        //     setProfileLinksErrors({
-        //         ...tempProfileLinks,
-        //         featuredLinkError: 'Invalid link provided.',
-        //     })
-
-        // }
+        if (!helper.validateLink(featuredLink.platformLink)) {
+            err.featuredLinkError = 'Invalid link provided.'
+        }
+        setErrors(err);
+        if (Object.keys(err).length === 0)
+            return true
+        else
+            return false
+    }
 
 
-        // if (status === "Update") {
-        //     const portfolios = fields.map((link, index) => {
-        //         return {
-        //             platformName: `portfolio${index + 1}`,
-        //             platformLink: link.value
-        //         }
-        //     })
-        //     const apiData = {
-        //         stepsCompleted: "5",
-        //         socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
-        //     }
-        //     createAgencyForm4Api(apiData)
-        // }
 
-        if (status === "Finish") {
-            const portfolios = fields.map((link, index) => {
-                return {
-                    platformName: `portfolio${index + 1}`,
-                    platformLink: link.value
+    // if (githubLink.platformLink === "" && githubLink.platformLink < 12) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         githubLinkError: 'Github link is required.',
+    //     })
+
+    // }
+    // else if (!helper.validateLink(githubLink.platformLink)) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         githubLinkError: 'Invalid link provided.',
+    //     })
+
+    // }
+    // else if (stackoverflow.platformLink === "" && stackoverflow.platformLink < 12) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         stackoverflowLinkError: 'Stackoverflow link is required.',
+    //     })
+
+    // }
+    // else if (!helper.validateLink(stackoverflow.platformLink)) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         stackoverflowLinkError: 'Invalid link provided.',
+    //     })
+
+    // }
+    // else if (fields[0].value === "" && fields[0].value < 12) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         portfolioLinkError: 'Portfolio link is required.',
+    //     })
+
+    // }
+    // else if (!helper.validateLink(fields[0].value)) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         portfolioLinkError: 'Invalid link provided.',
+    //     })
+
+    // }
+    // else if (featuredLink.platformLink === "" && featuredLink.platformLink < 12) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         featuredLinkError: 'Featured link is required.',
+    //     })
+
+    // }
+    // else if (!helper.validateLink(featuredLink.platformLink)) {
+    //     setProfileLinksErrors({
+    //         ...tempProfileLinks,
+    //         featuredLinkError: 'Invalid link provided.',
+    //     })
+
+    // }
+
+
+    // if (status === "Update") {
+    //     const portfolios = fields.map((link, index) => {
+    //         return {
+    //             platformName: `portfolio${index + 1}`,
+    //             platformLink: link.value
+    //         }
+    //     })
+    //     const apiData = {
+    //         stepsCompleted: "5",
+    //         socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+    //     }
+    //     createAgencyForm4Api(apiData)
+    // }
+
+    const finalUpdate = () => {
+        if (validateInfo()) {
+            if (status === "Finish") {
+                const portfolios = fields.map((link, index) => {
+                    return {
+                        platformName: `portfolio${index + 1}`,
+                        platformLink: link.value
+                    }
+                })
+                const apiData = {
+                    stepsCompleted: '5',
+                    socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
                 }
-            })
-            const apiData = {
-                stepsCompleted: '5',
-                socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+                finishAgencyForm4Api(apiData);
             }
-            finishAgencyForm4Api(apiData);
-            // setTimeout(() => {
-            //     window.location.href = "/dashboard"
-            // }, 3000);
         }
     }
 
@@ -296,7 +287,7 @@ function AgencyForm4() {
                                 name={githubLink.platformName}
                                 value={githubLink.platformLink}
                                 onChange={handleSocialPlatform} />
-                            {profileLinksErrors.githubLinkError !== "" && <Alert severity="error">{profileLinksErrors.githubLinkError}</Alert>}
+                            {errors.githubLinkError && <Alert severity="error">{errors.githubLinkError}</Alert> }
                         </div>
 
                         <div>
@@ -309,7 +300,7 @@ function AgencyForm4() {
                                 name={stackoverflow.platformName}
                                 value={stackoverflow.platformLink}
                                 onChange={handleSocialPlatform} />
-                            {profileLinksErrors.stackoverflowLinkError !== "" && <Alert severity="error">{profileLinksErrors.stackoverflowLinkError}</Alert>}
+                            {errors.stackoverflowLinkError && <Alert severity="error">{errors.stackoverflowLinkError}</Alert>}
                         </div>
 
                         <div>
@@ -337,7 +328,7 @@ function AgencyForm4() {
                                     )
                                 })
                             }
-                            {profileLinksErrors.portfolioLinkError !== "" && <Alert severity="error">{profileLinksErrors.portfolioLinkError}</Alert>}
+                            {errors.portfolioLinkError && <Alert severity="error">{errors.portfolioLinkError}</Alert>}
                         </div>
 
                         <div>
@@ -350,19 +341,19 @@ function AgencyForm4() {
                                 name={featuredLink.platformName}
                                 value={featuredLink.platformLink}
                                 onChange={handleSocialPlatform} />
-                            {profileLinksErrors.featuredLinkError !== "" && <Alert severity="error">{profileLinksErrors.featuredLinkError}</Alert>}
+                            {errors.featuredLinkError && <Alert severity="error">{errors.featuredLinkError}</Alert>}
                         </div>
 
                         <div className="nextBtn">
                             <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
                                 <button>
-                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                    <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                 </button>
                             </NavLink>
                             {/* <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                            <button /*style={{ backgroundColor: colors[status] }}*/ onClick={handleNext} >
+                            <button /*style={{ backgroundColor: colors[status] }}*/ onClick={finalUpdate} >
                                 Finish
-                            <i class="fa fa-long-arrow-right" aria-hidden="true" />
+                                <i className="fa fa-long-arrow-right" aria-hidden="true" />
                             </button>
                         </div>
                     </div>

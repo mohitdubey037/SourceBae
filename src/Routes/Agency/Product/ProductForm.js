@@ -371,7 +371,7 @@ function ProductForm() {
     else if (!helper.validateLink(apiData.productPlatformLink)) {
       err.productPlatformLink = 'Wrong Platform link Provided'
     } 
-
+    
     // if (apiData.productFounderLinkedinProfiles === "") {
     //   err.productFounderLinkedinProfiles = 'Founder Link required'
     // }

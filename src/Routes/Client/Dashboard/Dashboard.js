@@ -75,9 +75,6 @@ function Dashboard(props) {
 
     const theme = useTheme();
 
-    useEffect(() => {
-        getAllProjects();
-    }, [])
 
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
@@ -90,6 +87,10 @@ function Dashboard(props) {
                 console.log(err);
             })
     }
+
+    useEffect(() => {
+        getAllProjects();
+    }, [])
 
     const handleChange = (event) => {
         setSelectedStatus(event.target.value);
