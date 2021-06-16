@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap");
 
 * {
   padding: 0;
@@ -16,7 +16,7 @@
   background: #ebf5fb !important;
   max-width: 550px !important;
   width: 100% !important;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   border-radius: 10px;
 }
 .addyourproductext {
@@ -108,7 +108,7 @@
   font-size: 0.8rem;
   left: 0;
   transform: translateY(22px);
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: bold;
   color: #0094ff;
 }
@@ -126,7 +126,7 @@
   justify-content: center;
   align-items: center;
   user-select: none;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 .newFeatureAdded button:hover {
   box-shadow: inset 0 0px 10px #fcbe55;
@@ -144,7 +144,7 @@
   align-items: center;
 }
 .dashboardHeading div h3 {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: 800;
   margin-top: 3%;
   white-space: nowrap;
@@ -222,7 +222,7 @@
   border-radius: 50%;
 }
 .MuiMenuItem-root {
-  font-family: 'Poppins' !important;
+  font-family: "Poppins" !important;
   font-weight: 400 !important;
   align-items: center !important;
   font-size: 1.2rem !important;
@@ -276,7 +276,7 @@
 }
 .innerMainVerify p {
   margin-top: 0px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: normal;
   font-weight: bold;
   font-size: 1rem;
@@ -309,7 +309,7 @@
   border-bottom: 1px dashed #b4b4b4;
   padding-bottom: 4%;
 }
-.innerClientsOptions > a,
+.innerClientsOptions > div,
 a.mainQuotationCard {
   width: 28%;
   /* background-color: #fff; */
@@ -368,10 +368,10 @@ a.mainQuotationCard {
   width: 100%;
 }
 .quotationInfo h2 {
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
 }
 .quotationInfo p {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   color: #929292;
   width: 100%;
 }
@@ -412,7 +412,7 @@ a.mainQuotationCard {
   align-items: center;
 }
 .projectHeading h2 {
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
 }
 .filtering .filterBtn {
   display: flex;
@@ -424,7 +424,7 @@ a.mainQuotationCard {
   border-radius: 10px;
 }
 .filtering .filterBtn h4 {
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   transform: translateY(5px);
   margin-right: 10px;
   font-size: 1.2rem;
@@ -490,11 +490,11 @@ a.mainQuotationCard {
   border: none !important;
 }
 .projectName h4 {
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   margin-top: 5%;
 }
 .projectName .projectN {
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   font-size: 22.599px;
   text-decoration: none;
   color: #212529;
@@ -507,14 +507,14 @@ a.mainQuotationCard {
 }
 .projectDescription p {
   color: #868686;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-size: 1rem;
 }
 .projectTable div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   height: 60px;
 }
 .MuiPaper-root {
