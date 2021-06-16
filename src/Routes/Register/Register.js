@@ -10,11 +10,15 @@ import business from '../../assets/images/Logo/sspp.png'
 import growth from '../../assets/images/Logo/growthImage.svg'
 import './register.css'
 import colors from '../../Constants/colors'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import axios from 'axios';
 import Spinner from '../../Components/Spinner/Spinner';
-
+import FormGroup from '@material-ui/core/FormGroup';
+import Switch from '@material-ui/core/Switch';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
 // Axios Import
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
@@ -22,6 +26,42 @@ import { toast } from 'react-toastify'
 
 //Future Imports
 // Step , StepLabel , Stepper , Typography , StepContent , InputLabel , FormControl , TextField , Select , Input , MenuItem
+
+const AntSwitch = withStyles((theme) => ({
+    root: {
+        width: 78,
+        height: 26,
+        padding: 0,
+        // display: 'flex',
+        borderColor: '#fff',
+    },
+    switchBase: {
+        padding: 2,
+        color: '#02044a',
+        '&$checked': {
+            transform: 'translateX(52px)',
+            color: '#7CB9E8',
+            '& + $track': {
+                opacity: 1,
+                backgroundColor: '#02044a',
+                borderColor: '#EBF5FB',
+            },
+            boder: '1px solid #EBF5FB'
+        },
+    },
+    thumb: {
+        width: 22,
+        height: 22,
+        boxShadow: 'none',
+    },
+    track: {
+        // border: `1px solid #02044a`,
+        borderRadius: 78 / 2,
+        opacity: 1,
+        backgroundColor: '#7CB9E8',
+    },
+    checked: {},
+}))(Switch);
 
 const dateStyles = makeStyles((theme) => ({
     container: {
@@ -57,12 +97,31 @@ const Register = (props) => {
 
     //Regular Variables
     const dateClasses = dateStyles();
-
+    const [state, setState] = React.useState({
+        checked: JSON.parse(localStorage.getItem("toggle")) || false
+    });
+    const routerHistory = useHistory();
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
 
     if (!(role === "Agency" || role === "Client"))
         window.location.href = "/page-not-found"
+    
+    
+    useEffect(() => {
+        console.log("first", state.checked)
+        localStorage.setItem('toggle', state.checked);
+        console.log("state", state.checked)
+
+        state.checked === false ? routerHistory.push('/register:agency') : routerHistory.push('/register:client');
+
+    }, [state]);
+
+
+    const handleChangeToggle = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked })
+        console.log("statechecked", state.checked)
+    };
 
     //Social Media State Variables
     const [linkedIn, setLinkedIn] = useState({
@@ -597,6 +656,23 @@ const Register = (props) => {
                     </div> */}
                         <div className="client__form">
                             <div style={{ width: '100%', textAlign: 'center', marginTop: '5%' }}>
+                                <div className="toggleButton">
+                                    <FormGroup>
+                                        {/* <FormControlLabel
+                                    control={<IOSSwitch checked={state.checkedB} onChange={handleChangeToggle} name="checkedB" />}
+                                    label="iOS style"
+                                /> */}
+                                        <Typography component="div">
+                                            <Grid component="label" container alignItems="center" spacing={1}>
+                                                <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
+                                                <Grid item>
+                                                    <AntSwitch checked={state.checked} onChange={handleChangeToggle} name="checked" />
+                                                </Grid>
+                                                <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }}>Client</Grid>
+                                            </Grid>
+                                        </Typography>
+                                    </FormGroup>
+                                </div>
                                 <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
                                 <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
                             </div>

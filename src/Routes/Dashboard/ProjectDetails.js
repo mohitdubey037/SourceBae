@@ -12,7 +12,7 @@ function ProjectDetails(props) {
         <>
             {role === 'Client' ? <ClientNavbar/> : <Navbar />}            
             <div style={{ marginTop: '3%' }}></div>
-            <RespondedDetails state= {state} key={state?.clientId}/>
+            <RespondedDetails key={state?.clientId}/>
         </>
     )
 }
