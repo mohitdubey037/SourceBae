@@ -53,7 +53,7 @@ const App = (props) => {
     <Route exact path="/page-not-found" component = {PageNotFound} />
 
 
-    <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard} />
+    <Route condition="Agency" exact path="/dashboard" component={Dashboard} />
     <CustomRoute condition="Agency" exact path="/add-developer" component={AddingDeveloper} />
     <CustomRoute condition="Agency" exact path="/quotation" component={Quotation} />
     <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />

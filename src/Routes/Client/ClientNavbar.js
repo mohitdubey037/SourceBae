@@ -12,6 +12,8 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useHistory } from 'react-router-dom';
+
 
 import notification from '../../assets/images/ClientDashboard/notification.svg'
 
@@ -67,12 +69,14 @@ const StyledBadge = withStyles((theme) => ({
     },
 }))(Badge);
 
-const ClientNavbar = ({ isVisible }) => {
+const ClientNavbar = ({ isVisible }, props) => {
 
     const [show, setShow] = useState(true);
     const [isNotification, setIsnotification] = useState(false);
     const [openmodal, setOpenModal] = useState(false);
     const [anchorEl, setAnchorEl] = useState(false);
+    const routerHistory = useHistory();
+
 
     const onOpenModal = () => setOpenModal(true);
     const onCloseModal = () => setOpenModal(false);
@@ -100,8 +104,8 @@ const ClientNavbar = ({ isVisible }) => {
         handleClose()
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
-        window.location.href = "/"
-
+        // window.location.href = "/"
+        routerHistory.push('/');
     }
 
     const notificationPanel = (event) => {

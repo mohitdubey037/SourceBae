@@ -160,7 +160,7 @@ const Login = (props) => {
     // }
 
     const logIn = async (role, form) => {
-        setLoading(true);
+        // setLoading(true);
         let apiRole = helper.lowerize(role)
         return new Promise((resolve, reject) => {
             instance.post(`/api/${apiRole}/auths/login`, form)
@@ -170,20 +170,20 @@ const Login = (props) => {
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                     localStorage.setItem('role', role)
                     localStorage.setItem('userId', `${response._id}`)
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
+                    // axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
 
                     if (role === "Agency") {
-                        setLoading(false);
-                        window.location.replace("/dashboard")
-                        // props.history.push('/dashboard');
+                        // window.location.href = "/dashboard";
+                        // setLoading(false);
+                        props.history.push('/dashboard');
                     }
 
 
-                    else if (role === "Client"){
-                        setLoading(false);
-                        window.location.replace("/client-dashboard")
-                        // props.history.push('/client-dashboard');
+                    else if (role === "Client") {
+                        // window.location.href = "/client-dashboard";
+                        // setLoading(false);
+                        props.history.push('/client-dashboard');
                     }
 
                 })
