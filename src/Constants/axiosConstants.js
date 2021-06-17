@@ -38,7 +38,7 @@ instance.interceptors.response.use(function (response){
     console.log(error)
     let trueError = ""
     if(error?.response?.data?.message==="Bearer Token not found")
-        window.href.push('/');
+        window.location.href = '/';
         const errors = error?.response?.data?.error ?? {}
         const errorName = Object.keys(errors)
         console.log(typeof errors)

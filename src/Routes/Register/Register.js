@@ -1,6 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-//Imports
-
 import { Button } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
@@ -18,12 +15,10 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { useHistory } from 'react-router-dom';
-// Axios Import
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
-
+import { ErrorRounded } from '@material-ui/icons'
 //Future Imports
 // Step , StepLabel , Stepper , Typography , StepContent , InputLabel , FormControl , TextField , Select , Input , MenuItem
 
@@ -91,32 +86,23 @@ const dateStyles = makeStyles((theme) => ({
     }
 }));
 
-
 const Register = (props) => {
-
 
     //Regular Variables
     const dateClasses = dateStyles();
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false
     });
-    const routerHistory = useHistory();
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
 
     if (!(role === "Agency" || role === "Client"))
-        window.location.href = "/page-not-found"
-    
-    
+        props.history.push("/page-not-found")
+
     useEffect(() => {
-        console.log("first", state.checked)
         localStorage.setItem('toggle', state.checked);
-        console.log("state", state.checked)
-
-        state.checked === false ? routerHistory.push('/register:agency') : routerHistory.push('/register:client');
-
+        state.checked === false ? props.history.push('/register:agency') : props.history.push('/register:client');
     }, [state]);
-
 
     const handleChangeToggle = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked })
@@ -162,34 +148,7 @@ const Register = (props) => {
         socialPlatformDetails: []
     })
 
-    //SignUp Error state varaible//
-    const [signupFormErrors, setSignupFormErrors] = useState({
-        firstNameError: '',
-        lastNameError: '',
-        emailError: '',
-        passwordError: '',
-        phoneError: '',
-        userNameError: ''
-    })
-
-    //Profile Creation Errors state varaibles//
-    const [profileDetailsErrors, setProfileDetailsErrors] = useState({
-        agencyNameError: '',
-        teamStrengthError: '',
-        incorporationDateError: '',
-        socialPlatformDetailsError: '',
-        userDesignationError: '',
-        companyNameError: '',
-    })
-
-    //_______ VARIABLES END ________//
-
-
-    //========= FUNCTIONS =========//
-
-
-    // Event Handlers
-
+    const [errors, setErrors] = useState({})
 
     const handleSocialPlatform = (event) => {
         const { name, value } = event.target
@@ -198,22 +157,17 @@ const Register = (props) => {
                 platformName: name,
                 platformLink: value
             })
-
         }
         else if (name === "website") {
-
             setSite({
                 platformName: name,
                 platformLink: value
             })
-
         }
-
     }
 
     const setForm = (event) => {
         const { name, value } = event.target
-
         setSignupForm(
             {
                 ...signupForm,
@@ -238,107 +192,67 @@ const Register = (props) => {
                     [name]: value
                 }
             )
-
     }
 
-
     const handleErrorsValidation = (Role) => {
-
-        //this object is for resetting all the errors value to empty before adding a one
-        let tempProfileDetails = {
-            agencyNameError: '',
-            teamStrengthError: '',
-            incorporationDateError: '',
-            socialPlatformDetailsError: '',
-            userDesignationError: '',
-            companyNameError: '',
-        }
-
+        const err = {}
         if (Role === "Agency") {
             if (agencyProfileDetails.agencyName === "") {
-                setProfileDetailsErrors(
-                    {
-                        ...tempProfileDetails,
-                        agencyNameError: 'Agency name is required',
-                    }
-                )
+                err.agencyNameError = 'Agency name is required'
             }
+
             else if (agencyProfileDetails.agencyName.length < 2) {
-                setProfileDetailsErrors(
-                    {
-                        ...tempProfileDetails,
-                        agencyNameError: "Agency name must be between 2 characters.",
-                    }
-                )
+                err.agencyNameError = 'Agency name must be between 2 characters.'
             }
-            else if (agencyProfileDetails.agencyTeamSize === "") {
-                setProfileDetailsErrors(
-                    {
-                        ...tempProfileDetails,
-                        teamStrengthError: 'Team strength is required',
-                    }
-                )
+
+            else if (agencyProfileDetails.teamStrength === '') {
+                err.teamStrengthError = 'Team strength is required'
             }
+
+            else if (agencyProfileDetails.socialPlatformDetails[0].platformLink === "") {
+                err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
+            }
+
             else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
-                setProfileDetailsErrors({
-                    ...tempProfileDetails,
-                    socialPlatformDetailsError: 'Invalid link provided.',
-                })
+                err.socialPlatformDetailsError = 'Invalid link provided.'
             }
-            else {
+            setErrors(err);
+            if (Object.keys(err).length === 0)
                 return true
-            }
-            return false
+            else
+                return false
         }
+
         else if (Role === "Client") {
             if (clientProfileDetails.userDesignation === "") {
-                setProfileDetailsErrors(
-                    {
-                        ...tempProfileDetails,
-                        userDesignationError: 'User Designation Field is required',
-                    }
-                )
+                err.userDesignationError = 'User Designation Field is required'
             }
             else if (clientProfileDetails.userDesignation.length < 2) {
-                setProfileDetailsErrors(
-                    {
-                        ...tempProfileDetails,
-                        userDesignationError: "User Designation must be between 2 characters.",
-                    }
-                )
+                err.userDesignationError = 'User Designation must be between 2 characters.'
             }
             else if (clientProfileDetails.companyName === "") {
-                setProfileDetailsErrors(
-                    {
-                        ...tempProfileDetails,
-                        companyNameError: 'Company Name Field is required',
-                    }
-                )
+                err.companyNameError = 'Company Name Field is required'
             }
             else if (clientProfileDetails.companyName.length < 2) {
-                setProfileDetailsErrors(
-                    {
-                        ...tempProfileDetails,
-                        agencyNameError: "Company Name must be between 2 characters.",
-                    }
-                )
+                err.companyNameError = 'Company Name must be between 2 characters.'
             }
+            else if (clientProfileDetails.socialPlatformDetails[0].platformLink === "") {
+                err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
+            }
+
             else if (!helper.validateLink(clientProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
-                setProfileDetailsErrors({
-                    ...tempProfileDetails,
-                    socialPlatformDetailsError: 'Invalid link provided.',
-                })
+                err.socialPlatformDetailsError = 'Invalid link provided.'
             }
-            else {
+            setErrors(err);
+            if (Object.keys(err).length === 0)
                 return true
-            }
-            return false
+            else
+                return false
         }
     }
 
     //API call methods
     const signUpApi = async (role, form) => {
-
         return new Promise((resolve, reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
                 .then(function (response) {
@@ -349,7 +263,6 @@ const Register = (props) => {
                     localStorage.setItem('role', role)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
-
                 })
         })
     }
@@ -358,14 +271,11 @@ const Register = (props) => {
         setLoading(true);
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
-                console.log(role)
                 if (role === "Client") {
-                    // window.location.href = "/client-dashboard"
                     props.history.push('/client-dashboard')
                     setLoading(false);
                 }
                 else if (role === "Agency") {
-                    // window.location.replace("/dashboard")
                     props.history.push('/dashboard');
                     setLoading(false);
                 }
@@ -375,9 +285,7 @@ const Register = (props) => {
             })
     }
 
-
     const handleSubmit = (Role, Form, createAgencyForm, createClientForm) => {
-
         if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
             let signUpPromise = signUpApi(apiRole, Form)
@@ -399,29 +307,20 @@ const Register = (props) => {
                             ...createAgencyForm
                         }
                     }
-
-
                     if (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) {
                         instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
                         createProfileApi(apiRole, api_param_const, api_create_form)
                     }
-
                     else {
                         toast.error("Token not set", { autoClose: 2000 })
                     }
-
                 })
         }
     }
 
-
     const [step, setStep] = useState(1)
 
-
-    //Helper Methods
-
     const createRoleString = (role) => {
-
         role = role.charAt(0).toUpperCase() + role.slice(1)
         if (role === 'Agency')
             return `an ${role}`
@@ -429,176 +328,75 @@ const Register = (props) => {
             return `a ${role}`
     }
 
-
     const toggleForms = (direction) => {
-
-
+        const err = {}
         if (direction === 'next') {
             setStep(prev => prev + 1)
             if (signupForm.firstName === "") {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "First name is required.",
-                        lastNameError: '',
-                        emailError: '',
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: '',
-                    }
-                )
+                err.firstNameError = 'First name is required.'
             }
+
             else if (signupForm.firstName.length < 2 || signupForm.firstName.length > 12) {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "First name must be between 2-12 characters.",
-                        lastNameError: '',
-                        emailError: '',
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: '',
-                    }
-                )
+                err.firstNameError = 'First name must be between 2-12 characters.'
             }
+
             else if (signupForm.lastName === "") {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "Last name is required.",
-                        emailError: '',
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: '',
-                    }
-                )
+                err.lastNameError = 'Last name is required.'
             }
+
             else if (signupForm.lastName.length < 2 || signupForm.lastName.length > 12) {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "Last name must be between 2-12 characters.",
-                        emailError: '',
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: '',
-                    }
-                )
+                err.lastNameError = 'Last name must be between 2-12 characters.'
             }
+
             else if (signupForm.userName === "") {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: '',
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: "User name is required."
-                    }
-                )
+                err.userNameError = 'User name is required.'
             }
+
             else if (signupForm.userName.length < 3 || signupForm.userName.length > 12) {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: '',
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: "User name must be between 2-12 characters."
-                    }
-                )
+                err.userNameError = "User name must be between 2-12 characters."
             }
+
             else if (signupForm.userEmail === "") {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: "Email is required.",
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: ""
-                    }
-                )
+                err.emailError = 'Email is required.'
             }
+
             else if (!/\S+@\S+\.\S+/.test(signupForm.userEmail)) {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: "Invalid email address.",
-                        passwordError: '',
-                        phoneError: '',
-                        userNameError: ""
-                    }
-                )
+                err.emailError = "Invalid email address."
             }
+
             else if (signupForm.userPhone === "") {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: "",
-                        passwordError: '',
-                        phoneError: "Phone is required.",
-                        userNameError: ""
-                    }
-                )
+                err.phoneError = "Phone is required."
             }
+
             else if (signupForm.userPhone.match(/[^0-9]/g)) {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: "",
-                        passwordError: '',
-                        phoneError: "Phone number must be digit.",
-                        userNameError: ""
-                    }
-                )
+                err.phoneError = "Phone number must be digit."
             }
+
             else if (signupForm.userPhone.length < 10) {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: "",
-                        passwordError: '',
-                        phoneError: "Phone must be of 10 digits.",
-                        userNameError: ""
-                    }
-                )
+                err.phoneError = "Phone must be of 10 digits."
             }
+
             else if (signupForm.password === "") {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: "",
-                        passwordError: "Password is required.",
-                        phoneError: "",
-                        userNameError: ""
-                    }
-                )
+                err.passwordError = "Password is required."
             }
+
             else if (signupForm.password < 6) {
-                setSignupFormErrors(
-                    {
-                        firstNameError: "",
-                        lastNameError: "",
-                        emailError: "",
-                        passwordError: "Password must be more than 6 characters.",
-                        phoneError: "",
-                        userNameError: ""
-                    }
-                )
+                err.passwordError = "Password must be more than 6 characters."
             }
-            else {
+
+            setErrors(err);
+            if (Object.keys(err).length === 0) {
                 let form1 = document.querySelector('.form__1')
                 let form2 = document.querySelector('.form__2')
                 form1.classList.toggle('hide__form1')
                 form2.classList.toggle('show__form2')
                 // setStep(prev => prev + 1)
             }
+            else {
+                return false
+            }
         }
+
         else {
             let form1 = document.querySelector('.form__1')
             let form2 = document.querySelector('.form__2')
@@ -606,13 +404,10 @@ const Register = (props) => {
             form2.classList.toggle('show__form2')
             setStep(prev => prev - 1)
         }
-
     }
 
-    //__________ METHODS END____________//
-
-
     //============= USE-EFFECT HOOKS============//
+
     useEffect(() => {
         if (role === "Agency")
             setAgencyProfileDetails({
@@ -629,7 +424,7 @@ const Register = (props) => {
     useEffect(() => {
         localStorage.removeItem(`Authorization`)
     }, [])
-
+    
     //__________ USE-EFFECT ENDS ______//
 
     const roleString = createRoleString(role)
@@ -641,13 +436,10 @@ const Register = (props) => {
                 {/* <img className="bgImage" src={bgImage} alt="" /> */}
                 {/* <div className="abigcircle"></div> */}
                 <img className="businessModals" src={business} alt="" />
-
             </div>
 
             <div style={{ flex: .35 }}>
-
             </div>
-
             <div style={{ flex: .65 }}>
                 {loading ? <Spinner /> :
                     <div className='form__area'>
@@ -678,9 +470,7 @@ const Register = (props) => {
                             </div>
 
                             <div className="client__formsContainer">
-
                                 <form className='client__form form__1' autoComplete='off' >
-                                    {/* <label htmlFor='firstName'>Your firstname *</label> */}
                                     <input
                                         required
                                         type="text"
@@ -688,13 +478,9 @@ const Register = (props) => {
                                         placeholder='First Name'
                                         value={signupForm.firstName}
                                         onChange={(e) => setForm(e)}
-                                    // style={{
-                                    //     border: signupFormErrors.firstNameError ? '2px solid red' : '1px solid gray',
-                                    //     transition: '.3s ease'
-                                    // }}
                                     />
-                                    {signupFormErrors.firstNameError !== "" ? <Alert severity="error">{signupFormErrors.firstNameError}</Alert> : ''}
-                                    {/* <label htmlFor='name'>Your lastname *</label> */}
+                                    {errors.firstNameError && <Alert severity="error">{errors.firstNameError}</Alert>}
+
                                     <input
                                         type="text"
                                         name="lastName"
@@ -702,7 +488,7 @@ const Register = (props) => {
                                         value={signupForm.lastName}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {signupFormErrors.lastNameError !== "" && <Alert severity="error">{signupFormErrors.lastNameError}</Alert>}
+                                    {errors.lastNameError && <Alert severity="error">{errors.lastNameError}</Alert>}
 
                                     <input
                                         type="text"
@@ -711,7 +497,7 @@ const Register = (props) => {
                                         value={signupForm.userName}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {signupFormErrors.userNameError !== "" && <Alert severity="error">{signupFormErrors.userNameError}</Alert>}
+                                    {errors.userNameError && <Alert severity="error">{errors.userNameError}</Alert>}
 
                                     <input
                                         type="email"
@@ -720,7 +506,7 @@ const Register = (props) => {
                                         value={signupForm.userEmail}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {signupFormErrors.emailError !== "" && <Alert severity="error">{signupFormErrors.emailError}</Alert>}
+                                    {errors.emailError && <Alert severity="error">{errors.emailError}</Alert>}
 
                                     <input
                                         type="tel"
@@ -730,8 +516,7 @@ const Register = (props) => {
                                         value={signupForm.userPhone}
                                         onChange={(e) => setForm(e)}
                                     />
-
-                                    {signupFormErrors.phoneError !== "" && <Alert severity="error">{signupFormErrors.phoneError}</Alert>}
+                                    {errors.phoneError && <Alert severity="error">{errors.phoneError}</Alert>}
 
                                     <input
                                         type="password"
@@ -740,8 +525,7 @@ const Register = (props) => {
                                         value={signupForm.password}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {signupFormErrors.passwordError !== "" && <Alert severity="error">{signupFormErrors.passwordError}</Alert>}
-
+                                    {errors.passwordError && <Alert severity="error">{errors.passwordError}</Alert>}
 
                                     <Button
                                         onClick={() => toggleForms('next')}
@@ -761,9 +545,7 @@ const Register = (props) => {
                                         </Button>
                                     </div>
 
-
                                     {
-
                                         role === `Agency` ? <>
                                             <input
                                                 type="text"
@@ -771,20 +553,17 @@ const Register = (props) => {
                                                 placeholder='Agency Name'
                                                 value={agencyProfileDetails.agencyName}
                                                 onChange={(event) => handleCreateProfile(event, role)} />
-
-                                            {profileDetailsErrors.agencyNameError !== "" && <Alert severity="error">{profileDetailsErrors.agencyNameError}</Alert>}
+                                            {errors.agencyNameError && <Alert severity="error">{errors.agencyNameError}</Alert>}
 
                                             <input
                                                 type="number"
-                                                name="agencyTeamSize"
+                                                name="teamStrength"
                                                 placeholder='Team Strength'
 
                                                 onChange={(event) => handleCreateProfile(event, role)} />
-
-                                            {profileDetailsErrors.teamStrengthError !== "" && <Alert severity="error">{profileDetailsErrors.teamStrengthError}</Alert>}
+                                            {errors.teamStrengthError && <Alert severity="error">{errors.teamStrengthError}</Alert>}
 
                                             <form className={dateClasses.container} noValidate>
-
                                                 <label classname={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
                                                 <input
                                                     id="incorporation_date"
@@ -799,24 +578,21 @@ const Register = (props) => {
                                                         shrink: true,
                                                     }}
                                                     onChange={(event) => handleCreateProfile(event, role)} />
-
                                             </form>
-                                            {profileDetailsErrors.incorporationDateError !== "" && <Alert severity="error">{profileDetailsErrors.incorporationDateError}</Alert>}
+                                            {errors.incorporationDateError && <Alert severity="error">{errors.incorporationDateError}</Alert>}
                                         </>
                                             :
                                             <>
-
                                                 <input type="text" name="userDesignation" placeholder='User Designation' onChange={(event) => handleCreateProfile(event, role)} />
-                                                {profileDetailsErrors.userDesignationError !== "" && <Alert severity="error">{profileDetailsErrors.userDesignationError}</Alert>}
+                                                {errors.userDesignationError && <Alert severity="error">{errors.userDesignationError}</Alert>}
+
                                                 <input type="text" name="companyName" placeholder='Company Name' onChange={(event) => handleCreateProfile(event, role)} />
-                                                {profileDetailsErrors.companyNameError !== "" && <Alert severity="error">{profileDetailsErrors.companyNameError}</Alert>}
-
+                                                {errors.companyNameError && <Alert severity="error">{errors.companyNameError}</Alert>}
                                             </>
-
                                     }
 
                                     <input type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
-                                    {profileDetailsErrors.socialPlatformDetailsError !== "" && <Alert severity="error">{profileDetailsErrors.socialPlatformDetailsError}</Alert>}
+                                    {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
 
                                     <Button
                                         onClick={() => handleSubmit(role, signupForm, agencyProfileDetails, clientProfileDetails)}
@@ -825,7 +601,6 @@ const Register = (props) => {
                                         SUBMIT
                                     </Button>
                                 </form>
-
                             </div>
                         </div>
 
@@ -839,5 +614,4 @@ const Register = (props) => {
         </div>
     )
 }
-
 export default (Register)
