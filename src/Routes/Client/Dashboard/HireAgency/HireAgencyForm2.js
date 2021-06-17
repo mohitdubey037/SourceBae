@@ -33,11 +33,7 @@ const BlueRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-function HireAgencyForm2() {
-
-  // const colors = {
-  //   Next:"green",
-  // }
+function HireAgencyForm2(props) {
 
   const Role = "client";
   let { projectId } = useParams();
@@ -45,6 +41,7 @@ function HireAgencyForm2() {
   console.log(projectId);
   // selecting Domains
   const id = localStorage.getItem("userId");
+
   const [apiData, setApiData] = useState({
     stepsCompleted: 2,
     clientId: id,
@@ -145,7 +142,7 @@ function HireAgencyForm2() {
         console.log(response);
         // setButtonStatus("Next");
         setLoading(false);
-        window.location.href=`/hire-agency-form-three:${projectId}`
+        props.history.push(`/hire-agency-form-three:${projectId}`)
     })
     .catch(err => {
       setLoading(false)
@@ -261,7 +258,7 @@ function HireAgencyForm2() {
 
           <div className="nextbuttton">
             <div
-              onClick={() => (window.location.href = "/hire-agency-form-one")}
+              onClick={() => (props.history.push("/hire-agency-form-one"))}
             >
               <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
             </div>

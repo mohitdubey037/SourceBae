@@ -12,11 +12,7 @@ import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
 
 
-function HireAgencyForm3() {
-
-    // const colors = {
-    //     Finish:"green"
-    //   }
+function HireAgencyForm3(props) {
 
     const Role = "client";
     let { projectId } = useParams();
@@ -126,7 +122,7 @@ function HireAgencyForm3() {
             .then(function(response){
                 console.log(response);
                 setLoading(false);
-                window.location.href = `/agency-list:${projectId}`
+                props.history.push(`/agency-list:${projectId}`)
             })
             .catch(err => {
                 setLoading(false);
@@ -180,8 +176,8 @@ function HireAgencyForm3() {
                         </div>
 
                         <div className="nextbuttton">
-                            <div onClick={() => window.location.href = "/hire-agency-form-two"} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
-                            <div /*style={{backgroundColor:colors[buttonStatus]}}*/ onClick={()=>handleSubmit()}> Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+                            <div onClick={() => props.history.push("/hire-agency-form-two")} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
+                            <div onClick={()=>handleSubmit()}> Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
                         </div>
 
 

@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import '../Dashboard/dashboard.css';
+import "../Login/login.css";
 import * as helper from "../../shared/helper";
 import { useParams } from 'react-router'
-import "../Login/login.css"
 import instance from "../../Constants/axiosConstants";
 
 import google from '../../assets/images/Logo/google.png'
 import loginImage from '../../assets/images/Logo/loginImage.png'
 import { Typography, InputAdornment, Input, Grid, Switch, makeStyles, withStyles, FormGroup } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
@@ -74,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
     const classes = useStyles()
-    const routerHistory = useHistory();
 
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
@@ -93,7 +91,7 @@ const Login = (props) => {
 
     useEffect(() => {
         localStorage.setItem('toggle', state.checked);
-        state.checked === false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
+        state.checked === false ? props.history.push('/login:agency') : props.history.push('/login:client');
     }, [state]);
 
     const showPassword = (e) => {

@@ -127,7 +127,7 @@ const Register = (props) => {
     //Agency Profile state variables//
     const [agencyProfileDetails, setAgencyProfileDetails] = useState({
         agencyName: '',
-        teamStrength: '',
+        agencyTeamSize: 0,
         incorporationDate: new Date().toJSON().slice(0, 10),
         socialPlatformDetails: []
     })
@@ -170,14 +170,17 @@ const Register = (props) => {
     }
 
     const handleCreateProfile = (event, role) => {
-        const { name, value } = event.target
-        if (role === "Agency")
+        let { name, value } = event.target
+        
+        if (role === "Agency"){
+            console.log(typeof value, value)
             setAgencyProfileDetails(
                 {
                     ...agencyProfileDetails,
                     [name]: value
                 }
             )
+        }
         else if (role === "Client")
             setClientProfileDetails(
                 {
@@ -196,8 +199,8 @@ const Register = (props) => {
             else if (agencyProfileDetails.agencyName.length < 2) {
                 err.agencyNameError = 'Agency name must be between 2 characters.'
             }
-            else if (agencyProfileDetails.teamStrength === '') {
-                err.teamStrengthError = 'Team strength is required'
+            else if (agencyProfileDetails.agencyTeamSize === '') {
+                err.agencyTeamSizeError = 'Team strength is required'
             }
             else if (agencyProfileDetails.socialPlatformDetails[0].platformLink === "") {
                 err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
@@ -260,11 +263,11 @@ const Register = (props) => {
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
                 if (role === "Client") {
-                    props.history.push('/client-dashboard')
+                    props.history.push('/client-dashboard');
                     setLoading(false);
                 }
                 else if (role === "Agency") {
-                    props.history.push('/dashboard');
+                    props.history.push('/dashboard');;
                     setLoading(false);
                 }
             })
@@ -538,11 +541,11 @@ const Register = (props) => {
 
                                             <input
                                                 type="number"
-                                                name="teamStrength"
+                                                name="agencyTeamSize"
                                                 placeholder='Team Strength'
 
                                                 onChange={(event) => handleCreateProfile(event, role)} />
-                                            {errors.teamStrengthError && <Alert severity="error">{errors.teamStrengthError}</Alert>}
+                                            {errors.agencyTeamSizeError && <Alert severity="error">{errors.agencyTeamSizeError}</Alert>}
 
                                             <form className={dateClasses.container} noValidate>
                                                 <label classname={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
