@@ -21,7 +21,7 @@ const BlueRadio = withStyles({
     checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-function HireDeveloper() {
+function HireDeveloper(props) {
     const [billing, setBilling] = useState(1);
     const [value, setValue] = React.useState('Junior (1-3years)');
     const [budget, setBudget] = useState('less than $1500')
@@ -49,7 +49,7 @@ function HireDeveloper() {
         <>
             <ClientNavbar />
             <div className="mainHireDeveloper">
-                <div className="backArrow" onClick={() => { window.location.href = "/client-dashboard" }} >
+                <div className="backArrow" onClick={() => { props.history.push("/client-dashboard")}} >
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                 </div>
                 <div className="innerHireDeveloper">

@@ -5,7 +5,7 @@ import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
 
-
+    
 function Responded() {
 
     const agencyId = localStorage.getItem('userId');
@@ -111,7 +111,7 @@ function Responded() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <RespondedDetails details={s}/>
+                                        <RespondedDetails details={s} />
                                     </>
                                 )
                             )

@@ -16,6 +16,8 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
+
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -29,10 +31,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Navbar(props) {
+function Navbar() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(false);
     const [isNotification, setIsNotification] = React.useState(null);
+    const routerHistory = useHistory();
 
     const [openmodal, setOpenModal] = useState(false);
 
@@ -45,12 +48,13 @@ function Navbar(props) {
     };
 
     const handleClose = () => {
-        setAnchorEl(null);
+        setAnchorEl(false);
     };
 
     const handleProfile = () => {
-        window.location.href='/agency-profile';
-        setAnchorEl(null);
+        routerHistory.push('/agency-profile');
+        // window.location.href='/agency-profile';
+        setAnchorEl(false);
     };
 
 
@@ -66,14 +70,16 @@ function Navbar(props) {
         handleClose()
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
-        window.location.href = "/"
+        routerHistory.push('/')
+        // window.location.href = "/"
     
     }
     const open = Boolean(isNotification);
     const id = open ? 'simple-popover' : undefined;
 
     const goToDashboard = () => {
-        window.location.href = "/dashboard"
+        // window.location.href = "/dashboard"
+        routerHistory.push('/dashboard')
     }
 
     return (
@@ -96,7 +102,7 @@ function Navbar(props) {
                     </div> */}
                     <div className="clientInfo">
                         <div className="clientCompany">
-                            <img onClick={() => window.location.href = "/agency-profile"} src={clientLogo} alt="" />
+                            <img onClick={() => routerHistory.push("/agency-profile")} src={clientLogo} alt="" />
                         </div>
                         <div onClick={handleNotification} aria-describedby={id} className="clientNotification">
                             <img src={notificationIcon} alt="" />

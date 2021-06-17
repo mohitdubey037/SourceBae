@@ -19,8 +19,10 @@ import AgencyForm1 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm1
 import AgencyForm2 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm2';
 import AgencyForm3 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm3';
 import AgencyForm4 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm4';
+import AgencyProjectDashboard from './Routes/Dashboard/AgencyProjectDashboard';
 // import RespondedDetails from './Routes/Dashboard/Quotation/RespondedDetails';
 import ProjectDetails from './Routes/Dashboard/ProjectDetails';
+import AgencyProjectDetails from './Routes/Dashboard/AgencyProjectDetails';
 
 
 import ClientDashboard from './Routes/Client/Dashboard/Dashboard'
@@ -36,13 +38,7 @@ import ProductDetails from './Routes/Agency/Product/ProductDetails';
 import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
 import CustomRoute from './HOCRoute/CustomRoute';
 
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-const App = (props) => {
-  const {condition} = props.location;
-  console.log(condition);
-  console.log(props.condition);
+const App = () => {
   
   return (
   <Switch>
@@ -52,8 +48,8 @@ const App = (props) => {
     <Route exact path='/register:role' component={Register} />
     <Route exact path="/page-not-found" component = {PageNotFound} />
 
-
-    <Route condition="Agency" exact path="/dashboard" component={Dashboard} />
+    <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard} />
+    <CustomRoute condition="Agency" exact path="/agency-project-dashboard" component={AgencyProjectDashboard}/>
     <CustomRoute condition="Agency" exact path="/add-developer" component={AddingDeveloper} />
     <CustomRoute condition="Agency" exact path="/quotation" component={Quotation} />
     <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />
@@ -63,14 +59,15 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/agency-form-three" component={AgencyForm3} />
     <CustomRoute condition="Agency" exact path="/agency-form-four" component={AgencyForm4} />
     <CustomRoute condition="Agency" exact path="/product-form" component={ProductForm} />
+    <CustomRoute condition="Agency" exact path="/agency-project-details" component={AgencyProjectDetails} />
 
     {/* Both */}
-    <CustomRoute condition={props.condition} exact path="/project-details" component={ProjectDetails} />
-
 
     {/* Client Components  */}
-    <CustomRoute condition='Client' exact path="/product-agencies" component={ProductAgencies} />
     <CustomRoute condition="Client" exact path="/client-dashboard" component={ClientDashboard} />
+    <CustomRoute condition="Client" exact path="/client-dashboard" component={ClientDashboard} />
+    <CustomRoute condition='Client' exact path="/project-details" component={ProjectDetails} />
+    <CustomRoute condition='Client' exact path="/product-agencies" component={ProductAgencies} />
     <CustomRoute condition="Client" exact path="/hire-agency-form-one" component={HireAgencyForm1} />
     <CustomRoute condition="Client" exact path="/hire-agency-form-two:projectId" component={HireAgencyForm2} />
     <CustomRoute condition="Client" exact path="/hire-agency-form-three:projectId" component={HireAgencyForm3} />
@@ -84,11 +81,6 @@ const App = (props) => {
   </Switch>
 )}
 
-const mapStateToProps = state => {
-  return {
-    condition : state.condition
-  }
-}
 
-export default connect(mapStateToProps)(withRouter(App));
+export default App;
 

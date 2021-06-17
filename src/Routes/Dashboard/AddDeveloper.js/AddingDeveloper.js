@@ -53,7 +53,7 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 }
 
 
-function AddingDeveloper() {
+function AddingDeveloper(props) {
 
     const theme = useTheme();
 
@@ -188,7 +188,7 @@ function AddingDeveloper() {
             .then(function (response) {
                 console.log(response)
                 setLoading(false);
-                window.location.href = "/dashboard"
+                props.history.push("/dashboard")
 
             })
             .catch(error => {

@@ -71,11 +71,13 @@ const StyledBadge = withStyles((theme) => ({
 
 const ClientNavbar = ({ isVisible }, props) => {
 
+    const routerHistory = useHistory();
+
     const [show, setShow] = useState(true);
     const [isNotification, setIsnotification] = useState(false);
     const [openmodal, setOpenModal] = useState(false);
     const [anchorEl, setAnchorEl] = useState(false);
-    const routerHistory = useHistory();
+    const [anchr, setanchr] = useState(false);
 
 
     const onOpenModal = () => setOpenModal(true);
@@ -87,17 +89,18 @@ const ClientNavbar = ({ isVisible }, props) => {
     }
 
     const handleClose = () => {
-        setAnchorEl(null);
+        setAnchorEl(false);
     };
 
     const handleProfile = () => {
-        window.location.href = '/client-profile';
-        setAnchorEl(null);
+        // window.location.href = '/client-profile';
+        routerHistory.push('/client-profile');
+        setAnchorEl(false);
     };
 
     const handleClick = (event) => {
-        console.log(event)
-        setAnchorEl(event.currentTarget);
+        console.log(event.currentTarget);
+        setAnchorEl(event.target);
     };
 
     const handleLogout = () => {
@@ -120,7 +123,7 @@ const ClientNavbar = ({ isVisible }, props) => {
             <div className="mainClientNavbar">
                 <div className="innerClientNavbar">
                     <div className="superSourcingLogo">
-                        <div style={{ cursor: 'pointer' }} onClick={() => window.location.href = "/client-dashboard"} >
+                        <div style={{ cursor: 'pointer' }} onClick={() => routerHistory.push("/client-dashboard")} >
                             <img src={Logo} alt="" />
                         </div>
                     </div>
@@ -131,15 +134,17 @@ const ClientNavbar = ({ isVisible }, props) => {
                                 <span>New <i class="fa fa-level-down" aria-hidden="true"></i></span>
                             </div>
                         </div>
-                        {isVisible ? 
-                          <div className="postProject">
-                            <div style={{ cursor: 'pointer' }} onClick={showVisibility}>
-                                <p><i class="fa fa-plus-circle" aria-hidden="true"></i>Post Project</p>
+                        {/* <div className="postProject"> */}
+                        {isVisible ?
+                            <div className="postProject">
+                                <div style={{ cursor: 'pointer' }} onClick={showVisibility}>
+                                    <p><i class="fa fa-plus-circle" aria-hidden="true"></i>Post Project</p>
+                                </div>
                             </div>
-                            </div> 
                             :
                             null
                         }
+                        {/* </div> */}
                         <div className="clientNotification" >
                             <div className={classes.root} onClick={notificationPanel}>
                                 <StyledBadge
@@ -186,7 +191,7 @@ const ClientNavbar = ({ isVisible }, props) => {
                 <div className="innerNotificationPanel">
                     <div className="notificationsCards">
                         <div className="closeNotification">
-                            <i onClick={notificationPanel} class="fa fa-times" aria-hidden="true"></i>
+                            <i onClick={notificationPanel} className="fa fa-times" aria-hidden="true"></i>
                         </div>
                         <div className="allNotification">
                             <div className="allNotificationIcon">
@@ -218,7 +223,7 @@ const ClientNavbar = ({ isVisible }, props) => {
                 }} center>
                 <h2 className="addyourproductext">Add your Product</h2>
                 <div className="newFeatureDiv">
-                    <p>What's <span>NEW</span> in this..?<i class="fa fa-level-down" aria-hidden="true"></i></p>
+                    <p>What's <span>NEW</span> in this..?<i className="fa fa-level-down" aria-hidden="true"></i></p>
 
                     <p className="productText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, necessitatibus! Provident, nemo. Aperiam fugiat quo earum dignissimos. Aliquid, nostrum dolorem!</p>
 
@@ -231,11 +236,11 @@ const ClientNavbar = ({ isVisible }, props) => {
                     </ul>
                 </div>
                 <div className="modalButton">
-                    <button onClick={() => window.location.href = "/product-agencies"} >Interested</button>
+                    <button onClick={() => routerHistory("/product-agencies")} >Interested</button>
                     <button onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
-       
+
         </>
     )
 }
