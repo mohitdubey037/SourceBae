@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import '../Dashboard/dashboard.css';
-import "../Login/login.css"
-import { useParams } from 'react-router'
-import { useHistory } from 'react-router-dom';
-import instance from "../../Constants/axiosConstants";
 import * as helper from "../../shared/helper";
-import Spinner from '../../Components/Spinner/Spinner';
+import { useParams } from 'react-router'
+import "../Login/login.css"
+import instance from "../../Constants/axiosConstants";
 
 import google from '../../assets/images/Logo/google.png'
 import loginImage from '../../assets/images/Logo/loginImage.png'
 import { Typography, InputAdornment, Input, Grid, Switch, makeStyles, withStyles, FormGroup } from '@material-ui/core';
-import {AccountCircleRoundedIcon, VisibilityTwoToneIcon, VisibilityOffTwoToneIcon} from "@material-ui/icons/AccountCircleRounded";
+import { useHistory } from 'react-router-dom';
+import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
+import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
+import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
+import Spinner from '../../Components/Spinner/Spinner';
 
 const borderLight = "rgba(206,212,218, .993)";
 

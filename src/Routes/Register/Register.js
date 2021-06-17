@@ -4,7 +4,8 @@ import { useParams } from 'react-router'
 import logotext from '../../assets/images/Logo/logo.png'
 import business from '../../assets/images/Logo/sspp.png'
 import colors from '../../Constants/colors'
-import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core/styles';
+import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert';
 
 import axios from 'axios';
