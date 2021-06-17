@@ -1,26 +1,17 @@
-import { Button } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
+import './register.css'
 import { useParams } from 'react-router'
 import logotext from '../../assets/images/Logo/logo.png'
-import bgImage from '../../assets/images/Logo/bgImage.jpg'
 import business from '../../assets/images/Logo/sspp.png'
-import growth from '../../assets/images/Logo/growthImage.svg'
-import './register.css'
 import colors from '../../Constants/colors'
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
+
 import axios from 'axios';
-import Spinner from '../../Components/Spinner/Spinner';
-import FormGroup from '@material-ui/core/FormGroup';
-import Switch from '@material-ui/core/Switch';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
-import { ErrorRounded } from '@material-ui/icons'
-//Future Imports
-// Step , StepLabel , Stepper , Typography , StepContent , InputLabel , FormControl , TextField , Select , Input , MenuItem
+import Spinner from '../../Components/Spinner/Spinner';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -87,7 +78,6 @@ const dateStyles = makeStyles((theme) => ({
 }));
 
 const Register = (props) => {
-
     //Regular Variables
     const dateClasses = dateStyles();
     const [state, setState] = React.useState({
@@ -150,6 +140,8 @@ const Register = (props) => {
 
     const [errors, setErrors] = useState({})
 
+    const [step, setStep] = useState(1)
+
     const handleSocialPlatform = (event) => {
         const { name, value } = event.target
         if (name === "linkedIn") {
@@ -200,19 +192,15 @@ const Register = (props) => {
             if (agencyProfileDetails.agencyName === "") {
                 err.agencyNameError = 'Agency name is required'
             }
-
             else if (agencyProfileDetails.agencyName.length < 2) {
                 err.agencyNameError = 'Agency name must be between 2 characters.'
             }
-
             else if (agencyProfileDetails.teamStrength === '') {
                 err.teamStrengthError = 'Team strength is required'
             }
-
             else if (agencyProfileDetails.socialPlatformDetails[0].platformLink === "") {
                 err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
             }
-
             else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
                 err.socialPlatformDetailsError = 'Invalid link provided.'
             }
@@ -239,7 +227,6 @@ const Register = (props) => {
             else if (clientProfileDetails.socialPlatformDetails[0].platformLink === "") {
                 err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
             }
-
             else if (!helper.validateLink(clientProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
                 err.socialPlatformDetailsError = 'Invalid link provided.'
             }
@@ -317,8 +304,6 @@ const Register = (props) => {
                 })
         }
     }
-
-    const [step, setStep] = useState(1)
 
     const createRoleString = (role) => {
         role = role.charAt(0).toUpperCase() + role.slice(1)
@@ -424,28 +409,23 @@ const Register = (props) => {
     useEffect(() => {
         localStorage.removeItem(`Authorization`)
     }, [])
-    
+
     //__________ USE-EFFECT ENDS ______//
 
     const roleString = createRoleString(role)
     return (
         <div className='client__registrationContainer'>
             <div className="image__container">
-                {/* <img src = {bgimage} alt="" className = 'background__image'/> */}
                 <img className="hamaraLogo" src={logotext} alt="" />
-                {/* <img className="bgImage" src={bgImage} alt="" /> */}
-                {/* <div className="abigcircle"></div> */}
                 <img className="businessModals" src={business} alt="" />
             </div>
 
             <div style={{ flex: .35 }}>
             </div>
             <div style={{ flex: .65 }}>
+
                 {loading ? <Spinner /> :
                     <div className='form__area'>
-                        {/* <div className="logoPart">
-                        <img src={logotext} alt="" />
-                    </div> */}
                         <div className="client__form">
                             <div style={{ width: '100%', textAlign: 'center', marginTop: '5%' }}>
                                 <div className="toggleButton">

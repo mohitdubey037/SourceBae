@@ -1,32 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import '../Dashboard/dashboard.css'
-
-// Axios Import
-import axios from 'axios'
-import instance from "../../Constants/axiosConstants"
-import * as helper from "../../shared/helper"
+import '../Dashboard/dashboard.css';
 import "../Login/login.css"
+import { useParams } from 'react-router'
+import { useHistory } from 'react-router-dom';
+import instance from "../../Constants/axiosConstants";
+import * as helper from "../../shared/helper";
+import Spinner from '../../Components/Spinner/Spinner';
 
 import google from '../../assets/images/Logo/google.png'
 import loginImage from '../../assets/images/Logo/loginImage.png'
-
-import { useParams } from 'react-router'
-
-
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import FormGroup from '@material-ui/core/FormGroup';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { useHistory } from 'react-router-dom';
-import InputAdornment from "@material-ui/core/InputAdornment";
-import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
-import { Input } from "@material-ui/core";
-import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
-import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
-import Spinner from '../../Components/Spinner/Spinner';
+import { Typography, InputAdornment, Input, Grid, Switch, makeStyles, withStyles, FormGroup } from '@material-ui/core';
+import {AccountCircleRoundedIcon, VisibilityTwoToneIcon, VisibilityOffTwoToneIcon} from "@material-ui/icons/AccountCircleRounded";
 
 const borderLight = "rgba(206,212,218, .993)";
 
@@ -87,22 +72,27 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
     const classes = useStyles()
-    const [test, setTest] = useState()
     const routerHistory = useHistory();
+
+    let { role } = useParams();
+    role = helper.capitalize(helper.cleanParam(role))
+    if (!(role === "Agency" || role === "Client"))
+        props.history.push("/page-not-found");
+
     const [loading, setLoading] = useState(false);
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false
     });
-
     const [hidePassword, SetPasswordStatus] = useState(true);
+    const [form, setForm] = useState({
+        user: "",
+        password: ""
+    })
 
     useEffect(() => {
         localStorage.setItem('toggle', state.checked);
-
         state.checked === false ? routerHistory.push('/login:agency') : routerHistory.push('/login:client');
-
     }, [state]);
-
 
     const showPassword = (e) => {
         console.log(e);
@@ -113,29 +103,16 @@ const Login = (props) => {
         setState({ ...state, [event.target.name]: event.target.checked })
     };
 
-    let { role } = useParams();
-
-    role = helper.capitalize(helper.cleanParam(role))
-
-    if (!(role === "Agency" || role === "Client"))
-        props.history.push("/page-not-found");
-    //#######################//
-
-    const [form, setForm] = useState({
-        user: "",
-        password: ""
-    })
-
     //Methods
 
     const createRoleString = (role) => {
-
         role = role.charAt(0).toUpperCase() + role.slice(1)
         if (role === 'Agency')
             return `an ${role}`
         else
             return `a ${role}`
     }
+
     const roleString = createRoleString(role)
 
     const handleChange = (e) => {
@@ -145,10 +122,6 @@ const Login = (props) => {
             [name]: value
         })
     };
-
-    // const navigator = () => {
-    //     window.location.href
-    // }
 
     const logIn = async (role, form) => {
         // setLoading(true);
@@ -165,18 +138,14 @@ const Login = (props) => {
                     resolve(1)
 
                     if (role === "Agency") {
-                        // window.location.href = "/dashboard";
                         // setLoading(false);
                         props.history.push('/dashboard');
                     }
 
-
                     else if (role === "Client") {
-                        // window.location.href = "/client-dashboard";
                         // setLoading(false);
                         props.history.push('/client-dashboard');
                     }
-
                 })
                 .catch(err => {
                     setLoading(false);
@@ -186,50 +155,7 @@ const Login = (props) => {
 
     return (
         <>
-
-
-            {/* <div className="mainClientsOptions">
-                <div className="innerClientsOptions">
-                    <div className="client__form">
-                        <div style={{ width: '100%', textAlign: 'center', marginTop: '10%' }}>
-                            <div className="form__title"><h6>Login as <span> {roleString} </span></h6></div>
-                            <div className="title__subtext"><p>For the purpose of industry regulation, your details <br /> are required</p></div>
-                        </div>
-
-                        <h4>Welcome Back!</h4>
-                        <div className='form-group row'>
-                            <input
-                                className='input'
-                                type='text'
-                                placeholder='Email'
-                                name="user"
-                                value={form.user}
-                                onChange={(e) => { handleChange(e) }}
-                            />
-                        </div>
-
-                        <div className='form-group row'>
-                            <input
-                                className='input'
-                                type='password'
-                                placeholder='Password'
-                                name="password"
-                                value={form.password}
-                                onChange={(e) => { handleChange(e) }}
-                            />
-                        </div>
-
-                        <div className='form-group row'>
-                            <LoginButton onClick={() => logIn(role, form)}>Log In</LoginButton>
-                        </div>
-
-                    </div>
-
-
-                </div>
-            </div> */}
             {loading ? <Spinner /> :
-
                 <div className="mainLoginPage">
                     <div className="innerLoginPage">
                         <div className="loginIllustrator">
@@ -239,10 +165,6 @@ const Login = (props) => {
                             <div className="mainLoginForm">
                                 <div className="toggleButton">
                                     <FormGroup>
-                                        {/* <FormControlLabel
-                                    control={<IOSSwitch checked={state.checkedB} onChange={handleChangeToggle} name="checkedB" />}
-                                    label="iOS style"
-                                /> */}
                                         <Typography component="div">
                                             <Grid component="label" container alignItems="center" spacing={1}>
                                                 <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
@@ -261,7 +183,6 @@ const Login = (props) => {
                                     <p>Don't have an account? <span onClick={() => props.history.push(`/register:${role.toLowerCase()}`)}>Sign Up</span></p>
                                 </div>
                                 <div className="loginForm">
-                                    {/* <div className="emailLogin"> */}
                                     <p style={{ marginBottom: '10px' }}>Email</p>
                                     <Input
                                         className={classes.inputs}
@@ -283,13 +204,7 @@ const Login = (props) => {
                                                 <AccountCircleRoundedIcon fontSize="default" />
                                             </InputAdornment>
                                         }
-
                                     />
-                                    {/* <input name="user"
-                                        value={form.user}
-                                        onChange={(e) => { handleChange(e) }} type="text" placeholder="Type your email here.." /> */}
-                                    {/* </div> */}
-                                    {/* <div className="passwordLogin"> */}
                                     <p style={{ marginTop: '20px', marginBottom: '10px' }}>Password</p>
                                     <Input
                                         placeholder='Enter a password'
@@ -326,17 +241,10 @@ const Login = (props) => {
                                                 )
                                         }
                                     />
-
-                                    {/* <input name="password"
-                                        value={form.password}
-                                        onChange={(e) => { handleChange(e) }} type="password" placeholder="Type your password here.." /> */}
-                                    {/* </div> */}
-
                                     <button onClick={() => logIn(role, form)} type="submit">Login</button>
                                     <span>I forgot my password</span>
                                 </div>
                             </div>
-
                             <div className="googleLogin">
                                 <img src={google} alt="" />
                                 <p>Sign in with Google</p>
@@ -345,11 +253,7 @@ const Login = (props) => {
                     </div>
                 </div>
             }
-
         </>
     )
-
-
 }
-
 export default Login
