@@ -72,7 +72,7 @@ const CommentBox = (props) => {
           return ""
         }
       })}
-     {props.isReplyActive && <div style={{ display: "flex", flexDirection:"column"}}>
+     {props.isReplySectionActive && <div style={{ display: "flex", flexDirection:"column"}}>
      <div style={{display:"flex", margin:"1rem 0rem"}}>
         <h5>
           <b>Agency: </b>
@@ -272,7 +272,7 @@ function RespondedDetails(props) {
                 <CommentBox
                   comments={project.projectProposals[0]?.comments}
                   commentType="Quotation"
-                  isReplyActive = {project.projectProposals[0].isReplySectionActive}
+                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
                   projectId= {projectId}
                 />
               )
@@ -280,7 +280,7 @@ function RespondedDetails(props) {
               project?.projectProposals && <CommentBox
                   comments={project.projectProposals[0]?.comments}
                   commentType="Shortlist"
-                  isReplyActive = {project.projectProposals[0].isReplySectionActive}
+                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
                   projectId= {projectId}
                 />
               

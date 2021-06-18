@@ -72,7 +72,7 @@ const CommentBox = (props) => {
           return ""
         }
       })}
-     {props.isCommentActive && <div style={{ display: "flex", flexDirection:"column"}}>
+     {props.isCommentSectionActive && <div style={{ display: "flex", flexDirection:"column"}}>
      <div style={{display:"flex", margin:"1rem 0rem"}}>
         <h5>
           <b>Client: </b>
@@ -163,10 +163,11 @@ function RespondedDetails(props) {
           </div>
           <div className="headerInformation">
             <div className="clientName">
+            {project.isProposalActionActive &&
               <div className="detailsButtons">
                 <button>Accept</button>
                 <button>Withdraw</button>
-              </div>
+              </div>}
             </div>
             <div className="clientExperience">
               {arr.map((value, index) => {
@@ -263,7 +264,7 @@ function RespondedDetails(props) {
                 <CommentBox
                   comments={project.projectProposals[0]?.comments}
                   commentType="Quotation"
-                  isReplyActive = {project.projectProposals[0].isReplySectionActive}
+                  isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
                   projectId= {projectId}
                 />
               )
@@ -271,7 +272,7 @@ function RespondedDetails(props) {
               project?.projectProposals && <CommentBox
                   comments={project.projectProposals[0]?.comments}
                   commentType="Shortlist"
-                  isCommentActive = {project.projectProposals[0].isCommentActive}
+                  isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
                   projectId= {projectId}
                 />
               
