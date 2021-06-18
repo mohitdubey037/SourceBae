@@ -249,12 +249,15 @@ function Dashboard(props) {
                                         <div className="projectStage">
                                             <span className="statusLine"></span>
                                             {statuses.map((s, index, value) => {
+                                                if(index<7)
                                                 return (
                                                     <div>
                                                         <span style={{ backgroundColor: index <= value.indexOf(p.projectCurrentStatus) ? '#5cb85c' : '#626567' }}>{index + 1}</span>
                                                         <p>{s}</p>
                                                     </div>
                                                 )
+                                                else
+                                                    return ""
                                             })}
 
 
@@ -279,8 +282,7 @@ function Dashboard(props) {
                                             </div>
                                             {/* <div className="clientProject"> */}
                                             {/* <div onClick={() => routeRedirecter(p._id)}><p>View Proposal</p></div> */}
-                                            <div className='clientProjectLink' onClick={() => routeRedirecter(p._id)}><p>Visit More Agency </p></div>
-                                            <div className='clientProjectLink'><p>Visit Selected Agency</p></div>
+                                            <div className='clientProjectLink' onClick={() => routeRedirecter(p._id)}><p>Show Project Details</p></div>
                                             {/* </div> */}
                                         </div>
 
