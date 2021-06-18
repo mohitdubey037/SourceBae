@@ -9,7 +9,7 @@ import instance from "../../../Constants/axiosConstants"
 import { useParams } from "react-router-dom";
 import * as helper from "../../../shared/helper";
 const CommentBox = (props) => {
-  
+  console.log(props);
   const [apiData, setApiData]= useState({
       agencyId: localStorage.getItem("userId"),
       isShortListed: true,
@@ -113,7 +113,7 @@ function RespondedDetails(props) {
   const [project, setProject] = useState({});
 
   const Role = localStorage.getItem("role");
-  const agencyId = localStorage.getItem("userId");
+  const clientId = localStorage.getItem("userId");
   const arr = [
     {
       title: "Food",
@@ -131,7 +131,7 @@ function RespondedDetails(props) {
 
   const getAllProjects = () => {
     instance
-      .get(`api/${Role}/projects/get/${projectId}`)
+      .get(`api/${Role}/projects/get/${projectId}?clientId=${clientId}`)
       .then(function (response) {
         setProject(response);
       })

@@ -23,7 +23,7 @@ function AgencyList(props) {
   const [openQuotation, setOpenQuotation] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const onOpenModal = (_id) => {
+  const openShortlistModal = (_id) => {
     setOpen(true);
     setShortlistFormData({
       ...shortlistFormData,
@@ -32,7 +32,7 @@ function AgencyList(props) {
   };
   const onCloseModal = () => setOpen(false);
 
-  const onOpenQuotation = (_id) => {
+  const onOpenQuotationModel = (_id) => {
     setOpenQuotation(true);
     setQuotationFormData({
       ...QuotationFormData,
@@ -79,7 +79,7 @@ function AgencyList(props) {
     });
   };
 
-  const postSubmitHandler = () => {
+  const shortlistHandler = () => {
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
@@ -198,15 +198,15 @@ function AgencyList(props) {
                               <p>Show Details</p>
                             </div>
                           ) : agency.isAgencyShortListed ? (
-                            <div onClick={() => onOpenQuotation(agency._id)}>
+                            <div onClick={() => onOpenQuotationModel(agency._id)}>
                               <p>Get Quotation</p>
                             </div>
                           ) : (
                             <>
-                              <div onClick={() => onOpenModal(agency._id)}>
+                              <div onClick={() => openShortlistModal(agency._id)}>
                                 <p>Shortlist</p>
                               </div>
-                              <div onClick={() => onOpenQuotation(agency._id)}>
+                              <div onClick={() => onOpenQuotationModel(agency._id)}>
                                 <p>Get Quotation</p>
                               </div>
                             </>
@@ -315,7 +315,7 @@ function AgencyList(props) {
               rows="10"
               placeholder="Type from here..."
             ></textarea>
-            <button onClick={postSubmitHandler}>Submit</button>
+            <button onClick={shortlistHandler}>Submit</button>
           </div>
         </div>
       </Modal>
