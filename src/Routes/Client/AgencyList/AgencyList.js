@@ -190,7 +190,7 @@ function AgencyList(props) {
                             <div
                               onClick={() =>
                                 props.history.push({
-                                  pathname: `/project-details:${projectId}`,
+                                  pathname: `/project-details/${projectId}/${agency._id}`,
                                   condition: "Client",
                                 })
                               }
