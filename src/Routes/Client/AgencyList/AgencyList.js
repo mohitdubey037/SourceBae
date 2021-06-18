@@ -82,30 +82,27 @@ function AgencyList(props) {
     }
 
     const postSubmitHandler = () => {
+        setLoading(true);
         instance.patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
             .then(function (response) {
                 console.log(response);
-                props.history.push({
-                    pathname: '/project-details',
-                    condition: 'Client'
-                })
+                setLoading(false);
             })
             .catch(err => {
+                setLoading(false)
                 console.log(err);
             })
-        // onCloseModal()
+        onCloseModal()
     }
 
     const quotationSubmitHandler = () => {
+        setLoading(true);
         instance.patch(`/api/${Role}/projects/propose/${projectId}`, QuotationFormData)
             .then(function (response) {
-                console.log(response);
-                props.history.push({
-                    pathname: '/project-details',
-                    condition: 'Client'
-                })
+                setLoading(false);
             })
             .catch(err => {
+                setLoading(false)
                 console.log(err);
             })
         onCloseQuotation()
@@ -181,17 +178,18 @@ function AgencyList(props) {
 
                                                 <div className="quotationShortlistButton">
                                                     {agency.isAgencyAskedForQuotation ?
-                                                        <div><p>Show Details</p></div>
+                                                        <div><p onClick={() => props.history.push(`/project-details:${projectId}`)}>Show Details</p></div>
                                                         :
                                                         agency.isAgencyShortListed ?
-                                                            <div onClick={() => onOpenQuotation(agency._id)}><p>Get Quotation</p></div>
+                                                            <>
+                                                                <div><p onClick={() => props.history.push(`/project-details:${projectId}`)}>Show Details</p></div>
+                                                                <div onClick={() => onOpenQuotation(agency._id)}><p>Get Quotation</p></div>
+                                                            </>
                                                             :
                                                             <>
                                                                 <div onClick={() => onOpenModal(agency._id)}><p>Shortlist</p></div>
                                                                 <div onClick={() => onOpenQuotation(agency._id)}><p>Get Quotation</p></div>
                                                             </>
-
-
                                                     }
                                                 </div>
                                             </div>

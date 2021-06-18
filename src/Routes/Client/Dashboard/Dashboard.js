@@ -34,7 +34,6 @@ const MenuProps = {
     },
 };
 
-
 const useStyles = makeStyles((theme) => ({
     button: {
         display: 'block',
@@ -62,6 +61,7 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 }
 
 function Dashboard(props) {
+    const theme = useTheme();
 
     const Role = helper.lowerize(localStorage.getItem('role'));
     const clientId = localStorage.getItem("userId")
@@ -72,8 +72,6 @@ function Dashboard(props) {
     const [projects, setProjects] = useState([])
     const [statuses, setStatuses] = useState([])
     const [selectedStatus, setSelectedStatus] = React.useState('');
-
-    const theme = useTheme();
 
 
     const getAllProjects = () => {
@@ -220,7 +218,7 @@ function Dashboard(props) {
                                         <span className="leftBorderClientProject"></span>
                                         <div className="cardTopPart">
                                             <div className="projectName">
-                                                <p onClick={() => projectNameNavigator(p)} className="projectDetailsRouter">{p.projectName}</p>
+                                                <p className="projectDetailsRouter">{p.projectName}</p>
                                                 {/* <NavLink className="projectDetailsRouter" to={{
                                                     pathname: "/project-details",
                                                     state: { ...p },

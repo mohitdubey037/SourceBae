@@ -1,13 +1,11 @@
-import Navbar from './Navbar';
 import RespondedDetails from './Quotation/RespondedDetails';
 import React, {useState} from 'react'
 import ClientNavbar from '../Client/ClientNavbar';
 
-function ProjectDetails(props) {
-    const role = localStorage.getItem('role')
+function ProjectDetails() {
     return (
         <>
-            {role === 'Client' ? <ClientNavbar/> : <Navbar />}            
+            <ClientNavbar/>       
             <div style={{ marginTop: '3%' }}></div>
             <RespondedDetails/>
         </>
