@@ -9,30 +9,58 @@ import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
 const CommentBox = (props) => {
-  
-  const [apiData, setApiData]= useState({
-      agencyId: localStorage.getItem("userId"),
-      isShortListed: true,
-      negotiablePrice: "",
-      reply: ""
-  
+  const [file, setFile] = useState(null)
+  const [apiData, setApiData] = useState({
+    agencyId: localStorage.getItem("userId"),
+    isShortListed: true,
+    negotiablePrice: "",
+    reply: "",
+    quotationLink: ''
   })
 
-  const handleChange = (event)=>{
-    const {name, value} = event.target
+  const handleChange = (event) => {
+    const { name, value } = event.target
     setApiData({
       ...apiData,
-      [name]:value
+      [name]: value
     })
   }
 
-  const replyApi = ()=>{
-   
-    instance.patch(`api/agency/projects/propose/${props.projectId}`,apiData)
-    .then(function(response){
-      console.log(response)
-      window.location.reload()
-    })
+  function uploadMedia() {
+    console.log(file);
+    const formData = new FormData();
+    file && formData.append(
+      "files",
+      file,
+      "files.pdf"
+    );
+    instance.post(`api/agency/media/create`, formData)
+      .then(function (response) {
+        console.log(response)
+        setApiData({
+          ...apiData,
+          quotationLink: response[0].mediaURL          
+        })
+      })
+      .catch(err => {
+      })
+  }
+
+  const inputFileChosen = (e) => {
+    setFile(e.target.files[0])
+  }
+
+  useEffect(() => {
+    console.log(apiData);
+  }, [apiData])
+
+  const replyApi = () => {
+
+    instance.patch(`api/agency/projects/propose/${props.projectId}`, apiData)
+      .then(function (response) {
+        console.log(response)
+        window.location.reload()
+      })
   }
   return (
     <div
@@ -50,15 +78,15 @@ const CommentBox = (props) => {
         if (index.commentType === props.commentType) {
           return (
             <>
-            
+
               <div style={{ display: "flex", flexDirection: "column" }}>
-              {index.comment && <div>
+                {index.comment && <div>
                   <h5>
                     <b>Client: </b>
                     {index.comment}
                   </h5>
                 </div>}
-               {index.reply && <div>
+                {index.reply && <div>
                   <h5>
                     <b>Agency: </b>
                     {index.reply}
@@ -68,47 +96,47 @@ const CommentBox = (props) => {
             </>
           );
         }
-        else{
+        else {
           return ""
         }
       })}
-     {props.isReplySectionActive && <div style={{ display: "flex", flexDirection:"column"}}>
-     <div style={{display:"flex", margin:"1rem 0rem"}}>
-        <h5>
-          <b>Agency: </b>
-        </h5>
-        <textarea
-          rows="5"
-          cols="50"
-          style={{ margin: "0 1rem" }}
-          placeholder="Enter your reply"
-          name="reply"
-          value={apiData.reply}
-          onChange={(event)=>handleChange(event)}
-        />
-      </div>
-      <div style={{display:"flex", flexDirection:"column", width:"30%"}}>
-      <div>
-        <input type="number" name="negotiablePrice" placeholder="negotiable price" value = {apiData.negotiablePrice} onChange={(event)=>handleChange(event)}/>
+      {props.isReplySectionActive && <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", margin: "1rem 0rem" }}>
+          <h5>
+            <b>Agency: </b>
+          </h5>
+          <textarea
+            rows="5"
+            cols="50"
+            style={{ margin: "0 1rem" }}
+            placeholder="Enter your reply"
+            name="reply"
+            value={apiData.reply}
+            onChange={(event) => handleChange(event)}
+          />
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
+          <div>
+            <input type="number" name="negotiablePrice" placeholder="negotiable price" value={apiData.negotiablePrice} onChange={(event) => handleChange(event)} />
 
-      </div>
-      <div style={{margin:"1rem 0rem"}}>
-      <input type ="file"/>
-      <button>Upload</button>
-      </div> 
-        
-        <button
-          style={{
-            background: "none",
-            minWidth: "80px",
-            border: "2px solid black",
-            borderRadius: "4px",
-          }}
-          onClick={()=>{replyApi()}}
-        >
-          Reply
-        </button>
-      </div>
+          </div>
+          <div style={{ margin: "1rem 0rem" }}>
+            <input type="file" onChange={inputFileChosen} />
+            <button onClick={uploadMedia}>Upload</button>
+          </div>
+
+          <button
+            style={{
+              background: "none",
+              minWidth: "80px",
+              border: "2px solid black",
+              borderRadius: "4px",
+            }}
+            onClick={() => { replyApi() }}
+          >
+            Reply
+          </button>
+        </div>
       </div>}
     </div>
   );
@@ -171,11 +199,11 @@ function RespondedDetails(props) {
           </div>
           <div className="headerInformation">
             <div className="clientName">
-            {project.isProposalActionActive &&
-              <div className="detailsButtons">
-                <button>Accept</button>
-                <button>Withdraw</button>
-              </div>}
+              {project.isProposalActionActive &&
+                <div className="detailsButtons">
+                  <button>Accept</button>
+                  <button>Withdraw</button>
+                </div>}
             </div>
             <div className="clientExperience">
               {arr.map((value, index) => {
@@ -269,22 +297,22 @@ function RespondedDetails(props) {
 
             {project?.projectProposals &&
               project.projectProposals[0]?.isAskedForQuotation === true ? (
-                <CommentBox
-                  comments={project.projectProposals[0]?.comments}
-                  commentType="Quotation"
-                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
-                  projectId= {projectId}
-                />
-              )
+              <CommentBox
+                comments={project.projectProposals[0]?.comments}
+                commentType="Quotation"
+                isReplySectionActive={project.projectProposals[0].isReplySectionActive}
+                projectId={projectId}
+              />
+            )
               :
               project?.projectProposals && <CommentBox
-                  comments={project.projectProposals[0]?.comments}
-                  commentType="Shortlist"
-                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
-                  projectId= {projectId}
-                />
-              
-              }
+                comments={project.projectProposals[0]?.comments}
+                commentType="Shortlist"
+                isReplySectionActive={project.projectProposals[0].isReplySectionActive}
+                projectId={projectId}
+              />
+
+            }
           </div>
 
           <div className="agencyQuestions">
