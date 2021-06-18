@@ -84,15 +84,11 @@ function AgencyList(props) {
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
         console.log(response);
-        props.history.push({
-          pathname: `/project-details:${projectId}`,
-          condition: "Client",
-        });
       })
       .catch((err) => {
         console.log(err);
       });
-    // onCloseModal()
+    onCloseModal()
   };
 
   const quotationSubmitHandler = () => {
@@ -107,6 +103,10 @@ function AgencyList(props) {
       });
     onCloseQuotation();
   };
+
+  useEffect(() => {
+    console.log(shortlistFormData)
+  },[shortlistFormData]);
 
   return (
     <>
@@ -147,7 +147,9 @@ function AgencyList(props) {
                             </div>
                           </div>
                           <div className="profileButton">
-                            <p>
+                            <p onClick={() => props.history.push({
+                              pathname: `/agency-profile:${agency._id}`
+                            })}>
                               View Profile{" "}
                               <i
                                 class="fa fa-angle-double-right"
@@ -198,9 +200,21 @@ function AgencyList(props) {
                               <p>Show Details</p>
                             </div>
                           ) : agency.isAgencyShortListed ? (
-                            <div onClick={() => onOpenQuotationModel(agency._id)}>
-                              <p>Get Quotation</p>
-                            </div>
+                            <>
+                              <div onClick={() => onOpenQuotationModel(agency._id)}>
+                                <p>Get Quotation</p>
+                              </div>
+                              <div
+                                onClick={() =>
+                                  props.history.push({
+                                    pathname: `/project-details/${projectId}/${agency._id}`,
+                                    condition: "Client",
+                                  })
+                                }
+                              >
+                                <p>Show Details</p>
+                              </div>
+                            </>
                           ) : (
                             <>
                               <div onClick={() => openShortlistModal(agency._id)}>

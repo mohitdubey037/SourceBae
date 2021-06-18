@@ -8,13 +8,17 @@ import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
+
 const CommentBox = (props) => {
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
     isShortListed: true,
     negotiablePrice: "",
     reply: "",
+    quotationLink: ""
   });
+
+  const [file, setFile] = useState(null)
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,6 +27,35 @@ const CommentBox = (props) => {
       [name]: value,
     });
   };
+
+  function uploadMedia() {
+    console.log(file);
+    const formData = new FormData();
+    file && formData.append(
+      "files",
+      file,
+      "files.pdf"
+    );
+    instance.post(`api/agency/media/create`, formData)
+      .then(function (response) {
+        console.log(response)
+        setApiData({
+          ...apiData,
+          quotationLink: response[0].mediaURL          
+        })
+      })
+      .catch(err => {
+      })
+  }
+
+  const inputFileChosen = (e) => {
+    setFile(e.target.files[0])
+  }
+
+  useEffect(() => {
+    console.log(apiData);
+  }, [apiData])
+
 
   const replyApi = () => {
     instance
@@ -104,8 +137,8 @@ const CommentBox = (props) => {
               />
             </div>
             <div style={{ margin: "1rem 0rem" }}>
-              <input type="file" />
-              <button>Upload</button>
+              <input onChange={inputFileChosen} type="file" />
+              <button onClick={uploadMedia} >Upload</button>
             </div>
             </>
             }

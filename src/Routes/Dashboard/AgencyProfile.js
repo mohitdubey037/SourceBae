@@ -29,6 +29,7 @@ import { Modal } from 'react-responsive-modal';
 
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper";
+import ClientNavbar from '../Client/ClientNavbar';
 
 import Spinner from '../../Components/Spinner/Spinner';
 
@@ -97,7 +98,7 @@ function AgencyProfile() {
     return (
 
         <>
-            <Navbar headingInfo="Agency Profile" />
+            {id ? <ClientNavbar/> : <Navbar headingInfo="Agency Profile" /> }
 
             {loading ? <Spinner/> : 
 

@@ -15,7 +15,7 @@ const CommentBox = (props) => {
       isShortListed: true,
       negotiablePrice: "",
       comment: ""
-  
+      
   })
 
   const handleChange = (event)=>{

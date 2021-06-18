@@ -53,7 +53,7 @@ const App = () => {
     <CustomRoute condition="Agency" exact path="/add-developer" component={AddingDeveloper} />
     <CustomRoute condition="Agency" exact path="/quotation" component={Quotation} />
     <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />
-    <CustomRoute condition="Agency" exact path="/agency-profile:id" component={AgencyProfile} />
+    <CustomRoute condition="Client" exact path="/agency-profile:id" component={AgencyProfile} />
     <CustomRoute condition="Agency" exact path="/agency-form-one" component={AgencyForm1} />
     <CustomRoute condition="Agency" exact path="/agency-form-two" component={AgencyForm2} />
     <CustomRoute condition="Agency" exact path="/agency-form-three" component={AgencyForm3} />
