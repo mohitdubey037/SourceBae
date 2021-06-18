@@ -130,9 +130,10 @@ const Dashboard = (props) => {
         setMoreOption(null);
     };
 
-    const getStepsCompleted = useCallback(() => {
+    const getStepsCompleted = (() => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
+                console.log(response);
                 if (response.stepsCompleted === response.totalSteps)
                     setSteps(-1)
                 else {
@@ -143,7 +144,7 @@ const Dashboard = (props) => {
             })
     })
 
-    const getAgencyProfile = useCallback((agencyId) => {
+    const getAgencyProfile = ((agencyId) => {
         instance.get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
                 setVerified(response.isAgencyVerified)

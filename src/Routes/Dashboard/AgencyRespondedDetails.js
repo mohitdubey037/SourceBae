@@ -79,6 +79,7 @@ const CommentBox = (props) => {
     >
       {props.comments.map((index) => {
         if (index.commentType === props.commentType) {
+          console.log('hi');
           return (
             <>
               <div style={{ display: "flex", flexDirection: "column" }}>

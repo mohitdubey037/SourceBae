@@ -5,6 +5,7 @@ import "../Login/login.css";
 import * as helper from "../../shared/helper";
 import { useParams } from 'react-router'
 import instance from "../../Constants/axiosConstants";
+import axios from 'axios';
 
 import google from '../../assets/images/Logo/google.png'
 import loginImage from '../../assets/images/Logo/loginImage.png'
@@ -134,16 +135,17 @@ const Login = (props) => {
                     localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
                     localStorage.setItem('role', role)
                     localStorage.setItem('userId', `${response._id}`)
-                    // axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
                     resolve(1)
 
                     if (role === "Agency") {
-                        // setLoading(false);
+                        setLoading(false);
                         props.history.push('/dashboard');
+                        // window.location.href = '/dashboard'
                     }
 
                     else if (role === "Client") {
-                        // setLoading(false);
+                        setLoading(false);
                         props.history.push('/client-dashboard');
                     }
                 })
