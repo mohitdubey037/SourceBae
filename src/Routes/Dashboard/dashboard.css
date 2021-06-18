@@ -479,6 +479,11 @@ a.mainQuotationCard {
   margin: 1rem;
   border-radius: 35px;
   padding: 1rem 0;
+  cursor: pointer;
+}
+
+.mainProjectCard:hover{
+  box-shadow: 6px 6px 24px 1px rgba(0, 0, 0, 0.14);
 }
 .innerProjectCard {
   width: 90%;
@@ -532,6 +537,7 @@ a.mainQuotationCard {
 
 .projectDescription {
   margin-top: 1rem;
+  min-height: 6rem;
 }
 .projectDescription p {
   color: #868686;
@@ -565,6 +571,7 @@ a.mainQuotationCard {
   }
   .mainProjectCard {
     width: 95%;
+    cursor: pointer;
   }
   .mainProjectCard {
     margin: 1rem 0;
