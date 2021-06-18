@@ -7,14 +7,14 @@ import agencyLogo from "../../../assets/images/Quotation/cegelec.svg";
 import {connect} from 'react-redux'
 import instance from "../../../Constants/axiosConstants"
 import { useParams } from "react-router-dom";
-import * as helper from "../../../shared/helper";
+
 const CommentBox = (props) => {
   
   const [apiData, setApiData]= useState({
-      agencyId: localStorage.getItem("userId"),
+      agencyId: props.agencyId,
       isShortListed: true,
       negotiablePrice: "",
-      reply: ""
+      comment: ""
   
   })
 
@@ -28,7 +28,7 @@ const CommentBox = (props) => {
 
   const replyApi = ()=>{
    
-    instance.patch(`api/agency/projects/propose/${props.projectId}`,apiData)
+    instance.patch(`api/client/projects/propose/${props.projectId}`,apiData)
     .then(function(response){
       console.log(response)
       window.location.reload()
@@ -82,7 +82,7 @@ const CommentBox = (props) => {
           cols="50"
           style={{ margin: "0 1rem" }}
           placeholder="Enter your reply"
-          name="reply"
+          name="comment"
           value={apiData.reply}
           onChange={(event)=>handleChange(event)}
         />
@@ -107,13 +107,11 @@ const CommentBox = (props) => {
 };
 
 function RespondedDetails(props) {
-  let { projectId } = useParams();
-  projectId = helper.cleanParam(projectId);
-  console.log(projectId);
+  let { projectId, agencyId } = useParams();
+
   const [project, setProject] = useState({});
 
   const Role = localStorage.getItem("role");
-  const agencyId = localStorage.getItem("userId");
   const arr = [
     {
       title: "Food",
@@ -131,7 +129,7 @@ function RespondedDetails(props) {
 
   const getAllProjects = () => {
     instance
-      .get(`api/${Role}/projects/get/${projectId}`)
+      .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
         setProject(response);
       })
@@ -266,6 +264,8 @@ function RespondedDetails(props) {
                   commentType="Quotation"
                   isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
                   projectId= {projectId}
+                  agencyId = {agencyId}
+                  isAskedForQuotation = {true}
                 />
               )
               :
@@ -274,6 +274,8 @@ function RespondedDetails(props) {
                   commentType="Shortlist"
                   isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
                   projectId= {projectId}
+                  agencyId = {agencyId}
+                  isAskedForQuotation = {false}
                 />
               
               }
