@@ -181,7 +181,6 @@ const CommentBox = (props) => {
 function RespondedDetails(props) {
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
-  console.log(projectId);
   const [project, setProject] = useState({});
 
   const Role = localStorage.getItem("role");
