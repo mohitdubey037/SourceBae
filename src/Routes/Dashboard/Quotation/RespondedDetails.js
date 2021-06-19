@@ -1,39 +1,53 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./RespondedDetails.css";
 
 import foods from "../../../assets/images/Quotation/foods.png";
 import agencyLogo from "../../../assets/images/Quotation/cegelec.svg";
 
-import {connect} from 'react-redux'
-import instance from "../../../Constants/axiosConstants"
+import { connect } from "react-redux";
+import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 
 const CommentBox = (props) => {
   console.log(props);
-  const [apiData, setApiData]= useState({
+  const [apiData, setApiData] = useState({
+    agencyId: props.agencyId,
+    isShortListed: true,
+    negotiablePrice: "",
+    comment: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setApiData({
+      ...apiData,
+      [name]: value,
+    });
+  };
+
+  const replyApi = () => {
+    instance
+      .patch(`api/client/projects/propose/${props.projectId}`, apiData)
+      .then(function (response) {
+        console.log(response);
+        window.location.reload();
+      });
+  };
+
+  const askForQuotation = () => {
+    const quotationData = {
       agencyId: props.agencyId,
       isShortListed: true,
       negotiablePrice: "",
-      comment: ""
-
-  })
-
-  const handleChange = (event)=>{
-    const {name, value} = event.target
-    setApiData({
-      ...apiData,
-      [name]:value
-    })
-  }
-
-  const replyApi = ()=>{
-   
-    instance.patch(`api/client/projects/propose/${props.projectId}`,apiData)
-    .then(function(response){
-      console.log(response)
-      window.location.reload()
-    })
-  }
+      comment: "Please provide a Quotation.",
+    };
+    instance
+      .patch(`api/client/projects/propose/${props.projectId}`, quotationData)
+      .then(function (response) {
+        console.log(response);
+        window.location.reload();
+      });
+  };
   return (
     <div
       className="commentBox"
@@ -50,74 +64,93 @@ const CommentBox = (props) => {
         if (index.commentType === props.commentType) {
           return (
             <>
-            
               <div style={{ display: "flex", flexDirection: "column" }}>
-              {index.comment && <div>
-                  <h5>
-                    <b>Client: </b>
-                    {index.comment}
-                  </h5>
-                </div>}
-               {index.reply && <div>
-                  <h5>
-                    <b>Agency: </b>
-                    {index.reply}
-                  </h5>
-                </div>}
+                {index.comment && (
+                  <div>
+                    <h5>
+                      <b>Client: </b>
+                      {index.comment}
+                    </h5>
+                  </div>
+                )}
+                {index.reply && (
+                  <div>
+                    <h5>
+                      <b>Agency: </b>
+                      {index.reply}
+                    </h5>
+                  </div>
+                )}
               </div>
             </>
           );
-        }
-        else{
-          return ""
+        } else {
+          return "";
         }
       })}
-      
-     {props.isAskedForQuotation && props.isCommentSectionActive &&
-     ( <div style={{ display: "flex", flexDirection:"column"}}>
-     <div style={{display:"flex", margin:"1rem 0rem"}}>
-        <h5>
-          <b>Client: </b>
-        </h5>
-        <textarea
-          rows="5"
-          cols="50"
-          style={{ margin: "0 1rem" }}
-          placeholder="Enter your reply"
-          name="comment"
-          value={apiData.reply}
-          onChange={(event)=>handleChange(event)}
-        />
-      </div>
-      <div style={{display:"flex", flexDirection:"column", width:"30%"}}>
-        
-        <button
-          style={{
-            background: "none",
-            minWidth: "80px",
-            border: "2px solid black",
-            borderRadius: "4px",
-          }}
-          onClick={()=>{replyApi()}}
-        >
-          Reply
-        </button>
-      </div>
-      </div>)
-     
-      }
 
-      {
-        
-        (!props.isAskedForQuotation && props.isCommentSectionActive && props.isShortListed) &&
-        (  <div className="detailsButtons">
-                <button>Accept</button>
-                <button>Withdraw</button>
-              </div>)
-      }
-      {
-        props.isReplySectionActive && ("Waiting for the reply from Agency.")
-      }
+      {props.isAskedForQuotation && props.isCommentSectionActive && (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", margin: "1rem 0rem" }}>
+            <h5>
+              <b>Client: </b>
+            </h5>
+            <textarea
+              rows="5"
+              cols="50"
+              style={{ margin: "0 1rem" }}
+              placeholder="Enter your reply"
+              name="comment"
+              value={apiData.reply}
+              onChange={(event) => handleChange(event)}
+            />
+          </div>
+          <div
+            style={{ display: "flex", flexDirection: "column", width: "30%" }}
+          >
+            <button
+              style={{
+                background: "none",
+                minWidth: "80px",
+                border: "2px solid black",
+                borderRadius: "4px",
+              }}
+              onClick={() => {
+                replyApi();
+              }}
+            >
+              Reply
+            </button>
+          </div>
+        </div>
+      )}
+
+      {!props.isAskedForQuotation &&
+        props.isCommentSectionActive &&
+        props.isShortListed && (
+          <div className="detailsButtons">
+            <button onClick={askForQuotation}>Ask For Quotation</button>
+          </div>
+        )}
+
+      {props.isReplySectionActive && "Waiting for the reply from Agency."}
+
+      <div className="postQuotation">
+        {props.negotiablePrice && props.negotiablePrice !== null && (
+          <div className="detailsButtons">
+            <b>Negotiatiable Price:</b>
+            {props.negotiablePrice}
+          </div>
+        )}
+
+        {props.quotationLink && props.quotationLink !== "" && (
+          <div className="detailsButtons">
+            <a href={props.quotationLink} target="new">
+              <button>Click to see Quotation</button>
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
@@ -164,7 +197,7 @@ function RespondedDetails(props) {
   }, []);
 
   useEffect(() => {
-      console.log(project, "project");
+    console.log(project, "project");
   }, [project]);
   return (
     <>
@@ -177,11 +210,13 @@ function RespondedDetails(props) {
           </div>
           <div className="headerInformation">
             <div className="clientName">
-            {project?.projectProposals?.length>0 && project?.projectProposals[0]?.isProposalActionActive &&
-              <div className="detailsButtons">
-                <button>Accept</button>
-                <button>Withdraw</button>
-              </div>}
+              {project?.projectProposals?.length > 0 &&
+                project?.projectProposals[0]?.isProposalActionActive && (
+                  <div className="detailsButtons">
+                    <button>Accept</button>
+                    <button>Withdraw</button>
+                  </div>
+                )}
             </div>
             <div className="clientExperience">
               {arr.map((value, index) => {
@@ -274,31 +309,43 @@ function RespondedDetails(props) {
             <h4>Comments and Replies</h4>
 
             {project?.projectProposals &&
-              project.projectProposals[0]?.isAskedForQuotation === true ? (
+            project.projectProposals[0]?.isAskedForQuotation === true ? (
+              <CommentBox
+                comments={project.projectProposals[0]?.comments}
+                commentType="Quotation"
+                isCommentSectionActive={
+                  project.projectProposals[0].isCommentSectionActive
+                }
+                isReplySectionActive={
+                  project.projectProposals[0].isReplySectionActive
+                }
+                projectId={projectId}
+                agencyId={agencyId}
+                isAskedForQuotation={true}
+                isShortListed={true}
+                negotiablePrice={project.projectProposals[0].negotiablePrice}
+                quotationLink={project.projectProposals[0].quotationLink}
+              />
+            ) : (
+              project?.projectProposals && (
                 <CommentBox
                   comments={project.projectProposals[0]?.comments}
-                  commentType="Quotation"
-                  isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
-                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
-                  projectId= {projectId}
-                  agencyId = {agencyId}
-                  isAskedForQuotation = {true}
-                  isShortListed = {true}
+                  commentType="Shortlist"
+                  isCommentSectionActive={
+                    project.projectProposals[0].isCommentSectionActive
+                  }
+                  isReplySectionActive={
+                    project.projectProposals[0].isReplySectionActive
+                  }
+                  projectId={projectId}
+                  agencyId={agencyId}
+                  isAskedForQuotation={false}
+                  isShortListed={true}
+                  negotiablePrice={project.projectProposals[0].negotiablePrice}
+                  quotationLink={project.projectProposals[0].quotationLink}
                 />
               )
-              :
-              project?.projectProposals && <CommentBox
-                  comments={project.projectProposals[0]?.comments}
-                  commentType="Shortlist"
-                  isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
-                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
-                  projectId= {projectId}
-                  agencyId = {agencyId}
-                  isAskedForQuotation = {false}
-                  isShortListed = {true}
-                />
-              
-              }
+            )}
           </div>
 
           <div className="agencyQuestions">

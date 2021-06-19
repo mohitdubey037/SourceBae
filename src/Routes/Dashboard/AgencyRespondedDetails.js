@@ -15,10 +15,10 @@ const CommentBox = (props) => {
     isShortListed: true,
     negotiablePrice: "",
     reply: "",
-    quotationLink: ""
+    quotationLink: "",
   });
 
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,31 +31,26 @@ const CommentBox = (props) => {
   function uploadMedia() {
     console.log(file);
     const formData = new FormData();
-    file && formData.append(
-      "files",
-      file,
-      "files.pdf"
-    );
-    instance.post(`api/agency/media/create`, formData)
+    file && formData.append("files", file, "files.pdf");
+    instance
+      .post(`api/agency/media/create`, formData)
       .then(function (response) {
-        console.log(response)
+        console.log(response);
         setApiData({
           ...apiData,
-          quotationLink: response[0].mediaURL          
-        })
+          quotationLink: response[0].mediaURL,
+        });
       })
-      .catch(err => {
-      })
+      .catch((err) => {});
   }
 
   const inputFileChosen = (e) => {
-    setFile(e.target.files[0])
-  }
+    setFile(e.target.files[0]);
+  };
 
   useEffect(() => {
     console.log(apiData);
-  }, [apiData])
-
+  }, [apiData]);
 
   const replyApi = () => {
     instance
@@ -79,7 +74,7 @@ const CommentBox = (props) => {
     >
       {props.comments.map((index) => {
         if (index.commentType === props.commentType) {
-          console.log('hi');
+          console.log("hi");
           return (
             <>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -125,24 +120,43 @@ const CommentBox = (props) => {
           <div
             style={{ display: "flex", flexDirection: "column", width: "30%" }}
           >
-            
-            {props.isAskedForQuotation &&
-            <>
-            <div>
-              <input
-                type="number"
-                name="negotiablePrice"
-                placeholder="negotiable price"
-                value={apiData.negotiablePrice}
-                onChange={(event) => handleChange(event)}
-              />
-            </div>
-            <div style={{ margin: "1rem 0rem" }}>
-              <input onChange={inputFileChosen} type="file" />
-              <button onClick={uploadMedia} >Upload</button>
-            </div>
-            </>
-            }
+            {props.isAskedForQuotation && (
+              <>
+                {props.negotiablePrice && props.negotiablePrice !== null ? (
+                  <div className="detailsButtons">
+                    <b>Negotiatiable Price:</b>
+                    {props.negotiablePrice}
+                  </div>
+                ) : (
+                  <div>
+                    <input
+                      type="number"
+                      name="negotiablePrice"
+                      placeholder="negotiable price"
+                      value={apiData.negotiablePrice}
+                      onChange={(event) => handleChange(event)}
+                    />
+                  </div>
+                )}
+
+                {props.quotationLink && props.quotationLink !== "" ? (
+                  <div className="detailsButtons">
+                    <a href={props.quotationLink} target="new">
+                      <button>Click to see Quotation</button>
+                    </a>
+                  </div>
+                ) : (
+                  <div style={{ margin: "1rem 0rem" }}>
+                    <input
+                      onChange={inputFileChosen}
+                      type="file"
+                      accept="application/pdf"
+                    />
+                    <button onClick={uploadMedia}>Upload</button>
+                  </div>
+                )}
+              </>
+            )}
 
             <button
               style={{
@@ -328,6 +342,9 @@ function RespondedDetails(props) {
                 }
                 projectId={projectId}
                 isAskedForQuotation={true}
+                isShortListed={true}
+                negotiablePrice={project.projectProposals[0].negotiablePrice}
+                quotationLink={project.projectProposals[0].quotationLink}
               />
             ) : (
               project?.projectProposals && (
@@ -339,6 +356,9 @@ function RespondedDetails(props) {
                   }
                   projectId={projectId}
                   isAskedForQuotation={false}
+                  isShortListed={true}
+                  negotiablePrice={project.projectProposals[0].negotiablePrice}
+                  quotationLink={project.projectProposals[0].quotationLink}
                 />
               )
             )}
