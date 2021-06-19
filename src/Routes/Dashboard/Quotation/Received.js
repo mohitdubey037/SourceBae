@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import Spinner from '../../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
+import { useHistory } from 'react-router-dom';
+
 
 
 function Received() {
+    const routerHistory = useHistory();
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
@@ -93,6 +96,7 @@ function Received() {
                                             </div>
                                             <div>
                                                 <button>Withdraw</button>
+                                                <button onClick={() => {routerHistory.push(`agency-project-details:${s._id}`)}}>Show details</button>
                                             </div>
                                         </div>
                                     </div>
