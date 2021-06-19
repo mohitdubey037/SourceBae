@@ -22,6 +22,7 @@ function AgencyList(props) {
   const [open, setOpen] = useState(false);
   const [openQuotation, setOpenQuotation] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isShortlistingDone, setShortlisting] = useState(false)
 
   const openShortlistModal = (_id) => {
     setOpen(true);
@@ -84,6 +85,7 @@ function AgencyList(props) {
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
         console.log(response);
+        setShortlisting(true)
       })
       .catch((err) => {
         console.log(err);
@@ -199,11 +201,8 @@ function AgencyList(props) {
                             >
                               <p>Show Details</p>
                             </div>
-                          ) : agency.isAgencyShortListed ? (
+                          ) : agency.isAgencyShortListed || isShortlistingDone ? (
                             <>
-                              <div onClick={() => onOpenQuotationModel(agency._id)}>
-                                <p>Get Quotation</p>
-                              </div>
                               <div
                                 onClick={() =>
                                   props.history.push({

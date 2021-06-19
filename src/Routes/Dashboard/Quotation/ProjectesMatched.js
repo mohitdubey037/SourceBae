@@ -10,6 +10,8 @@ import shape from '../../../assets/images/Quotation/shape.png'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Spinner from '../../../Components/Spinner/Spinner';
+import { useHistory } from 'react-router-dom';
+
 
 // const arr = [
 //     {
@@ -34,8 +36,8 @@ import Spinner from '../../../Components/Spinner/Spinner';
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 function ProjectesMatched() {
-
     const agencyId = localStorage.getItem('userId');
+    const routerHistory = useHistory();
     const Role = localStorage.getItem('role');
     console.log(Role);
 
@@ -44,7 +46,7 @@ function ProjectesMatched() {
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectMatched=true`)
+        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectCurrentStatus=Short Listed&projectResponded=false`)
             .then(response => {
                 setLoading(false);
                 console.log(response);
@@ -54,7 +56,6 @@ function ProjectesMatched() {
                 setLoading(false)
                 console.log(err)
             })
-
     }
 
     useEffect(() => {
@@ -91,7 +92,8 @@ function ProjectesMatched() {
                                             </div>
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
-                                                    <button onClick={onOpenModal}>Show Interest</button>
+                                                    {/* <button onClick={onOpenModal}>Show Interest</button> */}
+                                                    <button onClick={() => {routerHistory.push(`agency-project-details:${s._id}`)}}>Show Details</button>
                                                 </div>
                                             </div>
                                         </div>

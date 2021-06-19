@@ -13,6 +13,7 @@ import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
 import Spinner from '../../Components/Spinner/Spinner';
+import cookie from "react-cookies";
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -84,6 +85,7 @@ const Register = (props) => {
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false
     });
+    const [token, setToken] = useState(null);
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
 
@@ -247,13 +249,14 @@ const Register = (props) => {
         return new Promise((resolve, reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
                 .then(function (response) {
-                    alert(response._id)
-                    localStorage.setItem("userId", response._id)
-                    localStorage.removeItem('Authorization')
-                    localStorage.setItem('Authorization', `Bearer ${response.accessToken}`)
-                    localStorage.setItem('role', role)
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${response.accessToken}`
-                    resolve(1)
+               cookie.save(
+                        "Authorization",
+                        `Bearer ${response.accessToken}`,
+                        { path: '/' }
+                    );
+                    setToken(cookie.load("Authorization"))
+                    localStorage.setItem("role", role);
+                    localStorage.setItem("userId", `${response._id}`);
                 })
         })
     }
@@ -279,35 +282,38 @@ const Register = (props) => {
     const handleSubmit = (Role, Form, createAgencyForm, createClientForm) => {
         if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
-            let signUpPromise = signUpApi(apiRole, Form)
-            Promise.all([signUpPromise])
-                .then(() => {
-                    let api_param_const = ``
-                    let api_create_form = {}
-                    if (apiRole === `client`) {
-                        api_param_const = `clients`
-                        api_create_form = {
-                            "stepsCompleted": 1,
-                            ...createClientForm
-                        }
-                    }
-                    else if (apiRole === `agency`) {
-                        api_param_const = `agencies`
-                        api_create_form = {
-                            "stepsCompleted": 1,
-                            ...createAgencyForm
-                        }
-                    }
-                    if (localStorage.getItem('Authorization') !== null && localStorage.getItem('Authorization') !== undefined) {
-                        instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
-                        createProfileApi(apiRole, api_param_const, api_create_form)
-                    }
-                    else {
-                        toast.error("Token not set", { autoClose: 2000 })
-                    }
-                })
+            signUpApi(apiRole, Form)
         }
     }
+
+    useEffect(()=>{
+        if(token!==null)
+        {   const apiRole = helper.lowerize(role)
+            let api_param_const = ``
+            let api_create_form = {}
+            if (apiRole === `client`) {
+                api_param_const = `clients`
+                api_create_form = {
+                    "stepsCompleted": 1,
+                    ...clientProfileDetails
+                }
+            }
+            else if (apiRole === `agency`) {
+                api_param_const = `agencies`
+                api_create_form = {
+                    "stepsCompleted": 1,
+                    ...agencyProfileDetails
+                }
+            }
+            if (token!== null) {
+                instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+                createProfileApi(apiRole, api_param_const, api_create_form)
+            }
+            else {
+                toast.error("Token not set", { autoClose: 2000 })
+            }
+        }
+    },[token])
 
     const createRoleString = (role) => {
         role = role.charAt(0).toUpperCase() + role.slice(1)
@@ -410,9 +416,6 @@ const Register = (props) => {
             })
     }, [linkedIn, site])
 
-    useEffect(() => {
-        localStorage.removeItem(`Authorization`)
-    }, [])
 
     //__________ USE-EFFECT ENDS ______//
 
@@ -580,7 +583,7 @@ const Register = (props) => {
                                     <input type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
                                     {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
 
-                                    <Button
+                               <Button
                                         onClick={() => handleSubmit(role, signupForm, agencyProfileDetails, clientProfileDetails)}
                                         style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                                     >
