@@ -13,6 +13,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Navbar from './Navbar'
 
 import Select from '@material-ui/core/Select';
+import axios from 'axios';
 
 import Tooltip from 'react-power-tooltip'
 import { Link, NavLink } from 'react-router-dom'
@@ -66,7 +67,7 @@ const Dashboard = (props) => {
     };
 
     const getAllProjects = () => {
-        instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=`)
+        instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=in progress`)
             .then(function (response) {
                 console.log(response);
                 setAllProjects(response);
@@ -130,12 +131,27 @@ const Dashboard = (props) => {
         setMoreOption(null);
     };
 
+    // const getStepsCompleted = (() => {
+    //     instance.get(`api/${Role}/agencies/steps-completed`)
+    //         .then(function (response) {
+    //             console.log(response);
+    //             if (response.stepsCompleted === response.totalSteps)
+    //                 setSteps(-1)
+    //             else {
+    //                 setSteps(response.stepsCompleted)
+    //                 let route = `/agency-form-${helper.getNumberSpell(response.stepsCompleted)}`
+    //                 setFormRoute(route)
+    //             }
+    //         })
+    // })
+
     const getStepsCompleted = (() => {
-        instance.get(`api/${Role}/agencies/steps-completed`)
+        axios.get(`https://api.onesourcing.in/api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 console.log(response);
-                if (response.stepsCompleted === response.totalSteps)
+                if (response.stepsCompleted === response.totalSteps) {
                     setSteps(-1)
+                }
                 else {
                     setSteps(response.stepsCompleted)
                     let route = `/agency-form-${helper.getNumberSpell(response.stepsCompleted)}`
@@ -181,7 +197,7 @@ const Dashboard = (props) => {
                 <div className="innerMainVerify">
 
                     {!verified && steps !== -1 ?
-                        <p>Please<span onClick={() => window.location.href = `${formRoute}`} >Update & Verify </span> your profile to use our services.</p>
+                        <p>Please<span onClick={() => props.history.push(formRoute)} >Update & Verify </span> your profile to use our services.</p>
                         :
                         <p>Please wait for your profile to be verified by us.</p>
                     }
@@ -228,39 +244,39 @@ const Dashboard = (props) => {
                                 //         </div>
                                 //     </div>
                                 // </Link>
-                                
-                                    <div className="mainQuotationCard" key={index} onClick={() => handleLink(value.route)} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
-                                        <div className="leftLine" style={{
-                                            backgroundColor: value?.borderColor,
-                                        }}></div>
-                                        <div
-                                            style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                                            onMouseOver={() => {
-                                                setIsPopover(true)
-                                                setPopIndex(index)
-                                            }}
-                                            onMouseLeave={() => setIsPopover(false)}>
-                                            <i style={{ fontSize: 22, color: value?.borderColor }} className="fa fa-info-circle" aria-hidden="true"></i>
-                                            {/* ADD TOOLTIP HERE */}
-                                            {
-                                                isPopover && popindex === index
-                                                &&
-                                                <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
-                                                    <span>Some text</span>
-                                                </Tooltip>
-                                            }
+
+                                <div className="mainQuotationCard" key={index} onClick={() => handleLink(value.route)} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
+                                    <div className="leftLine" style={{
+                                        backgroundColor: value?.borderColor,
+                                    }}></div>
+                                    <div
+                                        style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                        onMouseOver={() => {
+                                            setIsPopover(true)
+                                            setPopIndex(index)
+                                        }}
+                                        onMouseLeave={() => setIsPopover(false)}>
+                                        <i style={{ fontSize: 22, color: value?.borderColor }} className="fa fa-info-circle" aria-hidden="true"></i>
+                                        {/* ADD TOOLTIP HERE */}
+                                        {
+                                            isPopover && popindex === index
+                                            &&
+                                            <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
+                                                <span>Some text</span>
+                                            </Tooltip>
+                                        }
+                                    </div>
+                                    <div className="innerQuotationCard">
+                                        <div className="quotationImage">
+                                            <img src={value?.image} alt="" />
                                         </div>
-                                        <div className="innerQuotationCard">
-                                            <div className="quotationImage">
-                                                <img src={value?.image} alt="" />
-                                            </div>
-                                            <div className="quotationInfo">
-                                                {/* <h2 className>{value?.title}</h2> */}
-                                                <h2><Link style={{textDecoration: 'none'}}>{value?.title}</Link></h2>
-                                                <p>{value?.desc}</p>
-                                            </div>
+                                        <div className="quotationInfo">
+                                            {/* <h2 className>{value?.title}</h2> */}
+                                            <h2><Link style={{ textDecoration: 'none' }}>{value?.title}</Link></h2>
+                                            <p>{value?.desc}</p>
                                         </div>
                                     </div>
+                                </div>
                             )
                         })
                     }
@@ -271,14 +287,14 @@ const Dashboard = (props) => {
 
             <div className="mainProjects">
                 <div className="innerProjects">
-                    <div className="projectHeading">
+                    {/* <div className="projectHeading">
                         <div>
                             <h2>Your Projects</h2>
                         </div>
                         <div className="filtering">
                             <div className="filterBtn" id="demo-simple-select-label">
                                 <h4>Filter</h4>
-                                {/* <div> <FilterListIcon /> </div> */}
+                                <div> <FilterListIcon /> </div> 
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
@@ -291,16 +307,11 @@ const Dashboard = (props) => {
                                             <MenuItem className='SelectClass' value={value}>{value}</MenuItem>
                                         )
                                     })}
-                                    {/* <MenuItem value={10}>Completed</MenuItem>
-                                    <MenuItem value={20}>Pending</MenuItem>
-                                    <MenuItem value={30}>Cancelled</MenuItem> */}
                                 </Select>
                             </div>
-
                         </div>
-                    </div>
+                    </div> */}
                     <div className="allProjects">
-
                         {
                             allProjects?.projects?.length > 0 ?
                                 allProjects?.projects?.map((value, index) => {
@@ -312,9 +323,9 @@ const Dashboard = (props) => {
                                                         {/* <div className="projectImage">
                                                             <img src={clientProfile} alt="" />
                                                         </div> */}
-                                                        
+
                                                         <div className="projectName" >
-                                                            <p  className="projectN">{value.projectName}</p>
+                                                            <p className="projectN">{value.projectName}</p>
                                                             {/* <NavLink className="projectN" to={{
                                                                 pathname: "/project-details",
                                                                 state: { ...value },
@@ -349,7 +360,7 @@ const Dashboard = (props) => {
                                                     </div> */}
                                                 </div>
                                                 <div className="projectDescription">
-                                                    <p title={value?.projectDescription}>{(value?.projectDescription).slice(0,100)}...</p>
+                                                    <p title={value?.projectDescription}>{(value?.projectDescription).slice(0, 100)}...</p>
                                                 </div>
                                                 <div className="projectTable">
                                                     <div style={{ borderBottom: '1px solid #d3d3d3' }}>
