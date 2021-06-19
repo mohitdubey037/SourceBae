@@ -173,10 +173,6 @@ const Login = (props) => {
         setLoading(false);
         props.history.push("/client-dashboard");
       }
-    
-    else{
-        console.log(localStorage.getItem('Authorization',token))
-    }
     }
 
   }, [token]);

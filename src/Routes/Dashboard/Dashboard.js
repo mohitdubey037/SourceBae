@@ -57,9 +57,6 @@ const Dashboard = (props) => {
     const onOpenModal = () => setOpenModal(true);
     const onCloseModal = () => setOpenModal(false);
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     const handleChange = (event) => {
         setAge(event.target.value);

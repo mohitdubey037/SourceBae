@@ -72,7 +72,8 @@ const CommentBox = (props) => {
           return ""
         }
       })}
-     {props.isCommentSectionActive && <div style={{ display: "flex", flexDirection:"column"}}>
+     {props.isCommentSectionActive &&
+     ( <div style={{ display: "flex", flexDirection:"column"}}>
      <div style={{display:"flex", margin:"1rem 0rem"}}>
         <h5>
           <b>Client: </b>
@@ -101,7 +102,13 @@ const CommentBox = (props) => {
           Reply
         </button>
       </div>
-      </div>}
+      </div>)
+     
+      }
+
+      {
+        props.isReplySectionActive && ("Waiting for the reply from Agency.")
+      }
     </div>
   );
 };
@@ -148,7 +155,7 @@ function RespondedDetails(props) {
   }, []);
 
   useEffect(() => {
-    console.log(project, "project");
+      console.log(project, "project");
   }, [project]);
   return (
     <>
@@ -161,7 +168,7 @@ function RespondedDetails(props) {
           </div>
           <div className="headerInformation">
             <div className="clientName">
-            {project.isProposalActionActive &&
+            {project?.projectProposals?.length>0 && project?.projectProposals[0]?.isProposalActionActive &&
               <div className="detailsButtons">
                 <button>Accept</button>
                 <button>Withdraw</button>
@@ -263,6 +270,7 @@ function RespondedDetails(props) {
                   comments={project.projectProposals[0]?.comments}
                   commentType="Quotation"
                   isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
+                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
                   projectId= {projectId}
                   agencyId = {agencyId}
                   isAskedForQuotation = {true}
@@ -273,6 +281,7 @@ function RespondedDetails(props) {
                   comments={project.projectProposals[0]?.comments}
                   commentType="Shortlist"
                   isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
+                  isReplySectionActive = {project.projectProposals[0].isReplySectionActive}
                   projectId= {projectId}
                   agencyId = {agencyId}
                   isAskedForQuotation = {false}

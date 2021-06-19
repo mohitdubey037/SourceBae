@@ -23,12 +23,12 @@ instance.interceptors.request.use(function (request) {
     }
     return request;
   });
-  
+
 instance.interceptors.response.use(function (response){
     if(response.status===200){
         return response.data.data
     }
-    else if(response.status===201){
+    else if(response.status===201 || response.status===204){
         toast.success(response.data.message, {
             position: "top-right",
             autoClose: 2000,
