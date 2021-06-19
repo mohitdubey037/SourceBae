@@ -3,7 +3,7 @@ import { config } from "./apiConstants"
 
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { useHistory } from 'react-router-dom';
+import cookie from "react-cookies";
 
 var url = config.url.API_URL
 
@@ -15,6 +15,15 @@ const instance = axios.create({
     data:{},
 })
 
+instance.interceptors.request.use(function (request) {
+    console.log(request);
+    if (!request.url.includes("login")) {
+      console.log(cookie.load("Authorization"), "cookies");
+      request.headers["Authorization"] = cookie.load("Authorization");
+    }
+    return request;
+  });
+  
 instance.interceptors.response.use(function (response){
     if(response.status===200){
         return response.data.data
@@ -38,7 +47,7 @@ instance.interceptors.response.use(function (response){
     console.log(error)
     let trueError = ""
     if(error?.response?.data?.message==="Bearer Token not found")
-        window.href.push('/');
+        window.location.href = '/';
         const errors = error?.response?.data?.error ?? {}
         const errorName = Object.keys(errors)
         console.log(typeof errors)

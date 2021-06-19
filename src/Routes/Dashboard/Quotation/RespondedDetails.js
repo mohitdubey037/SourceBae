@@ -6,7 +6,34 @@ import agencyLogo from "../../../assets/images/Quotation/cegelec.svg";
 
 import {connect} from 'react-redux'
 import instance from "../../../Constants/axiosConstants"
+import { useParams } from "react-router-dom";
+
 const CommentBox = (props) => {
+  console.log(props);
+  const [apiData, setApiData]= useState({
+      agencyId: props.agencyId,
+      isShortListed: true,
+      negotiablePrice: "",
+      comment: ""
+
+  })
+
+  const handleChange = (event)=>{
+    const {name, value} = event.target
+    setApiData({
+      ...apiData,
+      [name]:value
+    })
+  }
+
+  const replyApi = ()=>{
+   
+    instance.patch(`api/client/projects/propose/${props.projectId}`,apiData)
+    .then(function(response){
+      console.log(response)
+      window.location.reload()
+    })
+  }
   return (
     <div
       className="commentBox"
@@ -20,57 +47,71 @@ const CommentBox = (props) => {
       }}
     >
       {props.comments.map((index) => {
-        if (true) {
-          if (index.comment && index.reply) {
-            return (
+        if (index.commentType === props.commentType) {
+          return (
+            <>
+            
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <div>
+              {index.comment && <div>
                   <h5>
                     <b>Client: </b>
                     {index.comment}
                   </h5>
-                </div>
-                <div>
+                </div>}
+               {index.reply && <div>
                   <h5>
                     <b>Agency: </b>
                     {index.reply}
                   </h5>
-                </div>
+                </div>}
               </div>
-            );
-          } else if (index.comment && index.reply === undefined) {
-            return (
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div>
-                  <h5>
-                    <b>Client: </b>
-                    {index.comment}
-                  </h5>
-                </div>
-                <div style={{ display: "flex" }}>
-                  <h5>
-                    <b>Agency: </b>
-                  </h5>
-                  <textarea rows="5" cols = "50" style={{margin:"0 1rem"}} placeholder="Enter your reply"/>
-                  <button style={{background:"none", minWidth:"80px", border:"2px solid black", borderRadius:"4px"}}>Reply</button>
-                </div>
-              </div>
-            );
-          }
-        } else {
-          return "";
+            </>
+          );
+        }
+        else{
+          return ""
         }
       })}
+     {props.isCommentSectionActive && <div style={{ display: "flex", flexDirection:"column"}}>
+     <div style={{display:"flex", margin:"1rem 0rem"}}>
+        <h5>
+          <b>Client: </b>
+        </h5>
+        <textarea
+          rows="5"
+          cols="50"
+          style={{ margin: "0 1rem" }}
+          placeholder="Enter your reply"
+          name="comment"
+          value={apiData.reply}
+          onChange={(event)=>handleChange(event)}
+        />
+      </div>
+      <div style={{display:"flex", flexDirection:"column", width:"30%"}}>
+        
+        <button
+          style={{
+            background: "none",
+            minWidth: "80px",
+            border: "2px solid black",
+            borderRadius: "4px",
+          }}
+          onClick={()=>{replyApi()}}
+        >
+          Reply
+        </button>
+      </div>
+      </div>}
     </div>
   );
 };
 
 function RespondedDetails(props) {
-  console.log(props,"props");
-  const [project, setProject] = useState({})
+  let { projectId, agencyId } = useParams();
 
-  const Role = localStorage.getItem('role')
-  const userId = localStorage.getItem('userId')
+  const [project, setProject] = useState({});
+
+  const Role = localStorage.getItem("role");
   const arr = [
     {
       title: "Food",
@@ -87,30 +128,28 @@ function RespondedDetails(props) {
   ];
 
   const getAllProjects = () => {
-    const apiParam = Role==="client"?"clientId":"agencyId"
-    instance.get(`api/${Role}/projects/all?${apiParam}=${userId}&quotationReceived=`)
-        .then(function (response) {
-            setProject(response);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
-  useEffect(()=>{
-    if(Object.keys(props["projects"]).length===0){
-      console.log("empty")
-      getAllProjects()
+    instance
+      .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
+      .then(function (response) {
+        setProject(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    if (Object.keys(props["projects"]).length === 0) {
+      console.log("empty");
+      getAllProjects();
+    } else {
+      console.log("Not empty");
+      setProject(props.projects);
     }
-    else{
-      console.log("Not empty")
-      setProject(props.projects)
-    }
-   
-  },[])
+  }, []);
 
-  useEffect(()=>{
-    console.log(project,"project")
-  },[project])
+  useEffect(() => {
+    console.log(project, "project");
+  }, [project]);
   return (
     <>
       <div className="mainDetailHeader">
@@ -122,10 +161,11 @@ function RespondedDetails(props) {
           </div>
           <div className="headerInformation">
             <div className="clientName">
+            {project.isProposalActionActive &&
               <div className="detailsButtons">
                 <button>Accept</button>
                 <button>Withdraw</button>
-              </div>
+              </div>}
             </div>
             <div className="clientExperience">
               {arr.map((value, index) => {
@@ -134,15 +174,15 @@ function RespondedDetails(props) {
                     <div className="rightBorder"></div>
                     <div
                       className="innerBtnInfoDiv"
-                      style={{ marginLeft: index == 0 ? "0" : "20px" }}
+                      style={{ marginLeft: index === 0 ? "0" : "20px" }}
                     >
                       <p
                         style={{
                           backgroundColor:
-                            index == 0 ? "#02044a" : "transparent",
-                          padding: index == 0 ? "0.2rem 1rem" : 0,
+                            index === 0 ? "#02044a" : "transparent",
+                          padding: index === 0 ? "0.2rem 1rem" : 0,
                           borderRadius: "999px",
-                          color: index == 0 ? "#fff" : "#02044a",
+                          color: index === 0 ? "#fff" : "#02044a",
                         }}
                       >
                         {value?.title}
@@ -158,7 +198,7 @@ function RespondedDetails(props) {
 
       <div className="respondDescription">
         <h2>About Your Project</h2>
-        <p>{props.projectDescription}</p>
+        <p>{project.projectDescription}</p>
       </div>
 
       <div className="respondCards">
@@ -216,13 +256,29 @@ function RespondedDetails(props) {
 
           <div className="agencyQuotationDesc">
             <h4>Comments and Replies</h4>
-            
-            {props?.projectProposals && props.projectProposals[0]?.isAskedForQuotation === true && (
-              <CommentBox
-                comments={props.projectProposals[0]?.comments}
-                commentType="Shortlist"
-              />
-            )}
+
+            {project?.projectProposals &&
+              project.projectProposals[0]?.isAskedForQuotation === true ? (
+                <CommentBox
+                  comments={project.projectProposals[0]?.comments}
+                  commentType="Quotation"
+                  isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
+                  projectId= {projectId}
+                  agencyId = {agencyId}
+                  isAskedForQuotation = {true}
+                />
+              )
+              :
+              project?.projectProposals && <CommentBox
+                  comments={project.projectProposals[0]?.comments}
+                  commentType="Shortlist"
+                  isCommentSectionActive = {project.projectProposals[0].isCommentSectionActive}
+                  projectId= {projectId}
+                  agencyId = {agencyId}
+                  isAskedForQuotation = {false}
+                />
+              
+              }
           </div>
 
           <div className="agencyQuestions">
@@ -257,11 +313,11 @@ function RespondedDetails(props) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-      projects : state.projects,
-      condition : state.condition
-  }
-}
+    projects: state.projects,
+    condition: state.condition,
+  };
+};
 
 export default connect(mapStateToProps)(RespondedDetails);

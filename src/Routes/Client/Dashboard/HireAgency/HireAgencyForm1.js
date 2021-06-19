@@ -21,13 +21,11 @@ const BlueRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-const HireAgencyForm1 = () => {
+const HireAgencyForm1 = (props) => {
 
   const [loading, setLoading] = useState(false);
   const id = localStorage.getItem("userId");
-  // const [projectId, setProjectId] = useState("")
-  const Role = "client"
-  const [buttonStatus, setButtonStatus] = useState("Submit");
+  const Role = "Client";
   const [data, setData] = useState({
     stepsCompleted: 1,
     clientId: id,
@@ -36,15 +34,6 @@ const HireAgencyForm1 = () => {
     projectProposalCost: "",
     projectExpectedStartingDays: 5,
   });
-
-  const [error, setError] = useState({
-    projectNameError: "",
-    projectDescriptionError: "",
-  })
-
-  // const colors = {
-  //   Next: "green",
-  // }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -61,6 +50,7 @@ const HireAgencyForm1 = () => {
         projectExpectedStartingDays: data.projectExpectedStartingDays + 15,
       });
   };
+
   const downArrow = () => {
     if (data.projectExpectedStartingDays > 30)
       setData({
@@ -185,9 +175,8 @@ const HireAgencyForm1 = () => {
     console.log(data);
     instance.post(`/api/${Role}/projects/create`, data)
       .then(function (response) {
-        // setProjectId(response._id)
         setLoading(false);
-        window.location.href = `/hire-agency-form-two:${response._id}`
+        props.history.push(`/hire-agency-form-two:${response._id}`)
       })
       .catch(err => {
         setLoading(false)
@@ -197,14 +186,12 @@ const HireAgencyForm1 = () => {
   return (
     <>
       <ClientNavbar />
-
       {loading ? <Spinner /> :
-
         <div className="mainHireAgencyForm1">
           <div
             className="backArrow"
             onClick={() => {
-              window.location.href = "/client-dashboard";
+              props.history.push("/client-dashboard");
             }}
           >
             <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -224,7 +211,6 @@ const HireAgencyForm1 = () => {
                   placeholder="Start from here.."
                   value={data.projectName}
                 />
-                {data.projectName !== "" ? <Alert severity="error">{error.projectNameError}</Alert> : ''}
               </div>
               <div className="descriptionProjectAgency">
                 <p>2. Describe a little bit about your project?</p>
@@ -239,7 +225,6 @@ const HireAgencyForm1 = () => {
                   <span>More than 100 characters</span>
                   <span>0/100</span>
                 </div>
-                {data.projectDescription !== "" ? <Alert severity="error">{error.projectDescriptionError}</Alert> : ''}
               </div>
               <div className="budgetSectionAreaAgency">
                 <p>3. What's your budget for this project?</p>
@@ -292,7 +277,7 @@ const HireAgencyForm1 = () => {
               </div>
               <div className="nextbuttton">
                 <span></span>
-                <div /* style={{backgroundColor:colors[buttonStatus]}} */ onClick={() => handleSubmit()}>
+                <div onClick={() => handleSubmit()}>
                   Submit
                   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </div>

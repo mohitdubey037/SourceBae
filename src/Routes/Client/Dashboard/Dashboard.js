@@ -34,7 +34,6 @@ const MenuProps = {
     },
 };
 
-
 const useStyles = makeStyles((theme) => ({
     button: {
         display: 'block',
@@ -62,6 +61,7 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 }
 
 function Dashboard(props) {
+    const theme = useTheme();
 
     const Role = helper.lowerize(localStorage.getItem('role'));
     const clientId = localStorage.getItem("userId")
@@ -72,8 +72,6 @@ function Dashboard(props) {
     const [projects, setProjects] = useState([])
     const [statuses, setStatuses] = useState([])
     const [selectedStatus, setSelectedStatus] = React.useState('');
-
-    const theme = useTheme();
 
 
     const getAllProjects = () => {
@@ -220,7 +218,7 @@ function Dashboard(props) {
                                         <span className="leftBorderClientProject"></span>
                                         <div className="cardTopPart">
                                             <div className="projectName">
-                                                <p onClick={() => projectNameNavigator(p)} className="projectDetailsRouter">{p.projectName}</p>
+                                                <p className="projectDetailsRouter">{p.projectName}</p>
                                                 {/* <NavLink className="projectDetailsRouter" to={{
                                                     pathname: "/project-details",
                                                     state: { ...p },
@@ -251,12 +249,15 @@ function Dashboard(props) {
                                         <div className="projectStage">
                                             <span className="statusLine"></span>
                                             {statuses.map((s, index, value) => {
+                                                if(index<7)
                                                 return (
                                                     <div>
                                                         <span style={{ backgroundColor: index <= value.indexOf(p.projectCurrentStatus) ? '#5cb85c' : '#626567' }}>{index + 1}</span>
                                                         <p>{s}</p>
                                                     </div>
                                                 )
+                                                else
+                                                    return ""
                                             })}
 
 
@@ -281,8 +282,7 @@ function Dashboard(props) {
                                             </div>
                                             {/* <div className="clientProject"> */}
                                             {/* <div onClick={() => routeRedirecter(p._id)}><p>View Proposal</p></div> */}
-                                            <div className='clientProjectLink' onClick={() => routeRedirecter(p._id)}><p>Visit More Agency </p></div>
-                                            <div className='clientProjectLink'><p>Visit Selected Agency</p></div>
+                                            <div className='clientProjectLink' onClick={() => routeRedirecter(p._id)}><p>Show Project Details</p></div>
                                             {/* </div> */}
                                         </div>
 

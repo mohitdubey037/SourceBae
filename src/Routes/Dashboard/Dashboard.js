@@ -68,6 +68,7 @@ const Dashboard = (props) => {
     const getAllProjects = () => {
         instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=`)
             .then(function (response) {
+                console.log(response);
                 setAllProjects(response);
                 setStatuses(response.statuses);
             })
@@ -129,9 +130,10 @@ const Dashboard = (props) => {
         setMoreOption(null);
     };
 
-    const getStepsCompleted = useCallback(() => {
+    const getStepsCompleted = (() => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
+                console.log(response);
                 if (response.stepsCompleted === response.totalSteps)
                     setSteps(-1)
                 else {
@@ -142,7 +144,7 @@ const Dashboard = (props) => {
             })
     })
 
-    const getAgencyProfile = useCallback((agencyId) => {
+    const getAgencyProfile = ((agencyId) => {
         instance.get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
                 setVerified(response.isAgencyVerified)
@@ -303,15 +305,16 @@ const Dashboard = (props) => {
                             allProjects?.projects?.length > 0 ?
                                 allProjects?.projects?.map((value, index) => {
                                     return (
-                                        <div className="mainProjectCard">
+                                        <div className="mainProjectCard" onClick={() => props.history.push(`/agency-project-details:${value._id}`)}>
                                             <div className="innerProjectCard">
                                                 <div className="projectInformation">
                                                     <div className="projectDetails">
                                                         {/* <div className="projectImage">
                                                             <img src={clientProfile} alt="" />
                                                         </div> */}
-                                                        <div className="projectName">
-                                                            <p onClick={() => props.history.push('/agency-project-details')} className="projectN">{value.projectName}</p>
+                                                        
+                                                        <div className="projectName" >
+                                                            <p  className="projectN">{value.projectName}</p>
                                                             {/* <NavLink className="projectN" to={{
                                                                 pathname: "/project-details",
                                                                 state: { ...value },
@@ -346,7 +349,7 @@ const Dashboard = (props) => {
                                                     </div> */}
                                                 </div>
                                                 <div className="projectDescription">
-                                                    <p>{value?.projectDescription}</p>
+                                                    <p title={value?.projectDescription}>{(value?.projectDescription).slice(0,100)}...</p>
                                                 </div>
                                                 <div className="projectTable">
                                                     <div style={{ borderBottom: '1px solid #d3d3d3' }}>
