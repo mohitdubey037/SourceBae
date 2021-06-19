@@ -8,6 +8,9 @@ import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
+import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+
 
 const CommentBox = (props) => {
   const [apiData, setApiData] = useState({
@@ -41,7 +44,7 @@ const CommentBox = (props) => {
         console.log(response)
         setApiData({
           ...apiData,
-          quotationLink: response[0].mediaURL          
+          quotationLink: response[0].mediaURL
         })
       })
       .catch(err => {
@@ -125,23 +128,23 @@ const CommentBox = (props) => {
           <div
             style={{ display: "flex", flexDirection: "column", width: "30%" }}
           >
-            
+
             {props.isAskedForQuotation &&
-            <>
-            <div>
-              <input
-                type="number"
-                name="negotiablePrice"
-                placeholder="negotiable price"
-                value={apiData.negotiablePrice}
-                onChange={(event) => handleChange(event)}
-              />
-            </div>
-            <div style={{ margin: "1rem 0rem" }}>
-              <input onChange={inputFileChosen} type="file" />
-              <button onClick={uploadMedia} >Upload</button>
-            </div>
-            </>
+              <>
+                <div>
+                  <input
+                    type="number"
+                    name="negotiablePrice"
+                    placeholder="negotiable price"
+                    value={apiData.negotiablePrice}
+                    onChange={(event) => handleChange(event)}
+                  />
+                </div>
+                <div style={{ margin: "1rem 0rem" }}>
+                  <input onChange={inputFileChosen} type="file" />
+                  <button onClick={uploadMedia} >Upload</button>
+                </div>
+              </>
             }
 
             <button
@@ -165,6 +168,7 @@ const CommentBox = (props) => {
 };
 
 function RespondedDetails(props) {
+const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
   console.log(projectId);
@@ -257,6 +261,15 @@ function RespondedDetails(props) {
         </div>
       </div>
 
+      <div style={{ width: '80%', marginTop: '35px' }}>
+        <Button
+          onClick={() => routerHistory.goBack()}
+          style={{ background: 'none', border: 'none' }}
+        >
+          <i className='fa fa-arrow-left' style={{ fontSize: '1.5rem' }}></i>
+        </Button>
+      </div>
+
       <div className="respondDescription">
         <h2>About Your Project</h2>
         <p>{project.projectDescription}</p>
@@ -319,7 +332,7 @@ function RespondedDetails(props) {
             <h4>Comments and Replies</h4>
 
             {project?.projectProposals &&
-            project.projectProposals[0]?.isAskedForQuotation === true ? (
+              project.projectProposals[0]?.isAskedForQuotation === true ? (
               <CommentBox
                 comments={project.projectProposals[0]?.comments}
                 commentType="Quotation"

@@ -263,7 +263,7 @@ const Register = (props) => {
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
                 if (role === "Client") {
-                    props.history.push('/client-dashboard');
+                    props.history.push('/client-dashboard');    
                     setLoading(false);
                 }
                 else if (role === "Agency") {
