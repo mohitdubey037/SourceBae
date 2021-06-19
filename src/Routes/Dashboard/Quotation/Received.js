@@ -18,7 +18,7 @@ function Received() {
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=true`)
+        instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation received`)
             .then(response => {
                 setLoading(false);
                 console.log(response);
