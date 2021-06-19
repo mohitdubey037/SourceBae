@@ -252,7 +252,7 @@ const Register = (props) => {
                 setProfileDetailsErrors(
                     {
                         ...tempProfileDetails,
-                        agencyNameError: "Agency name must be between 2 characters.",
+                        agencyNameError: "Agency name should be more than 2 characters.",
                     }
                 )
             }

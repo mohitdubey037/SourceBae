@@ -9,6 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from "../../../../Components/Spinner/Spinner";
+import { Alert } from "@material-ui/lab";
 
 const BlueRadio = withStyles({
   root: {
@@ -35,6 +36,11 @@ const HireAgencyForm1 = () => {
     projectProposalCost: "",
     projectExpectedStartingDays: 5,
   });
+
+  const [error, setError] = useState({
+    projectNameError: "",
+    projectDescriptionError: "",
+  })
 
   // const colors = {
   //   Next: "green",
@@ -92,7 +98,89 @@ const HireAgencyForm1 = () => {
   //   }
   // };
 
+  // const validation = () => {
+
+  //   let tempErrors = {
+  //     projectNameError: "",
+  //     projectDescriptionError: "",
+  //   }
+
+  //   if (data.projectName === "") {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectNameError: 'Project name is required',
+  //       }
+  //     )
+  //   }
+  //   else if (data.projectName.length < 2) {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectNameError: 'Project name should be more than 2 characters.',
+  //       }
+  //     )
+  //   }
+  //   else if (data.projectDescription === "") {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectDescriptionError: 'Project description is required',
+  //       }
+  //     )
+  //   }
+  //   else if (data.projectDescription.length > 100) {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectDescriptionError: 'Project name should be less than 100 characters.',
+  //       }
+  //     )
+  //   }
+  // };
+
   const handleSubmit = () => {
+    // let tempErrors = {
+    //   projectNameError: "",
+    //   projectDescriptionError: "",
+    // }
+
+    // if (data.projectName === "") {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectNameError: 'Project name is required',
+    //     }
+    //   )
+    // }
+    // else if (data.projectName.length < 2) {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectNameError: 'Project name should be more than 2 characters.',
+    //     }
+    //   )
+    // }
+    // else if (data.projectDescription === "") {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectDescriptionError: 'Project description is required',
+    //     }
+    //   )
+    // }
+    // else if (data.projectDescription.length > 100) {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectDescriptionError: 'Project name should be less than 100 characters.',
+    //     }
+    //   )
+    // }
+    // else {
+    //   return true;
+    // }
+    
     setLoading(true)
     console.log(data);
     instance.post(`/api/${Role}/projects/create`, data)
@@ -136,6 +224,7 @@ const HireAgencyForm1 = () => {
                   placeholder="Start from here.."
                   value={data.projectName}
                 />
+                {data.projectName !== "" ? <Alert severity="error">{error.projectNameError}</Alert> : ''}
               </div>
               <div className="descriptionProjectAgency">
                 <p>2. Describe a little bit about your project?</p>
@@ -150,6 +239,7 @@ const HireAgencyForm1 = () => {
                   <span>More than 100 characters</span>
                   <span>0/100</span>
                 </div>
+                {data.projectDescription !== "" ? <Alert severity="error">{error.projectDescriptionError}</Alert> : ''}
               </div>
               <div className="budgetSectionAreaAgency">
                 <p>3. What's your budget for this project?</p>
