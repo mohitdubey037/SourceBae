@@ -131,27 +131,12 @@ const Dashboard = (props) => {
         setMoreOption(null);
     };
 
-    // const getStepsCompleted = (() => {
-    //     instance.get(`api/${Role}/agencies/steps-completed`)
-    //         .then(function (response) {
-    //             console.log(response);
-    //             if (response.stepsCompleted === response.totalSteps)
-    //                 setSteps(-1)
-    //             else {
-    //                 setSteps(response.stepsCompleted)
-    //                 let route = `/agency-form-${helper.getNumberSpell(response.stepsCompleted)}`
-    //                 setFormRoute(route)
-    //             }
-    //         })
-    // })
-
     const getStepsCompleted = (() => {
-        axios.get(`https://api.onesourcing.in/api/${Role}/agencies/steps-completed`)
+        instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 console.log(response);
-                if (response.stepsCompleted === response.totalSteps) {
+                if (response.stepsCompleted === response.totalSteps)
                     setSteps(-1)
-                }
                 else {
                     setSteps(response.stepsCompleted)
                     let route = `/agency-form-${helper.getNumberSpell(response.stepsCompleted)}`
