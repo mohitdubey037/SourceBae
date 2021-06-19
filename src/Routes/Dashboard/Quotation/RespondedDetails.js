@@ -72,7 +72,8 @@ const CommentBox = (props) => {
           return ""
         }
       })}
-     {props.isCommentSectionActive &&
+      
+     {props.isAskedForQuotation && props.isCommentSectionActive &&
      ( <div style={{ display: "flex", flexDirection:"column"}}>
      <div style={{display:"flex", margin:"1rem 0rem"}}>
         <h5>
@@ -106,6 +107,14 @@ const CommentBox = (props) => {
      
       }
 
+      {
+        
+        (!props.isAskedForQuotation && props.isCommentSectionActive && props.isShortListed) &&
+        (  <div className="detailsButtons">
+                <button>Accept</button>
+                <button>Withdraw</button>
+              </div>)
+      }
       {
         props.isReplySectionActive && ("Waiting for the reply from Agency.")
       }
@@ -274,6 +283,7 @@ function RespondedDetails(props) {
                   projectId= {projectId}
                   agencyId = {agencyId}
                   isAskedForQuotation = {true}
+                  isShortListed = {true}
                 />
               )
               :
@@ -285,6 +295,7 @@ function RespondedDetails(props) {
                   projectId= {projectId}
                   agencyId = {agencyId}
                   isAskedForQuotation = {false}
+                  isShortListed = {true}
                 />
               
               }
