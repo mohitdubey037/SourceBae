@@ -4,10 +4,11 @@ import './Responded.css'
 import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
+import { useHistory } from 'react-router-dom';
 
-    
+
 function Responded() {
-
+    const routerHistory = useHistory();
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
@@ -94,7 +95,8 @@ function Responded() {
                                         </div>
                                         <div className="respondedCardButton">
                                             <div>
-                                                <button onClick={() => setIsdetail(true)}>Details</button>
+                                                {/* <button onClick={() => setIsdetail(true)}>Details</button> */}
+                                                <button onClick={() => {routerHistory.push(`agency-project-details:${s._id}`)}}>Show details</button>
                                             </div>
                                             <div>
                                                 <button>Withdraw</button>
