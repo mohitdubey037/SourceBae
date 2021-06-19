@@ -20,6 +20,7 @@ import FormControl from '@material-ui/core/FormControl';
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
 import Spinner from '../../../../Components/Spinner/Spinner'
+import { Alert } from '@material-ui/lab'
 
 
 
@@ -66,6 +67,13 @@ function AgencyForm2() {
         agencyServices: [],
         agencyTechnologies: [],
         agencyMonthlyBudget: []
+    })
+
+    const [error, setError] = useState({
+        agencyDomainsError: "",
+        agencyServicesError: "",
+        agencyTechnologiesError: "",
+        agencyMonthlyBudgetError: ""
     })
 
     // const classes = useStyles();
@@ -260,8 +268,59 @@ function AgencyForm2() {
     }, [apiData])
 
     const handleNavlink = (event) => {
-        setAgencyDomains()
-        setAgencyTechnologies()
+
+        // let errors = ({
+        //     agencyDomainsError: "",
+        //     agencyServicesError: "",
+        //     agencyTechnologiesError: "",
+        //     agencyMonthlyBudgetError: ""
+        // })
+
+        if (apiData.agencyDomains.length === 0) {
+            setError(
+                {
+                    agencyDomainsError: "Select at least one option.",
+                    agencyServicesError: "",
+                    agencyTechnologiesError: "",
+                    agencyMonthlyBudgetError: ""
+                }
+            )
+        }
+        else if (apiData.agencyServices.length === 0) {
+            setError(
+                {
+                    agencyDomainsError: "",
+                    agencyServicesError: "Select at least one option.",
+                    agencyTechnologiesError: "",
+                    agencyMonthlyBudgetError: ""
+                }
+            )
+        }
+        else if (apiData.agencyTechnologies.length === 0) {
+            setError(
+                {
+                    agencyDomainsError: "",
+                    agencyServicesError: "",
+                    agencyTechnologiesError: "Select at least one option.",
+                    agencyMonthlyBudgetError: ""
+                }
+            )
+        }
+        else if (apiData.agencyMonthlyBudget.length === 0) {
+            setError(
+                {
+                    agencyDomainsError: "",
+                    agencyServicesError: "",
+                    agencyTechnologiesError: "",
+                    agencyMonthlyBudgetError: "Select at least one option."
+                }
+            )
+        }
+        else {
+            setAgencyDomains()
+            setAgencyTechnologies()
+        }
+        
         // if(status==="Update"){
         //     event.preventDefault()
         //     handleNext()
@@ -298,6 +357,7 @@ function AgencyForm2() {
                                         <p>Sorry No Data Found.</p>
                                     }
                                 </div>
+                                {setError.agencyDomainsError ? <Alert severity="error">{setError.agencyDomainsError}</Alert> : ""}
                             </div>
 
 
@@ -320,6 +380,7 @@ function AgencyForm2() {
                                         <p>Sorry No Data Found.</p>
                                     }
                                 </div>
+                                {setError.agencyServicesError ? <Alert severity="error">{setError.agencyServicesError}</Alert> : ""}
                             </div>
 
 
@@ -336,6 +397,7 @@ function AgencyForm2() {
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
+                                {setError.agencyMonthlyBudgetError ? <Alert severity="error">{setError.agencyMonthlyBudgetError}</Alert> : ""}
                             </div>
 
 
@@ -344,8 +406,8 @@ function AgencyForm2() {
                                 <NavLink to="/agency-form-one" style={{ textDecoration: "none" }}>
                                     <button className="next-click">
                                         <i className="fa fa-long-arrow-left" aria-hidden="true" />
-                                    Back
-                                </button>
+                                        Back
+                                    </button>
                                 </NavLink>
                                 {/* <NavLink to="/agency-form-three" >
                             Next <i className="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
@@ -360,13 +422,22 @@ function AgencyForm2() {
 
                         </div>
                         <div className="serviceFieldsOptions">
+                            {setError.agencyTechnologiesError ? <Alert severity="error">{setError.agencyTechnologiesError}</Alert> : ""}
                             <div className="servicesContainer">
                                 <div className="serviceSelectionInput">
                                     {
                                         visibleTechNames?.length ? (<>
                                             <p className="uiuxtext">Select Technologies</p>
                                             <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                                <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleTechSelect} options={visibleTechNames} primaryColor="#D6EAF8"
+                                                <MultiSearchSelect
+                                                    searchable={true}
+                                                    showTags={true}
+                                                    multiSelect={true}
+                                                    width="23vw"
+                                                    optionsContainerHeight="80vh"
+                                                    onSelect={handleTechSelect}
+                                                    options={visibleTechNames}
+                                                    primaryColor="#D6EAF8"
                                                     secondaryColor="#02044a"
                                                     textSecondaryColor="#fff"
                                                     className="UIUXServices"
