@@ -185,7 +185,6 @@ function RespondedDetails(props) {
 const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
-  console.log(projectId);
   const [project, setProject] = useState({});
 
   const Role = localStorage.getItem("role");
