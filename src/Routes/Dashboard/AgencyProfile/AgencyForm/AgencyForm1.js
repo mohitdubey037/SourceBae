@@ -202,21 +202,6 @@ function AgencyForm1() {
                 }
             )
         }
-        //         else if (formData?.socialPlatformDetails[0]?.agencyAddress === "") {
-        //     setFormDataErrors(
-        //             {
-        //                 ownerNameError: "",
-        //                 agencyEmailError: "",
-        //                 agencyPhoneError: "",
-        //                 agencyDescriptionError: "",
-        //                 socialPlatformDetailsError: "",
-        //                 agencyAddressError: {
-        //                     addressError: "",
-        //                     locationError: ""
-        //                 },
-        //             }
-        //         )
-        // }
         else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)) {
             setFormDataErrors(
                 {
@@ -324,18 +309,12 @@ function AgencyForm1() {
 
     const handleNavlink = async (e) => {
         console.log(status)
-
-        // if (status !== "Next") {
-        //     e.preventDefault()
         if (status === "Upload" && agencyLogo !== null)
             uploadMedia(agencyLogo.category, agencyLogo.document)
         else if (status === "Update")
             handleSubmit()
         else
             toast.error("Upload document.")
-        // }
-        // else if (status === "Next")
-        //     window.location.href = "/agency-form-two"
     }
 
     const handleUploadError = (error) => {
@@ -378,6 +357,7 @@ function AgencyForm1() {
             socialPlatformDetails: [linkedIn]
         })
     }, [linkedIn])
+
 
     return (
         <>
