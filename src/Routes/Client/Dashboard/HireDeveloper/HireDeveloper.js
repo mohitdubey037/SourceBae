@@ -135,7 +135,7 @@ function HireDeveloper(props) {
                         <div className="startPeriod">
                             <p>7. Start Date</p>
                             <FormControl component="fieldset">
-                                <RadioGroup aria-label="gender" name="gender1" value={timeperiod} onChange={handleChange}>
+                                <RadioGroup aria-label="gender" name="gender1" value={timeperiod} onChange={handleChangeStartPeriod}>
                                     <FormControlLabel value="Immediately" control={<BlueRadio />} label="Immediately" />
                                     <FormControlLabel value="in 1 to 2 weeks" control={<BlueRadio />} label="in 1 to 2 weeks" />
                                     <FormControlLabel value="more than 2 weeks" control={<BlueRadio />} label="more than 2 weeks" />

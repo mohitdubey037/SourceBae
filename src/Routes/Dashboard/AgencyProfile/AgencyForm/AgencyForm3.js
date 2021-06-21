@@ -7,7 +7,6 @@ import brochure from '../../../../assets/images/agencyForm/brochure.png'
 import panCard from '../../../../assets/images/agencyForm/panCard.png'
 import privacy from '../../../../assets/images/agencyForm/privacy.svg'
 import { NavLink } from 'react-router-dom'
-import axios from 'axios';
 
 import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
@@ -84,59 +83,65 @@ function AgencyForm3(props) {
         toast.error(error)
     }
 
-    function uploadMedia(category, document) {
-        // return new Promise((resolve, reject) => {
+    function uploadMedia() {
+        setLoading(true);
+        return new Promise((resolve, reject) => {
             const formData = new FormData();
 
-        document && formData.append(
-            "files",
-            document,
-            category
-        );
-        console.log(formData)
-        instance.post(`/api/${Role}/media/create`, formData)
-            .then(function (response) {
-                console.log(response);
-                console.log('k');
-                if (category === registrationCertificate.documentName)
+
+            formData.append(
+                "files",
+                registrationCertificate.document,
+                `${registrationCertificate.documentName}.pdf`
+            );
+            formData.append(
+                "files",
+                brochureDoc.document,
+                `${brochureDoc.documentName}.pdf`
+            );
+            formData.append(
+                "files",
+                panCardDoc.document,
+                `${panCardDoc.documentName}.pdf`
+            );
+
+            console.log(formData)
+            instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
+                .then(function (response) {
+                    console.log(response);
                     setRegistrationCertificate({
                         ...registrationCertificate,
-                        documentLink: response.data.data[0].mediaURL
+                        documentLink: response[0].mediaURL
                     })
 
-                else if (category === brochureDoc.documentName)
                     setBrochureDoc({
                         ...brochureDoc,
-                        documentLink: response.data.data[0].mediaURL
+                        documentLink: response[1].mediaURL
                     })
 
-                else if (category === panCardDoc.documentName)
                     setPanCardDoc({
                         ...panCardDoc,
-                        documentLink: response.data.data[0].mediaURL
+                        documentLink: response[2].mediaURL
                     })
                     // resolve()
-            })
-            .catch(err => {
-                setLoading(false)
-            })
-        // })
+                })
+                .catch(err => {
+                    setLoading(false)
+                })
+            // })
+        })
     }
 
-    const handleUpload = (event) => {
-        const { name } = event.target
-        setLoading(true);
+
+
+    const handleUpload = async (event) => {
+
         if (status === "Upload" && pickedAll) {
-            console.log('hi')
-            // console.log(registrationCertificate.documentName, registrationCertificate.document);
-            uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
-            uploadMedia(brochureDoc.documentName, brochureDoc.document)
-            uploadMedia(panCardDoc.documentName, panCardDoc.document)
-            toast.success('media saved successfully');
-        }
-        if (status === 'Upload' && !pickedAll){
+            await uploadMedia()
             setLoading(false);
-            alert('please upload all documents')
+        }
+        else {
+            toast.error("Please upload all the documents.")
         }
         // if (status === 'Next'){
         //     window.location.href = "/agency-form-four"
@@ -156,7 +161,7 @@ function AgencyForm3(props) {
         instance.post(`/api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 console.log(response)
-                // setStatus("Next");
+                window.location.href = "/agency-form-four"
                 setLoading(false);
                 props.history.push("/agency-form-four")
             })
@@ -180,17 +185,17 @@ function AgencyForm3(props) {
             setPickedAll(true)
         }
 
-        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== ""){
+        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "") {
             setLoading(false);
             handleUpdate();
         }
 
-        console.log(registrationCertificate, brochureDoc, panCardDoc,"document");
+        console.log(registrationCertificate, brochureDoc, panCardDoc, "document");
 
 
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
-    
+
     return (
         <>
             <Navbar />
@@ -243,16 +248,16 @@ function AgencyForm3(props) {
 
                             <div className="nextBtn">
                                 <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
-                                <button>
-                                    <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
-                                </button>
+                                    <button>
+                                        <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                    </button>
                                 </NavLink>
 
                                 {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
-                                    <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
-                                        {status}
-                                        <i className="fa fa-long-arrow-right" aria-hidden="true" />
-                                    </button>
+                                <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
+                                    {status}
+                                    <i className="fa fa-long-arrow-right" aria-hidden="true" />
+                                </button>
                                 {/* </NavLink> */}
                             </div>
                         </div>

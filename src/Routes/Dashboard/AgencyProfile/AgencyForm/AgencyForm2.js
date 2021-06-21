@@ -20,6 +20,7 @@ import FormControl from '@material-ui/core/FormControl';
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
 import Spinner from '../../../../Components/Spinner/Spinner'
+import { Alert } from '@material-ui/lab'
 
 
 
@@ -68,6 +69,13 @@ function AgencyForm2() {
         agencyMonthlyBudget: []
     })
 
+    const [error, setError] = useState({
+        agencyDomainsError: "",
+        agencyServicesError: "",
+        agencyTechnologiesError: "",
+        agencyMonthlyBudgetError: ""
+    })
+
     // const classes = useStyles();
 
     const handleChange = (event) => {
@@ -114,12 +122,8 @@ function AgencyForm2() {
         })
     }, [dom])
 
-    // const handleNext = () => {
-    //     setAgencyDomains()
-    //     setAgencyTechnologies()
-    // }
     //Api Calls methods
-
+    
     const getAllDomains = () => {
         instance.get(`api/${Role}/domains/all`)
             .then(function (response) {
@@ -133,7 +137,7 @@ function AgencyForm2() {
                 setAllDomainsData(domainNames)
             })
     }
-
+    
     const handleDomains = (event) => {
         const { className } = event.target
         const toggledDomains = allDomainsData.map((domain) => {
@@ -150,7 +154,7 @@ function AgencyForm2() {
 
     const getAllServices = () => {
         instance.get(`api/${Role}/services/all`)
-            .then(function (response) {
+        .then(function (response) {
                 const servicesNames = response.map((service) => {
                     return {
                         ...service,
@@ -173,16 +177,16 @@ function AgencyForm2() {
                     selected: !service.selected
                 }
 
-            return service
-        })
-
-        setAllServicesData(toggledServices)
-
-    }
-
-
-    const getAllTechs = () => {
-        instance.get(`api/${Role}/technologies/all`)
+                return service
+            })
+            
+            setAllServicesData(toggledServices)
+            
+        }
+        
+        
+        const getAllTechs = () => {
+            instance.get(`api/${Role}/technologies/all`)
             .then(function (response) {
                 const techNames = response.map((tech) => {
                     return {
@@ -194,20 +198,20 @@ function AgencyForm2() {
             })
     }
 
-
+    
     const getSelectedServicesIds = (allServices) => {
         return allServices
-            .filter(function (service) {
+        .filter(function (service) {
                 return service.selected === true;
             })
             .map(function (service) {
                 return service._id;
             });
-    }
+        }
 
-    const createAgencyForm2Api = () => {
-        setLoading(true);
-        instance.post(`api/${Role}/agencies/create`, apiData)
+        const createAgencyForm2Api = () => {
+            setLoading(true);
+            instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 // setStatus("Next")
                 setLoading(false);
@@ -217,7 +221,7 @@ function AgencyForm2() {
                 setLoading(false)
             })
     }
-
+    
     useEffect(() => {
         getAllDomains()
         getAllServices()
@@ -225,12 +229,12 @@ function AgencyForm2() {
     }, [])
 
     useEffect(() => {
-
+        
         if (allDomainsData.length !== 0 && allTechData.length !== 0 && allServicesData.length !== 0) {
             setLoading(false);
         }
     }, [allDomainsData, allServicesData, allTechData])
-
+    
     useEffect(() => {
         setSelectedServicesId(getSelectedServicesIds(allServicesData))
         setApiData({
@@ -248,20 +252,77 @@ function AgencyForm2() {
                 filteredTech[tech.technologyName] = tech
             }
         })
-
+        
         setVisibleTechData(filteredTech)
         setVisibleTechNames(Object.keys(filteredTech))
     }, [selectedServicesId, allTechData])
-
+    
     useEffect(() => {
         if (apiData.agencyDomains.length !== 0 && apiData.agencyServices.length !== 0 && apiData.agencyTechnologies.length !== 0) {
             createAgencyForm2Api()
         }
     }, [apiData])
-
-    const handleNavlink = (event) => {
+    
+    const handleNext = () => {
         setAgencyDomains()
         setAgencyTechnologies()
+    }
+    
+    // const handleNavlink = (event) => {
+        
+        // let errors = ({
+            //     agencyDomainsError: "",
+        //     agencyServicesError: "",
+        //     agencyTechnologiesError: "",
+        //     agencyMonthlyBudgetError: ""
+        // })
+
+        // if (!allDomainsData) {
+        //     console.log("domains data", allDomainsData);
+        //     setError(
+        //         {
+            //             agencyDomainsError: "Select at least one option.",
+        //             agencyServicesError: "",
+        //             agencyTechnologiesError: "",
+        //             agencyMonthlyBudgetError: ""
+        //         }
+        //     )
+        // }
+        // else if (!allServicesData) {
+        //     setError(
+        //         {
+        //             agencyDomainsError: "",
+        //             agencyServicesError: "Select at least one option.",
+        //             agencyTechnologiesError: "",
+        //             agencyMonthlyBudgetError: ""
+        //         }
+        //     )
+        // }
+        // else if (!allTechData) {
+        //     setError(
+        //         {
+        //             agencyDomainsError: "",
+        //             agencyServicesError: "",
+        //             agencyTechnologiesError: "Select at least one option.",
+        //             agencyMonthlyBudgetError: ""
+        //         }
+        //     )
+        // }
+        // else if (apiData.agencyMonthlyBudget.length === 0) {
+        //     setError(
+        //         {
+        //             agencyDomainsError: "",
+        //             agencyServicesError: "",
+        //             agencyTechnologiesError: "",
+        //             agencyMonthlyBudgetError: "Select at least one option."
+        //         }
+        //     )
+        // }
+        // else {
+            // setAgencyDomains()
+            // setAgencyTechnologies()
+        // }
+        
         // if(status==="Update"){
         //     event.preventDefault()
         //     handleNext()
@@ -270,7 +331,8 @@ function AgencyForm2() {
         // else if(status ==="Next")
         //     window.location.href = "/agency-form-three"
 
-    }
+    // }
+
     return (
         <>
             <Navbar />
@@ -298,6 +360,7 @@ function AgencyForm2() {
                                         <p>Sorry No Data Found.</p>
                                     }
                                 </div>
+                                {!allDomainsData && <Alert severity="error">{console.log(setError.agencyDomainsError)}</Alert>}
                             </div>
 
 
@@ -320,6 +383,7 @@ function AgencyForm2() {
                                         <p>Sorry No Data Found.</p>
                                     }
                                 </div>
+                                {setError.agencyServicesError ? <Alert severity="error">{setError.agencyServicesError}</Alert> : ""}
                             </div>
 
 
@@ -336,6 +400,7 @@ function AgencyForm2() {
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
+                                {setError.agencyMonthlyBudgetError ? <Alert severity="error">{setError.agencyMonthlyBudgetError}</Alert> : ""}
                             </div>
 
 
@@ -345,13 +410,13 @@ function AgencyForm2() {
                                     <button className="next-click">
                                         <i className="fa fa-long-arrow-left" aria-hidden="true" />
                                         Back
-                                </button>
+                                    </button>
                                 </NavLink>
                                 {/* <NavLink to="/agency-form-three" >
                             Next <i className="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
                                 {/* <NavLink to="/agency-form-three" style={{textDecoration:"none"}} onClick = {(event)=>{handleNav(event)}}> */}
-                                <button style={{ backgroundColor: colors[status] }} className="next-click" onClick={(event) => { handleNavlink(event) }}>
-                                    {status}
+                                <button style={{ backgroundColor: 'blue' }} className="next-click" onClick={(event) => { handleNext(event) }}>
+                                    Next
                                     <i className="fa fa-long-arrow-right" aria-hidden="true" />
                                 </button>
                                 {/* </NavLink> */}
@@ -360,13 +425,22 @@ function AgencyForm2() {
 
                         </div>
                         <div className="serviceFieldsOptions">
+                            {setError.agencyTechnologiesError ? <Alert severity="error">{setError.agencyTechnologiesError}</Alert> : ""}
                             <div className="servicesContainer">
                                 <div className="serviceSelectionInput">
                                     {
                                         visibleTechNames?.length ? (<>
                                             <p className="uiuxtext">Select Technologies</p>
                                             <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                                <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleTechSelect} options={visibleTechNames} primaryColor="#D6EAF8"
+                                                <MultiSearchSelect
+                                                    searchable={true}
+                                                    showTags={true}
+                                                    multiSelect={true}
+                                                    width="23vw"
+                                                    optionsContainerHeight="80vh"
+                                                    onSelect={handleTechSelect}
+                                                    options={visibleTechNames}
+                                                    primaryColor="#D6EAF8"
                                                     secondaryColor="#02044a"
                                                     textSecondaryColor="#fff"
                                                     className="UIUXServices"

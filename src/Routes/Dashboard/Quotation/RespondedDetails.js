@@ -125,6 +125,19 @@ const CommentBox = (props) => {
         </div>
       )}
 
+      {props.isProposalActionActive &&(
+        <>
+        <div className="action-wait">
+              <p>Please Accept or Reject the Agency.</p>
+              </div>
+                <div className="detailsButtons">
+                  <button>Accept</button>
+                  <button>Withdraw</button>
+                </div>
+                </>
+              )
+              }
+
       {!props.isAskedForQuotation &&
         props.isCommentSectionActive &&
         props.isShortListed && (
@@ -346,6 +359,8 @@ function RespondedDetails(props) {
                   isShortListed={true}
                   negotiablePrice={project.projectProposals[0].negotiablePrice}
                   quotationLink={project.projectProposals[0].quotationLink}
+                  isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
+                    isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
                 />
               ) : (
                 project?.projectProposals && (
@@ -367,6 +382,8 @@ function RespondedDetails(props) {
                     isShortListed={true}
                     negotiablePrice={project.projectProposals[0].negotiablePrice}
                     quotationLink={project.projectProposals[0].quotationLink}
+                    isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
+                    isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
                   />
                 )
               )
