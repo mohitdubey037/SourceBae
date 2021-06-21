@@ -9,6 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from "../../../../Components/Spinner/Spinner";
+import { Alert } from "@material-ui/lab";
 
 const BlueRadio = withStyles({
   root: {
@@ -87,7 +88,89 @@ const HireAgencyForm1 = (props) => {
   //   }
   // };
 
+  // const validation = () => {
+
+  //   let tempErrors = {
+  //     projectNameError: "",
+  //     projectDescriptionError: "",
+  //   }
+
+  //   if (data.projectName === "") {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectNameError: 'Project name is required',
+  //       }
+  //     )
+  //   }
+  //   else if (data.projectName.length < 2) {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectNameError: 'Project name should be more than 2 characters.',
+  //       }
+  //     )
+  //   }
+  //   else if (data.projectDescription === "") {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectDescriptionError: 'Project description is required',
+  //       }
+  //     )
+  //   }
+  //   else if (data.projectDescription.length > 100) {
+  //     setError(
+  //       {
+  //         ...tempErrors,
+  //         projectDescriptionError: 'Project name should be less than 100 characters.',
+  //       }
+  //     )
+  //   }
+  // };
+
   const handleSubmit = () => {
+    // let tempErrors = {
+    //   projectNameError: "",
+    //   projectDescriptionError: "",
+    // }
+
+    // if (data.projectName === "") {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectNameError: 'Project name is required',
+    //     }
+    //   )
+    // }
+    // else if (data.projectName.length < 2) {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectNameError: 'Project name should be more than 2 characters.',
+    //     }
+    //   )
+    // }
+    // else if (data.projectDescription === "") {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectDescriptionError: 'Project description is required',
+    //     }
+    //   )
+    // }
+    // else if (data.projectDescription.length > 100) {
+    //   setError(
+    //     {
+    //       ...tempErrors,
+    //       projectDescriptionError: 'Project name should be less than 100 characters.',
+    //     }
+    //   )
+    // }
+    // else {
+    //   return true;
+    // }
+    
     setLoading(true)
     console.log(data);
     instance.post(`/api/${Role}/projects/create`, data)

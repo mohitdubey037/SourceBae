@@ -55,21 +55,22 @@ const dateStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        border: `1px solid gray`,
+        border: `1px solid lightgrey`,
         color: `gray`,
         borderRadius: `10px`,
         outline: "none",
         textColor: `gray`,
-        marginTop: `1vh`,
+        marginTop: `1%`,
+        // marginBottom: `1%`,
         paddingLeft: `4%`,
         paddingTop: `1%`,
-        width: `50%`,
+        width: `60%`,
         height: `60px`,
     },
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
-        width: `28vw`,
+        width: `100%`,
         color: `gray`,
         border: "none",
         background: "none"
@@ -91,16 +92,6 @@ const Register = (props) => {
 
     if (!(role === "Agency" || role === "Client"))
         props.history.push("/page-not-found")
-
-    useEffect(() => {
-        localStorage.setItem('toggle', state.checked);
-        state.checked === false ? props.history.push('/register:agency') : props.history.push('/register:client');
-    }, [state]);
-
-    const handleChangeToggle = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked })
-        console.log("statechecked", state.checked)
-    };
 
     //Social Media State Variables
     const [linkedIn, setLinkedIn] = useState({
@@ -243,6 +234,16 @@ const Register = (props) => {
                 return false
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem('toggle', state.checked);
+        state.checked === false ? props.history.push('/register:agency') : props.history.push('/register:client');
+    }, [state]);
+
+    const handleChangeToggle = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked })
+        console.log("statechecked", state.checked)
+    };
 
     //API call methods
     const signUpApi = async (role, form) => {
@@ -455,7 +456,9 @@ const Register = (props) => {
                                 <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
                                 <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
                             </div>
-
+                            <div className="signUpOption">
+                                    <p>Already have an account? <span onClick={() => window.location.href = `/login:${role.toLowerCase()}`}>Log In</span></p>
+                                </div>
                             <div className="client__formsContainer">
                                 <form className='client__form form__1' autoComplete='off' >
                                     <input
@@ -578,7 +581,7 @@ const Register = (props) => {
                                             </>
                                     }
 
-                                    <input type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+                                    <input style={{marginTop: '3%'}} type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
                                     {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
 
                                <Button
