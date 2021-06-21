@@ -55,21 +55,22 @@ const dateStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        border: `1px solid gray`,
+        border: `1px solid lightgrey`,
         color: `gray`,
         borderRadius: `10px`,
         outline: "none",
         textColor: `gray`,
-        marginTop: `1vh`,
+        marginTop: `1%`,
+        // marginBottom: `1%`,
         paddingLeft: `4%`,
         paddingTop: `1%`,
-        width: `50%`,
+        width: `60%`,
         height: `60px`,
     },
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
-        width: `28vw`,
+        width: `100%`,
         color: `gray`,
         border: "none",
         background: "none"
@@ -580,7 +581,7 @@ const Register = (props) => {
                                             </>
                                     }
 
-                                    <input type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+                                    <input style={{marginTop: '3%'}} type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
                                     {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
 
                                <Button
