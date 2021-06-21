@@ -7,7 +7,6 @@ import brochure from '../../../../assets/images/agencyForm/brochure.png'
 import panCard from '../../../../assets/images/agencyForm/panCard.png'
 import privacy from '../../../../assets/images/agencyForm/privacy.svg'
 import { NavLink } from 'react-router-dom'
-import axios from 'axios';
 
 import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
@@ -81,35 +80,45 @@ function AgencyForm3() {
         toast.error(error)
     }
 
-    function uploadMedia(category, document) {
+    function uploadMedia() {
+        setLoading(true);
         return new Promise((resolve, reject) => {
             const formData = new FormData();
 
-        document && formData.append(
+            
+       formData.append(
             "files",
-            document,
-            category
+            registrationCertificate.document,
+            `${registrationCertificate.documentName}.pdf`
         );
+       formData.append(
+            "files",
+            brochureDoc.document,
+            `${brochureDoc.documentName}.pdf`
+        );
+       formData.append(
+            "files",
+            panCardDoc.document,
+            `${panCardDoc.documentName}.pdf`
+        );
+
         console.log(formData)
-        axios.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
+        instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
             .then(function (response) {
-                console.log(response.data.data[0].mediaURL);
-                if (category === registrationCertificate.documentName)
+                console.log(response);
                     setRegistrationCertificate({
                         ...registrationCertificate,
-                        documentLink: response.data.data[0].mediaURL
+                        documentLink: response[0].mediaURL
                     })
 
-                else if (category === brochureDoc.documentName)
                     setBrochureDoc({
                         ...brochureDoc,
-                        documentLink: response.data.data[0].mediaURL
+                        documentLink: response[1].mediaURL
                     })
 
-                else if (category === panCardDoc.documentName)
                     setPanCardDoc({
                         ...panCardDoc,
-                        documentLink: response.data.data[0].mediaURL
+                        documentLink: response[2].mediaURL
                     })
                     resolve()
             })
@@ -117,18 +126,13 @@ function AgencyForm3() {
     }
 
     const handleUpload = async (event) => {
-        setLoading(true);
-        const { name } = event.target
+        
         if (status === "Upload" && pickedAll) {
-            // console.log(registrationCertificate.documentName, registrationCertificate.document);
-            await uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
-            await uploadMedia(brochureDoc.documentName, brochureDoc.document)
-            await uploadMedia(panCardDoc.documentName, panCardDoc.document)
-            toast.success('media saved successfully');
+            await uploadMedia()
             setLoading(false);
         }
-        if (status === 'Next'){
-            window.location.href = "/agency-form-four"
+        else{
+            toast.error("Please upload all the documents.")
         }
     }
 
@@ -144,7 +148,7 @@ function AgencyForm3() {
         instance.post(`/api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 console.log(response)
-                setStatus("Next");
+                window.location.href = "/agency-form-four"
                 setLoading(false);
             })
             .catch(err => {
@@ -227,8 +231,8 @@ function AgencyForm3() {
 
                             <div className="nextBtn">
                                 <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
-                                    <button>
-                                        <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                <button>
+                                    <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
                                 </button>
                                 </NavLink>
 

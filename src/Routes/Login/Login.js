@@ -160,8 +160,7 @@ const Login = (props) => {
 
     useEffect(() => {
         if (token) {
-            console.log(localStorage.getItem('Authorization', token), "checking")
-            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+            axios.defaults.headers.common["Authorization"] = `${token}`;
             console.log(axios)
             if (role === "Agency") {
                 setLoading(false);

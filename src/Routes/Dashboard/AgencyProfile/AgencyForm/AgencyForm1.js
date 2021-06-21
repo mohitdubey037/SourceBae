@@ -263,21 +263,6 @@ function AgencyForm1() {
                 }
             )
         }
-        //         else if (formData?.socialPlatformDetails[0]?.agencyAddress === "") {
-        //     setFormDataErrors(
-        //             {
-        //                 ownerNameError: "",
-        //                 agencyEmailError: "",
-        //                 agencyPhoneError: "",
-        //                 agencyDescriptionError: "",
-        //                 socialPlatformDetailsError: "",
-        //                 agencyAddressError: {
-        //                     addressError: "",
-        //                     locationError: ""
-        //                 },
-        //             }
-        //         )
-        // }
         else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)) {
             setFormDataErrors(
                 {
@@ -433,6 +418,7 @@ function AgencyForm1() {
             socialPlatformDetails: [linkedIn]
         })
     }, [linkedIn])
+
 
     return (
         <>
