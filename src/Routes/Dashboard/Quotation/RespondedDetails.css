@@ -47,7 +47,7 @@
 }
 .detailsButtons{
    display: flex;
-   justify-content: space-between;
+   justify-content: flex-start;
    align-items: center;
    margin-right: 3rem;
    margin: 2rem 0rem;
@@ -79,6 +79,20 @@
     transition: 0.2s ease-in-out;
 }
 
+.action-wait {
+    font-weight: 500;
+    font-style: italic;
+    background-color: rgb(0, 150, 155);
+    border-radius: 4px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.action-wait p{
+    color: #fff!important;
+    margin: 0;
+}
 .clientExperience{
     display: flex;
     align-items: center;

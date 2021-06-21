@@ -179,6 +179,22 @@ const CommentBox = (props) => {
           </div>
         </div>
       )}
+      {props.isProposalActionActive && 
+      props.isQuotationAcceptedByClient  ?(
+        <>
+        <div className="action-wait">
+              <p>Accept or Reject the Project.</p>
+              </div>
+                <div className="detailsButtons">
+                  <button>Accept</button>
+                  <button>Withdraw</button>
+                </div>
+                </>
+              ):
+              <div className="action-wait">
+              <p>Please wait for Client to take some Actions.</p>
+              </div>
+              }
     </div>
   );
 };
@@ -370,6 +386,8 @@ function AgencyRespondedDetails(props) {
                   isShortListed={true}
                   negotiablePrice={project.projectProposals[0].negotiablePrice}
                   quotationLink={project.projectProposals[0].quotationLink}
+                  isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
+                  isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
                 />
               ) : (
                 project?.projectProposals && (
@@ -387,6 +405,8 @@ function AgencyRespondedDetails(props) {
                     isShortListed={true}
                     negotiablePrice={project.projectProposals[0].negotiablePrice}
                     quotationLink={project.projectProposals[0].quotationLink}
+                    isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
+                    isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
                   />
                 )
               )
