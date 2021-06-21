@@ -16,7 +16,7 @@ import { toast } from 'react-toastify'
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from '../../../../Components/Spinner/Spinner'
 
-function AgencyForm3() {
+function AgencyForm3(props) {
 
     const colors = {
         Upload: "blue",
@@ -52,6 +52,7 @@ function AgencyForm3() {
 
     const handleDocumentPicker = (document, category) => {
         if (category === registrationCertificate.documentName) {
+            console.log('h');
             setRegistrationCertificate({
                 ...registrationCertificate,
                 documentPicked: true,
@@ -60,6 +61,7 @@ function AgencyForm3() {
         }
 
         else if (category === brochureDoc.documentName) {
+            console.log('i');
             setBrochureDoc({
                 ...brochureDoc,
                 documentPicked: true,
@@ -67,6 +69,7 @@ function AgencyForm3() {
             })
         }
         else if (category === panCardDoc.documentName) {
+            console.log('j');
             setPanCardDoc({
                 ...panCardDoc,
                 documentPicked: true,
@@ -82,7 +85,7 @@ function AgencyForm3() {
     }
 
     function uploadMedia(category, document) {
-        return new Promise((resolve, reject) => {
+        // return new Promise((resolve, reject) => {
             const formData = new FormData();
 
         document && formData.append(
@@ -91,9 +94,10 @@ function AgencyForm3() {
             category
         );
         console.log(formData)
-        axios.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
+        instance.post(`/api/${Role}/media/create`, formData)
             .then(function (response) {
-                console.log(response.data.data[0].mediaURL);
+                console.log(response);
+                console.log('k');
                 if (category === registrationCertificate.documentName)
                     setRegistrationCertificate({
                         ...registrationCertificate,
@@ -111,29 +115,37 @@ function AgencyForm3() {
                         ...panCardDoc,
                         documentLink: response.data.data[0].mediaURL
                     })
-                    resolve()
+                    // resolve()
             })
-        })
+            .catch(err => {
+                setLoading(false)
+            })
+        // })
     }
 
-    const handleUpload = async (event) => {
-        setLoading(true);
+    const handleUpload = (event) => {
         const { name } = event.target
+        setLoading(true);
         if (status === "Upload" && pickedAll) {
+            console.log('hi')
             // console.log(registrationCertificate.documentName, registrationCertificate.document);
-            await uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
-            await uploadMedia(brochureDoc.documentName, brochureDoc.document)
-            await uploadMedia(panCardDoc.documentName, panCardDoc.document)
+            uploadMedia(registrationCertificate.documentName, registrationCertificate.document)
+            uploadMedia(brochureDoc.documentName, brochureDoc.document)
+            uploadMedia(panCardDoc.documentName, panCardDoc.document)
             toast.success('media saved successfully');
+        }
+        if (status === 'Upload' && !pickedAll){
             setLoading(false);
+            alert('please upload all documents')
         }
-        if (status === 'Next'){
-            window.location.href = "/agency-form-four"
-        }
+        // if (status === 'Next'){
+        //     window.location.href = "/agency-form-four"
+        // }
     }
 
     const handleUpdate = () => {
         setLoading(true);
+
         console.log(registrationCertificate);
         console.log(brochureDoc);
         console.log(panCardDoc);
@@ -144,8 +156,9 @@ function AgencyForm3() {
         instance.post(`/api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 console.log(response)
-                setStatus("Next");
+                // setStatus("Next");
                 setLoading(false);
+                props.history.push("/agency-form-four")
             })
             .catch(err => {
                 setLoading(false);
@@ -163,18 +176,21 @@ function AgencyForm3() {
 
     useEffect(() => {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
+            console.log('true');
             setPickedAll(true)
         }
 
         if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== ""){
+            setLoading(false);
             handleUpdate();
         }
 
-        console.log(registrationCertificate, brochureDoc, panCardDoc);
+        console.log(registrationCertificate, brochureDoc, panCardDoc,"document");
 
 
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
+    
     return (
         <>
             <Navbar />

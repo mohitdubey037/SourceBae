@@ -18,7 +18,7 @@ const instance = axios.create({
 instance.interceptors.request.use(function (request) {
     console.log(request);
     if (!request.url.includes("login")) {
-      console.log(cookie.load("Authorization"), "cookies");
+    //   console.log(cookie.load("Authorization"), "cookies");
       request.headers["Authorization"] = cookie.load("Authorization");
     }
     return request;
