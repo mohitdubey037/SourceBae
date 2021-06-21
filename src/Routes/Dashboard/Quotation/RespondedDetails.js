@@ -6,7 +6,8 @@ import agencyLogo from "../../../assets/images/Quotation/cegelec.svg";
 
 import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { Button } from '@material-ui/core'
 
 const CommentBox = (props) => {
   console.log(props);
@@ -30,7 +31,7 @@ const CommentBox = (props) => {
       .patch(`api/client/projects/propose/${props.projectId}`, apiData)
       .then(function (response) {
         console.log(response);
-        window.location.reload();
+        props.giveReplies(true);
       });
   };
 
@@ -157,10 +158,12 @@ const CommentBox = (props) => {
 
 function RespondedDetails(props) {
   let { projectId, agencyId } = useParams();
+  console.log(projectId, agencyId);
   const routerHistory = useHistory();
 
-
+  const [isRepliedToClient, setRepliedToClient] = useState(false)
   const [project, setProject] = useState({});
+  console.log(project);
 
   const Role = localStorage.getItem("role");
   const arr = [
@@ -182,6 +185,7 @@ function RespondedDetails(props) {
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
+        console.log(response.projectServicesRequired[0].serviceName);
         setProject(response);
       })
       .catch((err) => {
@@ -196,11 +200,12 @@ function RespondedDetails(props) {
       console.log("Not empty");
       setProject(props.projects);
     }
-  }, []);
+  }, [isRepliedToClient]);
 
-  useEffect(() => {
-    console.log(project, "project");
-  }, [project]);
+  // useEffect(() => {
+  //   console.log(project, "project");
+  //   console.log(project.projectServicesRequired.map(p => console.log(p.serviceName)))
+  // }, [project]);
   return (
     <>
       <div className="mainDetailHeader">
@@ -260,7 +265,7 @@ function RespondedDetails(props) {
 
       <div className="respondDescription">
         <h2>About Your Project</h2>
-        <p>{project.projectDescription}</p>
+        <p>{project.projectName}</p>
       </div>
 
       <div className="respondCards">
@@ -272,11 +277,11 @@ function RespondedDetails(props) {
           </div>
           <div>
             <p>Budget</p>
-            <p style={{ fontWeight: "600" }}>Min $5000</p>
+            <p style={{ fontWeight: "600" }}>{project.projectProposalCost}</p>
           </div>
           <div>
             <p>Agency Experience</p>
-            <p>1 year</p>
+            <p>{project.agencyExperience}</p>
           </div>
           <div>
             <p>Documents</p>
@@ -286,12 +291,12 @@ function RespondedDetails(props) {
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Mobile Development</p>
-            <p>React Native</p>
+            <p>Service Name</p>
+            {/* <p>{project?.projectServicesRequired[0]?.serviceName}</p> */}
           </div>
           <div>
-            <p>Cloud-Server Management</p>
-            <p>Google Cloud</p>
+            <p>Technology Name</p>
+            {/* <p>{project?.projectTechnologiesRequired[0]?.technologyName}</p> */}
           </div>
           <div>
             <p>Testing and Q&A</p>
@@ -299,7 +304,7 @@ function RespondedDetails(props) {
           </div>
           <div>
             <p>Note</p>
-            <p>-</p>
+            <p>{project.projectType}</p>
           </div>
         </div>
       </div>
@@ -320,8 +325,11 @@ function RespondedDetails(props) {
             <h4>Comments and Replies</h4>
 
             {project?.projectProposals &&
-            project.projectProposals[0]?.isAskedForQuotation === true ? (
+              project.projectProposals[0]?.isAskedForQuotation === true ? (
               <CommentBox
+                giveReplies={(gr) => {
+                  setRepliedToClient(gr)
+                }}
                 comments={project.projectProposals[0]?.comments}
                 commentType="Quotation"
                 isCommentSectionActive={
@@ -340,6 +348,9 @@ function RespondedDetails(props) {
             ) : (
               project?.projectProposals && (
                 <CommentBox
+                  giveReplies={(gr) => {
+                    setRepliedToClient(gr)
+                  }}
                   comments={project.projectProposals[0]?.comments}
                   commentType="Shortlist"
                   isCommentSectionActive={

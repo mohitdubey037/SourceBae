@@ -11,6 +11,7 @@ import * as helper from "../../shared/helper";
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
+let isRepliedToClient = false;
 
 const CommentBox = (props) => {
   const [apiData, setApiData] = useState({
@@ -44,7 +45,7 @@ const CommentBox = (props) => {
           quotationLink: response[0].mediaURL,
         });
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }
 
   const inputFileChosen = (e) => {
@@ -60,7 +61,7 @@ const CommentBox = (props) => {
       .patch(`api/agency/projects/propose/${props.projectId}`, apiData)
       .then(function (response) {
         console.log(response);
-        window.location.reload();
+        props.giveReplies(true);
       });
   };
   return (
@@ -75,35 +76,36 @@ const CommentBox = (props) => {
         margin: "2rem 1rem 1rem 1rem",
       }}
     >
-      {props.comments.map((index) => {
-        if (index.commentType === props.commentType) {
-          console.log("hi");
-          return (
-            <>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {index.comment && (
-                  <div>
-                    <h5>
-                      <b>Client: </b>
-                      {index.comment}
-                    </h5>
-                  </div>
-                )}
-                {index.reply && (
-                  <div>
-                    <h5>
-                      <b>Agency: </b>
-                      {index.reply}
-                    </h5>
-                  </div>
-                )}
-              </div>
-            </>
-          );
-        } else {
-          return "";
-        }
-      })}
+      {!isRepliedToClient &&
+        props.comments.map((index) => {
+          if (index.commentType === props.commentType) {
+            return (
+              <>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {index.comment && (
+                    <div>
+                      <h5>
+                        <b>Client: </b>
+                        {index.comment}
+                      </h5>
+                    </div>
+                  )}
+                  {index.reply && (
+                    <div>
+                      <h5>
+                        <b>Agency: </b>
+                        {index.reply}
+                      </h5>
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+          } else {
+            return "";
+          }
+        })
+      }
       {props.isReplySectionActive && (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", margin: "1rem 0rem" }}>
@@ -181,11 +183,15 @@ const CommentBox = (props) => {
   );
 };
 
-function RespondedDetails(props) {
-const routerHistory = useHistory();
+function AgencyRespondedDetails(props) {
+
+  const [isRepliedToClient, setRepliedToClient] = useState(false)
+  console.log(isRepliedToClient);
+  const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
   const [project, setProject] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
@@ -205,16 +211,20 @@ const routerHistory = useHistory();
   ];
 
   const getAllProjects = () => {
+    setLoading(true);
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
+        setLoading(false)
         setProject(response);
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       });
   };
   useEffect(() => {
+    console.log(isRepliedToClient);
     if (Object.keys(props["projects"]).length === 0) {
       console.log("empty");
       getAllProjects();
@@ -222,11 +232,11 @@ const routerHistory = useHistory();
       console.log("Not empty");
       setProject(props.projects);
     }
-  }, []);
+  }, [isRepliedToClient]);
 
   useEffect(() => {
     console.log(project, "project");
-  }, [project]);
+  }, [isRepliedToClient]);
   return (
     <>
       <div className="mainDetailHeader">
@@ -343,37 +353,44 @@ const routerHistory = useHistory();
 
           <div className="agencyQuotationDesc">
             <h4>Comments and Replies</h4>
-
-            {project?.projectProposals &&
-              project.projectProposals[0]?.isAskedForQuotation === true ? (
-              <CommentBox
-                comments={project.projectProposals[0]?.comments}
-                commentType="Quotation"
-                isReplySectionActive={
-                  project.projectProposals[0].isReplySectionActive
-                }
-                projectId={projectId}
-                isAskedForQuotation={true}
-                isShortListed={true}
-                negotiablePrice={project.projectProposals[0].negotiablePrice}
-                quotationLink={project.projectProposals[0].quotationLink}
-              />
-            ) : (
-              project?.projectProposals && (
+            {loading ? <p style={{ textAlign: 'center' }}>Comments are loading...</p> :
+              project?.projectProposals &&
+                project.projectProposals[0]?.isAskedForQuotation === true ? (
                 <CommentBox
+                  giveReplies={(gr) => {
+                    setRepliedToClient(gr)
+                  }}
                   comments={project.projectProposals[0]?.comments}
-                  commentType="Shortlist"
+                  commentType="Quotation"
                   isReplySectionActive={
                     project.projectProposals[0].isReplySectionActive
                   }
                   projectId={projectId}
-                  isAskedForQuotation={false}
+                  isAskedForQuotation={true}
                   isShortListed={true}
                   negotiablePrice={project.projectProposals[0].negotiablePrice}
                   quotationLink={project.projectProposals[0].quotationLink}
                 />
+              ) : (
+                project?.projectProposals && (
+                  <CommentBox
+                    giveReplies={(gr) => {
+                      setRepliedToClient(gr)
+                    }}
+                    comments={project.projectProposals[0]?.comments}
+                    commentType="Shortlist"
+                    isReplySectionActive={
+                      project.projectProposals[0].isReplySectionActive
+                    }
+                    projectId={projectId}
+                    isAskedForQuotation={false}
+                    isShortListed={true}
+                    negotiablePrice={project.projectProposals[0].negotiablePrice}
+                    quotationLink={project.projectProposals[0].quotationLink}
+                  />
+                )
               )
-            )}
+            }
           </div>
 
           <div className="agencyQuestions">
@@ -415,4 +432,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(RespondedDetails);
+export default connect(mapStateToProps)(AgencyRespondedDetails);
