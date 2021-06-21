@@ -20,10 +20,12 @@ instance.interceptors.request.use(function (request) {
       console.log(cookie.load("Authorization"), "cookies");
       request.headers["Authorization"] = cookie.load("Authorization");
     }
+    
     return request;
   });
 
 instance.interceptors.response.use(function (response){
+    console.log(response.url)
     if(response.status===200){
         return response.data.data
     }
