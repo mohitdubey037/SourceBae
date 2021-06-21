@@ -294,11 +294,11 @@ function RespondedDetails(props) {
           <span className="leftLine"></span>
           <div>
             <p>Service Name</p>
-            <p>{project?.projectServicesRequired[0]?.serviceName}</p>
+            <p>{project?.projectServicesRequired?.length>0 && project?.projectServicesRequired[0]?.serviceName}</p>
           </div>
           <div>
             <p>Technology Name</p>
-            <p>{project?.projectTechnologiesRequired[0]?.technologyName}</p>
+            <p>{project?.projectTechnologiesRequired?.length>0 && project?.projectTechnologiesRequired[0]?.technologyName}</p>
           </div>
           <div>
             <p>Testing and Q&A</p>
