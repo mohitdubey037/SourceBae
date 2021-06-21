@@ -10,7 +10,6 @@ import { useParams, useHistory } from "react-router-dom";
 import { Button } from '@material-ui/core'
 
 const CommentBox = (props) => {
-  console.log(props);
   const [apiData, setApiData] = useState({
     agencyId: props.agencyId,
     isShortListed: true,
@@ -158,12 +157,11 @@ const CommentBox = (props) => {
 
 function RespondedDetails(props) {
   let { projectId, agencyId } = useParams();
-  console.log(projectId, agencyId);
   const routerHistory = useHistory();
 
   const [isRepliedToClient, setRepliedToClient] = useState(false)
-  const [project, setProject] = useState({});
-  console.log(project);
+  const [project, setProject] = useState([]);
+  const [loading, setLoading] = useState()
 
   const Role = localStorage.getItem("role");
   const arr = [
@@ -182,13 +180,16 @@ function RespondedDetails(props) {
   ];
 
   const getAllProjects = () => {
+    setLoading(true);
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
         console.log(response.projectServicesRequired[0].serviceName);
         setProject(response);
+        setLoading(false);
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       });
   };
@@ -265,7 +266,7 @@ function RespondedDetails(props) {
 
       <div className="respondDescription">
         <h2>About Your Project</h2>
-        <p>{project.projectName}</p>
+        <p>{project?.projectName}</p>
       </div>
 
       <div className="respondCards">
@@ -277,11 +278,12 @@ function RespondedDetails(props) {
           </div>
           <div>
             <p>Budget</p>
-            <p style={{ fontWeight: "600" }}>{project.projectProposalCost}</p>
+            {console.log(project)}
+            <p style={{ fontWeight: "600" }}>{project?.projectProposalCost}</p>
           </div>
           <div>
             <p>Agency Experience</p>
-            <p>{project.agencyExperience}</p>
+            <p>{project?.agencyExperience}</p>
           </div>
           <div>
             <p>Documents</p>
@@ -292,11 +294,11 @@ function RespondedDetails(props) {
           <span className="leftLine"></span>
           <div>
             <p>Service Name</p>
-            {/* <p>{project?.projectServicesRequired[0]?.serviceName}</p> */}
+            <p>{project?.projectServicesRequired[0]?.serviceName}</p>
           </div>
           <div>
             <p>Technology Name</p>
-            {/* <p>{project?.projectTechnologiesRequired[0]?.technologyName}</p> */}
+            <p>{project?.projectTechnologiesRequired[0]?.technologyName}</p>
           </div>
           <div>
             <p>Testing and Q&A</p>
@@ -323,36 +325,15 @@ function RespondedDetails(props) {
 
           <div className="agencyQuotationDesc">
             <h4>Comments and Replies</h4>
-
-            {project?.projectProposals &&
-              project.projectProposals[0]?.isAskedForQuotation === true ? (
-              <CommentBox
-                giveReplies={(gr) => {
-                  setRepliedToClient(gr)
-                }}
-                comments={project.projectProposals[0]?.comments}
-                commentType="Quotation"
-                isCommentSectionActive={
-                  project.projectProposals[0].isCommentSectionActive
-                }
-                isReplySectionActive={
-                  project.projectProposals[0].isReplySectionActive
-                }
-                projectId={projectId}
-                agencyId={agencyId}
-                isAskedForQuotation={true}
-                isShortListed={true}
-                negotiablePrice={project.projectProposals[0].negotiablePrice}
-                quotationLink={project.projectProposals[0].quotationLink}
-              />
-            ) : (
-              project?.projectProposals && (
+            {loading ? <p style={{ textAlign: 'center' }}>Comments are loading...</p> :
+              project?.projectProposals &&
+                project.projectProposals[0]?.isAskedForQuotation === true ? (
                 <CommentBox
                   giveReplies={(gr) => {
                     setRepliedToClient(gr)
                   }}
                   comments={project.projectProposals[0]?.comments}
-                  commentType="Shortlist"
+                  commentType="Quotation"
                   isCommentSectionActive={
                     project.projectProposals[0].isCommentSectionActive
                   }
@@ -361,13 +342,36 @@ function RespondedDetails(props) {
                   }
                   projectId={projectId}
                   agencyId={agencyId}
-                  isAskedForQuotation={false}
+                  isAskedForQuotation={true}
                   isShortListed={true}
                   negotiablePrice={project.projectProposals[0].negotiablePrice}
                   quotationLink={project.projectProposals[0].quotationLink}
                 />
+              ) : (
+                project?.projectProposals && (
+                  <CommentBox
+                    giveReplies={(gr) => {
+                      setRepliedToClient(gr)
+                    }}
+                    comments={project.projectProposals[0]?.comments}
+                    commentType="Shortlist"
+                    isCommentSectionActive={
+                      project.projectProposals[0].isCommentSectionActive
+                    }
+                    isReplySectionActive={
+                      project.projectProposals[0].isReplySectionActive
+                    }
+                    projectId={projectId}
+                    agencyId={agencyId}
+                    isAskedForQuotation={false}
+                    isShortListed={true}
+                    negotiablePrice={project.projectProposals[0].negotiablePrice}
+                    quotationLink={project.projectProposals[0].quotationLink}
+                  />
+                )
               )
-            )}
+            }
+
           </div>
 
           <div className="agencyQuestions">

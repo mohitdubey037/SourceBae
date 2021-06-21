@@ -295,7 +295,7 @@ function AgencyRespondedDetails(props) {
 
       <div className="respondDescription">
         <h2>About Your Project</h2>
-        <p>{project.projectDescription}</p>
+        {/* <p>{project.projectDescription}</p> */}
       </div>
 
       <div className="respondCards">
