@@ -227,8 +227,8 @@ function AgencyForm3() {
 
                             <div className="nextBtn">
                                 <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
-                                    <button>
-                                        <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                <button>
+                                    <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
                                 </button>
                                 </NavLink>
 

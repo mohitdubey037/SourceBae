@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 import AgencyRespondedDetails from './AgencyRespondedDetails';
 
 function ProjectDetails(props) {
-
+    console.log(props);
     return (
         <>
             <Navbar />            
