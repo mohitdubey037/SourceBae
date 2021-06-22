@@ -193,40 +193,6 @@ const Dashboard = (props) => {
                     {
                         cardsArray.map((value, index) => {
                             return (
-                                // <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
-                                //     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
-                                //         <div className="leftLine" style={{
-                                //             backgroundColor: value?.borderColor,
-                                //         }}></div>
-                                //         <div
-                                //             style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                                //             onMouseOver={() => {
-                                //                 setIsPopover(true)
-                                //                 setPopIndex(index)
-                                //             }}
-                                //             onMouseLeave={() => setIsPopover(false)}>
-                                //             <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
-                                //             {/* ADD TOOLTIP HERE */}
-                                //             {
-                                //                 isPopover && popindex === index
-                                //                 &&
-                                //                 <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
-                                //                     <span>Some text</span>
-                                //                 </Tooltip>
-                                //             }
-                                //         </div>
-                                //         <div className="innerQuotationCard">
-                                //             <div className="quotationImage">
-                                //                 <img src={value?.image} alt="" />
-                                //             </div>
-                                //             <div className="quotationInfo">
-                                //                 <h2>{value?.title}</h2>
-                                //                 <p>{value?.desc}</p>
-                                //             </div>
-                                //         </div>
-                                //     </div>
-                                // </Link>
-
                                 <div className="mainQuotationCard" key={index} onClick={() => handleLink(value.route)} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                     <div className="leftLine" style={{
                                         backgroundColor: value?.borderColor,
