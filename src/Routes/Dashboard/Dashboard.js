@@ -1,19 +1,12 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import "./dashboard.css";
-import clientProfile from "../../assets/images/Logo/clientProfile.jpeg";
 import quotation from "../../assets/images/Logo/quotation.png";
 import addDeveloper from "../../assets/images/Logo/addDeveloper.png";
 import teamCreation from "../../assets/images/Logo/teamCreation.png";
 
 //material-ui
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Navbar from "./Navbar";
 
-import Select from "@material-ui/core/Select";
-import axios from "axios";
 
 import Tooltip from "react-power-tooltip";
 import { Link, NavLink } from "react-router-dom";
@@ -23,19 +16,8 @@ import Moment from "react-moment";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import * as actions from "../../Redux/action/addProject";
-import { connect } from "react-redux";
+import NO_Data_ICON from './no_data_icon.jpg';
 
-const MenuProps = {
-  getContentAnchorEl: () => null,
-  PaperProps: {
-    style: {
-      maxHeight: 215,
-      width: 200,
-      top: 350,
-    },
-  },
-};
 
 const Dashboard = (props) => {
   const Role = "agency";
@@ -432,7 +414,10 @@ const Dashboard = (props) => {
                 );
               })
             ) : (
-              <h2>No Data Found</h2>
+                <div style={{textAlign: 'center'}}>
++                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
++                                    <h6>No Data Found</h6>
++                                </div>
             )}
           </div>
         </div>
