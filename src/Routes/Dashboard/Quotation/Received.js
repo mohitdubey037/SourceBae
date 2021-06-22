@@ -65,7 +65,7 @@ function Received() {
                                             </div>
                                         </div>
                                         <div className="respondCardDescription">
-                                            <p>{s.projectDescription}</p>
+                                        <p title={s.projectDescription}>{`${(s.projectDescription).slice(0,100)}...`}</p>
                                         </div>
                                         <div className="respondCardPoints">
                                             <ul>
