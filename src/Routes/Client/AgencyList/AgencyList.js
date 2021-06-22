@@ -23,6 +23,7 @@ function AgencyList(props) {
   const [openQuotation, setOpenQuotation] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isShortlistingDone, setShortlisting] = useState(false)
+  const [isQuotationDone, setQuotationing] = useState(false)
 
   const openShortlistModal = (_id) => {
     setOpen(true);
@@ -99,6 +100,7 @@ function AgencyList(props) {
       .then(function (response) {
         console.log(response);
         alert("Success");
+        setQuotationing(true)
       })
       .catch((err) => {
         console.log(err);
@@ -201,7 +203,7 @@ function AgencyList(props) {
                             >
                               <p>Show Details</p>
                             </div>
-                          ) : agency.isAgencyShortListed || isShortlistingDone ? (
+                          ) : agency.isAgencyShortListed || isShortlistingDone || isQuotationDone ? (
                             <>
                               <div
                                 onClick={() =>
