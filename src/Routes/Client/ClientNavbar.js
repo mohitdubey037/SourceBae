@@ -236,7 +236,7 @@ const ClientNavbar = ({ isVisible }, props) => {
                     </ul>
                 </div>
                 <div className="modalButton">
-                    <button onClick={() => routerHistory("/product-agencies")} >Interested</button>
+                    <button onClick={() => routerHistory.push("/product-agencies")} >Interested</button>
                     <button onClick={onCloseModal} >Not Interested</button>
                 </div>
             </Modal>
