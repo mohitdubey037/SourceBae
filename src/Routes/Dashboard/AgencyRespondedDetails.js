@@ -180,7 +180,7 @@ const CommentBox = (props) => {
         </div>
       )}
       {props.isProposalActionActive && 
-      props.isQuotationAcceptedByClient  ?(
+      props.isQuotationAcceptedByClient  &&(
         <>
         <div className="action-wait">
               <p>Accept or Reject the Project.</p>
@@ -190,7 +190,10 @@ const CommentBox = (props) => {
                   <button>Withdraw</button>
                 </div>
                 </>
-              ):
+              )}
+
+              {props.isProposalActionActive && 
+      !props.isQuotationAcceptedByClient  &&
               <div className="action-wait">
               <p>Please wait for Client to take some Actions.</p>
               </div>

@@ -17,7 +17,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function (request) {
     if (!request.url.includes("login")) {
-      console.log(cookie.load("Authorization"), "cookies");
+    //   console.log(cookie.load("Authorization"), "cookies");
       request.headers["Authorization"] = cookie.load("Authorization");
     }
     
@@ -29,7 +29,7 @@ instance.interceptors.response.use(function (response){
     if(response.status===200){
         return response.data.data
     }
-    else if(response.status===201 || response.status===204){
+    else if(response.status===201 || response.status===206 || response.status===204){
         toast.success(response.data.message, {
             position: "top-right",
             autoClose: 2000,

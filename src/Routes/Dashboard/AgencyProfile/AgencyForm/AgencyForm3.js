@@ -15,7 +15,7 @@ import { toast } from 'react-toastify'
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from '../../../../Components/Spinner/Spinner'
 
-function AgencyForm3() {
+function AgencyForm3(props) {
 
     const colors = {
         Upload: "blue",
@@ -51,6 +51,7 @@ function AgencyForm3() {
 
     const handleDocumentPicker = (document, category) => {
         if (category === registrationCertificate.documentName) {
+            console.log('h');
             setRegistrationCertificate({
                 ...registrationCertificate,
                 documentPicked: true,
@@ -59,6 +60,7 @@ function AgencyForm3() {
         }
 
         else if (category === brochureDoc.documentName) {
+            console.log('i');
             setBrochureDoc({
                 ...brochureDoc,
                 documentPicked: true,
@@ -66,6 +68,7 @@ function AgencyForm3() {
             })
         }
         else if (category === panCardDoc.documentName) {
+            console.log('j');
             setPanCardDoc({
                 ...panCardDoc,
                 documentPicked: true,
@@ -85,27 +88,27 @@ function AgencyForm3() {
         return new Promise((resolve, reject) => {
             const formData = new FormData();
 
-            
-       formData.append(
-            "files",
-            registrationCertificate.document,
-            `${registrationCertificate.documentName}.pdf`
-        );
-       formData.append(
-            "files",
-            brochureDoc.document,
-            `${brochureDoc.documentName}.pdf`
-        );
-       formData.append(
-            "files",
-            panCardDoc.document,
-            `${panCardDoc.documentName}.pdf`
-        );
 
-        console.log(formData)
-        instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
-            .then(function (response) {
-                console.log(response);
+            formData.append(
+                "files",
+                registrationCertificate.document,
+                `${registrationCertificate.documentName}.pdf`
+            );
+            formData.append(
+                "files",
+                brochureDoc.document,
+                `${brochureDoc.documentName}.pdf`
+            );
+            formData.append(
+                "files",
+                panCardDoc.document,
+                `${panCardDoc.documentName}.pdf`
+            );
+
+            console.log(formData)
+            instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
+                .then(function (response) {
+                    console.log(response);
                     setRegistrationCertificate({
                         ...registrationCertificate,
                         documentLink: response[0].mediaURL
@@ -120,24 +123,34 @@ function AgencyForm3() {
                         ...panCardDoc,
                         documentLink: response[2].mediaURL
                     })
-                    resolve()
-            })
+                    // resolve()
+                })
+                .catch(err => {
+                    setLoading(false)
+                })
+            // })
         })
     }
 
+
+
     const handleUpload = async (event) => {
-        
+
         if (status === "Upload" && pickedAll) {
             await uploadMedia()
             setLoading(false);
         }
-        else{
+        else {
             toast.error("Please upload all the documents.")
         }
+        // if (status === 'Next'){
+        //     window.location.href = "/agency-form-four"
+        // }
     }
 
     const handleUpdate = () => {
         setLoading(true);
+
         console.log(registrationCertificate);
         console.log(brochureDoc);
         console.log(panCardDoc);
@@ -150,6 +163,7 @@ function AgencyForm3() {
                 console.log(response)
                 window.location.href = "/agency-form-four"
                 setLoading(false);
+                props.history.push("/agency-form-four")
             })
             .catch(err => {
                 setLoading(false);
@@ -167,17 +181,20 @@ function AgencyForm3() {
 
     useEffect(() => {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
+            console.log('true');
             setPickedAll(true)
         }
 
-        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== ""){
+        if (registrationCertificate.documentLink !== "" && brochureDoc.documentLink !== "" && panCardDoc.documentLink !== "") {
+            setLoading(false);
             handleUpdate();
         }
 
-        console.log(registrationCertificate, brochureDoc, panCardDoc);
+        console.log(registrationCertificate, brochureDoc, panCardDoc, "document");
 
 
     }, [registrationCertificate, brochureDoc, panCardDoc])
+
 
     return (
         <>
@@ -231,16 +248,16 @@ function AgencyForm3() {
 
                             <div className="nextBtn">
                                 <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
-                                <button>
-                                    <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
-                                </button>
+                                    <button>
+                                        <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                    </button>
                                 </NavLink>
 
                                 {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
-                                    <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
-                                        {status}
-                                        <i className="fa fa-long-arrow-right" aria-hidden="true" />
-                                    </button>
+                                <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
+                                    {status}
+                                    <i className="fa fa-long-arrow-right" aria-hidden="true" />
+                                </button>
                                 {/* </NavLink> */}
                             </div>
                         </div>
