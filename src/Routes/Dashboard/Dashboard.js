@@ -25,6 +25,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import * as actions from '../../Redux/action/addProject';
 import { connect } from 'react-redux';
+import NO_Data_ICON from './no_data_icon.jpg';
 
 const MenuProps = {
     getContentAnchorEl: () => null,
@@ -145,6 +146,7 @@ const Dashboard = (props) => {
     const getAgencyProfile = ((agencyId) => {
         instance.get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
+                console.log(response.isAgencyVerified)
                 setVerified(response.isAgencyVerified)
             })
 
@@ -190,9 +192,7 @@ const Dashboard = (props) => {
                 <div className="innerClientsOptions">
                     {
                         cardsArray.map((value, index) => {
-
                             return (
-
                                 // <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
                                 //     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
                                 //         <div className="leftLine" style={{
@@ -371,7 +371,11 @@ const Dashboard = (props) => {
                                         </div>
                                     )
                                 })
-                                : <h2>No Data Found</h2>
+                                : <div style={{textAlign: 'center'}}>
+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    {/* <img src="https://img.icons8.com/fluent/96/000000/nothing-found.png" alt="no_data_icon" /> */}
+                                    <h6>No Data Found</h6>
+                                </div>
                         }
                     </div>
                 </div>
