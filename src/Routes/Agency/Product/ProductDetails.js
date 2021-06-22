@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ClientNavbar from '../../Client/ClientNavbar'
 import './ProductDetails.css'
 
@@ -10,10 +10,24 @@ import Moment from 'react-moment';
 import instance from '../../../Constants/axiosConstants';
 
 function ProductDetails(props) {
+    const { _id } = props.location.state;
+    let productId = _id;
+    const Role = localStorage.getItem('role');
+    let details = [props.location.state];
 
-    const Role = 'client'
-    console.log(props)
-    const details = [props.location.state];
+    const getProduct = () => {
+        instance.get(`/api/${Role}/products/get/60c34430ef77d8166bb1dbc6`)
+        .then(response => {
+            details = response;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    useEffect(() => {
+        getProduct()
+    }, [productId])
 
     const detailsInJson = props.location.state;
     console.log(details);

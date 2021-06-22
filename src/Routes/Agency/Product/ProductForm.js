@@ -495,7 +495,6 @@ function ProductForm(props) {
                   onChange={handleChange}
                   cols="30"
                   rows="6"
-                  maxLength='100'
                 ></textarea>
                 {errors.productDescription && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDescription}</p>}
               </section>

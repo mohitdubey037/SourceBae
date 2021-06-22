@@ -82,6 +82,9 @@ function AgencyProfile() {
                 setAgencyProfileData({ ...response })
                 setLoading(false)
             })
+            .catch(err => {
+                setLoading(false)
+            })
 
     }
 

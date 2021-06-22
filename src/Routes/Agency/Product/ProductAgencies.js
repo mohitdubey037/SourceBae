@@ -85,7 +85,7 @@ const bType = [
     'B2B2C'
 ]
 
-function ProductAgencies() {
+function ProductAgencies(props) {
 
     const Role = localStorage.getItem('role');
 
@@ -181,7 +181,9 @@ function ProductAgencies() {
                                                 </div>
                                             </div>
                                             <div className="profileButton">
-                                                <p>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
+                                                <p onClick={() => props.history.push({
+                                                    pathname: `/agency-profile:${value.agencyId._id}`
+                                                })}>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
                                             </div>
                                         </div>
 
@@ -235,10 +237,10 @@ function ProductAgencies() {
                                         <div className="quotationShortlistButton">
                                             {/* <div onClick={() => window.location.href = "/product-details"} ><p>View Product</p></div> */}
                                             <div>
-                                                <NavLink style={{textDecoration: 'none'}} to={{
-                                                pathname:'product-details',
-                                                state: {...value}
-                                            }}>View Product</NavLink>
+                                                <NavLink style={{ textDecoration: 'none' }} to={{
+                                                    pathname: 'product-details',
+                                                    state: { ...value }
+                                                }}>View Product</NavLink>
                                             </div>
                                             <div onClick={onOpenModal}><p>Connect</p></div>
                                         </div>
