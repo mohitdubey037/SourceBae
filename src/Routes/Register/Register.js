@@ -185,6 +185,7 @@ const Register = (props) => {
 
     const handleErrorsValidation = (Role) => {
         const err = {}
+        console.log(agencyProfileDetails.agencyTeamSize);
         if (Role === "Agency") {
             if (agencyProfileDetails.agencyName === "") {
                 err.agencyNameError = 'Agency name is required'
@@ -192,10 +193,10 @@ const Register = (props) => {
             else if (agencyProfileDetails.agencyName.length < 2) {
                 err.agencyNameError = 'Agency name must be between 2 characters.'
             }
-            else if (agencyProfileDetails.agencyTeamSize === '') {
+            else if (agencyProfileDetails.agencyTeamSize === 0) {
                 err.agencyTeamSizeError = 'Team strength is required'
             }
-            else if (agencyProfileDetails.socialPlatformDetails[0].platformLink === "") {
+            else if (agencyProfileDetails?.socialPlatformDetails[0]?.platformLink === "") {
                 err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
             }
             else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
@@ -549,7 +550,6 @@ const Register = (props) => {
                                                 type="number"
                                                 name="agencyTeamSize"
                                                 placeholder='Team Strength'
-
                                                 onChange={(event) => handleCreateProfile(event, role)} />
                                             {errors.agencyTeamSizeError && <Alert severity="error">{errors.agencyTeamSizeError}</Alert>}
 
