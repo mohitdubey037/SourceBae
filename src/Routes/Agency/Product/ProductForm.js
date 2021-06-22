@@ -314,8 +314,8 @@ function ProductForm(props) {
       err.productName = "Name required"
     }
 
-    if (apiData.productDescription.length < 10) {
-      err.productDescription = 'Description required'
+    if (apiData.productDescription.length < 100) {
+      err.productDescription = 'Description should be of minimum 100 characters.'
     }
 
     if (apiData.productDomain === '') {
@@ -417,6 +417,9 @@ function ProductForm(props) {
       <Navbar />
       {loading && <Spinner />}
       <div className="mainProductForm">
+        <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </div>
         <div className="innerProductForm">
           <div className="leftBorderLineProduct"></div>
           <div className="productTagLine">

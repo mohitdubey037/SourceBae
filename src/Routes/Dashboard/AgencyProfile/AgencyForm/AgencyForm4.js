@@ -240,6 +240,7 @@ function AgencyForm4(props) {
     // }
 
     const finalUpdate = () => {
+        console.log('finish')
         if (validateInfo()) {
             let apiData;
 
@@ -297,7 +298,7 @@ function AgencyForm4(props) {
             }
             finishAgencyForm4Api(apiData);
         }
-    }
+    };
 
 
     return (
