@@ -33,7 +33,7 @@ import { Alert } from '@material-ui/lab'
 // })
 
 
-function AgencyForm2() {
+function AgencyForm2(props) {
 
     const colors = {
         Update: "yellow",
@@ -41,7 +41,6 @@ function AgencyForm2() {
     }
 
     const Role = "agency"
-
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState("Update")
 
@@ -80,7 +79,6 @@ function AgencyForm2() {
 
     const handleChange = (event) => {
         const { name, value } = event.target
-
         if (name === "budget")
             setApiData(
                 {
@@ -123,7 +121,7 @@ function AgencyForm2() {
     }, [dom])
 
     //Api Calls methods
-    
+
     const getAllDomains = () => {
         instance.get(`api/${Role}/domains/all`)
             .then(function (response) {
@@ -137,7 +135,7 @@ function AgencyForm2() {
                 setAllDomainsData(domainNames)
             })
     }
-    
+
     const handleDomains = (event) => {
         const { className } = event.target
         const toggledDomains = allDomainsData.map((domain) => {
@@ -154,7 +152,7 @@ function AgencyForm2() {
 
     const getAllServices = () => {
         instance.get(`api/${Role}/services/all`)
-        .then(function (response) {
+            .then(function (response) {
                 const servicesNames = response.map((service) => {
                     return {
                         ...service,
@@ -165,9 +163,7 @@ function AgencyForm2() {
             })
     }
 
-
     const handleServices = (event) => {
-
         // document.body.scrollIntoView({ behavior: 'smooth' })
         const { className } = event.target
         const toggledServices = allServicesData.map((service) => {
@@ -177,16 +173,15 @@ function AgencyForm2() {
                     selected: !service.selected
                 }
 
-                return service
-            })
-            
-            setAllServicesData(toggledServices)
-            
-        }
-        
-        
-        const getAllTechs = () => {
-            instance.get(`api/${Role}/technologies/all`)
+            return service
+        })
+
+        setAllServicesData(toggledServices)
+
+    }
+
+    const getAllTechs = () => {
+        instance.get(`api/${Role}/technologies/all`)
             .then(function (response) {
                 const techNames = response.map((tech) => {
                     return {
@@ -198,30 +193,29 @@ function AgencyForm2() {
             })
     }
 
-    
     const getSelectedServicesIds = (allServices) => {
         return allServices
-        .filter(function (service) {
+            .filter(function (service) {
                 return service.selected === true;
             })
             .map(function (service) {
                 return service._id;
             });
-        }
+    }
 
-        const createAgencyForm2Api = () => {
-            setLoading(true);
-            instance.post(`api/${Role}/agencies/create`, apiData)
+    const createAgencyForm2Api = () => {
+        setLoading(true);
+        instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 // setStatus("Next")
                 setLoading(false);
-                window.location.href = "/agency-form-three"
+                props.history.push("/agency-form-three")
             })
             .catch(err => {
                 setLoading(false)
             })
     }
-    
+
     useEffect(() => {
         getAllDomains()
         getAllServices()
@@ -229,12 +223,11 @@ function AgencyForm2() {
     }, [])
 
     useEffect(() => {
-        
         if (allDomainsData.length !== 0 && allTechData.length !== 0 && allServicesData.length !== 0) {
             setLoading(false);
         }
     }, [allDomainsData, allServicesData, allTechData])
-    
+
     useEffect(() => {
         setSelectedServicesId(getSelectedServicesIds(allServicesData))
         setApiData({
@@ -245,98 +238,95 @@ function AgencyForm2() {
 
     useEffect(() => {
         // eslint-disable-next-line array-callback-return
-
         const filteredTech = {}
         allTechData.forEach((tech) => {
             if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
                 filteredTech[tech.technologyName] = tech
             }
         })
-        
         setVisibleTechData(filteredTech)
         setVisibleTechNames(Object.keys(filteredTech))
     }, [selectedServicesId, allTechData])
-    
+
     useEffect(() => {
         if (apiData.agencyDomains.length !== 0 && apiData.agencyServices.length !== 0 && apiData.agencyTechnologies.length !== 0) {
             createAgencyForm2Api()
         }
     }, [apiData])
-    
+
     const handleNext = () => {
         setAgencyDomains()
         setAgencyTechnologies()
     }
-    
-    // const handleNavlink = (event) => {
-        
-        // let errors = ({
-            //     agencyDomainsError: "",
-        //     agencyServicesError: "",
-        //     agencyTechnologiesError: "",
-        //     agencyMonthlyBudgetError: ""
-        // })
 
-        // if (!allDomainsData) {
-        //     console.log("domains data", allDomainsData);
-        //     setError(
-        //         {
-            //             agencyDomainsError: "Select at least one option.",
-        //             agencyServicesError: "",
-        //             agencyTechnologiesError: "",
-        //             agencyMonthlyBudgetError: ""
-        //         }
-        //     )
-        // }
-        // else if (!allServicesData) {
-        //     setError(
-        //         {
-        //             agencyDomainsError: "",
-        //             agencyServicesError: "Select at least one option.",
-        //             agencyTechnologiesError: "",
-        //             agencyMonthlyBudgetError: ""
-        //         }
-        //     )
-        // }
-        // else if (!allTechData) {
-        //     setError(
-        //         {
-        //             agencyDomainsError: "",
-        //             agencyServicesError: "",
-        //             agencyTechnologiesError: "Select at least one option.",
-        //             agencyMonthlyBudgetError: ""
-        //         }
-        //     )
-        // }
-        // else if (apiData.agencyMonthlyBudget.length === 0) {
-        //     setError(
-        //         {
-        //             agencyDomainsError: "",
-        //             agencyServicesError: "",
-        //             agencyTechnologiesError: "",
-        //             agencyMonthlyBudgetError: "Select at least one option."
-        //         }
-        //     )
-        // }
-        // else {
-            // setAgencyDomains()
-            // setAgencyTechnologies()
-        // }
-        
-        // if(status==="Update"){
-        //     event.preventDefault()
-        //     handleNext()
-        //     console.log('hiii peeeps');
-        // }
-        // else if(status ==="Next")
-        //     window.location.href = "/agency-form-three"
+    // const handleNavlink = (event) => {
+
+    // let errors = ({
+    //     agencyDomainsError: "",
+    //     agencyServicesError: "",
+    //     agencyTechnologiesError: "",
+    //     agencyMonthlyBudgetError: ""
+    // })
+
+    // if (!allDomainsData) {
+    //     console.log("domains data", allDomainsData);
+    //     setError(
+    //         {
+    //             agencyDomainsError: "Select at least one option.",
+    //             agencyServicesError: "",
+    //             agencyTechnologiesError: "",
+    //             agencyMonthlyBudgetError: ""
+    //         }
+    //     )
+    // }
+    // else if (!allServicesData) {
+    //     setError(
+    //         {
+    //             agencyDomainsError: "",
+    //             agencyServicesError: "Select at least one option.",
+    //             agencyTechnologiesError: "",
+    //             agencyMonthlyBudgetError: ""
+    //         }
+    //     )
+    // }
+    // else if (!allTechData) {
+    //     setError(
+    //         {
+    //             agencyDomainsError: "",
+    //             agencyServicesError: "",
+    //             agencyTechnologiesError: "Select at least one option.",
+    //             agencyMonthlyBudgetError: ""
+    //         }
+    //     )
+    // }
+    // else if (apiData.agencyMonthlyBudget.length === 0) {
+    //     setError(
+    //         {
+    //             agencyDomainsError: "",
+    //             agencyServicesError: "",
+    //             agencyTechnologiesError: "",
+    //             agencyMonthlyBudgetError: "Select at least one option."
+    //         }
+    //     )
+    // }
+    // else {
+    // setAgencyDomains()
+    // setAgencyTechnologies()
+    // }
+
+    // if(status==="Update"){
+    //     event.preventDefault()
+    //     handleNext()
+    //     console.log('hiii peeeps');
+    // }
+    // else if(status ==="Next")
+    //     window.location.href = "/agency-form-three"
 
     // }
 
     return (
         <>
             <Navbar />
-
             <FormPhases value1={true} value2={true} />
 
             {loading ? <Spinner /> :
@@ -344,7 +334,6 @@ function AgencyForm2() {
                 <div className="mainTechStackForm">
                     <div className="innerTechStackForm">
                         <div className="techStackFields">
-
                             <div className="domainsFields">
                                 <p className="domainHeading">1. Which business sector are you targeting?</p>
                                 <div className="domainFieldsCard">
@@ -363,13 +352,9 @@ function AgencyForm2() {
                                 {!allDomainsData && <Alert severity="error">{console.log(setError.agencyDomainsError)}</Alert>}
                             </div>
 
-
-
-
                             <div className="serivcesAgency">
                                 <p className="servicesHeading">2. In which services you have good command?</p>
                                 <div className="servicesCardsAgency">
-
                                     {allServicesData?.length > 0 ? allServicesData.map((service) => {
                                         return (
                                             <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
@@ -386,10 +371,8 @@ function AgencyForm2() {
                                 {setError.agencyServicesError ? <Alert severity="error">{setError.agencyServicesError}</Alert> : ""}
                             </div>
 
-
                             <div className="monthlyBudget">
                                 <p>3. What is the monthly budget?</p>
-
                                 <div className="domainBudgetOptions">
                                     <FormControl component="fieldset">
                                         <RadioGroup aria-label="budget" name="budget" value={apiData.agencyMonthlyBudget} onChange={handleChange}>
@@ -402,7 +385,6 @@ function AgencyForm2() {
                                 </div>
                                 {setError.agencyMonthlyBudgetError ? <Alert severity="error">{setError.agencyMonthlyBudgetError}</Alert> : ""}
                             </div>
-
 
                             <div className="nextBtn">
                                 {/* <NavLink to="/agency-form-one" ><i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
@@ -421,7 +403,6 @@ function AgencyForm2() {
                                 </button>
                                 {/* </NavLink> */}
                             </div>
-
 
                         </div>
                         <div className="serviceFieldsOptions">

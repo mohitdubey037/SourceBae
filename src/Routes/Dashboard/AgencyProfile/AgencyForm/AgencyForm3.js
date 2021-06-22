@@ -75,10 +75,8 @@ function AgencyForm3(props) {
                 document
             })
         }
-
     }
-
-
+    
     const handleUploadError = (error) => {
         toast.error(error)
     }
@@ -87,8 +85,6 @@ function AgencyForm3(props) {
         setLoading(true);
         return new Promise((resolve, reject) => {
             const formData = new FormData();
-
-
             formData.append(
                 "files",
                 registrationCertificate.document,
@@ -104,7 +100,6 @@ function AgencyForm3(props) {
                 panCardDoc.document,
                 `${panCardDoc.documentName}.pdf`
             );
-
             console.log(formData)
             instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
                 .then(function (response) {
@@ -132,10 +127,7 @@ function AgencyForm3(props) {
         })
     }
 
-
-
     const handleUpload = async (event) => {
-
         if (status === "Upload" && pickedAll) {
             await uploadMedia()
             setLoading(false);
@@ -150,7 +142,6 @@ function AgencyForm3(props) {
 
     const handleUpdate = () => {
         setLoading(true);
-
         console.log(registrationCertificate);
         console.log(brochureDoc);
         console.log(panCardDoc);
@@ -161,7 +152,6 @@ function AgencyForm3(props) {
         instance.post(`/api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 console.log(response)
-                window.location.href = "/agency-form-four"
                 setLoading(false);
                 props.history.push("/agency-form-four")
             })
@@ -192,9 +182,7 @@ function AgencyForm3(props) {
 
         console.log(registrationCertificate, brochureDoc, panCardDoc, "document");
 
-
     }, [registrationCertificate, brochureDoc, panCardDoc])
-
 
     return (
         <>

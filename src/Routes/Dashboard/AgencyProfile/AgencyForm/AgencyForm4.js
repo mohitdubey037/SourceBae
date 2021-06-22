@@ -242,39 +242,49 @@ function AgencyForm4(props) {
     const finalUpdate = () => {
         if (validateInfo()) {
             let apiData;
+            let socialPlatformDetails = [];
+            if (Object.entries(githubLink).length == 0 && Object.entries(stackoverflow).length == 0 && Object.entries(featuredLink).length == 0 && fields[0].value == null) {
+                apiData = {
+                    stepsCompleted : '5',
+                    socialPlatformDetails : socialPlatformDetails
+                }
+            }
 
-            if (Object.entries(githubLink).length !== 0 && Object.entries(stackoverflow).length !== 0 && Object.entries(featuredLink).length !== 0 && fields[0].value !== 'null') {
-                console.log('hii');
-                const portfolios = fields.map((link, index) => {
-                    return {
-                        platformName: `portfolio${index + 1}`,
-                        platformLink: link.value
-                    }
-                })
+            // if (Object.entries(githubLink).length !== 0 && Object.entries(stackoverflow).length !== 0 && Object.entries(featuredLink).length !== 0 && fields[0].value !== 'null') {
+            //     console.log('hii');
+            //     const portfolios = fields.map((link, index) => {
+            //         return {
+            //             platformName: `portfolio${index + 1}`,
+            //             platformLink: link.value
+            //         }
+            //     })
+            //     apiData = {
+            //         stepsCompleted: '5',
+            //         socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+            //     }
+            // }
+            if (Object.entries(githubLink).length !== 0) {
+                socialPlatformDetails.push(githubLink)
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+                    socialPlatformDetails: socialPlatformDetails
                 }
             }
-            else if (Object.entries(githubLink).length !== 0) {
+            if (Object.entries(stackoverflow).length !== 0) {
+                socialPlatformDetails.push(stackoverflow);
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: [githubLink]
+                    socialPlatformDetails: socialPlatformDetails
                 }
             }
-            else if (Object.entries(stackoverflow).length !== 0) {
+            if (Object.entries(featuredLink).length !== 0) {
+                socialPlatformDetails.push(featuredLink)
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: [stackoverflow]
+                    socialPlatformDetails: socialPlatformDetails
                 }
             }
-            else if (Object.entries(featuredLink).length) {
-                apiData = {
-                    stepsCompleted: '5',
-                    socialPlatformDetails: [featuredLink]
-                }
-            }
-            else if (fields[0].value !== null) {
+            if (fields[0].value !== null) {
                 console.log(fields[0].value);
                 console.log('fldsf');
                 const portfolios = fields.map((link, index) => {
@@ -283,16 +293,10 @@ function AgencyForm4(props) {
                         platformLink: link.value
                     }
                 })
+                socialPlatformDetails.push(...portfolios);
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: [...portfolios]
-                }
-            }
-            else {
-                console.log('ab ye chalega');
-                apiData = {
-                    stepsCompleted: '5',
-                    socialPlatformDetails: {}
+                    socialPlatformDetails: socialPlatformDetails
                 }
             }
             finishAgencyForm4Api(apiData);
