@@ -19,12 +19,15 @@ function ProductDetails(props) {
     const Role = localStorage.getItem('role');
     const userId = localStorage.getItem('userId')
     // let details = [props.location.state];
-    const [details, setDetails] = useState()
-    const [detailsInJson, setDetailsInJson] = useState({})
+    const [details, setDetails] = useState([])
+    const [similarAgency, setSimilarAgency] = useState([])
+    const [detailsInJson, setDetailsInJson] = useState()
 
     const getProduct = () => {
         instance.get(`/api/${Role}/products/get/${productId}`)
             .then(response => {
+                console.log(response);
+                setSimilarAgency(response.similarAgencies);
                 setDetails([response.product]);
                 setDetailsInJson(response.product)
             })
@@ -39,9 +42,12 @@ function ProductDetails(props) {
 
     useEffect(() => {
         console.log(details);
+        console.log(Array.isArray(details));
+        console.log(details.length);
+        console.log(details)
+        console.log(similarAgency.length)
         console.log(detailsInJson);
-        console.log(detailsInJson.length)
-    },[details, detailsInJson])
+    },[details, detailsInJson, similarAgency])
 
     const brr =
         [
@@ -86,9 +92,6 @@ function ProductDetails(props) {
                 ]
             },
         ]
-
-        console.log(brr);
-
 
     const arr =
         [
@@ -151,7 +154,6 @@ function ProductDetails(props) {
 
         ]
 
-    const crr = [1, 2, 3, 4];
     const [open, setOpen] = useState(false);
     const [modalForm, setModalForm] = useState({});
 
@@ -184,7 +186,7 @@ function ProductDetails(props) {
     return (
         <>
             <ClientNavbar />
-            {details !== undefined && details?.map((value, index) => {
+            {details.length > 0 && details?.map((value, index) => {
                 return (
                     <div className="mainProductDetails">
                         <div className="innerProductDetails">
@@ -339,17 +341,17 @@ function ProductDetails(props) {
                                     </div>
                                     <div className="moreAgencyList">
                                         {
-                                            crr.map(() => {
+                                            similarAgency.length > 0 && similarAgency.map((value) => {
                                                 return (
-                                                    <div className="moreAgencyCard">
+                                                    <div style={{cursor: 'pointer'}} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard">
                                                         <div className="moreAgencyLogo">
                                                             <div>
                                                                 <img src={logo} alt="" />
                                                             </div>
                                                         </div>
                                                         <div className="moreAgencyInfo">
-                                                            <h6>Farhme India</h6>
-                                                            <p>Lorem ipsum dolor sit amet. Lorem, ipsum.</p>
+                                                            <h6>{value.agencyId.agencyName}</h6>
+                                                            <p>{value.agencyId.agencyDescription}</p>
                                                         </div>
                                                     </div>
                                                 )

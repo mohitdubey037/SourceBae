@@ -40,7 +40,6 @@ import CustomRoute from './HOCRoute/CustomRoute';
 import { withRouter } from "react-router";
 
 const App = (props) => {
-  console.log(props);
   return (
   <Switch>
     <Route exact path='/' component={Mainhomepage} />
