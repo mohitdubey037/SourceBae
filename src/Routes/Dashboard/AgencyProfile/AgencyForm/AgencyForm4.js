@@ -248,22 +248,21 @@ function AgencyForm4() {
     // }
 
     const finalUpdate = () => {
+        console.log('finish')
         if (validateInfo()) {
-            if (status === "Finish") {
-                const portfolios = fields.map((link, index) => {
-                    return {
-                        platformName: `portfolio${index + 1}`,
-                        platformLink: link.value
-                    }
-                })
-                const apiData = {
-                    stepsCompleted: '5',
-                    socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
+            const portfolios = fields.map((link, index) => {
+                return {
+                    platformName: `portfolio${index + 1}`,
+                    platformLink: link.value
                 }
-                finishAgencyForm4Api(apiData);
+            })
+            const apiData = {
+                stepsCompleted: '5',
+                socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
             }
+            finishAgencyForm4Api(apiData);
         }
-    }
+    };
 
 
     return (

@@ -196,7 +196,7 @@ const Register = (props) => {
                 err.agencyTeamSizeError = 'Team strength is required'
             }
             else if (agencyProfileDetails.socialPlatformDetails[0].platformLink === "") {
-                err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
+                err.socialPlatformDetailsError = 'Website url is required'
             }
             else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
                 err.socialPlatformDetailsError = 'Invalid link provided.'
@@ -222,7 +222,7 @@ const Register = (props) => {
                 err.companyNameError = 'Company Name must be between 2 characters.'
             }
             else if (clientProfileDetails.socialPlatformDetails[0].platformLink === "") {
-                err.socialPlatformDetailsError = 'socialPlatformDetails Link required'
+                err.socialPlatformDetailsError = 'Website url is required'
             }
             else if (!helper.validateLink(clientProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
                 err.socialPlatformDetailsError = 'Invalid link provided.'
