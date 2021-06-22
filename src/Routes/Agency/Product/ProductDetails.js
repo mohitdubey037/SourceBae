@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router";
+
 import ClientNavbar from '../../Client/ClientNavbar'
 import './ProductDetails.css'
-
+import * as helper from "../../../shared/helper";
 import logo from '../../../assets/images/Logo/logo.png'
 
 import 'react-responsive-modal/styles.css';
@@ -10,72 +12,82 @@ import Moment from 'react-moment';
 import instance from '../../../Constants/axiosConstants';
 
 function ProductDetails(props) {
-    const { _id } = props.location.state;
-    let productId = _id;
+    let { productId } = useParams();
+    productId = productId ? helper.cleanParam(productId) : "";
+
+    // let productId = _id;
     const Role = localStorage.getItem('role');
-    let details = [props.location.state];
+    const userId = localStorage.getItem('userId')
+    // let details = [props.location.state];
+    const [details, setDetails] = useState()
+    const [detailsInJson, setDetailsInJson] = useState({})
 
     const getProduct = () => {
-        instance.get(`/api/${Role}/products/get/60c34430ef77d8166bb1dbc6`)
-        .then(response => {
-            details = response;
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        instance.get(`/api/${Role}/products/get/${productId}`)
+            .then(response => {
+                setDetails([response.product]);
+                setDetailsInJson(response.product)
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     useEffect(() => {
         getProduct()
     }, [productId])
 
-    const detailsInJson = props.location.state;
-    console.log(details);
-
+    useEffect(() => {
+        console.log(details);
+        console.log(detailsInJson);
+        console.log(detailsInJson.length)
+    },[details, detailsInJson])
 
     const brr =
-                [
+        [
+            {
+                heading: 'Product Stage',
+                content: [
                     {
-                        heading: 'Product Stage',
-                        content: [
-                            {
-                                ans: detailsInJson.productCurrentStatus
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Customers Accquired',
-                        content: [
-                            {
-                                ans: detailsInJson.productCustomerAccquired
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Active Users',
-                        content: [
-                            {
-                                ans: detailsInJson.productActiveUsers
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Feature Link',
-                        content: [
-                            {
-                                ans: detailsInJson.productFeatureLink
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Platform Link',
-                        content: [
-                            {
-                                ans: detailsInJson.productPlatformLink
-                            }
-                        ]
-                    },
+                        ans: detailsInJson && detailsInJson?.productCurrentStatus
+                    }
                 ]
+            },
+            {
+                heading: 'Customers Accquired',
+                content: [
+                    {
+                        ans: detailsInJson?.productCustomerAccquired
+                    }
+                ]
+            },
+            {
+                heading: 'Active Users',
+                content: [
+                    {
+                        ans: detailsInJson?.productActiveUsers
+                    }
+                ]
+            },
+            {
+                heading: 'Feature Link',
+                content: [
+                    {
+                        ans: detailsInJson?.productFeatureLink
+                    }
+                ]
+            },
+            {
+                heading: 'Platform Link',
+                content: [
+                    {
+                        ans: detailsInJson?.productPlatformLink
+                    }
+                ]
+            },
+        ]
+
+        console.log(brr);
 
 
     const arr =
@@ -84,7 +96,7 @@ function ProductDetails(props) {
                 heading: 'Product Name',
                 content: [
                     {
-                        ans: detailsInJson.productName
+                        ans: detailsInJson?.productName
                     }
                 ]
             },
@@ -92,7 +104,7 @@ function ProductDetails(props) {
                 heading: 'Headquarter',
                 content: [
                     {
-                        ans: detailsInJson.productCompanyLocation
+                        ans: detailsInJson?.productCompanyLocation
                     }
                 ]
             },
@@ -100,7 +112,7 @@ function ProductDetails(props) {
                 heading: 'Business Model',
                 content: [
                     {
-                        ans: detailsInJson.productBusinessModel
+                        ans: detailsInJson?.productBusinessModel
                     }
                 ]
             },
@@ -108,7 +120,7 @@ function ProductDetails(props) {
                 heading: 'Business Product',
                 content: [
                     {
-                        ans: detailsInJson.productDomain.domainName
+                        ans: detailsInJson?.productDomain !== undefined ? detailsInJson?.productDomain?.domainName : null
                     }
                 ]
             },
@@ -116,7 +128,7 @@ function ProductDetails(props) {
                 heading: 'Founding Date',
                 content: [
                     {
-                        ans: <Moment format="D MMM YYYY" withTitle>{detailsInJson.createdAt}</Moment>
+                        ans: <Moment format="D MMM YYYY" withTitle>{detailsInJson?.createdAt}</Moment>
                     }
                 ]
             },
@@ -124,7 +136,7 @@ function ProductDetails(props) {
                 heading: 'Team Size',
                 content: [
                     {
-                        ans: detailsInJson.productTeamSize
+                        ans: detailsInJson?.productTeamSize
                     }
                 ]
             },
@@ -132,7 +144,7 @@ function ProductDetails(props) {
                 heading: 'Founders',
                 content: [
                     {
-                        ans: detailsInJson.productFounderLinkedinProfiles
+                        ans: detailsInJson?.productFounderLinkedinProfiles
                     }
                 ]
             },
@@ -144,31 +156,26 @@ function ProductDetails(props) {
     const [modalForm, setModalForm] = useState({});
 
     const formHandler = (event) => {
-        const {name, value} = event.target
+        const { name, value } = event.target
         setModalForm({
             ...modalForm,
-            [name] : value
+            [name]: value
         })
     }
 
     const dummyForm = {
-
-        // clientId : details.map(d => d.agencyId._id),
-        // productId : details.map(d => d._id)
-        clientId : localStorage.getItem('userId'),
-        productId : details[0]._id
+        userId,
+        productId
     }
-
-    console.log(dummyForm);
 
     const postSubmitHandler = () => {
         instance.post(`/api/${Role}/investments/create`, dummyForm)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     const onOpenModal = () => setOpen(true);
@@ -177,7 +184,7 @@ function ProductDetails(props) {
     return (
         <>
             <ClientNavbar />
-            {details.map((value, index) => {
+            {details !== undefined && details?.map((value, index) => {
                 return (
                     <div className="mainProductDetails">
                         <div className="innerProductDetails">

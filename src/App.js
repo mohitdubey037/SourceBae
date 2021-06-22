@@ -37,9 +37,10 @@ import ProductForm from './Routes/Agency/Product/ProductForm';
 import ProductDetails from './Routes/Agency/Product/ProductDetails';
 import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
 import CustomRoute from './HOCRoute/CustomRoute';
+import { withRouter } from "react-router";
 
-const App = () => {
-  
+const App = (props) => {
+  console.log(props);
   return (
   <Switch>
     <Route exact path='/' component={Mainhomepage} />
@@ -60,6 +61,9 @@ const App = () => {
     <CustomRoute condition="Agency" exact path="/agency-form-four" component={AgencyForm4} />
     <CustomRoute condition="Agency" exact path="/product-form" component={ProductForm} />
     <CustomRoute condition="Agency" exact path="/agency-project-details:projectId" component={AgencyProjectDetails} />
+    {/* <CustomRoute condition={props.location.condition} exact path="/product-details:productId" component={ProductDetails} /> */}
+
+    <Route exact path="/product-details/:productId" component={ProductDetails} />
 
     {/* Both */}
     <Route exact path="/agency-project-details" component={AgencyProjectDetails} />
@@ -76,12 +80,12 @@ const App = () => {
     <CustomRoute condition="Client" exact path="/hire-developer" component={HireDeveloper} />
     <CustomRoute condition="Client" exact path="/agency-list:projectId" component={AgencyList} />
     <CustomRoute condition="Client" exact path="/client-profile" component={ClientProfile} />
-    <CustomRoute condition="Client" exact path="/product-details" component={ProductDetails} />
+    {/* <CustomRoute condition="Client" exact path="/product-details:role" component={ProductDetails} /> */}
     <CustomRoute condition="Client" component={PageNotFound} />
 
   </Switch>
 )}
 
 
-export default App;
+export default withRouter(App);
 

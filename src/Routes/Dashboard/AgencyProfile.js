@@ -37,6 +37,7 @@ function AgencyProfile() {
 
 
     const { id } = useParams()
+    console.log(id);
     const Role = "agency"
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(true);

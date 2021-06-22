@@ -237,9 +237,10 @@ function ProductAgencies(props) {
                                         <div className="quotationShortlistButton">
                                             {/* <div onClick={() => window.location.href = "/product-details"} ><p>View Product</p></div> */}
                                             <div>
+                                                {/* <p onClick={props.history.push(`/product-details/:${value._id}`)}>View Product</p> */}
                                                 <NavLink style={{ textDecoration: 'none' }} to={{
-                                                    pathname: 'product-details',
-                                                    state: { ...value }
+                                                    pathname: `/product-details/:${value._id}`,
+                                                    condition: 'Client'
                                                 }}>View Product</NavLink>
                                             </div>
                                             <div onClick={onOpenModal}><p>Connect</p></div>
