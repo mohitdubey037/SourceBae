@@ -8,7 +8,7 @@ function Information(props) {
 
     const Role ='agency'
     const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY")
-    console.log(props,"props")
+    // console.log(props,"props")
     const [arr, setArr] = useState([
         {
             title: 'Agency Name',
@@ -64,7 +64,6 @@ function Information(props) {
 
     const permanentDisable = (name)=>{
         if(name ==="Director Name" || name ==="Agency Website" || name==="Team Size" || name==="Agency Email Id"){
-            console.log(name)
             return false
         }
         else return true
@@ -74,7 +73,7 @@ function Information(props) {
         console.log(name,value)
         let temp = [...arr]
         let index = temp.findIndex((item)=> item.title===name)
-        console.log(index)
+        // console.log(index)
         temp[index].inputValue = value
         setArr(temp)
     }

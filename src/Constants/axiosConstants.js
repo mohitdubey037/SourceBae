@@ -25,7 +25,7 @@ instance.interceptors.request.use(function (request) {
   });
 
 instance.interceptors.response.use(function (response){
-    console.log(response.url)
+    // console.log(response.url)
     if(response.status===200){
         return response.data.data
     }

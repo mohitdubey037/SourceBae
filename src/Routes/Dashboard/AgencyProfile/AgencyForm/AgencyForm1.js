@@ -14,7 +14,7 @@ import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
 import Spinner from '../../../../Components/Spinner/Spinner'
 
-function AgencyForm1() {
+function AgencyForm1(props) {
 
     const Role = "agency"
     const api_param_const = "agencies"
@@ -61,8 +61,6 @@ function AgencyForm1() {
         },
     })
 
-
-
     useEffect(() => {
         // console.log('formData', formData)
         // console.log('agency logo', agencyLogo)
@@ -71,7 +69,7 @@ function AgencyForm1() {
                 .then(function (response) {
                     // setStatus("Next");
                     setLoading(false);
-                    window.location.href = "/agency-form-two"
+                    props.history.push("/agency-form-two");
                 })
                 .catch(err => {
                     setLoading(false);
