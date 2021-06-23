@@ -338,7 +338,7 @@ function ProductAgencies(props) {
                                 </FormControl>
                             </div>
 
-                            <div className="officeVisitFilter">
+                            <div style={{border: 'none'}} className="officeVisitFilter">
                                 <p>Funding type:</p>
                                 <FormControl className={classes.formControl}>
                                     <Select
