@@ -161,7 +161,7 @@ function AgencyProfile() {
                                         <div className="agencyNameURL">
                                             <div className="agencyDEtails">
                                                 <h2>{agencyProfileData?.agencyName}</h2>
-                                                <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p>
+                                                {/* <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p> */}
                                             </div>
                                             {(id === null || id === undefined) && <div className="verifiedStatus" style={{ filter: `${(!agencyProfileData?.isAgencyVerified) ? `grayscale(100%)` : `none`}` }}>
                                                 <i class="fa fa-check" aria-hidden="true" />
