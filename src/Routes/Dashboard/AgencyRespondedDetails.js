@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Quotation/RespondedDetails.css";
 
 import foods from "../../assets/images/Quotation/foods.png";
-import agencyLogo from "../../assets/images/Quotation/cegelec.svg";
 
 import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
@@ -368,9 +367,6 @@ function AgencyRespondedDetails(props) {
           <div className="agencyQuotationHeader">
             <div className="agencyQuotationHeading">
               <h2>Quotation Details</h2>
-            </div>
-            <div className="agencyLogo">
-              <img src={agencyLogo} alt="" />
             </div>
           </div>
 
