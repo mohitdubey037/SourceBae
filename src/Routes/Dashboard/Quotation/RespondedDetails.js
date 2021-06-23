@@ -6,7 +6,7 @@ import foods from "../../../assets/images/Quotation/foods.png";
 import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
-import { Button } from '@material-ui/core'
+import { Button } from "@material-ui/core";
 
 const CommentBox = (props) => {
   const [apiData, setApiData] = useState({
@@ -125,18 +125,17 @@ const CommentBox = (props) => {
         </div>
       )}
 
-      {props.isProposalActionActive &&(
+      {props.isProposalActionActive && (
         <>
-        <div className="action-wait">
-              <p>Please Accept or Reject the Agency.</p>
-              </div>
-                <div className="detailsButtons">
-                  <button>Accept</button>
-                  <button>Withdraw</button>
-                </div>
-                </>
-              )
-              }
+          <div className="action-wait">
+            <p>Please Accept or Reject the Agency.</p>
+          </div>
+          <div className="detailsButtons">
+            <button>Accept</button>
+            <button>Withdraw</button>
+          </div>
+        </>
+      )}
 
       {!props.isAskedForQuotation &&
         props.isCommentSectionActive &&
@@ -172,9 +171,9 @@ function RespondedDetails(props) {
   let { projectId, agencyId } = useParams();
   const routerHistory = useHistory();
 
-  const [isRepliedToClient, setRepliedToClient] = useState(false)
+  const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
-  const [loading, setLoading] = useState()
+  const [loading, setLoading] = useState();
 
   const Role = localStorage.getItem("role");
   const arr = [
@@ -216,12 +215,15 @@ function RespondedDetails(props) {
     }
   }, [isRepliedToClient]);
 
-  // useEffect(() => {
-  //   console.log(project, "project");
-  //   console.log(project.projectServicesRequired.map(p => console.log(p.serviceName)))
-  // }, [project]);
   return (
     <>
+      <div
+        style={{ marginTop: "55px" }}
+        className="backArrow"
+        onClick={() => routerHistory.goBack()}
+      >
+        <i className="fa fa-angle-left" aria-hidden="true"></i>
+      </div>
       <div className="mainDetailHeader">
         <div className="innerDetailHeader">
           <div className="detailHeaderImage">
@@ -268,15 +270,6 @@ function RespondedDetails(props) {
         </div>
       </div>
 
-      <div style={{ width: '80%', marginTop: '35px' }}>
-        <Button
-          onClick={() => routerHistory.goBack()}
-          style={{ background: 'none', border: 'none' }}
-        >
-          <i className='fa fa-arrow-left' style={{ fontSize: '1.5rem' }}></i>
-        </Button>
-      </div>
-
       <div className="respondDescription">
         <h2>About Your Project</h2>
         <p>{project?.projectName}</p>
@@ -307,11 +300,17 @@ function RespondedDetails(props) {
           <span className="leftLine"></span>
           <div>
             <p>Service Name</p>
-            <p>{project?.projectServicesRequired?.length>0 && project?.projectServicesRequired[0]?.serviceName}</p>
+            <p>
+              {project?.projectServicesRequired?.length > 0 &&
+                project?.projectServicesRequired[0]?.serviceName}
+            </p>
           </div>
           <div>
             <p>Technology Name</p>
-            <p>{project?.projectTechnologiesRequired?.length>0 && project?.projectTechnologiesRequired[0]?.technologyName}</p>
+            <p>
+              {project?.projectTechnologiesRequired?.length > 0 &&
+                project?.projectTechnologiesRequired[0]?.technologyName}
+            </p>
           </div>
           <div>
             <p>Testing and Q&A</p>
@@ -335,15 +334,43 @@ function RespondedDetails(props) {
 
           <div className="agencyQuotationDesc">
             <h4>Comments and Replies</h4>
-            {loading ? <p style={{ textAlign: 'center' }}>Comments are loading...</p> :
-              project?.projectProposals &&
-                project.projectProposals[0]?.isAskedForQuotation === true ? (
+            {loading ? (
+              <p style={{ textAlign: "center" }}>Comments are loading...</p>
+            ) : project?.projectProposals &&
+              project.projectProposals[0]?.isAskedForQuotation === true ? (
+              <CommentBox
+                giveReplies={(gr) => {
+                  setRepliedToClient(gr);
+                }}
+                comments={project.projectProposals[0]?.comments}
+                commentType="Quotation"
+                isCommentSectionActive={
+                  project.projectProposals[0].isCommentSectionActive
+                }
+                isReplySectionActive={
+                  project.projectProposals[0].isReplySectionActive
+                }
+                projectId={projectId}
+                agencyId={agencyId}
+                isAskedForQuotation={true}
+                isShortListed={true}
+                negotiablePrice={project.projectProposals[0].negotiablePrice}
+                quotationLink={project.projectProposals[0].quotationLink}
+                isProposalActionActive={
+                  project.projectProposals[0].isProposalActionActive
+                }
+                isQuotationAcceptedByClient={
+                  project.projectProposals[0].isQuotationAcceptedByClient
+                }
+              />
+            ) : (
+              project?.projectProposals && (
                 <CommentBox
                   giveReplies={(gr) => {
-                    setRepliedToClient(gr)
+                    setRepliedToClient(gr);
                   }}
                   comments={project.projectProposals[0]?.comments}
-                  commentType="Quotation"
+                  commentType="Shortlist"
                   isCommentSectionActive={
                     project.projectProposals[0].isCommentSectionActive
                   }
@@ -352,40 +379,19 @@ function RespondedDetails(props) {
                   }
                   projectId={projectId}
                   agencyId={agencyId}
-                  isAskedForQuotation={true}
+                  isAskedForQuotation={false}
                   isShortListed={true}
                   negotiablePrice={project.projectProposals[0].negotiablePrice}
                   quotationLink={project.projectProposals[0].quotationLink}
-                  isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
-                    isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
+                  isProposalActionActive={
+                    project.projectProposals[0].isProposalActionActive
+                  }
+                  isQuotationAcceptedByClient={
+                    project.projectProposals[0].isQuotationAcceptedByClient
+                  }
                 />
-              ) : (
-                project?.projectProposals && (
-                  <CommentBox
-                    giveReplies={(gr) => {
-                      setRepliedToClient(gr)
-                    }}
-                    comments={project.projectProposals[0]?.comments}
-                    commentType="Shortlist"
-                    isCommentSectionActive={
-                      project.projectProposals[0].isCommentSectionActive
-                    }
-                    isReplySectionActive={
-                      project.projectProposals[0].isReplySectionActive
-                    }
-                    projectId={projectId}
-                    agencyId={agencyId}
-                    isAskedForQuotation={false}
-                    isShortListed={true}
-                    negotiablePrice={project.projectProposals[0].negotiablePrice}
-                    quotationLink={project.projectProposals[0].quotationLink}
-                    isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
-                    isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
-                  />
-                )
               )
-            }
-
+            )}
           </div>
 
           <div className="agencyQuestions">
