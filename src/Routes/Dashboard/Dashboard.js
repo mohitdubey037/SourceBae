@@ -176,7 +176,6 @@ const Dashboard = (props) => {
         <>
             {/* Navbar  */}
             <Navbar headingInfo="Dashboard" />
-
             {(!verified || steps !== -1) && <div className="mainUpdateVerify">
                 <div className="innerMainVerify">
 
