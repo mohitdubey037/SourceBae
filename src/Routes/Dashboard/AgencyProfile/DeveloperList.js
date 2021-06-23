@@ -5,6 +5,7 @@ import instance from "../../../Constants/axiosConstants";
 import { useHistory } from 'react-router-dom';
 
 import { set } from 'react-ga'
+import { Button } from '@material-ui/core';
 
 function DeveloperList(props) {
 
@@ -89,7 +90,7 @@ function DeveloperList(props) {
                                         <div className="developerResume">
                                             <div>
                                                 <img src={document} alt="" />
-                                                <button onClick={()=> window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} ><i class="fa fa-upload" aria-hidden="true"></i>Download</button>
+                                                <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} ><i class="fa fa-upload" aria-hidden="true"></i>Download</button>
                                             </div>
                                         </div>
                                     </div>
@@ -98,13 +99,18 @@ function DeveloperList(props) {
                         })
                     }
 
-                    <div className="addMore" onClick = {()=> window.location.href="/add-developer"}>
-                        +
+                    <div className="developerCard">
+                        <div className="developerCardBorder"></div>
+                        <div style={{display: 'flex', height: '315px' }}>
+                            <button className="addMoreDeveloper" onClick={() => window.location.href = "/add-developer"}>
+                                <h6>Add Developer</h6>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default DeveloperList

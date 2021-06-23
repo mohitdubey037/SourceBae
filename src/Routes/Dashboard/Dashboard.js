@@ -224,9 +224,8 @@ const Dashboard = (props) => {
                 key={index}
                 onClick={() => handleLink(value.route)}
                 style={{
-                  filter: `${
-                    !verified || steps !== -1 ? `grayscale(100%)` : `none`
-                  }`,
+                  filter: `${!verified || steps !== -1 ? `grayscale(100%)` : `none`
+                    }`,
                 }}
               >
                 <div
@@ -382,8 +381,8 @@ const Dashboard = (props) => {
                                 value?.projectCurrentStatus === "Live"
                                   ? "#5cb85c"
                                   : value?.projectCurrentStatus === "Completed"
-                                  ? "#f0ad4e"
-                                  : "#d9534f",
+                                    ? "#f0ad4e"
+                                    : "#d9534f",
                               fontWeight: "bold",
                             }}
                           >
@@ -414,10 +413,10 @@ const Dashboard = (props) => {
                 );
               })
             ) : (
-                <div style={{textAlign: 'center'}}>
-+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
-+                                    <h6>No Data Found</h6>
-+                                </div>
+              <div style={{ textAlign: 'center' }}>
+                <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                <h6>No Running Project</h6>
+              </div>
             )}
           </div>
         </div>
