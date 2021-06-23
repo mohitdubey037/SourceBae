@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Quotation/RespondedDetails.css";
 
 import foods from "../../assets/images/Quotation/foods.png";
-import agencyLogo from "../../assets/images/Quotation/cegelec.svg";
 
 import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
-import { Button } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 let isRepliedToClient = false;
 
@@ -45,7 +44,7 @@ const CommentBox = (props) => {
           quotationLink: response[0].mediaURL,
         });
       })
-      .catch((err) => { });
+      .catch((err) => {});
   }
 
   const inputFileChosen = (e) => {
@@ -57,9 +56,9 @@ const CommentBox = (props) => {
   }, [apiData]);
 
   const replyApi = () => {
-    const data = apiData
-    if (props.isAskedForQuotation){
-      data["isAskedForQuotation"] = true; 
+    const data = apiData;
+    if (props.isAskedForQuotation) {
+      data["isAskedForQuotation"] = true;
     }
     instance
       .patch(`api/agency/projects/propose/${props.projectId}`, data)
@@ -108,8 +107,7 @@ const CommentBox = (props) => {
           } else {
             return "";
           }
-        })
-      }
+        })}
       {props.isReplySectionActive && (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", margin: "1rem 0rem" }}>
@@ -183,32 +181,29 @@ const CommentBox = (props) => {
           </div>
         </div>
       )}
-      {props.isProposalActionActive && 
-      props.isQuotationAcceptedByClient  &&(
+      {props.isProposalActionActive && props.isQuotationAcceptedByClient && (
         <>
-        <div className="action-wait">
-              <p>Accept or Reject the Project.</p>
-              </div>
-                <div className="detailsButtons">
-                  <button>Accept</button>
-                  <button>Withdraw</button>
-                </div>
-                </>
-              )}
+          <div className="action-wait">
+            <p>Accept or Reject the Project.</p>
+          </div>
+          <div className="detailsButtons">
+            <button>Accept</button>
+            <button>Withdraw</button>
+          </div>
+        </>
+      )}
 
-              {props.isProposalActionActive && 
-      !props.isQuotationAcceptedByClient  &&
-              <div className="action-wait">
-              <p>Please wait for Client to take some Actions.</p>
-              </div>
-              }
+      {props.isProposalActionActive && !props.isQuotationAcceptedByClient && (
+        <div className="action-wait">
+          <p>Please wait for Client to take some Actions.</p>
+        </div>
+      )}
     </div>
   );
 };
 
 function AgencyRespondedDetails(props) {
-
-  const [isRepliedToClient, setRepliedToClient] = useState(false)
+  const [isRepliedToClient, setRepliedToClient] = useState(false);
   console.log(isRepliedToClient);
   const routerHistory = useHistory();
   let { projectId } = useParams();
@@ -238,7 +233,7 @@ function AgencyRespondedDetails(props) {
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
-        setLoading(false)
+        setLoading(false);
         setProject(response);
       })
       .catch((err) => {
@@ -262,6 +257,13 @@ function AgencyRespondedDetails(props) {
   }, [isRepliedToClient]);
   return (
     <>
+      <div
+        style={{ marginTop: "55px" }}
+        className="backArrow"
+        onClick={() => routerHistory.goBack()}
+      >
+        <i className="fa fa-angle-left" aria-hidden="true"></i>
+      </div>
       <div className="mainDetailHeader">
         <div className="innerDetailHeader">
           <div className="detailHeaderImage">
@@ -307,18 +309,9 @@ function AgencyRespondedDetails(props) {
         </div>
       </div>
 
-      <div style={{ width: '80%', marginTop: '35px' }}>
-        <Button
-          onClick={() => routerHistory.goBack()}
-          style={{ background: 'none', border: 'none' }}
-        >
-          <i className='fa fa-arrow-left' style={{ fontSize: '1.5rem' }}></i>
-        </Button>
-      </div>
 
       <div className="respondDescription">
         <h2>About Your Project</h2>
-        {/* <p>{project.projectDescription}</p> */}
       </div>
 
       <div className="respondCards">
@@ -369,55 +362,60 @@ function AgencyRespondedDetails(props) {
             <div className="agencyQuotationHeading">
               <h2>Quotation Details</h2>
             </div>
-            <div className="agencyLogo">
-              <img src={agencyLogo} alt="" />
-            </div>
           </div>
 
           <div className="agencyQuotationDesc">
             <h4>Comments and Replies</h4>
-            {loading ? <p style={{ textAlign: 'center' }}>Comments are loading...</p> :
-              project?.projectProposals &&
-                project.projectProposals[0]?.isAskedForQuotation === true ? (
+            {loading ? (
+              <p style={{ textAlign: "center" }}>Comments are loading...</p>
+            ) : project?.projectProposals &&
+              project.projectProposals[0]?.isAskedForQuotation === true ? (
+              <CommentBox
+                giveReplies={(gr) => {
+                  setRepliedToClient(gr);
+                }}
+                comments={project.projectProposals[0]?.comments}
+                commentType="Quotation"
+                isReplySectionActive={
+                  project.projectProposals[0].isReplySectionActive
+                }
+                projectId={projectId}
+                isAskedForQuotation={true}
+                isShortListed={true}
+                negotiablePrice={project.projectProposals[0].negotiablePrice}
+                quotationLink={project.projectProposals[0].quotationLink}
+                isProposalActionActive={
+                  project.projectProposals[0].isProposalActionActive
+                }
+                isQuotationAcceptedByClient={
+                  project.projectProposals[0].isQuotationAcceptedByClient
+                }
+              />
+            ) : (
+              project?.projectProposals && (
                 <CommentBox
                   giveReplies={(gr) => {
-                    setRepliedToClient(gr)
+                    setRepliedToClient(gr);
                   }}
                   comments={project.projectProposals[0]?.comments}
-                  commentType="Quotation"
+                  commentType="Shortlist"
                   isReplySectionActive={
                     project.projectProposals[0].isReplySectionActive
                   }
                   projectId={projectId}
-                  isAskedForQuotation={true}
+                  isAskedForQuotation={false}
                   isShortListed={true}
                   negotiablePrice={project.projectProposals[0].negotiablePrice}
                   quotationLink={project.projectProposals[0].quotationLink}
-                  isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
-                  isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
+                  isProposalActionActive={
+                    project.projectProposals[0].isProposalActionActive
+                  }
+                  isQuotationAcceptedByClient={
+                    project.projectProposals[0].isQuotationAcceptedByClient
+                  }
                 />
-              ) : (
-                project?.projectProposals && (
-                  <CommentBox
-                    giveReplies={(gr) => {
-                      setRepliedToClient(gr)
-                    }}
-                    comments={project.projectProposals[0]?.comments}
-                    commentType="Shortlist"
-                    isReplySectionActive={
-                      project.projectProposals[0].isReplySectionActive
-                    }
-                    projectId={projectId}
-                    isAskedForQuotation={false}
-                    isShortListed={true}
-                    negotiablePrice={project.projectProposals[0].negotiablePrice}
-                    quotationLink={project.projectProposals[0].quotationLink}
-                    isProposalActionActive = {project.projectProposals[0].isProposalActionActive}
-                    isQuotationAcceptedByClient = {project.projectProposals[0].isQuotationAcceptedByClient}
-                  />
-                )
               )
-            }
+            )}
           </div>
 
           <div className="agencyQuestions">

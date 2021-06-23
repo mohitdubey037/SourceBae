@@ -218,8 +218,11 @@ function AddingDeveloper(props) {
 
             {loading ? <Spinner /> :
 
-
+                
                 <div className="mainAddingDeveloper">
+                    <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </div>
                     <div className="innerAddingDeveloper">
                         <div className="addingDeveloperHeadings">
                             <img src={model} className="model3d" alt="" />

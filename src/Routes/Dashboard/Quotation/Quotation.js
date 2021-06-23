@@ -8,17 +8,19 @@ import Received from './Received'
 import Responded from './Responded'
 import ProjectesMatched from './ProjectesMatched'
 
-function Quotation() {
+function Quotation(props) {
     return (
         <>
             <Navbar headingInfo="Quotation" />
-
             <div className="mainQuotation">
+                <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </div>
                 <div className="innerQuotation">
                     <nav>
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-                                <img src={received}  alt = "received"/> Received
+                                <img src={received} alt="received" /> Received
                             </button>
                             <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
                                 <img src={responded} alt="" /> Responded
@@ -42,7 +44,7 @@ function Quotation() {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default Quotation
