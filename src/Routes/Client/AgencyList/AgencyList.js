@@ -14,6 +14,7 @@ import Spinner from "../../../Components/Spinner/Spinner";
 function AgencyList(props) {
   const Role = "client";
   let { projectId } = useParams();
+  
 
   projectId = projectId ? helper.cleanParam(projectId) : "";
   const [agencyList, setAgencyList] = useState([]);
@@ -22,11 +23,11 @@ function AgencyList(props) {
   const [open, setOpen] = useState(false);
   const [openQuotation, setOpenQuotation] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isShortlistingDone, setShortlisting] = useState(false)
-  const [isQuotationDone, setQuotationing] = useState(false)
+  const [index, setIndex] = useState(-1)
 
-  const openShortlistModal = (_id) => {
+  const openShortlistModal = (_id, indexParam) => {
     setOpen(true);
+    setIndex(indexParam)
     setShortlistFormData({
       ...shortlistFormData,
       agencyId: _id,
@@ -34,7 +35,8 @@ function AgencyList(props) {
   };
   const onCloseModal = () => setOpen(false);
 
-  const onOpenQuotationModel = (_id) => {
+  const onOpenQuotationModel = (_id, indexParam) => {
+    setIndex(indexParam)
     setOpenQuotation(true);
     setQuotationFormData({
       ...QuotationFormData,
@@ -85,8 +87,9 @@ function AgencyList(props) {
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
-        console.log(response);
-        setShortlisting(true)
+        const tempAgencyList = [...agencyList]
+        tempAgencyList[index].isAgencyShortListed=true
+        setAgencyList(tempAgencyList)
       })
       .catch((err) => {
         console.log(err);
@@ -98,9 +101,9 @@ function AgencyList(props) {
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, QuotationFormData)
       .then(function (response) {
-        console.log(response);
-        alert("Success");
-        setQuotationing(true)
+        const tempAgencyList = [...agencyList]
+        tempAgencyList[index].isAgencyAskedForQuotation=true
+        setAgencyList(tempAgencyList)
       })
       .catch((err) => {
         console.log(err);
@@ -133,7 +136,7 @@ function AgencyList(props) {
             <div className="innerAgencyList">
               <div className="AgencyCardsArea">
                 {agencyList?.length > 0 &&
-                  agencyList.map((agency) => {
+                  agencyList.map((agency, index) => {
                     return (
                       <div className="agencyPreciseCard">
                         <div className="agencyCardHeaderLine"></div>
@@ -203,7 +206,7 @@ function AgencyList(props) {
                             >
                               <p>Show Details</p>
                             </div>
-                          ) : agency.isAgencyShortListed || isShortlistingDone || isQuotationDone ? (
+                          ) : agency.isAgencyShortListed || agency.isAgencyAskedForQuotation ? (
                             <>
                               <div
                                 onClick={() =>
@@ -218,10 +221,10 @@ function AgencyList(props) {
                             </>
                           ) : (
                             <>
-                              <div onClick={() => openShortlistModal(agency._id)}>
+                              <div onClick={() => openShortlistModal(agency._id, index)}>
                                 <p>Shortlist</p>
                               </div>
-                              <div onClick={() => onOpenQuotationModel(agency._id)}>
+                              <div onClick={() => onOpenQuotationModel(agency._id, index)}>
                                 <p>Get Quotation</p>
                               </div>
                             </>

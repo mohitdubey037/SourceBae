@@ -37,6 +37,7 @@ function AgencyProfile() {
 
 
     const { id } = useParams()
+    console.log(id);
     const Role = "agency"
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -80,6 +81,9 @@ function AgencyProfile() {
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
                 setAgencyProfileData({ ...response })
+                setLoading(false)
+            })
+            .catch(err => {
                 setLoading(false)
             })
 

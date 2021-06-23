@@ -9,8 +9,7 @@ import { set } from 'react-ga'
 function DeveloperList(props) {
 
     const routerHistory = useHistory();
-    console.log(routerHistory);
-    console.log(props)
+    // console.log(props)
     const Role = "agency"
     const arr = [1, 2, 3, 4, 5]
     const agencyId = localStorage.getItem("userId")
@@ -46,7 +45,6 @@ function DeveloperList(props) {
     // isRemoteDeveloper: false
     // lastName: "Bhatt"
     // socialPlatformDetails: []
-    console.log(developers.map((developer) => developer.developerDocuments[0].documentLink));
 
 
     return (

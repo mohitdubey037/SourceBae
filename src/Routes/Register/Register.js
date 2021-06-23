@@ -5,10 +5,8 @@ import logotext from '../../assets/images/Logo/logo.png'
 import business from '../../assets/images/Logo/sspp.png'
 import colors from '../../Constants/colors'
 import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
-// import { Button } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert';
 
-import axios from 'axios';
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
@@ -280,7 +278,7 @@ const Register = (props) => {
             })
     }
 
-    const handleSubmit = (Role, Form, createAgencyForm, createClientForm) => {
+    const handleSubmit = (Role, Form) => {
         if (handleErrorsValidation(Role)) {
             const apiRole = helper.lowerize(Role)
             signUpApi(apiRole, Form)
@@ -390,7 +388,6 @@ const Register = (props) => {
                 let form2 = document.querySelector('.form__2')
                 form1.classList.toggle('hide__form1')
                 form2.classList.toggle('show__form2')
-                // setStep(prev => prev + 1)
             }
             else {
                 return false
@@ -442,10 +439,6 @@ const Register = (props) => {
                             <div style={{ width: '100%', textAlign: 'center', marginTop: '5%' }}>
                                 <div className="toggleButton">
                                     <FormGroup>
-                                        {/* <FormControlLabel
-                                    control={<IOSSwitch checked={state.checkedB} onChange={handleChangeToggle} name="checkedB" />}
-                                    label="iOS style"
-                                /> */}
                                         <Typography component="div">
                                             <Grid component="label" container alignItems="center" spacing={1}>
                                                 <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
@@ -589,7 +582,7 @@ const Register = (props) => {
                                     {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
 
                                <Button
-                                        onClick={() => handleSubmit(role, signupForm, agencyProfileDetails, clientProfileDetails)}
+                                        onClick={() => handleSubmit(role, signupForm)}
                                         style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                                     >
                                         SUBMIT

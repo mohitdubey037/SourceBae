@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router";
+
 import ClientNavbar from '../../Client/ClientNavbar'
 import './ProductDetails.css'
-
+import * as helper from "../../../shared/helper";
 import logo from '../../../assets/images/Logo/logo.png'
 
 import 'react-responsive-modal/styles.css';
@@ -10,59 +12,86 @@ import Moment from 'react-moment';
 import instance from '../../../Constants/axiosConstants';
 
 function ProductDetails(props) {
+    let { productId } = useParams();
+    productId = productId ? helper.cleanParam(productId) : "";
 
-    const Role = 'client'
-    console.log(props)
-    const details = [props.location.state];
+    // let productId = _id;
+    const Role = localStorage.getItem('role');
+    const userId = localStorage.getItem('userId')
+    // let details = [props.location.state];
+    const [details, setDetails] = useState([])
+    const [similarAgency, setSimilarAgency] = useState([])
+    const [detailsInJson, setDetailsInJson] = useState()
 
-    const detailsInJson = props.location.state;
-    console.log(details);
+    const getProduct = () => {
+        instance.get(`/api/${Role}/products/get/${productId}`)
+            .then(response => {
+                console.log(response);
+                setSimilarAgency(response.similarAgencies);
+                setDetails([response.product]);
+                setDetailsInJson(response.product)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
+    useEffect(() => {
+        getProduct()
+    }, [productId])
+
+    useEffect(() => {
+        console.log(details);
+        console.log(Array.isArray(details));
+        console.log(details.length);
+        console.log(details)
+        console.log(similarAgency.length)
+        console.log(detailsInJson);
+    },[details, detailsInJson, similarAgency])
 
     const brr =
-                [
+        [
+            {
+                heading: 'Product Stage',
+                content: [
                     {
-                        heading: 'Product Stage',
-                        content: [
-                            {
-                                ans: detailsInJson.productCurrentStatus
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Customers Accquired',
-                        content: [
-                            {
-                                ans: detailsInJson.productCustomerAccquired
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Active Users',
-                        content: [
-                            {
-                                ans: detailsInJson.productActiveUsers
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Feature Link',
-                        content: [
-                            {
-                                ans: detailsInJson.productFeatureLink
-                            }
-                        ]
-                    },
-                    {
-                        heading: 'Platform Link',
-                        content: [
-                            {
-                                ans: detailsInJson.productPlatformLink
-                            }
-                        ]
-                    },
+                        ans: detailsInJson && detailsInJson?.productCurrentStatus
+                    }
                 ]
-
+            },
+            {
+                heading: 'Customers Accquired',
+                content: [
+                    {
+                        ans: detailsInJson?.productCustomerAccquired
+                    }
+                ]
+            },
+            {
+                heading: 'Active Users',
+                content: [
+                    {
+                        ans: detailsInJson?.productActiveUsers
+                    }
+                ]
+            },
+            {
+                heading: 'Feature Link',
+                content: [
+                    {
+                        ans: detailsInJson?.productFeatureLink
+                    }
+                ]
+            },
+            {
+                heading: 'Platform Link',
+                content: [
+                    {
+                        ans: detailsInJson?.productPlatformLink
+                    }
+                ]
+            },
+        ]
 
     const arr =
         [
@@ -70,7 +99,7 @@ function ProductDetails(props) {
                 heading: 'Product Name',
                 content: [
                     {
-                        ans: detailsInJson.productName
+                        ans: detailsInJson?.productName
                     }
                 ]
             },
@@ -78,7 +107,7 @@ function ProductDetails(props) {
                 heading: 'Headquarter',
                 content: [
                     {
-                        ans: detailsInJson.productCompanyLocation
+                        ans: detailsInJson?.productCompanyLocation
                     }
                 ]
             },
@@ -86,7 +115,7 @@ function ProductDetails(props) {
                 heading: 'Business Model',
                 content: [
                     {
-                        ans: detailsInJson.productBusinessModel
+                        ans: detailsInJson?.productBusinessModel
                     }
                 ]
             },
@@ -94,7 +123,7 @@ function ProductDetails(props) {
                 heading: 'Business Product',
                 content: [
                     {
-                        ans: detailsInJson.productDomain.domainName
+                        ans: detailsInJson?.productDomain !== undefined ? detailsInJson?.productDomain?.domainName : null
                     }
                 ]
             },
@@ -102,7 +131,7 @@ function ProductDetails(props) {
                 heading: 'Founding Date',
                 content: [
                     {
-                        ans: <Moment format="D MMM YYYY" withTitle>{detailsInJson.createdAt}</Moment>
+                        ans: <Moment format="D MMM YYYY" withTitle>{detailsInJson?.createdAt}</Moment>
                     }
                 ]
             },
@@ -110,7 +139,7 @@ function ProductDetails(props) {
                 heading: 'Team Size',
                 content: [
                     {
-                        ans: detailsInJson.productTeamSize
+                        ans: detailsInJson?.productTeamSize
                     }
                 ]
             },
@@ -118,43 +147,37 @@ function ProductDetails(props) {
                 heading: 'Founders',
                 content: [
                     {
-                        ans: detailsInJson.productFounderLinkedinProfiles
+                        ans: detailsInJson?.productFounderLinkedinProfiles
                     }
                 ]
             },
 
         ]
 
-    const crr = [1, 2, 3, 4];
     const [open, setOpen] = useState(false);
     const [modalForm, setModalForm] = useState({});
 
     const formHandler = (event) => {
-        const {name, value} = event.target
+        const { name, value } = event.target
         setModalForm({
             ...modalForm,
-            [name] : value
+            [name]: value
         })
     }
 
     const dummyForm = {
-
-        // clientId : details.map(d => d.agencyId._id),
-        // productId : details.map(d => d._id)
-        clientId : localStorage.getItem('userId'),
-        productId : details[0]._id
+        userId,
+        productId
     }
-
-    console.log(dummyForm);
 
     const postSubmitHandler = () => {
         instance.post(`/api/${Role}/investments/create`, dummyForm)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     const onOpenModal = () => setOpen(true);
@@ -163,7 +186,7 @@ function ProductDetails(props) {
     return (
         <>
             <ClientNavbar />
-            {details.map((value, index) => {
+            {details.length > 0 && details?.map((value, index) => {
                 return (
                     <div className="mainProductDetails">
                         <div className="innerProductDetails">
@@ -318,17 +341,17 @@ function ProductDetails(props) {
                                     </div>
                                     <div className="moreAgencyList">
                                         {
-                                            crr.map(() => {
+                                            similarAgency.length > 0 && similarAgency.map((value) => {
                                                 return (
-                                                    <div className="moreAgencyCard">
+                                                    <div style={{cursor: 'pointer'}} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard">
                                                         <div className="moreAgencyLogo">
                                                             <div>
                                                                 <img src={logo} alt="" />
                                                             </div>
                                                         </div>
                                                         <div className="moreAgencyInfo">
-                                                            <h6>Farhme India</h6>
-                                                            <p>Lorem ipsum dolor sit amet. Lorem, ipsum.</p>
+                                                            <h6>{value.agencyId.agencyName}</h6>
+                                                            <p>{value.agencyId.agencyDescription}</p>
                                                         </div>
                                                     </div>
                                                 )
