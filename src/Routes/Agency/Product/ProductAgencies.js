@@ -23,6 +23,7 @@ import Chip from '@material-ui/core/Chip';
 import instance from '../../../Constants/axiosConstants';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import { EventAvailableTwoTone } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,16 @@ const MenuProps = {
         },
     },
 };
+
+function getStyles(singleTechObject, allTechnologies, theme) {
+    return {
+        fontWeight:
+            allTechnologies.indexOf(singleTechObject) === -1
+                ? theme.typography.fontWeightRegular
+                : theme.typography.fontWeightMedium,
+    };
+}
+
 const names = [
     'Oliver Hansen',
     'Van Henry',
@@ -66,17 +77,17 @@ const names = [
     'Kelly Snyder',
 ];
 const fundType = [
-    'SEED',
-    'SERIES-A',
-    'SERIES-B',
-    'SERIES-C',
-    'VENTURE-ROUND',
-    'ANGEL',
-    'CORPORATE-ROUND',
-    'DEBT-FINANCING',
-    'EQUITY-CROWDFUNDING', ,
-    'GRANT',
-    'PRE-SEED',
+    'Seed',
+    'Series-A',
+    'Series-B',
+    'Series-C',
+    'Venture-Round',
+    'Angel',
+    'Corporate-Round',
+    'Debt-Financing',
+    'Equity-Crowdfunding', ,
+    'Grant',
+    'Pre-Seed',
 ];
 const bType = [
     'B2B',
@@ -91,8 +102,9 @@ function ProductAgencies(props) {
 
     const [isOfficeVisit, setOfficeVisit] = useState(false);
     const [isOffsiteTravel, setOffsiteTravel] = useState(false);
-    const [fundtype, setFundType] = React.useState([]);
-    const [bmodal, setBmodal] = React.useState([]);
+    const [fundName, setFundName] = React.useState('');
+    const [bmodal, setBmodal] = React.useState('');
+    const [searchLocation, setSearchLocation] = useState('')
     const [open, setOpen] = useState(false);
     const [personName, setPersonName] = React.useState([]);
     const [loading, setLoading] = useState(false);
@@ -108,11 +120,19 @@ function ProductAgencies(props) {
     const handleChange = (event) => {
         setPersonName(event.target.value);
     };
+
+    const handleLocation = (event) => {
+        setSearchLocation(event.target.value);
+    }
+
     const handleFundType = (event) => {
-        setFundType(event.target.value);
+        const { value } = event.target
+        console.log(event.target.value);
+        setFundName(value);
     };
     const handleBmodal = (event) => {
-        setBmodal(event.target.value);
+        const { value } = event.target
+        setBmodal(value);
     };
 
     const handleChangeMultiple = (event) => {
@@ -125,6 +145,21 @@ function ProductAgencies(props) {
         }
         setPersonName(value);
     };
+
+    useEffect(() => {
+
+    })
+
+    const onSearchHandler = () => {
+        instance.get(`/api/${Role}/products/all?businessModel=${bmodal}&fundingType=${fundName}&location=${searchLocation}`)
+            .then(response => {
+                console.log(response)
+                setState(response);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     const getAllProducts = () => {
         setLoading(true)
@@ -159,7 +194,6 @@ function ProductAgencies(props) {
                     <div className="AgencyCardsArea">
                         {
                             state?.map((value, index) => {
-                                console.log(value);
                                 return (
                                     <div className="agencyPreciseCard">
                                         <div className="agencyCardHeaderLine">
@@ -259,7 +293,7 @@ function ProductAgencies(props) {
 
                             <div className="locationFilter">
                                 <p>Location</p>
-                                <input type="text" placeholder="Type here.." name="" id="" />
+                                <input name='location' onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." name="" id="" />
                             </div>
 
                             <div className="officeVisitFilter">
@@ -291,7 +325,7 @@ function ProductAgencies(props) {
                                                 return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
                                             }
 
-                                            return selected.join(', ');
+                                            // return selected.join(', ');
                                         }}
                                     >
                                         {names.map((name) => (
@@ -304,34 +338,30 @@ function ProductAgencies(props) {
                                 </FormControl>
                             </div>
 
-                            <div className="officeVisitFilter">
+                            <div style={{border: 'none'}} className="officeVisitFilter">
                                 <p>Funding type:</p>
                                 <FormControl className={classes.formControl}>
                                     <Select
-                                        labelId="demo-mutiple-checkbox-label"
-                                        id="demo-mutiple-checkbox"
-                                        multiple
-                                        value={fundtype}
-                                        onChange={handleFundType}
-                                        input={<Input />}
                                         displayEmpty
-                                        disableUnderline
-                                        renderValue={(selected) => selected.join(', ')}
-                                        MenuProps={MenuProps}
-                                        renderValue={(selected) => {
-                                            if (selected.length === 0) {
-                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
-                                            }
-
-                                            return selected.join(', ');
-                                        }}
+                                        value={fundName}
+                                        onChange={(event) => handleFundType(event)}
+                                        inputProps={{ 'aria-label': 'Without label' }}
                                     >
-                                        {fundType.map((name) => (
-                                            <MenuItem key={name} value={name}>
-                                                <Checkbox color="primary" checked={fundtype.indexOf(name) > -1} />
-                                                <ListItemText primary={name} />
-                                            </MenuItem>
-                                        ))}
+                                        <MenuItem value="">
+                                            <b><em>None</em></b>
+                                        </MenuItem>
+                                        {fundType.map((fname) => {
+                                            return (
+                                                <MenuItem
+                                                    key={fname}
+                                                    value={fname}
+                                                    style={getStyles(fname, fundName, theme)}
+                                                >
+                                                    {fname}
+                                                </MenuItem>
+                                            )
+                                        }
+                                        )}
                                     </Select>
                                 </FormControl>
                             </div>
@@ -340,32 +370,29 @@ function ProductAgencies(props) {
                                 <p>Business Models:</p>
                                 <FormControl className={classes.formControl}>
                                     <Select
-                                        labelId="demo-mutiple-checkbox-label"
-                                        id="demo-mutiple-checkbox"
-                                        multiple
-                                        value={bmodal}
-                                        onChange={handleBmodal}
-                                        input={<Input />}
                                         displayEmpty
-                                        disableUnderline
-                                        renderValue={(selected) => selected.join(', ')}
-                                        MenuProps={MenuProps}
-                                        renderValue={(selected) => {
-                                            if (selected.length === 0) {
-                                                return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
-                                            }
-
-                                            return selected.join(', ');
-                                        }}
+                                        value={bmodal}
+                                        onChange={(event) => handleBmodal(event)}
+                                        inputProps={{ 'aria-label': 'Without label' }}
                                     >
-                                        {bType.map((name) => (
-                                            <MenuItem key={name} value={name}>
-                                                <Checkbox color="primary" checked={bmodal.indexOf(name) > -1} />
-                                                <ListItemText primary={name} />
-                                            </MenuItem>
-                                        ))}
+                                        <MenuItem value="">
+                                            <b><em>None</em></b>
+                                        </MenuItem>
+                                        {bType.map((bname) => {
+                                            return (
+                                                <MenuItem
+                                                    key={bname}
+                                                    value={bname}
+                                                    style={getStyles(bname, bmodal, theme)}
+                                                >
+                                                    {bname}
+                                                </MenuItem>
+                                            )
+                                        }
+                                        )}
                                     </Select>
                                 </FormControl>
+                                <button className='searchButton' onClick={onSearchHandler}>Search</button>
                             </div>
                         </div>
                     </div>
