@@ -1,4 +1,12 @@
-
+.searchButton {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 11px;
+    width: 100%;
+    background-color: white;
+    color: #000;
+    border-color: black;
+}
 
 
 .productInformationHeading{

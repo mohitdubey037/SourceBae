@@ -16,9 +16,7 @@ const CommentBox = (props) => {
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
     isShortListed: true,
-    negotiablePrice: "",
     reply: "",
-    quotationLink: "",
   });
 
   const [file, setFile] = useState(null);
@@ -68,6 +66,7 @@ const CommentBox = (props) => {
       });
   };
   return (
+    <div style={{display:"flex"}}>
     <div
       className="commentBox"
       style={{
@@ -77,6 +76,7 @@ const CommentBox = (props) => {
         borderRadius: "8px",
         padding: "1rem",
         margin: "2rem 1rem 1rem 1rem",
+        width:"100%"
       }}
     >
       {!isRepliedToClient &&
@@ -108,9 +108,9 @@ const CommentBox = (props) => {
             return "";
           }
         })}
-      {props.isReplySectionActive && (
+      
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", margin: "1rem 0rem" }}>
+        {props.isReplySectionActive && <div style={{ display: "flex", margin: "1rem 0rem" }}>
             <h5>
               <b>Agency: </b>
             </h5>
@@ -123,52 +123,14 @@ const CommentBox = (props) => {
               value={apiData.reply}
               onChange={(event) => handleChange(event)}
             />
-          </div>
-          <div
+                      <div
             style={{ display: "flex", flexDirection: "column", width: "30%" }}
           >
-            {props.isAskedForQuotation && (
-              <>
-                {props.negotiablePrice && props.negotiablePrice !== null ? (
-                  <div className="detailsButtons">
-                    <b>Negotiatiable Price:</b>
-                    {props.negotiablePrice}
-                  </div>
-                ) : (
-                  <div>
-                    <input
-                      type="number"
-                      name="negotiablePrice"
-                      placeholder="negotiable price"
-                      value={apiData.negotiablePrice}
-                      onChange={(event) => handleChange(event)}
-                    />
-                  </div>
-                )}
-
-                {props.quotationLink && props.quotationLink !== "" ? (
-                  <div className="detailsButtons">
-                    <a href={props.quotationLink} target="new">
-                      <button>Click to see Quotation</button>
-                    </a>
-                  </div>
-                ) : (
-                  <div style={{ margin: "1rem 0rem" }}>
-                    <input
-                      onChange={inputFileChosen}
-                      type="file"
-                      accept="application/pdf"
-                    />
-                    <button onClick={uploadMedia}>Upload</button>
-                  </div>
-                )}
-              </>
-            )}
-
             <button
               style={{
                 background: "none",
-                minWidth: "80px",
+                minWidth: "40px",
+                maxWidth:"80px",
                 border: "2px solid black",
                 borderRadius: "4px",
               }}
@@ -179,25 +141,69 @@ const CommentBox = (props) => {
               Reply
             </button>
           </div>
-        </div>
-      )}
-      {props.isProposalActionActive && props.isQuotationAcceptedByClient && (
-        <>
-          <div className="action-wait">
-            <p>Accept or Reject the Project.</p>
-          </div>
-          <div className="detailsButtons">
-            <button>Accept</button>
-            <button>Withdraw</button>
-          </div>
-        </>
-      )}
+       
+          </div>}
 
-      {props.isProposalActionActive && !props.isQuotationAcceptedByClient && (
-        <div className="action-wait">
-          <p>Please wait for Client to take some Actions.</p>
+          {props.negotiablePrice === null && (
+                  <div className="postQuotation">
+                    <b>Negotiatiable Price:</b>
+                    <input
+                      type="number"
+                      name="negotiablePrice"
+                      placeholder="negotiable price"
+                      value={apiData.negotiablePrice}
+                      onChange={(event) => handleChange(event)}
+                    />
+                      <div style={{ margin: "1rem 0rem" }}>
+                    <input
+                      onChange={inputFileChosen}
+                      type="file"
+                      accept="application/pdf"
+                    />
+                    <button onClick={uploadMedia}>Upload</button>
+                  </div>
+                  </div>
+                )}
+
         </div>
-      )}
+      
+
+
+    </div>
+    
+    <div
+        className={`action-wait`}
+      >
+        <div className="postQuotation">
+        
+          {props.negotiablePrice && props.negotiablePrice !== null && (
+            <div className="detailsButtons">
+              <b>Negotiatiable Price:</b>
+              {props.negotiablePrice}
+            </div>
+          )}
+
+          {props.quotationLink && props.quotationLink !== "" && (
+            <div className="detailsButtons">
+              <a href={props.quotationLink} target="new">
+                Click to see Quotation
+              </a>
+            </div>
+          )}
+        </div>
+
+        <div className = { `${props.isProposalActionActive ? "" : "disabled"}`}>
+        <div>
+          <p>Accept or Reject the Project.</p>
+        </div>
+
+        <div className="detailsButtons">
+          <button className="rejectButton">Withdraw</button>
+          <button className="acceptButton">Accept</button>
+        </div>
+        </div>
+      </div>
+    
     </div>
   );
 };
