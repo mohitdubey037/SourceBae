@@ -38,6 +38,7 @@ const CommentBox = (props) => {
     const quotationData = {
       agencyId: props.agencyId,
       isShortListed: true,
+      isAskedForQuotation: true,
       negotiablePrice: "",
       comment: "Please provide a Quotation.",
     };
