@@ -57,8 +57,12 @@ const CommentBox = (props) => {
   }, [apiData]);
 
   const replyApi = () => {
+    const data = apiData
+    if (props.isAskedForQuotation){
+      data["isAskedForQuotation"] = true; 
+    }
     instance
-      .patch(`api/agency/projects/propose/${props.projectId}`, apiData)
+      .patch(`api/agency/projects/propose/${props.projectId}`, data)
       .then(function (response) {
         console.log(response);
         props.giveReplies(true);
