@@ -33,7 +33,7 @@ import ClientNavbar from "../Client/ClientNavbar";
 
 import Spinner from "../../Components/Spinner/Spinner";
 
-function AgencyProfile() {
+function AgencyProfile(props) {
   const { id } = useParams();
   console.log(id);
   const Role = "agency";
@@ -99,7 +99,7 @@ function AgencyProfile() {
 
   useEffect(()=>{
     console.log(inputEl)
-    if(inputEl!==null)
+    if(inputEl!==null && props.origin==="addingDeveloper")
       inputEl?.current?.click()
   },[inputEl])
 
