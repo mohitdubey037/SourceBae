@@ -23,15 +23,17 @@ const BlueRadio = withStyles({
 
 function HireDeveloper(props) {
   const [apiData, setApiData ] = useState({
-        role:"",
-        resources:"",
-        skills:"",
-        experience:"",
-        preferredBilling:"",
-        averageBudget:"",
-        hourlyBudget:"",
-        startDate:"",
-        contractPeriod:""
+
+    developerRolesRequired: "required|array",
+    numberOfResourcesRequired: "required|numeric",
+    developerTechnologiesRequired: "required|array",
+    "developerTechnologiesRequired.*":
+        "required|alpha_num|size:24|exists:technologies,_id",
+    developerExperienceRequired: "required|string",
+    preferredBillingMode: "required|string|in:Weekly,Monthly",
+    averageBudget: "required|string",
+    expectedStartDate: "required|string",
+    contractPeriod: "required|string",
   });
   const [billing, setBilling] = useState(1);
   const handleChange = (event) => {

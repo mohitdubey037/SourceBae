@@ -43,6 +43,7 @@ function AgencyProfile(props) {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
   const inputEl = useRef(null);
+  const [navigated, setNavigation] = useState(false)
   const [agencyProfileData, setAgencyProfileData] = useState({
     ownerName: "",
     agencyName: "",
@@ -93,15 +94,16 @@ function AgencyProfile(props) {
       : getAgencyProfile(localStorage.getItem("userId"), false);
   }, []);
 
-  useEffect(() => {
-    console.log(loading);
-  }, [loading]);
 
   useEffect(()=>{
-    console.log(inputEl)
-    if(inputEl!==null && props.location.origin==="addingDeveloper")
+    if(!navigated && inputEl!==null && props.location.origin==="addingDeveloper"){
       inputEl?.current?.click()
-  },[inputEl])
+      setNavigation(true)
+    }
+    else if(navigated){
+      inputEl?.current?.click()
+    }
+  })
 
   
   return (
