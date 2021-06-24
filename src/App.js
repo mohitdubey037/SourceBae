@@ -4,14 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
-// import Filtration from './Routes/Filtration/Filtration';
-// import Agency from './Routes/Agency/Agency';
-// import Agency from './component/Agency';
-// import Client from './component/Client';
 import Login from './Routes/Login/Login';
 import Signup from './Routes/SignUp/Signup';
 import Register from './Routes/Register/Register';
-// import AddDeveloper from './Routes/Dashboard/AddDeveloper.js/AddDeveloper';
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
 import Quotation from './Routes/Dashboard/Quotation/Quotation';
 import AgencyProfile from './Routes/Dashboard/AgencyProfile';
@@ -20,7 +15,6 @@ import AgencyForm2 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm2
 import AgencyForm3 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm3';
 import AgencyForm4 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm4';
 import AgencyProjectDashboard from './Routes/Dashboard/AgencyProjectDashboard';
-// import RespondedDetails from './Routes/Dashboard/Quotation/RespondedDetails';
 import ProjectDetails from './Routes/Dashboard/ProjectDetails';
 import AgencyProjectDetails from './Routes/Dashboard/AgencyProjectDetails';
 
@@ -60,7 +54,6 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/agency-form-four" component={AgencyForm4} />
     <CustomRoute condition="Agency" exact path="/product-form" component={ProductForm} />
     <CustomRoute condition="Agency" exact path="/agency-project-details:projectId" component={AgencyProjectDetails} />
-    {/* <CustomRoute condition={props.location.condition} exact path="/product-details:productId" component={ProductDetails} /> */}
 
     <Route exact path="/product-details/:productId" component={ProductDetails} />
 

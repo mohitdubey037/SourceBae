@@ -188,7 +188,7 @@ function AddingDeveloper(props) {
             .then(function (response) {
                 console.log(response)
                 setLoading(false);
-                props.history.push("/dashboard")
+                props.history.push("/agency-profile")
 
             })
             .catch(error => {
