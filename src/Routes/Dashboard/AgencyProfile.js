@@ -35,7 +35,7 @@ import Spinner from "../../Components/Spinner/Spinner";
 
 function AgencyProfile(props) {
   const { id } = useParams();
-  console.log(id);
+  console.log(props,"props");
   const Role = "agency";
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -99,7 +99,7 @@ function AgencyProfile(props) {
 
   useEffect(()=>{
     console.log(inputEl)
-    if(inputEl!==null && props.origin==="addingDeveloper")
+    if(inputEl!==null && props.location.origin==="addingDeveloper")
       inputEl?.current?.click()
   },[inputEl])
 
