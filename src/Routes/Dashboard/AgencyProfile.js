@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "./Navbar";
 import "./AgencyProfile.css";
 
@@ -42,6 +42,7 @@ function AgencyProfile() {
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+  const inputEl = useRef(null);
   const [agencyProfileData, setAgencyProfileData] = useState({
     ownerName: "",
     agencyName: "",
@@ -96,6 +97,13 @@ function AgencyProfile() {
     console.log(loading);
   }, [loading]);
 
+  useEffect(()=>{
+    console.log(inputEl)
+    if(inputEl!==null)
+      inputEl?.current?.click()
+  },[inputEl])
+
+  
   return (
     <>
       {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />}
@@ -325,6 +333,7 @@ function AgencyProfile() {
                     role="tab"
                     aria-controls="nav-developer"
                     aria-selected="false"
+                    ref={inputEl}
                   >
                     <img src={matched} alt="dev" /> Developers
                   </button>
