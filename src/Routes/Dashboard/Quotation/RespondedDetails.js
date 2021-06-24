@@ -49,6 +49,7 @@ const CommentBox = (props) => {
       });
   };
   return (
+  <div style={{display:"flex"}}>
     <div
       className="commentBox"
       style={{
@@ -58,6 +59,7 @@ const CommentBox = (props) => {
         borderRadius: "8px",
         padding: "1rem",
         margin: "2rem 1rem 1rem 1rem",
+        width:"100%"
       }}
     >
       {props.comments.map((index) => {
@@ -111,7 +113,8 @@ const CommentBox = (props) => {
             <button
               style={{
                 background: "none",
-                minWidth: "80px",
+                minWidth: "40px",
+                maxWidth:"80px",
                 border: "2px solid black",
                 borderRadius: "4px",
               }}
@@ -125,18 +128,6 @@ const CommentBox = (props) => {
         </div>
       )}
 
-      {props.isProposalActionActive && (
-        <>
-          <div className="action-wait">
-            <p>Please Accept or Reject the Agency.</p>
-          </div>
-          <div className="detailsButtons">
-            <button>Accept</button>
-            <button>Withdraw</button>
-          </div>
-        </>
-      )}
-
       {!props.isAskedForQuotation &&
         props.isCommentSectionActive &&
         props.isShortListed && (
@@ -146,23 +137,41 @@ const CommentBox = (props) => {
         )}
 
       {props.isReplySectionActive && "Waiting for the reply from Agency."}
+    </div>
 
-      <div className="postQuotation">
-        {props.negotiablePrice && props.negotiablePrice !== null && (
-          <div className="detailsButtons">
-            <b>Negotiatiable Price:</b>
-            {props.negotiablePrice}
-          </div>
-        )}
+      <div
+        className={`action-wait`}
+      >
+        <div className="postQuotation">
+        
+          {props.negotiablePrice && props.negotiablePrice !== null && (
+            <div className="detailsButtons">
+              <b>Negotiatiable Price:</b>
+              {props.negotiablePrice}
+            </div>
+          )}
 
-        {props.quotationLink && props.quotationLink !== "" && (
-          <div className="detailsButtons">
-            <a href={props.quotationLink} target="new">
-              <button>Click to see Quotation</button>
-            </a>
-          </div>
-        )}
+          {props.quotationLink && props.quotationLink !== "" && (
+            <div className="detailsButtons">
+              <a href={props.quotationLink} target="new">
+                Click to see Quotation
+              </a>
+            </div>
+          )}
+        </div>
+
+        <div className = { `${props.isProposalActionActive ? "" : "disabled"}`}>
+        <div>
+          <p>Accept or Reject the Project.</p>
+        </div>
+
+        <div className="detailsButtons">
+          <button className="rejectButton">Withdraw</button>
+          <button className="acceptButton">Accept</button>
+        </div>
+        </div>
       </div>
+    
     </div>
   );
 };
@@ -232,15 +241,6 @@ function RespondedDetails(props) {
             </div>
           </div>
           <div className="headerInformation">
-            <div className="clientName">
-              {project?.projectProposals?.length > 0 &&
-                project?.projectProposals[0]?.isProposalActionActive && (
-                  <div className="detailsButtons">
-                    <button>Accept</button>
-                    <button>Withdraw</button>
-                  </div>
-                )}
-            </div>
             <div className="clientExperience">
               {arr.map((value, index) => {
                 return (
