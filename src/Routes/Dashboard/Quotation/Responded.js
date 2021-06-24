@@ -5,15 +5,15 @@ import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { useHistory } from 'react-router-dom';
+import NO_Data_ICON from '../no_data_icon.jpg';
 import {withRouter} from 'react-router';
 
-
 function Responded(props) {
-    console.log(props);
+    const routerHistory = useHistory();
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
-
+    const [err, setErr] = useState();
     const [projects, setProjects] = useState([]);
     const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -30,7 +30,9 @@ function Responded(props) {
             .catch(err => {
                 setLoading(false)
                 console.log(err)
+                setErr(err?.response?.data?.message)
             })
+
     }
 
     useEffect(() => {
@@ -48,79 +50,88 @@ function Responded(props) {
             {loading ? <Spinner /> :
                 <div className="mainResponded">
                     <div className="innerResponded">
-                        {projects.map((s) => {
-                            return (
-                                isDetail == false ? (
-                                    <div className="respondedCard">
-                                        <div className="bgCircle"></div>
-                                        <div className="leftBorder"></div>
-                                        <div className="respondCardHeader">
-                                            <div className="respondName">
-                                                <h4>{s.projectName}</h4>
+                        {err ?
+                            <>
+                                <div style={{ textAlign: 'center', width: '100%' }}>
+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    <h6>{err}</h6>
+                                </div>
+                            </>
+                            :
+                            projects.map((s) => {
+                                return (
+                                    isDetail == false ? (
+                                        <div className="respondedCard">
+                                            <div className="bgCircle"></div>
+                                            <div className="leftBorder"></div>
+                                            <div className="respondCardHeader">
+                                                <div className="respondName">
+                                                    <h4>{s.projectName}</h4>
 
+                                                </div>
+                                                <div className="dateCreated">
+                                                    <div>
+                                                        <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
+
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="dateCreated">
+                                            <div className="respondCardDescription">
+                                                <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 100)}...`}</p>
+                                            </div>
+                                            <div className="respondCardPoints">
+                                                <ul>
+                                                    {s.projectServicesRequired.map(p => {
+                                                        return (
+                                                            <li>{p.serviceName}</li>
+                                                        )
+                                                    })}
+                                                </ul>
+                                            </div>
+                                            <div className="respondCardTable">
                                                 <div>
-                                                    <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
+                                                    <p>Industry</p>
+                                                    <p>Food</p>
+                                                </div>
+                                                <div>
+                                                    <p>Fixed Price</p>
+                                                    <p>{s.projectProposalCost}</p>
+
+                                                </div>
+                                                <div>
+                                                    <p>Timeline</p>
+                                                    <p>45</p>
+                                                </div>
+                                            </div>
+                                            <div className="respondedCardButton">
+                                                <div>
+                                                    {/* <button onClick={() => setIsdetail(true)}>Details</button> */}
+                                                    <button onClick={() => props.history.push({
+                                                        pathname: `agency-project-details:${s._id}`,
+                                                        origin: 'responded'
+                                                    })
+                                                    }>Show details</button>
+                                                </div>
+                                                <div>
+                                                    <button>Withdraw</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="respondCardDescription">
-                                            <p title={s.projectDescription}>{`${(s.projectDescription).slice(0,100)}...`}</p>
-                                        </div>
-                                        <div className="respondCardPoints">
-                                            <ul>
-                                                {s.projectServicesRequired.map(p => {
-                                                    return (
-                                                        <li>{p.serviceName}</li>
-                                                    )
-                                                })}
-                                            </ul>
-                                        </div>
-                                        <div className="respondCardTable">
-                                            <div>
-                                                <p>Industry</p>
-                                                <p>Food</p>
-                                            </div>
-                                            <div>
-                                                <p>Fixed Price</p>
-                                                <p>{s.projectProposalCost}</p>
+                                    ) : (
+                                        <>
+                                            <div className="mainBackBtn">
+                                                <div className="innerBackBtn">
+                                                    <div onClick={() => setIsdetail(false)}>
+                                                        <i className="fa fa-chevron-left" aria-hidden="true"></i>Back
 
-                                            </div>
-                                            <div>
-                                                <p>Timeline</p>
-                                                <p>45</p>
-                                            </div>
-                                        </div>
-                                        <div className="respondedCardButton">
-                                            <div>
-                                                {/* <button onClick={() => setIsdetail(true)}>Details</button> */}
-                                                <button onClick={() => props.history.push({
-                                                    pathname : `agency-project-details:${s._id}`,
-                                                    origin : 'responded'
-                                                })
-                                            }>Show details</button>
-                                            </div>
-                                            <div>
-                                                <button>Withdraw</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <>
-                                        <div className="mainBackBtn">
-                                            <div className="innerBackBtn">
-                                                <div onClick={() => setIsdetail(false)}>
-                                                    <i className="fa fa-chevron-left" aria-hidden="true"></i>Back
-
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <RespondedDetails details={s} />
-                                    </>
+                                            <RespondedDetails details={s} />
+                                        </>
+                                    )
                                 )
-                            )
-                        })
+                            })
                         }
                     </div>
                 </div>

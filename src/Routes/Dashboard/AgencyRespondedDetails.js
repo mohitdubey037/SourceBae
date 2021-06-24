@@ -42,7 +42,7 @@ const CommentBox = (props) => {
           quotationLink: response[0].mediaURL,
         });
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }
 
   const inputFileChosen = (e) => {
@@ -66,51 +66,51 @@ const CommentBox = (props) => {
       });
   };
   return (
-    <div style={{display:"flex"}}>
-    <div
-      className="commentBox"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        border: "2px solid black",
-        borderRadius: "8px",
-        padding: "1rem",
-        margin: "2rem 1rem 1rem 1rem",
-        width:"100%"
-      }}
-    >
-      {!isRepliedToClient &&
-        props.comments.map((index) => {
-          if (index.commentType === props.commentType) {
-            return (
-              <>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  {index.comment && (
-                    <div>
-                      <h5>
-                        <b>Client: </b>
-                        {index.comment}
-                      </h5>
-                    </div>
-                  )}
-                  {index.reply && (
-                    <div>
-                      <h5>
-                        <b>Agency: </b>
-                        {index.reply}
-                      </h5>
-                    </div>
-                  )}
-                </div>
-              </>
-            );
-          } else {
-            return "";
-          }
-        })}
-      
+    <div style={{ display: "flex" }}>
+      <div
+        className="commentBox"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          border: "2px solid black",
+          borderRadius: "8px",
+          padding: "1rem",
+          margin: "2rem 1rem 1rem 1rem",
+          width: "100%"
+        }}
+      >
+        {!isRepliedToClient &&
+          props.comments.map((index) => {
+            if (index.commentType === props.commentType) {
+              return (
+                <>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    {index.comment && (
+                      <div>
+                        <h5>
+                          <b>Client: </b>
+                          {index.comment}
+                        </h5>
+                      </div>
+                    )}
+                    {index.reply && (
+                      <div>
+                        <h5>
+                          <b>Agency: </b>
+                          {index.reply}
+                        </h5>
+                      </div>
+                    )}
+                  </div>
+                </>
+              );
+            } else {
+              return "";
+            }
+          })}
+
         <div style={{ display: "flex", flexDirection: "column" }}>
-        {props.isReplySectionActive && <div style={{ display: "flex", margin: "1rem 0rem" }}>
+          {props.isReplySectionActive && <div style={{ display: "flex", margin: "1rem 0rem" }}>
             <h5>
               <b>Agency: </b>
             </h5>
@@ -123,59 +123,59 @@ const CommentBox = (props) => {
               value={apiData.reply}
               onChange={(event) => handleChange(event)}
             />
-                      <div
-            style={{ display: "flex", flexDirection: "column", width: "30%" }}
-          >
-            <button
-              style={{
-                background: "none",
-                minWidth: "40px",
-                maxWidth:"80px",
-                border: "2px solid black",
-                borderRadius: "4px",
-              }}
-              onClick={() => {
-                replyApi();
-              }}
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "30%" }}
             >
-              Reply
-            </button>
-          </div>
-       
+              <button
+                style={{
+                  background: "none",
+                  minWidth: "40px",
+                  maxWidth: "80px",
+                  border: "2px solid black",
+                  borderRadius: "4px",
+                }}
+                onClick={() => {
+                  replyApi();
+                }}
+              >
+                Reply
+              </button>
+            </div>
+
           </div>}
 
           {props.negotiablePrice === null && (
-                  <div className="postQuotation">
-                    <b>Negotiatiable Price:</b>
-                    <input
-                      type="number"
-                      name="negotiablePrice"
-                      placeholder="negotiable price"
-                      value={apiData.negotiablePrice}
-                      onChange={(event) => handleChange(event)}
-                    />
-                      <div style={{ margin: "1rem 0rem" }}>
-                    <input
-                      onChange={inputFileChosen}
-                      type="file"
-                      accept="application/pdf"
-                    />
-                    <button onClick={uploadMedia}>Upload</button>
-                  </div>
-                  </div>
-                )}
+            <div className="postQuotation">
+              <b>Negotiatiable Price:</b>
+              <input
+                type="number"
+                name="negotiablePrice"
+                placeholder="negotiable price"
+                value={apiData.negotiablePrice}
+                onChange={(event) => handleChange(event)}
+              />
+              <div style={{ margin: "1rem 0rem" }}>
+                <input
+                  onChange={inputFileChosen}
+                  type="file"
+                  accept="application/pdf"
+                />
+                <button onClick={uploadMedia}>Upload</button>
+              </div>
+            </div>
+          )}
 
         </div>
-      
 
 
-    </div>
-    
-    <div
+
+      </div>
+
+      <div
         className={`action-wait`}
       >
         <div className="postQuotation">
-        
+
           {props.negotiablePrice && props.negotiablePrice !== null && (
             <div className="detailsButtons">
               <b>Negotiatiable Price:</b>
@@ -192,26 +192,26 @@ const CommentBox = (props) => {
           )}
         </div>
 
-        <div className = { `${props.isProposalActionActive ? "" : "disabled"}`}>
-        <div>
-          <p>Accept or Reject the Project.</p>
-        </div>
+        <div className={`${props.isProposalActionActive ? "" : "disabled"}`}>
+          <div>
+            <p>Accept or Reject the Project.</p>
+          </div>
 
-        <div className="detailsButtons">
-          <button className="rejectButton">Withdraw</button>
-          <button className="acceptButton">Accept</button>
-        </div>
+          <div className="detailsButtons">
+            <button className="rejectButton">Withdraw</button>
+            <button className="acceptButton">Accept</button>
+          </div>
         </div>
       </div>
-    
+
     </div>
   );
 };
 
 function AgencyRespondedDetails(props) {
   const [isRepliedToClient, setRepliedToClient] = useState(false);
+  console.log(isRepliedToClient);
   const routerHistory = useHistory();
-  console.log(routerHistory);
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
   const [project, setProject] = useState({});
@@ -263,15 +263,12 @@ function AgencyRespondedDetails(props) {
   }, [isRepliedToClient]);
   return (
     <>
-      <div
-        style={{ marginTop: "55px" }}
-        className="backArrow"
+      <div style={{ marginTop: '55px', }} className="backArrow"
         onClick={() => routerHistory.push({
           pathname: '/quotation',
           origin: routerHistory.location.origin
-          })
-        }
-      >
+        })
+        } >
         <i className="fa fa-angle-left" aria-hidden="true"></i>
       </div>
       <div className="mainDetailHeader">

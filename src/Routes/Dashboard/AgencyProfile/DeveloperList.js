@@ -3,8 +3,11 @@ import './DeveloperList.css'
 import document from '../../../assets/images/Logo/document.png';
 import instance from "../../../Constants/axiosConstants";
 import { useHistory } from 'react-router-dom';
+import NO_Data_ICON from '../no_data_icon.jpg';
+
 
 import { set } from 'react-ga'
+import { Button } from '@material-ui/core';
 
 function DeveloperList(props) {
 
@@ -14,6 +17,8 @@ function DeveloperList(props) {
     const arr = [1, 2, 3, 4, 5]
     const agencyId = localStorage.getItem("userId")
     const [developers, setDevelopers] = useState([])
+    const [err, setErr] = useState();
+
 
     const getAgencyDevelopers = () => {
         instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
@@ -21,7 +26,11 @@ function DeveloperList(props) {
                 console.log(response)
                 setDevelopers(response)
             })
-    }
+            .catch(err => {
+                console.log(err?.response?.data?.message)
+                setErr(err?.response?.data?.message)
+            })
+    };
     useEffect(() => {
         getAgencyDevelopers()
     }, [])
@@ -51,7 +60,14 @@ function DeveloperList(props) {
         <>
             <div className="mainDeveloperList">
                 <div className="innerDeveloperList">
-                    {
+                    {err ?
+                        <>
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                <h6>{err}</h6>
+                            </div>
+                        </>
+                        :
                         developers.map((developer) => {
                             return (
                                 <div className="developerCard">
@@ -89,7 +105,7 @@ function DeveloperList(props) {
                                         <div className="developerResume">
                                             <div>
                                                 <img src={document} alt="" />
-                                                <button onClick={()=> window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} ><i class="fa fa-upload" aria-hidden="true"></i>Download</button>
+                                                <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} ><i class="fa fa-upload" aria-hidden="true"></i>Download</button>
                                             </div>
                                         </div>
                                     </div>
@@ -98,13 +114,18 @@ function DeveloperList(props) {
                         })
                     }
 
-                    <div className="addMore" onClick = {()=> window.location.href="/add-developer"}>
-                        +
+                    <div className="developerCard">
+                        <div className="developerCardBorder"></div>
+                        <div style={{ display: 'flex', height: '315px' }}>
+                            <button className="addMoreDeveloper" onClick={() => window.location.href = "/add-developer"}>
+                                <h6>Add Developer</h6>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default DeveloperList

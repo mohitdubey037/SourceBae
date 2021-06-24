@@ -20,7 +20,6 @@ import FormControl from '@material-ui/core/FormControl';
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
 import Spinner from '../../../../Components/Spinner/Spinner'
-import { Alert } from '@material-ui/lab'
 
 
 
@@ -68,13 +67,6 @@ function AgencyForm2(props) {
         agencyMonthlyBudget: []
     })
 
-    const [error, setError] = useState({
-        agencyDomainsError: "",
-        agencyServicesError: "",
-        agencyTechnologiesError: "",
-        agencyMonthlyBudgetError: ""
-    })
-
     // const classes = useStyles();
 
     const handleChange = (event) => {
@@ -120,6 +112,10 @@ function AgencyForm2(props) {
         })
     }, [dom])
 
+    // const handleNext = () => {
+    //     setAgencyDomains()
+    //     setAgencyTechnologies()
+    // }
     //Api Calls methods
 
     const getAllDomains = () => {
@@ -322,8 +318,7 @@ function AgencyForm2(props) {
     // else if(status ==="Next")
     //     window.location.href = "/agency-form-three"
 
-    // }
-
+    
     return (
         <>
             <Navbar />
@@ -349,7 +344,6 @@ function AgencyForm2(props) {
                                         <p>Sorry No Data Found.</p>
                                     }
                                 </div>
-                                {!allDomainsData && <Alert severity="error">{console.log(setError.agencyDomainsError)}</Alert>}
                             </div>
 
                             <div className="serivcesAgency">
@@ -368,7 +362,6 @@ function AgencyForm2(props) {
                                         <p>Sorry No Data Found.</p>
                                     }
                                 </div>
-                                {setError.agencyServicesError ? <Alert severity="error">{setError.agencyServicesError}</Alert> : ""}
                             </div>
 
                             <div className="monthlyBudget">
@@ -383,7 +376,6 @@ function AgencyForm2(props) {
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
-                                {setError.agencyMonthlyBudgetError ? <Alert severity="error">{setError.agencyMonthlyBudgetError}</Alert> : ""}
                             </div>
 
                             <div className="nextBtn">
@@ -391,8 +383,8 @@ function AgencyForm2(props) {
                                 <NavLink to="/agency-form-one" style={{ textDecoration: "none" }}>
                                     <button className="next-click">
                                         <i className="fa fa-long-arrow-left" aria-hidden="true" />
-                                        Back
-                                    </button>
+                                    Back
+                                </button>
                                 </NavLink>
                                 {/* <NavLink to="/agency-form-three" >
                             Next <i className="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
@@ -406,22 +398,13 @@ function AgencyForm2(props) {
 
                         </div>
                         <div className="serviceFieldsOptions">
-                            {setError.agencyTechnologiesError ? <Alert severity="error">{setError.agencyTechnologiesError}</Alert> : ""}
                             <div className="servicesContainer">
                                 <div className="serviceSelectionInput">
                                     {
                                         visibleTechNames?.length ? (<>
                                             <p className="uiuxtext">Select Technologies</p>
                                             <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                                <MultiSearchSelect
-                                                    searchable={true}
-                                                    showTags={true}
-                                                    multiSelect={true}
-                                                    width="23vw"
-                                                    optionsContainerHeight="80vh"
-                                                    onSelect={handleTechSelect}
-                                                    options={visibleTechNames}
-                                                    primaryColor="#D6EAF8"
+                                                <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleTechSelect} options={visibleTechNames} primaryColor="#D6EAF8"
                                                     secondaryColor="#02044a"
                                                     textSecondaryColor="#fff"
                                                     className="UIUXServices"

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AgencyList from '../../Client/AgencyList/AgencyList'
 import ClientNavbar from '../../Client/ClientNavbar';
 import { NavLink } from 'react-router-dom';
-
+import NO_Data_ICON from '../../Dashboard/no_data_icon.jpg';
 import './ProductAgencies.css'
 // also linked with AgencyList.css
 
@@ -109,6 +109,7 @@ function ProductAgencies(props) {
     const [personName, setPersonName] = React.useState([]);
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState([]);
+    const [err, setErr] = useState();
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -158,6 +159,7 @@ function ProductAgencies(props) {
             })
             .catch(err => {
                 console.log(err);
+                setErr(err?.response?.data?.message)
             })
     }
 
@@ -172,8 +174,8 @@ function ProductAgencies(props) {
             .catch(err => {
                 setLoading(false)
                 console.log(err)
+                setErr(err?.response?.data?.message)
             })
-
     }
 
     useEffect(() => {
@@ -192,7 +194,14 @@ function ProductAgencies(props) {
             <div className="mainAgencyList">
                 <div className="innerAgencyList">
                     <div className="AgencyCardsArea">
-                        {
+                        {err ?
+                            <>
+                                <div style={{ textAlign: 'center', width: '100%' }}>
+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    <h6>{err}</h6>
+                                </div>
+                            </>
+                            :
                             state?.map((value, index) => {
                                 return (
                                     <div className="agencyPreciseCard">

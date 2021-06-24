@@ -3,6 +3,8 @@ import instance from '../../../Constants/axiosConstants';
 import Spinner from '../../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
 import { useHistory } from 'react-router-dom';
+import NO_Data_ICON from '../no_data_icon.jpg';
+import {withRouter} from 'react-router';
 
 function Received(props) {
     const routerHistory = useHistory();
@@ -13,6 +15,7 @@ function Received(props) {
     const [projects, setProjects] = useState([]);
     const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [err, setErr] = useState();
 
     const getAllReceivedData = () => {
         setLoading(true)
@@ -25,7 +28,8 @@ function Received(props) {
             })
             .catch(err => {
                 setLoading(false)
-                console.log(err)
+                console.log(err?.response?.data?.message)
+                setErr(err?.response?.data?.message)
             })
 
     }
@@ -46,7 +50,15 @@ function Received(props) {
 
                 <div className="mainResponded">
                     <div className="innerResponded">
-                        {
+                        {err ?
+                            <>
+                                <div style={{ textAlign: 'center', width: '100%' }}>
+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    <h6>{err}</h6>
+                                </div>
+                            </>
+                            :
+
                             projects.map((s) => {
                                 return (
                                     <div className="respondedCard">
@@ -105,12 +117,13 @@ function Received(props) {
                                 )
                             })
 
+
                         }
                     </div>
                 </div>
             }
         </>
-    )
+    );
 }
 
-export default Received
+export default withRouter(Received)

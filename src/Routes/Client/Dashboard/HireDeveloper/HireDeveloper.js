@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ClientNavbar from "../../ClientNavbar";
 import "./HireDeveloper.css";
 
@@ -24,16 +24,14 @@ const BlueRadio = withStyles({
 function HireDeveloper(props) {
   const [apiData, setApiData ] = useState({
 
-    developerRolesRequired: "required|array",
-    numberOfResourcesRequired: "required|numeric",
-    developerTechnologiesRequired: "required|array",
-    "developerTechnologiesRequired.*":
-        "required|alpha_num|size:24|exists:technologies,_id",
-    developerExperienceRequired: "required|string",
-    preferredBillingMode: "required|string|in:Weekly,Monthly",
-    averageBudget: "required|string",
-    expectedStartDate: "required|string",
-    contractPeriod: "required|string",
+    developerRolesRequired: [],
+    numberOfResourcesRequired: 0,
+    developerTechnologiesRequired: [],
+    developerExperienceRequired: "",
+    preferredBillingMode: "Weekly,Monthly",
+    averageBudget: "",
+    expectedStartDate: "",
+    contractPeriod: "",
   });
   const [billing, setBilling] = useState(1);
   const handleChange = (event) => {
@@ -47,8 +45,21 @@ function HireDeveloper(props) {
 
   const changeBilling = (id) => {
     if (id !== billing) setBilling(id);
+    if(id===1)
+    setApiData({
+      ...apiData,
+      preferredBillingMode:"Weekly"
+    })
+    else if(id===2)
+    setApiData({
+      ...apiData,
+      preferredBillingMode:"Monthly"
+    })
   };
 
+  useEffect(() => {
+    console.log(apiData,"apiData")
+  }, [apiData]);
   return (
     <>
       <ClientNavbar />
@@ -82,8 +93,8 @@ function HireDeveloper(props) {
               <p>1. What roles are you looking for?</p>
               <input
                 type="text"
-                name="role"
-                value={apiData.role}
+                name="developerRolesRequired"
+                value={apiData.developerRolesRequired}
                 placeholder="E.g- FrontEnd,Backend,etc.."
                 onChange={handleChange}
               />
@@ -91,18 +102,18 @@ function HireDeveloper(props) {
 
             <div className="resourceNumber">
               <p>2. Number of Resources</p>
-              <input type="number" min="1" name="resources" value={apiData.resources} placeholder="E.g- 1 or 2" onChange={handleChange}/>
+              <input type="number" min="1" name="numberOfResourcesRequired" value={apiData.numberOfResourcesRequired} placeholder="E.g- 1 or 2" onChange={handleChange}/>
             </div>
             <div className="skillsRequiredDeveloper">
               <p>3. Skills Required</p>
-              <input type="text" name = "skills" value ={apiData.skills} placeholder="Type here.." onChange={handleChange} />
+              <input type="text" name = "developerTechnologiesRequired" value ={apiData.developerTechnologiesRequired} placeholder="Type here.." onChange={handleChange} />
             </div>
-            <div className="averageExperience">
+            <div className="developerExperienceRequired">
               <p>4. Average Experience</p>
               <FormControl component="fieldset">
                 <RadioGroup
                   aria-label="experience"
-                  name="experience"
+                  name="developerExperienceRequired"
                   value={apiData.experience}
                   onChange={handleChange}
                 >
@@ -125,21 +136,21 @@ function HireDeveloper(props) {
               </FormControl>
             </div>
 
-            <div className="prefferedBilling">
+            <div className="preferredBillingMode">
               <p>5. Preffered Billing</p>
               <div className="billingOptions">
                 <div className="billingButton" onClick={() => changeBilling(1)}>
                   {billing === 1 ? (
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                   ) : null}
-                  <img src={month} alt="" />
-                  <h6>Monthly</h6>
+                  <img src={hourPrice} alt="" />
+                  <h6>Weekly</h6>
                 </div>
                 <div className="billingButton" onClick={() => changeBilling(2)}>
                   {billing === 2 ? (
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                   ) : null}
-                  <img src={hourPrice} alt="hourPrice" />
+                  <img src={month} alt="hourPrice" />
                   <h6>Monthly</h6>
                 </div>
               </div>
@@ -181,8 +192,8 @@ function HireDeveloper(props) {
                 <FormControl component="fieldset">
                   <RadioGroup
                     aria-label="hourlyBudget"
-                    name="hourlyBudget"
-                    value={apiData.hourlyBudget}
+                    name="averageBudget"
+                    value={apiData.averageBudget}
                     onChange={handleChange}
                   >
                     <FormControlLabel
@@ -215,8 +226,8 @@ function HireDeveloper(props) {
               <FormControl component="fieldset">
                 <RadioGroup
                   aria-label="startDate"
-                  name="startDate"
-                  value={apiData.startDate}
+                  name="expectedStartDate"
+                  value={apiData.expectedStartDate}
                   onChange={handleChange}
                 >
                   <FormControlLabel
@@ -245,7 +256,7 @@ function HireDeveloper(props) {
 
             <div className="contractPeriod">
               <p>8. Contract Periods</p>
-              <select name="contractPeriod" id="contractPeriod">
+              <select name="contractPeriod" id="contractPeriod" onChange={handleChange}>
                 <option value="1 Month">1 Month</option>
                 <option value="2 Months">3 Months</option>
                 <option value="6 Months">6 Months</option>

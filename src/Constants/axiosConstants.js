@@ -47,6 +47,7 @@ instance.interceptors.response.use(function (response){
 }, function (error){
     console.log(error)
     let trueError = ""
+    if(error?.response?.status!==404){
     if(error?.response?.data?.message==="Bearer Token not found")
         window.location.href = '/';
         const errors = error?.response?.data?.error ?? {}
@@ -68,6 +69,7 @@ instance.interceptors.response.use(function (response){
         pauseOnHover: true,
         draggable: true,
         });
+    }
     return Promise.reject(error)
 })
 

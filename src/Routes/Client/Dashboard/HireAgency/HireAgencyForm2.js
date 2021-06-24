@@ -57,7 +57,7 @@ function HireAgencyForm2(props) {
   const [selected, setSelected] = useState([]);
   const [buttonStatus, setButtonStatus] = useState("Submit");
   const [loading, setLoading] = useState(false);
-
+  const [err, setErr] = useState();
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -90,7 +90,8 @@ function HireAgencyForm2(props) {
   //Api Calls methods
 
   const getAllDomains = () => {
-    instance.get(`api/${Role}/domains/all`).then(function (response) {
+    instance.get(`api/${Role}/domains/all`)
+      .then(function (response) {
       console.log(response);
       const domainNames = response.map((domain) => {
         return {
@@ -100,7 +101,12 @@ function HireAgencyForm2(props) {
       });
       setAllDomainsData(domainNames);
       setLoading(false);
-    });
+      })
+    .catch(err => {
+                setLoading(false)
+                console.log(err?.response?.data?.message)
+                setErr(err?.response?.data?.message)
+            })
   };
 
   const getExpertiseOption = () => {
