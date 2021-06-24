@@ -17,7 +17,7 @@ import AgencyForm4 from './Routes/Dashboard/AgencyProfile/AgencyForm/AgencyForm4
 import AgencyProjectDashboard from './Routes/Dashboard/AgencyProjectDashboard';
 import ProjectDetails from './Routes/Dashboard/ProjectDetails';
 import AgencyProjectDetails from './Routes/Dashboard/AgencyProjectDetails';
-
+import GetOneHiredDeveloper from './Routes/Agency/GetOneHiredDeveloper/GetOneHiredDeveloper';
 
 import ClientDashboard from './Routes/Client/Dashboard/Dashboard'
 import HireAgencyForm1 from './Routes/Client/Dashboard/HireAgency/HireAgencyForm1';
@@ -31,6 +31,7 @@ import ProductForm from './Routes/Agency/Product/ProductForm';
 import ProductDetails from './Routes/Agency/Product/ProductDetails';
 import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
 import CustomRoute from './HOCRoute/CustomRoute';
+import GetHireDeveloper from './Routes/Agency/GetHireDeveloper/GetHireDeveloper';
 import { withRouter } from "react-router";
 
 const App = (props) => {
@@ -52,6 +53,8 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/agency-form-three" component={AgencyForm3} />
     <CustomRoute condition="Agency" exact path="/agency-form-four" component={AgencyForm4} />
     <CustomRoute condition="Agency" exact path="/product-form" component={ProductForm} />
+    <CustomRoute condition="Agency" exact path="/get-hire-developer" component={GetHireDeveloper} />
+    <CustomRoute condition="Agency" exact path="/get-one-hire-developer:hireDeveloperId" component={GetOneHiredDeveloper} />
     <CustomRoute condition="Agency" exact path="/agency-project-details:projectId" component={AgencyProjectDetails} />
 
     <Route exact path="/product-details/:productId" component={ProductDetails} />

@@ -4,6 +4,7 @@ import './dashboard.css'
 import oneSourcingLogo from '../../assets/images/Logo/logo.png'
 import clientLogo from '../../assets/images/Logo/clientLogo.svg'
 import notificationIcon from '../../assets/images/Logo/notification.png'
+import HireDeveloperLogo from '../../assets/images/AddDeveloper/developerHire.png'
 import clientProfile from '../../assets/images/Logo/clientProfile.svg'
 
 //material-ui
@@ -106,6 +107,9 @@ function Navbar() {
                         </div>
                         <div onClick={handleNotification} aria-describedby={id} className="clientNotification">
                             <img src={notificationIcon} alt="" />
+                        </div>
+                        <div className="clientNotification">
+                            <img style={{width: '85%'}} onClick={() => routerHistory.push("/get-hire-developer")} src={HireDeveloperLogo} alt="" />
                         </div>
                         <Popover
                             id={id}
