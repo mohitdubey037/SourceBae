@@ -5,6 +5,8 @@ import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { useHistory } from 'react-router-dom';
+import NO_Data_ICON from '../no_data_icon.jpg';
+
 
 
 function Responded() {
@@ -12,7 +14,7 @@ function Responded() {
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
-
+    const [err, setErr] = useState();
     const [projects, setProjects] = useState([]);
     const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -29,6 +31,7 @@ function Responded() {
             .catch(err => {
                 setLoading(false)
                 console.log(err)
+                setErr(err?.response?.data?.message)
             })
 
     }
@@ -48,7 +51,15 @@ function Responded() {
             {loading ? <Spinner /> :
                 <div className="mainResponded">
                     <div className="innerResponded">
-                        {projects.map((s) => {
+                        {err ?
+                            <>
+                                <div style={{ textAlign: 'center', width: '100%' }}>
+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    <h6>{err}</h6>
+                                </div>
+                            </>
+                            :
+                            projects.map((s) => {
                             return (
                                 isDetail == false ? (
                                     <div className="respondedCard">

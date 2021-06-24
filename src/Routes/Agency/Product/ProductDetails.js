@@ -5,7 +5,7 @@ import ClientNavbar from '../../Client/ClientNavbar'
 import './ProductDetails.css'
 import * as helper from "../../../shared/helper";
 import logo from '../../../assets/images/Logo/logo.png'
-
+import NO_Data_ICON from '../../Dashboard/no_data_icon.jpg';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Moment from 'react-moment';
@@ -22,6 +22,7 @@ function ProductDetails(props) {
     const [details, setDetails] = useState([])
     const [similarAgency, setSimilarAgency] = useState([])
     const [detailsInJson, setDetailsInJson] = useState()
+    const [err, setErr] = useState();
 
     const getProduct = () => {
         instance.get(`/api/${Role}/products/get/${productId}`)
@@ -33,6 +34,7 @@ function ProductDetails(props) {
             })
             .catch(err => {
                 console.log(err);
+                setErr(err?.response?.data?.message)
             })
     }
 
@@ -186,7 +188,15 @@ function ProductDetails(props) {
     return (
         <>
             <ClientNavbar />
-            {details.length > 0 && details?.map((value, index) => {
+            {err ?
+                            <>
+                                <div style={{ textAlign: 'center', width: '100%' }}>
+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    <h6>{err}</h6>
+                                </div>
+                            </>
+                            :
+                details.length > 0 && details?.map((value, index) => {
                 return (
                     <div className="mainProductDetails">
                         <div className="innerProductDetails">

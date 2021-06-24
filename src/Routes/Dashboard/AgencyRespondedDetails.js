@@ -263,13 +263,9 @@ function AgencyRespondedDetails(props) {
   }, [isRepliedToClient]);
   return (
     <>
-      <div
-        style={{ marginTop: "55px" }}
-        className="backArrow"
-        onClick={() => routerHistory.goBack()}
-      >
-        <i className="fa fa-angle-left" aria-hidden="true"></i>
-      </div>
+      <div style={{ marginTop: '55px',}} className="backArrow" onClick={() => routerHistory.goBack()} >
+                        <i className="fa fa-angle-left" aria-hidden="true"></i>
+                    </div>
       <div className="mainDetailHeader">
         <div className="innerDetailHeader">
           <div className="detailHeaderImage">
