@@ -68,7 +68,7 @@ function AddingDeveloper(props) {
     const Role = "agency"
 
 
-    const [developerData, setDeveloperData] = useState(
+    const [developerData, setDeveloperData] = React.useState(
         {
             firstName: "",
             lastName: "",
@@ -116,8 +116,6 @@ function AddingDeveloper(props) {
         }
     }
 
-
-
     const technologyHandler = (event) => {
         const name = event.target.name;
         console.log(name);
@@ -150,7 +148,7 @@ function AddingDeveloper(props) {
     }
 
 
-    function uploadMedia() {
+    const uploadMedia = () => {
         setLoading(true)
         console.log(resume);
 
@@ -163,7 +161,8 @@ function AddingDeveloper(props) {
         );
         instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
-                console.log(response)
+                setLoading(false);
+                console.log(response[0].mediaURL);
                 setDeveloperData({
                     ...developerData,
                     developerDocuments: [
@@ -173,13 +172,10 @@ function AddingDeveloper(props) {
                         }
                     ]
                 })
-                setButtonStatus("Submit")
-                setLoading(false)
             })
             .catch(err => {
                 setLoading(false);
             })
-
     }
 
     const createDeveloperApi = () => {
@@ -188,29 +184,40 @@ function AddingDeveloper(props) {
             .then(function (response) {
                 console.log(response)
                 setLoading(false);
-                props.history.push("/agency-profile")
-
+                props.history.push({
+                    pathname : "/agency-profile",
+                    origin : 'addingDeveloper'
+                })
             })
             .catch(error => {
                 setLoading(false)
             })
     }
-    const handleAction = (name) => {
-        if (name === "Upload") {
-            uploadMedia()
-        }
-        else if (name === "Submit") {
-            createDeveloperApi()
-        }
-    }
+    // const handleAction = () => {
+        // if (name === "Upload") {
+            // uploadMedia()
+        // }
+        // else if (name === "Submit") {
+        //     createDeveloperApi()
+        // }
+    // }
 
     useEffect(() => {
         getAllTechs()
     }, [])
 
     useEffect(() => {
-        console.log(developerData)
-    }, [developerData])
+        console.log(developerData.developerDocuments.documentLink);
+    },[developerData])
+
+    useEffect(() => {
+        console.log('ye chala');
+        console.log(developerData.developerDocuments[0].documentLink);
+        if (developerData.developerDocuments[0].documentLink !== '' && developerData.developerDocuments[0].documentLink !== undefined ) {
+            console.log(developerData.developerDocuments.documentLink);
+            createDeveloperApi();
+        }
+    }, [developerData.developerDocuments[0]])
 
     return (
         <>
@@ -218,10 +225,10 @@ function AddingDeveloper(props) {
 
             {loading ? <Spinner /> :
 
-                
+
                 <div className="mainAddingDeveloper">
                     <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <i className="fa fa-angle-left" aria-hidden="true"></i>
                     </div>
                     <div className="innerAddingDeveloper">
                         <div className="addingDeveloperHeadings">
@@ -346,7 +353,7 @@ function AddingDeveloper(props) {
                                 </FormControl>
                             </div>
                             <div className="submitButton">
-                                <button style={{ backgroundColor: colors[buttonStatus] }} disabled={isDisabled} onClick={() => handleAction(buttonStatus)}>{`${buttonStatus}`}</button>
+                                <button disabled={isDisabled} onClick={() => uploadMedia()}>Upload</button>
                             </div>
                         </div>
                     </div>

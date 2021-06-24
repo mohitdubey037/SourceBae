@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "./Navbar";
 import "./AgencyProfile.css";
 
@@ -33,15 +33,17 @@ import ClientNavbar from "../Client/ClientNavbar";
 
 import Spinner from "../../Components/Spinner/Spinner";
 
-function AgencyProfile() {
+function AgencyProfile(props) {
   const { id } = useParams();
-  console.log(id);
+  console.log(props,"props");
   const Role = "agency";
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+  const inputEl = useRef(null);
+  const [navigated, setNavigation] = useState(false)
   const [agencyProfileData, setAgencyProfileData] = useState({
     ownerName: "",
     agencyName: "",
@@ -92,10 +94,18 @@ function AgencyProfile() {
       : getAgencyProfile(localStorage.getItem("userId"), false);
   }, []);
 
-  useEffect(() => {
-    console.log(loading);
-  }, [loading]);
 
+  useEffect(()=>{
+    if(!navigated && inputEl!==null && props.location.origin==="addingDeveloper"){
+      inputEl?.current?.click()
+      setNavigation(true)
+    }
+    else if(navigated){
+      inputEl?.current?.click()
+    }
+  })
+
+  
   return (
     <>
       {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />}
@@ -325,6 +335,7 @@ function AgencyProfile() {
                     role="tab"
                     aria-controls="nav-developer"
                     aria-selected="false"
+                    ref={inputEl}
                   >
                     <img src={matched} alt="dev" /> Developers
                   </button>
