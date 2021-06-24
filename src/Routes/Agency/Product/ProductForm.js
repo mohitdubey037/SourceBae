@@ -149,6 +149,7 @@ function ProductForm(props) {
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [businesstype, setBusinesstype] = useState([]);
+  const [err, setErr] = useState();
 
   const [domainName, setDomainName] = useState('');
 
@@ -208,7 +209,11 @@ function ProductForm(props) {
         console.log(response);
         setAllDomainsData(response);
         setLoading(false);
-      });
+      })
+      .catch(err => {
+        console.log(err?.response?.data?.message)
+        setErr(err?.response?.data?.message)
+      })
   };
 
   useEffect(() => {

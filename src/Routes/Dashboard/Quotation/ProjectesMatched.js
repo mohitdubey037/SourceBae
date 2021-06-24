@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './ProjectsMatched.css';
 import instance from '../../../Constants/axiosConstants';
 import Moment from 'react-moment';
-
+import NO_Data_ICON from '../no_data_icon.jpg';
 import dot1 from '../../../assets/images/Quotation/dot1.png'
 import shape from '../../../assets/images/Quotation/shape.png'
 
@@ -40,7 +40,7 @@ function ProjectesMatched() {
     const routerHistory = useHistory();
     const Role = localStorage.getItem('role');
     console.log(Role);
-
+    const [err, setErr] = useState();
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -55,6 +55,7 @@ function ProjectesMatched() {
             .catch(err => {
                 setLoading(false)
                 console.log(err)
+                setErr(err?.response?.data?.message)
             })
     }
 
@@ -75,7 +76,14 @@ function ProjectesMatched() {
         <>
             {loading ? <Spinner /> :
                 <div className="mainProjectsMatched">
-                    {
+                    {err ?
+                            <>
+                                <div style={{ textAlign: 'center', width: '100%' }}>
+                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    <h6>{err}</h6>
+                                </div>
+                            </>
+                            :
                         projects?.map((s, index) => {
                             return (
                                 <div className="innerProjectsMatched">
