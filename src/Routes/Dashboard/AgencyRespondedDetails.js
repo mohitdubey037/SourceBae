@@ -210,8 +210,8 @@ const CommentBox = (props) => {
 
 function AgencyRespondedDetails(props) {
   const [isRepliedToClient, setRepliedToClient] = useState(false);
-  console.log(isRepliedToClient);
   const routerHistory = useHistory();
+  console.log(routerHistory);
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
   const [project, setProject] = useState({});
@@ -266,7 +266,11 @@ function AgencyRespondedDetails(props) {
       <div
         style={{ marginTop: "55px" }}
         className="backArrow"
-        onClick={() => routerHistory.goBack()}
+        onClick={() => routerHistory.push({
+          pathname: '/quotation',
+          origin: routerHistory.location.origin
+          })
+        }
       >
         <i className="fa fa-angle-left" aria-hidden="true"></i>
       </div>

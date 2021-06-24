@@ -4,9 +4,7 @@ import Spinner from '../../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
 import { useHistory } from 'react-router-dom';
 
-
-
-function Received() {
+function Received(props) {
     const routerHistory = useHistory();
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
@@ -65,7 +63,7 @@ function Received() {
                                             </div>
                                         </div>
                                         <div className="respondCardDescription">
-                                        <p title={s.projectDescription}>{`${(s.projectDescription).slice(0,100)}...`}</p>
+                                            <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 100)}...`}</p>
                                         </div>
                                         <div className="respondCardPoints">
                                             <ul>
@@ -96,7 +94,11 @@ function Received() {
                                             </div>
                                             <div>
                                                 <button>Withdraw</button>
-                                                <button onClick={() => {routerHistory.push(`agency-project-details:${s._id}`)}}>Show details</button>
+                                                <button onClick={() => props.history.push({
+                                                    pathname: `agency-project-details:${s._id}`,
+                                                    origin: 'received'
+                                                })
+                                                }>Show details</button>
                                             </div>
                                         </div>
                                     </div>

@@ -211,8 +211,8 @@ function AddingDeveloper(props) {
     },[developerData])
 
     useEffect(() => {
-        console.log('ye chala');
-        console.log(developerData.developerDocuments[0].documentLink);
+        // console.log('ye chala');
+        // console.log(developerData.developerDocuments[0].documentLink);
         if (developerData.developerDocuments[0].documentLink !== '' && developerData.developerDocuments[0].documentLink !== undefined ) {
             console.log(developerData.developerDocuments.documentLink);
             createDeveloperApi();

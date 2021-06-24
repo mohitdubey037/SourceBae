@@ -5,10 +5,11 @@ import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { useHistory } from 'react-router-dom';
+import {withRouter} from 'react-router';
 
 
-function Responded() {
-    const routerHistory = useHistory();
+function Responded(props) {
+    console.log(props);
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
@@ -30,7 +31,6 @@ function Responded() {
                 setLoading(false)
                 console.log(err)
             })
-
     }
 
     useEffect(() => {
@@ -62,7 +62,6 @@ function Responded() {
                                             <div className="dateCreated">
                                                 <div>
                                                     <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -96,7 +95,11 @@ function Responded() {
                                         <div className="respondedCardButton">
                                             <div>
                                                 {/* <button onClick={() => setIsdetail(true)}>Details</button> */}
-                                                <button onClick={() => {routerHistory.push(`agency-project-details:${s._id}`)}}>Show details</button>
+                                                <button onClick={() => props.history.push({
+                                                    pathname : `agency-project-details:${s._id}`,
+                                                    origin : 'responded'
+                                                })
+                                            }>Show details</button>
                                             </div>
                                             <div>
                                                 <button>Withdraw</button>
@@ -126,4 +129,4 @@ function Responded() {
     )
 }
 
-export default Responded
+export default withRouter(Responded)
