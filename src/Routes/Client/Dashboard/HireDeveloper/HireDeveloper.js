@@ -10,6 +10,8 @@ import { withStyles } from "@material-ui/core/styles";
 
 import month from "../../../../assets/images/ClientDashboard/shortTerm/calender.png";
 import hourPrice from "../../../../assets/images/ClientDashboard/shortTerm/hourPrice.png";
+import MultiSelect from "react-multi-select-component";
+import instance from "../../../../Constants/axiosConstants";
 
 const BlueRadio = withStyles({
   root: {
@@ -25,7 +27,7 @@ function HireDeveloper(props) {
   const [apiData, setApiData ] = useState({
 
     developerRolesRequired: [],
-    numberOfResourcesRequired: 0,
+    numberOfResourcesRequired: "",
     developerTechnologiesRequired: [],
     developerExperienceRequired: "",
     preferredBillingMode: "Weekly,Monthly",
@@ -41,8 +43,46 @@ function HireDeveloper(props) {
             [name]:value
         })
   };
-
-
+  const options = [{
+    label:"Frontend",
+    value:"Frontend"
+  },{
+    label:"Backend",
+    value:"Backend"
+  },
+  {
+    label:"Full stack Developer",
+    value:"Full stack Developer"
+  },{
+    label:"Mobile Developer",
+    value:"Mobile Developer"
+  },
+  {
+    label:"Game Developer",
+    value:"Game Developer"
+  },{
+    label:"Data Scientist Developer",
+    value:"Data Scientist Developer"
+  },
+  {
+    label:"DevOps Developer",
+    value:"DevOps Developer"
+  },{
+    label:"Software Developer",
+    value:"Software Developer"
+  },
+  {
+    label:"Web Developer",
+    value:"Web Developer"
+  },
+  {
+    label:"Security Developer",
+    value:"Security Developer"
+  }
+]
+const [allTechnologies,setAllTechnologies] = useState([])
+const [selectedRoles, setSelectedRoles] = useState([])
+const [selectedTechnologies,setSelectedTechnologies] = useState([])
   const changeBilling = (id) => {
     if (id !== billing) setBilling(id);
     if(id===1)
@@ -60,6 +100,38 @@ function HireDeveloper(props) {
   useEffect(() => {
     console.log(apiData,"apiData")
   }, [apiData]);
+
+  const getAllTechnologies=()=>{
+    instance.get(`/api/client/technologies/all`)
+    .then(function(response){
+      console.log(response)
+      const techs = response.map((tech)=>{
+        return {
+          label:tech.technologyName,
+          value: tech._id
+        }
+      })
+      setAllTechnologies(techs)
+    })
+  }
+
+  const handleSubmit = ()=>{
+    const body = {
+      ...apiData,
+      developerRolesRequired:selectedRoles.map((role)=>role.value),
+      developerTechnologiesRequired:selectedTechnologies.map((tech)=>tech.value)
+    }
+    console.log(body)
+    instance.post(`api/client/hire-developers/create`,body)
+    .then(function(response){
+      props.history.push("/client-dashboard");
+    })
+  }
+  useEffect(()=>{
+    getAllTechnologies()
+  },[])
+
+
   return (
     <>
       <ClientNavbar />
@@ -89,24 +161,29 @@ function HireDeveloper(props) {
               </p>
             </div>
 
-            <div className="roleLooking">
+            <div className="roles">
               <p>1. What roles are you looking for?</p>
-              <input
-                type="text"
-                name="developerRolesRequired"
-                value={apiData.developerRolesRequired}
-                placeholder="E.g- FrontEnd,Backend,etc.."
-                onChange={handleChange}
-              />
+              <MultiSelect
+                    options={options}
+                    value={selectedRoles}
+                    onChange={setSelectedRoles}
+                    labelledBy="Select"
+                  />
             </div>
 
             <div className="resourceNumber">
               <p>2. Number of Resources</p>
               <input type="number" min="1" name="numberOfResourcesRequired" value={apiData.numberOfResourcesRequired} placeholder="E.g- 1 or 2" onChange={handleChange}/>
             </div>
-            <div className="skillsRequiredDeveloper">
+            <div className="SkillsRequired">
               <p>3. Skills Required</p>
-              <input type="text" name = "developerTechnologiesRequired" value ={apiData.developerTechnologiesRequired} placeholder="Type here.." onChange={handleChange} />
+              {allTechnologies.length>0 ?<MultiSelect
+                    options={allTechnologies}
+                    value={selectedTechnologies}
+                    onChange={setSelectedTechnologies}
+                    labelledBy="Select"
+                  />:"Sorry no Technologies to select"
+              }
             </div>
             <div className="developerExperienceRequired">
               <p>4. Average Experience</p>
@@ -266,7 +343,7 @@ function HireDeveloper(props) {
 
             <div className="submitBtn">
               <div></div>
-              <button>Submit</button>
+              <button onClick={handleSubmit}>Submit</button>
             </div>
           </div>
         </div>

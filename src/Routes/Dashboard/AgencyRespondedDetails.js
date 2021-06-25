@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./Quotation/RespondedDetails.css";
 
@@ -7,7 +8,6 @@ import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
-import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 let isRepliedToClient = false;
@@ -76,7 +76,7 @@ const CommentBox = (props) => {
           borderRadius: "8px",
           padding: "1rem",
           margin: "2rem 1rem 1rem 1rem",
-          width: "100%"
+          width: "100%",
         }}
       >
         {!isRepliedToClient &&
@@ -108,78 +108,95 @@ const CommentBox = (props) => {
               return "";
             }
           })}
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {props.isReplySectionActive && <div style={{ display: "flex", margin: "1rem 0rem" }}>
-            <h5>
-              <b>Agency: </b>
-            </h5>
-            <textarea
-              rows="5"
-              cols="50"
-              style={{ margin: "0 1rem" }}
-              placeholder="Enter your reply"
-              name="reply"
-              value={apiData.reply}
-              onChange={(event) => handleChange(event)}
-            />
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "30%" }}
-            >
-              <button
-                style={{
-                  background: "none",
-                  minWidth: "40px",
-                  maxWidth: "80px",
-                  border: "2px solid black",
-                  borderRadius: "4px",
-                }}
-                onClick={() => {
-                  replyApi();
-                }}
-              >
-                Reply
-              </button>
-            </div>
-
-          </div>}
-
-          {props.negotiablePrice === null && (
-            <div className="postQuotation">
-              <b>Negotiatiable Price:</b>
-              <input
-                type="number"
-                name="negotiablePrice"
-                placeholder="negotiable price"
-                value={apiData.negotiablePrice}
-                onChange={(event) => handleChange(event)}
-              />
-              <div style={{ margin: "1rem 0rem" }}>
+        <div className="postQuotation">
+          {props.isAskedForQuotation && (props.agencyNegotiablePrice === null ||
+            props.agencyNegotiablePrice === undefined) && (
+            <div style={{ display: "flex" }}>
+              <b>Agency Negotiatiable Price:</b>
+              <div className="negotiablePrice">
                 <input
-                  onChange={inputFileChosen}
-                  type="file"
-                  accept="application/pdf"
+                  type="number"
+                  name="agencyNegotiablePrice"
+                  placeholder="negotiable price"
+                  value={apiData.agencyNegotiablePrice}
+                  onChange={(event) => handleChange(event)}
                 />
-                <button onClick={uploadMedia}>Upload</button>
               </div>
             </div>
           )}
 
+          {props.isAskedForQuotation && (props.quotationLink === null ||
+            props.quotationLink === undefined) && <div style={{ margin: "1rem 0rem" }}>
+            <input
+              onChange={inputFileChosen}
+              type="file"
+              accept="application/pdf"
+            />
+            <button onClick={uploadMedia}>Upload</button>
+          </div>}
+
         </div>
-
-
-
+        
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {props.isReplySectionActive && (
+            <div style={{ display: "flex",flexDirection:"column", margin: "1rem 0rem" }}>
+              <h5>
+                <b>Agency: </b>
+              </h5>
+              <textarea
+                rows="5"
+                cols="50"
+                style={{ margin: "0 1rem" }}
+                placeholder="Enter your reply"
+                name="reply"
+                value={apiData.reply}
+                onChange={(event) => handleChange(event)}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "30%",
+                }}
+              >
+                <button
+                  style={{
+                    background: "none",
+                    minWidth: "40px",
+                    maxWidth: "80px",
+                    border: "2px solid black",
+                    borderRadius: "4px",
+                  }}
+                  onClick={() => {
+                    replyApi();
+                  }}
+                >
+                  Reply
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      {!props.isCommentSectionActive && !props.isReplySectionActive &&(
+        <div>
+        <p>Coversation Over.</p>
+        </div>
+      )}
+      
       </div>
 
-      <div
-        className={`action-wait`}
-      >
+      <div className={`action-wait`}>
         <div className="postQuotation">
-
-          {props.negotiablePrice && props.negotiablePrice !== null && (
+          {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
             <div className="detailsButtons">
-              <b>Negotiatiable Price:</b>
-              {props.negotiablePrice}
+              <p><b>{`Client Negotiatiable Price: `}</b>
+              {props.clientNegotiablePrice}</p>
+            </div>
+          )}
+          {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
+            <div className="detailsButtons">
+              <p><b>{`Agency Negotiatiable Price: `}</b>
+              {props.agencyNegotiablePrice}</p>
             </div>
           )}
 
@@ -192,18 +209,17 @@ const CommentBox = (props) => {
           )}
         </div>
 
-        <div className={`${props.isProposalActionActive ? "" : "disabled"}`}>
+        <div className={`${props.isProposalActionActive ? "":"disabled"}`}>
           <div>
             <p>Accept or Reject the Project.</p>
           </div>
 
           <div className="detailsButtons">
-            <button className="rejectButton">Withdraw</button>
             <button className="acceptButton">Accept</button>
+            <button className="rejectButton">Withdraw</button>
           </div>
         </div>
       </div>
-
     </div>
   );
 };
@@ -219,20 +235,6 @@ function AgencyRespondedDetails(props) {
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
-  const arr = [
-    {
-      title: "Food",
-    },
-    {
-      title: "Meal Subscription",
-    },
-    {
-      title: "Online Orderdering",
-    },
-    {
-      title: "Menu & Reviews",
-    },
-  ];
 
   const getAllProjects = () => {
     setLoading(true);
@@ -275,7 +277,7 @@ function AgencyRespondedDetails(props) {
         <div className="innerDetailHeader">
           <div className="detailHeaderImage">
             <div>
-              <img src={foods} alt="" />
+              <img src={foods} alt="logo" />
             </div>
           </div>
           <div className="headerInformation">
@@ -288,29 +290,33 @@ function AgencyRespondedDetails(props) {
               )}
             </div>
             <div className="clientExperience">
-              {arr.map((value, index) => {
-                return (
-                  <div className="btnInfoDiv">
-                    <div className="rightBorder"></div>
-                    <div
-                      className="innerBtnInfoDiv"
-                      style={{ marginLeft: index === 0 ? "0" : "20px" }}
-                    >
-                      <p
-                        style={{
-                          backgroundColor:
-                            index === 0 ? "#02044a" : "transparent",
-                          padding: index === 0 ? "0.2rem 1rem" : 0,
-                          borderRadius: "999px",
-                          color: index === 0 ? "#fff" : "#02044a",
-                        }}
-                      >
-                        {value?.title}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="btnInfoDiv">
+                <div className="rightBorder"></div>
+                <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
+                  <p
+                    style={{
+                      backgroundColor: "#02044a",
+                      padding: "0.2rem 1rem",
+                      borderRadius: "999px",
+                      color: "#fff",
+                    }}
+                  >
+                    {project?.projectName}
+                  </p>
+                </div>
+              </div>
+              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
+                <p
+                  style={{
+                    backgroundColor: "transparent",
+                    padding: "0",
+                    borderRadius: "999px",
+                    color: "#02044a",
+                  }}
+                >
+                  {project?.projectDomainId?.domainName}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -318,45 +324,49 @@ function AgencyRespondedDetails(props) {
 
       <div className="respondDescription">
         <h2>About Your Project</h2>
+        <p>{project?.projectName}</p>
       </div>
 
       <div className="respondCards">
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Expected Timeline</p>
-            <p>45days</p>
+            <p>Client</p>
+            <p>{`${project?.clientId?.companyName}`}</p>
           </div>
           <div>
-            <p>Budget</p>
-            <p style={{ fontWeight: "600" }}>Min $5000</p>
+            <p>Expected Timeline</p>
+            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+          </div>
+          <div>
+            <p>Project Proposal Cost</p>
+            <p style={{ fontWeight: "600" }}>{`$${project?.projectProposalCost}`}</p>
           </div>
           <div>
             <p>Agency Experience</p>
-            <p>1 year</p>
-          </div>
-          <div>
-            <p>Documents</p>
-            <p>-</p>
+            <p>{`${project?.agencyExperience}`}</p>
           </div>
         </div>
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Mobile Development</p>
-            <p>React Native</p>
+            <p>Project Type</p>
+            <p>{`${project?.projectType}`}</p>
+            
+          </div>
+
+          <div>
+            <p>Shortlisted</p>
+            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isShortListed) ? "Yes":"No"}`}</p>
+            
           </div>
           <div>
-            <p>Cloud-Server Management</p>
-            <p>Google Cloud</p>
+            <p>Quotation Asked</p>
+            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes":"No"}`}</p>
           </div>
           <div>
-            <p>Testing and Q&A</p>
-            <p>Testing Done</p>
-          </div>
-          <div>
-            <p>Note</p>
-            <p>-</p>
+            <p>Project Creation Date(MM/DD/YYYYY)</p>
+            <p>{`${new Date(project?.createdAt).toLocaleDateString()}`}</p>
           </div>
         </div>
       </div>
@@ -388,7 +398,12 @@ function AgencyRespondedDetails(props) {
                 projectId={projectId}
                 isAskedForQuotation={true}
                 isShortListed={true}
-                negotiablePrice={project.projectProposals[0].negotiablePrice}
+                clientNegotiablePrice={
+                  project.projectProposals[0].clientNegotiablePrice
+                }
+                agencyNegotiablePrice={
+                  project.projectProposals[0].agencyNegotiablePrice
+                }
                 quotationLink={project.projectProposals[0].quotationLink}
                 isProposalActionActive={
                   project.projectProposals[0].isProposalActionActive
@@ -408,10 +423,18 @@ function AgencyRespondedDetails(props) {
                   isReplySectionActive={
                     project.projectProposals[0].isReplySectionActive
                   }
+                  isCommentSectionActive={
+                    project.projectProposals[0].isCommentSectionActive
+                  }
                   projectId={projectId}
                   isAskedForQuotation={false}
                   isShortListed={true}
-                  negotiablePrice={project.projectProposals[0].negotiablePrice}
+                  clientNegotiablePrice={
+                    project.projectProposals[0].clientNegotiablePrice
+                  }
+                  agencyNegotiablePrice={
+                    project.projectProposals[0].agencyNegotiablePrice
+                  }
                   quotationLink={project.projectProposals[0].quotationLink}
                   isProposalActionActive={
                     project.projectProposals[0].isProposalActionActive
@@ -441,7 +464,7 @@ function AgencyRespondedDetails(props) {
               <h4>Technology</h4>
               <ul>
                 {project?.projectTechnologiesRequired?.map((p) => {
-                  return <li>{p?._id}</li>;
+                  return <li>{p?.technologyName}</li>;
                 })}
               </ul>
             </div>

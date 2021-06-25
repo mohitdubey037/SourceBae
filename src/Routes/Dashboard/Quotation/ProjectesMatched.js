@@ -47,7 +47,7 @@ function ProjectesMatched(props) {
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectCurrentStatus=Short Listed`)
+        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectMatched=1`)
             .then(response => {
                 setLoading(false);
                 console.log(response);
