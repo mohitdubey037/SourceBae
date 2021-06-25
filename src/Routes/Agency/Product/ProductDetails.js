@@ -14,7 +14,7 @@ import instance from '../../../Constants/axiosConstants';
 
 function ProductDetails(props) {
     console.log(props);
-    const condition  = props.location.condition;
+    const condition = props.location.condition;
     console.log(condition);
     let { productId } = useParams();
     productId = productId ? helper.cleanParam(productId) : "";
@@ -346,37 +346,39 @@ function ProductDetails(props) {
                                             }
                                         </div>
                                     </div>
-
                                 </div>
-                                <div className="moreAgencies">
-                                    <div className="innerMoreAgencies">
-                                        <div className="moreAgencyHeading">
-                                            <h3>Similar Agencies</h3>
-                                        </div>
-                                        <div className="moreAgencyList">
-                                            {
-                                                similarAgency.length > 0 && similarAgency.map((value) => {
-                                                    return (
-                                                        <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard">
-                                                            <div className="moreAgencyLogo">
-                                                                <div>
-                                                                    <img src={logo} alt="" />
+                                {condition !== 'Agency' &&
+
+                                    <div className="moreAgencies">
+                                        <div className="innerMoreAgencies">
+                                            <div className="moreAgencyHeading">
+                                                <h3>Similar Agencies</h3>
+                                            </div>
+                                            <div className="moreAgencyList">
+                                                {
+                                                    similarAgency.length > 0 && similarAgency.map((value) => {
+                                                        return (
+                                                            <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard">
+                                                                <div className="moreAgencyLogo">
+                                                                    <div>
+                                                                        <img src={logo} alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div className="moreAgencyInfo">
+                                                                    <h6>{value.agencyId.agencyName}</h6>
+                                                                    <p>{value.agencyId.agencyDescription}</p>
                                                                 </div>
                                                             </div>
-                                                            <div className="moreAgencyInfo">
-                                                                <h6>{value.agencyId.agencyName}</h6>
-                                                                <p>{value.agencyId.agencyDescription}</p>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                        <div className="moreAgencySeeMore">
-                                            <p>See More</p>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                            <div className="moreAgencySeeMore">
+                                                <p>See More</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         </div>
                     )
