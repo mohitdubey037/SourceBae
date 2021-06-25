@@ -330,39 +330,42 @@ function AgencyRespondedDetails(props) {
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Expected Timeline</p>
-            <p>45days</p>
+            <p>Client</p>
+            <p>{`${project?.clientId?.companyName}`}</p>
           </div>
           <div>
-            <p>Budget</p>
-            <p style={{ fontWeight: "600" }}>Min $5000</p>
+            <p>Expected Timeline</p>
+            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+          </div>
+          <div>
+            <p>Project Proposal Cost</p>
+            <p style={{ fontWeight: "600" }}>{`$${project?.projectProposalCost}`}</p>
           </div>
           <div>
             <p>Agency Experience</p>
-            <p>1 year</p>
-          </div>
-          <div>
-            <p>Documents</p>
-            <p>-</p>
+            <p>{`${project?.agencyExperience}`}</p>
           </div>
         </div>
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Mobile Development</p>
-            <p>React Native</p>
+            <p>Project Type</p>
+            <p>{`${project?.projectType}`}</p>
+            
+          </div>
+
+          <div>
+            <p>Shortlisted</p>
+            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isShortListed) ? "Yes":"No"}`}</p>
+            
           </div>
           <div>
-            <p>Cloud-Server Management</p>
-            <p>Google Cloud</p>
+            <p>Quotation Asked</p>
+            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes":"No"}`}</p>
           </div>
           <div>
-            <p>Testing and Q&A</p>
-            <p>Testing Done</p>
-          </div>
-          <div>
-            <p>Note</p>
-            <p>-</p>
+            <p>Project Creation Date(MM/DD/YYYYY)</p>
+            <p>{`${new Date(project?.createdAt).toLocaleDateString()}`}</p>
           </div>
         </div>
       </div>
