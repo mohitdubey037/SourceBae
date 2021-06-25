@@ -340,7 +340,7 @@ function RespondedDetails(props) {
             <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes":"No"}`}</p>
           </div>
           <div>
-            <p>Project Creation Date(MM/DD/YYYYY)</p>
+            <p>Project Creation Date</p>
             <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
           </div>
         </div>
