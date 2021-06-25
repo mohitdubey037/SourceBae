@@ -225,7 +225,8 @@ function ProductAgencies(props) {
                                             </div>
                                             <div className="profileButton">
                                                 <p onClick={() => props.history.push({
-                                                    pathname: `/agency-profile:${value.agencyId._id}`
+                                                    pathname: `/agency-profile:${value.agencyId._id}`,
+                                                    condition: `Client`
                                                 })}>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
                                             </div>
                                         </div>
