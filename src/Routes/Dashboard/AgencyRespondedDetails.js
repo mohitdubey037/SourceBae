@@ -9,6 +9,7 @@ import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { useHistory } from "react-router-dom";
+import Moment from 'react-moment';
 
 let isRepliedToClient = false;
 
@@ -365,8 +366,8 @@ function AgencyRespondedDetails(props) {
             <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes":"No"}`}</p>
           </div>
           <div>
-            <p>Project Creation Date(MM/DD/YYYYY)</p>
-            <p>{`${new Date(project?.createdAt).toLocaleDateString()}`}</p>
+            <p>Project Creation Date</p>
+            <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
           </div>
         </div>
       </div>

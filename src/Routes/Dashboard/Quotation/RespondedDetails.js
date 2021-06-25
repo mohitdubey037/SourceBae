@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import foods from "../../../assets/images/Quotation/foods.png";
-
+import Moment from 'react-moment';
 import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
@@ -306,49 +306,46 @@ function RespondedDetails(props) {
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Expected Timeline</p>
-            <p>45days</p>
+            <p>Client</p>
+            <p>{`${project?.clientId?.companyName}`}</p>
           </div>
           <div>
-            <p>Budget</p>
-            {console.log(project)}
-            <p style={{ fontWeight: "600" }}>{project?.projectProposalCost}</p>
+            <p>Expected Timeline</p>
+            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+          </div>
+          <div>
+            <p>Project Proposal Cost</p>
+            <p style={{ fontWeight: "600" }}>{`$${project?.projectProposalCost}`}</p>
           </div>
           <div>
             <p>Agency Experience</p>
-            <p>{project?.agencyExperience}</p>
-          </div>
-          <div>
-            <p>Documents</p>
-            <p>-</p>
+            <p>{`${project?.agencyExperience}`}</p>
           </div>
         </div>
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Service Name</p>
-            <p>
-              {project?.projectServicesRequired?.length > 0 &&
-                project?.projectServicesRequired[0]?.serviceName}
-            </p>
+            <p>Project Type</p>
+            <p>{`${project?.projectType}`}</p>
+            
+          </div>
+
+          <div>
+            <p>Shortlisted</p>
+            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isShortListed) ? "Yes":"No"}`}</p>
+            
           </div>
           <div>
-            <p>Technology Name</p>
-            <p>
-              {project?.projectTechnologiesRequired?.length > 0 &&
-                project?.projectTechnologiesRequired[0]?.technologyName}
-            </p>
+            <p>Quotation Asked</p>
+            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes":"No"}`}</p>
           </div>
           <div>
-            <p>Testing and Q&A</p>
-            <p>Testing Done</p>
-          </div>
-          <div>
-            <p>Note</p>
-            <p>{project.projectType}</p>
+            <p>Project Creation Date(MM/DD/YYYYY)</p>
+            <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
           </div>
         </div>
       </div>
+
 
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">

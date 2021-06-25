@@ -2,14 +2,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Navbar from "./Navbar";
 import "./AgencyProfile.css";
-
-// import profileHeader from '../../assets/images/Quotation/profileHeader.jpg'
-// import agencyLogo from '../../assets/images/Logo/agencyLogo.svg'
 import growth from "../../assets/images/Logo/growth.svg";
 import document from "../../assets/images/Logo/document.png";
-// import Received from './Quotation/Received'
-// import Responded from './Quotation/Responded'
-// import ProjectesMatched from './Quotation/ProjectesMatched'
 import received from "../../assets/images/Quotation/received.png";
 import responded from "../../assets/images/Quotation/responded.png";
 import matched from "../../assets/images/Quotation/matched.png";
@@ -32,6 +26,7 @@ import * as helper from "../../shared/helper";
 import ClientNavbar from "../Client/ClientNavbar";
 
 import Spinner from "../../Components/Spinner/Spinner";
+import Moment from 'react-moment';
 
 function AgencyProfile(props) {
   const { id } = useParams();
@@ -222,8 +217,8 @@ function AgencyProfile(props) {
                 {(id === null || id === undefined) && (
                   <div className="agencyProfileConstantPoints">
                     <div className="pointContent">
-                      <p>Joining Date</p>
-                      <h4>02 Jan 2021</h4>
+                      <p>Incorporation Date</p>
+                      <h4>{ <Moment format="D MMM YYYY" withTitle>{agencyProfileData?.incorporationDate}</Moment>}</h4>
                     </div>
                     <div className="pointContent">
                       <p>Email ID</p>
