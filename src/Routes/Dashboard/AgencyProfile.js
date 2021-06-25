@@ -35,7 +35,7 @@ import Spinner from "../../Components/Spinner/Spinner";
 
 function AgencyProfile(props) {
   const { id } = useParams();
-  console.log(props,"props");
+  console.log(props, "props");
   const Role = "agency";
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -54,6 +54,7 @@ function AgencyProfile(props) {
     incorporationDate: "",
     agencyTeamSize: "",
     isAgencyRegistered: "",
+    productId: "",
     isAgencyVerified: "",
     verificationMessage: "",
     agencyAverageRating: "",
@@ -95,17 +96,17 @@ function AgencyProfile(props) {
   }, []);
 
 
-  useEffect(()=>{
-    if(!navigated && inputEl!==null && props.location.origin==="addingDeveloper"){
+  useEffect(() => {
+    if (!navigated && inputEl !== null && props.location.origin === "addingDeveloper") {
       inputEl?.current?.click()
       setNavigation(true)
     }
-    else if(navigated){
+    else if (navigated) {
       inputEl?.current?.click()
     }
   })
 
-  
+
   return (
     <>
       {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />}
@@ -118,7 +119,11 @@ function AgencyProfile(props) {
             <div className="innerProfileHeaderImage">
               <span>You haven't added any product.</span>
               <button
-                onClick={() => (window.location.href = "/product-details")}
+                onClick={() => props.history.push({
+                  pathname: `/product-details:${agencyProfileData.productId}`,
+                  condition: 'Agency'
+                })
+                }
               >
                 View Your Product{" "}
                 <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
@@ -193,19 +198,17 @@ function AgencyProfile(props) {
                       <div
                         className="verifiedStatus"
                         style={{
-                          filter: `${
-                            !agencyProfileData?.isAgencyVerified
+                          filter: `${!agencyProfileData?.isAgencyVerified
                               ? `grayscale(100%)`
                               : `none`
-                          }`,
+                            }`,
                         }}
                       >
                         <i class="fa fa-check" aria-hidden="true" />
-                        <span>{`${
-                          !agencyProfileData?.isAgencyVerified
+                        <span>{`${!agencyProfileData?.isAgencyVerified
                             ? agencyProfileData?.verificationMessage
                             : `Verified`
-                        }`}</span>
+                          }`}</span>
                       </div>
                     )}
                   </div>
@@ -273,8 +276,8 @@ function AgencyProfile(props) {
 
                     <FilePicker
                       extensions={["pdf"]}
-                      onChange={(FileObject) => {}}
-                      onError={(errMsg) => {}}
+                      onChange={(FileObject) => { }}
+                      onError={(errMsg) => { }}
                     >
                       <button className="uploadButton">
                         <i class="fa fa-upload" aria-hidden="true"></i>Upload

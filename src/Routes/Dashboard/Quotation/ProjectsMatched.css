@@ -167,7 +167,8 @@
 }
 .projectDetailsTable div{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    margin-right: '10px';
     border-bottom: 0.5px solid #ebebeb;
 }
 .projectDetailsTable div div {

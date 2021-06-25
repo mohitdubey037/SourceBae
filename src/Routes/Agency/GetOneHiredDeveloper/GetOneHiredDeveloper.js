@@ -20,28 +20,15 @@ function RespondedDetails(props) {
     const [loading, setLoading] = useState(false);
 
     const Role = localStorage.getItem("role");
-    // const arr = [
-    //     {
-    //         title: "Food",
-    //     },
-    //     {
-    //         title: "Meal Subscription",
-    //     },
-    //     {
-    //         title: "Online Orderdering",
-    //     },
-    //     {
-    //         title: "Menu & Reviews",
-    //     },
-    // ];
 
     const getOneDeveloper = () => {
         setLoading(true);
         instance
             .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}`)
             .then(function (response) {
-                console.log(Array.isArray(response));
-                console.log(typeof (response))
+                console.log(response);
+                // console.log(Array.isArray(response));
+                // console.log(typeof (response))
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })
@@ -68,8 +55,8 @@ function RespondedDetails(props) {
 
     useEffect(() => {
         console.log(singleHiredDeveloper);
-        console.log(Array.isArray(singleHiredDeveloper));
-        console.log(typeof (singleHiredDeveloper));
+        // console.log(Array.isArray(singleHiredDeveloper));
+        // console.log(typeof (singleHiredDeveloper));
         // if (singleHiredDeveloper.length > 0) {
         //     console.log(singleHiredDeveloper?.agencyMatched[0])
         // }
@@ -91,16 +78,8 @@ function RespondedDetails(props) {
                         <div className="innerResponseCard">
                             <span className="leftLine"></span>
                             <div>
-                                <p>Created at</p>
-                                {/* <p>{singleHiredDeveloper?.length > 0 && singleHiredDeveloper?.agencyMatched[0].createdAt}</p> */}
-                            </div>
-                            <div>
-                                <p>Updated At</p>
-                                {/* <p>{singleHiredDeveloper?.length > 0 && singleHiredDeveloper?.agencyMatched[0].updatedAt}</p> */}
-                            </div>
-                            <div>
-                                <p>agencyId</p>
-                                {/* <p>{singleHiredDeveloper?.length > 0 && singleHiredDeveloper?.agencyMatched[0].agencyId}</p> */}
+                                <p>Client Id</p>
+                                <p>{singleHiredDeveloper?.clientId}</p>
                             </div>
                             <div>
                                 <p>Budget</p>

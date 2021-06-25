@@ -124,7 +124,7 @@ function ProjectesMatched(props) {
                                                     <p>Industry</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p>mohit</p>
+                                                    <p>{s.projectDomainId.domainName}</p>
                                                 </div>
                                             </div>
                                             <div>
@@ -140,7 +140,7 @@ function ProjectesMatched(props) {
                                                     <p>Expert Categories</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p>mohit</p>
+                                                    {s.projectExpertiseRequired.map(expertise => <p style={{marginRight: '10px'}}>{expertise.expertiseName}</p>)}
                                                 </div>
                                             </div>
                                             <div>
@@ -150,7 +150,7 @@ function ProjectesMatched(props) {
                                                 <div className="projectTableContent">
                                                     {s.projectServicesRequired.map(p => {
                                                         return (
-                                                            <p>{p.serviceName}</p>
+                                                            <p style={{marginRight: '10px'}}>{p.serviceName}</p>
                                                         )
                                                     })}
                                                 </div>
