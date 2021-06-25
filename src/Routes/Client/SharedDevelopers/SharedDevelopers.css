@@ -61,6 +61,11 @@
   margin-right: 10px;
 }
 
+.moreAgencyLogo > button > a{
+  text-decoration: none;
+  color:inherit;
+}
+
 .moreAgencySeeMore button{
   background-color: #33a2ec;
   padding: 0.5rem;
@@ -129,7 +134,7 @@
   align-items: center;
   position: sticky;
   top: 5%;
-  margin: 4rem 4rem 0 0;
+  margin: 4rem 4rem 0 4rem;
 }
 
 
@@ -481,7 +486,7 @@
   margin-top: 2%;
 }
 .innerResponseCard {
-  width: 40%;
+  width: 100%;
   background-color: #fff;
   padding: 1rem 2.5rem 2rem 2.5rem;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -489,7 +494,6 @@
   margin: 0 2rem;
   position: relative;
   overflow: hidden;
-  margin: auto;
 }
 .leftLine {
   position: absolute;
