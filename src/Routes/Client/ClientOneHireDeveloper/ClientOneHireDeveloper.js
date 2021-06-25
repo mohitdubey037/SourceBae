@@ -62,10 +62,10 @@ function ClientOneHireDeveloper(props) {
                     >
                         <i className="fa fa-angle-left" aria-hidden="true"></i>
                     </div>
-                    <div className="respondCards">
+                    <div className="respondCards_clientOneHireDeveloper">
 
-                        <div className="moreAgencies">
-                            <div className="innerMoreAgencies">
+                        <div className="moreAgencies_clientOneHireDeveloper">
+                            <div className="innerMoreAgencies_clientOneHireDeveloper">
                             {(singleHiredDeveloper?.agencyMatched?.length > 0) ? 
                                 <>
                                 <div className="moreAgencyHeading">

@@ -40,24 +40,7 @@
     /* border-radius: 999px; */
     background-color:#02044a;
 }
-.editableButton{
-    /* position: absolute;
-    top: 2%;
-    right: 5%;
-    background-color: #5DADE2;
-    border-radius: 999px;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2); */
-}
-/* .editableButton .editable{
-    padding: 0.4rem 1rem;
-    color: #fff;
-    font-family: 'Poppins';
-    font-weight: bold;
-    cursor: pointer;
-}
-.editableButton div i{
-    margin-left: 4px;
-} */
+
 .profileEditBtn{
     position: absolute;
     top: 2%;

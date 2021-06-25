@@ -125,8 +125,8 @@ function RespondedDetails(props) {
             </div>
 :
           "No Data Found"}
-            <div className="moreAgencies">
-              <div className="innerMoreAgencies">
+            <div className="moreAgencies_shared">
+              <div className="innerMoreAgencies_shared">
                 <div className="moreAgencyHeading">
                   <h3>Matched Developer</h3>
                 </div>
@@ -165,7 +165,7 @@ function RespondedDetails(props) {
                     <div>"No Developers Shared By Agency."</div>
                   )}
                 </div>
-                <div className="moreAgencySeeMore">
+                <div className="moreAgency_SeeMore">
                   <button onClick={() => alert("Agency Selected")}>
                     Select Agency
                   </button>
