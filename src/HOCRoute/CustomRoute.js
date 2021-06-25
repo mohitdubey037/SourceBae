@@ -10,11 +10,12 @@ const CustomRoute = props => {
     if (temp !== null && temp !== '' && temp !== 'undefined'){
         user = helper.capitalize(temp)
     }
+    console.log(props.condition)
         switch (props.condition) {
             case "Agency":
-                user==="Client" && alert("Invalid")
+                user==="Client" && alert("Invalid urlsss")
                 return (
-                    user == "Agency" ? (
+                    user === "Agency" ? (
                         <Route {...props} />
                     ) : (
                         <Redirect to="/page-not-found" />
@@ -23,7 +24,7 @@ const CustomRoute = props => {
             case "Client":
                 user==="Agency" && alert("Invalid url")
                 return (
-                    user == "Client" ? (
+                    user === "Client" ? (
                         <Route {...props} />
                     ) : (
                         <Redirect to="/page-not-found" />

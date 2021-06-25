@@ -37,7 +37,10 @@ function ClientOneHireDeveloper(props) {
 
 
     const handleDevelopers = (agencyId)=>{
-      props.history.push(`/shared-developers/:${hireDeveloperId}/:${agencyId}`)
+      props.history.push({
+        pathname: `/shared-developers/:${hireDeveloperId}/:${agencyId}`,
+        condition: `Client`
+    })
     }
 
     useEffect(()=>{
@@ -72,7 +75,7 @@ function ClientOneHireDeveloper(props) {
                                     {
                                         singleHiredDeveloper?.agencyMatched?.map((agency) => {
                                             return (
-                                                <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/get-one-hire-developer:${agency._id}`)} className="moreAgencyCard">
+                                                <div style={{ cursor: 'pointer' }} className="moreAgencyCard">
  
                                                     <div className="moreAgencyInfo">
                                                         <h6>{`${agency?.agencyId?.agencyName}`}</h6>
