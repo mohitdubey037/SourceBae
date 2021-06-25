@@ -6,6 +6,61 @@
   background-color: #e9f0ef;
   margin-top: 60px;
 }
+
+.moreAgencyHeading{
+  padding-bottom: 3%;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.moreAgencyHeading h3{
+  font-family: 'Poppins';
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.moreAgencyList{
+  margin-top: 5%;
+}
+
+.moreAgencyLogo{
+  width: 25%;
+  margin-right: 10px;
+}
+
+.moreAgencyLogo div{
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.moreAgencyLogo div img{
+  width: 100%;
+  object-fit: contain;
+}
+
+.moreAgencyInfo{
+  width: 75%;
+}
+.moreAgencyInfo h6{
+  font-family: 'Poppins';
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.moreAgencyInfo p{
+  font-family: 'Poppins';
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #56636a;
+}
+
 .innerDetailHeader {
   width: 95%;
   display: flex;
@@ -16,6 +71,19 @@
 .detailHeaderImage {
   margin-right: 1.5%;
 }
+
+.moreAgencies{
+  width: 28%;
+  box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 5%;
+}
+
+
+
 .detailHeaderImage div {
   width: 120px;
   height: 120px;
@@ -357,7 +425,7 @@
 .respondCards {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 5%;
   margin-top: 2%;
@@ -371,6 +439,7 @@
   margin: 0 2rem;
   position: relative;
   overflow: hidden;
+  margin: auto;
 }
 .leftLine {
   position: absolute;

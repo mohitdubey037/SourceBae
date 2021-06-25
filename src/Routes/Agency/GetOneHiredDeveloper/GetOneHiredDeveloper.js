@@ -14,7 +14,8 @@ function RespondedDetails(props) {
     hireDeveloperId = helper.cleanParam(hireDeveloperId);
     const routerHistory = useHistory();
 
-    const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([])
+    const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
+    const [agencyDeveloper, setAgencyDeveloper] = useState([]);
 
     const [loading, setLoading] = useState(false);
 
@@ -49,8 +50,20 @@ function RespondedDetails(props) {
                 console.log(err);
             });
     };
+    const getAgencyDeveloper = () => {
+        instance.get(`/api/${Role}/developers/all`)
+            .then(function (response) {
+                console.log(response)
+                setAgencyDeveloper(response)
+            })
+            .catch(err => {
+                console.log(err?.response?.data?.message)
+            })
+    }
+
     useEffect(() => {
         getOneDeveloper();
+        getAgencyDeveloper();
     }, []);
 
     useEffect(() => {
@@ -126,39 +139,38 @@ function RespondedDetails(props) {
                                 <p>{singleHiredDeveloper.length > 0 && singleHiredDeveloper.agencyMatched[0].developerResumes}</p>
                             </div>
                         </div>
-                    </div>
+                        {/* </div> */}
 
-                    {/* <div className="agencyQuotation">
                         <div className="moreAgencies">
-                        <div className="innerMoreAgencies">
-                            <div className="moreAgencyHeading">
-                                <h3>Similar Agencies</h3>
-                            </div>
-                            <div className="moreAgencyList">
-                                {
-                                    similarAgency.length > 0 && similarAgency.map((value) => {
-                                        return (
-                                            <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard">
-                                                <div className="moreAgencyLogo">
-                                                    <div>
-                                                        <img src={logo} alt="" />
+                            <div className="innerMoreAgencies">
+                                <div className="moreAgencyHeading">
+                                    <h3>Similar Developer</h3>
+                                </div>
+                                <div className="moreAgencyList">
+                                    {
+                                        agencyDeveloper.length > 0 && agencyDeveloper.map((value) => {
+                                            return (
+                                                <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/get-one-hire-developer:${value._id}`)} className="moreAgencyCard">
+                                                    <div className="moreAgencyLogo">
+                                                        <div>
+                                                            {/* <img src={logo} alt="" /> */}
+                                                        </div>
+                                                    </div>
+                                                    <div className="moreAgencyInfo">
+                                                        <h6>{value._id}</h6>
+                                                        <p>{value.developerDesignation}</p>
                                                     </div>
                                                 </div>
-                                                <div className="moreAgencyInfo">
-                                                    <h6>{value.agencyId.agencyName}</h6>
-                                                    <p>{value.agencyId.agencyDescription}</p>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                            <div className="moreAgencySeeMore">
-                                <p>See More</p>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className="moreAgencySeeMore">
+                                    <p>See More</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div> */}
 
 
                     {/*<div className="innerAgencyQuotation">
