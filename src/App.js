@@ -37,6 +37,7 @@ import ClientOneHireDeveloper from './Routes/Client/ClientOneHireDeveloper/Clien
 import { withRouter } from "react-router";
 
 const App = (props) => {
+  console.log(props.location.condition);
   return (
   <Switch>
     <Route exact path='/' component={Mainhomepage} />
@@ -57,10 +58,10 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/get-hire-developer" component={GetHireDeveloper} />
     <CustomRoute condition="Agency" exact path="/get-one-hire-developer:hireDeveloperId" component={GetOneHiredDeveloper} />
     <CustomRoute condition="Agency" exact path="/agency-project-details:projectId" component={AgencyProjectDetails} />
+    <CustomRoute condition={props.location.condition} exact path="/agency-profile:id" component={AgencyProfile} />
 
     {/* Both */}
-    <Route condition={props.location.condition} exact path="/product-details:productId" component={ProductDetails} />
-    <CustomRoute condition={props.location.condition} exact path="/agency-profile:id" component={AgencyProfile} />
+    <CustomRoute condition={props.location.condition === undefined && 'Client'} exact path="/product-details:productId" component={ProductDetails} />
     <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />
     <Route exact path="/agency-project-details" component={AgencyProjectDetails} />
     <CustomRoute condition='Client' exact path="/product-agencies" component={ProductAgencies} />

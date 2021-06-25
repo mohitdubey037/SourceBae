@@ -16,12 +16,12 @@
     margin-top: 5%;
 }
 .productDetailsArea{
-    width: 70%;
+    width: 65%;
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
     padding: 1rem 1rem;
 }
-.moreAgencies{
-    width: 28%;
+.moreAgencie{
+    width: 25%;
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
     display: flex;
     justify-content: center;
@@ -325,7 +325,8 @@
 
 
 
-.innerMoreAgencies{
+.innerMoreAgencie{
+    text-align: center;
     width: 90%;
     padding: 1rem 0;
 }

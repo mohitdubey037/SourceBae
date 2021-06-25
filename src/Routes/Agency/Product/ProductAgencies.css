@@ -139,6 +139,17 @@
   width: 100%;
 }
 
+.moreAgencies {
+    text-align: center;
+    width: 25%;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0%;
+    margin: 0rem 0rem 0rem 0rem;
+}
 
 
 

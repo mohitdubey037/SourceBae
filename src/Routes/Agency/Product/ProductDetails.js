@@ -352,8 +352,8 @@ function ProductDetails(props) {
                                 </div>
                                 {condition !== 'Agency' &&
 
-                                    <div className="moreAgencies">
-                                        <div className="innerMoreAgencies">
+                                    <div className="moreAgencie">
+                                        <div className="innerMoreAgencie">
                                             <div className="moreAgencyHeading">
                                                 <h3>Similar Agencies</h3>
                                             </div>
