@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./RespondedDetails.css";
 
@@ -186,20 +187,6 @@ function RespondedDetails(props) {
   const [loading, setLoading] = useState();
 
   const Role = localStorage.getItem("role");
-  const arr = [
-    {
-      title: "Food",
-    },
-    {
-      title: "Meal Subscription",
-    },
-    {
-      title: "Online Orderdering",
-    },
-    {
-      title: "Menu & Reviews",
-    },
-  ];
 
   const getAllProjects = () => {
     setLoading(true);
@@ -242,30 +229,42 @@ function RespondedDetails(props) {
             </div>
           </div>
           <div className="headerInformation">
+            <div className="clientName">
+              {project.isProposalActionActive && (
+                <div className="detailsButtons">
+                  <button>Accept</button>
+                  <button>Withdraw</button>
+                </div>
+              )}
+            </div>
             <div className="clientExperience">
-              {arr.map((value, index) => {
-                return (
-                  <div className="btnInfoDiv">
-                    <div className="rightBorder"></div>
-                    <div
-                      className="innerBtnInfoDiv"
-                      style={{ marginLeft: index === 0 ? "0" : "20px" }}
-                    >
-                      <p
-                        style={{
-                          backgroundColor:
-                            index === 0 ? "#02044a" : "transparent",
-                          padding: index === 0 ? "0.2rem 1rem" : 0,
-                          borderRadius: "999px",
-                          color: index === 0 ? "#fff" : "#02044a",
-                        }}
-                      >
-                        {value?.title}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="btnInfoDiv">
+                <div className="rightBorder"></div>
+                <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
+                  <p
+                    style={{
+                      backgroundColor: "#02044a",
+                      padding: "0.2rem 1rem",
+                      borderRadius: "999px",
+                      color: "#fff",
+                    }}
+                  >
+                    {project?.projectName}
+                  </p>
+                </div>
+              </div>
+              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
+                <p
+                  style={{
+                    backgroundColor: "transparent",
+                    padding: "0",
+                    borderRadius: "999px",
+                    color: "#02044a",
+                  }}
+                >
+                  {project?.projectDomainId?.domainName}
+                </p>
+              </div>
             </div>
           </div>
         </div>

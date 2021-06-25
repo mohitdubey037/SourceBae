@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./Quotation/RespondedDetails.css";
 
@@ -65,116 +66,114 @@ const CommentBox = (props) => {
       });
   };
   return (
-    <div style={{display:"flex"}}>
-    <div
-      className="commentBox"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        border: "2px solid black",
-        borderRadius: "8px",
-        padding: "1rem",
-        margin: "2rem 1rem 1rem 1rem",
-        width:"100%"
-      }}
-    >
-      {!isRepliedToClient &&
-        props.comments.map((index) => {
-          if (index.commentType === props.commentType) {
-            return (
-              <>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  {index.comment && (
-                    <div>
-                      <h5>
-                        <b>Client: </b>
-                        {index.comment}
-                      </h5>
-                    </div>
-                  )}
-                  {index.reply && (
-                    <div>
-                      <h5>
-                        <b>Agency: </b>
-                        {index.reply}
-                      </h5>
-                    </div>
-                  )}
-                </div>
-              </>
-            );
-          } else {
-            return "";
-          }
-        })}
-      
+    <div style={{ display: "flex" }}>
+      <div
+        className="commentBox"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          border: "2px solid black",
+          borderRadius: "8px",
+          padding: "1rem",
+          margin: "2rem 1rem 1rem 1rem",
+          width: "100%",
+        }}
+      >
+        {!isRepliedToClient &&
+          props.comments.map((index) => {
+            if (index.commentType === props.commentType) {
+              return (
+                <>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    {index.comment && (
+                      <div>
+                        <h5>
+                          <b>Client: </b>
+                          {index.comment}
+                        </h5>
+                      </div>
+                    )}
+                    {index.reply && (
+                      <div>
+                        <h5>
+                          <b>Agency: </b>
+                          {index.reply}
+                        </h5>
+                      </div>
+                    )}
+                  </div>
+                </>
+              );
+            } else {
+              return "";
+            }
+          })}
+
         <div style={{ display: "flex", flexDirection: "column" }}>
-        {props.isReplySectionActive && <div style={{ display: "flex", margin: "1rem 0rem" }}>
-            <h5>
-              <b>Agency: </b>
-            </h5>
-            <textarea
-              rows="5"
-              cols="50"
-              style={{ margin: "0 1rem" }}
-              placeholder="Enter your reply"
-              name="reply"
-              value={apiData.reply}
-              onChange={(event) => handleChange(event)}
-            />
-                      <div
-            style={{ display: "flex", flexDirection: "column", width: "30%" }}
-          >
-            <button
-              style={{
-                background: "none",
-                minWidth: "40px",
-                maxWidth:"80px",
-                border: "2px solid black",
-                borderRadius: "4px",
-              }}
-              onClick={() => {
-                replyApi();
-              }}
-            >
-              Reply
-            </button>
-          </div>
-       
-          </div>}
+          {props.isReplySectionActive && (
+            <div style={{ display: "flex", margin: "1rem 0rem" }}>
+              <h5>
+                <b>Agency: </b>
+              </h5>
+              <textarea
+                rows="5"
+                cols="50"
+                style={{ margin: "0 1rem" }}
+                placeholder="Enter your reply"
+                name="reply"
+                value={apiData.reply}
+                onChange={(event) => handleChange(event)}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "30%",
+                }}
+              >
+                <button
+                  style={{
+                    background: "none",
+                    minWidth: "40px",
+                    maxWidth: "80px",
+                    border: "2px solid black",
+                    borderRadius: "4px",
+                  }}
+                  onClick={() => {
+                    replyApi();
+                  }}
+                >
+                  Reply
+                </button>
+              </div>
+            </div>
+          )}
 
           {props.negotiablePrice === null && (
-                  <div className="postQuotation">
-                    <b>Negotiatiable Price:</b>
-                    <input
-                      type="number"
-                      name="negotiablePrice"
-                      placeholder="negotiable price"
-                      value={apiData.negotiablePrice}
-                      onChange={(event) => handleChange(event)}
-                    />
-                      <div style={{ margin: "1rem 0rem" }}>
-                    <input
-                      onChange={inputFileChosen}
-                      type="file"
-                      accept="application/pdf"
-                    />
-                    <button onClick={uploadMedia}>Upload</button>
-                  </div>
-                  </div>
-                )}
-
+            <div className="postQuotation">
+              <b>Negotiatiable Price:</b>
+              <input
+                type="number"
+                name="negotiablePrice"
+                placeholder="negotiable price"
+                value={apiData.negotiablePrice}
+                onChange={(event) => handleChange(event)}
+              />
+              <div style={{ margin: "1rem 0rem" }}>
+                <input
+                  onChange={inputFileChosen}
+                  type="file"
+                  accept="application/pdf"
+                />
+                <button onClick={uploadMedia}>Upload</button>
+              </div>
+            </div>
+          )}
         </div>
-      
+      </div>
 
-
-    </div>
-    
-    <div
-        className={`action-wait`}
-      >
+      <div className={`action-wait`}>
         <div className="postQuotation">
-        
           {props.negotiablePrice && props.negotiablePrice !== null && (
             <div className="detailsButtons">
               <b>Negotiatiable Price:</b>
@@ -191,18 +190,17 @@ const CommentBox = (props) => {
           )}
         </div>
 
-        <div className = { `${props.isProposalActionActive ? "" : "disabled"}`}>
-        <div>
-          <p>Accept or Reject the Project.</p>
-        </div>
+        <div className={`${props.isProposalActionActive ? "" : "disabled"}`}>
+          <div>
+            <p>Accept or Reject the Project.</p>
+          </div>
 
-        <div className="detailsButtons">
-          <button className="acceptButton">Accept</button>
-          <button className="rejectButton">Withdraw</button>
-        </div>
+          <div className="detailsButtons">
+            <button className="acceptButton">Accept</button>
+            <button className="rejectButton">Withdraw</button>
+          </div>
         </div>
       </div>
-    
     </div>
   );
 };
@@ -218,20 +216,6 @@ function AgencyRespondedDetails(props) {
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
-  const arr = [
-    {
-      title: "Food",
-    },
-    {
-      title: "Meal Subscription",
-    },
-    {
-      title: "Online Orderdering",
-    },
-    {
-      title: "Menu & Reviews",
-    },
-  ];
 
   const getAllProjects = () => {
     setLoading(true);
@@ -262,14 +246,18 @@ function AgencyRespondedDetails(props) {
   }, [isRepliedToClient]);
   return (
     <>
-      <div style={{ marginTop: '55px',}} className="backArrow" onClick={() => routerHistory.goBack()} >
-                        <i className="fa fa-angle-left" aria-hidden="true"></i>
-                    </div>
+      <div
+        style={{ marginTop: "55px" }}
+        className="backArrow"
+        onClick={() => routerHistory.goBack()}
+      >
+        <i className="fa fa-angle-left" aria-hidden="true"></i>
+      </div>
       <div className="mainDetailHeader">
         <div className="innerDetailHeader">
           <div className="detailHeaderImage">
             <div>
-              <img src={foods} alt="" />
+              <img src={foods} alt="logo" />
             </div>
           </div>
           <div className="headerInformation">
@@ -282,29 +270,33 @@ function AgencyRespondedDetails(props) {
               )}
             </div>
             <div className="clientExperience">
-              {arr.map((value, index) => {
-                return (
-                  <div className="btnInfoDiv">
-                    <div className="rightBorder"></div>
-                    <div
-                      className="innerBtnInfoDiv"
-                      style={{ marginLeft: index === 0 ? "0" : "20px" }}
-                    >
-                      <p
-                        style={{
-                          backgroundColor:
-                            index === 0 ? "#02044a" : "transparent",
-                          padding: index === 0 ? "0.2rem 1rem" : 0,
-                          borderRadius: "999px",
-                          color: index === 0 ? "#fff" : "#02044a",
-                        }}
-                      >
-                        {value?.title}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="btnInfoDiv">
+                <div className="rightBorder"></div>
+                <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
+                  <p
+                    style={{
+                      backgroundColor: "#02044a",
+                      padding: "0.2rem 1rem",
+                      borderRadius: "999px",
+                      color: "#fff",
+                    }}
+                  >
+                    {project?.projectName}
+                  </p>
+                </div>
+              </div>
+              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
+                <p
+                  style={{
+                    backgroundColor: "transparent",
+                    padding: "0",
+                    borderRadius: "999px",
+                    color: "#02044a",
+                  }}
+                >
+                  {project?.projectDomainId?.domainName}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -312,6 +304,7 @@ function AgencyRespondedDetails(props) {
 
       <div className="respondDescription">
         <h2>About Your Project</h2>
+        <p>{project?.projectName}</p>
       </div>
 
       <div className="respondCards">
