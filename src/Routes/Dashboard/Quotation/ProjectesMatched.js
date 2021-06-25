@@ -11,6 +11,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { useHistory } from 'react-router-dom';
+import {withRouter} from 'react-router';
 
 
 // const arr = [
@@ -35,7 +36,7 @@ import { useHistory } from 'react-router-dom';
 
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-function ProjectesMatched() {
+function ProjectesMatched(props) {
     const agencyId = localStorage.getItem('userId');
     const routerHistory = useHistory();
     const Role = localStorage.getItem('role');
@@ -101,7 +102,10 @@ function ProjectesMatched() {
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
                                                     {/* <button onClick={onOpenModal}>Show Interest</button> */}
-                                                    <button onClick={() => {routerHistory.push(`agency-project-details:${s._id}`)}}>Show Details</button>
+                                                    <button onClick={() => props.history.push({
+                                                        pathname: `agency-project-details:${s._id}`,
+                                                        origin : 'project-match'
+                                                    })}>Show Details</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,7 +124,7 @@ function ProjectesMatched() {
                                                     <p>Industry</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p>mohit</p>
+                                                    <p>{s.projectDomainId.domainName}</p>
                                                 </div>
                                             </div>
                                             <div>
@@ -136,7 +140,7 @@ function ProjectesMatched() {
                                                     <p>Expert Categories</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p>mohit</p>
+                                                    {s.projectExpertiseRequired.map(expertise => <p style={{marginRight: '10px'}}>{expertise.expertiseName}</p>)}
                                                 </div>
                                             </div>
                                             <div>
@@ -146,7 +150,7 @@ function ProjectesMatched() {
                                                 <div className="projectTableContent">
                                                     {s.projectServicesRequired.map(p => {
                                                         return (
-                                                            <p>{p.serviceName}</p>
+                                                            <p style={{marginRight: '10px'}}>{p.serviceName}</p>
                                                         )
                                                     })}
                                                 </div>
@@ -179,4 +183,4 @@ function ProjectesMatched() {
     )
 }
 
-export default ProjectesMatched
+export default withRouter(ProjectesMatched)

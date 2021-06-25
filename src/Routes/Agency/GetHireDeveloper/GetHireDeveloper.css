@@ -33,14 +33,16 @@
   align-items: center;
 }
 .innerAgencyList {
-  margin-top: 5%;
-  width: 90%;
+  /* margin-top: 5%; */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   /* align-items: flex-start; */
 }
 .AgencyCardsArea {
-  width: 72%;
+  width: 90%;
+  padding: 18px;
+  margin: auto;
 }
 
 .agencyPreciseCard {
@@ -59,6 +61,7 @@
   min-height: 10vh;
   background-color: #ebf5fb;
 }
+
 
 .agencyCardHeaderInfo {
   display: flex;

@@ -42,7 +42,7 @@ const CommentBox = (props) => {
           quotationLink: response[0].mediaURL,
         });
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }
 
   const inputFileChosen = (e) => {
