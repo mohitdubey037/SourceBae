@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import foods from "../../../assets/images/Quotation/foods.png";
-
+import Moment from 'react-moment';
 import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
@@ -341,7 +341,7 @@ function RespondedDetails(props) {
           </div>
           <div>
             <p>Project Creation Date(MM/DD/YYYYY)</p>
-            <p>{`${new Date(project?.createdAt).toLocaleDateString()}`}</p>
+            <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
           </div>
         </div>
       </div>
