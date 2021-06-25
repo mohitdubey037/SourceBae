@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './ClientNavbar.css'
 
 import Logo from '../../assets/images/Logo/logo.png'
+import HireDeveloperLogo from '../../assets/images/AddDeveloper/developerHire.png'
 
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -159,6 +160,15 @@ const ClientNavbar = ({ isVisible }, props) => {
                                         <NotificationsActiveIcon />
                                     </Avatar>
                                 </StyledBadge>
+
+                            </div>
+                        </div>
+                        <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
+                            {/* <Avatar onClick={routerHistory.push("/get-client-hire-developer")} className={classes.userProfile} >
+                                <PermIdentityIcon />
+                            </Avatar> */}
+                            <div className="clientNotification">
+                                <img style={{width: '80%'}} onClick={() => routerHistory.push("/get-client-hire-developer")} src={HireDeveloperLogo} alt="" />
                             </div>
                         </div>
 

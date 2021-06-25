@@ -32,6 +32,8 @@ import ProductDetails from './Routes/Agency/Product/ProductDetails';
 import ProductAgencies from './Routes/Agency/Product/ProductAgencies';
 import CustomRoute from './HOCRoute/CustomRoute';
 import GetHireDeveloper from './Routes/Agency/GetHireDeveloper/GetHireDeveloper';
+import GetClientHireDeveloper from './Routes/Client/ClientHireDeveloper/getClientHireDeveloper';
+import ClientOneHireDeveloper from './Routes/Client/ClientOneHireDeveloper/ClientOneHireDeveloper';
 import { withRouter } from "react-router";
 
 const App = (props) => {
@@ -56,15 +58,16 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/get-one-hire-developer:hireDeveloperId" component={GetOneHiredDeveloper} />
     <CustomRoute condition="Agency" exact path="/agency-project-details:projectId" component={AgencyProjectDetails} />
 
-
     {/* Both */}
-    <CustomRoute condition={props.location.condition} exact path="/product-details:productId" component={ProductDetails} />
+    <Route condition={props.location.condition} exact path="/product-details:productId" component={ProductDetails} />
     <CustomRoute condition={props.location.condition} exact path="/agency-profile:id" component={AgencyProfile} />
     <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />
     <Route exact path="/agency-project-details" component={AgencyProjectDetails} />
     <CustomRoute condition='Client' exact path="/product-agencies" component={ProductAgencies} />
 
     {/* Client Components  */}
+    <CustomRoute condition="Client" exact path="/client-one-hire-developer:hireDeveloperId" component={ClientOneHireDeveloper} />
+    <CustomRoute condition="Client" exact path="/get-client-hire-developer" component={GetClientHireDeveloper} />
     <CustomRoute condition="Client" exact path="/project-details:projectId" component={ProjectDetails} />
     <CustomRoute condition="Client" exact path="/client-dashboard" component={ClientDashboard} />
     <CustomRoute condition='Client' exact path="/project-details/:projectId/:agencyId" component={ProjectDetails} />

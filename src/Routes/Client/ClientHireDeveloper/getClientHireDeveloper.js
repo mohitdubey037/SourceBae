@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Navbar from '../../Dashboard/Navbar';
-import "./GetHireDeveloper.css";
+import "./getClientHireDeveloper.css";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
@@ -9,10 +9,11 @@ import { Modal } from "react-responsive-modal";
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
 import * as helper from '../../../shared/helper';
+import ClientNavbar from '../ClientNavbar';
 import Spinner from "../../../Components/Spinner/Spinner";
 
-function HireDeveloper(props) {
-  const Role = "agency";
+function ClientHireDeveloper(props) {
+  const Role = "client";
   const userId = localStorage.getItem('userId');
   let { projectId } = useParams();
 
@@ -22,7 +23,7 @@ function HireDeveloper(props) {
   const [hiredDevelopers, setHiredDevelopers] = useState([])
 
   useEffect(() => {
-    instance.get(`/api/${Role}/hire-developers/all?agencyId=${userId}`)
+    instance.get(`/api/${Role}/hire-developers/all?clientId=${userId}`)
       .then(response => {
         setLoading(false);
         console.log(response);
@@ -37,7 +38,7 @@ function HireDeveloper(props) {
 
   return (
     <>
-      <Navbar />
+      <ClientNavbar />
       {loading ? (
         <Spinner />
       ) : (
@@ -53,7 +54,7 @@ function HireDeveloper(props) {
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
                             <div className="agencyProfileInfo">
-                              <h6>{agency._id}</h6>
+                              <h6>{agency.clientId._id}</h6>
                               <div>
                                 <p>Contract Period</p>
                                 <p>{agency.contractPeriod}</p>
@@ -62,7 +63,7 @@ function HireDeveloper(props) {
                           </div>
                           <div className="profileButton">
                             <p onClick={() => props.history.push({
-                              pathname: `/get-one-hire-developer:${agency._id}`
+                              pathname: `/client-one-hire-developer:${agency.clientId._id}`
                             })}>
                               View Developer Requirements{" "}
                               <i
@@ -233,7 +234,7 @@ function HireDeveloper(props) {
   );
 }
 
-export default HireDeveloper;
+export default ClientHireDeveloper;
 
 
 
