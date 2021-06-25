@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
-import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 let isRepliedToClient = false;
@@ -198,8 +197,8 @@ const CommentBox = (props) => {
         </div>
 
         <div className="detailsButtons">
-          <button className="rejectButton">Withdraw</button>
           <button className="acceptButton">Accept</button>
+          <button className="rejectButton">Withdraw</button>
         </div>
         </div>
       </div>
@@ -436,7 +435,7 @@ function AgencyRespondedDetails(props) {
               <h4>Technology</h4>
               <ul>
                 {project?.projectTechnologiesRequired?.map((p) => {
-                  return <li>{p?._id}</li>;
+                  return <li>{p?.technologyName}</li>;
                 })}
               </ul>
             </div>
