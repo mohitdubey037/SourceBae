@@ -47,23 +47,23 @@ function ClientHireDeveloper(props) {
             <div className="innerAgencyList">
               <div className="AgencyCardsArea">
                 {hiredDevelopers?.length > 0 &&
-                  hiredDevelopers.map((agency, index) => {
+                  hiredDevelopers.map((hireDeveloperRequirement, index) => {
                     return (
                       <div className="agencyPreciseCard">
                         <div className="agencyCardHeaderLine"></div>
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
                             <div className="agencyProfileInfo">
-                              <h6>{agency.clientId._id}</h6>
+                              <h6>{hireDeveloperRequirement._id}</h6>
                               <div>
                                 <p>Contract Period</p>
-                                <p>{agency.contractPeriod}</p>
+                                <p>{hireDeveloperRequirement.contractPeriod}</p>
                               </div>
                             </div>
                           </div>
                           <div className="profileButton">
                             <p onClick={() => props.history.push({
-                              pathname: `/client-one-hire-developer:${agency.clientId._id}`
+                              pathname: `/client-one-hire-developer:${hireDeveloperRequirement._id}`
                             })}>
                               View Developer Requirements{" "}
                               <i
@@ -82,13 +82,13 @@ function ClientHireDeveloper(props) {
                                 <i className="fa fa-globe" aria-hidden="true"></i>
                               </div>
                               <div className="locationText">
-                                <p>Preferred Billing Mode : {agency.preferredBillingMode}</p>
+                                <p>Preferred Billing Mode : {hireDeveloperRequirement.preferredBillingMode}</p>
                               </div>
                             </div>
                             <div className="agencyAddressArea">
                               <div className="teamNumberPart">
                                 <p>
-                                  <span>Budget : {agency.averageBudget}</span>
+                                  <span>Budget : {hireDeveloperRequirement.averageBudget}</span>
                                 </p>
                               </div>
                             </div>
@@ -96,8 +96,8 @@ function ClientHireDeveloper(props) {
                           <div className="agencyDescInfo">
                             <h6>Developers Role Required</h6>
                             {/* <p>{agency.agencyDescription}</p> */}
-                            {console.log(agency)}
-                            {hiredDevelopers !== undefined && agency?.developerRolesRequired?.map(drr => <p>{drr}</p>)}
+                            {console.log(hireDeveloperRequirement)}
+                            {hiredDevelopers !== undefined && hireDeveloperRequirement?.developerRolesRequired?.map(drr => <p>{drr}</p>)}
                           </div>
                         </div>
                       </div>

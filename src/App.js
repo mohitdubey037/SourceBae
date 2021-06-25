@@ -34,6 +34,7 @@ import CustomRoute from './HOCRoute/CustomRoute';
 import GetHireDeveloper from './Routes/Agency/GetHireDeveloper/GetHireDeveloper';
 import GetClientHireDeveloper from './Routes/Client/ClientHireDeveloper/getClientHireDeveloper';
 import ClientOneHireDeveloper from './Routes/Client/ClientOneHireDeveloper/ClientOneHireDeveloper';
+import SharedDevelopers from './Routes/Client/SharedDevelopers/SharedDevelopers';
 import { withRouter } from "react-router";
 
 const App = (props) => {
@@ -67,6 +68,7 @@ const App = (props) => {
 
     {/* Client Components  */}
     <CustomRoute condition="Client" exact path="/client-one-hire-developer:hireDeveloperId" component={ClientOneHireDeveloper} />
+    <CustomRoute condition="Client" exact path="/shared-developers/:hireDeveloperId/:agencyId" component={SharedDevelopers} />
     <CustomRoute condition="Client" exact path="/get-client-hire-developer" component={GetClientHireDeveloper} />
     <CustomRoute condition="Client" exact path="/project-details:projectId" component={ProjectDetails} />
     <CustomRoute condition="Client" exact path="/client-dashboard" component={ClientDashboard} />
