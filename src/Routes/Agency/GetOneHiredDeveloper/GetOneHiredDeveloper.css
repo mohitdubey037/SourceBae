@@ -19,12 +19,60 @@
 }
 
 .moreAgencyList{
-  margin-top: 5%;
+  min-width: max-content;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.moreAgencyCard{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.moreAgencyCard button{
+  background-color: #33a2ec;
+  padding: 0.5rem;
+  color:#fff;
+  outline: none;
+  border:1px solid;
+  box-shadow:rgba(0, 0, 0, 0.4);
+  min-width: max-content;
+  justify-self: flex-end;
+}
+
+.moreAgencyList::-webkit-scrollbar
+{
+  width: 4px;
+
+}
+.moreAgencyList::-webkit-scrollbar-track {
+  background-color: #2a98d8;
+  border-radius: 10px;    /* color of the tracking area */
+}
+.moreAgencyList::-webkit-scrollbar-thumb {
+  background-color: blue;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid orange;  /* creates padding around scroll thumb */
 }
 
 .moreAgencyLogo{
   width: 25%;
   margin-right: 10px;
+}
+
+.moreAgencySeeMore button{
+  background-color: #33a2ec;
+  padding: 0.5rem;
+  color:#fff;
+  outline: none;
+  border:1px solid;
+  box-shadow:rgba(0, 0, 0, 0.4);
+}
+
+
+.moreAgencySeeMore button:hover{
+  background-color: #2E86C1;
 }
 
 .moreAgencyLogo div{
@@ -73,13 +121,14 @@
 }
 
 .moreAgencies{
-  width: 28%;
+  width: 100%;
   box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
   display: flex;
   justify-content: center;
   align-items: center;
   position: sticky;
   top: 5%;
+  margin: 4rem 4rem 0 0;
 }
 
 
