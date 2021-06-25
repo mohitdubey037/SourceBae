@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import "./RespondedDetails.css";
 
 import foods from "../../../assets/images/Quotation/foods.png";
 
@@ -49,105 +48,135 @@ const CommentBox = (props) => {
       });
   };
   return (
-  <div style={{display:"flex"}}>
-    <div
-      className="commentBox"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        border: "2px solid black",
-        borderRadius: "8px",
-        padding: "1rem",
-        margin: "2rem 1rem 1rem 1rem",
-        width:"100%"
-      }}
-    >
-      {props.comments.map((index) => {
-        if (index.commentType === props.commentType) {
-          return (
-            <>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {index.comment && (
-                  <div>
-                    <h5>
-                      <b>Client: </b>
-                      {index.comment}
-                    </h5>
+    <div style={{ display: "flex" }}>
+      <div
+        className="commentBox"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          border: "2px solid black",
+          borderRadius: "8px",
+          padding: "1rem",
+          margin: "2rem 1rem 1rem 1rem",
+          width: "100%",
+        }}
+      >
+        {props.comments.map((index) => {
+          if (index.commentType === props.commentType) {
+            return (
+              <>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {index.comment && (
+                    <div>
+                      <h5>
+                        <b>Client: </b>
+                        {index.comment}
+                      </h5>
+                    </div>
+                  )}
+                  {index.reply && (
+                    <div>
+                      <h5>
+                        <b>Agency: </b>
+                        {index.reply}
+                      </h5>
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+          } else {
+            return "";
+          }
+        })}
+
+        {props.isAskedForQuotation && props.isCommentSectionActive && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", margin: "1rem 0rem" }}>
+              <h5>
+                <b>Client: </b>
+              </h5>
+              <textarea
+                rows="5"
+                cols="50"
+                style={{ margin: "0 1rem" }}
+                placeholder="Enter your reply"
+                name="comment"
+                value={apiData.reply}
+                onChange={(event) => handleChange(event)}
+              />
+            </div>
+            {(props.clientNegotiablePrice === null ||
+              props.clientNegotiablePrice === undefined) && (
+              <div className="postQuotation">
+                <div style={{ display: "flex" }}>
+                  <b>Client Negotiatiable Price:</b>
+                  <div className="negotiablePrice">
+                    <input
+                      type="number"
+                      name="clientNegotiablePrice"
+                      placeholder="negotiable price"
+                      value={apiData.clientNegotiablePrice}
+                      onChange={(event) => handleChange(event)}
+                    />
                   </div>
-                )}
-                {index.reply && (
-                  <div>
-                    <h5>
-                      <b>Agency: </b>
-                      {index.reply}
-                    </h5>
-                  </div>
-                )}
+                </div>
               </div>
-            </>
-          );
-        } else {
-          return "";
-        }
-      })}
-
-      {props.isAskedForQuotation && props.isCommentSectionActive && (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", margin: "1rem 0rem" }}>
-            <h5>
-              <b>Client: </b>
-            </h5>
-            <textarea
-              rows="5"
-              cols="50"
-              style={{ margin: "0 1rem" }}
-              placeholder="Enter your reply"
-              name="comment"
-              value={apiData.reply}
-              onChange={(event) => handleChange(event)}
-            />
-          </div>
-          <div
-            style={{ display: "flex", flexDirection: "column", width: "30%" }}
-          >
-            <button
-              style={{
-                background: "none",
-                minWidth: "40px",
-                maxWidth:"80px",
-                border: "2px solid black",
-                borderRadius: "4px",
-              }}
-              onClick={() => {
-                replyApi();
-              }}
+            )}
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "30%" }}
             >
-              Reply
-            </button>
-          </div>
-        </div>
-      )}
-
-      {!props.isAskedForQuotation &&
-        props.isCommentSectionActive &&
-        props.isShortListed && (
-          <div className="detailsButtons">
-            <button onClick={askForQuotation}>Ask For Quotation</button>
+              <button
+                style={{
+                  background: "none",
+                  minWidth: "40px",
+                  maxWidth: "80px",
+                  border: "2px solid black",
+                  borderRadius: "4px",
+                }}
+                onClick={() => {
+                  replyApi();
+                }}
+              >
+                Reply
+              </button>
+            </div>
+           
           </div>
         )}
-
-      {props.isReplySectionActive && "Waiting for the reply from Agency."}
-    </div>
-
-      <div
-        className={`action-wait`}
-      >
-        <div className="postQuotation">
-        
-          {props.negotiablePrice && props.negotiablePrice !== null && (
+        {!props.isCommentSectionActive && !props.isReplySectionActive && (
+              <div>
+                <p>Coversation Over.</p>
+              </div>
+            )}
+        {!props.isAskedForQuotation &&
+          props.isCommentSectionActive &&
+          props.isShortListed && (
             <div className="detailsButtons">
-              <b>Negotiatiable Price:</b>
-              {props.negotiablePrice}
+              <button onClick={askForQuotation}>Ask For Quotation</button>
+            </div>
+          )}
+
+        {props.isReplySectionActive && "Waiting for the reply from Agency."}
+      </div>
+
+      <div className={`action-wait`}>
+        <div className="postQuotation">
+          {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
+            <div className="detailsButtons">
+              <p>
+                <b>{`Agency Negotiatiable Price: `}</b>
+                {props.agencyNegotiablePrice}
+              </p>
+            </div>
+          )}
+
+          {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
+            <div className="detailsButtons">
+              <p>
+                <b>{`Client Negotiatiable Price: `}</b>
+                {props.clientNegotiablePrice}
+              </p>
             </div>
           )}
 
@@ -160,22 +189,20 @@ const CommentBox = (props) => {
           )}
         </div>
 
-        <div className = { `${props.isProposalActionActive ? "" : "disabled"}`}>
-        <div>
-          <p>Accept or Reject the Project.</p>
-        </div>
+        <div className={`${props.isProposalActionActive ? "" : "disabled"}`}>
+          <div>
+            <p>Accept or Reject the Project.</p>
+          </div>
 
-        <div className="detailsButtons">
-          <button className="rejectButton">Withdraw</button>
-          <button className="acceptButton">Accept</button>
-        </div>
+          <div className="detailsButtons">
+            <button className="acceptButton">Accept</button>
+            <button className="rejectButton">Withdraw</button>
+          </div>
         </div>
       </div>
-    
     </div>
   );
 };
-
 
 //RESPONDED DETAILS
 function RespondedDetails(props) {
@@ -354,7 +381,12 @@ function RespondedDetails(props) {
                 agencyId={agencyId}
                 isAskedForQuotation={true}
                 isShortListed={true}
-                negotiablePrice={project.projectProposals[0].negotiablePrice}
+                clientNegotiablePrice={
+                  project.projectProposals[0].clientNegotiablePrice
+                }
+                agencyNegotiablePrice={
+                  project.projectProposals[0].agencyNegotiablePrice
+                }
                 quotationLink={project.projectProposals[0].quotationLink}
                 isProposalActionActive={
                   project.projectProposals[0].isProposalActionActive
@@ -381,7 +413,12 @@ function RespondedDetails(props) {
                   agencyId={agencyId}
                   isAskedForQuotation={false}
                   isShortListed={true}
-                  negotiablePrice={project.projectProposals[0].negotiablePrice}
+                  clientNegotiablePrice={
+                    project.projectProposals[0].clientNegotiablePrice
+                  }
+                  agencyNegotiablePrice={
+                    project.projectProposals[0].agencyNegotiablePrice
+                  }
                   quotationLink={project.projectProposals[0].quotationLink}
                   isProposalActionActive={
                     project.projectProposals[0].isProposalActionActive

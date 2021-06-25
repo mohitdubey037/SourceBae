@@ -108,10 +108,38 @@ const CommentBox = (props) => {
               return "";
             }
           })}
+        <div className="postQuotation">
+          {props.isAskedForQuotation && (props.agencyNegotiablePrice === null ||
+            props.agencyNegotiablePrice === undefined) && (
+            <div style={{ display: "flex" }}>
+              <b>Agency Negotiatiable Price:</b>
+              <div className="negotiablePrice">
+                <input
+                  type="number"
+                  name="agencyNegotiablePrice"
+                  placeholder="negotiable price"
+                  value={apiData.agencyNegotiablePrice}
+                  onChange={(event) => handleChange(event)}
+                />
+              </div>
+            </div>
+          )}
 
+          {props.isAskedForQuotation && (props.quotationLink === null ||
+            props.quotationLink === undefined) && <div style={{ margin: "1rem 0rem" }}>
+            <input
+              onChange={inputFileChosen}
+              type="file"
+              accept="application/pdf"
+            />
+            <button onClick={uploadMedia}>Upload</button>
+          </div>}
+
+        </div>
+        
         <div style={{ display: "flex", flexDirection: "column" }}>
           {props.isReplySectionActive && (
-            <div style={{ display: "flex", margin: "1rem 0rem" }}>
+            <div style={{ display: "flex",flexDirection:"column", margin: "1rem 0rem" }}>
               <h5>
                 <b>Agency: </b>
               </h5>
@@ -148,36 +176,27 @@ const CommentBox = (props) => {
               </div>
             </div>
           )}
-
-          {props.negotiablePrice === null && (
-            <div className="postQuotation">
-              <b>Negotiatiable Price:</b>
-              <input
-                type="number"
-                name="negotiablePrice"
-                placeholder="negotiable price"
-                value={apiData.negotiablePrice}
-                onChange={(event) => handleChange(event)}
-              />
-              <div style={{ margin: "1rem 0rem" }}>
-                <input
-                  onChange={inputFileChosen}
-                  type="file"
-                  accept="application/pdf"
-                />
-                <button onClick={uploadMedia}>Upload</button>
-              </div>
-            </div>
-          )}
         </div>
+      {!props.isCommentSectionActive && !props.isReplySectionActive &&(
+        <div>
+        <p>Coversation Over.</p>
+        </div>
+      )}
+      
       </div>
 
       <div className={`action-wait`}>
         <div className="postQuotation">
-          {props.negotiablePrice && props.negotiablePrice !== null && (
+          {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
             <div className="detailsButtons">
-              <b>Negotiatiable Price:</b>
-              {props.negotiablePrice}
+              <p><b>{`Client Negotiatiable Price: `}</b>
+              {props.clientNegotiablePrice}</p>
+            </div>
+          )}
+          {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
+            <div className="detailsButtons">
+              <p><b>{`Agency Negotiatiable Price: `}</b>
+              {props.agencyNegotiablePrice}</p>
             </div>
           )}
 
@@ -190,7 +209,7 @@ const CommentBox = (props) => {
           )}
         </div>
 
-        <div className={`${props.isProposalActionActive ? "" : "disabled"}`}>
+        <div className={`${props.isProposalActionActive ? "":"disabled"}`}>
           <div>
             <p>Accept or Reject the Project.</p>
           </div>
@@ -375,7 +394,12 @@ function AgencyRespondedDetails(props) {
                 projectId={projectId}
                 isAskedForQuotation={true}
                 isShortListed={true}
-                negotiablePrice={project.projectProposals[0].negotiablePrice}
+                clientNegotiablePrice={
+                  project.projectProposals[0].clientNegotiablePrice
+                }
+                agencyNegotiablePrice={
+                  project.projectProposals[0].agencyNegotiablePrice
+                }
                 quotationLink={project.projectProposals[0].quotationLink}
                 isProposalActionActive={
                   project.projectProposals[0].isProposalActionActive
@@ -395,10 +419,18 @@ function AgencyRespondedDetails(props) {
                   isReplySectionActive={
                     project.projectProposals[0].isReplySectionActive
                   }
+                  isCommentSectionActive={
+                    project.projectProposals[0].isCommentSectionActive
+                  }
                   projectId={projectId}
                   isAskedForQuotation={false}
                   isShortListed={true}
-                  negotiablePrice={project.projectProposals[0].negotiablePrice}
+                  clientNegotiablePrice={
+                    project.projectProposals[0].clientNegotiablePrice
+                  }
+                  agencyNegotiablePrice={
+                    project.projectProposals[0].agencyNegotiablePrice
+                  }
                   quotationLink={project.projectProposals[0].quotationLink}
                   isProposalActionActive={
                     project.projectProposals[0].isProposalActionActive
