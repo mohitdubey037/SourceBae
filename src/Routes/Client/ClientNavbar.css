@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
 
-.mainClientNavbar{
+.mainClientNavba{
+    height: 67px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -10,28 +11,7 @@
     padding: 0.0% 0;
     z-index: 1;
 }
-
-.clientNotification {
-    margin: 0 1.2rem;
-    width: 45px;
-    height: 40px;
-    border: 2px solid #9e9e9e;
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  .clientInfo .clientNotification img {
-    width: 50%;
-    object-fit: contain;
-  }
-
-
-.innerClientNavbar{
+.innerClientNavba{
     width: 90%;
     display: flex;
     justify-content: space-between;

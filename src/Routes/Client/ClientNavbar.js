@@ -121,8 +121,8 @@ const ClientNavbar = ({ isVisible }, props) => {
     const classes = useStyles();
     return (
         <>
-            <div className="mainClientNavbar">
-                <div className="innerClientNavbar">
+            <div className="mainClientNavba">
+                <div className="innerClientNavba">
                     <div className="superSourcingLogo">
                         <div style={{ cursor: 'pointer' }} onClick={() => routerHistory.push("/client-dashboard")} >
                             <img src={Logo} alt="" />
@@ -165,7 +165,7 @@ const ClientNavbar = ({ isVisible }, props) => {
                         </div>
                         <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
                             <div className="clientNotification">
-                                <img style={{width: '80%'}} onClick={() => routerHistory.push("/get-client-hire-developer")} src={HireDeveloperLogo} alt="" />
+                                <img style={{height: '40px', width: '40px'}}onClick={() => routerHistory.push("/get-client-hire-developer")} src={HireDeveloperLogo} alt="" />
                             </div>
                         </div>
 

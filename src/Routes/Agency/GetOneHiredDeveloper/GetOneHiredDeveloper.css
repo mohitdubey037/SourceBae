@@ -56,8 +56,8 @@
   border: 3px solid orange;  /* creates padding around scroll thumb */
 }
 
-.moreAgencyLogo{
-  width: 25%;
+.moreAgencyL{
+  width: 100%;
   margin-right: 10px;
 }
 
@@ -75,7 +75,7 @@
   background-color: #2E86C1;
 }
 
-.moreAgencyLogo div{
+.moreAgencyL div{
   width: 100%;
   height: 100%;
   border: 1px solid #e0e0e0;
@@ -85,22 +85,22 @@
   padding: 0.5rem;
 }
 
-.moreAgencyLogo div img{
+.moreAgencyL div img{
   width: 100%;
   object-fit: contain;
 }
 
-.moreAgencyInfo{
-  width: 75%;
+.moreAgencyIn{
+  width: 100%;
 }
-.moreAgencyInfo h6{
+.moreAgencyIn h6{
   font-family: 'Poppins';
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: bold;
 }
-.moreAgencyInfo p{
+.moreAgencyIn p{
   font-family: 'Poppins';
   font-size: 0.8rem;
   overflow: hidden;
@@ -120,8 +120,8 @@
   margin-right: 1.5%;
 }
 
-.moreAgencies{
-  width: 100%;
+.moreAgency{
+  width: 30%;
   max-width: 40vw;
   box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
   display: flex;
@@ -129,10 +129,13 @@
   align-items: center;
   position: sticky;
   top: 5%;
-  margin: 4rem 4rem 0 0;
+  margin: 0rem 4rem 0 0;
 }
 
-
+.innerMoreAgency {
+  width: 100%;
+  text-align: center;
+}
 
 .detailHeaderImage div {
   width: 120px;
@@ -472,7 +475,7 @@
   }
 }
 
-.respondCards {
+.respondCard {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -480,7 +483,8 @@
   margin-bottom: 5%;
   margin-top: 2%;
 }
-.innerResponseCard {
+.innerResponseCar {
+  top: 10px;
   width: 40%;
   background-color: #fff;
   padding: 1rem 2.5rem 2rem 2.5rem;
@@ -500,37 +504,37 @@
   height: 92%;
   transform: translateY(-50%);
 }
-.innerResponseCard div {
+.innerResponseCar div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: max-content;
   border-bottom: 2px solid #ebebeb;
 }
-.innerResponseCard div p {
+.innerResponseCar div p {
   font-family: "Poppins";
   margin-top: 4%;
   font-weight: 500;
   font-size: 1rem;
 }
-.innerResponseCard div p:nth-child(1) {
+.innerResponseCar div p:nth-child(1) {
   color: #000;
   font-weight: 500;
 }
-.innerResponseCard div p:nth-child(2) {
+.innerResponseCar div p:nth-child(2) {
   color: #008e80;
   font-weight: 500;
 }
 
 @media (max-width: 768px) {
-  .respondCards {
+  .respondCard {
     flex-direction: column;
   }
-  .innerResponseCard {
+  .innerResponseCar {
     width: 100%;
     margin-bottom: 5%;
   }
-  .innerResponseCard div p {
+  .innerResponseCar div p {
     font-size: 0.9rem;
   }
 }

@@ -104,8 +104,8 @@ function RespondedDetails(props) {
                     >
                         <i className="fa fa-angle-left" aria-hidden="true"></i>
                     </div>
-                    <div className="respondCards">
-                        <div className="innerResponseCard">
+                    <div className="respondCard">
+                        <div className="innerResponseCar">
                             <span className="leftLine"></span>
                             <div>
                                 <p>Client Name</p>
@@ -145,8 +145,8 @@ function RespondedDetails(props) {
                         </div>
                         {/* </div> */}
 
-                        <div className="moreAgencies">
-                            <div className="innerMoreAgencies">
+                        <div className="moreAgency">
+                            <div className="innerMoreAgency">
                             {!(singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length>0) ? 
                                 <>
                                 <div className="moreAgencyHeading">
@@ -158,11 +158,11 @@ function RespondedDetails(props) {
                                             return (
                                                 <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/get-one-hire-developer:${value._id}`)} className="moreAgencyCard">
  
-                                                    <div className="moreAgencyInfo">
+                                                    <div className="moreAgencyIn">
                                                         <h6>{value._id}</h6>
                                                         <p>{value.developerDesignation}</p>
                                                     </div>
-                                                    <div className="moreAgencyLogo">
+                                                    <div className="moreAgencyL">
                                                        {selectedDevelopers.indexOf(value._id)===-1 ?
                                                         <button onClick={()=>handleDevelopers(value._id)}>Select Developer</button>
                                                         :

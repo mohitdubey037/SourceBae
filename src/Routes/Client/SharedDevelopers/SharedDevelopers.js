@@ -6,7 +6,7 @@ import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
-import Navbar from "../../Dashboard/Navbar";
+import ClientNavbar from '../ClientNavbar';
 
 function RespondedDetails(props) {
   let { hireDeveloperId, agencyId } = useParams();
@@ -87,7 +87,7 @@ function RespondedDetails(props) {
 
   return (
     <>
-      <Navbar />
+      <ClientNavbar />
       {loading ? (
         <Spinner />
       ) : (
