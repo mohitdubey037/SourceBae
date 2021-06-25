@@ -282,7 +282,7 @@ function ProductAgencies(props) {
                                             <div>
                                                 {/* <p onClick={props.history.push(`/product-details/:${value._id}`)}>View Product</p> */}
                                                 <NavLink style={{ textDecoration: 'none' }} to={{
-                                                    pathname: `/product-details/:${value._id}`,
+                                                    pathname: `/product-details:${value._id}`,
                                                     condition: 'Client'
                                                 }}>View Product</NavLink>
                                             </div>
