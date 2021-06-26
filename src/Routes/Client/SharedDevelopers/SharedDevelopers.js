@@ -100,31 +100,47 @@ function RespondedDetails(props) {
             <i className="fa fa-angle-left" aria-hidden="true"></i>
           </div>
           <div className="respondCards">
-          {singleHiredDeveloper?.agencyMatched?.length > 0 ? 
-          
-          <div className="innerResponseCard">
-              <span className="leftLine"></span>
-              <div>
-                <p>Agency Name</p>
-                <p>{`${singleHiredDeveloper?.agencyMatched[0]?.agencyId?.agencyName || ""}`}</p>
+            {singleHiredDeveloper?.agencyMatched?.length > 0 ? (
+              <div className="innerResponseCard">
+                <span className="leftLine"></span>
+                <div>
+                  <p>Agency Name</p>
+                  <p>{`${
+                    singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                      ?.agencyName || ""
+                  }`}</p>
+                </div>
+                <div>
+                  <p>Agency Description</p>
+                  <p style={{ fontWeight: "600" }}>
+                    {
+                      singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                        ?.agencyDescription
+                    }
+                  </p>
+                </div>
+                <div>
+                  <p>Agency Email</p>
+                  <p>
+                    {
+                      singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                        ?.agencyEmail
+                    }
+                  </p>
+                </div>
+                <div>
+                  <p>Agency Phone</p>
+                  <p>
+                    {
+                      singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                        ?.agencyPhone
+                    }
+                  </p>
+                </div>
               </div>
-              <div>
-                <p>Agency Description</p>
-                <p style={{ fontWeight: "600" }}>
-                  {singleHiredDeveloper?.agencyMatched[0]?.agencyId?.agencyDescription}
-                </p>
-              </div>
-              <div>
-                <p>Agency Email</p>
-                <p>{singleHiredDeveloper?.agencyMatched[0]?.agencyId?.agencyEmail}</p>
-              </div>
-              <div>
-                <p>Agency Phone</p>
-                <p>{singleHiredDeveloper?.agencyMatched[0]?.agencyId?.agencyPhone}</p>
-              </div>
-            </div>
-:
-          "No Data Found"}
+            ) : (
+              "No Data Found"
+            )}
             <div className="moreAgencies">
               <div className="innerMoreAgencies">
                 <div className="moreAgencyHeading">
@@ -132,6 +148,7 @@ function RespondedDetails(props) {
                 </div>
                 <div className="moreAgencyList">
                   {singleHiredDeveloper?.agencyMatched?.length > 0 ? (
+                    singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length >0 ?
                     singleHiredDeveloper?.agencyMatched[0]?.developersShared?.map(
                       (developer) => {
                         return (
@@ -160,16 +177,17 @@ function RespondedDetails(props) {
                           </div>
                         );
                       }
-                    )
+                    ):
+                    <div>No Developers shared by the Agency.</div>
                   ) : (
-                    <div>"No Developers Shared By Agency."</div>
+                    <div>No Matched Agency Found.</div>
                   )}
                 </div>
-                <div className="moreAgencySeeMore">
+                {singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length >0  &&<div className="moreAgencySeeMore">
                   <button onClick={() => alert("Agency Selected")}>
                     Select Agency
                   </button>
-                </div>
+                </div>}
               </div>
             </div>
           </div>
