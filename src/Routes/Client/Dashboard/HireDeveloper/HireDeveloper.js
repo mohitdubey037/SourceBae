@@ -161,8 +161,14 @@ const [selectedTechnologies,setSelectedTechnologies] = useState([])
               </p>
             </div>
 
+
+            <div className="resourceNumber">
+              <p>1. Requirement Name</p>
+              <input type="text" name="requirementName " value={apiData.requirementName } placeholder="Give a name to identify requirement" onChange={handleChange}/>
+            </div>
+
             <div className="roles">
-              <p>1. What roles are you looking for?</p>
+              <p>2. What roles are you looking for?</p>
               <MultiSelect
                     options={options}
                     value={selectedRoles}

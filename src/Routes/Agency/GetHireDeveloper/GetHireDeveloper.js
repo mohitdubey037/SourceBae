@@ -4,19 +4,14 @@ import Navbar from '../../Dashboard/Navbar';
 import "./GetHireDeveloper.css";
 
 import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
 
 import instance from "../../../Constants/axiosConstants";
-import { useParams } from "react-router";
-import * as helper from '../../../shared/helper';
 import Spinner from "../../../Components/Spinner/Spinner";
 
 function HireDeveloper(props) {
   const Role = "agency";
   const userId = localStorage.getItem('userId');
-  let { projectId } = useParams();
 
-  projectId = projectId ? helper.cleanParam(projectId) : "";
   const [loading, setLoading] = useState(true);
 
   const [hiredDevelopers, setHiredDevelopers] = useState([])
@@ -45,7 +40,7 @@ function HireDeveloper(props) {
           <div className="mainAgencyList">
             <div className="innerAgencyList">
               <div className="AgencyCardsArea">
-                {hiredDevelopers?.length > 0 &&
+                {hiredDevelopers?.length > 0 ?
                   hiredDevelopers.map((agency, index) => {
                     return (
                       <div className="agencyPreciseCard">
@@ -101,7 +96,10 @@ function HireDeveloper(props) {
                         </div>
                       </div>
                     );
-                  })}
+                  })
+                  :
+                  <h2>NO DATA FOUND</h2>
+                  }
               </div>
             </div>
           </div>
