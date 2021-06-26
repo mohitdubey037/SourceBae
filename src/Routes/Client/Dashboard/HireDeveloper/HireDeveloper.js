@@ -24,113 +24,116 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function HireDeveloper(props) {
-  const [apiData, setApiData ] = useState({
-
+  const [apiData, setApiData] = useState({
     developerRolesRequired: [],
     numberOfResourcesRequired: "",
     developerTechnologiesRequired: [],
     developerExperienceRequired: "",
-    preferredBillingMode: "Weekly,Monthly",
+    preferredBillingMode: "Weekly",
     averageBudget: "",
     expectedStartDate: "",
-    contractPeriod: "",
+    contractPeriod: "1 Month",
+    clientId:localStorage.getItem("userId")
   });
   const [billing, setBilling] = useState(1);
   const handleChange = (event) => {
-      const {name, value} = event.target
-        setApiData({
-            ...apiData,
-            [name]:value
-        })
+    const { name, value } = event.target;
+    setApiData({
+      ...apiData,
+      [name]: value,
+    });
   };
-  const options = [{
-    label:"Frontend",
-    value:"Frontend"
-  },{
-    label:"Backend",
-    value:"Backend"
-  },
-  {
-    label:"Full stack Developer",
-    value:"Full stack Developer"
-  },{
-    label:"Mobile Developer",
-    value:"Mobile Developer"
-  },
-  {
-    label:"Game Developer",
-    value:"Game Developer"
-  },{
-    label:"Data Scientist Developer",
-    value:"Data Scientist Developer"
-  },
-  {
-    label:"DevOps Developer",
-    value:"DevOps Developer"
-  },{
-    label:"Software Developer",
-    value:"Software Developer"
-  },
-  {
-    label:"Web Developer",
-    value:"Web Developer"
-  },
-  {
-    label:"Security Developer",
-    value:"Security Developer"
-  }
-]
-const [allTechnologies,setAllTechnologies] = useState([])
-const [selectedRoles, setSelectedRoles] = useState([])
-const [selectedTechnologies,setSelectedTechnologies] = useState([])
+  const options = [
+    {
+      label: "Frontend",
+      value: "Frontend",
+    },
+    {
+      label: "Backend",
+      value: "Backend",
+    },
+    {
+      label: "Full stack Developer",
+      value: "Full stack Developer",
+    },
+    {
+      label: "Mobile Developer",
+      value: "Mobile Developer",
+    },
+    {
+      label: "Game Developer",
+      value: "Game Developer",
+    },
+    {
+      label: "Data Scientist Developer",
+      value: "Data Scientist Developer",
+    },
+    {
+      label: "DevOps Developer",
+      value: "DevOps Developer",
+    },
+    {
+      label: "Software Developer",
+      value: "Software Developer",
+    },
+    {
+      label: "Web Developer",
+      value: "Web Developer",
+    },
+    {
+      label: "Security Developer",
+      value: "Security Developer",
+    },
+  ];
+  const [allTechnologies, setAllTechnologies] = useState([]);
+  const [selectedRoles, setSelectedRoles] = useState([]);
+  const [selectedTechnologies, setSelectedTechnologies] = useState([]);
   const changeBilling = (id) => {
     if (id !== billing) setBilling(id);
-    if(id===1)
-    setApiData({
-      ...apiData,
-      preferredBillingMode:"Weekly"
-    })
-    else if(id===2)
-    setApiData({
-      ...apiData,
-      preferredBillingMode:"Monthly"
-    })
+    if (id === 1)
+      setApiData({
+        ...apiData,
+        preferredBillingMode: "Weekly",
+      });
+    else if (id === 2)
+      setApiData({
+        ...apiData,
+        preferredBillingMode: "Monthly",
+      });
   };
 
-  useEffect(() => {
-    console.log(apiData,"apiData")
-  }, [apiData]);
-
-  const getAllTechnologies=()=>{
-    instance.get(`/api/client/technologies/all`)
-    .then(function(response){
-      console.log(response)
-      const techs = response.map((tech)=>{
+  const getAllTechnologies = () => {
+    instance.get(`/api/client/technologies/all`).then(function (response) {
+      const techs = response.map((tech) => {
         return {
-          label:tech.technologyName,
-          value: tech._id
-        }
-      })
-      setAllTechnologies(techs)
-    })
-  }
+          label: tech.technologyName,
+          value: tech._id,
+        };
+      });
+      setAllTechnologies(techs);
+    });
+  };
 
-  const handleSubmit = ()=>{
+  const handleSubmit = () => {
     const body = {
       ...apiData,
-      developerRolesRequired:selectedRoles.map((role)=>role.value),
-      developerTechnologiesRequired:selectedTechnologies.map((tech)=>tech.value)
-    }
-    console.log(body)
-    instance.post(`api/client/hire-developers/create`,body)
-    .then(function(response){
-      props.history.push("/client-dashboard");
-    })
-  }
-  useEffect(()=>{
-    getAllTechnologies()
-  },[])
-
+      developerRolesRequired: selectedRoles.map((role) => role.value),
+      developerTechnologiesRequired: selectedTechnologies.map(
+        (tech) => tech.value
+      ),
+    };
+    instance
+      .post(`api/client/hire-developers/create`, body)
+      .then(function (response) {
+        props.history.push({
+          pathname: `/get-client-hire-developer`,
+          condition: `Client`,
+        });
+      });
+  };
+  useEffect(() => {
+    getAllTechnologies();
+  }, []);
 
   return (
     <>
@@ -161,38 +164,53 @@ const [selectedTechnologies,setSelectedTechnologies] = useState([])
               </p>
             </div>
 
-
             <div className="resourceNumber">
               <p>1. Requirement Name</p>
-              <input type="text" name="requirementName " value={apiData.requirementName } placeholder="Give a name to identify requirement" onChange={handleChange}/>
-            </div>
-
-            <div className="roles">
-              <p>2. What roles are you looking for?</p>
-              <MultiSelect
-                    options={options}
-                    value={selectedRoles}
-                    onChange={setSelectedRoles}
-                    labelledBy="Select"
-                  />
+              <input
+                type="text"
+                name="requirementName"
+                value={apiData.requirementName}
+                placeholder="Give a name to identify requirement"
+                onChange={handleChange}
+              />
             </div>
 
             <div className="resourceNumber">
-              <p>2. Number of Resources</p>
-              <input type="number" min="1" name="numberOfResourcesRequired" value={apiData.numberOfResourcesRequired} placeholder="E.g- 1 or 2" onChange={handleChange}/>
+              <p>2. What roles are you looking for?</p>
+              <MultiSelect
+                options={options}
+                value={selectedRoles}
+                onChange={setSelectedRoles}
+                labelledBy="Select"
+              />
             </div>
-            <div className="SkillsRequired">
-              <p>3. Skills Required</p>
-              {allTechnologies.length>0 ?<MultiSelect
-                    options={allTechnologies}
-                    value={selectedTechnologies}
-                    onChange={setSelectedTechnologies}
-                    labelledBy="Select"
-                  />:"Sorry no Technologies to select"
-              }
+
+            <div className="resourceNumber">
+              <p>3. Number of Resources</p>
+              <input
+                type="number"
+                min="1"
+                name="numberOfResourcesRequired"
+                value={apiData.numberOfResourcesRequired}
+                placeholder="E.g- 1 or 2"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="resourceNumber">
+              <p>4. Skills Required</p>
+              {allTechnologies.length > 0 ? (
+                <MultiSelect
+                  options={allTechnologies}
+                  value={selectedTechnologies}
+                  onChange={setSelectedTechnologies}
+                  labelledBy="Select"
+                />
+              ) : (
+                "Sorry no Technologies to select"
+              )}
             </div>
             <div className="developerExperienceRequired">
-              <p>4. Average Experience</p>
+              <p>5. Average Experience</p>
               <FormControl component="fieldset">
                 <RadioGroup
                   aria-label="experience"
@@ -220,7 +238,7 @@ const [selectedTechnologies,setSelectedTechnologies] = useState([])
             </div>
 
             <div className="preferredBillingMode">
-              <p>5. Preffered Billing</p>
+              <p>6. Preffered Billing</p>
               <div className="billingOptions">
                 <div className="billingButton" onClick={() => changeBilling(1)}>
                   {billing === 1 ? (
@@ -240,7 +258,7 @@ const [selectedTechnologies,setSelectedTechnologies] = useState([])
             </div>
 
             <div className="averageBudget">
-              <p>6. Average Budget</p>
+              <p>7. Average Budget</p>
               {billing === 1 ? (
                 <FormControl component="fieldset">
                   <RadioGroup
@@ -305,7 +323,7 @@ const [selectedTechnologies,setSelectedTechnologies] = useState([])
             </div>
 
             <div className="startPeriod">
-              <p>7. Start Date</p>
+              <p>8. Start Date</p>
               <FormControl component="fieldset">
                 <RadioGroup
                   aria-label="startDate"
@@ -338,8 +356,12 @@ const [selectedTechnologies,setSelectedTechnologies] = useState([])
             </div>
 
             <div className="contractPeriod">
-              <p>8. Contract Periods</p>
-              <select name="contractPeriod" id="contractPeriod" onChange={handleChange}>
+              <p>9. Contract Periods</p>
+              <select
+                name="contractPeriod"
+                id="contractPeriod"
+                onChange={handleChange}
+              >
                 <option value="1 Month">1 Month</option>
                 <option value="2 Months">3 Months</option>
                 <option value="6 Months">6 Months</option>

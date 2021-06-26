@@ -43,12 +43,12 @@ function ClientHireDeveloper(props) {
                 {hiredDevelopers?.length > 0 ?
                   hiredDevelopers.map((hireDeveloperRequirement, index) => {
                     return (
-                      <div className="agencyPreciseCard">
+                      <div className="agencyPreciseCard" key = {index}>
                         <div className="agencyCardHeaderLine"></div>
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
                             <div className="agencyProfileInfo">
-                              <h6>{hireDeveloperRequirement._id}</h6>
+                              <h6>{hireDeveloperRequirement.requirementName}</h6>
                               <div>
                                 <p>Contract Period</p>
                                 <p>{hireDeveloperRequirement.contractPeriod}</p>
