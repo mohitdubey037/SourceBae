@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import "./ProductForm.css";
 
@@ -14,9 +15,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import Navbar from "../../Dashboard/Navbar";
-import instance from '../../../Constants/axiosConstants';
-import Spinner from '../../../Components/Spinner/Spinner';
-import * as helper from '../../../shared/helper';
+import instance from "../../../Constants/axiosConstants";
+import Spinner from "../../../Components/Spinner/Spinner";
+import * as helper from "../../../shared/helper";
 
 import product from "../../../assets/images/ClientDashboard/product.svg";
 import product1 from "../../../assets/images/ClientDashboard/product1.svg";
@@ -79,29 +80,6 @@ const MenuProps = {
   },
 };
 
-// const names = [
-//   "Ed-Tech",
-//   "IT",
-//   "Travel",
-//   "CRM",
-//   "Food Delivery",
-//   "E-commerce",
-//   "Fintech",
-//   "HealthCare",
-// ];
-const fundType = [
-  "SEED",
-  "SERIES-A",
-  "SERIES-B",
-  "SERIES-C",
-  "VENTURE-ROUND",
-  "ANGEL",
-  "CORPORATE-ROUND",
-  "DEBT-FINANCING",
-  "EQUITY-CROWDFUNDING",
-  "GRANT",
-  "PRE-SEED",
-];
 const arr = [
   {
     status: false,
@@ -140,21 +118,18 @@ const brr = [
 ];
 
 function ProductForm(props) {
-  const [fundingMoneyRaised, setMoneyRaised] = useState("");
   const [businessModal, setBusinesmodal] = useState(arr);
   const [currentStage, setCurrentStage] = useState(brr);
   const [fields, setFields] = useState([{ value: null }]);
   const [openmodal, setOpenModal] = useState(false);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [businesstype, setBusinesstype] = useState([]);
-  const [err, setErr] = useState();
 
-  const [domainName, setDomainName] = useState('');
+  const [domainName, setDomainName] = useState("");
 
   const [errors, setErrors] = useState({});
-
 
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -166,6 +141,7 @@ function ProductForm(props) {
     productRevenueGenerated: "",
     productBusinessModel: "",
     productPreviousFunding: "",
+    projectPreviousFundingRaised: "",
     productFundingTypeLookingFor: "",
     productCurrentStatus: "",
     productCustomerAccquired: "",
@@ -181,7 +157,7 @@ function ProductForm(props) {
 
   const classes = useStyles();
 
-  const Role = "agency"
+  const Role = "agency";
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -204,28 +180,32 @@ function ProductForm(props) {
 
   const getAllDomains = () => {
     setLoading(true);
-    instance.get(`api/${Role}/domains/all`)
+    instance
+      .get(`api/${Role}/domains/all`)
       .then(function (response) {
         console.log(response);
         setAllDomainsData(response);
         setLoading(false);
       })
-      .catch(err => {
-        console.log(err?.response?.data?.message)
-        setErr(err?.response?.data?.message)
-      })
+      .catch((err) => {
+        console.log(err?.response?.data?.message);
+      });
   };
 
   useEffect(() => {
-    getAllDomains()
-  }, [])
+    getAllDomains();
+    setErrors({})
+  }, []);
 
   function handleChangeLink(i, event) {
     const values = [...fields];
     values[i].value = event.target.value;
     console.log(values);
     setFields(values);
-    setApiData({ ...apiData, productFounderLinkedinProfiles: values.map((link) => link.value) })
+    setApiData({
+      ...apiData,
+      productFounderLinkedinProfiles: values.map((link) => link.value),
+    });
   }
 
   function handleAdd() {
@@ -283,147 +263,151 @@ function ProductForm(props) {
   };
 
   const inputFileChoosen = (e) => {
-    console.log(e.target.files[0])
+    console.log(e.target.files[0]);
     setFile(e.target.files[0]);
-  }
+  };
 
-  const updateButtonHandler = () => {
-    setLoading(true)
-    console.log(file);
-    const formData = new FormData();
 
-    file && formData.append(
-      "files",
-      file,
-      "file"
-    );
-
-    instance.post(`api/${Role}/media/create`, formData)
-      .then(function (response) {
-        console.log(response)
-        setApiData({
-          ...apiData,
-          productLogo: response[0].mediaURL
-        })
-        setLoading(false)
-      })
-      .catch(err => {
-        setLoading(false);
-      })
-  }
-
-  const validateInfo = () => {
-    const err = {}
+  function validateInfo() {
+    const err = {};
 
     if (apiData.productName.length < 3) {
-      err.productName = "Name required"
+      err.productName = "Name required";
     }
 
     if (apiData.productDescription.length < 100) {
-      err.productDescription = 'Description should be of minimum 100 characters.'
+      err.productDescription =
+        "Description should be of minimum 100 characters.";
     }
 
-    if (apiData.productDomain === '') {
-      err.productDomain = 'Domain required'
+    if (apiData.productDomain === "") {
+      err.productDomain = "Domain required";
     }
 
-    if (apiData.productTeamSize === '') {
-      err.productTeamSize = "Team Size required"
+    if (apiData.productTeamSize === "") {
+      err.productTeamSize = "Team Size required";
     }
 
-    if (apiData.productRevenueGenerated === '') {
-      err.productRevenueGenerated = 'Revenue required'
+    if (apiData.productRevenueGenerated === "") {
+      err.productRevenueGenerated = "Revenue required";
     }
 
-    if (apiData.productBusinessModel === '') {
-      err.productBusinessModel = "Business Model required"
+    if (apiData.productBusinessModel === "") {
+      err.productBusinessModel = "Business Model required";
     }
 
-    if (apiData.productPreviousFunding === '') {
-      err.productPreviousFunding = 'Previous Funding required'
+    if (apiData.productPreviousFunding === "") {
+      err.productPreviousFunding = "Previous Funding required";
     }
 
-    if (apiData.productFundingTypeLookingFor === '') {
-      err.productFundingTypeLookingFor = "Funding type required"
+    if (apiData.projectPreviousFundingRaised === "") {
+      err.fundingMoneyRaised = "Funding Money Raised is Required.";
+    }
+    if (apiData.productFundingTypeLookingFor === "") {
+      err.productFundingTypeLookingFor = "Funding type Required.";
     }
 
-    if (apiData.productCurrentStatus === '') {
-      err.productCurrentStatus = "Current status required"
+    if (apiData.productCurrentStatus === "") {
+      err.productCurrentStatus = "Current status Required.";
     }
 
-    if (apiData.productCustomerAccquired === '') {
-      err.productCustomerAccquired = "Customer field required"
+    if (apiData.productCustomerAccquired === "") {
+      err.productCustomerAccquired = "Customer field Required.";
     }
 
-    if (apiData.productActiveUsers === '') {
-      err.productActiveUsers = "Active users required"
+    if (apiData.productActiveUsers === "") {
+      err.productActiveUsers = "Active users Required.";
     }
 
-    if (apiData.productCompanyLocation === '') {
-      err.productCompanyLocation = "Company Location required"
+    if (apiData.productCompanyLocation === "") {
+      err.productCompanyLocation = "Company Location Required.";
     }
 
-    if (apiData.productFeatureLink === "") {
-      err.productFeatureLink = 'Feature Link required'
+    if (
+      apiData.productPlatformLink !== "" &&
+      !helper.validateLink(apiData.productPlatformLink)
+    ) {
+      err.productPlatformLink = "Wrong Platform link Provided";
     }
 
-    if (!helper.validateLink(apiData.productFeatureLink)) {
-      err.productFeatureLink = 'Wrong Feature link Provided'
-    }
-
-    if (apiData.productPlatformLink === "") {
-      err.productPlatformLink = 'Platform Link required'
-    }
-
-    if (!helper.validateLink(apiData.productPlatformLink)) {
-      err.productPlatformLink = 'Wrong Platform link Provided'
-    }
-
-    if (fields[0].value === null) {
-      err.productFounderLinkedinProfiles = 'Founder link is required.'
-    }
-
-    if (!helper.validateLink(fields[0].value)) {
-      err.productFounderLinkedinProfiles = 'Invalid link provided.'
+    if(apiData.productFounderLinkedinProfiles.length===0){
+      err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
+    }    
+    if (file === null) {
+      err.filePicked = "Please pick up a logo for the Product";
     }
     setErrors(err);
-    if (Object.keys(err).length === 0)
-      return true
-    else
-      return false
+    if (Object.keys(err).length === 0) return true;
+    else return false;
+  };
 
-  }
-
-  const uploadProduct = () => {
-    console.log(apiData)
+  const updateButtonHandler = () => {
+    console.log("hi")
 
     if (validateInfo()) {
       setLoading(true);
-      instance.post(`api/${Role}/products/create`, apiData)
-        .then(response => {
+      console.log(file);
+      const formData = new FormData();
+
+      file && formData.append("files", file, "file");
+
+      instance
+        .post(`api/${Role}/media/create`, formData)
+        .then(function (response) {
+          console.log(response);
+          setApiData({
+            ...apiData,
+            productLogo: response[0].mediaURL,
+          });
+          setLoading(false);
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
+    }
+  };
+
+  const uploadProduct = () => {
+    console.log(apiData);
+
+    if (validateInfo()) {
+      setLoading(true);
+      instance
+        .post(`api/${Role}/products/create`, apiData)
+        .then((response) => {
           setLoading(false);
           onOpenModal();
           console.log(response);
         })
-        .catch(error => {
+        .catch((error) => {
           setLoading(false);
-        })
+        });
+    } else {
+      console.log(errors);
     }
-    else {
-      console.log(errors)
-    }
-  }
+  };
 
   useEffect(() => {
     console.log(apiData);
+    if(apiData.productLogo!==""){
+      uploadProduct()
+    }
   }, [apiData]);
   return (
     <>
       <Navbar />
-      {loading ? <Spinner /> :
+      {loading ? (
+        <Spinner />
+      ) : (
         <>
           <div className="mainProductForm">
-            <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
+            <div
+              style={{ marginTop: "4rem" }}
+              className="backArrow"
+              onClick={() => {
+                props.history.push("/dashboard");
+              }}
+            >
               <i class="fa fa-angle-left" aria-hidden="true"></i>
             </div>
             <div className="innerProductForm">
@@ -434,7 +418,8 @@ function ProductForm(props) {
                 </h1>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-                  beatae quibusdam pariatur est quas id. Lorem, ipsum dolor sit amet
+                  beatae quibusdam pariatur est quas id. Lorem, ipsum dolor sit
+                  amet
                 </p>
               </div>
               <div className="productIllustration">
@@ -480,9 +465,20 @@ function ProductForm(props) {
                       type="file"
                       name=""
                       id="fileInput"
-                      accept="image/png, image/gif, image/jpeg"
+                      accept="image/png, image/gif, image/jpeg, image/jpg"
                     />
-                    <button style={{ margin: 0 }} onClick={updateButtonHandler}>Update</button>
+                    {errors.filePicked && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.filePicked}
+                      </p>
+                    )}
+                    {/* <button style={{ margin: 0 }} onClick={updateButtonHandler}>Update</button> */}
                   </section>
                   <section>
                     <p>2. What's your good product name?</p>
@@ -493,7 +489,17 @@ function ProductForm(props) {
                       value={apiData.productName}
                       onChange={handleChange}
                     />
-                    {errors.productName && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productName}</p>}
+                    {errors.productName && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productName}
+                      </p>
+                    )}
                   </section>
                   <section>
                     <p>3. Describe a bit about your product.</p>
@@ -505,7 +511,17 @@ function ProductForm(props) {
                       cols="30"
                       rows="6"
                     ></textarea>
-                    {errors.productDescription && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDescription}</p>}
+                    {errors.productDescription && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productDescription}
+                      </p>
+                    )}
                   </section>
                 </div>
               </div>
@@ -529,7 +545,7 @@ function ProductForm(props) {
                         onChange={(event) => handleSelectChange(event)}
                         input={<Input />}
                         renderValue={(selected) => {
-                          if (selected === '') {
+                          if (selected === "") {
                             return (
                               <span
                                 style={{ fontFamily: "Poppins", color: "#999" }}
@@ -538,10 +554,13 @@ function ProductForm(props) {
                               </span>
                             );
                           }
-                          return allDomainsData.filter(ad => selected.includes(ad._id)).map(t => t.domainName).join(', ');
+                          return allDomainsData
+                            .filter((ad) => selected.includes(ad._id))
+                            .map((t) => t.domainName)
+                            .join(", ");
                         }}
                         MenuProps={MenuProps}
-                        inputProps={{ 'aria-label': 'Without label' }}
+                        inputProps={{ "aria-label": "Without label" }}
                       >
                         {allDomainsData.map((ad) => (
                           <MenuItem key={ad._id} value={ad._id}>
@@ -553,7 +572,17 @@ function ProductForm(props) {
                           </MenuItem>
                         ))}
                       </Select>
-                      {errors.productDomain && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDomain}</p>}
+                      {errors.productDomain && (
+                        <p
+                          style={{
+                            color: "red",
+                            fontWeight: "normal",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {errors.productDomain}
+                        </p>
+                      )}
                     </FormControl>
                   </section>
                   <section>
@@ -569,7 +598,9 @@ function ProductForm(props) {
                         className={classes.inputField}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                          <span
+                            style={{ fontFamily: "Poppins", color: "#999" }}
+                          >
                             Select from here
                           </span>
                         </MenuItem>
@@ -578,7 +609,17 @@ function ProductForm(props) {
                         <MenuItem value={"50-100"}>50-100</MenuItem>
                         <MenuItem value={"more"}>More</MenuItem>
                       </Select>
-                      {errors.productTeamSize && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productTeamSize}</p>}
+                      {errors.productTeamSize && (
+                        <p
+                          style={{
+                            color: "red",
+                            fontWeight: "normal",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {errors.productTeamSize}
+                        </p>
+                      )}
                     </FormControl>
                   </section>
                   <section>
@@ -594,7 +635,9 @@ function ProductForm(props) {
                         className={classes.inputField}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                          <span
+                            style={{ fontFamily: "Poppins", color: "#999" }}
+                          >
                             Select from here
                           </span>
                         </MenuItem>
@@ -602,7 +645,17 @@ function ProductForm(props) {
                         <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
                         <MenuItem value={"more"}>More</MenuItem>
                       </Select>
-                      {errors.productRevenueGenerated && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productRevenueGenerated}</p>}
+                      {errors.productRevenueGenerated && (
+                        <p
+                          style={{
+                            color: "red",
+                            fontWeight: "normal",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {errors.productRevenueGenerated}
+                        </p>
+                      )}
                     </FormControl>
                   </section>
 
@@ -623,7 +676,17 @@ function ProductForm(props) {
                         );
                       })}
                     </div>
-                    {errors.productBusinessModel && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productBusinessModel}</p>}
+                    {errors.productBusinessModel && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productBusinessModel}
+                      </p>
+                    )}
                   </section>
                 </div>
               </div>
@@ -651,7 +714,17 @@ function ProductForm(props) {
                         />
                       </RadioGroup>
                     </FormControl>
-                    {errors.productPreviousFunding && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPreviousFunding}</p>}
+                    {errors.productPreviousFunding && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productPreviousFunding}
+                      </p>
+                    )}
                   </section>
                   {apiData.productPreviousFunding === "true" ? (
                     <section className="amountRaised">
@@ -660,22 +733,35 @@ function ProductForm(props) {
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          value={apiData.fundingMoneyRaised}
-                          name="fundingMoneyRaised"
+                          value={apiData.projectPreviousFundingRaised}
+                          name="projectPreviousFundingRaised"
                           onChange={(event) => handleChange(event)}
                           displayEmpty
                           className={classes.inputField}
                         >
                           <MenuItem value="">
-                            <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                            <span
+                              style={{ fontFamily: "Poppins", color: "#999" }}
+                            >
                               Select from here
                             </span>
                           </MenuItem>
-                          <MenuItem value={10}>$ 0-1000</MenuItem>
-                          <MenuItem value={20}>$ 1000-10k</MenuItem>
-                          <MenuItem value={30}>More</MenuItem>
+                          <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
+                          <MenuItem value={"1000-10k"}>$ 1000-10k</MenuItem>
+                          <MenuItem value={"More"}>More</MenuItem>
                         </Select>
                       </FormControl>
+                      {errors.fundingMoneyRaised && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.fundingMoneyRaised}
+                      </p>
+                    )}
                     </section>
                   ) : null}
                   <section className="previousFunding">
@@ -691,7 +777,9 @@ function ProductForm(props) {
                         className={classes.inputField}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                          <span
+                            style={{ fontFamily: "Poppins", color: "#999" }}
+                          >
                             Select from here
                           </span>
                         </MenuItem>
@@ -699,12 +787,16 @@ function ProductForm(props) {
                         <MenuItem value={"Series-A"}>SERIES-A</MenuItem>
                         <MenuItem value={"Series-B"}>SERIES-B</MenuItem>
                         <MenuItem value={"Series-C"}>SERIES-C</MenuItem>
-                        <MenuItem value={"Venture-Round"}>VENTURE-ROUND</MenuItem>
+                        <MenuItem value={"Venture-Round"}>
+                          VENTURE-ROUND
+                        </MenuItem>
                         <MenuItem value={"Angel"}>Angel</MenuItem>
                         <MenuItem value={"Corporate-Round"}>
                           Corporate-Round
                         </MenuItem>
-                        <MenuItem value={"Debt-Financing"}>DEBT-FINANCING</MenuItem>
+                        <MenuItem value={"Debt-Financing"}>
+                          DEBT-FINANCING
+                        </MenuItem>
                         <MenuItem value={"Equity-Crowdfunding"}>
                           EQUITY-CROWDFUNDING
                         </MenuItem>
@@ -712,7 +804,17 @@ function ProductForm(props) {
                         <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
                       </Select>
                     </FormControl>
-                    {errors.productFundingTypeLookingFor && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFundingTypeLookingFor}</p>}
+                    {errors.productFundingTypeLookingFor && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productFundingTypeLookingFor}
+                      </p>
+                    )}
                   </section>
 
                   <section class="currentStage">
@@ -722,7 +824,8 @@ function ProductForm(props) {
                         return (
                           <div
                             style={{
-                              borderColor: value.status === true ? "#2E86C1" : null,
+                              borderColor:
+                                value.status === true ? "#2E86C1" : null,
                             }}
                             className="radioButton"
                             onClick={() => handleCurrentStage(index)}
@@ -735,7 +838,17 @@ function ProductForm(props) {
                         );
                       })}
                     </div>
-                    {errors.productCurrentStatus && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCurrentStatus}</p>}
+                    {errors.productCurrentStatus && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productCurrentStatus}
+                      </p>
+                    )}
                   </section>
 
                   <section>
@@ -751,16 +864,30 @@ function ProductForm(props) {
                         className={classes.inputField}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                          <span
+                            style={{ fontFamily: "Poppins", color: "#999" }}
+                          >
                             Select from here
                           </span>
                         </MenuItem>
                         <MenuItem value={"0-100"}>0-100</MenuItem>
                         <MenuItem value={"100-200"}>100-200</MenuItem>
                         <MenuItem value={"200-300"}>200-300</MenuItem>
-                        <MenuItem value={"More than 300"}>More than 300</MenuItem>
+                        <MenuItem value={"More than 300"}>
+                          More than 300
+                        </MenuItem>
                       </Select>
-                      {errors.productCustomerAccquired && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCustomerAccquired}</p>}
+                      {errors.productCustomerAccquired && (
+                        <p
+                          style={{
+                            color: "red",
+                            fontWeight: "normal",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {errors.productCustomerAccquired}
+                        </p>
+                      )}
                     </FormControl>
                   </section>
 
@@ -777,16 +904,30 @@ function ProductForm(props) {
                         className={classes.inputField}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                          <span
+                            style={{ fontFamily: "Poppins", color: "#999" }}
+                          >
                             Select from here
                           </span>
                         </MenuItem>
                         <MenuItem value={"0-100"}>0-100</MenuItem>
                         <MenuItem value={"100-200"}>100-200</MenuItem>
                         <MenuItem value={"200-300"}>200-300</MenuItem>
-                        <MenuItem value={"More than 300"}>More than 300</MenuItem>
+                        <MenuItem value={"More than 300"}>
+                          More than 300
+                        </MenuItem>
                       </Select>
-                      {errors.productActiveUsers && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productActiveUsers}</p>}
+                      {errors.productActiveUsers && (
+                        <p
+                          style={{
+                            color: "red",
+                            fontWeight: "normal",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {errors.productActiveUsers}
+                        </p>
+                      )}
                     </FormControl>
                   </section>
                 </div>
@@ -809,7 +950,17 @@ function ProductForm(props) {
                       value={apiData.productCompanyLocation}
                       onChange={handleChange}
                     />
-                    {errors.productCompanyLocation && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCompanyLocation}</p>}
+                    {errors.productCompanyLocation && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productCompanyLocation}
+                      </p>
+                    )}
                   </section>
                   <section>
                     <p>14. When was your product started?</p>
@@ -829,7 +980,17 @@ function ProductForm(props) {
                       value={apiData.productFeatureLink}
                       onChange={handleChange}
                     />
-                    {errors.productFeatureLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFeatureLink}</p>}
+                    {errors.productFeatureLink && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productFeatureLink}
+                      </p>
+                    )}
                   </section>
                   <section>
                     <p>16. Any Platform link?</p>
@@ -840,7 +1001,17 @@ function ProductForm(props) {
                       value={apiData.productPlatformLink}
                       onChange={handleChange}
                     />
-                    {errors.productPlatformLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPlatformLink}</p>}
+                    {errors.productPlatformLink && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productPlatformLink}
+                      </p>
+                    )}
                   </section>
                 </div>
               </div>
@@ -862,18 +1033,28 @@ function ProductForm(props) {
                         </button>
                       </div>
                     </div>
-                    {errors.productFounderLinkedinProfiles && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFounderLinkedinProfiles}</p>}
+                    {errors.productFounderLinkedinProfiles && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productFounderLinkedinProfiles}
+                      </p>
+                    )}
                     {fields.map((field, idx) => {
                       if (idx === 0) {
-                        return ""
-                      }
-                      else {
-
+                        return "";
+                      } else {
                         return (
                           <div className="founderLink" key={`${field}-${idx}`}>
                             <input
                               type="text"
-                              placeholder={`Founder ${idx + 1} Linkedin Profile Link`}
+                              placeholder={`Founder ${
+                                idx + 1
+                              } Linkedin Profile Link`}
                               onChange={(e) => handleChangeLink(idx, e)}
                             />
                             <div onClick={() => handleRemove(idx)}>
@@ -892,11 +1073,11 @@ function ProductForm(props) {
             </div>
           </div>
         </>
-      }
+      )}
 
       <div className="submitButton">
         <div className="innerSubmitButton">
-          <div className="subbutton" onClick={uploadProduct}>
+          <div className="subbutton" onClick={()=>updateButtonHandler()}>
             <p>
               Upload Your Product{" "}
               <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
