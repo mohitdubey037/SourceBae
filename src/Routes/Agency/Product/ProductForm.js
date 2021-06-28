@@ -420,476 +420,479 @@ function ProductForm(props) {
   return (
     <>
       <Navbar />
-      {loading && <Spinner />}
-      <div className="mainProductForm">
-        <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </div>
-        <div className="innerProductForm">
-          <div className="leftBorderLineProduct"></div>
-          <div className="productTagLine">
-            <h1>
-              we focus on <br /> Your Story
-            </h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              beatae quibusdam pariatur est quas id. Lorem, ipsum dolor sit amet
-            </p>
-          </div>
-          <div className="productIllustration">
-            <div>
-              <img src={product} alt="product" />
+      {loading ? <Spinner /> :
+        <>
+          <div className="mainProductForm">
+            <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
+              <i class="fa fa-angle-left" aria-hidden="true"></i>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="productsHeadlines">
-        <div className="innerProductHeadlines">
-          <h3>
-            {" "}
-            <span> Clients </span> want to know your product..!!{" "}
-          </h3>
-          <p>
-            Fill the form below so that client will know the details of your
-            product.
-          </p>
-        </div>
-      </div>
-
-      <div className="mainProductFormArea">
-        <div className="innerProductFormArea">
-          <div className="straightLine">
-            <span>01</span>
-            <span>02</span>
-            <span>03</span>
-            <span>04</span>
-            <span>05</span>
-          </div>
-          <div className="form_1">
-            <div className="illustrationArea">
-              <img src={product1} alt="" />
-            </div>
-
-            <div className="form1_Fields">
-              <section>
-                <p>1. Upload your latest logo of product</p>
-                <input
-                  onChange={inputFileChoosen}
-                  type="file"
-                  name=""
-                  id="fileInput"
-                  accept="image/png, image/gif, image/jpeg"
-                />
-                <button style={{ margin: 0 }} onClick={updateButtonHandler}>Update</button>
-              </section>
-              <section>
-                <p>2. What's your good product name?</p>
-                <input
-                  type="text"
-                  placeholder="Type Here.."
-                  name="productName"
-                  value={apiData.productName}
-                  onChange={handleChange}
-                />
-                {errors.productName && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productName}</p>}
-              </section>
-              <section>
-                <p>3. Describe a bit about your product.</p>
-                <textarea
-                  placeholder="Minimum words should be 100"
-                  name="productDescription"
-                  value={apiData.productDescription}
-                  onChange={handleChange}
-                  cols="30"
-                  rows="6"
-                ></textarea>
-                {errors.productDescription && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDescription}</p>}
-              </section>
-            </div>
-          </div>
-
-          <div className="form_2">
-            <div className="illustrationArea">
-              <img src={product2} alt="" />
-            </div>
-            <div className="form2_Fields">
-              <section>
-                <p>4. What type of Business product you have?</p>
-
-                <FormControl className={classes.formControl}>
-                  <Select
-                    labelId="demo-mutiple-checkbox-label"
-                    id="demo-checkbox"
-                    name="productDomain"
-                    // multiple
-                    displayEmpty
-                    value={domainName}
-                    onChange={(event) => handleSelectChange(event)}
-                    input={<Input />}
-                    renderValue={(selected) => {
-                      if (selected === '') {
-                        return (
-                          <span
-                            style={{ fontFamily: "Poppins", color: "#999" }}
-                          >
-                            Select from here
-                          </span>
-                        );
-                      }
-                      return allDomainsData.filter(ad => selected.includes(ad._id)).map(t => t.domainName).join(', ');
-                    }}
-                    MenuProps={MenuProps}
-                    inputProps={{ 'aria-label': 'Without label' }}
-                  >
-                    {allDomainsData.map((ad) => (
-                      <MenuItem key={ad._id} value={ad._id}>
-                        <Checkbox
-                          color="primary"
-                          checked={businesstype.indexOf(ad._id) > -1}
-                        />
-                        <ListItemText primary={ad.domainName} />
-                      </MenuItem>
-                    ))}
-                  </Select>
-                  {errors.productDomain && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDomain}</p>}
-                </FormControl>
-              </section>
-              <section>
-                <p>5. What's your good team size?</p>
-                <FormControl className={classes.formControl}>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={apiData.productTeamSize}
-                    name="productTeamSize"
-                    onChange={(event) => handleChange(event)}
-                    displayEmpty
-                    className={classes.inputField}
-                  >
-                    <MenuItem value="">
-                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
-                        Select from here
-                      </span>
-                    </MenuItem>
-                    <MenuItem value={"1-10"}>01-10</MenuItem>
-                    <MenuItem value={"10-50"}>10-50</MenuItem>
-                    <MenuItem value={"50-100"}>50-100</MenuItem>
-                    <MenuItem value={"more"}>More</MenuItem>
-                  </Select>
-                  {errors.productTeamSize && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productTeamSize}</p>}
-                </FormControl>
-              </section>
-              <section>
-                <p>6. Total revenue generated till now?</p>
-                <FormControl className={classes.formControl}>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={apiData.productRevenueGenerated}
-                    name="productRevenueGenerated"
-                    onChange={(event) => handleChange(event)}
-                    displayEmpty
-                    className={classes.inputField}
-                  >
-                    <MenuItem value="">
-                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
-                        Select from here
-                      </span>
-                    </MenuItem>
-                    <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
-                    <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
-                    <MenuItem value={"more"}>More</MenuItem>
-                  </Select>
-                  {errors.productRevenueGenerated && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productRevenueGenerated}</p>}
-                </FormControl>
-              </section>
-
-              <section>
-                <p>7. Which business modal does your product have?</p>
-                <div className="radioGroupButtons">
-                  {businessModal.map((value, index) => {
-                    return (
-                      <div
-                        className="radioButton"
-                        onClick={() => handleBusinnesModal(index)}
-                      >
-                        <span>
-                          {value?.status === true ? <div></div> : null}
-                        </span>
-                        <h6>{value?.value}</h6>
-                      </div>
-                    );
-                  })}
+            <div className="innerProductForm">
+              <div className="leftBorderLineProduct"></div>
+              <div className="productTagLine">
+                <h1>
+                  we focus on <br /> Your Story
+                </h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                  beatae quibusdam pariatur est quas id. Lorem, ipsum dolor sit amet
+                </p>
+              </div>
+              <div className="productIllustration">
+                <div>
+                  <img src={product} alt="product" />
                 </div>
-                {errors.productBusinessModel && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productBusinessModel}</p>}
-              </section>
+              </div>
             </div>
           </div>
 
-          <div className="form_3">
-            <div className="form3_Fields">
-              <section className="previousFunding">
-                <p>8. Any previous funding?</p>
-                <FormControl component="fieldset">
-                  <RadioGroup
-                    aria-label="gender"
-                    name="productPreviousFunding"
-                    value={apiData.productPreviousFunding}
-                    onChange={(event) => handleChange(event)}
-                  >
-                    <FormControlLabel
-                      value="true"
-                      control={<BlueRadio />}
-                      label="YES"
-                    />
-                    <FormControlLabel
-                      value="false"
-                      control={<BlueRadio />}
-                      label="NO"
-                    />
-                  </RadioGroup>
-                </FormControl>
-                {errors.productPreviousFunding && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPreviousFunding}</p>}
-              </section>
-              {apiData.productPreviousFunding === "true" ? (
-                <section className="amountRaised">
-                  <span>How much amount have you raised yet?</span>
-                  <FormControl className={classes.formControl}>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={apiData.fundingMoneyRaised}
-                      name="fundingMoneyRaised"
-                      onChange={(event) => handleChange(event)}
-                      displayEmpty
-                      className={classes.inputField}
-                    >
-                      <MenuItem value="">
-                        <span style={{ fontFamily: "Poppins", color: "#999" }}>
-                          Select from here
-                        </span>
-                      </MenuItem>
-                      <MenuItem value={10}>$ 0-1000</MenuItem>
-                      <MenuItem value={20}>$ 1000-10k</MenuItem>
-                      <MenuItem value={30}>More</MenuItem>
-                    </Select>
-                  </FormControl>
-                </section>
-              ) : null}
-              <section className="previousFunding">
-                <p>9. Which type of funding you are looking for?</p>
-                <FormControl className={classes.formControl}>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={apiData.productFundingTypeLookingFor}
-                    name="productFundingTypeLookingFor"
-                    onChange={(event) => handleChange(event)}
-                    displayEmpty
-                    className={classes.inputField}
-                  >
-                    <MenuItem value="">
-                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
-                        Select from here
-                      </span>
-                    </MenuItem>
-                    <MenuItem value={"Seed"}>SEED</MenuItem>
-                    <MenuItem value={"Series-A"}>SERIES-A</MenuItem>
-                    <MenuItem value={"Series-B"}>SERIES-B</MenuItem>
-                    <MenuItem value={"Series-C"}>SERIES-C</MenuItem>
-                    <MenuItem value={"Venture-Round"}>VENTURE-ROUND</MenuItem>
-                    <MenuItem value={"Angel"}>Angel</MenuItem>
-                    <MenuItem value={"Corporate-Round"}>
-                      Corporate-Round
-                    </MenuItem>
-                    <MenuItem value={"Debt-Financing"}>DEBT-FINANCING</MenuItem>
-                    <MenuItem value={"Equity-Crowdfunding"}>
-                      EQUITY-CROWDFUNDING
-                    </MenuItem>
-                    <MenuItem value={"Grant"}>Grant</MenuItem>
-                    <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
-                  </Select>
-                </FormControl>
-                {errors.productFundingTypeLookingFor && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFundingTypeLookingFor}</p>}
-              </section>
+          <div className="productsHeadlines">
+            <div className="innerProductHeadlines">
+              <h3>
+                {" "}
+                <span> Clients </span> want to know your product..!!{" "}
+              </h3>
+              <p>
+                Fill the form below so that client will know the details of your
+                product.
+              </p>
+            </div>
+          </div>
 
-              <section class="currentStage">
-                <p>10. What is the current stage of product?</p>
-                <div className="currentStageRadios">
-                  {currentStage.map((value, index) => {
-                    return (
-                      <div
-                        style={{
-                          borderColor: value.status === true ? "#2E86C1" : null,
-                        }}
-                        className="radioButton"
-                        onClick={() => handleCurrentStage(index)}
-                      >
-                        <span>
-                          {value?.status === true ? <div></div> : null}
-                        </span>
-                        <h6>{value?.value}</h6>
-                      </div>
-                    );
-                  })}
+          <div className="mainProductFormArea">
+            <div className="innerProductFormArea">
+              <div className="straightLine">
+                <span>01</span>
+                <span>02</span>
+                <span>03</span>
+                <span>04</span>
+                <span>05</span>
+              </div>
+              <div className="form_1">
+                <div className="illustrationArea">
+                  <img src={product1} alt="" />
                 </div>
-                {errors.productCurrentStatus && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCurrentStatus}</p>}
-              </section>
 
-              <section>
-                <p>11. How many customer you have accquired?</p>
-                <FormControl className={classes.formControl}>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    name="productCustomerAccquired"
-                    value={apiData.productCustomerAccquired}
-                    onChange={(event) => handleChange(event)}
-                    displayEmpty
-                    className={classes.inputField}
-                  >
-                    <MenuItem value="">
-                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
-                        Select from here
-                      </span>
-                    </MenuItem>
-                    <MenuItem value={"0-100"}>0-100</MenuItem>
-                    <MenuItem value={"100-200"}>100-200</MenuItem>
-                    <MenuItem value={"200-300"}>200-300</MenuItem>
-                    <MenuItem value={"More than 300"}>More than 300</MenuItem>
-                  </Select>
-                  {errors.productCustomerAccquired && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCustomerAccquired}</p>}
-                </FormControl>
-              </section>
-
-              <section>
-                <p>12. How many active users are there ?</p>
-                <FormControl className={classes.formControl}>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={apiData.productActiveUsers}
-                    name="productActiveUsers"
-                    onChange={(event) => handleChange(event)}
-                    displayEmpty
-                    className={classes.inputField}
-                  >
-                    <MenuItem value="">
-                      <span style={{ fontFamily: "Poppins", color: "#999" }}>
-                        Select from here
-                      </span>
-                    </MenuItem>
-                    <MenuItem value={"0-100"}>0-100</MenuItem>
-                    <MenuItem value={"100-200"}>100-200</MenuItem>
-                    <MenuItem value={"200-300"}>200-300</MenuItem>
-                    <MenuItem value={"More than 300"}>More than 300</MenuItem>
-                  </Select>
-                  {errors.productActiveUsers && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productActiveUsers}</p>}
-                </FormControl>
-              </section>
-            </div>
-            <div className="illustrationArea">
-              <img src={product3} alt="" />
-            </div>
-          </div>
-
-          <div className="form_4">
-            <div className="illustrationArea">
-              <img src={product4} alt="" />
-            </div>
-            <div className="form4_Fields">
-              <section>
-                <p>13. Your Company Location</p>
-                <input
-                  type="text"
-                  placeholder="Type here..."
-                  name="productCompanyLocation"
-                  value={apiData.productCompanyLocation}
-                  onChange={handleChange}
-                />
-                {errors.productCompanyLocation && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCompanyLocation}</p>}
-              </section>
-              <section>
-                <p>14. When was your product started?</p>
-                <input
-                  type="date"
-                  name="productStartingDate"
-                  value={apiData.productStartingDate}
-                  onChange={handleChange}
-                />
-              </section>
-              <section>
-                <p>15. Any feature link?</p>
-                <input
-                  type="text"
-                  placeholder="Type here..."
-                  name="productFeatureLink"
-                  value={apiData.productFeatureLink}
-                  onChange={handleChange}
-                />
-                {errors.productFeatureLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFeatureLink}</p>}
-              </section>
-              <section>
-                <p>16. Any Platform link?</p>
-                <input
-                  type="text"
-                  placeholder="Type here..."
-                  name="productPlatformLink"
-                  value={apiData.productPlatformLink}
-                  onChange={handleChange}
-                />
-                {errors.productPlatformLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPlatformLink}</p>}
-              </section>
-            </div>
-          </div>
-
-          <div className="form_5">
-            <div className="form5_Fields">
-              <section>
-                <p>17. Founders of this product</p>
-
-                <div className="">
-                  <div className="founder_Link">
+                <div className="form1_Fields">
+                  <section>
+                    <p>1. Upload your latest logo of product</p>
+                    <input
+                      onChange={inputFileChoosen}
+                      type="file"
+                      name=""
+                      id="fileInput"
+                      accept="image/png, image/gif, image/jpeg"
+                    />
+                    <button style={{ margin: 0 }} onClick={updateButtonHandler}>Update</button>
+                  </section>
+                  <section>
+                    <p>2. What's your good product name?</p>
                     <input
                       type="text"
-                      placeholder={`Founder 1 Linkedin Profile Link`}
-                      onChange={(e) => handleChangeLink(0, e)}
+                      placeholder="Type Here.."
+                      name="productName"
+                      value={apiData.productName}
+                      onChange={handleChange}
                     />
-                    <button type="button" onClick={() => handleAdd()}>
-                      <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                  </div>
+                    {errors.productName && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productName}</p>}
+                  </section>
+                  <section>
+                    <p>3. Describe a bit about your product.</p>
+                    <textarea
+                      placeholder="Minimum words should be 100"
+                      name="productDescription"
+                      value={apiData.productDescription}
+                      onChange={handleChange}
+                      cols="30"
+                      rows="6"
+                    ></textarea>
+                    {errors.productDescription && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDescription}</p>}
+                  </section>
                 </div>
-                {errors.productFounderLinkedinProfiles && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFounderLinkedinProfiles}</p>}
-                {fields.map((field, idx) => {
-                  if (idx === 0) {
-                    return ""
-                  }
-                  else {
+              </div>
 
-                    return (
-                      <div className="founderLink" key={`${field}-${idx}`}>
+              <div className="form_2">
+                <div className="illustrationArea">
+                  <img src={product2} alt="" />
+                </div>
+                <div className="form2_Fields">
+                  <section>
+                    <p>4. What type of Business product you have?</p>
+
+                    <FormControl className={classes.formControl}>
+                      <Select
+                        labelId="demo-mutiple-checkbox-label"
+                        id="demo-checkbox"
+                        name="productDomain"
+                        // multiple
+                        displayEmpty
+                        value={domainName}
+                        onChange={(event) => handleSelectChange(event)}
+                        input={<Input />}
+                        renderValue={(selected) => {
+                          if (selected === '') {
+                            return (
+                              <span
+                                style={{ fontFamily: "Poppins", color: "#999" }}
+                              >
+                                Select from here
+                              </span>
+                            );
+                          }
+                          return allDomainsData.filter(ad => selected.includes(ad._id)).map(t => t.domainName).join(', ');
+                        }}
+                        MenuProps={MenuProps}
+                        inputProps={{ 'aria-label': 'Without label' }}
+                      >
+                        {allDomainsData.map((ad) => (
+                          <MenuItem key={ad._id} value={ad._id}>
+                            <Checkbox
+                              color="primary"
+                              checked={businesstype.indexOf(ad._id) > -1}
+                            />
+                            <ListItemText primary={ad.domainName} />
+                          </MenuItem>
+                        ))}
+                      </Select>
+                      {errors.productDomain && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productDomain}</p>}
+                    </FormControl>
+                  </section>
+                  <section>
+                    <p>5. What's your good team size?</p>
+                    <FormControl className={classes.formControl}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={apiData.productTeamSize}
+                        name="productTeamSize"
+                        onChange={(event) => handleChange(event)}
+                        displayEmpty
+                        className={classes.inputField}
+                      >
+                        <MenuItem value="">
+                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                            Select from here
+                          </span>
+                        </MenuItem>
+                        <MenuItem value={"1-10"}>01-10</MenuItem>
+                        <MenuItem value={"10-50"}>10-50</MenuItem>
+                        <MenuItem value={"50-100"}>50-100</MenuItem>
+                        <MenuItem value={"more"}>More</MenuItem>
+                      </Select>
+                      {errors.productTeamSize && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productTeamSize}</p>}
+                    </FormControl>
+                  </section>
+                  <section>
+                    <p>6. Total revenue generated till now?</p>
+                    <FormControl className={classes.formControl}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={apiData.productRevenueGenerated}
+                        name="productRevenueGenerated"
+                        onChange={(event) => handleChange(event)}
+                        displayEmpty
+                        className={classes.inputField}
+                      >
+                        <MenuItem value="">
+                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                            Select from here
+                          </span>
+                        </MenuItem>
+                        <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
+                        <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
+                        <MenuItem value={"more"}>More</MenuItem>
+                      </Select>
+                      {errors.productRevenueGenerated && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productRevenueGenerated}</p>}
+                    </FormControl>
+                  </section>
+
+                  <section>
+                    <p>7. Which business modal does your product have?</p>
+                    <div className="radioGroupButtons">
+                      {businessModal.map((value, index) => {
+                        return (
+                          <div
+                            className="radioButton"
+                            onClick={() => handleBusinnesModal(index)}
+                          >
+                            <span>
+                              {value?.status === true ? <div></div> : null}
+                            </span>
+                            <h6>{value?.value}</h6>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    {errors.productBusinessModel && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productBusinessModel}</p>}
+                  </section>
+                </div>
+              </div>
+
+              <div className="form_3">
+                <div className="form3_Fields">
+                  <section className="previousFunding">
+                    <p>8. Any previous funding?</p>
+                    <FormControl component="fieldset">
+                      <RadioGroup
+                        aria-label="gender"
+                        name="productPreviousFunding"
+                        value={apiData.productPreviousFunding}
+                        onChange={(event) => handleChange(event)}
+                      >
+                        <FormControlLabel
+                          value="true"
+                          control={<BlueRadio />}
+                          label="YES"
+                        />
+                        <FormControlLabel
+                          value="false"
+                          control={<BlueRadio />}
+                          label="NO"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {errors.productPreviousFunding && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPreviousFunding}</p>}
+                  </section>
+                  {apiData.productPreviousFunding === "true" ? (
+                    <section className="amountRaised">
+                      <span>How much amount have you raised yet?</span>
+                      <FormControl className={classes.formControl}>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={apiData.fundingMoneyRaised}
+                          name="fundingMoneyRaised"
+                          onChange={(event) => handleChange(event)}
+                          displayEmpty
+                          className={classes.inputField}
+                        >
+                          <MenuItem value="">
+                            <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                              Select from here
+                            </span>
+                          </MenuItem>
+                          <MenuItem value={10}>$ 0-1000</MenuItem>
+                          <MenuItem value={20}>$ 1000-10k</MenuItem>
+                          <MenuItem value={30}>More</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </section>
+                  ) : null}
+                  <section className="previousFunding">
+                    <p>9. Which type of funding you are looking for?</p>
+                    <FormControl className={classes.formControl}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={apiData.productFundingTypeLookingFor}
+                        name="productFundingTypeLookingFor"
+                        onChange={(event) => handleChange(event)}
+                        displayEmpty
+                        className={classes.inputField}
+                      >
+                        <MenuItem value="">
+                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                            Select from here
+                          </span>
+                        </MenuItem>
+                        <MenuItem value={"Seed"}>SEED</MenuItem>
+                        <MenuItem value={"Series-A"}>SERIES-A</MenuItem>
+                        <MenuItem value={"Series-B"}>SERIES-B</MenuItem>
+                        <MenuItem value={"Series-C"}>SERIES-C</MenuItem>
+                        <MenuItem value={"Venture-Round"}>VENTURE-ROUND</MenuItem>
+                        <MenuItem value={"Angel"}>Angel</MenuItem>
+                        <MenuItem value={"Corporate-Round"}>
+                          Corporate-Round
+                        </MenuItem>
+                        <MenuItem value={"Debt-Financing"}>DEBT-FINANCING</MenuItem>
+                        <MenuItem value={"Equity-Crowdfunding"}>
+                          EQUITY-CROWDFUNDING
+                        </MenuItem>
+                        <MenuItem value={"Grant"}>Grant</MenuItem>
+                        <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
+                      </Select>
+                    </FormControl>
+                    {errors.productFundingTypeLookingFor && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFundingTypeLookingFor}</p>}
+                  </section>
+
+                  <section class="currentStage">
+                    <p>10. What is the current stage of product?</p>
+                    <div className="currentStageRadios">
+                      {currentStage.map((value, index) => {
+                        return (
+                          <div
+                            style={{
+                              borderColor: value.status === true ? "#2E86C1" : null,
+                            }}
+                            className="radioButton"
+                            onClick={() => handleCurrentStage(index)}
+                          >
+                            <span>
+                              {value?.status === true ? <div></div> : null}
+                            </span>
+                            <h6>{value?.value}</h6>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    {errors.productCurrentStatus && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCurrentStatus}</p>}
+                  </section>
+
+                  <section>
+                    <p>11. How many customer you have accquired?</p>
+                    <FormControl className={classes.formControl}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        name="productCustomerAccquired"
+                        value={apiData.productCustomerAccquired}
+                        onChange={(event) => handleChange(event)}
+                        displayEmpty
+                        className={classes.inputField}
+                      >
+                        <MenuItem value="">
+                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                            Select from here
+                          </span>
+                        </MenuItem>
+                        <MenuItem value={"0-100"}>0-100</MenuItem>
+                        <MenuItem value={"100-200"}>100-200</MenuItem>
+                        <MenuItem value={"200-300"}>200-300</MenuItem>
+                        <MenuItem value={"More than 300"}>More than 300</MenuItem>
+                      </Select>
+                      {errors.productCustomerAccquired && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCustomerAccquired}</p>}
+                    </FormControl>
+                  </section>
+
+                  <section>
+                    <p>12. How many active users are there ?</p>
+                    <FormControl className={classes.formControl}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={apiData.productActiveUsers}
+                        name="productActiveUsers"
+                        onChange={(event) => handleChange(event)}
+                        displayEmpty
+                        className={classes.inputField}
+                      >
+                        <MenuItem value="">
+                          <span style={{ fontFamily: "Poppins", color: "#999" }}>
+                            Select from here
+                          </span>
+                        </MenuItem>
+                        <MenuItem value={"0-100"}>0-100</MenuItem>
+                        <MenuItem value={"100-200"}>100-200</MenuItem>
+                        <MenuItem value={"200-300"}>200-300</MenuItem>
+                        <MenuItem value={"More than 300"}>More than 300</MenuItem>
+                      </Select>
+                      {errors.productActiveUsers && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productActiveUsers}</p>}
+                    </FormControl>
+                  </section>
+                </div>
+                <div className="illustrationArea">
+                  <img src={product3} alt="" />
+                </div>
+              </div>
+
+              <div className="form_4">
+                <div className="illustrationArea">
+                  <img src={product4} alt="" />
+                </div>
+                <div className="form4_Fields">
+                  <section>
+                    <p>13. Your Company Location</p>
+                    <input
+                      type="text"
+                      placeholder="Type here..."
+                      name="productCompanyLocation"
+                      value={apiData.productCompanyLocation}
+                      onChange={handleChange}
+                    />
+                    {errors.productCompanyLocation && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productCompanyLocation}</p>}
+                  </section>
+                  <section>
+                    <p>14. When was your product started?</p>
+                    <input
+                      type="date"
+                      name="productStartingDate"
+                      value={apiData.productStartingDate}
+                      onChange={handleChange}
+                    />
+                  </section>
+                  <section>
+                    <p>15. Any feature link?</p>
+                    <input
+                      type="text"
+                      placeholder="Type here..."
+                      name="productFeatureLink"
+                      value={apiData.productFeatureLink}
+                      onChange={handleChange}
+                    />
+                    {errors.productFeatureLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFeatureLink}</p>}
+                  </section>
+                  <section>
+                    <p>16. Any Platform link?</p>
+                    <input
+                      type="text"
+                      placeholder="Type here..."
+                      name="productPlatformLink"
+                      value={apiData.productPlatformLink}
+                      onChange={handleChange}
+                    />
+                    {errors.productPlatformLink && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productPlatformLink}</p>}
+                  </section>
+                </div>
+              </div>
+
+              <div className="form_5">
+                <div className="form5_Fields">
+                  <section>
+                    <p>17. Founders of this product</p>
+
+                    <div className="">
+                      <div className="founder_Link">
                         <input
                           type="text"
-                          placeholder={`Founder ${idx + 1} Linkedin Profile Link`}
-                          onChange={(e) => handleChangeLink(idx, e)}
+                          placeholder={`Founder 1 Linkedin Profile Link`}
+                          onChange={(e) => handleChangeLink(0, e)}
                         />
-                        <div onClick={() => handleRemove(idx)}>
-                          <i class="fa fa-times" aria-hidden="true"></i>
-                        </div>
+                        <button type="button" onClick={() => handleAdd()}>
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
                       </div>
-                    );
-                  }
-                })}
-              </section>
-            </div>
-            <div className="illustrationArea">
-              <img src={product5} alt="" />
+                    </div>
+                    {errors.productFounderLinkedinProfiles && <p style={{ color: 'red', fontWeight: 'normal', fontSize: '14px' }}>{errors.productFounderLinkedinProfiles}</p>}
+                    {fields.map((field, idx) => {
+                      if (idx === 0) {
+                        return ""
+                      }
+                      else {
+
+                        return (
+                          <div className="founderLink" key={`${field}-${idx}`}>
+                            <input
+                              type="text"
+                              placeholder={`Founder ${idx + 1} Linkedin Profile Link`}
+                              onChange={(e) => handleChangeLink(idx, e)}
+                            />
+                            <div onClick={() => handleRemove(idx)}>
+                              <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })}
+                  </section>
+                </div>
+                <div className="illustrationArea">
+                  <img src={product5} alt="" />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      }
 
       <div className="submitButton">
         <div className="innerSubmitButton">

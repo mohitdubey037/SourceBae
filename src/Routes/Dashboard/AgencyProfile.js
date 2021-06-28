@@ -113,6 +113,18 @@ function AgencyProfile(props) {
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
               <span>You haven't added any product.</span>
+              {agencyProfileData.productId === undefined || agencyProfileData.productId === '' ?
+              <button
+                onClick={() => props.history.push({
+                  pathname: `/product-form`,
+                  condition: 'Agency'
+                })
+                }
+              >
+                Add Your Product{" "}
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </button>
+              : 
               <button
                 onClick={() => props.history.push({
                   pathname: `/product-details:${agencyProfileData.productId}`,
@@ -123,6 +135,7 @@ function AgencyProfile(props) {
                 View Your Product{" "}
                 <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
               </button>
+            }
               <div>
                 <p onClick={onOpenModal}>
                   <i class="fa fa-question-circle" aria-hidden="true"></i>Have a

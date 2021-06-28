@@ -61,7 +61,7 @@
   margin-right: 10px;
 }
 
-.moreAgencySeeMore button{
+.moreAgencySeeMore_GetOneHiredDeveloper button{
   background-color: #33a2ec;
   padding: 0.5rem;
   color:#fff;
@@ -71,7 +71,7 @@
 }
 
 
-.moreAgencySeeMore button:hover{
+.moreAgencySeeMore_GetOneHiredDeveloper button:hover{
   background-color: #2E86C1;
 }
 
@@ -220,6 +220,10 @@
   align-items: center;
   margin-top: 2%;
   flex-wrap: wrap;
+}
+
+.moreAgencySeeMore_GetOneHiredDeveloper {
+
 }
 
 .btnInfoDiv {

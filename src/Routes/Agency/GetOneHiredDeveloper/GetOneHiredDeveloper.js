@@ -158,11 +158,11 @@ function RespondedDetails(props) {
                                             return (
                                                 <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/get-one-hire-developer:${value._id}`)} className="moreAgencyCard">
  
-                                                    <div className="moreAgencyInfo">
+                                                    <div className="moreAgencyIn">
                                                         <h6>{`${value.firstName} ${value.lastName}`}</h6>
                                                         <p>{value.developerDesignation}</p>
                                                     </div>
-                                                    <div className="moreAgencyLogo" style={{display:"flex"}}>
+                                                    <div className="moreAgencyL" style={{display:"flex", justifyContent: "center"}}>
                                                     <a href= "#"> <button style={{backgroundColor:"#135cbb",  marginRight:"1rem"}}>View Resume</button></a>
                                                        {selectedDevelopers.indexOf(value._id)===-1 ?
                                                         <button style = {{marginRight:"1rem"}} onClick={()=>handleDevelopers(value._id)}>Select Developer</button>
@@ -176,7 +176,7 @@ function RespondedDetails(props) {
                                         })
                                     }
                                 </div>
-                                <div className="moreAgencySeeMore">
+                                <div className="moreAgencySeeMore_GetOneHiredDeveloper">
                                     <button onClick={()=>shareDeveloper(singleHiredDeveloper._id)}>Process Selected Developers</button>
                                 </div>
                                 </>
