@@ -106,42 +106,38 @@ function AgencyProfile(props) {
     <>
       {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />}
 
-      {loading ? (
-        <Spinner />
-      ) : agencyProfileData._id !== "" ? (
+      {loading ? <Spinner /> : agencyProfileData._id !== "" ? (
         <div>
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
-            {(agencyProfileData.productId == undefined || agencyProfileData.productId == '') && <span>You haven't added any product.</span>}
-              {agencyProfileData.productId === undefined || agencyProfileData.productId === '' ?
-              <button
-                onClick={() => props.history.push({
-                  pathname: `/product-form`,
-                  condition: 'Agency'
-                })
-                }
-              >
-                Add Your Product{" "}
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </button>
-              : 
-              <button
-                onClick={() => props.history.push({
-                  pathname: `/product-details:${agencyProfileData.productId}`,
-                  condition: 'Agency'
-                })
-                }
-              >
-                View Your Product{" "}
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </button>
-            }
-              <div>
-                <p onClick={onOpenModal}>
-                  <i class="fa fa-question-circle" aria-hidden="true"></i>Have a
-                  Question..?
-                </p>
-              </div>
+              {Role === 'Agency' ?
+                agencyProfileData.productId == undefined ?
+                  <>
+                    <span>You haven't added any product.</span>
+                    <button onClick={() => props.history.push({
+                      pathname: `/product-form`,
+                      condition: 'Agency'
+                    })}>Add Your Product{" "}
+                      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    </button>
+                    <div>
+                      <p onClick={onOpenModal}>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>Have a
+                        Question..?
+                      </p>
+                    </div>
+                    :
+                    <button onClick={() => props.history.push({
+                      pathname: `/product-details:${agencyProfileData.productId}`,
+                      condition: 'Agency'
+                    })}>View Your Product{" "}
+                      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    </button>
+                  </>
+                  : null
+                : null
+              }
+
             </div>
           </div>
 
@@ -207,15 +203,15 @@ function AgencyProfile(props) {
                         className="verifiedStatus"
                         style={{
                           filter: `${!agencyProfileData?.isAgencyVerified
-                              ? `grayscale(100%)`
-                              : `none`
+                            ? `grayscale(100%)`
+                            : `none`
                             }`,
                         }}
                       >
                         <i class="fa fa-check" aria-hidden="true" />
                         <span>{`${!agencyProfileData?.isAgencyVerified
-                            ? agencyProfileData?.verificationMessage
-                            : `Verified`
+                          ? agencyProfileData?.verificationMessage
+                          : `Verified`
                           }`}</span>
                       </div>
                     )}
@@ -231,7 +227,7 @@ function AgencyProfile(props) {
                   <div className="agencyProfileConstantPoints">
                     <div className="pointContent">
                       <p>Incorporation Date</p>
-                      <h4>{ <Moment format="D MMM YYYY" withTitle>{agencyProfileData?.incorporationDate}</Moment>}</h4>
+                      <h4>{<Moment format="D MMM YYYY" withTitle>{agencyProfileData?.incorporationDate}</Moment>}</h4>
                     </div>
                     <div className="pointContent">
                       <p>Email ID</p>
@@ -451,7 +447,8 @@ function AgencyProfile(props) {
         >
           <h1> No agency found with this ID. </h1>
         </div>
-      )}
+      )
+      }
     </>
   );
 }
