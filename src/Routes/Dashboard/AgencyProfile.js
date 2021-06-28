@@ -112,7 +112,7 @@ function AgencyProfile(props) {
         <div>
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
-              <span>You haven't added any product.</span>
+            {(agencyProfileData.productId == undefined || agencyProfileData.productId == '') && <span>You haven't added any product.</span>}
               {agencyProfileData.productId === undefined || agencyProfileData.productId === '' ?
               <button
                 onClick={() => props.history.push({

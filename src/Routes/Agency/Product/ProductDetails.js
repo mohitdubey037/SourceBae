@@ -211,10 +211,10 @@ function ProductDetails(props) {
                                         </div>
                                         <div className="peoductNameTags">
                                             <h1>{value.agencyId.agencyName}</h1>
-                                            <span onClick={() => props.history.push({
+                                            {Role === 'Client' && <span onClick={() => props.history.push({
                                                 pathname: `/agency-profile:${value.agencyId._id}`,
                                                 condition: `Client`
-                                            })}>View Profile</span>
+                                            })}>View Profile</span>}
                                             <p>{value.agencyId.agencyDescription}</p>
                                             <div className="productTags">
                                                 {value.agencyId.agencyDomains.map(a => {

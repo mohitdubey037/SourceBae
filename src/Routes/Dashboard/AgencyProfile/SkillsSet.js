@@ -8,7 +8,7 @@ import instance from "../../../Constants/axiosConstants"
 
 function SkillsSet(props) {
 
-    const Role = "agency"
+    const Role = localStorage.getItem('role');
     const [selectedId, setSelectedId] = useState("")
     const [open, setOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false)
@@ -167,7 +167,7 @@ function SkillsSet(props) {
                         ...temp[index].content,
                         {
                             points: addItem,
-                            id:selectedId
+                            id: selectedId
                         }
                     ]
                 }
@@ -236,7 +236,7 @@ function SkillsSet(props) {
                     Services: servicesNames
                 })
             })
-            // console.log(selectedServicesId)
+        // console.log(selectedServicesId)
     }
 
     const updateAgency = () => {
@@ -293,7 +293,9 @@ function SkillsSet(props) {
                     {(props?.id === null || props?.id === undefined) && editStatus ? <div className="editableBtn">
                         <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
                     </div> : <div className="editableBtn">
-                        <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                        {Role !== 'Client' &&
+                            <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                        }
                     </div>}
                     <div className="skillsSetsContent">
                         <div className="skillsSetBorder"></div>
