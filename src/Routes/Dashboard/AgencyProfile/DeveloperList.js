@@ -10,7 +10,6 @@ import { set } from 'react-ga'
 import { Button } from '@material-ui/core';
 
 function DeveloperList(props) {
-
     const routerHistory = useHistory();
     // console.log(props)
     const Role = "agency"
@@ -114,14 +113,16 @@ function DeveloperList(props) {
                         })
                     }
 
-                    <div className="developerCard">
-                        <div className="developerCardBorder"></div>
-                        <div style={{ display: 'flex', height: '315px' }}>
-                            <button className="addMoreDeveloper" onClick={() => window.location.href = "/add-developer"}>
-                                <h6>Add Developer</h6>
-                            </button>
-                        </div>
-                    </div>
+                    {Role === 'Agency' ?
+                        <div className="developerCard">
+                            <div className="developerCardBorder"></div>
+                            <div style={{ display: 'flex', height: '315px' }}>
+                                <button className="addMoreDeveloper" onClick={() => routerHistory.push("/add-developer")}>
+                                    <h6>Add Developer</h6>
+                                </button>
+                            </div>
+                        </div> : null
+                    }
                 </div>
             </div>
         </>
