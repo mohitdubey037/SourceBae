@@ -69,18 +69,19 @@
     font-weight: bold;
 }
 .roleLooking input{
-    width: 80%;
     height: 45px;
     padding-left: 10px;
     font-size: 1rem;
     border: 1px solid #e0e0e0;
 }
-.resourceNumber input{
-    width: 80%;
-    height: 45px;
-    padding-left: 10px;
-    font-size: 1rem;
-    border: 1px solid #e0e0e0;
+.resourceNumber input,
+.resourceNumber .multi-select{
+    width: 50%; 
+}
+
+.resourceNumber .multi-select{
+    padding-left: 0; 
+
 }
 .skillsRequiredDeveloper input{
      width: 80%;

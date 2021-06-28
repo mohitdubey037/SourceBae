@@ -108,7 +108,7 @@ function RespondedDetails(props) {
                         <div className="innerResponseCar">
                             <span className="leftLine"></span>
                             <div>
-                                <p>Client Name</p>
+                                <p>Requirement Name</p>
                                 <p>{`${singleHiredDeveloper?.clientId?.firstName||""} ${singleHiredDeveloper?.clientId?.lastName||""}`}</p>
                             </div>
                             <div>
@@ -158,16 +158,18 @@ function RespondedDetails(props) {
                                             return (
                                                 <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/get-one-hire-developer:${value._id}`)} className="moreAgencyCard">
  
-                                                    <div className="moreAgencyIn">
-                                                        <h6>{value._id}</h6>
+                                                    <div className="moreAgencyInfo">
+                                                        <h6>{`${value.firstName} ${value.lastName}`}</h6>
                                                         <p>{value.developerDesignation}</p>
                                                     </div>
-                                                    <div className="moreAgencyL">
+                                                    <div className="moreAgencyLogo" style={{display:"flex"}}>
+                                                    <a href= "#"> <button style={{backgroundColor:"#135cbb",  marginRight:"1rem"}}>View Resume</button></a>
                                                        {selectedDevelopers.indexOf(value._id)===-1 ?
-                                                        <button onClick={()=>handleDevelopers(value._id)}>Select Developer</button>
+                                                        <button style = {{marginRight:"1rem"}} onClick={()=>handleDevelopers(value._id)}>Select Developer</button>
                                                         :
                                                         <button style = {{backgroundColor:"#c90900"}} onClick={()=>handleDevelopers(value._id)}>Remove Developer</button>
                                                        }
+                                                       
                                                     </div>
                                                 </div>
                                             )
