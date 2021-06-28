@@ -18,7 +18,6 @@ const AntSwitch = withStyles((theme) => ({
         width: 78,
         height: 26,
         padding: 0,
-        // display: 'flex',
         borderColor: '#fff',
     },
     switchBase: {
@@ -378,8 +377,11 @@ const Register = (props) => {
                 err.passwordError = "Password is required."
             }
 
-            else if (signupForm.password < 6) {
-                err.passwordError = "Password must be more than 6 characters."
+            else if(signupForm.password.length<6){
+                err.passwordError = "Password must be 8 characters in length."
+            }
+            else if(signupForm.password.length>64){
+                err.passwordError = "Password cannot be more than 64 characters in length."
             }
 
             setErrors(err);
