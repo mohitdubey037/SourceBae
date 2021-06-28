@@ -91,32 +91,32 @@ function ShortTerm(props) {
     setAllServices(toggledServices);
   };
 
-  const validation = ()=>{
-    if(apiData.projectName===""){
+  const validation = () => {
+    if (apiData.projectName === "") {
       toast.error("Project Name can't be empty.")
       return false
     }
-    else if(apiData.projectDescription===""){
+    else if (apiData.projectDescription === "") {
       toast.error("Project Description can't be empty.")
       return false
     }
-    else if(projectFiles===null || projectFiles===undefined){
+    else if (projectFiles === null || projectFiles === undefined) {
       toast.error("Please Upload a project Document")
       return false
     }
-    else if(apiData.projectRequirements===""){
+    else if (apiData.projectRequirements === "") {
       toast.error("Project Requiremnet an't be empty.")
       return false
     }
-    else if(apiData.projectProposalCost===""){
+    else if (apiData.projectProposalCost === "") {
       toast.error("Please select a project proposal cost.")
       return false
     }
-    else if(apiData.projectServicesRequired.length===0){
+    else if (apiData.projectServicesRequired.length === 0) {
       toast.error("Please select a project Service.")
       return false
     }
-    else if(apiData.projectPaymentModel===""){
+    else if (apiData.projectPaymentModel === "") {
       toast.error("Please select a project Payment Model.")
       return false
     }
@@ -126,17 +126,17 @@ function ShortTerm(props) {
   function uploadMedia() {
     const formData = new FormData();
 
-    if(validation()){
-    formData.append("files", projectFiles, "projectFile.pdf");
-    instance
-      .post(`api/${Role}/media/create`, formData)
-      .then(function (response) {
-        console.log(response);
-        setApiData({
-          ...apiData,
-          projectFiles: [response[0]?.mediaURL],
+    if (validation()) {
+      formData.append("files", projectFiles, "projectFile.pdf");
+      instance
+        .post(`api/${Role}/media/create`, formData)
+        .then(function (response) {
+          console.log(response);
+          setApiData({
+            ...apiData,
+            projectFiles: [response[0]?.mediaURL],
+          });
         });
-      });
     }
   }
 
@@ -183,7 +183,7 @@ function ShortTerm(props) {
   };
 
   const fileHandler = (projectDoc) => {
-    console.log(fileHandler);
+    console.log(projectDoc);
     setProjectFiles(projectDoc);
   };
 
@@ -194,6 +194,10 @@ function ShortTerm(props) {
   useEffect(() => {
     console.log(allServices);
   }, [allServices]);
+
+  useEffect(() => {
+    console.log(projectFiles?.name);
+  }, [projectFiles])
 
   useEffect(() => {
     console.log(apiData);
@@ -287,6 +291,7 @@ function ShortTerm(props) {
                 >
                   <div>
                     <i class="fa fa-upload" aria-hidden="true"></i>Upload
+                    <p>{projectFiles?.name}</p>
                   </div>
                 </FilePicker>
               </div>
@@ -308,9 +313,9 @@ function ShortTerm(props) {
               name="projectRequirements"
               value={apiData.projectRequirements}
               onChange={(event) => handleChange(event)}
-              // style={{ width: "100%", padding:"1rem" }}
+            // style={{ width: "100%", padding:"1rem" }}
             />
-            
+
           </div>
 
           <div className="howToPay">
