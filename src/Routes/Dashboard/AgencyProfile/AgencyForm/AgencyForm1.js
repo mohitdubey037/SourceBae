@@ -433,12 +433,12 @@ function AgencyForm1(props) {
                                         <img src={agencyLogo} alt="" />
                                         <p>{`${agencyLogo?.document?.name ?? ""}`}</p>
                                         <FilePicker
-                                            extensions={['pdf', 'jpg', 'png']}
+                                            extensions={['jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
                                             onError={error => handleUploadError(error)}>
                                             <button>
                                                 <i className="fa fa-upload" aria-hidden="true" />
-                                            Pick File
+                                            Pick File (jpg, png, jpeg)
                                         </button>
                                         </FilePicker>
                                         {formDataErrors.agencyLogoError !== '' && <Alert severity="error">{formDataErrors.agencyLogoError}</Alert>}
