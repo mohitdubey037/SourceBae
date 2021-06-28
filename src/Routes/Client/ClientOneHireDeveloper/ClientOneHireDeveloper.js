@@ -92,7 +92,7 @@ function ClientOneHireDeveloper(props) {
                                 </div>
                                 </>
                                 :
-                                    <div>"Great! You have already shared the resume."</div>}
+                                    <div style={{padding:"1rem"}}><h2>Sorry No Matched Agencies Found.</h2></div>}
                             </div>
                         </div>           
                     </div>
