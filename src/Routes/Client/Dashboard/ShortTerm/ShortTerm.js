@@ -13,6 +13,7 @@ import FormControl from "@material-ui/core/FormControl";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants";
 import { FilePicker } from "react-file-picker";
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const BlueRadio = withStyles({
   root: {
     color: "#26AFFF",
@@ -46,7 +46,7 @@ function ShortTerm(props) {
   const id = localStorage.getItem("userId");
 
   const [allServices, setAllServices] = useState([]);
-  const [buttonStatus, setButtonStatus] = useState("Upload");
+  const buttonStatus = "Post Project"
 
   const [apiData, setApiData] = useState({
     clientId: id,
@@ -62,7 +62,6 @@ function ShortTerm(props) {
   const classes = useStyles();
 
   const handleChange = (event) => {
-    // setValue(event.target.value);
     const { name, value } = event.target;
     setApiData({
       ...apiData,
@@ -92,35 +91,70 @@ function ShortTerm(props) {
     setAllServices(toggledServices);
   };
 
+  const validation = ()=>{
+    if(apiData.projectName===""){
+      toast.error("Project Name can't be empty.")
+      return false
+    }
+    else if(apiData.projectDescription===""){
+      toast.error("Project Description can't be empty.")
+      return false
+    }
+    else if(projectFiles===null || projectFiles===undefined){
+      toast.error("Please Upload a project Document")
+      return false
+    }
+    else if(apiData.projectRequirements===""){
+      toast.error("Project Requiremnet an't be empty.")
+      return false
+    }
+    else if(apiData.projectProposalCost===""){
+      toast.error("Please select a project proposal cost.")
+      return false
+    }
+    else if(apiData.projectServicesRequired.length===0){
+      toast.error("Please select a project Service.")
+      return false
+    }
+    else if(apiData.projectPaymentModel===""){
+      toast.error("Please select a project Payment Model.")
+      return false
+    }
+    return true
+  }
+
   function uploadMedia() {
     const formData = new FormData();
-    console.log(projectFiles);
 
-    projectFiles && formData.append("files", projectFiles, "projectFile.pdf");
+    if(validation()){
+    formData.append("files", projectFiles, "projectFile.pdf");
     instance
       .post(`api/${Role}/media/create`, formData)
       .then(function (response) {
         console.log(response);
         setApiData({
           ...apiData,
-          projectFiles: [response[0]?.mediaURL]
+          projectFiles: [response[0]?.mediaURL],
         });
-        setButtonStatus("Post Project");
       });
+    }
   }
 
   const shortTermProjectApi = () => {
-
-    instance.post(`api/${Role}/projects/create-short-term`, apiData)
-    .then(function (response){
-       props.history.push(`/agency-list:${response.project._id}`);
-    })
+    if (apiData.projectFiles.length > 0) {
+      instance
+        .post(`api/${Role}/projects/create-short-term`, apiData)
+        .then(function (response) {
+          props.history.push(`/agency-list:${response.project._id}`);
+        });
+    } else {
+      toast.error("Please Upload Project Document.");
+    }
   };
 
   const handleButton = () => {
-    if (buttonStatus === "Upload") uploadMedia();
-    else if (buttonStatus === "Post Project") shortTermProjectApi();
-  }
+    uploadMedia();
+  };
 
   const handlePaymentModel = (status) => {
     if (status)
@@ -149,7 +183,7 @@ function ShortTerm(props) {
   };
 
   const fileHandler = (projectDoc) => {
-    console.log(fileHandler)
+    console.log(fileHandler);
     setProjectFiles(projectDoc);
   };
 
@@ -163,6 +197,9 @@ function ShortTerm(props) {
 
   useEffect(() => {
     console.log(apiData);
+    if (apiData.projectFiles.length !== 0) {
+      shortTermProjectApi();
+    }
   }, [apiData]);
   return (
     <>
@@ -264,14 +301,16 @@ function ShortTerm(props) {
 
           <div className="shortTermOptionSelect">
             <h6>What work do you need to get done?</h6>
-            <p>Choose a name for your project</p>
+            <p>List of all requirements comma(,) separated</p>
             <input
               type="text"
-              placeholder="List of all requirements comma(,) separated"
+              placeholder="Ex: Blog Section, Dashboard, Admin Panel,etc"
               name="projectRequirements"
               value={apiData.projectRequirements}
               onChange={(event) => handleChange(event)}
+              // style={{ width: "100%", padding:"1rem" }}
             />
+            
           </div>
 
           <div className="howToPay">
