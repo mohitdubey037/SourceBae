@@ -59,9 +59,9 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/get-hire-developer" component={GetHireDeveloper} />
     <CustomRoute condition="Agency" exact path="/get-one-hire-developer:hireDeveloperId" component={GetOneHiredDeveloper} />
     <CustomRoute condition="Agency" exact path="/agency-project-details:projectId" component={AgencyProjectDetails} />
-    <CustomRoute condition={props.location.condition} exact path="/agency-profile:id" component={AgencyProfile} />
 
     {/* Both */}
+    <CustomRoute condition={props.location.condition} exact path="/agency-profile:id" component={AgencyProfile} />
     <CustomRoute condition={props.location.condition === undefined && 'Client'} exact path="/product-details:productId" component={ProductDetails} />
     <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />
     <Route exact path="/agency-project-details" component={AgencyProjectDetails} />

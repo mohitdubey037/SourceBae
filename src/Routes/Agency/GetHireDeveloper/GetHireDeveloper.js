@@ -48,7 +48,7 @@ function HireDeveloper(props) {
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
                             <div className="agencyProfileInfo">
-                              <h6>{agency._id}</h6>
+                              <h6>{agency.requirementName}</h6>
                               <div>
                                 <p>Contract Period</p>
                                 <p>{agency.contractPeriod}</p>

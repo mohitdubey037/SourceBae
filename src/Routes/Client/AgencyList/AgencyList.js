@@ -137,6 +137,7 @@ function AgencyList(props) {
               <div className="AgencyCardsArea">
                 {agencyList?.length > 0 &&
                   agencyList.map((agency, index) => {
+                    console.log(agency._id);
                     return (
                       <div className="agencyPreciseCard">
                         <div className="agencyCardHeaderLine"></div>
@@ -155,7 +156,8 @@ function AgencyList(props) {
                           </div>
                           <div className="profileButton">
                             <p onClick={() => props.history.push({
-                              pathname: `/agency-profile:${agency._id}`
+                              pathname: `/agency-profile:${agency._id}`,
+                              condition: `Client`
                             })}>
                               View Profile{" "}
                               <i
