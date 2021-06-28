@@ -202,7 +202,7 @@ function AgencyForm3(props) {
                                     <img src={agencyLogo} alt="" />
                                     <p>{`${registrationCertificate?.document?.name ?? ""}`}</p>
                                     <FilePicker
-                                        extensions={['pdf', 'jpg', 'png']}
+                                        extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                         onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
                                         onError={error => handleUploadError(error)}>
                                         <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
@@ -213,7 +213,7 @@ function AgencyForm3(props) {
                                     <img src={brochure} alt="" />
                                     <p>{`${brochureDoc?.document?.name ?? ""}`}</p>
                                     <FilePicker
-                                        extensions={['pdf', 'jpg', 'png']}
+                                        extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                         onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
                                         onError={error => handleUploadError(error)}>
                                         <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
@@ -226,7 +226,7 @@ function AgencyForm3(props) {
                                     <img src={panCard} alt="" />
                                     <p>{`${panCardDoc?.document?.name ?? ""}`}</p>
                                     <FilePicker
-                                        extensions={['pdf', 'jpg', 'png']}
+                                        extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                         onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
                                         onError={error => handleUploadError(error)}>
                                         <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
