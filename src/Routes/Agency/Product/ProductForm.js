@@ -136,7 +136,7 @@ function ProductForm(props) {
     productName: "",
     productLogo: "",
     productDescription: "",
-    productDomain: "",
+    productDomainId: "",
     productTeamSize: "",
     productRevenueGenerated: "",
     productBusinessModel: "",
@@ -280,8 +280,8 @@ function ProductForm(props) {
         "Description should be of minimum 100 characters.";
     }
 
-    if (apiData.productDomain === "") {
-      err.productDomain = "Domain required";
+    if (apiData.productDomainId === "") {
+      err.productDomainId = "Domain required";
     }
 
     if (apiData.productTeamSize === "") {
@@ -538,7 +538,7 @@ function ProductForm(props) {
                       <Select
                         labelId="demo-mutiple-checkbox-label"
                         id="demo-checkbox"
-                        name="productDomain"
+                        name="productDomainId"
                         // multiple
                         displayEmpty
                         value={domainName}
@@ -572,7 +572,7 @@ function ProductForm(props) {
                           </MenuItem>
                         ))}
                       </Select>
-                      {errors.productDomain && (
+                      {errors.productDomainId && (
                         <p
                           style={{
                             color: "red",
@@ -580,7 +580,7 @@ function ProductForm(props) {
                             fontSize: "14px",
                           }}
                         >
-                          {errors.productDomain}
+                          {errors.productDomainId}
                         </p>
                       )}
                     </FormControl>
