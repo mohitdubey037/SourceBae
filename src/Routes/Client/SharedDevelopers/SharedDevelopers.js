@@ -31,9 +31,6 @@ function RespondedDetails(props) {
       )
       .then(function (response) {
         console.log(response);
-        // console.log(Array.isArray(response));
-        // console.log(typeof (response))
-        // console.log(response)
         setSingleHiredDeveloper(response);
         setLoading(false);
       })
@@ -100,13 +97,13 @@ function RespondedDetails(props) {
             <i className="fa fa-angle-left" aria-hidden="true"></i>
           </div>
           <div className="respondCards">
-            {singleHiredDeveloper?.agencyMatched?.length > 0 ? (
+            {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
               <div className="innerResponseCard">
                 <span className="leftLine"></span>
                 <div>
                   <p>Agency Name</p>
                   <p>{`${
-                    singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                    singleHiredDeveloper?.agenciesMatched[0]?.agencyId
                       ?.agencyName || ""
                   }`}</p>
                 </div>
@@ -114,7 +111,7 @@ function RespondedDetails(props) {
                   <p>Agency Description</p>
                   <p style={{ fontWeight: "600" }}>
                     {
-                      singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                      singleHiredDeveloper?.agenciesMatched[0]?.agencyId
                         ?.agencyDescription
                     }
                   </p>
@@ -123,7 +120,7 @@ function RespondedDetails(props) {
                   <p>Agency Email</p>
                   <p>
                     {
-                      singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                      singleHiredDeveloper?.agenciesMatched[0]?.agencyId
                         ?.agencyEmail
                     }
                   </p>
@@ -132,7 +129,7 @@ function RespondedDetails(props) {
                   <p>Agency Phone</p>
                   <p>
                     {
-                      singleHiredDeveloper?.agencyMatched[0]?.agencyId
+                      singleHiredDeveloper?.agenciesMatched[0]?.agencyId
                         ?.agencyPhone
                     }
                   </p>
@@ -141,28 +138,29 @@ function RespondedDetails(props) {
             ) : (
               "No Data Found"
             )}
-            <div className="moreAgencies">
+            <div className="moreAgencies_shared">
               <div className="innerMoreAgencies">
                 <div className="moreAgencyHeading">
                   <h3>Matched Developer</h3>
                 </div>
                 <div className="moreAgencyList">
-                  {singleHiredDeveloper?.agencyMatched?.length > 0 ? (
-                    singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length >0 ?
-                    singleHiredDeveloper?.agencyMatched[0]?.developersShared?.map(
+                {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
+                  {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                    singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 ?
+                    singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.map(
                       (developer) => {
                         return (
                           <div className="moreAgencyCard">
                             <div className="moreAgencyInfo">
-                              <h6>{`${developer.firstName} ${developer.lastName}`}</h6>
-                              <p>{developer.developerDesignation}</p>
+                              <h6>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</h6>
+                              <p>{developer?.developerId?.developerDesignation}</p>
                             </div>
                             <div className="moreAgencyLogo">
-                              {developer?.developerDocuments.length > 0 ? (
+                              {developer?.developerId?.developerDocuments?.length > 0 ? (
                                 <button>
                                   <a
                                     href={
-                                      developer?.developerDocuments[0]
+                                      developer?.developerId?.developerDocuments[0]
                                         .documentLink
                                     }
                                     target="new"

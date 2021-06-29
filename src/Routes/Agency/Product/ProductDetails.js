@@ -357,7 +357,8 @@ function ProductDetails(props) {
                                             <div className="moreAgencyHeading">
                                                 <h3>Similar Agencies</h3>
                                             </div>
-                                            <div className="moreAgencyList_productDetail">
+                                            <div className="moreAgencyList">
+
                                                 {
                                                     similarAgency.length > 0 ? similarAgency.map((value) => {
                                                         return (

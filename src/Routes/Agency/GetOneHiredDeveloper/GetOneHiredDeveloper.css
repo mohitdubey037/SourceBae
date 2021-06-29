@@ -41,16 +41,16 @@
   justify-self: flex-end;
 }
 
-.moreAgencyList::-webkit-scrollbar
+.moreAgencyList::-webkit-scrollbar,.innerResponseCar::-webkit-scrollbar
 {
   width: 4px;
 
 }
-.moreAgencyList::-webkit-scrollbar-track {
+.moreAgencyList::-webkit-scrollbar-track, .innerResponseCar::-webkit-scrollbar-track{
   background-color: #2a98d8;
   border-radius: 10px;    /* color of the tracking area */
 }
-.moreAgencyList::-webkit-scrollbar-thumb {
+.moreAgencyList::-webkit-scrollbar-thumb,.innerResponseCar::-webkit-scrollbar-thumb {
   background-color: blue;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid orange;  /* creates padding around scroll thumb */
@@ -493,11 +493,11 @@
   background-color: #fff;
   padding: 1rem 2.5rem 2rem 2.5rem;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
   margin: 0 2rem;
   position: relative;
-  overflow: hidden;
   margin: auto;
+  overflow-y: scroll;
+  max-height: 60vh;
 }
 .leftLine {
   position: absolute;
@@ -510,25 +510,26 @@
 }
 .innerResponseCar div {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: max-content;
   border-bottom: 2px solid #ebebeb;
 }
-.innerResponseCar div p {
+.innerResponseCar div  {
   font-family: "Poppins";
   margin-top: 4%;
-  font-weight: 500;
   font-size: 1rem;
 }
 .innerResponseCar div p:nth-child(1) {
-  color: #000;
-  font-weight: 500;
-}
-.innerResponseCar div p:nth-child(2) {
   color: #008e80;
   font-weight: 500;
 }
+.innerResponseCar div p:nth-child() {
+  color: #000;
+  font-weight: 500;
+}
+
 
 @media (max-width: 768px) {
   .respondCard {

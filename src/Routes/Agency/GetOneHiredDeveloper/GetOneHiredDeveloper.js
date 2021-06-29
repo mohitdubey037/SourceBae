@@ -104,16 +104,19 @@ function RespondedDetails(props) {
                     >
                         <i className="fa fa-angle-left" aria-hidden="true"></i>
                     </div>
+
+                    <div style={{display:"flex", alignItems:"center",justifyContent:"center",margin:"2rem"}}>
+                        <h2>Developer Requirements</h2>
+                    </div>
                     <div className="respondCard">
                         <div className="innerResponseCar">
-                            <span className="leftLine"></span>
                             <div>
                                 <p>Requirement Name</p>
                                 <p>{`${singleHiredDeveloper?.clientId?.firstName||""} ${singleHiredDeveloper?.clientId?.lastName||""}`}</p>
                             </div>
                             <div>
                                 <p>Budget</p>
-                                <p style={{ fontWeight: "600" }}>{singleHiredDeveloper?.averageBudget}</p>
+                                <p>{singleHiredDeveloper?.averageBudget}</p>
                             </div>
                             <div>
                                 <p>Developer Experience Required</p>
@@ -147,27 +150,29 @@ function RespondedDetails(props) {
 
                         <div className="moreAgency">
                             <div className="innerMoreAgency">
-                            {!(singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length>0) ? 
+                            {(singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length>0) ? 
                                 <>
                                 <div className="moreAgencyHeading">
                                     <h3>Matched Developer</h3>
                                 </div>
                                 <div className="moreAgencyList">
                                     {
-                                        agencyDeveloper.length > 0 && agencyDeveloper.map((value) => {
+                                        singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.map((developer) => {
                                             return (
-                                                <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/get-one-hire-developer:${value._id}`)} className="moreAgencyCard">
+                                                <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/get-one-hire-developer:${developer._id}`)} className="moreAgencyCard">
  
                                                     <div className="moreAgencyIn">
-                                                        <h6>{`${value.firstName} ${value.lastName}`}</h6>
-                                                        <p>{value.developerDesignation}</p>
+                                                        <h6>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</h6>
+                                                        <p>{developer?.developerId?.developerDesignation}</p>
                                                     </div>
                                                     <div className="moreAgencyL" style={{display:"flex", justifyContent: "center"}}>
-                                                    <a href= "#"> <button style={{backgroundColor:"#135cbb",  marginRight:"1rem"}}>View Resume</button></a>
-                                                       {selectedDevelopers.indexOf(value._id)===-1 ?
-                                                        <button style = {{marginRight:"1rem"}} onClick={()=>handleDevelopers(value._id)}>Select Developer</button>
+                                                  
+                                                 {developer?.developerId?.developerDocuments?.length>0 &&  <a href= {developer?.developerId?.developerDocuments[0]?.documentLink} target="  "> <button style={{backgroundColor:"#135cbb",  marginRight:"1rem"}}>View Resume</button></a>}
+
+                                                       {selectedDevelopers.indexOf(developer._id)===-1 ?
+                                                        <button style = {{marginRight:"1rem"}} onClick={()=>handleDevelopers(developer._id)}>Select Developer</button>
                                                         :
-                                                        <button style = {{backgroundColor:"#c90900"}} onClick={()=>handleDevelopers(value._id)}>Remove Developer</button>
+                                                        <button style = {{backgroundColor:"#c90900"}} onClick={()=>handleDevelopers(developer._id)}>Remove Developer</button>
                                                        }
                                                        
                                                     </div>

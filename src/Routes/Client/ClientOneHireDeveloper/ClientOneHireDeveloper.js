@@ -66,14 +66,14 @@ function ClientOneHireDeveloper(props) {
 
                         <div className="moreAgencies_clientOneHireDeveloper">
                             <div className="innerMoreAgencies_clientOneHireDeveloper">
-                            {(singleHiredDeveloper?.agencyMatched?.length > 0) ? 
+                            {(singleHiredDeveloper?.agenciesMatched?.length > 0) ? 
                                 <>
                                 <div className="moreAgencyHeading">
                                     <h3>Matched Agencies</h3>
                                 </div>
                                 <div className="moreAgencyList">
                                     {
-                                        singleHiredDeveloper?.agencyMatched?.map((agency) => {
+                                        singleHiredDeveloper?.agenciesMatched?.map((agency) => {
                                             return (
                                                 <div style={{ cursor: 'pointer' }} className="moreAgencyCard">
  
