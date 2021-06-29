@@ -194,7 +194,7 @@ function ProductDetails(props) {
             {condition === 'Agency' ? <Navbar /> : <ClientNavbar />}
             {err ?
                 <>
-                    <div style={{ textAlign: 'center', width: '100%' }}>
+                    <div style={{ textAlign: 'center', width: '100%', marginTop: '20px' }}>
                         <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
                         <h6>{err}</h6>
                     </div>
