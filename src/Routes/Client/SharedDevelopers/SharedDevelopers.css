@@ -125,8 +125,11 @@
   margin-right: 1.5%;
 }
 
+.innerMoreAgencies{
+  width: 100%;
+}
 .moreAgencies_shared{
-  width: 40%;
+  width: 100%;
   max-width: 40vw;
   box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
   display: flex;
@@ -484,10 +487,11 @@
 .respondCards {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin-bottom: 5%;
-  margin-top: 10%;
+  margin-top: 5%;
+  padding: 0 5%;
 }
 .innerResponseCard {
   width: 100%;
@@ -520,6 +524,7 @@
   margin-top: 4%;
   font-weight: 500;
   font-size: 1rem;
+  max-width: 50%;
 }
 .innerResponseCard div p:nth-child(1) {
   color: #000;
