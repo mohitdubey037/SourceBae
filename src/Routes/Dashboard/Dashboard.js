@@ -7,7 +7,6 @@ import teamCreation from "../../assets/images/Logo/teamCreation.png";
 //material-ui
 import Navbar from "./Navbar";
 
-
 import Tooltip from "react-power-tooltip";
 import { Link, NavLink } from "react-router-dom";
 import instance from "../../Constants/axiosConstants";

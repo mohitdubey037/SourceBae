@@ -357,20 +357,20 @@ function ProductDetails(props) {
                                             <div className="moreAgencyHeading">
                                                 <h3>Similar Agencies</h3>
                                             </div>
-                                            <div className="moreAgencyList">
+                                            <div className="moreAgencyList_productDetails">
 
                                                 {
                                                     similarAgency.length > 0 ? similarAgency.map((value) => {
                                                         return (
                                                             <>
-                                                                <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard">
-                                                                    <div className="moreAgencyLogo_productDetail">
+                                                                <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard_productDetails">
+                                                                    <div className="moreAgencyLogo_productDetails">
                                                                         <div>
                                                                             <img src={logo} alt="" />
                                                                         </div>
+                                                                            <h5>{value.agencyId.agencyName}</h5>
                                                                     </div>
-                                                                    <div className="moreAgencyInfo_productDetail">
-                                                                        <h6>{value.agencyId.agencyName}</h6>
+                                                                    <div className="moreAgencyInfo_productDetails">
                                                                         <p>{value.agencyId.agencyDescription}</p>
                                                                     </div>
                                                                 </div>
