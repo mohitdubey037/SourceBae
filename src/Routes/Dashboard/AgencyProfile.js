@@ -31,7 +31,11 @@ import Moment from 'react-moment';
 function AgencyProfile(props) {
   const { id } = useParams();
   console.log(props, "props");
-  const Role = "agency";
+
+
+
+  const Role = localStorage.getItem('role');
+  console.log(Role);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -110,33 +114,35 @@ function AgencyProfile(props) {
         <div>
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
-              {Role === 'Agency' ?
-                agencyProfileData.productId == undefined ?
-                  <>
-                    <span>You haven't added any product.</span>
-                    <button onClick={() => props.history.push({
-                      pathname: `/product-form`,
-                      condition: 'Agency'
-                    })}>Add Your Product{" "}
-                      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    </button>
-                    <div>
-                      <p onClick={onOpenModal}>
-                        <i class="fa fa-question-circle" aria-hidden="true"></i>Have a
-                        Question..?
-                      </p>
-                    </div>
-                    :
-                    <button onClick={() => props.history.push({
-                      pathname: `/product-details:${agencyProfileData.productId}`,
-                      condition: 'Agency'
-                    })}>View Your Product{" "}
-                      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    </button>
-                  </>
-                  : null
-                : null
+              {/* {Role === 'Agency' ? */}
+              {agencyProfileData.productId === undefined ?
+                <>
+                  <span>You haven't added any product.</span>
+                  <button onClick={() => props.history.push({
+                    pathname: `/product-form`,
+                    condition: 'Agency'
+                  })}>Add Your Product{" "}
+                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  </button>
+                  <div>
+                    <p onClick={onOpenModal}>
+                      <i class="fa fa-question-circle" aria-hidden="true"></i>Have a
+                      Question..?
+                    </p>
+                  </div>
+                </>
+                :
+                <>
+                  <button onClick={() => props.history.push({
+                    pathname: `/product-details:${agencyProfileData.productId}`,
+                    condition: props.location.condition !== '' ? props.location.condition : 'Agency' 
+                  })}>View Your Product{" "}
+                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  </button>
+                </>
               }
+              {/* : null */}
+              {/* } */}
 
             </div>
           </div>
