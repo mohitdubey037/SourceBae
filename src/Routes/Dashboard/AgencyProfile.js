@@ -32,8 +32,6 @@ function AgencyProfile(props) {
   const { id } = useParams();
   console.log(props, "props");
 
-
-
   const Role = localStorage.getItem('role');
   console.log(Role);
   const [open, setOpen] = useState(false);

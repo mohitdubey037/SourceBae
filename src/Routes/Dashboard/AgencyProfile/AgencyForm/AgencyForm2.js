@@ -19,27 +19,13 @@ import FormControl from '@material-ui/core/FormControl';
 
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
-import Spinner from '../../../../Components/Spinner/Spinner'
-
-
-
-// const useStyles = makeStyles({
-//     root: {
-//         '&:hover': {
-//             backgroundColor: 'transparent',
-//         },
-//     },
-// })
+import Spinner from '../../../../Components/Spinner/Spinner';
+import { toast } from "react-toastify";
 
 
 function AgencyForm2(props) {
 
-    const colors = {
-        Update: "yellow",
-        Next: "green",
-    }
-
-    const Role = "agency"
+    const Role = localStorage.getItem('role')
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState("Update")
 
@@ -66,8 +52,6 @@ function AgencyForm2(props) {
         agencyTechnologies: [],
         agencyMonthlyBudget: []
     })
-
-    // const classes = useStyles();
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -199,17 +183,45 @@ function AgencyForm2(props) {
             });
     }
 
+    const validation = () => {
+        let err = {}
+        if (apiData.agencyDomains.length === 0) {
+            err.agencyDomains = 'please enter a Domain';
+            toast.error('Please enter a Domain');
+        }
+        else if (apiData.agencyServices.length === 0) {
+            err.agencyServices = 'Please enter a service';
+            toast.error('Please enter a service');
+        }
+        else if (apiData.agencyTechnologies.length === 0) {
+            err.agencyTechnologies = 'Please enter a technology';
+            toast.error('Please enter a technology');
+        }
+        else if (apiData.agencyMonthlyBudget.length === 0) {
+            err.agencyMonthlyBudget = 'please enter a budget';
+            toast.error('please enter a budget');
+        }
+        if (Object.keys(err).length === 0) return true;
+        else return false;
+    }
+
     const createAgencyForm2Api = () => {
-        setLoading(true);
-        instance.post(`api/${Role}/agencies/create`, apiData)
-            .then(function (response) {
-                // setStatus("Next")
-                setLoading(false);
-                props.history.push("/agency-form-three")
-            })
-            .catch(err => {
-                setLoading(false)
-            })
+        console.log('hi');
+        if (validation()) {
+            setLoading(true);
+            instance.post(`api/${Role}/agencies/create`, apiData)
+                .then(function (response) {
+                    // setStatus("Next")
+                    setLoading(false);
+                    props.history.push("/agency-form-three")
+                })
+                .catch(err => {
+                    setLoading(false)
+                })
+        }
+        else {
+            console.log(validation);
+        }
     }
 
     useEffect(() => {
@@ -244,16 +256,28 @@ function AgencyForm2(props) {
         setVisibleTechNames(Object.keys(filteredTech))
     }, [selectedServicesId, allTechData])
 
-    useEffect(() => {
-        if (apiData.agencyDomains.length !== 0 && apiData.agencyServices.length !== 0 && apiData.agencyTechnologies.length !== 0) {
-            createAgencyForm2Api()
-        }
-    }, [apiData])
-
     const handleNext = () => {
         setAgencyDomains()
         setAgencyTechnologies()
+        createAgencyForm2Api()
     }
+
+    // useEffect(() => {
+    //     if (apiData.agencyDomains.length !== 0 && apiData.agencyServices.length !== 0){
+    //         if (apiData.agencyMonthlyBudget.length === 0) {
+    //             toast.error('please tell us what"s your budget');
+    //         }
+    //         else if (apiData.agencyTechnologies.length !== 0 ) {
+    //             createAgencyForm2Api()
+    //         }
+    //         else {
+    //             toast.error('Please enter technology related to service');
+    //         }
+    //     }
+
+    // }, [apiData])
+
+
 
     // const handleNavlink = (event) => {
 
@@ -318,7 +342,7 @@ function AgencyForm2(props) {
     // else if(status ==="Next")
     //     window.location.href = "/agency-form-three"
 
-    
+
     return (
         <>
             <Navbar />
@@ -383,8 +407,8 @@ function AgencyForm2(props) {
                                 <NavLink to="/agency-form-one" style={{ textDecoration: "none" }}>
                                     <button className="next-click">
                                         <i className="fa fa-long-arrow-left" aria-hidden="true" />
-                                    Back
-                                </button>
+                                        Back
+                                    </button>
                                 </NavLink>
                                 {/* <NavLink to="/agency-form-three" >
                             Next <i className="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
