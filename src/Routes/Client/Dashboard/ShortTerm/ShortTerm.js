@@ -209,6 +209,14 @@ function ShortTerm(props) {
     <>
       <ClientNavbar />
       <div className="mainShortTerm">
+      <div
+          className="backArrow_shortTerm"
+          onClick={() => {
+            props.history.goBack();
+          }}
+        >
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </div>  
         <div className="innerShortTerm">
           <div className="shortTermForm">
             <div className="shortTermHeading">
