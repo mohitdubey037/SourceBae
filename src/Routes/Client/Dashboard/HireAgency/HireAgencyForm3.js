@@ -21,18 +21,18 @@ function HireAgencyForm3(props) {
     const [loading, setLoading] = useState(true);
     const [allServices, setAllServices] = useState([])
     const [selected, setSelected] = useState([]);
-    const [apiData , setApiData] = useState({
-        id:projectId,
-        stepsCompleted:3,
-        projectTechnologiesRequired:[],
-        projectServicesRequired:[]
+    const [apiData, setApiData] = useState({
+        id: projectId,
+        stepsCompleted: 3,
+        projectTechnologiesRequired: [],
+        projectServicesRequired: []
     })
 
     // const [buttonStatus, setButtonStatus] = useState("Next");
 
 
     //selecting domain budget
-    const [allTechnologies,setAllTechnologies] = useState([])
+    const [allTechnologies, setAllTechnologies] = useState([])
 
     const handleServices = (event) => {
         let technologies = []
@@ -40,27 +40,27 @@ function HireAgencyForm3(props) {
         let servicesRequired = []
         const { className } = event.target
         const toggledServices = allServices.map((service) => {
-            const techs = service?.technologies?.map((tech)=>{
+            const techs = service?.technologies?.map((tech) => {
                 return {
                     label: tech.technologyName,
                     value: tech._id
                 }
-            })||[]
+            }) || []
 
-            if (service.serviceName === className){
-                if(!service.selected){
+            if (service.serviceName === className) {
+                if (!service.selected) {
                     console.log(techs)
                     technologies = [...technologies, ...techs]
                     servicesRequired = [...servicesRequired, service._id]
                 }
-           
+
                 return {
                     ...service,
                     selected: !service.selected
                 }
             }
-            else if(service.serviceName !== className){
-                if(service.selected){
+            else if (service.serviceName !== className) {
+                if (service.selected) {
                     technologies = [...technologies, ...techs]
                     servicesRequired = [...servicesRequired, service._id]
                 }
@@ -70,13 +70,13 @@ function HireAgencyForm3(props) {
             return service
         })
         setAllServices(toggledServices)
-        setApiData({...apiData,projectServicesRequired:servicesRequired})
+        setApiData({ ...apiData, projectServicesRequired: servicesRequired })
         setAllTechnologies(technologies)
     }
 
-    useEffect(()=>{
-        console.log(apiData,"apiData")
-    },[apiData])
+    useEffect(() => {
+        console.log(apiData, "apiData")
+    }, [apiData])
 
     const getAllServices = () => {
         instance.get(`api/${Role}/services/all?with_technologies=1`)
@@ -117,9 +117,9 @@ function HireAgencyForm3(props) {
 
     const handleSubmit = () => {
         setLoading(true)
-            console.log(apiData);
-            instance.post(`/api/${Role}/projects/create`,apiData)
-            .then(function(response){
+        console.log(apiData);
+        instance.post(`/api/${Role}/projects/create`, apiData)
+            .then(function (response) {
                 console.log(response);
                 setLoading(false);
                 props.history.push(`/agency-list:${projectId}`)
@@ -129,80 +129,88 @@ function HireAgencyForm3(props) {
             })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(allTechnologies)
-    },[allTechnologies])
+    }, [allTechnologies])
 
-    useEffect(()=>{
+    useEffect(() => {
         setApiData({
             ...apiData,
-            projectTechnologiesRequired:selected.map((tech)=>{return tech.value})
+            projectTechnologiesRequired: selected.map((tech) => { return tech.value })
         })
-      },[selected])
+    }, [selected])
 
     return (
         <>
             <ClientNavbar />
-            {loading ? <Spinner/> : 
-            <div className="mainHireAgencyForm3">
-                <div className="innerHireAgencyForm3">
-                    <div className="techStackFields">
+            <div
+                className="backArrow_hireAgencyForm3"
+                onClick={() => {
+                    props.history.goBack();
+                }}
+            >
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </div>
+            {loading ? <Spinner /> :
+                <div className="mainHireAgencyForm3">
+                    <div className="innerHireAgencyForm3">
+                        <div className="techStackFields">
 
-                        <div className="stepCheck">
-                            <p>Step 3</p>
-                        </div>
-
-                        <div className="HireAgencyForm3Heading">
-                            <h2>How can <span> OneSoucing </span> can help you?</h2>
-                        </div>
-
-                        <div className="serivcesHireAgency">
-                            <p className="servicesAgencyHeadingForm3">which kind of application or service would you require?</p>
-
-                            <div className="servicesCardsHireAgency">
-
-                            {allServices?.length > 0 ? allServices.map((service) => {
-                                    return (
-                                        <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
-                                            <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
-                                            <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
-                                        </div>
-                                    )
-                                })
-                                    :
-                                    <p>Sorry No Data Found.</p>
-                                }
+                            <div className="stepCheck">
+                                <p>Step 3</p>
                             </div>
+
+                            <div className="HireAgencyForm3Heading">
+                                <h2>How can <span> OneSoucing </span> can help you?</h2>
+                            </div>
+
+                            <div className="serivcesHireAgency">
+                                <p className="servicesAgencyHeadingForm3">which kind of application or service would you require?</p>
+
+                                <div className="servicesCardsHireAgency">
+
+                                    {allServices?.length > 0 ? allServices.map((service) => {
+                                        return (
+                                            <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
+                                                <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                                                <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
+                                            </div>
+                                        )
+                                    })
+                                        :
+                                        <p>Sorry No Data Found.</p>
+                                    }
+                                </div>
+                            </div>
+
+                            <div className="nextbuttton">
+                                <div onClick={() => props.history.push("/hire-agency-form-two")} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
+                                <div onClick={() => handleSubmit()}> Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+                            </div>
+
+
                         </div>
-
-                        <div className="nextbuttton">
-                            <div onClick={() => props.history.push("/hire-agency-form-two")} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
-                            <div onClick={()=>handleSubmit()}> Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
-                        </div>
-
-
-                    </div>
-                    <div className="serviceFieldsOptions">
-                        <div className="servicesHireAgencyContainer">
-                            <div className="serviceSelectionInput">
-                            {allTechnologies ? (
-                  <>
-                    <p className="uiuxtext">
-                      Select Technolgies
-                    </p>
-                    <MultiSelect
-                      options={allTechnologies}
-                      value={selected}
-                      onChange={setSelected}
-                      labelledBy="Select"
-                    />
-                  </>
-                ) : null}
+                        <div className="serviceFieldsOptions">
+                            <div className="servicesHireAgencyContainer">
+                                <div className="serviceSelectionInput">
+                                    {allTechnologies ? (
+                                        <>
+                                            <p className="uiuxtext">
+                                                Select Technolgies
+                                            </p>
+                                            <MultiSelect
+                                                options={allTechnologies}
+                                                value={selected}
+                                                onChange={setSelected}
+                                                labelledBy="Select"
+                                            />
+                                        </>
+                                    ) : null}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             }
         </>
     )

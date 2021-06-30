@@ -45,6 +45,26 @@
     left:4%;
     z-index: 100;
 }
+
+.backArrow_hireAgencyForm3{
+    position: fixed;
+    top: 15%;
+    left:4%;
+    z-index: 100;
+}
+
+.backArrow_hireAgencyForm3 i{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 2px rgba(0,0,0,0.2);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+}
   
 .backArrow_hireAgencyForm2 i{
     width: 40px;
@@ -318,9 +338,8 @@
 
 
 .servicesHireAgencyContainer{
-    /* max-height: 80vh; */
-    height: 330px;
-    overflow: scroll;
+    height: 80vh;
+    overflow-y: scroll;
     border: 1px dashed #ebebeb;
     margin-left: 2px;
     padding-bottom: 6%;
