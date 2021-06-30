@@ -49,19 +49,50 @@ function ClientProfile() {
             })
     };
 
+    const updateClientApi = () => {
+        const body = {
+            firstName: clientData.firstName,
+            lastName: clientData.lastName,
+            companyName: clientData.companyName,
+            userDesignation: clientData.userDesignation,
+        }
+        const clientId = localStorage.getItem("userId")
+        instance.patch(`/api/${Role}/clients/update/${clientId}`,body)
+            .then(function (response) {
+                console.log(response);
+                setClientData({
+                    firstName: response[0].firstName,
+                    lastName: response[0].lastName,
+                    userName: response[0].userName,
+                    userEmail: response[0].userEmail,
+                    countryCode: response[0].countryCode,
+                    userPhone: response[0].userPhone,
+                    companyName: response[0].companyName,
+                    userDesignation: response[0].userDesignation,
+                })
+                setLoading(false);
+                setIsEdit(false)
+            })
+            .catch(err => {
+                setLoading(false)
+                setIsEdit(false)
+                console.log(err?.response?.data?.message)
+                setErr(err?.response?.data?.message)
+            })
+    };
+
     const handleChange = (event) => {
         const { name, value } = event.target
         console.log(name, value)
-        if (name !== "countryCode") {
+        if (name !== "countryCode" && name!=="userEmail" &&  name!=="userName" &&  name!=="userPhone") {
             setClientData({
                 ...clientData,
                 [name]: value
             })
         }
-    }
-    const updateClientApi = () => {
-        setIsEdit(false)
-        console.log("update client")
+        else{
+            alert("!Not allowed")
+        }
     }
 
     useEffect(() => {
@@ -115,7 +146,7 @@ function ClientProfile() {
                                                     </div>
                                                     <div className="clientFormAnswer">
                                                         {
-                                                            isEdit ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
+                                                            isEdit && (key !== "countryCode" && key!=="userEmail" &&  key!=="userName" &&  key!=="userPhone")? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
                                                         }
                                                     </div>
                                                 </div>)
