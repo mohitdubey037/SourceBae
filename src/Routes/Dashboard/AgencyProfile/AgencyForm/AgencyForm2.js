@@ -218,7 +218,7 @@ function AgencyForm2(props) {
     }, [allDomainsData, allServicesData, allTechData]);
 
     useEffect(() => {
-        // setSelectedServicesId(getSelectedServicesIds(allServicesData));
+        setSelectedServicesId(getSelectedServicesIds(allServicesData));
         // setApiData({
         //   ...apiData,
         //   agencyServices: getSelectedServicesIds(allServicesData),
@@ -236,7 +236,6 @@ function AgencyForm2(props) {
         setVisibleTechData(filteredTech);
         setVisibleTechNames(Object.keys(filteredTech));
     }, [selectedServicesId, allTechData]);
-
 
     const handleNext = () => {
         if (dom.length > 0) {
