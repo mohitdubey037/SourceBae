@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./GetOneHiredDeveloper.css";
 
@@ -14,7 +15,6 @@ function RespondedDetails(props) {
     const routerHistory = useHistory();
 
     const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
-    const [agencyDeveloper, setAgencyDeveloper] = useState([]);
 
     const [loading, setLoading] = useState(false);
 
@@ -59,17 +59,6 @@ function RespondedDetails(props) {
             });
     };
 
-    const getAgencyDeveloper = () => {
-        instance.get(`/api/${Role}/developers/all`)
-            .then(function (response) {
-                console.log(response)
-                setAgencyDeveloper(response)
-            })
-            .catch(err => {
-                console.log(err?.response?.data?.message)
-            })
-    }
-
     const handleDevelopers = (developerId)=>{
         
         const index = selectedDevelopers.indexOf(developerId)
@@ -89,7 +78,6 @@ function RespondedDetails(props) {
     },[selectedDevelopers])
     useEffect(() => {
         getOneDeveloper();
-        getAgencyDeveloper();
     }, []);
 
     return (
