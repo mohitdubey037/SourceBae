@@ -74,6 +74,9 @@ instance.interceptors.response.use(
         });
       }
     }
+    else if(error?.response?.status===404 && error?.response?.config?.url?.includes("login")){
+      toast.error(error?.response?.data?.message)
+    }
     return Promise.reject(error);
   }
 );
