@@ -180,7 +180,8 @@ function ProductDetails(props) {
     const postSubmitHandler = () => {
         instance.post(`/api/${Role}/investments/create`, dummyForm)
             .then(response => {
-                console.log(response)
+                console.log(response);
+                onCloseModal();
             })
             .catch(err => {
                 console.log(err);

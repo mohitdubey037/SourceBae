@@ -136,7 +136,7 @@ function AgencyProfile(props) {
                     onClick={() =>
                       props.history.push({
                         pathname: `/product-details:${agencyProfileData.productId}`,
-                        condition: "Agency",
+                        condition: id !== '' ? 'Client' : 'Agency' 
                       })
                     }
                   >
