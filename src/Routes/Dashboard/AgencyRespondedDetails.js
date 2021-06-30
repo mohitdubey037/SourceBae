@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { useHistory } from "react-router-dom";
 import Moment from 'react-moment';
+import { toast } from "react-toastify";
 
 let isRepliedToClient = false;
 
@@ -31,9 +32,10 @@ const CommentBox = (props) => {
   };
 
   function uploadMedia() {
-    console.log(file);
+    console.log(file, "file");
+    if(file){
     const formData = new FormData();
-    file && formData.append("files", file, "files.pdf");
+    formData.append("files", file, "files.pdf");
     instance
       .post(`api/agency/media/create`, formData)
       .then(function (response) {
@@ -44,6 +46,10 @@ const CommentBox = (props) => {
         });
       })
       .catch((err) => { });
+    }
+    else{
+      toast.error("Please Pick a File before Uploading.")
+    }
   }
 
   const inputFileChosen = (e) => {
