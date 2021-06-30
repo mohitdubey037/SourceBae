@@ -126,7 +126,7 @@ const CommentBox = (props) => {
             </div>
           )}
 
-          {props.isAskedForQuotation && (props.quotationLink === null ||
+          {props.isReplySectionActive && props.isAskedForQuotation && (props.quotationLink === null ||
             props.quotationLink === undefined) && <div style={{ margin: "1rem 0rem" }}>
             <input
               onChange={inputFileChosen}

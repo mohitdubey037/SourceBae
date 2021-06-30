@@ -10,35 +10,11 @@ import shape from '../../../assets/images/Quotation/shape.png'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Spinner from '../../../Components/Spinner/Spinner';
-import { useHistory } from 'react-router-dom';
 import {withRouter} from 'react-router';
 
 
-// const arr = [
-//     {
-//         title: 'Industry',
-//         content: 'Food'
-//     },
-//     {
-//         title: 'Fixed budget',
-//         content: '$5, 000 - $10, 000'
-//     },
-//     {
-//         title: 'Expert Categories',
-//         content: 'Self-Checkout, Meal Subscriptions, Online Food Ordering, Food Delivery Tracking, Coupons & Loyalty, Menu & Reviews'
-//     },
-//     {
-//         title: 'Services',
-//         content: 'Web Development, UI/ UX Design, CMS Development, Database Development, Testing & QA, Cloud - Server Management'
-//     },
-
-// ]
-
-// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
 function ProjectesMatched(props) {
     const agencyId = localStorage.getItem('userId');
-    const routerHistory = useHistory();
     const Role = localStorage.getItem('role');
     console.log(Role);
     const [err, setErr] = useState();
@@ -70,7 +46,6 @@ function ProjectesMatched(props) {
 
     const [open, setOpen] = useState(false);
 
-    const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
     return (
@@ -96,14 +71,14 @@ function ProjectesMatched(props) {
                                     <div className="projectCard">
                                         <div className="projectCardHeading">
                                             <div className="projectHeadingName">
-                                                <h4>{s.projectName}</h4>
+                                                <h4>{s?.projectName}</h4>
 
                                             </div>
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
                                                     {/* <button onClick={onOpenModal}>Show Interest</button> */}
                                                     <button onClick={() => props.history.push({
-                                                        pathname: `agency-project-details:${s._id}`,
+                                                        pathname: `agency-project-details:${s?._id}`,
                                                         origin : 'project-match'
                                                     })}>Show Details</button>
                                                 </div>
@@ -111,7 +86,7 @@ function ProjectesMatched(props) {
                                         </div>
                                         <div className="projectPostedDetails">
                                             <div>
-                                                <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
+                                                <p><Moment format="D MMM YYYY" withTitle>{s?.updatedAt}</Moment></p>
                                             </div>
                                             <div>
                                                 <p>Matched on 24 Mar 2020</p>
@@ -124,7 +99,7 @@ function ProjectesMatched(props) {
                                                     <p>Industry</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p>{s.projectDomainId.domainName}</p>
+                                                    <p>{s?.projectDomainId?.domainName}</p>
                                                 </div>
                                             </div>
                                             <div>
@@ -132,7 +107,7 @@ function ProjectesMatched(props) {
                                                     <p>Fixed Budget</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p>{s.projectProposalCost}</p>
+                                                    <p>{s?.projectProposalCost}</p>
                                                 </div>
                                             </div>
                                             <div>
@@ -140,7 +115,7 @@ function ProjectesMatched(props) {
                                                     <p>Expert Categories</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    {s.projectExpertiseRequired.map(expertise => <p style={{marginRight: '10px'}}>{expertise.expertiseName}</p>)}
+                                                    {s?.projectExpertiseRequired?.map(expertise => <p style={{marginRight: '10px'}}>{expertise?.expertiseName}</p>)}
                                                 </div>
                                             </div>
                                             <div>
@@ -148,9 +123,9 @@ function ProjectesMatched(props) {
                                                     <p>Services</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    {s.projectServicesRequired.map(p => {
+                                                    {s?.projectServicesRequired?.map(p => {
                                                         return (
-                                                            <p style={{marginRight: '10px'}}>{p.serviceName}</p>
+                                                            <p style={{marginRight: '10px'}}>{p?.serviceName}</p>
                                                         )
                                                     })}
                                                 </div>
