@@ -141,7 +141,7 @@ function AgencyProfile(props) {
                     }
                   >
                     View Your Product{" "}
-                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
                   </button>
                 )
               ) : (
