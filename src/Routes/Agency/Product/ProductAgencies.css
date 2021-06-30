@@ -1,3 +1,23 @@
+.backArrow_productAgencies{
+    position: absolute;
+    top: 12%;
+    left:2%;
+    z-index: 100;
+}
+  
+.backArrow_productAgencies i{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 2px rgba(0,0,0,0.2);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
 .searchButton {
     font-size: 1.2rem;
     font-weight: bold;
@@ -8,6 +28,42 @@
     border-color: black;
 }
 
+
+.mainAgencyList_productAgencies {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.filterForm_productAgencies {
+    width: 100%;
+    background-color: #fff;
+    /* height: 60vh; */
+    overflow: hidden;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    /* border: 2px solid #000; */
+    position: sticky;
+  }
+
+.AgencyCardsArea_productAgencies {
+    width: 75%;
+    padding: 18px;
+}
+
+.agencyFilterArea_productAgencies {
+    margin-top: 1.2%;
+    width: 20%;
+    position: relative;
+}
+
+.innerAgencyList_productAgencies {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
 
 .productInformationHeading{
     width: 100%;
@@ -126,10 +182,6 @@
     margin-left: 5%;
 }
 
-
-
-
-
 .customOverlayAgencyProduct {
   background:rgba(0,0,0,0.9);
 }
@@ -150,10 +202,6 @@
     top: 0%;
     margin: 0rem 0rem 0rem 0rem;
 }
-
-
-
-
 
 .modalHeaderProduct{
     border-bottom: 1px solid #999;
