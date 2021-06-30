@@ -51,7 +51,6 @@ function AgencyForm3(props) {
 
     const handleDocumentPicker = (document, category) => {
         if (category === registrationCertificate.documentName) {
-            console.log('h');
             setRegistrationCertificate({
                 ...registrationCertificate,
                 documentPicked: true,
@@ -60,7 +59,6 @@ function AgencyForm3(props) {
         }
 
         else if (category === brochureDoc.documentName) {
-            console.log('i');
             setBrochureDoc({
                 ...brochureDoc,
                 documentPicked: true,
@@ -68,7 +66,6 @@ function AgencyForm3(props) {
             })
         }
         else if (category === panCardDoc.documentName) {
-            console.log('j');
             setPanCardDoc({
                 ...panCardDoc,
                 documentPicked: true,
@@ -118,12 +115,10 @@ function AgencyForm3(props) {
                         ...panCardDoc,
                         documentLink: response[2].mediaURL
                     })
-                    // resolve()
                 })
                 .catch(err => {
                     setLoading(false)
                 })
-            // })
         })
     }
 
@@ -135,9 +130,6 @@ function AgencyForm3(props) {
         else {
             toast.error("Please upload all the documents.")
         }
-        // if (status === 'Next'){
-        //     window.location.href = "/agency-form-four"
-        // }
     }
 
     const handleUpdate = () => {
@@ -159,15 +151,6 @@ function AgencyForm3(props) {
                 setLoading(false);
             })
     }
-
-    // const handleNavlink = (event) => {
-    //     event.preventDefault()
-    //     if (status === "Next") {
-    //         window.location.href = "/agency-form-four"
-    //     }
-    //     // else if (status === "Update")
-    //     //     handleUpdate()
-    // }
 
     useEffect(() => {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
