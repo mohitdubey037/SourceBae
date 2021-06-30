@@ -115,7 +115,7 @@ function AgencyProfile(props) {
         <div>
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
-              {Role === "agency" ? (
+              {Role === "Agency" ? (
                 agencyProfileData.productId === undefined ? (
                   <>
                     <span>You haven't added any product.</span>
