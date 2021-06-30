@@ -33,6 +33,14 @@ function ClientHireDeveloper(props) {
   return (
     <>
       <ClientNavbar />
+      <div
+        className="backArrow_getClientHireDeveloper"
+        onClick={() => {
+          props.history.goBack();
+        }}
+      >
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+      </div>
       {loading ? (
         <Spinner />
       ) : (
@@ -43,7 +51,7 @@ function ClientHireDeveloper(props) {
                 {hiredDevelopers?.length > 0 ?
                   hiredDevelopers.map((hireDeveloperRequirement, index) => {
                     return (
-                      <div className="agencyPreciseCard" key = {index}>
+                      <div className="agencyPreciseCard" key={index}>
                         <div className="agencyCardHeaderLine"></div>
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
@@ -99,7 +107,7 @@ function ClientHireDeveloper(props) {
                   })
                   :
                   <h2>No Data Found.</h2>
-                  }
+                }
               </div>
             </div>
           </div>

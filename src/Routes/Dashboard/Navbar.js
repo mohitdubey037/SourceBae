@@ -108,9 +108,9 @@ function Navbar() {
                         <div onClick={handleNotification} aria-describedby={id} className="clientNotification">
                             <img src={notificationIcon} alt="" />
                         </div>
-                        <div className="clientNotification">
+                        {/* <div className="clientNotification">
                             <img style={{width: '85%'}} onClick={() => routerHistory.push("/get-hire-developer")} src={HireDeveloperLogo} alt="" />
-                        </div>
+                        </div> */}
                         <Popover
                             id={id}
                             open={open}
