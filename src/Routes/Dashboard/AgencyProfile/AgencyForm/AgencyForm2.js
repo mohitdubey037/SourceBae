@@ -242,16 +242,6 @@ function AgencyForm2(props) {
     setVisibleTechNames(Object.keys(filteredTech));
   }, [selectedServicesId, allTechData]);
 
-//   useEffect(() => {
-//     if (
-//       apiData.agencyDomains.length !== 0 &&
-//       apiData.agencyServices.length !== 0 &&
-//       apiData.agencyTechnologies.length !== 0 &&
-//       apiData.agencyMonthlyBudget!==""
-//     ) {
-//       createAgencyForm2Api();
-//     }
-//   }, [apiData]);
 
   const handleNext = () => {
     if (dom.length > 0) {
