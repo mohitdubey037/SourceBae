@@ -1,48 +1,53 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
-import Navbar from '../../Navbar'
-import FormPhases from './FormPhases'
-import { NavLink } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import Navbar from "../../Navbar";
+import FormPhases from "./FormPhases";
+import { NavLink } from "react-router-dom";
 
 //axios instance
-import instance from "../../../../Constants/axiosConstants"
+import instance from "../../../../Constants/axiosConstants";
 
 //services
-import uiux from '../../../../assets/images/agencyForm/uiux.png'
+import uiux from "../../../../assets/images/agencyForm/uiux.png";
 
 //material-ui
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
 // import { makeStyles } from '@material-ui/core/styles';
 
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
-import Spinner from '../../../../Components/Spinner/Spinner';
+import Spinner from "../../../../Components/Spinner/Spinner";
 import { toast } from "react-toastify";
 
+// const useStyles = makeStyles({
+//     root: {
+//         '&:hover': {
+//             backgroundColor: 'transparent',
+//         },
+//     },
+// })
 
 function AgencyForm2(props) {
 
-    const Role = localStorage.getItem('role')
+    const Role = "agency";
     const [loading, setLoading] = useState(true);
-    const [status, setStatus] = useState("Update")
 
     // selecting Domains
-    const [allDomainsData, setAllDomainsData] = useState([])
+    const [allDomainsData, setAllDomainsData] = useState([]);
 
     //selecting services
-    const [allServicesData, setAllServicesData] = useState([])
-    const [selectedServicesId, setSelectedServicesId] = useState([])
-    const [selectedTechName, setSelectedTechNames] = useState([])
-
+    const [allServicesData, setAllServicesData] = useState([]);
+    const [selectedServicesId, setSelectedServicesId] = useState([]);
+    const [selectedTechName, setSelectedTechNames] = useState([]);
 
     //selecting Techs
-    const [allTechData, setAllTechData] = useState([])
-    const [visibleTechData, setVisibleTechData] = useState([])
-    const [visibleTechNames, setVisibleTechNames] = useState([])
-    const [dom, setDom] = useState([])
+    const [allTechData, setAllTechData] = useState([]);
+    const [visibleTechData, setVisibleTechData] = useState([]);
+    const [visibleTechNames, setVisibleTechNames] = useState([]);
+    const [dom, setDom] = useState([]);
 
     //API DATA STATE VARIABLES
     const [apiData, setApiData] = useState({
@@ -50,38 +55,40 @@ function AgencyForm2(props) {
         agencyDomains: [],
         agencyServices: [],
         agencyTechnologies: [],
-        agencyMonthlyBudget: []
-    })
+        agencyMonthlyBudget: "",
+    });
+
+    // const classes = useStyles();
 
     const handleChange = (event) => {
-        const { name, value } = event.target
+        const { name, value } = event.target;
         if (name === "budget")
-            setApiData(
-                {
-                    ...apiData,
-                    agencyMonthlyBudget: value
-                }
-            )
+            setApiData({
+                ...apiData,
+                agencyMonthlyBudget: value,
+            });
     };
 
     const handleTechSelect = (arr) => {
-        setSelectedTechNames(arr)
-    }
+        setSelectedTechNames(arr);
+    };
 
     const setAgencyTechnologies = () => {
         const selectedTechs = selectedTechName.map((tech) => {
-            return visibleTechData[tech]._id
-        })
+            return visibleTechData[tech]._id;
+        });
         setApiData({
             ...apiData,
-            agencyTechnologies: selectedTechs
-        })
-    }
+            agencyTechnologies: selectedTechs,
+        });
+    };
 
     const setAgencyDomains = async () => {
-        const selects = await allDomainsData.filter((domain) => domain.selected === true)
-        setDom(selects)
-    }
+        const selects = await allDomainsData.filter(
+            (domain) => domain.selected === true
+        );
+        setDom(selects);
+    };
 
     useEffect(() => {
         setApiData({
@@ -90,11 +97,11 @@ function AgencyForm2(props) {
                 return {
                     domainId: domain._id,
                     domainBaseAmount: 100,
-                    isAmountNegotiable: true
-                }
-            })
-        })
-    }, [dom])
+                    isAmountNegotiable: true,
+                };
+            }),
+        });
+    }, [dom]);
 
     // const handleNext = () => {
     //     setAgencyDomains()
@@ -103,75 +110,71 @@ function AgencyForm2(props) {
     //Api Calls methods
 
     const getAllDomains = () => {
-        instance.get(`api/${Role}/domains/all`)
-            .then(function (response) {
-                console.log(response);
-                const domainNames = response.map((domain) => {
-                    return {
-                        ...domain,
-                        selected: false
-                    }
-                })
-                setAllDomainsData(domainNames)
-            })
-    }
+        instance.get(`api/${Role}/domains/all`).then(function (response) {
+            console.log(response);
+            const domainNames = response.map((domain) => {
+                return {
+                    ...domain,
+                    selected: false,
+                };
+            });
+            setAllDomainsData(domainNames);
+        });
+    };
 
     const handleDomains = (event) => {
-        const { className } = event.target
+        const { className } = event.target;
         const toggledDomains = allDomainsData.map((domain) => {
             if (domain.domainName === className) {
                 return {
                     ...domain,
-                    selected: !domain.selected
-                }
+                    selected: !domain.selected,
+                };
             }
-            return domain
-        })
-        setAllDomainsData(toggledDomains)
-    }
+            return domain;
+        });
+        setAllDomainsData(toggledDomains);
+    };
 
     const getAllServices = () => {
-        instance.get(`api/${Role}/services/all`)
-            .then(function (response) {
-                const servicesNames = response.map((service) => {
-                    return {
-                        ...service,
-                        selected: false
-                    }
-                })
-                setAllServicesData(servicesNames)
-            })
-    }
+        instance.get(`api/${Role}/services/all`).then(function (response) {
+            const servicesNames = response.map((service) => {
+                return {
+                    ...service,
+                    selected: false,
+                };
+            });
+            setAllServicesData(servicesNames);
+        });
+    };
 
     const handleServices = (event) => {
         // document.body.scrollIntoView({ behavior: 'smooth' })
-        const { className } = event.target
+        const { className } = event.target;
         const toggledServices = allServicesData.map((service) => {
             if (service.serviceName === className)
                 return {
                     ...service,
-                    selected: !service.selected
-                }
+                    selected: !service.selected,
+                };
 
-            return service
-        })
+            return service;
+        });
 
-        setAllServicesData(toggledServices)
-
-    }
+        setAllServicesData(toggledServices);
+    };
 
     const getAllTechs = () => {
-        instance.get(`api/${Role}/technologies/all`)
-            .then(function (response) {
-                const techNames = response.map((tech) => {
-                    return {
-                        ...tech,
-                        selected: false
-                    }
-                })
-                setAllTechData(techNames)
-            })
-    }
+        instance.get(`api/${Role}/technologies/all`).then(function (response) {
+            const techNames = response.map((tech) => {
+                return {
+                    ...tech,
+                    selected: false,
+                };
+            });
+            setAllTechData(techNames);
+        });
+    };
 
     const getSelectedServicesIds = (allServices) => {
         return allServices
@@ -181,210 +184,172 @@ function AgencyForm2(props) {
             .map(function (service) {
                 return service._id;
             });
-    }
-
-    const validation = () => {
-        let err = {}
-        if (apiData.agencyDomains.length === 0) {
-            err.agencyDomains = 'please enter a Domain';
-            toast.error('Please enter a Domain');
-        }
-        else if (apiData.agencyServices.length === 0) {
-            err.agencyServices = 'Please enter a service';
-            toast.error('Please enter a service');
-        }
-        else if (apiData.agencyTechnologies.length === 0) {
-            err.agencyTechnologies = 'Please enter a technology';
-            toast.error('Please enter a technology');
-        }
-        else if (apiData.agencyMonthlyBudget.length === 0) {
-            err.agencyMonthlyBudget = 'please enter a budget';
-            toast.error('please enter a budget');
-        }
-        if (Object.keys(err).length === 0) return true;
-        else return false;
-    }
+    };
 
     const createAgencyForm2Api = () => {
-        console.log('hi');
-        if (validation()) {
-            setLoading(true);
-            instance.post(`api/${Role}/agencies/create`, apiData)
-                .then(function (response) {
-                    // setStatus("Next")
-                    setLoading(false);
-                    props.history.push("/agency-form-three")
-                })
-                .catch(err => {
-                    setLoading(false)
-                })
-        }
-        else {
-            console.log(validation);
-        }
-    }
+        setLoading(true);
+        instance
+            .post(`api/${Role}/agencies/create`, apiData)
+            .then(function (response) {
+                // setStatus("Next")
+                setLoading(false);
+                props.history.push("/agency-form-three");
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
 
     useEffect(() => {
-        getAllDomains()
-        getAllServices()
-        getAllTechs()
-    }, [])
+        getAllDomains();
+        getAllServices();
+        getAllTechs();
+    }, []);
 
     useEffect(() => {
-        if (allDomainsData.length !== 0 && allTechData.length !== 0 && allServicesData.length !== 0) {
+        if (
+            allDomainsData.length !== 0 &&
+            allTechData.length !== 0 &&
+            allServicesData.length !== 0
+        ) {
             setLoading(false);
         }
-    }, [allDomainsData, allServicesData, allTechData])
+        setAgencyDomains();
+    }, [allDomainsData, allServicesData, allTechData]);
 
     useEffect(() => {
-        setSelectedServicesId(getSelectedServicesIds(allServicesData))
-        setApiData({
-            ...apiData,
-            agencyServices: getSelectedServicesIds(allServicesData)
-        })
-    }, [allServicesData])
+        // setSelectedServicesId(getSelectedServicesIds(allServicesData));
+        // setApiData({
+        //   ...apiData,
+        //   agencyServices: getSelectedServicesIds(allServicesData),
+        // });
+    }, [allServicesData]);
 
     useEffect(() => {
         // eslint-disable-next-line array-callback-return
-        const filteredTech = {}
+        const filteredTech = {};
         allTechData.forEach((tech) => {
             if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
-                filteredTech[tech.technologyName] = tech
+                filteredTech[tech.technologyName] = tech;
             }
-        })
-        setVisibleTechData(filteredTech)
-        setVisibleTechNames(Object.keys(filteredTech))
-    }, [selectedServicesId, allTechData])
+        });
+        setVisibleTechData(filteredTech);
+        setVisibleTechNames(Object.keys(filteredTech));
+    }, [selectedServicesId, allTechData]);
+
 
     const handleNext = () => {
-        setAgencyDomains()
-        setAgencyTechnologies()
-        createAgencyForm2Api()
-    }
+        if (dom.length > 0) {
+            if (getSelectedServicesIds(allServicesData).length > 0) {
+                setSelectedServicesId(getSelectedServicesIds(allServicesData));
+                setApiData({
+                    ...apiData,
+                    agencyServices: getSelectedServicesIds(allServicesData),
+                });
 
-    // useEffect(() => {
-    //     if (apiData.agencyDomains.length !== 0 && apiData.agencyServices.length !== 0){
-    //         if (apiData.agencyMonthlyBudget.length === 0) {
-    //             toast.error('please tell us what"s your budget');
-    //         }
-    //         else if (apiData.agencyTechnologies.length !== 0 ) {
-    //             createAgencyForm2Api()
-    //         }
-    //         else {
-    //             toast.error('Please enter technology related to service');
-    //         }
-    //     }
-
-    // }, [apiData])
-
-
-
-    // const handleNavlink = (event) => {
-
-    // let errors = ({
-    //     agencyDomainsError: "",
-    //     agencyServicesError: "",
-    //     agencyTechnologiesError: "",
-    //     agencyMonthlyBudgetError: ""
-    // })
-
-    // if (!allDomainsData) {
-    //     console.log("domains data", allDomainsData);
-    //     setError(
-    //         {
-    //             agencyDomainsError: "Select at least one option.",
-    //             agencyServicesError: "",
-    //             agencyTechnologiesError: "",
-    //             agencyMonthlyBudgetError: ""
-    //         }
-    //     )
-    // }
-    // else if (!allServicesData) {
-    //     setError(
-    //         {
-    //             agencyDomainsError: "",
-    //             agencyServicesError: "Select at least one option.",
-    //             agencyTechnologiesError: "",
-    //             agencyMonthlyBudgetError: ""
-    //         }
-    //     )
-    // }
-    // else if (!allTechData) {
-    //     setError(
-    //         {
-    //             agencyDomainsError: "",
-    //             agencyServicesError: "",
-    //             agencyTechnologiesError: "Select at least one option.",
-    //             agencyMonthlyBudgetError: ""
-    //         }
-    //     )
-    // }
-    // else if (apiData.agencyMonthlyBudget.length === 0) {
-    //     setError(
-    //         {
-    //             agencyDomainsError: "",
-    //             agencyServicesError: "",
-    //             agencyTechnologiesError: "",
-    //             agencyMonthlyBudgetError: "Select at least one option."
-    //         }
-    //     )
-    // }
-    // else {
-    // setAgencyDomains()
-    // setAgencyTechnologies()
-    // }
-
-    // if(status==="Update"){
-    //     event.preventDefault()
-    //     handleNext()
-    //     console.log('hiii peeeps');
-    // }
-    // else if(status ==="Next")
-    //     window.location.href = "/agency-form-three"
-
+                if (selectedTechName.length > 0) {
+                    setAgencyTechnologies();
+                    if (apiData.agencyMonthlyBudget !== "") {
+                        createAgencyForm2Api()
+                    }
+                    else {
+                        toast.error("Please select a value for monthly budget.")
+                    }
+                }
+                else {
+                    toast.error("Please Select at least one Technology.")
+                }
+            }
+            else {
+                toast.error("Please Select at least one Service.")
+            }
+        }
+        else {
+            toast.error("Please Select at least one domain.")
+        }
+    };
 
     return (
         <>
             <Navbar />
             <FormPhases value1={true} value2={true} />
 
-            {loading ? <Spinner /> :
-
+            {loading ? (
+                <Spinner />
+            ) : (
                 <div className="mainTechStackForm">
                     <div className="innerTechStackForm">
                         <div className="techStackFields">
                             <div className="domainsFields">
-                                <p className="domainHeading">1. Which business sector are you targeting?</p>
+                                <p className="domainHeading">
+                                    1. Which business sector are you targeting?
+                                </p>
                                 <div className="domainFieldsCard">
-                                    {allDomainsData?.length > 0 ? allDomainsData.map((domain) => {
-                                        return (
-                                            <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)} style={{ backgroundColor: domain.selected ? '#02044a' : '#D6EAF8' }} >
-                                                <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
-                                                <p className={`${domain.domainName}`} style={{ color: domain.selected ? '#fff' : '#000' }}>{`${domain.domainName}`}</p>
-                                            </div>
-                                        )
-                                    })
-                                        :
+                                    {allDomainsData?.length > 0 ? (
+                                        allDomainsData.map((domain) => {
+                                            return (
+                                                <div
+                                                    className={`${domain.domainName}`}
+                                                    onClick={(event) => handleDomains(event)}
+                                                    style={{
+                                                        backgroundColor: domain.selected
+                                                            ? "#02044a"
+                                                            : "#D6EAF8",
+                                                    }}
+                                                >
+                                                    <img
+                                                        className={`${domain.domainName}`}
+                                                        src={domain.domainIcon}
+                                                        alt=""
+                                                    />
+                                                    <p
+                                                        className={`${domain.domainName}`}
+                                                        style={{ color: domain.selected ? "#fff" : "#000" }}
+                                                    >{`${domain.domainName}`}</p>
+                                                </div>
+                                            );
+                                        })
+                                    ) : (
                                         <p>Sorry No Data Found.</p>
-                                    }
+                                    )}
                                 </div>
                             </div>
 
                             <div className="serivcesAgency">
-                                <p className="servicesHeading">2. In which services you have good command?</p>
+                                <p className="servicesHeading">
+                                    2. In which services you have good command?
+                                </p>
                                 <div className="servicesCardsAgency">
-                                    {allServicesData?.length > 0 ? allServicesData.map((service) => {
-                                        return (
-                                            <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
-                                                <img className={`${service.serviceName}`} src={uiux} alt="" />
-                                                {/* <p style={{ color: isUiUx ? '#fff' : '#000' }}>UI/UX <br /> Design</p> */}
-                                                <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
-                                            </div>
-                                        )
-                                    })
-                                        :
+                                    {allServicesData?.length > 0 ? (
+                                        allServicesData.map((service) => {
+                                            return (
+                                                <div
+                                                    className={`${service.serviceName}`}
+                                                    onClick={(event) => handleServices(event)}
+                                                    style={{
+                                                        backgroundColor: service.selected
+                                                            ? "#02044a"
+                                                            : "#D6EAF8",
+                                                    }}
+                                                >
+                                                    <img
+                                                        className={`${service.serviceName}`}
+                                                        src={uiux}
+                                                        alt=""
+                                                    />
+                                                    {/* <p style={{ color: isUiUx ? '#fff' : '#000' }}>UI/UX <br /> Design</p> */}
+                                                    <p
+                                                        className={`${service.serviceName}`}
+                                                        style={{
+                                                            color: service.selected ? "#fff" : "#000",
+                                                        }}
+                                                    >{`${service.serviceName}`}</p>
+                                                </div>
+                                            );
+                                        })
+                                    ) : (
                                         <p>Sorry No Data Found.</p>
-                                    }
+                                    )}
                                 </div>
                             </div>
 
@@ -392,11 +357,32 @@ function AgencyForm2(props) {
                                 <p>3. What is the monthly budget?</p>
                                 <div className="domainBudgetOptions">
                                     <FormControl component="fieldset">
-                                        <RadioGroup aria-label="budget" name="budget" value={apiData.agencyMonthlyBudget} onChange={handleChange}>
-                                            <FormControlLabel value="1000" control={<Radio />} label="1000$-3000$" />
-                                            <FormControlLabel value="3000" control={<Radio />} label="3000$-5000$" />
-                                            <FormControlLabel value="5000" control={<Radio />} label="50000$-7000$" />
-                                            <FormControlLabel value="7000" control={<Radio />} label="7000$-10000$" />
+                                        <RadioGroup
+                                            aria-label="budget"
+                                            name="budget"
+                                            value={apiData.agencyMonthlyBudget}
+                                            onChange={handleChange}
+                                        >
+                                            <FormControlLabel
+                                                value="1000"
+                                                control={<Radio />}
+                                                label="1000$-3000$"
+                                            />
+                                            <FormControlLabel
+                                                value="3000"
+                                                control={<Radio />}
+                                                label="3000$-5000$"
+                                            />
+                                            <FormControlLabel
+                                                value="5000"
+                                                control={<Radio />}
+                                                label="50000$-7000$"
+                                            />
+                                            <FormControlLabel
+                                                value="7000"
+                                                control={<Radio />}
+                                                label="7000$-10000$"
+                                            />
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
@@ -404,46 +390,66 @@ function AgencyForm2(props) {
 
                             <div className="nextBtn">
                                 {/* <NavLink to="/agency-form-one" ><i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
-                                <NavLink to="/agency-form-one" style={{ textDecoration: "none" }}>
+                                <NavLink
+                                    to="/agency-form-one"
+                                    style={{ textDecoration: "none" }}
+                                >
                                     <button className="next-click">
                                         <i className="fa fa-long-arrow-left" aria-hidden="true" />
                                         Back
                                     </button>
                                 </NavLink>
-                                {/* <NavLink to="/agency-form-three" >
-                            Next <i className="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                                {/* <NavLink to="/agency-form-three" style={{textDecoration:"none"}} onClick = {(event)=>{handleNav(event)}}> */}
-                                <button style={{ backgroundColor: 'blue' }} className="next-click" onClick={(event) => { handleNext(event) }}>
+                                <button
+                                    style={{ backgroundColor: "blue" }}
+                                    className="next-click"
+                                    onClick={(event) => {
+                                        handleNext(event);
+                                    }}
+                                >
                                     Next
                                     <i className="fa fa-long-arrow-right" aria-hidden="true" />
                                 </button>
                                 {/* </NavLink> */}
                             </div>
-
                         </div>
                         <div className="serviceFieldsOptions">
                             <div className="servicesContainer">
                                 <div className="serviceSelectionInput">
-                                    {
-                                        visibleTechNames?.length ? (<>
+                                    {visibleTechNames?.length ? (
+                                        <>
                                             <p className="uiuxtext">Select Technologies</p>
-                                            <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                                <MultiSearchSelect searchable={true} showTags={true} multiSelect={true} width="23vw" onSelect={handleTechSelect} options={visibleTechNames} primaryColor="#D6EAF8"
+                                            <div
+                                                style={{
+                                                    display: "flex",
+                                                    justifyContent: "flex-start",
+                                                }}
+                                            >
+                                                <MultiSearchSelect
+                                                    searchable={true}
+                                                    showTags={true}
+                                                    multiSelect={true}
+                                                    width="23vw"
+                                                    onSelect={handleTechSelect}
+                                                    options={visibleTechNames}
+                                                    primaryColor="#D6EAF8"
                                                     secondaryColor="#02044a"
                                                     textSecondaryColor="#fff"
                                                     className="UIUXServices"
-                                                    textColor="#02044a" />
+                                                    textColor="#02044a"
+                                                />
                                             </div>
-                                        </>) : <p>Please select one or more services.</p>
-                                    }
+                                        </>
+                                    ) : (
+                                        <p>Please select one or more services.</p>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
+            )}
         </>
-    )
+    );
 }
 
-export default AgencyForm2
+export default AgencyForm2;
