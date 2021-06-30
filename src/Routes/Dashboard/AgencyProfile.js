@@ -31,7 +31,9 @@ import Moment from "react-moment";
 function AgencyProfile(props) {
   const { id } = useParams();
   console.log(props, "props");
-  const Role = "agency";
+
+  const Role = localStorage.getItem('role');
+  console.log(Role);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -113,7 +115,7 @@ function AgencyProfile(props) {
         <div>
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
-              {Role === "agency" ? (
+              {Role === "Agency" ? (
                 agencyProfileData.productId === undefined ? (
                   <>
                     <span>You haven't added any product.</span>
@@ -134,12 +136,12 @@ function AgencyProfile(props) {
                     onClick={() =>
                       props.history.push({
                         pathname: `/product-details:${agencyProfileData.productId}`,
-                        condition: "Agency",
+                        condition: id !== '' ? 'Agency' : 'Client'
                       })
                     }
                   >
                     View Your Product{" "}
-                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
                   </button>
                 )
               ) : (

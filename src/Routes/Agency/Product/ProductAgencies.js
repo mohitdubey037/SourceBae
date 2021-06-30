@@ -190,10 +190,18 @@ function ProductAgencies(props) {
     return (
         <>
             <ClientNavbar />
+            <div
+                className="backArrow_productAgencies"
+                onClick={() => {
+                    props.history.goBack();
+                }}
+            >
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </div>
 
-            <div className="mainAgencyList">
-                <div className="innerAgencyList">
-                    <div className="AgencyCardsArea">
+            <div className="mainAgencyList_productAgencies">
+                <div className="innerAgencyList_productAgencies">
+                    <div className="AgencyCardsArea_productAgencies">
                         {err ?
                             <>
                                 <div style={{ textAlign: 'center', width: '100%' }}>
@@ -226,7 +234,7 @@ function ProductAgencies(props) {
                                             <div className="profileButton">
                                                 <p onClick={() => props.history.push({
                                                     pathname: `/agency-profile:${value.agencyId._id}`,
-                                                    condition: `Client`
+                                                    // condition: `Client`
                                                 })}>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
                                             </div>
                                         </div>
@@ -294,8 +302,8 @@ function ProductAgencies(props) {
                             })
                         }
                     </div>
-                    <div className="agencyFilterArea">
-                        <div className='filterForm'>
+                    <div className="agencyFilterArea_productAgencies">
+                        <div className='filterForm_productAgencies'>
                             <div className="filterHeading">
                                 <p className="filterText">Filter</p>
                                 <div style={{ cursor: 'pointer' }}><p>Clear All</p></div>
@@ -348,7 +356,7 @@ function ProductAgencies(props) {
                                 </FormControl>
                             </div>
 
-                            <div style={{border: 'none'}} className="officeVisitFilter">
+                            <div style={{ border: 'none' }} className="officeVisitFilter">
                                 <p>Funding type:</p>
                                 <FormControl className={classes.formControl}>
                                     <Select

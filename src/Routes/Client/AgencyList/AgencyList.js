@@ -14,7 +14,7 @@ import Spinner from "../../../Components/Spinner/Spinner";
 function AgencyList(props) {
   const Role = "client";
   let { projectId } = useParams();
-  
+
 
   projectId = projectId ? helper.cleanParam(projectId) : "";
   const [agencyList, setAgencyList] = useState([]);
@@ -88,7 +88,7 @@ function AgencyList(props) {
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
         const tempAgencyList = [...agencyList]
-        tempAgencyList[index].isAgencyShortListed=true
+        tempAgencyList[index].isAgencyShortListed = true
         setAgencyList(tempAgencyList)
       })
       .catch((err) => {
@@ -102,7 +102,7 @@ function AgencyList(props) {
       .patch(`/api/${Role}/projects/propose/${projectId}`, QuotationFormData)
       .then(function (response) {
         const tempAgencyList = [...agencyList]
-        tempAgencyList[index].isAgencyAskedForQuotation=true
+        tempAgencyList[index].isAgencyAskedForQuotation = true
         setAgencyList(tempAgencyList)
       })
       .catch((err) => {
@@ -113,7 +113,7 @@ function AgencyList(props) {
 
   useEffect(() => {
     console.log(shortlistFormData)
-  },[shortlistFormData]);
+  }, [shortlistFormData]);
 
   return (
     <>
@@ -122,18 +122,23 @@ function AgencyList(props) {
         <Spinner />
       ) : (
         <>
-          <div className="projectDetailsInfo">
-            <div className="innerprojectDetailsInfo">
-              <p>One Sourcing</p>
-              <span>
-                {" "}
-                <em> Buget:-</em> $5000-$1000
-              </span>
-            </div>
+          <div
+            className="backArrow_agencyList"
+            onClick={() => {
+              props.history.goBack();
+            }}
+          >
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
           </div>
-
-          <div className="mainAgencyList">
-            <div className="innerAgencyList">
+          <div className="innerprojectDetailsInfo_agencyList">
+            <p>One Sourcing</p>
+            <span>
+              {" "}
+              <em> Buget:-</em> $5000-$1000
+            </span>
+          </div>
+          <div className="mainAgencyList_agencyList">
+            <div className="innerAgencyList_agencyList">
               <div className="AgencyCardsArea">
                 {agencyList?.length > 0 &&
                   agencyList.map((agency, index) => {
@@ -156,10 +161,10 @@ function AgencyList(props) {
                           </div>
                           <div className="profileButton">
                             <p onClick={() => props.history.push({
-                              pathname: `/agency-profile:${agency._id}`,
+                              pathname: `/product-details:${agency.productId}`,
                               condition: `Client`
                             })}>
-                              View Profile{" "}
+                              View Agency Product{" "}
                               <i
                                 class="fa fa-angle-double-right"
                                 aria-hidden="true"
@@ -236,7 +241,7 @@ function AgencyList(props) {
                     );
                   })}
               </div>
-              <div className="agencyFilterArea">
+              <div className="agencyFilterArea_agencyList">
                 <div className="filterForm">
                   <div className="filterHeading">
                     <p className="filterText">Filter</p>

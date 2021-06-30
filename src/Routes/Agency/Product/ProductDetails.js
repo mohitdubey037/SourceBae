@@ -161,7 +161,8 @@ function ProductDetails(props) {
         ]
 
     const [open, setOpen] = useState(false);
-    const [modalForm, setModalForm] = useState({});
+    const [modalForm, setModalForm] = useState({
+    });
 
     const formHandler = (event) => {
         const { name, value } = event.target
@@ -172,14 +173,15 @@ function ProductDetails(props) {
     }
 
     const dummyForm = {
-        userId,
+        clientId : localStorage.getItem('userId'),
         productId
     }
 
     const postSubmitHandler = () => {
         instance.post(`/api/${Role}/investments/create`, dummyForm)
             .then(response => {
-                console.log(response)
+                console.log(response);
+                onCloseModal();
             })
             .catch(err => {
                 console.log(err);
@@ -194,7 +196,7 @@ function ProductDetails(props) {
             {condition === 'Agency' ? <Navbar /> : <ClientNavbar />}
             {err ?
                 <>
-                    <div style={{ textAlign: 'center', width: '100%' }}>
+                    <div style={{ textAlign: 'center', width: '100%', marginTop: '20px' }}>
                         <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
                         <h6>{err}</h6>
                     </div>
@@ -203,8 +205,8 @@ function ProductDetails(props) {
                 details.length > 0 && details?.map((value, index) => {
                     return (
                         <div className="mainProductDetails">
-                            <div className="innerProductDetails">
-                                <div className="productDetailsArea">
+                            <div className={Role === 'Client' ? 'innerProductDetails' : 'innerProductDetails_conditional'}>
+                                <div className={Role === "Client" ? 'productDetailsArea' : 'productDetailsArea_conditional'}>
                                     <div className="productDetailsHeader">
                                         <div className="productDetailsImage">
                                             <img src={logo} alt="" />
@@ -357,29 +359,33 @@ function ProductDetails(props) {
                                             <div className="moreAgencyHeading">
                                                 <h3>Similar Agencies</h3>
                                             </div>
-                                            <div className="moreAgencyList">
+                                            <div className="moreAgencyList_productDetails">
 
                                                 {
-                                                    similarAgency.length > 0 && similarAgency.map((value) => {
+                                                    similarAgency.length > 0 ? similarAgency.map((value) => {
                                                         return (
-                                                            <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard">
-                                                                <div className="moreAgencyLogo">
-                                                                    <div>
-                                                                        <img src={logo} alt="" />
+                                                            <>
+                                                                <div style={{ cursor: 'pointer' }} onClick={() => props.history.push(`/product-details/:${value._id}`)} className="moreAgencyCard_productDetails">
+                                                                    <div className="moreAgencyLogo_productDetails">
+                                                                        <div>
+                                                                            <img src={logo} alt="" />
+                                                                        </div>
+                                                                            <h5>{value.agencyId.agencyName}</h5>
+                                                                    </div>
+                                                                    <div className="moreAgencyInfo_productDetails">
+                                                                        <p>{value.agencyId.agencyDescription}</p>
                                                                     </div>
                                                                 </div>
-                                                                <div className="moreAgencyInfo">
-                                                                    <h6>{value.agencyId.agencyName}</h6>
-                                                                    <p>{value.agencyId.agencyDescription}</p>
-                                                                </div>
-                                                            </div>
+                                                                {/* <div className="moreAgencySeeMore">
+                                                                    <p>See More</p>
+                                                                </div> */}
+                                                            </>
                                                         )
                                                     })
+                                                        : <p>No Similar Agencies Found</p>
                                                 }
                                             </div>
-                                            <div className="moreAgencySeeMore">
-                                                <p>See More</p>
-                                            </div>
+
                                         </div>
                                     </div>
                                 }

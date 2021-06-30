@@ -48,7 +48,7 @@ function HireAgencyForm2(props) {
     id: projectId,
     projectDomainId: "",
     projectExpertiseRequired: [],
-    agencyExperience:""
+    agencyExperience: ""
   });
 
   const [allDomainsData, setAllDomainsData] = useState([]);
@@ -61,10 +61,10 @@ function HireAgencyForm2(props) {
   const classes = useStyles();
 
   const handleChange = (event) => {
-    const {name, value} = event.target
+    const { name, value } = event.target
     setApiData({
-        ...apiData,
-        [name]:value
+      ...apiData,
+      [name]: value
     })
   };
 
@@ -92,21 +92,21 @@ function HireAgencyForm2(props) {
   const getAllDomains = () => {
     instance.get(`api/${Role}/domains/all`)
       .then(function (response) {
-      console.log(response);
-      const domainNames = response.map((domain) => {
-        return {
-          ...domain,
-          selected: false,
-        };
-      });
-      setAllDomainsData(domainNames);
-      setLoading(false);
+        console.log(response);
+        const domainNames = response.map((domain) => {
+          return {
+            ...domain,
+            selected: false,
+          };
+        });
+        setAllDomainsData(domainNames);
+        setLoading(false);
       })
-    .catch(err => {
-                setLoading(false)
-                console.log(err?.response?.data?.message)
-                setErr(err?.response?.data?.message)
-            })
+      .catch(err => {
+        setLoading(false)
+        console.log(err?.response?.data?.message)
+        setErr(err?.response?.data?.message)
+      })
   };
 
   const getExpertiseOption = () => {
@@ -143,23 +143,23 @@ function HireAgencyForm2(props) {
 
   const handleSubmit = () => {
     setLoading(true)
-    instance.post(`/api/${Role}/projects/create`,apiData)
-    .then(function(response){
+    instance.post(`/api/${Role}/projects/create`, apiData)
+      .then(function (response) {
         console.log(response);
         // setButtonStatus("Next");
         setLoading(false);
         props.history.push(`/hire-agency-form-three:${projectId}`)
-    })
-    .catch(err => {
-      setLoading(false)
-    })
+      })
+      .catch(err => {
+        setLoading(false)
+      })
   }
 
   useEffect(() => {
     getExpertiseOption();
     selectedDomain?._id && setApiData({
-        ...apiData,
-        projectDomainId:selectedDomain._id
+      ...apiData,
+      projectDomainId: selectedDomain._id
     })
   }, [selectedDomain]);
 
@@ -168,12 +168,12 @@ function HireAgencyForm2(props) {
   })
 
 
-  useEffect(()=>{
+  useEffect(() => {
     setApiData({
-        ...apiData,
-        projectExpertiseRequired:selected.map((service)=>{return service.value})
+      ...apiData,
+      projectExpertiseRequired: selected.map((service) => { return service.value })
     })
-  },[selected])
+  }, [selected])
 
   useEffect(() => {
     getAllDomains();
@@ -181,126 +181,133 @@ function HireAgencyForm2(props) {
   return (
     <>
       <ClientNavbar />
-
-      {loading ? <Spinner/> : 
-      <div className="mainHireAgencyFormTwo">
-      <div className="innerHireAgencyFormTwo">
-        <div className="techStackFields">
-          <div className="stepCheck">
-            <p>Step 2</p>
-          </div>
-
-          <div className="serivcesHireAgency">
-            <p className="servicesAgencyHeading">
-              1. In which services you have good command?
-            </p>
-
-            <div className="servicesCardsHireAgency">
-              {allDomainsData.map((domain) => {
-                return (
-                  <div
-                    className={`${domain.domainName}`}
-                    onClick={(event) => handleDomains(event)}
-                    style={{
-                      backgroundColor: domain.selected
-                        ? "#02044a"
-                        : "#D6EAF8",
-                    }}
-                  >
-                    <img
-                      className={`${domain.domainName}`}
-                      src={domain.domainIcon}
-                      alt=""
-                    />
-                    <p
-                      className={`${domain.domainName}`}
-                      style={{ color: domain.selected ? "#fff" : "#000" }}
-                    >{`${domain.domainName}`}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="monthlyBudget">
-            <p>
-              2. How experience should the agency be in the domain of the
-              project?
-            </p>
-
-            <div className="domainBudgetOptions">
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="agencyExperience"
-                  name="agencyExperience"
-                  value={apiData.agencyExperience}
-                  onChange={handleChange}
-                >
-                  <FormControlLabel
-                    color="primary"
-                    value="capable"
-                    control={<BlueRadio className={classes.root} />}
-                    label="Capable"
-                  />
-                  <FormControlLabel
-                    value="skilled"
-                    control={<BlueRadio />}
-                    label="Skilled"
-                  />
-                  <FormControlLabel
-                    value="proficient"
-                    control={<BlueRadio />}
-                    label="Proficient"
-                  />
-                  <FormControlLabel
-                    value="accomplished"
-                    control={<BlueRadio />}
-                    label="Accomplished"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </div>
-          </div>
-
-          <div className="nextbuttton">
-            <div
-              onClick={() => (props.history.push("/hire-agency-form-one"))}
-            >
-              <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
-            </div>
-            <div
-              /*style={{backgroundColor:colors[buttonStatus]}}*/
-              onClick={() =>
-                handleSubmit()
-              }
-            >
-              Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-        <div className="serviceFieldsOptions">
-          <div className="servicesHireAgencyContainer">
-            <div className="serviceSelectionInput">
-
-              {selectedDomain && options ? (
-                <>
-                  <p className="uiuxtext">
-                    Select {selectedDomain.domainName} services
-                  </p>
-                  <MultiSelect
-                    options={options}
-                    value={selected}
-                    onChange={setSelected}
-                    labelledBy="Select"
-                  />
-                </>
-              ) : null}
-            </div>
-          </div>
-        </div>
+      <div
+        className="backArrow_hireAgencyForm2"
+        onClick={() => {
+          props.history.goBack();
+        }}
+      >
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
       </div>
-    </div>
-    }
+      {loading ? <Spinner /> :
+        <div className="mainHireAgencyFormTwo">
+          <div className="innerHireAgencyFormTwo">
+            <div className="techStackFields">
+              <div className="stepCheck">
+                <p>Step 2</p>
+              </div>
+
+              <div className="serivcesHireAgency">
+                <p className="servicesAgencyHeading">
+                  1. In which services you have good command?
+                </p>
+
+                <div className="servicesCardsHireAgency">
+                  {allDomainsData.map((domain) => {
+                    return (
+                      <div
+                        className={`${domain.domainName}`}
+                        onClick={(event) => handleDomains(event)}
+                        style={{
+                          backgroundColor: domain.selected
+                            ? "#02044a"
+                            : "#D6EAF8",
+                        }}
+                      >
+                        <img
+                          className={`${domain.domainName}`}
+                          src={domain.domainIcon}
+                          alt=""
+                        />
+                        <p
+                          className={`${domain.domainName}`}
+                          style={{ color: domain.selected ? "#fff" : "#000" }}
+                        >{`${domain.domainName}`}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="monthlyBudget">
+                <p>
+                  2. How experience should the agency be in the domain of the
+                  project?
+                </p>
+
+                <div className="domainBudgetOptions">
+                  <FormControl component="fieldset">
+                    <RadioGroup
+                      aria-label="agencyExperience"
+                      name="agencyExperience"
+                      value={apiData.agencyExperience}
+                      onChange={handleChange}
+                    >
+                      <FormControlLabel
+                        color="primary"
+                        value="capable"
+                        control={<BlueRadio className={classes.root} />}
+                        label="Capable"
+                      />
+                      <FormControlLabel
+                        value="skilled"
+                        control={<BlueRadio />}
+                        label="Skilled"
+                      />
+                      <FormControlLabel
+                        value="proficient"
+                        control={<BlueRadio />}
+                        label="Proficient"
+                      />
+                      <FormControlLabel
+                        value="accomplished"
+                        control={<BlueRadio />}
+                        label="Accomplished"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </div>
+              </div>
+
+              <div className="nextbuttton">
+                <div
+                  onClick={() => (props.history.push("/hire-agency-form-one"))}
+                >
+                  <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                </div>
+                <div
+                  /*style={{backgroundColor:colors[buttonStatus]}}*/
+                  onClick={() =>
+                    handleSubmit()
+                  }
+                >
+                  Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+            <div className="serviceFieldsOptions">
+              <div className="servicesHireAgencyContainer">
+                <div className="serviceSelectionInput">
+
+                  {selectedDomain && options ? (
+                    <>
+                      <p className="uiuxtext">
+                        Select {selectedDomain.domainName} services
+                      </p>
+                      <MultiSelect
+                        options={options}
+                        value={selected}
+                        onChange={setSelected}
+                        labelledBy="Select"
+                      />
+                    </>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
     </>
   );
 }

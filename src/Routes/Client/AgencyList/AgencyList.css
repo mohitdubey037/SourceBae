@@ -1,28 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
 
+.backArrow_agencyList{
+  position: absolute;
+  top: 12%;
+  left:1.5%;
+  z-index: 100;
+}
+
+.backArrow_agencyList i{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px 2px rgba(0,0,0,0.2);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
 .projectDetailsInfo {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.innerprojectDetailsInfo {
-  width: 90%;
-  transform: translateY(100%);
+
+.innerprojectDetailsInfo_agencyList {
+  width: 97%;
+  margin: auto;
+  margin-top: 68px;
+  /* transform: translateY(100%); */
   line-height: 0.5;
-  margin: 2% 0;
+  /* margin: 2% 0; */
 }
-.innerprojectDetailsInfo p {
+.innerprojectDetailsInfo_agencyList p {
   font-size: 2rem;
   /* font-family: 'Fredoka One', cursive; */
   font-weight: bold;
   font-family: 'Work Sans', sans-serif;
 }
-.innerprojectDetailsInfo span {
+.innerprojectDetailsInfo_agencyList span {
   font-family: 'Poppins';
   color: #777;
 }
-.innerprojectDetailsInfo span em {
+.innerprojectDetailsInfo_agencyList span em {
   color: #000;
 }
 
@@ -32,8 +55,8 @@
   justify-content: center;
   align-items: center;
 }
-.innerAgencyList {
-  margin-top: 5%;
+.innerAgencyList_agencyList {
+  margin-top: 2%;
   width: 90%;
   display: flex;
   justify-content: space-between;
@@ -234,7 +257,8 @@
   color: #fff;
 }
 
-.agencyFilterArea {
+.agencyFilterArea_agencyList {
+  margin-top: '2px';
   width: 25%;
   position: relative;
   /* overflow: hidden; */

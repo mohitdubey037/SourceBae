@@ -163,7 +163,7 @@ const ClientNavbar = ({ isVisible }, props) => {
 
                             </div>
                         </div>
-                        <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
+                        <div>
                             <div className="clientNotification_clientNavbar">
                                 <img style={{height: '40px', width: '40px'}}onClick={() => routerHistory.push("/get-client-hire-developer")} src={HireDeveloperLogo} alt="" />
                             </div>

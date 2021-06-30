@@ -209,6 +209,14 @@ function ShortTerm(props) {
     <>
       <ClientNavbar />
       <div className="mainShortTerm">
+      <div
+          className="backArrow_shortTerm"
+          onClick={() => {
+            props.history.goBack();
+          }}
+        >
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </div>  
         <div className="innerShortTerm">
           <div className="shortTermForm">
             <div className="shortTermHeading">
@@ -286,16 +294,16 @@ function ShortTerm(props) {
             <div className="uploadBlock">
               <div className="fileUploadButton">
                 <FilePicker
-                  extensions={["pdf", "jpg", "png"]}
+                  extensions={["pdf", "jpg", "png", "xlsx"]}
                   onChange={(fileObj) => fileHandler(fileObj)}
                 >
                   <div>
                     <i class="fa fa-upload" aria-hidden="true"></i>Upload
-                    <p>{projectFiles?.name}</p>
                   </div>
                 </FilePicker>
               </div>
               <div className="uploadInfo">
+                <p>{projectFiles?.name}</p>
                 <p>
                   Upload an image or a document that might be helpful in
                   explaining your project in brief.

@@ -86,6 +86,7 @@ const Register = (props) => {
     const [token, setToken] = useState(null);
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
+    console.log(role);
 
     if (!(role === "Agency" || role === "Client"))
         props.history.push("/page-not-found")
@@ -279,8 +280,8 @@ const Register = (props) => {
 
     const handleSubmit = (Role, Form) => {
         if (handleErrorsValidation(Role)) {
-            const apiRole = helper.lowerize(Role)
-            signUpApi(apiRole, Form)
+            // const apiRole = helper.lowerize(Role)
+            signUpApi(Role, Form)
         }
     }
 
