@@ -31,14 +31,9 @@ import { toast } from "react-toastify";
 // })
 
 function AgencyForm2(props) {
-  const colors = {
-    Update: "yellow",
-    Next: "green",
-  };
 
   const Role = "agency";
   const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("Update");
 
   // selecting Domains
   const [allDomainsData, setAllDomainsData] = useState([]);
