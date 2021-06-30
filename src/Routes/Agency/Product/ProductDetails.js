@@ -161,7 +161,8 @@ function ProductDetails(props) {
         ]
 
     const [open, setOpen] = useState(false);
-    const [modalForm, setModalForm] = useState({});
+    const [modalForm, setModalForm] = useState({
+    });
 
     const formHandler = (event) => {
         const { name, value } = event.target
@@ -172,7 +173,7 @@ function ProductDetails(props) {
     }
 
     const dummyForm = {
-        userId,
+        clientId : localStorage.getItem('userId'),
         productId
     }
 
