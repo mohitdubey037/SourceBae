@@ -308,8 +308,15 @@ function AgencyForm4(props) {
     return (
         <>
             <Navbar />
-
             <FormPhases value1={true} value2={true} value3={true} value4={true} />
+            <div
+                className="backArrow_agencyForm4"
+                onClick={() => {
+                    props.history.goBack();
+                }}
+            >
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </div>
 
             <div className="mainSocialLinks">
                 <div className="innerSocialLinks">
