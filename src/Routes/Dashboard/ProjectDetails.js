@@ -1,5 +1,5 @@
 import RespondedDetails from './Quotation/RespondedDetails';
-import React, {useState} from 'react'
+import React from 'react'
 import ClientNavbar from '../Client/ClientNavbar';
 
 function ProjectDetails() {

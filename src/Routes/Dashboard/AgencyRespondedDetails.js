@@ -11,6 +11,8 @@ import * as helper from "../../shared/helper";
 import { useHistory } from "react-router-dom";
 import Moment from 'react-moment';
 import { toast } from "react-toastify";
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal'
 
 let isRepliedToClient = false;
 
@@ -22,7 +24,8 @@ const CommentBox = (props) => {
   });
 
   const [file, setFile] = useState(null);
-
+  const [open, setOpen] = useState(false);
+  const [finalCost, setFinalCost] = useState(null)
   const handleChange = (event) => {
     const { name, value } = event.target;
     setApiData({
@@ -31,6 +34,24 @@ const CommentBox = (props) => {
     });
   };
 
+  
+  const handleProjectAcceptance = ()=>{
+    if(finalCost!==null){
+       instance.patch(`api/client/projects/proposal-action/${props.projectId}`,{
+      agencyId: localStorage.getItem("userId") || "",
+      isQuotationAcceptedByAgency: true,
+      projectFinalCost: finalCost
+    })
+    .then(function(response){
+      console.log(response)
+      setOpen(false)
+    })
+    }
+    else{
+      toast.error("Final cost cannot be empty.")
+    }
+   
+  }
   function uploadMedia() {
     console.log(file, "file");
     if(file){
@@ -216,17 +237,37 @@ const CommentBox = (props) => {
           )}
         </div>
 
-        <div className={`${props.isProposalActionActive ? "":"disabled"}`}>
+        {!(props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient) && <div className={`${(props.isProposalActionActive && props.isQuotationAcceptedByClient) ? "":"disabled"}`}>
           <div>
             <p>Accept or Reject the Project.</p>
           </div>
 
           <div className="detailsButtons">
-            <button className="acceptButton">Accept</button>
-            <button className="rejectButton">Withdraw</button>
+          {props.isQuotationAcceptedByAgency ? <button className="rejectButton">Withdraw</button> :<button className="acceptButton" onClick = {()=>{setOpen(true)}}>Accept</button> }
           </div>
-        </div>
+        </div>}
       </div>
+      <Modal open={open} onClose={()=>{setOpen(false)}} classNames={{
+                overlay: 'customOverlayAgencyProduct',
+                modal: 'customModalAgencyProduct',
+            }} center>
+                <div className="modalHeaderProduct">
+                    <h2>Accept Project</h2>
+                </div>
+                <div className="productModalForm">
+
+                    <div className="productModalInput">
+                        <p>Final Project Cost</p>
+                        <input 
+                        type = "number"
+                        onChange={(event)=>{setFinalCost(event.target.value)}} name="finalCost"  />
+                    </div>
+                </div>
+                <div className="connectedButton">
+                    <p onClick={handleProjectAcceptance}>Accept<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                </div>
+            </Modal>
+       
     </div>
   );
 };
@@ -418,6 +459,7 @@ function AgencyRespondedDetails(props) {
                 isQuotationAcceptedByClient={
                   project.projectProposals[0].isQuotationAcceptedByClient
                 }
+                isQuotationAcceptedByAgency = {project.projectProposals[0].isQuotationAcceptedByAgency}
               />
             ) : (
               project?.projectProposals && (
@@ -449,6 +491,7 @@ function AgencyRespondedDetails(props) {
                   isQuotationAcceptedByClient={
                     project.projectProposals[0].isQuotationAcceptedByClient
                   }
+                  isQuotationAcceptedByAgency = {project.projectProposals[0].isQuotationAcceptedByAgency}
                 />
               )
             )}
