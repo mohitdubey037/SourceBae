@@ -35,6 +35,8 @@ import GetHireDeveloper from './Routes/Agency/GetHireDeveloper/GetHireDeveloper'
 import GetClientHireDeveloper from './Routes/Client/ClientHireDeveloper/getClientHireDeveloper';
 import ClientOneHireDeveloper from './Routes/Client/ClientOneHireDeveloper/ClientOneHireDeveloper';
 import SharedDevelopers from './Routes/Client/SharedDevelopers/SharedDevelopers';
+import ForgotPassword from './Routes/ForgotPassword/ForgotPassword';
+
 import { withRouter } from "react-router";
 
 const App = (props) => {
@@ -66,6 +68,7 @@ const App = (props) => {
     <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />
     <Route exact path="/agency-project-details" component={AgencyProjectDetails} />
     <CustomRoute condition='Client' exact path="/product-agencies" component={ProductAgencies} />
+    <Route exact path='/forgot-password:key' component={ForgotPassword} />
 
     {/* Client Components  */}
     <CustomRoute condition="Client" exact path="/client-one-hire-developer:hireDeveloperId" component={ClientOneHireDeveloper} />
