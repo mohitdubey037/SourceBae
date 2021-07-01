@@ -219,10 +219,6 @@ function AgencyForm2(props) {
 
     useEffect(() => {
         setSelectedServicesId(getSelectedServicesIds(allServicesData));
-        // setApiData({
-        //   ...apiData,
-        //   agencyServices: getSelectedServicesIds(allServicesData),
-        // });
     }, [allServicesData]);
 
     useEffect(() => {
