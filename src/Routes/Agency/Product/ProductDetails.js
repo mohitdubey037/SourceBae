@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router";
 
@@ -19,10 +20,7 @@ function ProductDetails(props) {
     let { productId } = useParams();
     productId = productId ? helper.cleanParam(productId) : "";
 
-    // let productId = _id;
     const Role = localStorage.getItem('role');
-    const userId = localStorage.getItem('userId')
-    // let details = [props.location.state];
     const [details, setDetails] = useState([])
     const [similarAgency, setSimilarAgency] = useState([])
     const [detailsInJson, setDetailsInJson] = useState()
@@ -271,8 +269,8 @@ function ProductDetails(props) {
                                                                     return (
                                                                         <>
                                                                             {
-                                                                                value?.heading == 'Founders' ?
-                                                                                    <><a target="_blank" href={val?.ans}>{val?.ans}</a> <br /> <br /> </>
+                                                                                value?.heading === 'Founders' ?
+                                                                                    <><a target="_blank" href={val?.ans} rel="noreferrer">{val?.ans}</a> <br /> <br /> </>
                                                                                     :
                                                                                     <p>{val?.ans}</p>
                                                                             }
@@ -334,8 +332,8 @@ function ProductDetails(props) {
                                                                         return (
                                                                             <>
                                                                                 {
-                                                                                    value?.heading == 'Feature Link' || value?.heading == 'Platform Link' ?
-                                                                                        <><a target="_blank" href={val?.ans}>{val?.ans}</a> <br /> <br /> </>
+                                                                                    value?.heading === 'Feature Link' || value?.heading === 'Platform Link' ?
+                                                                                        <><a target="_blank" href={val?.ans}  rel="noreferrer">{val?.ans}</a> <br /> <br /> </>
                                                                                         :
                                                                                         <p>{val?.ans}</p>
                                                                                 }

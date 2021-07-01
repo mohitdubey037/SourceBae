@@ -1,21 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import './Responded.css'
 import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
-import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
 import {withRouter} from 'react-router';
 
 function Responded(props) {
-    const routerHistory = useHistory();
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
     console.log(Role);
     const [err, setErr] = useState();
     const [projects, setProjects] = useState([]);
-    const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const getAllReceivedData = () => {
@@ -25,7 +23,6 @@ function Responded(props) {
                 setLoading(false);
                 console.log(response);
                 setProjects(response.projects);
-                setStatuses(response.statuses);
             })
             .catch(err => {
                 setLoading(false)
@@ -60,7 +57,7 @@ function Responded(props) {
                             :
                             projects.map((s) => {
                                 return (
-                                    isDetail == false ? (
+                                    isDetail === false ? (
                                         <div className="respondedCard">
                                             <div className="bgCircle"></div>
                                             <div className="leftBorder"></div>

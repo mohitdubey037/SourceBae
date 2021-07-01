@@ -1,7 +1,6 @@
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@material-ui/core'
 import { ExpandMore } from '@material-ui/icons'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import colors from '../../Constants/colors'
 import { useWindowDimensions } from '../../Utils/commonFunctions'
 // import logo from '../../assests/images/Logo/logo.png'
