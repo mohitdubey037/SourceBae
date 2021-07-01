@@ -32,7 +32,7 @@ import { toast } from "react-toastify";
 
 function AgencyForm2(props) {
 
-    const Role = "agency";
+    const Role = localStorage.getItem('role');
     const [loading, setLoading] = useState(true);
 
     // selecting Domains
@@ -268,7 +268,14 @@ function AgencyForm2(props) {
         <>
             <Navbar />
             <FormPhases value1={true} value2={true} />
-
+            <div
+                className="backArrow_agencyForm2"
+                onClick={() => {
+                    props.history.goBack();
+                }}
+            >
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </div>
             {loading ? (
                 <Spinner />
             ) : (

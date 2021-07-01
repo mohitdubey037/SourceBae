@@ -285,11 +285,9 @@ function HireAgencyForm2(props) {
                 </div>
               </div>
             </div>
-            <div className="serviceFieldsOptions">
+            {selectedDomain && options ? ( <div className="serviceFieldsOptions">
               <div className="servicesHireAgencyContainer">
                 <div className="serviceSelectionInput">
-
-                  {selectedDomain && options ? (
                     <>
                       <p className="uiuxtext">
                         Select {selectedDomain.domainName} services
@@ -301,10 +299,9 @@ function HireAgencyForm2(props) {
                         labelledBy="Select"
                       />
                     </>
-                  ) : null}
                 </div>
               </div>
-            </div>
+            </div> ) : "Please Select a Service."}
           </div>
         </div>
       }

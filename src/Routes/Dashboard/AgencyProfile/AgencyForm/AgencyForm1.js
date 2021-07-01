@@ -422,6 +422,14 @@ function AgencyForm1(props) {
         <>
             <Navbar />
             <FormPhases value1={true} />
+            <div
+                className="backArrow_agencyForm1"
+                onClick={() => {
+                    props.history.goBack();
+                }}
+            >
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </div>
             {loading ? <Spinner /> :
                 <div className="mainPersonelDetailsForm">
                     <div className="innerPersonelDetailsForm">
