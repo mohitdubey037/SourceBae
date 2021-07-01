@@ -9,10 +9,10 @@ import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { useHistory } from "react-router-dom";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 import { toast } from "react-toastify";
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal'
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 
 let isRepliedToClient = false;
 
@@ -25,7 +25,7 @@ const CommentBox = (props) => {
 
   const [file, setFile] = useState(null);
   const [open, setOpen] = useState(false);
-  const [finalCost, setFinalCost] = useState(null)
+  const [finalCost, setFinalCost] = useState(null);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setApiData({
@@ -34,42 +34,50 @@ const CommentBox = (props) => {
     });
   };
 
-  
-  const handleProjectAcceptance = ()=>{
-    if(finalCost!==null){
-       instance.patch(`api/client/projects/proposal-action/${props.projectId}`,{
-      agencyId: localStorage.getItem("userId") || "",
-      isQuotationAcceptedByAgency: true,
-      projectFinalCost: finalCost
-    })
-    .then(function(response){
-      console.log(response)
-      setOpen(false)
-    })
+  const handleProjectAcceptance = () => {
+    if (finalCost !== null) {
+      instance
+        .patch(`api/client/projects/proposal-action/${props.projectId}`, {
+          agencyId: localStorage.getItem("userId") || "",
+          isQuotationAcceptedByAgency: true,
+          projectFinalCost: finalCost,
+        })
+        .then(function (response) {
+          console.log(response);
+          setOpen(false);
+        });
+    } else {
+      toast.error("Final cost cannot be empty.");
     }
-    else{
-      toast.error("Final cost cannot be empty.")
-    }
-   
-  }
-  function uploadMedia() {
-    console.log(file, "file");
-    if(file){
-    const formData = new FormData();
-    formData.append("files", file, "files.pdf");
+  };
+  const handleProjectRejection = () => {
     instance
-      .post(`api/agency/media/create`, formData)
+      .patch(`api/client/projects/proposal-action/${props.projectId}`, {
+        agencyId: localStorage.getItem("userId") || "",
+        isQuotationAcceptedByAgency: false,
+      })
       .then(function (response) {
         console.log(response);
-        setApiData({
-          ...apiData,
-          quotationLink: response[0].mediaURL,
-        });
-      })
-      .catch((err) => { });
-    }
-    else{
-      toast.error("Please Pick a File before Uploading.")
+      });
+  };
+
+  function uploadMedia() {
+    console.log(file, "file");
+    if (file) {
+      const formData = new FormData();
+      formData.append("files", file, "files.pdf");
+      instance
+        .post(`api/agency/media/create`, formData)
+        .then(function (response) {
+          console.log(response);
+          setApiData({
+            ...apiData,
+            quotationLink: response[0].mediaURL,
+          });
+        })
+        .catch((err) => {});
+    } else {
+      toast.error("Please Pick a File before Uploading.");
     }
   }
 
@@ -137,37 +145,47 @@ const CommentBox = (props) => {
             }
           })}
         <div className="postQuotation">
-          {props.isAskedForQuotation && (props.agencyNegotiablePrice === null ||
-            props.agencyNegotiablePrice === undefined) && (
-            <div style={{ display: "flex" }}>
-              <b>Agency Negotiatiable Price:</b>
-              <div className="negotiablePrice">
-                <input
-                  type="number"
-                  name="agencyNegotiablePrice"
-                  placeholder="negotiable price"
-                  value={apiData.agencyNegotiablePrice}
-                  onChange={(event) => handleChange(event)}
-                />
+          {props.isAskedForQuotation &&
+            (props.agencyNegotiablePrice === null ||
+              props.agencyNegotiablePrice === undefined) && (
+              <div style={{ display: "flex" }}>
+                <b>Agency Negotiatiable Price:</b>
+                <div className="negotiablePrice">
+                  <input
+                    type="number"
+                    name="agencyNegotiablePrice"
+                    placeholder="negotiable price"
+                    value={apiData.agencyNegotiablePrice}
+                    onChange={(event) => handleChange(event)}
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {props.isReplySectionActive && props.isAskedForQuotation && (props.quotationLink === null ||
-            props.quotationLink === undefined) && <div style={{ margin: "1rem 0rem" }}>
-            <input
-              onChange={inputFileChosen}
-              type="file"
-              accept="application/pdf"
-            />
-            <button onClick={uploadMedia}>Upload</button>
-          </div>}
-
+          {props.isReplySectionActive &&
+            props.isAskedForQuotation &&
+            (props.quotationLink === null ||
+              props.quotationLink === undefined) && (
+              <div style={{ margin: "1rem 0rem" }}>
+                <input
+                  onChange={inputFileChosen}
+                  type="file"
+                  accept="application/pdf"
+                />
+                <button onClick={uploadMedia}>Upload</button>
+              </div>
+            )}
         </div>
-        
+
         <div style={{ display: "flex", flexDirection: "column" }}>
           {props.isReplySectionActive && (
-            <div style={{ display: "flex",flexDirection:"column", margin: "1rem 0rem" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "1rem 0rem",
+              }}
+            >
               <h5>
                 <b>Agency: </b>
               </h5>
@@ -205,26 +223,29 @@ const CommentBox = (props) => {
             </div>
           )}
         </div>
-      {!props.isCommentSectionActive && !props.isReplySectionActive &&(
-        <div>
-        <p>Coversation Over.</p>
-        </div>
-      )}
-      
+        {!props.isCommentSectionActive && !props.isReplySectionActive && (
+          <div>
+            <p>Coversation Over.</p>
+          </div>
+        )}
       </div>
 
       <div className={`action-wait`}>
         <div className="postQuotation">
           {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
             <div className="detailsButtons">
-              <p><b>{`Client Negotiatiable Price: `}</b>
-              {props.clientNegotiablePrice}</p>
+              <p>
+                <b>{`Client Negotiatiable Price: `}</b>
+                {props.clientNegotiablePrice}
+              </p>
             </div>
           )}
           {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
             <div className="detailsButtons">
-              <p><b>{`Agency Negotiatiable Price: `}</b>
-              {props.agencyNegotiablePrice}</p>
+              <p>
+                <b>{`Agency Negotiatiable Price: `}</b>
+                {props.agencyNegotiablePrice}
+              </p>
             </div>
           )}
 
@@ -237,37 +258,74 @@ const CommentBox = (props) => {
           )}
         </div>
 
-        {!(props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient) && <div className={`${(props.isProposalActionActive && props.isQuotationAcceptedByClient) ? "":"disabled"}`}>
-          <div>
-            <p>Accept or Reject the Project.</p>
-          </div>
+        {!(
+          props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient
+        ) && (
+          <div
+            className={`${
+              props.isProposalActionActive && props.isQuotationAcceptedByClient
+                ? ""
+                : "disabled"
+            }`}
+          >
+            <div>
+              <p>Accept or Reject the Project.</p>
+            </div>
 
-          <div className="detailsButtons">
-          {props.isQuotationAcceptedByAgency ? <button className="rejectButton">Withdraw</button> :<button className="acceptButton" onClick = {()=>{setOpen(true)}}>Accept</button> }
+            <div className="detailsButtons">
+              {props.isQuotationAcceptedByAgency ? (
+                <button
+                  className="rejectButton"
+                  onClick={handleProjectRejection}
+                >
+                  Withdraw
+                </button>
+              ) : (
+                <button
+                  className="acceptButton"
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                >
+                  Accept
+                </button>
+              )}
+            </div>
           </div>
-        </div>}
+        )}
       </div>
-      <Modal open={open} onClose={()=>{setOpen(false)}} classNames={{
-                overlay: 'customOverlayAgencyProduct',
-                modal: 'customModalAgencyProduct',
-            }} center>
-                <div className="modalHeaderProduct">
-                    <h2>Accept Project</h2>
-                </div>
-                <div className="productModalForm">
-
-                    <div className="productModalInput">
-                        <p>Final Project Cost</p>
-                        <input 
-                        type = "number"
-                        onChange={(event)=>{setFinalCost(event.target.value)}} name="finalCost"  />
-                    </div>
-                </div>
-                <div className="connectedButton">
-                    <p onClick={handleProjectAcceptance}>Accept<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
-                </div>
-            </Modal>
-       
+      <Modal
+        open={open}
+        onClose={() => {
+          setOpen(false);
+        }}
+        classNames={{
+          overlay: "customOverlayAgencyProduct",
+          modal: "customModalAgencyProduct",
+        }}
+        center
+      >
+        <div className="modalHeaderProduct">
+          <h2>Accept Project</h2>
+        </div>
+        <div className="productModalForm">
+          <div className="productModalInput">
+            <p>Final Project Cost</p>
+            <input
+              type="number"
+              onChange={(event) => {
+                setFinalCost(event.target.value);
+              }}
+              name="finalCost"
+            />
+          </div>
+        </div>
+        <div className="connectedButton">
+          <p onClick={handleProjectAcceptance}>
+            Accept<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 };
@@ -313,12 +371,16 @@ function AgencyRespondedDetails(props) {
   }, [isRepliedToClient]);
   return (
     <>
-      <div style={{ marginTop: '55px', }} className="backArrow"
-        onClick={() => routerHistory.push({
-          pathname: '/quotation',
-          origin: routerHistory.location.origin
-        })
-        } >
+      <div
+        style={{ marginTop: "55px" }}
+        className="backArrow"
+        onClick={() =>
+          routerHistory.push({
+            pathname: "/quotation",
+            origin: routerHistory.location.origin,
+          })
+        }
+      >
         <i className="fa fa-angle-left" aria-hidden="true"></i>
       </div>
       <div className="mainDetailHeader">
@@ -388,7 +450,9 @@ function AgencyRespondedDetails(props) {
           </div>
           <div>
             <p>Project Proposal Cost</p>
-            <p style={{ fontWeight: "600" }}>{`$${project?.projectProposalCost}`}</p>
+            <p
+              style={{ fontWeight: "600" }}
+            >{`$${project?.projectProposalCost}`}</p>
           </div>
           <div>
             <p>Agency Experience</p>
@@ -400,21 +464,33 @@ function AgencyRespondedDetails(props) {
           <div>
             <p>Project Type</p>
             <p>{`${project?.projectType}`}</p>
-            
           </div>
 
           <div>
             <p>Shortlisted</p>
-            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isShortListed) ? "Yes":"No"}`}</p>
-            
+            <p>{`${
+              project?.projectProposals?.length > 0 &&
+              project?.projectProposals[0]?.isShortListed
+                ? "Yes"
+                : "No"
+            }`}</p>
           </div>
           <div>
             <p>Quotation Asked</p>
-            <p>{`${(project?.projectProposals?.length>0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes":"No"}`}</p>
+            <p>{`${
+              project?.projectProposals?.length > 0 &&
+              project?.projectProposals[0]?.isAskedForQuotation
+                ? "Yes"
+                : "No"
+            }`}</p>
           </div>
           <div>
             <p>Project Creation Date</p>
-            <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
+            <p>
+              <Moment format="D MMM YYYY" withTitle>
+                {project?.createdAt}
+              </Moment>
+            </p>
           </div>
         </div>
       </div>
@@ -459,7 +535,9 @@ function AgencyRespondedDetails(props) {
                 isQuotationAcceptedByClient={
                   project.projectProposals[0].isQuotationAcceptedByClient
                 }
-                isQuotationAcceptedByAgency = {project.projectProposals[0].isQuotationAcceptedByAgency}
+                isQuotationAcceptedByAgency={
+                  project.projectProposals[0].isQuotationAcceptedByAgency
+                }
               />
             ) : (
               project?.projectProposals && (
@@ -491,7 +569,9 @@ function AgencyRespondedDetails(props) {
                   isQuotationAcceptedByClient={
                     project.projectProposals[0].isQuotationAcceptedByClient
                   }
-                  isQuotationAcceptedByAgency = {project.projectProposals[0].isQuotationAcceptedByAgency}
+                  isQuotationAcceptedByAgency={
+                    project.projectProposals[0].isQuotationAcceptedByAgency
+                  }
                 />
               )
             )}

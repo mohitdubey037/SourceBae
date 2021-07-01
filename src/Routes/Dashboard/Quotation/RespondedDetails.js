@@ -58,6 +58,16 @@ const CommentBox = (props) => {
     })
   }
 
+  const handleProjectRejection = ()=>{
+    instance.patch(`api/client/projects/proposal-action/${props.projectId}`,{
+      agencyId: props?.agencyId || "",
+      isQuotationAcceptedByClient: false,
+    })
+    .then(function(response){
+      console.log(response)
+    })
+  }
+
   return (
     <div style={{ display: "flex" }}>
       <div
@@ -206,7 +216,7 @@ const CommentBox = (props) => {
           </div>
 
           <div className="detailsButtons">
-          {props.isQuotationAcceptedByClient ? <button className="rejectButton">Withdraw</button> :<button className="acceptButton" onClick = {handleProjectAcceptance}>Accept</button> }
+          {props.isQuotationAcceptedByClient ? <button className="rejectButton" onClick={{handleProjectRejection}}>Reject</button> :<button className="acceptButton" onClick = {handleProjectAcceptance}>Accept</button> }
             
           </div>
         </div>
