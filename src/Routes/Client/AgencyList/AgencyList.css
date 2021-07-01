@@ -57,7 +57,7 @@
 }
 .innerAgencyList_agencyList {
   margin-top: 2%;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   /* align-items: flex-start; */
