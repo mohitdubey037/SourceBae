@@ -52,7 +52,7 @@ const App = (props) => {
     <Route exact path='/register:role' component={Register} />
     <Route exact path='/page-not-found:code' component={DynamicPageNotFound} />
     <Route exact path='/enter-email' component={EnterEmail} />
-    <Route exact path="/password-reset:token" component = {ForgotPassword} />
+    <Route exact path="/password-reset?token" component = {ForgotPassword} />
     <Route exact path="/page-not-found" component = {PageNotFound} />
     <Route exact path='/haha' component = {haha} />
 
