@@ -7,6 +7,8 @@ import "react-responsive-modal/styles.css";
 import instance from "../../../Constants/axiosConstants";
 import ClientNavbar from '../ClientNavbar';
 import Spinner from "../../../Components/Spinner/Spinner";
+import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
+
 
 function ClientHireDeveloper(props) {
   const Role = "client";
@@ -106,7 +108,10 @@ function ClientHireDeveloper(props) {
                     );
                   })
                   :
-                  <h2>No Data Found.</h2>
+                  <div className='noDataFound'>
+                    <img src={NO_DATA_FOUND} alt='no data found' />
+                    <h6 style={{marginTop: '20px', fontStyle: 'italic' }}>No Data Found!!!..</h6>
+                  </div>
                 }
               </div>
             </div>

@@ -303,7 +303,7 @@ const Login = (props) => {
                                     <button onClick={() => logIn(role, form)} type="submit">
                                         Login
                                     </button>
-                                    <span>I forgot my password</span>
+                                    <span onClick={() => props.history.push('/enter-email')}>I forgot my password</span>
                                 </div>
                             </div>
                             <div className="googleLogin">
