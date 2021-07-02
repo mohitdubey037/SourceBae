@@ -161,8 +161,8 @@
   overflow: hidden;
 }
 .innerAgencyProfileLogo img {
-  width: 70%;
-  object-fit: contain;
+  width: 100%;
+  width: -webkit-fill-available;
   mix-blend-mode: multiply;
 }
 

@@ -147,7 +147,9 @@ function AddingDeveloper(props) {
         setIsDisabled(false)
     }
 
-
+    useEffect(()=>{
+        console.log(resume.name)
+    }, resume)
     const uploadMedia = () => {
         setLoading(true)
         console.log(resume);
@@ -157,7 +159,7 @@ function AddingDeveloper(props) {
         resume && formData.append(
             "files",
             resume,
-            "resume.pdf"
+            resume.name
         );
         instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {

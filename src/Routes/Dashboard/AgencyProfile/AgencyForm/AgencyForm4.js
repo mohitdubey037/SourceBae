@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
@@ -17,24 +18,12 @@ import * as helper from "../../../../shared/helper"
 
 function AgencyForm4(props) {
 
-    const colors = {
-        Update: "Blue",
-        Finish: "green"
-    }
-
     const Role = "agency"
     const [loading, setLoading] = useState(false);
     const [fields, setFields] = useState([{ value: null }]);
     const [githubLink, setGithubLink] = useState({})
     const [stackoverflow, setStackoverflow] = useState({})
     const [featuredLink, setFeaturedLink] = useState({})
-    //const [portfolioLink, setPortfolioLink] = useState({ platformName: "portfolioLink", platformLink: "" })
-    // const [profileLinksErrors, setProfileLinksErrors] = useState({
-    //     githubLinkError: '',
-    //     stackoverflowLinkError: '',
-    //     portfolioLinkError: '',
-    //     featuredLinkError: '',
-    // })
     const [errors, setErrors] = useState({})
 
     function handleChange(i, event) {
@@ -167,103 +156,19 @@ function AgencyForm4(props) {
 
 
 
-    // if (githubLink.platformLink === "" && githubLink.platformLink < 12) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         githubLinkError: 'Github link is required.',
-    //     })
-
-    // }
-    // else if (!helper.validateLink(githubLink.platformLink)) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         githubLinkError: 'Invalid link provided.',
-    //     })
-
-    // }
-    // else if (stackoverflow.platformLink === "" && stackoverflow.platformLink < 12) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         stackoverflowLinkError: 'Stackoverflow link is required.',
-    //     })
-
-    // }
-    // else if (!helper.validateLink(stackoverflow.platformLink)) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         stackoverflowLinkError: 'Invalid link provided.',
-    //     })
-
-    // }
-    // else if (fields[0].value === "" && fields[0].value < 12) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         portfolioLinkError: 'Portfolio link is required.',
-    //     })
-
-    // }
-    // else if (!helper.validateLink(fields[0].value)) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         portfolioLinkError: 'Invalid link provided.',
-    //     })
-
-    // }
-    // else if (featuredLink.platformLink === "" && featuredLink.platformLink < 12) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         featuredLinkError: 'Featured link is required.',
-    //     })
-
-    // }
-    // else if (!helper.validateLink(featuredLink.platformLink)) {
-    //     setProfileLinksErrors({
-    //         ...tempProfileLinks,
-    //         featuredLinkError: 'Invalid link provided.',
-    //     })
-
-    // }
-
-
-    // if (status === "Update") {
-    //     const portfolios = fields.map((link, index) => {
-    //         return {
-    //             platformName: `portfolio${index + 1}`,
-    //             platformLink: link.value
-    //         }
-    //     })
-    //     const apiData = {
-    //         stepsCompleted: "5",
-    //         socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
-    //     }
-    //     createAgencyForm4Api(apiData)
-    // }
 
     const finalUpdate = () => {
         console.log('finish')
         if (validateInfo()) {
             let apiData;
             let socialPlatformDetails = [];
-            if (Object.entries(githubLink).length == 0 && Object.entries(stackoverflow).length == 0 && Object.entries(featuredLink).length == 0 && fields[0].value == null) {
+            if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value == null) {
                 apiData = {
                     stepsCompleted : '5',
                     socialPlatformDetails : socialPlatformDetails
                 }
             }
 
-            // if (Object.entries(githubLink).length !== 0 && Object.entries(stackoverflow).length !== 0 && Object.entries(featuredLink).length !== 0 && fields[0].value !== 'null') {
-            //     console.log('hii');
-            //     const portfolios = fields.map((link, index) => {
-            //         return {
-            //             platformName: `portfolio${index + 1}`,
-            //             platformLink: link.value
-            //         }
-            //     })
-            //     apiData = {
-            //         stepsCompleted: '5',
-            //         socialPlatformDetails: [githubLink, stackoverflow, featuredLink, ...portfolios]
-            //     }
-            // }
             if (Object.entries(githubLink).length !== 0) {
                 socialPlatformDetails.push(githubLink)
                 apiData = {
@@ -396,8 +301,7 @@ function AgencyForm4(props) {
                                     <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                 </button>
                             </NavLink>
-                            {/* <NavLink to="/agency-form-four" >Finish <i class="fa fa-long-arrow-right" aria-hidden="true"></i></NavLink> */}
-                            <button /*style={{ backgroundColor: colors[status] }}*/ onClick={finalUpdate} >
+                            <button onClick={finalUpdate} >
                                 Finish
                                 <i className="fa fa-long-arrow-right" aria-hidden="true" />
                             </button>

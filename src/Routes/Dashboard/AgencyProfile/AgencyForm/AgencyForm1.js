@@ -22,12 +22,10 @@ function AgencyForm1(props) {
     const colors = {
         Upload: "blue",
         Update: "Green",
-        // Next: "green",
-        // Finish: "orange"
     }
 
     const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState("Upload")
+    const status = "Upload"
     const [linkedIn, setLinkedIn] = useState({
         platformName: "linkedIn",
         platformLink: ""
@@ -62,8 +60,6 @@ function AgencyForm1(props) {
     })
 
     useEffect(() => {
-        // console.log('formData', formData)
-        // console.log('agency logo', agencyLogo)
         if (formData.agencyLogo !== null) {
             instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
                 .then(function (response) {
@@ -328,7 +324,6 @@ function AgencyForm1(props) {
         else {
             setLoading(true);
             if (agencyLogo !== null) {
-                // console.log(agencyLogo);
                 const data = new FormData();
 
                 data.append(
@@ -336,11 +331,9 @@ function AgencyForm1(props) {
                     agencyLogo.document,
                     agencyLogo.category
                 );
-                // console.log(document)
 
                 instance.post(`api/${Role}/media/create`, data)
                     .then(function (response) {
-                        // console.log(response,"response")
                         setFormData({
                             ...formData,
                             agencyLogo: response[0].mediaURL
@@ -382,28 +375,12 @@ function AgencyForm1(props) {
         }
     }
 
-    // const handleNavlink = async (e) => {
-    //     console.log(status)
-
-        // if (status !== "Next") {
-        //     e.preventDefault()
-        // if (status === "Upload" && agencyLogo !== null)
-        // else if (status === "Update")
-            // handleSubmit()
-        // else
-        //     toast.error("Upload document.")
-        // }
-        // else if (status === "Next")
-        //     window.location.href = "/agency-form-two"
-    // }
 
     const handleUploadError = (error) => {
         toast.error(error)
     }
 
     const handleDocumentPicker = (document, category) => {
-        // console.log('category', category)
-        // console.log('document', document)
         setAgencyLogo({
             category,
             document

@@ -262,11 +262,11 @@ const Register = (props) => {
         setLoading(true);
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
-                if (role === "Client") {
+                if (role.toLowerCase() === "client") {
                     props.history.push('/client-dashboard');    
                     setLoading(false);
                 }
-                else if (role === "Agency") {
+                else if (role.toLowerCase() === "agency") {
                     props.history.push('/dashboard');;
                     setLoading(false);
                 }
@@ -278,7 +278,6 @@ const Register = (props) => {
 
     const handleSubmit = (Role, Form) => {
         if (handleErrorsValidation(Role)) {
-            // const apiRole = helper.lowerize(Role)
             signUpApi(Role, Form)
         }
     }
@@ -348,8 +347,8 @@ const Register = (props) => {
                 err.userNameError = 'User name should be only alphanumeric.'
             }
 
-            else if (signupForm.userName.length < 3 || signupForm.userName.length > 10) {
-                err.userNameError = "User name must be between 2-10 characters."
+            else if (signupForm.userName.length < 3 || signupForm.userName.length > 50) {
+                err.userNameError = "User name must be between 2-50 characters."
             }
 
             else if (signupForm.userEmail === "") {
