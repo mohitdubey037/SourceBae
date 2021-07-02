@@ -5,15 +5,9 @@ import instance from "../../../Constants/axiosConstants";
 import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
 
-
-import { set } from 'react-ga'
-import { Button } from '@material-ui/core';
-
 function DeveloperList(props) {
     const routerHistory = useHistory();
-    // console.log(props)
     const Role = "agency"
-    const arr = [1, 2, 3, 4, 5]
     const agencyId = localStorage.getItem("userId")
     const [developers, setDevelopers] = useState([])
     const [err, setErr] = useState();
@@ -34,25 +28,6 @@ function DeveloperList(props) {
         getAgencyDevelopers()
     }, [])
 
-    // const resumeDownloader = (developer) => {
-    //     developer.map(dev => {
-    //         return dev.developerDocuments
-    //     })
-    // }
-
-    //     agencyId: "6083df6bd332367f9152e02e"
-    // createdAt: "2021-05-06T09:21:07.282Z"
-    // developerAvailability: -1
-    // developerDesignation: "React Developer"
-    // developerDocuments: [{…}]
-    // developerExperience: 1
-    // developerExpertise: []
-    // developerPriceRange: 4000
-    // developerTechnologies: [{…}]
-    // firstName: "Atul"
-    // isRemoteDeveloper: false
-    // lastName: "Bhatt"
-    // socialPlatformDetails: []
 
 
     return (
@@ -112,8 +87,7 @@ function DeveloperList(props) {
                             )
                         })
                     }
-
-                    {Role === 'Agency' ?
+                    {Role.toLowerCase() === 'agency' ?
                         <div className="developerCard">
                             <div className="developerCardBorder"></div>
                             <div style={{ display: 'flex', height: '315px' }}>
@@ -124,6 +98,7 @@ function DeveloperList(props) {
                         </div> : null
                     }
                 </div>
+                
             </div>
         </>
     );

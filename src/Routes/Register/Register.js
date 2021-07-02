@@ -262,11 +262,11 @@ const Register = (props) => {
         setLoading(true);
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
-                if (role === "Client") {
+                if (role.toLowerCase() === "client") {
                     props.history.push('/client-dashboard');    
                     setLoading(false);
                 }
-                else if (role === "Agency") {
+                else if (role.toLowerCase() === "agency") {
                     props.history.push('/dashboard');;
                     setLoading(false);
                 }
@@ -278,7 +278,6 @@ const Register = (props) => {
 
     const handleSubmit = (Role, Form) => {
         if (handleErrorsValidation(Role)) {
-            // const apiRole = helper.lowerize(Role)
             signUpApi(Role, Form)
         }
     }

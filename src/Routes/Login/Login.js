@@ -86,7 +86,7 @@ const Login = (props) => {
 
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role));
-    if (!(role === "Agency" || role === "Client"))
+    if (!(role.toLowerCase() === "agency" || role.toLowerCase() === "client"))
         props.history.push("/page-not-found");
 
     const [loading, setLoading] = useState(false);
