@@ -5,19 +5,23 @@ import "../Login/login.css";
 import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
-import axios from "axios";
-
-import google from "../../assets/images/Logo/google.png";
-import loginImage from "../../assets/images/Logo/loginImage.png";
 import {
+    Typography,
     InputAdornment,
     Input,
+    Grid,
+    Switch,
     makeStyles,
+    withStyles,
+    FormGroup,
 } from "@material-ui/core";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import loginImage from "../../assets/images/Logo/loginImage.png";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
-import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
-import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
-import Spinner from "../../Components/Spinner/Spinner";
 import cookie from "react-cookies";
 
 const borderLight = "rgba(206,212,218, .993)";
@@ -44,14 +48,16 @@ const useStyles = makeStyles((theme) => ({
 const ForgotPassword = (props) => {
     const classes = useStyles();
 
+    const token = useParams();
+
     const [hidePassword, SetPasswordStatus] = useState(true);
+
+    const [Role, setRole] = useState('Agency')
 
     const [form, setForm] = useState({
         password: "",
-        confirmPassword: "",
+        token: token
     });
-
-    const [token, setToken] = useState(null);
 
     const showPassword = (e) => {
         console.log(e);
@@ -68,30 +74,34 @@ const ForgotPassword = (props) => {
         });
     };
 
-    const changePassword = async (role, form) => {
+    const handleRole = (event) => {
+        setRole(event.target.value);
+    };
+
+    const changePassword = (form) => {
         // setLoading(true);
-        let apiRole = helper.lowerize(role);
-            instance
-                .post(`/api/${apiRole}/auths/login`, form)
-                .then(function (response) {
-                    console.log(response, "response");
-                    cookie.save(
-                        "Authorization",
-                        `Bearer ${response.accessToken}`,
-                        { path: '/' }
-                    );
-                    setToken(cookie.load("Authorization"))
-                    localStorage.setItem("role", role);
-                    localStorage.setItem("userId", `${response._id}`);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+        instance
+            .patch(`/api/${Role}/auths/reset-password`, form)
+            .then(response => {
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
 
     return (
         <>
+            <div style={{ marginTop: '20px' }}>
+                <FormControl component="fieldset">
+                    <FormLabel component="legend">Role</FormLabel>
+                    <RadioGroup aria-label="Role" name="Role" value={Role} onChange={handleRole}>
+                        <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
+                        <FormControlLabel value="Client" control={<Radio />} label="Client" />
+                    </RadioGroup>
+                </FormControl>
+            </div>
             <div className="mainLoginPage">
                 <div className="innerLoginPage">
                     <div className="loginIllustrator">
@@ -99,14 +109,13 @@ const ForgotPassword = (props) => {
                     </div>
                     <div className="loginContent">
                         <div className="mainLoginForm">
-                            <div style={{marginTop: '0px'}} className="loginForm">
+                            <div style={{ marginTop: '0px' }} className="loginForm">
                                 <p style={{ marginBottom: "10px" }}>Password</p>
                                 <Input
                                     className={classes.inputs}
                                     placeholder="Enter a Password"
                                     variant="outlined"
                                     type="password"
-                                    // margin="normal"
                                     disableUnderline={true}
                                     required
                                     fullWidth
@@ -122,7 +131,7 @@ const ForgotPassword = (props) => {
                                         </InputAdornment>
                                     }
                                 />
-                                <p style={{ marginTop: "20px", marginBottom: "10px" }}>
+                                {/* <p style={{ marginTop: "20px", marginBottom: "10px" }}>
                                     Confirm Password
                                 </p>
                                 <Input
@@ -159,8 +168,8 @@ const ForgotPassword = (props) => {
                                             </InputAdornment>
                                         )
                                     }
-                                />
-                                <button onClick={() => changePassword(form)} type="submit">
+                                /> */}
+                                <button onClick={() => changePassword()} type="submit">
                                     Change Password
                                 </button>
                             </div>
