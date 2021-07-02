@@ -37,6 +37,8 @@ import ClientOneHireDeveloper from './Routes/Client/ClientOneHireDeveloper/Clien
 import SharedDevelopers from './Routes/Client/SharedDevelopers/SharedDevelopers';
 import ForgotPassword from './Routes/ForgotPassword/ForgotPassword';
 import EnterEmail from './Routes/EnterEmail/EnterEmail';
+import haha from './Routes/DynamicPageNotFound/Dy';
+import DynamicPageNotFound from './Routes/DynamicPageNotFound/DynamicPageNotFound';
 
 import { withRouter } from "react-router";
 
@@ -48,9 +50,10 @@ const App = (props) => {
     <Route exact path='/signup' component={Signup} />
     <Route exact path="/login:role" component={Login} />
     <Route exact path='/register:role' component={Register} />
-    <Route exact path='/forgot-password:key' component={ForgotPassword} />
+    <Route exact path='/page-not-found:code' component={DynamicPageNotFound} />
     <Route exact path='/enter-email' component={EnterEmail} />
     <Route exact path="/page-not-found" component = {PageNotFound} />
+    <Route exact path='/haha' component = {haha} />
 
     <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard} />
     <CustomRoute condition="Agency" exact path="/agency-project-dashboard" component={AgencyProjectDashboard}/>
