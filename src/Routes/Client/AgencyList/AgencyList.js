@@ -322,7 +322,7 @@ function AgencyList(props) {
               :
               <div className='noDataFound'>
                 <img src={NO_DATA_FOUND} alt='no data found' />
-                <p style={{marginTop: '20px', fontStyle: 'italic' }}>No Agency Found!!!..</p>
+                <h6 style={{marginTop: '20px', fontStyle: 'italic' }}>No Agency Found!!!..</h6>
               </div>
             }
           </div>
