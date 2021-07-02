@@ -54,7 +54,7 @@ const CommentBox = (props) => {
       isQuotationAcceptedByClient: true,
     })
     .then(function(response){
-      console.log(response)
+      window.location.reload()
     })
   }
 
@@ -64,7 +64,7 @@ const CommentBox = (props) => {
       isQuotationAcceptedByClient: false,
     })
     .then(function(response){
-      console.log(response)
+      window.location.reload()
     })
   }
 
@@ -216,8 +216,8 @@ const CommentBox = (props) => {
           </div>
 
           <div className="detailsButtons">
-          {props.isQuotationAcceptedByClient ? <button className="rejectButton" onClick={{handleProjectRejection}}>Reject</button> :<button className="acceptButton" onClick = {handleProjectAcceptance}>Accept</button> }
-            
+          <button className="acceptButton" onClick = {handleProjectAcceptance}>Accept</button> 
+          <button className="rejectButton" onClick={handleProjectRejection}>Reject</button> 
           </div>
         </div>
       </div>

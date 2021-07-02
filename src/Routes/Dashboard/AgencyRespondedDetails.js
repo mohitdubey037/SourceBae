@@ -43,8 +43,8 @@ const CommentBox = (props) => {
           projectFinalCost: finalCost,
         })
         .then(function (response) {
-          console.log(response);
           setOpen(false);
+          window.location.reload()
         });
     } else {
       toast.error("Final cost cannot be empty.");
@@ -57,19 +57,17 @@ const CommentBox = (props) => {
         isQuotationAcceptedByAgency: false,
       })
       .then(function (response) {
-        console.log(response);
+        window.location.reload()
       });
   };
 
   function uploadMedia() {
-    console.log(file, "file");
     if (file) {
       const formData = new FormData();
       formData.append("files", file, "files.pdf");
       instance
         .post(`api/agency/media/create`, formData)
         .then(function (response) {
-          console.log(response);
           setApiData({
             ...apiData,
             quotationLink: response[0].mediaURL,
@@ -85,9 +83,6 @@ const CommentBox = (props) => {
     setFile(e.target.files[0]);
   };
 
-  useEffect(() => {
-    console.log(apiData);
-  }, [apiData]);
 
   const replyApi = () => {
     const data = apiData;
@@ -97,7 +92,6 @@ const CommentBox = (props) => {
     instance
       .patch(`api/agency/projects/propose/${props.projectId}`, data)
       .then(function (response) {
-        console.log(response);
         props.giveReplies(true);
       });
   };
@@ -273,14 +267,13 @@ const CommentBox = (props) => {
             </div>
 
             <div className="detailsButtons">
-              {props.isQuotationAcceptedByAgency ? (
+              
                 <button
                   className="rejectButton"
                   onClick={handleProjectRejection}
                 >
                   Withdraw
                 </button>
-              ) : (
                 <button
                   className="acceptButton"
                   onClick={() => {
@@ -289,7 +282,6 @@ const CommentBox = (props) => {
                 >
                   Accept
                 </button>
-              )}
             </div>
           </div>
         )}
@@ -332,7 +324,6 @@ const CommentBox = (props) => {
 
 function AgencyRespondedDetails(props) {
   const [isRepliedToClient, setRepliedToClient] = useState(false);
-  console.log(isRepliedToClient);
   const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
@@ -352,22 +343,18 @@ function AgencyRespondedDetails(props) {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
+        console.error(err);
       });
   };
   useEffect(() => {
-    console.log(isRepliedToClient);
     if (Object.keys(props["projects"]).length === 0) {
-      console.log("empty");
       getAllProjects();
     } else {
-      console.log("Not empty");
       setProject(props.projects);
     }
   }, [isRepliedToClient]);
 
   useEffect(() => {
-    console.log(project, "project");
   }, [isRepliedToClient]);
   return (
     <>

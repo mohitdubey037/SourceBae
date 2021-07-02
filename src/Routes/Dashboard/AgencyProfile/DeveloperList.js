@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import './DeveloperList.css'
 import document from '../../../assets/images/Logo/document.png';
@@ -7,7 +8,7 @@ import NO_Data_ICON from '../no_data_icon.jpg';
 
 function DeveloperList(props) {
     const routerHistory = useHistory();
-    const Role = "agency"
+    const Role = localStorage.getItem('role')
     const agencyId = localStorage.getItem("userId")
     const [developers, setDevelopers] = useState([])
     const [err, setErr] = useState();
@@ -16,11 +17,10 @@ function DeveloperList(props) {
     const getAgencyDevelopers = () => {
         instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
             .then(function (response) {
-                console.log(response)
                 setDevelopers(response)
             })
             .catch(err => {
-                console.log(err?.response?.data?.message)
+                console.error(err?.response?.data?.message)
                 setErr(err?.response?.data?.message)
             })
     };
@@ -87,6 +87,7 @@ function DeveloperList(props) {
                             )
                         })
                     }
+                    
                     {Role.toLowerCase() === 'agency' ?
                         <div className="developerCard">
                             <div className="developerCardBorder"></div>

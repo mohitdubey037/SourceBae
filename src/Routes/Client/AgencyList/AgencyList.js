@@ -139,12 +139,11 @@ function AgencyList(props) {
             </span>
           </div>
           <div className="mainAgencyList_agencyList">
-            {agencyList?.length > 0 ?
-              < div className="innerAgencyList_agencyList">
+            {agencyList?.agencies?.length > 0 ?
+              <div className="innerAgencyList_agencyList">
                 <div className="AgencyCardsArea_agencyList">
-                  {agencyList?.length > 0 &&
-                    agencyList.map((agency, index) => {
-                      console.log(agency._id);
+                  {agencyList?.agencies?.length > 0 &&
+                    agencyList?.agencies?.map((agency, index) => {
                       return (
                         <div className="agencyPreciseCard_agencyList">
                           <div className="agencyCardHeaderInfo">

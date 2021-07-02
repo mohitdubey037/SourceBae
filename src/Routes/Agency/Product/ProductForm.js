@@ -18,6 +18,7 @@ import Navbar from "../../Dashboard/Navbar";
 import instance from "../../../Constants/axiosConstants";
 import Spinner from "../../../Components/Spinner/Spinner";
 import * as helper from "../../../shared/helper";
+import moment from 'moment'
 
 import product from "../../../assets/images/ClientDashboard/product.svg";
 import product1 from "../../../assets/images/ClientDashboard/product1.svg";
@@ -147,7 +148,7 @@ function ProductForm(props) {
     productCustomerAccquired: "",
     productActiveUsers: "",
     productCompanyLocation: "",
-    productStartingDate: Date.now(),
+    productStartingDate: moment().format("YYYY-MM-DD"),
     productFeatureLink: "",
     productPlatformLink: "",
     productFounderLinkedinProfiles: [],
@@ -183,12 +184,11 @@ function ProductForm(props) {
     instance
       .get(`api/${Role}/domains/all`)
       .then(function (response) {
-        console.log(response);
         setAllDomainsData(response);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err?.response?.data?.message);
+        console.error(err?.response?.data?.message);
       });
   };
 
@@ -200,7 +200,6 @@ function ProductForm(props) {
   function handleChangeLink(i, event) {
     const values = [...fields];
     values[i].value = event.target.value;
-    console.log(values);
     setFields(values);
     setApiData({
       ...apiData,
@@ -210,7 +209,6 @@ function ProductForm(props) {
 
   function handleAdd() {
     const values = [...fields, { value: "" }];
-    console.log(values);
     setFields(values);
   }
 
@@ -263,7 +261,6 @@ function ProductForm(props) {
   };
 
   const inputFileChoosen = (e) => {
-    console.log(e.target.files[0]);
     setFile(e.target.files[0]);
   };
 
@@ -342,19 +339,16 @@ function ProductForm(props) {
   };
 
   const updateButtonHandler = () => {
-    console.log("hi")
 
     if (validateInfo()) {
       setLoading(true);
-      console.log(file);
       const formData = new FormData();
 
-      file && formData.append("files", file, "file");
+      file!==null && formData.append("files", file, file?.name);
 
       instance
         .post(`api/${Role}/media/create`, formData)
         .then(function (response) {
-          console.log(response);
           setApiData({
             ...apiData,
             productLogo: response[0].mediaURL,
@@ -368,7 +362,6 @@ function ProductForm(props) {
   };
 
   const uploadProduct = () => {
-    console.log(apiData);
 
     if (validateInfo()) {
       setLoading(true);
@@ -377,18 +370,16 @@ function ProductForm(props) {
         .then((response) => {
           setLoading(false);
           onOpenModal();
-          console.log(response);
         })
         .catch((error) => {
           setLoading(false);
         });
     } else {
-      console.log(errors);
+      console.error(errors);
     }
   };
 
   useEffect(() => {
-    console.log(apiData);
     if(apiData.productLogo!==""){
       uploadProduct()
     }
@@ -478,7 +469,6 @@ function ProductForm(props) {
                         {errors.filePicked}
                       </p>
                     )}
-                    {/* <button style={{ margin: 0 }} onClick={updateButtonHandler}>Update</button> */}
                   </section>
                   <section>
                     <p>2. What's your good product name?</p>

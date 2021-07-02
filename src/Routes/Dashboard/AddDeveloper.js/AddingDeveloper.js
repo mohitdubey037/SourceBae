@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 
@@ -57,12 +58,6 @@ function AddingDeveloper(props) {
 
     const theme = useTheme();
 
-    const colors = {
-        Upload: "blue",
-        Update: "green",
-        // Next: "green",
-        // Finish: "orange"
-    }
 
     const classes = useStyles();
     const Role = "agency"
@@ -90,7 +85,6 @@ function AddingDeveloper(props) {
 
     const [techs, setTechs] = useState([]);
     const [techIds, setTechIds] = React.useState([]);
-    const [buttonStatus, setButtonStatus] = useState("Upload")
     const [isDisabled, setIsDisabled] = useState(true)
     const [resume, setResume] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -99,7 +93,6 @@ function AddingDeveloper(props) {
     const handleChange = (event) => {
         const { name, value } = event.currentTarget
         if (name === "developerTechnologies") {
-            console.log(value)
             setDeveloperData(
                 {
                     ...developerData,
@@ -118,7 +111,6 @@ function AddingDeveloper(props) {
 
     const technologyHandler = (event) => {
         const name = event.target.name;
-        console.log(name);
         const value = event.target.value;
         if (name === "developerTechnologies") {
             setDeveloperData({
@@ -146,13 +138,8 @@ function AddingDeveloper(props) {
         setResume(e.target.files[0])
         setIsDisabled(false)
     }
-
-    useEffect(()=>{
-        console.log(resume.name)
-    }, resume)
     const uploadMedia = () => {
         setLoading(true)
-        console.log(resume);
 
         const formData = new FormData();
 
@@ -164,7 +151,6 @@ function AddingDeveloper(props) {
         instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
                 setLoading(false);
-                console.log(response[0].mediaURL);
                 setDeveloperData({
                     ...developerData,
                     developerDocuments: [
@@ -184,7 +170,6 @@ function AddingDeveloper(props) {
         setLoading(true)
         instance.post(`api/${Role}/developers/create`, developerData)
             .then(function (response) {
-                console.log(response)
                 setLoading(false);
                 props.history.push({
                     pathname : "/agency-profile",
@@ -195,28 +180,14 @@ function AddingDeveloper(props) {
                 setLoading(false)
             })
     }
-    // const handleAction = () => {
-        // if (name === "Upload") {
-            // uploadMedia()
-        // }
-        // else if (name === "Submit") {
-        //     createDeveloperApi()
-        // }
-    // }
 
     useEffect(() => {
         getAllTechs()
     }, [])
 
-    useEffect(() => {
-        console.log(developerData.developerDocuments.documentLink);
-    },[developerData])
 
     useEffect(() => {
-        // console.log('ye chala');
-        // console.log(developerData.developerDocuments[0].documentLink);
         if (developerData.developerDocuments[0].documentLink !== '' && developerData.developerDocuments[0].documentLink !== undefined ) {
-            console.log(developerData.developerDocuments.documentLink);
             createDeveloperApi();
         }
     }, [developerData.developerDocuments[0]])
