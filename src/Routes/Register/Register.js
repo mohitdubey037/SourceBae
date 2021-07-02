@@ -348,8 +348,8 @@ const Register = (props) => {
                 err.userNameError = 'User name should be only alphanumeric.'
             }
 
-            else if (signupForm.userName.length < 3 || signupForm.userName.length > 10) {
-                err.userNameError = "User name must be between 2-10 characters."
+            else if (signupForm.userName.length < 3 || signupForm.userName.length > 50) {
+                err.userNameError = "User name must be between 2-50 characters."
             }
 
             else if (signupForm.userEmail === "") {
