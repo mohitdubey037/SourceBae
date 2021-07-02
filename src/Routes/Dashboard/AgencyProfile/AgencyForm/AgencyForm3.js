@@ -50,10 +50,12 @@ function AgencyForm3(props) {
     })
 
     const handleDocumentPicker = (document, category) => {
+        console.log(document.name)
         if (category === registrationCertificate.documentName) {
             setRegistrationCertificate({
                 ...registrationCertificate,
                 documentPicked: true,
+                name:document.name,
                 document
             })
         }
@@ -62,6 +64,7 @@ function AgencyForm3(props) {
             setBrochureDoc({
                 ...brochureDoc,
                 documentPicked: true,
+                name:document.name,
                 document
             })
         }
@@ -69,6 +72,7 @@ function AgencyForm3(props) {
             setPanCardDoc({
                 ...panCardDoc,
                 documentPicked: true,
+                name:document.name,
                 document
             })
         }
@@ -85,17 +89,17 @@ function AgencyForm3(props) {
             formData.append(
                 "files",
                 registrationCertificate.document,
-                `${registrationCertificate.documentName}.pdf`
+                registrationCertificate.name
             );
             formData.append(
                 "files",
                 brochureDoc.document,
-                `${brochureDoc.documentName}.pdf`
+                brochureDoc.name
             );
             formData.append(
                 "files",
                 panCardDoc.document,
-                `${panCardDoc.documentName}.pdf`
+                panCardDoc.name
             );
             console.log(formData)
             instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
