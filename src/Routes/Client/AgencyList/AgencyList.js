@@ -160,6 +160,7 @@ function AgencyList(props) {
                               </div>
                             </div>
                             <div className="profileButton">
+                              {agency.productId !== undefined ? 
                               <p onClick={() => props.history.push({
                                 pathname: `/product-details:${agency.productId}`,
                                 condition: `Client`
@@ -170,6 +171,9 @@ function AgencyList(props) {
                                   aria-hidden="true"
                                 ></i>
                               </p>
+                              : null  
+                            }
+                              
                             </div>
                           </div>
 
@@ -317,7 +321,7 @@ function AgencyList(props) {
               :
               <div className='noDataFound'>
                 <img src={NO_DATA_FOUND} alt='no data found' />
-                <p>No Agency Found!!!..</p>
+                <p style={{fontStyle: 'italic'}}>No Agency Found!!!..</p>
               </div>
             }
           </div>
