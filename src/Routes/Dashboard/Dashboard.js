@@ -15,8 +15,7 @@ import Moment from "react-moment";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import NO_Data_ICON from './no_data_icon.jpg';
-
+import NO_Data_ICON from "./no_data_icon.jpg";
 
 const Dashboard = (props) => {
   const Role = "agency";
@@ -148,7 +147,7 @@ const Dashboard = (props) => {
       {/* Navbar  */}
       <Navbar headingInfo="Dashboard" />
 
-      {!(isUserEmailVerified && isUserPhoneVerified) && (
+      {!(isUserEmailVerified && isUserPhoneVerified) && steps===-1 && (
         <div className="mainUpdateVerify">
           <div className="innerMainVerify">
             <p>
@@ -184,47 +183,14 @@ const Dashboard = (props) => {
         <div className="innerClientsOptions">
           {cardsArray.map((value, index) => {
             return (
-              // <Link style={{ textDecoration: "none" }} onClick={() => handleLink(value.route)}>
-              //     <div className="mainQuotationCard" key={index} style={{ filter: `${(!verified || steps !== -1) ? `grayscale(100%)` : `none`}` }}>
-              //         <div className="leftLine" style={{
-              //             backgroundColor: value?.borderColor,
-              //         }}></div>
-              //         <div
-              //             style={{ position: 'absolute', top: '0', right: '0', zIndex: '999', width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-              //             onMouseOver={() => {
-              //                 setIsPopover(true)
-              //                 setPopIndex(index)
-              //             }}
-              //             onMouseLeave={() => setIsPopover(false)}>
-              //             <i style={{ fontSize: 22, color: value?.borderColor }} class="fa fa-info-circle" aria-hidden="true"></i>
-              //             {/* ADD TOOLTIP HERE */}
-              //             {
-              //                 isPopover && popindex === index
-              //                 &&
-              //                 <Tooltip show={true} position="bottom center" textBoxWidth="120px" animation="bounce">
-              //                     <span>Some text</span>
-              //                 </Tooltip>
-              //             }
-              //         </div>
-              //         <div className="innerQuotationCard">
-              //             <div className="quotationImage">
-              //                 <img src={value?.image} alt="" />
-              //             </div>
-              //             <div className="quotationInfo">
-              //                 <h2>{value?.title}</h2>
-              //                 <p>{value?.desc}</p>
-              //             </div>
-              //         </div>
-              //     </div>
-              // </Link>
-
               <div
                 className="mainQuotationCard"
                 key={index}
                 onClick={() => handleLink(value.route)}
                 style={{
-                  filter: `${!verified || steps !== -1 ? `grayscale(100%)` : `none`
-                    }`,
+                  filter: `${
+                    !verified || steps !== -1 ? `grayscale(100%)` : `none`
+                  }`,
                 }}
               >
                 <div
@@ -273,7 +239,6 @@ const Dashboard = (props) => {
                     <img src={value?.image} alt="" />
                   </div>
                   <div className="quotationInfo">
-                    {/* <h2 className>{value?.title}</h2> */}
                     <h2>
                       <Link style={{ textDecoration: "none" }}>
                         {value?.title}
@@ -290,30 +255,6 @@ const Dashboard = (props) => {
 
       <div className="mainProjects">
         <div className="innerProjects">
-          {/* <div className="projectHeading">
-                        <div>
-                            <h2>Your Projects</h2>
-                        </div>
-                        <div className="filtering">
-                            <div className="filterBtn" id="demo-simple-select-label">
-                                <h4>Filter</h4>
-                                <div> <FilterListIcon /> </div> 
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    value={age}
-                                    MenuProps={MenuProps}
-                                    onChange={handleChange}
-                                >
-                                    {statuses.map(value => {
-                                        return (
-                                            <MenuItem className='SelectClass' value={value}>{value}</MenuItem>
-                                        )
-                                    })}
-                                </Select>
-                            </div>
-                        </div>
-                    </div> */}
           <div className="allProjects">
             {allProjects?.projects?.length > 0 ? (
               allProjects?.projects?.map((value, index) => {
@@ -327,44 +268,10 @@ const Dashboard = (props) => {
                     <div className="innerProjectCard">
                       <div className="projectInformation">
                         <div className="projectDetails">
-                          {/* <div className="projectImage">
-                                                            <img src={clientProfile} alt="" />
-                                                        </div> */}
-
                           <div className="projectName">
                             <p className="projectN">{value.projectName}</p>
-                            {/* <NavLink className="projectN" to={{
-                                                                pathname: "/project-details",
-                                                                state: { ...value },
-                                                                condition: 'Agency',
-                                                            }}
-                                                            >{value?.projectName}
-                                                            </NavLink> */}
-                            {/* <h4>{value?.projectName}</h4>  */}
                           </div>
                         </div>
-                        {/* <div className="moreDetails">
-                                                        <Button
-                                                            aria-controls="long-menu"
-                                                            aria-haspopup="true"
-                                                            onClick={moreHandleClick}
-                                                        >
-                                                            <MoreHorizIcon />
-                                                        </Button>
-                                                        <Menu
-                                                            id="long-menu"
-                                                            anchorEl={moreOption}
-                                                            keepMounted
-                                                            open={moreOption}
-                                                            onClose={moreHandleClose}
-                                                        >
-                                                            {moreOptions.map((option) => (
-                                                                <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                                                                    {option}
-                                                                </MenuItem>
-                                                            ))}
-                                                        </Menu>
-                                                    </div> */}
                       </div>
                       <div className="projectDescription">
                         <p title={value?.projectDescription}>
@@ -380,8 +287,8 @@ const Dashboard = (props) => {
                                 value?.projectCurrentStatus === "Live"
                                   ? "#5cb85c"
                                   : value?.projectCurrentStatus === "Completed"
-                                    ? "#f0ad4e"
-                                    : "#d9534f",
+                                  ? "#f0ad4e"
+                                  : "#d9534f",
                               fontWeight: "bold",
                             }}
                           >
@@ -412,7 +319,7 @@ const Dashboard = (props) => {
                 );
               })
             ) : (
-              <div style={{ textAlign: 'center' }}>
+              <div style={{ textAlign: "center" }}>
                 <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
                 <h6>No Running Project</h6>
               </div>
@@ -452,7 +359,6 @@ const Dashboard = (props) => {
           </ul>
         </div>
         <div className="modalButton">
-          {/* <button onClick={() => window.location.href = "/product-agencies"}>Interested</button> */}
           <NavLink
             className="modalNavLink"
             to={{
@@ -472,11 +378,5 @@ const Dashboard = (props) => {
     </>
   );
 };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onAddProject : (projects) => dispatch(actions.addProject(projects))
-//     }
-// }
 
 export default Dashboard;

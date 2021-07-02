@@ -15,20 +15,12 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-// import { makeStyles } from '@material-ui/core/styles';
 
 //multi-select
 import MultiSearchSelect from "react-search-multi-select";
 import Spinner from "../../../../Components/Spinner/Spinner";
 import { toast } from "react-toastify";
 
-// const useStyles = makeStyles({
-//     root: {
-//         '&:hover': {
-//             backgroundColor: 'transparent',
-//         },
-//     },
-// })
 
 function AgencyForm2(props) {
 
@@ -58,7 +50,6 @@ function AgencyForm2(props) {
         agencyMonthlyBudget: "",
     });
 
-    // const classes = useStyles();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -111,7 +102,6 @@ function AgencyForm2(props) {
 
     const getAllDomains = () => {
         instance.get(`api/${Role}/domains/all`).then(function (response) {
-            console.log(response);
             const domainNames = response.map((domain) => {
                 return {
                     ...domain,
@@ -185,7 +175,6 @@ function AgencyForm2(props) {
                 return service._id;
             });
     };
-
     const createAgencyForm2Api = () => {
         setLoading(true);
         instance
@@ -231,17 +220,15 @@ function AgencyForm2(props) {
         });
         setVisibleTechData(filteredTech);
         setVisibleTechNames(Object.keys(filteredTech));
+        setApiData({
+            ...apiData,
+            agencyServices:selectedServicesId
+        })
     }, [selectedServicesId, allTechData]);
 
     const handleNext = () => {
         if (dom.length > 0) {
             if (getSelectedServicesIds(allServicesData).length > 0) {
-                setSelectedServicesId(getSelectedServicesIds(allServicesData));
-                setApiData({
-                    ...apiData,
-                    agencyServices: getSelectedServicesIds(allServicesData),
-                });
-
                 if (selectedTechName.length > 0) {
                     setAgencyTechnologies();
                     if (apiData.agencyMonthlyBudget !== "") {
