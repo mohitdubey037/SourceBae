@@ -141,7 +141,7 @@ function Navbar() {
                                 onClose={handleClose}
                             >
                                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
                                 <MenuItem onClick={()=>handleLogout()}>Logout</MenuItem>
                             </Menu>
                         </div>
