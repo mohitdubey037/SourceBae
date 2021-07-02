@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import FormPhases from './FormPhases'
@@ -24,7 +25,7 @@ function AgencyForm3(props) {
     }
 
     const Role = "agency"
-    const [status, setStatus] = useState("Upload")
+    const status = useState("Upload")
     const [pickedAll, setPickedAll] = useState(false)
     const [loading, setLoading] = useState(false);
 
@@ -50,7 +51,6 @@ function AgencyForm3(props) {
     })
 
     const handleDocumentPicker = (document, category) => {
-        console.log(document.name)
         if (category === registrationCertificate.documentName) {
             setRegistrationCertificate({
                 ...registrationCertificate,
@@ -101,10 +101,8 @@ function AgencyForm3(props) {
                 panCardDoc.document,
                 panCardDoc.name
             );
-            console.log(formData)
             instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
                 .then(function (response) {
-                    console.log(response);
                     setRegistrationCertificate({
                         ...registrationCertificate,
                         documentLink: response[0].mediaURL
@@ -138,16 +136,12 @@ function AgencyForm3(props) {
 
     const handleUpdate = () => {
         setLoading(true);
-        console.log(registrationCertificate);
-        console.log(brochureDoc);
-        console.log(panCardDoc);
         const apiData = {
             stepsCompleted: "4",
             agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
         }
         instance.post(`/api/${Role}/agencies/create`, apiData)
             .then(function (response) {
-                console.log(response)
                 setLoading(false);
                 props.history.push("/agency-form-four")
             })
@@ -158,7 +152,6 @@ function AgencyForm3(props) {
 
     useEffect(() => {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
-            console.log('true');
             setPickedAll(true)
         }
 
@@ -167,7 +160,6 @@ function AgencyForm3(props) {
             handleUpdate();
         }
 
-        console.log(registrationCertificate, brochureDoc, panCardDoc, "document");
 
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
