@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './AgencyProjectDashboard.css';
 import Navbar from './Navbar';
-import Moment from 'react-moment';
 
 const moreOptions = [
     'None',

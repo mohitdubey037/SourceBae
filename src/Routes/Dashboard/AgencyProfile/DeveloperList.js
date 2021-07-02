@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import './DeveloperList.css'
 import document from '../../../assets/images/Logo/document.png';
