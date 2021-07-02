@@ -188,7 +188,7 @@ function ProductForm(props) {
         setLoading(false);
       })
       .catch((err) => {
-        console.err(err?.response?.data?.message);
+        console.error(err?.response?.data?.message);
       });
   };
 
@@ -375,7 +375,7 @@ function ProductForm(props) {
           setLoading(false);
         });
     } else {
-      console.err(errors);
+      console.error(errors);
     }
   };
 

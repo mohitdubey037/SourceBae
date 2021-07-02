@@ -20,7 +20,7 @@ function DeveloperList(props) {
                 setDevelopers(response)
             })
             .catch(err => {
-                console.err(err?.response?.data?.message)
+                console.error(err?.response?.data?.message)
                 setErr(err?.response?.data?.message)
             })
     };
