@@ -145,7 +145,6 @@ function AgencyList(props) {
                     console.log(agency._id);
                     return (
                       <div className="agencyPreciseCard_agencyList">
-                        <div className="agencyCardHeaderLine"></div>
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
                             <div className="agencyImageArea">
