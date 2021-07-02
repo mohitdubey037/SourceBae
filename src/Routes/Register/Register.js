@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import './register.css'
 import { useParams } from 'react-router'
@@ -86,7 +87,6 @@ const Register = (props) => {
     const [token, setToken] = useState(null);
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
-    console.log(role);
 
     if (!(role === "Agency" || role === "Client"))
         props.history.push("/page-not-found")
@@ -164,7 +164,6 @@ const Register = (props) => {
         let { name, value } = event.target
         
         if (role === "Agency"){
-            console.log(typeof value, value)
             setAgencyProfileDetails(
                 {
                     ...agencyProfileDetails,
@@ -240,7 +239,6 @@ const Register = (props) => {
 
     const handleChangeToggle = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked })
-        console.log("statechecked", state.checked)
     };
 
     //API call methods

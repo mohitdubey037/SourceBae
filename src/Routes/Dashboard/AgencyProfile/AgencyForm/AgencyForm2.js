@@ -39,6 +39,7 @@ function AgencyForm2(props) {
     const [allTechData, setAllTechData] = useState([]);
     const [visibleTechData, setVisibleTechData] = useState([]);
     const [visibleTechNames, setVisibleTechNames] = useState([]);
+    const [toggle, setToggle] = useState(false)
     const [dom, setDom] = useState([]);
 
     //API DATA STATE VARIABLES
@@ -61,10 +62,11 @@ function AgencyForm2(props) {
     };
 
     const handleTechSelect = (arr) => {
+        console.log("s",arr)
         setSelectedTechNames(arr);
     };
 
-    const setAgencyTechnologies = () => {
+    const setAgencyTechnologies = (status) => {
         const selectedTechs = selectedTechName.map((tech) => {
             return visibleTechData[tech]._id;
         });
@@ -72,8 +74,12 @@ function AgencyForm2(props) {
             ...apiData,
             agencyTechnologies: selectedTechs,
         });
+        if(status){
+            setToggle(!toggle)
+        }
     };
 
+    
     const setAgencyDomains = async () => {
         const selects = await allDomainsData.filter(
             (domain) => domain.selected === true
@@ -81,23 +87,7 @@ function AgencyForm2(props) {
         setDom(selects);
     };
 
-    useEffect(() => {
-        setApiData({
-            ...apiData,
-            agencyDomains: dom.map((domain) => {
-                return {
-                    domainId: domain._id,
-                    domainBaseAmount: 100,
-                    isAmountNegotiable: true,
-                };
-            }),
-        });
-    }, [dom]);
 
-    // const handleNext = () => {
-    //     setAgencyDomains()
-    //     setAgencyTechnologies()
-    // }
     //Api Calls methods
 
     const getAllDomains = () => {
@@ -139,7 +129,6 @@ function AgencyForm2(props) {
     };
 
     const handleServices = (event) => {
-        // document.body.scrollIntoView({ behavior: 'smooth' })
         const { className } = event.target;
         const toggledServices = allServicesData.map((service) => {
             if (service.serviceName === className)
@@ -180,7 +169,6 @@ function AgencyForm2(props) {
         instance
             .post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
-                // setStatus("Next")
                 setLoading(false);
                 props.history.push("/agency-form-three");
             })
@@ -194,6 +182,29 @@ function AgencyForm2(props) {
         getAllServices();
         getAllTechs();
     }, []);
+
+    useEffect(() => {
+        setApiData({
+            ...apiData,
+            agencyDomains: dom.map((domain) => {
+                return {
+                    domainId: domain._id,
+                    domainBaseAmount: 100,
+                    isAmountNegotiable: true,
+                };
+            }),
+        });
+    }, [dom]);
+
+    useEffect(()=>{
+        console.log("In")
+        if (apiData.agencyMonthlyBudget !== "") {
+            createAgencyForm2Api()
+        }
+        else {
+            toast.error("Please select a value for monthly budget.")
+        }
+    },[toggle])
 
     useEffect(() => {
         if (
@@ -227,16 +238,11 @@ function AgencyForm2(props) {
     }, [selectedServicesId, allTechData]);
 
     const handleNext = () => {
+        setAgencyTechnologies(true)
         if (dom.length > 0) {
             if (getSelectedServicesIds(allServicesData).length > 0) {
                 if (selectedTechName.length > 0) {
                     setAgencyTechnologies();
-                    if (apiData.agencyMonthlyBudget !== "") {
-                        createAgencyForm2Api()
-                    }
-                    else {
-                        toast.error("Please select a value for monthly budget.")
-                    }
                 }
                 else {
                     toast.error("Please Select at least one Technology.")
@@ -418,7 +424,7 @@ function AgencyForm2(props) {
                                                     showTags={true}
                                                     multiSelect={true}
                                                     width="23vw"
-                                                    onSelect={handleTechSelect}
+                                                    onSelect={(arr)=>handleTechSelect(arr)}
                                                     options={visibleTechNames}
                                                     primaryColor="#D6EAF8"
                                                     secondaryColor="#02044a"

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./dashboard.css";
 import quotation from "../../assets/images/Logo/quotation.png";
@@ -25,7 +26,6 @@ const Dashboard = (props) => {
   const [formRoute, setFormRoute] = useState("/");
   const [isPopover, setIsPopover] = useState(false);
   const [popindex, setPopIndex] = useState("");
-  const [statuses, setStatuses] = useState([]);
 
   const [verified, setVerified] = useState(true);
   const [isUserEmailVerified, setUserEmailVerified] = useState(true);
@@ -42,9 +42,7 @@ const Dashboard = (props) => {
         `api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=in progress`
       )
       .then(function (response) {
-        console.log(response);
         setAllProjects(response);
-        setStatuses(response.statuses);
       })
       .catch((err) => {
         console.log(err);
@@ -55,9 +53,6 @@ const Dashboard = (props) => {
     getAllProjects();
   }, []);
 
-  useEffect(() => {
-    console.log(statuses);
-  }, [statuses]);
 
   const cardsArray = [
     {
@@ -119,12 +114,6 @@ const Dashboard = (props) => {
     getAgencyProfile(localStorage.getItem("userId"));
   }, []);
 
-  useEffect(() => {
-    console.log(formRoute);
-  }, [formRoute]);
-  useEffect(() => {
-    console.log(steps);
-  }, [steps]);
 
   const verifyEmailPhone = () => {
     instance
