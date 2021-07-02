@@ -5,7 +5,7 @@ import "./AgencyList.css";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg'
+import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
 
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
@@ -322,7 +322,7 @@ function AgencyList(props) {
               :
               <div className='noDataFound'>
                 <img src={NO_DATA_FOUND} alt='no data found' />
-                <p style={{fontStyle: 'italic'}}>No Agency Found!!!..</p>
+                <p style={{marginTop: '20px', fontStyle: 'italic' }}>No Agency Found!!!..</p>
               </div>
             }
           </div>
