@@ -5,6 +5,7 @@ import "./AgencyList.css";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg'
 
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
@@ -12,7 +13,7 @@ import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
 
 function AgencyList(props) {
-  const Role = "client";
+  const Role = localStorage.getItem('role')
   let { projectId } = useParams();
 
 
@@ -138,82 +139,71 @@ function AgencyList(props) {
             </span>
           </div>
           <div className="mainAgencyList_agencyList">
-            <div className="innerAgencyList_agencyList">
-              <div className="AgencyCardsArea_agencyList">
-                {agencyList?.length > 0 &&
-                  agencyList.map((agency, index) => {
-                    console.log(agency._id);
-                    return (
-                      <div className="agencyPreciseCard_agencyList">
-                        <div className="agencyCardHeaderInfo">
-                          <div className="agencyImageProfile">
-                            <div className="agencyImageArea">
-                              <img src={agency.agencyLogo} alt="agency Logo" />
-                            </div>
-                            <div className="agencyProfileInfo">
-                              <h6>{agency.agencyName}</h6>
-                              <div>
-                                <p>Media & Social</p>
-                                <p>Proficient</p>
+            {agencyList?.length > 0 ?
+              < div className="innerAgencyList_agencyList">
+                <div className="AgencyCardsArea_agencyList">
+                  {agencyList?.length > 0 &&
+                    agencyList.map((agency, index) => {
+                      console.log(agency._id);
+                      return (
+                        <div className="agencyPreciseCard_agencyList">
+                          <div className="agencyCardHeaderInfo">
+                            <div className="agencyImageProfile">
+                              <div className="agencyImageArea">
+                                <img src={agency.agencyLogo} alt="agency Logo" />
+                              </div>
+                              <div className="agencyProfileInfo">
+                                <h6>{agency.agencyName}</h6>
+                                <div>
+                                  <p>Media & Social</p>
+                                  <p>Proficient</p>
+                                </div>
                               </div>
                             </div>
+                            <div className="profileButton">
+                              <p onClick={() => props.history.push({
+                                pathname: `/product-details:${agency.productId}`,
+                                condition: `Client`
+                              })}>
+                                View Agency Product{" "}
+                                <i
+                                  class="fa fa-angle-double-right"
+                                  aria-hidden="true"
+                                ></i>
+                              </p>
+                            </div>
                           </div>
-                          <div className="profileButton">
-                            <p onClick={() => props.history.push({
-                              pathname: `/product-details:${agency.productId}`,
-                              condition: `Client`
-                            })}>
-                              View Agency Product{" "}
-                              <i
-                                class="fa fa-angle-double-right"
-                                aria-hidden="true"
-                              ></i>
-                            </p>
-                          </div>
-                        </div>
 
-                        <div className="middleAgencyArea">
-                          <div className="agencyAddressTeam">
-                            <h6>Miscellaneous Info</h6>
-                            <div className="agencyAddressArea">
-                              <div className="locationIcon">
-                                <i class="fa fa-globe" aria-hidden="true"></i>
+                          <div className="middleAgencyArea">
+                            <div className="agencyAddressTeam">
+                              <h6>Miscellaneous Info</h6>
+                              <div className="agencyAddressArea">
+                                <div className="locationIcon">
+                                  <i class="fa fa-globe" aria-hidden="true"></i>
+                                </div>
+                                <div className="locationText">
+                                  <p>{`${agency?.agencyAddress?.address} ${agency?.agencyAddress?.location}`}</p>
+                                </div>
                               </div>
-                              <div className="locationText">
-                                <p>{`${agency?.agencyAddress?.address} ${agency?.agencyAddress?.location}`}</p>
+                              <div className="agencyAddressArea">
+                                <div className="teamIcon">
+                                  <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div className="teamNumberPart">
+                                  <p>
+                                    <span>{agency.agencyTeamSize}</span>members
+                                  </p>
+                                </div>
                               </div>
                             </div>
-                            <div className="agencyAddressArea">
-                              <div className="teamIcon">
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                              </div>
-                              <div className="teamNumberPart">
-                                <p>
-                                  <span>{agency.agencyTeamSize}</span>members
-                                </p>
-                              </div>
+                            <div className="agencyDescInfo">
+                              <h6>Description</h6>
+                              <p>{agency.agencyDescription}</p>
                             </div>
                           </div>
-                          <div className="agencyDescInfo">
-                            <h6>Description</h6>
-                            <p>{agency.agencyDescription}</p>
-                          </div>
-                        </div>
 
-                        <div className="quotationShortlistButton">
-                          {agency.isAgencyAskedForQuotation ? (
-                            <div
-                              onClick={() =>
-                                props.history.push({
-                                  pathname: `/project-details/${projectId}/${agency._id}`,
-                                  condition: "Client",
-                                })
-                              }
-                            >
-                              <p>Show Details</p>
-                            </div>
-                          ) : agency.isAgencyShortListed || agency.isAgencyAskedForQuotation ? (
-                            <>
+                          <div className="quotationShortlistButton">
+                            {agency.isAgencyAskedForQuotation ? (
                               <div
                                 onClick={() =>
                                   props.history.push({
@@ -224,98 +214,117 @@ function AgencyList(props) {
                               >
                                 <p>Show Details</p>
                               </div>
-                            </>
-                          ) : (
-                            <>
-                              <div onClick={() => openShortlistModal(agency._id, index)}>
-                                <p>Shortlist</p>
-                              </div>
-                              <div onClick={() => onOpenQuotationModel(agency._id, index)}>
-                                <p>Get Quotation</p>
-                              </div>
-                            </>
-                          )}
+                            ) : agency.isAgencyShortListed || agency.isAgencyAskedForQuotation ? (
+                              <>
+                                <div
+                                  onClick={() =>
+                                    props.history.push({
+                                      pathname: `/project-details/${projectId}/${agency._id}`,
+                                      condition: "Client",
+                                    })
+                                  }
+                                >
+                                  <p>Show Details</p>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div onClick={() => openShortlistModal(agency._id, index)}>
+                                  <p>Shortlist</p>
+                                </div>
+                                <div onClick={() => onOpenQuotationModel(agency._id, index)}>
+                                  <p>Get Quotation</p>
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+                <div className="agencyFilterArea_agencyList">
+                  <div className="filterForm">
+                    <div className="filterHeading">
+                      <p className="filterText">Filter</p>
+                      <div>
+                        <p>Clear All</p>
+                      </div>
+                    </div>
+
+                    <div className="locationFilter">
+                      <p>Location</p>
+                      <input
+                        type="text"
+                        placeholder="Type here.."
+                        name=""
+                        id=""
+                      />
+                    </div>
+
+                    <div className="officeVisitFilter">
+                      <p>Office Visit</p>
+                      <div
+                        className="officeVisitRadio"
+                        onClick={() => setOfficeVisit(!isOfficeVisit)}
+                      >
+                        <div
+                          className="officeVisitRadioImage"
+                          style={{
+                            backgroundColor: isOfficeVisit ? "#3498DB" : "#fff",
+                          }}
+                        >
+                          {isOfficeVisit ? (
+                            <i
+                              style={{ color: isOfficeVisit ? "#fff" : "#000" }}
+                              class="fa fa-check"
+                              aria-hidden="true"
+                            ></i>
+                          ) : null}
+                        </div>
+                        <div>
+                          <span>Allowed</span>
                         </div>
                       </div>
-                    );
-                  })}
-              </div>
-              <div className="agencyFilterArea_agencyList">
-                <div className="filterForm">
-                  <div className="filterHeading">
-                    <p className="filterText">Filter</p>
-                    <div>
-                      <p>Clear All</p>
                     </div>
-                  </div>
 
-                  <div className="locationFilter">
-                    <p>Location</p>
-                    <input
-                      type="text"
-                      placeholder="Type here.."
-                      name=""
-                      id=""
-                    />
-                  </div>
-
-                  <div className="officeVisitFilter">
-                    <p>Office Visit</p>
-                    <div
-                      className="officeVisitRadio"
-                      onClick={() => setOfficeVisit(!isOfficeVisit)}
-                    >
+                    <div className="officeVisitFilter">
+                      <p>Offsite Travel</p>
                       <div
-                        className="officeVisitRadioImage"
-                        style={{
-                          backgroundColor: isOfficeVisit ? "#3498DB" : "#fff",
-                        }}
+                        className="officeVisitRadio"
+                        onClick={() => setOffsiteTravel(!isOffsiteTravel)}
                       >
-                        {isOfficeVisit ? (
-                          <i
-                            style={{ color: isOfficeVisit ? "#fff" : "#000" }}
-                            class="fa fa-check"
-                            aria-hidden="true"
-                          ></i>
-                        ) : null}
-                      </div>
-                      <div>
-                        <span>Allowed</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="officeVisitFilter">
-                    <p>Offsite Travel</p>
-                    <div
-                      className="officeVisitRadio"
-                      onClick={() => setOffsiteTravel(!isOffsiteTravel)}
-                    >
-                      <div
-                        className="officeVisitRadioImage"
-                        style={{
-                          backgroundColor: isOffsiteTravel ? "#3498DB" : "#fff",
-                        }}
-                      >
-                        {isOffsiteTravel ? (
-                          <i
-                            style={{ color: isOffsiteTravel ? "#fff" : "#000" }}
-                            class="fa fa-check"
-                            aria-hidden="true"
-                          ></i>
-                        ) : null}
-                      </div>
-                      <div>
-                        <span>Allowed</span>
+                        <div
+                          className="officeVisitRadioImage"
+                          style={{
+                            backgroundColor: isOffsiteTravel ? "#3498DB" : "#fff",
+                          }}
+                        >
+                          {isOffsiteTravel ? (
+                            <i
+                              style={{ color: isOffsiteTravel ? "#fff" : "#000" }}
+                              class="fa fa-check"
+                              aria-hidden="true"
+                            ></i>
+                          ) : null}
+                        </div>
+                        <div>
+                          <span>Allowed</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+              :
+              <div className='noDataFound'>
+                <img src={NO_DATA_FOUND} alt='no data found' />
+                <p>No Agency Found!!!..</p>
+              </div>
+            }
           </div>
         </>
-      )}
+      )
+      }
 
       {/* Modal for shortlist  */}
       <Modal

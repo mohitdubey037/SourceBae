@@ -27,6 +27,18 @@
   align-items: center;
 }
 
+.noDataFound {
+  width: 40%;
+  margin-top: 10px;
+  text-align: center;
+  margin: auto;
+}
+
+.noDataFound img {
+  width: 80%;
+  height: 50%;
+}
+
 .innerprojectDetailsInfo_agencyList {
   width: 95%;
   margin: auto;
