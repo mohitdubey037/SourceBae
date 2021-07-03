@@ -11,18 +11,21 @@ import { useRef, useState, useEffect } from 'react';
 
 function Quotation(props) {
     const [navigated, setNavigation] = useState(false)
+    const inputEl = useRef(null);
+    console.log(props.location.origin);
 
     useEffect(() => {
-        if (!navigated && inputEl !== null && props.location.origin !== '' && props.location.origin !== undefined) {
-            inputEl?.current?.click()
+        if (!navigated && inputEl !== null && props.location.origin !== '') {
+            console.log('hi');
+            inputEl?.current?.click();
             setNavigation(true)
         }
         else if (navigated) {
-            inputEl?.current?.click()
+            console.log('no');
+            inputEl?.current?.click();
         }
-    })
+    }, [])
 
-    const inputEl = useRef(null);
     return (
         <>
             <Navbar headingInfo="Quotation" />
@@ -33,13 +36,13 @@ function Quotation(props) {
                 <div className="innerQuotation">
                     <nav>
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={inputEl}>
+                            <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" >
                                 <img src={received} alt="received" /> Received
                             </button>
-                            <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" ref={inputEl}>
+                            <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" >
                                 <img src={responded} alt="" /> Responded
                             </button>
-                            <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" ref={inputEl}>
+                            <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                                 <img src={matched} alt="" /> Project Matched
                             </button>
                         </div>

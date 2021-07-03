@@ -10,7 +10,6 @@ function Received(props) {
     const routerHistory = useHistory();
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
-    console.log(Role);
 
     const [projects, setProjects] = useState([]);
     const [statuses, setStatuses] = useState([]);
@@ -22,13 +21,11 @@ function Received(props) {
         instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=1`)
             .then(response => {
                 setLoading(false);
-                console.log(response);
                 setProjects(response.projects);
                 setStatuses(response.statuses);
             })
             .catch(err => {
                 setLoading(false)
-                console.log(err?.response?.data?.message)
                 setErr(err?.response?.data?.message)
             })
 
@@ -38,9 +35,6 @@ function Received(props) {
         getAllReceivedData()
     }, [])
 
-    useEffect(() => {
-        console.log(projects)
-    }, [projects])
 
 
 
