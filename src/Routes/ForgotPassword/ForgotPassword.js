@@ -55,7 +55,7 @@ const ForgotPassword = (props) => {
 
     const [hidePassword, SetPasswordStatus] = useState(true);
 
-    const [Role, setRole] = useState('Agency')
+    const [Role, setRole] = useState('agency')
 
     const [form, setForm] = useState({
         password: "",
@@ -84,6 +84,7 @@ const ForgotPassword = (props) => {
 
     const changePassword = () => {
         // setLoading(true);
+        console.log(form);
         instance
             .patch(`/api/${Role}/auths/reset-password`, form)
             .then(response => {
@@ -110,8 +111,8 @@ const ForgotPassword = (props) => {
                             <FormControl component="fieldset" className="roleRadio">
                                 <FormLabel className='role' component="legend">Role</FormLabel>
                                 <RadioGroup aria-label="Role" name="Role" value={Role} onChange={handleRole}>
-                                    <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
-                                    <FormControlLabel value="Client" control={<Radio />} label="Client" />
+                                    <FormControlLabel value="agency" control={<Radio />} label="Agency" />
+                                    <FormControlLabel value="client" control={<Radio />} label="Client" />
                                 </RadioGroup>
                             </FormControl>
                             <div style={{ marginTop: '0px' }} className="loginForm">
@@ -121,6 +122,7 @@ const ForgotPassword = (props) => {
                                     placeholder="Enter a Password"
                                     variant="outlined"
                                     type="password"
+                                    value={form.password}
                                     disableUnderline={true}
                                     required
                                     fullWidth
