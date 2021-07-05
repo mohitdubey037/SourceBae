@@ -29,6 +29,7 @@ function AgencyList(props) {
   const [project, setProject] = useState([])
 
   const openShortlistModal = (_id, indexParam) => {
+    console.log("hiiiiii")
     setOpen(true);
     setIndex(indexParam)
     setShortlistFormData({
@@ -64,8 +65,8 @@ function AgencyList(props) {
     instance
       .get(`/api/${Role}/projects/${projectId}/agencies`)
       .then(function (response) {
-        console.log(response);
-        setAgencyList(response);
+        console.log(response.agencies,"response");
+        setAgencyList(response.agencies);
         setProject(response.project);
         setLoading(false);
       });
@@ -92,9 +93,11 @@ function AgencyList(props) {
   };
 
   const shortlistHandler = () => {
+    console.log(agencyList,"agencyList")
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
+        console.log(agencyList, Object.keys(agencyList))
         const tempAgencyList = [...agencyList]
         tempAgencyList[index].isAgencyShortListed = true
         setAgencyList(tempAgencyList)
@@ -146,11 +149,11 @@ function AgencyList(props) {
             </span>
           </div>
           <div className="mainAgencyList_agencyList">
-            {agencyList?.agencies?.length > 0 ?
+            {agencyList?.length > 0 ?
               <div className="innerAgencyList_agencyList">
                 <div className="AgencyCardsArea_agencyList">
-                  {agencyList?.agencies?.length > 0 &&
-                    agencyList?.agencies?.map((agency, index) => {
+                  {agencyList?.length > 0 &&
+                    agencyList?.map((agency, index) => {
                       return (
                         <div className="agencyPreciseCard_agencyList">
                           <div className="agencyCardHeaderInfo">
