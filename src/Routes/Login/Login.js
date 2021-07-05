@@ -178,6 +178,23 @@ const Login = (props) => {
 
     }, [token]);
 
+    useEffect(()=>{
+
+        const tempRole = localStorage.getItem('role')
+        const auth =cookie.load("Authorization")
+        if(auth!==null && auth!==undefined && tempRole!==null && tempRole!==undefined){
+            if(tempRole.toLowerCase()==="agency")
+            props.history.push("/dashboard")
+            else if(tempRole.toLowerCase()==="client")
+            props.history.push("agency")
+            else{
+                props.history.push("/login:agency")
+            }
+        }
+        else{
+            props.history.push("/login:agency")
+        }
+    })
     return (
         <>
             {loading ? (
