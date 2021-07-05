@@ -269,18 +269,19 @@ const CommentBox = (props) => {
             <div className="detailsButtons">
               
                 <button
-                  className="rejectButton"
-                  onClick={handleProjectRejection}
-                >
-                  Withdraw
-                </button>
-                <button
                   className="acceptButton"
                   onClick={() => {
                     setOpen(true);
                   }}
                 >
                   Accept
+                </button>
+
+                <button
+                  className="rejectButton"
+                  onClick={handleProjectRejection}
+                >
+                  Withdraw
                 </button>
             </div>
           </div>
