@@ -127,7 +127,7 @@ function ProductForm(props) {
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [businesstype, setBusinesstype] = useState([]);
-  const [wordsRequired, setWordsRequired] = useState(100)
+  const [wordsRequired, setWordsRequired] = useState(100);
 
 
   const [domainName, setDomainName] = useState("");
@@ -182,12 +182,14 @@ function ProductForm(props) {
   };
 
   useEffect(() => {
-    let totalSoFar = 0
-    for (var i = 0; i < apiData.productDescription.length; i++) {
-      totalSoFar += 1;
+    if (apiData.productDescription === '') {
+      setWordsRequired(100);
     }
-    setWordsRequired(100 - totalSoFar); // add 1 to totalsoFar to account for extra space since 1 space = 2 words
-    console.log(totalSoFar)
+    else {
+      let ab = apiData.productDescription.split(' ');
+      console.log(ab);
+      setWordsRequired(100 - ab.length); // add 1 to totalsoFar to account for extra space since 1 space = 2 words
+    }
   }, [apiData.productDescription])
 
   const handleSelectChange = (event) => {
@@ -318,7 +320,7 @@ function ProductForm(props) {
       err.productPreviousFunding = "Previous Funding required";
     }
 
-    if (apiData.projectPreviousFundingRaised === "") {
+    if (apiData.productPreviousFunding === "true" && apiData.projectPreviousFundingRaised === "") {
       err.fundingMoneyRaised = "Funding Money Raised is Required.";
     }
     if (apiData.productFundingTypeLookingFor === "") {
