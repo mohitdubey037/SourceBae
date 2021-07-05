@@ -37,6 +37,7 @@ function AgencyProfile(props) {
   const [navigated, setNavigation] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const [hoverModal, setHoverModal] = useState(false)
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
@@ -141,10 +142,17 @@ function AgencyProfile(props) {
                 )
               ) : (
                 <div>
-                  <p onClick={onOpenModal}>
+                  {/* <p onClick={onOpenModal}>
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                     Have a Question..?
-                  </p>
+                  </p> */}
+                  <i
+                    style={{ fontSize: 22, color:"#fff" }}
+                    className="fa fa-info-circle"
+                    aria-hidden="true"
+                    onMouseOver={()=>setHoverModal(true)}
+                    // onMouseLeave={()=>onCloseModal()}
+                  ></i>
                 </div>
               )}
             </div>
@@ -189,6 +197,28 @@ function AgencyProfile(props) {
                     <p>Yes.</p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </Modal>
+
+          <Modal
+            open={hoverModal}
+            classNames={{
+              overlay: "customOverlay",
+              modal: "customModal",
+            }}
+            onClose={()=>setHoverModal(false)}
+            center
+          >
+            <div className="mainAskQuestion">
+              <div className="innerAskQuestion">
+                <div className="questionAsking">
+                  <h1>For any Help:</h1>
+
+                  <h3>Support Email: connect@onesourcing.in</h3>
+                  <h3>Support Number: +91 95755 17047</h3>
+                </div>
+
               </div>
             </div>
           </Modal>
