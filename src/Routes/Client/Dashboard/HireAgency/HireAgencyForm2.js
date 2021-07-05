@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import ClientNavbar from "../../ClientNavbar";
 import MultiSelect from "react-multi-select-component";
-import { useParams } from 'react-router'
+import { useParams } from "react-router";
 
-import * as helper from "../../../../shared/helper"
+import * as helper from "../../../../shared/helper";
 //material-ui
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -34,10 +34,9 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function HireAgencyForm2(props) {
-
   const Role = "client";
   let { projectId } = useParams();
-  projectId = helper.cleanParam(projectId)
+  projectId = helper.cleanParam(projectId);
   console.log(projectId);
   // selecting Domains
   const id = localStorage.getItem("userId");
@@ -48,24 +47,27 @@ function HireAgencyForm2(props) {
     id: projectId,
     projectDomainId: "",
     projectExpertiseRequired: [],
-    agencyExperience: ""
+    agencyExperience: "capable",
   });
 
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState(null);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState([]);
-  const [buttonStatus, setButtonStatus] = useState("Submit");
   const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState();
+  const [error, setError] = useState({
+    projectDomainIdError: "",
+    projectExpertiseRequiredError: [],
+    agencyExperienceError: "",
+  });
   const classes = useStyles();
 
   const handleChange = (event) => {
-    const { name, value } = event.target
+    const { name, value } = event.target;
     setApiData({
       ...apiData,
-      [name]: value
-    })
+      [name]: value,
+    });
   };
 
   const handleDomains = (event) => {
@@ -90,7 +92,8 @@ function HireAgencyForm2(props) {
   //Api Calls methods
 
   const getAllDomains = () => {
-    instance.get(`api/${Role}/domains/all`)
+    instance
+      .get(`api/${Role}/domains/all`)
       .then(function (response) {
         console.log(response);
         const domainNames = response.map((domain) => {
@@ -102,11 +105,9 @@ function HireAgencyForm2(props) {
         setAllDomainsData(domainNames);
         setLoading(false);
       })
-      .catch(err => {
-        setLoading(false)
-        console.log(err?.response?.data?.message)
-        setErr(err?.response?.data?.message)
-      })
+      .catch((err) => {
+        setLoading(false);
+      });
   };
 
   const getExpertiseOption = () => {
@@ -119,61 +120,60 @@ function HireAgencyForm2(props) {
     setOptions(options);
   };
 
-  // const hireAgencyStep2 = () => {
-  //   setLoading(true)
-  //   instance.post(`/api/${Role}/projects/create`,apiData)
-  //   .then(function(response){
-  //       console.log(response);
-  //       setButtonStatus("Next");
-  //       setLoading(false)
-  //   })
-  //   .catch(err => {
-  //     setLoading(false)
-  //   })
-  // };
-
-  // const handleButton = () => {
-  //   if (buttonStatus === "Submit") {
-  //     hireAgencyStep2();
-  //   }
-  //   else if(buttonStatus === "Next" && projectId) {
-  //     window.location.href=`/hire-agency-form-three:${projectId}`
-  //   }
-  // };
-
   const handleSubmit = () => {
-    setLoading(true)
-    instance.post(`/api/${Role}/projects/create`, apiData)
+
+    let tempError = {
+      projectDomainIdError: "",
+      projectExpertiseRequiredError: [],
+      agencyExperienceError: "",
+    }
+
+    if(apiData.projectDomainId==="")
+    setError({
+      ...tempError,
+      projectDomainIdError:"Please Select a Domain."
+    })
+    else if(apiData.projectExpertiseRequired.length===0)
+    setError({
+      ...tempError,
+      projectExpertiseRequiredError:"Please Select a Service."
+    })
+    else{
+    setLoading(true);
+    instance
+      .post(`/api/${Role}/projects/create`, apiData)
       .then(function (response) {
         console.log(response);
-        // setButtonStatus("Next");
         setLoading(false);
-        props.history.push(`/hire-agency-form-three:${projectId}`)
+        props.history.push(`/hire-agency-form-three:${projectId}`);
       })
-      .catch(err => {
-        setLoading(false)
-      })
-  }
+      .catch((err) => {
+        setLoading(false);
+      });
+    }
+  };
 
   useEffect(() => {
     getExpertiseOption();
-    selectedDomain?._id && setApiData({
-      ...apiData,
-      projectDomainId: selectedDomain._id
-    })
+    selectedDomain?._id &&
+      setApiData({
+        ...apiData,
+        projectDomainId: selectedDomain._id,
+      });
   }, [selectedDomain]);
 
   useEffect(() => {
     console.log(apiData);
-  })
-
+  });
 
   useEffect(() => {
     setApiData({
       ...apiData,
-      projectExpertiseRequired: selected.map((service) => { return service.value })
-    })
-  }, [selected])
+      projectExpertiseRequired: selected.map((service) => {
+        return service.value;
+      }),
+    });
+  }, [selected]);
 
   useEffect(() => {
     getAllDomains();
@@ -189,7 +189,9 @@ function HireAgencyForm2(props) {
       >
         <i class="fa fa-angle-left" aria-hidden="true"></i>
       </div>
-      {loading ? <Spinner /> :
+      {loading ? (
+        <Spinner />
+      ) : (
         <div className="mainHireAgencyFormTwo">
           <div className="innerHireAgencyFormTwo">
             <div className="techStackFields">
@@ -199,7 +201,7 @@ function HireAgencyForm2(props) {
 
               <div className="serivcesHireAgency">
                 <p className="servicesAgencyHeading">
-                  1. In which services you have good command?
+                  1. In which Domain you have good command?
                 </p>
 
                 <div className="servicesCardsHireAgency">
@@ -226,6 +228,17 @@ function HireAgencyForm2(props) {
                       </div>
                     );
                   })}
+                  {error.projectDomainIdError && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {error.projectDomainIdError}
+                      </p>
+                    )}
                 </div>
               </div>
 
@@ -271,23 +284,23 @@ function HireAgencyForm2(props) {
 
               <div className="nextbuttton">
                 <div
-                  onClick={() => (props.history.push("/hire-agency-form-one"))}
+                  onClick={() => props.history.push("/hire-agency-form-one")}
                 >
                   <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                 </div>
                 <div
                   /*style={{backgroundColor:colors[buttonStatus]}}*/
-                  onClick={() =>
-                    handleSubmit()
-                  }
+                  onClick={() => handleSubmit()}
                 >
-                  Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  Submit{" "}
+                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </div>
               </div>
             </div>
-            {selectedDomain && options ? ( <div className="serviceFieldsOptions">
-              <div className="servicesHireAgencyContainer">
-                <div className="serviceSelectionInput">
+            {selectedDomain && options ? (
+              <div className="serviceFieldsOptions">
+                <div className="servicesHireAgencyContainer">
+                  <div className="serviceSelectionInput">
                     <>
                       <p className="uiuxtext">
                         Select {selectedDomain.domainName} services
@@ -299,12 +312,27 @@ function HireAgencyForm2(props) {
                         labelledBy="Select"
                       />
                     </>
+                  </div>
+                  {error.projectExpertiseRequiredError && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {error.projectExpertiseRequiredError}
+                      </p>)}
                 </div>
+
               </div>
-            </div> ) : "Please Select a Service."}
+            ) : (
+              "Please Select a Service."
+            )}
+
           </div>
         </div>
-      }
+      )}
     </>
   );
 }
