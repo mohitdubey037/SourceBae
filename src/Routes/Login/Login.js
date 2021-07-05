@@ -194,7 +194,7 @@ const Login = (props) => {
         else{
             props.history.push("/login:agency")
         }
-    })
+    },[])
     return (
         <>
             {loading ? (
