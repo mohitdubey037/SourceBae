@@ -118,7 +118,7 @@ const Register = (props) => {
     //Agency Profile state variables//
     const [agencyProfileDetails, setAgencyProfileDetails] = useState({
         agencyName: '',
-        agencyTeamSize: 0,
+        agencyTeamSize: '',
         incorporationDate: new Date().toJSON().slice(0, 10),
         socialPlatformDetails: []
     })
@@ -162,8 +162,8 @@ const Register = (props) => {
 
     const handleCreateProfile = (event, role) => {
         let { name, value } = event.target
-        
-        if (role === "Agency"){
+
+        if (role === "Agency") {
             setAgencyProfileDetails(
                 {
                     ...agencyProfileDetails,
@@ -183,16 +183,23 @@ const Register = (props) => {
     const handleErrorsValidation = (Role) => {
         const err = {}
         if (Role === "Agency") {
-            if (agencyProfileDetails.agencyName === "") {
+            if (agencyProfileDetails?.agencyName === "") {
                 err.agencyNameError = 'Agency name is required'
             }
-            else if (agencyProfileDetails.agencyName.length < 2) {
+            else if (agencyProfileDetails?.agencyName.length < 2) {
                 err.agencyNameError = 'Agency name must be between 2 characters.'
             }
-            else if (agencyProfileDetails.agencyTeamSize === '') {
+            else if (agencyProfileDetails?.agencyTeamSize === '') {
                 err.agencyTeamSizeError = 'Team strength is required'
             }
-            else if (agencyProfileDetails.socialPlatformDetails[0].platformLink === "") {
+            else if (agencyProfileDetails?.agencyTeamSize !== " " && +agencyProfileDetails?.agencyTeamSize <= 0) {
+                err.agencyTeamSizeError = 'Team strength must be greater than 0'
+            }
+            else if (agencyProfileDetails?.socialPlatformDetails.length === 0) {
+                err.socialPlatformDetailsError = 'Website url is required'
+            }
+            else if (agencyProfileDetails?.socialPlatformDetails?.length > 0 && agencyProfileDetails?.socialPlatformDetails[0]?.platformLink === "") {
+                
                 err.socialPlatformDetailsError = 'Website url is required'
             }
             else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {
@@ -246,7 +253,7 @@ const Register = (props) => {
         return new Promise((resolve, reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
                 .then(function (response) {
-               cookie.save(
+                    cookie.save(
                         "Authorization",
                         `Bearer ${response.accessToken}`,
                         { path: '/' }
@@ -263,7 +270,7 @@ const Register = (props) => {
         instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
                 if (role.toLowerCase() === "client") {
-                    props.history.push('/client-dashboard');    
+                    props.history.push('/client-dashboard');
                     setLoading(false);
                 }
                 else if (role.toLowerCase() === "agency") {
@@ -282,9 +289,9 @@ const Register = (props) => {
         }
     }
 
-    useEffect(()=>{
-        if(token!==null)
-        {   const apiRole = helper.lowerize(role)
+    useEffect(() => {
+        if (token !== null) {
+            const apiRole = helper.lowerize(role)
             let api_param_const = ``
             let api_create_form = {}
             if (apiRole === `client`) {
@@ -301,7 +308,7 @@ const Register = (props) => {
                     ...agencyProfileDetails
                 }
             }
-            if (token!== null) {
+            if (token !== null) {
                 instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
                 createProfileApi(apiRole, api_param_const, api_create_form)
             }
@@ -309,7 +316,7 @@ const Register = (props) => {
                 toast.error("Token not set", { autoClose: 2000 })
             }
         }
-    },[token])
+    }, [token])
 
     const createRoleString = (role) => {
         role = role.charAt(0).toUpperCase() + role.slice(1)
@@ -342,7 +349,7 @@ const Register = (props) => {
             else if (signupForm.userName === "") {
                 err.userNameError = 'User name is required.'
             }
-                
+
             else if (/\S+@\S+\.\S+/.test(signupForm.userName)) {
                 err.userNameError = 'User name should be only alphanumeric.'
             }
@@ -375,10 +382,10 @@ const Register = (props) => {
                 err.passwordError = "Password is required."
             }
 
-            else if(signupForm.password.length<6){
+            else if (signupForm.password.length < 6) {
                 err.passwordError = "Password must be 8 characters in length."
             }
-            else if(signupForm.password.length>64){
+            else if (signupForm.password.length > 64) {
                 err.passwordError = "Password cannot be more than 64 characters in length."
             }
 
@@ -454,8 +461,8 @@ const Register = (props) => {
                                 <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
                             </div>
                             <div className="signUpOption">
-                                    <p>Already have an account? <span onClick={() => window.location.href = `/login:${role.toLowerCase()}`}>Log In</span></p>
-                                </div>
+                                <p>Already have an account? <span onClick={() => window.location.href = `/login:${role.toLowerCase()}`}>Log In</span></p>
+                            </div>
                             <div className="client__formsContainer">
                                 <form className='client__form form__1' autoComplete='off' >
                                     <input
@@ -578,10 +585,10 @@ const Register = (props) => {
                                             </>
                                     }
 
-                                    <input style={{marginTop: '3%'}} type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+                                    <input style={{ marginTop: '3%' }} type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
                                     {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
 
-                               <Button
+                                    <Button
                                         onClick={() => handleSubmit(role, signupForm)}
                                         style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                                     >

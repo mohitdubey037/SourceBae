@@ -127,8 +127,12 @@ function ProductForm(props) {
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [businesstype, setBusinesstype] = useState([]);
+  const [wordsRequired, setWordsRequired] = useState(100)
+
 
   const [domainName, setDomainName] = useState("");
+
+  let totalSoFar = 0;
 
   const [errors, setErrors] = useState({});
 
@@ -168,6 +172,23 @@ function ProductForm(props) {
     });
     // setBusinesstype(value);
   };
+  const handleDescChange = (event) => {
+    const { name, value } = event.target;
+    setApiData({
+      ...apiData,
+      [name]: value,
+    });
+    // setBusinesstype(value);
+  };
+
+  useEffect(() => {
+    let totalSoFar = 0
+    for (var i = 0; i < apiData.productDescription.length; i++) {
+      totalSoFar += 1;
+    }
+    setWordsRequired(100 - totalSoFar); // add 1 to totalsoFar to account for extra space since 1 space = 2 words
+    console.log(totalSoFar)
+  }, [apiData.productDescription])
 
   const handleSelectChange = (event) => {
     const { name, value } = event.target;
@@ -327,9 +348,9 @@ function ProductForm(props) {
       err.productPlatformLink = "Wrong Platform link Provided";
     }
 
-    if(apiData.productFounderLinkedinProfiles.length===0){
+    if (apiData.productFounderLinkedinProfiles.length === 0) {
       err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
-    }    
+    }
     if (file === null) {
       err.filePicked = "Please pick up a logo for the Product";
     }
@@ -344,7 +365,7 @@ function ProductForm(props) {
       setLoading(true);
       const formData = new FormData();
 
-      file!==null && formData.append("files", file, file?.name);
+      file !== null && formData.append("files", file, file?.name);
 
       instance
         .post(`api/${Role}/media/create`, formData)
@@ -380,7 +401,7 @@ function ProductForm(props) {
   };
 
   useEffect(() => {
-    if(apiData.productLogo!==""){
+    if (apiData.productLogo !== "") {
       uploadProduct()
     }
   }, [apiData]);
@@ -399,7 +420,7 @@ function ProductForm(props) {
                 props.history.push("/dashboard");
               }}
             >
-              <i class="fa fa-angle-left" aria-hidden="true"></i>
+              <i className="fa fa-angle-left" aria-hidden="true"></i>
             </div>
             <div className="innerProductForm">
               <div className="leftBorderLineProduct"></div>
@@ -497,10 +518,11 @@ function ProductForm(props) {
                       placeholder="Minimum words should be 100"
                       name="productDescription"
                       value={apiData.productDescription}
-                      onChange={handleChange}
+                      onChange={handleDescChange}
                       cols="30"
                       rows="6"
                     ></textarea>
+                    <p style={{ fontWeight: 'normal', textAlign: 'right' }}>{wordsRequired} words required</p>
                     {errors.productDescription && (
                       <p
                         style={{
@@ -742,16 +764,16 @@ function ProductForm(props) {
                         </Select>
                       </FormControl>
                       {errors.fundingMoneyRaised && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {errors.fundingMoneyRaised}
-                      </p>
-                    )}
+                        <p
+                          style={{
+                            color: "red",
+                            fontWeight: "normal",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {errors.fundingMoneyRaised}
+                        </p>
+                      )}
                     </section>
                   ) : null}
                   <section className="previousFunding">
@@ -807,7 +829,7 @@ function ProductForm(props) {
                     )}
                   </section>
 
-                  <section class="currentStage">
+                  <section className="currentStage">
                     <p>10. What is the current stage of product?</p>
                     <div className="currentStageRadios">
                       {currentStage.map((value, index) => {
@@ -1019,7 +1041,7 @@ function ProductForm(props) {
                           onChange={(e) => handleChangeLink(0, e)}
                         />
                         <button type="button" onClick={() => handleAdd()}>
-                          <i class="fa fa-plus" aria-hidden="true"></i>
+                          <i className="fa fa-plus" aria-hidden="true"></i>
                         </button>
                       </div>
                     </div>
@@ -1042,13 +1064,12 @@ function ProductForm(props) {
                           <div className="founderLink" key={`${field}-${idx}`}>
                             <input
                               type="text"
-                              placeholder={`Founder ${
-                                idx + 1
-                              } Linkedin Profile Link`}
+                              placeholder={`Founder ${idx + 1
+                                } Linkedin Profile Link`}
                               onChange={(e) => handleChangeLink(idx, e)}
                             />
                             <div onClick={() => handleRemove(idx)}>
-                              <i class="fa fa-times" aria-hidden="true"></i>
+                              <i className="fa fa-times" aria-hidden="true"></i>
                             </div>
                           </div>
                         );
@@ -1067,10 +1088,10 @@ function ProductForm(props) {
 
       <div className="submitButton">
         <div className="innerSubmitButton">
-          <div className="subbutton" onClick={()=>updateButtonHandler()}>
+          <div className="subbutton" onClick={() => updateButtonHandler()}>
             <p>
               Upload Your Product{" "}
-              <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+              <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>
             </p>
           </div>
         </div>
