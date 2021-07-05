@@ -24,7 +24,9 @@ function AgencyList(props) {
   const [open, setOpen] = useState(false);
   const [openQuotation, setOpenQuotation] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [index, setIndex] = useState(-1)
+  const [index, setIndex] = useState(-1);
+
+  const [project, setProject] = useState([])
 
   const openShortlistModal = (_id, indexParam) => {
     setOpen(true);
@@ -62,11 +64,16 @@ function AgencyList(props) {
     instance
       .get(`/api/${Role}/projects/${projectId}/agencies`)
       .then(function (response) {
-        console.log(response, "response");
+        console.log(response);
         setAgencyList(response);
+        setProject(response.project);
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    console.log(project)
+  },[project])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -132,10 +139,10 @@ function AgencyList(props) {
             <i class="fa fa-angle-left" aria-hidden="true"></i>
           </div>
           <div className="innerprojectDetailsInfo_agencyList">
-            <p>One Sourcing</p>
+            <p>{project.projectName}</p>
             <span>
               {" "}
-              <em> Buget:-</em> $5000-$1000
+              <em> Budget:-</em> ${project.projectProposalCost}
             </span>
           </div>
           <div className="mainAgencyList_agencyList">

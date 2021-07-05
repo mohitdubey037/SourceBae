@@ -19,6 +19,7 @@
 }
 
 .searchButton {
+    margin-top: 10px;
     font-size: 1.2rem;
     font-weight: bold;
     border-radius: 11px;
@@ -54,7 +55,7 @@
 }
 
 .agencyFilterArea_productAgencies {
-    margin-top: 1.2%;
+    margin-top: -2%;
     width: 20%;
     position: relative;
 }

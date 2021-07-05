@@ -30,16 +30,16 @@ import Moment from "react-moment";
 
 function AgencyProfile(props) {
   const { id } = useParams();
-
   const Role = localStorage.getItem('role');
-  console.log(Role);
+  const inputEl = useRef(null);
+  
   const [open, setOpen] = useState(false);
+  const [navigated, setNavigation] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-  const inputEl = useRef(null);
-  const [navigated, setNavigation] = useState(false);
+
   const [agencyProfileData, setAgencyProfileData] = useState({
     ownerName: "",
     agencyName: "",
@@ -71,11 +71,10 @@ function AgencyProfile(props) {
     createdAt: "",
     updatedAt: "",
   });
+
   const getAgencyProfile = (agencyId, profileviewStatus) => {
     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-
-    instance
-      .get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+    instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
       .then(function (response) {
         setAgencyProfileData({ ...response });
         setLoading(false);
@@ -92,14 +91,11 @@ function AgencyProfile(props) {
   }, []);
 
   useEffect(() => {
-    if (
-      !navigated &&
-      inputEl !== null &&
-      props.location.origin === "addingDeveloper"
-    ) {
+    if (!navigated && inputEl !== null && props.location.origin === "addingDeveloper") {
       inputEl?.current?.click();
       setNavigation(true);
-    } else if (navigated) {
+    } 
+    else if (navigated) {
       inputEl?.current?.click();
     }
   });

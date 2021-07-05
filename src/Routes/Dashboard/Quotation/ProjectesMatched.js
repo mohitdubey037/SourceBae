@@ -16,7 +16,6 @@ import {withRouter} from 'react-router';
 function ProjectesMatched(props) {
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
-    console.log(Role);
     const [err, setErr] = useState();
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -26,12 +25,10 @@ function ProjectesMatched(props) {
         instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectMatched=1`)
             .then(response => {
                 setLoading(false);
-                console.log(response);
                 setProjects(response.projects);
             })
             .catch(err => {
                 setLoading(false)
-                console.log(err)
                 setErr(err?.response?.data?.message)
             })
     }
@@ -39,10 +36,6 @@ function ProjectesMatched(props) {
     useEffect(() => {
         getAllReceivedData()
     }, [])
-
-    useEffect(() => {
-        console.log(projects)
-    }, [projects])
 
     const [open, setOpen] = useState(false);
 

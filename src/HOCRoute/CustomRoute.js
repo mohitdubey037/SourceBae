@@ -10,7 +10,6 @@ const CustomRoute = props => {
     if (temp !== null && temp !== '' && temp !== 'undefined'){
         user = helper.capitalize(temp)
     }
-    console.log(props.condition)
         switch (props.condition) {
             case "Agency":
                 user==="Client" && alert("Invalid urlsss")

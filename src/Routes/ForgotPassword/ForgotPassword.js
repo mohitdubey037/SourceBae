@@ -49,6 +49,8 @@ const ForgotPassword = (props) => {
     const classes = useStyles();
 
     const token = useParams();
+    console.log(token);
+    alert(token);
 
     const [hidePassword, SetPasswordStatus] = useState(true);
 

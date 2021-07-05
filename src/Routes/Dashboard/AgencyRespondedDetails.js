@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import "./Quotation/RespondedDetails.css";
+import "./AgencyRespondedDetails.css";
 
 import foods from "../../assets/images/Quotation/foods.png";
 
@@ -326,6 +326,7 @@ const CommentBox = (props) => {
 function AgencyRespondedDetails(props) {
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const routerHistory = useHistory();
+  console.log(routerHistory);
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
   const [project, setProject] = useState({});
@@ -363,7 +364,7 @@ function AgencyRespondedDetails(props) {
         style={{ marginTop: "55px" }}
         className="backArrow"
         onClick={() =>
-          routerHistory.push({
+          routerHistory.replace({
             pathname: "/quotation",
             origin: routerHistory.location.origin,
           })
@@ -371,14 +372,14 @@ function AgencyRespondedDetails(props) {
       >
         <i className="fa fa-angle-left" aria-hidden="true"></i>
       </div>
-      <div className="mainDetailHeader">
-        <div className="innerDetailHeader">
-          <div className="detailHeaderImage">
+      <div className="mainDetailHeader_agencyRespondedDetails">
+        <div className="innerDetailHeader_agencyRespondedDetails">
+          <div className="detailHeaderImage_agencyRespondedDetails">
             <div>
-              <img src={foods} alt="logo" />
+              <img src={project?.projectDomainId?.domainIcon} alt="logo" />
             </div>
           </div>
-          <div className="headerInformation">
+          <div className="headerInformation_agencyRespondedDetails">
             <div className="clientName">
               {project.isProposalActionActive && (
                 <div className="detailsButtons">

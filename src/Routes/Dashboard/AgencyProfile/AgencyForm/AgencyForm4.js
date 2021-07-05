@@ -10,6 +10,7 @@ import featureLink from '../../../../assets/images/agencyForm/featureLink.svg'
 import links from '../../../../assets/images/agencyForm/links.gif'
 import { NavLink } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
+import Spinner from '../../../../Components/Spinner/Spinner';
 
 //axios instance
 import instance from "../../../../Constants/axiosConstants"
@@ -47,7 +48,7 @@ function AgencyForm4(props) {
 
     const handleGithub = (event) => {
         const { name, value } = event.target
-        if (value === '' ) {
+        if (value === '') {
             setGithubLink({})
         }
         else {
@@ -60,7 +61,7 @@ function AgencyForm4(props) {
 
     const handleStackoveflow = (event) => {
         const { name, value } = event.target
-        if (value === '' ) {
+        if (value === '') {
             setStackoverflow({})
         }
         else {
@@ -73,7 +74,7 @@ function AgencyForm4(props) {
 
     const handleFeaturedlink = (event) => {
         const { name, value } = event.target
-        if (value === '' ) {
+        if (value === '') {
             setFeaturedLink({})
         }
         else {
@@ -164,8 +165,8 @@ function AgencyForm4(props) {
             let socialPlatformDetails = [];
             if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value == null) {
                 apiData = {
-                    stepsCompleted : '5',
-                    socialPlatformDetails : socialPlatformDetails
+                    stepsCompleted: '5',
+                    socialPlatformDetails: socialPlatformDetails
                 }
             }
 
@@ -213,7 +214,6 @@ function AgencyForm4(props) {
     return (
         <>
             <Navbar />
-            <FormPhases value1={true} value2={true} value3={true} value4={true} />
             <div
                 className="backArrow_agencyForm4"
                 onClick={() => {
@@ -222,96 +222,102 @@ function AgencyForm4(props) {
             >
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </div>
+            {loading ? <Spinner /> :
 
-            <div className="mainSocialLinks">
-                <div className="innerSocialLinks">
-                    <div className="socialInputs">
+                <>
+                    <FormPhases value1={true} value2={true} value3={true} value4={true} />
 
-                        <div>
-                            <section className="linksImages">
-                                <img src={github} alt="github logo" />
-                                <p>Github Link <span>(optional)</span></p>
-                            </section>
-                            <input
-                                placeholder="E.g - https://www.github.com/your_name"
-                                type="text"
-                                name='github'
-                                value={githubLink.platformLink}
-                                onChange={handleGithub} />
-                            {errors.githubLinkError && <Alert severity="error">{errors.githubLinkError}</Alert>}
-                        </div>
+                    <div className="mainSocialLinks">
+                        <div className="innerSocialLinks">
+                            <div className="socialInputs">
 
-                        <div>
-                            <section className="linksImages">
-                                <img src={stack} alt="stackoverflow logo" />
-                                <p>StackOverflow Link <span>(optional)</span></p>
-                            </section>
-                            <input placeholder="E.g - https://www.stackoverflow.com/your_name"
-                                type="text"
-                                name='stackoverflow'
-                                value={stackoverflow.platformLink}
-                                onChange={handleStackoveflow} />
-                            {errors.stackoverflowLinkError && <Alert severity="error">{errors.stackoverflowLinkError}</Alert>}
-                        </div>
+                                <div>
+                                    <section className="linksImages">
+                                        <img src={github} alt="github logo" />
+                                        <p>Github Link <span>(optional)</span></p>
+                                    </section>
+                                    <input
+                                        placeholder="E.g - https://www.github.com/your_name"
+                                        type="text"
+                                        name='github'
+                                        value={githubLink.platformLink}
+                                        onChange={handleGithub} />
+                                    {errors.githubLinkError && <Alert severity="error">{errors.githubLinkError}</Alert>}
+                                </div>
 
-                        <div>
-                            <section className="linksImages">
-                                <img src={portfolio} alt="portfolio logo" />
-                                <p>Portfolio Link <span>(optional)</span></p>
-                                <div className="addMoreFields" onClick={() => handleAdd()}>+ Add More</div>
-                            </section>
-                            {
-                                fields.map((value, index) => {
-                                    return (
-                                        <div className="extraFields">
-                                            <input
-                                                onChange={e => handleChange(index, e)}
-                                                placeholder="E.g - https://www.your_company.com/"
-                                                type="text"
-                                                value={value[index]}
-                                                name="portfolioLink"
-                                                id="" />
-                                            {
-                                                index === 0 ? null : <div><i onClick={() => handleRemove(index)} class="fa fa-times" aria-hidden="true"></i></div>
-                                            }
-                                        </div>
+                                <div>
+                                    <section className="linksImages">
+                                        <img src={stack} alt="stackoverflow logo" />
+                                        <p>StackOverflow Link <span>(optional)</span></p>
+                                    </section>
+                                    <input placeholder="E.g - https://www.stackoverflow.com/your_name"
+                                        type="text"
+                                        name='stackoverflow'
+                                        value={stackoverflow.platformLink}
+                                        onChange={handleStackoveflow} />
+                                    {errors.stackoverflowLinkError && <Alert severity="error">{errors.stackoverflowLinkError}</Alert>}
+                                </div>
 
-                                    )
-                                })
-                            }
-                            {errors.portfolioLinkError && <Alert severity="error">{errors.portfolioLinkError}</Alert>}
-                        </div>
+                                <div>
+                                    <section className="linksImages">
+                                        <img src={portfolio} alt="portfolio logo" />
+                                        <p>Portfolio Link <span>(optional)</span></p>
+                                        <div className="addMoreFields" onClick={() => handleAdd()}>+ Add More</div>
+                                    </section>
+                                    {
+                                        fields.map((value, index) => {
+                                            return (
+                                                <div className="extraFields">
+                                                    <input
+                                                        onChange={e => handleChange(index, e)}
+                                                        placeholder="E.g - https://www.your_company.com/"
+                                                        type="text"
+                                                        value={value[index]}
+                                                        name="portfolioLink"
+                                                        id="" />
+                                                    {
+                                                        index === 0 ? null : <div><i onClick={() => handleRemove(index)} class="fa fa-times" aria-hidden="true"></i></div>
+                                                    }
+                                                </div>
 
-                        <div>
-                            <section className="linksImages">
-                                <img src={featureLink} alt="featured link logo" />
-                                <p>Featured Link <span>(optional)</span></p>
-                            </section>
-                            <input placeholder="E.g - https://www.company.com/your_feed"
-                                type="text"
-                                name='featuredLink'
-                                value={featuredLink.platformLink}
-                                onChange={handleFeaturedlink} />
-                            {errors.featuredLinkError && <Alert severity="error">{errors.featuredLinkError}</Alert>}
-                        </div>
+                                            )
+                                        })
+                                    }
+                                    {errors.portfolioLinkError && <Alert severity="error">{errors.portfolioLinkError}</Alert>}
+                                </div>
 
-                        <div className="nextBtn">
-                            <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
-                                <button>
-                                    <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
-                                </button>
-                            </NavLink>
-                            <button onClick={finalUpdate} >
-                                Finish
-                                <i className="fa fa-long-arrow-right" aria-hidden="true" />
-                            </button>
+                                <div>
+                                    <section className="linksImages">
+                                        <img src={featureLink} alt="featured link logo" />
+                                        <p>Featured Link <span>(optional)</span></p>
+                                    </section>
+                                    <input placeholder="E.g - https://www.company.com/your_feed"
+                                        type="text"
+                                        name='featuredLink'
+                                        value={featuredLink.platformLink}
+                                        onChange={handleFeaturedlink} />
+                                    {errors.featuredLinkError && <Alert severity="error">{errors.featuredLinkError}</Alert>}
+                                </div>
+
+                                <div className="nextBtn">
+                                    <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
+                                        <button>
+                                            <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+                                        </button>
+                                    </NavLink>
+                                    <button onClick={finalUpdate} >
+                                        Finish
+                                        <i className="fa fa-long-arrow-right" aria-hidden="true" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="socialArea">
+                                <img src={links} alt="" />
+                            </div>
                         </div>
                     </div>
-                    <div className="socialArea">
-                        <img src={links} alt="" />
-                    </div>
-                </div>
-            </div>
+                </>
+            }
         </>
     )
 }
