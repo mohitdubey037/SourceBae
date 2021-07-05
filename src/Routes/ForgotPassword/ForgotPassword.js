@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import "../Dashboard/dashboard.css";
-import "../Login/login.css";
+// import "../Dashboard/dashboard.css";
+// import "../Login/login.css";
+import './ForgotPassword.css'
 import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
@@ -96,13 +97,7 @@ const ForgotPassword = (props) => {
     return (
         <>
             <div style={{ marginTop: '20px' }}>
-                <FormControl component="fieldset">
-                    <FormLabel component="legend">Role</FormLabel>
-                    <RadioGroup aria-label="Role" name="Role" value={Role} onChange={handleRole}>
-                        <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
-                        <FormControlLabel value="Client" control={<Radio />} label="Client" />
-                    </RadioGroup>
-                </FormControl>
+
             </div>
             <div className="mainLoginPage">
                 <div className="innerLoginPage">
@@ -111,6 +106,13 @@ const ForgotPassword = (props) => {
                     </div>
                     <div className="loginContent">
                         <div className="mainLoginForm">
+                            <FormControl component="fieldset" className="roleRadio">
+                                <FormLabel className='role' component="legend">Role</FormLabel>
+                                <RadioGroup aria-label="Role" name="Role" value={Role} onChange={handleRole}>
+                                    <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
+                                    <FormControlLabel value="Client" control={<Radio />} label="Client" />
+                                </RadioGroup>
+                            </FormControl>
                             <div style={{ marginTop: '0px' }} className="loginForm">
                                 <p style={{ marginBottom: "10px" }}>Password</p>
                                 <Input
