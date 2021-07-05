@@ -148,9 +148,9 @@ function ProductAgencies(props) {
         setPersonName(value);
     };
 
-    useEffect(() => {
-
-    })
+    const clearAllField = () => {
+        setSearchLocation(' ');
+    }
 
     const onSearchHandler = () => {
         instance.get(`/api/${Role}/products/all?businessModel=${bmodal}&fundingType=${fundName}&location=${searchLocation}`)
@@ -302,12 +302,12 @@ function ProductAgencies(props) {
                                         <div className='filterForm_productAgencies'>
                                             <div className="filterHeading">
                                                 <p className="filterText">Filter</p>
-                                                <div style={{ cursor: 'pointer' }}><p>Clear All</p></div>
+                                                <div onClick={() => clearAllField()} style={{ cursor: 'pointer' }}><p>Clear All</p></div>
                                             </div>
 
                                             <div className="locationFilter">
                                                 <p>Location</p>
-                                                <input name='location' onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." name="" id="" />
+                                                <input name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." name="" value={searchLocation}/>
                                             </div>
 
                                             <div className="officeVisitFilter">
