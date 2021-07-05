@@ -254,10 +254,10 @@ function AgencyProfile(props) {
                       <p>Agency Id</p>
                       <h4>{agencyProfileData._id}</h4>
                     </div>
-                    <div className="pointContent">
+                    {/* <div className="pointContent">
                       <p>Total Profile Views</p>
                       <h4>{agencyProfileData.agencyProfileViewCount}</h4>
-                    </div>
+                    </div> */}
                   </div>
                 )}
               </div>
@@ -281,8 +281,8 @@ function AgencyProfile(props) {
                   <div className="monthyView">
                     <div className="monthBorder"></div>
                     <img src={growth} alt="" />
-                    <h3>Monthly Profile View</h3>
-                    <p>05</p>
+                    <h3>Total Profile View</h3>
+                    <p>{agencyProfileData.agencyProfileViewCount}</p>
                   </div>
                   <div className="monthyView">
                     <div className="monthBorder"></div>
