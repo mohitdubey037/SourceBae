@@ -74,7 +74,25 @@ function HireAgencyForm2(props) {
     const { className } = event.target;
     const toggledDomains = allDomainsData.map((domain) => {
       if (domain.domainName === className) {
+
+        if(!domain.selected)
+        setApiData({
+          ...apiData,
+          projectDomainId:domain._id
+        })
+        else
+        setApiData({
+          ...apiData,
+          projectDomainId:""
+        })
+        if(!domain.selected)
         setSelectedDomain(domain);
+        else
+        setApiData({
+          ...apiData,
+          projectDomainId:""
+        })
+        
         return {
           ...domain,
           selected: !domain.selected,
@@ -128,7 +146,7 @@ function HireAgencyForm2(props) {
       agencyExperienceError: "",
     }
 
-    if(apiData.projectDomainId==="")
+    if(apiData.projectDomainId==="" || apiData.projectDomainId===null)
     setError({
       ...tempError,
       projectDomainIdError:"Please Select a Domain."
@@ -292,7 +310,7 @@ function HireAgencyForm2(props) {
                   /*style={{backgroundColor:colors[buttonStatus]}}*/
                   onClick={() => handleSubmit()}
                 >
-                  Submit{" "}
+                 Next{" "}
                   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </div>
               </div>
