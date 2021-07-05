@@ -49,9 +49,9 @@ const useStyles = makeStyles((theme) => ({
 const ForgotPassword = (props) => {
     const classes = useStyles();
 
-    const token = useParams();
+    let {token} = useParams();
+    token = token.slice(1);
     console.log(token);
-    alert(token);
 
     const [hidePassword, SetPasswordStatus] = useState(true);
 
