@@ -25,7 +25,7 @@ function AgencyForm3(props) {
     }
 
     const Role = "agency"
-    const status = useState("Upload")
+    const status = "Upload"
     const [pickedAll, setPickedAll] = useState(false)
     const [loading, setLoading] = useState(false);
 
@@ -125,6 +125,7 @@ function AgencyForm3(props) {
     }
 
     const handleUpload = async (event) => {
+        console.log(status)
         if (status === "Upload" && pickedAll) {
             await uploadMedia()
             setLoading(false);
