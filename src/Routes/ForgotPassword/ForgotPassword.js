@@ -62,6 +62,7 @@ const ForgotPassword = (props) => {
         token: token
     });
 
+    
     const showPassword = (e) => {
         console.log(e);
         SetPasswordStatus((prevCheck) => !prevCheck);
@@ -81,7 +82,7 @@ const ForgotPassword = (props) => {
         setRole(event.target.value);
     };
 
-    const changePassword = (form) => {
+    const changePassword = () => {
         // setLoading(true);
         instance
             .patch(`/api/${Role}/auths/reset-password`, form)
