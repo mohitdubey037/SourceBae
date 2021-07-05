@@ -89,6 +89,7 @@ const ForgotPassword = (props) => {
             .patch(`/api/${Role}/auths/reset-password`, form)
             .then(response => {
                 console.log(response);
+                props.history.push('/');
             })
             .catch((err) => {
                 console.log(err);
