@@ -363,7 +363,7 @@ function AgencyProfile(props) {
                   >
                     <img src={matched} alt="dev" /> Developers
                   </button>
-                  {/* <button
+                  <button
                     class="nav-link"
                     id="nav-portfolio-tab"
                     data-bs-toggle="tab"
@@ -374,7 +374,7 @@ function AgencyProfile(props) {
                     aria-selected="false"
                   >
                     <img src={matched} alt="portfolio" /> Portfolio
-                  </button> */}
+                  </button>
                   {/* <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
                                             <img src={matched} alt="Reviews" /> Reviews
                             </button> */}
