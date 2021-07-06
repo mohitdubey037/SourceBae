@@ -111,6 +111,8 @@ function ProductAgencies(props) {
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState([]);
     const [err, setErr] = useState();
+    const [allDomainsData, setAllDomainsData] = useState([])
+    const [domain, setDomain] = useState('');
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -131,6 +133,11 @@ function ProductAgencies(props) {
         const { value } = event.target
         console.log(event.target.value);
         setFundName(value);
+    };
+    const handleDomainType = (event) => {
+        const { value } = event.target
+        console.log(event.target.value);
+        setDomain(value);
     };
     const handleBmodal = (event) => {
         const { value } = event.target
@@ -202,14 +209,25 @@ const getAllProducts = () => {
         })
 }
 
+const getAllDomains = () => {
+    instance.get(`api/${Role}/domains/all`)
+      .then(function (response) {
+        setAllDomainsData(response);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err?.response?.data?.message);
+      });
+  };
+
 useEffect(() => {
     getAllProducts()
+    getAllDomains()
 }, [])
 
 useEffect(() => {
     console.log(state)
 }, [state])
-
 
 return (
     <>
@@ -335,7 +353,7 @@ return (
 
                                         <div className="officeVisitFilter">
                                             <p>Sort By :</p>
-                                            <FormControl className={classes.formControl}>
+                                            {/* <FormControl className={classes.formControl}>
                                                 <Select
                                                     labelId="demo-mutiple-checkbox-label"
                                                     id="demo-mutiple-checkbox"
@@ -360,6 +378,34 @@ return (
                                                         </MenuItem>
                                                     ))}
                                                 </Select>
+                                            </FormControl> */}
+                                            <FormControl className={classes.formControl}>
+                                                <Select
+                                                    displayEmpty
+                                                    value={domain}
+                                                    onChange={(event) => handleDomainType(event)}
+                                                    inputProps={{ 'aria-label': 'Without label' }}
+                                                    renderValue={(selected) => {
+                                                        return allDomainsData.filter(allDomain => selected.includes(allDomain._id)).map(allDomain => allDomain.domainName).join(', ');
+                                                    }}
+                                                >
+
+                                                    <MenuItem value="">
+                                                        <em>None</em>
+                                                    </MenuItem>
+                                                    {allDomainsData.map((dname, index) => {
+                                                        return (
+                                                            <MenuItem
+                                                                key={dname._id}
+                                                                value={dname._id}
+                                                                style={getStyles(dname.domainName, allDomainsData, theme)}
+                                                            >
+                                                                {dname.domainName}
+                                                            </MenuItem>
+                                                        )
+                                                    }
+                                                    )}
+                                                </Select>
                                             </FormControl>
                                         </div>
 
@@ -376,10 +422,10 @@ return (
                                                     <MenuItem value="">
                                                         <em>None</em>
                                                     </MenuItem>
-                                                    {fundType.map((fname) => {
+                                                    {fundType.map((fname,index) => {
                                                         return (
                                                             <MenuItem
-                                                                key={fname}
+                                                                key={index}
                                                                 value={fname}
                                                                 style={getStyles(fname, fundName, theme)}
                                                             >
@@ -404,10 +450,10 @@ return (
                                                     <MenuItem value="">
                                                         <em>None</em>
                                                     </MenuItem>
-                                                    {bType.map((bname) => {
+                                                    {bType.map((bname,index) => {
                                                         return (
                                                             <MenuItem
-                                                                key={bname}
+                                                                key={index}
                                                                 value={bname}
                                                                 style={getStyles(bname, bmodal, theme)}
                                                             >
