@@ -116,6 +116,11 @@ function AgencyProfile(props) {
                   <>
                     <span>You haven't added any product.</span>
                     <button
+                      disabled = {agencyProfileData.isAgencyVerified === false && true}
+                      style={{
+                        filter: `${!agencyProfileData.isAgencyVerified ? `grayscale(100%)` : `none`
+                          }`,
+                      }}
                       onClick={() =>
                         props.history.push({
                           pathname: `/product-form`,
