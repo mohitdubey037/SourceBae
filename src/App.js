@@ -39,6 +39,7 @@ import ForgotPassword from './Routes/ForgotPassword/ForgotPassword';
 import EnterEmail from './Routes/EnterEmail/EnterEmail';
 import haha from './Routes/DynamicPageNotFound/Dy';
 import DynamicPageNotFound from './Routes/DynamicPageNotFound/DynamicPageNotFound';
+import NewDashboard from "./Routes/Dashboard/NewDashboard"
 
 import { withRouter } from "react-router";
 
@@ -54,6 +55,7 @@ const App = (props) => {
       <Route exact path="/password-reset:token" component={ForgotPassword} />
       <Route exact path="/page-not-found" component={PageNotFound} />
       <Route exact path='/haha' component={haha} />
+      <Route exact path='/newdashboard' component={NewDashboard} />
 
       <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard} />
       <CustomRoute condition="Agency" exact path="/agency-project-dashboard" component={AgencyProjectDashboard} />

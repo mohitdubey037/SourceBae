@@ -1,0 +1,164 @@
+.container-body {
+  flex: 1;
+}
+
+.container-body > .navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+
+.navbar > .navbar-heading > h1 {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.3px;
+  color: #3a3a3a;
+}
+
+.user-operations {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.user-operations > .operation {
+  background: #f9f9f9;
+  border-radius: 8px;
+  width: 100%;
+  margin: 0 2%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 134px;
+  cursor: pointer;
+}
+
+.user-project {
+  display: flex;
+}
+.user-project-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 30px;
+  width: 65%;
+}
+
+.user-project-details > .graphic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.graphic-illustration-heading h6 {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 29px;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3a3a3a;
+}
+
+.project-details-card {
+  min-width: 738px;
+  min-height: 177px;
+  justify-self: flex-start;
+  background: linear-gradient(90deg, #fdfbfb 0%, #ebedee 100%);
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 20px 20px 5px 20px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.4px;
+  color: #3a3a3a;
+}
+
+.project-details-card > .detailsCard-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailsCard-header > .header-currentStatus {
+  display: flex;
+}
+.detailsCard-header > .header-currentStatus > .currentStatus-text {
+  font-weight: 600;
+}
+
+.detailsCard-header > .header-currentStatus > .currentStatus-item {
+  padding: 5px;
+}
+
+.detailsCard-statuses{
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+}
+
+.detailsCard-statuses > .status-holder{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.status-holder > .status-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 5px;
+    background: #5CB85C;
+    color: #ffffff;
+}
+
+.detailsCard-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detailsCard-footer > .info-icon {
+    display: flex;
+    width: 45px;
+    height: 45px; 
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.detailsCard-footer > .info-icon {
+    display: flex;
+    width: 45px;
+    height: 45px; 
+    padding: 10px;
+}
+
+.detailsCard-footer > .show-project-detail{
+    display: flex;
+    align-items: center;
+}
+
+.detailsCard-footer > .show-project-detail > .projectDetail-text{
+    font-weight: 600;
+}
+.detailsCard-footer > .show-project-detail > .projectDetail-item{
+    padding: 5px;
+}

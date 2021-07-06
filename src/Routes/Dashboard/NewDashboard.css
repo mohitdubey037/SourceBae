@@ -1,0 +1,109 @@
+.dashboard-container {
+  height: 100vh;
+  display: flex;
+}
+
+.container-sidebar {
+  background: #eaf3ff;
+  height: 100%;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.4);
+}
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.sidebar-menu {
+  background: #ffffff;
+  height: 100%;
+  margin: 0 25% 10% 25%;
+  padding: 20% 0;
+  border-radius: 0px 45px 10px 10px;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 10px 10px rgba(0, 0, 0, 0.12);
+}
+
+.icons{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.icons > img{
+    height: 25px;
+}
+
+.icons > p{
+    font-size: 10px;
+    padding: 2px;
+}
+
+
+.sidebar-help {
+  background: #ffffff;
+  height: 100%;
+  margin: 8%;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 22px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 10px 10px rgba(0, 0, 0, 0.12);
+}
+
+.help-img {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.help-img > img {
+  height: 80px;
+}
+
+.help-desc {
+  padding: 4px;
+}
+.help-desc > p {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  word-wrap: break-word;
+  margin-bottom: 0;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3a3a3a;
+}
+
+.help-button {
+  display: flex;
+  padding: 0px 20px 20px 20px;
+}
+.help-button > button {
+  background: #68e1fd;
+  margin: 0;
+  border: solid;
+  border-radius: 22px;
+  border-color: #68e1fd;
+  width: 100%;
+}
