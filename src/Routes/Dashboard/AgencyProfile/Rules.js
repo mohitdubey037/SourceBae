@@ -12,12 +12,12 @@ import './Rules.css'
 
 function Rules(props) {
 
+    const Role = localStorage.getItem("role");
+    const [agencyProfiledata, setAgencyProfileData] = useState({});
 
-    const Role = `agency`
-    const [rules, setRules] = useState([])
-    const [editRules, setEditRules] = useState(false)
+    const [rules, setRules] = useState([]);
+    const [editRules, setEditRules] = useState(false);
     const [loading, setLoading] = useState(false);
-
 
     const handleEditRules = (value) => {
         setLoading(true);
@@ -38,8 +38,25 @@ function Rules(props) {
             .catch(err => {
                 setLoading(false);
             })
-
     }
+
+    const getAgencyProfile = (agencyId, profileviewStatus) => {
+        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+            .then(function (response) {
+                console.log(response);
+                setAgencyProfileData(response);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    };
+
+    useEffect(() => {
+        if (Role === 'Agency') {
+            getAgencyProfile(localStorage.getItem("userId"), false);
+        }
+    }, []);
 
     const handleRules = (event, rule) => {
         const { value } = event.target
@@ -62,10 +79,14 @@ function Rules(props) {
         <>
             <div className="mainRules">
                 <div className="innerRules">
-
-                        {(props?.id === null || props?.id === undefined) && <div className="editableBtn">
-                            <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button>
-                        </div>}
+                    {
+                        Role === 'Agency' ?
+                            agencyProfiledata.isAgencyVerified &&
+                            // (props?.id === null || props?.id === undefined) && 
+                            <div className="editableBtn">
+                                <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button>
+                            </div> : null
+                    }
                     <div className="rulesCard">
                         <div className="rulesUpper">
                             <div className="openTiming">
@@ -116,7 +137,7 @@ function Rules(props) {
                             </div>}
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </>

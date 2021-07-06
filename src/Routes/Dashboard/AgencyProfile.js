@@ -32,7 +32,7 @@ function AgencyProfile(props) {
   const { id } = useParams();
   const Role = localStorage.getItem('role');
   const inputEl = useRef(null);
-  
+
   const [open, setOpen] = useState(false);
   const [navigated, setNavigation] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -95,7 +95,7 @@ function AgencyProfile(props) {
     if (!navigated && inputEl !== null && props.location.origin === "addingDeveloper") {
       inputEl?.current?.click();
       setNavigation(true);
-    } 
+    }
     else if (navigated) {
       inputEl?.current?.click();
     }
@@ -147,11 +147,11 @@ function AgencyProfile(props) {
                     Have a Question..?
                   </p> */}
                   <i
-                    style={{ fontSize: 22, color:"#fff" }}
+                    style={{ fontSize: 22, color: "#fff" }}
                     className="fa fa-info-circle"
                     aria-hidden="true"
-                    onMouseOver={()=>setHoverModal(true)}
-                    // onMouseLeave={()=>onCloseModal()}
+                    onMouseOver={() => setHoverModal(true)}
+                  // onMouseLeave={()=>onCloseModal()}
                   ></i>
                 </div>
               )}
@@ -182,7 +182,7 @@ function AgencyProfile(props) {
                   </div>
                 </div>
 
-                <div className="recetlyAskedQuestion">
+                <div className="recetlyAskedQuestion">  
                   <h2>Recently Asked Questions</h2>
                   <div>
                     <h3>Are your developers willing to work remotely?</h3>
@@ -207,7 +207,7 @@ function AgencyProfile(props) {
               overlay: "customOverlay",
               modal: "customModal",
             }}
-            onClose={()=>setHoverModal(false)}
+            onClose={() => setHoverModal(false)}
             center
           >
             <div className="mainAskQuestion">
@@ -241,19 +241,17 @@ function AgencyProfile(props) {
                       <div
                         className="verifiedStatus"
                         style={{
-                          filter: `${
-                            !agencyProfileData?.isAgencyVerified
+                          filter: `${!agencyProfileData?.isAgencyVerified
                               ? `grayscale(100%)`
                               : `none`
-                          }`,
+                            }`,
                         }}
                       >
                         <i class="fa fa-check" aria-hidden="true" />
-                        <span>{`${
-                          !agencyProfileData?.isAgencyVerified
+                        <span>{`${!agencyProfileData?.isAgencyVerified
                             ? agencyProfileData?.verificationMessage
                             : `Verified`
-                        }`}</span>
+                          }`}</span>
                       </div>
                     )}
                   </div>
@@ -313,7 +311,7 @@ function AgencyProfile(props) {
                     <img src={growth} alt="" />
                     <h3>Total Profile View</h3>
                     <p>{agencyProfileData.agencyProfileViewCount}</p>
-w                  </div>
+                  </div>
                   <div className="monthyView">
                     <div className="monthBorder"></div>
                     <h3>Agency Document</h3>
@@ -327,8 +325,8 @@ w                  </div>
 
                     <FilePicker
                       extensions={["pdf"]}
-                      onChange={(FileObject) => {}}
-                      onError={(errMsg) => {}}
+                      onChange={(FileObject) => { }}
+                      onError={(errMsg) => { }}
                     >
                       <button className="uploadButton">
                         <i class="fa fa-upload" aria-hidden="true"></i>Upload

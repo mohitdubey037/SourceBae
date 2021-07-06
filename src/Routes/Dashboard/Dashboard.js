@@ -102,8 +102,6 @@ const Dashboard = (props) => {
         borderColor: "#AC92F5",
         route: "modal",
       }
-
-
   ];
 
   const getStepsCompleted = () => {

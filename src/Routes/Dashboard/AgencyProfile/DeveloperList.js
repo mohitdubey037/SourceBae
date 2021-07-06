@@ -13,7 +13,7 @@ function DeveloperList(props) {
     const [developers, setDevelopers] = useState([])
     const [err, setErr] = useState();
 
-
+    const [agencyProfiledata, setAgencyProfileData] = useState({});
     const getAgencyDevelopers = () => {
         instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
             .then(function (response) {
@@ -27,6 +27,24 @@ function DeveloperList(props) {
     useEffect(() => {
         getAgencyDevelopers()
     }, [])
+
+    const getAgencyProfile = (agencyId, profileviewStatus) => {
+        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+            .then(function (response) {
+                console.log(response);
+                setAgencyProfileData(response);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    };
+
+    useEffect(() => {
+        if (Role === 'Agency') {
+            getAgencyProfile(agencyId, false);
+        }
+    }, []);
 
 
 
@@ -87,8 +105,9 @@ function DeveloperList(props) {
                             )
                         })
                     }
-                    
-                    {Role.toLowerCase() === 'agency' ?
+
+                    {Role === 'Agency' ?
+                        agencyProfiledata.isAgencyVerified &&
                         <div className="developerCard">
                             <div className="developerCardBorder"></div>
                             <div style={{ display: 'flex', height: '315px' }}>
@@ -96,10 +115,11 @@ function DeveloperList(props) {
                                     <h6>Add Developer</h6>
                                 </button>
                             </div>
-                        </div> : null
+                        </div>
+                        : null
                     }
                 </div>
-                
+
             </div>
         </>
     );
