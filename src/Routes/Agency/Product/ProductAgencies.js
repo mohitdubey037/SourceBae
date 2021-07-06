@@ -159,6 +159,7 @@ function ProductAgencies(props) {
         setSearchLocation('');
         setFundName('');
         setBmodal('');
+        setDomain('');
     }
 
     useEffect(() => {
@@ -351,34 +352,8 @@ return (
                                             <input name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." value={searchLocation} />
                                         </div>
 
-                                        <div className="officeVisitFilter">
+                                        <div className="officeVisitFilter_productAgencies">
                                             <p>Sort By :</p>
-                                            {/* <FormControl className={classes.formControl}>
-                                                <Select
-                                                    labelId="demo-mutiple-checkbox-label"
-                                                    id="demo-mutiple-checkbox"
-                                                    multiple
-                                                    value={personName}
-                                                    onChange={handleChange}
-                                                    input={<Input />}
-                                                    displayEmpty
-                                                    disableUnderline
-                                                    renderValue={(selected) => selected.join(', ')}
-                                                    MenuProps={MenuProps}
-                                                    renderValue={(selected) => {
-                                                        if (selected.length === 0) {
-                                                            return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
-                                                        }
-                                                    }}
-                                                >
-                                                    {names.map((name) => (
-                                                        <MenuItem key={name} value={name}>
-                                                            <Checkbox color="primary" checked={personName.indexOf(name) > -1} />
-                                                            <ListItemText primary={name} />
-                                                        </MenuItem>
-                                                    ))}
-                                                </Select>
-                                            </FormControl> */}
                                             <FormControl className={classes.formControl}>
                                                 <Select
                                                     displayEmpty
@@ -386,6 +361,9 @@ return (
                                                     onChange={(event) => handleDomainType(event)}
                                                     inputProps={{ 'aria-label': 'Without label' }}
                                                     renderValue={(selected) => {
+                                                        if (selected.length === 0) {
+                                                            return <em>Choose from here</em>;
+                                                        }
                                                         return allDomainsData.filter(allDomain => selected.includes(allDomain._id)).map(allDomain => allDomain.domainName).join(', ');
                                                     }}
                                                 >

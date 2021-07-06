@@ -18,6 +18,25 @@
     font-size: 2rem;
 }
 
+.officeVisitFilter_productAgencies {
+    margin-bottom: 3%;
+}
+
+.officeVisitFilter_productAgencies p {
+    font-family: 'Poppins';
+    transform: translateY(10px);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.officeVisitFilter_productAgencies p::after {
+content: '';
+width: 20px;
+height: 2px;
+background-color: #000;
+display: block;
+}
+
 .searchButton {
     margin-top: 10px;
     font-size: 1.2rem;
