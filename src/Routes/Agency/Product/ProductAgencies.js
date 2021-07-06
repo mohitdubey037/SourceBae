@@ -374,7 +374,7 @@ return (
                                                 >
 
                                                     <MenuItem value="">
-                                                        <b><em>None</em></b>
+                                                        <em>None</em>
                                                     </MenuItem>
                                                     {fundType.map((fname) => {
                                                         return (
@@ -402,7 +402,7 @@ return (
                                                     inputProps={{ 'aria-label': 'Without label' }}
                                                 >
                                                     <MenuItem value="">
-                                                        <b><em>None</em></b>
+                                                        <em>None</em>
                                                     </MenuItem>
                                                     {bType.map((bname) => {
                                                         return (

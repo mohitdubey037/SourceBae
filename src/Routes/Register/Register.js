@@ -199,7 +199,7 @@ const Register = (props) => {
                 err.socialPlatformDetailsError = 'Website url is required'
             }
             else if (agencyProfileDetails?.socialPlatformDetails?.length > 0 && agencyProfileDetails?.socialPlatformDetails[0]?.platformLink === "") {
-                
+
                 err.socialPlatformDetailsError = 'Website url is required'
             }
             else if (!helper.validateLink(agencyProfileDetails?.socialPlatformDetails[0]?.platformLink)) {

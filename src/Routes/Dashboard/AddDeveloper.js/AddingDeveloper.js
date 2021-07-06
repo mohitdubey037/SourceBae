@@ -58,10 +58,8 @@ function AddingDeveloper(props) {
 
     const theme = useTheme();
 
-
     const classes = useStyles();
-    const Role = "agency"
-
+    const Role = localStorage.getItem('role')
 
     const [developerData, setDeveloperData] = React.useState(
         {
@@ -88,7 +86,7 @@ function AddingDeveloper(props) {
     const [isDisabled, setIsDisabled] = useState(true)
     const [resume, setResume] = useState(null);
     const [loading, setLoading] = useState(true);
-
+    const [errors, setErrors] = useState({})
 
     const handleChange = (event) => {
         const { name, value } = event.currentTarget
@@ -138,32 +136,70 @@ function AddingDeveloper(props) {
         setResume(e.target.files[0])
         setIsDisabled(false)
     }
+
+    const errorValidation = () => {
+        console.log('h');
+        const errors = {};
+        if (developerData.firstName === '') {
+            errors.firstName = 'First Name is required'
+        }
+        else if (developerData.lastName === '') {
+            errors.lastName = 'Last Name is required'
+        }
+        else if (developerData.developerDesignation === '') {
+            errors.developerDesignation = 'Developer Designation is required'
+        }
+        else if (developerData.developerTechnologies.length === 0) {
+            errors.developerTechnologies = 'Technologies is required'
+        }
+        else if (resume === null) {
+            errors.developerResume = 'Resume is required'
+        }
+        else if (developerData.developerExperience === '') {
+            errors.developerExperience = 'Developer Experience is required'
+        }
+        else if (developerData.developerPriceRange === '') {
+            errors.developerPrice = 'Developer Price is required'
+        }
+        else if (developerData.developerAvailability === '') {
+            errors.developerAvailability = 'Developer Availability is required'
+        }
+        setErrors(errors);
+        if (Object.keys(errors).length === 0)
+            return true;
+        else
+            return false;
+    }
+
     const uploadMedia = () => {
-        setLoading(true)
+        if (errorValidation()) {
+            setLoading(true)
 
-        const formData = new FormData();
+            const formData = new FormData();
 
-        resume && formData.append(
-            "files",
-            resume,
-            resume.name
-        );
-        instance.post(`api/${Role}/media/create`, formData)
-            .then(function (response) {
-                setLoading(false);
-                setDeveloperData({
-                    ...developerData,
-                    developerDocuments: [
-                        {
-                            documentName: "Resume",
-                            documentLink: response[0].mediaURL
-                        }
-                    ]
+            resume && formData.append(
+                "files",
+                resume,
+                resume.name
+            );
+            instance.post(`api/${Role}/media/create`, formData)
+                .then(function (response) {
+                    setLoading(false);
+                    setDeveloperData({
+                        ...developerData,
+                        developerDocuments: [
+                            {
+                                documentName: "Resume",
+                                documentLink: response[0].mediaURL
+                            }
+                        ]
+                    })
                 })
-            })
-            .catch(err => {
-                setLoading(false);
-            })
+                .catch(err => {
+                    setLoading(false);
+                })
+        }
+
     }
 
     const createDeveloperApi = () => {
@@ -172,8 +208,8 @@ function AddingDeveloper(props) {
             .then(function (response) {
                 setLoading(false);
                 props.history.push({
-                    pathname : "/agency-profile",
-                    origin : 'addingDeveloper'
+                    pathname: "/agency-profile",
+                    origin: 'addingDeveloper'
                 })
             })
             .catch(error => {
@@ -187,7 +223,7 @@ function AddingDeveloper(props) {
 
 
     useEffect(() => {
-        if (developerData.developerDocuments[0].documentLink !== '' && developerData.developerDocuments[0].documentLink !== undefined ) {
+        if (developerData.developerDocuments[0].documentLink !== '' && developerData.developerDocuments[0].documentLink !== undefined) {
             createDeveloperApi();
         }
     }, [developerData.developerDocuments[0]])
@@ -197,7 +233,6 @@ function AddingDeveloper(props) {
             <Navbar />
 
             {loading ? <Spinner /> :
-
 
                 <div className="mainAddingDeveloper">
                     <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
@@ -226,28 +261,27 @@ function AddingDeveloper(props) {
                         </div>
                         <div className="inputForm">
                             <div className="inputField1">
-                                <div className="developerName">
+                                <div className="developerName_addingDeveloper">
                                     <h4>First Name</h4>
                                     <input type="text" placeholder="First Name" name="firstName" value={developerData.firstName} onChange={(event) => handleChange(event)} />
+                                    {errors.firstName && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.firstName}</p>)}
                                 </div>
-                                <div className="developerName">
+
+                                <div className="developerName_addingDeveloper">
                                     <h4>Last Name</h4>
                                     <input type="text" placeholder="Last Name" name="lastName" value={developerData.lastName} onChange={(event) => handleChange(event)} />
+                                    {errors.lastName && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.lastName}</p>)}
                                 </div>
-                                <div className="developerDesignation">
+
+                                <div className="developerDesignation_addingDeveloper">
                                     <h4>Designation</h4>
                                     <input type="text" placeholder="E.g- Angular Developer" name="developerDesignation" value={developerData.developerDesignation} onChange={(event) => handleChange(event)} />
+                                    {errors.developerDesignation && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerDesignation}</p>)}
                                 </div>
                             </div>
                             <div className="inputField1">
-                                <div className="developerName">
+                                <div className="developerName_addingDeveloper">
                                     <h4>Technology & Skills</h4>
-                                    {/* <select name="developerTechnologies" onChange={(event) => handleChange(event)} multiple>
-                                    <option>None</option>
-                                    {techs?.map((tech) => {
-                                        return <option label={tech?.technologyName} value={tech?._id} />
-                                    })} */}
-
                                     <FormControl className={classes.formControl}>
                                         <Select
                                             labelId="demo-mutiple-name"
@@ -283,17 +317,19 @@ function AddingDeveloper(props) {
                                             )
                                             }
                                         </Select>
+                                        {errors.developerTechnologies && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerTechnologies}</p>)}
                                     </FormControl>
 
                                     {/* </select> */}
                                 </div>
-                                <div className="developerDesignation">
+                                <div className="developerDesignation_addingDeveloper">
                                     <h4>Upload Resume</h4>
                                     <input onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
                                     application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                                    {errors.developerResume && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerResume}</p>)}
                                 </div>
                             </div>
-                            <div className="yearsOfExperience">
+                            <div className="yearsOfExperience_addingDeveloper">
                                 <FormControl component="fieldset">
                                     <FormLabel component="legend">Years of Experience</FormLabel>
                                     <RadioGroup aria-label="developerExperience" name="developerExperience" value={developerData.developerExperience} onChange={(event) => handleChange(event)}>
@@ -302,6 +338,7 @@ function AddingDeveloper(props) {
                                         <FormControlLabel value="6" control={<Radio />} label="Senior(6-9years)" />
                                     </RadioGroup>
                                 </FormControl>
+                                {errors.developerExperience && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerExperience}</p>)}
                             </div>
                             <div className="priceRange">
                                 <FormControl component="fieldset">
@@ -313,6 +350,7 @@ function AddingDeveloper(props) {
                                         <FormControlLabel value="6000" control={<Radio />} label="More than $4000 per month" />
                                     </RadioGroup>
                                 </FormControl>
+                                {errors.developerPrice && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerPrice}</p>)}
                             </div>
                             <div className="availabilityArea">
                                 <FormControl component="fieldset">
@@ -324,6 +362,7 @@ function AddingDeveloper(props) {
                                         <FormControlLabel value="-1" control={<Radio />} label="Negotiable" />
                                     </RadioGroup>
                                 </FormControl>
+                                {errors.developerAvailability && (<p style={{ marginTop: '10px', color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerAvailability}</p>)}
                             </div>
                             <div className="submitButton">
                                 <button disabled={isDisabled} onClick={() => uploadMedia()}>Upload</button>
