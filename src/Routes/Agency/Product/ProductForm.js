@@ -343,16 +343,35 @@ function ProductForm(props) {
       err.productCompanyLocation = "Company Location Required.";
     }
 
-    if (
-      apiData.productPlatformLink !== "" &&
-      !helper.validateLink(apiData.productPlatformLink)
-    ) {
+    if (apiData.productPlatformLink !== "" && !helper.validateLink(apiData.productPlatformLink)) {
       err.productPlatformLink = "Wrong Platform link Provided";
     }
 
     if (apiData.productFounderLinkedinProfiles.length === 0) {
       err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
     }
+
+    if (apiData.productFounderLinkedinProfiles.length === 0) {
+      err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
+    }
+
+    if (apiData.productFounderLinkedinProfiles.length > 0) {
+      console.log('hi');
+      apiData.productFounderLinkedinProfiles.forEach((a, index) => {
+        console.log(apiData.productFounderLinkedinProfiles);
+        console.log(a, index);
+        if (a === '') {
+          err.productFounderLinkedinProfiles = `Linked in Url of product founder ${index + 1} is empty`
+        }
+        else if (!helper.validateLinkedIn(a)) {
+          err.productFounderLinkedinProfiles = `Linked in url of product founder ${index + 1} is wrong`;
+        }
+        else {
+          console.log('validated');
+        }
+      })
+    }
+
     if (file === null) {
       err.filePicked = "Please pick up a logo for the Product";
     }
@@ -1034,7 +1053,17 @@ function ProductForm(props) {
                 <div className="form5_Fields">
                   <section>
                     <p>17. Founders of this product</p>
-
+                    {errors.productFounderLinkedinProfiles && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productFounderLinkedinProfiles}
+                      </p>
+                    )}
                     <div className="">
                       <div className="founder_Link">
                         <input
@@ -1047,17 +1076,7 @@ function ProductForm(props) {
                         </button>
                       </div>
                     </div>
-                    {errors.productFounderLinkedinProfiles && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {errors.productFounderLinkedinProfiles}
-                      </p>
-                    )}
+                    
                     {fields.map((field, idx) => {
                       if (idx === 0) {
                         return "";
