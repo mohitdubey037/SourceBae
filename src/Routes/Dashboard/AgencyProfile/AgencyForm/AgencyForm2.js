@@ -96,6 +96,7 @@ function AgencyForm2(props) {
 
   const handleDomains = (event) => {
     const { className } = event.target;
+    console.log(className)
     const toggledDomains = allDomainsData.map((domain) => {
       if (domain.domainName === className) {
         return {
@@ -103,7 +104,10 @@ function AgencyForm2(props) {
           selected: !domain.selected,
         };
       }
-      return domain;
+      return {
+        ...domain,
+        selected: false,
+      }
     });
     setAllDomainsData(toggledDomains);
   };
