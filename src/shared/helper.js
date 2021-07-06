@@ -36,6 +36,13 @@ const validateLink = (link) => {
   return result;
 };
 
+const validateLinkedIn = (link) => {
+  // var linkedIn=/(ftp|http|https):\/\/?((www|\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+  var linkedIn = /((https?:\/\/)?((www|\w\w)\.)?linkedin\.com\/)((([\w]{2,3})?)|([^\/]+\/(([\w|\d-&#?=])+\/?){1,}))$/
+  let result = false;
+  result =  linkedIn.test(link);
+  return result;
+}
 
 const camelcaseToWords = (word) => {
   return word.replace(/[A-Z]/g, (letter) => ` ${letter.toLowerCase()}`);
@@ -57,5 +64,6 @@ export {
   getNumberSpell,
   validateLink,
   camelcaseToWords,
+  validateLinkedIn,
   multiwordCapitalize,
 };

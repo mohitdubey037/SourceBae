@@ -313,7 +313,7 @@ function AgencyProfile(props) {
                     <img src={growth} alt="" />
                     <h3>Total Profile View</h3>
                     <p>{agencyProfileData.agencyProfileViewCount}</p>
-                  </div>
+w                  </div>
                   <div className="monthyView">
                     <div className="monthBorder"></div>
                     <h3>Agency Document</h3>

@@ -127,7 +127,7 @@ function ProductForm(props) {
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [businesstype, setBusinesstype] = useState([]);
-  const [wordsRequired, setWordsRequired] = useState(100)
+  const [wordsRequired, setWordsRequired] = useState(100);
 
 
   const [domainName, setDomainName] = useState("");
@@ -182,12 +182,14 @@ function ProductForm(props) {
   };
 
   useEffect(() => {
-    let totalSoFar = 0
-    for (var i = 0; i < apiData.productDescription.length; i++) {
-      totalSoFar += 1;
+    if (apiData.productDescription === '') {
+      setWordsRequired(100);
     }
-    setWordsRequired(100 - totalSoFar); // add 1 to totalsoFar to account for extra space since 1 space = 2 words
-    console.log(totalSoFar)
+    else {
+      let ab = apiData.productDescription.split(' ');
+      console.log(ab);
+      setWordsRequired(100 - ab.length); // add 1 to totalsoFar to account for extra space since 1 space = 2 words
+    }
   }, [apiData.productDescription])
 
   const handleSelectChange = (event) => {
@@ -318,7 +320,7 @@ function ProductForm(props) {
       err.productPreviousFunding = "Previous Funding required";
     }
 
-    if (apiData.projectPreviousFundingRaised === "") {
+    if (apiData.productPreviousFunding === "true" && apiData.projectPreviousFundingRaised === "") {
       err.fundingMoneyRaised = "Funding Money Raised is Required.";
     }
     if (apiData.productFundingTypeLookingFor === "") {
@@ -341,16 +343,35 @@ function ProductForm(props) {
       err.productCompanyLocation = "Company Location Required.";
     }
 
-    if (
-      apiData.productPlatformLink !== "" &&
-      !helper.validateLink(apiData.productPlatformLink)
-    ) {
+    if (apiData.productPlatformLink !== "" && !helper.validateLink(apiData.productPlatformLink)) {
       err.productPlatformLink = "Wrong Platform link Provided";
     }
 
     if (apiData.productFounderLinkedinProfiles.length === 0) {
       err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
     }
+
+    if (apiData.productFounderLinkedinProfiles.length === 0) {
+      err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
+    }
+
+    if (apiData.productFounderLinkedinProfiles.length > 0) {
+      console.log('hi');
+      apiData.productFounderLinkedinProfiles.forEach((a, index) => {
+        console.log(apiData.productFounderLinkedinProfiles);
+        console.log(a, index);
+        if (a === '') {
+          err.productFounderLinkedinProfiles = `Linked in Url of product founder ${index + 1} is empty`
+        }
+        else if (!helper.validateLinkedIn(a)) {
+          err.productFounderLinkedinProfiles = `Linked in url of product founder ${index + 1} is wrong`;
+        }
+        else {
+          console.log('validated');
+        }
+      })
+    }
+
     if (file === null) {
       err.filePicked = "Please pick up a logo for the Product";
     }
@@ -1032,7 +1053,17 @@ function ProductForm(props) {
                 <div className="form5_Fields">
                   <section>
                     <p>17. Founders of this product</p>
-
+                    {errors.productFounderLinkedinProfiles && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {errors.productFounderLinkedinProfiles}
+                      </p>
+                    )}
                     <div className="">
                       <div className="founder_Link">
                         <input
@@ -1045,17 +1076,7 @@ function ProductForm(props) {
                         </button>
                       </div>
                     </div>
-                    {errors.productFounderLinkedinProfiles && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {errors.productFounderLinkedinProfiles}
-                      </p>
-                    )}
+                    
                     {fields.map((field, idx) => {
                       if (idx === 0) {
                         return "";

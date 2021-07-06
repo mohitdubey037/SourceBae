@@ -22,10 +22,13 @@ const Dashboard = (props) => {
   const Role = "agency";
   const agencyId = localStorage.getItem("userId");
 
+  const [loading, setLoading] = useState(false);
+
   const [steps, setSteps] = useState(0);
   const [formRoute, setFormRoute] = useState("/");
   const [isPopover, setIsPopover] = useState(false);
   const [popindex, setPopIndex] = useState("");
+  const [agencyProfileData, setAgencyProfileData] = useState([])
 
   const [verified, setVerified] = useState(true);
   const [isUserEmailVerified, setUserEmailVerified] = useState(true);
@@ -37,20 +40,31 @@ const Dashboard = (props) => {
   const onCloseModal = () => setOpenModal(false);
 
   const getAllProjects = () => {
-    instance
-      .get(
-        `api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=in progress`
-      )
+    instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=in progress`)
       .then(function (response) {
         setAllProjects(response);
+        console.log(response);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  const getAgencyProfileData = () => {
+    setLoading(true)
+    instance.get(`/api/${Role}/agencies/get/${agencyId}`)
+      .then(function (response) {
+        setAgencyProfileData(response);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+  }
+
   useEffect(() => {
     getAllProjects();
+    getAgencyProfileData();
   }, []);
 
 
@@ -69,13 +83,27 @@ const Dashboard = (props) => {
       borderColor: "#F57359",
       route: "/add-developer",
     },
-    {
-      title: "Add Your Product",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      image: teamCreation,
-      borderColor: "#AC92F5",
-      route: "modal",
-    },
+    agencyProfileData.productId ?
+      {
+        title: "View Your Product",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        image: teamCreation,
+        borderColor: "#AC92F5",
+        route: {
+          pathname: `/product-details:${agencyProfileData.productId}`,
+          condition: 'Agency'
+        }
+      }
+      :
+      {
+        title: "Add Your Product",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        image: teamCreation,
+        borderColor: "#AC92F5",
+        route: "modal",
+      }
+
+
   ];
 
   const getStepsCompleted = () => {
@@ -121,14 +149,14 @@ const Dashboard = (props) => {
         userId: agencyId,
         verify: "email",
       })
-      .then(function (response) {});
+      .then(function (response) { });
 
     instance
       .post(`/api/${Role}/auths/send-verification-link`, {
         userId: agencyId,
         verify: "phone",
       })
-      .then(function (response) {});
+      .then(function (response) { });
   };
 
   return (
@@ -136,7 +164,7 @@ const Dashboard = (props) => {
       {/* Navbar  */}
       <Navbar headingInfo="Dashboard" />
 
-      {!(isUserEmailVerified && isUserPhoneVerified) && steps===-1 && (
+      {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
         <div className="mainUpdateVerify">
           <div className="innerMainVerify">
             <p>
@@ -177,9 +205,8 @@ const Dashboard = (props) => {
                 key={index}
                 onClick={() => handleLink(value.route)}
                 style={{
-                  filter: `${
-                    !verified || steps !== -1 ? `grayscale(100%)` : `none`
-                  }`,
+                  filter: `${!verified || steps !== -1 ? `grayscale(100%)` : `none`
+                    }`,
                 }}
               >
                 <div
@@ -276,8 +303,8 @@ const Dashboard = (props) => {
                                 value?.projectCurrentStatus === "Live"
                                   ? "#5cb85c"
                                   : value?.projectCurrentStatus === "Completed"
-                                  ? "#f0ad4e"
-                                  : "#d9534f",
+                                    ? "#f0ad4e"
+                                    : "#d9534f",
                               fontWeight: "bold",
                             }}
                           >

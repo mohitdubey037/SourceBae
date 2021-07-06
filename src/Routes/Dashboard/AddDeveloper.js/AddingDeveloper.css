@@ -115,15 +115,15 @@
   align-items: center;
   margin-bottom: 5%;
 }
-.developerName,
-.developerDesignation {
+.developerName_addingDeveloper,
+.developerDesignation_addingDeveloper {
   width: 50%;
 }
-.developerName h4 {
+.developerName_addingDeveloper h4 {
   font-family: "Josefin Sans";
   font-size: 1.2rem;
 }
-.developerName input {
+.developerName_addingDeveloper input {
   width: 95%;
   height: 40px;
   padding-left: 10px;
@@ -133,15 +133,15 @@
 #browsers {
   font-size: 2rem;
 }
-.developerName datalist option {
+.developerName_addingDeveloper datalist option {
   font-family: "Poppins" !important;
   font-size: 2rem;
 }
-.developerDesignation h4 {
+.developerDesignation_addingDeveloper h4 {
   font-family: "Josefin Sans";
   font-size: 1.2rem;
 }
-.developerDesignation input {
+.developerDesignation_addingDeveloper input {
   width: 95%;
   height: 40px;
   padding-left: 10px;
@@ -174,7 +174,7 @@
   font-family: "Josefin Sans" !important;
   color: #000 !important;
   font-size: 1.3rem !important;
-  font-weight: bold !important;
+  /* font-weight: bold !important; */
 }
 
 .priceRange {
