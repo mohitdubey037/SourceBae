@@ -289,8 +289,7 @@ function AddingDeveloper(props) {
                                 </div>
                                 <div className="developerDesignation">
                                     <h4>Upload Resume</h4>
-                                    <input onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
-                                    application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                                    <input onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf"/>
                                 </div>
                             </div>
                             <div className="yearsOfExperience">

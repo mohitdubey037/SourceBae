@@ -63,6 +63,7 @@ const CommentBox = (props) => {
 
   function uploadMedia() {
     if (file) {
+      console.log(file.name)
       const formData = new FormData();
       formData.append("files", file, "files.pdf");
       instance
