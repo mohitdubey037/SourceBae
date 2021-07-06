@@ -307,7 +307,7 @@ function ProductAgencies(props) {
 
                                             <div className="locationFilter">
                                                 <p>Location</p>
-                                                <input name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." name="" value={searchLocation}/>
+                                                <input name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." value={searchLocation}/>
                                             </div>
 
                                             <div className="officeVisitFilter">

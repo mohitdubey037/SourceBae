@@ -316,7 +316,7 @@ function SkillsSet(props) {
                                                 })
                                             }
                                         </div>
-                                        {editStatus && (value.title !== 'Language of Content' && value.title !== 'Relevant Exp In Industry') && <div className="editButtons">
+                                        {editStatus && (value.title !== 'Language of Content' && value.title !== 'Relevant Exp In Industry' && value.title!== 'Expertise') && <div className="editButtons">
                                             <div className={value?.title} onClick={() => { handleAddData(value) }}>
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </div>

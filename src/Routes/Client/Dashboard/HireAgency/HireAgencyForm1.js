@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ClientNavbar from "../../ClientNavbar";
 import "./HireAgencyForms.css";
 
@@ -9,7 +9,6 @@ import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from "../../../../Components/Spinner/Spinner";
-import { Alert } from "@material-ui/lab";
 
 const BlueRadio = withStyles({
   root: {
@@ -31,9 +30,14 @@ const HireAgencyForm1 = (props) => {
     clientId: id,
     projectName: "",
     projectDescription: "",
-    projectProposalCost: "",
+    projectProposalCost: "5000",
     projectExpectedStartingDays: 5,
   });
+
+  const [error, setError] = useState({
+    projectNameError: "",
+    projectDescriptionError: "",
+  })
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -59,118 +63,45 @@ const HireAgencyForm1 = (props) => {
       });
   };
 
-  // const hireAgencyStep1 = () => {
-  //   setLoading(true)
-  //   console.log(data);
-  //   instance.post(`/api/${Role}/projects/create`, data)
-  //     .then(function (response) {
-  //       console.log(response);
-  //       console.log(buttonStatus);
-  //       setButtonStatus("Next")
-  //       setProjectId(response._id)
-  //       setLoading(false);
-  //     })
-  //     .catch(err => {
-  //       setLoading(false)
-  //     })
-  // };
-
-  // useEffect(() => {
-  //   console.log(buttonStatus);
-  // }, [buttonStatus]);
-
-  // const handleButton = () => {
-  //   if (buttonStatus === "Submit") {
-  //     hireAgencyStep1();
-  //   }
-  //   else if (buttonStatus === "Next" && projectId) {
-  //     window.location.href = `/hire-agency-form-two:${projectId}`
-  //   }
-  // };
-
-  // const validation = () => {
-
-  //   let tempErrors = {
-  //     projectNameError: "",
-  //     projectDescriptionError: "",
-  //   }
-
-  //   if (data.projectName === "") {
-  //     setError(
-  //       {
-  //         ...tempErrors,
-  //         projectNameError: 'Project name is required',
-  //       }
-  //     )
-  //   }
-  //   else if (data.projectName.length < 2) {
-  //     setError(
-  //       {
-  //         ...tempErrors,
-  //         projectNameError: 'Project name should be more than 2 characters.',
-  //       }
-  //     )
-  //   }
-  //   else if (data.projectDescription === "") {
-  //     setError(
-  //       {
-  //         ...tempErrors,
-  //         projectDescriptionError: 'Project description is required',
-  //       }
-  //     )
-  //   }
-  //   else if (data.projectDescription.length > 100) {
-  //     setError(
-  //       {
-  //         ...tempErrors,
-  //         projectDescriptionError: 'Project name should be less than 100 characters.',
-  //       }
-  //     )
-  //   }
-  // };
 
   const handleSubmit = () => {
-    // let tempErrors = {
-    //   projectNameError: "",
-    //   projectDescriptionError: "",
-    // }
-
-    // if (data.projectName === "") {
-    //   setError(
-    //     {
-    //       ...tempErrors,
-    //       projectNameError: 'Project name is required',
-    //     }
-    //   )
-    // }
-    // else if (data.projectName.length < 2) {
-    //   setError(
-    //     {
-    //       ...tempErrors,
-    //       projectNameError: 'Project name should be more than 2 characters.',
-    //     }
-    //   )
-    // }
-    // else if (data.projectDescription === "") {
-    //   setError(
-    //     {
-    //       ...tempErrors,
-    //       projectDescriptionError: 'Project description is required',
-    //     }
-    //   )
-    // }
-    // else if (data.projectDescription.length > 100) {
-    //   setError(
-    //     {
-    //       ...tempErrors,
-    //       projectDescriptionError: 'Project name should be less than 100 characters.',
-    //     }
-    //   )
-    // }
-    // else {
-    //   return true;
-    // }
-    
+    let tempError =  {
+      projectNameError: "",
+      projectDescriptionError: "",
+    }
+    if (data.projectName === "") {
+      setError(
+        {
+          ...tempError,
+          projectNameError: 'Project name is required',
+        }
+      )
+    }
+    else if (data.projectName.length < 2) {
+      setError(
+        {
+          ...tempError,
+          projectNameError: 'Project name should be more than 2 characters.',
+        }
+      )
+    }
+    else if (data.projectDescription === "") {
+      setError(
+        {
+          ...tempError,
+          projectDescriptionError: 'Project description is required',
+        }
+      )
+    }
+    else if (data.projectDescription.length <= 100) {
+      setError(
+        {
+          ...tempError,
+          projectDescriptionError: 'Project name should be more than 100 characters.',
+        }
+      )
+    }
+    else{
     setLoading(true)
     console.log(data);
     instance.post(`/api/${Role}/projects/create`, data)
@@ -181,6 +112,7 @@ const HireAgencyForm1 = (props) => {
       .catch(err => {
         setLoading(false)
       })
+    }
   }
 
   return (
@@ -211,6 +143,17 @@ const HireAgencyForm1 = (props) => {
                   placeholder="Start from here.."
                   value={data.projectName}
                 />
+                              {error.projectNameError && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {error.projectNameError}
+                      </p>
+                    )}
               </div>
               <div className="descriptionProjectAgency">
                 <p>2. Describe a little bit about your project?</p>
@@ -225,6 +168,17 @@ const HireAgencyForm1 = (props) => {
                   <span>More than 100 characters</span>
                   <span>0/100</span>
                 </div>
+                {error.projectDescriptionError && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {error.projectDescriptionError}
+                      </p>
+                    )}
               </div>
               <div className="budgetSectionAreaAgency">
                 <p>3. What's your budget for this project?</p>
