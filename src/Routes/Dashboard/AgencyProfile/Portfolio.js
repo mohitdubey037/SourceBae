@@ -1,4 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
+import instance from "../../../Constants/axiosConstants";
+import { withRouter } from "react-router";
+
+
 import './Portfolio.css'
 
 import portfolioImage from '../../../assets/images/AgencyProfile/portfolioImage.jpg'
@@ -6,41 +10,28 @@ import portfolioImage from '../../../assets/images/AgencyProfile/portfolioImage.
 function Portfolio(props) {
 
     const arr = [1, 2]
-    // const Role = localStorage.getItem("userId");
+    const Role = localStorage.getItem("role");
+    const agencyId = localStorage.getItem('userId');
 
-    // const [agencyProfiledata, setAgencyProfileData] = useState({});
+    const [agencyProfiledata, setAgencyProfileData] = useState({});
 
-    // const getAgencyDevelopers = () => {
-    //     instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
-    //         .then(function (response) {
-    //             setDevelopers(response)
-    //         })
-    //         .catch(err => {
-    //             console.error(err?.response?.data?.message)
-    //             setErr(err?.response?.data?.message)
-    //         })
-    // };
-    // useEffect(() => {
-    //     getAgencyDevelopers()
-    // }, [])
+    const getAgencyProfile = (agencyId, profileviewStatus) => {
+        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+            .then(function (response) {
+                console.log(response);
+                setAgencyProfileData(response);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    };
 
-    // const getAgencyProfile = (agencyId, profileviewStatus) => {
-    //     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-    //     instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
-    //         .then(function (response) {
-    //             console.log(response);
-    //             setAgencyProfileData(response);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         });
-    // };
-
-    // useEffect(() => {
-    //     if (Role === 'Agency') {
-    //         getAgencyProfile(localStorage.getItem("userId"), false);
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (Role === 'Agency') {
+            getAgencyProfile(localStorage.getItem("userId"), false);
+        }
+    }, []);
 
     return (
         <>
@@ -69,14 +60,17 @@ function Portfolio(props) {
                             )
                         })
                     }
-
-                    <div className="addMore" onClick = {() => props.history.push("/add-developer")}>
-                        +
-                    </div>
+                    {Role !== 'Client' &&
+                        agencyProfiledata.isAgencyVerified ?
+                            <div className="addMore" onClick={() => props.history.push("/add-developer")}>
+                                +
+                            </div>
+                        : null
+                    }
                 </div>
             </div>
         </>
     )
 }
 
-export default Portfolio
+export default withRouter(Portfolio)
