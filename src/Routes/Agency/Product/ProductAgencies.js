@@ -105,6 +105,7 @@ function ProductAgencies(props) {
     const [isOffsiteTravel, setOffsiteTravel] = useState(false);
     const [fundName, setFundName] = React.useState('');
     const [bmodal, setBmodal] = React.useState('');
+    const [domain, setDomain] = useState('');
     const [searchLocation, setSearchLocation] = useState('')
     const [open, setOpen] = useState(false);
     const [personName, setPersonName] = React.useState([]);
@@ -112,7 +113,6 @@ function ProductAgencies(props) {
     const [state, setState] = useState([]);
     const [err, setErr] = useState();
     const [allDomainsData, setAllDomainsData] = useState([])
-    const [domain, setDomain] = useState('');
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -167,7 +167,7 @@ function ProductAgencies(props) {
     }, [bmodal, fundName, searchLocation])
 
     const onSearchHandler = () => {
-        if ((bmodal === '' && fundName === '' && searchLocation === '')) {
+        if ((bmodal === '' && fundName === '' && searchLocation === '' && domain === '')) {
             console.log('hi');
             instance.get(`/api/${Role}/products/all`)
                 .then(response => {
@@ -182,7 +182,7 @@ function ProductAgencies(props) {
                 })
         }
         else {
-            instance.get(`/api/${Role}/products/all?businessModel=${bmodal}&fundingType=${fundName}&location=${searchLocation}`)
+            instance.get(`/api/${Role}/products/all?businessModel=${bmodal}&fundingType=${fundName}&location=${searchLocation}&domain=${domain}`)
                 .then(response => {
                     console.log(response)
                     setState(response);
