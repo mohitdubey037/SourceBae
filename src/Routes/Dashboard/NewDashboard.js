@@ -14,10 +14,14 @@ import HireDeveloperIcon from "./HireDeveloper-icon.svg";
 import HireAgencyIcon from "./HireAgency-icon.svg";
 import ShortTermProjectIcon from "./ShortTermProject-icon.svg";
 import InvestmentIcon from "./Investment-icon.svg";
-import ProjectDetailIllustration from "./ProjectDetailIllustration.svg";
+// import ProjectDetailIllustration from "./ProjectDetailIllustration.svg";
 import ProjectStatusIcon from "./projectStatus-icon.svg";
 import infoIcon from "./info-icon.svg";
-import showProjectDetailsIcon from "./showProjectDetails-icon.svg"
+import showProjectDetailsIcon from "./showProjectDetails-icon.svg";
+import projectDetailsStripLong from "./ProjectDetailsStripLong.svg";
+import projectDetailsStripShort from "./ProjectDetailsStripShort.svg";
+import itemIllustration from "./itemIllustration.svg";
+import getInTouch from "./GetInTouch.svg";
 
 const NewDashboard = () => {
   return (
@@ -28,7 +32,8 @@ const NewDashboard = () => {
         </div>
         <div className="sidebar-menu">
           <div className="dashboard-icon icons">
-            <img src={dashboardIcon} alt="dashboard icon" />
+            <div className="selected-strip"/>
+           <img src={dashboardIcon} alt="dashboard icon" />
             <p>Dashboard</p>
           </div>
           <div className="postProject-icon icons">
@@ -67,126 +72,253 @@ const NewDashboard = () => {
             <h1>Overview</h1>
           </div>
           <div className="navbar-items">
-            <img src={notificationIcon} alt="notification" />
-            <img src={notificationIcon} alt="notification" />
-            <img src={notificationIcon} alt="notification" />
+            <div className="notification-icon nav-left-item">
+              <img src={notificationIcon} alt="notification" />
+            </div>
+            <div className="username  nav-left-item">
+              <p>Atul Bhatt</p>
+            </div>
+            <div className="userprofile-circle nav-left-item" />
           </div>
         </div>
-        <div className="user-operations">
-          <div className="operation">
-            <div className="operation-logo">
-              <img src={HireDeveloperIcon} alt="hire developer" />
-            </div>
-            <div className="operation-name">
-              <p>Hire Developer</p>
-            </div>
-          </div>
-
-          <div className="operation">
-            <div className="operation-logo">
-              <img src={HireAgencyIcon} alt="hire developer" />
-            </div>
-            <div className="operation-name">
-              <p>Hire agency</p>
-            </div>
-          </div>
-
-          <div className="operation">
-            <div className="operation-logo">
-              <img src={ShortTermProjectIcon} alt="hire developer" />
-            </div>
-            <div className="operation-name">
-              <p>Short Term Project</p>
-            </div>
-          </div>
-
-          <div className="operation">
-            <div className="operation-logo">
-              <img src={InvestmentIcon} alt="hire developer" />
-            </div>
-            <div className="operation-name">
-              <p>Interested to Investment</p>
-            </div>
-          </div>
-        </div>
-        <div className="user-project">
-          <div className="user-project-details">
-            <div className="graphic">
-              <div className="graphic-illustration">
-                <img
-                  src={ProjectDetailIllustration}
-                  alt="project Details illustration"
-                />
-              </div>
-              <div className="graphic-illustration-heading">
-                <h6>Project details</h6>
-              </div>
-            </div>
-            <div className="project-details-card">
-              <div className="detailsCard-header">
-                <div className="header-heading">
-                  <h6>Maveric</h6>
-                  <p>Full Term</p>
+        <div className="content-body">
+          <div className="content-rightBody">
+            <div className="user-operations">
+              <div className="operation">
+                <div className="operation-logo">
+                  <img src={HireDeveloperIcon} alt="hire developer" />
                 </div>
-                <div className="header-currentStatus">
-                  <div className="currentStatus-text currentStatus-item">
-                    Quotation Requested
-                  </div>
-                  <div className="currentStatus-icon currentStatus-item">
-                    <img src={ProjectStatusIcon} alt="project status" />
-                  </div>
+                <div className="operation-name">
+                  <p>Hire Developer</p>
                 </div>
-              </div>
-              <div className="detailsCard-date">
-                <h6>Last Edit On: 25 june 2021</h6>
               </div>
 
-              <div className="detailsCard-statuses">
-                <div className="status-holder">
-                  <div className="status-number">1</div>
-                  <div className="status-name">Posted</div>
+              <div className="operation">
+                <div className="operation-logo">
+                  <img src={HireAgencyIcon} alt="hire developer" />
                 </div>
-                <div className="status-holder">
-                  <div className="status-number">2</div>
-                  <div className="status-name">Posted</div>
-                </div>
-                <div className="status-holder">
-                  <div className="status-number">3</div>
-                  <div className="status-name">Posted</div>
-                </div>
-                <div className="status-holder">
-                  <div className="status-number">4</div>
-                  <div className="status-name">Posted</div>
-                </div>
-                <div className="status-holder">
-                  <div className="status-number">5</div>
-                  <div className="status-name">Posted</div>
-                </div>
-                <div className="status-holder">
-                  <div className="status-number">6</div>
-                  <div className="status-name">Posted</div>
-                </div>
-                <div className="status-holder">
-                  <div className="status-number">7</div>
-                  <div className="status-name">Posted</div>
+                <div className="operation-name">
+                  <p>Hire agency</p>
                 </div>
               </div>
-              <div className="detailsCard-footer">
-                <div className="info-icon">
-                  <img src={infoIcon} alt="infoIcon" />
+
+              <div className="operation">
+                <div className="operation-logo">
+                  <img src={ShortTermProjectIcon} alt="hire developer" />
                 </div>
-                <div className="show-project-detail">
-                  <div className="projectDetail-text projectDetail-item">
-                    Show Project Detail
+                <div className="operation-name">
+                  <p>Short Term Project</p>
+                </div>
+              </div>
+
+              <div className="operation">
+                <div className="operation-logo">
+                  <img src={InvestmentIcon} alt="hire developer" />
+                </div>
+                <div className="operation-name">
+                  <p>Interested to Investment</p>
+                </div>
+              </div>
+            </div>
+            <div className="user-project">
+              <div className="user-project-details">
+                <div className="graphic">
+                  {/* <div className="graphic-illustration">
+                    <img
+                      src={ProjectDetailIllustration}
+                      alt="project Details illustration"
+                    />
+                  </div> */}
+                  <div className="graphic-illustration-heading">
+                    <h6>Project details</h6>
                   </div>
-                  <div className="projectDetail-icon projectDetail-item">
-                    <img src={showProjectDetailsIcon} alt="project status" />
+                </div>
+                <div className="project-details-card">
+                  <img src={projectDetailsStripLong} alt="long strip" />
+                  <img src={projectDetailsStripShort} alt="short strip" />
+                  <div className="detailsCard-header">
+                    <div className="header-heading">
+                      <h6>Maveric</h6>
+                    </div>
+                    <div className="header-currentStatus">
+                      <div className="currentStatus-text currentStatus-item">
+                        Quotation Requested
+                      </div>
+                      <div className="currentStatus-icon currentStatus-item">
+                        <img src={ProjectStatusIcon} alt="project status" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="header-subHeading">
+                    <p>Full Term</p>
+                  </div>
+                  <div className="detailsCard-date">
+                    <h6>Last Edit On: 25 june 2021</h6>
+                  </div>
+
+                  <div className="detailsCard-statuses">
+                    <div className="status-holder">
+                      <div className="status-number">1</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">2</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">3</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">4</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">5</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">6</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">7</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                  </div>
+                  <div className="detailsCard-footer">
+                    <div className="info-icon">
+                      <img src={infoIcon} alt="infoIcon" />
+                    </div>
+                    <div className="show-project-detail">
+                      <div className="projectDetail-text projectDetail-item">
+                        Show Project Detail
+                      </div>
+                      <div className="projectDetail-icon projectDetail-item">
+                        <img
+                          src={showProjectDetailsIcon}
+                          alt="project status"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="project-details-card">
+                  <img src={projectDetailsStripLong} alt="long strip" />
+                  <img src={projectDetailsStripShort} alt="short strip" />
+                  <div className="detailsCard-header">
+                    <div className="header-heading">
+                      <h6>Maveric</h6>
+                    </div>
+                    <div className="header-currentStatus">
+                      <div className="currentStatus-text currentStatus-item">
+                        Quotation Requested
+                      </div>
+                      <div className="currentStatus-icon currentStatus-item">
+                        <img src={ProjectStatusIcon} alt="project status" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="header-subHeading">
+                    <p>Full Term</p>
+                  </div>
+                  <div className="detailsCard-date">
+                    <h6>Last Edit On: 25 june 2021</h6>
+                  </div>
+
+                  <div className="detailsCard-statuses">
+                    <div className="status-holder">
+                      <div className="status-number">1</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">2</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">3</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">4</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">5</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">6</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                    <div className="status-holder">
+                      <div className="status-number">7</div>
+                      <div className="status-name">Posted</div>
+                    </div>
+                  </div>
+                  <div className="detailsCard-footer">
+                    <div className="info-icon">
+                      <img src={infoIcon} alt="infoIcon" />
+                    </div>
+                    <div className="show-project-detail">
+                      <div className="projectDetail-text projectDetail-item">
+                        Show Project Detail
+                      </div>
+                      <div className="projectDetail-icon projectDetail-item">
+                        <img
+                          src={showProjectDetailsIcon}
+                          alt="project status"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="project-extras"></div>
+          <div className="content-leftBody">
+            <div className="leftBody-navigation">
+              <div className="navigation-name active">
+                <p>Update</p>
+              </div>
+              <div className="navigation-name">
+                <p>Important</p>
+              </div>
+              <div className="navigation-name">
+                <p>Current</p>
+              </div>
+            </div>
+            <div className="navigation-item">
+              <div className="item-illustration">
+                <img src={itemIllustration} alt="item illustration" />
+              </div>
+              <div className="item-content">
+                <div className="itemContent-heading">
+                  <div className="heading-text">
+                    <p>Get In Touch</p>
+                  </div>
+                  <div className="heading-illustration">
+                    <img src={getInTouch} alt="get in touch" />
+                  </div>
+                </div>
+                <div className="itemContent-videoCard"></div>
+                <div className="itemContent-cta">
+                  <div className="cta-item">
+                    Call To Action
+                    <div className="view-details-btn">
+                      <button>View Detail</button>
+                    </div>
+                  </div>
+                  <div className="cta-item">
+                    Call To Action
+                    <div className="view-details-btn">
+                      <button>View Detail</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

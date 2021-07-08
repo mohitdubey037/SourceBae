@@ -5,7 +5,7 @@
 .container-body > .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 20px 20px;
+  padding: 20px 30px;
 }
 
 .navbar > .navbar-heading > h1 {
@@ -17,38 +17,92 @@
   letter-spacing: 0.3px;
   color: #3a3a3a;
 }
+.navbar > .navbar-items {
+  display: flex;
+  align-items: center;
+}
+
+.navbar > .navbar-items > .nav-left-item {
+  margin-right: 20px;
+}
+
+.navbar > .navbar-items > .notification-icon > img{
+  height: 25px;
+  width: 25px;
+}
+.navbar > .navbar-items > .nav-left-item > p {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  margin: 0;
+  text-align: right;
+  letter-spacing: 0.2px;
+  color: #252733;
+}
+
+.navbar-items > .userprofile-circle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url(./me.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.navbar-items > .userprofile-circle > img {
+  height: 50px;
+  width: 50px;
+}
+.container-body > .content-body {
+  display: flex;
+}
+
+.container-body > .content-body > .content-rightBody {
+  min-width: 65vw;
+}
+
+.container-body > .content-body > .content-leftBody {
+  min-height: 600px;
+  height: 100%;
+  min-width: 315px;
+  background: #f9f9f9;
+  mix-blend-mode: normal;
+  border-radius: 45px 10px 10px 10px;
+}
 
 .user-operations {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 30px 0;
+  padding: 0 30px 10px 30px;
+  margin-bottom: 10px;
 }
 
 .user-operations > .operation {
   background: #f9f9f9;
   border-radius: 8px;
   width: 100%;
-  margin: 0 2%;
-
+  margin-right: 4%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  min-height: 134px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  min-height: 120px;
   cursor: pointer;
 }
 
-.user-project {
-  display: flex;
+.user-operations > .operation:nth-last-child(1) {
+  margin-right: 0;
 }
+
 .user-project-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 30px;
-  width: 65%;
 }
 
 .user-project-details > .graphic {
@@ -59,18 +113,18 @@
 }
 
 .graphic-illustration-heading h6 {
-  font-family: Inter;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 29px;
-  /* identical to box height */
+  font-weight: bold;
+  font-size: 35px;
   text-align: center;
   letter-spacing: 0.4px;
   text-transform: capitalize;
+
   color: #3a3a3a;
 }
 
+/* PROJECT DETAILS */
 .project-details-card {
   min-width: 738px;
   min-height: 177px;
@@ -78,87 +132,223 @@
   background: linear-gradient(90deg, #fdfbfb 0%, #ebedee 100%);
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  padding: 20px 20px 5px 20px;
-
+  padding: 10px 20px 5px 20px;
+  margin-bottom: 25px;
   font-family: Inter;
   font-style: normal;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 5px;
   letter-spacing: 0.4px;
   color: #3a3a3a;
+  margin-top: 20px;
 }
 
+.project-details-card > img:nth-child(1) {
+  position: absolute;
+  margin-top: -40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-details-card > img:nth-child(2) {
+  position: absolute;
+  margin-top: -30px;
+  margin-left: 15px;
+  margin-right: auto;
+}
 .project-details-card > .detailsCard-header {
   display: flex;
   justify-content: space-between;
+  margin-left: 50px;
 }
 
 .detailsCard-header > .header-currentStatus {
   display: flex;
+  align-items: center;
 }
 .detailsCard-header > .header-currentStatus > .currentStatus-text {
   font-weight: 600;
+  align-self: center;
+}
+
+.project-details-card > .header-subHeading {
+  margin-left: 50px;
 }
 
 .detailsCard-header > .header-currentStatus > .currentStatus-item {
   padding: 5px;
 }
 
-.detailsCard-statuses{
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
+.project-details-card > .detailsCard-date > h6 {
+  font-weight: 600;
+  font-size: 12px;
 }
 
-.detailsCard-statuses > .status-holder{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+.detailsCard-statuses {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
 }
 
-.status-holder > .status-number{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    padding: 10px;
-    margin: 5px;
-    background: #5CB85C;
-    color: #ffffff;
+.detailsCard-statuses > .status-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.detailsCard-footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.status-holder > .status-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 5px;
+  background: #5cb85c;
+  color: #ffffff;
 }
 
-.detailsCard-footer > .info-icon {
-    display: flex;
-    width: 45px;
-    height: 45px; 
-    padding: 10px;
-    margin-top: 5px;
+.detailsCard-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .detailsCard-footer > .info-icon {
-    display: flex;
-    width: 45px;
-    height: 45px; 
-    padding: 10px;
+  display: flex;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  margin-top: 5px;
 }
 
-.detailsCard-footer > .show-project-detail{
-    display: flex;
-    align-items: center;
+.detailsCard-footer > .info-icon {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
 }
 
-.detailsCard-footer > .show-project-detail > .projectDetail-text{
-    font-weight: 600;
+.detailsCard-footer > .show-project-detail {
+  display: flex;
+  align-items: center;
 }
-.detailsCard-footer > .show-project-detail > .projectDetail-item{
-    padding: 5px;
+
+.detailsCard-footer > .show-project-detail > .projectDetail-text {
+  font-weight: 600;
+}
+.detailsCard-footer > .show-project-detail > .projectDetail-item {
+  padding: 5px;
+}
+
+/* Left Body */
+.content-leftBody {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 40px 10px 40px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.content-leftBody > .leftBody-navigation {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.leftBody-navigation > .navigation-name {
+  margin-right: 25px;
+}
+
+.leftBody-navigation > .navigation-name:nth-last-child(1) {
+  margin-right: 0;
+}
+.navigation-name > p,
+.heading-text > p {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3a3a3a;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.navigation-name.active > p {
+  border-bottom: 3px solid #02044a;
+}
+
+.content-leftBody > .navigation-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-content {
+  width: 100%;
+}
+.item-content > .itemContent-heading {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px;
+}
+
+.heading-text > p {
+  border-bottom: 3px solid #02044a;
+  padding-right: 60px;
+}
+
+.itemContent-videoCard {
+  width: 90%;
+  min-height: 160px;
+  border-radius: 8px;
+  background: url(./tech.jpg);
+  background-size: cover;
+  margin: 0 15px;
+}
+
+.itemContent-cta {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemContent-cta > .cta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  margin: 12px 15px;
+  min-width: 200px;
+  min-height: 90px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.itemContent-cta > .cta-item {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3a3a3a;
+}
+
+.cta-item > .view-details-btn {
+border: none;
+}
+.cta-item > .view-details-btn > button {
+  position: absolute;
+  width: 97px;
+  height: 42px;
+  background: #68e1fd;
+  border-radius: 12px;
+  border: inherit;
+  margin:0;
+  margin-left:50px;
 }
