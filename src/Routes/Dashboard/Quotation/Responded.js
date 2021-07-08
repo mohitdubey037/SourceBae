@@ -17,7 +17,7 @@ function Responded(props) {
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectResponded=1`)
+        instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&projectResponded=1`)
             .then(response => {
                 setLoading(false);
                 setProjects(response.projects);

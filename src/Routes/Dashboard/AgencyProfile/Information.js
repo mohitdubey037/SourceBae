@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import './Information.css'
+import './Information.css';
+import axios from 'axios';
+import { useParams } from "react-router";
+
 
 import moment from 'moment'
 import instance from "../../../Constants/axiosConstants";
@@ -9,9 +12,29 @@ import { toast } from "react-toastify";
 
 function Information(props) {
 
+    // const { id } = useParams();
     const Role = localStorage.getItem('role');
     const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY");
 
+    const [agencyProfiledata, setAgencyProfileData] = useState({})
+
+    const getAgencyProfile = (agencyId, profileviewStatus) => {
+        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+            .then(function (response) {
+                console.log(response);
+                setAgencyProfileData(response);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    };
+
+    useEffect(() => {
+        if (Role === 'Agency') {
+            getAgencyProfile(localStorage.getItem("userId"), false);
+        }
+    }, []);
 
     const handleErrorsValidation = (url) => {
         if (!helper.validateLink(url)) {
@@ -96,7 +119,7 @@ function Information(props) {
 
         const ay = arr.find(a => a.title === 'Agency Website');
         console.log(ay.inputValue);
-        if(handleErrorsValidation(ay.inputValue) === true) {
+        if (handleErrorsValidation(ay.inputValue) === true) {
             const id = localStorage.getItem("userId")
             instance.patch(`/api/${Role}/agencies/update/${id}`,
                 {
@@ -118,12 +141,16 @@ function Information(props) {
         <>
             <div className="mainInformation">
                 <div className="innerInformation">
-                    {(props?.id === null || props?.id === undefined) && <div className="editableBtn">
-                        <button onClick={handleDisabled} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Information</button>
-                        {
-                            isDisabled ? null : <button onClick={handleDisabledSave} >Save Your Information</button>
-                        }
-                    </div>}
+                    {Role === 'Agency' ?
+                        agencyProfiledata.isAgencyVerified &&
+                        <div className="editableBtn">
+                            <button onClick={handleDisabled} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Information</button>
+                            {
+                                isDisabled ? null : <button onClick={handleDisabledSave} >Save Your Information</button>
+                            }
+                        </div>
+                        : null
+                    }
                     <div className="informationForm">
                         <div className="informationInputForm">
                             <span className="informationBorder"></span>

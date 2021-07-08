@@ -105,12 +105,14 @@ function ProductAgencies(props) {
     const [isOffsiteTravel, setOffsiteTravel] = useState(false);
     const [fundName, setFundName] = React.useState('');
     const [bmodal, setBmodal] = React.useState('');
+    const [domain, setDomain] = useState('');
     const [searchLocation, setSearchLocation] = useState('')
     const [open, setOpen] = useState(false);
     const [personName, setPersonName] = React.useState([]);
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState([]);
     const [err, setErr] = useState();
+    const [allDomainsData, setAllDomainsData] = useState([])
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -132,6 +134,11 @@ function ProductAgencies(props) {
         console.log(event.target.value);
         setFundName(value);
     };
+    const handleDomainType = (event) => {
+        const { value } = event.target
+        console.log(event.target.value);
+        setDomain(value);
+    };
     const handleBmodal = (event) => {
         const { value } = event.target
         setBmodal(value);
@@ -152,6 +159,7 @@ function ProductAgencies(props) {
         setSearchLocation('');
         setFundName('');
         setBmodal('');
+        setDomain('');
     }
 
     useEffect(() => {
@@ -159,7 +167,7 @@ function ProductAgencies(props) {
     }, [bmodal, fundName, searchLocation])
 
     const onSearchHandler = () => {
-        if ((bmodal === '' && fundName === '' && searchLocation === '')) {
+        if ((bmodal === '' && fundName === '' && searchLocation === '' && domain === '')) {
             console.log('hi');
             instance.get(`/api/${Role}/products/all`)
                 .then(response => {
@@ -174,7 +182,7 @@ function ProductAgencies(props) {
                 })
         }
         else {
-            instance.get(`/api/${Role}/products/all?businessModel=${bmodal}&fundingType=${fundName}&location=${searchLocation}`)
+            instance.get(`/api/${Role}/products/all?businessModel=${bmodal}&fundingType=${fundName}&location=${searchLocation}&domain=${domain}`)
                 .then(response => {
                     console.log(response)
                     setState(response);
@@ -202,14 +210,25 @@ const getAllProducts = () => {
         })
 }
 
+const getAllDomains = () => {
+    instance.get(`api/${Role}/domains/all`)
+      .then(function (response) {
+        setAllDomainsData(response);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err?.response?.data?.message);
+      });
+  };
+
 useEffect(() => {
     getAllProducts()
+    getAllDomains()
 }, [])
 
 useEffect(() => {
     console.log(state)
 }, [state])
-
 
 return (
     <>
@@ -333,32 +352,37 @@ return (
                                             <input name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." value={searchLocation} />
                                         </div>
 
-                                        <div className="officeVisitFilter">
+                                        <div className="officeVisitFilter_productAgencies">
                                             <p>Sort By :</p>
                                             <FormControl className={classes.formControl}>
                                                 <Select
-                                                    labelId="demo-mutiple-checkbox-label"
-                                                    id="demo-mutiple-checkbox"
-                                                    multiple
-                                                    value={personName}
-                                                    onChange={handleChange}
-                                                    input={<Input />}
                                                     displayEmpty
-                                                    disableUnderline
-                                                    renderValue={(selected) => selected.join(', ')}
-                                                    MenuProps={MenuProps}
+                                                    value={domain}
+                                                    onChange={(event) => handleDomainType(event)}
+                                                    inputProps={{ 'aria-label': 'Without label' }}
                                                     renderValue={(selected) => {
                                                         if (selected.length === 0) {
-                                                            return <span style={{ fontFamily: 'Poppins', color: '#999' }}>Select from here</span>;
+                                                            return <em>Choose from here</em>;
                                                         }
+                                                        return allDomainsData.filter(allDomain => selected.includes(allDomain._id)).map(allDomain => allDomain.domainName).join(', ');
                                                     }}
                                                 >
-                                                    {names.map((name) => (
-                                                        <MenuItem key={name} value={name}>
-                                                            <Checkbox color="primary" checked={personName.indexOf(name) > -1} />
-                                                            <ListItemText primary={name} />
-                                                        </MenuItem>
-                                                    ))}
+
+                                                    <MenuItem value="">
+                                                        <em>None</em>
+                                                    </MenuItem>
+                                                    {allDomainsData.map((dname, index) => {
+                                                        return (
+                                                            <MenuItem
+                                                                key={dname._id}
+                                                                value={dname._id}
+                                                                style={getStyles(dname.domainName, allDomainsData, theme)}
+                                                            >
+                                                                {dname.domainName}
+                                                            </MenuItem>
+                                                        )
+                                                    }
+                                                    )}
                                                 </Select>
                                             </FormControl>
                                         </div>
@@ -376,10 +400,10 @@ return (
                                                     <MenuItem value="">
                                                         <em>None</em>
                                                     </MenuItem>
-                                                    {fundType.map((fname) => {
+                                                    {fundType.map((fname,index) => {
                                                         return (
                                                             <MenuItem
-                                                                key={fname}
+                                                                key={index}
                                                                 value={fname}
                                                                 style={getStyles(fname, fundName, theme)}
                                                             >
@@ -404,10 +428,10 @@ return (
                                                     <MenuItem value="">
                                                         <em>None</em>
                                                     </MenuItem>
-                                                    {bType.map((bname) => {
+                                                    {bType.map((bname,index) => {
                                                         return (
                                                             <MenuItem
-                                                                key={bname}
+                                                                key={index}
                                                                 value={bname}
                                                                 style={getStyles(bname, bmodal, theme)}
                                                             >

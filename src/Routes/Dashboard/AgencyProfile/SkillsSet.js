@@ -4,11 +4,15 @@ import React, { useState, useEffect } from 'react'
 import './SkillsSet.css'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import instance from "../../../Constants/axiosConstants"
+import instance from "../../../Constants/axiosConstants";
+import { useParams } from "react-router";
+import * as helper from "../../../shared/helper";
 
 function SkillsSet(props) {
 
     const Role = localStorage.getItem('role');
+
+    const [agencyProfiledata, setAgencyProfileData] = useState({})
     const [selectedId, setSelectedId] = useState("")
     const [open, setOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false)
@@ -19,6 +23,24 @@ function SkillsSet(props) {
         Services: [],
         Technology: []
     })
+
+    const getAgencyProfile = (agencyId, profileviewStatus) => {
+        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+            .then(function (response) {
+                console.log(response);
+                setAgencyProfileData(response);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    };
+
+    useEffect(() => {
+        if (Role === 'Agency') {
+            getAgencyProfile(localStorage.getItem("userId"), false);
+        }
+    }, []);
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {
@@ -289,14 +311,19 @@ function SkillsSet(props) {
         <>
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
-                    {/* {(props?.id === null || props?.id === undefined) && } */}
-                    {(props?.id === null || props?.id === undefined) && editStatus ? <div className="editableBtn">
-                        <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
-                    </div> : <div className="editableBtn">
-                        {Role !== 'Client' &&
-                            <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
-                        }
-                    </div>}
+
+                    {Role !== 'Client' ?
+                        agencyProfiledata.isAgencyVerified &&
+                        <>
+                            <div className="editableBtn">
+                                <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
+                            </div>
+                            <div className="editableBtn">
+                                <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                            </div>
+                        </>
+                        : null}
+
                     <div className="skillsSetsContent">
                         <div className="skillsSetBorder"></div>
                         <div className="skillsSetSemiCircle" style={{ zIndex: -1 }}></div>
@@ -316,7 +343,7 @@ function SkillsSet(props) {
                                                 })
                                             }
                                         </div>
-                                        {editStatus && (value.title !== 'Language of Content' && value.title !== 'Relevant Exp In Industry' && value.title!== 'Expertise') && <div className="editButtons">
+                                        {editStatus && (value.title !== 'Language of Content' && value.title !== 'Relevant Exp In Industry' && value.title !== 'Expertise') && <div className="editButtons">
                                             <div className={value?.title} onClick={() => { handleAddData(value) }}>
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </div>

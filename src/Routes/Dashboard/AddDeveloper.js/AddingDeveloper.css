@@ -109,11 +109,12 @@
   padding: 2rem 0 2rem 2rem;
 }
 .inputField1 {
+  height: 15%;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5%;
+  /* align-items: center; */
+  margin-bottom: 2%;
 }
 .developerName_addingDeveloper,
 .developerDesignation_addingDeveloper {

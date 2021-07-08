@@ -22,7 +22,7 @@ function ProjectesMatched(props) {
 
     const getAllReceivedData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?AgencyId=${agencyId}&projectMatched=1`)
+        instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&projectMatched=1`)
             .then(response => {
                 setLoading(false);
                 setProjects(response.projects);
