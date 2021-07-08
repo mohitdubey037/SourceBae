@@ -12,7 +12,7 @@ import './Rules.css'
 
 function Rules(props) {
 
-    const Role = localStorage.getItem("roled");
+    const Role = localStorage.getItem("role");
     const [agencyProfiledata, setAgencyProfileData] = useState({});
 
     const [rules, setRules] = useState([]);
