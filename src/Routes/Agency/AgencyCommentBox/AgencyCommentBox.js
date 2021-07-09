@@ -65,8 +65,7 @@ const AgencyCommentBox = (props) => {
       instance
         .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationAcceptForm)
         .then(function (response) {
-          setOpen(false);
-          window.location.reload()
+          props.giveReplies(true);
         });
     } else {
       toast.error("Final cost cannot be empty.");
@@ -76,7 +75,7 @@ const AgencyCommentBox = (props) => {
     instance
       .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
       .then(function (response) {
-        window.location.reload()
+        props.giveReplies(true);
       })
       .catch(err => {
         console.log(err)
@@ -375,7 +374,7 @@ const AgencyCommentBox = (props) => {
 
           <div className="quotationTable">
             <div className="tableHeaderQuotation">
-              <p>Project Start Date</p>
+              <p>Project Start Date By You</p>
             </div>
             <div className="tableContentQuotation">
               <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />

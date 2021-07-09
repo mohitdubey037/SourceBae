@@ -7,12 +7,10 @@ import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 
-
 const ClientCommentBox = (props) => {
   const [open, setOpen] = useState(false);
   const onCloseModal = () => setOpen(false);
   const [openRejectionModal, setOpenRejectionModal] = useState(false);
-
 
   const [quotationFormData, setQuotationFormData] = useState({
     agencyId: props?.agencyId || "",
@@ -44,7 +42,6 @@ const ClientCommentBox = (props) => {
   useEffect(() => {
     console.log(quotationFormData);
   }, [quotationFormData])
-
 
   const [apiData, setApiData] = useState({
     agencyId: props.agencyId,
@@ -80,8 +77,7 @@ const ClientCommentBox = (props) => {
     };
     instance.patch(`api/client/projects/propose/${props.projectId}`, quotationData)
       .then(function (response) {
-        console.log(response);
-        window.location.reload();
+        props.giveReplies(true);
       })
       .catch(err => {
         console.log(err);
@@ -91,7 +87,7 @@ const ClientCommentBox = (props) => {
   const handleProjectAcceptance = () => {
     instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationFormData)
       .then(function (response) {
-        window.location.reload();
+        props.giveReplies(true);
       })
       .catch(err => {
         console.log(err);
@@ -101,7 +97,7 @@ const ClientCommentBox = (props) => {
   const handleProjectRejection = () => {
     instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
       .then(function (response) {
-        window.location.reload();
+        props.giveReplies(true);
       })
       .catch(err => {
         console.log(err);

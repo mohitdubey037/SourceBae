@@ -34,6 +34,7 @@ function RespondedDetails(props) {
       });
   };
   useEffect(() => {
+    console.log('hii');
     if (Object.keys(props["projects"]).length === 0) {
       console.log("empty");
       getAllProjects();
