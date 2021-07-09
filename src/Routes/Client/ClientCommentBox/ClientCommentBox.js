@@ -10,29 +10,40 @@ import { Modal } from "react-responsive-modal";
 
 const ClientCommentBox = (props) => {
   const [open, setOpen] = useState(false);
+  const onCloseModal = () => setOpen(false);
+  const [openRejectionModal, setOpenRejectionModal] = useState(false);
+
 
   const [quotationFormData, setQuotationFormData] = useState({
     agencyId: props?.agencyId || "",
     isQuotationAcceptedByClient: true
   })
 
+  const [quotationRejectionForm, setQuotationRejectionForm] = useState({
+    rejectReasonByClient: '',
+    agencyId: props?.agencyId || "",
+    isQuotationAcceptedByClient: false,
+  })
+
   const onQuotationChange = (event) => {
     const { name, value } = event.target;
     setQuotationFormData({
       ...quotationFormData,
-      [name] : value
+      [name]: value
+    })
+  }
+
+  const onQuotationRejectionChange = (event) => {
+    const { name, value } = event.target
+    setQuotationRejectionForm({
+      ...quotationRejectionForm,
+      [name]: value
     })
   }
 
   useEffect(() => {
     console.log(quotationFormData);
-  },[quotationFormData])
-
-  const openAcceptQuotationModal = () => {
-    console.log("hiiiiii")
-    setOpen(true);
-  };
-  const onCloseModal = () => setOpen(false);
+  }, [quotationFormData])
 
 
   const [apiData, setApiData] = useState({
@@ -49,7 +60,6 @@ const ClientCommentBox = (props) => {
       [name]: value,
     });
   };
-
 
   const replyApi = () => {
     instance
@@ -89,12 +99,12 @@ const ClientCommentBox = (props) => {
   }
 
   const handleProjectRejection = () => {
-    instance.patch(`api/client/projects/proposal-action/${props.projectId}`, {
-      agencyId: props?.agencyId || "",
-      isQuotationAcceptedByClient: false,
-    })
+    instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
       .then(function (response) {
-        window.location.reload()
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err);
       })
   }
 
@@ -248,9 +258,8 @@ const ClientCommentBox = (props) => {
             </div>
 
             <div className="detailsButtons">
-
-              <button className="acceptButton" onClick={() => openAcceptQuotationModal()}>Accept</button>
-              <button className="rejectButton" onClick={handleProjectRejection}>Reject</button>
+              <button className="acceptButton" onClick={() => setOpen(true)}>Accept</button>
+              <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>Reject</button>
             </div>
           </div>
         </div>
@@ -266,7 +275,7 @@ const ClientCommentBox = (props) => {
         }}
       >
         <div className="QuotationModal">
-          <h2>Quatation Acceptance Form</h2>
+          <h2>Quotation Acceptance Form</h2>
           <div className="QuotationModalForm">
             <div className="innerQuotation">
               <div className="quotationTable">
@@ -283,7 +292,7 @@ const ClientCommentBox = (props) => {
 
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectStartDateByClient' onChange={onQuotationChange}/>
+                  <input type='date' name='projectStartDateByClient' onChange={onQuotationChange} />
                 </div>
               </div>
               <div className="quotationTable">
@@ -291,7 +300,7 @@ const ClientCommentBox = (props) => {
                   <p>Project Delayed Start Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectDelayedStartDateByClient' onChange={onQuotationChange}/>
+                  <input type='date' name='projectDelayedStartDateByClient' onChange={onQuotationChange} />
                 </div>
               </div>
               <div className="quotationTable">
@@ -299,7 +308,7 @@ const ClientCommentBox = (props) => {
                   <p>Project End Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectEndDateByClient' onChange={onQuotationChange}/>
+                  <input type='date' name='projectEndDateByClient' onChange={onQuotationChange} />
                 </div>
               </div>
               <div className="quotationTable">
@@ -307,7 +316,7 @@ const ClientCommentBox = (props) => {
                   <p>Project Expected End Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectExpectedEndDateByClient' onChange={onQuotationChange}/>
+                  <input type='date' name='projectExpectedEndDateByClient' onChange={onQuotationChange} />
                 </div>
               </div>
               <div className="quotationTable">
@@ -315,7 +324,7 @@ const ClientCommentBox = (props) => {
                   <p>Final Cost </p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type="number" name="finalCostByClient" onChange={onQuotationChange}/>
+                  <input type="number" name="finalCostByClient" onChange={onQuotationChange} />
                 </div>
               </div>
 
@@ -327,6 +336,29 @@ const ClientCommentBox = (props) => {
           </div>
         </div>
       </Modal>
+      <Modal
+        open={openRejectionModal}
+        onClose={() => setOpenRejectionModal(false)}
+        center
+        classNames={{
+          overlay: "QuotationModalOverlay",
+          modal: "QuotationModal",
+        }}
+      >
+        <div className="quotationTable">
+          <div className="tableHeaderQuotation">
+            <p>Reason for Rejection</p>
+          </div>
+          <div className="tableContentQuotation">
+            <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} />
+          </div>
+        </div>
+        <button style={{
+          color: 'white',
+          background: 'burlywood',
+          padding: '2px',
+          textAlign: 'center'}} onClick={() => handleProjectRejection()}>Yes</button>
+    </Modal>
     </>
 
   );

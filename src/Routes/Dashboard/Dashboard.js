@@ -40,7 +40,7 @@ const Dashboard = (props) => {
   const onCloseModal = () => setOpenModal(false);
 
   const getAllProjects = () => {
-    instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=in progress`)
+    instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`)
       .then(function (response) {
         setAllProjects(response);
         console.log(response);

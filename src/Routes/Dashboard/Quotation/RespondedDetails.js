@@ -161,76 +161,102 @@ function RespondedDetails(props) {
           </div>
 
           <div className="agencyQuotationDesc">
-            <h4>Comments and Replies</h4>
-            {loading ? (
-              <p style={{ textAlign: "center" }}>Comments are loading...</p>
-            ) : project?.projectProposals &&
-              project.projectProposals[0]?.isAskedForQuotation === true ? (
-              <ClientCommentBox
-                giveReplies={(gr) => {
-                  setRepliedToClient(gr);
-                }}
-                comments={project.projectProposals[0]?.comments}
-                commentType="Quotation"
-                isCommentSectionActive={
-                  project.projectProposals[0].isCommentSectionActive
-                }
-                isReplySectionActive={
-                  project.projectProposals[0].isReplySectionActive
-                }
-                projectId={projectId}
-                agencyId={agencyId}
-                isAskedForQuotation={true}
-                isShortListed={true}
-                clientNegotiablePrice={
-                  project.projectProposals[0].clientNegotiablePrice
-                }
-                agencyNegotiablePrice={
-                  project.projectProposals[0].agencyNegotiablePrice
-                }
-                quotationLink={project.projectProposals[0].quotationLink}
-                isProposalActionActive={
-                  project.projectProposals[0].isProposalActionActive
-                }
-                isQuotationAcceptedByClient={
-                  project.projectProposals[0].isQuotationAcceptedByClient
-                }
+            {
+              project.projectProposals && project?.projectProposals[0].rejectReasonByClient !== undefined ?
+                <p>Project is rejected by you</p>
+                :
+                project.projectProposals && project?.projectProposals[0].rejectReasonByAgency !== undefined ?
+                  <>
+                    <p>Project is rejected by the Client due to following reason</p>
+                    <ul>
+                      <li>{project?.projectProposals[0].rejectReasonByAgency}</li>
+                    </ul>
+                  </>
+                  :
+                  project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true ?
+                    <p>Please wait for the agency to accept the Quotation</p>
+                    :
+                    <>
+                      <h4>Comments and Replies</h4>
+                      {
+                        loading ? <p style={{ textAlign: "center" }}>Comments are loading...</p>
+                          :
+                          project?.projectProposals &&
+                            project.projectProposals[0]?.isAskedForQuotation === true ? (
+                            <ClientCommentBox
+                              giveReplies={(gr) => {
+                                setRepliedToClient(gr);
+                              }}
+                              isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                              comments={project.projectProposals[0]?.comments}
+                              commentType="Quotation"
+                              isCommentSectionActive={
+                                project.projectProposals[0].isCommentSectionActive
+                              }
+                              isReplySectionActive={
+                                project.projectProposals[0].isReplySectionActive
+                              }
+                              projectId={projectId}
+                              agencyId={agencyId}
+                              isAskedForQuotation={true}
+                              isShortListed={true}
+                              clientNegotiablePrice={
+                                project.projectProposals[0].clientNegotiablePrice
+                              }
+                              agencyNegotiablePrice={
+                                project.projectProposals[0].agencyNegotiablePrice
+                              }
+                              quotationLink={project.projectProposals[0].quotationLink}
+                              isProposalActionActive={
+                                project.projectProposals[0].isProposalActionActive
+                              }
+                              isQuotationAcceptedByClient={
+                                project.projectProposals[0].isQuotationAcceptedByClient
+                              }
 
-              />
-            ) : (
-              project?.projectProposals && (
-                <ClientCommentBox
-                  giveReplies={(gr) => {
-                    setRepliedToClient(gr);
-                  }}
-                  comments={project.projectProposals[0]?.comments}
-                  commentType="Shortlist"
-                  isCommentSectionActive={
-                    project.projectProposals[0].isCommentSectionActive
-                  }
-                  isReplySectionActive={
-                    project.projectProposals[0].isReplySectionActive
-                  }
-                  projectId={projectId}
-                  agencyId={agencyId}
-                  isAskedForQuotation={false}
-                  isShortListed={true}
-                  clientNegotiablePrice={
-                    project.projectProposals[0].clientNegotiablePrice
-                  }
-                  agencyNegotiablePrice={
-                    project.projectProposals[0].agencyNegotiablePrice
-                  }
-                  quotationLink={project.projectProposals[0].quotationLink}
-                  isProposalActionActive={
-                    project.projectProposals[0].isProposalActionActive
-                  }
-                  isQuotationAcceptedByClient={
-                    project.projectProposals[0].isQuotationAcceptedByClient
-                  }
-                />
-              )
-            )}
+                            />
+                          )
+                            :
+                            (
+                              project?.projectProposals && (
+                                <ClientCommentBox
+                                  giveReplies={(gr) => {
+                                    setRepliedToClient(gr);
+                                  }}
+                                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                                  comments={project.projectProposals[0]?.comments}
+                                  commentType="Shortlist"
+                                  isCommentSectionActive={
+                                    project.projectProposals[0].isCommentSectionActive
+                                  }
+                                  isReplySectionActive={
+                                    project.projectProposals[0].isReplySectionActive
+                                  }
+                                  projectId={projectId}
+                                  agencyId={agencyId}
+                                  isAskedForQuotation={false}
+                                  isShortListed={true}
+                                  clientNegotiablePrice={
+                                    project.projectProposals[0].clientNegotiablePrice
+                                  }
+                                  agencyNegotiablePrice={
+                                    project.projectProposals[0].agencyNegotiablePrice
+                                  }
+                                  quotationLink={project.projectProposals[0].quotationLink}
+                                  isProposalActionActive={
+                                    project.projectProposals[0].isProposalActionActive
+                                  }
+                                  isQuotationAcceptedByClient={
+                                    project.projectProposals[0].isQuotationAcceptedByClient
+                                  }
+                                />
+                              )
+                            )}
+                    </>
+
+            }
+
+
           </div>
 
           <div className="agencyQuestions">

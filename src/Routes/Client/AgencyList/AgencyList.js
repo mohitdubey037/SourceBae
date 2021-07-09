@@ -16,7 +16,6 @@ function AgencyList(props) {
   const Role = localStorage.getItem('role')
   let { projectId } = useParams();
 
-
   projectId = projectId ? helper.cleanParam(projectId) : "";
   const [agencyList, setAgencyList] = useState([]);
   const [isOfficeVisit, setOfficeVisit] = useState(false);
@@ -29,7 +28,6 @@ function AgencyList(props) {
   const [project, setProject] = useState([])
 
   const openShortlistModal = (_id, indexParam) => {
-    console.log("hiiiiii")
     setOpen(true);
     setIndex(indexParam)
     setShortlistFormData({

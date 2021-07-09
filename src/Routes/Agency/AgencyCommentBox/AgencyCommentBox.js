@@ -23,7 +23,14 @@ const AgencyCommentBox = (props) => {
 
   const [file, setFile] = useState(null);
   const [open, setOpen] = useState(false);
-  const [finalCost, setFinalCost] = useState(null);
+  const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
+
+  const [quotationAcceptForm, setQuotationAcceptForm] = useState({
+    agencyId: localStorage.getItem("userId"),
+    isQuotationAcceptedByAgency: true,
+    projectFinalCost: props.finalCostByClient
+  })
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setApiData({
@@ -32,14 +39,31 @@ const AgencyCommentBox = (props) => {
     });
   };
 
+  const [quotationRejectionForm, setQuotationRejectionForm] = useState({
+    rejectReasonByAgency : '',
+    agencyId: localStorage.getItem("userId") || "",
+    isQuotationAcceptedByAgency: false,
+  })
+
+  const onQuotationRejectionChange = (event) => {
+    const { name, value } = event.target
+    setQuotationRejectionForm({
+      ...quotationRejectionForm,
+      [name]: value
+    })
+  }
+
+  const onQuotationAcceptChange = (event) => {
+    const { name, value } = event.target
+    setQuotationAcceptForm({
+      ...quotationAcceptForm,
+      [name]: value
+    })
+  }
   const handleProjectAcceptance = () => {
-    if (finalCost !== null) {
+    if (quotationAcceptForm.finalPrice !== null) {
       instance
-        .patch(`api/client/projects/proposal-action/${props.projectId}`, {
-          agencyId: localStorage.getItem("userId") || "",
-          isQuotationAcceptedByAgency: true,
-          projectFinalCost: finalCost,
-        })
+        .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationAcceptForm)
         .then(function (response) {
           setOpen(false);
           window.location.reload()
@@ -50,13 +74,13 @@ const AgencyCommentBox = (props) => {
   };
   const handleProjectRejection = () => {
     instance
-      .patch(`api/client/projects/proposal-action/${props.projectId}`, {
-        agencyId: localStorage.getItem("userId") || "",
-        isQuotationAcceptedByAgency: false,
-      })
+      .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
       .then(function (response) {
         window.location.reload()
-      });
+      })
+      .catch(err => {
+        console.log(err)
+      })
   };
 
   function uploadMedia() {
@@ -71,7 +95,7 @@ const AgencyCommentBox = (props) => {
             quotationLink: response[0].mediaURL,
           });
         })
-        .catch((err) => {});
+        .catch((err) => { });
     } else {
       toast.error("Please Pick a File before Uploading.");
     }
@@ -107,7 +131,11 @@ const AgencyCommentBox = (props) => {
           width: "100%",
         }}
       >
-        {!isRepliedToClient &&
+        {props.isQuotationAcceptedByClient === true ?
+          <p>Quotation accepted by client!!.Waiting for your side</p>
+          :
+          !isRepliedToClient &&
+          props.comments &&
           props.comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
@@ -135,7 +163,9 @@ const AgencyCommentBox = (props) => {
             } else {
               return "";
             }
-          })} 
+          })
+        }
+
         <div className="postQuotation">
           {props.isAskedForQuotation &&
             (props.agencyNegotiablePrice === null || props.agencyNegotiablePrice === undefined) && (
@@ -214,9 +244,9 @@ const AgencyCommentBox = (props) => {
             </div>
           )}
         </div>
-        {!props.isCommentSectionActive && !props.isReplySectionActive && (
+        {props.isQuotationAcceptedByClient === false && !props.isCommentSectionActive && !props.isReplySectionActive && (
           <div>
-            <p>Coversation Over.</p>
+            <p>Conversation Over.</p>
           </div>
         )}
       </div>
@@ -252,19 +282,18 @@ const AgencyCommentBox = (props) => {
         {!(
           props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient
         ) && (
-          <div
-            className={`${
-              props.isProposalActionActive && props.isQuotationAcceptedByClient
+            <div
+              className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
                 ? ""
                 : "disabled"
-            }`}
-          >
-            <div>
-              <p>Accept or Reject the Project.</p>
-            </div>
+                }`}
+            >
+              <div>
+                <p>Accept or Reject the Project.</p>
+              </div>
 
-            <div className="detailsButtons">
-              
+              <div className="detailsButtons">
+
                 <button
                   className="acceptButton"
                   onClick={() => {
@@ -276,13 +305,13 @@ const AgencyCommentBox = (props) => {
 
                 <button
                   className="rejectButton"
-                  onClick={handleProjectRejection}
+                  onClick={() => setOpenWithdrawModal(true)}
                 >
                   Withdraw
                 </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
       <Modal
         open={open}
@@ -299,16 +328,60 @@ const AgencyCommentBox = (props) => {
           <h2>Accept Project</h2>
         </div>
         <div className="productModalForm">
-          <div className="productModalInput">
-            <p>Final Project Cost</p>
-            <input
-              type="number"
-              onChange={(event) => {
-                setFinalCost(event.target.value);
-              }}
-              name="finalCost"
-            />
+          <div className="quotationTable">
+            <div className="tableHeaderQuotation">
+              <p>Final Cost </p>
+            </div>
+            <div className="tableContentQuotation">
+              <p>{props.finalCostByClient}</p>
+            </div>
           </div>
+
+          <div className="quotationTable">
+            <div className="tableHeaderQuotation">
+              <p>Project Start Date By Client</p>
+            </div>
+            <div className="tableContentQuotation">
+              <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
+            </div>
+          </div>
+
+          <div className="quotationTable">
+            <div className="tableHeaderQuotation">
+              <p>Project Delayed Start Date By Client</p>
+            </div>
+            <div className="tableContentQuotation">
+              <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
+            </div>
+          </div>
+
+          <div className="quotationTable">
+            <div className="tableHeaderQuotation">
+              <p>Project End Date By Client</p>
+            </div>
+            <div className="tableContentQuotation">
+              <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
+            </div>
+          </div>
+
+          <div className="quotationTable">
+            <div className="tableHeaderQuotation">
+              <p>Project Expected End Date By Client</p>
+            </div>
+            <div className="tableContentQuotation">
+              <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
+            </div>
+          </div>
+
+          <div className="quotationTable">
+            <div className="tableHeaderQuotation">
+              <p>Project Start Date</p>
+            </div>
+            <div className="tableContentQuotation">
+              <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
+            </div>
+          </div>
+
         </div>
         <div className="connectedButton">
           <p onClick={handleProjectAcceptance}>
@@ -316,6 +389,29 @@ const AgencyCommentBox = (props) => {
           </p>
         </div>
       </Modal>
+
+      <Modal
+        open={openWithdrawModal}
+        onClose={() => {
+          setOpenWithdrawModal(false);
+        }}
+        classNames={{
+          overlay: "customOverlayAgencyProduct",
+          modal: "customModalAgencyProduct",
+        }}
+        center
+      >
+        <div className="quotationTable">
+          <div className="tableHeaderQuotation">
+            <p>Reason for Rejection</p>
+          </div>
+          <div className="tableContentQuotation">
+            <input type='text' name='rejectReasonByAgency' onChange={onQuotationRejectionChange} />
+          </div>
+        </div>
+        <button onClick={() => handleProjectRejection()}>Yes</button>
+      </Modal>
+
     </div>
   );
 };
