@@ -75,7 +75,7 @@ const NewDashboard = () => {
             <div className="notification-icon nav-left-item">
               <img src={notificationIcon} alt="notification" />
             </div>
-            <div className="username  nav-left-item">
+            <div className="username nav-left-item">
               <p>Atul Bhatt</p>
             </div>
             <div className="userprofile-circle nav-left-item" />

@@ -1,0 +1,110 @@
+.content-rightBody {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 40px 10px 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.content-rightBody>.rightBody-navigation {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.rightBody-navigation>.navigation-name {
+    margin-right: 25px;
+}
+
+.rightBody-navigation>.navigation-name:nth-last-child(1) {
+    margin-right: 0;
+}
+
+.navigation-name>p, .heading-text>p {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3a3a3a;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.navigation-name.active>p {
+    border-bottom: 3px solid #02044a;
+}
+
+.content-rightBody>.navigation-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-content {
+    width: 100%;
+}
+
+.item-content>.itemContent-heading {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px;
+}
+
+.heading-text>p {
+    border-bottom: 3px solid #02044a;
+    padding-right: 60px;
+}
+
+.itemContent-videoCard {
+    width: 90%;
+    min-height: 160px;
+    border-radius: 8px;
+    background: url(../../../assets/images/Newestdashboard/RightSide/tech.jpg);
+    background-size: cover;
+    margin: 0 15px;
+}
+
+.itemContent-cta {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemContent-cta>.cta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin: 12px 15px;
+    min-width: 200px;
+    min-height: 90px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+
+.itemContent-cta>.cta-item {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3a3a3a;
+}
+
+.cta-item>.view-details-btn {
+    border: none;
+}
+
+.cta-item>.view-details-btn>button {
+    position: absolute;
+    width: 97px;
+    height: 42px;
+    background: #68e1fd;
+    border-radius: 12px;
+    border: inherit;
+    margin: 0;
+    margin-left: 50px;
+}

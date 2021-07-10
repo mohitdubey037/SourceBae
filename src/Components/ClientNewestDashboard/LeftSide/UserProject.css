@@ -1,0 +1,140 @@
+.user-project-details>.graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.graphic-illustration-heading h6 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3a3a3a;
+}
+
+/* PROJECT DETAILS */
+
+.project-details-card {
+    min-width: 738px;
+    min-height: 177px;
+    justify-self: flex-start;
+    background: linear-gradient(90deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 10px 20px 5px 20px;
+    margin-bottom: 25px;
+    font-family: Inter;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 5px;
+    letter-spacing: 0.4px;
+    color: #3a3a3a;
+    margin-top: 20px;
+}
+
+.project-details-card>img:nth-child(1) {
+    position: absolute;
+    margin-top: -40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-details-card>img:nth-child(2) {
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 15px;
+    margin-right: auto;
+}
+
+.project-details-card>.detailsCard-header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+}
+
+.detailsCard-header>.header-currentStatus {
+    display: flex;
+    align-items: center;
+}
+
+.detailsCard-header>.header-currentStatus>.currentStatus-text {
+    font-weight: 600;
+    align-self: center;
+}
+
+.project-details-card>.header-subHeading {
+    margin-left: 50px;
+}
+
+.detailsCard-header>.header-currentStatus>.currentStatus-item {
+    padding: 5px;
+}
+
+.project-details-card>.detailsCard-date>h6 {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.detailsCard-statuses {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+}
+
+.detailsCard-statuses>.status-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.status-holder>.status-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 5px;
+    background: #5cb85c;
+    color: #ffffff;
+}
+
+.detailsCard-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detailsCard-footer>.info-icon {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.detailsCard-footer>.info-icon {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+}
+
+.detailsCard-footer>.show-project-detail {
+    display: flex;
+    align-items: center;
+}
+
+.detailsCard-footer>.show-project-detail>.projectDetail-text {
+    font-weight: 600;
+}
+
+.detailsCard-footer>.show-project-detail>.projectDetail-item {
+    padding: 5px;
+}

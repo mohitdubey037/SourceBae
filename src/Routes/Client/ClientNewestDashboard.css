@@ -1,0 +1,25 @@
+.dashboard-container {
+    height: 100vh;
+    display: flex;
+}
+
+.container-body {
+    flex: 1;
+}
+
+.container-body>.content-body {
+    display: flex;
+}
+
+.container-body>.content-body>.content-leftBody {
+    min-width: 65vw;
+}
+
+.container-body>.content-body>.content-rightBody {
+    min-height: 600px;
+    height: 100%;
+    min-width: 315px;
+    background: #f9f9f9;
+    mix-blend-mode: normal;
+    border-radius: 45px 10px 10px 10px;
+}
