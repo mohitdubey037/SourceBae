@@ -59,9 +59,9 @@
   display: flex;
 }
 
-/* .container-body > .content-body > .content-rightBody {
+.container-body > .content-body > .content-leftBody {
   min-width: 65vw;
-} */
+}
 
 .container-body > .content-body > .content-rightBody {
   min-height: 600px;

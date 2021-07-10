@@ -276,7 +276,7 @@ const NewDashboard = () => {
               </div>
             </div>
           </div>
-          <div className="content-leftBody">
+          <div className="content-rightBody">
             <div className="right-navigation">
               <div className="navigation-name active">
                 <p>Update</p>
