@@ -82,7 +82,7 @@ const NewDashboard = () => {
           </div>
         </div>
         <div className="content-body">
-          <div className="content-rightBody">
+          <div className="content-leftBody">
             <div className="user-operations">
               <div className="operation">
                 <div className="operation-logo">
@@ -277,7 +277,7 @@ const NewDashboard = () => {
             </div>
           </div>
           <div className="content-leftBody">
-            <div className="leftBody-navigation">
+            <div className="right-navigation">
               <div className="navigation-name active">
                 <p>Update</p>
               </div>
