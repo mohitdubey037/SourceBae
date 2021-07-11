@@ -1,21 +1,3 @@
-.user-project-details>.graphic {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.graphic-illustration-heading h6 {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 35px;
-    text-align: center;
-    letter-spacing: 0.4px;
-    text-transform: capitalize;
-    color: #3a3a3a;
-}
-
 /* PROJECT DETAILS */
 
 .project-details-card {

@@ -15,9 +15,15 @@ function ClientNewestDashboard() {
                 <div className="content-body">
                     <div className="content-leftBody">
                         <UserOperations />
+                        <div className="graphic">
+                            <div className="graphic-illustration-heading">
+                                <h6>Project details</h6>
+                            </div>
+                        </div>
+                        <UserProject />
                         <UserProject />
                     </div>
-                    <RightSide/>
+                    <RightSide />
                 </div>
             </div>
         </div>
