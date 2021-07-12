@@ -1,14 +1,18 @@
-.dashboard-container {
-    height: 100vh;
-    display: flex;
-}
-
 .container-body {
     flex: 1;
 }
 
 .container-body>.content-body {
     display: flex;
+}
+
+.user-project-details {
+    display: flex;
+    /* flex-direction: column;
+    justify-content: center; */
+    justify-content: space-between;
+    padding: 0 30px;
+    flex-wrap: wrap
 }
 
 .user-project-details>.graphic {

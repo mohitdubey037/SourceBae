@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Sidebar from './Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 //REDUX
 
@@ -20,13 +21,17 @@ const store = createStore(clientProjectsReducer, window.__REDUX_DEVTOOLS_EXTENSI
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <ToastContainer />
-      <App />
-    </BrowserRouter>
+    <div className='dashboard-container'>
+      <Sidebar />
+      <BrowserRouter>
+        <ToastContainer />
+        <App />
+      </BrowserRouter>
+    </div>
+
   </Provider>
 
-  
+
   , document.getElementById('root')
 );
 

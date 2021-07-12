@@ -8,23 +8,29 @@ import './ClientNewestDashboard.css'
 
 function ClientNewestDashboard() {
     return (
-        <div className='dashboard-container'>
-            <SideBar />
-            <div className="container-body">
-                <Navbar />
-                <div className="content-body">
-                    <div className="content-leftBody">
-                        <UserOperations />
-                        <div className="graphic">
-                            <div className="graphic-illustration-heading">
-                                <h6>Project details</h6>
-                            </div>
+        <div className="container-body">
+            <Navbar />
+            <div className="content-body">
+                <div className="content-leftBody">
+                    <UserOperations />
+                    <div className="graphic">
+                        <div className="graphic-illustration-heading">
+                            <h6>Project details</h6>
                         </div>
-                        <UserProject />
-                        <UserProject />
                     </div>
-                    <RightSide />
+                    <div className="user-project">
+                        <div className="user-project-details">
+                            <UserProject />
+                            <UserProject />
+                            <UserProject />
+                            <UserProject />
+                            <UserProject />
+                            <UserProject />
+                            <UserProject />
+                        </div>
+                    </div>
                 </div>
+                <RightSide />
             </div>
         </div>
     )
