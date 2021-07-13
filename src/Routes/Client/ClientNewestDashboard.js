@@ -1,9 +1,13 @@
 import React from 'react';
-import SideBar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/UserOperations';
 import UserProject from '../../Components/ClientNewestDashboard/LeftSide/UserProject';
 import RightSide from '../../Components/ClientNewestDashboard/RightSide/RightSide';
+
+import HireDeveloperIcon from "../../assets/images/Newestdashboard/LeftSide/HireDeveloper-icon.svg";
+import HireAgencyIcon from '../../assets/images/Newestdashboard/LeftSide/HireAgency-icon.svg';
+import ShortTermProjectIcon from '../../assets/images/Newestdashboard/LeftSide/ShortTermProject-icon.svg';
+import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/Investment-icon.svg';
 import './ClientNewestDashboard.css'
 
 function ClientNewestDashboard() {
@@ -12,7 +16,12 @@ function ClientNewestDashboard() {
             <Navbar />
             <div className="content-body">
                 <div className="content-leftBody">
-                    <UserOperations />
+                    <div className="user-operations">
+                        <UserOperations text='Hire Developer' img={HireDeveloperIcon} />
+                        <UserOperations text="Hire Agency" img={HireAgencyIcon} />
+                        <UserOperations text="Short Term Project" img={ShortTermProjectIcon} />
+                        <UserOperations text="Interested To Investment" img={InvestmentIcon} />
+                    </div>
                     <div className="graphic">
                         <div className="graphic-illustration-heading">
                             <h6>Project details</h6>

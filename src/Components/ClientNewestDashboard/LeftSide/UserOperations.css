@@ -1,22 +1,15 @@
-.user-operations {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 0 30px 10px 30px;
-    margin-bottom: 10px;
-}
-
 .user-operations>.operation {
     background: #f9f9f9;
     border-radius: 8px;
-    width: 100%;
-    margin-right: 4%;
+    /* width: 100%; */
+    width: 20%;
+    /* margin-right: 4%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    min-height: 120px;
+    min-height: 135px;
     cursor: pointer;
 }
 
@@ -24,3 +17,15 @@
     margin-right: 0;
 }
 
+.operation-name {
+    margin-top: 7px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    /* line-height: 17px; */
+    /* identical to box height */
+    text-align: center;
+    /* letter-spacing: 0.4px; */
+    text-transform: capitalize;
+}
