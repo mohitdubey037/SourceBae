@@ -44,6 +44,7 @@ import DynamicPageNotFound from './Routes/DynamicPageNotFound/DynamicPageNotFoun
 import NewDashboard from "./Routes/Dashboard/NewDashboard";
 import ClientNewestDashboard from './Routes/Client/ClientNewestDashboard';
 import AgencyNewestDashboard from './Routes/Dashboard/AgencyNewestDashboard';
+import AgencyNewestAllProject from './Routes/Dashboard/AgencyNewestAllProject';
 
 import { withRouter } from "react-router";
 
@@ -63,6 +64,7 @@ const App = (props) => {
       <Route exact path='/newdashboard' component={NewDashboard} />
       <Route exact path='/clientNewestDashboard' component={ClientNewestDashboard} />
       <Route exact path='/agencyNewestDashboard' component={AgencyNewestDashboard} />
+      <Route exact path='/agencyNewestAllProject' component={AgencyNewestAllProject} />
       {/* <Route exact path='/' component={ClientNewestDashboard} /> */}
 
       <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard} />

@@ -2,9 +2,6 @@ import React from 'react';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import RightSide from '../../Components/ClientNewestDashboard/RightSide/RightSide';
 import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/UserOperations';
-import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/MainVector.svg';
-import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector.svg';
-import CurrentStatusImage from '../../assets/images/Newestdashboard/Agency_Project_Card/CurrentStatus1.svg';
 
 import QuotationIcon from '../../assets/images/Newestdashboard/Agency_Navbar/Vector.svg';
 import MobileIcon from "../../assets/images/Newestdashboard/Agency_Navbar/carbon_data-view.svg";
@@ -30,8 +27,10 @@ function agencyNewestDashboard() {
                         </div>
                     </div>
                     <div className="user-project">
-                        <AgencyProjectCard/>
-                        <AgencyProjectCard/>
+                        <div>
+                            <AgencyProjectCard />
+                            <AgencyProjectCard />
+                        </div>
                     </div>
                 </div>
                 <RightSide />

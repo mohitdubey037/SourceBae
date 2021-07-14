@@ -2,23 +2,22 @@ p {
     margin: 0;
 }
 
-.user-project {
-    padding: 0 30px;
-    margin-top: 20px;
-}
+/* .user-project {
+    
+} */
 
-.user-operations {
+/* .user-operations {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0 30px 10px 30px;
     margin-bottom: 10px;
-}
+} */
 
 .user-project_agencyNewestDashboard {
-    margin-left: 20px;
+    /* margin-left: 20px; */
     margin-bottom: 30px;
-    width: 92%;
+    width: 100%;
     border: 1px solid #F5F5F5;
     height: 190px;
     padding: 0 0 0 10px;
