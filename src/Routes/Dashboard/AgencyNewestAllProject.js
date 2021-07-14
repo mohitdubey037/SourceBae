@@ -37,14 +37,23 @@ function AgencyNewestAllProject() {
                             <h5>Stages</h5>
 
                             <div className="status-checkbox">
-                                <p>Completed</p>
-                                <p>Running</p>
-                                <p>Rejected</p>
+                                <div>
+                                    <input className="larger-checkbox" type="checkbox" name="Completed" id="project-status" />
+                                    <p>Completed</p>
+                                </div>
+                                <div>
+                                    <input className="larger-checkbox" type="checkbox" name="Running" id="project-status" />
+                                    <p>Running</p>
+                                </div>
+                                <div>
+                                    <input className="larger-checkbox" type="checkbox" name="Rejected" id="project-status" />
+                                    <p>Rejected</p>
+                                </div>
                             </div>
 
                             <div className="search-content">
                                 <h6 className="search-name-heading">Search By Name</h6>
-                                <input type="text" />
+                                <input type="text" placeholder="Type Here"/>
                             </div>
 
                             <div className="search-button">
@@ -73,7 +82,7 @@ function AgencyNewestAllProject() {
                                         <div className="user-project_child_agencyNewestAllProject">
                                             <h5>Bani Thani Design Institute</h5>
                                         </div>
-                                        <Button name="Show Details"/>
+                                        <Button name="Show Details" />
                                     </div>
 
                                     <div className="user-project-status_AgencyNewestAllProject">

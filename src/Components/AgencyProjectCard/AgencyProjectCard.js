@@ -21,19 +21,19 @@ function AgencyProjectCard() {
                     <div className="imageClass">
                         <img src={DateImage} alt="dateImage" />
                     </div>
-                    <p className="user-project_paragraph">8 july 2021</p>
+                    <p>8 july 2021</p>
                 </div>
                 <div className='matchedDate'>
                     <div className="imageClass">
                         <img src={DateImage2} alt="dateImage2" />
                     </div>
-                    <p className="user-project_paragraph">Matched On 25 March 2021</p>
+                    <p>Matched On 25 March 2021</p>
                 </div>
                 <div className='currentStatus'>
                     <div className="imageClass">
                         <img src={CurrentStatusImage} alt="CurrentStatus" />
                     </div>
-                    <p className="user-project_paragraph">Matched On 25 March 2021</p>
+                    <p>Matched On 25 March 2021</p>
                 </div>
             </div>
 

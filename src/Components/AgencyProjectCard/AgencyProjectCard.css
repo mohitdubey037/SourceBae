@@ -2,20 +2,7 @@ p {
     margin: 0;
 }
 
-/* .user-project {
-    
-} */
-
-/* .user-operations {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 30px 10px 30px;
-    margin-bottom: 10px;
-} */
-
 .user-project_agencyNewestDashboard {
-    /* margin-left: 20px; */
     margin-bottom: 30px;
     width: 100%;
     border: 1px solid #F5F5F5;
@@ -80,18 +67,20 @@ p {
     display: flex;
     justify-content: space-between;
     margin-right: 20px;
+    align-items: center;
 }
 
-.date {
-    width: 18%;
-}
-
-.matchedDate {
-    width: 27%;
-}
-
-.currentStatus {
-    width: 27%;
+.date p, .matchedDate p, .currentStatus p {
+    /* width: 18%; */
+    margin-left: 10px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
 }
 
 .user-project_paragraph {
@@ -110,10 +99,9 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* border: 2px solid yellow; */
-    margin: 12px 14px 0 14px;
+    margin: 12px 30px 0 30px;
     height: 58%;
-    padding: 0 25px;
+    padding: 0 0 0 25px;
 }
 
 .user-project_details>div {
