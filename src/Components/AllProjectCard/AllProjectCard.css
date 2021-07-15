@@ -2,28 +2,6 @@
     width: 70%;
 }
 
-.project-actual-status {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.completed-project, .running-project, .rejected-project {
-    border-radius: 4px;
-    padding: 20px;
-    width: 30%;
-    text-align: center;
-}
-
-.completed-project {
-    background: #A6C8FF;
-}
-
-.running-project, .rejected-project {
-    background: #F9F9F9;
-}
-
 .user-operations {
     display: flex;
     justify-content: space-around;
