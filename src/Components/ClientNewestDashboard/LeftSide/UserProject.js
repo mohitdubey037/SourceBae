@@ -1,6 +1,4 @@
 import './UserProject.css';
-import projectDetailsStripLong from "../../../assets/images/Newestdashboard/LeftSide/ProjectDetailsStripLong.svg";
-import projectDetailsStripShort from "../../../assets/images/Newestdashboard/LeftSide/ProjectDetailsStripShort.svg";
 import ProjectStatusIcon from "../../../assets/images/Newestdashboard/LeftSide/projectStatus-icon.svg";
 import infoIcon from "../../../assets/images/Newestdashboard/LeftSide/info-icon.svg";
 import showProjectDetailsIcon from "../../../assets/images/Newestdashboard/LeftSide/showProjectDetails-icon.svg";
@@ -9,17 +7,13 @@ import CenterImage from '../../../assets/images/Newestdashboard/Center/center_im
 function UserProject() {
     return (
         <div className="project-details-card">
-            <div className="projectDetailsStrip_long">
-            </div>
-            <div className="projectDetailsStrip_short">
-            </div>
+            <div className="projectDetailsStrip_long"></div>
+            <div className="projectDetailsStrip_short"></div>
             <div className="detailsCard-header">
                 <div className="header-heading">
                     <h6>Maveric</h6>
                 </div>
-                <div className="info-icon">
-                    <img src={infoIcon} alt="infoIcon" />
-                </div>
+                <img src={infoIcon} alt="infoIcon" />
             </div>
             <div className="detailsCard-date">
                 <h6>Last Edit On: <span className="date-color">25 june 2021</span></h6>
@@ -28,27 +22,23 @@ function UserProject() {
             <div className="centerImage">
                 <img src={CenterImage} alt='centerIcon' />
                 <div>
-                    Project Status
+                    <p>Project Status</p>
                 </div>
             </div>
 
             <div className="projectDetail">
                 <div className="header-currentStatus">
                     <div className="currentStatus-text currentStatus-item">
-                        Quotation Requested
+                        <p>Quotation Requested</p>
                     </div>
-                    <div className="currentStatus-icon currentStatus-item">
-                        <img src={ProjectStatusIcon} alt="project status" />
-                    </div>
+                    <img src={ProjectStatusIcon} alt="project status" />
                 </div>
 
                 <div className="show-project-detail">
                     <div className="projectDetail-text projectDetail-item">
-                        Show Project Detail
+                        <p>Show Project Detail</p>
                     </div>
-                    <div className="projectDetail-icon projectDetail-item">
-                        <img src={showProjectDetailsIcon} alt="project status" />
-                    </div>
+                    <img src={showProjectDetailsIcon} alt="project status" />
                 </div>
             </div>
         </div>
