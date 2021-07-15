@@ -17,8 +17,27 @@ p, h5, h6, h4 {
 }
 
 .agency-card-parent {
-    width: 85%;
+    padding: 5px 0 0 7px;
+    width: 95%;
     margin-left: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.agency-card-parent::-webkit-scrollbar {
+    width: 8px;
+    margin-left: 50px;
+    height: 10px;
+}
+
+.agency-card-parent::-webkit-scrollbar-track {
+    border-left: 2px dashed grey;
+    background-clip: content-box;
+}
+
+.agency-card-parent::-webkit-scrollbar-thumb {
+    background: #68E1FD;
 }
 
 .content-leftBody_AgencyNewestDashboard {
@@ -59,3 +78,4 @@ p, h5, h6, h4 {
 .running-project, .rejected-project {
     background: #F9F9F9;
 }
+

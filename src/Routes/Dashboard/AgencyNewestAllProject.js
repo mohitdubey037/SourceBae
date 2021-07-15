@@ -38,6 +38,15 @@ function AgencyNewestAllProject() {
                                 <AllProjectCard />
                                 <AllProjectCard />
                                 <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
                             </div>
                         </div>
 

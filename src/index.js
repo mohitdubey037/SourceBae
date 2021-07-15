@@ -28,7 +28,6 @@ ReactDOM.render(
         <App />
       </BrowserRouter>
     </div>
-
   </Provider>
 
 
