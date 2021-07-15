@@ -36,6 +36,8 @@ function AgencyNewestAllProject() {
                             </div>
                             <div className="agency-card-parent">
                                 <AllProjectCard />
+                                <AllProjectCard />
+                                <AllProjectCard />
                             </div>
                         </div>
 

@@ -1,5 +1,21 @@
-.user-project_AgencyNewestAllProject {
-    width: 70%;
+.strip {
+    position: absolute;
+    width: 13%;
+    height: 6px;
+}
+
+.green-strip {
+    background-color: green;
+}
+
+.red-strip {
+    background-color: red;
+    left: 53.5%;
+}
+
+.yellow-strip {
+    left: 70%;
+    background-color: yellow;
 }
 
 .user-operations {

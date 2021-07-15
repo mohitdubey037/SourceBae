@@ -9,6 +9,9 @@ import Button from '../../Components/Button/Button';
 function AllProjectCard() {
     return (
         <div className="user-project_agencyNewestAllProject">
+            <div className="strip green-strip"></div>
+            <div className="strip red-strip"></div>
+            <div className="strip yellow-strip"></div>
             <div className="user-project_heading_agencyNewestAllProject">
                 <div className="user-project_child_agencyNewestAllProject">
                     <h5>Bani Thani Design Institute</h5>

@@ -17,6 +17,7 @@ p, h5, h6, h4 {
 }
 
 .agency-card-parent {
+    width: 83%;
     margin-left: 20px;
 }
 
@@ -29,12 +30,12 @@ p, h5, h6, h4 {
 }
 
 .filter-parent {
-    width: 20%;
-    background: #F9F9F9;
-    border-radius: 12px;
     margin-top: 20px;
     margin-left: 49px;
-    max-height: 422px;
+}
+
+.user-project_AgencyNewestAllProject {
+    width: 100%;
 }
 
 .project-actual-status {
