@@ -37,7 +37,6 @@ import ClientOneHireDeveloper from './Routes/Client/ClientOneHireDeveloper/Clien
 import SharedDevelopers from './Routes/Client/SharedDevelopers/SharedDevelopers';
 import ForgotPassword from './Routes/ForgotPassword/ForgotPassword';
 import EnterEmail from './Routes/EnterEmail/EnterEmail';
-import haha from './Routes/DynamicPageNotFound/Dy';
 import DynamicPageNotFound from './Routes/DynamicPageNotFound/DynamicPageNotFound';
 
 
@@ -60,7 +59,6 @@ const App = (props) => {
       <Route exact path='/enter-email' component={EnterEmail} />
       <Route exact path="/password-reset:token" component={ForgotPassword} />
       <Route exact path="/page-not-found" component={PageNotFound} />
-      <Route exact path='/haha' component={haha} />
 
       <Route exact path='/newdashboard' component={NewDashboard} />
       <Route exact path='/clientNewestDashboard' component={ClientNewestDashboard} />
