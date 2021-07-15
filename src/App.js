@@ -47,6 +47,7 @@ import AgencyNewestDashboard from './Routes/Dashboard/AgencyNewestDashboard';
 import AgencyNewestAllProject from './Routes/Dashboard/AgencyNewestAllProject';
 
 import { withRouter } from "react-router";
+import './App.css';
 
 const App = (props) => {
   return (
