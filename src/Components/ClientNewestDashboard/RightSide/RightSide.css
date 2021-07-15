@@ -51,7 +51,7 @@
 .item-content>.itemContent-heading {
     display: flex;
     justify-content: space-between;
-    margin: 0 40px;
+    margin: 2px 40px;
 }
 
 .heading-text>p {
@@ -61,7 +61,7 @@
 
 .itemContent-videoCard {
     width: 90%;
-    min-height: 180px;
+    min-height: 148px;
     border-radius: 8px;
     background: url(../../../assets/images/Newestdashboard/RightSide/tech.jpg);
     background-size: cover;
@@ -71,7 +71,7 @@
 .itemContent-cta {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .itemContent-cta>.cta-item {
@@ -79,7 +79,7 @@
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    margin: 12px 15px;
+    margin: 0px 15px;
     min-width: 200px;
     min-height: 90px;
     background: #ffffff;
@@ -115,9 +115,9 @@
 }
 
 .content-rightBody {
-    min-height: 650px;
-    height: 100%;
-    min-width: 362px;
+    min-height: 640px;
+    height: 0%;
+    min-width: 310px;
     background: #f9f9f9;
     mix-blend-mode: normal;
     border-radius: 45px 10px 10px 10px;

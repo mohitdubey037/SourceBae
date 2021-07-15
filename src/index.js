@@ -21,12 +21,9 @@ const store = createStore(clientProjectsReducer, window.__REDUX_DEVTOOLS_EXTENSI
 
 ReactDOM.render(
   <Provider store={store}>
-    <Sidebar />
     <BrowserRouter>
       <ToastContainer />
-      <div className='dashboard-container'>
         <App />
-      </div>
     </BrowserRouter>
   </Provider>
   , document.getElementById('root')

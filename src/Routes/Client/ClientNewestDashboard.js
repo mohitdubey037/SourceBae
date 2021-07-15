@@ -9,37 +9,41 @@ import HireAgencyIcon from '../../assets/images/Newestdashboard/LeftSide/HireAge
 import ShortTermProjectIcon from '../../assets/images/Newestdashboard/LeftSide/ShortTermProject-icon.svg';
 import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/Investment-icon.svg';
 import './ClientNewestDashboard.css'
+import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 function ClientNewestDashboard() {
     return (
-        <div className="container-body">
-            <Navbar />
-            <div className="content-body">
-                <div className="content-leftBody">
-                    <div className="user-operations">
-                        <UserOperations text='Hire Developer' img={HireDeveloperIcon} />
-                        <UserOperations text="Hire Agency" img={HireAgencyIcon} />
-                        <UserOperations text="Short Term Project" img={ShortTermProjectIcon} />
-                        <UserOperations text="Interested To Investment" img={InvestmentIcon} />
-                    </div>
-                    <div className="graphic">
-                        <div className="graphic-illustration-heading">
-                            <h6>Project details</h6>
+        <div className="dashboard-container">
+            <Sidebar />
+            <div className="container-body">
+                <Navbar />
+                <div className="content-body">
+                    <div className="content-leftBody">
+                        <div className="user-operations">
+                            <UserOperations text='Hire Developer' img={HireDeveloperIcon} />
+                            <UserOperations text="Hire Agency" img={HireAgencyIcon} />
+                            <UserOperations text="Short Term Project" img={ShortTermProjectIcon} />
+                            <UserOperations text="Interested To Investment" img={InvestmentIcon} />
+                        </div>
+                        <div className="graphic">
+                            <div className="graphic-illustration-heading">
+                                <h6>Project details</h6>
+                            </div>
+                        </div>
+                        <div className="user-project">
+                            <div className="user-project-details">
+                                <UserProject />
+                                <UserProject />
+                                <UserProject />
+                                <UserProject />
+                                <UserProject />
+                                <UserProject />
+                                <UserProject />
+                            </div>
                         </div>
                     </div>
-                    <div className="user-project">
-                        <div className="user-project-details">
-                            <UserProject />
-                            <UserProject />
-                            <UserProject />
-                            <UserProject />
-                            <UserProject />
-                            <UserProject />
-                            <UserProject />
-                        </div>
-                    </div>
+                    <RightSide />
                 </div>
-                <RightSide />
             </div>
         </div>
     )

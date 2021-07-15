@@ -3,14 +3,14 @@
 .project-details-card {
     /* min-width: 738px; */
     width: 360px;
-    min-height: 200px;
+    min-height: 165px;
     justify-self: flex-start;
     /* background: linear-gradient(90deg, #fdfbfb 0%, #ebedee 100%); */
     background: linear-gradient(90deg, #F5FAFF 0%, #FFFFFF 100%);
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
     /* border-radius: 8px; */
     padding: 10px 20px 5px 20px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-family: Inter;
     font-style: normal;
     font-size: 12px;
@@ -23,7 +23,7 @@
 .projectDetail {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .projectDetailsStrip_long {
@@ -66,19 +66,14 @@
 .centerImage {
     display: grid;
     place-items: center;
-    margin-top: 28px;
+    margin-top: 20px;
 }
 
 .centerImage>div {
     font-weight: 600;
     font-size: 18px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
-
-/* .detailsCard-header>.header-currentStatus {
-    display: flex;
-    align-items: center;
-} */
 
 .header-currentStatus>.currentStatus-text, .show-project-detail>.projectDetail-text {
     font-weight: 600;
@@ -91,26 +86,9 @@
     align-items: center;
 }
 
-/* .detailsCard-footer>.show-project-detail>.projectDetail-text {
-    font-weight: 600;
-} */
-
-/* .show-project-detail>.projectDetail-text {
-    font-weight: 600;
-} */
-
-/* .detailsCard-header>.header-currentStatus>.currentStatus-text {
-    font-weight: 600;
-    align-self: center;
-} */
-
 .project-details-card>.header-subHeading {
     margin-left: 50px;
 }
-
-/* .detailsCard-header>.header-currentStatus>.currentStatus-item {
-    padding: 5px;
-} */
 
 .project-details-card>.detailsCard-date>h6 {
     font-weight: 600;
@@ -122,32 +100,6 @@
     justify-content: space-between;
     width: 65%;
 }
-
-/* .detailsCard-statuses>.status-holder {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-} */
-
-/* .status-holder>.status-number {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    padding: 10px;
-    margin: 5px;
-    background: #5cb85c;
-    color: #ffffff;
-} */
-
-/* .detailsCard-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
 
 .detailsCard-footer>.info-icon {
     display: flex;
@@ -163,7 +115,3 @@
     height: 45px;
     padding: 10px;
 }
-
-/* .detailsCard-footer>.show-project-detail>.projectDetail-item {
-    padding: 5px;
-} */

@@ -10,10 +10,8 @@ function UserProject() {
     return (
         <div className="project-details-card">
             <div className="projectDetailsStrip_long">
-                {/* <img src={projectDetailsStripLong} alt="long strip" /> */}
             </div>
             <div className="projectDetailsStrip_short">
-                {/* <img src={projectDetailsStripShort} alt="short strip" /> */}
             </div>
             <div className="detailsCard-header">
                 <div className="header-heading">

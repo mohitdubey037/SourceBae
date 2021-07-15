@@ -9,31 +9,35 @@ import ThirdIcon from '../../assets/images/Newestdashboard/Agency_Navbar/3Icon.s
 
 import './AgencyNewestDashboard.css'
 import AgencyProjectCard from '../../Components/AgencyProjectCard/AgencyProjectCard';
+import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 function agencyNewestDashboard() {
     return (
-        <div className="container-body">
-            <Navbar />
-            <div className="content-body">
-                <div className="content-leftBody">
-                    <div className="user-operations">
-                        <UserOperations text='Quotation' img={ThirdIcon} />
-                        <UserOperations text="Add Developer" img={MobileIcon} />
-                        <UserOperations text="View Product" img={QuotationIcon} />
-                    </div>
-                    <div className="graphic">
-                        <div className="graphic-illustration-heading">
-                            <h6>Project details</h6>
+        <div className="dashboard-container">
+            <Sidebar />
+            <div className="container-body">
+                <Navbar />
+                <div className="content-body">
+                    <div className="content-leftBody">
+                        <div className="user-operations">
+                            <UserOperations text='Quotation' img={ThirdIcon} />
+                            <UserOperations text="Add Developer" img={MobileIcon} />
+                            <UserOperations text="View Product" img={QuotationIcon} />
+                        </div>
+                        <div className="graphic">
+                            <div className="graphic-illustration-heading">
+                                <h6>Project details</h6>
+                            </div>
+                        </div>
+                        <div className="user-project">
+                            <div>
+                                <AgencyProjectCard />
+                                <AgencyProjectCard />
+                            </div>
                         </div>
                     </div>
-                    <div className="user-project">
-                        <div>
-                            <AgencyProjectCard />
-                            <AgencyProjectCard />
-                        </div>
-                    </div>
+                    <RightSide />
                 </div>
-                <RightSide />
             </div>
         </div>
     )
