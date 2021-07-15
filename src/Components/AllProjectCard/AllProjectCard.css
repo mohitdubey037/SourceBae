@@ -1,0 +1,132 @@
+.user-project_AgencyNewestAllProject {
+    width: 70%;
+}
+
+.project-actual-status {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.completed-project, .running-project, .rejected-project {
+    border-radius: 4px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+}
+
+.completed-project {
+    background: #A6C8FF;
+}
+
+.running-project, .rejected-project {
+    background: #F9F9F9;
+}
+
+.user-operations {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 30px 10px 30px;
+    margin-bottom: 10px;
+}
+
+.user-project_agencyNewestAllProject {
+    margin-bottom: 30px;
+    width: 100%;
+    border: 1px solid #F5F5F5;
+    height: 230px;
+    padding: 0 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+
+.user-project_agencyNewestAllProject h6 {
+    margin: 0;
+}
+
+.user-project_heading_agencyNewestAllProject {
+    width: 100;
+    height: 40px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-project_child_agencyNewestAllProject {
+    display: grid;
+    place-items: center;
+}
+
+.user-project_child_agencyNewestAllProject h5 {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.button-parent {
+    width: 15%;
+}
+
+.user-project-status_AgencyNewestAllProject {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.date_AgencyNewestAllProject, .matchedDate_AgencyNewestAllProject {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.date_AgencyNewestAllProject>div, .matchedDate_AgencyNewestAllProject>div {
+    display: flex;
+    align-items: center;
+}
+
+.date_AgencyNewestAllProject p, .matchedDate_AgencyNewestAllProject p {
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+}
+
+.user-project-paragraph_AgencyNewestAllProject {
+    font-weight: 600;
+    text-align: center;
+    color: #02044A;
+}
+
+.user-project-details_AgencyNewestAllProject {
+    border: 1px solid #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 17px 14px 0 14px;
+    height: 40%;
+    padding: 0 25px;
+    background: #F9F9F9;
+    border-radius: 8px;
+}
+
+.user-project-details_AgencyNewestAllProject>div {
+    display: flex;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 14px;
+}
+
+table td {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+td:nth-child(even) {
+    color: #68E1FD;
+}
