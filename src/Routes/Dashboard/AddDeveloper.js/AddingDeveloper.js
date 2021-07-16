@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar';
-import BackLeft from '../../../assets/images/Back/Back-left.svg';
+import Back from '../../../Components/Back/Back';
 
 import './AddingDeveloper.css'
 import model from '../../../assets/images/AddDeveloper/modal3d.png'
@@ -233,15 +233,7 @@ function AddingDeveloper(props) {
 
             {loading ? <Spinner /> :
                 <>
-                    <div className="back-button_newestAddDeveloper">
-                        <div className="image-div_newestAddDeveloper">
-                            <img src={BackLeft} alt="Back left" />
-                            <h6>Back</h6>
-                        </div>
-                        <div className="add-developer-div">
-                            <h6>Add Developer</h6>
-                        </div>
-                    </div>
+                    <Back name="Add Developer" />
                     <div className="mainAddingDeveloper">
                         <div className="innerAddingDeveloper">
                             <div className="addingDeveloperHeadings">
@@ -324,8 +316,6 @@ function AddingDeveloper(props) {
                                             </Select>
                                             {errors.developerTechnologies && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerTechnologies}</p>)}
                                         </FormControl>
-
-                                        {/* </select> */}
                                     </div>
                                     <div className="developerDesignation_addingDeveloper">
                                         <h4>Upload Resume</h4>
