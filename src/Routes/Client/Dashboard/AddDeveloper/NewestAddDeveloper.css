@@ -1,23 +1,4 @@
-.back-button_newestAddDeveloper {
-  background-color: grey;
-  display: flex;
-  width: auto;
-}
 
-.image-div_newestAddDeveloper {
-  width: 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 44px;
-}
-
-.add-developer-div {
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .mainAddingDeveloper_newestAddDeveloper {
   width: 100%;
@@ -170,13 +151,13 @@
   width: 74%;
 }
 
-.black-strip_newestAddDeveloper {
+/* .black-strip_newestAddDeveloper {
   background-color: #000000;
   position: relative;
   width: 130px;
   height: 1px;
   top: 10px;
-}
+} */
 
 .developerDesignation_newestAddDeveloper {
   height: 70px;
