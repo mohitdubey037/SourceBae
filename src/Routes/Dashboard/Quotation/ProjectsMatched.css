@@ -1,53 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-.mainProjectsMatched{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%;
-    flex-direction: column;
+.mainProjectsMatched {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  flex-direction: column;
 }
-.innerProjectsMatched{
-    width: 90%;
-    background-color: #fff;
-    box-sizing: border-box;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
-    padding: 1rem 1.2rem 1rem 0;
-    border-radius: 10px;
-    position: relative;
-    margin-bottom: 5%;
-    z-index: 1;
+.innerProjectsMatched {
+  width: 70%;
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  padding: 0rem 1.2rem 1rem 0;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 5%;
+  z-index: 1;
+  overflow: hidden;
 }
-.projectCard{
-    padding-left: 10%;
-    width: 100%;
+.projectCard {
+  padding-left: 3%;
+  width: 100%;
 }
-.projectNumber{
-    position: absolute;
+.projectNumber {
+  position: absolute;
 }
-.projectNumber p{
-    font-size: 8rem;
-    transform: translate(-40%,-25%);
-    color: #9999;
-    /* font-family: 'Londrina Solid', cursive; */
-    font-family: 'Fredoka One', cursive;
-    transition: 0.3s ease-in-out;
+.projectNumber p {
+  font-size: 8rem;
+  transform: translate(-40%, -25%);
+  color: #9999;
+  /* font-family: 'Londrina Solid', cursive; */
+  font-family: 'Fredoka One', cursive;
+  transition: 0.3s ease-in-out;
 }
-.borderRightBorder{
-    position: absolute;
-    width: 8px;
-    height: 96%;
-    background-color: #02044a;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    border-radius: 999px;
+.borderRightBorder {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  background-color: #02044a;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 999px;
 }
-.bgCircles{
-    position: absolute;
-    /* width: 250px;
+.bgCircles {
+  position: absolute;
+  /* width: 250px;
     height: 250px;
     z-index: 1;
     border-radius: 50%;
@@ -55,151 +56,155 @@
    top: -15%;
     right: -5%;
     mix-blend-mode: color; */
-    
 }
-.innerProjectsMatched .dotImage{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 8%;
-    object-fit: contain;
+.innerProjectsMatched .dotImage {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 8%;
+  object-fit: contain;
 }
-.innerProjectsMatched .shapeImage{
-    position: absolute;
-    top: -11%;
-    right: -3.2%;
-    object-fit: contain;
-    z-index: -1;
-}
-
-
-.projectCardHeading{
-    display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
-}
-.projectCardHeading .projectHeadingName{
-    width: 50%;
-}
-.projectCardHeading div h2{
-    font-family: 'Poppins';
-    font-weight: bold;
-    color: #02044a;
-}
-.projectCardHeading div h2::after{
-    content: '';
-    width: 30%;
-    height: 2px;
-    background-color: #02044a;
-    display: inline-block;
-}
-.showInterestBtn{
-    width: 100%;
-}
-.showInterestBtn button{
-    font-family: 'Poppins';
-    padding: 0.3rem 1rem;
-    color: #fff;
-    border-radius: 999px;
-    /* background-color: #5bc0de; */
-    background-color: #02044a;
-    outline: none;
-    border: none;
-    /* border: 2px solid #3ab3d7; */
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+.innerProjectsMatched .shapeImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  object-fit: contain;
+  z-index: -1;
 }
 
-@media (max-width:768px){
+.projectCardHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -1%;
+}
+.projectCardHeading .projectHeadingName {
+  width: 50%;
+}
+.projectCardHeading div h2 {
+  font-family: 'Poppins';
+  font-weight: bold;
+  color: #02044a;
+}
+.projectCardHeading div h2::after {
+  content: '';
+  width: 30%;
+  height: 2px;
+  background-color: #02044a;
+  display: inline-block;
+}
+.showInterestBtn {
+  width: 100%;
+}
+.showInterestBtn button {
+  font-family: 'Poppins';
+  padding: 0.3rem 0.8rem;
+  color: #000;
+  border-radius: 0px;
+  font-size: 0.9rem;
+  /* background-color: #5bc0de; */
+  background-color: #eaf2ff;
+  outline: none;
+  border: none;
+  /* border: 2px solid #3ab3d7; */
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
+  /* margin-top: -0%; */
+}
 
-    .innerProjectsMatched{
-        width: 98%;
-    }
-    .projectCard{
-        padding-left: 2%;
-    }
-    .innerProjectsMatched .shapeImage{
-       display: none;
-    }
-    .projectNumber{
-        top: 0;
-        right: 20px;
-    }
-    .projectNumber p{
+@media (max-width: 768px) {
+  .innerProjectsMatched {
+    width: 98%;
+  }
+  .projectCard {
+    padding-left: 2%;
+  }
+  .innerProjectsMatched .shapeImage {
+    display: none;
+  }
+  .projectNumber {
+    top: 0;
+    right: 20px;
+  }
+  .projectNumber p {
     font-size: 5rem;
-    transform: translate(0%,-20%);
+    transform: translate(0%, -20%);
     color: #9999;
     /* font-family: 'Londrina Solid', cursive; */
     font-family: 'Fredoka One', cursive;
     transition: 0.3s ease-in-out;
-    }
-    .projectCardHeading{
-        flex-direction: column-reverse;
-    }
-    .projectCardHeading .projectHeadingName{
+  }
+  .projectCardHeading {
+    flex-direction: column-reverse;
+  }
+  .projectCardHeading .projectHeadingName {
     width: 100%;
     margin: 5% 0;
-    }
-    
+  }
 }
 
-.projectPostedDetails{
-    margin-top: 0.5%;
-    display: flex;
+.projectPostedDetails {
+  /* margin-top: 0.5%; */
+  display: flex;
+  margin-bottom: 3%;
 }
-.projectPostedDetails div{
-    margin-right: 3%;
+.projectPostedDetails div {
+  margin-right: 3%;
 }
-.projectPostedDetails div p{
-    padding: 0.3rem 1rem;
-    background-color: #5bc0de;
-    /* background-color: #e0e0e0; */
-    border-radius: 999px;
-    font-family: 'Poppins';
-    color: #fff;
+.projectPostedDetails div p {
+  padding: 0.3rem 1rem;
+  background-color: #eaf2ff;
+  /* background-color: #e0e0e0; */
+  border-radius: 5px;
+  font-family: 'Poppins';
+  color: #3a3a3a;
+  font-weight: 600;
 }
-.projectPostedDetails div:nth-child(1) p{
-    background-color: transparent !important;
-    border: 1px solid #5bc0de;
-    color: #666;
+.projectPostedDetails div:nth-child(1) p {
+  background-color: transparent !important;
+  border: 1px solid #000;
+  color: #000;
 }
 .projectDetailsTable {
-    margin-top: 2%;
+  margin-top: 2%;
 }
-.projectDetailsTable div{
-    display: flex;
-    /* justify-content: space-between; */
-    margin-right: '10px';
-    border-bottom: 0.5px solid #ebebeb;
+.projectDetailsTable .projectDetailsTableContainer {
+  display: flex;
+  /* justify-content: space-between; */
+  margin-right: '10px';
+  border-bottom: 0.5px dashed #ddd;
+  margin-bottom: 1%;
+  padding: 0.5rem 0;
 }
-.projectDetailsTable div div {
-    width: 50%;
+.projectDetailsTable .projectDetailsTableContainer div {
+  width: 100%;
 }
-.projectDetailsTable div .projectTableHeading {
-    width: 45%;
+.projectDetailsTable .projectDetailsTableContainer .projectTableHeading {
+  width: 45%;
+  /* margin-bottom: 3%; */
 }
-.projectDetailsTable div .projectTableHeading p{
-    color: #000;
-    font-weight: 600;
+.projectDetailsTable .projectDetailsTableContainer .projectTableHeading p {
+  color: #000;
+  font-weight: 600;
 }
-.projectDetailsTable div .projectTableContent {
-    width: 65%;
+.projectDetailsTable .projectDetailsTableContainer .projectTableContent {
+  width: 65%;
 }
-.projectDetailsTable div .projectTableContent p{
-    color: #666;
+.projectDetailsTable .projectDetailsTableContainer .projectTableContent p {
+  color: #68e1fd;
+  font-weight: 600;
 }
-.projectDetailsTable div div p{
-    font-family: 'Poppins';
-    transform: translateY(10px);
+.projectDetailsTable div div p {
+  font-family: 'Poppins';
+  transform: translateY(10px);
 }
 
-
-@media (max-width:768px){
-    .projectPostedDetails{
+@media (max-width: 768px) {
+  .projectPostedDetails {
     flex-direction: column;
     width: 100%;
-    }
-    .projectPostedDetails div{
-        margin-right: 0%;
-        text-align: center;
-    }
+  }
+  .projectPostedDetails div {
+    margin-right: 0%;
+    text-align: center;
+  }
 }

@@ -6,7 +6,8 @@ import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
 import NO_Data_ICON from '../no_data_icon.jpg';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
+import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png'
 
 function Responded(props) {
     const agencyId = localStorage.getItem('userId');
@@ -52,7 +53,9 @@ function Responded(props) {
                                 return (
                                     isDetail === false ? (
                                         <div className="respondedCard">
-                                            <div className="bgCircle"></div>
+                                            <div className="bgCircle">
+                                                <img src={rightCornerCircle} alt="" />
+                                            </div>
                                             <div className="leftBorder"></div>
                                             <div className="respondCardHeader">
                                                 <div className="respondName">
@@ -60,6 +63,7 @@ function Responded(props) {
 
                                                 </div>
                                                 <div className="dateCreated">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     <div>
                                                         <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
 
@@ -95,31 +99,29 @@ function Responded(props) {
                                             </div>
                                             <div className="respondedCardButton">
                                                 <div>
-                                                    {/* <button onClick={() => setIsdetail(true)}>Details</button> */}
+
                                                     <button onClick={() => props.history.push({
                                                         pathname: `agency-project-details:${s._id}`,
                                                         origin: 'responded'
                                                     })
                                                     }>Show details</button>
                                                 </div>
-                                                <div>
-                                                    <button>Withdraw</button>
-                                                </div>
+
                                             </div>
                                         </div>
                                     ) : (
-                                        <>
-                                            <div className="mainBackBtn">
-                                                <div className="innerBackBtn">
-                                                    <div onClick={() => setIsdetail(false)}>
-                                                        <i className="fa fa-chevron-left" aria-hidden="true"></i>Back
+                                            <>
+                                                <div className="mainBackBtn">
+                                                    <div className="innerBackBtn">
+                                                        <div onClick={() => setIsdetail(false)}>
+                                                            <i className="fa fa-chevron-left" aria-hidden="true"></i>Back
 
                                                     </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <RespondedDetails details={s} />
-                                        </>
-                                    )
+                                                <RespondedDetails details={s} />
+                                            </>
+                                        )
                                 )
                             })
                         }

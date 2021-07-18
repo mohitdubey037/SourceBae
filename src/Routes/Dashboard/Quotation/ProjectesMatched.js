@@ -10,7 +10,8 @@ import shape from '../../../assets/images/Quotation/shape.png'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Spinner from '../../../Components/Spinner/Spinner';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
+import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png'
 
 
 function ProjectesMatched(props) {
@@ -46,20 +47,19 @@ function ProjectesMatched(props) {
             {loading ? <Spinner /> :
                 <div className="mainProjectsMatched">
                     {err ?
-                            <>
-                                <div style={{ textAlign: 'center', width: '100%' }}>
-                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
-                                    <h6>{err}</h6>
-                                </div>
-                            </>
-                            :
+                        <>
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                <h6>{err}</h6>
+                            </div>
+                        </>
+                        :
                         projects?.map((s, index) => {
                             return (
                                 <div className="innerProjectsMatched">
-                                    <div className="projectNumber"><p>{index <= 9 ? `0${index}` : index}</p></div>
                                     <div className="borderRightBorder"></div>
-                                    <img src={dot1} className="dotImage" alt="" />
-                                    <img src={shape} className="shapeImage" alt="" />
+                                    {/* <img src={dot1} className="dotImage" alt="" /> */}
+                                    {/* <img src={rightCornerCircle} className="shapeImage" alt="" /> */}
                                     <div className="bgCircles"></div>
                                     <div className="projectCard">
                                         <div className="projectCardHeading">
@@ -69,10 +69,9 @@ function ProjectesMatched(props) {
                                             </div>
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
-                                                    {/* <button onClick={onOpenModal}>Show Interest</button> */}
                                                     <button onClick={() => props.history.push({
                                                         pathname: `agency-project-details:${s?._id}`,
-                                                        origin : 'project-match'
+                                                        origin: 'project-match'
                                                     })}>Show Details</button>
                                                 </div>
                                             </div>
@@ -87,7 +86,7 @@ function ProjectesMatched(props) {
                                         </div>
 
                                         <div className="projectDetailsTable">
-                                            <div>
+                                            <div className="projectDetailsTableContainer">
                                                 <div className="projectTableHeading" >
                                                     <p>Industry</p>
                                                 </div>
@@ -95,7 +94,7 @@ function ProjectesMatched(props) {
                                                     <p>{s?.projectDomainId?.domainName}</p>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="projectDetailsTableContainer">
                                                 <div className="projectTableHeading" >
                                                     <p>Fixed Budget</p>
                                                 </div>
@@ -103,22 +102,22 @@ function ProjectesMatched(props) {
                                                     <p>{s?.projectProposalCost}</p>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="projectDetailsTableContainer">
                                                 <div className="projectTableHeading" >
                                                     <p>Expert Categories</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    {s?.projectExpertiseRequired?.map(expertise => <p style={{marginRight: '10px'}}>{expertise?.expertiseName}</p>)}
+                                                    {s?.projectExpertiseRequired?.map(expertise => <p style={{ marginRight: '10px' }}>{expertise?.expertiseName}</p>)}
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="projectDetailsTableContainer">
                                                 <div className="projectTableHeading" >
                                                     <p>Services</p>
                                                 </div>
                                                 <div className="projectTableContent">
                                                     {s?.projectServicesRequired?.map(p => {
                                                         return (
-                                                            <p style={{marginRight: '10px'}}>{p?.serviceName}</p>
+                                                            <p style={{ marginRight: '10px' }}>{p?.serviceName}</p>
                                                         )
                                                     })}
                                                 </div>

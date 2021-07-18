@@ -4,7 +4,9 @@ import Spinner from '../../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
 import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
+import './Received.css'
+import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png'
 
 function Received(props) {
     const routerHistory = useHistory();
@@ -56,29 +58,36 @@ function Received(props) {
                             projects.map((s) => {
                                 return (
                                     <div className="respondedCard">
-                                        <div className="bgCircle"></div>
+                                        <div className="bgCircle">
+                                            <img src={rightCornerCircle} alt="" />
+                                        </div>
                                         <div className="leftBorder"></div>
                                         <div className="respondCardHeader">
                                             <div className="respondName">
                                                 <h4>{s.projectName}</h4>
                                             </div>
                                             <div className="dateCreated">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
                                                 <div>
                                                     <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="respondCardDescription">
-                                            <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 100)}...`}</p>
+                                            <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 80)}...`}</p>
                                         </div>
                                         <div className="respondCardPoints">
                                             <ul>
                                                 {s.projectServicesRequired.map(p => {
                                                     return (
-                                                        <li>{p.serviceName}</li>
+                                                        <>
+                                                            <li>{p.serviceName}</li>
+
+                                                        </>
                                                     )
                                                 })}
                                             </ul>
+
                                         </div>
                                         <div className="respondCardTable">
                                             <div>
@@ -96,10 +105,6 @@ function Received(props) {
                                         </div>
                                         <div className="respondedCardButton">
                                             <div>
-                                                {/* <button onClick={() => setIsdetail(true)}>Details</button> */}
-                                            </div>
-                                            <div>
-                                                <button>Withdraw</button>
                                                 <button onClick={() => props.history.push({
                                                     pathname: `agency-project-details:${s._id}`,
                                                     origin: 'received'
