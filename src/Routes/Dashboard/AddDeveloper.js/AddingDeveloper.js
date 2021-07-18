@@ -319,7 +319,7 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="developerDesignation_addingDeveloper">
                                         <h4>Upload Resume</h4>
-                                        <input className="fileUpload" onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
+                                        <input className="upload-box" onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
                                     application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                                         {errors.developerResume && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerResume}</p>)}
                                     </div>
