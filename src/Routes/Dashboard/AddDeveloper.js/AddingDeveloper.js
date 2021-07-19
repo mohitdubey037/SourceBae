@@ -279,9 +279,10 @@ function AddingDeveloper(props) {
                                 <div className="inputField2">
                                     <div className="developerName_addingDeveloper">
                                         <h4>Technology & Skills</h4>
-                                        <FormControl className={classes.formControl}>
+                                        <FormControl className="mohit" variant="outlined" className={classes.formControl}>
                                             <Select
-                                                labelId="demo-mutiple-name"
+                                                // labelId="demo-mutiple-name"
+                                                id="demo-simple-select-outlined"
                                                 name="developerTechnologies"
                                                 multiple
                                                 displayEmpty
