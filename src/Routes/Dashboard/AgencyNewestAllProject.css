@@ -7,14 +7,14 @@ p, h5, h6, h4 {
     font-family: Inter;
     font-style: normal;
     text-transform: capitalize;
-    letter-spacing: 0.4px;
+    /* letter-spacing: 0.4px; */
 }
 
-* {
+/* * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+} */
 
 .agency-card-parent {
     padding: 5px 0 0 7px;
