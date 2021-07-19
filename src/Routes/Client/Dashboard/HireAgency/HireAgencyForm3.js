@@ -10,6 +10,7 @@ import MultiSelect from "react-multi-select-component";
 //multi-select
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
+import Back from '../../../../Components/Back/Back';
 
 
 function HireAgencyForm3(props) {
@@ -143,29 +144,39 @@ function HireAgencyForm3(props) {
     return (
         <>
             <ClientNavbar />
-            <div
+            <Back name="Hire Developer" />
+            {/* <div
                 className="backArrow_hireAgencyForm3"
                 onClick={() => {
                     props.history.goBack();
                 }}
             >
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </div>
+            </div> */}
             {loading ? <Spinner /> :
                 <div className="mainHireAgencyForm3">
                     <div className="innerHireAgencyForm3">
                         <div className="techStackFields">
-
                             <div className="stepCheck">
-                                <p>Step 3</p>
+                                <div className="step-1_hireAgencyForm1">
+                                    <div className="color-div_hireAgencyForm1">
+                                    </div>
+                                    <p>Step 3</p>
+                                </div>
                             </div>
 
                             <div className="HireAgencyForm3Heading">
-                                <h2>How can <span> OneSoucing </span> can help you?</h2>
+                                <h2>How can <span> OneSourcing </span> may help you?</h2>
                             </div>
 
                             <div className="serivcesHireAgency">
-                                <p className="servicesAgencyHeadingForm3">which kind of application or service would you require?</p>
+                                <p className="servicesAgencyHeadingForm3">
+                                    <ul>
+                                        <li>
+                                            Which kind of application or service would you require?
+                                        </li>
+                                    </ul>
+                                </p>
 
                                 <div className="servicesCardsHireAgency">
 
@@ -183,13 +194,18 @@ function HireAgencyForm3(props) {
                                 </div>
                             </div>
 
-                            <div className="nextbuttton">
-                                <div onClick={() => props.history.push("/hire-agency-form-two")} ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
-                                <div onClick={() => handleSubmit()}> Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+                            <div className="nextbutton">
+                                <div onClick={() => props.history.push("/hire-agency-form-two")}>
+                                    {/* <i class="fa fa-long-arrow-left" aria-hidden="true"></i> */}
+                                    Back
+                                </div>
+                                <div onClick={() => handleSubmit()}>
+                                    Submit
+                                    {/* <i class="fa fa-long-arrow-right" aria-hidden="true"></i> */}
+                                </div>
                             </div>
-
-
                         </div>
+
                         <div className="serviceFieldsOptions">
                             <div className="servicesHireAgencyContainer">
                                 <div className="serviceSelectionInput">

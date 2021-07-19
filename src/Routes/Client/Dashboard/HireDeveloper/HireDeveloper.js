@@ -12,6 +12,7 @@ import month from "../../../../assets/images/ClientDashboard/shortTerm/calender.
 import hourPrice from "../../../../assets/images/ClientDashboard/shortTerm/hourPrice.png";
 import MultiSelect from "react-multi-select-component";
 import instance from "../../../../Constants/axiosConstants";
+import Back from '../../../../Components/Back/Back';
 
 const BlueRadio = withStyles({
   root: {
@@ -138,15 +139,16 @@ function HireDeveloper(props) {
   return (
     <>
       <ClientNavbar />
+      <Back name="Hire Developer"/>
       <div className="mainHireDeveloper">
-        <div
+        {/* <div
           className="backArrow"
           onClick={() => {
             props.history.push("/client-dashboard");
           }}
         >
           <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </div>
+        </div> */}
         <div className="innerHireDeveloper">
           <div className="hireDeveloperForm">
             <div className="hireDeveloperFormInfo">

@@ -12,6 +12,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
+import Back from '../../../../Components/Back/Back';
+
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
 
@@ -75,24 +77,24 @@ function HireAgencyForm2(props) {
     const toggledDomains = allDomainsData.map((domain) => {
       if (domain.domainName === className) {
 
-        if(!domain.selected)
-        setApiData({
-          ...apiData,
-          projectDomainId:domain._id
-        })
+        if (!domain.selected)
+          setApiData({
+            ...apiData,
+            projectDomainId: domain._id
+          })
         else
-        setApiData({
-          ...apiData,
-          projectDomainId:""
-        })
-        if(!domain.selected)
-        setSelectedDomain(domain);
+          setApiData({
+            ...apiData,
+            projectDomainId: ""
+          })
+        if (!domain.selected)
+          setSelectedDomain(domain);
         else
-        setApiData({
-          ...apiData,
-          projectDomainId:""
-        })
-        
+          setApiData({
+            ...apiData,
+            projectDomainId: ""
+          })
+
         return {
           ...domain,
           selected: !domain.selected,
@@ -146,28 +148,28 @@ function HireAgencyForm2(props) {
       agencyExperienceError: "",
     }
 
-    if(apiData.projectDomainId==="" || apiData.projectDomainId===null)
-    setError({
-      ...tempError,
-      projectDomainIdError:"Please Select a Domain."
-    })
-    else if(apiData.projectExpertiseRequired.length===0)
-    setError({
-      ...tempError,
-      projectExpertiseRequiredError:"Please Select a Service."
-    })
-    else{
-    setLoading(true);
-    instance
-      .post(`/api/${Role}/projects/create`, apiData)
-      .then(function (response) {
-        console.log(response);
-        setLoading(false);
-        props.history.push(`/hire-agency-form-three:${projectId}`);
+    if (apiData.projectDomainId === "" || apiData.projectDomainId === null)
+      setError({
+        ...tempError,
+        projectDomainIdError: "Please Select a Domain."
       })
-      .catch((err) => {
-        setLoading(false);
-      });
+    else if (apiData.projectExpertiseRequired.length === 0)
+      setError({
+        ...tempError,
+        projectExpertiseRequiredError: "Please Select a Service."
+      })
+    else {
+      setLoading(true);
+      instance
+        .post(`/api/${Role}/projects/create`, apiData)
+        .then(function (response) {
+          console.log(response);
+          setLoading(false);
+          props.history.push(`/hire-agency-form-three:${projectId}`);
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
     }
   };
 
@@ -199,14 +201,16 @@ function HireAgencyForm2(props) {
   return (
     <>
       <ClientNavbar />
-      <div
+      <Back name="Hire Agency" />
+      {/* <div
         className="backArrow_hireAgencyForm2"
         onClick={() => {
           props.history.goBack();
         }}
       >
         <i class="fa fa-angle-left" aria-hidden="true"></i>
-      </div>
+      </div> */}
+
       {loading ? (
         <Spinner />
       ) : (
@@ -214,31 +218,29 @@ function HireAgencyForm2(props) {
           <div className="innerHireAgencyFormTwo">
             <div className="techStackFields">
               <div className="stepCheck">
-                <p>Step 2</p>
+                <div className="step-1_hireAgencyForm1">
+                  <div className="color-div_hireAgencyForm1">
+                  </div>
+                  <p>Step 2</p>
+                </div>
               </div>
-
               <div className="serivcesHireAgency">
-                <p className="servicesAgencyHeading">
-                  1. In which Domain you have good command?
-                </p>
-
+                <ul>
+                  <li>
+                    <p className="servicesAgencyHeading">
+                      In which Domain you have good command?
+                    </p>
+                  </li>
+                </ul>
                 <div className="servicesCardsHireAgency">
                   {allDomainsData.map((domain) => {
                     return (
-                      <div
-                        className={`${domain.domainName}`}
-                        onClick={(event) => handleDomains(event)}
-                        style={{
-                          backgroundColor: domain.selected
-                            ? "#02044a"
-                            : "#D6EAF8",
-                        }}
-                      >
-                        <img
-                          className={`${domain.domainName}`}
-                          src={domain.domainIcon}
-                          alt=""
-                        />
+                      <div className="tech-container">
+                        <div className={`${domain.domainName}`}
+                          onClick={(event) => handleDomains(event)}
+                          style={{ backgroundColor: domain.selected ? "#68E1FD" : "#white" }}>
+                          <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                        </div>
                         <p
                           className={`${domain.domainName}`}
                           style={{ color: domain.selected ? "#fff" : "#000" }}
@@ -247,24 +249,28 @@ function HireAgencyForm2(props) {
                     );
                   })}
                   {error.projectDomainIdError && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {error.projectDomainIdError}
-                      </p>
-                    )}
+                    <p
+                      style={{
+                        color: "red",
+                        fontWeight: "normal",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {error.projectDomainIdError}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div className="monthlyBudget">
-                <p>
-                  2. How experience should the agency be in the domain of the
-                  project?
-                </p>
+                <ul>
+                  <li>
+                    <p>
+                      How experience should the agency be in the domain of the
+                      project?
+                    </p>
+                  </li>
+                </ul>
 
                 <div className="domainBudgetOptions">
                   <FormControl component="fieldset">
@@ -274,44 +280,48 @@ function HireAgencyForm2(props) {
                       value={apiData.agencyExperience}
                       onChange={handleChange}
                     >
-                      <FormControlLabel
-                        color="primary"
-                        value="capable"
-                        control={<BlueRadio className={classes.root} />}
-                        label="Capable"
-                      />
-                      <FormControlLabel
-                        value="skilled"
-                        control={<BlueRadio />}
-                        label="Skilled"
-                      />
-                      <FormControlLabel
-                        value="proficient"
-                        control={<BlueRadio />}
-                        label="Proficient"
-                      />
-                      <FormControlLabel
-                        value="accomplished"
-                        control={<BlueRadio />}
-                        label="Accomplished"
-                      />
+                      <div className="radio-label_hireAgencyForm2">
+                        <FormControlLabel
+                          color="primary"
+                          value="capable"
+                          control={<BlueRadio className={classes.root} />}
+                          label="Capable"
+                        />
+                      </div>
+                      <div className="radio-label_hireAgencyForm2">
+                        <FormControlLabel
+                          value="skilled"
+                          control={<BlueRadio />}
+                          label="Skilled"
+                        />
+                      </div>
+                      <div className="radio-label_hireAgencyForm2">
+                        <FormControlLabel
+                          value="proficient"
+                          control={<BlueRadio />}
+                          label="Proficient"
+                        />
+                      </div>
+                      <div className="radio-label_hireAgencyForm2">
+                        <FormControlLabel
+                          value="accomplished"
+                          control={<BlueRadio />}
+                          label="Accomplished"
+                        />
+                      </div>
                     </RadioGroup>
                   </FormControl>
                 </div>
               </div>
 
-              <div className="nextbuttton">
-                <div
-                  onClick={() => props.history.push("/hire-agency-form-one")}
-                >
-                  <i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back
+              <div className="nextbutton">
+                <div onClick={() => props.history.push("/hire-agency-form-one")}>
+                  {/* <i class="fa fa-long-arrow-left" aria-hidden="true"></i> */}
+                  Back
                 </div>
-                <div
-                  /*style={{backgroundColor:colors[buttonStatus]}}*/
-                  onClick={() => handleSubmit()}
-                >
-                 Next{" "}
-                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                <div onClick={() => handleSubmit()}>
+                  Next
+                  {/* <i class="fa fa-long-arrow-right" aria-hidden="true"></i> */}
                 </div>
               </div>
             </div>
@@ -332,15 +342,15 @@ function HireAgencyForm2(props) {
                     </>
                   </div>
                   {error.projectExpertiseRequiredError && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {error.projectExpertiseRequiredError}
-                      </p>)}
+                    <p
+                      style={{
+                        color: "red",
+                        fontWeight: "normal",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {error.projectExpertiseRequiredError}
+                    </p>)}
                 </div>
 
               </div>

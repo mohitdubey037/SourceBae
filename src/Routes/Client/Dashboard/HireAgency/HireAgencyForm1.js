@@ -9,6 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from "../../../../Components/Spinner/Spinner";
+import Back from '../../../../Components/Back/Back';
 
 const BlueRadio = withStyles({
   root: {
@@ -65,7 +66,7 @@ const HireAgencyForm1 = (props) => {
 
 
   const handleSubmit = () => {
-    let tempError =  {
+    let tempError = {
       projectNameError: "",
       projectDescriptionError: "",
     }
@@ -101,139 +102,158 @@ const HireAgencyForm1 = (props) => {
         }
       )
     }
-    else{
-    setLoading(true)
-    console.log(data);
-    instance.post(`/api/${Role}/projects/create`, data)
-      .then(function (response) {
-        setLoading(false);
-        props.history.push(`/hire-agency-form-two:${response._id}`)
-      })
-      .catch(err => {
-        setLoading(false)
-      })
+    else {
+      setLoading(true)
+      console.log(data);
+      instance.post(`/api/${Role}/projects/create`, data)
+        .then(function (response) {
+          setLoading(false);
+          props.history.push(`/hire-agency-form-two:${response._id}`)
+        })
+        .catch(err => {
+          setLoading(false)
+        })
     }
   }
 
   return (
     <>
       <ClientNavbar />
+      <Back name="Hire Agency" />
       {loading ? <Spinner /> :
         <div className="mainHireAgencyForm1">
-          <div
+
+          {/* <div
             className="backArrow"
             onClick={() => {
               props.history.push("/client-dashboard");
             }}
           >
             <i class="fa fa-angle-left" aria-hidden="true"></i>
-          </div>
+          </div> */}
           <div className="innerHigherAgencyForm1">
             <div className="higherAgencyFormArea">
               <div className="stepCheck">
-                <p>Step 1</p>
+                <div className="step-1_hireAgencyForm1">
+                  <div className="color-div_hireAgencyForm1">
+                  </div>  
+                    <p>Step 1</p>
+                </div>
                 <span>Help us understand more about your project..!!</span>
               </div>
-              <div className="projectNameAgency">
-                <p>1. What will be the name of your project?</p>
-                <input
-                  type="text"
-                  name="projectName"
-                  onChange={handleChange}
-                  placeholder="Start from here.."
-                  value={data.projectName}
-                />
-                              {error.projectNameError && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {error.projectNameError}
-                      </p>
-                    )}
-              </div>
-              <div className="descriptionProjectAgency">
-                <p>2. Describe a little bit about your project?</p>
-                <textarea
-                  name="projectDescription"
-                  cols="30"
-                  rows="6"
-                  onChange={handleChange}
-                  value={data.projectDescription}
-                ></textarea>
-                <div>
-                  <span>More than 100 characters</span>
-                  <span>0/100</span>
-                </div>
-                {error.projectDescriptionError && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {error.projectDescriptionError}
-                      </p>
-                    )}
-              </div>
-              <div className="budgetSectionAreaAgency">
-                <p>3. What's your budget for this project?</p>
-                <FormControl component="fieldset">
-                  <RadioGroup
-                    aria-label="projectProposalCost"
-                    name="projectProposalCost"
-                    value={data.projectProposalCost}
+              <div className="input-form_hireAgencyForm1">
+                <div className="projectNameAgency">
+                  <ul>
+                    <li>
+                      <p>What will be the name of your project?</p>
+                    </li>
+                  </ul>
+                  <input
+                    type="text"
+                    name="projectName"
                     onChange={handleChange}
-                  >
-                    <FormControlLabel
-                      value="5000"
-                      control={<BlueRadio />}
-                      label="Below $5,000"
-                    />
-                    <FormControlLabel
-                      value="10000"
-                      control={<BlueRadio />}
-                      label="$5,000-$10,000"
-                    />
-                    <FormControlLabel
-                      value="20000"
-                      control={<BlueRadio />}
-                      label="$10,000-$20,000"
-                    />
-                    <FormControlLabel
-                      value="50000"
-                      control={<BlueRadio />}
-                      label="$20,000-$50,000"
-                    />
-                    <FormControlLabel
-                      value="9999999999"
-                      control={<BlueRadio />}
-                      label="More than $50,000"
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </div>
-              <div className="numberOfDays">
-                <p>4. How soon do you want to start?</p>
-                <div className="daysInputAgency">
-                  <p>{data.projectExpectedStartingDays} days</p>
-                  <div className="upArrow" onClick={upArrow}>
-                    <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    placeholder="Give A Name To Identify Requirement"
+                    value={data.projectName}
+                  />
+                  {error.projectNameError && (
+                    <p
+                      style={{
+                        color: "red",
+                        fontWeight: "normal",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {error.projectNameError}
+                    </p>
+                  )}
+                </div>
+                <div className="descriptionProjectAgency">
+                  <ul>
+                    <li>
+                      <p>Describe a little bit about your project?</p>
+                    </li>
+                  </ul>
+                  <textarea
+                    name="projectDescription"
+                    cols="30"
+                    rows="6"
+                    onChange={handleChange}
+                    value={data.projectDescription}
+                  ></textarea>
+                  <div>
+                    <span>More than 100 characters</span>
+                    <span>0/100</span>
                   </div>
-                  <div className="downArrow" onClick={downArrow}>
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  {error.projectDescriptionError && (
+                    <p
+                      style={{
+                        color: "red",
+                        fontWeight: "normal",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {error.projectDescriptionError}
+                    </p>
+                  )}
+                </div>
+                <div className="budgetSectionAreaAgency">
+                  <ul>
+                    <li>
+                      <p>What's your budget for this project?</p>
+                    </li>
+                  </ul>
+                  <FormControl component="fieldset">
+                    <RadioGroup
+                      aria-label="projectProposalCost"
+                      name="projectProposalCost"
+                      value={data.projectProposalCost}
+                      onChange={handleChange}
+                    >
+                      <FormControlLabel
+                        value="5000"
+                        control={<BlueRadio />}
+                        label="Below $5,000"
+                      />
+                      <FormControlLabel
+                        value="10000"
+                        control={<BlueRadio />}
+                        label="$15,000-$25,000"
+                      />
+                      <FormControlLabel
+                        value="20000"
+                        control={<BlueRadio />}
+                        label="$25,000-$4,000"
+                      />
+                      <FormControlLabel
+                        value="50000"
+                        control={<BlueRadio />}
+                        label="More Than $4000 Per Month"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </div>
+                <div className="numberOfDays">
+                  <ul>
+                    <li>
+                      <p>How soon do you want to start?</p>
+                    </li>
+                  </ul>
+                  <div className="daysInputAgency">
+                    <p>{data.projectExpectedStartingDays} days</p>
+                    <div className="upArrow" onClick={upArrow}>
+                      <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </div>
+                    <div className="downArrow" onClick={downArrow}>
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="nextbuttton">
-                <span></span>
+                {/* <span></span> */}
                 <div onClick={() => handleSubmit()}>
                   Submit
-                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  {/* <i class="fa fa-long-arrow-right" aria-hidden="true"></i> */}
                 </div>
               </div>
             </div>
@@ -243,11 +263,11 @@ const HireAgencyForm1 = (props) => {
               <p>
                 2. Write about your service or idea in clear manner, with as many
                 details as possible.
-            </p>
+              </p>
               <p>
                 3. In case, you think you missed any details you can always edit
                 this later.
-            </p>
+              </p>
             </div>
           </div>
         </div>
