@@ -144,7 +144,7 @@ function HireAgencyForm3(props) {
     return (
         <>
             <ClientNavbar />
-            <Back name="Hire Developer" />
+            <Back name="Hire Agency" />
             {/* <div
                 className="backArrow_hireAgencyForm3"
                 onClick={() => {
@@ -179,11 +179,12 @@ function HireAgencyForm3(props) {
                                 </p>
 
                                 <div className="servicesCardsHireAgency">
-
                                     {allServices?.length > 0 ? allServices.map((service) => {
                                         return (
-                                            <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? '#02044a' : '#D6EAF8' }} >
-                                                <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                                            <div className="tech-container">
+                                                <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? "#68E1FD" : '#white' }} >
+                                                    <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                                                </div>
                                                 <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
                                             </div>
                                         )

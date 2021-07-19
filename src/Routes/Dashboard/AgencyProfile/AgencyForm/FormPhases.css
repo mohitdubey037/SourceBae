@@ -293,10 +293,10 @@
     /* border-radius: 25px; */
     display: flex;
 }
-.techStackFields{
+/* .techStackFields{
     width: 70%;
     border-right: 1px dashed #ebebeb;
-}
+} */
 .domainFieldsCard{
     display: flex;
     justify-content: flex-start;

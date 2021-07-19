@@ -345,10 +345,10 @@
     justify-content: space-between;
 }
 
-.techStackFields {
+/* .techStackFields {
     width: 70%;
     border-right: 1px dashed #ebebeb;
-}
+} */
 
 .domainFieldsCard {
     display: flex;
@@ -415,6 +415,10 @@
     margin-top: 7%;
 }
 
+.serviceFieldOptions {
+    width: 27%;
+}
+
 .serivcesHireAgency .servicesAgencyHeading {
     font-family: Inter;
     font-style: normal;
@@ -427,21 +431,23 @@
 }
 
 .servicesCardsHireAgency {
-    margin-left: 40px;
+    margin-left: 20px;
     margin-top: 50px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-wrap: wrap;
-    width: 82%;
+    width: 95%;
     justify-content: space-between;
 }
 
 .tech-container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tech-container div {
-    width: 138px;
+    width: 134px;
     /* background-color: skyblue; */
     /* opacity: 0.3; */
     border: 1px solid #A4A4A4;
@@ -449,12 +455,16 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    min-height: 138px;
-    padding-top: 0px;
-    margin-bottom: 0px;
+    min-height: 134px;
+    /* padding-top: 0px;
+    margin-bottom: 0px; */
     cursor: pointer;
     border-radius: 50%;
     text-align: center;
+}
+
+.servicesCardsHireAgency {
+    width: 95%;
 }
 
 .servicesCardsHireAgency div img {
@@ -477,11 +487,13 @@
 }
 
 .servicesHireAgencyContainer {
-    height: 80vh;
+    width: 100%;
+    height: 60vh;
     overflow-y: scroll;
     border: 1px dashed #ebebeb;
-    margin-left: 2px;
+    /* margin-left: 85px; */
     padding-bottom: 6%;
+    margin-top: 100px;
 }
 
 .UIUXServices {
@@ -535,7 +547,9 @@
 }
 
 .innerHireAgencyForm3 {
-    height: 777px;
+    display: flex;
+    justify-content: space-between;
+    height: 670px;
     width: 80%;
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -544,9 +558,13 @@
     display: flex;
 }
 
+.serviceFieldsOptions {
+    width: 25%;
+}
+
 .techStackFields {
     width: 70%;
-    border-right: 1px dashed #ebebeb;
+    /* border-right: 1px dashed #ebebeb; */
 }
 
 .techStackFields ul {
@@ -730,6 +748,10 @@
     align-items: center;
     margin-top: 5%;
     padding-right: 5%;
+}
+
+.techStackFields .nextbutton {
+    margin-top: 8%;
 }
 
 .nextbutton {
