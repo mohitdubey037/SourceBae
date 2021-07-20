@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-
+import './RespondedDetails.css'
 import foods from "../../../assets/images/Quotation/foods.png";
 import Moment from 'react-moment';
 import { connect } from "react-redux";
@@ -184,43 +184,43 @@ function RespondedDetails(props) {
                           :
                           project?.projectProposals &&
                             project.projectProposals[0]?.isAskedForQuotation === true ? (
-                            <ClientCommentBox
-                              projectId={projectId}
-                              agencyId={agencyId}
-                              isShortListed={true}
-                              giveReplies={(gr) => {
-                                setRepliedToClient(gr);
-                              }}
-                              isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
-                              comments={project.projectProposals[0]?.comments}
-                              isCommentSectionActive={
-                                project.projectProposals[0].isCommentSectionActive
-                              }
-                              isReplySectionActive={
-                                project.projectProposals[0].isReplySectionActive
-                              }
+                              <ClientCommentBox
+                                projectId={projectId}
+                                agencyId={agencyId}
+                                isShortListed={true}
+                                giveReplies={(gr) => {
+                                  setRepliedToClient(gr);
+                                }}
+                                isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                                comments={project.projectProposals[0]?.comments}
+                                isCommentSectionActive={
+                                  project.projectProposals[0].isCommentSectionActive
+                                }
+                                isReplySectionActive={
+                                  project.projectProposals[0].isReplySectionActive
+                                }
 
-                              clientNegotiablePrice={
-                                project.projectProposals[0].clientNegotiablePrice
-                              }
-                              agencyNegotiablePrice={
-                                project.projectProposals[0].agencyNegotiablePrice
-                              }
-                              quotationLink={project.projectProposals[0].quotationLink}
-                              isProposalActionActive={
-                                project.projectProposals[0].isProposalActionActive
-                              }
-                              isQuotationAcceptedByClient={
-                                project.projectProposals[0].isQuotationAcceptedByClient
-                              }
-
-
-                              isAskedForQuotation={true}
-                              commentType="Quotation"
+                                clientNegotiablePrice={
+                                  project.projectProposals[0].clientNegotiablePrice
+                                }
+                                agencyNegotiablePrice={
+                                  project.projectProposals[0].agencyNegotiablePrice
+                                }
+                                quotationLink={project.projectProposals[0].quotationLink}
+                                isProposalActionActive={
+                                  project.projectProposals[0].isProposalActionActive
+                                }
+                                isQuotationAcceptedByClient={
+                                  project.projectProposals[0].isQuotationAcceptedByClient
+                                }
 
 
-                            />
-                          )
+                                isAskedForQuotation={true}
+                                commentType="Quotation"
+
+
+                              />
+                            )
                             :
                             (
                               project?.projectProposals && (

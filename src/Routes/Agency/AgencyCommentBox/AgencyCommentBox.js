@@ -12,6 +12,8 @@ import { toast } from "react-toastify";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
+import proposalImage from '../../../assets/images/proposalImage.png'
+
 let isRepliedToClient = false;
 
 const AgencyCommentBox = (props) => {
@@ -40,7 +42,7 @@ const AgencyCommentBox = (props) => {
   };
 
   const [quotationRejectionForm, setQuotationRejectionForm] = useState({
-    rejectReasonByAgency : '',
+    rejectReasonByAgency: '',
     agencyId: localStorage.getItem("userId") || "",
     isQuotationAcceptedByAgency: false,
   })
@@ -123,13 +125,19 @@ const AgencyCommentBox = (props) => {
         style={{
           display: "flex",
           flexDirection: "column",
-          border: "2px solid black",
+          border: "1px solid #ddd",
           borderRadius: "8px",
           padding: "1rem",
           margin: "2rem 1rem 1rem 1rem",
           width: "100%",
+          boxShadow: '0 1px 2px 1px rgba(0,0,0,0.2)',
+          height: '400px',
+          overflow: 'scroll',
+          position: 'relative'
         }}
       >
+        <div className="topLine" style={{
+        }}></div>
         {props.isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
           :
@@ -141,19 +149,15 @@ const AgencyCommentBox = (props) => {
                 <>
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     {index.comment && (
-                      <div>
-                        <h5>
-                          <b>Client: </b>
-                          {index.comment}
-                        </h5>
+                      <div className="chatBox" >
+                        <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
+                        <b>Client </b>
                       </div>
                     )}
                     {index.reply && (
-                      <div>
-                        <h5>
-                          <b>Agency: </b>
-                          {index.reply}
-                        </h5>
+                      <div className="chatBox" style={{ textAlign: 'right', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                        <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
+                        <b>Agency </b>
                       </div>
                     )}
                   </div>
@@ -282,13 +286,14 @@ const AgencyCommentBox = (props) => {
           props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient
         ) && (
             <div
-              className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
-                ? ""
-                : "disabled"
-                }`}
+              className="proposalCard"
+            // className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
+            //   ? ""
+            //   : "disabled"
+            //   }`}
             >
-              <div>
-                <p>Accept or Reject the Project.</p>
+              <div className="yellowBg">
+                <img src={proposalImage} alt="" />
               </div>
 
               <div className="detailsButtons">

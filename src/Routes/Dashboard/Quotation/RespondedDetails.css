@@ -1,12 +1,10 @@
-
-
 .mainDetailHeader {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #e9f0ef;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 .innerDetailHeader {
   width: 95%;
@@ -45,7 +43,7 @@
   width: 50%;
 }
 .clientName h2 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: bold;
 }
 .detailsButtons {
@@ -61,7 +59,7 @@
   flex-direction: column;
 }
 
-.negotiablePrice > input[type=number]{
+.negotiablePrice > input[type='number'] {
   margin-left: 1rem;
   min-height: 48px;
 }
@@ -74,7 +72,7 @@
   background-color: #5cb85c;
   border: 1px solid #5cb85c;
   color: #fff;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
@@ -121,7 +119,7 @@
   margin-right: 20px;
 }
 .innerBtnInfoDiv p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -138,7 +136,7 @@
   background-color: #5cb85c;
   border: 1px solid #5cb85c;
   color: #fff;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
@@ -168,7 +166,7 @@
 .action-wait {
   font-weight: 500;
   font-style: italic;
-  background-color: #00969B;
+  background-color: #00969b;
   border-radius: 4px;
   padding: 0.5rem;
   display: flex;
@@ -183,11 +181,11 @@
   opacity: 0.5;
   filter: grayscale(100%);
 }
-.action-wait > p , .detailsButtons >p{
+.action-wait > p,
+.detailsButtons > p {
   color: #fff !important;
   margin: 0;
 }
-
 
 @media (max-width: 768px) {
   .detailHeaderImage div {
@@ -217,7 +215,7 @@
     width: 50%;
   }
   .clientName h2 {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-weight: bold;
   }
   .detailsButtons {
@@ -235,7 +233,6 @@
     align-items: flex-start;
   }
 
- 
   .clientExperience {
     display: flex;
     align-items: center;
@@ -262,7 +259,7 @@
     margin-right: 20px;
   }
   .innerBtnInfoDiv p {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-weight: 500;
     font-size: 1.1rem;
   }
@@ -336,11 +333,11 @@
   margin-left: 2%;
 }
 .respondDescription h2 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 400;
 }
 .respondDescription p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 400;
   width: 80%;
   margin-top: 1%;
@@ -388,7 +385,7 @@
   border-bottom: 2px solid #ebebeb;
 }
 .innerResponseCard div p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   margin-top: 4%;
   font-weight: 500;
   font-size: 1rem;
@@ -444,14 +441,14 @@
   border-bottom: 1px solid #ebebeb;
 }
 .briefHeading h2 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 600;
 }
 .briefHeading p {
   background-color: #02044a;
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #fff;
   font-weight: 600;
 }
@@ -463,12 +460,12 @@
   margin-bottom: 3%;
 }
 .briefQuestions div h4 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #000;
   font-size: 1.3rem;
 }
 .briefQuestions div p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #484848;
   font-size: 1rem;
 }
@@ -485,12 +482,12 @@
     font-size: 1rem;
   }
   .briefQuestions div h4 {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     color: #000;
     font-size: 1rem;
   }
   .briefQuestions div p {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     color: #484848;
     font-size: 0.8rem;
   }
@@ -528,7 +525,7 @@
   align-items: center;
   background-color: #e9f0ef;
   padding: 1rem 2rem;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   border-radius: 15px;
 }
 .agencyQuotationHeading h2 {
@@ -551,7 +548,7 @@
 
 .agencyQuotationDesc {
   margin-top: 2%;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   padding: 1rem 2rem;
 }
 .agencyQuotationDesc h4 {
@@ -566,12 +563,12 @@
   justify-content: space-between;
 }
 .agencyQuestions div h4 {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 1.2rem;
   font-weight: bold;
 }
 .agencyQuestions div ul {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #02044a;
   font-size: 1.1rem;
   margin-top: 20px;
@@ -606,7 +603,7 @@
     align-items: center;
     background-color: #e9f0ef;
     padding: 1rem 2rem;
-    font-family: "Poppins";
+    font-family: 'Poppins';
     border-radius: 15px;
   }
   .agencyQuotationHeading h2 {
@@ -629,7 +626,7 @@
 
   .agencyQuotationDesc {
     margin-top: 2%;
-    font-family: "Poppins";
+    font-family: 'Poppins';
     padding: 1rem 2rem;
   }
   .agencyQuotationDesc h4 {
