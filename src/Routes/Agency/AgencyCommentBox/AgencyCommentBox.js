@@ -12,6 +12,8 @@ import { toast } from "react-toastify";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
+import proposalImage from '../../../assets/images/proposalImage.png'
+
 let isRepliedToClient = false;
 
 const AgencyCommentBox = (props) => {
@@ -284,13 +286,14 @@ const AgencyCommentBox = (props) => {
           props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient
         ) && (
             <div
-              className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
-                ? ""
-                : "disabled"
-                }`}
+              className="proposalCard"
+            // className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
+            //   ? ""
+            //   : "disabled"
+            //   }`}
             >
-              <div>
-                <p>Accept or Reject the Project.</p>
+              <div className="yellowBg">
+                <img src={proposalImage} alt="" />
               </div>
 
               <div className="detailsButtons">
