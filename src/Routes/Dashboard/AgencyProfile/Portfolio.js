@@ -54,17 +54,21 @@ function Portfolio(props) {
                                     </div>
 
                                     <div className="portfolioDetailBtn">
-                                        <span>View Details<i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                                        <span>View Details</span>
                                     </div>
                                 </div>
                             )
                         })
                     }
+
                     {Role !== 'Client' &&
                         agencyProfiledata.isAgencyVerified ?
-                            <div className="addMore" onClick={() => props.history.push("/add-developer")}>
-                                +
+                        (<div className="addMore" onClick={() => props.history.push("/add-developer")}>
+                            <div className="addIconContainer">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
                             </div>
+                        </div>
+                        )
                         : null
                     }
                 </div>
