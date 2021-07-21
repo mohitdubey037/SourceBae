@@ -314,14 +314,14 @@ function SkillsSet(props) {
 
                     {Role !== 'Client' ?
                         agencyProfiledata.isAgencyVerified &&
-                        <>
+                        <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'red' }}>
                             <div className="editableBtn">
                                 <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
                             </div>
                             <div className="editableBtn">
                                 <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
                             </div>
-                        </>
+                        </div>
                         : null}
 
                     <div className="skillsSetsContent">
