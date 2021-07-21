@@ -2,8 +2,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Navbar from "./Navbar";
 import "./AgencyProfile.css";
-import growth from "../../assets/images/Logo/growth.svg";
-import document from "../../assets/images/Logo/document.png";
+import growth from "../../assets/images/AgencyProfile/growth.png";
+import document from "../../assets/images/AgencyProfile/pdf.png";
 import received from "../../assets/images/Quotation/received.png";
 import responded from "../../assets/images/Quotation/responded.png";
 import matched from "../../assets/images/Quotation/matched.png";
@@ -116,7 +116,7 @@ function AgencyProfile(props) {
                   <>
                     <span>You haven't added any product.</span>
                     <button
-                      disabled = {agencyProfileData.isAgencyVerified === false && true}
+                      disabled={agencyProfileData.isAgencyVerified === false && true}
                       style={{
                         filter: `${!agencyProfileData.isAgencyVerified ? `grayscale(100%)` : `none`
                           }`,
@@ -133,33 +133,33 @@ function AgencyProfile(props) {
                     </button>
                   </>
                 ) : (
-                  <button
-                    onClick={() =>
-                      props.history.push({
-                        pathname: `/product-details:${agencyProfileData.productId}`,
-                        condition: id !== '' ? 'Agency' : 'Client'
-                      })
-                    }
-                  >
-                    View Your Product{" "}
-                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
-                  </button>
-                )
+                    <button
+                      onClick={() =>
+                        props.history.push({
+                          pathname: `/product-details:${agencyProfileData.productId}`,
+                          condition: id !== '' ? 'Agency' : 'Client'
+                        })
+                      }
+                    >
+                      View Your Product{" "}
+                      <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                    </button>
+                  )
               ) : (
-                <div>
-                  {/* <p onClick={onOpenModal}>
+                  <div>
+                    {/* <p onClick={onOpenModal}>
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                     Have a Question..?
                   </p> */}
-                  <i
-                    style={{ fontSize: 22, color: "#fff" }}
-                    className="fa fa-info-circle"
-                    aria-hidden="true"
-                    onMouseOver={() => setHoverModal(true)}
-                  // onMouseLeave={()=>onCloseModal()}
-                  ></i>
-                </div>
-              )}
+                    <i
+                      style={{ fontSize: 22, color: "#fff" }}
+                      className="fa fa-info-circle"
+                      aria-hidden="true"
+                      onMouseOver={() => setHoverModal(true)}
+                    // onMouseLeave={()=>onCloseModal()}
+                    ></i>
+                  </div>
+                )}
             </div>
           </div>
 
@@ -187,7 +187,7 @@ function AgencyProfile(props) {
                   </div>
                 </div>
 
-                <div className="recetlyAskedQuestion">  
+                <div className="recetlyAskedQuestion">
                   <h2>Recently Asked Questions</h2>
                   <div>
                     <h3>Are your developers willing to work remotely?</h3>
@@ -236,37 +236,6 @@ function AgencyProfile(props) {
                 </div>
               </div>
               <div className="mainAgencyProfileContent">
-                <div className="agencyName">
-                  <div className="agencyNameURL">
-                    <div className="agencyDEtails">
-                      <h2>{agencyProfileData?.agencyName}</h2>
-                      <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p>
-                    </div>
-                    {(id === null || id === undefined) && (
-                      <div
-                        className="verifiedStatus"
-                        style={{
-                          filter: `${!agencyProfileData?.isAgencyVerified
-                              ? `grayscale(100%)`
-                              : `none`
-                            }`,
-                        }}
-                      >
-                        <i class="fa fa-check" aria-hidden="true" />
-                        <span>{`${!agencyProfileData?.isAgencyVerified
-                            ? agencyProfileData?.verificationMessage
-                            : `Verified`
-                          }`}</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="agencyAddress">
-                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                    <span>
-                      {`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`}{" "}
-                    </span>
-                  </div>
-                </div>
                 {(id === null || id === undefined) && (
                   <div className="agencyProfileConstantPoints">
                     <div className="pointContent">
@@ -287,6 +256,20 @@ function AgencyProfile(props) {
                       <p>Agency Id</p>
                       <h4>{agencyProfileData._id}</h4>
                     </div>
+                    {(id === null || id === undefined) && (
+                      <div className="pointContent" style={{
+                        display: 'flex', filter: `${!agencyProfileData?.isAgencyVerified
+                          ? `grayscale(100%)`
+                          : `none`
+                          }`,
+                      }}>
+                        <i style={{ marginRight: 10 }} class="fa fa-check-circle" aria-hidden="true"></i>
+                        <p>{`${!agencyProfileData?.isAgencyVerified
+                          ? agencyProfileData?.verificationMessage
+                          : `Verified`
+                          }`}</p>
+                      </div>
+                    )}
                     {/* <div className="pointContent">
                       <p>Total Profile Views</p>
                       <h4>{agencyProfileData.agencyProfileViewCount}</h4>
@@ -297,36 +280,63 @@ function AgencyProfile(props) {
             </div>
           </div>
 
+          <div className="mainAgencyProfileInfo" style={{ marginBottom: '5%' }}>
+            <div className="innerAgencyProfileInfo">
+              <div className="agencyName">
+                <div className="agencyNameURL">
+                  <div className="agencyDEtails">
+                    <h2>{agencyProfileData?.agencyName}</h2>
+                    <p>{`${agencyProfileData?.socialPlatformDetails[0]?.platformLink}`}</p>
+                  </div>
+                </div>
+                <div className="agencyAddress">
+                  <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  <span>
+                    {`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`}{" "}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="mainAgencyProfileDesc">
             <div className="innerAgencyProfileDesc">
               <div className="leftAgencyProfileDesc">
                 <h2>About us</h2>
-                <p>{agencyProfileData.agencyDescription}</p>
-                <div className="agencyProfileIndustry">
-                  {agencyProfileData &&
-                    agencyProfileData?.agencyDomains?.map((domain) => {
-                      return <p>{`${domain?.domainId?.domainName || ""}`}</p>;
-                    })}
+                <div style={{ width: '100%', paddingRight: 20 }}>
+                  <p>{agencyProfileData.agencyDescription}</p>
+                  <div className="agencyProfileIndustry">
+                    {agencyProfileData &&
+                      agencyProfileData?.agencyDomains?.map((domain) => {
+                        return <p>{`${domain?.domainId?.domainName || ""}`}</p>;
+                      })}
+                  </div>
                 </div>
               </div>
               {(id === null || id === undefined) && (
                 <div className="rightAgencyProfileDesc">
                   <div className="monthyView">
-                    <div className="monthBorder"></div>
-                    <img src={growth} alt="" />
-                    <h3>Total Profile View</h3>
+                    {/* <div className="monthBorder"></div> */}
+                    {/* <img src={growth} alt="" /> */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <img style={{ width: 25, height: 25, marginRight: 5, objectFit: 'contain' }} src={growth} alt="" />
+                      <h3>Total Profile View</h3>
+                    </div>
                     <p>{agencyProfileData.agencyProfileViewCount}</p>
                   </div>
                   <div className="monthyView">
-                    <div className="monthBorder"></div>
-                    <h3>Agency Document</h3>
+                    {/* <div className="monthBorder"></div> */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <img style={{ width: 25, height: 25, marginRight: 5, objectFit: 'contain' }} src={document} alt="" />
+                      <h3>Agency Document</h3>
+                    </div>
 
                     {/* <button> */}
-                    <img
+                    {/* <img
                       style={{ position: "relative" }}
                       src={document}
                       alt=""
-                    />
+                    /> */}
 
                     <FilePicker
                       extensions={["pdf"]}
@@ -334,7 +344,7 @@ function AgencyProfile(props) {
                       onError={(errMsg) => { }}
                     >
                       <button className="uploadButton">
-                        <i class="fa fa-upload" aria-hidden="true"></i>Upload
+                        Upload
                       </button>
                     </FilePicker>
                   </div>
@@ -487,17 +497,17 @@ function AgencyProfile(props) {
           </div>
         </div>
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "80vh",
-          }}
-        >
-          <h1> No agency found with this ID. </h1>
-        </div>
-      )}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "80vh",
+              }}
+            >
+              <h1> No agency found with this ID. </h1>
+            </div>
+          )}
     </>
   );
 }

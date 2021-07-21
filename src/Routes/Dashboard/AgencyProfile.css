@@ -9,8 +9,10 @@
 .innerProfileHeaderImage {
   width: 100%;
   height: 25vh;
-  overflow: hidden;
-  background-color: #02044a;
+  /* overflow: hidden; */
+  background-image: url('../../assets/images/AgencyProfile/bgImage.png');
+  background-size: cover;
+  background-position: center;
   position: relative;
   text-align: center;
   display: flex;
@@ -37,24 +39,22 @@
 }
 .innerProfileHeaderImage button {
   position: absolute;
-  /* left: 50%; */
-  /* right: 50%; */
-  /* transform: translateX(-50%); */
-  /* top: 10%; */
-  bottom: 0;
-  right: 1%;
+  bottom: -15px;
+  right: 0;
   height: 30px;
-  padding: 0.3rem 1rem;
-  font-size: 0.9rem;
+  width: 25%;
+  height: 42px;
+  font-size: 1rem;
   font-family: 'Poppins';
   font-weight: bold;
   outline: none;
   border: none;
-  background-color: #aed6f1;
-  color: #2980b9;
+  background-color: #ff9999;
+  color: #fff;
   border-radius: 2px;
   transition: 0.3s ease-in-out;
   white-space: nowrap;
+  border: 2px solid #fff;
 }
 .innerProfileHeaderImage button i {
   margin-left: 10px;
@@ -175,7 +175,7 @@
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  border-bottom: 1px dashed #ebebeb;
+  /* border-bottom: 1px dashed #ebebeb; */
   padding-bottom: 5px;
 }
 .agencyNameURL {
@@ -187,8 +187,8 @@
 }
 .agencyNameURL .agencyDEtails {
   width: 100%;
-  display: flex;
-  align-items: center;
+  margin-bottom: 1%;
+  margin-top: -3%;
 }
 .verifiedStatus {
   display: flex;
@@ -228,8 +228,8 @@
 }
 .agencyName p {
   font-family: 'Poppins';
-  margin-left: 2%;
-  color: #999;
+  /* margin-left: 2%; */
+  color: #407bff;
   font-weight: bold;
   font-size: 0.8rem;
 }
@@ -237,21 +237,56 @@
   display: flex;
   margin-top: 1%;
   justify-content: space-between;
-  align-items: flex-start;
+  /* align-items: center; */
+}
+.agencyProfileConstantPoints .pointContent:nth-child(1) {
+  background: linear-gradient(90deg, #fffeff 0%, #ffd7d7 100%);
+}
+.agencyProfileConstantPoints .pointContent:nth-child(2) {
+  background: linear-gradient(90deg, #fffeff 0%, #d7fffe 100%);
+}
+.agencyProfileConstantPoints .pointContent:nth-child(3) {
+  background: linear-gradient(90deg, #fffeff 0%, #fff6cc 100%);
+}
+.agencyProfileConstantPoints .pointContent:nth-child(4) {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background: #fff;
+}
+.agencyProfileConstantPoints .pointContent:nth-child(4) i {
+  font-size: 22px;
+  color: #14ff00;
+}
+.agencyProfileConstantPoints .pointContent:nth-child(4) p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.pointContent {
+  height: 80px;
+  width: 20%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
 }
 .pointContent p,
 .pointContent h4 {
   font-family: 'Poppins';
 }
 .pointContent p {
-  color: #777;
+  color: #3a3a3a;
   font-family: 'Poppins';
   font-size: 0.8rem;
 }
 .pointContent h4 {
   font-family: 'Poppins';
-  font-size: 1rem;
+  font-size: 0.7rem;
   transform: translateY(-10px);
+  margin-top: 20px;
+  color: #3a3a3a;
 }
 
 .mainAgencyProfileDesc {
@@ -268,12 +303,22 @@
 }
 .leftAgencyProfileDesc {
   width: 60%;
+  display: flex;
 }
 
 .innerAgencyProfileDesc h2 {
   font-family: 'Poppins';
   font-weight: bolder;
   color: #555;
+  width: 35%;
+}
+.innerAgencyProfileDesc h2::after {
+  content: '';
+  width: 80%;
+  height: 2px;
+  border-radius: 999px;
+  background-color: #3a3a3a;
+  display: block;
 }
 .leftAgencyProfileDesc p {
   font-family: 'Poppins';
@@ -288,12 +333,11 @@
 }
 .agencyProfileIndustry p {
   width: 20%;
-  background-color: #73c2fb;
+  background-color: #ff9999;
   margin-right: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 999px;
   font-family: 'Poppins';
   color: #fff;
   font-weight: bold;
@@ -308,31 +352,32 @@
 }
 .monthyView {
   width: 60%;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  height: 150px;
+  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
+  border: 2px solid #3a3a3a;
+  height: 100px;
   text-align: center;
   padding: 1rem 0;
   position: relative;
   border-radius: 15px;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .monthyView h3 {
   font-family: 'Poppins';
   color: #02044a;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
 }
 .monthyView p {
-  font-size: 5rem;
+  font-size: 2rem;
   font-family: 'Fredoka One', cursive;
-  transform: translateY(-20px);
+  /* transform: translateY(-20px); */
+  color: #65ff3f;
 }
 .monthyView img {
-  position: absolute;
-  width: 30%;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
 }
 .monthBorder {
   position: absolute;
@@ -345,17 +390,16 @@
   border-radius: 999px;
 }
 .uploadButton {
-  position: absolute;
-  right: 5px;
-  background-color: #02044a;
-  color: #fff;
+  position: relative;
+  background-color: #eaf2ff;
+  color: #000;
   outline: none;
   border: none;
-  padding: 0.3rem 1rem;
-  border-radius: 999px;
+  padding: 0.2rem 1rem;
+  border-radius: 0px;
   font-size: 0.8rem;
-  bottom: 5px;
   font-family: 'Poppins';
+  transform: translateY(-20px);
 }
 .uploadButton i {
   margin-right: 5px;
