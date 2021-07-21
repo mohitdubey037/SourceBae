@@ -5,6 +5,7 @@ import document from '../../../assets/images/Logo/document.png';
 import instance from "../../../Constants/axiosConstants";
 import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
+import addDeveloper from '../../../assets/images/AgencyProfile/addDeveloper.png'
 
 function DeveloperList(props) {
     const routerHistory = useHistory();
@@ -63,11 +64,10 @@ function DeveloperList(props) {
                         developers.map((developer) => {
                             return (
                                 <div className="developerCard">
-                                    <div className="developerCardBorder"></div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
                                             <h2>{`${developer.firstName} ${developer.lastName}`}</h2>
-                                            <p>{`${developer.developerExperience} year`}</p>
+                                            {/* <p>{`${developer.developerExperience} year`}</p> */}
                                         </div>
                                         <div className="developerExp">
                                             <p>Available</p>
@@ -93,12 +93,15 @@ function DeveloperList(props) {
                                                 <p>Timeline</p>
                                                 <h6>{developer.developerAvailability === -1 ? `Immediately Avaialable` : `${developer.developerAvailability} Weeks`}</h6>
                                             </div>
+                                            <div>
+                                                <p>Experience</p>
+                                                <h6>{`${developer.developerExperience} year`}</h6>
+                                            </div>
                                         </div>
                                         <div className="developerResume">
-                                            <div>
-                                                <img src={document} alt="" />
-                                                <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} ><i class="fa fa-upload" aria-hidden="true"></i>Download</button>
-                                            </div>
+
+                                            <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} >Download</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -108,12 +111,10 @@ function DeveloperList(props) {
 
                     {Role === 'Agency' ?
                         agencyProfiledata.isAgencyVerified &&
-                        <div className="developerCard">
-                            <div className="developerCardBorder"></div>
-                            <div style={{ display: 'flex', height: '315px' }}>
-                                <button className="addMoreDeveloper" onClick={() => routerHistory.push("/add-developer")}>
-                                    <h6>Add Developer</h6>
-                                </button>
+                        <div className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
+                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 255, cursor: 'pointer' }}>
+                                <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} />
+                                <h6 className="addDeveloperText">Add Developer</h6>
                             </div>
                         </div>
                         : null

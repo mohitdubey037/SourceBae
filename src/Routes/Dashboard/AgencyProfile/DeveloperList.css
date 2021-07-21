@@ -16,8 +16,9 @@
 .developerCard {
   width: 30%;
   background-color: #fff;
-  padding: 2rem;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
+  border: 1px solid #3a3a3a;
   border-radius: 15px;
   position: relative;
   margin: 1rem;
@@ -35,34 +36,41 @@
 .developerNameExp {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 3%;
-  border-bottom: 0.5px dashed #ebebeb;
+  padding-bottom: 5%;
+  /* border-bottom: 0.5px dashed #ebebeb; */
 }
 .developerBudgetResume {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
+  position: relative;
 }
 .developerName,
 .developerExp {
-  line-height: 0.5;
+  /* line-height: 0.5; */
+  text-align: center;
 }
 .developerName {
   width: 80%;
+  margin-bottom: 5px;
 }
 .developerName h2 {
-  font-family: "Poppins";
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-family: 'Poppins';
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #02044a;
 }
 .developerName p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #999;
   font-size: 0.9rem;
 }
 .developerExp {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   line-height: 0.1;
 }
 .developerExp p {
@@ -77,61 +85,70 @@
 }
 
 .developerTech h6 {
-  font-family: "Poppins";
-  color: #999;
+  font-family: 'Poppins';
+  color: #3a3a3a;
+  margin-bottom: 3.2%;
+  font-weight: 600;
 }
 .developerTechNames {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 4%;
 }
 .developerTechNames p {
-  padding: 0.1rem 0.5rem;
-  border-radius: 999px;
-  background-color: #73c2fb;
-  color: #fff;
-  font-family: "Poppins";
-  margin-right: 20px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  background-color: #eaffad;
+  color: #000;
+  font-family: 'Poppins';
+  margin-right: 10px;
   font-size: 0.8rem;
 }
 
 .developerBudget {
-  /* line-height: 0.5; */
+  display: flex;
+  flex-wrap: wrap;
 }
 .developerBudget div {
-  line-height: 1;
+  /* line-height: 1; */
   margin-bottom: 20px;
+  margin-right: 60px;
 }
 .developerBudget p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #999;
 }
 .developerBudget h6 {
   font-weight: bold;
-  font-family: "Poppins";
+  font-family: 'Poppins';
 }
-.developerResume div {
-  display: flex;
+.developerResume {
+  position: absolute;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  bottom: 0;
+  right: 0;
 }
-.developerResume div img {
+/* .developerResume div img {
   width: 80%;
   margin-bottom: 4px;
-}
-.developerResume div button {
+} */
+.developerResume button {
   padding: 0.2rem 1rem;
-  border-radius: 999px;
-  background-color: #73c2fb;
-  color: #fff;
-  font-family: "Poppins";
+  border-radius: 4px;
+  background-color: #eaf2ff;
+  color: #000;
+  font-family: 'Poppins';
   font-size: 0.8rem;
+  font-weight: 600;
   outline: none;
   border: none;
 }
-.developerResume div button i {
+.developerResume button i {
   margin-right: 5px;
 }
 
@@ -142,6 +159,10 @@
   background-color: #02044a;
   color: #fff;
   margin: auto;
+}
+.addDeveloperText {
+  transform: translateY(-10px);
+  font-size: 1.1rem;
 }
 
 .nav {
@@ -158,7 +179,7 @@
   border: none !important;
   font-size: 1rem !important;
   color: #b0b0b0 !important;
-  font-family: "Poppins" !important;
+  font-family: 'Poppins' !important;
   width: auto;
   overflow: hidden;
   white-space: nowrap;

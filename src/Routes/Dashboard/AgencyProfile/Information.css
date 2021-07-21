@@ -10,7 +10,9 @@
 }
 .editableBtn {
   width: 100%;
-  margin-bottom: 3%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2%;
 }
 .editableBtn button {
   padding: 0.5rem 1rem;
@@ -21,7 +23,6 @@
   background-color: #eaf2ff;
   border-radius: 0px;
   /* font-weight: bold; */
-  margin-right: 2%;
 }
 .editableBtn button:nth-child(2) {
   background-color: transparent;
