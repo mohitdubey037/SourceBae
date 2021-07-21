@@ -14,6 +14,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants";
 import { FilePicker } from "react-file-picker";
 import { toast } from "react-toastify";
+import Back from "../../../../Components/Back/Back";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -208,15 +209,16 @@ function ShortTerm(props) {
   return (
     <>
       <ClientNavbar />
+      <Back name="Short Term" />
       <div className="mainShortTerm">
-      <div
+        {/* <div
           className="backArrow_shortTerm"
           onClick={() => {
             props.history.goBack();
           }}
         >
           <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </div>  
+        </div> */}
         <div className="innerShortTerm">
           <div className="shortTermForm">
             <div className="shortTermHeading">
@@ -235,20 +237,18 @@ function ShortTerm(props) {
           <div className="shortTermProjectType">
             {allServices.map((service) => {
               return (
-                <div
-                  style={{
+                <div className="tech-container_shortTerm">
+                  <div style={{
                     backgroundColor: service.selected ? "#3498DB" : "#fff",
                     color: service.selected ? "#fff" : "#000",
+                    textAlign: 'center'
                   }}
-                  className={`${service.serviceName}`}
-                  onClick={(event) => handleServices(event)}
-                >
-                  <span className={`${service.serviceName}`}></span>
-                  <img
                     className={`${service.serviceName}`}
-                    src={service.serviceIcon}
-                    alt="icon"
-                  />
+                    onClick={(event) => handleServices(event)}
+                  >
+                    <span className={`${service.serviceName}`}></span>
+                    <img className={`${service.serviceName}`} src={service.serviceIcon} alt="icon" />
+                  </div>
                   <h2 className={`${service.serviceName}`}>
                     {service.serviceName}
                   </h2>
@@ -258,32 +258,43 @@ function ShortTerm(props) {
           </div>
 
           <div className="shortTermProjectName">
-            <p>Choose a name for your project</p>
-            <input
-              type="text"
-              placeholder="Write here..."
-              name="projectName"
-              value={apiData.projectName}
-              onChange={(event) => handleChange(event)}
-            />
+            <ul>
+              <li>
+                Choose a name for your project
+              </li>
+            </ul>
+            <div>
+              <input
+                type="text"
+                placeholder="Write here..."
+                name="projectName"
+                value={apiData.projectName}
+                onChange={(event) => handleChange(event)}
+              />
+            </div>
           </div>
 
           <div className="shortTermProjectDesc">
-            <p>Tell us more about your project</p>
-            <span>
+            <ul>
+              <li>
+                Tell us more about your project
+              </li>
+            </ul>
+            <div>
               Start with a bit about yourself or your business, and include an
               overview what you need done.
-            </span>
-            <br />
-            <textarea
-              cols="30"
-              rows="6"
-              type="text"
-              placeholder="Write here..."
-              name="projectDescription"
-              value={apiData.projectDescription}
-              onChange={(event) => handleChange(event)}
-            />
+            </div>
+            <div>
+              <textarea
+                cols="30"
+                rows="6"
+                type="text"
+                placeholder="Write here..."
+                name="projectDescription"
+                value={apiData.projectDescription}
+                onChange={(event) => handleChange(event)}
+              />
+            </div>
             <div className="wordsLimit">
               <p>Minimum 100 characters.</p>
               <p>0/100</p>
@@ -298,7 +309,7 @@ function ShortTerm(props) {
                   onChange={(fileObj) => fileHandler(fileObj)}
                 >
                   <div>
-                    <i class="fa fa-upload" aria-hidden="true"></i>Upload
+                    Upload
                   </div>
                 </FilePicker>
               </div>
@@ -313,67 +324,99 @@ function ShortTerm(props) {
           </div>
 
           <div className="shortTermOptionSelect">
-            <h6>What work do you need to get done?</h6>
-            <p>List of all requirements comma(,) separated</p>
-            <input
-              type="text"
-              placeholder="Ex: Blog Section, Dashboard, Admin Panel,etc"
-              name="projectRequirements"
-              value={apiData.projectRequirements}
-              onChange={(event) => handleChange(event)}
-            // style={{ width: "100%", padding:"1rem" }}
-            />
+            <ul>
+              <li>
+                What work do you need to get done?
+              </li>
+            </ul>
 
+            <div>
+              <div>
+                List of all requirements comma(,) separated
+              </div>
+            </div>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Ex: Blog Section, Dashboard, Admin Panel,etc"
+                name="projectRequirements"
+                value={apiData.projectRequirements}
+                onChange={(event) => handleChange(event)}
+              // style={{ width: "100%", padding:"1rem" }}
+              />
+            </div>
           </div>
 
           <div className="howToPay">
-            <h6>How do you want to pay?</h6>
+            <ul>
+              <li>
+                How do you want to pay?
+              </li>
+            </ul>
             <div className="innerHowToPay">
-              <div
-                className="fixedPrice"
-                name="projectPaymentModel"
-                onClick={() => handlePaymentModel(true)}
-              >
-                {apiData.projectPaymentModel === "Fixed Price" ? (
-                  <i class="fa fa-check-circle" aria-hidden="true"></i>
-                ) : null}
-                <div className="fixedImage">
-                  <img src={fixed} alt="" />
-                </div>
-                <div className="fixedContent">
-                  <h6>Pay fixed price</h6>
-                  <p>
-                    Agree on a price and release payemnt when the job is done.
-                    Best for one-off tasks.
-                  </p>
-                </div>
-              </div>
+              <FormControl component="fieldset">
+                <RadioGroup
+                  aria-label="howToPay"
+                  name="projectPaymentModel"
+                  value={apiData.projectPaymentModel}
+                  onChange={(event) => handleChange(event)}
 
-              <div
-                className="fixedPrice"
-                name="projectPaymentModel"
-                onClick={() => handlePaymentModel(false)}
-              >
-                {apiData.projectPaymentModel === "By Hour" ? (
-                  <i class="fa fa-check-circle" aria-hidden="true"></i>
-                ) : null}
-                <div className="fixedImage">
-                  <img src={hour} alt="hour" />
-                </div>
-                <div className="fixedContent">
-                  <h6>Pay by the hour</h6>
-                  <p>
-                    Hire based on an hourly rate and pay for hours billed. Best
-                    for ongoing work
-                  </p>
-                </div>
-              </div>
+                // onChange={(event) => handlePaymentModel(true)}
+                >
+
+                  <div className="fixedPrice" name="projectPaymentModel">
+                    <FormControlLabel
+                      color="primary"
+                      value="Fixed Price"
+                      control={<BlueRadio className={classes.root} />}
+                    />
+                    {/* {apiData.projectPaymentModel === "Fixed Price" ? (
+                      <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    ) : null} */}
+                    <div className="fixedImage">
+                      <img src={fixed} alt="" />
+                    </div>
+                    <div className="fixedContent">
+                      <h6>Pay fixed price</h6>
+                      <p>
+                        Agree on a price and release payemnt when the job is done.
+                        Best for one-off tasks.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="fixedPrice" name="projectPaymentModel">
+                    <FormControlLabel
+                      value="By Hour"
+                      control={<BlueRadio className={classes.root} />}
+                    />
+                    {/* {apiData.projectPaymentModel === "By Hour" ? (
+                      <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    ) : null} */}
+                    <div className="fixedImage">
+                      <img src={hour} alt="hour" />
+                    </div>
+                    <div className="fixedContent">
+                      <h6>Pay by the hour</h6>
+                      <p>
+                        Hire based on an hourly rate and pay for hours billed. Best
+                        for ongoing work
+                      </p>
+                    </div>
+                  </div>
+                </RadioGroup>
+              </FormControl>
             </div>
           </div>
 
           <div className="estimatedBudget">
             <div className="estimatedBudgetText">
-              <h6>What is your estimated Budget?</h6>
+              <ul>
+                <li>
+                  What is your estimated Budget?
+                </li>
+              </ul>
             </div>
             <div>
               <FormControl component="fieldset">
@@ -404,12 +447,10 @@ function ShortTerm(props) {
             </div>
           </div>
 
-          <div className="doneButton">
-            <div></div>
-            <button onClick={() => handleButton()}>
-              {buttonStatus}
-              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-            </button>
+          <div className="post-project">
+            <div onClick={() => handleButton()}>
+              Post Project
+            </div>
           </div>
         </div>
       </div>

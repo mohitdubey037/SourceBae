@@ -129,7 +129,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 80px;
+    height: 90px;
 }
 
 .innerHigherAgencyForm1 ul {
@@ -148,8 +148,9 @@
 }
 
 .descriptionProjectAgency textarea {
+    margin-top: 5px;
     width: 100%;
-    height: 400px;
+    height: 100%;
     padding-left: 10px;
     background: #FFFFFF;
     border: 1px solid #D1D3D4;
@@ -165,7 +166,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 195px;
+    height: 240px;
 }
 
 /* .descriptionProjectAgency textarea {
@@ -217,6 +218,7 @@
 }
 
 .daysInputAgency {
+    border-radius: 8px;
     border: 1px solid #999;
     width: 80%;
     display: flex;
@@ -239,6 +241,7 @@
     justify-content: center;
     align-items: center;
     border: 1px solid #ebebeb;
+    border-top-right-radius: 8px;
     top: 0;
     right: 0;
     font-size: 1.1rem;
@@ -253,6 +256,7 @@
     justify-content: center;
     align-items: center;
     border: 1px solid #ebebeb;
+    border-bottom-right-radius: 8px;
     bottom: 0;
     right: 0;
     font-size: 1.1rem;
