@@ -1,6 +1,13 @@
 import BackLeft from '../../assets/images/Back/Back-left.svg';
 import './Back.css';
+import { withRouter } from "react-router";
+
 function Back(props) {
+    console.log(props);
+
+    const goBack = () => {
+        console.log('hii')
+    }
     return (
         <div className="back-button_newestAddDeveloper">
             <div className="image-div_newestAddDeveloper">
@@ -13,4 +20,4 @@ function Back(props) {
         </div>
     )
 }
-export default Back
+export default withRouter(Back);
