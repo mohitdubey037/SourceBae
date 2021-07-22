@@ -11,7 +11,26 @@ import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/Investm
 import './ClientNewestDashboard.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
+import { useHistory } from 'react-router-dom';
+
+
 function ClientNewestDashboard() {
+
+    const routerHistory = useHistory();
+
+    const hireDeveloper = () => {
+        routerHistory.push('/hire-developer')
+    }
+    const hireAgency = () => {
+        routerHistory.push('/hire-agency-form-one')
+    }
+    const shortTermProject = () => {
+        routerHistory.push('/short-term')
+    }
+    const interestedToInvestment = () => {
+        // routerHistory.push('/hire-developer')
+    }
+
     return (
         <div className="dashboard-container">
             <Sidebar />
@@ -20,10 +39,10 @@ function ClientNewestDashboard() {
                 <div className="content-body">
                     <div className="content-leftBody">
                         <div className="user-operations">
-                            <UserOperations text='Hire Developer' img={HireDeveloperIcon} />
-                            <UserOperations text="Hire Agency" img={HireAgencyIcon} />
-                            <UserOperations text="Short Term Project" img={ShortTermProjectIcon} />
-                            <UserOperations text="Interested To Investment" img={InvestmentIcon} />
+                            <UserOperations clickHandler={hireDeveloper} text='Hire Developer' img={HireDeveloperIcon} />
+                            <UserOperations clickHandler={hireAgency} text="Hire Agency" img={HireAgencyIcon} />
+                            <UserOperations clickHandler={shortTermProject} text="Short Term Project" img={ShortTermProjectIcon} />
+                            <UserOperations clickHandler={interestedToInvestment} text="Interested To Investment" img={InvestmentIcon} />
                         </div>
                         <div className="graphic">
                             <div className="graphic-illustration-heading">

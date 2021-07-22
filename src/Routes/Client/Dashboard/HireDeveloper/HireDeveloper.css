@@ -140,7 +140,7 @@
     height: 95px;
 }
 
-.resourceNumber ul, .skillsRequiredDeveloper ul, .averageExperience ul, .developerExperienceRequired ul, .preferredBillingMode ul, .averageBudget ul, .startPeriod ul, .contractPeriod ul {
+.hireDeveloperForm .resourceNumber ul, .hireDeveloperForm .skillsRequiredDeveloper ul, .hireDeveloperForm .averageExperience ul, .hireDeveloperForm .developerExperienceRequired ul, .hireDeveloperForm .preferredBillingMode ul, .hireDeveloperForm .averageBudget ul, .hireDeveloperForm .startPeriod ul, .hireDeveloperForm .contractPeriod ul {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;

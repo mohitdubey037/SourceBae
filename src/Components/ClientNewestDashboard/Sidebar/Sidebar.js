@@ -8,7 +8,20 @@ import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile_
 import notificationIcon from "../../../assets/images/Newestdashboard/SideBar/notification_icon.svg";
 import settingIcon from "../../../assets/images/Newestdashboard/SideBar/setting_icon.svg";
 
+import { useHistory } from 'react-router-dom';
+
+
 function Sidebar() {
+    const role = localStorage.getItem('role');
+
+    const routerHistory = useHistory();
+
+    const agencyProfileHandler = () => {
+        if (role === 'Agency') {
+            routerHistory.push('/agency-profile');
+        }
+    }
+
     return (
         <div className="container-sidebar">
             <div className="sidebar-logo">
@@ -20,11 +33,13 @@ function Sidebar() {
                     <img src={dashboardIcon} alt="dashboard icon" />
                     <p>Dashboard</p>
                 </div>
-                <div className="postProject-icon icons">
-                    <img src={postProjectIcon} alt="dashboard icon" />
-                    <p>Post Project</p>
-                </div>
-                <div className="profile-icon icons">
+                {role === "Client" &&
+                    <div className="postProject-icon icons">
+                        <img src={postProjectIcon} alt="dashboard icon" />
+                        <p>Post Project</p>
+                    </div>
+                }
+                <div onClick={() => agencyProfileHandler()} className="profile-icon icons">
                     <img src={profileIcon} alt="dashboard icon" />
                     <p>Profile</p>
                 </div>
