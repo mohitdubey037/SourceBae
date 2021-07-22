@@ -1,5 +1,6 @@
-import Navbar from './Navbar';
-import React from 'react'
+// import Navbar from './Navbar';
+import React from 'react';
+import Navbar from './../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 import AgencyRespondedDetails from './AgencyRespondedDetails';
 
@@ -8,9 +9,9 @@ function ProjectDetails(props) {
     return (
         <>
             <Navbar />            
-            <div style={{ marginTop: '3%' }}>
+            {/* <div style={{ marginTop: '3%' }}> */}
             <AgencyRespondedDetails/>
-            </div>
+            {/* </div> */}
         </>
     )
 }

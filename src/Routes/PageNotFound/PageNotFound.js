@@ -31,8 +31,15 @@ const useStyles = makeStyles({
     }
 })
 
-export default function PageNotFound() {
+export default function PageNotFound(props) {
     const classes = useStyles()
+
+    const homePage = () => {
+        localStorage.removeItem("Authorization");
+        localStorage.removeItem('role');
+        props.history.push('/');
+    }
+
     return (
         <Container className={classes.container}>
             <Typography style={{ fontSize: '135px', fontWeight: '900', margin: '10px' }} variant='h1'>Oops!</Typography>
@@ -44,7 +51,8 @@ export default function PageNotFound() {
                 root: classes.root, // class name, e.g. `classes-nesting-root-x`
                 label: classes.label, // class name, e.g. `classes-nesting-label-x`
             }}
-                href='/' variant='contained' >GO TO HOMEPAGE</Button>
+            onClick={homePage}
+            variant='contained'>GO TO HOMEPAGE</Button>
         </Container>
     )
 }

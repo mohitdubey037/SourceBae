@@ -9,6 +9,8 @@ import Responded from './Responded'
 import ProjectesMatched from './ProjectesMatched';
 import { useRef, useState, useEffect } from 'react';
 
+import Back from '../../../Components/Back/Back';
+
 function Quotation(props) {
     const [navigated, setNavigation] = useState(false)
     const receivedRef = useRef(null);
@@ -34,16 +36,19 @@ function Quotation(props) {
         // else if (navigated) {
         //     inputEl?.current?.click()
         // }
-    },[])
+    }, [])
 
 
     return (
         <>
             <Navbar headingInfo="Quotation" />
+            <Back />
             <div className="mainQuotation">
-                <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
+
+
+                {/* <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
-                </div>
+                </div> */}
                 <div className="innerQuotation">
                     <nav>
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">

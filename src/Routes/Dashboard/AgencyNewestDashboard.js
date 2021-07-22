@@ -48,40 +48,42 @@ function AgencyNewestDashboard() {
     const viewProduct = () => {
         if (agencyProfileData.productId !== '' || agencyProfileData.productId != undefined) {
             routerHistory.push({
-                pathname : `/product-details:${agencyProfileData.productId}`,
-                condition : 'Agency'
+                pathname: `/product-details:${agencyProfileData.productId}`,
+                condition: 'Agency'
             })
         }
     }
 
     return (
-        <div className="dashboard-container">
-            <Sidebar />
-            <div className="container-body">
-                <Navbar />
-                <div className="content-body">
-                    <div className="content-leftBody">
-                        <div className="user-operations">
-                            <UserOperations clickHandler={quotation} text='Quotation' img={ThirdIcon} />
-                            <UserOperations clickHandler={addDeveloper} text="Add Developer" img={MobileIcon} />
-                            <UserOperations clickHandler={viewProduct} text="View Product" img={QuotationIcon} />
-                        </div>
-                        <div className="graphic">
-                            <div className="graphic-illustration-heading">
-                                <h6>Project details</h6>
+        <>
+            <div className="dashboard-container">
+                <Sidebar />
+                <div className="container-body">
+                    <Navbar />
+                    <div className="content-body">
+                        <div className="content-leftBody">
+                            <div className="user-operations">
+                                <UserOperations clickHandler={quotation} text='Quotation' img={ThirdIcon} />
+                                <UserOperations clickHandler={addDeveloper} text="Add Developer" img={MobileIcon} />
+                                <UserOperations clickHandler={viewProduct} text="View Product" img={QuotationIcon} />
+                            </div>
+                            <div className="graphic">
+                                <div className="graphic-illustration-heading">
+                                    <h6>Project details</h6>
+                                </div>
+                            </div>
+                            <div className="user-project">
+                                <div>
+                                    <AgencyProjectCard />
+                                    <AgencyProjectCard />
+                                </div>
                             </div>
                         </div>
-                        <div className="user-project">
-                            <div>
-                                <AgencyProjectCard />
-                                <AgencyProjectCard />
-                            </div>
-                        </div>
+                        <RightSide />
                     </div>
-                    <RightSide />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
