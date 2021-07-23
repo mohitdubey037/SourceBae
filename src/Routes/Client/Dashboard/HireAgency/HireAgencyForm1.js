@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ClientNavbar from "../../ClientNavbar";
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import "./HireAgencyForms.css";
 
 import Radio from "@material-ui/core/Radio";
@@ -118,8 +119,12 @@ const HireAgencyForm1 = (props) => {
 
   return (
     <>
-      <ClientNavbar />
-      <Back name="Hire Agency" />
+      <div className="Navbar-parent">
+        <Navbar />
+      </div>
+      <div className="back-parent marginLeft"> 
+        <Back name="Hire Agency" />
+      </div>
       {loading ? <Spinner /> :
         <div className="mainHireAgencyForm1">
 
@@ -136,8 +141,8 @@ const HireAgencyForm1 = (props) => {
               <div className="stepCheck">
                 <div className="step-1_hireAgencyForm1">
                   <div className="color-div_hireAgencyForm1">
-                  </div>  
-                    <p>Step 1</p>
+                  </div>
+                  <p>Step 1</p>
                 </div>
                 <span>Help us understand more about your project..!!</span>
               </div>

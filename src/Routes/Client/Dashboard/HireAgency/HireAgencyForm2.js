@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import ClientNavbar from "../../ClientNavbar";
+// import ClientNavbar from "../../ClientNavbar";
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar'
 import MultiSelect from "react-multi-select-component";
 import { useParams } from "react-router";
 
@@ -200,8 +201,12 @@ function HireAgencyForm2(props) {
   }, []);
   return (
     <>
-      <ClientNavbar />
-      <Back name="Hire Agency" />
+      <div className="Navbar-parent">
+        <Navbar />
+      </div>
+      <div className="back-parent marginLeft"> 
+        <Back name="Hire Agency" />
+      </div>
       {/* <div
         className="backArrow_hireAgencyForm2"
         onClick={() => {

@@ -1,3 +1,8 @@
+.marginLeft {
+    margin-top: 1%;
+    margin-left: 0;
+}
+
 .backArrow_shortTerm {
     position: absolute;
     top: 12%;
@@ -18,7 +23,7 @@
 }
 
 .mainShortTerm {
-    margin-top: 60px;
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: center;

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Navbar';
+import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../Components/Back/Back';
 
 import './AddingDeveloper.css'
@@ -229,11 +229,15 @@ function AddingDeveloper(props) {
 
     return (
         <>
-            <Navbar />
+            <div className="Navbar-parent">
+                <Navbar />
+            </div>
+            <div className="back-parent marginLeft">
+                <Back name="Add Developer" />
+            </div>
 
             {loading ? <Spinner /> :
                 <>
-                    <Back name="Add Developer" />
                     <div className="mainAddingDeveloper">
                         <div className="innerAddingDeveloper">
                             <div className="addingDeveloperHeadings">

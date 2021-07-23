@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  margin-top: 3%;
 }
 
 .innerAddingDeveloper {
@@ -285,6 +284,10 @@
   text-transform: capitalize !important;
   color: #A8A8A8 !important;
   margin-right: 29px !important;
+}
+
+.inputField2 .makeStyles-formControl-10 {
+  margin-left: 0;
 }
 
 .MuiFormLabel-root {
