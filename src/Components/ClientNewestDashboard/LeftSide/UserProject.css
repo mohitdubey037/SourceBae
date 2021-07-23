@@ -1,132 +1,137 @@
-.header-currentStatus img, .show-project-detail img, .detailsCard-header img {
-    width: 16px;
+.header-currentStatus img,
+.show-project-detail img,
+.detailsCard-header img {
+  width: 16px;
 }
 
 .centerImage img {
-    width: 36px;
+  width: 36px;
 }
 
 .project-details-card {
-    width: 305px;
-    min-height: 165px;
-    justify-self: flex-start;
-    background: linear-gradient(90deg, #F5FAFF 0%, #FFFFFF 100%);
-    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
-    padding: 10px 20px 5px 20px;
-    margin-bottom: 10px;
-    font-style: normal;
-    margin-top: 20px;
+  width: 305px;
+  min-height: 165px;
+  justify-self: flex-start;
+  background: linear-gradient(90deg, #f5faff 0%, #ffffff 100%);
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  padding: 10px 20px 5px 20px;
+  margin-bottom: 10px;
+  font-style: normal;
+  margin-top: 20px;
+  position: relative;
 }
 
 .projectDetail {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .projectDetailsStrip_long {
-    position: absolute;
-    margin-top: -12px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #02044A;
-    border-radius: 10px;
-    width: 5px;
-    height: 75px;
+  position: absolute;
+  margin-top: -12px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #02044a;
+  border-radius: 10px;
+  width: 5px;
+  height: 75px;
 }
 
 .projectDetailsStrip_short {
-    position: absolute;
-    margin-top: -11px;
-    margin-left: 15px;
-    margin-right: auto;
-    background-color: #02044A;
-    border-radius: 10px;
-    width: 5px;
-    height: 48px;
+  position: absolute;
+  margin-top: -11px;
+  margin-left: 15px;
+  margin-right: auto;
+  background-color: #02044a;
+  border-radius: 10px;
+  width: 5px;
+  height: 48px;
 }
 
 .detailsCard-header {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 50px;
 }
 
 .detailsCard-date {
-    width: 63%;
-    margin: auto;
+  width: 63%;
+  margin: auto;
 }
 
 .date-color {
-    color: #407BFF;
+  color: #407bff;
 }
 
 .centerImage {
-    display: grid;
-    place-items: center;
-    margin-top: 20px;
+  display: grid;
+  place-items: center;
+  margin-top: 20px;
 }
 
-.centerImage>div {
-    font-weight: 600;
-    font-size: 18px;
-    margin-top: 10px;
+.centerImage > div {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
-.centerImage>div>p {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    text-align: center;
-    letter-spacing: 0.4px;
+.centerImage > div > p {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: 0.4px;
 }
 
-.currentStatus-text p, .projectDetail-text p {
-    align-self: center;
-    color: #407BFF;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 8px;
-    line-height: 10px;
-    letter-spacing: 0.4px;
+.currentStatus-text p,
+.projectDetail-text p {
+  align-self: center;
+  color: #407bff;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 10px;
+  letter-spacing: 0.4px;
 }
 
-.header-currentStatus, .show-project-detail {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 45%;
+.header-currentStatus,
+.show-project-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 45%;
 }
 
-.project-details-card>.header-subHeading {
-    margin-left: 50px;
+.project-details-card > .header-subHeading {
+  margin-left: 50px;
 }
 
-.project-details-card>.detailsCard-date>h6 {
-    font-weight: 600;
-    font-size: 12px;
+.project-details-card > .detailsCard-date > h6 {
+  font-weight: 600;
+  font-size: 12px;
 }
 
 .detailsCard-statuses {
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
 }
 
-.detailsCard-footer>.info-icon {
-    display: flex;
-    width: 45px;
-    height: 45px;
-    padding: 10px;
-    margin-top: 5px;
+.detailsCard-footer > .info-icon {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  margin-top: 5px;
 }
 
-.detailsCard-footer>.info-icon {
-    display: flex;
-    width: 45px;
-    height: 45px;
-    padding: 10px;
+.detailsCard-footer > .info-icon {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
 }

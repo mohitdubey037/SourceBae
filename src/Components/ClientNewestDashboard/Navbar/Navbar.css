@@ -1,60 +1,61 @@
 .container-body {
-    flex: 1;
+  flex: 1;
 }
 
-.container-body>.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 30px;
+.container-body > .navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  height: 12vh;
 }
 
-.navbar>.navbar-heading>h1 {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 29px;
-    letter-spacing: 0.3px;
-    color: #3a3a3a;
+.navbar > .navbar-heading > h1 {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.3px;
+  color: #3a3a3a;
 }
 
-.navbar>.navbar-items {
-    display: flex;
-    align-items: center;
+.navbar > .navbar-items {
+  display: flex;
+  align-items: center;
 }
 
-.navbar>.navbar-items>.nav-left-item {
-    margin-right: 20px;
+.navbar > .navbar-items > .nav-left-item {
+  margin-right: 20px;
 }
 
-.navbar>.navbar-items>.notification-icon>img {
-    height: 25px;
-    width: 25px;
+.navbar > .navbar-items > .notification-icon > img {
+  height: 25px;
+  width: 25px;
 }
 
-.navbar>.navbar-items>.nav-left-item>p {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    margin: 0;
-    text-align: right;
-    letter-spacing: 0.2px;
-    color: #252733;
+.navbar > .navbar-items > .nav-left-item > p {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  margin: 0;
+  text-align: right;
+  letter-spacing: 0.2px;
+  color: #252733;
 }
 
-.navbar-items>.userprofile-circle {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: url(../../../assets/images/Newestdashboard/SideBar/me.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+.navbar-items > .userprofile-circle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url(../../../assets/images/Newestdashboard/SideBar/me.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.navbar-items>.userprofile-circle>img {
-    height: 50px;
-    width: 50px;
+.navbar-items > .userprofile-circle > img {
+  height: 50px;
+  width: 50px;
 }
