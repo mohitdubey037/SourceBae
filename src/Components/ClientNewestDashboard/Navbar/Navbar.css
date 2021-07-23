@@ -2,6 +2,10 @@
   flex: 1;
 }
 
+.navbar h1 {
+  margin-bottom: 0;
+}
+
 .container-body > .navbar {
   display: flex;
   justify-content: space-between;
