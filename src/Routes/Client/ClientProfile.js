@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import ClientNavbar from './ClientNavbar'
 import './ClientProfile.css'
 import NO_Data_ICON from '../Dashboard/no_data_icon.jpg';
-import avatar from '../../assets/images/ClientDashboard/avatar.png'
+import avatar from '../../assets/images/ClientDashboard/avatar.png';
+import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
+import Back from '../../Components/Back/Back';
 
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
@@ -57,7 +59,7 @@ function ClientProfile() {
             userDesignation: clientData.userDesignation,
         }
         const clientId = localStorage.getItem("userId")
-        instance.patch(`/api/${Role}/clients/update/${clientId}`,body)
+        instance.patch(`/api/${Role}/clients/update/${clientId}`, body)
             .then(function (response) {
                 console.log(response);
                 setClientData({
@@ -84,13 +86,13 @@ function ClientProfile() {
     const handleChange = (event) => {
         const { name, value } = event.target
         console.log(name, value)
-        if (name !== "countryCode" && name!=="userEmail" &&  name!=="userName" &&  name!=="userPhone") {
+        if (name !== "countryCode" && name !== "userEmail" && name !== "userName" && name !== "userPhone") {
             setClientData({
                 ...clientData,
                 [name]: value
             })
         }
-        else{
+        else {
             alert("!Not allowed")
         }
     }
@@ -101,7 +103,12 @@ function ClientProfile() {
 
     return (
         <>
-            <ClientNavbar />
+            <div className="Navbar-parent">
+                <Navbar />
+            </div>
+            <div className="back-parent marginLeft">
+                <Back name="Hire Agency" />
+            </div>
             {err ?
                 <>
                     <div style={{ textAlign: 'center', width: '100%' }}>
@@ -146,7 +153,7 @@ function ClientProfile() {
                                                     </div>
                                                     <div className="clientFormAnswer">
                                                         {
-                                                            isEdit && (key !== "countryCode" && key!=="userEmail" &&  key!=="userName" &&  key!=="userPhone")? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
+                                                            isEdit && (key !== "countryCode" && key !== "userEmail" && key !== "userName" && key !== "userPhone") ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
                                                         }
                                                     </div>
                                                 </div>)

@@ -37,15 +37,6 @@ function AgencyNewestDashboard(props) {
         getAgencyProfileData();
     }, []);
 
-    const viewProduct = () => {
-        if (agencyProfileData.productId !== '' || agencyProfileData.productId != undefined) {
-            routerHistory.push({
-                pathname: `/product-details:${agencyProfileData.productId}`,
-                condition: 'Agency'
-            })
-        }
-    }
-
     return (
         <>
             <div className="dashboard-container">
@@ -57,7 +48,10 @@ function AgencyNewestDashboard(props) {
                             <div className="user-operations">
                                 <UserOperations nextpage={() => props.history.push("/quotation")} text='Quotation' img={ThirdIcon} />
                                 <UserOperations nextpage={() => props.history.push("/add-developer")} text="Add Developer" img={MobileIcon} />
-                                <UserOperations text="View Product" img={QuotationIcon} />
+                                <UserOperations nextpage={() => props.history.push({
+                                    pathname: `/product-details:${agencyProfileData.productId}`,
+                                    condition: 'Agency'
+                                })} text="View Product" img={QuotationIcon} />
                             </div>
                             <div className="graphic">
                                 <div className="graphic-illustration-heading">

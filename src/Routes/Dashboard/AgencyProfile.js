@@ -105,11 +105,11 @@ function AgencyProfile(props) {
   return (
     <>
       {/* {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />} */}
-      <Navbar />
       {loading ? (
         <Spinner />
       ) : agencyProfileData._id !== "" ? (
         <div>
+          <Navbar />
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
               {Role === "Agency" ? (
@@ -355,7 +355,7 @@ function AgencyProfile(props) {
           </div>
 
           <div className="mainQuotation">
-            <div className="innerQuotation">
+            <div className="innerQuotation marginLeft">
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <button
