@@ -1,8 +1,21 @@
 import React from 'react';
 import notificationIcon from "../../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useHistory } from 'react-router-dom';
+
 import './Navbar.css';
 
-function Navbar() {
+function Navbar(props) {
+
+    const routerHistory = useHistory()
+
+    console.log(props);
+    const logout = () => {
+        localStorage.removeItem("Authorization");
+        localStorage.removeItem('role');
+        routerHistory.push('/');
+    }
+
     return (
         <div className="navbar">
             <div className="navbar-heading">
@@ -11,6 +24,12 @@ function Navbar() {
             <div className="navbar-items">
                 <div className="notification-icon nav-left-item">
                     <img src={notificationIcon} alt="notification" />
+                </div>
+                <div onClick={logout} className="logout-icon nav-left-item">
+                    <div>
+                        <ExitToAppIcon />
+                    </div>
+                    {/* <img src={notificationIcon} alt="notification" /> */}
                 </div>
                 <div className="username nav-left-item">
                     <p>Atul Bhatt</p>

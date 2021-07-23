@@ -15,7 +15,7 @@ import { useHistory } from 'react-router-dom';
 import instance from "../../Constants/axiosConstants";
 
 
-function AgencyNewestDashboard() {
+function AgencyNewestDashboard(props) {
 
     const routerHistory = useHistory();
     const Role = localStorage.getItem('role');
@@ -37,14 +37,6 @@ function AgencyNewestDashboard() {
         getAgencyProfileData();
     }, []);
 
-    const quotation = () => {
-        routerHistory.push('/quotation')
-    }
-
-    const addDeveloper = () => {
-        routerHistory.push('add-developer');
-    }
-
     const viewProduct = () => {
         if (agencyProfileData.productId !== '' || agencyProfileData.productId != undefined) {
             routerHistory.push({
@@ -63,9 +55,9 @@ function AgencyNewestDashboard() {
                     <div className="content-body">
                         <div className="content-leftBody">
                             <div className="user-operations">
-                                <UserOperations clickHandler={quotation} text='Quotation' img={ThirdIcon} />
-                                <UserOperations clickHandler={addDeveloper} text="Add Developer" img={MobileIcon} />
-                                <UserOperations clickHandler={viewProduct} text="View Product" img={QuotationIcon} />
+                                <UserOperations nextpage={() => props.history.push("/quotation")} text='Quotation' img={ThirdIcon} />
+                                <UserOperations nextpage={() => props.history.push("/add-developer")} text="Add Developer" img={MobileIcon} />
+                                <UserOperations text="View Product" img={QuotationIcon} />
                             </div>
                             <div className="graphic">
                                 <div className="graphic-illustration-heading">

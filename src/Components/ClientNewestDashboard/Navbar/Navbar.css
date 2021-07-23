@@ -8,6 +8,18 @@
   padding: 10px 30px 10px 30px;
 }
 
+.logout-icon {
+  margin-right: 20px;
+}
+
+.logout-icon:hover {
+  color: blue !important;
+}
+
+.logout-icon .MuiSvgIcon-root {
+  font-size: 1.7rem !important;
+}
+
 .navbar > .navbar-heading > h1 {
   font-family: 'Inter';
   font-style: normal;
