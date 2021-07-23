@@ -122,9 +122,6 @@ const HireAgencyForm1 = (props) => {
       <div className="Navbar-parent">
         <Navbar />
       </div>
-      <div className="back-parent marginLeft"> 
-        <Back name="Hire Agency" />
-      </div>
       {loading ? <Spinner /> :
         <div className="mainHireAgencyForm1">
 

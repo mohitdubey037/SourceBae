@@ -20,6 +20,9 @@ function Sidebar() {
         if (role === 'Agency') {
             routerHistory.push('/agency-profile');
         }
+        else {
+            routerHistory.push('/client-profile');
+        }
     }
 
     return (
