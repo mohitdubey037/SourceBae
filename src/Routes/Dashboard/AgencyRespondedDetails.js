@@ -145,7 +145,7 @@ function AgencyRespondedDetails(props) {
         <p>{project?.projectName}</p>
       </div>
 
-      <div className="respondCards">
+      <div className="respondCards_AgencyRespondedDetails">
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>

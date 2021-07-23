@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../Navbar'
+// import Navbar from '../Navbar'
 import './Quotation.css'
 import received from '../../../assets/images/Quotation/received.png'
 import responded from '../../../assets/images/Quotation/responded.png'
@@ -7,7 +7,9 @@ import matched from '../../../assets/images/Quotation/matched.png'
 import Received from './Received'
 import Responded from './Responded'
 import ProjectesMatched from './ProjectesMatched';
+import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import { useRef, useState, useEffect } from 'react';
+import Sidebar from '../../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 import Back from '../../../Components/Back/Back';
 
@@ -41,11 +43,14 @@ function Quotation(props) {
 
     return (
         <>
-            <Navbar headingInfo="Quotation" />
-            <Back />
+            <Sidebar />
+            {/* <Navbar headingInfo="Quotation" /> */}
+            <Navbar />
+            <div className="back-parent">
+                <Back />
+            </div>
+
             <div className="mainQuotation">
-
-
                 {/* <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                 </div> */}
