@@ -12,10 +12,17 @@
   /* padding: 2rem; */
   margin-top: 1%;
 }
+
+.back-parent {
+  margin-left: 10%;
+}
+
 .innerQuotation {
-  width: 95%;
+  width: 90%;
   margin-top: 2%;
   position: relative;
+  margin-left: 10%
+
 }
 .nav-tabs .nav-link {
   background-color: transparent !important;

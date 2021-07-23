@@ -243,11 +243,11 @@
   cursor: pointer;
   user-select: none;
 }
-.quotationShortlistButton div p {
+/* .quotationShortlistButton div p {
   transform: translateY(6.5px);
   font-family: 'Poppins';
   font-weight: bold;
-}
+} */
 .quotationShortlistButton div:nth-child(1) {
   border: 1px solid #3498db;
   color: #3498db;

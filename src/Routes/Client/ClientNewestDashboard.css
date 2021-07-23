@@ -1,6 +1,6 @@
-.container-body {
-  flex: 1;
-}
+/* .container-body {
+    flex: 1;
+} */
 
 .container-body > .content-body {
   display: flex;
@@ -8,6 +8,17 @@
 
 .user-operations {
   height: 20vh;
+}
+
+.dashboard-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.container-body {
+  width: 90%;
+  margin-left: 10%;
 }
 
 .user-project-details {

@@ -1,13 +1,12 @@
 .container-sidebar {
-  /* background: red; */
-  height: 100vh;
-  width: 14%;
+  background: #eaf3ff;
+  height: 100%;
+  width: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.4);
-  position: sticky;
-  top: 0;
+  position: fixed;
 }
 
 .sidebar-logo {

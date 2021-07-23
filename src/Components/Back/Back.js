@@ -1,10 +1,22 @@
 import BackLeft from '../../assets/images/Back/Back-left.svg';
 import './Back.css';
+import { withRouter } from "react-router";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+
 function Back(props) {
+    console.log(props);
+
+    const goBack = () => {
+        console.log('hii');
+        props.history.goBack();
+    }
     return (
         <div className="back-button_newestAddDeveloper">
             <div className="image-div_newestAddDeveloper">
-                <img src={BackLeft} alt="Back left" />
+                {/* <img onClick={goBack} src={BackLeft} alt="Back left" /> */}
+                <div className="hover" onClick={goBack}>
+                    <ArrowBackIosIcon className="back-icon" />
+                </div>
                 <h6>Back</h6>
             </div>
             <div className="add-developer-div">
@@ -13,4 +25,4 @@ function Back(props) {
         </div>
     )
 }
-export default Back
+export default withRouter(Back);

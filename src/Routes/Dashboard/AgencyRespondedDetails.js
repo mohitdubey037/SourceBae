@@ -16,19 +16,21 @@ import { Modal } from "react-responsive-modal";
 import detailImage from '../../assets/images/details.png'
 
 import AgencyCommentBox from '../Agency/AgencyCommentBox/AgencyCommentBox';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 
 function AgencyRespondedDetails(props) {
-  const [isRepliedToClient, setRepliedToClient] = useState(false);
   const routerHistory = useHistory();
-  console.log(routerHistory);
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
-  const [project, setProject] = useState({});
-  const [loading, setLoading] = useState(false);
+  console.log(routerHistory);
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
+
+  const [isRepliedToClient, setRepliedToClient] = useState(false);
+  const [project, setProject] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const getAllProjects = () => {
     setLoading(true);
@@ -43,6 +45,7 @@ function AgencyRespondedDetails(props) {
         console.error(err);
       });
   };
+
   useEffect(() => {
     if (Object.keys(props["projects"]).length === 0) {
       getAllProjects();
@@ -53,9 +56,17 @@ function AgencyRespondedDetails(props) {
 
   useEffect(() => {
   }, [isRepliedToClient]);
+
+  const goBack = () => {
+    routerHistory.push({
+      pathname: "/quotation",
+      origin: routerHistory.location.origin
+    })
+  }
+
   return (
     <>
-      <div
+      {/* <div
         style={{ marginTop: "55px" }}
         className="backArrow"
         onClick={() =>
@@ -66,6 +77,18 @@ function AgencyRespondedDetails(props) {
         }
       >
         <i className="fa fa-angle-left" aria-hidden="true"></i>
+      </div> */}
+
+      <div className="back-button_newestAddDeveloper">
+        <div className="image-div_newestAddDeveloper">
+          <div className="hover" onClick={goBack}>
+            <ArrowBackIosIcon className="back-icon" />
+          </div>
+          <h6>Back</h6>
+        </div>
+        <div className="add-developer-div">
+          <h6>Agency Responded Details</h6>
+        </div>
       </div>
       <div className="mainDetailHeader_agencyRespondedDetails">
         <div className="innerDetailHeader_agencyRespondedDetails">
@@ -122,7 +145,7 @@ function AgencyRespondedDetails(props) {
         <p>{project?.projectName}</p>
       </div>
 
-      <div className="respondCards">
+      <div className="respondCards_AgencyRespondedDetails">
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
@@ -215,18 +238,80 @@ function AgencyRespondedDetails(props) {
                     ) :
                       project?.projectProposals &&
                         project.projectProposals[0]?.isAskedForQuotation === true ? (
+                        <AgencyCommentBox
+                          giveReplies={(gr) => {
+                            setRepliedToClient(gr);
+                          }}
+                          comments={project.projectProposals && project.projectProposals[0]?.comments}
+                          commentType="Quotation"
+                          isReplySectionActive={
+                            project.projectProposals &&
+                            project.projectProposals[0].isReplySectionActive
+                          }
+                          projectId={projectId}
+                          isAskedForQuotation={true}
+                          isShortListed={true}
+                          clientNegotiablePrice={
+                            project.projectProposals &&
+                            project.projectProposals[0].clientNegotiablePrice
+                          }
+                          agencyNegotiablePrice={
+                            project.projectProposals &&
+                            project.projectProposals[0].agencyNegotiablePrice
+                          }
+                          quotationLink={project.projectProposals && project.projectProposals[0].quotationLink}
+                          isProposalActionActive={
+                            project.projectProposals &&
+                            project.projectProposals[0].isProposalActionActive
+                          }
+                          isQuotationAcceptedByClient={
+                            project.projectProposals &&
+                            project.projectProposals[0].isQuotationAcceptedByClient
+                          }
+                          projectStartDateByClient={
+                            project.projectProposals &&
+                            project.projectProposals[0].projectStartDateByClient
+                          }
+                          projectDelayedStartDateByClient={
+                            project.projectProposals &&
+                            project.projectProposals[0].projectDelayedStartDateByClient
+                          }
+                          projectEndDateByClient={
+                            project.projectProposals &&
+                            project.projectProposals[0].projectEndDateByClient
+                          }
+                          projectExpectedEndDateByClient={
+                            project.projectProposals &&
+                            project.projectProposals[0].projectExpectedEndDateByClient
+                          }
+                          finalCostByClient={
+                            project.projectProposals &&
+                            project.projectProposals[0].finalCostByClient
+                          }
+                          rejectReasonByClient={
+                            project.projectProposals &&
+                            project.projectProposals[0].rejectReasonByClient
+                          }
+
+                        />
+                      ) : (
+                        project?.projectProposals && (
                           <AgencyCommentBox
                             giveReplies={(gr) => {
                               setRepliedToClient(gr);
                             }}
                             comments={project.projectProposals && project.projectProposals[0]?.comments}
-                            commentType="Quotation"
+                            commentType="Shortlist"
                             isReplySectionActive={
                               project.projectProposals &&
                               project.projectProposals[0].isReplySectionActive
                             }
+                            isCommentSectionActive={
+                              project.projectProposals &&
+                              project.projectProposals[0].isCommentSectionActive
+                            }
                             projectId={projectId}
-                            isAskedForQuotation={true}
+                            isAskedForQuotation={false}
                             isShortListed={true}
                             clientNegotiablePrice={
                               project.projectProposals &&
@@ -244,6 +329,10 @@ function AgencyRespondedDetails(props) {
                             isQuotationAcceptedByClient={
                               project.projectProposals &&
                               project.projectProposals[0].isQuotationAcceptedByClient
+                            }
+                            isQuotationAcceptedByAgency={
+                              project.projectProposals &&
+                              project.projectProposals[0].isQuotationAcceptedByAgency
                             }
                             projectStartDateByClient={
                               project.projectProposals &&
@@ -269,75 +358,9 @@ function AgencyRespondedDetails(props) {
                               project.projectProposals &&
                               project.projectProposals[0].rejectReasonByClient
                             }
-
                           />
-                        ) : (
-                          project?.projectProposals && (
-                            <AgencyCommentBox
-                              giveReplies={(gr) => {
-                                setRepliedToClient(gr);
-                              }}
-                              comments={project.projectProposals && project.projectProposals[0]?.comments}
-                              commentType="Shortlist"
-                              isReplySectionActive={
-                                project.projectProposals &&
-                                project.projectProposals[0].isReplySectionActive
-                              }
-                              isCommentSectionActive={
-                                project.projectProposals &&
-                                project.projectProposals[0].isCommentSectionActive
-                              }
-                              projectId={projectId}
-                              isAskedForQuotation={false}
-                              isShortListed={true}
-                              clientNegotiablePrice={
-                                project.projectProposals &&
-                                project.projectProposals[0].clientNegotiablePrice
-                              }
-                              agencyNegotiablePrice={
-                                project.projectProposals &&
-                                project.projectProposals[0].agencyNegotiablePrice
-                              }
-                              quotationLink={project.projectProposals && project.projectProposals[0].quotationLink}
-                              isProposalActionActive={
-                                project.projectProposals &&
-                                project.projectProposals[0].isProposalActionActive
-                              }
-                              isQuotationAcceptedByClient={
-                                project.projectProposals &&
-                                project.projectProposals[0].isQuotationAcceptedByClient
-                              }
-                              isQuotationAcceptedByAgency={
-                                project.projectProposals &&
-                                project.projectProposals[0].isQuotationAcceptedByAgency
-                              }
-                              projectStartDateByClient={
-                                project.projectProposals &&
-                                project.projectProposals[0].projectStartDateByClient
-                              }
-                              projectDelayedStartDateByClient={
-                                project.projectProposals &&
-                                project.projectProposals[0].projectDelayedStartDateByClient
-                              }
-                              projectEndDateByClient={
-                                project.projectProposals &&
-                                project.projectProposals[0].projectEndDateByClient
-                              }
-                              projectExpectedEndDateByClient={
-                                project.projectProposals &&
-                                project.projectProposals[0].projectExpectedEndDateByClient
-                              }
-                              finalCostByClient={
-                                project.projectProposals &&
-                                project.projectProposals[0].finalCostByClient
-                              }
-                              rejectReasonByClient={
-                                project.projectProposals &&
-                                project.projectProposals[0].rejectReasonByClient
-                              }
-                            />
-                          )
                         )
+                      )
                     }
                   </>
             }
@@ -345,7 +368,7 @@ function AgencyRespondedDetails(props) {
 
           </div>
 
-          <div className="agencyQuestions">
+          <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul>

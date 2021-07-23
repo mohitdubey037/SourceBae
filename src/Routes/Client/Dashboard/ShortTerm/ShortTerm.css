@@ -119,11 +119,11 @@
     align-items: center;
 }
 
-ul~span {
+.innerShortTerm ul~span {
     margin-left: 35px;
 }
 
-ul~div {
+.innerShortTerm ul~div {
     margin-top: 10px;
     margin-left: 35px;
 }

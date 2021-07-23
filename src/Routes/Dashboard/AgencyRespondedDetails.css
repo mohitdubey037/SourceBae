@@ -3,13 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-    270.06deg,
-    #1a108d -2.88%,
-    rgba(192, 144, 254, 0) 110.65%
-  ) !important;
-  margin-top: 60px;
+  background: linear-gradient( 270.06deg, #1a108d -2.88%, rgba(192, 144, 254, 0) 110.65%) !important;
+  margin-top: 20px;
 }
+
 .innerDetailHeader_agencyRespondedDetails {
   width: 95%;
   display: flex;
@@ -17,9 +14,11 @@
   padding: 2rem 0;
   position: relative;
 }
+
 .detailHeaderImage_agencyRespondedDetails {
   margin-right: 1.5%;
 }
+
 .detailHeaderImage_agencyRespondedDetails div {
   width: 87px;
   height: 83px;
@@ -30,26 +29,32 @@
   align-items: center;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
+
 .detailHeaderImage_agencyRespondedDetails div img {
   width: 62px;
   object-fit: contain;
 }
+
 .headerInformation_agencyRespondedDetails {
   width: 100%;
 }
+
 .clientName {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
 }
+
 .clientName div {
   width: 50%;
 }
+
 .clientName h2 {
   font-family: 'Poppins';
   font-weight: bold;
 }
+
 .detailsButtons {
   display: flex;
   justify-content: flex-start;
@@ -63,10 +68,11 @@
   flex-direction: column;
 }
 
-.negotiablePrice > input[type='number'] {
+.negotiablePrice>input[type='number'] {
   margin-left: 1rem;
   min-height: 48px;
 }
+
 .detailsButtons button {
   margin: 0 0.5rem;
   padding: 0.5rem 1rem;
@@ -80,6 +86,16 @@
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
+}
+
+.respondCards_AgencyRespondedDetails {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  /* padding: 0px 0%; */
 }
 
 .action-wait {
@@ -97,6 +113,7 @@
   color: #fff !important;
   margin: 0;
 }
+
 .clientExperience {
   display: flex;
   align-items: center;
@@ -110,6 +127,7 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
 .rightBorder {
   position: absolute;
   width: 2px;
@@ -119,19 +137,18 @@
   background-color: #aaa;
   border-radius: 999px;
 }
+
 .innerBtnInfoDiv {
   margin-right: 20px;
 }
+
 .innerBtnInfoDiv p {
   font-family: 'Poppins';
   font-weight: 500;
   font-size: 1.1rem;
 }
 
-.acceptButton,
-.rejectButton,
-.detailsButtons > button,
-.detailsButtons > a {
+.acceptButton, .rejectButton, .detailsButtons>button, .detailsButtons>a {
   margin: 0 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 999px;
@@ -145,6 +162,7 @@
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
 }
+
 .rejectButton {
   opacity: 0.8;
   background: none !important;
@@ -153,15 +171,16 @@
   transition: 0.2s ease-in-out;
 }
 
-.detailsButtons > a {
+.detailsButtons>a {
   background-color: #02044a;
   border: 1px solid #02044a;
   text-decoration: none;
 }
 
-.postQuotation > button {
+.postQuotation>button {
   background-color: #02044a;
 }
+
 .rejectButton:hover {
   background-color: rgb(194, 35, 35) !important;
   border: 1px solid rgb(194, 35, 35) !important;
@@ -180,13 +199,14 @@
   width: 100%;
   margin: 2rem 1rem 1rem 1rem;
 }
+
 .disabled {
   pointer-events: none;
   opacity: 0.5;
   filter: grayscale(100%);
 }
-.action-wait > p,
-.detailsButtons > p {
+
+.action-wait>p, .detailsButtons>p {
   color: #fff !important;
   margin: 0;
 }
@@ -229,21 +249,18 @@
     margin-right: 1rem;
     margin: 0.5rem 0;
   }
-
   .postQuotation {
     display: flex;
     color: #fff;
     flex-direction: column;
     align-items: flex-start;
   }
-
   .clientExperience {
     display: flex;
     align-items: center;
     margin-top: 2%;
     flex-wrap: wrap;
   }
-
   .btnInfoDiv {
     position: relative;
     display: flex;
@@ -336,10 +353,12 @@
   margin-top: 3%;
   margin-left: 2%;
 }
+
 .respondDescription h2 {
   font-family: 'Poppins';
   font-weight: 400;
 }
+
 .respondDescription p {
   font-family: 'Poppins';
   font-weight: 400;
@@ -362,6 +381,7 @@
   margin-bottom: 5%;
   margin-top: 2%;
 }
+
 .innerResponseCard {
   width: 40%;
   background-color: #fff;
@@ -372,6 +392,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .leftLine {
   position: absolute;
   width: 10px;
@@ -381,6 +402,7 @@
   height: 92%;
   transform: translateY(-50%);
 }
+
 .innerResponseCard div {
   display: flex;
   justify-content: space-between;
@@ -389,6 +411,7 @@
   border-bottom: 2px solid #ebebeb;
   padding-bottom: 20px;
 }
+
 .innerResponseCard div p {
   font-family: 'Poppins';
   margin-top: 4%;
@@ -396,12 +419,14 @@
   font-size: 1rem;
   transform: translateY(20px);
 }
+
 .innerResponseCard div p:nth-child(1) {
   color: #000;
   font-weight: 500;
   font-size: 1.1rem;
   white-space: nowrap;
 }
+
 .innerResponseCard div p:nth-child(2) {
   color: #68e1fd !important;
   font-weight: 500;
@@ -415,23 +440,28 @@
   align-items: center;
   margin-bottom: 5%;
 }
+
 .innerDetailsContainer {
-  width: 93%;
+  width: 90%;
 }
+
 .detailsDiv {
   display: flex;
   align-items: center;
 }
+
 .detailsDiv img {
   margin-right: 10px;
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
+
 .detailsDiv h4 {
   font-size: 18px;
   color: #3a3a3a;
 }
+
 .detailsDiv::after {
   content: '';
   width: 100%;
@@ -460,33 +490,40 @@
   margin-bottom: 5%;
   position: relative;
 }
+
 .briefDetails img {
   position: absolute;
   width: 10%;
   object-fit: contain;
 }
+
 .leftQuote {
   top: 0;
   left: 3%;
 }
+
 .rightQuote {
   bottom: 0;
   right: 3%;
 }
+
 .innerBriefDetails {
   width: 70%;
   margin-top: 5%;
 }
+
 .briefHeading {
   display: flex;
   justify-content: space-between;
   padding-bottom: 1%;
   border-bottom: 1px solid #ebebeb;
 }
+
 .briefHeading h2 {
   font-family: 'Poppins';
   font-weight: 600;
 }
+
 .briefHeading p {
   background-color: #02044a;
   padding: 0.4rem 1rem;
@@ -499,14 +536,17 @@
 .briefQuestions {
   margin-top: 3%;
 }
+
 .briefQuestions div {
   margin-bottom: 3%;
 }
+
 .briefQuestions div h4 {
   font-family: 'Poppins';
   color: #000;
   font-size: 1.3rem;
 }
+
 .briefQuestions div p {
   font-family: 'Poppins';
   color: #484848;
@@ -544,6 +584,7 @@
   flex-direction: column;
   margin-bottom: 3%;
 }
+
 .innerAgencyQuotation {
   /* padding: 1.5rem; */
   width: 95%;
@@ -552,6 +593,7 @@
   position: relative;
   border-radius: 15px;
 }
+
 .agencyQuotationHeader {
   display: flex;
   justify-content: space-between;
@@ -561,9 +603,11 @@
   font-family: 'Poppins';
   border-radius: 15px;
 }
+
 .agencyQuotationHeading h2 {
   font-weight: bold;
 }
+
 .agencyLogo {
   width: 200px;
   height: 80px;
@@ -572,6 +616,7 @@
   justify-content: flex-end;
   align-items: center;
 }
+
 .agencyLogo img {
   width: 60%;
   /* height: 80px; */
@@ -585,30 +630,37 @@
   padding: 0rem 0rem !important;
   /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
 }
+
 .agencyQuotationDesc h4 {
   color: #000;
   margin-left: 15px;
   font-size: 1.3rem;
 }
+
 .agencyQuotationDesc p {
   color: #484848;
 }
-.agencyQuestions {
+
+.agencyQuestions_AgencyRespondedDetails {
   padding: 1rem 2rem;
   display: flex;
   /* justify-content: space-between; */
   margin-top: 5%;
   justify-content: center;
 }
-.agencyQuestions div {
+
+
+.agencyQuestions_AgencyRespondedDetails div {
   width: 33%;
 }
-.agencyQuestions div h4 {
+
+.agencyQuestions_AgencyRespondedDetails div h4 {
   font-family: 'Poppins';
   font-size: 1.2rem;
   font-weight: bold;
 }
-.agencyQuestions .straightAfterLine h4::after {
+
+.agencyQuestions_AgencyRespondedDetails .straightAfterLine h4::after {
   content: '';
   width: 33%;
   background-color: #000;
@@ -617,14 +669,16 @@
   margin-left: 10%;
   transform: translateY(-5px);
 }
-.agencyQuestions div ul {
+
+.agencyQuestions_AgencyRespondedDetails div ul {
   font-family: 'Poppins';
   color: #02044a;
   font-size: 1.1rem;
   margin-top: 20px;
   list-style: disc;
 }
-.agencyQuestions div ul li {
+
+.agencyQuestions_AgencyRespondedDetails div ul li {
   color: #407bff;
 }
 
@@ -676,7 +730,6 @@
     object-fit: contain;
     mix-blend-mode: multiply;
   }
-
   .agencyQuotationDesc {
     margin-top: 2%;
     font-family: 'Poppins';
@@ -685,7 +738,6 @@
   .agencyQuotationDesc h4 {
     color: #000;
   }
-
   .agencyQuotationDesc p {
     color: #484848;
     font-size: 0.9rem;

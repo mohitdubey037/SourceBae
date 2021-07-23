@@ -16,6 +16,7 @@ import Moment from "react-moment";
 
 function ProductDetails(props) {
   console.log(props);
+  console.log(props.location.condition);
   const condition = props.location.condition;
   console.log(condition);
   let { productId } = useParams();
@@ -50,14 +51,6 @@ function ProductDetails(props) {
     getProduct();
   }, [productId]);
 
-  useEffect(() => {
-    console.log(details);
-    console.log(Array.isArray(details));
-    console.log(details.length);
-    console.log(details);
-    console.log(similarAgency.length);
-    console.log(detailsInJson);
-  }, [details, detailsInJson, similarAgency]);
 
   const brr = [
     {
