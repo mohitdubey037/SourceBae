@@ -3,7 +3,7 @@ import './UserOperations.css';
 
 function UserOperations(props) {
     return (
-        <div onClick={props.clickHandler} className="operation">
+        <div onClick={props.nextpage} className="operation">
             <div className="operation-logo">
                 <img src={props.img} alt="hire developer" />
             </div>

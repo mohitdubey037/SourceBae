@@ -5,9 +5,9 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  /* align-items: center; */
   margin-top: 5%;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 .innerProjectsMatched {
@@ -22,6 +22,7 @@
   margin-bottom: 5%;
   z-index: 1;
   overflow: hidden;
+  margin: 1%;
 }
 .projectCard {
   padding-left: 3%;
