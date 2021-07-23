@@ -16,12 +16,12 @@
   margin-top: 6%;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
   flex-wrap: wrap;
   margin-left: 4%;
 }
 .respondedCard {
-  width: 30%;
+  width: 28%;
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
