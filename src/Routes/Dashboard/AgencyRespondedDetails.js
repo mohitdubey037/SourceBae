@@ -368,7 +368,7 @@ function AgencyRespondedDetails(props) {
 
           </div>
 
-          <div className="agencyQuestions">
+          <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul>

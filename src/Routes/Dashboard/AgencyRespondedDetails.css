@@ -442,7 +442,7 @@
 }
 
 .innerDetailsContainer {
-  width: 95%;
+  width: 90%;
 }
 
 .detailsDiv {
@@ -641,7 +641,7 @@
   color: #484848;
 }
 
-.agencyQuestions {
+.agencyQuestions_AgencyRespondedDetails {
   padding: 1rem 2rem;
   display: flex;
   /* justify-content: space-between; */
@@ -650,17 +650,17 @@
 }
 
 
-.agencyQuestions div {
+.agencyQuestions_AgencyRespondedDetails div {
   width: 33%;
 }
 
-.agencyQuestions div h4 {
+.agencyQuestions_AgencyRespondedDetails div h4 {
   font-family: 'Poppins';
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-.agencyQuestions .straightAfterLine h4::after {
+.agencyQuestions_AgencyRespondedDetails .straightAfterLine h4::after {
   content: '';
   width: 33%;
   background-color: #000;
@@ -670,7 +670,7 @@
   transform: translateY(-5px);
 }
 
-.agencyQuestions div ul {
+.agencyQuestions_AgencyRespondedDetails div ul {
   font-family: 'Poppins';
   color: #02044a;
   font-size: 1.1rem;
@@ -678,7 +678,7 @@
   list-style: disc;
 }
 
-.agencyQuestions div ul li {
+.agencyQuestions_AgencyRespondedDetails div ul li {
   color: #407bff;
 }
 
