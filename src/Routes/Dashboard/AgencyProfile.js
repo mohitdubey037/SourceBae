@@ -109,7 +109,6 @@ function AgencyProfile(props) {
         <Spinner />
       ) : agencyProfileData._id !== "" ? (
         <div>
-          <Navbar />
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
               {Role === "Agency" ? (

@@ -64,18 +64,13 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 
 function ClientNewestDashboard(props) {
 
-
-    const theme = useTheme();
-
     const Role = helper.lowerize(localStorage.getItem('role'));
     const clientId = localStorage.getItem("userId")
 
-    const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    const [isVisible, setIsVisible] = useState(true);
+    const [openmodal, setOpenModal] = useState(false);
     const [projects, setProjects] = useState([])
     const [statuses, setStatuses] = useState([])
-    const [selectedStatus, setSelectedStatus] = React.useState('');
 
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
@@ -94,7 +89,6 @@ function ClientNewestDashboard(props) {
     }, [])
 
     const handleChange = (event) => {
-        setSelectedStatus(event.target.value);
         console.log(event.target.value);
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}&projectCurrentStatus=${event.target.value}`)
             .then(response => {
@@ -107,27 +101,6 @@ function ClientNewestDashboard(props) {
             })
     };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const getVisibility = (value) => {
-        setIsVisible(value);
-    }
-
-    const routeRedirecter = (id) => {
-        props.history.push(`/agency-list:${id}`);
-    }
-
-    const projectNameNavigator = (p) => {
-        console.log(p)
-        props.onAddProject(p);
-        props.history.push('/project-details');
-    }
 
     useEffect(() => {
         console.log(projects);
@@ -144,7 +117,7 @@ function ClientNewestDashboard(props) {
                             <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
                             <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
                             <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
-                            <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
+                            <UserOperations nextpage={() => setOpenModal(true)} text="Interested To Investment" img={InvestmentIcon} />
                         </div>
                         <div className="graphic">
                             <div className="graphic-illustration-heading">
@@ -153,13 +126,6 @@ function ClientNewestDashboard(props) {
                         </div>
                         <div className="user-project">
                             <div className="user-project-details">
-                                {/* <UserProject />
-                                <UserProject />
-                                <UserProject />
-                                <UserProject />
-                                <UserProject />
-                                <UserProject />
-                                <UserProject /> */}
                                 {
                                     projects.length > 0 ? projects.map((p) => {
                                         return (
