@@ -79,8 +79,8 @@ function AgencyRespondedDetails(props) {
         <i className="fa fa-angle-left" aria-hidden="true"></i>
       </div> */}
 
-      <div className="back-button_newestAddDeveloper">
-        <div className="image-div_newestAddDeveloper">
+      <div className="back-button_AgencyRespondedDetails">
+        <div className="image-div_AgencyRespondedDetails">
           <div className="hover" onClick={goBack}>
             <ArrowBackIosIcon className="back-icon" />
           </div>

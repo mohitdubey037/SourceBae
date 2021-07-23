@@ -1,10 +1,54 @@
+.back-button_AgencyRespondedDetails {
+  position: relative;
+  background: #F9F9F9;
+  display: flex;
+  width: auto;
+  height: 50px;
+  top: 12px;
+}
+
+.image-div_AgencyRespondedDetails {
+  width: 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.image-div_AgencyRespondedDetails > div {
+  border: 2px solid black;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.back-icon {
+  margin-left: 10px;
+}
+
+.hover:hover {
+  color: blue;
+  border-color: blue;
+}
+
+.add-developer-div {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .mainDetailHeader_agencyRespondedDetails {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient( 270.06deg, #1a108d -2.88%, rgba(192, 144, 254, 0) 110.65%) !important;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .innerDetailHeader_agencyRespondedDetails {
@@ -94,7 +138,7 @@
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 5%;
-  margin-top: 5%;
+  margin-top: 2%;
   /* padding: 0px 0%; */
 }
 
