@@ -140,7 +140,7 @@ function AgencyRespondedDetails(props) {
         </div>
       </div>
 
-      <div className="respondDescription">
+      <div className="respondDescription_AgencyRespondedDetails">
         <h2>About Your Project</h2>
         <p>{project?.projectName}</p>
       </div>
@@ -212,7 +212,7 @@ function AgencyRespondedDetails(props) {
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
 
-          <div className="agencyQuotationDesc">
+          <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {project.projectProposals && project?.projectProposals[0].rejectReasonByClient !== undefined ?
               <>
                 <p>Project is rejected by the Client due to following reason</p>
