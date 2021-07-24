@@ -117,7 +117,7 @@ function ClientNewestDashboard(props) {
                             <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
                             <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
                             <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
-                            <UserOperations nextpage={() => setOpenModal(true)} text="Interested To Investment" img={InvestmentIcon} />
+                            <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
                         </div>
                         <div className="graphic">
                             <div className="graphic-illustration-heading">

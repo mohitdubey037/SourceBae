@@ -102,14 +102,14 @@
 }
 
 .addingDeveloperHeadings h1 {
-  font-family: "Josefin Sans";
+  font-family: 'Josefin Sans';
   color: #fff;
   font-size: 2.2rem;
   font-weight: bold;
 }
 
 .addingDeveloperHeadings p {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #fad647;
   font-size: 1rem;
 }
@@ -124,12 +124,12 @@
 
 .pointsToRemember h2 {
   color: #fff;
-  font-family: "Josefin Sans";
+  font-family: 'Josefin Sans';
   font-size: 1.5rem;
 }
 
 .pointsToRemember ul li {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   color: #fad647;
   margin: 1.5rem 0;
 }
@@ -153,7 +153,8 @@
   margin-bottom: 2%;
 }
 
-.inputField1 .developerName_addingDeveloper, .inputField1 .developerDesignation_addingDeveloper {
+.inputField1 .developerName_addingDeveloper,
+.inputField1 .developerDesignation_addingDeveloper {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -184,8 +185,7 @@
   font-size: 14px;
   line-height: 17px;
   text-transform: capitalize;
-  color: #A8A8A8;
-  ;
+  color: #a8a8a8;
 }
 
 .developerDesignation_addingDeveloper ::-webkit-file-upload-button {
@@ -205,7 +205,8 @@
   background-color: white;
 }
 
-.developerName_addingDeveloper>h4, .developerDesignation_addingDeveloper>h4 {
+.developerName_addingDeveloper > h4,
+.developerDesignation_addingDeveloper > h4 {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -214,8 +215,9 @@
   text-transform: capitalize;
 }
 
-.inputField1 .developerName_addingDeveloper input, .inputField1 .developerDesignation_addingDeveloper input {
-  border: 1px solid #A2A2A2;
+.inputField1 .developerName_addingDeveloper input,
+.inputField1 .developerDesignation_addingDeveloper input {
+  border: 1px solid #a2a2a2;
   border-radius: 8px;
   width: 73%;
   height: 40px;
@@ -226,7 +228,7 @@
   font-size: 14px;
   line-height: 17px;
   text-transform: capitalize;
-  color: #A8A8A8;
+  color: #000;
 }
 
 .black-strip_newestAddDeveloper {
@@ -249,7 +251,7 @@
 
 .inputField2 .MuiFormControl-root {
   border-radius: 8px !important;
-  border: 1.19898px solid #A1A1A1 !important;
+  border: 1.19898px solid #a1a1a1 !important;
   height: 39px !important;
   display: flex !important;
   justify-content: center !important;
@@ -259,7 +261,8 @@
   margin-left: 7px !important;
 }
 
-.MuiInput-underline:before, .MuiInput-underline::after {
+.MuiInput-underline:before,
+.MuiInput-underline::after {
   content: none !important;
 }
 
@@ -282,7 +285,7 @@
   font-size: 14px !important;
   line-height: 17px !important;
   text-transform: capitalize !important;
-  color: #A8A8A8 !important;
+  color: #a8a8a8 !important;
   margin-right: 29px !important;
 }
 
@@ -298,7 +301,7 @@
   line-height: 27px !important;
   text-transform: capitalize !important;
   font-family: 'Inter' !important;
-  color: #3A3A3A !important;
+  color: #3a3a3a !important;
 }
 
 .priceRange {
@@ -322,8 +325,8 @@
   border-radius: 8px;
   outline: none;
   border: none;
-  background: #EAF2FF;
-  color: #3A3A3A;
+  background: #eaf2ff;
+  color: #3a3a3a;
   font-size: 20px;
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
   font-family: 'Inter';

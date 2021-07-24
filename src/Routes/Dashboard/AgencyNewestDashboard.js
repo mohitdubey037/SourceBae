@@ -24,8 +24,9 @@ function AgencyNewestDashboard(props) {
     const [agencyProfileData, setAgencyProfileData] = useState([])
 
     const getAgencyProfileData = () => {
-        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
+        instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`)
             .then(function (response) {
+                console.log("allProjects", response)
                 setAgencyProfileData(response);
             })
             .catch((err) => {
@@ -42,7 +43,7 @@ function AgencyNewestDashboard(props) {
             <div className="dashboard-container">
                 <Sidebar />
                 <div className="container-body">
-                    <Navbar />
+                    {/* <Navbar /> */}
                     <div className="content-body">
                         <div className="content-leftBody">
                             <div className="user-operations">
@@ -59,9 +60,17 @@ function AgencyNewestDashboard(props) {
                                 </div>
                             </div>
                             <div className="user-project">
-                                <div>
-                                    <AgencyProjectCard />
-                                    <AgencyProjectCard />
+                                <div style={{ width: '100%' }}>
+
+                                    {agencyProfileData?.projects?.length > 0 ? (
+                                        agencyProfileData?.projects?.map((value, index) => {
+                                            return (
+                                                <AgencyProjectCard props={props} id={value?._id} key={index} name={value.projectName} status={value?.projectCurrentStatus} budget={value?.projectProposalCost} creationDate={value?.createdAt} projectType={value?.projectType} experties={value?.projectExpertiseRequired} services={value?.projectServicesRequired} />
+                                            )
+                                        })
+                                    ) : <p>No Projects</p>}
+
+
                                 </div>
                             </div>
                         </div>

@@ -1,19 +1,33 @@
 .mainHireDeveloper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: repeating-linear-gradient(45deg, rgb(255, 255, 255) 0px, rgb(255, 255, 255) 10px, transparent 10px, transparent 11px), repeating-linear-gradient(135deg, rgb(255, 255, 255) 0px, rgb(255, 255, 255) 10px, transparent 10px, transparent 11px), linear-gradient(90deg, hsl(256, 7%, 84%), hsl(256, 7%, 84%));
-    position: relative;
-    margin-bottom: 5%;
-    margin: auto;
-    margin-top: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgb(255, 255, 255) 0px,
+      rgb(255, 255, 255) 10px,
+      transparent 10px,
+      transparent 11px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgb(255, 255, 255) 0px,
+      rgb(255, 255, 255) 10px,
+      transparent 10px,
+      transparent 11px
+    ),
+    linear-gradient(90deg, hsl(256, 7%, 84%), hsl(256, 7%, 84%));
+  position: relative;
+  margin-bottom: 5%;
+  margin: auto;
+  margin-top: 2%;
 }
 
 .backArrow {
-    position: absolute;
-    top: 3%;
-    left: 4%;
+  position: absolute;
+  top: 3%;
+  left: 4%;
 }
 
 /* .upper-background {
@@ -32,16 +46,16 @@
     right: 0;
 } */
 
-.upper-image{
-    position: fixed;
-    top: -19px;
-    left: 39px;
+.upper-image {
+  position: fixed;
+  top: -19px;
+  left: 39px;
 }
 
 .lower-image {
-    position: fixed;
-    right: 0px;
-    top: 0%;
+  position: fixed;
+  right: 0px;
+  top: 0%;
 }
 
 /* .lower-background img {
@@ -71,25 +85,25 @@
 } */
 
 .hireDeveloperForm {
-    width: 80%;
-    padding: 2rem;
-    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.3);
-    background-color: #fff;
-    border-radius: 15px;
-    position: absolute;
-    top: 30%;
+  width: 80%;
+  padding: 2rem;
+  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  border-radius: 15px;
+  position: absolute;
+  top: 30%;
 }
 
 .hireDeveloperFormInfo h2 {
-    font-family: 'Inter';
-    text-align: center;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 42px;
-    line-height: 51px;
-    /* identical to box height */
-    text-transform: capitalize;
-    color: #02044A;
+  font-family: 'Inter';
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 51px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #02044a;
 }
 
 /* .hireDeveloperFormInfo h2::after {
@@ -101,297 +115,395 @@
 } */
 
 .predilection-strip {
-    position: relative;
-    width: 140px;
-    height: 3px;
-    background: black;
-    top: 50px;
-    left: 333px;
+  position: relative;
+  width: 140px;
+  height: 3px;
+  background: black;
+  top: 50px;
+  left: 333px;
 }
 
 .hireDeveloperFormInfo p {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    /* or 27px */
-    text-transform: capitalize;
-    /* TEXT CLR */
-    color: #3A3A3A;
-    margin-top: 45px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  /* or 27px */
+  text-transform: capitalize;
+  /* TEXT CLR */
+  color: #3a3a3a;
+  margin-top: 45px;
 }
 
-.roleLooking, .resourceNumber, .skillsRequiredDeveloper, .averageExperience, .prefferedBilling, .averageBudget, .startPeriod, .contractPeriod {
-    margin-top: 5%;
+.roleLooking,
+.resourceNumber,
+.skillsRequiredDeveloper,
+.averageExperience,
+.prefferedBilling,
+.averageBudget,
+.startPeriod,
+.contractPeriod {
+  margin-top: 5%;
 }
 
 .left-margin {
-    margin-left: 30px;
-    display: flex;
-    width: 100%;
+  margin-left: 30px;
+  display: flex;
+  width: 100%;
 }
 
-.resourceNumber, .contractPeriod {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 95px;
+.resourceNumber,
+.contractPeriod {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95px;
 }
 
-.hireDeveloperForm .resourceNumber ul, .hireDeveloperForm .skillsRequiredDeveloper ul, .hireDeveloperForm .averageExperience ul, .hireDeveloperForm .developerExperienceRequired ul, .hireDeveloperForm .preferredBillingMode ul, .hireDeveloperForm .averageBudget ul, .hireDeveloperForm .startPeriod ul, .hireDeveloperForm .contractPeriod ul {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 27px;
-    text-transform: capitalize;
-    color: #3A3A3A;
+.hireDeveloperForm .resourceNumber ul,
+.hireDeveloperForm .skillsRequiredDeveloper ul,
+.hireDeveloperForm .averageExperience ul,
+.hireDeveloperForm .developerExperienceRequired ul,
+.hireDeveloperForm .preferredBillingMode ul,
+.hireDeveloperForm .averageBudget ul,
+.hireDeveloperForm .startPeriod ul,
+.hireDeveloperForm .contractPeriod ul {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+  text-transform: capitalize;
+  color: #3a3a3a;
 }
 
 .preferredBillingMode .MuiFormControl-root {
-    margin-left: 76px;
-    width: 280px;
+  margin-left: 76px;
+  width: 280px;
 }
 
 .developerExperienceRequired .MuiFormControl-root {
-    margin-left: 50px;
-    width: 700px;
-    display: flex;
-    justify-content: space-between;
+  margin-left: 50px;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .developerExperienceRequired .MuiFormGroup-root {
-    margin-left: 80px;
-    display: flex;
-    justify-content: space-between;
+  margin-left: 80px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .preferredBillingMode .MuiFormGroup-root {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
-.Weekly>div, .Monthly>div {
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
+.Weekly > div,
+.Monthly > div {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
 }
 
-.Junior>div, .Mid-Range>div, .Senior>div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.Junior > div,
+.Mid-Range > div,
+.Senior > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .radio-description {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    /* identical to box height */
-    text-transform: capitalize;
-    color: #A8A8A8;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #a8a8a8;
 }
 
-.Weekly>div>.MuiFormControlLabel-root, .Monthly>div>.MuiFormControlLabel-root {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+.Weekly > div > .MuiFormControlLabel-root,
+.Monthly > div > .MuiFormControlLabel-root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .strip_HireDeveloper {
-    position: absolute;
-    width: 155px;
-    height: 1px;
-    background: black;
+  position: absolute;
+  width: 155px;
+  height: 1px;
+  background: black;
 }
 
 .left_HireDeveloper {
-    top: 21px;
-    left: 109px;
+  top: 21px;
+  left: 109px;
 }
 
 .right_HireDeveloper {
-    top: 21px;
-    left: 401px;
+  top: 21px;
+  left: 401px;
 }
 
 .billing_strip_HireDeveloper {
-    position: absolute;
-    width: 140px;
-    height: 1px;
-    background: black;
-    top: 21px;
-    left: 58px;
+  position: absolute;
+  width: 140px;
+  height: 1px;
+  background: black;
+  top: 21px;
+  left: 58px;
 }
 
-.Junior>div>.MuiFormControlLabel-root, .Mid-Range>div>.MuiFormControlLabel-root, .Senior>div>.MuiFormControlLabel-root {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+.Junior > div > .MuiFormControlLabel-root,
+.Mid-Range > div > .MuiFormControlLabel-root,
+.Senior > div > .MuiFormControlLabel-root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .roleLooking input {
-    height: 45px;
-    padding-left: 10px;
-    font-size: 1rem;
-    border: 1px solid #e0e0e0;
+  height: 45px;
+  padding-left: 10px;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
 }
 
 .resourceNumber:nth-child(3) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 92px;
 }
 
-.developerExperienceRequired, .preferredBillingMode {
-    margin-top: 45px;
+.developerExperienceRequired,
+.preferredBillingMode {
+  margin-top: 45px;
 }
 
 .roleLooking input {
-    height: 45px;
-    padding-left: 10px;
-    font-size: 1rem;
-    border: 1px solid #e0e0e0;
+  height: 45px;
+  padding-left: 10px;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
 }
 
-.resourceNumber .multi-select {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    text-transform: capitalize;
-    color: #A8A8A8;
-    margin-left: 30px;
-    height: 51px;
-    width: 60%;
-    background: #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding-left: 0;
+.multi-select {
+  text-transform: capitalize;
+  color: #a8a8a8;
+  margin-left: 30px;
+  height: 51px;
+  width: 60%;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding-left: 0;
+  background-color: red;
 }
 
 .resourceNumber .dropdown-container {
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
+.dropdown-content {
+  width: 100% !important;
+  border: none !important;
+}
+.panel-content {
+  border: none !important;
+  outline: none !important;
+}
+.select-panel {
+  width: 100%;
+  /* background-color: red !important; */
+}
+.select-panel .search {
+  width: 100% !important;
+}
+.select-panel .search button {
+  display: none !important;
+}
+.select-panel .search input {
+  /* display: none !important; */
+  width: 200px !important;
+  /* background-color: yellow !important; */
+}
+/* .options {
+  max-height: 210px !important;
+  overflow-y: hidden !important;
+  margin: 2000px !important;
+  padding-left: 0;
+  background-color: red !important;
+}
+.select-item {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  padding: var(--rmsc-p);
+  outline: 0;
+} */
+.search {
+  width: 60% !important;
+  position: relative;
+  border-bottom: none !important;
+  padding: 2rem 0 !important;
+  background-color: red !important;
+}
+
+.search input {
+  height: 400px !important;
+  padding: 0 !important;
+  width: 20% !important;
+  outline: none !important;
+  border: none !important;
+  background-color: green;
+}
+.go1075022653 input {
+  position: absolute;
+  display: flex;
+  background-color: red;
+  display: none;
+}
+.search-clear-button {
+  display: none;
+}
+.item-renderer input {
+  width: 20px !important;
+  height: 20px !important;
+}
+.item-renderer span {
+  font-size: 1.2rem !important;
+  font-family: 'Poppins';
+  white-space: nowrap !important;
+  /* background-color: yellow !important; */
+  /* display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  text-align: left !important;
+  flex-direction: row; */
+}
 .resourceNumber input {
-    margin-left: 30px;
-    width: 60%;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 150%;
-    text-transform: capitalize;
-    color: #A8A8A8;
-    border: 1px solid #A2A2A2;
-    border-radius: 8px;
-    height: 50px;
-    padding-left: 10px;
+  margin-left: 30px;
+  width: 60%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #a8a8a8;
+  border: 1px solid #a2a2a2;
+  border-radius: 8px;
+  height: 50px;
+  padding-left: 10px;
 }
 
 .skillsRequiredDeveloper input {
-    width: 80%;
-    height: 45px;
-    padding-left: 10px;
-    font-size: 1rem;
-    border: 1px solid #e0e0e0;
+  width: 80%;
+  height: 45px;
+  padding-left: 10px;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
 }
 
 .billingOptions {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .billingButton {
-    margin-right: 1.5rem;
-    width: 30%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    background-color: #fff;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    position: relative;
+  margin-right: 1.5rem;
+  width: 30%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
 }
 
 .billingButton img {
-    width: 15%;
-    object-fit: contain;
-    margin-right: 20px;
+  width: 15%;
+  object-fit: contain;
+  margin-right: 20px;
 }
 
 .billingButton h6 {
-    font-family: 'Poppins';
-    transform: translateY(5px);
-    font-size: 1.2rem;
-    font-weight: bold;
-    user-select: none;
+  font-family: 'Poppins';
+  transform: translateY(5px);
+  font-size: 1.2rem;
+  font-weight: bold;
+  user-select: none;
 }
 
 .billingButton i {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 2rem;
-    /* color: #2FAB73; */
-    color: #02044a;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 2rem;
+  /* color: #2FAB73; */
+  color: #02044a;
 }
 
 .contractPeriod select {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 150%;
-    text-transform: capitalize;
-    color: #A8A8A8;
-    width: 60%;
-    height: 50px;
-    padding: 0 0.5rem;
-    border: 1px solid #D1D3D4;
-    border-radius: 8px;
-    margin-left: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #a8a8a8;
+  width: 60%;
+  height: 50px;
+  padding: 0 0.5rem;
+  border: 1px solid #d1d3d4;
+  border-radius: 8px;
+  margin-left: 30px;
 }
 
 #contractPeriod:focus {
-    border: 1px solid #e0e0e0;
-    outline: none;
+  border: 1px solid #e0e0e0;
+  outline: none;
 }
 
 .submitBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
 }
 
-.submitBtn>div {
-    width: 11%;
-    background: #EAF2FF;
-    border-radius: 4px;
+.submitBtn > div {
+  width: 11%;
+  background: #eaf2ff;
+  border-radius: 4px;
 }
 
-.submitBtn>div>div {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-    letter-spacing: 0.4px;
-    text-transform: capitalize;
-    padding: 0.6rem 1rem;
-    width: 100%;
-    color: #3A3A3A;
+.submitBtn > div > div {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  color: #3a3a3a;
 }

@@ -24,6 +24,30 @@
   justify-content: center;
   align-items: center;
 }
+.backButtonAgencyProfile {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  left: 4%;
+  top: 20px;
+  align-items: center;
+  height: 50px;
+}
+.backButtonAgencyProfile i {
+  margin-right: 10px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 13px;
+  cursor: pointer;
+}
+.backButtonAgencyProfile h6 {
+  color: #fff;
+  cursor: pointer;
+}
 .innerProfileHeaderImage img {
   width: 100%;
   object-fit: contain;
