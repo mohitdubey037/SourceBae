@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from "react";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import "./AgencyProfile.css";
 import growth from "../../assets/images/AgencyProfile/growth.png";
 import document from "../../assets/images/AgencyProfile/pdf.png";
@@ -27,6 +27,7 @@ import ClientNavbar from "../Client/ClientNavbar";
 
 import Spinner from "../../Components/Spinner/Spinner";
 import Moment from "react-moment";
+import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 function AgencyProfile(props) {
   const { id } = useParams();
@@ -103,8 +104,8 @@ function AgencyProfile(props) {
 
   return (
     <>
-      {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />}
-
+      {/* {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />} */}
+      <Navbar />
       {loading ? (
         <Spinner />
       ) : agencyProfileData._id !== "" ? (
@@ -133,33 +134,33 @@ function AgencyProfile(props) {
                     </button>
                   </>
                 ) : (
-                    <button
-                      onClick={() =>
-                        props.history.push({
-                          pathname: `/product-details:${agencyProfileData.productId}`,
-                          condition: id !== '' ? 'Agency' : 'Client'
-                        })
-                      }
-                    >
-                      View Your Product{" "}
-                      <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
-                    </button>
-                  )
+                  <button
+                    onClick={() =>
+                      props.history.push({
+                        pathname: `/product-details:${agencyProfileData.productId}`,
+                        condition: id !== '' ? 'Agency' : 'Client'
+                      })
+                    }
+                  >
+                    View Your Product{" "}
+                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                  </button>
+                )
               ) : (
-                  <div>
-                    {/* <p onClick={onOpenModal}>
+                <div>
+                  {/* <p onClick={onOpenModal}>
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                     Have a Question..?
                   </p> */}
-                    <i
-                      style={{ fontSize: 22, color: "#fff" }}
-                      className="fa fa-info-circle"
-                      aria-hidden="true"
-                      onMouseOver={() => setHoverModal(true)}
-                    // onMouseLeave={()=>onCloseModal()}
-                    ></i>
-                  </div>
-                )}
+                  <i
+                    style={{ fontSize: 22, color: "#fff" }}
+                    className="fa fa-info-circle"
+                    aria-hidden="true"
+                    onMouseOver={() => setHoverModal(true)}
+                  // onMouseLeave={()=>onCloseModal()}
+                  ></i>
+                </div>
+              )}
             </div>
           </div>
 
@@ -497,17 +498,17 @@ function AgencyProfile(props) {
           </div>
         </div>
       ) : (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "80vh",
-              }}
-            >
-              <h1> No agency found with this ID. </h1>
-            </div>
-          )}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "80vh",
+          }}
+        >
+          <h1> No agency found with this ID. </h1>
+        </div>
+      )}
     </>
   );
 }

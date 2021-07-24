@@ -1,3 +1,16 @@
+.Navbar-parent {
+    padding: 5px 10px;
+}
+
+.Navbar-parent .navbar {
+    border: 2px solid rgb(214, 209, 209);
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+}
+
+.Navbar-parent .navbar .navbar-heading{
+    margin-left: 2%;
+}
+
 
 .mainProductDetails{
     width: 100%;
@@ -6,6 +19,7 @@
     align-items: center;
     margin-bottom: 5%;
 }
+
 .innerProductDetails{
     width: 96%;
     display: flex;
@@ -24,7 +38,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .productDetailsArea_conditional {

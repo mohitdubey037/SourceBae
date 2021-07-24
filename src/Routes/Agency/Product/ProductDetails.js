@@ -6,13 +6,14 @@ import "react-responsive-modal/styles.css";
 import logo from "../../../assets/images/Logo/logo.png";
 import NO_Data_ICON from "../../Dashboard/no_data_icon.jpg";
 
-import ClientNavbar from "../../Client/ClientNavbar";
-import Navbar from "../../Dashboard/Navbar";
+// import ClientNavbar from "../../Client/ClientNavbar";
+// import Navbar from "../../Dashboard/Navbar";
 import * as helper from "../../../shared/helper";
 import instance from "../../../Constants/axiosConstants";
 import Spinner from '../../../Components/Spinner/Spinner';
 import { Modal } from "react-responsive-modal";
 import Moment from "react-moment";
+import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
 
 function ProductDetails(props) {
   console.log(props);
@@ -194,7 +195,10 @@ function ProductDetails(props) {
 
   return (
     <>
-      {condition === "Agency" ? <Navbar /> : <ClientNavbar />}
+      {/* {condition === "Agency" ? <Navbar /> : <ClientNavbar />} */}
+      <div className="Navbar-parent">
+        <Navbar />
+      </div>
       {loading === true ? <Spinner /> :
         err ? (
           <>
@@ -291,7 +295,7 @@ function ProductDetails(props) {
                       {arr.map((value, index) => {
                         console.log(value.content[0].ans);
                         return (
-                          <div style={{display: (value.content[0].ans === '' || value.content[0].ans === null) && 'none'}} className="allPointsCard">
+                          <div style={{ display: (value.content[0].ans === '' || value.content[0].ans === null) && 'none' }} className="allPointsCard">
                             <div className="allPointCardHeading">
                               <p>{value?.heading}</p>
                               <div className="barricade">
@@ -364,7 +368,7 @@ function ProductDetails(props) {
                       <div className="workingStatusInfo">
                         {brr.map((value, index) => {
                           return (
-                            <div style={{display: value.content[0].ans === '' && 'none'}} className="allPointsCard">
+                            <div style={{ display: value.content[0].ans === '' && 'none' }} className="allPointsCard">
                               <div className="allPointCardHeading">
                                 <p>{value?.heading}</p>
                                 <div className="barricade">

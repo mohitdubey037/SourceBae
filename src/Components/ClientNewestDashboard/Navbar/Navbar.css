@@ -2,10 +2,26 @@
   flex: 1;
 }
 
+.navbar h1 {
+  margin-bottom: 0;
+}
+
 .container-body > .navbar {
   display: flex;
   justify-content: space-between;
   padding: 10px 30px 10px 30px;
+}
+
+.logout-icon {
+  margin-right: 20px;
+}
+
+.logout-icon:hover {
+  color: blue !important;
+}
+
+.logout-icon .MuiSvgIcon-root {
+  font-size: 1.7rem !important;
 }
 
 .navbar > .navbar-heading > h1 {

@@ -3,14 +3,15 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 
 import * as helper from "../../../../shared/helper"
-import ClientNavbar from '../../ClientNavbar'
+import ClientNavbar from '../../ClientNavbar';
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
+import Back from '../../../../Components/Back/Back';
 
 import MultiSelect from "react-multi-select-component";
 
 //multi-select
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
-import Back from '../../../../Components/Back/Back';
 
 
 function HireAgencyForm3(props) {
@@ -143,16 +144,12 @@ function HireAgencyForm3(props) {
 
     return (
         <>
-            <ClientNavbar />
-            <Back name="Hire Agency" />
-            {/* <div
-                className="backArrow_hireAgencyForm3"
-                onClick={() => {
-                    props.history.goBack();
-                }}
-            >
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </div> */}
+            <div className="Navbar-parent">
+                <Navbar />
+            </div>
+            <div className="back-parent marginLeft">
+                <Back name="Hire Agency" />
+            </div>
             {loading ? <Spinner /> :
                 <div className="mainHireAgencyForm3">
                     <div className="innerHireAgencyForm3">

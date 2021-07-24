@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ClientNavbar from "../../ClientNavbar";
+// import ClientNavbar from "../../ClientNavbar";
 import "./HireDeveloper.css";
 
 import Radio from "@material-ui/core/Radio";
@@ -16,6 +16,7 @@ import hourPrice from "../../../../assets/images/ClientDashboard/shortTerm/hourP
 import MultiSelect from "react-multi-select-component";
 import instance from "../../../../Constants/axiosConstants";
 import Back from '../../../../Components/Back/Back';
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 const BlueRadio = withStyles({
   root: {
@@ -141,8 +142,12 @@ function HireDeveloper(props) {
 
   return (
     <>
-      <ClientNavbar />
-      <Back name="Hire Developer" />
+      <div className="Navbar-parent">
+        <Navbar />
+      </div>
+      <div className="back-parent marginLeft">
+        <Back name="Hire Developer" />
+      </div>
       <div className="mainHireDeveloper">
         {/* <div
           className="backArrow"

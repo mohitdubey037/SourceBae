@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ClientNavbar from "../../ClientNavbar";
+// import ClientNavbar from "../../ClientNavbar";
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import "./ShortTerm.css";
 
 import fixed from "../../../../assets/images/ClientDashboard/shortTerm/fixed.png";
@@ -208,8 +209,12 @@ function ShortTerm(props) {
   }, [apiData]);
   return (
     <>
-      <ClientNavbar />
-      <Back name="Short Term" />
+      <div className="Navbar-parent">
+        <Navbar />
+      </div>
+      <div className="back-parent marginLeft">
+        <Back name="Short Term" />
+      </div>
       <div className="mainShortTerm">
         {/* <div
           className="backArrow_shortTerm"

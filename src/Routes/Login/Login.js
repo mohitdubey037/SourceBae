@@ -164,11 +164,11 @@ const Login = (props) => {
             console.log(axios)
             if (role === "Agency") {
                 setLoading(false);
-                props.history.push("/dashboard");
+                props.history.push("/agencyNewestDashboard");
                 // window.location.href = '/dashboard'
             } else if (role === "Client") {
                 setLoading(false);
-                props.history.push("/client-dashboard");
+                props.history.push("/clientNewestDashboard");
             }
 
             else {

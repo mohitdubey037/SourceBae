@@ -103,9 +103,6 @@
   margin-right: 11%;
   color: #000;
 }
-.respondCardTable {
-  /* margin-top: 2%; */
-}
 .respondCardTable div {
   display: flex;
   justify-content: space-between;
@@ -130,9 +127,6 @@
   /* margin-top: 6%; */
   display: flex;
   justify-content: flex-end;
-}
-.respondedCardButton div {
-  /* margin-right: 30px; */
 }
 .respondedCardButton div button {
   padding: 0.2rem 0.8rem;

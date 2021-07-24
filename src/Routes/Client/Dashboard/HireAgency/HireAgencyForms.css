@@ -7,7 +7,7 @@
     align-items: center;
     margin-bottom: 5%;
     position: relative;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .innerHigherAgencyForm1 {
@@ -331,13 +331,14 @@
     padding: 0.3rem 1rem;
 }
 
-.mainHireAgencyFormTwo {
+.mainHireAgencyForm1, .mainHireAgencyFormTwo, .mainHireAgencyForm3 {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: 5%;
+    position: relative;
 }
 
 .innerHireAgencyFormTwo {
@@ -542,14 +543,14 @@
 
 /* Hire Agency Form 3 */
 
-.mainHireAgencyForm3 {
+/* .mainHireAgencyForm3 {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
     margin-bottom: 5%;
-}
+} */
 
 .innerHireAgencyForm3 {
     display: flex;

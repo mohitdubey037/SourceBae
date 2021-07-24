@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
-import Navbar from '../../Navbar'
+import React, { useEffect, useState } from 'react';
+// import Navbar from '../../Navbar';
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
+import Back from '../../../../Components/Back/Back';
 import FormPhases from './FormPhases'
 
 import agencyLogo from '../../../../assets/images/agencyForm/document.png'
@@ -55,7 +57,7 @@ function AgencyForm3(props) {
             setRegistrationCertificate({
                 ...registrationCertificate,
                 documentPicked: true,
-                name:document.name,
+                name: document.name,
                 document
             })
         }
@@ -64,7 +66,7 @@ function AgencyForm3(props) {
             setBrochureDoc({
                 ...brochureDoc,
                 documentPicked: true,
-                name:document.name,
+                name: document.name,
                 document
             })
         }
@@ -72,12 +74,12 @@ function AgencyForm3(props) {
             setPanCardDoc({
                 ...panCardDoc,
                 documentPicked: true,
-                name:document.name,
+                name: document.name,
                 document
             })
         }
     }
-    
+
     const handleUploadError = (error) => {
         toast.error(error)
     }
@@ -166,16 +168,21 @@ function AgencyForm3(props) {
 
     return (
         <>
-            <Navbar />
+            <div className="Navbar-parent">
+                <Navbar />
+            </div>
+            <div className="back-parent marginLeft">
+                <Back name="Hire Agency" />
+            </div>
             <FormPhases value1={true} value2={true} value3={true} />
-            <div
+            {/* <div
                 className="backArrow_agencyForm3"
                 onClick={() => {
                     props.history.goBack();
                 }}
             >
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </div>
+            </div> */}
 
             {loading ? <Spinner /> :
 

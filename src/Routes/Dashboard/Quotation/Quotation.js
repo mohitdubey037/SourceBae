@@ -45,9 +45,11 @@ function Quotation(props) {
         <>
             <Sidebar />
             {/* <Navbar headingInfo="Quotation" /> */}
-            <Navbar />
+            <div className="navbar-parent_Quotation">
+                <Navbar />
+            </div>
             <div className="back-parent">
-                <Back />
+                <Back name="Quotation" />
             </div>
 
             <div className="mainQuotation">
