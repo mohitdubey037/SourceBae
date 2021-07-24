@@ -254,10 +254,10 @@ const AgencyCommentBox = (props) => {
         )}
       </div>
 
-      <div className={`action-wait`}>
+      <div className='action-wait'>
         <div className="postQuotation">
           {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
-            <div className="detailsButtons">
+            <div className="detailsButtons md-m10">
               <p>
                 <b>{`Client Negotiatiable Price: `}</b>
                 {props.clientNegotiablePrice}
@@ -265,7 +265,7 @@ const AgencyCommentBox = (props) => {
             </div>
           )}
           {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
-            <div className="detailsButtons">
+            <div className="detailsButtons md-m10" >
               <p>
                 <b>{`Agency Negotiatiable Price: `}</b>
                 {props.agencyNegotiablePrice}
@@ -274,7 +274,7 @@ const AgencyCommentBox = (props) => {
           )}
 
           {props.quotationLink && props.quotationLink !== "" && (
-            <div className="detailsButtons">
+            <div className="detailsButtons md-m10">
               <a href={props.quotationLink} target="new">
                 Click to see Quotation
               </a>
@@ -285,47 +285,26 @@ const AgencyCommentBox = (props) => {
         {!(
           props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient
         ) && (
-            <div
-              className="proposalCard"
-            // className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
-            //   ? ""
-            //   : "disabled"
-            //   }`}
-            >
+            <div className="proposalCard">
+              {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
+                ? ""
+                : "disabled"}`}> */}
               <div className="yellowBg">
                 <img src={proposalImage} alt="" />
               </div>
-
-              <div className="detailsButtons">
-
-                <button
-                  className="acceptButton"
-                  onClick={() => {
-                    setOpen(true);
-                  }}
-                >
-                  Accept
-                </button>
-
-                <button
-                  className="rejectButton"
-                  onClick={() => setOpenWithdrawModal(true)}
-                >
-                  Withdraw
-                </button>
+              <div style={{display: `${props.isProposalActionActive && props.isQuotationAcceptedByClient}` ? '' : 'none'}} className="detailsButtons md-flex">
+                  <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                    Accept
+                  </button>
+                  <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
+                    Withdraw
+                  </button>
               </div>
             </div>
           )}
       </div>
-      <Modal
-        open={open}
-        onClose={() => {
-          setOpen(false);
-        }}
-        classNames={{
-          overlay: "customOverlayAgencyProduct",
-          modal: "customModalAgencyProduct",
-        }}
+      <Modal open={open} onClose={() => { setOpen(false) }}
+        classNames={{ overlay: "customOverlayAgencyProduct", modal: "customModalAgencyProduct" }}
         center
       >
         <div className="modalHeaderProduct">
@@ -385,7 +364,6 @@ const AgencyCommentBox = (props) => {
               <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
             </div>
           </div>
-
         </div>
         <div className="connectedButton">
           <p onClick={handleProjectAcceptance}>
@@ -394,17 +372,9 @@ const AgencyCommentBox = (props) => {
         </div>
       </Modal>
 
-      <Modal
-        open={openWithdrawModal}
-        onClose={() => {
-          setOpenWithdrawModal(false);
-        }}
-        classNames={{
-          overlay: "customOverlayAgencyProduct",
-          modal: "customModalAgencyProduct",
-        }}
-        center
-      >
+      <Modal open={openWithdrawModal} onClose={() => { setOpenWithdrawModal(false) }}
+        classNames={{ overlay: "customOverlayAgencyProduct", modal: "customModalAgencyProduct" }}
+        center>
         <div className="quotationTable">
           <div className="tableHeaderQuotation">
             <p>Reason for Rejection</p>

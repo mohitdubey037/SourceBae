@@ -112,11 +112,10 @@ function AgencyRespondedDetails(props) {
                 <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
                   <p
                     style={{
-                      backgroundColor: "transparent",
-                      padding: "0rem 0.5rem",
+                      backgroundColor: "#02044a",
+                      padding: "0.2rem 1rem",
                       borderRadius: "999px",
-                      color: "#000",
-                      fontSize: 28
+                      color: "#fff",
                     }}
                   >
                     {project?.projectName}
@@ -129,7 +128,7 @@ function AgencyRespondedDetails(props) {
                     backgroundColor: "transparent",
                     padding: "0",
                     borderRadius: "999px",
-                    color: "#3A3A3A",
+                    color: "#02044a",
                   }}
                 >
                   {project?.projectDomainId?.domainName}

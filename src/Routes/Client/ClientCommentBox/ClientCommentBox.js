@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
+import proposalImage from '../../../assets/images/proposalImage.png';
+import './ClientCommentBox.css';
 
 const ClientCommentBox = (props) => {
   const [open, setOpen] = useState(false);
@@ -112,32 +114,35 @@ const ClientCommentBox = (props) => {
           style={{
             display: "flex",
             flexDirection: "column",
-            border: "2px solid black",
+            border: "1px solid #ddd",
             borderRadius: "8px",
             padding: "1rem",
             margin: "2rem 1rem 1rem 1rem",
             width: "100%",
+            boxShadow: '0 1px 2px 1px rgba(0,0,0,0.2)',
+            height: '400px',
+            overflow: 'scroll',
+            position: 'relative'
           }}
         >
+          <div className="topLine" style={{
+          }}></div>
           {props.comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
                 <>
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     {index.comment && (
-                      <div>
-                        <h5>
-                          <b>Client: </b>
-                          {index.comment}
-                        </h5>
+                      <div className="chatBox" style={{ textAlign: 'right', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                        <b>Client </b>
+                        <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
                       </div>
                     )}
+
                     {index.reply && (
-                      <div>
-                        <h5>
-                          <b>Agency: </b>
-                          {index.reply}
-                        </h5>
+                      <div className="chatBox" style={{ textAlign: 'left', justifyContent: 'flex-start', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                        <b>Agency </b>
+                        <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
                       </div>
                     )}
                   </div>
@@ -211,17 +216,17 @@ const ClientCommentBox = (props) => {
           {!props.isAskedForQuotation &&
             props.isCommentSectionActive &&
             props.isShortListed && (
-              <div className="detailsButtons">
+              <div className="detailsButtons margin-0">
                 <button onClick={askForQuotation}>Ask For Quotation</button>
               </div>
             )}
-          {props.isReplySectionActive && "Waiting for the reply from Agency."}
+          {props.isReplySectionActive && <p style={{textAlign: 'right'}}>Waiting for the reply from Agency.</p>}
         </div>
 
         <div className={`action-wait`}>
           <div className="postQuotation">
             {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
-              <div className="detailsButtons">
+              <div className="detailsButtons margin-0">
                 <p>
                   <b>{`Agency Negotiatiable Price: `}</b>
                   {props.agencyNegotiablePrice}
@@ -230,7 +235,7 @@ const ClientCommentBox = (props) => {
             )}
 
             {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
-              <div className="detailsButtons">
+              <div className="detailsButtons margin-0">
                 <p>
                   <b>{`Client Negotiatiable Price: `}</b>
                   {props.clientNegotiablePrice}
@@ -239,7 +244,7 @@ const ClientCommentBox = (props) => {
             )}
 
             {props.quotationLink && props.quotationLink !== "" && (
-              <div className="detailsButtons">
+              <div className="detailsButtons margin-0">
                 <a href={props.quotationLink} target="new">
                   Click to see Quotation
                 </a>
@@ -248,16 +253,26 @@ const ClientCommentBox = (props) => {
           </div>
 
           {props.isProposalActionActive}
-          <div className={`${props.isProposalActionActive ? "" : "disabled"}`}>
-            <div>
-              <p>Accept or Reject the Project.</p>
+          {/* <div className={`${props.isProposalActionActive ? "" : "disabled"}`}> */}
+            <div className="proposalCard">
+              <div className="yellowBg">
+                <img src={proposalImage} alt="" />
+              </div>
+              <div style={{ display: `${props.isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
+                <div>
+                  <p>Accept or Reject the Project.</p>
+                </div>
+                <div>
+                <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                  Accept
+                </button>
+                <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
+                  Withdraw
+                </button>
+                </div>
+              </div>
             </div>
-
-            <div className="detailsButtons">
-              <button className="acceptButton" onClick={() => setOpen(true)}>Accept</button>
-              <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>Reject</button>
-            </div>
-          </div>
+          {/* </div> */}
         </div>
       </div>
 
@@ -353,8 +368,9 @@ const ClientCommentBox = (props) => {
           color: 'white',
           background: 'burlywood',
           padding: '2px',
-          textAlign: 'center'}} onClick={() => handleProjectRejection()}>Yes</button>
-    </Modal>
+          textAlign: 'center'
+        }} onClick={() => handleProjectRejection()}>Yes</button>
+      </Modal>
     </>
 
   );

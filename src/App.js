@@ -39,8 +39,6 @@ import ForgotPassword from './Routes/ForgotPassword/ForgotPassword';
 import EnterEmail from './Routes/EnterEmail/EnterEmail';
 import DynamicPageNotFound from './Routes/DynamicPageNotFound/DynamicPageNotFound';
 
-
-import NewDashboard from "./Routes/Dashboard/NewDashboard";
 import ClientNewestDashboard from './Routes/Client/ClientNewestDashboard';
 import AgencyNewestDashboard from './Routes/Dashboard/AgencyNewestDashboard';
 import AgencyNewestAllProject from './Routes/Dashboard/AgencyNewestAllProject';
@@ -61,7 +59,6 @@ const App = (props) => {
       <Route exact path="/password-reset:token" component={ForgotPassword} />
       <Route exact path="/page-not-found" component={PageNotFound} />
 
-      <Route exact path='/newdashboard' component={NewDashboard} />
       <Route exact path='/clientNewestDashboard' component={ClientNewestDashboard} />
       <Route exact path='/agencyNewestDashboard' component={AgencyNewestDashboard} />
       <Route exact path='/agencyNewestAllProject' component={AgencyNewestAllProject} />

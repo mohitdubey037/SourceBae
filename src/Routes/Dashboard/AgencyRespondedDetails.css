@@ -8,19 +8,19 @@
 }
 
 .image-div_AgencyRespondedDetails {
-  width: 8%;
+  width: 7%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-left: 10px;
 }
 
-.image-div_AgencyRespondedDetails > div {
+.image-div_AgencyRespondedDetails>div {
   border: 2px solid black;
   cursor: pointer;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -686,7 +686,7 @@
   width: 80%;
   margin-top: 1%;
   color: #9a9a9a;
-} 
+}
 
 .respondDescription_AgencyRespondedDetails h2 {
   font-family: 'poppins';

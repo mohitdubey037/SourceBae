@@ -7,6 +7,13 @@
     margin-top: 60px;
 }
 
+.height {
+    display: flex;
+    justify-content: space-between;
+    height: 91px;
+    flex-direction: column;
+}
+
 .innerDetailHeader {
     width: 95%;
     display: flex;
@@ -56,11 +63,17 @@
 }
 
 .detailsButtons {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 3rem;
-    margin: 2rem 0;
+    display: flex !important;
+    align-items: center !important;
+    margin-right: 3rem !important;
+    margin: 2rem 0 !important;
+    justify-content: space-between !important;
+    /* height: 82px; */
+    flex-direction: column !important;
+}
+
+.detailsButtons div p {
+    color: black !important;
 }
 
 .postQuotation {
@@ -675,4 +688,8 @@
         color: #484848;
         font-size: 0.9rem;
     }
+}
+
+.margin-0 {
+    margin :  10px 0% !important
 }
