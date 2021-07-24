@@ -723,11 +723,12 @@
   }
 }
 
-.md-flex {
+.detailsButtons.md-flex {
   display: flex !important;
   justify-content: center !important;
+  flex-direction: row !important;
 }
 
-.md-m10 {
+.detailsButtons.md-m10 {
   margin: 10px 0 !important;
 }
