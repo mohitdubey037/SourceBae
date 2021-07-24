@@ -7,6 +7,7 @@ import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/post
 import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile_icon.svg";
 import notificationIcon from "../../../assets/images/Newestdashboard/SideBar/notification_icon.svg";
 import settingIcon from "../../../assets/images/Newestdashboard/SideBar/setting_icon.svg";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import { useHistory } from 'react-router-dom';
 
@@ -20,6 +21,22 @@ function Sidebar() {
         if (role === 'Agency') {
             routerHistory.push('/agency-profile');
         }
+        else {
+            routerHistory.push('/client-profile');
+        }
+    }
+    const handleDashboard = () => {
+        if (role === 'Agency') {
+            routerHistory.push('/agencynewestdashboard');
+        }
+        else {
+            routerHistory.push('/clientnewestdashboard');
+        }
+    }
+    const logout = () => {
+        localStorage.removeItem("Authorization");
+        localStorage.removeItem('role');
+        routerHistory.push('/');
     }
 
     return (
@@ -28,7 +45,7 @@ function Sidebar() {
                 <img src={oneSourcingLogo} alt="one sroucing logo" />
             </div>
             <div className="sidebar-menu">
-                <div className="dashboard-icon icons">
+                <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div className="selected-strip" />
                     <img src={dashboardIcon} alt="dashboard icon" />
                     <p>Dashboard</p>
@@ -51,8 +68,16 @@ function Sidebar() {
                     <img src={settingIcon} alt="dashboard icon" />
                     <p>Setting</p>
                 </div>
+                <div onClick={logout} className="setting-icon icons">
+                    <ExitToAppIcon color="#999" />
+                    <p>Log Out</p>
+                </div>
+                {/* <div className="setting-icon icons">
+                    <img src={settingIcon} alt="dashboard icon" />
+                    <p>Setting</p>
+                </div> */}
             </div>
-            <div className="sidebar-help">
+            {/* <div className="sidebar-help">
                 <div className="help-img">
                     <img src={helpImg} alt="help" />
                 </div>
@@ -63,7 +88,7 @@ function Sidebar() {
                 <div className="help-button">
                     <button>Help</button>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

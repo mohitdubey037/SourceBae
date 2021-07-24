@@ -13,7 +13,8 @@ import instance from "../../../Constants/axiosConstants";
 import Spinner from '../../../Components/Spinner/Spinner';
 import { Modal } from "react-responsive-modal";
 import Moment from "react-moment";
-import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
+import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
+import Back from '../../../Components/Back/Back';
 
 function ProductDetails(props) {
   console.log(props);
@@ -198,6 +199,9 @@ function ProductDetails(props) {
       {/* {condition === "Agency" ? <Navbar /> : <ClientNavbar />} */}
       <div className="Navbar-parent">
         <Navbar />
+      </div>
+      <div className="back-parent marginLeft"> 
+        <Back name="Hire Agency" />
       </div>
       {loading === true ? <Spinner /> :
         err ? (

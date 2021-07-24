@@ -204,17 +204,6 @@ function HireAgencyForm2(props) {
       <div className="Navbar-parent">
         <Navbar />
       </div>
-      <div className="back-parent marginLeft"> 
-        <Back name="Hire Agency" />
-      </div>
-      {/* <div
-        className="backArrow_hireAgencyForm2"
-        onClick={() => {
-          props.history.goBack();
-        }}
-      >
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-      </div> */}
 
       {loading ? (
         <Spinner />

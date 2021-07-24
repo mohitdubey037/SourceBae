@@ -105,13 +105,16 @@ function AgencyProfile(props) {
   return (
     <>
       {/* {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />} */}
-      <Navbar />
       {loading ? (
         <Spinner />
       ) : agencyProfileData._id !== "" ? (
         <div>
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
+              <div className='backButtonAgencyProfile'>
+                <i onClick={() => props.history.goBack()} class="fa fa-chevron-left" aria-hidden="true"></i>
+                <h6 onClick={() => props.history.goBack()}>Back</h6>
+              </div>
               {Role === "Agency" ? (
                 agencyProfileData.productId === undefined ? (
                   <>
@@ -134,33 +137,33 @@ function AgencyProfile(props) {
                     </button>
                   </>
                 ) : (
-                  <button
-                    onClick={() =>
-                      props.history.push({
-                        pathname: `/product-details:${agencyProfileData.productId}`,
-                        condition: id !== '' ? 'Agency' : 'Client'
-                      })
-                    }
-                  >
-                    View Your Product{" "}
-                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
-                  </button>
-                )
+                    <button
+                      onClick={() =>
+                        props.history.push({
+                          pathname: `/product-details:${agencyProfileData.productId}`,
+                          condition: id !== '' ? 'Agency' : 'Client'
+                        })
+                      }
+                    >
+                      View Your Product{" "}
+                      <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                    </button>
+                  )
               ) : (
-                <div>
-                  {/* <p onClick={onOpenModal}>
+                  <div>
+                    {/* <p onClick={onOpenModal}>
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                     Have a Question..?
                   </p> */}
-                  <i
-                    style={{ fontSize: 22, color: "#fff" }}
-                    className="fa fa-info-circle"
-                    aria-hidden="true"
-                    onMouseOver={() => setHoverModal(true)}
-                  // onMouseLeave={()=>onCloseModal()}
-                  ></i>
-                </div>
-              )}
+                    <i
+                      style={{ fontSize: 22, color: "#fff" }}
+                      className="fa fa-info-circle"
+                      aria-hidden="true"
+                      onMouseOver={() => setHoverModal(true)}
+                    // onMouseLeave={()=>onCloseModal()}
+                    ></i>
+                  </div>
+                )}
             </div>
           </div>
 
@@ -355,7 +358,7 @@ function AgencyProfile(props) {
           </div>
 
           <div className="mainQuotation">
-            <div className="innerQuotation">
+            <div className="innerQuotation marginLeft">
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <button
@@ -498,17 +501,17 @@ function AgencyProfile(props) {
           </div>
         </div>
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "80vh",
-          }}
-        >
-          <h1> No agency found with this ID. </h1>
-        </div>
-      )}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "80vh",
+              }}
+            >
+              <h1> No agency found with this ID. </h1>
+            </div>
+          )}
     </>
   );
 }

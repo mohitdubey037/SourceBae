@@ -4,24 +4,31 @@ import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/
 import CurrentStatusImage from '../../assets/images/Newestdashboard/Agency_Project_Card/CurrentStatus1.svg';
 import './AgencyProjectCard.css';
 
-function AgencyProjectCard() {
+import Moment from 'react-moment'
+
+function AgencyProjectCard({ id, name, status, budget, creationDate, projectType, experties, services, props }) {
+    // console.log(name, status, budget, creationDate,projectType)
     return (
         <div className="user-project_agencyNewestDashboard">
             <div className="user-project_heading_agencyNewestDashboard">
                 <div className="user-project_child_agencyNewestDashboard">
-                    <h5>Bani Thani Design Institute</h5>
+                    <h5>{name}</h5>
                 </div>
-                <div className="user-project-button_agencyNewestDashboard">
+                <div onClick={() =>
+                    props.history.push(`/agency-project-details:${id}`)
+                } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
                     <h6>Show Details</h6>
                 </div>
             </div>
 
             <div className="user-project-status">
                 <div className='date'>
-                    <div className="imageClass">
+                    <div className="imageClass" style={{ marginRight: 10 }}>
                         <img src={DateImage} alt="dateImage" />
                     </div>
-                    <p>8 july 2021</p>
+                    <Moment format="D MMM YYYY" withTitle>
+                        <p style={{ marginLeft: 10 }}>{creationDate}</p>
+                    </Moment>
                 </div>
                 <div className='matchedDate'>
                     <div className="imageClass">
@@ -33,7 +40,7 @@ function AgencyProjectCard() {
                     <div className="imageClass">
                         <img src={CurrentStatusImage} alt="CurrentStatus" />
                     </div>
-                    <p>Matched On 25 March 2021</p>
+                    <p>{status}</p>
                 </div>
             </div>
 
@@ -44,13 +51,13 @@ function AgencyProjectCard() {
                             <td>Industry</td>
                             <td>Edtech</td>
                             <td>Final Budget</td>
-                            <td>$2000</td>
+                            <td>${budget}</td>
                         </tr>
                         <tr>
                             <td>Expert Categories</td>
-                            <td>Online File Submission</td>
+                            <td>{experties[0].expertiseName}</td>
                             <td>Services</td>
-                            <td>App Developement</td>
+                            <td>{services[0].serviceName}</td>
                         </tr>
                     </thead>
                 </table>
