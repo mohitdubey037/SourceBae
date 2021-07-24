@@ -732,3 +732,8 @@
 .detailsButtons.md-m10 {
   margin: 10px 0 !important;
 }
+
+.md-flex .color-black {
+  color: #000 !important;
+  margin: 0 !important;
+}

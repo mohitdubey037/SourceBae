@@ -13,7 +13,7 @@ import Moment from "react-moment";
 import { toast } from "react-toastify";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import detailImage from '../../assets/images/details.png'
+import detailImage from '../../assets/images/details.png';
 
 import AgencyCommentBox from '../Agency/AgencyCommentBox/AgencyCommentBox';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -37,8 +37,8 @@ function AgencyRespondedDetails(props) {
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
-        setLoading(false);
         setProject(response);
+        setLoading(false);
       })
       .catch((err) => {
         setLoading(false);

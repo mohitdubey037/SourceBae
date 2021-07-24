@@ -267,7 +267,7 @@ const ClientCommentBox = (props) => {
                   Accept
                 </button>
                 <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
-                  Withdraw
+                  Reject
                 </button>
                 </div>
               </div>

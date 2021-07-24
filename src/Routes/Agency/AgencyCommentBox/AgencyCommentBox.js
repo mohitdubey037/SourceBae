@@ -17,6 +17,7 @@ import proposalImage from '../../../assets/images/proposalImage.png'
 let isRepliedToClient = false;
 
 const AgencyCommentBox = (props) => {
+  console.log(props);
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
     isShortListed: true,
@@ -292,13 +293,20 @@ const AgencyCommentBox = (props) => {
               <div className="yellowBg">
                 <img src={proposalImage} alt="" />
               </div>
-              <div style={{display: `${props.isProposalActionActive && props.isQuotationAcceptedByClient}` ? '' : 'none'}} className="detailsButtons md-flex">
-                  <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                    Accept
-                  </button>
-                  <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
-                    Withdraw
-                  </button>
+              <div style={{ display: `${props.isProposalActionActive && props.isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons md-flex">
+                {props.isProposalActionActive ?
+                  <>
+                    <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                      Accept
+                    </button>
+                    <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
+                      Reject
+                    </button>
+                  </>
+                  :
+                  props.isReplySectionActive === 'false' && 
+                  <p className="color-black">Please provide some reply</p>
+                }
               </div>
             </div>
           )}

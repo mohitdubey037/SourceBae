@@ -9,6 +9,8 @@ import { useParams, useHistory } from "react-router-dom";
 import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
+import detailImage from '../../../assets/images/details.png';
+
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   let { projectId, agencyId } = useParams();
@@ -27,6 +29,7 @@ function RespondedDetails(props) {
       .then(function (response) {
         console.log(response.projectServicesRequired[0].serviceName);
         setProject(response);
+        console.log(response, 'response');
         setLoading(false);
       })
       .catch((err) => {
@@ -165,15 +168,17 @@ function RespondedDetails(props) {
         </div>
       </div>
 
+      <div className="detailsContainer">
+        <div className="innerDetailsContainer">
+          <div className="detailsDiv">
+            <img src={detailImage} />
+            <h4>Details</h4>
+          </div>
+        </div>
+      </div>
 
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
-          {/* <div className="quotationleftLine"></div>
-          <div className="agencyQuotationHeader">
-            <div className="agencyQuotationHeading">
-              <h2>Quotation Details</h2>
-            </div>
-          </div> */}
 
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {
@@ -182,7 +187,7 @@ function RespondedDetails(props) {
                 :
                 project.projectProposals && project?.projectProposals[0].rejectReasonByAgency !== undefined ?
                   <>
-                    <p>Project is rejected by the Client due to following reason</p>
+                    <p>Project is rejected by the Agency due to following reason</p>
                     <ul>
                       <li>{project?.projectProposals[0].rejectReasonByAgency}</li>
                     </ul>
