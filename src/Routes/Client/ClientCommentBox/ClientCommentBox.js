@@ -109,38 +109,23 @@ const ClientCommentBox = (props) => {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <div
-          className="commentBox"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            border: "1px solid #ddd",
-            borderRadius: "8px",
-            padding: "1rem",
-            margin: "2rem 1rem 1rem 1rem",
-            width: "100%",
-            boxShadow: '0 1px 2px 1px rgba(0,0,0,0.2)',
-            height: '400px',
-            overflow: 'scroll',
-            position: 'relative'
-          }}
-        >
+        <div className="commentBox">
           <div className="topLine" style={{
           }}></div>
           {props.comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
                 <>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div className="chatBox-parent">
                     {index.comment && (
-                      <div className="chatBox" style={{ textAlign: 'right', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                      <div className="chatBox">
                         <b>Client </b>
                         <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
                       </div>
                     )}
 
                     {index.reply && (
-                      <div className="chatBox" style={{ textAlign: 'left', justifyContent: 'flex-start', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                      <div className="chatBox chatBox-left">
                         <b>Agency </b>
                         <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
                       </div>
@@ -187,25 +172,11 @@ const ClientCommentBox = (props) => {
                       </div>
                     </div>
                   )}
-                <div
-                  style={{ display: "flex", flexDirection: "column", width: "30%" }}
-                >
-                  <button
-                    style={{
-                      background: "none",
-                      minWidth: "40px",
-                      maxWidth: "80px",
-                      border: "2px solid black",
-                      borderRadius: "4px",
-                    }}
-                    onClick={() => {
-                      replyApi();
-                    }}
-                  >
+                <div className="reply-parent">
+                  <button className="reply-button" onClick={() => { replyApi() }}>
                     Reply
                   </button>
                 </div>
-
               </div>
             )}
           {!props.isCommentSectionActive && !props.isReplySectionActive && (
@@ -220,10 +191,10 @@ const ClientCommentBox = (props) => {
                 <button onClick={askForQuotation}>Ask For Quotation</button>
               </div>
             )}
-          {props.isReplySectionActive && <p style={{textAlign: 'right'}}>Waiting for the reply from Agency.</p>}
+          {props.isReplySectionActive && <p style={{ textAlign: 'right' }}>Waiting for the reply from Agency.</p>}
         </div>
 
-        <div className={`action-wait`}>
+        <div className='action-wait'>
           <div className="postQuotation">
             {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
               <div className="detailsButtons margin-0">
@@ -254,24 +225,24 @@ const ClientCommentBox = (props) => {
 
           {props.isProposalActionActive}
           {/* <div className={`${props.isProposalActionActive ? "" : "disabled"}`}> */}
-            <div className="proposalCard">
-              <div className="yellowBg">
-                <img src={proposalImage} alt="" />
+          <div className="proposalCard">
+            <div className="yellowBg">
+              <img src={proposalImage} alt="" />
+            </div>
+            <div style={{ display: `${props.isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
+              <div>
+                <p>Accept or Reject the Project.</p>
               </div>
-              <div style={{ display: `${props.isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
-                <div>
-                  <p>Accept or Reject the Project.</p>
-                </div>
-                <div>
+              <div>
                 <button className="acceptButton" onClick={() => { setOpen(true) }}>
                   Accept
                 </button>
                 <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
                   Reject
                 </button>
-                </div>
               </div>
             </div>
+          </div>
           {/* </div> */}
         </div>
       </div>

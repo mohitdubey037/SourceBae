@@ -16,8 +16,6 @@ function ProjectDetails(props) {
                 <Navbar />
                 <AgencyRespondedDetails />
             </div>
-            {/* <div style={{ marginTop: '3%' }}> */}
-            {/* </div> */}
         </>
     )
 }

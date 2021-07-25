@@ -1,4 +1,4 @@
-.mainDetailHeader {
+/* .mainDetailHeader {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -43,10 +43,8 @@
     justify-self: flex-end;
   }
   
-  .moreAgencyList::-webkit-scrollbar
-  {
+  .moreAgencyList::-webkit-scrollbar{
     width: 4px;
-  
   }
 
   .innerMoreAgencies_clientOneHireDeveloper {
@@ -55,15 +53,16 @@
     height: 70vh;
     flex-direction: column;
     justify-content: center;
-  }
-  .moreAgencyList::-webkit-scrollbar-track {
+  } */
+
+  /* .moreAgencyList::-webkit-scrollbar-track {
     background-color: #2a98d8;
-    border-radius: 10px;    /* color of the tracking area */
+    border-radius: 10px;    
   }
   .moreAgencyList::-webkit-scrollbar-thumb {
-    background-color: blue;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid orange;  /* creates padding around scroll thumb */
+    background-color: blue;    
+    border-radius: 20px;       
+    border: 3px solid orange;  
   }
   
   .moreAgencyLogo{
@@ -140,11 +139,9 @@
     position: sticky;
     top: 5%;
     margin: 4rem 0rem 0rem 0rem;
-  }
-  
-  
-  
-  .detailHeaderImage div {
+  } */
+    
+  /* .detailHeaderImage div {
     width: 120px;
     height: 120px;
     background-color: #fff;
@@ -251,9 +248,9 @@
     font-family: "Poppins";
     font-weight: 500;
     font-size: 1.1rem;
-  }
+  } */
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .detailHeaderImage div {
       width: 60px;
       height: 60px;
@@ -389,9 +386,9 @@
       font-weight: 500;
       font-size: 1.1rem;
     }
-  }
+  } */
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .detailHeaderImage div {
       width: 60px;
       height: 60px;
@@ -458,9 +455,9 @@
     .rightBorder {
       display: none;
     }
-  }
+  } */
   
-  .respondDescription {
+  /* .respondDescription {
     margin-top: 3%;
     margin-left: 2%;
   }
@@ -474,15 +471,15 @@
     width: 80%;
     margin-top: 1%;
     color: #9a9a9a;
-  }
+  } */
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .respondDescription p {
       width: 100% !important;
     }
-  }
+  } */
   
-  .respondCards_clientOneHireDeveloper {
+  /* .respondCards_clientOneHireDeveloper {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -529,9 +526,9 @@
   .innerResponseCard div p:nth-child(2) {
     color: #008e80;
     font-weight: 500;
-  }
+  } */
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .respondCards_clientOneHireDeveloper {
       flex-direction: column;
     }
@@ -542,9 +539,9 @@
     .innerResponseCard div p {
       font-size: 0.9rem;
     }
-  }
+  } */
   
-  .briefDetails {
+  /* .briefDetails {
     width: 100%;
     margin-bottom: 5%;
     position: relative;
@@ -600,9 +597,9 @@
     font-family: "Poppins";
     color: #484848;
     font-size: 1rem;
-  }
+  } */
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .briefHeading {
       flex-direction: column;
     }
@@ -623,9 +620,9 @@
       color: #484848;
       font-size: 0.8rem;
     }
-  }
+  } */
   
-  .agencyQuotation {
+  /* .agencyQuotation {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -634,7 +631,6 @@
     margin-bottom: 3%;
   }
   .innerAgencyQuotation {
-    /* padding: 1.5rem; */
     width: 95%;
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -673,7 +669,6 @@
   }
   .agencyLogo img {
     width: 60%;
-    /* height: 80px; */
     object-fit: contain;
     mix-blend-mode: multiply;
   }
@@ -705,9 +700,9 @@
     font-size: 1.1rem;
     margin-top: 20px;
     list-style: disc;
-  }
+  } */
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .agencyQuestions {
       flex-direction: column;
       margin-bottom: 3%;
@@ -751,7 +746,6 @@
     }
     .agencyLogo img {
       width: 60%;
-      /* height: 80px; */
       object-fit: contain;
       mix-blend-mode: multiply;
     }
@@ -769,5 +763,5 @@
       color: #484848;
       font-size: 0.9rem;
     }
-  }
+  } */
   

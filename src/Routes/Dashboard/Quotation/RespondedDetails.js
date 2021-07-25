@@ -1,14 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import './RespondedDetails.css'
-import foods from "../../../assets/images/Quotation/foods.png";
 import Moment from 'react-moment';
 import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-
 import detailImage from '../../../assets/images/details.png';
 
 //RESPONDED DETAILS
@@ -40,24 +38,14 @@ function RespondedDetails(props) {
   useEffect(() => {
     console.log('hii');
     if (Object.keys(props["projects"]).length === 0) {
-      console.log("empty");
       getAllProjects();
     } else {
-      console.log("Not empty");
       setProject(props.projects);
     }
   }, [isRepliedToClient]);
 
   return (
     <>
-      {/* <div
-        style={{ marginTop: "55px" }}
-        className="backArrow"
-        onClick={() => routerHistory.goBack()}
-      >
-        <i className="fa fa-angle-left" aria-hidden="true"></i>
-      </div> */}
-
       <div className="back-button_AgencyRespondedDetails">
         <div className="image-div_AgencyRespondedDetails">
           <div className="hover" onClick={() => routerHistory.goBack()}>
@@ -179,7 +167,6 @@ function RespondedDetails(props) {
 
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
-
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {
               project.projectProposals && project?.projectProposals[0].rejectReasonByClient !== undefined ?
@@ -232,12 +219,8 @@ function RespondedDetails(props) {
                               isQuotationAcceptedByClient={
                                 project.projectProposals[0].isQuotationAcceptedByClient
                               }
-
-
                               isAskedForQuotation={true}
                               commentType="Quotation"
-
-
                             />
                           )
                             :
@@ -258,8 +241,6 @@ function RespondedDetails(props) {
                                   isReplySectionActive={
                                     project.projectProposals[0].isReplySectionActive
                                   }
-
-
                                   clientNegotiablePrice={
                                     project.projectProposals[0].clientNegotiablePrice
                                   }
@@ -273,18 +254,13 @@ function RespondedDetails(props) {
                                   isQuotationAcceptedByClient={
                                     project.projectProposals[0].isQuotationAcceptedByClient
                                   }
-
                                   isAskedForQuotation={false}
                                   commentType="Shortlist"
-
                                 />
                               )
                             )}
                     </>
-
             }
-
-
           </div>
 
           <div className="agencyQuestions_AgencyRespondedDetails">

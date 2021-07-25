@@ -121,22 +121,7 @@ const AgencyCommentBox = (props) => {
   };
   return (
     <div style={{ display: "flex" }}>
-      <div
-        className="commentBox"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          padding: "1rem",
-          margin: "2rem 1rem 1rem 1rem",
-          width: "100%",
-          boxShadow: '0 1px 2px 1px rgba(0,0,0,0.2)',
-          height: '400px',
-          overflow: 'scroll',
-          position: 'relative'
-        }}
-      >
+      <div className="commentBox">
         <div className="topLine" style={{
         }}></div>
         {props.isQuotationAcceptedByClient === true ?
@@ -148,7 +133,7 @@ const AgencyCommentBox = (props) => {
             if (index.commentType === props.commentType) {
               return (
                 <>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div className="chatBox-parent">
                     {index.comment && (
                       <div className="chatBox" >
                         <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
@@ -156,7 +141,7 @@ const AgencyCommentBox = (props) => {
                       </div>
                     )}
                     {index.reply && (
-                      <div className="chatBox" style={{ textAlign: 'right', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                      <div className="chatBox chatBox-left">
                         <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
                         <b>Agency </b>
                       </div>
@@ -223,25 +208,8 @@ const AgencyCommentBox = (props) => {
                 value={apiData.reply}
                 onChange={(event) => handleChange(event)}
               />
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "30%",
-                }}
-              >
-                <button
-                  style={{
-                    background: "none",
-                    minWidth: "40px",
-                    maxWidth: "80px",
-                    border: "2px solid black",
-                    borderRadius: "4px",
-                  }}
-                  onClick={() => {
-                    replyApi();
-                  }}
-                >
+              <div className="reply-parent">
+                <button className="reply-button" onClick={() => { replyApi() }}>
                   Reply
                 </button>
               </div>
@@ -304,7 +272,7 @@ const AgencyCommentBox = (props) => {
                     </button>
                   </>
                   :
-                  props.isReplySectionActive === 'false' && 
+                  props.isReplySectionActive === 'false' &&
                   <p className="color-black">Please provide some reply</p>
                 }
               </div>

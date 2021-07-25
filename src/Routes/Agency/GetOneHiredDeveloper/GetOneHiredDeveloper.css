@@ -1,4 +1,4 @@
-.mainDetailHeader {
+/* /* .mainDetailHeader {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -39,21 +39,19 @@
   box-shadow:rgba(0, 0, 0, 0.4);
   min-width: max-content;
   justify-self: flex-end;
-}
+} 
 
-.moreAgencyList::-webkit-scrollbar,.innerResponseCar::-webkit-scrollbar
-{
+.moreAgencyList::-webkit-scrollbar,.innerResponseCar::-webkit-scrollbar{
   width: 4px;
-
 }
 .moreAgencyList::-webkit-scrollbar-track, .innerResponseCar::-webkit-scrollbar-track{
   background-color: #2a98d8;
-  border-radius: 10px;    /* color of the tracking area */
+  border-radius: 10px;    
 }
 .moreAgencyList::-webkit-scrollbar-thumb,.innerResponseCar::-webkit-scrollbar-thumb {
-  background-color: blue;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid orange;  /* creates padding around scroll thumb */
+  background-color: blue;   
+  border-radius: 20px;       
+  border: 3px solid orange; 
 }
 
 .moreAgencyL{
@@ -69,7 +67,6 @@
   border:1px solid;
   box-shadow:rgba(0, 0, 0, 0.4);
 }
-
 
 .moreAgencySeeMore_GetOneHiredDeveloper button:hover{
   background-color: #2E86C1;
@@ -167,19 +164,20 @@
   font-family: "Poppins";
   font-weight: bold;
 }
-.detailsButtons {
+
+.postQuotation {
+  display: flex;
+}*/
+
+/* .detailsButtons {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-right: 3rem;
   margin: 2rem 0rem;
-}
+} */
 
-.postQuotation {
-  display: flex;
-}
-
-.detailsButtons button {
+/* .detailsButtons button {
   margin: 0 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 999px;
@@ -192,16 +190,16 @@
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
-}
-.detailsButtons button:nth-child(2) {
+} */
+/* .detailsButtons button:nth-child(2) {
   background-color: transparent !important;
   color: #aaa;
   border: 1px solid #999;
   box-shadow: none;
   transition: 0.2s ease-in-out;
-}
+}  */
 
-.action-wait {
+/* .action-wait {
   font-weight: 500;
   font-style: italic;
   background-color: rgb(0, 150, 155);
@@ -214,8 +212,8 @@
 .action-wait p {
   color: #fff !important;
   margin: 0;
-}
-.clientExperience {
+} */
+/* .clientExperience {
   display: flex;
   align-items: center;
   margin-top: 2%;
@@ -244,9 +242,9 @@
   font-family: "Poppins";
   font-weight: 500;
   font-size: 1.1rem;
-}
+} */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .detailHeaderImage div {
     width: 60px;
     height: 60px;
@@ -382,7 +380,7 @@
     font-weight: 500;
     font-size: 1.1rem;
   }
-}
+} 
 
 @media (max-width: 768px) {
   .detailHeaderImage div {
@@ -451,7 +449,7 @@
   .rightBorder {
     display: none;
   }
-}
+} 
 
 .respondDescription {
   margin-top: 3%;
@@ -467,7 +465,7 @@
   width: 80%;
   margin-top: 1%;
   color: #9a9a9a;
-}
+} 
 
 @media (max-width: 768px) {
   .respondDescription p {
@@ -524,8 +522,7 @@
 .innerResponseCar div p:nth-child() {
   color: #000;
   font-weight: 500;
-}
-
+}  
 
 @media (max-width: 768px) {
   .respondCard {
@@ -538,7 +535,7 @@
   .innerResponseCar div p {
     font-size: 0.9rem;
   }
-}
+} 
 
 .briefDetails {
   width: 100%;
@@ -596,7 +593,7 @@
   font-family: "Poppins";
   color: #484848;
   font-size: 1rem;
-}
+} 
 
 @media (max-width: 768px) {
   .briefHeading {
@@ -619,7 +616,7 @@
     color: #484848;
     font-size: 0.8rem;
   }
-}
+} 
 
 .agencyQuotation {
   width: 100%;
@@ -630,7 +627,6 @@
   margin-bottom: 3%;
 }
 .innerAgencyQuotation {
-  /* padding: 1.5rem; */
   width: 95%;
   background-color: #fff;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -667,9 +663,9 @@
   justify-content: flex-end;
   align-items: center;
 }
+
 .agencyLogo img {
   width: 60%;
-  /* height: 80px; */
   object-fit: contain;
   mix-blend-mode: multiply;
 }
@@ -701,7 +697,7 @@
   font-size: 1.1rem;
   margin-top: 20px;
   list-style: disc;
-}
+} 
 
 @media (max-width: 768px) {
   .agencyQuestions {
@@ -747,7 +743,6 @@
   }
   .agencyLogo img {
     width: 60%;
-    /* height: 80px; */
     object-fit: contain;
     mix-blend-mode: multiply;
   }
@@ -765,4 +760,4 @@
     color: #484848;
     font-size: 0.9rem;
   }
-}
+} */
