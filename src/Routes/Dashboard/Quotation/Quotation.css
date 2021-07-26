@@ -16,8 +16,13 @@
   margin-top: 2%;
   position: relative;
   margin-left: 10%
-
 }
+
+.navbar-parent_Quotation {
+  width: 90%;
+  margin-left: 10%;
+}
+
 .nav-tabs .nav-link {
   background-color: transparent !important;
   outline: none !important;
