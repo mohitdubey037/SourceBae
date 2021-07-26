@@ -237,7 +237,7 @@ function HireAgencyForm2(props) {
                         </div>
                         <p
                           className={`${domain.domainName}`}
-                          style={{ color: domain.selected ? "#fff" : "#000" }}
+                          style={{ color: "#000" }}
                         >{`${domain.domainName}`}</p>
                       </div>
                     );
@@ -332,6 +332,7 @@ function HireAgencyForm2(props) {
                         value={selected}
                         onChange={setSelected}
                         labelledBy="Select"
+                        className="margin-left"
                       />
                     </>
                   </div>

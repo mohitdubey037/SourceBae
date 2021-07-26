@@ -5,6 +5,7 @@ import "react-responsive-modal/styles.css";
 
 import { Modal } from "react-responsive-modal";
 import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
+import Sidebar from '../../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
@@ -128,10 +129,13 @@ function AgencyList(props) {
   return (
     <>
       {/* <ClientNavbar /> */}
-      <div className="Navbar-parent">
+      <div className="Navbar-parent margin-left position">
         <Navbar />
       </div>
-      <div className="back-parent marginLeft">
+      <div className="top-0 sidebar-parent_agencyList">
+        <Sidebar />
+      </div>
+      <div className="back-parent margin-left">
         <Back name="Agency List" />
       </div>
       {loading ? (<Spinner />) : (

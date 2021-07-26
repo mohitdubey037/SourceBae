@@ -179,7 +179,7 @@ function HireAgencyForm3(props) {
                                                 <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? "#68E1FD" : '#white' }} >
                                                     <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                                                 </div>
-                                                <p className={`${service.serviceName}`} style={{ color: service.selected ? '#fff' : '#000' }}>{`${service.serviceName}`}</p>
+                                                <p className={`${service.serviceName}`} style={{ color: '#000' }}>{`${service.serviceName}`}</p>
                                             </div>
                                         )
                                     })
@@ -214,6 +214,7 @@ function HireAgencyForm3(props) {
                                                 value={selected}
                                                 onChange={setSelected}
                                                 labelledBy="Select"
+                                                className="margin-left"
                                             />
                                         </>
                                     ) : null}

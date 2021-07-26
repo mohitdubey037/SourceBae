@@ -152,7 +152,7 @@
     margin-top: 5px;
     width: 100%;
     height: 100%;
-    padding-left: 10px;
+    padding: 10px;
     background: #FFFFFF;
     border: 1px solid #D1D3D4;
     box-sizing: border-box;
@@ -281,7 +281,7 @@
 }
 
 .higherAgencyInfoArea h4 {
-    font-family: Inter;
+    font-family: 'Inter';
     font-style: normal;
     font-weight: bold;
     font-size: 34px;
@@ -292,7 +292,7 @@
 }
 
 .higherAgencyInfoArea p {
-    font-family: Inter;
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -442,7 +442,7 @@
     display: flex;
     /* align-items: center; */
     flex-wrap: wrap;
-    width: 95%;
+    width: 100%;
     justify-content: space-between;
 }
 
@@ -454,16 +454,12 @@
 
 .tech-container div {
     width: 134px;
-    /* background-color: skyblue; */
-    /* opacity: 0.3; */
     border: 1px solid #A4A4A4;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     min-height: 134px;
-    /* padding-top: 0px;
-    margin-bottom: 0px; */
     cursor: pointer;
     border-radius: 50%;
     text-align: center;
@@ -474,9 +470,7 @@
 }
 
 .servicesCardsHireAgency div img {
-    /* width: 50%; */
     width: 70px;
-    /* margin-bottom: 4%; */
     user-select: none;
 }
 
@@ -488,7 +482,6 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    /* identical to box height, or 27px */
     text-transform: capitalize;
 }
 
@@ -531,6 +524,20 @@
     margin-top: 10%;
 }
 
+.serviceSelectionInput .margin-left {
+    margin-left: 17px;
+    text-transform: capitalize;
+    color: #a8a8a8;
+    margin-left: 30px;
+    height: 51px;
+    width: 83%;
+    background: #ffffff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding-left: 0;
+    background-color: red;
+}
+
 .monthlyBudget {
     margin-top: 5%;
 }
@@ -541,17 +548,6 @@
     font-weight: bold;
 }
 
-/* Hire Agency Form 3 */
-
-/* .mainHireAgencyForm3 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
-} */
-
 .innerHireAgencyForm3 {
     display: flex;
     justify-content: space-between;
@@ -560,17 +556,15 @@
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 1.5rem;
-    /* border-radius: 25px; */
     display: flex;
 }
 
 .serviceFieldsOptions {
-    width: 25%;
+    width: 29%;
 }
 
 .techStackFields {
     width: 70%;
-    /* border-right: 1px dashed #ebebeb; */
 }
 
 .techStackFields ul {
@@ -723,7 +717,7 @@
 
 .serviceFieldsOptions .uiuxtext {
     font-family: 'Poppins';
-    margin-left: 10px;
+    margin-left: 35px;
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -782,36 +776,10 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
-    /* identical to box height */
     text-align: center;
     letter-spacing: 0.4px;
     text-transform: capitalize;
-    color: #3A3A3A;
+    color: black;
     cursor: pointer;
     user-select: none;
 }
-
-/* .nextbutton_agencyForm2 div {
-    background: #EAF2FF;
-    border-radius: 4px;
-    width: 100px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-    letter-spacing: 0.4px;
-    text-transform: capitalize;
-    color: #3A3A3A;
-    cursor: pointer;
-    user-select: none;
-} */
-
-/* .nextbuttton div i {
-    margin: 0 10px;
-} */

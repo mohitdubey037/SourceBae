@@ -1,20 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
 
-.backArrow_agencyList{
+.Navbar-parent.margin-left {
+  width: 90%;
+  margin-left: 10%;
+}
+
+.sidebar-parent_agencyList .container-sidebar{
+  top: 0;
+}
+
+.backArrow_agencyList {
   position: absolute;
   top: 12%;
-  left:1.5%;
+  left: 1.5%;
   z-index: 100;
 }
 
-.backArrow_agencyList i{
+.backArrow_agencyList i {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 6px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
   background-color: #fff;
   cursor: pointer;
   font-size: 2rem;
@@ -43,16 +52,20 @@
   width: 95%;
   margin: auto;
   margin-top: 10px;
+  margin-left: 12%;
 }
+
 .innerprojectDetailsInfo_agencyList p {
   font-size: 2rem;
   font-weight: bold;
   font-family: 'Work Sans', sans-serif;
 }
+
 .innerprojectDetailsInfo_agencyList span {
   font-family: 'Poppins';
   color: #777;
 }
+
 .innerprojectDetailsInfo_agencyList span em {
   color: #000;
 }
@@ -63,12 +76,15 @@
   justify-content: center;
   align-items: center;
 }
+
 .innerAgencyList_agencyList {
   margin-top: 2%;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-around;
+  margin-left: 10%;
 }
+
 .AgencyCardsArea_agencyList {
   width: 68%;
 }
@@ -81,6 +97,7 @@
   z-index: 1;
   margin-bottom: 4%;
 }
+
 .agencyCardHeaderLine {
   position: absolute;
   z-index: -1;
@@ -95,10 +112,12 @@
   align-items: flex-start;
   padding: 1rem;
 }
+
 .agencyImageProfile {
   width: 70%;
   display: flex;
 }
+
 .agencyImageArea {
   width: 100px;
   height: 100px;
@@ -111,21 +130,25 @@
   background-color: #fff;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
+
 .agencyImageArea img {
   width: 100%;
   object-fit: contain;
 }
+
 .agencyProfileInfo h6 {
   font-family: 'Poppins';
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 6%;
 }
+
 .agencyProfileInfo div {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
+
 .agencyProfileInfo div p {
   padding: 0.1rem 0.5rem;
   margin-right: 10px;
@@ -136,15 +159,18 @@
   font-size: 0.8rem;
   font-weight: bold;
 }
+
 .profileButton p {
   font-family: 'Poppins';
   color: #3498db;
   font-weight: bold;
   cursor: pointer;
 }
+
 .profileButton p i {
   margin-left: 5px;
 }
+
 .profileButton p:hover {
   text-decoration: underline;
 }
@@ -156,41 +182,45 @@
   padding: 0 1rem;
   padding-bottom: 1rem;
 }
+
 .agencyAddressTeam {
   width: 48%;
   padding: 0.5rem;
   overflow: hidden;
 }
 
-.agencyAddressArea,
-.agencyTeamNumber {
+.agencyAddressArea, .agencyTeamNumber {
   display: flex;
 }
-.locationIcon i,
-.teamIcon i {
+
+.locationIcon i, .teamIcon i {
   font-size: 1.2rem;
   color: #02044a;
   margin-right: 10px;
 }
-.locationText,
-.teamNumberPart :is(p) {
+
+.locationText, .teamNumberPart :is(p) {
   font-family: 'Work Sans', sans-serif;
   font-size: 1rem;
   /* font-weight: bold; */
 }
+
 .locationText {
   overflow: hidden;
 }
+
 .locationText p {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .teamNumberPart span {
   font-weight: bold;
   margin-right: 3px;
 }
+
 .agencyDescInfo {
   width: 50%;
   border: 1px dashed #f0f0f0;
@@ -198,18 +228,24 @@
   height: 110px;
   overflow-y: scroll;
 }
+
 .agencyDescInfo::-webkit-scrollbar {
   width: 4px;
 }
+
 .agencyDescInfo::-webkit-scrollbar-track {
-  background: #fff; /* color of the tracking area */
+  background: #fff;
+  /* color of the tracking area */
 }
 
 .agencyDescInfo::-webkit-scrollbar-thumb {
-  background-color: #3498db; /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
+  background-color: #3498db;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
   /* creates padding around scroll thumb */
 }
+
 .agencyDescInfo p {
   font-family: 'Poppins';
   font-size: 0.9rem;
@@ -217,12 +253,11 @@
   overflow: hidden;
 }
 
-.agencyAddressTeam,
-.agencyDescInfo :is(h6) {
+.agencyAddressTeam, .agencyDescInfo :is(h6) {
   font-family: 'Fredoka One', cursive;
 }
-.agencyAddressTeam h6::after,
-.agencyDescInfo h6::after {
+
+.agencyAddressTeam h6::after, .agencyDescInfo h6::after {
   content: '';
   width: 40px;
   height: 2px;
@@ -236,6 +271,7 @@
   align-items: center;
   padding-bottom: 2%;
 }
+
 .quotationShortlistButton div {
   width: 20%;
   margin-right: 3%;
@@ -247,15 +283,18 @@
   cursor: pointer;
   user-select: none;
 }
+
 /* .quotationShortlistButton div p {
   transform: translateY(6.5px);
   font-family: 'Poppins';
   font-weight: bold;
 } */
+
 .quotationShortlistButton div:nth-child(1) {
   border: 1px solid #3498db;
   color: #3498db;
 }
+
 .quotationShortlistButton div:nth-child(2) {
   background-color: #3498db;
   color: #fff;
@@ -267,6 +306,7 @@
   position: relative;
   /* overflow: hidden; */
 }
+
 .filterForm {
   width: 100%;
   background-color: #fff;
@@ -278,16 +318,19 @@
   position: sticky;
   top: 3%;
 }
+
 .filterHeading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dashed #999;
 }
+
 .filterText {
   font-family: 'Fredoka One', cursive;
   font-size: 1.4rem;
 }
+
 .filterText::after {
   content: '';
   width: 30px;
@@ -295,6 +338,7 @@
   background-color: #000;
   display: block;
 }
+
 .filterHeading div p {
   font-family: 'Poppins';
   font-weight: bold;
@@ -307,21 +351,22 @@
   border-bottom: 1px solid #e4e4e4;
   padding-bottom: 5%;
 }
-.locationFilter p,
-.officeVisitFilter p {
+
+.locationFilter p, .officeVisitFilter p {
   font-family: 'Poppins';
   transform: translateY(10px);
   font-weight: bold;
   font-size: 1.1rem;
 }
-.locationFilter p::after,
-.officeVisitFilter p::after {
+
+.locationFilter p::after, .officeVisitFilter p::after {
   content: '';
   width: 20px;
   height: 2px;
   background-color: #000;
   display: block;
 }
+
 .locationFilter input {
   margin-top: 3%;
   width: 100%;
@@ -331,6 +376,7 @@
   font-family: 'Poppins';
   border: 1px solid #999;
 }
+
 .locationFilter input:focus {
   outline: none;
 }
@@ -341,6 +387,7 @@
   border-bottom: 1px solid #e4e4e4;
   /* padding-bottom: 2%; */
 }
+
 .officeVisitRadio {
   display: flex;
   align-items: center;
@@ -348,6 +395,7 @@
   cursor: pointer;
   width: 50%;
 }
+
 .officeVisitRadioImage {
   width: 22px;
   height: 22px;
@@ -359,19 +407,21 @@
   border-radius: 50%;
   margin-right: 10%;
 }
+
 .officeVisitRadioImage i {
   font-size: 0.9rem;
 }
+
 .officeVisitRadio span {
   font-family: 'Poppins';
   font-size: 1.1rem;
   user-select: none;
 }
 
-.ShortListModalOverlay,
-.QuotationModalOverlay {
+.ShortListModalOverlay, .QuotationModalOverlay {
   background: rgba(0, 0, 0, 0.9) !important;
 }
+
 .ShortListModal {
   max-width: 500px;
   width: 100%;
@@ -381,10 +431,12 @@
 .shortlistModal {
   font-family: 'Poppins';
 }
+
 .shortlistModal h2 {
   font-weight: bold;
   margin-bottom: 10%;
 }
+
 .shortlistModal h2::after {
   content: '';
   width: 50px;
@@ -392,17 +444,20 @@
   background: #000;
   display: block;
 }
+
 .shortlistForm {
   display: flex;
   justify-content: center;
   align-self: center;
   flex-direction: column;
 }
+
 .shortlistForm span {
   /* font-weight: bold; */
   font-size: 0.8rem;
   color: #3498db;
 }
+
 .shortlistForm textarea {
   width: 100%;
   border: 1px solid #e0e0e0;
@@ -411,9 +466,11 @@
   border-radius: 4px;
   margin-top: 1%;
 }
+
 .shortlistForm textarea:focus {
   outline: none;
 }
+
 .shortlistForm button {
   height: 50px;
   outline: none;
@@ -429,15 +486,18 @@
   width: 100%;
   border-radius: 10px;
 }
+
 .QuotationModal {
   font-family: 'Poppins';
 }
+
 .QuotationModal h2 {
   font-weight: bold;
   margin-bottom: 5%;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 4%;
 }
+
 .QuotationModal h2::after {
   content: '';
   width: 50px;
@@ -445,6 +505,7 @@
   background: #000;
   display: block;
 }
+
 .quotationTable {
   display: flex;
   justify-content: space-between;
@@ -455,21 +516,26 @@
   width: 100%;
   padding-bottom: 2%;
 }
+
 .tableHeaderQuotation {
   width: 30%;
   border-right: 1px solid #e0e0e0;
 }
+
 .tableHeaderQuotation p {
   font-weight: bold;
 }
+
 .tableContentQuotation {
   width: 65%;
   display: flex;
   flex-wrap: wrap;
 }
+
 .tableContentQuotation p {
   margin-right: 20px;
 }
+
 .tableContentQuotation input {
   width: 100%;
   height: 40px;
@@ -478,6 +544,7 @@
   border: 1px solid #e0e0e0;
   font-size: 0.9rem;
 }
+
 .tableContentQuotation textarea {
   width: 100%;
   font-size: 0.9rem;
@@ -490,6 +557,7 @@
   align-self: flex-end;
   float: right;
 }
+
 .quotationSubmitButton {
   display: flex;
   justify-content: space-between;
