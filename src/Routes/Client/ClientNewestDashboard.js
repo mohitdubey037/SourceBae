@@ -19,8 +19,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import instance from '../../Constants/axiosConstants';
 import * as helper from '../../shared/helper';
-import clsx from 'clsx';
-
 import * as actions from '../../Redux/action/addProject';
 import { connect } from 'react-redux';
 
@@ -107,43 +105,47 @@ function ClientNewestDashboard(props) {
     }, [statuses, projects])
 
     return (
-        <div className="dashboard-container">
-            <Sidebar />
-            <div className="container-body">
+        <>
+            <div className="Navbar-clientDashboard">
                 <Navbar />
-                <div className="content-body">
-                    <div className="content-leftBody">
-                        <div className="user-operations">
-                            <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
-                            <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
-                            <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
-                            <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
-                        </div>
-                        <div className="graphic">
-                            <div className="graphic-illustration-heading">
-                                <h6>Project details</h6>
+            </div>
+            <div className="dashboard-container">
+                <Sidebar />
+                <div className="container-body margin-0">
+                    <div className="content-body">
+                        <div className="content-leftBody">
+                            <div className="user-operations">
+                                <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
+                                <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
+                                <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
+                                <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
                             </div>
-                        </div>
-                        <div className="user-project">
-                            <div className="user-project-details">
-                                {
-                                    projects.length > 0 ? projects.map((p) => {
-                                        return (
-                                            <>
-                                                <UserProject name={p.projectName} type={p.projectType} status={p.projectCurrentStatus} lastEdit={p.updatedAt} />
-                                            </>
-                                        )
-                                    }) : <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            <div className="graphic">
+                                <div className="graphic-illustration-heading">
+                                    <h6>Project details</h6>
+                                </div>
+                            </div>
+                            <div className="user-project">
+                                <div className="user-project-details">
+                                    {
+                                        projects.length > 0 ? projects.map((p) => {
+                                            return (
+                                                <>
+                                                    <UserProject name={p.projectName} type={p.projectType} status={p.projectCurrentStatus} lastEdit={p.updatedAt} detailId={p._id}/>
+                                                </>
+                                            )
+                                        }) : <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                                             <h4 style={{ color: '#999' }}>No projects available</h4>
                                         </div>
-                                }
+                                    }
+                                </div>
                             </div>
                         </div>
+                        <RightSide />
                     </div>
-                    <RightSide />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

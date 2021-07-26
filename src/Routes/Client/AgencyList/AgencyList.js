@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import ClientNavbar from "../ClientNavbar";
 import "./AgencyList.css";
-
 import "react-responsive-modal/styles.css";
+
 import { Modal } from "react-responsive-modal";
 import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
 
@@ -11,6 +10,8 @@ import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
 import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
+import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
+import Back from '../../../Components/Back/Back';
 
 function AgencyList(props) {
   const Role = localStorage.getItem('role')
@@ -63,7 +64,7 @@ function AgencyList(props) {
     instance
       .get(`/api/${Role}/projects/${projectId}/agencies`)
       .then(function (response) {
-        console.log(response.agencies,"response");
+        console.log(response.agencies, "response");
         setAgencyList(response.agencies);
         setProject(response.project);
         setLoading(false);
@@ -72,7 +73,7 @@ function AgencyList(props) {
 
   useEffect(() => {
     console.log(project)
-  },[project])
+  }, [project])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -91,7 +92,7 @@ function AgencyList(props) {
   };
 
   const shortlistHandler = () => {
-    console.log(agencyList,"agencyList")
+    console.log(agencyList, "agencyList")
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
@@ -126,19 +127,15 @@ function AgencyList(props) {
 
   return (
     <>
-      <ClientNavbar />
-      {loading ? (
-        <Spinner />
-      ) : (
+      {/* <ClientNavbar /> */}
+      <div className="Navbar-parent">
+        <Navbar />
+      </div>
+      <div className="back-parent marginLeft">
+        <Back name="Agency List" />
+      </div>
+      {loading ? (<Spinner />) : (
         <>
-          <div
-            className="backArrow_agencyList"
-            onClick={() => {
-              props.history.goBack();
-            }}
-          >
-            <i class="fa fa-angle-left" aria-hidden="true"></i>
-          </div>
           <div className="innerprojectDetailsInfo_agencyList">
             <p>{project.projectName}</p>
             <span>
@@ -168,20 +165,20 @@ function AgencyList(props) {
                               </div>
                             </div>
                             <div className="profileButton">
-                              {agency.productId !== undefined ? 
-                              <p onClick={() => props.history.push({
-                                pathname: `/product-details:${agency.productId}`,
-                                condition: `Client`
-                              })}>
-                                View Agency Product{" "}
-                                <i
-                                  class="fa fa-angle-double-right"
-                                  aria-hidden="true"
-                                ></i>
-                              </p>
-                              : null  
-                            }
-                              
+                              {agency.productId !== undefined ?
+                                <p onClick={() => props.history.push({
+                                  pathname: `/product-details:${agency.productId}`,
+                                  condition: `Client`
+                                })}>
+                                  View Agency Product{" "}
+                                  <i
+                                    class="fa fa-angle-double-right"
+                                    aria-hidden="true"
+                                  ></i>
+                                </p>
+                                : null
+                              }
+
                             </div>
                           </div>
 
@@ -329,7 +326,7 @@ function AgencyList(props) {
               :
               <div className='noDataFound'>
                 <img src={NO_DATA_FOUND} alt='no data found' />
-                <h6 style={{marginTop: '20px', fontStyle: 'italic' }}>No Agency Found!!!..</h6>
+                <h6 style={{ marginTop: '20px', fontStyle: 'italic' }}>No Agency Found!!!..</h6>
               </div>
             }
           </div>

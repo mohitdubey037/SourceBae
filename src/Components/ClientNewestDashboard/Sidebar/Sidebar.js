@@ -33,6 +33,9 @@ function Sidebar() {
             routerHistory.push('/clientnewestdashboard');
         }
     }
+    const postProject = () => {
+        routerHistory.push('/hire-agency-form-one')
+    }
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
@@ -51,7 +54,7 @@ function Sidebar() {
                     <p>Dashboard</p>
                 </div>
                 {role === "Client" &&
-                    <div className="postProject-icon icons">
+                    <div onClick={() => postProject()} className="postProject-icon icons">
                         <img src={postProjectIcon} alt="dashboard icon" />
                         <p>Post Project</p>
                     </div>

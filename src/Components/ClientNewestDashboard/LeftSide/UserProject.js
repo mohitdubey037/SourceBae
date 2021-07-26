@@ -4,8 +4,16 @@ import infoIcon from "../../../assets/images/Newestdashboard/LeftSide/info-icon.
 import showProjectDetailsIcon from "../../../assets/images/Newestdashboard/LeftSide/showProjectDetails-icon.svg";
 import CenterImage from '../../../assets/images/Newestdashboard/Center/center_image.png';
 import Moment from 'react-moment'
+import {useHistory} from 'react-router-dom';
 
-function UserProject({ name, type, status, lastEdit }) {
+function UserProject({name, type, status, lastEdit, detailId},props) {
+    const routerHistory = useHistory();
+    console.log(props);
+
+    const showDetail = () => {
+        routerHistory.push(`/agency-list:${detailId}`)
+    }
+
     return (
         <div className="project-details-card">
             <div className="projectDetailsStrip_long"></div>
@@ -35,7 +43,7 @@ function UserProject({ name, type, status, lastEdit }) {
                     <img src={ProjectStatusIcon} alt="project status" />
                 </div>
 
-                <div className="show-project-detail">
+                <div onClick={() => showDetail()} className="show-project-detail">
                     <div className="projectDetail-text projectDetail-item">
                         <p>Show Project Detail</p>
                     </div>

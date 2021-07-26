@@ -42,14 +42,10 @@
 .innerprojectDetailsInfo_agencyList {
   width: 95%;
   margin: auto;
-  margin-top: 68px;
-  /* transform: translateY(100%); */
-  /* line-height: 0.5; */
-  /* margin: 2% 0; */
+  margin-top: 10px;
 }
 .innerprojectDetailsInfo_agencyList p {
   font-size: 2rem;
-  /* font-family: 'Fredoka One', cursive; */
   font-weight: bold;
   font-family: 'Work Sans', sans-serif;
 }
@@ -72,7 +68,6 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  /* align-items: flex-start; */
 }
 .AgencyCardsArea_agencyList {
   width: 68%;
@@ -85,7 +80,6 @@
   position: relative;
   z-index: 1;
   margin-bottom: 4%;
-  /* border-radius: 10px; */
 }
 .agencyCardHeaderLine {
   position: absolute;
@@ -135,7 +129,6 @@
 .agencyProfileInfo div p {
   padding: 0.1rem 0.5rem;
   margin-right: 10px;
-  /* border: 1px dashed #999; */
   border-radius: 999px;
   background-color: #02044a;
   color: #fff;
@@ -165,7 +158,6 @@
 }
 .agencyAddressTeam {
   width: 48%;
-  /* background-color: #f9f9f9; */
   padding: 0.5rem;
   overflow: hidden;
 }
