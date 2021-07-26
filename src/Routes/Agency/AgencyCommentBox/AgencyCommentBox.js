@@ -124,12 +124,12 @@ const AgencyCommentBox = (props) => {
       <div className="commentBox">
         <div className="topLine" style={{
         }}></div>
-        {props.isQuotationAcceptedByClient === true ?
+        {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
           :
-          !isRepliedToClient &&
-          props.comments &&
-          props.comments.map((index) => {
+          !props.projectProposals[0].isRepliedToClient &&
+          props.projectProposals[0].comments &&
+          props.projectProposals[0].comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
                 <>
@@ -156,8 +156,8 @@ const AgencyCommentBox = (props) => {
         }
 
         <div className="postQuotation">
-          {props.isAskedForQuotation &&
-            (props.agencyNegotiablePrice === null || props.agencyNegotiablePrice === undefined) && (
+          {props.projectProposals[0].isAskedForQuotation &&
+            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
               <div style={{ display: "flex" }}>
                 <b>Agency Negotiatiable Price:</b>
                 <div className="negotiablePrice">
@@ -172,10 +172,10 @@ const AgencyCommentBox = (props) => {
               </div>
             )}
 
-          {props.isReplySectionActive &&
-            props.isAskedForQuotation &&
-            (props.quotationLink === null ||
-              props.quotationLink === undefined) && (
+          {props.projectProposals[0].isReplySectionActive &&
+            props.projectProposals[0].isAskedForQuotation &&
+            (props.projectProposals[0].quotationLink === null ||
+              props.projectProposals[0].quotationLink === undefined) && (
               <div style={{ margin: "1rem 0rem" }}>
                 <input
                   onChange={inputFileChosen}
@@ -188,7 +188,7 @@ const AgencyCommentBox = (props) => {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          {props.isReplySectionActive && (
+          {props.projectProposals[0].isReplySectionActive && (
             <div
               style={{
                 display: "flex",
@@ -216,35 +216,38 @@ const AgencyCommentBox = (props) => {
             </div>
           )}
         </div>
-        {props.isQuotationAcceptedByClient === false && !props.isCommentSectionActive && !props.isReplySectionActive && (
-          <div>
-            <p>Conversation Over.</p>
-          </div>
-        )}
+        {props.projectProposals[0].isQuotationAcceptedByClient === false
+          && !props.projectProposals[0].isCommentSectionActive
+          && !props.projectProposals[0].isReplySectionActive
+          && (
+            <div>
+              <p>Conversation Over.</p>
+            </div>
+          )}
       </div>
 
       <div className='action-wait'>
         <div className="postQuotation">
-          {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
+          {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
             <div className="detailsButtons md-m10">
               <p>
                 <b>{`Client Negotiatiable Price: `}</b>
-                {props.clientNegotiablePrice}
+                {props.projectProposals[0].clientNegotiablePrice}
               </p>
             </div>
           )}
-          {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
+          {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
             <div className="detailsButtons md-m10" >
               <p>
                 <b>{`Agency Negotiatiable Price: `}</b>
-                {props.agencyNegotiablePrice}
+                {props.projectProposals[0].agencyNegotiablePrice}
               </p>
             </div>
           )}
 
-          {props.quotationLink && props.quotationLink !== "" && (
+          {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
             <div className="detailsButtons md-m10">
-              <a href={props.quotationLink} target="new">
+              <a href={props.projectProposals[0].quotationLink} target="new">
                 Click to see Quotation
               </a>
             </div>
@@ -252,7 +255,7 @@ const AgencyCommentBox = (props) => {
         </div>
 
         {!(
-          props.isQuotationAcceptedByAgency && props.isQuotationAcceptedByClient
+          props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
         ) && (
             <div className="proposalCard">
               {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
@@ -261,8 +264,8 @@ const AgencyCommentBox = (props) => {
               <div className="yellowBg">
                 <img src={proposalImage} alt="" />
               </div>
-              <div style={{ display: `${props.isProposalActionActive && props.isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons md-flex">
-                {props.isProposalActionActive ?
+              <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons md-flex">
+                {props.projectProposals[0].isProposalActionActive ?
                   <>
                     <button className="acceptButton" onClick={() => { setOpen(true) }}>
                       Accept
@@ -272,7 +275,7 @@ const AgencyCommentBox = (props) => {
                     </button>
                   </>
                   :
-                  props.isReplySectionActive === 'false' &&
+                  props.projectProposals[0].isReplySectionActive === 'false' &&
                   <p className="color-black">Please provide some reply</p>
                 }
               </div>

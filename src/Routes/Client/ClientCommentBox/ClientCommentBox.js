@@ -112,7 +112,7 @@ const ClientCommentBox = (props) => {
         <div className="commentBox">
           <div className="topLine" style={{
           }}></div>
-          {props.comments.map((index) => {
+          {props.projectProposals[0].comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
                 <>
@@ -138,7 +138,7 @@ const ClientCommentBox = (props) => {
             }
           })}
 
-          {props.isAskedForQuotation && props.isCommentSectionActive &&
+          {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
             (
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", margin: "1rem 0rem" }}>
@@ -155,8 +155,8 @@ const ClientCommentBox = (props) => {
                     onChange={(event) => handleChange(event)}
                   />
                 </div>
-                {(props.clientNegotiablePrice === null ||
-                  props.clientNegotiablePrice === undefined) && (
+                {(props.projectProposals[0].clientNegotiablePrice === null ||
+                  props.projectProposals[0].clientNegotiablePrice === undefined) && (
                     <div className="postQuotation">
                       <div style={{ display: "flex" }}>
                         <b>Client Negotiatiable Price:</b>
@@ -179,57 +179,57 @@ const ClientCommentBox = (props) => {
                 </div>
               </div>
             )}
-          {!props.isCommentSectionActive && !props.isReplySectionActive && (
+          {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
             <div>
               <p>Coversation Over.</p>
             </div>
           )}
-          {!props.isAskedForQuotation &&
-            props.isCommentSectionActive &&
+          {!props.projectProposals[0].isAskedForQuotation &&
+            props.projectProposals[0].isCommentSectionActive &&
             props.isShortListed && (
               <div className="detailsButtons margin-0">
                 <button onClick={askForQuotation}>Ask For Quotation</button>
               </div>
             )}
-          {props.isReplySectionActive && <p style={{ textAlign: 'right' }}>Waiting for the reply from Agency.</p>}
+          {props.projectProposals[0].isReplySectionActive && <p style={{ textAlign: 'right' }}>Waiting for the reply from Agency.</p>}
         </div>
 
         <div className='action-wait'>
           <div className="postQuotation">
-            {props.agencyNegotiablePrice && props.agencyNegotiablePrice !== null && (
+            {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
               <div className="detailsButtons margin-0">
                 <p>
                   <b>{`Agency Negotiatiable Price: `}</b>
-                  {props.agencyNegotiablePrice}
+                  {props.projectProposals[0].agencyNegotiablePrice}
                 </p>
               </div>
             )}
 
-            {props.clientNegotiablePrice && props.clientNegotiablePrice !== null && (
+            {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
               <div className="detailsButtons margin-0">
                 <p>
                   <b>{`Client Negotiatiable Price: `}</b>
-                  {props.clientNegotiablePrice}
+                  {props.projectProposals[0].clientNegotiablePrice}
                 </p>
               </div>
             )}
 
-            {props.quotationLink && props.quotationLink !== "" && (
+            {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
               <div className="detailsButtons margin-0">
-                <a href={props.quotationLink} target="new">
+                <a href={props.projectProposals[0].quotationLink} target="new">
                   Click to see Quotation
                 </a>
               </div>
             )}
           </div>
 
-          {props.isProposalActionActive}
+          {props.projectProposals[0].isProposalActionActive}
           {/* <div className={`${props.isProposalActionActive ? "" : "disabled"}`}> */}
           <div className="proposalCard">
             <div className="yellowBg">
               <img src={proposalImage} alt="" />
             </div>
-            <div style={{ display: `${props.isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
+            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
               <div>
                 <p>Accept or Reject the Project.</p>
               </div>

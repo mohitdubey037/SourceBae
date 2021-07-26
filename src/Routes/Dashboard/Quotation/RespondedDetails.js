@@ -137,18 +137,18 @@ function RespondedDetails(props) {
           <div>
             <p>Project Type</p>
             <p>{`${project?.projectType}`}</p>
-
           </div>
 
           <div>
             <p>Shortlisted</p>
             <p>{`${(project?.projectProposals?.length > 0 && project?.projectProposals[0]?.isShortListed) ? "Yes" : "No"}`}</p>
-
           </div>
+
           <div>
             <p>Quotation Asked</p>
             <p>{`${(project?.projectProposals?.length > 0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes" : "No"}`}</p>
           </div>
+          
           <div>
             <p>Project Creation Date</p>
             <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
@@ -197,28 +197,7 @@ function RespondedDetails(props) {
                               giveReplies={(gr) => {
                                 setRepliedToClient(gr);
                               }}
-                              isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
-                              comments={project.projectProposals[0]?.comments}
-                              isCommentSectionActive={
-                                project.projectProposals[0].isCommentSectionActive
-                              }
-                              isReplySectionActive={
-                                project.projectProposals[0].isReplySectionActive
-                              }
-
-                              clientNegotiablePrice={
-                                project.projectProposals[0].clientNegotiablePrice
-                              }
-                              agencyNegotiablePrice={
-                                project.projectProposals[0].agencyNegotiablePrice
-                              }
-                              quotationLink={project.projectProposals[0].quotationLink}
-                              isProposalActionActive={
-                                project.projectProposals[0].isProposalActionActive
-                              }
-                              isQuotationAcceptedByClient={
-                                project.projectProposals[0].isQuotationAcceptedByClient
-                              }
+                              {...project}
                               isAskedForQuotation={true}
                               commentType="Quotation"
                             />
@@ -233,27 +212,7 @@ function RespondedDetails(props) {
                                   giveReplies={(gr) => {
                                     setRepliedToClient(gr);
                                   }}
-                                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
-                                  comments={project.projectProposals[0]?.comments}
-                                  isCommentSectionActive={
-                                    project.projectProposals[0].isCommentSectionActive
-                                  }
-                                  isReplySectionActive={
-                                    project.projectProposals[0].isReplySectionActive
-                                  }
-                                  clientNegotiablePrice={
-                                    project.projectProposals[0].clientNegotiablePrice
-                                  }
-                                  agencyNegotiablePrice={
-                                    project.projectProposals[0].agencyNegotiablePrice
-                                  }
-                                  quotationLink={project.projectProposals[0].quotationLink}
-                                  isProposalActionActive={
-                                    project.projectProposals[0].isProposalActionActive
-                                  }
-                                  isQuotationAcceptedByClient={
-                                    project.projectProposals[0].isQuotationAcceptedByClient
-                                  }
+                                  {...project}
                                   isAskedForQuotation={false}
                                   commentType="Shortlist"
                                 />

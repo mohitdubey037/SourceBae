@@ -241,57 +241,11 @@ function AgencyRespondedDetails(props) {
                           giveReplies={(gr) => {
                             setRepliedToClient(gr);
                           }}
-                          comments={project.projectProposals && project.projectProposals[0]?.comments}
-                          commentType="Quotation"
-                          isReplySectionActive={
-                            project.projectProposals &&
-                            project.projectProposals[0].isReplySectionActive
-                          }
                           projectId={projectId}
                           isAskedForQuotation={true}
                           isShortListed={true}
-                          clientNegotiablePrice={
-                            project.projectProposals &&
-                            project.projectProposals[0].clientNegotiablePrice
-                          }
-                          agencyNegotiablePrice={
-                            project.projectProposals &&
-                            project.projectProposals[0].agencyNegotiablePrice
-                          }
-                          quotationLink={project.projectProposals && project.projectProposals[0].quotationLink}
-                          isProposalActionActive={
-                            project.projectProposals &&
-                            project.projectProposals[0].isProposalActionActive
-                          }
-                          isQuotationAcceptedByClient={
-                            project.projectProposals &&
-                            project.projectProposals[0].isQuotationAcceptedByClient
-                          }
-                          projectStartDateByClient={
-                            project.projectProposals &&
-                            project.projectProposals[0].projectStartDateByClient
-                          }
-                          projectDelayedStartDateByClient={
-                            project.projectProposals &&
-                            project.projectProposals[0].projectDelayedStartDateByClient
-                          }
-                          projectEndDateByClient={
-                            project.projectProposals &&
-                            project.projectProposals[0].projectEndDateByClient
-                          }
-                          projectExpectedEndDateByClient={
-                            project.projectProposals &&
-                            project.projectProposals[0].projectExpectedEndDateByClient
-                          }
-                          finalCostByClient={
-                            project.projectProposals &&
-                            project.projectProposals[0].finalCostByClient
-                          }
-                          rejectReasonByClient={
-                            project.projectProposals &&
-                            project.projectProposals[0].rejectReasonByClient
-                          }
-
+                          commentType="Quotation"
+                          {...project}
                         />
                       ) : (
                         project?.projectProposals && (
@@ -299,64 +253,11 @@ function AgencyRespondedDetails(props) {
                             giveReplies={(gr) => {
                               setRepliedToClient(gr);
                             }}
-                            comments={project.projectProposals && project.projectProposals[0]?.comments}
-                            commentType="Shortlist"
-                            isReplySectionActive={
-                              project.projectProposals &&
-                              project.projectProposals[0].isReplySectionActive
-                            }
-                            isCommentSectionActive={
-                              project.projectProposals &&
-                              project.projectProposals[0].isCommentSectionActive
-                            }
                             projectId={projectId}
                             isAskedForQuotation={false}
                             isShortListed={true}
-                            clientNegotiablePrice={
-                              project.projectProposals &&
-                              project.projectProposals[0].clientNegotiablePrice
-                            }
-                            agencyNegotiablePrice={
-                              project.projectProposals &&
-                              project.projectProposals[0].agencyNegotiablePrice
-                            }
-                            quotationLink={project.projectProposals && project.projectProposals[0].quotationLink}
-                            isProposalActionActive={
-                              project.projectProposals &&
-                              project.projectProposals[0].isProposalActionActive
-                            }
-                            isQuotationAcceptedByClient={
-                              project.projectProposals &&
-                              project.projectProposals[0].isQuotationAcceptedByClient
-                            }
-                            isQuotationAcceptedByAgency={
-                              project.projectProposals &&
-                              project.projectProposals[0].isQuotationAcceptedByAgency
-                            }
-                            projectStartDateByClient={
-                              project.projectProposals &&
-                              project.projectProposals[0].projectStartDateByClient
-                            }
-                            projectDelayedStartDateByClient={
-                              project.projectProposals &&
-                              project.projectProposals[0].projectDelayedStartDateByClient
-                            }
-                            projectEndDateByClient={
-                              project.projectProposals &&
-                              project.projectProposals[0].projectEndDateByClient
-                            }
-                            projectExpectedEndDateByClient={
-                              project.projectProposals &&
-                              project.projectProposals[0].projectExpectedEndDateByClient
-                            }
-                            finalCostByClient={
-                              project.projectProposals &&
-                              project.projectProposals[0].finalCostByClient
-                            }
-                            rejectReasonByClient={
-                              project.projectProposals &&
-                              project.projectProposals[0].rejectReasonByClient
-                            }
+                            commentType="Shortlist"
+                            {...project}
                           />
                         )
                       )
