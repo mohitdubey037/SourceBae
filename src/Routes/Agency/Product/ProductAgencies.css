@@ -54,7 +54,7 @@ display: block;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 10px;
 }
 
 .filterForm_productAgencies {
@@ -74,7 +74,7 @@ display: block;
 }
 
 .agencyFilterArea_productAgencies {
-    margin-top: -2%;
+    margin-top: 1rem;
     width: 20%;
     position: relative;
 }

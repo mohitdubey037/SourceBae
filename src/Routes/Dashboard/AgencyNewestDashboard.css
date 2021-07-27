@@ -5,14 +5,24 @@
   margin-top: 20px;
 }
 
-.dashboard-container {
+/* .dashboard-container {
   width: 100%;
   height: 100vh;
   display: flex;
-}
+} */
 
-.container-body {
+/* .container-body {
   width: 90%;
   margin-left: 10%;
   margin-top: 5%;
+} */
+
+.sidebar_parent .container-sidebar {
+  position: fixed;
+  top: 0;
+}
+
+.navbar_parent .navbar {
+  width: 90%;
+  margin-left: 10%;
 }

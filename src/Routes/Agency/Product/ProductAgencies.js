@@ -9,7 +9,8 @@ import './ProductAgencies.css'
 
 import location from '../../../assets/images/ClientDashboard/shortTerm/location.png'
 import team from '../../../assets/images/ClientDashboard/shortTerm/team.png'
-import logo from '../../../assets/images/Logo/logo.png'
+import logo from '../../../assets/images/Logo/logo.png';
+import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -25,6 +26,7 @@ import instance from '../../../Constants/axiosConstants';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { EventAvailableTwoTone } from '@material-ui/icons';
+import Back from '../../../Components/Back/Back';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -232,12 +234,13 @@ useEffect(() => {
 
 return (
     <>
-        <ClientNavbar />
+        <Navbar />
         {loading ? <Spinner /> :
             <>
-                <div className="backArrow_productAgencies" onClick={() => { props.history.goBack() }}>
+                {/* <div className="backArrow_productAgencies" onClick={() => { props.history.goBack() }}>
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
-                </div>
+                </div> */}
+                <Back name="Product Agencies"/>
 
                 <div className="mainAgencyList_productAgencies">
                     <div className="innerAgencyList_productAgencies">

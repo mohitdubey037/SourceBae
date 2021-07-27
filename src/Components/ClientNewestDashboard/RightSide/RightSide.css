@@ -1,3 +1,7 @@
+.content-rightBody_parent {
+  width: 26%;
+}
+
 .content-rightBody {
   display: flex;
   flex-direction: column;

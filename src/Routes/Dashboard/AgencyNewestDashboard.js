@@ -40,10 +40,12 @@ function AgencyNewestDashboard(props) {
 
     return (
         <>
+            <div className="Navbar-clientDashboard">
+                <Navbar />
+            </div>
             <div className="dashboard-container">
                 <Sidebar />
                 <div className="container-body">
-                    {/* <Navbar /> */}
                     <div className="content-body">
                         <div className="content-leftBody">
                             <div className="user-operations">
