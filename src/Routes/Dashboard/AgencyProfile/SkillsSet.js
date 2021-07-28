@@ -313,7 +313,7 @@ function SkillsSet(props) {
                                 <img src={Skillset_edit} alt="Skill-Set" />
                                 <p>Skill Set</p>
                             </div>
-                            <i class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
+                            <i onClick={() => handleEdit(true)} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
 
                             {/* <div className="editable_parent"> */}
                                 {/* <div className="editableBtn" style={{ position: 'relative' }}>
@@ -355,7 +355,13 @@ function SkillsSet(props) {
                             })
                         }
                     </div>
+                    <div onClick={() => handleEdit(false)}  className="information_save_parent">
+                        <div className="information_save">
+                            <p>Submit</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <Modal open={open} onClose={onCloseModal} center classNames={{
