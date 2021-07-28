@@ -18,7 +18,6 @@ button {
 .innerProfileHeaderImage {
   width: 100%;
   height: 25vh;
-  /* overflow: hidden; */
   background-image: url('../../assets/images/AgencyProfile/bgImage.png');
   background-size: cover;
   background-position: center;
@@ -82,14 +81,12 @@ button {
   position: absolute;
   bottom: -15px;
   right: 0;
-  height: 30px;
   width: 25%;
   height: 42px;
   font-size: 1rem;
   font-family: 'Poppins';
   font-weight: bold;
   outline: none;
-  border: none;
   background-color: #ff9999;
   color: #fff;
   border-radius: 2px;
@@ -524,9 +521,14 @@ button {
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active {
+  border: none;
   border-bottom: 3px solid #000 !important;
   color: #484848 !important;
   font-weight: bold !important;
+}
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link:hover {
+  border: none;
 }
 
 #nav-home-tab {
@@ -544,7 +546,7 @@ button {
   width: 120px;
   height: 115px;
   margin-left: 20px;
-  margin-bottom: 30px !important;
+  margin-bottom: 20px !important;
 }
 
 .nav.nav-tabs {
@@ -560,6 +562,13 @@ button {
   color: #A8A8A8;
   margin-right: 0;
   margin-top: 10px;
+}
+
+.nav-button.nav-link_agencyProfile:hover,
+.nav-button.nav-link_agencyProfile:active
+.nav-button.nav-link_agencyProfile:focus {
+  border: none !important;
+  outline: none !important;
 }
 
 #nav-tabContent {
