@@ -513,25 +513,25 @@ button {
   margin-right: 4%;
 }
 
-.innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button:active {
+/* .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button:active {
   border: none !important;
-}
-
+} */
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button img {
   width: 15%;
   object-fit: contain;
   mix-blend-mode: multiply;
 }
+
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active {
   border-bottom: 3px solid #000 !important;
   color: #484848 !important;
   font-weight: bold !important;
 }
 
-/* #nav-home-tab {
+#nav-home-tab {
   margin-top: 10px;
-} */
+}
 
 .nav-tabs_agencyProfile>div {
   display: flex;
@@ -544,14 +544,14 @@ button {
   width: 120px;
   height: 115px;
   margin-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 30px !important;
 }
 
 .nav.nav-tabs {
   border-bottom: none;
 }
 
-.nav-link.nav-link_agencyProfile{
+.nav-button.nav-link_agencyProfile{
   font: normal 800 12px 'Inter' !important;
   line-height: 12px;
   text-align: center;
