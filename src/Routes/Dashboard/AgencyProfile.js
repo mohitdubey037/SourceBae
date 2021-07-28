@@ -359,6 +359,7 @@ function AgencyProfile(props) {
             <div className="innerQuotation_agencyProfile ">
               <div class="nav nav-tabs nav-tabs_agencyProfile" id="nav-tab" role="tablist">
                 <div id="nav-home-tab"
+                  className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-home"
                   type="button"
@@ -366,12 +367,13 @@ function AgencyProfile(props) {
                   aria-controls="nav-home"
                   aria-selected="true">
                   <img src={InformationImage} alt="information" />
-                  <button class="nav-link nav-link_agencyProfile active">
+                  <button class="nav-button nav-link_agencyProfile">
                     Information
                   </button>
                 </div>
 
                 <div id="nav-profile-tab"
+                  className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-profile"
                   type="button"
@@ -379,12 +381,13 @@ function AgencyProfile(props) {
                   aria-controls="nav-profile"
                   aria-selected="false">
                   <img src={SkillSetImage} alt="skills" />
-                  <button class="nav-link nav-link_agencyProfile">
+                  <button class="nav-button nav-link_agencyProfile">
                     Skills Set
                   </button>
                 </div>
 
                 <div id="nav-contact-tab"
+                  className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-contact"
                   type="button"
@@ -392,12 +395,13 @@ function AgencyProfile(props) {
                   aria-controls="nav-contact"
                   aria-selected="false">
                   <img src={AgencyRuleImage} alt="rules" />
-                  <button class="nav-link nav-link_agencyProfile">
+                  <button class="nav-button nav-link_agencyProfile">
                     Agency Rules
                   </button>
                 </div>
 
                 <div id="nav-developer-tab"
+                  className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-developer"
                   type="button"
@@ -406,12 +410,13 @@ function AgencyProfile(props) {
                   aria-selected="false"
                   ref={inputEl}>
                   <img src={DevelopersImage} alt="dev" />
-                  <button class="nav-link nav-link_agencyProfile">
+                  <button class="nav-button nav-link_agencyProfile">
                     Developers
                   </button>
                 </div>
 
                 <div id="nav-developer-tab"
+                  className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-portfolio"
                   type="button"
@@ -420,7 +425,7 @@ function AgencyProfile(props) {
                   aria-selected="false"
                   ref={inputEl}>
                   <img src={PortfolioImage} alt="portfolio" />
-                  <button class="nav-link nav-link_agencyProfile">
+                  <button class="nav-button nav-link_agencyProfile">
                     Portfolio
                   </button>
                 </div>
