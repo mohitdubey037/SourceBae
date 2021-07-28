@@ -163,12 +163,12 @@
   font-size: 1.1rem;
 }
 
-.nav {
+/* .nav {
   flex-wrap: nowrap !important;
   overflow: hidden !important;
   width: 100% !important;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
   justify-content: space-evenly;
 }
 .nav-tabs .nav-link {
@@ -183,7 +183,6 @@
   white-space: nowrap;
   padding-right: 0;
   margin-right: 0;
-  /* border: 1px solid #f5f5f5 !important; */
   margin-left: 0;
   padding-left: 0;
-}
+} */

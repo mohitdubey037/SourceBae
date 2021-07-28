@@ -486,7 +486,7 @@ button {
   border-radius: 0px;
   font-size: 0.8rem;
   font-family: 'Poppins';
-  transform: translateY(-20px);
+  /* transform: translateY(-20px); */
 }
 
 .uploadButton i {
@@ -544,13 +544,14 @@ button {
   height: 107px;
 } */
 
-.nav.nav-tabs.nav-link_agencyProfile {
-  font: normal 800 10px 'Inter' !important;
+.nav-link.nav-link_agencyProfile{
+  font: normal 800 12px 'Inter' !important;
   line-height: 12px;
   text-align: center;
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #A8A8A8;
+  margin-right: 0;
   margin-top: 10px;
 }
 

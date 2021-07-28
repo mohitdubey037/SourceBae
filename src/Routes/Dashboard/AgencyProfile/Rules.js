@@ -89,7 +89,7 @@ function Rules(props) {
                                     <p>Agency Rules</p>
                                 </div>
                                 {/* <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button> */}
-                                <i class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
+                                <i onClick={() => { handleEditRules(true) }} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
                             </div> : null
                     }
                     <div className="rulesCard">
