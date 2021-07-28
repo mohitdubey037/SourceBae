@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 button {
-  margin-top: 0 ;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -513,6 +513,13 @@ button {
   border: none !important;
 } */
 
+.nav-tabs .nav-link {
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-radius: 15px;
+  border: none;
+}
+
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button img {
   width: 15%;
   object-fit: contain;
@@ -521,9 +528,11 @@ button {
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active {
   border: none;
-  border-bottom: 3px solid #000 !important;
-  color: #484848 !important;
-  font-weight: bold !important;
+  background-color: #005BAF !important;
+}
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link.active button {
+  color: #fff !important;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link:hover {
@@ -535,24 +544,25 @@ button {
 }
 
 .nav-tabs_agencyProfile>div {
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background: #FEFEFE;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-  border-radius: 12px;
   width: 120px;
-  height: 115px;
+  height: 123px;
   margin-left: 20px;
-  margin-bottom: 20px !important;
+  margin-bottom: 12px !important;
 }
 
 .nav.nav-tabs {
   border-bottom: none;
 }
 
-.nav-button.nav-link_agencyProfile{
+.nav-button.nav-link_agencyProfile {
   font: normal 800 12px 'Inter' !important;
   line-height: 12px;
   text-align: center;
@@ -563,9 +573,7 @@ button {
   margin-top: 10px;
 }
 
-.nav-button.nav-link_agencyProfile:hover,
-.nav-button.nav-link_agencyProfile:active
-.nav-button.nav-link_agencyProfile:focus {
+.nav-button.nav-link_agencyProfile:hover, .nav-button.nav-link_agencyProfile:active .nav-button.nav-link_agencyProfile:focus {
   border: none !important;
   outline: none !important;
 }

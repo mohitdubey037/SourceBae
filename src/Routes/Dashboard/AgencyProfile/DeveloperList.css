@@ -1,9 +1,9 @@
 .mainDeveloperList {
   width: 100%;
-  /* margin: auto; */
   background-color: #E5E5E5;
-  height: 110vh;
+  height: 100%;
 }
+
 .innerDeveloperList {
   width: 100%;
   display: flex;
@@ -11,16 +11,18 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
 .developerCard {
+  min-height: 320px;
   width: 30%;
   background-color: #fff;
   padding: 1rem;
-  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   border: 1px solid #3a3a3a;
   border-radius: 15px;
   position: relative;
   margin: 1rem;
 }
+
 .developerCardBorder {
   position: absolute;
   width: 8px;
@@ -31,6 +33,7 @@
   background-color: #02044a;
   border-radius: 999px;
 }
+
 .developerNameExp {
   display: flex;
   justify-content: space-between;
@@ -38,8 +41,8 @@
   align-items: center;
   margin-bottom: 3%;
   padding-bottom: 5%;
-  /* border-bottom: 0.5px dashed #ebebeb; */
 }
+
 .developerBudgetResume {
   display: flex;
   justify-content: flex-start;
@@ -47,34 +50,39 @@
   flex-direction: column;
   position: relative;
 }
-.developerName,
-.developerExp {
-  /* line-height: 0.5; */
+
+.developerName, .developerExp {
   text-align: center;
 }
+
 .developerName {
   width: 80%;
   margin-bottom: 5px;
 }
+
 .developerName h2 {
   font-family: 'Poppins';
   font-size: 1.2rem;
   font-weight: 600;
   color: #02044a;
 }
+
 .developerName p {
   font-family: 'Poppins';
   color: #999;
   font-size: 0.9rem;
 }
+
 .developerExp {
   font-family: 'Poppins';
   line-height: 0.1;
 }
+
 .developerExp p {
   color: green;
   font-size: 0.9rem;
 }
+
 .developerExp h6 {
   color: #000;
   font-weight: bold;
@@ -88,13 +96,16 @@
   margin-bottom: 3.2%;
   font-weight: 600;
 }
+
 .developerTechNames {
   display: flex;
+  grid-row-gap: 8px;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 4%;
 }
+
 .developerTechNames p {
   padding: 0.2rem 0.6rem;
   border-radius: 10px;
@@ -109,32 +120,17 @@
   display: flex;
   flex-wrap: wrap;
 }
-.developerBudget div {
-  /* line-height: 1; */
-  margin-bottom: 20px;
-  margin-right: 60px;
-}
+
 .developerBudget p {
   font-family: 'Poppins';
   color: #999;
 }
+
 .developerBudget h6 {
   font-weight: bold;
   font-family: 'Poppins';
 }
-.developerResume {
-  position: absolute;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  bottom: 0;
-  right: 0;
-}
-/* .developerResume div img {
-  width: 80%;
-  margin-bottom: 4px;
-} */
+
 .developerResume button {
   padding: 0.2rem 1rem;
   border-radius: 4px;
@@ -146,6 +142,7 @@
   outline: none;
   border: none;
 }
+
 .developerResume button i {
   margin-right: 5px;
 }
@@ -158,31 +155,16 @@
   color: #fff;
   margin: auto;
 }
+
 .addDeveloperText {
   transform: translateY(-10px);
   font-size: 1.1rem;
 }
 
-/* .nav {
-  flex-wrap: nowrap !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-  justify-content: space-evenly;
+.developer-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 15px 15px 15px;
 }
-.nav-tabs .nav-link {
-  background-color: transparent !important;
-  outline: none !important;
-  border: none !important;
-  font-size: 1rem !important;
-  color: #b0b0b0 !important;
-  font-family: 'Poppins' !important;
-  width: auto;
-  overflow: hidden;
-  white-space: nowrap;
-  padding-right: 0;
-  margin-right: 0;
-  margin-left: 0;
-  padding-left: 0;
-} */
