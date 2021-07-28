@@ -293,7 +293,6 @@ button {
 
 .agencyName p {
   font-family: 'Poppins';
-  /* margin-left: 2%; */
   color: #407bff;
   font-weight: bold;
   font-size: 0.8rem;
@@ -303,7 +302,6 @@ button {
   display: flex;
   margin-top: 1%;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .agencyProfileConstantPoints .pointContent:nth-child(1) {
@@ -507,6 +505,7 @@ button {
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button {
   background-color: transparent !important;
   border: none !important;
+  outline: none !important;
   margin-right: 4%;
 }
 

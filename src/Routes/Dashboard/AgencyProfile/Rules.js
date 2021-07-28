@@ -138,7 +138,11 @@ function Rules(props) {
                                     "There are no rules available for this Agency."
                             }
                             {editRules && <div className="submitEditBtn">
-                                <button onClick={() => { handleEditRules(false) }}>Submit</button>
+                                <div onClick={() => { handleEditRules(false) }} className="information_save_parent">
+                                    <div className="information_save">
+                                        <p>Submit</p>
+                                    </div>
+                                </div>
                             </div>}
                         </div>
                     </div>
