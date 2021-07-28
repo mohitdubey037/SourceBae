@@ -4,9 +4,14 @@ import React, { useEffect, useState, useRef } from "react";
 import "./AgencyProfile.css";
 import growth from "../../assets/images/AgencyProfile/growth.png";
 import document from "../../assets/images/AgencyProfile/pdf.png";
-import received from "../../assets/images/Quotation/received.png";
-import responded from "../../assets/images/Quotation/responded.png";
-import matched from "../../assets/images/Quotation/matched.png";
+// import received from "../../assets/images/Quotation/received.png";
+// import responded from "../../assets/images/Quotation/responded.png";
+// import matched from "../../assets/images/Quotation/matched.png";
+import InformationImage from '../../assets/images/Newestdashboard/Agency-Profile/Information.svg';
+import SkillSetImage from '../../assets/images/Newestdashboard/Agency-Profile/Skill-Set.svg';
+import DevelopersImage from '../../assets/images/Newestdashboard/Agency-Profile/Developers.svg';
+import AgencyRuleImage from '../../assets/images/Newestdashboard/Agency-Profile/Agency-Rule.svg';
+import PortfolioImage from '../../assets/images/Newestdashboard/Agency-Profile/Portfolio.svg';
 import Information from "./AgencyProfile/Information";
 import SkillsSet from "./AgencyProfile/SkillsSet";
 import Rules from "./AgencyProfile/Rules";
@@ -137,33 +142,33 @@ function AgencyProfile(props) {
                     </button>
                   </>
                 ) : (
-                    <button
-                      onClick={() =>
-                        props.history.push({
-                          pathname: `/product-details:${agencyProfileData.productId}`,
-                          condition: id !== '' ? 'Agency' : 'Client'
-                        })
-                      }
-                    >
-                      View Your Product{" "}
-                      <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
-                    </button>
-                  )
+                  <button
+                    onClick={() =>
+                      props.history.push({
+                        pathname: `/product-details:${agencyProfileData.productId}`,
+                        condition: id !== '' ? 'Agency' : 'Client'
+                      })
+                    }
+                  >
+                    View Your Product{" "}
+                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                  </button>
+                )
               ) : (
-                  <div>
-                    {/* <p onClick={onOpenModal}>
+                <div>
+                  {/* <p onClick={onOpenModal}>
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                     Have a Question..?
                   </p> */}
-                    <i
-                      style={{ fontSize: 22, color: "#fff" }}
-                      className="fa fa-info-circle"
-                      aria-hidden="true"
-                      onMouseOver={() => setHoverModal(true)}
-                    // onMouseLeave={()=>onCloseModal()}
-                    ></i>
-                  </div>
-                )}
+                  <i
+                    style={{ fontSize: 22, color: "#fff" }}
+                    className="fa fa-info-circle"
+                    aria-hidden="true"
+                    onMouseOver={() => setHoverModal(true)}
+                  // onMouseLeave={()=>onCloseModal()}
+                  ></i>
+                </div>
+              )}
             </div>
           </div>
 
@@ -335,13 +340,6 @@ function AgencyProfile(props) {
                       <h3>Agency Document</h3>
                     </div>
 
-                    {/* <button> */}
-                    {/* <img
-                      style={{ position: "relative" }}
-                      src={document}
-                      alt=""
-                    /> */}
-
                     <FilePicker
                       extensions={["pdf"]}
                       onChange={(FileObject) => { }}
@@ -358,74 +356,78 @@ function AgencyProfile(props) {
           </div>
 
           <div className="mainQuotation">
-            <div className="innerQuotation marginLeft">
-              <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <button
-                    class="nav-link active"
-                    id="nav-home-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-home"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-home"
-                    aria-selected="true"
-                  >
-                    <img src={received} alt="information" /> Information
+            <div className="innerQuotation_agencyProfile ">
+              <div class="nav nav-tabs nav-tabs_agencyProfile" id="nav-tab" role="tablist">
+                <div id="nav-home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true">
+                  <img src={InformationImage} alt="information" />
+                  <button class="nav-link nav-link_agencyProfile active">
+                    Information
                   </button>
-                  <button
-                    class="nav-link"
-                    id="nav-profile-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-profile"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-profile"
-                    aria-selected="false"
-                  >
-                    <img src={responded} alt="skills" /> Skills Set
+                </div>
+
+                <div id="nav-profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false">
+                  <img src={SkillSetImage} alt="skills" />
+                  <button class="nav-link nav-link_agencyProfile">
+                    Skills Set
                   </button>
-                  <button
-                    class="nav-link"
-                    id="nav-contact-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-contact"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-contact"
-                    aria-selected="false"
-                  >
-                    <img src={matched} alt="rules" /> Agency Rules
+                </div>
+
+                <div id="nav-contact-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-contact"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-contact"
+                  aria-selected="false">
+                  <img src={AgencyRuleImage} alt="rules" />
+                  <button class="nav-link nav-link_agencyProfile">
+                    Agency Rules
                   </button>
-                  <button
-                    class="nav-link"
-                    id="nav-developer-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-developer"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-developer"
-                    aria-selected="false"
-                    ref={inputEl}
-                  >
-                    <img src={matched} alt="dev" /> Developers
+                </div>
+
+                <div id="nav-developer-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-developer"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-developer"
+                  aria-selected="false"
+                  ref={inputEl}>
+                  <img src={DevelopersImage} alt="dev" />
+                  <button class="nav-link nav-link_agencyProfile">
+                    Developers
                   </button>
-                  <button
-                    class="nav-link"
-                    id="nav-portfolio-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-portfolio"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-portfolio"
-                    aria-selected="false"
-                  >
-                    <img src={matched} alt="portfolio" /> Portfolio
+                </div>
+
+                <div id="nav-developer-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-portfolio"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-developer"
+                  aria-selected="false"
+                  ref={inputEl}>
+                  <img src={PortfolioImage} alt="portfolio" />
+                  <button class="nav-link nav-link_agencyProfile">
+                    Portfolio
                   </button>
-                  {/* <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
+                </div>
+                {/* <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
                                             <img src={matched} alt="Reviews" /> Reviews
                             </button> */}
-                  {/* <button
+                {/* <button
                     class="nav-link"
                     id="nav-question-tab"
                     data-bs-toggle="tab"
@@ -437,8 +439,7 @@ function AgencyProfile(props) {
                   >
                     <img src={matched} alt="Feature Link" /> Feature Link
                   </button> */}
-                </div>
-              </nav>
+              </div>
               <div class="tab-content" id="nav-tabContent">
                 <div
                   class="tab-pane fade show active"
@@ -501,17 +502,17 @@ function AgencyProfile(props) {
           </div>
         </div>
       ) : (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "80vh",
-              }}
-            >
-              <h1> No agency found with this ID. </h1>
-            </div>
-          )}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "80vh",
+          }}
+        >
+          <h1> No agency found with this ID. </h1>
+        </div>
+      )}
     </>
   );
 }
