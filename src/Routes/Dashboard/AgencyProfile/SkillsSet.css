@@ -1,14 +1,34 @@
 .mainSkillsSet {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin: auto;
 }
+
 .innerSkillsSet {
   width: 100%;
 }
+
+.skill-set_parent_parent {
+  display: flex;
+  justify-content: space-between;
+  width: 21%;
+}
+
+.skill-set_parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #B5B4FF;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 75%;
+  padding: 13px 25px;
+  justify-content: space-around;
+}
+
+.editable_parent {
+  display: flex;
+}
+
 .skillsSetsContent {
   width: 100%;
   background-color: #fff;
@@ -18,7 +38,9 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  margin-top: 20px;
 }
+
 .skillsSetBorder {
   position: absolute;
   width: 8px;
@@ -29,6 +51,7 @@
   left: 0;
   border-radius: 999px;
 }
+
 .skillsSetSemiCircle {
   position: absolute;
   width: 500px;
@@ -40,6 +63,7 @@
   /* z-index: -1; */
   mix-blend-mode: multiply;
 }
+
 .skillsSetsContent .skillsSetTable {
   display: flex;
   align-items: flex-start;
@@ -52,19 +76,23 @@
 .skillsSetTableHeading {
   width: 30%;
 }
+
 .skillsSetTableContent {
   width: 70%;
 }
+
 .skillsSetTableHeading p {
   font-family: 'Poppins';
   font-weight: 400;
   font-size: 1.2rem;
 }
+
 .skillsSetTableContent {
   /* padding-left: 3%; */
   display: flex;
   flex-wrap: wrap;
 }
+
 .skillsSetTableContent p {
   font-family: 'Poppins';
   font-weight: 400;
@@ -75,18 +103,22 @@
   margin-bottom: 20px;
   margin-right: 20px;
 }
+
 .modalHeading {
   font-family: 'Poppins';
   font-weight: bold;
 }
+
 .skillsSetTableContent input {
   width: 100%;
   /* height: 40px; */
 }
+
 .modaInput select {
   width: 100%;
   height: 40px;
 }
+
 .react-responsive-modal-closeButton {
   top: -19px !important;
   background-color: #e0e0e0;
@@ -95,10 +127,12 @@
 .modalEditContainer {
   margin-top: 5%;
 }
+
 .modalQuestion p {
   font-family: 'Poppins';
   font-size: 1.1rem;
 }
+
 .modaInput input {
   width: 100%;
   height: 40px;
@@ -113,6 +147,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .addBtn p {
   padding: 0.3rem 1rem;
   background-color: #d6eaf8;
@@ -123,11 +158,13 @@
   cursor: pointer;
   border: 1px solid #2e86c1;
 }
+
 /* .editButtons {
     position: absolute;
     right: 10px;
     top: 0;
 } */
+
 /* .editButtons div {
   width: 30px;
   height: 30px;

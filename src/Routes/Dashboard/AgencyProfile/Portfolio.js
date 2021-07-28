@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import instance from "../../../Constants/axiosConstants";
 import { withRouter } from "react-router";
-
+import Portfolio_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Portfolio_edit.svg';
 
 import './Portfolio.css'
 

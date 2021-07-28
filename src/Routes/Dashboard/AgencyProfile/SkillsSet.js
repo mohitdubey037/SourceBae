@@ -1,17 +1,12 @@
-
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import './SkillsSet.css'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import instance from "../../../Constants/axiosConstants";
-import { useParams } from "react-router";
-import * as helper from "../../../shared/helper";
+import Skillset_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Skill-Set_edit.svg';
 
 function SkillsSet(props) {
-
     const Role = localStorage.getItem('role');
-
     const [agencyProfiledata, setAgencyProfileData] = useState({})
     const [selectedId, setSelectedId] = useState("")
     const [open, setOpen] = useState(false);
@@ -311,16 +306,23 @@ function SkillsSet(props) {
         <>
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
-
                     {Role !== 'Client' ?
                         agencyProfiledata.isAgencyVerified &&
-                        <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <div className="editableBtn" style={{ position: 'relative' }}>
-                                <button style={{ position: 'absolute', left: 0, top: -40 }} onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
+                        <div className="skill-set_parent_parent">
+                            <div className="skill-set_parent">
+                                <img src={Skillset_edit} alt="Skill-Set" />
+                                <p>Skill Set</p>
                             </div>
-                            <div className="editableBtn">
-                                <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
-                            </div>
+                            <i class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
+
+                            {/* <div className="editable_parent"> */}
+                                {/* <div className="editableBtn" style={{ position: 'relative' }}>
+                                    <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
+                                </div> */}
+                                {/* <div className="editableBtn">
+                                    <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
+                                </div> */}
+                            {/* </div> */}
                         </div>
                         : null}
 

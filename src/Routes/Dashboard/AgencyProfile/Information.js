@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Information.css';
 import axios from 'axios';
 import { useParams } from "react-router";
-
-
+import Information_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Information_edit.svg';
 import moment from 'moment'
 import instance from "../../../Constants/axiosConstants";
 import Alert from '@material-ui/lab/Alert';
@@ -144,10 +143,11 @@ function Information(props) {
                     {Role === 'Agency' ?
                         agencyProfiledata.isAgencyVerified &&
                         <div className="editableBtn">
-                            <button onClick={handleDisabled} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Information</button>
-                            {
-                                isDisabled ? null : <button onClick={handleDisabledSave} >Save Your Information</button>
-                            }
+                            <div className="information_parent">
+                                <img src={Information_edit} alt="information_edit" />
+                                <p>Information</p>
+                            </div>
+                            <i onClick={handleDisabled} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
                         </div>
                         : null
                     }
@@ -179,8 +179,14 @@ function Information(props) {
                             }
                         </div>
                     </div>
-
                 </div>
+                {isDisabled ? null :
+                    <div onClick={handleDisabledSave} className="information_save_parent">
+                        <div className="information_save">
+                            <p>Submit</p>
+                        </div>
+                    </div>
+                }
             </div>
         </>
     )

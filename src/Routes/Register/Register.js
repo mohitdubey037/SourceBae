@@ -13,6 +13,7 @@ import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
 import Spinner from '../../Components/Spinner/Spinner';
 import cookie from "react-cookies";
+import TextField from '@material-ui/core/TextField';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -473,6 +474,15 @@ const Register = (props) => {
                                         value={signupForm.firstName}
                                         onChange={(e) => setForm(e)}
                                     />
+                                    {/* <TextField
+                                        id="outlined-basic"
+                                        label="first Name"
+                                        variant="outlined"
+                                        required
+                                        type="text"
+                                        name="firstName"
+                                        value={signupForm.firstName}
+                                        onChange={(e) => setForm(e)} /> */}
                                     {errors.firstNameError && <Alert severity="error">{errors.firstNameError}</Alert>}
 
                                     <input
@@ -482,6 +492,15 @@ const Register = (props) => {
                                         value={signupForm.lastName}
                                         onChange={(e) => setForm(e)}
                                     />
+                                    {/* <TextField
+                                        id="outlined-basic"
+                                        label="first Name"
+                                        variant="outlined"
+                                        required
+                                        type="text"
+                                        name="lastName"
+                                        value={signupForm.lastName}
+                                        onChange={(e) => setForm(e)}*/}
                                     {errors.lastNameError && <Alert severity="error">{errors.lastNameError}</Alert>}
 
                                     <input
@@ -491,6 +510,15 @@ const Register = (props) => {
                                         value={signupForm.userName}
                                         onChange={(e) => setForm(e)}
                                     />
+                                    {/* <TextField
+                                        id="outlined-basic"
+                                        label="first Name"
+                                        variant="outlined"
+                                        required
+                                        type="text"
+                                        name="userName"
+                                        value={signupForm.userName}
+                                        onChange={(e) => setForm(e)} */}
                                     {errors.userNameError && <Alert severity="error">{errors.userNameError}</Alert>}
 
                                     <input
@@ -500,6 +528,15 @@ const Register = (props) => {
                                         value={signupForm.userEmail}
                                         onChange={(e) => setForm(e)}
                                     />
+                                    {/* <TextField
+                                        id="outlined-basic"
+                                        label="first Name"
+                                        variant="outlined"
+                                        required
+                                        type="text"
+                                        name="firstName"
+                                        value={signupForm.firstName}
+                                        onChange={(e) => setForm(e)} /> */}
                                     {errors.emailError && <Alert severity="error">{errors.emailError}</Alert>}
 
                                     <input
@@ -510,6 +547,16 @@ const Register = (props) => {
                                         value={signupForm.userPhone}
                                         onChange={(e) => setForm(e)}
                                     />
+                                    {/* <TextField
+                                        id="outlined-basic"
+                                        label="first Name"
+                                        variant="outlined"
+                                        required
+                                        type="tel"
+                                        name="userPhone"
+                                        maxLength='10'
+                                        value={signupForm.userPhone}
+                                        onChange={(e) => setForm(e)} */}
                                     {errors.phoneError && <Alert severity="error">{errors.phoneError}</Alert>}
 
                                     <input
@@ -519,6 +566,15 @@ const Register = (props) => {
                                         value={signupForm.password}
                                         onChange={(e) => setForm(e)}
                                     />
+                                    {/* <TextField
+                                        id="outlined-basic"
+                                        label="first Name"
+                                        variant="outlined"
+                                        required
+                                        type="password"
+                                        name="password"
+                                        value={signupForm.password}
+                                        onChange={(e) => setForm(e)} */}
                                     {errors.passwordError && <Alert severity="error">{errors.passwordError}</Alert>}
 
                                     <Button
@@ -547,14 +603,32 @@ const Register = (props) => {
                                                 placeholder='Agency Name'
                                                 value={agencyProfileDetails.agencyName}
                                                 onChange={(event) => handleCreateProfile(event, role)} />
+                                            {/* <TextField
+                                                id="outlined-basic"
+                                                label="first Name"
+                                                variant="outlined"
+                                                required
+                                                type="text"
+                                                name="agencyName"
+                                                value={agencyProfileDetails.agencyName}
+                                                onChange={(event) => handleCreateProfile(event, role)} */}
                                             {errors.agencyNameError && <Alert severity="error">{errors.agencyNameError}</Alert>}
 
                                             <input
                                                 type="number"
                                                 name="agencyTeamSize"
                                                 placeholder='Team Strength'
-
                                                 onChange={(event) => handleCreateProfile(event, role)} />
+
+                                            {/* <TextField
+                                                id="outlined-basic"
+                                                label="first Name"
+                                                variant="outlined"
+                                                required
+                                                type="number"
+                                                name="agencyTeamSize"
+                                                onChange={(event) => handleCreateProfile(event, role)} */}
+
                                             {errors.agencyTeamSizeError && <Alert severity="error">{errors.agencyTeamSizeError}</Alert>}
 
                                             <form className={dateClasses.container} noValidate>
@@ -572,20 +646,79 @@ const Register = (props) => {
                                                         shrink: true,
                                                     }}
                                                     onChange={(event) => handleCreateProfile(event, role)} />
+                                                {/* <TextField
+                                                    id="outlined-basic"
+                                                    label="first Name"
+                                                    variant="outlined"
+                                                    required
+                                                    id="incorporation_date"
+                                                    type="date"
+                                                    name="incorporationDate"
+                                                    max={new Date().toJSON().slice(0, 10)}
+                                                    defaultValue={agencyProfileDetails?.incorporationDate}
+                                                    value={agencyProfileDetails?.incorporationDate}
+                                                    className={dateClasses.textField}
+                                                    placeholder={`Incorporation Date`}
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                    onChange={(event) => handleCreateProfile(event, role)}  */}
                                             </form>
                                             {errors.incorporationDateError && <Alert severity="error">{errors.incorporationDateError}</Alert>}
                                         </>
                                             :
                                             <>
-                                                <input type="text" name="userDesignation" placeholder='User Designation' onChange={(event) => handleCreateProfile(event, role)} />
+                                                <input
+                                                    type="text"
+                                                    name="userDesignation"
+                                                    placeholder='User Designation'
+                                                    onChange={(event) => handleCreateProfile(event, role)} />
+                                                {/* <TextField
+                                                    id="outlined-basic"
+                                                    label="first Name"
+                                                    variant="outlined"
+                                                    required
+                                                    type="text"
+                                                    name="userDesignation"
+                                                    placeholder='User Designation'
+                                                    onChange={(event) => handleCreateProfile(event, role)} */}
                                                 {errors.userDesignationError && <Alert severity="error">{errors.userDesignationError}</Alert>}
 
-                                                <input type="text" name="companyName" placeholder='Company Name' onChange={(event) => handleCreateProfile(event, role)} />
+                                                <input
+                                                    type="text"
+                                                    name="companyName"
+                                                    placeholder='Company Name'
+                                                    onChange={(event) => handleCreateProfile(event, role)} />
+                                                {/* <TextField
+                                                    id="outlined-basic"
+                                                    label="first Name"
+                                                    variant="outlined"
+                                                    required
+                                                    type="text"
+                                                    name="companyName"
+                                                    placeholder='Company Name'
+                                                    onChange={(event) => handleCreateProfile(event, role)} */}
                                                 {errors.companyNameError && <Alert severity="error">{errors.companyNameError}</Alert>}
                                             </>
                                     }
 
-                                    <input style={{ marginTop: '3%' }} type="text" name="website" placeholder='Website URL' value={site.platformLink} onChange={(event) => handleSocialPlatform(event)} />
+                                    <input style={{ marginTop: '3%' }}
+                                        type="text"
+                                        name="website"
+                                        placeholder='Website URL'
+                                        value={site.platformLink}
+                                        onChange={(event) => handleSocialPlatform(event)} />
+
+                                    {/* <TextField
+                                        id="outlined-basic"
+                                        label="first Name"
+                                        variant="outlined"
+                                        required
+                                        type="text"
+                                        name="website"
+                                        placeholder='Website URL'
+                                        value={site.platformLink}
+                                        onChange={(event) => handleSocialPlatform(event)} */}
                                     {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
 
                                     <Button

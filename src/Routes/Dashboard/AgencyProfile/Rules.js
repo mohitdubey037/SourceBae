@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import instance from "../../../Constants/axiosConstants"
-
+import Rules_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg';
 
 import './Rules.css'
 
@@ -84,7 +84,12 @@ function Rules(props) {
                             agencyProfiledata.isAgencyVerified &&
                             // (props?.id === null || props?.id === undefined) && 
                             <div className="editableBtn">
-                                <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button>
+                                <div className="rules_parent">
+                                    <img src={Rules_edit} alt="Rules" />
+                                    <p>Agency Rules</p>
+                                </div>
+                                {/* <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button> */}
+                                <i class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
                             </div> : null
                     }
                     <div className="rulesCard">
@@ -137,7 +142,6 @@ function Rules(props) {
                             </div>}
                         </div>
                     </div>
-
                 </div>
             </div>
         </>

@@ -1,19 +1,25 @@
 .mainInformation {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1% 0 3% 0;
+  /* margin: 1% 0 3% 0; */
+  margin: auto;
 }
+
+.mainInformation button {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .innerInformation {
-  width: 99%;
-}
-.editableBtn {
   width: 100%;
+}
+
+.editableBtn {
+  width: 25%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   margin-bottom: 2%;
 }
+
 .editableBtn button {
   padding: 0.5rem 1rem;
   outline: none;
@@ -24,25 +30,30 @@
   border-radius: 0px;
   /* font-weight: bold; */
 }
+
 .editableBtn button:nth-child(2) {
   background-color: transparent;
   border: 1px solid #5cb85c;
   color: #5cb85c;
   transition: 0.3s ease-in-out;
 }
+
 .editableBtn button:nth-child(2):hover {
   background-color: #5cb85c;
   color: #fff;
 }
+
 .editableBtn button i {
   margin-right: 10px;
 }
+
 .informationForm {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
+
 .informationInputForm {
   width: 100%;
   background-color: #fff;
@@ -51,6 +62,7 @@
   position: relative;
   border-radius: 15px;
 }
+
 .informationBorder {
   position: absolute;
   width: 8px;
@@ -61,9 +73,11 @@
   background-color: #02044a;
   border-radius: 999px;
 }
+
 .informationImageForm {
   width: 40%;
 }
+
 .informationInputForm div {
   width: 100%;
   display: flex;
@@ -71,11 +85,13 @@
   align-items: center;
   border-bottom: 1px solid #ebebeb;
 }
+
 .informationInputForm div p {
   margin-top: 16px;
   font-size: 1.1rem;
   color: #999;
 }
+
 .informationInputForm div input {
   width: 50%;
   height: 40px;
@@ -94,6 +110,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .informationImageForm div {
   width: 70%;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -109,6 +126,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .informationImageForm div p {
   font-size: 2rem;
   /* font-family: 'Fredoka One', cursive; */
@@ -116,9 +134,11 @@
   font-weight: bold;
   color: #000;
 }
+
 .informationImageForm div h2 {
   color: #000;
 }
+
 .informationImageForm div img {
   position: absolute;
   width: 20%;
@@ -128,6 +148,7 @@
   bottom: 10px;
   right: 10px;
 }
+
 .brochureBorder {
   position: absolute;
   width: 8px;
@@ -138,6 +159,7 @@
   background-color: #02044a;
   border-radius: 999px;
 }
+
 .roundedCircle {
   position: absolute;
   width: 200px;
@@ -147,4 +169,57 @@
   z-index: -1;
   top: -40%;
   left: -20%;
+}
+
+.information_parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #B5B4FF;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 70%;
+  padding: 13px 27px;
+  justify-content: space-around;
+}
+
+.information_save_parent {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.information_save_parent:hover {
+  cursor: pointer;
+}
+
+.information_save {
+  width: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background: #C2DAFF;
+  border: 3px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+/* .information_parent~div {
+  width: 47%;
+  display: flex;
+  justify-content: space-around;
+} */
+
+.Edit-icon_information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px !important;
+  color: blue !important;
+}
+
+.Edit-icon_information:hover {
+  cursor: pointer;
 }

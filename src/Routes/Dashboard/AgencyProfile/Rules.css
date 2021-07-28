@@ -1,68 +1,84 @@
-.mainRules{
+.mainRules {
     width: 100%;
+    margin: auto;
+}
+
+.innerRules {
+    width: 100%;
+}
+
+.rules_parent {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 3% 0;
-    flex-direction: column;
-}
-.innerRules{
-    width: 100%;
-    
+    border: 4px solid #B5B4FF;
+    box-sizing: border-box;
+    border-radius: 12px;
+    width: 73%;
+    padding: 13px 20px;
+    justify-content: space-around;
 }
 
-.rulesCard{
+.rulesCard {
     width: 100%;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 2rem;
     border-radius: 20px;
 }
-.rulesUpper{
+
+.rulesUpper {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 2%;
 }
-.rulesUpper h4{
+
+.rulesUpper h4 {
     font-family: 'Poppins';
     font-size: 1rem;
     color: #999;
 }
-.rulesUpper p{
+
+.rulesUpper p {
     font-family: 'Poppins';
     font-weight: bold;
     font-size: 1.4rem;
     color: #02044a;
 }
-.openTiming i,.weekendOpening i{
+
+.openTiming i, .weekendOpening i {
     margin-right: 4px;
 }
 
-
-.questionPart{
+.questionPart {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 2%;
 }
-.leftQuestion{
+
+.leftQuestion {
     width: 70%;
 }
-.rulesMark{
+
+.rulesMark {
     width: 40%;
     padding-left: 40px;
     margin-top: -4px;
 }
-.rulesMark i{
+
+.rulesMark i {
     margin-right: 10%;
     font-size: 2rem;
 }
-.leftQuestion p{
+
+.leftQuestion p {
     font-family: 'Poppins';
     font-size: 1.1rem;
     color: #666;
 }
-.leftQuestion p::before{
+
+.leftQuestion p::before {
     content: '';
     width: 10px;
     height: 10px;
@@ -72,13 +88,14 @@
     margin-right: 10px;
 }
 
-.submitEditBtn{
+.submitEditBtn {
     width: 100%;
     /* margin-bottom: 3%; */
     display: flex;
     justify-content: flex-end;
 }
-.submitEditBtn button{
+
+.submitEditBtn button {
     padding: 0.5rem 1rem;
     outline: none;
     background-color: transparent;
@@ -91,8 +108,7 @@
     margin-right: 2%;
 }
 
-.submitEditBtn button:hover{
+.submitEditBtn button:hover {
     background-color: #5cb85c;
     color: #fff;
 }
-
