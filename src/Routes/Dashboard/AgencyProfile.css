@@ -509,12 +509,15 @@ button {
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button {
   background-color: transparent !important;
-  outline: none !important;
   border: none !important;
-  font-size: 1.2rem !important;
-  color: #b0b0b0 !important;
   margin-right: 4%;
 }
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button:active {
+  border: none !important;
+}
+
+
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button img {
   width: 15%;
   object-fit: contain;
@@ -525,6 +528,10 @@ button {
   color: #484848 !important;
   font-weight: bold !important;
 }
+
+/* #nav-home-tab {
+  margin-top: 10px;
+} */
 
 .nav-tabs_agencyProfile>div {
   display: flex;
@@ -542,10 +549,6 @@ button {
 
 .nav.nav-tabs {
   border-bottom: none;
-}
-
-.nav-link {
-  margin-bottom: 20px ;
 }
 
 .nav-link.nav-link_agencyProfile{
