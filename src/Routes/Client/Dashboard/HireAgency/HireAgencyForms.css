@@ -43,12 +43,12 @@
 }
 
 .mainHireAgencyForm3 .stepCheck {
-    width: 12%;
-    left: 35px;
+    width: 18%;
+    left: -6rem;
 }
 
 .mainHireAgencyForm3 .stepCheck p {
-    left: 11px;
+    left: 0;
 }
 
 .step-1_hireAgencyForm1 {
@@ -444,6 +444,17 @@
     left: 6rem;
 }
 
+.mainHireAgencyForm3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    position: absolute;
+    left: -8rem;
+}
+
 .innerHireAgencyFormTwo {
     height: 37rem;
     width: 96%;
@@ -616,23 +627,22 @@
 }
 
 .innerHireAgencyForm3 {
-    display: flex;
-    justify-content: space-between;
-    height: 670px;
-    width: 80%;
+    width: 60%;
     background-color: #fff;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
     padding: 1.5rem;
     display: flex;
+    height: 564px;
+    position: relative;
+    margin-bottom: 2%;
 }
 
 .serviceFieldsOptions {
-    margin-left: 11rem;
     width: 40%;
     position: absolute;
-    top: 0rem;
-    right: -25rem;
+    right: -22rem;
     height: 31rem;
+    top: 0;
 }
 
 .techStackFields {
@@ -645,6 +655,7 @@
     margin-left: 0;
     margin-top: 0;
 }
+
 
 .techStackFields ul {
     margin-left: 0.61rem;
@@ -696,8 +707,8 @@
 }
 
 .HireAgencyForm3Heading {
-    margin-left: 20px;
-    margin-top: 50px;
+    margin-left: 45px;
+    width: 80%;
 }
 
 .HireAgencyForm3Heading h2 {
@@ -829,4 +840,17 @@
     color: black;
     cursor: pointer;
     user-select: none;
+}
+
+.innerHireAgencyForm3 .servicesCardsHireAgency {
+    margin-left: 33px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 43rem;
+}
+
+.innerHireAgencyForm3 .serivcesHireAgency {
+    margin-top: 5rem;
 }
