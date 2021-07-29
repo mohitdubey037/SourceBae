@@ -131,7 +131,65 @@
 
 .color_hireAgencyForm.grey {
     background-color: #A8A8A8;
-    ;
+}
+
+.steps_hireAgencyForm2 {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 36%;
+    left: 18rem;
+    margin-bottom: 37px;
+}
+
+.mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2 {
+    color: #000;
+    background-color: #000;
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    top: 0.9rem;
+}
+
+.mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip1 {
+    left: 5rem;
+    top: 2rem;
+}
+
+.mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip2 {
+    background-color: #A8A8A8;
+    left: 18.5rem;
+    top: 2rem;
+}
+
+.steps_hireAgencyForm3 {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 36%;
+    left: 18rem;
+    margin-bottom: 37px;
+}
+
+.mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3 {
+    color: #000;
+    background-color: #000;
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    top: 0.9rem;
+}
+
+.mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3.strip1 {
+    left: 5rem;
+    top: 2rem;
+}
+
+.mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3.strip2 {
+    left: 18.5rem;
+    top: 2rem;
 }
 
 .color-div_hireAgencyForm1 {
@@ -447,12 +505,11 @@
 
 .mainHireAgencyFormTwo {
     width: 100%;
-    /* padding: 1rem; */
     display: flex;
     justify-content: space-between;
     position: absolute;
     top: 8rem;
-    /* left: 6rem; */
+    height: 117vh;
 }
 
 .mainHireAgencyForm3 {
@@ -463,6 +520,7 @@
     margin-bottom: 5%;
     position: absolute;
     top: 8rem;
+    height: 106vh;
 }
 
 .innerHireAgencyFormTwo {
@@ -477,7 +535,6 @@
     margin-left: 10%;
     border-radius: 12px;
     top: 3rem;
-
 }
 
 .domainFieldsCard {
@@ -650,11 +707,9 @@
     display: flex;
     height: 564px;
     position: relative;
-    margin-bottom: 2%;
+    margin-bottom: 0%;
     left: -9rem;
     border-radius: 12px;
-    top: 3rem;
-
 }
 
 .serviceFieldsOptions {

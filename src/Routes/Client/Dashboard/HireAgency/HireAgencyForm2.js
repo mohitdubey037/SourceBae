@@ -355,7 +355,7 @@ function HireAgencyForm2(props) {
               // )
             }
           </div>
-          {/* <div className="steps_hireAgencyForm">
+          <div className="steps_hireAgencyForm2">
             <div>
               <div >
                 <p>Step 1</p>
@@ -363,16 +363,16 @@ function HireAgencyForm2(props) {
               <div className='color_hireAgencyForm green'></div>
             </div>
 
-            <div className="black-strip_hireAgencyForm1 strip1"></div>
+            <div className="black-strip_hireAgencyForm2 strip1"></div>
 
             <div className="diabled-step_hireAgencyForm">
               <div>
                 <p className="grey-step_hireAgencyForm">Step 2</p>
               </div>
-              <div className='color_hireAgencyForm grey'></div>
+              <div className='color_hireAgencyForm green'></div>
             </div>
 
-            <div className="black-strip_hireAgencyForm1 strip2"></div>
+            <div className="black-strip_hireAgencyForm2 strip2"></div>
 
             <div>
               <div>
@@ -380,7 +380,7 @@ function HireAgencyForm2(props) {
               </div>
               <div className='color_hireAgencyForm grey'></div>
             </div>
-          </div> */}
+          </div>
         </div>
       )}
     </>
