@@ -209,6 +209,7 @@ function HireAgencyForm2(props) {
         <Spinner />
       ) : (
         <div className="mainHireAgencyFormTwo">
+          <div className="color-div_hireAgencyForm"></div>
           <div className="innerHireAgencyFormTwo">
             <div className="stepCheck">
               <div className="color-div_hireAgencyForm1">

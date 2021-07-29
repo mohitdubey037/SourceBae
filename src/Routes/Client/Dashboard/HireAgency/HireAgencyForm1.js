@@ -122,7 +122,7 @@ const HireAgencyForm1 = (props) => {
       <div className="Navbar-parent">
         <Navbar />
       </div>
-      
+
       {loading ? <Spinner /> :
 
         <>
@@ -147,6 +147,7 @@ const HireAgencyForm1 = (props) => {
           </div>
 
           <div className="mainHireAgencyForm1">
+            <div className="color-div_hireAgencyForm"></div>
             <div className="innerHigherAgencyForm1">
               <div className="stepCheck">
                 <div className="color-div_hireAgencyForm1">
