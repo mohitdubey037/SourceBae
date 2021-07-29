@@ -4,6 +4,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 5%;
     position: relative;
@@ -11,8 +12,9 @@
 }
 
 .innerHigherAgencyForm1 {
-    height: 1000px;
-    width: 80%;
+    position: relative;
+    height: 875px;
+    width: 70%;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -21,10 +23,32 @@
 .higherAgencyFormArea {
     width: 70%;
     padding: 1.5rem 0 0 2.5rem;
+    margin-left: 7rem;
 }
 
-.higherAgencyInfoArea {
-    width: 30%;
+.stepCheck {
+    height: 60px;
+    width: 18%;
+    position: absolute;
+    left: -61px;
+    top: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px rgb(0 0 0 / 25%);
+    border-radius: 0 12px 12px 0;
+}
+
+.mainHireAgencyFormTwo .stepCheck {
+    width: 24%;
+    left: -80px;
+}
+
+.mainHireAgencyForm3 .stepCheck {
+    width: 12%;
+    left: 35px;
+}
+
+.mainHireAgencyForm3 .stepCheck p {
+    left: 11px;
 }
 
 .step-1_hireAgencyForm1 {
@@ -34,16 +58,84 @@
     align-items: center;
 }
 
-.color-div_hireAgencyForm1 {
-    background: #68E1FD;
+.steps_hireAgencyForm {
+    display: flex;
+    justify-content: space-between;
+    width: 53%;
+    margin-top: 4rem;
     position: relative;
-    width: 90px;
+}
+
+.steps_hireAgencyForm>div {
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.steps_hireAgencyForm>div>div>p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21.4118px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.steps_hireAgencyForm .grey-step_hireAgencyForm {
+    color: #A8A8A8 !important;
+}
+
+.black-strip_hireAgencyForm1 {
+    color: #000;
+    background-color: #000;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    top: 0.9rem;
+}
+
+.strip1 {
+    left: 9.3rem;
+}
+
+.strip2 {
+    left: 28.5rem;
+    color: #A8A8A8;
+    background-color: #A8A8A8;
+}
+
+.color_hireAgencyForm {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+
+.color_hireAgencyForm.green {
+    background-color: green;
+}
+
+.color_hireAgencyForm.grey {
+    background-color: #A8A8A8;
+    ;
+}
+
+.color-div_hireAgencyForm1 {
+    background: #FE5E00;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 67px;
     height: 60px;
 }
 
 .stepCheck p {
-    position: relative;
-    left: -50px;
+    position: absolute;
+    left: 26px;
+    top: 4px;
     letter-spacing: 1px;
     border-radius: 10px;
     font: normal 600 42px 'Inter';
@@ -60,7 +152,8 @@
 }
 
 .input-form_hireAgencyForm1 {
-    margin-top: 80px;
+    margin-top: 8rem;
+    margin-left: 2rem;
 }
 
 .projectNameAgency input {
@@ -117,6 +210,18 @@
     flex-direction: column;
     justify-content: space-between;
     height: 90px;
+}
+
+.understand_your_project {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 51px;
+    text-transform: capitalize;
+    color: #02044A;
+    position: absolute;
+    width: 80%;
 }
 
 .innerHigherAgencyForm1 ul {
@@ -234,33 +339,68 @@
 }
 
 .higherAgencyInfoArea {
-    background-color: #02044a;
-    margin: 12rem 0 0 0;
+    width: 75%;
+    height: 18rem;
     display: flex;
-    justify-content: flex-start;
-    padding: 60px 1rem 1rem 1rem;
-    align-items: center;
-    color: #fff;
     flex-direction: column;
-    height: 580px;
-    background: linear-gradient( 90deg, #4481EB 0%, #04BEFE 100%);
-    border-radius: 12px 0px 0px 12px;
+    margin: auto;
+    margin-top: 2rem;
 }
 
-.higherAgencyInfoArea h4 {
-    font: normal bold 34px 'Inter';
+.points-to-remember_hireAgencyForm1 {
+    width: 20%;
+    margin-left: 1.9rem;
+}
+
+.cardsDetail_hireAgencyForm1 {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 23px;
+}
+
+.cards_hireAgencyForm1 {
+    background: linear-gradient(90deg, #FFECD2 0%, #FCB69F 100%);
+    opacity: 0.33;
+    border: 1px solid #A2A2A6;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    width: 287px;
+    height: 182px;
+}
+
+.cards_hireAgencyForm1 p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
     line-height: 150%;
     text-transform: capitalize;
-    color: #FFFFFF;
+    color: #000;
+    text-align: center;
 }
 
-.higherAgencyInfoArea p {
+.points-to-remember_hireAgencyForm1>h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 150%;
+    /* or 33px */
+    text-transform: capitalize;
+    color: #02044A;
+}
+
+/* .higherAgencyInfoArea p {
     font: normal 500 18px 'Inter';
     line-height: 150%;
     text-transform: capitalize;
-    color: #FFFFFF;
     margin-top: 10px;
-}
+    text-align: center;
+} */
 
 .nextbtn {
     display: flex;
@@ -284,23 +424,35 @@
     padding: 0.3rem 1rem;
 }
 
-.mainHireAgencyForm1, .mainHireAgencyFormTwo, .mainHireAgencyForm3 {
+.mainHireAgencyForm1, .mainHireAgencyForm3 {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2%;
+    margin-top: 3%;
     margin-bottom: 5%;
     position: relative;
 }
 
-.innerHireAgencyFormTwo {
-    width: 80%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    padding: 1.5rem;
+.mainHireAgencyFormTwo {
+    width: 64%;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    top: 8rem;
+    left: 6rem;
+}
+
+.innerHireAgencyFormTwo {
+    height: 37rem;
+    width: 96%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    margin-bottom: 5%;
 }
 
 .domainFieldsCard {
@@ -359,13 +511,10 @@
     width: 50%;
 }
 
-.serivcesHireAgency {
-    margin-top: 7%;
-}
-
-.serviceFieldOptions {
-    width: 27%;
-}
+/* .serivcesHireAgency {
+    width: 100%;
+    margin-top: 5%;
+} */
 
 .serivcesHireAgency .servicesAgencyHeading {
     font: normal 600 22px 'Inter';
@@ -376,11 +525,11 @@
 
 .servicesCardsHireAgency {
     margin-left: 20px;
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     justify-content: space-between;
+    width: 39.5rem;
 }
 
 .tech-container {
@@ -402,10 +551,6 @@
     text-align: center;
 }
 
-.servicesCardsHireAgency {
-    width: 95%;
-}
-
 .servicesCardsHireAgency div img {
     width: 70px;
     user-select: none;
@@ -421,11 +566,10 @@
 
 .servicesHireAgencyContainer {
     width: 100%;
-    height: 60vh;
+    height: 100%;
     overflow-y: scroll;
     border: 1px dashed #ebebeb;
     padding-bottom: 6%;
-    margin-top: 100px;
 }
 
 .UIUXServices {
@@ -483,11 +627,23 @@
 }
 
 .serviceFieldsOptions {
-    width: 29%;
+    margin-left: 11rem;
+    width: 40%;
+    position: absolute;
+    top: 0rem;
+    right: -25rem;
+    height: 31rem;
 }
 
 .techStackFields {
-    width: 70%;
+    width: 100%;
+    margin-left: 7rem;
+    margin-top: 2rem;
+}
+
+.innerHireAgencyForm3 .techStackFields {
+    margin-left: 0;
+    margin-top: 0;
 }
 
 .techStackFields ul {

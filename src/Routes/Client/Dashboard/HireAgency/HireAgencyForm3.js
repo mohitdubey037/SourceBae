@@ -152,11 +152,9 @@ function HireAgencyForm3(props) {
                     <div className="innerHireAgencyForm3">
                         <div className="techStackFields">
                             <div className="stepCheck">
-                                <div className="step-1_hireAgencyForm1">
-                                    <div className="color-div_hireAgencyForm1">
-                                    </div>
-                                    <p>Step 3</p>
+                                <div className="color-div_hireAgencyForm1">
                                 </div>
+                                <p>Step 3</p>
                             </div>
 
                             <div className="HireAgencyForm3Heading">

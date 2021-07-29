@@ -210,14 +210,12 @@ function HireAgencyForm2(props) {
       ) : (
         <div className="mainHireAgencyFormTwo">
           <div className="innerHireAgencyFormTwo">
-            <div className="techStackFields">
-              <div className="stepCheck">
-                <div className="step-1_hireAgencyForm1">
-                  <div className="color-div_hireAgencyForm1">
-                  </div>
-                  <p>Step 2</p>
-                </div>
+            <div className="stepCheck">
+              <div className="color-div_hireAgencyForm1">
               </div>
+              <p>Step 2</p>
+            </div>
+            <div className="techStackFields">
               <div className="serivcesHireAgency">
                 <ul>
                   <li>
@@ -319,39 +317,42 @@ function HireAgencyForm2(props) {
                 </div>
               </div>
             </div>
-            {selectedDomain && options ? (
-              <div className="serviceFieldsOptions">
-                <div className="servicesHireAgencyContainer">
-                  <div className="serviceSelectionInput">
-                    <>
-                      <p className="uiuxtext">
-                        Select {selectedDomain.domainName} services
-                      </p>
-                      <MultiSelect
-                        options={options}
-                        value={selected}
-                        onChange={setSelected}
-                        labelledBy="Select"
-                        className="margin-left"
-                      />
-                    </>
+            {selectedDomain && options &&
+              (
+                <div className="serviceFieldsOptions">
+                  <div className="servicesHireAgencyContainer">
+                    <div className="serviceSelectionInput">
+                      <>
+                        <p className="uiuxtext">
+                          Select {selectedDomain.domainName} services
+                        </p>
+                        <MultiSelect
+                          options={options}
+                          value={selected}
+                          onChange={setSelected}
+                          labelledBy="Select"
+                          className="margin-left"
+                        />
+                      </>
+                    </div>
+                    {error.projectExpertiseRequiredError && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontWeight: "normal",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {error.projectExpertiseRequiredError}
+                      </p>)}
                   </div>
-                  {error.projectExpertiseRequiredError && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontWeight: "normal",
-                        fontSize: "14px",
-                      }}
-                    >
-                      {error.projectExpertiseRequiredError}
-                    </p>)}
-                </div>
 
-              </div>
-            ) : (
-              "Please Select a Service."
-            )}
+                </div>
+              )
+              // : (
+              //   "Please Select a Service."
+              // )
+            }
 
           </div>
         </div>
