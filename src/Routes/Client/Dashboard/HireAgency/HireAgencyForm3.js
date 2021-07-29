@@ -149,6 +149,7 @@ function HireAgencyForm3(props) {
             </div>
             {loading ? <Spinner /> :
                 <div className="mainHireAgencyForm3">
+                    <div className="color-div_hireAgencyForm"></div>
                     <div className="innerHireAgencyForm3">
                         <div className="techStackFields">
                             <div className="stepCheck">

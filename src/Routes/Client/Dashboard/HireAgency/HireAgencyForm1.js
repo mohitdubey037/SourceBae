@@ -298,7 +298,6 @@ const HireAgencyForm1 = (props) => {
                 </div>
                 <div className='color_hireAgencyForm grey'></div>
               </div>
-
             </div>
           </div>
         </>

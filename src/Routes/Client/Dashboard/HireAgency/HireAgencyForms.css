@@ -19,12 +19,14 @@
     justify-content: space-between;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     background: #fff;
+    border-radius: 12px;
+    top: 3rem;
 }
 
 .higherAgencyFormArea {
     width: 70%;
     padding: 1.5rem 0 0 2.5rem;
-    margin-left: 7rem;
+    margin-left: 5rem;
 }
 
 .color-div_hireAgencyForm {
@@ -52,12 +54,12 @@
 }
 
 .mainHireAgencyForm3 .stepCheck {
-    width: 18%;
-    left: -6rem;
+    width: 19%;
+    left: -4.9rem;
 }
 
 .mainHireAgencyForm3 .stepCheck p {
-    left: 0;
+    left: 9px;
 }
 
 .step-1_hireAgencyForm1 {
@@ -71,7 +73,7 @@
     display: flex;
     justify-content: space-between;
     width: 53%;
-    margin-top: 4rem;
+    margin-top: 6rem;
     position: relative;
 }
 
@@ -458,14 +460,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3%;
     margin-bottom: 5%;
     position: absolute;
-    left: -8rem;
+    top: 8rem;
 }
 
 .innerHireAgencyFormTwo {
-    height: 37rem;
+    height: 38rem;
     width: 800px;
     position: relative;
     display: flex;
@@ -474,6 +475,9 @@
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
     margin-bottom: 5%;
     margin-left: 10%;
+    border-radius: 12px;
+    top: 3rem;
+
 }
 
 .domainFieldsCard {
@@ -647,6 +651,10 @@
     height: 564px;
     position: relative;
     margin-bottom: 2%;
+    left: -9rem;
+    border-radius: 12px;
+    top: 3rem;
+
 }
 
 .serviceFieldsOptions {
@@ -659,12 +667,12 @@
 
 .techStackFields {
     width: 100%;
-    margin-left: 7rem;
+    margin-left: 5rem;
     margin-top: 2rem;
 }
 
 .innerHireAgencyForm3 .techStackFields {
-    margin-left: 0;
+    margin-left: 44px;
     margin-top: 0;
 }
 

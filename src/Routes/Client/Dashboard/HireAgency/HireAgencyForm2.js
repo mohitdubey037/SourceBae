@@ -354,8 +354,33 @@ function HireAgencyForm2(props) {
               //   "Please Select a Service."
               // )
             }
-
           </div>
+          {/* <div className="steps_hireAgencyForm">
+            <div>
+              <div >
+                <p>Step 1</p>
+              </div>
+              <div className='color_hireAgencyForm green'></div>
+            </div>
+
+            <div className="black-strip_hireAgencyForm1 strip1"></div>
+
+            <div className="diabled-step_hireAgencyForm">
+              <div>
+                <p className="grey-step_hireAgencyForm">Step 2</p>
+              </div>
+              <div className='color_hireAgencyForm grey'></div>
+            </div>
+
+            <div className="black-strip_hireAgencyForm1 strip2"></div>
+
+            <div>
+              <div>
+                <p className="grey-step_hireAgencyForm">Step 3</p>
+              </div>
+              <div className='color_hireAgencyForm grey'></div>
+            </div>
+          </div> */}
         </div>
       )}
     </>
