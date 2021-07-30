@@ -62,14 +62,6 @@
   }
 }
 
-.quotation .nav {
-  flex-wrap: nowrap !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  justify-content: space-evenly;
-}
 .quotation .nav-tabs .nav-link {
   background-color: transparent !important;
   outline: none !important;
