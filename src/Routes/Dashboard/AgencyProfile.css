@@ -558,11 +558,11 @@ button {
   margin-bottom: 12px !important;
 }
 
-.nav.nav-tabs {
+.innerQuotation_agencyProfile .nav.nav-tabs {
   border-bottom: none;
 }
 
-.nav-button.nav-link_agencyProfile {
+.innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile {
   font: normal 800 12px 'Inter' !important;
   line-height: 12px;
   text-align: center;
@@ -573,12 +573,12 @@ button {
   margin-top: 10px;
 }
 
-.nav-button.nav-link_agencyProfile:hover, .nav-button.nav-link_agencyProfile:active .nav-button.nav-link_agencyProfile:focus {
+.innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile:hover, .nav-button.nav-link_agencyProfile:active .nav-button.nav-link_agencyProfile:focus {
   border: none !important;
   outline: none !important;
 }
 
-#nav-tabContent {
+.innerQuotation_agencyProfile #nav-tabContent {
   width: 80%;
   position: absolute;
   top: 4%;
