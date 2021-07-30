@@ -23,15 +23,6 @@
   margin-left: 10%;
 }
 
-.innerQuotation .nav-tabs .nav-link {
-  background-color: transparent !important;
-  outline: none !important;
-  border: none !important;
-  font-size: 1.2rem !important;
-  color: #b0b0b0 !important;
-  font-family: "Poppins" !important;
-  margin-right: 4%;
-}
 .innerQuotation .nav-tabs .nav-link img {
   width: 15%;
   object-fit: contain;

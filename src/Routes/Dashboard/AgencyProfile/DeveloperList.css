@@ -168,15 +168,10 @@
   width: 100%;
   margin: 0 15px 15px 15px;
 }
-
-.nav {
-  flex-wrap: nowrap !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+.quotation .nav {
   justify-content: space-evenly;
 }
+
 .nav-tabs .nav-link {
   background-color: transparent !important;
   outline: none !important;
