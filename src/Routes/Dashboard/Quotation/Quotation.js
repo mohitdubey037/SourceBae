@@ -56,7 +56,7 @@ function Quotation(props) {
                 {/* <div style={{ marginTop: '4rem' }} className="backArrow" onClick={() => { props.history.push("/dashboard") }} >
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                 </div> */}
-                <div className="innerQuotation">
+                <div className="innerQuotation quotation">
                     <nav>
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>
