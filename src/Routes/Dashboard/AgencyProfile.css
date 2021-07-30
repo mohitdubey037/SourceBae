@@ -539,7 +539,7 @@ button {
   border: none;
 }
 
-#nav-home-tab {
+.nav-tabs_agencyProfile > #nav-home-tab {
   margin-top: 10px;
 }
 
