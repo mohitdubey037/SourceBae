@@ -32,7 +32,7 @@
 .quotation .nav-tabs .nav-link {
   border-top-left-radius: 0rem;
   border-top-right-radius: 0rem;
-  /* border-radius: 15px; */
+  color: #b0b0b0;
   border: none;
 }
 
