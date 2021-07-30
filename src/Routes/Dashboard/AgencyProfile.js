@@ -356,7 +356,7 @@ function AgencyProfile(props) {
           </div>
 
           <div className="mainQuotation">
-            <div className="innerQuotation_agencyProfile ">
+            <div className="innerQuotation_agencyProfile">
               <div class="nav nav-tabs nav-tabs_agencyProfile" id="nav-tab" role="tablist">
                 <div id="nav-home-tab"
                   className="nav-link"
