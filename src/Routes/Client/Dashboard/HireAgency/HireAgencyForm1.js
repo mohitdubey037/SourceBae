@@ -152,7 +152,7 @@ const HireAgencyForm1 = (props) => {
               <div className="stepCheck">
                 <div className="color-div_hireAgencyForm1">
                 </div>
-                <p>Step 1</p>
+                <p><span className="ste">Ste</span>p 1</p>
               </div>
               <div className="higherAgencyFormArea">
                 <div className="understand_your_project">Help us understand more about your project..!!</div>

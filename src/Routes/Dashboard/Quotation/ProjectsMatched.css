@@ -9,23 +9,23 @@
   margin-top: 5%;
   flex-direction: row;
   flex-wrap: wrap;
+  grid-row-gap: 40px;
 }
 .innerProjectsMatched {
   margin-left: 4%;
   width: 48%;
   background-color: #fff;
-  box-sizing: border-box;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
   padding: 0rem 1.2rem 1rem 0;
   border-radius: 10px;
   position: relative;
   margin-bottom: 5%;
   z-index: 1;
-  overflow: hidden;
+  overflow: auto;
   margin: 1%;
 }
 .projectCard {
-  padding-left: 3%;
+  padding: 30px;
   width: 100%;
 }
 .projectNumber {
@@ -35,7 +35,6 @@
   font-size: 8rem;
   transform: translate(-40%, -25%);
   color: #9999;
-  /* font-family: 'Londrina Solid', cursive; */
   font-family: 'Fredoka One', cursive;
   transition: 0.3s ease-in-out;
 }
@@ -51,14 +50,6 @@
 }
 .bgCircles {
   position: absolute;
-  /* width: 250px;
-    height: 250px;
-    z-index: 1;
-    border-radius: 50%;
-    background-color: #f9f9f9;
-   top: -15%;
-    right: -5%;
-    mix-blend-mode: color; */
 }
 .innerProjectsMatched .dotImage {
   position: absolute;
@@ -105,13 +96,10 @@
   color: #000;
   border-radius: 0px;
   font-size: 0.9rem;
-  /* background-color: #5bc0de; */
   background-color: #eaf2ff;
   outline: none;
   border: none;
-  /* border: 2px solid #3ab3d7; */
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
-  /* margin-top: -0%; */
 }
 
 @media (max-width: 768px) {
@@ -132,7 +120,6 @@
     font-size: 5rem;
     transform: translate(0%, -20%);
     color: #9999;
-    /* font-family: 'Londrina Solid', cursive; */
     font-family: 'Fredoka One', cursive;
     transition: 0.3s ease-in-out;
   }
@@ -146,7 +133,7 @@
 }
 
 .projectPostedDetails {
-  /* margin-top: 0.5%; */
+  margin-top: 1.5%;
   display: flex;
   margin-bottom: 3%;
 }
@@ -156,7 +143,6 @@
 .projectPostedDetails div p {
   padding: 0.3rem 1rem;
   background-color: #eaf2ff;
-  /* background-color: #e0e0e0; */
   border-radius: 5px;
   font-family: 'Poppins';
   color: #3a3a3a;
@@ -172,7 +158,6 @@
 }
 .projectDetailsTable .projectDetailsTableContainer {
   display: flex;
-  /* justify-content: space-between; */
   margin-right: '10px';
   border-bottom: 0.5px dashed #ddd;
   margin-bottom: 1%;
@@ -183,7 +168,6 @@
 }
 .projectDetailsTable .projectDetailsTableContainer .projectTableHeading {
   width: 45%;
-  /* margin-bottom: 3%; */
 }
 .projectDetailsTable .projectDetailsTableContainer .projectTableHeading p {
   color: #000;

@@ -62,8 +62,7 @@ function AgencyNewestDashboard(props) {
                                 </div>
                             </div>
                             <div className="user-project">
-                                <div style={{ width: '100%' }}>
-
+                                <div>
                                     {agencyProfileData?.projects?.length > 0 ? (
                                         agencyProfileData?.projects?.map((value, index) => {
                                             return (

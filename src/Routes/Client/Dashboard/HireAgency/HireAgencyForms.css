@@ -23,6 +23,10 @@
     top: 3rem;
 }
 
+.stepCheck .ste {
+    color: #FFFFFF;
+}
+
 .higherAgencyFormArea {
     width: 70%;
     padding: 1.5rem 0 0 2.5rem;
@@ -82,7 +86,7 @@
     width: 15%;
     justify-content: space-between;
     align-items: center;
-}
+} 
 
 .steps_hireAgencyForm>div>div>p {
     font-family: 'Inter';

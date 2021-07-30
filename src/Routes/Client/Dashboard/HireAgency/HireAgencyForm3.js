@@ -155,7 +155,7 @@ function HireAgencyForm3(props) {
                             <div className="stepCheck">
                                 <div className="color-div_hireAgencyForm1">
                                 </div>
-                                <p>Step 3</p>
+                                <p><span className="ste">Ste</span>p 3</p>
                             </div>
 
                             <div className="HireAgencyForm3Heading">

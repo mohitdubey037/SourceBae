@@ -37,11 +37,10 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function HireAgencyForm2(props) {
-  const Role = "client";
+  const Role = localStorage.getItem('role');
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
   console.log(projectId);
-  // selecting Domains
   const id = localStorage.getItem("userId");
 
   const [apiData, setApiData] = useState({
@@ -214,7 +213,7 @@ function HireAgencyForm2(props) {
             <div className="stepCheck">
               <div className="color-div_hireAgencyForm1">
               </div>
-              <p>Step 2</p>
+              <p><span className="ste">Ste</span>p 2</p>
             </div>
             <div className="techStackFields">
               <div className="serivcesHireAgency">

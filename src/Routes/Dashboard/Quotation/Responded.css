@@ -3,28 +3,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 8%; */
 }
+
 .innerResponded {
   width: 100%;
-  margin-top: 6%;
+  margin-top: 5%;
   display: flex;
   justify-content: flex-start;
-  /* align-items: center; */
   flex-wrap: wrap;
   margin-left: 4%;
 }
+
 .respondedCard {
   width: 28%;
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   margin-bottom: 5%;
   margin-right: 5%;
-  /* min-height: 500px; */
+  margin-bottom: 0%;
+  margin-right: 0%;
 }
+
 .leftBorder {
   position: absolute;
   width: 8px;
@@ -35,47 +37,52 @@
   transform: translateY(-50%);
   border-radius: 999px;
 }
+
 .bgCircle {
   position: absolute;
   z-index: -1;
   top: 0;
   right: 0;
 }
+
 .respondCardHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .respondCardHeader h4 {
   font-family: 'Poppins';
   font-size: 1.2rem;
 }
+
 .dateCreated {
   display: flex;
   align-items: center;
 }
+
 .dateCreated div {
-  /* background-color: #02044a; */
   color: #02044a;
-  /* padding-left: 10px; */
-  /* padding-right: 10px; */
-  /* padding-top: 2px; */
   border-radius: 999px;
   margin-left: 10px;
 }
+
 .dateCreated div p {
   font-family: 'Poppins';
   font-size: 14px;
   font-weight: bold;
 }
+
 .respondCardDescription {
   margin: 0.5rem 0 0.5rem 0;
 }
+
 .respondCardDescription p {
   font-family: 'Poppins';
   font-size: 0.8rem;
   color: #b4b4b4;
 }
+
 .respondCardPoints {
   margin: 5% 0;
   height: 30px;
@@ -84,12 +91,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .respondCardPoints ul {
   display: flex;
-  /* flex-wrap: nowrap; */
   justify-content: flex-start;
   align-items: center;
 }
+
 .respondCardPoints ul li {
   font-family: 'Poppins';
   font-size: 1rem;
@@ -97,6 +105,7 @@
   margin-right: 11%;
   color: #000;
 }
+
 .respondCardTable div {
   display: flex;
   justify-content: space-between;
@@ -104,24 +113,27 @@
   border-bottom: 1px dashed #ddd;
   margin-bottom: 2%;
 }
+
 .respondCardTable div p {
   font-family: 'Poppins';
   margin-top: 5%;
 }
+
 .respondCardTable div p:nth-child(1) {
   color: #3a3a3a;
   font-weight: 600;
 }
+
 .respondCardTable div p:nth-child(2) {
   color: #68e1fd;
   font-weight: 600;
 }
 
 .respondedCardButton {
-  /* margin-top: 6%; */
   display: flex;
   justify-content: flex-end;
 }
+
 .respondedCardButton div button {
   padding: 0.2rem 0.8rem;
   outline: none;
@@ -133,11 +145,13 @@
   font-weight: 600;
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
 .respondedCardButton div:nth-child(1) button {
   background-color: #eaf2ff !important;
   color: #000;
   font-size: 0.8rem;
 }
+
 .respondedCardButton div:nth-child(2) button {
   background-color: transparent !important;
   box-shadow: none;
@@ -162,11 +176,13 @@
   align-items: center;
   margin-top: -5%;
 }
+
 .innerBackBtn {
   width: 100%;
   display: flex;
   align-items: center;
 }
+
 .innerBackBtn div {
   display: flex;
   align-items: center;
@@ -174,6 +190,7 @@
   cursor: pointer;
   border-bottom: 1px solid #000;
 }
+
 .innerBackBtn div i {
   margin-right: 10px;
 }

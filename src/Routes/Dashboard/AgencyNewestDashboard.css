@@ -1,21 +1,8 @@
-.user-project > div {
-  padding: 0 30px;
-  width: 85%;
-  margin-left: 0px;
+.user-project>div {
+  width: 88%;
+  margin: auto;
   margin-top: 20px;
 }
-
-/* .dashboard-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-} */
-
-/* .container-body {
-  width: 90%;
-  margin-left: 10%;
-  margin-top: 5%;
-} */
 
 .sidebar_parent .container-sidebar {
   position: fixed;
