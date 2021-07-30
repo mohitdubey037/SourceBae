@@ -133,11 +133,14 @@ const HireAgencyForm1 = (props) => {
             <div className="cardsDetail_hireAgencyForm1">
               <div className="cards_hireAgencyForm1">
                 <p>1. Keep the project name simple and to your brand.</p>
+                <div className="black-bubble-1"></div>
               </div>
               <div className="cards_hireAgencyForm1">
                 <p>2. Write about your service or idea in clear manner, with as many details as possible.</p>
+                <div className="black-bubble-2"></div>
               </div>
               <div className="cards_hireAgencyForm1">
+                <div className="black-bubble-3"></div>
                 <p>
                   3. In case, you think you missed any details you can always edit
                   this later.
