@@ -35,8 +35,10 @@
     overflow: auto;
     padding: 0 60px 0 30px;
     width: 90%;
-    margin-left: 3%;
-    margin-top: 20px;
+    /* margin-left: 3%;
+    margin-top: 20px; */
+    margin-left: 1%;
+    margin-top: 10px;
 }
 
 .user-project-details>.graphic {
@@ -62,4 +64,12 @@
 
 .container-body>.content-body>.content-leftBody {
   min-width: 74%;
+}
+
+.Navbar-clientDashboard .navbar {
+  margin-left: 15%;
+}
+
+.dashboard-container .container-sidebar {
+  top: 0;
 }
