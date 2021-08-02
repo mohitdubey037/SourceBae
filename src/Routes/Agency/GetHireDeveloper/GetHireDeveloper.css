@@ -18,7 +18,7 @@
   font-family: 'Work Sans', sans-serif;
 }
 .innerprojectDetailsInfo span {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #777;
 }
 .innerprojectDetailsInfo span em {
@@ -85,7 +85,7 @@
   object-fit: contain;
 }
 .agencyProfileInfo h6 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 6%;
@@ -101,12 +101,12 @@
   border-radius: 999px;
   background-color: #02044a;
   color: #fff;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 0.8rem;
   font-weight: bold;
 }
 .profileButton p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #3498db;
   font-weight: bold;
   cursor: pointer;
@@ -177,7 +177,7 @@
   border-radius: 20px; 
 }
 .agencyDescInfo p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 0.9rem;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -215,7 +215,7 @@
 }
 .quotationShortlistButton div p {
   transform: translateY(6.5px);
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: bold;
 }
 .quotationShortlistButton div:nth-child(1) {
@@ -258,7 +258,7 @@
   display: block;
 }
 .filterHeading div p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: bold;
   color: #3498db;
 }
@@ -271,7 +271,7 @@
 }
 .locationFilter p,
 .officeVisitFilter p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   transform: translateY(10px);
   font-weight: bold;
   font-size: 1.1rem;
@@ -290,7 +290,7 @@
   height: 40px;
   padding-left: 10px;
   font-size: 0.9rem;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   border: 1px solid #999;
 }
 .locationFilter input:focus {
@@ -323,7 +323,7 @@
   font-size: 0.9rem;
 }
 .officeVisitRadio span {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 1.1rem;
   user-select: none;
 }
@@ -339,7 +339,7 @@
 }
 
 .shortlistModal {
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 .shortlistModal h2 {
   font-weight: bold;
@@ -389,7 +389,7 @@
   border-radius: 10px;
 }
 .QuotationModal {
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 .QuotationModal h2 {
   font-weight: bold;

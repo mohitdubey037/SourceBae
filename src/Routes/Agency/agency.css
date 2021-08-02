@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Poppins' , sans-serif;
+    font-family: 'Inter' , sans-serif;
 }
 
 .agency__description > h5 {

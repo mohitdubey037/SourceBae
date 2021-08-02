@@ -58,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
   menuFont: {
-    fontFamily: "Poppins",
+    fontFamily: "Inter",
   },
   inputField: {
-    fontFamily: "Poppins",
+    fontFamily: "Inter",
   },
   radioBox: {
     borderWidth: 1,
@@ -581,7 +581,7 @@ function ProductForm(props) {
                           if (selected === "") {
                             return (
                               <span
-                                style={{ fontFamily: "Poppins", color: "#999" }}
+                                style={{ fontFamily: "Inter", color: "#999" }}
                               >
                                 Select from here
                               </span>
@@ -632,7 +632,7 @@ function ProductForm(props) {
                       >
                         <MenuItem value="">
                           <span
-                            style={{ fontFamily: "Poppins", color: "#999" }}
+                            style={{ fontFamily: "Inter", color: "#999" }}
                           >
                             Select from here
                           </span>
@@ -669,7 +669,7 @@ function ProductForm(props) {
                       >
                         <MenuItem value="">
                           <span
-                            style={{ fontFamily: "Poppins", color: "#999" }}
+                            style={{ fontFamily: "Inter", color: "#999" }}
                           >
                             Select from here
                           </span>
@@ -774,7 +774,7 @@ function ProductForm(props) {
                         >
                           <MenuItem value="">
                             <span
-                              style={{ fontFamily: "Poppins", color: "#999" }}
+                              style={{ fontFamily: "Inter", color: "#999" }}
                             >
                               Select from here
                             </span>
@@ -811,7 +811,7 @@ function ProductForm(props) {
                       >
                         <MenuItem value="">
                           <span
-                            style={{ fontFamily: "Poppins", color: "#999" }}
+                            style={{ fontFamily: "Inter", color: "#999" }}
                           >
                             Select from here
                           </span>
@@ -898,7 +898,7 @@ function ProductForm(props) {
                       >
                         <MenuItem value="">
                           <span
-                            style={{ fontFamily: "Poppins", color: "#999" }}
+                            style={{ fontFamily: "Inter", color: "#999" }}
                           >
                             Select from here
                           </span>
@@ -938,7 +938,7 @@ function ProductForm(props) {
                       >
                         <MenuItem value="">
                           <span
-                            style={{ fontFamily: "Poppins", color: "#999" }}
+                            style={{ fontFamily: "Inter", color: "#999" }}
                           >
                             Select from here
                           </span>

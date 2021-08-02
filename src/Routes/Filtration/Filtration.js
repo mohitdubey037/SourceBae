@@ -17,7 +17,7 @@ const techButtonStyle = {
     padding : '0 20px',
     borderRadius : '5px',
     fontWeight : 'bold',
-    fontFamily : 'Poppins , sans-serif'
+    fontFamily : 'Inter , sans-serif'
 }
 
 const Filtration = () => {
@@ -98,7 +98,7 @@ const Filtration = () => {
 
     const HiringDetail = ({ title , icon }) => {
         return (
-            <div className="hiring__detail" style = {{ color : colors.LIGHT_GRAY , fontFamily : 'Poppins , sans-serif' }}>
+            <div className="hiring__detail" style = {{ color : colors.LIGHT_GRAY , fontFamily : 'Inter , sans-serif' }}>
                 { icon == 'Remote' ? <LocationOn /> : icon == 'fullTime' ? <Work /> : <WatchLater /> }
                 <p>{title}</p>
             </div>
@@ -161,7 +161,7 @@ const Filtration = () => {
                                                     <p>12000-15000</p>
                                                     <div className="askfor__quotation">
                                                         <Button 
-                                                            style = {{ background : colors.LIGHT_PRIMARY_COLOR , marginTop : '3%' , color : colors.PRIMARY_COLOR , fontFamily : 'Poppins , sans-serif' , fontWeight : 700 , borderRadius : '7px' }}
+                                                            style = {{ background : colors.LIGHT_PRIMARY_COLOR , marginTop : '3%' , color : colors.PRIMARY_COLOR , fontFamily : 'Inter , sans-serif' , fontWeight : 700 , borderRadius : '7px' }}
                                                             onClick = { e => {
                                                                 e.preventDefault()
                                                                 setIsModalOpen(true)

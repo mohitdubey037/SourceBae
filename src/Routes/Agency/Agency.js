@@ -15,7 +15,7 @@ const techButtonStyle = {
     padding : '0 20px',
     borderRadius : '5px',
     fontWeight : 'bold',
-    fontFamily : 'Poppins'
+    fontFamily : 'Inter'
 }
 
 const Agency = ({ location }) => {

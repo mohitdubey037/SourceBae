@@ -16,7 +16,7 @@ p {
   );
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 
 .user-project_heading_agencyNewestDashboard {
@@ -25,7 +25,7 @@ p {
   margin-top: 5px;
   display: flex;
   justify-content: space-between;
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 
 .user-project_child_agencyNewestDashboard {
@@ -67,7 +67,7 @@ p {
 
 .user-project_child_agencyNewestDashboard h5 {
   font-weight: 600;
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 
 .user-project-status {
@@ -97,7 +97,7 @@ p {
   text-align: center;
   letter-spacing: 0.4px;
   text-transform: capitalize;
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 
 .user-project_paragraph {
@@ -118,7 +118,7 @@ p {
   height: 52%;
   margin-top: 2%;
   border-top: 1px solid #ddd;
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 
 .user-project_details > div {

@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     position: relative;
     z-index: 1;
 }
@@ -118,11 +118,11 @@
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
 }
 .innerPersonelDetailsForm p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.15rem;
 }
 .innerPersonelDetailsForm input{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.9rem;
 }
 .innerPersonelDetailsForm input:focus{
@@ -177,7 +177,7 @@
     border: none;
     background-color: #119dee;
     color: #fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     border-radius: 999px;
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
 }
@@ -221,14 +221,14 @@
 }
 .rightPersonelDetailsForm span{
     font-size: 1.7rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     margin-bottom: 7%;
     margin-top: 5%;
 }
 .rightPersonelDetailsForm p{
     font-size: 1rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-bottom: 7%;
     text-align: center;
     color: #fad647;
@@ -249,7 +249,7 @@
     border: none;
     border-radius: 5px;
     color: #fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.2rem;
     display: flex;
     justify-content: space-evenly;
@@ -304,7 +304,7 @@
     flex-wrap: wrap;
 }
 .domainsFields .domainHeading{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -328,7 +328,7 @@
 }
 .domainFieldsCard div p{
     font-display: initial;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: 10px;
     font-weight: bold;
 }
@@ -337,7 +337,7 @@
     margin-top: 5%;
 }
 .domainBudget p{
- font-family: 'Poppins';
+ font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;   
 }
@@ -347,7 +347,7 @@
     margin-top: 5%;
 }
 .serivcesAgency .servicesHeading{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 4%;
@@ -379,7 +379,7 @@
 }
 .servicesCardsAgency div p{
     font-display: initial;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: 10px;
     font-weight: bold;
     user-select: none;
@@ -393,7 +393,7 @@
     margin-left: 2px;
 }
 .UIUXServices{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: -20px;
     padding-top: 0;
     outline: none;
@@ -408,7 +408,7 @@
     border: none;
 }
 .serviceFieldsOptions .uiuxtext{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-left: 10px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -422,7 +422,7 @@
     margin-top: 5%;
 }
 .monthlyBudget p{
- font-family: 'Poppins';
+ font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;   
 }
@@ -454,12 +454,12 @@
     align-items: center;
 }
 .documentDetails p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     font-size: 1.2rem;
 }
 .documentDetails span{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.9rem;
     margin-bottom: 5%;
     font-weight: bold;
@@ -485,7 +485,7 @@
     border-radius: 999px;
     outline: none;
     border: none;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     background-color: #119dee;
     color: #fff;
     font-weight: bold;
@@ -496,7 +496,7 @@
     margin-bottom: 20px;
 }
 .panDetails p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     font-size: 1.2rem;
 }
@@ -504,7 +504,7 @@
     width: 100%;
     height: 40px;
     padding-left: 10px;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     border: 1px solid #ebebeb;
 }
 .panCardContent{
@@ -541,7 +541,7 @@
 .miscellaneousArea p{
     color: #fff;
     margin: 5%;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     font-size: 3rem;
 }
@@ -578,7 +578,7 @@
     margin-bottom: 3%;
 }
 .socialInputs div p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     font-size: 1.2rem;
 }
@@ -586,7 +586,7 @@
     width: 100%;
     height: 45px;
     padding-left: 10px;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1rem;
     border: 1px solid #ebebeb;
 }
@@ -637,7 +637,7 @@
     padding: 0.3rem 1rem;
     background-color: #fad647;
     border-radius: 999px;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.8rem;
     cursor: pointer;
     font-weight: bold;

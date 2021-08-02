@@ -1,15 +1,15 @@
 .Navbar-parent {
     padding: 5px 10px;
 }
-
+/* 
 .Navbar-parent .navbar {
     border: 2px solid rgb(214, 209, 209);
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-}
-
+} */
+/* 
 .Navbar-parent .navbar .navbar-heading{
     margin-left: 2%;
-}
+} */
 
 
 .mainProductDetails{
@@ -101,7 +101,7 @@
     top: 8px;
     right: 0;
     font-size: 0.8rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     color: #2E86C1;
     cursor: pointer;
     padding: 0.2rem 0.5rem;
@@ -114,12 +114,12 @@
     color: #fff;
 }
 .peoductNameTags p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.9rem;
     color: #56636a;
 }
 .peoductNameTags h1{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 2rem;
     font-weight: bold;
     width: 70%;
@@ -132,7 +132,7 @@
 }
 .productTags p{
     margin-right: 5%;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     color: #999;
 }
 .productTags i{
@@ -158,7 +158,7 @@
 .connectButton div:nth-child(2) p{
     padding: 0.5rem 1rem;
     background-color:#fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     color: #7DCEA0;
     font-weight: bold;
     cursor: pointer;
@@ -180,7 +180,7 @@
     margin-top: 5%;
 }
 .headerInformation h3{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -192,7 +192,7 @@
     background-color: #000;
 }
 .headerInformation p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     line-height: 2rem;
     color: #56636a;
 }
@@ -263,12 +263,12 @@
     width: 63%;
 }
 .allPointCardHeading p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     font-size: 0.9rem;
 }
 .allPointsCardContent p{
-     font-family: 'Poppins';
+     font-family: 'Inter';
      color: #56636a;
      word-break: break-all;
      font-size: 0.9rem;
@@ -283,7 +283,7 @@
     margin-top: 5%;
 }
 .productFunding h3{
-   font-family: 'Poppins';
+   font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 5%;
@@ -323,7 +323,7 @@
     overflow: hidden;
 }
 .totalRevenue div span,.totalFunding div span{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.9rem;
     white-space: nowrap;
 }
@@ -351,7 +351,7 @@
     margin-top: 7%;
 }
 .workingStatusHeading h3{
-   font-family: 'Poppins';
+   font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 5%;
@@ -376,7 +376,7 @@
     border-bottom: 1px solid #e0e0e0;
 }
 .moreAgencyHeading h3{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -412,14 +412,14 @@
     width: 100%;
 }
 .moreAgencyInfo_productDetails h5{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: bold;
 }
 .moreAgencyInfo_productDetail p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -433,7 +433,7 @@
 }
 .moreAgencySeeMore p{
     transform: translateY(10px);
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     color: #2E86C1;
 }

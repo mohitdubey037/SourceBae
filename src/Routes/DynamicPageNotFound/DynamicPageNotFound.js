@@ -24,7 +24,7 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         alignItems: 'center',
         height: '90vh',
-        fontFamily: 'Poppins',
+        fontFamily: 'Inter',
         fontWeight: '900'
     },
     paragraphStyling: {

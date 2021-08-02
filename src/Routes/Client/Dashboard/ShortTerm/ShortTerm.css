@@ -84,7 +84,7 @@
 
 .shortTermProjectType {
   margin-top: 5%;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -171,7 +171,7 @@
 
 .shortTermProjectDesc {
   margin-top: 5%;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   position: relative;
   width: 80%;
 }
@@ -194,7 +194,7 @@
   width: 79%;
   padding-left: 10px;
   border: 1px solid #000;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   padding-top: 10px;
 }
 

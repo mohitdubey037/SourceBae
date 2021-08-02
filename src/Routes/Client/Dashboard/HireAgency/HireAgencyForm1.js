@@ -53,15 +53,14 @@ const HireAgencyForm1 = (props) => {
     if (data.projectExpectedStartingDays < 180)
       setData({
         ...data,
-        projectExpectedStartingDays: data.projectExpectedStartingDays + 15,
+        projectExpectedStartingDays: data.projectExpectedStartingDays + 1,
       });
   };
 
   const downArrow = () => {
-    if (data.projectExpectedStartingDays > 30)
       setData({
         ...data,
-        projectExpectedStartingDays: data.projectExpectedStartingDays - 15,
+        projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
       });
   };
 

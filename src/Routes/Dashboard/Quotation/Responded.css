@@ -54,7 +54,7 @@
 }
 
 .respondCardHeader h4 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 1.2rem;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .dateCreated div p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 14px;
   font-weight: bold;
 }
@@ -80,7 +80,7 @@
 }
 
 .respondCardDescription p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 0.8rem;
   color: #b4b4b4;
 }
@@ -101,7 +101,7 @@
 }
 
 .respondCardPoints ul li {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 1rem;
   font-weight: 500;
   margin-right: 11%;
@@ -117,7 +117,7 @@
 }
 
 .respondCardTable div p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   margin-top: 5%;
 }
 
@@ -142,7 +142,7 @@
   border: none;
   background-color: transparent;
   border-radius: 0px;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #000;
   font-weight: 600;
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
@@ -188,7 +188,7 @@
 .innerBackBtn div {
   display: flex;
   align-items: center;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   cursor: pointer;
   border-bottom: 1px solid #000;
 }

@@ -94,7 +94,7 @@
 }
 
 .clientName h2 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: bold;
 }
 
@@ -125,7 +125,7 @@
   background-color: #5cb85c;
   border: 1px solid #5cb85c;
   color: #fff;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
@@ -169,7 +169,7 @@
 }
 
 .innerBtnInfoDiv p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -183,7 +183,7 @@
   background-color: #5cb85c;
   border: 1px solid #5cb85c;
   color: #fff;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
@@ -261,7 +261,7 @@
     width: 50%;
   }
   .clientName h2 {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
   }
   .detailsButtons {
@@ -302,7 +302,7 @@
     margin-right: 20px;
   }
   .innerBtnInfoDiv p {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: 500;
     font-size: 1.1rem;
   }
@@ -377,12 +377,12 @@
 }
 
 .respondDescription h2 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 400;
 }
 
 .respondDescription p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 400;
   width: 80%;
   margin-top: 1%;
@@ -435,7 +435,7 @@
 }
 
 .innerResponseCard div p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   margin-top: 4%;
   font-weight: 500;
   font-size: 1rem;
@@ -542,7 +542,7 @@
 }
 
 .briefHeading h2 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 600;
 }
 
@@ -550,7 +550,7 @@
   background-color: #02044a;
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #fff;
   font-weight: 600;
 }
@@ -564,13 +564,13 @@
 }
 
 .briefQuestions div h4 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #000;
   font-size: 1.3rem;
 }
 
 .briefQuestions div p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #484848;
   font-size: 1rem;
 }
@@ -587,12 +587,12 @@
     font-size: 1rem;
   }
   .briefQuestions div h4 {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     color: #000;
     font-size: 1rem;
   }
   .briefQuestions div p {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     color: #484848;
     font-size: 0.8rem;
   }
@@ -622,7 +622,7 @@
   align-items: center;
   background-color: #e9f0ef;
   padding: 0rem 0rem !important;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   border-radius: 15px;
 }
 

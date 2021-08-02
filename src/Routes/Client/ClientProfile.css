@@ -50,7 +50,7 @@
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2); 
     padding: 0.4rem 1rem;
     color: #fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     cursor: pointer;
 }
@@ -60,7 +60,7 @@
     right: 10%;
     padding: 0.3rem 1rem;
     background-color: #e0e0e0;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     cursor: pointer;
 }
@@ -71,7 +71,7 @@
     padding: 0.3rem 1rem;
     background-color: #5DADE2;
     color: #fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     cursor: pointer;
 }
@@ -112,7 +112,7 @@
 .clientProfilDesc{
     display: flex;
     align-items: center;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-bottom: 2%;
     border-bottom: 1px solid #e9e9e9;
 }
@@ -141,7 +141,7 @@
     height: 33px;
     padding-left: 10px;
     width: 100%;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     border: 1px solid #e0e0e0;
 }
 .clientFormAnswer input:focus{

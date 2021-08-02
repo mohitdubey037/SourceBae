@@ -382,7 +382,7 @@
 }
 .item-renderer span {
   font-size: 1.2rem !important;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   white-space: nowrap !important;
   /* background-color: yellow !important; */
   /* display: flex !important;
@@ -444,7 +444,7 @@
 }
 
 .billingButton h6 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   transform: translateY(5px);
   font-size: 1.2rem;
   font-weight: bold;

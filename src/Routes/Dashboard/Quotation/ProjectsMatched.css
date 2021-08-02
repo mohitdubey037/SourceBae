@@ -76,7 +76,7 @@
   width: 50%;
 }
 .projectCardHeading div h2 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: bold;
   color: #02044a;
 }
@@ -91,7 +91,7 @@
   width: 100%;
 }
 .showInterestBtn button {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   padding: 0.3rem 0.8rem;
   color: #000;
   border-radius: 0px;
@@ -144,7 +144,7 @@
   padding: 0.3rem 1rem;
   background-color: #eaf2ff;
   border-radius: 5px;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #3a3a3a;
   font-weight: 600;
 }
@@ -181,7 +181,7 @@
   font-weight: 600;
 }
 .projectDetailsTable div div p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   transform: translateY(10px);
 }
 

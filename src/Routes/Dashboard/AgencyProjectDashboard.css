@@ -45,7 +45,7 @@
     justify-content: center;
     align-items: center;
     user-select: none;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     /* font-weight: bold; */
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -74,7 +74,7 @@
     padding: 0.4rem 1rem;
     background-color: #02044a;
     color: #fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     border-radius: 999px;
     cursor: pointer;
@@ -151,7 +151,7 @@
     cursor: pointer;
 }
 .mainClientCards p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     padding: 0.4rem 1rem;
     border-radius: 10px;
     background-color: #5bc0de;
@@ -159,7 +159,7 @@
     color: #fff;
 }
 .mainClientCards h5{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bolder;
     font-size: 2.5rem;
 }
@@ -233,7 +233,7 @@
     flex-direction: column;
 }
 .dashboardText h4{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 2rem;
     font-weight: bold;
     transform: translateY(15px);
@@ -316,7 +316,7 @@
 .projectName h6{
     display: block;
     font-size: 2rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
 }
 
@@ -325,7 +325,7 @@
     text-decoration: none;
     display: block;
     font-size: 2rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
 }
 .projectStatusInfo{
@@ -339,7 +339,7 @@
     padding: 0.3rem 1rem;
     background-color: #d9534f;
     border-radius: 999px;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     color: #fff;
     text-transform: capitalize;
@@ -347,7 +347,7 @@
 }
 .projectUpdateDate{
     margin-top: 2%;
-    font-family: 'Poppins';
+    font-family: 'Inter';
 }
 .projectUpdateDate p{
     color: #999;
@@ -368,11 +368,11 @@
     border-radius: 50%;
     margin-right: 10px;
     font-size: 0.9rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
 }
 .projectStage div p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: 3px;
     font-weight: bold;
     z-index: 999;
@@ -384,7 +384,7 @@
     width: 60%;
     background-color: #F8F9F9;
     padding: 0.5rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -405,7 +405,7 @@
     padding: 0.3rem 1rem;
     background-color: #02044a;
     color: #fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -426,7 +426,7 @@
         padding: 0.3rem 1rem;
         background-color: #02044a;
         color: #fff;
-        font-family: 'Poppins';
+        font-family: 'Inter';
         font-weight: bold;
         letter-spacing: 1.5px;
         cursor: pointer;
@@ -507,7 +507,7 @@
 }
 .allNotificationText p{
     font-size: 2.2rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     transform: translateY(5px);
 }
@@ -533,7 +533,7 @@
     padding-top: 3%;
 }
 .notificationPoint p{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.9rem;
 }
 

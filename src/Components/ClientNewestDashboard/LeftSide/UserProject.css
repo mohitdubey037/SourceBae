@@ -23,6 +23,22 @@
   max-height: 170px;
 }
 
+.project-details-card:hover {
+  cursor: pointer;
+}
+
+.tooltip_class {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .projectDetail {
   display: flex;
   justify-content: space-between;

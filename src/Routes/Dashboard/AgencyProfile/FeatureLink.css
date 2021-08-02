@@ -48,7 +48,7 @@
     width: 30%;
 }
 .featureCardDetail h6{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     color: #999;
 }
@@ -63,13 +63,13 @@
     transform: translateY(13px);
 }
 .featureCardDetail h1{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     margin-left: 10px;
 }
-.featureCard:hover{
+/* .featureCard:hover{ */
     /* box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2); */
-}
+/* } */
 .featureCard:hover img{
     transform: scale(1.1);
 }

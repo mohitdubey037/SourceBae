@@ -45,7 +45,7 @@
     width: 90%;
     height: 50px;
     padding-left: 20px;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.1rem;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -66,7 +66,7 @@
     height: 200px;
     padding-left: 20px;
     padding-top: 10px;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.1rem;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -80,14 +80,14 @@
     justify-content: space-between;
     align-items: center;
     color: #777;
-    font-family: 'Poppins';
+    font-family: 'Inter';
 }
 .MuiButtonBase-root{
-    font-family: 'Poppins' !important;
+    font-family: 'Inter' !important;
     border: none !important;
 }
 .MuiInputBase-root{
-    font-family: 'Poppins' !important;
+    font-family: 'Inter' !important;
     border: none !important;
     background-color: #fff !important;
 }
@@ -124,5 +124,5 @@
     background-color: #1566D8;
     border-radius: 6px;
     color: #fff;
-    font-family: 'Poppins';
+    font-family: 'Inter';
 }

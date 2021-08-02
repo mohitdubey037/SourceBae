@@ -34,13 +34,13 @@
 }
 
 .rulesUpper h4 {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1rem;
     color: #999;
 }
 
 .rulesUpper p {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: bold;
     font-size: 1.4rem;
     color: #02044a;
@@ -73,7 +73,7 @@
 }
 
 .leftQuestion p {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.1rem;
     color: #666;
 }
@@ -102,7 +102,7 @@
     border: 1px solid #5cb85c;
     color: #5cb85c;
     transition: 0.3s ease-in-out;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     border-radius: 999px;
     font-weight: bold;
     margin-right: 2%;

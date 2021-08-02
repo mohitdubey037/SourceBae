@@ -579,7 +579,7 @@ const Register = (props) => {
 
                                     <Button
                                         onClick={() => toggleForms('next')}
-                                        style={{ background: '#02044a', marginTop: '5vh', marginBottom: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '60%', borderRadius: '8px' }}
+                                        style={{ background: '#02044a', marginTop: '5vh', marginBottom: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Inter', fontSize: '1.2rem', width: '60%', borderRadius: '8px' }}
                                     >
                                         NEXT
                                     </Button>
@@ -723,7 +723,7 @@ const Register = (props) => {
 
                                     <Button
                                         onClick={() => handleSubmit(role, signupForm)}
-                                        style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Poppins', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
+                                        style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Inter', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
                                     >
                                         SUBMIT
                                     </Button>

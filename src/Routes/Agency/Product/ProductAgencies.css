@@ -23,7 +23,7 @@
 }
 
 .officeVisitFilter_productAgencies p {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     transform: translateY(10px);
     font-weight: bold;
     font-size: 1.1rem;
@@ -60,11 +60,9 @@ display: block;
 .filterForm_productAgencies {
     width: 100%;
     background-color: #fff;
-    /* height: 60vh; */
     overflow: hidden;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    /* border: 2px solid #000; */
     position: sticky;
   }
 
@@ -91,7 +89,7 @@ display: block;
     margin-bottom: 2%;
 }
 .productInformationHeading h5{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1rem;
     font-weight: bold;
 }
@@ -147,7 +145,7 @@ display: block;
     overflow: hidden;
 }
 .productAgencyContent span{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.8rem;
     color: #999;
     overflow: hidden;
@@ -155,7 +153,7 @@ display: block;
 .productAgencyContent p{
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     overflow: hidden;
     font-weight: bold;
     margin-top: 4%;
@@ -228,7 +226,7 @@ display: block;
     padding-bottom: 3%;
 }
 .modalHeaderProduct h2{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1.1rem;
     font-weight: bold;
     color: #3498DB;
@@ -238,13 +236,13 @@ display: block;
     margin-top: 5%;
 }
 .toText{
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 0.8rem;
     font-weight: bold;
 }
 .productModalInput{
   margin-bottom: 3%;
-  font-family: 'Poppins';
+  font-family: 'Inter';
 }
 .productModalInput p{
     font-size: 0.7rem;
@@ -281,7 +279,7 @@ display: block;
 .connectedButton{
     margin-top: 4%;
     text-align: center;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-size: 1rem;
     color: #3498DB;
     cursor: pointer;

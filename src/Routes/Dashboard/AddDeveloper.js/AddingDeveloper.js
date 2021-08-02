@@ -229,9 +229,9 @@ function AddingDeveloper(props) {
 
     return (
         <>
-            <div className="Navbar-parent">
+            {/* <div className="Navbar-parent"> */}
                 <Navbar />
-            </div>
+            {/* </div> */}
             <div className="back-parent marginLeft">
                 <Back name="Add Developer" />
             </div>

@@ -19,7 +19,7 @@ import { Modal } from "react-responsive-modal";
 import NO_Data_ICON from "./no_data_icon.jpg";
 
 const Dashboard = (props) => {
-  const Role = "agency";
+  const Role = localStorage.getItem('role');
   const agencyId = localStorage.getItem("userId");
 
   const [loading, setLoading] = useState(false);
@@ -231,9 +231,7 @@ const Dashboard = (props) => {
                   }}
                   onMouseLeave={() => setIsPopover(false)}
                 >
-                  <i
-                    style={{ fontSize: 22, color: value?.borderColor }}
-                    className="fa fa-info-circle"
+                  <i style={{ fontSize: 22, color: value?.borderColor }} className="fa fa-info-circle"
                     aria-hidden="true"
                   ></i>
                   {/* ADD TOOLTIP HERE */}

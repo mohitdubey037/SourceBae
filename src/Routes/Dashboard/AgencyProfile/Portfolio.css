@@ -35,7 +35,7 @@
 }
 .portfolioDesc {
   padding: 1rem 1rem 0 1rem;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 0.9rem;
   color: #999;
   margin-bottom: 5%;
@@ -63,7 +63,7 @@
 }
 .portfolioDetailBtn span {
   color: #000;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   cursor: pointer;
   background-color: #eaf2ff;
   width: 130px;

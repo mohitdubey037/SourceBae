@@ -308,7 +308,7 @@
 
 .projectNameAgency {
     margin-top: 4%;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     line-height: 1;
     display: flex;
     flex-direction: column;
@@ -357,7 +357,7 @@
 .descriptionProjectAgency {
     margin-top: 4%;
     line-height: 1;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -379,13 +379,13 @@
 .budgetSectionAreaAgency {
     margin-top: 5%;
     display: flex;
-    font-family: 'Poppinss' !important;
+    font-family: 'Inters' !important;
     flex-direction: column;
 }
 
 .numberOfDays {
     margin-top: 4%;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -481,7 +481,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 150%;
     text-transform: capitalize;
     color: #000;
@@ -520,7 +520,7 @@
     outline: none;
     border: none;
     background-color: #26AFFF;
-    font: bold 1.2rem 'Poppins';
+    font: bold 1.2rem 'Inter';
 }
 
 /* Hire Agency Form 2 */
@@ -581,7 +581,7 @@
 }
 
 .domainsFields .domainHeading {
-    font: bold 1.3rem 'Poppins'
+    font: bold 1.3rem 'Inter'
 }
 
 .domainFieldsCard div {
@@ -605,7 +605,7 @@
 
 .domainFieldsCard div p {
     font-display: initial;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: 10px;
     font-weight: bold;
 }
@@ -615,7 +615,7 @@
 }
 
 .domainBudget p {
-    font: bold 1.3rem 'Poppins';
+    font: bold 1.3rem 'Inter';
 }
 
 .domainBudgetOptions {
@@ -693,7 +693,7 @@
 }
 
 .UIUXServices {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: -20px;
     padding-top: 0;
     outline: none;
@@ -707,7 +707,7 @@
 
 .serviceFieldsOptions .uiuxtext {
     margin-left: 10px;
-    font: bold 1.2rem 'Poppins';
+    font: bold 1.2rem 'Inter';
 }
 
 .serviceSelectionInput {
@@ -732,7 +732,7 @@
 }
 
 .monthlyBudget p {
-    font: bold 1.2rem 'Poppins';
+    font: bold 1.2rem 'Inter';
 }
 
 .innerHireAgencyForm3 {
@@ -779,7 +779,7 @@
 }
 
 .domainsFields .domainHeading {
-    font: bold 1.3rem 'Poppins';
+    font: bold 1.3rem 'Inter';
 }
 
 .domainFieldsCard div {
@@ -803,7 +803,7 @@
 
 .domainFieldsCard div p {
     font-display: initial;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: 10px;
     font-weight: bold;
 }
@@ -813,7 +813,7 @@
 }
 
 .domainBudget p {
-    font: bold 1.3rem 'Poppins';
+    font: bold 1.3rem 'Inter';
 }
 
 .HireAgencyForm3Heading {
@@ -872,7 +872,7 @@
 
 .servicesCardsAgency div p {
     font-display: initial;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: 10px;
     font-weight: bold;
     user-select: none;
@@ -886,7 +886,7 @@
 }
 
 .UIUXServices {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     margin-top: -20px;
     padding-top: 0;
     outline: none;
@@ -895,7 +895,7 @@
 
 .serviceFieldsOptions .uiuxtext {
     margin-left: 35px;
-    font: bold 1.2rem 'Poppins';
+    font: bold 1.2rem 'Inter';
 }
 
 .serviceSelectionInput {

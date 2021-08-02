@@ -254,7 +254,7 @@ function AgencyList(props) {
                       );
                     })}
                 </div>
-                <div className="agencyFilterArea_agencyList">
+                {/* <div className="agencyFilterArea_agencyList">
                   <div className="filterForm">
                     <div className="filterHeading">
                       <p className="filterText">Filter</p>
@@ -325,7 +325,7 @@ function AgencyList(props) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               :
               <div className='noDataFound'>

@@ -103,7 +103,7 @@ button {
 }
 .loginHeading {
   text-align: center;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   width: 100%;
 }
 .loginHeading h6 {
@@ -130,7 +130,7 @@ button {
 .signUpOption {
   text-align: center;
   color: #5dade2;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   margin-top: 4%;
 }
 .signUpOption span {
@@ -147,7 +147,7 @@ button {
 }
 .emailLogin p,
 .passwordLogin p {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #000;
 }
 .emailLogin input,
@@ -156,7 +156,7 @@ button {
   height: 60px;
   width: 100%;
   padding-left: 13px;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   border-radius: 10px;
   outline: none;
   border: none;
@@ -171,7 +171,7 @@ button {
   height: 60px;
   outline: none;
   border: none;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: bold;
   font-size: 1.2rem;
   background-color: #02044a;
@@ -186,7 +186,7 @@ button {
   align-self: center;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #7cb9e8;
   font-size: 0.9rem;
   font-weight: bold;
@@ -206,7 +206,7 @@ button {
 }
 .googleLogin p {
   transform: translateY(7px);
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: bold;
   color: #888;
 }
