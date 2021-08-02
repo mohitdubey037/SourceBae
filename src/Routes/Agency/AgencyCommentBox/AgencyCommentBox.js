@@ -27,6 +27,7 @@ const AgencyCommentBox = (props) => {
   const [file, setFile] = useState(null);
   const [open, setOpen] = useState(false);
   const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
+  const [rejectErrors, setRejectErrors] = useState('');
 
   const [quotationAcceptForm, setQuotationAcceptForm] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -63,6 +64,17 @@ const AgencyCommentBox = (props) => {
       [name]: value
     })
   }
+
+  const checkErrors = () => {
+    if (quotationRejectionForm.rejectReasonByAgency === '' || quotationRejectionForm.rejectReasonByAgency === undefined) {
+      setRejectErrors("Field can't be empty");
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   const handleProjectAcceptance = () => {
     if (quotationAcceptForm.finalPrice !== null) {
       instance
@@ -75,14 +87,16 @@ const AgencyCommentBox = (props) => {
     }
   };
   const handleProjectRejection = () => {
-    instance
-      .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
-      .then(function (response) {
-        props.giveReplies(true);
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    if (checkErrors()) {
+      instance
+        .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
+        .then(function (response) {
+          props.giveReplies(true);
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   };
 
   function uploadMedia() {
@@ -360,6 +374,18 @@ const AgencyCommentBox = (props) => {
           </div>
           <div className="tableContentQuotation">
             <input type='text' name='rejectReasonByAgency' onChange={onQuotationRejectionChange} />
+            {rejectErrors !== undefined && (
+              <p
+                style={{
+                  color: "red",
+                  fontWeight: "normal",
+                  fontSize: "14px",
+                }}
+              >
+                {rejectErrors}
+              </p>
+            )
+            }
           </div>
         </div>
         <button onClick={() => handleProjectRejection()}>Yes</button>

@@ -13,6 +13,7 @@ const ClientCommentBox = (props) => {
   const [open, setOpen] = useState(false);
   const onCloseModal = () => setOpen(false);
   const [openRejectionModal, setOpenRejectionModal] = useState(false);
+  const [rejectErrors, setRejectErrors] = useState('');
 
   const [quotationFormData, setQuotationFormData] = useState({
     agencyId: props?.agencyId || "",
@@ -96,14 +97,26 @@ const ClientCommentBox = (props) => {
       })
   }
 
+  const checkErrors = () => {
+    if (quotationRejectionForm.rejectReasonByClient === '' || quotationRejectionForm.rejectReasonByClient === undefined) {
+      setRejectErrors("Field can't be empty");
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   const handleProjectRejection = () => {
-    instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
-      .then(function (response) {
-        props.giveReplies(true);
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    if (checkErrors()) {
+      instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
+        .then(function (response) {
+          props.giveReplies(true);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
   }
 
   return (
@@ -333,6 +346,18 @@ const ClientCommentBox = (props) => {
           </div>
           <div className="tableContentQuotation">
             <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} />
+            {rejectErrors !== undefined && (
+              <p
+                style={{
+                  color: "red",
+                  fontWeight: "normal",
+                  fontSize: "14px",
+                }}
+              >
+                {rejectErrors}
+              </p>
+            )
+            }
           </div>
         </div>
         <button style={{

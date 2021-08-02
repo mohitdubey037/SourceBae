@@ -660,13 +660,13 @@
 }
 
 .respondDescription_AgencyRespondedDetails h2 {
-  font-family: 'poppins';
+  font-family: 'Inter';
   font-weight: 400;
 }
 
 .agencyQuotationDesc_AgencyRespondedDetails {
   /* margin-top: 2%; */
-  font-family: "Poppins";
+  font-family: "Inter";
   padding: 1rem 2rem;
 }
 
@@ -693,7 +693,7 @@
 }
 
 .agencyQuestions_AgencyRespondedDetails div h4 {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -709,7 +709,7 @@
 }
 
 .agencyQuestions_AgencyRespondedDetails div ul {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   color: #02044a;
   font-size: 1.1rem;
   margin-top: 20px;
@@ -748,7 +748,7 @@
     align-items: center;
     background-color: #e9f0ef;
     padding: 1rem 2rem;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     border-radius: 15px;
   }
   .agencyQuotationHeading h2 {
@@ -769,7 +769,7 @@
   }
   .agencyQuotationDesc_AgencyRespondedDetails {
     margin-top: 2%;
-    font-family: 'Poppins';
+    font-family: 'Inter';
     padding: 1rem 2rem;
   }
   .agencyQuotationDesc_AgencyRespondedDetails h4 {

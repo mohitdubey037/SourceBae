@@ -132,7 +132,9 @@ const HireAgencyForm1 = (props) => {
             </div>
             <div className="cardsDetail_hireAgencyForm1">
               <div className="cards_hireAgencyForm1">
-                <p>1. Keep the project name simple and to your brand.</p>
+                <div>
+                  <p>1. Keep the project name simple and to your brand.</p>
+                </div>
                 <div className="black-bubble-1"></div>
               </div>
               <div className="cards_hireAgencyForm1">
