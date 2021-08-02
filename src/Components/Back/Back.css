@@ -8,26 +8,53 @@
 }
 
 .image-div_newestAddDeveloper {
-  width: 7%;
+  width: 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-left: 24px;
 }
 
+.image-div_newestAddDeveloper h6 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.add-developer-div h6 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
 .image-div_newestAddDeveloper>div {
   border: 2px solid black;
   cursor: pointer;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 26px;
+  height: 26px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
 }
 
+.back-button_newestAddDeveloper .MuiSvgIcon-root {
+  width: 22px;
+  height: 22px;
+}
+
 .back-icon {
-  margin-left: 8px !important;
+  margin-left: 4px !important;
 }
 
 .hover:hover {
