@@ -81,8 +81,8 @@
   margin-top: 2%;
   width: 90%;
   display: flex;
-  justify-content: space-around;
-  margin-left: 10%;
+  /* justify-content: space-around; */
+  margin-left: 12%;
 }
 
 .AgencyCardsArea_agencyList {

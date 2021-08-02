@@ -264,7 +264,6 @@
     font: normal 500 14px 'Inter';
     line-height: 150%;
     text-transform: capitalize;
-    color: #A8A8A8;
 }
 
 .input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
