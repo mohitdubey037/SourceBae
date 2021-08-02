@@ -262,7 +262,7 @@ const AgencyCommentBox = (props) => {
           {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
             <div className="detailsButtons md-m10">
               <a href={props.projectProposals[0].quotationLink} target="new">
-                Click to see Quotation
+                View Quotation
               </a>
             </div>
           )}
@@ -278,15 +278,20 @@ const AgencyCommentBox = (props) => {
               <div className="yellowBg">
                 <img src={proposalImage} alt="" />
               </div>
-              <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons md-flex">
+              <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons /*md-flex*/ height">
                 {props.projectProposals[0].isProposalActionActive ?
                   <>
-                    <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                      Accept
-                    </button>
-                    <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
-                      Reject
-                    </button>
+                    <div>
+                      <p>Accept or Reject the Project.</p>
+                    </div>
+                    <div>
+                      <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                        Accept
+                      </button>
+                      <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
+                        Reject
+                      </button>
+                    </div>
                   </>
                   :
                   props.projectProposals[0].isReplySectionActive === 'false' &&

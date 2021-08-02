@@ -230,7 +230,7 @@ const ClientCommentBox = (props) => {
             {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
               <div className="detailsButtons margin-0">
                 <a href={props.projectProposals[0].quotationLink} target="new">
-                  Click to see Quotation
+                  View Quotation
                 </a>
               </div>
             )}

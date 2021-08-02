@@ -213,6 +213,10 @@
   letter-spacing: 1px;
 }
 
+.detailsButtons > a {
+  padding: 0.5rem 0.3em;
+}
+
 .rejectButton {
   opacity: 0.8;
   background: none !important;
@@ -245,6 +249,7 @@
 .action-wait p, .detailsButtons p {
   color: #000;
   margin: 0;
+  font-weight: bold;
 }
 
 .proposalCard {
