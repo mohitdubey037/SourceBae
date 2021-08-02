@@ -25,12 +25,12 @@ function Navbar(props) {
                 <div className="notification-icon nav-left-item">
                     <img src={notificationIcon} alt="notification" />
                 </div>
-                <div onClick={logout} className="logout-icon nav-left-item">
+                {/* <div onClick={logout} className="logout-icon nav-left-item">
                     <div>
                         <ExitToAppIcon />
                     </div>
-                    {/* <img src={notificationIcon} alt="notification" /> */}
-                </div>
+                    <img src={notificationIcon} alt="notification" />
+                </div> */}
                 <div className="username nav-left-item">
                     <p>Atul Bhatt</p>
                 </div>

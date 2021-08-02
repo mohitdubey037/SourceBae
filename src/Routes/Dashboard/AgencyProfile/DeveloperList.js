@@ -52,7 +52,7 @@ function DeveloperList(props) {
     return (
         <>
             <div className="mainDeveloperList">
-                <div className="innerDeveloperList">
+                <div className="innerDeveloperList" style={{backgroundColor: err && 'white'}}>
                     {err ?
                         <>
                             <div style={{ textAlign: 'center', width: '100%' }}>

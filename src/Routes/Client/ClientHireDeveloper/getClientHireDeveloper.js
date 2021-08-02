@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import Navbar from '../../Dashboard/Navbar';
 import "./getClientHireDeveloper.css";
 
 import "react-responsive-modal/styles.css";
 import instance from "../../../Constants/axiosConstants";
 import ClientNavbar from '../ClientNavbar';
+import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Spinner from "../../../Components/Spinner/Spinner";
 import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
+import Back from '../../../Components/Back/Back';
 
 
 function ClientHireDeveloper(props) {
-  const Role = "client";
+  const Role = localStorage.getItem('role');
+
   const userId = localStorage.getItem('userId');
 
   const [loading, setLoading] = useState(true);
@@ -34,15 +36,8 @@ function ClientHireDeveloper(props) {
 
   return (
     <>
-      <ClientNavbar />
-      <div
-        className="backArrow_getClientHireDeveloper"
-        onClick={() => {
-          props.history.goBack();
-        }}
-      >
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-      </div>
+      <Navbar />
+      <Back name="Hired Developers" />
       {loading ? (
         <Spinner />
       ) : (
@@ -110,7 +105,7 @@ function ClientHireDeveloper(props) {
                   :
                   <div className='noDataFound'>
                     <img src={NO_DATA_FOUND} alt='no data found' />
-                    <h6 style={{marginTop: '20px', fontStyle: 'italic' }}>No Data Found!!!..</h6>
+                    <h6 style={{ marginTop: '20px', fontStyle: 'italic' }}>No Data Found!!!..</h6>
                   </div>
                 }
               </div>

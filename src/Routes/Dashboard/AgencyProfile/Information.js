@@ -158,7 +158,7 @@ function Information(props) {
                                 arr.map((value, index) => {
                                     if (!value.disabled) {
                                         return (
-                                            <div key={index} style={{ backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#fff' }}>
+                                            <div key={index} style={{ backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#fff', height: '59px' }}>
                                                 <p>{value?.title}</p>
                                                 <input style={{
                                                     outline: isDisabled ? 'none' : 'none',

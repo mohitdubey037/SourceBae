@@ -8,6 +8,7 @@ import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile_
 import notificationIcon from "../../../assets/images/Newestdashboard/SideBar/notification_icon.svg";
 import settingIcon from "../../../assets/images/Newestdashboard/SideBar/setting_icon.svg";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PeopleOutlinedIcon from '@material-ui/icons/PeopleOutlined';
 
 import { useHistory } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ function Sidebar() {
             routerHistory.push('/client-profile');
         }
     }
+
     const handleDashboard = () => {
         if (role === 'Agency') {
             routerHistory.push('/agencynewestdashboard');
@@ -33,9 +35,11 @@ function Sidebar() {
             routerHistory.push('/clientnewestdashboard');
         }
     }
+
     const postProject = () => {
         routerHistory.push('/hire-agency-form-one')
     }
+
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
@@ -54,10 +58,20 @@ function Sidebar() {
                     <p>Dashboard</p>
                 </div>
                 {role === "Client" &&
-                    <div onClick={() => postProject()} className="postProject-icon icons">
-                        <img src={postProjectIcon} alt="dashboard icon" />
-                        <p>Post Project</p>
-                    </div>
+                    <>
+                        <div onClick={() => postProject()} className="postProject-icon icons">
+                            <img src={postProjectIcon} alt="dashboard icon" />
+                            <p>Post Project</p>
+                        </div>
+                        <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
+                            {/* <img src={PeopleRoundedIcon} alt="dashboard icon" /> */}
+                            <PeopleOutlinedIcon />
+                            <div>
+                                <p>Hired</p>
+                                <p>Developers</p>
+                            </div>
+                        </div>
+                    </>
                 }
                 <div onClick={() => agencyProfileHandler()} className="profile-icon icons">
                     <img src={profileIcon} alt="dashboard icon" />

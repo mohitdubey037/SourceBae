@@ -55,6 +55,11 @@
   padding: 5px;
 }
 
+.developers-icon > div > p {
+  font-size: 12px;
+  text-align: center;
+}
+
 .sidebar-help {
   background: #ffffff;
   height: 100%;

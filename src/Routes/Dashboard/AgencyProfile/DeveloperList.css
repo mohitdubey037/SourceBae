@@ -168,6 +168,16 @@
   width: 100%;
   margin: 0 15px 15px 15px;
 }
+
 .quotation .nav {
   justify-content: space-evenly;
+}
+
+.add-developer_parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 255;
+  cursor: pointer;
 }

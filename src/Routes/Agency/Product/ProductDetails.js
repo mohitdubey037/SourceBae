@@ -201,7 +201,7 @@ function ProductDetails(props) {
         <Navbar />
       {/* </div>\ */}
       <div className="back-parent marginLeft"> 
-        <Back name="Hire Agency" />
+        <Back name="Product Details" />
       </div>
       {loading === true ? <Spinner /> :
         err ? (
