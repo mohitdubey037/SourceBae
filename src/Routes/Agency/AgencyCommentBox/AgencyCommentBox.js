@@ -314,7 +314,7 @@ const AgencyCommentBox = (props) => {
               <p>Final Cost </p>
             </div>
             <div className="tableContentQuotation">
-              <p>{props.finalCostByClient}</p>
+              <p>{props.projectProposals[0].finalCostByClient}</p>
             </div>
           </div>
 
