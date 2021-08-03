@@ -67,8 +67,8 @@ function Sidebar() {
                             {/* <img src={PeopleRoundedIcon} alt="dashboard icon" /> */}
                             <PeopleOutlinedIcon />
                             <div>
-                                <p>Hired</p>
-                                <p>Developers</p>
+                                <p>Developer</p>
+                                <p>Request</p>
                             </div>
                         </div>
                     </>
