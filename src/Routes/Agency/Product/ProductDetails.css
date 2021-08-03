@@ -25,7 +25,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .productDetailsArea{
     margin-left: 80px;
@@ -394,6 +394,7 @@
     width: 100%; 
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 .moreAgencyLogo_productDetails div{
     width: 30%;

@@ -51,8 +51,14 @@
 .innerprojectDetailsInfo_agencyList {
   width: 95%;
   margin: auto;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-left: 12%;
+}
+
+.addressTeam_AgencyList {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .innerprojectDetailsInfo_agencyList p {
@@ -79,14 +85,14 @@
 
 .innerAgencyList_agencyList {
   margin-top: 2%;
-  width: 90%;
+  width: 100%;
   display: flex;
   /* justify-content: space-around; */
   margin-left: 12%;
 }
 
 .AgencyCardsArea_agencyList {
-  width: 68%;
+  width: 80%;
 }
 
 .agencyPreciseCard_agencyList {

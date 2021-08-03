@@ -517,6 +517,9 @@ button {
   border-top-right-radius: 0rem;
   border-radius: 15px;
   border: none;
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button img {
@@ -562,7 +565,7 @@ button {
 }
 
 .innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile {
-  font: normal 800 12px 'Inter' !important;
+  font: normal 800 10px 'Inter' !important;
   line-height: 12px;
   text-align: center;
   letter-spacing: 0.4px;

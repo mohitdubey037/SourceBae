@@ -128,16 +128,15 @@ function AgencyList(props) {
 
   return (
     <>
-      {/* <ClientNavbar /> */}
       <div className="Navbar-parent margin-left position">
         <Navbar />
       </div>
       <div className="top-0 sidebar-parent_agencyList">
         <Sidebar />
       </div>
-      <div className="back-parent margin-left">
+      {/* <div className="back-parent margin-left">
         <Back name="Agency List" />
-      </div>
+      </div> */}
       {loading ? (<Spinner />) : (
         <>
           <div className="innerprojectDetailsInfo_agencyList">
@@ -169,12 +168,25 @@ function AgencyList(props) {
                               </div>
                             </div>
                             <div className="profileButton">
-                              {agency.productId !== undefined ?
+                              {/* {agency.productId !== undefined ?
                                 <p onClick={() => props.history.push({
                                   pathname: `/product-details:${agency.productId}`,
                                   condition: `Client`
                                 })}>
                                   View Agency Product{" "}
+                                  <i
+                                    class="fa fa-angle-double-right"
+                                    aria-hidden="true"
+                                  ></i>
+                                </p>
+                                : null
+                              } */}
+                              {agency.productId !== undefined ?
+                                <p onClick={() => props.history.push({
+                                  pathname: `/agency-profile:${agency._id}`,
+                                  condition: `Client`
+                                })}>
+                                  View Profile Details
                                   <i
                                     class="fa fa-angle-double-right"
                                     aria-hidden="true"
@@ -187,7 +199,7 @@ function AgencyList(props) {
                           </div>
 
                           <div className="middleAgencyArea">
-                            <div className="agencyAddressTeam">
+                            <div className="agencyAddressTeam addressTeam_AgencyList">
                               <h6>Miscellaneous Info</h6>
                               <div className="agencyAddressArea">
                                 <div className="locationIcon">

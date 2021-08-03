@@ -142,32 +142,41 @@ function AgencyProfile(props) {
                     </button>
                   </>
                 ) : (
-                  <button
-                    onClick={() =>
-                      props.history.push({
-                        pathname: `/product-details:${agencyProfileData.productId}`,
-                        condition: id !== '' ? 'Agency' : 'Client'
-                      })
-                    }
+                  <button onClick={() => props.history.push({
+                    pathname: `/product-details:${agencyProfileData.productId}`,
+                    condition: id !== '' ? 'Agency' : 'Client'
+                  })
+                  }
                   >
                     View Your Product{" "}
                     <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
                   </button>
                 )
               ) : (
-                <div>
-                  {/* <p onClick={onOpenModal}>
+                <>
+                  <div>
+                    {/* <p onClick={onOpenModal}>
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                     Have a Question..?
                   </p> */}
-                  <i
-                    style={{ fontSize: 22, color: "#fff" }}
-                    className="fa fa-info-circle"
-                    aria-hidden="true"
-                    onMouseOver={() => setHoverModal(true)}
-                  // onMouseLeave={()=>onCloseModal()}
-                  ></i>
-                </div>
+                    <i
+                      style={{ fontSize: 22, color: "#fff" }}
+                      className="fa fa-info-circle"
+                      aria-hidden="true"
+                      onMouseOver={() => setHoverModal(true)}
+                    // onMouseLeave={()=>onCloseModal()}
+                    ></i>
+                  </div>
+                  <button onClick={() => props.history.push({
+                    pathname: `/product-details:${agencyProfileData.productId}`,
+                    condition: id !== '' ? 'Agency' : 'Client'
+                  })
+                  }
+                  >
+                    View Your Product{" "}
+                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                  </button>
+                </>
               )}
             </div>
           </div>

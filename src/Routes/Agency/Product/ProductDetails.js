@@ -17,10 +17,7 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../Components/Back/Back';
 
 function ProductDetails(props) {
-  console.log(props);
-  console.log(props.location.condition);
   const condition = props.location.condition;
-  console.log(condition);
   let { productId } = useParams();
   productId = productId ? helper.cleanParam(productId) : "";
 
@@ -206,9 +203,7 @@ function ProductDetails(props) {
       {loading === true ? <Spinner /> :
         err ? (
           <>
-            <div
-              style={{ textAlign: "center", width: "100%", marginTop: "20px" }}
-            >
+            <div style={{ textAlign: "center", width: "100%", marginTop: "20px" }}>
               <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
               <h6>{err}</h6>
             </div>
@@ -422,13 +417,10 @@ function ProductDetails(props) {
                             similarAgency.map((value) => {
                               return (
                                 <>
-                                  <div
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() =>
-                                      props.history.push(
+                                  <div style={{ cursor: "pointer" }}
+                                    onClick={() => props.history.push(
                                         `/product-details/:${value._id}`
-                                      )
-                                    }
+                                      )}
                                     className="moreAgencyCard_productDetails"
                                   >
                                     <div className="moreAgencyLogo_productDetails">

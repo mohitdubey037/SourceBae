@@ -79,7 +79,7 @@ function AgencyRespondedDetails(props) {
         <i className="fa fa-angle-left" aria-hidden="true"></i>
       </div> */}
 
-      <div className="back-button_AgencyRespondedDetails">
+      {/* <div className="back-button_AgencyRespondedDetails">
         <div className="image-div_AgencyRespondedDetails">
           <div className="hover" onClick={goBack}>
             <ArrowBackIosIcon className="back-icon" />
@@ -89,7 +89,7 @@ function AgencyRespondedDetails(props) {
         <div className="add-developer-div">
           <h6>Agency Responded Details</h6>
         </div>
-      </div>
+      </div> */}
       <div className="mainDetailHeader_agencyRespondedDetails">
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
