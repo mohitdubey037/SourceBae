@@ -119,7 +119,7 @@
   height: 40px;
 }
 
-.react-responsive-modal-closeButton {
+.skillsSetsContent ~ .react-responsive-modal-closeButton {
   top: -19px !important;
   background-color: #e0e0e0;
 }

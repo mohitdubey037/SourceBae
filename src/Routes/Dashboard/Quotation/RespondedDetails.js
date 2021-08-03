@@ -148,7 +148,7 @@ function RespondedDetails(props) {
             <p>Quotation Asked</p>
             <p>{`${(project?.projectProposals?.length > 0 && project?.projectProposals[0]?.isAskedForQuotation) ? "Yes" : "No"}`}</p>
           </div>
-          
+
           <div>
             <p>Project Creation Date</p>
             <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
@@ -180,45 +180,50 @@ function RespondedDetails(props) {
                     </ul>
                   </>
                   :
-                  project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true ?
-                    <p>Please wait for the agency to accept the Quotation</p>
+                  project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true
+                    &&
+                    project?.projectProposals[0].isQuotationAcceptedByAgency === true ?
+                    <p>Project is completed from both side</p>
                     :
-                    <>
-                      <h4>Comments and Replies</h4>
-                      {
-                        loading ? <p style={{ textAlign: "center" }}>Comments are loading...</p>
-                          :
-                          project?.projectProposals &&
-                            project.projectProposals[0]?.isAskedForQuotation === true ? (
-                            <ClientCommentBox
-                              projectId={projectId}
-                              agencyId={agencyId}
-                              isShortListed={true}
-                              giveReplies={(gr) => {
-                                setRepliedToClient(gr);
-                              }}
-                              {...project}
-                              isAskedForQuotation={true}
-                              commentType="Quotation"
-                            />
-                          )
+                    project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true ?
+                      <p>Please wait for the agency to accept the Quotation</p>
+                      :
+                      <>
+                        <h4>Comments and Replies</h4>
+                        {
+                          loading ? <p style={{ textAlign: "center" }}>Comments are loading...</p>
                             :
-                            (
-                              project?.projectProposals && (
-                                <ClientCommentBox
-                                  projectId={projectId}
-                                  agencyId={agencyId}
-                                  isShortListed={true}
-                                  giveReplies={(gr) => {
-                                    setRepliedToClient(gr);
-                                  }}
-                                  {...project}
-                                  isAskedForQuotation={false}
-                                  commentType="Shortlist"
-                                />
-                              )
-                            )}
-                    </>
+                            project?.projectProposals &&
+                              project.projectProposals[0]?.isAskedForQuotation === true ? (
+                              <ClientCommentBox
+                                projectId={projectId}
+                                agencyId={agencyId}
+                                isShortListed={true}
+                                giveReplies={(gr) => {
+                                  setRepliedToClient(gr);
+                                }}
+                                {...project}
+                                isAskedForQuotation={true}
+                                commentType="Quotation"
+                              />
+                            )
+                              :
+                              (
+                                project?.projectProposals && (
+                                  <ClientCommentBox
+                                    projectId={projectId}
+                                    agencyId={agencyId}
+                                    isShortListed={true}
+                                    giveReplies={(gr) => {
+                                      setRepliedToClient(gr);
+                                    }}
+                                    {...project}
+                                    isAskedForQuotation={false}
+                                    commentType="Shortlist"
+                                  />
+                                )
+                              )}
+                      </>
             }
           </div>
 
