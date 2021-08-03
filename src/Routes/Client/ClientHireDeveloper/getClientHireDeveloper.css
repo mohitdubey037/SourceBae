@@ -238,7 +238,8 @@
 }
 
 .agencyAddressTeam, .agencyDescInfo :is(h6) {
-  font-family: 'Fredoka One', cursive;
+  /* font-family: 'Fredoka One', cursive; */
+  font-family: 'Inter';
 }
 
 .agencyAddressTeam {
