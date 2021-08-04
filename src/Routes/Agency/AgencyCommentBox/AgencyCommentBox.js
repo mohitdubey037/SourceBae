@@ -193,7 +193,7 @@ const AgencyCommentBox = (props) => {
         }
         <div className='commentParent'>
           {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
-            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) 
+            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
             && (
               <div className="postQuotation" style={{ width: '52%' }}>
                 <TextField
@@ -221,8 +221,13 @@ const AgencyCommentBox = (props) => {
 
           {
           }
-    
-          <div className="price-section" style={{ width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false ? '100%' : '45%' }}>
+
+          <div className="price-section" style={{
+            width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
+              ? '100%' :
+              props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
+                ? '100%' : '45%'
+          }}>
             {props.projectProposals[0].isReplySectionActive && (
               <>
                 <TextField
