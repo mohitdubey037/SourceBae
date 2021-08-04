@@ -46,7 +46,7 @@ function RespondedDetails(props) {
 
   return (
     <>
-      <div className="back-button_AgencyRespondedDetails">
+      {/* <div className="back-button_AgencyRespondedDetails">
         <div className="image-div_AgencyRespondedDetails">
           <div className="hover" onClick={() => routerHistory.goBack()}>
             <ArrowBackIosIcon className="back-icon" />
@@ -56,7 +56,7 @@ function RespondedDetails(props) {
         <div className="add-developer-div">
           <h6>Responded Details</h6>
         </div>
-      </div>
+      </div> */}
 
       <div className="mainDetailHeader_agencyRespondedDetails">
         <div className="innerDetailHeader_agencyRespondedDetails">
