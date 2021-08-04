@@ -191,6 +191,7 @@ const ClientCommentBox = (props) => {
                         id="outlined-number"
                         type="number"
                         placeholder="Client Negotiable Price"
+                        onChange={(event) => handleChange(event)}
                         variant="outlined"
                         InputLabelProps={{
                           shrink: true,

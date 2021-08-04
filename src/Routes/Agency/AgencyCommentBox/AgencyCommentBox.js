@@ -213,6 +213,8 @@ const AgencyCommentBox = (props) => {
                   type="number"
                   placeholder="Agency Negotiable Price"
                   variant="outlined"
+                  onChange={(event) => handleChange(event)}
+
                   InputLabelProps={{
                     shrink: true,
                   }}
