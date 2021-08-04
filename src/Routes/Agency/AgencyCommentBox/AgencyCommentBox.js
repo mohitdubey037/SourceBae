@@ -191,21 +191,21 @@ const AgencyCommentBox = (props) => {
           })
         }
         <div className='commentParent'>
-          <div className="postQuotation" style={{ width: '52%' }}>
-            {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
-              (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
-                // <div style={{ display: "flex", alignItems: 'center'}}>
-                //   <b>Agency Negotiatiable Price:</b>
-                //   <div className="negotiablePrice">
-                //     <input
-                //       type="number"
-                //       name="agencyNegotiablePrice"
-                //       placeholder="negotiable price"
-                //       value={apiData.agencyNegotiablePrice}
-                //       onChange={(event) => handleChange(event)}
-                //     />
-                //   </div>
-                // </div>
+          {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
+            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
+              // <div style={{ display: "flex", alignItems: 'center'}}>
+              //   <b>Agency Negotiatiable Price:</b>
+              //   <div className="negotiablePrice">
+              //     <input
+              //       type="number"
+              //       name="agencyNegotiablePrice"
+              //       placeholder="negotiable price"
+              //       value={apiData.agencyNegotiablePrice}
+              //       onChange={(event) => handleChange(event)}
+              //     />
+              //   </div>
+              // </div>
+              <div className="postQuotation" style={{ width: '52%' }}>
                 <TextField
                   className={clsx(classes.margin, classes.width)}
                   name="agencyNegotiablePrice"
@@ -226,9 +226,11 @@ const AgencyCommentBox = (props) => {
                     )
                   }}
                 />
-              )}
+              </div>
+            )}
 
-            {/* {props.projectProposals[0].isReplySectionActive &&
+
+          {/* {props.projectProposals[0].isReplySectionActive &&
             props.projectProposals[0].isAskedForQuotation &&
             (props.projectProposals[0].quotationLink === null ||
               props.projectProposals[0].quotationLink === undefined) && (
@@ -241,7 +243,7 @@ const AgencyCommentBox = (props) => {
                 <button onClick={uploadMedia}>Upload</button>
               </div>
             )} */}
-          </div>
+          {/* </div> */}
 
           <div className="price-section" style={{ width: '45%' }}>
             {props.projectProposals[0].isReplySectionActive && (
