@@ -173,18 +173,6 @@ const ClientCommentBox = (props) => {
                   props.projectProposals[0].clientNegotiablePrice === undefined) && (
 
                     <div className="postQuotation" style={{ width: '55%' }}>
-                      {/* <div style={{ display: "flex", alignItems: 'center', marginLeft: '10px' }}> */}
-                      {/* <b>Client Negotiatiable Price:</b> */}
-                      {/* <div className="negotiablePrice">
-                          <input
-                            type="number"
-                            name="clientNegotiablePrice"
-                            placeholder="negotiable price"
-                            value={apiData.clientNegotiablePrice}
-                            onChange={(event) => handleChange(event)}
-                          />
-                        </div> */}
-
                       <TextField
                         className={clsx(classes.margin, classes.width)}
                         name="clientNegotiablePrice"
@@ -205,22 +193,14 @@ const ClientCommentBox = (props) => {
                         }}
                       />
                     </div>
-                    // </div>
                   )}
-                {/* <div style={{ display: "flex", margin: "1rem 0rem" }}> */}
-                {/* <h5>
-                    <b>Client: </b>
-                  </h5> */}
-                {/* <textarea
-                    rows="5"
-                    cols="50"
-                    style={{ margin: "0 1rem" }}
-                    placeholder="Enter your reply"
-                    name="comment"
-                    value={apiData.reply}
-                    onChange={(event) => handleChange(event)}
-                  /> */}
-                <div className="price-section" style={{ width: '40%' }}>
+                <div style={{
+                  width:
+                      props.projectProposals[0].clientNegotiablePrice === null ||
+                      props.projectProposals[0].clientNegotiablePrice === undefined ? 
+                      '40%' : 
+                      '100%'
+                }}>
                   <TextField
                     className={clsx(classes.margin, classes.width)}
                     id="outlined-size-small"
@@ -241,13 +221,6 @@ const ClientCommentBox = (props) => {
                     <SendIcon onClick={() => { replyApi() }} />
                   </div>
                 }
-                {/* </div> */}
-
-                {/* <div className="reply-parent">
-                  <button className="reply-button" onClick={() => { replyApi() }}>
-                    Reply
-                  </button>
-                </div> */}
               </div>
             )}
           {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
