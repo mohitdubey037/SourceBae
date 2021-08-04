@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-import foods from "../../../assets/images/Quotation/foods.png";
-import Moment from 'react-moment';
-import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import proposalImage from '../../../assets/images/proposalImage.png';
 import './ClientCommentBox.css';
+import clsx from 'clsx';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import SendIcon from '@material-ui/icons/Send';
 import AttachmentIcon from '@material-ui/icons/Attachment';
+import SendIcon from '@material-ui/icons/Send';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -169,11 +168,11 @@ const ClientCommentBox = (props) => {
 
           {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
             (
-              <div style={{ display: "flex", flexDirection: "column" }}>
-
+              <div className='commentParent'>
                 {(props.projectProposals[0].clientNegotiablePrice === null ||
                   props.projectProposals[0].clientNegotiablePrice === undefined) && (
-                    <div className="postQuotation">
+
+                    <div className="postQuotation" style={{ width: '55%' }}>
                       {/* <div style={{ display: "flex", alignItems: 'center', marginLeft: '10px' }}> */}
                       {/* <b>Client Negotiatiable Price:</b> */}
                       {/* <div className="negotiablePrice">
@@ -185,19 +184,21 @@ const ClientCommentBox = (props) => {
                             onChange={(event) => handleChange(event)}
                           />
                         </div> */}
+
                       <TextField
-                        className={classes.margin}
-                        id="outlined-size-small"
-                        label="Client Negotiable Price"
-                        onChange={(event) => handleChange(event)}
+                        className={clsx(classes.margin, classes.width)}
                         name="clientNegotiablePrice"
-                        multiline
-                        maxRows={4}
+                        id="outlined-number"
+                        type="number"
+                        placeholder="Client Negotiable Price"
                         variant="outlined"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <SendIcon onClick={() => { replyApi() }} />
+                              <AttachMoneyIcon />
                             </InputAdornment>
                           )
                         }}
@@ -218,23 +219,27 @@ const ClientCommentBox = (props) => {
                     value={apiData.reply}
                     onChange={(event) => handleChange(event)}
                   /> */}
-                <TextField
-                  className={classes.margin}
-                  id="outlined-size-small"
-                  label="Client"
-                  onChange={(event) => handleChange(event)}
-                  name="comment"
-                  multiline
-                  maxRows={4}
-                  variant="outlined"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SendIcon onClick={() => { replyApi() }} />
-                      </InputAdornment>
-                    )
-                  }}
-                />
+                <div className="price-section" style={{ width: '40%' }}>
+                  <TextField
+                    className={clsx(classes.margin, classes.width)}
+                    id="outlined-size-small"
+                    placeholder="Enter Your Reply"
+                    onChange={(event) => handleChange(event)}
+                    name="comment"
+                    multiline
+                    maxRows={4}
+                    variant="outlined"
+                  />
+                </div>
+                {props.projectProposals[0].isCommentSectionActive === true &&
+                  <div style={{
+                    position: 'absolute',
+                    right: '-40px',
+                    bottom: '23px'
+                  }}>
+                    <SendIcon onClick={() => { replyApi() }} />
+                  </div>
+                }
                 {/* </div> */}
 
                 {/* <div className="reply-parent">

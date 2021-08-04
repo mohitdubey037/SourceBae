@@ -76,6 +76,25 @@
   position: relative;
 }
 
+.commentParent {
+  width: 85%;
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.commentParent .MuiOutlinedInput-inputAdornedEnd {
+  font-size: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #A8A8A8;
+}
+
 .detailHeaderImage_agencyRespondedDetails {
   margin-right: 1.5%;
 }
@@ -213,7 +232,7 @@
   letter-spacing: 1px;
 }
 
-.detailsButtons > a {
+.detailsButtons>a {
   padding: 0.5rem 0.3em;
 }
 

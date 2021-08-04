@@ -14,6 +14,16 @@
     margin: 1rem 0;
 }
 
+.commentParent .MuiInputBase-input {
+    font-size: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #A8A8A8;
+  }
+
 /* .margin-0 {
     margin: 10px 0% !important
 } */
