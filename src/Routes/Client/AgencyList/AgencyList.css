@@ -434,16 +434,17 @@
   border-radius: 10px;
 }
 
-.shortlistModal {
+.shortlistModal_agencyList {
   font-family: 'Inter';
 }
 
-.shortlistModal h2 {
+.shortlistModal_agencyList h2 {
+  font-family: 'Inter';
   font-weight: bold;
-  margin-bottom: 10%;
+  margin-bottom: 4% ;
 }
 
-.shortlistModal h2::after {
+.shortlistModal_agencyList h2::after {
   content: '';
   width: 50px;
   height: 2px;
@@ -485,6 +486,10 @@
   color: #fff;
   font-size: 1.1rem;
   border-radius: 5px;
+}
+
+.shortlistForm .margin-top {
+  margin-top: 1.5rem;
 }
 
 .QuotationModal {

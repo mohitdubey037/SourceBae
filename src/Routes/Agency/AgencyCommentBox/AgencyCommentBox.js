@@ -12,11 +12,28 @@ import { toast } from "react-toastify";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-import proposalImage from '../../../assets/images/proposalImage.png'
+import proposalImage from '../../../assets/images/proposalImage.png';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Input from '@material-ui/core/Input';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import SendIcon from '@material-ui/icons/Send';
+import AttachmentIcon from '@material-ui/icons/Attachment';
+import { Button } from '@material-ui/core';
 
 let isRepliedToClient = false;
 
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1)
+  }
+}));
+
 const AgencyCommentBox = (props) => {
+  const classes = useStyles();
   console.log(props);
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -37,6 +54,7 @@ const AgencyCommentBox = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(name, value);
     setApiData({
       ...apiData,
       [name]: value,
@@ -123,6 +141,7 @@ const AgencyCommentBox = (props) => {
 
 
   const replyApi = () => {
+    uploadMedia();
     const data = apiData;
     if (props.isAskedForQuotation) {
       data["isAskedForQuotation"] = true;
@@ -170,9 +189,9 @@ const AgencyCommentBox = (props) => {
         }
 
         <div className="postQuotation">
-          {props.projectProposals[0].isAskedForQuotation &&
+          {props.projectProposals[0].isCommentSectionActive=== true && props.projectProposals[0].isAskedForQuotation &&
             (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", alignItems: 'center'}}>
                 <b>Agency Negotiatiable Price:</b>
                 <div className="negotiablePrice">
                   <input
@@ -186,7 +205,7 @@ const AgencyCommentBox = (props) => {
               </div>
             )}
 
-          {props.projectProposals[0].isReplySectionActive &&
+          {/* {props.projectProposals[0].isReplySectionActive &&
             props.projectProposals[0].isAskedForQuotation &&
             (props.projectProposals[0].quotationLink === null ||
               props.projectProposals[0].quotationLink === undefined) && (
@@ -198,36 +217,73 @@ const AgencyCommentBox = (props) => {
                 />
                 <button onClick={uploadMedia}>Upload</button>
               </div>
-            )}
+            )} */}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           {props.projectProposals[0].isReplySectionActive && (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                margin: "1rem 0rem",
-              }}
-            >
-              <h5>
-                <b>Agency: </b>
-              </h5>
-              <textarea
-                rows="5"
-                cols="50"
-                style={{ margin: "0 1rem" }}
-                placeholder="Enter your reply"
-                name="reply"
-                value={apiData.reply}
+            // <div style={{
+            //     display: "flex",
+            //     flexDirection: "column",
+            //     margin: "1rem 0rem",
+            //   }}
+            // >
+            //   <h5>
+            //     <b>Agency: </b>
+            //   </h5>
+            //   <textarea
+            //     rows="5"
+            //     cols="50"
+            //     style={{ margin: "0 1rem" }}
+            //     placeholder="Enter your reply"
+            //     name="reply"
+            //     value={apiData.reply}
+            //     onChange={(event) => handleChange(event)}
+            //   />
+            //   <div className="reply-parent">
+            //     <button className="reply-button" onClick={() => { replyApi() }}>
+            //       Reply
+            //     </button>
+            //   </div>
+            // </div>
+            <>
+              <TextField
+                className={classes.margin}
+                id="outlined-size-small"
+                label="Agency"
                 onChange={(event) => handleChange(event)}
+                name="reply"
+                multiline
+                maxRows={4}
+                variant="outlined"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {props.projectProposals[0].isReplySectionActive &&
+                        props.projectProposals[0].isAskedForQuotation &&
+                        (props.projectProposals[0].quotationLink === null ||
+                          props.projectProposals[0].quotationLink === undefined) &&
+                        (
+                          <>
+                            <input
+                              color="primary"
+                              accept="image/*"
+                              type="file"
+                              id="icon-button-file"
+                              style={{ display: 'none', }}
+                            />
+                            <label htmlFor="icon-button-file">
+                              <AttachmentIcon className={classes.extendedIcon} />
+                            </label>
+                          </>
+                        )}
+                      <SendIcon onClick={() => { replyApi() }} />
+                    </InputAdornment>
+                  )
+                }}
               />
-              <div className="reply-parent">
-                <button className="reply-button" onClick={() => { replyApi() }}>
-                  Reply
-                </button>
-              </div>
-            </div>
+            </>
+
           )}
         </div>
         {props.projectProposals[0].isQuotationAcceptedByClient === false

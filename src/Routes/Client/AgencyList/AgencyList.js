@@ -360,7 +360,7 @@ function AgencyList(props) {
           modal: "ShortListModal",
         }}
       >
-        <div className="shortlistModal">
+        <div className="shortlistModal_agencyList">
           <h2>ShortList</h2>
           <div className="shortlistForm">
             <span>Comment Box</span>
@@ -372,7 +372,7 @@ function AgencyList(props) {
               rows="10"
               placeholder="Type from here..."
             ></textarea>
-            <button onClick={shortlistHandler}>Submit</button>
+            <button className="margin-top" onClick={shortlistHandler}>Submit</button>
           </div>
         </div>
       </Modal>
