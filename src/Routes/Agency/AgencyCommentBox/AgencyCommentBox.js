@@ -156,6 +156,7 @@ const AgencyCommentBox = (props) => {
       });
   };
   return (
+
     <div style={{ display: "flex" }}>
       <div className="commentBox">
         <div className="topLine" style={{
@@ -192,19 +193,8 @@ const AgencyCommentBox = (props) => {
         }
         <div className='commentParent'>
           {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
-            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
-              // <div style={{ display: "flex", alignItems: 'center'}}>
-              //   <b>Agency Negotiatiable Price:</b>
-              //   <div className="negotiablePrice">
-              //     <input
-              //       type="number"
-              //       name="agencyNegotiablePrice"
-              //       placeholder="negotiable price"
-              //       value={apiData.agencyNegotiablePrice}
-              //       onChange={(event) => handleChange(event)}
-              //     />
-              //   </div>
-              // </div>
+            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) 
+            && (
               <div className="postQuotation" style={{ width: '52%' }}>
                 <TextField
                   className={clsx(classes.margin, classes.width)}
@@ -229,48 +219,11 @@ const AgencyCommentBox = (props) => {
               </div>
             )}
 
-
-          {/* {props.projectProposals[0].isReplySectionActive &&
-            props.projectProposals[0].isAskedForQuotation &&
-            (props.projectProposals[0].quotationLink === null ||
-              props.projectProposals[0].quotationLink === undefined) && (
-              <div style={{ margin: "1rem 0rem" }}>
-                <input
-                  onChange={inputFileChosen}
-                  type="file"
-                  accept="application/pdf"
-                />
-                <button onClick={uploadMedia}>Upload</button>
-              </div>
-            )} */}
-          {/* </div> */}
-
-          <div className="price-section" style={{ width: '45%' }}>
+          {
+          }
+    
+          <div className="price-section" style={{ width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false ? '100%' : '45%' }}>
             {props.projectProposals[0].isReplySectionActive && (
-              // <div style={{
-              //     display: "flex",
-              //     flexDirection: "column",
-              //     margin: "1rem 0rem",
-              //   }}
-              // >
-              //   <h5>
-              //     <b>Agency: </b>
-              //   </h5>
-              //   <textarea
-              //     rows="5"
-              //     cols="50"
-              //     style={{ margin: "0 1rem" }}
-              //     placeholder="Enter your reply"
-              //     name="reply"
-              //     value={apiData.reply}
-              //     onChange={(event) => handleChange(event)}
-              //   />
-              //   <div className="reply-parent">
-              //     <button className="reply-button" onClick={() => { replyApi() }}>
-              //       Reply
-              //     </button>
-              //   </div>
-              // </div>
               <>
                 <TextField
                   className={clsx(classes.margin, classes.width)}
