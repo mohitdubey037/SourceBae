@@ -191,16 +191,27 @@ const AgencyCommentBox = (props) => {
           })
         }
         <div className='commentParent'>
-          {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
-            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
-              <div className="postQuotation" style={{ width: '52%' }}>
+          <div className="postQuotation" style={{ width: '52%' }}>
+            {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
+              (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
+                // <div style={{ display: "flex", alignItems: 'center'}}>
+                //   <b>Agency Negotiatiable Price:</b>
+                //   <div className="negotiablePrice">
+                //     <input
+                //       type="number"
+                //       name="agencyNegotiablePrice"
+                //       placeholder="negotiable price"
+                //       value={apiData.agencyNegotiablePrice}
+                //       onChange={(event) => handleChange(event)}
+                //     />
+                //   </div>
+                // </div>
                 <TextField
                   className={clsx(classes.margin, classes.width)}
                   name="agencyNegotiablePrice"
                   id="outlined-number"
                   type="number"
                   placeholder="Agency Negotiable Price"
-                  onChange={(event) => handleChange(event)}
                   variant="outlined"
                   onChange={(event) => handleChange(event)}
 
@@ -215,94 +226,88 @@ const AgencyCommentBox = (props) => {
                     )
                   }}
                 />
-              </div>
-            )}
+              )}
 
-          {
-            props.projectProposals[0].isReplySectionActive &&
-              props.projectProposals[0].agencyNegotiablePrice === undefined
-              || props.projectProposals[0].agencyNegotiablePrice === null
-              && props.projectProposals[0].isAskedForQuotation ?
-              (
-                <div style={{ width: '45%' }}>
-                  <TextField
-                    className={clsx(classes.margin, classes.width)}
-                    id="outlined-size-small"
-                    // label="Agency"
-                    placeholder="Enter Your Reply"
-                    onChange={(event) => handleChange(event)}
-                    name="reply"
-                    multiline
-                    maxRows={4}
-                    variant="outlined"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          {props.projectProposals[0].isReplySectionActive &&
-                            props.projectProposals[0].isAskedForQuotation &&
-                            (props.projectProposals[0].quotationLink === null ||
-                              props.projectProposals[0].quotationLink === undefined) &&
-                            (
-                              <>
-                                <input
-                                  color="primary"
-                                  accept="application/pdf"
-                                  type="file"
-                                  id="icon-button-file"
-                                  style={{ display: 'none', }}
-                                />
-                                <label htmlFor="icon-button-file">
-                                  <AttachmentIcon onChange={inputFileChosen} />
-                                </label>
-                              </>
-                            )}
-                        </InputAdornment>
-                      )
-                    }}
-                  />
-                </div>
-              )
-              :
-              (
-                <div style={{ width: '100%' }}>
-                  <TextField
-                    className={clsx(classes.margin, classes.width)}
-                    id="outlined-size-small"
-                    // label="Agency"
-                    placeholder="Enter Your Reply"
-                    onChange={(event) => handleChange(event)}
-                    name="reply"
-                    multiline
-                    maxRows={4}
-                    variant="outlined"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          {props.projectProposals[0].isReplySectionActive &&
-                            props.projectProposals[0].isAskedForQuotation &&
-                            (props.projectProposals[0].quotationLink === null ||
-                              props.projectProposals[0].quotationLink === undefined) &&
-                            (
-                              <>
-                                <input
-                                  color="primary"
-                                  accept="application/pdf"
-                                  type="file"
-                                  id="icon-button-file"
-                                  style={{ display: 'none', }}
-                                />
-                                <label htmlFor="icon-button-file">
-                                  <AttachmentIcon onChange={inputFileChosen} />
-                                </label>
-                              </>
-                            )}
-                        </InputAdornment>
-                      )
-                    }}
-                  />
-                </div>
-              )
-          }
+            {/* {props.projectProposals[0].isReplySectionActive &&
+            props.projectProposals[0].isAskedForQuotation &&
+            (props.projectProposals[0].quotationLink === null ||
+              props.projectProposals[0].quotationLink === undefined) && (
+              <div style={{ margin: "1rem 0rem" }}>
+                <input
+                  onChange={inputFileChosen}
+                  type="file"
+                  accept="application/pdf"
+                />
+                <button onClick={uploadMedia}>Upload</button>
+              </div>
+            )} */}
+          </div>
+
+          <div className="price-section" style={{ width: '45%' }}>
+            {props.projectProposals[0].isReplySectionActive && (
+              // <div style={{
+              //     display: "flex",
+              //     flexDirection: "column",
+              //     margin: "1rem 0rem",
+              //   }}
+              // >
+              //   <h5>
+              //     <b>Agency: </b>
+              //   </h5>
+              //   <textarea
+              //     rows="5"
+              //     cols="50"
+              //     style={{ margin: "0 1rem" }}
+              //     placeholder="Enter your reply"
+              //     name="reply"
+              //     value={apiData.reply}
+              //     onChange={(event) => handleChange(event)}
+              //   />
+              //   <div className="reply-parent">
+              //     <button className="reply-button" onClick={() => { replyApi() }}>
+              //       Reply
+              //     </button>
+              //   </div>
+              // </div>
+              <>
+                <TextField
+                  className={clsx(classes.margin, classes.width)}
+                  id="outlined-size-small"
+                  // label="Agency"
+                  placeholder="Enter Your Reply"
+                  onChange={(event) => handleChange(event)}
+                  name="reply"
+                  multiline
+                  maxRows={4}
+                  variant="outlined"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        {props.projectProposals[0].isReplySectionActive &&
+                          props.projectProposals[0].isAskedForQuotation &&
+                          (props.projectProposals[0].quotationLink === null ||
+                            props.projectProposals[0].quotationLink === undefined) &&
+                          (
+                            <>
+                              <input
+                                color="primary"
+                                accept="application/pdf"
+                                type="file"
+                                id="icon-button-file"
+                                style={{ display: 'none', }}
+                              />
+                              <label htmlFor="icon-button-file">
+                                <AttachmentIcon onChange={inputFileChosen} />
+                              </label>
+                            </>
+                          )}
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </>
+            )}
+          </div>
           {props.projectProposals[0].isReplySectionActive === true &&
             <div style={{
               position: 'absolute',
