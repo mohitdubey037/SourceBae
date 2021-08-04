@@ -9,7 +9,23 @@ import { Modal } from "react-responsive-modal";
 import proposalImage from '../../../assets/images/proposalImage.png';
 import './ClientCommentBox.css';
 
+import InputAdornment from '@material-ui/core/InputAdornment';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import SendIcon from '@material-ui/icons/Send';
+import AttachmentIcon from '@material-ui/icons/Attachment';
+
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1)
+  }
+}));
+
 const ClientCommentBox = (props) => {
+  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const onCloseModal = () => setOpen(false);
   const [openRejectionModal, setOpenRejectionModal] = useState(false);
@@ -154,26 +170,13 @@ const ClientCommentBox = (props) => {
           {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
             (
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", margin: "1rem 0rem" }}>
-                  <h5>
-                    <b>Client: </b>
-                  </h5>
-                  <textarea
-                    rows="5"
-                    cols="50"
-                    style={{ margin: "0 1rem" }}
-                    placeholder="Enter your reply"
-                    name="comment"
-                    value={apiData.reply}
-                    onChange={(event) => handleChange(event)}
-                  />
-                </div>
+
                 {(props.projectProposals[0].clientNegotiablePrice === null ||
                   props.projectProposals[0].clientNegotiablePrice === undefined) && (
                     <div className="postQuotation">
-                      <div style={{ display: "flex" }}>
-                        <b>Client Negotiatiable Price:</b>
-                        <div className="negotiablePrice">
+                      {/* <div style={{ display: "flex", alignItems: 'center', marginLeft: '10px' }}> */}
+                      {/* <b>Client Negotiatiable Price:</b> */}
+                      {/* <div className="negotiablePrice">
                           <input
                             type="number"
                             name="clientNegotiablePrice"
@@ -181,15 +184,64 @@ const ClientCommentBox = (props) => {
                             value={apiData.clientNegotiablePrice}
                             onChange={(event) => handleChange(event)}
                           />
-                        </div>
-                      </div>
+                        </div> */}
+                      <TextField
+                        className={classes.margin}
+                        id="outlined-size-small"
+                        label="Client Negotiable Price"
+                        onChange={(event) => handleChange(event)}
+                        name="clientNegotiablePrice"
+                        multiline
+                        maxRows={4}
+                        variant="outlined"
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <SendIcon onClick={() => { replyApi() }} />
+                            </InputAdornment>
+                          )
+                        }}
+                      />
                     </div>
+                    // </div>
                   )}
-                <div className="reply-parent">
+                {/* <div style={{ display: "flex", margin: "1rem 0rem" }}> */}
+                {/* <h5>
+                    <b>Client: </b>
+                  </h5> */}
+                {/* <textarea
+                    rows="5"
+                    cols="50"
+                    style={{ margin: "0 1rem" }}
+                    placeholder="Enter your reply"
+                    name="comment"
+                    value={apiData.reply}
+                    onChange={(event) => handleChange(event)}
+                  /> */}
+                <TextField
+                  className={classes.margin}
+                  id="outlined-size-small"
+                  label="Client"
+                  onChange={(event) => handleChange(event)}
+                  name="comment"
+                  multiline
+                  maxRows={4}
+                  variant="outlined"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <SendIcon onClick={() => { replyApi() }} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+                {/* </div> */}
+
+                {/* <div className="reply-parent">
                   <button className="reply-button" onClick={() => { replyApi() }}>
                     Reply
                   </button>
-                </div>
+                </div> */}
               </div>
             )}
           {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (

@@ -11,15 +11,15 @@ import Moment from "react-moment";
 import { toast } from "react-toastify";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import clsx from 'clsx';
 
 import proposalImage from '../../../assets/images/proposalImage.png';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import AttachmentIcon from '@material-ui/icons/Attachment';
-import { Button } from '@material-ui/core';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 let isRepliedToClient = false;
 
@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
   },
   extendedIcon: {
     marginRight: theme.spacing(1)
+  },
+  width: {
+    width: '30%'
   }
 }));
 
@@ -189,20 +192,38 @@ const AgencyCommentBox = (props) => {
         }
 
         <div className="postQuotation">
-          {props.projectProposals[0].isCommentSectionActive=== true && props.projectProposals[0].isAskedForQuotation &&
+          {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
             (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined) && (
-              <div style={{ display: "flex", alignItems: 'center'}}>
-                <b>Agency Negotiatiable Price:</b>
-                <div className="negotiablePrice">
-                  <input
-                    type="number"
-                    name="agencyNegotiablePrice"
-                    placeholder="negotiable price"
-                    value={apiData.agencyNegotiablePrice}
-                    onChange={(event) => handleChange(event)}
-                  />
-                </div>
-              </div>
+              // <div style={{ display: "flex", alignItems: 'center'}}>
+              //   <b>Agency Negotiatiable Price:</b>
+              //   <div className="negotiablePrice">
+              //     <input
+              //       type="number"
+              //       name="agencyNegotiablePrice"
+              //       placeholder="negotiable price"
+              //       value={apiData.agencyNegotiablePrice}
+              //       onChange={(event) => handleChange(event)}
+              //     />
+              //   </div>
+              // </div>
+              <TextField
+                className={clsx(classes.margin, classes.width)}
+                name="agencyNegotiablePrice"
+                id="outlined-number"
+                type="number"
+                placeholder="Agency Negotiable Price"
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <AttachMoneyIcon />
+                    </InputAdornment>
+                  )
+                }}
+              />
             )}
 
           {/* {props.projectProposals[0].isReplySectionActive &&
@@ -220,72 +241,70 @@ const AgencyCommentBox = (props) => {
             )} */}
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {props.projectProposals[0].isReplySectionActive && (
-            // <div style={{
-            //     display: "flex",
-            //     flexDirection: "column",
-            //     margin: "1rem 0rem",
-            //   }}
-            // >
-            //   <h5>
-            //     <b>Agency: </b>
-            //   </h5>
-            //   <textarea
-            //     rows="5"
-            //     cols="50"
-            //     style={{ margin: "0 1rem" }}
-            //     placeholder="Enter your reply"
-            //     name="reply"
-            //     value={apiData.reply}
-            //     onChange={(event) => handleChange(event)}
-            //   />
-            //   <div className="reply-parent">
-            //     <button className="reply-button" onClick={() => { replyApi() }}>
-            //       Reply
-            //     </button>
-            //   </div>
-            // </div>
-            <>
-              <TextField
-                className={classes.margin}
-                id="outlined-size-small"
-                label="Agency"
-                onChange={(event) => handleChange(event)}
-                name="reply"
-                multiline
-                maxRows={4}
-                variant="outlined"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      {props.projectProposals[0].isReplySectionActive &&
-                        props.projectProposals[0].isAskedForQuotation &&
-                        (props.projectProposals[0].quotationLink === null ||
-                          props.projectProposals[0].quotationLink === undefined) &&
-                        (
-                          <>
-                            <input
-                              color="primary"
-                              accept="image/*"
-                              type="file"
-                              id="icon-button-file"
-                              style={{ display: 'none', }}
-                            />
-                            <label htmlFor="icon-button-file">
-                              <AttachmentIcon className={classes.extendedIcon} />
-                            </label>
-                          </>
-                        )}
-                      <SendIcon onClick={() => { replyApi() }} />
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </>
-
-          )}
-        </div>
+        {/* <div style={{ display: "flex", flexDirection: "column" }}> */}
+        {props.projectProposals[0].isReplySectionActive && (
+          // <div style={{
+          //     display: "flex",
+          //     flexDirection: "column",
+          //     margin: "1rem 0rem",
+          //   }}
+          // >
+          //   <h5>
+          //     <b>Agency: </b>
+          //   </h5>
+          //   <textarea
+          //     rows="5"
+          //     cols="50"
+          //     style={{ margin: "0 1rem" }}
+          //     placeholder="Enter your reply"
+          //     name="reply"
+          //     value={apiData.reply}
+          //     onChange={(event) => handleChange(event)}
+          //   />
+          //   <div className="reply-parent">
+          //     <button className="reply-button" onClick={() => { replyApi() }}>
+          //       Reply
+          //     </button>
+          //   </div>
+          // </div>
+          <>
+            <TextField
+              className={clsx(classes.margin, classes.width)}
+              id="outlined-size-small"
+              label="Agency"
+              onChange={(event) => handleChange(event)}
+              name="reply"
+              multiline
+              maxRows={4}
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {props.projectProposals[0].isReplySectionActive &&
+                      props.projectProposals[0].isAskedForQuotation &&
+                      (props.projectProposals[0].quotationLink === null ||
+                        props.projectProposals[0].quotationLink === undefined) &&
+                      (
+                        <>
+                          <input
+                            color="primary"
+                            accept="application/pdf"
+                            type="file"
+                            id="icon-button-file"
+                            style={{ display: 'none', }}
+                          />
+                          <label htmlFor="icon-button-file">
+                            <AttachmentIcon onChange={inputFileChosen} className={classes.extendedIcon} />
+                          </label>
+                        </>
+                      )}
+                  </InputAdornment>
+                )
+              }}
+            />
+          </>
+        )}
+        {/* </div> */}
         {props.projectProposals[0].isQuotationAcceptedByClient === false
           && !props.projectProposals[0].isCommentSectionActive
           && !props.projectProposals[0].isReplySectionActive
