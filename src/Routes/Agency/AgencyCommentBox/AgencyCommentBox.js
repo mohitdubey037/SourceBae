@@ -20,6 +20,7 @@ import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { event } from "react-ga";
 
 let isRepliedToClient = false;
 
@@ -138,17 +139,22 @@ const AgencyCommentBox = (props) => {
     }
   }
 
-  const inputFileChosen = (e) => {
-    setFile(e.target.files[0]);
+  const inputFileChosen = (event) => {
+    console.log(event);
+    setFile(event.target.files[0]);
   };
 
+  useEffect(() => {
+    console.log(file);
+  },[file])
 
-  const replyApi = () => {
+
+  const replyApi = async() => {
     if (props.projectProposals[0].isReplySectionActive &&
       props.projectProposals[0].isAskedForQuotation &&
       (props.projectProposals[0].quotationLink === null ||
         props.projectProposals[0].quotationLink === undefined)) {
-      uploadMedia();
+      await uploadMedia();
     }
     const data = apiData;
     if (props.isAskedForQuotation) {
@@ -256,13 +262,14 @@ const AgencyCommentBox = (props) => {
                             <>
                               <input
                                 color="primary"
-                                accept="application/pdf"
+                                // accept="pdf"
                                 type="file"
+                                onChange={(event) => inputFileChosen(event)}
                                 id="icon-button-file"
                                 style={{ display: 'none', }}
                               />
                               <label htmlFor="icon-button-file">
-                                <AttachmentIcon onChange={inputFileChosen} />
+                                <AttachmentIcon onChange={(event) => inputFileChosen(event)}/>
                               </label>
                             </>
                           )}
@@ -279,7 +286,7 @@ const AgencyCommentBox = (props) => {
               right: '-47px',
               bottom: '23px'
             }}>
-              <SendIcon onClick={() => { replyApi() }} />
+              <SendIcon onClick={() => replyApi() } />
             </div>
           }
         </div>
