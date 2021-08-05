@@ -128,7 +128,7 @@ function ClientNewestDashboard(props) {
                             <div className="user-project">
                                 <div className="user-project-details">
                                     {
-                                        projects.length > 0 ? projects.map((p,index) => {
+                                        projects.length > 0 ? projects.slice(0, 4).map((p,index) => {
                                             return (
                                                 <>
                                                     <UserProject name={p.projectName} type={p.projectType} status={p.projectCurrentStatus} lastEdit={p.updatedAt} detailId={p._id} index={index}/>
