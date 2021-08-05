@@ -148,6 +148,10 @@ const AgencyCommentBox = (props) => {
     console.log(file);
   },[file])
 
+  useEffect(() => {
+    console.log(apiData)
+  },[apiData])
+
 
   const replyApi = async() => {
     if (props.projectProposals[0].isReplySectionActive &&
