@@ -30,7 +30,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     height: 60vh;
-    overflow: auto;
+    /* overflow: auto; */
     padding: 0 60px 0 30px;
     width: 90%;
     margin-left: 1%;

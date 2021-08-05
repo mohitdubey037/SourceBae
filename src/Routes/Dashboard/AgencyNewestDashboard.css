@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 768px) {
-  .project-details-card {
+  .user-project-details {
     width: 300px;
   }
 }
