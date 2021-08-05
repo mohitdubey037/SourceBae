@@ -55,7 +55,7 @@
     justify-content: center;
   } */
 
-  /* .moreAgencyList::-webkit-scrollbar-track {
+/* .moreAgencyList::-webkit-scrollbar-track {
     background-color: #2a98d8;
     border-radius: 10px;    
   }
@@ -140,8 +140,8 @@
     top: 5%;
     margin: 4rem 0rem 0rem 0rem;
   } */
-    
-  /* .detailHeaderImage div {
+
+/* .detailHeaderImage div {
     width: 120px;
     height: 120px;
     background-color: #fff;
@@ -249,8 +249,8 @@
     font-weight: 500;
     font-size: 1.1rem;
   } */
-  
-  /* @media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
     .detailHeaderImage div {
       width: 60px;
       height: 60px;
@@ -387,8 +387,8 @@
       font-size: 1.1rem;
     }
   } */
-  
-  /* @media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
     .detailHeaderImage div {
       width: 60px;
       height: 60px;
@@ -456,8 +456,8 @@
       display: none;
     }
   } */
-  
-  /* .respondDescription {
+
+/* .respondDescription {
     margin-top: 3%;
     margin-left: 2%;
   }
@@ -472,14 +472,14 @@
     margin-top: 1%;
     color: #9a9a9a;
   } */
-  
-  /* @media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
     .respondDescription p {
       width: 100% !important;
     }
   } */
-  
-  /* .respondCards_clientOneHireDeveloper {
+
+/* .respondCards_clientOneHireDeveloper {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -527,8 +527,8 @@
     color: #008e80;
     font-weight: 500;
   } */
-  
-  /* @media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
     .respondCards_clientOneHireDeveloper {
       flex-direction: column;
     }
@@ -540,8 +540,8 @@
       font-size: 0.9rem;
     }
   } */
-  
-  /* .briefDetails {
+
+/* .briefDetails {
     width: 100%;
     margin-bottom: 5%;
     position: relative;
@@ -598,8 +598,8 @@
     color: #484848;
     font-size: 1rem;
   } */
-  
-  /* @media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
     .briefHeading {
       flex-direction: column;
     }
@@ -621,8 +621,8 @@
       font-size: 0.8rem;
     }
   } */
-  
-  /* .agencyQuotation {
+
+/* .agencyQuotation {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -701,8 +701,8 @@
     margin-top: 20px;
     list-style: disc;
   } */
-  
-  /* @media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
     .agencyQuestions {
       flex-direction: column;
       margin-bottom: 3%;
@@ -764,4 +764,27 @@
       font-size: 0.9rem;
     }
   } */
-  
+
+.new_design_clientOneHireDeveloper {
+  width: 423px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 278px;
+  margin-left: 20px;
+  background: linear-gradient(180deg, #F9F9F9 0%, rgba(249, 249, 249, 0) 100%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.name-Font {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 140%;
+  /* or 39px */
+  letter-spacing: -0.25px;
+  text-transform: capitalize;
+  font-feature-settings: 'ordn' on, 'kern' off;
+  color: #407BFF;
+  height: '224px';
+}
