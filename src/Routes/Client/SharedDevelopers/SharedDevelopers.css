@@ -817,6 +817,7 @@
 }
 
 .moreAgencyCard.new-design {
+  margin-top: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -825,7 +826,7 @@
   opacity: 0.22;
   border-radius: 22px;
   width: 132px;
-  height: 270px;
+  height: 200px;
   justify-content: space-evenly;
 }
 
@@ -844,6 +845,14 @@
 
 .view-resume_child {
   text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.554545px;
+  text-transform: capitalize;
 }
 
 .innerResponseCard.width div p:nth-child(2) {

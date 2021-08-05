@@ -6,6 +6,7 @@ import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/User
 import QuotationIcon from '../../assets/images/Newestdashboard/Agency_Navbar/Vector.svg';
 import MobileIcon from "../../assets/images/Newestdashboard/Agency_Navbar/carbon_data-view.svg";
 import ThirdIcon from '../../assets/images/Newestdashboard/Agency_Navbar/3Icon.svg';
+import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
 
 import './AgencyNewestDashboard.css'
 import AgencyProjectCard from '../../Components/AgencyProjectCard/AgencyProjectCard';
@@ -41,7 +42,26 @@ function AgencyNewestDashboard(props) {
     return (
         <>
             <div className="Navbar-clientDashboard">
-                <Navbar />
+                <div className="navbar">
+                    {/* <div className="navbar-heading">
+                        <h1>Overview</h1>
+                    </div> */}
+                    <div className="navbar-items">
+                        <div className="notification-icon nav-left-item">
+                            <img src={notificationIcon} alt="notification" />
+                        </div>
+                        {/* <div onClick={logout} className="logout-icon nav-left-item">
+                    <div>
+                        <ExitToAppIcon />
+                    </div>
+                    <img src={notificationIcon} alt="notification" />
+                </div> */}
+                        <div className="username nav-left-item">
+                            <p>Atul Bhatt</p>
+                        </div>
+                        <div className="userprofile-circle nav-left-item" />
+                    </div>
+                </div>
             </div>
             <div className="dashboard-container">
                 <Sidebar />
@@ -68,7 +88,7 @@ function AgencyNewestDashboard(props) {
                                     <h6>Project details</h6>
                                 </div>
                             </div>
-                            <div className="user-project">
+                            <div className="user-project agencyNewestDashboard">
                                 <div>
                                     {agencyProfileData?.projects?.length > 0 ? (
                                         agencyProfileData?.projects?.map((value, index) => {

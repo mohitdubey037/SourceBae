@@ -2,6 +2,10 @@
   flex: 1;
 }
 
+.navbar {
+  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%);
+}
+
 .navbar h1 {
   margin-bottom: 0;
 }

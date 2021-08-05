@@ -10,6 +10,8 @@ import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
 import PhoneImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/phone_icon.svg';
 import Group from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Group.svg';
+import Polygon1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon2.svg';
+import Polygon2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon.svg';
 
 function ClientOneHireDeveloper(props) {
     let { hireDeveloperId } = useParams();
@@ -71,65 +73,42 @@ function ClientOneHireDeveloper(props) {
             <Navbar />
             {loading ? <Spinner /> :
                 <>
-                    {/* <div
-                        style={{ marginTop: "55px" }}
-                        className="backArrow"
-                        onClick={() => routerHistory.goBack()}
-                    >
-                        <i className="fa fa-angle-left" aria-hidden="true"></i>
-                    </div> */}
                     <div className="respondCards_clientOneHireDeveloper">
-
                         <div className="moreAgencies_clientOneHireDeveloper">
                             <div className="innerMoreAgencies_clientOneHireDeveloper">
                                 {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
                                     <>
-                                        <div style={{ paddingBottom: '1%' }} className="moreAgencyHeading">
+                                        <div className="moreAgencyHeading">
                                             <h3>Matched Agencies</h3>
                                         </div>
                                         <div className="moreAgencyList new_design_clientOneHireDeveloper">
+                                            <div className="polygon1">
+                                                <img src={Polygon1} alt="Polygon1" />
+                                            </div>
+                                            <div className="polygon2">
+                                                <img src={Polygon2} alt="Polygon2" />
+                                            </div>
                                             {
                                                 singleHiredDeveloper?.agenciesMatched?.map((agency) => {
                                                     return (
-                                                        <div style={{ cursor: 'pointer', flexDirection: 'column' }} className="moreAgencyCard">
-
+                                                        <div className="moreAgencyCard">
                                                             <div className="moreAgencyInfo">
-                                                                <h6 style={{ width: '70%' }} className="text-center name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
-                                                                <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between', width: '36%', marginLeft: '40px' }}>
+                                                                <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                                                                <div className="phone_clientOneHireDeveloper">
                                                                     <img src={PhoneImage} alt="phone_image" />
                                                                     <p>{agency?.agencyId?.agencyPhone}</p>
                                                                 </div>
-                                                                <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', width: '57%', marginLeft: '40px' }}>
+                                                                <div className="email_clientOneHireDeveloper">
                                                                     <img src={Group} alt="group" />
                                                                     <p>{agency?.agencyId?.agencyEmail}</p>
                                                                 </div>
                                                             </div>
-                                                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                                                <div style={{
-                                                                    background: '#F2F2F2',
-                                                                    border: '1px solid #DCD3D3',
-                                                                    borderRadius: '5.54545px',
-                                                                    padding: '10px',
-                                                                    width: '34%',
-                                                                    marginTop: '20px',
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center'
-                                                                }} className="moreAgencyLogo">
+
+                                                            <div className="button_parent">
+                                                                <div className="checkResource moreAgencyLogo">
                                                                     <button onClick={() => handleDevelopers(agency?.agencyId?._id)}>Check Resources</button>
                                                                 </div>
-                                                                <div style={{
-                                                                    background: '#F2F2F2',
-                                                                    border: '1px solid #DCD3D3',
-                                                                    borderRadius: '5.54545px',
-                                                                    padding: '10px',
-                                                                    width: '34%',
-                                                                    marginTop: '20px',
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    alignItems: 'center',
-                                                                    marginLeft: '30px'
-                                                                }} className="moreAgencyLogo">
+                                                                <div className="moreAgencyLogo show-details">
                                                                     <button onClick={() => routeDirect()}>Show Details</button>
                                                                 </div>
                                                             </div>

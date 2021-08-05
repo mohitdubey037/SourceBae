@@ -143,7 +143,7 @@ function RespondedDetails(props) {
                 <div className="moreAgencies_shared new_design">
                   <div className="innerMoreAgencies">
                     <div className="moreAgencyHeading no_border">
-                      <h3 style={{ textAlign: 'center', color: '#FFFFFF' }}>Matched Developer</h3>
+                      <h3 style={{ textAlign: 'center', color: '#FFFFFF', marginTop: '44px' }}>Matched Developer</h3>
                     </div>
                     <div className="moreAgencyList" style={{ display: 'flex', justifyContent: 'center' }}>
                       {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
