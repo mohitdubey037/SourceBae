@@ -128,6 +128,7 @@ const AgencyCommentBox = (props) => {
       instance
         .post(`api/agency/media/create`, formData)
         .then(function (response) {
+          console.log('pehle ye chala ki nhi');
           setApiData({
             ...apiData,
             quotationLink: response[0].mediaURL,
@@ -167,6 +168,7 @@ const AgencyCommentBox = (props) => {
     instance
       .patch(`api/agency/projects/propose/${props.projectId}`, data)
       .then(function (response) {
+        console.log('chala ki nhi');
         props.giveReplies(true);
       });
   };
