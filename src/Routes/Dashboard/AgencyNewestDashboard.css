@@ -13,3 +13,9 @@
   width: 90%;
   margin-left: 10%;
 }
+
+@media (max-width: 768px) {
+  .project-details-card {
+    width: 300px;
+  }
+}
