@@ -144,7 +144,12 @@ const AgencyCommentBox = (props) => {
 
 
   const replyApi = () => {
-    uploadMedia();
+    if (props.projectProposals[0].isReplySectionActive &&
+      props.projectProposals[0].isAskedForQuotation &&
+      (props.projectProposals[0].quotationLink === null ||
+        props.projectProposals[0].quotationLink === undefined)) {
+      uploadMedia();
+    }
     const data = apiData;
     if (props.isAskedForQuotation) {
       data["isAskedForQuotation"] = true;
