@@ -272,7 +272,7 @@ function AgencyRespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul>
-                <li>Min $5000</li>
+                <li>Min ${project.projectProposalCost}</li>
               </ul>
             </div>
             <div className="straightAfterLine">

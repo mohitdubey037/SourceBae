@@ -25,7 +25,6 @@ function RespondedDetails(props) {
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response.projectServicesRequired[0].serviceName);
         setProject(response);
         console.log(response, 'response');
         setLoading(false);
@@ -231,7 +230,7 @@ function RespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul>
-                <li>Min $5000</li>
+                <li>Min ${project.projectProposalCost}</li>
               </ul>
             </div>
             <div className="straightAfterLine">
@@ -243,7 +242,7 @@ function RespondedDetails(props) {
             <div>
               <h4>Technology</h4>
               <ul>
-                {props?.projectTechnologiesRequired?.map((p) => {
+                {project?.projectTechnologiesRequired?.map((p) => {
                   return <li>{p?.technologyName}</li>;
                 })}
               </ul>

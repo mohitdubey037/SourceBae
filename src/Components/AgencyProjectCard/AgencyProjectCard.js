@@ -6,7 +6,7 @@ import './AgencyProjectCard.css';
 
 import Moment from 'react-moment'
 
-function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, projectType, experties, services, props }) {
+function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, domainName, experties, services, props }) {
     // console.log(name, status, budget, creationDate,projectType)
     return (
         <div className="user-project_agencyNewestDashboard">
@@ -37,7 +37,6 @@ function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, 
                     <Moment format="D MMM YYYY" withTitle>
                         <p className="creation_date" style={{ marginLeft: 10 }}>{updatedAt}</p>
                     </Moment>
-                    <p>Matched On 25 March 2021</p>
                 </div>
                 <div className='currentStatus'>
                     <div className="imageClass">
@@ -52,7 +51,7 @@ function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, 
                     <thead>
                         <tr>
                             <td>Industry</td>
-                            <td>Edtech</td>
+                            <td>{domainName}</td>
                             <td>Final Budget</td>
                             <td>${budget}</td>
                         </tr>

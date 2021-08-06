@@ -102,6 +102,7 @@ function AgencyNewestDashboard(props) {
                                                     budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost}
                                                     creationDate={value?.createdAt}
                                                     updatedAt={value?.updatedAt}
+                                                    domainName={value?.projectDomainId.domainName}
                                                     projectType={value?.projectType}
                                                     experties={value?.projectExpertiseRequired}
                                                     services={value?.projectServicesRequired} />
