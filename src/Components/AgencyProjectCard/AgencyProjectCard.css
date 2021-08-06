@@ -93,7 +93,7 @@ p {
 }
 
 .user-project_paragraph {
-  font-family: Inter;
+  font-family: 'Inter';
   font-weight: 600;
   text-align: center;
   text-transform: capitalize;

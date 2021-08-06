@@ -93,7 +93,18 @@ function AgencyNewestDashboard(props) {
                                     {agencyProfileData?.projects?.length > 0 ? (
                                         agencyProfileData?.projects?.map((value, index) => {
                                             return (
-                                                <AgencyProjectCard props={props} id={value?._id} key={index} name={value.projectName} status={value?.projectCurrentStatus} budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost} creationDate={value?.createdAt} projectType={value?.projectType} experties={value?.projectExpertiseRequired} services={value?.projectServicesRequired} />
+                                                <AgencyProjectCard
+                                                    props={props}
+                                                    id={value?._id}
+                                                    key={index}
+                                                    name={value.projectName}
+                                                    status={value?.projectCurrentStatus}
+                                                    budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost}
+                                                    creationDate={value?.createdAt}
+                                                    updatedAt={value?.updatedAt}
+                                                    projectType={value?.projectType}
+                                                    experties={value?.projectExpertiseRequired}
+                                                    services={value?.projectServicesRequired} />
                                             )
                                         })
                                     ) : <p>No Projects</p>}
