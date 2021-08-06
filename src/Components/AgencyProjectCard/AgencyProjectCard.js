@@ -27,7 +27,7 @@ function AgencyProjectCard({ id, name, status, budget, creationDate, projectType
                         <img src={DateImage} alt="dateImage" />
                     </div>
                     <Moment format="D MMM YYYY" withTitle>
-                        <p style={{ marginLeft: 10 }}>{creationDate}</p>
+                        <p className="creation_date" style={{ marginLeft: 10 }}>{creationDate}</p>
                     </Moment>
                 </div>
                 <div className='matchedDate'>
