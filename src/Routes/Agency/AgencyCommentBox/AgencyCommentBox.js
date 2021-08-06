@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const AgencyCommentBox = (props) => {
   const classes = useStyles();
-  console.log(props);
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
     isShortListed: true,
@@ -125,14 +124,24 @@ const AgencyCommentBox = (props) => {
     if (file) {
       const formData = new FormData();
       formData.append("files", file, "files.pdf");
-      instance
-        .post(`api/agency/media/create`, formData)
+      instance.post(`api/agency/media/create`, formData)
         .then(function (response) {
           console.log('pehle ye chala ki nhi');
-          setApiData({
-            ...apiData,
-            quotationLink: response[0].mediaURL,
-          });
+          // setApiData({
+          //   ...apiData,
+          //   quotationLink: response[0].mediaURL,
+          // });
+          console.log(response[0].mediaURL);
+          const data = {...apiData, quotationLink: response[0].mediaURL};
+          console.log(data);
+          if (props.isAskedForQuotation) {
+            data["isAskedForQuotation"] = true;
+          }
+          instance.patch(`api/agency/projects/propose/${props.projectId}`, data)
+            .then(function (response) {
+              console.log('chala ki nhi');
+              props.giveReplies(true);
+            });
         })
         .catch((err) => { });
     } else {
@@ -147,30 +156,32 @@ const AgencyCommentBox = (props) => {
 
   useEffect(() => {
     console.log(file);
-  },[file])
+  }, [file])
 
   useEffect(() => {
     console.log(apiData)
-  },[apiData])
+  }, [apiData])
 
 
-  const replyApi = async() => {
+  const replyApi = async () => {
     if (props.projectProposals[0].isReplySectionActive &&
       props.projectProposals[0].isAskedForQuotation &&
       (props.projectProposals[0].quotationLink === null ||
         props.projectProposals[0].quotationLink === undefined)) {
       await uploadMedia();
     }
-    const data = apiData;
-    if (props.isAskedForQuotation) {
-      data["isAskedForQuotation"] = true;
+    else {
+      const data = apiData;
+      if (props.isAskedForQuotation) {
+        data["isAskedForQuotation"] = true;
+      }
+      instance
+        .patch(`api/agency/projects/propose/${props.projectId}`, data)
+        .then(function (response) {
+          console.log('chala ki nhi');
+          props.giveReplies(true);
+        });
     }
-    instance
-      .patch(`api/agency/projects/propose/${props.projectId}`, data)
-      .then(function (response) {
-        console.log('chala ki nhi');
-        props.giveReplies(true);
-      });
   };
   return (
 
@@ -275,7 +286,7 @@ const AgencyCommentBox = (props) => {
                                 style={{ display: 'none', }}
                               />
                               <label htmlFor="icon-button-file">
-                                <AttachmentIcon onChange={(event) => inputFileChosen(event)}/>
+                                <AttachmentIcon onChange={(event) => inputFileChosen(event)} />
                               </label>
                             </>
                           )}
@@ -292,7 +303,7 @@ const AgencyCommentBox = (props) => {
               right: '-47px',
               bottom: '23px'
             }}>
-              <SendIcon onClick={() => replyApi() } />
+              <SendIcon onClick={() => replyApi()} />
             </div>
           }
         </div>

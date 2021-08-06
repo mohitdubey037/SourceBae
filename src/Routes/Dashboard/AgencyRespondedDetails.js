@@ -23,7 +23,7 @@ function AgencyRespondedDetails(props) {
   const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
-  console.log(routerHistory);
+  // console.log(routerHistory);
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
