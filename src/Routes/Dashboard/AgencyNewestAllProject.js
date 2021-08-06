@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import AllProjectIcon from '../../assets/images/Newestdashboard/All_Project/Vector.svg';
 
@@ -6,8 +5,30 @@ import './AgencyNewestAllProject.css';
 import AllProjectCard from '../../Components/AllProjectCard/AllProjectCard';
 import Filter from '../../Components/ClientNewestDashboard/Filter/Filter';
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
+import React, { useEffect, useState } from 'react';
+import instance from '../../Constants/axiosConstants';
 
 function AgencyNewestAllProject() {
+    const [projects, setProjects] = useState([]);
+    const clientId = localStorage.getItem("userId");
+    const Role = localStorage.getItem('role');
+
+    const getAllProjects = () => {
+        instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
+            .then(function (response) {
+                setProjects(response.projects);
+                // setStatuses(response.statuses);
+                console.log(response);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        getAllProjects();
+    }, [])
+
     return (
         <div className="dashboard-container">
             <Sidebar />
@@ -38,18 +59,11 @@ function AgencyNewestAllProject() {
                                     </div>
                                 </div>
                                 <div className="agency-card-parent">
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
-                                    <AllProjectCard />
+                                    {projects.map(p => {
+                                        return (
+                                            <AllProjectCard {...p}/>
+                                        )
+                                    })}
                                 </div>
                             </div>
 

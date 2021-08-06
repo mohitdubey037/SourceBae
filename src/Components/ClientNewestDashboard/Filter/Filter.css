@@ -88,6 +88,10 @@
     text-align: center;
 }
 
+.search-button:hover {
+    cursor: pointer;
+}
+
 .search-button div {
     width: 50%;
     font-weight: 600;
@@ -103,6 +107,7 @@
     background: #EAF2FF;
     margin-left: 49px;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .all-project_div p {

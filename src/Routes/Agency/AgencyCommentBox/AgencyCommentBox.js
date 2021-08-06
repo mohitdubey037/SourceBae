@@ -52,7 +52,7 @@ const AgencyCommentBox = (props) => {
   const [quotationAcceptForm, setQuotationAcceptForm] = useState({
     agencyId: localStorage.getItem("userId"),
     isQuotationAcceptedByAgency: true,
-    projectFinalCost: props.finalCostByClient
+    projectFinalCost: props.projectProposals[0].finalCostByClient
   })
 
   const handleChange = (event) => {

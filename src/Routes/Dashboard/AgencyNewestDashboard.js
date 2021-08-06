@@ -97,8 +97,6 @@ function AgencyNewestDashboard(props) {
                                             )
                                         })
                                     ) : <p>No Projects</p>}
-
-
                                 </div>
                             </div>
                         </div>

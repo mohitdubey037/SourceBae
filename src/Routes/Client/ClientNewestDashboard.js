@@ -62,7 +62,7 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 
 function ClientNewestDashboard(props) {
 
-    const Role = helper.lowerize(localStorage.getItem('role'));
+    const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem("userId")
 
     const [open, setOpen] = React.useState(false);

@@ -17,7 +17,7 @@ p, h5, h6, h4 {
 } */
 
 .agency-card-parent {
-    padding: 5px 0 0 7px;
+    padding: 0 0 0 7px;
     width: 95%;
     margin-left: 20px;
     overflow: hidden;
@@ -58,10 +58,21 @@ p, h5, h6, h4 {
 }
 
 .project-actual-status {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-evenly;
+}
+
+.project-actual-status > div:hover {
+    cursor: pointer;
+}
+
+.project-actual-status div h6 {
+    font-weight: bold;
+    font-family: 'Inter';
+    font-style: normal;
+    text-transform: capitalize;
 }
 
 .completed-project, .running-project, .rejected-project {
