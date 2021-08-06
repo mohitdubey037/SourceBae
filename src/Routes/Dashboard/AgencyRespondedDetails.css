@@ -782,7 +782,7 @@
 }
 
 .detailsButtons button:nth-child(2) {
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
   color: #aaa;
   border: 1px solid #999;
   box-shadow: none;

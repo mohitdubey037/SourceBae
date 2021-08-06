@@ -232,6 +232,15 @@
   letter-spacing: 1px;
 }
 
+.acceptButton:hover {
+  color: green;
+  background: white;
+}
+.rejectButton:hover {
+  color: red;
+  background: white;
+}
+
 .detailsButtons>a {
   padding: 0.5rem 0.3em;
 }
