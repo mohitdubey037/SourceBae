@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-.back-icon {
+/* .back-icon {
   margin-left: 10px;
 }
 
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .mainDetailHeader_agencyRespondedDetails {
   width: 100%;
@@ -116,21 +116,6 @@
   min-height: 48px;
 }
 
-.detailsButtons button {
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  outline: none;
-  border: none;
-  background-color: #5cb85c;
-  border: 1px solid #5cb85c;
-  color: #fff;
-  font-family: 'Inter';
-  font-weight: 600;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
-  letter-spacing: 1px;
-}
-
 .respondCards_AgencyRespondedDetails {
   width: 100%;
   display: flex;
@@ -143,7 +128,6 @@
 .clientExperience {
   display: flex;
   align-items: center;
-  /* margin-top: 2%; */
   flex-wrap: wrap;
 }
 
@@ -174,42 +158,8 @@
   font-size: 1.1rem;
 }
 
-/* .acceptButton, .rejectButton, .detailsButtons>button, .detailsButtons>a {
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  outline: none;
-  border: none;
-  background-color: #5cb85c;
-  border: 1px solid #5cb85c;
-  color: #fff;
-  font-family: 'Inter';
-  font-weight: 600;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
-  letter-spacing: 1px;
-} */
-
-.rejectButton {
-  opacity: 0.8;
-  background: none !important;
-  border: none;
-  box-shadow: none;
-  transition: 0.2s ease-in-out;
-}
-
-/* .detailsButtons>a {
-  background-color: #02044a;
-  border: 1px solid #02044a;
-  text-decoration: none;
-} */
-
 .postQuotation>button {
   background-color: #02044a;
-}
-
-.rejectButton:hover {
-  background-color: rgb(194, 35, 35) !important;
-  border: 1px solid rgb(194, 35, 35) !important;
 }
 
 .action-wait {
@@ -780,11 +730,3 @@
     font-size: 0.9rem;
   }
 }
-
-.detailsButtons button:nth-child(2) {
-  /* background-color: transparent !important; */
-  color: #aaa;
-  border: 1px solid #999;
-  box-shadow: none;
-  transition: 0.2s ease-in-out;
-} 

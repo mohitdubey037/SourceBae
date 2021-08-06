@@ -98,14 +98,14 @@ function AgencyRespondedDetails(props) {
             </div>
           </div>
           <div className="headerInformation_agencyRespondedDetails">
-            <div className="clientName">
+            {/* <div className="clientName">
               {project.isProposalActionActive && (
                 <div className="detailsButtons">
                   <button>Accept</button>
                   <button>Withdraw</button>
                 </div>
               )}
-            </div>
+            </div> */}
             <div className="clientExperience">
               <div className="btnInfoDiv">
                 <div className="rightBorder"></div>
