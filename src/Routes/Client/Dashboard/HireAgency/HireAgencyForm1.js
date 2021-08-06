@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ClientNavbar from "../../ClientNavbar";
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import "./HireAgencyForms.css";
@@ -27,6 +27,7 @@ const HireAgencyForm1 = (props) => {
   const [loading, setLoading] = useState(false);
   const id = localStorage.getItem("userId");
   const Role = "Client";
+  const [words, setWords] = useState(0);
   const [data, setData] = useState({
     stepsCompleted: 1,
     clientId: id,
@@ -43,11 +44,21 @@ const HireAgencyForm1 = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(value);
+    if (name === 'projectDescription') {
+      if (value.length <= 100)
+      setWords(value.length);
+    }
     setData({
       ...data,
       [name]: value,
     });
   };
+
+
+  useEffect(() => {
+    console.log(words);
+  }, [words])
 
   const upArrow = () => {
     if (data.projectExpectedStartingDays < 180)
@@ -58,10 +69,10 @@ const HireAgencyForm1 = (props) => {
   };
 
   const downArrow = () => {
-      setData({
-        ...data,
-        projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
-      });
+    setData({
+      ...data,
+      projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
+    });
   };
 
 
@@ -201,7 +212,7 @@ const HireAgencyForm1 = (props) => {
                     ></textarea>
                     <div>
                       <span>More than 100 characters</span>
-                      <span>0/100</span>
+                      <span>{words}/100</span>
                     </div>
                     {error.projectDescriptionError && (
                       <p
