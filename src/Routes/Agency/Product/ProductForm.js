@@ -431,7 +431,9 @@ function ProductForm(props) {
   return (
     <>
       <Navbar />
-      <Back name="product-form" />
+      <div className="product-form">
+        <Back name="product-form" />
+      </div>
       {loading ? (
         <Spinner />
       ) : (
@@ -1079,7 +1081,7 @@ function ProductForm(props) {
                         </button>
                       </div>
                     </div>
-                    
+
                     {fields.map((field, idx) => {
                       if (idx === 0) {
                         return "";

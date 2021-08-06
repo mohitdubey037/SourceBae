@@ -12,6 +12,10 @@
   height: 300px;
   margin-bottom: 0%;
 }
+
+.product-form .back-button_newestAddDeveloper {
+  top: 10px;
+}
 .successImage div {
   height: 300px;
   overflow: hidden;
@@ -519,3 +523,4 @@
 .subbutton i {
   margin-left: 10px;
 }
+
