@@ -25,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AgencyNewestAllProject() {
+    const classes = useStyles();
+
     const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem("userId");
-
-    const classes = useStyles();
 
     const [projects, setProjects] = useState([]);
     const [statusFilter, setStatusFilter] = useState('');
@@ -45,6 +45,7 @@ function AgencyNewestAllProject() {
                     console.log(response, 'api')
                     setProjects(response.projects);
                     setTab(0);
+                    setFilterTab(0);
                 })
                 .catch((err) => {
                     console.error(err?.response?.data?.message);
