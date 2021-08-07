@@ -409,20 +409,22 @@ function AgencyProfile(props) {
                   </button>
                 </div>
 
-                <div id="nav-developer-tab"
-                  className="nav-link"
-                  data-bs-toggle="tab"
-                  data-bs-target="#nav-developer"
-                  type="button"
-                  role="tab"
-                  aria-controls="nav-developer"
-                  aria-selected="false"
-                  ref={inputEl}>
-                  <img src={DevelopersImage} alt="dev" />
-                  <button class="nav-button nav-link_agencyProfile">
-                    Developers
-                  </button>
-                </div>
+                {Role === "Agency" &&
+                  <div id="nav-developer-tab"
+                    className="nav-link"
+                    data-bs-toggle="tab"
+                    data-bs-target="#nav-developer"
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-developer"
+                    aria-selected="false"
+                    ref={inputEl}>
+                    <img src={DevelopersImage} alt="dev" />
+                    <button class="nav-button nav-link_agencyProfile">
+                      Developers
+                    </button>
+                  </div>
+                }
 
                 <div id="nav-developer-tab"
                   className="nav-link"

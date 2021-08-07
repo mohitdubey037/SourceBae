@@ -81,10 +81,10 @@ function Sidebar() {
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
-                <div className="setting-icon icons">
+                {/* <div className="setting-icon icons">
                     <img src={settingIcon} alt="dashboard icon" />
                     <p>Setting</p>
-                </div>
+                </div> */}
                 <div onClick={logout} className="setting-icon icons">
                     <ExitToAppIcon color="#999" />
                     <p>Log Out</p>

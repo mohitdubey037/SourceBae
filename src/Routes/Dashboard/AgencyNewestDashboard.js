@@ -65,7 +65,7 @@ function AgencyNewestDashboard(props) {
             </div>
             <div className="dashboard-container">
                 <Sidebar />
-                <div className="container-body">
+                <div className="container-body margin-0">
                     <div className="content-body">
                         <div className="content-leftBody">
                             <div className="user-operations">

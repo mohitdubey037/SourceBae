@@ -19,7 +19,7 @@ function Navbar(props) {
     return (
         <div className="navbar">
             <div className="navbar-heading">
-                <h1>Overview</h1>
+                {/* <h1>Overview</h1> */}
             </div>
             <div className="navbar-items">
                 <div className="notification-icon nav-left-item">

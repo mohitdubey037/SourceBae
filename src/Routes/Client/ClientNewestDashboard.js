@@ -145,7 +145,9 @@ function ClientNewestDashboard(props) {
                                     <h6>Project details</h6>
                                 </div>
                                 <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">
-                                    <p>View More Project</p>
+                                    {projects.length > 4 &&
+                                        <p>View More Project</p>
+                                    }
                                 </div>
                             </div>
                             <div className="user-project position">

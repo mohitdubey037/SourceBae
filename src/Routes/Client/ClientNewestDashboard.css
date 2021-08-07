@@ -28,7 +28,7 @@
 .container-body {
   width: 90%;
   margin-left: 10%;
-  margin-top: 8px;
+  /* margin-top: 8px; */
 }
 
 .user-project .user-project-details {

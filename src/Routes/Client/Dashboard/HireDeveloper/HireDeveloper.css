@@ -3,21 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: repeating-linear-gradient(
-      45deg,
-      rgb(255, 255, 255) 0px,
-      rgb(255, 255, 255) 10px,
-      transparent 10px,
-      transparent 11px
-    ),
-    repeating-linear-gradient(
-      135deg,
-      rgb(255, 255, 255) 0px,
-      rgb(255, 255, 255) 10px,
-      transparent 10px,
-      transparent 11px
-    ),
-    linear-gradient(90deg, hsl(256, 7%, 84%), hsl(256, 7%, 84%));
+  background-image: repeating-linear-gradient( 45deg, rgb(255, 255, 255) 0px, rgb(255, 255, 255) 10px, transparent 10px, transparent 11px), repeating-linear-gradient( 135deg, rgb(255, 255, 255) 0px, rgb(255, 255, 255) 10px, transparent 10px, transparent 11px), linear-gradient(90deg, hsl(256, 7%, 84%), hsl(256, 7%, 84%));
   position: relative;
   margin-bottom: 5%;
   margin: auto;
@@ -29,22 +15,6 @@
   top: 3%;
   left: 4%;
 }
-
-/* .upper-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 70%;
-}
-
-.lower-background {
-    position: fixed;
-    width: 70%;
-    height: 70%;
-    bottom: 0;
-    right: 0;
-} */
 
 .upper-image {
   position: fixed;
@@ -58,31 +28,9 @@
   top: 0%;
 }
 
-/* .lower-background img {
-    width: 10%;
-} */
-
-/* .backArrow i {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 2rem;
-} */
-
-/* .innerHireDeveloper {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%; 
-    margin-bottom: 5%;
-} */
+.multi-select {
+  color: black;
+}
 
 .hireDeveloperForm {
   width: 80%;
@@ -101,18 +49,9 @@
   font-weight: 600;
   font-size: 42px;
   line-height: 51px;
-  /* identical to box height */
   text-transform: capitalize;
   color: #02044a;
 }
-
-/* .hireDeveloperFormInfo h2::after {
-    content: '';
-    width: 100px;
-    height: 2px;
-    background-color: #000;
-    display: block;
-} */
 
 .predilection-strip {
   position: relative;
@@ -120,7 +59,7 @@
   height: 3px;
   background: black;
   top: 50px;
-  left: 333px;
+  left: 388px;
 }
 
 .hireDeveloperFormInfo p {
@@ -129,21 +68,12 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 150%;
-  /* or 27px */
   text-transform: capitalize;
-  /* TEXT CLR */
   color: #3a3a3a;
   margin-top: 45px;
 }
 
-.roleLooking,
-.resourceNumber,
-.skillsRequiredDeveloper,
-.averageExperience,
-.prefferedBilling,
-.averageBudget,
-.startPeriod,
-.contractPeriod {
+.roleLooking, .resourceNumber, .skillsRequiredDeveloper, .averageExperience, .prefferedBilling, .averageBudget, .startPeriod, .contractPeriod {
   margin-top: 5%;
 }
 
@@ -153,22 +83,14 @@
   width: 100%;
 }
 
-.resourceNumber,
-.contractPeriod {
+.resourceNumber, .contractPeriod {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 95px;
 }
 
-.hireDeveloperForm .resourceNumber ul,
-.hireDeveloperForm .skillsRequiredDeveloper ul,
-.hireDeveloperForm .averageExperience ul,
-.hireDeveloperForm .developerExperienceRequired ul,
-.hireDeveloperForm .preferredBillingMode ul,
-.hireDeveloperForm .averageBudget ul,
-.hireDeveloperForm .startPeriod ul,
-.hireDeveloperForm .contractPeriod ul {
+.hireDeveloperForm .resourceNumber ul, .hireDeveloperForm .skillsRequiredDeveloper ul, .hireDeveloperForm .averageExperience ul, .hireDeveloperForm .developerExperienceRequired ul, .hireDeveloperForm .preferredBillingMode ul, .hireDeveloperForm .averageBudget ul, .hireDeveloperForm .startPeriod ul, .hireDeveloperForm .contractPeriod ul {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -203,16 +125,12 @@
   flex-direction: column;
 }
 
-.Weekly > div,
-.Monthly > div {
+.Weekly>div, .Monthly>div {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 }
 
-.Junior > div,
-.Mid-Range > div,
-.Senior > div {
+.Junior>div, .Mid-Range>div, .Senior>div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,13 +142,11 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-  /* identical to box height */
   text-transform: capitalize;
   color: #a8a8a8;
 }
 
-.Weekly > div > .MuiFormControlLabel-root,
-.Monthly > div > .MuiFormControlLabel-root {
+.Weekly>div>.MuiFormControlLabel-root, .Monthly>div>.MuiFormControlLabel-root {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
@@ -238,7 +154,7 @@
 .strip_HireDeveloper {
   position: absolute;
   width: 155px;
-  height: 1px;
+  height: 2px;
   background: black;
 }
 
@@ -255,15 +171,13 @@
 .billing_strip_HireDeveloper {
   position: absolute;
   width: 140px;
-  height: 1px;
+  height: 2px;
   background: black;
   top: 21px;
   left: 58px;
 }
 
-.Junior > div > .MuiFormControlLabel-root,
-.Mid-Range > div > .MuiFormControlLabel-root,
-.Senior > div > .MuiFormControlLabel-root {
+.Junior>div>.MuiFormControlLabel-root, .Mid-Range>div>.MuiFormControlLabel-root, .Senior>div>.MuiFormControlLabel-root {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
@@ -282,8 +196,7 @@
   height: 92px;
 }
 
-.developerExperienceRequired,
-.preferredBillingMode {
+.developerExperienceRequired, .preferredBillingMode {
   margin-top: 45px;
 }
 
@@ -296,15 +209,15 @@
 
 .multi-select {
   text-transform: capitalize;
-  color: #a8a8a8;
+  color: black;
   margin-left: 30px;
   height: 51px;
   width: 60%;
   background: #ffffff;
   box-sizing: border-box;
   border-radius: 8px;
-  padding-left: 0;
-  background-color: red;
+  /* padding-left: 0;
+  background-color: red; */
 }
 
 .resourceNumber .dropdown-container {
@@ -318,39 +231,28 @@
   width: 100% !important;
   border: none !important;
 }
+
 .panel-content {
   border: none !important;
   outline: none !important;
 }
+
 .select-panel {
   width: 100%;
-  /* background-color: red !important; */
 }
+
 .select-panel .search {
   width: 100% !important;
 }
+
 .select-panel .search button {
   display: none !important;
 }
+
 .select-panel .search input {
-  /* display: none !important; */
   width: 200px !important;
-  /* background-color: yellow !important; */
 }
-/* .options {
-  max-height: 210px !important;
-  overflow-y: hidden !important;
-  margin: 2000px !important;
-  padding-left: 0;
-  background-color: red !important;
-}
-.select-item {
-  box-sizing: border-box;
-  cursor: pointer;
-  display: block;
-  padding: var(--rmsc-p);
-  outline: 0;
-} */
+
 .search {
   width: 60% !important;
   position: relative;
@@ -367,42 +269,46 @@
   border: none !important;
   background-color: green;
 }
+
 .go1075022653 input {
   position: absolute;
   display: flex;
   background-color: red;
   display: none;
 }
+
+.dropdown-heading-value {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
+
 .search-clear-button {
   display: none;
 }
+
 .item-renderer input {
   width: 20px !important;
   height: 20px !important;
 }
+
 .item-renderer span {
   font-size: 1.2rem !important;
   font-family: 'Inter';
   white-space: nowrap !important;
-  /* background-color: yellow !important; */
-  /* display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  text-align: left !important;
-  flex-direction: row; */
 }
+
 .resourceNumber input {
   margin-left: 30px;
   width: 60%;
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 150%;
   text-transform: capitalize;
-  color: #a8a8a8;
+  color: black;
   border: 1px solid #a2a2a2;
   border-radius: 8px;
   height: 50px;
@@ -456,18 +362,18 @@
   top: 5px;
   left: 5px;
   font-size: 2rem;
-  /* color: #2FAB73; */
   color: #02044a;
 }
 
 .contractPeriod select {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 150%;
   text-transform: capitalize;
-  color: #a8a8a8;
+  /* color: #a8a8a8; */
+  color: black;
   width: 60%;
   height: 50px;
   padding: 0 0.5rem;
@@ -488,22 +394,30 @@
   margin-top: 3%;
 }
 
-.submitBtn > div {
-  width: 11%;
+.submitBtn>div:hover {
+  cursor: pointer;
+  /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%); */
+  box-shadow: 0 2px 4px 2px;
+  color: #eaf2ff;
+  /* background: ; */
+}
+
+.submitBtn>div {
+  width: 15%;
   background: #eaf2ff;
   border-radius: 4px;
 }
 
-.submitBtn > div > div {
-  font-family: Inter;
+.submitBtn>div>div {
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.4px;
   text-transform: capitalize;
-  padding: 0.6rem 1rem;
+  padding: 1rem 2rem;
   width: 100%;
   color: #3a3a3a;
 }

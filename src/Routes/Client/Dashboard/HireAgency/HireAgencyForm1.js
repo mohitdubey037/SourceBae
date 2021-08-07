@@ -184,6 +184,7 @@ const HireAgencyForm1 = (props) => {
                       onChange={handleChange}
                       placeholder="Give A Name To Identify Requirement"
                       value={data.projectName}
+                      maxLength="22"
                     />
                     {error.projectNameError && (
                       <p

@@ -345,23 +345,6 @@ function HireDeveloper(props) {
                 </div>
               </RadioGroup>
             </FormControl>
-
-            {/* <div className="billingOptions">
-                <div className="billingButton" onClick={() => changeBilling(1)}>
-                  {billing === 1 ? (
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                  ) : null}
-                  <img src={hourPrice} alt="" />
-                  <h6>Weekly</h6>
-                </div>
-                <div className="billingButton" onClick={() => changeBilling(2)}>
-                  {billing === 2 ? (
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                  ) : null}
-                  <img src={month} alt="hourPrice" />
-                  <h6>Monthly</h6>
-                </div>
-              </div> */}
           </div>
 
           <div className="averageBudget">

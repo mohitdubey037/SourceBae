@@ -310,8 +310,9 @@ function ShortTerm(props) {
             <div className="uploadBlock">
               <div className="fileUploadButton">
                 <FilePicker
-                  extensions={["pdf", "jpg", "png", "xlsx"]}
+                  extensions={['jpg', 'png', 'jpeg', 'xlsx']}
                   onChange={(fileObj) => fileHandler(fileObj)}
+                  onError={errMsg => toast.error(errMsg)}
                 >
                   <div>
                     Upload
