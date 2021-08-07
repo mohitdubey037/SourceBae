@@ -18,6 +18,9 @@ import { SettingsBackupRestore } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     formControl: {
         marginLeft: theme.spacing(1.5)
+    },
+    marginRight: {
+        marginRight: theme.spacing(4.7)
     }
 }));
 
@@ -140,7 +143,7 @@ function AgencyNewestAllProject() {
                                                 <FormControlLabel value="Done" control={<Radio />} label="Completed" />
                                                 <FormControlLabel value="In Progress" control={<Radio />} label="Running" />
                                                 <FormControlLabel value="Cancelled" control={<Radio />} label="Rejected" />
-                                                <FormControlLabel value='' control={<Radio />} label="all" />
+                                                <FormControlLabel className={classes.marginRight} value='' control={<Radio />} label="all" />
                                             </RadioGroup>
                                         </FormControl>
 
