@@ -65,10 +65,6 @@ p, h5, h6, h4 {
     justify-content: space-evenly;
 }
 
-.project-actual-status>div:hover {
-    cursor: pointer;
-}
-
 .project-actual-status div h6 {
     font-weight: bold;
     font-family: 'Inter';
