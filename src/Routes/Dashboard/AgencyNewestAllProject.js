@@ -29,23 +29,10 @@ function AgencyNewestAllProject() {
 
     const [projects, setProjects] = useState([]);
     const [statusFilter, setStatusFilter] = useState('');
-    const [tab, setTab] = useState(0)
     const [err, setErr] = useState();
 
-    const [filterTab, setFilterTab] = useState(0)
-
-    const handleChange = (event) => {
-        setStatusFilter(event.target.value);
-    };
-
-    useEffect(() => {
-        console.log(projects);
-    }, [projects])
-
-    const filterFunction = (num) => {
-        setFilterTab(num)
-        onSearchHandler();
-    }
+    const [tab, setTab] = useState(0);
+    const [filterTab, setFilterTab] = useState(0);
 
     const onSearchHandler = () => {
         console.log(statusFilter);
@@ -75,6 +62,46 @@ function AgencyNewestAllProject() {
     }
 
     useEffect(() => {
+        console.log(projects);
+    }, [projects])
+
+    useEffect(() => {
+        console.log(tab);
+    }, [tab])
+
+    useEffect(() => {
+        console.log(filterTab);
+    }, [filterTab])
+
+    const filterButton = (num) => {
+        setFilterTab(num)
+        onSearchHandler();
+    }
+
+    const filterFunction = (event) => {
+        if (event.target.value === 'Done') {
+            setTab(1);
+            setStatusFilter(event.target.value);
+            onSearchHandler();
+        }
+        if (event.target.value === 'In Progress') {
+            setTab(2)
+            setStatusFilter(event.target.value);
+            onSearchHandler();
+        }
+        if (event.target.value === 'Cancelled') {
+            setTab(3)
+            setStatusFilter(event.target.value);
+            onSearchHandler();
+        }
+        if (event.target.value === '') {
+            setTab(0);
+            setStatusFilter(event.target.value);
+            onSearchHandler();
+        }
+    }
+
+    useEffect(() => {
         onSearchHandler();
     }, [])
 
@@ -98,18 +125,18 @@ function AgencyNewestAllProject() {
                             <div className='filter-parent'>
                                 <div className="filter">
                                     <div className="filter-button">
-                                        <div onClick={() => filterFunction(1)} className="reset-filter">
-                                            <h6 style={{color: filterTab === 1 && '#FFFFFF', backgroundColor: filterTab === 1 && '#A6C8FF'}}>Reset Filter</h6>
+                                        <div onClick={() => filterButton(1)} className="reset-filter">
+                                            <h6 style={{ color: filterTab === 1 && '#FFFFFF', backgroundColor: filterTab === 1 && '#A6C8FF' }}>Reset Filter</h6>
                                         </div>
-                                        <div onClick={() => filterFunction(2)} className="apply-filter">
-                                            <h6 style={{color: filterTab === 2 && '#FFFFFF', backgroundColor: filterTab === 2 && '#A6C8FF'}}>Apply Filter</h6>
+                                        <div onClick={() => filterButton(2)} className="apply-filter">
+                                            <h6 style={{ color: filterTab === 2 && '#FFFFFF', backgroundColor: filterTab === 2 && '#A6C8FF' }}>Apply Filter</h6>
                                         </div>
                                     </div>
                                     <h5>Stages</h5>
 
                                     <div className="status-checkbox">
                                         <FormControl component="fieldset" className={classes.formControl}>
-                                            <RadioGroup aria-label="filter" name="filter" onChange={handleChange}>
+                                            <RadioGroup aria-label="filter" name="filter" onChange={filterFunction}>
                                                 <FormControlLabel value="Done" control={<Radio />} label="Completed" />
                                                 <FormControlLabel value="In Progress" control={<Radio />} label="Running" />
                                                 <FormControlLabel value="Cancelled" control={<Radio />} label="Rejected" />
@@ -145,13 +172,13 @@ function AgencyNewestAllProject() {
                             </div>
                             <div className="user-project_AgencyNewestAllProject">
                                 <div className="project-actual-status">
-                                    <div className="completed-project" style={{backgroundColor: tab === 1 ? '#A6C8FF' : '#F9F9F9'}} onClick={() => setTab(1)}>
+                                    <div className="completed-project" style={{ backgroundColor: tab === 1 ? '#A6C8FF' : '#F9F9F9' }}>
                                         <h6>Completed Project</h6>
                                     </div>
-                                    <div className="running-project" style={{backgroundColor: tab === 2 ? '#A6C8FF' : '#F9F9F9'}} onClick={() => setTab(2)}>
+                                    <div className="running-project" style={{ backgroundColor: tab === 2 ? '#A6C8FF' : '#F9F9F9' }}>
                                         <h6>Running Project</h6>
                                     </div>
-                                    <div className="rejected-project" style={{backgroundColor: tab === 3 ? '#A6C8FF' : '#F9F9F9'}} onClick={() => setTab(3)}>
+                                    <div className="rejected-project" style={{ backgroundColor: tab === 3 ? '#A6C8FF' : '#F9F9F9' }}>
                                         <h6>Rejected Project</h6>
                                     </div>
                                 </div>
