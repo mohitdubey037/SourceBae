@@ -40,9 +40,10 @@ const MenuProps = {
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
+        marginLeft: theme.spacing(0),
         minWidth: 120,
         maxWidth: 300,
-    },
+    }
 }));
 
 function getStyles(singleTechObject, allTechnologies, theme) {
@@ -283,7 +284,7 @@ function AddingDeveloper(props) {
                                 <div className="inputField2">
                                     <div className="developerName_addingDeveloper">
                                         <h4>Technology & Skills</h4>
-                                        <FormControl className="mohit" variant="outlined" className={classes.formControl}>
+                                        <FormControl variant="outlined" className={classes.formControl}>
                                             <Select
                                                 // labelId="demo-mutiple-name"
                                                 id="demo-simple-select-outlined"

@@ -51,6 +51,7 @@
     opacity: 0.55;
     border-radius: 50%;
 }
+
 .black-bubble-2 {
     position: absolute;
     width: 65px;
@@ -61,6 +62,7 @@
     opacity: 0.55;
     border-radius: 50%;
 }
+
 .black-bubble-3 {
     position: absolute;
     width: 62px;
@@ -112,14 +114,16 @@
     position: relative;
 }
 
-.steps_hireAgencyForm>div {
+.steps_hireAgencyForm>div, .steps_hireAgencyForm2>div, .steps_hireAgencyForm3>div {
     display: flex;
     width: 15%;
     justify-content: space-between;
     align-items: center;
 }
 
-.steps_hireAgencyForm>div>div>p {
+.steps_hireAgencyForm>div>div>p,
+.steps_hireAgencyForm2>div>div>p,
+.steps_hireAgencyForm3>div>div>p {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -173,8 +177,8 @@
     bottom: 0;
     display: flex;
     justify-content: space-between;
-    width: 36%;
-    left: 18rem;
+    width: 53%;
+    left: 11rem;
     margin-bottom: 35px;
 }
 
@@ -182,19 +186,20 @@
     color: #000;
     background-color: #000;
     position: absolute;
-    width: 100px;
+    width: 15%;
     height: 2px;
     top: 0.9rem;
+    left: 28.7rem;
 }
 
 .mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip1 {
-    left: 5rem;
-    top: 2rem;
+    left: 9.5rem;
+    top: 1rem;
 }
 
 .mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip2 {
     background-color: #A8A8A8;
-    left: 18.5rem;
+    left: 27.5rem;
     top: 2rem;
 }
 
@@ -203,8 +208,8 @@
     bottom: 0;
     display: flex;
     justify-content: space-between;
-    width: 36%;
-    left: 18rem;
+    width: 53%;
+    left: 11rem;
     margin-bottom: 37px;
 }
 
@@ -212,19 +217,19 @@
     color: #000;
     background-color: #000;
     position: absolute;
-    width: 100px;
+    width: 15%;
     height: 2px;
     top: 0.9rem;
 }
 
 .mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3.strip1 {
-    left: 5rem;
-    top: 2rem;
+    left: 9.5rem;
+    top: 0.9rem;
 }
 
 .mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3.strip2 {
-    left: 18.5rem;
-    top: 2rem;
+    left: 28.5rem;
+    top: 1rem;
 }
 
 .color-div_hireAgencyForm1 {
@@ -920,6 +925,12 @@
     padding-right: 5%;
 }
 
+.nextbuttton>div :hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #eaf2ff;
+}
+
 .techStackFields .nextbutton {
     margin-top: 8%;
 }
@@ -949,6 +960,21 @@
     color: black;
     cursor: pointer;
     user-select: none;
+}
+
+.nextbuttton>div:hover, .nextbutton div:hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #eaf2ff;
+}
+
+.backbutton_hireAgencyForm2:hover {
+    background-color: rgb(95, 185, 178) !important;
+    color: #eaf2ff !important;
+}
+.backbutton_hireAgencyForm3:hover {
+    background-color: rgb(95, 185, 178) !important;
+    color: #eaf2ff !important;
 }
 
 .innerHireAgencyForm3 .servicesCardsHireAgency {

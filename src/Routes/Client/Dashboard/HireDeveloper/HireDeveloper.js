@@ -238,8 +238,8 @@ function HireDeveloper(props) {
                 labelledBy="Select"
               />
             ) : (
-                "Sorry no Technologies to select"
-              )}
+              "Sorry no Technologies to select"
+            )}
           </div>
           <div className="developerExperienceRequired">
             <ul>
@@ -386,38 +386,38 @@ function HireDeveloper(props) {
                 </div>
               </FormControl>
             ) : (
-                <FormControl component="fieldset">
-                  <div className="left-margin">
-                    <RadioGroup
-                      aria-label="hourlyBudget"
-                      name="averageBudget"
-                      value={apiData.averageBudget}
-                      onChange={handleChange}
-                    >
-                      <FormControlLabel
-                        value="less than $20"
-                        control={<BlueRadio />}
-                        label="less than $20"
-                      />
-                      <FormControlLabel
-                        value="$20-$40"
-                        control={<BlueRadio />}
-                        label="$20-$40"
-                      />
-                      <FormControlLabel
-                        value="$40-$60"
-                        control={<BlueRadio />}
-                        label="$40-$60"
-                      />
-                      <FormControlLabel
-                        value="Above $60"
-                        control={<BlueRadio />}
-                        label="Above $60"
-                      />
-                    </RadioGroup>
-                  </div>
-                </FormControl>
-              )}
+              <FormControl component="fieldset">
+                <div className="left-margin">
+                  <RadioGroup
+                    aria-label="hourlyBudget"
+                    name="averageBudget"
+                    value={apiData.averageBudget}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="less than $20"
+                      control={<BlueRadio />}
+                      label="less than $20"
+                    />
+                    <FormControlLabel
+                      value="$20-$40"
+                      control={<BlueRadio />}
+                      label="$20-$40"
+                    />
+                    <FormControlLabel
+                      value="$40-$60"
+                      control={<BlueRadio />}
+                      label="$40-$60"
+                    />
+                    <FormControlLabel
+                      value="Above $60"
+                      control={<BlueRadio />}
+                      label="Above $60"
+                    />
+                  </RadioGroup>
+                </div>
+              </FormControl>
+            )}
           </div>
 
           <div className="startPeriod">
@@ -478,12 +478,11 @@ function HireDeveloper(props) {
           </div>
 
           <div className="submitBtn">
-            <div>
-              <div onClick={handleSubmit}>
-                Submit
-              </div>
-            </div>
 
+            <div onClick={handleSubmit}>
+              Submit
+            </div>
+            
           </div>
         </div>
       </div>

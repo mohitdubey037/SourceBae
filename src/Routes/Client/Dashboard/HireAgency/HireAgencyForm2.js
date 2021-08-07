@@ -307,7 +307,7 @@ function HireAgencyForm2(props) {
               </div>
 
               <div className="nextbutton">
-                <div onClick={() => props.history.push("/hire-agency-form-one")}>
+                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push("/hire-agency-form-one")}>
                   {/* <i class="fa fa-long-arrow-left" aria-hidden="true"></i> */}
                   Back
                 </div>
@@ -355,7 +355,8 @@ function HireAgencyForm2(props) {
             }
           </div>
           <div className="steps_hireAgencyForm2">
-            <div>
+
+            <div className="step3_disabled">
               <div >
                 <p>Step 1</p>
               </div>
@@ -371,9 +372,9 @@ function HireAgencyForm2(props) {
               <div className='color_hireAgencyForm green'></div>
             </div>
 
-            <div className="black-strip_hireAgencyForm2 strip2"></div>
+            <div className="black-strip_hireAgencyForm2"></div>
 
-            <div>
+            <div className="step3_disabled">
               <div>
                 <p className="grey-step_hireAgencyForm">Step 3</p>
               </div>

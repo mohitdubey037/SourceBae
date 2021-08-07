@@ -396,28 +396,22 @@
 
 .submitBtn>div:hover {
   cursor: pointer;
-  /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%); */
-  box-shadow: 0 2px 4px 2px;
+  /* box-shadow: 0 2px 4px 2px; */
+  background-color: blue;
   color: #eaf2ff;
-  /* background: ; */
 }
 
 .submitBtn>div {
-  width: 15%;
+  width: 11%;
   background: #eaf2ff;
   border-radius: 4px;
-}
-
-.submitBtn>div>div {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.4px;
-  text-transform: capitalize;
-  padding: 1rem 2rem;
-  width: 100%;
+  padding: 0.6rem 1rem;
   color: #3a3a3a;
 }

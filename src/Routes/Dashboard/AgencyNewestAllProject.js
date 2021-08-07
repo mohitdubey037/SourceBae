@@ -44,19 +44,39 @@ function AgencyNewestAllProject() {
                 .then(response => {
                     console.log(response, 'api')
                     setProjects(response.projects);
+                    setTab(0);
                 })
                 .catch((err) => {
                     console.error(err?.response?.data?.message);
                     setErr(err?.response?.data?.message)
+                    setTab(0);
                 });
         }
         else {
             instance.get(`/api/${Role}/projects/all?projectCurrentStatus=${statusFilter}`)
                 .then(response => {
+                    if (statusFilter === 'Done') {
+                        setTab(1);
+                    }
+                    if (statusFilter === 'In Progress') {
+                        setTab(2);
+                    }
+                    if (statusFilter === 'Cancelled') {
+                        setTab(3);
+                    }
                     setProjects(response.projects);
                 })
                 .catch((err) => {
                     console.error(err?.response?.data?.message);
+                    if (statusFilter === 'Done') {
+                        setTab(1);
+                    }
+                    if (statusFilter === 'In Progress') {
+                        setTab(2);
+                    }
+                    if (statusFilter === 'Cancelled') {
+                        setTab(3);
+                    }
                     setErr(err?.response?.data?.message)
                     setProjects([])
                 });
@@ -82,26 +102,8 @@ function AgencyNewestAllProject() {
     }
 
     const filterFunction = (event) => {
-        if (event.target.value === 'Done') {
-            setTab(1);
-            setStatusFilter(event.target.value);
-            onSearchHandler();
-        }
-        if (event.target.value === 'In Progress') {
-            setTab(2)
-            setStatusFilter(event.target.value);
-            onSearchHandler();
-        }
-        if (event.target.value === 'Cancelled') {
-            setTab(3)
-            setStatusFilter(event.target.value);
-            onSearchHandler();
-        }
-        if (event.target.value === '') {
-            setTab(0);
-            setStatusFilter(event.target.value);
-            onSearchHandler();
-        }
+        setStatusFilter(event.target.value);
+        onSearchHandler();
     }
 
     useEffect(() => {

@@ -1,4 +1,3 @@
-
 .mainAddingDeveloper {
   width: 100%;
   display: flex;
@@ -148,8 +147,7 @@
   margin-bottom: 2%;
 }
 
-.inputField1 .developerName_addingDeveloper,
-.inputField1 .developerDesignation_addingDeveloper {
+.inputField1 .developerName_addingDeveloper, .inputField1 .developerDesignation_addingDeveloper {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -200,8 +198,7 @@
   background-color: white;
 }
 
-.developerName_addingDeveloper > h4,
-.developerDesignation_addingDeveloper > h4 {
+.developerName_addingDeveloper>h4, .developerDesignation_addingDeveloper>h4 {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -210,8 +207,7 @@
   text-transform: capitalize;
 }
 
-.inputField1 .developerName_addingDeveloper input,
-.inputField1 .developerDesignation_addingDeveloper input {
+.inputField1 .developerName_addingDeveloper input, .inputField1 .developerDesignation_addingDeveloper input {
   border: 1px solid #a2a2a2;
   border-radius: 8px;
   width: 73%;
@@ -253,11 +249,10 @@
 }
 
 .inputField2 .MuiSelect-root {
-  margin-left: 7px !important;
+  padding-left: 4px;
 }
 
-.MuiInput-underline:before,
-.MuiInput-underline::after {
+.MuiInput-underline:before, .MuiInput-underline::after {
   content: none !important;
 }
 
@@ -299,6 +294,19 @@
   color: #3a3a3a !important;
 }
 
+.MuiSelect-root em {
+  width: 73%;
+  height: 40px;
+  padding-left: 2px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+
+
 .priceRange {
   margin-top: 5%;
 }
@@ -308,32 +316,44 @@
 }
 
 .submitButton {
-  width: 90%;
+  margin-top: 2rem;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 5%;
 }
 
 .submitButton button {
-  width: 130px;
-  height: 47px;
   border-radius: 8px;
   outline: none;
   border: none;
-  background: #eaf2ff;
-  color: #3a3a3a;
-  font-size: 20px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 17.6154px;
-  line-height: 27px;
+  background: #EAF2FF;
+  border-radius: 4px;
+  width: 100px;
+  height: 40px;
+  font: normal 600 14px 'Inter';
+  line-height: 17px;
   text-align: center;
-  letter-spacing: 0.753846px;
-  text-transform: capitalize;
-  margin-top: 30px;
+  letter-spacing: 0.4px;
+  color: black;
 }
 
 .mainAddingDeveloper .submitButton button:hover {
   box-shadow: 0 2px 8px 2px rgb(0 0 0 / 20%);
+}
+
+.inputForm .submitButton {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.inputForm .submitButton button:hover {
+  cursor: pointer;
+  background-color: blue;
+  color: #eaf2ff;
 }
