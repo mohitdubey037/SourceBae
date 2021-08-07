@@ -12,12 +12,14 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import Not_Found from '../../assets/images/Newestdashboard/Not_found/no_data_icon.jpg';
+import { SettingsBackupRestore } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
-      marginLeft: theme.spacing(1.5)
+        marginLeft: theme.spacing(1.5)
     }
-  }));  
+}));
 
 function AgencyNewestAllProject() {
     const Role = localStorage.getItem('role');
@@ -27,44 +29,46 @@ function AgencyNewestAllProject() {
 
     const [projects, setProjects] = useState([]);
     const [statusFilter, setStatusFilter] = useState('');
+    const [tab, setTab] = useState(0)
     const [err, setErr] = useState();
+
+    const [filterTab, setFilterTab] = useState(0)
 
     const handleChange = (event) => {
         setStatusFilter(event.target.value);
-      };
+    };
 
-    // const getAllProjects = () => {
-    //     instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
-    //         .then(function (response) {
-    //             setProjects(response.projects);
-    //             // setStatuses(response.statuses);
-    //             console.log(response);
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
     useEffect(() => {
         console.log(projects);
-    },[projects])
+    }, [projects])
+
+    const filterFunction = (num) => {
+        setFilterTab(num)
+        onSearchHandler();
+    }
 
     const onSearchHandler = () => {
+        console.log(statusFilter);
         if (statusFilter === '') {
             instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
                 .then(response => {
+                    console.log(response, 'api')
                     setProjects(response.projects);
                 })
                 .catch((err) => {
                     console.error(err?.response?.data?.message);
+                    setErr(err?.response?.data?.message)
                 });
         }
         else {
-            instance.get(`/api/${Role}/products/clientId=${clientId}/projectCurrentStatus=${statusFilter}`)
+            instance.get(`/api/${Role}/projects/all?projectCurrentStatus=${statusFilter}`)
                 .then(response => {
                     setProjects(response.projects);
                 })
                 .catch((err) => {
                     console.error(err?.response?.data?.message);
+                    setErr(err?.response?.data?.message)
+                    setProjects([])
                 });
         }
 
@@ -73,6 +77,10 @@ function AgencyNewestAllProject() {
     useEffect(() => {
         onSearchHandler();
     }, [])
+
+    useEffect(() => {
+        console.log(projects, 'effect');
+    }, [projects])
 
     return (
         <div className="dashboard-container">
@@ -90,11 +98,11 @@ function AgencyNewestAllProject() {
                             <div className='filter-parent'>
                                 <div className="filter">
                                     <div className="filter-button">
-                                        <div className="reset-filter">
-                                            <h6>Reset Filter</h6>
+                                        <div onClick={() => filterFunction(1)} className="reset-filter">
+                                            <h6 style={{color: filterTab === 1 && '#FFFFFF', backgroundColor: filterTab === 1 && '#A6C8FF'}}>Reset Filter</h6>
                                         </div>
-                                        <div className="apply-filter">
-                                            <h6>Apply Filter</h6>
+                                        <div onClick={() => filterFunction(2)} className="apply-filter">
+                                            <h6 style={{color: filterTab === 2 && '#FFFFFF', backgroundColor: filterTab === 2 && '#A6C8FF'}}>Apply Filter</h6>
                                         </div>
                                     </div>
                                     <h5>Stages</h5>
@@ -102,9 +110,10 @@ function AgencyNewestAllProject() {
                                     <div className="status-checkbox">
                                         <FormControl component="fieldset" className={classes.formControl}>
                                             <RadioGroup aria-label="filter" name="filter" onChange={handleChange}>
-                                                <FormControlLabel value="completed" control={<Radio />} label="Completed" />
-                                                <FormControlLabel value="running" control={<Radio />} label="Running" />
-                                                <FormControlLabel value="rejected" control={<Radio />} label="Rejected" />
+                                                <FormControlLabel value="Done" control={<Radio />} label="Completed" />
+                                                <FormControlLabel value="In Progress" control={<Radio />} label="Running" />
+                                                <FormControlLabel value="Cancelled" control={<Radio />} label="Rejected" />
+                                                <FormControlLabel value='' control={<Radio />} label="all" />
                                             </RadioGroup>
                                         </FormControl>
 
@@ -127,7 +136,7 @@ function AgencyNewestAllProject() {
                                         <input type="text" placeholder="Type Here" />
                                     </div>
 
-                                    <div onClick={onSearchHandler} className="search-button">
+                                    <div className="search-button">
                                         <div>
                                             Search
                                         </div>
@@ -136,22 +145,31 @@ function AgencyNewestAllProject() {
                             </div>
                             <div className="user-project_AgencyNewestAllProject">
                                 <div className="project-actual-status">
-                                    <div className="completed-project">
+                                    <div className="completed-project" style={{backgroundColor: tab === 1 ? '#A6C8FF' : '#F9F9F9'}} onClick={() => setTab(1)}>
                                         <h6>Completed Project</h6>
                                     </div>
-                                    <div className="running-project">
+                                    <div className="running-project" style={{backgroundColor: tab === 2 ? '#A6C8FF' : '#F9F9F9'}} onClick={() => setTab(2)}>
                                         <h6>Running Project</h6>
                                     </div>
-                                    <div className="rejected-project">
+                                    <div className="rejected-project" style={{backgroundColor: tab === 3 ? '#A6C8FF' : '#F9F9F9'}} onClick={() => setTab(3)}>
                                         <h6>Rejected Project</h6>
                                     </div>
                                 </div>
                                 <div className="agency-card-parent">
-                                    {projects.map(p => {
-                                        return (
-                                            <AllProjectCard {...p} />
-                                        )
-                                    })}
+                                    {projects.length === 0 ?
+                                        <>
+                                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                                <img height="300px" src={Not_Found} alt="no_data_img" />
+                                                <h6>{err}</h6>
+                                            </div>
+                                        </>
+                                        :
+                                        projects.map(p => {
+                                            return (
+                                                <AllProjectCard {...p} />
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
 

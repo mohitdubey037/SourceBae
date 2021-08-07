@@ -16,7 +16,7 @@ function AllProjectCard(props) {
             <div className="strip yellow-strip"></div>
             <div className="user-project_heading_agencyNewestAllProject">
                 <div className="user-project_child_agencyNewestAllProject">
-                    <h5>{props.projectName}</h5>
+                    <h5>{props?.projectName}</h5>
                 </div>
                 <Button name="Show Details" />
             </div>
@@ -27,7 +27,7 @@ function AllProjectCard(props) {
                         <img src={DateImage} alt="dateImage" />
                     </div>
                     <Moment format="D MMM YYYY" withTitle>
-                        <p>{props.createdAt}</p>
+                        <p>{props?.createdAt}</p>
                     </Moment>
                     {/* <p>Matched On 25 March 2021</p> */}
                 </div>
@@ -36,7 +36,7 @@ function AllProjectCard(props) {
                         <img src={DateImage2} alt="dateImage2" />
                     </div>
                     <Moment format="D MMM YYYY" withTitle>
-                        <p>{props.updatedAt}</p>
+                        <p>{props?.updatedAt}</p>
                     </Moment>
                     {/* <p>Matched On 25 March 2021</p> */}
                 </div>
@@ -47,15 +47,15 @@ function AllProjectCard(props) {
                     <thead>
                         <tr>
                             <td>Industry</td>
-                            <td>{props.projectDomainId.domainName}</td>
+                            <td>{props?.projectDomainId?.domainName}</td>
                             <td>Final Budget</td>
                             <td>{props.projectFinalCost === undefined ? props.projectProposalCost : props.projectFinalCost}</td>
                         </tr>
                         <tr>
                             <td>Expert Categories</td>
-                            <td>{props.projectExpertiseRequired[0].expertiseName}</td>
+                            <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
                             <td>Services</td>
-                            <td>{props.projectServicesRequired[0].serviceName}</td>
+                            <td>{props?.projectServicesRequired[0]?.serviceName}</td>
                         </tr>
                     </thead>
                 </table>
