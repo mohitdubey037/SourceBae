@@ -202,7 +202,13 @@
   letter-spacing: 1px;
 }
 
+.detailsButtons > button:hover {
+  background: rgb(2, 69, 124);
+  color: white;
+}
+
 .rejectButton {
+  border: 1px solid crimson;
   background-color: crimson;
 }
 
