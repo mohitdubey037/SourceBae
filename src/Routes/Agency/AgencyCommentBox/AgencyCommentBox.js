@@ -132,7 +132,7 @@ const AgencyCommentBox = (props) => {
           //   quotationLink: response[0].mediaURL,
           // });
           console.log(response[0].mediaURL);
-          const data = {...apiData, quotationLink: response[0].mediaURL};
+          const data = { ...apiData, quotationLink: response[0].mediaURL };
           console.log(data);
           if (props.isAskedForQuotation) {
             data["isAskedForQuotation"] = true;
@@ -353,11 +353,11 @@ const AgencyCommentBox = (props) => {
               {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
                 ? ""
                 : "disabled"}`}> */}
-              <div className="yellowBg">
+              <div className="yellowBg" style={{height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '339px'}}>
                 <img src={proposalImage} alt="" />
               </div>
-              <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons /*md-flex*/ height">
-                {props.projectProposals[0].isProposalActionActive ?
+              {props.projectProposals[0].isProposalActionActive ?
+                <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons /*md-flex*/ height">
                   <>
                     <div>
                       <p>Accept or Reject the Project.</p>
@@ -371,11 +371,21 @@ const AgencyCommentBox = (props) => {
                       </button>
                     </div>
                   </>
-                  :
-                  props.projectProposals[0].isReplySectionActive === 'false' &&
-                  <p className="color-black">Please provide some reply</p>
-                }
-              </div>
+                  {props.projectProposals[0].isReplySectionActive === 'false' &&
+                    <p className="color-black">Please provide some reply</p>
+                  }
+                </div>
+                :
+                file === null 
+                  ?
+                <div className="quotation_file_upload">
+                  <p>Please upload a file of quotation</p>
+                </div>
+                :
+                <div className="quotation_file_upload">
+                  <p>{file.name}</p>
+                </div>
+              }
             </div>
           )}
       </div>

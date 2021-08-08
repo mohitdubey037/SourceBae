@@ -101,6 +101,10 @@
   width: 30%,
 }
 
+.quotation_file_upload {
+  height: 33px;
+}
+
 .reply-button {
   background: none;
   min-width: 40px;
