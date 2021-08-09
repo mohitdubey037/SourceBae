@@ -226,7 +226,10 @@ function ProductAgencies(props) {
                     {/* <div className="backArrow_productAgencies" onClick={() => { props.history.goBack() }}>
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                 </div> */}
-                    <Back name="Product Agencies" />
+                    <div className="margin-top">
+                        <Back name="Product Agencies" />
+                    </div>
+
 
                     <div className="mainAgencyList_productAgencies">
                         <div className="innerAgencyList_productAgencies">
@@ -431,7 +434,9 @@ function ProductAgencies(props) {
                                                         )}
                                                     </Select>
                                                 </FormControl>
-                                                <button className='searchButton' onClick={onSearchHandler}>Search</button>
+                                                <div>
+                                                    <p className='searchButton' onClick={onSearchHandler}>Search</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -12,6 +12,7 @@ import PhoneImage from '../../../assets/images/Newestdashboard/Client-one-hire-d
 import Group from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Group.svg';
 import Polygon1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon2.svg';
 import Polygon2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon.svg';
+import Back from "../../../Components/Back/Back";
 
 function ClientOneHireDeveloper(props) {
     let { hireDeveloperId } = useParams();
@@ -71,13 +72,16 @@ function ClientOneHireDeveloper(props) {
     return (
         <>
             <Navbar />
+            <div className="back-parent">
+                <Back name="Matched Agencies" />
+            </div>
             {loading ? <Spinner /> :
                 <>
                     <div className="respondCards_clientOneHireDeveloper">
                         <div className="moreAgencies_clientOneHireDeveloper">
-                            <div className="moreAgencyHeading">
+                            {/* <div className="moreAgencyHeading">
                                 <h3>Matched Agencies</h3>
-                            </div>
+                            </div> */}
                             <div className="innerMoreAgencies_clientOneHireDeveloper">
                                 {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
                                     <>
