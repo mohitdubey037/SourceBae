@@ -99,18 +99,20 @@ function ClientOneHireDeveloper(props) {
                                                         <>
                                                             <div className="moreAgencyInfo">
                                                                 <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
-                                                                <div className="phone_clientOneHireDeveloper">
-                                                                    <img src={PhoneImage} alt="phone_image" />
-                                                                    <p>{agency?.agencyId?.agencyPhone}</p>
-                                                                </div>
-                                                                <div className="email_clientOneHireDeveloper">
-                                                                    <img src={Group} alt="group" />
-                                                                    <p>{agency?.agencyId?.agencyEmail}</p>
+                                                                <div>
+                                                                    <div className="phone_clientOneHireDeveloper">
+                                                                        <img src={PhoneImage} alt="phone_image" />
+                                                                        <p>{agency?.agencyId?.agencyPhone}</p>
+                                                                    </div>
+                                                                    <div className="email_clientOneHireDeveloper">
+                                                                        <img src={Group} alt="group" />
+                                                                        <p>{agency?.agencyId?.agencyEmail}</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
                                                             <div className="button_parent">
-                                                                <div className="checkResource moreAgencyLogo">
+                                                                <div className="moreAgencyLogo checkResource">
                                                                     <p onClick={() => handleDevelopers(agency?.agencyId?._id)}>Check Resources</p>
                                                                 </div>
                                                                 <div className="moreAgencyLogo show-details">

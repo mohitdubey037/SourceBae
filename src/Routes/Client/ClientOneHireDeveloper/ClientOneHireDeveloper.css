@@ -9,20 +9,19 @@
 .new_design_clientOneHireDeveloper {
   width: 423px;
   margin-top: 10px;
-  margin-bottom: 10px;
-  /* height: 278px; */
   margin-left: 20px;
-  background: linear-gradient(180deg, #F9F9F9 0%, rgba(249, 249, 249, 0) 100%);
+  background: linear-gradient( 180deg, #F9F9F9 0%, rgba(249, 249, 249, 0) 100%);
   position: relative;
+  height: 278px;
 }
 
-.moreAgencyHeading{
+.moreAgencyHeading {
   padding-bottom: 1%;
   border-bottom: 1px solid #e0e0e0;
   padding-top: 1%;
 }
 
-.moreAgencyHeading h3{
+.moreAgencyHeading h3 {
   font-family: 'Inter';
   font-size: 1.2rem;
   font-weight: bold;
@@ -39,9 +38,12 @@
   text-transform: capitalize;
   padding-top: 3%;
   color: #407BFF;
-  height: '224px';
-  width: 70%;
+  width: 69%;
   text-align: center;
+}
+
+.moreAgencyInfo > div {
+  margin-top: 40px;
 }
 
 .innerMoreAgencies_clientOneHireDeveloper {
@@ -66,7 +68,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  width: 57%;
+  width: 55%;
   margin-left: 40px;
 }
 
@@ -84,7 +86,11 @@
   max-height: 100px;
 }
 
-/* .moreAgencyLogo p {
+.moreAgencyLogo {
+  background: #F2F2F2;
+  padding: 12px;
+  width: 40%;
+  color: #5A5A5A;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -93,11 +99,11 @@
   text-align: center;
   letter-spacing: 0.554545px;
   text-transform: capitalize;
-} */
+  margin-left: 24px;
+}
 
 .checkResource.moreAgencyLogo:hover {
   background-color: rgb(17, 166, 192);
-  /* color: rgb(212, 191, 212); */
   color: white;
 }
 
@@ -110,12 +116,9 @@
   margin-left: 30px;
 }
 
-.new_design_clientOneHireDeveloper .button_parent {
-  margin-top: 1%;
-}
-
 .button_parent {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
 }

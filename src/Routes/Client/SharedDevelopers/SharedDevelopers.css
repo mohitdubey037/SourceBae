@@ -1,7 +1,5 @@
 .respond-card_parent {
   position: relative;
-  /* height: 536px; */
-  /* min-height: 445px; */
   top: 20px;
   background: #F9F9F9;
   border-radius: 15px;
@@ -14,8 +12,6 @@
 
 .width {
   position: absolute;
-  /* height: 361px; */
-  /* left: 20px; */
   margin: auto;
   top: 20px;
   background: #FFFFFF;
@@ -56,10 +52,7 @@
   background: #E8E2E2;
   width: 50px;
   height: 50px;
-  position: absolute;
   border-radius: 50%;
-  left: 3.3rem;
-  top: 0.5rem;
 }
 
 .moreAgencyCard.new-design {
@@ -78,30 +71,24 @@
 
 .view-resume_div {
   background: #FFFFFF;
-  border: 1px solid #DCD3D3;
+  border: 1px solid #F348A4;
   box-sizing: border-box;
   border-radius: 5.54545px;
   padding: 7px;
-  position: absolute;
-  bottom: 9px;
-  left: 4.5%;
+  margin-top: 20px;
 }
 
-.moreAgencyList .moreAgencyInfo {
-  position: absolute;
-  top: 4rem;
-  left: 2.5rem;
+.new_design_sharedDeveloper .moreAgencyInfo {
+  margin-top: 14px;
 }
 
-.moreAgencyList .moreAgencyInfo h6, .moreAgencyList .moreAgencyInfo p {
+.moreAgencyList .moreAgencyInfo p {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 150%;
-  /* identical to box height, or 21px */
   text-transform: capitalize;
-  /* TEXT CLR */
   color: #3A3A3A;
 }
 
@@ -146,14 +133,10 @@
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 12px;
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   width: 913px;
   height: 215px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   padding: 20px;
-  grid-row-gap: 5px
 }
 
 .respondCards {
@@ -163,30 +146,18 @@
   align-items: center;
 }
 
-.moreAgencyList {
-  position: relative;
+.developers-div .moreAgencyList {
+  display: flex;
+  grid-column-gap: 20px
 }
 
-.moreAgencyList {
+.names_of_developer {
   width: 153px;
   min-height: 172px;
-  background-color: red;
+  /* background-color: red; */
   position: relative;
-}
-
-.moreAgencyLogo {
-  background: #F2F2F2;
-  border: 5.54px solid #DCD3D3;
-  padding: 6px;
-  width: 40%;
-  margin-top: 20px;
-  color: #5A5A5A;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  letter-spacing: 0.554545px;
-  text-transform: capitalize;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
 }
