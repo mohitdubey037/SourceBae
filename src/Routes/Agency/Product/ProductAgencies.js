@@ -226,7 +226,7 @@ function ProductAgencies(props) {
                     {/* <div className="backArrow_productAgencies" onClick={() => { props.history.goBack() }}>
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                 </div> */}
-                    <div className="margin-top">
+                    <div className="margin-top_productAgencies">
                         <Back name="Product Agencies" />
                     </div>
 

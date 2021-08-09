@@ -345,14 +345,14 @@
   }
 }
 
-.respondCards {
+/* .respondCards {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 5%;
   margin-top: 2%;
-}
+} */
 
 .innerResponseCard {
   width: 40%;

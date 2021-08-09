@@ -90,110 +90,109 @@ function RespondedDetails(props) {
         <Spinner />
       ) : (
         <>
-          {/* <div
-            style={{ marginTop: "55px" }}
-            className="backArrow"
-            onClick={() => routerHistory.goBack()}
-          >
-            <i className="fa fa-angle-left" aria-hidden="true"></i>
-          </div> */}
           <div className="main-card_SharedDevelopers">
             <div className="respond-card_parent">
-              <div className="respondCards margin-top">
-                {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                  <div className="innerResponseCard width">
-                    <span className="leftLine"></span>
-                    <div>
-                      <p>Agency Name</p>
-                      <p>{`${singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                        ?.agencyName || ""
-                        }`}</p>
-                    </div>
-                    <div >
-                      <p>Agency Description</p>
-                      <p style={{ fontWeight: "600" }}>
-                        {
-                          singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                            ?.agencyDescription
-                        }
-                      </p>
-                    </div>
-                    <div>
-                      <p>Agency Email</p>
-                      <p>
-                        {
-                          singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                            ?.agencyEmail
-                        }
-                      </p>
-                    </div>
-                    <div>
-                      <p>Agency Phone</p>
-                      <p>
-                        {
-                          singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                            ?.agencyPhone
-                        }
-                      </p>
-                    </div>
+              {/* <div className="respondCards margin-top"> */}
+              {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                <div className="innerResponseCard width">
+                  <span className="leftLine"></span>
+                  <div>
+                    <p>Agency Name</p>
+                    <p>{`${singleHiredDeveloper?.agenciesMatched[0]?.agencyId
+                      ?.agencyName || ""
+                      }`}</p>
                   </div>
-                ) : (
-                  "No Data Found"
-                )}
-                <div className="moreAgencies_shared new_design">
-                  <div className="innerMoreAgencies">
-                    <div className="moreAgencyHeading no_border">
-                      <h3 style={{ textAlign: 'center', color: '#FFFFFF', marginTop: '44px' }}>Matched Developer</h3>
-                    </div>
-                    <div className="moreAgencyList" style={{ display: 'flex', justifyContent: 'center' }}>
-                      {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
-                      {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                        singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
-                          singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.map(
-                            (developer) => {
-                              return (
-                                <>
-                                <div className="moreAgencyCard new-design">
-                                  <div className="moreAgencyInfo">
-                                    <h6>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</h6>
-                                    <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
-                                  </div>
+                  <div >
+                    <p>Agency Description</p>
+                    <p style={{ fontWeight: "600" }}>
+                      {
+                        singleHiredDeveloper?.agenciesMatched[0]?.agencyId
+                          ?.agencyDescription
+                      }
+                    </p>
+                  </div>
+                  <div>
+                    <p>Agency Email</p>
+                    <p>
+                      {
+                        singleHiredDeveloper?.agenciesMatched[0]?.agencyId
+                          ?.agencyEmail
+                      }
+                    </p>
+                  </div>
+                  <div>
+                    <p>Agency Phone</p>
+                    <p>
+                      {
+                        singleHiredDeveloper?.agenciesMatched[0]?.agencyId
+                          ?.agencyPhone
+                      }
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                "No Data Found"
+              )}
+              <div className="moreAgencies_shared new_design no_border">
+                {/* <div className="innerMoreAgencies no_border"> */}
+                {/* <div className="moreAgencyHeading no_border"> */}
+                <h3>Matched Developer</h3>
+                {/* </div> */}
+
+
+                {singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length > 0 && <div className="moreAgencySeeMore">
+                  <button onClick={() => alert("Agency Selected")}>
+                    Select Agency
+                  </button>
+                </div>}
+                {/* </div> */}
+              </div>
+
+              {/* </div> */}
+              <div className="developers-div">
+                <div className="developersName_sharedDevelopers">
+                  <div className="moreAgencyList">
+                    {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
+                    {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                      singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
+                        singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.map(
+                          developer => {
+                            return (
+                              <>
+                              <div className="name_circle">
+
+                              </div>
+                                <div className="moreAgencyInfo">
+                                  <h6 style={{textAlign: 'center'}}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</h6>
+                                  <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
                                 </div>
-                                  <div className="moreAgencyLogo new-design">
-                                    {developer?.developerId?.developerDocuments?.length > 0 ? (
-                                      <div className="view-resume_div">
-                                        <a className="view-resume_child" href={
-                                            developer?.developerId?.developerDocuments[0]
-                                              .documentLink
-                                          }
-                                          target="new"
-                                        >
-                                          Check Resume
-                                        </a>
-                                      </div>
-                                    ) : (
-                                      "No resume"
-                                    )}
+                                {developer?.developerId?.developerDocuments?.length > 0 ? (
+                                  <div className="view-resume_div">
+                                    <a className="view-resume_child" href={
+                                      developer?.developerId?.developerDocuments[0]
+                                        .documentLink
+                                    }
+                                      target="new"
+                                    >
+                                      Check Resume
+                                    </a>
                                   </div>
-                                  </>
-                              );
-                            }
-                          ) :
-                          <div>No Developers shared by the Agency.</div>
-                      ) : (
-                        <div>No Matched Agency Found.</div>
-                      )}
-                    </div>
-                    {singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length > 0 && <div className="moreAgencySeeMore">
-                      <button onClick={() => alert("Agency Selected")}>
-                        Select Agency
-                      </button>
-                    </div>}
+                                ) : (
+                                  "No resume"
+                                )}
+                              </>
+                            );
+                          }
+                        ) :
+                        <div>No Developers shared by the Agency.</div>
+                    ) : (
+                      <div>No Matched Agency Found.</div>
+                    )}
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
 
         </>
@@ -201,6 +200,8 @@ function RespondedDetails(props) {
     </>
   );
 }
+
+
 
 const mapStateToProps = (state) => {
   return {
