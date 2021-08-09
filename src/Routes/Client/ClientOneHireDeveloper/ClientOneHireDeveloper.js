@@ -72,7 +72,7 @@ function ClientOneHireDeveloper(props) {
     return (
         <>
             <Navbar />
-            <div className="back-parent">
+            <div className="margin-top">
                 <Back name="Matched Agencies" />
             </div>
             {loading ? <Spinner /> :

@@ -18,6 +18,10 @@
     font-size: 2rem;
 }
 
+.margin-top {
+    margin-top: 1%;
+}
+
 .officeVisitFilter_productAgencies {
     margin-bottom: 3%;
 }
@@ -320,7 +324,7 @@
 }
 
 .connectedButton>div:hover {
-   color: blue;
+    color: blue;
 }
 
 .connectedButton i {

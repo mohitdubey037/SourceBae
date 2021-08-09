@@ -6,14 +6,18 @@ import dashboardIcon from "../../../assets/images/Newestdashboard/SideBar/dashbo
 import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/postProject_icon.svg";
 import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile_icon.svg";
 import notificationIcon from "../../../assets/images/Newestdashboard/SideBar/notification_icon.svg";
+import developersIcon from "../../../assets/images/Newestdashboard/SideBar/people_icon.svg";
+import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout_icon.svg";
 import settingIcon from "../../../assets/images/Newestdashboard/SideBar/setting_icon.svg";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PeopleOutlinedIcon from '@material-ui/icons/PeopleOutlined';
+import { withRouter } from "react-router";
 
 import { useHistory } from 'react-router-dom';
 
 
-function Sidebar() {
+function Sidebar(props) {
+    console.log(props);
     const role = localStorage.getItem('role');
 
     const routerHistory = useHistory();
@@ -54,7 +58,7 @@ function Sidebar() {
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div className="selected-strip" />
-                    <img src={dashboardIcon} alt="dashboard icon" />
+                    <img style={{filter: props.location.pathname === '/clientnewestdashboard' && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'}} src={dashboardIcon} alt="dashboard icon" />
                     <p>Dashboard</p>
                 </div>
                 {role === "Client" &&
@@ -65,7 +69,7 @@ function Sidebar() {
                         </div>
                         <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
                             {/* <img src={PeopleRoundedIcon} alt="dashboard icon" /> */}
-                            <PeopleOutlinedIcon />
+                            <img src={developersIcon} alt="developers_icon" />
                             <div>
                                 <p>Developer</p>
                                 <p>Request</p>
@@ -86,7 +90,8 @@ function Sidebar() {
                     <p>Setting</p>
                 </div> */}
                 <div onClick={logout} className="setting-icon icons">
-                    <ExitToAppIcon color="#999" />
+                    {/* <ExitToAppIcon color="#999" /> */}
+                    <img src={logoutIcon} alt="icon" />
                     <p>Log Out</p>
                 </div>
                 {/* <div className="setting-icon icons">
@@ -110,4 +115,4 @@ function Sidebar() {
     )
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);

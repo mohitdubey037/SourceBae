@@ -119,7 +119,8 @@
 
 .checkResource.moreAgencyLogo:hover {
   background-color: rgb(17, 166, 192);
-  color: rgb(212, 191, 212);
+  /* color: rgb(212, 191, 212); */
+  color: white;
 }
 
 .moreAgencyLogo.show-details:hover {

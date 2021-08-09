@@ -61,9 +61,10 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 }
 
 function ClientNewestDashboard(props) {
+    console.log(props)
 
     const Role = localStorage.getItem('role');
-    const clientId = localStorage.getItem("userId")
+    const clientId = localStorage.getItem("userId");
 
     const [open, setOpen] = React.useState(false);
     const [openmodal, setOpenModal] = useState(false);

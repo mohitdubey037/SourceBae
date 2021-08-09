@@ -50,6 +50,10 @@
   height: 22px;
 }
 
+.postProject-icon > img {
+  height: 19px;
+}
+
 .icons > p {
   font-size: 12px;
   padding: 5px;
