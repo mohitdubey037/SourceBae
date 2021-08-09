@@ -92,7 +92,6 @@ function RespondedDetails(props) {
         <>
           <div className="main-card_SharedDevelopers">
             <div className="respond-card_parent">
-              {/* <div className="respondCards margin-top"> */}
               {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
                 <div className="innerResponseCard width">
                   <span className="leftLine"></span>
@@ -129,74 +128,68 @@ function RespondedDetails(props) {
                       }
                     </p>
                   </div>
+
+                  <div className="moreAgencies_shared new_design no_border">
+                    <div>
+                      <h3>Matched Developer</h3>
+                    </div>
+                    {singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length > 0 && <div className="moreAgencySeeMore">
+                      <button onClick={() => alert("Agency Selected")}>
+                        Select Agency
+                      </button>
+                    </div>}
+                  </div>
+
                 </div>
               ) : (
                 "No Data Found"
               )}
-              <div className="moreAgencies_shared new_design no_border">
-                {/* <div className="innerMoreAgencies no_border"> */}
-                {/* <div className="moreAgencyHeading no_border"> */}
-                <h3>Matched Developer</h3>
-                {/* </div> */}
 
 
-                {singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length > 0 && <div className="moreAgencySeeMore">
-                  <button onClick={() => alert("Agency Selected")}>
-                    Select Agency
-                  </button>
-                </div>}
-                {/* </div> */}
-              </div>
-
-              {/* </div> */}
               <div className="developers-div">
-                {/* <div className="developersName_sharedDevelopers"> */}
-                  <div className="moreAgencyList new_design_sharedDeveloper">
-                    {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
-                    {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                      singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
-                        singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.map(
-                          developer => {
-                            return (
-                              <>
-                                <div className="names_of_developer">
-                                  <div className="name_circle">
-                                  </div>
-                                  <div className="moreAgencyInfo">
-                                    <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
-                                    <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
-                                  </div>
-                                  {developer?.developerId?.developerDocuments?.length > 0 ? (
-                                    <div className="view-resume_div">
-                                      <a className="view-resume_child" href={
-                                        developer?.developerId?.developerDocuments[0]
-                                          .documentLink
-                                      }
-                                        target="new"
-                                      >
-                                        Check Resume
-                                      </a>
-                                    </div>
-                                  ) : (
-                                    "No resume"
-                                  )}
+                <div className="moreAgencyList new_design_sharedDeveloper">
+                  {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
+                  {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                    singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
+                      singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.map(
+                        developer => {
+                          return (
+                            <>
+                              <div className="names_of_developer">
+                                <div className="name_circle">
                                 </div>
+                                <div className="moreAgencyInfo">
+                                  <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
+                                  <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
+                                </div>
+                                {developer?.developerId?.developerDocuments?.length > 0 ? (
+                                  <div className="view-resume_div">
+                                    <a className="view-resume_child" href={
+                                      developer?.developerId?.developerDocuments[0]
+                                        .documentLink
+                                    }
+                                      target="new"
+                                    >
+                                      Check Resume
+                                    </a>
+                                  </div>
+                                ) : (
+                                  "No resume"
+                                )}
+                              </div>
 
-                              </>
-                            );
-                          }
-                        ) :
-                        <div>No Developers shared by the Agency.</div>
-                    ) : (
-                      <div>No Matched Agency Found.</div>
-                    )}
-                  </div>
-                {/* </div> */}
+                            </>
+                          );
+                        }
+                      ) :
+                      <div>No Developers shared by the Agency.</div>
+                  ) : (
+                    <div>No Matched Agency Found.</div>
+                  )}
+                </div>
               </div>
-
             </div>
           </div>
-
         </>
       )}
     </>

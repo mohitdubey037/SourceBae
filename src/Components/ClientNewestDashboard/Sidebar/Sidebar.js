@@ -33,10 +33,10 @@ function Sidebar(props) {
 
     const handleDashboard = () => {
         if (role === 'Agency') {
-            routerHistory.push('/agencynewestdashboard');
+            routerHistory.push('/agencyNewestDashboard');
         }
         else {
-            routerHistory.push('/clientnewestdashboard');
+            routerHistory.push('/clientNewestDashboard');
         }
     }
 
@@ -58,7 +58,7 @@ function Sidebar(props) {
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div className="selected-strip" />
-                    <img style={{filter: props.location.pathname === '/clientnewestdashboard' && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'}} src={dashboardIcon} alt="dashboard icon" />
+                    <img style={{filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'}} src={dashboardIcon} alt="dashboard icon" />
                     <p>Dashboard</p>
                 </div>
                 {role === "Client" &&
