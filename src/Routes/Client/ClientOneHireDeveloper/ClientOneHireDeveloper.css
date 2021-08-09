@@ -1,17 +1,32 @@
-.new_design_clientOneHireDeveloper .moreAgencyCard {
+.new_design_clientOneHireDeveloper {
   border-bottom: none;
   cursor: pointer;
   flex-direction: column;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 216px;
 }
 
 .new_design_clientOneHireDeveloper {
   width: 423px;
   margin-top: 10px;
   margin-bottom: 10px;
-  height: 278px;
+  /* height: 278px; */
   margin-left: 20px;
   background: linear-gradient(180deg, #F9F9F9 0%, rgba(249, 249, 249, 0) 100%);
   position: relative;
+}
+
+.moreAgencyHeading{
+  padding-bottom: 1%;
+  border-bottom: 1px solid #e0e0e0;
+  padding-top: 1%;
+}
+
+.moreAgencyHeading h3{
+  font-family: 'Inter';
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .name-Font {
@@ -27,6 +42,10 @@
   height: '224px';
   width: 70%;
   text-align: center;
+}
+
+.innerMoreAgencies_clientOneHireDeveloper {
+  margin-top: 1%;
 }
 
 .innerMoreAgencies_clientOneHireDeveloper .moreAgencyHeading {
@@ -62,6 +81,7 @@
   bottom: 0;
   right: 22px;
   z-index: -1;
+  max-height: 100px;
 }
 
 .moreAgencyLogo {
@@ -74,9 +94,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  color: #5A5A5A;
 
-.moreAgencyLogo button {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -85,18 +104,38 @@
   text-align: center;
   letter-spacing: 0.554545px;
   text-transform: capitalize;
-  color: #5A5A5A;
 }
 
-.new_design_clientOneHireDeveloper .moreAgencyCard .show-details {
+/* .moreAgencyLogo p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.554545px;
+  text-transform: capitalize;
+} */
+
+.checkResource.moreAgencyLogo:hover {
+  background-color: rgb(17, 166, 192);
+  color: rgb(212, 191, 212);
+}
+
+.moreAgencyLogo.show-details:hover {
+  color: rgb(17, 166, 192);
+  background-color: rgb(212, 191, 212);
+}
+
+.new_design_clientOneHireDeveloper .show-details {
   margin-left: 30px;
 }
 
-.new_design_clientOneHireDeveloper .moreAgencyCard .button_parent {
+.new_design_clientOneHireDeveloper .button_parent {
   margin-top: 1%;
 }
 
-.moreAgencyCard .button_parent {
+.button_parent {
   display: flex;
   justify-content: center;
   align-items: center;

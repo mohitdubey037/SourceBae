@@ -364,32 +364,21 @@
     background-color: #000;
 }
 
-
-
 .innerMoreAgencie{
     text-align: center;
     width: 90%;
     padding: 1rem 0;
 }
-.moreAgencyHeading{
-    padding-bottom: 3%;
-    border-bottom: 1px solid #e0e0e0;
-}
-.moreAgencyHeading h3{
-    font-family: 'Inter';
-    font-size: 1.2rem;
-    font-weight: bold;
-}
 .moreAgencyList_productDetails{
     margin-top: 5%;
 }
-.moreAgencyCard{
+/* .moreAgencyCard{
     display: flex;
-    /* align-items: flex-start; */
+    align-items: flex-start; 
     border-bottom: 1px solid #e9e9e9;
     padding-bottom: 2%;
     margin-bottom: 2%;
-}
+} */
 .moreAgencyLogo_productDetails{
     width: 100%; 
     display: flex;

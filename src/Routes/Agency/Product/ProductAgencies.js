@@ -470,7 +470,9 @@ function ProductAgencies(props) {
                     </div>
                 </div>
                 <div className="connectedButton">
-                    <p>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                    <div>
+                        <p>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                    </div>
                 </div>
             </Modal>
         </>

@@ -75,12 +75,12 @@ function ClientOneHireDeveloper(props) {
                 <>
                     <div className="respondCards_clientOneHireDeveloper">
                         <div className="moreAgencies_clientOneHireDeveloper">
+                            <div className="moreAgencyHeading">
+                                <h3>Matched Agencies</h3>
+                            </div>
                             <div className="innerMoreAgencies_clientOneHireDeveloper">
                                 {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
                                     <>
-                                        <div className="moreAgencyHeading">
-                                            <h3>Matched Agencies</h3>
-                                        </div>
                                         <div className="moreAgencyList new_design_clientOneHireDeveloper">
                                             <div className="polygon1">
                                                 <img src={Polygon1} alt="Polygon1" />
@@ -91,7 +91,8 @@ function ClientOneHireDeveloper(props) {
                                             {
                                                 singleHiredDeveloper?.agenciesMatched?.map((agency) => {
                                                     return (
-                                                        <div className="moreAgencyCard">
+                                                        // <div className="moreAgencyCard">
+                                                        <>
                                                             <div className="moreAgencyInfo">
                                                                 <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
                                                                 <div className="phone_clientOneHireDeveloper">
@@ -106,13 +107,14 @@ function ClientOneHireDeveloper(props) {
 
                                                             <div className="button_parent">
                                                                 <div className="checkResource moreAgencyLogo">
-                                                                    <button onClick={() => handleDevelopers(agency?.agencyId?._id)}>Check Resources</button>
+                                                                    <p onClick={() => handleDevelopers(agency?.agencyId?._id)}>Check Resources</p>
                                                                 </div>
                                                                 <div className="moreAgencyLogo show-details">
-                                                                    <button onClick={() => routeDirect()}>Show Details</button>
+                                                                    <p onClick={() => routeDirect()}>Show Details</p>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </>
+                                                        // </div>s
                                                     )
                                                 })
                                             }

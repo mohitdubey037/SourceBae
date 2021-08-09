@@ -1,18 +1,18 @@
-.backArrow_productAgencies{
+.backArrow_productAgencies {
     position: absolute;
     top: 12%;
-    left:2%;
+    left: 2%;
     z-index: 100;
 }
-  
-.backArrow_productAgencies i{
+
+.backArrow_productAgencies i {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 6px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     cursor: pointer;
     font-size: 2rem;
@@ -30,11 +30,11 @@
 }
 
 .officeVisitFilter_productAgencies p::after {
-content: '';
-width: 20px;
-height: 2px;
-background-color: #000;
-display: block;
+    content: '';
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    display: block;
 }
 
 .searchButton {
@@ -47,7 +47,6 @@ display: block;
     color: #000;
     border-color: black;
 }
-
 
 .mainAgencyList_productAgencies {
     width: 100%;
@@ -64,7 +63,7 @@ display: block;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     position: sticky;
-  }
+}
 
 .AgencyCardsArea_productAgencies {
     width: 75%;
@@ -83,41 +82,47 @@ display: block;
     justify-content: space-around;
 }
 
-.productInformationHeading{
+.productInformationHeading {
     width: 100%;
     padding-left: 1rem;
     margin-bottom: 2%;
 }
-.productInformationHeading h5{
+
+.productInformationHeading h5 {
     font-family: 'Inter';
     font-size: 1rem;
     font-weight: bold;
 }
-.productInformationHeading h5::after{
+
+.productInformationHeading h5::after {
     content: '';
     width: 40px;
     height: 2px;
     display: block;
     background-color: #000;
 }
-.productAgencyMiddle{
+
+.productAgencyMiddle {
     margin-top: 1%;
     flex-direction: row-reverse;
 }
-.productAgenciesTeam{
+
+.productAgenciesTeam {
     width: 48%;
     padding: 0.5rem;
     overflow: hidden;
     background-color: #fff;
 }
-.productAgenciesTeam{
+
+.productAgenciesTeam {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     position: relative;
 }
-.horizontalLine{
+
+.horizontalLine {
     position: absolute;
     width: 100%;
     height: 2px;
@@ -125,7 +130,8 @@ display: block;
     top: 48%;
     transform: translateY(-50%);
 }
-.verticalLine{
+
+.verticalLine {
     position: absolute;
     width: 2px;
     height: 100%;
@@ -134,23 +140,27 @@ display: block;
     left: 48%;
     transform: translateX(-50%);
 }
-.productAgencyList{
+
+.productAgencyList {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.productAgencyContent{
+
+.productAgencyContent {
     width: 45%;
     overflow: hidden;
 }
-.productAgencyContent span{
+
+.productAgencyContent span {
     font-family: 'Inter';
     font-size: 0.8rem;
     color: #999;
     overflow: hidden;
 }
-.productAgencyContent p{
+
+.productAgencyContent p {
     white-space: nowrap;
     text-overflow: ellipsis;
     font-family: 'Inter';
@@ -159,25 +169,28 @@ display: block;
     margin-top: 4%;
 }
 
-.productLogoHere img{
+.productLogoHere img {
     width: 100%;
     object-fit: contain;
 }
 
-.productDescArea{
+.productDescArea {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.productLogoHere{
+
+.productLogoHere {
     width: 20%;
     position: sticky;
     top: 0;
 }
-.agencyDescInfo{
+
+.agencyDescInfo {
     position: relative;
 }
-.productLogoHere{
+
+.productLogoHere {
     width: 80px;
     height: 80px;
     display: flex;
@@ -186,27 +199,32 @@ display: block;
     border: 1px solid #999;
     padding: 0.5rem;
 }
-.productLogoHere img{
+
+.productLogoHere img {
     width: 100%;
     object-fit: contain;
 }
-.productAgencyDescPara{
+
+.productAgencyDescPara {
     width: 75%;
 }
-.agencyTeamNumber{
+
+.agencyTeamNumber {
     flex-direction: row-reverse;
 }
-.agencyTeamNumber i{
+
+.agencyTeamNumber i {
     margin-left: 5%;
 }
 
 .customOverlayAgencyProduct {
-  background:rgba(0,0,0,0.9);
+    background: rgba(0, 0, 0, 0.9);
 }
+
 .customModalAgencyProduct {
-  background: #fff;
-  max-width: 400px;
-  width: 100%;
+    background: #fff;
+    max-width: 400px;
+    width: 100%;
 }
 
 .moreAgencies {
@@ -221,35 +239,41 @@ display: block;
     margin: 0rem 0rem 0rem 0rem;
 }
 
-.modalHeaderProduct{
+.modalHeaderProduct {
     border-bottom: 1px solid #999;
     padding-bottom: 3%;
 }
-.modalHeaderProduct h2{
+
+.modalHeaderProduct h2 {
     font-family: 'Inter';
     font-size: 1.1rem;
     font-weight: bold;
     color: #3498DB;
     transform: translateY(5px);
 }
-.productModalForm{
+
+.productModalForm {
     margin-top: 5%;
 }
-.toText{
+
+.toText {
     font-family: 'Inter';
     font-size: 0.8rem;
     font-weight: bold;
 }
-.productModalInput{
-  margin-bottom: 3%;
-  font-family: 'Inter';
+
+.productModalInput {
+    margin-bottom: 3%;
+    font-family: 'Inter';
 }
-.productModalInput p{
+
+.productModalInput p {
     font-size: 0.7rem;
     font-weight: bold;
 }
-.productModalInput input{
-    transform: translateY(-10px);
+
+.productModalInput input {
+    /* transform: translateY(-10px); */
     width: 100%;
     height: 40px;
     padding-left: 12px;
@@ -260,11 +284,13 @@ display: block;
     background-color: #F8F9F9;
     border: 1px solid #e0e0e0;
 }
-.productModalInput input:focus{
+
+.productModalInput input:focus {
     outline: none;
 }
-.productModalInput textarea{
-    transform: translateY(-10px);
+
+.productModalInput textarea {
+    /* transform: translateY(-10px); */
     padding: 0.9rem;
     width: 100%;
     font-size: 0.9rem;
@@ -273,10 +299,12 @@ display: block;
     background-color: #F8F9F9;
     border: 1px solid #e0e0e0;
 }
-.productModalInput textarea:focus{
+
+.productModalInput textarea:focus {
     outline: none;
 }
-.connectedButton{
+
+.connectedButton {
     margin-top: 4%;
     text-align: center;
     font-family: 'Inter';
@@ -285,6 +313,16 @@ display: block;
     cursor: pointer;
     font-weight: bold;
 }
-.connectedButton i{
+
+.connectedButton>div {
+    width: 76%;
+    margin: auto;
+}
+
+.connectedButton>div:hover {
+   color: blue;
+}
+
+.connectedButton i {
     transform: translateY(1px);
 }
