@@ -200,7 +200,7 @@ const AgencyCommentBox = (props) => {
                 <>
                   <div className="chatBox-parent">
                     {index.comment && (
-                      <div className="chatBox" >
+                      <div className="chatBox chatBox-right" >
                         <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
                         <b>Client </b>
                       </div>

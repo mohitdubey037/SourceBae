@@ -24,6 +24,16 @@
   align-items: flex-end;
 }
 
+.chatBox p {
+  padding: 0.5rem 1rem;
+  background-color: red;
+  width: 60%;
+  color: #000;
+  font-weight: 600;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+}
+
 .chatBox-left {
   text-align: left;
   justify-content: flex-start;
@@ -32,18 +42,19 @@
   align-items: flex-start;
 }
 
-.chatBox p {
-  padding: 0.5rem 1rem;
-  background-color: red;
-  width: 60%;
-  color: #000;
-  font-weight: 600;
+.chatBox-left p {
+  border-radius: 10px;
+  border-top-left-radius: 0;
 }
 
 .chatBox b {
-  font-size: 12px;
-  color: #3a3a3a;
-  font-weight: 400;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: capitalize;
+  color: #3A3A3A;
 }
 
 .commentBox {
@@ -206,7 +217,7 @@
   letter-spacing: 1px;
 }
 
-.detailsButtons > button:hover {
+.detailsButtons>button:hover {
   background: rgb(2, 69, 124);
   color: white;
 }
@@ -220,6 +231,7 @@
   color: green;
   background: white;
 }
+
 .rejectButton:hover {
   color: red;
   background: white;

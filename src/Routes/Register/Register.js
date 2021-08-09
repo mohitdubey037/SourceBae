@@ -462,7 +462,7 @@ const Register = (props) => {
                                 <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
                             </div>
                             <div className="signUpOption">
-                                <p>Already have an account? <span onClick={() => window.location.href = `/login:${role.toLowerCase()}`}>Log In</span></p>
+                                <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
                             </div>
                             <div className="client__formsContainer">
                                 <form className='client__form form__1' autoComplete='off' >

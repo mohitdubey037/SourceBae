@@ -83,8 +83,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
     const classes = useStyles();
-
     let { role } = useParams();
+    console.log(role);
     role = helper.capitalize(helper.cleanParam(role));
     if (!(role.toLowerCase() === "agency" || role.toLowerCase() === "client"))
         props.history.push("/page-not-found");
@@ -93,6 +93,7 @@ const Login = (props) => {
     const [state, setState] = React.useState({
         checked: JSON.parse(localStorage.getItem("toggle")) || false,
     });
+    console.log(state.checked);
     const [hidePassword, SetPasswordStatus] = useState(true);
     const [form, setForm] = useState({
         user: "",
@@ -119,13 +120,19 @@ const Login = (props) => {
 
     //Methods
 
-    const createRoleString = (role) => {
+    const createRoleString = () => {
         role = role.charAt(0).toUpperCase() + role.slice(1);
-        if (role === "Agency") return `an ${role}`;
-        else return `a ${role}`;
+        if (state.checked === false) {
+            console.log('agency chala');
+            return `an ${role}`;
+        }
+        if (state.checked === true) {
+            console.log('client chala')
+            return `a ${role}`;
+        }
     };
 
-    const roleString = createRoleString(role);
+    const roleString = createRoleString();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -179,21 +186,24 @@ const Login = (props) => {
     }, [token]);
 
     useEffect(()=>{
-
         const tempRole = localStorage.getItem('role')
         const auth =cookie.load("Authorization")
         if(auth!==null && auth!==undefined && tempRole!==null && tempRole!==undefined){
-            if(tempRole.toLowerCase()==="agency")
-            props.history.push("/dashboard")
-            else if(tempRole.toLowerCase()==="client")
-            props.history.push("agency")
-            else{
-                props.history.push("/login:agency")
+            if(tempRole.toLowerCase()==="agency"){
+                props.history.push("/agencyNewestDashboard");
             }
+            else if(tempRole.toLowerCase()==="client")
+            {
+                props.history.push("/clientNewestDashboard")
+            }
+            // else{
+            //     console.log('ye chala');
+            //     props.history.push("/login:client")
+            // }
         }
-        else{
-            props.history.push("/login:agency")
-        }
+        // else{
+        //     props.history.push(`/login:${role.toLowerCase()}`)
+        // }
     },[])
     return (
         <>
