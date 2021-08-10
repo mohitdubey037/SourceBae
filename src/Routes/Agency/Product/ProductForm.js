@@ -1094,9 +1094,10 @@ function ProductForm(props) {
                             {errors.productFounderLinkedinProfiles}
                           </p>
                         )}
-                        <div className="">
+                        <div>
                           <div className="founder_Link">
                             <input
+                            style={{marginBottom: '10px'}}
                               type="text"
                               placeholder={`Founder 1 Linkedin Profile Link`}
                               onChange={(e) => handleChangeLink(0, e)}

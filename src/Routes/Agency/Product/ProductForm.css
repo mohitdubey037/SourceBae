@@ -609,6 +609,7 @@
   align-items: center;
   font-family: 'Inter';
   border-radius: 6px;
+  margin-top: 16px;
 }
 
 .founderLink div i {
@@ -628,7 +629,7 @@
   border: 1px solid #2e86c1;
   /* transform: translateY(-15px); */
   border-radius: 6px;
-  margin-top: 1rem;
+  margin-top: 6px;
 }
 
 .submitButton.productForm {
