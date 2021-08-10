@@ -460,11 +460,11 @@ function ProductForm(props) {
                   amet
                 </p>
               </div>
-              {/* <div className="productIllustration">
+              <div className="productIllustration">
                 <div>
                   <img src={product} alt="product" />
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
 
@@ -1079,77 +1079,83 @@ function ProductForm(props) {
                       </p>
                     )}
                   </section>
+                  <section>
+                    <div className="form5_Fields">
+                      <section>
+                        <p>17. Founders of this product</p>
+                        {errors.productFounderLinkedinProfiles && (
+                          <p
+                            style={{
+                              color: "red",
+                              fontWeight: "normal",
+                              fontSize: "14px",
+                            }}
+                          >
+                            {errors.productFounderLinkedinProfiles}
+                          </p>
+                        )}
+                        <div className="">
+                          <div className="founder_Link">
+                            <input
+                              type="text"
+                              placeholder={`Founder 1 Linkedin Profile Link`}
+                              onChange={(e) => handleChangeLink(0, e)}
+                            />
+                            <button type="button" onClick={() => handleAdd()}>
+                              <i className="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                          </div>
+                        </div>
+
+                        {fields.map((field, idx) => {
+                          if (idx === 0) {
+                            return "";
+                          } else {
+                            return (
+                              <div className="founderLink" key={`${field}-${idx}`}>
+                                <input
+                                  type="text"
+                                  placeholder={`Founder ${idx + 1
+                                    } Linkedin Profile Link`}
+                                  onChange={(e) => handleChangeLink(idx, e)}
+                                />
+                                <div onClick={() => handleRemove(idx)}>
+                                  <i className="fa fa-times" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            );
+                          }
+                        })}
+                      </section>
+                    </div>
+                  </section>
                 </div>
               </div>
 
-              <div className="form_5">
-                <div className="form5_Fields">
-                  <section>
-                    <p>17. Founders of this product</p>
-                    {errors.productFounderLinkedinProfiles && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {errors.productFounderLinkedinProfiles}
-                      </p>
-                    )}
-                    <div className="">
-                      <div className="founder_Link">
-                        <input
-                          type="text"
-                          placeholder={`Founder 1 Linkedin Profile Link`}
-                          onChange={(e) => handleChangeLink(0, e)}
-                        />
-                        <button type="button" onClick={() => handleAdd()}>
-                          <i className="fa fa-plus" aria-hidden="true"></i>
-                        </button>
-                      </div>
-                    </div>
+              {/* <div className="form_5"> */}
 
-                    {fields.map((field, idx) => {
-                      if (idx === 0) {
-                        return "";
-                      } else {
-                        return (
-                          <div className="founderLink" key={`${field}-${idx}`}>
-                            <input
-                              type="text"
-                              placeholder={`Founder ${idx + 1
-                                } Linkedin Profile Link`}
-                              onChange={(e) => handleChangeLink(idx, e)}
-                            />
-                            <div onClick={() => handleRemove(idx)}>
-                              <i className="fa fa-times" aria-hidden="true"></i>
-                            </div>
-                          </div>
-                        );
-                      }
-                    })}
-                  </section>
-                </div>
-                {/* <div className="illustrationArea">
+              {/* <div className="illustrationArea">
                   <img src={product5} alt="" />
                 </div> */}
+              {/* </div> */}
+              <div className="submitButton productForm">
+                <div className="innerSubmitButton">
+                  <div className="subbutton" onClick={() => updateButtonHandler()}>
+                    <p>
+                      Upload Your Product{" "}
+                      <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+
         </>
       )}
 
-      <div className="submitButton">
-        <div className="innerSubmitButton">
-          <div className="subbutton" onClick={() => updateButtonHandler()}>
-            <p>
-              Upload Your Product{" "}
-              <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>
-            </p>
-          </div>
-        </div>
-      </div>
+
 
       <Modal
         open={openmodal}

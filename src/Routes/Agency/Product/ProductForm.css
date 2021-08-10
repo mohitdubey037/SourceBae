@@ -243,7 +243,7 @@
 
 .four_line {
   position: absolute;
-  height: 26rem;
+  height: 37rem;
   background-color: #2e86c1;
   left: 6rem;
   top: 0rem;
@@ -280,6 +280,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
+  margin-bottom: 0;
   /* flex-direction: row-reverse; */
 }
 
@@ -371,6 +372,7 @@
 
 .radioGroupButtons {
   display: flex;
+  margin-top: 15px;
 }
 
 .radioButton {
@@ -416,6 +418,7 @@
   align-items: center;
   padding: 6rem;
   padding-top: 0;
+  margin-bottom: 0;
 }
 
 .form3_Fields section {
@@ -471,6 +474,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .currentStageRadios .radioButton {
@@ -503,14 +507,19 @@
   /* justify-content: space-between; */
   align-items: center;
   position: relative;
-  padding: 6rem;
-  padding-top: 0;
+  padding: 0 6rem;
   justify-content: flex-end;
 }
 
 .form4_Fields section {
   margin-bottom: 8%;
   font-family: 'Inter';
+}
+
+.form_1 section input,
+.form_1 section textarea,
+.form_4 section input {
+  margin-top: 1rem;
 }
 
 .form4_Fields section p {
@@ -534,7 +543,7 @@
 }
 
 .illustrationArea, .form5_Fields {
-  width: 45%;
+  width: 100%;
   user-select: none;
 }
 
@@ -617,8 +626,13 @@
   color: #2e86c1;
   font-weight: bold;
   border: 1px solid #2e86c1;
-  transform: translateY(-15px);
+  /* transform: translateY(-15px); */
   border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.submitButton.productForm {
+  margin-top: 30px;
 }
 
 .submitButton {
