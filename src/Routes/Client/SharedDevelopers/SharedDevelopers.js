@@ -76,7 +76,7 @@ function RespondedDetails(props) {
       });
   };
 
-  const handleDevelopers = (documents) => { };
+  // const handleDevelopers = (documents) => { };
 
   const showMore = () => {
     setInitial(initial + 5);
@@ -95,7 +95,11 @@ function RespondedDetails(props) {
     console.log(showDevelopers);
   }, [showDevelopers]);
 
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  useEffect(() => {
+    console.log(initial);
+  }, [initial])
+
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
     <>
@@ -164,7 +168,7 @@ function RespondedDetails(props) {
                 <div className="developers-div">
                   <div className="moreAgencyList new_design_sharedDeveloper">
                     {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
-                    {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                    {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
                       singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
                         singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.slice(0, 5)?.map(
                           developer => {
@@ -172,6 +176,9 @@ function RespondedDetails(props) {
                               <>
                                 <div className="names_of_developer">
                                   <div className="name_circle">
+                                    <div>
+                                      <p>{developer?.developerId?.firstName.charAt(0)}</p>
+                                    </div>
                                   </div>
                                   <div className="moreAgencyInfo">
                                     <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
@@ -194,30 +201,13 @@ function RespondedDetails(props) {
                         : <div>No Developers shared by the Agency.</div>
                     )
                       : <div>No Matched Agency Found.</div>
-                    } */}
-                    {arr.slice(0, initial).map(a => {
-                      return (
-                        <div className="names_of_developer">
-                          <div className="name_circle">
-                          </div>
-                          <div className="moreAgencyInfo">
-                            <p style={{ textAlign: 'center' }}>'mohit dubey'</p>
-                            <p style={{ textAlign: 'center' }}>'20px'</p>
-                          </div>
-                          <div className="view-resume_div">
-                            <a className="view-resume_child" target="new">
-                              Check Resume
-                            </a>
-                          </div>
-                        </div>
-                      )
-                    })
+                    }
+                    {arr.length >= initial &&
+                      <div onClick={() => showMore()} className="show-more_sharedDeveloper">
+                        <p>Show More</p>
+                      </div>
                     }
                   </div>
-                  <div onClick={() => showMore()} className="show-more_sharedDeveloper">
-                    <p>Show More</p>
-                  </div>
-
                 </div>
               }
             </div>

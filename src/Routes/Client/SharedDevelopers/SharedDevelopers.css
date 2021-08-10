@@ -59,9 +59,30 @@
 
 .name_circle {
   background: #E8E2E2;
-  width: 50px;
-  height: 50px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name_circle>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  width: max-content;
+}
+
+.name_circle>div>p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #F13C9E;
 }
 
 .moreAgencyCard.new-design {
