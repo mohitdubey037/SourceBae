@@ -6,21 +6,21 @@
   width: 90%;
   display: flex;
   justify-content: center;
-  min-height: 662px;
+  min-height: 418px;
   margin: auto;
+  flex-direction: column;
+  padding: 25px;
+  grid-row-gap: 20px;
 }
 
 .width {
-  position: absolute;
-  margin: auto;
-  top: 20px;
   background: #FFFFFF;
   border: 0.33px solid #A8A8A8;
-  box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   width: 817px;
   padding: 1rem 15.5rem 2rem 1.5rem;
+  margin: auto;
 }
 
 .width div {
@@ -46,6 +46,15 @@
   height: 72px;
   bottom: 0px;
   right: 0;
+  padding-bottom: 0;
+}
+
+.moreAgencies_shared.new_design div {
+  margin-bottom: 0;
+}
+
+.moreAgencies_shared.new_design h3 {
+  padding: 0;
 }
 
 .name_circle {
@@ -76,6 +85,10 @@
   border-radius: 5.54545px;
   padding: 7px;
   margin-top: 20px;
+}
+
+.view-resume_div:hover {
+  background-color: beige;
 }
 
 .new_design_sharedDeveloper .moreAgencyInfo {
@@ -132,11 +145,10 @@
   border: 0.33px solid #A8A8A8;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 12px;
-  position: absolute;
-  bottom: 10px;
-  width: 913px;
-  height: 215px;
+  min-height: 240px;
   padding: 20px;
+  margin: auto;
+  position: relative;
 }
 
 .respondCards {
@@ -148,16 +160,35 @@
 
 .developers-div .moreAgencyList {
   display: flex;
-  grid-column-gap: 20px
+  grid-column-gap: 20px;
+  grid-row-gap: 1.3rem;
+  width: 845px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 .names_of_developer {
   width: 153px;
   min-height: 172px;
-  /* background-color: red; */
   position: relative;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
+}
+
+.show-more_sharedDeveloper {
+  position: absolute;
+  right: 27px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #407BFF;
+  bottom: 9px;
+}
+
+.show-more_sharedDeveloper:hover {
+  border-bottom: 2px solid #407bff;
 }

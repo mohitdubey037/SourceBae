@@ -10,6 +10,7 @@ import Spinner from "../../../Components/Spinner/Spinner";
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
 
 function RespondedDetails(props) {
+  const [initial, setInitial] = useState(5);
   let { hireDeveloperId, agencyId } = useParams();
 
   console.log(hireDeveloperId, agencyId);
@@ -19,6 +20,8 @@ function RespondedDetails(props) {
 
   const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
   const [agencyDeveloper, setAgencyDeveloper] = useState([]);
+
+  const [showDevelopers, setShowDevelopers] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -75,13 +78,24 @@ function RespondedDetails(props) {
 
   const handleDevelopers = (documents) => { };
 
+  const showMore = () => {
+    setInitial(initial + 5);
+  }
+
   useEffect(() => {
     console.log(selectedDevelopers, "selected dev");
   }, [selectedDevelopers]);
+
   useEffect(() => {
     getOneDeveloper();
     getAgencyDeveloper();
   }, []);
+
+  useEffect(() => {
+    console.log(showDevelopers);
+  }, [showDevelopers]);
+
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
     <>
@@ -119,7 +133,7 @@ function RespondedDetails(props) {
                       }
                     </p>
                   </div>
-                  <div>
+                  <div style={{ paddingBottom: '0px' }}>
                     <p>Agency Phone</p>
                     <p>
                       {
@@ -129,8 +143,8 @@ function RespondedDetails(props) {
                     </p>
                   </div>
 
-                  <div className="moreAgencies_shared new_design no_border">
-                    <div>
+                  <div onClick={() => setShowDevelopers(!showDevelopers)} className="moreAgencies_shared new_design no_border">
+                    <div style={{ paddingBottom: '0' }}>
                       <h3>Matched Developer</h3>
                     </div>
                     {singleHiredDeveloper?.agencyMatched?.length > 0 && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length > 0 && <div className="moreAgencySeeMore">
@@ -146,48 +160,66 @@ function RespondedDetails(props) {
               )}
 
 
-              <div className="developers-div">
-                <div className="moreAgencyList new_design_sharedDeveloper">
-                  {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
-                  {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                    singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
-                      singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.map(
-                        developer => {
-                          return (
-                            <>
-                              <div className="names_of_developer">
-                                <div className="name_circle">
-                                </div>
-                                <div className="moreAgencyInfo">
-                                  <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
-                                  <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
-                                </div>
-                                {developer?.developerId?.developerDocuments?.length > 0 ? (
-                                  <div className="view-resume_div">
-                                    <a className="view-resume_child" href={
-                                      developer?.developerId?.developerDocuments[0]
-                                        .documentLink
-                                    }
-                                      target="new"
-                                    >
-                                      Check Resume
-                                    </a>
+              {showDevelopers === true &&
+                <div className="developers-div">
+                  <div className="moreAgencyList new_design_sharedDeveloper">
+                    {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
+                    {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                      singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
+                        singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.slice(0, 5)?.map(
+                          developer => {
+                            return (
+                              <>
+                                <div className="names_of_developer">
+                                  <div className="name_circle">
                                   </div>
-                                ) : (
-                                  "No resume"
-                                )}
-                              </div>
+                                  <div className="moreAgencyInfo">
+                                    <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
+                                    <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
+                                  </div>
+                                  {developer?.developerId?.developerDocuments?.length > 0 ? (
+                                    <div className="view-resume_div">
+                                      <a className="view-resume_child" href={developer?.developerId?.developerDocuments[0].documentLink} target="new">
+                                        Check Resume
+                                      </a>
+                                    </div>
+                                  ) : (
+                                    "No resume"
+                                  )}
+                                </div>
+                              </>
+                            );
+                          }
+                        )
+                        : <div>No Developers shared by the Agency.</div>
+                    )
+                      : <div>No Matched Agency Found.</div>
+                    } */}
+                    {arr.slice(0, initial).map(a => {
+                      return (
+                        <div className="names_of_developer">
+                          <div className="name_circle">
+                          </div>
+                          <div className="moreAgencyInfo">
+                            <p style={{ textAlign: 'center' }}>'mohit dubey'</p>
+                            <p style={{ textAlign: 'center' }}>'20px'</p>
+                          </div>
+                          <div className="view-resume_div">
+                            <a className="view-resume_child" target="new">
+                              Check Resume
+                            </a>
+                          </div>
+                        </div>
+                      )
+                    })
+                    }
+                  </div>
+                  <div onClick={() => showMore()} className="show-more_sharedDeveloper">
+                    <p>Show More</p>
+                  </div>
 
-                            </>
-                          );
-                        }
-                      ) :
-                      <div>No Developers shared by the Agency.</div>
-                  ) : (
-                    <div>No Matched Agency Found.</div>
-                  )}
                 </div>
-              </div>
+              }
             </div>
           </div>
         </>

@@ -460,11 +460,11 @@ function ProductForm(props) {
                   amet
                 </p>
               </div>
-              <div className="productIllustration">
+              {/* <div className="productIllustration">
                 <div>
                   <img src={product} alt="product" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -483,18 +483,25 @@ function ProductForm(props) {
 
           <div className="mainProductFormArea">
             <div className="innerProductFormArea">
-              <div className="straightLine">
+              {/* <div className="straightLine">
                 <span>01</span>
                 <span>02</span>
                 <span>03</span>
                 <span>04</span>
                 <span>05</span>
-              </div>
+              </div> */}
               <div className="form_1">
-                <div className="illustrationArea">
+                {/* <div className="illustrationArea">
                   <img src={product1} alt="" />
-                </div>
+                </div> */}
 
+                <div className="one_line">
+                  <div className="orange_color">
+                    <div className="one-orange_color">
+                      <p>01</p>
+                    </div>
+                  </div>
+                </div>
                 <div className="form1_Fields">
                   <section>
                     <p>1. Upload your latest logo of product</p>
@@ -565,8 +572,15 @@ function ProductForm(props) {
               </div>
 
               <div className="form_2">
-                <div className="illustrationArea">
+                {/* <div className="illustrationArea">
                   <img src={product2} alt="" />
+                </div> */}
+                <div className="two_line">
+                  <div className="orange_color">
+                    <div className="one-orange_color">
+                      <p>02</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="form2_Fields">
                   <section>
@@ -730,6 +744,13 @@ function ProductForm(props) {
               </div>
 
               <div className="form_3">
+                <div className="three_line">
+                  <div className="orange_color">
+                    <div className="one-orange_color">
+                      <p>03</p>
+                    </div>
+                  </div>
+                </div>
                 <div className="form3_Fields">
                   <section className="previousFunding">
                     <p>8. Any previous funding?</p>
@@ -969,14 +990,21 @@ function ProductForm(props) {
                     </FormControl>
                   </section>
                 </div>
-                <div className="illustrationArea">
+                {/* <div className="illustrationArea">
                   <img src={product3} alt="" />
-                </div>
+                </div> */}
               </div>
 
               <div className="form_4">
-                <div className="illustrationArea">
+                {/* <div className="illustrationArea">
                   <img src={product4} alt="" />
+                </div> */}
+                <div className="four_line">
+                  <div className="orange_color">
+                    <div className="one-orange_color">
+                      <p>04</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="form4_Fields">
                   <section>
@@ -1103,9 +1131,9 @@ function ProductForm(props) {
                     })}
                   </section>
                 </div>
-                <div className="illustrationArea">
+                {/* <div className="illustrationArea">
                   <img src={product5} alt="" />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -1137,9 +1165,9 @@ function ProductForm(props) {
         <h2 className="addyourproductext">Your Product</h2>
         <div className="successfullProduct">
           <div className="successImage">
-            <div>
+            {/* <div>
               <img src={success} alt="" />
-            </div>
+            </div> */}
           </div>
           <div className="successfullyText">
             <p>Your product has been successfully uploaded.</p>

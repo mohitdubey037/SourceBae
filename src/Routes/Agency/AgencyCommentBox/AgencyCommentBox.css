@@ -479,13 +479,13 @@
   transform: translateY(-50%);
 }
 
-.innerResponseCard div {
+/* .innerResponseCard div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: max-content;
   border-bottom: 2px solid #ebebeb;
-}
+} */
 
 .innerResponseCard div p {
   font-family: 'Inter';

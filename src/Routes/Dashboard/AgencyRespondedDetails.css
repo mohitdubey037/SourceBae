@@ -384,7 +384,7 @@
   padding-bottom: 20px;
 }
 
-.innerResponseCard div p {
+.respondCards_AgencyRespondedDetails .innerResponseCard div p {
   font-family: 'Inter';
   margin-top: 4%;
   font-weight: 500;
