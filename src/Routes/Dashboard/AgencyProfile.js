@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from "react";
+import { makeStyles } from '@material-ui/core/styles';
 // import Navbar from "./Navbar";
 import "./AgencyProfile.css";
 import growth from "../../assets/images/AgencyProfile/growth.png";
@@ -15,6 +16,13 @@ import PortfolioImage from '../../assets/images/Newestdashboard/Agency-Profile/P
 import Information from "./AgencyProfile/Information";
 import SkillsSet from "./AgencyProfile/SkillsSet";
 import Rules from "./AgencyProfile/Rules";
+
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import { FilePicker } from "react-file-picker";
 import DeveloperList from "./AgencyProfile/DeveloperList";
@@ -34,7 +42,18 @@ import Spinner from "../../Components/Spinner/Spinner";
 import Moment from "react-moment";
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 function AgencyProfile(props) {
+  const classes = useStyles();
   const { id } = useParams();
   const Role = localStorage.getItem('role');
   const inputEl = useRef(null);
@@ -92,6 +111,12 @@ function AgencyProfile(props) {
       });
   };
 
+  const [link, setLink] = useState(null);
+
+  const handleChange = (event) => {
+    setLink(event.target.value);
+  };
+
   useEffect(() => {
     id !== null && id !== undefined
       ? getAgencyProfile(helper.cleanParam(id), true)
@@ -107,6 +132,10 @@ function AgencyProfile(props) {
       inputEl?.current?.click();
     }
   });
+
+  useEffect(() => {
+    console.log(link);
+  }, [link])
 
   return (
     <>
@@ -350,15 +379,33 @@ function AgencyProfile(props) {
                       <h3>Agency Document</h3>
                     </div>
 
-                    <FilePicker
+                    <FormControl className={classes.formControl}>
+                      {/* <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+                        Age
+                      </InputLabel> */}
+                      <Select
+                        labelId="demo-simple-select-placeholder-label-label"
+                        id="demo-simple-select-placeholder-label"
+                        value={link}
+                        onChange={(event) => handleChange(event)}
+                        displayEmpty
+                        className={classes.selectEmpty}
+                      >
+                        <MenuItem value={agencyProfileData?.agencyDocuments[0]?.documentLink}>Registration Certificate</MenuItem>
+                        <MenuItem value={agencyProfileData?.agencyDocuments[1]?.documentLink}>Brochure</MenuItem>
+                        <MenuItem value={agencyProfileData?.agencyDocuments[2]?.documentLink}>Pancard</MenuItem>
+                      </Select>
+                    </FormControl>
+
+                    {/* <FilePicker
                       extensions={["pdf"]}
                       onChange={(FileObject) => { }}
                       onError={(errMsg) => { }}
-                    >
-                      <button className="uploadButton">
-                        Upload
-                      </button>
-                    </FilePicker>
+                    > */}
+                    <a style={{textDecoration: 'none'}} className="uploadButton" href={link} target="new">
+                      Check Resume
+                    </a>
+                    {/* </FilePicker> */}
                   </div>
                 </div>
               )}
