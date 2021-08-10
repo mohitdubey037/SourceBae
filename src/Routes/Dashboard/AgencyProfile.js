@@ -47,10 +47,22 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+  // selectEmpty: {
+  //   marginTop: theme.spacing(2),
+  // },
 }));
+
+const MenuProps = {
+  getContentAnchorEl: () => null,
+  PaperProps: {
+      style: {
+          maxHeight: 230,
+          width: 250,
+          top: 350,
+          left: '200px'
+      },
+  },
+};
 
 function AgencyProfile(props) {
   const classes = useStyles();
@@ -372,7 +384,7 @@ function AgencyProfile(props) {
                     </div>
                     <p>{agencyProfileData.agencyProfileViewCount}</p>
                   </div>
-                  <div className="monthyView">
+                  <div className="monthyView agencyProfile">
                     {/* <div className="monthBorder"></div> */}
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <img style={{ width: 25, height: 25, marginRight: 5, objectFit: 'contain' }} src={document} alt="" />
@@ -389,11 +401,14 @@ function AgencyProfile(props) {
                         value={link}
                         onChange={(event) => handleChange(event)}
                         displayEmpty
-                        className={classes.selectEmpty}
+                        // className={classes.selectEmpty}
+                        MenuProps={MenuProps}
                       >
+                        {/* <div> */}
                         <MenuItem value={agencyProfileData?.agencyDocuments[0]?.documentLink}>Registration Certificate</MenuItem>
                         <MenuItem value={agencyProfileData?.agencyDocuments[1]?.documentLink}>Brochure</MenuItem>
                         <MenuItem value={agencyProfileData?.agencyDocuments[2]?.documentLink}>Pancard</MenuItem>
+                        {/* </div> */}
                       </Select>
                     </FormControl>
 
@@ -402,7 +417,7 @@ function AgencyProfile(props) {
                       onChange={(FileObject) => { }}
                       onError={(errMsg) => { }}
                     > */}
-                    <a style={{textDecoration: 'none'}} className="uploadButton" href={link} target="new">
+                    <a style={{ textDecoration: 'none' }} className="uploadButton" href={link} target="new">
                       Check Resume
                     </a>
                     {/* </FilePicker> */}
@@ -576,7 +591,8 @@ function AgencyProfile(props) {
         >
           <h1> No agency found with this ID. </h1>
         </div>
-      )}
+      )
+      }
     </>
   );
 }

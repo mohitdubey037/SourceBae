@@ -96,7 +96,7 @@
 }
 
 .mainHireAgencyForm3 .stepCheck p {
-    left: 9px;
+    left: 7px;
 }
 
 .step-1_hireAgencyForm1 {
@@ -978,7 +978,7 @@
 }
 
 .innerHireAgencyForm3 .servicesCardsHireAgency {
-    margin-left: 33px;
+    /* margin-left: 33px; */
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;

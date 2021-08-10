@@ -500,6 +500,10 @@ button {
 .innerQuotation_agencyProfile .nav {
   display: block;
 }
+/* 
+.MuiPaper-root {
+  left: 1024px !important;
+}  */
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button {
   background-color: transparent !important;
