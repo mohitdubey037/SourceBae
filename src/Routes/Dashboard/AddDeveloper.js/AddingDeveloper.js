@@ -231,7 +231,7 @@ function AddingDeveloper(props) {
     return (
         <>
             {/* <div className="Navbar-parent"> */}
-                <Navbar />
+            <Navbar />
             {/* </div> */}
             <div className="back-parent marginLeft">
                 <Back name="Add Developer" />
@@ -325,8 +325,10 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="developerDesignation_addingDeveloper">
                                         <h4>Upload Resume</h4>
-                                        <input className="upload-box" onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
+                                        <div className="resume_div">
+                                            <input className="upload-box" onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
                                     application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                                        </div>
                                         {errors.developerResume && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerResume}</p>)}
                                     </div>
                                 </div>

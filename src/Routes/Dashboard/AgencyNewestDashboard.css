@@ -19,3 +19,51 @@
     width: 300px;
   }
 }
+
+.mainUpdateVerify {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+  height: 40px;
+}
+.innerMainVerify {
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #02044a;
+  /* padding-top: 1%; */
+  height: 100%;
+}
+.innerMainVerify img {
+  width: 20px;
+}
+.innerMainVerify div {
+  margin-right: 5px;
+  width: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.innerMainVerify p {
+  font-family: "Inter";
+  font-weight: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 0;
+}
+.innerMainVerify span {
+  color: #fad647;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 10px;
+  border-bottom: 1px solid #fad647;
+  cursor: pointer;
+}
+
+.conditional_opacity {
+  filter: opacity(1);
+}

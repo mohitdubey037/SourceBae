@@ -15,6 +15,14 @@
     margin-right: 0;
 }
 
+.conditional_disabled {
+    filter: blur(1px);
+}
+
+.conditional_disabled:hover {
+    cursor: auto;
+}
+
 .operation-name {
     width: 124px;
     height: 24px;
@@ -22,7 +30,7 @@
 }
 
 .operation-name p {
-    font-family: Inter;
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
