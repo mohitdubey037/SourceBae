@@ -5,6 +5,7 @@
   height: 100vh;
   width: 100%;
 }
+
 .form-box {
   width: 380px;
   height: 450px;
@@ -16,17 +17,21 @@
   opacity: 0.5;
   border-radius: 2%;
 }
+
 .header-form {
   margin-bottom: 15px;
 }
+
 button {
   margin-top: 40px;
   margin-bottom: 10px;
 }
+
 .message {
   display: flex;
   justify-content: space-between;
 }
+
 .social {
   display: flex;
   justify-content: space-around;
@@ -52,18 +57,22 @@ button {
   box-sizing: border-box;
   position: relative;
 }
+
 .form-check {
   display: flex;
 }
+
 .form-check input {
   margin: 0 25%;
 }
+
 .innerLoginPage {
   width: 100%;
   display: flex;
   justify-content: space-between;
   min-height: 100vh;
 }
+
 .toggleButton {
   /* background-color: red; */
   display: flex;
@@ -71,11 +80,12 @@ button {
   align-items: center;
   transform: translateY(-50px);
 }
-.loginIllustrator,
-.loginContent {
+
+.loginIllustrator, .loginContent {
   width: 50%;
   user-select: none;
 }
+
 .loginIllustrator {
   position: sticky;
   /* display: flex; */
@@ -83,12 +93,14 @@ button {
   /* align-items: center; */
   user-select: none;
 }
+
 .loginIllustrator img {
   /* width: 100%; */
   transform: translateX(-10px);
   height: 100vh;
   user-select: none;
 }
+
 .loginContent {
   padding: 2rem;
   display: flex;
@@ -97,19 +109,22 @@ button {
   flex-direction: column;
   margin-top: 3%;
 }
-.mainLoginForm,
-.googleLogin {
+
+.mainLoginForm, .googleLogin {
   width: 80%;
 }
+
 .loginHeading {
   text-align: center;
   font-family: 'Inter';
   width: 100%;
 }
+
 .loginHeading h6 {
   font-weight: bold;
   font-size: 2.2rem;
 }
+
 .loginHeading h6 span {
   font-family: 'Fredoka One';
   font-size: 2.5rem;
@@ -133,11 +148,13 @@ button {
   font-family: 'Inter';
   margin-top: 4%;
 }
+
 .signUpOption span {
   color: #02044a;
   font-weight: bold;
   cursor: pointer;
 }
+
 .loginForm {
   margin-top: 10%;
 }
@@ -145,13 +162,13 @@ button {
 .emailLogin {
   margin-bottom: 2%;
 }
-.emailLogin p,
-.passwordLogin p {
+
+.emailLogin p, .passwordLogin p {
   font-family: 'Inter';
   color: #000;
 }
-.emailLogin input,
-.passwordLogin input {
+
+.emailLogin input, .passwordLogin input {
   transform: translateY(-10px);
   height: 60px;
   width: 100%;
@@ -162,10 +179,11 @@ button {
   border: none;
   border: 1px solid #e0e0e0;
 }
-.emailLogin input::placeholder,
-.passwordLogin input::placeholder {
+
+.emailLogin input::placeholder, .passwordLogin input::placeholder {
   font-size: 0.9rem;
 }
+
 .loginForm button {
   width: 100%;
   height: 60px;
@@ -204,16 +222,29 @@ button {
   position: relative;
   cursor: pointer;
 }
+
 .googleLogin p {
   transform: translateY(7px);
   font-family: 'Inter';
   font-weight: bold;
   color: #888;
 }
+
 .googleLogin img {
   position: absolute;
   width: 5%;
   left: 5%;
+}
+
+.toggleButton .MuiTypography-body1 {
+  font-family: 'Inter' !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 17px !important;
+  text-transform: capitalize !important;
+  color: #a8a8a8 !important;
+  margin-right: 29px !important;
 }
 
 @media (max-width: 768px) {
