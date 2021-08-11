@@ -41,39 +41,6 @@
     top: 0rem;
 }
 
-.black-bubble-1 {
-    position: absolute;
-    width: 56px;
-    height: 81px;
-    left: 248px;
-    top: 8px;
-    background: #FFFFFF;
-    opacity: 0.55;
-    border-radius: 50%;
-}
-
-.black-bubble-2 {
-    position: absolute;
-    width: 65px;
-    height: 60px;
-    left: 391px;
-    top: 96px;
-    background: #FFFFFF;
-    opacity: 0.55;
-    border-radius: 50%;
-}
-
-.black-bubble-3 {
-    position: absolute;
-    width: 62px;
-    height: 72px;
-    left: 45rem;
-    top: 21px;
-    background: #FFFFFF;
-    opacity: 0.55;
-    border-radius: 50%;
-}
-
 .stepCheck {
     height: 60px;
     width: 16%;

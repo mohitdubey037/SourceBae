@@ -144,15 +144,12 @@ const HireAgencyForm1 = (props) => {
             </div>
             <div className="cardsDetail_hireAgencyForm1">
               <div className="cards_hireAgencyForm1">
-                <div className="black-bubble-1"></div>
               </div>
 
               <div className="cards_hireAgencyForm1">
-                <div className="black-bubble-2"></div>
               </div>
 
               <div className="cards_hireAgencyForm1">
-                <div className="black-bubble-3"></div>
               </div>
 
               <div className="keep_the_project_name">
