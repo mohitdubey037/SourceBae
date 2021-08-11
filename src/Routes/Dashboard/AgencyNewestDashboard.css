@@ -65,5 +65,5 @@
 }
 
 .conditional_opacity {
-  filter: opacity(1);
+  filter: opacity(0.5);
 }
