@@ -167,6 +167,10 @@
   border-radius: 12px;
 }
 
+.productForm ul {
+  padding-left: 1rem !important;
+}
+
 .straightLine {
   position: absolute;
   top: 0;

@@ -453,7 +453,7 @@ function ProductForm(props) {
           </div>
 
           <div className="mainProductFormArea">
-            <div className="innerProductFormArea">
+            <div className="innerProductFormArea productForm">
               {/* <div className="straightLine">
                 <span>01</span>
                 <span>02</span>
@@ -475,7 +475,11 @@ function ProductForm(props) {
                 </div>
                 <div className="form1_Fields">
                   <section>
-                    <p>1. Upload your latest logo of product</p>
+                    <ul>
+                      <li>
+                        <p>Upload your latest logo of product</p>
+                      </li>
+                    </ul>
                     <input
                       onChange={inputFileChoosen}
                       type="file"
@@ -496,7 +500,11 @@ function ProductForm(props) {
                     )}
                   </section>
                   <section>
-                    <p>2. What's your good product name?</p>
+                    <ul>
+                      <li>
+                        <p>What's your good product name?</p>
+                      </li>
+                    </ul>
                     <input
                       type="text"
                       placeholder="Type Here.."
@@ -517,7 +525,11 @@ function ProductForm(props) {
                     )}
                   </section>
                   <section>
-                    <p>3. Describe a bit about your product.</p>
+                    <ul>
+                      <li>
+                        <p>Describe a bit about your product.</p>
+                      </li>
+                    </ul>
                     <textarea
                       placeholder="Minimum words should be 100"
                       name="productDescription"
@@ -555,7 +567,11 @@ function ProductForm(props) {
                 </div>
                 <div className="form2_Fields">
                   <section>
-                    <p>4. What type of Business product you have?</p>
+                    <ul>
+                      <li>
+                        <p>What type of Business product you have?</p>
+                      </li>
+                    </ul>
 
                     <FormControl className={classes.formControl}>
                       <Select
@@ -609,7 +625,11 @@ function ProductForm(props) {
                     </FormControl>
                   </section>
                   <section>
-                    <p>5. What's your good team size?</p>
+                    <ul>
+                      <li>
+                        <p>What's your good team size?</p>
+                      </li>
+                    </ul>
                     <FormControl className={classes.formControl}>
                       <Select
                         labelId="demo-simple-select-label"
@@ -646,7 +666,11 @@ function ProductForm(props) {
                     </FormControl>
                   </section>
                   <section>
-                    <p>6. Total revenue generated till now?</p>
+                    <ul>
+                      <li>
+                        <p>Total revenue generated till now?</p>
+                      </li>
+                    </ul>
                     <FormControl className={classes.formControl}>
                       <Select
                         labelId="demo-simple-select-label"
@@ -683,7 +707,11 @@ function ProductForm(props) {
                   </section>
 
                   <section>
-                    <p>7. Which business modal does your product have?</p>
+                    <ul>
+                      <li>
+                        <p>Which business modal does your product have?</p>
+                      </li>
+                    </ul>
                     <div className="radioGroupButtons">
                       {businessModal.map((value, index) => {
                         return (
@@ -724,7 +752,11 @@ function ProductForm(props) {
                 </div>
                 <div className="form3_Fields">
                   <section className="previousFunding">
-                    <p>8. Any previous funding?</p>
+                    <ul>
+                      <li>
+                        <p>Any previous funding?</p>
+                      </li>
+                    </ul>
                     <FormControl component="fieldset">
                       <RadioGroup
                         aria-label="gender"
@@ -795,7 +827,11 @@ function ProductForm(props) {
                     </section>
                   ) : null}
                   <section className="previousFunding">
-                    <p>9. Which type of funding you are looking for?</p>
+                    <ul>
+                      <li>
+                        <p>Which type of funding you are looking for?</p>
+                      </li>
+                    </ul>
                     <FormControl className={classes.formControl}>
                       <Select
                         labelId="demo-simple-select-label"
@@ -848,7 +884,11 @@ function ProductForm(props) {
                   </section>
 
                   <section className="currentStage">
-                    <p>10. What is the current stage of product?</p>
+                    <ul>
+                      <li>
+                        <p>What is the current stage of product?</p>
+                      </li>
+                    </ul>
                     <div className="currentStageRadios">
                       {currentStage.map((value, index) => {
                         return (
@@ -882,7 +922,11 @@ function ProductForm(props) {
                   </section>
 
                   <section>
-                    <p>11. How many customer you have accquired?</p>
+                    <ul>
+                      <li>
+                        <p>How many customer you have accquired?</p>
+                      </li>
+                    </ul>
                     <FormControl className={classes.formControl}>
                       <Select
                         labelId="demo-simple-select-label"
@@ -922,7 +966,11 @@ function ProductForm(props) {
                   </section>
 
                   <section>
-                    <p>12. How many active users are there ?</p>
+                    <ul>
+                      <p>How many active users are there ?</p>
+                      <li>
+                      </li>
+                    </ul>
                     <FormControl className={classes.formControl}>
                       <Select
                         labelId="demo-simple-select-label"
@@ -979,7 +1027,11 @@ function ProductForm(props) {
                 </div>
                 <div className="form4_Fields">
                   <section>
-                    <p>13. Your Company Location</p>
+                    <ul>
+                      <li>
+                        <p>Your Company Location</p>
+                      </li>
+                    </ul>
                     <input
                       type="text"
                       placeholder="Type here..."
@@ -1000,7 +1052,11 @@ function ProductForm(props) {
                     )}
                   </section>
                   <section>
-                    <p>14. When was your product started?</p>
+                    <ul>
+                      <li>
+                        <p>When was your product started?</p>
+                      </li>
+                    </ul>
                     <input
                       type="date"
                       name="productStartingDate"
@@ -1009,7 +1065,11 @@ function ProductForm(props) {
                     />
                   </section>
                   <section>
-                    <p>15. Any feature link?</p>
+                    <ul>
+                      <li>
+                        <p>Any feature link?</p>
+                      </li>
+                    </ul>
                     <input
                       type="text"
                       placeholder="Type here..."
@@ -1030,7 +1090,11 @@ function ProductForm(props) {
                     )}
                   </section>
                   <section>
-                    <p>16. Any Platform link?</p>
+                    <ul>
+                      <li>
+                        <p>Any Platform link?</p>
+                      </li>
+                    </ul>
                     <input
                       type="text"
                       placeholder="Type here..."
@@ -1068,7 +1132,7 @@ function ProductForm(props) {
                         <div>
                           <div className="founder_Link">
                             <input
-                            style={{marginBottom: '10px'}}
+                              style={{ marginBottom: '10px' }}
                               type="text"
                               placeholder={`Founder 1 Linkedin Profile Link`}
                               onChange={(e) => handleChangeLink(0, e)}
@@ -1122,12 +1186,8 @@ function ProductForm(props) {
               </div>
             </div>
           </div>
-
-
         </>
       )}
-
-
 
       <Modal
         open={openmodal}
