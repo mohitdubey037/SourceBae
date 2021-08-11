@@ -353,7 +353,7 @@ const AgencyCommentBox = (props) => {
               {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
                 ? ""
                 : "disabled"}`}> */}
-              <div className="yellowBg" style={{height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '339px'}}>
+              <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '339px' }}>
                 <img src={proposalImage} alt="" />
               </div>
               {props.projectProposals[0].isProposalActionActive ?
@@ -376,15 +376,15 @@ const AgencyCommentBox = (props) => {
                   }
                 </div>
                 :
-                file === null 
+                file === null
                   ?
-                <div className="quotation_file_upload">
-                  <p>Please upload a file of quotation</p>
-                </div>
-                :
-                <div className="quotation_file_upload">
-                  <p>{file.name}</p>
-                </div>
+                  <div className="quotation_file_upload">
+                    <p>Please upload a file of quotation</p>
+                  </div>
+                  :
+                  <div className="quotation_file_upload">
+                    <p>{file.name}</p>
+                  </div>
               }
             </div>
           )}

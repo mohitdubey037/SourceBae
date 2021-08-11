@@ -47,7 +47,9 @@ const HireAgencyForm1 = (props) => {
     console.log(value);
     if (name === 'projectDescription') {
       if (value.length <= 100)
-      setWords(value.length);
+        setWords(value.length);
+      if (value.length > 100)
+        setWords(100);
     }
     setData({
       ...data,
@@ -142,21 +144,25 @@ const HireAgencyForm1 = (props) => {
             </div>
             <div className="cardsDetail_hireAgencyForm1">
               <div className="cards_hireAgencyForm1">
-                <div>
-                  <p>1. Keep the project name simple and to your brand.</p>
-                </div>
                 <div className="black-bubble-1"></div>
               </div>
+
               <div className="cards_hireAgencyForm1">
-                <p>2. Write about your service or idea in clear manner, with as many details as possible.</p>
                 <div className="black-bubble-2"></div>
               </div>
+
               <div className="cards_hireAgencyForm1">
                 <div className="black-bubble-3"></div>
-                <p>
-                  3. In case, you think you missed any details you can always edit
-                  this later.
-                </p>
+              </div>
+
+              <div className="keep_the_project_name">
+                <p>1. Keep the project name simple and to your brand.</p>
+              </div>
+              <div className="write_about_your_project">
+                <p>2. Write about your service or idea in clear manner, with as many details as possible.</p>
+              </div>
+              <div className="in_case_you_think">
+                <p>3. In case, you think you missed any details you can always edit this later.</p>
               </div>
             </div>
           </div>

@@ -21,7 +21,11 @@
     font-weight: 600;
     line-height: 17px;
     text-transform: uppercase;
-    color: #A8A8A8;
+    /* color: #A8A8A8; */
+  }
+
+  .commentBox > p {
+      font-size: 10px;
   }
 
 /* .margin-0 {

@@ -438,35 +438,6 @@ function ProductForm(props) {
         <Spinner />
       ) : (
         <>
-          <div className="mainProductForm">
-            {/* <div
-              style={{ marginTop: "4rem" }}
-              className="backArrow"
-              onClick={() => {
-                props.history.push("/dashboard");
-              }}
-            >
-              <i className="fa fa-angle-left" aria-hidden="true"></i>
-            </div> */}
-            <div className="innerProductForm">
-              <div className="leftBorderLineProduct"></div>
-              <div className="productTagLine">
-                <h1>
-                  we focus on <br /> Your Story
-                </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-                  beatae quibusdam pariatur est quas id. Lorem, ipsum dolor sit
-                  amet
-                </p>
-              </div>
-              <div className="productIllustration">
-                <div>
-                  <img src={product} alt="product" />
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div className="productsHeadlines">
             <div className="innerProductHeadlines">

@@ -91,7 +91,7 @@ const ClientCommentBox = (props) => {
       isShortListed: true,
       isAskedForQuotation: true,
       negotiablePrice: "",
-      comment: "Please provide a Quotation.",
+      comment: "Please attach a document.",
     };
     instance.patch(`api/client/projects/propose/${props.projectId}`, quotationData)
       .then(function (response) {
@@ -270,8 +270,7 @@ const ClientCommentBox = (props) => {
             {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
               <div className="detailsButtons margin-0">
                 <p>
-                  <b>{`Agency Negotiatiable Price: `}</b>
-                  {props.projectProposals[0].agencyNegotiablePrice}
+                  {`Agency Negotiatiable Price:${props.projectProposals[0].agencyNegotiablePrice}`}
                 </p>
               </div>
             )}
@@ -287,9 +286,9 @@ const ClientCommentBox = (props) => {
 
             {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
               <div className="detailsButtons margin-0">
-                <a href={props.projectProposals[0].quotationLink} target="new">
-                  View Quotation
-                </a>
+                  <a href={props.projectProposals[0].quotationLink} target="new">
+                    View Quotation
+                  </a>
               </div>
             )}
           </div>

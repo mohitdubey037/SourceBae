@@ -121,14 +121,47 @@
     align-items: center;
 }
 
-.steps_hireAgencyForm>div>div>p,
-.steps_hireAgencyForm2>div>div>p,
-.steps_hireAgencyForm3>div>div>p {
+.steps_hireAgencyForm>div>div>p, .steps_hireAgencyForm2>div>div>p, .steps_hireAgencyForm3>div>div>p {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 21.4118px;
     line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.keep_the_project_name {
+    width: 28%;
+    position: absolute;
+    top: 64px;
+    left: 27px;
+    padding: 6px;
+}
+
+.write_about_your_project {
+    position: absolute;
+    top: 64px;
+    width: 27%;
+    right: 364px;
+    padding: 6px;
+}
+
+.in_case_you_think {
+    position: absolute;
+    width: 27%;
+    right: 34px;
+    top: 64px;
+    padding: 6px;
+}
+
+.keep_the_project_name p, .write_about_your_project p, .in_case_you_think p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
     text-align: center;
     letter-spacing: 0.611765px;
     text-transform: capitalize;
@@ -324,7 +357,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 42px;
+    font-size: 33px;
     line-height: 51px;
     text-transform: capitalize;
     color: #02044A;
@@ -397,11 +430,10 @@
 }
 
 .budgetSectionAreaAgency .MuiTypography-root {
-    font: normal 500 14px 'Inter' !important;
+    font: normal 600 14px 'Inter' !important;
     line-height: 17px !important;
-    /* identical to box height */
     text-transform: capitalize !important;
-    color: #A8A8A8 !important;
+    color: black !important
 }
 
 .daysInputAgency {
@@ -972,6 +1004,7 @@
     background-color: rgb(95, 185, 178) !important;
     color: #eaf2ff !important;
 }
+
 .backbutton_hireAgencyForm3:hover {
     background-color: rgb(95, 185, 178) !important;
     color: #eaf2ff !important;

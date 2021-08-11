@@ -81,7 +81,7 @@
   justify-content: space-between;
 }
 
-.commentParent .MuiOutlinedInput-inputAdornedEnd {
+/* .commentParent .MuiOutlinedInput-inputAdornedEnd {
   font-size: 10px;
   font-family: 'Inter';
   font-style: normal;
@@ -89,7 +89,7 @@
   line-height: 17px;
   text-transform: uppercase;
   color: #A8A8A8;
-}
+} */
 
 .detailHeaderImage_agencyRespondedDetails {
   margin-right: 1.5%;
@@ -237,14 +237,14 @@
   background: white;
 }
 
-.detailsButtons>a {
-  padding: 0.5rem 0.3em;
-}
-
-.detailsButtons>a {
-  background-color: #02044a;
-  border: 1px solid #02044a;
+.detailsButtons >a {
   text-decoration: none;
+  padding: 12px;
+  font-size: 9px;
+  background-color: #02044a;
+  border: 1px solid #02044a;  
+  margin-left: 23px;
+
 }
 
 .postQuotation>button {
@@ -261,6 +261,10 @@
   color: #000;
   margin: 0;
   font-weight: bold;
+}
+
+.detailsButtons p {
+  font-size: small;
 }
 
 .proposalCard {
@@ -496,12 +500,22 @@
 
 .innerResponseCard div p:nth-child(1) {
   color: #000;
-  font-weight: 500;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.4px;
 }
 
 .innerResponseCard div p:nth-child(2) {
   color: #008e80;
-  font-weight: 500;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: 0.4px;
 }
 
 @media (max-width: 768px) {

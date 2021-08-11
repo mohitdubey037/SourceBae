@@ -34,19 +34,18 @@ p {
 }
 
 .user-project-button_agencyNewestDashboard {
-  padding: 0px 6px;
   border: 0.62069px solid #3a3a3a;
-  box-sizing: border-box;
   border-radius: 4.96552px;
-  display: grid;
-  place-items: center;
   margin-right: 15px;
   height: 30px;
   transform: translateY(8px);
+  padding: 5px;
 }
 
 .user-project-button_agencyNewestDashboard:hover {
   cursor: pointer;
+  background-color: #02044A;
+  color: white;
 }
 
 .user-project-button_agencyNewestDashboard button {

@@ -23,11 +23,23 @@ function AgencyNewestDashboard(props) {
     const agencyId = localStorage.getItem("userId");
 
     const [agencyProfileData, setAgencyProfileData] = useState([])
+    const [allProjects, setAllProjects] = useState([]);
 
-    const getAgencyProfileData = () => {
+
+    const getAllProjects = () => {
         instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`)
             .then(function (response) {
-                console.log("allProjects", response)
+                setAllProjects(response);
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const getAgencyProfileData = () => {
+        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
+            .then(function (response) {
                 setAgencyProfileData(response);
             })
             .catch((err) => {
@@ -37,6 +49,7 @@ function AgencyNewestDashboard(props) {
 
     useEffect(() => {
         getAgencyProfileData();
+        getAllProjects();
     }, []);
 
     return (
@@ -90,8 +103,8 @@ function AgencyNewestDashboard(props) {
                             </div>
                             <div className="user-project agencyNewestDashboard">
                                 <div>
-                                    {agencyProfileData?.projects?.length > 0 ? (
-                                        agencyProfileData?.projects?.map((value, index) => {
+                                    {allProjects?.projects?.length > 0 ? (
+                                        allProjects?.projects?.map((value, index) => {
                                             return (
                                                 <AgencyProjectCard
                                                     props={props}

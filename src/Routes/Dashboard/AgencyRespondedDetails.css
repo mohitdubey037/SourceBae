@@ -51,7 +51,8 @@
 }
 
 .innerDetailHeader_agencyRespondedDetails {
-  width: 95%;
+  /* width: 95%; */
+  width: 90%;
   display: flex;
   align-items: center;
   padding: 2rem 0;
@@ -420,6 +421,8 @@
 .detailsDiv {
   display: flex;
   align-items: center;
+  width: 98%;
+  margin: auto;
 }
 
 .detailsDiv img {
@@ -430,8 +433,14 @@
 }
 
 .detailsDiv h4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
   font-size: 18px;
-  color: #3a3a3a;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
 }
 
 .detailsDiv::after {
@@ -598,7 +607,8 @@
 
 .respondDescription_AgencyRespondedDetails {
   margin-top: 3%;
-  margin-left: 3%;
+  /* margin-left: 3%; */
+  margin-left: 6%;
 }
 
 .respondDescription_AgencyRespondedDetails p {
@@ -606,7 +616,7 @@
   font-weight: 400;
   width: 80%;
   margin-top: 1%;
-  color: #9a9a9a;
+  color: crimson
 }
 
 .respondDescription_AgencyRespondedDetails h2 {
@@ -623,7 +633,13 @@
 .agencyQuotationDesc_AgencyRespondedDetails h4 {
   color: #000;
   margin-left: 15px;
-  font-size: 1.3rem;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
 }
 
 .agencyQuotationDesc_AgencyRespondedDetails p {
