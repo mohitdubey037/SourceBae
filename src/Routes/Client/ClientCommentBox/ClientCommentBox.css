@@ -39,3 +39,7 @@
 .QuotationModal button {
     margin-top: 43px;
 }
+
+.postQuotation .makeStyles-margin-1 {
+    width: 100%;
+}

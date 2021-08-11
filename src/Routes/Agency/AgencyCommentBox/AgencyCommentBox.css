@@ -150,17 +150,20 @@
 }
 
 .action-wait .postQuotation .detailsButtons {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-right: 3rem;
+  /* display: flex;  */
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+  /* margin-right: 4rem; */
   margin: 1rem 0;
-  flex-direction: row !important;
+  /* flex-direction: row !important; */
 }
+
 
 .postQuotation {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .negotiablePrice>input[type='number'] {
@@ -202,12 +205,11 @@
   font-size: 1.1rem;
 }
 
-.acceptButton, .rejectButton, .detailsButtons>button, .detailsButtons>a {
+.acceptButton, .rejectButton, .detailsButtons>button {
   margin: 0 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 999px;
   outline: none;
-  border: none;
   background-color: #5cb85c;
   border: 1px solid #5cb85c;
   color: #fff;
@@ -215,6 +217,19 @@
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
+}
+
+.detailsButtons>a {
+  text-decoration: none;
+  padding: 12px;
+  font-size: 9px;
+  background-color: #02044a;
+  outline: none;
+  border-radius: 999px;
+  font-family: 'Inter';
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
 }
 
 .detailsButtons>button:hover {
@@ -237,16 +252,6 @@
   background: white;
 }
 
-.detailsButtons >a {
-  text-decoration: none;
-  padding: 12px;
-  font-size: 9px;
-  background-color: #02044a;
-  border: 1px solid #02044a;  
-  margin-left: 23px;
-
-}
-
 .postQuotation>button {
   background-color: #02044a;
 }
@@ -263,7 +268,7 @@
   font-weight: bold;
 }
 
-.detailsButtons p {
+.margin-0 p {
   font-size: small;
 }
 
