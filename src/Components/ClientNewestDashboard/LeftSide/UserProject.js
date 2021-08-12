@@ -14,7 +14,7 @@ function UserProject(props, index) {
     console.log(props);
 
     const showDetail = () => {
-        if (props.projectProposals[0].isQuotationAcceptedByClient === true && props.projectProposals[0].isQuotationAcceptedByAgency === true) {
+        if (props?.projectProposals[0]?.isQuotationAcceptedByClient === true && props?.projectProposals[0]?.isQuotationAcceptedByAgency === true) {
             routerHistory.push(`/project-details/${props._id}/${props.projectProposals[0].agencyId._id}`);
         }
         else {
@@ -31,10 +31,10 @@ function UserProject(props, index) {
             <div className="projectDetailsStrip_short"></div>
             <div className="detailsCard-header">
                 <div className="header-heading">
-                    <h6>{props.projectName}</h6>
+                    <h6>{props?.projectName}</h6>
                 </div>
                 {/* <img src={infoIcon} alt="infoIcon" /> */}
-                {props.projectProposals[0].isQuotationAcceptedByClient === true && props.projectProposals[0].isQuotationAcceptedByAgency ?
+                {props?.projectProposals[0]?.isQuotationAcceptedByClient === true && props?.projectProposals[0]?.isQuotationAcceptedByAgency ?
                     <i className="projectCompleted_userProject fas fa-check"></i>
                     :
                     <div className="tooltip_class"
@@ -62,19 +62,19 @@ function UserProject(props, index) {
                 }
             </div>
             <div className="detailsCard-date">
-                <h6>Last Edit On: <span className="date-color"><Moment format="D MMM YYYY" withTitle>{props.updatedAt}</Moment></span></h6>
+                <h6>Last Edit On: <span className="date-color"><Moment format="D MMM YYYY" withTitle>{props?.updatedAt}</Moment></span></h6>
             </div>
 
             <div className="centerImage">
-                <img className={`${(props.projectProposals[0].isQuotationAcceptedByClient && props.projectProposals[0].isQuotationAcceptedByAgency) && "conditional_image_change"}`} src={CenterImage} alt='centerIcon' />
+                <img className={`${(props?.projectProposals[0]?.isQuotationAcceptedByClient && props?.projectProposals[0]?.isQuotationAcceptedByAgency) && "conditional_image_change"}`} src={CenterImage} alt='centerIcon' />
                 <div>
-                    {props.projectProposals[0].isCommentSectionActive ?
+                    {props?.projectProposals[0]?.isCommentSectionActive ?
                         <div className="message_received">
                             <p>New Message is Received</p>
                             <i className="newMessageReceived_icon fas fa-envelope-open"></i>
                         </div>
                         :
-                        <p>{props.projectCurrentStatus}</p>
+                        <p>{props?.projectCurrentStatus}</p>
                     }
                 </div>
             </div>
@@ -82,7 +82,7 @@ function UserProject(props, index) {
             <div className="projectDetail">
                 <div className="header-currentStatus">
                     <div className="currentStatus-text currentStatus-item">
-                        <p>{props.projectCurrentStatus}</p>
+                        <p>{props?.projectCurrentStatus}</p>
                     </div>
                     <img src={ProjectStatusIcon} alt="project status" />
                 </div>

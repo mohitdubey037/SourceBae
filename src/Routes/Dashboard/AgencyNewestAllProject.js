@@ -124,7 +124,7 @@ function AgencyNewestAllProject() {
                     <div className="content-leftBody_AgencyNewestDashboard">
                         <div className="all-project_div">
                             <img src={AllProjectIcon} alt="All Project Icon" />
-                            <p>All Project</p>
+                            <p>All Projects</p>
                         </div>
 
                         <div className="main-section">

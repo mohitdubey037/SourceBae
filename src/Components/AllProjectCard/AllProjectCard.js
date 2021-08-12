@@ -3,14 +3,22 @@ import './AllProjectCard.css';
 
 import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/MainVector.svg';
 import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector.svg';
-import Moment from 'react-moment'
-
-import Button from '../../Components/Button/Button';
+import Moment from 'react-moment';
+import { withRouter } from "react-router";
+import { useHistory } from 'react-router-dom';
 
 function AllProjectCard(props) {
+    const routerHistory = useHistory();
+    console.log(props);
+
+    const showDetails = () => {
+        routerHistory.push(`/project-details/${props?._id}/${props?.projectProposals[0]?.agencyId?._id}`)
+    }
+
     console.log(props);
     return (
         <div className="user-project_agencyNewestAllProject">
+            {/* {props?.projectProposals[0].isQuat} */}
             <div className="strip green-strip"></div>
             <div className="strip red-strip"></div>
             <div className="strip yellow-strip"></div>
@@ -18,7 +26,9 @@ function AllProjectCard(props) {
                 <div className="user-project_child_agencyNewestAllProject">
                     <h5>{props?.projectName}</h5>
                 </div>
-                <Button name="Show Details" />
+                <div onClick={() => showDetails()} className="submit-button_allProjectCard">
+                    <h6>Show Details</h6>
+                </div>
             </div>
 
             <div className="user-project-status_AgencyNewestAllProject">
@@ -64,4 +74,4 @@ function AllProjectCard(props) {
     )
 }
 
-export default AllProjectCard
+export default withRouter(AllProjectCard)
