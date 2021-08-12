@@ -538,7 +538,10 @@ button {
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active button {
-  color: #fff !important;
+  filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important;
+}
+.innerQuotation_agencyProfile .nav-tabs .nav-link.active img {
+  filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link:hover {

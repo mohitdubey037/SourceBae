@@ -20,6 +20,7 @@ import instance from "../../../Constants/axiosConstants";
 import Spinner from "../../../Components/Spinner/Spinner";
 import * as helper from "../../../shared/helper";
 import moment from 'moment'
+import clsx from 'clsx';
 
 import product from "../../../assets/images/ClientDashboard/product.svg";
 import product1 from "../../../assets/images/ClientDashboard/product1.svg";
@@ -29,6 +30,7 @@ import product4 from "../../../assets/images/ClientDashboard/product4.svg";
 import product5 from "../../../assets/images/ClientDashboard/product5.svg";
 import success from "../../../assets/images/agencyForm/success.gif";
 import Back from '../../../Components/Back/Back';
+import MultiSelect from "react-multi-select-component";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
@@ -69,7 +71,47 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: 1,
     borderColor: "#000",
   },
+  root: {
+    "& .MuiOutlinedInput-input": {
+      color: "green",
+      padding: "11.5px 14px"
+    },
+  }
 }));
+
+// const useStyles = makeStyles({
+//   root: {
+//     width: 200,
+//     "& .MuiOutlinedInput-input": {
+//       color: "green",
+//       padding: "11.5px 14px"
+//     },
+//     "& .MuiInputLabel-root": {
+//       color: "green"
+//     },
+//     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+//       borderColor: "green"
+//     },
+//     "&:hover .MuiOutlinedInput-input": {
+//       color: "red"
+//     },
+//     "&:hover .MuiInputLabel-root": {
+//       color: "red"
+//     },
+//     "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+//       borderColor: "red"
+//     },
+//     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+//       color: "purple"
+//     },
+//     "& .MuiInputLabel-root.Mui-focused": {
+//       color: "purple"
+//     },
+//     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+//       borderColor: "purple"
+//     }
+//   }
+// });
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -131,6 +173,7 @@ function ProductForm(props) {
   const [businesstype, setBusinesstype] = useState([]);
   const [wordsRequired, setWordsRequired] = useState(100);
 
+  const [multipleSelectTech, setMultipleSelect] = useState([]);
 
   const [domainName, setDomainName] = useState("");
 
@@ -203,6 +246,18 @@ function ProductForm(props) {
     setBusinesstype(value);
     setDomainName(value);
   };
+
+  useEffect(() => {
+    console.log(multipleSelectTech);
+    setApiData({
+      ...apiData,
+      'productDomainId': multipleSelectTech.map(t => t.value)
+    });
+  }, [multipleSelectTech])
+
+  useEffect(() => {
+    console.log(apiData);
+  }, [apiData])
 
   const getAllDomains = () => {
     setLoading(true);
@@ -573,7 +628,13 @@ function ProductForm(props) {
                       </li>
                     </ul>
 
-                    <FormControl className={classes.formControl}>
+                    <FormControl variant="filled" className={classes.formControl}>
+                      {/* <MultiSelect
+                        options={allDomainsData.map(ad => ({ "label": ad.domainName, "value": ad._id }))}
+                        value={multipleSelectTech}
+                        onChange={setMultipleSelect}
+                        labelledBy="Select"
+                      /> */}
                       <Select
                         labelId="demo-mutiple-checkbox-label"
                         id="demo-checkbox"
@@ -630,15 +691,15 @@ function ProductForm(props) {
                         <p>What's your good team size?</p>
                       </li>
                     </ul>
-                    <FormControl className={classes.formControl}>
+                    <FormControl variant="outlined" className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
                         value={apiData.productTeamSize}
                         name="productTeamSize"
                         onChange={(event) => handleChange(event)}
                         displayEmpty
-                        className={classes.inputField}
+                        className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
                           <span
@@ -671,15 +732,15 @@ function ProductForm(props) {
                         <p>Total revenue generated till now?</p>
                       </li>
                     </ul>
-                    <FormControl className={classes.formControl}>
+                    <FormControl variant="outlined" className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
                         value={apiData.productRevenueGenerated}
                         name="productRevenueGenerated"
                         onChange={(event) => handleChange(event)}
                         displayEmpty
-                        className={classes.inputField}
+                        className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
                           <span
@@ -791,15 +852,15 @@ function ProductForm(props) {
                   {apiData.productPreviousFunding === "true" ? (
                     <section className="amountRaised">
                       <span>How much amount have you raised yet?</span>
-                      <FormControl className={classes.formControl}>
+                      <FormControl variant="outlined" className={classes.formControl}>
                         <Select
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
+                          labelId="demo-simple-select-outlined-label"
+                          id="demo-simple-select-outlined"
                           value={apiData.projectPreviousFundingRaised}
                           name="projectPreviousFundingRaised"
                           onChange={(event) => handleChange(event)}
                           displayEmpty
-                          className={classes.inputField}
+                          className={clsx(classes.root, classes.inputField)}
                         >
                           <MenuItem value="">
                             <span
@@ -832,15 +893,15 @@ function ProductForm(props) {
                         <p>Which type of funding you are looking for?</p>
                       </li>
                     </ul>
-                    <FormControl className={classes.formControl}>
+                    <FormControl variant="outlined" className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
                         value={apiData.productFundingTypeLookingFor}
                         name="productFundingTypeLookingFor"
                         onChange={(event) => handleChange(event)}
                         displayEmpty
-                        className={classes.inputField}
+                        className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
                           <span
@@ -927,15 +988,15 @@ function ProductForm(props) {
                         <p>How many customer you have accquired?</p>
                       </li>
                     </ul>
-                    <FormControl className={classes.formControl}>
+                    <FormControl variant="outlined" className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
                         name="productCustomerAccquired"
                         value={apiData.productCustomerAccquired}
                         onChange={(event) => handleChange(event)}
                         displayEmpty
-                        className={classes.inputField}
+                        className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
                           <span
@@ -967,19 +1028,19 @@ function ProductForm(props) {
 
                   <section>
                     <ul>
-                      <p>How many active users are there ?</p>
                       <li>
+                        <p>How many active users are there ?</p>
                       </li>
                     </ul>
-                    <FormControl className={classes.formControl}>
+                    <FormControl variant="outlined" className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
                         value={apiData.productActiveUsers}
                         name="productActiveUsers"
                         onChange={(event) => handleChange(event)}
                         displayEmpty
-                        className={classes.inputField}
+                        className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
                           <span
@@ -1117,7 +1178,11 @@ function ProductForm(props) {
                   <section>
                     <div className="form5_Fields">
                       <section>
-                        <p>17. Founders of this product</p>
+                        <ul>
+                          <li>
+                            <p>Founders of this product</p>
+                          </li>
+                        </ul>
                         {errors.productFounderLinkedinProfiles && (
                           <p
                             style={{

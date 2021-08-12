@@ -1,4 +1,3 @@
-import React from 'react';
 import './Sidebar.css';
 import oneSourcingLogo from "../../../assets/images/Newestdashboard/SideBar/sidebarLogo.svg";
 import helpImg from '../../../assets/images/Newestdashboard/SideBar/help.svg'
@@ -12,15 +11,30 @@ import settingIcon from "../../../assets/images/Newestdashboard/SideBar/setting_
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PeopleOutlinedIcon from '@material-ui/icons/PeopleOutlined';
 import { withRouter } from "react-router";
+import notification from '../../../assets/images/ClientDashboard/notification.svg';
+import { Modal } from 'react-responsive-modal';
+
+import React, { useEffect, useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
-
 
 function Sidebar(props) {
     console.log(props);
     const role = localStorage.getItem('role');
-
     const routerHistory = useHistory();
+
+    const [isNotification, setIsnotification] = useState(false);
+
+    const notificationPanel = () => {
+        setIsnotification(!isNotification);
+        props.notificationVisible(!isNotification);
+    }
+
+    useEffect(() => {
+        console.log(isNotification);
+    },[isNotification]);
+
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
     const agencyProfileHandler = () => {
         if (role === 'Agency') {
@@ -58,7 +72,7 @@ function Sidebar(props) {
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div className="selected-strip" />
-                    <img style={{filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'}} src={dashboardIcon} alt="dashboard icon" />
+                    <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
                     <p>Dashboard</p>
                 </div>
                 {role === "Client" &&
@@ -81,7 +95,7 @@ function Sidebar(props) {
                     <img src={profileIcon} alt="dashboard icon" />
                     <p>Profile</p>
                 </div>
-                <div className="notification-icon icons">
+                <div className="notification-icon icons" onClick={notificationPanel}>
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
@@ -111,6 +125,36 @@ function Sidebar(props) {
                     <button>Help</button>
                 </div>
             </div> */}
+            <div className={isNotification ? 'overlay' : null} ></div>
+            <div className={isNotification ? 'notificationPanel open' : 'notificationPanel'}>
+                <div className="innerNotificationPanel">
+                    <div className="notificationsCards">
+                        <div className="closeNotification">
+                            <i onClick={notificationPanel} className="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div className="allNotification">
+                            <div className="allNotificationIcon">
+                                <img src={notification} alt="" />
+                            </div>
+                            <div className="allNotificationText">
+                                <p>All Notification</p>
+                            </div>
+
+                        </div>
+                        <div className="notificationsCard">
+                            {
+                                arr.map(() => {
+                                    return (
+                                        <div className="notificationPoint">
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus et officia laboriosam repellendus, sit impedit.</p>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -22,7 +22,6 @@ import * as helper from '../../shared/helper';
 import * as actions from '../../Redux/action/addProject';
 import { connect } from 'react-redux';
 
-
 const MenuProps = {
     getContentAnchorEl: () => null,
     PaperProps: {
@@ -61,6 +60,7 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 }
 
 function ClientNewestDashboard(props) {
+
     console.log(props)
 
     const Role = localStorage.getItem('role');
@@ -68,8 +68,9 @@ function ClientNewestDashboard(props) {
 
     const [open, setOpen] = React.useState(false);
     const [openmodal, setOpenModal] = useState(false);
-    const [projects, setProjects] = useState([])
-    const [statuses, setStatuses] = useState([])
+    const [projects, setProjects] = useState([]);
+    const [statuses, setStatuses] = useState([]);
+    const [visible, setVisible] = useState(false);
 
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
@@ -83,9 +84,17 @@ function ClientNewestDashboard(props) {
             })
     }
 
+    const notificationVisible = (status) => {
+        setVisible(status);
+    };
+
     useEffect(() => {
         getAllProjects();
     }, [])
+
+    useEffect(() => {
+        console.log(visible);
+    }, [visible])
 
     const handleChange = (event) => {
         console.log(event.target.value);
@@ -131,10 +140,10 @@ function ClientNewestDashboard(props) {
                 </div>
             </div>
             <div className="dashboard-container">
-                <Sidebar />
+                <Sidebar notificationVisible={(status) => notificationVisible(status)} />
                 <div className="container-body margin-0">
                     <div className="content-body">
-                        <div className="content-leftBody">
+                        <div style={{zIndex: visible && '-1'}} className="content-leftBody">
                             <div className="user-operations">
                                 <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
                                 <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />

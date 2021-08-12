@@ -4,7 +4,6 @@ import './ClientNavbar.css'
 import Logo from '../../assets/images/Logo/logo.png'
 import HireDeveloperLogo from '../../assets/images/AddDeveloper/developerHire.png'
 
-
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Badge from '@material-ui/core/Badge';
@@ -14,7 +13,6 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory } from 'react-router-dom';
-
 
 import notification from '../../assets/images/ClientDashboard/notification.svg'
 
