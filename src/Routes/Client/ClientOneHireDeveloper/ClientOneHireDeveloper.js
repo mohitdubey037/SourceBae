@@ -110,9 +110,9 @@ function ClientOneHireDeveloper(props) {
                                                 <div onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
                                                     <p>Check Resources</p>
                                                 </div>
-                                                <div onClick={() => routeDirect()} className="moreAgencyLogo show-details">
+                                                {/* <div onClick={() => routeDirect()} className="moreAgencyLogo show-details">
                                                     <p>Show Details</p>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </>

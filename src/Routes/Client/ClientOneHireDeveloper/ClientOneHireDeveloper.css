@@ -42,7 +42,7 @@
   text-align: center;
 }
 
-.moreAgencyInfo > div {
+.moreAgencyInfo>div {
   margin-top: 40px;
 }
 
@@ -59,7 +59,7 @@
 .phone_clientOneHireDeveloper {
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 36%;
   margin-left: 40px;
 }
@@ -67,7 +67,7 @@
 .email_clientOneHireDeveloper {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 55%;
   margin-left: 40px;
 }
@@ -89,17 +89,17 @@
 .moreAgencyLogo {
   background: #F2F2F2;
   padding: 12px;
-  width: 40%;
+  width: 46%;
+  display: flex;
+  justify-content: center;
   color: #5A5A5A;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
-  text-align: center;
   letter-spacing: 0.554545px;
-  text-transform: capitalize;
-  margin-left: 24px;
+  margin-left: 40px;
 }
 
 .checkResource.moreAgencyLogo:hover {
@@ -117,13 +117,25 @@
 }
 
 .button_parent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 40px;
 }
 
 .respondCards_clientOneHireDeveloper {
   overflow: auto;
   height: 83vh;
+}
+
+.moreAgencyList .moreAgencyInfo p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #3A3A3A;
+  margin-left: 40px;
+}
+
+.moreAgencyList .moreAgencyInfo .email_clientOneHireDeveloper p {
+  margin-left: 45px;
 }

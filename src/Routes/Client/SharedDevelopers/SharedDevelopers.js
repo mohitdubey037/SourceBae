@@ -14,7 +14,6 @@ function RespondedDetails(props) {
   const [initial, setInitial] = useState(5);
   let { hireDeveloperId, agencyId } = useParams();
 
-  console.log(hireDeveloperId, agencyId);
   hireDeveloperId = helper.cleanParam(hireDeveloperId);
   agencyId = helper.cleanParam(agencyId);
   const routerHistory = useHistory();
@@ -30,10 +29,7 @@ function RespondedDetails(props) {
   const [selectedDevelopers, setSelectedDevelopers] = useState([]);
   const getOneDeveloper = () => {
     setLoading(true);
-    instance
-      .get(
-        `/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${agencyId}`
-      )
+    instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${agencyId}`)
       .then(function (response) {
         console.log(response);
         setSingleHiredDeveloper(response);
@@ -100,7 +96,8 @@ function RespondedDetails(props) {
     console.log(initial);
   }, [initial])
 
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  console.log(agencyDeveloper.length);
+  // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
     <>
@@ -206,7 +203,9 @@ function RespondedDetails(props) {
                     )
                       : <div>No Matched Agency Found.</div>
                     }
-                    {arr.length >= initial &&
+
+                    {singleHiredDeveloper?.agenciesMatched?.length  > 4 &&
+                      singleHiredDeveloper?.agenciesMatched?.length  >= initial &&
                       <div onClick={() => showMore()} className="show-more_sharedDeveloper">
                         <p>Show More</p>
                       </div>
