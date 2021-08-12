@@ -66,7 +66,7 @@ function UserProject({ name, type, status, lastEdit, detailId, index }, props) {
             <div className="projectDetail">
                 <div className="header-currentStatus">
                     <div className="currentStatus-text currentStatus-item">
-                        <p>Quotation Requested</p>
+                        <p>{status}</p>
                     </div>
                     <img src={ProjectStatusIcon} alt="project status" />
                 </div>
