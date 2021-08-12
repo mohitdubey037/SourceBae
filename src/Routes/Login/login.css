@@ -224,7 +224,7 @@ button {
 }
 
 .googleLogin p {
-  transform: translateY(7px);
+  /* transform: translateY(7px); */
   font-family: 'Inter';
   font-weight: bold;
   color: #888;

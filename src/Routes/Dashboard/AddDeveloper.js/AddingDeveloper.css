@@ -455,7 +455,7 @@
 
 .MuiInputBase-root {
   font-family: 'Inter' !important;
-  border: none !important;
+  /* border: none !important; */
   background-color: #fff !important;
 }
 
@@ -474,7 +474,7 @@
 }
 
 .MuiInputBase-root:hover {
-  border: none !important;
+  /* border: none !important; */
   outline: none;
 }
 
