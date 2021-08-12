@@ -37,7 +37,9 @@ function ClientHireDeveloper(props) {
   return (
     <>
       <Navbar />
-      <Back name="Hired Developers" />
+      <div className="conditional_back_parent">
+        <Back name="Hired Developers" />
+      </div>
       {loading ? (
         <Spinner />
       ) : (

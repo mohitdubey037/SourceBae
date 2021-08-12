@@ -207,7 +207,7 @@
   border: 1px solid #e0e0e0;
 }
 
-.multi-select {
+.resourceNumber .multi-select {
   text-transform: capitalize;
   color: black;
   margin-left: 30px;

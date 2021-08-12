@@ -8,6 +8,7 @@ import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
 // import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
+import Back from "../../../Components/Back/Back";
 
 function RespondedDetails(props) {
   const [initial, setInitial] = useState(5);
@@ -108,6 +109,9 @@ function RespondedDetails(props) {
         <Spinner />
       ) : (
         <>
+          <div className="conditional_back_parent">
+            <Back name="Shared Developer" />
+          </div>
           <div className="main-card_SharedDevelopers">
             <div className="respond-card_parent">
               {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (

@@ -9,7 +9,6 @@ function Navbar(props) {
 
     const routerHistory = useHistory()
 
-    console.log(props);
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');

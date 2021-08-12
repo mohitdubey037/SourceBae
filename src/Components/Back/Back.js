@@ -4,10 +4,8 @@ import { withRouter } from "react-router";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 function Back(props) {
-    console.log(props);
 
     const goBack = () => {
-        console.log('hii');
         props.history.goBack();
     }
     return (

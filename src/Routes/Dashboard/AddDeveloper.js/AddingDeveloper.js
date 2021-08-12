@@ -25,6 +25,7 @@ import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Spinner from '../../../Components/Spinner/Spinner';
+import MultiSelect from "react-multi-select-component";
 
 const MenuProps = {
     getContentAnchorEl: () => null,
@@ -84,11 +85,25 @@ function AddingDeveloper(props) {
         })
 
     const [techs, setTechs] = useState([]);
-    const [techIds, setTechIds] = React.useState([]);
+    // const [techIds, setTechIds] = React.useState([]);
     const [isDisabled, setIsDisabled] = useState(true)
     const [resume, setResume] = useState(null);
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState({})
+    const [multipleSelectId, setMultipleSelectId] = useState([]);
+
+    useEffect(() => {
+        console.log(multipleSelectId.map(t => t.value))
+        setDeveloperData({
+            ...developerData,
+            'developerTechnologies': multipleSelectId.map(t => t.value)
+        })
+    }, [multipleSelectId])
+
+    useEffect(() => {
+        console.log(developerData);
+    },[developerData])
+
 
     const handleChange = (event) => {
         const { name, value } = event.currentTarget
@@ -109,22 +124,22 @@ function AddingDeveloper(props) {
         }
     }
 
-    const technologyHandler = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        if (name === "developerTechnologies") {
-            setDeveloperData({
-                ...developerData,
-                [name]: value,
-            });
-            setTechIds(value);
-        } else {
-            setDeveloperData({
-                ...developerData,
-                [name]: value,
-            });
-        }
-    };
+    // const technologyHandler = (event) => {
+    //     const name = event.target.name;
+    //     const value = event.target.value;
+    //     if (name === "developerTechnologies") {
+    //         setDeveloperData({
+    //             ...developerData,
+    //             [name]: value,
+    //         });
+    //         setTechIds(value);
+    //     } else {
+    //         setDeveloperData({
+    //             ...developerData,
+    //             [name]: value,
+    //         });
+    //     }
+    // };
 
     const getAllTechs = () => {
         instance.get(`api/${Role}/technologies/all`)
@@ -213,7 +228,7 @@ function AddingDeveloper(props) {
             instance.post(`api/${Role}/developers/create`, developerData)
                 .then(function (response) {
                     setLoading(false);
-                    props.history.push({
+                    props.history.replace({
                         pathname: "/agency-profile",
                         origin: 'addingDeveloper'
                     })
@@ -284,7 +299,14 @@ function AddingDeveloper(props) {
                                 <div className="inputField2">
                                     <div className="developerName_addingDeveloper">
                                         <h4>Technology & Skills</h4>
-                                        <FormControl variant="outlined" className={classes.formControl}>
+                                        <MultiSelect
+                                            options={techs.map(t => ({ "label": t.technologyName, "value": t._id }))}
+                                            value={multipleSelectId}
+                                            onChange={setMultipleSelectId}
+                                            labelledBy="Select"
+                                            className="multi-select"
+                                        />
+                                        {/* <FormControl variant="outlined" className={classes.formControl}>
                                             <Select
                                                 // labelId="demo-mutiple-name"
                                                 id="demo-simple-select-outlined"
@@ -296,10 +318,11 @@ function AddingDeveloper(props) {
                                                 value={techIds}
                                                 input={<Input />}
                                                 renderValue={(selected) => {
-                                                    if (selected.length === 0) {
-                                                        return <em>Choose from here</em>;
-                                                    }
-                                                    return techs.filter(t => selected.includes(t._id)).map(t => t.technologyName).join(', ');
+                                                    // if (selected.length === 0) {
+                                                    //     return <em>Choose from here</em>;
+                                                    // }
+                                                    if (selected.length > 0)
+                                                        return techs.filter(t => selected.includes(t._id)).map(t => t.technologyName).join(', ');
                                                 }}
                                                 inputProps={{ 'aria-label': 'Without label' }}
                                             >
@@ -321,7 +344,7 @@ function AddingDeveloper(props) {
                                                 }
                                             </Select>
                                             {errors.developerTechnologies && (<p className="error_paragraph experience">{errors.developerTechnologies}</p>)}
-                                        </FormControl>
+                                        </FormControl> */}
                                     </div>
                                     <div className="developerDesignation_addingDeveloper">
                                         <h4>Upload Resume</h4>
