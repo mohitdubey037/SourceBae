@@ -133,6 +133,9 @@
   line-height: 150%;
   text-transform: capitalize;
   color: #3A3A3A;
+}
+
+.moreAgencyList .moreAgencyInfo .phone_clientOneHireDeveloper p {
   margin-left: 40px;
 }
 
