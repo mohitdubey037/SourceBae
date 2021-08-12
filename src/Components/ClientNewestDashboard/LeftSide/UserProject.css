@@ -2,11 +2,11 @@
 .show-project-detail img,
 .detailsCard-header img {
   width: 16px;
+  margin-left: 4px;
 }
 
 .centerImage img {
   width: 36px;
-  margin-left: 4px;
 }
 
 .project-details-card {
@@ -161,3 +161,21 @@
   color: #3e024a
 }
 
+.message_received {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newMessageReceived_icon {
+  font-size: 14px;
+  margin-left: 7px;
+}
+
+.projectCompleted_userProject {
+  color: #328132;
+}
+
+.conditional_image_change {
+  filter: invert(59%) sepia(69%) saturate(5488%) hue-rotate(93deg) brightness(76%) contrast(117%);
+}

@@ -4,14 +4,11 @@ import './ProjectsMatched.css';
 import instance from '../../../Constants/axiosConstants';
 import Moment from 'react-moment';
 import NO_Data_ICON from '../no_data_icon.jpg';
-import dot1 from '../../../assets/images/Quotation/dot1.png'
-import shape from '../../../assets/images/Quotation/shape.png'
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { withRouter } from 'react-router';
-import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png'
 
 
 function ProjectesMatched(props) {
@@ -58,8 +55,6 @@ function ProjectesMatched(props) {
                             return (
                                 <div className="innerProjectsMatched">
                                     <div className="borderRightBorder"></div>
-                                    {/* <img src={dot1} className="dotImage" alt="" /> */}
-                                    {/* <img src={rightCornerCircle} className="shapeImage" alt="" /> */}
                                     <div className="bgCircles"></div>
                                     <div className="projectCard">
                                         <div className="projectCardHeading">
@@ -69,10 +64,11 @@ function ProjectesMatched(props) {
                                             </div>
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
-                                                    <button onClick={() => props.history.push({
+                                                    <div className="showDetail_projectMatched" onClick={() => props.history.push({
                                                         pathname: `agency-project-details:${s?._id}`,
                                                         origin: 'project-match'
-                                                    })}>Show Details</button>
+                                                    })}><p>Show Details</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

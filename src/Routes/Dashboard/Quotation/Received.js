@@ -38,8 +38,6 @@ function Received(props) {
     }, [])
 
 
-
-
     return (
         <>
             {loading ? <Spinner /> :
@@ -104,12 +102,13 @@ function Received(props) {
                                             </div>
                                         </div>
                                         <div className="respondedCardButton">
-                                            <div>
-                                                <button onClick={() => props.history.push({
-                                                    pathname: `agency-project-details:${s._id}`,
-                                                    origin: 'received'
-                                                })
-                                                }>Show details</button>
+                                            <div className="showDetail_receivedCardButton" onClick={() => props.history.push({
+                                                pathname: `agency-project-details:${s._id}`,
+                                                origin: 'received'
+                                            })}>
+                                                <p>
+                                                    Show details
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

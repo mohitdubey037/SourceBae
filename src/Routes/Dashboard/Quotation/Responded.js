@@ -98,30 +98,27 @@ function Responded(props) {
                                                 </div>
                                             </div>
                                             <div className="respondedCardButton">
-                                                <div>
-
-                                                    <button onClick={() => props.history.push({
-                                                        pathname: `agency-project-details:${s._id}`,
-                                                        origin: 'responded'
-                                                    })
-                                                    }>Show details</button>
+                                                <div className="showDetail_respondedCardButton" onClick={() => props.history.push({
+                                                    pathname: `agency-project-details:${s._id}`,
+                                                    origin: 'received'
+                                                })}><p>Show Details</p>
                                                 </div>
 
                                             </div>
                                         </div>
                                     ) : (
-                                            <>
-                                                <div className="mainBackBtn">
-                                                    <div className="innerBackBtn">
-                                                        <div onClick={() => setIsdetail(false)}>
-                                                            <i className="fa fa-chevron-left" aria-hidden="true"></i>Back
+                                        <>
+                                            <div className="mainBackBtn">
+                                                <div className="innerBackBtn">
+                                                    <div onClick={() => setIsdetail(false)}>
+                                                        <i className="fa fa-chevron-left" aria-hidden="true"></i>Back
 
                                                     </div>
-                                                    </div>
                                                 </div>
-                                                <RespondedDetails details={s} />
-                                            </>
-                                        )
+                                            </div>
+                                            <RespondedDetails details={s} />
+                                        </>
+                                    )
                                 )
                             })
                         }

@@ -157,7 +157,9 @@ function ClientNewestDashboard(props) {
                                         projects.length > 0 ? projects.slice(0, 4).map((p, index) => {
                                             return (
                                                 <>
-                                                    <UserProject name={p.projectName} type={p.projectType} status={p.projectCurrentStatus} lastEdit={p.updatedAt} detailId={p._id} index={index} />
+                                                    <UserProject
+                                                        {...p}
+                                                        index={index} />
                                                 </>
                                             )
                                         }) : <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>

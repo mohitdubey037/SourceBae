@@ -83,6 +83,7 @@ function AgencyNewestDashboard(props) {
         instance
             .get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
+                console.log(response);
                 setVerified(response.isAgencyVerified);
                 setUserEmailVerified(response.isUserEmailVerified);
                 setUserPhoneVerified(response.isUserPhoneVerified);
@@ -144,26 +145,26 @@ function AgencyNewestDashboard(props) {
     }
 
     return (
-        <>
-            <div className="Navbar-clientDashboard">
-                <div className="navbar">
-                    {/* <div className="navbar-heading">
+        <div className="Navbar-clientDashboard">
+            <div className="navbar">
+                {/* <div className="navbar-heading">
                         <h1>Overview</h1>
                     </div> */}
-                    <div className="navbar-items">
-                        <div className="notification-icon nav-left-item">
-                            <img src={notificationIcon} alt="notification" />
-                        </div>
-                        {/* <div onClick={logout} className="logout-icon nav-left-item">
-                    <div>
-                        <ExitToAppIcon />
+                <div className="navbar-items">
+                    <div className="notification-icon nav-left-item">
+                        <img src={notificationIcon} alt="notification" />
                     </div>
-                    <img src={notificationIcon} alt="notification" />
-                </div> */}
-                        <div className="username nav-left-item">
-                            <p>Atul Bhatt</p>
-                        </div>
-                        <div className="userprofile-circle nav-left-item" />
+                    {/* <div onClick={logout} className="logout-icon nav-left-item">
+                            <div>
+                                <ExitToAppIcon />
+                            </div>
+                            <img src={notificationIcon} alt="notification" />
+                        </div> */}
+                    <div className="username nav-left-item">
+                        <p>{agencyProfileData.agencyName}</p>
+                    </div>
+                    <div className="userprofile-circle nav-left-item">
+                        <img src={agencyProfileData.agencyLogo} alt="notification" />
                     </div>
                 </div>
             </div>
@@ -230,7 +231,7 @@ function AgencyNewestDashboard(props) {
                             </div>
                             {/* className={`operation ${props.disabled && "conditional_disabled"}`} */}
                             <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
-                            
+
                                 <div className="graphic">
                                     <div className="graphic-illustration-heading">
                                         <h6>Project details</h6>
@@ -266,7 +267,7 @@ function AgencyNewestDashboard(props) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

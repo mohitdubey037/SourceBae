@@ -266,19 +266,19 @@ function AddingDeveloper(props) {
                                     <div className="developerName_addingDeveloper">
                                         <h4>First Name</h4>
                                         <input type="text" placeholder="First Name" name="firstName" value={developerData.firstName} onChange={(event) => handleChange(event)} />
-                                        {errors.firstName && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px", marginBottom: '0px' }}>{errors.firstName}</p>)}
+                                        {errors.firstName && (<p className="error_paragraph basic">{errors.firstName}</p>)}
                                     </div>
 
                                     <div className="developerName_addingDeveloper">
                                         <h4>Last Name</h4>
                                         <input type="text" placeholder="Last Name" name="lastName" value={developerData.lastName} onChange={(event) => handleChange(event)} />
-                                        {errors.lastName && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px", marginBottom: '0px' }}>{errors.lastName}</p>)}
+                                        {errors.lastName && (<p className="error_paragraph basic">{errors.lastName}</p>)}
                                     </div>
 
                                     <div className="developerDesignation_addingDeveloper">
                                         <h4>Designation</h4>
                                         <input type="text" placeholder="E.g- Angular Developer" name="developerDesignation" value={developerData.developerDesignation} onChange={(event) => handleChange(event)} />
-                                        {errors.developerDesignation && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px", marginBottom: '0px' }}>{errors.developerDesignation}</p>)}
+                                        {errors.developerDesignation && (<p className="error_paragraph basic">{errors.developerDesignation}</p>)}
                                     </div>
                                 </div>
                                 <div className="inputField2">
@@ -320,7 +320,7 @@ function AddingDeveloper(props) {
                                                 )
                                                 }
                                             </Select>
-                                            {errors.developerTechnologies && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerTechnologies}</p>)}
+                                            {errors.developerTechnologies && (<p className="error_paragraph experience">{errors.developerTechnologies}</p>)}
                                         </FormControl>
                                     </div>
                                     <div className="developerDesignation_addingDeveloper">
@@ -329,7 +329,7 @@ function AddingDeveloper(props) {
                                             <input className="upload-box" onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
                                     application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                                         </div>
-                                        {errors.developerResume && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerResume}</p>)}
+                                        {errors.developerResume && (<p className="error_paragraph experience">{errors.developerResume}</p>)}
                                     </div>
                                 </div>
                                 <div className="yearsOfExperience_addingDeveloper">
@@ -345,7 +345,7 @@ function AddingDeveloper(props) {
                                             </RadioGroup>
                                         </div>
                                     </FormControl>
-                                    {errors.developerExperience && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerExperience}</p>)}
+                                    {errors.developerExperience && (<p className="error_paragraph">{errors.developerExperience}</p>)}
                                 </div>
                                 <div className="priceRange">
                                     <FormControl component="fieldset">
@@ -357,7 +357,7 @@ function AddingDeveloper(props) {
                                             <FormControlLabel value="6000" control={<Radio />} label="More than $4000 per month" />
                                         </RadioGroup>
                                     </FormControl>
-                                    {errors.developerPrice && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerPrice}</p>)}
+                                    {errors.developerPrice && (<p className="error_paragraph">{errors.developerPrice}</p>)}
                                 </div>
                                 <div className="availabilityArea">
                                     <FormControl component="fieldset">
@@ -369,7 +369,7 @@ function AddingDeveloper(props) {
                                             <FormControlLabel value="-1" control={<Radio />} label="Negotiable" />
                                         </RadioGroup>
                                     </FormControl>
-                                    {errors.developerAvailability && (<p style={{ color: "red", fontWeight: "normal", fontSize: "14px" }}>{errors.developerAvailability}</p>)}
+                                    {errors.developerAvailability && (<p className="error_paragraph">{errors.developerAvailability}</p>)}
                                 </div>
                                 <div className="submitButton">
                                     <button onClick={() => createDeveloperApi()}>Submit</button>
