@@ -13,6 +13,7 @@ import PeopleOutlinedIcon from '@material-ui/icons/PeopleOutlined';
 import { withRouter } from "react-router";
 import notification from '../../../assets/images/ClientDashboard/notification.svg';
 import { Modal } from 'react-responsive-modal';
+import cookie from "react-cookies";
 
 import React, { useEffect, useState } from 'react';
 
@@ -61,6 +62,7 @@ function Sidebar(props) {
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
+        cookie.remove("user");
         routerHistory.push('/');
     }
 

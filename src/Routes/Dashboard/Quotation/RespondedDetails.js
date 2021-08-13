@@ -8,9 +8,10 @@ import { useParams, useHistory } from "react-router-dom";
 import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import detailImage from '../../../assets/images/details.png';
-
+import completedImage from '../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg'
 //RESPONDED DETAILS
 function RespondedDetails(props) {
+  console.log(props);
   let { projectId, agencyId } = useParams();
   const routerHistory = useHistory();
 
@@ -182,7 +183,76 @@ function RespondedDetails(props) {
                   project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true
                     &&
                     project?.projectProposals[0].isQuotationAcceptedByAgency === true ?
-                    <p>Project is completed from both side</p>
+                    <div className="image_with_logo">
+                      <div className="respondedDetails_afterCompletion">
+                        <div className="project-details">
+                          <h4>Project Details</h4>
+                        </div>
+                        <div className="project-details_child">
+                          <div className="respondedDetails_afterCompletion_child1">
+                            <div style={{ width: '80%' }}>
+                              <div className="question">
+                                <p>Client</p>
+                              </div>
+                              <div className="answer">
+                                <p>{project?.clientId?.companyName}</p>
+                              </div>
+                            </div>
+
+                            <div style={{ width: '80%' }}>
+                              <div className="question">
+                                <p>Agency</p>
+                              </div>
+                              <div className="answer">
+                                <p>{project?.projectProposals[0]?.agencyId?.agencyName}</p>
+                              </div>
+                            </div>
+
+                            <div style={{ width: '80%' }}>
+                              <div className="question">
+                                <p>Cost</p>
+                              </div>
+                              <div className="answer">
+                                <p>{project?.projectProposalCost}</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="respondedDetails_afterCompletion_child2">
+                            <div>
+                              <div className="question after">
+                                <p>Project Creation Date</p>
+                              </div>
+                              <div className="answer">
+                                <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="question after">
+                                <p>Expected Timeline</p>
+                              </div>
+                              <div className="answer">
+                                <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="question after">
+                                <p>Project Type</p>
+                              </div>
+                              <div className="answer">
+                                <p>{project?.projectType}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="project_is_completed">
+                          <p>Project is completed from both side</p>
+                        </div>
+                      </div>
+                      <div>
+                        <img src={completedImage} alt="" />
+                      </div>
+                    </div>
                     :
                     project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true ?
                       <p>Please wait for the agency to accept the Quotation</p>

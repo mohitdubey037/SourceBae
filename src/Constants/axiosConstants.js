@@ -18,7 +18,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function (request) {
   if (!request.url.includes("login")) {
-    //   console.log(cookie.load("Authorization"), "cookies");
+    console.log(cookie.load("Authorization"), "cookies");
     request.headers["Authorization"] = cookie.load("Authorization");
   }
 
@@ -27,7 +27,7 @@ instance.interceptors.request.use(function (request) {
 
 instance.interceptors.response.use(
   function (response) {
-    // console.log(response.url)
+    console.log(response.url,'hiiiiiiiii')
     if (response.status === 200) {
       return response.data.data;
     } else if (
@@ -54,8 +54,8 @@ instance.interceptors.response.use(
     if (error?.response?.status !== 404) {
       if (error?.response?.data?.message === "Bearer Token not found")
         window.location.href = "/";
-      
-        else {
+
+      else {
         const errors = error?.response?.data?.error ?? {};
         const errorName = Object.keys(errors);
         console.log(typeof errors);
@@ -74,7 +74,7 @@ instance.interceptors.response.use(
         });
       }
     }
-    else if(error?.response?.status===404 && error?.response?.config?.url?.includes("login")){
+    else if (error?.response?.status === 404 && error?.response?.config?.url?.includes("login")) {
       toast.error(error?.response?.data?.message)
     }
     return Promise.reject(error);

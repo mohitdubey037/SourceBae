@@ -132,6 +132,7 @@ const Register = (props) => {
     })
 
     const [errors, setErrors] = useState({})
+    const [apiErrors, setApiErrors] = useState(false);
 
     const [step, setStep] = useState(1)
 
@@ -150,6 +151,10 @@ const Register = (props) => {
             })
         }
     }
+
+    useEffect(() => {
+        console.log(apiErrors);
+    },[apiErrors])
 
     const setForm = (event) => {
         const { name, value } = event.target
@@ -249,19 +254,30 @@ const Register = (props) => {
         setState({ ...state, [event.target.name]: event.target.checked })
     };
 
+
+
     //API call methods
     const signUpApi = async (role, form) => {
         return new Promise((resolve, reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
                 .then(function (response) {
+                    console.log('Signup issue');
                     cookie.save(
                         "Authorization",
                         `Bearer ${response.accessToken}`,
                         { path: '/' }
                     );
+                    setApiErrors(false);
                     setToken(cookie.load("Authorization"))
                     localStorage.setItem("role", role);
                     localStorage.setItem("userId", `${response._id}`);
+                })
+                .catch(err => {
+                    console.log('error came in singup');
+                    setApiErrors(true);
+                    localStorage.removeItem("Authorization");
+                    localStorage.removeItem('role');
+                    cookie.remove("user");
                 })
         })
     }
@@ -291,7 +307,9 @@ const Register = (props) => {
     }
 
     useEffect(() => {
-        if (token !== null) {
+        console.log('token use effect called');
+        if (token !== null && apiErrors === false ) {
+            console.log('token is not null');
             const apiRole = helper.lowerize(role)
             let api_param_const = ``
             let api_create_form = {}
@@ -317,7 +335,7 @@ const Register = (props) => {
                 toast.error("Token not set", { autoClose: 2000 })
             }
         }
-    }, [token])
+    }, [token, apiErrors])
 
     const createRoleString = (role) => {
         role = role.charAt(0).toUpperCase() + role.slice(1)
