@@ -32,62 +32,60 @@ function AgencyNewestAllProject() {
 
     const [projects, setProjects] = useState([]);
     const [statusFilter, setStatusFilter] = useState('');
-    const [err, setErr] = useState();
+    const [err, setErr] = useState(false);
 
     const [tab, setTab] = useState(0);
     const [filterTab, setFilterTab] = useState(0);
 
-    const onSearchHandler = () => {
-        console.log(statusFilter);
-        if (statusFilter === '') {
-            instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
-                .then(response => {
-                    console.log(response, 'api')
-                    setProjects(response.projects);
-                    setTab(0);
-                    setFilterTab(0);
-                })
-                .catch((err) => {
-                    console.error(err?.response?.data?.message);
-                    setErr(err?.response?.data?.message)
-                    setTab(0);
-                });
-        }
-        else {
-            instance.get(`/api/${Role}/projects/all?projectCurrentStatus=${statusFilter}`)
-                .then(response => {
-                    if (statusFilter === 'Done') {
-                        setTab(1);
-                    }
-                    if (statusFilter === 'In Progress') {
-                        setTab(2);
-                    }
-                    if (statusFilter === 'Cancelled') {
-                        setTab(3);
-                    }
-                    setProjects(response.projects);
-                })
-                .catch((err) => {
-                    console.error(err?.response?.data?.message);
-                    if (statusFilter === 'Done') {
-                        setTab(1);
-                    }
-                    if (statusFilter === 'In Progress') {
-                        setTab(2);
-                    }
-                    if (statusFilter === 'Cancelled') {
-                        setTab(3);
-                    }
-                    setErr(err?.response?.data?.message)
-                    setProjects([])
-                });
-        }
+    const getInitialData = () => {
+        instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
+            .then(response => {
+                console.log(response, 'api')
+                setProjects(response.projects);
+            })
+            .catch((err) => {
+                console.error(err?.response?.data?.message);
+                setErr(err?.response?.data?.message)
+                setTab(0);
+            });
+    }
 
+    const onSearchHandler = (status) => {
+        console.log(status)
+        instance.get(`/api/${Role}/projects/all?projectCurrentStatus=${status}`)
+            .then(response => {
+                if (status === 'Done') {
+                    setTab(1);
+                }
+                if (status === 'In Progress') {
+                    setTab(2);
+                }
+                if (status === 'Cancelled') {
+                    setTab(3);
+                }
+                setProjects(response.projects);
+            })
+            .catch((err) => {
+                setErr(true);
+                if (status === 'Done') {
+                    setTab(1);
+                }
+                if (status === 'In Progress') {
+                    setTab(2);
+                }
+                if (status === 'Cancelled') {
+                    setTab(3);
+                }
+            });
     }
 
     useEffect(() => {
-        console.log(projects);
-    }, [projects])
+        getInitialData()
+    }, [])
+
+    // useEffect(() => {
+    //     console.log(projects);
+    // }, [projects])
 
     useEffect(() => {
         console.log(tab);
@@ -96,6 +94,10 @@ function AgencyNewestAllProject() {
     useEffect(() => {
         console.log(filterTab);
     }, [filterTab])
+
+    useEffect(() => {
+        console.log(err);
+    },[err])
 
     const filterButton = (num) => {
         setFilterTab(num)
@@ -106,10 +108,6 @@ function AgencyNewestAllProject() {
         setStatusFilter(event.target.value);
         onSearchHandler();
     }
-
-    useEffect(() => {
-        onSearchHandler();
-    }, [])
 
     useEffect(() => {
         console.log(projects, 'effect');
@@ -178,18 +176,18 @@ function AgencyNewestAllProject() {
                             </div>
                             <div className="user-project_AgencyNewestAllProject">
                                 <div className="project-actual-status">
-                                    <div className="completed-project" style={{ backgroundColor: tab === 1 ? '#A6C8FF' : '#F9F9F9' }}>
+                                    <div onClick={() => onSearchHandler("Done")} className={`completed-project ${tab === 1 && "greenConditional"}`}>
                                         <h6>Completed Project</h6>
                                     </div>
-                                    <div className="running-project" style={{ backgroundColor: tab === 2 ? '#A6C8FF' : '#F9F9F9' }}>
+                                    <div onClick={() => onSearchHandler("In Progress")} className={`running-project ${tab === 2 && "yellowConditional"}`}>
                                         <h6>Running Project</h6>
                                     </div>
-                                    <div className="rejected-project" style={{ backgroundColor: tab === 3 ? '#A6C8FF' : '#F9F9F9' }}>
+                                    <div onClick={() => onSearchHandler("Cancelled")} className={`rejected-project ${tab === 3 && "redConditional"}`}>
                                         <h6>Rejected Project</h6>
                                     </div>
                                 </div>
                                 <div className="agency-card-parent">
-                                    {projects.length === 0 ?
+                                    {err === true ?
                                         <>
                                             <div style={{ textAlign: 'center', width: '100%' }}>
                                                 <img height="300px" src={Not_Found} alt="no_data_img" />

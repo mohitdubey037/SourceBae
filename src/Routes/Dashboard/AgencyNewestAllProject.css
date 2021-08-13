@@ -77,14 +77,11 @@ p, h5, h6, h4 {
     padding: 20px;
     width: 30%;
     text-align: center;
+    background-color: #F9F9F9;
 }
 
-.completed-project {
-    background: #A6C8FF;
-}
-
-.running-project, .rejected-project {
-    background: #F9F9F9;
+.completed-project:hover, .running-project:hover, .rejected-project:hover {
+    cursor: pointer;
 }
 
 .filter {
@@ -211,4 +208,17 @@ p, h5, h6, h4 {
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
+}
+
+.greenConditional {
+     background-color: #26E826;;
+     color: white;
+}
+.redConditional {
+     background-color: #FF0000;;
+     color: white;
+}
+.yellowConditional {
+     background-color: #FFD200;
+     color: white;
 }

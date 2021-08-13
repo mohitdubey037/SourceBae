@@ -20,7 +20,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Sidebar(props) {
-    console.log(props);
     const role = localStorage.getItem('role');
     const routerHistory = useHistory();
 

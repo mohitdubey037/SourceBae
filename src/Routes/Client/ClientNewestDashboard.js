@@ -72,6 +72,11 @@ function ClientNewestDashboard(props) {
     const [statuses, setStatuses] = useState([]);
     const [visible, setVisible] = useState(false);
 
+    const [clientData, setClientData] = useState({
+        firstName: "",
+        lastName: ""
+    })
+
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
             .then(function (response) {
@@ -88,24 +93,17 @@ function ClientNewestDashboard(props) {
         setVisible(status);
     };
 
-    useEffect(() => {
-        getAllProjects();
-    }, [])
-
-    useEffect(() => {
-        console.log(visible);
-    }, [visible])
-
-    const handleChange = (event) => {
-        console.log(event.target.value);
-        instance.get(`/api/${Role}/projects/all?clientId=${clientId}&projectCurrentStatus=${event.target.value}`)
-            .then(response => {
+    const getClientProfileApi = () => {
+        instance.get(`/api/${Role}/clients/get/${clientId}`)
+            .then(function (response) {
                 console.log(response);
-                setProjects(response.projects);
+                setClientData({
+                    firstName: response[0].firstName,
+                    lastName: response[0].lastName,
+                });
             })
-            .catch(error => {
-                setProjects([]);
-                console.log(error);
+            .catch(err => {
+                console.log(err?.response?.data?.message)
             })
     };
 
@@ -113,6 +111,15 @@ function ClientNewestDashboard(props) {
     useEffect(() => {
         console.log(projects);
     }, [statuses, projects])
+
+    useEffect(() => {
+        getAllProjects();
+        getClientProfileApi();
+    }, [])
+
+    useEffect(() => {
+        console.log(visible);
+    }, [visible])
 
     return (
         <>
@@ -134,6 +141,7 @@ function ClientNewestDashboard(props) {
                 </div> */}
                         <div className="username nav-left-item">
                             <p>Atul Bhatt</p>
+                            <p>{clientData.firstName} {clientData.lastName}</p>
                         </div>
                         <div className="userprofile-circle nav-left-item" />
                     </div>
@@ -143,7 +151,7 @@ function ClientNewestDashboard(props) {
                 <Sidebar notificationVisible={(status) => notificationVisible(status)} />
                 <div className="container-body margin-0">
                     <div className="content-body">
-                        <div style={{zIndex: visible && '-1'}} className="content-leftBody">
+                        <div style={{ zIndex: visible && '-1' }} className="content-leftBody">
                             <div className="user-operations">
                                 <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
                                 <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />

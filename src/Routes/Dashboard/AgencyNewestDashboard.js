@@ -231,7 +231,6 @@ function AgencyNewestDashboard(props) {
                             </div>
                             {/* className={`operation ${props.disabled && "conditional_disabled"}`} */}
                             <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
-
                                 <div className="graphic">
                                     <div className="graphic-illustration-heading">
                                         <h6>Project details</h6>

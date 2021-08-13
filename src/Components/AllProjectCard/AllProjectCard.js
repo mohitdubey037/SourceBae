@@ -9,19 +9,19 @@ import { useHistory } from 'react-router-dom';
 
 function AllProjectCard(props) {
     const routerHistory = useHistory();
-    console.log(props);
 
     const showDetails = () => {
         routerHistory.push(`/project-details/${props?._id}/${props?.projectProposals[0]?.agencyId?._id}`)
     }
 
-    console.log(props);
     return (
         <div className="user-project_agencyNewestAllProject">
             {/* {props?.projectProposals[0].isQuat} */}
-            <div className="strip green-strip"></div>
-            <div className="strip red-strip"></div>
-            <div className="strip yellow-strip"></div>
+            {/* {props?.projectProposals[0]?.isQuotationRejectedByClient || props?.projectProposals[0]?.isQuotationRejectedByClient && */}
+                {/* < div className="strip red-strip"></div> */}
+            
+            {/* <div className="strip green-strip"></div>
+            <div className="strip yellow-strip"></div> */}
             <div className="user-project_heading_agencyNewestAllProject">
                 <div className="user-project_child_agencyNewestAllProject">
                     <h5>{props?.projectName}</h5>
@@ -70,7 +70,7 @@ function AllProjectCard(props) {
                     </thead>
                 </table>
             </div>
-        </div>
+        </div >
     )
 }
 
