@@ -75,7 +75,7 @@ p, h5, h6, h4 {
 .completed-project, .running-project, .rejected-project {
     border-radius: 4px;
     padding: 20px;
-    width: 30%;
+    width: 22%;
     text-align: center;
     background-color: #F9F9F9;
 }
@@ -198,7 +198,7 @@ p, h5, h6, h4 {
     display: flex;
     padding: 15px;
     background: #EAF2FF;
-    margin-left: 49px;
+    margin-left: 25px;
     align-items: center;
     margin-top: 1rem;
 }
@@ -210,15 +210,22 @@ p, h5, h6, h4 {
     line-height: 17px;
 }
 
+.blueConditional {
+    background: #EAF2FF;
+    color: white;
+}
+
 .greenConditional {
-     background-color: #26E826;;
-     color: white;
+    background-color: #26E826;
+    color: white;
 }
+
 .redConditional {
-     background-color: #FF0000;;
-     color: white;
+    background-color: #FF0000;
+    color: white;
 }
+
 .yellowConditional {
-     background-color: #FFD200;
-     color: white;
+    background-color: #FFD200;
+    color: white;
 }

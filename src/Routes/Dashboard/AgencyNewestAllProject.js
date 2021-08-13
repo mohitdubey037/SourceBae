@@ -52,31 +52,73 @@ function AgencyNewestAllProject() {
 
     const onSearchHandler = (status) => {
         console.log(status)
-        instance.get(`/api/${Role}/projects/all?projectCurrentStatus=${status}`)
-            .then(response => {
-                if (status === 'Done') {
-                    setTab(1);
-                }
-                if (status === 'In Progress') {
-                    setTab(2);
-                }
-                if (status === 'Cancelled') {
-                    setTab(3);
-                }
-                setProjects(response.projects);
-            })
-            .catch((err) => {
-                setErr(true);
-                if (status === 'Done') {
-                    setTab(1);
-                }
-                if (status === 'In Progress') {
-                    setTab(2);
-                }
-                if (status === 'Cancelled') {
-                    setTab(3);
-                }
-            });
+        if (status === 'all') {
+            instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
+                .then(response => {
+                    if (status === 'Done') {
+                        setTab(1);
+                    }
+                    if (status === 'In Progress') {
+                        setTab(2);
+                    }
+                    if (status === 'Cancelled') {
+                        setTab(3);
+                    }
+                    if (status === 'all') {
+                        setTab(4);
+                    }
+                    setProjects(response.projects);
+                })
+                .catch((err) => {
+                    setErr(true);
+                    if (status === 'Done') {
+                        setTab(1);
+                    }
+                    if (status === 'In Progress') {
+                        setTab(2);
+                    }
+                    if (status === 'Cancelled') {
+                        setTab(3);
+                    }
+                    if (status === '') {
+                        setTab(4);
+                    }
+                });
+        }
+        else {
+            instance.get(`/api/${Role}/projects/all?projectCurrentStatus=${status}`)
+                .then(response => {
+                    if (status === 'Done') {
+                        setTab(1);
+                    }
+                    if (status === 'In Progress') {
+                        setTab(2);
+                    }
+                    if (status === 'Cancelled') {
+                        setTab(3);
+                    }
+                    if (status === '') {
+                        setTab(4);
+                    }
+                    setProjects(response.projects);
+                })
+                .catch((err) => {
+                    setErr(true);
+                    if (status === 'Done') {
+                        setTab(1);
+                    }
+                    if (status === 'In Progress') {
+                        setTab(2);
+                    }
+                    if (status === 'Cancelled') {
+                        setTab(3);
+                    }
+                    if (status === '') {
+                        setTab(4);
+                    }
+                });
+        }
+
     }
 
     useEffect(() => {
@@ -97,7 +139,7 @@ function AgencyNewestAllProject() {
 
     useEffect(() => {
         console.log(err);
-    },[err])
+    }, [err])
 
     const filterButton = (num) => {
         setFilterTab(num)
@@ -126,7 +168,7 @@ function AgencyNewestAllProject() {
                         </div>
 
                         <div className="main-section">
-                            <div className='filter-parent'>
+                            {/* <div className='filter-parent'>
                                 <div className="filter">
                                     <div className="filter-button">
                                         <div onClick={() => filterButton(1)} className="reset-filter">
@@ -148,7 +190,7 @@ function AgencyNewestAllProject() {
                                             </RadioGroup>
                                         </FormControl>
 
-                                        {/* <div>
+                                        <div>
                                             <input className="larger-checkbox" type="checkbox" name="Completed" id="project-status" />
                                             <p>Completed</p>
                                         </div>
@@ -159,7 +201,7 @@ function AgencyNewestAllProject() {
                                         <div>
                                             <input className="larger-checkbox" type="checkbox" name="Rejected" id="project-status" />
                                             <p>Rejected</p>
-                                        </div> */}
+                                        </div>
                                     </div>
 
                                     <div className="search-content">
@@ -173,9 +215,12 @@ function AgencyNewestAllProject() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="user-project_AgencyNewestAllProject">
                                 <div className="project-actual-status">
+                                    <div onClick={() => onSearchHandler("all")} className={`completed-project ${tab === 4 && "blueConditional"}`}>
+                                        <h6>All Project</h6>
+                                    </div>
                                     <div onClick={() => onSearchHandler("Done")} className={`completed-project ${tab === 1 && "greenConditional"}`}>
                                         <h6>Completed Project</h6>
                                     </div>
