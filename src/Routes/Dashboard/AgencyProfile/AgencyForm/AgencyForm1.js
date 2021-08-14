@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
-import Navbar from '../../Navbar'
-import FormPhases from './FormPhases'
+import React, { useEffect, useState } from 'react';
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
+import FormPhases from './FormPhases';
 import { FilePicker } from 'react-file-picker'
 // import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
 import agency3d from '../../../../assets/images/AgencyProfile/form1_3d.png'

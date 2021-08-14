@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import Navbar from '../../Navbar'
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from './FormPhases'
-
 import github from '../../../../assets/images/agencyForm/github.svg'
 import stack from '../../../../assets/images/agencyForm/stack.svg'
 import portfolio from '../../../../assets/images/agencyForm/portfolio.svg'

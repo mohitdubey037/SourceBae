@@ -56,6 +56,7 @@ p, h5, h6, h4 {
 
 .user-project_AgencyNewestAllProject {
     width: 100%;
+    margin-left: 30px;
 }
 
 .project-actual-status {
@@ -211,7 +212,7 @@ p, h5, h6, h4 {
 }
 
 .blueConditional {
-    background: #EAF2FF;
+    background: #4175ca;
     color: white;
 }
 

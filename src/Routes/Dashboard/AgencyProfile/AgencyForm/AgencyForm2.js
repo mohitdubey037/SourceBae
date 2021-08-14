@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Navbar";
+import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from "./FormPhases";
 import { NavLink } from "react-router-dom";
 

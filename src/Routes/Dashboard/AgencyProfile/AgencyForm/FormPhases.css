@@ -120,6 +120,10 @@
 .innerPersonelDetailsForm p{
     font-family: 'Inter';
     font-size: 1.15rem;
+    font-family: 'Inter';
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: 600;
 }
 .innerPersonelDetailsForm input{
     font-family: 'Inter';
@@ -209,6 +213,7 @@
     padding: 0 0.8rem;
     border: 1px solid #ebebeb;
     transition: 0.3s ease-in-out;
+    margin-top: 17px;
 }
 .addressField{
     width: 100% !important;
@@ -286,7 +291,7 @@
     margin-bottom: 5%;
 }
 .innerTechStackForm{
-    width: 80%;
+    width: 95%;
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
     padding: 1.5rem;
@@ -302,6 +307,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: 2rem;
 }
 .domainsFields .domainHeading{
     font-family: 'Inter';
@@ -342,7 +348,6 @@
     font-weight: bold;   
 }
 
-
 .serivcesAgency{
     margin-top: 5%;
 }
@@ -350,13 +355,9 @@
     font-family: 'Inter';
     font-size: 1.3rem;
     font-weight: bold;
-    margin-bottom: 4%;
 }
 .servicesCardsAgency{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 .servicesCardsAgency div{
     width: 22%;
@@ -388,7 +389,7 @@
 
 .servicesContainer{
     height: 100vh;
-    overflow: scroll;
+    overflow: auto;
     border: 1px dashed #ebebeb;
     margin-left: 2px;
 }

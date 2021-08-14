@@ -68,6 +68,7 @@ function AgencyNewestAllProject() {
                         setTab(4);
                     }
                     setProjects(response.projects);
+                    setErr(false);
                 })
                 .catch((err) => {
                     setErr(true);
