@@ -190,12 +190,10 @@ function HireAgencyForm3(props) {
 
                             <div className="nextbutton">
                                 <div className="backbutton_hireAgencyForm3" onClick={() => props.history.push("/hire-agency-form-two")}>
-                                    {/* <i class="fa fa-long-arrow-left" aria-hidden="true"></i> */}
                                     Back
                                 </div>
                                 <div onClick={() => handleSubmit()}>
                                     Submit
-                                    {/* <i class="fa fa-long-arrow-right" aria-hidden="true"></i> */}
                                 </div>
                             </div>
                         </div>

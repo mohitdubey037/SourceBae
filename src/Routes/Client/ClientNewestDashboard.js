@@ -140,7 +140,6 @@ function ClientNewestDashboard(props) {
                     <img src={notificationIcon} alt="notification" />
                 </div> */}
                         <div className="username nav-left-item">
-                            <p>Atul Bhatt</p>
                             <p>{clientData.firstName} {clientData.lastName}</p>
                         </div>
                         <div className="userprofile-circle nav-left-item" />

@@ -79,40 +79,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-// const useStyles = makeStyles({
-//   root: {
-//     width: 200,
-//     "& .MuiOutlinedInput-input": {
-//       color: "green",
-//       padding: "11.5px 14px"
-//     },
-//     "& .MuiInputLabel-root": {
-//       color: "green"
-//     },
-//     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-//       borderColor: "green"
-//     },
-//     "&:hover .MuiOutlinedInput-input": {
-//       color: "red"
-//     },
-//     "&:hover .MuiInputLabel-root": {
-//       color: "red"
-//     },
-//     "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-//       borderColor: "red"
-//     },
-//     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
-//       color: "purple"
-//     },
-//     "& .MuiInputLabel-root.Mui-focused": {
-//       color: "purple"
-//     },
-//     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-//       borderColor: "purple"
-//     }
-//   }
-// });
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -170,7 +136,7 @@ function ProductForm(props) {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
-  const [businesstype, setBusinesstype] = useState([]);
+  // const [businesstype, setBusinesstype] = useState([]);
   const [wordsRequired, setWordsRequired] = useState(100);
 
   const [multipleSelectTech, setMultipleSelect] = useState([]);
@@ -215,7 +181,6 @@ function ProductForm(props) {
       ...apiData,
       [name]: value,
     });
-    // setBusinesstype(value);
   };
   const handleDescChange = (event) => {
     const { name, value } = event.target;
@@ -223,7 +188,6 @@ function ProductForm(props) {
       ...apiData,
       [name]: value,
     });
-    // setBusinesstype(value);
   };
 
   useEffect(() => {
@@ -243,7 +207,7 @@ function ProductForm(props) {
       ...apiData,
       [name]: value,
     });
-    setBusinesstype(value);
+    // setBusinesstype(value);
     setDomainName(value);
   };
 
@@ -264,6 +228,7 @@ function ProductForm(props) {
     instance
       .get(`api/${Role}/domains/all`)
       .then(function (response) {
+        console.log(response);
         setAllDomainsData(response);
         setLoading(false);
       })
@@ -413,7 +378,6 @@ function ProductForm(props) {
     }
 
     if (apiData.productFounderLinkedinProfiles.length > 0) {
-      console.log('hi');
       apiData.productFounderLinkedinProfiles.forEach((a, index) => {
         console.log(apiData.productFounderLinkedinProfiles);
         console.log(a, index);
@@ -544,11 +508,7 @@ function ProductForm(props) {
                     />
                     {errors.filePicked && (
                       <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
+                        className="error_productForm"
                       >
                         {errors.filePicked}
                       </p>
@@ -568,13 +528,7 @@ function ProductForm(props) {
                       onChange={handleChange}
                     />
                     {errors.productName && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productName}
                       </p>
                     )}
@@ -595,13 +549,7 @@ function ProductForm(props) {
                     ></textarea>
                     <p style={{ fontWeight: 'normal', textAlign: 'right' }}>{wordsRequired} words required</p>
                     {errors.productDescription && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productDescription}
                       </p>
                     )}
@@ -628,58 +576,29 @@ function ProductForm(props) {
                       </li>
                     </ul>
 
-                    <FormControl variant="filled" className={classes.formControl}>
-                      {/* <MultiSelect
-                        options={allDomainsData.map(ad => ({ "label": ad.domainName, "value": ad._id }))}
-                        value={multipleSelectTech}
-                        onChange={setMultipleSelect}
-                        labelledBy="Select"
-                      /> */}
+                    <FormControl variant="outlined" className={classes.formControl}>
                       <Select
-                        labelId="demo-mutiple-checkbox-label"
-                        id="demo-checkbox"
-                        name="productDomainId"
-                        // multiple
-                        displayEmpty
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
                         value={domainName}
+                        name="productDomainId"
                         onChange={(event) => handleSelectChange(event)}
-                        input={<Input />}
-                        renderValue={(selected) => {
-                          if (selected === "") {
-                            return (
-                              <span
-                                style={{ fontFamily: "Inter", color: "#999" }}
-                              >
-                                Select from here
-                              </span>
-                            );
-                          }
-                          return allDomainsData
-                            .filter((ad) => selected.includes(ad._id))
-                            .map((t) => t.domainName)
-                            .join(", ");
-                        }}
-                        MenuProps={MenuProps}
-                        inputProps={{ "aria-label": "Without label" }}
+                        displayEmpty
+                        className={clsx(classes.root, classes.inputField)}
                       >
+                        <MenuItem value="">
+                          <span style={{ fontFamily: "Inter", color: "#999" }}>
+                            Select from here
+                          </span>
+                        </MenuItem>
                         {allDomainsData.map((ad) => (
                           <MenuItem key={ad._id} value={ad._id}>
-                            <Checkbox
-                              color="primary"
-                              checked={businesstype.indexOf(ad._id) > -1}
-                            />
-                            <ListItemText primary={ad.domainName} />
+                            {ad.domainName}
                           </MenuItem>
                         ))}
                       </Select>
                       {errors.productDomainId && (
-                        <p
-                          style={{
-                            color: "red",
-                            fontWeight: "normal",
-                            fontSize: "14px",
-                          }}
-                        >
+                        <p className="error_productForm">
                           {errors.productDomainId}
                         </p>
                       )}
@@ -702,9 +621,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span
-                            style={{ fontFamily: "Inter", color: "#999" }}
-                          >
+                          <span style={{ fontFamily: "Inter", color: "#999" }}>
                             Select from here
                           </span>
                         </MenuItem>
@@ -714,13 +631,7 @@ function ProductForm(props) {
                         <MenuItem value={"more"}>More</MenuItem>
                       </Select>
                       {errors.productTeamSize && (
-                        <p
-                          style={{
-                            color: "red",
-                            fontWeight: "normal",
-                            fontSize: "14px",
-                          }}
-                        >
+                        <p className="error_productForm">
                           {errors.productTeamSize}
                         </p>
                       )}
@@ -754,13 +665,7 @@ function ProductForm(props) {
                         <MenuItem value={"more"}>More</MenuItem>
                       </Select>
                       {errors.productRevenueGenerated && (
-                        <p
-                          style={{
-                            color: "red",
-                            fontWeight: "normal",
-                            fontSize: "14px",
-                          }}
-                        >
+                        <p className="error_productForm">
                           {errors.productRevenueGenerated}
                         </p>
                       )}
@@ -789,13 +694,7 @@ function ProductForm(props) {
                       })}
                     </div>
                     {errors.productBusinessModel && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productBusinessModel}
                       </p>
                     )}
@@ -838,13 +737,7 @@ function ProductForm(props) {
                       </RadioGroup>
                     </FormControl>
                     {errors.productPreviousFunding && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productPreviousFunding}
                       </p>
                     )}
@@ -875,13 +768,7 @@ function ProductForm(props) {
                         </Select>
                       </FormControl>
                       {errors.fundingMoneyRaised && (
-                        <p
-                          style={{
-                            color: "red",
-                            fontWeight: "normal",
-                            fontSize: "14px",
-                          }}
-                        >
+                        <p className="error_productForm">
                           {errors.fundingMoneyRaised}
                         </p>
                       )}
@@ -910,35 +797,29 @@ function ProductForm(props) {
                             Select from here
                           </span>
                         </MenuItem>
-                        <MenuItem value={"Seed"}>SEED</MenuItem>
-                        <MenuItem value={"Series-A"}>SERIES-A</MenuItem>
-                        <MenuItem value={"Series-B"}>SERIES-B</MenuItem>
-                        <MenuItem value={"Series-C"}>SERIES-C</MenuItem>
+                        <MenuItem value={"Seed"}>Seed</MenuItem>
+                        <MenuItem value={"Series-A"}>Series-A</MenuItem>
+                        <MenuItem value={"Series-B"}>Series-B</MenuItem>
+                        <MenuItem value={"Series-C"}>Series-C</MenuItem>
                         <MenuItem value={"Venture-Round"}>
-                          VENTURE-ROUND
+                          Venture-Round
                         </MenuItem>
                         <MenuItem value={"Angel"}>Angel</MenuItem>
                         <MenuItem value={"Corporate-Round"}>
                           Corporate-Round
                         </MenuItem>
                         <MenuItem value={"Debt-Financing"}>
-                          DEBT-FINANCING
+                          Debt-Financing
                         </MenuItem>
                         <MenuItem value={"Equity-Crowdfunding"}>
-                          EQUITY-CROWDFUNDING
+                          Equity-Crowdfunding
                         </MenuItem>
                         <MenuItem value={"Grant"}>Grant</MenuItem>
                         <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
                       </Select>
                     </FormControl>
                     {errors.productFundingTypeLookingFor && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productFundingTypeLookingFor}
                       </p>
                     )}
@@ -970,13 +851,7 @@ function ProductForm(props) {
                       })}
                     </div>
                     {errors.productCurrentStatus && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productCurrentStatus}
                       </p>
                     )}
@@ -1013,13 +888,7 @@ function ProductForm(props) {
                         </MenuItem>
                       </Select>
                       {errors.productCustomerAccquired && (
-                        <p
-                          style={{
-                            color: "red",
-                            fontWeight: "normal",
-                            fontSize: "14px",
-                          }}
-                        >
+                        <p className="error_productForm">
                           {errors.productCustomerAccquired}
                         </p>
                       )}
@@ -1057,13 +926,7 @@ function ProductForm(props) {
                         </MenuItem>
                       </Select>
                       {errors.productActiveUsers && (
-                        <p
-                          style={{
-                            color: "red",
-                            fontWeight: "normal",
-                            fontSize: "14px",
-                          }}
-                        >
+                        <p className="error_productForm">
                           {errors.productActiveUsers}
                         </p>
                       )}
@@ -1101,13 +964,7 @@ function ProductForm(props) {
                       onChange={handleChange}
                     />
                     {errors.productCompanyLocation && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productCompanyLocation}
                       </p>
                     )}
@@ -1139,13 +996,7 @@ function ProductForm(props) {
                       onChange={handleChange}
                     />
                     {errors.productFeatureLink && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productFeatureLink}
                       </p>
                     )}
@@ -1164,13 +1015,7 @@ function ProductForm(props) {
                       onChange={handleChange}
                     />
                     {errors.productPlatformLink && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_productForm">
                         {errors.productPlatformLink}
                       </p>
                     )}
@@ -1184,13 +1029,7 @@ function ProductForm(props) {
                           </li>
                         </ul>
                         {errors.productFounderLinkedinProfiles && (
-                          <p
-                            style={{
-                              color: "red",
-                              fontWeight: "normal",
-                              fontSize: "14px",
-                            }}
-                          >
+                          <p className="error_productForm">
                             {errors.productFounderLinkedinProfiles}
                           </p>
                         )}

@@ -1,20 +1,41 @@
 import React, { useEffect, useState } from 'react';
-
 import notificationIcon from "../../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import instance from '../../../Constants/axiosConstants';
 import { useHistory } from 'react-router-dom';
-
 import './Navbar.css';
 
 function Navbar(props) {
 
-    const routerHistory = useHistory()
+    const roleId = localStorage.getItem("userId");
 
-    const logout = () => {
-        localStorage.removeItem("Authorization");
-        localStorage.removeItem('role');
-        routerHistory.push('/');
-    }
+    const Role = localStorage.getItem('role');
+
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        if (Role === 'Client') {
+            instance.get(`/api/${Role}/clients/get/${roleId}`)
+                .then(function (response) {
+                    setData(response);
+                })
+                .catch(err => {
+                    console.log(err?.response?.data?.message)
+                })
+        }
+
+        else {
+            instance.get(`/api/${Role}/agencies/get/${roleId}`)
+                .then(function (response) {
+                    setData(response);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+
+    }, [])
+
 
     return (
         <div className="navbar">
@@ -33,8 +54,11 @@ function Navbar(props) {
                 </div> */}
                 <div className="username nav-left-item">
                     <p>Atul Bhatt</p>
+                    <p>{Role === "Client" ? data.firstName + data.lastName : data.agencyName}</p>
                 </div>
-                <div className="userprofile-circle nav-left-item" />
+                <div className="userprofile-circle nav-left-item" >
+                    {Role === 'Agency' && <img src={data.agencyLogo} alt="notification"/>}
+                </div>
             </div>
         </div>
     )

@@ -926,7 +926,6 @@
 }
 
 .innerHireAgencyForm3 .servicesCardsHireAgency {
-    /* margin-left: 33px; */
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
@@ -936,4 +935,10 @@
 
 .innerHireAgencyForm3 .serivcesHireAgency {
     margin-top: 5rem;
+}
+
+.error_hireAgencyForm2 {
+    color: red;
+    font-weight: normal;
+    font-size: 14px;
 }

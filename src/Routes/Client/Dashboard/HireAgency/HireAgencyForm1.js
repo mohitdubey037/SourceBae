@@ -190,13 +190,7 @@ const HireAgencyForm1 = (props) => {
                       maxLength="22"
                     />
                     {error.projectNameError && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_hireAgencyForm2">
                         {error.projectNameError}
                       </p>
                     )}
@@ -219,13 +213,7 @@ const HireAgencyForm1 = (props) => {
                       <span>{words}/100</span>
                     </div>
                     {error.projectDescriptionError && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p>
                         {error.projectDescriptionError}
                       </p>
                     )}
@@ -284,10 +272,8 @@ const HireAgencyForm1 = (props) => {
                   </div>
                 </div>
                 <div className="nextbuttton">
-                  {/* <span></span> */}
                   <div onClick={() => handleSubmit()}>
                     Submit
-                    {/* <i class="fa fa-long-arrow-right" aria-hidden="true"></i> */}
                   </div>
                 </div>
               </div>

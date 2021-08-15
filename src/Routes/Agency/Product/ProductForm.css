@@ -159,6 +159,12 @@
   margin-bottom: 5%;
 }
 
+.error_productForm {
+  color: red;
+  font-weight: normal;
+  font-size: 14px;
+}
+
 .innerProductFormArea {
   width: 80%;
   position: relative;
@@ -520,9 +526,7 @@
   font-family: 'Inter';
 }
 
-.form_1 section input,
-.form_1 section textarea,
-.form_4 section input {
+.form_1 section input, .form_1 section textarea, .form_4 section input {
   margin-top: 1rem;
 }
 

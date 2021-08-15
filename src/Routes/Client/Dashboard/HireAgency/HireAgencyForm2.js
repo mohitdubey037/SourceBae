@@ -241,13 +241,7 @@ function HireAgencyForm2(props) {
                     );
                   })}
                   {error.projectDomainIdError && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontWeight: "normal",
-                        fontSize: "14px",
-                      }}
-                    >
+                    <p className="error_hireAgencyForm2">
                       {error.projectDomainIdError}
                     </p>
                   )}
@@ -308,12 +302,10 @@ function HireAgencyForm2(props) {
 
               <div className="nextbutton">
                 <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push("/hire-agency-form-one")}>
-                  {/* <i class="fa fa-long-arrow-left" aria-hidden="true"></i> */}
                   Back
                 </div>
                 <div onClick={() => handleSubmit()}>
                   Next
-                  {/* <i class="fa fa-long-arrow-right" aria-hidden="true"></i> */}
                 </div>
               </div>
             </div>
@@ -336,13 +328,7 @@ function HireAgencyForm2(props) {
                       </>
                     </div>
                     {error.projectExpertiseRequiredError && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontWeight: "normal",
-                          fontSize: "14px",
-                        }}
-                      >
+                      <p className="error_hireAgencyForm2">
                         {error.projectExpertiseRequiredError}
                       </p>)}
                   </div>
