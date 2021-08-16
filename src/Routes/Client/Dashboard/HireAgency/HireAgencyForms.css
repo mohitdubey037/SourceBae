@@ -638,16 +638,16 @@
     text-transform: capitalize;
 }
 
-.servicesHireAgencyContainer {
-    margin-top: 6%;
+.serviceFieldsOptions.newHireAgencyForm3 .servicesHireAgencyContainer {
+    margin-top: 0%;
     height: 100%;
     border: 1px dashed #ebebeb;
     padding-bottom: 6%;
     background: #fff;
-    width: 40%;
+    width: 100%;
     position: absolute;
-    right: -22rem;
-    height: 31rem;
+    right: 0rem;
+    height: 28rem;
 }
 
 .UIUXServices {
@@ -704,7 +704,7 @@
     position: absolute;
     right: -22rem;
     height: 31rem;
-    top: 0;
+    top: 4rem;
 }
 
 .techStackFields {
