@@ -9,6 +9,27 @@
   top: 0;
 }
 
+.not_found.agencyNewestDashboard {
+  width: max-content;
+  height: 367px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.not_found.agencyNewestDashboard p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17.1875px;
+  line-height: 39px;
+  text-transform: capitalize;
+  color: #000000;
+  margin-top: 20px;
+}
+
 .navbar_parent .navbar {
   width: 90%;
   margin-left: 10%;
@@ -28,6 +49,7 @@
   margin-top: 1%;
   height: 40px;
 }
+
 .innerMainVerify {
   width: 100%;
   color: #fff;
@@ -38,9 +60,11 @@
   /* padding-top: 1%; */
   height: 100%;
 }
+
 .innerMainVerify img {
   width: 20px;
 }
+
 .innerMainVerify div {
   margin-right: 5px;
   width: 2%;
@@ -48,6 +72,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .innerMainVerify p {
   font-family: "Inter";
   font-weight: normal;
@@ -55,6 +80,7 @@
   font-size: 1rem;
   margin-top: 0;
 }
+
 .innerMainVerify span {
   color: #fad647;
   font-weight: bold;

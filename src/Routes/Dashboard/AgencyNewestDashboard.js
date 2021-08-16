@@ -18,6 +18,7 @@ import instance from "../../Constants/axiosConstants";
 import { Link, NavLink } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { Opacity } from '@material-ui/icons';
+import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound.svg'
 
 
 function AgencyNewestDashboard(props) {
@@ -231,11 +232,13 @@ function AgencyNewestDashboard(props) {
                             </div>
                             {/* className={`operation ${props.disabled && "conditional_disabled"}`} */}
                             <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
-                                <div className="graphic">
-                                    <div className="graphic-illustration-heading">
-                                        <h6>Project details</h6>
+                                {allProjects?.projects?.length > 0 &&
+                                    <div className="graphic">
+                                        <div className="graphic-illustration-heading">
+                                            <h6>Project details</h6>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                                 <div className="user-project agencyNewestDashboard">
                                     <div>
                                         {allProjects?.projects?.length > 0 ? (
@@ -256,7 +259,13 @@ function AgencyNewestDashboard(props) {
                                                         services={value?.projectServicesRequired} />
                                                 )
                                             })
-                                        ) : <p>No Projects</p>}
+                                        ) :
+                                            // <p>No Projects</p>
+                                            <div className="not_found agencyNewestDashboard">
+                                                <img src={NotFound} alt="NotFound" />
+                                                <p>No Project Found</p>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
