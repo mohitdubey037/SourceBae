@@ -255,11 +255,11 @@ function ProductAgencies(props) {
                                                                     <img src={logo} alt="" />
                                                                 </div>
                                                                 <div className="agencyProfileInfo">
-                                                                    <h6>{value.agencyId.agencyName}</h6>
+                                                                    <h6>{value?.agencyId?.agencyName}</h6>
                                                                     <div>
-                                                                        {value.agencyId.agencyDomains.map(p => {
+                                                                        {value?.agencyId?.agencyDomains?.map(p => {
                                                                             return (
-                                                                                <p>{p.domainId.domainName}</p>
+                                                                                <p>{p?.domainId?.domainName}</p>
                                                                             )
                                                                         })}
                                                                     </div>
@@ -267,7 +267,7 @@ function ProductAgencies(props) {
                                                             </div>
                                                             <div className="profileButton">
                                                                 <p onClick={() => props.history.push({
-                                                                    pathname: `/agency-profile:${value.agencyId._id}`,
+                                                                    pathname: `/agency-profile:${value?.agencyId?._id}`,
                                                                     // condition: `Client`
                                                                 })}>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
                                                             </div>
@@ -285,17 +285,17 @@ function ProductAgencies(props) {
                                                                 <div className="productAgencyList">
                                                                     <div className="productAgencyContent">
                                                                         <span>Location:</span>
-                                                                        <p>{value.productCompanyLocation}</p>
+                                                                        <p>{value?.productCompanyLocation}</p>
                                                                     </div>
                                                                     <div className="productAgencyContent">
                                                                         <span>Team Size</span>
-                                                                        <p>{value.productTeamSize}</p>
+                                                                        <p>{value?.productTeamSize}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div className="productAgencyList">
                                                                     <div className="productAgencyContent">
                                                                         <span>Total Funding</span>
-                                                                        <p>{value.productRevenueGenerated}</p>
+                                                                        <p>{value?.productRevenueGenerated}</p>
                                                                     </div>
                                                                     <div className="productAgencyContent">
                                                                         <span>Product Type</span>
@@ -307,11 +307,11 @@ function ProductAgencies(props) {
                                                                 <div className="productDescArea">
                                                                     <div className="productLogoHere">
                                                                         <div>
-                                                                            <img src={value.agencyId.agencyLogo} alt="" />
+                                                                            <img src={value?.agencyId?.agencyLogo} alt="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="productAgencyDescPara">
-                                                                        <p>{value.agencyId.agencyDescription}</p>
+                                                                        <p>{value?.agencyId?.agencyDescription}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
