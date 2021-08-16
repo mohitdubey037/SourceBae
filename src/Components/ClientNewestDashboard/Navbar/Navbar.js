@@ -17,6 +17,7 @@ function Navbar(props) {
         if (Role === 'Client') {
             instance.get(`/api/${Role}/clients/get/${roleId}`)
                 .then(function (response) {
+                    console.log(response);
                     setData(response);
                 })
                 .catch(err => {
@@ -53,10 +54,10 @@ function Navbar(props) {
                     <img src={notificationIcon} alt="notification" />
                 </div> */}
                 <div className="username nav-left-item">
-                    <p>{Role === "Client" ? data.firstName + data.lastName : data.agencyName}</p>
+                    <p>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
-                    {Role === 'Agency' && <img src={data.agencyLogo} alt="notification"/>}
+                    {Role === 'Agency' && <img src={data?.agencyLogo} alt="notification"/>}
                 </div>
             </div>
         </div>

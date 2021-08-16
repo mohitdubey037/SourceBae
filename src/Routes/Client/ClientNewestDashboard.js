@@ -11,6 +11,7 @@ import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/Investm
 import './ClientNewestDashboard.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
+import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound.svg';
 
 import Input from "@material-ui/core/Input";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -158,9 +159,11 @@ function ClientNewestDashboard(props) {
                                 <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
                             </div>
                             <div className="graphic">
-                                <div className="graphic-illustration-heading">
-                                    <h6>Project details</h6>
-                                </div>
+                                {projects.length > 0 &&
+                                    <div className="graphic-illustration-heading">
+                                        <h6>Project details</h6>
+                                    </div>
+                                }
                                 <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">
                                     {projects.length > 4 &&
                                         <p>View More Project</p>
@@ -178,9 +181,11 @@ function ClientNewestDashboard(props) {
                                                         index={index} />
                                                 </>
                                             )
-                                        }) : <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                                            <h4 style={{ color: '#999' }}>No projects available</h4>
-                                        </div>
+                                        }) :
+                                            <div className="not_found clientNewestDashboard">
+                                                <img src={NotFound} alt="NotFound" />
+                                                <p>No projects available</p>
+                                            </div>
                                     }
                                 </div>
                                 {/* <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">

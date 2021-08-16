@@ -55,6 +55,28 @@
   color: #3a3a3a;
 }
 
+.not_found.clientNewestDashboard {
+  width: max-content;
+  height: 367px;
+  margin: auto;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.not_found.clientNewestDashboard p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17.1875px;
+  line-height: 39px;
+  text-transform: capitalize;
+  color: #000000;
+  margin-top: 1rem;
+}
+
 .container-body>.content-body>.content-leftBody {
   min-width: 74%;
 }

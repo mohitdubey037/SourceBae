@@ -121,7 +121,7 @@ const HireAgencyForm1 = (props) => {
       instance.post(`/api/${Role}/projects/create`, data)
         .then(function (response) {
           setLoading(false);
-          props.history.push(`/hire-agency-form-two:${response._id}`)
+          props.history.replace(`/hire-agency-form-two:${response._id}`)
         })
         .catch(err => {
           setLoading(false)

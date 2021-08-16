@@ -165,7 +165,7 @@ function HireAgencyForm2(props) {
         .then(function (response) {
           console.log(response);
           setLoading(false);
-          props.history.push(`/hire-agency-form-three:${projectId}`);
+          props.history.replace(`/hire-agency-form-three:${projectId}`);
         })
         .catch((err) => {
           setLoading(false);

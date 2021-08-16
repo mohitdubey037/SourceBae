@@ -18,7 +18,7 @@ import instance from "../../Constants/axiosConstants";
 import { Link, NavLink } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { Opacity } from '@material-ui/icons';
-import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound.svg'
+import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound.svg';
 
 
 function AgencyNewestDashboard(props) {
@@ -263,7 +263,7 @@ function AgencyNewestDashboard(props) {
                                             // <p>No Projects</p>
                                             <div className="not_found agencyNewestDashboard">
                                                 <img src={NotFound} alt="NotFound" />
-                                                <p>No Project Found</p>
+                                                <p>No Project Available</p>
                                             </div>
                                         }
                                     </div>
