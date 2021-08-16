@@ -147,7 +147,7 @@ function ShortTerm(props) {
       instance
         .post(`api/${Role}/projects/create-short-term`, apiData)
         .then(function (response) {
-          props.history.push(`/agency-list:${response.project._id}`);
+          props.history.replace(`/agency-list:${response.project._id}`);
         });
     } else {
       toast.error("Please Upload Project Document.");
@@ -310,7 +310,7 @@ function ShortTerm(props) {
             <div className="uploadBlock">
               <div className="fileUploadButton">
                 <FilePicker
-                  extensions={['jpg', 'png', 'jpeg', 'xlsx']}
+                  extensions={['jpg', 'pdf','png', 'jpeg', 'xlsx']}
                   onChange={(fileObj) => fileHandler(fileObj)}
                   onError={errMsg => toast.error(errMsg)}
                 >

@@ -143,7 +143,7 @@
   font-size: 14px;
   line-height: 17px;
   text-transform: capitalize;
-  color: #a8a8a8;
+  /* color: #a8a8a8; */
 }
 
 .Weekly>div>.MuiFormControlLabel-root, .Monthly>div>.MuiFormControlLabel-root {
@@ -372,7 +372,6 @@
   font-size: 16px;
   line-height: 150%;
   text-transform: capitalize;
-  /* color: #a8a8a8; */
   color: black;
   width: 60%;
   height: 50px;

@@ -1,14 +1,3 @@
-.mainHireAgencyForm1 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 5%;
-    position: relative;
-    margin-top: 2%;
-}
-
 .innerHigherAgencyForm1 {
     position: relative;
     height: 875px;
@@ -527,9 +516,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3%;
     margin-bottom: 3%;
     position: relative;
+    flex-direction: column;
 }
 
 .mainHireAgencyFormTwo {

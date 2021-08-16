@@ -130,7 +130,7 @@ function HireDeveloper(props) {
     instance
       .post(`api/client/hire-developers/create`, body)
       .then(function (response) {
-        props.history.push({
+        props.history.replace({
           pathname: `/get-client-hire-developer`,
           condition: `Client`,
         });
