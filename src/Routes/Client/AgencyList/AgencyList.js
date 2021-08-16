@@ -194,7 +194,6 @@ function AgencyList(props) {
                                 </p>
                                 : null
                               }
-
                             </div>
                           </div>
 

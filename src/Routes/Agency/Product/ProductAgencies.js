@@ -434,8 +434,8 @@ function ProductAgencies(props) {
                                                         )}
                                                     </Select>
                                                 </FormControl>
-                                                <div>
-                                                    <p className='searchButton' onClick={onSearchHandler}>Search</p>
+                                                <div className="search-filter_productAgencies">
+                                                    <h5 className='searchButton' onClick={onSearchHandler}>Search</h5>
                                                 </div>
                                             </div>
                                         </div>

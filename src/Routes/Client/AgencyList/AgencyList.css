@@ -354,13 +354,13 @@
 .locationFilter {
   margin-top: 4%;
   margin-bottom: 6%;
-  border-bottom: 1px solid #e4e4e4;
+  /* border-bottom: 1px solid #e4e4e4; */
   padding-bottom: 5%;
 }
 
 .locationFilter p, .officeVisitFilter p {
   font-family: 'Inter';
-  transform: translateY(10px);
+  /* transform: translateY(10px); */
   font-weight: bold;
   font-size: 1.1rem;
 }
@@ -374,7 +374,7 @@
 }
 
 .locationFilter input {
-  margin-top: 3%;
+  margin-top: 2%;
   width: 100%;
   height: 40px;
   padding-left: 10px;
@@ -390,7 +390,7 @@
 .officeVisitFilter {
   /* margin-top: 4%; */
   margin-bottom: 3%;
-  border-bottom: 1px solid #e4e4e4;
+  /* border-bottom: 1px solid #e4e4e4; */
   /* padding-bottom: 2%; */
 }
 

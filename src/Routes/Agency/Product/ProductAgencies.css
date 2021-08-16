@@ -46,7 +46,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     border-radius: 11px;
-    width: 100%;
+    width: 40%;
     background-color: white;
     color: #000;
     border-color: black;
@@ -329,4 +329,10 @@
 
 .connectedButton i {
     transform: translateY(1px);
+}
+
+.search-filter_productAgencies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
