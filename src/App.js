@@ -5,8 +5,10 @@ import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
+import NewLogin from './Routes/Login/NewestLogin';
 import Signup from './Routes/Signup/Signup';
 import Register from './Routes/Register/Register';
+
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
 import Quotation from './Routes/Dashboard/Quotation/Quotation';
 import AgencyProfile from './Routes/Dashboard/AgencyProfile';
@@ -53,6 +55,7 @@ const App = (props) => {
       <Route exact path='/' component={Mainhomepage} />
       <Route exact path='/signup' component={Signup} />
       <Route exact path="/login:role" component={Login} />
+      {/* <Route exact path="/loginNew" component={NewLogin} /> */}
       <Route exact path='/register:role' component={Register} />
       <Route exact path='/page-not-found:code' component={DynamicPageNotFound} />
       <Route exact path='/enter-email' component={EnterEmail} />

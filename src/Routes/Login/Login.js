@@ -5,10 +5,11 @@ import "../Login/login.css";
 import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
+import loginImage from '../../assets/images/Newestdashboard/Login/LoginBlue.png'
 import axios from "axios";
 
 import google from "../../assets/images/Logo/google.png";
-import loginImage from "../../assets/images/Logo/loginImage.png";
+// import loginImage from "../../assets/images/Logo/loginImage.png";
 import {
     Typography,
     InputAdornment,
@@ -74,11 +75,13 @@ const useStyles = makeStyles((theme) => ({
         border: "1.4px solid",
         boxShadow: "1px 2px 20px rgba(169,198,217,0.29457423) ",
         borderColor: borderLight,
+        width: '75%',
+        marginBottom: '2rem'
     },
     passwordEye: {
         color: "rgba(131,153,167,0.9)",
         opacity: 0.9,
-    },
+    }
 }));
 
 const Login = (props) => {
@@ -185,15 +188,14 @@ const Login = (props) => {
 
     }, [token]);
 
-    useEffect(()=>{
+    useEffect(() => {
         const tempRole = localStorage.getItem('role')
-        const auth =cookie.load("Authorization")
-        if(auth!==null && auth!==undefined && tempRole!==null && tempRole!==undefined){
-            if(tempRole.toLowerCase()==="agency"){
+        const auth = cookie.load("Authorization")
+        if (auth !== null && auth !== undefined && tempRole !== null && tempRole !== undefined) {
+            if (tempRole.toLowerCase() === "agency") {
                 props.history.push("/agencyNewestDashboard");
             }
-            else if(tempRole.toLowerCase()==="client")
-            {
+            else if (tempRole.toLowerCase() === "client") {
                 props.history.push("/clientNewestDashboard")
             }
             // else{
@@ -204,7 +206,7 @@ const Login = (props) => {
         // else{
         //     props.history.push(`/login:${role.toLowerCase()}`)
         // }
-    },[])
+    }, [])
     return (
         <>
             {loading ? (
@@ -214,60 +216,56 @@ const Login = (props) => {
                     <div className="innerLoginPage">
                         <div className="loginIllustrator">
                             <img src={loginImage} alt="" />
+                            <div className="welcome-back_loginIllustrator">
+                                <p>Welcome back<br></br><span>to</span><br></br><span className="welcome-back_sourceBae">Sourcebae</span></p>
+                            </div>
+
+                            <div className="www_loginIllustrator">
+                                <div className="white-color_loginIllustrator"></div>
+                                <a>www.sourceBae.com</a>
+                            </div>
                         </div>
                         <div className="loginContent">
                             <div className="mainLoginForm">
-                                <div className="toggleButton">
-                                    <FormGroup>
-                                        <Typography component="div">
-                                            <Grid
-                                                component="label"
-                                                container
-                                                alignItems="center"
-                                                spacing={1}
-                                            >
+                                <div className="mainLoginForm_child">
+                                    <div>
+                                        <h4>SourceBae</h4>
+                                    </div>
+                                    <div className="toggleButton">
+                                        <FormGroup>
+                                            <Typography component="div">
                                                 <Grid
-                                                    item
-                                                    style={{ fontWeight: "lighter", fontSize: 22 }}
+                                                    component="label"
+                                                    container
+                                                    alignItems="center"
+                                                    spacing={1}
                                                 >
-                                                    Agency
+                                                    <Grid item style={{ fontWeight: "lighter", fontSize: 22 }}>
+                                                        Agency
+                                                    </Grid>
+                                                    <Grid item>
+                                                        <AntSwitch
+                                                            checked={state.checked}
+                                                            onChange={handleChangeToggle}
+                                                            name="checked"
+                                                        />
+                                                    </Grid>
+                                                    <Grid item style={{ fontWeight: "lighter", fontSize: 22 }}>
+                                                        Client
+                                                    </Grid>
                                                 </Grid>
-                                                <Grid item>
-                                                    <AntSwitch
-                                                        checked={state.checked}
-                                                        onChange={handleChangeToggle}
-                                                        name="checked"
-                                                    />
-                                                </Grid>
-                                                <Grid
-                                                    item
-                                                    style={{ fontWeight: "lighter", fontSize: 22 }}
-                                                >
-                                                    Client
-                                                </Grid>
-                                            </Grid>
-                                        </Typography>
-                                    </FormGroup>
+                                            </Typography>
+                                        </FormGroup>
+                                    </div>
                                 </div>
                                 <div className="loginHeading">
                                     <h6>
                                         Login as <span> {roleString} </span>
                                     </h6>
                                 </div>
-                                <div className="signUpOption">
-                                    <p>
-                                        Don't have an account?{" "}
-                                        <span
-                                            onClick={() =>
-                                                props.history.push(`/register:${role.toLowerCase()}`)
-                                            }
-                                        >
-                                            Sign Up
-                                        </span>
-                                    </p>
-                                </div>
+
                                 <div className="loginForm">
-                                    <p style={{ marginBottom: "10px" }}>Email</p>
+                                    {/* <p style={{ marginBottom: "10px" }}>Email</p> */}
                                     <Input
                                         className={classes.inputs}
                                         placeholder="Enter an email"
@@ -289,9 +287,9 @@ const Login = (props) => {
                                             </InputAdornment>
                                         }
                                     />
-                                    <p style={{ marginTop: "20px", marginBottom: "10px" }}>
+                                    {/* <p style={{ marginTop: "20px", marginBottom: "10px" }}>
                                         Password
-                                    </p>
+                                    </p> */}
                                     <Input
                                         placeholder="Enter a password"
                                         className={classes.inputs}
@@ -327,15 +325,32 @@ const Login = (props) => {
                                             )
                                         }
                                     />
-                                    <button onClick={() => logIn(role, form)} type="submit">
-                                        Login
-                                    </button>
-                                    <span onClick={() => props.history.push('/enter-email')}>I forgot my password</span>
+                                    <div className="button_action_login">
+                                        <button onClick={() => logIn(role, form)} type="submit">
+                                            Login
+                                        </button>
+                                        <button onClick={() => props.history.push('/enter-email')} type="submit">
+                                            Forgot Password
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="googleLogin">
-                                <img src={google} alt="" />
-                                <p>Sign in with Google</p>
+                            <div className="or_login">
+                                <p>Or</p>
+                            </div>
+                            <div className="signup_toggle">
+                                <div className="googleLogin">
+                                    <img src={google} alt="" />
+                                    <p>Sign in with Google</p>
+                                </div>
+                                <div className="signUpOption">
+                                    <p>
+                                        Don't have an account?{" "}
+                                        <span onClick={() => props.history.push(`/register:${role.toLowerCase()}`)}>
+                                            Sign Up
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
