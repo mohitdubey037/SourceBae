@@ -681,10 +681,7 @@ function ProductForm(props) {
                     <div className="radioGroupButtons">
                       {businessModal.map((value, index) => {
                         return (
-                          <div
-                            className="radioButton"
-                            onClick={() => handleBusinnesModal(index)}
-                          >
+                          <div className="radioButton" onClick={() => handleBusinnesModal(index)}>
                             <span>
                               {value?.status === true ? <div></div> : null}
                             </span>

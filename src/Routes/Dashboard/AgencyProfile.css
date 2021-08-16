@@ -433,7 +433,7 @@ button {
   width: 60%;
   /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   border: 2px solid #3a3a3a;
-  height: 144px;
+  height: 160px;
   text-align: center;
   padding: 1rem 0;
   position: relative;
@@ -445,11 +445,16 @@ button {
   align-items: center;
 }
 
+.monthyView.agencyProfile {
+  margin-right: 0;
+}
+
 .monthyView h3 {
   font-family: 'Inter';
   color: #02044a;
   font-weight: 600;
   font-size: 0.8rem;
+  margin-bottom: 0;
 }
 
 .monthyView p {

@@ -53,7 +53,6 @@ function Navbar(props) {
                     <img src={notificationIcon} alt="notification" />
                 </div> */}
                 <div className="username nav-left-item">
-                    <p>Atul Bhatt</p>
                     <p>{Role === "Client" ? data.firstName + data.lastName : data.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >

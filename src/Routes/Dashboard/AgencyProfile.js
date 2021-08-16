@@ -16,6 +16,7 @@ import PortfolioImage from '../../assets/images/Newestdashboard/Agency-Profile/P
 import Information from "./AgencyProfile/Information";
 import SkillsSet from "./AgencyProfile/SkillsSet";
 import Rules from "./AgencyProfile/Rules";
+import clsx from 'clsx';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -45,24 +46,35 @@ import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 190,
   },
-  // selectEmpty: {
-  //   marginTop: theme.spacing(2),
-  // },
+  chips: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  chip: {
+    margin: 2,
+  },
+  noLabel: {
+    marginTop: theme.spacing(3),
+  },
+  menuFont: {
+    fontFamily: "Inter",
+  },
+  inputField: {
+    fontFamily: "Inter",
+  },
+  radioBox: {
+    borderWidth: 1,
+    borderColor: "#000",
+  },
+  root: {
+    "& .MuiOutlinedInput-input": {
+      color: "green",
+      padding: "11.5px 14px"
+    },
+  }
 }));
-
-const MenuProps = {
-  getContentAnchorEl: () => null,
-  PaperProps: {
-      style: {
-          maxHeight: 230,
-          width: 250,
-          top: 350,
-          left: '200px'
-      },
-  },
-};
 
 function AgencyProfile(props) {
   const classes = useStyles();
@@ -123,7 +135,7 @@ function AgencyProfile(props) {
       });
   };
 
-  const [link, setLink] = useState(null);
+  const [link, setLink] = useState('');
 
   const handleChange = (event) => {
     setLink(event.target.value);
@@ -378,7 +390,7 @@ function AgencyProfile(props) {
                   <div className="monthyView">
                     {/* <div className="monthBorder"></div> */}
                     {/* <img src={growth} alt="" /> */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                       <img style={{ width: 25, height: 25, marginRight: 5, objectFit: 'contain' }} src={growth} alt="" />
                       <h3>Total Profile View</h3>
                     </div>
@@ -391,24 +403,23 @@ function AgencyProfile(props) {
                       <h3>Agency Document</h3>
                     </div>
 
-                    <FormControl className={classes.formControl}>
-                      {/* <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-                        Age
-                      </InputLabel> */}
+                    <FormControl variant="outlined" className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-placeholder-label-label"
-                        id="demo-simple-select-placeholder-label"
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
                         value={link}
                         onChange={(event) => handleChange(event)}
                         displayEmpty
-                        // className={classes.selectEmpty}
-                        MenuProps={MenuProps}
+                        className={clsx(classes.root, classes.inputField)}
                       >
-                        {/* <div> */}
+                        <MenuItem value="">
+                          <span style={{ fontFamily: "Inter", color: "#999" }}>
+                            Select from here
+                          </span>
+                        </MenuItem>
                         <MenuItem value={agencyProfileData?.agencyDocuments[0]?.documentLink}>Registration Certificate</MenuItem>
                         <MenuItem value={agencyProfileData?.agencyDocuments[1]?.documentLink}>Brochure</MenuItem>
                         <MenuItem value={agencyProfileData?.agencyDocuments[2]?.documentLink}>Pancard</MenuItem>
-                        {/* </div> */}
                       </Select>
                     </FormControl>
 
