@@ -9,7 +9,6 @@ import loginImage from '../../assets/images/Newestdashboard/Login/LoginBlue.png'
 import axios from "axios";
 
 import google from "../../assets/images/Logo/google.png";
-// import loginImage from "../../assets/images/Logo/loginImage.png";
 import {
     Typography,
     InputAdornment,
@@ -231,7 +230,7 @@ const Login = (props) => {
                                     <div>
                                         <h4>SourceBae</h4>
                                     </div>
-                                    <div className="toggleButton">
+                                    <div className="toggleButton login">
                                         <FormGroup>
                                             <Typography component="div">
                                                 <Grid

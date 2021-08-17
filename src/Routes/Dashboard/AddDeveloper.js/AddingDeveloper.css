@@ -266,7 +266,7 @@
   background-color: #fff !important;
 }
 
-.MuiTypography-body1 {
+.mainAddingDeveloper .MuiTypography-body1 {
   font-family: 'Inter' !important;
   font-style: normal !important;
   font-weight: 600 !important;
@@ -281,7 +281,7 @@
   margin-left: 0;
 }
 
-.MuiFormLabel-root {
+.mainAddingDeveloper .MuiFormLabel-root {
   font-family: 'Inter' !important;
   font-style: normal !important;
   font-weight: 600 !important;

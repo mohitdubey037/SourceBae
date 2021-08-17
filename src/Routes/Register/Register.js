@@ -154,7 +154,7 @@ const Register = (props) => {
 
     useEffect(() => {
         console.log(apiErrors);
-    },[apiErrors])
+    }, [apiErrors])
 
     const setForm = (event) => {
         const { name, value } = event.target
@@ -308,7 +308,7 @@ const Register = (props) => {
 
     useEffect(() => {
         console.log('token use effect called');
-        if (token !== null && apiErrors === false ) {
+        if (token !== null && apiErrors === false) {
             console.log('token is not null');
             const apiRole = helper.lowerize(role)
             let api_param_const = ``
@@ -450,40 +450,39 @@ const Register = (props) => {
     const roleString = createRoleString(role)
     return (
         <div className='client__registrationContainer'>
-            <div className="image__container">
+            {/* <div className="image__container">
                 <img className="hamaraLogo" src={logotext} alt="" />
                 <img className="businessModals" src={business} alt="" />
-            </div>
+            </div> */}
 
-            <div style={{ flex: .35 }}>
-            </div>
-            <div style={{ flex: .65 }}>
+            {/* <div style={{ flex: .35 }}>
+            </div> */}
 
-                {loading ? <Spinner /> :
-                    <div className='form__area'>
-                        <div className="client__form">
-                            <div style={{ width: '100%', textAlign: 'center', marginTop: '5%' }}>
-                                <div className="toggleButton">
-                                    <FormGroup>
-                                        <Typography component="div">
-                                            <Grid component="label" container alignItems="center" spacing={1}>
-                                                <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
-                                                <Grid item>
-                                                    <AntSwitch checked={state.checked} onChange={handleChangeToggle} name="checked" />
-                                                </Grid>
-                                                <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }}>Client</Grid>
-                                            </Grid>
-                                        </Typography>
-                                    </FormGroup>
-                                </div>
-                                <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
-                                <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div>
-                            </div>
-                            <div className="signUpOption">
-                                <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
-                            </div>
-                            <div className="client__formsContainer">
-                                <form className='client__form form__1' autoComplete='off' >
+            {loading ? <Spinner /> :
+                <div className='form__area'>
+                    <div className="client__form">
+                        <div className="toggleButton register">
+                            <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
+                            <FormGroup>
+                                <Typography component="div">
+                                    <Grid component="label" container alignItems="center" spacing={1}>
+                                        <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
+                                        <Grid item>
+                                            <AntSwitch checked={state.checked} onChange={handleChangeToggle} name="checked" />
+                                        </Grid>
+                                        <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }}>Client</Grid>
+                                    </Grid>
+                                </Typography>
+                            </FormGroup>
+                        </div>
+                        {/* <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div> */}
+                        {/* <div className="signUpOption">
+                            <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
+                        </div> */}
+                        <div className="client__formsContainer">
+                            <form className='client__form form__1' autoComplete='off' >
+                                <div className="input_with_error">
+                                    <label>First Name</label>
                                     <input
                                         required
                                         type="text"
@@ -492,17 +491,17 @@ const Register = (props) => {
                                         value={signupForm.firstName}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {/* <TextField
-                                        id="outlined-basic"
-                                        label="first Name"
-                                        variant="outlined"
-                                        required
-                                        type="text"
-                                        name="firstName"
-                                        value={signupForm.firstName}
-                                        onChange={(e) => setForm(e)} /> */}
-                                    {errors.firstNameError && <Alert severity="error">{errors.firstNameError}</Alert>}
-
+                                    <div>
+                                        {
+                                            errors.firstNameError &&
+                                            <p className="error_productForm">
+                                                {errors.firstNameError}
+                                            </p>
+                                        }
+                                    </div>
+                                </div>
+                                <div className="input_with_error">
+                                    <label>Last Name</label>
                                     <input
                                         type="text"
                                         name="lastName"
@@ -510,16 +509,16 @@ const Register = (props) => {
                                         value={signupForm.lastName}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {/* <TextField
-                                        id="outlined-basic"
-                                        label="first Name"
-                                        variant="outlined"
-                                        required
-                                        type="text"
-                                        name="lastName"
-                                        value={signupForm.lastName}
-                                        onChange={(e) => setForm(e)}*/}
-                                    {errors.lastNameError && <Alert severity="error">{errors.lastNameError}</Alert>}
+                                    {
+                                        errors.lastNameError &&
+                                        <p className="error_productForm">
+                                            {errors.lastNameError}
+                                        </p>
+                                    }
+                                </div>
+
+                                <div className="input_with_error">
+                                    <label>User Name</label>
 
                                     <input
                                         type="text"
@@ -528,16 +527,16 @@ const Register = (props) => {
                                         value={signupForm.userName}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {/* <TextField
-                                        id="outlined-basic"
-                                        label="first Name"
-                                        variant="outlined"
-                                        required
-                                        type="text"
-                                        name="userName"
-                                        value={signupForm.userName}
-                                        onChange={(e) => setForm(e)} */}
-                                    {errors.userNameError && <Alert severity="error">{errors.userNameError}</Alert>}
+                                    {
+                                        errors.userNameError &&
+                                        <p className="error_productForm">
+                                            {errors.userNameError}
+                                        </p>
+                                    }
+                                </div>
+
+                                <div className="input_with_error">
+                                    <label>Email</label>
 
                                     <input
                                         type="email"
@@ -546,16 +545,16 @@ const Register = (props) => {
                                         value={signupForm.userEmail}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {/* <TextField
-                                        id="outlined-basic"
-                                        label="first Name"
-                                        variant="outlined"
-                                        required
-                                        type="text"
-                                        name="firstName"
-                                        value={signupForm.firstName}
-                                        onChange={(e) => setForm(e)} /> */}
-                                    {errors.emailError && <Alert severity="error">{errors.emailError}</Alert>}
+                                    {
+                                        errors.emailError &&
+                                        <p className="error_productForm">
+                                            {errors.emailError}
+                                        </p>
+                                    }
+                                </div>
+
+                                <div className="input_with_error">
+                                    <label>Phone number</label>
 
                                     <input
                                         type="tel"
@@ -565,18 +564,16 @@ const Register = (props) => {
                                         value={signupForm.userPhone}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {/* <TextField
-                                        id="outlined-basic"
-                                        label="first Name"
-                                        variant="outlined"
-                                        required
-                                        type="tel"
-                                        name="userPhone"
-                                        maxLength='10'
-                                        value={signupForm.userPhone}
-                                        onChange={(e) => setForm(e)} */}
-                                    {errors.phoneError && <Alert severity="error">{errors.phoneError}</Alert>}
+                                    {
+                                        errors.phoneError &&
+                                        <p className="error_productForm">
+                                            {errors.phoneError}
+                                        </p>
+                                    }
+                                </div>
 
+                                <div className="input_with_error">
+                                    <label>Create Password</label>
                                     <input
                                         type="password"
                                         name="password"
@@ -584,72 +581,69 @@ const Register = (props) => {
                                         value={signupForm.password}
                                         onChange={(e) => setForm(e)}
                                     />
-                                    {/* <TextField
-                                        id="outlined-basic"
-                                        label="first Name"
-                                        variant="outlined"
-                                        required
-                                        type="password"
-                                        name="password"
-                                        value={signupForm.password}
-                                        onChange={(e) => setForm(e)} */}
-                                    {errors.passwordError && <Alert severity="error">{errors.passwordError}</Alert>}
-
-                                    <Button
-                                        onClick={() => toggleForms('next')}
-                                        style={{ background: '#02044a', marginTop: '5vh', marginBottom: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Inter', fontSize: '1.2rem', width: '60%', borderRadius: '8px' }}
-                                    >
-                                        NEXT
-                                    </Button>
-                                </form>
-
-                                <form autoComplete='off' className="client__form form__2">
-                                    <div style={{ width: '80%' }}>
-                                        <Button
-                                            onClick={() => toggleForms('prev')}
-                                            style={{ background: 'none', border: 'none' }}
-                                        >
-                                            <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
-                                        </Button>
-                                    </div>
-
                                     {
-                                        role === `Agency` ? <>
-                                            <input
-                                                type="text"
-                                                name="agencyName"
-                                                placeholder='Agency Name'
-                                                value={agencyProfileDetails.agencyName}
-                                                onChange={(event) => handleCreateProfile(event, role)} />
-                                            {/* <TextField
-                                                id="outlined-basic"
-                                                label="first Name"
-                                                variant="outlined"
-                                                required
-                                                type="text"
-                                                name="agencyName"
-                                                value={agencyProfileDetails.agencyName}
-                                                onChange={(event) => handleCreateProfile(event, role)} */}
-                                            {errors.agencyNameError && <Alert severity="error">{errors.agencyNameError}</Alert>}
+                                        errors.passwordError &&
+                                        <p className="error_productForm">
+                                            {errors.passwordError}
+                                        </p>
+                                    }
+                                </div>
+                                <div className="already_next_register">
+                                    <div className="next_Register" onClick={() => toggleForms('next')}>
+                                        <p>NEXT</p>
+                                    </div>
+                                    <div className="signUpOption">
+                                        <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
+                                    </div>
+                                </div>
+                            </form>
 
-                                            <input
-                                                type="number"
-                                                name="agencyTeamSize"
-                                                placeholder='Team Strength'
-                                                onChange={(event) => handleCreateProfile(event, role)} />
 
-                                            {/* <TextField
-                                                id="outlined-basic"
-                                                label="first Name"
-                                                variant="outlined"
-                                                required
-                                                type="number"
-                                                name="agencyTeamSize"
-                                                onChange={(event) => handleCreateProfile(event, role)} */}
 
-                                            {errors.agencyTeamSizeError && <Alert severity="error">{errors.agencyTeamSizeError}</Alert>}
+                            <form autoComplete='off' className="client__form form__2">
+                                {/* <div style={{ width: '80%' }}>
+                                    <Button onClick={() => toggleForms('prev')}
+                                        style={{ background: 'none', border: 'none' }}
+                                    >
+                                        <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
+                                    </Button>
+                                </div> */}
+                                {
+                                    role === `Agency` ?
+                                        <>
+                                            <div className="input_with_error">
+                                                <label>Agency Name</label>
+                                                <input
+                                                    type="text"
+                                                    name="agencyName"
+                                                    placeholder='Agency Name'
+                                                    value={agencyProfileDetails.agencyName}
+                                                    onChange={(event) => handleCreateProfile(event, role)} />
+                                                {
+                                                    errors.agencyNameError &&
+                                                    <p className="error_productForm">
+                                                        {errors.agencyNameError}
+                                                    </p>
+                                                }
+                                            </div>
 
-                                            <form className={dateClasses.container} noValidate>
+                                            <div className="input_with_error">
+                                                <label>Team Strength</label>
+                                                <input
+                                                    type="number"
+                                                    name="agencyTeamSize"
+                                                    placeholder='Team Strength'
+                                                    onChange={(event) => handleCreateProfile(event, role)} />
+                                                {
+                                                    errors.agencyTeamSizeError &&
+                                                    <p className="error_productForm">
+                                                        {errors.agencyTeamSizeError}
+                                                    </p>
+                                                }
+                                            </div>
+
+                                            {/* <form className={dateClasses.container} noValidate> */}
+                                            <div className="input_with_error">
                                                 <label classname={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
                                                 <input
                                                     id="incorporation_date"
@@ -664,98 +658,90 @@ const Register = (props) => {
                                                         shrink: true,
                                                     }}
                                                     onChange={(event) => handleCreateProfile(event, role)} />
-                                                {/* <TextField
-                                                    id="outlined-basic"
-                                                    label="first Name"
-                                                    variant="outlined"
-                                                    required
-                                                    id="incorporation_date"
-                                                    type="date"
-                                                    name="incorporationDate"
-                                                    max={new Date().toJSON().slice(0, 10)}
-                                                    defaultValue={agencyProfileDetails?.incorporationDate}
-                                                    value={agencyProfileDetails?.incorporationDate}
-                                                    className={dateClasses.textField}
-                                                    placeholder={`Incorporation Date`}
-                                                    InputLabelProps={{
-                                                        shrink: true,
-                                                    }}
-                                                    onChange={(event) => handleCreateProfile(event, role)}  */}
-                                            </form>
-                                            {errors.incorporationDateError && <Alert severity="error">{errors.incorporationDateError}</Alert>}
+                                                {
+                                                    errors.incorporationDateError &&
+                                                    <p className="error_productForm">
+                                                        {errors.incorporationDateError}
+                                                    </p>
+                                                }
+                                            </div>
+                                            <div className="input_with_error">
+                                                
+                                            </div>
+                                            {/* </form> */}
                                         </>
-                                            :
-                                            <>
+                                        :
+                                        <>
+                                            <div className="input_with_error">
+                                                <label>User Designation</label>
                                                 <input
                                                     type="text"
                                                     name="userDesignation"
                                                     placeholder='User Designation'
                                                     onChange={(event) => handleCreateProfile(event, role)} />
-                                                {/* <TextField
-                                                    id="outlined-basic"
-                                                    label="first Name"
-                                                    variant="outlined"
-                                                    required
-                                                    type="text"
-                                                    name="userDesignation"
-                                                    placeholder='User Designation'
-                                                    onChange={(event) => handleCreateProfile(event, role)} */}
+                                                {
+                                                    errors.userDesignationError &&
+                                                    <p className="error_productForm">
+                                                        {errors.userDesignationError}
+                                                    </p>
+                                                }
                                                 {errors.userDesignationError && <Alert severity="error">{errors.userDesignationError}</Alert>}
+                                            </div>
 
+                                            <div className="input_with_error">
+                                            </div>
+
+                                            <div className="input_with_error">
+                                                <label>Company Name</label>
                                                 <input
                                                     type="text"
                                                     name="companyName"
                                                     placeholder='Company Name'
                                                     onChange={(event) => handleCreateProfile(event, role)} />
-                                                {/* <TextField
-                                                    id="outlined-basic"
-                                                    label="first Name"
-                                                    variant="outlined"
-                                                    required
-                                                    type="text"
-                                                    name="companyName"
-                                                    placeholder='Company Name'
-                                                    onChange={(event) => handleCreateProfile(event, role)} */}
-                                                {errors.companyNameError && <Alert severity="error">{errors.companyNameError}</Alert>}
-                                            </>
-                                    }
-
-                                    <input style={{ marginTop: '3%' }}
+                                                {
+                                                    errors.companyNameError &&
+                                                    <p className="error_productForm">
+                                                        {errors.companyNameError}
+                                                    </p>
+                                                }
+                                            </div>
+                                            
+                                            <div className="input_with_error">
+                                            </div>
+                                        </>
+                                }
+                                <div className="input_with_error">
+                                    <label>Wapsite Url</label>
+                                    <input
                                         type="text"
                                         name="website"
                                         placeholder='Website URL'
                                         value={site.platformLink}
                                         onChange={(event) => handleSocialPlatform(event)} />
+                                    {
+                                        errors.socialPlatformDetailsError &&
+                                        <p className="error_productForm">
+                                            {errors.socialPlatformDetailsError}
+                                        </p>
+                                    }
+                                </div>
 
-                                    {/* <TextField
-                                        id="outlined-basic"
-                                        label="first Name"
-                                        variant="outlined"
-                                        required
-                                        type="text"
-                                        name="website"
-                                        placeholder='Website URL'
-                                        value={site.platformLink}
-                                        onChange={(event) => handleSocialPlatform(event)} */}
-                                    {errors.socialPlatformDetailsError && <Alert severity="error">{errors.socialPlatformDetailsError}</Alert>}
-
-                                    <Button
-                                        onClick={() => handleSubmit(role, signupForm)}
-                                        style={{ background: '#02044a', marginTop: '5vh', color: colors.WHITE, height: '60px', fontFamily: 'Inter', fontSize: '1.2rem', width: '50%', borderRadius: '8px', marginBottom: '5%' }}
-                                    >
-                                        SUBMIT
-                                    </Button>
-                                </form>
+                                <div className="already_next_register">
+                                    <div className="next_Register" onClick={() => handleSubmit(role, signupForm)}>
+                                        <p>Submit</p>
+                                    </div>
+                                    <div className="signUpOption">
+                                        <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
+                                    </div>
+                                </div>
+                            </form>
+                            <div className="existing_accountText">
+                                <p>Step {step} of 4</p>
                             </div>
                         </div>
-
-                        <div className="existing_accountText">
-                            <p>Personal Info</p>
-                            <p>Step {step} of 4</p>
-                        </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
     )
 }

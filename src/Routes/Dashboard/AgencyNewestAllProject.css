@@ -4,10 +4,8 @@ h6 {
 
 p, h5, h6, h4 {
     margin: 0;
-    font-family: Inter;
+    font-family: 'Inter';
     font-style: normal;
-    text-transform: capitalize;
-    /* letter-spacing: 0.4px; */
 }
 
 /* * {

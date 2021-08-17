@@ -331,7 +331,7 @@ button {
   top: 1rem;
 }
 
-.toggleButton .MuiTypography-body1 {
+.toggleButton.login .MuiTypography-body1 {
   font-family: 'Inter' !important;
   font-style: normal !important;
   font-weight: 600 !important;

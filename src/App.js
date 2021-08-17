@@ -5,7 +5,6 @@ import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
-import NewLogin from './Routes/Login/NewestLogin';
 import Signup from './Routes/Signup/Signup';
 import Register from './Routes/Register/Register';
 
@@ -57,7 +56,7 @@ const App = (props) => {
       <Route exact path="/login:role" component={Login} />
       {/* <Route exact path="/loginNew" component={NewLogin} /> */}
       <Route exact path='/register:role' component={Register} />
-      <Route exact path='/page-not-found:code' component={DynamicPageNotFound} />
+      {/* <Route exact path='/newestRegister:role' component={NewestRegister} /> */}
       <Route exact path='/enter-email' component={EnterEmail} />
       <Route exact path="/password-reset:token" component={ForgotPassword} />
       <Route exact path="/page-not-found" component={PageNotFound} />
