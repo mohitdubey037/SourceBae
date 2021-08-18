@@ -228,15 +228,12 @@ function HireAgencyForm2(props) {
                   {allDomainsData.map((domain) => {
                     return (
                       <div className="tech-container">
-                        <div className={`${domain.domainName}`}
-                          onClick={(event) => handleDomains(event)}
-                          style={{ backgroundColor: domain.selected ? "#68E1FD" : "#white" }}>
+                        <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
+                          style={{ backgroundColor: domain.selected ? "#68E1FD" : "white" }}>
                           <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
                         </div>
-                        <p
-                          className={`${domain.domainName}`}
-                          style={{ color: "#000" }}
-                        >{`${domain.domainName}`}</p>
+                        <p className={`${domain.domainName}`} style={{ color: "#000" }}>
+                          {`${domain.domainName}`}</p>
                       </div>
                     );
                   })}

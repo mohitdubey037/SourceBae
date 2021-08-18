@@ -196,9 +196,8 @@ button {
 }
 
 .loginHeading {
-  text-align: center;
   font-family: 'Inter';
-  width: 40%;
+  width: 50%;
   margin-top: 3rem;
 }
 

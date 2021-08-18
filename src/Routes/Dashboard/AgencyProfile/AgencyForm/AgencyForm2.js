@@ -285,10 +285,10 @@ function AgencyForm2(props) {
                       return (
                         <div className="tech-container">
                           <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                            style={{ backgroundColor: domain.selected ? "#02044a" : "#D6EAF8" }}>
+                            style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}>
                             <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
                           </div>
-                          <p className={`${domain.domainName}`} style={{ color: domain.selected ? "#fff" : "#000" }}>
+                          <p className={`${domain.domainName}`}>
                             {`${domain.domainName}`}
                           </p>
                         </div>
@@ -312,10 +312,10 @@ function AgencyForm2(props) {
                       return (
                         <div className="tech-container">
                           <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
-                            style={{ backgroundColor: service.selected ? "#02044a" : "#D6EAF8" }}>
+                            style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}>
                             <img className={`${service.serviceName}`} src={uiux} alt="" />
                           </div>
-                          <p className={`${service.serviceName}`} style={{ color: service.selected ? "#fff" : "#000" }}>
+                          <p className={`${service.serviceName}`}>
                             {`${service.serviceName}`}
                           </p>
                         </div>

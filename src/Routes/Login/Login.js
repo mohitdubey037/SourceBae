@@ -221,7 +221,7 @@ const Login = (props) => {
 
                             <div className="www_loginIllustrator">
                                 <div className="white-color_loginIllustrator"></div>
-                                <a>www.sourceBae.com</a>
+                                <a style={{color: 'blue'}}>www.sourceBae.com</a>
                             </div>
                         </div>
                         <div className="loginContent">
