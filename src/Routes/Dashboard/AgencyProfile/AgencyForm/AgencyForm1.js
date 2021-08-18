@@ -9,6 +9,7 @@ import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png
 import { NavLink } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import * as helper from '../../../../shared/helper';
+import Back from '../../../../Components/Back/Back';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
@@ -16,7 +17,7 @@ import Spinner from '../../../../Components/Spinner/Spinner'
 
 function AgencyForm1(props) {
 
-    const Role = "agency"
+    const Role = localStorage.getItem('role');
     const api_param_const = "agencies"
 
     const colors = {
@@ -398,35 +399,40 @@ function AgencyForm1(props) {
     return (
         <>
             <Navbar />
+            <div className="margin-top">
+                <Back name="Agency Form 1" />
+            </div>
             <FormPhases value1={true} />
-            <div
+            {/* <div
                 className="backArrow_agencyForm1"
                 onClick={() => {
                     props.history.goBack();
                 }}
             >
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </div>
+            </div> */}
             {loading ? <Spinner /> :
                 <div className="mainPersonelDetailsForm">
                     <div className="innerPersonelDetailsForm">
                         <div className="leftPersonelDetailsForm">
                             <div className="innerLeftPersonelDetailsForm">
                                 <div className="formContentPartOne">
-                                    <div className="getAgencyLogo">
-                                        <p>Agency Logo</p>
-                                        <img src={agencyLogo} alt="" />
-                                        <p>{`${agencyLogo?.document?.name ?? ""}`}</p>
-                                        <FilePicker
-                                            extensions={['jpg', 'png', 'jpeg']}
-                                            onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
-                                            onError={error => handleUploadError(error)}>
-                                            <button>
-                                                <i className="fa fa-upload" aria-hidden="true" />
-                                            Pick File (jpg, png, jpeg)
-                                        </button>
-                                        </FilePicker>
-                                        {formDataErrors.agencyLogoError !== '' && <Alert severity="error">{formDataErrors.agencyLogoError}</Alert>}
+                                    <div className="agencyLogo_parent">
+                                        <label>Agency Logo</label>
+                                        <div className="getAgencyLogo">
+                                            <img src={agencyLogo} alt="" />
+                                            <FilePicker
+                                                extensions={['jpg', 'png', 'jpeg']}
+                                                onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
+                                                onError={error => handleUploadError(error)}>
+                                                <button>
+                                                    <i className="fa fa-upload" aria-hidden="true" />
+                                                    Pick File
+                                                </button>
+                                            </FilePicker>
+                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name ?? "(jpeg, png, jpg)"}`}</p>
+                                            {formDataErrors.agencyLogoError !== '' && <Alert severity="error">{formDataErrors.agencyLogoError}</Alert>}
+                                        </div>
                                     </div>
                                     <div className="getAgencyDesc">
                                         <p>Description</p>
@@ -515,16 +521,16 @@ function AgencyForm1(props) {
                                 </div>
 
                                 <div className="nextBtn">
-                                    <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
+                                    {/* <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
                                         <button>
                                             <i className="fa fa-long-arrow-left" aria-hidden="true" />
-                                        Back
-                                    </button>
-                                    </NavLink>
+                                            Back
+                                        </button>
+                                    </NavLink> */}
                                     {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}> */}
                                     <button onClick={(event) => handleSubmit(event)} style={{ backgroundColor: colors[status] }}>
                                         Next
-                                        <i className="fa fa-long-arrow-right" aria-hidden="true" />
+                                        {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                                     </button>
                                     {/* </NavLink> */}
                                 </div>

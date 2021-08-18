@@ -171,19 +171,22 @@
   position: relative;
   background: #F5F5F5;
   border-radius: 8px;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-left: 40px;
   padding-bottom: 10px;
   padding-right: 15px;
   margin-left: 3.5rem;
+  margin-bottom: 3rem;
 }
 
 .client__form.form__1 .already_next_register {
   width: 100%;
+  margin-bottom: 17px;
 }
 
 .client__form.form__2 .already_next_register {
   width: 100%;
+  margin-bottom: 17px;
 }
 
 #incorporation_date {
