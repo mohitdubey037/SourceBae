@@ -197,27 +197,28 @@ function HireAgencyForm3(props) {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="serviceFieldsOptions newHireAgencyForm3">
-                            <div className="servicesHireAgencyContainer">
-                                <div className="serviceSelectionInput">
-                                    {allTechnologies ? (
-                                        <>
-                                            <p className="uiuxtext">
-                                                Select Technolgies
-                                            </p>
-                                            <MultiSelect
-                                                options={allTechnologies}
-                                                value={selected}
-                                                onChange={setSelected}
-                                                labelledBy="Select"
-                                                className="margin-left"
-                                            />
-                                        </>
-                                    ) : null}
+                        {allTechnologies.length > 0 &&
+                            <div className="serviceFieldsOptions newHireAgencyForm3">
+                                <div className="servicesHireAgencyContainer">
+                                    <div className="serviceSelectionInput">
+                                        {allTechnologies ? (
+                                            <>
+                                                <p className="uiuxtext">
+                                                    Select Technolgies
+                                                </p>
+                                                <MultiSelect
+                                                    options={allTechnologies}
+                                                    value={selected}
+                                                    onChange={setSelected}
+                                                    labelledBy="Select"
+                                                    className="margin-left"
+                                                />
+                                            </>
+                                        ) : null}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
                     <div className="steps_hireAgencyForm3">
                         <div>
