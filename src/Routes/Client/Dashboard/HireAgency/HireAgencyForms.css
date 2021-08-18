@@ -650,6 +650,19 @@
     height: 28rem;
 }
 
+.mainHireAgencyFormTwo .MuiFormGroup-root {
+    flex-direction: row !important;
+    margin-left: 0 !important;
+}
+.mainHireAgencyForm1 .MuiFormGroup-root {
+    flex-direction: row !important;
+    margin-left: 0 !important;
+}
+.mainHireAgencyFormThree .MuiFormGroup-root {
+    flex-direction: row !important;
+    margin-left: 0 !important;
+}
+
 .UIUXServices {
     font-family: 'Inter';
     margin-top: -20px;

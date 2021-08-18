@@ -233,7 +233,7 @@
   font-size: 2rem;
 }
 
-.MuiFormGroup-root {
+.mainAddingDeveloper .MuiFormGroup-root {
   flex-direction: row !important;
   margin-left: 0 !important;
 }

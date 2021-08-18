@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(0),
         minWidth: 120,
         maxWidth: 300,
-    }
+    },
 }));
 
 function getStyles(singleTechObject, allTechnologies, theme) {
@@ -102,7 +102,7 @@ function AddingDeveloper(props) {
 
     useEffect(() => {
         console.log(developerData);
-    },[developerData])
+    }, [developerData])
 
 
     const handleChange = (event) => {

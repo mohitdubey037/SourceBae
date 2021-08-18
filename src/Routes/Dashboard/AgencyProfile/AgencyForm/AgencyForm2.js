@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from "./FormPhases";
 import { NavLink } from "react-router-dom";
+import Back from '../../../../Components/Back/Back';
 
 //axios instance
 import instance from "../../../../Constants/axiosConstants";
@@ -20,6 +21,7 @@ import FormControl from "@material-ui/core/FormControl";
 import MultiSearchSelect from "react-search-multi-select";
 import Spinner from "../../../../Components/Spinner/Spinner";
 import { toast } from "react-toastify";
+
 
 function AgencyForm2(props) {
   const Role = localStorage.getItem("role");
@@ -193,7 +195,7 @@ function AgencyForm2(props) {
   }, [dom]);
 
   useEffect(() => {
-    if(toggle!==null){
+    if (toggle !== null) {
       if (apiData.agencyMonthlyBudget !== "") {
         createAgencyForm2Api();
       } else {
@@ -252,15 +254,19 @@ function AgencyForm2(props) {
   return (
     <>
       <Navbar />
+      <div className="margin-top">
+        <Back name="Agency form 2" />
+      </div>
       <FormPhases value1={true} value2={true} />
-      <div
+      {/* <div
         className="backArrow_agencyForm2"
         onClick={() => {
           props.history.goBack();
         }}
       >
         <i class="fa fa-angle-left" aria-hidden="true"></i>
-      </div>
+      </div> */}
+
       {loading ? (
         <Spinner />
       ) : (
@@ -271,66 +277,47 @@ function AgencyForm2(props) {
                 <p className="domainHeading">
                   1. Which business sector are you targeting?
                 </p>
-                <div className="domainFieldsCard">
+                {/* <div className="serviceFieldsOptions newHireAgencyForm3"> */}
+                <div className="servicesCardsHireAgency agencyForm2">
+                  {/* <div className="tech-container"> */}
                   {allDomainsData?.length > 0 ? (
                     allDomainsData.map((domain) => {
                       return (
-                        <div
-                          className={`${domain.domainName}`}
-                          onClick={(event) => handleDomains(event)}
-                          style={{
-                            backgroundColor: domain.selected
-                              ? "#02044a"
-                              : "#D6EAF8",
-                          }}
-                        >
-                          <img
-                            className={`${domain.domainName}`}
-                            src={domain.domainIcon}
-                            alt=""
-                          />
-                          <p
-                            className={`${domain.domainName}`}
-                            style={{ color: domain.selected ? "#fff" : "#000" }}
-                          >{`${domain.domainName}`}</p>
+                        <div className="tech-container">
+                          <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
+                            style={{ backgroundColor: domain.selected ? "#02044a" : "#D6EAF8" }}>
+                            <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                          </div>
+                          <p className={`${domain.domainName}`} style={{ color: domain.selected ? "#fff" : "#000" }}>
+                            {`${domain.domainName}`}
+                          </p>
                         </div>
                       );
                     })
                   ) : (
                     <p>Sorry No Data Found.</p>
                   )}
+                  {/* </div> */}
                 </div>
+                {/* </div> */}
               </div>
 
               <div className="serivcesAgency">
                 <p className="servicesHeading">
                   2. In which services you have good command?
                 </p>
-                <div className="servicesCardsAgency">
+                <div className="servicesCardsHireAgency agencyForm2">
                   {allServicesData?.length > 0 ? (
                     allServicesData.map((service) => {
                       return (
-                        <div
-                          className={`${service.serviceName}`}
-                          onClick={(event) => handleServices(event)}
-                          style={{
-                            backgroundColor: service.selected
-                              ? "#02044a"
-                              : "#D6EAF8",
-                          }}
-                        >
-                          <img
-                            className={`${service.serviceName}`}
-                            src={uiux}
-                            alt=""
-                          />
-                          {/* <p style={{ color: isUiUx ? '#fff' : '#000' }}>UI/UX <br /> Design</p> */}
-                          <p
-                            className={`${service.serviceName}`}
-                            style={{
-                              color: service.selected ? "#fff" : "#000",
-                            }}
-                          >{`${service.serviceName}`}</p>
+                        <div className="tech-container">
+                          <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
+                            style={{ backgroundColor: service.selected ? "#02044a" : "#D6EAF8" }}>
+                            <img className={`${service.serviceName}`} src={uiux} alt="" />
+                          </div>
+                          <p className={`${service.serviceName}`} style={{ color: service.selected ? "#fff" : "#000" }}>
+                            {`${service.serviceName}`}
+                          </p>
                         </div>
                       );
                     })
@@ -377,64 +364,52 @@ function AgencyForm2(props) {
 
               <div className="nextBtn">
                 {/* <NavLink to="/agency-form-one" ><i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
-                <NavLink
-                  to="/agency-form-one"
-                  style={{ textDecoration: "none" }}
-                >
+                {/* <NavLink to="/agency-form-one" style={{ textDecoration: "none" }}>
                   <button className="next-click">
                     <i className="fa fa-long-arrow-left" aria-hidden="true" />
                     Back
                   </button>
-                </NavLink>
-                <button
-                  style={{ backgroundColor: "blue" }}
-                  className="next-click"
-                  onClick={() => {
-                    handleNext();
-                  }}
-                >
+                </NavLink> */}
+                <button className="next-click" onClick={() => { handleNext() }}>
                   Next
-                  <i className="fa fa-long-arrow-right" aria-hidden="true" />
+                  {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                 </button>
                 {/* </NavLink> */}
               </div>
             </div>
-            <div className="serviceFieldsOptions">
-              <div className="servicesContainer">
-                <div className="serviceSelectionInput">
-                  {visibleTechNames?.length ? (
-                    <>
-                      <p className="uiuxtext">Select Technologies</p>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "flex-start",
-                        }}
-                      >
-                        <MultiSearchSelect
-                          searchable={true}
-                          showTags={true}
-                          multiSelect={true}
-                          width="23vw"
-                          onSelect={(arr) => handleTechSelect(arr)}
-                          options={visibleTechNames}
-                          primaryColor="#D6EAF8"
-                          secondaryColor="#02044a"
-                          textSecondaryColor="#fff"
-                          className="UIUXServices"
-                          textColor="#02044a"
-                        />
-                      </div>
-                    </>
-                  ) : (
-                    <p>Please select one or more services.</p>
-                  )}
-                </div>
+          </div>
+
+          <div className="serviceFieldsOptions">
+            <div className="servicesContainer">
+              <div className="serviceSelectionInput">
+                {visibleTechNames?.length ? (
+                  <>
+                    <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
+                    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                      <MultiSearchSelect
+                        searchable={true}
+                        showTags={true}
+                        multiSelect={true}
+                        width="23vw"
+                        onSelect={(arr) => handleTechSelect(arr)}
+                        options={visibleTechNames}
+                        primaryColor="#D6EAF8"
+                        secondaryColor="#02044a"
+                        textSecondaryColor="#fff"
+                        className="UIUXServices"
+                        textColor="#02044a"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <p>Please select one or more services.</p>
+                )}
               </div>
             </div>
           </div>
-        </div>
-      )}
+        </div >
+      )
+      }
     </>
   );
 }

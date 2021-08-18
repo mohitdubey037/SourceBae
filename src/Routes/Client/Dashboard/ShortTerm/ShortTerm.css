@@ -229,6 +229,11 @@
   padding: 0.6rem 0;
 }
 
+.mainShortTerm .MuiFormGroup-root {
+  flex-direction: row !important;
+  margin-left: 0 !important;
+}
+
 .fileUploadButton {
   width: 14%;
   display: flex;
