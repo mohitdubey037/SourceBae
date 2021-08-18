@@ -649,6 +649,17 @@
     right: 0rem;
     height: 28rem;
 }
+.servicesHireAgencyContainer.hireAgencyForm2 {
+    margin-top: 7%;
+    height: 100%;
+    border: 1px dashed #ebebeb;
+    padding-bottom: 6%;
+    background: #fff;
+    width: 42%;
+    position: absolute;
+    right: -24rem;
+    height: 28rem;
+}
 
 .mainHireAgencyFormTwo .MuiFormGroup-root {
     flex-direction: row !important;

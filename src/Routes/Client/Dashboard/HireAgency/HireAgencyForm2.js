@@ -312,7 +312,7 @@ function HireAgencyForm2(props) {
             {selectedDomain && options &&
               (
                 <div className="serviceFieldsOptions">
-                  <div className="servicesHireAgencyContainer">
+                  <div className="servicesHireAgencyContainer hireAgencyForm2">
                     <div className="serviceSelectionInput">
                       <>
                         <p className="uiuxtext">
