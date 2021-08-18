@@ -97,7 +97,7 @@
     margin-left: 10px;
 }
 
-.logo-type_agencyForm1 {
+.getAgencyLogo .logo-type_agencyForm1 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: normal;
@@ -121,7 +121,7 @@
 }
 
 .innerPersonelDetailsForm {
-    width: 85%;
+    width: 88%;
     display: flex;
     justify-content: center;
     background-color: #fff;
@@ -363,7 +363,7 @@
 /* Agency Form two  */
 
 .mainTechStackForm {
-    width: 90%;
+    width: 92%;
     display: flex;
     margin: auto;
     margin-top: 3%;
@@ -558,7 +558,7 @@
 }
 
 .innerDocumentForm {
-    width: 80%;
+    width: 88%;
     display: flex;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
@@ -720,7 +720,7 @@
 }
 
 .innerSocialLinks {
-    width: 80%;
+    width: 88%;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     display: flex;
 }
