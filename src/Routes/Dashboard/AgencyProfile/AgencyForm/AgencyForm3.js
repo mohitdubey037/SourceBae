@@ -21,7 +21,7 @@ import Spinner from '../../../../Components/Spinner/Spinner'
 function AgencyForm3(props) {
 
     const colors = {
-        Upload: "blue",
+        Upload: "#119dee",
         Update: "orange",
         Next: "green",
     }
@@ -172,7 +172,7 @@ function AgencyForm3(props) {
                 <Navbar />
             </div>
             <div className="back-parent marginLeft">
-                <Back name="Hire Agency" />
+                <Back name="Hire Agency 3" />
             </div>
             <FormPhases value1={true} value2={true} value3={true} />
             {/* <div
@@ -192,53 +192,58 @@ function AgencyForm3(props) {
                             <p>1. Provide your Valid Document</p>
                             <div className="documentInformation">
                                 <div className="agencyCertification">
-                                    <span>Company Registration Certificate</span>
-                                    <img src={agencyLogo} alt="" />
-                                    <p>{`${registrationCertificate?.document?.name ?? ""}`}</p>
-                                    <FilePicker
-                                        extensions={['pdf', 'jpg', 'png', 'jpeg']}
-                                        onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
-                                        onError={error => handleUploadError(error)}>
-                                        <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
-                                    </FilePicker>
+                                    {/* <span>Company Registration Certificate</span> */}
+                                    <div>
+                                        <img src={agencyLogo} alt="" />
+                                        <FilePicker
+                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
+                                            onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
+                                            onError={error => handleUploadError(error)}>
+                                            <button className="pick_btn"><i class="pick_icon fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                        </FilePicker>
+                                    </div>
+                                    <p className="logo-type_agencyForm1">{`${registrationCertificate?.document?.name ?? "Company Registration Certificate"}`}</p>
                                 </div>
                                 <div className="agencyBrochure">
-                                    <span>Brochure</span>
-                                    <img src={brochure} alt="" />
-                                    <p>{`${brochureDoc?.document?.name ?? ""}`}</p>
-                                    <FilePicker
-                                        extensions={['pdf', 'jpg', 'png', 'jpeg']}
-                                        onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
-                                        onError={error => handleUploadError(error)}>
-                                        <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
-                                    </FilePicker>
+                                    {/* <span>Brochure</span> */}
+                                    <div>
+                                        <img src={brochure} alt="" />
+                                        <FilePicker
+                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
+                                            onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
+                                            onError={error => handleUploadError(error)}>
+                                            <button className="pick_btn"><i class="pick_icon fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                        </FilePicker>
+                                    </div>
+                                    <p className="logo-type_agencyForm1">{`${brochureDoc?.document?.name ?? "Brochure"}`}</p>
                                 </div>
                             </div>
                             <div className="panDetails">
                                 <p>2. Enter your Pan Card number</p>
                                 <div className="panCardContent">
-                                    <img src={panCard} alt="" />
-                                    <p>{`${panCardDoc?.document?.name ?? ""}`}</p>
-                                    <FilePicker
-                                        extensions={['pdf', 'jpg', 'png', 'jpeg']}
-                                        onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
-                                        onError={error => handleUploadError(error)}>
-                                        <button className="pick_btn"><i class="fa fa-upload" aria-hidden="true"></i>Pick File</button>
-                                    </FilePicker>
+                                    <div>
+                                        <img src={panCard} alt="" />
+                                        <FilePicker
+                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
+                                            onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
+                                            onError={error => handleUploadError(error)}>
+                                            <button className="pick_btn"><i class="pick_icon fa fa-upload" aria-hidden="true"></i>Pick File</button>
+                                        </FilePicker>
+                                    </div>
+                                    <p className="logo-type_agencyForm1">{`${panCardDoc?.document?.name ?? "Pancard"}`}</p>
                                 </div>
                             </div>
 
                             <div className="nextBtn">
-                                <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
+                                {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
                                     <button>
                                         <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
                                     </button>
-                                </NavLink>
+                                </NavLink> */}
 
                                 {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
                                 <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
                                     {status}
-                                    <i className="fa fa-long-arrow-right" aria-hidden="true" />
                                 </button>
                                 {/* </NavLink> */}
                             </div>

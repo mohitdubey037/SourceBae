@@ -10,6 +10,7 @@ import links from '../../../../assets/images/agencyForm/links.gif'
 import { NavLink } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import Spinner from '../../../../Components/Spinner/Spinner';
+import Back from '../../../../Components/Back/Back';
 
 //axios instance
 import instance from "../../../../Constants/axiosConstants"
@@ -213,19 +214,12 @@ function AgencyForm4(props) {
     return (
         <>
             <Navbar />
-            <div
-                className="backArrow_agencyForm4"
-                onClick={() => {
-                    props.history.goBack();
-                }}
-            >
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <div className="margin-top">
+                <Back name="Agency Form 4" />
             </div>
             {loading ? <Spinner /> :
-
                 <>
                     <FormPhases value1={true} value2={true} value3={true} value4={true} />
-
                     <div className="mainSocialLinks">
                         <div className="innerSocialLinks">
                             <div className="socialInputs">
@@ -244,7 +238,7 @@ function AgencyForm4(props) {
                                     {errors.githubLinkError && <Alert severity="error">{errors.githubLinkError}</Alert>}
                                 </div>
 
-                                <div>
+                                <div style={{ marginTop: '25px' }}>
                                     <section className="linksImages">
                                         <img src={stack} alt="stackoverflow logo" />
                                         <p>StackOverflow Link <span>(optional)</span></p>
@@ -257,7 +251,7 @@ function AgencyForm4(props) {
                                     {errors.stackoverflowLinkError && <Alert severity="error">{errors.stackoverflowLinkError}</Alert>}
                                 </div>
 
-                                <div>
+                                <div style={{ marginTop: '25px' }}>
                                     <section className="linksImages">
                                         <img src={portfolio} alt="portfolio logo" />
                                         <p>Portfolio Link <span>(optional)</span></p>
@@ -285,7 +279,7 @@ function AgencyForm4(props) {
                                     {errors.portfolioLinkError && <Alert severity="error">{errors.portfolioLinkError}</Alert>}
                                 </div>
 
-                                <div>
+                                <div style={{ marginTop: '25px' }}>
                                     <section className="linksImages">
                                         <img src={featureLink} alt="featured link logo" />
                                         <p>Featured Link <span>(optional)</span></p>
@@ -299,14 +293,14 @@ function AgencyForm4(props) {
                                 </div>
 
                                 <div className="nextBtn">
-                                    <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
+                                    {/* <NavLink to="/agency-form-three" style={{ textDecoration: "none" }}>
                                         <button>
                                             <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                         </button>
-                                    </NavLink>
+                                    </NavLink> */}
                                     <button onClick={finalUpdate} >
                                         Finish
-                                        <i className="fa fa-long-arrow-right" aria-hidden="true" />
+                                        {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                                     </button>
                                 </div>
                             </div>
