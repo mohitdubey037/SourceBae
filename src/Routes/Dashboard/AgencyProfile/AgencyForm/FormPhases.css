@@ -516,7 +516,7 @@
     border: none;
 }
 
-.serviceFieldsOptions .uiuxtext {
+.serviceFieldsOptions .uiuxtext.uiuxtext_agencyForm3 {
     font-family: 'Inter';
     margin-left: 10px;
     font-size: 1.2rem;
@@ -525,7 +525,41 @@
 
 .serviceSelectionInput {
     margin-top: 10%;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #02044A;
+    padding: 10px;
 }
+
+.conditional_please_select {
+    width: 15%;
+    background: #F9F9F9;
+    display: flex;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.serviceFieldsOptions {
+    height: 57rem;
+    overflow: auto;
+    border: 1px dashed #ebebeb;
+    margin-left: 2px;
+}
+
+/* .serviceFieldsOptions .servicesContainer {
+    height: 57rem;
+    overflow: auto;
+    border: 1px dashed #ebebeb;
+    margin-left: 2px;
+} */
 
 .monthlyBudget {
     margin-top: 5%;
@@ -839,11 +873,4 @@
     width: 100%;
     margin-left: 0rem;
     margin-top: 2rem;
-}
-
-.serviceFieldsOptions .servicesContainer {
-    height: 100vh;
-    overflow: auto;
-    border: 1px dashed #ebebeb;
-    margin-left: 2px;
 }

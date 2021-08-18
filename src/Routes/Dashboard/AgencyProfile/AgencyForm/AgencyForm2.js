@@ -379,8 +379,8 @@ function AgencyForm2(props) {
             </div>
           </div>
 
-          <div className="serviceFieldsOptions">
-            <div className="servicesContainer">
+          <div className={`${visibleTechNames?.length ? "serviceFieldsOptions" : "conditional_please_select"}`}>
+            {/* <div className="servicesContainer"> */}
               <div className="serviceSelectionInput">
                 {visibleTechNames?.length ? (
                   <>
@@ -405,7 +405,7 @@ function AgencyForm2(props) {
                   <p>Please select one or more services.</p>
                 )}
               </div>
-            </div>
+            {/* </div> */}
           </div>
         </div >
       )

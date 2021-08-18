@@ -230,7 +230,7 @@ function HireAgencyForm2(props) {
                       <div className="tech-container">
                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
                           style={{ backgroundColor: domain.selected ? "#68E1FD" : "white" }}>
-                          <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                          <img className={`${domain.domainName}`} src={domain.domainIcon} alt="image" />
                         </div>
                         <p className={`${domain.domainName}`} style={{ color: "#000" }}>
                           {`${domain.domainName}`}</p>
