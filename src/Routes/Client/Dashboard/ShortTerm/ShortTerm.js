@@ -320,11 +320,7 @@ function ShortTerm(props) {
                 </FilePicker>
               </div>
               <div className="uploadInfo">
-                <p>{projectFiles?.name}</p>
-                <p>
-                  Upload an image or a document that might be helpful in
-                  explaining your project in brief.
-                </p>
+                <p>{`${projectFiles?.name ?? "Upload an image or a document that might be helpful in explaining your project in brief."}`}</p>
               </div>
             </div>
           </div>

@@ -15,13 +15,11 @@ p, h5, h6, h4 {
 } */
 
 .agency-card-parent {
-    padding: 0 0 0 7px;
+    padding: 0px 0 0px 7px;
     width: 95%;
     margin-left: 20px;
-    overflow: hidden;
-    /* overflow-y: scroll; */
     overflow: auto;
-    height: 500px;
+    height: 420px;
 }
 
 .agency-card-parent::-webkit-scrollbar {
@@ -58,8 +56,8 @@ p, h5, h6, h4 {
 }
 
 .project-actual-status {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
 }
