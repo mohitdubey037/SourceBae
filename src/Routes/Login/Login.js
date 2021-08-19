@@ -325,10 +325,10 @@ const Login = (props) => {
                                         }
                                     />
                                     <div className="button_action_login">
-                                        <button onClick={() => logIn(role, form)} type="submit">
+                                        <button className="submit_login" onClick={() => logIn(role, form)} type="submit">
                                             Login
                                         </button>
-                                        <button onClick={() => props.history.push('/enter-email')} type="submit">
+                                        <button className="forgot-password_login" onClick={() => props.history.push('/enter-email')} type="submit">
                                             Forgot Password
                                         </button>
                                     </div>
