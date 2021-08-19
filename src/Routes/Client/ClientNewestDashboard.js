@@ -143,7 +143,10 @@ function ClientNewestDashboard(props) {
                         <div className="username nav-left-item">
                             <p>{clientData.firstName} {clientData.lastName}</p>
                         </div>
-                        <div className="userprofile-circle nav-left-item" />
+                        <div className="userprofile-circle nav-left-item">
+                            {/* <img src={clientData?.profile} alt="no image" /> */}
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -148,9 +148,9 @@ function AgencyNewestDashboard(props) {
     return (
         <div className="Navbar-clientDashboard">
             <div className="navbar">
-                {/* <div className="navbar-heading">
-                        <h1>Overview</h1>
-                    </div> */}
+                <div className="navbar-heading">
+                        <h1>SourceBae</h1>
+                    </div>
                 <div className="navbar-items">
                     <div className="notification-icon nav-left-item">
                         <img src={notificationIcon} alt="notification" />
@@ -165,7 +165,7 @@ function AgencyNewestDashboard(props) {
                         <p>{agencyProfileData?.agencyName}</p>
                     </div>
                     <div className="userprofile-circle nav-left-item">
-                        <img src={agencyProfileData?.agencyLogo} alt="" />
+                        <img src={agencyProfileData?.agencyLogo} />
                     </div>
                 </div>
             </div>
@@ -205,7 +205,7 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 </div>
                             )}
-                            <div className="user-operations" style={{ marginTop: (!verified && steps !== -1) && '1rem' }}>
+                            <div className={ `user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`} style={{ marginTop: (!verified && steps !== -1) && '1rem' }}>
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
                                     nextpage={() => quotation("quotation")}

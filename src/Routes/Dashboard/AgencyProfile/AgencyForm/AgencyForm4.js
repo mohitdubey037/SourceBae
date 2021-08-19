@@ -97,8 +97,8 @@ function AgencyForm4(props) {
         instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 console.log(response);
-                setLoading(false)
-                props.history.push("/dashboard")
+                setLoading(false);
+                props.history.replace("/agencyNewestDashboard")
             })
             .catch(errors => {
                 setLoading(false)

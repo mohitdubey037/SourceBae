@@ -242,15 +242,15 @@
   align-items: center;
   margin-top: 1%;
 }
-.innerMainVerify {
+/* .innerMainVerify {
   width: 100%;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #02044a;
-  /* padding-top: 1%; */
-}
+  padding-top: 1%;
+} */
 .innerMainVerify img {
   width: 20px;
 }
@@ -261,22 +261,22 @@
   justify-content: center;
   align-items: center;
 }
-.innerMainVerify p {
+/* .innerMainVerify p {
   margin-top: 0px;
   font-family: "Inter";
   font-weight: normal;
   font-weight: bold;
   font-size: 1rem;
   margin-top: 10px;
-}
-.innerMainVerify span {
+} */
+/* .innerMainVerify span {
   color: #fad647;
   font-weight: bold;
   font-size: 1.2rem;
   margin: 0 10px;
   border-bottom: 1px solid #fad647;
   cursor: pointer;
-}
+} */
 
 /* cards  */
 

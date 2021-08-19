@@ -259,7 +259,8 @@
 .getAgencyDesc textarea {
     border: 1px solid #ebebeb;
     width: 100%;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    padding: 10px;
     height: 13rem;
     margin-top: 10px;
 }
