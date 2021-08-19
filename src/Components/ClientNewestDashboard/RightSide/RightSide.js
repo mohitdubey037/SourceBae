@@ -6,7 +6,7 @@ function RightSide() {
     return (
         <div className="content-rightBody_parent">
             <div className="content-rightBody">
-                <div className="rightBody-navigation">
+                {/* <div className="rightBody-navigation">
                     <div className="navigation-name active">
                         <p>Update</p>
                     </div>
@@ -16,7 +16,7 @@ function RightSide() {
                     <div className="navigation-name">
                         <p>Current</p>
                     </div>
-                </div>
+                </div> */}
                 <div className="navigation-item">
                     <div className="item-illustration">
                         <img src={itemIllustration} alt="item illustration" />

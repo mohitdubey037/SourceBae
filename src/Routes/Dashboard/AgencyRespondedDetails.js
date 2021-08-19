@@ -143,7 +143,7 @@ function AgencyRespondedDetails(props) {
 
       <div className="respondDescription_AgencyRespondedDetails">
         <h2>About Your Project</h2>
-        <p>{project?.projectName}</p>
+        {/* <p>{project?.projectName}</p> */}
       </div>
 
       <div className="respondCards_AgencyRespondedDetails">
@@ -202,14 +202,14 @@ function AgencyRespondedDetails(props) {
         </div>
       </div>
 
-      <div className="detailsContainer">
+      {/* <div className="detailsContainer">
         <div className="innerDetailsContainer">
           <div className="detailsDiv">
             <img src={detailImage} />
             <h4>Details</h4>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
 
@@ -349,7 +349,7 @@ function AgencyRespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul>
-                <li>45days</li>
+                <li>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
             <div>

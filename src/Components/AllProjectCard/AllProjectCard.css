@@ -145,4 +145,5 @@ td:nth-child(even) {
 .submit-button_allProjectCard:hover {
     background-color: #02044A;
     color: white;
+    cursor: pointer;
 }

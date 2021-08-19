@@ -159,10 +159,21 @@
   margin-bottom: 5%;
 }
 
+.modalButton {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
 .error_productForm {
   color: red;
   font-weight: normal;
   font-size: 14px;
+}
+
+.previousFunding .MuiFormGroup-root {
+  flex-direction: row !important;
+  margin-left: 10px;
 }
 
 .innerProductFormArea {
@@ -679,4 +690,16 @@
 
 .subbutton i {
   margin-left: 10px;
+}
+
+.modalButton button {
+  padding: 0.4rem 1rem;
+  margin-right: 4%;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  background: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  color: #2c5bc7f5;
 }

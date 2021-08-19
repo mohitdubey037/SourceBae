@@ -65,6 +65,10 @@ function AgencyNewestDashboard(props) {
         getAllProjects();
     }, []);
 
+    useEffect(()=> {
+        console.log(agencyProfileData);
+    },[agencyProfileData])
+
     const getStepsCompleted = () => {
         instance
             .get(`api/${Role}/agencies/steps-completed`)
@@ -152,9 +156,9 @@ function AgencyNewestDashboard(props) {
                         <h1>SourceBae</h1>
                     </div>
                 <div className="navbar-items">
-                    <div className="notification-icon nav-left-item">
+                    {/* <div className="notification-icon nav-left-item">
                         <img src={notificationIcon} alt="notification" />
-                    </div>
+                    </div> */}
                     {/* <div onClick={logout} className="logout-icon nav-left-item">
                             <div>
                                 <ExitToAppIcon />
@@ -230,7 +234,6 @@ function AgencyNewestDashboard(props) {
                                         img={QuotationIcon} />
                                 }
                             </div>
-                            {/* className={`operation ${props.disabled && "conditional_disabled"}`} */}
                             <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
                                 {allProjects?.projects?.length > 0 &&
                                     <div className="graphic">

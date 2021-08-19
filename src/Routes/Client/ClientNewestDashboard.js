@@ -127,13 +127,13 @@ function ClientNewestDashboard(props) {
             <div className="Navbar-clientDashboard">
                 {/* <Navbar /> */}
                 <div className="navbar">
-                    {/* <div className="navbar-heading">
-                        <h1>Overview</h1>
-                    </div> */}
+                    <div className="navbar-heading">
+                        <h1>SourceBae</h1>
+                    </div>
                     <div className="navbar-items">
-                        <div className="notification-icon nav-left-item">
+                        {/* <div className="notification-icon nav-left-item">
                             <img src={notificationIcon} alt="notification" />
-                        </div>
+                        </div> */}
                         {/* <div onClick={logout} className="logout-icon nav-left-item">
                     <div>
                         <ExitToAppIcon />
@@ -144,7 +144,7 @@ function ClientNewestDashboard(props) {
                             <p>{clientData.firstName} {clientData.lastName}</p>
                         </div>
                         <div className="userprofile-circle nav-left-item">
-                            {/* <img src={clientData?.profile} alt="no image" /> */}
+                            <img src={" "} />
                         </div>
 
                     </div>

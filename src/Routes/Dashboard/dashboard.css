@@ -37,10 +37,10 @@
   transform: translateY(5px);
 }
 
-.modalButton {
+/* .modalButton {
   display: flex;
   justify-content: flex-end;
-}
+} */
 .modalButton button {
   padding: 0.4rem 1rem;
   margin-right: 4%;

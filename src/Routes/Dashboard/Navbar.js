@@ -105,13 +105,13 @@ function Navbar() {
                         <div className="clientCompany">
                             <img onClick={() => routerHistory.push("/agency-profile")} src={clientLogo} alt="" />
                         </div>
-                        <div onClick={handleNotification} aria-describedby={id} className="clientNotification">
+                        {/* <div onClick={handleNotification} aria-describedby={id} className="clientNotification">
                             <img src={notificationIcon} alt="" />
-                        </div>
+                        </div> */}
                         {/* <div className="clientNotification">
                             <img style={{width: '85%'}} onClick={() => routerHistory.push("/get-hire-developer")} src={HireDeveloperLogo} alt="" />
                         </div> */}
-                        <Popover
+                        {/* <Popover
                             id={id}
                             open={open}
                             anchorEl={isNotification}
@@ -127,7 +127,7 @@ function Navbar() {
                         >
                             <Typography className={classes.typography}>The content of the Popover.
                             <br />  and you are not the owner</Typography>
-                        </Popover>
+                        </Popover> */}
                         <div className="userProfile">
                             <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className="clientProfile">
                                 <img src={clientProfile} alt="" />

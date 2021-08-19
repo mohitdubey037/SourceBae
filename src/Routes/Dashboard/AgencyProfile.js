@@ -429,7 +429,7 @@ function AgencyProfile(props) {
                       onError={(errMsg) => { }}
                     > */}
                     <a style={{ textDecoration: 'none' }} className="uploadButton" href={link} target="new">
-                      Check Resume
+                      View Document
                     </a>
                     {/* </FilePicker> */}
                   </div>

@@ -7,9 +7,11 @@
 .innerPortfolio {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 500px;
 }
 .portfolioCard {
   width: 46%;

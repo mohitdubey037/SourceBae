@@ -156,14 +156,14 @@ function RespondedDetails(props) {
         </div>
       </div>
 
-      <div className="detailsContainer">
+      {/* <div className="detailsContainer">
         <div className="innerDetailsContainer">
           <div className="detailsDiv">
             <img src={detailImage} />
             <h4>Details</h4>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
@@ -306,7 +306,7 @@ function RespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul>
-                <li>45days</li>
+                <li>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
             <div>

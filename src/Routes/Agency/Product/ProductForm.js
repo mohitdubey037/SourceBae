@@ -831,11 +831,7 @@ function ProductForm(props) {
                     <div className="currentStageRadios">
                       {currentStage.map((value, index) => {
                         return (
-                          <div
-                            style={{
-                              borderColor:
-                                value.status === true ? "#2E86C1" : null,
-                            }}
+                          <div style={{ borderColor: value.status === true ? "#2E86C1" : null }}
                             className="radioButton"
                             onClick={() => handleCurrentStage(index)}
                           >
@@ -871,9 +867,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span
-                            style={{ fontFamily: "Inter", color: "#999" }}
-                          >
+                          <span style={{ fontFamily: "Inter", color: "#999" }}>
                             Select from here
                           </span>
                         </MenuItem>
@@ -909,9 +903,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span
-                            style={{ fontFamily: "Inter", color: "#999" }}
-                          >
+                          <span style={{ fontFamily: "Inter", color: "#999" }}>
                             Select from here
                           </span>
                         </MenuItem>
@@ -1078,8 +1070,7 @@ function ProductForm(props) {
               <div className="submitButton productForm">
                 <div className="innerSubmitButton">
                   <div className="subbutton" onClick={() => updateButtonHandler()}>
-                    <p>
-                      Upload Your Product{" "}
+                    <p> Upload Your Product{" "}
                       <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>
                     </p>
                   </div>
@@ -1104,9 +1095,9 @@ function ProductForm(props) {
         <h2 className="addyourproductext">Your Product</h2>
         <div className="successfullProduct">
           <div className="successImage">
-            {/* <div>
+            <div>
               <img src={success} alt="" />
-            </div> */}
+            </div>
           </div>
           <div className="successfullyText">
             <p>Your product has been successfully uploaded.</p>
@@ -1114,7 +1105,7 @@ function ProductForm(props) {
           </div>
         </div>
         <div className="modalButton">
-          <button onClick={() => props.history.push("/agency-profile")}>
+          <button onClick={() => props.history.replace("/agency-profile")}>
             Go to Profile
           </button>
         </div>

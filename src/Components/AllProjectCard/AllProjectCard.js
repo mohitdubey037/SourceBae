@@ -11,7 +11,7 @@ function AllProjectCard(props) {
     const routerHistory = useHistory();
 
     const showDetails = () => {
-        routerHistory.push(`/project-details/${props?._id}/${props?.projectProposals[0]?.agencyId?._id}`)
+        routerHistory.push(`/agency-list:${props._id}`)
     }
 
     return (

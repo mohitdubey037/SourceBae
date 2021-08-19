@@ -122,7 +122,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
   margin-top: 2%;
 }
 
@@ -130,6 +130,10 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.straightAfterLine ul {
+  padding-left: 1rem;
 }
 
 .btnInfoDiv {
@@ -605,7 +609,7 @@
 }
 
 .respondDescription_AgencyRespondedDetails {
-  margin-top: 3%;
+  margin-top: 2%;
   /* margin-left: 3%; */
   margin-left: 6%;
 }

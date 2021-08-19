@@ -44,9 +44,9 @@ function Navbar(props) {
                 <h1>SourceBae</h1>
             </div>
             <div className="navbar-items">
-                <div className="notification-icon nav-left-item">
+                {/* <div className="notification-icon nav-left-item">
                     <img src={notificationIcon} alt="notification" />
-                </div>
+                </div> */}
                 {/* <div onClick={logout} className="logout-icon nav-left-item">
                     <div>
                         <ExitToAppIcon />
@@ -57,7 +57,7 @@ function Navbar(props) {
                     <p>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
-                    {Role === 'Agency' && <img src={data?.agencyLogo} alt="notification"/>}
+                    {Role === 'Agency' ? <img src={data?.agencyLogo}/> : <img src={data?.imageurl}/>}
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function AgencyNewestAllProject() {
+function AgencyNewestAllProject(props) {
     const classes = useStyles();
 
     const Role = localStorage.getItem('role');
@@ -119,7 +119,6 @@ function AgencyNewestAllProject() {
                     }
                 });
         }
-
     }
 
     useEffect(() => {
