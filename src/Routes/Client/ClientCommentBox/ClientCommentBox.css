@@ -65,3 +65,7 @@
 .postQuotation .makeStyles-margin-1 {
     width: 100%;
 }
+
+.price-section .makeStyles-margin-8 {
+    margin-left: 0 !important;
+}

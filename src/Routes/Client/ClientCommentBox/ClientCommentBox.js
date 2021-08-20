@@ -91,7 +91,7 @@ const ClientCommentBox = (props) => {
       isShortListed: true,
       isAskedForQuotation: true,
       negotiablePrice: "",
-      comment: "Please attach a document.",
+      comment: "Kindly Share the document.",
     };
     instance.patch(`api/client/projects/propose/${props.projectId}`, quotationData)
       .then(function (response) {
@@ -147,15 +147,15 @@ const ClientCommentBox = (props) => {
                   <div className="chatBox-parent">
                     {index.comment && (
                       <div className="chatBox">
-                        <b>Client </b>
                         <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
+                        <b>You</b>
                       </div>
                     )}
 
                     {index.reply && (
                       <div className="chatBox chatBox-left">
-                        <b>Agency </b>
                         <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
+                        <b>Agency</b>
                       </div>
                     )}
                   </div>

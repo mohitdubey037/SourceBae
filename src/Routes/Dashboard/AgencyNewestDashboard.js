@@ -259,7 +259,7 @@ function AgencyNewestDashboard(props) {
                                                         domainName={value?.projectDomainId.domainName}
                                                         projectType={value?.projectType}
                                                         experties={value?.projectExpertiseRequired}
-                                                        services={value?.projectServicesRequired} />
+                                                        services={value?.projectServicesRequired.map(a => a.serviceName)} />
                                                 )
                                             })
                                         ) :

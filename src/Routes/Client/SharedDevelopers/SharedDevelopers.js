@@ -112,7 +112,7 @@ function RespondedDetails(props) {
           <div className="main-card_SharedDevelopers">
             <div className="respond-card_parent">
               {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                <div className="innerResponseCard width">
+                <div className="innerResponseCard width innerResponseCard_sharedDeveloper">
                   <span className="leftLine"></span>
                   <div>
                     <p>Agency Name</p>
@@ -122,7 +122,7 @@ function RespondedDetails(props) {
                   </div>
                   <div >
                     <p>Agency Description</p>
-                    <p style={{ fontWeight: "600" }}>
+                    <p>
                       {
                         singleHiredDeveloper?.agenciesMatched[0]?.agencyId
                           ?.agencyDescription

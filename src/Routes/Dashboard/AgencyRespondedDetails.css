@@ -404,7 +404,7 @@
 }
 
 .innerResponseCard div p:nth-child(2) {
-  color: #68e1fd !important;
+  color: #68e1fd;
   font-weight: 500;
   font-size: 1.1rem;
 }

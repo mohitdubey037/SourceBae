@@ -35,8 +35,12 @@ function RespondedDetails(props) {
         console.log(err);
       });
   };
+
   useEffect(() => {
-    console.log('hii');
+    console.log(project);
+  },[project])
+
+  useEffect(() => {
     if (Object.keys(props["projects"]).length === 0) {
       getAllProjects();
     } else {
@@ -107,10 +111,10 @@ function RespondedDetails(props) {
         </div>
       </div>
 
-      <div className="respondDescription_AgencyRespondedDetails">
+      {/* <div className="respondDescription_AgencyRespondedDetails">
         <h2>About Your Project</h2>
         <p>{project?.projectName}</p>
-      </div>
+      </div> */}
 
       <div className="respondCards_AgencyRespondedDetails">
         <div className="innerResponseCard">

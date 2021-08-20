@@ -134,16 +134,16 @@ td:nth-child(even) {
 
 .submit-button_allProjectCard {
     padding: 6px;
-    border: 0.62069px solid #3A3A3A;
-    box-sizing: border-box;
-    border-radius: 4.96552px;
     display: grid;
     place-items: center;
     margin-right: 15px;
+    background: #79ACFF;
+    color: #fff;
+    outline: none;
+    border-radius: 5px;
 }
 
 .submit-button_allProjectCard:hover {
-    background-color: #02044A;
-    color: white;
+    background: linear-gradient(90deg, #A1C4FD 0%, #C2E9FB 100%);
     cursor: pointer;
 }

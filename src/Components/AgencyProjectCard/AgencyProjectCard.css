@@ -30,18 +30,19 @@
 }
 
 .user-project-button_agencyNewestDashboard {
-  border: 0.62069px solid #3a3a3a;
-  border-radius: 4.96552px;
+  padding: 6px;
+  display: grid;
+  place-items: center;
   margin-right: 15px;
-  height: 30px;
-  transform: translateY(8px);
-  padding: 5px;
+  background: #79ACFF;
+  color: #fff;
+  border-radius: 5px;
 }
 
 .user-project-button_agencyNewestDashboard:hover {
-  cursor: pointer;
-  background-color: #02044A;
   color: white;
+  background: linear-gradient( 90deg, #A1C4FD 0%, #C2E9FB 100%);
+  cursor: pointer;
 }
 
 .user-project-button_agencyNewestDashboard button {

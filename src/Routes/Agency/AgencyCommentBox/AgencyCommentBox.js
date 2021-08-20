@@ -126,7 +126,6 @@ const AgencyCommentBox = (props) => {
       formData.append("files", file, "files.pdf");
       instance.post(`api/agency/media/create`, formData)
         .then(function (response) {
-          console.log('pehle ye chala ki nhi');
           // setApiData({
           //   ...apiData,
           //   quotationLink: response[0].mediaURL,
@@ -200,15 +199,15 @@ const AgencyCommentBox = (props) => {
                 <>
                   <div className="chatBox-parent">
                     {index.comment && (
-                      <div className="chatBox chatBox-right" >
+                      <div className="chatBox chatBox-left" >
                         <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
-                        <b>Client </b>
+                        <b>Client</b>
                       </div>
                     )}
                     {index.reply && (
-                      <div className="chatBox chatBox-left">
+                      <div className="chatBox chatBox-right">
                         <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
-                        <b>Agency </b>
+                        <b>You</b>
                       </div>
                     )}
                   </div>
@@ -254,7 +253,7 @@ const AgencyCommentBox = (props) => {
             width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
               ? '96%' :
               props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
-                ? '100%' : '45%'
+                ? '96%' : '45%'
           }}>
             {props.projectProposals[0].isReplySectionActive && (
               <>

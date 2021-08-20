@@ -57,9 +57,9 @@ function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, 
                         </tr>
                         <tr>
                             <td>Expert Categories</td>
-                            <td>{experties[0].expertiseName}</td>
+                            <td>{experties[0]?.expertiseName}</td>
                             <td>Services</td>
-                            <td>{services[0].serviceName}</td>
+                            <td>{services[0]?.serviceName}</td>
                         </tr>
                     </thead>
                 </table>

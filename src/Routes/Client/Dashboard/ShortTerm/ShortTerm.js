@@ -44,9 +44,10 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function ShortTerm(props) {
-  const Role = "client";
+  const Role = localStorage.getItem('role');
   const id = localStorage.getItem("userId");
 
+  const [words, setWords] = useState(0);
   const [allServices, setAllServices] = useState([]);
   const buttonStatus = "Post Project"
 
@@ -65,6 +66,12 @@ function ShortTerm(props) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    if (name === 'projectDescription') {
+      if (value.length <= 100)
+        setWords(value.length);
+      if (value.length > 100)
+        setWords(100);
+    }
     setApiData({
       ...apiData,
       [name]: value,
@@ -302,7 +309,7 @@ function ShortTerm(props) {
             </div>
             <div className="wordsLimit">
               <p>Minimum 100 characters.</p>
-              <p>0/100</p>
+              <p>{words}/100</p>
             </div>
           </div>
 

@@ -112,14 +112,12 @@ function AgencyRespondedDetails(props) {
               <div className="btnInfoDiv">
                 <div className="rightBorder"></div>
                 <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
-                  <p
-                    style={{
+                  <p style={{
                       backgroundColor: "#02044a",
                       padding: "0.2rem 1rem",
                       borderRadius: "999px",
                       color: "#fff",
-                    }}
-                  >
+                    }}>
                     {project?.projectName}
                   </p>
                 </div>
