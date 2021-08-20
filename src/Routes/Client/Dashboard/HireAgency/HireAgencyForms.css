@@ -687,14 +687,23 @@
 
 .serviceSelectionInput {
     margin-top: 10%;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 150%;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #02044A;
+    padding: 10px;
 }
 
 .serviceSelectionInput .margin-left {
     text-transform: capitalize;
     color: #a8a8a8;
-    margin-left: 30px;
+    margin-left: 19px;
     height: 51px;
-    width: 83%;
+    width: 90%;
     background: #ffffff;
     box-sizing: border-box;
     border-radius: 8px;
@@ -861,9 +870,11 @@
 }
 
 .serviceFieldsOptions .uiuxtext {
-    margin-left: 35px;
+    /* margin-left: 38px; */
     font: bold 1.2rem 'Inter';
+    text-align: center;
 }
+
 
 .serviceSelectionInput {
     margin-top: 10%;

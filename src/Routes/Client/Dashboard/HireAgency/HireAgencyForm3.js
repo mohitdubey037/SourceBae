@@ -204,7 +204,7 @@ function HireAgencyForm3(props) {
                                         {allTechnologies ? (
                                             <>
                                                 <p className="uiuxtext">
-                                                    Select Technolgies
+                                                    Select Technologies
                                                 </p>
                                                 <MultiSelect
                                                     options={allTechnologies}
