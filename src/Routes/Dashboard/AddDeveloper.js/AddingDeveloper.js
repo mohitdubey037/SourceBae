@@ -355,6 +355,7 @@ function AddingDeveloper(props) {
                                     application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                                         </div> */}
 
+                                        <h4>Upload Resume</h4>
                                         <div className="uploadBlock_addingDeveloper">
                                             <div className="fileUploadButton_addingDeveloper">
                                                 <FilePicker
