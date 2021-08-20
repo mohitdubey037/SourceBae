@@ -384,7 +384,7 @@
 }
 
 .budgetSectionAreaAgency .MuiTypography-root {
-    font: normal 600 14px 'Inter' !important;
+    font: normal 300 14px 'Inter' !important;
     line-height: 17px !important;
     text-transform: capitalize !important;
     color: black !important
