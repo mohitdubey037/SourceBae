@@ -139,6 +139,7 @@
   margin-bottom: 2%;
   position: relative;
   margin-top: 3%;
+  align-items: center;
 }
 
 .inputField1 .developerName_addingDeveloper, .inputField1 .developerDesignation_addingDeveloper {
@@ -236,6 +237,48 @@
 .mainAddingDeveloper .MuiFormGroup-root {
   flex-direction: row !important;
   margin-left: 0 !important;
+}
+
+.uploadBlock_addingDeveloper {
+  margin-left: 35px;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.uploadInfo_addingDeveloper {
+  /* width: 79%; */
+  width: max-content;
+}
+
+.uploadInfo_addingDeveloper p {
+  font: normal 500 14px 'Inter';
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #a8a8a8;
+}
+
+.fileUploadButton_addingDeveloper {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #02044a;
+  border-radius: 30px;
+}
+
+.fileUploadButton_addingDeveloper div {
+  width: 100%;
+  text-align: center;
+  padding: 0.3rem 0rem;
+  cursor: pointer;
+  font: normal 600 18px 'Inter';
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #407bff;
 }
 
 .inputField2 .MuiFormControl-root {
@@ -540,5 +583,4 @@
   line-height: 17px;
   text-transform: capitalize;
   /* color: #767676; */
-
 }

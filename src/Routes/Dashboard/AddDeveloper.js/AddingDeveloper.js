@@ -26,6 +26,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Spinner from '../../../Components/Spinner/Spinner';
 import MultiSelect from "react-multi-select-component";
+import { FilePicker } from "react-file-picker";
+import { toast } from "react-toastify";
 
 const MenuProps = {
     getContentAnchorEl: () => null,
@@ -149,8 +151,8 @@ function AddingDeveloper(props) {
             })
     }
 
-    const inputFileChoosen = (e) => {
-        setResume(e.target.files[0])
+    const inputFileChoosen = (projectDoc) => {
+        setResume(projectDoc);
         setIsDisabled(false)
     }
 
@@ -347,11 +349,29 @@ function AddingDeveloper(props) {
                                         </FormControl> */}
                                     </div>
                                     <div className="developerDesignation_addingDeveloper">
-                                        <h4>Upload Resume</h4>
+                                        {/* <h4>Upload Resume</h4>
                                         <div className="resume_div">
                                             <input className="upload-box" onChange={inputFileChoosen} type="file" placeholder="E.g- Angular Developer" name="" id="fileInput" accept="application/pdf,application/msword,
                                     application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                                        </div> */}
+
+                                        <div className="uploadBlock_addingDeveloper">
+                                            <div className="fileUploadButton_addingDeveloper">
+                                                <FilePicker
+                                                    extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
+                                                    onChange={(fileObj) => inputFileChoosen(fileObj)}
+                                                    onError={errMsg => toast.error(errMsg)}
+                                                >
+                                                    <div>
+                                                        Upload
+                                                    </div>
+                                                </FilePicker>
+                                            </div>
+                                            <div className="uploadInfo_addingDeveloper">
+                                                <p>{`${resume?.name ?? "Please Upload a document"}`}</p>
+                                            </div>
                                         </div>
+
                                         {errors.developerResume && (<p className="error_paragraph experience">{errors.developerResume}</p>)}
                                     </div>
                                 </div>
