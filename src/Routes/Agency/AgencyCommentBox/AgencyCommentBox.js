@@ -252,7 +252,7 @@ const AgencyCommentBox = (props) => {
 
           <div className="price-section" style={{
             width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
-              ? '100%' :
+              ? '96%' :
               props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
                 ? '100%' : '45%'
           }}>
@@ -298,11 +298,7 @@ const AgencyCommentBox = (props) => {
             )}
           </div>
           {props.projectProposals[0].isReplySectionActive === true &&
-            <div style={{
-              position: 'absolute',
-              right: '-47px',
-              bottom: '23px'
-            }}>
+            <div className="sendIcon_clientCommentBox">
               <SendIcon onClick={() => replyApi()} />
             </div>
           }
@@ -321,19 +317,19 @@ const AgencyCommentBox = (props) => {
       <div className='action-wait'>
         <div className="postQuotation">
           {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-            <div className="detailsButtons md-m10">
-              <p>
-                <b>{`Client Negotiatiable Price: `}</b>
-                {props.projectProposals[0].clientNegotiablePrice}
-              </p>
+            <div className="detailsButtons md-m10 margin-0">
+              {/* <p> */}
+              <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+
+              {/* </p> */}
             </div>
           )}
           {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-            <div className="detailsButtons md-m10" >
-              <p>
-                <b>{`Agency Negotiatiable Price: `}</b>
-                {props.projectProposals[0].agencyNegotiablePrice}
-              </p>
+            <div className="detailsButtons md-m10 margin-0" >
+              {/* <p> */}
+              <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+
+              {/* </p> */}
             </div>
           )}
 

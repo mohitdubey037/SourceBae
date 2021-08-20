@@ -233,11 +233,7 @@ const ClientCommentBox = (props) => {
                   />
                 </div>
                 {props.projectProposals[0].isCommentSectionActive === true &&
-                  <div style={{
-                    position: 'absolute',
-                    right: '-40px',
-                    bottom: '23px'
-                  }}>
+                  <div className="sendIcon_clientCommentBox">
                     <SendIcon onClick={() => { replyApi() }} />
                   </div>
                 }
@@ -269,26 +265,23 @@ const ClientCommentBox = (props) => {
           <div className="postQuotation">
             {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
               <div className="detailsButtons margin-0">
-                <p>
-                  {`Agency Negotiatiable Price:${props.projectProposals[0].agencyNegotiablePrice}`}
-                </p>
+                <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+
               </div>
             )}
 
             {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
               <div className="detailsButtons margin-0">
-                <p>
-                  <b>{`Client Negotiatiable Price: `}</b>
-                  {props.projectProposals[0].clientNegotiablePrice}
-                </p>
+                <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+
               </div>
             )}
 
             {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
               <div className="detailsButtons margin-0">
-                  <a href={props.projectProposals[0].quotationLink} target="new">
-                    View Quotation
-                  </a>
+                <a href={props.projectProposals[0].quotationLink} target="new">
+                  View Quotation
+                </a>
               </div>
             )}
           </div>
