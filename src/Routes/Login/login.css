@@ -317,27 +317,22 @@ button {
   position: relative;
   cursor: pointer;
   width: 37%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .googleLogin p {
-  position: absolute;
-  top: 1rem;
-  left: 4.4rem;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
   letter-spacing: -0.338235px;
   text-transform: capitalize;
   color: #4786FE;
 }
 
 .googleLogin img {
-  position: absolute;
-  width: 11%;
-  left: 5%;
-  top: 1rem;
+     /* position: absolute; */
+     width: 13%;
+     /* left: 5%; */
+     /* top: 1rem; */
 }
 
 .toggleButton.login .MuiTypography-body1 {
