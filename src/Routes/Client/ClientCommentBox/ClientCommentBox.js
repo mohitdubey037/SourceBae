@@ -409,7 +409,7 @@ const ClientCommentBox = (props) => {
                 column
                 aria-label="position"
                 name="rejectReasonByClient"
-                onChange={handleChange}
+                onChange={onQuotationRejectionChange}
                 defaultValue="top">
 
                 <FormControlLabel

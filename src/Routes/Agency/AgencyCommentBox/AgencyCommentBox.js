@@ -170,6 +170,9 @@ const AgencyCommentBox = (props) => {
     console.log(apiData.rejectReasonByAgency);
   }, [apiData])
 
+  useEffect(() => {
+    console.log(rejectErrors);
+  },[rejectErrors])
 
   const replyApi = async () => {
     if (props.projectProposals[0].isReplySectionActive &&
@@ -585,7 +588,7 @@ const AgencyCommentBox = (props) => {
                 column
                 aria-label="position"
                 name="rejectReasonByAgency"
-                onChange={handleChange}
+                onChange={onQuotationRejectionChange}
                 defaultValue="top">
 
                 <FormControlLabel
