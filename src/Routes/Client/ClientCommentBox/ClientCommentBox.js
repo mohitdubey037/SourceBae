@@ -14,6 +14,11 @@ import TextField from '@material-ui/core/TextField';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import SendIcon from '@material-ui/icons/Send';
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
@@ -133,6 +138,10 @@ const ClientCommentBox = (props) => {
         })
     }
   }
+
+  useEffect(() => {
+    console.log(apiData.rejectReasonByClient);
+  }, [apiData])
 
   return (
     <>
@@ -319,10 +328,10 @@ const ClientCommentBox = (props) => {
           modal: "QuotationModal",
         }}
       >
-        <div className="QuotationModal">
+        <div className="QuotationModal acceptance-parent_clientCommentBox">
           <h2>Quotation Acceptance Form</h2>
           <div className="QuotationModalForm">
-            <div className="innerQuotation">
+            <div className="innerQuotation acceptance_clientCommentBox">
               <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Project Name</p>
@@ -364,7 +373,7 @@ const ClientCommentBox = (props) => {
                   <input type='date' name='projectExpectedEndDateByClient' onChange={onQuotationChange} />
                 </div>
               </div>
-              <div className="quotationTable">
+              <div className="quotationTable" style={{borderBottom: 'none'}}>
                 <div className="tableHeaderQuotation">
                   <p>Final Cost </p>
                 </div>
@@ -373,14 +382,14 @@ const ClientCommentBox = (props) => {
                 </div>
               </div>
 
-              <div className="quotationSubmitButton">
-                <div></div>
+              <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
                 <button style={{ textAlign: 'center' }} onClick={handleProjectAcceptance}>Submit</button>
               </div>
             </div>
           </div>
         </div>
       </Modal>
+      
       <Modal
         open={openRejectionModal}
         onClose={() => setOpenRejectionModal(false)}
@@ -390,32 +399,71 @@ const ClientCommentBox = (props) => {
           modal: "QuotationModal",
         }}
       >
-        <div className="quotationTable">
-          <div className="tableHeaderQuotation">
-            <p>Reason for Rejection</p>
+        <div className="rejection_modal_clientCommentBox">
+          <div className="reject-reason_label">
+            <h2>Reason for Rejection</h2>
           </div>
-          <div className="tableContentQuotation">
-            <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} />
-            {rejectErrors !== undefined && (
-              <p
-                style={{
-                  color: "red",
-                  fontWeight: "normal",
-                  fontSize: "14px",
-                }}
-              >
-                {rejectErrors}
-              </p>
-            )
+          <div className="radioButtons_with_textBox">
+            <FormControl component="fieldset">
+              <RadioGroup
+                column
+                aria-label="position"
+                name="rejectReasonByClient"
+                onChange={handleChange}
+                defaultValue="top">
+
+                <FormControlLabel
+                  value="No Matching Requirements"
+                  control={<Radio color="primary" />}
+                  label="Not Matching Requirement"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="Taking Too Much Time"
+                  control={<Radio color="primary" />}
+                  label="Taking Too Much Time"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="Cost is too high"
+                  control={<Radio color="primary" />}
+                  label="Cost is too high"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="Other"
+                  control={<Radio color="primary" />}
+                  label="Other"
+                  labelPlacement="start"
+                />
+              </RadioGroup>
+            </FormControl>
+            {apiData.rejectReasonByClient === "Other" &&
+              <div className="detailed_description_clientCommentBox">
+                <label>Detailed description:</label>
+                <textarea
+                  style={{ padding: '10px', marginLeft: '10px' }}
+                  placeholder="Please type your reason here"
+                  name="rejectReasonByClient"
+                  cols="30"
+                  rows="5"
+                  onChange={onQuotationRejectionChange} />
+                {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
+                {rejectErrors !== undefined && (
+                  <p className="error_productForm">
+                    {rejectErrors}
+                  </p>
+                )
+                }
+              </div>
             }
           </div>
         </div>
-        <button style={{
-          color: 'white',
-          background: 'burlywood',
-          padding: '2px',
-          textAlign: 'center'
-        }} onClick={() => handleProjectRejection()}>Yes</button>
+        <div className='submit-rejection' onClick={() => handleProjectRejection()}>
+          <div>
+            <p>Submit</p>
+          </div>
+        </div>
       </Modal>
     </>
 

@@ -20,7 +20,11 @@ import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import { event } from "react-ga";
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 let isRepliedToClient = false;
 
@@ -453,30 +457,80 @@ const AgencyCommentBox = (props) => {
         </div>
       </Modal>
 
-      <Modal open={openWithdrawModal} onClose={() => { setOpenWithdrawModal(false) }}
-        classNames={{ overlay: "customOverlayAgencyProduct", modal: "customModalAgencyProduct" }}
+      <Modal
+        open={openWithdrawModal}
+        onClose={() => { setOpenWithdrawModal(false) }}
+        classNames={{
+          overlay: "QuotationModalOverlay",
+          modal: "QuotationModal",
+        }}
         center>
-        <div className="quotationTable">
-          <div className="tableHeaderQuotation">
-            <p>Reason for Rejection</p>
+
+        <div className="rejection_modal_clientCommentBox">
+          <div className="reject-reason_label">
+            <h2>Reason for Rejection</h2>
           </div>
-          <div className="tableContentQuotation">
-            <input type='text' name='rejectReasonByAgency' onChange={onQuotationRejectionChange} />
-            {rejectErrors !== undefined && (
-              <p
-                style={{
-                  color: "red",
-                  fontWeight: "normal",
-                  fontSize: "14px",
-                }}
-              >
-                {rejectErrors}
-              </p>
-            )
+          <div className="radioButtons_with_textBox">
+            <FormControl component="fieldset">
+              <RadioGroup
+                column
+                aria-label="position"
+                name="rejectReasonByClient"
+                onChange={handleChange}
+                defaultValue="top">
+
+                <FormControlLabel
+                  value="No Matching Requirements"
+                  control={<Radio color="primary" />}
+                  label="Not Matching Requirement"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="Taking Too Much Time"
+                  control={<Radio color="primary" />}
+                  label="Taking Too Much Time"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="Cost is too low"
+                  control={<Radio color="primary" />}
+                  label="Cost is too Low"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="Other"
+                  control={<Radio color="primary" />}
+                  label="Other"
+                  labelPlacement="start"
+                />
+              </RadioGroup>
+            </FormControl>
+            {apiData.rejectReasonByClient === "Other" &&
+              <div className="detailed_description_clientCommentBox">
+                <label>Detailed description:</label>
+                <textarea
+                  style={{ padding: '10px', marginLeft: '10px' }}
+                  placeholder="Please type your reason here"
+                  name="rejectReasonByAgency"
+                  cols="30"
+                  rows="5"
+                  onChange={onQuotationRejectionChange} />
+                {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
+                {rejectErrors !== undefined && (
+                  <p className="error_productForm">
+                    {rejectErrors}
+                  </p>
+                )
+                }
+              </div>
             }
           </div>
         </div>
-        <button onClick={() => handleProjectRejection()}>Yes</button>
+        <div className='submit-rejection' onClick={() => handleProjectRejection()}>
+          <div>
+            <p>Submit</p>
+          </div>
+        </div>
       </Modal>
 
     </div>
