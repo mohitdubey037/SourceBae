@@ -95,6 +95,7 @@
 .quotationSubmit_clientCommentBox {
     display: flex !important;
     justify-content: center !important;
+    margin-top: 20px !important;
 }
 
 .acceptance-parent_clientCommentBox > h2 {
@@ -105,10 +106,6 @@
 
 .acceptance-parent_clientCommentBox > h2::after {
     margin-left: 90px;
-}
-
-.acceptance_clientCommentBox > div {
-    border-bottom: none !important;
 }
 
 .reject-reason_label h2::after {
@@ -144,5 +141,9 @@
 
 .rejection_modal_clientCommentBox .MuiRadio-root {
     margin-left: 110px !important;
+}
+
+.submit-rejection:hover {
+    cursor: pointer;
 }
 

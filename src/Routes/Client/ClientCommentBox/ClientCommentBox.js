@@ -331,7 +331,7 @@ const ClientCommentBox = (props) => {
         <div className="QuotationModal acceptance-parent_clientCommentBox">
           <h2>Quotation Acceptance Form</h2>
           <div className="QuotationModalForm">
-            <div className="innerQuotation acceptance_clientCommentBox">
+            <div className="innerQuotation">
               <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Project Name</p>
@@ -373,7 +373,7 @@ const ClientCommentBox = (props) => {
                   <input type='date' name='projectExpectedEndDateByClient' onChange={onQuotationChange} />
                 </div>
               </div>
-              <div className="quotationTable" style={{borderBottom: 'none'}}>
+              <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Final Cost </p>
                 </div>
@@ -389,7 +389,7 @@ const ClientCommentBox = (props) => {
           </div>
         </div>
       </Modal>
-      
+
       <Modal
         open={openRejectionModal}
         onClose={() => setOpenRejectionModal(false)}
@@ -450,9 +450,11 @@ const ClientCommentBox = (props) => {
                   onChange={onQuotationRejectionChange} />
                 {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
                 {rejectErrors !== undefined && (
-                  <p className="error_productForm">
-                    {rejectErrors}
-                  </p>
+                  <div>
+                    <p className="error_productForm">
+                      {rejectErrors}
+                    </p>
+                  </div>
                 )
                 }
               </div>

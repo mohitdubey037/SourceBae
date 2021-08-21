@@ -20,6 +20,7 @@ import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { event } from "react-ga";
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -163,6 +164,10 @@ const AgencyCommentBox = (props) => {
 
   useEffect(() => {
     console.log(apiData)
+  }, [apiData])
+
+  useEffect(() => {
+    console.log(apiData.rejectReasonByAgency);
   }, [apiData])
 
 
@@ -388,7 +393,85 @@ const AgencyCommentBox = (props) => {
             </div>
           )}
       </div>
-      <Modal open={open} onClose={() => { setOpen(false) }}
+
+
+      <Modal
+        open={open}
+        onClose={() => { setOpen(false) }}
+        center
+        classNames={{
+          overlay: "QuotationModalOverlay",
+          modal: "QuotationModal",
+        }}
+      >
+        <div className="QuotationModal acceptance-parent_clientCommentBox">
+          <h2>Quotation Acceptance Form</h2>
+          {/* <div className="QuotationModalForm"> */}
+          <div className="productModalForm">
+            <div className="quotationTable">
+              <div className="tableHeaderQuotation">
+                <p>Final Cost </p>
+              </div>
+              <div className="tableContentQuotation">
+                <p>{props.projectProposals[0].finalCostByClient}</p>
+              </div>
+            </div>
+
+            <div className="quotationTable">
+              <div className="tableHeaderQuotation">
+                <p>Project Start Date By Client</p>
+              </div>
+              <div className="tableContentQuotation">
+                <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
+              </div>
+            </div>
+
+            <div className="quotationTable">
+              <div className="tableHeaderQuotation">
+                <p>Project Delayed Start Date By Client</p>
+              </div>
+              <div className="tableContentQuotation">
+                <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
+              </div>
+            </div>
+
+            <div className="quotationTable">
+              <div className="tableHeaderQuotation">
+                <p>Project End Date By Client</p>
+              </div>
+              <div className="tableContentQuotation">
+                <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
+              </div>
+            </div>
+
+            <div className="quotationTable">
+              <div className="tableHeaderQuotation">
+                <p>Project Expected End Date By Client</p>
+              </div>
+              <div className="tableContentQuotation">
+                <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
+              </div>
+            </div>
+
+            <div className="quotationTable">
+              <div className="tableHeaderQuotation">
+                <p>Project Start Date By You</p>
+              </div>
+              <div className="tableContentQuotation">
+                <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
+              </div>
+            </div>
+            <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
+              <button style={{ textAlign: 'center' }} onClick={handleProjectAcceptance}>Submit</button>
+            </div>
+          </div>
+          {/* </div> */}
+        </div>
+      </Modal>
+
+
+
+      {/* <Modal open={open} onClose={() => { setOpen(false) }}
         classNames={{ overlay: "customOverlayAgencyProduct", modal: "customModalAgencyProduct" }}
         center
       >
@@ -455,17 +538,43 @@ const AgencyCommentBox = (props) => {
             Accept<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
           </p>
         </div>
-      </Modal>
+      </Modal> */}
+
+      {/* <Modal open={openWithdrawModal} onClose={() => { setOpenWithdrawModal(false) }}
+        classNames={{ overlay: "customOverlayAgencyProduct", modal: "customModalAgencyProduct" }}
+        center>
+        <div className="quotationTable">
+          <div className="tableHeaderQuotation">
+            <p>Reason for Rejection</p>
+          </div>
+          <div className="tableContentQuotation">
+            <input type='text' name='rejectReasonByAgency' onChange={onQuotationRejectionChange} />
+            {rejectErrors !== undefined && (
+              <p
+                style={{
+                  color: "red",
+                  fontWeight: "normal",
+                  fontSize: "14px",
+                }}
+              >
+                {rejectErrors}
+              </p>
+            )
+            }
+          </div>
+        </div>
+        <button onClick={() => handleProjectRejection()}>Yes</button>
+      </Modal> */}
 
       <Modal
         open={openWithdrawModal}
         onClose={() => { setOpenWithdrawModal(false) }}
+        center
         classNames={{
           overlay: "QuotationModalOverlay",
           modal: "QuotationModal",
         }}
-        center>
-
+      >
         <div className="rejection_modal_clientCommentBox">
           <div className="reject-reason_label">
             <h2>Reason for Rejection</h2>
@@ -475,7 +584,7 @@ const AgencyCommentBox = (props) => {
               <RadioGroup
                 column
                 aria-label="position"
-                name="rejectReasonByClient"
+                name="rejectReasonByAgency"
                 onChange={handleChange}
                 defaultValue="top">
 
@@ -494,7 +603,7 @@ const AgencyCommentBox = (props) => {
                 <FormControlLabel
                   value="Cost is too low"
                   control={<Radio color="primary" />}
-                  label="Cost is too Low"
+                  label="Cost is too low"
                   labelPlacement="start"
                 />
                 <FormControlLabel
@@ -505,7 +614,7 @@ const AgencyCommentBox = (props) => {
                 />
               </RadioGroup>
             </FormControl>
-            {apiData.rejectReasonByClient === "Other" &&
+            {apiData.rejectReasonByAgency === "Other" &&
               <div className="detailed_description_clientCommentBox">
                 <label>Detailed description:</label>
                 <textarea
@@ -517,9 +626,11 @@ const AgencyCommentBox = (props) => {
                   onChange={onQuotationRejectionChange} />
                 {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
                 {rejectErrors !== undefined && (
-                  <p className="error_productForm">
-                    {rejectErrors}
-                  </p>
+                  <div>
+                    <p className="error_productForm">
+                      {rejectErrors}
+                    </p>
+                  </div>
                 )
                 }
               </div>
