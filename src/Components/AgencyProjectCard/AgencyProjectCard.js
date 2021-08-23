@@ -63,7 +63,7 @@ function AgencyProjectCard({ key, ...props }) {
                             <td>Expert Categories</td>
                             <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
                             <td>Services</td>
-                            <td>{props?.projectServicesRequired?.map(a => <span style={{marginRight: '10px'}}>{a.serviceName}</span>)}</td>
+                            <td>{props?.projectServicesRequired?.map(a => <span>{a.serviceName}<br></br></span>)}</td>
                         </tr>
                     </thead>
                 </table>
