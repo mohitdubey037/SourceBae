@@ -16,9 +16,10 @@ import Spinner from "../../../../Components/Spinner/Spinner";
 
 function HireAgencyForm3(props) {
 
-    const Role = "client";
+    const Role = localStorage.getItem('role');
     let { projectId } = useParams();
-    projectId = helper.cleanParam(projectId)
+    projectId = helper.cleanParam(projectId);
+    const [errors, setErrors] = useState({})
 
     const [loading, setLoading] = useState(true);
     const [allServices, setAllServices] = useState([])
@@ -29,6 +30,10 @@ function HireAgencyForm3(props) {
         projectTechnologiesRequired: [],
         projectServicesRequired: []
     })
+
+    useEffect(() => {
+        console.log(allServices);
+    }, [allServices])
 
     // const [buttonStatus, setButtonStatus] = useState("Next");
 
@@ -95,6 +100,24 @@ function HireAgencyForm3(props) {
             })
     }
 
+    const validateInfo = () => {
+        const err = {}
+        console.log('hi')
+        if (apiData.projectServicesRequired.length === 0) {
+            err.projectServicesRequiredError = "Please Select a Service"
+            setErrors(err);
+            return false;
+        }
+        else if (apiData.projectTechnologiesRequired.length === 0) {
+            err.projectTechnologiesError = 'Please Select a Technology';
+            setErrors(err);
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+
     // const hireAgencyForm3Api = ()=>{
     //     setLoading(true)
     //         console.log(apiData);
@@ -118,22 +141,29 @@ function HireAgencyForm3(props) {
     }, [])
 
     const handleSubmit = () => {
-        setLoading(true)
         console.log(apiData);
-        instance.post(`/api/${Role}/projects/create`, apiData)
-            .then(function (response) {
-                console.log(response);
-                setLoading(false);
-                props.history.replace(`/agency-list:${projectId}`)
-            })
-            .catch(err => {
-                setLoading(false);
-            })
+        if (validateInfo()) {
+            setLoading(true)
+            console.log('handle submit api');
+            instance.post(`/api/${Role}/projects/create`, apiData)
+                .then(function (response) {
+                    console.log(response);
+                    setLoading(false);
+                    props.history.replace(`/agency-list:${projectId}`)
+                })
+                .catch(err => {
+                    setLoading(false);
+                })
+        }
     }
 
     useEffect(() => {
         console.log(allTechnologies)
-    }, [allTechnologies])
+    }, [allTechnologies]);
+
+    useEffect(() => {
+        console.log(errors);
+    }, [errors])
 
     useEffect(() => {
         setApiData({
@@ -185,6 +215,10 @@ function HireAgencyForm3(props) {
                                         :
                                         <p>Sorry No Data Found.</p>
                                     }
+                                    {errors.projectServicesRequiredError && (
+                                        <p className="error_hireAgencyForm2 error_hireAgencyForm3">
+                                            {errors.projectServicesRequiredError}
+                                        </p>)}
                                 </div>
                             </div>
 
@@ -215,6 +249,10 @@ function HireAgencyForm3(props) {
                                                 />
                                             </>
                                         ) : null}
+                                        {errors.projectTechnologiesError && (
+                                            <p className="error_hireAgencyForm2 error-select_hireAgencyForm2">
+                                                {errors.projectTechnologiesError}
+                                            </p>)}
                                     </div>
                                 </div>
                             </div>

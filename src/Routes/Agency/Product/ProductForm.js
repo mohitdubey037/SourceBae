@@ -173,7 +173,9 @@ function ProductForm(props) {
 
   const classes = useStyles();
 
-  const Role = "agency";
+  // const Role = "agency";
+  const Role = localStorage.getItem('role');
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -379,8 +381,6 @@ function ProductForm(props) {
 
     if (apiData.productFounderLinkedinProfiles.length > 0) {
       apiData.productFounderLinkedinProfiles.forEach((a, index) => {
-        console.log(apiData.productFounderLinkedinProfiles);
-        console.log(a, index);
         if (a === '') {
           err.productFounderLinkedinProfiles = `Linked in Url of product founder ${index + 1} is empty`
         }
@@ -396,7 +396,7 @@ function ProductForm(props) {
     if (file === null) {
       err.filePicked = "Please pick up a logo for the Product";
     }
-    setErrors(err);
+    setErrors(err);                 
     if (Object.keys(err).length === 0) return true;
     else return false;
   };
