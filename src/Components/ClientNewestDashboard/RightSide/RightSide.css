@@ -115,8 +115,7 @@
 }
 
 .content-rightBody {
-  min-height: 640px;
-  height: 0%;
+  min-height: 585px;
   min-width: 310px;
   background: #f9f9f9;
   mix-blend-mode: normal;
