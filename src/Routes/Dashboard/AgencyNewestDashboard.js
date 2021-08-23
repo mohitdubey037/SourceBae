@@ -248,18 +248,20 @@ function AgencyNewestDashboard(props) {
                                             allProjects?.projects?.map((value, index) => {
                                                 return (
                                                     <AgencyProjectCard
-                                                        props={props}
-                                                        id={value?._id}
+                                                        // props={props}
+                                                        // id={value?._id}
                                                         key={index}
-                                                        name={value.projectName}
-                                                        status={value?.projectCurrentStatus}
-                                                        budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost}
-                                                        creationDate={value?.createdAt}
-                                                        updatedAt={value?.updatedAt}
-                                                        domainName={value?.projectDomainId.domainName}
-                                                        projectType={value?.projectType}
-                                                        experties={value?.projectExpertiseRequired}
-                                                        services={value?.projectServicesRequired.map(a => a.serviceName)} />
+                                                        {...value}
+                                                        // name={value.projectName}
+                                                        // status={value?.projectCurrentStatus}
+                                                        // budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost}
+                                                        // creationDate={value?.createdAt}
+                                                        // updatedAt={value?.updatedAt}
+                                                        // domainName={value?.projectDomainId.domainName}
+                                                        // projectType={value?.projectType}
+                                                        // experties={value?.projectExpertiseRequired}
+                                                        // services={value?.projectServicesRequired.map(a => a.serviceName)}
+                                                         />
                                                 )
                                             })
                                         ) :

@@ -7,6 +7,8 @@ import proposalImage from '../../../assets/images/proposalImage.png';
 import './ClientCommentBox.css';
 import clsx from 'clsx';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { toast } from "react-toastify";
+
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,6 +36,7 @@ const ClientCommentBox = (props) => {
   const onCloseModal = () => setOpen(false);
   const [openRejectionModal, setOpenRejectionModal] = useState(false);
   const [rejectErrors, setRejectErrors] = useState('');
+  const [singleRejectError, setSingleRejectError] = useState('')
 
   const [quotationFormData, setQuotationFormData] = useState({
     agencyId: props?.agencyId || "",
@@ -120,6 +123,7 @@ const ClientCommentBox = (props) => {
   const checkErrors = () => {
     if (quotationRejectionForm.rejectReasonByClient === '' || quotationRejectionForm.rejectReasonByClient === undefined) {
       setRejectErrors("Field can't be empty");
+      toast.error('Field can"t be empty');
       return false;
     }
     else {
@@ -140,8 +144,8 @@ const ClientCommentBox = (props) => {
   }
 
   useEffect(() => {
-    console.log(apiData.rejectReasonByClient);
-  }, [apiData])
+    console.log(quotationRejectionForm.rejectReasonByClient);
+  }, [quotationRejectionForm])
 
   return (
     <>
@@ -438,7 +442,11 @@ const ClientCommentBox = (props) => {
                 />
               </RadioGroup>
             </FormControl>
-            {apiData.rejectReasonByClient === "Other" &&
+
+            {quotationRejectionForm.rejectReasonByClient !== "No Matching Requirements" &&
+              quotationRejectionForm.rejectReasonByClient !== "Taking Too Much Time" &&
+              quotationRejectionForm.rejectReasonByClient !== "Cost is too high"
+              &&
               <div className="detailed_description_clientCommentBox">
                 <label>Detailed description:</label>
                 <textarea
@@ -449,14 +457,6 @@ const ClientCommentBox = (props) => {
                   rows="5"
                   onChange={onQuotationRejectionChange} />
                 {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
-                {rejectErrors !== undefined && (
-                  <div>
-                    <p className="error_productForm">
-                      {rejectErrors}
-                    </p>
-                  </div>
-                )
-                }
               </div>
             }
           </div>

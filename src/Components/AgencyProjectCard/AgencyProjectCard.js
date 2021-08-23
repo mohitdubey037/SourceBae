@@ -2,20 +2,23 @@ import React from 'react';
 import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/MainVector.svg';
 import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector.svg';
 import CurrentStatusImage from '../../assets/images/Newestdashboard/Agency_Project_Card/CurrentStatus1.svg';
+import {useHistory} from "react-router-dom";
 import './AgencyProjectCard.css';
 
 import Moment from 'react-moment'
 
-function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, domainName, experties, services, props }) {
+function AgencyProjectCard({ key,props }) {
     // console.log(name, status, budget, creationDate,projectType)
+    console.log(key);
+    const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">
             <div className="user-project_heading_agencyNewestDashboard">
                 <div className="user-project_child_agencyNewestDashboard">
-                    <h5>{name}</h5>
+                    <h5>{props?.projectName}</h5>
                 </div>
                 <div onClick={() =>
-                    props.history.push(`/agency-project-details:${id}`)
+                    routerHistory.push(`/agency-project-details:${props._id}`)
                 } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
                     <h6>Show Details</h6>
                 </div>
@@ -27,7 +30,7 @@ function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, 
                         <img src={DateImage} alt="dateImage" />
                     </div>
                     <Moment format="D MMM YYYY" withTitle>
-                        <p className="creation_date" style={{ marginLeft: 10 }}>{creationDate}</p>
+                        <p className="creation_date" style={{ marginLeft: 10 }}>{props?.createdAt}</p>
                     </Moment>
                 </div>
                 <div className='matchedDate'>
@@ -35,14 +38,14 @@ function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, 
                         <img src={DateImage2} alt="dateImage2" />
                     </div>
                     <Moment format="D MMM YYYY" withTitle>
-                        <p className="creation_date" style={{ marginLeft: 10 }}>{updatedAt}</p>
+                        <p className="creation_date" style={{ marginLeft: 10 }}>{props.updatedAt}</p>
                     </Moment>
                 </div>
                 <div className='currentStatus'>
                     <div className="imageClass">
                         <img src={CurrentStatusImage} alt="CurrentStatus" />
                     </div>
-                    <p>{status}</p>
+                    <p>{props.projectCurrentStatus}</p>
                 </div>
             </div>
 
@@ -51,15 +54,15 @@ function AgencyProjectCard({ id, name, status, budget, creationDate, updatedAt, 
                     <thead>
                         <tr>
                             <td>Industry</td>
-                            <td>{domainName}</td>
+                            <td>{props?.projectDomainId?.domainName}</td>
                             <td>Final Budget</td>
-                            <td>${budget}</td>
+                            <td>${props?.projectFinalCost === undefined ? props?.projectProposalCost : props?.projectFinalCost}</td>
                         </tr>
                         <tr>
                             <td>Expert Categories</td>
-                            <td>{experties[0]?.expertiseName}</td>
+                            <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
                             <td>Services</td>
-                            <td>{services[0]?.serviceName}</td>
+                            <td>{props?.projectServicesRequired.map(a => a.serviceName)}</td>
                         </tr>
                     </thead>
                 </table>

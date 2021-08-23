@@ -94,6 +94,7 @@ const AgencyCommentBox = (props) => {
   const checkErrors = () => {
     if (quotationRejectionForm.rejectReasonByAgency === '' || quotationRejectionForm.rejectReasonByAgency === undefined) {
       setRejectErrors("Field can't be empty");
+      toast.error('Field can"t be empty');
       return false;
     }
     else {
@@ -257,10 +258,6 @@ const AgencyCommentBox = (props) => {
                 />
               </div>
             )}
-
-          {
-          }
-
           <div className="price-section" style={{
             width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
               ? '96%' :
@@ -620,7 +617,10 @@ const AgencyCommentBox = (props) => {
                 />
               </RadioGroup>
             </FormControl>
-            {apiData.rejectReasonByAgency === "Other" &&
+            {quotationRejectionForm.rejectReasonByAgency !== "No Matching Requirements" &&
+              quotationRejectionForm.rejectReasonByAgency !== "Taking Too Much Time" &&
+              quotationRejectionForm.rejectReasonByAgency !== "Cost is too low"
+              &&
               <div className="detailed_description_clientCommentBox">
                 <label>Detailed description:</label>
                 <textarea
@@ -631,14 +631,6 @@ const AgencyCommentBox = (props) => {
                   rows="5"
                   onChange={onQuotationRejectionChange} />
                 {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
-                {rejectErrors !== undefined && (
-                  <div>
-                    <p className="error_productForm">
-                      {rejectErrors}
-                    </p>
-                  </div>
-                )
-                }
               </div>
             }
           </div>
