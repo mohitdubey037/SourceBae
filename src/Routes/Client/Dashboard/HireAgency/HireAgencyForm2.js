@@ -325,7 +325,7 @@ function HireAgencyForm2(props) {
                       </>
                     </div>
                     {error.projectExpertiseRequiredError && (
-                      <p className="error_hireAgencyForm2">
+                      <p className="error_hireAgencyForm2 error-select_hireAgencyForm2">
                         {error.projectExpertiseRequiredError}
                       </p>)}
                   </div>

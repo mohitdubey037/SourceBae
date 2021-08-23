@@ -1,6 +1,6 @@
 .innerHigherAgencyForm1 {
     position: relative;
-    height: 875px;
+    height: 890px;
     width: 70%;
     display: flex;
     justify-content: space-between;
@@ -260,9 +260,16 @@
 
 .input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
     font: normal 600 22px 'Inter';
-    line-height: 150%;
     text-transform: capitalize;
 }
+
+.error_hireAgencyForm2.error_hireAgencyForm1 {
+    position: absolute;
+    bottom: 0;
+    font-size: 15px !important;
+    font-weight: normal !important;
+}
+
 
 .backArrow_hireAgencyForm3 {
     position: fixed;
@@ -303,8 +310,9 @@
     line-height: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 90px;
+    /* justify-content: space-between; */
+    height: 110px;
+    position: relative;
 }
 
 .understand_your_project {
@@ -330,36 +338,36 @@
     padding-left: 10px;
     background: #FFFFFF;
     border: 1px solid #407BFF;
-    box-sizing: border-box;
     border-radius: 8px;
+    margin-top: 0.5rem;
 }
 
 .descriptionProjectAgency textarea {
-    margin-top: 5px;
+    margin-top: 0.5rem;
     width: 100%;
-    height: 100%;
+    height: 12rem;
     padding: 10px;
     background: #FFFFFF;
     border: 1px solid #D1D3D4;
-    box-sizing: border-box;
     border-radius: 8px;
 }
 
 .descriptionProjectAgency {
-    margin-top: 4%;
     line-height: 1;
+    margin-top: 1rem;
     font-family: 'Inter';
     width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 240px;
+    /* justify-content: space-between; */
+    height: 263px;
+    position: relative;
 }
 
 .descriptionProjectAgency div {
     display: flex;
     justify-content: space-between;
-    margin-top: 1%;
+    margin-top: 0.1rem;
     align-items: center;
 }
 
@@ -368,18 +376,23 @@
 }
 
 .budgetSectionAreaAgency {
-    margin-top: 5%;
+    margin-top: 1rem;
     display: flex;
     font-family: 'Inters' !important;
     flex-direction: column;
 }
 
+.error_hireAgencyForm2.error-select_hireAgencyForm2 {
+    position: absolute;
+    left: 30px;
+}
+
 .numberOfDays {
-    margin-top: 4%;
+    margin-top: 1.9rem;
     font-family: 'Inter';
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 82px;
 }
 
@@ -400,6 +413,7 @@
     padding-left: 20px;
     height: 44px;
     position: relative;
+    margin-top: 0.5rem;
 }
 
 .daysInputAgency .upArrow {

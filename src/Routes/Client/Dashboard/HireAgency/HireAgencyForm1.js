@@ -190,7 +190,7 @@ const HireAgencyForm1 = (props) => {
                       maxLength="22"
                     />
                     {error.projectNameError && (
-                      <p className="error_hireAgencyForm2">
+                      <p className="error_hireAgencyForm2 error_hireAgencyForm1">
                         {error.projectNameError}
                       </p>
                     )}
@@ -213,7 +213,7 @@ const HireAgencyForm1 = (props) => {
                       <span>{words}/100</span>
                     </div>
                     {error.projectDescriptionError && (
-                      <p>
+                      <p className="error_hireAgencyForm2 error_hireAgencyForm1">
                         {error.projectDescriptionError}
                       </p>
                     )}
