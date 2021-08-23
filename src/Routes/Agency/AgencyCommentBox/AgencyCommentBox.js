@@ -172,7 +172,7 @@ const AgencyCommentBox = (props) => {
 
   useEffect(() => {
     console.log(rejectErrors);
-  },[rejectErrors])
+  }, [rejectErrors])
 
   const replyApi = async () => {
     if (props.projectProposals[0].isReplySectionActive &&
@@ -360,7 +360,7 @@ const AgencyCommentBox = (props) => {
               {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
                 ? ""
                 : "disabled"}`}> */}
-              <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '339px' }}>
+              <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '100%' }}>
                 <img src={proposalImage} alt="" />
               </div>
               {props.projectProposals[0].isProposalActionActive ?
@@ -383,15 +383,18 @@ const AgencyCommentBox = (props) => {
                   }
                 </div>
                 :
-                file === null
+                props.projectProposals[0].isAskedForQuotation
                   ?
-                  <div className="quotation_file_upload">
-                    <p>Please upload a file of quotation</p>
-                  </div>
+                  file === null ?
+                    <div className="quotation_file_upload">
+                      <p>Please upload a file of quotation</p>
+                    </div>
+                    :
+                    <div className="quotation_file_upload">
+                      <p>{file?.name}</p>
+                    </div>
                   :
-                  <div className="quotation_file_upload">
-                    <p>{file.name}</p>
-                  </div>
+                  null
               }
             </div>
           )}

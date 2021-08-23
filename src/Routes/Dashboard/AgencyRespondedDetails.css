@@ -99,13 +99,13 @@
   font-weight: bold;
 }
 
-.detailsButtons {
+/* .detailsButtons {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-right: 3rem;
   margin: 2rem 0;
-}
+} */
 
 .postQuotation {
   display: flex;
