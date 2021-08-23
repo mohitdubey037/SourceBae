@@ -2,14 +2,15 @@ import React from 'react';
 import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/MainVector.svg';
 import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector.svg';
 import CurrentStatusImage from '../../assets/images/Newestdashboard/Agency_Project_Card/CurrentStatus1.svg';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './AgencyProjectCard.css';
 
 import Moment from 'react-moment'
 
-function AgencyProjectCard({ key,props }) {
+function AgencyProjectCard({ key, ...props }) {
     // console.log(name, status, budget, creationDate,projectType)
     console.log(key);
+    console.log(props);
     const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">
@@ -18,7 +19,7 @@ function AgencyProjectCard({ key,props }) {
                     <h5>{props?.projectName}</h5>
                 </div>
                 <div onClick={() =>
-                    routerHistory.push(`/agency-project-details:${props._id}`)
+                    routerHistory.push(`/agency-project-details:${props?._id}`)
                 } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
                     <h6>Show Details</h6>
                 </div>
@@ -38,14 +39,14 @@ function AgencyProjectCard({ key,props }) {
                         <img src={DateImage2} alt="dateImage2" />
                     </div>
                     <Moment format="D MMM YYYY" withTitle>
-                        <p className="creation_date" style={{ marginLeft: 10 }}>{props.updatedAt}</p>
+                        <p className="creation_date" style={{ marginLeft: 10 }}>{props?.updatedAt}</p>
                     </Moment>
                 </div>
                 <div className='currentStatus'>
                     <div className="imageClass">
                         <img src={CurrentStatusImage} alt="CurrentStatus" />
                     </div>
-                    <p>{props.projectCurrentStatus}</p>
+                    <p>{props?.projectCurrentStatus}</p>
                 </div>
             </div>
 
@@ -62,7 +63,7 @@ function AgencyProjectCard({ key,props }) {
                             <td>Expert Categories</td>
                             <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
                             <td>Services</td>
-                            <td>{props?.projectServicesRequired.map(a => a.serviceName)}</td>
+                            <td>{props?.projectServicesRequired?.map(a => <span style={{marginRight: '10px'}}>{a.serviceName}</span>)}</td>
                         </tr>
                     </thead>
                 </table>
