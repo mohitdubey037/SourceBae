@@ -1,9 +1,4 @@
-.details-parent {
-    width: 90%;
-    margin-left: 10%;
-}
-
 .conditionalPosition {
     position: relative;
     z-index: -1;
-}
+  }

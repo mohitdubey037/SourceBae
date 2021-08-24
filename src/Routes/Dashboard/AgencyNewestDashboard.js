@@ -34,8 +34,12 @@ function AgencyNewestDashboard(props) {
     const [isUserEmailVerified, setUserEmailVerified] = useState(true);
     const [isUserPhoneVerified, setUserPhoneVerified] = useState(true);
     const [formRoute, setFormRoute] = useState("/");
+    const [visible, setVisible] = useState(false);
     const [openmodal, setOpenModal] = useState(false);
 
+    const notificationVisible = (status) => {
+        setVisible(status);
+    };
 
     const onOpenModal = () => setOpenModal(true);
 
@@ -174,7 +178,7 @@ function AgencyNewestDashboard(props) {
                 </div>
             </div>
             <div className="dashboard-container">
-                <Sidebar />
+                <Sidebar notificationVisible={(status) => notificationVisible(status)} />
 
                 <div className="container-body margin-0">
                     <div className="content-body">

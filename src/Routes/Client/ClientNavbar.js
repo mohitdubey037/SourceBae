@@ -78,7 +78,6 @@ const ClientNavbar = ({ isVisible }, props) => {
     const [anchorEl, setAnchorEl] = useState(false);
     const [anchr, setanchr] = useState(false);
 
-
     const onOpenModal = () => setOpenModal(true);
     const onCloseModal = () => setOpenModal(false);
 
