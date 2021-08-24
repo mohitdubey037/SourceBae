@@ -19,35 +19,42 @@ import AgencyImage from "../../assets/images/Newestdashboard/Register/AgencyImag
 
 const AntSwitch = withStyles((theme) => ({
     root: {
-        width: 78,
-        height: 26,
+        width: 80,
+        height: 32,
         padding: 0,
-        borderColor: '#fff',
+        // display: 'flex',
+        borderColor: "#fff",
     },
     switchBase: {
         padding: 2,
-        color: '#02044a',
-        '&$checked': {
-            transform: 'translateX(52px)',
-            color: '#7CB9E8',
-            '& + $track': {
-                opacity: 1,
-                backgroundColor: '#02044a',
-                borderColor: '#EBF5FB',
+        // color: "#02044a",
+        top: -2,
+        left: -2,
+        color: '#4786FE',
+        "&$checked": {
+            transform: "translateX(39px)",
+            // color: "#7CB9E8",
+            color: '#4786FE',
+            "& + $track": {
+                opacity: 0.82,
+                backgroundColor: "white",
             },
-            boder: '1px solid #EBF5FB'
+            border: "1px solid #EBF5FB",
         },
     },
     thumb: {
-        width: 22,
-        height: 22,
-        boxShadow: 'none',
+        width: 39,
+        height: 32,
+        boxShadow: "none",
+        borderRadius: '46%'
     },
     track: {
         // border: `1px solid #02044a`,
         borderRadius: 78 / 2,
         opacity: 1,
-        backgroundColor: '#7CB9E8',
+        backgroundColor: "white",
+        opacity: 0.82,
+        border: '4px solid #BDD4FF',
     },
     checked: {},
 }))(Switch);
@@ -600,6 +607,8 @@ const Register = (props) => {
                                     </div>
                                     <div className="already_next_register">
                                         <div className="next_Register" onClick={() => toggleForms('next')}>
+                                            <div className="blur_submit_register">
+                                            </div>
                                             <p>NEXT</p>
                                         </div>
                                         <div className="signUpOption">
@@ -738,6 +747,9 @@ const Register = (props) => {
 
                                     <div className="already_next_register">
                                         <div className="next_Register" onClick={() => handleSubmit(role, signupForm)}>
+                                            <div className="blur_submit_register">
+
+                                            </div>
                                             <p>Submit</p>
                                         </div>
                                         <div className="signUpOption">
