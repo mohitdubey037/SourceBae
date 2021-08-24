@@ -85,8 +85,8 @@
 }
 
 .respondCardPoints {
-  margin: 5% 0;
-  height: 30px;
+  /* margin: 5% 0; */
+  /* height: 30px; */
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -94,10 +94,16 @@
 }
 
 .respondCardPoints ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 1.5rem;
+}
+
+/* .respondCardPoints ul {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
+} */
 
 .respondCardPoints ul li {
   font-family: 'Open Sans', sans-serif;
@@ -112,7 +118,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dashed #ddd;
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
 }
 
 .respondCardTable div p {
@@ -131,11 +137,11 @@
 }
 
 .respondedCardButton {
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  right: 23px;
-  bottom: 23px;
+      /* display: flex; */
+    /* justify-content: flex-end; */
+    position: absolute;
+    right: 23px;
+    bottom: 10px;
 }
 
 

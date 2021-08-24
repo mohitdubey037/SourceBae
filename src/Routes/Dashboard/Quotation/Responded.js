@@ -71,7 +71,7 @@ function Responded(props) {
                                                 </div>
                                             </div>
                                             <div className="respondCardDescription">
-                                                <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 100)}...`}</p>
+                                                <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 80)}...`}</p>
                                             </div>
                                             <div className="respondCardPoints">
                                                 <ul>

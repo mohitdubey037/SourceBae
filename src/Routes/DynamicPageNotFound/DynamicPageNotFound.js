@@ -24,7 +24,7 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         alignItems: 'center',
         height: '90vh',
-        fontFamily: 'Open Sans, sans-serif',
+        fontFamily: 'Open Sans',
         fontWeight: '900'
     },
     paragraphStyling: {

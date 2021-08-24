@@ -80,7 +80,6 @@ function Received(props) {
                                                     return (
                                                         <>
                                                             <li>{p.serviceName}</li>
-
                                                         </>
                                                     )
                                                 })}
