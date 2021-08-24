@@ -315,15 +315,39 @@ button {
   align-items: center;
 }
 
-.button_action_login .submit_login:hover, .button_action_login .submit_login:focus, .button_action_login .submit_login:active {
+.button_action_login .submit_login {
+  position: relative;
   background: #4786FE;
   color: #fff;
+  font-size: 22px;
 }
 
-.button_action_login .forgot-password_login:hover, .button_action_login .forgot-password_login:focus, .button_action_login .forgot-password_login:active {
+.blur_submit_login {
+  position: absolute;
+  bottom: -10px;
+  background: #0058FF;
+  filter: blur(7px);
+  border-radius: 6px;
+  height: 20px;
+  width: 167px;
+}
+
+.button_action_login .submit_login:hover{
+  cursor: pointer;
+  background: #3477f1fd;
+}
+
+/* .button_action_login .forgot-password_login:hover, .button_action_login .forgot-password_login:focus, .button_action_login .forgot-password_login:active {
   background: #4786FE;
   color: #fff;
+} */
+
+.forgot-password_login:hover {
+  background-color: rgba(13, 110, 253, 0.04);
+  cursor: pointer;
+  /* background-color: transparent; */
 }
+
 
 .loginForm span {
   text-align: center;

@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
 import loginImage from '../../assets/images/Newestdashboard/Login/LoginBlue.png'
 import axios from "axios";
+import PersonIcon from '@material-ui/icons/Person';
 
 import google from "../../assets/images/Logo/google.png";
 import {
@@ -76,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
         // color: textDark,
         fontSize: "17px",
         padding: `${theme.spacing(1.5)}px ${theme.spacing(1)}px`,
+        paddingLeft: '1rem',
         borderRadius: "8px",
         border: "1.4px solid",
         boxShadow: "1px 2px 20px rgba(169,198,217,0.29457423) ",
@@ -86,7 +88,13 @@ const useStyles = makeStyles((theme) => ({
     passwordEye: {
         color: "rgba(131,153,167,0.9)",
         opacity: 0.9,
-    }
+    },
+    root: {
+        "& .MuiSvgIcon-root": {
+          fontSize: '2.5rem'
+        },
+      }
+
 }));
 
 const Login = (props) => {
@@ -286,9 +294,9 @@ const Login = (props) => {
                                         onChange={(e) => {
                                             handleChange(e);
                                         }}
-                                        endAdornment={
-                                            <InputAdornment>
-                                                <AccountCircleRoundedIcon fontSize="default" />
+                                        startAdornment={
+                                            <InputAdornment position="start">
+                                                <PersonIcon fontSize="large" />
                                             </InputAdornment>
                                         }
                                     />
@@ -310,19 +318,19 @@ const Login = (props) => {
                                         onChange={(e) => {
                                             handleChange(e);
                                         }}
-                                        endAdornment={
+                                        startAdornment={
                                             hidePassword ? (
-                                                <InputAdornment position="end">
+                                                <InputAdornment position="start">
                                                     <VisibilityOffTwoToneIcon
-                                                        fontSize="default"
+                                                        fontSize="large"
                                                         className={classes.passwordEye}
                                                         onClick={showPassword}
                                                     />
                                                 </InputAdornment>
                                             ) : (
-                                                <InputAdornment position="end">
+                                                <InputAdornment position="start">
                                                     <VisibilityTwoToneIcon
-                                                        fontSize="default"
+                                                        fontSize="large"
                                                         className={classes.passwordEye}
                                                         onClick={showPassword}
                                                     />
@@ -332,6 +340,9 @@ const Login = (props) => {
                                     />
                                     <div className="button_action_login">
                                         <div className="submit_login" onClick={() => logIn(role, form)} type="submit">
+                                            <div className="blur_submit_login">
+
+                                            </div>
                                             <p>
                                                 Login
                                             </p>
