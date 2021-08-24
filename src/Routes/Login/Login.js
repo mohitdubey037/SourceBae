@@ -29,36 +29,42 @@ const borderLight = "rgba(206,212,218, .993)";
 
 const AntSwitch = withStyles((theme) => ({
     root: {
-        width: 78,
-        height: 26,
+        width: 80,
+        height: 32,
         padding: 0,
         // display: 'flex',
         borderColor: "#fff",
     },
     switchBase: {
         padding: 2,
-        color: "#02044a",
+        // color: "#02044a",
+        top: -2,
+        left: -2,
+        color: '#4786FE',
         "&$checked": {
-            transform: "translateX(52px)",
-            color: "#7CB9E8",
+            transform: "translateX(39px)",
+            // color: "#7CB9E8",
+            color: '#4786FE',
             "& + $track": {
-                opacity: 1,
-                backgroundColor: "#02044a",
-                borderColor: "#EBF5FB",
+                opacity: 0.82,
+                backgroundColor: "white",
             },
-            boder: "1px solid #EBF5FB",
+            border: "1px solid #EBF5FB",
         },
     },
     thumb: {
-        width: 22,
-        height: 22,
+        width: 39,
+        height: 32,
         boxShadow: "none",
+        borderRadius: '46%'
     },
     track: {
         // border: `1px solid #02044a`,
         borderRadius: 78 / 2,
         opacity: 1,
-        backgroundColor: "#7CB9E8",
+        backgroundColor: "white",
+        opacity: 0.82,
+        border: '4px solid #BDD4FF',
     },
     checked: {},
 }))(Switch);
@@ -221,7 +227,7 @@ const Login = (props) => {
 
                             <div className="www_loginIllustrator">
                                 <div className="white-color_loginIllustrator"></div>
-                                <a style={{color: 'blue'}}>www.sourceBae.com</a>
+                                <a style={{ color: 'blue' }}>www.sourceBae.com</a>
                             </div>
                         </div>
                         <div className="loginContent">
@@ -325,12 +331,16 @@ const Login = (props) => {
                                         }
                                     />
                                     <div className="button_action_login">
-                                        <button className="submit_login" onClick={() => logIn(role, form)} type="submit">
-                                            Login
-                                        </button>
-                                        <button className="forgot-password_login" onClick={() => props.history.push('/enter-email')} type="submit">
-                                            Forgot Password
-                                        </button>
+                                        <div className="submit_login" onClick={() => logIn(role, form)} type="submit">
+                                            <p>
+                                                Login
+                                            </p>
+                                        </div>
+                                        <div className="forgot-password_login" onClick={() => props.history.push('/enter-email')}>
+                                            <p>
+                                                Forgot Password
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
