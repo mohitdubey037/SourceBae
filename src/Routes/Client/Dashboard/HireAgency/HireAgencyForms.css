@@ -80,7 +80,7 @@
 }
 
 .steps_hireAgencyForm>div>div>p, .steps_hireAgencyForm2>div>div>p, .steps_hireAgencyForm3>div>div>p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 21.4118px;
@@ -116,7 +116,7 @@
 }
 
 .keep_the_project_name p, .write_about_your_project p, .in_case_you_think p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -238,14 +238,14 @@
     top: 4px;
     letter-spacing: 1px;
     border-radius: 10px;
-    font: normal 600 42px 'Inter';
+    font: normal 600 42px 'Open Sans', sans-serif;
     line-height: 51px;
     text-transform: capitalize;
     color: #000000;
 }
 
 .stepCheck span {
-    font: normal 600 42px 'Inter';
+    font: normal 600 42px 'Open Sans', sans-serif;
     line-height: 51px;
     text-transform: capitalize;
     color: #02044A;
@@ -257,13 +257,13 @@
 }
 
 .projectNameAgency input {
-    font: normal 500 14px 'Inter';
+    font: normal 500 14px 'Open Sans', sans-serif;
     line-height: 150%;
     text-transform: capitalize;
 }
 
 .input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
-    font: normal 600 22px 'Inter';
+    font: normal 600 22px 'Open Sans', sans-serif;
     text-transform: capitalize;
 }
 
@@ -310,7 +310,7 @@
 
 .projectNameAgency {
     margin-top: 4%;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     line-height: 1;
     display: flex;
     flex-direction: column;
@@ -320,7 +320,7 @@
 }
 
 .understand_your_project {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 33px;
@@ -359,7 +359,7 @@
 .descriptionProjectAgency {
     line-height: 1;
     margin-top: 1rem;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -382,7 +382,7 @@
 .budgetSectionAreaAgency {
     margin-top: 1rem;
     display: flex;
-    font-family: 'Inters' !important;
+    font-family: 'Open Sans', sans-serif !important;
     flex-direction: column;
 }
 
@@ -393,7 +393,7 @@
 
 .numberOfDays {
     margin-top: 1.9rem;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
@@ -401,7 +401,7 @@
 }
 
 .budgetSectionAreaAgency .MuiTypography-root {
-    font: normal 300 14px 'Inter' !important;
+    font: normal 300 14px 'Open Sans', sans-serif !important;
     line-height: 17px !important;
     text-transform: capitalize !important;
     color: black !important
@@ -486,7 +486,7 @@
 }
 
 .cards_hireAgencyForm1 p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 17px;
@@ -497,7 +497,7 @@
 }
 
 .points-to-remember_hireAgencyForm1>h4 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
@@ -520,7 +520,7 @@
     outline: none;
     border: none;
     background-color: #26AFFF;
-    font: bold 1.2rem 'Inter';
+    font: bold 1.2rem 'Open Sans', sans-serif;
 }
 
 /* Hire Agency Form 2 */
@@ -574,7 +574,7 @@
 }
 
 .domainsFields .domainHeading {
-    font: bold 1.3rem 'Inter'
+    font: bold 1.3rem 'Open Sans', sans-serif
 }
 
 .domainFieldsCard div img {
@@ -584,7 +584,7 @@
 
 .domainFieldsCard div p {
     font-display: initial;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: 10px;
     font-weight: bold;
 }
@@ -594,7 +594,7 @@
 }
 
 .domainBudget p {
-    font: bold 1.3rem 'Inter';
+    font: bold 1.3rem 'Open Sans', sans-serif;
 }
 
 .domainBudgetOptions {
@@ -609,7 +609,7 @@
 }
 
 .serivcesHireAgency .servicesAgencyHeading {
-    font: normal 600 22px 'Inter';
+    font: normal 600 22px 'Open Sans', sans-serif;
     line-height: 150%;
     text-transform: capitalize;
     margin-bottom: 4%;
@@ -651,7 +651,7 @@
 .servicesCardsHireAgency div p {
     margin-top: 10px;
     user-select: none;
-    font: normal 500 18px 'Inter';
+    font: normal 500 18px 'Open Sans', sans-serif;
     line-height: 150%;
     text-transform: capitalize;
 }
@@ -693,7 +693,7 @@
 }
 
 .UIUXServices {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: -20px;
     padding-top: 0
 }
@@ -705,7 +705,7 @@
 
 .serviceSelectionInput {
     margin-top: 10%;
-    font-family: "Inter";
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 25px;
@@ -735,7 +735,7 @@
 }
 
 .monthlyBudget p {
-    font: bold 1.2rem 'Inter';
+    font: bold 1.2rem 'Open Sans', sans-serif;
 }
 
 .innerHireAgencyForm3 {
@@ -782,7 +782,7 @@
 }
 
 .domainsFields .domainHeading {
-    font: bold 1.3rem 'Inter';
+    font: bold 1.3rem 'Open Sans', sans-serif;
 }
 
 .domainFieldsCard div {
@@ -806,7 +806,7 @@
 
 .domainFieldsCard div p {
     font-display: initial;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: 10px;
     font-weight: bold;
 }
@@ -816,7 +816,7 @@
 }
 
 .domainBudget p {
-    font: bold 1.3rem 'Inter';
+    font: bold 1.3rem 'Open Sans', sans-serif;
 }
 
 .HireAgencyForm3Heading {
@@ -825,7 +825,7 @@
 }
 
 .HireAgencyForm3Heading h2 {
-    font: normal 600 42px 'Inter';
+    font: normal 600 42px 'Open Sans', sans-serif;
     line-height: 51px;
     text-transform: capitalize;
     color: #02044A;
@@ -839,7 +839,7 @@
 }
 
 .serivcesHireAgency .servicesAgencyHeadingForm3 {
-    font: normal 600 22px 'Inter';
+    font: normal 600 22px 'Open Sans', sans-serif;
     line-height: 150%;
     text-transform: capitalize;
     color: #3A3A3A;
@@ -875,7 +875,7 @@
 
 .servicesCardsAgency div p {
     font-display: initial;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: 10px;
     font-weight: bold;
     user-select: none;
@@ -890,7 +890,7 @@
 
 .serviceFieldsOptions .uiuxtext {
     /* margin-left: 38px; */
-    font: bold 1.2rem 'Inter';
+    font: bold 1.2rem 'Open Sans', sans-serif;
     text-align: center;
 }
 
@@ -904,7 +904,7 @@
 }
 
 .monthlyBudget p {
-    font: normal 600 22px 'Inter';
+    font: normal 600 22px 'Open Sans', sans-serif;
     line-height: 27px;
     text-transform: capitalize;
     color: #3A3A3A;
@@ -945,7 +945,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font: normal 600 14px 'Inter';
+    font: normal 600 14px 'Open Sans', sans-serif;
     line-height: 17px;
     text-align: center;
     letter-spacing: 0.4px;

@@ -43,7 +43,7 @@
 }
 
 .hireDeveloperFormInfo h2 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
   font-style: normal;
   font-weight: 600;
@@ -63,7 +63,7 @@
 }
 
 .hireDeveloperFormInfo p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -91,7 +91,7 @@
 }
 
 .hireDeveloperForm .resourceNumber ul, .hireDeveloperForm .skillsRequiredDeveloper ul, .hireDeveloperForm .averageExperience ul, .hireDeveloperForm .developerExperienceRequired ul, .hireDeveloperForm .preferredBillingMode ul, .hireDeveloperForm .averageBudget ul, .hireDeveloperForm .startPeriod ul, .hireDeveloperForm .contractPeriod ul {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
@@ -137,7 +137,7 @@
 }
 
 .radio-description {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   /* font-weight: 600; */
   font-size: 14px;
@@ -278,7 +278,7 @@
 }
 
 .dropdown-heading-value {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -295,14 +295,14 @@
 
 .item-renderer span {
   font-size: 1.2rem !important;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   white-space: nowrap !important;
 }
 
 .resourceNumber input {
   margin-left: 30px;
   width: 60%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -350,7 +350,7 @@
 }
 
 .billingButton h6 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   transform: translateY(5px);
   font-size: 1.2rem;
   font-weight: bold;
@@ -366,7 +366,7 @@
 }
 
 .contractPeriod select {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   /* font-weight: 600; */
   font-size: 16px;
@@ -409,7 +409,7 @@
   width: 11%;
   background: #eaf2ff;
   border-radius: 4px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

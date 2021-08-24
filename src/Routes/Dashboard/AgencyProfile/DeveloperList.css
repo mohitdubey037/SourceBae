@@ -62,20 +62,20 @@
 }
 
 .developerName h2 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   color: #02044a;
 }
 
 .developerName p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #999;
   font-size: 0.9rem;
 }
 
 .developerExp {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   line-height: 0.1;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .developerTech h6 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #3a3a3a;
   margin-bottom: 3.2%;
   font-weight: 600;
@@ -112,7 +112,7 @@
   border-radius: 10px;
   background-color: #eaffad;
   color: #000;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   margin-right: 10px;
   font-size: 0.8rem;
 }
@@ -123,13 +123,13 @@
 }
 
 .developerBudget p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #999;
 }
 
 .developerBudget h6 {
   font-weight: bold;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .developerResume button {
@@ -137,7 +137,7 @@
   border-radius: 4px;
   background-color: #eaf2ff;
   color: #000;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   outline: none;

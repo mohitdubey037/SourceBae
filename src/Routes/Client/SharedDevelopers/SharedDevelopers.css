@@ -80,7 +80,7 @@
 }
 
 .name_circle>div>p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
@@ -126,7 +126,7 @@
 }
 
 .no_border h3 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
@@ -135,7 +135,7 @@
 
 .view-resume_child {
   text-decoration: none;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -196,7 +196,7 @@
 .show-more_sharedDeveloper {
   position: absolute;
   right: 27px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;

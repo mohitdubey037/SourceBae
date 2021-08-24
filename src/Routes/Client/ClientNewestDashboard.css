@@ -45,7 +45,7 @@
 }
 
 .graphic-illustration-heading h6 {
-  font-family: 'inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
@@ -67,7 +67,7 @@
 }
 
 .not_found.clientNewestDashboard p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 17.1875px;
@@ -103,7 +103,7 @@
   right: 63px;
   padding: 4px 9px;
   text-align: center;
-  font-family: 'inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -195,7 +195,7 @@
 }
 .allNotificationText p{
   font-size: 2.2rem;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   transform: translateY(5px);
 }
@@ -221,7 +221,7 @@
   padding-top: 3%;
 }
 .notificationPoint p{
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.9rem;
 }
 

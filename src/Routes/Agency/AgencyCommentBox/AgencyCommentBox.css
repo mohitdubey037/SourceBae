@@ -48,7 +48,7 @@
 }
 
 .chatBox b {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -83,7 +83,7 @@
 
 /* .commentParent .MuiOutlinedInput-inputAdornedEnd {
   font-size: 10px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   line-height: 17px;
@@ -149,7 +149,7 @@
 }
 
 .clientName h2 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
 }
 
@@ -204,7 +204,7 @@
 }
 
 .innerBtnInfoDiv p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -217,7 +217,7 @@
   background-color: #5cb85c;
   border: 1px solid #5cb85c;
   color: #fff;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
@@ -230,7 +230,7 @@
   background-color: #02044a;
   outline: none;
   border-radius: 999px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   color: #fff;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
@@ -338,7 +338,7 @@
     width: 50%;
   }
   .clientName h2 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
   }
   .detailsButtons {
@@ -379,7 +379,7 @@
     margin-right: 20px;
   }
   .innerBtnInfoDiv p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     font-size: 1.1rem;
   }
@@ -454,12 +454,12 @@
 }
 
 .respondDescription h2 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
 }
 
 .respondDescription p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   width: 80%;
   margin-top: 1%;
@@ -511,7 +511,7 @@
 } */
 
 .innerResponseCard div p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   margin-top: 4%;
   font-weight: 500;
   font-size: 1rem;
@@ -519,7 +519,7 @@
 
 .innerResponseCard div p:nth-child(1) {
   color: #000;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -528,7 +528,7 @@
 
 .innerResponseCard div p:nth-child(2) {
   color: #008e80;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -585,7 +585,7 @@
 }
 
 .briefHeading h2 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
@@ -593,7 +593,7 @@
   background-color: #02044a;
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #fff;
   font-weight: 600;
 }
@@ -607,13 +607,13 @@
 }
 
 .briefQuestions div h4 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #000;
   font-size: 1.3rem;
 }
 
 .briefQuestions div p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #484848;
   font-size: 1rem;
 }
@@ -630,12 +630,12 @@
     font-size: 1rem;
   }
   .briefQuestions div h4 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     color: #000;
     font-size: 1rem;
   }
   .briefQuestions div p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     color: #484848;
     font-size: 0.8rem;
   }
@@ -676,7 +676,7 @@
   align-items: center;
   background-color: #e9f0ef;
   padding: 1rem 2rem;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   border-radius: 15px;
 }
 
@@ -702,7 +702,7 @@
 
 .agencyQuotationDesc {
   margin-top: 2%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   padding: 1rem 2rem;
 }
 
@@ -721,13 +721,13 @@
 }
 
 .agencyQuestions div h4 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 .agencyQuestions div ul {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #02044a;
   font-size: 1.1rem;
   margin-top: 20px;
@@ -762,7 +762,7 @@
     align-items: center;
     background-color: #e9f0ef;
     padding: 1rem 2rem;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     border-radius: 15px;
   }
   .agencyQuotationHeading h2 {
@@ -784,7 +784,7 @@
   }
   .agencyQuotationDesc {
     margin-top: 2%;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     padding: 1rem 2rem;
   }
   .agencyQuotationDesc h4 {

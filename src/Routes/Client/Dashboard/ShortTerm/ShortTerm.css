@@ -39,7 +39,7 @@
 }
 
 .innerShortTerm ul {
-  font: normal 600 22px 'Inter';
+  font: 600 22px 'Open Sans sans-serif';
   line-height: 150%;
   text-transform: capitalize;
   color: #3a3a3a;
@@ -55,14 +55,14 @@
 }
 
 .shortTermHeading h1 {
-  font: normal 600 42px 'Inter';
+  font: normal 600 42px 'Open Sans sans-serif';
   line-height: 51px;
   text-transform: capitalize;
   color: #02044a;
 }
 
 .shortTermHeading p {
-  font: normal 500 18px 'Inter';
+  font: normal 500 18px 'Open Sans sans-serif';
   line-height: 150%;
   text-transform: capitalize;
   color: #3a3a3a;
@@ -79,12 +79,12 @@
   text-transform: capitalize;
   color: #000000;
   font-size: 1.2rem;
-  font: normal 600 1.2rem 'Inter';
+  font: normal 600 1.2rem 'Open Sans sans-serif';
 }
 
 .shortTermProjectType {
   margin-top: 5%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,7 +133,7 @@
 
 .shortTermProjectType div h2 {
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -160,7 +160,7 @@
   height: 45px;
   padding-left: 10px;
   border: 1px solid #e9e9e9;
-  font: normal 500 14px 'Inter';
+  font: normal 500 14px 'Open Sans sans-serif';
   line-height: 150%;
   text-transform: capitalize;
   color: #000;
@@ -172,13 +172,13 @@
 
 .shortTermProjectDesc {
   margin-top: 5%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   position: relative;
   width: 80%;
 }
 
 .shortTermProjectDesc p {
-  font: normal 500 18px 'Inter';
+  font: normal 500 18px 'Open Sans sans-serif';
   line-height: 150%;
   /* or 27px */
   text-transform: capitalize;
@@ -195,7 +195,7 @@
   width: 79%;
   padding-left: 10px;
   border: 1px solid #000;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   padding-top: 10px;
 }
 
@@ -248,7 +248,7 @@
   text-align: center;
   padding: 0.3rem 0rem;
   cursor: pointer;
-  font: normal 600 18px 'Inter';
+  font: normal 600 18px 'Open Sans sans-serif';
   line-height: 150%;
   text-transform: capitalize;
   color: #407bff;
@@ -270,7 +270,7 @@
 }
 
 .uploadInfo p {
-  font: normal 500 14px 'Inter';
+  font: normal 500 14px 'Open Sans sans-serif';
   line-height: 150%;
   text-transform: capitalize;
   color: #a8a8a8;
@@ -285,14 +285,14 @@
 }
 
 .shortTermOptionSelect ul~div>div {
-  font: normal 500 14px 'Inter';
+  font: normal 500 14px 'Open Sans sans-serif';
   line-height: 150%;
   text-transform: capitalize;
   color: #706e6e;
 }
 
 .shortTermOptionSelect h6 {
-  font: bold 1.2rem 'Inter';
+  font: bold 1.2rem 'Open Sans sans-serif';
 }
 
 .howToPay {
@@ -354,14 +354,14 @@
 }
 
 .fixedContent h6 {
-  font: normal 500 14px 'Inter';
+  font: normal 500 14px 'Open Sans sans-serif';
   line-height: 17px;
   text-transform: capitalize;
   color: #3a3a3a;
 }
 
 .fixedContent p {
-  font: normal 500 8px 'Inter';
+  font: normal 500 8px 'Open Sans sans-serif';
   line-height: 10px;
   text-transform: capitalize;
   color: #a8a8a8;
@@ -392,7 +392,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font: normal 600 16px 'Inter';
+  font: normal 600 16px 'Open Sans sans-serif';
   letter-spacing: 0.4px;
   text-transform: capitalize;
   color: #3a3a3a;

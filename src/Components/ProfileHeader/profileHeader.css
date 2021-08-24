@@ -18,14 +18,14 @@
 
 .search__area > input {
     border: none;
-    font-family: 'Inter' , sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin-left: 1%;
     font-size: .9rem;
     outline: none;
 }
 
 .search__area > input::placeholder {
-    font-family: 'Inter' , sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: .9rem;
 }
 

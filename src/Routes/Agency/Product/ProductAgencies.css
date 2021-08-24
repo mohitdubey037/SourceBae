@@ -27,7 +27,7 @@
 }
 
 .officeVisitFilter_productAgencies p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     transform: translateY(10px);
     font-weight: bold;
     font-size: 1.1rem;
@@ -93,7 +93,7 @@
 }
 
 .productInformationHeading h5 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     font-weight: bold;
 }
@@ -158,7 +158,7 @@
 }
 
 .productAgencyContent span {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.8rem;
     color: #999;
     overflow: hidden;
@@ -167,7 +167,7 @@
 .productAgencyContent p {
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     overflow: hidden;
     font-weight: bold;
     margin-top: 4%;
@@ -249,7 +249,7 @@
 }
 
 .modalHeaderProduct h2 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.1rem;
     font-weight: bold;
     color: #3498DB;
@@ -261,14 +261,14 @@
 }
 
 .toText {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.8rem;
     font-weight: bold;
 }
 
 .productModalInput {
     margin-bottom: 3%;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
 }
 
 .productModalInput p {
@@ -311,7 +311,7 @@
 .connectedButton {
     margin-top: 4%;
     text-align: center;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     color: #3498DB;
     cursor: pointer;

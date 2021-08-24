@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     position: relative;
     z-index: 1;
 }
@@ -87,7 +87,7 @@
     font-weight: bold;
     margin-right: 2px;
     font-size: 0.9rem;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     border-radius: 8px;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .getAgencyLogo .logo-type_agencyForm1 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -129,7 +129,7 @@
 }
 
 .innerPersonelDetailsForm p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.15rem;
     font-style: normal;
     text-transform: capitalize;
@@ -137,7 +137,7 @@
 }
 
 .innerPersonelDetailsForm input {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.9rem;
 }
 
@@ -155,7 +155,7 @@
 }
 
 .agencyLogo_parent label {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     font-style: normal;
     text-transform: capitalize;
@@ -210,7 +210,7 @@
 .getAgencyLogo button {
     padding: 0.3rem 1rem;
     outline: none;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     color: #119dee;
     border: 1px solid #02044A;
     background: #FFFFFF;
@@ -222,7 +222,7 @@
 }
 
 .documentInformation .logo-type_agencyForm1, .panCardContent .logo-type_agencyForm1 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -236,7 +236,7 @@
 .pick_btn {
     padding: 0.3rem 1rem;
     outline: none;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     color: #119dee;
     border: 1px solid #02044A;
     background: #FFFFFF;
@@ -305,7 +305,7 @@
 
 .rightPersonelDetailsForm span {
     font-size: 1.7rem;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     margin-bottom: 7%;
     margin-top: 5%;
@@ -313,7 +313,7 @@
 
 .rightPersonelDetailsForm p {
     font-size: 1rem;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-bottom: 7%;
     text-align: center;
     color: #fad647;
@@ -335,7 +335,7 @@
     outline: none;
     border: none;
     color: #fff;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.2rem;
     display: flex;
     font-weight: bold;
@@ -382,7 +382,7 @@
 }
 
 .mainTechStackForm .MuiTypography-root {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -400,7 +400,7 @@
 } */
 
 .uiuxtext_agencyForm3 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: 0px;
     padding-top: 0;
 }
@@ -414,7 +414,7 @@
 }
 
 .domainsFields .domainHeading {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -441,7 +441,7 @@
 
 .domainFieldsCard div p {
     font-display: initial;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: 10px;
     font-weight: bold;
 }
@@ -451,7 +451,7 @@
 }
 
 .domainBudget p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -461,7 +461,7 @@
 }
 
 .serivcesAgency .servicesHeading {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -493,14 +493,14 @@
 
 .servicesCardsAgency div p {
     font-display: initial;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: 10px;
     font-weight: bold;
     user-select: none;
 }
 
 .mainTechStackForm .UIUXServices {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-top: 0px;
     padding-top: 0;
     outline: none;
@@ -518,7 +518,7 @@
 }
 
 .serviceFieldsOptions .uiuxtext.uiuxtext_agencyForm3 {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     margin-left: 10px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -567,7 +567,7 @@
 }
 
 .monthlyBudget p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -613,13 +613,13 @@
 }
 
 .documentDetails p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
 .documentDetails span {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.9rem;
     margin-bottom: 5%;
     font-weight: bold;
@@ -656,7 +656,7 @@
     border-radius: 999px;
     outline: none;
     border: none;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     background-color: white;
     font-weight: bold;
     border: 1px solid #02044A;
@@ -675,7 +675,7 @@
 }
 
 .panDetails p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
 }
@@ -684,7 +684,7 @@
     width: 100%;
     height: 40px;
     padding-left: 10px;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     border: 1px solid #ebebeb;
 }
 
@@ -730,7 +730,7 @@
 .miscellaneousArea p {
     color: #fff;
     margin: 5%;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 3rem;
 }
@@ -770,7 +770,7 @@
 }
 
 .socialInputs div p {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -787,7 +787,7 @@
     width: 65%;
     height: 45px;
     padding-left: 10px;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     border: 1px solid #ebebeb;
 }
@@ -844,7 +844,7 @@
     padding: 0.3rem 1rem;
     background-color: #fad647;
     border-radius: 999px;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.8rem;
     cursor: pointer;
     font-weight: bold;

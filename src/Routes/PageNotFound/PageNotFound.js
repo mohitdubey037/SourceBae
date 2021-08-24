@@ -23,7 +23,7 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         alignItems: 'center',
         height: '90vh',
-        fontFamily: 'Inter',
+        fontFamily: 'Open Sans',
         fontWeight: '900'
     },
     paragraphStyling: {

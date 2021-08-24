@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         minWidth: '90%',
         backgroundColor: '#f2f2f2',
-        fontFamily: 'Inter'
+        fontFamily: 'Open Sans',
     },
 }));
 

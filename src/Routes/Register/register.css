@@ -6,7 +6,7 @@
 
 .form__area {
   background: #ffff;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   width: 87%;
   border-radius: 8px;
   position: absolute;
@@ -54,7 +54,7 @@
   position: absolute;
   top: 10px;
   right: 13px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -90,7 +90,8 @@
 }
 
 .toggleButton.register .MuiTypography-body1 {
-  font-family: 'Inter' !important;
+  /* font-family: 'Inter' !important; */
+  font-family: 'Open Sans', sans-serif !important;
   font-style: normal !important;
   font-weight: 500 !important;
   font-size: 18px !important;
@@ -105,7 +106,7 @@
 }
 
 .form__title {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -137,7 +138,7 @@
   background: #02044a;
   color: WHITE;
   height: 60px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
   width: 100%;
   border-radius: 8px;
@@ -176,7 +177,7 @@
 }
 
 .input_with_error label {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -249,7 +250,7 @@
 }
 
 .existing_accountText>p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

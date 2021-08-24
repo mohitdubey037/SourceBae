@@ -53,7 +53,7 @@
 }
 
 .respondCardHeader h4 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .dateCreated div p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: bold;
 }
@@ -79,7 +79,7 @@
 }
 
 .respondCardDescription p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.8rem;
   color: #b4b4b4;
 }
@@ -100,7 +100,7 @@
 }
 
 .respondCardPoints ul li {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   margin-right: 11%;
@@ -116,7 +116,7 @@
 }
 
 .respondCardTable div p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   margin-top: 5%;
 }
 
@@ -145,7 +145,7 @@
   font-size: 0.8rem;
   padding: 0.2rem 0.8rem;
   border-radius: 0px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #000;
   font-weight: 600;
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
@@ -191,7 +191,7 @@
 .innerBackBtn div {
   display: flex;
   align-items: center;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   cursor: pointer;
   border-bottom: 1px solid #000;
 }

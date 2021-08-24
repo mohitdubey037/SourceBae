@@ -37,11 +37,11 @@
   font-size: 2rem;
   /* font-family: 'Fredoka One', cursive; */
   font-weight: bold;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .innerprojectDetailsInfo span {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #777;
 }
 
@@ -119,7 +119,7 @@
 }
 
 .agencyProfileInfo h6 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 6%;
@@ -138,13 +138,13 @@
   border-radius: 999px;
   background-color: #02044a;
   color: #fff;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.8rem;
   font-weight: bold;
 }
 
 .profileButton p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #3498db;
   font-weight: bold;
   cursor: pointer;
@@ -231,7 +231,7 @@
 }
 
 .agencyDescInfo p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.9rem;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -239,7 +239,7 @@
 
 .agencyAddressTeam, .agencyDescInfo :is(h6) {
   /* font-family: 'Fredoka One', cursive; */
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .agencyAddressTeam {
@@ -277,7 +277,7 @@
 
 /* .quotationShortlistButton div p {
   transform: translateY(6.5px);
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
 } */
 
@@ -330,7 +330,7 @@
 }
 
 .filterHeading div p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   color: #3498db;
 }
@@ -343,7 +343,7 @@
 }
 
 /* .locationFilter p, .officeVisitFilter p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   transform: translateY(10px);
   font-weight: bold;
   font-size: 1.1rem;
@@ -363,7 +363,7 @@
   height: 40px;
   padding-left: 10px;
   font-size: 0.9rem;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   border: 1px solid #999;
 } */
 
@@ -403,7 +403,7 @@
 }
 
 .officeVisitRadio span {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.1rem;
   user-select: none;
 }
@@ -419,7 +419,7 @@
 }
 
 .shortlistModal {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .shortlistModal h2 {
@@ -478,7 +478,7 @@
 }
 
 .QuotationModal {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .QuotationModal h2 {

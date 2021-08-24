@@ -105,7 +105,7 @@
 }
 
 .productTagLine p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #999;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .innerProductHeadlines p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #999;
 }
 
@@ -210,7 +210,7 @@
   transform: translateX(-19px);
   background-color: #2e86c1;
   color: #ffff;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   position: absolute;
   font-family: 'Fredoka One';
 } */
@@ -287,7 +287,7 @@
 }
 
 .one-orange_color p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 96px;
@@ -323,7 +323,7 @@
 
 .form1_Fields section {
   margin-bottom: 8%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .form1_Fields section p {
@@ -364,7 +364,7 @@
 
 .form2_Fields section {
   margin-bottom: 8%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .illustrationArea, .form2_Fields {
@@ -424,7 +424,7 @@
 
 .radioButton h6 {
   /* transform: translateY(4px); */
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.1rem;
   user-select: none;
 }
@@ -444,7 +444,7 @@
 
 .form3_Fields section {
   margin-bottom: 8%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .illustrationArea, .form3_Fields {
@@ -534,7 +534,7 @@
 
 .form4_Fields section {
   margin-bottom: 8%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .form_1 section input, .form_1 section textarea, .form_4 section input {
@@ -575,7 +575,7 @@
 
 .form5_Fields section {
   margin-bottom: 5%;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .form5_Fields section p {
@@ -626,7 +626,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   border-radius: 6px;
   margin-top: 16px;
 }
@@ -678,7 +678,7 @@
   padding: 1rem 1rem;
   background-color: #d6eaf8;
   color: #2e86c1;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

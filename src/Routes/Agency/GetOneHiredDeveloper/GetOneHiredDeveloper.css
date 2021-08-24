@@ -13,7 +13,7 @@
 }
 
 .moreAgencyHeading h3{
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -91,14 +91,14 @@
   width: 100%;
 }
 .moreAgencyIn h6{
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: bold;
 }
 .moreAgencyIn p{
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.8rem;
   overflow: hidden;
   text-overflow: ellipsis;

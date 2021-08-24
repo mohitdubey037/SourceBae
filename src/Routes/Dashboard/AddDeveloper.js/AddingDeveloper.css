@@ -87,14 +87,14 @@
 }
 
 .addingDeveloperHeadings h1 {
-  font-family: 'Josefin Sans';
+  font-family: 'Open Sans', sans-serif;
   color: #fff;
   font-size: 2.2rem;
   font-weight: bold;
 }
 
 .addingDeveloperHeadings p {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #fad647;
   font-size: 1rem;
 }
@@ -109,12 +109,12 @@
 
 .pointsToRemember h2 {
   color: #fff;
-  font-family: 'Josefin Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
 }
 
 .pointsToRemember ul li {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   color: #fad647;
   margin: 1.5rem 0;
 }
@@ -168,7 +168,7 @@
 }
 
 .upload-box {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -182,7 +182,7 @@
 }
 
 .developerDesignation_addingDeveloper ::-webkit-file-upload-button {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -199,7 +199,7 @@
 }
 
 .developerName_addingDeveloper>h4, .developerDesignation_addingDeveloper>h4 {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
@@ -213,7 +213,7 @@
   width: 73%;
   height: 40px;
   padding-left: 10px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -253,7 +253,7 @@
 }
 
 .uploadInfo_addingDeveloper p {
-  font: normal 500 14px 'Inter';
+  font: normal 500 14px 'Open Sans', sans-serif;
   line-height: 150%;
   text-transform: capitalize;
   color: #a8a8a8;
@@ -311,7 +311,7 @@
 }
 
 .mainAddingDeveloper .MuiTypography-body1 {
-  font-family: 'Inter' !important;
+  font-family: 'Open Sans', sans-serif !important;
   font-style: normal !important;
   font-weight: 600 !important;
   font-size: 14px !important;
@@ -326,13 +326,13 @@
 }
 
 .mainAddingDeveloper .MuiFormLabel-root {
-  font-family: 'Inter' !important;
+  font-family: 'Open Sans', sans-serif !important;
   font-style: normal !important;
   font-weight: 600 !important;
   font-size: 22px !important;
   line-height: 27px !important;
   text-transform: capitalize !important;
-  font-family: 'Inter' !important;
+  font-family: 'Open Sans', sans-serif !important;
   color: #3a3a3a !important;
 }
 
@@ -340,7 +340,7 @@
   width: 73%;
   height: 40px;
   padding-left: 2px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -374,7 +374,7 @@
   border-radius: 4px;
   width: 100px;
   height: 40px;
-  font: normal 600 14px 'Inter';
+  font: normal 600 14px 'Open Sans', sans-serif;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.4px;
@@ -448,7 +448,7 @@
   width: 90%;
   height: 50px;
   padding-left: 20px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.1rem;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -472,7 +472,7 @@
   height: 200px;
   padding-left: 20px;
   padding-top: 10px;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.1rem;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -488,16 +488,16 @@
   justify-content: space-between;
   align-items: center;
   color: #777;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .MuiButtonBase-root {
-  font-family: 'Inter' !important;
+  font-family: 'Open Sans', sans-serif !important;
   border: none !important;
 }
 
 .MuiInputBase-root {
-  font-family: 'Inter' !important;
+  font-family: 'Open Sans', sans-serif !important;
   /* border: none !important; */
   background-color: #fff !important;
 }
@@ -538,7 +538,7 @@
   background-color: #1566D8;
   border-radius: 6px;
   color: #fff;
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .error_paragraph {
@@ -580,7 +580,7 @@
 }
 
 .inputField2 .dropdown-container .dropdown-heading-value span {
-  font-family: 'Inter';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

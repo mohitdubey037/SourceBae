@@ -40,7 +40,7 @@
   }
   .signupHeading h1 {
     font-size: 1rem;
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
   }
   .signupHeading h1 span {
@@ -49,7 +49,7 @@
     color: #02044a;
   }
   .signupPara {
-    font-family: 'Inter';
+    font-family: 'Open Sans', sans-serif;
   }
   .signupPara p {
     color: #fff;
@@ -110,7 +110,7 @@
   .select__area {
     background: #e5e5e5;
     /* padding-left: 8%; */
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
@@ -120,7 +120,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.1rem;
     flex: 0.1;
     height: 100%;
