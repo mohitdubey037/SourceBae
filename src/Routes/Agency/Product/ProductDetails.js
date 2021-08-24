@@ -280,11 +280,11 @@ function ProductDetails(props) {
                         <div className="productDesc">
                           <div className="productDescImage">
                             <div className="imageContainer">
-                              <img src={value.productLogo} alt="" />
+                              <img src={value?.productLogo} alt="" />
                             </div>
                           </div>
                           <div className="productDescPara">
-                            <p>{value.productDescription}</p>
+                            <p>{value?.productDescription}</p>
                           </div>
                         </div>
                       </div>
@@ -292,7 +292,6 @@ function ProductDetails(props) {
 
                     <div className="allPoints">
                       {arr.map((value, index) => {
-                        console.log(value.content[0].ans);
                         return (
                           <div style={{ display: (value.content[0].ans === '' || value.content[0].ans === null) && 'none' }} className="allPointsCard">
                             <div className="allPointCardHeading">
@@ -415,6 +414,7 @@ function ProductDetails(props) {
                         <div className="moreAgencyList_productDetails">
                           {similarAgency.length > 0 ? (
                             similarAgency.map((value) => {
+                              console.log(value);
                               return (
                                 <>
                                   <div style={{ cursor: "pointer" }}
@@ -427,10 +427,10 @@ function ProductDetails(props) {
                                       <div>
                                         <img src={logo} alt="" />
                                       </div>
-                                      <h5>{value.agencyId.agencyName}</h5>
+                                      <h5>{value?.agencyId?.agencyName}</h5>
                                     </div>
                                     <div className="moreAgencyInfo_productDetails">
-                                      <p>{value.agencyId.agencyDescription}</p>
+                                      <p>{value?.agencyId?.agencyDescription}</p>
                                     </div>
                                   </div>
                                 </>
