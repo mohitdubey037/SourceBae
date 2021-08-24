@@ -19,7 +19,7 @@
     height: 2px;
     display: block;
     background-color: #000;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 .myProfileInfo{
     display: flex;
@@ -127,10 +127,6 @@
     color: #999;
     font-size: 1.1rem;
 }
-
-
-
-
 
 .clientFormAnswer{
     width: 60%;
