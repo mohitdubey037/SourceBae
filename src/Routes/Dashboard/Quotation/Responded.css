@@ -17,7 +17,7 @@
 }
 
 .respondedCard {
-  width: 28%;
+  width: 30%;
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
@@ -107,7 +107,7 @@
 
 .respondCardPoints ul li {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 0.87rem;
   font-weight: 500;
   margin-right: 11%;
   color: #000;

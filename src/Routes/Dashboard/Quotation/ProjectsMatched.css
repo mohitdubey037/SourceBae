@@ -182,7 +182,7 @@
 }
 .projectDetailsTable div div p {
  font-family: 'Open Sans', sans-serif;
-  transform: translateY(10px);
+  /* transform: translateY(10px); */
 }
 
 @media (max-width: 768px) {
