@@ -277,9 +277,9 @@ const Login = (props) => {
 
                                         Login as {
                                             state.checked === false ?
-                                                `an ${<span>{roleString} </span>}`
+                                                <><span>an</span><span className="agencyOrClient">{` ${roleString}`}</span></>
                                                 :
-                                                `a ${<span> {roleString} </span>}`
+                                                <><span>a</span><span className="agencyOrClient">{` ${roleString}`}</span></>
                                         }
                                     </h6>
                                 </div>

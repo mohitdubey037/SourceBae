@@ -250,7 +250,7 @@ button {
   font-size: 1.2rem;
 }
 
-.loginHeading h6 span {
+.agencyOrClient {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
