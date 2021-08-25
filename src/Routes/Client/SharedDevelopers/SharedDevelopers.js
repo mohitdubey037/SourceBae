@@ -107,7 +107,7 @@ function RespondedDetails(props) {
       ) : (
         <>
           <div className="conditional_back_parent">
-            <Back name="Shared Developer" />
+            <Back name="Matched Developer" />
           </div>
           <div className="main-card_SharedDevelopers">
             <div className="respond-card_parent">
@@ -120,9 +120,9 @@ function RespondedDetails(props) {
                       ?.agencyName || ""
                       }`}</p>
                   </div>
-                  <div >
+                  <div style={{width: '88%'}} >
                     <p>Agency Description</p>
-                    <p>
+                    <p style={{width: '342px'}}>
                       {
                         singleHiredDeveloper?.agenciesMatched[0]?.agencyId
                           ?.agencyDescription

@@ -23,12 +23,14 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   width: 817px;
-  padding: 1rem 15.5rem 2rem 1.5rem;
+  /* padding: 1rem 15.5rem 2rem 1.5rem; */
+  padding: 1.5rem;
   margin: auto;
 }
 
 .width div {
   border-bottom: none;
+  width: 70%;
 }
 
 .moreAgencyHeading.no_border {
@@ -151,6 +153,8 @@
   width: 200px;
   font-weight: normal;
   text-align: start;
+  color: black;
+  font-size: 16px;
 }
 
 .no_border:hover {

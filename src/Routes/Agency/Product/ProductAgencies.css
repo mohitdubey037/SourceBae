@@ -28,7 +28,7 @@
 
 .officeVisitFilter_productAgencies p {
     font-family: 'Open Sans', sans-serif;
-    transform: translateY(10px);
+    /* transform: translateY(10px); */
     font-weight: bold;
     font-size: 1.1rem;
 }
@@ -68,6 +68,20 @@
     padding: 1rem;
     position: sticky;
 }
+
+.filter_productAgencies {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* .filter_productAgencies::after {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background-color: #000;
+    display: block;
+} */
 
 .AgencyCardsArea_productAgencies {
     width: 75%;

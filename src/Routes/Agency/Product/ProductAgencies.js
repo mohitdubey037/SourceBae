@@ -335,7 +335,7 @@ function ProductAgencies(props) {
                                     <div className="agencyFilterArea_productAgencies">
                                         <div className='filterForm_productAgencies'>
                                             <div className="filterHeading">
-                                                <p className="filterText">Filter</p>
+                                                <p className="filter_productAgencies">Filter</p>
                                                 <div onClick={() => clearAllField()} style={{ cursor: 'pointer' }}><p>Clear All</p></div>
                                             </div>
 
