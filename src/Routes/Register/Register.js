@@ -611,7 +611,7 @@ const Register = (props) => {
                                             </div>
                                             <p>NEXT</p>
                                         </div>
-                                        <div className="signUpOption">
+                                        <div className="registerOption">
                                             <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
                                         </div>
                                     </div>
@@ -752,7 +752,7 @@ const Register = (props) => {
                                             </div>
                                             <p>Submit</p>
                                         </div>
-                                        <div className="signUpOption">
+                                        <div className="registerOption">
                                             <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
                                         </div>
                                     </div>

@@ -43,11 +43,6 @@
   color: #3A3A3A;
 }
 
-.conditionalPosition {
-  position: relative;
-  z-index: -1;
-}
-
 .project-details p {
   padding: 10px;
 }
