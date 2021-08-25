@@ -83,11 +83,15 @@
   width: 100%;
 }
 
-.resourceNumber, .contractPeriod {
+/* .resourceNumber, .contractPeriod {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 95px;
+  height: 102px;
+} */
+
+.resourceNumber input::placeholder {
+  color: #A8A8A8;
 }
 
 .hireDeveloperForm .resourceNumber ul, .hireDeveloperForm .skillsRequiredDeveloper ul, .hireDeveloperForm .averageExperience ul, .hireDeveloperForm .developerExperienceRequired ul, .hireDeveloperForm .preferredBillingMode ul, .hireDeveloperForm .averageBudget ul, .hireDeveloperForm .startPeriod ul, .hireDeveloperForm .contractPeriod ul {
@@ -221,7 +225,7 @@
 }
 
 .resourceNumber .dropdown-container {
-  height: 100%;
+  height: 56px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -280,7 +284,7 @@
 .dropdown-heading-value {
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
 }
 
@@ -304,15 +308,23 @@
   width: 60%;
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   text-transform: capitalize;
   color: black;
   border: 1px solid #a2a2a2;
   border-radius: 8px;
-  height: 50px;
+  height: 56px;
   padding-left: 10px;
+}
+
+/* .resourceNumber svg {
+  color: black;
+} */
+
+.go2139093995 .dropdown-heading-dropdown-arrow {
+  color: black;
 }
 
 .skillsRequiredDeveloper input {
@@ -368,13 +380,13 @@
 .contractPeriod select {
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
-  /* font-weight: 600; */
+  font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   text-transform: capitalize;
-  color: black;
+  color: #a8a8a8;
   width: 60%;
-  height: 50px;
+  height: 56px;
   padding: 0 0.5rem;
   border: 1px solid #d1d3d4;
   border-radius: 8px;

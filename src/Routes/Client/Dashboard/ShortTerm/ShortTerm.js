@@ -234,6 +234,9 @@ function ShortTerm(props) {
         <div className="innerShortTerm">
           <div className="shortTermForm">
             <div className="shortTermHeading">
+              <div className="shortTerm_OrangeColor">
+
+              </div>
               <h1>Short Term Projects</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
@@ -278,7 +281,7 @@ function ShortTerm(props) {
             <div>
               <input
                 type="text"
-                placeholder="Write here..."
+                placeholder="Give a name to identity requirement"
                 name="projectName"
                 value={apiData.projectName}
                 onChange={(event) => handleChange(event)}
@@ -292,7 +295,7 @@ function ShortTerm(props) {
                 Tell us more about your project
               </li>
             </ul>
-            <div>
+            <div className="startABit_shortTermProjectDesc">
               Start with a bit about yourself or your business, and include an
               overview what you need done.
             </div>
@@ -301,7 +304,6 @@ function ShortTerm(props) {
                 cols="30"
                 rows="6"
                 type="text"
-                placeholder="Write here..."
                 name="projectDescription"
                 value={apiData.projectDescription}
                 onChange={(event) => handleChange(event)}
