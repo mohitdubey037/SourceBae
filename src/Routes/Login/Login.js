@@ -91,9 +91,9 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         "& .MuiSvgIcon-root": {
-          fontSize: '2.5rem'
+            fontSize: '2.5rem'
         },
-      }
+    }
 
 }));
 
@@ -138,14 +138,15 @@ const Login = (props) => {
 
     const createRoleString = () => {
         role = role.charAt(0).toUpperCase() + role.slice(1);
-        if (state.checked === false) {
-            console.log('agency chala');
-            return `an ${role}`;
-        }
-        if (state.checked === true) {
-            console.log('client chala')
-            return `a ${role}`;
-        }
+        // if (state.checked === false) {
+        //     console.log('agency chala');
+        //     return `an ${role}`;
+        // }
+        // if (state.checked === true) {
+        //     console.log('client chala')
+        //     return `a ${role}`;
+        // }
+        return role
     };
 
     const roleString = createRoleString();
@@ -273,7 +274,13 @@ const Login = (props) => {
                                 </div>
                                 <div className="loginHeading">
                                     <h6>
-                                        Login as <span> {roleString} </span>
+
+                                        Login as {
+                                            state.checked === false ?
+                                                `an ${<span>{roleString} </span>}`
+                                                :
+                                                `a ${<span> {roleString} </span>}`
+                                        }
                                     </h6>
                                 </div>
 
