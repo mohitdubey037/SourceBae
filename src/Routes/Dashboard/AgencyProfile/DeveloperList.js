@@ -66,7 +66,7 @@ function DeveloperList(props) {
                                 <div className="developerCard">
                                     <div className="developerNameExp">
                                         <div className="developerName">
-                                            <h2>{`${developer.firstName} ${developer.lastName}`}</h2>
+                                            <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
                                             {/* <p>{`${developer.developerExperience} year`}</p> */}
                                         </div>
                                         <div className="developerExp">
