@@ -63,6 +63,7 @@
 .user-project_child_agencyNewestAllProject h5 {
     font-weight: 600;
     margin-bottom: 0;
+    font-size: 18px;
 }
 
 .button-parent {
@@ -90,7 +91,7 @@
 .date_AgencyNewestAllProject time, .matchedDate_AgencyNewestAllProject time {
     margin-left: 10px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -124,12 +125,13 @@ table {
 table td {
     font-style: normal;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 12px;
     text-transform: capitalize;
 }
 
 td:nth-child(even) {
-    color: #68E1FD;
+    /* color: #68E1FD; */
+    color: black;
 }
 
 .submit-button_allProjectCard {

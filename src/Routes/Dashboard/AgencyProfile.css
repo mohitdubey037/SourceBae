@@ -56,8 +56,7 @@ button {
 }
 
 .innerProfileHeaderImage img {
-  width: 100%;
-  object-fit: contain;
+  margin-left: 10px;
 }
 
 .innerProfileHeaderImage div {
@@ -82,8 +81,8 @@ button {
   bottom: -15px;
   right: 0;
   width: 25%;
-  height: 42px;
-  font-size: 1rem;
+  height: 56px;
+  font-size: 1.16rem;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   outline: none;
@@ -283,6 +282,9 @@ button {
 .agencyAddress span {
   font-family: 'Open Sans', sans-serif;
   color: #444;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 8px;
 }
 
 .agencyName h2 {
@@ -293,8 +295,8 @@ button {
 .agencyName p {
   font-family: 'Open Sans', sans-serif;
   color: #407bff;
-  font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .agencyProfileConstantPoints {
@@ -350,12 +352,14 @@ button {
 .pointContent p {
   color: #3a3a3a;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .pointContent h4 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   transform: translateY(-10px);
   margin-top: 20px;
   color: #3a3a3a;
@@ -382,7 +386,8 @@ button {
 
 .innerAgencyProfileDesc h2 {
   font-family: 'Open Sans', sans-serif;
-  font-weight: bolder;
+  /* font-weight: bolder; */
+  font-weight: 600;
   color: #555;
   width: 35%;
 }
@@ -400,6 +405,8 @@ button {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   color: #555;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .agencyProfileIndustry {
@@ -411,7 +418,8 @@ button {
 
 .agencyProfileIndustry p {
   width: 20%;
-  background-color: #ff9999;
+  /* background-color: #ff9999; */
+  background-color: #1C3C6C;
   margin-right: 5%;
   display: flex;
   justify-content: center;
@@ -420,6 +428,8 @@ button {
   color: #fff;
   font-weight: bold;
   padding: 0.2rem 0;
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 .rightAgencyProfileDesc {
@@ -486,6 +496,7 @@ button {
   font-size: 0.8rem;
   font-family: 'Open Sans', sans-serif;
   /* transform: translateY(-20px); */
+  font-weight: 600;
 }
 
 .uploadButton i {
@@ -505,6 +516,7 @@ button {
 .innerQuotation_agencyProfile .nav {
   display: block;
 }
+
 /* 
 .MuiPaper-root {
   left: 1024px !important;
@@ -543,10 +555,15 @@ button {
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active button {
-  filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important;
+  /* filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important; */
+  /* filter: invert(95%) sepia(0%) saturate(18%) hue-rotate(302deg) brightness(104%) contrast(104%) !important; */
+  color: white !important;
 }
+
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active img {
-  filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important;
+  /* filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important; */
+  /* filter: invert(95%) sepia(0%) saturate(18%) hue-rotate(302deg) brightness(104%) contrast(104%) !important; */
+  color: white !important;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link:hover {

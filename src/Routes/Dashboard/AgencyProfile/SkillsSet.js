@@ -316,10 +316,10 @@ function SkillsSet(props) {
                             <i onClick={() => handleEdit(true)} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
 
                             {/* <div className="editable_parent"> */}
-                                {/* <div className="editableBtn" style={{ position: 'relative' }}>
+                            {/* <div className="editableBtn" style={{ position: 'relative' }}>
                                     <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
                                 </div> */}
-                                {/* <div className="editableBtn">
+                            {/* <div className="editableBtn">
                                     <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
                                 </div> */}
                             {/* </div> */}
@@ -334,7 +334,11 @@ function SkillsSet(props) {
                                 return (
                                     <div className="skillsSetTable">
                                         <div className="skillsSetTableHeading">
-                                            <p>{value?.title}</p>
+                                            <ul>
+                                                <li>
+                                                    {value?.title}
+                                                </li>
+                                            </ul>
                                         </div>
                                         <div className="skillsSetTableContent">
                                             {
@@ -355,7 +359,7 @@ function SkillsSet(props) {
                             })
                         }
                     </div>
-                    <div onClick={() => handleEdit(false)}  className="information_save_parent">
+                    <div onClick={() => handleEdit(false)} className="information_save_parent">
                         <div className="information_save">
                             <p>Submit</p>
                         </div>

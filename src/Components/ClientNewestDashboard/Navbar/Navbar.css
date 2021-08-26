@@ -57,14 +57,18 @@
 }
 
 .navbar > .navbar-items > .nav-left-item > p {
-  font-family: Inter;
+  font-family: 'Open Sans',sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0;
   text-align: right;
   letter-spacing: 0.2px;
   color: #252733;
+}
+
+.inputForm h1, .inputForm h2, .inputForm h3, .inputForm h4, .inputForm h5 {
+  margin-bottom: 0;
 }
 
 .navbar-items > .userprofile-circle {

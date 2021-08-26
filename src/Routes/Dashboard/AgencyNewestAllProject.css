@@ -67,6 +67,7 @@ h6 {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     text-transform: capitalize;
+    font-size: 18px;
 }
 
 .completed-project, .running-project, .rejected-project {

@@ -205,7 +205,7 @@ function HireAgencyForm3(props) {
                                     {allServices?.length > 0 ? allServices.map((service) => {
                                         return (
                                             <div className="tech-container">
-                                                <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? "#68E1FD" : '#white' }} >
+                                                <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? "#FE5E00" : '#white' }} >
                                                     <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                                                 </div>
                                                 <p className={`${service.serviceName}`} style={{ color: '#000' }}>{`${service.serviceName}`}</p>

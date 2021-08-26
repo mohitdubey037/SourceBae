@@ -13,6 +13,9 @@ import SkillSetImage from '../../assets/images/Newestdashboard/Agency-Profile/Sk
 import DevelopersImage from '../../assets/images/Newestdashboard/Agency-Profile/Developers.svg';
 import AgencyRuleImage from '../../assets/images/Newestdashboard/Agency-Profile/Agency-Rule.svg';
 import PortfolioImage from '../../assets/images/Newestdashboard/Agency-Profile/Portfolio.svg';
+import AddYourProductImage from '../../assets/images/Newestdashboard/Agency-Profile/agency_profile_add_your.svg';
+import PersonalLocation from '../../assets/images/Newestdashboard/Agency-Profile/Personal_location.svg'
+
 import Information from "./AgencyProfile/Information";
 import SkillsSet from "./AgencyProfile/SkillsSet";
 import Rules from "./AgencyProfile/Rules";
@@ -193,6 +196,7 @@ function AgencyProfile(props) {
                     >
                       Add Your Product{" "}
                       <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                      {/* <img src={AddYourProductImage} alt="add your product" /> */}
                     </button>
                   </>
                 ) : (
@@ -200,10 +204,10 @@ function AgencyProfile(props) {
                     pathname: `/product-details:${agencyProfileData.productId}`,
                     condition: id !== '' ? 'Agency' : 'Client'
                   })
-                  }
-                  >
+                  }>
                     View Your Product{" "}
-                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                    {/* <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i> */}
+                    <img src={AddYourProductImage} alt="add your product" />
                   </button>
                 )
               ) : (
@@ -229,6 +233,7 @@ function AgencyProfile(props) {
                   >
                     View Your Product{" "}
                     <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                    {/* <img src={AddYourProductImage} alt="add your product" /> */}
                   </button>
                 </>
               )}
@@ -362,7 +367,8 @@ function AgencyProfile(props) {
                   </div>
                 </div>
                 <div className="agencyAddress">
-                  <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  {/* <i class="fa fa-thumb-tack" aria-hidden="true"></i> */}
+                  <img src={PersonalLocation} alt="location" />
                   <span>
                     {`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`}{" "}
                   </span>

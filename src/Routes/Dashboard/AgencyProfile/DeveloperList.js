@@ -52,7 +52,7 @@ function DeveloperList(props) {
     return (
         <>
             <div className="mainDeveloperList">
-                <div className="innerDeveloperList" style={{backgroundColor: err && 'white'}}>
+                <div className="innerDeveloperList" style={{ backgroundColor: err && 'white' }}>
                     {err ?
                         <>
                             <div style={{ textAlign: 'center', width: '100%' }}>
@@ -87,9 +87,10 @@ function DeveloperList(props) {
                                         <div className="developerBudget">
                                             <div className="developer-detail">
                                                 <div>
-                                                    <p>Budget</p>
-                                                    <h6>{`$${developer.developerPriceRange}-$${developer.developerPriceRange + 3 * 1000}`}</h6>
+                                                    <p>Experience</p>
+                                                    <h6>{`${developer.developerExperience} year`}</h6>
                                                 </div>
+
                                                 <div>
                                                     <p>Timeline</p>
                                                     <h6>{developer.developerAvailability === -1 ? `Immediately Avaialable` : `${developer.developerAvailability} Weeks`}</h6>
@@ -97,8 +98,8 @@ function DeveloperList(props) {
                                             </div>
                                             <div className="developer-detail">
                                                 <div>
-                                                    <p>Experience</p>
-                                                    <h6>{`${developer.developerExperience} year`}</h6>
+                                                    <p>Budget</p>
+                                                    <h6>{`$${developer.developerPriceRange}-$${developer.developerPriceRange + 3 * 1000}`}</h6>
                                                 </div>
                                                 <div className="developerResume">
                                                     <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} >Download</button>
