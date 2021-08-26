@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
 .mainProjectsMatched {
   width: 100%;
   display: flex;
@@ -11,6 +10,7 @@
   flex-wrap: wrap;
   grid-row-gap: 40px;
 }
+
 .innerProjectsMatched {
   margin-left: 4%;
   width: 48%;
@@ -24,13 +24,16 @@
   overflow: auto;
   margin: 1%;
 }
+
 .projectCard {
   padding: 30px;
   width: 100%;
 }
+
 .projectNumber {
   position: absolute;
 }
+
 .projectNumber p {
   font-size: 8rem;
   transform: translate(-40%, -25%);
@@ -38,6 +41,7 @@
   font-family: 'Fredoka One', cursive;
   transition: 0.3s ease-in-out;
 }
+
 .borderRightBorder {
   position: absolute;
   width: 6px;
@@ -48,9 +52,11 @@
   transform: translateY(-50%);
   border-radius: 999px;
 }
+
 .bgCircles {
   position: absolute;
 }
+
 .innerProjectsMatched .dotImage {
   position: absolute;
   bottom: 0;
@@ -58,6 +64,7 @@
   width: 8%;
   object-fit: contain;
 }
+
 .innerProjectsMatched .shapeImage {
   position: absolute;
   top: 0;
@@ -72,14 +79,17 @@
   align-items: center;
   margin-top: -1%;
 }
+
 .projectCardHeading .projectHeadingName {
   width: 50%;
 }
+
 .projectCardHeading div h2 {
- font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   color: #02044a;
 }
+
 .projectCardHeading div h2::after {
   content: '';
   width: 30%;
@@ -87,11 +97,13 @@
   background-color: #02044a;
   display: inline-block;
 }
+
 .showInterestBtn {
   width: 100%;
 }
+
 .showInterestBtn button {
- font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   padding: 0.3rem 0.8rem;
   color: #000;
   border-radius: 0px;
@@ -137,51 +149,65 @@
   display: flex;
   margin-bottom: 3%;
 }
+
 .projectPostedDetails div {
   margin-right: 3%;
 }
+
 .projectPostedDetails div p {
   padding: 0.3rem 1rem;
   background-color: #eaf2ff;
   border-radius: 5px;
- font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #3a3a3a;
   font-weight: 600;
+  font-size: 12px;
 }
+
 .projectPostedDetails div:nth-child(1) p {
   background-color: transparent !important;
   border: 1px solid #000;
   color: #000;
 }
+
 .projectDetailsTable {
   margin-top: 2%;
 }
+
 .projectDetailsTable .projectDetailsTableContainer {
   display: flex;
-  margin-right: '10px';
   border-bottom: 0.5px dashed #ddd;
-  margin-bottom: 1%;
+  margin-bottom: 0%;
   padding: 0.5rem 0;
+  font-size: 13px;
 }
+
 .projectDetailsTable .projectDetailsTableContainer div {
   width: 100%;
 }
+
 .projectDetailsTable .projectDetailsTableContainer .projectTableHeading {
   width: 45%;
 }
+
 .projectDetailsTable .projectDetailsTableContainer .projectTableHeading p {
   color: #000;
   font-weight: 600;
 }
+
 .projectDetailsTable .projectDetailsTableContainer .projectTableContent {
-  width: 65%;
+  width: 81%;
+  display: flex;
+  flex-wrap: wrap;
 }
-.projectDetailsTable .projectDetailsTableContainer .projectTableContent p {
+
+/* .projectDetailsTable .projectDetailsTableContainer .projectTableContent p {
   color: #68e1fd;
   font-weight: 600;
-}
+} */
+
 .projectDetailsTable div div p {
- font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   /* transform: translateY(10px); */
 }
 

@@ -6,7 +6,8 @@ import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
 import { withRouter } from 'react-router';
 import './Received.css'
-import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png'
+import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png';
+import TimeIcon from '../../../assets/images/Newestdashboard/Responded/time-icon_status.svg';
 
 function Received(props) {
     const routerHistory = useHistory();
@@ -62,7 +63,13 @@ function Received(props) {
                                         <div className="leftBorder"></div>
                                         <div className="respondCardHeader">
                                             <div className="respondName">
-                                                <h4>{s.projectName}</h4>
+                                                <h4 style={{textTransform: 'capitalize'}}>{s.projectName}</h4>
+                                            </div>
+                                            <div className="dateCreated">
+                                                <img src={TimeIcon} alt="time icon" />
+                                                <div>
+                                                    <p><Moment format="HH:MM A" withTitle>{s.updatedAt}</Moment></p>
+                                                </div>
                                             </div>
                                             <div className="dateCreated">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>

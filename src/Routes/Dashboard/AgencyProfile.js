@@ -506,7 +506,7 @@ function AgencyProfile(props) {
                   </div>
                 }
 
-                <div id="nav-developer-tab"
+                {/* <div id="nav-developer-tab"
                   className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-portfolio"
@@ -519,7 +519,7 @@ function AgencyProfile(props) {
                   <button class="nav-button nav-link_agencyProfile">
                     Portfolio
                   </button>
-                </div>
+                </div> */}
                 {/* <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
                                             <img src={matched} alt="Reviews" /> Reviews
                             </button> */}

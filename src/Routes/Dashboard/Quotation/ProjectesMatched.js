@@ -59,8 +59,7 @@ function ProjectesMatched(props) {
                                     <div className="projectCard">
                                         <div className="projectCardHeading">
                                             <div className="projectHeadingName">
-                                                <h4>{s?.projectName}</h4>
-
+                                                <h4 style={{ textTransform: 'capitalize' }}>{s.projectName}</h4>
                                             </div>
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
