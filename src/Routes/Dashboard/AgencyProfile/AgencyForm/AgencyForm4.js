@@ -19,7 +19,8 @@ import * as helper from "../../../../shared/helper"
 
 function AgencyForm4(props) {
 
-    const Role = "agency"
+    // const Role = "agency";
+    const Role = localStorage.getItem('role');
     const [loading, setLoading] = useState(false);
     const [fields, setFields] = useState([{ value: null }]);
     const [githubLink, setGithubLink] = useState({})
@@ -223,7 +224,6 @@ function AgencyForm4(props) {
                     <div className="mainSocialLinks">
                         <div className="innerSocialLinks">
                             <div className="socialInputs">
-
                                 <div>
                                     <section className="linksImages">
                                         <img src={github} alt="github logo" />
@@ -298,15 +298,19 @@ function AgencyForm4(props) {
                                             <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                         </button>
                                     </NavLink> */}
-                                    <button onClick={finalUpdate} >
+                                    <button style={{ backgroundColor: '#02044A' }} >
+                                        Back
+                                        {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
+                                    </button>
+                                    <button style={{ backgroundColor: '#02044A' }} onClick={finalUpdate} >
                                         Finish
                                         {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                                     </button>
                                 </div>
                             </div>
-                            <div className="socialArea">
-                                <img src={links} alt="" />
-                            </div>
+                        </div>
+                        <div className="socialArea">
+                            <img src={links} alt="" />
                         </div>
                     </div>
                 </>

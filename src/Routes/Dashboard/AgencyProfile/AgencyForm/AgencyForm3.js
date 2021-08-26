@@ -242,16 +242,19 @@ function AgencyForm3(props) {
                                 </NavLink> */}
 
                                 {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
+                                <button style={{backgroundColor: '#02044A'}}>
+                                    Back
+                                </button>
                                 <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
                                     {status}
                                 </button>
                                 {/* </NavLink> */}
                             </div>
                         </div>
-                        <div className="miscellaneousArea">
-                            <p>Your Information is safe with us.</p>
-                            <img src={privacy} alt="" />
-                        </div>
+                    </div>
+                    <div className="miscellaneousArea">
+                        <img src={privacy} alt="" />
+                        <p>Your Information is safe with us.</p>
                     </div>
                 </div>
             }

@@ -7,7 +7,7 @@
 }
 
 .innerFormPhase {
-    width: 90%;
+    width: 82%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,10 +19,10 @@
 .stragightLine {
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 3px;
     z-index: -1;
-    background-color: #000;
     top: 51%;
+    background: #C4C4C4;
 }
 
 .backArrow_agencyForm1 {
@@ -92,9 +92,16 @@
 }
 
 .formPhaseCards span {
-    font-weight: bold;
-    color: #999;
     margin-left: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #3A3A3A;
 }
 
 .getAgencyLogo .logo-type_agencyForm1 {
@@ -111,29 +118,31 @@
 /* Agency Form one  */
 
 .mainPersonelDetailsForm {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     margin-top: 4%;
-    background-image: linear-gradient(310deg, rgba(131, 131, 131, 0.02) 0%, rgba(131, 131, 131, 0.02) 13%, transparent 13%, transparent 46%, rgba(112, 112, 112, 0.02) 46%, rgba(112, 112, 112, 0.02) 100%), linear-gradient(21deg, rgba(18, 18, 18, 0.02) 0%, rgba(18, 18, 18, 0.02) 47%, transparent 47%, transparent 82%, rgba(178, 178, 178, 0.02) 82%, rgba(178, 178, 178, 0.02) 100%), linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
     padding-bottom: 5%;
+    margin-left: 8.6rem;
+    position: relative;
+    width: 60%;
 }
 
 .innerPersonelDetailsForm {
-    width: 88%;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     background-color: #fff;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
 }
 
 .innerPersonelDetailsForm p {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.15rem;
+    /* font-size: 1.15rem; */
     font-style: normal;
     text-transform: capitalize;
     font-weight: 600;
+    font-size: 22px;
 }
 
 .innerPersonelDetailsForm input {
@@ -147,39 +156,56 @@
 }
 
 .leftPersonelDetailsForm {
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0;
+    padding: 0rem 0;
 }
 
 .agencyLogo_parent label {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 22px;
     font-style: normal;
     text-transform: capitalize;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .innerLeftPersonelDetailsForm {
-    width: 90%;
+    padding: 3rem;
+    width: 100%;
+    /* background-color: #fff; */
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    background-image: linear-gradient( 310deg, rgba(131, 131, 131, 0.02) 0%, rgba(131, 131, 131, 0.02) 13%, transparent 13%, transparent 46%, rgba(112, 112, 112, 0.02) 46%, rgba(112, 112, 112, 0.02) 100%), linear-gradient( 21deg, rgba(18, 18, 18, 0.02) 0%, rgba(18, 18, 18, 0.02) 47%, transparent 47%, transparent 82%, rgba(178, 178, 178, 0.02) 82%, rgba(178, 178, 178, 0.02) 100%), linear-gradient( 90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+}
+
+.innerLeftPersonelDetailsForm p {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    /* identical to box height, or 21px */
+    letter-spacing: -0.5px;
+    text-transform: capitalize;
+    /* TEXT CLR */
+    color: #3A3A3A;
 }
 
 .rightPersonelDetailsForm {
-    width: 30%;
     background-color: #02044a;
-    margin: 1rem 0;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     color: #fff;
     padding: 0.9rem;
-    overflow: hidden;
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 15rem;
+    width: 360px;
+    height: 819px;
 }
 
 .innerLeftPersonelDetailsForm .formContentPartOne {
@@ -201,6 +227,7 @@
     width: 21rem;
     height: 13rem;
     margin-top: 10px;
+    background-color: white;
 }
 
 .getAgencyLogo img {
@@ -248,8 +275,14 @@
 } */
 
 .getAgencyDesc p {
-    font-size: 1rem;
-    /* font-weight: bold; */
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 150%;
+    text-transform: capitalize;
+    color: #3A3A3A;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .margin-top {
@@ -270,21 +303,29 @@
 }
 
 .formContentPartTwo {
-    margin-top: 4%;
+    margin-top: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 90px;
 }
 
+.error_agencyForm {
+    color: red !important;
+    font-weight: normal !important;
+    font-size: 14px !important;
+    position: absolute;
+}
+
 .getOwnerName {
     width: 48%;
     line-height: 0.5;
+    position: relative;
 }
 
 .formContentPartTwo input {
     width: 100%;
-    height: 45px;
+    height: 54px;
     padding: 0 0.8rem;
     border: 1px solid #ebebeb;
     transition: 0.3s ease-in-out;
@@ -304,30 +345,49 @@
 }
 
 .rightPersonelDetailsForm span {
-    font-size: 1.7rem;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
+    /* font-size: 1.7rem;
+    font-weight: bold; */
     margin-bottom: 7%;
     margin-top: 5%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    /* identical to box height */
+    text-align: center;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #FFFFFF;
 }
 
 .rightPersonelDetailsForm p {
-    font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
+    /* font-size: 1rem;
     margin-bottom: 7%;
+    text-align: center; */
+    /* color: #fad647; */
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 150%;
+    /* or 36px */
     text-align: center;
-    color: #fad647;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #FFD200;
 }
 
-.rightPersonelDetailsForm img {
+/* .rightPersonelDetailsForm img {
     position: absolute;
-}
+} */
 
 .nextBtn {
     width: 100%;
     margin-top: 5%;
     display: flex;
-    justify-content: flex-end
+    justify-content: space-between;
+    align-items: center;
+    /* justify-content: flex-end */
 }
 
 .nextBtn button {
@@ -336,11 +396,12 @@
     border: none;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.2rem;
     display: flex;
     font-weight: bold;
     text-decoration: none;
     background: blue;
+    font-size: 24px;
+    font-weight: bold;
     border-radius: 12px;
 }
 
@@ -353,6 +414,7 @@
 .businessModal {
     width: 90%;
     bottom: 0;
+    position: absolute;
 }
 
 .squareShape {
@@ -364,7 +426,7 @@
 /* Agency Form two  */
 
 .mainTechStackForm {
-    width: 92%;
+    width: 84%;
     display: flex;
     margin: auto;
     margin-top: 3%;
@@ -374,7 +436,7 @@
 }
 
 .innerTechStackForm {
-    width: 68%;
+    width: 71%;
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 1.5rem;
@@ -414,9 +476,15 @@
 }
 
 .domainsFields .domainHeading {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    line-height: 150% !important;
+    /* identical to box height, or 33px */
+    text-transform: capitalize !important;
+    /* TEXT CLR */
+    color: #3A3A3A !important;
 }
 
 .domainFieldsCard div {
@@ -457,13 +525,20 @@
 }
 
 .serivcesAgency {
-    margin-top: 5%;
+    margin-top: 5rem;
 }
 
 .serivcesAgency .servicesHeading {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 1.3rem !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    line-height: 150% !important;
+    /* identical to box height, or 33px */
+    text-transform: capitalize !important;
+    /* TEXT CLR */
+    color: #3A3A3A !important;
 }
 
 .servicesCardsAgency {
@@ -526,20 +601,20 @@
 
 .input_agencyForm2 {
     margin-top: 10%;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 25px;
-    line-height: 150%;
-    text-align: center;
-    letter-spacing: 0.611765px;
-    text-transform: capitalize;
-    color: #02044A;
-    padding: 10px;
+    font-family: 'Open Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 32px !important;
+    line-height: 150% !important;
+    text-align: center !important;
+    letter-spacing: 0.611765px !important;
+    text-transform: capitalize !important;
+    color: #02044A !important;
+    padding: 10px !important;
 }
 
 .conditional_please_select {
-    width: 15%;
+    width: 18%;
     background: #F9F9F9;
     display: flex;
     height: 500px;
@@ -552,7 +627,8 @@
     height: 57rem;
     overflow: auto;
     border: 1px dashed #ebebeb;
-    margin-left: 2px;
+    margin-left: 2rem;
+    
 }
 
 /* .serviceFieldsOptions .servicesContainer {
@@ -563,13 +639,20 @@
 } */
 
 .monthlyBudget {
-    margin-top: 5%;
+    margin-top: 5rem !important;
 }
 
 .monthlyBudget p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 1.3rem !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    line-height: 150% !important;
+    /* identical to box height, or 33px */
+    text-transform: capitalize !important;
+    /* TEXT CLR */
+    color: #3A3A3A !important;
 }
 
 .servicesCardsHireAgency.agencyForm2 {
@@ -585,21 +668,23 @@
 
 .mainDocumentsForm {
     width: 100%;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     margin-top: 3%;
     margin-bottom: 5%;
+    position: relative;
 }
 
 .innerDocumentForm {
-    width: 88%;
+    width: 60%;
     display: flex;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    margin-left: 8.6rem;
 }
 
 .documentDetails {
-    width: 70%;
+    width: 100%;
     padding: 2rem;
 }
 
@@ -608,14 +693,17 @@
     display: flex;
     justify-content: space-between;
     height: 25rem;
-    width: 51rem;
-    margin-top: 10px;
+    width: 46rem;
+    margin-top: 40px;
 }
 
 .documentDetails p {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 150%;
+    text-transform: capitalize;
+    color: #3A3A3A;
 }
 
 .documentDetails span {
@@ -648,7 +736,8 @@
 }
 
 .agencyCertification img, .agencyBrochure img {
-    width: 25%;
+    /* width: 25%; */
+    width: 33%;
 }
 
 .agencyCertification button, .agencyBrochure button, .panCardContent button {
@@ -675,9 +764,14 @@
 }
 
 .panDetails p {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 150%;
+    /* identical to box height, or 33px */
+    text-transform: capitalize;
+    /* TEXT CLR */
+    color: #3A3A3A;
 }
 
 .panDetails input {
@@ -689,7 +783,7 @@
 }
 
 .panCardContent {
-    margin-top: 10px;
+    margin-top: 40px;
     width: 57%;
     /* border: 1px dashed #000; */
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
@@ -701,7 +795,7 @@
 }
 
 .panCardContent img {
-    width: 20%;
+    width: 32%;
 }
 
 .panCardContent button i {
@@ -718,13 +812,22 @@
 }
 
 .miscellaneousArea {
-    width: 30%;
+    height: 918px;
     background-color: #02044a;
-    margin: 1rem 0 1rem 1rem;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+    /* margin: 1rem 0 1rem 1rem; */
+    /* border-top-left-radius: 14px;
+    border-bottom-left-radius: 25px; */
+    border-radius: 14px;
     position: relative;
     overflow: hidden;
+    position: absolute;
+    right: 3px;
+    top: 0;
+    width: 354px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .miscellaneousArea p {
@@ -732,37 +835,45 @@
     margin: 5%;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 32px;
+    margin-top: 4rem;
 }
 
 .miscellaneousArea img {
-    position: absolute;
+    /* position: absolute;
     width: 100%;
     left: 50%;
     bottom: 10%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); */
+    width: 76%;
 }
 
 /* Agency Form four  */
 
 .mainSocialLinks {
     width: 100%;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     margin-top: 3%;
     margin-bottom: 5%;
+    position: relative;
 }
 
 .innerSocialLinks {
-    width: 88%;
+    /* width: 88%;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    display: flex;
+    display: flex; */
+    width: 63%;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    /* display: flex; */
+    margin-left: 8.5rem;
+    width: 780px;
 }
 
 .socialInputs {
     padding: 2rem;
-    width: 70%;
+    width: 100%;
 }
 
 .socialInputs div {
@@ -785,7 +896,7 @@
 .socialInputs div input {
     margin-top: 10px;
     width: 65%;
-    height: 45px;
+    height: 54px;
     padding-left: 10px;
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
@@ -804,19 +915,23 @@
 .socialArea {
     width: 30%;
     background-color: #02044a;
-    margin: 1rem 0 1rem 1rem;
+    /* margin: 1rem 0 1rem 1rem; */
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     padding: 2rem;
-    position: relative;
+    /* position: relative; */
     overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 605px;
 }
 
 .socialArea img {
-    width: 160%;
+    width: 100%;
     position: relative;
     top: 10%;
-    left: -30%;
+    left: 0%;
 }
 
 .linksImages {

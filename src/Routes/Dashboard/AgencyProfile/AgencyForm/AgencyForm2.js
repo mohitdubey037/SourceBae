@@ -370,6 +370,9 @@ function AgencyForm2(props) {
                     Back
                   </button>
                 </NavLink> */}
+                <button style={{ backgroundColor: '#02044A' }}>
+                  Back
+                </button>
                 <button className="next-click" onClick={() => { handleNext() }}>
                   Next
                   {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
@@ -381,30 +384,30 @@ function AgencyForm2(props) {
 
           <div className={`${visibleTechNames?.length ? "serviceFieldsOptions_agencyForm2" : "conditional_please_select"}`}>
             {/* <div className="servicesContainer"> */}
-              <div className="serviceSelectionInput input_agencyForm2">
-                {visibleTechNames?.length ? (
-                  <>
-                    <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
-                    <div style={{ display: "flex", justifyContent: "flex-start" }}>
-                      <MultiSearchSelect
-                        searchable={true}
-                        showTags={true}
-                        multiSelect={true}
-                        width="23vw"
-                        onSelect={(arr) => handleTechSelect(arr)}
-                        options={visibleTechNames}
-                        primaryColor="#D6EAF8"
-                        secondaryColor="#02044a"
-                        textSecondaryColor="#fff"
-                        className="UIUXServices"
-                        textColor="#02044a"
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <p>Please select one or more services.</p>
-                )}
-              </div>
+            <div className="serviceSelectionInput input_agencyForm2">
+              {visibleTechNames?.length ? (
+                <>
+                  <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
+                  <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                    <MultiSearchSelect
+                      searchable={true}
+                      showTags={true}
+                      multiSelect={true}
+                      width="23vw"
+                      onSelect={(arr) => handleTechSelect(arr)}
+                      options={visibleTechNames}
+                      primaryColor="#D6EAF8"
+                      secondaryColor="#02044a"
+                      textSecondaryColor="#fff"
+                      className="UIUXServices"
+                      textColor="#02044a"
+                    />
+                  </div>
+                </>
+              ) : (
+                <p>Please select one or more services.</p>
+              )}
+            </div>
             {/* </div> */}
           </div>
         </div >
