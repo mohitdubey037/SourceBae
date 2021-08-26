@@ -113,25 +113,13 @@ function AgencyRespondedDetails(props) {
               <div className="btnInfoDiv">
                 <div className="rightBorder"></div>
                 <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
-                  <p style={{
-                      backgroundColor: "#02044a",
-                      padding: "0.2rem 1rem",
-                      borderRadius: "999px",
-                      color: "#fff",
-                    }}>
+                  <p>
                     {project?.projectName}
                   </p>
                 </div>
               </div>
               <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
-                <p
-                  style={{
-                    backgroundColor: "transparent",
-                    padding: "0",
-                    borderRadius: "999px",
-                    color: "#02044a",
-                  }}
-                >
+                <p style={{ fontSize: '20px', color: 'black' }}>
                   {project?.projectDomainId?.domainName}
                 </p>
               </div>
@@ -158,9 +146,7 @@ function AgencyRespondedDetails(props) {
           </div>
           <div>
             <p>Project Proposal Cost</p>
-            <p
-              style={{ fontWeight: "600" }}
-            >{`$${project?.projectProposalCost}`}</p>
+            <p>{`$${project?.projectProposalCost}`}</p>
           </div>
           <div>
             <p>Agency Experience</p>
@@ -339,13 +325,19 @@ function AgencyRespondedDetails(props) {
           </div>
 
           <div className="agencyQuestions_AgencyRespondedDetails">
-            <div className="straightAfterLine">
+          <div className="straightAfterLine">
+              <div className="straightLine_AgencyRespondedDetails"></div>
+              <div className="diamond_agencyRespondedDetails"></div>
+              <div style={{ right: '-260px' }} className="diamond_agencyRespondedDetails"></div>
               <h4>Fixed Budget</h4>
               <ul>
                 <li>Min ${project.projectProposalCost}</li>
               </ul>
             </div>
             <div className="straightAfterLine">
+              <div style={{ left: '209px' }} className="straightLine_AgencyRespondedDetails"></div>
+              <div style={{right: '-34px'}} className="diamond_agencyRespondedDetails"></div>
+              <div style={{ right: '-264px' }} className="diamond_agencyRespondedDetails"></div>
               <h4>Estimated Timeline</h4>
               <ul>
                 <li>{`${project?.projectExpectedStartingDays} Days`}</li>

@@ -189,7 +189,7 @@
   flex-wrap: wrap;
 }
 
-.rightBorder {
+/* .rightBorder {
   position: absolute;
   width: 2px;
   height: 60%;
@@ -197,17 +197,17 @@
   right: 0%;
   background-color: #aaa;
   border-radius: 999px;
-}
+} */
 
-.innerBtnInfoDiv {
+/* .innerBtnInfoDiv {
   margin-right: 20px;
-}
+} */
 
-.innerBtnInfoDiv p {
+/* .innerBtnInfoDiv p {
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
   font-size: 1.1rem;
-}
+} */
 
 .acceptButton, .rejectButton, .detailsButtons>button {
   margin: 0 0.5rem;
@@ -527,10 +527,10 @@
 }
 
 .innerResponseCard div p:nth-child(2) {
-  color: #008e80;
+  /* color: #008e80; */
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 16px;
   line-height: 17px;
   text-align: center;

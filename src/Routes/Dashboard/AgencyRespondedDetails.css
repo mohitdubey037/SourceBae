@@ -25,22 +25,6 @@
   align-items: center;
 }
 
-/* .back-icon {
-  margin-left: 10px;
-}
-
-.hover:hover {
-  color: blue;
-  border-color: blue;
-}
-
-.add-developer-div {
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 .mainDetailHeader_agencyRespondedDetails {
   width: 100%;
   display: flex;
@@ -55,7 +39,7 @@
   width: 90%;
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 1.7rem 0;
   position: relative;
 }
 
@@ -99,14 +83,6 @@
   font-weight: bold;
 }
 
-/* .detailsButtons {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-right: 3rem;
-  margin: 2rem 0;
-} */
-
 .postQuotation {
   display: flex;
   flex-direction: column;
@@ -132,6 +108,29 @@
   flex-wrap: wrap;
 }
 
+.straightAfterLine {
+  position: relative;
+}
+
+.straightLine_AgencyRespondedDetails {
+  position: absolute;
+  width: 226px !important;
+  background: black;
+  height: 1px;
+  bottom: 98px;
+  left: 148px;
+}
+
+.diamond_agencyRespondedDetails {
+  width: 7px;
+  height: 7px;
+  transform: rotate( 45deg);
+  position: absolute;
+  background-color: black;
+  right: -28px;
+  top: 9px;
+}
+
 .straightAfterLine ul {
   padding-left: 1rem;
 }
@@ -146,10 +145,11 @@
 .rightBorder {
   position: absolute;
   width: 2px;
-  height: 100% !important;
-  top: 0;
+  height: 134% !important;
+  top: -4px;
   right: 0%;
   background-color: #aaa;
+  background-color: #000000;
   border-radius: 999px;
 }
 
@@ -159,8 +159,12 @@
 
 .innerBtnInfoDiv p {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
-  font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #02044A;
 }
 
 .postQuotation>button {
@@ -349,15 +353,6 @@
   }
 }
 
-/* .respondCards {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 5%;
-  margin-top: 2%;
-} */
-
 .innerResponseCard {
   width: 40%;
   background-color: #fff;
@@ -404,7 +399,7 @@
 }
 
 .innerResponseCard div p:nth-child(2) {
-  color: #68e1fd;
+  /* color: #68e1fd; */
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -625,6 +620,8 @@
 .respondDescription_AgencyRespondedDetails h2 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
+  font-weight: 600;
+  font-size: 22px;
 }
 
 .agencyQuotationDesc_AgencyRespondedDetails {
@@ -652,42 +649,27 @@
 .agencyQuestions_AgencyRespondedDetails {
   padding: 1rem 2rem;
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   margin-top: 5%;
-  justify-content: center;
-}
-
-.agencyQuestions_AgencyRespondedDetails div {
-  width: 33%;
+  width: 90%;
+  margin: auto;
+  margin-top: 3rem;
 }
 
 .agencyQuestions_AgencyRespondedDetails div h4 {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.agencyQuestions_AgencyRespondedDetails .straightAfterLine h4::after {
-  content: '';
-  width: 33%;
-  background-color: #000;
-  height: 2px;
-  display: inline-block;
-  margin-left: 10%;
-  transform: translateY(-5px);
+  /* font-weight: bold; */
+  font-weight: 600;
 }
 
 .agencyQuestions_AgencyRespondedDetails div ul {
   font-family: 'Open Sans', sans-serif;
-  color: #02044a;
   font-size: 1.1rem;
   margin-top: 20px;
   list-style: disc;
 }
 
-.agencyQuestions_AgencyRespondedDetails div ul li {
-  color: #407bff;
-}
 
 @media (max-width: 768px) {
   .agencyQuestions {
