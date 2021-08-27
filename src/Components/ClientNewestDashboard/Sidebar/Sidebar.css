@@ -57,11 +57,13 @@
 .icons > p {
   font-size: 12px;
   padding: 5px;
+  font-weight: 500;
 }
 
 .developers-icon > div > p {
   font-size: 12px;
   text-align: center;
+  font-weight: 500;
 }
 
 .sidebar-help {

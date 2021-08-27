@@ -119,13 +119,20 @@
   letter-spacing: 0.4px;
 }
 
-.header-currentStatus,
+.header-currentStatus{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 45%;
+}
+
 .show-project-detail {
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
-  width: 42%;
+  /* justify-content: space-around;
+  width: 45%; */
 }
+
 
 .project-details-card > .header-subHeading {
   margin-left: 50px;
