@@ -396,7 +396,7 @@ function ProductForm(props) {
     if (file === null) {
       err.filePicked = "Please pick up a logo for the Product";
     }
-    setErrors(err);                 
+    setErrors(err);
     if (Object.keys(err).length === 0) return true;
     else return false;
   };
@@ -457,7 +457,6 @@ function ProductForm(props) {
         <Spinner />
       ) : (
         <>
-
           <div className="productsHeadlines">
             <div className="innerProductHeadlines">
               <h3>
@@ -507,9 +506,7 @@ function ProductForm(props) {
                       accept="image/png, image/gif, image/jpeg, image/jpg"
                     />
                     {errors.filePicked && (
-                      <p
-                        className="error_productForm"
-                      >
+                      <p className="error_productForm">
                         {errors.filePicked}
                       </p>
                     )}
@@ -547,7 +544,10 @@ function ProductForm(props) {
                       cols="30"
                       rows="6"
                     ></textarea>
-                    <p style={{ fontWeight: 'normal', textAlign: 'right' }}>{wordsRequired} words required</p>
+                    <div className="character_specification">
+                      <p>More than 100 characters</p>
+                      <p>{wordsRequired} words required</p>
+                    </div>
                     {errors.productDescription && (
                       <p className="error_productForm">
                         {errors.productDescription}
@@ -621,7 +621,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Inter", color: "#999" }}>
+                          <span className="selectFromHere">
                             Select from here
                           </span>
                         </MenuItem>
@@ -654,9 +654,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span
-                            style={{ fontFamily: "Inter", color: "#999" }}
-                          >
+                          <span className="selectFromHere">
                             Select from here
                           </span>
                         </MenuItem>
@@ -741,7 +739,7 @@ function ProductForm(props) {
                   </section>
                   {apiData.productPreviousFunding === "true" ? (
                     <section className="amountRaised">
-                      <span>How much amount have you raised yet?</span>
+                      <span className="howMuchHaveYouRaised">How much amount have you raised yet?</span>
                       <FormControl variant="outlined" className={classes.formControl}>
                         <Select
                           labelId="demo-simple-select-outlined-label"
@@ -753,9 +751,7 @@ function ProductForm(props) {
                           className={clsx(classes.root, classes.inputField)}
                         >
                           <MenuItem value="">
-                            <span
-                              style={{ fontFamily: "Inter", color: "#999" }}
-                            >
+                            <span className="selectFromHere">
                               Select from here
                             </span>
                           </MenuItem>
@@ -771,7 +767,7 @@ function ProductForm(props) {
                       )}
                     </section>
                   ) : null}
-                  <section className="previousFunding">
+                  <section className="previousFunding typeOfFunding">
                     <ul>
                       <li>
                         <p>Which type of funding you are looking for?</p>
@@ -788,9 +784,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span
-                            style={{ fontFamily: "Inter", color: "#999" }}
-                          >
+                          <span className="selectFromHere">
                             Select from here
                           </span>
                         </MenuItem>
@@ -903,7 +897,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Inter", color: "#999" }}>
+                          <span className="selectFromHere">
                             Select from here
                           </span>
                         </MenuItem>
@@ -1074,6 +1068,7 @@ function ProductForm(props) {
                       <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>
                     </p>
                   </div>
+                  <div className="black_color_shadow-productForm"></div>
                 </div>
               </div>
             </div>

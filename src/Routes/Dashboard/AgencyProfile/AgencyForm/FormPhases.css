@@ -399,7 +399,7 @@
     display: flex;
     font-weight: bold;
     text-decoration: none;
-    background: blue;
+    background: #71a6fd;
     font-size: 24px;
     font-weight: bold;
     border-radius: 12px;
@@ -812,7 +812,7 @@
 }
 
 .miscellaneousArea {
-    height: 918px;
+    height: 926px;
     background-color: #02044a;
     /* margin: 1rem 0 1rem 1rem; */
     /* border-top-left-radius: 14px;
