@@ -40,19 +40,25 @@ function Quotation(props) {
         // }
     }, [])
 
+    const [visible, setVisible] = useState(false);
+
+    const notificationVisible = (status) => {
+        setVisible(status);
+    };
+
 
     return (
         <>
-            <Sidebar />
+            <Sidebar notificationVisible={(status) => notificationVisible(status)}/>
             {/* <Navbar headingInfo="Quotation" /> */}
-            <div className="navbar-parent_Quotation">
+            <div className={`navbar-parent_Quotation ${visible && "conditionalPosition"}`}>
                 <Navbar />
             </div>
-            <div className="back-parent">
+            <div className={`back-parent ${visible && "conditionalPosition"}`} >
                 <Back name="Quotation" />
             </div>
 
-            <div className="mainQuotation">
+            <div className={`mainQuotation ${visible && "conditionalPosition"}`}>
                 <div className="innerQuotation quotation">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>

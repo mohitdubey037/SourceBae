@@ -8,7 +8,8 @@ import FormPhases from './FormPhases'
 import agencyLogo from '../../../../assets/images/agencyForm/document.png'
 import brochure from '../../../../assets/images/agencyForm/brochure.png'
 import panCard from '../../../../assets/images/agencyForm/panCard.png'
-import privacy from '../../../../assets/images/agencyForm/privacy.svg'
+import privacy from '../../../../assets/images/agencyForm/privacy.svg';
+import FinishIcon from '../../../../assets/images/Newestdashboard/AgencyForm1/upload_icon.svg';
 import { NavLink } from 'react-router-dom'
 
 import { FilePicker } from 'react-file-picker'
@@ -242,11 +243,12 @@ function AgencyForm3(props) {
                                 </NavLink> */}
 
                                 {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
-                                <button style={{backgroundColor: '#02044A'}}>
+                                <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#02044A' }}>
                                     Back
                                 </button>
-                                <button style={{ backgroundColor: colors[status] }} onClick={handleUpload} name={status}>
+                                <button className="uploadButton_agencyForm3" onClick={handleUpload} name={status}>
                                     {status}
+                                    <img src={FinishIcon} alt="finish icon"/>
                                 </button>
                                 {/* </NavLink> */}
                             </div>

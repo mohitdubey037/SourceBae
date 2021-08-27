@@ -363,14 +363,7 @@ function AgencyForm2(props) {
               </div>
 
               <div className="nextBtn">
-                {/* <NavLink to="/agency-form-one" ><i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back</NavLink> */}
-                {/* <NavLink to="/agency-form-one" style={{ textDecoration: "none" }}>
-                  <button className="next-click">
-                    <i className="fa fa-long-arrow-left" aria-hidden="true" />
-                    Back
-                  </button>
-                </NavLink> */}
-                <button style={{ backgroundColor: '#02044A' }}>
+                <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#02044A' }}>
                   Back
                 </button>
                 <button className="next-click" onClick={() => { handleNext() }}>
