@@ -571,7 +571,7 @@
 
 .innerHireAgencyFormTwo {
     height: 38rem;
-    width: 800px;
+    width: 776px;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -682,13 +682,12 @@
 
 .servicesHireAgencyContainer.hireAgencyForm2 {
     margin-top: 7%;
-    height: 100%;
     border: 1px dashed #ebebeb;
     padding-bottom: 6%;
     background: #fff;
-    width: 42%;
+    width: 40%;
     position: absolute;
-    right: -24rem;
+    right: -22rem;
     height: 28rem;
 }
 
