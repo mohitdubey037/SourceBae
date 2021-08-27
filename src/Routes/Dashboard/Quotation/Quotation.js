@@ -49,17 +49,18 @@ function Quotation(props) {
 
     return (
         <>
-            <Sidebar notificationVisible={(status) => notificationVisible(status)}/>
+            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             {/* <Navbar headingInfo="Quotation" /> */}
-            <div className={`navbar-parent_Quotation ${visible && "conditionalPosition"}`}>
-                <Navbar />
-            </div>
-            <div className={`back-parent ${visible && "conditionalPosition"}`} >
-                <Back name="Quotation" />
-            </div>
+            <div className={`${visible && "conditionalPosition"}`}>
+                <div className="navbar-parent_Quotation">
+                    <Navbar />
+                </div>
+                <div className="back-parent">
+                    <Back name="Quotation" />
+                </div>
 
-            <div className={`mainQuotation ${visible && "conditionalPosition"}`}>
-                <div className="innerQuotation quotation">
+                <div className="mainQuotation">
+                    <div className="innerQuotation quotation">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>
                                 <img src={received} alt="received" /> Received
@@ -71,19 +72,21 @@ function Quotation(props) {
                                 <img src={matched} alt="" /> Project Matched
                             </button>
                         </div>
-                    <div className="tab-content" id="nav-tabContent">
-                        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <Received />
-                        </div>
-                        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <Responded />
-                        </div>
-                        <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <ProjectesMatched />
+                        <div className="tab-content" id="nav-tabContent">
+                            <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <Received />
+                            </div>
+                            <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <Responded />
+                            </div>
+                            <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <ProjectesMatched />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </>
     );
 }
