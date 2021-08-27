@@ -293,22 +293,26 @@ function RespondedDetails(props) {
                 <li>Min ${project.projectProposalCost}</li>
               </ul>
             </div>
+            
             <div className="straightLineParent_agencyRespondedDetails">
               <div className="straightLine_AgencyRespondedDetails"></div>
               <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
               <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
             </div>
+
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul>
                 <li>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
-            <div className="straightLineParent_agencyRespondedDetails">
-              <div className="straightLine_AgencyRespondedDetails"></div>
+
+            <div className="straightLineParent_agencyRespondedDetails2">
               <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
+              <div className="straightLine_AgencyRespondedDetails2"></div>
               <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
             </div>
+
             <div>
               <h4>Technology</h4>
               <ul>
