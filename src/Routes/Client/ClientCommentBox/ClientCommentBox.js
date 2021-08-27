@@ -305,10 +305,10 @@ const ClientCommentBox = (props) => {
             <div className="yellowBg">
               <img src={proposalImage} alt="" />
             </div>
-            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
-              <div>
+              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
                 <p>Accept or Reject the Project.</p>
               </div>
+            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
               <div>
                 <button className="acceptButton" onClick={() => { setOpen(true) }}>
                   Accept
@@ -347,7 +347,6 @@ const ClientCommentBox = (props) => {
               <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Project Start Date</p>
-
                 </div>
                 <div className="tableContentQuotation">
                   <input type='date' name='projectStartDateByClient' onChange={onQuotationChange} />

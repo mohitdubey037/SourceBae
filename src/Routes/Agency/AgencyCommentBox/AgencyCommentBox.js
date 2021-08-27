@@ -357,15 +357,15 @@ const AgencyCommentBox = (props) => {
               {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
                 ? ""
                 : "disabled"}`}> */}
-              <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '100%' }}>
+              <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '50%' }}>
                 <img src={proposalImage} alt="" />
               </div>
               {props.projectProposals[0].isProposalActionActive ?
-                <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons /*md-flex*/ height">
-                  <>
-                    <div>
-                      <p>Accept or Reject the Project.</p>
-                    </div>
+                <>
+                  <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
+                    <p>Accept or Reject the Project.</p>
+                  </div>
+                  <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons height">
                     <div>
                       <button className="acceptButton" onClick={() => { setOpen(true) }}>
                         Accept
@@ -374,11 +374,11 @@ const AgencyCommentBox = (props) => {
                         Reject
                       </button>
                     </div>
-                  </>
+                  </div>
                   {props.projectProposals[0].isReplySectionActive === 'false' &&
                     <p className="color-black">Please provide some reply</p>
                   }
-                </div>
+                </>
                 :
                 props.projectProposals[0].isAskedForQuotation
                   ?

@@ -288,22 +288,26 @@ function RespondedDetails(props) {
 
           <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
-              <div className="straightLine_AgencyRespondedDetails"></div>
-              <div className="diamond_agencyRespondedDetails"></div>
-              <div style={{ right: '-260px' }} className="diamond_agencyRespondedDetails"></div>
               <h4>Fixed Budget</h4>
               <ul>
                 <li>Min ${project.projectProposalCost}</li>
               </ul>
             </div>
+            <div className="straightLineParent_agencyRespondedDetails">
+              <div className="straightLine_AgencyRespondedDetails"></div>
+              <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
+              <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
+            </div>
             <div className="straightAfterLine">
-              <div style={{ left: '209px' }} className="straightLine_AgencyRespondedDetails"></div>
-              <div style={{right: '-34px'}} className="diamond_agencyRespondedDetails"></div>
-              <div style={{ right: '-264px' }} className="diamond_agencyRespondedDetails"></div>
               <h4>Estimated Timeline</h4>
               <ul>
                 <li>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
+            </div>
+            <div className="straightLineParent_agencyRespondedDetails">
+              <div className="straightLine_AgencyRespondedDetails"></div>
+              <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
+              <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
             </div>
             <div>
               <h4>Technology</h4>
@@ -313,10 +317,6 @@ function RespondedDetails(props) {
                 })}
               </ul>
             </div>
-            {/* <div>
-              <h4>{props?.projectFiles}</h4>
-              <p>-</p>
-            </div> */}
           </div>
         </div>
       </div>

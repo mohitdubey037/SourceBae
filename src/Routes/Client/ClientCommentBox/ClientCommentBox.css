@@ -1,10 +1,7 @@
 .detailsButtons.height {
-    height: 23%;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    justify-content: space-around;
-    display: flex;
-    /* margin: 1rem 0; */
+    position: absolute;
+    /* bottom: 5.5rem; */
+    bottom: 2.5rem;
 }
 
 .sendIcon_clientCommentBox {
@@ -15,6 +12,19 @@
     height: 40px;
     width: 40px;
     background-color: #30b530ba;
+}
+
+.normal_acceptOrReject_clientCommentBox {
+    font-size: 25px;
+    left: 4.5rem;
+    position: absolute;
+    font-weight: 600;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3A3A3A;
+    top: 2.5rem;
 }
 
 .sendIcon_clientCommentBox:hover {
@@ -64,7 +74,7 @@
     margin-left: 100px;
 }
 
-.detailed_description_clientCommentBox > label {
+.detailed_description_clientCommentBox>label {
     font: 600 16px 'Open Sans', sans-serif !important;
 }
 
@@ -84,7 +94,7 @@
     margin-top: 20px;
 }
 
-.submit-rejection > div {
+.submit-rejection>div {
     color: white;
     background-color: #3498db;
     padding: 8px;
@@ -99,13 +109,13 @@
     margin-top: 20px !important;
 }
 
-.acceptance-parent_clientCommentBox > h2 {
+.acceptance-parent_clientCommentBox>h2 {
     border-bottom: none !important;
     margin-bottom: 0 !important;
     text-align: center !important;
 }
 
-.acceptance-parent_clientCommentBox > h2::after {
+.acceptance-parent_clientCommentBox>h2::after {
     margin-left: 90px;
 }
 
@@ -147,4 +157,3 @@
 .submit-rejection:hover {
     cursor: pointer;
 }
-

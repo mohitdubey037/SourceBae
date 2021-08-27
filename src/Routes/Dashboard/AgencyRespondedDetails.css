@@ -108,17 +108,42 @@
   flex-wrap: wrap;
 }
 
-.straightAfterLine {
+/* .straightAfterLine {
   position: relative;
+} */
+
+.straightLineParent_agencyRespondedDetails {
+  position: absolute;
+  width: 234px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 14rem;
+}
+
+.straightLineParent_agencyRespondedDetails2 {
+  position: absolute;
+  width: 234px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 41.3rem;
 }
 
 .straightLine_AgencyRespondedDetails {
-  position: absolute;
-  width: 226px !important;
-  background: black;
+  /* position: absolute; */
+  width: 220px !important;
   height: 1px;
-  bottom: 98px;
-  left: 148px;
+  background-color: black;
+}
+
+.straightLine_AgencyRespondedDetails2 {
+  /* position: absolute; */
+  width: 230px !important;
+  height: 1px;
+  background-color: black;
 }
 
 .diamond_agencyRespondedDetails {
@@ -127,8 +152,6 @@
   transform: rotate( 45deg);
   position: absolute;
   background-color: black;
-  right: -28px;
-  top: 9px;
 }
 
 .straightAfterLine ul {
@@ -651,10 +674,9 @@
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
-  margin-top: 5%;
   width: 90%;
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 0rem;
 }
 
 .agencyQuestions_AgencyRespondedDetails div h4 {
@@ -670,7 +692,6 @@
   margin-top: 20px;
   list-style: disc;
 }
-
 
 @media (max-width: 768px) {
   .agencyQuestions {
