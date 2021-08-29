@@ -39,10 +39,6 @@
     border-radius: 0 12px 12px 0;
 }
 
-.error_hireAgencyForm3 {
-    margin-top: 1rem;
-}
-
 .mainHireAgencyFormTwo .stepCheck {
     width: 19%;
     left: -79px;
@@ -201,7 +197,7 @@
     justify-content: space-between;
     width: 53%;
     left: 11rem;
-    margin-bottom: 35px;
+    margin-bottom: 38px;
 }
 
 .mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3 {
@@ -570,7 +566,7 @@
     margin-bottom: 5%;
     position: absolute;
     top: 8rem;
-    height: 113vh;
+    height: 120vh;
 }
 
 .innerHireAgencyFormTwo {
@@ -762,7 +758,7 @@
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
     padding: 1.5rem;
     display: flex;
-    height: 590px;
+    height: 610px;
     position: relative;
     margin-bottom: 3%;
     left: -9rem;
@@ -999,6 +995,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 40rem;
+    height: 220px;
+    position: relative;
 }
 
 .innerHireAgencyForm3 .serivcesHireAgency {
@@ -1011,4 +1009,14 @@
     font-size: 14px;
     width: 92%;
     margin: auto;
+}
+
+.error_hireAgencyForm3 {
+    margin-top: 1rem;
+    color: red;
+    font-weight: normal;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
 }

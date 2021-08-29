@@ -140,8 +140,16 @@ function AgencyList(props) {
       {loading ? (<Spinner />) : (
         <>
           <div className="innerprojectDetailsInfo_agencyList">
-            <p>{`Project Title:- `} {project.projectName}</p>
-            <p style={{fontSize: '1rem'}}>{`Budget:-`} ${project.projectProposalCost}</p>
+            <p>{`Project Title:- `}
+              <span>
+                {project.projectName}
+              </span></p>
+            <p style={{ fontSize: '1rem' }}>
+              {`Budget:-`}
+              <span>
+                {project.projectProposalCost}
+              </span>
+            </p>
           </div>
           <div className="mainAgencyList_agencyList">
             {agencyList?.length > 0 ?

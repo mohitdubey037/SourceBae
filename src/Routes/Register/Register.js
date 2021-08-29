@@ -652,6 +652,7 @@ const Register = (props) => {
                                                         type="number"
                                                         name="agencyTeamSize"
                                                         placeholder='Team Strength'
+                                                        value={agencyProfileDetails.agencyTeamSize}
                                                         onChange={(event) => handleCreateProfile(event, role)} />
                                                     {
                                                         errors.agencyTeamSizeError &&
@@ -669,13 +670,13 @@ const Register = (props) => {
                                                         type="date"
                                                         name="incorporationDate"
                                                         max={new Date().toJSON().slice(0, 10)}
-                                                        defaultValue={agencyProfileDetails?.incorporationDate}
-                                                        value={agencyProfileDetails?.incorporationDate}
+                                                        // defaultValue={agencyProfileDetails?.incorporationDate}
+                                                        // value={agencyProfileDetails.incorporationDate}
                                                         className={dateClasses.textField}
-                                                        placeholder={`Incorporation Date`}
-                                                        InputLabelProps={{
-                                                            shrink: true,
-                                                        }}
+                                                        // placeholder={`Incorporation Date`}
+                                                        // InputLabelProps={{
+                                                        //     shrink: true,
+                                                        // }}
                                                         onChange={(event) => handleCreateProfile(event, role)} />
                                                     {
                                                         errors.incorporationDateError &&
@@ -715,6 +716,7 @@ const Register = (props) => {
                                                     <input
                                                         type="text"
                                                         name="companyName"
+                                                        value={clientProfileDetails.companyName}
                                                         placeholder='Company Name'
                                                         onChange={(event) => handleCreateProfile(event, role)} />
                                                     {

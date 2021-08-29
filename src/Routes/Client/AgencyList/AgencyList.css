@@ -68,7 +68,8 @@
 
 .innerprojectDetailsInfo_agencyList span {
   font-family: 'Open Sans', sans-serif;
-  color: #777;
+  font-weight: normal;
+  color: #9696f5;
 }
 
 .innerprojectDetailsInfo_agencyList span em {
