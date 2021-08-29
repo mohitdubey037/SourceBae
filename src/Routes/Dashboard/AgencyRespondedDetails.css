@@ -114,8 +114,8 @@
 
 .straightLineParent_agencyRespondedDetails {
   position: absolute;
-  width: 238px;
-  height: 22px;
+  width: 21%;
+  height: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,8 +124,8 @@
 
 .straightLineParent_agencyRespondedDetails2 {
   position: absolute;
-  width: 246px;
-  height: 22px;
+  width: 21%;
+  height: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -684,6 +684,7 @@
   font-size: 1.2rem;
   /* font-weight: bold; */
   font-weight: 600;
+  margin-bottom: 0;
 }
 
 .agencyQuestions_AgencyRespondedDetails div ul {

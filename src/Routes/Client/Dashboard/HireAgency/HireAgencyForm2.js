@@ -237,12 +237,12 @@ function HireAgencyForm2(props) {
                       </div>
                     );
                   })}
-                  {error.projectDomainIdError && (
-                    <p className="error_hireAgencyForm2">
-                      {error.projectDomainIdError}
-                    </p>
-                  )}
                 </div>
+                {error.projectDomainIdError && (
+                  <p className="error_hireAgencyForm2">
+                    {error.projectDomainIdError}
+                  </p>
+                )}
               </div>
 
               <div className="monthlyBudget">

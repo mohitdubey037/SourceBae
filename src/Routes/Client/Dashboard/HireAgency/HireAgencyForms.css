@@ -184,8 +184,8 @@
 }
 
 .mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip1 {
-    left: 9.5rem;
-    top: 1rem;
+    left: 21.5%;
+    top: 0.89rem;
 }
 
 .mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip2 {
@@ -219,7 +219,7 @@
 }
 
 .mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3.strip2 {
-    left: 28.5rem;
+    left: 64%;
     top: 1rem;
 }
 
@@ -314,7 +314,7 @@
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
-    height: 110px;
+    height: 120px;
     position: relative;
 }
 
@@ -355,6 +355,10 @@
     color: #a8a8a8;
 }
 
+.innerHireAgencyFormTwo .monthlyBudget {
+    margin-top: 5% !important;
+}
+
 .descriptionProjectAgency textarea {
     /* margin-top: 0.5rem; */
     margin-top: 10px;
@@ -374,7 +378,7 @@
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
-    height: 263px;
+    height: 272px;
     position: relative;
 }
 
@@ -685,7 +689,7 @@
     border: 1px dashed #ebebeb;
     padding-bottom: 6%;
     background: #fff;
-    width: 40%;
+    width: 41%;
     position: absolute;
     right: -22rem;
     height: 28rem;
@@ -852,6 +856,11 @@
     background-color: #000;
 }
 
+.mainHireAgencyFormTwo .serivcesHireAgency {
+    height: 45%;
+    position: relative;
+}
+
 .serivcesHireAgency .servicesAgencyHeadingForm3 {
     font: normal 600 22px 'Open Sans', sans-serif;
     line-height: 150%;
@@ -1000,4 +1009,6 @@
     color: red;
     font-weight: normal;
     font-size: 14px;
+    width: 92%;
+    margin: auto;
 }
