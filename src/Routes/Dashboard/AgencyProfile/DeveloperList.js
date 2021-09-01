@@ -5,13 +5,19 @@ import document from '../../../assets/images/Logo/document.png';
 import instance from "../../../Constants/axiosConstants";
 import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
-import addDeveloper from '../../../assets/images/AgencyProfile/addDeveloper.png'
+import addDeveloper from '../../../assets/images/AgencyProfile/addDeveloper.png';
+import crossIcon from '../../../assets/images/Newestdashboard/Adding_Developers/cross_icon.svg';
+import { Modal } from "react-responsive-modal";
 
 function DeveloperList(props) {
     const routerHistory = useHistory();
     const Role = localStorage.getItem('role')
     const agencyId = localStorage.getItem("userId")
-    const [developers, setDevelopers] = useState([])
+    const [developers, setDevelopers] = useState([]);
+    // const tempDevelopers = {...developers}
+    const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
+    const [developerId, setDeveloperId] = useState(null);
+
     const [err, setErr] = useState();
 
     const [agencyProfiledata, setAgencyProfileData] = useState({});
@@ -25,9 +31,28 @@ function DeveloperList(props) {
                 setErr(err?.response?.data?.message)
             })
     };
+
+    const deleteDevelopers = () => {
+        instance.delete(`api/${Role}/developers/delete/${developerId}`)
+            .then(function (response) {
+                // setDevelopers(response);
+                setOpenWithdrawModal(false);
+                const tempDevelopers = developers.filter(dev => dev._id !== developerId);
+                setDevelopers(tempDevelopers);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+
     useEffect(() => {
         getAgencyDevelopers()
     }, [])
+
+    useEffect(() => {
+        console.log(developerId);
+    },[developerId])
 
     const getAgencyProfile = (agencyId, profileviewStatus) => {
         let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
@@ -40,6 +65,12 @@ function DeveloperList(props) {
                 console.log(err)
             });
     };
+
+    const deleteFunctionality = (agencyId) => {
+        console.log(agencyId);
+        setDeveloperId(agencyId);
+        setOpenWithdrawModal(true);
+    }
 
     useEffect(() => {
         if (Role === 'Agency') {
@@ -64,6 +95,9 @@ function DeveloperList(props) {
                         developers.map((developer) => {
                             return (
                                 <div className="developerCard">
+                                    <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
+                                        <img src={crossIcon} alt="cross-icon"/>
+                                    </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
                                             <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
@@ -123,8 +157,31 @@ function DeveloperList(props) {
                         : null
                     }
                 </div>
-
             </div>
+
+            <Modal
+                open={openWithdrawModal}
+                onClose={() => { setOpenWithdrawModal(false) }}
+                center
+                classNames={{
+                    overlay: "QuotationModalOverlay",
+                    modal: "QuotationModal",
+                }}
+            >
+                <div className="rejection_modal_clientCommentBox">
+                    <div className="reject-reason_label reject_or_not-label">
+                        <h2>Are you sure..!!</h2>
+                    </div>
+                </div>
+                <div className='reject_or_not'>
+                    <div onClick={deleteDevelopers}>
+                        <p>Yes</p>
+                    </div>
+                    <div onClick={() => { setOpenWithdrawModal(false) }}>
+                        <p>No</p>
+                    </div>
+                </div>
+            </Modal>
         </>
     );
 }

@@ -21,6 +21,16 @@
   margin: 1rem;
 }
 
+.cross-icon {
+  position: absolute;
+  right: 2px;
+  top: 0;
+}
+
+.cross-icon:hover {
+  cursor: pointer;
+}
+
 .developerCardBorder {
   position: absolute;
   width: 8px;
@@ -197,5 +207,46 @@
   justify-content: center;
   align-items: center;
   height: 255;
+  cursor: pointer;
+}
+
+.reject_or_not {
+  margin: auto;
+  width: 48%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: space-around;
+  /* margin: auto; */
+}
+
+.reject_or_not-label {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.reject_or_not-label h2::after {
+  content: '' !important;
+  width: 50px !important;
+  height: 2px !important;
+  background: #000 !important;
+  display: block !important;
+  margin-left: 187px !important;
+}
+
+.reject_or_not>div {
+  color: white;
+  background-color: #3498db;
+  padding: 8px;
+  text-align: center;
+  border-radius: 11px;
+  width: 33%;
+}
+
+.reject_or_not > div:hover {
   cursor: pointer;
 }
