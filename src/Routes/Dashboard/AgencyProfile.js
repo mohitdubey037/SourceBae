@@ -442,6 +442,7 @@ function AgencyProfile(props) {
                 </div>
               )}
             </div>
+            <div className="seperator"></div>
           </div>
 
           <div className="mainQuotation">

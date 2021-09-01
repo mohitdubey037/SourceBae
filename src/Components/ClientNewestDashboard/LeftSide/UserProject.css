@@ -1,6 +1,4 @@
-.header-currentStatus img,
-.show-project-detail img,
-.detailsCard-header img {
+.header-currentStatus img, .show-project-detail img, .detailsCard-header img {
   width: 16px;
   margin-left: 4px;
 }
@@ -26,7 +24,7 @@
   cursor: pointer;
 }
 
-.header-heading > h6 {
+.header-heading>h6 {
   font-size: 18px;
 }
 
@@ -71,8 +69,8 @@
 }
 
 .detailsCard-header {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   margin-left: 50px;
 }
 
@@ -91,13 +89,13 @@
   margin-top: 20px;
 }
 
-.centerImage > div {
+.centerImage>div {
   font-weight: 600;
   font-size: 18px;
   margin-top: 10px;
 }
 
-.centerImage > div > p {
+.centerImage>div>p {
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -107,8 +105,7 @@
   letter-spacing: 0.4px;
 }
 
-.currentStatus-text p,
-.projectDetail-text p {
+.currentStatus-text p, .projectDetail-text p {
   align-self: center;
   color: #407bff;
   font-family: 'Open Sans', sans-serif;
@@ -119,7 +116,7 @@
   letter-spacing: 0.4px;
 }
 
-.header-currentStatus{
+.header-currentStatus {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -133,12 +130,11 @@
   width: 45%; */
 }
 
-
-.project-details-card > .header-subHeading {
+.project-details-card>.header-subHeading {
   margin-left: 50px;
 }
 
-.project-details-card > .detailsCard-date > h6 {
+.project-details-card>.detailsCard-date>h6 {
   font-weight: 600;
   font-size: 12px;
 }
@@ -149,7 +145,7 @@
   width: 65%;
 }
 
-.detailsCard-footer > .info-icon {
+.detailsCard-footer>.info-icon {
   display: flex;
   width: 45px;
   height: 45px;
@@ -157,18 +153,18 @@
   margin-top: 5px;
 }
 
-.detailsCard-footer > .info-icon {
+.detailsCard-footer>.info-icon {
   display: flex;
   width: 45px;
   height: 45px;
   padding: 10px;
 }
 
-.show-project-detail:hover{
+.show-project-detail:hover {
   cursor: pointer;
 }
 
-.show-project-detail:hover > .projectDetail-item p{
+.show-project-detail:hover>.projectDetail-item p {
   color: #3e024a
 }
 
@@ -184,7 +180,10 @@
 }
 
 .projectCompleted_userProject {
+  top: 12px;
+  position: absolute;
   color: #328132;
+  right: 16px;
 }
 
 .conditional_image_change {

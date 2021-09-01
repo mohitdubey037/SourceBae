@@ -34,31 +34,31 @@ function UserProject(props, index) {
                     <h6>{props?.projectName}</h6>
                 </div>
                 {/* <img src={infoIcon} alt="infoIcon" /> */}
-                {props?.projectProposals[0]?.isQuotationAcceptedByClient === true && props?.projectProposals[0]?.isQuotationAcceptedByAgency ?
+                {props?.projectProposals[0]?.isQuotationAcceptedByClient === true && props?.projectProposals[0]?.isQuotationAcceptedByAgency &&
                     <i className="projectCompleted_userProject fas fa-check"></i>
-                    :
-                    <div className="tooltip_class"
-                        onMouseOver={() => {
-                            setIsPopover(true);
-                            setPopIndex(index);
-                        }}
-                        onMouseLeave={() => setIsPopover(false)}
-                    >
-                        <i style={{ fontSize: 22, color: '#F57359' }} className="fa fa-info-circle"
-                            aria-hidden="true"
-                        ></i>
-                        {/* ADD TOOLTIP HERE */}
-                        {isPopover && popindex === index && (
-                            <Tooltip
-                                show={true}
-                                position="bottom center"
-                                textBoxWidth="120px"
-                                animation="bounce"
-                            >
-                                <span>Some text</span>
-                            </Tooltip>
-                        )}
-                    </div>
+                    // :
+                    // <div className="tooltip_class"
+                    //     onMouseOver={() => {
+                    //         setIsPopover(true);
+                    //         setPopIndex(index);
+                    //     }}
+                    //     onMouseLeave={() => setIsPopover(false)}
+                    // >
+                    //     <i style={{ fontSize: 22, color: '#F57359' }} className="fa fa-info-circle"
+                    //         aria-hidden="true"
+                    //     ></i>
+                    //     {/* ADD TOOLTIP HERE */}
+                    //     {isPopover && popindex === index && (
+                    //         <Tooltip
+                    //             show={true}
+                    //             position="bottom center"
+                    //             textBoxWidth="120px"
+                    //             animation="bounce"
+                    //         >
+                    //             <span>Some text</span>
+                    //         </Tooltip>
+                    //     )}
+                    // </div>
                 }
             </div>
             <div className="detailsCard-date">
