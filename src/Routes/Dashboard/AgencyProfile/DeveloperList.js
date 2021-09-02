@@ -209,7 +209,6 @@ function DeveloperList(props) {
                                                     <p>Timeline</p>
                                                     <h6>{developer.developerAvailability === -1 ? `Immediately Avaialable` : `${developer.developerAvailability} Weeks`}</h6>
                                                 </div>
-
                                                 <div>
                                                     <p>Budget</p>
                                                     <h6>{`$${developer.developerPriceRange}-$${developer.developerPriceRange + 3 * 1000}`}</h6>
