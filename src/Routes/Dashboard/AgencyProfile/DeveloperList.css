@@ -44,11 +44,21 @@
 
 .developerNameExp {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 3%;
   padding-bottom: 5%;
+}
+
+.developerName h2 {
+  margin-bottom: 0;
+}
+
+.rounded_developerList {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #26E826;
+  margin-left: 1rem;
 }
 
 .developerBudgetResume {
@@ -59,13 +69,16 @@
   /* position: relative; */
 }
 
-.developerName, .developerExp {
+/* .developerName, .developerExp {
   text-align: center;
-}
+} */
 
 .developerName {
-  width: 80%;
-  margin-bottom: 5px;
+  width: 100%;
+  margin-bottom: 0.9rem;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .developerName h2 {
@@ -104,7 +117,7 @@
   color: #3a3a3a;
   margin-bottom: 3.2%;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .developerTechNames {
@@ -135,7 +148,7 @@
 .developerBudget p {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
   text-transform: capitalize;
   color: #3A3A3A;
@@ -153,11 +166,11 @@
   text-align: center;
 }
 
-.developerResume {
+/* .developerResume {
   position: absolute;
   bottom: 14px;
   right: 14px;
-}
+} */
 
 .developerResume button {
   padding: 0.4rem 1rem;
@@ -247,6 +260,72 @@
   width: 33%;
 }
 
-.reject_or_not > div:hover {
+.reject_or_not>div:hover {
   cursor: pointer;
+}
+
+.developers-status_parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.developers_content {
+  width: 100%;
+}
+
+.developers-status_parent:hover {
+  cursor: pointer;
+}
+
+.developer-status_developerListChild {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px !important;
+}
+
+/* .developer-status_developerList {
+  width: 50%;
+} */
+
+.developer-status_developerList p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+  text-align: center;
+}
+
+/* .developer-status_developerListChild > p {
+  font-size: 14px !important;
+} */
+
+.statusLabel {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height */
+  text-align: center;
+  text-transform: capitalize;
+  color: #838383;
+}
+
+.availabilityToggle {
+  margin-top: 0.5rem;
+}
+
+/* .arrow_image {
+  cursor: pointer;
+} */
+
+.conditionalRotate {
+  transform: rotate(180deg);
+}
+
+.conditionalColor {
+  background-color: #FF0000;
 }

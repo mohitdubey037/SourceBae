@@ -263,8 +263,6 @@ const Register = (props) => {
         setState({ ...state, [event.target.name]: event.target.checked })
     };
 
-
-
     //API call methods
     const signUpApi = async (role, form) => {
         return new Promise((resolve, reject) => {

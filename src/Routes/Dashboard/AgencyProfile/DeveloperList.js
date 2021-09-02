@@ -8,6 +8,50 @@ import NO_Data_ICON from '../no_data_icon.jpg';
 import addDeveloper from '../../../assets/images/AgencyProfile/addDeveloper.png';
 import crossIcon from '../../../assets/images/Newestdashboard/Adding_Developers/cross_icon.svg';
 import { Modal } from "react-responsive-modal";
+import ArrowButton from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg';
+import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
+
+const AntSwitch = withStyles((theme) => ({
+    root: {
+        width: 60,
+        height: 28,
+        padding: 0,
+        // display: 'flex',
+        borderColor: "#fff",
+    },
+    switchBase: {
+        padding: 2,
+        // color: "#02044a",
+        top: -2,
+        left: -2,
+        color: '#26E826',
+        border: "1px solid #EBF5FB",
+        "&$checked": {
+            transform: "translateX(30px)",
+            color: '#FF0000',
+            "& + $track": {
+                opacity: 0.82,
+                backgroundColor: "white",
+                border: '2px solid #FF0000',
+            },
+            border: "1px solid #FF0000",
+        },
+    },
+    thumb: {
+        width: 30,
+        height: 27,
+        boxShadow: "none",
+        borderRadius: '46%'
+    },
+    track: {
+        // border: `1px solid #02044a`,
+        borderRadius: 78 / 2,
+        backgroundColor: "white",
+        opacity: 0.82,
+        border: '2px solid #26E826',
+    },
+    checked: {},
+}))(Switch);
 
 function DeveloperList(props) {
     const routerHistory = useHistory();
@@ -17,8 +61,14 @@ function DeveloperList(props) {
     // const tempDevelopers = {...developers}
     const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
     const [developerId, setDeveloperId] = useState(null);
+    const [open, setOpen] = useState(false);
 
     const [err, setErr] = useState();
+    const [toggleIndexes, setToggleIndexes] = useState({});
+
+    const [state, setState] = useState({
+        checked: false
+    })
 
     const [agencyProfiledata, setAgencyProfileData] = useState({});
     const getAgencyDevelopers = () => {
@@ -30,6 +80,18 @@ function DeveloperList(props) {
                 console.error(err?.response?.data?.message)
                 setErr(err?.response?.data?.message)
             })
+    };
+
+    const handleChangeToggle = (event, ind) => {
+        let tempIndexes;
+        if(tempIndexes[ind]){
+            tempIndexes[ind] = !tempIndexes[ind]
+        }
+        else{
+            tempIndexes[ind] = true
+        }
+        setToggleIndexes(tempIndexes)
+        setState({ ...state, [event.target.name]: event.target.checked })
     };
 
     const deleteDevelopers = () => {
@@ -45,14 +107,23 @@ function DeveloperList(props) {
             })
     }
 
+    const IndexSetter = (index) => {
+        console.log(index);
+        setToggleIndexes(index);
+        setOpen(!open)
+    }
 
     useEffect(() => {
         getAgencyDevelopers()
     }, [])
 
     useEffect(() => {
+        console.log(open);
+    }, [open])
+
+    useEffect(() => {
         console.log(developerId);
-    },[developerId])
+    }, [developerId])
 
     const getAgencyProfile = (agencyId, profileviewStatus) => {
         let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
@@ -92,19 +163,27 @@ function DeveloperList(props) {
                             </div>
                         </>
                         :
-                        developers.map((developer) => {
+                        developers.map((developer, index) => {
+                            console.log(developer);
                             return (
                                 <div className="developerCard">
                                     <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
-                                        <img src={crossIcon} alt="cross-icon"/>
+                                        <img src={crossIcon} alt="cross-icon" />
                                     </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
-                                            <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
+                                            <div>
+                                                <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
+                                            </div>
                                             {/* <p>{`${developer.developerExperience} year`}</p> */}
+                                            <div className={`rounded_developerList ${state.checked && toggleIndexes[index] && "conditionalColor"}`}></div>
                                         </div>
                                         <div className="developerExp">
-                                            <p>Available</p>
+                                            {( toggleIndexes[index]) ?
+                                                <p style={{ color: '#FF0000' }}>Unavailable</p>
+                                                :
+                                                <p>Available</p>
+                                            }
                                         </div>
                                     </div>
 
@@ -135,9 +214,49 @@ function DeveloperList(props) {
                                                     <p>Budget</p>
                                                     <h6>{`$${developer.developerPriceRange}-$${developer.developerPriceRange + 3 * 1000}`}</h6>
                                                 </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div className="developers_content">
+                                            <div className="developers-status_parent" onClick={() => IndexSetter(index)}>
+                                                <div className="developer-status_developerList">
+                                                    {/* <div className="developer-status_developerListChild"> */}
+                                                        <p>Developer Status</p>
+                                                        {/* <div className={`arrow_image ${(open && toggleIndexes) && "conditionalRotate"}`}>
+                                                            <img src={ArrowButton} alt="no found" />
+                                                        </div> */}
+                                                    {/* </div> */}
+                                                </div>
                                                 <div className="developerResume">
                                                     <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} >Download</button>
                                                 </div>
+                                            </div>
+                                            <div style={{ display: (open && toggleIndexes === index) && 'none' }} className="availability_toggle">
+                                                <FormGroup>
+                                                    <Typography component="div">
+                                                        <Grid
+                                                            component="label"
+                                                            container
+                                                            alignItems="center"
+                                                            spacing={1}
+                                                        >
+                                                            <Grid item className="statusLabel">
+                                                                Available
+                                                            </Grid>
+                                                            <Grid item>
+                                                                <AntSwitch
+                                                                    checked={!!toggleIndexes[index]}
+                                                                    onChange={(event) => handleChangeToggle(event, index)}
+                                                                    name="checked"
+                                                                />
+                                                            </Grid>
+                                                            <Grid item className="statusLabel">
+                                                                Unavailable
+                                                            </Grid>
+                                                        </Grid>
+                                                    </Typography>
+                                                </FormGroup>
                                             </div>
                                         </div>
                                     </div>
