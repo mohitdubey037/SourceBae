@@ -92,6 +92,7 @@ function RespondedDetails(props) {
   useEffect(() => {
     console.log(showDevelopers);
   }, [showDevelopers]);
+  
 
   useEffect(() => {
     console.log(initial);
