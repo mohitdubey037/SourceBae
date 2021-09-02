@@ -1,0 +1,175 @@
+.wrapper {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(180deg, #fccb90 0%, #d57eeb 169.94%);
+  overflow: hidden;
+}
+
+.waves__wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.wave {
+  width: 200%;
+}
+
+.dots__leftWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.dots__rightWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.logo_container {
+  /* background: red; */
+  padding: 3.5% 0 0 3.5%;
+}
+
+.logo__image {
+  width: 155px;
+  height: 57px;
+}
+
+.main__wrapper {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details {
+  display: flex;
+  flex: 0.9;
+}
+
+.details__wrapper {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subtext,
+.button__area,
+.title {
+  padding-left: 25%;
+ font-family: 'Open Sans', sans-serif;
+}
+
+.title > h3 {
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.subtext > p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.button__area {
+  margin-top: 5%;
+}
+
+.card__innerWrapper {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.login__card {
+  background: #fff;
+  z-index: 5;
+  width: 40%;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s ease;
+  padding-top: 3%;
+  box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07),
+    0px 36.5016px 29.2013px rgba(0, 0, 0, 0.0482987),
+    0px 17.7209px 14.1767px rgba(0, 0, 0, 0.0389404),
+    0px 8.6871px 6.94968px rgba(0, 0, 0, 0.0310596),
+    0px 3.43489px 2.74791px rgba(0, 0, 0, 0.0217013);
+}
+
+.login__card > h3 {
+  margin-top: 10%;
+  font-size: 1.8rem;
+ font-family: 'Open Sans', sans-serif;
+}
+
+.login__card:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.mainHomePage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #aed6f1;
+}
+
+.innerHomePage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HomePageCard {
+  width: 30%;
+  height: 30vh;
+  border: 1px solid #e0e0e0;
+  margin-right: 4%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  position: relative;
+  background-color: #fff;
+}
+.leftHomePageBorder {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 95%;
+  left: 0;
+  background-color: #3498db;
+  border-radius: 999px;
+}
+.HomePageCard p {
+  font-size: 2.5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  color: #3498db;
+}

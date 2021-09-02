@@ -1,0 +1,356 @@
+.backArrow_productAgencies {
+    position: absolute;
+    top: 12%;
+    left: 2%;
+    z-index: 100;
+}
+
+.backArrow_productAgencies i {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.margin-top_productAgencies {
+    margin-top: 1%;
+}
+
+.officeVisitFilter_productAgencies {
+    margin-bottom: 3%;
+}
+
+.officeVisitFilter_productAgencies p {
+    font-family: 'Open Sans', sans-serif;
+    /* transform: translateY(10px); */
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.officeVisitFilter_productAgencies p::after {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    display: block;
+}
+
+.searchButton {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 11px;
+    width: 40%;
+    background-color: white;
+    color: #000;
+    border-color: black;
+}
+
+.searchButton:hover {
+    cursor: pointer;
+}
+
+.mainAgencyList_productAgencies {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.filterForm_productAgencies {
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    position: sticky;
+}
+
+.filter_productAgencies {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* .filter_productAgencies::after {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background-color: #000;
+    display: block;
+} */
+
+.AgencyCardsArea_productAgencies {
+    width: 75%;
+    padding: 18px;
+}
+
+.agencyFilterArea_productAgencies {
+    margin-top: 1rem;
+    width: 20%;
+    position: relative;
+}
+
+.innerAgencyList_productAgencies {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.productInformationHeading {
+    width: 100%;
+    padding-left: 1rem;
+    margin-bottom: 2%;
+}
+
+.productInformationHeading h5 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.productInformationHeading h5::after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    display: block;
+    background-color: #000;
+}
+
+.productAgencyMiddle {
+    margin-top: 1%;
+    flex-direction: row-reverse;
+}
+
+.productAgenciesTeam {
+    width: 48%;
+    padding: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.productAgenciesTeam {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.horizontalLine {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #e0e0e0;
+    top: 48%;
+    transform: translateY(-50%);
+}
+
+.verticalLine {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #e0e0e0;
+    top: 0;
+    left: 48%;
+    transform: translateX(-50%);
+}
+
+.productAgencyList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.productAgencyContent {
+    width: 45%;
+    overflow: hidden;
+}
+
+.productAgencyContent span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    color: #999;
+    overflow: hidden;
+}
+
+.productAgencyContent p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    font-weight: bold;
+    margin-top: 4%;
+}
+
+.productLogoHere img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.productDescArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.productLogoHere {
+    width: 20%;
+    position: sticky;
+    top: 0;
+}
+
+.agencyDescInfo {
+    position: relative;
+}
+
+.productLogoHere {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #999;
+    padding: 0.5rem;
+}
+
+.productLogoHere img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.productAgencyDescPara {
+    width: 75%;
+}
+
+.agencyTeamNumber {
+    flex-direction: row-reverse;
+}
+
+.agencyTeamNumber i {
+    margin-left: 5%;
+}
+
+.customOverlayAgencyProduct {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.customModalAgencyProduct {
+    background: #fff;
+    max-width: 400px;
+    width: 100%;
+}
+
+.moreAgencies {
+    text-align: center;
+    width: 25%;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0%;
+    margin: 0rem 0rem 0rem 0rem;
+}
+
+.modalHeaderProduct {
+    border-bottom: 1px solid #999;
+    padding-bottom: 3%;
+}
+
+.modalHeaderProduct h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #3498DB;
+    transform: translateY(5px);
+}
+
+.productModalForm {
+    margin-top: 5%;
+}
+
+.toText {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.productModalInput {
+    margin-bottom: 3%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.productModalInput p {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.productModalInput input {
+    /* transform: translateY(-10px); */
+    width: 100%;
+    height: 40px;
+    padding-left: 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    background-color: #F8F9F9;
+    border: 1px solid #e0e0e0;
+}
+
+.productModalInput input:focus {
+    outline: none;
+}
+
+.productModalInput textarea {
+    /* transform: translateY(-10px); */
+    padding: 0.9rem;
+    width: 100%;
+    font-size: 0.9rem;
+    outline: none;
+    border: none;
+    background-color: #F8F9F9;
+    border: 1px solid #e0e0e0;
+}
+
+.productModalInput textarea:focus {
+    outline: none;
+}
+
+.connectedButton {
+    margin-top: 4%;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #3498DB;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.connectedButton>div {
+    width: 76%;
+    margin: auto;
+}
+
+.connectedButton>div:hover {
+    color: blue;
+}
+
+.connectedButton i {
+    transform: translateY(1px);
+}
+
+.search-filter_productAgencies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

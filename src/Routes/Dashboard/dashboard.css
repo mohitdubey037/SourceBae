@@ -1,0 +1,565 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap");
+
+/* Navbar Modal  */
+.NavbarModalLayer {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+.NavbarModalStyle {
+  background: #ebf5fb !important;
+  max-width: 550px !important;
+  width: 100% !important;
+  font-family: "Inter";
+  border-radius: 10px;
+}
+.addyourproductext {
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 4%;
+  font-size: 1.4rem;
+  color: #000;
+}
+.productText {
+  font-size: 0.9rem;
+  color: #929292;
+}
+.newFeatureDiv {
+  margin: 5% 0;
+}
+.newFeatureDiv span {
+  font-weight: bold;
+}
+.newFeatureDiv i {
+  margin-left: 5px;
+  font-size: 1.2rem;
+  transform: translateY(5px);
+}
+
+/* .modalButton {
+  display: flex;
+  justify-content: flex-end;
+} */
+.modalButton button {
+  padding: 0.4rem 1rem;
+  margin-right: 4%;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  background: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  color: #999;
+}
+
+.modalNavLink {
+  text-decoration: none;
+  background: #d1f2eb;
+  color: #1e8449;
+  border: 1px solid #d1f2eb;
+  padding: 0.4rem 1rem;
+  margin-right: 4%;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mainNavbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffff;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+.innerNavbar {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0.6rem 0; */
+  height: 70px;
+  position: relative;
+}
+.newFeatureAdded {
+  position: absolute;
+  right: 25%;
+  top: -30%;
+}
+.newFeatureAdded span {
+  position: absolute;
+  z-index: 999;
+  color: #000;
+  font-size: 0.8rem;
+  left: 0;
+  transform: translateY(22px);
+  font-family: "Inter";
+  font-weight: bold;
+  color: #0094ff;
+}
+.newFeatureAdded i {
+  transform: translateY(3px);
+}
+.newFeatureAdded button {
+  padding: 0.3rem 1rem;
+  background-color: #fff;
+  outline: none;
+  border: none;
+  border: 2px solid #fcbe55;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  font-family: "Inter";
+}
+.newFeatureAdded button:hover {
+  box-shadow: inset 0 0px 10px #fcbe55;
+}
+
+.oneSourcingLogo div img {
+  width: 70%;
+  cursor: pointer;
+}
+
+.dashboardHeading div {
+  margin-left: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboardHeading div h3 {
+  font-family: "Inter";
+  font-weight: 800;
+  margin-top: 3%;
+  white-space: nowrap;
+}
+
+.clientInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s ease-in-out;
+}
+
+.clientInfo .clientCompany {
+  width: 100px;
+  height: 50px;
+  /* border: 1px solid #ddd; */
+  margin: 0 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+.clientInfo .clientCompany img {
+  width: 80px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+.clientInfo .clientNotification {
+  margin: 0 1.2rem;
+  width: 45px;
+  height: 40px;
+  border: 2px solid #9e9e9e;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.clientInfo .clientNotification img {
+  width: 50%;
+  object-fit: contain;
+}
+.userProfile {
+  width: 30%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clientInfo .clientProfile {
+  margin: 0 0rem;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #0094ff !important;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.clientInfo .clientProfile:focus {
+  outline: none;
+}
+.clientInfo .clientProfile img {
+  width: 60%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.MuiMenuItem-root {
+  font-family: "Inter" !important;
+  font-weight: 400 !important;
+  align-items: center !important;
+  font-size: 1.2rem !important;
+}
+.SelectClass {
+  font-size: 14px !important;
+}
+
+@media (max-width: 768px) {
+  .oneSourcingLogo {
+    display: none;
+  }
+}
+@media (max-width: 454px) {
+  .dashboardHeading {
+    display: none;
+  }
+  .innerNavbar {
+    width: 100%;
+  }
+  .clientInfo {
+    width: 100%;
+  }
+}
+
+.mainUpdateVerify {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+}
+/* .innerMainVerify {
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #02044a;
+  padding-top: 1%;
+} */
+.innerMainVerify img {
+  width: 20px;
+}
+.innerMainVerify div {
+  margin-right: 5px;
+  width: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .innerMainVerify p {
+  margin-top: 0px;
+  font-family: "Inter";
+  font-weight: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 10px;
+} */
+/* .innerMainVerify span {
+  color: #fad647;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 10px;
+  border-bottom: 1px solid #fad647;
+  cursor: pointer;
+} */
+
+/* cards  */
+
+.mainClientsOptions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+.innerClientsOptions {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px dashed #b4b4b4;
+  padding-bottom: 4%;
+}
+
+/* .innerClientsOptions > a,
+a.mainQuotationCard {
+  width: 28%;
+  /* background-color: #fff; 
+  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  position: relative;
+  background-image: linear-gradient(45deg, rgb(255, 255, 255), transparent),
+    linear-gradient(45deg, rgb(255, 255, 255), transparent),
+    repeating-linear-gradient(
+      135deg,
+      rgba(175, 175, 175, 0.15) 0px,
+      rgba(175, 175, 175, 0.15) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+  cursor: pointer;
+  align-self: center;
+  /* overflow: hidden; */
+/* filter: grayscale(100%) ; 
+} */
+
+.innerClientsOptions > div,
+.mainQuotationCard {
+  width: 28%;
+  background-color: #fff;
+  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  position: relative;
+  background-image: linear-gradient(45deg, rgb(255, 255, 255), transparent),
+    linear-gradient(45deg, rgb(255, 255, 255), transparent),
+    repeating-linear-gradient(
+      135deg,
+      rgba(175, 175, 175, 0.15) 0px,
+      rgba(175, 175, 175, 0.15) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+  cursor: pointer;
+  align-self: center;
+  /* overflow: hidden; 
+  filter: grayscale(100%) ;  */
+}
+
+.leftLine {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  /* background: linear-gradient(90deg, #FBC2EB 0%, #A6C1EE 100%); */
+  left: 0;
+  border-radius: 999px;
+}
+.innerQuotationCard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.quotationImage {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  min-height: 210px;
+}
+.quotationImage img {
+  width: 70%;
+  object-fit: contain;
+  align-self: center;
+  mix-blend-mode: multiply;
+}
+.quotationInfo {
+  text-align: center;
+  width: 100%;
+}
+.quotationInfo h2 {
+  font-family: "Josefin Sans";
+}
+.quotationInfo p {
+  font-family: "Inter";
+  color: #929292;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .innerClientsOptions {
+    flex-direction: column;
+  }
+  .mainQuotationCard {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  .mainQuotationCard {
+    background-image: none;
+    background-color: #fff;
+  }
+}
+
+/* Your Projects  */
+.mainProjects {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+.innerProjects {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.projectHeading {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.projectHeading h2 {
+  font-family: "Josefin Sans";
+}
+.filtering .filterBtn {
+  display: flex;
+  padding: 0.3rem 0.7rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.filtering .filterBtn h4 {
+  font-family: "Josefin Sans";
+  transform: translateY(5px);
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.allProjects {
+  margin-top: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8%;
+  flex-wrap: wrap;
+  /* margin-left: 5%; */
+}
+.mainProjectCard {
+  width: 26%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  /* box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2); */
+  box-shadow: 1px 1px 24px 1px rgba(0, 0, 0, 0.14);
+  margin: 1rem;
+  border-radius: 35px;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.mainProjectCard:hover{
+  box-shadow: 6px 6px 24px 1px rgba(0, 0, 0, 0.14);
+}
+.innerProjectCard {
+  width: 90%;
+}
+.projectInformation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2%;
+}
+.projectDetails {
+  display: flex;
+  align-items: center;
+}
+.projectDetails .projectImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projectImage img {
+  width: 100%;
+  object-fit: cover;
+}
+.moreDetails button:focus {
+  border: none !important;
+  outline: none !important;
+  padding-right: 0 !important;
+}
+.MuiSvgIcon-root:focus {
+  outline: none !important;
+  border: none !important;
+}
+.projectName h4 {
+  font-family: "Josefin Sans";
+  margin-top: 5%;
+}
+.projectName .projectN {
+  font-family: "Josefin Sans";
+  font-size: 22.599px;
+  text-decoration: none;
+  color: #212529;
+  cursor: pointer;
+  /* margin-top: 5%; */
+}
+
+.projectDescription {
+  margin-top: 1rem;
+  min-height: 6rem;
+}
+.projectDescription p {
+  color: #868686;
+  font-family: "Inter";
+  font-size: 1rem;
+}
+.projectTable div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter";
+  height: 60px;
+}
+.MuiPaper-root {
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1) !important;
+}
+.showInterestModalOverlay {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+.showInterestModal {
+  background: #b2dbbf;
+  max-width: 500px !important;
+  width: 100% !important;
+  min-height: 80vh !important;
+}
+
+@media (max-width: 768px) {
+  .allProjects {
+    flex-direction: column;
+    margin-left: 0;
+  }
+  .mainProjectCard {
+    width: 95%;
+    cursor: pointer;
+  }
+  .mainProjectCard {
+    margin: 1rem 0;
+  }
+}

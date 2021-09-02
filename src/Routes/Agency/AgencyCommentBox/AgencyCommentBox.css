@@ -1,0 +1,857 @@
+.topLine {
+  position: absolute;
+  top: 0;
+  width: 80%;
+  background-color: #ff2b2b;
+  height: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+}
+
+.chatBox-parent {
+  display: flex;
+  flex-direction: column
+}
+
+.chatBox {
+  margin: 2% 0;
+  width: 100%;
+  text-align: right;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chatBox p {
+  padding: 0.5rem 1rem;
+  background-color: red;
+  width: 60%;
+  color: #000;
+  font-weight: 600;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+}
+
+.chatBox-left {
+  text-align: left;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chatBox-left p {
+  border-radius: 10px;
+  border-top-left-radius: 0;
+}
+
+.chatBox b {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.commentBox {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 2rem 1rem 1rem 1rem;
+  width: 100%;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
+  height: 400px;
+  /* overflow: scroll; */
+  overflow: auto;
+  position: relative;
+}
+
+.commentParent {
+  width: 85%;
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .commentParent .MuiOutlinedInput-inputAdornedEnd {
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #A8A8A8;
+} */
+
+.detailHeaderImage_agencyRespondedDetails {
+  margin-right: 1.5%;
+}
+
+.price-section .makeStyles-margin-1 {
+  margin-left: 0 !important;
+}
+
+.detailHeaderImage_agencyRespondedDetails div {
+  width: 87px;
+  height: 83px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.reply-parent {
+  display: flex;
+  flex-direction: column;
+  width: 30%,
+}
+
+.quotation_file_upload {
+  height: 30px;
+  top: 2rem;
+  position: absolute;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 39px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.reply-button {
+  background: none;
+  min-width: 40px;
+  max-width: 80px;
+  border: 2px solid black;
+  border-radius: 4px
+}
+
+.conditional_acceptOrReject {
+  top: 2rem;
+  font-size: 18px;
+  left: 12.5rem;
+  position: absolute;
+  font-weight: 600;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.normal_acceptOrReject {
+  font-size: 18px;
+  left: 12.5rem;
+  position: absolute;
+  font-weight: 600;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+  top: 2rem;
+}
+
+.detailHeaderImage_agencyRespondedDetails div img {
+  width: 62px;
+  object-fit: contain;
+}
+
+.headerInformation_agencyRespondedDetails {
+  width: 100%;
+}
+
+.clientName {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.clientName div {
+  width: 50%;
+}
+
+.clientName h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+
+.action-wait .postQuotation .detailsButtons {
+  /* display: flex;  */
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+  /* margin-right: 4rem; */
+  margin: 1rem 0;
+  /* flex-direction: row !important; */
+}
+
+.postQuotation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.negotiablePrice>input[type='number'] {
+  margin-left: 1rem;
+  min-height: 48px;
+}
+
+.clientExperience {
+  display: flex;
+  align-items: center;
+  /* margin-top: 2%; */
+  flex-wrap: wrap;
+}
+
+.btnInfoDiv {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* .rightBorder {
+  position: absolute;
+  width: 2px;
+  height: 60%;
+  top: 0;
+  right: 0%;
+  background-color: #aaa;
+  border-radius: 999px;
+} */
+
+/* .innerBtnInfoDiv {
+  margin-right: 20px;
+} */
+
+/* .innerBtnInfoDiv p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+} */
+
+.acceptButton, .rejectButton, .detailsButtons>button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  outline: none;
+  background-color: #5cb85c;
+  border: 1px solid #5cb85c;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
+.detailsButtons>a {
+  text-decoration: none;
+  padding: 12px;
+  font-size: 9px;
+  background-color: #02044a;
+  outline: none;
+  border-radius: 999px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.detailsButtons>button:hover {
+  background: rgb(2, 69, 124);
+  color: white;
+}
+
+.rejectButton {
+  border: 1px solid crimson;
+  background-color: crimson;
+}
+
+.acceptButton:hover {
+  color: green;
+  background: white;
+}
+
+.rejectButton:hover {
+  color: red;
+  background: white;
+}
+
+.acceptButton:hover, .acceptButton:focus, .acceptButton:active, .rejectButton:hover, .rejectButton:focus, .rejectButton:active {
+  outline: none;
+}
+
+.postQuotation>button {
+  background-color: #02044a;
+}
+
+.disabled {
+  pointer-events: fill;
+  opacity: 0.5;
+  filter: grayscale(0%);
+}
+
+.action-wait p, .detailsButtons p {
+  color: #000;
+  margin: 0;
+  /* font-weight: bold; */
+}
+
+.margin-0 p {
+  font-size: small;
+}
+
+.proposalCard {
+  width: 100%;
+  background-color: #fff;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.yellowBg {
+  width: 100%;
+  /* height: 250px; */
+  height: 50%;
+  background-color: #fffcec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.yellowBg img {
+  /* width: 50%; */
+  width: 245px;
+  object-fit: contain;
+  position: absolute;
+  top: 6.5rem;
+}
+
+.acceptOrReject_agencyCommentBox {
+  position: absolute;
+  top: 2rem;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+  left: 6rem;
+}
+
+@media (max-width: 768px) {
+  .detailHeaderImage div {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  }
+  .detailHeaderImage div img {
+    width: 100px;
+    object-fit: contain;
+  }
+  .headerInformation {
+    width: 100%;
+  }
+  .clientName {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+  }
+  .clientName div {
+    width: 50%;
+  }
+  .clientName h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+  }
+  .detailsButtons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 1rem;
+    margin: 0.5rem 0;
+  }
+  .postQuotation {
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .clientExperience {
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    flex-wrap: wrap;
+  }
+  .btnInfoDiv {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .rightBorder {
+    position: absolute;
+    width: 2px;
+    height: 60%;
+    top: 0;
+    right: 0%;
+    background-color: #aaa;
+    border-radius: 999px;
+  }
+  .innerBtnInfoDiv {
+    margin-right: 20px;
+  }
+  .innerBtnInfoDiv p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .detailHeaderImage div {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10%;
+  }
+  .innerDetailHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+  .detailHeaderImage div img {
+    width: 40px;
+    object-fit: contain;
+  }
+  .clientExperience {
+    flex-direction: column;
+  }
+  .clientName {
+    flex-direction: column;
+    align-items: center;
+  }
+  .clientName div {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .detailsButtons button {
+    width: 30%;
+    margin: 0 20px 0 0;
+    position: absolute;
+    top: 10%;
+    right: -5%;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.1rem;
+  }
+  .clientExperience {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 5%;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .innerBtnInfoDiv {
+    margin-right: 0;
+  }
+  .clientExperience p {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+  }
+  .rightBorder {
+    display: none;
+  }
+}
+
+.respondDescription {
+  margin-top: 3%;
+  margin-left: 2%;
+}
+
+.respondDescription h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.respondDescription p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  width: 80%;
+  margin-top: 1%;
+  color: #9a9a9a;
+}
+
+@media (max-width: 768px) {
+  .respondDescription p {
+    width: 100% !important;
+  }
+}
+
+/* .respondCards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  margin-top: 2%;
+} */
+
+.innerResponseCard {
+  width: 40%;
+  background-color: #fff;
+  padding: 1rem 2.5rem 2rem 2.5rem;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin: 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.leftLine {
+  position: absolute;
+  width: 10px;
+  background-color: #02044a;
+  top: 50%;
+  left: 0;
+  height: 92%;
+  transform: translateY(-50%);
+}
+
+/* .innerResponseCard div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: max-content;
+  border-bottom: 2px solid #ebebeb;
+} */
+
+.innerResponseCard div p {
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 4%;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.innerResponseCard div p:nth-child(1) {
+  color: #000;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+}
+
+.innerResponseCard div p:nth-child(2) {
+  /* color: #008e80; */
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  /* font-weight: 600; */
+  font-size: 16px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 768px) {
+  .respondCards {
+    flex-direction: column;
+  }
+  .innerResponseCard {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+  .innerResponseCard div p {
+    font-size: 0.9rem;
+  }
+}
+
+.briefDetails {
+  width: 100%;
+  margin-bottom: 5%;
+  position: relative;
+}
+
+.briefDetails img {
+  position: absolute;
+  width: 10%;
+  object-fit: contain;
+}
+
+.leftQuote {
+  top: 0;
+  left: 3%;
+}
+
+.rightQuote {
+  bottom: 0;
+  right: 3%;
+}
+
+.innerBriefDetails {
+  width: 70%;
+  margin-top: 5%;
+}
+
+.briefHeading {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1%;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.briefHeading h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.briefHeading p {
+  background-color: #02044a;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-weight: 600;
+}
+
+.briefQuestions {
+  margin-top: 3%;
+}
+
+.briefQuestions div {
+  margin-bottom: 3%;
+}
+
+.briefQuestions div h4 {
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+  font-size: 1.3rem;
+}
+
+.briefQuestions div p {
+  font-family: 'Open Sans', sans-serif;
+  color: #484848;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .briefHeading {
+    flex-direction: column;
+  }
+  .briefHeading p {
+    padding: 0;
+    background-color: transparent;
+    color: #02044a;
+    font-weight: bold !important;
+    font-size: 1rem;
+  }
+  .briefQuestions div h4 {
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    font-size: 1rem;
+  }
+  .briefQuestions div p {
+    font-family: 'Open Sans', sans-serif;
+    color: #484848;
+    font-size: 0.8rem;
+  }
+}
+
+.agencyQuotation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 3%;
+}
+
+.innerAgencyQuotation {
+  /* padding: 1.5rem; */
+  width: 95%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-radius: 15px;
+}
+
+.quotationleftLine {
+  position: absolute;
+  width: 10px;
+  height: 98%;
+  top: 50%;
+  left: 0;
+  background-color: #02044a;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.agencyQuotationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e9f0ef;
+  padding: 1rem 2rem;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 15px;
+}
+
+.agencyQuotationHeading h2 {
+  font-weight: bold;
+}
+
+.agencyLogo {
+  width: 200px;
+  height: 80px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.agencyLogo img {
+  width: 60%;
+  /* height: 80px; */
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.agencyQuotationDesc {
+  margin-top: 2%;
+  font-family: 'Open Sans', sans-serif;
+  padding: 1rem 2rem;
+}
+
+.agencyQuotationDesc h4 {
+  color: #000;
+}
+
+.agencyQuotationDesc p {
+  color: #484848;
+}
+
+.agencyQuestions {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.agencyQuestions div h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.agencyQuestions div ul {
+  font-family: 'Open Sans', sans-serif;
+  color: #02044a;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  list-style: disc;
+}
+
+@media (max-width: 768px) {
+  .agencyQuestions {
+    flex-direction: column;
+    margin-bottom: 3%;
+  }
+  .innerAgencyQuotation {
+    width: 95%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    border-radius: 15px;
+  }
+  .quotationleftLine {
+    position: absolute;
+    width: 10px;
+    height: 98%;
+    top: 50%;
+    left: 0;
+    background-color: #02044a;
+    border-radius: 999px;
+    transform: translateY(-50%);
+  }
+  .agencyQuotationHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e9f0ef;
+    padding: 1rem 2rem;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 15px;
+  }
+  .agencyQuotationHeading h2 {
+    font-weight: bold;
+  }
+  .agencyLogo {
+    width: 200px;
+    height: 80px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .agencyLogo img {
+    width: 60%;
+    /* height: 80px; */
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .agencyQuotationDesc {
+    margin-top: 2%;
+    font-family: 'Open Sans', sans-serif;
+    padding: 1rem 2rem;
+  }
+  .agencyQuotationDesc h4 {
+    color: #000;
+  }
+  .agencyQuotationDesc p {
+    color: #484848;
+    font-size: 0.9rem;
+  }
+}
+
+.detailsButtons.md-flex {
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: row !important;
+}
+
+.detailsButtons.md-m10 {
+  margin: 10px 0 !important;
+}
+
+.md-flex .color-black {
+  color: #000 !important;
+  margin: 0 !important;
+}

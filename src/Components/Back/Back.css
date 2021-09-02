@@ -1,0 +1,70 @@
+.back-button_newestAddDeveloper {
+  position: relative;
+  background: #F9F9F9;
+  display: flex;
+  width: auto;
+  height: 44px;
+  /* top: 33px; */
+}
+
+.image-div_newestAddDeveloper {
+  width: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.image-div_newestAddDeveloper h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.add-developer-div h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.image-div_newestAddDeveloper>div {
+  border: 2px solid black;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.back-button_newestAddDeveloper .MuiSvgIcon-root {
+  width: 22px;
+  height: 22px;
+}
+
+.back-icon {
+  margin-left: 4px !important;
+}
+
+.hover:hover {
+  color: blue;
+  border-color: blue;
+}
+
+.add-developer-div {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

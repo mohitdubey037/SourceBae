@@ -1,0 +1,108 @@
+.agencyNewestDashboard>div {
+  width: 88%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.sidebar_parent .container-sidebar {
+  position: fixed;
+  top: 0;
+}
+
+.not_found.agencyNewestDashboard {
+  width: max-content;
+  height: 367px;
+  margin: auto;
+  /* margin-top: 1rem; */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.not_found.agencyNewestDashboard p {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17.1875px;
+  line-height: 39px;
+  text-transform: capitalize;
+  color: #000000;
+  margin-top: 1rem;
+}
+
+.conditional_marginTop {
+  margin-top: 20px;
+}
+
+.navbar_parent .navbar {
+  width: 90%;
+  margin-left: 10%;
+}
+
+@media (max-width: 768px) {
+  .project-details-card {
+    width: 300px;
+  }
+}
+
+.mainUpdateVerify {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+  height: 40px;
+}
+
+.innerMainVerify {
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #68e1fd;
+  /* padding-top: 1%; */
+  height: 100%;
+}
+
+.innerMainVerify img {
+  width: 20px;
+}
+
+.innerMainVerify div {
+  margin-right: 5px;
+  width: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerMainVerify p {
+  font-family: "Inter";
+  font-weight: normal;
+  /* font-weight: bold; */
+  font-size: 1rem;
+  margin-top: 0;
+  /* color: #5c1fff; */
+}
+
+.innerMainVerify span {
+  /* color: #fad647; */
+  color: #5c1fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 10px;
+  border-bottom: 1px solid #5c1fff;
+  cursor: pointer;
+}
+
+.conditional_opacity {
+  filter: opacity(0.5);
+}
+
+.userprofile-circle.nav-left-item img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}

@@ -1,0 +1,116 @@
+/* .filter {
+    width: 100%;
+    background: #F9F9F9;
+    border-radius: 12px;
+    min-height: 415px;
+    width: 263px;
+}
+
+.filter h5 {
+    margin-left: 13px;
+    margin-top: 7px;
+}
+
+.reset-filter h6, .apply-filter h6 {
+    padding: 8px;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.reset-filter h6 {
+    color: #FFFFFF;
+    background: #A6C8FF;
+}
+
+.apply-filter h6 {
+    color: #3A3A3A;
+    background: #EAF2FF;
+}
+
+.filter-button {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.status-checkbox {
+    min-height: 155px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.status-checkbox div {
+    display: flex;
+    align-items: center;
+}
+
+.larger-checkbox {
+    width: 40px;
+    height: 24px;
+}
+
+.status-checkbox div p {
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+}
+
+.search-name-heading {
+    margin-left: 13px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.search-name-heading+input {
+    width: 88%;
+    margin-left: 13px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.search-content {
+    margin-top: 10px;
+}
+
+.search-button {
+    margin-top: 14px;
+    margin-right: 19px;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+}
+
+.search-button:hover {
+    cursor: pointer;
+}
+
+.search-button div {
+    width: 50%;
+    font-weight: 600;
+    font-size: 18px;
+    background: #EAF2FF;
+    border-radius: 4px;
+    padding: 7px 10px;
+}
+
+.all-project_div {
+    display: flex;
+    padding: 15px;
+    background: #EAF2FF;
+    margin-left: 49px;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.all-project_div p {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+} */

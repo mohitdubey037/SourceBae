@@ -1,0 +1,40 @@
+.user-operations>.operation {
+    background: #f9f9f9;
+    border-radius: 8px;
+    width: 18%;
+    width: 173px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    min-height: 135px;
+    cursor: pointer;
+}
+
+.user-operations>.operation:nth-last-child(1) {
+    margin-right: 0;
+}
+
+.conditional_disabled {
+    filter: blur(1px);
+}
+
+.conditional_disabled:hover {
+    cursor: auto;
+}
+
+.operation-name {
+    width: 124px;
+    height: 24px;
+    margin-top: 5px;
+}
+
+.operation-name p {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    text-transform: capitalize;
+}

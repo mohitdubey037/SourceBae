@@ -1,0 +1,628 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+button {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.mainProfileHeaderImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marginLeft {
+  margin-left: 0;
+}
+
+.innerProfileHeaderImage {
+  width: 100%;
+  height: 25vh;
+  /* background-image: url('../../assets/images/AgencyProfile/bgImage.png'); */
+  background-image: url('../../assets/images/Newestdashboard/Agency-Profile/Rectangle.svg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seperator {
+  width: 93%;
+  margin-left: 2%;
+  height: 0.08px;
+  position: absolute;
+  bottom: -19px;
+  background-color: #f5f5f5;
+}
+
+.backButtonAgencyProfile {
+  width: 98%;
+  display: flex;
+  position: absolute;
+  left: 2%;
+  top: 20px;
+  align-items: center;
+  height: 50px;
+}
+
+.backButtonAgencyProfile i {
+  margin-right: 10px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.backButtonAgencyProfile h6 {
+  color: #fff;
+  cursor: pointer;
+}
+
+.innerProfileHeaderImage img {
+  margin-left: 10px;
+}
+
+.innerProfileHeaderImage div {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.innerProfileHeaderImage div p {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.innerProfileHeaderImage div p i {
+  margin-right: 10px;
+}
+
+.innerProfileHeaderImage button {
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  width: 25%;
+  height: 56px;
+  font-size: 1.16rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  outline: none;
+  background-color: #8901B9;
+  color: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease-in-out;
+  white-space: nowrap;
+  border: 2px solid #fff;
+}
+
+.innerProfileHeaderImage button i {
+  margin-left: 10px;
+}
+
+.innerProfileHeaderImage span {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mainAskQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerAskQuestion {
+  width: 100%;
+}
+
+.innerAskQuestion h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+
+.questionFields input {
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  outline: none;
+  border: 1px solid #ebebeb;
+  margin-bottom: 3%;
+}
+
+.questionFields button {
+  padding: 0.5rem 1rem;
+  background-color: #02044a;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  border-radius: 999px;
+  outline: none;
+  border: none;
+}
+
+.recetlyAskedQuestion {
+  margin-top: 5%;
+  padding: 1rem;
+}
+
+.recetlyAskedQuestion h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom: 1px dashed #ebebeb;
+}
+
+.recetlyAskedQuestion div {
+  margin-top: 3%;
+}
+
+.recetlyAskedQuestion h3 {
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.recetlyAskedQuestion p {
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+  font-weight: bold;
+}
+
+.customOverlay {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+.customModal {
+  background: #fff !important;
+  min-width: 70vw !important;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.mainAgencyProfileInfo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerAgencyProfileInfo {
+  width: 90%;
+  display: flex;
+}
+
+.mainAgencyProfileLogo {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3%;
+  transform: translateY(-50px);
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.innerAgencyProfileLogo {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.innerAgencyProfileLogo img {
+  width: 100%;
+  width: -webkit-fill-available;
+  mix-blend-mode: multiply;
+}
+
+.mainAgencyProfileContent {
+  margin-top: 2%;
+  width: 80%;
+}
+
+.agencyName {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  /* border-bottom: 1px dashed #ebebeb; */
+  padding-bottom: 5px;
+}
+
+.agencyNameURL {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.agencyNameURL .agencyDEtails {
+  width: 100%;
+  margin-bottom: 1%;
+  margin-top: -3%;
+}
+
+.verifiedStatus {
+  display: flex;
+  color: #5cb85c;
+  align-items: center;
+}
+
+.verifiedStatus i {
+  margin-right: 5px;
+  font-size: 1rem;
+}
+
+.verifiedStatus span {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem !important;
+  margin-left: 2px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.agencyAddress {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  /* background-color: red; */
+}
+
+.agencyAddress i {
+  margin-right: 10px;
+}
+
+.agencyAddress span {
+  font-family: 'Open Sans', sans-serif;
+  color: #444;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.agencyName h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+}
+
+.agencyName p {
+  font-family: 'Open Sans', sans-serif;
+  color: #407bff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.agencyProfileConstantPoints {
+  display: flex;
+  margin-top: 1%;
+  justify-content: space-between;
+}
+
+.agencyProfileConstantPoints .pointContent:nth-child(1) {
+  background: linear-gradient(90deg, #fffeff 0%, #ffd7d7 100%);
+}
+
+.agencyProfileConstantPoints .pointContent:nth-child(2) {
+  background: linear-gradient(90deg, #fffeff 0%, #d7fffe 100%);
+}
+
+.agencyProfileConstantPoints .pointContent:nth-child(3) {
+  background: linear-gradient(90deg, #fffeff 0%, #fff6cc 100%);
+}
+
+.agencyProfileConstantPoints .pointContent:nth-child(4) {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background: #fff;
+}
+
+.agencyProfileConstantPoints .pointContent:nth-child(4) i {
+  font-size: 22px;
+  color: #14ff00;
+}
+
+.agencyProfileConstantPoints .pointContent:nth-child(4) p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.pointContent {
+  height: 80px;
+  width: 20%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.pointContent p, .pointContent h4 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.pointContent p {
+  color: #3a3a3a;
+  font-family: 'Open Sans', sans-serif;
+  /* font-size: 0.8rem; */
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.pointContent h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.78rem;
+  transform: translateY(-10px);
+  margin-top: 20px;
+  color: #3a3a3a;
+}
+
+.mainAgencyProfileDesc {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.innerAgencyProfileDesc {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.leftAgencyProfileDesc {
+  width: 60%;
+  display: flex;
+}
+
+.innerAgencyProfileDesc h2 {
+  font-family: 'Open Sans', sans-serif;
+  /* font-weight: bolder; */
+  font-weight: 600;
+  color: #555;
+  width: 35%;
+}
+
+.innerAgencyProfileDesc h2::after {
+  content: '';
+  width: 80%;
+  height: 2px;
+  border-radius: 999px;
+  background-color: #3a3a3a;
+  display: block;
+}
+
+.leftAgencyProfileDesc p {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.agencyProfileIndustry {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2%;
+}
+
+.agencyProfileIndustry p {
+  width: 20%;
+  /* background-color: #ff9999; */
+  background-color: #1C3C6C;
+  margin-right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2rem 0;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.rightAgencyProfileDesc {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.monthyView {
+  width: 60%;
+  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
+  border: 2px solid #3a3a3a;
+  height: 160px;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  border-radius: 15px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.monthyView.agencyProfile {
+  margin-right: 0;
+}
+
+.monthyView h3 {
+  font-family: 'Open Sans', sans-serif;
+  color: #02044a;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.monthyView p {
+  font-size: 2rem;
+  font-family: 'Fredoka One', cursive;
+  /* transform: translateY(-20px); */
+  color: #65ff3f;
+}
+
+.monthBorder {
+  position: absolute;
+  width: 8px;
+  height: 90%;
+  background-color: #02044a;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 999px;
+}
+
+.uploadButton {
+  position: relative;
+  background-color: #eaf2ff;
+  color: #000;
+  outline: none;
+  border: none;
+  padding: 0.2rem 1rem;
+  border-radius: 0px;
+  font-size: 0.8rem;
+  font-family: 'Open Sans', sans-serif;
+  /* transform: translateY(-20px); */
+  font-weight: 600;
+}
+
+.uploadButton i {
+  margin-right: 5px;
+}
+
+.uploadButton:focus {
+  outline: none;
+}
+
+.innerQuotation_agencyProfile {
+  width: 100%;
+  margin-top: 0;
+  position: relative;
+}
+
+.innerQuotation_agencyProfile .nav {
+  display: block;
+}
+
+/* 
+.MuiPaper-root {
+  left: 1024px !important;
+}  */
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button {
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  margin-right: 4%;
+}
+
+/* .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button:active {
+  border: none !important;
+} */
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link {
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-radius: 15px;
+  border: none;
+  width: 100px;
+  height: 100px;
+  margin-left: 4%;
+}
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button img {
+  width: 15%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link.active {
+  border: none;
+  background-color: #005BAF !important;
+}
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link.active button {
+  /* filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important; */
+  /* filter: invert(95%) sepia(0%) saturate(18%) hue-rotate(302deg) brightness(104%) contrast(104%) !important; */
+  color: white !important;
+}
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link.active img {
+  /* filter: invert(86%) sepia(78%) saturate(1089%) hue-rotate(137deg) brightness(100%) contrast(92%) !important; */
+  /* filter: invert(95%) sepia(0%) saturate(18%) hue-rotate(302deg) brightness(104%) contrast(104%) !important; */
+  color: white !important;
+}
+
+.innerQuotation_agencyProfile .nav-tabs .nav-link:hover {
+  border: none;
+}
+
+.nav-tabs_agencyProfile>#nav-home-tab {
+  margin-top: 10px;
+}
+
+.nav-tabs_agencyProfile>div {
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #FEFEFE;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  width: 120px;
+  height: 123px;
+  margin-left: 20px;
+  margin-bottom: 12px !important;
+}
+
+.innerQuotation_agencyProfile .nav.nav-tabs {
+  border-bottom: none;
+}
+
+.innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile {
+  font: normal 800 10px 'Open Sans', sans-serif !important;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #A8A8A8;
+  margin-right: 0;
+  margin-top: 10px;
+}
+
+.innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile:hover, .nav-button.nav-link_agencyProfile:active .nav-button.nav-link_agencyProfile:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+.innerQuotation_agencyProfile #nav-tabContent {
+  width: 80%;
+  position: absolute;
+  top: 4%;
+  left: 193px;
+}

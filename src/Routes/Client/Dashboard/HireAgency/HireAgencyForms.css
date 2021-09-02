@@ -1,0 +1,1022 @@
+.innerHigherAgencyForm1 {
+    position: relative;
+    height: 890px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    border-radius: 12px;
+    top: 3rem;
+}
+
+.stepCheck .ste {
+    color: #FFFFFF;
+}
+
+.higherAgencyFormArea {
+    width: 70%;
+    padding: 1.5rem 0 0 2.5rem;
+    margin-left: 5rem;
+}
+
+.color-div_hireAgencyForm {
+    background: linear-gradient(90deg, #FBC2EB 0%, #A6C1EE 100%);
+    width: 100%;
+    height: 173px;
+    position: absolute;
+    top: 0rem;
+}
+
+.stepCheck {
+    height: 60px;
+    width: 16%;
+    position: absolute;
+    left: -79px;
+    top: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px rgb(0 0 0 / 25%);
+    border-radius: 0 12px 12px 0;
+}
+
+.mainHireAgencyFormTwo .stepCheck {
+    width: 19%;
+    left: -79px;
+}
+
+.mainHireAgencyForm3 .stepCheck {
+    width: 19%;
+    left: -4.9rem;
+}
+
+.mainHireAgencyForm3 .stepCheck p {
+    left: 7px;
+}
+
+.step-1_hireAgencyForm1 {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.steps_hireAgencyForm {
+    display: flex;
+    justify-content: space-between;
+    width: 53%;
+    margin-top: 6rem;
+    position: relative;
+}
+
+.steps_hireAgencyForm>div, .steps_hireAgencyForm2>div, .steps_hireAgencyForm3>div {
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.steps_hireAgencyForm>div>div>p, .steps_hireAgencyForm2>div>div>p, .steps_hireAgencyForm3>div>div>p {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21.4118px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.keep_the_project_name {
+    width: 28%;
+    position: absolute;
+    top: 64px;
+    left: 27px;
+    padding: 6px;
+}
+
+.write_about_your_project {
+    position: absolute;
+    top: 64px;
+    width: 27%;
+    right: 364px;
+    padding: 6px;
+}
+
+.in_case_you_think {
+    position: absolute;
+    width: 27%;
+    right: 34px;
+    top: 64px;
+    padding: 6px;
+}
+
+.keep_the_project_name p, .write_about_your_project p, .in_case_you_think p {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.steps_hireAgencyForm .grey-step_hireAgencyForm {
+    color: #A8A8A8 !important;
+}
+
+.black-strip_hireAgencyForm1 {
+    color: #000;
+    background-color: #000;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    top: 0.9rem;
+}
+
+.strip1 {
+    left: 9.3rem;
+}
+
+.strip2 {
+    left: 28.5rem;
+    color: #A8A8A8;
+    background-color: #A8A8A8;
+}
+
+.color_hireAgencyForm {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+
+.color_hireAgencyForm.green {
+    background-color: green;
+}
+
+.color_hireAgencyForm.grey {
+    background-color: #A8A8A8;
+}
+
+.steps_hireAgencyForm2 {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 53%;
+    left: 11rem;
+    margin-bottom: 35px;
+}
+
+.mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2 {
+    color: #000;
+    background-color: #000;
+    position: absolute;
+    width: 15%;
+    height: 2px;
+    top: 0.9rem;
+    left: 28.7rem;
+}
+
+.mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip1 {
+    left: 21.5%;
+    top: 0.89rem;
+}
+
+.mainHireAgencyFormTwo .steps_hireAgencyForm2 .black-strip_hireAgencyForm2.strip2 {
+    background-color: #A8A8A8;
+    left: 27.5rem;
+    top: 2rem;
+}
+
+.steps_hireAgencyForm3 {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 53%;
+    left: 11rem;
+    margin-bottom: 38px;
+}
+
+.mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3 {
+    color: #000;
+    background-color: #000;
+    position: absolute;
+    width: 15%;
+    height: 2px;
+    top: 0.9rem;
+}
+
+.mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3.strip1 {
+    left: 9.5rem;
+    top: 0.9rem;
+}
+
+.mainHireAgencyForm3 .steps_hireAgencyForm3 .black-strip_hireAgencyForm3.strip2 {
+    left: 64%;
+    top: 1rem;
+}
+
+.color-div_hireAgencyForm1 {
+    background: #FE5E00;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 79px;
+    height: 60px;
+}
+
+.stepCheck p {
+    position: absolute;
+    left: 9px;
+    top: 4px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    font: normal 600 42px 'Open Sans', sans-serif;
+    line-height: 51px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.stepCheck span {
+    font: normal 600 42px 'Open Sans', sans-serif;
+    line-height: 51px;
+    text-transform: capitalize;
+    color: #02044A;
+}
+
+.input-form_hireAgencyForm1 {
+    margin-top: 8rem;
+    margin-left: 2rem;
+}
+
+.projectNameAgency input {
+    font: normal 500 14px 'Open Sans', sans-serif;
+    line-height: 150%;
+    text-transform: capitalize;
+}
+
+.input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
+    font: normal 600 22px 'Open Sans', sans-serif;
+    text-transform: capitalize;
+}
+
+.error_hireAgencyForm2.error_hireAgencyForm1 {
+    position: absolute;
+    bottom: 0;
+    font-size: 15px !important;
+    font-weight: normal !important;
+}
+
+.backArrow_hireAgencyForm3 {
+    position: fixed;
+    top: 15%;
+    left: 4%;
+    z-index: 100;
+}
+
+.backArrow_hireAgencyForm3 i {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.backArrow_hireAgencyForm2 i {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.projectNameAgency {
+    margin-top: 4%;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 120px;
+    position: relative;
+}
+
+.understand_your_project {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 33px;
+    line-height: 51px;
+    text-transform: capitalize;
+    color: #02044A;
+    position: absolute;
+    width: 80%;
+}
+
+.innerHigherAgencyForm1 ul {
+    margin-bottom: 0;
+    padding-left: 0rem;
+}
+
+.projectNameAgency input {
+    width: 100%;
+    background: #FFFFFF;
+    margin-top: 10px; 
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-transform: capitalize;
+    color: black;
+    border: 1px solid #a2a2a2;
+    border-radius: 8px;
+    height: 56px;
+    padding-left: 10px;
+}
+
+.projectNameAgency input::placeholder {
+    color: #a8a8a8;
+}
+
+.innerHireAgencyFormTwo .monthlyBudget {
+    margin-top: 5% !important;
+}
+
+.descriptionProjectAgency textarea {
+    /* margin-top: 0.5rem; */
+    margin-top: 10px;
+    width: 100%;
+    height: 12rem;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #D1D3D4;
+    border-radius: 8px;
+}
+
+.descriptionProjectAgency {
+    line-height: 1;
+    margin-top: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 272px;
+    position: relative;
+}
+
+.descriptionProjectAgency div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.1rem;
+    align-items: center;
+}
+
+.descriptionProjectAgency div span {
+    font-size: 0.8rem;
+}
+
+.budgetSectionAreaAgency {
+    margin-top: 1rem;
+    display: flex;
+    font-family: 'Open Sans', sans-serif !important;
+    flex-direction: column;
+}
+
+.error_hireAgencyForm2.error-select_hireAgencyForm2 {
+    position: absolute;
+    left: 30px;
+}
+
+.numberOfDays {
+    margin-top: 1.9rem;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95px;
+}
+
+.budgetSectionAreaAgency .MuiTypography-root {
+    font: normal 500 14px 'Open Sans', sans-serif !important;
+    line-height: 17px !important;
+    text-transform: capitalize !important;
+    color: black !important
+}
+
+.daysInputAgency {
+    border-radius: 8px;
+    border: 1px solid #999;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    height: 56px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.daysInputAgency .upArrow {
+    position: absolute;
+    width: 22px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ebebeb;
+    border-top-right-radius: 8px;
+    top: 0;
+    right: 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.daysInputAgency .downArrow {
+    position: absolute;
+    width: 22px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ebebeb;
+    border-bottom-right-radius: 8px;
+    bottom: 0;
+    right: 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.higherAgencyInfoArea {
+    width: 75%;
+    height: 18rem;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.points-to-remember_hireAgencyForm1 {
+    width: 23%;
+    margin-left: 1.9rem;
+}
+
+.cardsDetail_hireAgencyForm1 {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 23px;
+    position: relative;
+}
+
+.cards_hireAgencyForm1 {
+    background: linear-gradient(90deg, #FFECD2 0%, #FCB69F 100%);
+    opacity: 0.33;
+    border: 1px solid #A2A2A6;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    width: 287px;
+    height: 182px;
+}
+
+.cards_hireAgencyForm1 p {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 150%;
+    text-transform: capitalize;
+    color: #000;
+    text-align: center;
+}
+
+.points-to-remember_hireAgencyForm1>h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 150%;
+    /* or 33px */
+    text-transform: capitalize;
+    color: #02044A;
+}
+
+.nextbtn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nextbtn button {
+    width: 16%;
+    padding: 0.3rem 1rem;
+    color: #fff;
+    outline: none;
+    border: none;
+    background-color: #26AFFF;
+    font: bold 1.2rem 'Open Sans', sans-serif;
+}
+
+/* Hire Agency Form 2 */
+
+.stepTwo p {
+    padding: 0.3rem 1rem;
+}
+
+.mainHireAgencyForm1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+    position: relative;
+    flex-direction: column;
+}
+
+.mainHireAgencyFormTwo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 8rem;
+    height: 117vh;
+}
+
+.mainHireAgencyForm3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+    position: absolute;
+    top: 8rem;
+    height: 120vh;
+}
+
+.innerHireAgencyFormTwo {
+    height: 38rem;
+    width: 776px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    margin-bottom: 5%;
+    margin-left: 10%;
+    border-radius: 12px;
+    top: 3rem;
+}
+
+.domainsFields .domainHeading {
+    font: bold 1.3rem 'Open Sans', sans-serif
+}
+
+.domainFieldsCard div img {
+    width: 50%;
+    margin-bottom: 4%;
+}
+
+.domainFieldsCard div p {
+    font-display: initial;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.domainBudget {
+    margin-top: 5%;
+}
+
+.domainBudget p {
+    font: bold 1.3rem 'Open Sans', sans-serif;
+}
+
+.domainBudgetOptions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-left: 38px;
+}
+
+.radio-label_hireAgencyForm2 {
+    width: 50%;
+}
+
+.serivcesHireAgency .servicesAgencyHeading {
+    font: normal 600 22px 'Open Sans', sans-serif;
+    line-height: 150%;
+    text-transform: capitalize;
+    margin-bottom: 4%;
+}
+
+.servicesCardsHireAgency {
+    margin-left: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 39.5rem;
+}
+
+.tech-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tech-container div {
+    width: 134px;
+    border: 1px solid #A4A4A4;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    min-height: 134px;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.servicesCardsHireAgency div img {
+    width: 70px;
+    user-select: none;
+}
+
+.servicesCardsHireAgency div p {
+    margin-top: 10px;
+    user-select: none;
+    font: normal 500 18px 'Open Sans', sans-serif;
+    line-height: 150%;
+    text-transform: capitalize;
+    width: 80%;
+    text-align: center;
+}
+
+.serviceFieldsOptions.newHireAgencyForm3 .servicesHireAgencyContainer {
+    margin-top: 0%;
+    height: 100%;
+    border: 1px dashed #ebebeb;
+    padding-bottom: 6%;
+    background: #fff;
+    width: 100%;
+    position: absolute;
+    right: 0rem;
+    height: 28rem;
+}
+
+.servicesHireAgencyContainer.hireAgencyForm2 {
+    margin-top: 7%;
+    border: 1px dashed #ebebeb;
+    padding-bottom: 6%;
+    background: #fff;
+    width: 41%;
+    position: absolute;
+    right: -22rem;
+    height: 28rem;
+}
+
+.mainHireAgencyFormTwo .MuiFormGroup-root {
+    flex-direction: row !important;
+    margin-left: 0 !important;
+}
+
+.mainHireAgencyForm1 .MuiFormGroup-root {
+    flex-direction: row !important;
+    margin-left: 0 !important;
+}
+
+.mainHireAgencyFormThree .MuiFormGroup-root {
+    flex-direction: row !important;
+    margin-left: 0 !important;
+}
+
+.UIUXServices {
+    font-family: 'Open Sans', sans-serif;
+    margin-top: -20px;
+    padding-top: 0
+}
+
+.UIUXServices div, .UIUXServices input {
+    outline: none;
+    border: none;
+}
+
+.serviceSelectionInput {
+    margin-top: 10%;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 150%;
+    letter-spacing: 0.611765px;
+    text-transform: capitalize;
+    color: #02044A;
+    padding: 10px;
+}
+
+.serviceSelectionInput .margin-left {
+    text-transform: capitalize;
+    color: #a8a8a8;
+    margin-left: 19px;
+    height: 51px;
+    width: 90%;
+    background: #ffffff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding-left: 0;
+    background-color: red;
+    margin-top: 1rem;
+}
+
+.monthlyBudget {
+    margin-top: 5%;
+}
+
+.monthlyBudget p {
+    font: bold 1.2rem 'Open Sans', sans-serif;
+}
+
+.innerHireAgencyForm3 {
+    width: 60%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    padding: 1.5rem;
+    display: flex;
+    height: 610px;
+    position: relative;
+    margin-bottom: 3%;
+    left: -9rem;
+    border-radius: 12px
+}
+
+.serviceFieldsOptions.newHireAgencyForm3 {
+    width: 40%;
+    position: absolute;
+    right: -22rem;
+    height: 31rem;
+    top: 3rem;
+}
+
+.techStackFields {
+    width: 100%;
+    margin-left: 5rem;
+    margin-top: 2rem;
+}
+
+.innerHireAgencyForm3 .techStackFields {
+    margin-left: 44px;
+    margin-top: 0;
+}
+
+.techStackFields ul {
+    margin-left: 0.61rem;
+}
+
+.domainFieldsCard {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.domainsFields .domainHeading {
+    font: bold 1.3rem 'Open Sans', sans-serif;
+}
+
+.domainFieldsCard div {
+    width: 22%;
+    background-color: skyblue;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.domainFieldsCard div img {
+    width: 50%;
+    margin-bottom: 4%;
+}
+
+.domainFieldsCard div p {
+    font-display: initial;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.domainBudget {
+    margin-top: 5%;
+}
+
+.domainBudget p {
+    font: bold 1.3rem 'Open Sans', sans-serif;
+}
+
+.HireAgencyForm3Heading {
+    margin-left: 45px;
+    width: 80%;
+}
+
+.HireAgencyForm3Heading h2 {
+    font: normal 600 42px 'Open Sans', sans-serif;
+    line-height: 51px;
+    text-transform: capitalize;
+    color: #02044A;
+}
+
+.HireAgencyForm3Heading span::after {
+    content: '';
+    width: 100px;
+    height: 2px;
+    background-color: #000;
+}
+
+.mainHireAgencyFormTwo .serivcesHireAgency {
+    height: 45%;
+    position: relative;
+}
+
+.serivcesHireAgency .servicesAgencyHeadingForm3 {
+    font: normal 600 22px 'Open Sans', sans-serif;
+    line-height: 150%;
+    text-transform: capitalize;
+    color: #3A3A3A;
+}
+
+.servicesCardsAgency {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.servicesCardsAgency div {
+    width: 22%;
+    background-color: skyblue;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    min-height: 160px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.servicesCardsAgency div img {
+    width: 50%;
+    margin-bottom: 4%;
+}
+
+.servicesCardsAgency div p {
+    font-display: initial;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.servicesContainer {
+    height: 100vh;
+    overflow: scroll;
+    border: 1px dashed #ebebeb;
+    margin-left: 2px;
+}
+
+.serviceFieldsOptions .uiuxtext {
+    /* margin-left: 38px; */
+    font: bold 1.2rem 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.serviceSelectionInput {
+    margin-top: 10%;
+}
+
+.monthlyBudget {
+    margin-top: 8%;
+}
+
+.monthlyBudget p {
+    font: normal 600 22px 'Open Sans', sans-serif;
+    line-height: 27px;
+    text-transform: capitalize;
+    color: #3A3A3A;
+}
+
+.nextbuttton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    padding-right: 5%;
+}
+
+.nextbuttton>div :hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #eaf2ff;
+}
+
+.techStackFields .nextbutton {
+    margin-top: 5%;
+}
+
+.nextbutton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+    border-radius: 4px;
+    padding: 0 20px;
+}
+
+.nextbuttton div, .nextbutton div {
+    background: #EAF2FF;
+    border-radius: 4px;
+    width: 114px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: normal 600 14px 'Open Sans', sans-serif;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: black;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nextbuttton>div:hover, .nextbutton div:hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #eaf2ff;
+}
+
+.backbutton_hireAgencyForm2:hover {
+    background-color: rgb(95, 185, 178) !important;
+    color: #eaf2ff !important;
+}
+
+.backbutton_hireAgencyForm3:hover {
+    background-color: rgb(95, 185, 178) !important;
+    color: #eaf2ff !important;
+}
+
+.innerHireAgencyForm3 .servicesCardsHireAgency {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 40rem;
+    height: 220px;
+    position: relative;
+}
+
+.innerHireAgencyForm3 .serivcesHireAgency {
+    margin-top: 5rem;
+}
+
+.error_hireAgencyForm2 {
+    color: red;
+    font-weight: normal;
+    font-size: 14px;
+    width: 92%;
+    margin: auto;
+}
+
+.error_hireAgencyForm3 {
+    margin-top: 1rem;
+    color: red;
+    font-weight: normal;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}

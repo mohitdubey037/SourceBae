@@ -1,0 +1,222 @@
+.respond-card_parent {
+  position: relative;
+  top: 20px;
+  background: #F9F9F9;
+  border-radius: 15px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  min-height: 418px;
+  margin: auto;
+  flex-direction: column;
+  padding: 25px;
+  grid-row-gap: 20px;
+}
+
+.conditional_back_parent {
+  margin-top: 1%;
+}
+
+.width {
+  background: #FFFFFF;
+  border: 0.33px solid #A8A8A8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  width: 817px;
+  /* padding: 1rem 15.5rem 2rem 1.5rem; */
+  padding: 1.5rem;
+  margin: auto;
+}
+
+.width div {
+  border-bottom: none;
+  width: 65%;
+}
+
+.moreAgencies_shared .fas {
+  color: white !important;
+}
+
+.moreAgencyHeading.no_border {
+  border-bottom: none;
+}
+
+.innerResponseCard.width.borderNone {
+  border-bottom: none;
+}
+
+.moreAgencies_shared.new_design {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 30%;
+  background: #E482C9;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  height: 60px;
+  bottom: 0px;
+  right: 0;
+  padding-bottom: 0;
+}
+
+.moreAgencies_shared.new_design div {
+  margin-bottom: 0;
+  width: 91%;
+  justify-content: space-around;
+  padding-bottom: 0 ;
+}
+
+.moreAgencies_shared.new_design h3 {
+  padding: 0;
+}
+
+.name_circle {
+  background: #E8E2E2;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name_circle>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  width: max-content;
+}
+
+.name_circle>div>p {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #F13C9E;
+}
+
+.moreAgencyCard.new-design {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #FFFFFF;
+  opacity: 0.22;
+  border-radius: 22px;
+  width: 132px;
+  height: 200px;
+  justify-content: space-evenly;
+}
+
+.view-resume_div {
+  background: #FFFFFF;
+  border: 1px solid #F348A4;
+  box-sizing: border-box;
+  border-radius: 5.54545px;
+  padding: 7px;
+  margin-top: 20px;
+}
+
+.view-resume_div:hover {
+  background-color: beige;
+}
+
+.new_design_sharedDeveloper .moreAgencyInfo {
+  margin-top: 14px;
+}
+
+.moreAgencyLogo.new-design {
+  position: absolute;
+  bottom: 40px;
+}
+
+.no_border h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  /* font-weight: bold;
+  text-align: center; */
+  color: #ffffff;
+}
+
+.view-resume_child {
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.554545px;
+  text-transform: capitalize;
+}
+
+.innerResponseCard.width div p:nth-child(2) {
+  /* color: #008e80;
+  font-weight: 500; */
+  width: 200px;
+  font-weight: normal;
+  text-align: start;
+  color: black;
+  font-size: 16px;
+}
+
+.no_border:hover {
+  cursor: pointer;
+}
+
+.developers-div {
+  background: #FFFFFF;
+  border: 0.33px solid #A8A8A8;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 12px;
+  min-height: 240px;
+  padding: 20px;
+  margin: auto;
+  position: relative;
+}
+
+.respondCards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.developers-div .moreAgencyList {
+  display: flex;
+  grid-column-gap: 20px;
+  grid-row-gap: 1.3rem;
+  width: 845px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.names_of_developer {
+  width: 153px;
+  min-height: 172px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.show-more_sharedDeveloper {
+  position: absolute;
+  right: 27px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #407BFF;
+  bottom: 9px;
+}
+
+.show-more_sharedDeveloper:hover {
+  border-bottom: 2px solid #407bff;
+}

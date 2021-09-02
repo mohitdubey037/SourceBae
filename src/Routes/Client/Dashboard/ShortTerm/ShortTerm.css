@@ -1,0 +1,449 @@
+.marginLeft {
+  margin-top: 1%;
+  margin-left: 0;
+}
+
+.backArrow_shortTerm {
+  position: absolute;
+  top: 12%;
+  left: 4%;
+}
+
+.backArrow_shortTerm i {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.howToPay .fixedPrice .MuiFormControlLabel-root {
+  display: block;
+  margin-right: 0;
+}
+
+.mainShortTerm {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 111rem;
+}
+
+.innerShortTerm {
+  width: 80%;
+  margin-top: 1%;
+  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1%;
+  padding: 2rem 1rem;
+}
+
+.innerShortTerm ul {
+  font: 600 22px 'Open Sans', sans-serif;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #3a3a3a;
+  margin-bottom: 0.3rem;
+}
+
+.shortTermHeading {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.shortTerm_OrangeColor {
+  z-index: 0;
+  position: absolute;
+  height: 20px;
+  width: 149px;
+  background-color: #fe5e00;
+  bottom: 36px;
+  left: 301px;
+}
+
+.shortTermHeading h1 {
+  font: normal 600 42px 'Open Sans sans-serif';
+  line-height: 51px;
+  text-transform: capitalize;
+  color: #02044a;
+  z-index: 1;
+}
+
+.shortTermHeading p {
+  font: normal 600 18px 'Open Sans', sans-serif;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #3a3a3a;
+}
+
+.tellUsWhatYouNeed {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.tellUsWhatYouNeed h6 {
+  text-align: center;
+  line-height: 39px;
+  text-transform: capitalize;
+  color: #000000;
+  font: normal 600 2rem 'Open Sans', sans-serif;
+}
+
+.shortTermProjectType {
+  margin-top: 5%;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tech-container_shortTerm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 25%;
+  height: 200px;
+}
+
+.tech-container_shortTerm div {
+  border: 1px solid #A4A4A4;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerShortTerm ul~span {
+  margin-left: 35px;
+}
+
+.innerShortTerm ul~div {
+  margin-top: 10px;
+  margin-left: 35px;
+}
+
+.leftLineProject {
+  position: absolute;
+  width: 8px;
+  height: 100%;
+  background-color: #3498db;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  /* border-radius: 999px; */
+  z-index: -1;
+}
+
+.shortTermProjectType div h2 {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.shortTermProjectType div img {
+  width: 40%;
+}
+
+.shortTermProjectType div:hover .leftLineProject {
+  width: 100%;
+}
+
+.shortTermProjectName {
+  margin-top: 4%;
+  padding-left: 3rem;
+}
+
+.shortTermProjectName input, .shortTermOptionSelect input {
+  width: 60%;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: black;
+  border: 1px solid #a2a2a2;
+  border-radius: 8px;
+  height: 56px;
+  padding-left: 10px;
+}
+
+.shortTermProjectName div input::placeholder {
+  color: #A8A8A8;
+}
+
+.shortTermProjectName input:focus {
+  border: 1px solid #3498db;
+}
+
+.shortTermProjectDesc {
+  margin-top: 5%;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  width: 80%;
+  padding-left: 3rem;
+}
+
+.startABit_shortTermProjectDesc {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #706E6E;
+}
+
+/* .shortTermProjectDesc p {
+  font: normal 500 18px 'Open Sans sans-serif';
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #3a3a3a;
+} */
+
+.shortTermProjectDesc span {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.shortTermProjectDesc textarea {
+  /* margin-top: 10px; */
+  height: 185px;
+  width: 79%;
+  padding-left: 10px;
+  border: 1px solid #000;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 10px;
+}
+
+.shortTermProjectDesc textarea:focus {
+  border: 1px solid #3498db;
+}
+
+.wordsLimit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 76%;
+}
+
+.wordsLimit p {
+  font-size: 9px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #706E6E;
+}
+
+.shortTermFileUpload {
+  margin-top: 4%;
+}
+
+.uploadBlock {
+  margin-left: 52px;
+  width: 81%;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.6rem 18px;
+}
+
+.mainShortTerm .MuiFormGroup-root {
+  flex-direction: row !important;
+  margin-left: 0 !important;
+}
+
+.fileUploadButton {
+  width: 14%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #02044a;
+  border-radius: 30px;
+}
+
+.fileUploadButton div {
+  width: 100%;
+  text-align: center;
+  padding: 0.3rem 0rem;
+  cursor: pointer;
+  font: normal 600 18px 'Open Sans', sans-serif;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #407bff;
+}
+
+.fileUploadButton input {
+  margin-left: 5px;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.uploadInfo {
+  width: 79%;
+}
+
+.uploadInfo p {
+  font: normal 500 14px 'Open Sans', sans-serif;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #a8a8a8;
+}
+
+.shortTermOptionSelect {
+  margin-top: 5%;
+  padding-left: 3rem;
+}
+
+.shortTermOptionSelect>div:nth-child(3) {
+  margin-top: 10px;
+}
+
+.shortTermOptionSelect ul~div>div {
+  font: normal 500 14px 'Open Sans', sans-serif;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #706e6e;
+}
+
+.shortTermOptionSelect h6 {
+  font: bold 1.2rem 'Open Sans', sans-serif;
+}
+
+.howToPay {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3rem;
+}
+
+.howToPay h6 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 3%;
+}
+
+.innerHowToPay {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fixedPrice {
+  width: 30%;
+  display: flex;
+  /* box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2); */
+  margin: 0.5rem;
+  padding: 0.5rem;
+  min-height: 105px;
+  cursor: pointer;
+  position: relative;
+}
+
+.fixedPrice i {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 1.2rem;
+  color: #2fab73;
+}
+
+.fixedImage {
+  margin-left: 0px;
+  width: 20%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixedImage img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.fixedContent {
+  margin-left: 25px;
+  width: 52%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fixedContent h6 {
+  font: normal 500 14px 'Open Sans', sans-serif;
+  line-height: 17px;
+  text-transform: capitalize;
+  color: #3a3a3a;
+}
+
+.fixedContent p {
+  font: normal 500 8px 'Open Sans', sans-serif;
+  line-height: 10px;
+  text-transform: capitalize;
+  color: #a8a8a8;
+}
+
+.estimatedBudget {
+  margin-top: 2%;
+  width: 80%;
+  padding-left: 3rem;
+}
+
+.estimatedBudgetText~div {
+  margin-left: 30px;
+  width: 68%;
+}
+
+.post-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-project div {
+  margin-top: 40px;
+  background: #eaf2ff;
+  border-radius: 8px;
+  width: 124px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: normal 600 14px 'Open Sans', sans-serif;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3a3a3a;
+  cursor: pointer;
+  color: black;
+}
+
+.post-project div:hover {
+  cursor: pointer;
+  background-color: blue;
+  color: #eaf2ff;
+}
+
+.post-project:hover i {
+  transform: translateX(10px);
+}

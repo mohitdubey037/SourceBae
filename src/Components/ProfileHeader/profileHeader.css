@@ -1,0 +1,59 @@
+.header__main {
+    display: flex;
+    background: #fff;
+    height: 7vh;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2%;
+    width: 100%;
+    box-shadow: 0px 5px 30px rgba(0,0,0,0.2);
+}
+
+.search__area {
+    display: flex;
+    align-items: center;
+    margin-right: 2%;
+    width: 200px;
+}
+
+.search__area > input {
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 1%;
+    font-size: .9rem;
+    outline: none;
+}
+
+.search__area > input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-size: .9rem;
+}
+
+.addnewteam__buttonContainer {
+    margin-right: 2%;
+}
+
+.new__teamButton {
+    color: #fff;
+    outline: none;
+    border: none;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 0;
+}
+
+.new__teamButton > span {
+    font-size: .9rem;
+}
+
+.plus__icon > .fa-plus {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-right: 5px;
+}
+
+.MuiAccordionSummary-root {
+    margin-top: 5% !important;
+}
