@@ -13,8 +13,8 @@ import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } f
 
 const AntSwitch = withStyles((theme) => ({
     root: {
-        width: 60,
-        height: 28,
+        width: 43,
+        height: 14,
         padding: 0,
         // display: 'flex',
         borderColor: "#fff",
@@ -38,8 +38,8 @@ const AntSwitch = withStyles((theme) => ({
         },
     },
     thumb: {
-        width: 30,
-        height: 27,
+        width: 13,
+        height: 13,
         boxShadow: "none",
         borderRadius: '46%'
     },
@@ -83,11 +83,11 @@ function DeveloperList(props) {
     };
 
     const handleChangeToggle = (event, ind) => {
-        let tempIndexes;
-        if(tempIndexes[ind]){
+        let tempIndexes = { ...toggleIndexes }
+        if (tempIndexes[ind]) {
             tempIndexes[ind] = !tempIndexes[ind]
         }
-        else{
+        else {
             tempIndexes[ind] = true
         }
         setToggleIndexes(tempIndexes)
@@ -168,7 +168,8 @@ function DeveloperList(props) {
                             return (
                                 <div className="developerCard">
                                     <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
-                                        <img src={crossIcon} alt="cross-icon" />
+                                        {/* <img src={crossIcon} alt="cross-icon" /> */}
+                                        <i class="fas fa-trash-alt"></i>
                                     </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
@@ -179,7 +180,7 @@ function DeveloperList(props) {
                                             <div className={`rounded_developerList ${state.checked && toggleIndexes[index] && "conditionalColor"}`}></div>
                                         </div>
                                         <div className="developerExp">
-                                            {( toggleIndexes[index]) ?
+                                            {(toggleIndexes[index]) ?
                                                 <p style={{ color: '#FF0000' }}>Unavailable</p>
                                                 :
                                                 <p>Available</p>
@@ -215,49 +216,44 @@ function DeveloperList(props) {
                                                     <h6>{`$${developer.developerPriceRange}-$${developer.developerPriceRange + 3 * 1000}`}</h6>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <div className="developers_content">
                                             <div className="developers-status_parent" onClick={() => IndexSetter(index)}>
                                                 <div className="developer-status_developerList">
-                                                    {/* <div className="developer-status_developerListChild"> */}
-                                                        <p>Developer Status</p>
-                                                        {/* <div className={`arrow_image ${(open && toggleIndexes) && "conditionalRotate"}`}>
-                                                            <img src={ArrowButton} alt="no found" />
-                                                        </div> */}
-                                                    {/* </div> */}
+                                                    <p>Developer Status</p>
                                                 </div>
-                                                <div className="developerResume">
-                                                    <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} >Download</button>
+                                                <div style={{ display: (open && toggleIndexes === index) && 'none' }} className="availability_toggle">
+                                                    <FormGroup>
+                                                        <Typography component="div">
+                                                            <Grid
+                                                                component="label"
+                                                                container
+                                                                alignItems="center"
+                                                                spacing={1}
+                                                            >
+                                                                <Grid item className="statusLabel">
+                                                                    Available
+                                                                </Grid>
+                                                                <Grid item>
+                                                                    <AntSwitch
+                                                                        checked={!!toggleIndexes[index]}
+                                                                        onChange={(event) => handleChangeToggle(event, index)}
+                                                                        name="checked"
+                                                                    />
+                                                                </Grid>
+                                                                <Grid item className="statusLabel">
+                                                                    Unavailable
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Typography>
+                                                    </FormGroup>
                                                 </div>
                                             </div>
-                                            <div style={{ display: (open && toggleIndexes === index) && 'none' }} className="availability_toggle">
-                                                <FormGroup>
-                                                    <Typography component="div">
-                                                        <Grid
-                                                            component="label"
-                                                            container
-                                                            alignItems="center"
-                                                            spacing={1}
-                                                        >
-                                                            <Grid item className="statusLabel">
-                                                                Available
-                                                            </Grid>
-                                                            <Grid item>
-                                                                <AntSwitch
-                                                                    checked={!!toggleIndexes[index]}
-                                                                    onChange={(event) => handleChangeToggle(event, index)}
-                                                                    name="checked"
-                                                                />
-                                                            </Grid>
-                                                            <Grid item className="statusLabel">
-                                                                Unavailable
-                                                            </Grid>
-                                                        </Grid>
-                                                    </Typography>
-                                                </FormGroup>
+                                            <div className="developerResume">
+                                                <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} >Download</button>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
