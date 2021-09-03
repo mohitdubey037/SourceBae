@@ -212,9 +212,17 @@
     display: flex;
     justify-content: space-between;
 }
+.innerLeftPersonelDetailsForm .formContentPartOne .agencyLogo_parent {
+    position: relative;
+    height: 17.5rem;
+}
 
 .getAgencyLogo, .getAgencyDesc {
     width: 48%;
+}
+
+.getAgencyDesc {
+    position: relative;
 }
 
 .getAgencyLogo {
@@ -315,12 +323,15 @@
     font-weight: normal !important;
     font-size: 14px !important;
     position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .getOwnerName {
     width: 48%;
     line-height: 0.5;
     position: relative;
+    height: 7rem;
 }
 
 .formContentPartTwo input {

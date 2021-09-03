@@ -1,7 +1,7 @@
 .agencyNewestDashboard>div {
   width: 88%;
   margin: auto;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .sidebar_parent .container-sidebar {
@@ -11,16 +11,17 @@
 
 .not_found.agencyNewestDashboard {
   width: max-content;
-  height: 367px;
-  margin: auto;
-  /* margin-top: 1rem; */
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  display: flex;
+    height: 325px;
+    margin: auto;
+    display: flex;
 }
 
-.not_found.agencyNewestDashboard p {
+.not_found.agencyNewestDashboard img {
+  width: 23rem;
+}
+
+
+/* .not_found.agencyNewestDashboard p {
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -29,7 +30,7 @@
   text-transform: capitalize;
   color: #000000;
   margin-top: 1rem;
-}
+} */
 
 .conditional_marginTop {
   margin-top: 20px;

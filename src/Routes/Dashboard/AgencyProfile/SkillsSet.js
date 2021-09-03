@@ -359,11 +359,13 @@ function SkillsSet(props) {
                             })
                         }
                     </div>
-                    <div onClick={() => handleEdit(false)} className="information_save_parent">
-                        <div className="information_save">
-                            <p>Submit</p>
+                    {editStatus &&
+                        <div onClick={() => handleEdit(false)} className="information_save_parent">
+                            <div className="information_save">
+                                <p>Submit</p>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
 
             </div>

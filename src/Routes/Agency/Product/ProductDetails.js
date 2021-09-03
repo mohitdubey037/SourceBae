@@ -232,12 +232,12 @@ function ProductDetails(props) {
                         <img src={logo} alt="" />
                       </div>
                       <div className="peoductNameTags">
-                        <h1>{value.agencyId.agencyName}</h1>
+                        <h1>{value?.agencyId?.agencyName}</h1>
                         {Role === "Client" && (
                           <span
                             onClick={() =>
                               props.history.push({
-                                pathname: `/agency-profile:${value.agencyId._id}`,
+                                pathname: `/agency-profile:${value?.agencyId?._id}`,
                                 condition: `Client`,
                               })
                             }
@@ -245,14 +245,14 @@ function ProductDetails(props) {
                             View Profile
                           </span>
                         )}
-                        <p>{value.agencyId.agencyDescription}</p>
+                        <p>{value?.agencyId?.agencyDescription}</p>
                         <div className="productTags">
-                          {value.agencyId.agencyDomains.map((a) => {
+                          {value?.agencyId?.agencyDomains.map((a) => {
                             return (
                               <p>
                                 {" "}
                                 <i class="fa fa-tag" aria-hidden="true"></i>
-                                {a.domainId.domainName}
+                                {a?.domainId?.domainName}
                               </p>
                             );
                           })}
@@ -412,8 +412,8 @@ function ProductDetails(props) {
                           <h3>Similar Agencies</h3>
                         </div>
                         <div className="moreAgencyList_productDetails">
-                          {similarAgency.length > 0 ? (
-                            similarAgency.map((value) => {
+                          {similarAgency?.length > 0 ? (
+                            similarAgency?.map((value) => {
                               console.log(value);
                               return (
                                 <>
