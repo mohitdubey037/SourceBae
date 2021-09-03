@@ -270,7 +270,7 @@ function AgencyNewestDashboard(props) {
                                             })
                                         ) :
                                             // <p>No Projects</p>
-                                            <div className="not_found agencyNewestDashboard">
+                                            <div className={`not_found agencyNewestDashboard ${(verified || steps === -1) && 'conditionalHeight'}`}>
                                                 <img src={NotFound} alt="NotFound" />
                                                 {/* <p>No Project Available</p> */}
                                             </div>

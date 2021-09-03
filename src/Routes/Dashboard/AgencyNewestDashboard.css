@@ -16,6 +16,10 @@
     display: flex;
 }
 
+.not_found.agencyNewestDashboard.conditionalHeight {
+  margin-top: 8%;
+}
+
 .not_found.agencyNewestDashboard img {
   width: 23rem;
 }
