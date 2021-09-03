@@ -11,7 +11,7 @@ import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/Investm
 import './ClientNewestDashboard.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
-import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound.svg';
+import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound_new.svg';
 
 import Input from "@material-ui/core/Input";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -187,7 +187,7 @@ function ClientNewestDashboard(props) {
                                         }) :
                                             <div className="not_found clientNewestDashboard">
                                                 <img src={NotFound} alt="NotFound" />
-                                                <p>No projects available</p>
+                                                {/* <p>No projects available</p> */}
                                             </div>
                                     }
                                 </div>
