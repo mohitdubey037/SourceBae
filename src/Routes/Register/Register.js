@@ -201,6 +201,9 @@ const Register = (props) => {
             if (agencyProfileDetails?.agencyName === "") {
                 err.agencyNameError = 'Agency name is required'
             }
+            else if (agencyProfileDetails?.agencyName.match(/^[0-9]+$/)) {
+                err.agencyNameError = 'Agency name must be in characters.'
+            }
             else if (agencyProfileDetails?.agencyName.length < 2) {
                 err.agencyNameError = 'Agency name must be between 2 characters.'
             }
@@ -419,8 +422,10 @@ const Register = (props) => {
             if (Object.keys(err).length === 0) {
                 let form1 = document.querySelector('.form__1')
                 let form2 = document.querySelector('.form__2')
-                form1.classList.toggle('hide__form1')
-                form2.classList.toggle('show__form2')
+                form1.classList.toggle('hide__form1');
+                form1.classList.toggle('display__form1');
+                form2.classList.toggle('show__form2');
+                form2.classList.toggle('display__form2');
             }
             else {
                 return false
@@ -430,8 +435,11 @@ const Register = (props) => {
         else {
             let form1 = document.querySelector('.form__1')
             let form2 = document.querySelector('.form__2')
-            form1.classList.toggle('hide__form1')
-            form2.classList.toggle('show__form2')
+            form1.classList.toggle('hide__form1');
+            form1.classList.toggle('display__form1');
+            form2.classList.add('display__form');
+            form2.classList.toggle('show__form2');
+            form2.classList.toggle('display__form2');
             setStep(prev => prev - 1)
         }
     }

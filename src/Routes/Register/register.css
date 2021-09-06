@@ -18,11 +18,11 @@
 }
 
 .image_register {
-  width: 100vw;
+  width: 100%;
 }
 
 .image_register img {
-  width: 100vw;
+  width: 100%;
 }
 
 .logoPart {
@@ -360,6 +360,10 @@ input:focus-visible, input:focus {
   outline: none;
 }
 
+.form__2 {
+  display: none;
+}
+
 .form__2, .form__3, .form__4 {
   position: absolute;
   top: 0;
@@ -433,12 +437,22 @@ input:focus-visible, input:focus {
   transition: 0.4s ease;
 }
 
+.display__form1 {
+  display: none ;
+}
+
+.display__form2 {
+  display: flex;
+}
+
 .show__form2 {
   transform: translateX(0);
   transition: 0.4s ease;
   padding-top: 20px;
   padding-left: 25px;
   padding-right: 20px;
+  background: #F5F5F5;
+  position: relative;
 }
 
 .hide__form2 {
