@@ -437,7 +437,6 @@ const Register = (props) => {
             let form2 = document.querySelector('.form__2')
             form1.classList.toggle('hide__form1');
             form1.classList.toggle('display__form1');
-            form2.classList.add('display__form');
             form2.classList.toggle('show__form2');
             form2.classList.toggle('display__form2');
             setStep(prev => prev - 1)
