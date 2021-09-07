@@ -6,6 +6,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Sidebar from './Components/ClientNewestDashboard/Sidebar/Sidebar';
+import * as serviceWorker from "./serviceWorker";
 
 //REDUX
 
@@ -28,4 +29,6 @@ ReactDOM.render(
   </Provider>
   , document.getElementById('root')
 );
+
+serviceWorker.register();
 

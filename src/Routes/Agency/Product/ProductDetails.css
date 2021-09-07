@@ -427,3 +427,9 @@
     font-weight: bold;
     color: #2E86C1;
 }
+
+@media(min-width: 1024px) {
+    .priceRange .MuiFormControlLabel-root {
+        width: 41.45%;
+    }
+}

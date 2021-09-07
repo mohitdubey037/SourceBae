@@ -1,12 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Route, Switch } from 'react-router-dom';
-
+import firebase from './firebase';
 import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
 import Signup from './Routes/Signup/Signup';
 import Register from './Routes/Register/Register';
+
 
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
 import Quotation from './Routes/Dashboard/Quotation/Quotation';
@@ -49,6 +50,19 @@ import { withRouter } from "react-router";
 import './App.css';
 
 const App = (props) => {
+
+useEffect(() => {
+  if (window.Notification.permission === "denied") {
+    // toast.error("please allow notification permission");
+  } else {
+    const messaging = firebase.messaging();
+    messaging.getToken().then((token) => {
+      console.log("token", token);
+    });
+  }
+},[])
+
+
   return (
     <Switch>
       <Route exact path='/' component={Mainhomepage} />
