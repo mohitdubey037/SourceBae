@@ -123,6 +123,7 @@ function SkillsSet(props) {
     }
 
     const handleAddItem = (arrItem) => {
+        updateAgency()
         let temp = arr
         let index = temp.indexOf(arrItem)
         if (index > -1 && addItem !== "") {
@@ -191,6 +192,7 @@ function SkillsSet(props) {
             }
 
             setArr(temp)
+            setEditStatus(false);
         }
         onCloseModal()
 
@@ -359,13 +361,13 @@ function SkillsSet(props) {
                             })
                         }
                     </div>
-                    {editStatus &&
+                    {/* {editStatus &&
                         <div onClick={() => handleEdit(false)} className="information_save_parent">
                             <div className="information_save">
                                 <p>Submit</p>
                             </div>
                         </div>
-                    }
+                    } */}
                 </div>
 
             </div>

@@ -88,20 +88,19 @@ button {
 
 .innerProfileHeaderImage button {
   position: absolute;
-  bottom: -15px;
-  right: 0;
-  width: 25%;
-  height: 56px;
-  font-size: 1.16rem;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
-  outline: none;
-  background-color: #8901B9;
-  color: #fff;
-  border-radius: 2px;
-  transition: 0.3s ease-in-out;
-  white-space: nowrap;
-  border: 2px solid #fff;
+    bottom: -15px;
+    right: 0;
+    width: 18%;
+    height: 47px;
+    font-size: 1.16rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    outline: none;
+    background-color: #8901B9;
+    color: #fff;
+    border-radius: 2px;
+    transition: 0.3s ease-in-out; 
+    border: 2px solid #fff;
 }
 
 .innerProfileHeaderImage button i {

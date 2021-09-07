@@ -151,8 +151,8 @@ function RespondedDetails(props) {
                     </p>
                   </div>
 
-                  <div onClick={() => setShowDevelopers(!showDevelopers)} className="moreAgencies_shared new_design no_border">
-                    <div style={{ paddingBottom: '0' }}>
+                  <div style={{display: singleHiredDeveloper?.agencyMatched === undefined && 'none'}} onClick={() => setShowDevelopers(!showDevelopers)} className="moreAgencies_shared new_design no_border">
+                    <div style={{ paddingBottom: '0'}}>
                       <h3>Matched Developer</h3>
                       <i style={{display: singleHiredDeveloper?.agencyMatched === undefined && 'none'}} className={`fas fa-chevron-down ${showDevelopers && "conditionalRotate"}`}></i>
                     </div>

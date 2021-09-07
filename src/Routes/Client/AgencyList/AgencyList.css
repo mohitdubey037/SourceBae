@@ -61,7 +61,7 @@
 }
 
 .innerprojectDetailsInfo_agencyList p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
 }
@@ -69,8 +69,7 @@
 .innerprojectDetailsInfo_agencyList span {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
-  /* color: #9696f5; */
-  color: #b2dbbf;
+  color: #000;
 }
 
 .innerprojectDetailsInfo_agencyList span em {
@@ -85,10 +84,9 @@
 }
 
 .innerAgencyList_agencyList {
-  margin-top: 2%;
+  margin-top: 1%;
   width: 100%;
   display: flex;
-  /* justify-content: space-around; */
   margin-left: 12%;
 }
 

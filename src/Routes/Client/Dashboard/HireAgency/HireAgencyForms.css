@@ -732,7 +732,7 @@
 
 .serviceSelectionInput .margin-left {
     text-transform: capitalize;
-    color: #a8a8a8;
+    /* color: #a8a8a8; */
     margin-left: 19px;
     height: 51px;
     width: 90%;
@@ -742,6 +742,10 @@
     padding-left: 0;
     background-color: red;
     margin-top: 1rem;
+}
+
+.serviceSelectionInput button svg {
+    color: black !important;
 }
 
 .monthlyBudget {
