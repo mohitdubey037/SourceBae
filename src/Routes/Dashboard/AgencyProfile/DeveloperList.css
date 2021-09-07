@@ -27,6 +27,10 @@
   top: 16px;
 }
 
+.cross-icon:hover {
+  cursor: pointer;
+}
+
 .cross-icon .fas {
   font-size: 1.5rem !important;
 }
@@ -78,7 +82,7 @@
 } */
 
 .developerName {
-  width: 100%;
+  width: 90%;
   margin-bottom: 0.9rem;
   position: relative;
   display: flex;

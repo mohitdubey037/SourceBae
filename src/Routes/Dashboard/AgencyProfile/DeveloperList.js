@@ -95,6 +95,7 @@ function DeveloperList(props) {
     };
 
     const deleteDevelopers = () => {
+        console.log('hi');
         instance.delete(`api/${Role}/developers/delete/${developerId}`)
             .then(function (response) {
                 // setDevelopers(response);
@@ -164,7 +165,6 @@ function DeveloperList(props) {
                         </>
                         :
                         developers.map((developer, index) => {
-                            console.log(developer);
                             return (
                                 <div className="developerCard">
                                     <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
