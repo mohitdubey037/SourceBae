@@ -83,7 +83,7 @@
 
 .developerName {
   width: 90%;
-  margin-bottom: 0.9rem;
+  /* margin-bottom: 0.9rem; */
   position: relative;
   display: flex;
   align-items: center;
@@ -104,7 +104,7 @@
 
 .developerExp {
   font-family: 'Open Sans', sans-serif;
-  line-height: 0.1;
+  /* line-height: 0.1; */
 }
 
 .developerExp p {
