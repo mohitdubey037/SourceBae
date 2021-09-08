@@ -115,21 +115,23 @@
 .straightLineParent_agencyRespondedDetails {
   position: absolute;
   width: 21%;
-  height: 3%;
+  height: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 14.6rem;
+  /* left: 14.6rem; */
+  left: 20%;
 }
 
 .straightLineParent_agencyRespondedDetails2 {
   position: absolute;
   width: 21%;
-  height: 3%;
+  height: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 43.5rem;
+  /* left: 43.5rem; */
+  left: 60%;
 }
 
 .straightLine_AgencyRespondedDetails {
@@ -752,5 +754,23 @@
   .agencyQuotationDesc_AgencyRespondedDetails p {
     color: #484848;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 728px) {
+  .straightLineParent_agencyRespondedDetails, .straightLineParent_agencyRespondedDetails2 {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .straightLineParent_agencyRespondedDetails {
+    width: 16%;
+    height: 4%;
+    left: 23.5%;
+  }
+  .straightLineParent_agencyRespondedDetails2 {
+    width: 16%;
+    height: 4%;
+    left: 62.5%;
   }
 }
