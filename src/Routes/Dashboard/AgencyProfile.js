@@ -295,10 +295,9 @@ function AgencyProfile(props) {
             <div className="mainAskQuestion">
               <div className="innerAskQuestion">
                 <div className="questionAsking">
-                  <h1>For any Help:</h1>
-
-                  <h3>Support Email: connect@onesourcing.in</h3>
-                  <h3>Support Number: +91 95755 17047</h3>
+                  <h3>For any Help:</h3>
+                  <h5>Support Email: connect@onesourcing.in</h5>
+                  <h5>Support Number: +91 95755 17047</h5>
                 </div>
 
               </div>

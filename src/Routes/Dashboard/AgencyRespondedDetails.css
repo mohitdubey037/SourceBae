@@ -757,12 +757,12 @@
   }
 }
 
-@media (max-width: 728px) {
+@media (max-width: 800px) {
   .straightLineParent_agencyRespondedDetails, .straightLineParent_agencyRespondedDetails2 {
     display: none;
   }
 }
-@media (max-width: 1024px) {
+@media (min-width: 801px) and (max-width: 1024px) {
   .straightLineParent_agencyRespondedDetails {
     width: 16%;
     height: 4%;
