@@ -2,63 +2,14 @@
 import React, { useEffect, useState } from 'react'
 import './register.css'
 import { useParams } from 'react-router'
-import logotext from '../../assets/images/Logo/logo.png'
-import business from '../../assets/images/Logo/sspp.png'
-import colors from '../../Constants/colors'
 import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button, TextField } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
 import Spinner from '../../Components/Spinner/Spinner';
 import cookie from "react-cookies";
-import ClientImage from "../../assets/images/Newestdashboard/Register/ClientImage.png";
-import AgencyImage from "../../assets/images/Newestdashboard/Register/AgencyImage.png";
-
 import imgRegister from '../../assets/images/Newestdashboard/Register/img_register.svg';
-
-const AntSwitch = withStyles((theme) => ({
-    root: {
-        width: 80,
-        height: 32,
-        padding: 0,
-        // display: 'flex',
-        borderColor: "#fff",
-    },
-    switchBase: {
-        padding: 2,
-        // color: "#02044a",
-        top: -2,
-        left: -2,
-        color: '#4786FE',
-        "&$checked": {
-            transform: "translateX(39px)",
-            // color: "#7CB9E8",
-            color: '#4786FE',
-            "& + $track": {
-                opacity: 0.82,
-                backgroundColor: "white",
-            },
-            border: "1px solid #EBF5FB",
-        },
-    },
-    thumb: {
-        width: 39,
-        height: 32,
-        boxShadow: "none",
-        borderRadius: '46%'
-    },
-    track: {
-        // border: `1px solid #02044a`,
-        borderRadius: 78 / 2,
-        opacity: 1,
-        backgroundColor: "white",
-        opacity: 0.82,
-        border: '4px solid #BDD4FF',
-    },
-    checked: {},
-}))(Switch);
 
 const dateStyles = makeStyles((theme) => ({
     container: {
@@ -92,9 +43,6 @@ const dateStyles = makeStyles((theme) => ({
 const Register = (props) => {
     //Regular Variables
     const dateClasses = dateStyles();
-    // const [state, setState] = React.useState({
-    //     checked: JSON.parse(localStorage.getItem("toggle")) || false
-    // });
     const [state, setState] = useState('');
     const [token, setToken] = useState(null);
     let { role } = useParams();
@@ -350,10 +298,7 @@ const Register = (props) => {
 
     const createRoleString = (role) => {
         role = role.charAt(0).toUpperCase() + role.slice(1)
-        // if (role === 'Agency')
         return role;
-        // else
-        // return `a ${role}`
     }
 
     const toggleForms = (direction) => {
@@ -465,23 +410,9 @@ const Register = (props) => {
     const roleString = createRoleString(role)
     return (
         <div className='client__registrationContainer'>
-            {/* <div className="image__container">
-                <img className="hamaraLogo" src={logotext} alt="" />
-                <img className="businessModals" src={business} alt="" />
-            </div> */}
-
-            {/* <div style={{ flex: .35 }}>
-            </div> */}
 
             {loading ? <Spinner /> :
                 <>
-                    {/* <div className="image_register">
-                        {role === 'Agency' ?
-                            <img src={AgencyImage} alt="client image" />
-                            :
-                            <img src={ClientImage} alt="client image" />
-                        }
-                    </div> */}
                     <div className='form__area'>
                         <div className="client__form">
                             <div className="toggleButton register">
@@ -631,13 +562,6 @@ const Register = (props) => {
                                 </div>
 
                                 <form autoComplete='off' className="client__form form__2">
-                                    {/* <div style={{ width: '80%' }}>
-                                    <Button onClick={() => toggleForms('prev')}
-                                        style={{ background: 'none', border: 'none' }}
-                                    >
-                                        <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
-                                    </Button>
-                                </div> */}
                                     {
                                         role === `Agency` ?
                                             <>
