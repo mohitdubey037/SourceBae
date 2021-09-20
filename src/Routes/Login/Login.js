@@ -35,44 +35,6 @@ import cookie from "react-cookies";
 
 const borderLight = "rgba(206,212,218, .993)";
 
-// const AntSwitch = withStyles((theme) => ({
-//     root: {
-//         width: 80,
-//         height: 32,
-//         padding: 0,
-//         borderColor: "#fff",
-//     },
-//     switchBase: {
-//         padding: 2,
-//         top: -2,
-//         left: -2,
-//         color: '#4786FE',
-//         "&$checked": {
-//             transform: "translateX(39px)",
-//             color: '#4786FE',
-//             "& + $track": {
-//                 opacity: 0.82,
-//                 backgroundColor: "white",
-//             },
-//             border: "1px solid #EBF5FB",
-//         },
-//     },
-//     thumb: {
-//         width: 39,
-//         height: 32,
-//         boxShadow: "none",
-//         borderRadius: '46%'
-//     },
-//     track: {
-//         borderRadius: 78 / 2,
-//         opacity: 1,
-//         backgroundColor: "white",
-//         opacity: 0.82,
-//         border: '4px solid #BDD4FF',
-//     },
-//     checked: {},
-// }))(Switch);
-
 const useStyles = makeStyles((theme) => ({
     inputs: {
         position: "relative",
@@ -112,16 +74,12 @@ const useStyles = makeStyles((theme) => ({
 const Login = (props) => {
     const classes = useStyles();
     let { role } = useParams();
-    console.log(role);
     role = helper.capitalize(helper.cleanParam(role));
     if (!(role.toLowerCase() === "agency" || role.toLowerCase() === "client"))
         props.history.push("/page-not-found");
 
     const [loading, setLoading] = useState(false);
-    const [state, setState] = React.useState({
-        checked: JSON.parse(localStorage.getItem("toggle")) || false,
-    });
-    console.log(state.checked);
+    const [state, setState] = useState('')
     const [hidePassword, SetPasswordStatus] = useState(true);
     const [form, setForm] = useState({
         user: "",
@@ -131,8 +89,9 @@ const Login = (props) => {
     const [token, setToken] = useState(null);
 
     useEffect(() => {
-        localStorage.setItem("toggle", state.checked);
-        state.checked === false
+        localStorage.setItem("toggle", state);
+        console.log(state);
+        state === '' || state === 'agency'
             ? props.history.push("/login:agency")
             : props.history.push("/login:client");
     }, [state]);
@@ -142,22 +101,15 @@ const Login = (props) => {
         SetPasswordStatus((prevCheck) => !prevCheck);
     };
 
-    const handleChangeToggle = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
+    const handleChangeToggle = (name) => {
+        console.log(name);
+        setState(name);
     };
 
     //Methods
 
     const createRoleString = () => {
         role = role.charAt(0).toUpperCase() + role.slice(1);
-        // if (state.checked === false) {
-        //     console.log('agency chala');
-        //     return `an ${role}`;
-        // }
-        // if (state.checked === true) {
-        //     console.log('client chala')
-        //     return `a ${role}`;
-        // }
         return role
     };
 
@@ -205,7 +157,6 @@ const Login = (props) => {
                 setLoading(false);
                 props.history.push("/clientNewestDashboard");
             }
-
             else {
                 console.log(localStorage.getItem('Authorization', token))
             }
@@ -258,19 +209,14 @@ const Login = (props) => {
                             <div className="loginContent">
                                 <div className="mainLoginForm">
                                     <div className="login_switch">
-                                        <button className="agency__button"><p>Agency</p></button>
-                                        <button className="client__button"><p>Client</p></button>
-                                        {/* <div>
-                                            <p>Agency</p>
-                                        </div>
-                                        <div>
-                                            <p>Client</p>
-                                        </div> */}
+                                        <button onClick={() => handleChangeToggle('agency')} className={`agency__button ${(state === '' || state === 'agency') && "active__button"}`}><p>Agency</p></button>
+
+                                        <button onClick={() => handleChangeToggle('client')} className={`client__button ${(state === 'client' && "active__button")}`}><p>Client</p></button>
                                     </div>
                                     <div className="loginHeading">
                                         <h6>
                                             Login as {
-                                                state.checked === false ?
+                                                state === '' ?
                                                     <><span>an</span><span className="agencyOrClient">{` ${roleString}`}</span></>
                                                     :
                                                     <><span>a</span><span className="agencyOrClient">{` ${roleString}`}</span></>
@@ -309,6 +255,9 @@ const Login = (props) => {
                                             className={classes.input}
                                             InputLabelProps={{
                                                 shrink: true,
+                                            }}
+                                            onChange={(e) => {
+                                                handleChange(e);
                                             }}
                                             placeholder="Enter an email"
                                             variant="filled"
@@ -360,6 +309,9 @@ const Login = (props) => {
                                             className={classes.input}
                                             InputLabelProps={{
                                                 shrink: true,
+                                            }}
+                                            onChange={(e) => {
+                                                handleChange(e);
                                             }}
                                             placeholder="Password"
                                             variant="filled"

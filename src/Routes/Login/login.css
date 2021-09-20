@@ -187,23 +187,25 @@ button {
   padding: 7px;
   position: absolute;
   font-family: 'Segoe UI';
+  color: #4786FE;
 }
 
-.login_switch .agency__button {
-  color: white;
+.agency__button {
   left: 4px;
   z-index: 1;
   border: none;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
+  /* background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); */
 }
 
-.login_switch .client__button {
+.client__button {
   color: #4786FE;
   right: 3px;
 }
 
-.active__button {
+.login_switch .active__button {
   z-index: 2;
+  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
+  color: white;
 }
 
 /* .login_switch>div:nth-child(1) {

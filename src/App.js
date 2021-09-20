@@ -5,7 +5,6 @@ import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import Dashboard from './Routes/Dashboard/Dashboard'
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
-import AyushmanLogin from './Routes/Login/ayushmanLogin';
 import Signup from './Routes/Signup/Signup';
 import Register from './Routes/Register/Register';
 
@@ -69,7 +68,6 @@ useEffect(() => {
       <Route exact path='/' component={Mainhomepage} />
       <Route exact path='/signup' component={Signup} />
       <Route exact path="/login:role" component={Login} />
-      <Route exact path="/ayushmanLogin" component={AyushmanLogin} />
       {/* <Route exact path="/loginNew" component={NewLogin} /> */}
       <Route exact path='/register:role' component={Register} />
       {/* <Route exact path='/newestRegister:role' component={NewestRegister} /> */}
