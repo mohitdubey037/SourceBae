@@ -210,7 +210,6 @@ const Login = (props) => {
                                 <div className="mainLoginForm">
                                     <div className="login_switch">
                                         <button onClick={() => handleChangeToggle('agency')} className={`agency__button ${(state === '' || state === 'agency') && "active__button"}`}><p>Agency</p></button>
-
                                         <button onClick={() => handleChangeToggle('client')} className={`client__button ${(state === 'client' && "active__button")}`}><p>Client</p></button>
                                     </div>
                                     <div className="loginHeading">

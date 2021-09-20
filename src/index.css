@@ -11,6 +11,10 @@
   src: url('./Fonts/Segoe\ UI\ Bold.ttf');
 }
 @font-face {
+  font-family: 'Segoe UI Semibold';
+  src: url('./Fonts/seguisb.ttf');
+}
+@font-face {
   font-family: 'Segoe UI';
   src: url('./Fonts/Segoe\ UI.ttf');
 }
