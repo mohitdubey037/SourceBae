@@ -91,9 +91,10 @@ const dateStyles = makeStyles((theme) => ({
 const Register = (props) => {
     //Regular Variables
     const dateClasses = dateStyles();
-    const [state, setState] = React.useState({
-        checked: JSON.parse(localStorage.getItem("toggle")) || false
-    });
+    // const [state, setState] = React.useState({
+    //     checked: JSON.parse(localStorage.getItem("toggle")) || false
+    // });
+    const [state, setState] = useState('');
     const [token, setToken] = useState(null);
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
@@ -258,8 +259,8 @@ const Register = (props) => {
     }
 
     useEffect(() => {
-        localStorage.setItem('toggle', state.checked);
-        state.checked === false ? props.history.push('/register:agency') : props.history.push('/register:client');
+        localStorage.setItem('toggle', state);
+        (state.checked === '' || state === 'agency') ? props.history.push('/register:agency') : props.history.push('/register:client');
     }, [state]);
 
     const handleChangeToggle = (event) => {
