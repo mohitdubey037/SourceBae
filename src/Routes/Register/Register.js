@@ -601,7 +601,7 @@ const Register = (props) => {
 
                                                 {/* <form className={dateClasses.container} noValidate> */}
                                                 <div className="input_with_error">
-                                                    <label classname={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
+                                                    <label className={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
                                                     <input
                                                         style={{ width: '39%', paddingLeft: '2.5%', paddingRight: '2%' }}
                                                         id="incorporation_date"

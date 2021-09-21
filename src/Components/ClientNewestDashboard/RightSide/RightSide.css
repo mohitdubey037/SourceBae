@@ -1,13 +1,16 @@
 .content-rightBody_parent {
-  width: 26%;
+  background-color: white;
+  border-radius: 0.5rem;
 }
 
 .content-rightBody {
   display: flex;
   flex-direction: column;
-  /* padding: 10px 40px 10px 40px; */
   padding: 10px 7px 10px 22px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 83vh;
+  width: 21vw;
+  justify-content: space-around;
 }
 
 .content-rightBody > .rightBody-navigation {
@@ -25,12 +28,10 @@
 
 .navigation-name > p,
 .heading-text > p {
-  font-family: Inter;
-  font-style: normal;
+  font-family: 'Segoe UI Semibold';
   font-weight: bold;
   font-size: 16px;
   text-align: center;
-  letter-spacing: 0.4px;
   text-transform: capitalize;
   color: #3a3a3a;
   cursor: pointer;
@@ -47,18 +48,18 @@
   align-items: center;
 }
 
-.item-content {
+/* .item-content {
   width: 100%;
-}
+} */
 
-.item-content > .itemContent-heading {
+.itemContent-heading {
   display: flex;
   justify-content: space-between;
-  margin: 2px 40px;
+  width: 88%;
 }
 
 .heading-text > p {
-  border-bottom: 3px solid #02044a;
+  /* border-bottom: 3px solid #02044a; */
   padding-right: 60px;
 }
 
@@ -74,7 +75,6 @@
 .itemContent-cta {
   display: flex;
   flex-direction: column;
-  /* margin-top: 20px; */
 }
 
 .itemContent-cta > .cta-item {
@@ -82,19 +82,17 @@
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  margin: 0px 15px;
-  min-width: 200px;
+  margin: 0px 0px;
+  min-width: 227px;
   min-height: 90px;
   background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 12px;
   margin-top: 20px;
 }
 
 .itemContent-cta > .cta-item {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  font-family: 'Segoe UI Semibold';
   font-size: 16px;
   text-align: center;
   letter-spacing: 0.4px;
@@ -102,22 +100,22 @@
   color: #3a3a3a;
 }
 
-.cta-item > .view-details-btn {
+/* .cta-item > .view-details-btn {
   border: none;
-}
+} */
 
 .cta-item > .view-details-btn > button {
-  padding: 0.5rem 2rem;
+  padding: 0.3rem 1.1rem;
   background: #68e1fd;
-  border-radius: 12px;
+  border-radius: 22px;
   border: inherit;
   margin-top: 5%;
+  font-family: 'Segoe UI';
+  color: #ffffff
 }
 
-.content-rightBody {
+/* .content-rightBody {
   min-height: 585px;
   min-width: 310px;
   background: #f9f9f9;
-  mix-blend-mode: normal;
-  border-radius: 45px 10px 10px 10px;
-}
+} */

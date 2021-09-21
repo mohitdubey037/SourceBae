@@ -4,6 +4,12 @@
   /* margin-top: 20px; */
 }
 
+.Navbar-clientDashboard {
+  /* background-image: linear-gradient(to right, #45A4E4 , #5C6DFF); */
+  background-color: white;
+  height: 100vh;
+}
+
 .sidebar_parent .container-sidebar {
   position: fixed;
   top: 0;

@@ -127,9 +127,9 @@ function ClientNewestDashboard(props) {
             <div className="Navbar-clientDashboard">
                 {/* <Navbar /> */}
                 <div className="navbar">
-                    <div className="navbar-heading">
+                    {/* <div className="navbar-heading">
                         <h1>SourceBae</h1>
-                    </div>
+                    </div> */}
                     <div className="navbar-items">
                         {/* <div className="notification-icon nav-left-item">
                             <img src={notificationIcon} alt="notification" />

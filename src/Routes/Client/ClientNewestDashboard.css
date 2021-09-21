@@ -7,8 +7,8 @@
 }
 
 .container-body.margin-0 {
-  margin-top: 0px !important;
-  padding-top: 1rem;
+  margin-top: 1.5rem !important;
+  /* padding-top: 1rem; */
 }
 
 .user-operations {
@@ -16,15 +16,16 @@
 }
 
 .dashboard-container {
-  width: 100%;
+  width: 87%;
   height: 90vh;
   display: flex;
+  margin-left: 13%;
 }
 
-.container-body {
+/* .container-body {
   width: 90%;
-  margin-left: 10%;
-}
+  margin-left: 13%;
+} */
 
 .user-project .user-project-details {
   display: flex;
@@ -46,7 +47,6 @@
 
 .graphic-illustration-heading h6 {
   font-family: 'Open Sans', sans-serif;
-  font-style: normal;
   font-weight: bold;
   font-size: 15px;
   line-height: 32px;
@@ -86,10 +86,11 @@
 }
 
 .Navbar-clientDashboard .navbar {
-  margin-left: 10%;
-  /* justify-content: flex-end; */
+  margin-left: 15%;
   position: relative;
   display: flex;
+  width: 83.5%;
+  justify-content: flex-end;
 }
 
 .dashboard-container .container-sidebar {
@@ -108,7 +109,6 @@
   padding: 4px 9px;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  font-style: normal;
   font-weight: bold;
   font-size: 12px;
   padding-right: 13px;
@@ -125,14 +125,11 @@
 .graphic {
   display: flex;
   justify-content: space-between;
-  display: flex;
-  justify-content: space-between;
   width: 87%;
   margin: auto;
 }
 
-
-.notificationPanel{
+.notificationPanel {
   position: fixed;
   width: 30%;
   height: 100%;
@@ -140,15 +137,17 @@
   z-index: 999;
   background-color: #fff;
   right: -50%;
-  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 16px 2px rgba(0, 0, 0, 0.2);
   transition: 0.3s ease-in-out;
   display: flex;
   justify-content: center;
 }
-.notificationPanel.open{
+
+.notificationPanel.open {
   right: 0;
 }
-.overlay{
+
+.overlay {
   width: 100%;
   display: block;
   position: fixed;
@@ -157,53 +156,61 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
-.innerNotificationPanel{
+
+.innerNotificationPanel {
   width: 90%;
   margin-top: 5%;
   height: 100vh !important;
 }
-.notificationsCards{
+
+.notificationsCards {
   width: 100%;
 }
-.closeNotification i{
+
+.closeNotification i {
   font-size: 2.5rem;
   cursor: pointer;
   transition: 0.4s ease-in-out;
 }
 
-.closeNotification i:hover{
+.closeNotification i:hover {
   transform: rotate(180deg);
 }
 
-.allNotification{
+.allNotification {
   display: flex;
   align-items: center;
   margin-top: 5%;
   flex-direction: row-reverse;
   margin-bottom: 8%;
 }
-.allNotificationIcon{
+
+.allNotificationIcon {
   width: 50px;
   height: 50px;
   overflow: hidden;
 }
-.allNotificationIcon img{
+
+.allNotificationIcon img {
   width: 100%;
   object-fit: contain;
 }
-.allNotificationText{
+
+.allNotificationText {
   margin-right: 5%;
 }
-.allNotificationText p{
+
+.allNotificationText p {
   font-size: 2.2rem;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   transform: translateY(5px);
 }
-.allNotificationText p::after{
+
+.allNotificationText p::after {
   content: '';
   width: 100px;
   height: 2px;
@@ -211,25 +218,26 @@
   display: block;
   margin: auto;
   margin-top: 4%;
-  
 }
-.notificationsCard{
+
+.notificationsCard {
   height: 75vh;
   background-color: #f9f9f9;
   overflow: scroll;
   padding: 0.8rem;
 }
 
-.notificationPoint{
+.notificationPoint {
   border-bottom: 1px dashed #5bc0de;
   padding-top: 3%;
 }
-.notificationPoint p{
+
+.notificationPoint p {
   font-family: 'Open Sans', sans-serif;
   font-size: 0.9rem;
 }
 
-.notificationPoint p::before{
+.notificationPoint p::before {
   content: '';
   width: 8px;
   height: 8px;
@@ -238,14 +246,17 @@
   background-color: #999;
   margin-right: 10px;
 }
-.notificationsCard::-webkit-scrollbar{
+
+.notificationsCard::-webkit-scrollbar {
   width: 6px;
 }
+
 .notificationsCard::-webkit-scrollbar-track {
-background: #fff; 
+  background: #fff;
 }
 
 .notificationsCard::-webkit-scrollbar-thumb {
-background-color: #3498DB; 
-border-radius: 10px;;
+  background-color: #3498DB;
+  border-radius: 10px;
+  ;
 }

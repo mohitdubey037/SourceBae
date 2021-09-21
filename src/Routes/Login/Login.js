@@ -117,6 +117,8 @@ const Login = (props) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        console.log(name);
+        console.log(value);
         setForm({
             ...form,
             [name]: value,
@@ -247,6 +249,7 @@ const Login = (props) => {
                                             }
                                         /> */}
                                         <TextField
+                                            name="user"
                                             id="filled-number"
                                             label="Enter an Email"
                                             type="text"
@@ -301,6 +304,7 @@ const Login = (props) => {
                                         /> */}
                                         <TextField
                                             style={{ marginTop: '30px' }}
+                                            name="password"
                                             id="filled-number"
                                             label="Enter a password"
                                             type="text"

@@ -3,9 +3,9 @@ import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import RightSide from '../../Components/ClientNewestDashboard/RightSide/RightSide';
 import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/UserOperations';
 
-import QuotationIcon from '../../assets/images/Newestdashboard/Agency_Navbar/Vector.svg';
-import MobileIcon from "../../assets/images/Newestdashboard/Agency_Navbar/carbon_data-view.svg";
-import ThirdIcon from '../../assets/images/Newestdashboard/Agency_Navbar/3Icon.svg';
+import QuotationIcon from '../../assets/images/Newestdashboard/Agency_Navbar/q-icon.svg';
+import addDeveloperIcon from "../../assets/images/Newestdashboard/Agency_Navbar/add-developer.svg";
+import ThirdIcon from '../../assets/images/Newestdashboard/Agency_Navbar/view-product.svg';
 import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
 
 import './AgencyNewestDashboard.css'
@@ -69,9 +69,9 @@ function AgencyNewestDashboard(props) {
         getAllProjects();
     }, []);
 
-    useEffect(()=> {
+    useEffect(() => {
         console.log(agencyProfileData);
-    },[agencyProfileData])
+    }, [agencyProfileData])
 
     const getStepsCompleted = () => {
         instance
@@ -156,9 +156,9 @@ function AgencyNewestDashboard(props) {
     return (
         <div className="Navbar-clientDashboard">
             <div className="navbar">
-                <div className="navbar-heading">
-                        <h1>SourceBae</h1>
-                    </div>
+                {/* <div className="navbar-heading">
+                    <h1>SourceBae</h1>
+                </div> */}
                 <div className="navbar-items">
                     {/* <div className="notification-icon nav-left-item">
                         <img src={notificationIcon} alt="notification" />
@@ -177,9 +177,8 @@ function AgencyNewestDashboard(props) {
                     </div>
                 </div>
             </div>
+            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div className="dashboard-container">
-                <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-
                 <div className="container-body margin-0">
                     <div className="content-body">
                         <div className="content-leftBody">
@@ -213,29 +212,29 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 </div>
                             )}
-                            <div className={ `user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`} style={{ marginTop: (!verified && steps !== -1) && '1rem' }}>
+                            <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`} style={{ marginTop: (!verified && steps !== -1) && '1rem' }}>
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
                                     nextpage={() => quotation("quotation")}
                                     text='Quotation'
-                                    img={ThirdIcon} />
+                                    img={QuotationIcon} />
 
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
                                     nextpage={() => quotation("add-developer")}
                                     text="Add Developer"
-                                    img={MobileIcon} />
+                                    img={addDeveloperIcon} />
 
                                 {agencyProfileData.productId ?
                                     <UserOperations disabled={(!verified || steps !== -1)}
                                         nextpage={() => quotation('product-details')}
                                         text="View Product"
-                                        img={QuotationIcon} />
+                                        img={ThirdIcon} />
                                     :
                                     <UserOperations disabled={!verified || steps !== -1}
                                         nextpage={() => quotation('Add Your Product')}
                                         text="Add Your Product"
-                                        img={QuotationIcon} />
+                                        img={ThirdIcon} />
                                 }
                             </div>
                             <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
@@ -256,16 +255,16 @@ function AgencyNewestDashboard(props) {
                                                         // id={value?._id}
                                                         key={index}
                                                         {...value}
-                                                        // name={value.projectName}
-                                                        // status={value?.projectCurrentStatus}
-                                                        // budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost}
-                                                        // creationDate={value?.createdAt}
-                                                        // updatedAt={value?.updatedAt}
-                                                        // domainName={value?.projectDomainId.domainName}
-                                                        // projectType={value?.projectType}
-                                                        // experties={value?.projectExpertiseRequired}
-                                                        // services={value?.projectServicesRequired.map(a => a.serviceName)}
-                                                         />
+                                                    // name={value.projectName}
+                                                    // status={value?.projectCurrentStatus}
+                                                    // budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost}
+                                                    // creationDate={value?.createdAt}
+                                                    // updatedAt={value?.updatedAt}
+                                                    // domainName={value?.projectDomainId.domainName}
+                                                    // projectType={value?.projectType}
+                                                    // experties={value?.projectExpertiseRequired}
+                                                    // services={value?.projectServicesRequired.map(a => a.serviceName)}
+                                                    />
                                                 )
                                             })
                                         ) :

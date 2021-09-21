@@ -18,10 +18,10 @@ function RightSide() {
                     </div>
                 </div> */}
                 <div className="navigation-item">
-                    <div className="item-illustration">
+                    {/* <div className="item-illustration">
                         <img src={itemIllustration} alt="item illustration" />
-                    </div>
-                    <div className="item-content">
+                    </div> */}
+                    {/* <div className="item-content"> */}
                         <div className="itemContent-heading">
                             <div className="heading-text">
                                 <p>Get In Touch</p>
@@ -45,7 +45,7 @@ function RightSide() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         </div>
