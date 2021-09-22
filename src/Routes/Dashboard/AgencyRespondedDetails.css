@@ -26,20 +26,26 @@
 }
 
 .mainDetailHeader_agencyRespondedDetails {
-  width: 100%;
+  border-radius: 8px;
+  width: 95.5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient( 270.06deg, #1a108d -2.88%, rgba(192, 144, 254, 0) 110.65%) !important;
+  margin:2rem;
+  background-color: white;
+  /* box-shadow: 0px 2px 4px #060606; */
+  box-shadow: 0 0px 2px 1px rgb(0 0 0 / 20%);
+  /* box-shadow: 0px 0px 12px #f8f8f8; */
+  /* background: linear-gradient( 270.06deg, #1a108d -2.88%, rgba(192, 144, 254, 0) 110.65%) !important; */
   /* margin-top: 10px; */
 }
 
 .innerDetailHeader_agencyRespondedDetails {
   /* width: 95%; */
-  width: 90%;
+  width: 41%;
   display: flex;
   align-items: center;
-  padding: 1.7rem 0;
+  /* padding: 1.7rem 0; */
   position: relative;
 }
 
@@ -48,18 +54,19 @@
 }
 
 .detailHeaderImage_agencyRespondedDetails div {
-  width: 87px;
-  height: 83px;
+  width: 68px;
+  height: 65px;
+  margin: 0.5rem 0rem;
   background-color: #fff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
 }
 
 .detailHeaderImage_agencyRespondedDetails div img {
-  width: 62px;
+  width: 45px;
   object-fit: contain;
 }
 
@@ -174,7 +181,7 @@
   top: -4px;
   right: 0%;
   background-color: #aaa;
-  background-color: #000000;
+  background-color: #707070;
   border-radius: 999px;
 }
 
@@ -189,7 +196,7 @@
   line-height: 39px;
   letter-spacing: 0.4px;
   text-transform: capitalize;
-  color: #02044A;
+  color: #707070;
 }
 
 .postQuotation>button {
@@ -197,13 +204,15 @@
 }
 
 .action-wait {
+  overflow: auto;
   font-weight: 500;
-  background-color: rgb(0, 150, 155);
+  /* background-color: rgb(69, 164, 228); */
   border-radius: 4px;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   position: relative;
+  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
 }
 
 .disabled {
@@ -384,7 +393,7 @@
   background-color: #fff;
   padding: 1rem 2.5rem 2rem 2.5rem;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 8px;
   margin: 0 2rem;
   position: relative;
   overflow: hidden;
@@ -393,10 +402,10 @@
 .leftLine {
   position: absolute;
   width: 10px;
-  background-color: #02044a;
+  background-color: rgb(69, 164, 228);
   top: 50%;
   left: 0;
-  height: 92%;
+  height: 102%;
   transform: translateY(-50%);
 }
 
@@ -773,4 +782,10 @@
     height: 4%;
     left: 62.5%;
   }
+}
+
+.dotImg{
+  height: 22px;
+    padding-right: 10px;
+    padding-top: 4px;
 }
