@@ -9,10 +9,10 @@
   justify-content: space-between;
 }
 
-.container-body.margin-0 {
+/* .container-body.margin-0 {
   margin-top: 1.5rem !important;
-  /* padding-top: 1rem; */
-}
+  padding-top: 1rem;
+} */
 
 .user-operations {
   height: 20vh;
@@ -31,7 +31,7 @@
   height: 95vh;
   display: flex;
   margin-left: 11%;
-  /* margin-top: 30px; */
+  margin-top: 13px;
 }
 
 .user-project .user-project-details {

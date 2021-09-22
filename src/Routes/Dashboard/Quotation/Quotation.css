@@ -4,16 +4,16 @@
   justify-content: center;
   align-items: center;
   /* padding: 2rem; */
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .back-parent {
   margin-left: 11%;
+  margin-top: 1rem;
 }
 
 .innerQuotation {
   width: 90%;
-  margin-top: 2%;
   position: relative;
   margin-left: 11%
 }
@@ -24,36 +24,36 @@
 }
 
 .innerQuotation .nav-tabs .nav-link img {
-  width: 26px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
+  width: 16px;
+}
+
+.innerQuotation .nav-tabs {
+  border-bottom: none;
 }
 
 .quotation .nav-tabs .nav-link {
-  border-top-left-radius: 0rem;
-  border-top-right-radius: 0rem;
-  color: #b0b0b0;
-  border: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 46px;
+  width: 12rem;
 }
 
 .quotation .nav-tabs .nav-link:active, .quotation .nav-tabs .nav-link:focus {
-  border: none !important;
   outline: none !important;
+  background: #ced3ff;
 }
 
 .quotation .nav-tabs .nav-link.active {
-  border: none;
-  border-bottom: 2px solid #000 !important;
-  color: #484848 !important;
-  /* font-weight: bold !important; */
-  font-weight: 600 !important;
+  /* color: #484848 !important; */
+  background: #ced3ff;
 }
 
 .quotation .nav-tabs .nav-link {
-  font-size: 22px !important;
-  background-color: transparent !important;
   font-size: 1rem !important;
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Segoe UI';
+  border-radius: 23px;
+  background-color: #f8f8ff;
 }
 
 @media (max-width: 768px) {
@@ -61,10 +61,7 @@
     flex-wrap: nowrap !important;
     overflow: scroll;
     width: 100% !important;
-    -ms-overflow-style: none;
-    /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
   }
   .nav::-webkit-scrollbar {
     display: none;

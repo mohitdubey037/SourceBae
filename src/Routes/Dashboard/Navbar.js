@@ -132,7 +132,6 @@ function Navbar() {
                             <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className="clientProfile">
                                 <img src={clientProfile} alt="" />
                             </div>
-
                             <Menu
                                 id="simple-menu"
                                 anchorEl={anchorEl}

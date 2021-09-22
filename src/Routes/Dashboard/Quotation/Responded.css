@@ -6,20 +6,19 @@
 }
 
 .innerResponded {
-  width: 100%;
+  width: 93%;
   margin-top: 5%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-left: 4%;
   grid-row-gap: 30px;
-  grid-column-gap: 30px;
 }
 
 .respondedCard {
   width: 30%;
+  margin: 0 1rem;
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px 2px rgb(0 0 0 / 20%);
   border-radius: 8px;
   position: relative;
   overflow: auto;
@@ -161,12 +160,12 @@
 
 .showDetail_respondedCardButton, .showDetail_receivedCardButton, .showDetail_projectMatched {
   background: #ced3ff;
-    color: #000;
-    font-size: 0.8rem;
-    padding: 0.2rem 0.8rem;
-    border-radius: 0px;
-    font-family: 'Segoe UI Semibold';
-    box-shadow: 0 1px 2px 1px rgb(0 0 0 / 20%);
+  color: #000;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0px;
+  font-family: 'Segoe UI Semibold';
+  box-shadow: 0 1px 2px 1px rgb(0 0 0 / 20%);
 }
 
 .showDetail_respondedCardButton:hover, .showDetail_receivedCardButton:hover, .showDetail_projectMatched:hover {

@@ -150,9 +150,9 @@ function ClientNewestDashboard(props) {
                     </div>
                 </div>
             </div>
-            <div className="dashboard-container">
-                <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-                <div className="container-body margin-0">
+            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+            {/* <div className="dashboard-container"> */}
+                <div className="container-body">
                     <div className="content-body">
                         <div style={{ zIndex: visible && '-1' }} className="content-leftBody">
                             <div className="user-operations">
@@ -199,7 +199,7 @@ function ClientNewestDashboard(props) {
                         <RightSide />
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     )
 }

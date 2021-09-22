@@ -171,7 +171,7 @@ function AgencyNewestDashboard(props) {
                             </div>
                             <img src={notificationIcon} alt="notification" />
                         </div> */}
-                    <div className="username nav-left-item">
+                    <div style={{marginRight: '10px'}} className="username nav-left-item">
                         <p>{agencyProfileData?.agencyName}</p>
                     </div>
                     <div className="userprofile-circle nav-left-item">
