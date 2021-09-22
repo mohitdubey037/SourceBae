@@ -125,7 +125,6 @@ span.welcome-back_sourceBae {
 } */
 
 .welcome-back_loginIllustrator {
-  position: absolute;
   top: 15rem;
   left: 13rem;
   font-family: 'Segoe UI';
@@ -158,15 +157,22 @@ span.welcome-back_sourceBae {
   align-items: center;
   flex-direction: column;
   background: white;
-  position: absolute;
   top: 3rem;
-  width: 28%;
   border-radius: 20px;
   right: 8rem;
-  height: 90%;
   z-index: 150;
+  padding-bottom: 4.5rem;
 }
 
+.loginCards-wrapper{
+  display: flex;
+    flex-direction: row;
+    height: 100%;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+}
 .mainLoginForm, .googleLogin {
   width: 80%;
 }
@@ -400,10 +406,21 @@ span.welcome-back_sourceBae {
 }
 
 .loginImage1 {
-  position: absolute;
+  /* position: absolute;
   bottom: -43%;
-  left: -17rem;
+  left: -17rem; */
   z-index: 4;
+}
+
+
+.loginImage1 > img {
+  position: absolute;
+  width: 100%;
+  height: 85%;
+  z-index: 4;
+  width: 65%;
+  top: 285px;
+  right: 730px;
 }
 
 .loginImage2 {
@@ -444,5 +461,5 @@ span.welcome-back_sourceBae {
   width: 100%;
   height: 100%;
   position: relative;
-  right: 60%;
+  right: 55%;
 }

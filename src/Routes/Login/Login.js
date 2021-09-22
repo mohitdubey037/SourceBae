@@ -8,7 +8,7 @@ import instance from "../../Constants/axiosConstants";
 // import loginImage from "../../assets/images/Newestdashboard/Login/LoginBlue.png";
 import axios from "axios";
 // import PersonIcon from "@material-ui/icons/Person";
-import downImage1 from "../../assets/images/Newestdashboard/Login/Path11.png";
+import downImage1 from "../../assets/images/Newestdashboard/Login/Path 11.svg";
 import downImage2 from "../../assets/images/Newestdashboard/Login/Path12.png";
 import upImage1 from "../../assets/images/Newestdashboard/Login/Path13.png";
 import upImage2 from "../../assets/images/Newestdashboard/Login/Path14.png";
@@ -17,11 +17,7 @@ import dotImage from "../../assets/images/Newestdashboard/Login/ab_01.png";
 import googleImg from "../../assets/images/Newestdashboard/Login/Icon_google.svg";
 
 // import google from "../../assets/images/Logo/google.png";
-import {
-  InputAdornment,
-  TextField,
-  makeStyles,
-} from "@material-ui/core";
+import { InputAdornment, TextField, makeStyles } from "@material-ui/core";
 // import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
@@ -199,163 +195,146 @@ const Login = (props) => {
               <div className="dot-image">
                 <img src={dotImage} alt="" />
               </div>
-              <div className="welcome-back_loginIllustrator">
-                <p>
-                  Welcome back<br></br>
-                  <span>to</span>
-                  <br></br>
-                  <span className="welcome-back_sourceBae">Sourcebae</span>
-                </p>
-              </div>
-              <div className="loginContent">
-                <div className="mainLoginForm">
-                  <div className="login_switch">
-                    <button
-                      onClick={() => handleChangeToggle("agency")}
-                      className={`agency__button ${
-                        (state === "" || state === "agency") && "active__button"
-                      }`}
-                    >
-                      <p>Agency</p>
-                    </button>
-                    <button
-                      onClick={() => handleChangeToggle("client")}
-                      className={`client__button ${
-                        state === "client" && "active__button"
-                      }`}
-                    >
-                      <p>Client</p>
-                    </button>
-                  </div>
-                  <div className="loginHeading">
-                    <h6>
-                      Login as{" "}
-                      {state === "" ? (
-                        <>
-                          <span>an</span>
-                          <span className="agencyOrClient">{` ${roleString}`}</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>a</span>
-                          <span className="agencyOrClient">{` ${roleString}`}</span>
-                        </>
-                      )}
-                    </h6>
-                  </div>
+              <div className="loginCards-wrapper">
+                <div className="welcome-back_loginIllustrator">
+                  <p>
+                    Welcome back<br></br>
+                    <span>to</span>
+                    <br />
+                    <span className="welcome-back_sourceBae">Sourcebae</span>
+                  </p>
+                </div>
+                <div className="loginContent">
+                  <div className="mainLoginForm">
+                    <div className="login_switch">
+                      <button
+                        onClick={() => handleChangeToggle("agency")}
+                        className={`agency__button ${
+                          (state === "" || state === "agency") &&
+                          "active__button"
+                        }`}
+                      >
+                        <p>Agency</p>
+                      </button>
+                      <button
+                        onClick={() => handleChangeToggle("client")}
+                        className={`client__button ${
+                          state === "client" && "active__button"
+                        }`}
+                      >
+                        <p>Client</p>
+                      </button>
+                    </div>
+                    <div className="loginHeading">
+                      <h6>
+                        Login as{" "}
+                        {state === "" ? (
+                          <>
+                            <span>an</span>
+                            <span className="agencyOrClient">{` ${roleString}`}</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>a</span>
+                            <span className="agencyOrClient">{` ${roleString}`}</span>
+                          </>
+                        )}
+                      </h6>
+                    </div>
 
-                  <div className="loginForm">
-                    {/* <p style={{ marginBottom: "10px" }}>Enter an Email</p> */}
-                    {/* <Input
-                                            className={classes.inputs}
-                                            placeholder="Enter an email"
-                                            variant="outlined"
-                                            type="email"
-                                            // margin="normal"
-                                            disableUnderline={true}
-                                            required
-                                            fullWidth
-                                            name="user"
-                                            autoComplete="userEmail"
-                                            autoFocus
-                                            onChange={(e) => {
-                                                handleChange(e);
-                                            }}
-                                            endAdornment={
-                                                <InputAdornment position="end">
-                                                    <PersonIcon fontSize="large" />
-                                                </InputAdornment>
-                                            }
-                                        /> */}
-                    <TextField
-                      name="user"
-                      id="filled-number"
-                      label="Enter an Email"
-                      type="text"
-                      fullWidth
-                      className={classes.input}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={(e) => {
-                        handleChange(e);
-                      }}
-                      placeholder="Enter an email"
-                      variant="filled"
-                    />
-                    <TextField
-                      style={{ marginTop: "30px" }}
-                      name="password"
-                      placeholder="••••••••"
-                      id="filled-number"
-                      label="Enter a password"
-                      type="password"
-                      fullWidth
-                      className={classes.input}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={(e) => {
-                        handleChange(e);
-                      }}
-                      variant="filled"
-                      InputProps={{
-                        // <-- This is where the toggle button is added.
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            {hidePassword ? (
-                              <VisibilityOffTwoToneIcon
-                                fontSize="small"
-                                className={classes.passwordEye}
-                                onClick={showPassword}
-                              />
-                            ) : (
-                              <VisibilityTwoToneIcon
-                                fontSize="small"
-                                className={classes.passwordEye}
-                                onClick={showPassword}
-                              />
-                            )}
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <div className="button_action_login">
-                      <div
-                        className="submit_login"
-                        onClick={() => logIn(role, form)}
-                        type="submit"
-                      >
-                        <p>Login</p>
-                      </div>
-                      <div
-                        className="forgot-password_login"
-                        onClick={() => props.history.push("/enter-email")}
-                      >
-                        <p>Forgot Password</p>
+                    <div className="loginForm">
+                      <TextField
+                        name="user"
+                        id="filled-number"
+                        label="Enter an Email"
+                        type="text"
+                        fullWidth
+                        className={classes.input}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={(e) => {
+                          handleChange(e);
+                        }}
+                        placeholder="Enter an email"
+                        variant="filled"
+                      />
+                      <TextField
+                        style={{ marginTop: "30px" }}
+                        name="password"
+                        placeholder="••••••••"
+                        id="filled-number"
+                        label="Enter a password"
+                        type="password"
+                        fullWidth
+                        className={classes.input}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={(e) => {
+                          handleChange(e);
+                        }}
+                        variant="filled"
+                        InputProps={{
+                          // <-- This is where the toggle button is added.
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              {hidePassword ? (
+                                <VisibilityOffTwoToneIcon
+                                  fontSize="small"
+                                  className={classes.passwordEye}
+                                  onClick={showPassword}
+                                />
+                              ) : (
+                                <VisibilityTwoToneIcon
+                                  fontSize="small"
+                                  className={classes.passwordEye}
+                                  onClick={showPassword}
+                                />
+                              )}
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                      <div className="button_action_login">
+                        <div
+                          className="submit_login"
+                          onClick={() => logIn(role, form)}
+                          type="submit"
+                        >
+                          <p>Login</p>
+                        </div>
+                        <div
+                          className="forgot-password_login"
+                          onClick={() => props.history.push("/enter-email")}
+                        >
+                          <p>Forgot Password</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="or_login">
-                  <p>Or</p>
-                </div>
-                <div className="signup_toggle">
-                  <div className="googleLogin">
-                    <img src={googleImg} alt="no_image" />
-                    <p>Sign in with Google</p>
+                  <div className="or_login">
+                    <p>Or</p>
                   </div>
-                  <div className="signUpOption">
-                    <p>
-                      Don't have an account?{" "}
-                      <span
-                        onClick={() =>
-                          props.history.push(`/register:${role.toLowerCase()}`)
-                        }
-                      >
-                        Sign Up
-                      </span>
-                    </p>
+                  <div className="signup_toggle">
+                    <div className="googleLogin">
+                      <img src={googleImg} alt="no_image" />
+                      <p>Sign in with Google</p>
+                    </div>
+                    <div className="signUpOption">
+                      <p>
+                        Don't have an account?{" "}
+                        <span
+                          onClick={() =>
+                            props.history.push(
+                              `/register:${role.toLowerCase()}`
+                            )
+                          }
+                        >
+                          Sign Up
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
