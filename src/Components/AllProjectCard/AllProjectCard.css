@@ -25,10 +25,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* padding: 0; */
-    /* margin-bottom: 10px; */
     width: 84%;
     margin: auto;
+    margin-bottom: 1rem;
 }
 
 .user-project_agencyNewestAllProject {

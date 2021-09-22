@@ -7,8 +7,31 @@
 .Navbar-clientDashboard {
   /* background-image: linear-gradient(to right, #45A4E4 , #5C6DFF); */
   background-color: white;
-  height: 100vh;
+  /* height: 100vh; */
+  /* padding-top: 1rem; */
 }
+
+.downImage1_agencyDashboard, .downImage2_agencyDashboard {
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+}
+
+/* .downImage1_agencyDashboard {
+  left: -20rem;
+  bottom: -4.5rem;
+  z-index: 1;
+} */
+
+.downImage2_agencyDashboard {
+  left: 1rem;
+  bottom: -10.2rem;
+}
+
+/* .downImage1_agencyDashboard img, .downImage2_agencyDashboard img {
+  height: 100%;
+  width: 100%;
+} */
 
 .sidebar_parent .container-sidebar {
   position: fixed;
@@ -17,9 +40,9 @@
 
 .not_found.agencyNewestDashboard {
   width: max-content;
-    height: 325px;
-    margin: auto;
-    display: flex;
+  height: 325px;
+  margin: auto;
+  display: flex;
 }
 
 .not_found.agencyNewestDashboard.conditionalHeight {
@@ -29,7 +52,6 @@
 .not_found.agencyNewestDashboard img {
   width: 23rem;
 }
-
 
 /* .not_found.agencyNewestDashboard p {
   font-family: 'Open Sans', sans-serif;

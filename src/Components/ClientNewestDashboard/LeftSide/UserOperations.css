@@ -1,5 +1,4 @@
 .user-operations>.operation {
-    /* background: white; */
     background: #EEF0FF;
     border-radius: 8px;
     width: 160px;
@@ -8,7 +7,8 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    min-height: 140px;
+    /* min-height: 140px; */
+    height: 100%;
     cursor: pointer;
 }
 

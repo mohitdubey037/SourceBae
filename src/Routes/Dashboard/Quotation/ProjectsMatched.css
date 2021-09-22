@@ -82,10 +82,12 @@
 
 .projectCardHeading .projectHeadingName {
   width: 50%;
+  font-family: 'Segoe UI';
 }
 
 .projectCardHeading div h2 {
   font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI Bold';
   font-weight: bold;
   color: #02044a;
 }

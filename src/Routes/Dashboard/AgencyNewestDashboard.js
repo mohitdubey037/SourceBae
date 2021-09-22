@@ -7,6 +7,8 @@ import QuotationIcon from '../../assets/images/Newestdashboard/Agency_Navbar/q-i
 import addDeveloperIcon from "../../assets/images/Newestdashboard/Agency_Navbar/add-developer.svg";
 import ThirdIcon from '../../assets/images/Newestdashboard/Agency_Navbar/view-product.svg';
 import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
+import downImage1 from '../../assets/images/Newestdashboard/Dashboard/Path1.png';
+import downImage2 from '../../assets/images/Newestdashboard/Dashboard/Path2.png';
 
 import './AgencyNewestDashboard.css'
 import AgencyProjectCard from '../../Components/AgencyProjectCard/AgencyProjectCard';
@@ -178,111 +180,104 @@ function AgencyNewestDashboard(props) {
                 </div>
             </div>
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            <div className="dashboard-container">
-                <div className="container-body margin-0">
-                    <div className="content-body">
-                        <div className="content-leftBody">
-                            {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
-                                <div className="mainUpdateVerify">
-                                    <div className="innerMainVerify">
+            {/* <div className="dashboard-container"> */}
+
+            {/* <img className="downImage1_agencyDashboard" src={downImage1} alt="hi" /> */}
+            <img className="downImage2_agencyDashboard" src={downImage2} alt="hi" />
+
+            <div className="container-body">
+                <div className="content-body">
+                    <div className="content-leftBody">
+                        {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
+                            <div className="mainUpdateVerify">
+                                <div className="innerMainVerify">
+                                    <p>
+                                        Please
+                                        <span onClick={() => verifyEmailPhone()}>
+                                            Verify Phone & Email
+                                        </span>{" "}
+                                        to use our services.
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+                        {(!verified || steps !== -1) && (
+                            <div className="mainUpdateVerify">
+                                <div className="innerMainVerify">
+                                    {!verified && steps !== -1 ? (
                                         <p>
                                             Please
-                                            <span onClick={() => verifyEmailPhone()}>
-                                                Verify Phone & Email
+                                            <span onClick={() => props.history.push(formRoute)}>
+                                                Update
                                             </span>{" "}
-                                            to use our services.
+                                            your profile to use our services.
                                         </p>
-                                    </div>
-                                </div>
-                            )}
-                            {(!verified || steps !== -1) && (
-                                <div className="mainUpdateVerify">
-                                    <div className="innerMainVerify">
-                                        {!verified && steps !== -1 ? (
-                                            <p>
-                                                Please
-                                                <span onClick={() => props.history.push(formRoute)}>
-                                                    Update
-                                                </span>{" "}
-                                                your profile to use our services.
-                                            </p>
-                                        ) : (
-                                            <p>Please wait for your profile to be verified by us.</p>
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                            <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`} style={{ marginTop: (!verified && steps !== -1) && '1rem' }}>
-                                <UserOperations
-                                    disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation("quotation")}
-                                    text='Quotation'
-                                    img={QuotationIcon} />
-
-                                <UserOperations
-                                    disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation("add-developer")}
-                                    text="Add Developer"
-                                    img={addDeveloperIcon} />
-
-                                {agencyProfileData.productId ?
-                                    <UserOperations disabled={(!verified || steps !== -1)}
-                                        nextpage={() => quotation('product-details')}
-                                        text="View Product"
-                                        img={ThirdIcon} />
-                                    :
-                                    <UserOperations disabled={!verified || steps !== -1}
-                                        nextpage={() => quotation('Add Your Product')}
-                                        text="Add Your Product"
-                                        img={ThirdIcon} />
-                                }
-                            </div>
-                            <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
-                                {allProjects?.projects?.length > 0 &&
-                                    <div className="graphic">
-                                        <div className="graphic-illustration-heading">
-                                            <h6>Project details</h6>
-                                        </div>
-                                    </div>
-                                }
-                                <div className="user-project agencyNewestDashboard">
-                                    <div>
-                                        {allProjects?.projects?.length > 0 ? (
-                                            allProjects?.projects?.map((value, index) => {
-                                                return (
-                                                    <AgencyProjectCard
-                                                        // props={props}
-                                                        // id={value?._id}
-                                                        key={index}
-                                                        {...value}
-                                                    // name={value.projectName}
-                                                    // status={value?.projectCurrentStatus}
-                                                    // budget={value.projectFinalCost === undefined ? value?.projectProposalCost : value.projectFinalCost}
-                                                    // creationDate={value?.createdAt}
-                                                    // updatedAt={value?.updatedAt}
-                                                    // domainName={value?.projectDomainId.domainName}
-                                                    // projectType={value?.projectType}
-                                                    // experties={value?.projectExpertiseRequired}
-                                                    // services={value?.projectServicesRequired.map(a => a.serviceName)}
-                                                    />
-                                                )
-                                            })
-                                        ) :
-                                            // <p>No Projects</p>
-                                            <div className={`not_found agencyNewestDashboard ${(verified || steps === -1) && 'conditionalHeight'}`}>
-                                                <img src={NotFound} alt="NotFound" />
-                                                {/* <p>No Project Available</p> */}
-                                            </div>
-                                        }
-                                    </div>
+                                    ) : (
+                                        <p>Please wait for your profile to be verified by us.</p>
+                                    )}
                                 </div>
                             </div>
+                        )}
+                        <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`} style={{ marginTop: (!verified && steps !== -1) && '1rem' }}>
+                            <UserOperations
+                                disabled={!verified || steps !== -1}
+                                nextpage={() => quotation("quotation")}
+                                text='Quotation'
+                                img={QuotationIcon} />
 
+                            <UserOperations
+                                disabled={!verified || steps !== -1}
+                                nextpage={() => quotation("add-developer")}
+                                text="Add Developer"
+                                img={addDeveloperIcon} />
+
+                            {agencyProfileData.productId ?
+                                <UserOperations disabled={(!verified || steps !== -1)}
+                                    nextpage={() => quotation('product-details')}
+                                    text="View Product"
+                                    img={ThirdIcon} />
+                                :
+                                <UserOperations disabled={!verified || steps !== -1}
+                                    nextpage={() => quotation('Add Your Product')}
+                                    text="Add Your Product"
+                                    img={ThirdIcon} />
+                            }
                         </div>
-                        <RightSide />
+                        <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
+                            {allProjects?.projects?.length > 0 &&
+                                <div className="graphic">
+                                    <div className="graphic-illustration-heading">
+                                        <h6>Project details</h6>
+                                    </div>
+                                </div>
+                            }
+                            <div className="user-project agencyNewestDashboard">
+                                <div>
+                                    {allProjects?.projects?.length > 0 ? (
+                                        allProjects?.projects?.map((value, index) => {
+                                            return (
+                                                <AgencyProjectCard
+                                                    key={index}
+                                                    {...value}
+                                                />
+                                            )
+                                        })
+                                    ) :
+                                        // <p>No Projects</p>
+                                        <div className={`not_found agencyNewestDashboard ${(verified || steps === -1) && 'conditionalHeight'}`}>
+                                            <img src={NotFound} alt="NotFound" />
+                                            {/* <p>No Project Available</p> */}
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+                    <RightSide />
                 </div>
             </div>
+            {/* </div> */}
         </div>
     )
 }

@@ -14,6 +14,7 @@ import upImage1 from '../../assets/images/Newestdashboard/Login/Path13.png';
 import upImage2 from '../../assets/images/Newestdashboard/Login/Path14.png';
 import bgColor from '../../assets/images/Newestdashboard/Login/Rectangle24.png';
 import dotImage from '../../assets/images/Newestdashboard/Login/ab_01.png';
+import googleImg from '../../assets/images/Newestdashboard/Login/Icon_google.svg';
 
 import google from "../../assets/images/Logo/google.png";
 import {
@@ -357,7 +358,7 @@ const Login = (props) => {
                                 </div>
                                 <div className="signup_toggle">
                                     <div className="googleLogin">
-                                        <img src={google} alt="" />
+                                        <img src={googleImg} alt="no_image" />
                                         <p>Sign in with Google</p>
                                     </div>
                                     <div className="signUpOption">
