@@ -312,7 +312,7 @@ function SkillsSet(props) {
                         agencyProfiledata.isAgencyVerified &&
                         <div className="skill-set_parent_parent">
                             <div className="skill-set_parent">
-                                <img src={Skillset_edit} alt="Skill-Set" />
+                                {/* <img src={Skillset_edit} alt="Skill-Set" /> */}
                                 <p>Skill Set</p>
                             </div>
                             <i onClick={() => handleEdit(true)} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
@@ -329,8 +329,8 @@ function SkillsSet(props) {
                         : null}
 
                     <div className="skillsSetsContent">
-                        <div className="skillsSetBorder"></div>
-                        <div className="skillsSetSemiCircle" style={{ zIndex: -1 }}></div>
+                        {/* <div className="skillsSetBorder"></div> */}
+                        {/* <div className="skillsSetSemiCircle" style={{ zIndex: -1 }}></div> */}
                         {
                             arr.map((value) => {
                                 return (

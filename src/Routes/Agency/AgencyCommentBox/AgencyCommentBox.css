@@ -1,11 +1,11 @@
 .topLine {
   position: absolute;
-  top: 0;
+  top: 0px;
   width: 100%;
   background-color: #ff2b2b;
-  height: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 4px;
+  left: -10%;
+  transform: translateX(10%);
   border-radius: 999px;
 }
 
@@ -253,7 +253,7 @@
   border-radius: 999px;
   outline: none;
   background-color: rgb(69, 164, 228);
-  border: 1px solid  rgb(69, 164, 228);
+  border: 1px solid rgb(69, 164, 228);
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
@@ -315,7 +315,7 @@
 }
 
 .margin-0 p {
-  width:9rem;
+  width: 9rem;
   color: black !important;
   font-size: small;
 }
@@ -546,12 +546,11 @@
 
 .leftLine {
   position: absolute;
-  width: 10px;
+  width: 4px;
   background-color: rgb(69, 164, 228);
   top: 50%;
   left: 0;
   height: 100%;
-  transform: translateY(-50%);
 }
 
 /* .innerResponseCard div {

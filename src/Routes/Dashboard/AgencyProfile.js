@@ -3,18 +3,28 @@ import React, { useEffect, useState, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 // import Navbar from "./Navbar";
 import "./AgencyProfile.css";
-import growth from "../../assets/images/AgencyProfile/growth.png";
-import document from "../../assets/images/AgencyProfile/pdf.png";
+// import growth from "../../assets/images/AgencyProfile/growth.png";
+// import document from "../../assets/images/AgencyProfile/pdf.png";
 // import received from "../../assets/images/Quotation/received.png";
 // import responded from "../../assets/images/Quotation/responded.png";
 // import matched from "../../assets/images/Quotation/matched.png";
+import growth from '../../assets/images/Newestdashboard/Agency-Profile/total_profile_view.svg';
+import document from '../../assets/images/Newestdashboard/Agency-Profile/agency_document.svg';
+import Back2 from '../../assets/images/Back/Back2.svg';
+
+import verified from '../../assets/images/Newestdashboard/Agency-Profile/verified.svg';
 import InformationImage from '../../assets/images/Newestdashboard/Agency-Profile/Information.svg';
+import iicon from '../../assets/images/Newestdashboard/Agency-Profile/informationNew.svg';
+import skillImage from '../../assets/images/Newestdashboard/Agency-Profile/skill-advanced.svg';
 import SkillSetImage from '../../assets/images/Newestdashboard/Agency-Profile/Skill-Set.svg';
 import DevelopersImage from '../../assets/images/Newestdashboard/Agency-Profile/Developers.svg';
 import AgencyRuleImage from '../../assets/images/Newestdashboard/Agency-Profile/Agency-Rule.svg';
 import PortfolioImage from '../../assets/images/Newestdashboard/Agency-Profile/Portfolio.svg';
 import AddYourProductImage from '../../assets/images/Newestdashboard/Agency-Profile/agency_profile_add_your.svg';
-import PersonalLocation from '../../assets/images/Newestdashboard/Agency-Profile/Personal_location.svg'
+import AddYourProduct from '../../assets/images/Newestdashboard/Agency-Profile/view_product.svg'
+import PersonalLocation from '../../assets/images/Newestdashboard/Agency-Profile/Personal_location.svg';
+import Location from '../../assets/images/Newestdashboard/Agency-Profile/location.svg';
+
 
 import Information from "./AgencyProfile/Information";
 import SkillsSet from "./AgencyProfile/SkillsSet";
@@ -174,8 +184,11 @@ function AgencyProfile(props) {
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
               <div className='backButtonAgencyProfile'>
-                <i onClick={() => props.history.goBack()} class="fa fa-chevron-left" aria-hidden="true"></i>
-                <h6 onClick={() => props.history.goBack()}>Back</h6>
+                <div className="backButton-child" onClick={() => props.history.goBack()}>
+                  {/* <i onClick={() => props.history.goBack()} class="fa fa-chevron-left" aria-hidden="true"></i> */}
+                  <img src={Back2} alt="back" />
+                  <h6 onClick={() => props.history.goBack()}>Back</h6>
+                </div>
               </div>
               {Role === "Agency" ? (
                 agencyProfileData.productId === undefined ? (
@@ -196,7 +209,6 @@ function AgencyProfile(props) {
                     >
                       Add Your Product{" "}
                       <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                      {/* <img src={AddYourProductImage} alt="add your product" /> */}
                     </button>
                   </>
                 ) : (
@@ -205,9 +217,8 @@ function AgencyProfile(props) {
                     condition: id !== '' ? 'Agency' : 'Client'
                   })
                   }>
-                    View Your Product{" "}
-                    {/* <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i> */}
-                    <img src={AddYourProductImage} alt="add your product" />
+                    <p>View Your Product</p>
+                    <img src={AddYourProduct} alt="add your product" />
                   </button>
                 )
               ) : (
@@ -339,7 +350,8 @@ function AgencyProfile(props) {
                           : `none`
                           }`,
                       }}>
-                        <i style={{ marginRight: 10 }} class="fa fa-check-circle" aria-hidden="true"></i>
+                        {/* <i style={{ marginRight: 10 }} class="fa fa-check-circle" aria-hidden="true"></i> */}
+                        <img src={verified} alt="verified" />
                         <p>{`${!agencyProfileData?.isAgencyVerified
                           ? agencyProfileData?.verificationMessage
                           : `Verified`
@@ -367,7 +379,7 @@ function AgencyProfile(props) {
                 </div>
                 <div className="agencyAddress">
                   {/* <i class="fa fa-thumb-tack" aria-hidden="true"></i> */}
-                  <img src={PersonalLocation} alt="location" />
+                  <img src={Location} alt="location" />
                   <span>
                     {`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`}{" "}
                   </span>
@@ -379,8 +391,10 @@ function AgencyProfile(props) {
           <div className="mainAgencyProfileDesc">
             <div className="innerAgencyProfileDesc">
               <div className="leftAgencyProfileDesc">
-                <h2>About us</h2>
-                <div style={{ width: '100%', paddingRight: 20 }}>
+                <div>
+                  <h2>About us</h2>
+                </div>
+                <div style={{ paddingRight: 20 }}>
                   <p>{agencyProfileData.agencyDescription}</p>
                   <div className="agencyProfileIndustry">
                     {agencyProfileData &&
@@ -395,16 +409,16 @@ function AgencyProfile(props) {
                   <div className="monthyView">
                     {/* <div className="monthBorder"></div> */}
                     {/* <img src={growth} alt="" /> */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                      <img style={{ width: 25, height: 25, marginRight: 5, objectFit: 'contain' }} src={growth} alt="" />
+                    <div className="view_image_parent">
+                      <img className="view_image" src={growth} alt="" />
                       <h3>Total Profile View</h3>
                     </div>
-                    <p>{agencyProfileData.agencyProfileViewCount}</p>
+                    <p className="profile_count">{agencyProfileData.agencyProfileViewCount}</p>
                   </div>
                   <div className="monthyView agencyProfile">
                     {/* <div className="monthBorder"></div> */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <img style={{ width: 25, height: 25, marginRight: 5, objectFit: 'contain' }} src={document} alt="" />
+                    <div className="view_image_parent">
+                      <img className="view_image" src={document} alt="" />
                       <h3>Agency Document</h3>
                     </div>
 
@@ -441,10 +455,10 @@ function AgencyProfile(props) {
                 </div>
               )}
             </div>
-            <div className="seperator"></div>
+            {/* <div className="seperator"></div> */}
           </div>
 
-          <div className="mainQuotation">
+          <div className="mainQuotation mainQuotation_agencyProfile">
             <div className="innerQuotation_agencyProfile">
               <div class="nav nav-tabs nav-tabs_agencyProfile" id="nav-tab" role="tablist">
                 <div id="nav-home-tab"
@@ -455,7 +469,7 @@ function AgencyProfile(props) {
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true">
-                  <img src={InformationImage} alt="information" />
+                  <img src={iicon} alt="information" />
                   <button class="nav-button nav-link_agencyProfile">
                     Information
                   </button>
@@ -469,7 +483,7 @@ function AgencyProfile(props) {
                   role="tab"
                   aria-controls="nav-profile"
                   aria-selected="false">
-                  <img src={SkillSetImage} alt="skills" />
+                  <img src={skillImage} alt="skills" />
                   <button class="nav-button nav-link_agencyProfile">
                     Skills Set
                   </button>
@@ -483,7 +497,7 @@ function AgencyProfile(props) {
                   role="tab"
                   aria-controls="nav-contact"
                   aria-selected="false">
-                  <img src={AgencyRuleImage} alt="rules" />
+                  <img src={iicon} alt="rules" />
                   <button class="nav-button nav-link_agencyProfile">
                     Agency Rules
                   </button>
@@ -499,7 +513,7 @@ function AgencyProfile(props) {
                     aria-controls="nav-developer"
                     aria-selected="false"
                     ref={inputEl}>
-                    <img src={DevelopersImage} alt="dev" />
+                    <img src={iicon} alt="dev" />
                     <button class="nav-button nav-link_agencyProfile">
                       Developers
                     </button>

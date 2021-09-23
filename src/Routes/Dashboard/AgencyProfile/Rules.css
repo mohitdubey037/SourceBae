@@ -1,40 +1,33 @@
 .mainRules {
     width: 100%;
     margin: auto;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
-.innerRules {
+/* .innerRules {
     width: 100%;
-    height: 668px;
-}
+} */
 
 .rules_parent {
+    justify-content: center;
     display: flex;
     align-items: center;
-    border: 4px solid #B5B4FF;
-    box-sizing: border-box;
-    border-radius: 12px;
-    width: 75%;
-    padding: 13px 20px;
-    justify-content: space-around;
+    width: 13%;
+    padding: 8px 0px;
+    margin-left: 6px;
 }
 
 .rules_parent p {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
+    font-family: 'Segoe UI Bold';
     font-size: 18px;
-    line-height: 22px;
-    letter-spacing: 0.4px;
     text-transform: capitalize;
-    color: #3A3A3A;
+    color: #5C6DFF;
 }
 
 .rulesCard {
     width: 100%;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    /* padding: 2rem; */
-    padding: 2rem 2rem 0.5rem 2rem;
     border-radius: 20px;
 }
 
@@ -42,20 +35,20 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 
 .rulesUpper h4 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     font-size: 1rem;
-    color: #999;
+    color: #5C6DFF;
+    margin: 1rem 0px;
 }
 
 .rulesUpper p {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 1.4rem;
-    color: #02044a;
+    font-family: 'Segoe UI Semibold';
+    font-size: 1rem;
+    color: #5C6DFF;
 }
 
 .openTiming i, .weekendOpening i {
@@ -66,7 +59,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 2%;
+    /* margin-bottom: 2%; */
 }
 
 .leftQuestion {
@@ -81,11 +74,11 @@
 
 .rulesMark i {
     margin-right: 10%;
-    font-size: 2rem;
+    font-size: 1.3rem;
 }
 
 .leftQuestion p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     font-size: 1.1rem;
     color: #666;
 }
@@ -105,6 +98,14 @@
     /* margin-bottom: 3%; */
     display: flex;
     justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.editableBtn_rules {
+    width: 100%;
+    display: flex;
+    border-radius: 23px;
+    background: #EEF0FF;
 }
 
 .submitEditBtn button {

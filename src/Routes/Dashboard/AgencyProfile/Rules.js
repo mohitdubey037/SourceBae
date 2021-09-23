@@ -83,9 +83,9 @@ function Rules(props) {
                         Role === 'Agency' ?
                             agencyProfiledata.isAgencyVerified &&
                             // (props?.id === null || props?.id === undefined) && 
-                            <div className="editableBtn">
+                            <div className="editableBtn_rules">
                                 <div className="rules_parent">
-                                    <img src={Rules_edit} alt="Rules" />
+                                    {/* <img src={Rules_edit} alt="Rules" /> */}
                                     <p>Agency Rules</p>
                                 </div>
                                 {/* <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button> */}
@@ -119,7 +119,7 @@ function Rules(props) {
                                                 {!editRules && <div className="rulesMark">
                                                     {value?.selection
                                                         ?
-                                                        <i className="fa fa-check" style={{ color: '#5cb85c' }} aria-hidden="true" />
+                                                        <i className="fa fa-check" style={{ color: 'blue' }} aria-hidden="true" />
                                                         :
                                                         <i className="fa fa-times" style={{ color: '#d9534f' }} aria-hidden="true" />
                                                     }

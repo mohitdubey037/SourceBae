@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
 import addDeveloper from '../../../assets/images/AgencyProfile/addDeveloper.png';
 import crossIcon from '../../../assets/images/Newestdashboard/Adding_Developers/cross_icon.svg';
+import TrashIcon from '../../../assets/images/Newestdashboard/Agency-Profile/material-delete.svg';
 import { Modal } from "react-responsive-modal";
 import ArrowButton from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg';
 import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
@@ -169,7 +170,8 @@ function DeveloperList(props) {
                                 <div className="developerCard">
                                     <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
                                         {/* <img src={crossIcon} alt="cross-icon" /> */}
-                                        <i className="fas fa-trash-alt"></i>
+                                        {/* <i className="fas fa-trash-alt"></i> */}
+                                        <img src={TrashIcon} alt="trash"/>
                                     </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
