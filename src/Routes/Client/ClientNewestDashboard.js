@@ -127,9 +127,9 @@ function ClientNewestDashboard(props) {
             <div className="Navbar-clientDashboard">
                 {/* <Navbar /> */}
                 <div className="navbar">
-                    <div className="navbar-heading">
+                    {/* <div className="navbar-heading">
                         <h1>SourceBae</h1>
-                    </div>
+                    </div> */}
                     <div className="navbar-items">
                         {/* <div className="notification-icon nav-left-item">
                             <img src={notificationIcon} alt="notification" />
@@ -150,9 +150,9 @@ function ClientNewestDashboard(props) {
                     </div>
                 </div>
             </div>
-            <div className="dashboard-container">
-                <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-                <div className="container-body margin-0">
+            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+            {/* <div className="dashboard-container"> */}
+                <div className="container-body">
                     <div className="content-body">
                         <div style={{ zIndex: visible && '-1' }} className="content-leftBody">
                             <div className="user-operations">
@@ -199,7 +199,7 @@ function ClientNewestDashboard(props) {
                         <RightSide />
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     )
 }

@@ -18,34 +18,38 @@ function RightSide() {
                     </div>
                 </div> */}
                 <div className="navigation-item">
-                    <div className="item-illustration">
+                    {/* <div className="item-illustration">
                         <img src={itemIllustration} alt="item illustration" />
-                    </div>
-                    <div className="item-content">
-                        <div className="itemContent-heading">
-                            <div className="heading-text">
-                                <p>Get In Touch</p>
-                            </div>
-                            <div className="heading-illustration">
+                    </div> */}
+                    {/* <div className="item-content"> */}
+                    <div className="itemContent-heading">
+                        <div className="heading-text">
+                            <p>Get In Touch</p>
+                        </div>
+                        {/* <div className="heading-illustration">
                                 <img src={getInTouch} alt="get in touch" />
+                            </div> */}
+                    </div>
+                    <div className="itemContent-videoCard"></div>
+                    <div className="itemContent-cta">
+                        <div className="cta-item">
+                            <div>
+                                <p>Call To Action</p>
+                            </div>
+                            <div className="view-details-btn">
+                                <button>View Detail</button>
                             </div>
                         </div>
-                        <div className="itemContent-videoCard"></div>
-                        <div className="itemContent-cta">
-                            <div className="cta-item">
-                                Call To Action
-                                <div className="view-details-btn">
-                                    <button>View Detail</button>
-                                </div>
+                        <div className="cta-item">
+                            <div>
+                                <p>Call To Action</p>
                             </div>
-                            <div className="cta-item">
-                                Call To Action
-                                <div className="view-details-btn">
-                                    <button>View Detail</button>
-                                </div>
+                            <div className="view-details-btn">
+                                <button>View Detail</button>
                             </div>
                         </div>
                     </div>
+                    {/* </div> */}
                 </div>
             </div>
         </div>

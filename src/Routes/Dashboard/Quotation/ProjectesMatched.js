@@ -55,7 +55,7 @@ function ProjectesMatched(props) {
                             return (
                                 <div className="innerProjectsMatched">
                                     <div className="borderRightBorder"></div>
-                                    <div className="bgCircles"></div>
+                                    {/* <div className="bgCircles"></div> */}
                                     <div className="projectCard">
                                         <div className="projectCardHeading">
                                             <div className="projectHeadingName">

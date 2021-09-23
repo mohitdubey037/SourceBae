@@ -6,6 +6,19 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300;1,400&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
+@font-face {
+  font-family: 'Segoe UI Bold';
+  src: url('./Fonts/Segoe\ UI\ Bold.ttf');
+}
+@font-face {
+  font-family: 'Segoe UI Semibold';
+  src: url('./Fonts/seguisb.ttf');
+}
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('./Fonts/Segoe\ UI.ttf');
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;

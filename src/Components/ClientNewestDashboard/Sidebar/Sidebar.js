@@ -1,12 +1,12 @@
 import './Sidebar.css';
 import oneSourcingLogo from "../../../assets/images/Newestdashboard/SideBar/sidebarLogo.svg";
 import helpImg from '../../../assets/images/Newestdashboard/SideBar/help.svg'
-import dashboardIcon from "../../../assets/images/Newestdashboard/SideBar/dashboard_icon.svg";
+import dashboardIcon from "../../../assets/images/Newestdashboard/SideBar/home.svg";
 import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/postProject_icon.svg";
-import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile_icon.svg";
-import notificationIcon from "../../../assets/images/Newestdashboard/SideBar/notification_icon.svg";
+import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile.svg";
+import notificationIcon from "../../../assets/images/Newestdashboard/SideBar/notification.svg";
 import developersIcon from "../../../assets/images/Newestdashboard/SideBar/people_icon.svg";
-import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout_icon.svg";
+import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout.svg";
 import settingIcon from "../../../assets/images/Newestdashboard/SideBar/setting_icon.svg";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PeopleOutlinedIcon from '@material-ui/icons/PeopleOutlined';
@@ -67,12 +67,12 @@ function Sidebar(props) {
 
     return (
         <div className="container-sidebar">
-            <div className="sidebar-logo">
+            {/* <div className="sidebar-logo">
                 <img src={oneSourcingLogo} alt="one sroucing logo" />
-            </div>
+            </div> */}
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
-                    <div className="selected-strip" />
+                    {/* <div className="selected-strip" /> */}
                     <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
                     <p>Dashboard</p>
                 </div>

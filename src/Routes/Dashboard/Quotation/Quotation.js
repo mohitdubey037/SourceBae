@@ -1,9 +1,9 @@
 import React from 'react'
 // import Navbar from '../Navbar'
 import './Quotation.css'
-import received from '../../../assets/images/Quotation/received.png'
-import responded from '../../../assets/images/Quotation/responded.png'
-import matched from '../../../assets/images/Quotation/matched.png'
+import received from '../../../assets/images/Newestdashboard/Quotation/Received.svg';
+import responded from '../../../assets/images/Newestdashboard/Quotation/Responded.svg';
+import matched from '../../../assets/images/Newestdashboard/Quotation/Matched.svg';
 import Received from './Received'
 import Responded from './Responded'
 import ProjectesMatched from './ProjectesMatched';
@@ -63,13 +63,16 @@ function Quotation(props) {
                     <div className="innerQuotation quotation">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>
-                                <img src={received} alt="received" /> Received
+                                <img src={received} alt="received" />
+                                <p>Received</p>
                             </button>
                             <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" ref={respondedRef}>
-                                <img src={responded} alt="" /> Responded
+                                <img src={responded} alt="responded" />
+                                <p>Responded</p>
                             </button>
                             <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" ref={projectMatchRef}>
-                                <img src={matched} alt="" /> Project Matched
+                                <img src={matched} alt="matched" />
+                                <p>Project Matched</p>
                             </button>
                         </div>
                         <div className="tab-content" id="nav-tabContent">

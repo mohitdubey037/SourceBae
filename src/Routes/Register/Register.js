@@ -2,62 +2,14 @@
 import React, { useEffect, useState } from 'react'
 import './register.css'
 import { useParams } from 'react-router'
-import logotext from '../../assets/images/Logo/logo.png'
-import business from '../../assets/images/Logo/sspp.png'
-import colors from '../../Constants/colors'
-import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
+import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button, TextField } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
 import Spinner from '../../Components/Spinner/Spinner';
 import cookie from "react-cookies";
-import TextField from '@material-ui/core/TextField';
-import ClientImage from "../../assets/images/Newestdashboard/Register/ClientImage.png";
-import AgencyImage from "../../assets/images/Newestdashboard/Register/AgencyImage.png";
-
-const AntSwitch = withStyles((theme) => ({
-    root: {
-        width: 80,
-        height: 32,
-        padding: 0,
-        // display: 'flex',
-        borderColor: "#fff",
-    },
-    switchBase: {
-        padding: 2,
-        // color: "#02044a",
-        top: -2,
-        left: -2,
-        color: '#4786FE',
-        "&$checked": {
-            transform: "translateX(39px)",
-            // color: "#7CB9E8",
-            color: '#4786FE',
-            "& + $track": {
-                opacity: 0.82,
-                backgroundColor: "white",
-            },
-            border: "1px solid #EBF5FB",
-        },
-    },
-    thumb: {
-        width: 39,
-        height: 32,
-        boxShadow: "none",
-        borderRadius: '46%'
-    },
-    track: {
-        // border: `1px solid #02044a`,
-        borderRadius: 78 / 2,
-        opacity: 1,
-        backgroundColor: "white",
-        opacity: 0.82,
-        border: '4px solid #BDD4FF',
-    },
-    checked: {},
-}))(Switch);
+import imgRegister from '../../assets/images/Newestdashboard/Register/img_register.svg';
 
 const dateStyles = makeStyles((theme) => ({
     container: {
@@ -91,9 +43,7 @@ const dateStyles = makeStyles((theme) => ({
 const Register = (props) => {
     //Regular Variables
     const dateClasses = dateStyles();
-    const [state, setState] = React.useState({
-        checked: JSON.parse(localStorage.getItem("toggle")) || false
-    });
+    const [state, setState] = useState('');
     const [token, setToken] = useState(null);
     let { role } = useParams();
     role = helper.capitalize(helper.cleanParam(role))
@@ -258,12 +208,13 @@ const Register = (props) => {
     }
 
     useEffect(() => {
-        localStorage.setItem('toggle', state.checked);
-        state.checked === false ? props.history.push('/register:agency') : props.history.push('/register:client');
+        localStorage.setItem('toggle', state);
+        (state === '' || state === 'agency') ? props.history.push('/register:agency') : props.history.push('/register:client');
     }, [state]);
 
-    const handleChangeToggle = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked })
+    const handleChangeToggle = (name) => {
+        console.log(name);
+        setState(name);
     };
 
     //API call methods
@@ -271,7 +222,6 @@ const Register = (props) => {
         return new Promise((resolve, reject) => {
             instance.post(`/api/${role}/auths/signup`, form)
                 .then(function (response) {
-                    console.log('Signup issue');
                     cookie.save(
                         "Authorization",
                         `Bearer ${response.accessToken}`,
@@ -283,7 +233,6 @@ const Register = (props) => {
                     localStorage.setItem("userId", `${response._id}`);
                 })
                 .catch(err => {
-                    console.log('error came in singup');
                     setApiErrors(true);
                     localStorage.removeItem("Authorization");
                     localStorage.removeItem('role');
@@ -349,10 +298,7 @@ const Register = (props) => {
 
     const createRoleString = (role) => {
         role = role.charAt(0).toUpperCase() + role.slice(1)
-        if (role === 'Agency')
-            return `an ${role}`
-        else
-            return `a ${role}`
+        return role;
     }
 
     const toggleForms = (direction) => {
@@ -464,156 +410,145 @@ const Register = (props) => {
     const roleString = createRoleString(role)
     return (
         <div className='client__registrationContainer'>
-            {/* <div className="image__container">
-                <img className="hamaraLogo" src={logotext} alt="" />
-                <img className="businessModals" src={business} alt="" />
-            </div> */}
-
-            {/* <div style={{ flex: .35 }}>
-            </div> */}
 
             {loading ? <Spinner /> :
                 <>
-                    <div className="image_register">
-                        {role === 'Agency' ?
-                            <img src={AgencyImage} alt="client image" />
-                            :
-                            <img src={ClientImage} alt="client image" />
-                        }
-                    </div>
                     <div className='form__area'>
                         <div className="client__form">
                             <div className="toggleButton register">
-                                <div className="form__title"><h6>Register as <span> {roleString} </span></h6></div>
-                                <FormGroup>
-                                    <Typography component="div">
-                                        <Grid component="label" container alignItems="center" spacing={1}>
-                                            <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }} >Agency</Grid>
-                                            <Grid item>
-                                                <AntSwitch checked={state.checked} onChange={handleChangeToggle} name="checked" />
-                                            </Grid>
-                                            <Grid item style={{ fontWeight: 'lighter', fontSize: 22 }}>Client</Grid>
-                                        </Grid>
-                                    </Typography>
-                                </FormGroup>
+                                <div className="form__title">
+                                    <h6>
+                                        Register as {
+                                            (state === '' || state ==="agency") ?
+                                                <><span>an</span><span style={{fontSize: '25px'}} className="agencyOrClient">{` ${roleString}`}</span></>
+                                                :
+                                                <><span>a</span><span style={{fontSize: '25px'}} className="agencyOrClient">{` ${roleString}`}</span></>
+                                        }
+                                    </h6>
+                                
+                                </div>
+
+                                <div className="login_switch signup_switch">
+                                    <button onClick={() => handleChangeToggle('agency')} className={`agency__button ${(state === '' || state === 'agency') && "active__button"}`}><p>Agency</p></button>
+                                    <button onClick={() => handleChangeToggle('client')} className={`client__button ${(state === 'client' && "active__button")}`}><p>Client</p></button>
+                                </div>
                             </div>
-                            {/* <div className="title__subtext"><p>For the purpose of industry regulation, your details are required</p></div> */}
-                            {/* <div className="signUpOption">
-                            <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
-                        </div> */}
                             <div className="client__formsContainer">
                                 <form className='client__form form__1' autoComplete='off' >
-                                    <div className="input_with_error">
-                                        <label>First Name</label>
-                                        <input
-                                            required
-                                            type="text"
-                                            name="firstName"
-                                            placeholder='First Name'
-                                            value={signupForm.firstName}
-                                            onChange={(e) => setForm(e)}
-                                        />
-                                        <div>
+                                    <div>
+                                        <div className="input_with_error">
+                                            <label>First Name</label>
+                                            <input
+                                                required
+                                                type="text"
+                                                name="firstName"
+                                                placeholder='First Name'
+                                                value={signupForm.firstName}
+                                                onChange={(e) => setForm(e)}
+                                            />
+                                            <div>
+                                                {
+                                                    errors.firstNameError &&
+                                                    <p className="error_productForm">
+                                                        {errors.firstNameError}
+                                                    </p>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div className="input_with_error">
+                                            <label>Last Name</label>
+                                            <input
+                                                type="text"
+                                                name="lastName"
+                                                placeholder='Last Name'
+                                                value={signupForm.lastName}
+                                                onChange={(e) => setForm(e)}
+                                            />
                                             {
-                                                errors.firstNameError &&
+                                                errors.lastNameError &&
                                                 <p className="error_productForm">
-                                                    {errors.firstNameError}
+                                                    {errors.lastNameError}
                                                 </p>
                                             }
                                         </div>
                                     </div>
-                                    <div className="input_with_error">
-                                        <label>Last Name</label>
-                                        <input
-                                            type="text"
-                                            name="lastName"
-                                            placeholder='Last Name'
-                                            value={signupForm.lastName}
-                                            onChange={(e) => setForm(e)}
-                                        />
-                                        {
-                                            errors.lastNameError &&
-                                            <p className="error_productForm">
-                                                {errors.lastNameError}
-                                            </p>
-                                        }
+
+                                    <div>
+                                        <div className="input_with_error">
+                                            <label>User Name</label>
+                                            <input
+                                                type="text"
+                                                name="userName"
+                                                placeholder='Username'
+                                                value={signupForm.userName}
+                                                onChange={(e) => setForm(e)}
+                                            />
+                                            {
+                                                errors.userNameError &&
+                                                <p className="error_productForm">
+                                                    {errors.userNameError}
+                                                </p>
+                                            }
+                                        </div>
+
+                                        <div className="input_with_error">
+                                            <label>Email</label>
+                                            <input
+                                                type="email"
+                                                name="userEmail"
+                                                placeholder='Email'
+                                                value={signupForm.userEmail}
+                                                onChange={(e) => setForm(e)}
+                                            />
+                                            {
+                                                errors.emailError &&
+                                                <p className="error_productForm">
+                                                    {errors.emailError}
+                                                </p>
+                                            }
+                                        </div>
                                     </div>
 
-                                    <div className="input_with_error">
-                                        <label>User Name</label>
+                                    <div>
+                                        <div className="input_with_error">
+                                            <label>Phone number</label>
+                                            <input
+                                                type="tel"
+                                                name="userPhone"
+                                                maxLength='10'
+                                                placeholder='Phone No'
+                                                value={signupForm.userPhone}
+                                                onChange={(e) => setForm(e)}
+                                            />
+                                            {
+                                                errors.phoneError &&
+                                                <p className="error_productForm">
+                                                    {errors.phoneError}
+                                                </p>
+                                            }
+                                        </div>
 
-                                        <input
-                                            type="text"
-                                            name="userName"
-                                            placeholder='Username'
-                                            value={signupForm.userName}
-                                            onChange={(e) => setForm(e)}
-                                        />
-                                        {
-                                            errors.userNameError &&
-                                            <p className="error_productForm">
-                                                {errors.userNameError}
-                                            </p>
-                                        }
+                                        <div className="input_with_error">
+                                            <label>Create Password</label>
+                                            <input
+                                                type="password"
+                                                name="password"
+                                                placeholder='Create Password'
+                                                value={signupForm.password}
+                                                onChange={(e) => setForm(e)}
+                                            />
+                                            {
+                                                errors.passwordError &&
+                                                <p className="error_productForm">
+                                                    {errors.passwordError}
+                                                </p>
+                                            }
+                                        </div>
                                     </div>
 
-                                    <div className="input_with_error">
-                                        <label>Email</label>
-
-                                        <input
-                                            type="email"
-                                            name="userEmail"
-                                            placeholder='Email'
-                                            value={signupForm.userEmail}
-                                            onChange={(e) => setForm(e)}
-                                        />
-                                        {
-                                            errors.emailError &&
-                                            <p className="error_productForm">
-                                                {errors.emailError}
-                                            </p>
-                                        }
-                                    </div>
-
-                                    <div className="input_with_error">
-                                        <label>Phone number</label>
-
-                                        <input
-                                            type="tel"
-                                            name="userPhone"
-                                            maxLength='10'
-                                            placeholder='Phone No'
-                                            value={signupForm.userPhone}
-                                            onChange={(e) => setForm(e)}
-                                        />
-                                        {
-                                            errors.phoneError &&
-                                            <p className="error_productForm">
-                                                {errors.phoneError}
-                                            </p>
-                                        }
-                                    </div>
-
-                                    <div className="input_with_error">
-                                        <label>Create Password</label>
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            placeholder='Create Password'
-                                            value={signupForm.password}
-                                            onChange={(e) => setForm(e)}
-                                        />
-                                        {
-                                            errors.passwordError &&
-                                            <p className="error_productForm">
-                                                {errors.passwordError}
-                                            </p>
-                                        }
-                                    </div>
                                     <div className="already_next_register">
                                         <div className="next_Register" onClick={() => toggleForms('next')}>
-                                            <div className="blur_submit_register">
-                                            </div>
                                             <p>NEXT</p>
                                         </div>
                                         <div className="registerOption">
@@ -622,55 +557,53 @@ const Register = (props) => {
                                     </div>
                                 </form>
 
-
+                                <div className="right_image">
+                                    <img src={imgRegister} alt="img" />
+                                </div>
 
                                 <form autoComplete='off' className="client__form form__2">
-                                    {/* <div style={{ width: '80%' }}>
-                                    <Button onClick={() => toggleForms('prev')}
-                                        style={{ background: 'none', border: 'none' }}
-                                    >
-                                        <i className='fa fa-arrow-left' style={{ fontSize: '1.2rem' }}></i>
-                                    </Button>
-                                </div> */}
                                     {
                                         role === `Agency` ?
                                             <>
-                                                <div className="input_with_error">
-                                                    <label>Agency Name</label>
-                                                    <input
-                                                        type="text"
-                                                        name="agencyName"
-                                                        placeholder='Agency Name'
-                                                        value={agencyProfileDetails.agencyName}
-                                                        onChange={(event) => handleCreateProfile(event, role)} />
-                                                    {
-                                                        errors.agencyNameError &&
-                                                        <p className="error_productForm">
-                                                            {errors.agencyNameError}
-                                                        </p>
-                                                    }
-                                                </div>
+                                                <div>
+                                                    <div className="input_with_error">
+                                                        <label>Agency Name</label>
+                                                        <input
+                                                            type="text"
+                                                            name="agencyName"
+                                                            placeholder='Agency Name'
+                                                            value={agencyProfileDetails.agencyName}
+                                                            onChange={(event) => handleCreateProfile(event, role)} />
+                                                        {
+                                                            errors.agencyNameError &&
+                                                            <p className="error_productForm">
+                                                                {errors.agencyNameError}
+                                                            </p>
+                                                        }
+                                                    </div>
 
-                                                <div className="input_with_error">
-                                                    <label>Team Strength</label>
-                                                    <input
-                                                        type="number"
-                                                        name="agencyTeamSize"
-                                                        placeholder='Team Strength'
-                                                        value={agencyProfileDetails.agencyTeamSize}
-                                                        onChange={(event) => handleCreateProfile(event, role)} />
-                                                    {
-                                                        errors.agencyTeamSizeError &&
-                                                        <p className="error_productForm">
-                                                            {errors.agencyTeamSizeError}
-                                                        </p>
-                                                    }
+                                                    <div className="input_with_error">
+                                                        <label>Team Strength</label>
+                                                        <input
+                                                            type="number"
+                                                            name="agencyTeamSize"
+                                                            placeholder='Team Strength'
+                                                            value={agencyProfileDetails.agencyTeamSize}
+                                                            onChange={(event) => handleCreateProfile(event, role)} />
+                                                        {
+                                                            errors.agencyTeamSizeError &&
+                                                            <p className="error_productForm">
+                                                                {errors.agencyTeamSizeError}
+                                                            </p>
+                                                        }
+                                                    </div>
                                                 </div>
 
                                                 {/* <form className={dateClasses.container} noValidate> */}
                                                 <div className="input_with_error">
-                                                    <label classname={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
+                                                    <label className={dateClasses.label} id="incorporationLabel" htmlFor='social'>Incorporation Date</label>
                                                     <input
+                                                        style={{ width: '39%', paddingLeft: '2.5%', paddingRight: '2%' }}
                                                         id="incorporation_date"
                                                         type="date"
                                                         name="incorporationDate"
@@ -690,9 +623,6 @@ const Register = (props) => {
                                                         </p>
                                                     }
                                                 </div>
-                                                <div className="input_with_error">
-
-                                                </div>
                                                 {/* </form> */}
                                             </>
                                             :
@@ -700,6 +630,7 @@ const Register = (props) => {
                                                 <div className="input_with_error">
                                                     <label>User Designation</label>
                                                     <input
+                                                        style={{ width: '39%', paddingLeft: '2.5%' }}
                                                         type="text"
                                                         name="userDesignation"
                                                         placeholder='User Designation'
@@ -714,11 +645,9 @@ const Register = (props) => {
                                                 </div>
 
                                                 <div className="input_with_error">
-                                                </div>
-
-                                                <div className="input_with_error">
                                                     <label>Company Name</label>
                                                     <input
+                                                        style={{ width: '39%', paddingLeft: '2.5%' }}
                                                         type="text"
                                                         name="companyName"
                                                         value={clientProfileDetails.companyName}
@@ -731,14 +660,12 @@ const Register = (props) => {
                                                         </p>
                                                     }
                                                 </div>
-
-                                                <div className="input_with_error">
-                                                </div>
                                             </>
                                     }
                                     <div className="input_with_error">
                                         <label>Wapsite Url</label>
                                         <input
+                                            style={{ width: '39%', paddingLeft: '2.5%' }}
                                             type="text"
                                             name="website"
                                             placeholder='Website URL'

@@ -57,25 +57,27 @@ function Received(props) {
                             projects.map((s) => {
                                 return (
                                     <div className="respondedCard">
-                                        <div className="bgCircle">
+                                        {/* <div className="bgCircle">
                                             <img src={rightCornerCircle} alt="" />
-                                        </div>
+                                        </div> */}
                                         <div className="leftBorder"></div>
-                                        <div className="respondCardHeader">
-                                            <div className="respondName">
-                                                <h4 style={{textTransform: 'capitalize'}}>{s.projectName}</h4>
-                                            </div>
+                                        <div className="date_and_time">
                                             <div className="dateCreated">
-                                                <img src={TimeIcon} alt="time icon" />
+                                                {/* <img src={TimeIcon} alt="time icon" /> */}
                                                 <div>
                                                     <p><Moment format="HH:MM A" withTitle>{s.updatedAt}</Moment></p>
                                                 </div>
                                             </div>
                                             <div className="dateCreated">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                {/* <i class="fa fa-calendar" aria-hidden="true"></i> */}
                                                 <div>
                                                     <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div className="respondCardHeader">
+                                            <div className="respondName">
+                                                <h4 style={{ textTransform: 'capitalize' }}>{s.projectName}</h4>
                                             </div>
                                         </div>
                                         <div className="respondCardDescription">

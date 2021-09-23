@@ -2,9 +2,10 @@
   position: relative;
   background: #F9F9F9;
   display: flex;
-  width: auto;
+  width: 97%;
+  margin: auto;
   height: 44px;
-  /* top: 33px; */
+  border-radius: 22px;
 }
 
 .image-div_newestAddDeveloper {
@@ -16,36 +17,25 @@
 }
 
 .image-div_newestAddDeveloper h6 {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  font-family: 'Segoe UI Semibold';
   font-size: 18px;
-  line-height: 22px;
-  /* identical to box height */
   text-transform: capitalize;
   color: #3A3A3A;
 }
 
 .add-developer-div h6 {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  font-family: 'Segoe UI Bold';
   font-size: 22px;
-  line-height: 27px;
-  /* identical to box height */
   text-transform: capitalize;
-  color: #3A3A3A;
+  color: #45A4E4;
+}
+
+.hover img {
+  width: 30px;
 }
 
 .image-div_newestAddDeveloper>div {
-  border: 2px solid black;
   cursor: pointer;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
 }
 
 .back-button_newestAddDeveloper .MuiSvgIcon-root {
