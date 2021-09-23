@@ -134,9 +134,9 @@ function Sidebar(props) {
                             <i onClick={notificationPanel} className="fa fa-times" aria-hidden="true"></i>
                         </div>
                         <div className="allNotification">
-                            <div className="allNotificationIcon">
+                            {/* <div className="allNotificationIcon">
                                 <img src={notification} alt="" />
-                            </div>
+                            </div> */}
                             <div className="allNotificationText">
                                 <p>All Notification</p>
                             </div>
@@ -147,7 +147,7 @@ function Sidebar(props) {
                                 arr.map(() => {
                                     return (
                                         <div className="notificationPoint">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus et officia laboriosam repellendus, sit impedit.</p>
+                                           <div className="notificationPointIn"><ul><li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus et officia laboriosam repellendus, sit impedit.</p></li></ul> <i className="fa fa-times" aria-hidden="true" style={{paddingRight:"1rem",marginTop:"0.8rem"}}></i></div>
                                         </div>
                                     )
                                 })

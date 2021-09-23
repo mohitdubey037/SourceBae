@@ -4,7 +4,7 @@ import "./AgencyRespondedDetails.css";
 
 import foods from "../../assets/images/Quotation/foods.png";
 import completedImage from '../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg'
-
+import dot from '../../assets/images/Newestdashboard/Agency_Details/dot.svg'
 
 import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
@@ -119,7 +119,7 @@ function AgencyRespondedDetails(props) {
                 </div>
               </div>
               <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
-                <p style={{ fontSize: '20px', color: 'black' }}>
+                <p style={{ fontSize: '20px', color: '#45A4E4' }}>
                   {project?.projectDomainId?.domainName}
                 </p>
               </div>
@@ -129,7 +129,7 @@ function AgencyRespondedDetails(props) {
       </div>
 
       <div className="respondDescription_AgencyRespondedDetails">
-        <h2>About Your Project</h2>
+        <h2 style={{color:"#707070"}}>About Your Project</h2>
         {/* <p>{project?.projectName}</p> */}
       </div>
 
@@ -326,35 +326,35 @@ function AgencyRespondedDetails(props) {
           <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
-              <ul>
-                <li>Min ${project.projectProposalCost}</li>
+              <ul style={{display:"flex",marginLeft:"-1rem"}}>
+              <img className="dotImg"src={dot} alt="" /><li style={{listStyle: "none"}}>Min ${project.projectProposalCost}</li>
               </ul>
             </div>
 
-            <div className="straightLineParent_agencyRespondedDetails">
+            {/* <div className="straightLineParent_agencyRespondedDetails">
               <div className="straightLine_AgencyRespondedDetails"></div>
               <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
               <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div>
+            </div> */}
 
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
-              <ul>
-                <li>{`${project?.projectExpectedStartingDays} Days`}</li>
+              <ul style={{display:"flex",marginLeft:"-1rem"}}>
+              <img className="dotImg"src={dot} alt="" /><li style={{listStyle: "none"}}>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
 
-            <div className="straightLineParent_agencyRespondedDetails2">
+            {/* <div className="straightLineParent_agencyRespondedDetails2">
               <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
               <div className="straightLine_AgencyRespondedDetails2"></div>
               <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div>
+            </div> */}
 
             <div>
               <h4>Technology</h4>
-              <ul>
+              <ul style={{display:"grid" ,marginLeft: "-2rem", gridTemplateColumns:" auto auto"}}>
                 {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
-                  return <li>{p?.technologyName}</li>;
+                  return <> <img className="dotImg"src={dot} alt="" /><li style={{listStyle: "none", display:"flex",alignItems:"flex-end"}}>{p?.technologyName}</li></>;
                 })}
               </ul>
             </div>

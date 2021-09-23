@@ -509,7 +509,7 @@
     font-weight: bold;
     transform: translateY(5px);
 }
-.allNotificationText p::after{
+/* .allNotificationText p::after{
     content: '';
     width: 100px;
     height: 2px;
@@ -518,24 +518,24 @@
     margin: auto;
     margin-top: 4%;
     
-}
+} */
 .notificationsCard{
     height: 75vh;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     overflow: scroll;
     padding: 0.8rem;
 }
 
 .notificationPoint{
-    border-bottom: 1px dashed #5bc0de;
-    padding-top: 3%;
+    /* border-bottom: 1px dashed #5bc0de; */
+    /* padding-top: 3%; */
 }
 .notificationPoint p{
     font-family: 'Open Sans', sans-serif;
     font-size: 0.9rem;
 }
 
-.notificationPoint p::before{
+/* .notificationPoint p::before{
     content: '';
     width: 8px;
     height: 8px;
@@ -543,7 +543,7 @@
     display: inline-block;
     background-color: #999;
     margin-right: 10px;
-}
+} */
 .notificationsCard::-webkit-scrollbar{
     width: 6px;
 }

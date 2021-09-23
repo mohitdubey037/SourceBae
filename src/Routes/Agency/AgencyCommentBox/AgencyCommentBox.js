@@ -199,7 +199,7 @@ const AgencyCommentBox = (props) => {
 
     <div style={{ display: "flex" }}>
       <div className="commentBox">
-        <div className="topLine" style={{
+        <div className="topLine" style={{ backgroundColor:"rgb(69, 164, 228)"
         }}></div>
         {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
@@ -213,13 +213,13 @@ const AgencyCommentBox = (props) => {
                   <div className="chatBox-parent">
                     {index.comment && (
                       <div className="chatBox chatBox-left" >
-                        <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
+                        <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                         <b>Client</b>
                       </div>
                     )}
                     {index.reply && (
                       <div className="chatBox chatBox-right">
-                        <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
+                        <p style={{ backgroundColor: '#eaf3ff' }}>{index.reply}</p>
                         <b>You</b>
                       </div>
                     )}
@@ -323,7 +323,27 @@ const AgencyCommentBox = (props) => {
       </div>
 
       <div className='action-wait'>
-        <div className="postQuotation">
+      <div className="topLine" style={{ backgroundColor:"rgb(69, 164, 228)"
+        }}></div>
+        
+
+        {!(
+          props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
+        ) && (
+            <div className="proposalCard">
+              {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
+                ? ""
+                : "disabled"}`}> */}
+              {/* <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '50%' }}> */}
+                {/* <img src={proposalImage} alt="" /> */}
+              {/* </div> */}
+              {props.projectProposals[0].isProposalActionActive ?
+                <>
+                  <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
+                    <p>Accept or Reject the Project.</p>
+                  </div>
+
+                  <div className="postQuotation">
           {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
             <div className="detailsButtons md-m10 margin-0">
               {/* <p> */}
@@ -335,7 +355,7 @@ const AgencyCommentBox = (props) => {
           {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
             <div className="detailsButtons md-m10 margin-0" >
               {/* <p> */}
-              <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+              <p>{`Agency Negotiatiable Price:`} <i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
 
               {/* </p> */}
             </div>
@@ -350,21 +370,6 @@ const AgencyCommentBox = (props) => {
           )}
         </div>
 
-        {!(
-          props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
-        ) && (
-            <div className="proposalCard">
-              {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
-                ? ""
-                : "disabled"}`}> */}
-              <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '50%' }}>
-                <img src={proposalImage} alt="" />
-              </div>
-              {props.projectProposals[0].isProposalActionActive ?
-                <>
-                  <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
-                    <p>Accept or Reject the Project.</p>
-                  </div>
                   <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons height">
                     <div>
                       <button className="acceptButton" onClick={() => { setOpen(true) }}>

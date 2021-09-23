@@ -143,9 +143,10 @@
   height: 100%;
   top: 0;
   z-index: 999;
-  background-color: #fff;
+  background: #EEF0FF;
+  /* background-image: linear-gradient(to right, #45A4E4 , #5C6DFF); */
   right: -50%;
-  box-shadow: 0 2px 16px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
   transition: 0.3s ease-in-out;
   display: flex;
   justify-content: center;
@@ -177,9 +178,9 @@
 .notificationsCards {
   width: 100%;
 }
-
-.closeNotification i {
-  font-size: 2.5rem;
+.closeNotification i{
+  color:#F5F5F5;
+  font-size: 1rem;
   cursor: pointer;
   transition: 0.4s ease-in-out;
 }
@@ -194,6 +195,7 @@
   margin-top: 5%;
   flex-direction: row-reverse;
   margin-bottom: 8%;
+  
 }
 
 .allNotificationIcon {
@@ -206,19 +208,26 @@
   width: 100%;
   object-fit: contain;
 }
-
-.allNotificationText {
+.allNotificationText{
+  color: #45A4E4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+  border-radius: 20px;
   margin-right: 5%;
+  width:90%;
+  height: 2.2rem;
+  box-shadow: 0px 0px 12px #f8f8f8;
 }
-
-.allNotificationText p {
-  font-size: 2.2rem;
+.allNotificationText p{
+  font-size: 0.8rem;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
+  margin-bottom: 3%;
   transform: translateY(5px);
 }
-
-.allNotificationText p::after {
+/* .allNotificationText p::after{
   content: '';
   width: 100px;
   height: 2px;
@@ -226,26 +235,40 @@
   display: block;
   margin: auto;
   margin-top: 4%;
-}
-
-.notificationsCard {
+  
+} */
+.notificationsCard{
   height: 75vh;
-  background-color: #f9f9f9;
-  overflow: scroll;
-  padding: 0.8rem;
+  /* background-color: #f9f9f9; */
+  overflow: auto;
+  padding: .8rem;
 }
 
-.notificationPoint {
-  border-bottom: 1px dashed #5bc0de;
-  padding-top: 3%;
+.notificationPoint{
+  background-color: white;
+  margin-top: 2%;
+  border-radius: 0.8rem;
+  /* border-bottom: 1px dashed #5bc0de; */
+  /* padding-top: 3%; */
+  box-shadow: 0px 0px 12px #f8f8f8;
+  /* box-shadow: 0px 0px 2px #707070; */
 }
 
-.notificationPoint p {
+.notificationPointIn{
+  display: flex;
+  /* padding: .4rem 2rem */
+}
+.notificationPoint p{
+  display: flex;
+  /* align-items: center; */
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.72rem;
+  padding: 0.5rem;
+  /* padding-bottom: 0.6rem; */
+  transform: translateY(-0.35rem);
 }
 
-.notificationPoint p::before {
+/* .notificationPoint p::before{
   content: '';
   width: 8px;
   height: 8px;
@@ -253,9 +276,8 @@
   display: inline-block;
   background-color: #999;
   margin-right: 10px;
-}
-
-.notificationsCard::-webkit-scrollbar {
+} */
+.notificationsCard::-webkit-scrollbar{
   width: 6px;
 }
 
@@ -264,7 +286,24 @@
 }
 
 .notificationsCard::-webkit-scrollbar-thumb {
-  background-color: #3498DB;
-  border-radius: 10px;
-  ;
+background-color: #3498DB; 
+border-radius: 10px;;
+}
+
+li::marker {
+  margin-bottom: -0.5rem;
+  font-size: 1.6rem;
+  color: #707070;
+}
+
+.ul {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 0rem;
+}
+
+.notificationPointIn i{
+  color: #45A4E4;
+  font-size: 1rem;
+  cursor: pointer;
 }
