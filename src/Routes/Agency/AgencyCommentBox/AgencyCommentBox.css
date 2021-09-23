@@ -862,3 +862,22 @@
   color: #000 !important;
   margin: 0 !important;
 }
+
+.extraDiv {
+  padding:  0rem 2.4rem;
+display: flex;
+justify-content: space-around;
+}
+
+.dot {
+  background-color: #707070;
+  margin: 0.5rem 0.4rem 0rem 0rem;
+  width: 9px;
+  height: 9px;
+  border-radius:50%;
+  opacity: 1;
+}
+
+.react-responsive-modal-closeButton svg{
+  width:20px
+}
