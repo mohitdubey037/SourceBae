@@ -1,7 +1,7 @@
 import React from 'react';
-import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/MainVector.svg';
-import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector.svg';
-import CurrentStatusImage from '../../assets/images/Newestdashboard/Agency_Project_Card/CurrentStatus1.svg';
+import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector2.svg';
+import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector2.svg';
+import CurrentStatusImage from '../../assets/images/Newestdashboard/Agency_Project_Card/CurrentStatus2.svg';
 import { useHistory } from "react-router-dom";
 import './AgencyProjectCard.css';
 
@@ -18,11 +18,11 @@ function AgencyProjectCard({ key, ...props }) {
                 <div className="user-project_child_agencyNewestDashboard">
                     <h5>{props?.projectName}</h5>
                 </div>
-                <div onClick={() =>
+                {/* <div onClick={() =>
                     routerHistory.push(`/agency-project-details:${props?._id}`)
                 } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
                     <h6>Show Details</h6>
-                </div>
+                </div> */}
             </div>
 
             <div className="user-project-status">
@@ -68,6 +68,11 @@ function AgencyProjectCard({ key, ...props }) {
                     </thead>
                 </table>
             </div>
+             <div onClick={() =>
+                    routerHistory.push(`/agency-project-details:${props?._id}`)
+                } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
+                    <h6>Show Details</h6>
+                </div>
         </div>
     )
 }

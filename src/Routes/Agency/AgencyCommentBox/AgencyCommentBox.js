@@ -414,23 +414,23 @@ const AgencyCommentBox = (props) => {
       >
         <div className="QuotationModal acceptance-parent_clientCommentBox">
           <h2>Quotation Acceptance Form</h2>
-          {/* <div className="QuotationModalForm"> */}
           <div className="productModalForm">
             <div className="quotationTable">
               <div className="tableHeaderQuotation">
-                <p>Final Cost </p>
+                <p style={{paddingLeft:"2.3rem" ,fontSize:"1.2rem"}}>Final Cost </p>
               </div>
               <div className="tableContentQuotation">
                 <p>{props.projectProposals[0].finalCostByClient}</p>
               </div>
             </div>
-
+              <div className="extraDiv">
+              <div className="extraDiv2" style={{marginRight:"2rem"}}>
             <div className="quotationTable">
               <div className="tableHeaderQuotation">
                 <p>Project Start Date By Client</p>
               </div>
               <div className="tableContentQuotation">
-                <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
+              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
               </div>
             </div>
 
@@ -439,7 +439,7 @@ const AgencyCommentBox = (props) => {
                 <p>Project Delayed Start Date By Client</p>
               </div>
               <div className="tableContentQuotation">
-                <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
+              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
               </div>
             </div>
 
@@ -448,32 +448,36 @@ const AgencyCommentBox = (props) => {
                 <p>Project End Date By Client</p>
               </div>
               <div className="tableContentQuotation">
-                <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
+              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
               </div>
             </div>
-
+              </div>
+              <div className="extraDiv3" style={{marginLeft:"10.5rem"}}>
             <div className="quotationTable">
               <div className="tableHeaderQuotation">
                 <p>Project Expected End Date By Client</p>
               </div>
               <div className="tableContentQuotation">
-                <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
+              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
               </div>
             </div>
-
+            
             <div className="quotationTable">
               <div className="tableHeaderQuotation">
-                <p>Project Start Date By You</p>
+                <p style={{width:"75%"}}>Project Start Date By You</p>
               </div>
               <div className="tableContentQuotation">
                 <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
               </div>
             </div>
+            </div>
+            </div>
             <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
               <button style={{ textAlign: 'center' }} onClick={handleProjectAcceptance}>Submit</button>
             </div>
+            
+            
           </div>
-          {/* </div> */}
         </div>
       </Modal>
 
@@ -588,7 +592,7 @@ const AgencyCommentBox = (props) => {
             <h2>Reason for Rejection</h2>
           </div>
           <div className="radioButtons_with_textBox">
-            <FormControl component="fieldset">
+            <FormControl component="fieldset" style={{marginLeft:"25px"}}>
               <RadioGroup
                 column
                 aria-label="position"
@@ -596,40 +600,44 @@ const AgencyCommentBox = (props) => {
                 onChange={onQuotationRejectionChange}
                 defaultValue="top">
 
-                <FormControlLabel
+                <FormControlLabel 
                   value="No Matching Requirements"
                   control={<Radio color="primary" />}
                   label="Not Matching Requirement"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Taking Too Much Time"
                   control={<Radio color="primary" />}
                   label="Taking Too Much Time"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Cost is too low"
                   control={<Radio color="primary" />}
                   label="Cost is too low"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Other"
                   control={<Radio color="primary" />}
                   label="Other"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
               </RadioGroup>
             </FormControl>
+            {/* <div style={{display:"flex"}}>
+              <span>Detailed description</span>
+              <input style={{ marginLeft:"10px", width:"14rem", height:"7rem", borderRadius:"7px",border:"2px solid #707070"}}/>
+            </div> */}
             {quotationRejectionForm.rejectReasonByAgency !== "No Matching Requirements" &&
               quotationRejectionForm.rejectReasonByAgency !== "Taking Too Much Time" &&
               quotationRejectionForm.rejectReasonByAgency !== "Cost is too low"
               &&
-              <div className="detailed_description_clientCommentBox">
+              <div className="detailed_description_clientCommentBox" style={{display:"grid"}}>
                 <label>Detailed description:</label>
                 <textarea
-                  style={{ padding: '10px', marginLeft: '10px' }}
+                  style={{padding:"6px", marginTop:"10px", fontSize:"12px",width:"18rem", height:"7rem", borderRadius:"3px",border:"1px solid #707070"}}
                   placeholder="Please type your reason here"
                   name="rejectReasonByAgency"
                   cols="30"

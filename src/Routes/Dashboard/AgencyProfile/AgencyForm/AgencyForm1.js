@@ -576,12 +576,12 @@ function AgencyForm1(props) {
 
                         </div>
                     </div>
-                    <div className="rightPersonelDetailsForm">
+                    {/* <div className="rightPersonelDetailsForm">
                         <span>Updating Profile</span>
                         <p>Updating your profile will make you visible to more clients and lead to more revenue.</p>
                         <img className="businessModal" src={agency3d} alt="" />
-                        {/* <img className="squareShape" src={squareShape} alt="" /> */}
-                    </div>
+                        <img className="squareShape" src={squareShape} alt="" />
+                    </div> */}
                 </>
             }
         </>

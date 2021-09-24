@@ -327,7 +327,7 @@ function AgencyRespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul style={{display:"flex",marginLeft:"-1rem"}}>
-              <img className="dotImg"src={dot} alt="" /><li style={{listStyle: "none"}}>Min ${project.projectProposalCost}</li>
+              <li style={{listStyle: "none"}}> <img className="dotImg"src={dot} alt="" /> Min ${project.projectProposalCost}</li>
               </ul>
             </div>
 
@@ -340,7 +340,7 @@ function AgencyRespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul style={{display:"flex",marginLeft:"-1rem"}}>
-              <img className="dotImg"src={dot} alt="" /><li style={{listStyle: "none"}}>{`${project?.projectExpectedStartingDays} Days`}</li>
+             <li style={{listStyle: "none"}}> <img className="dotImg"src={dot} alt="" /> {`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
 
@@ -352,9 +352,9 @@ function AgencyRespondedDetails(props) {
 
             <div>
               <h4>Technology</h4>
-              <ul style={{display:"grid" ,marginLeft: "-2rem", gridTemplateColumns:" auto auto"}}>
+              <ul style={{display:"grid" ,marginLeft: "-2rem", gridTemplateColumns:"auto"}}>
                 {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
-                  return <> <img className="dotImg"src={dot} alt="" /><li style={{listStyle: "none", display:"flex",alignItems:"flex-end"}}>{p?.technologyName}</li></>;
+                  return <li style={{listStyle: "none", display:"flex",alignItems:"flex-end"}}> <img className="dotImg"src={dot} alt="" />{p?.technologyName}</li>;
                 })}
               </ul>
             </div>

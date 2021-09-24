@@ -123,7 +123,7 @@ table {
 
 table td {
     font-style: normal;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 12px;
     text-transform: capitalize;
 }

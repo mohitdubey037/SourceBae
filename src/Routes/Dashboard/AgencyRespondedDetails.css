@@ -115,16 +115,16 @@
   position: relative;
 } */
 
-.straightLineParent_agencyRespondedDetails {
+/* .straightLineParent_agencyRespondedDetails {
   position: absolute;
   width: 21%;
   height: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* left: 14.6rem; */
+  left: 14.6rem;
   left: 20%;
-}
+} */
 
 .straightLineParent_agencyRespondedDetails2 {
   position: absolute;
@@ -137,27 +137,21 @@
   left: 60%;
 }
 
-.straightLine_AgencyRespondedDetails {
-  /* position: absolute; */
+/* .straightLine_AgencyRespondedDetails {
+  position: absolute;
   width: 220px !important;
   height: 1px;
   background-color: black;
-}
+} */
 
-.straightLine_AgencyRespondedDetails2 {
-  /* position: absolute; */
-  width: 230px !important;
-  height: 1px;
-  background-color: black;
-}
-
-.diamond_agencyRespondedDetails {
+/* 
+/* .diamond_agencyRespondedDetails {
   width: 7px;
   height: 7px;
   transform: rotate( 45deg);
   position: absolute;
   background-color: black;
-}
+} */
 
 .straightAfterLine ul {
   padding-left: 1rem;
@@ -209,6 +203,8 @@
   align-items: center;
   position: relative;
   box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+  margin: 2rem 1rem 1rem 1rem ;
+  width :100%;
 }
 
 .disabled {
@@ -695,6 +691,8 @@
 }
 
 .agencyQuestions_AgencyRespondedDetails div ul {
+  display: flex;
+  margin-left: -1rem;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.1rem;
   margin-top: 20px;
@@ -783,5 +781,5 @@
 .dotImg{
   height: 22px;
     padding-right: 10px;
-    padding-top: 4px;
+    /* padding-top: 4px; */
 }
