@@ -410,7 +410,7 @@ button {
   font-family: 'Segoe UI Bold';
   color: #555;
   font-size: 1rem;
-  background: blue;
+  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
   padding: 10px;
   border-radius: 0 20px 20px 0;
   color: white;
@@ -419,8 +419,7 @@ button {
   display: flex;
   justify-content: flex-end;
   position: relative;
-  right:100px;
-
+  right: 100px;
 }
 
 .innerAgencyProfileDesc h2 {

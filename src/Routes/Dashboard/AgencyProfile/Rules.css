@@ -124,7 +124,7 @@
 }
 
 .cancel-img {
-    filter: invert(16%) sepia(81%) saturate(6753%) hue-rotate(2deg) brightness(101%) contrast(122%);
+    filter: invert(16%) sepia(200%) saturate(6753%) hue-rotate(2deg) brightness(101%) contrast(122%);
 }
 
 .check-img {
