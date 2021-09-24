@@ -141,6 +141,14 @@
   font-size: 0.7rem;
 }
 
+/* .add-developer_parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+} */
+
 .developerBudget {
   display: flex;
   flex-wrap: wrap;
@@ -171,12 +179,11 @@
 
 .developerResume button {
   padding: 0.4rem 1rem;
-  border-radius: 4px;
-  background-color: #eaf2ff;
-  color: #000;
-  font-family: 'Open Sans', sans-serif;
+  border-radius: 20px;
+  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%) !important;
+  font-family: 'Segoe UI';
+  color: white;
   font-size: 0.8rem;
-  font-weight: 600;
   outline: none;
   border: none;
 }
@@ -195,8 +202,9 @@
 }
 
 .addDeveloperText {
-  transform: translateY(-10px);
+  /* transform: translateY(10px); */
   font-size: 1.1rem;
+  margin-top: 1rem;
 }
 
 .developer-detail {

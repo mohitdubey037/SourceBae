@@ -10,6 +10,7 @@ import crossIcon from '../../../assets/images/Newestdashboard/Adding_Developers/
 import TrashIcon from '../../../assets/images/Newestdashboard/Agency-Profile/material-delete.svg';
 import { Modal } from "react-responsive-modal";
 import ArrowButton from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg';
+import developerImage from '../../../assets/images/Newestdashboard/Agency-Profile/add-developer.svg';
 import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
 
 const AntSwitch = withStyles((theme) => ({
@@ -28,7 +29,7 @@ const AntSwitch = withStyles((theme) => ({
         color: 'green',
         border: "1px solid #EBF5FB",
         "&$checked": {
-            transform: "translateX(15px)",
+            transform: "translateX(14px)",
             color: '#FF0000',
             "& + $track": {
                 opacity: 0.82,
@@ -270,9 +271,10 @@ function DeveloperList(props) {
 
                     {Role === 'Agency' ?
                         agencyProfiledata.isAgencyVerified &&
-                        <div className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
-                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 255, cursor: 'pointer' }}>
-                                <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} />
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
+                            <div className="add-developer_parent">
+                                {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}
+                                <img src={developerImage} alt="developerImage" />
                                 <h6 className="addDeveloperText">Add Developer</h6>
                             </div>
                         </div>

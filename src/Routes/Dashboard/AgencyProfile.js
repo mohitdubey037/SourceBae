@@ -59,34 +59,23 @@ import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 190,
-  },
-  chips: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  chip: {
-    margin: 2,
+    minWidth: 150,
   },
   noLabel: {
     marginTop: theme.spacing(3),
   },
   menuFont: {
-    fontFamily: "Inter",
+    fontFamily: "Segoe UI",
   },
   inputField: {
-    fontFamily: "Inter",
+    fontFamily: "Segoe UI",
+    border: '1px solid blue',
+    borderRadius: '20px'
   },
   radioBox: {
     borderWidth: 1,
     borderColor: "#000",
   },
-  root: {
-    "& .MuiOutlinedInput-input": {
-      color: "green",
-      padding: "11.5px 14px"
-    },
-  }
 }));
 
 function AgencyProfile(props) {
@@ -422,17 +411,17 @@ function AgencyProfile(props) {
                       <h3>Agency Document</h3>
                     </div>
 
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
                         value={link}
                         onChange={(event) => handleChange(event)}
                         displayEmpty
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Inter", color: "#999" }}>
+                          <span style={{ fontFamily: "Segoe UI", color: "#707070", fontSize: '14px' }}>
                             Select from here
                           </span>
                         </MenuItem>
