@@ -21,7 +21,7 @@
 
 .rules_parent p {
     font-family: 'Segoe UI Bold';
-    font-size: 18px;
+    font-size: 14px;
     text-transform: capitalize;
     color: #5C6DFF;
 }
@@ -35,20 +35,21 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1%;
+    padding: 0 1rem;
 }
 
 .rulesUpper h4 {
     font-family: 'Segoe UI';
     font-size: 1rem;
     color: #5C6DFF;
-    margin: 1rem 0px;
+    margin-top: 1rem;
 }
 
 .rulesUpper p {
     font-family: 'Segoe UI Semibold';
     font-size: 1rem;
     color: #5C6DFF;
+    margin-top: 1rem;
 }
 
 .openTiming i, .weekendOpening i {
@@ -59,8 +60,12 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* margin-bottom: 2%; */
+    padding: 0 1rem;
 }
+
+/* .rulesQuestions {
+    margin-top: 1rem;
+} */
 
 .leftQuestion {
     width: 70%;
@@ -101,14 +106,32 @@
     margin-top: 1rem;
 }
 
+.conditionalPadding {
+    padding: 20px;
+}
+
 .editableBtn_rules {
     width: 100%;
     display: flex;
     border-radius: 23px;
     background: #EEF0FF;
+    margin-bottom: 1%;
 }
 
-.submitEditBtn button {
+.rulesMark img {
+    width: 12px;
+    transform: translateY(10px);
+}
+
+.cancel-img {
+    filter: invert(16%) sepia(81%) saturate(6753%) hue-rotate(2deg) brightness(101%) contrast(122%);
+}
+
+.check-img {
+    filter: invert(42%) sepia(19%) saturate(6449%) hue-rotate(219deg) brightness(105%) contrast(451%)
+}
+
+/* .submitEditBtn button {
     padding: 0.5rem 1rem;
     outline: none;
     background-color: transparent;
@@ -119,7 +142,7 @@
     border-radius: 999px;
     font-weight: bold;
     margin-right: 2%;
-}
+} */
 
 .submitEditBtn button:hover {
     background-color: #5cb85c;

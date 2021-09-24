@@ -15,6 +15,7 @@
   display: flex;
   border-radius: 23px;
   background: #EEF0FF;
+  margin-bottom: 1%;
 }
 
 .editable_parent {
@@ -93,7 +94,7 @@
 
 .skill-set_parent p {
   font-family: 'Segoe UI Bold';
-  font-size: 18px;
+  font-size: 14px;
   text-transform: capitalize;
   color: #5C6DFF;
 }

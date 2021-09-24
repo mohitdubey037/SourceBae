@@ -133,11 +133,12 @@
 .developerTechNames p {
   font-family: 'Segoe UI';
   color: #707070;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0.8rem;
   border: 1px solid #707070;
   border-radius: 999px;
   margin-bottom: 3px;
-  margin-right: 20px;
+  margin-right: 15px;
+  font-size: 0.7rem;
 }
 
 .developerBudget {

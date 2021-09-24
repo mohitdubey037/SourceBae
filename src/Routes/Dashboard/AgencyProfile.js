@@ -391,10 +391,10 @@ function AgencyProfile(props) {
           <div className="mainAgencyProfileDesc">
             <div className="innerAgencyProfileDesc">
               <div className="leftAgencyProfileDesc">
-                <div>
+                <div className="aboutUs_parent">
                   <h2>About us</h2>
                 </div>
-                <div style={{ paddingRight: 20 }}>
+                <div style={{ width: '70%' }}>
                   <p>{agencyProfileData.agencyDescription}</p>
                   <div className="agencyProfileIndustry">
                     {agencyProfileData &&

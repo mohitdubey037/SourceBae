@@ -8,6 +8,9 @@ import FormControl from '@material-ui/core/FormControl';
 import instance from "../../../Constants/axiosConstants"
 import Rules_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg';
 
+import check from '../../../assets/images/Newestdashboard/Agency-Profile/check.png';
+import cancel from '../../../assets/images/Newestdashboard/Agency-Profile/cancel.png';
+
 import './Rules.css'
 
 function Rules(props) {
@@ -86,7 +89,7 @@ function Rules(props) {
                             <div className="editableBtn_rules">
                                 <div className="rules_parent">
                                     {/* <img src={Rules_edit} alt="Rules" /> */}
-                                    <p>Agency Rules</p>
+                                    <p>AGENCY RULES</p>
                                 </div>
                                 {/* <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button> */}
                                 <i onClick={() => { handleEditRules(true) }} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
@@ -104,13 +107,13 @@ function Rules(props) {
                             </div>
                         </div>
 
-                        <div className="rulesQuestions">
+                        <div className="rulesQuestions" style={{ marginTop: editRules && '15px' }}>
                             {
                                 rules.length > 0
                                     ?
                                     rules.map((value) => {
                                         return (
-                                            <div className="questionPart">
+                                            <div className={`questionPart ${editRules === false && 'conditionalPadding'}`}>
                                                 <div className="leftQuestion">
                                                     <p>{value?.ruleId.rule}</p>
                                                 </div>
@@ -119,9 +122,11 @@ function Rules(props) {
                                                 {!editRules && <div className="rulesMark">
                                                     {value?.selection
                                                         ?
-                                                        <i className="fa fa-check" style={{ color: 'blue' }} aria-hidden="true" />
+                                                        // <i className="fa fa-check" style={{ color: 'blue' }} aria-hidden="true" />
+                                                        <img className='check-img' src={check} alt="check" />
                                                         :
-                                                        <i className="fa fa-times" style={{ color: '#d9534f' }} aria-hidden="true" />
+                                                        // <i className="fa fa-times" style={{ color: '#d9534f' }} aria-hidden="true" />
+                                                        <img className='cancel-img' src={cancel} alt="cancel" />
                                                     }
                                                 </div>}
 

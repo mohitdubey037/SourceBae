@@ -313,7 +313,7 @@ function SkillsSet(props) {
                         <div className="skill-set_parent_parent">
                             <div className="skill-set_parent">
                                 {/* <img src={Skillset_edit} alt="Skill-Set" /> */}
-                                <p>Skill Set</p>
+                                <p>SKILL SET</p>
                             </div>
                             <i onClick={() => handleEdit(true)} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
 

@@ -393,23 +393,40 @@ button {
 }
 
 .innerAgencyProfileDesc {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-right: 2rem;
 }
 
 .leftAgencyProfileDesc {
-  width: 60%;
+  width: 75%;
   display: flex;
   justify-content: space-between;
 }
 
-.innerAgencyProfileDesc h2 {
-  font-family: 'Segoe UI';
+.aboutUs_parent {
+  font-family: 'Segoe UI Bold';
   color: #555;
-  font-size: 1.5rem;
-  /* width: 35%; */
+  font-size: 1rem;
+  background: blue;
+  padding: 10px;
+  border-radius: 0 20px 20px 0;
+  color: white;
+  height: fit-content;
+  width: 400px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  right:100px;
+
+}
+
+.innerAgencyProfileDesc h2 {
+  margin-bottom: 0;
+  font-size: 1rem;
+  padding-right: 1rem;
 }
 
 .leftAgencyProfileDesc p {
@@ -442,7 +459,7 @@ button {
 .rightAgencyProfileDesc {
   width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -454,7 +471,7 @@ button {
   padding: 1rem 0;
   position: relative;
   border-radius: 15px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

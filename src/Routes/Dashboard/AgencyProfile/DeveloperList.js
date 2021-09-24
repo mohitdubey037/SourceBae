@@ -14,7 +14,7 @@ import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } f
 
 const AntSwitch = withStyles((theme) => ({
     root: {
-        width: 43,
+        width: 28,
         height: 14,
         padding: 0,
         // display: 'flex',
@@ -25,31 +25,35 @@ const AntSwitch = withStyles((theme) => ({
         // color: "#02044a",
         top: -2,
         left: -2,
-        color: '#26E826',
+        color: 'green',
         border: "1px solid #EBF5FB",
         "&$checked": {
-            transform: "translateX(30px)",
+            transform: "translateX(15px)",
             color: '#FF0000',
             "& + $track": {
                 opacity: 0.82,
-                backgroundColor: "white",
-                border: '2px solid #FF0000',
+                backgroundColor: "blue",
+                // border: '2px solid #FF0000',
             },
             border: "1px solid #FF0000",
         },
     },
     thumb: {
-        width: 13,
-        height: 13,
+        width: '12px',
+        height: '12px',
         boxShadow: "none",
-        borderRadius: '46%'
+        borderRadius: '46%',
+        color: 'white',
+        marginTop: '1px',
+        marginLeft: '1px'
     },
     track: {
         // border: `1px solid #02044a`,
         borderRadius: 78 / 2,
-        backgroundColor: "white",
+        backgroundColor: "blue",
         opacity: 0.82,
-        border: '2px solid #26E826',
+
+        // border: '2px solid green',
     },
     checked: {},
 }))(Switch);
@@ -171,7 +175,7 @@ function DeveloperList(props) {
                                     <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
                                         {/* <img src={crossIcon} alt="cross-icon" /> */}
                                         {/* <i className="fas fa-trash-alt"></i> */}
-                                        <img src={TrashIcon} alt="trash"/>
+                                        <img src={TrashIcon} alt="trash" />
                                     </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
