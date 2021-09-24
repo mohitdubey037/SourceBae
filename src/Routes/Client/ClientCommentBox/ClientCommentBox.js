@@ -160,14 +160,14 @@ const ClientCommentBox = (props) => {
                   <div className="chatBox-parent">
                     {index.comment && (
                       <div className="chatBox">
-                        <p style={{ backgroundColor: '#93E9FF' }}>{index.comment}</p>
+                        <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                         <b>You</b>
                       </div>
                     )}
 
                     {index.reply && (
                       <div className="chatBox chatBox-left">
-                        <p style={{ backgroundColor: '#e1f9ff' }}>{index.reply}</p>
+                        <p style={{ backgroundColor: 'rgb(234, 243, 255)' }}>{index.reply}</p>
                         <b>Agency</b>
                       </div>
                     )}
@@ -303,10 +303,10 @@ const ClientCommentBox = (props) => {
           {/* <div className={`${props.isProposalActionActive ? "" : "disabled"}`}> */}
           <div className="proposalCard">
             <div className="yellowBg">
-              <img src={proposalImage} alt="" />
+              {/* <img src={proposalImage} alt="" /> */}
             </div>
               <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-                <p>Accept or Reject the Project.</p>
+                <p style={{marginLeft:"5rem"}}>Accept or Reject the Project.</p>
               </div>
             <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
               <div>

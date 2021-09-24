@@ -9,6 +9,8 @@ import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import detailImage from '../../../assets/images/details.png';
 import completedImage from '../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg'
+import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
+
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   console.log(props);
@@ -290,34 +292,34 @@ function RespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul>
-                <li>Min ${project.projectProposalCost}</li>
+              <li style={{listStyle:"none"}}> <img className="dotImg"src={dot} alt="" /> Min ${project.projectProposalCost}</li>
               </ul>
             </div>
             
-            <div className="straightLineParent_agencyRespondedDetails">
+            {/* <div className="straightLineParent_agencyRespondedDetails">
               <div className="straightLine_AgencyRespondedDetails"></div>
               <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
               <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div>
+            </div> */}
 
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul>
-                <li>{`${project?.projectExpectedStartingDays} Days`}</li>
+              <img className="dotImg"src={dot} alt="" /><li style={{listStyle:"none"}}>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
 
-            <div className="straightLineParent_agencyRespondedDetails2">
+            {/* <div className="straightLineParent_agencyRespondedDetails2">
               <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
               <div className="straightLine_AgencyRespondedDetails2"></div>
               <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div>
+            </div> */}
 
             <div>
               <h4>Technology</h4>
               <ul>
                 {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
-                  return <li>{p?.technologyName}</li>;
+                  return <> <img className="dotImg"src={dot} alt="" /> <li style={{listStyle:"none"}}>{p?.technologyName}</li></>;
                 })}
               </ul>
             </div>
