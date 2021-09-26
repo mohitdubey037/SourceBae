@@ -15,7 +15,8 @@
 }
 
 .user-project_heading_agencyNewestDashboard {
-  width: 50rem;
+  /* width: 50rem; */
+  width: 100%;
   /* height: 40px; */
  /* margin-top: 5px;
   display: flex;
