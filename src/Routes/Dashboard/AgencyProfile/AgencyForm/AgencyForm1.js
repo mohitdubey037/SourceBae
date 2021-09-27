@@ -421,7 +421,7 @@ function AgencyForm1(props) {
                                 <div className="agencyLogo_parent">
                                     <label>Agency Logo</label>
                                     <div className="getAgencyLogo">
-                                        <img src={agencyLogo} alt="" />
+                                        {/* <img src={agencyLogo} alt="" /> */}
                                         <FilePicker
                                             extensions={['jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
