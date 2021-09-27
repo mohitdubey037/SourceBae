@@ -3,8 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2%;
-    padding: 0 3rem;
+    padding: 2rem;
+
 }
 
 .innerFormPhase {
@@ -64,9 +64,7 @@
 .formPhaseCards span {
     margin-left: 10px;
     font-family: 'Segoe UI';
-    font-weight: 600;
     font-size: 16px;
-    line-height: 29px;
     text-align: center;
     letter-spacing: 0.611765px;
     text-transform: capitalize;
@@ -85,13 +83,11 @@
 
 .mainPersonelDetailsForm {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    margin-top: 3%;
     padding-bottom: 3%;
     position: relative;
     width: 100%;
-    padding: 0 12rem;
+    padding: 0 14rem;
 }
 
 .innerPersonelDetailsForm {
@@ -129,7 +125,7 @@
 }
 
 .agencyLogo_parent label {
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI Semibold';
     color: #707070;
     font-size: 18px;
     text-transform: capitalize;
@@ -146,8 +142,8 @@
 }
 
 .innerLeftPersonelDetailsForm p {
-    font-family: 'Segoe UI';
-    font-size: 16px1;
+    font-family: 'Segoe UI Semibold';
+    font-size: 16px;
     text-transform: capitalize;
     color: #707070;
 }
@@ -175,7 +171,7 @@
 
 .innerLeftPersonelDetailsForm .formContentPartOne .agencyLogo_parent {
     position: relative;
-    width: 45%;
+    width: 40%;
 }
 
 .getAgencyLogo{
@@ -183,9 +179,7 @@
 }
 
 .getAgencyDesc {
-    width: 45%;
-    position: relative;
-    /* margin-right: -4rem; */
+    width: 40%;
 }
 
 .getAgencyLogo {
@@ -216,7 +210,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 8rem;
+    width: 7rem;
 }
 
 .documentInformation .logo-type_agencyForm1, .panCardContent .logo-type_agencyForm1 {
@@ -232,7 +226,7 @@
     font-size: 18px;
     text-transform: capitalize;
     color: #707070;
-    font-family: "Segoe UI";
+    font-family: "Segoe UI Semibold";
 }
 
 .margin-top {
@@ -269,7 +263,7 @@
 }
 
 .getOwnerName {
-    width: 45%;
+    width: 40%;
     position: relative;
 }
 
@@ -334,13 +328,13 @@
     justify-content: center;
     padding: 0.4rem 1rem;
     font-family: 'Segoe UI';
-    background: #71a6fd;
-    width: 7rem;
+    background-image: linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff);
+    width: 6rem;
     outline: none;
     border: none;
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 2rem;
 }
 
@@ -374,7 +368,6 @@
     width: 84%;
     display: flex;
     margin: auto;
-    margin-top: 3%;
     margin-bottom: 5%;
     justify-content: space-around;
     align-items: flex-start;

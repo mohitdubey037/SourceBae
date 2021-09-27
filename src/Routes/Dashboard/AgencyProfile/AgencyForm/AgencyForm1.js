@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
+import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
@@ -427,8 +428,9 @@ function AgencyForm1(props) {
                                             onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
                                             onError={error => handleUploadError(error)}>
                                             <button>
-                                                <i className="fa fa-upload" aria-hidden="true" />
-                                                Pick File
+                                                {/* <i className="fa fa-upload" aria-hidden="true" /> */}
+                                                <p>Pick File</p>
+                                                <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
                                         <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name ?? "(jpeg, png, jpg)"}`}</p>
