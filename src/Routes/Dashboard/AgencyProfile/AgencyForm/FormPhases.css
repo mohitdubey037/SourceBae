@@ -217,7 +217,6 @@
     font-size: 14px;
     text-transform: capitalize;
     padding: 5px 8px;
-    font-weight: normal;
     color: #707070;
 }
 
@@ -743,22 +742,22 @@
 .socialInputs div input {
     margin-top: 10px;
     width: 65%;
-    height: 47px;
+    height: 45px;
     padding-left: 10px;
     border: 1px solid #45A4E4;
-    font-family: 'Segoe UI Semibold';
+    font-family: 'Segoe UI';
     font-size: 1rem;
     border-radius: 7px;
 }
 
 .socialInputs div input::placeholder {
-    color: #999;
+    color: #707070;
     opacity: 0.5;
 }
 
-.socialInputs div input:focus {
+/* .socialInputs div input:focus {
     outline: none;
-}
+} */
 
 /* .socialArea {
     width: 30%;
