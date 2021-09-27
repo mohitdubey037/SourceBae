@@ -363,14 +363,12 @@ function AgencyForm2(props) {
               </div>
 
               <div className="nextBtn">
-                <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#02044A' }}>
+                <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
                   Back
                 </button>
-                <button className="next-click" onClick={() => { handleNext() }}>
+                <button style={{backgroundImage: 'linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff)'}} className="next-click" onClick={() => { handleNext() }}>
                   Next
-                  {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                 </button>
-                {/* </NavLink> */}
               </div>
             </div>
           </div>

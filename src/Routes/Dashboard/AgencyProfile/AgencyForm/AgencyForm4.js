@@ -298,20 +298,20 @@ function AgencyForm4(props) {
                                             <i className="fa fa-long-arrow-left" aria-hidden="true"></i>Back
                                         </button>
                                     </NavLink> */}
-                                    <button style={{ backgroundColor: '#02044A' }} >
+                                    <button style={{ backgroundColor: '#707070' }} >
                                         Back
                                         {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                                     </button>
-                                    <button style={{ backgroundColor: '#02044A' }} onClick={finalUpdate} >
+                                    <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={finalUpdate} >
                                         Finish
                                         {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div className="socialArea">
+                        {/* <div className="socialArea">
                             <img src={links} alt="" />
-                        </div>
+                        </div> */}
                     </div>
                 </>
             }

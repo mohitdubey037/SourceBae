@@ -334,7 +334,7 @@
 .projectNameAgency input {
     width: 100%;
     background: #FFFFFF;
-    margin-top: 10px; 
+    margin-top: 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -583,10 +583,6 @@
     top: 3rem;
 }
 
-.domainsFields .domainHeading {
-    font: bold 1.3rem 'Open Sans', sans-serif
-}
-
 .domainFieldsCard div img {
     width: 50%;
     margin-bottom: 4%;
@@ -658,7 +654,7 @@
     user-select: none;
 }
 
-.servicesCardsHireAgency div p {
+.innerHireAgencyFormTwo .servicesCardsHireAgency div p, .innerHireAgencyForm3 .servicesCardsHireAgency div p {
     margin-top: 10px;
     user-select: none;
     font: normal 500 18px 'Open Sans', sans-serif;
@@ -717,7 +713,7 @@
     border: none;
 }
 
-.serviceSelectionInput {
+.hireAgencyForm2 .serviceSelectionInput, .newHireAgencyForm3 .serviceSelectionInput {
     margin-top: 10%;
     font-family: "Open Sans", sans-serif;
     font-style: normal;
@@ -750,10 +746,6 @@
 
 .monthlyBudget {
     margin-top: 5%;
-}
-
-.monthlyBudget p {
-    font: bold 1.2rem 'Open Sans', sans-serif;
 }
 
 .innerHireAgencyForm3 {
@@ -799,9 +791,9 @@
     flex-wrap: wrap;
 }
 
-.domainsFields .domainHeading {
+/* .domainsFields .domainHeading {
     font: bold 1.3rem 'Open Sans', sans-serif;
-}
+} */
 
 .domainFieldsCard div {
     width: 22%;
@@ -925,7 +917,7 @@
     margin-top: 8%;
 }
 
-.monthlyBudget p {
+.innerHireAgencyFormTwo .monthlyBudget p {
     font: normal 600 22px 'Open Sans', sans-serif;
     line-height: 27px;
     text-transform: capitalize;

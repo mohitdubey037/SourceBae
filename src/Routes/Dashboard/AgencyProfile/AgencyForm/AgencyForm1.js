@@ -566,7 +566,7 @@ function AgencyForm1(props) {
                                         </button>
                                     </NavLink> */}
                                 {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}> */}
-                                <button onClick={(event) => handleSubmit(event)}>
+                                <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={(event) => handleSubmit(event)}>
                                     Next
                                     {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                                 </button>

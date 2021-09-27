@@ -50,7 +50,7 @@ function AgencyProjectCard({ key, ...props }) {
                 </div>
             </div>
 
-            <div className="user-project_details">
+            <div className="user-project_details agencyProjectCard">
                 <table>
                     <thead>
                         <tr>

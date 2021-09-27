@@ -6,37 +6,25 @@
   margin-bottom: 30px;
   width: 100%;
   border: 1px solid #f5f5f5;
-  /* height: 200px; */
   padding: 1rem 1rem 1rem 4rem;
   background: linear-gradient( 241.25deg, rgba(255, 255, 255, 0.45) 4.4%, rgba(255, 255, 255, 0.65) 61.77%, rgba(255, 255, 255, 0.54) 119.94%);
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI Semibold';
 }
 
 .user-project_heading_agencyNewestDashboard {
-  /* width: 50rem; */
   width: 100%;
-  /* height: 40px; */
- /* margin-top: 5px;
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Open Sans', sans-serif; */
   text-transform: capitalize;
-
   color: #45A4E4;
-    /* border: 2px solid red; */
-    border-radius: 38px;
-    box-shadow: 0 0px 2px 1px rgb(0 0 0 / 20%);
-    width: 100;
-    /* height: 40px; */
-    /* margin-top: 5px; */
-    display: flex;
-    justify-content: center;
-    font-family: 'Open Sans', sans-serif;
-    /* margin: 1rem 2rem 1rem 1.2rem; */
-    padding: .5rem;
-    margin: 0rem 2.5rem 0rem -0rem;
+  border-radius: 38px;
+  box-shadow: 0 0px 2px 1px rgb(0 0 0 / 20%);
+  width: 100;
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  padding: .5rem;
+  margin: 0rem 2.5rem 0rem -0rem;
 }
 
 .user-project_child_agencyNewestDashboard {
@@ -56,9 +44,7 @@
   place-items: center;
   margin-right: 5rem;
   margin-top: 0.5rem;
-  /* background: #79ACFF; */
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
-  /* color: #fff; */
   color: white;
   border-radius: 1rem;
 }
@@ -107,14 +93,11 @@
 .matchedDate p, .currentStatus p, .user-project-status time {
   /* width: 18%; */
   margin-left: 10px;
-  font-style: normal;
-  font-weight: 600;
   font-size: 12px;
-  line-height: 15px;
   text-align: center;
   letter-spacing: 0.4px;
   text-transform: capitalize;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI Semibold';
 }
 
 .user-project_paragraph {
@@ -153,11 +136,10 @@ table {
   border-spacing: 0 14px;
 }
 
-table td {
-  font-style: normal;
-  /* font-weight: 600; */
-  font-size: 15px;
+.agencyProjectCard table td {
+  font-size: 12px;
   text-transform: capitalize;
+  font-family: 'Segoe UI Semibold';
 }
 
 td:nth-child(even) {
