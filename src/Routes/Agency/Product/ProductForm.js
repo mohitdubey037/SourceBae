@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import "./ProductForm.css";
+import { FilePicker } from 'react-file-picker'
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -22,6 +23,7 @@ import * as helper from "../../../shared/helper";
 import moment from 'moment'
 import clsx from 'clsx';
 
+import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 import product from "../../../assets/images/ClientDashboard/product.svg";
 import product1 from "../../../assets/images/ClientDashboard/product1.svg";
 import product2 from "../../../assets/images/ClientDashboard/product2.svg";
@@ -510,17 +512,28 @@ function ProductForm(props) {
                 <div className="form1_Fields">
                   <section>
                     <ul>
-                      
-                        <p>1. Upload your latest logo of product</p>
-                      
+                      <li>
+                        <p>Upload your latest logo of product</p>
+                      </li>
                     </ul>
-                    <input
+                    <FilePicker
+                      extensions={['jpg', 'png', 'jpeg']}
+                      onChange={inputFileChoosen}
+                      // onError={error => handleUploadError(error)}
+                      >
+                      <button className="filePicker">
+                        {/* <i className="fa fa-upload" aria-hidden="true" /> */}
+                          <p style={{marginTop:"0", color:"#707070", fontFamily:"Segoe UI", fontSize:"14px"}}>Pick File</p>
+                          <img src={fileIcon} alt="finish" />
+                      </button>
+                    </FilePicker>
+                    {/* <input
                       onChange={inputFileChoosen}
                       type="file"
                       name=""
                       id="fileInput"
                       accept="image/png, image/gif, image/jpeg, image/jpg"
-                    />
+                    /> */}
                     {errors.filePicked && (
                       <p className="error_productForm">
                         {errors.filePicked}
@@ -529,7 +542,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                        <p>2. What's your good product name?</p>
+                      <li>
+                        <p>What's your good product name?</p>
+                      </li>
                     </ul>
                     <input
                       type="text"
@@ -546,7 +561,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                        <p>3. Describe a bit about your product.</p>
+                      <li>
+                        <p>Describe a bit about your product.</p>
+                      </li>
                     </ul>
                     <textarea
                       placeholder="Minimum words should be 100"
@@ -583,9 +600,9 @@ function ProductForm(props) {
                 <div className="form2_Fields">
                   <section>
                     <ul>
-                      
-                        <p>1. What type of Business product you have?</p>
-                    
+                      <li>
+                        <p>What type of Business product you have?</p>
+                      </li> 
                     </ul>
 
                     <FormControl /*variant="outlined"*/ className={classes.formControl}>
@@ -618,9 +635,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      
-                        <p>2. What's your good team size?</p>
-                      
+                      <li>
+                        <p>What's your good team size?</p>
+                      </li>
                     </ul>
                     <FormControl  className={classes.formControl}>
                       <Select
@@ -651,9 +668,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      
-                        <p>3. Total revenue generated till now?</p>
-                      
+                      <li>
+                        <p>Total revenue generated till now?</p>
+                      </li>
                     </ul>
                     <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
@@ -684,9 +701,9 @@ function ProductForm(props) {
 
                   <section>
                     <ul>
-                      
-                        <p>4. Which business modal does your product have?</p>
-                      
+                      <li>
+                        <p>Which business modal does your product have?</p>
+                      </li>
                     </ul>
                     <div className="radioGroupButtons">
                       {businessModal.map((value, index) => {
@@ -720,9 +737,9 @@ function ProductForm(props) {
                 <div className="form3_Fields">
                   <section className="previousFunding">
                     <ul>
-                   
-                        <p>1. Any previous funding?</p>
-                      
+                      <li>
+                        <p>Any previous funding?</p>
+                      </li>
                     </ul>
                     <FormControl component="fieldset">
                       <RadioGroup
@@ -785,9 +802,9 @@ function ProductForm(props) {
                   ) : null}
                   <section className="previousFunding typeOfFunding">
                     <ul>
-                      
-                        <p>2. Which type of funding you are looking for?</p>
-                    
+                      <li>
+                        <p>Which type of funding you are looking for?</p>
+                      </li>
                     </ul>
                     <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
@@ -834,9 +851,9 @@ function ProductForm(props) {
 
                   <section className="currentStage">
                     <ul>
-                      
-                        <p>3. What is the current stage of product?</p>
-                     
+                      <li>
+                        <p>What is the current stage of product?</p>
+                      </li>
                     </ul>
                     <div className="currentStageRadios">
                       {currentStage.map((value, index) => {
@@ -862,9 +879,9 @@ function ProductForm(props) {
 
                   <section>
                     <ul>
-                   
-                        <p>4. How many customer you have accquired?</p>
-                     
+                      <li>
+                        <p>How many customer you have accquired?</p>
+                      </li>
                     </ul>
                     <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
@@ -898,9 +915,9 @@ function ProductForm(props) {
 
                   <section>
                     <ul>
-                      
-                        <p>5. How many active users are there ?</p>
-                    
+                      <li>
+                        <p>How many active users are there ?</p>
+                      </li>
                     </ul>
                     <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
@@ -951,9 +968,9 @@ function ProductForm(props) {
                 <div className="form4_Fields">
                   <section>
                     <ul>
-                     
-                        <p>1. Your Company Location</p>
-                      
+                      <li>
+                        <p>Your Company Location</p>
+                      </li>
                     </ul>
                     <input
                       type="text"
@@ -970,9 +987,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                    
-                        <p>2. When was your product started?</p>
-                     
+                      <li>
+                        <p>When was your product started?</p>
+                      </li>
                     </ul>
                     <input
                       type="date"
@@ -983,9 +1000,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                    
-                        <p>3. Any feature link?</p>
-                      
+                      <li>
+                        <p>Any feature link?</p>
+                      </li>
                     </ul>
                     <input
                       type="text"
@@ -1002,9 +1019,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      
-                        <p>4. Any Platform link?</p>
-                    
+                      <li>
+                        <p>Any Platform link?</p>
+                      </li>
                     </ul>
                     <input
                       type="text"
@@ -1023,9 +1040,9 @@ function ProductForm(props) {
                     <div className="form5_Fields">
                       <section>
                         <ul>
-                        
-                            <p>5. Founders of this product</p>
-                          
+                          <li>
+                            <p>Founders of this product</p>
+                          </li>
                         </ul>
                         {errors.productFounderLinkedinProfiles && (
                           <p className="error_productForm">
@@ -1081,7 +1098,7 @@ function ProductForm(props) {
                 <div className="innerSubmitButton">
                   <div className="subbutton" onClick={() => updateButtonHandler()}>
                     <p> Upload Your Product{" "}
-                      <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>
+                      {/* <i className="fa fa-hand-pointer-o" aria-hidden="true"></i> */}
                     </p>
                   </div>
                   <div className="black_color_shadow-productForm"></div>

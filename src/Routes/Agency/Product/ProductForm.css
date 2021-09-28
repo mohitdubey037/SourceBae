@@ -120,7 +120,7 @@
 .innerProductHeadlines {
   width: 85%;
   text-align: center;
-  margin: 3% 0;
+  margin: 3% 3%;
 }
 
 .innerProductHeadlines h3 {
@@ -186,9 +186,9 @@
   border-radius: 12px; */
 }
 
-.productForm ul {
+/* .productForm ul {
   padding-left: 1rem !important;
-}
+} */
 
 .straightLine {
   position: absolute;
@@ -669,7 +669,7 @@
   /* border-radius: 6px; */
   width: 85%;
   border: 1px solid #45a4ea;
-  margin-top: -1rem;
+  margin-top: -0.8rem;
   font-family: 'Segoe UI';
   margin-left: 1.5rem;
   border-radius: 5px;
@@ -713,7 +713,7 @@
   width: 85%;
   border: 1px solid #45A4EA;
   margin-top: 0.2rem;
-  font-family: Inter;
+  font-family: 'Segoe UI';
   margin-left: 1rem;
   border-radius: 5px;
 }
@@ -726,6 +726,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-left: 0.5rem;
 }
 
 .founderLink input {
@@ -745,7 +746,7 @@
 }
 
 .founderLink div {
-  width: 45px;
+  /* width: 45px;
   height: 45px;
   background-color: #ebf5fb;
   display: flex;
@@ -753,7 +754,21 @@
   align-items: center;
   font-family: 'Open Sans', sans-serif;
   border-radius: 6px;
-  margin-top: 16px;
+  margin-top: 16px; */
+   /* padding: 0.5rem 1rem; */
+   width: 45px;
+   height: 35px;
+   background-color: #ffffff;
+   outline: none;
+   border: none;
+   color: #45A4EA;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* font-weight: bold; */
+   /* border: 1px solid #2e86c1; */
+   border-radius: 6px;
+   margin-top: 3px;
 }
 
 .founderLink div i {
@@ -792,7 +807,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem,
+  margin-top: 3rem;
 }
 
 .subbutton {
@@ -807,7 +822,7 @@
 
 .subbutton p {
   width: 100%;
-  padding: 0.5rem 0.5rem;
+  padding: 0rem 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -846,4 +861,24 @@
   background: #e0e0e0;
   border: 1px solid #e0e0e0;
   color: #2c5bc7f5;
+}
+
+.filePicker {
+  width: 70%;
+    height: 40px;
+    padding: 0.6rem;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    /* border: 1px solid #e0e0e0; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #45A4EA;
+    border-radius: 6px;
+    margin-top: 0.2rem; 
+    margin-left: 1rem;
+}
+
+li ::marker {
+  color: #45A4EA;
 }
