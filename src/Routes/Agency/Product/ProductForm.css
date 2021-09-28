@@ -315,6 +315,7 @@
 
 .form1_Fields ul {
   margin-bottom: 0;
+  margin-left: 1rem;
 }
 
 .illustrationArea {
@@ -413,7 +414,12 @@
 }
 
 .form5_Fields ul, .form2_Fields ul, .form3_Fields ul {
+ margin-left: 1rem;
   margin-bottom: 0;
+}
+
+.form4_Fields ul {
+  margin-left: 1rem;
 }
 
 .form2_Fields section p {
@@ -425,7 +431,7 @@
   margin-top: 1rem;
     font-size: 1rem;
     color: #45A4EA;
-    margin-left:0.5rem;
+    /* margin-left:0.5rem; */
 }
 
 .form2_Fields section input {
@@ -513,7 +519,7 @@
   margin-top: 1rem;
   font-size: 1rem;
   color: #45A4EA;
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
 }
 
 .form3_Fields section input {
@@ -655,7 +661,7 @@
     margin-top: 1rem;
     font-size: 1rem;
     color: #45A4EA;
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
 }
 
 .form4_Fields section input {
