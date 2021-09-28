@@ -37,6 +37,7 @@ import { Modal } from "react-responsive-modal";
 
 const BlueRadio = withStyles({
   root: {
+    // width: "1.2rem",
     color: "#2E86C1",
     "&$checked": {
       color: "#2E86C1",
@@ -58,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     margin: 2,
   },
+  check: {
+    fontSize: "0.7rem",
+    fontFamily: 'Segoe UI',
+  },
   noLabel: {
     marginTop: theme.spacing(3),
   },
@@ -66,6 +71,11 @@ const useStyles = makeStyles((theme) => ({
   },
   inputField: {
     fontFamily: "Inter",
+    border: "1px solid #45A4EA",
+    borderRadius: "5px",
+    marginTop:"0.2rem",
+    marginLeft:"1rem",
+    width: "85%",
   },
   radioBox: {
     borderWidth: 1,
@@ -76,6 +86,13 @@ const useStyles = makeStyles((theme) => ({
       color: "green",
       padding: "11.5px 14px"
     },
+    "& .MuiTypography-body1":{
+      fontSize: "0.7rem",
+    fontFamily: 'Segoe UI',
+    },
+    "& .MuiSvgIcon-root ":{
+     width:"1.2rem",
+    }
   }
 }));
 
@@ -451,7 +468,7 @@ function ProductForm(props) {
     <>
       <Navbar />
       <div className="product-form">
-        <Back name="product-form" />
+        <Back name="Agency Form 4 " />
       </div>
       {loading ? (
         <Spinner />
@@ -460,8 +477,7 @@ function ProductForm(props) {
           <div className="productsHeadlines">
             <div className="innerProductHeadlines">
               <h3>
-                {" "}
-                <span> Clients </span> want to know your product..!!{" "}
+                <span> Clients </span> want to know your product..!!
               </h3>
               <p>
                 Fill the form below so that client will know the details of your
@@ -484,19 +500,19 @@ function ProductForm(props) {
                   <img src={product1} alt="" />
                 </div> */}
 
-                <div className="one_line">
+                {/* <div className="one_line">
                   <div className="orange_color">
                     <div className="one-orange_color">
                       <p>01</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="form1_Fields">
                   <section>
                     <ul>
-                      <li>
-                        <p>Upload your latest logo of product</p>
-                      </li>
+                      
+                        <p>1. Upload your latest logo of product</p>
+                      
                     </ul>
                     <input
                       onChange={inputFileChoosen}
@@ -513,9 +529,7 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      <li>
-                        <p>What's your good product name?</p>
-                      </li>
+                        <p>2. What's your good product name?</p>
                     </ul>
                     <input
                       type="text"
@@ -532,9 +546,7 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      <li>
-                        <p>Describe a bit about your product.</p>
-                      </li>
+                        <p>3. Describe a bit about your product.</p>
                     </ul>
                     <textarea
                       placeholder="Minimum words should be 100"
@@ -545,8 +557,8 @@ function ProductForm(props) {
                       rows="6"
                     ></textarea>
                     <div className="character_specification">
-                      <p>More than 100 characters</p>
-                      <p>{wordsRequired} words required</p>
+                      <p style={{marginTop:"0"}}>More than 100 characters</p>
+                      <p style={{marginTop:"0"}}>{wordsRequired} words required</p>
                     </div>
                     {errors.productDescription && (
                       <p className="error_productForm">
@@ -561,25 +573,25 @@ function ProductForm(props) {
                 {/* <div className="illustrationArea">
                   <img src={product2} alt="" />
                 </div> */}
-                <div className="two_line">
+                {/* <div className="two_line">
                   <div className="orange_color">
                     <div className="one-orange_color">
                       <p>02</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="form2_Fields">
                   <section>
                     <ul>
-                      <li>
-                        <p>What type of Business product you have?</p>
-                      </li>
+                      
+                        <p>1. What type of Business product you have?</p>
+                    
                     </ul>
 
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
                         value={domainName}
                         name="productDomainId"
                         onChange={(event) => handleSelectChange(event)}
@@ -587,8 +599,8 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Inter", color: "#999" }}>
-                            Select from here
+                          <span style={{ fontSize:"14px",color:"#707070",marginTop: "0.2rem" ,paddingLeft:"1rem" ,fontFamily: "Segoe UI" }}>
+                            Select From here
                           </span>
                         </MenuItem>
                         {allDomainsData.map((ad) => (
@@ -606,14 +618,14 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      <li>
-                        <p>What's your good team size?</p>
-                      </li>
+                      
+                        <p>2. What's your good team size?</p>
+                      
                     </ul>
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl  className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
                         value={apiData.productTeamSize}
                         name="productTeamSize"
                         onChange={(event) => handleChange(event)}
@@ -621,7 +633,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span className="selectFromHere">
+                          <span style={{fontFamily:"Segoe UI",color:"#707070",marginTop: "0.2rem" , fontSize:'14px', paddingLeft:"1rem" }} className="selectFromHere">
                             Select from here
                           </span>
                         </MenuItem>
@@ -639,14 +651,14 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      <li>
-                        <p>Total revenue generated till now?</p>
-                      </li>
+                      
+                        <p>3. Total revenue generated till now?</p>
+                      
                     </ul>
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
                         value={apiData.productRevenueGenerated}
                         name="productRevenueGenerated"
                         onChange={(event) => handleChange(event)}
@@ -654,7 +666,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span className="selectFromHere">
+                          <span className="selectFromHere"  style={{ color:"#707070", marginTop: "0.2rem" ,fontSize:"14px",paddingLeft:"1rem"}}>
                             Select from here
                           </span>
                         </MenuItem>
@@ -672,9 +684,9 @@ function ProductForm(props) {
 
                   <section>
                     <ul>
-                      <li>
-                        <p>Which business modal does your product have?</p>
-                      </li>
+                      
+                        <p>4. Which business modal does your product have?</p>
+                      
                     </ul>
                     <div className="radioGroupButtons">
                       {businessModal.map((value, index) => {
@@ -698,19 +710,19 @@ function ProductForm(props) {
               </div>
 
               <div className="form_3">
-                <div className="three_line">
+                {/* <div className="three_line">
                   <div className="orange_color">
                     <div className="one-orange_color">
                       <p>03</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="form3_Fields">
                   <section className="previousFunding">
                     <ul>
-                      <li>
-                        <p>Any previous funding?</p>
-                      </li>
+                   
+                        <p>1. Any previous funding?</p>
+                      
                     </ul>
                     <FormControl component="fieldset">
                       <RadioGroup
@@ -720,11 +732,15 @@ function ProductForm(props) {
                         onChange={(event) => handleChange(event)}
                       >
                         <FormControlLabel
+                          // style={{fontSize: "0.7rem",
+                          //         fontFamily: 'Segoe UI'}}
+                          className={clsx(classes.root)}
                           value="true"
                           control={<BlueRadio />}
                           label="YES"
                         />
                         <FormControlLabel
+                         className={clsx(classes.root)}
                           value="false"
                           control={<BlueRadio />}
                           label="NO"
@@ -740,10 +756,10 @@ function ProductForm(props) {
                   {apiData.productPreviousFunding === "true" ? (
                     <section className="amountRaised">
                       <span className="howMuchHaveYouRaised">How much amount have you raised yet?</span>
-                      <FormControl variant="outlined" className={classes.formControl}>
+                      <FormControl /*variant="outlined"*/ className={classes.formControl}>
                         <Select
-                          labelId="demo-simple-select-outlined-label"
-                          id="demo-simple-select-outlined"
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
                           value={apiData.projectPreviousFundingRaised}
                           name="projectPreviousFundingRaised"
                           onChange={(event) => handleChange(event)}
@@ -769,14 +785,14 @@ function ProductForm(props) {
                   ) : null}
                   <section className="previousFunding typeOfFunding">
                     <ul>
-                      <li>
-                        <p>Which type of funding you are looking for?</p>
-                      </li>
+                      
+                        <p>2. Which type of funding you are looking for?</p>
+                    
                     </ul>
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
                         value={apiData.productFundingTypeLookingFor}
                         name="productFundingTypeLookingFor"
                         onChange={(event) => handleChange(event)}
@@ -818,9 +834,9 @@ function ProductForm(props) {
 
                   <section className="currentStage">
                     <ul>
-                      <li>
-                        <p>What is the current stage of product?</p>
-                      </li>
+                      
+                        <p>3. What is the current stage of product?</p>
+                     
                     </ul>
                     <div className="currentStageRadios">
                       {currentStage.map((value, index) => {
@@ -846,14 +862,14 @@ function ProductForm(props) {
 
                   <section>
                     <ul>
-                      <li>
-                        <p>How many customer you have accquired?</p>
-                      </li>
+                   
+                        <p>4. How many customer you have accquired?</p>
+                     
                     </ul>
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
                         name="productCustomerAccquired"
                         value={apiData.productCustomerAccquired}
                         onChange={(event) => handleChange(event)}
@@ -861,7 +877,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{ fontFamily: "Inter", color: "#999" }}>
+                          <span style={{ padding:"1rem", fontFamily: "Segoe UI", color: "#707070",fontSize:"14px" }}>
                             Select from here
                           </span>
                         </MenuItem>
@@ -882,14 +898,14 @@ function ProductForm(props) {
 
                   <section>
                     <ul>
-                      <li>
-                        <p>How many active users are there ?</p>
-                      </li>
+                      
+                        <p>5. How many active users are there ?</p>
+                    
                     </ul>
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
                       <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
                         value={apiData.productActiveUsers}
                         name="productActiveUsers"
                         onChange={(event) => handleChange(event)}
@@ -925,19 +941,19 @@ function ProductForm(props) {
                 {/* <div className="illustrationArea">
                   <img src={product4} alt="" />
                 </div> */}
-                <div className="four_line">
+                {/* <div className="four_line">
                   <div className="orange_color">
                     <div className="one-orange_color">
                       <p>04</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="form4_Fields">
                   <section>
                     <ul>
-                      <li>
-                        <p>Your Company Location</p>
-                      </li>
+                     
+                        <p>1. Your Company Location</p>
+                      
                     </ul>
                     <input
                       type="text"
@@ -954,9 +970,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      <li>
-                        <p>When was your product started?</p>
-                      </li>
+                    
+                        <p>2. When was your product started?</p>
+                     
                     </ul>
                     <input
                       type="date"
@@ -967,9 +983,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      <li>
-                        <p>Any feature link?</p>
-                      </li>
+                    
+                        <p>3. Any feature link?</p>
+                      
                     </ul>
                     <input
                       type="text"
@@ -986,9 +1002,9 @@ function ProductForm(props) {
                   </section>
                   <section>
                     <ul>
-                      <li>
-                        <p>Any Platform link?</p>
-                      </li>
+                      
+                        <p>4. Any Platform link?</p>
+                    
                     </ul>
                     <input
                       type="text"
@@ -1007,9 +1023,9 @@ function ProductForm(props) {
                     <div className="form5_Fields">
                       <section>
                         <ul>
-                          <li>
-                            <p>Founders of this product</p>
-                          </li>
+                        
+                            <p>5. Founders of this product</p>
+                          
                         </ul>
                         {errors.productFounderLinkedinProfiles && (
                           <p className="error_productForm">

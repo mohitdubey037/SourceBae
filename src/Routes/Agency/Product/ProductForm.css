@@ -114,7 +114,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3%;
+  /* margin-top: 3%; */
 }
 
 .innerProductHeadlines {
@@ -124,13 +124,14 @@
 }
 
 .innerProductHeadlines h3 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Segoe UI';
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
+  color: #45A4EA;
 }
 
-.innerProductHeadlines h3::after {
+/* .innerProductHeadlines h3::after {
   content: '';
   width: 20%;
   height: 3px;
@@ -138,11 +139,12 @@
   background-color: #000;
   margin: auto;
   margin-top: 0px;
-}
+} */
 
 .innerProductHeadlines p {
   font-family: 'Open Sans', sans-serif;
   color: #999;
+  font-size: 0.75rem;
 }
 
 .form_1, .form_2, .form_3 {
@@ -173,15 +175,15 @@
 
 .previousFunding .MuiFormGroup-root {
   flex-direction: row !important;
-  /* margin-left: 10px; */
+  margin-left: 20px;
 }
 
 .innerProductFormArea {
   width: 80%;
   position: relative;
   background: #FFFFFF;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 12px; */
 }
 
 .productForm ul {
@@ -298,10 +300,12 @@
 
 .form_1 {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
-  padding: 6rem;
-  margin-bottom: 0;
+  padding: 4rem;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+  border-radius: 12px;
+  /* margin-bottom: 0; */
   /* flex-direction: row-reverse; */
 }
 
@@ -326,25 +330,29 @@
 }
 
 .form1_Fields section {
-  margin-bottom: 17%;
-  font-family: 'Open Sans', sans-serif;
+  /* margin-bottom: 17%; */
+  font-family: 'Segoe UI';
 }
 
 .form1_Fields section p {
   /* font-size: 1.1rem;
   font-weight: bold; */
-  font-weight: 600;
-  font-size: 22px;
+  /* font-weight: 600; */
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #45A4EA;
 }
 
 .form1_Fields section:nth-child(2) input {
-  width: 100%;
-  height: 45px;
-  padding-left: 12px;
+  width: 70%;
+  /* height: 45px; */
+  padding: 0.6rem;
+  font-size: 14px;
   border: 1px solid #e0e0e0;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #45A4EA;
   border-radius: 6px;
   /* margin-left: 15px; */
 }
@@ -364,13 +372,15 @@
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
-  padding: 6rem;
-  justify-content: flex-end;
-  padding-top: 0;
+  padding: 4rem;
+  justify-content: left;
+  /* padding-top: 0; */
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+  border-radius: 12px;
 }
 
 .form2_Fields section {
-  margin-bottom: 17%;
+  /* margin-bottom: 17%; */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -382,21 +392,21 @@
   width: 100%;
 }
 
-.form2_Fields .MuiFormControl-root, .form2_Fields .radioGroupButtons, .form3_Fields .MuiFormControl-root {
+/* .form2_Fields .MuiFormControl-root, .form2_Fields .radioGroupButtons, .form3_Fields .MuiFormControl-root {
   margin-left: 15px;
-}
+} */
 
 .form2_Fields .MuiFormControl-root, .form3_Fields .MuiFormControl-root {
-  margin-top: 20px;
+  margin-top: 0;
 }
 
-.form3_Fields .previousFunding .MuiFormControl-root {
+/* .form3_Fields .previousFunding .MuiFormControl-root {
   margin-top: 10px;
-}
+} */
 
-.form3_Fields .typeOfFunding .MuiFormControl-root {
+/* .form3_Fields .typeOfFunding .MuiFormControl-root {
   margin-top: 20px;
-}
+} */
 
 .amountRaised .MuiFormControl-root {
   margin-left: 0;
@@ -409,8 +419,13 @@
 .form2_Fields section p {
   /* font-size: 1.1rem;
   font-weight: bold; */
-  font-weight: 600;
-  font-size: 22px;
+  /* font-weight: 600; */
+  /* font-size: 22px; */
+  font-family: 'Segoe UI';
+  margin-top: 1rem;
+    font-size: 1rem;
+    color: #45A4EA;
+    margin-left:0.5rem;
 }
 
 .form2_Fields section input {
@@ -426,7 +441,8 @@
 
 .radioGroupButtons {
   display: flex;
-  margin-top: 15px;
+  margin-top: 5px;
+  margin-left: 1rem;
 }
 
 .radioButton {
@@ -437,8 +453,9 @@
 }
 
 .radioButton span {
-  width: 20px;
-  height: 20px;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: 2px solid #2e86c1;
   margin-right: 10px;
@@ -457,8 +474,9 @@
 
 .radioButton h6 {
   /* transform: translateY(4px); */
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
+  font-family: 'Segoe UI';
+  color: #707070;
+  font-size: 12px;
   user-select: none;
 }
 
@@ -468,15 +486,17 @@
 
 .form_3 {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
-  padding: 6rem;
-  padding-top: 0;
-  margin-bottom: 0;
+  padding: 4rem;
+  /* padding-top: 0; */
+  /* margin-bottom: 0; */
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+  border-radius: 12px;
 }
 
 .form3_Fields section {
-  margin-bottom: 17%;
+  /* margin-bottom: 17%; */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -487,8 +507,13 @@
 .form3_Fields section p {
   /* font-size: 1.1rem;
   font-weight: bold; */
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 22px;
+  font-family: 'Segoe UI';
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #45A4EA;
+  margin-left: 0.5rem;
 }
 
 .form3_Fields section input {
@@ -535,7 +560,7 @@
 }
 
 .character_specification {
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
   margin: auto;
@@ -554,22 +579,23 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  margin-top: 0.7rem;
   margin-left: 6px;
 }
 
 .selectFromHere {
-  font-family: 'Open sans', sans-serif;
-  font-weight: 500;
+  padding: 1rem;
+  font-family: 'Segoe UI';
+  /* font-weight: 500; */
   font-size: 14px;
   line-height: 150%;
   text-transform: capitalize;
-  color: #A8A8A8;
+  color: #707070;
 }
 
-.currentStageRadios .radioButton {
+/* .currentStageRadios .radioButton {
   margin-bottom: 15px;
-}
+} */
 
 .currentStageRadios .radioButton:nth-child(4) {
   margin-bottom: 0px;
@@ -597,36 +623,56 @@
   /* justify-content: space-between; */
   align-items: center;
   position: relative;
-  padding: 0 6rem;
-  justify-content: flex-end;
+  padding: 4rem;
+  justify-content: left;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+  border-radius: 12px;
 }
 
-.form4_Fields section {
+/* .form4_Fields section {
   margin-bottom: 17%;
   font-family: 'Open Sans', sans-serif;
-}
+} */
 
 .form_1 section input, .form_1 section textarea, .form_4 section input {
-  margin-top: 1rem;
-  margin-left: 15px;
+  margin-top: 0.2rem;
+  margin-left: 1rem;
+  padding: 0.6rem;
+  font-size: 14px;
+  color: #707070;
+  border: 1px solid #45A4EA;
+  /* border: none; */
+  border-radius: 8px;
+  width: 70%;
 }
 
 .form4_Fields section p {
   /* font-size: 1.1rem;
   font-weight: bold; */
-  font-weight: 600;
-  font-size: 22px;
+  /* font-weight: 600;
+  font-size: 22px; */
+  font-family: 'Segoe UI';
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #45A4EA;
+    margin-left: 0.5rem;
 }
 
 .form4_Fields section input {
-  width: 100%;
-  height: 45px;
-  padding-left: 12px;
-  border: 1px solid #e0e0e0;
+  /* width: 100%; */
+  height: 35px;
+  /* padding-left: 12px; */
+  /* border: 1px solid #e0e0e0; */
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  /* border-radius: 6px; */
+  width: 85%;
+  border: 1px solid #45a4ea;
+  margin-top: -1rem;
+  font-family: 'Segoe UI';
+  margin-left: 1.5rem;
+  border-radius: 5px;
 }
 
 .form4_Fields section input:focus {
@@ -650,20 +696,26 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.form5_Fields section p {
+/* .form5_Fields section p {
   font-size: 1.1rem;
   font-weight: bold;
-}
+} */
 
 .form5_Fields section input {
-  width: 100%;
-  height: 45px;
+  /* width: 100%; */
+  /* height: 45px; */
   padding-left: 12px;
-  border: 1px solid #e0e0e0;
+  /* border: 1px solid #e0e0e0; */
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  /* border-radius: 6px; */
+  width: 85%;
+  border: 1px solid #45A4EA;
+  margin-top: 0.2rem;
+  font-family: Inter;
+  margin-left: 1rem;
+  border-radius: 5px;
 }
 
 .form5_Fields section input:focus {
@@ -685,6 +737,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 0.5rem;
 }
 
 .founder_Link input {
@@ -711,15 +764,15 @@
 .form5_Fields button {
   /* padding: 0.5rem 1rem; */
   width: 45px;
-  height: 45px;
-  background-color: #ebf5fb;
+  height: 35px;
+  background-color: #ffffff;
   outline: none;
   border: none;
-  color: #2e86c1;
+  color: #45A4EA;
   font-weight: bold;
-  border: 1px solid #2e86c1;
+  /* border: 1px solid #2e86c1; */
   border-radius: 6px;
-  margin-top: 6px;
+  margin-top: -6px;
 }
 
 .submitButton.productForm {
@@ -735,18 +788,21 @@
 }
 
 .innerSubmitButton {
-  width: 85%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 3rem,
 }
 
 .subbutton {
   width: 34%;
-  background: #EAF2FF;
+  /* background: #EAF2FF; */
   border-radius: 12.4615px;
   position: relative;
   z-index: 10;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+  border-radius: 2rem;
 }
 
 .subbutton p {
@@ -756,17 +812,17 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
+  color: #45A4EA;
   font-weight: 600;
-  font-size: 21.3846px;
+  font-size: 22px;
   line-height: 45px;
   text-align: center;
   letter-spacing: 1.24615px;
   text-transform: capitalize;
-  color: #3A3A3A;
 }
 
-.black_color_shadow-productForm {
+/* .black_color_shadow-productForm {
   position: absolute;
   background: #ABCBFF;
   filter: blur(11px);
@@ -774,7 +830,7 @@
   width: 284px;
   bottom: 37px;
   z-index: 6;
-}
+} */
 
 .subbutton i {
   margin-left: 10px;
