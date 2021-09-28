@@ -636,17 +636,17 @@
     align-items: center;
 }
 
-.tech-container div {
-    width: 134px;
+.mainHireAgencyFormTwo .tech-container div,
+.mainHireAgencyForm3 .tech-container div {
+    width: 85px;
     border: 1px solid #A4A4A4;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    min-height: 134px;
+    min-height: 77px;
     cursor: pointer;
-    border-radius: 50%;
-    text-align: center;
+    border-radius: 0%;
 }
 
 .servicesCardsHireAgency div img {
@@ -909,7 +909,8 @@
     text-align: center;
 }
 
-.serviceSelectionInput {
+.hireAgencyForm2 .serviceSelectionInput,
+.hireAgencyForm3 .serviceSelectionInput {
     margin-top: 10%;
 }
 

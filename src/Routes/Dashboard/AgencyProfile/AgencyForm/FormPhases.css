@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
-
 }
 
 .innerFormPhase {
@@ -72,10 +71,10 @@
 
 .getAgencyLogo .logo-type_agencyForm1 {
     font-family: 'Segoe UI';
-    font-size: 14px;
+    font-size: 13px;
     text-transform: capitalize;
     color: #3A3A3A;
-    padding: 10px;
+    padding: 7px;
 }
 
 /* Agency Form one  */
@@ -123,10 +122,10 @@
     padding: 0rem 0;
 }
 
-.agencyLogo_parent label {
+.agencyLogo_parent label, .getAgencyDesc p, .innerLeftPersonelDetailsForm p {
     font-family: 'Segoe UI Semibold';
     color: #707070;
-    font-size: 20px;
+    font-size: 1rem;
     text-transform: capitalize;
 }
 
@@ -140,11 +139,8 @@
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
 }
 
-.innerLeftPersonelDetailsForm p {
-    font-family: 'Segoe UI Semibold';
-    font-size: 16px;
-    text-transform: capitalize;
-    color: #707070;
+.innerLeftPersonelDetailsForm .agencyLogo_pick_file {
+    font-size: 14px;
 }
 
 .rightPersonelDetailsForm {
@@ -173,7 +169,7 @@
     width: 40%;
 }
 
-.getAgencyLogo{
+.getAgencyLogo {
     width: 50%;
 }
 
@@ -194,12 +190,8 @@
     border: 1px solid #45A4EA;
 }
 
-/* .getAgencyLogo img {
-    width: 20%;
-} */
-
 .getAgencyLogo button {
-    padding: 0.3rem 1rem;
+    padding: 0.2rem 1rem;
     outline: none;
     font-family: 'Segoe UI';
     color: #119dee;
@@ -209,7 +201,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 7rem;
+    width: 6.5rem;
 }
 
 .documentInformation .logo-type_agencyForm1, .panCardContent .logo-type_agencyForm1 {
@@ -218,13 +210,6 @@
     text-transform: capitalize;
     padding: 5px 8px;
     color: #707070;
-}
-
-.getAgencyDesc p {
-    font-size: 20px;
-    text-transform: capitalize;
-    color: #707070;
-    font-family: "Segoe UI Semibold";
 }
 
 .margin-top {
@@ -252,8 +237,8 @@
 }
 
 .error_agencyForm {
+    font-family: 'Segoe UI' !important;
     color: red !important;
-    font-weight: normal !important;
     font-size: 14px !important;
     position: absolute;
     bottom: -1rem;
@@ -273,6 +258,7 @@
     border: 1px solid #45A4EA;
     transition: 0.3s ease-in-out;
     margin-top: 5px;
+    margin-bottom: 6px;
 }
 
 .addressField {
@@ -324,15 +310,15 @@
 .nextBtn button {
     display: flex;
     justify-content: center;
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 0rem;
     font-family: 'Segoe UI';
-    width: 6rem;
     outline: none;
     border: none;
     text-decoration: none;
     color: #fff;
     font-size: 14px;
     border-radius: 2rem;
+    width: 6rem;
 }
 
 .nextBtn a i {
@@ -379,8 +365,9 @@
 }
 
 .mainTechStackForm .MuiTypography-root {
-    font-family: 'Segoe UI Semibold';
+    font-family: 'Segoe UI';
     font-size: 1rem;
+    color: #707070;
 }
 
 .mainTechStackForm .domainBudgetOptions {
@@ -404,10 +391,9 @@
     margin-top: 2rem;
 }
 
-.domainsFields .domainHeading,
-.serivcesAgency .servicesHeading {
+.domainsFields .domainHeading, .serivcesAgency .servicesHeading, .monthlyBudget p {
     font-family: 'Segoe UI Semibold';
-    font-size: 20px !important;
+    font-size: 1rem !important;
     text-transform: capitalize !important;
     color: #707070 !important;
 }
@@ -429,6 +415,10 @@
 .agencyForm2 .tech-container p {
     font-family: 'Segoe UI';
     color: #707070;
+    width: 99%;
+    text-align: center;
+    margin-top: 7px;
+    font-size: 0.9rem;
 }
 
 .domainFieldsCard div img {
@@ -456,13 +446,6 @@
 .serivcesAgency {
     margin-top: 3rem;
 }
-
-/* .serivcesAgency .servicesHeading {
-    font-family: 'Segoe UI Semibold';
-    font-size: 22px !important;
-    text-transform: capitalize !important;
-    color: #3A3A3A !important;
-} */
 
 .servicesCardsAgency {
     margin-top: 2rem;
@@ -523,12 +506,11 @@
 }
 
 .input_agencyForm2 {
-    margin-top: 10%;
-    font-family: 'Segoe UI Semibold';
-    font-size: 30px !important;
+    font-family: 'Segoe UI';
+    font-size: 1.8rem;
     text-align: center !important;
     text-transform: capitalize !important;
-    color: #02044A !important;
+    color: #45A4E4;
     padding: 10px !important;
 }
 
@@ -536,7 +518,7 @@
     width: 18%;
     background: #F9F9F9;
     display: flex;
-    height: 500px;
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -553,20 +535,17 @@
     margin-top: 3rem !important;
 }
 
-.monthlyBudget p {
-    font-family: 'Segoe UI Semibold';
-    font-size: 20px !important;
-    text-transform: capitalize !important;
-    color: #707070 !important;
-}
-
 .servicesCardsHireAgency.agencyForm2 {
     margin-left: 0px;
-    margin-top: 10px;
+    margin-top: 14px;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 85%;
     justify-content: space-between;
+}
+
+.domainChild {
+    padding: 0px 30px;
 }
 
 /* Agency Form three  */
@@ -598,8 +577,8 @@
     margin-top: 12px;
 }
 
-.documentDetails > p, .panDetails > p {
-    font-size: 20px;
+.documentDetails>p, .panDetails>p {
+    font-size: 1rem;
     text-transform: capitalize;
     font-family: 'Segoe UI Semibold';
     color: #707070;
@@ -653,6 +632,10 @@
     width: 100%;
 }
 
+.agencyForm2 .tech-container div {
+    cursor: pointer;
+}
+
 .pick_icon {
     color: black;
 }
@@ -693,7 +676,7 @@
 
 .miscellaneousArea {
     border-radius: 14px;
-    width: 24%;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -702,9 +685,9 @@
 }
 
 .miscellaneousArea p {
-    font-family: 'Segoe UI Bold';
-    font-size: 31px;
-    padding: 0 2rem;
+    font-family: 'Segoe UI';
+    font-size: 2rem;
+    padding: 0 1rem;
     color: #45A4E4;
 }
 
@@ -734,15 +717,15 @@
 
 .socialInputs div p {
     font-family: 'Segoe UI Semibold';
-    font-size: 18px;
+    font-size: 1rem;
     text-transform: capitalize;
     color: #707070;
 }
 
 .socialInputs div input {
     margin-top: 10px;
-    width: 65%;
-    height: 45px;
+    width: 55%;
+    height: 35px;
     padding-left: 10px;
     border: 1px solid #45A4E4;
     font-family: 'Segoe UI';
@@ -787,7 +770,7 @@
 }
 
 .linksImages img {
-    width: 3%;
+    width: 2%;
     margin-right: 10px;
 }
 
@@ -803,7 +786,7 @@
     padding: 0.3rem 1rem;
     background-color: #fad647;
     border-radius: 999px;
-    font-family:'Segoe UI Semibold';
+    font-family: 'Segoe UI Semibold';
     font-size: 0.8rem;
     cursor: pointer;
     top: 0;
