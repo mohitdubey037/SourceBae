@@ -12,6 +12,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   grid-row-gap: 30px;
+  margin-bottom: 1rem;
 }
 
 .respondedCard {

@@ -144,8 +144,8 @@ function Information(props) {
                         agencyProfiledata.isAgencyVerified &&
                         <div className="editableBtn">
                             <div className="information_parent">
-                                <img src={Information_edit} alt="information_edit" />
-                                <p>Information</p>
+                                {/* <img src={Information_edit} alt="information_edit" /> */}
+                                <p>INFORMATION</p>
                             </div>
                             <i onClick={handleDisabled} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
                         </div>
@@ -153,12 +153,12 @@ function Information(props) {
                     }
                     <div className="informationForm">
                         <div className="informationInputForm">
-                            <span className="informationBorder"></span>
+                            {/* <span className="informationBorder"></span> */}
                             {
                                 arr.map((value, index) => {
                                     if (!value.disabled) {
                                         return (
-                                            <div className="informationTitle" key={index} style={{ backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#fff', height: '59px' }}>
+                                            <div className="informationTitle" key={index}>
                                                 <ul>
                                                     <li>{value?.title}</li>
                                                 </ul>

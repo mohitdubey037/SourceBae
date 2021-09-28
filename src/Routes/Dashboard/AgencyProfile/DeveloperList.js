@@ -7,13 +7,15 @@ import { useHistory } from 'react-router-dom';
 import NO_Data_ICON from '../no_data_icon.jpg';
 import addDeveloper from '../../../assets/images/AgencyProfile/addDeveloper.png';
 import crossIcon from '../../../assets/images/Newestdashboard/Adding_Developers/cross_icon.svg';
+import TrashIcon from '../../../assets/images/Newestdashboard/Agency-Profile/material-delete.svg';
 import { Modal } from "react-responsive-modal";
 import ArrowButton from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg';
+import developerImage from '../../../assets/images/Newestdashboard/Agency-Profile/add-developer.svg';
 import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
-        width: 43,
+        width: 28,
         height: 14,
         padding: 0,
         // display: 'flex',
@@ -24,31 +26,35 @@ const AntSwitch = withStyles((theme) => ({
         // color: "#02044a",
         top: -2,
         left: -2,
-        color: '#26E826',
+        color: 'green',
         border: "1px solid #EBF5FB",
         "&$checked": {
-            transform: "translateX(30px)",
+            transform: "translateX(14px)",
             color: '#FF0000',
             "& + $track": {
                 opacity: 0.82,
-                backgroundColor: "white",
-                border: '2px solid #FF0000',
+                backgroundColor: "blue",
+                // border: '2px solid #FF0000',
             },
             border: "1px solid #FF0000",
         },
     },
     thumb: {
-        width: 13,
-        height: 13,
+        width: '12px',
+        height: '12px',
         boxShadow: "none",
-        borderRadius: '46%'
+        borderRadius: '46%',
+        color: 'white',
+        marginTop: '1px',
+        marginLeft: '1px'
     },
     track: {
         // border: `1px solid #02044a`,
         borderRadius: 78 / 2,
-        backgroundColor: "white",
+        backgroundColor: "blue",
         opacity: 0.82,
-        border: '2px solid #26E826',
+
+        // border: '2px solid green',
     },
     checked: {},
 }))(Switch);
@@ -169,7 +175,8 @@ function DeveloperList(props) {
                                 <div className="developerCard">
                                     <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
                                         {/* <img src={crossIcon} alt="cross-icon" /> */}
-                                        <i className="fas fa-trash-alt"></i>
+                                        {/* <i className="fas fa-trash-alt"></i> */}
+                                        <img src={TrashIcon} alt="trash" />
                                     </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
@@ -264,9 +271,10 @@ function DeveloperList(props) {
 
                     {Role === 'Agency' ?
                         agencyProfiledata.isAgencyVerified &&
-                        <div className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
-                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 255, cursor: 'pointer' }}>
-                                <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} />
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
+                            <div className="add-developer_parent">
+                                {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}
+                                <img src={developerImage} alt="developerImage" />
                                 <h6 className="addDeveloperText">Add Developer</h6>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 .topLine {
   position: absolute;
-  top: 0;
+  top: 0px;
   width: 100%;
   background-color: #45A4ea;
   height: 4px;
@@ -254,7 +254,7 @@
   border-radius: 999px;
   outline: none;
   background-color: rgb(69, 164, 228);
-  border: 1px solid  rgb(69, 164, 228);
+  border: 1px solid rgb(69, 164, 228);
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
@@ -316,7 +316,7 @@
 }
 
 .margin-0 p {
-  width:9rem;
+  width: 9rem;
   color: black !important;
   font-size: small;
 }
@@ -552,7 +552,6 @@
   top: 50%;
   left: 0;
   height: 100%;
-  transform: translateY(-50%);
 }
 
 /* .innerResponseCard div {

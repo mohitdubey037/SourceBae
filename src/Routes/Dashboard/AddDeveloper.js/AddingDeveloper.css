@@ -500,7 +500,7 @@
   border: none !important;
 }
 
-.MuiInputBase-root {
+.mainAddingDeveloper .MuiInputBase-root {
   font-family: 'Open Sans', sans-serif !important;
   /* border: none !important; */
   background-color: #fff !important;

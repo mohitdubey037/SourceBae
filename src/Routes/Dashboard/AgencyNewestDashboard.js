@@ -183,7 +183,7 @@ function AgencyNewestDashboard(props) {
             {/* <div className="dashboard-container"> */}
 
             {/* <img className="downImage1_agencyDashboard" src={downImage1} alt="hi" /> */}
-            <img className="downImage2_agencyDashboard" src={downImage2} alt="hi" />
+            {/* <img className="downImage2_agencyDashboard" src={downImage2} alt="hi" /> */}
 
             <div className="container-body">
                 <div className="content-body">

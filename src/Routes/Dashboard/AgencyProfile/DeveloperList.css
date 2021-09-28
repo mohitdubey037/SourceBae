@@ -90,27 +90,21 @@
 }
 
 .developerName h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI Bold';
   font-size: 1.4rem;
-  font-weight: 600;
-  color: #02044a;
+  color: #5C6DFF;
 }
 
 .developerName p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
   color: #999;
   font-size: 0.9rem;
 }
 
-.developerExp {
-  font-family: 'Open Sans', sans-serif;
-  /* line-height: 0.1; */
-}
-
 .developerExp p {
+  font-family: 'Segoe UI Semibold';
   color: green;
   font-size: 0.9rem;
-  font-weight: 600;
 }
 
 .developerExp h6 {
@@ -121,10 +115,9 @@
 }
 
 .developerTech h6 {
-  font-family: 'Open Sans', sans-serif;
-  color: #3a3a3a;
+  font-family: 'Segoe UI Semibold';
+  color: #5C6DFF;
   margin-bottom: 3.2%;
-  font-weight: 600;
   font-size: 16px;
 }
 
@@ -138,15 +131,23 @@
 }
 
 .developerTechNames p {
-  padding: 0.3rem 0.6rem;
-  border-radius: 10px;
-  background-color: #eaffad;
-  color: #000;
-  font-family: 'Open Sans', sans-serif;
-  margin-right: 10px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: 'Segoe UI';
+  color: #707070;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #707070;
+  border-radius: 999px;
+  margin-bottom: 3px;
+  margin-right: 15px;
+  font-size: 0.7rem;
 }
+
+/* .add-developer_parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+} */
 
 .developerBudget {
   display: flex;
@@ -155,22 +156,17 @@
 }
 
 .developerBudget p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
+  font-family: 'Segoe UI Semibold';
   font-size: 16px;
-  line-height: 22px;
   text-transform: capitalize;
-  color: #3A3A3A;
+  color: #5C6DFF;
 }
 
 .developerBudget h6 {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 500;
+  font-family: 'Segoe UI Semibold';
   font-size: 14px;
-  line-height: 17px;
   text-transform: capitalize;
-  color: #A8A8A8;
+  color: #707070;
   margin-top: 10px;
   text-align: center;
 }
@@ -183,12 +179,11 @@
 
 .developerResume button {
   padding: 0.4rem 1rem;
-  border-radius: 4px;
-  background-color: #eaf2ff;
-  color: #000;
-  font-family: 'Open Sans', sans-serif;
+  border-radius: 20px;
+  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%) !important;
+  font-family: 'Segoe UI';
+  color: white;
   font-size: 0.8rem;
-  font-weight: 600;
   outline: none;
   border: none;
 }
@@ -207,8 +202,9 @@
 }
 
 .addDeveloperText {
-  transform: translateY(-10px);
+  /* transform: translateY(10px); */
   font-size: 1.1rem;
+  margin-top: 1rem;
 }
 
 .developer-detail {
@@ -304,13 +300,10 @@
 } */
 
 .developer-status_developerList p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
+  font-family: 'Segoe UI Semibold';
   font-size: 16px;
-  line-height: 22px;
   text-transform: capitalize;
-  color: #3A3A3A;
-  text-align: center;
+  color: #5C6DFF;
 }
 
 /* .developer-status_developerListChild > p {

@@ -3,52 +3,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3%;
+    padding: 2rem;
+
 }
 
 .innerFormPhase {
-    width: 82%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     position: relative;
-    z-index: 1;
-    margin-top: -2.5rem;
-    margin-right: 10rem;
-}
-
-/* .stragightLine {
-    position: absolute;
     width: 100%;
-    height: 3px;
-    z-index: -1;
-    top: 51%;
-    background: #C4C4C4;
-} */
-
-.backArrow_agencyForm1 {
-    position: fixed;
-    top: 15%;
-    left: 4%;
-    z-index: 100;
 }
 
-.backArrow_agencyForm2 {
-    position: fixed;
-    top: 15%;
-    left: 4%;
-    z-index: 100;
-}
-
-.backArrow_agencyForm3 {
-    position: fixed;
-    top: 15%;
-    left: 4%;
-    z-index: 100;
-}
-
-.backArrow_agencyForm4 {
+.backArrow_agencyForm1, .backArrow_agencyForm2, .backArrow_agencyForm3, .backArrow_agencyForm4 {
     position: fixed;
     top: 15%;
     left: 4%;
@@ -86,20 +54,16 @@
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: bold;
     margin-right: 2px;
     font-size: 0.9rem;
-    font-family: Segoe UI;
+    font-family: 'Segoe UI Bold';
     border-radius: 15px;
 }
 
 .formPhaseCards span {
     margin-left: 10px;
-    font-family: segoe UI;
-    font-style: normal;
-    font-weight: 600;
+    font-family: 'Segoe UI Semibold';
     font-size: 16px;
-    line-height: 29px;
     text-align: center;
     letter-spacing: 0.611765px;
     text-transform: capitalize;
@@ -107,11 +71,8 @@
 }
 
 .getAgencyLogo .logo-type_agencyForm1 {
-    font-family: segoe UI;
-    font-style: normal;
-    font-weight: normal;
+    font-family: 'Segoe UI';
     font-size: 14px;
-    line-height: 150%;
     text-transform: capitalize;
     color: #3A3A3A;
     padding: 10px;
@@ -121,13 +82,11 @@
 
 .mainPersonelDetailsForm {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    margin-top: 4%;
     padding-bottom: 3%;
-    margin-left: 8.6rem;
     position: relative;
-    width: 60%;
+    width: 100%;
+    padding: 0 14rem;
 }
 
 .innerPersonelDetailsForm {
@@ -140,7 +99,6 @@
 
 .innerPersonelDetailsForm p {
     font-family: 'Open Sans', sans-serif;
-    /* font-size: 1.15rem; */
     font-style: normal;
     text-transform: capitalize;
     font-weight: 600;
@@ -166,36 +124,26 @@
 }
 
 .agencyLogo_parent label {
-    font-family:segoe UI;
+    font-family: 'Segoe UI Semibold';
     color: #707070;
-    font-size: 18px;
-    font-style: normal;
+    font-size: 20px;
     text-transform: capitalize;
-    font-weight: 500;
 }
 
 .innerLeftPersonelDetailsForm {
     display: flex;
     flex-direction: column;
-    padding: 2rem 6rem;
+    padding: 2rem 3rem;
     border-radius: 1rem;
-    width: 80%;
-    margin-top: -3rem;
-    /* background-color: #fff; */
+    width: 100%;
+    margin-bottom: 1rem;
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-    /* background-image: linear-gradient( 310deg, rgba(131, 131, 131, 0.02) 0%, rgba(131, 131, 131, 0.02) 13%, transparent 13%, transparent 46%, rgba(112, 112, 112, 0.02) 46%, rgba(112, 112, 112, 0.02) 100%), linear-gradient( 21deg, rgba(18, 18, 18, 0.02) 0%, rgba(18, 18, 18, 0.02) 47%, transparent 47%, transparent 82%, rgba(178, 178, 178, 0.02) 82%, rgba(178, 178, 178, 0.02) 100%), linear-gradient( 90deg, rgb(255, 255, 255), rgb(255, 255, 255)); */
 }
 
 .innerLeftPersonelDetailsForm p {
-    font-family: segoe UI;
-    font-style: normal;
-    font-weight: 500;
+    font-family: 'Segoe UI Semibold';
     font-size: 16px;
-    line-height: 224%;
-    /* identical to box height, or 21px */
-    /* letter-spacing: -0.5px; */
     text-transform: capitalize;
-    /* TEXT CLR */
     color: #707070;
 }
 
@@ -219,18 +167,18 @@
     display: flex;
     justify-content: space-between;
 }
+
 .innerLeftPersonelDetailsForm .formContentPartOne .agencyLogo_parent {
     position: relative;
-    /* height: 17.5rem; */
+    width: 40%;
 }
 
-.getAgencyLogo, .getAgencyDesc {
-    width: 48%;
+.getAgencyLogo{
+    width: 50%;
 }
 
 .getAgencyDesc {
-    position: relative;
-    margin-right: -4rem;
+    width: 40%;
 }
 
 .getAgencyLogo {
@@ -238,69 +186,45 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* border: 1px dashed #000; */
-    /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e"); */
-    width: 13rem;
-    height: 7rem;
+    width: 100%;
+    height: 10rem;
     margin-top: 5px;
     background-color: white;
     border-radius: 0.5rem;
-    border: 2px solid #45A4EA;
+    border: 1px solid #45A4EA;
 }
 
-.getAgencyLogo img {
+/* .getAgencyLogo img {
     width: 20%;
-}
+} */
 
 .getAgencyLogo button {
     padding: 0.3rem 1rem;
     outline: none;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     color: #119dee;
-    border: 2px solid #45A4EA;
+    border: 1px solid #45A4EA;
     background: #FFFFFF;
     border-radius: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 8rem;
+    width: 7rem;
 }
 
 .documentInformation .logo-type_agencyForm1, .panCardContent .logo-type_agencyForm1 {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: normal;
+    font-family: 'Segoe UI';
     font-size: 14px;
-    line-height: 150%;
     text-transform: capitalize;
-    color: #3A3A3A;
-    padding: 10px 20px;
+    padding: 5px 8px;
+    color: #707070;
 }
 
-/* 
-.pick_btn {
-    padding: 0.3rem 1rem;
-    outline: none;
-    font-family: 'Open Sans', sans-serif;
-    color: #119dee;
-    border: 1px solid #02044A;
-    background: #FFFFFF;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 123px;
-} */
-
 .getAgencyDesc p {
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
+    font-size: 20px;
     text-transform: capitalize;
-    color:#707070;
-    font-family: segoe UI;
+    color: #707070;
+    font-family: "Segoe UI Semibold";
 }
 
 .margin-top {
@@ -308,12 +232,11 @@
 }
 
 .getAgencyDesc textarea {
-    border: 2px solid #45A4EA;
+    border: 1px solid #45A4EA;
     border-radius: 0.5rem;
-    width: 78%;
-    /* padding-left: 10px; */
+    width: 100%;
     padding: 10px;
-    height: 7rem;
+    height: 10rem;
     margin-top: 5px;
 }
 
@@ -322,11 +245,10 @@
 }
 
 .formContentPartTwo {
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 65px;
 }
 
 .error_agencyForm {
@@ -339,20 +261,16 @@
 }
 
 .getOwnerName {
-    width: 48%;
-    line-height: 0.5;
+    width: 40%;
     position: relative;
-    height: 6rem;
-    margin-right: -4rem;
 }
 
 .formContentPartTwo input {
-    width: 80%;
+    width: 100%;
     border-radius: 0.5rem;
-    margin-right: -4rem;
     height: 2.5rem;
     padding: 0 0.8rem;
-    border: 2px solid #45A4EA;
+    border: 1px solid #45A4EA;
     transition: 0.3s ease-in-out;
     margin-top: 5px;
 }
@@ -370,15 +288,12 @@
 }
 
 .rightPersonelDetailsForm span {
-    /* font-size: 1.7rem;
-    font-weight: bold; */
     margin-bottom: 7%;
     margin-top: 5%;
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     font-size: 36px;
     line-height: 44px;
-    /* identical to box height */
     text-align: center;
     letter-spacing: 0.611765px;
     text-transform: capitalize;
@@ -386,10 +301,6 @@
 }
 
 .rightPersonelDetailsForm p {
-    /* font-size: 1rem;
-    margin-bottom: 7%;
-    text-align: center; */
-    /* color: #fad647; */
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -402,41 +313,29 @@
     color: #FFD200;
 }
 
-/* .rightPersonelDetailsForm img {
-    position: absolute;
-} */
-
 .nextBtn {
     width: 100%;
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* justify-content: flex-end */
 }
 
 .nextBtn button {
     display: flex;
     justify-content: center;
-    width:7rem;
     padding: 0.4rem 1rem;
+    font-family: 'Segoe UI';
+    width: 6rem;
     outline: none;
     border: none;
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
-    display: flex;
-    font-weight: bold;
     text-decoration: none;
-    background: #71a6fd;
-    font-size: 16px;
-    font-weight: 100;
+    color: #fff;
+    font-size: 14px;
     border-radius: 2rem;
-    font-family: segoe UI;
-    background-image: linear-gradient(to right, #5C6DFF , #45A4EA);
 }
 
 .nextBtn a i {
-    /* margin-left: 10px; */
     margin-top: 2px;
     margin: 0 4px;
 }
@@ -466,24 +365,22 @@
     width: 84%;
     display: flex;
     margin: auto;
-    margin-top: 3%;
     margin-bottom: 5%;
     justify-content: space-around;
     align-items: flex-start;
 }
 
 .innerTechStackForm {
-    width: 71%;
+    width: 70%;
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    padding: 1.5rem;
+    padding: 2rem 4rem 2rem 4rem;
     display: flex;
 }
 
 .mainTechStackForm .MuiTypography-root {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI Semibold';
     font-size: 1rem;
-    font-weight: 500;
 }
 
 .mainTechStackForm .domainBudgetOptions {
@@ -493,13 +390,8 @@
     margin-left: 10px;
 }
 
-/* .techStackFields{
-    width: 70%;
-    border-right: 1px dashed #ebebeb;
-} */
-
 .uiuxtext_agencyForm3 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI Semibold';
     margin-top: 0px;
     padding-top: 0;
 }
@@ -512,16 +404,12 @@
     margin-top: 2rem;
 }
 
-.domainsFields .domainHeading {
-    font-family: 'Open Sans', sans-serif !important;
-    font-style: normal !important;
-    font-weight: 600 !important;
-    font-size: 22px !important;
-    line-height: 150% !important;
-    /* identical to box height, or 33px */
+.domainsFields .domainHeading,
+.serivcesAgency .servicesHeading {
+    font-family: 'Segoe UI Semibold';
+    font-size: 20px !important;
     text-transform: capitalize !important;
-    /* TEXT CLR */
-    color: #3A3A3A !important;
+    color: #707070 !important;
 }
 
 .domainFieldsCard div {
@@ -532,11 +420,15 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    /* height: 130px; */
     padding-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
     border-radius: 10px;
+}
+
+.agencyForm2 .tech-container p {
+    font-family: 'Segoe UI';
+    color: #707070;
 }
 
 .domainFieldsCard div img {
@@ -562,21 +454,15 @@
 }
 
 .serivcesAgency {
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
-.serivcesAgency .servicesHeading {
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 1.3rem !important;
-    font-style: normal !important;
-    font-weight: 600 !important;
+/* .serivcesAgency .servicesHeading {
+    font-family: 'Segoe UI Semibold';
     font-size: 22px !important;
-    line-height: 150% !important;
-    /* identical to box height, or 33px */
     text-transform: capitalize !important;
-    /* TEXT CLR */
     color: #3A3A3A !important;
-}
+} */
 
 .servicesCardsAgency {
     margin-top: 2rem;
@@ -638,13 +524,9 @@
 
 .input_agencyForm2 {
     margin-top: 10%;
-    font-family: 'Open Sans', sans-serif !important;
-    font-style: normal !important;
-    font-weight: 500 !important;
-    font-size: 32px !important;
-    line-height: 150% !important;
+    font-family: 'Segoe UI Semibold';
+    font-size: 30px !important;
     text-align: center !important;
-    letter-spacing: 0.611765px !important;
     text-transform: capitalize !important;
     color: #02044A !important;
     padding: 10px !important;
@@ -667,56 +549,41 @@
     margin-left: 2rem;
 }
 
-/* .serviceFieldsOptions .servicesContainer {
-    height: 57rem;
-    overflow: auto;
-    border: 1px dashed #ebebeb;
-    margin-left: 2px;
-} */
-
 .monthlyBudget {
-    margin-top: 5rem !important;
+    margin-top: 3rem !important;
 }
 
 .monthlyBudget p {
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 1.3rem !important;
-    font-style: normal !important;
-    font-weight: 600 !important;
-    font-size: 22px !important;
-    line-height: 150% !important;
-    /* identical to box height, or 33px */
+    font-family: 'Segoe UI Semibold';
+    font-size: 20px !important;
     text-transform: capitalize !important;
-    /* TEXT CLR */
-    color: #3A3A3A !important;
+    color: #707070 !important;
 }
 
 .servicesCardsHireAgency.agencyForm2 {
     margin-left: 0px;
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     justify-content: space-between;
-    width: 42rem;
 }
 
 /* Agency Form three  */
 
 .mainDocumentsForm {
-    width: 100%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    margin-top: 3%;
-    margin-bottom: 5%;
+    width: 91%;
+    margin: auto;
+    margin-top: 0%;
+    margin-bottom: 3%;
     position: relative;
+    display: flex;
+    justify-content: space-around;
 }
 
 .innerDocumentForm {
     width: 60%;
-    display: flex;
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-    margin-left: 8.6rem;
 }
 
 .documentDetails {
@@ -725,21 +592,17 @@
 }
 
 .documentInformation {
-    flex-direction: column;
     display: flex;
-    justify-content: space-between;
-    height: 25rem;
-    width: 46rem;
-    margin-top: 40px;
+    min-height: 8rem;
+    width: 100%;
+    margin-top: 12px;
 }
 
-.documentDetails p {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 150%;
+.documentDetails > p, .panDetails > p {
+    font-size: 20px;
     text-transform: capitalize;
-    color: #3A3A3A;
+    font-family: 'Segoe UI Semibold';
+    color: #707070;
 }
 
 .documentDetails span {
@@ -751,29 +614,27 @@
     float: left !important;
 }
 
-.agencyCertification, .agencyBrochure {
-    width: 54%;
-    /* border: 1px dashed #000; */
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+.agencyCertification, .agencyBrochure, .panCardContent {
+    width: 33%;
+    border: 1px solid #45A4E4;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: 190px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.agencyBrochure {
+    transform: translateX(2rem);
 }
 
 .agencyCertification>div, .agencyBrochure>div, .panCardContent>div {
     display: flex;
     align-items: center;
-    width: 180px;
-    justify-content: space-between;
-}
-
-.agencyCertification img, .agencyBrochure img {
-    /* width: 25%; */
-    width: 33%;
+    min-width: 130px;
+    justify-content: center;
 }
 
 .agencyCertification button, .agencyBrochure button, .panCardContent button {
@@ -781,13 +642,15 @@
     border-radius: 999px;
     outline: none;
     border: none;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     background-color: white;
-    font-weight: bold;
-    border: 1px solid #02044A;
-    box-sizing: border-box;
+    border: 1px solid #45A4E4;
     border-radius: 22px;
-    color: #119dee;
+    color: #707070;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
 }
 
 .pick_icon {
@@ -799,40 +662,22 @@
     margin-bottom: 20px;
 }
 
-.panDetails p {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 150%;
-    /* identical to box height, or 33px */
-    text-transform: capitalize;
-    /* TEXT CLR */
-    color: #3A3A3A;
-}
-
 .panDetails input {
     width: 100%;
     height: 40px;
     padding-left: 10px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     border: 1px solid #ebebeb;
 }
 
 .panCardContent {
-    margin-top: 40px;
-    width: 53%;
-    /* border: 1px dashed #000; */
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 190px;
+    margin-top: 14px;
+    min-height: 8rem;
 }
 
-.panCardContent img {
+/* .panCardContent img {
     width: 32%;
-}
+} */
 
 .panCardContent button i {
     margin-right: 5px;
@@ -840,7 +685,6 @@
 
 .panDetails input:focus {
     outline: none;
-    /* border: none; */
 }
 
 .agencyCertification i, .agencyBrochure i {
@@ -848,61 +692,33 @@
 }
 
 .miscellaneousArea {
-    height: 926px;
-    background-color: #02044a;
-    /* margin: 1rem 0 1rem 1rem; */
-    /* border-top-left-radius: 14px;
-    border-bottom-left-radius: 25px; */
     border-radius: 14px;
-    position: relative;
-    overflow: hidden;
-    position: absolute;
-    right: 3px;
-    top: 0;
-    width: 354px;
+    width: 24%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border: 1px solid red;
 }
 
 .miscellaneousArea p {
-    color: #fff;
-    margin: 5%;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 32px;
-    margin-top: 4rem;
-}
-
-.miscellaneousArea img {
-    /* position: absolute;
-    width: 100%;
-    left: 50%;
-    bottom: 10%;
-    transform: translateX(-50%); */
-    width: 76%;
+    font-family: 'Segoe UI Bold';
+    font-size: 31px;
+    padding: 0 2rem;
+    color: #45A4E4;
 }
 
 /* Agency Form four  */
 
 .mainSocialLinks {
     width: 100%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    margin-top: 3%;
     margin-bottom: 5%;
     position: relative;
 }
 
 .innerSocialLinks {
-    /* width: 88%;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    display: flex; */
     width: 63%;
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-    /* display: flex; */
     margin-left: 8.5rem;
     width: 780px;
 }
@@ -917,51 +733,44 @@
 }
 
 .socialInputs div p {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 150%;
-    /* identical to box height, or 36px */
-    letter-spacing: -0.5px;
+    font-family: 'Segoe UI Semibold';
+    font-size: 18px;
     text-transform: capitalize;
-    /* TEXT CLR */
-    color: #3A3A3A;
+    color: #707070;
 }
 
 .socialInputs div input {
     margin-top: 10px;
     width: 65%;
-    height: 54px;
+    height: 45px;
     padding-left: 10px;
-    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #45A4E4;
+    font-family: 'Segoe UI';
     font-size: 1rem;
-    border: 1px solid #ebebeb;
+    border-radius: 7px;
 }
 
 .socialInputs div input::placeholder {
-    color: #999;
+    color: #707070;
     opacity: 0.5;
 }
 
-.socialInputs div input:focus {
+/* .socialInputs div input:focus {
     outline: none;
-}
+} */
 
-.socialArea {
+/* .socialArea {
     width: 30%;
     background-color: #02044a;
-    /* margin: 1rem 0 1rem 1rem; */
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     padding: 2rem;
-    /* position: relative; */
     overflow: hidden;
     position: absolute;
     right: 0;
     top: 0;
     height: 605px;
-}
+} */
 
 .socialArea img {
     width: 100%;
@@ -978,15 +787,14 @@
 }
 
 .linksImages img {
-    width: 4%;
+    width: 3%;
     margin-right: 10px;
-    /* transform: translateY(-10px); */
 }
 
 .linksImages span {
-    color: #242424;
     font-weight: lighter;
     font-size: 0.8rem;
+    color: #707070;
 }
 
 .addMoreFields {
@@ -995,10 +803,9 @@
     padding: 0.3rem 1rem;
     background-color: #fad647;
     border-radius: 999px;
-    font-family: 'Open Sans', sans-serif;
+    font-family:'Segoe UI Semibold';
     font-size: 0.8rem;
     cursor: pointer;
-    font-weight: bold;
     top: 0;
 }
 
@@ -1024,5 +831,5 @@
 .innerTechStackForm .techStackFields {
     width: 100%;
     margin-left: 0rem;
-    margin-top: 2rem;
+    margin-top: 0;
 }

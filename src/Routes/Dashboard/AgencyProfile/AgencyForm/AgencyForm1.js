@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
+import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
@@ -421,14 +422,15 @@ function AgencyForm1(props) {
                                 <div className="agencyLogo_parent">
                                     <label>Agency Logo</label>
                                     <div className="getAgencyLogo">
-                                        <img src={agencyLogo} alt="" />
+                                        {/* <img src={agencyLogo} alt="" /> */}
                                         <FilePicker
                                             extensions={['jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
                                             onError={error => handleUploadError(error)}>
                                             <button>
-                                                <i className="fa fa-upload" aria-hidden="true" />
-                                                Pick File
+                                                {/* <i className="fa fa-upload" aria-hidden="true" /> */}
+                                                <p>Pick File</p>
+                                                <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
                                         <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name ?? "(jpeg, png, jpg)"}`}</p>
@@ -564,7 +566,7 @@ function AgencyForm1(props) {
                                         </button>
                                     </NavLink> */}
                                 {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }} onClick={(event) => handleNavlink(event)}> */}
-                                <button onClick={(event) => handleSubmit(event)}>
+                                <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={(event) => handleSubmit(event)}>
                                     Next
                                     {/* <i className="fa fa-long-arrow-right" aria-hidden="true" /> */}
                                 </button>
