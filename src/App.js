@@ -39,12 +39,10 @@ import ClientOneHireDeveloper from './Routes/Client/ClientOneHireDeveloper/Clien
 import SharedDevelopers from './Routes/Client/SharedDevelopers/SharedDevelopers';
 import ForgotPassword from './Routes/ForgotPassword/ForgotPassword';
 import EnterEmail from './Routes/EnterEmail/EnterEmail';
-import DynamicPageNotFound from './Routes/DynamicPageNotFound/DynamicPageNotFound';
 
 import ClientNewestDashboard from './Routes/Client/ClientNewestDashboard';
 import AgencyNewestDashboard from './Routes/Dashboard/AgencyNewestDashboard';
 import AgencyNewestAllProject from './Routes/Dashboard/AgencyNewestAllProject';
-import NewestAddDeveloper from './Routes/Client/Dashboard/AddDeveloper/NewestAddDeveloper';
 
 import { withRouter } from "react-router";
 import './App.css';
@@ -78,7 +76,6 @@ useEffect(() => {
       <Route exact path='/clientNewestDashboard' component={ClientNewestDashboard} />
       <Route exact path='/agencyNewestDashboard' component={AgencyNewestDashboard} />
       <Route exact path='/agencyNewestAllProject' component={AgencyNewestAllProject} />
-      <Route exact path='/newestAddDeveloper' component={NewestAddDeveloper} />
 
       <CustomRoute condition="Agency" exact path="/dashboard" component={Dashboard} />
       <CustomRoute condition="Agency" exact path="/agency-project-dashboard" component={AgencyProjectDashboard} />
