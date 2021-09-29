@@ -8,13 +8,19 @@
 .innerAddingDeveloper {
   width: 65%;
   display: flex;
-  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%);
+  /* box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2); */
   background: #fff;
+  border-radius: 8px;
 }
 
 .addingDeveloperHeadings {
-  width: 30%;
-  background-color: #02044a;
+  height: 36rem;
+  width: 29%;
+  background-color: #ffffff;
+  /* box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%);
+border-radius: 8px;
   padding: 2rem;
   /* margin: 0.5rem; */
   /* border-top-right-radius: 35px;
@@ -36,6 +42,7 @@
 }
 
 .inputForm {
+  height: 36rem;
   width: 65%;
   background-color: #fff;
 }
@@ -89,13 +96,13 @@
 .addingDeveloperHeadings h1 {
   font-family: 'Segoe UI Bold';
   color: #45A4E4;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .addingDeveloperHeadings p {
   font-family: 'Segoe UI';
   color: #707070;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .pointsToRemember {
@@ -107,21 +114,23 @@
 }
 
 .pointsToRemember h2 {
-  color: #fff;
+  color: #45A4EA;
   font-family: 'Segoe UI';
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin-bottom: 0;
 }
 
 .pointsToRemember ul li {
   font-family: 'Segoe UI';
-  color: #fad647;
+  color: #45A4EA;
   /* margin: 1.5rem 0; */
 }
 
 .inputForm {
-  padding: 2rem 0 2rem 2rem;
+  padding: 3rem 0rem 3rem 3rem;
   width: 100%;
+  border-radius: 8px;
 }
 
 .inputField1 {
@@ -199,20 +208,20 @@
 }
 
 .developerName_addingDeveloper>h4, .developerDesignation_addingDeveloper>h4 {
-  font-family: 'Segoe UI Semibold';
-  font-size: 18px;
+  font-family: 'Segoe UI';
+  font-size: 16px;
   text-transform: capitalize;
   color: #707070;
 }
 
 .inputField1 .developerName_addingDeveloper input, .inputField1 .developerDesignation_addingDeveloper input {
-  border: 1px solid blue;
-  border-radius: 8px;
+  border: 1px solid #45A4EA;
+  border-radius: 6px;
   width: 73%;
-  height: 40px;
+  height: 35px;
   padding-left: 10px;
   font-family: 'Segoe UI';
-  font-size: 14px;
+  font-size: 12px;
   text-transform: capitalize;
   /* color: #707070; */
   margin-top: 0.4rem;
@@ -258,7 +267,7 @@
 .fileUploadButton_addingDeveloper {
   width: 50%;
   display: flex;
-  border: 1px solid blue;
+  border: 1px solid #45A4EA;
   border-radius: 10px;
   padding: 7px;
 }
@@ -275,7 +284,9 @@
   /* font: normal 600 18px 'Inter'; */
   /* line-height: 150%; */
   /* text-transform: capitalize; */
-  color: #407bff;
+  color: #707070;
+  display: flex;
+  justify-content: space-between;
 }
 
 .inputField2 .MuiFormControl-root {
@@ -295,7 +306,7 @@
 }
 
 .MuiRadio-colorSecondary.Mui-checked {
-  color: #0d5179 !important;
+  color: #45A4EA !important;
 }
 
 .MuiRadio-colorSecondary:hover {
@@ -308,10 +319,10 @@
 
 .mainAddingDeveloper .MuiTypography-body1 {
   font-family: 'Segoe UI';
-  color: #101010;
-  font-size: 14px !important;
+  color: #707070;
+  font-size: 12px !important;
   text-transform: capitalize !important;
-  margin-right: 29px !important;
+  margin-right: 24px !important;
 }
 
 .inputField2 .makeStyles-formControl-10 {
@@ -319,9 +330,9 @@
 }
 
 .mainAddingDeveloper .MuiFormLabel-root {
-  font-size: 18px !important;
+  font-size: 16px !important;
   text-transform: capitalize !important;
-  font-family: 'Segoe UI Semibold';
+  font-family: 'Segoe UI';
   color: #707070 !important;
   margin-bottom: 0;
 }
@@ -338,12 +349,12 @@
 }
 
 .priceRange {
-  margin-top: 4%;
+  margin-top: 3%;
   position: relative;
 }
 
 .availabilityArea {
-  margin-top: 5%;
+  margin-top: 3%;
   position: relative;
 }
 
@@ -368,6 +379,7 @@
   font-size: 14px;
   text-align: center;
   color: white;
+  box-shadow: 0 1px 4px 1px rgb(0 0 0 / 12%);
 }
 
 .mainAddingDeveloper .submitButton button:hover {
@@ -389,7 +401,7 @@
 
 .inputForm .submitButton button:hover {
   cursor: pointer;
-  background-color: blue;
+  background-color: #45A4EA;
   color: #eaf2ff;
 }
 
@@ -552,7 +564,7 @@
 
 .yearsOfExperience_addingDeveloper {
   /* position: relative; */
-  margin-top: 5%;
+  margin-top: 4%;
 }
 
 .inputField2 .multi-select {
@@ -568,16 +580,25 @@
 }
 
 .inputField2 .dropdown-container {
-  border: 1px solid blue;
+  border: 1px solid #45A4EA;
   border-radius: 8px;
 }
 
 .inputField2 .dropdown-container .dropdown-heading-value span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 17px;
   text-transform: capitalize;
-  /* color: #767676; */
+  color: #707070;
 }
+
+/* .MuiSvgIcon-root {
+  width: 18px;
+  height:0;
+} */
+
+/* .priceRange .MuiFormControlLabel-root {
+   width:26% !important; 
+}  */

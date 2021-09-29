@@ -22,6 +22,7 @@ function RightSide() {
                         <img src={itemIllustration} alt="item illustration" />
                     </div> */}
                     {/* <div className="item-content"> */}
+                    <div className="itemContent-1"></div>
                     <div className="itemContent-heading">
                         <div className="heading-text">
                             <p>Get In Touch</p>

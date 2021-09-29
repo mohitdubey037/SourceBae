@@ -46,7 +46,7 @@
   position: absolute;
   width: 5px;
   height: 100%;
-  background-color: #5C6DFF;
+  background-color: #45a4ea;
   left: 0;
   top: 0;
   border-radius: 999px;
@@ -166,8 +166,8 @@
 
 .projectPostedDetails div:nth-child(1) p {
   background-color: transparent !important;
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid #707070;
+  color: #707070;
 }
 
 .projectDetailsTable {
@@ -191,7 +191,7 @@
 }
 
 .projectDetailsTable .projectDetailsTableContainer .projectTableHeading p {
-  color: #000;
+  color: #707070;
   font-weight: 600;
 }
 
@@ -207,7 +207,8 @@
 } */
 
 .projectDetailsTable div div p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
+  color: #707070;
   /* transform: translateY(10px); */
 }
 

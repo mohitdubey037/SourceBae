@@ -343,7 +343,7 @@ const AgencyCommentBox = (props) => {
                     <p>Accept or Reject the Project.</p>
                   </div>
 
-                  <div className="postQuotation">
+                  <div className="postQuotation" style={{marginTop:"5rem"}}>
           {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
             <div className="detailsButtons md-m10 margin-0">
               {/* <p> */}

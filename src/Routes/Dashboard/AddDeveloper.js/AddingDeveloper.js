@@ -12,6 +12,8 @@ import reacts from '../../../assets/images/AddDeveloper/react.svg'
 import angular from '../../../assets/images/AddDeveloper/angular.svg'
 import nodejs from '../../../assets/images/AddDeveloper/nodejs.svg'
 import mongodb from '../../../assets/images/AddDeveloper/mongodb.svg'
+import dev from '../../../assets/images/AddDeveloper/dev.svg'
+import radio from '../../../assets/images/AddDeveloper/radio.svg'
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -27,6 +29,8 @@ import Select from "@material-ui/core/Select";
 import Spinner from '../../../Components/Spinner/Spinner';
 import MultiSelect from "react-multi-select-component";
 import { FilePicker } from "react-file-picker";
+import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
+
 import { toast } from "react-toastify";
 
 const MenuProps = {
@@ -270,12 +274,15 @@ function AddingDeveloper(props) {
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, reiciendis natus inventore laborum distinctio numquam cum pariatur voluptatum vero ipsum.</p>
                             <div className="pointsToRemember">
                                 <h2>Points To Remember</h2>
-                                <ul>
-                                    <li>Fill Form Carefully</li>
-                                    <li>Drop the Resume</li>
-                                    <li>We will reach you shortly</li>
-                                </ul>
+                                <div style={{paddingTop:"1rem"}}>
+                                <div><img src={radio} alt="NotFound" style={{marginRight:"5px"}}/>Fill Form Carefully</div>
+                                <div><img src={radio} alt="NotFound" style={{marginRight:"5px"}}/>Drop the Resume</div>
+                                <div><img src={radio} alt="NotFound" style={{marginRight:"5px"}}/>We will reach you shortly</div>
+                                <div/>
+                                </div>
                             </div>
+                            <img src={dev} alt="NotFound" style={{margin:"1rem 0rem 0rem 5rem", width:"80%"}}/>
+
                         </div>
                         <div className="innerAddingDeveloper">
                             <div className="inputForm">
@@ -366,13 +373,14 @@ function AddingDeveloper(props) {
                                                     onError={errMsg => toast.error(errMsg)}
                                                 >
                                                     <div>
-                                                        Upload
+                                                       <p style={{fontSize:"12px"}}> Upload</p>                                                       
+                                                        <img src={fileIcon} alt="finish" />
                                                     </div>
                                                 </FilePicker>
                                             </div>
-                                            <div className="uploadInfo_addingDeveloper">
+                                            {/* <div className="uploadInfo_addingDeveloper">
                                                 <p>{`${resume?.name ?? "Please Upload a document"}`}</p>
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         {errors.developerResume && (<p className="error_paragraph experience">{errors.developerResume}</p>)}

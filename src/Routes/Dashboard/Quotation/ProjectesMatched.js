@@ -59,14 +59,14 @@ function ProjectesMatched(props) {
                                     <div className="projectCard">
                                         <div className="projectCardHeading">
                                             <div className="projectHeadingName">
-                                                <h4 style={{ textTransform: 'capitalize' }}>{s.projectName}</h4>
+                                                <h4 style={{ textTransform: 'capitalize', fontFamily:"Segoe UI"}}>{s.projectName}</h4>
                                             </div>
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
                                                     <div className="showDetail_projectMatched" onClick={() => props.history.push({
                                                         pathname: `agency-project-details:${s?._id}`,
                                                         origin: 'project-match'
-                                                    })}><p>Show Details</p>
+                                                    })}><p style={{color:"#707070"}}>Show Details</p>
                                                     </div>
                                                 </div>
                                             </div>

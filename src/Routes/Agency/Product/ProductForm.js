@@ -327,7 +327,7 @@ function ProductForm(props) {
   };
 
   const inputFileChoosen = (e) => {
-    setFile(e.target.files[0]);
+    setFile(e);
   };
 
 

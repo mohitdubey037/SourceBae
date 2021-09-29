@@ -27,7 +27,8 @@
 
 .container-body {
   width: 87.5%;
-  height: 95vh;
+  min-height: 91vh;
+  /* overflow-y: auto; */
   display: flex;
   margin-left: 11%;
   margin-top: 13px;

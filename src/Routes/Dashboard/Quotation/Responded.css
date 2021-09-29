@@ -42,7 +42,7 @@
   position: absolute;
   width: 5px;
   height: 100%;
-  background-color: #5C6DFF;
+  background-color: #45A4ea;
   left: 0;
   top: 0;
   border-radius: 999px;
@@ -66,7 +66,7 @@
 .respondCardHeader h4 {
   font-family: 'Segoe UI Semibold';
   font-size: 1.16rem;
-  color: #5C6DFF;
+  color: #45a4ea;
 }
 
 .dateCreated {
@@ -95,7 +95,7 @@
   /* font-family: 'Open Sans', sans-serif; */
   font-family: 'Segoe UI';
   font-size: 0.8rem;
-  /* color: #b4b4b4; */
+  color: #707070;
 }
 
 .respondCardPoints {
