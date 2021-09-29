@@ -228,7 +228,7 @@ const Register = (props) => {
                         { path: '/' }
                     );
                     setApiErrors(false);
-                    setToken(cookie.load("Authorization"))
+                    setToken(cookie.load("Authorization"));
                     localStorage.setItem("role", role);
                     localStorage.setItem("userId", `${response._id}`);
                 })

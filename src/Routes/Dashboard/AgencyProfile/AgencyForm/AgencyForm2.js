@@ -278,7 +278,7 @@ function AgencyForm2(props) {
                   1. Which business sector are you targeting?
                 </p>
                 {/* <div className="serviceFieldsOptions newHireAgencyForm3"> */}
-                <div className="servicesCardsHireAgency agencyForm2">
+                <div className="servicesCardsHireAgency agencyForm2 domainChild">
                   {/* <div className="tech-container"> */}
                   {allDomainsData?.length > 0 ? (
                     allDomainsData.map((domain) => {
@@ -313,7 +313,7 @@ function AgencyForm2(props) {
                         <div className="tech-container">
                           <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
                             style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}>
-                            <img className={`${service.serviceName}`} src={uiux} alt="" />
+                            <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                           </div>
                           <p className={`${service.serviceName}`}>
                             {`${service.serviceName}`}

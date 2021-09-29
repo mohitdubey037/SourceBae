@@ -257,27 +257,27 @@ function AddingDeveloper(props) {
             {loading ? <Spinner /> :
                 <>
                     <div className="mainAddingDeveloper">
-                        <div className="innerAddingDeveloper">
-                            <div className="addingDeveloperHeadings">
-                                <img src={model} className="model3d" alt="" />
-                                <img src={html} className="techImage html" alt="" />
-                                <img src={css} className="techImage css" alt="" />
-                                <img src={javscripts} className="techImage javascripts" alt="" />
-                                <img src={reacts} className="techImage reacts" alt="" />
-                                <img src={angular} className="techImage angular" alt="" />
-                                <img src={nodejs} className="techImage nodejs" alt="" />
-                                <img src={mongodb} className="techImage mongodb" alt="" />
-                                <h1>Adding Developer</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, reiciendis natus inventore laborum distinctio numquam cum pariatur voluptatum vero ipsum.</p>
-                                <div className="pointsToRemember">
-                                    <h2>Points To Remember</h2>
-                                    <ul>
-                                        <li>Fill Form Carefully</li>
-                                        <li>Drop the Resume</li>
-                                        <li>We will reach you shortly</li>
-                                    </ul>
-                                </div>
+                        <div className="addingDeveloperHeadings">
+                            {/* <img src={model} className="model3d" alt="" />
+                            <img src={html} className="techImage html" alt="" />
+                            <img src={css} className="techImage css" alt="" />
+                            <img src={javscripts} className="techImage javascripts" alt="" />
+                            <img src={reacts} className="techImage reacts" alt="" />
+                            <img src={angular} className="techImage angular" alt="" />
+                            <img src={nodejs} className="techImage nodejs" alt="" />
+                            <img src={mongodb} className="techImage mongodb" alt="" /> */}
+                            <h1>Adding Developer</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, reiciendis natus inventore laborum distinctio numquam cum pariatur voluptatum vero ipsum.</p>
+                            <div className="pointsToRemember">
+                                <h2>Points To Remember</h2>
+                                <ul>
+                                    <li>Fill Form Carefully</li>
+                                    <li>Drop the Resume</li>
+                                    <li>We will reach you shortly</li>
+                                </ul>
                             </div>
+                        </div>
+                        <div className="innerAddingDeveloper">
                             <div className="inputForm">
                                 <div className="inputField1">
                                     <div className="developerName_addingDeveloper">
@@ -308,6 +308,8 @@ function AddingDeveloper(props) {
                                             labelledBy="Select"
                                             className="multi-select"
                                         />
+                                        {errors.developerTechnologies && (<p className="error_paragraph experience">{errors.developerTechnologies}</p>)}
+
                                         {/* <FormControl variant="outlined" className={classes.formControl}>
                                             <Select
                                                 // labelId="demo-mutiple-name"
@@ -382,9 +384,9 @@ function AddingDeveloper(props) {
                                         <div className="experience-radio-parent">
                                             <RadioGroup aria-label="developerExperience" name="developerExperience" value={developerData.developerExperience} onChange={(event) => handleChange(event)}>
                                                 <FormControlLabel value="1" control={<Radio />} label="Junior(1-3years)" />
-                                                <div className="black-strip_newestAddDeveloper"></div>
+                                                {/* <div className="black-strip_newestAddDeveloper"></div> */}
                                                 <FormControlLabel value="3" control={<Radio />} label="Mid Range(3-6years)" />
-                                                <div className="black-strip_newestAddDeveloper"></div>
+                                                {/* <div className="black-strip_newestAddDeveloper"></div> */}
                                                 <FormControlLabel value="6" control={<Radio />} label="Senior(6-9years)" />
                                             </RadioGroup>
                                         </div>

@@ -6,7 +6,7 @@ const prod = {
 
 const dev = {
     url:{
-        API_URL:`http://13.235.79.27:8000`
+        API_URL:`https://api.onesourcing.in`
     }
     
 }

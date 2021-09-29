@@ -233,7 +233,7 @@ function HireAgencyForm3(props) {
                         </div>
                         {allTechnologies.length > 0 &&
                             <div className="serviceFieldsOptions newHireAgencyForm3">
-                                <div className="servicesHireAgencyContainer">
+                                <div className="servicesHireAgencyContainer hireAgencyForm3">
                                     <div className="serviceSelectionInput">
                                         {allTechnologies ? (
                                             <>

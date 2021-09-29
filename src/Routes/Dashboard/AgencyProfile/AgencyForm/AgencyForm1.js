@@ -429,7 +429,7 @@ function AgencyForm1(props) {
                                             onError={error => handleUploadError(error)}>
                                             <button>
                                                 {/* <i className="fa fa-upload" aria-hidden="true" /> */}
-                                                <p>Pick File</p>
+                                                <p className="agencyLogo_pick_file">Pick File</p>
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
