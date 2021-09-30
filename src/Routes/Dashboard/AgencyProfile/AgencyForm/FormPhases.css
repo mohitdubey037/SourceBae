@@ -378,9 +378,8 @@
 }
 
 .uiuxtext_agencyForm3 {
-    font-family: 'Segoe UI Semibold';
-    margin-top: 0px;
-    padding-top: 0;
+    font-family: 'Segoe UI';
+    font-size: 1.5rem;
 }
 
 .domainFieldsCard {
@@ -481,16 +480,36 @@
 }
 
 .mainTechStackForm .UIUXServices {
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
     margin-top: 0px;
     padding-top: 0;
     outline: none;
     border: none;
 }
 
-.UIUXServices div {
+.UIUXServices>div {
     outline: none;
     border: none;
+}
+
+.UIUXServices .tags {
+    background: #ced3ff !important;
+}
+
+.UIUXServices .input-area, 
+.UIUXServices .option-area, 
+.UIUXServices .input-area input {
+    background-color: white !important;
+}
+
+.UIUXServices .option-area button {
+    background: #ced3ff !important;
+}
+
+.UIUXServices .option-area .option {
+    margin-top: 5px;
+    padding: 5px;
 }
 
 .UIUXServices input {
@@ -511,7 +530,7 @@
     text-align: center !important;
     text-transform: capitalize !important;
     color: #45A4E4;
-    padding: 10px !important;
+    padding: 2rem 10px 10px 10px !important;
 }
 
 .conditional_please_select {
@@ -525,7 +544,6 @@
 }
 
 .serviceFieldsOptions_agencyForm2 {
-    height: 57rem;
     overflow: auto;
     border: 1px dashed #ebebeb;
     margin-left: 2rem;

@@ -52,10 +52,6 @@
   border-radius: 999px;
 }
 
-/* .bgCircles {
-  position: absolute;
-} */
-
 .innerProjectsMatched .dotImage {
   position: absolute;
   bottom: 0;
@@ -200,11 +196,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-
-/* .projectDetailsTable .projectDetailsTableContainer .projectTableContent p {
-  color: #68e1fd;
-  font-weight: 600;
-} */
 
 .projectDetailsTable div div p {
   font-family: 'Segoe UI';
