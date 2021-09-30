@@ -208,13 +208,40 @@ function HireAgencyForm2(props) {
         <Spinner />
       ) : (
         <div className="mainHireAgencyFormTwo">
-          <div className="color-div_hireAgencyForm"></div>
+          {/* <div className="color-div_hireAgencyForm"></div> */}
+          <div className="steps_hireAgencyForm2">
+
+            <div className="step3_disabled">
+              <div >
+                <p>Step 1</p>
+              </div>
+              <div className='color_hireAgencyForm green'></div>
+            </div>
+
+            {/* <div className="black-strip_hireAgencyForm2 strip1"></div> */}
+
+            <div className="diabled-step_hireAgencyForm">
+              <div>
+                <p className="grey-step_hireAgencyForm">Step 2</p>
+              </div>
+              <div className='color_hireAgencyForm green'></div>
+            </div>
+
+            {/* <div className="black-strip_hireAgencyForm2"></div> */}
+
+            <div className="step3_disabled">
+              <div>
+                <p className="grey-step_hireAgencyForm">Step 3</p>
+              </div>
+              <div className='color_hireAgencyForm grey'></div>
+            </div>
+          </div>
           <div className="innerHireAgencyFormTwo">
-            <div className="stepCheck">
+            {/* <div className="stepCheck">
               <div className="color-div_hireAgencyForm1">
               </div>
               <p><span className="ste">Ste</span>p 2</p>
-            </div>
+            </div> */}
             <div className="techStackFields">
               <div className="serivcesHireAgency">
                 <ul>
@@ -309,6 +336,7 @@ function HireAgencyForm2(props) {
             {selectedDomain && options &&
               (
                 <div className="serviceFieldsOptions">
+                 <div className="servicesHirecover">
                   <div className="servicesHireAgencyContainer hireAgencyForm2">
                     <div className="serviceSelectionInput">
                       <>
@@ -329,6 +357,7 @@ function HireAgencyForm2(props) {
                         {error.projectExpertiseRequiredError}
                       </p>)}
                   </div>
+                  </div>
 
                 </div>
               )
@@ -337,7 +366,7 @@ function HireAgencyForm2(props) {
               // )
             }
           </div>
-          <div className="steps_hireAgencyForm2">
+          {/* <div className="steps_hireAgencyForm2">
 
             <div className="step3_disabled">
               <div >
@@ -363,7 +392,7 @@ function HireAgencyForm2(props) {
               </div>
               <div className='color_hireAgencyForm grey'></div>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </>
