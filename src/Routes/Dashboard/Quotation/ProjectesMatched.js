@@ -66,7 +66,7 @@ function ProjectesMatched(props) {
                                                     <div className="showDetail_projectMatched" onClick={() => props.history.push({
                                                         pathname: `agency-project-details:${s?._id}`,
                                                         origin: 'project-match'
-                                                    })}><p style={{color:"white"}}>Show Details</p>
+                                                    })}><p>Show Details</p>
                                                     </div>
                                                 </div>
                                             </div>
