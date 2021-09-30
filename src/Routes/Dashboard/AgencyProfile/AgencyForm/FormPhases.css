@@ -497,19 +497,22 @@
     background: #ced3ff !important;
 }
 
-.UIUXServices .input-area, 
-.UIUXServices .option-area, 
-.UIUXServices .input-area input {
+.UIUXServices .input-area, .UIUXServices .option-area, .UIUXServices .input-area input {
     background-color: white !important;
+    margin: 10px 1rem;
 }
 
 .UIUXServices .option-area button {
-    background: #ced3ff !important;
+    background: #45A4E4 !important;
 }
 
 .UIUXServices .option-area .option {
     margin-top: 5px;
     padding: 5px;
+}
+
+.UIUXServices .option-area .option:hover {
+    background-color: #45A4E4 !important;
 }
 
 .UIUXServices input {
