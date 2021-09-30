@@ -140,38 +140,64 @@ const HireAgencyForm1 = (props) => {
         <>
           <div className="higherAgencyInfoArea">
             <div className="points-to-remember_hireAgencyForm1">
-              <h4>Points to Remember</h4>
+              <h4>About Your Project</h4>
             </div>
             <div className="cardsDetail_hireAgencyForm1">
               <div className="cards_hireAgencyForm1">
-              </div>
-
-              <div className="cards_hireAgencyForm1">
-              </div>
-
-              <div className="cards_hireAgencyForm1">
-              </div>
-
               <div className="keep_the_project_name">
                 <p>1. Keep the project name simple and to your brand.</p>
               </div>
+              </div>
+
+              <div className="cards_hireAgencyForm1">
               <div className="write_about_your_project">
                 <p>2. Write about your service or idea in clear manner, with as many details as possible.</p>
               </div>
+              </div>
+              <div className="cards_hireAgencyForm1">
               <div className="in_case_you_think">
                 <p>3. In case, you think you missed any details you can always edit this later.</p>
+              </div>
               </div>
             </div>
           </div>
 
+          <div className="steps_hireAgencyForm">
+              <div>
+                <div >
+                  <p>Step 1</p>
+                </div>
+                <div className='color_hireAgencyForm green'></div>
+              </div>
+
+              {/* <div className="black-strip_hireAgencyForm1 strip1"></div> */}
+
+              <div className="diabled-step_hireAgencyForm">
+                <div>
+                  <p className="grey-step_hireAgencyForm">Step 2</p>
+                </div>
+                <div className='color_hireAgencyForm grey'></div>
+              </div>
+
+              {/* <div className="black-strip_hireAgencyForm1 strip2"></div> */}
+
+              <div>
+                <div>
+                  <p className="grey-step_hireAgencyForm">Step 3</p>
+                </div>
+                <div className='color_hireAgencyForm grey'></div>
+              </div>
+            </div>
+
+
           <div className="mainHireAgencyForm1">
-            <div className="color-div_hireAgencyForm"></div>
+            {/* <div className="color-div_hireAgencyForm"></div> */}
             <div className="innerHigherAgencyForm1">
-              <div className="stepCheck">
+              {/* <div className="stepCheck">
                 <div className="color-div_hireAgencyForm1">
                 </div>
                 <p><span className="ste">Ste</span>p 1</p>
-              </div>
+              </div> */}
               <div className="higherAgencyFormArea">
                 <div className="understand_your_project">Help us understand more about your project..!!</div>
                 <div className="input-form_hireAgencyForm1">
@@ -278,7 +304,7 @@ const HireAgencyForm1 = (props) => {
                 </div>
               </div>
             </div>
-            <div className="steps_hireAgencyForm">
+            {/* <div className="steps_hireAgencyForm">
               <div>
                 <div >
                   <p>Step 1</p>
@@ -303,7 +329,7 @@ const HireAgencyForm1 = (props) => {
                 </div>
                 <div className='color_hireAgencyForm grey'></div>
               </div>
-            </div>
+            </div> */}
           </div>
         </>
       }

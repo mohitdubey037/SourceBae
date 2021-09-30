@@ -1,13 +1,12 @@
 .innerHigherAgencyForm1 {
     position: relative;
-    height: 890px;
     width: 70%;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     background: #fff;
     border-radius: 12px;
-    top: 3rem;
+    top: 0.5rem;
 }
 
 .stepCheck .ste {
@@ -17,7 +16,7 @@
 .higherAgencyFormArea {
     width: 70%;
     padding: 1.5rem 0 0 2.5rem;
-    margin-left: 5rem;
+    margin-left: 2rem;
 }
 
 .color-div_hireAgencyForm {
@@ -63,63 +62,31 @@
 .steps_hireAgencyForm {
     display: flex;
     justify-content: space-between;
-    width: 53%;
-    margin-top: 6rem;
-    position: relative;
+    width: 62%;
+    margin: 2rem 0rem 0rem 15rem;
+    
 }
 
 .steps_hireAgencyForm>div, .steps_hireAgencyForm2>div, .steps_hireAgencyForm3>div {
-    display: flex;
-    width: 15%;
-    justify-content: space-between;
-    align-items: center;
+   margin-right: 5.8rem;
 }
 
 .steps_hireAgencyForm>div>div>p, .steps_hireAgencyForm2>div>div>p, .steps_hireAgencyForm3>div>div>p {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 21.4118px;
-    line-height: 26px;
-    text-align: center;
-    letter-spacing: 0.611765px;
-    text-transform: capitalize;
-    color: #000000;
-}
-
-.keep_the_project_name {
-    width: 28%;
-    position: absolute;
-    top: 64px;
-    left: 27px;
-    padding: 6px;
-}
-
-.write_about_your_project {
-    position: absolute;
-    top: 64px;
-    width: 27%;
-    right: 364px;
-    padding: 6px;
-}
-
-.in_case_you_think {
-    position: absolute;
-    width: 27%;
-    right: 34px;
-    top: 64px;
-    padding: 6px;
+    font-family: 'Segoe UI semibold';
+    font-size: 18px;
+    color: #707070;
+    display: flex;
 }
 
 .keep_the_project_name p, .write_about_your_project p, .in_case_you_think p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI semibold';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     text-align: center;
     letter-spacing: 0.611765px;
     text-transform: capitalize;
-    color: #000000;
+    color: #ffffff;
 }
 
 .steps_hireAgencyForm .grey-step_hireAgencyForm {
@@ -146,13 +113,14 @@
 }
 
 .color_hireAgencyForm {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
+    width: 17.8rem;
+    height: 3px;
+    margin: 1rem 0rem ;
+    
 }
 
 .color_hireAgencyForm.green {
-    background-color: green;
+    background-color: #015F9A;
 }
 
 .color_hireAgencyForm.grey {
@@ -247,10 +215,6 @@
     color: #02044A;
 }
 
-.input-form_hireAgencyForm1 {
-    margin-top: 8rem;
-    margin-left: 2rem;
-}
 
 .projectNameAgency input {
     font: normal 500 14px 'Open Sans', sans-serif;
@@ -259,8 +223,9 @@
 }
 
 .input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
-    font: normal 600 22px 'Open Sans', sans-serif;
+    font: 16px 'Segoe UI';
     text-transform: capitalize;
+    color: #707070;
 }
 
 .error_hireAgencyForm2.error_hireAgencyForm1 {
@@ -304,26 +269,23 @@
 }
 
 .projectNameAgency {
-    margin-top: 4%;
-    font-family: 'Open Sans', sans-serif;
+    margin-top: 1%;
+    font-family: 'Segoe UI';
     line-height: 1;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    height: 120px;
-    position: relative;
+}
+
+.projectNameAgency ul , .descriptionProjectAgency ul, .budgetSectionAreaAgency ul, .numberOfDays ul{
+    margin-left: 1.5rem;
 }
 
 .understand_your_project {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 33px;
-    line-height: 51px;
+    font-family: 'Segoe UI';
+    font-size: 18px;
     text-transform: capitalize;
-    color: #02044A;
-    position: absolute;
-    width: 80%;
+    color: #015F9A;
+    padding-top: 0.5rem;
 }
 
 .innerHigherAgencyForm1 ul {
@@ -331,20 +293,23 @@
     padding-left: 0rem;
 }
 
+li ::marker {
+    color: #ababab;
+}
+
 .projectNameAgency input {
-    width: 100%;
     background: #FFFFFF;
-    margin-top: 10px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
+    margin-top: 5px;
+    font-family: 'Segoe UI';
+    font-size: 12px;
     text-transform: capitalize;
-    color: black;
-    border: 1px solid #a2a2a2;
+    color: #707070;
+    border: 1px solid #015F9A;
     border-radius: 8px;
-    height: 56px;
+    height: 35px;
     padding-left: 10px;
+    max-width: 25rem;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .projectNameAgency input::placeholder {
@@ -357,25 +322,22 @@
 
 .descriptionProjectAgency textarea {
     /* margin-top: 0.5rem; */
-    margin-top: 10px;
-    width: 100%;
-    height: 12rem;
+    margin-top: 5px;
+    width: 57%;
+    height: 8rem;
     padding: 10px;
     background: #FFFFFF;
-    border: 1px solid #D1D3D4;
+    border: 1px solid #015F9A;
     border-radius: 8px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .descriptionProjectAgency {
-    line-height: 1;
-    margin-top: 1rem;
     font-family: 'Open Sans', sans-serif;
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    height: 272px;
-    position: relative;
+    margin-top: 0.5rem;
 }
 
 .descriptionProjectAgency div {
@@ -383,17 +345,18 @@
     justify-content: space-between;
     margin-top: 0.1rem;
     align-items: center;
+    width: 56%;
 }
 
 .descriptionProjectAgency div span {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 .budgetSectionAreaAgency {
-    margin-top: 1rem;
     display: flex;
     font-family: 'Open Sans', sans-serif !important;
     flex-direction: column;
+    margin-top: 0.5rem;
 }
 
 .error_hireAgencyForm2.error-select_hireAgencyForm2 {
@@ -402,38 +365,36 @@
 }
 
 .numberOfDays {
-    margin-top: 1.9rem;
-    font-family: 'Open Sans', sans-serif;
+    margin-top: -5px;
+    font-family: 'Segoe UI';
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 95px;
 }
 
 .budgetSectionAreaAgency .MuiTypography-root {
-    font: normal 500 14px 'Open Sans', sans-serif !important;
-    line-height: 17px !important;
+    font: 12px 'Segoe UI'!important;
     text-transform: capitalize !important;
-    color: black !important
+    color: #707070 !important
 }
 
 .daysInputAgency {
     border-radius: 8px;
-    border: 1px solid #999;
-    width: 100%;
+    border: 1px solid #015F9A;
+    width: 58%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding-left: 20px;
-    height: 56px;
+    height: 2rem;
     position: relative;
     margin-top: 10px;
 }
 
 .daysInputAgency .upArrow {
     position: absolute;
-    width: 22px;
-    height: 27px;
+    width: 15px;
+    height: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -447,8 +408,8 @@
 
 .daysInputAgency .downArrow {
     position: absolute;
-    width: 22px;
-    height: 27px;
+    width: 15px;
+    height: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -462,11 +423,10 @@
 
 .higherAgencyInfoArea {
     width: 75%;
-    height: 18rem;
+    height: 8rem;
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 1rem;
 }
 
 .points-to-remember_hireAgencyForm1 {
@@ -478,43 +438,34 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    margin-top: 23px;
     position: relative;
 }
 
 .cards_hireAgencyForm1 {
-    background: linear-gradient(90deg, #FFECD2 0%, #FCB69F 100%);
-    opacity: 0.33;
+    background-image: linear-gradient(to right, #015F9A , #0376BA);
     border: 1px solid #A2A2A6;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    width: 287px;
-    height: 182px;
+    width: 25%;
+    height: 120%;
 }
 
 .cards_hireAgencyForm1 p {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 150%;
+    font-family: 'Segoe UI';
+    font-size: 12x;
     text-transform: capitalize;
-    color: #000;
     text-align: center;
+    padding: 1rem;
 }
 
 .points-to-remember_hireAgencyForm1>h4 {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
+    font-family: 'Segoe UI semibold';
     font-size: 22px;
-    line-height: 150%;
-    /* or 33px */
-    text-transform: capitalize;
-    color: #02044A;
+    color: #015F9A;
+    padding-left: 1rem;
 }
 
 .nextbtn {
@@ -929,8 +880,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    padding-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 58rem;
 }
 
 .nextbuttton>div :hover {
@@ -953,21 +905,16 @@
 }
 
 .nextbuttton div, .nextbutton div {
-    background: #EAF2FF;
-    border-radius: 4px;
+    border-radius: 25px;
     width: 114px;
-    height: 40px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font: normal 600 14px 'Open Sans', sans-serif;
-    line-height: 17px;
-    text-align: center;
-    letter-spacing: 0.4px;
-    text-transform: capitalize;
-    color: black;
+    font: normal 600 14px 'Segoe UI';
+    color: #ffffff;
+    background-color: #015F9A;
     cursor: pointer;
-    user-select: none;
 }
 
 .nextbuttton>div:hover, .nextbutton div:hover {
@@ -1016,4 +963,7 @@
     position: absolute;
     bottom: 0;
     left: 10px;
+}
+svg.MuiSvgIcon-root {
+    width: 16px;
 }
