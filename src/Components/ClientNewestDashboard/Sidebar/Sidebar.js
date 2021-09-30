@@ -21,6 +21,7 @@ import { useHistory } from 'react-router-dom';
 
 function Sidebar(props) {
     const role = localStorage.getItem('role');
+    console.log(role);
     const routerHistory = useHistory();
 
     const [isNotification, setIsnotification] = useState(false);
@@ -32,7 +33,7 @@ function Sidebar(props) {
 
     useEffect(() => {
         console.log(isNotification);
-    },[isNotification]);
+    }, [isNotification]);
 
     const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
@@ -66,14 +67,16 @@ function Sidebar(props) {
     }
 
     return (
-        <div className="container-sidebar">
+        <div style={{backgroundColor: role === 'Client' && 'white' }} className="container-sidebar">
             {/* <div className="sidebar-logo">
                 <img src={oneSourcingLogo} alt="one sroucing logo" />
             </div> */}
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     {/* <div className="selected-strip" /> */}
-                    <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
+                    <div>
+                        <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
+                    </div>
                     <p>Dashboard</p>
                 </div>
                 {role === "Client" &&
@@ -147,7 +150,7 @@ function Sidebar(props) {
                                 arr.map(() => {
                                     return (
                                         <div className="notificationPoint">
-                                           <div className="notificationPointIn"><ul><li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus et officia laboriosam repellendus, sit impedit.</p></li></ul> <i className="fa fa-times" aria-hidden="true" style={{paddingRight:"1rem",marginTop:"0.8rem"}}></i></div>
+                                            <div className="notificationPointIn"><ul><li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus et officia laboriosam repellendus, sit impedit.</p></li></ul> <i className="fa fa-times" aria-hidden="true" style={{ paddingRight: "1rem", marginTop: "0.8rem" }}></i></div>
                                         </div>
                                     )
                                 })

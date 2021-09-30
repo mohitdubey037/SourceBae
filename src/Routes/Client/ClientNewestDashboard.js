@@ -4,10 +4,10 @@ import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/User
 import UserProject from '../../Components/ClientNewestDashboard/LeftSide/UserProject';
 import RightSide from '../../Components/ClientNewestDashboard/RightSide/RightSide';
 
-import HireDeveloperIcon from "../../assets/images/Newestdashboard/LeftSide/HireDeveloper-icon.svg";
-import HireAgencyIcon from '../../assets/images/Newestdashboard/LeftSide/HireAgency-icon.svg';
-import ShortTermProjectIcon from '../../assets/images/Newestdashboard/LeftSide/ShortTermProject-icon.svg';
-import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/Investment-icon.svg';
+import HireDeveloperIcon from "../../assets/images/Newestdashboard/LeftSide/hire_developer.svg";
+import HireAgencyIcon from '../../assets/images/Newestdashboard/LeftSide/hire_agency.svg';
+import ShortTermProjectIcon from '../../assets/images/Newestdashboard/LeftSide/short_term.svg';
+import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/interest_to_investment.svg';
 import './ClientNewestDashboard.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
@@ -124,82 +124,63 @@ function ClientNewestDashboard(props) {
 
     return (
         <>
-            <div className="Navbar-clientDashboard">
-                {/* <Navbar /> */}
-                <div className="navbar">
-                    {/* <div className="navbar-heading">
-                        <h1>SourceBae</h1>
-                    </div> */}
-                    <div className="navbar-items">
-                        {/* <div className="notification-icon nav-left-item">
-                            <img src={notificationIcon} alt="notification" />
-                        </div> */}
-                        {/* <div onClick={logout} className="logout-icon nav-left-item">
-                    <div>
-                        <ExitToAppIcon />
-                    </div>
-                    <img src={notificationIcon} alt="notification" />
-                </div> */}
-                        <div className="username nav-left-item">
-                            <p>{clientData.firstName} {clientData.lastName}</p>
-                        </div>
-                        <div className="userprofile-circle nav-left-item">
-                            <img src={" "} />
-                        </div>
 
+            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+            <div className="container-body">
+                <div className="Navbar-clientDashboard">
+                    <div className="navbar">
+                        <div className="navbar-items">
+                            <div style={{ paddingRight: '10px' }} className="username nav-left-item">
+                                <p>{clientData.firstName} {clientData.lastName}</p>
+                            </div>
+                            <div className="userprofile-circle nav-left-item">
+                                <img src={" "} />
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div className="content-body">
+                    <div style={{ zIndex: visible && '-1' }} className="content-leftBody">
+                        <div className="user-operations">
+                            <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
+                            <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
+                            <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
+                            <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
+                        </div>
+                        <div className="graphic">
+                            {projects.length > 0 &&
+                                <div className="graphic-illustration-heading">
+                                    <h6>Project details</h6>
+                                </div>
+                            }
+                            <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">
+                                {projects.length > 4 &&
+                                    <p>View More Project</p>
+                                }
+                            </div>
+                        </div>
+                        <div className="user-project position">
+                            <div className="user-project-details">
+                                {
+                                    projects.length > 0 ? projects.slice(0, 4).map((p, index) => {
+                                        return (
+                                            <>
+                                                <UserProject
+                                                    {...p}
+                                                    index={index} />
+                                            </>
+                                        )
+                                    }) :
+                                        <div className="not_found clientNewestDashboard">
+                                            <img src={NotFound} alt="NotFound" />
+                                        </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <RightSide />
                 </div>
             </div>
-            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            {/* <div className="dashboard-container"> */}
-                <div className="container-body">
-                    <div className="content-body">
-                        <div style={{ zIndex: visible && '-1' }} className="content-leftBody">
-                            <div className="user-operations">
-                                <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
-                                <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
-                                <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
-                                <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
-                            </div>
-                            <div className="graphic">
-                                {projects.length > 0 &&
-                                    <div className="graphic-illustration-heading">
-                                        <h6>Project details</h6>
-                                    </div>
-                                }
-                                <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">
-                                    {projects.length > 4 &&
-                                        <p>View More Project</p>
-                                    }
-                                </div>
-                            </div>
-                            <div className="user-project position">
-                                <div className="user-project-details">
-                                    {
-                                        projects.length > 0 ? projects.slice(0, 4).map((p, index) => {
-                                            return (
-                                                <>
-                                                    <UserProject
-                                                        {...p}
-                                                        index={index} />
-                                                </>
-                                            )
-                                        }) :
-                                            <div className="not_found clientNewestDashboard">
-                                                <img src={NotFound} alt="NotFound" />
-                                                {/* <p>No projects available</p> */}
-                                            </div>
-                                    }
-                                </div>
-                                {/* <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">
-                                    <p>Show Detail</p>
-                                </div> */}
-                            </div>
-                        </div>
-                        <RightSide />
-                    </div>
-                </div>
-            {/* </div> */}
         </>
     )
 }
