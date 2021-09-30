@@ -15,10 +15,11 @@
   width: 30%;
   background-color: #fff;
   padding: 1rem;
-  border: 1px solid #3a3a3a;
+  /* border: 1px solid #3a3a3a; */
   border-radius: 15px;
   position: relative;
   margin: 1rem;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .cross-icon {
@@ -92,7 +93,7 @@
 .developerName h2 {
   font-family: 'Segoe UI Bold';
   font-size: 1.4rem;
-  color: #5C6DFF;
+  color: #45a4ea;
 }
 
 .developerName p {
@@ -186,6 +187,7 @@
   font-size: 0.8rem;
   outline: none;
   border: none;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .developerResume button i {

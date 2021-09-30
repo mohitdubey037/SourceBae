@@ -1,9 +1,11 @@
 .mainInformation {
   width: 100%;
   margin: auto;
-  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+  /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   padding: 1rem;
   margin-bottom: 1rem;
+  border-radius: 8px;
 }
 
 .mainInformation button {
@@ -35,8 +37,9 @@
   width: 100%;
   display: flex;
   margin-bottom: 2%;
-  border-radius: 23px;
+  border-radius: 5px;
   background: #EEF0FF;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .editableBtn button {
@@ -101,6 +104,8 @@
   align-items: center;
   border: 1px solid #ebebeb;
   margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 1px rgb(0 0 0 / 18%);
 }
 
 .informationInputForm div p {

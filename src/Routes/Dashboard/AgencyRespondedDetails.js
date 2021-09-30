@@ -218,9 +218,10 @@ function AgencyRespondedDetails(props) {
                         <h4>Project Details</h4>
                       </div>
                       <div className="project-details_child">
+                      <span className="leftLine"></span>
                         <div className="respondedDetails_afterCompletion_child1">
-                          <div style={{ width: '80%' }}>
-                            <div className="question">
+                          <div  style={{marginTop:"2rem" }}>
+                            <div className="question"style={{ width: '62%' }}>
                               <p>Client</p>
                             </div>
                             <div className="answer">
@@ -228,8 +229,8 @@ function AgencyRespondedDetails(props) {
                             </div>
                           </div>
 
-                          <div style={{ width: '80%' }}>
-                            <div className="question">
+                          <div >
+                            <div className="question" style={{ width: '62%' }}>
                               <p>Agency</p>
                             </div>
                             <div className="answer">
@@ -237,8 +238,8 @@ function AgencyRespondedDetails(props) {
                             </div>
                           </div>
 
-                          <div style={{ width: '80%' }}>
-                            <div className="question">
+                          <div>
+                            <div className="question"  style={{ width: '62%' }}>
                               <p>Cost</p>
                             </div>
                             <div className="answer">
@@ -273,10 +274,13 @@ function AgencyRespondedDetails(props) {
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="project_is_completed">
+                          <div className="project_is_completed">
                         <p>Project is completed from both side</p>
                       </div>
+                      </div>
+                      {/* <div className="project_is_completed">
+                        <p>Project is completed from both side</p>
+                      </div> */}
                     </div>
                     <div>
                       <img src={completedImage} alt="" />

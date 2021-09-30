@@ -419,6 +419,7 @@ function AgencyProfile(props) {
                         onChange={(event) => handleChange(event)}
                         displayEmpty
                         className={clsx(classes.root, classes.inputField)}
+                        style={{boxShadow: "1px 2px 3px rgb(0 0 0 / 18%)"}}
                       >
                         <MenuItem value="">
                           <span style={{ fontFamily: "Segoe UI", color: "#707070", fontSize: '14px' }}>

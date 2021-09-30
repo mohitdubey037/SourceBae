@@ -162,6 +162,7 @@ span.welcome-back_sourceBae {
   right: 8rem;
   z-index: 150;
   padding-bottom: 4.5rem;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .loginCards-wrapper{
@@ -187,9 +188,10 @@ span.welcome-back_sourceBae {
   align-items: center;
   position: relative;
   height: 43px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  /* box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
+  /* -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
+  /* -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
 }
 
 .login_switch>button {
@@ -319,14 +321,16 @@ span.welcome-back_sourceBae {
   border-radius: 40px;
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
   width: 135px;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .button_action_login .forgot-password_login {
   background-color: #80808014;
   border-radius: 20px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  /* box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
+  /* -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
+  /* -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
   width: 135px;
 }
 
@@ -366,6 +370,7 @@ span.welcome-back_sourceBae {
   padding: 0.7rem;
   font-family: 'Segoe UI';
   font-size: 13px;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .googleLogin p {

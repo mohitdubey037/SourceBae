@@ -1,9 +1,11 @@
 .mainRules {
     width: 100%;
     margin: auto;
-    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
     padding: 1rem;
     margin-bottom: 1rem;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    border-radius: 20px;
 }
 
 /* .innerRules {
@@ -116,6 +118,7 @@
     border-radius: 23px;
     background: #EEF0FF;
     margin-bottom: 1%;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .rulesMark img {
