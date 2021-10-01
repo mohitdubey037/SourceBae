@@ -1,7 +1,9 @@
 .content-rightBody_parent {
   background-color: white;
   border-radius: 0.5rem;
-  height: 95%;
+  height: 96%;
+  box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%);
+  margin-right: 1rem;
 }
 
 .content-rightBody {
@@ -34,8 +36,7 @@
 
 .navigation-name>p, .heading-text>p {
   font-family: 'Segoe UI Semibold';
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 0.8rem;
   text-align: center;
   text-transform: capitalize;
   color: #45a4ea;
@@ -53,20 +54,11 @@
   align-items: center;
 }
 
-/* .item-content {
-  width: 100%;
-} */
-
 .itemContent-heading {
   display: flex;
   justify-content: space-between;
   width: 88%;
 }
-
-/* .heading-text > p {
-  border-bottom: 3px solid #02044a;
-  padding-right: 60px;
-} */
 
 .itemContent-videoCard {
   width: 90%;
@@ -87,7 +79,6 @@
   /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
-
 .itemContent-cta {
   display: flex;
   flex-direction: column;
@@ -99,7 +90,6 @@
   align-items: center;
   padding: 15px;
   min-width: 250px;
-  min-height: 100px;
   background: #ffffff;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   /* box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%); */
@@ -109,25 +99,16 @@
   justify-content: space-around;
 }
 
-/* .itemContent-cta>.cta-item {
-  font-family: 'Segoe UI Semibold';
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #3a3a3a;
-} */
-
-/* .cta-item > .view-details-btn {
-  border: none;
-} */
+.itemContent-cta > .cta-item p {
+  font-size: 0.8rem;
+}
 
 .cta-item>.view-details-btn>button {
   padding: 0.3rem 1.1rem;
   background: linear-gradient( 262deg, #45a4ea 0% , #5C6DFF 100%);
   border-radius: 22px;
   border: inherit;
-  margin-top: 5%;
+  margin-top: 8%;
   font-family: 'Segoe UI';
   color: #ffffff;
   font-size: 12px;

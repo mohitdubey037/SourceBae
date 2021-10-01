@@ -1,47 +1,22 @@
-.position {
-  position: relative;
-}
-
 .container-body>.content-body {
   display: flex;
-  height: 100%;
   width: 100%;
   justify-content: space-between;
+  margin-top: 4rem;
 }
-
-/* .container-body.margin-0 {
-  margin-top: 1.5rem !important;
-  padding-top: 1rem;
-
-.user-operations {
-  height: 20vh;
-}
-
-/* .dashboard-container {
-  width: 88%;
-  height: 85vh;
-  display: flex;
-  margin-left: 12%;
-  margin-top: 30px;
-} */
 
 .container-body {
-  width: 87.5%;
   min-height: 91vh;
-  /* overflow-y: auto; */
   display: flex;
   margin-left: 11%;
-  margin-top: 13px;
+  background-image: linear-gradient(to right, #015F9A , #0376BA);
+  width: 89%;
 }
 
 .user-project .user-project-details {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   height: 60vh;
-  width: 90%;
-  margin-left: 4.5%;
-  margin-top: 0px;
 }
 
 .user-project-details>.graphic {
@@ -53,13 +28,10 @@
 }
 
 .graphic-illustration-heading h6 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Segoe UI Bold';
   font-size: 15px;
-  line-height: 32px;
-  letter-spacing: 0.4px;
   text-transform: capitalize;
-  color: #3a3a3a;
+  color: #FFFFFF;
 }
 
 .not_found.clientNewestDashboard {
@@ -73,17 +45,6 @@
   display: flex;
 }
 
-/* .not_found.clientNewestDashboard p {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 17.1875px;
-  line-height: 39px;
-  text-transform: capitalize;
-  color: #000000;
-  margin-top: 1rem;
-} */
-
 .not_found.clientNewestDashboard img {
   width: 23rem;
 }
@@ -93,12 +54,11 @@
 }
 
 .Navbar-clientDashboard .navbar {
-  margin-left: 14%;
-  position: relative;
+  position: fixed;
   display: flex;
-  width: 84.5%;
+  width: 89%;
   justify-content: flex-end;
-  /* margin-top: 1rem; */
+  padding-right: 1rem;
 }
 
 .dashboard-container .container-sidebar {
@@ -116,11 +76,11 @@
   right: 63px;
   padding: 4px 9px;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Segoe UI Semibold';
+  font-weight: 600;
   font-size: 12px;
   padding-right: 13px;
-  color: rgb(62, 62, 252);
+  color: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,9 +104,8 @@
   top: 0;
   z-index: 999;
   background: #EEF0FF;
-  /* background-image: linear-gradient(to right, #45A4E4 , #5C6DFF); */
   right: -50%;
-  box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
   transition: 0.3s ease-in-out;
   display: flex;
   justify-content: center;
@@ -178,8 +137,9 @@
 .notificationsCards {
   width: 100%;
 }
-.closeNotification i{
-  color:#F5F5F5;
+
+.closeNotification i {
+  color: #F5F5F5;
   font-size: 1rem;
   cursor: pointer;
   transition: 0.4s ease-in-out;
@@ -195,7 +155,6 @@
   margin-top: 5%;
   flex-direction: row-reverse;
   margin-bottom: 8%;
-  
 }
 
 .allNotificationIcon {
@@ -208,44 +167,36 @@
   width: 100%;
   object-fit: contain;
 }
-.allNotificationText{
+
+.allNotificationText {
   color: #45A4E4;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:white;
+  background-color: white;
   border-radius: 20px;
   margin-right: 5%;
-  width:90%;
+  width: 90%;
   height: 2.2rem;
   /* box-shadow: 0px 0px 12px #f8f8f8; */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
-.allNotificationText p{
+
+.allNotificationText p {
   font-size: 0.8rem;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   margin-bottom: 3%;
   transform: translateY(5px);
 }
-/* .allNotificationText p::after{
-  content: '';
-  width: 100px;
-  height: 2px;
-  background-color: #000;
-  display: block;
-  margin: auto;
-  margin-top: 4%;
-  
-} */
-.notificationsCard{
+
+.notificationsCard {
   height: 75vh;
-  /* background-color: #f9f9f9; */
   overflow: auto;
   padding: .8rem;
 }
 
-.notificationPoint{
+.notificationPoint {
   background-color: white;
   margin-top: 2%;
   border-radius: 0.8rem;
@@ -256,30 +207,19 @@
   /* box-shadow: 0px 0px 2px #707070; */
 }
 
-.notificationPointIn{
+.notificationPointIn {
   display: flex;
-  /* padding: .4rem 2rem */
 }
-.notificationPoint p{
+
+.notificationPoint p {
   display: flex;
-  /* align-items: center; */
   font-family: 'Open Sans', sans-serif;
   font-size: 0.72rem;
   padding: 0.5rem;
-  /* padding-bottom: 0.6rem; */
   transform: translateY(-0.35rem);
 }
 
-/* .notificationPoint p::before{
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  background-color: #999;
-  margin-right: 10px;
-} */
-.notificationsCard::-webkit-scrollbar{
+.notificationsCard::-webkit-scrollbar {
   width: 6px;
 }
 
@@ -288,8 +228,9 @@
 }
 
 .notificationsCard::-webkit-scrollbar-thumb {
-background-color: #3498DB; 
-border-radius: 10px;;
+  background-color: #3498DB;
+  border-radius: 10px;
+  ;
 }
 
 li::marker {
@@ -299,12 +240,12 @@ li::marker {
 }
 
 .ul {
-      margin: 0;
-      padding: 0;
-      margin-bottom: 0rem;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0rem;
 }
 
-.notificationPointIn i{
+.notificationPointIn i {
   color: #45A4E4;
   font-size: 1rem;
   cursor: pointer;

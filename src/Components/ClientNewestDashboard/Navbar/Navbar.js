@@ -40,20 +40,8 @@ function Navbar(props) {
 
     return (
         <div className="navbar">
-            {/* <div className="navbar-heading">
-                <h1>SourceBae</h1>
-            </div> */}
             <div className="navbar-items">
-                {/* <div className="notification-icon nav-left-item">
-                    <img src={notificationIcon} alt="notification" />
-                </div> */}
-                {/* <div onClick={logout} className="logout-icon nav-left-item">
-                    <div>
-                        <ExitToAppIcon />
-                    </div>
-                    <img src={notificationIcon} alt="notification" />
-                </div> */}
-                <div style={{marginRight: '10px'}} className="username nav-left-item">
+                <div style={{paddingRight: '10px'}} className="username nav-left-item">
                     <p>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >

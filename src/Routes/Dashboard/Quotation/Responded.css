@@ -49,13 +49,6 @@
   border-radius: 999px;
 }
 
-/* .bgCircle {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  right: 0;
-} */
-
 .respondCardHeader {
   display: flex;
   justify-content: space-between;
@@ -75,16 +68,9 @@
   align-items: center;
 }
 
-/* .dateCreated div {
-  color: #02044a;
-  border-radius: 999px;
-  margin-left: 8px;
-} */
-
 .dateCreated div p {
   font-family: 'Segoe UI';
   font-size: 12px;
-  /* font-weight: bold; */
   color: #5C6DFF;
 }
 
@@ -93,15 +79,12 @@
 }
 
 .respondCardDescription p {
-  /* font-family: 'Open Sans', sans-serif; */
   font-family: 'Segoe UI';
   font-size: 0.8rem;
   color: #707070;
 }
 
 .respondCardPoints {
-  /* margin: 5% 0; */
-  /* height: 30px; */
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -113,12 +96,6 @@
   margin-top: 0;
   padding-left: 1.5rem;
 }
-
-/* .respondCardPoints ul {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-} */
 
 .respondCardPoints ul li {
   font-family: 'Segoe UI';
@@ -134,7 +111,6 @@
   align-items: center;
   border-bottom: 1px dashed #ddd;
   font-size: 13px;
-  /* margin-bottom: 2%; */
 }
 
 .respondCardTable div p {
@@ -144,20 +120,14 @@
 
 .respondCardTable div p:nth-child(1) {
   color: #3a3a3a;
-  /* font-weight: 600; */
 }
 
-/* .respondCardTable div p:nth-child(2) {
-  color: #68e1fd;
-  font-weight: 600;
-} */
-
 .respondedCardButton {
-  /* display: flex; */
-  /* justify-content: flex-end; */
-  position: absolute;
-  right: 23px;
-  bottom: 10px;
+  /* position: absolute; */
+  position: relative;
+  /* right: 23px;
+  bottom: 10px; */
+  top: 1rem;
 }
 
 .showDetail_respondedCardButton, .showDetail_receivedCardButton, .showDetail_projectMatched {
@@ -168,7 +138,8 @@
   border-radius: 20px;
   font-family: 'Segoe UI';
   box-shadow: 0 1px 2px 1px rgb(0 0 0 / 20%);
-  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
+  width: max-content;
+  margin-left: auto;
 }
 
 .showDetail_respondedCardButton:hover, .showDetail_receivedCardButton:hover, .showDetail_projectMatched:hover {

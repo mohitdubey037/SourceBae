@@ -3,14 +3,8 @@
 }
 
 .navbar {
-  /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%); */
-  /* border-radius: 5px;
-  background-color: white;
-  justify-content: flex-end; */
-  margin-left: 14%;
   position: relative;
   display: flex;
-  width: 84.5%;
   justify-content: flex-end;
 }
 
@@ -21,12 +15,6 @@
 .navbar-heading {
   padding-left: 15px;
 }
-
-/* .container-body > .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 30px 10px 30px;
-} */
 
 .logout-icon {
   margin-right: 20px;
@@ -40,23 +28,10 @@
   font-size: 1.7rem !important;
 }
 
-/* .navbar > .navbar-heading > h1 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 29px;
-  letter-spacing: 0.3px;
-  color: #3a3a3a;
-} */
-
 .navbar>.navbar-items {
   display: flex;
   align-items: center;
 }
-
-/* .navbar > .navbar-items > .nav-left-item {
-  margin-right: 20px;
-} */
 
 .navbar>.navbar-items>.notification-icon>img {
   height: 25px;
@@ -66,10 +41,9 @@
 .navbar>.navbar-items>.nav-left-item>p {
   font-family: 'Segoe UI Semibold';
   font-size: 14px;
-  margin: 0;
   text-align: right;
   letter-spacing: 0.2px;
-  color: #252733;
+  color: white;
 }
 
 .inputForm h1, .inputForm h2, .inputForm h3, .inputForm h4, .inputForm h5 {
@@ -81,11 +55,9 @@
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  /* background: url(../../../assets/images/Newestdashboard/SideBar/me.jpg); */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  /* border: 1px dashed; */
 }
 
 .navbar-items>.userprofile-circle>img {
