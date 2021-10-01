@@ -1,5 +1,5 @@
 .header-currentStatus img, .show-project-detail img, .detailsCard-header img {
-  width: 16px;
+  width: 0.6rem;
   margin-left: 4px;
 }
 
@@ -8,14 +8,14 @@
 }
 
 .project-details-card {
-  min-width: 33%;
+  min-width: 28%;
   justify-self: flex-start;
-  background: linear-gradient(90deg, #f5faff 0%, #ffffff 100%);
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.18);
+  background: linear-gradient( 90deg, #f5faff 0%, #ffffff 100%);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   padding: 10px 20px 5px 20px;
-  margin: 1rem 4.7rem;
+  margin: 1rem 6rem;
   position: relative;
-  max-height: 170px;
+  max-height: 155px;
   border-radius: 1rem;
 }
 
@@ -23,8 +23,11 @@
   cursor: pointer;
 }
 
-.header-heading>h6,
-.project-details-card>.detailsCard-date>h6 {
+.detailsCard-date {
+  margin-top: 0.3rem;
+}
+
+.header-heading>h6, .project-details-card>.detailsCard-date>h6 {
   text-align: center;
   color: #707070;
   font-family: 'Segoe UI';
@@ -35,7 +38,7 @@
 }
 
 .project-details-card>.detailsCard-date>h6 {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 
 .tooltip_class {
@@ -53,7 +56,13 @@
 .projectDetail {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  margin: auto;
+  margin-top: 0.7rem;
+  width: 98%;
+}
+
+.centerImage > div {
+  margin-top: 0.2rem;
 }
 
 .date-color {
@@ -66,19 +75,19 @@
   margin-top: 1rem;
 }
 
-.centerImage>div>p {
+.centerImage>div>p,
+.currentStatus-text p, .projectDetail-text p {
   font-family: 'Segoe UI';
-  font-size: 0.8rem;
   text-align: center;
   color: #707070;
 }
 
+.centerImage>div>p {
+  font-size: 0.8rem;
+}
+
 .currentStatus-text p, .projectDetail-text p {
-  align-self: center;
-  color: #407bff;
-  font-family: 'Segoe UI';
-  font-size: 9px;
-  line-height: 10px;
+  font-size: 0.7rem;
 }
 
 .header-currentStatus {
@@ -142,6 +151,6 @@
   right: 16px;
 }
 
-.conditional_image_change {
+/* .conditional_image_change {
   filter: invert(59%) sepia(69%) saturate(5488%) hue-rotate(93deg) brightness(76%) contrast(117%);
-}
+} */

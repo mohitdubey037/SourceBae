@@ -1,9 +1,9 @@
 .content-rightBody_parent {
   background-color: white;
   border-radius: 0.5rem;
-  height: 96%;
   box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%);
   margin-right: 1rem;
+  height: 97%;
 }
 
 .content-rightBody {
@@ -32,7 +32,7 @@
   font-size: 0.8rem;
   text-align: center;
   text-transform: capitalize;
-  color: #45a4ea;
+  color: #015F9A;
   cursor: pointer;
   padding: 5px 0;
 }
@@ -51,6 +51,13 @@
   display: flex;
   justify-content: space-between;
   width: 88%;
+  margin: 0.5rem 0rem;
+}
+
+.itemContent-heading .heading-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .itemContent-videoCard {

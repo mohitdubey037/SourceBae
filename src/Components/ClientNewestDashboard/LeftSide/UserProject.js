@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import ProjectStatusIcon from "../../../assets/images/Newestdashboard/LeftSide/projectStatus-icon.svg";
 import infoIcon from "../../../assets/images/Newestdashboard/LeftSide/info-icon.svg";
 import showProjectDetailsIcon from "../../../assets/images/Newestdashboard/LeftSide/showProjectDetails-icon.svg";
-import CenterImage from '../../../assets/images/Newestdashboard/Center/center_image.png';
+import CenterImage from '../../../assets/images/Newestdashboard/Dashboard/Center_Image.svg';
 import Moment from 'react-moment'
 import { useHistory } from 'react-router-dom';
 import Tooltip from "react-power-tooltip";
+import QuotationAccept from '../../../assets/images/Newestdashboard/Dashboard/quotation_accept.svg';
+import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/show_project.svg';
+import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
 
 function UserProject(props, index) {
     console.log(props);
@@ -41,7 +44,11 @@ function UserProject(props, index) {
             </div>
 
             <div className="centerImage">
-                <img className={`${(props?.projectProposals[0]?.isQuotationAcceptedByClient && props?.projectProposals[0]?.isQuotationAcceptedByAgency) && "conditional_image_change"}`} src={CenterImage} alt='centerIcon' />
+                {(props?.projectProposals[0]?.isQuotationAcceptedByClient && props?.projectProposals[0]?.isQuotationAcceptedByAgency) ?
+                    <img src={MessageReceived} alt="centerIcon" />
+                    :
+                    <img src={CenterImage} alt='centerIcon' />
+                }
                 <div>
                     {props?.projectProposals[0]?.isCommentSectionActive ?
                         <div className="message_received">
@@ -59,14 +66,14 @@ function UserProject(props, index) {
                     <div className="currentStatus-text currentStatus-item">
                         <p>{props?.projectCurrentStatus}</p>
                     </div>
-                    <img src={ProjectStatusIcon} alt="project status" />
+                    <img src={QuotationAccept} alt="project status" />
                 </div>
 
                 <div onClick={() => showDetail()} className="show-project-detail">
                     <div className="projectDetail-text projectDetail-item">
                         <p>Show Project Detail</p>
                     </div>
-                    <img src={showProjectDetailsIcon} alt="project status" />
+                    <img src={ShowProject} alt="project status" />
                 </div>
             </div>
         </div>
