@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/UserOperations';
 import UserProject from '../../Components/ClientNewestDashboard/LeftSide/UserProject';
 import RightSide from '../../Components/ClientNewestDashboard/RightSide/RightSide';
@@ -13,13 +12,8 @@ import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
 import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound_new.svg';
 
-import Input from "@material-ui/core/Input";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import instance from '../../Constants/axiosConstants';
-import * as helper from '../../shared/helper';
 import * as actions from '../../Redux/action/addProject';
 import { connect } from 'react-redux';
 
@@ -127,15 +121,13 @@ function ClientNewestDashboard(props) {
 
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div className="container-body">
-                <div className="Navbar-clientDashboard">
-                    <div className="navbar">
-                        <div className="navbar-items">
-                            <div style={{ paddingRight: '10px' }} className="username nav-left-item">
-                                <p>{clientData.firstName} {clientData.lastName}</p>
-                            </div>
-                            <div className="userprofile-circle nav-left-item">
-                                <img src={" "} />
-                            </div>
+                <div className="navbar">
+                    <div className="navbar-items">
+                        <div style={{ paddingRight: '10px' }} className="username">
+                            <p>{clientData.firstName} {clientData.lastName}</p>
+                        </div>
+                        <div className="userprofile-circle nav-left-item">
+                            <img src={" "} />
                         </div>
                     </div>
                 </div>

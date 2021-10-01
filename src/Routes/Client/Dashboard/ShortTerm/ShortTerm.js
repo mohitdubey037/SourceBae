@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import ClientNavbar from "../../ClientNavbar";
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import "./ShortTerm.css";
 
@@ -216,26 +215,13 @@ function ShortTerm(props) {
   }, [apiData]);
   return (
     <>
-      <div className="Navbar-parent">
-        <Navbar />
-      </div>
-      <div className="back-parent marginLeft">
-        <Back name="Short Term" />
-      </div>
+      <Navbar />
       <div className="mainShortTerm">
-        {/* <div
-          className="backArrow_shortTerm"
-          onClick={() => {
-            props.history.goBack();
-          }}
-        >
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </div> */}
+        <Back name="Short Term" />
         <div className="innerShortTerm">
           <div className="shortTermForm">
             <div className="shortTermHeading">
               <div className="shortTerm_OrangeColor">
-
               </div>
               <h1>Short Term Projects</h1>
               <p>
@@ -319,7 +305,7 @@ function ShortTerm(props) {
             <div className="uploadBlock">
               <div className="fileUploadButton">
                 <FilePicker
-                  extensions={['jpg', 'pdf','png', 'jpeg', 'xlsx']}
+                  extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
                   onChange={(fileObj) => fileHandler(fileObj)}
                   onError={errMsg => toast.error(errMsg)}
                 >

@@ -16,12 +16,6 @@ function AllProjectCard(props) {
 
     return (
         <div className="user-project_agencyNewestAllProject">
-            {/* {props?.projectProposals[0].isQuat} */}
-            {/* {props?.projectProposals[0]?.isQuotationRejectedByClient || props?.projectProposals[0]?.isQuotationRejectedByClient && */}
-                {/* < div className="strip red-strip"></div> */}
-            
-            {/* <div className="strip green-strip"></div>
-            <div className="strip yellow-strip"></div> */}
             <div className="user-project_heading_agencyNewestAllProject">
                 <div className="user-project_child_agencyNewestAllProject">
                     <h5>{props?.projectName}</h5>

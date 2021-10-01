@@ -3,9 +3,12 @@
 }
 
 .navbar {
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+  padding-right: 1rem;
+  top: 1rem;
 }
 
 .navbar h1 {
@@ -38,7 +41,7 @@
   width: 25px;
 }
 
-.navbar>.navbar-items>.nav-left-item>p {
+.navbar>.navbar-items>.username>p {
   font-family: 'Segoe UI Semibold';
   font-size: 14px;
   text-align: right;
