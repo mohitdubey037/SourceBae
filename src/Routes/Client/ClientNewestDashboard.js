@@ -121,7 +121,7 @@ function ClientNewestDashboard(props) {
 
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div className="container-body">
-                <div className="navbar">
+                <div style={{top: '1rem'}} className="navbar">
                     <div className="navbar-items">
                         <div style={{ paddingRight: '10px' }} className="username">
                             <p>{clientData.firstName} {clientData.lastName}</p>

@@ -15,6 +15,7 @@ import instance from "../../../../Constants/axiosConstants";
 import { FilePicker } from "react-file-picker";
 import { toast } from "react-toastify";
 import Back from "../../../../Components/Back/Back";
+import FileUploadImage from '../../../../assets/images/Newestdashboard/Short_Term/short_term.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -221,9 +222,7 @@ function ShortTerm(props) {
         <div className="innerShortTerm">
           <div className="shortTermForm">
             <div className="shortTermHeading">
-              <div className="shortTerm_OrangeColor">
-              </div>
-              <h1>Short Term Projects</h1>
+              <h2>Short Term Projects</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
                 modi pariatur animi, beatae ab tempore.
@@ -309,9 +308,7 @@ function ShortTerm(props) {
                   onChange={(fileObj) => fileHandler(fileObj)}
                   onError={errMsg => toast.error(errMsg)}
                 >
-                  <div>
-                    Upload
-                  </div>
+                  <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image" />
                 </FilePicker>
               </div>
               <div className="uploadInfo">

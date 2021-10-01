@@ -157,16 +157,10 @@ function AgencyNewestDashboard(props) {
 
     return (
         <div className="Navbar-clientDashboard">
-
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            {/* <div className="dashboard-container"> */}
-
-            {/* <img className="downImage1_agencyDashboard" src={downImage1} alt="hi" /> */}
-            {/* <img className="downImage2_agencyDashboard" src={downImage2} alt="hi" /> */}
-
+            
             <div className="container-body">
-
-                <div className="navbar">
+                <div style={{ top: '1rem' }} className="navbar">
                     <div className="navbar-items">
                         <div style={{ marginRight: '10px' }} className="username nav-left-item">
                             <p>{agencyProfileData?.agencyName}</p>
@@ -254,21 +248,17 @@ function AgencyNewestDashboard(props) {
                                             )
                                         })
                                     ) :
-                                        // <p>No Projects</p>
                                         <div className={`not_found agencyNewestDashboard ${(verified || steps === -1) && 'conditionalHeight'}`}>
                                             <img src={NotFound} alt="NotFound" />
-                                            {/* <p>No Project Available</p> */}
                                         </div>
                                     }
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <RightSide />
                 </div>
             </div>
-            {/* </div> */}
         </div>
     )
 }
