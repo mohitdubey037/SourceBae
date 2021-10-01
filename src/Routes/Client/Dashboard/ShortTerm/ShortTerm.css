@@ -53,6 +53,7 @@
   align-items: center;
   flex-direction: column;
   position: relative;
+  color: #707070;
 }
 
 .shortTermHeading h1, .shortTermHeading p {
@@ -89,7 +90,7 @@
 }
 
 .shortTermProjectName input, .shortTermOptionSelect input {
-  color: black;
+  color: #707070;
   width: 100%;
   border-radius: 0.5rem;
   font-family: 'Segoe UI';
@@ -149,8 +150,7 @@
 }
 
 .shortTermProjectName {
-  padding-left: 3rem;
-  width: 55%;
+  width: 45%;
 }
 
 .shortTermProjectName div input::placeholder {
@@ -162,10 +162,9 @@
 }
 
 .shortTermProjectDesc {
-  margin-top: 3%;
   font-family: 'Segoe UI';
   position: relative;
-  width: 55%;
+  width: 45%;
   padding-left: 3rem;
 }
 
@@ -185,6 +184,7 @@
   border: 1px solid #707070;
   font-family: 'Segoe UI';
   width: 100%;
+  border-radius: 0.5rem;
 }
 
 .shortTermProjectDesc textarea:focus {
@@ -195,7 +195,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 94%;
+  width: 99%;
 }
 
 .wordsLimit p {
@@ -205,7 +205,7 @@
 }
 
 .shortTermFileUpload {
-  margin-top: 4%;
+  margin-top: 3%;
 }
 
 .fileUpload_shortTerm {
@@ -225,6 +225,20 @@
   margin-left: 0 !important;
 }
 
+.short_howToPay {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 3rem;
+  margin-top: 1rem;
+}
+
+.projectDesc_estimatedBudget {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+}
+
 .custom-file-upload {
   border: 1px solid #ccc;
   display: inline-block;
@@ -233,7 +247,7 @@
 }
 
 .uploadInfo {
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
 }
 
 .uploadInfo p {
@@ -246,7 +260,7 @@
 .shortTermOptionSelect {
   margin-top: 2%;
   padding-left: 3rem;
-  width: 55%;
+  width: 45%;
 }
 
 .shortTermOptionSelect>div:nth-child(3) {
@@ -265,10 +279,9 @@
 }
 
 .howToPay {
-  margin-top: 3%;
   display: flex;
   flex-direction: column;
-  padding-left: 3rem;
+  width: 45%;
 }
 
 .innerHowToPay {
@@ -277,9 +290,10 @@
 }
 
 .fixedPrice {
-  width: 30%;
+  width: 50%;
   display: flex;
   cursor: pointer;
+  justify-content: space-evenly;
 }
 
 .fixedPrice i {
@@ -290,16 +304,8 @@
   color: #2fab73;
 }
 
-.fixedImage {
-  width: 15%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .fixedImage img {
-  width: 60%;
+  width: 2rem;
 }
 
 .fixedContent {
@@ -311,47 +317,45 @@
 
 .fixedContent h6, .fixedContent p {
   font-family: 'Segoe UI';
-  font-size: 0.8rem;
   text-transform: capitalize;
   color: #707070;
 }
 
+.fixedContent h6 {
+  font-size: 0.9rem;
+}
+
 .fixedContent p {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 .estimatedBudget {
-  margin-top: 2%;
-  width: 80%;
-  padding-left: 3rem;
+  width: 45%;
 }
 
 .estimatedBudgetText~div {
-  margin-left: 30px;
-  width: 68%;
+  width: 94%;
 }
 
 .post-project {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1rem;
 }
 
-.post-project div {
-  margin-top: 40px;
-  background: #eaf2ff;
-  border-radius: 8px;
-  width: 124px;
-  height: 46px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font: normal 600 14px 'Open Sans', sans-serif;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #3a3a3a;
+.post-project {
+  border-radius: 1.5rem;
+  font-family: 'Segoe UI';
+  font-size: 0.8rem;
+  color: #707070;
   cursor: pointer;
-  color: black;
+}
+.post-project p {
+  background-color: #015F9A;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  color: white;
 }
 
 .post-project div:hover {

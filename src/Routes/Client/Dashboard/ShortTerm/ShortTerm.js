@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import "./ShortTerm.css";
 
-import fixed from "../../../../assets/images/ClientDashboard/shortTerm/fixed.png";
-import hour from "../../../../assets/images/ClientDashboard/shortTerm/hour.png";
+import fixed from "../../../../assets/images/Newestdashboard/Short_Term/payment.svg";
+import hour from "../../../../assets/images/Newestdashboard/Short_Term/hourglass.svg";
 
 //material-ui
 import Radio from "@material-ui/core/Radio";
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "&:hover": {
       backgroundColor: "transparent",
-    },
+    }
   },
   formControl: {
     margin: theme.spacing(1),
@@ -39,6 +39,9 @@ const BlueRadio = withStyles({
     "&$checked": {
       color: "#26AFFF",
     },
+    "& .MuiRadio-root": {
+      padding: '0'
+    }
   },
   checked: {},
 })((props) => <Radio color="default" {...props} />);
@@ -257,46 +260,141 @@ function ShortTerm(props) {
             })}
           </div>
 
-          <div className="shortTermProjectName">
-            <ul>
-              <li>
-                Choose a name for your project
-              </li>
-            </ul>
-            <div>
-              <input
-                type="text"
-                placeholder="Give a name to identity requirement"
-                name="projectName"
-                value={apiData.projectName}
-                onChange={(event) => handleChange(event)}
-              />
+          <div class="short_howToPay">
+            <div className="shortTermProjectName">
+              <ul>
+                <li>
+                  Choose a name for your project
+                </li>
+              </ul>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Give a name to identity requirement"
+                  name="projectName"
+                  value={apiData.projectName}
+                  onChange={(event) => handleChange(event)}
+                />
+              </div>
+            </div>
+
+            <div className="howToPay">
+              <ul>
+                <li>
+                  How do you want to pay?
+                </li>
+              </ul>
+              <div className="innerHowToPay">
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    className={classes.root}
+                    aria-label="howToPay"
+                    name="projectPaymentModel"
+                    value={apiData.projectPaymentModel}
+                    onChange={(event) => handleChange(event)}
+                  >
+                    <div className="fixedPrice" name="projectPaymentModel">
+                      <FormControlLabel
+                        color="primary"
+                        value="Fixed Price"
+                        control={<BlueRadio className={classes.root} />}
+                      />
+                      <div className="fixedImage">
+                        <img src={fixed} alt="" />
+                      </div>
+                      <div className="fixedContent">
+                        <h6>Pay fixed price</h6>
+                        <p>
+                          Agree on a price and release payemnt when the job is done.
+                          Best for one-off tasks.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="fixedPrice" name="projectPaymentModel">
+                      <FormControlLabel
+                        value="By Hour"
+                        control={<BlueRadio className={classes.root} />}
+                      />
+                      <div className="fixedImage">
+                        <img src={hour} alt="hour" />
+                      </div>
+                      <div className="fixedContent">
+                        <h6>Pay by the hour</h6>
+                        <p>
+                          Hire based on an hourly rate and pay for hours billed. Best
+                          for ongoing work
+                        </p>
+                      </div>
+                    </div>
+                  </RadioGroup>
+                </FormControl>
+              </div>
             </div>
           </div>
 
-          <div className="shortTermProjectDesc">
-            <ul>
-              <li>
-                Tell us more about your project
-              </li>
-            </ul>
-            <div className="startABit_shortTermProjectDesc">
-              Start with a bit about yourself or your business, and include an
-              overview what you need done.
+          <div className="projectDesc_estimatedBudget">
+            <div className="shortTermProjectDesc">
+              <ul>
+                <li>
+                  Tell us more about your project
+                </li>
+              </ul>
+              <div className="startABit_shortTermProjectDesc">
+                Start with a bit about yourself or your business, and include an
+                overview what you need done.
+              </div>
+              <div style={{ marginTop: '0.5rem' }}>
+                <textarea
+                  cols="30"
+                  rows="6"
+                  type="text"
+                  name="projectDescription"
+                  value={apiData.projectDescription}
+                  onChange={(event) => handleChange(event)}
+                />
+              </div>
+              <div className="wordsLimit">
+                <p>Minimum 100 characters.</p>
+                <p>{words}/100</p>
+              </div>
             </div>
-            <div>
-              <textarea
-                cols="30"
-                rows="6"
-                type="text"
-                name="projectDescription"
-                value={apiData.projectDescription}
-                onChange={(event) => handleChange(event)}
-              />
-            </div>
-            <div className="wordsLimit">
-              <p>Minimum 100 characters.</p>
-              <p>{words}/100</p>
+
+            <div className="estimatedBudget">
+              <div className="estimatedBudgetText">
+                <ul>
+                  <li>
+                    What is your estimated Budget?
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="projectProposalCost"
+                    name="projectProposalCost"
+                    value={apiData.projectProposalCost}
+                    onChange={(event) => handleChange(event)}
+                  >
+                    <FormControlLabel
+                      color="primary"
+                      value="5000"
+                      control={<BlueRadio className={classes.root} />}
+                      label="$5000-$10000"
+                    />
+                    <FormControlLabel
+                      value="10000"
+                      control={<BlueRadio />}
+                      label="$10000-$150000"
+                    />
+                    <FormControlLabel
+                      value="15000"
+                      control={<BlueRadio />}
+                      label="Max $15000"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </div>
             </div>
           </div>
 
@@ -337,114 +435,12 @@ function ShortTerm(props) {
                 name="projectRequirements"
                 value={apiData.projectRequirements}
                 onChange={(event) => handleChange(event)}
-              // style={{ width: "100%", padding:"1rem" }}
               />
             </div>
           </div>
 
-          <div className="howToPay">
-            <ul>
-              <li>
-                How do you want to pay?
-              </li>
-            </ul>
-            <div className="innerHowToPay">
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="howToPay"
-                  name="projectPaymentModel"
-                  value={apiData.projectPaymentModel}
-                  onChange={(event) => handleChange(event)}
-
-                // onChange={(event) => handlePaymentModel(true)}
-                >
-
-                  <div className="fixedPrice" name="projectPaymentModel">
-                    <FormControlLabel
-                      color="primary"
-                      value="Fixed Price"
-                      control={<BlueRadio className={classes.root} />}
-                    />
-                    {/* {apiData.projectPaymentModel === "Fixed Price" ? (
-                      <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    ) : null} */}
-                    <div className="fixedImage">
-                      <img src={fixed} alt="" />
-                    </div>
-                    <div className="fixedContent">
-                      <h6>Pay fixed price</h6>
-                      <p>
-                        Agree on a price and release payemnt when the job is done.
-                        Best for one-off tasks.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="fixedPrice" name="projectPaymentModel">
-                    <FormControlLabel
-                      value="By Hour"
-                      control={<BlueRadio className={classes.root} />}
-                    />
-                    {/* {apiData.projectPaymentModel === "By Hour" ? (
-                      <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    ) : null} */}
-                    <div className="fixedImage">
-                      <img src={hour} alt="hour" />
-                    </div>
-                    <div className="fixedContent">
-                      <h6>Pay by the hour</h6>
-                      <p>
-                        Hire based on an hourly rate and pay for hours billed. Best
-                        for ongoing work
-                      </p>
-                    </div>
-                  </div>
-                </RadioGroup>
-              </FormControl>
-            </div>
-          </div>
-
-          <div className="estimatedBudget">
-            <div className="estimatedBudgetText">
-              <ul>
-                <li>
-                  What is your estimated Budget?
-                </li>
-              </ul>
-            </div>
-            <div>
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="projectProposalCost"
-                  name="projectProposalCost"
-                  value={apiData.projectProposalCost}
-                  onChange={(event) => handleChange(event)}
-                >
-                  <FormControlLabel
-                    color="primary"
-                    value="5000"
-                    control={<BlueRadio className={classes.root} />}
-                    label="$5000-$10000"
-                  />
-                  <FormControlLabel
-                    value="10000"
-                    control={<BlueRadio />}
-                    label="$10000-$150000"
-                  />
-                  <FormControlLabel
-                    value="15000"
-                    control={<BlueRadio />}
-                    label="Max $15000"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </div>
-          </div>
-
-          <div className="post-project">
-            <div onClick={() => handleButton()}>
-              Post Project
-            </div>
+          <div className="post-project" onClick={() => handleButton()}>
+            <p>Post Project</p>
           </div>
         </div>
       </div>
