@@ -39,9 +39,7 @@ const BlueRadio = withStyles({
     "&$checked": {
       color: "#26AFFF",
     },
-    "& .MuiRadio-root": {
-      padding: '0'
-    }
+    padding: '0'
   },
   checked: {},
 })((props) => <Radio color="default" {...props} />);
