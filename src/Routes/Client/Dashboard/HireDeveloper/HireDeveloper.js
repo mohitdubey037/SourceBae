@@ -8,9 +8,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
 
-import UpperBackground from '../../../../assets/images/HireDeveloper/Vector.svg';
-import LowerBackground from '../../../../assets/images/HireDeveloper/lowerBackground.svg';
-
 import month from "../../../../assets/images/ClientDashboard/shortTerm/calender.png";
 import hourPrice from "../../../../assets/images/ClientDashboard/shortTerm/hourPrice.png";
 import MultiSelect from "react-multi-select-component";
@@ -149,24 +146,8 @@ function HireDeveloper(props) {
         <Back name="Hire Developer" />
       </div>
       <div className="mainHireDeveloper">
-        {/* <div
-          className="backArrow"
-          onClick={() => {
-            props.history.push("/client-dashboard");
-          }}
-        >
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </div> */}
-        {/* <div className="innerHireDeveloper"> */}
-        {/* <div className="upper-background"> */}
-        {/* </div> */}
-        {/* <div className="lower-background"> */}
-        {/* </div> */}
-        {/* <img className="upper-image" src={UpperBackground} alt="upper-background" />
-        <img className="lower-image" src={LowerBackground} alt="upper-background" /> */}
         <div className="hireDeveloperForm">
           <div className="hireDeveloperFormInfo">
-            {/* <div className="predilection-strip"></div> */}
             <h2>predilection</h2>
             <p>
               Financed new companies and Enterprises are battling to recruit
@@ -179,305 +160,293 @@ function HireDeveloper(props) {
             </p>
           </div>
           <div className="resourceNumberCover">
-          <div className="resourceNumber">
-            <ul>
-              <li>
-                Requirement Name
-              </li>
-            </ul>
-            <input
-              type="text"
-              name="requirementName"
-              value={apiData.requirementName}
-              placeholder="Give a name to identify requirement"
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="resourceNumber">
-            <ul>
-              <li>
-                What roles are you looking for?
-              </li>
-            </ul>
-            <MultiSelect
-              options={options}
-              value={selectedRoles}
-              onChange={setSelectedRoles}
-              labelledBy="Select"
-              className="multi-select"
-            />
-          </div>
-
-          <div className="resourceNumber">
-            <ul>
-              <li>
-                Number of Resources
-              </li>
-            </ul>
-            <input
-              type="number"
-              min="1"
-              name="numberOfResourcesRequired"
-              value={apiData.numberOfResourcesRequired}
-              placeholder="E.g- 1 or 2"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="resourceNumber">
-            <ul>
-              <li>
-                Skills Required
-              </li>
-            </ul>
-            {allTechnologies.length > 0 ? (
-              <MultiSelect
-                options={allTechnologies}
-                value={selectedTechnologies}
-                onChange={setSelectedTechnologies}
-                labelledBy="Select"
+            <div className="resourceNumber">
+              <ul>
+                <li>
+                  Requirement Name
+                </li>
+              </ul>
+              <input
+                type="text"
+                name="requirementName"
+                value={apiData.requirementName}
+                placeholder="Give a name to identify requirement"
+                onChange={handleChange}
               />
-            ) : (
-              "Sorry no Technologies to select"
-            )}
-          </div>
+            </div>
+
+            <div className="resourceNumber">
+              <ul>
+                <li>
+                  What roles are you looking for?
+                </li>
+              </ul>
+              <MultiSelect
+                options={options}
+                value={selectedRoles}
+                onChange={setSelectedRoles}
+                labelledBy="Select"
+                className="multi-select"
+              />
+            </div>
+
+            <div className="resourceNumber">
+              <ul>
+                <li>
+                  Number of Resources
+                </li>
+              </ul>
+              <input
+                type="number"
+                min="1"
+                name="numberOfResourcesRequired"
+                value={apiData.numberOfResourcesRequired}
+                placeholder="E.g- 1 or 2"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="resourceNumber">
+              <ul>
+                <li>
+                  Skills Required
+                </li>
+              </ul>
+              {allTechnologies.length > 0 ? (
+                <MultiSelect
+                  options={allTechnologies}
+                  value={selectedTechnologies}
+                  onChange={setSelectedTechnologies}
+                  labelledBy="Select"
+                />
+              ) : (
+                "Sorry no Technologies to select"
+              )}
+            </div>
           </div>
           <div className="radioContainer">
-          <div className="developerExperienceRequired">
-            <ul>
-              <li>
-                Average Experience
-              </li>
-            </ul>
-            <FormControl component="fieldset">
-              <RadioGroup
-                aria-label="experience"
-                name="developerExperienceRequired"
-                value={apiData.experience}
-                onChange={handleChange}
-              >
-                <div className="Junior" style={{display:'flex'}}>
-                  <div>
-                    <FormControlLabel
-                      value="Junior (1-3years)"
-                      control={<BlueRadio />}
-                    />
-                  </div>
-                  <div className="radio-description">
-                    Junior (1 - 3 Years)
-                  </div>
-                </div>
-
-                {/* <div className="strip_HireDeveloper left_HireDeveloper"> */}
-
-                {/* </div> */}
-
-                <div className="Mid-Range" style={{display:'flex'}}>
-                  <div>
-                    <FormControlLabel
-                      value="Mid Range (3-6 years)"
-                      control={<BlueRadio />}
-                    />
-                  </div>
-                  <div className="radio-description">
-                    Mid Range ( 3 - 6  Years)
-                  </div>
-                </div>
-
-                {/* <div className="strip_HireDeveloper right_HireDeveloper"> */}
-
-                {/* </div> */}
-
-                <div className="Senior" style={{display:'flex'}}>
-                  <div>
-                    <FormControlLabel
-                      value="Senior (6-9 years)"
-                      control={<BlueRadio />}
-                    />
-                  </div>
-                  <div className="radio-description">
-                    Senior ( 6 - 9 Years)
-                  </div>
-                </div>
-
-              </RadioGroup>
-            </FormControl>
-          </div>
-
-          <div className="preferredBillingMode" style={{marginLeft:"4rem"}}>
-            <ul>
-              <li>
-                Preffered Billing
-              </li>
-            </ul>
-
-            <FormControl component="fieldset">
-              <RadioGroup
-                aria-label="billing"
-                name="billing"
-                value={apiData.experience}
-                onChange={handleChange}
-              >
-                <div className="Weekly" style={{display:'flex'}}>
-                  <div>
-                    <FormControlLabel
-                      value="Weekly"
-                      control={<BlueRadio />}
-                    />
-                  </div>
-                  <div className="radio-description">
-                    Weekly
-                  </div>
-                </div>
-
-                {/* <div className="billing_strip_HireDeveloper"> */}
-
-                {/* </div> */}
-
-                <div className="Monthly" style={{display:'flex'}}>
-                  <div>
-                    <FormControlLabel
-                      value="Monthly"
-                      control={<BlueRadio />}
-                    />
-                  </div>
-                  <div className="radio-description">
-                    Monthly
-                  </div>
-                </div>
-              </RadioGroup>
-            </FormControl>
-          </div>
-
-          <div className="averageBudget">
-            <ul>
-              <li>
-                Average Budget
-              </li>
-            </ul>
-            {billing === 1 ? (
+            <div className="developerExperienceRequired">
+              <ul>
+                <li>
+                  Average Experience
+                </li>
+              </ul>
               <FormControl component="fieldset">
-                <div className="left-margin">
-                  <RadioGroup
-                    aria-label="averageBudget"
-                    name="averageBudget"
-                    value={apiData.averageBudget}
-                    onChange={handleChange}
-                  >
-                    <FormControlLabel
-                      value="less than $1500"
-                      control={<BlueRadio />}
-                      label="less than $1500"
-                    />
-                    <FormControlLabel
-                      value="$1500-$2500"
-                      control={<BlueRadio />}
-                      label="$1500-$2500 Per Month"
-                    />
-                    <FormControlLabel
-                      value="$2500-$4000"
-                      control={<BlueRadio />}
-                      label="$2500-$4000 Per Month"
-                    />
-                    <FormControlLabel
-                      value="More than $4000"
-                      control={<BlueRadio />}
-                      label="More than $4000 Per Month"
-                    />
-                  </RadioGroup>
-                </div>
-              </FormControl>
-            ) : (
-              <FormControl component="fieldset">
-                <div className="left-margin">
-                  <RadioGroup
-                    aria-label="hourlyBudget"
-                    name="averageBudget"
-                    value={apiData.averageBudget}
-                    onChange={handleChange}
-                  >
-                    <FormControlLabel
-                      value="less than $20"
-                      control={<BlueRadio />}
-                      label="less than $20"
-                    />
-                    <FormControlLabel
-                      value="$20-$40"
-                      control={<BlueRadio />}
-                      label="$20-$40"
-                    />
-                    <FormControlLabel
-                      value="$40-$60"
-                      control={<BlueRadio />}
-                      label="$40-$60"
-                    />
-                    <FormControlLabel
-                      value="Above $60"
-                      control={<BlueRadio />}
-                      label="Above $60"
-                    />
-                  </RadioGroup>
-                </div>
-              </FormControl>
-            )}
-          </div>
-
-          <div className="startPeriod" style={{marginLeft:"4rem"}}>
-            <ul>
-              <li>
-                Start Date
-              </li>
-            </ul>
-            <FormControl component="fieldset">
-              <div className="left-margin">
                 <RadioGroup
-                  aria-label="startDate"
-                  name="expectedStartDate"
-                  value={apiData.expectedStartDate}
+                  aria-label="experience"
+                  name="developerExperienceRequired"
+                  value={apiData.experience}
                   onChange={handleChange}
                 >
-                  <FormControlLabel
-                    value="Immediately"
-                    control={<BlueRadio />}
-                    label="Immediately"
-                  />
-                  <FormControlLabel
-                    value="in 1 to 2 weeks"
-                    control={<BlueRadio />}
-                    label="in 1 to 2 weeks"
-                  />
-                  <FormControlLabel
-                    value="more than 2 weeks"
-                    control={<BlueRadio />}
-                    label="more than 2 weeks"
-                  />
-                  <FormControlLabel
-                    value="negotiable"
-                    control={<BlueRadio />}
-                    label="negotiable"
-                  />
-                </RadioGroup>
-              </div>
-            </FormControl>
-          </div>
+                  <div className="Junior" style={{ display: 'flex' }}>
+                    <div>
+                      <FormControlLabel
+                        value="Junior (1-3years)"
+                        control={<BlueRadio />}
+                      />
+                    </div>
+                    <div className="radio-description">
+                      Junior (1 - 3 Years)
+                    </div>
+                  </div>
 
-          <div className="contractPeriod">
-            <ul>
-              <li>
-                Contract Periods
-              </li>
-            </ul>
-            <select
-              name="contractPeriod"
-              id="contractPeriod"
-              onChange={handleChange}
-            >
-              <option value="1 Month">1 Month</option>
-              <option value="2 Months">3 Months</option>
-              <option value="6 Months">6 Months</option>
-              <option value="12 Months">12 Months</option>
-            </select>
-          </div>
+                  <div className="Mid-Range" style={{ display: 'flex' }}>
+                    <div>
+                      <FormControlLabel
+                        value="Mid Range (3-6 years)"
+                        control={<BlueRadio />}
+                      />
+                    </div>
+                    <div className="radio-description">
+                      Mid Range ( 3 - 6  Years)
+                    </div>
+                  </div>
+
+                  <div className="Senior" style={{ display: 'flex' }}>
+                    <div>
+                      <FormControlLabel
+                        value="Senior (6-9 years)"
+                        control={<BlueRadio />}
+                      />
+                    </div>
+                    <div className="radio-description">
+                      Senior ( 6 - 9 Years)
+                    </div>
+                  </div>
+
+                </RadioGroup>
+              </FormControl>
+            </div>
+
+            <div className="preferredBillingMode">
+              <ul>
+                <li>
+                  Preffered Billing
+                </li>
+              </ul>
+
+              <FormControl component="fieldset">
+                <RadioGroup
+                  aria-label="billing"
+                  name="billing"
+                  value={apiData.experience}
+                  onChange={handleChange}
+                >
+                  <div className="Weekly" style={{ display: 'flex' }}>
+                    <div>
+                      <FormControlLabel
+                        value="Weekly"
+                        control={<BlueRadio />}
+                      />
+                    </div>
+                    <div className="radio-description">
+                      Weekly
+                    </div>
+                  </div>
+
+                  <div className="Monthly" style={{ display: 'flex' }}>
+                    <div>
+                      <FormControlLabel
+                        value="Monthly"
+                        control={<BlueRadio />}
+                      />
+                    </div>
+                    <div className="radio-description">
+                      Monthly
+                    </div>
+                  </div>
+                </RadioGroup>
+              </FormControl>
+            </div>
+
+            <div className="averageBudget">
+              <ul>
+                <li>
+                  Average Budget
+                </li>
+              </ul>
+              {billing === 1 ? (
+                <FormControl component="fieldset">
+                  <div className="left-margin">
+                    <RadioGroup
+                      aria-label="averageBudget"
+                      name="averageBudget"
+                      value={apiData.averageBudget}
+                      onChange={handleChange}
+                    >
+                      <FormControlLabel
+                        value="less than $1500"
+                        control={<BlueRadio />}
+                        label="less than $1500"
+                      />
+                      <FormControlLabel
+                        value="$1500-$2500"
+                        control={<BlueRadio />}
+                        label="$1500-$2500 Per Month"
+                      />
+                      <FormControlLabel
+                        value="$2500-$4000"
+                        control={<BlueRadio />}
+                        label="$2500-$4000 Per Month"
+                      />
+                      <FormControlLabel
+                        value="More than $4000"
+                        control={<BlueRadio />}
+                        label="More than $4000 Per Month"
+                      />
+                    </RadioGroup>
+                  </div>
+                </FormControl>
+              ) : (
+                <FormControl component="fieldset">
+                  <div className="left-margin">
+                    <RadioGroup
+                      aria-label="hourlyBudget"
+                      name="averageBudget"
+                      value={apiData.averageBudget}
+                      onChange={handleChange}
+                    >
+                      <FormControlLabel
+                        value="less than $20"
+                        control={<BlueRadio />}
+                        label="less than $20"
+                      />
+                      <FormControlLabel
+                        value="$20-$40"
+                        control={<BlueRadio />}
+                        label="$20-$40"
+                      />
+                      <FormControlLabel
+                        value="$40-$60"
+                        control={<BlueRadio />}
+                        label="$40-$60"
+                      />
+                      <FormControlLabel
+                        value="Above $60"
+                        control={<BlueRadio />}
+                        label="Above $60"
+                      />
+                    </RadioGroup>
+                  </div>
+                </FormControl>
+              )}
+            </div>
+
+            <div className="startPeriod">
+              <ul>
+                <li>
+                  Start Date
+                </li>
+              </ul>
+              <FormControl component="fieldset">
+                <div className="left-margin">
+                  <RadioGroup
+                    aria-label="startDate"
+                    name="expectedStartDate"
+                    value={apiData.expectedStartDate}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="Immediately"
+                      control={<BlueRadio />}
+                      label="Immediately"
+                    />
+                    <FormControlLabel
+                      value="in 1 to 2 weeks"
+                      control={<BlueRadio />}
+                      label="in 1 to 2 weeks"
+                    />
+                    <FormControlLabel
+                      value="more than 2 weeks"
+                      control={<BlueRadio />}
+                      label="more than 2 weeks"
+                    />
+                    <FormControlLabel
+                      value="negotiable"
+                      control={<BlueRadio />}
+                      label="negotiable"
+                    />
+                  </RadioGroup>
+                </div>
+              </FormControl>
+            </div>
+
+            <div className="contractPeriod">
+              <ul>
+                <li>
+                  Contract Periods
+                </li>
+              </ul>
+              <select
+                name="contractPeriod"
+                id="contractPeriod"
+                onChange={handleChange}
+              >
+                <option value="1 Month">1 Month</option>
+                <option value="2 Months">3 Months</option>
+                <option value="6 Months">6 Months</option>
+                <option value="12 Months">12 Months</option>
+              </select>
+            </div>
           </div>
 
           <div className="submitBtn">
@@ -485,11 +454,10 @@ function HireDeveloper(props) {
             <div onClick={handleSubmit}>
               Submit
             </div>
-            
+
           </div>
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 }
