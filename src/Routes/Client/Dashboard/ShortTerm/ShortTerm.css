@@ -32,7 +32,7 @@
 }
 
 .innerShortTerm {
-  padding: 1rem 1rem 1rem;
+  padding: 2rem 1rem 1rem;
 }
 
 .innerShortTerm ul {
@@ -40,7 +40,7 @@
   text-transform: capitalize;
   color: #707070;
   margin-bottom: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .shortTermHeading {
@@ -89,7 +89,7 @@
 .shortTermProjectName input, .shortTermOptionSelect input {
   color: #707070;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   font-family: 'Segoe UI';
   height: 2.2rem;
   padding: 0 0.8rem;
@@ -133,13 +133,13 @@
 .shortTermProjectType div h2 {
   text-align: center;
   font-family: 'Segoe UI';
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-transform: capitalize;
   color: #707070;
 }
 
 .shortTermProjectType div img {
-  width: 40%;
+  width: 4rem;
 }
 
 .shortTermProjectType div:hover .leftLineProject {
