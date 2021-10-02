@@ -107,22 +107,23 @@
 .productInformationHeading {
     width: 100%;
     padding-left: 1rem;
-    margin-bottom: 2%;
 }
 
 .productInformationHeading h5 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     font-size: 1rem;
     font-weight: bold;
+    color: #707070;
+    margin-left: 1rem;
 }
 
-.productInformationHeading h5::after {
+/* .productInformationHeading h5::after {
     content: '';
     width: 40px;
     height: 2px;
     display: block;
     background-color: #000;
-}
+} */
 
 .productAgencyMiddle {
     margin-top: 1%;
@@ -142,6 +143,9 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    top: -5.4rem;
+    left: -5rem;
+    width: 36%;
 }
 
 .horizontalLine {
@@ -165,14 +169,15 @@
 
 .productAgencyList {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
 }
 
 .productAgencyContent {
-    width: 45%;
     overflow: hidden;
+    display: flex;
+    margin: 0.1rem 1.2rem;
+    padding: 0.1rem 0.3rem ;
+    justify-content: space-between;
+    border-bottom: 1px dotted #707070;
 }
 
 .productAgencyContent span {
@@ -182,14 +187,8 @@
     overflow: hidden;
 }
 
-.productAgencyContent p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-family: 'Open Sans', sans-serif;
-    overflow: hidden;
-    font-weight: bold;
-    margin-top: 4%;
-}
+/* .productAgencyContent p {
+} */
 
 .productLogoHere img {
     width: 100%;
@@ -213,13 +212,14 @@
 }
 
 .productLogoHere {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid #999;
     padding: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .productLogoHere img {

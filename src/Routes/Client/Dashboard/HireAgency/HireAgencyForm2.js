@@ -215,7 +215,7 @@ function HireAgencyForm2(props) {
               <div >
                 <p>Step 1</p>
               </div>
-              <div className='color_hireAgencyForm green'></div>
+              <div className='color_hireAgencyForm2 green'></div>
             </div>
 
             {/* <div className="black-strip_hireAgencyForm2 strip1"></div> */}
@@ -224,7 +224,7 @@ function HireAgencyForm2(props) {
               <div>
                 <p className="grey-step_hireAgencyForm">Step 2</p>
               </div>
-              <div className='color_hireAgencyForm green'></div>
+              <div className='color_hireAgencyForm2 green'></div>
             </div>
 
             {/* <div className="black-strip_hireAgencyForm2"></div> */}
@@ -233,9 +233,11 @@ function HireAgencyForm2(props) {
               <div>
                 <p className="grey-step_hireAgencyForm">Step 3</p>
               </div>
-              <div className='color_hireAgencyForm grey'></div>
+              <div className='color_hireAgencyForm2 grey'></div>
             </div>
           </div>
+          <div className="servicesHirecover">
+                 </div>
           <div className="innerHireAgencyFormTwo">
             {/* <div className="stepCheck">
               <div className="color-div_hireAgencyForm1">
@@ -256,10 +258,10 @@ function HireAgencyForm2(props) {
                     return (
                       <div className="tech-container">
                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                          style={{ backgroundColor: domain.selected ? "#FE5E00" : "white" }}>
+                          style={{ backgroundColor: domain.selected ? "#707070" : "white" }}>
                           <img className={`${domain.domainName}`} src={domain.domainIcon} alt="image" />
                         </div>
-                        <p className={`${domain.domainName}`} style={{ color: "#000" }}>
+                        <p className={`${domain.domainName}`} style={{ color: "#707070", fontFamily:"Segoe UI", fontSize:"12px"}}>
                           {`${domain.domainName}`}</p>
                       </div>
                     );
@@ -325,7 +327,7 @@ function HireAgencyForm2(props) {
               </div>
 
               <div className="nextbutton">
-                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`)}>
+                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`)} style={{backgroundColor:"#707070"}}>
                   Back
                 </div>
                 <div onClick={() => handleSubmit()}>
@@ -336,7 +338,8 @@ function HireAgencyForm2(props) {
             {selectedDomain && options &&
               (
                 <div className="serviceFieldsOptions">
-                 <div className="servicesHirecover">
+                 {/* <div className="servicesHirecover">
+                 </div> */}
                   <div className="servicesHireAgencyContainer hireAgencyForm2">
                     <div className="serviceSelectionInput">
                       <>
@@ -357,7 +360,7 @@ function HireAgencyForm2(props) {
                         {error.projectExpertiseRequiredError}
                       </p>)}
                   </div>
-                  </div>
+                  {/* </div> */}
 
                 </div>
               )

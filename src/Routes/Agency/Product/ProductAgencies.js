@@ -247,8 +247,8 @@ function ProductAgencies(props) {
                                             state?.map((value, index) => {
                                                 return (
                                                     <div className="agencyPreciseCard">
-                                                        <div className="agencyCardHeaderLine">
-                                                        </div>
+                                                        {/* <div className="agencyCardHeaderLine">
+                                                        </div> */}
                                                         <div className="agencyCardHeaderInfo">
                                                             <div className="agencyImageProfile">
                                                                 <div className="agencyImageArea">
@@ -279,8 +279,8 @@ function ProductAgencies(props) {
 
                                                         <div className="middleAgencyArea productAgencyMiddle">
                                                             <div className="productAgenciesTeam">
-                                                                <span className="horizontalLine"></span>
-                                                                <span className="verticalLine"></span>
+                                                                {/* <span className="horizontalLine"></span>
+                                                                <span className="verticalLine"></span> */}
 
                                                                 <div className="productAgencyList">
                                                                     <div className="productAgencyContent">
@@ -319,7 +319,7 @@ function ProductAgencies(props) {
 
                                                         <div className="quotationShortlistButton">
                                                             <div>
-                                                                <NavLink style={{ textDecoration: 'none' }} to={{
+                                                                <NavLink style={{ textDecoration: 'none',color:"#ffffff" }} to={{
                                                                     pathname: `/product-details:${value._id}`,
                                                                     condition: 'Client'
                                                                 }}>View Product</NavLink>
