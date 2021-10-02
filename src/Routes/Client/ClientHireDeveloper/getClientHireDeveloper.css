@@ -79,7 +79,7 @@
   /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   position: relative;
   z-index: 1;
-  margin-bottom: 4%;
+  margin-bottom: -5%;
   /* border-radius: 10px; */
 }
 
@@ -138,12 +138,12 @@
 }
 
 .agencyProfileInfo div p {
-  padding: 0.2rem 0.9rem;
+  padding: 0.3rem 1.9rem;
   margin-right: 10px;
   /* border: 1px dashed #999; */
   border-radius: 999px;
   background-image: linear-gradient(to right, #015F9A ,#0376BA);
-  /* background-color: #02044a; */
+  /* background-color: #02044a;220 */
   color: #fff;
   font-family: 'Segoe UI';
   font-size: 0.7rem;
@@ -151,15 +151,17 @@
   display: flex;
   justify-content: center;
   margin-bottom: 12px;
+  box-shadow: 1px 2px 3px rgb(0,0,0,18%);
 }
 
 .profileButton p {
   font: 12px 'Segoe UI';
   color: #45a4ea;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 3px;
   padding: 7px 18px;
   background-color: #ffffff;
+  box-shadow: 1px 1px 3px rgb(0,0,0,18%);
 }
 
 .profileButton p i {
@@ -222,7 +224,7 @@
   border:none;
   padding: 0.5rem;
   height: 110px;
-  overflow-y: none;
+  overflow-y: auto;
 }
 
 .agencyDescInfo::-webkit-scrollbar {
@@ -274,6 +276,7 @@
   display: flex;
     position: absolute;
     width: 57%;
+    font-size: smaller;
     top: 14.3rem;
     left: 9rem;
     padding: 0rem 1rem;
@@ -302,16 +305,19 @@
 .quotationShortlistButton div:nth-child(1) {
   /* border: 1px solid #3498db; */
   color: #ffffff;
-  height: 2rem;
-  border-radius: 8px;
+  height: 1.8rem;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgb(0,0,0,18%);
   background-image: linear-gradient(to right, #015F9A ,#0376BA);
 }
 
 .quotationShortlistButton div:nth-child(2) {
   background-color: #3498db;
-  height: 2rem;
-  border-radius: 8px;
+  height: 1.8rem;
+  border-radius: 3px;
   color: #ffffff;
+  box-shadow: 1px 1px 3px rgb(0,0,0,18%);
+
   background-image: linear-gradient(to right, #0376BA , #015F9A);
 }
 
@@ -337,7 +343,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px dashed #999;
+  border-bottom: none;
+}
+.locationFilter input {
+  font-family: 'Segoe UI';
+  height: 35px;
+
 }
 
 .filterText {
@@ -354,14 +365,13 @@
 }
 
 .filterHeading div p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Segoe UI semibold', sans-serif;
   color: #3498db;
 }
 
 .locationFilter {
-  margin-top: 4%;
-  margin-bottom: 6%;
+  margin-top: 3%;
+  margin-bottom: -3%;
   /* border-bottom: 1px solid #e4e4e4; */
   padding-bottom: 5%;
 }

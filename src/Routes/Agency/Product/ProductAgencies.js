@@ -346,7 +346,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter_productAgencies">
                                                 <p>Sort By :</p>
-                                                <FormControl className={classes.formControl}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={domain}
@@ -381,12 +381,13 @@ function ProductAgencies(props) {
 
                                             <div style={{ border: 'none' }} className="officeVisitFilter">
                                                 <p>Funding type:</p>
-                                                <FormControl className={classes.formControl}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={fundName}
                                                         onChange={(event) => handleFundType(event)}
                                                         inputProps={{ 'aria-label': 'Without label' }}
+                                                        
                                                     >
 
                                                         <MenuItem value="">
@@ -410,7 +411,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter">
                                                 <p>Business Models:</p>
-                                                <FormControl className={classes.formControl}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={bmodal}
