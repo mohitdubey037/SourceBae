@@ -9,6 +9,7 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Spinner from "../../../Components/Spinner/Spinner";
 import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
 import Back from '../../../Components/Back/Back';
+// import background from '../../../assets/images/AddProduct/background.svg'
 
 
 function ClientHireDeveloper(props) {
@@ -50,7 +51,7 @@ function ClientHireDeveloper(props) {
                 {hiredDevelopers?.length > 0 ?
                   hiredDevelopers.map((hireDeveloperRequirement, index) => {
                     return (
-                      <div className="agencyPreciseCard" key={index}>
+                      <div className="agencyPreciseCard" key={index} /*style={{backgroundImage:"url(background)"}}*/>
                         <div className="agencyCardHeaderLine"></div>
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">

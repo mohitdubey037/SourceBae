@@ -166,7 +166,7 @@ function HireDeveloper(props) {
         <img className="lower-image" src={LowerBackground} alt="upper-background" /> */}
         <div className="hireDeveloperForm">
           <div className="hireDeveloperFormInfo">
-            <div className="predilection-strip"></div>
+            {/* <div className="predilection-strip"></div> */}
             <h2>predilection</h2>
             <p>
               Financed new companies and Enterprises are battling to recruit
@@ -178,7 +178,7 @@ function HireDeveloper(props) {
               homelane, Razorpay, Townscript, Bewakoof, SAP, Samsung
             </p>
           </div>
-
+          <div className="resourceNumberCover">
           <div className="resourceNumber">
             <ul>
               <li>
@@ -241,6 +241,8 @@ function HireDeveloper(props) {
               "Sorry no Technologies to select"
             )}
           </div>
+          </div>
+          <div className="radioContainer">
           <div className="developerExperienceRequired">
             <ul>
               <li>
@@ -254,7 +256,7 @@ function HireDeveloper(props) {
                 value={apiData.experience}
                 onChange={handleChange}
               >
-                <div className="Junior">
+                <div className="Junior" style={{display:'flex'}}>
                   <div>
                     <FormControlLabel
                       value="Junior (1-3years)"
@@ -266,11 +268,11 @@ function HireDeveloper(props) {
                   </div>
                 </div>
 
-                <div className="strip_HireDeveloper left_HireDeveloper">
+                {/* <div className="strip_HireDeveloper left_HireDeveloper"> */}
 
-                </div>
+                {/* </div> */}
 
-                <div className="Mid-Range">
+                <div className="Mid-Range" style={{display:'flex'}}>
                   <div>
                     <FormControlLabel
                       value="Mid Range (3-6 years)"
@@ -282,11 +284,11 @@ function HireDeveloper(props) {
                   </div>
                 </div>
 
-                <div className="strip_HireDeveloper right_HireDeveloper">
+                {/* <div className="strip_HireDeveloper right_HireDeveloper"> */}
 
-                </div>
+                {/* </div> */}
 
-                <div className="Senior">
+                <div className="Senior" style={{display:'flex'}}>
                   <div>
                     <FormControlLabel
                       value="Senior (6-9 years)"
@@ -302,7 +304,7 @@ function HireDeveloper(props) {
             </FormControl>
           </div>
 
-          <div className="preferredBillingMode">
+          <div className="preferredBillingMode" style={{marginLeft:"4rem"}}>
             <ul>
               <li>
                 Preffered Billing
@@ -316,7 +318,7 @@ function HireDeveloper(props) {
                 value={apiData.experience}
                 onChange={handleChange}
               >
-                <div className="Weekly">
+                <div className="Weekly" style={{display:'flex'}}>
                   <div>
                     <FormControlLabel
                       value="Weekly"
@@ -328,11 +330,11 @@ function HireDeveloper(props) {
                   </div>
                 </div>
 
-                <div className="billing_strip_HireDeveloper">
+                {/* <div className="billing_strip_HireDeveloper"> */}
 
-                </div>
+                {/* </div> */}
 
-                <div className="Monthly">
+                <div className="Monthly" style={{display:'flex'}}>
                   <div>
                     <FormControlLabel
                       value="Monthly"
@@ -420,7 +422,7 @@ function HireDeveloper(props) {
             )}
           </div>
 
-          <div className="startPeriod">
+          <div className="startPeriod" style={{marginLeft:"4rem"}}>
             <ul>
               <li>
                 Start Date
@@ -475,6 +477,7 @@ function HireDeveloper(props) {
               <option value="6 Months">6 Months</option>
               <option value="12 Months">12 Months</option>
             </select>
+          </div>
           </div>
 
           <div className="submitBtn">

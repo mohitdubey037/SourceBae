@@ -247,8 +247,8 @@ function ProductAgencies(props) {
                                             state?.map((value, index) => {
                                                 return (
                                                     <div className="agencyPreciseCard">
-                                                        <div className="agencyCardHeaderLine">
-                                                        </div>
+                                                        {/* <div className="agencyCardHeaderLine">
+                                                        </div> */}
                                                         <div className="agencyCardHeaderInfo">
                                                             <div className="agencyImageProfile">
                                                                 <div className="agencyImageArea">
@@ -279,8 +279,8 @@ function ProductAgencies(props) {
 
                                                         <div className="middleAgencyArea productAgencyMiddle">
                                                             <div className="productAgenciesTeam">
-                                                                <span className="horizontalLine"></span>
-                                                                <span className="verticalLine"></span>
+                                                                {/* <span className="horizontalLine"></span>
+                                                                <span className="verticalLine"></span> */}
 
                                                                 <div className="productAgencyList">
                                                                     <div className="productAgencyContent">
@@ -319,7 +319,7 @@ function ProductAgencies(props) {
 
                                                         <div className="quotationShortlistButton">
                                                             <div>
-                                                                <NavLink style={{ textDecoration: 'none' }} to={{
+                                                                <NavLink style={{ textDecoration: 'none',color:"#ffffff" }} to={{
                                                                     pathname: `/product-details:${value._id}`,
                                                                     condition: 'Client'
                                                                 }}>View Product</NavLink>
@@ -346,7 +346,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter_productAgencies">
                                                 <p>Sort By :</p>
-                                                <FormControl className={classes.formControl}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={domain}
@@ -381,12 +381,13 @@ function ProductAgencies(props) {
 
                                             <div style={{ border: 'none' }} className="officeVisitFilter">
                                                 <p>Funding type:</p>
-                                                <FormControl className={classes.formControl}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={fundName}
                                                         onChange={(event) => handleFundType(event)}
                                                         inputProps={{ 'aria-label': 'Without label' }}
+                                                        
                                                     >
 
                                                         <MenuItem value="">
@@ -410,7 +411,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter">
                                                 <p>Business Models:</p>
-                                                <FormControl className={classes.formControl}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={bmodal}

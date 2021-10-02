@@ -27,10 +27,17 @@
 }
 
 .officeVisitFilter_productAgencies p {
-    font-family: 'Open Sans', sans-serif;
-    /* transform: translateY(10px); */
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-family: 'Segoe UI semibold';
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+.officeVisitFilter p {
+    font-size: 1rem;
+    font-family: "Segoe UI semibold";
+}
+.MuiSelect-root em {
+    font-family: "Segoe UI";
+    color: #707070;
 }
 
 .officeVisitFilter_productAgencies p::after {
@@ -43,13 +50,15 @@
 
 .searchButton {
     margin-top: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 11px;
+    font-size: 1rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
     width: 40%;
+    padding: 0.4rem;
     background-color: white;
-    color: #000;
-    border-color: black;
+    color: #ffffff;
+    background-image: linear-gradient( #015F9A, #0376BA);
 }
 
 .searchButton:hover {
@@ -71,12 +80,24 @@
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     position: sticky;
+    right: 2rem;
+    top: 1.5rem;
+    color: #707070;
+    font-family: 'Segoe UI';
 }
 
 .filter_productAgencies {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
     font-weight: bold;
+}
+.locationFilter p::after, .officeVisitFilter_productAgencies p::after, .officeVisitFilter p::after{
+    content: none !important;
+}
+.locationFilter p {
+    font-family: 'Segoe UI';
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
 /* .filter_productAgencies::after {
@@ -107,22 +128,23 @@
 .productInformationHeading {
     width: 100%;
     padding-left: 1rem;
-    margin-bottom: 2%;
 }
 
 .productInformationHeading h5 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI';
     font-size: 1rem;
     font-weight: bold;
+    color: #707070;
+    margin-left: 1rem;
 }
 
-.productInformationHeading h5::after {
+/* .productInformationHeading h5::after {
     content: '';
     width: 40px;
     height: 2px;
     display: block;
     background-color: #000;
-}
+} */
 
 .productAgencyMiddle {
     margin-top: 1%;
@@ -142,6 +164,10 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    top: -5.4rem;
+    left: -5rem;
+    width: 36%;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 18%);
 }
 
 .horizontalLine {
@@ -165,14 +191,17 @@
 
 .productAgencyList {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
 }
 
 .productAgencyContent {
-    width: 45%;
     overflow: hidden;
+    display: flex;
+    margin: 0.54rem 1.2rem 0.2rem 1.2rem;
+    padding: 0.1rem 0.3rem ;
+    justify-content: space-between;
+    border-bottom: 1px dotted #707070;
+    color: #707070;
+    font-family: 'Segoe UI';
 }
 
 .productAgencyContent span {
@@ -182,14 +211,8 @@
     overflow: hidden;
 }
 
-.productAgencyContent p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-family: 'Open Sans', sans-serif;
-    overflow: hidden;
-    font-weight: bold;
-    margin-top: 4%;
-}
+/* .productAgencyContent p {
+} */
 
 .productLogoHere img {
     width: 100%;
@@ -213,13 +236,14 @@
 }
 
 .productLogoHere {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid #999;
     padding: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .productLogoHere img {

@@ -26,6 +26,7 @@ button {
   justify-content: center;
   align-items: center;
   background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .backButtonAgencyProfile {
@@ -62,6 +63,7 @@ button {
 
 .innerProfileHeaderImage img {
   width: 22px;
+  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .backButton-child {
@@ -73,6 +75,7 @@ button {
   border-radius: 40px;
   height: 40px;
   transform: translateX(-4px);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .innerProfileHeaderImage div p {
@@ -103,6 +106,7 @@ button {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .innerProfileHeaderImage button i {
@@ -211,7 +215,8 @@ button {
   align-items: center;
   margin-right: 3%;
   transform: translateY(-50px);
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   background-color: #fff;
 }
 
@@ -363,6 +368,7 @@ button {
   text-align: center;
   padding: 0 10px;
   background-color: #939dff;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 /* .pointContent p, .pointContent h4 {
@@ -420,6 +426,7 @@ button {
   justify-content: flex-end;
   position: relative;
   right: 100px;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .innerAgencyProfileDesc h2 {
@@ -452,7 +459,8 @@ button {
   padding: 11px 34px;
   border-radius: 27px;
   font-size: 12px;
-  box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 15%);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  /* box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 15%); */
 }
 
 .rightAgencyProfileDesc {
@@ -475,6 +483,7 @@ button {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .monthyView.agencyProfile {
@@ -518,6 +527,7 @@ button {
   border-radius: 15px;
   font-size: 0.8rem;
   font-family: 'Segoe UI Semibold';
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .uploadButton i {
@@ -591,7 +601,8 @@ button {
   align-items: center;
   flex-direction: column;
   background: #FEFEFE;
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   width: 120px;
   height: 123px;
   margin-left: 20px;

@@ -9,9 +9,16 @@
 .content-rightBody {
   display: flex;
   flex-direction: column;
-  padding: 0 1.5rem;
+  padding: 0px 7px 0px 22px;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  /* box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%); */
+  /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); */
+  height: 87vh;
+  width: 21vw;
   justify-content: space-around;
   border-radius: 8px;
+  margin-right: 2rem;
+  background-color: #Fdfff5  ;
 }
 
 .content-rightBody>.rightBody-navigation {
@@ -66,15 +73,17 @@
   border-radius: 8px;
   background: url(../../../assets/images/Newestdashboard/RightSide/tech.svg);
   background-size: cover;
-  margin: 0 15px;
+  /* margin: 0 15px; */
+  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 .itemContent-1 {
-  width: 90%;
-  min-height: 148px;
+  width: 80%;
+  min-height: 120px;
   border-radius: 8px;
   background: url(../../../assets/images/Newestdashboard/RightSide/tech1.svg);
   background-size: cover;
   margin: 0 15px;
+  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .itemContent-cta {
@@ -89,7 +98,9 @@
   padding: 15px;
   min-width: 250px;
   background: #ffffff;
-  box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%);
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  /* box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%); */
+  /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
   border-radius: 12px;
   margin-top: 20px;
   justify-content: space-around;
@@ -108,4 +119,11 @@
   font-family: 'Segoe UI';
   color: #ffffff;
   font-size: 12px;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
+
+/* .content-rightBody {
+  min-height: 585px;
+  min-width: 310px;
+  background: #f9f9f9;
+} */
