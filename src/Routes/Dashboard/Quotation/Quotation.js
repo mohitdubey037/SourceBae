@@ -21,23 +21,17 @@ function Quotation(props) {
     console.log(props.location.origin);
     useEffect(() => {
         if (!navigated && receivedRef !== null && props.location.origin === 'received') {
-            // console.log(inputEl);
             receivedRef?.current?.click();
             setNavigation(true)
         }
         if (!navigated && respondedRef !== null && props.location.origin === 'responded') {
-            // console.log(inputEl);
             respondedRef?.current?.click();
             setNavigation(true)
         }
         if (!navigated && projectMatchRef !== null && props.location.origin === 'project-match') {
-            // console.log(inputEl);
             projectMatchRef?.current?.click();
             setNavigation(true)
         }
-        // else if (navigated) {
-        //     inputEl?.current?.click()
-        // }
     }, [])
 
     const [visible, setVisible] = useState(false);
@@ -50,16 +44,11 @@ function Quotation(props) {
     return (
         <>
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            {/* <Navbar headingInfo="Quotation" /> */}
-            <div className={`${visible && "conditionalPosition"}`}>
-                <div className="navbar-parent_Quotation">
-                    <Navbar />
-                </div>
-                <div className="back-parent">
+            {/* <div className={`${visible && "conditionalPosition"}`}> */}
+            <div className="mainQuotation">
+                <Navbar />
+                <div className="back_and_quotation">
                     <Back name="Quotation" />
-                </div>
-
-                <div className="mainQuotation">
                     <div className="innerQuotation quotation">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>
@@ -89,6 +78,7 @@ function Quotation(props) {
                     </div>
                 </div>
             </div>
+            {/* </div> */}
 
         </>
     );

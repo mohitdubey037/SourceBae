@@ -7,7 +7,7 @@
 
 .innerResponded {
   width: 93%;
-  margin-top: 5%;
+  margin-top: 1%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -19,13 +19,10 @@
   width: 30%;
   margin: 0 1rem;
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-  /* box-shadow: 0 2px 8px 2px rgb(0 0 0 / 20%); */
   border-radius: 8px;
   position: relative;
   overflow: auto;
   min-height: 350px;
-  /* margin-bottom: 0%;
-  margin-right: 0%; */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 

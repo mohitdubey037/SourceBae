@@ -1,26 +1,17 @@
 .mainQuotation {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding: 2rem; */
-  margin-top: 3%;
+  width: 89%;
+  margin-left: 11%;
+  position: relative;
 }
 
-.back-parent {
-  margin-left: 11%;
-  margin-top: 1rem;
+.back_and_quotation {
+  padding-top: 5rem;
 }
 
 .innerQuotation {
-  width: 90%;
+  width: 100%;
   position: relative;
-  margin-left: 11%
-}
-
-.navbar-parent_Quotation {
-  width: 89%;
-  margin-left: 11%;
+  margin-top: 3rem;
 }
 
 .innerQuotation .nav-tabs .nav-link img {
@@ -45,9 +36,7 @@
 }
 
 .quotation .nav-tabs .nav-link.active {
-  /* color: #484848 !important; */
   background: #ced3ff;
-  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .quotation .nav-tabs .nav-link {

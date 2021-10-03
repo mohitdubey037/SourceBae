@@ -6,7 +6,7 @@ import CallIcon from '../../../assets/images/Newestdashboard/Dashboard/phone_cal
 function RightSide() {
     return (
         <div className="content-rightBody_parent">
-            <div className="content-rightBody">
+            {/* <div className="content-rightBody"> */}
                 <div className="navigation-item">
                     <div className="itemContent-1"></div>
                     <div className="itemContent-heading">
@@ -35,7 +35,7 @@ function RightSide() {
                         </div>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
 
 

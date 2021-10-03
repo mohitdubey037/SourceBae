@@ -160,7 +160,7 @@ function AgencyNewestDashboard(props) {
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             
             <div className="container-body">
-                <div style={{ top: '1rem' }} className="navbar">
+                <div className="navbar">
                     <div className="navbar-items">
                         <div style={{ marginRight: '10px' }} className="username nav-left-item">
                             <p>{agencyProfileData?.agencyName}</p>
