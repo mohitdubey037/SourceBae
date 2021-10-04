@@ -95,7 +95,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 1rem;
+  padding: 1.3rem;
 }
 
 .agencyImageProfile {
@@ -137,11 +137,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1rem;
+  margin-left: 8rem;
 }
 
 .agencyProfileInfo div p {
-  padding: 0.3rem 1.9rem;
+  padding: 0.3rem 0.8rem;
   margin-right: 10px;
   /* border: 1px dashed #999; */
   border-radius: 999px;
@@ -181,6 +181,7 @@
   /* padding: 1rem; */
   padding: 0 1rem;
   padding-bottom: 1rem;
+  margin-top: -2rem;
 }
 
 .agencyAddressTeam {
@@ -223,6 +224,7 @@
 .teamNumberPart span {
   font-size: 14px;
   color: #015F9A;
+  letter-spacing: 1px;
   font-family: 'Segoe UI',sans-serif;
   /* font-weight: bold; */
   /* margin-right: 3px; */
@@ -234,7 +236,6 @@
   padding: 0.5rem;
   height: 110px;
   overflow-y: auto;
-  margin-top: -1.3rem;
   color: #015F9A;
 }
 
@@ -265,7 +266,9 @@
 
 .agencyAddressTeam, .agencyDescInfo :is(h6) {
   /* font-family: 'Fredoka One', cursive; */
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI semibold', sans-serif;
+  font-size: 14px;
+  padding:2px 0px;
 }
 
 .agencyAddressTeam {
@@ -273,6 +276,7 @@
   flex-direction: column;
   font-family: 'Segoe UI';
     color: #707070;
+    margin-left: 6px;
   /* justify-content: space-around; */
 }
 
