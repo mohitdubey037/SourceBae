@@ -52,7 +52,7 @@ function ClientHireDeveloper(props) {
                   hiredDevelopers.map((hireDeveloperRequirement, index) => {
                     return (
                       <div className="agencyPreciseCard" key={index} /*style={{backgroundImage:"url(background)"}}*/>
-                        <div className="agencyCardHeaderLine"></div>
+                        {/* <div className="agencyCardHeaderLine"></div> */}
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
                             <div className="agencyProfileInfo">
@@ -78,7 +78,7 @@ function ClientHireDeveloper(props) {
 
                         <div className="middleAgencyArea">
                           <div className="agencyAddressTeam">
-                            <h6>Developers Data</h6>
+                            <h6 style={{fontSize:"16px",fontFamily: 'Segoe UI semibold'}}>Developers Data</h6>
                             <div className="agencyAddressArea">
                               <div className="locationIcon">
                                 <i className="fa fa-globe" aria-hidden="true"></i>
