@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./getClientHireDeveloper.css";
 
-import "react-responsive-modal/styles.css";
+// import "react-responsive-modal/styles.css";
 import instance from "../../../Constants/axiosConstants";
 import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
@@ -52,7 +52,7 @@ function ClientHireDeveloper(props) {
                 {hiredDevelopers?.length > 0 ?
                   hiredDevelopers.map((hireDeveloperRequirement, index) => {
                     return (
-                      <div className="agencyPreciseCard" key={index} /*style={{backgroundImage:"url(background)"}}*/>
+                      <div className="agencyPreciseCard agencyPreciseCard_new" key={index} style={{}}>
                         {/* <div className="agencyCardHeaderLine"></div> */}
                         <div className="agencyCardHeaderInfo">
                           <div className="agencyImageProfile">
@@ -79,7 +79,7 @@ function ClientHireDeveloper(props) {
 
                         <div className="middleAgencyArea">
                           <div className="agencyAddressTeam">
-                            <h6 style={{fontSize:"16px", padding:"2px",fontFamily: 'Segoe UI semibold'}}>Developers Data</h6>
+                            <h6 style={{fontSize:"16px",marginTop:"8px", paddingLeft:"2px",fontFamily: 'Segoe UI semibold'}}>Developers Data</h6>
                             <div className="agencyAddressArea">
                               <div className="locationIcon">
                                 <i className="fa fa-globe" aria-hidden="true"></i>

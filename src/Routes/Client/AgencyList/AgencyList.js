@@ -156,13 +156,13 @@ function AgencyList(props) {
                             <div className="agencyPreciseCard_agencyList">
                               <div className="agencyCardHeaderInfo">
                                 <div className="agencyImageProfile">
-                                  <div className="agencyImageArea">
+                                  <div className=" agencyImageArea agencyImageArea_Img  ">
                                     <img
                                       src={agency.agencyLogo}
                                       alt="agency Logo"
                                     />
                                   </div>
-                                  <div className="agencyProfileInfo">
+                                  <div className="agencyProfileInfo agencyProfileInfodiv">
                                     <h6>{agency.agencyName}</h6>
                                     <div>
                                       <p>Media & Social</p>
@@ -192,7 +192,7 @@ function AgencyList(props) {
 
                               <div className="middleAgencyArea">
                                 <div className="agencyAddressTeam addressTeam_AgencyList">
-                                  <h6 style={{fontOpticalSizing:"14px"}}>Miscellaneous Info</h6>
+                                  <h6 style={{fontSize:"14px"}}>Miscellaneous Info</h6>
                                   <div className="agencyAddressArea">
                                     <div className="locationIcon">
                                       <i
@@ -219,7 +219,7 @@ function AgencyList(props) {
                                     </div>
                                   </div>
                                 </div>
-                                <div className="agencyDescInfo">
+                                <div className="agencyDescInfo agencydiv">
                                   <h6>Description</h6>
                                   <p>{agency.agencyDescription}</p>
                                 </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
 .backArrow_getClientHireDeveloper {
   position: fixed;
   top: 12%;
@@ -37,11 +37,11 @@
   font-size: 2rem;
   /* font-family: 'Fredoka One', cursive; */
   font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .innerprojectDetailsInfo span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #777;
 }
 
@@ -70,11 +70,15 @@
   margin: auto;
 }
 
-.agencyPreciseCard {
+.agencyPreciseCard.agencyPreciseCard_new {
   background-image: url(../../../assets/images/AddProductAgency/smallerbg.svg);
+}
+
+.agencyPreciseCard {
   background-repeat: no-repeat;
-    background-size: contain;
+  background-size: contain;
   min-height: 30vh;
+  height: 12rem;
   background-color: #fff;
   /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   position: relative;
@@ -88,7 +92,7 @@
   z-index: -1;
   width: 100%;
   min-height: 10vh;
-  background-color:#ffffff !important;
+  background-color: #ffffff !important;
 }
 
 .agencyCardHeaderInfo {
@@ -101,6 +105,9 @@
 .agencyImageProfile {
   width: 70%;
   display: flex;
+  position: relative;
+  top: -2rem;
+  left: 0.8rem;
 }
 
 .agencyImageArea {
@@ -112,7 +119,7 @@
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  margin: 4% 3% 0% 1% !important;
+  margin: 4% 3% 0% 1%;
   background-color: #fff;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
@@ -126,20 +133,22 @@
 }
 
 .agencyProfileInfo h6 {
-  font-family: 'Segoe UI', sans-serif;
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: #707070;
-    letter-spacing: 1px;
-    padding-top: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #707070;
+  letter-spacing: 1px;
+  padding-top: 2rem;
 }
 
 .agencyProfileInfo div {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 5.6rem;
-  margin-top: -4rem;
+  margin-top: 1.5rem;
+  position: absolute;
+  right: 400px;
+  top: 0.7rem;
 }
 
 .agencyProfileInfo div p {
@@ -147,26 +156,26 @@
   margin-right: 10px;
   /* border: 1px dashed #999; */
   border-radius: 999px;
-  background-image: linear-gradient(to right, #015F9A ,#0376BA);
+  background-image: linear-gradient(to right, #015f9a, #0376ba);
   /* background-color: #02044a;220 */
   color: #fff;
-  font-family: 'Segoe UI';
+  font-family: "Segoe UI";
   font-size: 0.7rem;
   font-weight: 100;
   display: flex;
   justify-content: center;
   margin-bottom: 12px;
-  box-shadow: 1px 2px 3px rgb(0,0,0,18%);
+  box-shadow: 1px 2px 3px rgb(0, 0, 0, 18%);
 }
 
 .profileButton p {
-  font: 12px 'Segoe UI';
+  font: 12px "Segoe UI";
   color: #45a4ea;
   cursor: pointer;
   border-radius: 3px;
   padding: 7px 18px;
   background-color: #ffffff;
-  box-shadow: 1px 1px 3px rgb(0,0,0,18%);
+  box-shadow: 1px 1px 3px rgb(0, 0, 0, 18%);
 }
 
 .profileButton p i {
@@ -184,8 +193,8 @@
   /* padding: 1rem; */
   padding: 0 1rem;
   padding-bottom: 1rem;
-  margin-top: -8rem ;
-  margin-left: 10.5rem ;
+  margin-top: -2.5rem;
+  margin-left: 0.5rem;
 }
 
 .agencyAddressTeam {
@@ -195,18 +204,21 @@
   overflow: hidden;
 }
 
-.agencyAddressArea, .agencyTeamNumber {
+.agencyAddressArea,
+.agencyTeamNumber {
   display: flex;
 }
 
-.locationIcon i, .teamIcon i {
+.locationIcon i,
+.teamIcon i {
   font-size: 0.8rem;
   color: #02044a;
   margin-right: 6px;
 }
 
-.locationText, .teamNumberPart :is(p) {
-  font-family: 'Work Sans', sans-serif;
+.locationText,
+.teamNumberPart :is(p) {
+  font-family: "Work Sans", sans-serif;
   font-size: 1rem;
   /* font-weight: bold; */
 }
@@ -227,20 +239,20 @@
 
 .teamNumberPart span {
   font-size: 14px;
-  color: #015F9A;
+  color: #015f9a;
   letter-spacing: 1px;
-  font-family: 'Segoe UI',sans-serif;
+  font-family: "Segoe UI", sans-serif;
   /* font-weight: bold; */
   /* margin-right: 3px; */
 }
 
 .agencyDescInfo {
   width: 53%;
-  border:none;
+  border: none;
   padding: 0.5rem;
   height: 110px;
   overflow-y: auto;
-  color: #015F9A;
+  color: #015f9a;
 }
 
 .agencyDescInfo::-webkit-scrollbar {
@@ -261,44 +273,46 @@
 }
 
 .agencyDescInfo p {
-  font-family: 'Segoe UI';
+  font-family: "Segoe UI";
   font-size: 0.8rem;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: #015F9A;
+  color: #015f9a;
 }
 
-.agencyAddressTeam, .agencyDescInfo :is(h6) {
+.agencyAddressTeam,
+.agencyDescInfo :is(h6) {
   /* font-family: 'Fredoka One', cursive; */
-  font-family: 'Segoe UI semibold', sans-serif;
+  font-family: "Segoe UI semibold", sans-serif;
   font-size: 16px;
-  padding:2px 0px;
+  padding: 2px 0px;
 }
 
 .agencyAddressTeam {
   display: flex;
   flex-direction: column;
-  font-family: 'Segoe UI';
-    color: #707070;
-    margin-left: 6px;
-    padding: 0;
+  font-family: "Segoe UI";
+  color: #707070;
+  margin-left: 6px;
+  padding: 0;
   /* justify-content: space-around; */
 }
 
-.agencyAddressTeam h6::after, .agencyDescInfo h6::after {
+.agencyAddressTeam h6::after,
+.agencyDescInfo h6::after {
   content: none;
 }
 
 .quotationShortlistButton {
   display: flex;
-    position: absolute;
-    width: 57%;
-    font-size: smaller;
-    top: 10rem;
-    left: 23.2rem;
-    padding: 0rem 1rem;
-    align-items: center;
-    padding-bottom: 2%;
+  position: absolute;
+  width: 57%;
+  font-size: smaller;
+  top: 10rem;
+  left: 23.2rem;
+  padding: 0rem 1rem;
+  align-items: center;
+  padding-bottom: 2%;
 }
 
 .quotationShortlistButton div {
@@ -324,8 +338,8 @@
   color: #ffffff;
   height: 1.8rem;
   border-radius: 3px;
-  box-shadow: 1px 1px 3px rgb(0,0,0,18%);
-  background-image: linear-gradient(to right, #015F9A ,#0376BA);
+  box-shadow: 1px 1px 3px rgb(0, 0, 0, 18%);
+  background-image: linear-gradient(to right, #015f9a, #0376ba);
 }
 
 .quotationShortlistButton div:nth-child(2) {
@@ -333,9 +347,9 @@
   height: 1.8rem;
   border-radius: 3px;
   color: #ffffff;
-  box-shadow: 1px 1px 3px rgb(0,0,0,18%);
+  box-shadow: 1px 1px 3px rgb(0, 0, 0, 18%);
 
-  background-image: linear-gradient(to right, #0376BA , #015F9A);
+  background-image: linear-gradient(to right, #0376ba, #015f9a);
 }
 
 .agencyFilterArea {
@@ -363,18 +377,17 @@
   border-bottom: none;
 }
 .locationFilter input {
-  font-family: 'Segoe UI';
+  font-family: "Segoe UI";
   height: 35px;
-
 }
 
 .filterText {
-  font-family: 'Fredoka One', cursive;
+  font-family: "Fredoka One", cursive;
   font-size: 1.4rem;
 }
 
 .filterText::after {
-  content: '';
+  content: "";
   width: 30px;
   height: 2px;
   background-color: #000;
@@ -382,7 +395,7 @@
 }
 
 .filterHeading div p {
-  font-family: 'Segoe UI semibold', sans-serif;
+  font-family: "Segoe UI semibold", sans-serif;
   color: #3498db;
 }
 
@@ -454,14 +467,14 @@
 }
 
 .officeVisitRadio span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.1rem;
   user-select: none;
 }
 
 /* .ShortListModalOverlay, .QuotationModalOverlay {
   /* background: rgba(0, 0, 0, 0.9) !important;*/
-  /*background-image: linear-gradient(#45A4E4, #5C6DFF);
+/*background-image: linear-gradient(#45A4E4, #5C6DFF);
 } */
 
 .ShortListModal {
@@ -471,7 +484,7 @@
 }
 
 .shortlistModal {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .shortlistModal h2 {
@@ -480,7 +493,7 @@
 }
 
 .shortlistModal h2::after {
-  content: '';
+  content: "";
   width: 50px;
   height: 2px;
   background: #000;
@@ -530,7 +543,7 @@
 }
 
 .QuotationModal {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* .QuotationModal h2 {
@@ -575,7 +588,7 @@
 } */
 
 .tableContentQuotation p {
- margin-top: 3px;
+  margin-top: 3px;
   margin-right: 20px;
 }
 

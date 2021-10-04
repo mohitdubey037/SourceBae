@@ -246,15 +246,15 @@ function ProductAgencies(props) {
                                         {
                                             state?.map((value, index) => {
                                                 return (
-                                                    <div className="agencyPreciseCard">
+                                                    <div className="agencyPreciseCard agencyPreciseCard_productAgencies">
                                                         {/* <div className="agencyCardHeaderLine">
                                                         </div> */}
                                                         <div className="agencyCardHeaderInfo">
-                                                            <div className="agencyImageProfile">
-                                                                <div className="agencyImageArea">
+                                                            <div className="agencyImageProfile innerdiv">
+                                                                <div className="agencyImageArea image">
                                                                     <img src={logo} alt="" />
                                                                 </div>
-                                                                <div className="agencyProfileInfo">
+                                                                <div className="agencyProfileInfo name">
                                                                     <h6>{value?.agencyId?.agencyName}</h6>
                                                                     <div>
                                                                         {value?.agencyId?.agencyDomains?.map(p => {
@@ -277,7 +277,7 @@ function ProductAgencies(props) {
                                                             <h5>Product Information</h5>
                                                         </div>
 
-                                                        <div className="middleAgencyArea productAgencyMiddle">
+                                                        <div className="middleAgencyArea productAgencyMiddle bottom">
                                                             <div className="productAgenciesTeam">
                                                                 {/* <span className="horizontalLine"></span>
                                                                 <span className="verticalLine"></span> */}
@@ -317,7 +317,7 @@ function ProductAgencies(props) {
                                                             </div>
                                                         </div>
 
-                                                        <div className="quotationShortlistButton">
+                                                        <div className="quotationShortlistButton button">
                                                             <div>
                                                                 <NavLink style={{ textDecoration: 'none',color:"#ffffff" }} to={{
                                                                     pathname: `/product-details:${value._id}`,
