@@ -165,7 +165,6 @@ function AgencyProfile(props) {
 
   return (
     <>
-      {/* {id ? <ClientNavbar /> : <Navbar headingInfo="Agency Profile" />} */}
       {loading ? (
         <Spinner />
       ) : agencyProfileData._id !== "" ? (
@@ -174,7 +173,6 @@ function AgencyProfile(props) {
             <div className="innerProfileHeaderImage">
               <div className='backButtonAgencyProfile'>
                 <div className="backButton-child" onClick={() => props.history.goBack()}>
-                  {/* <i onClick={() => props.history.goBack()} class="fa fa-chevron-left" aria-hidden="true"></i> */}
                   <img src={Back2} alt="back" />
                   <h6 onClick={() => props.history.goBack()}>Back</h6>
                 </div>
