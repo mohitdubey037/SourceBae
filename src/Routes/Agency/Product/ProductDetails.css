@@ -30,16 +30,16 @@
 }
 
 .productDetailsArea_conditional {
-    width: 65%;
-    box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
+    width: 70%;
+    /* box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%); */
     padding: 1rem 1rem;
 }
 
-.moreAgencie {
-    width: 25%;
+/* .moreAgencie {
+    width: 20%;
     max-width: 40vw;
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-}
+} */
 
 .productDetailsHeader {
     display: flex;
@@ -50,8 +50,7 @@
     width: 105px;
     height: 105px;
     border: 1px solid #e0e0e0;
-    box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,8 +161,9 @@
 
 .headerInformation h3 {
     font-family: 'Segoe UI Semibold';
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
+    color: #707070;
 }
 
 .headerInformation p {
@@ -254,7 +254,7 @@
 
 .productFunding h3 {
     font-family: 'Segoe UI';
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 3%;
     color: #707070;
     text-align: center;
@@ -317,12 +317,16 @@
 }
 
 .workingStatusHeading h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .innerMoreAgencie {
     text-align: center;
     padding: 1rem 0;
+    width: 25%;
+    max-width: 40vw;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    height: 100%;
 }
 
 .moreAgencyList_productDetails {
@@ -337,7 +341,7 @@
 }
 
 .moreAgencyLogo_productDetails div {
-    width: 30%;
+    width: 20%;
     height: 100%;
     border: 1px solid #e0e0e0;
     display: flex;
@@ -354,23 +358,6 @@
 .moreAgencyInfo_productDetails {
     width: 100%;
 }
-
-/* .moreAgencyInfo_productDetails h5 {
-    font-family: 'Open Sans', sans-serif;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-weight: bold;
-}
-
-.moreAgencyInfo_productDetail p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 0.8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #56636a;
-} */
 
 .moreAgencySeeMore {
     margin-top: 5%;

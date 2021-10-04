@@ -39,9 +39,9 @@ button {
   height: 50px;
 }
 
-.mainQuotation.mainQuotation_agencyProfile {
+/* .mainQuotation.mainQuotation_agencyProfile {
   margin-top: 2%;
-}
+} */
 
 .backButtonAgencyProfile i {
   margin-right: 10px;
@@ -63,7 +63,6 @@ button {
 
 .innerProfileHeaderImage img {
   width: 22px;
-  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .backButton-child {

@@ -6,6 +6,10 @@
     padding: 2rem;
 }
 
+.agency-form_parent {
+    padding-top: 5rem;
+}
+
 .innerFormPhase {
     display: flex;
     justify-content: space-around;

@@ -220,7 +220,6 @@ function AgencyForm2(props) {
   }, [allServicesData]);
 
   useEffect(() => {
-    // eslint-disable-next-line array-callback-return
     const filteredTech = {};
     allTechData.forEach((tech) => {
       if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
@@ -253,122 +252,111 @@ function AgencyForm2(props) {
 
   return (
     <>
-      <Navbar />
-      <div className="margin-top">
-        <Back name="Agency form 2" />
-      </div>
-      <FormPhases value1={true} value2={true} />
-      {/* <div
-        className="backArrow_agencyForm2"
-        onClick={() => {
-          props.history.goBack();
-        }}
-      >
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-      </div> */}
-
       {loading ? (
         <Spinner />
       ) : (
-        <div className="mainTechStackForm">
-          <div className="innerTechStackForm">
-            <div className="techStackFields">
-              <div className="domainsFields">
-                <p className="domainHeading">
-                  1. Which business sector are you targeting?
-                </p>
-                {/* <div className="serviceFieldsOptions newHireAgencyForm3"> */}
-                <div className="servicesCardsHireAgency agencyForm2 domainChild">
-                  {/* <div className="tech-container"> */}
-                  {allDomainsData?.length > 0 ? (
-                    allDomainsData.map((domain) => {
-                      return (
-                        <div className="tech-container">
-                          <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                            style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}>
-                            <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+        <div className="agency-form_parent">
+          <Navbar />
+          <Back name="Agency form 2" />
+          <FormPhases value1={true} value2={true} />
+          <div className="mainTechStackForm">
+            <div className="innerTechStackForm">
+              <div className="techStackFields">
+                <div className="domainsFields">
+                  <p className="domainHeading">
+                    1. Which business sector are you targeting?
+                  </p>
+                  <div className="servicesCardsHireAgency agencyForm2 domainChild">
+                    {allDomainsData?.length > 0 ? (
+                      allDomainsData.map((domain) => {
+                        return (
+                          <div className="tech-container">
+                            <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
+                              style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}>
+                              <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                            </div>
+                            <p className={`${domain.domainName}`}>
+                              {`${domain.domainName}`}
+                            </p>
                           </div>
-                          <p className={`${domain.domainName}`}>
-                            {`${domain.domainName}`}
-                          </p>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <p>Sorry No Data Found.</p>
-                  )}
+                        );
+                      })
+                    ) : (
+                      <p>Sorry No Data Found.</p>
+                    )}
+                    {/* </div> */}
+                  </div>
                   {/* </div> */}
                 </div>
-                {/* </div> */}
-              </div>
 
-              <div className="serivcesAgency">
-                <p className="servicesHeading">
-                  2. In which services you have good command?
-                </p>
-                <div className="servicesCardsHireAgency agencyForm2">
-                  {allServicesData?.length > 0 ? (
-                    allServicesData.map((service) => {
-                      return (
-                        <div className="tech-container">
-                          <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
-                            style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}>
-                            <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                <div className="serivcesAgency">
+                  <p className="servicesHeading">
+                    2. In which services you have good command?
+                  </p>
+                  <div className="servicesCardsHireAgency agencyForm2">
+                    {allServicesData?.length > 0 ? (
+                      allServicesData.map((service) => {
+                        return (
+                          <div className="tech-container">
+                            <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
+                              style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}>
+                              <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                            </div>
+                            <p className={`${service.serviceName}`}>
+                              {`${service.serviceName}`}
+                            </p>
                           </div>
-                          <p className={`${service.serviceName}`}>
-                            {`${service.serviceName}`}
-                          </p>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <p>Sorry No Data Found.</p>
-                  )}
+                        );
+                      })
+                    ) : (
+                      <p>Sorry No Data Found.</p>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <div className="monthlyBudget">
-                <p>3. What is the monthly budget?</p>
-                <div className="domainBudgetOptions">
-                  <FormControl component="fieldset">
-                    <RadioGroup
-                      aria-label="budget"
-                      name="budget"
-                      value={apiData.agencyMonthlyBudget}
-                      onChange={handleChange}
-                    >
-                      <FormControlLabel
-                        value="1000"
-                        control={<Radio />}
-                        label="1000$-3000$"
-                      />
-                      <FormControlLabel
-                        value="3000"
-                        control={<Radio />}
-                        label="3000$-5000$"
-                      />
-                      <FormControlLabel
-                        value="5000"
-                        control={<Radio />}
-                        label="50000$-7000$"
-                      />
-                      <FormControlLabel
-                        value="7000"
-                        control={<Radio />}
-                        label="7000$-10000$"
-                      />
-                    </RadioGroup>
-                  </FormControl>
+                <div className="monthlyBudget">
+                  <p>3. What is the monthly budget?</p>
+                  <div className="domainBudgetOptions">
+                    <FormControl component="fieldset">
+                      <RadioGroup
+                        aria-label="budget"
+                        name="budget"
+                        value={apiData.agencyMonthlyBudget}
+                        onChange={handleChange}
+                      >
+                        <FormControlLabel
+                          value="1000"
+                          control={<Radio />}
+                          label="1000$-3000$"
+                        />
+                        <FormControlLabel
+                          value="3000"
+                          control={<Radio />}
+                          label="3000$-5000$"
+                        />
+                        <FormControlLabel
+                          value="5000"
+                          control={<Radio />}
+                          label="50000$-7000$"
+                        />
+                        <FormControlLabel
+                          value="7000"
+                          control={<Radio />}
+                          label="7000$-10000$"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </div>
                 </div>
-              </div>
 
-              <div className="nextBtn">
-                <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
-                  Back
-                </button>
-                <button style={{backgroundImage: 'linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff)'}} className="next-click" onClick={() => { handleNext() }}>
-                  Next
-                </button>
+                <div className="nextBtn">
+                  <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
+                    Back
+                  </button>
+                  <button style={{ backgroundImage: 'linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff)' }} className="next-click" onClick={() => { handleNext() }}>
+                    Next
+                  </button>
+                </div>
               </div>
             </div>
           </div>

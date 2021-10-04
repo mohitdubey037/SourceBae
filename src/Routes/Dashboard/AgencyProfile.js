@@ -1,28 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-// import Navbar from "./Navbar";
 import "./AgencyProfile.css";
-// import growth from "../../assets/images/AgencyProfile/growth.png";
-// import document from "../../assets/images/AgencyProfile/pdf.png";
-// import received from "../../assets/images/Quotation/received.png";
-// import responded from "../../assets/images/Quotation/responded.png";
-// import matched from "../../assets/images/Quotation/matched.png";
 import growth from '../../assets/images/Newestdashboard/Agency-Profile/total_profile_view.svg';
 import document from '../../assets/images/Newestdashboard/Agency-Profile/agency_document.svg';
 import Back2 from '../../assets/images/Back/Back2.svg';
 
 import verified from '../../assets/images/Newestdashboard/Agency-Profile/verified.svg';
-import InformationImage from '../../assets/images/Newestdashboard/Agency-Profile/Information.svg';
 import iicon from '../../assets/images/Newestdashboard/Agency-Profile/informationNew.svg';
 import skillImage from '../../assets/images/Newestdashboard/Agency-Profile/skill-advanced.svg';
-import SkillSetImage from '../../assets/images/Newestdashboard/Agency-Profile/Skill-Set.svg';
-import DevelopersImage from '../../assets/images/Newestdashboard/Agency-Profile/Developers.svg';
-import AgencyRuleImage from '../../assets/images/Newestdashboard/Agency-Profile/Agency-Rule.svg';
-import PortfolioImage from '../../assets/images/Newestdashboard/Agency-Profile/Portfolio.svg';
-import AddYourProductImage from '../../assets/images/Newestdashboard/Agency-Profile/agency_profile_add_your.svg';
 import AddYourProduct from '../../assets/images/Newestdashboard/Agency-Profile/view_product.svg'
-import PersonalLocation from '../../assets/images/Newestdashboard/Agency-Profile/Personal_location.svg';
 import Location from '../../assets/images/Newestdashboard/Agency-Profile/location.svg';
 
 
@@ -30,15 +17,9 @@ import Information from "./AgencyProfile/Information";
 import SkillsSet from "./AgencyProfile/SkillsSet";
 import Rules from "./AgencyProfile/Rules";
 import clsx from 'clsx';
-
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import MenuItem from '@material-ui/core/MenuItem';
-
-import { FilePicker } from "react-file-picker";
 import DeveloperList from "./AgencyProfile/DeveloperList";
 import Portfolio from "./AgencyProfile/Portfolio";
 import FeatureLink from "./AgencyProfile/FeatureLink";
@@ -50,11 +31,9 @@ import { Modal } from "react-responsive-modal";
 
 import instance from "../../Constants/axiosConstants";
 import * as helper from "../../shared/helper";
-import ClientNavbar from "../Client/ClientNavbar";
 
 import Spinner from "../../Components/Spinner/Spinner";
 import Moment from "react-moment";
-import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -211,16 +190,11 @@ function AgencyProfile(props) {
               ) : (
                 <>
                   <div>
-                    {/* <p onClick={onOpenModal}>
-                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                    Have a Question..?
-                  </p> */}
                     <i
                       style={{ fontSize: 22, color: "#fff" }}
                       className="fa fa-info-circle"
                       aria-hidden="true"
                       onMouseOver={() => setHoverModal(true)}
-                    // onMouseLeave={()=>onCloseModal()}
                     ></i>
                   </div>
                   <button onClick={() => props.history.push({
@@ -229,9 +203,8 @@ function AgencyProfile(props) {
                   })
                   }
                   >
-                    View Your Product{" "}
+                    View Your Product
                     <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
-                    {/* <img src={AddYourProductImage} alt="add your product" /> */}
                   </button>
                 </>
               )}
@@ -337,7 +310,6 @@ function AgencyProfile(props) {
                           : `none`
                           }`,
                       }}>
-                        {/* <i style={{ marginRight: 10 }} class="fa fa-check-circle" aria-hidden="true"></i> */}
                         <img src={verified} alt="verified" />
                         <p>{`${!agencyProfileData?.isAgencyVerified
                           ? agencyProfileData?.verificationMessage
@@ -345,10 +317,6 @@ function AgencyProfile(props) {
                           }`}</p>
                       </div>
                     )}
-                    {/* <div className="pointContent">
-                      <p>Total Profile Views</p>
-                      <h4>{agencyProfileData.agencyProfileViewCount}</h4>
-                    </div> */}
                   </div>
                 )}
               </div>
@@ -365,7 +333,6 @@ function AgencyProfile(props) {
                   </div>
                 </div>
                 <div className="agencyAddress">
-                  {/* <i class="fa fa-thumb-tack" aria-hidden="true"></i> */}
                   <img src={Location} alt="location" />
                   <span>
                     {`${agencyProfileData?.agencyAddress?.address}, ${agencyProfileData?.agencyAddress?.location}`}{" "}
@@ -394,8 +361,6 @@ function AgencyProfile(props) {
               {(id === null || id === undefined) && (
                 <div className="rightAgencyProfileDesc">
                   <div className="monthyView">
-                    {/* <div className="monthBorder"></div> */}
-                    {/* <img src={growth} alt="" /> */}
                     <div className="view_image_parent">
                       <img className="view_image" src={growth} alt="" />
                       <h3>Total Profile View</h3>
@@ -403,7 +368,6 @@ function AgencyProfile(props) {
                     <p className="profile_count">{agencyProfileData.agencyProfileViewCount}</p>
                   </div>
                   <div className="monthyView agencyProfile">
-                    {/* <div className="monthBorder"></div> */}
                     <div className="view_image_parent">
                       <img className="view_image" src={document} alt="" />
                       <h3>Agency Document</h3>
@@ -429,24 +393,16 @@ function AgencyProfile(props) {
                         <MenuItem value={agencyProfileData?.agencyDocuments[2]?.documentLink}>Pancard</MenuItem>
                       </Select>
                     </FormControl>
-
-                    {/* <FilePicker
-                      extensions={["pdf"]}
-                      onChange={(FileObject) => { }}
-                      onError={(errMsg) => { }}
-                    > */}
                     <a style={{ textDecoration: 'none' }} className="uploadButton" href={link} target="new">
                       View Document
                     </a>
-                    {/* </FilePicker> */}
                   </div>
                 </div>
               )}
             </div>
-            {/* <div className="seperator"></div> */}
           </div>
 
-          <div className="mainQuotation mainQuotation_agencyProfile">
+          <div className="mainQuotation_agencyProfile">
             <div className="innerQuotation_agencyProfile">
               <div class="nav nav-tabs nav-tabs_agencyProfile" id="nav-tab" role="tablist">
                 <div id="nav-home-tab"
