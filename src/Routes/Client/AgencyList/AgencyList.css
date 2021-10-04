@@ -1,11 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
 .Navbar-parent.margin-left {
   width: 90%;
   margin-left: 10%;
 }
 
-.sidebar-parent_agencyList .container-sidebar {
-  top: 0;
+.main_parent_agencyList {
+  width: 89%;
+  margin-left: 11%;
+  position: relative;
+}
+
+.innerProjectDetail_parent {
+  padding-top: 5rem;
 }
 
 .backArrow_agencyList {
@@ -47,29 +53,23 @@
   height: 50%;
 }
 
-.innerprojectDetailsInfo_agencyList {
-  width: 95%;
-  margin: auto;
-  margin-top: 10px;
-  margin-left: 12%;
-}
-
 .addressTeam_AgencyList {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 }
+.innerprojectDetailsInfo_agencyList {
+  margin-left: 0.6rem;
+}
 
 .innerprojectDetailsInfo_agencyList p {
   font-size: 1rem;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
+  color: #707070;
+  font-family: "Segoe UI semibold", sans-serif;
 }
 
 .innerprojectDetailsInfo_agencyList span {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: normal;
-  color: #000;
+   font-family: "Segoe UI", sans-serif;
 }
 
 .innerprojectDetailsInfo_agencyList span em {
@@ -83,24 +83,21 @@
   align-items: center;
 }
 
-.innerAgencyList_agencyList {
-  margin-top: 1%;
-  width: 100%;
-  display: flex;
-  margin-left: 12%;
-}
-
 .AgencyCardsArea_agencyList {
-  width: 80%;
+  /* background-image: url(../../../assets/images/AddProductAgency/agencybg.svg); */
+
+  width: 98%;
 }
 
 .agencyPreciseCard_agencyList {
   min-height: 30vh;
   background-color: #fff;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 2px 4px 2px rgba(119, 95, 95, 0.2); */
   position: relative;
   z-index: 1;
+  height: 16rem;
   margin-bottom: 4%;
+  background-image: url(../../../assets/images/AddProductAgency/agencybg1.svg);
 }
 
 .agencyCardHeaderLine {
@@ -126,7 +123,6 @@
 .agencyImageArea {
   width: 100px;
   height: 100px;
-  margin-right: 2%;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -142,7 +138,7 @@
 }
 
 .agencyProfileInfo h6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 6%;
@@ -160,13 +156,13 @@
   border-radius: 999px;
   background-color: #02044a;
   color: #fff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.8rem;
   font-weight: bold;
 }
 
 .profileButton p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #3498db;
   font-weight: bold;
   cursor: pointer;
@@ -194,18 +190,21 @@
   overflow: hidden;
 }
 
-.agencyAddressArea, .agencyTeamNumber {
+.agencyAddressArea,
+.agencyTeamNumber {
   display: flex;
 }
 
-.locationIcon i, .teamIcon i {
+.locationIcon i,
+.teamIcon i {
   font-size: 1.2rem;
   color: #02044a;
   margin-right: 10px;
 }
 
-.locationText, .teamNumberPart :is(p) {
-  font-family: 'Work Sans', sans-serif;
+.locationText,
+.teamNumberPart :is(p) {
+  font-family: "Work Sans", sans-serif;
   font-size: 1rem;
   /* font-weight: bold; */
 }
@@ -252,18 +251,20 @@
 }
 
 .agencyDescInfo p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.agencyAddressTeam, .agencyDescInfo :is(h6) {
-  font-family: 'Fredoka One', cursive;
+.agencyAddressTeam,
+.agencyDescInfo :is(h6) {
+  font-family: "Fredoka One", cursive;
 }
 
-.agencyAddressTeam h6::after, .agencyDescInfo h6::after {
-  content: '';
+.agencyAddressTeam h6::after,
+.agencyDescInfo h6::after {
+  content: "";
   width: 40px;
   height: 2px;
   display: block;
@@ -306,7 +307,7 @@
 }
 
 .agencyFilterArea_agencyList {
-  margin-top: '2px';
+  margin-top: "2px";
   width: 22%;
   position: relative;
   /* overflow: hidden; */
@@ -332,12 +333,12 @@
 }
 
 .filterText {
-  font-family: 'Fredoka One', cursive;
+  font-family: "Fredoka One", cursive;
   font-size: 1.4rem;
 }
 
 .filterText::after {
-  content: '';
+  content: "";
   width: 30px;
   height: 2px;
   background-color: #000;
@@ -345,7 +346,7 @@
 }
 
 .filterHeading div p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   color: #3498db;
 }
@@ -357,15 +358,17 @@
   padding-bottom: 5%;
 }
 
-.locationFilter p, .officeVisitFilter p {
-  font-family: 'Open Sans', sans-serif;
+.locationFilter p,
+.officeVisitFilter p {
+  font-family: "Open Sans", sans-serif;
   /* transform: translateY(10px); */
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-.locationFilter p::after, .officeVisitFilter p::after {
-  content: '';
+.locationFilter p::after,
+.officeVisitFilter p::after {
+  content: "";
   width: 20px;
   height: 2px;
   background-color: #000;
@@ -378,7 +381,7 @@
   height: 40px;
   padding-left: 10px;
   font-size: 0.9rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   border: 1px solid #999;
 }
 
@@ -418,15 +421,16 @@
 }
 
 .officeVisitRadio span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.1rem;
   user-select: none;
 }
 
-.ShortListModalOverlay, .QuotationModalOverlay {
+.ShortListModalOverlay,
+.QuotationModalOverlay {
   background: #707070 !important;
   /* background-image: linear-gradient(#45A4E4, #5C6DFF); */
-opacity: 0.3;
+  opacity: 0.3;
 }
 
 .ShortListModal {
@@ -436,17 +440,17 @@ opacity: 0.3;
 }
 
 .shortlistModal_agencyList {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .shortlistModal_agencyList h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   margin-bottom: 4%;
 }
 
 .shortlistModal_agencyList h2::after {
-  content: '';
+  content: "";
   width: 50px;
   height: 2px;
   background: #000;
@@ -500,8 +504,8 @@ opacity: 0.3;
 }
 
 .QuotationModal {
-  color:#707070;
-  font-family: 'Open Sans', sans-serif;
+  color: #707070;
+  font-family: "Open Sans", sans-serif;
 }
 
 .QuotationModal h2 {
@@ -588,7 +592,7 @@ opacity: 0.3;
   height: 45px;
   outline: none;
   border: none;
-  background-image: linear-gradient(#462CCA, #5C6DFF);
+  background-image: linear-gradient(#462cca, #5c6dff);
   background-color: #3498db;
   color: #fff;
   font-weight: bold;

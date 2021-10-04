@@ -95,7 +95,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 1rem;
+  padding: 1.3rem;
 }
 
 .agencyImageProfile {
@@ -104,15 +104,15 @@
 }
 
 .agencyImageArea {
-  width: 100px;
-  height: 100px;
+  width: 135px;
+  height: 135px;
   margin-right: 2%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  margin-left: 1rem;
+  margin: 4% 3% 0% 1% !important;
   background-color: #fff;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
@@ -131,17 +131,19 @@
     font-size: 1.3rem;
     color: #707070;
     letter-spacing: 1px;
+    padding-top: 2rem;
 }
 
 .agencyProfileInfo div {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1rem;
+  margin-left: 5.6rem;
+  margin-top: -4rem;
 }
 
 .agencyProfileInfo div p {
-  padding: 0.3rem 1.9rem;
+  padding: 0.3rem 0.8rem;
   margin-right: 10px;
   /* border: 1px dashed #999; */
   border-radius: 999px;
@@ -177,10 +179,13 @@
 
 .middleAgencyArea {
   display: flex;
+  height: 6rem;
   justify-content: space-between;
   /* padding: 1rem; */
   padding: 0 1rem;
   padding-bottom: 1rem;
+  margin-top: -8rem ;
+  margin-left: 10.5rem ;
 }
 
 .agencyAddressTeam {
@@ -223,6 +228,7 @@
 .teamNumberPart span {
   font-size: 14px;
   color: #015F9A;
+  letter-spacing: 1px;
   font-family: 'Segoe UI',sans-serif;
   /* font-weight: bold; */
   /* margin-right: 3px; */
@@ -234,7 +240,6 @@
   padding: 0.5rem;
   height: 110px;
   overflow-y: auto;
-  margin-top: -1.3rem;
   color: #015F9A;
 }
 
@@ -265,7 +270,9 @@
 
 .agencyAddressTeam, .agencyDescInfo :is(h6) {
   /* font-family: 'Fredoka One', cursive; */
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI semibold', sans-serif;
+  font-size: 16px;
+  padding:2px 0px;
 }
 
 .agencyAddressTeam {
@@ -273,6 +280,8 @@
   flex-direction: column;
   font-family: 'Segoe UI';
     color: #707070;
+    margin-left: 6px;
+    padding: 0;
   /* justify-content: space-around; */
 }
 
@@ -285,8 +294,8 @@
     position: absolute;
     width: 57%;
     font-size: smaller;
-    top: 14.3rem;
-    left: 9rem;
+    top: 10rem;
+    left: 23.2rem;
     padding: 0rem 1rem;
     align-items: center;
     padding-bottom: 2%;

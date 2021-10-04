@@ -38,13 +38,14 @@ function ClientHireDeveloper(props) {
   return (
     <>
       <Navbar />
-      <div className="conditional_back_parent">
-        <Back name="Requested Developers"/>
-      </div>
+      {/* <div className="conditional_back_parent"> */}
+        {/* <Back name="Requested Developers"/> */}
+      {/* </div> */}
       {loading ? (
         <Spinner />
       ) : (
-        <>
+        <><div style={{paddingTop:"5rem"}}>
+        <Back name="Requested Developers"/>
           <div className="mainAgencyList">
             <div className="innerAgencyList">
               <div className="AgencyCardsArea">
@@ -78,7 +79,7 @@ function ClientHireDeveloper(props) {
 
                         <div className="middleAgencyArea">
                           <div className="agencyAddressTeam">
-                            <h6 style={{fontSize:"16px",fontFamily: 'Segoe UI semibold'}}>Developers Data</h6>
+                            <h6 style={{fontSize:"16px", padding:"2px",fontFamily: 'Segoe UI semibold'}}>Developers Data</h6>
                             <div className="agencyAddressArea">
                               <div className="locationIcon">
                                 <i className="fa fa-globe" aria-hidden="true"></i>
@@ -113,6 +114,7 @@ function ClientHireDeveloper(props) {
                 }
               </div>
             </div>
+          </div>
           </div>
         </>
       )}
