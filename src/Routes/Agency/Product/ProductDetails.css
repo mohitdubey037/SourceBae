@@ -1,23 +1,11 @@
-/* .Navbar-parent {
-    padding: 5px 10px;
-} */
-/* 
-.Navbar-parent .navbar {
-    border: 2px solid rgb(214, 209, 209);
-    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-} */
-/* 
-.Navbar-parent .navbar .navbar-heading{
-    margin-left: 2%;
-} */
-
-
 .mainProductDetails{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 2%;
+    padding-top: 5rem;
+    flex-direction: column;
 }
 
 .innerProductDetails{
@@ -26,6 +14,8 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 2%;
+    flex-direction: column;
+    padding-top: 5rem;
 }
 .productDetailsArea{
     margin-left: 80px;
@@ -37,8 +27,9 @@
 .innerProductDetails_conditional {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 2%;
+    padding: 0 1rem;
 }
 
 .productDetailsArea_conditional {
@@ -49,13 +40,8 @@
 
 .moreAgencie{
     width: 25%;
-    max-width: 40vw;    
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    top: 5%;
+    max-width: 40vw;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
 }
 
 .productDetailsHeader{

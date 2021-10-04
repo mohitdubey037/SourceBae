@@ -193,13 +193,7 @@ function ProductDetails(props) {
 
   return (
     <>
-      {/* {condition === "Agency" ? <Navbar /> : <ClientNavbar />} */}
-      {/* <div className="Navbar-parent"> */}
-        <Navbar />
-      {/* </div>\ */}
-      <div className="back-parent marginLeft"> 
-        <Back name="Product Details" />
-      </div>
+      <Navbar />
       {loading === true ? <Spinner /> :
         err ? (
           <>
@@ -213,6 +207,7 @@ function ProductDetails(props) {
           details?.map((value, index) => {
             return (
               <div className="mainProductDetails">
+                <Back name="Product Details" />
                 <div
                   className={
                     Role === "Client"
@@ -419,8 +414,8 @@ function ProductDetails(props) {
                                 <>
                                   <div style={{ cursor: "pointer" }}
                                     onClick={() => props.history.push(
-                                        `/product-details/:${value._id}`
-                                      )}
+                                      `/product-details/:${value._id}`
+                                    )}
                                     className="moreAgencyCard_productDetails"
                                   >
                                     <div className="moreAgencyLogo_productDetails">

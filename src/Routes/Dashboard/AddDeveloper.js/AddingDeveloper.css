@@ -1,3 +1,7 @@
+.mainAddingDeveloper_parent {
+  padding-top: 5rem;
+}
+
 .mainAddingDeveloper {
   width: 100%;
   display: flex;
@@ -8,9 +12,7 @@
 .innerAddingDeveloper {
   width: 65%;
   display: flex;
-  /* box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%); */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  /* box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2); */
   background: #fff;
   border-radius: 8px;
 }
@@ -19,18 +21,12 @@
   height: 36rem;
   width: 29%;
   background-color: #ffffff;
-  /* box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2); */
-  /* box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%); */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-border-radius: 8px;
+  border-radius: 8px;
   padding: 2rem;
-  /* margin: 0.5rem; */
-  /* border-top-right-radius: 35px;
-  border-bottom-right-radius: 35px; */
   position: relative;
   overflow: hidden;
   z-index: 1;
-  /* left: -14%; */
 }
 
 .inputField2 .developerName_addingDeveloper .mohit {
@@ -126,7 +122,6 @@ border-radius: 8px;
 .pointsToRemember ul li {
   font-family: 'Segoe UI';
   color: #45A4EA;
-  /* margin: 1.5rem 0; */
 }
 
 .inputForm {
@@ -157,15 +152,12 @@ border-radius: 8px;
   width: 50%;
   display: flex;
   flex-direction: column;
-  /* height: 83%; */
-  /* justify-content: space-between; */
 }
 
 .inputField2 .developerName_addingDeveloper {
   width: 31%;
   display: flex;
   flex-direction: column;
-  /* height: 83%; */
   justify-content: space-between;
 }
 
@@ -173,9 +165,7 @@ border-radius: 8px;
   width: 67%;
   display: flex;
   flex-direction: column;
-  /* height: 80%; */
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .upload-box {
@@ -225,18 +215,8 @@ border-radius: 8px;
   font-family: 'Segoe UI';
   font-size: 12px;
   text-transform: capitalize;
-  /* color: #707070; */
   margin-top: 0.4rem;
 }
-
-/* .black-strip_newestAddDeveloper {
-  background-color: #000000;
-  position: relative;
-  width: 79px;
-  height: 1px;
-  top: 22px;
-  left: -23px;
-} */
 
 #browsers {
   font-size: 2rem;
@@ -281,11 +261,7 @@ border-radius: 8px;
 .fileUploadButton_addingDeveloper div {
   width: 100%;
   text-align: center;
-  /* padding: 0.3rem 0rem; */
   cursor: pointer;
-  /* font: normal 600 18px 'Inter'; */
-  /* line-height: 150%; */
-  /* text-transform: capitalize; */
   color: #707070;
   display: flex;
   justify-content: space-between;
@@ -381,12 +357,10 @@ border-radius: 8px;
   font-size: 14px;
   text-align: center;
   color: white;
-  /* box-shadow: 0 1px 4px 1px rgb(0 0 0 / 12%); */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .mainAddingDeveloper .submitButton button:hover {
-  /* box-shadow: 0 2px 8px 2px rgb(0 0 0 / 20%); */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
@@ -507,7 +481,6 @@ border-radius: 8px;
 
 .mainAddingDeveloper .MuiInputBase-root {
   font-family: 'Open Sans', sans-serif !important;
-  /* border: none !important; */
   background-color: #fff !important;
 }
 
@@ -515,24 +488,9 @@ border-radius: 8px;
   background-color: #fff !important;
 }
 
-/* .MuiSelect-select {
-  padding-left: 10px !important;
-  background-color: #fff !important;
-  height: 30px !important;
-  font-size: 1.2rem !important;
-  margin-top: 10px !important;
-  border: 1px solid #ddd !important;
-  padding-top: 10px !important;
-} */
-
 .MuiInputBase-root:hover {
-  /* border: none !important; */
   outline: none;
 }
-
-/* .MuiSelect-select:focus {
-  background-color: #f1f1f1 !important;
-} */
 
 .nextButton {
   margin-top: 2%;
