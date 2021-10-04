@@ -490,25 +490,7 @@ function ProductForm(props) {
 
           <div className="mainProductFormArea">
             <div className="innerProductFormArea productForm">
-              {/* <div className="straightLine">
-                <span>01</span>
-                <span>02</span>
-                <span>03</span>
-                <span>04</span>
-                <span>05</span>
-              </div> */}
               <div className="form_1">
-                {/* <div className="illustrationArea">
-                  <img src={product1} alt="" />
-                </div> */}
-
-                {/* <div className="one_line">
-                  <div className="orange_color">
-                    <div className="one-orange_color">
-                      <p>01</p>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="form1_Fields">
                   <section>
                     <ul>
@@ -519,21 +501,12 @@ function ProductForm(props) {
                     <FilePicker
                       extensions={['jpg', 'png', 'jpeg']}
                       onChange={inputFileChoosen}
-                      // onError={error => handleUploadError(error)}
                       >
                       <button className="filePicker">
-                        {/* <i className="fa fa-upload" aria-hidden="true" /> */}
                           <p style={{marginTop:"0", color:"#707070", fontFamily:"Segoe UI", fontSize:"14px"}}>Pick File</p>
                           <img src={fileIcon} alt="finish" />
                       </button>
                     </FilePicker>
-                    {/* <input
-                      onChange={inputFileChoosen}
-                      type="file"
-                      name=""
-                      id="fileInput"
-                      accept="image/png, image/gif, image/jpeg, image/jpg"
-                    /> */}
                     {errors.filePicked && (
                       <p className="error_productForm">
                         {errors.filePicked}
@@ -587,16 +560,6 @@ function ProductForm(props) {
               </div>
 
               <div className="form_2">
-                {/* <div className="illustrationArea">
-                  <img src={product2} alt="" />
-                </div> */}
-                {/* <div className="two_line">
-                  <div className="orange_color">
-                    <div className="one-orange_color">
-                      <p>02</p>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="form2_Fields">
                   <section>
                     <ul>
@@ -727,13 +690,6 @@ function ProductForm(props) {
               </div>
 
               <div className="form_3">
-                {/* <div className="three_line">
-                  <div className="orange_color">
-                    <div className="one-orange_color">
-                      <p>03</p>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="form3_Fields">
                   <section className="previousFunding">
                     <ul>
@@ -749,8 +705,6 @@ function ProductForm(props) {
                         onChange={(event) => handleChange(event)}
                       >
                         <FormControlLabel
-                          // style={{fontSize: "0.7rem",
-                          //         fontFamily: 'Segoe UI'}}
                           className={clsx(classes.root)}
                           value="true"
                           control={<BlueRadio />}
@@ -949,22 +903,9 @@ function ProductForm(props) {
                     </FormControl>
                   </section>
                 </div>
-                {/* <div className="illustrationArea">
-                  <img src={product3} alt="" />
-                </div> */}
               </div>
 
               <div className="form_4">
-                {/* <div className="illustrationArea">
-                  <img src={product4} alt="" />
-                </div> */}
-                {/* <div className="four_line">
-                  <div className="orange_color">
-                    <div className="one-orange_color">
-                      <p>04</p>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="form4_Fields">
                   <section>
                     <ul>
@@ -1087,18 +1028,10 @@ function ProductForm(props) {
                   </section>
                 </div>
               </div>
-
-              {/* <div className="form_5"> */}
-
-              {/* <div className="illustrationArea">
-                  <img src={product5} alt="" />
-                </div> */}
-              {/* </div> */}
               <div className="submitButton productForm">
                 <div className="innerSubmitButton">
                   <div className="subbutton" onClick={() => updateButtonHandler()}>
                     <p> Upload Your Product{" "}
-                      {/* <i className="fa fa-hand-pointer-o" aria-hidden="true"></i> */}
                     </p>
                   </div>
                   <div className="black_color_shadow-productForm"></div>
