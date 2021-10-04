@@ -245,7 +245,6 @@ function ProductDetails(props) {
                           {value?.agencyId?.agencyDomains.map((a) => {
                             return (
                               <p>
-                                {" "}
                                 <i class="fa fa-tag" aria-hidden="true"></i>
                                 {a?.domainId?.domainName}
                               </p>
@@ -259,7 +258,7 @@ function ProductDetails(props) {
                         <div></div>
                         <div onClick={onOpenModal}>
                           <p>
-                            Connect{" "}
+                            Connect
                             <i
                               class="fa fa-long-arrow-right"
                               aria-hidden="true"
@@ -273,13 +272,13 @@ function ProductDetails(props) {
                       <div className="headerInformation">
                         <h3>Product Information</h3>
                         <div className="productDesc">
+                          <div className="productDescPara">
+                            <p>{value?.productDescription}</p>
+                          </div>
                           <div className="productDescImage">
                             <div className="imageContainer">
                               <img src={value?.productLogo} alt="" />
                             </div>
-                          </div>
-                          <div className="productDescPara">
-                            <p>{value?.productDescription}</p>
                           </div>
                         </div>
                       </div>
@@ -290,13 +289,11 @@ function ProductDetails(props) {
                         return (
                           <div style={{ display: (value.content[0].ans === '' || value.content[0].ans === null) && 'none' }} className="allPointsCard">
                             <div className="allPointCardHeading">
-                              <p>{value?.heading}</p>
-                              <div className="barricade">
-                                <i
-                                  class="fa fa-ellipsis-v"
-                                  aria-hidden="true"
-                                ></i>
-                              </div>
+                              <ul>
+                                <li>
+                                  {value?.heading}
+                                </li>
+                              </ul>
                             </div>
                             <div className="allPointsCardContent">
                               {value?.content.map((val) => {
@@ -314,8 +311,7 @@ function ProductDetails(props) {
                                                   rel="noreferrer"
                                                 >
                                                   {link}
-                                                </a>{" "}
-                                                <br /> <br />
+                                                </a>
                                               </>
                                             );
                                           })}
@@ -338,7 +334,6 @@ function ProductDetails(props) {
                       </div>
                       <div className="innerProductFunding">
                         <div className="totalRevenue">
-                          <span className="middleLine"></span>
                           <div>
                             <span>Total Revenue</span>
                             <p>₹100k</p>
@@ -363,13 +358,11 @@ function ProductDetails(props) {
                           return (
                             <div style={{ display: value.content[0].ans === '' && 'none' }} className="allPointsCard">
                               <div className="allPointCardHeading">
-                                <p>{value?.heading}</p>
-                                <div className="barricade">
-                                  <i
-                                    class="fa fa-ellipsis-v"
-                                    aria-hidden="true"
-                                  ></i>
-                                </div>
+                                <ul>
+                                  <li>
+                                    {value?.heading}
+                                  </li>
+                                </ul>
                               </div>
                               <div className="allPointsCardContent">
                                 {value?.content.map((val) => {
@@ -384,8 +377,7 @@ function ProductDetails(props) {
                                             rel="noreferrer"
                                           >
                                             {val?.ans}
-                                          </a>{" "}
-                                          <br /> <br />{" "}
+                                          </a>
                                         </>
                                       ) : (
                                         <p>{val?.ans}</p>
