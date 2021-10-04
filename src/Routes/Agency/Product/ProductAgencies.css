@@ -170,6 +170,19 @@
     box-shadow: 0px 3px 6px rgb(0 0 0 / 18%);
 }
 
+.agencyPreciseCard {
+    background-image: url(../../../assets/images/AddProductAgency/background.svg);
+    background-repeat: no-repeat;
+      background-size: contain;
+    min-height: 30vh;
+    background-color: #fff;
+    /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
+    position: relative;
+    z-index: 1;
+    margin-bottom: -5%;
+    /* border-radius: 10px; */
+  }
+
 .horizontalLine {
     position: absolute;
     width: 100%;
