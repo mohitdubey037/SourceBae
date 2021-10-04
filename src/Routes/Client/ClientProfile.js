@@ -106,9 +106,9 @@ function ClientProfile() {
             <div className="Navbar-parent">
                 <Navbar />
             </div>
-            <div className="back-parent marginLeft">
-                <Back name="Hire Agency" />
-            </div>
+            {/* <div className="back-parent marginLeft"> */}
+              
+            {/* </div> */}
             {err ?
                 <>
                     <div style={{ textAlign: 'center', width: '100%' }}>
@@ -118,15 +118,16 @@ function ClientProfile() {
                 </>
                 :
                 loading ? <Spinner /> :
-
+                    <div style={{paddingTop:"5rem",backgroundImage: 'linear-gradient(to right, #015F9A , #0376BA)'}}>
+                    <Back name="Hire Agency" />
                     <div className="mainClientProfile">
                         <div className="innerClientProfile">
-                            <div className="clientProfileHeading">
+                            <div className="clientProfileHeading" style={{display:"flex", justifyContent:"center"}}>
                                 <h2>My Profile</h2>
                             </div>
 
                             <div className="myProfileInfo">
-                                <div className="leftLineClient"></div>
+                                {/* <div className="leftLineClient"></div> */}
 
                                 {
                                     isEdit === false ?
@@ -163,6 +164,7 @@ function ClientProfile() {
                             </div>
                         </div>
                     </div>
+                </div>    
             }
         </>
     );

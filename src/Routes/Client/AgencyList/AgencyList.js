@@ -4,18 +4,18 @@ import "./AgencyList.css";
 import "react-responsive-modal/styles.css";
 
 import { Modal } from "react-responsive-modal";
-import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
-import Sidebar from '../../../Components/ClientNewestDashboard/Sidebar/Sidebar';
+import NO_DATA_FOUND from "../../../assets/images/No_Data/noData.jpg";
+import Sidebar from "../../../Components/ClientNewestDashboard/Sidebar/Sidebar";
 
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
 import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
-import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
-import Back from '../../../Components/Back/Back';
+import Navbar from "../../../Components/ClientNewestDashboard/Navbar/Navbar";
+import Back from "../../../Components/Back/Back";
 
 function AgencyList(props) {
-  const Role = localStorage.getItem('role')
+  const Role = localStorage.getItem("role");
   let { projectId } = useParams();
 
   projectId = projectId ? helper.cleanParam(projectId) : "";
@@ -27,11 +27,11 @@ function AgencyList(props) {
   const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(-1);
 
-  const [project, setProject] = useState([])
+  const [project, setProject] = useState([]);
 
   const openShortlistModal = (_id, indexParam) => {
     setOpen(true);
-    setIndex(indexParam)
+    setIndex(indexParam);
     setShortlistFormData({
       ...shortlistFormData,
       agencyId: _id,
@@ -40,7 +40,7 @@ function AgencyList(props) {
   const onCloseModal = () => setOpen(false);
 
   const onOpenQuotationModel = (_id, indexParam) => {
-    setIndex(indexParam)
+    setIndex(indexParam);
     setOpenQuotation(true);
     setQuotationFormData({
       ...QuotationFormData,
@@ -73,8 +73,8 @@ function AgencyList(props) {
   }, []);
 
   useEffect(() => {
-    console.log(project)
-  }, [project])
+    console.log(project);
+  }, [project]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -93,28 +93,28 @@ function AgencyList(props) {
   };
 
   const shortlistHandler = () => {
-    console.log(agencyList, "agencyList")
+    console.log(agencyList, "agencyList");
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
-        console.log(agencyList, Object.keys(agencyList))
-        const tempAgencyList = [...agencyList]
-        tempAgencyList[index].isAgencyShortListed = true
-        setAgencyList(tempAgencyList)
+        console.log(agencyList, Object.keys(agencyList));
+        const tempAgencyList = [...agencyList];
+        tempAgencyList[index].isAgencyShortListed = true;
+        setAgencyList(tempAgencyList);
       })
       .catch((err) => {
         console.log(err);
       });
-    onCloseModal()
+    onCloseModal();
   };
 
   const quotationSubmitHandler = () => {
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, QuotationFormData)
       .then(function (response) {
-        const tempAgencyList = [...agencyList]
-        tempAgencyList[index].isAgencyAskedForQuotation = true
-        setAgencyList(tempAgencyList)
+        const tempAgencyList = [...agencyList];
+        tempAgencyList[index].isAgencyAskedForQuotation = true;
+        setAgencyList(tempAgencyList);
       })
       .catch((err) => {
         console.log(err);
@@ -123,154 +123,158 @@ function AgencyList(props) {
   };
 
   useEffect(() => {
-    console.log(shortlistFormData)
+    console.log(shortlistFormData);
   }, [shortlistFormData]);
 
   return (
     <>
-      <div className="Navbar-parent margin-left position">
-        <Navbar />
-      </div>
-      <div className="top-0 sidebar-parent_agencyList">
-        <Sidebar />
-      </div>
-      {/* <div className="back-parent margin-left">
-        <Back name="Agency List" />
-      </div> */}
-      {loading ? (<Spinner />) : (
+      <Sidebar />
+      {loading ? (
+        <Spinner />
+      ) : (
         <>
-          <div className="innerprojectDetailsInfo_agencyList">
-            <p>{`Project Title:- `}
-              <span>
-                {project.projectName}
-              </span></p>
-            <p style={{ fontSize: '1rem' }}>
-              {`Budget:-`}
-              <span>
-                {project.projectProposalCost}
-              </span>
-            </p>
-          </div>
-          <div className="mainAgencyList_agencyList">
-            {agencyList?.length > 0 ?
-              <div className="innerAgencyList_agencyList">
-                <div className="AgencyCardsArea_agencyList">
-                  {agencyList?.length > 0 &&
-                    agencyList?.map((agency, index) => {
-                      return (
-                        <div className="agencyPreciseCard_agencyList">
-                          <div className="agencyCardHeaderInfo">
-                            <div className="agencyImageProfile">
-                              <div className="agencyImageArea">
-                                <img src={agency.agencyLogo} alt="agency Logo" />
-                              </div>
-                              <div className="agencyProfileInfo">
-                                <h6>{agency.agencyName}</h6>
-                                <div>
-                                  <p>Media & Social</p>
-                                  <p>Proficient</p>
+          <div className="main_parent_agencyList">
+            <Navbar />
+            <div className="innerProjectDetail_parent">
+              <div className="innerprojectDetailsInfo_agencyList">
+                <p>
+                  {`Project Title:- `}
+                  <span>{project.projectName}</span>
+                </p>
+                <p style={{ fontSize: "1rem" }}>
+                  {`Budget:-`}
+                  <span>{project.projectProposalCost}</span>
+                </p>
+              </div>
+              <div className="mainAgencyList_agencyList">
+                {agencyList?.length > 0 ? (
+                  <div className="innerAgencyList_agencyList">
+                    <div className="AgencyCardsArea_agencyList">
+                      {agencyList?.length > 0 &&
+                        agencyList?.map((agency, index) => {
+                          return (
+                            <div className="agencyPreciseCard_agencyList">
+                              <div className="agencyCardHeaderInfo">
+                                <div className="agencyImageProfile">
+                                  <div className="agencyImageArea">
+                                    <img
+                                      src={agency.agencyLogo}
+                                      alt="agency Logo"
+                                    />
+                                  </div>
+                                  <div className="agencyProfileInfo">
+                                    <h6>{agency.agencyName}</h6>
+                                    <div>
+                                      <p>Media & Social</p>
+                                      <p>Proficient</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="profileButton">
+                                  {agency.productId !== undefined ? (
+                                    <p
+                                      onClick={() =>
+                                        props.history.push({
+                                          pathname: `/agency-profile:${agency._id}`,
+                                          condition: `Client`,
+                                        })
+                                      }
+                                    >
+                                      View Profile Details
+                                      <i
+                                        class="fa fa-angle-double-right"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </p>
+                                  ) : null}
                                 </div>
                               </div>
-                            </div>
-                            <div className="profileButton">
-                              {/* {agency.productId !== undefined ?
-                                <p onClick={() => props.history.push({
-                                  pathname: `/product-details:${agency.productId}`,
-                                  condition: `Client`
-                                })}>
-                                  View Agency Product{" "}
-                                  <i
-                                    class="fa fa-angle-double-right"
-                                    aria-hidden="true"
-                                  ></i>
-                                </p>
-                                : null
-                              } */}
-                              {agency.productId !== undefined ?
-                                <p onClick={() => props.history.push({
-                                  pathname: `/agency-profile:${agency._id}`,
-                                  condition: `Client`
-                                })}>
-                                  View Profile Details
-                                  <i
-                                    class="fa fa-angle-double-right"
-                                    aria-hidden="true"
-                                  ></i>
-                                </p>
-                                : null
-                              }
-                            </div>
-                          </div>
 
-                          <div className="middleAgencyArea">
-                            <div className="agencyAddressTeam addressTeam_AgencyList">
-                              <h6>Miscellaneous Info</h6>
-                              <div className="agencyAddressArea">
-                                <div className="locationIcon">
-                                  <i class="fa fa-globe" aria-hidden="true"></i>
+                              <div className="middleAgencyArea">
+                                <div className="agencyAddressTeam addressTeam_AgencyList">
+                                  <h6 style={{fontOpticalSizing:"14px"}}>Miscellaneous Info</h6>
+                                  <div className="agencyAddressArea">
+                                    <div className="locationIcon">
+                                      <i
+                                        class="fa fa-globe"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </div>
+                                    <div className="locationText">
+                                      <p>{`${agency?.agencyAddress?.address} ${agency?.agencyAddress?.location}`}</p>
+                                    </div>
+                                  </div>
+                                  <div className="agencyAddressArea">
+                                    <div className="teamIcon">
+                                      <i
+                                        class="fa fa-users"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </div>
+                                    <div className="teamNumberPart">
+                                      <p style={{fontSize:"14px"}}>
+                                        <span style ={{fontFamily:"Segoe UI" ,color:"#707070", fontSize:"14px"}}>{agency.agencyTeamSize}</span>
+                                        members
+                                      </p>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className="locationText">
-                                  <p>{`${agency?.agencyAddress?.address} ${agency?.agencyAddress?.location}`}</p>
+                                <div className="agencyDescInfo">
+                                  <h6>Description</h6>
+                                  <p>{agency.agencyDescription}</p>
                                 </div>
                               </div>
-                              <div className="agencyAddressArea">
-                                <div className="teamIcon">
-                                  <i class="fa fa-users" aria-hidden="true"></i>
-                                </div>
-                                <div className="teamNumberPart">
-                                  <p>
-                                    <span>{agency.agencyTeamSize}</span>members
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="agencyDescInfo">
-                              <h6>Description</h6>
-                              <p>{agency.agencyDescription}</p>
-                            </div>
-                          </div>
 
-                          <div className="quotationShortlistButton">
-                            {agency.isAgencyAskedForQuotation ? (
-                              <div
-                                onClick={() =>
-                                  props.history.push({
-                                    pathname: `/project-details/${projectId}/${agency._id}`,
-                                    condition: "Client",
-                                  })
-                                }
-                              >
-                                <p>Show Details</p>
+                              <div className="quotationShortlistButton">
+                                {agency.isAgencyAskedForQuotation ? (
+                                  <div
+                                    onClick={() =>
+                                      props.history.push({
+                                        pathname: `/project-details/${projectId}/${agency._id}`,
+                                        condition: "Client",
+                                      })
+                                    }
+                                  >
+                                    <p>Show Details</p>
+                                  </div>
+                                ) : agency.isAgencyShortListed ||
+                                  agency.isAgencyAskedForQuotation ? (
+                                  <>
+                                    <div
+                                      onClick={() =>
+                                        props.history.push({
+                                          pathname: `/project-details/${projectId}/${agency._id}`,
+                                          condition: "Client",
+                                        })
+                                      }
+                                    >
+                                      <p>Show Details</p>
+                                    </div>
+                                  </>
+                                ) : (
+                                  <>
+                                    <div
+                                      onClick={() =>
+                                        openShortlistModal(agency._id, index)
+                                      }
+                                    >
+                                      <p>Shortlist</p>
+                                    </div>
+                                    <div
+                                      onClick={() =>
+                                        onOpenQuotationModel(agency._id, index)
+                                      }
+                                    >
+                                      <p>Get Quotation</p>
+                                    </div>
+                                  </>
+                                )}
                               </div>
-                            ) : agency.isAgencyShortListed || agency.isAgencyAskedForQuotation ? (
-                              <>
-                                <div
-                                  onClick={() =>
-                                    props.history.push({
-                                      pathname: `/project-details/${projectId}/${agency._id}`,
-                                      condition: "Client",
-                                    })
-                                  }
-                                >
-                                  <p>Show Details</p>
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <div onClick={() => openShortlistModal(agency._id, index)}>
-                                  <p>Shortlist</p>
-                                </div>
-                                <div onClick={() => onOpenQuotationModel(agency._id, index)}>
-                                  <p>Get Quotation</p>
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                </div>
-                {/* <div className="agencyFilterArea_agencyList">
+                            </div>
+                          );
+                        })}
+                    </div>
+                    {/* <div className="agencyFilterArea_agencyList">
                   <div className="filterForm">
                     <div className="filterHeading">
                       <p className="filterText">Filter</p>
@@ -342,17 +346,20 @@ function AgencyList(props) {
                     </div>
                   </div>
                 </div> */}
+                  </div>
+                ) : (
+                  <div className="noDataFound">
+                    <img src={NO_DATA_FOUND} alt="no data found" />
+                    <h6 style={{ marginTop: "20px", fontStyle: "italic" }}>
+                      No Agency Found!!!..
+                    </h6>
+                  </div>
+                )}
               </div>
-              :
-              <div className='noDataFound'>
-                <img src={NO_DATA_FOUND} alt='no data found' />
-                <h6 style={{ marginTop: '20px', fontStyle: 'italic' }}>No Agency Found!!!..</h6>
-              </div>
-            }
+            </div>
           </div>
         </>
-      )
-      }
+      )}
 
       {/* Modal for shortlist  */}
       <Modal
@@ -376,7 +383,9 @@ function AgencyList(props) {
               rows="10"
               placeholder="Type from here..."
             ></textarea>
-            <button className="margin-top" onClick={shortlistHandler}>Submit</button>
+            <button className="margin-top" onClick={shortlistHandler}>
+              Submit
+            </button>
           </div>
         </div>
       </Modal>
