@@ -9,19 +9,15 @@
 }
 
 .innerProductDetails {
-    width: 96%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 2%;
-    flex-direction: column;
-    padding-top: 5rem;
+    padding: 3rem 2rem 1rem;
 }
 
 .productDetailsArea {
-    margin-left: 80px;
-    width: 60%;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
     padding: 1rem 1rem;
 }
 
@@ -34,8 +30,8 @@
 }
 
 .productDetailsArea_conditional {
-    width: 60%;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
     padding: 1rem 1rem;
 }
 
@@ -54,6 +50,7 @@
     width: 105px;
     height: 105px;
     border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
@@ -87,17 +84,8 @@
 }
 
 .peoductNameTags span {
-    position: absolute;
-    top: 8px;
-    right: 0;
-    font-size: 0.8rem;
-    font-family: 'Open Sans', sans-serif;
-    color: #2E86C1;
-    cursor: pointer;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid #2E86C1;
-    font-weight: bold;
-    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
 }
 
 .peoductNameTags span:hover {
@@ -125,14 +113,10 @@
     margin-top: 0.5rem;
 }
 
-.productTags p {
+.productTags span{
     margin-right: 5%;
     font-family: 'Segoe UI';
     color: #707070;
-}
-
-.productTags i {
-    margin-right: 2px;
 }
 
 .connectButton {
@@ -192,7 +176,7 @@
     margin-top: 1%;
     justify-content: space-between;
     flex-direction: column;
-    padding: 0 10rem;
+    padding: 0 7rem;
 }
 
 .productDescImage {
@@ -248,7 +232,7 @@
     padding-left: 3rem;
 }
 
-.allPointCardHeading p {
+.allPointCardHeading ul li {
     font-family: 'Segoe UI Semibold';
     font-size: 0.9rem;
 }
@@ -372,7 +356,7 @@
     width: 100%;
 }
 
-.moreAgencyInfo_productDetails h5 {
+/* .moreAgencyInfo_productDetails h5 {
     font-family: 'Open Sans', sans-serif;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -387,7 +371,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     color: #56636a;
-}
+} */
 
 .moreAgencySeeMore {
     margin-top: 5%;

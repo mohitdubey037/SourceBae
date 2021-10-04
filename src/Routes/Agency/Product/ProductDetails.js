@@ -6,8 +6,7 @@ import "react-responsive-modal/styles.css";
 import logo from "../../../assets/images/Logo/logo.png";
 import NO_Data_ICON from "../../Dashboard/no_data_icon.jpg";
 
-// import ClientNavbar from "../../Client/ClientNavbar";
-// import Navbar from "../../Dashboard/Navbar";
+import ProductIcon from '../../../assets/images/Newestdashboard/Product_Detail/product_detail.svg';
 import * as helper from "../../../shared/helper";
 import instance from "../../../Constants/axiosConstants";
 import Spinner from '../../../Components/Spinner/Spinner';
@@ -215,11 +214,10 @@ function ProductDetails(props) {
                       : "innerProductDetails_conditional"
                   }
                 >
-                  <div
-                    className={
-                      Role === "Client"
-                        ? "productDetailsArea"
-                        : "productDetailsArea_conditional"
+                  <div style={{ width: similarAgency?.length === 0 && '100%' }}
+                    className={Role === "Client"
+                      ? "productDetailsArea"
+                      : "productDetailsArea_conditional"
                     }
                   >
                     <div className="productDetailsHeader">
@@ -244,10 +242,10 @@ function ProductDetails(props) {
                         <div className="productTags">
                           {value?.agencyId?.agencyDomains.map((a) => {
                             return (
-                              <p>
-                                <i class="fa fa-tag" aria-hidden="true"></i>
-                                {a?.domainId?.domainName}
-                              </p>
+                              <span>
+                                <img src={ProductIcon} alt="productIcon" />
+                                <p style={{ transform: 'translateX(0.5rem)' }}>{a?.domainId?.domainName}</p>
+                              </span>
                             );
                           })}
                         </div>
@@ -414,7 +412,8 @@ function ProductDetails(props) {
                                       <div>
                                         <img src={logo} alt="" />
                                       </div>
-                                      <h5>{value?.agencyId?.agencyName}</h5>
+                                      {/* <h5>{value?.agencyId?.agencyName}</h5> */}
+                                      <h5>not coming name</h5>
                                     </div>
                                     <div className="moreAgencyInfo_productDetails">
                                       <p>{value?.agencyId?.agencyDescription}</p>
