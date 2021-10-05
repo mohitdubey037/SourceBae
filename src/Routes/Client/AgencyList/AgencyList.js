@@ -373,9 +373,10 @@ function AgencyList(props) {
       >
         <div className="shortlistModal_agencyList">
           <h2>ShortList</h2>
-          <div className="shortlistForm">
+          <div className="shortlistForm comment">
             <span>Comment Box</span>
             <textarea
+            style={{fontSize:"12px"}}
               onChange={(event) => handleChange(event)}
               name="comment"
               id=""
@@ -450,8 +451,9 @@ function AgencyList(props) {
                 <div className="tableHeaderQuotation">
                   <p>Negotiable Upto</p>
                 </div>
-                <div className="tableContentQuotation">
+                <div className="tableContentQuotation" >
                   <input
+                  style={{marginTop:"0", height:"35px"}}
                     name="negotiablePrice"
                     onChange={handleQuotationChange}
                     type="number"
@@ -462,7 +464,7 @@ function AgencyList(props) {
               </div>
               <div className="quotationTable">
                 <div className="tableHeaderQuotation">
-                  <p name="comment">Comment Box</p>
+                  <p style={{position:"relative",top:"-4rem"}} name="comment">Comment Box</p>
                 </div>
                 <div className="tableContentQuotation">
                   <textarea
@@ -476,7 +478,7 @@ function AgencyList(props) {
                 </div>
               </div>
 
-              <div className="quotationSubmitButton">
+              <div className="quotationSubmitButton quotation">
                 <div></div>
                 <button onClick={quotationSubmitHandler}>Submit</button>
               </div>
