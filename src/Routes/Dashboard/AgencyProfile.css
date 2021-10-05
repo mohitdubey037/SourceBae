@@ -11,20 +11,22 @@ button {
   align-items: center;
 }
 
-.marginLeft {
+/* .marginLeft {
   margin-left: 0;
+} */
+
+.question_icon {
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
 }
 
 .innerProfileHeaderImage {
   width: 100%;
   height: 25vh;
   background-size: cover;
-  background-position: center;
   position: relative;
-  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
@@ -119,19 +121,15 @@ button {
 
 .mainAskQuestion {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.innerAskQuestion {
-  width: 100%;
+.mainAskQuestion h3, .mainAskQuestion h5 {
+  font-family: 'Segoe UI';
+  font-size: 1.1rem;
 }
 
-.innerAskQuestion h1 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  margin-bottom: 5%;
+.mainAskQuestion h3 {
+  font-family: 'Segoe UI Semibold';
 }
 
 .questionFields input {
@@ -215,7 +213,6 @@ button {
   margin-right: 3%;
   transform: translateY(-50px);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   background-color: #fff;
 }
 
@@ -370,10 +367,6 @@ button {
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-/* .pointContent p, .pointContent h4 {
-  font-family: 'Open Sans', sans-serif;
-} */
-
 .pointContent p {
   color: white;
   font-family: 'Segoe UI Semibold';
@@ -459,7 +452,6 @@ button {
   border-radius: 27px;
   font-size: 12px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  /* box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 15%); */
 }
 
 .rightAgencyProfileDesc {
@@ -477,7 +469,6 @@ button {
   padding: 1rem 0;
   position: relative;
   border-radius: 15px;
-  /* margin-right: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -600,7 +591,6 @@ button {
   align-items: center;
   flex-direction: column;
   background: #FEFEFE;
-  /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   width: 120px;
   height: 123px;

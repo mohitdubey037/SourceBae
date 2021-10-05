@@ -1,109 +1,96 @@
-.mainClientProfile{
+.mainClientProfile {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.innerClientProfile{
+
+.innerClientProfile {
     width: 90%;
     margin-top: 2%;
 }
 
-.clientProfileHeading h2{
+.clientProfileHeading h2 {
     font-family: 'Segoe UI bold';
     font-size: 2rem;
     color: #ffffff;
 }
-/* .clientProfileHeading h2::after{
-    content: '';
-    width: 10%;
-    height: 2px;
-    display: block;
-    background-color: #000;
-    margin-top: 20px;
-} */
-.myProfileInfo{
+
+.myProfileInfo {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 2% 0;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 4.5rem 0;
     background-color: #fff;
     position: relative;
     border-radius: 1rem;
 }
-.leftLineClient{
+
+.leftLineClient {
     position: absolute;
     width: 15px;
     height: 100%;
     top: 0;
     left: 0;
-    /* border-radius: 999px; */
-    background-color:#02044a;
+    background-color: #02044a;
 }
 
-.profileEditBtn{
+.profileEditBtn {
     position: absolute;
     top: 2%;
     right: 2%;
     background-color: #5DADE2;
     border-radius: 999px;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2); 
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 0.4rem 1rem;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     cursor: pointer;
 }
-.cancel{
+
+.cancel, .save {
     position: absolute;
-    bottom: 10px;
+    bottom: 25px;
     right: 10%;
     padding: 0.3rem 1rem;
     background-color: #e0e0e0;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-}
-.save{
-    position: absolute;
-    bottom: 10px;
-    right: 2%;
-    padding: 0.3rem 1rem;
-    background-color: #5DADE2;
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
+    font-family: 'Segoe UI';
+    border-radius: 1rem;
     cursor: pointer;
 }
 
-.myProfileCard{
+.save {
+    right: 2%;
+    background-color: #5DADE2;
+    color: #fff;
+}
+
+.myProfileCard {
     width: 90%;
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
 }
 
-.avatarArea{
+.avatarArea {
     width: 25%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
-.clientProfileDetails{
+
+.clientProfileDetails {
     width: 70%;
 }
 
-.avatarArea div{
+.avatarArea div {
     width: 20rem;
     height: 20rem;
     display: flex;
     justify-content: center;
-    /* border: 1px solid #000; */
-    box-shadow: 0 2px 8px 2px rgba(0,0,0,0.2);
-    border-radius:10rem;
+    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10rem;
 }
+
 .profileEditBtn {
     margin-top: 1.1rem;
     font-size: 14px;
@@ -111,55 +98,61 @@
     padding: 0.2rem 1.6rem;
     font-family: "Segoe UI semibold";
 }
-.avatarArea div img{
+
+.avatarArea div img {
     width: 100%;
     border-radius: 10rem;
     object-fit: cover;
     background-color: #015F9A;
 }
-.clientProfileDetails{
+
+.clientProfileDetails {
     width: 55%;
     margin-left: 10%;
     margin-top: 1%;
 }
 
-.clientProfilDesc{
+.clientProfilDesc {
     display: flex;
     align-items: center;
     font-family: 'Segoe UI', sans-serif;
     margin-bottom: 2%;
-    border:1px solid #ababab;
+    border: 1px solid #ababab;
     border-radius: 4px;
-    box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
 }
-.clientFormHeading{
+
+.clientFormHeading {
     width: 40%;
 }
-.clientFormHeading p{
+
+.clientFormHeading p {
     font-weight: bold;
     font-size: 0.9rem;
     color: #707070;
     margin-left: 1.5rem;
 }
-.clientFormAnswer p{
+
+.clientFormAnswer p {
     color: #707070;
     padding: 5px;
-    margin-left: 4rem ;
+    /* margin-left: 4rem ; */
     font-size: 0.8rem;
 }
 
-.clientFormAnswer{
+.clientFormAnswer {
     width: 60%;
 }
 
-.clientFormAnswer input{
-    transform: translateY(-5px);
+.clientFormAnswer input {
     height: 33px;
     padding-left: 10px;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    border: 1px solid #e0e0e0;
+    font-family: 'Segoe UI';
+    font-size: 0.8rem;
+    color: #707070;
 }
-.clientFormAnswer input:focus{
+
+.clientFormAnswer input:focus {
     outline: none;
 }

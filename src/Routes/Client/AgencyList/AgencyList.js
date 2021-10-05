@@ -25,6 +25,7 @@ function AgencyList(props) {
   const [open, setOpen] = useState(false);
   const [openQuotation, setOpenQuotation] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(-1);
 
   const [project, setProject] = useState([]);
@@ -122,18 +123,22 @@ function AgencyList(props) {
     onCloseQuotation();
   };
 
+  const notificationVisible = (status) => {
+    setVisible(status);
+  };
+
   useEffect(() => {
     console.log(shortlistFormData);
   }, [shortlistFormData]);
 
   return (
     <>
-      <Sidebar />
+      <Sidebar notificationVisible={(status) => notificationVisible(status)} />
       {loading ? (
         <Spinner />
       ) : (
         <>
-          <div className="main_parent_agencyList">
+          <div style={{ zIndex: visible && '-1' }} className="main_parent_agencyList">
             <Navbar />
             <div className="innerProjectDetail_parent">
               <div className="innerprojectDetailsInfo_agencyList">
@@ -192,7 +197,7 @@ function AgencyList(props) {
 
                               <div className="middleAgencyArea">
                                 <div className="agencyAddressTeam addressTeam_AgencyList">
-                                  <h6 style={{fontOpticalSizing:"14px"}}>Miscellaneous Info</h6>
+                                  <h6 style={{ fontOpticalSizing: "14px" }}>Miscellaneous Info</h6>
                                   <div className="agencyAddressArea">
                                     <div className="locationIcon">
                                       <i
@@ -212,8 +217,8 @@ function AgencyList(props) {
                                       ></i>
                                     </div>
                                     <div className="teamNumberPart">
-                                      <p style={{fontSize:"14px"}}>
-                                        <span style ={{fontFamily:"Segoe UI" ,color:"#707070", fontSize:"14px"}}>{agency.agencyTeamSize}</span>
+                                      <p style={{ fontSize: "14px" }}>
+                                        <span style={{ fontFamily: "Segoe UI", color: "#707070", fontSize: "14px" }}>{agency.agencyTeamSize}</span>
                                         members
                                       </p>
                                     </div>

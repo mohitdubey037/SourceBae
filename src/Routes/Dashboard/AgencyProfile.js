@@ -173,7 +173,7 @@ function AgencyProfile(props) {
                         })
                       }
                     >
-                      Add Your Product{" "}
+                      Add Your Product
                       <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                     </button>
                   </>
@@ -189,7 +189,7 @@ function AgencyProfile(props) {
                 )
               ) : (
                 <>
-                  <div>
+                  <div className="question_icon">
                     <i
                       style={{ fontSize: 22, color: "#fff" }}
                       className="fa fa-info-circle"
@@ -264,13 +264,10 @@ function AgencyProfile(props) {
             center
           >
             <div className="mainAskQuestion">
-              <div className="innerAskQuestion">
-                <div className="questionAsking">
-                  <h3>For any Help:</h3>
-                  <h5>Support Email: connect@onesourcing.in</h5>
-                  <h5>Support Number: +91 95755 17047</h5>
-                </div>
-
+              <div className="questionAsking">
+                <h3>For any Help:</h3>
+                <h5>Support Email: connect@onesourcing.in</h5>
+                <h5>Support Number: +91 95755 17047</h5>
               </div>
             </div>
           </Modal>
@@ -381,7 +378,7 @@ function AgencyProfile(props) {
                         onChange={(event) => handleChange(event)}
                         displayEmpty
                         className={clsx(classes.root, classes.inputField)}
-                        style={{boxShadow: "1px 2px 3px rgb(0 0 0 / 18%)"}}
+                        style={{ boxShadow: "1px 2px 3px rgb(0 0 0 / 18%)" }}
                       >
                         <MenuItem value="">
                           <span style={{ fontFamily: "Segoe UI", color: "#707070", fontSize: '14px' }}>
