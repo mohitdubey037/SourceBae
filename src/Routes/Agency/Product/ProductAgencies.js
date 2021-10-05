@@ -10,6 +10,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import UpImage from '../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
 import instance from '../../../Constants/axiosConstants';
 import 'react-responsive-modal/styles.css';
@@ -232,6 +234,8 @@ function ProductAgencies(props) {
 
 
                     <div className="mainAgencyList_productAgencies">
+                        <img className="Image1_shortTerm" src={UpImage} alt="upImage" />
+                        <img className="Image2_shortTerm" src={DownImage} alt="downImage" />
                     <Back name="Product Agencies" />
                         <div className="innerAgencyList_productAgencies">
                             {err ?
