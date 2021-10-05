@@ -17,6 +17,20 @@
   font-size: 2rem;
 }
 
+.Image1_shortTerm {
+  left: -7rem;
+  position: absolute;
+  top: -5.5rem;
+  width: 43rem;
+}
+
+.Image2_shortTerm {
+  right: -6rem;
+  position: absolute;
+  bottom: -5.5rem;
+  width: 48rem;
+}
+
 .howToPay .fixedPrice .MuiFormControlLabel-root {
   display: block;
   margin-right: 0;
@@ -28,7 +42,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  transform: translateY(5rem);
+  padding-top: 5rem;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
 }
 
 .innerShortTerm {
@@ -272,7 +289,6 @@
   cursor: pointer;
   align-items: center;
   width: 80%;
-  margin: 0.5rem 0;
 }
 
 .fixedPrice .fixedImage {
@@ -347,6 +363,7 @@
   color: #707070;
   cursor: pointer;
 }
+
 .post-project p {
   background-color: #015F9A;
   padding: 0.5rem 1.5rem;

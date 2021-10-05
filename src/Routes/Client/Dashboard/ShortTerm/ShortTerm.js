@@ -17,6 +17,8 @@ import { FilePicker } from "react-file-picker";
 import { toast } from "react-toastify";
 import Back from "../../../../Components/Back/Back";
 import FileUploadImage from '../../../../assets/images/Newestdashboard/Short_Term/short_term.svg';
+import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -219,9 +221,10 @@ function ShortTerm(props) {
     <>
       <Navbar />
       <div className="mainShortTerm">
+        <img className="Image1_shortTerm" src={UpImage} alt="upImage" />
+        <img className="Image2_shortTerm" src={DownImage} alt="downImage" />
         <Back name="Short Term" />
         <div className="innerShortTerm">
-
           <div className="shortTermForm">
             <div className="shortTermHeading">
               <h2>Short Term Projects</h2>
@@ -381,7 +384,7 @@ function ShortTerm(props) {
                         </div>
                       </div>
 
-                      <div className="fixedPrice" name="projectPaymentModel">
+                      <div style={{marginTop: '1rem'}} className="fixedPrice" name="projectPaymentModel">
                         <FormControlLabel
                           value="By Hour"
                           control={<BlueRadio className={classes.root} />}
