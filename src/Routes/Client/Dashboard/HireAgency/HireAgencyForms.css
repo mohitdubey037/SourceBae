@@ -527,7 +527,7 @@ li ::marker {
     justify-content: space-between;
     position: absolute;
     padding-top: 5rem;
-    height: 100%;
+    height: 91%;
     overflow: hidden;
 }
 
@@ -542,7 +542,7 @@ li ::marker {
 }
 
 .innerHireAgencyFormTwo {
-    height: 29rem;
+    height: 30rem;
     width: 56rem;
     position: relative;
     justify-content: space-between;

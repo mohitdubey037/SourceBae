@@ -284,9 +284,11 @@
 
 .quotationShortlistButton {
   display: flex;
+  justify-content: center;
   padding: 0rem 1rem;
   align-items: center;
   padding-bottom: 2%;
+  margin-left: -12.2rem;
 }
 
 .quotationShortlistButton div {
@@ -455,18 +457,19 @@
 }
 
 .shortlistModal_agencyList h2 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
+  font-family: "Segoe UI Semibold", sans-serif;
   margin-bottom: 4%;
+  font-size: 24px;
+  text-align: center;
 }
 
-.shortlistModal_agencyList h2::after {
+/* .shortlistModal_agencyList h2::after {
   content: "";
   width: 50px;
   height: 2px;
   background: #000;
   display: block;
-}
+} */
 
 .shortlistForm {
   display: flex;
@@ -475,10 +478,9 @@
   flex-direction: column;
 }
 
-.shortlistForm span {
-  /* font-weight: bold; */
+.shortlistForm.comment span {
   font-size: 0.8rem;
-  color: #3498db;
+  color: #015F9A;
 }
 
 .shortlistForm textarea {
@@ -505,6 +507,8 @@
 }
 
 .shortlistForm .margin-top {
+  background-image: linear-gradient(#015F9A, #01304D);
+
   margin-top: 1.5rem;
 }
 
@@ -515,19 +519,17 @@
 }
 
 .QuotationModal {
-  color: #707070;
-  font-family: "Open Sans", sans-serif;
+  color: #015F9A;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .QuotationModal h2 {
   font-size: 1.4rem;
   text-align: center;
-  font-weight: bold;
   margin-top: 4%;
   margin-bottom: 5%;
-  color: #7cbfec;
-  /* border-bottom: 1px solid #e0e0e0; */
-  /* padding-bottom: 4%; */
+  font-family: 'Segoe UI semibold';
+  color: #707070;
 }
 
 /* .QuotationModal h2::after {
@@ -539,14 +541,15 @@
 } */
 
 .quotationTable {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: flex-start; */
-  /* border-bottom: 1px solid #e0e0e0; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.5px dashed #e0e0e0;
   min-height: 50px;
   margin-top: 2%;
-  /* width: 55%; */
-  padding-bottom: 2%;
+  border-radius: 8px;
+  color: #707070;
+  padding: 0px 12px;
 }
 
 /* .tableHeaderQuotation {
@@ -559,8 +562,8 @@
 }
 
 .tableContentQuotation {
-  margin: 6px 4px 12px 0px;
-  /* width: 65%; */
+  /* margin: 6px 4px 12px 0px; */
+  width: 50%;
   display: flex;
   font-size: small;
   flex-wrap: wrap;
@@ -572,17 +575,19 @@
 
 .tableContentQuotation input {
   width: 100%;
-  height: 40px;
+  height: 35px;
   padding-left: 10px;
   outline: none;
   border: 1px solid #e0e0e0;
   font-size: 0.9rem;
+  margin-top: 0;
 }
 
 .tableContentQuotation textarea {
   width: 100%;
   font-size: 0.9rem;
   padding: 0.5rem;
+  margin: 6px;
   border: 1px solid #e0e0e0;
 }
 
@@ -592,21 +597,24 @@
   float: right;
 }
 
-.quotationSubmitButton {
+.quotationSubmitButton.quotation {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .quotationSubmitButton button {
   transform: translateY(-10px);
   width: 20%;
-  height: 45px;
+  height: 30px;
   outline: none;
   border: none;
-  background-image: linear-gradient(#462cca, #5c6dff);
+  background-image: linear-gradient(#015F9A, #01304D);
+  /* background-image: linear-gradient(#462cca, #5c6dff); */
   background-color: #3498db;
   color: #fff;
-  font-weight: bold;
+  font-family: "Segoe UI";
+  /* font-weight: bold; */
   border-radius: 25px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
