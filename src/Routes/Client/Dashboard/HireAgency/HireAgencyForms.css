@@ -150,7 +150,6 @@
     width: 98rem;
     padding: 2rem;
     position: absolute;
-    /* left: -19rem; */
     height: 10rem;
     top: 16rem;
     z-index: -1;
@@ -337,7 +336,6 @@ li ::marker {
 }
 
 .descriptionProjectAgency textarea {
-    /* margin-top: 0.5rem; */
     margin-top: 10px;
     width: 57%;
     height: 8rem;
@@ -438,6 +436,10 @@ li ::marker {
     cursor: pointer;
 }
 
+.main_HireAgencyParent {
+    padding-top: 5rem;
+}
+
 .higherAgencyInfoArea {
     width: 75%;
     height: 8rem;
@@ -522,7 +524,7 @@ li ::marker {
     display: flex;
     justify-content: space-between;
     position: absolute;
-    top: 4rem;
+    padding-top: 5rem;
     height: 91%;
     overflow: hidden;
 }
@@ -541,7 +543,6 @@ li ::marker {
     height: 30rem;
     width: 56rem;
     position: relative;
-    /* display: flex; */
     justify-content: space-between;
     background-color: #fff;
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
@@ -590,11 +591,8 @@ li ::marker {
 
 .servicesCardsHireAgency {
     margin-left: 7px;
-    /* margin-top: 30px; */
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-    /* width: 25.5rem; */
 }
 
 .tech-container {
@@ -980,7 +978,6 @@ li::marker{
     font-weight: normal;
     font-size: 14px;
     width: 92%;
-    /* margin: auto; */
 }
 
 .error_hireAgencyForm3 {

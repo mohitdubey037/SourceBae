@@ -68,12 +68,8 @@ function Sidebar(props) {
 
     return (
         <div style={{backgroundColor: role === 'Client' && 'white' }} className="container-sidebar">
-            {/* <div className="sidebar-logo">
-                <img src={oneSourcingLogo} alt="one sroucing logo" />
-            </div> */}
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
-                    {/* <div className="selected-strip" /> */}
                     <div>
                         <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
                     </div>
@@ -86,7 +82,6 @@ function Sidebar(props) {
                             <p>Post Project</p>
                         </div>
                         <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
-                            {/* <img src={PeopleRoundedIcon} alt="dashboard icon" /> */}
                             <img src={developersIcon} alt="developers_icon" />
                             <div>
                                 <p>Developer</p>

@@ -105,7 +105,8 @@ function ClientNewestDashboard(props) {
 
     useEffect(() => {
         console.log(projects);
-    }, [statuses, projects])
+        console.log(visible);
+    }, [statuses, projects, visible])
 
     useEffect(() => {
         getAllProjects();
@@ -120,7 +121,7 @@ function ClientNewestDashboard(props) {
         <>
 
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            <div className="container-body">
+            <div style={{ zIndex: visible && '-1' }} className="container-body">
                 <div style={{top: '1rem'}} className="navbar">
                     <div className="navbar-items">
                         <div style={{ paddingRight: '10px' }} className="username">
@@ -132,7 +133,7 @@ function ClientNewestDashboard(props) {
                     </div>
                 </div>
                 <div className="content-body">
-                    <div style={{ zIndex: visible && '-1' }} className="content-leftBody">
+                    <div className="content-leftBody">
                         <div className="user-operations">
                             <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
                             <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
