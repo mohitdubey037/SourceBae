@@ -12,10 +12,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
-import Checkbox from "@material-ui/core/Checkbox";
-// import Navbar from "../../Dashboard/Navbar";
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import instance from "../../../Constants/axiosConstants";
 import Spinner from "../../../Components/Spinner/Spinner";
@@ -24,15 +21,8 @@ import moment from 'moment'
 import clsx from 'clsx';
 
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
-import product from "../../../assets/images/ClientDashboard/product.svg";
-import product1 from "../../../assets/images/ClientDashboard/product1.svg";
-import product2 from "../../../assets/images/ClientDashboard/product2.svg";
-import product3 from "../../../assets/images/ClientDashboard/product3.svg";
-import product4 from "../../../assets/images/ClientDashboard/product4.svg";
-import product5 from "../../../assets/images/ClientDashboard/product5.svg";
 import success from "../../../assets/images/agencyForm/success.gif";
 import Back from '../../../Components/Back/Back';
-import MultiSelect from "react-multi-select-component";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";

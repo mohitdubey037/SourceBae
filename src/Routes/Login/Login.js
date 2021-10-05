@@ -1,13 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import "../Dashboard/dashboard.css";
 import "../Login/login.css";
 import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
-// import loginImage from "../../assets/images/Newestdashboard/Login/LoginBlue.png";
 import axios from "axios";
-// import PersonIcon from "@material-ui/icons/Person";
 import downImage1 from "../../assets/images/Newestdashboard/Login/Path 11.svg";
 import downImage2 from "../../assets/images/Newestdashboard/Login/Path12.png";
 import upImage1 from "../../assets/images/Newestdashboard/Login/Path13.png";
@@ -16,9 +12,7 @@ import bgColor from "../../assets/images/Newestdashboard/Login/Rectangle24.png";
 import dotImage from "../../assets/images/Newestdashboard/Login/ab_01.png";
 import googleImg from "../../assets/images/Newestdashboard/Login/Icon_google.svg";
 
-// import google from "../../assets/images/Logo/google.png";
 import { InputAdornment, TextField, makeStyles } from "@material-ui/core";
-// import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 import Spinner from "../../Components/Spinner/Spinner";

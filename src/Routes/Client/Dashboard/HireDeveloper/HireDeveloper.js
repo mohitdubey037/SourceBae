@@ -7,10 +7,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
-
-// import UpperBackground from '../../../../assets/images/HireDeveloper/Vector.svg';
-// import LowerBackground from '../../../../assets/images/HireDeveloper/lowerBackground.svg';
-
 import month from "../../../../assets/images/ClientDashboard/shortTerm/calender.png";
 import hourPrice from "../../../../assets/images/ClientDashboard/shortTerm/hourPrice.png";
 import MultiSelect from "react-multi-select-component";
@@ -149,24 +145,8 @@ function HireDeveloper(props) {
         <Back name="Hire Developer" />
       </div>
       <div className="mainHireDeveloper">
-        {/* <div
-          className="backArrow"
-          onClick={() => {
-            props.history.push("/client-dashboard");
-          }}
-        >
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </div> */}
-        {/* <div className="innerHireDeveloper"> */}
-        {/* <div className="upper-background"> */}
-        {/* </div> */}
-        {/* <div className="lower-background"> */}
-        {/* </div> */}
-        {/* <img className="upper-image" src={UpperBackground} alt="upper-background" />
-        <img className="lower-image" src={LowerBackground} alt="upper-background" /> */}
         <div className="hireDeveloperForm">
           <div className="hireDeveloperFormInfo">
-            {/* <div className="predilection-strip"></div> */}
             <h2>predilection</h2>
             <p>
               Financed new companies and Enterprises are battling to recruit
