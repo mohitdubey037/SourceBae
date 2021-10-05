@@ -197,11 +197,7 @@ function AgencyList(props) {
 
                               <div className="middleAgencyArea">
                                 <div className="agencyAddressTeam addressTeam_AgencyList">
-<<<<<<< HEAD
-                                  <h6 style={{ fontOpticalSizing: "14px" }}>Miscellaneous Info</h6>
-=======
                                   <h6 style={{fontSize:"14px"}}>Miscellaneous Info</h6>
->>>>>>> ae162053bce70640c933cd151317bc241d786fd8
                                   <div className="agencyAddressArea">
                                     <div className="locationIcon">
                                       <i
