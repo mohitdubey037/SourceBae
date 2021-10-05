@@ -174,20 +174,12 @@ function HireAgencyForm3(props) {
 
     return (
         <>
-            <div className="Navbar-parent">
-                <Navbar />
-            </div>
+            <Navbar />
             {loading ? <Spinner /> :
                 <div className="mainHireAgencyForm3">
                     <div className="color-div_hireAgencyForm"></div>
                     <div className="innerHireAgencyForm3">
                         <div className="techStackFields">
-                            {/* <div className="stepCheck">
-                                <div className="color-div_hireAgencyForm1">
-                                </div>
-                                <p><span className="ste">Ste</span>p 3</p>
-                            </div> */}
-
                             <div className="HireAgencyForm3Heading">
                                 <h2>How can <span> OneSourcing </span> may help you?</h2>
                             </div>
@@ -205,10 +197,10 @@ function HireAgencyForm3(props) {
                                     {allServices?.length > 0 ? allServices.map((service) => {
                                         return (
                                             <div className="tech-container">
-                                                <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected? "#707070" : '#white' }} >
+                                                <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)} style={{ backgroundColor: service.selected ? "#707070" : '#white' }} >
                                                     <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                                                 </div>
-                                                <p className={`${service.serviceName}`} style={{ color: '#707070' , fontFamily:"Segoe UI" }}>{`${service.serviceName}`}</p>
+                                                <p className={`${service.serviceName}`} style={{ color: '#707070', fontFamily: "Segoe UI" }}>{`${service.serviceName}`}</p>
                                             </div>
                                         )
                                     })
@@ -222,8 +214,8 @@ function HireAgencyForm3(props) {
                                 </div>
                             </div>
 
-                            <div className="nextbutton" style={{width:"100%"}}>
-                                <div className="backbutton_hireAgencyForm3" onClick={() => props.history.push(`/hire-agency-form-two:${projectId}`)} style={{backgroundColor:'#707070'}}>
+                            <div className="nextbutton" style={{ width: "100%" }}>
+                                <div className="backbutton_hireAgencyForm3" onClick={() => props.history.push(`/hire-agency-form-two:${projectId}`)} style={{ backgroundColor: '#707070' }}>
                                     Back
                                 </div>
                                 <div onClick={() => handleSubmit()}>
@@ -266,16 +258,12 @@ function HireAgencyForm3(props) {
                             <div className='color_hireAgencyForm3 green'></div>
                         </div>
 
-                        {/* <div className="black-strip_hireAgencyForm3 strip1"></div> */}
-
                         <div className="diabled-step_hireAgencyForm">
                             <div>
                                 <p className="grey-step_hireAgencyForm">Step 2</p>
                             </div>
                             <div className='color_hireAgencyForm3 green'></div>
                         </div>
-
-                        {/* <div className="black-strip_hireAgencyForm3 strip2"></div> */}
 
                         <div>
                             <div>

@@ -131,38 +131,35 @@ const HireAgencyForm1 = (props) => {
 
   return (
     <>
-      <div className="Navbar-parent">
-        <Navbar />
-      </div>
-
+      <Navbar />
       {loading ? <Spinner /> :
-
         <>
-          <div className="higherAgencyInfoArea">
-            <div className="points-to-remember_hireAgencyForm1">
-              <h4>About Your Project</h4>
-            </div>
-            <div className="cardsDetail_hireAgencyForm1">
-              <div className="cards_hireAgencyForm1">
-              <div className="keep_the_project_name">
-                <p>1. Keep the project name simple and to your brand.</p>
+          <div className="main_HireAgencyParent">
+            <div className="higherAgencyInfoArea">
+              <div className="points-to-remember_hireAgencyForm1">
+                <h4>About Your Project</h4>
               </div>
-              </div>
+              <div className="cardsDetail_hireAgencyForm1">
+                <div className="cards_hireAgencyForm1">
+                  <div className="keep_the_project_name">
+                    <p>1. Keep the project name simple and to your brand.</p>
+                  </div>
+                </div>
 
-              <div className="cards_hireAgencyForm1">
-              <div className="write_about_your_project">
-                <p>2. Write about your service or idea in clear manner, with as many details as possible.</p>
-              </div>
-              </div>
-              <div className="cards_hireAgencyForm1">
-              <div className="in_case_you_think">
-                <p>3. In case, you think you missed any details you can always edit this later.</p>
-              </div>
+                <div className="cards_hireAgencyForm1">
+                  <div className="write_about_your_project">
+                    <p>2. Write about your service or idea in clear manner, with as many details as possible.</p>
+                  </div>
+                </div>
+                <div className="cards_hireAgencyForm1">
+                  <div className="in_case_you_think">
+                    <p>3. In case, you think you missed any details you can always edit this later.</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="steps_hireAgencyForm">
+            <div className="steps_hireAgencyForm">
               <div>
                 <div >
                   <p>Step 1</p>
@@ -170,16 +167,12 @@ const HireAgencyForm1 = (props) => {
                 <div className='color_hireAgencyForm green'></div>
               </div>
 
-              {/* <div className="black-strip_hireAgencyForm1 strip1"></div> */}
-
               <div className="diabled-step_hireAgencyForm">
                 <div>
                   <p className="grey-step_hireAgencyForm">Step 2</p>
                 </div>
                 <div className='color_hireAgencyForm grey'></div>
               </div>
-
-              {/* <div className="black-strip_hireAgencyForm1 strip2"></div> */}
 
               <div>
                 <div>
@@ -189,147 +182,115 @@ const HireAgencyForm1 = (props) => {
               </div>
             </div>
 
-
-          <div className="mainHireAgencyForm1">
-            {/* <div className="color-div_hireAgencyForm"></div> */}
-            <div className="innerHigherAgencyForm1">
-              {/* <div className="stepCheck">
-                <div className="color-div_hireAgencyForm1">
-                </div>
-                <p><span className="ste">Ste</span>p 1</p>
-              </div> */}
-              <div className="higherAgencyFormArea">
-                <div className="understand_your_project">Help us understand more about your project..!!</div>
-                <div className="input-form_hireAgencyForm1">
-                  <div className="projectNameAgency">
-                    <ul>
-                      <li>
-                        <p>What will be the name of your project?</p>
-                      </li>
-                    </ul>
-                    <input
-                      type="text"
-                      name="projectName"
-                      onChange={handleChange}
-                      placeholder="Give A Name To Identify Requirement"
-                      value={data.projectName}
-                      maxLength="22"
-                    />
-                    {error.projectNameError && (
-                      <p className="error_hireAgencyForm2 error_hireAgencyForm1">
-                        {error.projectNameError}
-                      </p>
-                    )}
-                  </div>
-                  <div className="descriptionProjectAgency">
-                    <ul>
-                      <li>
-                        <p>Describe a little bit about your project?</p>
-                      </li>
-                    </ul>
-                    <textarea
-                      name="projectDescription"
-                      cols="30"
-                      rows="6"
-                      onChange={handleChange}
-                      value={data.projectDescription}
-                    ></textarea>
-                    <div>
-                      <span>More than 100 characters</span>
-                      <span>{words}/100</span>
-                    </div>
-                    {error.projectDescriptionError && (
-                      <p className="error_hireAgencyForm2 error_hireAgencyForm1">
-                        {error.projectDescriptionError}
-                      </p>
-                    )}
-                  </div>
-                  <div className="budgetSectionAreaAgency">
-                    <ul>
-                      <li>
-                        <p>What's your budget for this project?</p>
-                      </li>
-                    </ul>
-                    <FormControl component="fieldset">
-                      <RadioGroup
-                        aria-label="projectProposalCost"
-                        name="projectProposalCost"
-                        value={data.projectProposalCost}
+            <div className="mainHireAgencyForm1">
+              <div className="innerHigherAgencyForm1">
+                <div className="higherAgencyFormArea">
+                  <div className="understand_your_project">Help us understand more about your project..!!</div>
+                  <div className="input-form_hireAgencyForm1">
+                    <div className="projectNameAgency">
+                      <ul>
+                        <li>
+                          <p>What will be the name of your project?</p>
+                        </li>
+                      </ul>
+                      <input
+                        type="text"
+                        name="projectName"
                         onChange={handleChange}
-                      >
-                        <FormControlLabel
-                          value="5000"
-                          control={<BlueRadio />}
-                          label="Below $5,000"
-                        />
-                        <FormControlLabel
-                          value="10000"
-                          control={<BlueRadio />}
-                          label="$15,000-$25,000"
-                        />
-                        <FormControlLabel
-                          value="20000"
-                          control={<BlueRadio />}
-                          label="$25,000-$4,000"
-                        />
-                        <FormControlLabel
-                          value="50000"
-                          control={<BlueRadio />}
-                          label="More Than $4000 Per Month"
-                        />
-                      </RadioGroup>
-                    </FormControl>
-                  </div>
-                  <div className="numberOfDays">
-                    <ul>
-                      <li>
-                        <p>How soon do you want to start?</p>
-                      </li>
-                    </ul>
-                    <div className="daysInputAgency">
-                      <p>{data.projectExpectedStartingDays} days</p>
-                      <div className="upArrow" onClick={upArrow}>
-                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                        placeholder="Give A Name To Identify Requirement"
+                        value={data.projectName}
+                        maxLength="22"
+                      />
+                      {error.projectNameError && (
+                        <p className="error_hireAgencyForm2 error_hireAgencyForm1">
+                          {error.projectNameError}
+                        </p>
+                      )}
+                    </div>
+                    <div className="descriptionProjectAgency">
+                      <ul>
+                        <li>
+                          <p>Describe a little bit about your project?</p>
+                        </li>
+                      </ul>
+                      <textarea
+                        name="projectDescription"
+                        cols="30"
+                        rows="6"
+                        onChange={handleChange}
+                        value={data.projectDescription}
+                      ></textarea>
+                      <div>
+                        <span>More than 100 characters</span>
+                        <span>{words}/100</span>
                       </div>
-                      <div className="downArrow" onClick={downArrow}>
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      {error.projectDescriptionError && (
+                        <p className="error_hireAgencyForm2 error_hireAgencyForm1">
+                          {error.projectDescriptionError}
+                        </p>
+                      )}
+                    </div>
+                    <div className="budgetSectionAreaAgency">
+                      <ul>
+                        <li>
+                          <p>What's your budget for this project?</p>
+                        </li>
+                      </ul>
+                      <FormControl component="fieldset">
+                        <RadioGroup
+                          aria-label="projectProposalCost"
+                          name="projectProposalCost"
+                          value={data.projectProposalCost}
+                          onChange={handleChange}
+                        >
+                          <FormControlLabel
+                            value="5000"
+                            control={<BlueRadio />}
+                            label="Below $5,000"
+                          />
+                          <FormControlLabel
+                            value="10000"
+                            control={<BlueRadio />}
+                            label="$15,000-$25,000"
+                          />
+                          <FormControlLabel
+                            value="20000"
+                            control={<BlueRadio />}
+                            label="$25,000-$4,000"
+                          />
+                          <FormControlLabel
+                            value="50000"
+                            control={<BlueRadio />}
+                            label="More Than $4000 Per Month"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </div>
+                    <div className="numberOfDays">
+                      <ul>
+                        <li>
+                          <p>How soon do you want to start?</p>
+                        </li>
+                      </ul>
+                      <div className="daysInputAgency">
+                        <p>{data.projectExpectedStartingDays} days</p>
+                        <div className="upArrow" onClick={upArrow}>
+                          <i class="fa fa-angle-up" aria-hidden="true"></i>
+                        </div>
+                        <div className="downArrow" onClick={downArrow}>
+                          <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="nextbuttton">
-                  <div onClick={() => handleSubmit()}>
-                    Submit
+                  <div className="nextbuttton">
+                    <div onClick={() => handleSubmit()}>
+                      Submit
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <div className="steps_hireAgencyForm">
-              <div>
-                <div >
-                  <p>Step 1</p>
-                </div>
-                <div className='color_hireAgencyForm green'></div>
-              </div>
-
-              <div className="black-strip_hireAgencyForm1 strip1"></div>
-
-              <div className="diabled-step_hireAgencyForm">
-                <div>
-                  <p className="grey-step_hireAgencyForm">Step 2</p>
-                </div>
-                <div className='color_hireAgencyForm grey'></div>
-              </div>
-
-              <div className="black-strip_hireAgencyForm1 strip2"></div>
-
-              <div>
-                <div>
-                  <p className="grey-step_hireAgencyForm">Step 3</p>
-                </div>
-                <div className='color_hireAgencyForm grey'></div>
-              </div>
-            </div> */}
           </div>
         </>
       }
