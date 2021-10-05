@@ -65,13 +65,19 @@
     cursor: pointer;
 }
 
-.Image2_shortTerm {
+.Image2_productAgencies {
     right: -8rem;
     position: absolute;
     bottom: -4rem;
     width: 48rem;
     z-index: 2;
 }
+.Image1_productAgencies {
+    left: -7rem;
+    position: absolute;
+    top: -5.5rem;
+    width: 43rem;
+  }
 
 .locationFilter input {
     border: 2px solid #999;

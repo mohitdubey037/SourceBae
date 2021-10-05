@@ -7,7 +7,7 @@
 .main_parent_agencyList {
   width: 89%;
   margin-left: 11%;
-  position: relative;
+  position: fixed;
 }
 
 .innerProjectDetail_parent {
@@ -617,4 +617,30 @@
   /* font-weight: bold; */
   border-radius: 25px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+}
+.sidebar-menu {
+  margin: 80% 15% 32% 15%;
+}
+.Image1_agencyList {
+  left: -10rem;
+  position: fixed;
+  top: -4.5rem;
+  width: 43rem;
+  z-index: 1;
+}
+
+.Image2_agencyList {
+  right: -8rem;
+  position: fixed;
+  bottom: -4rem;
+  width: 43rem;
+  z-index: 1;
+}
+.mainImageDiv {
+  position: relative;
+}
+.innerAgencyList_agencyList {
+  overflow-y: scroll;
+  height: 33rem;
+  margin-top: 1rem;
 }
