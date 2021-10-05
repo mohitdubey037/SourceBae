@@ -136,8 +136,8 @@ const HireAgencyForm1 = (props) => {
       {loading ? <Spinner /> :
         <>
           <div className="main_HireAgencyParent">
-            <img className="Image1_shortTerm" src={UpImage} alt="upImage" />
-            <img className="Image2_shortTerm" src={DownImage} alt="downImage" />
+            <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
+            <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
             <div className="higherAgencyInfoArea">
               <div className="points-to-remember_hireAgencyForm1">
                 <h4>About Your Project</h4>
