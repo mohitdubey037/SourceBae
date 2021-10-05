@@ -438,6 +438,8 @@ li ::marker {
 
 .main_HireAgencyParent {
     padding-top: 5rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .higherAgencyInfoArea {
@@ -525,7 +527,7 @@ li ::marker {
     justify-content: space-between;
     position: absolute;
     padding-top: 5rem;
-    height: 91%;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -540,7 +542,7 @@ li ::marker {
 }
 
 .innerHireAgencyFormTwo {
-    height: 30rem;
+    height: 29rem;
     width: 56rem;
     position: relative;
     justify-content: space-between;

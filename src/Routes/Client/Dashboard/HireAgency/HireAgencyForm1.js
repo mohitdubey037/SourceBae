@@ -10,6 +10,8 @@ import { withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from "../../../../Components/Spinner/Spinner";
 import Back from '../../../../Components/Back/Back';
+import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
 const BlueRadio = withStyles({
   root: {
@@ -134,6 +136,8 @@ const HireAgencyForm1 = (props) => {
       {loading ? <Spinner /> :
         <>
           <div className="main_HireAgencyParent">
+            <img className="Image1_shortTerm" src={UpImage} alt="upImage" />
+            <img className="Image2_shortTerm" src={DownImage} alt="downImage" />
             <div className="higherAgencyInfoArea">
               <div className="points-to-remember_hireAgencyForm1">
                 <h4>About Your Project</h4>
