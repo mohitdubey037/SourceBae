@@ -1,5 +1,5 @@
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
-import AllProjectIcon from '../../assets/images/Newestdashboard/All_Project/Vector.svg';
+import AllProjectIcon from '../../assets/images/Newestdashboard/All_Project/app.svg';
 import { makeStyles } from '@material-ui/core/styles';
 import './AgencyNewestAllProject.css';
 import AllProjectCard from '../../Components/AllProjectCard/AllProjectCard';
