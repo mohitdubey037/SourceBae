@@ -9,6 +9,9 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Spinner from "../../../Components/Spinner/Spinner";
 import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
 import Back from '../../../Components/Back/Back';
+import UpImage from '../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+
 // import background from '../../../assets/images/AddProduct/background.svg'
 
 
@@ -36,6 +39,10 @@ function ClientHireDeveloper(props) {
 
 
   return (
+    <div className="MainDevDiv">
+    <img className="Image1_GetHireDev" src={UpImage} alt="upImage" />
+    <img className="Image2_GetHireDev" src={DownImage} alt="downImage" />
+   
     <>
       <Navbar />
       {/* <div className="conditional_back_parent"> */}
@@ -120,6 +127,7 @@ function ClientHireDeveloper(props) {
       )}
 
     </>
+    </div>
   );
 }
 

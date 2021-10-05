@@ -54,6 +54,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  /* overflow-y: scroll; */
 }
 
 .innerAgencyList {
@@ -61,6 +63,10 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: initial;
+  height: 35rem;
+  overflow-y: scroll;
+  margin-top: 1rem;
   /* align-items: flex-start; */
 }
 
@@ -251,7 +257,7 @@
   border: none;
   padding: 0.5rem;
   height: 110px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   color: #015f9a;
 }
 
@@ -633,3 +639,21 @@
   font-weight: bold;
   border-radius: 25px;
 } */
+
+.Image1_GetHireDev{
+  left: -10rem;
+  position: fixed;
+  top: -4.5rem;
+  width: 43rem;
+  /* z-index: 1; */
+}
+.Image2_GetHireDev {
+  right: -8rem;
+  position: fixed;
+  bottom: -4rem;
+  width: 43rem;
+  z-index: 1;
+}
+.MainDevDiv {
+  position: relative;
+}
