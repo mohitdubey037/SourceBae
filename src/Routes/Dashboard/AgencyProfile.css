@@ -13,16 +13,13 @@ button {
 
 /* .marginLeft {
   margin-left: 0;
-<<<<<<< HEAD
 } */
 
 .question_icon {
   position: absolute;
   right: 1rem;
   top: 1.5rem;
-=======
   margin-top: 5rem;
->>>>>>> ae162053bce70640c933cd151317bc241d786fd8
 }
 
 .innerProfileHeaderImage {
