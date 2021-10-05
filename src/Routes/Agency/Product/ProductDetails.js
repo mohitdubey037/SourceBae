@@ -17,6 +17,7 @@ import Back from '../../../Components/Back/Back';
 
 function ProductDetails(props) {
   const condition = props.location.condition;
+  console.log(condition);
   let { productId } = useParams();
   productId = productId ? helper.cleanParam(productId) : "";
 
@@ -34,7 +35,10 @@ function ProductDetails(props) {
       .then((response) => {
         setLoading(false)
         console.log(response);
-        setSimilarAgency(response.similarAgencies);
+        if (Role === 'Client') {
+          setSimilarAgency(response.similarAgencies);
+          console.log('hii');
+        }
         setDetails([response.product]);
         setDetailsInJson(response.product);
       })
@@ -214,7 +218,7 @@ function ProductDetails(props) {
                       : "innerProductDetails_conditional"
                   }
                 >
-                  <div style={{ width: similarAgency?.length === 0 && '100%' }}
+                  <div 
                     className={Role === "Client"
                       ? "productDetailsArea"
                       : "productDetailsArea_conditional"
@@ -390,8 +394,8 @@ function ProductDetails(props) {
                       </div>
                     </div>
                   </div>
-                  {condition !== "Agency" && (
-                    <div className="moreAgencie">
+                  {Role === "Client" && (
+                    // <div className="moreAgencie">
                       <div className="innerMoreAgencie">
                         <div className="moreAgencyHeading">
                           <h3>Similar Agencies</h3>
@@ -413,7 +417,7 @@ function ProductDetails(props) {
                                         <img src={logo} alt="" />
                                       </div>
                                       {/* <h5>{value?.agencyId?.agencyName}</h5> */}
-                                      <h5>not coming name</h5>
+                                      <p>not coming name</p>
                                     </div>
                                     <div className="moreAgencyInfo_productDetails">
                                       <p>{value?.agencyId?.agencyDescription}</p>
@@ -427,7 +431,7 @@ function ProductDetails(props) {
                           )}
                         </div>
                       </div>
-                    </div>
+                    // </div>
                   )}
                 </div>
               </div>

@@ -170,33 +170,18 @@ function AgencyForm3(props) {
 
     return (
         <>
-            <div className="Navbar-parent">
+            <div className="agency-form_parent">
                 <Navbar />
-            </div>
-            <div className="back-parent marginLeft">
                 <Back name="Agency Form 3" />
-            </div>
-            <FormPhases value1={true} value2={true} value3={true} />
-            {/* <div
-                className="backArrow_agencyForm3"
-                onClick={() => {
-                    props.history.goBack();
-                }}
-            >
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </div> */}
+                <FormPhases value1={true} value2={true} value3={true} />
 
-            {loading ? <Spinner /> :
-
-                <div className="mainDocumentsForm">
-                    <div className="innerDocumentForm">
-                        <div className="documentDetails">
-                            <p>1. Provide your Valid Document</p>
-                            <div className="documentInformation">
-                                <div className="agencyCertification">
-                                    {/* <span>Company Registration Certificate</span> */}
-                                    {/* <div> */}
-                                        {/* <img src={agencyLogo} alt="" /> */}
+                {loading ? <Spinner /> :
+                    <div className="mainDocumentsForm">
+                        <div className="innerDocumentForm">
+                            <div className="documentDetails">
+                                <p>1. Provide your Valid Document</p>
+                                <div className="documentInformation">
+                                    <div className="agencyCertification">
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
@@ -205,12 +190,12 @@ function AgencyForm3(props) {
                                                 <p>Pick File</p>
                                                 <img src={fileIcon} alt="finish" /></button>
                                         </FilePicker>
-                                    {/* </div> */}
-                                    <p className="logo-type_agencyForm1">{`${registrationCertificate?.document?.name ?? "Company Registration Certificate"}`}</p>
-                                </div>
-                                <div className="agencyBrochure">
-                                    {/* <span>Brochure</span> */}
-                                    {/* <div> */}
+                                        {/* </div> */}
+                                        <p className="logo-type_agencyForm1">{`${registrationCertificate?.document?.name ?? "Company Registration Certificate"}`}</p>
+                                    </div>
+                                    <div className="agencyBrochure">
+                                        {/* <span>Brochure</span> */}
+                                        {/* <div> */}
                                         {/* <img src={brochure} alt="" /> */}
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}
@@ -221,14 +206,14 @@ function AgencyForm3(props) {
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
-                                    {/* </div> */}
-                                    <p className="logo-type_agencyForm1">{`${brochureDoc?.document?.name ?? "Brochure"}`}</p>
+                                        {/* </div> */}
+                                        <p className="logo-type_agencyForm1">{`${brochureDoc?.document?.name ?? "Brochure"}`}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="panDetails">
-                                <p>2. Enter your Pan Card number</p>
-                                <div className="panCardContent">
-                                    {/* <div> */}
+                                <div className="panDetails">
+                                    <p>2. Enter your Pan Card number</p>
+                                    <div className="panCardContent">
+                                        {/* <div> */}
                                         {/* <img src={panCard} alt="" /> */}
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}
@@ -239,36 +224,37 @@ function AgencyForm3(props) {
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
-                                    {/* </div> */}
-                                    <p className="logo-type_agencyForm1">{`${panCardDoc?.document?.name ?? "Pancard"}`}</p>
+                                        {/* </div> */}
+                                        <p className="logo-type_agencyForm1">{`${panCardDoc?.document?.name ?? "Pancard"}`}</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="nextBtn">
-                                {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
+                                <div className="nextBtn">
+                                    {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
                                     <button>
                                         <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
                                     </button>
                                 </NavLink> */}
 
-                                {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
-                                <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
-                                    Back
-                                </button>
-                                <button className="uploadButton_agencyForm3" style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={handleUpload} name={status}>
-                                    {status}
-                                    {/* <img src={FinishIcon} alt="finish icon"/> */}
-                                </button>
-                                {/* </NavLink> */}
+                                    {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
+                                    <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
+                                        Back
+                                    </button>
+                                    <button className="uploadButton_agencyForm3" style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={handleUpload} name={status}>
+                                        {status}
+                                        {/* <img src={FinishIcon} alt="finish icon"/> */}
+                                    </button>
+                                    {/* </NavLink> */}
+                                </div>
                             </div>
                         </div>
+                        <div className="miscellaneousArea">
+                            {/* <img src={privacy} alt="" /> */}
+                            <p>Your Information is safe with us.</p>
+                        </div>
                     </div>
-                    <div className="miscellaneousArea">
-                        {/* <img src={privacy} alt="" /> */}
-                        <p>Your Information is safe with us.</p>
-                    </div>
-                </div>
-            }
+                }
+            </div>
         </>
     )
 }

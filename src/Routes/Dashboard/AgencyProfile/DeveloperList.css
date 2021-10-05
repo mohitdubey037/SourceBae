@@ -1,6 +1,5 @@
 .mainDeveloperList {
   width: 100%;
-  /* background-color: #E5E5E5; */
   height: 100%;
 }
 
@@ -11,11 +10,9 @@
 }
 
 .developerCard {
-  /* min-height: 320px; */
   width: 30%;
   background-color: #fff;
   padding: 1rem;
-  /* border: 1px solid #3a3a3a; */
   border-radius: 15px;
   position: relative;
   margin: 1rem;
@@ -75,16 +72,9 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  /* position: relative; */
 }
-
-/* .developerName, .developerExp {
-  text-align: center;
-} */
-
 .developerName {
   width: 90%;
-  /* margin-bottom: 0.9rem; */
   position: relative;
   display: flex;
   align-items: center;
@@ -128,7 +118,6 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  /* margin-bottom: 4%; */
 }
 
 .developerTechNames p {
@@ -141,14 +130,6 @@
   margin-right: 15px;
   font-size: 0.7rem;
 }
-
-/* .add-developer_parent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-} */
 
 .developerBudget {
   display: flex;
@@ -171,12 +152,6 @@
   margin-top: 10px;
   text-align: center;
 }
-
-/* .developerResume {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-} */
 
 .developerResume button {
   padding: 0.4rem 1rem;
@@ -204,7 +179,7 @@
 }
 
 .addDeveloperText {
-  /* transform: translateY(10px); */
+  font-family: 'Segoe UI';
   font-size: 1.1rem;
   margin-top: 1rem;
 }
@@ -297,10 +272,6 @@
   font-size: 14px !important;
 }
 
-/* .developer-status_developerList {
-  width: 50%;
-} */
-
 .developer-status_developerList p {
   font-family: 'Segoe UI Semibold';
   font-size: 16px;
@@ -308,15 +279,10 @@
   color: #5C6DFF;
 }
 
-/* .developer-status_developerListChild > p {
-  font-size: 14px !important;
-} */
-
 .statusLabel {
   font-weight: 500;
   font-size: 10px;
   line-height: 15px;
-  /* identical to box height */
   text-align: center;
   text-transform: capitalize;
   color: #838383;
@@ -326,10 +292,6 @@
 .availabilityToggle {
   margin-top: 0.5rem;
 }
-
-/* .arrow_image {
-  cursor: pointer;
-} */
 
 .conditionalRotate {
   transform: rotate(180deg);
