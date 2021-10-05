@@ -414,8 +414,8 @@ const Register = (props) => {
             {loading ? <Spinner /> :
                 <>
                     <div className='client__registrationContainer'>
-                        <img className="signup1" src={Signup1} alt="signup" />
-                        <img className="signup2" src={Signup2} alt="signup" />
+                        <img className="Image1" src={Signup1} alt="signup" />
+                        <img className="Image2" src={Signup2} alt="signup" />
                         <div className='form__area'>
                             <div className="client__form">
                                 <div className="toggleButton register">

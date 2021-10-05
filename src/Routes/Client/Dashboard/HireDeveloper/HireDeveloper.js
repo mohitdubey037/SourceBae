@@ -13,6 +13,8 @@ import MultiSelect from "react-multi-select-component";
 import instance from "../../../../Constants/axiosConstants";
 import Back from '../../../../Components/Back/Back';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
+import UpImage from '../../../../assets/images/Newestdashboard/Register/signup_up.svg';
+import DownImage from '../../../../assets/images/Newestdashboard/Register/signup_down.svg';
 
 const BlueRadio = withStyles({
   root: {
@@ -140,6 +142,8 @@ function HireDeveloper(props) {
     <>
       <Navbar />
       <div className="back_and_hireDeveloper_Parent">
+        <img className="Image1_hireDeveloper" src={UpImage} alt="upImage" />
+        <img className="Image2" src={DownImage} alt="downImage" />
         <Back name="Hire Developer" />
         <div className="mainHireDeveloper">
           <div className="hireDeveloperForm">
@@ -273,7 +277,7 @@ function HireDeveloper(props) {
                 </FormControl>
               </div>
 
-              <div className="preferredBillingMode" style={{ marginLeft: "4rem" }}>
+              <div className="preferredBillingMode">
                 <ul>
                   <li>
                     Preffered Billing
@@ -387,7 +391,7 @@ function HireDeveloper(props) {
                 )}
               </div>
 
-              <div className="startPeriod" style={{ marginLeft: "4rem" }}>
+              <div className="startPeriod">
                 <ul>
                   <li>
                     Start Date
