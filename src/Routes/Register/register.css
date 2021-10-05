@@ -1,8 +1,9 @@
 .client__registrationContainer {
   background: #fff;
-  overflow-x: hidden;
+  overflow: hidden;
   height: 100vh;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
+  position: relative;
+  /* background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); */
 }
 
 .form__area {
@@ -15,6 +16,20 @@
   border: 7px solid #FFFFFF;
   box-shadow: 0px 6.29787px 31.4894px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
+}
+
+.signup1 {
+  left: -10.5rem;
+  position: absolute;
+  top: -5rem;
+  width: 48rem;
+}
+
+.signup2 {
+  right: -12rem;
+  position: absolute;
+  bottom: -4.5rem;
+  width: 48rem;
 }
 
 .logoPart {
@@ -35,8 +50,7 @@
   width: 100%;
 }
 
-.form__1>div,
-.form__2>div {
+.form__1>div, .form__2>div {
   width: 60%;
   display: flex;
 }

@@ -10,7 +10,6 @@ function Back(props) {
     return (
         <div className="back-button_newestAddDeveloper">
             <div className="image-div_newestAddDeveloper">
-                {/* <img onClick={goBack} src={BackLeft} alt="Back left" /> */}
                 <div className="hover" onClick={goBack}>
                     <img src={BackLeft} alt="done" />
                 </div>
