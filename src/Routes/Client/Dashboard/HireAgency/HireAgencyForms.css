@@ -147,7 +147,7 @@
 
 .servicesHirecover {
     background-color:#015F9A;
-    width: 98rem;
+    width: 96rem;
     padding: 2rem;
     position: absolute;
     height: 10rem;
@@ -526,7 +526,7 @@ li ::marker {
     position: absolute;
     padding-top: 5rem;
     height: 91%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .mainHireAgencyForm3 {
@@ -636,7 +636,7 @@ li ::marker {
     border: 1px dashed #ebebeb;
     padding-bottom: 6%;
     background: #fff;
-    width: 72%;
+    /* width: 72%; */
     position: absolute;
     /* right: 0rem; */
     height: 7rem;
@@ -654,7 +654,7 @@ li ::marker {
     margin-left: 58rem;
     border-radius: 1rem;
     position: absolute;
-    top: 28.5rem;
+    top: 23.5rem;
 }
 
 .mainHireAgencyFormTwo .MuiFormGroup-root {
@@ -729,11 +729,11 @@ li ::marker {
 }
 
 .serviceFieldsOptions.newHireAgencyForm3 {
-    width: 40%;
+    width: 33%;
     position: absolute;
-    right: -22rem;
+    right: -18.5rem;
     height: 31rem;
-    top: 3rem;
+    top: 4.5rem;
 }
 
 .techStackFields {

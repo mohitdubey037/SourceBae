@@ -19,7 +19,7 @@
 }
 
 .margin-top_productAgencies {
-    margin-top: 1%;
+    margin-top: 5rem;
 }
 
 .officeVisitFilter_productAgencies {
@@ -68,9 +68,10 @@
 .mainAgencyList_productAgencies {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 5rem;
 }
 
 .filterForm_productAgencies {

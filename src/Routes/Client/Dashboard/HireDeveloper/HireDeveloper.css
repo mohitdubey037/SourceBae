@@ -13,6 +13,7 @@
 .back_and_hireDeveloper_Parent {
   padding-top: 5rem;
   position: relative;
+  overflow: hidden;
 }
 
 .Image1_hireDeveloper {
@@ -228,6 +229,7 @@
 .radioContainer {
   display: grid;
   grid-template-columns: auto auto;
+  justify-content: space-between;
 }
 
 .resourceNumber .dropdown-container {
@@ -391,13 +393,16 @@
   height: 40px;
   padding-left: 10px;
 }
-
+.Image2 {
+  z-index: 1;
+}
 .hireDeveloperForm .MuiFormGroup-root {
   flex-direction: row !important;
   margin-left: 20px !important;
   display: grid;
   grid-template-columns: auto auto;
-  width: 24rem;
+  width: 22.5rem;
+  justify-content: stretch;
 }
 
 .MuiTypography-body1 {
