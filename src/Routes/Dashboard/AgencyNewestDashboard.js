@@ -158,8 +158,7 @@ function AgencyNewestDashboard(props) {
     return (
         <div className="Navbar-clientDashboard">
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            
-            <div className="container-body">
+            <div style={{zIndex: visible === 'true' && '-1'}} className="container-body">
                 <div className="navbar">
                     <div className="navbar-items">
                         <div style={{ marginRight: '10px' }} className="username nav-left-item">

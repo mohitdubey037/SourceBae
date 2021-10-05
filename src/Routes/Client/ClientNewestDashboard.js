@@ -105,7 +105,8 @@ function ClientNewestDashboard(props) {
 
     useEffect(() => {
         console.log(projects);
-    }, [statuses, projects])
+        console.log(visible);
+    }, [statuses, projects, visible])
 
     useEffect(() => {
         getAllProjects();
@@ -120,7 +121,7 @@ function ClientNewestDashboard(props) {
         <>
 
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            <div className="container-body">
+            <div style={{zIndex: visible === 'true' && '-1'}} className="container-body">
                 <div style={{top: '1rem'}} className="navbar">
                     <div className="navbar-items">
                         <div style={{ paddingRight: '10px' }} className="username">

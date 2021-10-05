@@ -324,6 +324,10 @@
   font-size: 0.7rem;
 }
 
+.estimatedBudget {
+  margin-top: 1rem;
+}
+
 .estimatedBudgetText~div {
   width: 100%;
   margin-left: 1rem;
