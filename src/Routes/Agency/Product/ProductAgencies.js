@@ -234,8 +234,8 @@ function ProductAgencies(props) {
 
 
                     <div className="mainAgencyList_productAgencies">
-                        <img className="Image1_shortTerm" src={UpImage} alt="upImage" />
-                        <img className="Image2_shortTerm" src={DownImage} alt="downImage" />
+                        <img className="Image1_productAgencies" src={UpImage} alt="upImage" />
+                        <img className="Image2_productAgencies" src={DownImage} alt="downImage" />
                     <Back name="Product Agencies" />
                         <div className="innerAgencyList_productAgencies">
                             {err ?

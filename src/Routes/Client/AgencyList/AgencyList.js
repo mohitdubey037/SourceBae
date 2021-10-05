@@ -13,6 +13,8 @@ import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
 import Navbar from "../../../Components/ClientNewestDashboard/Navbar/Navbar";
 import Back from "../../../Components/Back/Back";
+import UpImage from '../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
 function AgencyList(props) {
   const Role = localStorage.getItem("role");
@@ -132,6 +134,9 @@ function AgencyList(props) {
   }, [shortlistFormData]);
 
   return (
+    <div classname="mainImageDiv">
+    <img className="Image1_agencyList" src={UpImage} alt="upImage" />
+    <img className="Image2_agencyList" src={DownImage} alt="downImage" />
     <>
       <Sidebar notificationVisible={(status) => notificationVisible(status)} />
       {loading ? (
@@ -140,7 +145,7 @@ function AgencyList(props) {
         <>
           <div style={{ zIndex: visible && '-1' }} className="main_parent_agencyList">
             <Navbar />
-            <div className="innerProjectDetail_parent">
+             <div className="innerProjectDetail_parent">
               <div className="innerprojectDetailsInfo_agencyList">
                 <p>
                   {`Project Title:- `}
@@ -491,7 +496,8 @@ function AgencyList(props) {
           </div>
         </div>
       </Modal>
-    </>
+      </>
+    </div>
   );
 }
 
