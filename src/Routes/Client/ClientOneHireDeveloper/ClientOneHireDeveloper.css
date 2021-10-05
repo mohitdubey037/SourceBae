@@ -7,12 +7,15 @@
 }
 
 .new_design_clientOneHireDeveloper {
-  width: 423px;
-  margin-top: 10px;
-  margin-left: 20px;
-  background: linear-gradient( 180deg, #F9F9F9 0%, rgba(249, 249, 249, 0) 100%);
+  width: 30rem;
+  top: -1rem;
+  margin-top: 8rem;
+  margin-left: 34rem;
+  background-color: #ffffff;
   position: relative;
-  height: 278px;
+  height: 17rem;
+  border-radius: 8px;
+  bottom: 5rem;
 }
 
 .moreAgencyHeading {
@@ -28,21 +31,19 @@
 }
 
 .name-Font {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 140%;
-  letter-spacing: -0.25px;
+  font-family: 'Segoe UI semibold', sans-serif;
+  font-size: 1.5rem;
   text-transform: capitalize;
-  padding-top: 3%;
-  color: #407BFF;
-  width: 69%;
+  padding-top: 4%;
+  color: #015F9A;
   text-align: center;
 }
 
 .moreAgencyInfo>div {
   margin-top: 40px;
+}
+.margin-top.conditional_back_parent {
+  margin-top: 5rem;
 }
 
 /* .innerMoreAgencies_clientOneHireDeveloper {
@@ -86,22 +87,15 @@
 }
 
 .moreAgencyLogo {
-  background: #F2F2F2;
-  padding: 12px;
-  width: 46%;
+  background-image: linear-gradient(to right, #01304D , #015F9A);
+  padding: 8px ;
+  width: 30%;
   display: flex;
   justify-content: center;
-  color: #5A5A5A;
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 16px;
-  line-height: 19px;
-  letter-spacing: 0.554545px;
-  margin-left: 40px;
-  border: 1px solid #DCD3D3;
-  /* box-sizing: border-box; */
-  border-radius: 5.54545px;
+  border-radius: 8px;
 }
 
 .checkResource.moreAgencyLogo:hover {
@@ -119,27 +113,29 @@
 }
 
 .button_parent {
-  margin-top: 40px;
+  display: flex;
+  justify-content:center;
+  margin-top: 2.2rem;
 }
 
 .respondCards_clientOneHireDeveloper {
   overflow: auto;
-  height: 83vh;
+  min-height: 83vh;
+  height: 100%;
+  background-image: linear-gradient(to right, #015F9A , #0376BA);
 }
 
 .moreAgencyList .moreAgencyInfo p {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 16px;
-  line-height: 150%;
+  color: #707070;
   text-transform: capitalize;
-  color: #3A3A3A;
 }
 
 .moreAgencyList .moreAgencyInfo .phone_clientOneHireDeveloper p {
-  margin-left: 40px;
+  margin-left: 1rem;
 }
 
 .moreAgencyList .moreAgencyInfo .email_clientOneHireDeveloper p {
-  margin-left: 45px;
+  margin-left: 1rem;
 }

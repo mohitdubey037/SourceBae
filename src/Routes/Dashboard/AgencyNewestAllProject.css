@@ -2,6 +2,10 @@ h6 {
     font-size: small;
     margin-bottom: 0;
 }
+.container-body {
+    background-color: #FFFFFF;
+    background-image: none;
+}
 
 /* p, h5, h6, h4 {
     margin: 0;
@@ -16,10 +20,10 @@ h6 {
 } */
 
 .agency-card-parent {
-    padding: 0px 0 0px 7px;
-    width: 95%;
-    margin-left: 20px;
-    overflow: auto;
+    /* padding: 0px 0 0px 7px; */
+    /* width: 95%; */
+    /* margin-left: 20px; */
+    /* overflow: auto; */
     height: 420px;
 }
 
@@ -57,26 +61,25 @@ h6 {
 }
 
 .project-actual-status {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 4.5rem 2rem 2.5rem 1rem;
+    /* margin-bottom: 20px; */
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .project-actual-status div h6 {
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
+    font-family: 'Segoe UI Semibold', sans-serif;
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .completed-project, .running-project, .rejected-project {
+    background-image: linear-gradient(to right, #015F9A, #0376BA);
     border-radius: 4px;
-    padding: 20px;
-    width: 22%;
+    padding: 16px;
+    width: 16%;
     text-align: center;
-    background-color: #F9F9F9;
+    color: #F9F9F9;
 }
 
 .completed-project:hover, .running-project:hover, .rejected-project:hover {
@@ -195,17 +198,22 @@ h6 {
 
 .all-project_div {
     display: flex;
+    justify-content: center;
     padding: 15px;
-    background: #EAF2FF;
-    margin-left: 25px;
+    background: #f5f5f5;
+    /* margin-left: 25px; */
     align-items: center;
     margin-top: 1rem;
+    border-radius: 2rem;
+    box-shadow: 1px 2px 3px rgb(0,0,0,18%);
 }
 
 .all-project_div p {
+    color: #015F9A;
+    font-family: "Segoe UI bold";
     margin-left: 20px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 1.7rem;
     line-height: 17px;
 }
 

@@ -30,15 +30,19 @@
     margin-bottom: 1rem;
 }
 
-.user-project_agencyNewestAllProject {
-    margin-bottom: 30px;
-    width: 90%;
-    border: 1px solid #F5F5F5;
-    height: 230px;
-    padding: 0 20px;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
+.user-project_agencyNewestAllProject.allProject {
+    display: flex;
+    width: 101%;
+    background-image: url(../../assets/images/Newestdashboard/All_Project/backgroundall.svg);
+    margin: 1rem 0rem 0rem -2rem;
+    /* border: 1px solid #F5F5F5; */
+    height: 170px;
+    /* padding: 0 20px; */
+    font-family: 'Segoe UI';
+    color: #707070;
+    /* background: #FFFFFF; */
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); */
+    /* border-radius: 12px; */
     position: relative;
 }
 
@@ -63,6 +67,7 @@
     font-weight: 600;
     margin-bottom: 0;
     font-size: 18px;
+    text-transform: capitalize;
 }
 
 .button-parent {
@@ -89,9 +94,9 @@
 
 .date_AgencyNewestAllProject time, .matchedDate_AgencyNewestAllProject time {
     margin-left: 10px;
-    font-weight: 600;
     font-size: 12px;
     text-align: center;
+    font-family: "segoe UI";
 }
 
 .user-project-paragraph_AgencyNewestAllProject {
@@ -101,14 +106,13 @@
 }
 
 .user-project-details_AgencyNewestAllProject {
-    border: 1px solid #F5F5F5;
     display: flex;
+    flex:0.45;
     flex-direction: column;
     justify-content: space-around;
-    margin: 17px 14px 0 14px;
+    margin: 3.3rem 10rem 0 14px;
     height: 40%;
     padding: 0 25px;
-    background: #F9F9F9;
     border-radius: 8px;
 }
 
@@ -134,14 +138,15 @@ td:nth-child(even) {
 }
 
 .submit-button_allProjectCard {
-    padding: 6px;
-    display: grid;
+    padding: 18px;
+    display: flex;
+    height: 2rem;
     place-items: center;
-    margin-right: 15px;
-    background: #79ACFF;
-    color: #fff;
+    margin: 1rem 1rem 0rem 0rem ;
+    background: #ffffff;
+    color: #015F9A;
     outline: none;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .submit-button_allProjectCard:hover {

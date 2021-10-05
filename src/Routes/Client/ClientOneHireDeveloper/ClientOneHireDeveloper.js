@@ -10,8 +10,8 @@ import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
 import PhoneImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/phone_icon.svg';
 import Group from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Group.svg';
-import Polygon1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon2.svg';
-import Polygon2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon.svg';
+// import Polygon1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon2.svg';
+// import Polygon2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon.svg';
 import Back from "../../../Components/Back/Back";
 
 function ClientOneHireDeveloper(props) {
@@ -86,12 +86,12 @@ function ClientOneHireDeveloper(props) {
                                 return (
                                     <>
                                         <div className="moreAgencyList new_design_clientOneHireDeveloper">
-                                            <div className="polygon1">
+                                            {/* <div className="polygon1">
                                                 <img src={Polygon1} alt="Polygon1" />
                                             </div>
                                             <div className="polygon2">
                                                 <img src={Polygon2} alt="Polygon2" />
-                                            </div>
+                                            </div> */}
                                             <div className="moreAgencyInfo">
                                                 <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
                                                 <div>

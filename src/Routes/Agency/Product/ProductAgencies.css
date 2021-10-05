@@ -146,13 +146,35 @@
     background-color: #000;
 } */
 
-.productAgencyMiddle {
-    margin-top: 1%;
+.productAgencyMiddle.bottom{
+    margin-top: 1% ;
     flex-direction: row-reverse;
+    margin-left: 0 ;
+}
+.agencyProfileInfo.name h6 {
+    padding-top: 0rem ;
+    padding-left: 1rem ;
+}
+.quotationShortlistButton.button{
+    top: 14.3rem ;
+    left: 9.2rem ;
+}
+
+.agencyProfileInfo.name div {
+    display: block ;
+    margin-left: -7.4rem ;
+    margin-top: 2rem ;
+    position: initial;
+}
+.agencyImageProfile.innerdiv {
+ position: relative;
+ top: 0rem;
+ left: 0.8rem;
 }
 
 .productAgenciesTeam {
     width: 48%;
+    height: 10rem;
     padding: 0.5rem;
     overflow: hidden;
     background-color: #fff;
@@ -164,14 +186,25 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    top: -5.4rem;
+    top: -6.4rem;
     left: -5rem;
     width: 36%;
     box-shadow: 0px 3px 6px rgb(0 0 0 / 18%);
 }
 
-.agencyPreciseCard {
+.agencyImageArea.image {
+    width: 100px ;
+    height: 100px  ;
+    margin:0 ;
+}
+
+.agencyPreciseCard.agencyPreciseCard_productAgencies {
     background-image: url(../../../assets/images/AddProductAgency/background.svg);
+    height: 19.5rem;
+
+}
+
+.agencyPreciseCard {
     background-repeat: no-repeat;
       background-size: contain;
     min-height: 30vh;

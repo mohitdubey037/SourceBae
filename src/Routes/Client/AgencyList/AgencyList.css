@@ -57,6 +57,9 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  position: relative;
+    left: 10rem;
+    top: -5rem;
 }
 .innerprojectDetailsInfo_agencyList {
   margin-left: 0.6rem;
@@ -96,7 +99,7 @@
   position: relative;
   z-index: 1;
   height: 16rem;
-  margin-bottom: 4%;
+  margin-bottom: 1%;
   background-image: url(../../../assets/images/AddProductAgency/agencybg1.svg);
 }
 
@@ -120,11 +123,12 @@
   display: flex;
 }
 
-.agencyImageArea {
-  width: 100px;
-  height: 100px;
+.agencyImageArea.agencyImageArea_Img {
+  width: 135px;
+  height: 135px;
   overflow: hidden;
   display: flex;
+  margin-top: 4rem;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
@@ -137,17 +141,21 @@
   object-fit: contain;
 }
 
-.agencyProfileInfo h6 {
+.agencyProfileInfo.agencyProfileInfodiv h6 {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: 6%;
+  margin-top: 3rem;
+  margin-left: -1rem;
 }
 
-.agencyProfileInfo div {
+.agencyProfileInfo.agencyProfileInfodiv div {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  position: absolute;
+  right: 300px;
+  top: 3.5rem;
 }
 
 .agencyProfileInfo div p {
@@ -225,12 +233,15 @@
   margin-right: 3px;
 }
 
-.agencyDescInfo {
+.agencyDescInfo.agencydiv {
   width: 50%;
-  border: 1px dashed #f0f0f0;
+  /* border: 1px dashed #f0f0f0; */
   padding: 0.5rem;
   height: 110px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  position: relative;
+  top: -6rem;
+
 }
 
 .agencyDescInfo::-webkit-scrollbar {

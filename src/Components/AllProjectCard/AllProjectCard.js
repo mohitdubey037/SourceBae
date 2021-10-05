@@ -1,8 +1,8 @@
 import React from 'react';
 import './AllProjectCard.css';
 
-import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/MainVector.svg';
-import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/Vector.svg';
+import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/vec.svg';
+import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/vec.svg';
 import Moment from 'react-moment';
 import { withRouter } from "react-router";
 import { useHistory } from 'react-router-dom';
@@ -15,14 +15,15 @@ function AllProjectCard(props) {
     }
 
     return (
-        <div className="user-project_agencyNewestAllProject">
+        <div className="user-project_agencyNewestAllProject allProject">
+        <div style={{flex:"0.5", paddingLeft:"3rem"}}>
             <div className="user-project_heading_agencyNewestAllProject">
                 <div className="user-project_child_agencyNewestAllProject">
                     <h5>{props?.projectName}</h5>
                 </div>
-                <div onClick={() => showDetails()} className="submit-button_allProjectCard">
+                {/* <div onClick={() => showDetails()} className="submit-button_allProjectCard">
                     <h6>Show Details</h6>
-                </div>
+                </div> */}
             </div>
 
             <div className="user-project-status_AgencyNewestAllProject">
@@ -45,6 +46,7 @@ function AllProjectCard(props) {
                     {/* <p>Matched On 25 March 2021</p> */}
                 </div>
             </div>
+            </div>
 
             <div className="user-project-details_AgencyNewestAllProject">
                 <table>
@@ -52,19 +54,27 @@ function AllProjectCard(props) {
                         <tr>
                             <td>Industry</td>
                             <td>{props?.projectDomainId?.domainName}</td>
-                            <td>Final Budget</td>
-                            <td>{props.projectFinalCost === undefined ? props.projectProposalCost : props.projectFinalCost}</td>
                         </tr>
+                       
                         <tr>
                             <td>Expert Categories</td>
                             <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
+                        </tr>
+                        <tr>
+                            <td>Final Budget</td>
+                            <td>{props.projectFinalCost === undefined ? props.projectProposalCost : props.projectFinalCost}</td>
+                        </tr>
+                        <tr>    
                             <td>Services</td>
                             <td>{props?.projectServicesRequired[0]?.serviceName}</td>
                         </tr>
                     </thead>
                 </table>
             </div>
-        </div >
+            <div onClick={() => showDetails()} className="submit-button_allProjectCard">
+                    <h6>Show Details</h6>
+                </div>
+        </div>
     )
 }
 
