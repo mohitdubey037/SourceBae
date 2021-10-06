@@ -59,7 +59,7 @@
   flex-direction: column;
   position: relative;
     left: 10rem;
-    top: -5rem;
+    top: 0;
 }
 .innerprojectDetailsInfo_agencyList {
   margin-left: 0.6rem;
@@ -96,10 +96,10 @@
   min-height: 30vh;
   background-color: #fff;
   /* box-shadow: 0 2px 4px 2px rgba(119, 95, 95, 0.2); */
-  position: relative;
-  z-index: 1;
+  /* position: relative; */
+  /* z-index: 1; */
   height: 16rem;
-  margin-bottom: 1%;
+  /* margin-bottom: 1%; */
   background-image: url(../../../assets/images/AddProductAgency/agencybg1.svg);
 }
 
@@ -111,24 +111,24 @@
   background-color: #ebf5fb;
 }
 
-.agencyCardHeaderInfo {
+.agencyCardHeaderInfo.agencyListDiv {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 1rem;
+  /* align-items: flex-start; */
+  /* padding: 1rem; */
 }
 
 .agencyImageProfile {
   width: 70%;
-  display: flex;
+display: flex;
 }
 
 .agencyImageArea.agencyImageArea_Img {
-  width: 135px;
-  height: 135px;
-  overflow: hidden;
+  width: 8.5rem;
+  height: 8.5rem;
+  /* overflow: hidden; */
   display: flex;
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
@@ -145,17 +145,18 @@
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-top: 3rem;
-  margin-left: -1rem;
+  /* margin-top: 3rem; */
+  /* margin-left: -1rem; */
 }
 
 .agencyProfileInfo.agencyProfileInfodiv div {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  position: absolute;
-  right: 300px;
-  top: 3.5rem;
+  /* align-items: center; */
+  padding: 2rem 1rem 6.5rem;
+  /* flex-wrap: wrap; */
+  /* position: absolute; */
+  /* right: 300px; */
+  /* top: 3.5rem; */
 }
 
 .agencyProfileInfo div p {
@@ -184,19 +185,20 @@
   text-decoration: underline;
 }
 
-.middleAgencyArea {
+.middleAgencyArea.agencylistCont {
   display: flex;
   justify-content: space-between;
   /* padding: 1rem; */
   padding: 0 1rem;
   padding-bottom: 1rem;
+  margin-top: -7.5rem;
 }
 
-.agencyAddressTeam {
+/* .agencyAddressTeam {
   width: 48%;
   padding: 0.5rem;
   overflow: hidden;
-}
+} */
 
 .agencyAddressArea,
 .agencyTeamNumber {
@@ -234,13 +236,13 @@
 }
 
 .agencyDescInfo.agencydiv {
-  width: 50%;
+  /* width: 50%; */
   /* border: 1px dashed #f0f0f0; */
-  padding: 0.5rem;
-  height: 110px;
+  /* padding: 0.5rem; */
+  /* height: 110px; */
   /* overflow-y: scroll; */
-  position: relative;
-  top: -6rem;
+  /* position: relative; */
+  /* top: -6rem; */
 
 }
 
@@ -268,10 +270,10 @@
   overflow: hidden;
 }
 
-.agencyAddressTeam,
+/* .agencyAddressTeam,
 .agencyDescInfo :is(h6) {
   font-family: "Fredoka One", cursive;
-}
+} */
 
 .agencyAddressTeam h6::after,
 .agencyDescInfo h6::after {
@@ -282,25 +284,30 @@
   background-color: #000;
 }
 
-.quotationShortlistButton {
+.quotationShortlistButton2.agencyListButton {
   display: flex;
   justify-content: center;
   padding: 0rem 1rem;
   align-items: center;
   padding-bottom: 2%;
   margin-left: -12.2rem;
+  margin-top: -2rem;
 }
 
-.quotationShortlistButton div {
+.quotationShortlistButton2 div {
   width: 20%;
   margin-right: 3%;
-  background-color: #fff;
+  /* background-color: #fff; */
   height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   user-select: none;
+  width: 8rem;
+  height: 2rem;
+  background-color: #015F9A;
+  border-radius: 1rem;
 }
 
 /* .quotationShortlistButton div p {
@@ -309,12 +316,12 @@
   font-weight: bold;
 } */
 
-.quotationShortlistButton div:nth-child(1) {
+.quotationShortlistButton2 div:nth-child(1) {
   border: 1px solid #3498db;
-  color: #3498db;
+  color: #ffffff;
 }
 
-.quotationShortlistButton div:nth-child(2) {
+.quotationShortlistButton2 div:nth-child(2) {
   background-color: #3498db;
   color: #fff;
 }
