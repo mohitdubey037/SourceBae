@@ -66,11 +66,11 @@
 }
 
 .Image2_productAgencies {
-    right: -8rem;
+    right: -9rem;
     position: absolute;
-    bottom: -4rem;
-    width: 48rem;
-    z-index: 2;
+    bottom: -5rem;
+    width: 43rem;
+    z-index: 0;
 }
 .Image1_productAgencies {
     left: -7rem;
@@ -84,24 +84,25 @@
 }
 .mainAgencyList_productAgencies {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 5rem;
-    position: relative;
+    position: absolute;
     overflow: hidden;
 }
 
 .filterForm_productAgencies {
-    width: 100%;
+    width: 22%;
     background-color: #fff;
     overflow: hidden;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    position: sticky;
+    position: fixed;
     right: 2rem;
-    top: 1.5rem;
+    top: 10rem;
     color: #707070;
     font-family: 'Segoe UI';
 }
@@ -141,6 +142,8 @@
 
 .innerAgencyList_productAgencies {
     width: 100%;
+    height: 90%;
+    overflow-y: scroll;
     display: flex;
     justify-content: space-around;
 }

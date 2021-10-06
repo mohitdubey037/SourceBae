@@ -14,6 +14,9 @@ import { Modal } from "react-responsive-modal";
 import Moment from "react-moment";
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../Components/Back/Back';
+import Profile_image1 from '../../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
+import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
+
 
 function ProductDetails(props) {
   const condition = props.location.condition;
@@ -210,6 +213,9 @@ function ProductDetails(props) {
           details?.map((value, index) => {
             return (
               <div className="mainProductDetails">
+                <img className="Image1" src={Profile_image1} alt="signup" />
+                <img className="Image2" src={Profile_image2} alt="signup" />
+                       
                 <Back name="Product Details" />
                 <div
                   className={

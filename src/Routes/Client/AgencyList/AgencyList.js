@@ -138,7 +138,9 @@ function AgencyList(props) {
     <img className="Image1_agencyList" src={UpImage} alt="upImage" />
     <img className="Image2_agencyList" src={DownImage} alt="downImage" />
     <>
+    <div className="SidebarAgencyList">
       <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+      </div>
       {loading ? (
         <Spinner />
       ) : (

@@ -14,6 +14,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Not_Found from '../../assets/images/Newestdashboard/Not_found/no_data_icon.jpg';
 import { SettingsBackupRestore } from '@material-ui/icons';
+import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -156,8 +159,11 @@ function AgencyNewestAllProject(props) {
     }, [projects])
 
     return (
-        <div className="dashboard-container">
-            <Sidebar />
+        <div className="dashboard-container" style={{overflow:"hidden"}}>
+         <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" />
+         <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" />
+   
+            <Sidebar/>
             <div className="container-body">
                 <Navbar />
                 <div className="content-body">
