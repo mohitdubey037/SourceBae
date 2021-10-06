@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import RightSide from '../../Components/ClientNewestDashboard/RightSide/RightSide';
 import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/UserOperations';
 
@@ -17,11 +16,8 @@ import { Modal } from "react-responsive-modal";
 
 import { useHistory } from 'react-router-dom';
 import instance from "../../Constants/axiosConstants";
-import { Link, NavLink } from "react-router-dom";
 import * as helper from "../../shared/helper";
-import { Opacity } from '@material-ui/icons';
-import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound_new.svg';
-
+import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
 function AgencyNewestDashboard(props) {
 
@@ -179,7 +175,7 @@ function AgencyNewestDashboard(props) {
                                         Please
                                         <span onClick={() => verifyEmailPhone()}>
                                             Verify Phone & Email
-                                        </span>{" "}
+                                        </span>
                                         to use our services.
                                     </p>
                                 </div>
@@ -193,7 +189,7 @@ function AgencyNewestDashboard(props) {
                                             Please
                                             <span onClick={() => props.history.push(formRoute)}>
                                                 Update
-                                            </span>{" "}
+                                            </span>
                                             your profile to use our services.
                                         </p>
                                     ) : (
