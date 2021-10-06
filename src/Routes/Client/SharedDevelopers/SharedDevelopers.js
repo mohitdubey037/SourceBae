@@ -6,9 +6,12 @@ import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
-// import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from "../../../Components/Back/Back";
+import UpImage1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpImage1.svg';
+import DownImage2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownImage2.svg';
+import UpBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpBigImage.svg';
+import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownBigImage.svg';
 import DownArrow from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg'
 
 function RespondedDetails(props) {
@@ -74,8 +77,6 @@ function RespondedDetails(props) {
       });
   };
 
-  // const handleDevelopers = (documents) => { };
-
   const showMore = () => {
     setInitial(initial + 5);
   }
@@ -92,7 +93,7 @@ function RespondedDetails(props) {
   useEffect(() => {
     console.log(showDevelopers);
   }, [showDevelopers]);
-  
+
 
   useEffect(() => {
     console.log(initial);
@@ -100,18 +101,19 @@ function RespondedDetails(props) {
   }, [initial])
 
   console.log(agencyDeveloper.length);
-  // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
-    <>
+    <div className='main_parent_sharedDeveloper'>
       <Navbar />
+      <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
+      <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
+      <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
+      <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1" />
       {loading ? (
         <Spinner />
       ) : (
         <>
-          <div className="conditional_back_parent">
-            <Back name="Matched Developer" />
-          </div>
+          <Back name="Matched Developer" />
           <div className="main-card_SharedDevelopers">
             <div className="respond-card_parent">
               {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
@@ -151,10 +153,10 @@ function RespondedDetails(props) {
                     </p>
                   </div>
 
-                  <div style={{display: singleHiredDeveloper?.agencyMatched === undefined && 'none'}} onClick={() => setShowDevelopers(!showDevelopers)} className="moreAgencies_shared new_design no_border">
-                    <div style={{ paddingBottom: '0'}}>
+                  <div style={{ display: singleHiredDeveloper?.agencyMatched === undefined && 'none' }} onClick={() => setShowDevelopers(!showDevelopers)} className="moreAgencies_shared new_design no_border">
+                    <div style={{ paddingBottom: '0' }}>
                       <h3>Matched Developer</h3>
-                      <i style={{display: singleHiredDeveloper?.agencyMatched === undefined && 'none'}} className={`fas fa-chevron-down ${showDevelopers && "conditionalRotate"}`}></i>
+                      <i style={{ display: singleHiredDeveloper?.agencyMatched === undefined && 'none' }} className={`fas fa-chevron-down ${showDevelopers && "conditionalRotate"}`}></i>
                     </div>
 
                     {(singleHiredDeveloper?.agencyMatched?.length > 0
@@ -225,7 +227,7 @@ function RespondedDetails(props) {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
 
