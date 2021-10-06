@@ -1,21 +1,25 @@
+.main_parent_clientOneHireDeveloper {
+  background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+}
+
 .new_design_clientOneHireDeveloper {
   border-bottom: none;
   cursor: pointer;
   flex-direction: column;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 216px;
+  padding: 1rem;
+  width: 30rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin: 0.5rem 0;
 }
 
-.new_design_clientOneHireDeveloper {
-  width: 30rem;
-  top: -1rem;
-  margin-top: 8rem;
-  margin-left: 34rem;
-  background-color: #ffffff;
-  position: relative;
-  height: 17rem;
-  border-radius: 8px;
-  bottom: 5rem;
+.moreAgency_parent {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .moreAgencyHeading {
@@ -42,13 +46,6 @@
 .moreAgencyInfo>div {
   margin-top: 40px;
 }
-.margin-top.conditional_back_parent {
-  margin-top: 5rem;
-}
-
-/* .innerMoreAgencies_clientOneHireDeveloper {
-  margin-top: 1%;
-} */
 
 .innerMoreAgencies_clientOneHireDeveloper .moreAgencyHeading {
   padding-bottom: 1%;
@@ -59,7 +56,6 @@
 .phone_clientOneHireDeveloper {
   margin-top: 10px;
   display: flex;
-  /* justify-content: space-between; */
   width: 36%;
   margin-left: 40px;
 }
@@ -67,7 +63,6 @@
 .email_clientOneHireDeveloper {
   margin-top: 20px;
   display: flex;
-  /* justify-content: space-between; */
   width: 55%;
   margin-left: 40px;
 }
@@ -87,8 +82,8 @@
 }
 
 .moreAgencyLogo {
-  background-image: linear-gradient(to right, #01304D , #015F9A);
-  padding: 8px ;
+  background-image: linear-gradient(to right, #01304D, #015F9A);
+  padding: 8px;
   width: 30%;
   display: flex;
   justify-content: center;
@@ -114,15 +109,13 @@
 
 .button_parent {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   margin-top: 2.2rem;
 }
 
 .respondCards_clientOneHireDeveloper {
-  overflow: auto;
-  min-height: 83vh;
-  height: 100%;
-  background-image: linear-gradient(to right, #015F9A , #0376BA);
+  padding-top: 5rem;
+  height: 100vh;
 }
 
 .moreAgencyList .moreAgencyInfo p {

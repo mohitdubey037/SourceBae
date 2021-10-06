@@ -7,13 +7,20 @@
 
 .innerClientProfile {
     width: 90%;
-    margin-top: 2%;
+    padding-top: 2rem;
 }
 
 .clientProfileHeading h2 {
     font-family: 'Segoe UI bold';
     font-size: 2rem;
     color: #ffffff;
+}
+
+.mainClient_parent {
+    padding-top: 5rem;
+    background: linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .myProfileInfo {
@@ -26,6 +33,7 @@
     background-color: #fff;
     position: relative;
     border-radius: 5px;
+    z-index: 2;
 }
 
 .leftLineClient {

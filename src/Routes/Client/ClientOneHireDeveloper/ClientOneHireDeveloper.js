@@ -71,59 +71,52 @@ function ClientOneHireDeveloper(props) {
 
     return (
         <>
-            <Navbar />
-            <div className="margin-top conditional_back_parent">
-                <Back name="Matched Agencies" />
-            </div>
-            {loading ? <Spinner /> :
-                <>
-                    <div className="respondCards_clientOneHireDeveloper">
-                        {/* <div className="moreAgencyHeading">
-                                <h3>Matched Agencies</h3>
-                            </div> */}
-                        {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
-                            singleHiredDeveloper?.agenciesMatched?.map(agency => {
-                                return (
-                                    <>
-                                        <div className="moreAgencyList new_design_clientOneHireDeveloper">
-                                            {/* <div className="polygon1">
-                                                <img src={Polygon1} alt="Polygon1" />
-                                            </div>
-                                            <div className="polygon2">
-                                                <img src={Polygon2} alt="Polygon2" />
-                                            </div> */}
-                                            <div className="moreAgencyInfo">
-                                                <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
-                                                <div>
-                                                    <div className="phone_clientOneHireDeveloper">
-                                                        <img src={PhoneImage} alt="phone_image" />
-                                                        <p>{agency?.agencyId?.agencyPhone}</p>
+            <div className="main_parent_clientOneHireDeveloper">
+                <Navbar />
+                {loading ? <Spinner /> :
+                    <>
+                        <div className="respondCards_clientOneHireDeveloper">
+                            <Back name="Matched Agencies" />
+                            <div className="moreAgency_parent">
+                                {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
+                                    singleHiredDeveloper?.agenciesMatched?.map(agency => {
+                                        return (
+                                            <>
+                                                <div className="moreAgencyList new_design_clientOneHireDeveloper">
+                                                    <div className="moreAgencyInfo">
+                                                        <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                                                        <div>
+                                                            <div className="phone_clientOneHireDeveloper">
+                                                                <img src={PhoneImage} alt="phone_image" />
+                                                                <p>{agency?.agencyId?.agencyPhone}</p>
+                                                            </div>
+                                                            <div className="email_clientOneHireDeveloper">
+                                                                <img src={Group} alt="group" />
+                                                                <p>{agency?.agencyId?.agencyEmail}</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div className="email_clientOneHireDeveloper">
-                                                        <img src={Group} alt="group" />
-                                                        <p>{agency?.agencyId?.agencyEmail}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div className="button_parent">
-                                                <div onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
-                                                    <p>Check Resources</p>
-                                                </div>
-                                                {/* <div onClick={() => routeDirect()} className="moreAgencyLogo show-details">
+                                                    <div className="button_parent">
+                                                        <div onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
+                                                            <p>Check Resources</p>
+                                                        </div>
+                                                        {/* <div onClick={() => routeDirect()} className="moreAgencyLogo show-details">
                                                     <p>Show Details</p>
                                                 </div> */}
-                                            </div>
-                                        </div>
-                                    </>
-                                )
-                            })
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )
+                                    })
 
-                            :
-                            <div style={{ padding: "1rem" }}><h2>Sorry No Matched Agencies Found.</h2></div>}
-                    </div>
-                </>
-            }
+                                    :
+                                    <div style={{ padding: "1rem" }}><h2>Sorry No Matched Agencies Found.</h2></div>}
+                            </div>
+                        </div>
+                    </>
+                }
+            </div>
         </>
     );
 }
