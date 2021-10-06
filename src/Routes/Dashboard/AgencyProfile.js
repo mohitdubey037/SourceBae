@@ -12,7 +12,7 @@ import skillImage from '../../assets/images/Newestdashboard/Agency-Profile/skill
 import AddYourProduct from '../../assets/images/Newestdashboard/Agency-Profile/view_product.svg'
 import Location from '../../assets/images/Newestdashboard/Agency-Profile/location.svg';
 
-
+import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import Information from "./AgencyProfile/Information";
 import SkillsSet from "./AgencyProfile/SkillsSet";
 import Rules from "./AgencyProfile/Rules";
@@ -147,7 +147,8 @@ function AgencyProfile(props) {
       {loading ? (
         <Spinner />
       ) : agencyProfileData._id !== "" ? (
-        <div>
+        <div className="agnecyProfilemainDiv">
+            <img className="Image2_AgencyProfile" src={DownImage} alt="downImage" />
           <div className="mainProfileHeaderImage">
             <div className="innerProfileHeaderImage">
               <div className='backButtonAgencyProfile'>

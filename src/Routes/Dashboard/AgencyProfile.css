@@ -14,6 +14,17 @@ button {
 /* .marginLeft {
   margin-left: 0;
 } */
+.Image2_AgencyProfile {
+  right: -6rem;
+  position: fixed;
+  bottom: -3rem;
+  width: 34rem;
+  z-index: 0;
+}
+.mainInformation {
+  background-color: #ffffff;
+  margin-bottom: 4rem;
+}
 
 .question_icon {
   position: absolute;

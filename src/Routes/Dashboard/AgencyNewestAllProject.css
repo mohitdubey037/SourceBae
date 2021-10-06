@@ -24,7 +24,8 @@ h6 {
     /* width: 95%; */
     /* margin-left: 20px; */
     /* overflow: auto; */
-    height: 420px;
+    height: 10%;
+    overflow-y: scroll;
 }
 
 .agency-card-parent::-webkit-scrollbar {
@@ -236,3 +237,19 @@ h6 {
     background-color: #FFD200;
     color: white;
 }
+
+.Image1_AgencyNewest {
+    left: -10rem;
+    position: fixed;
+    top: -3rem;
+    width: 34rem;
+    z-index: 1;
+  }
+  
+  .Image2_AgencyNewest {
+    right: -6rem;
+    position: fixed;
+    bottom: -3rem;
+    width: 34rem;
+    z-index: 1;
+  }

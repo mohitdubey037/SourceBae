@@ -618,14 +618,14 @@
   border-radius: 25px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
-.sidebar-menu {
+/* .sidebar-menu {
   margin: 80% 15% 32% 15%;
-}
+} */
 .Image1_agencyList {
   left: -10rem;
   position: fixed;
-  top: -4.5rem;
-  width: 43rem;
+  top: -3rem;
+  width: 34rem;
   z-index: 1;
 }
 
