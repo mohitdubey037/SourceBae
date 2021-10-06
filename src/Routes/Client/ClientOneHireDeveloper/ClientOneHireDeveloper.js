@@ -10,8 +10,10 @@ import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
 import PhoneImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/phone_icon.svg';
 import Group from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Group.svg';
-// import Polygon1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon2.svg';
-// import Polygon2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon.svg';
+import UpImage1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpImage1.svg';
+import DownImage2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownImage2.svg';
+import UpBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpBigImage.svg';
+import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownBigImage.svg';
 import Back from "../../../Components/Back/Back";
 
 function ClientOneHireDeveloper(props) {
@@ -73,6 +75,10 @@ function ClientOneHireDeveloper(props) {
         <>
             <div className="main_parent_clientOneHireDeveloper">
                 <Navbar />
+                <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1"/>
+                <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1"/>
+                <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1"/>
+                <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1"/>
                 {loading ? <Spinner /> :
                     <>
                         <div className="respondCards_clientOneHireDeveloper">

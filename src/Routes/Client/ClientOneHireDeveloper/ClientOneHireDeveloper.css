@@ -1,5 +1,8 @@
 .main_parent_clientOneHireDeveloper {
   background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
 }
 
 .new_design_clientOneHireDeveloper {
@@ -12,6 +15,33 @@
   background-color: #ffffff;
   border-radius: 8px;
   margin: 0.5rem 0;
+}
+
+.upImage1_clientOneHireDeveloper {
+  position: absolute;
+  top: -19rem;
+  right: -9rem;
+  z-index: 2;
+}
+
+.upImage2_clientOneHireDeveloper {
+  position: absolute;
+  top: -68.5rem;
+  left: -15rem;
+  z-index: 1;
+}
+
+.downImage3_clientOneHireDeveloper {
+  position: absolute;
+  bottom: -9rem;
+  left: -7rem;
+  z-index: 3;
+}
+
+.downImage4_clientOneHireDeveloper {
+  position: absolute;
+  bottom: -43rem;
+  left: -31rem;
 }
 
 .moreAgency_parent {
@@ -115,7 +145,6 @@
 
 .respondCards_clientOneHireDeveloper {
   padding-top: 5rem;
-  height: 100vh;
 }
 
 .moreAgencyList .moreAgencyInfo p {
