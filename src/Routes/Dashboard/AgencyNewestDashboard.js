@@ -158,7 +158,7 @@ function AgencyNewestDashboard(props) {
                 <div className="navbar">
                     <div className="navbar-items">
                         <div style={{ marginRight: '10px' }} className="username nav-left-item">
-                            <p>{agencyProfileData?.agencyName}</p>
+                            <p style={{color:"blue"}}>{agencyProfileData?.agencyName}</p>
                         </div>
                         <div className="userprofile-circle nav-left-item">
                             <img src={agencyProfileData?.agencyLogo} />
@@ -245,6 +245,7 @@ function AgencyNewestDashboard(props) {
                                     ) :
                                         <div className={`not_found agencyNewestDashboard ${(verified || steps === -1) && 'conditionalHeight'}`}>
                                             <img src={NotFound} alt="NotFound" />
+                                            <p>No Project Found</p>
                                         </div>
                                     }
                                 </div>

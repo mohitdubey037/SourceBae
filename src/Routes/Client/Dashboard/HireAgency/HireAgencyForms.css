@@ -76,13 +76,13 @@
 .steps_hireAgencyForm {
     display: flex;
     justify-content: space-between;
-    width: 62%;
-    margin: 2rem 0rem 0rem 15rem;
+    width: 68%;
+    margin: 3rem auto 1rem;
 }
 
-.steps_hireAgencyForm>div, .steps_hireAgencyForm2>div, .steps_hireAgencyForm3>div {
+/* .steps_hireAgencyForm>div, .steps_hireAgencyForm2>div, .steps_hireAgencyForm3>div {
     margin-right: 5.8rem;
-}
+} */
 
 .steps_hireAgencyForm>div>div>p, .steps_hireAgencyForm2>div>div>p, .steps_hireAgencyForm3>div>div>p {
     font-family: 'Segoe UI semibold';
@@ -758,19 +758,12 @@ li ::marker {
     margin-top: 0;
 }
 
-/* .techStackFields ul {
-} */
-
 .domainFieldsCard {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
 }
-
-/* .domainsFields .domainHeading {
-    font: bold 1.3rem 'Open Sans', sans-serif;
-} */
 
 .domainFieldsCard div {
     width: 22%;
