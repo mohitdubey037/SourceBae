@@ -23,7 +23,7 @@ const borderLight = "rgba(206,212,218, .993)";
 const useStyles = makeStyles((theme) => ({
   inputs: {
     position: "relative",
-    fontFamily: "Cutive Mono, monospace",
+    fontFamily: "Segoe UI",
     fontSize: "17px",
     padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
     paddingLeft: "1rem",
@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
   passwordEye: {
     color: "rgba(131,153,167,0.9)",
     opacity: 0.9,
+    marginTop: '1rem',
+    cursor: 'pointer'
   },
   root: {
     "& .MuiSvgIcon-root": {
@@ -46,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFilledInput-input": {
       padding: "37px 0px 10px",
       fontSize: "14px",
+      background: 'none'
+    },
+    "& .MuiFilledInput-root": {
+      background: 'none'
     },
     "& .MuiInputLabel-filled.MuiInputLabel-shrink": {
       transform: "translate(0px, 10px)",
