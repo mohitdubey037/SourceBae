@@ -25,7 +25,8 @@
 }
 
 .Image2_shortTerm {
-  right: -6rem;
+  /* right: -6rem; */
+  right: -8rem;
   position: absolute;
   bottom: -5.5rem;
   width: 48rem;

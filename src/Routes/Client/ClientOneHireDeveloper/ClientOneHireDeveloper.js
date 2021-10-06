@@ -10,8 +10,10 @@ import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
 import PhoneImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/phone_icon.svg';
 import Group from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Group.svg';
-// import Polygon1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon2.svg';
-// import Polygon2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Polygon.svg';
+import UpImage1 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpImage1.svg';
+import DownImage2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownImage2.svg';
+import UpBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpBigImage.svg';
+import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownBigImage.svg';
 import Back from "../../../Components/Back/Back";
 
 function ClientOneHireDeveloper(props) {
@@ -71,59 +73,56 @@ function ClientOneHireDeveloper(props) {
 
     return (
         <>
-            <Navbar />
-            <div className="margin-top conditional_back_parent">
-                <Back name="Matched Agencies" />
-            </div>
-            {loading ? <Spinner /> :
-                <>
-                    <div className="respondCards_clientOneHireDeveloper">
-                        {/* <div className="moreAgencyHeading">
-                                <h3>Matched Agencies</h3>
-                            </div> */}
-                        {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
-                            singleHiredDeveloper?.agenciesMatched?.map(agency => {
-                                return (
-                                    <>
-                                        <div className="moreAgencyList new_design_clientOneHireDeveloper">
-                                            {/* <div className="polygon1">
-                                                <img src={Polygon1} alt="Polygon1" />
-                                            </div>
-                                            <div className="polygon2">
-                                                <img src={Polygon2} alt="Polygon2" />
-                                            </div> */}
-                                            <div className="moreAgencyInfo">
-                                                <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
-                                                <div>
-                                                    <div className="phone_clientOneHireDeveloper">
-                                                        <img src={PhoneImage} alt="phone_image" />
-                                                        <p>{agency?.agencyId?.agencyPhone}</p>
+            <div className="main_parent_clientOneHireDeveloper">
+                <Navbar />
+                <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1"/>
+                <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1"/>
+                <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1"/>
+                <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1"/>
+                {loading ? <Spinner /> :
+                    <>
+                        <div className="respondCards_clientOneHireDeveloper">
+                            <Back name="Matched Agencies" />
+                            <div className="moreAgency_parent">
+                                {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
+                                    singleHiredDeveloper?.agenciesMatched?.map(agency => {
+                                        return (
+                                            <>
+                                                <div className="moreAgencyList new_design_clientOneHireDeveloper">
+                                                    <div className="moreAgencyInfo">
+                                                        <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                                                        <div>
+                                                            <div className="phone_clientOneHireDeveloper">
+                                                                <img src={PhoneImage} alt="phone_image" />
+                                                                <p>{agency?.agencyId?.agencyPhone}</p>
+                                                            </div>
+                                                            <div className="email_clientOneHireDeveloper">
+                                                                <img src={Group} alt="group" />
+                                                                <p>{agency?.agencyId?.agencyEmail}</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div className="email_clientOneHireDeveloper">
-                                                        <img src={Group} alt="group" />
-                                                        <p>{agency?.agencyId?.agencyEmail}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div className="button_parent">
-                                                <div onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
-                                                    <p>Check Resources</p>
-                                                </div>
-                                                {/* <div onClick={() => routeDirect()} className="moreAgencyLogo show-details">
+                                                    <div className="button_parent">
+                                                        <div onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
+                                                            <p>Check Resources</p>
+                                                        </div>
+                                                        {/* <div onClick={() => routeDirect()} className="moreAgencyLogo show-details">
                                                     <p>Show Details</p>
                                                 </div> */}
-                                            </div>
-                                        </div>
-                                    </>
-                                )
-                            })
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )
+                                    })
 
-                            :
-                            <div style={{ padding: "1rem" }}><h2>Sorry No Matched Agencies Found.</h2></div>}
-                    </div>
-                </>
-            }
+                                    :
+                                    <div style={{ padding: "1rem" }}><h2>Sorry No Matched Agencies Found.</h2></div>}
+                            </div>
+                        </div>
+                    </>
+                }
+            </div>
         </>
     );
 }

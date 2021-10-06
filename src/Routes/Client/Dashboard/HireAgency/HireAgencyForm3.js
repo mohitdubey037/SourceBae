@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 
@@ -8,8 +7,9 @@ import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../../Components/Back/Back';
 
 import MultiSelect from "react-multi-select-component";
+import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
-//multi-select
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
 
@@ -35,10 +35,6 @@ function HireAgencyForm3(props) {
         console.log(allServices);
     }, [allServices])
 
-    // const [buttonStatus, setButtonStatus] = useState("Next");
-
-
-    //selecting domain budget
     const [allTechnologies, setAllTechnologies] = useState([])
 
     const handleServices = (event) => {
@@ -118,24 +114,6 @@ function HireAgencyForm3(props) {
         }
     };
 
-    // const hireAgencyForm3Api = ()=>{
-    //     setLoading(true)
-    //         console.log(apiData);
-    //         instance.post(`/api/${Role}/projects/create`,apiData)
-    //         .then(function(response){
-    //             console.log(response);
-    //             setLoading(false);
-    //             window.location.href = `/agency-list:${projectId}`
-    //         })
-    //         .catch(err => {
-    //             setLoading(false);
-    //         })
-    // }
-    // const handleButton = ()=>{
-    //     if(buttonStatus==="Next")
-    //         hireAgencyForm3Api()
-    // }
-
     useEffect(() => {
         getAllServices()
     }, [])
@@ -177,6 +155,8 @@ function HireAgencyForm3(props) {
             <Navbar />
             {loading ? <Spinner /> :
                 <div className="mainHireAgencyForm3">
+                    <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
+                    <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
                     <div className="color-div_hireAgencyForm"></div>
                     <div className="innerHireAgencyForm3">
                         <div className="techStackFields">

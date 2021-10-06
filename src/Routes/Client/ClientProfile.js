@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import ClientNavbar from './ClientNavbar'
 import './ClientProfile.css'
 import NO_Data_ICON from '../Dashboard/no_data_icon.jpg';
 import avatar from '../../assets/images/ClientDashboard/avatar.png';
@@ -8,11 +7,13 @@ import Back from '../../Components/Back/Back';
 
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
-import Spinner from '../../Components/Spinner/Spinner'
+import Spinner from '../../Components/Spinner/Spinner';
+import Profile_image1 from '../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
+import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
 
 function ClientProfile() {
 
-    const Role = "client"
+    const Role = localStorage.getItem('role');
     const [clientData, setClientData] = useState({
         firstName: "",
         lastName: "",
@@ -103,12 +104,7 @@ function ClientProfile() {
 
     return (
         <>
-            <div className="Navbar-parent">
-                <Navbar />
-            </div>
-            {/* <div className="back-parent marginLeft"> */}
-              
-            {/* </div> */}
+            <Navbar />
             {err ?
                 <>
                     <div style={{ textAlign: 'center', width: '100%' }}>
@@ -118,53 +114,53 @@ function ClientProfile() {
                 </>
                 :
                 loading ? <Spinner /> :
-                    <div style={{paddingTop:"5rem",backgroundImage: 'linear-gradient(to right, #015F9A , #0376BA)'}}>
-                    <Back name="Hire Agency" />
-                    <div className="mainClientProfile">
-                        <div className="innerClientProfile">
-                            <div className="clientProfileHeading" style={{display:"flex", justifyContent:"center"}}>
-                                <h2>My Profile</h2>
-                            </div>
+                    <div className="mainClient_parent">
+                        <img className="Image1" src={Profile_image1} alt="signup" />
+                        <img className="Image2" src={Profile_image2} alt="signup" />
+                        <Back name="Hire Agency" />
+                        <div className="mainClientProfile">
+                            <div className="innerClientProfile">
+                                <div className="clientProfileHeading" style={{ display: "flex", justifyContent: "center" }}>
+                                    <h2>My Profile</h2>
+                                </div>
 
-                            <div className="myProfileInfo">
-                                {/* <div className="leftLineClient"></div> */}
+                                <div className="myProfileInfo">
+                                    {
+                                        isEdit === false ?
+                                            <div onClick={() => setIsEdit(true)} className="profileEditBtn">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                                            :
+                                            (
+                                                <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>
+                                                    <div onClick={() => updateClientApi()} className="save">Save</div>
+                                                </>)
+                                    }
 
-                                {
-                                    isEdit === false ?
-                                        <div onClick={() => setIsEdit(true)} className="profileEditBtn">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>
-                                        :
-                                        (
-                                            <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>
-                                                <div onClick={() => updateClientApi()} className="save">Save</div>
-                                            </>)
-                                }
-
-                                <div className="myProfileCard">
-                                    <div className="avatarArea">
-                                        <div>
-                                            <img src={avatar} alt="" />
+                                    <div className="myProfileCard">
+                                        <div className="avatarArea">
+                                            <div>
+                                                <img src={avatar} alt="" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="clientProfileDetails">
-                                        {Object.keys(clientData).map((key) => {
-                                            return (
-                                                <div className="clientProfilDesc">
-                                                    <div className="clientFormHeading">
-                                                        <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
-                                                    </div>
-                                                    <div className="clientFormAnswer">
-                                                        {
-                                                            isEdit && (key !== "countryCode" && key !== "userEmail" && key !== "userName" && key !== "userPhone") ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
-                                                        }
-                                                    </div>
-                                                </div>)
-                                        })}
+                                        <div className="clientProfileDetails">
+                                            {Object.keys(clientData).map((key) => {
+                                                return (
+                                                    <div className="clientProfilDesc">
+                                                        <div className="clientFormHeading">
+                                                            <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
+                                                        </div>
+                                                        <div className="clientFormAnswer">
+                                                            {
+                                                                isEdit && (key !== "countryCode" && key !== "userEmail" && key !== "userName" && key !== "userPhone") ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
+                                                            }
+                                                        </div>
+                                                    </div>)
+                                            })}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>    
             }
         </>
     );
