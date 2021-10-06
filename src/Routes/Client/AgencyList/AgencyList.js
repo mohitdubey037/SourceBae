@@ -166,7 +166,7 @@ function AgencyList(props) {
                         agencyList?.map((agency, index) => {
                           return (
                             <div className="agencyPreciseCard_agencyList">
-                              <div className="agencyCardHeaderInfo">
+                              <div className="agencyCardHeaderInfo agencyListDiv">
                                 <div className="agencyImageProfile">
                                   <div className=" agencyImageArea agencyImageArea_Img  ">
                                     <img
@@ -202,7 +202,7 @@ function AgencyList(props) {
                                 </div>
                               </div>
 
-                              <div className="middleAgencyArea">
+                              <div className="middleAgencyArea agencylistCont">
                                 <div className="agencyAddressTeam addressTeam_AgencyList">
                                   <h6 style={{fontSize:"14px"}}>Miscellaneous Info</h6>
                                   <div className="agencyAddressArea">
@@ -237,7 +237,7 @@ function AgencyList(props) {
                                 </div>
                               </div>
 
-                              <div className="quotationShortlistButton">
+                              <div className="quotationShortlistButton2 agencyListButton">
                                 {agency.isAgencyAskedForQuotation ? (
                                   <div
                                     onClick={() =>

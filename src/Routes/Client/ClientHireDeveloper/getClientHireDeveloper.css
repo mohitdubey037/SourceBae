@@ -111,15 +111,15 @@
 .agencyImageProfile {
   width: 70%;
   display: flex;
-  position: relative;
-  top: -2rem;
-  left: 0.8rem;
+  /* position: relative; */
+  /* top: -2rem; */
+  /* left: 0.8rem; */
 }
 
 .agencyImageArea {
-  width: 135px;
-  height: 135px;
-  margin-right: 2%;
+  width: 8.5rem;
+  height: 8.5rem;
+  /* margin-right: 2%; */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -136,6 +136,7 @@
 }
 .agencyProfileInfo {
   display: flex;
+  justify-content: space-between;
 }
 
 .agencyProfileInfo h6 {
@@ -151,10 +152,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1.5rem;
-  position: absolute;
-  right: 400px;
-  top: 0.7rem;
+  /* margin-top: 1.5rem; */
+  /* position: absolute; */
+  /* right: 400px; */
+  /* top: 0.7rem; */
 }
 
 .agencyProfileInfo div p {
