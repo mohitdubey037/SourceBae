@@ -145,6 +145,8 @@
 
 .respondCards_clientOneHireDeveloper {
   padding-top: 5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .moreAgencyList .moreAgencyInfo p {
