@@ -6,14 +6,9 @@
   justify-content: center;
   position: fixed;
   top: 0;
-  background: #ced3ff;
+  /* background: #ced3ff; */
+  z-index: 3;
 }
-
-/* .sidebar-logo {
-  display: flex;
-  justify-content: center;
-  padding: 15px 15px 25px 15px;
-} */
 
 .sidebar-menu {
   background: #ffffff;

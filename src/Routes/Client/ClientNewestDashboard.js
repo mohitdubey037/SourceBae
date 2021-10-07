@@ -9,8 +9,7 @@ import ShortTermProjectIcon from '../../assets/images/Newestdashboard/LeftSide/s
 import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/interest_to_investment.svg';
 import './ClientNewestDashboard.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
-import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
-import NotFound from '../../assets/images/Newestdashboard/Not_found/NotFound_new.svg';
+import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import instance from '../../Constants/axiosConstants';
@@ -166,6 +165,7 @@ function ClientNewestDashboard(props) {
                                     }) :
                                         <div className="not_found clientNewestDashboard">
                                             <img src={NotFound} alt="NotFound" />
+                                            <p className="no_project_found">No Project Found</p>
                                         </div>
                                 }
                             </div>

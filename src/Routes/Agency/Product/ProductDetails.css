@@ -35,15 +35,9 @@
 
 .productDetailsArea_conditional {
     width: 70%;
-    /* box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%); */
     padding: 1rem 1rem;
+    background-color: white;
 }
-
-/* .moreAgencie {
-    width: 20%;
-    max-width: 40vw;
-    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-} */
 
 .productDetailsHeader {
     display: flex;

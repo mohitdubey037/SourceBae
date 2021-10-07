@@ -5,23 +5,18 @@ import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/User
 import QuotationIcon from '../../assets/images/Newestdashboard/Agency_Navbar/q-icon.svg';
 import addDeveloperIcon from "../../assets/images/Newestdashboard/Agency_Navbar/add-developer.svg";
 import ThirdIcon from '../../assets/images/Newestdashboard/Agency_Navbar/view-product.svg';
-import notificationIcon from "../../assets/images/Newestdashboard/Navbar/notification_icon.svg";
-import downImage1 from '../../assets/images/Newestdashboard/Dashboard/Path1.png';
-import downImage2 from '../../assets/images/Newestdashboard/Dashboard/Path2.png';
+// import downImage1 from '../../assets/images/Newestdashboard/Dashboard/Path1.png';
+// import downImage2 from '../../assets/images/Newestdashboard/Dashboard/Path2.png';
 
 import './AgencyNewestDashboard.css'
 import AgencyProjectCard from '../../Components/AgencyProjectCard/AgencyProjectCard';
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
-import { Modal } from "react-responsive-modal";
 
-import { useHistory } from 'react-router-dom';
 import instance from "../../Constants/axiosConstants";
 import * as helper from "../../shared/helper";
 import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
 function AgencyNewestDashboard(props) {
-
-    const routerHistory = useHistory();
     const Role = localStorage.getItem('role');
     const agencyId = localStorage.getItem("userId");
 
@@ -245,7 +240,7 @@ function AgencyNewestDashboard(props) {
                                     ) :
                                         <div className={`not_found agencyNewestDashboard ${(verified || steps === -1) && 'conditionalHeight'}`}>
                                             <img src={NotFound} alt="NotFound" />
-                                            <p>No Project Found</p>
+                                            <p className="no_project_found">No Project Found</p>
                                         </div>
                                     }
                                 </div>
