@@ -23,7 +23,7 @@ const borderLight = "rgba(206,212,218, .993)";
 const useStyles = makeStyles((theme) => ({
   inputs: {
     position: "relative",
-    fontFamily: "Cutive Mono, monospace",
+    fontFamily: "Segoe UI",
     fontSize: "17px",
     padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
     paddingLeft: "1rem",
@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
   passwordEye: {
     color: "rgba(131,153,167,0.9)",
     opacity: 0.9,
+    marginTop: '1rem',
+    cursor: 'pointer'
   },
   root: {
     "& .MuiSvgIcon-root": {
@@ -46,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFilledInput-input": {
       padding: "37px 0px 10px",
       fontSize: "14px",
+      background: 'none'
+    },
+    "& .MuiFilledInput-root": {
+      background: 'none'
     },
     "& .MuiInputLabel-filled.MuiInputLabel-shrink": {
       transform: "translate(0px, 10px)",
@@ -173,7 +179,6 @@ const Login = (props) => {
               <div className="bg-image">
                 <img src={bgColor} alt="image5" />
               </div>
-              {/* <img src={loginImage} alt="" /> */}
               <div className="loginImage1">
                 <img src={downImage1} alt="image1" />
               </div>
@@ -203,33 +208,31 @@ const Login = (props) => {
                     <div className="login_switch">
                       <button
                         onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${
-                          (state === "" || state === "agency") &&
+                        className={`agency__button ${(state === "" || state === "agency") &&
                           "active__button"
-                        }`}
+                          }`}
                       >
                         <p>Agency</p>
                       </button>
                       <button
                         onClick={() => handleChangeToggle("client")}
-                        className={`client__button ${
-                          state === "client" && "active__button"
-                        }`}
+                        className={`client__button ${state === "client" && "active__button"
+                          }`}
                       >
                         <p>Client</p>
                       </button>
                     </div>
                     <div className="loginHeading">
                       <h6>
-                        Login as{" "}
+                        Login as
                         {state === "" ? (
                           <>
-                            <span>an</span>
+                            <span>{` an`}</span>
                             <span className="agencyOrClient">{` ${roleString}`}</span>
                           </>
                         ) : (
                           <>
-                            <span>a</span>
+                            <span>&nbsp;a</span>
                             <span className="agencyOrClient">{` ${roleString}`}</span>
                           </>
                         )}
@@ -259,7 +262,7 @@ const Login = (props) => {
                         placeholder="••••••••"
                         id="filled-number"
                         label="Enter a password"
-                        type="password"
+                        type={hidePassword ? 'password' : 'text'}
                         fullWidth
                         className={classes.input}
                         InputLabelProps={{
@@ -274,13 +277,13 @@ const Login = (props) => {
                           endAdornment: (
                             <InputAdornment position="end">
                               {hidePassword ? (
-                                <VisibilityOffTwoToneIcon
+                                <VisibilityTwoToneIcon
                                   fontSize="small"
                                   className={classes.passwordEye}
                                   onClick={showPassword}
                                 />
                               ) : (
-                                <VisibilityTwoToneIcon
+                                <VisibilityOffTwoToneIcon
                                   fontSize="small"
                                   className={classes.passwordEye}
                                   onClick={showPassword}

@@ -1,5 +1,5 @@
 import RespondedDetails from './Quotation/RespondedDetails';
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './ProjectDetails.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
@@ -14,9 +14,9 @@ function ProjectDetails() {
 
     return (
         <>
-            <Sidebar notificationVisible={(status) => notificationVisible(status)}/>
+            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+            <Navbar />
             <div className={`details-parent ${visible && "conditionalPosition"}`}>
-                <Navbar />
                 <RespondedDetails />
             </div>
         </>

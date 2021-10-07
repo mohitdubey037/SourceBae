@@ -18,6 +18,14 @@
   height: 325px;
   margin: auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not_found.agencyNewestDashboard p {
+  font-family: 'Segoe UI';
+  font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .not_found.agencyNewestDashboard.conditionalHeight {

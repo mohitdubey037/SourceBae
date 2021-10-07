@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import detailImage from '../../../assets/images/details.png';
+// import detailImage from '../../../assets/images/details.png';
 import completedImage from '../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg'
 import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
 
@@ -15,8 +14,6 @@ import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
 function RespondedDetails(props) {
   console.log(props);
   let { projectId, agencyId } = useParams();
-  const routerHistory = useHistory();
-
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
   const [loading, setLoading] = useState();
@@ -52,18 +49,6 @@ function RespondedDetails(props) {
 
   return (
     <>
-      {/* <div className="back-button_AgencyRespondedDetails">
-        <div className="image-div_AgencyRespondedDetails">
-          <div className="hover" onClick={() => routerHistory.goBack()}>
-            <ArrowBackIosIcon className="back-icon" />
-          </div>
-          <h6>Back</h6>
-        </div>
-        <div className="add-developer-div">
-          <h6>Responded Details</h6>
-        </div>
-      </div> */}
-
       <div className="mainDetailHeader_agencyRespondedDetails">
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
@@ -90,7 +75,7 @@ function RespondedDetails(props) {
                 </div>
               </div>
               <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
-                <p style={{ fontSize: '20px', color: 'black' }}>
+                <p style={{ fontSize: '20px'}}>
                   {project?.projectDomainId?.domainName}
                 </p>
               </div>
@@ -98,12 +83,6 @@ function RespondedDetails(props) {
           </div>
         </div>
       </div>
-
-      {/* <div className="respondDescription_AgencyRespondedDetails">
-        <h2>About Your Project</h2>
-        <p>{project?.projectName}</p>
-      </div> */}
-
       <div className="respondCards_AgencyRespondedDetails">
         <div className="innerResponseCard">
           <span className="leftLine"></span>
@@ -147,15 +126,6 @@ function RespondedDetails(props) {
           </div>
         </div>
       </div>
-
-      {/* <div className="detailsContainer">
-        <div className="innerDetailsContainer">
-          <div className="detailsDiv">
-            <img src={detailImage} />
-            <h4>Details</h4>
-          </div>
-        </div>
-      </div> */}
 
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
@@ -295,26 +265,12 @@ function RespondedDetails(props) {
               <li style={{listStyle:"none"}}> <img className="dotImg"src={dot} alt="" /> Min ${project.projectProposalCost}</li>
               </ul>
             </div>
-            
-            {/* <div className="straightLineParent_agencyRespondedDetails">
-              <div className="straightLine_AgencyRespondedDetails"></div>
-              <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
-              <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div> */}
-
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul>
               <img className="dotImg"src={dot} alt="" /><li style={{listStyle:"none"}}>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
-
-            {/* <div className="straightLineParent_agencyRespondedDetails2">
-              <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
-              <div className="straightLine_AgencyRespondedDetails2"></div>
-              <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div> */}
-
             <div>
               <h4>Technology</h4>
               <ul>

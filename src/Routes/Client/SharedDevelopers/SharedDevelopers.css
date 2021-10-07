@@ -1,8 +1,15 @@
+.main_parent_sharedDeveloper {
+  background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
 .respond-card_parent {
   position: relative;
   top: 20px;
-  background: #F9F9F9;
   border-radius: 15px;
+  border: 1px solid;
   width: 90%;
   display: flex;
   justify-content: center;
@@ -13,9 +20,17 @@
   grid-row-gap: 20px;
 }
 
-.conditional_back_parent {
-  margin-top: 1%;
+.main-card_SharedDevelopers {
+  padding-top: 5rem;
+  background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
 }
+
+/* .conditional_back_parent {
+  margin-top: 1%;
+} */
 
 .width {
   background: #FFFFFF;
@@ -23,7 +38,6 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   width: 817px;
-  /* padding: 1rem 15.5rem 2rem 1.5rem; */
   padding: 1.5rem;
   margin: auto;
 }
@@ -89,11 +103,12 @@
 }
 
 .name_circle>div>p {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 500;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
+  /* font-style: normal;
+  font-weight: 500; */
   font-size: 28px;
-  line-height: 150%;
+  /* line-height: 150%; */
   text-transform: capitalize;
   color: #F13C9E;
 }
@@ -135,7 +150,8 @@
 }
 
 .no_border h3 {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   font-size: 1.2rem;
   /* font-weight: bold;
   text-align: center; */
@@ -144,21 +160,19 @@
 
 .view-resume_child {
   text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
+  /* font-style: normal;
+  font-weight: 600; */
   font-size: 12px;
-  line-height: 19px;
+  /* line-height: 19px; */
   text-align: center;
   letter-spacing: 0.554545px;
   text-transform: capitalize;
 }
 
 .innerResponseCard.width div p:nth-child(2) {
-  /* color: #008e80;
-  font-weight: 500; */
   width: 200px;
-  font-weight: normal;
   text-align: start;
   color: black;
   font-size: 16px;
@@ -207,11 +221,12 @@
 .show-more_sharedDeveloper {
   position: absolute;
   right: 27px;
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
+  /* font-style: normal;
+  font-weight: 600; */
   font-size: 14px;
-  line-height: 150%;
+  /* line-height: 150%; */
   text-transform: capitalize;
   color: #407BFF;
   bottom: 9px;
