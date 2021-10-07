@@ -25,7 +25,6 @@ function AgencyRespondedDetails(props) {
   const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
-  // console.log(routerHistory);
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
@@ -69,30 +68,6 @@ function AgencyRespondedDetails(props) {
 
   return (
     <>
-      {/* <div
-        style={{ marginTop: "55px" }}
-        className="backArrow"
-        onClick={() =>
-          routerHistory.replace({
-            pathname: "/quotation",
-            origin: routerHistory.location.origin,
-          })
-        }
-      >
-        <i className="fa fa-angle-left" aria-hidden="true"></i>
-      </div> */}
-
-      {/* <div className="back-button_AgencyRespondedDetails">
-        <div className="image-div_AgencyRespondedDetails">
-          <div className="hover" onClick={goBack}>
-            <ArrowBackIosIcon className="back-icon" />
-          </div>
-          <h6>Back</h6>
-        </div>
-        <div className="add-developer-div">
-          <h6>Agency Responded Details</h6>
-        </div>
-      </div> */}
       <div className="mainDetailHeader_agencyRespondedDetails">
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
@@ -101,14 +76,6 @@ function AgencyRespondedDetails(props) {
             </div>
           </div>
           <div className="headerInformation_agencyRespondedDetails">
-            {/* <div className="clientName">
-              {project.isProposalActionActive && (
-                <div className="detailsButtons">
-                  <button>Accept</button>
-                  <button>Withdraw</button>
-                </div>
-              )}
-            </div> */}
             <div className="clientExperience">
               <div className="btnInfoDiv">
                 <div className="rightBorder"></div>
@@ -130,7 +97,6 @@ function AgencyRespondedDetails(props) {
 
       <div className="respondDescription_AgencyRespondedDetails">
         <h2 style={{color:"#707070"}}>About Your Project</h2>
-        {/* <p>{project?.projectName}</p> */}
       </div>
 
       <div className="respondCards_AgencyRespondedDetails">

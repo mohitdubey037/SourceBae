@@ -227,12 +227,12 @@ const Login = (props) => {
                         Login as
                         {state === "" ? (
                           <>
-                            <span>an</span>
+                            <span>{` an`}</span>
                             <span className="agencyOrClient">{` ${roleString}`}</span>
                           </>
                         ) : (
                           <>
-                            <span>a</span>
+                            <span>&nbsp;a</span>
                             <span className="agencyOrClient">{` ${roleString}`}</span>
                           </>
                         )}

@@ -7,23 +7,7 @@ h6 {
     background-image: none;
 }
 
-/* p, h5, h6, h4 {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-} */
-
-/* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-} */
-
 .agency-card-parent {
-    /* padding: 0px 0 0px 7px; */
-    /* width: 95%; */
-    /* margin-left: 20px; */
-    /* overflow: auto; */
     height: 10%;
     overflow-y: scroll;
 }
@@ -62,8 +46,7 @@ h6 {
 }
 
 .project-actual-status {
-    margin: 4.5rem 2rem 2.5rem 1rem;
-    /* margin-bottom: 20px; */
+    margin: 1.5rem 2rem 2.5rem 1rem;
     display: flex;
     justify-content: space-between;
 }
