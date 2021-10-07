@@ -1,7 +1,8 @@
 .details-parent {
-    width: 90%;
-    margin-left: 10%;
+    width: 89%;
+    margin-left: 11%;
     padding-top: 5rem;
+    position: relative;
 }
 
 .conditionalPosition {
