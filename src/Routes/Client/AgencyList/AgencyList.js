@@ -167,7 +167,7 @@ function AgencyList(props) {
                           return (
                             <div className="agencyPreciseCard_agencyList">
                               <div className="agencyCardHeaderInfo agencyListDiv">
-                                <div className="agencyImageProfile">
+                                <div className="agencyImageProfile_agencyList">
                                   <div className=" agencyImageArea agencyImageArea_Img  ">
                                     <img
                                       src={agency.agencyLogo}

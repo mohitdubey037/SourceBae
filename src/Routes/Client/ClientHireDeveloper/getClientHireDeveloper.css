@@ -82,7 +82,7 @@
 
 .agencyPreciseCard {
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   min-height: 30vh;
   height: 12rem;
   background-color: #fff;
@@ -105,11 +105,11 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 1.3rem;
+  padding: 1.3rem 2.3rem;
 }
 
 .agencyImageProfile {
-  width: 70%;
+  width: 45%;
   display: flex;
   /* position: relative; */
   /* top: -2rem; */
@@ -137,6 +137,8 @@
 .agencyProfileInfo {
   display: flex;
   justify-content: space-between;
+  width: 30rem;
+  /* padding-left: 1rem; */
 }
 
 .agencyProfileInfo h6 {
@@ -145,7 +147,7 @@
   font-size: 1.3rem;
   color: #707070;
   letter-spacing: 1px;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
 }
 
 .agencyProfileInfo div {
@@ -193,15 +195,12 @@
   text-decoration: underline;
 }
 
-.middleAgencyArea {
+.middleAgencyArea-get {
   display: flex;
   height: 6rem;
   justify-content: space-between;
-  /* padding: 1rem; */
-  padding: 0 1rem;
-  padding-bottom: 1rem;
-  margin-top: -2.5rem;
-  margin-left: 0.5rem;
+  margin-top: -1.5rem;
+  margin-left: 2rem;
 }
 
 .agencyAddressTeam {
