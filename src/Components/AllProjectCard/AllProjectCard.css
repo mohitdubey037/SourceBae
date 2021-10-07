@@ -32,7 +32,7 @@
 
 .user-project_agencyNewestAllProject.allProject {
     display: flex;
-    width: 101%;
+    width: 100%;
     background-image: url(../../assets/images/Newestdashboard/All_Project/backgroundall.svg);
     margin: 1rem 0rem 0rem -2rem;
     height: 170px;
