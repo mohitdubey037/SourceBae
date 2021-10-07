@@ -9,6 +9,7 @@
   width: 100%;
   padding-right: 1rem;
   top: 1rem;
+  z-index: 1;
 }
 
 .navbar h1 {

@@ -6,6 +6,7 @@ import './Navbar.css';
 function Navbar(props) {
 
     console.log(props.history.location,"routes")
+    console.log(props);
 
     const roleId = localStorage.getItem("userId");
 

@@ -103,23 +103,19 @@ function RespondedDetails(props) {
   console.log(agencyDeveloper.length);
 
   return (
-    <div className='main_parent_sharedDeveloper'>
-      <Navbar />
-      <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
-      <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
-      <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
-      <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1" />
-      {loading ? (
-        <Spinner />
-      ) : (
-        <>
-        <div style={{paddingTop:"5rem"}}>
-          <Back name="Matched Developer" />
+    <>
+      {loading ? <Spinner /> :
+        <div className='main_parent_sharedDeveloper'>
+          <Navbar />
+          <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
+          <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
+          <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
+          <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1" />
           <div className="main-card_SharedDevelopers">
+            <Back name="Matched Developer" />
             <div className="respond-card_parent">
               {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
                 <div className="innerResponseCard width innerResponseCard_sharedDeveloper">
-                  {/* <span className="leftLine"></span> */}
                   <div>
                     <p>Agency Name</p>
                     <p>{`${singleHiredDeveloper?.agenciesMatched[0]?.agencyId
@@ -226,10 +222,9 @@ function RespondedDetails(props) {
               }
             </div>
           </div>
-          </div>
-        </>
-      )}
-    </div>
+        </div>
+      }
+    </>
   );
 }
 
