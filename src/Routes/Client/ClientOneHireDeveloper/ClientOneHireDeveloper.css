@@ -11,10 +11,9 @@
   flex-direction: column;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 1rem;
-  width: 30rem;
   background-color: #ffffff;
   border-radius: 8px;
-  margin: 0.5rem 0;
+  margin: 1rem 1rem ;
 }
 
 .upImage1_clientOneHireDeveloper {
@@ -47,9 +46,10 @@
 .moreAgency_parent {
   padding: 1rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  /* justify-content: center; */
+  align-items: start;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
 }
 
 .moreAgencyHeading {
@@ -66,15 +66,15 @@
 
 .name-Font {
   font-family: 'Segoe UI semibold', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-transform: capitalize;
-  padding-top: 4%;
+  padding-top: 2%;
   color: #015F9A;
   text-align: center;
 }
 
 .moreAgencyInfo>div {
-  margin-top: 40px;
+  margin-top: 2rem ;
 }
 
 .innerMoreAgencies_clientOneHireDeveloper .moreAgencyHeading {
@@ -84,17 +84,17 @@
 }
 
 .phone_clientOneHireDeveloper {
-  margin-top: 10px;
+  margin-top: 0rem;
   display: flex;
   width: 36%;
-  margin-left: 40px;
+  margin-left: 1rem;
 }
 
 .email_clientOneHireDeveloper {
-  margin-top: 20px;
+  margin-top: 1rem;
   display: flex;
   width: 55%;
-  margin-left: 40px;
+  margin-left: 1rem;
 }
 
 .polygon1 {
@@ -114,12 +114,12 @@
 .moreAgencyLogo {
   background-image: linear-gradient(to right, #01304D, #015F9A);
   padding: 8px;
-  width: 30%;
+  width: 45%;
   display: flex;
   justify-content: center;
   color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 8px;
 }
 
@@ -151,7 +151,7 @@
 
 .moreAgencyList .moreAgencyInfo p {
   font-family: 'Segoe UI', sans-serif;
-  font-size: 16px;
+  font-size: 13px;
   color: #707070;
   text-transform: capitalize;
 }
