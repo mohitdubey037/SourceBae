@@ -84,7 +84,7 @@ function ClientHireDeveloper(props) {
                           </div>
                         </div>
 
-                        <div className="middleAgencyArea">
+                        <div className="middleAgencyArea-get">
                           <div className="agencyAddressTeam">
                             <h6 style={{fontSize:"16px",marginTop:"8px", paddingLeft:"2px",fontFamily: 'Segoe UI semibold'}}>Developers Data</h6>
                             <div className="agencyAddressArea">
