@@ -179,7 +179,6 @@ const Login = (props) => {
               <div className="bg-image">
                 <img src={bgColor} alt="image5" />
               </div>
-              {/* <img src={loginImage} alt="" /> */}
               <div className="loginImage1">
                 <img src={downImage1} alt="image1" />
               </div>
@@ -209,25 +208,23 @@ const Login = (props) => {
                     <div className="login_switch">
                       <button
                         onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${
-                          (state === "" || state === "agency") &&
+                        className={`agency__button ${(state === "" || state === "agency") &&
                           "active__button"
-                        }`}
+                          }`}
                       >
                         <p>Agency</p>
                       </button>
                       <button
                         onClick={() => handleChangeToggle("client")}
-                        className={`client__button ${
-                          state === "client" && "active__button"
-                        }`}
+                        className={`client__button ${state === "client" && "active__button"
+                          }`}
                       >
                         <p>Client</p>
                       </button>
                     </div>
                     <div className="loginHeading">
                       <h6>
-                        Login as{" "}
+                        Login as
                         {state === "" ? (
                           <>
                             <span>an</span>
@@ -265,7 +262,7 @@ const Login = (props) => {
                         placeholder="••••••••"
                         id="filled-number"
                         label="Enter a password"
-                        type="password"
+                        type={hidePassword ? 'password' : 'text'}
                         fullWidth
                         className={classes.input}
                         InputLabelProps={{
@@ -280,13 +277,13 @@ const Login = (props) => {
                           endAdornment: (
                             <InputAdornment position="end">
                               {hidePassword ? (
-                                <VisibilityOffTwoToneIcon
+                                <VisibilityTwoToneIcon
                                   fontSize="small"
                                   className={classes.passwordEye}
                                   onClick={showPassword}
                                 />
                               ) : (
-                                <VisibilityTwoToneIcon
+                                <VisibilityOffTwoToneIcon
                                   fontSize="small"
                                   className={classes.passwordEye}
                                   onClick={showPassword}
