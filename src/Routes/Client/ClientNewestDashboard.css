@@ -54,10 +54,6 @@
   min-width: 74%;
 }
 
-.dashboard-container .container-sidebar {
-  top: 0;
-}
-
 @media (max-width: 768px) {
   .project-details-card {
     width: 300px;
@@ -79,7 +75,7 @@
 }
 
 .showDetail_onClientNewestDashboard:hover {
-  color: rgb(1, 121, 115);
+  color: rgb(208 250 248);
 }
 
 .graphic {
@@ -133,7 +129,6 @@
 }
 
 .closeNotification i {
-  /* color: #F5F5F5; */
   font-size: 1rem;
   cursor: pointer;
   transition: 0.4s ease-in-out;
@@ -172,7 +167,6 @@
   margin-right: 5%;
   width: 90%;
   height: 2.2rem;
-  /* box-shadow: 0px 0px 12px #f8f8f8; */
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
@@ -239,4 +233,10 @@ li::marker {
   color: #45A4E4;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.no_project_found {
+  font-family: 'Segoe UI Semibold';
+  font-size: 1rem;
+  margin-top: 1rem;
 }

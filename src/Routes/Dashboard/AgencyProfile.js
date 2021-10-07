@@ -148,11 +148,11 @@ function AgencyProfile(props) {
         <Spinner />
       ) : agencyProfileData._id !== "" ? (
         <div className="agnecyProfilemainDiv">
-            <img className="Image2_AgencyProfile" src={DownImage} alt="downImage" />
+          <img className="Image2_AgencyProfile" src={DownImage} alt="downImage" />
           <div className="mainProfileHeaderImage">
-            <div className="innerProfileHeaderImage">
+            <div className={`innerProfileHeaderImage ${Role === 'Client' && 'conditionalGradient'}`}>
               <div className='backButtonAgencyProfile'>
-                <div className="backButton-child" onClick={() => props.history.goBack()}>
+                <div className='backButton-child' onClick={() => props.history.goBack()}>
                   <img src={Back2} alt="back" />
                   <h6 onClick={() => props.history.goBack()}>Back</h6>
                 </div>
@@ -163,27 +163,19 @@ function AgencyProfile(props) {
                     <span>You haven't added any product.</span>
                     <button
                       disabled={agencyProfileData.isAgencyVerified === false && true}
-                      style={{
-                        filter: `${!agencyProfileData.isAgencyVerified ? `grayscale(100%)` : `none`
-                          }`,
-                      }}
-                      onClick={() =>
-                        props.history.push({
-                          pathname: `/product-form`,
-                          condition: "Agency",
-                        })
-                      }
-                    >
+                      style={{ filter: `${!agencyProfileData.isAgencyVerified ? `grayscale(100%)` : `none`}` }}
+                      onClick={() => props.history.push({ pathname: `/product-form`, condition: "Agency" })}>
                       Add Your Product
                       <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                     </button>
                   </>
                 ) : (
-                  <button onClick={() => props.history.push({
-                    pathname: `/product-details:${agencyProfileData.productId}`,
-                    condition: id !== '' ? 'Agency' : 'Client'
-                  })
-                  }>
+                  <button
+                    onClick={() => props.history.push({
+                      pathname: `/product-details:${agencyProfileData.productId}`,
+                      condition: id !== '' ? 'Agency' : 'Client'
+                    })
+                    }>
                     <p>View Your Product</p>
                     <img src={AddYourProduct} alt="add your product" />
                   </button>
@@ -198,11 +190,13 @@ function AgencyProfile(props) {
                       onMouseOver={() => setHoverModal(true)}
                     ></i>
                   </div>
-                  <button onClick={() => props.history.push({
-                    pathname: `/product-details:${agencyProfileData.productId}`,
-                    condition: id !== '' ? 'Agency' : 'Client'
-                  })
-                  }
+                  <button
+                    style={{ backgroundImage: 'linear-gradient(284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%)' }}
+                    onClick={() => props.history.push({
+                      pathname: `/product-details:${agencyProfileData.productId}`,
+                      condition: id !== '' ? 'Agency' : 'Client'
+                    })
+                    }
                   >
                     View Your Product
                     <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
@@ -343,7 +337,7 @@ function AgencyProfile(props) {
           <div className="mainAgencyProfileDesc">
             <div className="innerAgencyProfileDesc">
               <div className="leftAgencyProfileDesc">
-                <div className="aboutUs_parent">
+                <div className={`aboutUs_parent ${Role === 'Client' && 'conditionalGradient'}`}>
                   <h2>About us</h2>
                 </div>
                 <div style={{ width: '70%' }}>

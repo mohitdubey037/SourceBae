@@ -3,17 +3,12 @@ import AllProjectIcon from '../../assets/images/Newestdashboard/All_Project/app.
 import { makeStyles } from '@material-ui/core/styles';
 import './AgencyNewestAllProject.css';
 import AllProjectCard from '../../Components/AllProjectCard/AllProjectCard';
-import Filter from '../../Components/ClientNewestDashboard/Filter/Filter';
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import React, { useEffect, useState } from 'react';
 import instance from '../../Constants/axiosConstants';
+// import Not_Found from '../../assets/images/Newestdashboard/Not_found/no_data_icon.jpg';
+import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Not_Found from '../../assets/images/Newestdashboard/Not_found/no_data_icon.jpg';
-import { SettingsBackupRestore } from '@material-ui/icons';
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
@@ -128,10 +123,6 @@ function AgencyNewestAllProject(props) {
         getInitialData()
     }, [])
 
-    // useEffect(() => {
-    //     console.log(projects);
-    // }, [projects])
-
     useEffect(() => {
         console.log(tab);
     }, [tab])
@@ -159,11 +150,10 @@ function AgencyNewestAllProject(props) {
     }, [projects])
 
     return (
-        <div className="dashboard-container" style={{overflow:"hidden"}}>
-         <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" />
-         <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" />
-   
-            <Sidebar/>
+        <div className="dashboard-container" style={{ overflow: "hidden" }}>
+            <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" />
+            <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" />
+            <Sidebar />
             <div className="container-body">
                 <Navbar />
                 <div className="content-body">
@@ -174,54 +164,6 @@ function AgencyNewestAllProject(props) {
                         </div>
 
                         <div className="main-section">
-                            {/* <div className='filter-parent'>
-                                <div className="filter">
-                                    <div className="filter-button">
-                                        <div onClick={() => filterButton(1)} className="reset-filter">
-                                            <h6 style={{ color: filterTab === 1 && '#FFFFFF', backgroundColor: filterTab === 1 && '#A6C8FF' }}>Reset Filter</h6>
-                                        </div>
-                                        <div onClick={() => filterButton(2)} className="apply-filter">
-                                            <h6 style={{ color: filterTab === 2 && '#FFFFFF', backgroundColor: filterTab === 2 && '#A6C8FF' }}>Apply Filter</h6>
-                                        </div>
-                                    </div>
-                                    <h5>Stages</h5>
-
-                                    <div className="status-checkbox">
-                                        <FormControl component="fieldset" className={classes.formControl}>
-                                            <RadioGroup aria-label="filter" name="filter" onChange={filterFunction}>
-                                                <FormControlLabel value="Done" control={<Radio />} label="Completed" />
-                                                <FormControlLabel value="In Progress" control={<Radio />} label="Running" />
-                                                <FormControlLabel value="Cancelled" control={<Radio />} label="Rejected" />
-                                                <FormControlLabel className={classes.marginRight} value='' control={<Radio />} label="all" />
-                                            </RadioGroup>
-                                        </FormControl>
-
-                                        <div>
-                                            <input className="larger-checkbox" type="checkbox" name="Completed" id="project-status" />
-                                            <p>Completed</p>
-                                        </div>
-                                        <div>
-                                            <input className="larger-checkbox" type="checkbox" name="Running" id="project-status" />
-                                            <p>Running</p>
-                                        </div>
-                                        <div>
-                                            <input className="larger-checkbox" type="checkbox" name="Rejected" id="project-status" />
-                                            <p>Rejected</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="search-content">
-                                        <h6 className="search-name-heading">Search By Name</h6>
-                                        <input type="text" placeholder="Type Here" />
-                                    </div>
-
-                                    <div className="search-button">
-                                        <div>
-                                            Search
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
                             <div className="user-project_AgencyNewestAllProject">
                                 <div className="project-actual-status">
                                     <div onClick={() => onSearchHandler("all")} className={`completed-project ${tab === 4 && "blueConditional"}`}>
@@ -240,9 +182,9 @@ function AgencyNewestAllProject(props) {
                                 <div className="agency-card-parent">
                                     {err === true ?
                                         <>
-                                            <div style={{ textAlign: 'center', width: '100%' }}>
-                                                <img height="300px" src={Not_Found} alt="no_data_img" />
-                                                <h6>{err}</h6>
+                                            <div style={{ textAlign: 'center'}}>
+                                                <img style={{marginTop: '1rem'}} height="300px" src={NotFound} alt="no_data_img" />
+                                                <p className="no_project_found">No Project Found</p>
                                             </div>
                                         </>
                                         :
