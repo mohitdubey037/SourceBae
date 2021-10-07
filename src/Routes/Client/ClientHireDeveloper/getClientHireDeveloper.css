@@ -257,7 +257,7 @@
   border: none;
   padding: 0.5rem;
   height: 110px;
-  /* overflow-y: auto; */
+  overflow-y: auto;
   color: #015f9a;
 }
 
