@@ -246,7 +246,7 @@
   justify-content: center;
   align-items: center;
   margin-left: -12.2rem;
-  margin-top: -2rem;
+  /* margin-top: -2rem; */
 }
 
 .quotationShortlistButton2 div {
@@ -262,6 +262,10 @@
   height: 2rem;
   background-color: #015F9A;
   border-radius: 1rem;
+}
+
+.quotationShortlistButton2 div:hover {
+  cursor: pointer;
 }
 
 .quotationShortlistButton2 div:nth-child(1) {
