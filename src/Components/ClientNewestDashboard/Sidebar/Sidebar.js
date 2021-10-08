@@ -20,8 +20,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Sidebar(props) {
-    const role = localStorage.getItem('role');
-    console.log(role);
+    const Role = localStorage.getItem('role');
+    // console.log(role);
     const routerHistory = useHistory();
 
     const [isNotification, setIsnotification] = useState(false);
@@ -38,7 +38,7 @@ function Sidebar(props) {
     const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
     const agencyProfileHandler = () => {
-        if (role === 'Agency') {
+        if (Role === 'Agency') {
             routerHistory.push('/agency-profile');
         }
         else {
@@ -47,7 +47,7 @@ function Sidebar(props) {
     }
 
     const handleDashboard = () => {
-        if (role === 'Agency') {
+        if (Role === 'Agency') {
             routerHistory.push('/agencyNewestDashboard');
         }
         else {
@@ -67,7 +67,7 @@ function Sidebar(props) {
     }
 
     return (
-        <div className="container-sidebar">
+        <div style={{backgroundColor: Role === 'Agency' && '#ced3ff'}} className="container-sidebar">
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div>
@@ -75,7 +75,7 @@ function Sidebar(props) {
                     </div>
                     <p>Dashboard</p>
                 </div>
-                {role === "Client" &&
+                {Role === "Client" &&
                     <>
                         <div onClick={() => postProject()} className="postProject-icon icons">
                             <img src={postProjectIcon} alt="dashboard icon" />

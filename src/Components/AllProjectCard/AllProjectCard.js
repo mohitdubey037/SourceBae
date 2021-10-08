@@ -21,9 +21,6 @@ function AllProjectCard(props) {
                 <div className="user-project_child_agencyNewestAllProject">
                     <h5>{props?.projectName}</h5>
                 </div>
-                {/* <div onClick={() => showDetails()} className="submit-button_allProjectCard">
-                    <h6>Show Details</h6>
-                </div> */}
             </div>
 
             <div className="user-project-status_AgencyNewestAllProject">

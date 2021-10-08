@@ -399,11 +399,9 @@ function AgencyForm1(props) {
 
     return (
         <>
-            <Navbar />
-
-
             {loading ? <Spinner /> :
                 <>
+                    <Navbar />
                     <div className="agency-form_parent">
                         <Back name="Agency Form 1" />
                         <FormPhases value1={true} />

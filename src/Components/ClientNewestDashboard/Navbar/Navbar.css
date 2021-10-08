@@ -9,6 +9,7 @@
   width: 100%;
   padding-right: 1rem;
   top: 1rem;
+  z-index: 1;
 }
 
 .navbar h1 {
@@ -64,6 +65,6 @@
 }
 
 .navbar-items>.userprofile-circle>img {
-  height: 50px;
-  width: 50px;
+  height: 100%;
+  width: 100%;
 }

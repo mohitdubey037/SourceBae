@@ -20,12 +20,11 @@
 .Image1_shortTerm {
   left: -7rem;
   position: absolute;
-  top: -5.5rem;
+  top: -6.5rem;
   width: 43rem;
 }
 
 .Image2_shortTerm {
-  /* right: -6rem; */
   right: -8rem;
   position: absolute;
   bottom: -5.5rem;

@@ -608,8 +608,9 @@ border-radius: 20px;}
 .documentInformation {
     display: flex;
     min-height: 8rem;
-    width: 100%;
+    width: 90%;
     margin-top: 12px;
+    justify-content: space-between;
 }
 
 .documentDetails>p, .panDetails>p {
@@ -629,7 +630,7 @@ border-radius: 20px;}
 }
 
 .agencyCertification, .agencyBrochure, .panCardContent {
-    width: 33%;
+    width: 40%;
     border: 1px solid #45A4E4;
     border-radius: 4px;
     display: flex;
@@ -641,9 +642,9 @@ border-radius: 20px;}
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.agencyBrochure {
+/* .agencyBrochure {
     transform: translateX(2rem);
-}
+} */
 
 .agencyCertification>div, .agencyBrochure>div, .panCardContent>div {
     display: flex;
