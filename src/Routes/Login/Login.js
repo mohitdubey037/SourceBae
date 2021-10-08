@@ -175,10 +175,10 @@ const Login = (props) => {
       ) : (
         <div className="mainLoginPage">
           <div className="innerLoginPage">
-            <div className="loginIllustrator">
-              <div className="bg-image">
+            <div className={`loginIllustrator ${roleString === 'Agency' && 'conditional_background'}`}>
+              {/* <div className="bg-image">
                 <img src={bgColor} alt="image5" />
-              </div>
+              </div> */}
               <div className="loginImage1">
                 <img src={downImage1} alt="image1" />
               </div>
@@ -208,15 +208,15 @@ const Login = (props) => {
                     <div className="login_switch">
                       <button
                         onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${(state === "" || state === "agency") &&
-                          "active__button"
+                        className={`agency__button ${(roleString === "Agency") &&
+                          "active__buttonagency"
                           }`}
                       >
                         <p>Agency</p>
                       </button>
                       <button
                         onClick={() => handleChangeToggle("client")}
-                        className={`client__button ${state === "client" && "active__button"
+                        className={`client__button ${roleString === "Client" && "active__buttonclient"
                           }`}
                       >
                         <p>Client</p>
@@ -225,7 +225,7 @@ const Login = (props) => {
                     <div className="loginHeading">
                       <h6>
                         Login as
-                        {state === "" ? (
+                        {roleString === "Agency" ? (
                           <>
                             <span>{` an`}</span>
                             <span className="agencyOrClient">{` ${roleString}`}</span>

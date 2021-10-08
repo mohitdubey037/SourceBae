@@ -55,10 +55,6 @@ span.welcome-back_sourceBae {
   padding: 1rem;
 }
 
-/* .loginForm {
-  margin-top: 1rem;
-} */
-
 .message {
   display: flex;
   justify-content: space-between;
@@ -117,12 +113,13 @@ span.welcome-back_sourceBae {
   user-select: none;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(2deg
+, #015F9A 0%, #0376BA 100%);
 }
 
-/* .loginIllustrator img {
-  width: 100%;
-  height: 100vh;
-} */
+.conditional_background {
+  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
+}
 
 .welcome-back_loginIllustrator {
   top: 15rem;
@@ -139,14 +136,6 @@ span.welcome-back_sourceBae {
 .welcome-back_loginIllustrator >p{
   font-size: larger;
 }
-
-/* .welcome-back_sourceBae {
-  font-weight: 900;
-  font-size: 36px;
-  text-transform: capitalize;
-  color: #FF7E06;
-  font-family: 'Segoe UI';
-} */
 
 .white-color_loginIllustrator a {
   color: blue;
@@ -189,9 +178,6 @@ span.welcome-back_sourceBae {
   position: relative;
   height: 43px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  /* box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
-  /* -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
-  /* -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
 }
 
 .login_switch>button {
@@ -211,7 +197,6 @@ span.welcome-back_sourceBae {
   left: 4px;
   z-index: 1;
   border: none;
-  /* background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); */
 }
 
 .client__button {
@@ -219,22 +204,16 @@ span.welcome-back_sourceBae {
   right: 3px;
 }
 
-.login_switch .active__button {
+.login_switch .active__buttonagency {
   z-index: 2;
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
   color: white;
 }
-
-/* .login_switch>div:nth-child(1) {
-  transform: translateX(0px);
-  background: green;
-  margin-left: 0rem;
+.login_switch .active__buttonclient {
+  z-index: 2;
+  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%);
   color: white;
-} */
-
-/* .login_switch>div:nth-child(2) {
-  color: blue;
-} */
+}
 
 .loginHeading {
   width: 100%;
@@ -328,9 +307,6 @@ span.welcome-back_sourceBae {
   background-color: #80808014;
   border-radius: 20px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  /* box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
-  /* -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
-  /* -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); */
   width: 135px;
 }
 
@@ -411,9 +387,6 @@ span.welcome-back_sourceBae {
 }
 
 .loginImage1 {
-  /* position: absolute;
-  bottom: -43%;
-  left: -17rem; */
   z-index: 4;
 }
 
