@@ -175,7 +175,7 @@ const Login = (props) => {
       ) : (
         <div className="mainLoginPage">
           <div className="innerLoginPage">
-            <div className={`loginIllustrator ${roleString === 'Agency' && 'conditional_background'}`}>
+            <div className={`loginIllustrator ${roleString === 'Client' && 'conditional_background'}`}>
               {/* <div className="bg-image">
                 <img src={bgColor} alt="image5" />
               </div> */}
@@ -233,7 +233,7 @@ const Login = (props) => {
                         ) : (
                           <>
                             <span>&nbsp;a</span>
-                            <span className="agencyOrClient">{` ${roleString}`}</span>
+                            <span className="agencyOrClient conditional_color">{` ${roleString}`}</span>
                           </>
                         )}
                       </h6>
@@ -295,14 +295,14 @@ const Login = (props) => {
                       />
                       <div className="button_action_login">
                         <div
-                          className="submit_login"
+                          className={`submit_login ${roleString === 'Client' && 'conditional_backgroundSubmit'}`}
                           onClick={() => logIn(role, form)}
                           type="submit"
                         >
                           <p>Login</p>
                         </div>
                         <div
-                          className="forgot-password_login"
+                          className={`forgot-password_login ${roleString === "Client" && "conditional_color"}`}
                           onClick={() => props.history.push("/enter-email")}
                         >
                           <p>Forgot Password</p>
@@ -314,7 +314,7 @@ const Login = (props) => {
                     <p>Or</p>
                   </div>
                   <div className="signup_toggle">
-                    <div className="googleLogin">
+                    <div className={`googleLogin ${roleString === 'Client' && 'conditional_backgroundGoogle'}`}>
                       <img src={googleImg} alt="no_image" />
                       <p>Sign in with Google</p>
                     </div>

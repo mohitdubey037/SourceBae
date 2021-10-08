@@ -113,13 +113,10 @@ span.welcome-back_sourceBae {
   user-select: none;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(2deg
-, #015F9A 0%, #0376BA 100%);
+  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); 
 }
 
-.conditional_background {
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
-}
+
 
 .welcome-back_loginIllustrator {
   top: 15rem;
@@ -190,17 +187,18 @@ span.welcome-back_sourceBae {
   padding: 7px;
   position: absolute;
   font-family: 'Segoe UI';
-  color: #4786FE;
+  
 }
 
 .agency__button {
   left: 4px;
   z-index: 1;
   border: none;
+  color: #015F9A;
 }
 
 .client__button {
-  color: #4786FE;
+  color: #4786FE ;
   right: 3px;
 }
 
@@ -232,6 +230,10 @@ span.welcome-back_sourceBae {
   font-size: 1.5rem;
   font-weight: 700;
   color: blue;
+}
+
+.conditional_color {
+  color: #015F9A !important;
 }
 
 .signUpOption {
@@ -298,6 +300,8 @@ span.welcome-back_sourceBae {
   position: relative;
   color: #fff;
   border-radius: 40px;
+  /* background: linear-gradient(2deg
+  , #015F9A 0%, #0376BA 100%); */
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
   width: 135px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
@@ -347,6 +351,11 @@ span.welcome-back_sourceBae {
   font-family: 'Segoe UI';
   font-size: 13px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+}
+
+.googleLogin:hover {
+  cursor: pointer;
+  background: linear-gradient(262deg, rgba(92, 109, 255, 1) 0%, rgba(70, 44, 202, 1) 100%);
 }
 
 .googleLogin p {
@@ -440,4 +449,22 @@ span.welcome-back_sourceBae {
   height: 100%;
   position: relative;
   right: 55%;
+}
+.conditional_background {
+  background: linear-gradient(2deg, #015F9A 0%, #0376BA 100%) ;
+
+}
+.conditional_backgroundSubmit  {
+  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
+}
+
+.conditional_backgroundSubmit:hover {
+  background: linear-gradient(262deg, #0376BA 0%, #015F9A 100%) !important;
+}
+.conditional_backgroundGoogle  {
+  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
+}
+
+.conditional_backgroundGoogle:hover {
+  background: linear-gradient(262deg, #0376BA 0%, #015F9A 100%) !important;
 }
