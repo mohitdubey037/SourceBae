@@ -88,7 +88,6 @@
 }
 
 .AgencyCardsArea_agencyList {
-  /* background-image: url(../../../assets/images/AddProductAgency/agencybg.svg); */
   width: 98%;
 }
 
@@ -200,7 +199,6 @@
 .locationText, .teamNumberPart :is(p) {
   font-family: "Work Sans", sans-serif;
   font-size: 1rem;
-  /* font-weight: bold; */
 }
 
 .locationText {
