@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
-import NO_Data_ICON from '../../Dashboard/no_data_icon.jpg';
+// import NO_Data_ICON from '../../Dashboard/no_data_icon.jpg';
+import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import Spinner from '../../../Components/Spinner/Spinner';
 import './ProductAgencies.css'
 import logo from '../../../assets/images/Logo/logo.png';
@@ -225,14 +226,6 @@ function ProductAgencies(props) {
             <Navbar />
             {loading ? <Spinner /> :
                 <>
-                    {/* <div className="backArrow_productAgencies" onClick={() => { props.history.goBack() }}>
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                </div> */}
-                    {/* <div className="margin-top_productAgencies">
-                        <Back name="Product Agencies" />
-                    </div> */}
-
-
                     <div className="mainAgencyList_productAgencies">
                         <img className="Image1_productAgencies" src={UpImage} alt="upImage" />
                         <img className="Image2_productAgencies" src={DownImage} alt="downImage" />
@@ -241,7 +234,7 @@ function ProductAgencies(props) {
                             {err ?
                                 <>
                                     <div style={{ textAlign: 'center', width: '100%' }}>
-                                        <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                        <img height="300px" src={PageNotFound} alt="no_data_img" />
                                         <h6>{err}</h6>
                                     </div>
                                 </>
