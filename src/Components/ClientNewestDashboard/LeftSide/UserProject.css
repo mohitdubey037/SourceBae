@@ -139,6 +139,11 @@
   align-items: center;
 }
 
+.message_received p {
+  font-size: 0.8rem;
+  color: #707070;
+}
+
 .newMessageReceived_icon {
   font-size: 14px;
   margin-left: 7px;

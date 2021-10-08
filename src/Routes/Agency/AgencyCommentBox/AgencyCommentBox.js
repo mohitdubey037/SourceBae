@@ -132,10 +132,6 @@ const AgencyCommentBox = (props) => {
       formData.append("files", file, "files.pdf");
       instance.post(`api/agency/media/create`, formData)
         .then(function (response) {
-          // setApiData({
-          //   ...apiData,
-          //   quotationLink: response[0].mediaURL,
-          // });
           console.log(response[0].mediaURL);
           const data = { ...apiData, quotationLink: response[0].mediaURL };
           console.log(data);
@@ -287,7 +283,6 @@ const AgencyCommentBox = (props) => {
                             <>
                               <input
                                 color="primary"
-                                // accept="pdf"
                                 type="file"
                                 onChange={(event) => inputFileChosen(event)}
                                 id="icon-button-file"
@@ -311,7 +306,6 @@ const AgencyCommentBox = (props) => {
             </div>
           }
         </div>
-        {/* </div> */}
         {props.projectProposals[0].isQuotationAcceptedByClient === false
           && !props.projectProposals[0].isCommentSectionActive
           && !props.projectProposals[0].isReplySectionActive
@@ -331,12 +325,6 @@ const AgencyCommentBox = (props) => {
           props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
         ) && (
             <div className="proposalCard">
-              {/* className={`${props.isProposalActionActive && props.isQuotationAcceptedByClient
-                ? ""
-                : "disabled"}`}> */}
-              {/* <div className="yellowBg" style={{ height: props.projectProposals[0].isProposalActionActive !== true && props.projectProposals[0].isQuotationAcceptedByAgency !== true && '50%' }}> */}
-                {/* <img src={proposalImage} alt="" /> */}
-              {/* </div> */}
               {props.projectProposals[0].isProposalActionActive ?
                 <>
                   <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
@@ -345,19 +333,13 @@ const AgencyCommentBox = (props) => {
 
                   <div className="postQuotation" style={{marginTop:"5rem"}}>
           {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-            <div className="detailsButtons md-m10 margin-0">
-              {/* <p> */}
+            <div className="detailsButtons md-m10">
               <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-
-              {/* </p> */}
             </div>
           )}
           {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-            <div className="detailsButtons md-m10 margin-0" >
-              {/* <p> */}
+            <div className="detailsButtons md-m10" >
               <p>{`Agency Negotiatiable Price:`} <i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-
-              {/* </p> */}
             </div>
           )}
 

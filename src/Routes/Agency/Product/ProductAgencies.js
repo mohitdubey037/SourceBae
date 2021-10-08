@@ -273,7 +273,6 @@ function ProductAgencies(props) {
                                                             <div className="profileButton">
                                                                 <p onClick={() => props.history.push({
                                                                     pathname: `/agency-profile:${value?.agencyId?._id}`,
-                                                                    // condition: `Client`
                                                                 })}>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
                                                             </div>
                                                         </div>
@@ -284,9 +283,6 @@ function ProductAgencies(props) {
 
                                                         <div className="middleAgencyArea productAgencyMiddle bottom">
                                                             <div className="productAgenciesTeam">
-                                                                {/* <span className="horizontalLine"></span>
-                                                                <span className="verticalLine"></span> */}
-
                                                                 <div className="productAgencyList">
                                                                     <div className="productAgencyContent">
                                                                         <span>Location:</span>
@@ -351,7 +347,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter_productAgencies">
                                                 <p>Sort By :</p>
-                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'1px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={domain}
@@ -386,7 +382,7 @@ function ProductAgencies(props) {
 
                                             <div style={{ border: 'none' }} className="officeVisitFilter">
                                                 <p>Funding type:</p>
-                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'1px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={fundName}
@@ -416,7 +412,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter">
                                                 <p>Business Models:</p>
-                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'2px solid #999'}}>
+                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'1px solid #999'}}>
                                                     <Select
                                                         displayEmpty
                                                         value={bmodal}
