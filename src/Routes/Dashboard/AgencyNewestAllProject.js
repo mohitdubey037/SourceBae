@@ -183,7 +183,7 @@ function AgencyNewestAllProject(props) {
                                     {err === true ?
                                         <>
                                             <div style={{ textAlign: 'center'}}>
-                                                <img style={{marginTop: '1rem'}} height="300px" src={NotFound} alt="no_data_img" />
+                                                <img style={{marginTop: '3rem'}} height="300px" src={NotFound} alt="no_data_img" />
                                                 <p className="no_project_found">No Project Found</p>
                                             </div>
                                         </>

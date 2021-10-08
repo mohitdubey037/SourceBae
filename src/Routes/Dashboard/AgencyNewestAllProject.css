@@ -3,14 +3,14 @@ h6 {
     margin-bottom: 0;
 }
 .container-body {
-    /* background-color: #FFFFFF; */
-    background: linear-gradient(2deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
+    background: #FFFFFF;
+    /* background: linear-gradient(2deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); */
     /* background-image: none; */
 }
 
 .agency-card-parent {
     overflow: auto;
-    height: 8%;
+    height: 30rem;
 }
 
 .agency-card-parent::-webkit-scrollbar {

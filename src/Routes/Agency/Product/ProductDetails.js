@@ -238,6 +238,7 @@ function ProductDetails(props) {
                         <h1>{value?.agencyId?.agencyName}</h1>
                         {Role === "Client" && (
                           <span
+                          style={{marginLeft:"85%"}}
                             onClick={() =>
                               props.history.push({
                                 pathname: `/agency-profile:${value?.agencyId?._id}`,

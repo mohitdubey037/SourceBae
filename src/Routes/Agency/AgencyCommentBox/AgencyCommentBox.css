@@ -114,28 +114,28 @@
 }
 
 .conditional_acceptOrReject {
-  top: 2rem;
+  /* top: 2rem; */
   font-size: 18px;
-  left: 12.5rem;
-  position: absolute;
+  /* left: 12.5rem; */
+  /* position: absolute; */
   font-weight: 600;
   line-height: 39px;
   text-align: center;
-  letter-spacing: 0.4px;
+  /* letter-spacing: 0.4px; */
   text-transform: capitalize;
   color: #3A3A3A;
 }
 
 .normal_acceptOrReject {
   font-size: 18px;
-  position: absolute;
+  /* position: absolute; */
   font-weight: 600;
   line-height: 39px;
   text-align: center;
   letter-spacing: 0.4px;
   text-transform: capitalize;
   color: #3A3A3A;
-  top: 2rem;
+  /* top: 2rem; */
 }
 
 .clientName {
@@ -748,11 +748,18 @@
   color: #000 !important;
   margin: 0 !important;
 }
+.quotationSubmitButton button {
+  margin-top: 1rem;
+}
 
 .extraDiv {
-  padding:  0rem 2.4rem;
+  /* padding:  0rem 2.4rem; */
 display: flex;
+flex-direction: column;
 justify-content: space-around;
+}
+.tableContentQuotation input {
+  margin-top: 0;
 }
 
 .dot {

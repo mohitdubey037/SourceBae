@@ -275,7 +275,40 @@ const ClientCommentBox = (props) => {
         </div>
 
         <div className='action-wait'>
-          <div className="postQuotation">
+          {/* <div className="postQuotation">
+            {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
+              <div className="detailsButtons margin-0">
+                <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+
+              </div>
+            )}
+
+            {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
+              <div className="detailsButtons margin-0">
+                <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+
+              </div>
+            )}
+
+            {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+              <div className="detailsButtons margin-0">
+                <a href={props.projectProposals[0].quotationLink} target="new">
+                  View Quotation
+                </a>
+              </div>
+            )}
+          </div> */}
+
+          {props.projectProposals[0].isProposalActionActive}
+          {/* <div className={`${props.isProposalActionActive ? "" : "disabled"}`}> */}
+          <div className="proposalCard">
+            {/* <div className="yellowBg"> */}
+              {/* <img src={proposalImage} alt="" /> */}
+            {/* </div> */}
+              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
+                <p /*style={{marginLeft:"5rem"}}*/>Accept or Reject the Project.</p>
+              </div>
+              <div className="postQuotation">
             {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
               <div className="detailsButtons margin-0">
                 <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
@@ -298,17 +331,7 @@ const ClientCommentBox = (props) => {
               </div>
             )}
           </div>
-
-          {props.projectProposals[0].isProposalActionActive}
-          {/* <div className={`${props.isProposalActionActive ? "" : "disabled"}`}> */}
-          <div className="proposalCard">
-            <div className="yellowBg">
-              {/* <img src={proposalImage} alt="" /> */}
-            </div>
-              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-                <p style={{marginLeft:"5rem"}}>Accept or Reject the Project.</p>
-              </div>
-            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height">
+            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height" style={{marginBottom:"1rem"}}>
               <div>
                 <button className="acceptButton" onClick={() => { setOpen(true) }}>
                   Accept

@@ -658,7 +658,8 @@
 }
 
 .agencyQuestions_AgencyRespondedDetails div ul {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   margin-left: -1rem;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.1rem;

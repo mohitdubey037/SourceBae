@@ -331,7 +331,7 @@ const AgencyCommentBox = (props) => {
                     <p>Accept or Reject the Project.</p>
                   </div>
 
-                  <div className="postQuotation" style={{marginTop:"5rem"}}>
+                  <div className="postQuotation">
           {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
             <div className="detailsButtons md-m10">
               <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
@@ -352,7 +352,7 @@ const AgencyCommentBox = (props) => {
           )}
         </div>
 
-                  <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons height">
+                  <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons height" style={{marginBottom:"1rem"}}>
                     <div>
                       <button className="acceptButton" onClick={() => { setOpen(true) }}>
                         Accept
@@ -397,16 +397,16 @@ const AgencyCommentBox = (props) => {
         <div className="QuotationModal acceptance-parent_clientCommentBox">
           <h2>Quotation Acceptance Form</h2>
           <div className="productModalForm">
-            <div className="quotationTable">
+            {/* <div className="quotationTable">
               <div className="tableHeaderQuotation">
                 <p style={{paddingLeft:"2.3rem" ,fontSize:"1.2rem"}}>Final Cost </p>
               </div>
               <div className="tableContentQuotation">
                 <p>{props.projectProposals[0].finalCostByClient}</p>
               </div>
-            </div>
+            </div> */}
               <div className="extraDiv">
-              <div className="extraDiv2" style={{marginRight:"2rem"}}>
+              {/* <div className="extraDiv2" style={{marginRight:"2rem"}}> */}
             <div className="quotationTable">
               <div className="tableHeaderQuotation">
                 <p>Project Start Date By Client</p>
@@ -433,8 +433,8 @@ const AgencyCommentBox = (props) => {
               <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
               </div>
             </div>
-              </div>
-              <div className="extraDiv3" style={{marginLeft:"10.5rem"}}>
+              {/* </div> */}
+              {/* <div className="extraDiv3" style={{marginLeft:"10.5rem"}}> */}
             <div className="quotationTable">
               <div className="tableHeaderQuotation">
                 <p>Project Expected End Date By Client</p>
@@ -452,6 +452,14 @@ const AgencyCommentBox = (props) => {
                 <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
               </div>
             </div>
+            {/* </div> */}
+            <div className="quotationTable">
+              <div className="tableHeaderQuotation">
+                <p >Final Cost </p>
+              </div>
+              <div className="tableContentQuotation">
+                <p>{props.projectProposals[0].finalCostByClient}</p>
+              </div>
             </div>
             </div>
             <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
