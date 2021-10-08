@@ -571,7 +571,7 @@ li ::marker {
 }
 
 .innerHireAgencyFormTwo {
-    height: 29rem;
+    /* height: 29rem; */
     width: 53%;
     /* position: relative; */
     justify-content: center;
@@ -902,7 +902,7 @@ li::marker {
 }
 
 .serviceFieldsOptions .uiuxtext {
-    /* width: 17rem; */
+    padding: 0rem 1rem;
     font: bold 1.2rem 'Open Sans', sans-serif;
     text-align: center;
 }
