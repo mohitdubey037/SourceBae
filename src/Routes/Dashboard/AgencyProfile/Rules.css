@@ -1,16 +1,12 @@
 .mainRules {
     width: 100%;
     margin: auto;
-    /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
     padding: 1rem;
     margin-bottom: 1rem;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     border-radius: 20px;
+    background-color: white;
 }
-
-/* .innerRules {
-    width: 100%;
-} */
 
 .rules_parent {
     justify-content: center;
@@ -64,10 +60,6 @@
     align-items: flex-start;
     padding: 0 1rem;
 }
-
-/* .rulesQuestions {
-    margin-top: 1rem;
-} */
 
 .leftQuestion {
     width: 70%;

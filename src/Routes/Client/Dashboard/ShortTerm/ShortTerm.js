@@ -310,13 +310,15 @@ function ShortTerm(props) {
               <div className="shortTermFileUpload">
                 <div className="uploadBlock">
                   <div className="fileUploadButton">
-                    <FilePicker
-                      extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
-                      onChange={(fileObj) => fileHandler(fileObj)}
-                      onError={errMsg => toast.error(errMsg)}
-                    >
-                      <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image" />
-                    </FilePicker>
+                    <div style={{cursor: 'pointer', width: '20%'}}>
+                      <FilePicker
+                        extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
+                        onChange={(fileObj) => fileHandler(fileObj)}
+                        onError={errMsg => toast.error(errMsg)}
+                      >
+                        <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image" />
+                      </FilePicker>
+                    </div>
                   </div>
                   <div className="uploadInfo">
                     <p>{`${projectFiles?.name ?? "Upload an image or a document that might be helpful in explaining your project in brief."}`}</p>
@@ -384,7 +386,7 @@ function ShortTerm(props) {
                         </div>
                       </div>
 
-                      <div style={{marginTop: '1rem'}} className="fixedPrice" name="projectPaymentModel">
+                      <div style={{ marginTop: '1rem' }} className="fixedPrice" name="projectPaymentModel">
                         <FormControlLabel
                           value="By Hour"
                           control={<BlueRadio className={classes.root} />}
