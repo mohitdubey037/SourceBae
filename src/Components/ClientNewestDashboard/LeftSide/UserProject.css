@@ -8,12 +8,12 @@
 }
 
 .project-details-card {
-  min-width: 30%;
+  min-width: 32%;
   justify-self: flex-start;
   background: linear-gradient( 90deg, #f5faff 0%, #ffffff 100%);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   padding: 10px 20px 5px 20px;
-  margin: 1rem 5rem;
+  margin: 1rem 4.8rem;
   position: relative;
   max-height: 155px;
   border-radius: 1rem;
@@ -61,7 +61,7 @@
   width: 100%;
 }
 
-.centerImage > div {
+.centerImage>div {
   margin-top: 0.2rem;
 }
 
@@ -75,8 +75,7 @@
   margin-top: 1rem;
 }
 
-.centerImage>div>p,
-.currentStatus-text p, .projectDetail-text p {
+.centerImage>div>p, .currentStatus-text p, .projectDetail-text p {
   font-family: 'Segoe UI';
   text-align: center;
   color: #707070;
