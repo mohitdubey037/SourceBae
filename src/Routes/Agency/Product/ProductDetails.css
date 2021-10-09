@@ -77,15 +77,27 @@
 }
 
 .peoductNameTags {
-    width: 80%;
+    width: 84%;
     position: relative;
 }
 
-.peoductNameTags span {
+.productTags {
+    display: flex;
+    margin-top: 0.5rem;
+    width: 30%;
+    justify-content: space-between;
+}
+
+.productTags span {
     display: flex;
     align-items: center;
     color: #45a9EA;
     cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    width: 50%;
+    justify-content: center;
 }
 
 .peoductNameTags span:hover {
@@ -106,17 +118,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-bottom: 0;
 }
 
 .productTags {
     display: flex;
     margin-top: 0.5rem;
-}
-
-.productTags span{
-    margin-right: 5%;
-    font-family: 'Segoe UI';
-    color: #707070;
+    width: 30%;
+    justify-content: space-between;
 }
 
 .connectButton {

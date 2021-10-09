@@ -235,7 +235,7 @@ function ProductDetails(props) {
                         <img src={logo} alt="" />
                       </div>
                       <div className="peoductNameTags">
-                      <div style={{display:"flex", justifyContent:"space-between"}}>
+                      <div style={{display:"flex", justifyContent:"space-between", marginBottom: '0.7rem'}}>
                         <h1>{value?.agencyId?.agencyName}</h1>
                         {Role === "Client" && (
                           <span
@@ -256,7 +256,7 @@ function ProductDetails(props) {
                             return (
                               <span>
                                 <img src={ProductIcon} alt="productIcon" />
-                                <p style={{ transform: 'translateX(0.5rem)' }}>{a?.domainId?.domainName}</p>
+                                <p style={{marginLeft: '0.5rem'}}>{a?.domainId?.domainName}</p>
                               </span>
                             );
                           })}
