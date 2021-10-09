@@ -5,6 +5,7 @@
   margin-right: 1rem;
   padding: 1rem;
   height: 97%;
+  min-width: 24%;
 }
 
 .content-rightBody {
@@ -110,7 +111,8 @@
   padding: 0.3rem 1.1rem;
   background: linear-gradient( 262deg, #45a4ea 0%, #5C6DFF 100%);
   border-radius: 22px;
-  border: inherit;
+  /* border: inherit; */
+  border: none;
   margin-top: 8%;
   font-family: 'Segoe UI';
   color: #ffffff;

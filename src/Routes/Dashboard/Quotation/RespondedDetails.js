@@ -268,7 +268,7 @@ function RespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul>
-              <img className="dotImg"src={dot} alt="" /><li style={{listStyle:"none"}}>{`${project?.projectExpectedStartingDays} Days`}</li>
+              <img className="dotImg"src={dot} alt="" /><li style={{listStyle:"none", display:"flex", marginLeft:"-4rem"}}>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
             <div>

@@ -83,6 +83,10 @@
 .peoductNameTags span {
     display: flex;
     align-items: center;
+    /* justify-content: end; */
+    color: #45a9EA;
+    cursor: pointer;
+    width: 11%;
 }
 
 .peoductNameTags span:hover {
@@ -214,6 +218,7 @@
     margin-bottom: 2%;
     padding: 0.5rem 1rem;
     border-radius: 0.3rem;
+    overflow-wrap: anywhere;
 }
 
 .allPointCardHeading {

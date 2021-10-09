@@ -120,7 +120,7 @@ function ClientNewestDashboard(props) {
         <>
 
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            <div style={{ zIndex: visible && '-1',height:"auto", backgroundImage: Role === 'Client' && 'linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%)' }} className="container-body">
+            <div style={{ zIndex: visible && '-1', backgroundImage: Role === 'Client' && 'linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%)' }} className="container-body">
                 <div style={{top: '1rem'}} className="navbar">
                     <div className="navbar-items">
                         <div style={{ paddingRight: '10px' }} className="username">
