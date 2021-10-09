@@ -71,8 +71,8 @@
 
 .detailed_description_clientCommentBox {
     display: flex;
-    margin-top: 9px;
-    margin-left: 155px;
+    margin-left: 8rem;
+    flex-direction: column;
 }
 .radioButtons_with_textBox .MuiSvgIcon-root {
     font-size: 13px;
@@ -152,7 +152,7 @@
 
 .radioButtons_with_textBox {
     margin-top: 1rem;
-    margin-left: 3.5rem;
+    margin-left: 5.5rem;
 }
 
 .rejection_modal_clientCommentBox .MuiTypography-body1 {
