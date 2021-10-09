@@ -387,8 +387,12 @@ li ::marker {
 }
 
 .error_hireAgencyForm2.error-select_hireAgencyForm2 {
-    position: absolute;
-    left: 59rem;
+    margin-top: -1.5rem;
+    padding-bottom: 0.4rem;
+}
+.error_hireAgencyForm2.error-select_hireAgencyForm3 {
+    margin-top: -0.5rem;
+    margin-bottom: -0.5rem;
 }
 
 .numberOfDays {
@@ -557,7 +561,6 @@ li ::marker {
 }
 
 .innerHireAgencyFormTwo {
-    /* height: 29rem; */
     width: 53%;
     justify-content: center;
     background-color: #fff;
@@ -699,9 +702,9 @@ li ::marker {
 .serviceSelectionInput .margin-left {
     text-transform: capitalize;
     margin-top: 1rem;
-    /* margin-left: ; */
     height: 51px;
-    width: 100%;
+    min-width: 19rem;
+    max-width: 20rem;
     background: #ffffff;
     box-sizing: border-box;
     border-radius: 8px;
@@ -776,7 +779,6 @@ li ::marker {
 
 .HireAgencyForm3Heading h2 {
     font: 22px 'Segoe UI';
-    /* margin-left: 2rem; */
     text-transform: capitalize;
     color: #015F9A;
 }
@@ -935,7 +937,7 @@ li::marker {
     color: red !important;
     font-weight: normal;
     font-size: 14px;
-    width: 92%;
+    margin-left: 2.2rem;
 }
 
 .error_hireAgencyForm3 {
