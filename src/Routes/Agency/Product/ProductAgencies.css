@@ -170,13 +170,12 @@
 }
 
 .agencyProfileInfo.name div {
-    display: block ;
-    /* margin-left: -7.4rem ;*/
-    margin-top: 2rem ; 
+    display: flex;
+    margin-top: 2.5rem;
     position: absolute;
-    left: 7rem;
-
+    left: 6rem;
 }
+
 .agencyImageProfile.innerdiv {
  position: relative;
  top: 0rem;

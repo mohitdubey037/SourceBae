@@ -174,10 +174,9 @@
   filter: grayscale(100%);
 }
 
-.action-wait>p, .detailsButtons>p {
-  color: #fff !important;
+/* .action-wait>p, .detailsButtons>p {
   margin: 0;
-}
+} */
 
 @media (max-width: 768px) {
   .detailHeaderImage div {
@@ -622,11 +621,10 @@
   color: #3A3A3A;
 }
 
-.agencyQuotationDesc_AgencyRespondedDetails p {
+/* .agencyQuotationDesc_AgencyRespondedDetails p {
   color: #484848;
   font-family: 'Segoe UI';
-  /* padding-left: 2rem; */
-}
+} */
 
 .agencyQuestions_AgencyRespondedDetails {
   padding: 1rem 2rem;

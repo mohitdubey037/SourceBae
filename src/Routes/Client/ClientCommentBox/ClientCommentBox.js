@@ -344,6 +344,7 @@ const ClientCommentBox = (props) => {
               <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
                 <button style={{ textAlign: 'center' }} onClick={handleProjectAcceptance}>Submit</button>
               </div>
+              
             </div>
           </div>
         </div>
@@ -375,25 +376,21 @@ const ClientCommentBox = (props) => {
                   value="No Matching Requirements"
                   control={<Radio color="primary" />}
                   label="Not Matching Requirement"
-                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Taking Too Much Time"
                   control={<Radio color="primary" />}
                   label="Taking Too Much Time"
-                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Cost is too high"
                   control={<Radio color="primary" />}
                   label="Cost is too high"
-                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Other"
                   control={<Radio color="primary" />}
                   label="Other"
-                // labelPlacement="start"
                 />
               </RadioGroup>
             </FormControl>

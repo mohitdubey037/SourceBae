@@ -598,10 +598,6 @@ const AgencyCommentBox = (props) => {
                 />
               </RadioGroup>
             </FormControl>
-            {/* <div style={{display:"flex"}}>
-              <span>Detailed description</span>
-              <input style={{ marginLeft:"10px", width:"14rem", height:"7rem", borderRadius:"7px",border:"2px solid #707070"}}/>
-            </div> */}
             {quotationRejectionForm.rejectReasonByAgency !== "No Matching Requirements" &&
               quotationRejectionForm.rejectReasonByAgency !== "Taking Too Much Time" &&
               quotationRejectionForm.rejectReasonByAgency !== "Cost is too low"
@@ -615,7 +611,6 @@ const AgencyCommentBox = (props) => {
                   cols="30"
                   rows="5"
                   onChange={onQuotationRejectionChange} />
-                {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
               </div>
             }
           </div>

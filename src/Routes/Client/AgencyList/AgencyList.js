@@ -418,7 +418,7 @@ function AgencyList(props) {
                 </div>
               </div>
 
-              <div className="quotationSubmitButton quotation">
+              <div className="quotationSubmitButton_agencyList quotation">
                 <div></div>
                 <button onClick={quotationSubmitHandler}>Submit</button>
               </div>

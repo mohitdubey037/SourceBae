@@ -16,7 +16,7 @@
     letter-spacing: 0.4px;
     text-transform: capitalize;
     color: #3A3A3A;
-} 
+}
 
 .normal_acceptOrReject_clientCommentBox p {
     padding: none;
@@ -29,7 +29,7 @@
 
 .sendIcon_clientCommentBox .MuiSvgIcon-root {
     top: 8px !important;
-    right: 5px !important;
+    right: 7px !important;
     position: absolute !important;
     color: white !important;
 }
@@ -45,15 +45,8 @@
 
 .commentBox>p {
     font-size: 10px;
-}
-
-/* .margin-0 {
-    margin: 10px 0%;
-} */
-
-.QuotationModal button {
-    margin-top: -4px;
-    margin-right: -4px
+    color: #484848;
+    font-family: 'Segoe UI';
 }
 
 .postQuotation .makeStyles-margin-1 {
@@ -69,13 +62,14 @@
     margin-left: 8rem;
     flex-direction: column;
 }
+
 .radioButtons_with_textBox .MuiSvgIcon-root {
     font-size: 13px;
 }
 
-.detailed_description_clientCommentBox>label {
+/* .detailed_description_clientCommentBox>label {
     font: 500 14px 'Open Sans', sans-serif !important;
-}
+} */
 
 .reject-reason_label {
     text-align: center;
@@ -85,34 +79,26 @@
     font-style: normal;
 }
 
-.submit-rejection {
+.submit-rejection, .quotationSubmit_clientCommentBox {
     width: 99%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 1rem;
 }
 
-.submit-rejection>div {
-    transform: translateY(-10px);
-    width: 20%;
-    height: 45px;
+.submit-rejection>div, .quotationSubmit_clientCommentBox>button {
+    display: flex;
+    align-items: center;
     outline: none;
     border: none;
-    background-image: linear-gradient(#462CCA, #5C6DFF);
-    font-weight: bold;
+    background-image: linear-gradient( 284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%);
     border-radius: 25px;
     color: white;
     background-color: #3498db;
-    padding: 0.8rem;
-    text-align: center;
+    padding: 0.3rem 1.5em;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-}
-
-.quotationSubmit_clientCommentBox {
-    display: flex !important;
-    justify-content: center !important;
-    margin-top: 20px !important;
+    font-size: 0.9rem;
 }
 
 .acceptance-parent_clientCommentBox>h2::after {
@@ -132,7 +118,8 @@
 }
 
 .rejection_modal_clientCommentBox .MuiTypography-body1 {
-    font: 500 14px segoe UI !important;
+    font-family: 'Segoe UI' !important;
+    font-size: 14px;
     line-height: 17px !important;
     text-transform: capitalize !important;
 }

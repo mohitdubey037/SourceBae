@@ -153,10 +153,9 @@
   color: #fff;
   font-family: "Segoe UI";
   font-size: 0.7rem;
-  font-weight: 100;
   display: flex;
   justify-content: center;
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
   box-shadow: 1px 2px 3px rgb(0, 0, 0, 18%);
 }
 
@@ -511,10 +510,10 @@
   float: right;
 }
 
-.quotationSubmitButton {
+/* .quotationSubmitButton {
   display: flex;
   justify-content: space-between;
-}
+} */
 
 .Image1_GetHireDev {
   left: -10rem;
