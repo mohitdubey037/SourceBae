@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
-// import NO_Data_ICON from '../../Dashboard/no_data_icon.jpg';
 import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import Spinner from '../../../Components/Spinner/Spinner';
 import './ProductAgencies.css'

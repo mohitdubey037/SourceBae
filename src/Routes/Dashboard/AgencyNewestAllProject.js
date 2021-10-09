@@ -6,7 +6,6 @@ import AllProjectCard from '../../Components/AllProjectCard/AllProjectCard';
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import React, { useEffect, useState } from 'react';
 import instance from '../../Constants/axiosConstants';
-// import Not_Found from '../../assets/images/Newestdashboard/Not_found/no_data_icon.jpg';
 import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';

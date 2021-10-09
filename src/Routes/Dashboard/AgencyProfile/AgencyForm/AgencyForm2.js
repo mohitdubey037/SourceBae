@@ -2,14 +2,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from "./FormPhases";
-import { NavLink } from "react-router-dom";
 import Back from '../../../../Components/Back/Back';
 
 //axios instance
 import instance from "../../../../Constants/axiosConstants";
-
-//services
-import uiux from "../../../../assets/images/agencyForm/uiux.png";
 
 //material-ui
 import Radio from "@material-ui/core/Radio";

@@ -27,9 +27,6 @@ function RespondedDetails(props) {
             .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${userId}`)
             .then(function (response) {
                 console.log(response);
-                // console.log(Array.isArray(response));
-                // console.log(typeof (response))
-                // console.log(response)
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })

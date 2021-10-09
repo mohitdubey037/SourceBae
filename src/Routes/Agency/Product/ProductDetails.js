@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import "./ProductDetails.css";
 import "react-responsive-modal/styles.css";
 import logo from "../../../assets/images/Logo/logo.png";
-import NO_Data_ICON from "../../Dashboard/no_data_icon.jpg";
+import PageNotFound from "../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg";
 
 import ProductIcon from '../../../assets/images/Newestdashboard/Product_Detail/product_detail.svg';
 import * as helper from "../../../shared/helper";
@@ -204,7 +204,7 @@ function ProductDetails(props) {
         err ? (
           <>
             <div style={{ textAlign: "center", width: "100%", marginTop: "20px" }}>
-              <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+              <img height="300px" src={PageNotFound} alt="no_data_img" />
               <h6>{err}</h6>
             </div>
           </>

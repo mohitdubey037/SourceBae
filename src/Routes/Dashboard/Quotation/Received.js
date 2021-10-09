@@ -2,15 +2,11 @@ import React, { useState, useEffect } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import Spinner from '../../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
-import { useHistory } from 'react-router-dom';
-import NO_Data_ICON from '../no_data_icon.jpg';
+import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import { withRouter } from 'react-router';
 import './Received.css'
-import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png';
-import TimeIcon from '../../../assets/images/Newestdashboard/Responded/time-icon_status.svg';
 
 function Received(props) {
-    const routerHistory = useHistory();
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
 
@@ -48,7 +44,7 @@ function Received(props) {
                         {err ?
                             <>
                                 <div style={{ textAlign: 'center', width: '100%' }}>
-                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                    <img height="300px" src={PageNotFound} alt="no_data_img" />
                                     <h6>{err}</h6>
                                 </div>
                             </>
@@ -57,19 +53,14 @@ function Received(props) {
                             projects.map((s) => {
                                 return (
                                     <div className="respondedCard">
-                                        {/* <div className="bgCircle">
-                                            <img src={rightCornerCircle} alt="" />
-                                        </div> */}
                                         <div className="leftBorder"></div>
                                         <div className="date_and_time">
                                             <div className="dateCreated">
-                                                {/* <img src={TimeIcon} alt="time icon" /> */}
                                                 <div>
                                                     <p><Moment format="HH:MM A" withTitle>{s.updatedAt}</Moment></p>
                                                 </div>
                                             </div>
                                             <div className="dateCreated">
-                                                {/* <i class="fa fa-calendar" aria-hidden="true"></i> */}
                                                 <div>
                                                     <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
                                                 </div>

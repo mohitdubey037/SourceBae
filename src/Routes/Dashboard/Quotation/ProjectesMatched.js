@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './ProjectsMatched.css';
 import instance from '../../../Constants/axiosConstants';
 import Moment from 'react-moment';
-import NO_Data_ICON from '../no_data_icon.jpg';
+import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -46,7 +46,7 @@ function ProjectesMatched(props) {
                     {err ?
                         <>
                             <div style={{ textAlign: 'center', width: '100%' }}>
-                                <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                <img height="300px" src={PageNotFound} alt="no_data_img" />
                                 <h6>{err}</h6>
                             </div>
                         </>

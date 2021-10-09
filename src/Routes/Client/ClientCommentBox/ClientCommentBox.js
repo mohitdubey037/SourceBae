@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import instance from "../../../Constants/axiosConstants";
-import { useParams, useHistory } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
-import proposalImage from '../../../assets/images/proposalImage.png';
 import './ClientCommentBox.css';
 import clsx from 'clsx';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { toast } from "react-toastify";
 
-
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import AttachmentIcon from '@material-ui/icons/Attachment';
 import SendIcon from '@material-ui/icons/Send';
 
 import Radio from '@material-ui/core/Radio';
@@ -186,18 +182,6 @@ const ClientCommentBox = (props) => {
                   props.projectProposals[0].clientNegotiablePrice === undefined) && (
 
                     <div className="postQuotation" style={{ width: '55%' }}>
-                      {/* <div style={{ display: "flex", alignItems: 'center', marginLeft: '10px' }}> */}
-                      {/* <b>Client Negotiatiable Price:</b> */}
-                      {/* <div className="negotiablePrice">
-                          <input
-                            type="number"
-                            name="clientNegotiablePrice"
-                            placeholder="negotiable price"
-                            value={apiData.clientNegotiablePrice}
-                            onChange={(event) => handleChange(event)}
-                          />
-                        </div> */}
-
                       <TextField
                         className={clsx(classes.margin, classes.width)}
                         name="clientNegotiablePrice"
@@ -218,21 +202,7 @@ const ClientCommentBox = (props) => {
                         }}
                       />
                     </div>
-                    // </div>
                   )}
-                {/* <div style={{ display: "flex", margin: "1rem 0rem" }}> */}
-                {/* <h5>
-                    <b>Client: </b>
-                  </h5> */}
-                {/* <textarea
-                    rows="5"
-                    cols="50"
-                    style={{ margin: "0 1rem" }}
-                    placeholder="Enter your reply"
-                    name="comment"
-                    value={apiData.reply}
-                    onChange={(event) => handleChange(event)}
-                  /> */}
                 <div className="price-section" style={{ width: '40%' }}>
                   <TextField
                     className={clsx(classes.margin, classes.width)}
@@ -250,13 +220,6 @@ const ClientCommentBox = (props) => {
                     <SendIcon onClick={() => { replyApi() }} />
                   </div>
                 }
-                {/* </div> */}
-
-                {/* <div className="reply-parent">
-                  <button className="reply-button" onClick={() => { replyApi() }}>
-                    Reply
-                  </button>
-                </div> */}
               </div>
             )}
           {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
@@ -300,13 +263,9 @@ const ClientCommentBox = (props) => {
           </div> */}
 
           {props.projectProposals[0].isProposalActionActive}
-          {/* <div className={`${props.isProposalActionActive ? "" : "disabled"}`}> */}
           <div className="proposalCard">
-            {/* <div className="yellowBg"> */}
-              {/* <img src={proposalImage} alt="" /> */}
-            {/* </div> */}
               <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-                <p /*style={{marginLeft:"5rem"}}*/>Accept or Reject the Project.</p>
+                <p>Accept or Reject the Project.</p>
               </div>
               <div className="postQuotation">
             {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
@@ -342,7 +301,6 @@ const ClientCommentBox = (props) => {
               </div>
             </div>
           </div>
-          {/* </div> */}
         </div>
       </div>
 
@@ -478,7 +436,6 @@ const ClientCommentBox = (props) => {
                   cols="30"
                   rows="5"
                   onChange={onQuotationRejectionChange} />
-                {/* <input type='text' name='rejectReasonByClient' onChange={onQuotationRejectionChange} /> */}
               </div>
             }
           </div>

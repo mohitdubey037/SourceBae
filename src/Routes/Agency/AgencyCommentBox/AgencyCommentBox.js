@@ -4,30 +4,22 @@ import "./AgencyCommentBox.css";
 import foods from "../../../assets/images/Quotation/foods.png";
 
 import instance from '../../../Constants/axiosConstants';
-import { useParams } from "react-router-dom";
-import * as helper from "../../../shared/helper";
-import { useHistory } from "react-router-dom";
 import Moment from "react-moment";
 import { toast } from "react-toastify";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import clsx from 'clsx';
-
-import proposalImage from '../../../assets/images/proposalImage.png';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import { event } from "react-ga";
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-
-let isRepliedToClient = false;
 
 const useStyles = makeStyles((theme) => ({
   margin: {

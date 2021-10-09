@@ -1,29 +1,22 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import './DeveloperList.css'
-import document from '../../../assets/images/Logo/document.png';
 import instance from "../../../Constants/axiosConstants";
 import { useHistory } from 'react-router-dom';
-import NO_Data_ICON from '../no_data_icon.jpg';
-import addDeveloper from '../../../assets/images/AgencyProfile/addDeveloper.png';
-import crossIcon from '../../../assets/images/Newestdashboard/Adding_Developers/cross_icon.svg';
+import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import TrashIcon from '../../../assets/images/Newestdashboard/Agency-Profile/material-delete.svg';
 import { Modal } from "react-responsive-modal";
-import ArrowButton from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg';
 import developerImage from '../../../assets/images/Newestdashboard/Agency-Profile/add-developer.svg';
-import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
+import { withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
         width: 28,
         height: 14,
         padding: 0,
-        // display: 'flex',
         borderColor: "#fff",
     },
     switchBase: {
         padding: 2,
-        // color: "#02044a",
         top: -2,
         left: -2,
         color: 'green',
@@ -49,12 +42,9 @@ const AntSwitch = withStyles((theme) => ({
         marginLeft: '1px'
     },
     track: {
-        // border: `1px solid #02044a`,
         borderRadius: 78 / 2,
         backgroundColor: "blue",
         opacity: 0.82,
-
-        // border: '2px solid green',
     },
     checked: {},
 }))(Switch);
@@ -64,7 +54,6 @@ function DeveloperList(props) {
     const Role = localStorage.getItem('role')
     const agencyId = localStorage.getItem("userId")
     const [developers, setDevelopers] = useState([]);
-    // const tempDevelopers = {...developers}
     const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
     const [developerId, setDeveloperId] = useState(null);
     const [open, setOpen] = useState(false);
@@ -104,7 +93,6 @@ function DeveloperList(props) {
         console.log('hi');
         instance.delete(`api/${Role}/developers/delete/${developerId}`)
             .then(function (response) {
-                // setDevelopers(response);
                 setOpenWithdrawModal(false);
                 const tempDevelopers = developers.filter(dev => dev._id !== developerId);
                 setDevelopers(tempDevelopers);
@@ -165,7 +153,7 @@ function DeveloperList(props) {
                     {err ?
                         <>
                             <div style={{ textAlign: 'center', width: '100%' }}>
-                                <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                <img height="300px" src={PageNotFound} alt="no_data_img" />
                                 <h6>{err}</h6>
                             </div>
                         </>

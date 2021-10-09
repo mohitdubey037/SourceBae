@@ -1,14 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import './Responded.css'
 import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
-import NO_Data_ICON from '../no_data_icon.jpg';
+import NO_Data_ICON from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import { withRouter } from 'react-router';
-import rightCornerCircle from '../../../assets/images/Quotation/rightCornerCircle.png';
-import TimeIcon from '../../../assets/images/Newestdashboard/Responded/time-icon_status.svg';
 
 function Responded(props) {
     const agencyId = localStorage.getItem('userId');
@@ -54,19 +51,14 @@ function Responded(props) {
                                 return (
                                     isDetail === false ? (
                                         <div className="respondedCard">
-                                            {/* <div className="bgCircle">
-                                                <img src={rightCornerCircle} alt="" />
-                                            </div> */}
                                             <div className="leftBorder"></div>
                                             <div className="date_and_time">
                                                 <div className="dateCreated">
-                                                    {/* <img src={TimeIcon} alt="time icon" /> */}
                                                     <div>
                                                         <p><Moment format="hh:mm A" withTitle>{s.updatedAt}</Moment></p>
                                                     </div>
                                                 </div>
                                                 <div className="dateCreated">
-                                                    {/* <i class="fa fa-calendar" aria-hidden="true"></i> */}
                                                     <div>
                                                         <p><Moment format="D MMM YYYY" withTitle>{s.updatedAt}</Moment></p>
                                                     </div>

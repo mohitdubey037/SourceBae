@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './ClientProfile.css'
-import NO_Data_ICON from '../Dashboard/no_data_icon.jpg';
+import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/ClientDashboard/avatar.png';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../Components/Back/Back';
@@ -108,7 +108,7 @@ function ClientProfile() {
             {err ?
                 <>
                     <div style={{ textAlign: 'center', width: '100%' }}>
-                        <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                        <img height="300px" src={PageNotFound} alt="no_data_img" />
                         <h6>{err}</h6>
                     </div>
                 </>

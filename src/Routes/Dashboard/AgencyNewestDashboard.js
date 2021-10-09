@@ -5,8 +5,6 @@ import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/User
 import QuotationIcon from '../../assets/images/Newestdashboard/Agency_Navbar/q-icon.svg';
 import addDeveloperIcon from "../../assets/images/Newestdashboard/Agency_Navbar/add-developer.svg";
 import ThirdIcon from '../../assets/images/Newestdashboard/Agency_Navbar/view-product.svg';
-// import downImage1 from '../../assets/images/Newestdashboard/Dashboard/Path1.png';
-// import downImage2 from '../../assets/images/Newestdashboard/Dashboard/Path2.png';
 
 import './AgencyNewestDashboard.css'
 import AgencyProjectCard from '../../Components/AgencyProjectCard/AgencyProjectCard';
