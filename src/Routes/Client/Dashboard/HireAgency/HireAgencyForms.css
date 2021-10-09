@@ -653,6 +653,9 @@ li ::marker {
     background: #fff;
     border-radius: 1rem;
 }
+.serviceFieldsOptions.newHireAgencyForm3 {
+    margin-right: 1.5%;
+}
 
 .servicesHireAgencyContainer.hireAgencyForm2 {
     border: 1px dashed #ebebeb;
@@ -962,6 +965,5 @@ svg.MuiSvgIcon-root {
 width: 20%;
 display: flex;
 justify-content: center;
-margin-right: 1.5%;
 margin-bottom: 1%;
 }
