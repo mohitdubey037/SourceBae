@@ -353,23 +353,21 @@
 
 /* Agency Form two  */
 
-.mainTechStackForm {
-    width: 84%;
+.mainTechStackFormParent {
     display: flex;
+    justify-content: space-between;
     margin: auto;
-    margin-bottom: 5%;
-    justify-content: space-around;
-    align-items: flex-start;
+    width: 82%;
 }
 
 .innerTechStackForm {
-    width: 70%;
+    width: 65%;
     background-color: #fff;
-    /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
     padding: 2rem 4rem 2rem 4rem;
     display: flex;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     border-radius: 20px;
+    border: 1px solid;
 }
 
 .mainTechStackForm .MuiTypography-root {
@@ -545,10 +543,8 @@
 }
 
 .conditional_please_select {
-    width: 18%;
+    width: 28%;
     background: #F9F9F9;
-    display: flex;
-    min-height: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -569,16 +565,12 @@
 }
 
 .servicesCardsHireAgency.agencyForm2 {
-    margin-left: 0px;
+    margin-left: 0 !important;
     margin-top: 14px;
     display: flex;
     flex-wrap: wrap;
-    width: 85%;
+    width: 100%;
     justify-content: space-between;
-}
-
-.domainChild {
-    padding: 0px 30px;
 }
 
 /* Agency Form three  */
@@ -595,10 +587,9 @@
 
 .innerDocumentForm {
     width: 60%;
-    /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-
-border-radius: 20px;}
+    border-radius: 20px;
+}
 
 .documentDetails {
     width: 100%;
@@ -641,10 +632,6 @@ border-radius: 20px;}
     padding-bottom: 5px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
-
-/* .agencyBrochure {
-    transform: translateX(2rem);
-} */
 
 .agencyCertification>div, .agencyBrochure>div, .panCardContent>div {
     display: flex;
@@ -694,10 +681,6 @@ border-radius: 20px;}
     margin-top: 14px;
     min-height: 8rem;
 }
-
-/* .panCardContent img {
-    width: 32%;
-} */
 
 .panCardContent button i {
     margin-right: 5px;
@@ -777,23 +760,6 @@ border-radius: 20px;}
     color: #707070;
     opacity: 0.5;
 }
-
-/* .socialInputs div input:focus {
-    outline: none;
-} */
-
-/* .socialArea {
-    width: 30%;
-    background-color: #02044a;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    padding: 2rem;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 605px;
-} */
 
 .socialArea img {
     width: 100%;
