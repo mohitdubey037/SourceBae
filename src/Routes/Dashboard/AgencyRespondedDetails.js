@@ -12,13 +12,10 @@ import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { useHistory } from "react-router-dom";
 import Moment from "react-moment";
-import { toast } from "react-toastify";
 import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
 import detailImage from '../../assets/images/details.png';
 
 import AgencyCommentBox from '../Agency/AgencyCommentBox/AgencyCommentBox';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 
 function AgencyRespondedDetails(props) {
@@ -152,15 +149,6 @@ function AgencyRespondedDetails(props) {
           </div>
         </div>
       </div>
-
-      {/* <div className="detailsContainer">
-        <div className="innerDetailsContainer">
-          <div className="detailsDiv">
-            <img src={detailImage} />
-            <h4>Details</h4>
-          </div>
-        </div>
-      </div> */}
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
@@ -244,9 +232,6 @@ function AgencyRespondedDetails(props) {
                         <p>Project is completed from both side</p>
                       </div>
                       </div>
-                      {/* <div className="project_is_completed">
-                        <p>Project is completed from both side</p>
-                      </div> */}
                     </div>
                     <div>
                       <img src={completedImage} alt="" />
@@ -301,24 +286,12 @@ function AgencyRespondedDetails(props) {
               </ul>
             </div>
 
-            {/* <div className="straightLineParent_agencyRespondedDetails">
-              <div className="straightLine_AgencyRespondedDetails"></div>
-              <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
-              <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div> */}
-
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul style={{display:"flex",marginLeft:"-1rem"}}>
              <li style={{listStyle: "none"}}> <img className="dotImg"src={dot} alt="" /> {`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
-
-            {/* <div className="straightLineParent_agencyRespondedDetails2">
-              <div style={{ left: '0px' }} className="diamond_agencyRespondedDetails"></div>
-              <div className="straightLine_AgencyRespondedDetails2"></div>
-              <div style={{ right: '0px' }} className="diamond_agencyRespondedDetails"></div>
-            </div> */}
 
             <div>
               <h4>Technology</h4>

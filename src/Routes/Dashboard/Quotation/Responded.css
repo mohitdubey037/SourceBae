@@ -7,7 +7,7 @@
 
 .innerResponded {
   width: 93%;
-  margin-top: 1%;
+  margin-top: 2%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -119,11 +119,18 @@
   color: #3a3a3a;
 }
 
+.page-not-found {
+  text-align: center;
+  width: 100%;
+  margin-top: 1.5rem
+}
+
+.page-not-found h6 {
+  margin-top: 1rem;
+}
+
 .respondedCardButton {
-  /* position: absolute; */
   position: relative;
-  /* right: 23px;
-  bottom: 10px; */
   top: 1rem;
 }
 

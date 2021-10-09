@@ -43,13 +43,12 @@ function Received(props) {
                     <div className="innerResponded">
                         {err ?
                             <>
-                                <div style={{ textAlign: 'center', width: '100%' }}>
+                                <div className="page-not-found">
                                     <img height="300px" src={PageNotFound} alt="no_data_img" />
                                     <h6>{err}</h6>
                                 </div>
                             </>
                             :
-
                             projects.map((s) => {
                                 return (
                                     <div className="respondedCard">

@@ -223,7 +223,7 @@ const ClientCommentBox = (props) => {
               </div>
             )}
           {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
-            <div>
+            <div className="conversation-over">
               <p>Coversation Over.</p>
             </div>
           )}
@@ -234,44 +234,19 @@ const ClientCommentBox = (props) => {
                 <button onClick={askForQuotation}>Ask For Quotation</button>
               </div>
             )}
-          {props.projectProposals[0].isReplySectionActive && <p style={{ textAlign: 'right' }}>Waiting for the reply from Agency.</p>}
+          {props.projectProposals[0].isReplySectionActive && <p style={{ textAlign: 'right', marginTop: '-13px' }}>Waiting for the reply from Agency.</p>}
         </div>
 
         <div className='action-wait'>
-          {/* <div className="postQuotation">
-            {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-              <div className="detailsButtons margin-0">
-                <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-
-              </div>
-            )}
-
-            {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-              <div className="detailsButtons margin-0">
-                <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-
-              </div>
-            )}
-
-            {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-              <div className="detailsButtons margin-0">
-                <a href={props.projectProposals[0].quotationLink} target="new">
-                  View Quotation
-                </a>
-              </div>
-            )}
-          </div> */}
-
           {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
-              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-                <p>Accept or Reject the Project.</p>
-              </div>
-              <div className="postQuotation">
-            {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-              <div className="detailsButtons margin-0">
-                <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-
+            <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
+              <p>Accept or Reject the Project.</p>
+            </div>
+            <div className="postQuotation">
+              {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
+                <div className="detailsButtons margin-0">
+                  <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                 </div>
               )}
 

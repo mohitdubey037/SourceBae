@@ -5,7 +5,8 @@ import instance from "../../../Constants/axiosConstants";
 import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Spinner from "../../../Components/Spinner/Spinner";
-import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
+// import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
+import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import Back from '../../../Components/Back/Back';
 import UpImage from '../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
@@ -37,7 +38,6 @@ function ClientHireDeveloper(props) {
     <div className="MainDevDiv">
       <img className="Image1_GetHireDev" src={UpImage} alt="upImage" />
       <img className="Image2_GetHireDev" src={DownImage} alt="downImage" />
-
       <>
         {loading ? (
           <Spinner />
@@ -98,7 +98,6 @@ function ClientHireDeveloper(props) {
                               </div>
                               <div className="agencyDescInfo">
                                 <h6>Developers Role Required</h6>
-                                {/* <p>{agency.agencyDescription}</p> */}
                                 {console.log(hireDeveloperRequirement)}
                                 {hiredDevelopers !== undefined && hireDeveloperRequirement?.developerRolesRequired?.map(drr => <p>{drr}</p>)}
                               </div>
@@ -108,8 +107,8 @@ function ClientHireDeveloper(props) {
                       })
                       :
                       <div className='noDataFound'>
-                        <img src={NO_DATA_FOUND} alt='no data found' />
-                        <h6 style={{ marginTop: '20px', fontStyle: 'italic' }}>No Data Found!!!..</h6>
+                        <img src={PageNotFound} alt='no data found' />
+                        <h6 style={{ marginTop: '20px' }}>No Data Found!!!..</h6>
                       </div>
                     }
                   </div>

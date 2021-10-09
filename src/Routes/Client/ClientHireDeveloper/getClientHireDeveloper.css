@@ -35,7 +35,6 @@
 
 .innerprojectDetailsInfo p {
   font-size: 2rem;
-  /* font-family: 'Fredoka One', cursive; */
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
 }
@@ -55,11 +54,9 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  /* overflow-y: scroll; */
 }
 
 .innerAgencyList {
-  /* margin-top: 5%; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -67,7 +64,6 @@
   height: 35rem;
   overflow-y: scroll;
   margin-top: 1rem;
-  /* align-items: flex-start; */
 }
 
 .AgencyCardsArea {
@@ -86,11 +82,9 @@
   min-height: 30vh;
   height: 12rem;
   background-color: #fff;
-  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   position: relative;
   z-index: 1;
   margin-bottom: 0%;
-  /* border-radius: 10px; */
 }
 
 .agencyCardHeaderLine {
@@ -111,15 +105,11 @@
 .agencyImageProfile {
   width: 45%;
   display: flex;
-  /* position: relative; */
-  /* top: -2rem; */
-  /* left: 0.8rem; */
 }
 
 .agencyImageArea {
   width: 8.5rem;
   height: 8.5rem;
-  /* margin-right: 2%; */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -134,11 +124,11 @@
   width: 100%;
   object-fit: contain;
 }
+
 .agencyProfileInfo {
   display: flex;
   justify-content: space-between;
   width: 30rem;
-  /* padding-left: 1rem; */
 }
 
 .agencyProfileInfo h6 {
@@ -147,26 +137,19 @@
   font-size: 1.3rem;
   color: #707070;
   letter-spacing: 1px;
-  /* padding-top: 2rem; */
 }
 
 .agencyProfileInfo div {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-top: 1.5rem; */
-  /* position: absolute; */
-  /* right: 400px; */
-  /* top: 0.7rem; */
 }
 
 .agencyProfileInfo div p {
   padding: 0.3rem 0.8rem;
   margin-right: 10px;
-  /* border: 1px dashed #999; */
   border-radius: 999px;
   background-image: linear-gradient(to right, #015f9a, #0376ba);
-  /* background-color: #02044a;220 */
   color: #fff;
   font-family: "Segoe UI";
   font-size: 0.7rem;
@@ -205,28 +188,23 @@
 
 .agencyAddressTeam {
   width: 48%;
-  /* background-color: #f9f9f9; */
   padding: 0.5rem;
   overflow: hidden;
 }
 
-.agencyAddressArea,
-.agencyTeamNumber {
+.agencyAddressArea, .agencyTeamNumber {
   display: flex;
 }
 
-.locationIcon i,
-.teamIcon i {
+.locationIcon i, .teamIcon i {
   font-size: 0.8rem;
   color: #02044a;
   margin-right: 6px;
 }
 
-.locationText,
-.teamNumberPart :is(p) {
+.locationText, .teamNumberPart :is(p) {
   font-family: "Work Sans", sans-serif;
   font-size: 1rem;
-  /* font-weight: bold; */
 }
 
 .locationText {
@@ -248,8 +226,6 @@
   color: #015f9a;
   letter-spacing: 1px;
   font-family: "Segoe UI", sans-serif;
-  /* font-weight: bold; */
-  /* margin-right: 3px; */
 }
 
 .agencyDescInfo {
@@ -267,15 +243,11 @@
 
 .agencyDescInfo::-webkit-scrollbar-track {
   background: #fff;
-  /* color of the tracking area */
 }
 
 .agencyDescInfo::-webkit-scrollbar-thumb {
   background-color: #3498db;
-  /* color of the scroll thumb */
   border-radius: 20px;
-  /* roundness of the scroll thumb */
-  /* creates padding around scroll thumb */
 }
 
 .agencyDescInfo p {
@@ -286,9 +258,7 @@
   color: #015f9a;
 }
 
-.agencyAddressTeam,
-.agencyDescInfo :is(h6) {
-  /* font-family: 'Fredoka One', cursive; */
+.agencyAddressTeam, .agencyDescInfo :is(h6) {
   font-family: "Segoe UI semibold", sans-serif;
   font-size: 16px;
   padding: 2px 0px;
@@ -301,11 +271,9 @@
   color: #707070;
   margin-left: 6px;
   padding: 0;
-  /* justify-content: space-around; */
 }
 
-.agencyAddressTeam h6::after,
-.agencyDescInfo h6::after {
+.agencyAddressTeam h6::after, .agencyDescInfo h6::after {
   content: none;
 }
 
@@ -333,14 +301,7 @@
   user-select: none;
 }
 
-/* .quotationShortlistButton div p {
-  transform: translateY(6.5px);
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-} */
-
 .quotationShortlistButton div:nth-child(1) {
-  /* border: 1px solid #3498db; */
   color: #ffffff;
   height: 1.8rem;
   border-radius: 3px;
@@ -354,7 +315,6 @@
   border-radius: 3px;
   color: #ffffff;
   box-shadow: 1px 1px 3px rgb(0, 0, 0, 18%);
-
   background-image: linear-gradient(to right, #0376ba, #015f9a);
 }
 
@@ -382,6 +342,7 @@
   align-items: center;
   border-bottom: none;
 }
+
 .locationFilter input {
   font-family: "Segoe UI";
   height: 35px;
@@ -408,44 +369,15 @@
 .locationFilter {
   margin-top: 3%;
   margin-bottom: -3%;
-  /* border-bottom: 1px solid #e4e4e4; */
   padding-bottom: 5%;
 }
-
-/* .locationFilter p, .officeVisitFilter p {
-  font-family: 'Open Sans', sans-serif;
-  transform: translateY(10px);
-  font-weight: bold;
-  font-size: 1.1rem;
-} */
-
-/* .locationFilter p::, .officeVisitFilter p::after {
-  content: '';
-  width: 20px;
-  height: 2px;
-  background-color: #000;
-  display: block;
-} */
-
-/* .locationFilter input {
-  margin-top: 3%;
-  width: 100%;
-  height: 40px;
-  padding-left: 10px;
-  font-size: 0.9rem;
-  font-family: 'Open Sans', sans-serif;
-  border: 1px solid #999;
-} */
 
 .locationFilter input:focus {
   outline: none;
 }
 
 .officeVisitFilter {
-  /* margin-top: 4%; */
   margin-bottom: 3%;
-  /* border-bottom: 1px solid #e4e4e4; */
-  /* padding-bottom: 2%; */
 }
 
 .officeVisitRadio {
@@ -478,11 +410,6 @@
   user-select: none;
 }
 
-/* .ShortListModalOverlay, .QuotationModalOverlay {
-  /* background: rgba(0, 0, 0, 0.9) !important;*/
-/*background-image: linear-gradient(#45A4E4, #5C6DFF);
-} */
-
 .ShortListModal {
   max-width: 500px;
   width: 100%;
@@ -514,25 +441,24 @@
 }
 
 .shortlistForm span {
-  /* font-weight: bold; */
   font-size: 0.8rem;
   color: #3498db;
 }
 
-.shortlistForm textarea {
+/* .shortlistForm textarea {
   width: 100%;
   border: 1px solid #e0e0e0;
   padding: 1rem;
   font-size: 0.9rem;
   border-radius: 4px;
   margin-top: 1%;
-}
+} */
 
 .shortlistForm textarea:focus {
   outline: none;
 }
 
-.shortlistForm button {
+/* .shortlistForm button {
   height: 50px;
   outline: none;
   border: none;
@@ -540,7 +466,7 @@
   color: #fff;
   font-size: 1.1rem;
   border-radius: 5px;
-}
+} */
 
 .QuotationModal {
   max-width: 650px;
@@ -552,46 +478,9 @@
   font-family: "Open Sans", sans-serif;
 }
 
-/* .QuotationModal h2 {
-  font-weight: bold;
-  margin-bottom: 5%;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 4%;
-} */
-
-/* .QuotationModal h2::after {
-  content: '';
-  width: 50px;
-  height: 2px;
-  background: #000;
-  display: block;
-} */
-
-/* .quotationTable {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 1px solid #e0e0e0;
-  min-height: 50px;
-  margin-top: 2%;
-  width: 100%;
-  padding-bottom: 2%;
-} */
-
-/* .tableHeaderQuotation {
-  width: 30%;
-  border-right: 1px solid #e0e0e0;
-} */
-
 .tableHeaderQuotation p {
   font-weight: 500;
 }
-
-/* .tableContentQuotation {
-  width: 65%;
-  display: flex;
-  flex-wrap: wrap;
-} */
 
 .tableContentQuotation p {
   margin-top: 3px;
@@ -607,7 +496,6 @@
   font-size: 0.9rem;
   border-radius: 6px;
   padding-right: 2rem;
-  /* margin-top: 1rem; */
 }
 
 .tableContentQuotation textarea {
@@ -628,25 +516,13 @@
   justify-content: space-between;
 }
 
-/* .quotationSubmitButton button {
-  transform: translateY(-10px);
-  width: 20%;
-  height: 45px;
-  outline: none;
-  border: none;
-  background-color: #3498db;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 25px;
-} */
-
-.Image1_GetHireDev{
+.Image1_GetHireDev {
   left: -10rem;
   position: fixed;
   top: -4.5rem;
   width: 43rem;
-  /* z-index: 1; */
 }
+
 .Image2_GetHireDev {
   right: -8rem;
   position: fixed;
@@ -654,6 +530,7 @@
   width: 43rem;
   z-index: 1;
 }
+
 .MainDevDiv {
   position: relative;
 }

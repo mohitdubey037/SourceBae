@@ -187,7 +187,8 @@ const AgencyCommentBox = (props) => {
 
     <div style={{ display: "flex" }}>
       <div className="commentBox">
-        <div className="topLine" style={{ backgroundColor:"rgb(69, 164, 228)"
+        <div className="topLine" style={{
+          backgroundColor: "rgb(69, 164, 228)"
         }}></div>
         {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
@@ -302,16 +303,17 @@ const AgencyCommentBox = (props) => {
           && !props.projectProposals[0].isCommentSectionActive
           && !props.projectProposals[0].isReplySectionActive
           && (
-            <div>
+            <div className="conversation-over">
               <p>Conversation Over.</p>
             </div>
           )}
       </div>
 
       <div className='action-wait'>
-      <div className="topLine" style={{ backgroundColor:"rgb(69, 164, 228)"
+        <div className="topLine" style={{
+          backgroundColor: "rgb(69, 164, 228)"
         }}></div>
-        
+
 
         {!(
           props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
@@ -324,27 +326,27 @@ const AgencyCommentBox = (props) => {
                   </div>
 
                   <div className="postQuotation">
-          {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-            <div className="detailsButtons md-m10">
-              <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-            </div>
-          )}
-          {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-            <div className="detailsButtons md-m10" >
-              <p>{`Agency Negotiatiable Price:`} <i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-            </div>
-          )}
+                    {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
+                      <div className="detailsButtons md-m10">
+                        <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                      </div>
+                    )}
+                    {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
+                      <div className="detailsButtons md-m10" >
+                        <p>{`Agency Negotiatiable Price:`} <i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                      </div>
+                    )}
 
-          {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-            <div className="detailsButtons md-m10">
-              <a href={props.projectProposals[0].quotationLink} target="new">
-                View Quotation
-              </a>
-            </div>
-          )}
-        </div>
+                    {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+                      <div className="detailsButtons md-m10">
+                        <a href={props.projectProposals[0].quotationLink} target="new">
+                          View Quotation
+                        </a>
+                      </div>
+                    )}
+                  </div>
 
-                  <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons height" style={{marginBottom:"1rem"}}>
+                  <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons height" style={{ marginBottom: "1rem" }}>
                     <div>
                       <button className="acceptButton" onClick={() => { setOpen(true) }}>
                         Accept
@@ -389,76 +391,64 @@ const AgencyCommentBox = (props) => {
         <div className="QuotationModal acceptance-parent_clientCommentBox">
           <h2>Quotation Acceptance Form</h2>
           <div className="productModalForm">
-            {/* <div className="quotationTable">
-              <div className="tableHeaderQuotation">
-                <p style={{paddingLeft:"2.3rem" ,fontSize:"1.2rem"}}>Final Cost </p>
+            <div className="extraDiv">
+              <div className="quotationTable">
+                <div className="tableHeaderQuotation">
+                  <p>Project Start Date By Client</p>
+                </div>
+                <div className="tableContentQuotation">
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
+                </div>
               </div>
-              <div className="tableContentQuotation">
-                <p>{props.projectProposals[0].finalCostByClient}</p>
-              </div>
-            </div> */}
-              <div className="extraDiv">
-              {/* <div className="extraDiv2" style={{marginRight:"2rem"}}> */}
-            <div className="quotationTable">
-              <div className="tableHeaderQuotation">
-                <p>Project Start Date By Client</p>
-              </div>
-              <div className="tableContentQuotation">
-              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
-              </div>
-            </div>
 
-            <div className="quotationTable">
-              <div className="tableHeaderQuotation">
-                <p>Project Delayed Start Date By Client</p>
+              <div className="quotationTable">
+                <div className="tableHeaderQuotation">
+                  <p>Project Delayed Start Date By Client</p>
+                </div>
+                <div className="tableContentQuotation">
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
+                </div>
               </div>
-              <div className="tableContentQuotation">
-              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
-              </div>
-            </div>
 
-            <div className="quotationTable">
-              <div className="tableHeaderQuotation">
-                <p>Project End Date By Client</p>
+              <div className="quotationTable">
+                <div className="tableHeaderQuotation">
+                  <p>Project End Date By Client</p>
+                </div>
+                <div className="tableContentQuotation">
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
+                </div>
               </div>
-              <div className="tableContentQuotation">
-              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
+              <div className="quotationTable">
+                <div className="tableHeaderQuotation">
+                  <p>Project Expected End Date By Client</p>
+                </div>
+                <div className="tableContentQuotation">
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
+                </div>
               </div>
-            </div>
-              {/* </div> */}
-              {/* <div className="extraDiv3" style={{marginLeft:"10.5rem"}}> */}
-            <div className="quotationTable">
-              <div className="tableHeaderQuotation">
-                <p>Project Expected End Date By Client</p>
+
+              <div className="quotationTable">
+                <div className="tableHeaderQuotation">
+                  <p style={{ width: "75%" }}>Project Start Date By You</p>
+                </div>
+                <div className="tableContentQuotation">
+                  <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
+                </div>
               </div>
-              <div className="tableContentQuotation">
-              <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
+              <div className="quotationTable">
+                <div className="tableHeaderQuotation">
+                  <p >Final Cost </p>
+                </div>
+                <div className="tableContentQuotation">
+                  <p>{props.projectProposals[0].finalCostByClient}</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="quotationTable">
-              <div className="tableHeaderQuotation">
-                <p style={{width:"75%"}}>Project Start Date By You</p>
-              </div>
-              <div className="tableContentQuotation">
-                <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
-              </div>
-            </div>
-            {/* </div> */}
-            <div className="quotationTable">
-              <div className="tableHeaderQuotation">
-                <p >Final Cost </p>
-              </div>
-              <div className="tableContentQuotation">
-                <p>{props.projectProposals[0].finalCostByClient}</p>
-              </div>
-            </div>
             </div>
             <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
               <button style={{ textAlign: 'center' }} onClick={handleProjectAcceptance}>Submit</button>
             </div>
-            
-            
+
+
           </div>
         </div>
       </Modal>
@@ -574,7 +564,7 @@ const AgencyCommentBox = (props) => {
             <h2>Reason for Rejection</h2>
           </div>
           <div className="radioButtons_with_textBox">
-            <FormControl component="fieldset" style={{marginLeft:"25px"}}>
+            <FormControl component="fieldset" style={{ marginLeft: "25px" }}>
               <RadioGroup
                 column
                 aria-label="position"
@@ -582,29 +572,29 @@ const AgencyCommentBox = (props) => {
                 onChange={onQuotationRejectionChange}
                 defaultValue="top">
 
-                <FormControlLabel 
+                <FormControlLabel
                   value="No Matching Requirements"
                   control={<Radio color="primary" />}
                   label="Not Matching Requirement"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Taking Too Much Time"
                   control={<Radio color="primary" />}
                   label="Taking Too Much Time"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Cost is too low"
                   control={<Radio color="primary" />}
                   label="Cost is too low"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Other"
                   control={<Radio color="primary" />}
                   label="Other"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
               </RadioGroup>
             </FormControl>
@@ -616,10 +606,10 @@ const AgencyCommentBox = (props) => {
               quotationRejectionForm.rejectReasonByAgency !== "Taking Too Much Time" &&
               quotationRejectionForm.rejectReasonByAgency !== "Cost is too low"
               &&
-              <div className="detailed_description_clientCommentBox" style={{display:"grid"}}>
+              <div className="detailed_description_clientCommentBox" style={{ display: "grid" }}>
                 <label>Detailed description:</label>
                 <textarea
-                  style={{padding:"6px", marginTop:"10px", fontSize:"12px",width:"18rem", height:"7rem", borderRadius:"3px",border:"1px solid #707070"}}
+                  style={{ padding: "6px", marginTop: "10px", fontSize: "12px", width: "18rem", height: "7rem", borderRadius: "3px", border: "1px solid #707070" }}
                   placeholder="Please type your reason here"
                   name="rejectReasonByAgency"
                   cols="30"
