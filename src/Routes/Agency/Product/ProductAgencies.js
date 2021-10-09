@@ -223,13 +223,13 @@ function ProductAgencies(props) {
 
     return (
         <>
-            <Navbar />
             {loading ? <Spinner /> :
                 <>
+                    <Navbar />
                     <div className="mainAgencyList_productAgencies">
                         <img className="Image1_productAgencies" src={UpImage} alt="upImage" />
                         <img className="Image2_productAgencies" src={DownImage} alt="downImage" />
-                    <Back name="Product Agencies" />
+                        <Back name="Product Agencies" />
                         <div className="innerAgencyList_productAgencies">
                             {err ?
                                 <>
@@ -313,7 +313,7 @@ function ProductAgencies(props) {
 
                                                         <div className="quotationShortlistButton button">
                                                             <div>
-                                                                <NavLink style={{ textDecoration: 'none',color:"#ffffff" }} to={{
+                                                                <NavLink style={{ textDecoration: 'none', color: "#ffffff" }} to={{
                                                                     pathname: `/product-details:${value._id}`,
                                                                     condition: 'Client'
                                                                 }}>View Product</NavLink>
@@ -340,7 +340,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter_productAgencies">
                                                 <p>Sort By :</p>
-                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'1px solid #999'}}>
+                                                <FormControl className={classes.formControl} style={{ marginLeft: "0rem", height: '35px', border: '1px solid #999' }}>
                                                     <Select
                                                         displayEmpty
                                                         value={domain}
@@ -375,13 +375,13 @@ function ProductAgencies(props) {
 
                                             <div style={{ border: 'none' }} className="officeVisitFilter">
                                                 <p>Funding type:</p>
-                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'1px solid #999'}}>
+                                                <FormControl className={classes.formControl} style={{ marginLeft: "0rem", height: '35px', border: '1px solid #999' }}>
                                                     <Select
                                                         displayEmpty
                                                         value={fundName}
                                                         onChange={(event) => handleFundType(event)}
                                                         inputProps={{ 'aria-label': 'Without label' }}
-                                                        
+
                                                     >
 
                                                         <MenuItem value="">
@@ -405,7 +405,7 @@ function ProductAgencies(props) {
 
                                             <div className="officeVisitFilter">
                                                 <p>Business Models:</p>
-                                                <FormControl className={classes.formControl} style={{marginLeft:"0rem",height:'35px',border:'1px solid #999'}}>
+                                                <FormControl className={classes.formControl} style={{ marginLeft: "0rem", height: '35px', border: '1px solid #999' }}>
                                                     <Select
                                                         displayEmpty
                                                         value={bmodal}
