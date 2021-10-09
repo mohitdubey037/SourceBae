@@ -255,135 +255,132 @@ function AgencyForm2(props) {
           <Navbar />
           <Back name="Agency form 2" />
           <FormPhases value1={true} value2={true} />
-          <div className="mainTechStackForm">
-            <div className="innerTechStackForm">
-              <div className="techStackFields">
-                <div className="domainsFields">
-                  <p className="domainHeading">
-                    1. Which business sector are you targeting?
-                  </p>
-                  <div className="servicesCardsHireAgency agencyForm2 domainChild">
-                    {allDomainsData?.length > 0 ? (
-                      allDomainsData.map((domain) => {
-                        return (
-                          <div className="tech-container">
-                            <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                              style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}>
-                              <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+          <div className="mainTechStackFormParent">
+            {/* <div className="mainTechStackForm"> */}
+              <div className="innerTechStackForm">
+                <div className="techStackFields">
+                  <div className="domainsFields">
+                    <p className="domainHeading">
+                      1. Which business sector are you targeting?
+                    </p>
+                    <div className="servicesCardsHireAgency agencyForm2 domainChild">
+                      {allDomainsData?.length > 0 ? (
+                        allDomainsData.map((domain) => {
+                          return (
+                            <div className="tech-container">
+                              <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
+                                style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}>
+                                <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                              </div>
+                              <p className={`${domain.domainName}`}>
+                                {`${domain.domainName}`}
+                              </p>
                             </div>
-                            <p className={`${domain.domainName}`}>
-                              {`${domain.domainName}`}
-                            </p>
-                          </div>
-                        );
-                      })
-                    ) : (
-                      <p>Sorry No Data Found.</p>
-                    )}
-                    {/* </div> */}
+                          );
+                        })
+                      ) : (
+                        <p>Sorry No Data Found.</p>
+                      )}
+                    </div>
                   </div>
-                  {/* </div> */}
-                </div>
 
-                <div className="serivcesAgency">
-                  <p className="servicesHeading">
-                    2. In which services you have good command?
-                  </p>
-                  <div className="servicesCardsHireAgency agencyForm2">
-                    {allServicesData?.length > 0 ? (
-                      allServicesData.map((service) => {
-                        return (
-                          <div className="tech-container">
-                            <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
-                              style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}>
-                              <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                  <div className="serivcesAgency">
+                    <p className="servicesHeading">
+                      2. In which services you have good command?
+                    </p>
+                    <div className="servicesCardsHireAgency agencyForm2">
+                      {allServicesData?.length > 0 ? (
+                        allServicesData.map((service) => {
+                          return (
+                            <div className="tech-container">
+                              <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
+                                style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}>
+                                <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                              </div>
+                              <p className={`${service.serviceName}`}>
+                                {`${service.serviceName}`}
+                              </p>
                             </div>
-                            <p className={`${service.serviceName}`}>
-                              {`${service.serviceName}`}
-                            </p>
-                          </div>
-                        );
-                      })
-                    ) : (
-                      <p>Sorry No Data Found.</p>
-                    )}
+                          );
+                        })
+                      ) : (
+                        <p>Sorry No Data Found.</p>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <div className="monthlyBudget">
-                  <p>3. What is the monthly budget?</p>
-                  <div className="domainBudgetOptions">
-                    <FormControl component="fieldset">
-                      <RadioGroup
-                        aria-label="budget"
-                        name="budget"
-                        value={apiData.agencyMonthlyBudget}
-                        onChange={handleChange}
-                      >
-                        <FormControlLabel
-                          value="1000"
-                          control={<Radio />}
-                          label="1000$-3000$"
-                        />
-                        <FormControlLabel
-                          value="3000"
-                          control={<Radio />}
-                          label="3000$-5000$"
-                        />
-                        <FormControlLabel
-                          value="5000"
-                          control={<Radio />}
-                          label="50000$-7000$"
-                        />
-                        <FormControlLabel
-                          value="7000"
-                          control={<Radio />}
-                          label="7000$-10000$"
-                        />
-                      </RadioGroup>
-                    </FormControl>
+                  <div className="monthlyBudget">
+                    <p>3. What is the monthly budget?</p>
+                    <div className="domainBudgetOptions">
+                      <FormControl component="fieldset">
+                        <RadioGroup
+                          aria-label="budget"
+                          name="budget"
+                          value={apiData.agencyMonthlyBudget}
+                          onChange={handleChange}
+                        >
+                          <FormControlLabel
+                            value="1000"
+                            control={<Radio />}
+                            label="1000$-3000$"
+                          />
+                          <FormControlLabel
+                            value="3000"
+                            control={<Radio />}
+                            label="3000$-5000$"
+                          />
+                          <FormControlLabel
+                            value="5000"
+                            control={<Radio />}
+                            label="50000$-7000$"
+                          />
+                          <FormControlLabel
+                            value="7000"
+                            control={<Radio />}
+                            label="7000$-10000$"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </div>
                   </div>
-                </div>
 
-                <div className="nextBtn">
-                  <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
-                    Back
-                  </button>
-                  <button style={{ backgroundImage: 'linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff)' }} className="next-click" onClick={() => { handleNext() }}>
-                    Next
-                  </button>
+                  <div className="nextBtn">
+                    <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
+                      Back
+                    </button>
+                    <button style={{ backgroundImage: 'linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff)' }} className="next-click" onClick={() => { handleNext() }}>
+                      Next
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className={`${visibleTechNames?.length ? "serviceFieldsOptions_agencyForm2" : "conditional_please_select"}`}>
-            {/* <div className="servicesContainer"> */}
-            <div className="serviceSelectionInput input_agencyForm2">
-              {visibleTechNames?.length ? (
-                <>
-                  <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
-                  <div style={{ display: "flex", justifyContent: "flex-start" }}>
-                    <MultiSearchSelect
-                      searchable={true}
-                      showTags={true}
-                      multiSelect={true}
-                      width="23vw"
-                      onSelect={(arr) => handleTechSelect(arr)}
-                      options={visibleTechNames}
-                      primaryColor="#D6EAF8"
-                      secondaryColor="#02044a"
-                      textSecondaryColor="#fff"
-                      className="UIUXServices"
-                      textColor="#02044a"
-                    />
-                  </div>
-                </>
-              ) : (
-                <p>Please select one or more services.</p>
-              )}
-            </div>
             {/* </div> */}
+            <div className={`${visibleTechNames?.length ? "serviceFieldsOptions_agencyForm2" : "conditional_please_select"}`}>
+              <div className="serviceSelectionInput input_agencyForm2">
+                {visibleTechNames?.length ? (
+                  <>
+                    <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
+                    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                      <MultiSearchSelect
+                        searchable={true}
+                        showTags={true}
+                        multiSelect={true}
+                        width="23vw"
+                        onSelect={(arr) => handleTechSelect(arr)}
+                        options={visibleTechNames}
+                        primaryColor="#D6EAF8"
+                        secondaryColor="#02044a"
+                        textSecondaryColor="#fff"
+                        className="UIUXServices"
+                        textColor="#02044a"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <p>Please select one or more services.</p>
+                )}
+              </div>
+            </div>
           </div>
         </div >
       )
