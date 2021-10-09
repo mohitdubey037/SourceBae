@@ -306,7 +306,7 @@ const ClientCommentBox = (props) => {
               {/* <img src={proposalImage} alt="" /> */}
             {/* </div> */}
               <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-                <p /*style={{marginLeft:"5rem"}}*/>Accept or Reject the Project.</p>
+                <p style={{paddingLeft:"0"}}>Accept or Reject the Project.</p>
               </div>
               <div className="postQuotation">
             {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
