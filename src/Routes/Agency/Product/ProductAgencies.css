@@ -431,3 +431,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.not_found_productAgency img {
+    margin-top: 4rem;
+}
+
+.not_found_productAgency h6 {
+    margin-top: 1rem;
+}
