@@ -233,7 +233,7 @@ function ProductAgencies(props) {
                         <div className="innerAgencyList_productAgencies">
                             {err ?
                                 <>
-                                    <div style={{ textAlign: 'center', width: '100%' }}>
+                                    <div className="not_found_productAgency" style={{ textAlign: 'center', width: '100%' }}>
                                         <img height="300px" src={PageNotFound} alt="no_data_img" />
                                         <h6>{err}</h6>
                                     </div>
@@ -245,8 +245,6 @@ function ProductAgencies(props) {
                                             state?.map((value, index) => {
                                                 return (
                                                     <div className="agencyPreciseCard agencyPreciseCard_productAgencies">
-                                                        {/* <div className="agencyCardHeaderLine">
-                                                        </div> */}
                                                         <div className="agencyCardHeaderInfo">
                                                             <div className="agencyImageProfile innerdiv">
                                                                 <div className="agencyImageArea image">
@@ -335,7 +333,7 @@ function ProductAgencies(props) {
 
                                             <div className="locationFilter">
                                                 <p>Location</p>
-                                                <input name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." value={searchLocation} />
+                                                <input style={{paddingLeft: '2px'}} name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." value={searchLocation} />
                                             </div>
 
                                             <div className="officeVisitFilter_productAgencies">
