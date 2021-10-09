@@ -177,7 +177,7 @@ function HireAgencyForm3(props) {
                                             </>
                                         ) : null}
                                         {errors.projectTechnologiesError && (
-                                            <p className="error_hireAgencyForm2 error-select_hireAgencyForm2">
+                                            <p className="error_hireAgencyForm2 error-select_hireAgencyForm3">
                                                 {errors.projectTechnologiesError}
                                             </p>)}
                                     </div>
