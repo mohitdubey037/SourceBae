@@ -264,33 +264,33 @@ const ClientCommentBox = (props) => {
 
           {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
-              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-                <p>Accept or Reject the Project.</p>
-              </div>
-              <div className="postQuotation">
-            {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-              <div className="detailsButtons margin-0">
-                <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+            <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
+              <p>Accept or Reject the Project.</p>
+            </div>
+            <div className="postQuotation">
+              {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
+                <div className="detailsButtons margin-0">
+                  <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
 
-              </div>
-            )}
+                </div>
+              )}
 
-            {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-              <div className="detailsButtons margin-0">
-                <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+              {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
+                <div className="detailsButtons margin-0">
+                  <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
 
-              </div>
-            )}
+                </div>
+              )}
 
-            {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-              <div className="detailsButtons margin-0">
-                <a href={props.projectProposals[0].quotationLink} target="new">
-                  View Quotation
-                </a>
-              </div>
-            )}
-          </div>
-            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height" style={{marginBottom:"1rem"}}>
+              {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+                <div className="detailsButtons margin-0">
+                  <a href={props.projectProposals[0].quotationLink} target="new">
+                    View Quotation
+                  </a>
+                </div>
+              )}
+            </div>
+            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height" style={{ marginBottom: "1rem" }}>
               <div>
                 <button className="acceptButton" onClick={() => { setOpen(true) }}>
                   Accept
@@ -400,25 +400,25 @@ const ClientCommentBox = (props) => {
                   value="No Matching Requirements"
                   control={<Radio color="primary" />}
                   label="Not Matching Requirement"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Taking Too Much Time"
                   control={<Radio color="primary" />}
                   label="Taking Too Much Time"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Cost is too high"
                   control={<Radio color="primary" />}
                   label="Cost is too high"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Other"
                   control={<Radio color="primary" />}
                   label="Other"
-                  // labelPlacement="start"
+                // labelPlacement="start"
                 />
               </RadioGroup>
             </FormControl>
@@ -430,7 +430,7 @@ const ClientCommentBox = (props) => {
               <div className="detailed_description_clientCommentBox">
                 <label>Detailed description:</label>
                 <textarea
-                  style={{ padding: '10px', margin: '1rem 0rem',width:'70%', fontSize:"12px",maxHeight:"6rem",borderRadius:'4px' }}
+                  style={{ padding: '10px', margin: '1rem 0rem', width: '70%', fontSize: "12px", maxHeight: "6rem", borderRadius: '4px' }}
                   placeholder="Please type your reason here"
                   name="rejectReasonByClient"
                   cols="30"
