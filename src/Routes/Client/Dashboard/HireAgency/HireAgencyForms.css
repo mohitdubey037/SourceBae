@@ -41,7 +41,7 @@
     top: 35%;
     z-index: 0;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .stepCheck {
@@ -160,7 +160,7 @@
     min-height: 25%;
     padding: 2rem;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;  
     position: absolute;
     /* height: 10rem; */
     top: 16rem;
