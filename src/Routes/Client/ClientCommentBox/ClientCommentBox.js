@@ -400,25 +400,25 @@ const ClientCommentBox = (props) => {
                   value="No Matching Requirements"
                   control={<Radio color="primary" />}
                   label="Not Matching Requirement"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Taking Too Much Time"
                   control={<Radio color="primary" />}
                   label="Taking Too Much Time"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Cost is too high"
                   control={<Radio color="primary" />}
                   label="Cost is too high"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
                 <FormControlLabel
                   value="Other"
                   control={<Radio color="primary" />}
                   label="Other"
-                  labelPlacement="start"
+                  // labelPlacement="start"
                 />
               </RadioGroup>
             </FormControl>
@@ -430,7 +430,7 @@ const ClientCommentBox = (props) => {
               <div className="detailed_description_clientCommentBox">
                 <label>Detailed description:</label>
                 <textarea
-                  style={{ padding: '10px', marginLeft: '10px' }}
+                  style={{ padding: '10px', margin: '1rem 0rem',width:'70%', fontSize:"12px",maxHeight:"6rem",borderRadius:'4px' }}
                   placeholder="Please type your reason here"
                   name="rejectReasonByClient"
                   cols="30"
