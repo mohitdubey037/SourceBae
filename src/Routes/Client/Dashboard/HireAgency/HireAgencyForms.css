@@ -125,7 +125,7 @@
 }
 
 .color_hireAgencyForm {
-    width: 17.8rem;
+    /* width: 17.8rem; */
     height: 3px;
     margin: 1rem 0rem;
 }
@@ -706,9 +706,8 @@ li ::marker {
     text-transform: capitalize;
     margin-top: 1rem;
     height: 51px;
-    min-width: 19rem;
+    min-width: 15rem;
     max-width: 20rem;
-    background: #ffffff;
     box-sizing: border-box;
     border-radius: 8px;
     padding: 0rem 1rem;
@@ -948,9 +947,10 @@ li::marker {
     color: red;
     font-weight: normal;
     font-size: 14px;
-    position: absolute;
+    /* position: absolute;
     bottom: 65px;
-    left: 10px;
+    left: 10px; */
+    margin-left: 1rem;
 }
 
 svg.MuiSvgIcon-root {
@@ -966,4 +966,7 @@ width: 20%;
 display: flex;
 justify-content: center;
 margin-bottom: 1%;
+}
+.error_hireAgencyForm1 {
+    margin-left: 0;
 }

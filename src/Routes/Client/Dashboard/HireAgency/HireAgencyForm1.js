@@ -163,21 +163,21 @@ const HireAgencyForm1 = (props) => {
             </div>
 
             <div className="steps_hireAgencyForm">
-              <div>
+              <div style={{width:"27%"}}>
                 <div >
                   <p>Step 1</p>
                 </div>
                 <div className='color_hireAgencyForm green'></div>
               </div>
 
-              <div className="diabled-step_hireAgencyForm">
+              <div className="diabled-step_hireAgencyForm" style={{width:"27%"}}>
                 <div>
                   <p className="grey-step_hireAgencyForm">Step 2</p>
                 </div>
                 <div className='color_hireAgencyForm grey'></div>
               </div>
 
-              <div>
+              <div style={{width:"27%"}}>
                 <div>
                   <p className="grey-step_hireAgencyForm">Step 3</p>
                 </div>

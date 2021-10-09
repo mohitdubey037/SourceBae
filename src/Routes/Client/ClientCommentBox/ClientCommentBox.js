@@ -264,6 +264,7 @@ const ClientCommentBox = (props) => {
 
           {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
+<<<<<<< HEAD
             <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
               <p>Accept or Reject the Project.</p>
             </div>
@@ -271,6 +272,15 @@ const ClientCommentBox = (props) => {
               {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
                 <div className="detailsButtons margin-0">
                   <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+=======
+              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
+                <p>Accept or Reject the Project.</p>
+              </div>
+              <div className="postQuotation">
+            {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
+              <div className="detailsButtons margin-0">
+                <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+>>>>>>> 9637fb35a029bf527684cde7c857225860eef24a
 
                 </div>
               )}
