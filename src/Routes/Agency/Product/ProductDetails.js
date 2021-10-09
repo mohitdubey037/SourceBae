@@ -235,10 +235,10 @@ function ProductDetails(props) {
                         <img src={logo} alt="" />
                       </div>
                       <div className="peoductNameTags">
+                      <div style={{display:"flex", justifyContent:"space-between"}}>
                         <h1>{value?.agencyId?.agencyName}</h1>
                         {Role === "Client" && (
                           <span
-                          style={{marginLeft:"85%"}}
                             onClick={() =>
                               props.history.push({
                                 pathname: `/agency-profile:${value?.agencyId?._id}`,
@@ -249,6 +249,7 @@ function ProductDetails(props) {
                             View Profile
                           </span>
                         )}
+                        </div>
                         <p>{value?.agencyId?.agencyDescription}</p>
                         <div className="productTags">
                           {value?.agencyId?.agencyDomains.map((a) => {
