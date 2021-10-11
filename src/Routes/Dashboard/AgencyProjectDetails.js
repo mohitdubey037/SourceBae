@@ -4,6 +4,8 @@ import Navbar from './../../Components/ClientNewestDashboard/Navbar/Navbar';
 import AgencyRespondedDetails from './AgencyRespondedDetails';
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import './AgencyProjectDetails.css';
+import Back from '../../Components/Back/Back';
+
 
 
 function ProjectDetails(props) {
@@ -19,6 +21,7 @@ function ProjectDetails(props) {
         <>
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div className={`details-parent ${visible && "conditionalPosition"}`}>
+                <Back/>
                 <Navbar />
                 <AgencyRespondedDetails />
             </div>

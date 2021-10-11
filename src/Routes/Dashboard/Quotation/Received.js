@@ -72,7 +72,7 @@ function Received(props) {
                                             </div>
                                         </div>
                                         <div className="respondCardDescription">
-                                            <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 80)}...`}</p>
+                                            <p title={s.projectDescription}>{`${(s.projectDescription).slice(0, 40)}...`}</p>
                                         </div>
                                         <div className="respondCardPoints">
                                             <ul>

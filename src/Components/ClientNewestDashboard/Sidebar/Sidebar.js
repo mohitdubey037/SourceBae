@@ -67,7 +67,7 @@ function Sidebar(props) {
     }
 
     return (
-        <div style={{backgroundColor: Role === 'Agency' && '#ced3ff'}} className="container-sidebar">
+        <div /*style={{backgroundColor: Role === 'Agency' && '#ced3ff'}}*/ className="container-sidebar">
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div>
