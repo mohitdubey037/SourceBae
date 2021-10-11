@@ -62,14 +62,14 @@
   top: 0;
 }
 
-.innerprojectDetailsInfo_agencyList {
+/* .innerprojectDetailsInfo_agencyList {
   margin-left: 0.6rem;
-}
+} */
 
 .innerprojectDetailsInfo_agencyList p {
   font-size: 1rem;
   color: #707070;
-  font-family: "Segoe UI semibold", sans-serif;
+  font-family: "Segoe UI Semibold", sans-serif;
 }
 
 .innerprojectDetailsInfo_agencyList span {
@@ -85,21 +85,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.AgencyCardsArea_agencyList {
-  width: 98%;
-}
-
-.agencyPreciseCard_agencyList {
-  min-height: 30vh;
-  background-color: #fff;
-  height: 16rem;
-  margin-left: 1rem;
-  margin-top: 2rem;
-  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
-  background-image: linear-gradient(to right, #ffffff,#ffffff,#8EC1E0 );
-  /* background-image: url(../../../assets/images/AddProductAgency/agencybg1.svg); */
 }
 
 .agencyCardHeaderLine {
@@ -158,13 +143,6 @@
   font-family: "Open Sans", sans-serif;
   font-size: 0.8rem;
   font-weight: bold;
-}
-
-.profileButton p {
-  font-family: "Open Sans", sans-serif;
-  color: #3498db;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 .profileButton p i {
@@ -250,7 +228,7 @@
   justify-content: center;
   align-items: center;
   margin-left: -17.2rem;
- font-size: 12px;
+  font-size: 12px;
 }
 
 .quotationShortlistButton2 div {
@@ -348,7 +326,6 @@
   margin-top: 2%;
   width: 100%;
   height: 40px;
-  /* padding-left: 10px; */
   font-size: 1.1rem;
   font-family: "Open Sans", sans-serif;
   border: 1px solid #999;
@@ -440,12 +417,12 @@
 }
 
 .shortlistForm button {
-  height: 50px;
+  height: 44px;
   outline: none;
   border: none;
   background: #3498db;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
   border-radius: 5px;
 }
 
@@ -531,7 +508,7 @@
   margin-top: 2rem;
 }
 
-.quotationSubmitButton button {
+.quotationSubmitButton_agencyList button {
   transform: translateY(-10px);
   width: 20%;
   height: 30px;
@@ -568,7 +545,18 @@
 
 .innerAgencyList_agencyList {
   overflow-y: scroll;
-  height: 40rem;
-  margin-top: 1rem;
-  padding-top: 3rem;
+  height: 79vh;
+  margin-bottom: 0rem;
+  margin-top: 0.5rem;
+  width: 99%;
+  padding: 1rem;
+}
+
+.agencyPreciseCard_agencyList {
+  min-height: 30vh;
+  background-color: #fff;
+  height: 16rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+  background-image: linear-gradient(to right, #ffffff, #ffffff, #8EC1E0);
 }

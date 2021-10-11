@@ -4,10 +4,6 @@ import { withRouter } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar(props) {
-
-    console.log(props.history.location, "routes")
-    console.log(props.history.location.pathname);
-    console.log(props.history.location)
     const url = props.history.location.pathname;
     const [index, setIndex] = useState(0)
 
@@ -17,6 +13,7 @@ function Navbar(props) {
             const urlTemp = url.slice(indexTemp + 1);
             setIndex(urlTemp);
         }
+        console.log(url.includes('/shared-developers'))
     }, [])
 
     const roleId = localStorage.getItem("userId");
@@ -54,7 +51,11 @@ function Navbar(props) {
         <div style={{ top: Role === 'Client' && '1rem' }} className="navbar">
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
-                    <p style={{ color: (/*props.history.location.pathname === '/client-profile' && */ props.history.location.pathname === '/client-profile' || props.history.location.pathname === `/product-details:${index}`) ? 'white' : 'blue' }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
+                    <p style={{
+                        color: (props.history.location.pathname === '/client-profile' ||
+                            props.history.location.pathname === `/product-details:${index}` ||
+                            url.includes('/shared-developers')) ? 'white' : 'blue'
+                    }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
                     {Role === 'Agency' ? <img src={data?.agencyLogo} /> : <img src={data?.imageurl} />}

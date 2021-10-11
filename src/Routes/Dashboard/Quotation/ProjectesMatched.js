@@ -45,7 +45,7 @@ function ProjectesMatched(props) {
                 <div className="mainProjectsMatched">
                     {err ?
                         <>
-                            <div style={{ textAlign: 'center', width: '100%' }}>
+                            <div className="page-not-found">
                                 <img height="300px" src={PageNotFound} alt="no_data_img" />
                                 <h6>{err}</h6>
                             </div>
@@ -55,11 +55,10 @@ function ProjectesMatched(props) {
                             return (
                                 <div className="innerProjectsMatched">
                                     <div className="borderRightBorder"></div>
-                                    {/* <div className="bgCircles"></div> */}
                                     <div className="projectCard">
                                         <div className="projectCardHeading">
                                             <div className="projectHeadingName">
-                                                <h4 style={{ textTransform: 'capitalize', fontFamily:"Segoe UI"}}>{s.projectName}</h4>
+                                                <h4 style={{ textTransform: 'capitalize', fontFamily: "Segoe UI" }}>{s.projectName}</h4>
                                             </div>
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">

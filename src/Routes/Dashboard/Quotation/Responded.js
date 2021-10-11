@@ -4,7 +4,7 @@ import './Responded.css'
 import RespondedDetails from './RespondedDetails';
 import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
-import NO_Data_ICON from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
+import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import { withRouter } from 'react-router';
 
 function Responded(props) {
@@ -41,8 +41,8 @@ function Responded(props) {
                     <div className="innerResponded">
                         {err ?
                             <>
-                                <div style={{ textAlign: 'center', width: '100%' }}>
-                                    <img height="300px" src={NO_Data_ICON} alt="no_data_img" />
+                                <div className="page-not-found">
+                                    <img height="300px" src={PageNotFound} alt="no_data_img" />
                                     <h6>{err}</h6>
                                 </div>
                             </>

@@ -1,5 +1,5 @@
 .mainProductDetails {
-    background: linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%);
+    background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -32,6 +32,16 @@
     justify-content: space-around;
     margin-top: 2%;
     padding: 0 1rem;
+}
+
+.view-profile_productDetails {
+    color: white;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+    font-family: 'Segoe UI';
+    border-radius: 1rem;
+    font-size: 0.8rem;
 }
 
 .productDetailsArea_conditional {
@@ -81,28 +91,15 @@
     position: relative;
 }
 
-.productTags {
-    display: flex;
-    margin-top: 0.5rem;
-    width: 30%;
-    justify-content: space-between;
-}
-
 .productTags span {
     display: flex;
     align-items: center;
     color: #45a9EA;
-    cursor: pointer;
     padding: 0.2rem 0.5rem;
     border-radius: 1rem;
     font-size: 0.8rem;
     width: 50%;
     justify-content: center;
-}
-
-.peoductNameTags span:hover {
-    background-color: #2E86C1;
-    color: #fff;
 }
 
 .peoductNameTags p {
@@ -137,7 +134,7 @@
 }
 
 .connectButton div:nth-child(2) {
-    width: 16%;
+    width: 12%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -345,12 +342,21 @@
     margin-top: 5%;
 }
 
+.moreAgencyCard_productDetails {
+    margin-top: 1rem;
+}
+
+.moreAgencyInfo_productDetails {
+    padding: 0.5rem 2rem 0rem;
+    text-align: justify;
+}
+
 .moreAgencyLogo_productDetails {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .moreAgencyLogo_productDetails div {

@@ -158,7 +158,7 @@ function AgencyList(props) {
                   <span>{project.projectProposalCost}</span>
                 </p>
               </div>
-              <div className="mainAgencyList_agencyList">
+              {/* <div className="mainAgencyList_agencyList"> */}
                 {agencyList?.length > 0 ? (
                   <div className="innerAgencyList_agencyList">
                     <div className="AgencyCardsArea_agencyList">
@@ -286,78 +286,6 @@ function AgencyList(props) {
                           );
                         })}
                     </div>
-                    {/* <div className="agencyFilterArea_agencyList">
-                  <div className="filterForm">
-                    <div className="filterHeading">
-                      <p className="filterText">Filter</p>
-                      <div>
-                        <p>Clear All</p>
-                      </div>
-                    </div>
-
-                    <div className="locationFilter">
-                      <p>Location</p>
-                      <input
-                        type="text"
-                        placeholder="Type here.."
-                        name=""
-                        id=""
-                      />
-                    </div>
-
-                    <div className="officeVisitFilter">
-                      <p>Office Visit</p>
-                      <div
-                        className="officeVisitRadio"
-                        onClick={() => setOfficeVisit(!isOfficeVisit)}
-                      >
-                        <div
-                          className="officeVisitRadioImage"
-                          style={{
-                            backgroundColor: isOfficeVisit ? "#3498DB" : "#fff",
-                          }}
-                        >
-                          {isOfficeVisit ? (
-                            <i
-                              style={{ color: isOfficeVisit ? "#fff" : "#000" }}
-                              class="fa fa-check"
-                              aria-hidden="true"
-                            ></i>
-                          ) : null}
-                        </div>
-                        <div>
-                          <span>Allowed</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="officeVisitFilter">
-                      <p>Offsite Travel</p>
-                      <div
-                        className="officeVisitRadio"
-                        onClick={() => setOffsiteTravel(!isOffsiteTravel)}
-                      >
-                        <div
-                          className="officeVisitRadioImage"
-                          style={{
-                            backgroundColor: isOffsiteTravel ? "#3498DB" : "#fff",
-                          }}
-                        >
-                          {isOffsiteTravel ? (
-                            <i
-                              style={{ color: isOffsiteTravel ? "#fff" : "#000" }}
-                              class="fa fa-check"
-                              aria-hidden="true"
-                            ></i>
-                          ) : null}
-                        </div>
-                        <div>
-                          <span>Allowed</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
                   </div>
                 ) : (
                   <div className="noDataFound">
@@ -367,7 +295,7 @@ function AgencyList(props) {
                     </h6>
                   </div>
                 )}
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </>
@@ -388,7 +316,7 @@ function AgencyList(props) {
           <div className="shortlistForm comment">
             <span>Comment Box</span>
             <textarea
-            style={{fontSize:"12px"}}
+            style={{fontSize:"14px"}}
               onChange={(event) => handleChange(event)}
               name="comment"
               id=""
@@ -490,7 +418,7 @@ function AgencyList(props) {
                 </div>
               </div>
 
-              <div className="quotationSubmitButton quotation">
+              <div className="quotationSubmitButton_agencyList quotation">
                 <div></div>
                 <button onClick={quotationSubmitHandler}>Submit</button>
               </div>

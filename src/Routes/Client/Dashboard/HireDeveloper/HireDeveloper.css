@@ -221,6 +221,7 @@
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
+  margin-top: 0.5rem;
 }
 
 .radioContainer {

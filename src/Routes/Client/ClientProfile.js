@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
-import avatar from '../../assets/images/ClientDashboard/avatar.png';
+import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
+
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../Components/Back/Back';
 

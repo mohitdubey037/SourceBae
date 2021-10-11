@@ -157,7 +157,7 @@ function HireAgencyForm3(props) {
                 <div className="mainHireAgencyForm3">
                     <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
                     <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
-                    <div className="color-div_hireAgencyForm">
+                    <div className="servicesHirecover">
                     {allTechnologies.length > 0 &&
                             <div className="serviceFieldsOptions newHireAgencyForm3">
                                 <div className="servicesHireAgencyContainer hireAgencyForm3">

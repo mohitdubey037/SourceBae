@@ -83,9 +83,9 @@ function Sidebar(props) {
                         </div>
                         <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
                             <img src={developersIcon} alt="developers_icon" />
-                            <div>
-                                <p>Developer</p>
-                                <p>Request</p>
+                            <div style={{width: '62%', lineHeight: '13px'}}>
+                                <p>Developer Request</p>
+                                {/* <p>Request</p> */}
                             </div>
                         </div>
                     </>

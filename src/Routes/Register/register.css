@@ -32,6 +32,11 @@
   width: 48rem;
 }
 
+.conditional_colorChange {
+  filter:invert(136%) sepia(94%) saturate(1759%) hue-rotate(183deg) brightness(64%) contrast(112%)
+}
+
+
 .logoPart {
   position: absolute;
   top: 5%;
