@@ -297,7 +297,7 @@ li ::marker {
 }
 
 .numberOfDays {
-    margin-top: -5px;
+    /* margin-top: -5px; */
     font-family: 'Segoe UI';
     display: flex;
     flex-direction: column;
@@ -572,8 +572,7 @@ li ::marker {
 .mainHireAgencyForm1 .MuiFormGroup-root {
     flex-direction: row !important;
     margin-left: 3px !important;
-    width: 68%;
-    
+    width: 40%;
 }
 
 .mainHireAgencyFormThree .MuiFormGroup-root {
