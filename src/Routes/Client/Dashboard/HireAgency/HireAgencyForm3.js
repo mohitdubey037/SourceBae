@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 
 import * as helper from "../../../../shared/helper"
-import ClientNavbar from '../../ClientNavbar';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../../Components/Back/Back';
 
@@ -279,28 +278,6 @@ function HireAgencyForm3(props) {
                             </div>
                         } */}
                     </div>
-                    {/* <div className="steps_hireAgencyForm3">
-                        <div>
-                            <div >
-                                <p>Step 1</p>
-                            </div>
-                            <div className='color_hireAgencyForm3 green'></div>
-                        </div>
-
-                        <div className="diabled-step_hireAgencyForm">
-                            <div>
-                                <p className="grey-step_hireAgencyForm">Step 2</p>
-                            </div>
-                            <div className='color_hireAgencyForm3 green'></div>
-                        </div>
-
-                        <div>
-                            <div>
-                                <p className="grey-step_hireAgencyForm">Step 3</p>
-                            </div>
-                            <div className='color_hireAgencyForm3 green'></div>
-                        </div>
-                    </div> */}
                 </div>
             }
         </>

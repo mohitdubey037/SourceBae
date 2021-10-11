@@ -1,17 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-// import Navbar from '../../Navbar';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../../Components/Back/Back';
 import FormPhases from './FormPhases'
-
-import agencyLogo from '../../../../assets/images/agencyForm/document.png'
-import brochure from '../../../../assets/images/agencyForm/brochure.png'
-import panCard from '../../../../assets/images/agencyForm/panCard.png'
-import privacy from '../../../../assets/images/agencyForm/privacy.svg';
-// import FinishIcon from '../../../../assets/images/Newestdashboard/AgencyForm1/upload_icon.svg';
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
-import { NavLink } from 'react-router-dom'
+import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/illustration_3.svg'
 
 import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
@@ -22,13 +14,7 @@ import Spinner from '../../../../Components/Spinner/Spinner'
 
 function AgencyForm3(props) {
 
-    const colors = {
-        Upload: "#119dee",
-        Update: "orange",
-        Next: "green",
-    }
-
-    const Role = "agency"
+    const Role = localStorage.getItem('role');
     const status = "Upload"
     const [pickedAll, setPickedAll] = useState(false)
     const [loading, setLoading] = useState(false);
@@ -194,9 +180,6 @@ function AgencyForm3(props) {
                                         <p className="logo-type_agencyForm1">{`${registrationCertificate?.document?.name ?? "Company Registration Certificate"}`}</p>
                                     </div>
                                     <div className="agencyBrochure">
-                                        {/* <span>Brochure</span> */}
-                                        {/* <div> */}
-                                        {/* <img src={brochure} alt="" /> */}
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
@@ -213,8 +196,6 @@ function AgencyForm3(props) {
                                 <div className="panDetails">
                                     <p>2. Enter your Pan Card number</p>
                                     <div className="panCardContent">
-                                        {/* <div> */}
-                                        {/* <img src={panCard} alt="" /> */}
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
@@ -224,33 +205,23 @@ function AgencyForm3(props) {
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
-                                        {/* </div> */}
                                         <p className="logo-type_agencyForm1">{`${panCardDoc?.document?.name ?? "Pancard"}`}</p>
                                     </div>
                                 </div>
 
                                 <div className="nextBtn">
-                                    {/* <NavLink to="/agency-form-two" style={{ textDecoration: "none" }}>
-                                    <button>
-                                        <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
-                                    </button>
-                                </NavLink> */}
-
-                                    {/* <NavLink to="/agency-form-four" style={{ textDecoration: "none" }} onClick={(e) => handleNavlink(e)} > */}
                                     <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
                                         Back
                                     </button>
                                     <button className="uploadButton_agencyForm3" style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={handleUpload} name={status}>
                                         {status}
-                                        {/* <img src={FinishIcon} alt="finish icon"/> */}
                                     </button>
-                                    {/* </NavLink> */}
                                 </div>
                             </div>
                         </div>
                         <div className="miscellaneousArea">
-                            {/* <img src={privacy} alt="" /> */}
-                            <p>Your Information is safe with us.</p>
+                                <p>Your Information is safe with us.</p>
+                                <img src={illustrationImage} alt="agency-form-3"/>
                         </div>
                     </div>
                 }

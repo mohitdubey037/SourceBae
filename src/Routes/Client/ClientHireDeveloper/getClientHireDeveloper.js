@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 import "./getClientHireDeveloper.css";
 import instance from "../../../Constants/axiosConstants";
-import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Spinner from "../../../Components/Spinner/Spinner";
-// import NO_DATA_FOUND from '../../../assets/images/No_Data/noData.jpg';
 import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import Back from '../../../Components/Back/Back';
 import UpImage from '../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
