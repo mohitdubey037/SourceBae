@@ -141,9 +141,6 @@
 
 .radio-description {
   font-family: 'Segoe UI', sans-serif;
-  font-size: 14px;
-  line-height: 17px;
-  text-transform: capitalize;
 }
 
 .Weekly>div>.MuiFormControlLabel-root, .Monthly>div>.MuiFormControlLabel-root {
@@ -211,10 +208,7 @@
   text-transform: capitalize;
   color: #707070;
   margin-left: 7px;
-  /* height: 40px; */
   width: 60%;
-  /* background: #ffffff; */
-  /* border-radius: 8px; */
 }
 
 .resourceNumberCover {

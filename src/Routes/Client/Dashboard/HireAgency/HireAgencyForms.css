@@ -1,12 +1,10 @@
 .innerHigherAgencyForm1 {
-    position: relative;
     width: 70%;
     display: flex;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
     background: #fff;
     border-radius: 12px;
-    top: 0.5rem;
+    padding-bottom: 1.3rem;
 }
 
 .Image1_hireAgency {
@@ -28,9 +26,17 @@
 }
 
 .higherAgencyFormArea {
-    width: 70%;
+    width: 62%;
     padding: 1.5rem 0 0 2.5rem;
-    margin-left: 2rem;
+}
+
+.illustration_hireAgencyForm1 {
+    width: 38%;
+    display: flex;
+}
+
+.illustration_hireAgencyForm1 img {
+    width: 100%;
 }
 
 .stepCheck {
@@ -197,6 +203,10 @@
     font-size: 2rem;
 }
 
+.input-form_hireAgencyForm1 {
+    margin-top: 1rem;
+}
+
 .projectNameAgency {
     margin-top: 1%;
     font-family: 'Segoe UI';
@@ -211,7 +221,7 @@
 
 .understand_your_project {
     font-family: 'Segoe UI';
-    font-size: 18px;
+    font-size: 1.5rem;
     text-transform: capitalize;
     color: #015F9A;
     padding-top: 0.5rem;
@@ -237,7 +247,7 @@ li ::marker {
     border-radius: 8px;
     height: 35px;
     padding-left: 10px;
-    max-width: 25rem;
+    width: 79%;
 }
 
 .projectNameAgency input::placeholder {
@@ -250,7 +260,7 @@ li ::marker {
 
 .descriptionProjectAgency textarea {
     margin-top: 10px;
-    width: 64%;
+    width: 79%;
     height: 8rem;
     padding: 10px;
     color: #707070;
@@ -305,7 +315,8 @@ li ::marker {
 }
 
 .budgetSectionAreaAgency .MuiTypography-root {
-    font: 12px 'Segoe UI'!important;
+    font-family: 'Segoe UI' !important;
+    font-size: 14px !important;
     text-transform: capitalize !important;
     color: #707070 !important
 }
@@ -313,14 +324,18 @@ li ::marker {
 .daysInputAgency {
     border-radius: 8px;
     border: 1px solid #015F9A;
-    width: 64%;
+    width: 79%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding-left: 20px;
-    height: 2rem;
+    height: 2.3rem;
     position: relative;
     margin-top: 10px;
+}
+
+.budgetSectionAreaAgency .PrivateSwitchBase-root-3 {
+    padding: 5px;
 }
 
 .daysInputAgency .upArrow {
