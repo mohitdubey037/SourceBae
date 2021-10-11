@@ -1,19 +1,15 @@
 import './Sidebar.css';
 import oneSourcingLogo from "../../../assets/images/Newestdashboard/SideBar/sidebarLogo.svg";
-import helpImg from '../../../assets/images/Newestdashboard/SideBar/help.svg'
 import dashboardIcon from "../../../assets/images/Newestdashboard/SideBar/home.svg";
-import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/postProject_icon.svg";
+import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/post.svg";
 import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile.svg";
 import notificationIcon from "../../../assets/images/Newestdashboard/SideBar/notification.svg";
-import developersIcon from "../../../assets/images/Newestdashboard/SideBar/people_icon.svg";
+import developersIcon from "../../../assets/images/Newestdashboard/SideBar/developer-board.svg";
 import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout.svg";
-import settingIcon from "../../../assets/images/Newestdashboard/SideBar/setting_icon.svg";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import PeopleOutlinedIcon from '@material-ui/icons/PeopleOutlined';
 import { withRouter } from "react-router";
-import notification from '../../../assets/images/ClientDashboard/notification.svg';
-import { Modal } from 'react-responsive-modal';
 import cookie from "react-cookies";
+
+
 
 import React, { useEffect, useState } from 'react';
 
@@ -21,7 +17,6 @@ import { useHistory } from 'react-router-dom';
 
 function Sidebar(props) {
     const Role = localStorage.getItem('role');
-    // console.log(role);
     const routerHistory = useHistory();
 
     const [isNotification, setIsnotification] = useState(false);
@@ -67,7 +62,7 @@ function Sidebar(props) {
     }
 
     return (
-        <div /*style={{backgroundColor: Role === 'Agency' && '#ced3ff'}}*/ className="container-sidebar">
+        <div className="container-sidebar">
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div>

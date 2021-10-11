@@ -1,14 +1,11 @@
 import './UserProject.css';
 import React, { useEffect, useState } from "react";
-import ProjectStatusIcon from "../../../assets/images/Newestdashboard/LeftSide/projectStatus-icon.svg";
-import infoIcon from "../../../assets/images/Newestdashboard/LeftSide/info-icon.svg";
-import showProjectDetailsIcon from "../../../assets/images/Newestdashboard/LeftSide/showProjectDetails-icon.svg";
 import CenterImage from '../../../assets/images/Newestdashboard/Dashboard/Center_Image.svg';
 import Moment from 'react-moment'
 import { useHistory } from 'react-router-dom';
 import Tooltip from "react-power-tooltip";
-import QuotationAccept from '../../../assets/images/Newestdashboard/Dashboard/quotation_accept.svg';
-import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/show_project.svg';
+import QuotationAccept from '../../../assets/images/Newestdashboard/Dashboard/quotation_req.svg';
+import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail_show.svg';
 import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
 
 function UserProject(props, index) {
@@ -34,7 +31,6 @@ function UserProject(props, index) {
                 <div className="header-heading">
                     <h6>{props?.projectName}</h6>
                 </div>
-                {/* <img src={infoIcon} alt="infoIcon" /> */}
                 {props?.projectProposals[0]?.isQuotationAcceptedByClient === true && props?.projectProposals[0]?.isQuotationAcceptedByAgency &&
                     <i className="projectCompleted_userProject fas fa-check"></i>
                 }
@@ -63,10 +59,10 @@ function UserProject(props, index) {
 
             <div className="projectDetail">
                 <div className="header-currentStatus">
+                    <img src={QuotationAccept} alt="project status" />
                     <div className="currentStatus-text currentStatus-item">
                         <p>{props?.projectCurrentStatus}</p>
                     </div>
-                    <img src={QuotationAccept} alt="project status" />
                 </div>
 
                 <div onClick={() => showDetail()} className="show-project-detail">

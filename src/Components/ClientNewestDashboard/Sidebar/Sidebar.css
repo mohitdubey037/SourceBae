@@ -6,7 +6,6 @@
   justify-content: center;
   position: fixed;
   top: 0;
-  /* background: #ced3ff; */
   z-index: 3;
 }
 
@@ -32,11 +31,8 @@
 }
 
 .icons>img {
-  height: 22px;
-}
-
-.postProject-icon>img {
   height: 19px;
+  width: 22px;
 }
 
 .icons>p {

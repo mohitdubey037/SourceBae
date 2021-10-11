@@ -16,6 +16,10 @@ import Select from "@material-ui/core/Select";
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import instance from "../../../Constants/axiosConstants";
 import Spinner from "../../../Components/Spinner/Spinner";
+import form1 from "../../../assets/images/Newestdashboard/ProductForm/product form1.svg"
+import form2 from "../../../assets/images/Newestdashboard/ProductForm/product form2.svg"
+import form3 from "../../../assets/images/Newestdashboard/ProductForm/product form3.svg"
+import form4 from "../../../assets/images/Newestdashboard/ProductForm/product form4.svg"
 import * as helper from "../../../shared/helper";
 import moment from 'moment'
 import clsx from 'clsx';
@@ -59,10 +63,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
   menuFont: {
-    fontFamily: "Inter",
+    fontFamily: "Segoe UI",
   },
   inputField: {
-    fontFamily: "Inter",
+    fontFamily: "Segoe UI",
     border: "1px solid #45A4EA",
     borderRadius: "5px",
     marginTop:"0.2rem",
@@ -82,8 +86,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "0.7rem",
     fontFamily: 'Segoe UI',
     },
-    "& .MuiSvgIcon-root ":{
+    /*"& .MuiSvgIcon-root ":{
      width:"1.2rem",
+    },*/
+    "& MuiMenuItem" :{
+      fontSize:"0.8rem"
     }
   }
 }));
@@ -317,6 +324,7 @@ function ProductForm(props) {
   };
 
   const inputFileChoosen = (e) => {
+    console.log("e",e)
     setFile(e);
   };
 
@@ -460,7 +468,7 @@ function ProductForm(props) {
     <>
       <Navbar />
       <div className="product-form">
-        <Back name="Agency Form 4 " />
+        <Back name="Product Form " />
       </div>
       {loading ? (
         <Spinner />
@@ -480,7 +488,7 @@ function ProductForm(props) {
 
           <div className="mainProductFormArea">
             <div className="innerProductFormArea productForm">
-              <div className="form_1">
+              <div className="form_1" style={{display:"flex"}}>
                 <div className="form1_Fields">
                   <section>
                     <ul>
@@ -493,7 +501,7 @@ function ProductForm(props) {
                       onChange={inputFileChoosen}
                       >
                       <button className="filePicker">
-                          <p style={{marginTop:"0", color:"#707070", fontFamily:"Segoe UI", fontSize:"14px"}}>Pick File</p>
+                          <p style={{marginTop:"0", color:"#707070", fontFamily:"Segoe UI", fontSize:"14px"}}>{file ? file.name : 'pick file'}</p>
                           <img src={fileIcon} alt="finish" />
                       </button>
                     </FilePicker>
@@ -546,6 +554,10 @@ function ProductForm(props) {
                       </p>
                     )}
                   </section>
+              
+               </div>
+               <div style={{width:"40%"}}>
+                  <img src={form1}/>
                 </div>
               </div>
 
@@ -677,6 +689,9 @@ function ProductForm(props) {
                     )}
                   </section>
                 </div>
+                <div style={{width:"40%"}}>
+                  <img src={form2}/>
+                </div>
               </div>
 
               <div className="form_3">
@@ -716,7 +731,7 @@ function ProductForm(props) {
                   </section>
                   {apiData.productPreviousFunding === "true" ? (
                     <section className="amountRaised">
-                      <span className="howMuchHaveYouRaised">How much amount have you raised yet?</span>
+                      <span className="howMuchHaveYouRaised"><li>How much amount have you raised yet?</li></span>
                       <FormControl /*variant="outlined"*/ className={classes.formControl}>
                         <Select
                           labelId="demo-simple-select-label"
@@ -893,9 +908,13 @@ function ProductForm(props) {
                     </FormControl>
                   </section>
                 </div>
+                <div style={{width:"40%"}}>
+                  <img src={form3}/>
+                </div>
               </div>
 
-              <div className="form_4">
+              <div className="form_4buttonSubmit">
+              <div className="form_4 ">
                 <div className="form4_Fields">
                   <section>
                     <ul>
@@ -1016,7 +1035,12 @@ function ProductForm(props) {
                       </section>
                     </div>
                   </section>
+                 
                 </div>
+                <div style={{width:"40%"}}>
+                  <img src={form4}/>
+                </div>
+               
               </div>
               <div className="submitButton productForm">
                 <div className="innerSubmitButton">
@@ -1027,6 +1051,8 @@ function ProductForm(props) {
                   <div className="black_color_shadow-productForm"></div>
                 </div>
               </div>
+              </div>
+             
             </div>
           </div>
         </>
