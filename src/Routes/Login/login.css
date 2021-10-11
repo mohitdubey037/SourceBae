@@ -202,15 +202,15 @@ span.welcome-back_sourceBae {
   right: 3px;
 }
 
-.login_switch .active__buttonagency {
-  z-index: 2;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
-  color: white;
+.active__buttonagency {
+  z-index: 2 !important;
+  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%) !important;
+  color: white !important;
 }
-.login_switch .active__buttonclient {
-  z-index: 2;
-  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%);
-  color: white;
+.active__buttonclient {
+  z-index: 2 !important;
+  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
+  color: white !important;
 }
 
 .loginHeading {
@@ -300,8 +300,6 @@ span.welcome-back_sourceBae {
   position: relative;
   color: #fff;
   border-radius: 40px;
-  /* background: linear-gradient(2deg
-  , #015F9A 0%, #0376BA 100%); */
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
   width: 135px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);

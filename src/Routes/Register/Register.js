@@ -414,8 +414,8 @@ const Register = (props) => {
             {loading ? <Spinner /> :
                 <>
                     <div className='client__registrationContainer'>
-                        <img className="Image1" src={Signup1} alt="signup" />
-                        <img className="Image2" src={Signup2} alt="signup" />
+                        <img className={`Image1 ${state === 'client' && 'conditional_colorChange'}`} src={Signup1} alt="signup" />
+                        <img className={`Image2 ${state === 'client' && 'conditional_colorChange'} `} src={Signup2} alt="signup" />
                         <div className='form__area'>
                             <div className="client__form">
                                 <div className="toggleButton register">
@@ -432,8 +432,8 @@ const Register = (props) => {
                                     </div>
 
                                     <div className="login_switch signup_switch">
-                                        <button onClick={() => handleChangeToggle('agency')} className={`agency__button ${(state === '' || state === 'agency') && "active__button"}`}><p>Agency</p></button>
-                                        <button onClick={() => handleChangeToggle('client')} className={`client__button ${(state === 'client' && "active__button")}`}><p>Client</p></button>
+                                        <button onClick={() => handleChangeToggle('agency')} className={`agency__button ${(state === '' || state === 'agency') && "active__buttonagency"}`}><p>Agency</p></button>
+                                        <button onClick={() => handleChangeToggle('client')} className={`client__button ${(state === 'client' && "active__buttonclient")}`}><p>Client</p></button>
                                     </div>
                                 </div>
                                 <div className="client__formsContainer">
@@ -551,7 +551,7 @@ const Register = (props) => {
                                         </div>
 
                                         <div className="already_next_register">
-                                            <div className="next_Register" onClick={() => toggleForms('next')}>
+                                            <div className={`next_Register ${(state === 'client' && "active__buttonclient")}`} onClick={() => toggleForms('next')}>
                                                 <p>NEXT</p>
                                             </div>
                                             <div className="registerOption">
