@@ -4,7 +4,7 @@ import "./AgencyList.css";
 import "react-responsive-modal/styles.css";
 
 import { Modal } from "react-responsive-modal";
-import NO_DATA_FOUND from "../../../assets/images/No_Data/noData.jpg";
+import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import Sidebar from "../../../Components/ClientNewestDashboard/Sidebar/Sidebar";
 
 import instance from "../../../Constants/axiosConstants";
@@ -289,7 +289,7 @@ function AgencyList(props) {
                   </div>
                 ) : (
                   <div className="noDataFound">
-                    <img src={NO_DATA_FOUND} alt="no data found" />
+                    <img src={PageNotFound} alt="no data found" />
                     <h6 style={{ marginTop: "20px", fontStyle: "italic" }}>
                       No Agency Found!!!..
                     </h6>

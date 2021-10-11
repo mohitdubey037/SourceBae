@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ClientNavbar from "../../ClientNavbar";
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import "./HireAgencyForms.css";
 import Radio from "@material-ui/core/Radio";
@@ -10,6 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants"
 import Spinner from "../../../../Components/Spinner/Spinner";
 import Back from '../../../../Components/Back/Back';
+import illustration from '../../../../assets/images/Newestdashboard/Hire-Agency-Form/illustration.svg';
 import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
@@ -291,6 +291,9 @@ const HireAgencyForm1 = (props) => {
                       Submit
                     </div>
                   </div>
+                </div>
+                <div className="illustration_hireAgencyForm1">
+                  <img src={illustration} alt="agency" />
                 </div>
               </div>
             </div>

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./ClientOneHireDeveloper.css";
-
+import "./ClientOneHireDeveloper.css"
 import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import * as helper from '../../../shared/helper';
 import Spinner from '../../../Components/Spinner/Spinner';
-import ClientNavbar from '../ClientNavbar';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar'
 import PhoneImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/phone_icon.svg';
 import Group from '../../../assets/images/Newestdashboard/Client-one-hire-developer/Group.svg';
