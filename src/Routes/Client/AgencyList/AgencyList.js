@@ -158,7 +158,7 @@ function AgencyList(props) {
                   <span>{project.projectProposalCost}</span>
                 </p>
               </div>
-              <div className="mainAgencyList_agencyList">
+              {/* <div className="mainAgencyList_agencyList"> */}
                 {agencyList?.length > 0 ? (
                   <div className="innerAgencyList_agencyList">
                     <div className="AgencyCardsArea_agencyList">
@@ -295,7 +295,7 @@ function AgencyList(props) {
                     </h6>
                   </div>
                 )}
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </>

@@ -15,7 +15,7 @@
   padding: 10px 20px 5px 20px;
   margin: 1rem 3rem;
   position: relative;
-  max-height: 155px;
+  /* max-height: 155px; */
   border-radius: 1rem;
 }
 
@@ -59,6 +59,7 @@
   margin: auto;
   margin-top: 0.7rem;
   width: 100%;
+  margin-bottom: 0.4rem;
 }
 
 .centerImage>div {
