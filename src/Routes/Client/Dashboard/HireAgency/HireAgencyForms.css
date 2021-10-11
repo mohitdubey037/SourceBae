@@ -336,7 +336,7 @@ li ::marker {
     height: 35px;
     padding-left: 10px;
     max-width: 25rem;
-    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .projectNameAgency input::placeholder {
@@ -356,7 +356,7 @@ li ::marker {
     background: #FFFFFF;
     border: 1px solid #015F9A;
     border-radius: 8px;
-    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .descriptionProjectAgency {
@@ -882,7 +882,7 @@ li::marker {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2%;
+    margin-top: 4%;
     margin-bottom: 2%;
     width: 58rem;
 }
