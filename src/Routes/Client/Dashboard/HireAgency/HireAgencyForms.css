@@ -692,8 +692,9 @@ li ::marker {
 }
 
 .UIUXServices {
-    font-family: 'Open Sans', sans-serif;
-    margin-top: -20px;
+    /* font-family: 'Open Sans', sans-serif; */
+    /* margin-top: -20px; */
+    font-family: 'Segoe UI';
     padding-top: 0
 }
 
