@@ -137,6 +137,7 @@ function HireDeveloper(props) {
   useEffect(() => {
     getAllTechnologies();
   }, []);
+  
 
   return (
     <>
@@ -187,6 +188,7 @@ function HireDeveloper(props) {
                   onChange={setSelectedRoles}
                   labelledBy="Select"
                   className="multi-select"
+                  
                 />
               </div>
 

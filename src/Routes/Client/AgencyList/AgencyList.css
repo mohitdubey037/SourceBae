@@ -95,7 +95,11 @@
   min-height: 30vh;
   background-color: #fff;
   height: 16rem;
-  background-image: url(../../../assets/images/AddProductAgency/agencybg1.svg);
+  margin-left: 1rem;
+  margin-top: 2rem;
+  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+  background-image: linear-gradient(to right, #ffffff,#ffffff,#8EC1E0 );
+  /* background-image: url(../../../assets/images/AddProductAgency/agencybg1.svg); */
 }
 
 .agencyCardHeaderLine {
@@ -142,7 +146,7 @@
 .agencyProfileInfo.agencyProfileInfodiv div {
   display: flex;
   padding: 2rem 1rem 6.5rem;
-  width: 62%;
+  /* width: 62%; */
 }
 
 .agencyProfileInfo div p {
@@ -245,7 +249,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -12.2rem;
+  margin-left: -17.2rem;
  font-size: 12px;
 }
 
@@ -563,6 +567,7 @@
 
 .innerAgencyList_agencyList {
   overflow-y: scroll;
-  height: 33rem;
+  height: 40rem;
   margin-top: 1rem;
+  padding-top: 3rem;
 }
