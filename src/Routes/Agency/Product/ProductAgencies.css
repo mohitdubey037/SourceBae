@@ -97,7 +97,7 @@
 }
 
 .filterForm_productAgencies {
-    width: 22%;
+    width: 20%;
     background-color: #fff;
     overflow: hidden;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -124,7 +124,7 @@
 }
 
 .AgencyCardsArea_productAgencies {
-    width: 75%;
+    width: 87%;
     padding: 18px;
 }
 
@@ -152,7 +152,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: #707070;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
 .productAgencyMiddle.bottom{
@@ -197,8 +197,8 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    top: 5.6rem;
-    left: 37rem;
+    top: 7.6rem;
+    left: 42rem;
     width: 36%;
     box-shadow: 0px 3px 6px rgb(0 0 0 / 18%);
 }
@@ -210,9 +210,11 @@
 }
 
 .agencyPreciseCard.agencyPreciseCard_productAgencies {
-    background-image: url(../../../assets/images/AddProductAgency/background.svg);
+    /* background-image: url(../../../assets/images/AddProductAgency/background.svg); */
     height: 19.5rem;
-
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+    background-image: linear-gradient(to right, #ffffff,#ffffff,#8EC1E0 );
+   margin-bottom: 1rem;
 }
 
 .agencyPreciseCard {
@@ -276,6 +278,7 @@
 
 .productDescArea {
     display: flex;
+    margin-top: 1rem;
     justify-content: space-between;
     align-items: flex-start;
 }
