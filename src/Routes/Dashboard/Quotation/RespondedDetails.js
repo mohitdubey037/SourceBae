@@ -49,7 +49,7 @@ function RespondedDetails(props) {
 
   return (
     <>
-      <div className="mainDetailHeader_agencyRespondedDetails">
+      <div className="mainDetailHeader_agencyRespondedDetails" >
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
             <div>
@@ -67,15 +67,15 @@ function RespondedDetails(props) {
             </div>
             <div className="clientExperience">
               <div className="btnInfoDiv">
-                <div className="rightBorder"></div>
+                <div className="rightBorder" style={{backgroundColor:"#ffffff"}}></div>
                 <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
-                  <p>
+                  <p style={{color:"#ffffff"}}>
                     {project?.projectName}
                   </p>
                 </div>
               </div>
-              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
-                <p style={{ fontSize: '20px'}}>
+              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px",color:"#ffffff" }}>
+                <p style={{ fontSize: '20px',color:"#ffffff"}}>
                   {project?.projectDomainId?.domainName}
                 </p>
               </div>
@@ -152,8 +152,8 @@ function RespondedDetails(props) {
                         </div>
                         <div className="project-details_child">
                           <div className="respondedDetails_afterCompletion_child1">
-                            <div style={{ width: '80%' }}>
-                              <div className="question">
+                            <div >
+                              <div className="question" style={{ width: '62%'}}>
                                 <p>Client</p>
                               </div>
                               <div className="answer">
@@ -161,8 +161,8 @@ function RespondedDetails(props) {
                               </div>
                             </div>
 
-                            <div style={{ width: '80%' }}>
-                              <div className="question">
+                            <div >
+                              <div className="question" style={{ width: '62%'}}>
                                 <p>Agency</p>
                               </div>
                               <div className="answer">
@@ -170,8 +170,8 @@ function RespondedDetails(props) {
                               </div>
                             </div>
 
-                            <div style={{ width: '80%' }}>
-                              <div className="question">
+                            <div >
+                              <div className="question" style={{ width: '62%'}}>
                                 <p>Cost</p>
                               </div>
                               <div className="answer">

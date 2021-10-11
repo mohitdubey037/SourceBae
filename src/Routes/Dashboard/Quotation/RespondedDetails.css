@@ -141,3 +141,10 @@ p.action-wait {
   left: 0;
   height: 100%;
 }
+
+.innerBtnInfoDiv p {
+  color: #FFFFFF;
+}
+.mainDetailHeader_agencyRespondedDetails {
+  background-image: linear-gradient(to right, #0376BA, #015F9A);
+}
