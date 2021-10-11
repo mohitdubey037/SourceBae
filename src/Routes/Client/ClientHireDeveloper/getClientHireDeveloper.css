@@ -77,7 +77,10 @@
 }
 
 .agencyPreciseCard.agencyPreciseCard_new {
-  background-image: url(../../../assets/images/AddProductAgency/smallerbg.svg);
+  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+  background-image: linear-gradient(to right, #ffffff,#ffffff,#8EC1E0 );
+ margin-bottom: 2rem;
+  /* background-image: url(../../../assets/images/AddProductAgency/smallerbg.svg); */
 }
 
 .agencyPreciseCard {
