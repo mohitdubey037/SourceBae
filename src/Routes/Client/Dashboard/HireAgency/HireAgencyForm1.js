@@ -163,21 +163,21 @@ const HireAgencyForm1 = (props) => {
             </div>
 
             <div className="steps_hireAgencyForm">
-              <div style={{width:"27%"}}>
+              <div style={{ width: "27%" }}>
                 <div >
                   <p>Step 1</p>
                 </div>
                 <div className='color_hireAgencyForm green'></div>
               </div>
 
-              <div className="diabled-step_hireAgencyForm" style={{width:"27%"}}>
+              <div className="diabled-step_hireAgencyForm" style={{ width: "27%" }}>
                 <div>
                   <p className="grey-step_hireAgencyForm">Step 2</p>
                 </div>
                 <div className='color_hireAgencyForm grey'></div>
               </div>
 
-              <div style={{width:"27%"}}>
+              <div style={{ width: "27%" }}>
                 <div>
                   <p className="grey-step_hireAgencyForm">Step 3</p>
                 </div>
@@ -191,11 +191,7 @@ const HireAgencyForm1 = (props) => {
                   <div className="understand_your_project">Help us understand more about your project..!!</div>
                   <div className="input-form_hireAgencyForm1">
                     <div className="projectNameAgency">
-                      <ul>
-                        <li>
-                          <p>What will be the name of your project?</p>
-                        </li>
-                      </ul>
+                      <p>1.&nbsp;What will be the name of your project?</p>
                       <input
                         type="text"
                         name="projectName"
@@ -211,11 +207,7 @@ const HireAgencyForm1 = (props) => {
                       )}
                     </div>
                     <div className="descriptionProjectAgency">
-                      <ul>
-                        <li>
-                          <p>Describe a little bit about your project?</p>
-                        </li>
-                      </ul>
+                      <p>2.&nbsp;Describe a little bit about your project?</p>
                       <textarea
                         name="projectDescription"
                         cols="30"
@@ -234,11 +226,7 @@ const HireAgencyForm1 = (props) => {
                       )}
                     </div>
                     <div className="budgetSectionAreaAgency">
-                      <ul>
-                        <li>
-                          <p>What's your budget for this project?</p>
-                        </li>
-                      </ul>
+                      <p>3.&nbsp;What's your budget for this project?</p>
                       <FormControl component="fieldset">
                         <RadioGroup
                           aria-label="projectProposalCost"
@@ -270,11 +258,7 @@ const HireAgencyForm1 = (props) => {
                       </FormControl>
                     </div>
                     <div className="numberOfDays">
-                      <ul>
-                        <li>
-                          <p>How soon do you want to start?</p>
-                        </li>
-                      </ul>
+                      <p>4.&nbsp;How soon do you want to start?</p>
                       <div className="daysInputAgency">
                         <p>{data.projectExpectedStartingDays} days</p>
                         <div className="upArrow" onClick={upArrow}>
