@@ -1,6 +1,5 @@
 .agencyNewestDashboard>div {
   width: 88%;
-  margin: auto;
 }
 
 .sidebar_parent .container-sPidebar {
@@ -11,7 +10,7 @@
 .not_found.agencyNewestDashboard {
   width: max-content;
   height: 325px;
-  margin: auto;
+  margin: 2rem auto 0rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,10 +24,6 @@
   font-family: 'Segoe UI';
   font-size: 1rem;
   margin-top: 1rem;
-}
-
-.not_found.agencyNewestDashboard.conditionalHeight {
-  margin-top: 8%;
 }
 
 .not_found.agencyNewestDashboard img {
@@ -55,18 +50,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1%;
+  /* margin-top: 1%; */
   height: 40px;
 }
 
 .innerMainVerify {
-  width: 100%;
+  width: 97.5%;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #68e1fd;
   height: 100%;
+  border-radius: 0.3rem;
 }
 
 .innerMainVerify img {
@@ -82,16 +78,14 @@
 }
 
 .innerMainVerify p {
-  font-family: "Inter";
-  font-weight: normal;
+  font-family: 'Segoe UI';
   font-size: 1rem;
   margin-top: 0;
 }
 
 .innerMainVerify span {
   color: #5c1fff;
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0 10px;
   border-bottom: 1px solid #5c1fff;
   cursor: pointer;

@@ -148,10 +148,17 @@ function AgencyNewestDashboard(props) {
         <div className="Navbar-clientDashboard">
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div style={{ zIndex: visible && '-1' }} className="container-body">
-                <div className="navbar">
+                <div className="navbar" style={{
+                    width: '98%',
+                    borderRadius: '0.5rem',
+                    left: '0',
+                    right: '0',
+                    margin: 'auto',
+                    backgroundColor: 'white'
+                }}>
                     <div className="navbar-items">
                         <div style={{ marginRight: '10px' }} className="username nav-left-item">
-                            <p style={{color:"white"}}>{agencyProfileData?.agencyName}</p>
+                            <p>{agencyProfileData?.agencyName}</p>
                         </div>
                         <div className="userprofile-circle nav-left-item">
                             <img src={agencyProfileData?.agencyLogo} />
@@ -175,7 +182,7 @@ function AgencyNewestDashboard(props) {
                             </div>
                         )}
                         {(!verified || steps !== -1) && (
-                            <div className="mainUpdateVerify">
+                            <div style={{ marginTop: '1rem' }} className="mainUpdateVerify">
                                 <div className="innerMainVerify">
                                     {!verified && steps !== -1 ? (
                                         <p>
@@ -225,23 +232,22 @@ function AgencyNewestDashboard(props) {
                                 </div>
                             }
                             <div className="user-project agencyNewestDashboard">
-                                <div>
-                                    {allProjects?.projects?.length > 0 ? (
-                                        allProjects?.projects?.map((value, index) => {
-                                            return (
-                                                <AgencyProjectCard
-                                                    key={index}
-                                                    {...value}
-                                                />
-                                            )
-                                        })
-                                    ) :
-                                        <div className={`not_found agencyNewestDashboard ${(verified || steps === -1) && 'conditionalHeight'}`}>
-                                            <img src={NotFound} alt="NotFound" />
-                                            <p className="no_project_found">No Project Found</p>
-                                        </div>
-                                    }
-                                </div>
+                                {/* <div> */}
+                                {allProjects?.projects?.length > 0 ? (
+                                    allProjects?.projects?.map((value, index) => {
+                                        return (
+                                            <AgencyProjectCard
+                                                key={index}
+                                                {...value}
+                                            />
+                                        )
+                                    })
+                                ) :
+                                    <div className={`not_found agencyNewestDashboard`}>
+                                        <img src={NotFound} alt="NotFound" />
+                                        <p className="no_project_found">No Project Found</p>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

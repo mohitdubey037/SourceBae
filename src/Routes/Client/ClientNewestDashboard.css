@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin-top: 5rem;
+  padding-top: 5rem;
 }
 
 .container-body {
@@ -52,7 +52,7 @@
 }
 
 .container-body>.content-body>.content-leftBody {
-  min-width: 74%;
+  min-width: 75%;
 }
 
 @media (max-width: 768px) {

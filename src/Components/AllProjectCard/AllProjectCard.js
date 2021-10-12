@@ -31,7 +31,6 @@ function AllProjectCard(props) {
                     <Moment format="D MMM YYYY" withTitle>
                         <p>{props?.createdAt}</p>
                     </Moment>
-                    {/* <p>Matched On 25 March 2021</p> */}
                 </div>
                 <div className='matchedDate_AgencyNewestAllProject'>
                     <div>
@@ -40,7 +39,6 @@ function AllProjectCard(props) {
                     <Moment format="D MMM YYYY" withTitle>
                         <p>{props?.updatedAt}</p>
                     </Moment>
-                    {/* <p>Matched On 25 March 2021</p> */}
                 </div>
             </div>
             </div>

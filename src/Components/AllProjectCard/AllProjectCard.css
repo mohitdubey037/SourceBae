@@ -1,10 +1,10 @@
-.strip {
+/* .strip {
     position: relative;
     width: 25%;
     height: 6px;
-}
+} */
 
-.green-strip {
+/* .green-strip {
     background-color: green;
     top: 0;
 }
@@ -19,14 +19,14 @@
     left: 70%;
     background-color: yellow;
     top: 0px;
-}
+} */
 
 .user-operations {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 1rem;
 }
 
