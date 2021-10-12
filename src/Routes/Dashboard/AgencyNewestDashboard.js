@@ -13,6 +13,7 @@ import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import instance from "../../Constants/axiosConstants";
 import * as helper from "../../shared/helper";
 import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
+import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 function AgencyNewestDashboard(props) {
     const Role = localStorage.getItem('role');
@@ -45,18 +46,7 @@ function AgencyNewestDashboard(props) {
             });
     };
 
-    const getAgencyProfileData = () => {
-        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
-            .then(function (response) {
-                setAgencyProfileData(response);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-
     useEffect(() => {
-        getAgencyProfileData();
         getAllProjects();
     }, []);
 
@@ -148,24 +138,7 @@ function AgencyNewestDashboard(props) {
         <div className="Navbar-clientDashboard">
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div style={{ zIndex: visible && '-1' }} className="container-body">
-                <div className="navbar" style={{
-                    width: '98%',
-                    borderRadius: '0.5rem',
-                    left: '0',
-                    right: '0',
-                    margin: 'auto',
-                    backgroundColor: 'white'
-                }}>
-                    <div className="navbar-items">
-                        <div style={{ marginRight: '10px' }} className="username nav-left-item">
-                            <p>{agencyProfileData?.agencyName}</p>
-                        </div>
-                        <div className="userprofile-circle nav-left-item">
-                            <img src={agencyProfileData?.agencyLogo} />
-                        </div>
-                    </div>
-                </div>
-
+                <Navbar/>
                 <div className="content-body">
                     <div className="content-leftBody">
                         {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (

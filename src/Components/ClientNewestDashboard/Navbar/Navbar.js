@@ -5,7 +5,10 @@ import './Navbar.css';
 
 function Navbar(props) {
     const url = props.history.location.pathname;
-    const [index, setIndex] = useState(0)
+    const Role = localStorage.getItem('role');
+    const roleId = localStorage.getItem("userId");
+    const [data, setData] = useState({});
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         if (url.includes(':')) {
@@ -16,11 +19,6 @@ function Navbar(props) {
         console.log(url.includes('/shared-developers'))
     }, [])
 
-    const roleId = localStorage.getItem("userId");
-
-    const Role = localStorage.getItem('role');
-
-    const [data, setData] = useState({});
 
     useEffect(() => {
         if (Role === 'Client') {

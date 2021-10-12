@@ -14,6 +14,7 @@ import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import instance from '../../Constants/axiosConstants';
 import * as actions from '../../Redux/action/addProject';
+import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import { connect } from 'react-redux';
 
 const MenuProps = {
@@ -66,11 +67,6 @@ function ClientNewestDashboard(props) {
     const [statuses, setStatuses] = useState([]);
     const [visible, setVisible] = useState(false);
 
-    const [clientData, setClientData] = useState({
-        firstName: "",
-        lastName: ""
-    })
-
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
             .then(function (response) {
@@ -87,20 +83,6 @@ function ClientNewestDashboard(props) {
         setVisible(status);
     };
 
-    const getClientProfileApi = () => {
-        instance.get(`/api/${Role}/clients/get/${clientId}`)
-            .then(function (response) {
-                console.log(response);
-                setClientData({
-                    firstName: response[0].firstName,
-                    lastName: response[0].lastName,
-                });
-            })
-            .catch(err => {
-                console.log(err?.response?.data?.message)
-            })
-    };
-
 
     useEffect(() => {
         console.log(projects);
@@ -109,7 +91,6 @@ function ClientNewestDashboard(props) {
 
     useEffect(() => {
         getAllProjects();
-        getClientProfileApi();
     }, [])
 
     useEffect(() => {
@@ -121,16 +102,7 @@ function ClientNewestDashboard(props) {
 
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div style={{ zIndex: visible && '-1', backgroundImage: Role === 'Client' && 'linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%)' }} className="container-body">
-                <div style={{top: '1rem'}} className="navbar">
-                    <div className="navbar-items">
-                        <div style={{ paddingRight: '10px' }} className="username">
-                            <p>{clientData.firstName} {clientData.lastName}</p>
-                        </div>
-                        <div className="userprofile-circle nav-left-item">
-                            <img src={" "} />
-                        </div>
-                    </div>
-                </div>
+                <Navbar />
                 <div className="content-body">
                     <div className="content-leftBody">
                         <div className="user-operations">
