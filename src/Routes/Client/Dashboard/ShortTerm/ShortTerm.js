@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
-import clsx from 'clsx';
 import "./ShortTerm.css";
 
 import fixed from "../../../../assets/images/Newestdashboard/Short_Term/payment.svg";
@@ -52,7 +51,7 @@ function ShortTerm(props) {
 
   const [words, setWords] = useState(0);
   const [allServices, setAllServices] = useState([]);
-  const buttonStatus = "Post Project"
+  const [errors, setErrors] = useState({});
 
   const [apiData, setApiData] = useState({
     clientId: id,
@@ -104,35 +103,34 @@ function ShortTerm(props) {
   };
 
   const validation = () => {
+    const err = {}
     if (apiData.projectName === "") {
-      toast.error("Project Name can't be empty.")
-      return false
+      err.projectName = 'Project name can"t be empty.'
     }
     else if (apiData.projectDescription === "") {
-      toast.error("Project Description can't be empty.")
-      return false
+      err.projectDescription = 'Project description can"t be empty.';
     }
     else if (projectFiles === null || projectFiles === undefined) {
-      toast.error("Please Upload a project Document")
-      return false
+      err.projectUpload = 'Please upload a project Document';
     }
     else if (apiData.projectRequirements === "") {
-      toast.error("Project Requiremnet an't be empty.")
-      return false
-    }
-    else if (apiData.projectProposalCost === "") {
-      toast.error("Please select a project proposal cost.")
-      return false
-    }
-    else if (apiData.projectServicesRequired.length === 0) {
-      toast.error("Please select a project Service.")
-      return false
+      err.projectRequirements = "Project qequirement ain't be empty.";
     }
     else if (apiData.projectPaymentModel === "") {
-      toast.error("Please select a project Payment Model.")
-      return false
+      err.projectPaymentModel = 'Please select a project Payment Model.'
     }
-    return true
+    else if (apiData.projectProposalCost === "") {
+      err.projectProposalCost = 'Please select a project proposal cost.';
+    }
+    else if (apiData.projectServicesRequired.length === 0) {
+      err.projectServicesRequired = 'Please select a project service.';
+    }
+    
+    setErrors(err);
+    if (Object.keys(err).length === 0)
+      return true;
+    else
+      return false;
   }
 
   function uploadMedia() {
@@ -279,6 +277,11 @@ function ShortTerm(props) {
                     onChange={(event) => handleChange(event)}
                   />
                 </div>
+                {errors.projectName &&
+                  <p className="error_productForm_shortTerm">
+                    {errors.projectName}
+                  </p>
+                }
               </div>
 
               <div className="shortTermProjectDesc">
@@ -305,12 +308,17 @@ function ShortTerm(props) {
                   <p>Minimum 100 characters.</p>
                   <p>{words}/100</p>
                 </div>
+                {errors.projectDescription &&
+                  <p className="error_productForm_shortTerm">
+                    {errors.projectDescription}
+                  </p>
+                }
               </div>
 
               <div className="shortTermFileUpload">
                 <div className="uploadBlock">
                   <div className="fileUploadButton">
-                    <div style={{cursor: 'pointer', width: '20%'}}>
+                    <div style={{ cursor: 'pointer', width: '20%' }}>
                       <FilePicker
                         extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
                         onChange={(fileObj) => fileHandler(fileObj)}
@@ -324,6 +332,11 @@ function ShortTerm(props) {
                     <p>{`${projectFiles?.name ?? "Upload an image or a document that might be helpful in explaining your project in brief."}`}</p>
                   </div>
                 </div>
+                {errors.projectUpload &&
+                  <p className="error_productForm_shortTerm">
+                    {errors.projectUpload}
+                  </p>
+                }
               </div>
 
               <div className="shortTermOptionSelect">
@@ -349,6 +362,11 @@ function ShortTerm(props) {
                   />
                 </div>
               </div>
+              {errors.projectRequirements &&
+                <p className="error_productForm_shortTerm">
+                  {errors.projectRequirements}
+                </p>
+              }
             </div>
 
             <div className="right_side_shortTerm">
@@ -405,6 +423,11 @@ function ShortTerm(props) {
                     </RadioGroup>
                   </FormControl>
                 </div>
+                {errors.projectPaymentModel &&
+                  <p className="error_productForm_shortTerm">
+                    {errors.projectPaymentModel}
+                  </p>
+                }
               </div>
 
               <div className="estimatedBudget">
@@ -443,9 +466,12 @@ function ShortTerm(props) {
                     </RadioGroup>
                   </FormControl>
                 </div>
+                {errors.projectProposalCost &&
+                  <p className="error_productForm_shortTerm">
+                    {errors.projectProposalCost}
+                  </p>
+                }
               </div>
-
-
             </div>
           </div>
 

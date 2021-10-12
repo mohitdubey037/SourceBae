@@ -89,8 +89,8 @@
 .tellUsWhatYouNeed h6 {
   text-transform: capitalize;
   color: #707070;
-  font-family: 'Segoe UI Semibold';
-  font-size: 1rem;
+  font-family: 'Segoe UI';
+  font-size: 1.4rem;
 }
 
 .shortTermProjectType {
@@ -108,6 +108,7 @@
   width: 100%;
   border-radius: 0.3rem;
   font-family: 'Segoe UI';
+  font-size: 12px;
   height: 2.2rem;
   padding: 0 0.8rem;
   text-transform: capitalize;
@@ -175,6 +176,13 @@
   margin-top: 0.8rem;
 }
 
+.error_productForm_shortTerm {
+  color: red;
+  font-size: 14px;
+  font-family: 'Segoe UI';
+  padding-left: 0.8rem;
+}
+
 .startABit_shortTermProjectDesc {
   font-size: 0.7rem;
   text-transform: capitalize;
@@ -192,6 +200,7 @@
   font-family: 'Segoe UI';
   width: 100%;
   border-radius: 0.5rem;
+  font-size: 12px;
 }
 
 .shortTermProjectDesc textarea:focus {
@@ -220,8 +229,8 @@
 }
 
 .uploadBlock {
-  padding-left: 0.7rem;
-  margin-top: 1.3rem;
+  margin-left: 0.8rem;
+  margin-top: 1.5rem;
 }
 
 .mainShortTerm .MuiFormGroup-root {
@@ -231,7 +240,7 @@
 .left_and_right_side {
   display: flex;
   justify-content: space-around;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 .left_side_shortTerm {
@@ -354,10 +363,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-}
-
-.post-project {
+  margin-top: 1.5rem;
   border-radius: 1.5rem;
   font-family: 'Segoe UI';
   font-size: 0.8rem;
