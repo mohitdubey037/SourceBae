@@ -46,7 +46,7 @@ function Navbar(props) {
 
 
     return (
-        <div style={{ top: Role === 'Client' && '1rem' }} className="navbar">
+        <div style={{ top: Role === 'Client' && '1rem' }} className={`navbar ${props.history.location.pathname === '/agencyNewestDashboard' && 'navbar_agency'}`}>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{

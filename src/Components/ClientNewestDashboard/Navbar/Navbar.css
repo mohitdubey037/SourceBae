@@ -12,6 +12,21 @@
   z-index: 1;
 }
 
+.navbar_agency {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: 98%;
+  padding-right: 1rem;
+  border-radius: 0.5rem;
+  top: 1rem;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: white;
+}
+
 .navbar h1 {
   margin-bottom: 0;
 }
