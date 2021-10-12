@@ -302,7 +302,7 @@ function ProductAgencies(props) {
                                                                         </div>
                                                                     </div>
                                                                     <div className="productAgencyDescPara">
-                                                                        <p>{value?.agencyId?.agencyDescription}</p>
+                                                                        <p style={{width:"80%"}}>{value?.agencyId?.agencyDescription}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
