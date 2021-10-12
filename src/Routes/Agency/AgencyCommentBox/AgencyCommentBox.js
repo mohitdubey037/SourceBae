@@ -20,6 +20,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import bgPic from "../../../assets/images/Quotation/bgPic.svg";
+
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -190,6 +192,7 @@ const AgencyCommentBox = (props) => {
         <div className="topLine" style={{
           backgroundColor: "rgb(69, 164, 228)"
         }}></div>
+        <img src={bgPic} alt="img" style={{position:"absolute", top:"5rem",left:"9rem"}}/>
         {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
           :
