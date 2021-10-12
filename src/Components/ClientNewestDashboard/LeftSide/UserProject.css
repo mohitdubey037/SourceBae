@@ -13,12 +13,12 @@
 }
 
 .project-details-card {
-  min-width: 32%;
+  min-width: 39%;
   justify-self: flex-start;
   background: linear-gradient( 90deg, #f5faff 0%, #ffffff 100%);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   padding: 10px 20px 5px 20px;
-  margin: 1rem 3rem;
+  margin: 1rem 2rem;
   position: relative;
   border-radius: 1rem;
 }
