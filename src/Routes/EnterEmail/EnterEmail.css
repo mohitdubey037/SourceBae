@@ -5,3 +5,24 @@
     align-items: center;
     transform: translateY(-50px);
   }
+
+  .MuiFormGroup-root {
+    color:#015F9a
+  }
+  .roleform {
+    display: flex;
+    flex-direction: row !important;
+  } 
+
+  .MuiFormGroup-root {
+    flex-direction: row;
+  }
+
+  .makeStyles-button-3 {
+    background-color: #015F9a  !important;
+    width: 15rem !important;
+  }
+
+  .makeStyles-form-4 {
+    width: 15rem !important;
+  }

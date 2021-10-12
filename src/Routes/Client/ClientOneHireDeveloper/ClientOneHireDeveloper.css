@@ -9,6 +9,7 @@
   border-bottom: none;
   cursor: pointer;
   flex-direction: column;
+  min-width: 17rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 1rem;
   background-color: #ffffff;
