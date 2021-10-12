@@ -6,12 +6,11 @@ import github from '../../../../assets/images/agencyForm/github.svg'
 import stack from '../../../../assets/images/agencyForm/stack.svg'
 import portfolio from '../../../../assets/images/agencyForm/portfolio.svg'
 import featureLink from '../../../../assets/images/agencyForm/featureLink.svg'
-import links from '../../../../assets/images/agencyForm/links.gif'
 import { NavLink } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import Spinner from '../../../../Components/Spinner/Spinner';
 import Back from '../../../../Components/Back/Back';
-
+import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/agencyForm4_image.svg';
 //axios instance
 import instance from "../../../../Constants/axiosConstants"
 import * as helper from "../../../../shared/helper"
@@ -286,7 +285,11 @@ function AgencyForm4(props) {
                                         </button>
                                     </div>
                                 </div>
+                                <div className="image_div">
+                                    <img src={illustrationImage} alt="image" />
+                                </div>
                             </div>
+
                         </div>
                     </>
                 }

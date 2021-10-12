@@ -90,7 +90,7 @@
     padding-bottom: 3%;
     position: relative;
     width: 100%;
-    padding: 0 14rem;
+    padding: 0 8rem;
 }
 
 .innerPersonelDetailsForm {
@@ -305,8 +305,7 @@
 }
 
 .nextBtn {
-    width: 100%;
-    margin-top: 3%;
+    margin-top: 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -576,13 +575,13 @@
 /* Agency Form three  */
 
 .mainDocumentsForm {
-    width: 91%;
+    width: 82%;
     margin: auto;
     margin-top: 0%;
     margin-bottom: 3%;
     position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .innerDocumentForm {
@@ -631,6 +630,10 @@
     padding-top: 5px;
     padding-bottom: 5px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+}
+
+.panCardContent {
+    width: 36%;
 }
 
 .agencyCertification>div, .agencyBrochure>div, .panCardContent>div {
@@ -711,7 +714,7 @@
 .miscellaneousArea p {
     font-family: 'Segoe UI Bold';
     font-size: 1.3rem;
-    padding: 0 3rem 1rem;
+    padding: 0 2rem 1rem;
     color: #45A4E4;
     margin-top: 2rem;
 }
@@ -722,23 +725,30 @@
     width: 100%;
     margin-bottom: 5%;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .innerSocialLinks {
-    width: 63%;
-    margin-left: 8.5rem;
-    width: 780px;
+    width: 81%;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
 }
 
 .socialInputs {
-    padding: 2rem;
-    width: 100%;
+    width: 41%;
 }
 
-.socialInputs div {
-    margin-bottom: 1%;
+.image_div {
+    width: 35%;
+}
+
+.image_div img {
+    width: 100%;
 }
 
 .socialInputs div p {
@@ -750,7 +760,7 @@
 
 .socialInputs div input {
     margin-top: 10px;
-    width: 55%;
+    width: 100%;
     height: 35px;
     padding-left: 10px;
     border: 1px solid #45A4E4;
@@ -779,7 +789,7 @@
 }
 
 .linksImages img {
-    width: 2%;
+    width: 5%;
     margin-right: 10px;
 }
 
@@ -790,15 +800,14 @@
 }
 
 .addMoreFields {
-    position: absolute;
-    right: 20rem;
+    position: relative;
     padding: 0.3rem 1rem;
     background-color: #fad647;
     border-radius: 999px;
     font-family: 'Segoe UI Semibold';
     font-size: 0.8rem;
     cursor: pointer;
-    top: 0;
+    left: 24%;
 }
 
 .extraFields {
