@@ -65,7 +65,7 @@ function AgencyRespondedDetails(props) {
 
   return (
     <>
-      <div className="mainDetailHeader_agencyRespondedDetails">
+      <div className="mainDetailHeader_agencyRespondedDetails" style={{backgroundImage:"none"}}>
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
             <div>
@@ -233,7 +233,7 @@ function AgencyRespondedDetails(props) {
                       </div>
                       </div>
                     </div>
-                    <div>
+                    <div style={{marginRight:"3rem"}}>
                       <img src={completedImage} alt="" />
                     </div>
                   </div>

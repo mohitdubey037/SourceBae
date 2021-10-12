@@ -850,3 +850,10 @@ svg.MuiSvgIcon-root {
 .error_hireAgencyForm1 {
     margin-left: 0;
 }
+
+.steps_hireAgencyForm3{
+    display: flex;
+    width: 48%;
+    justify-content: space-between;
+
+}
