@@ -69,8 +69,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Segoe UI",
     border: "1px solid #45A4EA",
     borderRadius: "5px",
-    marginTop:"0.2rem",
-    marginLeft:"1rem",
+    marginTop: "0.2rem",
+    marginLeft: "1rem",
     width: "85%",
   },
   radioBox: {
@@ -82,15 +82,15 @@ const useStyles = makeStyles((theme) => ({
       color: "green",
       padding: "11.5px 14px"
     },
-    "& .MuiTypography-body1":{
+    "& .MuiTypography-body1": {
       fontSize: "0.7rem",
-    fontFamily: 'Segoe UI',
+      fontFamily: 'Segoe UI',
     },
     /*"& .MuiSvgIcon-root ":{
      width:"1.2rem",
     },*/
-    "& MuiMenuItem" :{
-      fontSize:"0.8rem"
+    "& MuiMenuItem": {
+      fontSize: "0.8rem"
     }
   }
 }));
@@ -324,7 +324,7 @@ function ProductForm(props) {
   };
 
   const inputFileChoosen = (e) => {
-    console.log("e",e)
+    console.log("e", e)
     setFile(e);
   };
 
@@ -488,7 +488,7 @@ function ProductForm(props) {
 
           <div className="mainProductFormArea">
             <div className="innerProductFormArea productForm">
-              <div className="form_1" style={{display:"flex"}}>
+              <div className="form_1" style={{ display: "flex" }}>
                 <div className="form1_Fields">
                   <section>
                     <ul>
@@ -499,10 +499,10 @@ function ProductForm(props) {
                     <FilePicker
                       extensions={['jpg', 'png', 'jpeg']}
                       onChange={inputFileChoosen}
-                      >
+                    >
                       <button className="filePicker">
-                          <p style={{marginTop:"0", color:"#707070", fontFamily:"Segoe UI", fontSize:"14px"}}>{file ? file.name : 'pick file'}</p>
-                          <img src={fileIcon} alt="finish" />
+                        <p style={{ marginTop: "0", color: "#707070", fontFamily: "Segoe UI", fontSize: "14px" }}>{file ? file.name : 'pick file'}</p>
+                        <img src={fileIcon} alt="finish" />
                       </button>
                     </FilePicker>
                     {errors.filePicked && (
@@ -545,8 +545,8 @@ function ProductForm(props) {
                       rows="6"
                     ></textarea>
                     <div className="character_specification">
-                      <p style={{marginTop:"0"}}>More than 100 characters</p>
-                      <p style={{marginTop:"0"}}>{wordsRequired} words required</p>
+                      <p style={{ marginTop: "0" }}>More than 100 characters</p>
+                      <p style={{ marginTop: "0" }}>{wordsRequired} words required</p>
                     </div>
                     {errors.productDescription && (
                       <p className="error_productForm">
@@ -554,10 +554,10 @@ function ProductForm(props) {
                       </p>
                     )}
                   </section>
-              
-               </div>
-               <div style={{width:"40%"}}>
-                  <img src={form1}/>
+
+                </div>
+                <div className="image_div">
+                  <img className="image_div_child" src={form1} />
                 </div>
               </div>
 
@@ -567,7 +567,7 @@ function ProductForm(props) {
                     <ul>
                       <li>
                         <p>What type of Business product you have?</p>
-                      </li> 
+                      </li>
                     </ul>
 
                     <FormControl /*variant="outlined"*/ className={classes.formControl}>
@@ -581,7 +581,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{ fontSize:"14px",color:"#707070",marginTop: "0.2rem" ,paddingLeft:"1rem" ,fontFamily: "Segoe UI" }}>
+                          <span style={{ fontSize: "14px", color: "#707070", marginTop: "0.2rem", paddingLeft: "1rem", fontFamily: "Segoe UI" }}>
                             Select From here
                           </span>
                         </MenuItem>
@@ -604,7 +604,7 @@ function ProductForm(props) {
                         <p>What's your good team size?</p>
                       </li>
                     </ul>
-                    <FormControl  className={classes.formControl}>
+                    <FormControl className={classes.formControl}>
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -615,7 +615,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{fontFamily:"Segoe UI",color:"#707070",marginTop: "0.2rem" , fontSize:'14px', paddingLeft:"1rem" }} className="selectFromHere">
+                          <span style={{ fontFamily: "Segoe UI", color: "#707070", marginTop: "0.2rem", fontSize: '14px', paddingLeft: "1rem" }} className="selectFromHere">
                             Select from here
                           </span>
                         </MenuItem>
@@ -648,7 +648,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span className="selectFromHere"  style={{ color:"#707070", marginTop: "0.2rem" ,fontSize:"14px",paddingLeft:"1rem"}}>
+                          <span className="selectFromHere" style={{ color: "#707070", marginTop: "0.2rem", fontSize: "14px", paddingLeft: "1rem" }}>
                             Select from here
                           </span>
                         </MenuItem>
@@ -689,8 +689,8 @@ function ProductForm(props) {
                     )}
                   </section>
                 </div>
-                <div style={{width:"40%"}}>
-                  <img src={form2}/>
+                <div className="image_div">
+                  <img className="image_div_child" src={form2} />
                 </div>
               </div>
 
@@ -716,7 +716,7 @@ function ProductForm(props) {
                           label="YES"
                         />
                         <FormControlLabel
-                         className={clsx(classes.root)}
+                          className={clsx(classes.root)}
                           value="false"
                           control={<BlueRadio />}
                           label="NO"
@@ -853,7 +853,7 @@ function ProductForm(props) {
                         className={clsx(classes.root, classes.inputField)}
                       >
                         <MenuItem value="">
-                          <span style={{ padding:"1rem", fontFamily: "Segoe UI", color: "#707070",fontSize:"14px" }}>
+                          <span style={{ padding: "1rem", fontFamily: "Segoe UI", color: "#707070", fontSize: "14px" }}>
                             Select from here
                           </span>
                         </MenuItem>
@@ -908,151 +908,148 @@ function ProductForm(props) {
                     </FormControl>
                   </section>
                 </div>
-                <div style={{width:"40%"}}>
-                  <img src={form3}/>
+                <div className="image_div">
+                  <img className="image_div_child" src={form3} />
                 </div>
               </div>
 
               <div className="form_4buttonSubmit">
-              <div className="form_4 ">
-                <div className="form4_Fields">
-                  <section>
-                    <ul>
-                      <li>
-                        <p>Your Company Location</p>
-                      </li>
-                    </ul>
-                    <input
-                      type="text"
-                      placeholder="Type here..."
-                      name="productCompanyLocation"
-                      value={apiData.productCompanyLocation}
-                      onChange={handleChange}
-                    />
-                    {errors.productCompanyLocation && (
-                      <p className="error_productForm">
-                        {errors.productCompanyLocation}
-                      </p>
-                    )}
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        <p>When was your product started?</p>
-                      </li>
-                    </ul>
-                    <input
-                      type="date"
-                      name="productStartingDate"
-                      value={apiData.productStartingDate}
-                      onChange={handleChange}
-                    />
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        <p>Any feature link?</p>
-                      </li>
-                    </ul>
-                    <input
-                      type="text"
-                      placeholder="Type here..."
-                      name="productFeatureLink"
-                      value={apiData.productFeatureLink}
-                      onChange={handleChange}
-                    />
-                    {errors.productFeatureLink && (
-                      <p className="error_productForm">
-                        {errors.productFeatureLink}
-                      </p>
-                    )}
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        <p>Any Platform link?</p>
-                      </li>
-                    </ul>
-                    <input
-                      type="text"
-                      placeholder="Type here..."
-                      name="productPlatformLink"
-                      value={apiData.productPlatformLink}
-                      onChange={handleChange}
-                    />
-                    {errors.productPlatformLink && (
-                      <p className="error_productForm">
-                        {errors.productPlatformLink}
-                      </p>
-                    )}
-                  </section>
-                  <section>
-                    <div className="form5_Fields">
-                      <section>
-                        <ul>
-                          <li>
-                            <p>Founders of this product</p>
-                          </li>
-                        </ul>
-                        {errors.productFounderLinkedinProfiles && (
-                          <p className="error_productForm">
-                            {errors.productFounderLinkedinProfiles}
-                          </p>
-                        )}
-                        <div>
-                          <div className="founder_Link">
-                            <input
-                              style={{ marginBottom: '10px' }}
-                              type="text"
-                              placeholder={`Founder 1 Linkedin Profile Link`}
-                              onChange={(e) => handleChangeLink(0, e)}
-                            />
-                            <button type="button" onClick={() => handleAdd()}>
-                              <i className="fa fa-plus" aria-hidden="true"></i>
-                            </button>
+                <div className="form_4 ">
+                  <div className="form4_Fields">
+                    <section>
+                      <ul>
+                        <li>
+                          <p>Your Company Location</p>
+                        </li>
+                      </ul>
+                      <input
+                        type="text"
+                        placeholder="Type here..."
+                        name="productCompanyLocation"
+                        value={apiData.productCompanyLocation}
+                        onChange={handleChange}
+                      />
+                      {errors.productCompanyLocation && (
+                        <p className="error_productForm">
+                          {errors.productCompanyLocation}
+                        </p>
+                      )}
+                    </section>
+                    <section>
+                      <ul>
+                        <li>
+                          <p>When was your product started?</p>
+                        </li>
+                      </ul>
+                      <input
+                        type="date"
+                        name="productStartingDate"
+                        value={apiData.productStartingDate}
+                        onChange={handleChange}
+                      />
+                    </section>
+                    <section>
+                      <ul>
+                        <li>
+                          <p>Any feature link?</p>
+                        </li>
+                      </ul>
+                      <input
+                        type="text"
+                        placeholder="Type here..."
+                        name="productFeatureLink"
+                        value={apiData.productFeatureLink}
+                        onChange={handleChange}
+                      />
+                      {errors.productFeatureLink && (
+                        <p className="error_productForm">
+                          {errors.productFeatureLink}
+                        </p>
+                      )}
+                    </section>
+                    <section>
+                      <ul>
+                        <li>
+                          <p>Any Platform link?</p>
+                        </li>
+                      </ul>
+                      <input
+                        type="text"
+                        placeholder="Type here..."
+                        name="productPlatformLink"
+                        value={apiData.productPlatformLink}
+                        onChange={handleChange}
+                      />
+                      {errors.productPlatformLink && (
+                        <p className="error_productForm">
+                          {errors.productPlatformLink}
+                        </p>
+                      )}
+                    </section>
+                    <section>
+                      <div className="form5_Fields">
+                        <section>
+                          <ul>
+                            <li>
+                              <p>Founders of this product</p>
+                            </li>
+                          </ul>
+                          {errors.productFounderLinkedinProfiles && (
+                            <p className="error_productForm">
+                              {errors.productFounderLinkedinProfiles}
+                            </p>
+                          )}
+                          <div>
+                            <div className="founder_Link">
+                              <input
+                                style={{ marginBottom: '10px' }}
+                                type="text"
+                                placeholder={`Founder 1 Linkedin Profile Link`}
+                                onChange={(e) => handleChangeLink(0, e)}
+                              />
+                              <button type="button" onClick={() => handleAdd()}>
+                                <i className="fa fa-plus" aria-hidden="true"></i>
+                              </button>
+                            </div>
                           </div>
-                        </div>
 
-                        {fields.map((field, idx) => {
-                          if (idx === 0) {
-                            return "";
-                          } else {
-                            return (
-                              <div className="founderLink" key={`${field}-${idx}`}>
-                                <input
-                                  type="text"
-                                  placeholder={`Founder ${idx + 1
-                                    } Linkedin Profile Link`}
-                                  onChange={(e) => handleChangeLink(idx, e)}
-                                />
-                                <div onClick={() => handleRemove(idx)}>
-                                  <i className="fa fa-times" aria-hidden="true"></i>
+                          {fields.map((field, idx) => {
+                            if (idx === 0) {
+                              return "";
+                            } else {
+                              return (
+                                <div className="founderLink" key={`${field}-${idx}`}>
+                                  <input
+                                    type="text"
+                                    placeholder={`Founder ${idx + 1
+                                      } Linkedin Profile Link`}
+                                    onChange={(e) => handleChangeLink(idx, e)}
+                                  />
+                                  <div onClick={() => handleRemove(idx)}>
+                                    <i className="fa fa-times" aria-hidden="true"></i>
+                                  </div>
                                 </div>
-                              </div>
-                            );
-                          }
-                        })}
-                      </section>
-                    </div>
-                  </section>
-                 
+                              );
+                            }
+                          })}
+                        </section>
+                      </div>
+                    </section>
+
+                  </div>
+                  <div className="image_div">
+                    <img className="image_div_child" src={form4} />
+                  </div>
+
                 </div>
-                <div style={{width:"40%"}}>
-                  <img src={form4}/>
-                </div>
-               
-              </div>
-              <div className="submitButton productForm">
-                <div className="innerSubmitButton">
+                <div className="submitButton_productForm">
                   <div className="subbutton" onClick={() => updateButtonHandler()}>
                     <p> Upload Your Product{" "}
                     </p>
                   </div>
-                  <div className="black_color_shadow-productForm"></div>
                 </div>
               </div>
-              </div>
-             
+
             </div>
           </div>
         </>

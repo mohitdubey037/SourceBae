@@ -9,6 +9,14 @@
   text-align: center;
 }
 
+.image_div {
+  width: 40%;
+}
+
+.image_div_child {
+  width: 100%;
+}
+
 .successImage {
   height: 300px;
   margin-bottom: 0%;
@@ -46,7 +54,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 
 .innerProductForm {
@@ -79,13 +86,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding-top: 3%; */
 }
 
 .productIllustration div {
   width: 400px;
   height: 300px;
-  /* background-color: red; */
 }
 
 .productIllustration img {
@@ -131,16 +136,6 @@
   color: #45A4EA;
 }
 
-/* .innerProductHeadlines h3::after {
-  content: '';
-  width: 20%;
-  height: 3px;
-  display: block;
-  background-color: #000;
-  margin: auto;
-  margin-top: 0px;
-} */
-
 .innerProductHeadlines p {
   font-family: 'Open Sans', sans-serif;
   color: #999;
@@ -182,13 +177,7 @@
   width: 80%;
   position: relative;
   background: #FFFFFF;
-  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 12px; */
 }
-
-/* .productForm ul {
-  padding-left: 1rem !important;
-} */
 
 .straightLine {
   position: absolute;
@@ -200,42 +189,6 @@
   display: flex;
   flex-direction: column;
 }
-
-/* .straightLine span {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #2e86c1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateX(-19px);
-  background-color: #2e86c1;
-  color: #ffff;
-  font-family: 'Open Sans', sans-serif;
-  position: absolute;
-  font-family: 'Fredoka One';
-} */
-
-/* .straightLine span:nth-child(1) {
-  top: 0;
-}
-
-.straightLine span:nth-child(2) {
-  top: 20%;
-}
-
-.straightLine span:nth-child(3) {
-  top: 40%;
-}
-
-.straightLine span:nth-child(4) {
-  top: 62%;
-}
-
-.straightLine span:nth-child(5) {
-  top: 82%;
-} */
 
 .one_line {
   position: absolute;
@@ -305,8 +258,6 @@
   padding: 4rem;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
   border-radius: 12px;
-  /* margin-bottom: 0; */
-  /* flex-direction: row-reverse; */
 }
 
 .form1_Fields {
@@ -331,14 +282,10 @@
 }
 
 .form1_Fields section {
-  /* margin-bottom: 17%; */
   font-family: 'Segoe UI';
 }
 
 .form1_Fields section p {
-  /* font-size: 1.1rem;
-  font-weight: bold; */
-  /* font-weight: 600; */
   margin-top: 1rem;
   font-size: 1rem;
   color: #45A4EA;
@@ -346,7 +293,6 @@
 
 .form1_Fields section:nth-child(2) input {
   width: 70%;
-  /* height: 45px; */
   padding: 0.6rem;
   font-size: 14px;
   color: #707070;
@@ -356,7 +302,6 @@
   align-items: center;
   border: 1px solid #45A4EA;
   border-radius: 6px;
-  /* margin-left: 15px; */
 }
 
 .form1_Fields section input:focus, .form1_Fields section textarea:focus {
@@ -372,17 +317,14 @@
 
 .form_2 {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 4rem;
   justify-content: space-around;
-  /* padding-top: 0; */
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
   border-radius: 12px;
 }
 
 .form2_Fields section {
-  /* margin-bottom: 17%; */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -394,28 +336,16 @@
   width: 100%;
 }
 
-/* .form2_Fields .MuiFormControl-root, .form2_Fields .radioGroupButtons, .form3_Fields .MuiFormControl-root {
-  margin-left: 15px;
-} */
-
 .form2_Fields .MuiFormControl-root, .form3_Fields .MuiFormControl-root {
   margin-top: 0;
 }
-
-/* .form3_Fields .previousFunding .MuiFormControl-root {
-  margin-top: 10px;
-} */
-
-/* .form3_Fields .typeOfFunding .MuiFormControl-root {
-  margin-top: 20px;
-} */
 
 .amountRaised .MuiFormControl-root {
   margin-left: 0;
 }
 
 .form5_Fields ul, .form2_Fields ul, .form3_Fields ul {
- margin-left: 1rem;
+  margin-left: 1rem;
   margin-bottom: 0;
 }
 
@@ -424,15 +354,10 @@
 }
 
 .form2_Fields section p {
-  /* font-size: 1.1rem;
-  font-weight: bold; */
-  /* font-weight: 600; */
-  /* font-size: 22px; */
   font-family: 'Segoe UI';
   margin-top: 1rem;
-    font-size: 1rem;
-    color: #45A4EA;
-    /* margin-left:0.5rem; */
+  font-size: 1rem;
+  color: #45A4EA;
 }
 
 .form2_Fields section input {
@@ -480,7 +405,6 @@
 }
 
 .radioButton h6 {
-  /* transform: translateY(4px); */
   font-family: 'Segoe UI';
   color: #707070;
   font-size: 12px;
@@ -496,14 +420,11 @@
   justify-content: space-around;
   align-items: center;
   padding: 4rem;
-  /* padding-top: 0; */
-  /* margin-bottom: 0; */
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
   border-radius: 12px;
 }
 
 .form3_Fields section {
-  /* margin-bottom: 17%; */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -512,15 +433,11 @@
 }
 
 .form3_Fields section p {
-  /* font-size: 1.1rem;
-  font-weight: bold; */
-  /* font-weight: 600; */
   font-size: 22px;
   font-family: 'Segoe UI';
   margin-top: 1rem;
   font-size: 1rem;
   color: #45A4EA;
-  /* margin-left: 0.5rem; */
 }
 
 .form3_Fields section input {
@@ -534,32 +451,12 @@
   border-radius: 6px;
 }
 
-/* .previousFunding { */
-
-/* display: flex;
-    justify-content: space-between;
-    align-items: center; */
-
-/* } */
-
 .form3_Fields section input:focus {
   outline: none;
 }
-
-/* .previousFunding p{
-    transform: translateY(6px);
-} */
-
 .amountRaised {
   padding-left: 5%;
 }
-
-/* .amountRaised span {
-  color: #999 !important;
-  font-weight: 600;
-  font-size: 22px;
-  color: black;
-} */
 
 .howMuchHaveYouRaised {
   font-family: "Segoe UI";
@@ -590,19 +487,15 @@
   margin-top: 0.7rem;
   margin-left: 2.2rem;
 }
+
 .remselectFromHere {
   padding: 1rem;
   font-family: 'Segoe UI';
-  /* font-weight: 500; */
   font-size: 14px;
   line-height: 150%;
   text-transform: capitalize;
   color: #707070;
 }
-
-/* .currentStageRadios .radioButton {
-  margin-bottom: 15px;
-} */
 
 .currentStageRadios .radioButton:nth-child(4) {
   margin-bottom: 0px;
@@ -610,8 +503,6 @@
 }
 
 .currentStageRadios .radioButton {
-  /* border-width: 1px;
-  border-style: solid; */
   border-color: #fff;
   padding: 0 0.5rem;
   margin-right: 3% !important;
@@ -628,24 +519,18 @@
 
 .form_4 {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   position: relative;
   padding: 4rem;
   justify-content: space-around;
-
 }
-.form_4buttonSubmit{
+
+.form_4buttonSubmit {
   display: flex;
   flex-direction: column;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
   border-radius: 12px;
 }
-
-/* .form4_Fields section {
-  margin-bottom: 17%;
-  font-family: 'Open Sans', sans-serif;
-} */
 
 .form_1 section input, .form_1 section textarea, .form_4 section input {
   margin-top: 0.2rem;
@@ -654,32 +539,22 @@
   font-size: 14px;
   color: #707070;
   border: 1px solid #45A4EA;
-  /* border: none; */
   border-radius: 8px;
   width: 70%;
 }
 
 .form4_Fields section p {
-  /* font-size: 1.1rem;
-  font-weight: bold; */
-  /* font-weight: 600;
-  font-size: 22px; */
   font-family: 'Segoe UI';
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: #45A4EA;
-    /* margin-left: 0.5rem; */
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #45A4EA;
 }
 
 .form4_Fields section input {
-  /* width: 100%; */
   height: 35px;
-  /* padding-left: 12px; */
-  /* border: 1px solid #e0e0e0; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 6px; */
   width: 85%;
   border: 1px solid #45a4ea;
   margin-top: -0.8rem;
@@ -709,20 +584,11 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-/* .form5_Fields section p {
-  font-size: 1.1rem;
-  font-weight: bold;
-} */
-
 .form5_Fields section input {
-  /* width: 100%; */
-  /* height: 45px; */
   padding-left: 12px;
-  /* border: 1px solid #e0e0e0; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 6px; */
   width: 85%;
   border: 1px solid #45A4EA;
   margin-top: 0.2rem;
@@ -759,29 +625,17 @@
 }
 
 .founderLink div {
-  /* width: 45px;
-  height: 45px;
-  background-color: #ebf5fb;
+  width: 45px;
+  height: 35px;
+  background-color: #ffffff;
+  outline: none;
+  border: none;
+  color: #45A4EA;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Open Sans', sans-serif;
   border-radius: 6px;
-  margin-top: 16px; */
-   /* padding: 0.5rem 1rem; */
-   width: 45px;
-   height: 35px;
-   background-color: #ffffff;
-   outline: none;
-   border: none;
-   color: #45A4EA;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   /* font-weight: bold; */
-   /* border: 1px solid #2e86c1; */
-   border-radius: 6px;
-   margin-top: 3px;
+  margin-top: 3px;
 }
 
 .founderLink div i {
@@ -790,7 +644,6 @@
 }
 
 .form5_Fields button {
-  /* padding: 0.5rem 1rem; */
   width: 45px;
   height: 35px;
   background-color: #ffffff;
@@ -798,67 +651,45 @@
   border: none;
   color: #45A4EA;
   font-weight: bold;
-  /* border: 1px solid #2e86c1; */
   border-radius: 6px;
   margin-top: -6px;
 }
 
-.submitButton.productForm {
+/* .submitButton_productForm {
   margin-top: -4rem;
-}
+} */
 
-.submitButton {
+.submitButton_productForm {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 5%; */
-}
-
-.innerSubmitButton {
-  width: 65%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3rem;
+  bottom: 3rem;
+  position: relative;
 }
 
 .subbutton {
-  width: 34%;
-  /* background: #EAF2FF; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22%;
   border-radius: 12.4615px;
-  position: relative;
-  z-index: 10;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
-  border-radius: 2rem;
+  border-radius: 1rem
 }
 
 .subbutton p {
   width: 100%;
-  padding: 0rem 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   font-family: 'Segoe UI';
   color: #45A4EA;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 45px;
+  font-size: 18px;
   text-align: center;
-  letter-spacing: 1.24615px;
-  text-transform: capitalize;
+  padding: 0.5rem 0rem;
 }
-
-/* .black_color_shadow-productForm {
-  position: absolute;
-  background: #ABCBFF;
-  filter: blur(11px);
-  height: 32px;
-  width: 284px;
-  bottom: 37px;
-  z-index: 6;
-} */
 
 .subbutton i {
   margin-left: 10px;
@@ -878,18 +709,17 @@
 
 .filePicker {
   width: 70%;
-    height: 40px;
-    padding: 0.6rem;
-    font-size: 14px;
-    background-color: #FFFFFF;
-    /* border: 1px solid #e0e0e0; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #45A4EA;
-    border-radius: 6px;
-    margin-top: 0.2rem; 
-    margin-left: 1rem;
+  height: 40px;
+  padding: 0.6rem;
+  font-size: 14px;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #45A4EA;
+  border-radius: 6px;
+  margin-top: 0.2rem;
+  margin-left: 1rem;
 }
 
 li ::marker {
@@ -897,9 +727,9 @@ li ::marker {
 }
 
 .MuiSelect-select.MuiSelect-select {
-    font-size: 0.8rem;
-    color: #707070;
-    font-style: 'Segoe UI';
-    font-weight: 100;
-    padding-left: 1rem;
+  font-size: 0.8rem;
+  color: #707070;
+  font-style: 'Segoe UI';
+  font-weight: 100;
+  padding-left: 1rem;
 }

@@ -87,7 +87,6 @@
 .phone_clientOneHireDeveloper {
   margin-top: 0rem;
   display: flex;
-  width: 36%;
   margin-left: 1rem;
 }
 
@@ -96,6 +95,11 @@
   display: flex;
   width: 55%;
   margin-left: 1rem;
+}
+
+.phone_clientOneHireDeveloper img,
+.email_clientOneHireDeveloper img {
+  width: 20px;
 }
 
 .polygon1 {
