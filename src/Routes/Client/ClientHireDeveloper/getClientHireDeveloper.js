@@ -42,7 +42,7 @@ function ClientHireDeveloper(props) {
         ) : (
           <>
             <Navbar />
-            <div style={{ paddingTop: "5rem" }}>
+            <div className="mainAgencyList_parent">
               <Back name="Requested Developers" />
               <div className="mainAgencyList">
                 <div className="innerAgencyList">

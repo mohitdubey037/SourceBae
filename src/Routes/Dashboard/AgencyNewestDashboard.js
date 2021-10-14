@@ -171,7 +171,7 @@ function AgencyNewestDashboard(props) {
                                 </div>
                             </div>
                         )}
-                        <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`} style={{ marginTop: (!verified && steps !== -1) && '1rem' }}>
+                        <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}>
                             <UserOperations
                                 disabled={!verified || steps !== -1}
                                 nextpage={() => quotation("quotation")}

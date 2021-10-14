@@ -33,6 +33,7 @@ button {
   right: 1rem;
   margin-top: 2rem;
 }
+
 /* .profileButton {
   margin-top: 2rem;
 } */
@@ -48,7 +49,7 @@ button {
 }
 
 .backButtonAgencyProfile {
-  width: 98%;
+  width: 7%;
   display: flex;
   position: absolute;
   left: 1%;
@@ -83,11 +84,10 @@ button {
   align-items: center;
   display: flex;
   background-color: white;
-  width: 7%;
+  width: 100%;
   justify-content: space-evenly;
   border-radius: 40px;
   height: 40px;
-  transform: translateX(-4px);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   cursor: pointer;
 }
@@ -128,8 +128,13 @@ button {
 }
 
 .innerProfileHeaderImage span {
+  top: 7rem;
   color: #fff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
+  height: max-content;
+  position: absolute;
+  right: 0.3rem;
+  font-size: 0.7rem;
 }
 
 .mainAskQuestion {

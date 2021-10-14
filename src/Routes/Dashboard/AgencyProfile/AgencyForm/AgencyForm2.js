@@ -269,8 +269,9 @@ function AgencyForm2(props) {
                           return (
                             <div className="tech-container">
                               <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                                style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}>
-                                <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                                // style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}
+                                >
+                                <img  style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none"}} className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
                               </div>
                               <p className={`${domain.domainName}`}>
                                 {`${domain.domainName}`}
@@ -294,8 +295,9 @@ function AgencyForm2(props) {
                           return (
                             <div className="tech-container">
                               <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
-                                style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}>
-                                <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                                // style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}
+                                >
+                                <img  style={{ filter: service.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none"}} className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                               </div>
                               <p className={`${service.serviceName}`}>
                                 {`${service.serviceName}`}

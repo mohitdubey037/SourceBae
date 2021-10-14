@@ -276,7 +276,7 @@ function AgencyForm4(props) {
                                         {errors.featuredLinkError && <Alert severity="error">{errors.featuredLinkError}</Alert>}
                                     </div>
 
-                                    <div className="nextBtn">
+                                    <div className="nextBtn buttonParent_agencyForm4">
                                         <button style={{ backgroundColor: '#707070' }} >
                                             Back
                                         </button>

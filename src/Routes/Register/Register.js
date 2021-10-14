@@ -589,6 +589,7 @@ const Register = (props) => {
                                                             <label>Team Strength</label>
                                                             <input
                                                                 type="number"
+                                                                min="1"
                                                                 name="agencyTeamSize"
                                                                 placeholder='Team Strength'
                                                                 value={agencyProfileDetails.agencyTeamSize}
@@ -658,7 +659,7 @@ const Register = (props) => {
                                                 </>
                                         }
                                         <div className="input_with_error">
-                                            <label>Wapsite Url</label>
+                                            <label>Website Url</label>
                                             <input
                                                 style={{ width: '39%', paddingLeft: '2.5%' }}
                                                 type="text"

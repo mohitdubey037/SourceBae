@@ -305,10 +305,14 @@
 }
 
 .nextBtn {
-    margin-top: 8%;
+    margin-top: 3%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.buttonParent_agencyForm4 {
+    margin-top: 6%;
 }
 
 .nextBtn button {
@@ -598,7 +602,7 @@
 .documentInformation {
     display: flex;
     min-height: 8rem;
-    width: 90%;
+    width: 95%;
     margin-top: 12px;
     justify-content: space-between;
 }
@@ -633,7 +637,7 @@
 }
 
 .panCardContent {
-    width: 36%;
+    width: 38%;
 }
 
 .agencyCertification>div, .agencyBrochure>div, .panCardContent>div {

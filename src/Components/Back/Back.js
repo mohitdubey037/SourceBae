@@ -9,8 +9,8 @@ function Back(props) {
     }
     return (
         <div className="back-button_newestAddDeveloper">
-            <div className="image-div_newestAddDeveloper">
-                <div className="hover" onClick={goBack}>
+            <div className="image-div_newestAddDeveloper" onClick={goBack}>
+                <div className="hover">
                     <img src={BackLeft} alt="done" />
                 </div>
                 <h6>Back</h6>

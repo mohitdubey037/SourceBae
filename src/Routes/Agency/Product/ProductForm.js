@@ -45,8 +45,7 @@ const BlueRadio = withStyles({
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: "100%",
-    maxWidth: "100%",
+    width: "70%",
   },
   chips: {
     display: "flex",
@@ -71,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     marginTop: "0.2rem",
     marginLeft: "1rem",
-    width: "85%",
+    width: "100%",
   },
   radioBox: {
     borderWidth: 1,
@@ -83,8 +82,8 @@ const useStyles = makeStyles((theme) => ({
       padding: "11.5px 14px"
     },
     "& .MuiTypography-body1": {
-      fontSize: "0.7rem",
       fontFamily: 'Segoe UI',
+      fontSize: '12px'
     },
     /*"& .MuiSvgIcon-root ":{
      width:"1.2rem",
@@ -158,8 +157,6 @@ function ProductForm(props) {
   const [multipleSelectTech, setMultipleSelect] = useState([]);
 
   const [domainName, setDomainName] = useState("");
-
-  let totalSoFar = 0;
 
   const [errors, setErrors] = useState({});
 
@@ -467,277 +464,309 @@ function ProductForm(props) {
   return (
     <>
       <Navbar />
-      <div className="product-form">
-        <Back name="Product Form " />
-      </div>
       {loading ? (
         <Spinner />
       ) : (
         <>
-          <div className="productsHeadlines">
-            <div className="innerProductHeadlines">
-              <h3>
-                <span> Clients </span> want to know your product..!!
-              </h3>
-              <p>
-                Fill the form below so that client will know the details of your
-                product.
-              </p>
+          <div className="productForm_parent">
+            <Back name="Product Form " />
+            <div className="productsHeadlines">
+              <div className="innerProductHeadlines">
+                <h3>
+                  <span> Clients </span> want to know your product..!!
+                </h3>
+                <p>
+                  Fill the form below so that client will know the details of your
+                  product.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="mainProductFormArea">
-            <div className="innerProductFormArea productForm">
-              <div className="form_1" style={{ display: "flex" }}>
-                <div className="form1_Fields">
-                  <section>
-                    <ul>
-                      <li>
-                        <p>Upload your latest logo of product</p>
-                      </li>
-                    </ul>
-                    <FilePicker
-                      extensions={['jpg', 'png', 'jpeg']}
-                      onChange={inputFileChoosen}
-                    >
-                      <button className="filePicker">
-                        <p style={{ marginTop: "0", color: "#707070", fontFamily: "Segoe UI", fontSize: "14px" }}>{file ? file.name : 'pick file'}</p>
-                        <img src={fileIcon} alt="finish" />
-                      </button>
-                    </FilePicker>
-                    {errors.filePicked && (
-                      <p className="error_productForm">
-                        {errors.filePicked}
-                      </p>
-                    )}
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        <p>What's your good product name?</p>
-                      </li>
-                    </ul>
-                    <input
-                      type="text"
-                      placeholder="Type Here.."
-                      name="productName"
-                      value={apiData.productName}
-                      onChange={handleChange}
-                    />
-                    {errors.productName && (
-                      <p className="error_productForm">
-                        {errors.productName}
-                      </p>
-                    )}
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        <p>Describe a bit about your product.</p>
-                      </li>
-                    </ul>
-                    <textarea
-                      placeholder="Minimum words should be 100"
-                      name="productDescription"
-                      value={apiData.productDescription}
-                      onChange={handleDescChange}
-                      cols="30"
-                      rows="6"
-                    ></textarea>
-                    <div className="character_specification">
-                      <p style={{ marginTop: "0" }}>More than 100 characters</p>
-                      <p style={{ marginTop: "0" }}>{wordsRequired} words required</p>
-                    </div>
-                    {errors.productDescription && (
-                      <p className="error_productForm">
-                        {errors.productDescription}
-                      </p>
-                    )}
-                  </section>
-
-                </div>
-                <div className="image_div">
-                  <img className="image_div_child" src={form1} />
-                </div>
-              </div>
-
-              <div className="form_2">
-                <div className="form2_Fields">
-                  <section>
-                    <ul>
-                      <li>
-                        <p>What type of Business product you have?</p>
-                      </li>
-                    </ul>
-
-                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={domainName}
-                        name="productDomainId"
-                        onChange={(event) => handleSelectChange(event)}
-                        displayEmpty
-                        className={clsx(classes.root, classes.inputField)}
+            <div className="mainProductFormArea">
+              <div className="innerProductFormArea productForm">
+                <div className="form_1">
+                  <div className="form1_Fields">
+                    <section>
+                      <ul>
+                        <li>
+                          <p>Upload your latest logo of product</p>
+                        </li>
+                      </ul>
+                      <FilePicker
+                        extensions={['jpg', 'png', 'jpeg']}
+                        onChange={inputFileChoosen}
                       >
-                        <MenuItem value="">
-                          <span style={{ fontSize: "14px", color: "#707070", marginTop: "0.2rem", paddingLeft: "1rem", fontFamily: "Segoe UI" }}>
-                            Select From here
-                          </span>
-                        </MenuItem>
-                        {allDomainsData.map((ad) => (
-                          <MenuItem key={ad._id} value={ad._id}>
-                            {ad.domainName}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                      {errors.productDomainId && (
+                        <button className="filePicker">
+                          <p style={{ marginTop: "0", color: "#707070", fontFamily: "Segoe UI", fontSize: "14px" }}>{file ? file.name : 'pick file'}</p>
+                          <img src={fileIcon} alt="finish" />
+                        </button>
+                      </FilePicker>
+                      {errors.filePicked && (
                         <p className="error_productForm">
-                          {errors.productDomainId}
+                          {errors.filePicked}
                         </p>
                       )}
-                    </FormControl>
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        <p>What's your good team size?</p>
-                      </li>
-                    </ul>
-                    <FormControl className={classes.formControl}>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={apiData.productTeamSize}
-                        name="productTeamSize"
-                        onChange={(event) => handleChange(event)}
-                        displayEmpty
-                        className={clsx(classes.root, classes.inputField)}
-                      >
-                        <MenuItem value="">
-                          <span style={{ fontFamily: "Segoe UI", color: "#707070", marginTop: "0.2rem", fontSize: '14px', paddingLeft: "1rem" }} className="selectFromHere">
-                            Select from here
-                          </span>
-                        </MenuItem>
-                        <MenuItem value={"1-10"}>01-10</MenuItem>
-                        <MenuItem value={"10-50"}>10-50</MenuItem>
-                        <MenuItem value={"50-100"}>50-100</MenuItem>
-                        <MenuItem value={"more"}>More</MenuItem>
-                      </Select>
-                      {errors.productTeamSize && (
+                    </section>
+                    <section>
+                      <ul>
+                        <li>
+                          <p>What's your good product name?</p>
+                        </li>
+                      </ul>
+                      <input
+                        type="text"
+                        placeholder="Type Here.."
+                        name="productName"
+                        value={apiData.productName}
+                        onChange={handleChange}
+                      />
+                      {errors.productName && (
                         <p className="error_productForm">
-                          {errors.productTeamSize}
+                          {errors.productName}
                         </p>
                       )}
-                    </FormControl>
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        <p>Total revenue generated till now?</p>
-                      </li>
-                    </ul>
-                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={apiData.productRevenueGenerated}
-                        name="productRevenueGenerated"
-                        onChange={(event) => handleChange(event)}
-                        displayEmpty
-                        className={clsx(classes.root, classes.inputField)}
-                      >
-                        <MenuItem value="">
-                          <span className="selectFromHere" style={{ color: "#707070", marginTop: "0.2rem", fontSize: "14px", paddingLeft: "1rem" }}>
-                            Select from here
-                          </span>
-                        </MenuItem>
-                        <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
-                        <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
-                        <MenuItem value={"more"}>More</MenuItem>
-                      </Select>
-                      {errors.productRevenueGenerated && (
+                    </section>
+                    <section>
+                      <ul>
+                        <li>
+                          <p>Describe a bit about your product.</p>
+                        </li>
+                      </ul>
+                      <textarea
+                        placeholder="Minimum words should be 100"
+                        name="productDescription"
+                        value={apiData.productDescription}
+                        onChange={handleDescChange}
+                        cols="30"
+                        rows="6"
+                      ></textarea>
+                      <div className="character_specification">
+                        <p style={{ marginTop: "0" }}>More than 100 characters</p>
+                        <p style={{ marginTop: "0" }}>{wordsRequired} words required</p>
+                      </div>
+                      {errors.productDescription && (
                         <p className="error_productForm">
-                          {errors.productRevenueGenerated}
+                          {errors.productDescription}
                         </p>
                       )}
-                    </FormControl>
-                  </section>
+                    </section>
 
-                  <section>
-                    <ul>
-                      <li>
-                        <p>Which business modal does your product have?</p>
-                      </li>
-                    </ul>
-                    <div className="radioGroupButtons">
-                      {businessModal.map((value, index) => {
-                        return (
-                          <div className="radioButton" onClick={() => handleBusinnesModal(index)}>
-                            <span>
-                              {value?.status === true ? <div></div> : null}
-                            </span>
-                            <h6>{value?.value}</h6>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    {errors.productBusinessModel && (
-                      <p className="error_productForm">
-                        {errors.productBusinessModel}
-                      </p>
-                    )}
-                  </section>
+                  </div>
+                  <div className="image_div">
+                    <img className="image_div_child" src={form1} />
+                  </div>
                 </div>
-                <div className="image_div">
-                  <img className="image_div_child" src={form2} />
-                </div>
-              </div>
 
-              <div className="form_3">
-                <div className="form3_Fields">
-                  <section className="previousFunding">
-                    <ul>
-                      <li>
-                        <p>Any previous funding?</p>
-                      </li>
-                    </ul>
-                    <FormControl component="fieldset">
-                      <RadioGroup
-                        aria-label="gender"
-                        name="productPreviousFunding"
-                        value={apiData.productPreviousFunding}
-                        onChange={(event) => handleChange(event)}
-                      >
-                        <FormControlLabel
-                          className={clsx(classes.root)}
-                          value="true"
-                          control={<BlueRadio />}
-                          label="YES"
-                        />
-                        <FormControlLabel
-                          className={clsx(classes.root)}
-                          value="false"
-                          control={<BlueRadio />}
-                          label="NO"
-                        />
-                      </RadioGroup>
-                    </FormControl>
-                    {errors.productPreviousFunding && (
-                      <p className="error_productForm">
-                        {errors.productPreviousFunding}
-                      </p>
-                    )}
-                  </section>
-                  {apiData.productPreviousFunding === "true" ? (
-                    <section className="amountRaised">
-                      <span className="howMuchHaveYouRaised"><li>How much amount have you raised yet?</li></span>
+                <div className="form_2">
+                  <div className="form2_Fields">
+                    <section>
+                      <ul>
+                        <li>
+                          <p>What type of Business product you have?</p>
+                        </li>
+                      </ul>
+
                       <FormControl /*variant="outlined"*/ className={classes.formControl}>
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          value={apiData.projectPreviousFundingRaised}
-                          name="projectPreviousFundingRaised"
+                          value={domainName}
+                          name="productDomainId"
+                          onChange={(event) => handleSelectChange(event)}
+                          displayEmpty
+                          className={clsx(classes.root, classes.inputField)}
+                        >
+                          <MenuItem value="">
+                            <span style={{ fontSize: "14px", color: "#707070", marginTop: "0.2rem", fontFamily: "Segoe UI" }}>
+                              Select From here
+                            </span>
+                          </MenuItem>
+                          {allDomainsData.map((ad) => (
+                            <MenuItem key={ad._id} value={ad._id}>
+                              {ad.domainName}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                        {errors.productDomainId && (
+                          <p className="error_productForm">
+                            {errors.productDomainId}
+                          </p>
+                        )}
+                      </FormControl>
+                    </section>
+                    <section>
+                      <ul>
+                        <li>
+                          <p>What's your good team size?</p>
+                        </li>
+                      </ul>
+                      <FormControl className={classes.formControl}>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={apiData.productTeamSize}
+                          name="productTeamSize"
+                          onChange={(event) => handleChange(event)}
+                          displayEmpty
+                          className={clsx(classes.root, classes.inputField)}
+                        >
+                          <MenuItem value="">
+                            <span style={{ fontFamily: "Segoe UI", color: "#707070", marginTop: "0.2rem", fontSize: '14px' }} className="selectFromHere">
+                              Select from here
+                            </span>
+                          </MenuItem>
+                          <MenuItem value={"1-10"}>01-10</MenuItem>
+                          <MenuItem value={"10-50"}>10-50</MenuItem>
+                          <MenuItem value={"50-100"}>50-100</MenuItem>
+                          <MenuItem value={"more"}>More</MenuItem>
+                        </Select>
+                        {errors.productTeamSize && (
+                          <p className="error_productForm">
+                            {errors.productTeamSize}
+                          </p>
+                        )}
+                      </FormControl>
+                    </section>
+                    <section>
+                      <ul>
+                        <li>
+                          <p>Total revenue generated till now?</p>
+                        </li>
+                      </ul>
+                      <FormControl /*variant="outlined"*/ className={classes.formControl}>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={apiData.productRevenueGenerated}
+                          name="productRevenueGenerated"
+                          onChange={(event) => handleChange(event)}
+                          displayEmpty
+                          className={clsx(classes.root, classes.inputField)}
+                        >
+                          <MenuItem value="">
+                            <span className="selectFromHere" style={{ color: "#707070", marginTop: "0.2rem", fontSize: "14px"}}>
+                              Select from here
+                            </span>
+                          </MenuItem>
+                          <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
+                          <MenuItem value={"1000-10000"}>$ 1000-10k</MenuItem>
+                          <MenuItem value={"more"}>More</MenuItem>
+                        </Select>
+                        {errors.productRevenueGenerated && (
+                          <p className="error_productForm">
+                            {errors.productRevenueGenerated}
+                          </p>
+                        )}
+                      </FormControl>
+                    </section>
+
+                    <section>
+                      <ul>
+                        <li>
+                          <p>Which business modal does your product have?</p>
+                        </li>
+                      </ul>
+                      <div className="radioGroupButtons">
+                        {businessModal.map((value, index) => {
+                          return (
+                            <div className="radioButton" onClick={() => handleBusinnesModal(index)}>
+                              <span>
+                                {value?.status === true ? <div></div> : null}
+                              </span>
+                              <h6>{value?.value}</h6>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      {errors.productBusinessModel && (
+                        <p className="error_productForm">
+                          {errors.productBusinessModel}
+                        </p>
+                      )}
+                    </section>
+                  </div>
+                  <div className="image_div">
+                    <img className="image_div_child" src={form2} />
+                  </div>
+                </div>
+
+                <div className="form_3">
+                  <div className="form3_Fields">
+                    <section className="previousFunding">
+                      <ul>
+                        <li>
+                          <p>Any previous funding?</p>
+                        </li>
+                      </ul>
+                      <FormControl component="fieldset">
+                        <RadioGroup
+                          aria-label="gender"
+                          name="productPreviousFunding"
+                          value={apiData.productPreviousFunding}
+                          onChange={(event) => handleChange(event)}
+                        >
+                          <FormControlLabel
+                            className={clsx(classes.root)}
+                            value="true"
+                            control={<BlueRadio />}
+                            label="YES"
+                          />
+                          <FormControlLabel
+                            className={clsx(classes.root)}
+                            value="false"
+                            control={<BlueRadio />}
+                            label="NO"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                      {errors.productPreviousFunding && (
+                        <p className="error_productForm">
+                          {errors.productPreviousFunding}
+                        </p>
+                      )}
+                    </section>
+                    {apiData.productPreviousFunding === "true" ? (
+                      <section className="amountRaised">
+                        <span className="howMuchHaveYouRaised"><li>How much amount have you raised yet?</li></span>
+                        <FormControl /*variant="outlined"*/ className={classes.formControl}>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={apiData.projectPreviousFundingRaised}
+                            name="projectPreviousFundingRaised"
+                            onChange={(event) => handleChange(event)}
+                            displayEmpty
+                            className={clsx(classes.root, classes.inputField)}
+                          >
+                            <MenuItem value="">
+                              <span className="selectFromHere">
+                                Select from here
+                              </span>
+                            </MenuItem>
+                            <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
+                            <MenuItem value={"1000-10k"}>$ 1000-10k</MenuItem>
+                            <MenuItem value={"More"}>More</MenuItem>
+                          </Select>
+                        </FormControl>
+                        {errors.fundingMoneyRaised && (
+                          <p className="error_productForm">
+                            {errors.fundingMoneyRaised}
+                          </p>
+                        )}
+                      </section>
+                    ) : null}
+                    <section className="previousFunding typeOfFunding">
+                      <ul>
+                        <li>
+                          <p>Which type of funding you are looking for?</p>
+                        </li>
+                      </ul>
+                      <FormControl /*variant="outlined"*/ className={classes.formControl}>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={apiData.productFundingTypeLookingFor}
+                          name="productFundingTypeLookingFor"
                           onChange={(event) => handleChange(event)}
                           displayEmpty
                           className={clsx(classes.root, classes.inputField)}
@@ -747,309 +776,276 @@ function ProductForm(props) {
                               Select from here
                             </span>
                           </MenuItem>
-                          <MenuItem value={"0-1000"}>$ 0-1000</MenuItem>
-                          <MenuItem value={"1000-10k"}>$ 1000-10k</MenuItem>
-                          <MenuItem value={"More"}>More</MenuItem>
+                          <MenuItem value={"Seed"}>Seed</MenuItem>
+                          <MenuItem value={"Series-A"}>Series-A</MenuItem>
+                          <MenuItem value={"Series-B"}>Series-B</MenuItem>
+                          <MenuItem value={"Series-C"}>Series-C</MenuItem>
+                          <MenuItem value={"Venture-Round"}>
+                            Venture-Round
+                          </MenuItem>
+                          <MenuItem value={"Angel"}>Angel</MenuItem>
+                          <MenuItem value={"Corporate-Round"}>
+                            Corporate-Round
+                          </MenuItem>
+                          <MenuItem value={"Debt-Financing"}>
+                            Debt-Financing
+                          </MenuItem>
+                          <MenuItem value={"Equity-Crowdfunding"}>
+                            Equity-Crowdfunding
+                          </MenuItem>
+                          <MenuItem value={"Grant"}>Grant</MenuItem>
+                          <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
                         </Select>
                       </FormControl>
-                      {errors.fundingMoneyRaised && (
+                      {errors.productFundingTypeLookingFor && (
                         <p className="error_productForm">
-                          {errors.fundingMoneyRaised}
+                          {errors.productFundingTypeLookingFor}
                         </p>
                       )}
                     </section>
-                  ) : null}
-                  <section className="previousFunding typeOfFunding">
-                    <ul>
-                      <li>
-                        <p>Which type of funding you are looking for?</p>
-                      </li>
-                    </ul>
-                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={apiData.productFundingTypeLookingFor}
-                        name="productFundingTypeLookingFor"
-                        onChange={(event) => handleChange(event)}
-                        displayEmpty
-                        className={clsx(classes.root, classes.inputField)}
-                      >
-                        <MenuItem value="">
-                          <span className="selectFromHere">
-                            Select from here
-                          </span>
-                        </MenuItem>
-                        <MenuItem value={"Seed"}>Seed</MenuItem>
-                        <MenuItem value={"Series-A"}>Series-A</MenuItem>
-                        <MenuItem value={"Series-B"}>Series-B</MenuItem>
-                        <MenuItem value={"Series-C"}>Series-C</MenuItem>
-                        <MenuItem value={"Venture-Round"}>
-                          Venture-Round
-                        </MenuItem>
-                        <MenuItem value={"Angel"}>Angel</MenuItem>
-                        <MenuItem value={"Corporate-Round"}>
-                          Corporate-Round
-                        </MenuItem>
-                        <MenuItem value={"Debt-Financing"}>
-                          Debt-Financing
-                        </MenuItem>
-                        <MenuItem value={"Equity-Crowdfunding"}>
-                          Equity-Crowdfunding
-                        </MenuItem>
-                        <MenuItem value={"Grant"}>Grant</MenuItem>
-                        <MenuItem value={"Pre-Seed"}>Pre-Seed</MenuItem>
-                      </Select>
-                    </FormControl>
-                    {errors.productFundingTypeLookingFor && (
-                      <p className="error_productForm">
-                        {errors.productFundingTypeLookingFor}
-                      </p>
-                    )}
-                  </section>
 
-                  <section className="currentStage">
-                    <ul>
-                      <li>
-                        <p>What is the current stage of product?</p>
-                      </li>
-                    </ul>
-                    <div className="currentStageRadios">
-                      {currentStage.map((value, index) => {
-                        return (
-                          <div style={{ borderColor: value.status === true ? "#2E86C1" : null }}
-                            className="radioButton"
-                            onClick={() => handleCurrentStage(index)}
-                          >
-                            <span>
-                              {value?.status === true ? <div></div> : null}
-                            </span>
-                            <h6>{value?.value}</h6>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    {errors.productCurrentStatus && (
-                      <p className="error_productForm">
-                        {errors.productCurrentStatus}
-                      </p>
-                    )}
-                  </section>
-
-                  <section>
-                    <ul>
-                      <li>
-                        <p>How many customer you have accquired?</p>
-                      </li>
-                    </ul>
-                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        name="productCustomerAccquired"
-                        value={apiData.productCustomerAccquired}
-                        onChange={(event) => handleChange(event)}
-                        displayEmpty
-                        className={clsx(classes.root, classes.inputField)}
-                      >
-                        <MenuItem value="">
-                          <span style={{ padding: "1rem", fontFamily: "Segoe UI", color: "#707070", fontSize: "14px" }}>
-                            Select from here
-                          </span>
-                        </MenuItem>
-                        <MenuItem value={"0-100"}>0-100</MenuItem>
-                        <MenuItem value={"100-200"}>100-200</MenuItem>
-                        <MenuItem value={"200-300"}>200-300</MenuItem>
-                        <MenuItem value={"More than 300"}>
-                          More than 300
-                        </MenuItem>
-                      </Select>
-                      {errors.productCustomerAccquired && (
-                        <p className="error_productForm">
-                          {errors.productCustomerAccquired}
-                        </p>
-                      )}
-                    </FormControl>
-                  </section>
-
-                  <section>
-                    <ul>
-                      <li>
-                        <p>How many active users are there ?</p>
-                      </li>
-                    </ul>
-                    <FormControl /*variant="outlined"*/ className={classes.formControl}>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={apiData.productActiveUsers}
-                        name="productActiveUsers"
-                        onChange={(event) => handleChange(event)}
-                        displayEmpty
-                        className={clsx(classes.root, classes.inputField)}
-                      >
-                        <MenuItem value="">
-                          <span className="selectFromHere">
-                            Select from here
-                          </span>
-                        </MenuItem>
-                        <MenuItem value={"0-100"}>0-100</MenuItem>
-                        <MenuItem value={"100-200"}>100-200</MenuItem>
-                        <MenuItem value={"200-300"}>200-300</MenuItem>
-                        <MenuItem value={"More than 300"}>
-                          More than 300
-                        </MenuItem>
-                      </Select>
-                      {errors.productActiveUsers && (
-                        <p className="error_productForm">
-                          {errors.productActiveUsers}
-                        </p>
-                      )}
-                    </FormControl>
-                  </section>
-                </div>
-                <div className="image_div">
-                  <img className="image_div_child" src={form3} />
-                </div>
-              </div>
-
-              <div className="form_4buttonSubmit">
-                <div className="form_4 ">
-                  <div className="form4_Fields">
-                    <section>
+                    <section className="currentStage">
                       <ul>
                         <li>
-                          <p>Your Company Location</p>
+                          <p>What is the current stage of product?</p>
                         </li>
                       </ul>
-                      <input
-                        type="text"
-                        placeholder="Type here..."
-                        name="productCompanyLocation"
-                        value={apiData.productCompanyLocation}
-                        onChange={handleChange}
-                      />
-                      {errors.productCompanyLocation && (
-                        <p className="error_productForm">
-                          {errors.productCompanyLocation}
-                        </p>
-                      )}
-                    </section>
-                    <section>
-                      <ul>
-                        <li>
-                          <p>When was your product started?</p>
-                        </li>
-                      </ul>
-                      <input
-                        type="date"
-                        name="productStartingDate"
-                        value={apiData.productStartingDate}
-                        onChange={handleChange}
-                      />
-                    </section>
-                    <section>
-                      <ul>
-                        <li>
-                          <p>Any feature link?</p>
-                        </li>
-                      </ul>
-                      <input
-                        type="text"
-                        placeholder="Type here..."
-                        name="productFeatureLink"
-                        value={apiData.productFeatureLink}
-                        onChange={handleChange}
-                      />
-                      {errors.productFeatureLink && (
-                        <p className="error_productForm">
-                          {errors.productFeatureLink}
-                        </p>
-                      )}
-                    </section>
-                    <section>
-                      <ul>
-                        <li>
-                          <p>Any Platform link?</p>
-                        </li>
-                      </ul>
-                      <input
-                        type="text"
-                        placeholder="Type here..."
-                        name="productPlatformLink"
-                        value={apiData.productPlatformLink}
-                        onChange={handleChange}
-                      />
-                      {errors.productPlatformLink && (
-                        <p className="error_productForm">
-                          {errors.productPlatformLink}
-                        </p>
-                      )}
-                    </section>
-                    <section>
-                      <div className="form5_Fields">
-                        <section>
-                          <ul>
-                            <li>
-                              <p>Founders of this product</p>
-                            </li>
-                          </ul>
-                          {errors.productFounderLinkedinProfiles && (
-                            <p className="error_productForm">
-                              {errors.productFounderLinkedinProfiles}
-                            </p>
-                          )}
-                          <div>
-                            <div className="founder_Link">
-                              <input
-                                style={{ marginBottom: '10px' }}
-                                type="text"
-                                placeholder={`Founder 1 Linkedin Profile Link`}
-                                onChange={(e) => handleChangeLink(0, e)}
-                              />
-                              <button type="button" onClick={() => handleAdd()}>
-                                <i className="fa fa-plus" aria-hidden="true"></i>
-                              </button>
+                      <div className="currentStageRadios">
+                        {currentStage.map((value, index) => {
+                          return (
+                            <div style={{ borderColor: value.status === true ? "#2E86C1" : null }}
+                              className="radioButton"
+                              onClick={() => handleCurrentStage(index)}
+                            >
+                              <span>
+                                {value?.status === true ? <div></div> : null}
+                              </span>
+                              <h6>{value?.value}</h6>
                             </div>
-                          </div>
-
-                          {fields.map((field, idx) => {
-                            if (idx === 0) {
-                              return "";
-                            } else {
-                              return (
-                                <div className="founderLink" key={`${field}-${idx}`}>
-                                  <input
-                                    type="text"
-                                    placeholder={`Founder ${idx + 1
-                                      } Linkedin Profile Link`}
-                                    onChange={(e) => handleChangeLink(idx, e)}
-                                  />
-                                  <div onClick={() => handleRemove(idx)}>
-                                    <i className="fa fa-times" aria-hidden="true"></i>
-                                  </div>
-                                </div>
-                              );
-                            }
-                          })}
-                        </section>
+                          );
+                        })}
                       </div>
+                      {errors.productCurrentStatus && (
+                        <p className="error_productForm">
+                          {errors.productCurrentStatus}
+                        </p>
+                      )}
                     </section>
 
+                    <section>
+                      <ul>
+                        <li>
+                          <p>How many customer you have accquired?</p>
+                        </li>
+                      </ul>
+                      <FormControl /*variant="outlined"*/ className={classes.formControl}>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          name="productCustomerAccquired"
+                          value={apiData.productCustomerAccquired}
+                          onChange={(event) => handleChange(event)}
+                          displayEmpty
+                          className={clsx(classes.root, classes.inputField)}
+                        >
+                          <MenuItem value="">
+                            <span style={{fontFamily: "Segoe UI", color: "#707070", fontSize: "14px" }}>
+                              Select from here
+                            </span>
+                          </MenuItem>
+                          <MenuItem value={"0-100"}>0-100</MenuItem>
+                          <MenuItem value={"100-200"}>100-200</MenuItem>
+                          <MenuItem value={"200-300"}>200-300</MenuItem>
+                          <MenuItem value={"More than 300"}>
+                            More than 300
+                          </MenuItem>
+                        </Select>
+                        {errors.productCustomerAccquired && (
+                          <p className="error_productForm">
+                            {errors.productCustomerAccquired}
+                          </p>
+                        )}
+                      </FormControl>
+                    </section>
+
+                    <section>
+                      <ul>
+                        <li>
+                          <p>How many active users are there ?</p>
+                        </li>
+                      </ul>
+                      <FormControl /*variant="outlined"*/ className={classes.formControl}>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={apiData.productActiveUsers}
+                          name="productActiveUsers"
+                          onChange={(event) => handleChange(event)}
+                          displayEmpty
+                          className={clsx(classes.root, classes.inputField)}
+                        >
+                          <MenuItem value="">
+                            <span className="selectFromHere">
+                              Select from here
+                            </span>
+                          </MenuItem>
+                          <MenuItem value={"0-100"}>0-100</MenuItem>
+                          <MenuItem value={"100-200"}>100-200</MenuItem>
+                          <MenuItem value={"200-300"}>200-300</MenuItem>
+                          <MenuItem value={"More than 300"}>
+                            More than 300
+                          </MenuItem>
+                        </Select>
+                        {errors.productActiveUsers && (
+                          <p className="error_productForm">
+                            {errors.productActiveUsers}
+                          </p>
+                        )}
+                      </FormControl>
+                    </section>
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form4} />
+                    <img className="image_div_child" src={form3} />
                   </div>
-
                 </div>
-                <div className="submitButton_productForm">
-                  <div className="subbutton" onClick={() => updateButtonHandler()}>
-                    <p> Upload Your Product{" "}
-                    </p>
+
+                <div className="form_4buttonSubmit">
+                  <div className="form_4 ">
+                    <div className="form4_Fields">
+                      <section>
+                        <ul>
+                          <li>
+                            <p>Your Company Location</p>
+                          </li>
+                        </ul>
+                        <input
+                          type="text"
+                          placeholder="Type here..."
+                          name="productCompanyLocation"
+                          value={apiData.productCompanyLocation}
+                          onChange={handleChange}
+                        />
+                        {errors.productCompanyLocation && (
+                          <p className="error_productForm">
+                            {errors.productCompanyLocation}
+                          </p>
+                        )}
+                      </section>
+                      <section>
+                        <ul>
+                          <li>
+                            <p>When was your product started?</p>
+                          </li>
+                        </ul>
+                        <input
+                          type="date"
+                          name="productStartingDate"
+                          value={apiData.productStartingDate}
+                          onChange={handleChange}
+                        />
+                      </section>
+                      <section>
+                        <ul>
+                          <li>
+                            <p>Any feature link?</p>
+                          </li>
+                        </ul>
+                        <input
+                          type="text"
+                          placeholder="Type here..."
+                          name="productFeatureLink"
+                          value={apiData.productFeatureLink}
+                          onChange={handleChange}
+                        />
+                        {errors.productFeatureLink && (
+                          <p className="error_productForm">
+                            {errors.productFeatureLink}
+                          </p>
+                        )}
+                      </section>
+                      <section>
+                        <ul>
+                          <li>
+                            <p>Any Platform link?</p>
+                          </li>
+                        </ul>
+                        <input
+                          type="text"
+                          placeholder="Type here..."
+                          name="productPlatformLink"
+                          value={apiData.productPlatformLink}
+                          onChange={handleChange}
+                        />
+                        {errors.productPlatformLink && (
+                          <p className="error_productForm">
+                            {errors.productPlatformLink}
+                          </p>
+                        )}
+                      </section>
+                      <section>
+                        <div className="form5_Fields">
+                          <section>
+                            <ul>
+                              <li>
+                                <p>Founders of this product</p>
+                              </li>
+                            </ul>
+                            {errors.productFounderLinkedinProfiles && (
+                              <p className="error_productForm">
+                                {errors.productFounderLinkedinProfiles}
+                              </p>
+                            )}
+                            <div>
+                              <div className="founder_Link">
+                                <input
+                                  style={{ marginBottom: '10px' }}
+                                  type="text"
+                                  placeholder={`Founder 1 Linkedin Profile Link`}
+                                  onChange={(e) => handleChangeLink(0, e)}
+                                />
+                                <button type="button" onClick={() => handleAdd()}>
+                                  <i className="fa fa-plus" aria-hidden="true"></i>
+                                </button>
+                              </div>
+                            </div>
+
+                            {fields.map((field, idx) => {
+                              if (idx === 0) {
+                                return "";
+                              } else {
+                                return (
+                                  <div className="founderLink" key={`${field}-${idx}`}>
+                                    <input
+                                      type="text"
+                                      placeholder={`Founder ${idx + 1
+                                        } Linkedin Profile Link`}
+                                      onChange={(e) => handleChangeLink(idx, e)}
+                                    />
+                                    <div onClick={() => handleRemove(idx)}>
+                                      <i className="fa fa-times" aria-hidden="true"></i>
+                                    </div>
+                                  </div>
+                                );
+                              }
+                            })}
+                          </section>
+                        </div>
+                      </section>
+
+                    </div>
+                    <div className="image_div">
+                      <img className="image_div_child" src={form4} />
+                    </div>
+
+                  </div>
+                  <div className="submitButton_productForm">
+                    <div className="subbutton" onClick={() => updateButtonHandler()}>
+                      <p>Upload Your Product
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </>

@@ -272,7 +272,7 @@ function HireAgencyForm2(props) {
                     return (
                       <div className="tech-container">
                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                          style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" /*backgroundColor: domain.selected ? "#ced3ff" : "white" */ }}>
+                          style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none"}}>
                           <img className={`${domain.domainName}`} src={domain.domainIcon} alt="image" />
                         </div>
                         <p className={`${domain.domainName}`} style={{ color: "#707070", fontFamily: "Segoe UI", fontSize: "12px" }}>
