@@ -138,7 +138,6 @@
     justify-content: center;
     align-items: center;
     border: 1px solid #ebebeb;
-    border-top-right-radius: 8px;
     right: 0;
     font-size: 1.1rem;
     cursor: pointer;
@@ -146,8 +145,10 @@
 
 .daysInputAgency .upArrow {
     top: 0;
+    border-top-right-radius: 8px;
 }
 
 .daysInputAgency .downArrow {
     bottom: 0;
+    border-bottom-right-radius: 8px;
 }
