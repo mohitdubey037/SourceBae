@@ -204,7 +204,7 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 </div>
                             }
-                            <div className="user-project agencyNewestDashboard">
+                            <div className="user-project_parent">
                                 {/* <div> */}
                                 {allProjects?.projects?.length > 0 ? (
                                     allProjects?.projects?.map((value, index) => {

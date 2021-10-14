@@ -8,9 +8,6 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment'
 
 function AgencyProjectCard({ key, ...props }) {
-    // console.log(name, status, budget, creationDate,projectType)
-    console.log(key);
-    console.log(props);
     const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">
@@ -18,11 +15,6 @@ function AgencyProjectCard({ key, ...props }) {
                 <div className="user-project_child_agencyNewestDashboard">
                     <h5>{props?.projectName}</h5>
                 </div>
-                {/* <div onClick={() =>
-                    routerHistory.push(`/agency-project-details:${props?._id}`)
-                } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
-                    <h6>Show Details</h6>
-                </div> */}
             </div>
 
             <div className="user-project-status">

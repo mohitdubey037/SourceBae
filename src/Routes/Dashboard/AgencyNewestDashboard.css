@@ -2,6 +2,12 @@
   width: 88%;
 }
 
+.user-project_parent {
+  overflow: auto;
+  height: 25rem;
+  margin-right: 6px;
+}
+
 .sidebar_parent .container-sPidebar {
   position: fixed;
   top: 0;
