@@ -4,10 +4,14 @@ import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
 import axios from "axios";
-import downImage1 from "../../assets/images/Newestdashboard/Login/Path 11.svg";
-import downImage2 from "../../assets/images/Newestdashboard/Login/Path12.png";
-import upImage1 from "../../assets/images/Newestdashboard/Login/Path13.png";
-import upImage2 from "../../assets/images/Newestdashboard/Login/Path14.png";
+import downImage1_agency from "../../assets/images/Newestdashboard/Login/Path11.svg";
+import downImage2_agency from "../../assets/images/Newestdashboard/Login/Path12.svg";
+import upImage1_agency from "../../assets/images/Newestdashboard/Login/Path13.svg";
+import upImage2_agency from "../../assets/images/Newestdashboard/Login/Path14.svg";
+import downImage1_client from "../../assets/images/Newestdashboard/Login/Path11_client.svg";
+import downImage2_client from "../../assets/images/Newestdashboard/Login/Path12_client.svg";
+import upImage1_client from "../../assets/images/Newestdashboard/Login/Path13_client.svg";
+import upImage2_client from "../../assets/images/Newestdashboard/Login/Path14_client.svg";
 import bgColor from "../../assets/images/Newestdashboard/Login/Rectangle24.png";
 import dotImage from "../../assets/images/Newestdashboard/Login/ab_01.png";
 import googleImg from "../../assets/images/Newestdashboard/Login/Icon_google.svg";
@@ -180,16 +184,16 @@ const Login = (props) => {
                 <img src={bgColor} alt="image5" />
               </div> */}
               <div className="loginImage1">
-                <img src={downImage1} alt="image1" />
+                <img src={roleString === 'Client' ? downImage1_client : downImage1_agency } alt="image1" />
               </div>
               <div className="loginImage2">
-                <img src={downImage2} alt="image2" />
+                <img src={roleString === 'Client' ? downImage2_client : downImage2_agency} alt="image2" />
               </div>
               <div className="loginImage3">
-                <img src={upImage1} alt="image3" />
+                <img src={roleString === 'Client' ? upImage1_client : upImage1_agency} alt="image3" />
               </div>
               <div className="loginImage4">
-                <img src={upImage2} alt="image4" />
+                <img src={roleString === 'Client' ? upImage2_client : upImage2_agency} alt="image4" />
               </div>
               <div className="dot-image">
                 <img src={dotImage} alt="" />

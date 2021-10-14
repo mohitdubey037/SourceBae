@@ -399,19 +399,19 @@ span.welcome-back_sourceBae {
 }
 
 
-.loginImage1 > img {
+.loginImage1 {
   position: absolute;
   width: 100%;
   height: 85%;
   z-index: 4;
   width: 65%;
-  top: 285px;
-  right: 730px;
+  top: 178px;
+  right: 768px;
 }
 
 .loginImage2 {
   position: absolute;
-  bottom: -85%;
+  bottom: -86%;
   left: -23%;
   z-index: 3;
 }
@@ -419,8 +419,8 @@ span.welcome-back_sourceBae {
 .loginImage3 {
   position: absolute;
   z-index: 7;
-  top: -163%;
-  right: -95%;
+  top: -72%;
+  right: -49%;
 }
 
 .loginImage4 {
