@@ -1,0 +1,25 @@
+.steps_hireAgencyForm2 {
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+}
+
+.mainHireAgencyFormTwo {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    overflow: hidden;
+    padding-top: 4rem;
+}
+
+.serivcesHireAgency {
+    margin: 1rem 0rem 2rem;
+}
+
+.innerHireAgencyFormTwo .monthlyBudget {
+    margin-top: 2% !important;
+}

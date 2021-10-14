@@ -52,7 +52,8 @@ function Navbar(props) {
                     <p style={{
                         color: (props.history.location.pathname === '/client-profile' ||
                             props.history.location.pathname === `/product-details:${index}` ||
-                            url.includes('/shared-developers')) ? 'white' : 'blue'
+                            url.includes('/shared-developers')) ||
+                            props.history.location.pathname === '/clientNewestDashboard' ? 'white' : 'blue'
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >

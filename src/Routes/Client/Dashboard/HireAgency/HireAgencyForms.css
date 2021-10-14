@@ -1,12 +1,3 @@
-.innerHigherAgencyForm1 {
-    width: 70%;
-    display: flex;
-    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-    background: #fff;
-    border-radius: 12px;
-    padding-bottom: 1.3rem;
-}
-
 .Image1_hireAgency {
     left: -10rem;
     position: absolute;
@@ -23,20 +14,6 @@
 
 .stepCheck .ste {
     color: #FFFFFF;
-}
-
-.higherAgencyFormArea {
-    width: 62%;
-    padding: 1.5rem 0 0 2.5rem;
-}
-
-.illustration_hireAgencyForm1 {
-    width: 38%;
-    display: flex;
-}
-
-.illustration_hireAgencyForm1 img {
-    width: 100%;
 }
 
 .stepCheck {
@@ -71,13 +48,6 @@
     align-items: center;
 }
 
-.steps_hireAgencyForm {
-    display: flex;
-    justify-content: space-between;
-    width: 68%;
-    margin: 3rem auto 1rem;
-}
-
 .steps_hireAgencyForm>div>div>p, .steps_hireAgencyForm2>div>div>p, .steps_hireAgencyForm3>div>div>p {
     font-family: 'Segoe UI Semibold';
     font-size: 18px;
@@ -86,16 +56,13 @@
 }
 
 .keep_the_project_name p, .write_about_your_project p, .in_case_you_think p {
-    font-family: 'Segoe UI Semibold';
+    font-family: 'Segoe UI';
     font-size: 14px;
     text-align: center;
     letter-spacing: 0.611765px;
     text-transform: capitalize;
     color: #ffffff;
-}
-
-.steps_hireAgencyForm .grey-step_hireAgencyForm {
-    color: #A8A8A8 !important;
+    padding: 1rem;
 }
 
 .black-strip_hireAgencyForm1 {
@@ -140,13 +107,6 @@
     background-color: #A8A8A8;
 }
 
-.steps_hireAgencyForm2 {
-    display: flex;
-    justify-content: space-between;
-    width: 45%;
-    margin-top: 3rem;
-}
-
 .servicesHirecover {
     background-color: #015F9A;
     width: 100%;
@@ -159,7 +119,7 @@
 }
 
 .input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
-    font: 16px 'Segoe UI';
+    font: 14px 'Segoe UI';
     text-transform: capitalize;
     color: #707070;
 }
@@ -203,28 +163,8 @@
     font-size: 2rem;
 }
 
-.input-form_hireAgencyForm1 {
-    margin-top: 1rem;
-}
-
-.projectNameAgency {
-    margin-top: 1%;
-    font-family: 'Segoe UI';
-    line-height: 1;
-    display: flex;
-    flex-direction: column;
-}
-
 .projectNameAgency ul, .descriptionProjectAgency ul, .budgetSectionAreaAgency ul, .numberOfDays ul {
     margin-left: 1.5rem;
-}
-
-.understand_your_project {
-    font-family: 'Segoe UI';
-    font-size: 1.5rem;
-    text-transform: capitalize;
-    color: #015F9A;
-    padding-top: 0.5rem;
 }
 
 .innerHigherAgencyForm1 ul {
@@ -232,49 +172,12 @@
     padding-left: 0rem;
 }
 
-li ::marker {
+li::marker {
     color: #ababab;
-}
-
-.projectNameAgency input {
-    background: #FFFFFF;
-    margin-top: 10px;
-    font-family: 'Segoe UI';
-    font-size: 12px;
-    text-transform: capitalize;
-    color: #707070;
-    border: 1px solid #015F9A;
-    border-radius: 8px;
-    height: 35px;
-    padding-left: 10px;
-    width: 79%;
 }
 
 .projectNameAgency input::placeholder {
     color: #a8a8a8;
-}
-
-.innerHireAgencyFormTwo .monthlyBudget {
-    margin-top: 2% !important;
-}
-
-.descriptionProjectAgency textarea {
-    margin-top: 10px;
-    width: 79%;
-    height: 8rem;
-    padding: 10px;
-    color: #707070;
-    background: #FFFFFF;
-    border: 1px solid #015F9A;
-    border-radius: 8px;
-}
-
-.descriptionProjectAgency, .budgetSectionAreaAgency, .numberOfDays {
-    font-family: 'Segoe UI';
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 1.2rem;
 }
 
 .numberOfDays {
@@ -309,70 +212,10 @@ li ::marker {
     color: #707070 !important
 }
 
-.daysInputAgency {
-    border-radius: 8px;
-    border: 1px solid #015F9A;
-    width: 79%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 20px;
-    height: 2.3rem;
-    position: relative;
-    margin-top: 10px;
-}
-
-.budgetSectionAreaAgency .PrivateSwitchBase-root-3 {
-    padding: 5px;
-}
-
-.daysInputAgency .upArrow {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ebebeb;
-    border-top-right-radius: 8px;
-    top: 0;
-    right: 0;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
-
-.daysInputAgency .downArrow {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ebebeb;
-    border-bottom-right-radius: 8px;
-    bottom: 0;
-    right: 0;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
-
 .main_HireAgencyParent {
     padding-top: 5rem;
     position: relative;
     overflow: hidden;
-}
-
-.higherAgencyInfoArea {
-    width: 75%;
-    height: 8rem;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-}
-
-.points-to-remember_hireAgencyForm1 {
-    width: 23%;
-    margin-left: 1.9rem;
 }
 
 .cardsDetail_hireAgencyForm1 {
@@ -380,26 +223,6 @@ li ::marker {
     width: 100%;
     justify-content: space-around;
     position: relative;
-}
-
-.cards_hireAgencyForm1 {
-    background-image: linear-gradient(to right, #015F9A, #0376BA);
-    border: 1px solid #A2A2A6;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    width: 25%;
-    height: 120%;
-}
-
-.cards_hireAgencyForm1 p {
-    font-family: 'Segoe UI';
-    font-size: 12x;
-    text-transform: capitalize;
-    text-align: center;
-    padding: 1rem;
 }
 
 .points-to-remember_hireAgencyForm1>h4 {
@@ -429,27 +252,6 @@ li ::marker {
 
 .stepTwo p {
     padding: 0.3rem 1rem;
-}
-
-.mainHireAgencyForm1 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 3%;
-    position: relative;
-    flex-direction: column;
-}
-
-.mainHireAgencyFormTwo {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    overflow: hidden;
 }
 
 .mainHireAgencyForm3 {
@@ -572,12 +374,6 @@ li ::marker {
     margin-left: 0 !important;
 }
 
-.mainHireAgencyForm1 .MuiFormGroup-root {
-    flex-direction: row !important;
-    margin-left: 3px !important;
-    width: 40%;
-}
-
 .mainHireAgencyFormThree .MuiFormGroup-root {
     flex-direction: row !important;
     margin-left: 0 !important;
@@ -601,9 +397,9 @@ li ::marker {
     color: black !important;
 }
 
-.monthlyBudget {
+/* .monthlyBudget {
     margin-top: 5%;
-}
+} */
 
 .innerHireAgencyForm3 {
     width: 49%;
@@ -688,10 +484,6 @@ li ::marker {
     flex-wrap: wrap;
 }
 
-/* li::marker {
-    font-size: 1.3rem !important;
-} */
-
 .servicesCardsAgency div {
     width: 22%;
     background-color: skyblue;
@@ -740,30 +532,15 @@ li ::marker {
     justify-content: center;
 }
 
-.monthlyBudget {
+/* .monthlyBudget {
     margin-top: 8%;
-}
+} */
 
 .innerHireAgencyFormTwo .monthlyBudget p {
     font: 18px 'Segoe UI semibold';
     line-height: 27px;
     text-transform: capitalize;
     color: #707070;
-}
-
-.nextbuttton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4%;
-    margin-bottom: 2%;
-    width: 58rem;
-}
-
-.nextbuttton>div:hover {
-    cursor: pointer;
-    background-color: blue;
-    color: #eaf2ff;
 }
 
 .nextbutton {
@@ -776,7 +553,12 @@ li ::marker {
     margin-right: 5rem;
 }
 
-.nextbuttton div, .nextbutton div {
+.nextbutton_hireAgencyForm1 {
+    width: 80%;
+    padding: 0;
+}
+
+.nextbutton div {
     border-radius: 25px;
     width: 112px;
     height: 30px;
@@ -790,7 +572,7 @@ li ::marker {
     cursor: pointer;
 }
 
-.nextbuttton>div:hover, .nextbutton div:hover {
+.nextbutton div:hover {
     cursor: pointer;
     background-color: blue;
     color: #eaf2ff;
@@ -805,10 +587,6 @@ li ::marker {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-}
-
-.serivcesHireAgency {
-    margin: 2rem 0rem;
 }
 
 .error_hireAgencyForm2 {

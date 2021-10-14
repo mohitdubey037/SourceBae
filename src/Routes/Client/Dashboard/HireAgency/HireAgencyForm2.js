@@ -15,6 +15,7 @@ import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/Down
 
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
+import './HireAgencyForm2.css';
 
 const useStyles = makeStyles({
   root: {

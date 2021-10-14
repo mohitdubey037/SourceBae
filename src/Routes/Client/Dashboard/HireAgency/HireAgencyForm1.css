@@ -1,0 +1,153 @@
+.higherAgencyInfoArea {
+    width: 75%;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.points-to-remember_hireAgencyForm1 {
+    width: 23%;
+    margin-left: 1.9rem;
+}
+
+.cards_hireAgencyForm1 {
+    background-image: linear-gradient(to right, #015F9A, #0376BA);
+    border: 1px solid #A2A2A6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    width: 25%;
+}
+
+.steps_hireAgencyForm {
+    display: flex;
+    justify-content: space-between;
+    width: 68%;
+    margin: auto;
+    padding: 2rem 0;
+}
+
+.steps_hireAgencyForm .grey-step_hireAgencyForm {
+    color: #A8A8A8 !important;
+}
+
+.mainHireAgencyForm1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+    position: relative;
+    flex-direction: column;
+}
+
+.innerHigherAgencyForm1 {
+    width: 70%;
+    display: flex;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+    background: #fff;
+    border-radius: 12px;
+    padding-bottom: 1.3rem;
+}
+
+.higherAgencyFormArea {
+    width: 62%;
+    padding: 1.5rem 0 0 2.5rem;
+}
+
+.illustration_hireAgencyForm1 {
+    width: 38%;
+    display: flex;
+}
+
+.illustration_hireAgencyForm1 img {
+    width: 100%;
+}
+
+.understand_your_project {
+    font-family: 'Segoe UI';
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    color: #015F9A;
+    padding-top: 0.5rem;
+}
+
+.input-form_hireAgencyForm1 {
+    margin-top: 1rem;
+}
+
+.projectNameAgency {
+    margin-top: 1%;
+    font-family: 'Segoe UI';
+    display: flex;
+    flex-direction: column;
+}
+
+.projectNameAgency input, .descriptionProjectAgency textarea, .daysInputAgency {
+    margin-top: 10px;
+    width: 79%;
+    background: #FFFFFF;
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #707070;
+    border: 1px solid #015F9A;
+    border-radius: 8px;
+    height: 35px;
+    padding-left: 10px;
+}
+
+.daysInputAgency {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.descriptionProjectAgency textarea {
+    height: 8rem;
+    padding: 10px;
+}
+
+.descriptionProjectAgency, .budgetSectionAreaAgency, .numberOfDays {
+    font-family: 'Segoe UI';
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.2rem;
+}
+
+.mainHireAgencyForm1 .MuiFormGroup-root {
+    flex-direction: row !important;
+    margin-left: 3px !important;
+    width: 40%;
+}
+
+.budgetSectionAreaAgency .PrivateSwitchBase-root-3 {
+    padding: 5px;
+}
+
+
+.daysInputAgency .upArrow, .daysInputAgency .downArrow {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ebebeb;
+    border-top-right-radius: 8px;
+    right: 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.daysInputAgency .upArrow {
+    top: 0;
+}
+
+.daysInputAgency .downArrow {
+    bottom: 0;
+}

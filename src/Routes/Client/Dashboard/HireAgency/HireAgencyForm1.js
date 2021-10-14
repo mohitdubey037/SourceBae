@@ -12,6 +12,7 @@ import Back from '../../../../Components/Back/Back';
 import illustration from '../../../../assets/images/Newestdashboard/Hire-Agency-Form/illustration.svg';
 import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+import './HireAgencyForm1.css';
 
 const BlueRadio = withStyles({
   root: {
@@ -270,7 +271,10 @@ const HireAgencyForm1 = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div className="nextbuttton">
+                  <div className="nextbutton nextbutton_hireAgencyForm1">
+                    <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/clientNewestDashboard`)} style={{ backgroundColor: "#707070" }}>
+                      Back
+                    </div>
                     <div onClick={() => handleSubmit()}>
                       Submit
                     </div>
