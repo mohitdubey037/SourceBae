@@ -8,9 +8,9 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
+import { toast } from "react-toastify";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
@@ -85,9 +85,6 @@ const useStyles = makeStyles((theme) => ({
       fontFamily: 'Segoe UI',
       fontSize: '12px'
     },
-    /*"& .MuiSvgIcon-root ":{
-     width:"1.2rem",
-    },*/
     "& MuiMenuItem": {
       fontSize: "0.8rem"
     }
@@ -396,10 +393,10 @@ function ProductForm(props) {
     if (apiData.productFounderLinkedinProfiles.length > 0) {
       apiData.productFounderLinkedinProfiles.forEach((a, index) => {
         if (a === '') {
-          err.productFounderLinkedinProfiles = `Linked in Url of product founder ${index + 1} is empty`
+          err.productFounderLinkedinProfiles = `LinkedIn url of product founder ${index + 1} is empty`
         }
         else if (!helper.validateLinkedIn(a)) {
-          err.productFounderLinkedinProfiles = `Linked in url of product founder ${index + 1} is wrong`;
+          err.productFounderLinkedinProfiles = `LinkedIn url of product founder ${index + 1} is wrong`;
         }
         else {
           console.log('validated');
@@ -416,7 +413,6 @@ function ProductForm(props) {
   };
 
   const updateButtonHandler = () => {
-
     if (validateInfo()) {
       setLoading(true);
       const formData = new FormData();
@@ -495,6 +491,7 @@ function ProductForm(props) {
                       <FilePicker
                         extensions={['jpg', 'png', 'jpeg']}
                         onChange={inputFileChoosen}
+                        onError={errMsg => toast.error(errMsg)}
                       >
                         <button className="filePicker">
                           <p style={{ marginTop: "0", color: "#707070", fontFamily: "Segoe UI", fontSize: "14px" }}>{file ? file.name : 'pick file'}</p>

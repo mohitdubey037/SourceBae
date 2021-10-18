@@ -7,6 +7,7 @@ import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
 import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
 // import detailImage from '../../../assets/images/details.png';
+import foods from "../../../assets/images/Quotation/foods.png";
 import completedImage from '../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg'
 import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
 
@@ -53,7 +54,7 @@ function RespondedDetails(props) {
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
             <div>
-              <img src={project?.projectDomainId?.domainIcon} alt="" />
+              <img src={foods} alt="" />
             </div>
           </div>
           <div className="headerInformation_agencyRespondedDetails">
@@ -67,15 +68,15 @@ function RespondedDetails(props) {
             </div>
             <div className="clientExperience">
               <div className="btnInfoDiv">
-                <div className="rightBorder" style={{backgroundColor:"#ffffff"}}></div>
+                <div className="rightBorder" style={{ backgroundColor: "#ffffff" }}></div>
                 <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
-                  <p style={{color:"#ffffff"}}>
+                  <p style={{ color: "#ffffff" }}>
                     {project?.projectName}
                   </p>
                 </div>
               </div>
-              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px",color:"#ffffff" }}>
-                <p style={{ fontSize: '20px',color:"#ffffff"}}>
+              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px", color: "#ffffff" }}>
+                <p style={{ fontSize: '20px', color: "#ffffff" }}>
                   {project?.projectDomainId?.domainName}
                 </p>
               </div>
@@ -153,7 +154,7 @@ function RespondedDetails(props) {
                         <div className="project-details_child">
                           <div className="respondedDetails_afterCompletion_child1">
                             <div >
-                              <div className="question" style={{ width: '62%'}}>
+                              <div className="question" style={{ width: '62%' }}>
                                 <p>Client</p>
                               </div>
                               <div className="answer">
@@ -162,7 +163,7 @@ function RespondedDetails(props) {
                             </div>
 
                             <div >
-                              <div className="question" style={{ width: '62%'}}>
+                              <div className="question" style={{ width: '62%' }}>
                                 <p>Agency</p>
                               </div>
                               <div className="answer">
@@ -171,7 +172,7 @@ function RespondedDetails(props) {
                             </div>
 
                             <div >
-                              <div className="question" style={{ width: '62%'}}>
+                              <div className="question" style={{ width: '62%' }}>
                                 <p>Cost</p>
                               </div>
                               <div className="answer">
@@ -244,7 +245,7 @@ function RespondedDetails(props) {
                                   <ClientCommentBox
                                     projectId={projectId}
                                     agencyId={agencyId}
-                                    isShortListed={true}
+                                    isShortListed={true}s
                                     giveReplies={(gr) => {
                                       setRepliedToClient(gr);
                                     }}
@@ -262,20 +263,20 @@ function RespondedDetails(props) {
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul>
-              <li style={{listStyle:"none"}}> <img className="dotImg"src={dot} alt="" /> Min ${project.projectProposalCost}</li>
+                <li style={{ listStyle: "none" }}> <img className="dotImg" src={dot} alt="" /> Min ${project.projectProposalCost}</li>
               </ul>
             </div>
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
               <ul>
-              <img className="dotImg"src={dot} alt="" /><li style={{listStyle:"none", display:"flex", marginLeft:"-4rem"}}>{`${project?.projectExpectedStartingDays} Days`}</li>
+                <img className="dotImg" src={dot} alt="" /><li style={{ listStyle: "none", display: "flex", marginLeft: "-4rem" }}>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
             <div>
               <h4>Technology</h4>
               <ul>
                 {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
-                  return <> <img className="dotImg"src={dot} alt="" /> <li style={{listStyle:"none"}}>{p?.technologyName}</li></>;
+                  return <> <img className="dotImg" src={dot} alt="" /> <li style={{ listStyle: "none" }}>{p?.technologyName}</li></>;
                 })}
               </ul>
             </div>

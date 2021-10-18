@@ -21,17 +21,6 @@ import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-
 
 import { toast } from "react-toastify";
 
-const MenuProps = {
-    getContentAnchorEl: () => null,
-    PaperProps: {
-        style: {
-            maxHeight: 230,
-            width: 250,
-            top: 350,
-        },
-    },
-};
-
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
@@ -40,15 +29,6 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 300,
     },
 }));
-
-function getStyles(singleTechObject, allTechnologies, theme) {
-    return {
-        fontWeight:
-            allTechnologies.indexOf(singleTechObject) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    };
-}
 
 
 function AddingDeveloper(props) {
@@ -280,12 +260,12 @@ function AddingDeveloper(props) {
                                             <div className="uploadBlock_addingDeveloper">
                                                 <div className="fileUploadButton_addingDeveloper">
                                                     <FilePicker
-                                                        extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
+                                                        extensions={['pdf', 'xlsx']}
                                                         onChange={(fileObj) => inputFileChoosen(fileObj)}
                                                         onError={errMsg => toast.error(errMsg)}
                                                     >
                                                         <div>
-                                                            <p style={{ fontSize: "12px" }}> Upload</p>
+                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name : 'pick file'}</p>
                                                             <img src={fileIcon} alt="finish" />
                                                         </div>
                                                     </FilePicker>

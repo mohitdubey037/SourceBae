@@ -59,6 +59,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 0 1rem;
+    padding-right: 5rem;
 }
 
 .leftQuestion {
@@ -94,14 +95,13 @@
 
 .submitEditBtn {
     width: 100%;
-    /* margin-bottom: 3%; */
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
 }
 
 .conditionalPadding {
-    padding: 20px;
+    padding: 10px;
 }
 
 .editableBtn_rules {

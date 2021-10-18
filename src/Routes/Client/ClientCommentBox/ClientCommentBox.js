@@ -32,7 +32,7 @@ const ClientCommentBox = (props) => {
   const onCloseModal = () => setOpen(false);
   const [openRejectionModal, setOpenRejectionModal] = useState(false);
   const [rejectErrors, setRejectErrors] = useState('');
-  const [singleRejectError, setSingleRejectError] = useState('')
+  const [singleRejectError, setSingleRejectError] = useState('');
 
   const [quotationFormData, setQuotationFormData] = useState({
     agencyId: props?.agencyId || "",
@@ -110,6 +110,7 @@ const ClientCommentBox = (props) => {
     instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationFormData)
       .then(function (response) {
         props.giveReplies(true);
+        onCloseModal();
       })
       .catch(err => {
         console.log(err);
@@ -297,7 +298,7 @@ const ClientCommentBox = (props) => {
                   <p>Project Name</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <p>One Sourcing</p>
+                  <p>{props.projectName}</p>
                 </div>
               </div>
               <div className="quotationTable">
@@ -344,7 +345,6 @@ const ClientCommentBox = (props) => {
               <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
                 <button style={{ textAlign: 'center' }} onClick={handleProjectAcceptance}>Submit</button>
               </div>
-              
             </div>
           </div>
         </div>

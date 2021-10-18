@@ -69,7 +69,7 @@ function AgencyRespondedDetails(props) {
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
             <div>
-              <img src={project?.projectDomainId?.domainIcon} alt="logo" />
+              <img src={foods} alt="logo" />
             </div>
           </div>
           <div className="headerInformation_agencyRespondedDetails">

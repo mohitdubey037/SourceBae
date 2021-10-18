@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
+  console.log(props);
   const classes = useStyles();
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -400,7 +401,7 @@ const AgencyCommentBox = (props) => {
                   <p>Project Start Date By Client</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectStartDateByClient}</Moment></p>
                 </div>
               </div>
 
@@ -409,7 +410,7 @@ const AgencyCommentBox = (props) => {
                   <p>Project Delayed Start Date By Client</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectDelayedStartDateByClient}</Moment></p>
                 </div>
               </div>
 
@@ -418,7 +419,7 @@ const AgencyCommentBox = (props) => {
                   <p>Project End Date By Client</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectEndDateByClient}</Moment></p>
                 </div>
               </div>
               <div className="quotationTable">
@@ -426,7 +427,7 @@ const AgencyCommentBox = (props) => {
                   <p>Project Expected End Date By Client</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
+                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectExpectedEndDateByClient}</Moment></p>
                 </div>
               </div>
 

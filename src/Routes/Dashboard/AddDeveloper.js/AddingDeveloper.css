@@ -250,8 +250,9 @@
   width: 50%;
   display: flex;
   border: 1px solid #45A4EA;
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 7px;
+  height: 35px;
 }
 
 .fileUploadButton_addingDeveloper:hover {
@@ -541,24 +542,16 @@
 
 .inputField2 .dropdown-container {
   border: 1px solid #45A4EA;
-  border-radius: 8px;
+  border-radius: 6px;
+}
+
+.developerName_addingDeveloper .go2642161244 {
+  height: 34px;
 }
 
 .inputField2 .dropdown-container .dropdown-heading-value span {
   font-family: 'Segoe UI';
-  font-style: normal;
-  font-weight: 500;
   font-size: 12px;
-  line-height: 17px;
   text-transform: capitalize;
   color: #707070;
 }
-
-/* .MuiSvgIcon-root {
-  width: 18px;
-  height:0;
-} */
-
-/* .priceRange .MuiFormControlLabel-root {
-   width:26% !important; 
-}  */

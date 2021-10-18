@@ -85,14 +85,11 @@ function Rules(props) {
                     {
                         Role === 'Agency' ?
                             agencyProfiledata.isAgencyVerified &&
-                            // (props?.id === null || props?.id === undefined) && 
                             <div className="editableBtn_rules">
                                 <div className="rules_parent">
-                                    {/* <img src={Rules_edit} alt="Rules" /> */}
                                     <p>AGENCY RULES</p>
                                 </div>
-                                {/* <button onClick={() => { handleEditRules(true) }}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Rules</button> */}
-                                <i onClick={() => { handleEditRules(true) }} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
+                                <i onClick={() => { setEditRules(true)}} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
                             </div> : null
                     }
                     <div className="rulesCard">
@@ -122,10 +119,8 @@ function Rules(props) {
                                                 {!editRules && <div className="rulesMark">
                                                     {value?.selection
                                                         ?
-                                                        // <i className="fa fa-check" style={{ color: 'blue' }} aria-hidden="true" />
                                                         <img className='check-img' src={check} alt="check" />
                                                         :
-                                                        // <i className="fa fa-times" style={{ color: '#d9534f' }} aria-hidden="true" />
                                                         <img className='cancel-img' src={cancel} alt="cancel" />
                                                     }
                                                 </div>}

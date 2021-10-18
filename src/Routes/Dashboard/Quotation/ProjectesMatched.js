@@ -22,6 +22,7 @@ function ProjectesMatched(props) {
         setLoading(true)
         instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&projectMatched=1`)
             .then(response => {
+                console.log(response);
                 setLoading(false);
                 setProjects(response.projects);
             })
@@ -72,10 +73,10 @@ function ProjectesMatched(props) {
                                         </div>
                                         <div className="projectPostedDetails">
                                             <div>
-                                                <p><Moment format="D MMM YYYY" withTitle>{s?.updatedAt}</Moment></p>
+                                                <p><Moment titleFormat="D MMM YYYY hh:mm a" format="D MMM YYYY" withTitle>{s?.createdAt}</Moment></p>
                                             </div>
                                             <div>
-                                                <p>Matched on 24 Mar 2020</p>
+                                                <p>Project Matched at: <Moment titleFormat="D MMM YYYY hh:mm a" format="D MMM YYYY" withTitle>{s?.updatedAt}</Moment></p>
                                             </div>
                                         </div>
 
