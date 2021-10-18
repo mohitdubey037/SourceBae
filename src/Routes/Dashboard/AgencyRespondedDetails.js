@@ -229,7 +229,7 @@ function AgencyRespondedDetails(props) {
                           </div>
                         </div>
                           <div className="project_is_completed">
-                        <p>Project is completed from both side</p>
+                        <p>Project is started from both side</p>
                       </div>
                       </div>
                     </div>

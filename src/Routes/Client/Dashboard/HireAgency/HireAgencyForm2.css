@@ -21,5 +21,11 @@
 }
 
 .innerHireAgencyFormTwo .monthlyBudget {
-    margin-top: 2% !important;
+    margin-top: 0% !important;
+}
+
+.error_hireAgencyForm2.error-select_hireAgencyForm2 {
+    position: absolute;
+    bottom: 8px;
+    right: 13%;
 }

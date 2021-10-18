@@ -331,12 +331,12 @@ const AgencyCommentBox = (props) => {
                   <div className="postQuotation">
                     {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
                       <div className="detailsButtons md-m10">
-                        <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                        <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
                       </div>
                     )}
                     {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
                       <div className="detailsButtons md-m10" >
-                        <p>{`Agency Negotiatiable Price:`} <i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                        <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                       </div>
                     )}
 

@@ -31,7 +31,7 @@ function HireDeveloper(props) {
     numberOfResourcesRequired: "",
     developerTechnologiesRequired: [],
     developerExperienceRequired: "",
-    preferredBillingMode: "Weekly",
+    preferredBillingMode: "",
     averageBudget: "",
     expectedStartDate: "",
     contractPeriod: "1 Month",
@@ -136,7 +136,7 @@ function HireDeveloper(props) {
   useEffect(() => {
     getAllTechnologies();
   }, []);
-  
+
 
   return (
     <>
@@ -187,7 +187,7 @@ function HireDeveloper(props) {
                   onChange={setSelectedRoles}
                   labelledBy="Select"
                   className="multi-select"
-                  
+
                 />
               </div>
 
@@ -288,7 +288,7 @@ function HireDeveloper(props) {
                 <FormControl component="fieldset">
                   <RadioGroup
                     aria-label="billing"
-                    name="billing"
+                    name="preferredBillingMode"
                     value={apiData.experience}
                     onChange={handleChange}
                   >

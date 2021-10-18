@@ -195,14 +195,10 @@ li::marker {
     font-size: 0.7rem;
 }
 
-.error_hireAgencyForm2.error-select_hireAgencyForm2 {
-    margin-top: -1.5rem;
-    padding-bottom: 0.4rem;
-}
-
 .error_hireAgencyForm2.error-select_hireAgencyForm3 {
-    margin-top: -0.5rem;
-    margin-bottom: -0.5rem;
+    position: absolute;
+    bottom: 8px;
+    right: 11%;
 }
 
 .budgetSectionAreaAgency .MuiTypography-root {
@@ -397,10 +393,6 @@ li::marker {
     color: black !important;
 }
 
-/* .monthlyBudget {
-    margin-top: 5%;
-} */
-
 .innerHireAgencyForm3 {
     width: 49%;
     min-height: 60%;
@@ -532,10 +524,6 @@ li::marker {
     justify-content: center;
 }
 
-/* .monthlyBudget {
-    margin-top: 8%;
-} */
-
 .innerHireAgencyFormTwo .monthlyBudget p {
     font: 18px 'Segoe UI semibold';
     line-height: 27px;
@@ -621,5 +609,4 @@ svg.MuiSvgIcon-root {
     display: flex;
     width: 48%;
     justify-content: space-between;
-
 }

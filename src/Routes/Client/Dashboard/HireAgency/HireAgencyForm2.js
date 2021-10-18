@@ -232,28 +232,30 @@ function HireAgencyForm2(props) {
           <div className="servicesHirecover">
             {selectedDomain && options &&
               (
-                <div className="serviceFieldsOptions">
-                  <div className="servicesHireAgencyContainer hireAgencyForm2">
-                    <div className="serviceSelectionInput">
-                      <>
-                        <p className="uiuxtext">
-                          Select {selectedDomain.domainName} services
-                        </p>
-                        <MultiSelect
-                          options={options}
-                          value={selected}
-                          onChange={setSelected}
-                          labelledBy="Select"
-                          className="margin-left"
-                        />
-                      </>
+                <>
+                  <div className="serviceFieldsOptions">
+                    <div className="servicesHireAgencyContainer hireAgencyForm2">
+                      <div className="serviceSelectionInput">
+                        <>
+                          <p className="uiuxtext">
+                            Select {selectedDomain.domainName} services
+                          </p>
+                          <MultiSelect
+                            options={options}
+                            value={selected}
+                            onChange={setSelected}
+                            labelledBy="Select"
+                            className="margin-left"
+                          />
+                        </>
+                      </div>
                     </div>
-                    {error.projectExpertiseRequiredError && (
-                      <p className="error_hireAgencyForm2 error-select_hireAgencyForm2">
-                        {error.projectExpertiseRequiredError}
-                      </p>)}
                   </div>
-                </div>
+                  {error.projectExpertiseRequiredError && (
+                    <p className="error_hireAgencyForm2 error-select_hireAgencyForm2">
+                      {error.projectExpertiseRequiredError}
+                    </p>)}
+                </>
               )
             }
           </div>
@@ -272,7 +274,7 @@ function HireAgencyForm2(props) {
                     return (
                       <div className="tech-container">
                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                          style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none"}}>
+                          style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }}>
                           <img className={`${domain.domainName}`} src={domain.domainIcon} alt="image" />
                         </div>
                         <p className={`${domain.domainName}`} style={{ color: "#707070", fontFamily: "Segoe UI", fontSize: "12px" }}>

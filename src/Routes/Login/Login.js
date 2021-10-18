@@ -111,16 +111,15 @@ const Login = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name);
-    console.log(value);
     setForm({
       ...form,
       [name]: value,
     });
   };
 
-  const logIn = async (role, form) => {
-    // setLoading(true);
+  const logIn = async (event) => {
+    console.log(event);
+    event.preventDefault();
     let apiRole = helper.lowerize(role);
     return new Promise((resolve, reject) => {
       instance
@@ -180,11 +179,8 @@ const Login = (props) => {
         <div className="mainLoginPage">
           <div className="innerLoginPage">
             <div className={`loginIllustrator ${roleString === 'Client' && 'conditional_background'}`}>
-              {/* <div className="bg-image">
-                <img src={bgColor} alt="image5" />
-              </div> */}
               <div className="loginImage1">
-                <img src={roleString === 'Client' ? downImage1_client : downImage1_agency } alt="image1" />
+                <img src={roleString === 'Client' ? downImage1_client : downImage1_agency} alt="image1" />
               </div>
               <div className="loginImage2">
                 <img src={roleString === 'Client' ? downImage2_client : downImage2_agency} alt="image2" />
@@ -243,7 +239,7 @@ const Login = (props) => {
                       </h6>
                     </div>
 
-                    <div className="loginForm">
+                    <form onSubmit={logIn} className="loginForm">
                       <TextField
                         name="user"
                         id="filled-number"
@@ -298,13 +294,13 @@ const Login = (props) => {
                         }}
                       />
                       <div className="button_action_login">
-                        <div
+                        <button
                           className={`submit_login ${roleString === 'Client' && 'conditional_backgroundSubmit'}`}
-                          onClick={() => logIn(role, form)}
+                          // onClick={() => logIn(role, form)}
                           type="submit"
                         >
                           <p>Login</p>
-                        </div>
+                        </button>
                         <div
                           className={`forgot-password_login ${roleString === "Client" && "conditional_color"}`}
                           onClick={() => props.history.push("/enter-email")}
@@ -312,7 +308,7 @@ const Login = (props) => {
                           <p>Forgot Password</p>
                         </div>
                       </div>
-                    </div>
+                    </form>
                   </div>
                   <div className="or_login">
                     <p>Or</p>

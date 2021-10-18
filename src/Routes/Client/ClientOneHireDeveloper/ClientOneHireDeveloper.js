@@ -110,7 +110,7 @@ function ClientOneHireDeveloper(props) {
                                     )
                                 })
                                 :
-                                <div style={{ padding: "1rem" }}><h2>Sorry No Matched Agencies Found.</h2></div>}
+                                <div className="no_matched_agency"><h2>Sorry No Matched Agencies Found.</h2></div>}
                         </div>
                     </div>
                 </div>

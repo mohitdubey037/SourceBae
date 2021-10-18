@@ -40,15 +40,9 @@
   margin-left: 4px !important;
 }
 
-/* .hover:hover {
-  color: blue;
-  border-color: blue;
-} */
-
 .add-developer-div {
-  width: 80%;
+  width: 92%;
   display: flex;
-  /* padding-left: 3.5rem; */
   align-items: center;
   justify-content: center;
 }

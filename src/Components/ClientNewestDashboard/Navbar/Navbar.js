@@ -52,7 +52,9 @@ function Navbar(props) {
                     <p style={{
                         color: (props.history.location.pathname === '/client-profile' ||
                             props.history.location.pathname === `/product-details:${index}` ||
-                            url.includes('/shared-developers')) ||
+                            url.includes('/shared-developers') ||
+                            url.includes('/client-one-hire-developer') ||
+                            url.includes('/agencyNewestAllProject')) ||
                             props.history.location.pathname === '/clientNewestDashboard' ? 'white' : 'blue'
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>

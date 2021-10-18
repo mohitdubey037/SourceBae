@@ -47,9 +47,7 @@
 .moreAgency_parent {
   padding: 1rem;
   display: flex;
-  /* justify-content: center; */
   align-items: flex-start;
-  /* flex-direction: column; */
   flex-wrap: wrap;
 }
 
@@ -102,18 +100,14 @@
   width: 20px;
 }
 
-.polygon1 {
-  position: absolute;
-  z-index: -1;
-  right: 2px;
+.no_matched_agency {
+  padding: 1rem;
+  color: white;
+  width: 100%;
 }
 
-.polygon2 {
-  position: absolute;
-  bottom: 0;
-  right: 22px;
-  z-index: -1;
-  max-height: 100px;
+.no_matched_agency h2 {
+  text-align: center;
 }
 
 .moreAgencyLogo {

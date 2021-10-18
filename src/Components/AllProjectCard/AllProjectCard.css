@@ -1,26 +1,3 @@
-/* .strip {
-    position: relative;
-    width: 25%;
-    height: 6px;
-} */
-
-/* .green-strip {
-    background-color: green;
-    top: 0;
-}
-
-.red-strip {
-    background-color: #E50914;
-    left: 35.5%;
-    top: 0px;
-}
-
-.yellow-strip {
-    left: 70%;
-    background-color: yellow;
-    top: 0px;
-} */
-
 .user-operations {
     display: flex;
     justify-content: space-evenly;
@@ -32,9 +9,8 @@
 
 .user-project_agencyNewestAllProject.allProject {
     display: flex;
-    width: 100%;
+    width: 95%;
     background-image: url(../../assets/images/Newestdashboard/All_Project/backgroundall.svg);
-    margin: 1rem 0rem 0rem -2rem;
     height: 170px;
     font-family: 'Segoe UI';
     color: #707070;
@@ -136,11 +112,13 @@ td:nth-child(even) {
     display: flex;
     height: 2rem;
     place-items: center;
-    margin: 1rem 1rem 0rem 0rem ;
+    margin: 1rem 0rem 0rem 0rem;
     background: #ffffff;
     color: #015F9A;
     outline: none;
     border-radius: 8px;
+    position: relative;
+    z-index: 10;
 }
 
 .submit-button_allProjectCard:hover {
