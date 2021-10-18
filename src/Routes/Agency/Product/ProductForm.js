@@ -435,7 +435,6 @@ function ProductForm(props) {
   };
 
   const uploadProduct = () => {
-
     if (validateInfo()) {
       setLoading(true);
       instance

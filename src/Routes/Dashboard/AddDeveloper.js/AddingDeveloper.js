@@ -110,40 +110,6 @@ function AddingDeveloper(props) {
         setIsDisabled(false)
     }
 
-    const uploadMedia = () => {
-        console.log('hire');
-        setLoading(true)
-        const formData = new FormData();
-        resume && formData.append(
-            "files",
-            resume,
-            resume.name
-        );
-        instance.post(`api/${Role}/media/create`, formData)
-            .then(function (response) {
-                setLoading(false);
-                setDeveloperData({
-                    ...developerData,
-                    developerDocuments: [
-                        {
-                            documentName: "Resume",
-                            documentLink: response[0].mediaURL
-                        }
-                    ]
-                })
-            })
-            .catch(err => {
-                setLoading(false);
-            })
-
-    }
-
-    useEffect(() => {
-        if (resume !== null) {
-            uploadMedia()
-        }
-    }, [resume])
-
     const errorValidation = () => {
         console.log('h');
         const errors = {};
@@ -177,6 +143,41 @@ function AddingDeveloper(props) {
         else
             return false;
     }
+
+    const uploadMedia = () => {
+        if (errorValidation()) {
+            setLoading(true)
+            const formData = new FormData();
+            resume && formData.append(
+                "files",
+                resume,
+                resume.name
+            );
+            instance.post(`api/${Role}/media/create`, formData)
+                .then(function (response) {
+                    setLoading(false);
+                    setDeveloperData({
+                        ...developerData,
+                        developerDocuments: [
+                            {
+                                documentName: "Resume",
+                                documentLink: response[0].mediaURL
+                            }
+                        ]
+                    })
+                })
+                .catch(err => {
+                    setLoading(false);
+                })
+        }
+
+    }
+
+    useEffect(() => {
+        if (developerData.developerDocuments[0].documentLink !== '') {
+            createDeveloperApi()
+        }
+    }, [developerData])
 
     const createDeveloperApi = () => {
         if (errorValidation()) {
@@ -313,7 +314,7 @@ function AddingDeveloper(props) {
                                         {errors.developerAvailability && (<p className="error_paragraph">{errors.developerAvailability}</p>)}
                                     </div>
                                     <div className="submitButton">
-                                        <button onClick={() => createDeveloperApi()}>Submit</button>
+                                        <button onClick={() => uploadMedia()}>Submit</button>
                                     </div>
                                 </div>
                             </div>
