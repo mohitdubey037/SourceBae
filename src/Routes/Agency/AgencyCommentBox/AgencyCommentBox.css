@@ -471,6 +471,7 @@
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.4px;
+  text-transform: capitalize;
 }
 
 @media (max-width: 768px) {

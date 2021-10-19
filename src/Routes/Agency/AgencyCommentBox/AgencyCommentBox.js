@@ -207,7 +207,7 @@ const AgencyCommentBox = (props) => {
                     {index.comment && (
                       <div className="chatBox chatBox-left" >
                         <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
-                        <b>Client</b>
+                        <b>{`${props?.clientId?.companyName}`}</b>
                       </div>
                     )}
                     {index.reply && (
