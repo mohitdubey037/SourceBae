@@ -89,7 +89,6 @@ function RespondedDetails(props) {
           <span className="leftLine"></span>
           <div>
             <p>Agency</p>
-            <p>{`${project?.projectProposals[0]?.agencyId?.agencyName}`}</p>
             <p>{project?.projectProposals[0]?.agencyId?.agencyName}</p>
           </div>
           <div>
