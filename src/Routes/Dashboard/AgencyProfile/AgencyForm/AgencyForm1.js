@@ -65,7 +65,6 @@ function AgencyForm1(props) {
         if (formData.agencyLogo !== null) {
             instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
                 .then(function (response) {
-                    // setStatus("Next");
                     setLoading(false);
                     props.history.push("/agency-form-two");
                 })
@@ -74,29 +73,6 @@ function AgencyForm1(props) {
                 })
         }
     }, [formData, formDataErrors]);
-
-    // function uploadMedia(category, document) {
-
-    //     const data = new FormData();
-
-    //     document && data.append(
-    //         "files",
-    //         document,
-    //         category
-    //     );
-
-    //     instance.post(`api/${Role}/media/create`, data)
-    //         .then(function (response) {
-
-    //             setFormData({
-    //                 ...formData,
-    //                 agencyLogo: response[0].mediaURL
-    //             })
-
-    //             setStatus("Update")
-    //         })
-    // }
-
 
     const handleSubmit = (category, document) => {
         if (agencyLogo === null) {

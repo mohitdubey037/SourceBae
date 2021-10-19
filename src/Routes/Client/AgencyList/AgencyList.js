@@ -183,7 +183,7 @@ function AgencyList(props) {
                                   </div>
                                 </div>
                                 <div className="profileButton">
-                                  {agency.productId !== undefined ? (
+                                  {/* {agency.productId !== undefined ? ( */}
                                     <p
                                       onClick={() =>
                                         props.history.push({
@@ -198,7 +198,7 @@ function AgencyList(props) {
                                         aria-hidden="true"
                                       ></i>
                                     </p>
-                                  ) : null}
+                                  {/* ) : null} */}
                                 </div>
                               </div>
 

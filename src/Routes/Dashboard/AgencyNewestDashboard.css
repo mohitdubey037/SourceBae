@@ -4,8 +4,10 @@
 
 .user-project_parent {
   overflow: auto;
-  height: 25rem;
+  height: 29rem;
   margin-right: 6px;
+  display: flex;
+    flex-wrap: wrap;
 }
 
 .sidebar_parent .container-sPidebar {
@@ -105,4 +107,8 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.requiredStar {
+  color: red;
 }

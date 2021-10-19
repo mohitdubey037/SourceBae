@@ -265,7 +265,7 @@ function ShortTerm(props) {
               <div className="shortTermProjectName">
                 <ul>
                   <li>
-                    Choose a name for your project
+                    Choose a name for your project   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <div>
@@ -287,7 +287,7 @@ function ShortTerm(props) {
               <div className="shortTermProjectDesc">
                 <ul>
                   <li>
-                    Tell us more about your project
+                    Tell us more about your project   <span className="requiredStar" style={{color:"red"}}>*</span>
                   </li>
                 </ul>
                 <div className="startABit_shortTermProjectDesc">
@@ -318,14 +318,14 @@ function ShortTerm(props) {
               <div className="shortTermFileUpload">
                 <div className="uploadBlock">
                   <div className="fileUploadButton">
-                    <div style={{ cursor: 'pointer', width: '20%' }}>
+                    <div style={{display:"flex", cursor: 'pointer', width: '20%' }}>
                       <FilePicker
                         extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
                         onChange={(fileObj) => fileHandler(fileObj)}
                         onError={errMsg => toast.error(errMsg)}
                       >
                         <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image" />
-                      </FilePicker>
+                      </FilePicker>    <span className="requiredStar">*</span>
                     </div>
                   </div>
                   <div className="uploadInfo">
@@ -342,7 +342,7 @@ function ShortTerm(props) {
               <div className="shortTermOptionSelect">
                 <ul>
                   <li>
-                    What work do you need to get done?
+                    What work do you need to get done?   <span className="requiredStar">*</span>
                   </li>
                 </ul>
 
@@ -374,7 +374,7 @@ function ShortTerm(props) {
               <div className="howToPay">
                 <ul>
                   <li>
-                    How do you want to pay?
+                    How do you want to pay?   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <div className="innerHowToPay">
@@ -434,7 +434,7 @@ function ShortTerm(props) {
                 <div className="estimatedBudgetText">
                   <ul>
                     <li>
-                      What is your estimated Budget?
+                      What is your estimated Budget?   <span className="requiredStar">*</span>
                     </li>
                   </ul>
                 </div>
@@ -475,8 +475,8 @@ function ShortTerm(props) {
             </div>
           </div>
 
-          <div className="post-project" onClick={() => handleButton()}>
-            <p>Post Project</p>
+          <div className="post-project" >
+            <p onClick={() => handleButton()}>Post Project</p>
           </div>
         </div>
       </div>

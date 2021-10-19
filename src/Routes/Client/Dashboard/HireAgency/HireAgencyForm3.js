@@ -165,7 +165,7 @@ function HireAgencyForm3(props) {
                                             {allTechnologies ? (
                                                 <>
                                                     <p className="uiuxtext">
-                                                        Select Technologies
+                                                        Select Technologies    <span className="requiredStar">*</span>
                                                     </p>
                                                     <MultiSelect
                                                         options={allTechnologies}
@@ -219,7 +219,7 @@ function HireAgencyForm3(props) {
                                 <p className="servicesAgencyHeadingForm3">
                                     <ul>
                                         <li>
-                                            Which kind of application or service would you require?
+                                            Which kind of application or service would you require?     <span className="requiredStar">*</span>
                                         </li>
                                     </ul>
                                 </p>

@@ -98,6 +98,10 @@ function Received(props) {
                                                 <p>Timeline</p>
                                                 <p>45</p>
                                             </div>
+                                            <div>
+                                                    <p>Status</p>
+                                                    <p style={{color:"#45A4EA"}}>{s.projectCurrentStatus}</p>
+                                            </div>
                                         </div>
                                         <div className="respondedCardButton">
                                             <div className="showDetail_receivedCardButton" onClick={() => props.history.push({

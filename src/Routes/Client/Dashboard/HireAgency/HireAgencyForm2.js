@@ -238,7 +238,7 @@ function HireAgencyForm2(props) {
                       <div className="serviceSelectionInput">
                         <>
                           <p className="uiuxtext">
-                            Select {selectedDomain.domainName} services
+                            Select {selectedDomain.domainName} services    <span style={{fontSize:"12px"}} className="requiredStar">*</span>
                           </p>
                           <MultiSelect
                             options={options}
@@ -265,7 +265,7 @@ function HireAgencyForm2(props) {
                 <ul>
                   <li>
                     <p className="servicesAgencyHeading">
-                      In which Domain you have good command?
+                      In which Domain you have good command?    <span className="requiredStar">*</span>
                     </p>
                   </li>
                 </ul>
@@ -295,7 +295,7 @@ function HireAgencyForm2(props) {
                   <li>
                     <p>
                       How experience should the agency be in the domain of the
-                      project?
+                      project?     <span className="requiredStar">*</span>
                     </p>
                   </li>
                 </ul>

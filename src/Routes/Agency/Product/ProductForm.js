@@ -484,7 +484,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>Upload your latest logo of product</p>
+                          <p>Upload your latest logo of product  <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <FilePicker
@@ -506,7 +506,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>What's your good product name?</p>
+                          <p>What's your good product name?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <input
@@ -525,7 +525,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>Describe a bit about your product.</p>
+                          <p>Describe a bit about your product.   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <textarea
@@ -558,7 +558,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>What type of Business product you have?</p>
+                          <p>What type of Business product you have?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
 
@@ -593,7 +593,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>What's your good team size?</p>
+                          <p>What's your good team size?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <FormControl className={classes.formControl}>
@@ -626,7 +626,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>Total revenue generated till now?</p>
+                          <p>Total revenue generated till now?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <FormControl /*variant="outlined"*/ className={classes.formControl}>
@@ -659,7 +659,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>Which business modal does your product have?</p>
+                          <p>Which business modal does your product have?  <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <div className="radioGroupButtons">
@@ -691,7 +691,7 @@ function ProductForm(props) {
                     <section className="previousFunding">
                       <ul>
                         <li>
-                          <p>Any previous funding?</p>
+                          <p>Any previous funding?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <FormControl component="fieldset">
@@ -723,7 +723,7 @@ function ProductForm(props) {
                     </section>
                     {apiData.productPreviousFunding === "true" ? (
                       <section className="amountRaised">
-                        <span className="howMuchHaveYouRaised"><li>How much amount have you raised yet?</li></span>
+                        <span className="howMuchHaveYouRaised"><li>How much amount have you raised yet?   <span className="requiredStar">*</span></li></span>
                         <FormControl /*variant="outlined"*/ className={classes.formControl}>
                           <Select
                             labelId="demo-simple-select-label"
@@ -754,7 +754,7 @@ function ProductForm(props) {
                     <section className="previousFunding typeOfFunding">
                       <ul>
                         <li>
-                          <p>Which type of funding you are looking for?</p>
+                          <p>Which type of funding you are looking for?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <FormControl /*variant="outlined"*/ className={classes.formControl}>
@@ -803,7 +803,7 @@ function ProductForm(props) {
                     <section className="currentStage">
                       <ul>
                         <li>
-                          <p>What is the current stage of product?</p>
+                          <p>What is the current stage of product?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <div className="currentStageRadios">
@@ -831,7 +831,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>How many customer you have accquired?</p>
+                          <p>How many customer you have accquired?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <FormControl /*variant="outlined"*/ className={classes.formControl}>
@@ -867,7 +867,7 @@ function ProductForm(props) {
                     <section>
                       <ul>
                         <li>
-                          <p>How many active users are there ?</p>
+                          <p>How many active users are there ?   <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
                       <FormControl /*variant="outlined"*/ className={classes.formControl}>
@@ -911,7 +911,7 @@ function ProductForm(props) {
                       <section>
                         <ul>
                           <li>
-                            <p>Your Company Location</p>
+                            <p>Your Company Location   <span className="requiredStar">*</span></p>
                           </li>
                         </ul>
                         <input
@@ -930,7 +930,7 @@ function ProductForm(props) {
                       <section>
                         <ul>
                           <li>
-                            <p>When was your product started?</p>
+                            <p>When was your product started?   <span className="requiredStar">*</span></p>
                           </li>
                         </ul>
                         <input
@@ -943,7 +943,7 @@ function ProductForm(props) {
                       <section>
                         <ul>
                           <li>
-                            <p>Any feature link?</p>
+                            <p>Any feature link?   <span className="requiredStar">*</span></p>
                           </li>
                         </ul>
                         <input
@@ -962,7 +962,7 @@ function ProductForm(props) {
                       <section>
                         <ul>
                           <li>
-                            <p>Any Platform link?</p>
+                            <p>Any Platform link?   <span className="requiredStar">*</span></p>
                           </li>
                         </ul>
                         <input
@@ -983,7 +983,7 @@ function ProductForm(props) {
                           <section>
                             <ul>
                               <li>
-                                <p>Founders of this product</p>
+                                <p>Founders of this product   <span className="requiredStar">*</span></p>
                               </li>
                             </ul>
                             {errors.productFounderLinkedinProfiles && (

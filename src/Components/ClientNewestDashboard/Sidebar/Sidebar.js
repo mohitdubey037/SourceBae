@@ -57,6 +57,9 @@ function Sidebar(props) {
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
+        localStorage.removeItem('isVerified');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('toggle');
         cookie.remove("Authorization");
         routerHistory.push('/');
     }
