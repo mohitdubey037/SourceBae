@@ -193,7 +193,7 @@ const AgencyCommentBox = (props) => {
         <div className="topLine" style={{
           backgroundColor: "rgb(69, 164, 228)"
         }}></div>
-        <img src={bgPic} alt="img" style={{position:"absolute", top:"5rem",left:"9rem"}}/>
+        <img src={bgPic} alt="img" style={{position:"absolute", top:"5rem",left:"9rem", zIndex:"-1",opacity:"0.4"}}/>
         {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
           :
