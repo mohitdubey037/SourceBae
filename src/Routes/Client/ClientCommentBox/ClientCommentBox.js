@@ -16,6 +16,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import bgPic from "../../../assets/images/Quotation/bgPic.svg";
+
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -150,6 +152,7 @@ const ClientCommentBox = (props) => {
         <div className="commentBox">
           <div className="topLine" style={{
           }}></div>
+          <img src={bgPic} alt="img" style={{position:"absolute", top:"5rem",left:"9rem", zIndex:"-1",opacity:"0.4"}}/>
           {props.projectProposals[0].comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
@@ -239,6 +242,9 @@ const ClientCommentBox = (props) => {
         </div>
 
         <div className='action-wait'>
+        <div className="topLine" style={{
+          backgroundColor: "rgb(69, 164, 228)"
+        }}></div>
           {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
             <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>

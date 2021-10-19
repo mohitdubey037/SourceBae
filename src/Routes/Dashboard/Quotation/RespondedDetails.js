@@ -88,8 +88,8 @@ function RespondedDetails(props) {
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
-            <p>Client</p>
-            <p>{`${project?.clientId?.companyName}`}</p>
+            <p>Agency</p>
+            <p>{`${project?.projectProposals[0]?.agencyId?.agencyName}`}</p>
           </div>
           <div>
             <p>Expected Timeline</p>
