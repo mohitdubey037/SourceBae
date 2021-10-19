@@ -46,7 +46,7 @@ function Navbar(props) {
 
 
     return (
-        <div style={{ top: Role === 'Client' && '1rem' }} className={`navbar ${props.history.location.pathname === '/agencyNewestDashboard' && 'navbar_agency'}`}>
+        <div style={{ top: Role === 'Client' && '1rem' }} className='navbar'>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{
@@ -54,7 +54,8 @@ function Navbar(props) {
                             props.history.location.pathname === `/product-details:${index}` ||
                             url.includes('/shared-developers') ||
                             url.includes('/client-one-hire-developer') ||
-                            url.includes('/agencyNewestAllProject')) ||
+                            url.includes('/agencyNewestAllProject') ||
+                            url.includes('/agencyNewestDashboard')) ||
                             props.history.location.pathname === '/clientNewestDashboard' ? 'white' : 'blue'
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
