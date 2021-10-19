@@ -19,6 +19,7 @@ import * as helper from "../../../../shared/helper"
 function AgencyForm4(props) {
 
     const Role = localStorage.getItem('role');
+    const url = props.history.location.pathname;
     const [loading, setLoading] = useState(false);
     const [fields, setFields] = useState([{ value: null }]);
     const [githubLink, setGithubLink] = useState({})
@@ -99,7 +100,25 @@ function AgencyForm4(props) {
 
     useEffect(() => {
         console.log(githubLink, stackoverflow, featuredLink);
-    }, [githubLink, stackoverflow, featuredLink])
+    }, [githubLink, stackoverflow, featuredLink]);
+
+    const goBack = () => {
+        if (url.includes('agency-form-one')) {
+            props.history.push('/agencyNewestDashboard');
+        }
+        else if (url.includes('agency-form-two')) {
+            props.history.push('/agency-form-one');
+        }
+        else if (url.includes('agency-form-three')) {
+            props.history.push('/agency-form-two');
+        }
+        else if (url.includes('agency-form-four')) {
+            props.history.push('/agency-form-three');
+        }
+        else {
+            props.history.goBack();
+        }
+    }
 
 
     const validateInfo = () => {
@@ -277,7 +296,7 @@ function AgencyForm4(props) {
                                     </div>
 
                                     <div className="nextBtn buttonParent_agencyForm4">
-                                        <button style={{ backgroundColor: '#707070' }} >
+                                        <button style={{ backgroundColor: '#707070' }} onClick={() => goBack()}>
                                             Back
                                         </button>
                                         <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={finalUpdate} >
