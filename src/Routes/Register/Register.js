@@ -234,6 +234,7 @@ const Register = (props) => {
                     localStorage.setItem("userId", `${response._id}`);
                 })
                 .catch(err => {
+                    console.log(err);
                     setApiErrors(true);
                     localStorage.removeItem("Authorization");
                     localStorage.removeItem('role');
@@ -677,9 +678,9 @@ const Register = (props) => {
 
                                         <div className="already_next_register">
                                             <div className="next_Register" onClick={() => handleSubmit(role, signupForm)}>
-                                                <div className="blur_submit_register">
+                                                {/* <div className="blur_submit_register">
 
-                                                </div>
+                                                </div> */}
                                                 <p>Submit</p>
                                             </div>
                                             <div className="registerOption">
