@@ -215,10 +215,23 @@ function AddingDeveloper(props) {
                                 <div className="pointsToRemember">
                                     <h2>Points To Remember</h2>
                                     <div style={{ paddingTop: "1rem" }}>
-                                        <div><img src={radio} alt="NotFound" style={{ marginRight: "5px" }} />Fill Form Carefully</div>
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <p>Fill Form Carefully</p>
+                                                </li>
+                                                <li>
+                                                    <p>Drop the Resume</p>
+                                                </li>
+                                                <li>
+                                                    <p>We will reach you shortly</p>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                        {/* <div><img src={radio} alt="NotFound" style={{ marginRight: "5px" }} />Fill Form Carefully</div>
                                         <div><img src={radio} alt="NotFound" style={{ marginRight: "5px" }} />Drop the Resume</div>
-                                        <div><img src={radio} alt="NotFound" style={{ marginRight: "5px" }} />We will reach you shortly</div>
-                                        <div />
+                                        <div><img src={radio} alt="NotFound" style={{ marginRight: "5px" }} />We will reach you shortly</div> */}
                                     </div>
                                 </div>
                                 <img src={dev} alt="NotFound" style={{ margin: "1rem 0rem 0rem 5rem", width: "80%" }} />

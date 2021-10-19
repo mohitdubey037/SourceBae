@@ -89,7 +89,11 @@ function RespondedDetails(props) {
           <span className="leftLine"></span>
           <div>
             <p>Agency</p>
+<<<<<<< HEAD
             {/* <p>{`${project?.projectProposals[0]?.agencyId?.agencyName}`}</p> */}
+=======
+            <p>{project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}</p>
+>>>>>>> 50b0c9d142c23b3a6508d8e3fa51d793c570ced8
           </div>
           <div>
             <p>Expected Timeline</p>

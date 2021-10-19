@@ -15,6 +15,7 @@ import Spinner from '../../../../Components/Spinner/Spinner'
 function AgencyForm3(props) {
 
     const Role = localStorage.getItem('role');
+    const url = props.history.location.pathname;
     const status = "Upload"
     const [pickedAll, setPickedAll] = useState(false)
     const [loading, setLoading] = useState(false);
@@ -141,6 +142,24 @@ function AgencyForm3(props) {
             })
     }
 
+    const goBack = () => {
+        if (url.includes('agency-form-one')) {
+            props.history.push('/agencyNewestDashboard');
+        }
+        else if (url.includes('agency-form-two')) {
+            props.history.push('/agency-form-one');
+        }
+        else if (url.includes('agency-form-three')) {
+            props.history.push('/agency-form-two');
+        }
+        else if (url.includes('agency-form-four')) {
+            props.history.push('/agency-form-three');
+        }
+        else {
+            props.history.goBack();
+        }
+    }
+
     useEffect(() => {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
             setPickedAll(true)
@@ -210,7 +229,7 @@ function AgencyForm3(props) {
                                 </div>
 
                                 <div className="nextBtn">
-                                    <button onClick={() => props.history.goBack()} style={{ backgroundColor: '#707070' }}>
+                                    <button onClick={() => goBack()} style={{ backgroundColor: '#707070' }}>
                                         Back
                                     </button>
                                     <button className="uploadButton_agencyForm3" style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={handleUpload} name={status}>
@@ -220,8 +239,8 @@ function AgencyForm3(props) {
                             </div>
                         </div>
                         <div className="miscellaneousArea">
-                                <p>Your Information is safe with us.</p>
-                                <img src={illustrationImage} alt="agency-form-3"/>
+                            <p>Your Information is safe with us.</p>
+                            <img src={illustrationImage} alt="agency-form-3" />
                         </div>
                     </div>
                 }
