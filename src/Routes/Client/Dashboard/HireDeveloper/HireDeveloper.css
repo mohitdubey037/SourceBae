@@ -440,3 +440,7 @@
 .resourceNumber .dropdown-heading {
   border-radius: 0rem !important;
 }
+
+.preferredBillingMode .PrivateSwitchBase-input-6 {
+  z-index: 0 ;
+}

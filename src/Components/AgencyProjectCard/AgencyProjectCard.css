@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto 30px;
-  width: 98%;
+  width: 45%;
   border: 1px solid #f5f5f5;
   padding: 1rem;
   background-color: #ffffff;
@@ -101,9 +101,9 @@
   background: #ffffff;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 52%;
+  /* flex-direction: column; */
+  justify-content: space-evenly;
+  /* height: 52%; */
   font-family: 'Segoe UI';
 }
 
@@ -130,4 +130,8 @@ table {
 
 td:nth-child(even) {
   color: #68e1fd;
+}
+
+.currentStatus p {
+  color: #45a4ea;
 }

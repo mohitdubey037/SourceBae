@@ -190,6 +190,8 @@ function AgencyProfile(props) {
                       onMouseOver={() => setHoverModal(true)}
                     ></i>
                   </div>
+
+                  {agencyProfileData.productId !== undefined ? (
                   <button
                     style={{ backgroundImage: 'linear-gradient(284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%)' }}
                     onClick={() => props.history.push({
@@ -200,7 +202,7 @@ function AgencyProfile(props) {
                   >
                     View Your Product
                     <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
-                  </button>
+                  </button>):null}
                 </>
               )}
             </div>

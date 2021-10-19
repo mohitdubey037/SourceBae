@@ -192,7 +192,7 @@ const HireAgencyForm1 = (props) => {
                   <div className="understand_your_project">Help us understand more about your project..!!</div>
                   <div className="input-form_hireAgencyForm1">
                     <div className="projectNameAgency">
-                      <p>1.&nbsp;What will be the name of your project?</p>
+                      <p>1.&nbsp;What will be the name of your project?   <span className="requiredStar">*</span></p>
                       <input
                         type="text"
                         name="projectName"
@@ -208,7 +208,7 @@ const HireAgencyForm1 = (props) => {
                       )}
                     </div>
                     <div className="descriptionProjectAgency">
-                      <p>2.&nbsp;Describe a little bit about your project?</p>
+                      <p>2.&nbsp;Describe a little bit about your project?   <span className="requiredStar">*</span></p>
                       <textarea
                         name="projectDescription"
                         cols="30"
@@ -227,7 +227,7 @@ const HireAgencyForm1 = (props) => {
                       )}
                     </div>
                     <div className="budgetSectionAreaAgency">
-                      <p>3.&nbsp;What's your budget for this project?</p>
+                      <p>3.&nbsp;What's your budget for this project?  <span className="requiredStar">*</span></p>
                       <FormControl component="fieldset">
                         <RadioGroup
                           aria-label="projectProposalCost"
@@ -259,7 +259,7 @@ const HireAgencyForm1 = (props) => {
                       </FormControl>
                     </div>
                     <div className="numberOfDays">
-                      <p>4.&nbsp;How soon do you want to start?</p>
+                      <p>4.&nbsp;How soon do you want to start? <span className="requiredStar">*</span> </p>
                       <div className="daysInputAgency">
                         <p>{data.projectExpectedStartingDays} days</p>
                         <div className="upArrow" onClick={upArrow}>
