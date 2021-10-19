@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from './FormPhases';
@@ -6,8 +5,6 @@ import { FilePicker } from 'react-file-picker'
 // import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
 import agency3d from '../../../../assets/images/AgencyProfile/form1_3d.png'
 import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png'
-import { NavLink } from 'react-router-dom'
-import Alert from '@material-ui/lab/Alert';
 import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
@@ -21,17 +18,12 @@ function AgencyForm1(props) {
     const Role = localStorage.getItem('role');
     const api_param_const = "agencies"
 
-    const colors = {
-        Upload: "blue",
-        Update: "Green",
-    }
-
     const [loading, setLoading] = useState(false);
-    const status = "Upload"
     const [linkedIn, setLinkedIn] = useState({
         platformName: "linkedIn",
         platformLink: ""
     })
+    const [steps, setSteps] = useState('')
 
     const [agencyLogo, setAgencyLogo] = useState(null)
     const [formData, setFormData] = useState({
@@ -73,6 +65,18 @@ function AgencyForm1(props) {
                 })
         }
     }, [formData, formDataErrors]);
+
+    const getStepsCompleted = () => {
+        instance.get(`api/${Role}/agencies/steps-completed`)
+            .then(function (response) {
+                console.log(response.stepsCompleted);
+                setSteps(response.stepsCompleted);
+            });
+    };
+
+    useEffect(() => {
+        getStepsCompleted();
+    }, []);
 
     const handleSubmit = (category, document) => {
         if (agencyLogo === null) {
@@ -303,13 +307,11 @@ function AgencyForm1(props) {
             setLoading(true);
             if (agencyLogo !== null) {
                 const data = new FormData();
-
                 data.append(
                     "files",
                     agencyLogo.document,
                     agencyLogo.category
                 );
-
                 instance.post(`api/${Role}/media/create`, data)
                     .then(function (response) {
                         setFormData({
@@ -353,7 +355,6 @@ function AgencyForm1(props) {
         }
     }
 
-
     const handleUploadError = (error) => {
         toast.error(error)
     }
@@ -380,7 +381,7 @@ function AgencyForm1(props) {
                     <Navbar />
                     <div className="agency-form_parent">
                         <Back name="Agency Form 1" />
-                        <FormPhases value1={true} />
+                        <FormPhases value1={true} steps={steps} />
                         <div className="mainPersonelDetailsForm">
                             <div className="innerLeftPersonelDetailsForm">
                                 <div className="formContentPartOne">
