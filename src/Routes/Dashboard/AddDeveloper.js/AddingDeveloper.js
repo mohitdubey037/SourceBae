@@ -240,26 +240,26 @@ function AddingDeveloper(props) {
                                 <div className="inputForm">
                                     <div className="inputField1">
                                         <div className="developerName_addingDeveloper">
-                                            <h4>First Name</h4>
+                                            <h4>First Name *</h4>
                                             <input type="text" placeholder="First Name" name="firstName" value={developerData.firstName} onChange={(event) => handleChange(event)} />
                                             {errors.firstName && (<p className="error_paragraph basic">{errors.firstName}</p>)}
                                         </div>
 
                                         <div className="developerName_addingDeveloper">
-                                            <h4>Last Name</h4>
+                                            <h4>Last Name *</h4>
                                             <input type="text" placeholder="Last Name" name="lastName" value={developerData.lastName} onChange={(event) => handleChange(event)} />
                                             {errors.lastName && (<p className="error_paragraph basic">{errors.lastName}</p>)}
                                         </div>
 
                                         <div className="developerDesignation_addingDeveloper">
-                                            <h4>Designation</h4>
+                                            <h4>Designation *</h4>
                                             <input type="text" placeholder="E.g- Angular Developer" name="developerDesignation" value={developerData.developerDesignation} onChange={(event) => handleChange(event)} />
                                             {errors.developerDesignation && (<p className="error_paragraph basic">{errors.developerDesignation}</p>)}
                                         </div>
                                     </div>
                                     <div className="inputField2">
                                         <div className="developerName_addingDeveloper">
-                                            <h4>Technology & Skills</h4>
+                                            <h4>Technology & Skills *</h4>
                                             <MultiSelect
                                                 options={techs.map(t => ({ "label": t.technologyName, "value": t._id }))}
                                                 value={multipleSelectId}
@@ -270,7 +270,7 @@ function AddingDeveloper(props) {
                                             {errors.developerTechnologies && (<p className="error_paragraph experience">{errors.developerTechnologies}</p>)}
                                         </div>
                                         <div className="developerDesignation_addingDeveloper">
-                                            <h4>Upload Resume</h4>
+                                            <h4>Upload Resume *</h4>
                                             <div className="uploadBlock_addingDeveloper">
                                                 <div className="fileUploadButton_addingDeveloper">
                                                     <FilePicker
@@ -291,7 +291,7 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="yearsOfExperience_addingDeveloper">
                                         <FormControl component="fieldset">
-                                            <FormLabel component="legend">Years of Experience</FormLabel>
+                                            <FormLabel component="legend">Years of Experience *</FormLabel>
                                             <div className="experience-radio-parent">
                                                 <RadioGroup aria-label="developerExperience" name="developerExperience" value={developerData.developerExperience} onChange={(event) => handleChange(event)}>
                                                     <FormControlLabel value="1" control={<Radio />} label="Junior(1-3years)" />
@@ -304,7 +304,7 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="priceRange">
                                         <FormControl component="fieldset">
-                                            <FormLabel component="legend">Price Range(Monthly)</FormLabel>
+                                            <FormLabel component="legend">Price Range(Monthly) *</FormLabel>
                                             <RadioGroup aria-label="developerPriceRange" name="developerPriceRange" value={developerData.developerPriceRange} onChange={(event) => handleChange(event)}>
                                                 <FormControlLabel value="1500" control={<Radio />} label="less than $1500 per month" />
                                                 <FormControlLabel value="2500" control={<Radio />} label="$1500-$2500 per month" />
@@ -316,7 +316,7 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="availabilityArea">
                                         <FormControl component="fieldset">
-                                            <FormLabel component="legend">Availability</FormLabel>
+                                            <FormLabel component="legend">Availability *</FormLabel>
                                             <RadioGroup aria-label="developerAvailability" name="developerAvailability" value={developerData.developerAvailability} onChange={(event) => handleChange(event)}>
                                                 <FormControlLabel value="0" control={<Radio />} label="Immediately" />
                                                 <FormControlLabel value="1" control={<Radio />} label="less than 2 weeks" />

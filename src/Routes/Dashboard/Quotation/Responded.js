@@ -27,6 +27,7 @@ function Responded(props) {
             })
 
     }
+    // console.log(projects,"memjokmej")
 
     useEffect(() => {
         getAllReceivedData()
@@ -94,6 +95,10 @@ function Responded(props) {
                                                 <div>
                                                     <p>Timeline</p>
                                                     <p>45</p>
+                                                </div>
+                                                <div>
+                                                    <p>Status</p>
+                                                    <p style={{color:"#45A4EA"}}>{s.projectCurrentStatus}</p>
                                                 </div>
                                             </div>
                                             <div className="respondedCardButton">

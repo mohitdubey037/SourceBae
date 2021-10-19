@@ -163,7 +163,7 @@ function HireDeveloper(props) {
               <div className="resourceNumber">
                 <ul>
                   <li>
-                    Requirement Name
+                    Requirement Name  <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <input
@@ -178,7 +178,7 @@ function HireDeveloper(props) {
               <div className="resourceNumber">
                 <ul>
                   <li>
-                    What roles are you looking for?
+                    What roles are you looking for?  <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <MultiSelect
@@ -194,7 +194,7 @@ function HireDeveloper(props) {
               <div className="resourceNumber">
                 <ul>
                   <li>
-                    Number of Resources
+                    Number of Resources   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <input
@@ -209,7 +209,7 @@ function HireDeveloper(props) {
               <div className="resourceNumber">
                 <ul>
                   <li>
-                    Skills Required
+                    Skills Required   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 {allTechnologies.length > 0 ? (
@@ -228,7 +228,7 @@ function HireDeveloper(props) {
               <div className="developerExperienceRequired">
                 <ul>
                   <li>
-                    Average Experience
+                    Average Experience   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <FormControl component="fieldset">
@@ -281,7 +281,7 @@ function HireDeveloper(props) {
               <div className="preferredBillingMode">
                 <ul>
                   <li>
-                    Preffered Billing
+                    Preffered Billing   <span className="requiredStar">*</span>
                   </li>
                 </ul>
 
@@ -322,7 +322,7 @@ function HireDeveloper(props) {
               <div className="averageBudget">
                 <ul>
                   <li>
-                    Average Budget
+                    Average Budget   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 {billing === 1 ? (
@@ -395,7 +395,7 @@ function HireDeveloper(props) {
               <div className="startPeriod">
                 <ul>
                   <li>
-                    Start Date
+                    Start Date   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <FormControl component="fieldset">
@@ -434,7 +434,7 @@ function HireDeveloper(props) {
               <div className="contractPeriod">
                 <ul>
                   <li>
-                    Contract Periods
+                    Contract Periods   <span className="requiredStar">*</span>
                   </li>
                 </ul>
                 <select

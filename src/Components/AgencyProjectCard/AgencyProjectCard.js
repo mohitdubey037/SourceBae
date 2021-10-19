@@ -48,14 +48,19 @@ function AgencyProjectCard({ key, ...props }) {
                         <tr>
                             <td>Industry</td>
                             <td>{props?.projectDomainId?.domainName}</td>
-                            <td>Final Budget</td>
-                            <td>${props?.projectFinalCost === undefined ? props?.projectProposalCost : props?.projectFinalCost}</td>
                         </tr>
+                        
                         <tr>
                             <td>Expert Categories</td>
                             <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
+                        </tr>
+                        <tr>
                             <td>Services</td>
                             <td>{props?.projectServicesRequired?.map(a => <span>{a.serviceName}<br></br></span>)}</td>
+                        </tr>
+                        <tr>
+                            <td>Final Budget</td>
+                            <td>${props?.projectFinalCost === undefined ? props?.projectProposalCost : props?.projectFinalCost}</td>
                         </tr>
                     </thead>
                 </table>
