@@ -265,19 +265,21 @@ function AgencyList(props) {
                                   </>
                                 ) : (
                                   <>
-                                    <div
+                                    <div  className="ShortlistTool"
                                       onClick={() =>
                                         openShortlistModal(agency._id, index)
                                       }
                                     >
                                       <p>Shortlist</p>
+                                      <span class="tooltiptext">Tooltip text</span>
                                     </div>
-                                    <div
+                                    <div className="getQuotationTool"
                                       onClick={() =>
                                         onOpenQuotationModel(agency._id, index)
                                       }
                                     >
                                       <p>Get Quotation</p>
+                                      <span class="tooltiptext">Tooltip text</span>
                                     </div>
                                   </>
                                 )}
