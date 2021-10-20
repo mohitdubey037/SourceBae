@@ -90,7 +90,6 @@ function RespondedDetails(props) {
           <div>
             <p>Agency</p>
             <p>{project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}</p>
-            {/* <p>{`${project?.projectProposals[0]?.agencyId?.agencyName}`}</p> */}
           </div>
           <div>
             <p>Expected Timeline</p>
