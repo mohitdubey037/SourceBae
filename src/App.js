@@ -4,7 +4,6 @@ import firebase from './firebase';
 import Mainhomepage from './Routes/LandingPage/Mainhomepage'
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
-import Signup from './Routes/Signup/Signup';
 import Register from './Routes/Register/Register';
 
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
@@ -57,7 +56,6 @@ useEffect(() => {
   return (
     <Switch>
       <Route exact path='/' component={Mainhomepage} />
-      <Route exact path='/signup' component={Signup} />
       <Route exact path="/login:role" component={Login} />
       <Route exact path='/register:role' component={Register} />
       <Route exact path='/enter-email' component={EnterEmail} />

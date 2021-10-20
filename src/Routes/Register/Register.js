@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import './register.css'
 import { useParams } from 'react-router'
-import { makeStyles, withStyles, FormGroup, Switch, Grid, Typography, Button, TextField } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core';
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import { toast } from 'react-toastify'
@@ -117,13 +116,23 @@ const Register = (props) => {
     }, [apiErrors])
 
     const setForm = (event) => {
-        const { name, value } = event.target
-        setSignupForm(
-            {
-                ...signupForm,
-                [name]: value
-            }
-        )
+        let { name, value } = event.target
+        if (name === 'firstName' || name === 'lastName' || name === 'userEmail') {
+            setSignupForm(
+                {
+                    ...signupForm,
+                    [name]: value.toLowerCase()
+                }
+            )
+        }
+        else {
+            setSignupForm(
+                {
+                    ...signupForm,
+                    [name]: value
+                }
+            )
+        }
     }
 
     const handleCreateProfile = (event, role) => {
@@ -457,7 +466,7 @@ const Register = (props) => {
                                                     type="text"
                                                     name="firstName"
                                                     placeholder='First Name'
-                                                    value={signupForm.firstName}
+                                                    // value={signupForm.firstName}
                                                     onChange={(e) => setForm(e)}
                                                 />
                                                 <div>
@@ -476,7 +485,7 @@ const Register = (props) => {
                                                     type="text"
                                                     name="lastName"
                                                     placeholder='Last Name'
-                                                    value={signupForm.lastName}
+                                                    // value={signupForm.lastName}
                                                     onChange={(e) => setForm(e)}
                                                 />
                                                 {
@@ -512,7 +521,7 @@ const Register = (props) => {
                                                     type="email"
                                                     name="userEmail"
                                                     placeholder='Email'
-                                                    value={signupForm.userEmail}
+                                                    // value={signupForm.userEmail}
                                                     onChange={(e) => setForm(e)}
                                                 />
                                                 {

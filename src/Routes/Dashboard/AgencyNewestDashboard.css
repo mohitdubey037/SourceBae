@@ -4,10 +4,10 @@
 
 .user-project_parent {
   overflow: auto;
-  height: 29rem;
+  height: 25rem;
   margin-right: 6px;
   display: flex;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .sidebar_parent .container-sPidebar {
