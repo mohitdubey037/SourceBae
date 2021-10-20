@@ -27,7 +27,7 @@ function Sidebar(props) {
     }
 
     useEffect(() => {
-        console.log(isNotification);
+        // console.log(isNotification);
     }, [isNotification]);
 
     const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
@@ -57,7 +57,8 @@ function Sidebar(props) {
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
-        localStorage.removeItem('isVerified');
+        localStorage.removeItem('isAgencyVerified');
+        localStorage.removeItem('isStepsCompleted');
         localStorage.removeItem('userId');
         localStorage.removeItem('toggle');
         cookie.remove("Authorization");

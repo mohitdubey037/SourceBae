@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  overflow-wrap: break-word;
 }
 
 .chatBox p {
@@ -40,6 +41,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow-wrap: break-word;
 }
 
 .chatBox-left p {
@@ -772,4 +774,8 @@
 .price-section .MuiOutlinedInput-multiline {
   padding: 16.5px 14px;
   margin-right: 0.6rem;
+}
+
+.fileUpload_shortTerm:hover {
+  cursor: pointer;
 }

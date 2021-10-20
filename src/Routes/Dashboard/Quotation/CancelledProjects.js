@@ -6,7 +6,7 @@ import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageN
 import { withRouter } from 'react-router';
 import './Received.css'
 
-function Received(props) {
+function CancelledProjects(props) {
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
 
@@ -15,7 +15,7 @@ function Received(props) {
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState();
 
-    const getAllReceivedData = () => {
+    const getAllCancelledData = () => {
         setLoading(true)
         instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=1`)
             .then(response => {
@@ -31,11 +31,10 @@ function Received(props) {
     }
 
     useEffect(() => {
-        getAllReceivedData()
+        getAllCancelledData()
     }, [])
 
-    console.log(projects,"data in recived")
-
+ console.log(projects,"projectsdkmdkjlf")
     return (
         <>
             {loading ? <Spinner /> :
@@ -50,6 +49,8 @@ function Received(props) {
                                 </div>
                             </>
                             :
+                            /* <> 
+                             {projects.projectProposals[0].rejectReasonByAgency ? (  */
                             projects.map((s) => {
                                 return (
                                     <div className="respondedCard">
@@ -121,6 +122,7 @@ function Received(props) {
                                     </div>
                                 )
                             })
+                            /* ):(null)}</> */
 
 
                         }
@@ -131,4 +133,4 @@ function Received(props) {
     );
 }
 
-export default withRouter(Received)
+export default withRouter(CancelledProjects)

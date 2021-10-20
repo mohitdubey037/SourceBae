@@ -19,6 +19,7 @@ function AgencyForm3(props) {
     const status = "Upload"
     const [pickedAll, setPickedAll] = useState(false)
     const [loading, setLoading] = useState(false);
+    const [steps, setSteps] = useState('');
 
     const [registrationCertificate, setRegistrationCertificate] = useState({
         documentName: "Company Registration Certificate",
@@ -68,6 +69,18 @@ function AgencyForm3(props) {
             })
         }
     }
+
+    const getStepsCompleted = () => {
+        instance.get(`api/${Role}/agencies/steps-completed`)
+            .then(function (response) {
+                console.log(response.stepsCompleted);
+                setSteps(response.stepsCompleted);
+            });
+    };
+
+    useEffect(() => {
+        getStepsCompleted();
+    }, []);
 
     const handleUploadError = (error) => {
         toast.error(error)
@@ -178,7 +191,7 @@ function AgencyForm3(props) {
             <div className="agency-form_parent">
                 <Navbar />
                 <Back name="Agency Form 3" />
-                <FormPhases value1={true} value2={true} value3={true} />
+                <FormPhases steps={steps} />
 
                 {loading ? <Spinner /> :
                     <div className="mainDocumentsForm">

@@ -9,7 +9,7 @@ function Back(props) {
     const [steps, setSteps] = useState('');
     const Role = localStorage.getItem('role');
     const verificationStatus = localStorage.getItem('isVerified');
-    console.log(verificationStatus);
+    // console.log(verificationStatus);
 
     const url = props.history.location.pathname;
 
@@ -26,6 +26,9 @@ function Back(props) {
             }
             else if (url.includes('agency-form-four')) {
                 props.history.push('/agency-form-three');
+            }
+            else {
+                props.history.goBack();
             }
         }
         else {

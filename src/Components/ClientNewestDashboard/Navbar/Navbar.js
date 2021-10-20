@@ -16,7 +16,8 @@ function Navbar(props) {
             const urlTemp = url.slice(indexTemp + 1);
             setIndex(urlTemp);
         }
-        console.log(url.includes('/shared-developers'))
+        // console.log(url.includes('/shared-developers')
+        // )
     }, [])
 
 
