@@ -303,6 +303,7 @@ const Register = (props) => {
         return role;
     }
 
+
     const toggleForms = (direction) => {
         const err = {}
         if (direction === 'next') {
@@ -389,6 +390,15 @@ const Register = (props) => {
             form2.classList.toggle('display__form2');
             setStep(prev => prev - 1)
         }
+    }
+
+    const backOnForm2 = () => {
+        let form1 = document.querySelector('.form__1')
+        let form2 = document.querySelector('.form__2')
+        form1.classList.toggle('hide__form1');
+        form1.classList.toggle('display__form1');
+        form2.classList.toggle('show__form2');
+        form2.classList.toggle('display__form2');
     }
 
     //============= USE-EFFECT HOOKS============//
@@ -557,6 +567,7 @@ const Register = (props) => {
                                             </div>
                                             <div className="registerOption">
                                                 <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
+                                                <p className="existing_accountText">Step {step} of 4</p>
                                             </div>
                                         </div>
                                     </form>
@@ -621,6 +632,34 @@ const Register = (props) => {
                                                             </p>
                                                         }
                                                     </div>
+
+                                                    <div className="input_with_error">
+                                                        <label>Website Url</label>
+                                                        <input
+                                                            style={{ width: '39%', paddingLeft: '2.5%' }}
+                                                            type="text"
+                                                            name="website"
+                                                            placeholder='Website URL'
+                                                            value={site.platformLink}
+                                                            onChange={(event) => handleSocialPlatform(event)} />
+                                                        {
+                                                            errors.socialPlatformDetailsError &&
+                                                            <p className="error_productForm">
+                                                                {errors.socialPlatformDetailsError}
+                                                            </p>
+                                                        }
+                                                    </div>
+
+                                                    <div>
+                                                        <div className="registerParent_onAgency">
+                                                            <div className="backRegister_onAgency" onClick={() => backOnForm2()}>
+                                                                <p>Back</p>
+                                                            </div>
+                                                            <div className="nextRegister_onAgency" onClick={() => handleSubmit(role, signupForm)}>
+                                                                <p>Submit</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </>
                                                 :
                                                 <>
@@ -638,7 +677,6 @@ const Register = (props) => {
                                                                 {errors.userDesignationError}
                                                             </p>
                                                         }
-                                                        {errors.userDesignationError && <Alert severity="error">{errors.userDesignationError}</Alert>}
                                                     </div>
 
                                                     <div className="input_with_error">
@@ -657,9 +695,35 @@ const Register = (props) => {
                                                             </p>
                                                         }
                                                     </div>
+                                                    <div className="input_with_error">
+                                                        <label>Website Url</label>
+                                                        <input
+                                                            style={{ width: '39%', paddingLeft: '2.5%' }}
+                                                            type="text"
+                                                            name="website"
+                                                            placeholder='Website URL'
+                                                            value={site.platformLink}
+                                                            onChange={(event) => handleSocialPlatform(event)} />
+                                                        {
+                                                            errors.socialPlatformDetailsError &&
+                                                            <p className="error_productForm">
+                                                                {errors.socialPlatformDetailsError}
+                                                            </p>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <div className="registerParent_onClient">
+                                                            <div className="backRegister_onClient" onClick={() => backOnForm2()}>
+                                                                <p>Back</p>
+                                                            </div>
+                                                            <div className="nextRegister_onClient" onClick={() => handleSubmit(role, signupForm)}>
+                                                                <p>Submit</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </>
                                         }
-                                        <div className="input_with_error">
+                                        {/* <div className="input_with_error">
                                             <label>Website Url</label>
                                             <input
                                                 style={{ width: '39%', paddingLeft: '2.5%' }}
@@ -674,23 +738,21 @@ const Register = (props) => {
                                                     {errors.socialPlatformDetailsError}
                                                 </p>
                                             }
-                                        </div>
+                                        </div> */}
 
                                         <div className="already_next_register">
-                                            <div className="next_Register" onClick={() => handleSubmit(role, signupForm)}>
-                                                {/* <div className="blur_submit_register">
-
-                                                </div> */}
+                                            {/* <div className="next_Register" onClick={() => handleSubmit(role, signupForm)}>
                                                 <p>Submit</p>
-                                            </div>
+                                            </div> */}
                                             <div className="registerOption">
                                                 <p>Already have an account? <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>Log In</span></p>
+                                                <p className="existing_accountText">Step {step} of 4</p>
                                             </div>
                                         </div>
                                     </form>
-                                    <div className="existing_accountText">
+                                    {/* <div className="existing_accountText">
                                         <p>Step {step} of 4</p>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
