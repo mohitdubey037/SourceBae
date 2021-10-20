@@ -286,7 +286,7 @@ function ProductAgencies(props) {
                                                                 <div className="productAgencyList">
                                                                     <div className="productAgencyContent">
                                                                         <span>Total Funding</span>
-                                                                        <p>{value?.productRevenueGenerated}</p>
+                                                                        <p>$ {value?.productRevenueGenerated}</p>
                                                                     </div>
                                                                     <div className="productAgencyContent">
                                                                         <span>Product Type</span>

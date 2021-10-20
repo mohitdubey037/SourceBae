@@ -265,9 +265,10 @@ const HireAgencyForm1 = (props) => {
                         <div className="upArrow" onClick={upArrow}>
                           <i class="fa fa-angle-up" aria-hidden="true"></i>
                         </div>
+                        {data.projectExpectedStartingDays > 5 ? (
                         <div className="downArrow" onClick={downArrow}>
                           <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </div>
+                        </div>):(null)}
                       </div>
                     </div>
                   </div>

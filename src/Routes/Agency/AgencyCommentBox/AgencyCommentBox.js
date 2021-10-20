@@ -21,6 +21,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import bgPic from "../../../assets/images/Quotation/bgPic.svg";
+import FileUploadImage from '../../../assets/images/Newestdashboard/Short_Term/short_term.svg';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -285,9 +287,9 @@ const AgencyCommentBox = (props) => {
                                 id="icon-button-file"
                                 style={{ display: 'none', }}
                               />
-                              <label htmlFor="icon-button-file">
+                              {/* <label htmlFor="icon-button-file">
                                 <AttachmentIcon onChange={(event) => inputFileChosen(event)} />
-                              </label>
+                              </label> */}
                             </>
                           )}
                       </InputAdornment>
@@ -370,6 +372,10 @@ const AgencyCommentBox = (props) => {
                   file === null ?
                     <div className="quotation_file_upload">
                       <p>Please upload a file of quotation</p>
+                      <label htmlFor="icon-button-file"  style={{margin:"25% 33%"}}>
+                      <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image" 
+                        onChange={(event) => inputFileChosen(event)} />
+                      </label>
                     </div>
                     :
                     <div className="quotation_file_upload">

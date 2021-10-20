@@ -7,18 +7,20 @@ import matched from '../../../assets/images/Newestdashboard/Quotation/Matched.sv
 import Received from './Received'
 import Responded from './Responded'
 import ProjectesMatched from './ProjectesMatched';
+import CancelledProjects from './CancelledProjects';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import { useRef, useState, useEffect } from 'react';
 import Sidebar from '../../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 import Back from '../../../Components/Back/Back';
+import cancelledProjects from './CancelledProjects';
 
 function Quotation(props) {
     const [navigated, setNavigation] = useState(false)
     const receivedRef = useRef(null);
     const respondedRef = useRef(null);
     const projectMatchRef = useRef(null);
-    console.log(props.location.origin);
+    // console.log(props.location.origin);
     useEffect(() => {
         if (!navigated && receivedRef !== null && props.location.origin === 'received') {
             receivedRef?.current?.click();
@@ -63,6 +65,10 @@ function Quotation(props) {
                                     <img src={matched} alt="matched" />
                                     <p>Project Matched</p>
                                 </button>
+                                <button className="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>
+                                    <img src={received} alt="cancelled" />
+                                    <p>Cancelled Projects</p>
+                                </button>
                             </div>
                             <div className="tab-content" id="nav-tabContent">
                                 <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -73,6 +79,9 @@ function Quotation(props) {
                                 </div>
                                 <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                     <ProjectesMatched />
+                                </div>
+                                <div className="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <CancelledProjects />
                                 </div>
                             </div>
                         </div>

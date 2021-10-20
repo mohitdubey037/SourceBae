@@ -177,7 +177,7 @@ function RespondedDetails(props) {
                                 <p>Cost</p>
                               </div>
                               <div className="answer">
-                                <p>{project?.projectProposalCost}</p>
+                                <p>$ {project?.projectProposalCost}</p>
                               </div>
                             </div>
                           </div>

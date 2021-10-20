@@ -242,9 +242,10 @@ function ShortTerm(props) {
               return (
                 <div className="tech-container_shortTerm">
                   <div style={{
-                    backgroundColor: service.selected ? "#3498DB" : "#fff",
+                    filter: service.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none",
                     color: service.selected ? "#fff" : "#000",
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    padding: '5px 2px 1px 4px'
                   }}
                     className={`${service.serviceName}`}
                     onClick={(event) => handleServices(event)}
@@ -429,6 +430,47 @@ function ShortTerm(props) {
                   </p>
                 }
               </div>
+
+              {console.log(apiData.projectPaymentModel,"mknvdkn")}
+
+              {apiData.projectPaymentModel === "By Hour" ? ( 
+
+              <div className="hourlyPaymentBudget">
+              <div>
+              <ul>
+                    <li>
+                      What is your Hourly Budget?   <span className="requiredStar">*</span>
+                    </li>
+                  </ul>
+                </div>
+                <div style={{marginLeft:"1rem"}}>
+                <FormControl component="fieldset">
+                    <RadioGroup
+                      aria-label="projectProposalCost2"
+                      name="projectProposalCost2"
+                      value={apiData.projectProposalCost2}
+                      onChange={(event) => handleChange(event)}
+                    >
+                      <FormControlLabel
+                        color="primary"
+                        value="1"
+                        control={<BlueRadio className={classes.root} />}
+                        label="$0 - $15"
+                      />
+                      <FormControlLabel
+                        value="15"
+                        control={<BlueRadio />}
+                        label="$15 - $30"
+                      />
+                      <FormControlLabel
+                        value="30"
+                        control={<BlueRadio />}
+                        label="Max $30"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </div>
+              </div>):(null) }
 
               <div className="estimatedBudget">
                 <div className="estimatedBudgetText">

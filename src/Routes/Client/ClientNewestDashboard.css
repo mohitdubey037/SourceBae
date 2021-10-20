@@ -9,7 +9,7 @@
   height: 100vh;
   display: flex;
   margin-left: 11%;
-  background-image: linear-gradient(to right, #015F9A , #0376BA);
+  background-image: linear-gradient(to right, #015F9A , hsl(202, 97%, 37%));
   width: 89%;
   position: relative;
 }
@@ -69,14 +69,17 @@
   font-family: 'Segoe UI Semibold';
   font-size: 12px;
   padding-right: 13px;
-  color: #FFFFFF;
+  color: #45a4ea;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .showDetail_onClientNewestDashboard:hover {
-  color: rgb(208 250 248);
+  color: blue;
 }
 
 .graphic {
