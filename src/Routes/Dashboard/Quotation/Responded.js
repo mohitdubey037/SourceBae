@@ -89,8 +89,7 @@ function Responded(props) {
                                                 </div>
                                                 <div>
                                                     <p>Fixed Price</p>
-                                                    <p>{s.projectProposalCost}</p>
-
+                                                    <p>$ {s.projectProposalCost}</p>
                                                 </div>
                                                 <div>
                                                     <p>Timeline</p>
@@ -99,6 +98,10 @@ function Responded(props) {
                                                 <div>
                                                     <p>Status</p>
                                                     <p style={{color:"#45A4EA"}}>{s.projectCurrentStatus}</p>
+                                                </div>
+                                                <div>
+                                                    <p>Project Type</p>
+                                                    <p style={{color:"#45A4EA"}}>{s.projectType}</p>
                                                 </div>
                                             </div>
                                             <div className="respondedCardButton">

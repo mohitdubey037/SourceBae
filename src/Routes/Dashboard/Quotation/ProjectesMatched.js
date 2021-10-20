@@ -94,7 +94,7 @@ function ProjectesMatched(props) {
                                                     <p>Fixed Budget</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p>{s?.projectProposalCost}</p>
+                                                    <p>$ {s?.projectProposalCost}</p>
                                                 </div>
                                             </div>
                                             <div className="projectDetailsTableContainer">
@@ -117,6 +117,14 @@ function ProjectesMatched(props) {
                                                     })}
                                                 </div>
                                             </div>
+                                            <div className="projectDetailsTableContainer">
+                                                <div className="projectTableHeading" >
+                                                    <p>Project Type</p>
+                                                    </div>
+                                                <div className="projectTableContent">
+                                                    <p style={{color:"#45A4EA"}}>{s.projectType}</p>
+                                                </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>

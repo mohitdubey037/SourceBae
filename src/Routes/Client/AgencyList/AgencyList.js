@@ -155,7 +155,7 @@ function AgencyList(props) {
                 </p>
                 <p style={{ fontSize: "1rem" }}>
                   {`Budget:-`}
-                  <span>{project.projectProposalCost}</span>
+                  <span>$ {project.projectProposalCost}</span>
                 </p>
               </div>
               {/* <div className="mainAgencyList_agencyList"> */}
@@ -393,13 +393,14 @@ function AgencyList(props) {
                 <div className="tableHeaderQuotation">
                   <p>Negotiable Upto</p>
                 </div>
-                <div className="tableContentQuotation" >
+                <div className="tableContentQuotation" style={{display:"flex", alignItems:'center', flexWrap:'nowrap'}} >
+                <i class="fas fa-dollar-sign" />
                   <input
-                  style={{marginTop:"0", height:"35px"}}
+                  style={{marginTop:"0",marginLeft:"0.5rem", height:"35px"}}
                     name="negotiablePrice"
                     onChange={handleQuotationChange}
                     type="number"
-                    placeholder="Text should be number"
+                    placeholder="Text should be number "
                     min="0"
                   />
                 </div>
@@ -420,8 +421,8 @@ function AgencyList(props) {
                 </div>
               </div>
 
-              <div className="quotationSubmitButton_agencyList quotation">
-                <div></div>
+              <div className="quotationSubmitButton_agencyList quotation" style={{display:'flex', justifyContent:"center"}}>
+                {/* <div></div> */}
                 <button onClick={quotationSubmitHandler}>Submit</button>
               </div>
             </div>
