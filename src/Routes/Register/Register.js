@@ -504,7 +504,7 @@ const Register = (props) => {
                                                     type="text"
                                                     name="userName"
                                                     placeholder='Username'
-                                                    value={signupForm.userName}
+                                                    // value={signupForm.userName}
                                                     onChange={(e) => setForm(e)}
                                                 />
                                                 {

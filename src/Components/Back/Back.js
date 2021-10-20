@@ -5,11 +5,10 @@ import { withRouter } from "react-router";
 import instance from '../../Constants/axiosConstants';
 
 function Back(props) {
+    console.log('console')
 
     const [steps, setSteps] = useState('');
     const Role = localStorage.getItem('role');
-    const verificationStatus = localStorage.getItem('isVerified');
-    console.log(verificationStatus);
 
     const url = props.history.location.pathname;
 
@@ -24,11 +23,12 @@ function Back(props) {
             else if (url.includes('agency-form-three')) {
                 props.history.push('/agency-form-two');
             }
-            else if (url.includes('agency-form-four')) {
+            else {
                 props.history.push('/agency-form-three');
             }
         }
         else {
+            console.log('back button is active');
             props.history.goBack();
         }
     }
@@ -51,7 +51,7 @@ function Back(props) {
 
     return (
         <div className="back-button_newestAddDeveloper">
-            <div className="image-div_newestAddDeveloper" onClick={goBack}>
+            <div className="image-div_newestAddDeveloper" onClick={() => goBack()}>
                 <div className="hover">
                     <img src={BackLeft} alt="done" />
                 </div>
