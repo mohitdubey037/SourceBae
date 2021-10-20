@@ -560,3 +560,27 @@
   box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
   background-image: linear-gradient(to right, #ffffff, #ffffff, #8EC1E0);
 }
+
+.ShortlistTool:hover .tooltiptext, .getQuotationTool:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+.ShortlistTool {
+  position: relative;
+}
+.getQuotationTool {
+  position: relative;
+}
+.ShortlistTool .tooltiptext , .getQuotationTool .tooltiptext {
+  visibility: hidden;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  color: black;
+  position: absolute;
+  top: 2.5rem;
+  left: 3rem;
+  z-index: 1;
+}
