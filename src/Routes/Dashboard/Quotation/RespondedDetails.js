@@ -89,21 +89,25 @@ function RespondedDetails(props) {
           <span className="leftLine"></span>
           <div>
             <p>Agency</p>
-            {/* <p>{`${project?.projectProposals[0]?.agencyId?.agencyName}`}</p> */}
             <p>{project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}</p>
           </div>
+          {/* {project.projectExpectedStartingDays !== 0 && */}
           <div>
             <p>Expected Timeline</p>
             <p>{`${project?.projectExpectedStartingDays} Days`}</p>
           </div>
+          {/* } */}
           <div>
             <p>Project Proposal Cost</p>
             <p style={{ fontWeight: "600" }}>{`$${project?.projectProposalCost}`}</p>
           </div>
+          {/* {project.agencyExperience !== undefined && */}
           <div>
             <p>Agency Experience</p>
             <p>{`${project?.agencyExperience}`}</p>
           </div>
+
+          {/* } */}
         </div>
         <div className="innerResponseCard">
           <span className="leftLine"></span>
@@ -191,14 +195,16 @@ function RespondedDetails(props) {
                                 <p><Moment format="D MMM YYYY" withTitle>{project?.createdAt}</Moment></p>
                               </div>
                             </div>
-                            <div>
-                              <div className="question after">
-                                <p>Expected Timeline</p>
-                              </div>
-                              <div className="answer">
-                                <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-                              </div>
-                            </div>
+                            {project.projectExpectedStartingDays !== 0 &&
+                              <>
+                                <div className="question after">
+                                  <p>Expected Timeline</p>
+                                </div>
+                                <div className="answer">
+                                  <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+                                </div>
+                              </>
+                            }
                             <div>
                               <div className="question after">
                                 <p>Project Type</p>
@@ -246,7 +252,7 @@ function RespondedDetails(props) {
                                   <ClientCommentBox
                                     projectId={projectId}
                                     agencyId={agencyId}
-                                    isShortListed={true}s
+                                    isShortListed={true} s
                                     giveReplies={(gr) => {
                                       setRepliedToClient(gr);
                                     }}
@@ -273,14 +279,36 @@ function RespondedDetails(props) {
                 <img className="dotImg" src={dot} alt="" /><li style={{ listStyle: "none", display: "flex", marginLeft: "-4rem" }}>{`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
-            <div>
-              <h4>Technology</h4>
-              <ul>
-                {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
-                  return <> <img className="dotImg" src={dot} alt="" /> <li style={{ listStyle: "none" }}>{p?.technologyName}</li></>;
-                })}
-              </ul>
-            </div>
+
+            {project.projectTechnologies ?
+              <div>
+                <h4>Technology</h4>
+                <ul>
+                  {project?.projectTechnologiesRequired?.map((p) =>
+                  (
+                    <>
+                      <img className="dotImg" src={dot} alt="" />
+                      <li style={{ listStyle: "none" }}>{p?.technologyName}</li>
+                    </>
+                  )
+                  )}
+                </ul>
+              </div>
+              :
+              <div>
+                <h4>Services</h4>
+                <ul>
+                  {project?.projectServicesRequired?.map((p) =>
+                  (
+                    <>
+                      <img className="dotImg" src={dot} alt="" />
+                      <li style={{ listStyle: "none" }}>{p?.serviceName}</li>
+                    </>
+                  )
+                  )}
+                </ul>
+              </div>
+            }
           </div>
         </div>
       </div>

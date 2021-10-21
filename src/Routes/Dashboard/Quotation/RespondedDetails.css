@@ -31,6 +31,10 @@ p.action-wait {
   justify-content: left;
 }
 
+.agencyQuestions_AgencyRespondedDetails ul {
+  padding-left: 0;
+}
+
 .image_with_logo {
   display: flex;
   align-items: center;

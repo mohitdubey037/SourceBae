@@ -67,6 +67,7 @@ function ShortTerm(props) {
   const classes = useStyles();
 
   const handleChange = (event) => {
+    console.log('clickedddd');
     const { name, value } = event.target;
     if (name === 'projectDescription') {
       if (value.length <= 100)
@@ -74,6 +75,12 @@ function ShortTerm(props) {
       if (value.length > 100)
         setWords(100);
     }
+    setApiData({
+      ...apiData,
+      [name]: value,
+    });
+  };
+  const handleChangeRadio = (name,value) => {
     setApiData({
       ...apiData,
       [name]: value,
@@ -107,8 +114,11 @@ function ShortTerm(props) {
     if (apiData.projectName === "") {
       err.projectName = 'Project name can"t be empty.'
     }
-    else if (apiData.projectDescription === "") {
+    else if (apiData.projectDescription.length === '') {
       err.projectDescription = 'Project description can"t be empty.';
+    }
+    else if (apiData.projectDescription.length < 100) {
+      err.projectDescription = 'Project description should be more than 100 characters';
     }
     else if (projectFiles === null || projectFiles === undefined) {
       err.projectUpload = 'Please upload a project Document';
@@ -125,7 +135,7 @@ function ShortTerm(props) {
     else if (apiData.projectServicesRequired.length === 0) {
       err.projectServicesRequired = 'Please select a project service.';
     }
-    
+
     setErrors(err);
     if (Object.keys(err).length === 0)
       return true;
@@ -238,27 +248,30 @@ function ShortTerm(props) {
           </div>
 
           <div className="shortTermProjectType">
-            {allServices.map((service) => {
-              return (
-                <div className="tech-container_shortTerm">
-                  <div style={{
-                    filter: service.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none",
-                    color: service.selected ? "#fff" : "#000",
-                    textAlign: 'center',
-                    padding: '5px 2px 1px 4px'
-                  }}
-                    className={`${service.serviceName}`}
-                    onClick={(event) => handleServices(event)}
-                  >
-                    <span className={`${service.serviceName}`}></span>
-                    <img className={`${service.serviceName}`} src={service.serviceIcon} alt="icon" />
+            <p className="select_technology_shortTerm">Please select a technology <span style={{color: 'red'}}>*</span></p>
+            <div className="shortTermProjectType_child">
+              {allServices.map((service) => {
+                return (
+                  <div className="tech-container_shortTerm">
+                    <div style={{
+                      filter: service.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none",
+                      color: service.selected ? "#fff" : "#000",
+                      textAlign: 'center',
+                      padding: '5px 2px 1px 4px'
+                    }}
+                      className={`${service.serviceName}`}
+                      onClick={(event) => handleServices(event)}
+                    >
+                      <span className={`${service.serviceName}`}></span>
+                      <img className={`${service.serviceName}`} src={service.serviceIcon} alt="icon" />
+                    </div>
+                    <h2 className={`${service.serviceName}`}>
+                      {service.serviceName}
+                    </h2>
                   </div>
-                  <h2 className={`${service.serviceName}`}>
-                    {service.serviceName}
-                  </h2>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           <div className="left_and_right_side">
@@ -288,7 +301,7 @@ function ShortTerm(props) {
               <div className="shortTermProjectDesc">
                 <ul>
                   <li>
-                    Tell us more about your project   <span className="requiredStar" style={{color:"red"}}>*</span>
+                    Tell us more about your project   <span className="requiredStar" style={{ color: "red" }}>*</span>
                   </li>
                 </ul>
                 <div className="startABit_shortTermProjectDesc">
@@ -319,7 +332,7 @@ function ShortTerm(props) {
               <div className="shortTermFileUpload">
                 <div className="uploadBlock">
                   <div className="fileUploadButton">
-                    <div style={{display:"flex", cursor: 'pointer', width: '20%' }}>
+                    <div style={{ display: "flex", cursor: 'pointer', width: '20%' }}>
                       <FilePicker
                         extensions={['jpg', 'pdf', 'png', 'jpeg', 'xlsx']}
                         onChange={(fileObj) => fileHandler(fileObj)}
@@ -385,9 +398,9 @@ function ShortTerm(props) {
                       aria-label="howToPay"
                       name="projectPaymentModel"
                       value={apiData.projectPaymentModel}
-                      onChange={(event) => handleChange(event)}
+                      // onChange={(event) => handleChange(event)}
                     >
-                      <div className="fixedPrice" name="projectPaymentModel">
+                      <div className="fixedPrice" name="projectPaymentModel" onClick={() => handleChangeRadio('projectPaymentModel','Fixed Price')}>
                         <FormControlLabel
                           color="primary"
                           value="Fixed Price"
@@ -405,7 +418,7 @@ function ShortTerm(props) {
                         </div>
                       </div>
 
-                      <div style={{ marginTop: '1rem' }} className="fixedPrice" name="projectPaymentModel">
+                      <div style={{ marginTop: '1rem' }} className="fixedPrice" name="projectPaymentModel" onClick={() => handleChangeRadio('projectPaymentModel', 'By Hour')}>
                         <FormControlLabel
                           value="By Hour"
                           control={<BlueRadio className={classes.root} />}
@@ -431,46 +444,46 @@ function ShortTerm(props) {
                 }
               </div>
 
-              {console.log(apiData.projectPaymentModel,"mknvdkn")}
+              {console.log(apiData.projectPaymentModel, "mknvdkn")}
 
-              {apiData.projectPaymentModel === "By Hour" ? ( 
+              {apiData.projectPaymentModel === "By Hour" ? (
 
-              <div className="hourlyPaymentBudget">
-              <div>
-              <ul>
-                    <li>
-                      What is your Hourly Budget?   <span className="requiredStar">*</span>
-                    </li>
-                  </ul>
-                </div>
-                <div style={{marginLeft:"1rem"}}>
-                <FormControl component="fieldset">
-                    <RadioGroup
-                      aria-label="projectProposalCost2"
-                      name="projectProposalCost2"
-                      value={apiData.projectProposalCost2}
-                      onChange={(event) => handleChange(event)}
-                    >
-                      <FormControlLabel
-                        color="primary"
-                        value="1"
-                        control={<BlueRadio className={classes.root} />}
-                        label="$0 - $15"
-                      />
-                      <FormControlLabel
-                        value="15"
-                        control={<BlueRadio />}
-                        label="$15 - $30"
-                      />
-                      <FormControlLabel
-                        value="30"
-                        control={<BlueRadio />}
-                        label="Max $30"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </div>
-              </div>):(null) }
+                <div className="hourlyPaymentBudget">
+                  <div>
+                    <ul>
+                      <li>
+                        What is your Hourly Budget?   <span className="requiredStar">*</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div style={{ marginLeft: "1rem" }}>
+                    <FormControl component="fieldset">
+                      <RadioGroup
+                        aria-label="projectProposalCost2"
+                        name="projectProposalCost2"
+                        value={apiData.projectProposalCost2}
+                        onChange={(event) => handleChange(event)}
+                      >
+                        <FormControlLabel
+                          color="primary"
+                          value="1"
+                          control={<BlueRadio className={classes.root} />}
+                          label="$0 - $15"
+                        />
+                        <FormControlLabel
+                          value="15"
+                          control={<BlueRadio />}
+                          label="$15 - $30"
+                        />
+                        <FormControlLabel
+                          value="30"
+                          control={<BlueRadio />}
+                          label="Max $30"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </div>
+                </div>) : (null)}
 
               <div className="estimatedBudget">
                 <div className="estimatedBudgetText">
