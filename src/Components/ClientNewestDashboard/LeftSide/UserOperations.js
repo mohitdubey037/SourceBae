@@ -2,7 +2,6 @@ import React from 'react';
 import './UserOperations.css';
 
 function UserOperations(props) {
-    console.log(props.disabled);
     return (
         <div onClick={props.nextpage} className={`operation ${props.disabled && "conditional_disabled"}`}>
             <div className="operation-logo">

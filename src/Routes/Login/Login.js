@@ -83,7 +83,6 @@ const Login = (props) => {
 
   useEffect(() => {
     localStorage.setItem("toggle", state);
-    console.log(state);
     state === "" || state === "agency"
       ? props.history.push("/login:agency")
       : props.history.push("/login:client");
@@ -111,7 +110,6 @@ const Login = (props) => {
   const handleChange = (e) => {
     let { name, value } = e.target;
     if (name === 'user') {
-      console.log('hii');
       setForm({
         ...form,
         [name]: value.toLowerCase()
@@ -126,14 +124,12 @@ const Login = (props) => {
   };
 
   const logIn = async (event) => {
-    console.log(event);
     event.preventDefault();
     let apiRole = helper.lowerize(role);
     return new Promise((resolve, reject) => {
       instance
         .post(`/api/${apiRole}/auths/login`, form)
         .then(function (response) {
-          console.log(response, "response");
           cookie.save("Authorization", `Bearer ${response.accessToken}`, {
             path: "/",
           });
@@ -150,7 +146,6 @@ const Login = (props) => {
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `${token}`;
-      console.log(axios);
       if (role === "Agency") {
         setLoading(false);
         props.history.push("/agencyNewestDashboard");

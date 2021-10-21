@@ -47,7 +47,6 @@ instance.interceptors.response.use(
     }
   },
   function (error) {
-    console.log(error);
     let trueError = "";
     if (error?.response?.status !== 404) {
       if (error?.response?.data?.message === "Bearer Token not found")
