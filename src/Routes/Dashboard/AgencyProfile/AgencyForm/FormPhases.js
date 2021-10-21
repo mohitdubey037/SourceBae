@@ -1,5 +1,4 @@
-import React from 'react'
-import './FormPhases.css'
+import './FormPhases.css';
 
 function FormPhases(props) {
     return (
@@ -7,19 +6,19 @@ function FormPhases(props) {
             <div className="mainFormPhase">
                 <div className="innerFormPhase">
                     <div className="formPhaseCards">
-                        <h6 style={{ backgroundColor: props?.value1 ? '#FFFFFF' : '#E8E8E8' , color:"#45A4E4"}}>01</h6>
+                        <h6 style={{ backgroundColor: (props?.steps > 1 ) && '#0dcaf0'}}>01</h6>
                         <span>Personel Details</span>
                     </div>
                     <div className="formPhaseCards">
-                        <h6 style={{ backgroundColor: props?.value1 ? '#FFFFFF' : '#E8E8E8' , color:"#45A4E4" }}>02</h6>
+                        <h6 style={{ backgroundColor: (props?.steps > 2) && '#0dcaf0'}}>02</h6>
                         <span>Tech Stack </span>
                     </div>
                     <div className="formPhaseCards">
-                        <h6 style={{ backgroundColor: props?.value1 ? '#FFFFFF' : '#E8E8E8' , color:"#45A4E4" }}>03</h6>
+                        <h6 style={{ backgroundColor: (props?.steps > 3) && '#0dcaf0'}}>03</h6>
                         <span>Personel Details</span>
                     </div>
                     <div className="formPhaseCards">
-                        <h6 style={{ backgroundColor: props?.value1 ? '#FFFFFF' : '#E8E8E8' , color:"#45A4E4" }}>04</h6>
+                        <h6 style={{ backgroundColor: (props?.steps > 4) && '#0dcaf0'}}>04</h6>
                         <span>Social Details</span>
                     </div>
                 </div>

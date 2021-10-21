@@ -57,7 +57,8 @@ function Sidebar(props) {
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
-        localStorage.removeItem('isVerified');
+        localStorage.removeItem('isAgencyVerified');
+        localStorage.removeItem('isStepsCompleted');
         localStorage.removeItem('userId');
         localStorage.removeItem('toggle');
         cookie.remove("Authorization");

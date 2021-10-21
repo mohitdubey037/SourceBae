@@ -12,7 +12,6 @@ import downImage1_client from "../../assets/images/Newestdashboard/Login/Path11_
 import downImage2_client from "../../assets/images/Newestdashboard/Login/Path12_client.svg";
 import upImage1_client from "../../assets/images/Newestdashboard/Login/Path13_client.svg";
 import upImage2_client from "../../assets/images/Newestdashboard/Login/Path14_client.svg";
-import bgColor from "../../assets/images/Newestdashboard/Login/Rectangle24.png";
 import dotImage from "../../assets/images/Newestdashboard/Login/ab_01.png";
 import googleImg from "../../assets/images/Newestdashboard/Login/Icon_google.svg";
 
@@ -110,11 +109,20 @@ const Login = (props) => {
   const roleString = createRoleString();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
+    let { name, value } = e.target;
+    if (name === 'user') {
+      console.log('hii');
+      setForm({
+        ...form,
+        [name]: value.toLowerCase()
+      });
+    }
+    else {
+      setForm({
+        ...form,
+        [name]: value,
+      });
+    }
   };
 
   const logIn = async (event) => {

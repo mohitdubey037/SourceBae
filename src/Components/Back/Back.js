@@ -27,6 +27,9 @@ function Back(props) {
             else if (url.includes('agency-form-four')) {
                 props.history.push('/agency-form-three');
             }
+            else {
+                props.history.goBack();
+            }
         }
         else {
             props.history.goBack();

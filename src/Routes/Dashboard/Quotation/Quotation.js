@@ -61,15 +61,15 @@ function Quotation(props) {
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>
                                     <img src={received} alt="received" />
-                                    <p>Received</p>
+                                    <p>Quotation Received</p>
                                 </button>
                                 <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" ref={respondedRef}>
                                     <img src={responded} alt="responded" />
-                                    <p>Responded</p>
+                                    <p>Project Responded</p>
                                 </button>
                                 <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" ref={projectMatchRef}>
                                     <img src={matched} alt="matched" />
-                                    <p>Project Matched</p>
+                                    <p>Project Shortlisted</p>
                                 </button>
                                 <button className="nav-link " id="nav-cancel-tab" data-bs-toggle="tab" data-bs-target="#nav-cancel" type="button" role="tab" aria-controls="nav-cancel" aria-selected="true" ref={cancelledRef}>
                                     <img src={received} alt="cancelled" />

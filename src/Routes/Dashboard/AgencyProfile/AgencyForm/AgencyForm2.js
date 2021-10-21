@@ -22,7 +22,8 @@ import { toast } from "react-toastify";
 function AgencyForm2(props) {
   const Role = localStorage.getItem("role");
   const [loading, setLoading] = useState(true);
-  
+  const [steps, setSteps] = useState('');
+
   const url = props.history.location.pathname;
 
   // selecting Domains
@@ -48,6 +49,18 @@ function AgencyForm2(props) {
     agencyTechnologies: [],
     agencyMonthlyBudget: "",
   });
+
+  const getStepsCompleted = () => {
+    instance.get(`api/${Role}/agencies/steps-completed`)
+      .then(function (response) {
+        console.log(response.stepsCompleted);
+        setSteps(response.stepsCompleted);
+      });
+  };
+
+  useEffect(() => {
+    getStepsCompleted();
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -274,7 +287,7 @@ function AgencyForm2(props) {
         <div className="agency-form_parent">
           <Navbar />
           <Back name="Agency form 2" />
-          <FormPhases value1={true} value2={true} />
+          <FormPhases steps={steps} />
           <div className="mainTechStackFormParent">
             {/* <div className="mainTechStackForm"> */}
             <div className="innerTechStackForm">

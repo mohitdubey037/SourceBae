@@ -26,6 +26,7 @@ function AgencyForm4(props) {
     const [stackoverflow, setStackoverflow] = useState({})
     const [featuredLink, setFeaturedLink] = useState({})
     const [errors, setErrors] = useState({})
+    const [steps, setSteps] = useState('')
 
     function handleChange(i, event) {
         const values = [...fields];
@@ -58,6 +59,18 @@ function AgencyForm4(props) {
             })
         }
     }
+
+    const getStepsCompleted = () => {
+        instance.get(`api/${Role}/agencies/steps-completed`)
+            .then(function (response) {
+                console.log(response.stepsCompleted);
+                setSteps(response.stepsCompleted);
+            });
+    };
+
+    useEffect(() => {
+        getStepsCompleted();
+    }, []);
 
     const handleStackoveflow = (event) => {
         const { name, value } = event.target
@@ -221,7 +234,7 @@ function AgencyForm4(props) {
             <div className="agency-form_parent">
                 <Navbar />
                 <Back name="Agency Form 4" />
-                <FormPhases value1={true} value2={true} value3={true} value4={true} />
+                <FormPhases steps={steps} />
                 {loading ? <Spinner /> :
                     <>
                         <div className="mainSocialLinks">
