@@ -60,7 +60,11 @@ function AgencyProjectCard({ key, ...props }) {
                         </tr>
                         <tr>
                             <td>Final Budget</td>
-                            <td>${props?.projectFinalCost === undefined ? props?.projectProposalCost : props?.projectFinalCost}</td>
+                            <td>${props?.projectFinalCost === undefined ? props?.projectProposalCost : "----"}</td>
+                        </tr>
+                        <tr>
+                            <td>Project Type</td>
+                            <td>{props?.projectType}</td>
                         </tr>
                     </thead>
                 </table>
