@@ -50,8 +50,9 @@ function Received(props) {
                                 </div>
                             </>
                             :
-                            projects.map((s) => {
-                                return (
+                            projects && projects.map((s) => 
+                              ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient) ?
+                                 (
                                     <div className="respondedCard">
                                         <div className="leftBorder"></div>
                                         <div className="date_and_time">
@@ -119,8 +120,8 @@ function Received(props) {
                                             </div>
                                         </div>
                                     </div>
-                                )
-                            })
+                                ): null
+                            )
 
 
                         }

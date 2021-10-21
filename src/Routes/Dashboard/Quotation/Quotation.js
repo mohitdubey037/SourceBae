@@ -20,6 +20,8 @@ function Quotation(props) {
     const receivedRef = useRef(null);
     const respondedRef = useRef(null);
     const projectMatchRef = useRef(null);
+    const cancelledRef = useRef(null);
+
     // console.log(props.location.origin);
     useEffect(() => {
         if (!navigated && receivedRef !== null && props.location.origin === 'received') {
@@ -32,6 +34,10 @@ function Quotation(props) {
         }
         if (!navigated && projectMatchRef !== null && props.location.origin === 'project-match') {
             projectMatchRef?.current?.click();
+            setNavigation(true)
+        }
+        if (!navigated && cancelledRef !== null && props.location.origin === 'project-match') {
+            cancelledRef?.current?.click();
             setNavigation(true)
         }
     }, [])
@@ -65,7 +71,7 @@ function Quotation(props) {
                                     <img src={matched} alt="matched" />
                                     <p>Project Matched</p>
                                 </button>
-                                <button className="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ref={receivedRef}>
+                                <button className="nav-link " id="nav-cancel-tab" data-bs-toggle="tab" data-bs-target="#nav-cancel" type="button" role="tab" aria-controls="nav-cancel" aria-selected="true" ref={cancelledRef}>
                                     <img src={received} alt="cancelled" />
                                     <p>Cancelled Projects</p>
                                 </button>
@@ -80,7 +86,7 @@ function Quotation(props) {
                                 <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                     <ProjectesMatched />
                                 </div>
-                                <div className="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div className="tab-pane fade" id="nav-cancel" role="tabpanel" aria-labelledby="nav-cancel-tab">
                                     <CancelledProjects />
                                 </div>
                             </div>
