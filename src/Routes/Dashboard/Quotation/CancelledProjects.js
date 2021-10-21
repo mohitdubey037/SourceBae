@@ -49,11 +49,10 @@ function CancelledProjects(props) {
                                 </div>
                             </>
                             :
-                            /* <> 
-                             {projects.projectProposals[0].rejectReasonByAgency ? (  */
-                            projects.map((s) => {
-                                return (
-                                    <div className="respondedCard">
+                            projects && projects?.map((s) =>  
+                               (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient) ?
+                              (
+                                <div className="respondedCard">
                                         <div className="leftBorder"></div>
                                         <div className="date_and_time">
                                             <div className="dateCreated">
@@ -119,11 +118,10 @@ function CancelledProjects(props) {
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
-                                )
-                            })
-                            /* ):(null)}</> */
-
+                                </div>
+                                
+                               ):null
+                            )
 
                         }
                     </div>

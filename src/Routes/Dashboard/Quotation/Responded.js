@@ -48,8 +48,9 @@ function Responded(props) {
                                 </div>
                             </>
                             :
-                            projects.map((s) => {
-                                return (
+                            projects.map((s) => 
+                            ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient) ?
+                             (
                                     isDetail === false ? (
                                         <div className="respondedCard">
                                             <div className="leftBorder"></div>
@@ -126,8 +127,8 @@ function Responded(props) {
                                             <RespondedDetails details={s} />
                                         </>
                                     )
-                                )
-                            })
+                                ):null
+                            )
                         }
                     </div>
                 </div>
