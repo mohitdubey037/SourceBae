@@ -10,11 +10,15 @@
 .user-project_agencyNewestAllProject.allProject {
     display: flex;
     width: 95%;
-    background-image: url(../../assets/images/Newestdashboard/All_Project/backgroundall.svg);
+    /* background-image: url(../../assets/images/Newestdashboard/All_Project/backgroundall.svg); */
     height: 170px;
     font-family: 'Segoe UI';
     color: #707070;
     position: relative;
+    background-color: #ffffff;
+    margin-bottom: 1rem;
+    background-image: linear-gradient(to right, #ffffff, #ffffff, #8EC1E0);
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
 }
 
 .user-project_agencyNewestAllProject h6 {

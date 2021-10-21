@@ -42,6 +42,7 @@ const HireAgencyForm1 = (props) => {
   const [error, setError] = useState({
     projectNameError: "",
     projectDescriptionError: "",
+    projectExpectedStartingDaysError:"",
   })
 
   const handleChange = (event) => {
@@ -62,28 +63,31 @@ const HireAgencyForm1 = (props) => {
 
   useEffect(() => {
     console.log(words);
-  }, [words])
+    console.log(data,"data")
+  }, [words,data])
+ 
+  // const upArrow = () => {
+  //   if (data.projectExpectedStartingDays < 180)
+  //     setData({
+  //       ...data,
+  //       projectExpectedStartingDays: data.projectExpectedStartingDays + 1,
+  //     });
+  // };
 
-  const upArrow = () => {
-    if (data.projectExpectedStartingDays < 180)
-      setData({
-        ...data,
-        projectExpectedStartingDays: data.projectExpectedStartingDays + 1,
-      });
-  };
-
-  const downArrow = () => {
-    setData({
-      ...data,
-      projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
-    });
-  };
+  // const downArrow = () => {
+  //   if (data.projectExpectedStartingDays > 5)
+  //   setData({
+  //     ...data,
+  //     projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
+  //   });
+  // };
 
 
   const handleSubmit = () => {
     let tempError = {
       projectNameError: "",
       projectDescriptionError: "",
+      projectExpectedStartingDaysError:"",
     }
     if (data.projectName === "") {
       setError(
@@ -114,6 +118,14 @@ const HireAgencyForm1 = (props) => {
         {
           ...tempError,
           projectDescriptionError: 'Project name should be more than 100 characters.',
+        }
+      )
+    }
+    else if (data.projectExpectedStartingDays <= 4) {
+      setError(
+        {
+          ...tempError,
+          projectExpectedStartingDaysError: 'Project starting days should be greater than 5 days',
         }
       )
     }
@@ -260,16 +272,32 @@ const HireAgencyForm1 = (props) => {
                     </div>
                     <div className="numberOfDays">
                       <p>4.&nbsp;How soon do you want to start? <span className="requiredStar">*</span> </p>
-                      <div className="daysInputAgency">
-                        <p>{data.projectExpectedStartingDays} days</p>
+                      {/* <div className="daysInputAgency"> */}
+                       <input
+                        style={{height:"35px", width:"21rem",border:"1px solid #015F9A",padding:"1rem",borderRadius:"8px"}}
+                        name="projectExpectedStartingDays"
+                        type="number"
+                        onChange={handleChange}
+                        min="5"
+                        // max="180"
+                        value={data.projectExpectedStartingDays}
+                        placeholder="Text should be number "
+                      /> 
+                      {error.projectExpectedStartingDaysError && (
+                        <p className="error_hireAgencyForm2 error_hireAgencyForm1">
+                          {error.projectExpectedStartingDaysError}
+                        </p>
+                        )}
+                      {/* <p>{data.projectExpectedStartingDays} days</p>
                         <div className="upArrow" onClick={upArrow}>
                           <i class="fa fa-angle-up" aria-hidden="true"></i>
                         </div>
-                        {data.projectExpectedStartingDays > 5 ? (
+                        {data.projectExpectedStartingDays > 5 ? ( 
                         <div className="downArrow" onClick={downArrow}>
                           <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </div>):(null)}
-                      </div>
+                        </div> 
+                        ):(null)}
+                      </div> */}
                     </div>
                   </div>
                   <div className="nextbutton nextbutton_hireAgencyForm1">

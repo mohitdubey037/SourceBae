@@ -44,7 +44,7 @@ function AgencyRespondedDetails(props) {
         console.error(err);
       });
   };
-
+console.log(project,"responded Details");
   useEffect(() => {
     if (Object.keys(props["projects"]).length === 0) {
       getAllProjects();
@@ -149,6 +149,13 @@ function AgencyRespondedDetails(props) {
           </div>
         </div>
       </div>
+      <div className="ProjectDescriptionRespondedDetails">
+        <h4 style={{color: "#707070", fontFamily: 'Segoe UI',fontWeight: "600", fontSize: "22px",}}>Project Description</h4>
+        <p style={{overflowWrap:"break-word", fontFamily:"Segoe UI", fontSize:"12px", color:"#707070",width: '78%', padding: '0.2rem', margin: '0.2rem',
+    boxShadow:'0px 0px 3px rgb(0 0 0 / 20%)'}}>{project.projectDescription} </p>
+      </div>
+
+
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
           <div className="agencyQuotationDesc_AgencyRespondedDetails">

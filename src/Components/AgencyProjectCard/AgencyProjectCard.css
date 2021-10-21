@@ -1,10 +1,10 @@
 .user-project_agencyNewestDashboard {
   flex-direction: column;
-  margin-top: 1rem;
   display: flex;
   align-items: center;
-  margin: 0 auto 30px;
+  margin: 2rem 1rem 1rem 2rem ;
   width: 45%;
+  height: 18rem;
   border: 1px solid #f5f5f5;
   padding: 1rem;
   background-color: #ffffff;
