@@ -329,7 +329,7 @@ const AgencyCommentBox = (props) => {
         {!(
           props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
         ) && (
-            <div className="proposalCard" style={{ justifyContent: 'center' }}>
+            <div className="proposalCard">
               {props.projectProposals[0].isProposalActionActive ?
                 <>
                   {(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) &&
