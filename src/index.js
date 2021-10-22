@@ -15,7 +15,6 @@ import { Provider } from 'react-redux';
 import rootReducer from './Redux/rootReducer';
 import clientProjectsReducer from './Redux/Reducer/clientProjects';
 
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(clientProjectsReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
