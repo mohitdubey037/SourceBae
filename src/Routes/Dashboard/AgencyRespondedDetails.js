@@ -44,7 +44,7 @@ function AgencyRespondedDetails(props) {
         console.error(err);
       });
   };
-
+  console.log(project, "responded Details");
   useEffect(() => {
     if (Object.keys(props["projects"]).length === 0) {
       getAllProjects();
@@ -65,7 +65,7 @@ function AgencyRespondedDetails(props) {
 
   return (
     <>
-      <div className="mainDetailHeader_agencyRespondedDetails" style={{backgroundImage:"none"}}>
+      <div className="mainDetailHeader_agencyRespondedDetails" style={{ backgroundImage: "none" }}>
         <div className="innerDetailHeader_agencyRespondedDetails">
           <div className="detailHeaderImage_agencyRespondedDetails">
             <div>
@@ -93,7 +93,7 @@ function AgencyRespondedDetails(props) {
       </div>
 
       <div className="respondDescription_AgencyRespondedDetails">
-        <h2 style={{color:"#707070"}}>About Your Project</h2>
+        <h2 style={{ color: "#707070" }}>About Your Project</h2>
       </div>
 
       <div className="respondCards_AgencyRespondedDetails">
@@ -104,10 +104,10 @@ function AgencyRespondedDetails(props) {
             <p>{`${project?.clientId?.companyName}`}</p>
           </div>
           {project.projectExpectedStartingDays === 0 &&
-          <div>
-            <p>Expected Timeline</p>
-            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-          </div>
+            <div>
+              <p>Expected Timeline</p>
+              <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+            </div>
           }
           <div>
             <p>Project Proposal Cost</p>
@@ -151,6 +151,15 @@ function AgencyRespondedDetails(props) {
           </div>
         </div>
       </div>
+      <div className="ProjectDescriptionRespondedDetails">
+        <h4 style={{ color: "#707070", fontFamily: 'Segoe UI', fontWeight: "600", fontSize: "22px", }}>Project Description</h4>
+        <p style={{
+          overflowWrap: "break-word", fontFamily: "Segoe UI", fontSize: "12px", color: "#707070", width: '78%', padding: '0.2rem', margin: '0.2rem',
+          boxShadow: '0px 0px 3px rgb(0 0 0 / 20%)'
+        }}>{project.projectDescription} </p>
+      </div>
+
+
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
@@ -174,10 +183,10 @@ function AgencyRespondedDetails(props) {
                         <h4>Project Details</h4>
                       </div>
                       <div className="project-details_child">
-                      <span className="leftLine"></span>
+                        <span className="leftLine"></span>
                         <div className="respondedDetails_afterCompletion_child1">
-                          <div  style={{marginTop:"2rem" }}>
-                            <div className="question"style={{ width: '62%' }}>
+                          <div style={{ marginTop: "2rem" }}>
+                            <div className="question" style={{ width: '62%' }}>
                               <p>Client</p>
                             </div>
                             <div className="answer">
@@ -195,7 +204,7 @@ function AgencyRespondedDetails(props) {
                           </div>
 
                           <div>
-                            <div className="question"  style={{ width: '62%' }}>
+                            <div className="question" style={{ width: '62%' }}>
                               <p>Cost</p>
                             </div>
                             <div className="answer">
@@ -230,12 +239,12 @@ function AgencyRespondedDetails(props) {
                             </div>
                           </div>
                         </div>
-                          <div className="project_is_completed">
-                        <p>Project is started from both side</p>
-                      </div>
+                        <div className="project_is_completed">
+                          <p>Project is started from both side</p>
+                        </div>
                       </div>
                     </div>
-                    <div style={{marginRight:"3rem"}}>
+                    <div style={{ marginRight: "3rem" }}>
                       <img src={completedImage} alt="" />
                     </div>
                   </div>
@@ -283,23 +292,23 @@ function AgencyRespondedDetails(props) {
           <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
-              <ul style={{display:"flex",marginLeft:"-1rem"}}>
-              <li style={{listStyle: "none"}}> <img className="dotImg"src={dot} alt="" /> Min ${project.projectProposalCost}</li>
+              <ul style={{ display: "flex", marginLeft: "-1rem" }}>
+                <li style={{ listStyle: "none" }}> <img className="dotImg" src={dot} alt="" /> Min ${project.projectProposalCost}</li>
               </ul>
             </div>
 
             <div className="straightAfterLine">
               <h4>Estimated Timeline</h4>
-              <ul style={{display:"flex",marginLeft:"-1rem"}}>
-             <li style={{listStyle: "none"}}> <img className="dotImg"src={dot} alt="" /> {`${project?.projectExpectedStartingDays} Days`}</li>
+              <ul style={{ display: "flex", marginLeft: "-1rem" }}>
+                <li style={{ listStyle: "none" }}> <img className="dotImg" src={dot} alt="" /> {`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
 
             <div>
               <h4>Technology</h4>
-              <ul style={{display:"grid" ,marginLeft: "-2rem", gridTemplateColumns:"auto"}}>
+              <ul style={{ display: "grid", marginLeft: "-2rem", gridTemplateColumns: "auto" }}>
                 {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
-                  return <li style={{listStyle: "none", display:"flex",alignItems:"flex-end"}}> <img className="dotImg"src={dot} alt="" />{p?.technologyName}</li>;
+                  return <li style={{ listStyle: "none", display: "flex", alignItems: "flex-end" }}> <img className="dotImg" src={dot} alt="" />{p?.technologyName}</li>;
                 })}
               </ul>
             </div>

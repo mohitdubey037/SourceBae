@@ -6,6 +6,7 @@ import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageN
 import { withRouter } from 'react-router';
 import './Received.css'
 
+
 function Received(props) {
     const agencyId = localStorage.getItem('userId');
     const Role = localStorage.getItem('role');
@@ -14,6 +15,8 @@ function Received(props) {
     const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState();
+
+  
 
     const getAllReceivedData = () => {
         setLoading(true)
@@ -51,7 +54,7 @@ function Received(props) {
                             </>
                             :
                             projects && projects.map((s) => 
-                              ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient) ?
+                              ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient || s?.projectCurrentStatus === "Quotation Accepted") ?
                                  (
                                     <div className="respondedCard">
                                         <div className="leftBorder"></div>
@@ -98,8 +101,12 @@ function Received(props) {
                                             </div>
                                             <div>
                                                 <p>Timeline</p>
-                                                <p>45</p>
+                                                <p>{s.projectExpectedStartingDays} days</p>
                                             </div>
+
+
+                                            
+                                            {console.log(s,"sssssss")}
                                             <div>
                                                     <p>Status</p>
                                                     <p style={{color:"#45A4EA"}}>{s.projectCurrentStatus}</p>

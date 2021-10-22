@@ -8,7 +8,8 @@ import { useParams, useHistory } from "react-router-dom";
 import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
 // import detailImage from '../../../assets/images/details.png';
 import foods from "../../../assets/images/Quotation/foods.png";
-import completedImage from '../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg'
+import completedImage from '../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg';
+import loadingStatus from '../../../assets/images/Newestdashboard/Not_found/loading_status2.jpg';
 import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
 
 //RESPONDED DETAILS
@@ -148,9 +149,9 @@ function RespondedDetails(props) {
                     </ul>
                   </>
                   :
-                  project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true
-                    &&
-                    project?.projectProposals[0].isQuotationAcceptedByAgency === true ?
+                  project.projectProposals && (project?.projectProposals[0].isQuotationAcceptedByClient === true
+                    ||
+                    project?.projectProposals[0].isQuotationAcceptedByAgency === true) ?
                     <div className="image_with_logo">
                       <div className="respondedDetails_afterCompletion">
                         <div className="project-details">
@@ -196,14 +197,14 @@ function RespondedDetails(props) {
                               </div>
                             </div>
                             {project.projectExpectedStartingDays !== 0 &&
-                              <>
+                              <div>
                                 <div className="question after">
                                   <p>Expected Timeline</p>
                                 </div>
                                 <div className="answer">
                                   <p>{`${project?.projectExpectedStartingDays} Days`}</p>
                                 </div>
-                              </>
+                              </div>
                             }
                             <div>
                               <div className="question after">
@@ -216,11 +217,21 @@ function RespondedDetails(props) {
                           </div>
                         </div>
                         <div className="project_is_completed">
-                          <p>Project is started from both side</p>
+                          {project?.projectProposals[0].isQuotationAcceptedByClient === true &&
+                            project?.projectProposals[0].isQuotationAcceptedByAgency === true ?
+                            <p>Project is started from both side</p>
+                            :
+                            <p>Please wait for the agency to accept the Quotation</p>
+                          }
                         </div>
                       </div>
-                      <div>
-                        <img src={completedImage} alt="" />
+                      <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        {project?.projectProposals[0].isQuotationAcceptedByClient === true &&
+                          project?.projectProposals[0].isQuotationAcceptedByAgency === true ?
+                          <img style={{ width: '70%' }} src={completedImage} alt="" />
+                          :
+                          <img style={{ width: '70%' }} src={loadingStatus} alt="" />
+                        }
                       </div>
                     </div>
                     :

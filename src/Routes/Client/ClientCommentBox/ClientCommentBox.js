@@ -6,6 +6,7 @@ import './ClientCommentBox.css';
 import clsx from 'clsx';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { toast } from "react-toastify";
+// import DatePicker from "react-datepicker";
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -247,9 +248,11 @@ const ClientCommentBox = (props) => {
         }}></div>
           {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
-            <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-              <p>Accept or Reject the Project.</p>
-            </div>
+            {/* {props.projectProposals[0].isCommentSectionActive && */}
+              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
+                <p>Accept or Reject the Project.</p>
+              </div>
+            {/* } */}
             <div className="postQuotation">
               {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
                 <div className="detailsButtons margin-0">
@@ -272,16 +275,18 @@ const ClientCommentBox = (props) => {
                 </div>
               )}
             </div>
-            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height" style={{ marginBottom: "1rem" }}>
-              <div>
-                <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                  Accept
-                </button>
-                <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
-                  Reject
-                </button>
+            {/* {props.projectProposals[0].isCommentSectionActive && */}
+              <div className="detailsButtons" style={{ marginBottom: "1rem" }} >
+                <div>
+                  <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                    Accept
+                  </button>
+                  <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
+                    Reject
+                  </button>
+                </div>
               </div>
-            </div>
+            {/* } */}
           </div>
         </div>
       </div>
@@ -312,7 +317,13 @@ const ClientCommentBox = (props) => {
                   <p>Project Start Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectStartDateByClient' onChange={onQuotationChange} />
+                 
+                  <input type='date'  name='projectStartDateByClient'  onChange={onQuotationChange} />
+                  {/* <DatePicker */}
+          {/* // selected={this.state.startDate} */}
+          {/* onChange={onQuotationChange} */}
+        {/* /> */}
+        {/* <button onClick={this.openDatePicker}>openDate</button> */}
                 </div>
               </div>
               <div className="quotationTable">

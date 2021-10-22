@@ -20,6 +20,8 @@
 
 .normal_acceptOrReject_clientCommentBox p {
     padding: none;
+    font-size: 1rem;
+    transform: translateY(-13px)
 }
 
 .sendIcon_clientCommentBox:hover {
@@ -135,3 +137,16 @@
 .submit-rejection:hover {
     cursor: pointer;
 }
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    width: 0rem;
+    height: 0rem;
+} */

@@ -99,7 +99,7 @@ function Information(props) {
     }
 
     const permanentDisable = (name) => {
-        if (name === "Director Name" || name === "Agency Website" || name === "Team Size" || name === "Agency Email Id") {
+        if (name === "Director Name" || name === "Agency Website" || name === "Team Size" ) {
             return false
         }
         else return true

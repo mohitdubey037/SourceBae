@@ -238,12 +238,13 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 }
                             </div>
+                            {/* </div> */}
                         </div>
                     </div>
                     <RightSide />
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
 

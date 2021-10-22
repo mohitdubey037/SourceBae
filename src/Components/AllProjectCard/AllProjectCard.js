@@ -28,17 +28,23 @@ function AllProjectCard(props) {
                     <div>
                         <img src={DateImage} alt="dateImage" />
                     </div>
-                    <Moment format="D MMM YYYY" withTitle>
+                    <div>
+                       <p><Moment format="D MMM YYYY" withTitle>{props?.createdAt}</Moment></p>
+                    </div>
+                    {/* <Moment format="D MMM YYYY" withTitle>
                         <p>{props?.createdAt}</p>
-                    </Moment>
+                    </Moment> */}
                 </div>
                 <div className='matchedDate_AgencyNewestAllProject'>
                     <div>
                         <img src={DateImage2} alt="dateImage2" />
                     </div>
-                    <Moment format="D MMM YYYY" withTitle>
+                    <div>
+                        <p><Moment format="D MMM YYYY" withTitle>{props?.updatedAt}</Moment></p>
+                    </div>
+                    {/* <Moment format="D MMM YYYY" withTitle>
                         <p>{props?.updatedAt}</p>
-                    </Moment>
+                    </Moment> */}
                 </div>
             </div>
             </div>
