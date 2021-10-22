@@ -81,7 +81,7 @@ function AgencyNewestDashboard(props) {
             .then(function (response) {
                 console.log('h1');
                 cookie.save("isAgencyVerified", response.isAgencyVerified);
-                // setTempStatus(true)
+                setTempStatus(true)
                 setVerified(response.isAgencyVerified);
                 setUserEmailVerified(response.isUserEmailVerified);
                 setUserPhoneVerified(response.isUserPhoneVerified);
@@ -187,32 +187,32 @@ function AgencyNewestDashboard(props) {
                                 )}
                             </div>
                         )}
-                        <div className={`user-operations ${(isAgencyVerified != 'true' || isStepsCompleted != 'true') && "conditional_marginTop"}`}>
+                        <div className={`user-operations ${((isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false) && "conditional_marginTop"}`}>
                             <UserOperations
-                                disabled={isAgencyVerified != 'true' || isStepsCompleted != 'true'}
+                                disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
                                 nextpage={() => quotation("quotation")}
                                 text='Quotation'
                                 img={QuotationIcon} />
 
                             <UserOperations
-                                disabled={isAgencyVerified != 'true' || isStepsCompleted != 'true'}
+                                disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
                                 nextpage={() => quotation("add-developer")}
                                 text="Add Developer"
                                 img={addDeveloperIcon} />
 
                             {agencyProfileData.productId ?
-                                <UserOperations disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true')}
+                                <UserOperations disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
                                     nextpage={() => quotation('product-details')}
                                     text="View Product"
                                     img={ThirdIcon} />
                                 :
-                                <UserOperations disabled={isAgencyVerified != 'true' || isStepsCompleted != 'true'}
+                                <UserOperations disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
                                     nextpage={() => quotation('Add Your Product')}
                                     text="Add Your Product"
                                     img={ThirdIcon} />
                             }
                         </div>
-                        <div className={`${(isAgencyVerified != 'true' || isStepsCompleted != 'true') && "conditional_opacity"}`}>
+                        <div className={`${((isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false) && "conditional_opacity"}`}>
                             {allProjects?.projects?.length > 0 &&
                                 <div className="graphic">
                                     <div className="graphic-illustration-heading">

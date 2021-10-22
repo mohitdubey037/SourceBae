@@ -94,13 +94,27 @@
 }
 
 .shortTermProjectType {
-  margin: 3% auto 0;
+  margin: 2% auto 0;
   font-family: 'Segoe UI';
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
+  flex-direction: column;
+}
+
+.select_technology_shortTerm {
+  font-family: 'Segoe UI';
+  font-size: 1rem;
+  color: #707070;
+}
+
+.shortTermProjectType_child {
   width: 70%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .shortTermProjectName input, .shortTermOptionSelect input {
