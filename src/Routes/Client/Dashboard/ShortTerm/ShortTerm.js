@@ -248,7 +248,7 @@ function ShortTerm(props) {
           </div>
 
           <div className="shortTermProjectType">
-            <p className="select_technology_shortTerm">Please select a technology <span style={{color: 'red'}}>*</span></p>
+            <p className="select_technology_shortTerm">Please select a service <span style={{color: 'red'}}>*</span></p>
             <div className="shortTermProjectType_child">
               {allServices.map((service) => {
                 return (

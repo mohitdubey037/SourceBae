@@ -220,7 +220,6 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 </div>
                             }
-                            {/* </div> */}
                             <div className="user-project_parent">
                                 {/* <div> */}
                                 {allProjects?.projects?.length > 0 ? (
@@ -239,12 +238,13 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 }
                             </div>
+                            {/* </div> */}
                         </div>
                     </div>
                     <RightSide />
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
 
