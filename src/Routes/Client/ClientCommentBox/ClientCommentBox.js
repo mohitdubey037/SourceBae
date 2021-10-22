@@ -6,7 +6,7 @@ import './ClientCommentBox.css';
 import clsx from 'clsx';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { toast } from "react-toastify";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
