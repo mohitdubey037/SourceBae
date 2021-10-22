@@ -195,7 +195,7 @@ const AgencyCommentBox = (props) => {
         <div className="topLine" style={{
           backgroundColor: "rgb(69, 164, 228)"
         }}></div>
-        <img src={bgPic} alt="img" style={{position:"absolute", top:"5rem",left:"9rem", zIndex:"-1",opacity:"0.4"}}/>
+        <img src={bgPic} alt="img" style={{ position: "absolute", top: "5rem", left: "9rem", zIndex: "-1", opacity: "0.4" }} />
         {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
           :
@@ -309,9 +309,14 @@ const AgencyCommentBox = (props) => {
           && !props.projectProposals[0].isCommentSectionActive
           && !props.projectProposals[0].isReplySectionActive
           && (
-            <div className="conversation-over">
-              <p>Conversation Over.</p>
-            </div>
+            <>
+              <div className="conversation-over">
+                <p>Conversation Over.</p>
+              </div>
+              <div className="please_wait">
+                <p>Please wait uptill the client accept the proposal</p>
+              </div>
+            </>
           )}
       </div>
 
@@ -324,12 +329,14 @@ const AgencyCommentBox = (props) => {
         {!(
           props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
         ) && (
-            <div className="proposalCard">
+            <div className="proposalCard" style={{ justifyContent: 'center' }}>
               {props.projectProposals[0].isProposalActionActive ?
                 <>
-                  <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
-                    <p>Accept or Reject the Project.</p>
-                  </div>
+                  {(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) &&
+                    <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
+                      <p>Accept or Reject the Project.</p>
+                    </div>
+                  }
 
                   <div className="postQuotation">
                     {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
@@ -352,16 +359,19 @@ const AgencyCommentBox = (props) => {
                     )}
                   </div>
 
-                  <div style={{ display: `${props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient}` ? '' : 'none' }} className="detailsButtons height" style={{ marginBottom: "1rem" }}>
-                    <div>
-                      <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                        Accept
-                      </button>
-                      <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
-                        Reject
-                      </button>
+                  {props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
+                    &&
+                    <div className="detailsButtons height" style={{ marginBottom: "1rem" }}>
+                      <div>
+                        <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                          Accept
+                        </button>
+                        <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
+                          Reject
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  }
                   {props.projectProposals[0].isReplySectionActive === 'false' &&
                     <p className="color-black">Please provide some reply</p>
                   }
@@ -372,9 +382,9 @@ const AgencyCommentBox = (props) => {
                   file === null ?
                     <div className="quotation_file_upload">
                       <p>Please upload a file of quotation</p>
-                      <label htmlFor="icon-button-file"  style={{margin:"25% 33%"}}>
-                      <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image" 
-                        onChange={(event) => inputFileChosen(event)} />
+                      <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
+                        <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
+                          onChange={(event) => inputFileChosen(event)} />
                       </label>
                     </div>
                     :

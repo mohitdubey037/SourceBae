@@ -8,6 +8,7 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment'
 
 function AgencyProjectCard({ key, ...props }) {
+    console.log(props);
     const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">
@@ -42,18 +43,23 @@ function AgencyProjectCard({ key, ...props }) {
                 </div>
             </div>
 
-            <div className="user-project_details agencyProjectCard">
+            <div style={{height: props?.projectType != 'Short Term' && '64%'}} className="user-project_details agencyProjectCard">
                 <table>
                     <thead>
-                        <tr>
-                            <td>Industry</td>
-                            <td>{props?.projectDomainId?.domainName}</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Expert Categories</td>
-                            <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
-                        </tr>
+                        {props?.projectType != 'Short Term' &&
+                            <tr>
+                                <td>Industry</td>
+                                <td>{props?.projectDomainId?.domainName}</td>
+                            </tr>
+                        }
+
+                        {props?.projectType != 'Short Term' &&
+                            <tr>
+                                <td>Expert Categories</td>
+                                <td>{props?.projectExpertiseRequired[0]?.expertiseName}</td>
+                            </tr>
+                        }
+
                         <tr>
                             <td>Services</td>
                             <td>{props?.projectServicesRequired?.map(a => <span>{a.serviceName}<br></br></span>)}</td>
@@ -69,11 +75,11 @@ function AgencyProjectCard({ key, ...props }) {
                     </thead>
                 </table>
             </div>
-             <div onClick={() =>
-                    routerHistory.push(`/agency-project-details:${props?._id}`)
-                } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
-                    <h6>Show Details</h6>
-                </div>
+            <div onClick={() =>
+                routerHistory.push(`/agency-project-details:${props?._id}`)
+            } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
+                <h6>Show Details</h6>
+            </div>
         </div>
     )
 }

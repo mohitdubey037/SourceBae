@@ -152,7 +152,7 @@ const ClientCommentBox = (props) => {
         <div className="commentBox">
           <div className="topLine" style={{
           }}></div>
-          <img src={bgPic} alt="img" style={{position:"absolute", top:"5rem",left:"9rem", zIndex:"-1",opacity:"0.4"}}/>
+          <img src={bgPic} alt="img" style={{ position: "absolute", top: "5rem", left: "9rem", zIndex: "-1", opacity: "0.4" }} />
           {props.projectProposals[0].comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
@@ -242,9 +242,9 @@ const ClientCommentBox = (props) => {
         </div>
 
         <div className='action-wait'>
-        <div className="topLine" style={{
-          backgroundColor: "rgb(69, 164, 228)"
-        }}></div>
+          <div className="topLine" style={{
+            backgroundColor: "rgb(69, 164, 228)"
+          }}></div>
           {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
             <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
@@ -272,16 +272,18 @@ const ClientCommentBox = (props) => {
                 </div>
               )}
             </div>
-            <div style={{ display: `${props.projectProposals[0].isProposalActionActive}` ? '' : 'none' }} className="detailsButtons height" style={{ marginBottom: "1rem" }}>
-              <div>
-                <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                  Accept
-                </button>
-                <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
-                  Reject
-                </button>
+            {props.projectProposals[0].isProposalActionActive &&
+              <div className="detailsButtons" style={{ marginBottom: "1rem" }} >
+                <div>
+                  <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                    Accept
+                  </button>
+                  <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
+                    Reject
+                  </button>
+                </div>
               </div>
-            </div>
+            }
           </div>
         </div>
       </div>

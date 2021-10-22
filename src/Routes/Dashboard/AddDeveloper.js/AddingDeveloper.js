@@ -106,6 +106,7 @@ function AddingDeveloper(props) {
     }
 
     const inputFileChoosen = (projectDoc) => {
+        console.log(projectDoc);
         setResume(projectDoc);
         setIsDisabled(false)
     }
@@ -279,7 +280,7 @@ function AddingDeveloper(props) {
                                                         onError={errMsg => toast.error(errMsg)}
                                                     >
                                                         <div>
-                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name : 'pick file'}</p>
+                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name.slice(0,25) : 'pick file'}</p>
                                                             <img src={fileIcon} alt="finish" />
                                                         </div>
                                                     </FilePicker>
