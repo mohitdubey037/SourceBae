@@ -13,8 +13,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
-import AttachmentIcon from '@material-ui/icons/Attachment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+
+import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -54,7 +57,8 @@ const AgencyCommentBox = (props) => {
   const [quotationAcceptForm, setQuotationAcceptForm] = useState({
     agencyId: localStorage.getItem("userId"),
     isQuotationAcceptedByAgency: true,
-    projectFinalCost: props.projectProposals[0].finalCostByClient
+    projectFinalCost: props.projectProposals[0].finalCostByClient,
+    projectStartDate: new Date()
   })
 
   const handleChange = (event) => {
@@ -64,6 +68,13 @@ const AgencyCommentBox = (props) => {
       ...apiData,
       [name]: value,
     });
+  };
+
+  const handleChangeDate = (name, value) => {
+    setQuotationAcceptForm({
+      ...quotationAcceptForm,
+      [name]: value
+    })
   };
 
   const [quotationRejectionForm, setQuotationRejectionForm] = useState({
@@ -460,7 +471,18 @@ const AgencyCommentBox = (props) => {
                   <p style={{ width: "75%" }}>Project Start Date By You</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
+                  {/* <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} /> */}
+
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <MobileDatePicker
+                      inputFormat="MM/dd/yyyy"
+                      minDate={props.projectProposals[0].projectExpectedEndDateByClient}
+                      value={props.projectProposals[0].projectExpectedEndDateByClient}
+                      onChange={(event) => handleChangeDate('projectStartDate',event)}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+
                 </div>
               </div>
               <div className="quotationTable">
