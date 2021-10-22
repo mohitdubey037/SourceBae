@@ -344,11 +344,18 @@ const AgencyCommentBox = (props) => {
                         <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
                       </div>
                     )}
+                    
                     {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
                       <div className="detailsButtons md-m10" >
                         <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                       </div>
                     )}
+
+                    {props.projectProposals[0].isQuotationAcceptedByClient &&
+                      <div className="detailsButtons md-m10" >
+                        <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
+                      </div>
+                    }
 
                     {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
                       <div className="detailsButtons md-m10">
@@ -357,6 +364,7 @@ const AgencyCommentBox = (props) => {
                         </a>
                       </div>
                     )}
+
                   </div>
 
                   {props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient

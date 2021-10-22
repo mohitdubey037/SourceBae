@@ -246,11 +246,11 @@ const ClientCommentBox = (props) => {
             backgroundColor: "rgb(69, 164, 228)"
           }}></div>
           <div className="proposalCard">
-            {props.projectProposals[0].isCommentSectionActive &&
+            {/* {props.projectProposals[0].isCommentSectionActive && */}
               <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
                 <p>Accept or Reject the Project.</p>
               </div>
-            }
+            {/* } */}
             <div className="postQuotation">
               {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
                 <div className="detailsButtons margin-0">
@@ -273,7 +273,7 @@ const ClientCommentBox = (props) => {
                 </div>
               )}
             </div>
-            {props.projectProposals[0].isCommentSectionActive &&
+            {/* {props.projectProposals[0].isCommentSectionActive && */}
               <div className="detailsButtons" style={{ marginBottom: "1rem" }} >
                 <div>
                   <button className="acceptButton" onClick={() => { setOpen(true) }}>
@@ -284,7 +284,7 @@ const ClientCommentBox = (props) => {
                   </button>
                 </div>
               </div>
-            }
+            {/* } */}
           </div>
         </div>
       </div>
