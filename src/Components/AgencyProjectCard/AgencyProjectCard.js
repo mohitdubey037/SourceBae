@@ -8,7 +8,7 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment'
 
 function AgencyProjectCard({ key, ...props }) {
-    console.log(props);
+    console.log(props, "agencyProjectCard");
     const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">
@@ -23,17 +23,23 @@ function AgencyProjectCard({ key, ...props }) {
                     <div className="imageClass" style={{ marginRight: 10 }}>
                         <img src={DateImage} alt="dateImage" />
                     </div>
-                    <Moment format="D MMM YYYY" withTitle>
+                    <div>
+                         <p><Moment format="D MMM YYYY" withTitle>{props?.createdAt}</Moment></p>
+                    </div>
+                    {/* <Moment format="DD MM YYYY" withTitle>
                         <p className="creation_date" style={{ marginLeft: 10 }}>{props?.createdAt}</p>
-                    </Moment>
+                    </Moment> */}
                 </div>
                 <div className='matchedDate'>
                     <div className="imageClass">
                         <img src={DateImage2} alt="dateImage2" />
                     </div>
-                    <Moment format="D MMM YYYY" withTitle>
+                    <div>
+                        <p><Moment format="D MMM YYYY" withTitle>{props?.updatedAt}</Moment></p>
+                     </div>
+                    {/* <Moment format="DD MM YYYY" withTitle>
                         <p className="creation_date" style={{ marginLeft: 10 }}>{props?.updatedAt}</p>
-                    </Moment>
+                    </Moment> */}
                 </div>
                 <div className='currentStatus'>
                     <div className="imageClass">
@@ -43,7 +49,7 @@ function AgencyProjectCard({ key, ...props }) {
                 </div>
             </div>
 
-            <div style={{height: props?.projectType != 'Short Term' && '64%'}} className="user-project_details agencyProjectCard">
+            <div style={{height: props?.projectType === 'Short Term'? '64%':""}} className="user-project_details agencyProjectCard">
                 <table>
                     <thead>
                         {props?.projectType != 'Short Term' &&
@@ -66,7 +72,7 @@ function AgencyProjectCard({ key, ...props }) {
                         </tr>
                         <tr>
                             <td>Final Budget</td>
-                            <td>${props?.projectFinalCost === undefined ? props?.projectProposalCost : "----"}</td>
+                            <td>${props?.projectFinalCost || props?.projectProposalCost || props?.finalCostByClient}</td>
                         </tr>
                         <tr>
                             <td>Project Type</td>

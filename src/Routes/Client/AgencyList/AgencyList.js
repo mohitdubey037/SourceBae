@@ -78,7 +78,7 @@ function AgencyList(props) {
   useEffect(() => {
     console.log(project);
   }, [project]);
-
+console.log(project,"comme ejg rjfgvjl");
   const handleChange = (event) => {
     const { name, value } = event.target;
     setShortlistFormData({
@@ -352,7 +352,7 @@ function AgencyList(props) {
                   <p>Project Name</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <p>One Sourcing</p>
+                  <p>{project.projectName}</p>
                 </div>
               </div>
               <div className="quotationTable">
@@ -360,7 +360,7 @@ function AgencyList(props) {
                   <p>Budget</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <p>$5000- $10000</p>
+                  <p> $ {project.projectProposalCost}</p>
                 </div>
               </div>
               <div className="quotationTable">

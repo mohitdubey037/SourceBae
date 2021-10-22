@@ -6,6 +6,7 @@ import './ClientCommentBox.css';
 import clsx from 'clsx';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { toast } from "react-toastify";
+import DatePicker from "react-datepicker";
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -152,7 +153,7 @@ const ClientCommentBox = (props) => {
         <div className="commentBox">
           <div className="topLine" style={{
           }}></div>
-          <img src={bgPic} alt="img" style={{ position: "absolute", top: "5rem", left: "9rem", zIndex: "-1", opacity: "0.4" }} />
+          <img src={bgPic} alt="img" style={{position:"absolute", top:"5rem",left:"9rem", zIndex:"-1",opacity:"0.4"}}/>
           {props.projectProposals[0].comments.map((index) => {
             if (index.commentType === props.commentType) {
               return (
@@ -242,9 +243,10 @@ const ClientCommentBox = (props) => {
         </div>
 
         <div className='action-wait'>
-          <div className="topLine" style={{
-            backgroundColor: "rgb(69, 164, 228)"
-          }}></div>
+        <div className="topLine" style={{
+          backgroundColor: "rgb(69, 164, 228)"
+        }}></div>
+          {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
             {/* {props.projectProposals[0].isCommentSectionActive && */}
               <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
@@ -315,7 +317,13 @@ const ClientCommentBox = (props) => {
                   <p>Project Start Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectStartDateByClient' onChange={onQuotationChange} />
+                 
+                  <input type='date'  name='projectStartDateByClient'  onChange={onQuotationChange} />
+                  {/* <DatePicker */}
+          {/* // selected={this.state.startDate} */}
+          {/* onChange={onQuotationChange} */}
+        {/* /> */}
+        {/* <button onClick={this.openDatePicker}>openDate</button> */}
                 </div>
               </div>
               <div className="quotationTable">
