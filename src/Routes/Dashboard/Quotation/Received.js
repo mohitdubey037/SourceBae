@@ -54,7 +54,7 @@ function Received(props) {
                             </>
                             :
                             projects && projects.map((s) => 
-                              ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient) ?
+                              ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient || s?.projectCurrentStatus === "Quotation Accepted") ?
                                  (
                                     <div className="respondedCard">
                                         <div className="leftBorder"></div>

@@ -526,10 +526,10 @@
     padding: 0.8rem;
 }
 
-.notificationPoint{
+/* .notificationPoint{ */
     /* border-bottom: 1px dashed #5bc0de; */
     /* padding-top: 3%; */
-}
+/* } */
 .notificationPoint p{
     font-family: 'Open Sans', sans-serif;
     font-size: 0.9rem;

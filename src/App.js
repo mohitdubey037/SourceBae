@@ -47,7 +47,7 @@ useEffect(() => {
   } else {
     const messaging = firebase.messaging();
     messaging.getToken().then((token) => {
-      console.log("token", token);
+      // console.log("token", token);
     });
   }
 },[])

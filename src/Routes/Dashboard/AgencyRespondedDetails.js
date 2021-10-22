@@ -103,10 +103,12 @@ console.log(project,"responded Details");
             <p>Client</p>
             <p>{`${project?.clientId?.companyName}`}</p>
           </div>
+          {project.projectExpectedStartingDays === 0 &&
           <div>
             <p>Expected Timeline</p>
             <p>{`${project?.projectExpectedStartingDays} Days`}</p>
           </div>
+          }
           <div>
             <p>Project Proposal Cost</p>
             <p>{`$${project?.projectProposalCost}`}</p>

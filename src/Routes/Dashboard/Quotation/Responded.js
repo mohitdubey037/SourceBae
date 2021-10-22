@@ -49,7 +49,7 @@ function Responded(props) {
                             </>
                             :
                             projects.map((s) => 
-                            ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient) ?
+                            ! (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient  || s?.projectCurrentStatus === "Quotation Accepted") ?
                              (
                                     isDetail === false ? (
                                         <div className="respondedCard">

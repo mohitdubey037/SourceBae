@@ -57,11 +57,11 @@ function Sidebar(props) {
     const logout = () => {
         localStorage.removeItem("Authorization");
         localStorage.removeItem('role');
-        localStorage.removeItem('isAgencyVerified');
-        localStorage.removeItem('isStepsCompleted');
         localStorage.removeItem('userId');
         localStorage.removeItem('toggle');
         cookie.remove("Authorization");
+        cookie.remove("isAgencyVerified");
+        cookie.remove("isStepsCompleted");
         routerHistory.push('/');
     }
 
@@ -82,7 +82,7 @@ function Sidebar(props) {
                         </div>
                         <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
                             <img src={developersIcon} alt="developers_icon" />
-                            <div style={{width: '62%', lineHeight: '13px'}}>
+                            <div style={{ width: '62%', lineHeight: '13px' }}>
                                 <p>Developer Request</p>
                                 {/* <p>Request</p> */}
                             </div>
