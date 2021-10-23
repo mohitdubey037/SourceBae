@@ -71,6 +71,21 @@ function HireAgencyForm2(props) {
     });
   };
 
+
+  // useEffect(() => {
+  //   if (props.location.state) {
+  //     setApiData({
+  //       stepsCompleted: 2,
+  //       // clientId: props.location.state.apiData.id,
+  //       // id:props.location.state.apiData.projectId,
+  //       projectDomainId: "",
+  //       // projectExpertiseRequired: props.location.state.apiData.projectExpertiseRequired,
+  //       agencyExperience: "capable",
+  //     });
+  //   }
+  // }, []);
+
+
   const handleDomains = (event) => {
     const { className } = event.target;
     const toggledDomains = allDomainsData.map((domain) => {
@@ -109,10 +124,10 @@ function HireAgencyForm2(props) {
   };
 
   //Api Calls methods
-
+console.log(props,"hsfnhire2222")
   const getAllDomains = () => {
     instance
-      .get(`api/${Role}/domains/all`)
+      .get(`api/${Role}/domains/all`,apiData)
       .then(function (response) {
         console.log(response);
         const domainNames = response.map((domain) => {
@@ -160,11 +175,11 @@ function HireAgencyForm2(props) {
     else {
       setLoading(true);
       instance
-        .post(`/api/${Role}/projects/create`, apiData)
+        .post(`/api/${Role}/projects/create`,apiData)
         .then(function (response) {
           console.log(response);
           setLoading(false);
-          props.history.replace(`/hire-agency-form-three:${projectId}`);
+          props.history.replace(`/hire-agency-form-three:${projectId}`,apiData);
         })
         .catch((err) => {
           setLoading(false);
@@ -343,7 +358,7 @@ function HireAgencyForm2(props) {
               </div>
 
               <div className="nextbutton">
-                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`)} style={{ backgroundColor: "#707070" }}>
+                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`,{data:apiData})} style={{ backgroundColor: "#707070" }}>
                   Back
                 </div>
                 <div onClick={() => handleSubmit()}>

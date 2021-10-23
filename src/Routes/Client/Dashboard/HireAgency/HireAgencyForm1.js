@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
+import Navbar from "../../../../Components/ClientNewestDashboard/Navbar/Navbar";
 import "./HireAgencyForms.css";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
-import instance from "../../../../Constants/axiosConstants"
+import { useParams } from "react-router-dom";
+
+import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
-import Back from '../../../../Components/Back/Back';
-import illustration from '../../../../assets/images/Newestdashboard/Hire-Agency-Form/illustration.svg';
-import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
-import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
-import './HireAgencyForm1.css';
+import Back from "../../../../Components/Back/Back";
+import illustration from "../../../../assets/images/Newestdashboard/Hire-Agency-Form/illustration.svg";
+import UpImage from "../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg";
+import DownImage from "../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg";
+import "./HireAgencyForm1.css";
 
 const BlueRadio = withStyles({
   root: {
@@ -25,10 +27,11 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 const HireAgencyForm1 = (props) => {
-
+  // let { projectId, agencyId } = useParams();
   const [loading, setLoading] = useState(false);
   const id = localStorage.getItem("userId");
   const Role = "Client";
+  // const [project, setProject] = useState([]);
   const [words, setWords] = useState(0);
   const [data, setData] = useState({
     stepsCompleted: 1,
@@ -42,30 +45,40 @@ const HireAgencyForm1 = (props) => {
   const [error, setError] = useState({
     projectNameError: "",
     projectDescriptionError: "",
-    projectExpectedStartingDaysError:"",
-  })
+    projectExpectedStartingDaysError: "",
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     console.log(value);
-    if (name === 'projectDescription') {
-      if (value.length <= 100)
-        setWords(value.length);
-      if (value.length > 100)
-        setWords(100);
+    if (name === "projectDescription") {
+      if (value.length <= 100) setWords(value.length);
+      if (value.length > 100) setWords(100);
     }
     setData({
       ...data,
       [name]: value,
     });
   };
-
+console.log(props,"form 1111")
+  useEffect(() => {
+    if (props.location.state) {
+      setData({
+        stepsCompleted:1,
+        clientId:props.location.state.data.clientId,
+        projectName: props.location.state.data.projectName,
+        projectDescription: props.location.state.data.projectDescription,
+        projectProposalCost: props.location.state.data.projectProposalCost,
+        projectExpectedStartingDays:props.location.state.data.projectExpectedStartingDays,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     console.log(words);
-    console.log(data,"data")
-  }, [words,data])
- 
+    console.log(data, "data");
+  }, [words, data]);
+
   // const upArrow = () => {
   //   if (data.projectExpectedStartingDays < 180)
   //     setData({
@@ -82,75 +95,71 @@ const HireAgencyForm1 = (props) => {
   //   });
   // };
 
-
+  // console.log(props.location.state, "jnffjnejnfklamad,lsfm");
   const handleSubmit = () => {
     let tempError = {
       projectNameError: "",
       projectDescriptionError: "",
-      projectExpectedStartingDaysError:"",
-    }
+      projectExpectedStartingDaysError: "",
+    };
     if (data.projectName === "") {
-      setError(
-        {
-          ...tempError,
-          projectNameError: 'Project name is required',
-        }
-      )
-    }
-    else if (data.projectName.length < 2) {
-      setError(
-        {
-          ...tempError,
-          projectNameError: 'Project name should be more than 2 characters.',
-        }
-      )
-    }
-    else if (data.projectDescription === "") {
-      setError(
-        {
-          ...tempError,
-          projectDescriptionError: 'Project description is required',
-        }
-      )
-    }
-    else if (data.projectDescription.length <= 100) {
-      setError(
-        {
-          ...tempError,
-          projectDescriptionError: 'Project name should be more than 100 characters.',
-        }
-      )
-    }
-    else if (data.projectExpectedStartingDays <= 4) {
-      setError(
-        {
-          ...tempError,
-          projectExpectedStartingDaysError: 'Project starting days should be greater than 5 days',
-        }
-      )
-    }
-    else {
-      setLoading(true)
+      setError({
+        ...tempError,
+        projectNameError: "Project name is required",
+      });
+    } else if (data.projectName.length < 2) {
+      setError({
+        ...tempError,
+        projectNameError: "Project name should be more than 2 characters.",
+      });
+    } else if (data.projectDescription === "") {
+      setError({
+        ...tempError,
+        projectDescriptionError: "Project description is required",
+      });
+    } else if (data.projectDescription.length <= 100) {
+      setError({
+        ...tempError,
+        projectDescriptionError:
+          "Project name should be more than 100 characters.",
+      });
+    } else if (data.projectExpectedStartingDays <= 4) {
+      setError({
+        ...tempError,
+        projectExpectedStartingDaysError:
+          "Project starting days should be greater than 5 days",
+      });
+    } else {
+      setLoading(true);
       console.log(data);
-      instance.post(`/api/${Role}/projects/create`, data)
+      instance
+        .post(`/api/${Role}/projects/create`,data)
         .then(function (response) {
           setLoading(false);
-          props.history.replace(`/hire-agency-form-two:${response._id}`)
+          props.history.replace(`/hire-agency-form-two:${response._id}`, {
+            data,
+          });
         })
-        .catch(err => {
-          setLoading(false)
-        })
+        .catch((err) => {
+          setLoading(false);
+        });
     }
-  }
+  };
 
   return (
     <>
       <Navbar />
-      {loading ? <Spinner /> :
+      {loading ? (
+        <Spinner />
+      ) : (
         <>
           <div className="main_HireAgencyParent">
             <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
-            <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
+            <img
+              className="Image2_hireAgency"
+              src={DownImage}
+              alt="downImage"
+            />
             <div className="higherAgencyInfoArea">
               <div className="points-to-remember_hireAgencyForm1">
                 <h4>About Your Project</h4>
@@ -164,12 +173,18 @@ const HireAgencyForm1 = (props) => {
 
                 <div className="cards_hireAgencyForm1">
                   <div className="write_about_your_project">
-                    <p>2. Write about your service or idea in clear manner, with as many details as possible.</p>
+                    <p>
+                      2. Write about your service or idea in clear manner, with
+                      as many details as possible.
+                    </p>
                   </div>
                 </div>
                 <div className="cards_hireAgencyForm1">
                   <div className="in_case_you_think">
-                    <p>3. In case, you think you missed any details you can always edit this later.</p>
+                    <p>
+                      3. In case, you think you missed any details you can
+                      always edit this later.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -177,39 +192,47 @@ const HireAgencyForm1 = (props) => {
 
             <div className="steps_hireAgencyForm">
               <div style={{ width: "27%" }}>
-                <div >
+                <div>
                   <p>Step 1</p>
                 </div>
-                <div className='color_hireAgencyForm green'></div>
+                <div className="color_hireAgencyForm green"></div>
               </div>
 
-              <div className="diabled-step_hireAgencyForm" style={{ width: "27%" }}>
+              <div
+                className="diabled-step_hireAgencyForm"
+                style={{ width: "27%" }}
+              >
                 <div>
                   <p className="grey-step_hireAgencyForm">Step 2</p>
                 </div>
-                <div className='color_hireAgencyForm grey'></div>
+                <div className="color_hireAgencyForm grey"></div>
               </div>
 
               <div style={{ width: "27%" }}>
                 <div>
                   <p className="grey-step_hireAgencyForm">Step 3</p>
                 </div>
-                <div className='color_hireAgencyForm grey'></div>
+                <div className="color_hireAgencyForm grey"></div>
               </div>
             </div>
 
             <div className="mainHireAgencyForm1">
               <div className="innerHigherAgencyForm1">
                 <div className="higherAgencyFormArea">
-                  <div className="understand_your_project">Help us understand more about your project..!!</div>
+                  <div className="understand_your_project">
+                    Help us understand more about your project..!!
+                  </div>
                   <div className="input-form_hireAgencyForm1">
                     <div className="projectNameAgency">
-                      <p>1.&nbsp;What will be the name of your project?   <span className="requiredStar">*</span></p>
+                      <p>
+                        1.&nbsp;What will be the name of your project?{" "}
+                        <span className="requiredStar">*</span>
+                      </p>
                       <input
                         type="text"
                         name="projectName"
                         onChange={handleChange}
-                        placeholder="Give A Name To Identify Requirement"
+                        placeholder="Enter Project Name here"
                         value={data.projectName}
                         maxLength="22"
                       />
@@ -220,7 +243,10 @@ const HireAgencyForm1 = (props) => {
                       )}
                     </div>
                     <div className="descriptionProjectAgency">
-                      <p>2.&nbsp;Describe a little bit about your project?   <span className="requiredStar">*</span></p>
+                      <p>
+                        2.&nbsp;Describe a little bit about your project?{" "}
+                        <span className="requiredStar">*</span>
+                      </p>
                       <textarea
                         name="projectDescription"
                         cols="30"
@@ -239,7 +265,10 @@ const HireAgencyForm1 = (props) => {
                       )}
                     </div>
                     <div className="budgetSectionAreaAgency">
-                      <p>3.&nbsp;What's your budget for this project?  <span className="requiredStar">*</span></p>
+                      <p>
+                        3.&nbsp;What's your budget for this project?{" "}
+                        <span className="requiredStar">*</span>
+                      </p>
                       <FormControl component="fieldset">
                         <RadioGroup
                           aria-label="projectProposalCost"
@@ -271,10 +300,19 @@ const HireAgencyForm1 = (props) => {
                       </FormControl>
                     </div>
                     <div className="numberOfDays">
-                      <p>4.&nbsp;How soon do you want to start? <span className="requiredStar">*</span> </p>
+                      <p>
+                        4.&nbsp;How soon do you want to start?{" "}
+                        <span className="requiredStar">*</span>{" "}
+                      </p>
                       {/* <div className="daysInputAgency"> */}
-                       <input
-                        style={{height:"35px", width:"21rem",border:"1px solid #015F9A",padding:"1rem",borderRadius:"8px"}}
+                      <input
+                        style={{
+                          height: "35px",
+                          width: "21rem",
+                          border: "1px solid #015F9A",
+                          padding: "1rem",
+                          borderRadius: "8px",
+                        }}
                         name="projectExpectedStartingDays"
                         type="number"
                         onChange={handleChange}
@@ -282,12 +320,12 @@ const HireAgencyForm1 = (props) => {
                         // max="180"
                         value={data.projectExpectedStartingDays}
                         placeholder="Text should be number "
-                      /> 
+                      />
                       {error.projectExpectedStartingDaysError && (
                         <p className="error_hireAgencyForm2 error_hireAgencyForm1">
                           {error.projectExpectedStartingDaysError}
                         </p>
-                        )}
+                      )}
                       {/* <p>{data.projectExpectedStartingDays} days</p>
                         <div className="upArrow" onClick={upArrow}>
                           <i class="fa fa-angle-up" aria-hidden="true"></i>
@@ -301,12 +339,16 @@ const HireAgencyForm1 = (props) => {
                     </div>
                   </div>
                   <div className="nextbutton nextbutton_hireAgencyForm1">
-                    <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/clientNewestDashboard`)} style={{ backgroundColor: "#707070" }}>
+                    <div
+                      className="backbutton_hireAgencyForm2"
+                      onClick={() =>
+                        props.history.push(`/clientNewestDashboard`)
+                      }
+                      style={{ backgroundColor: "#707070" }}
+                    >
                       Back
                     </div>
-                    <div onClick={() => handleSubmit()}>
-                      Submit
-                    </div>
+                    <div onClick={() => handleSubmit()}>Submit</div>
                   </div>
                 </div>
                 <div className="illustration_hireAgencyForm1">
@@ -316,7 +358,7 @@ const HireAgencyForm1 = (props) => {
             </div>
           </div>
         </>
-      }
+      )}
     </>
   );
 };
