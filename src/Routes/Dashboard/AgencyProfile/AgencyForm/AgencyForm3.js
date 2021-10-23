@@ -209,7 +209,7 @@ function AgencyForm3(props) {
                                                 <img src={fileIcon} alt="finish" /></button>
                                         </FilePicker>
                                         {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${registrationCertificate?.document?.name ?? "Company Registration Certificate"}`}</p>
+                                        <p className="logo-type_agencyForm1">{`${(registrationCertificate?.document?.name) ? registrationCertificate?.document?.name.slice(0,20) : "Company Registration Certificate"}`}</p>
                                     </div>
                                     <div className="agencyBrochure">
                                         <FilePicker
@@ -222,7 +222,7 @@ function AgencyForm3(props) {
                                             </button>
                                         </FilePicker>
                                         {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${brochureDoc?.document?.name ?? "Brochure"}`}</p>
+                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? registrationCertificate?.document?.name.slice(0,20) : "Brochure"}`}</p>
                                     </div>
                                 </div>
                                 <div className="panDetails">
@@ -237,7 +237,7 @@ function AgencyForm3(props) {
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
-                                        <p className="logo-type_agencyForm1">{`${panCardDoc?.document?.name ?? "Pancard"}`}</p>
+                                        <p className="logo-type_agencyForm1">{`${(panCardDoc?.document?.name) ? panCardDoc?.document?.name.slice(0, 20) : "Pancard"}`}</p>
                                     </div>
                                 </div>
 
