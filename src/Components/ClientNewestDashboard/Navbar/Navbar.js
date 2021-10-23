@@ -42,7 +42,6 @@ function Navbar(props) {
                     console.log(err);
                 });
         }
-
     }, [])
 
 
@@ -61,7 +60,10 @@ function Navbar(props) {
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
-                    {Role === 'Agency' ? <img src={data?.agencyLogo} /> : <img src={data?.imageurl} />}
+                    {Role === 'Agency' ?
+                        <img src={data?.agencyLogo} />
+                        :
+                        <img src={data?.imageurl} />}
                 </div>
             </div>
         </div>

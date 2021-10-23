@@ -154,7 +154,7 @@ function AgencyNewestDashboard(props) {
                 <Navbar />
                 <div className="content-body">
                     <div className="content-leftBody">
-                        {!(isUserEmailVerified && isUserPhoneVerified) && isStepsCompleted == 'true' && (
+                        {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
                             <div className="mainUpdateVerify">
                                 <div className="innerMainVerify">
                                     <p>
@@ -167,10 +167,10 @@ function AgencyNewestDashboard(props) {
                                 </div>
                             </div>
                         )}
-                        {((isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false) && (
+                        {(!verified || steps !== -1) && (
                             //  the major reason of applying tempStatus is that at first event when the agency is verified this check is running becoz isAgencyVerified is storing in cookies a little bit later. so initially we are checking with tempStatus i.e it will be false initially and after the api call it will set to true and hence this check will be verified
                             <div className="mainUpdateVerify">
-                                {isAgencyVerified != 'true' && isStepsCompleted != 'true' ? (
+                                {!verified != 'true' && steps !== -1 ? (
                                     <div className="innerMainVerify">
                                         <p>
                                             Please
@@ -187,32 +187,34 @@ function AgencyNewestDashboard(props) {
                                 )}
                             </div>
                         )}
-                        <div className={`user-operations ${((isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false) && "conditional_marginTop"}`}>
+                        <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}>
                             <UserOperations
-                                disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
+                                disabled={(!verified || steps !== -1)}
                                 nextpage={() => quotation("quotation")}
                                 text='Quotation'
                                 img={QuotationIcon} />
 
                             <UserOperations
-                                disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
+                                disabled={(!verified || steps !== -1)}
                                 nextpage={() => quotation("add-developer")}
                                 text="Add Developer"
                                 img={addDeveloperIcon} />
 
                             {agencyProfileData.productId ?
-                                <UserOperations disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
+                                <UserOperations
+                                    disabled={(!verified || steps !== -1)}
                                     nextpage={() => quotation('product-details')}
                                     text="View Product"
                                     img={ThirdIcon} />
                                 :
-                                <UserOperations disabled={(isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false}
+                                <UserOperations
+                                    disabled={(!verified || steps !== -1)}
                                     nextpage={() => quotation('Add Your Product')}
                                     text="Add Your Product"
                                     img={ThirdIcon} />
                             }
                         </div>
-                        <div className={`${((isAgencyVerified != 'true' || isStepsCompleted != 'true') && tempStatus === false) && "conditional_opacity"}`}>
+                        <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
                             {allProjects?.projects?.length > 0 &&
                                 <div className="graphic">
                                     <div className="graphic-illustration-heading">
