@@ -13,8 +13,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
-import AttachmentIcon from '@material-ui/icons/Attachment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+
+import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -54,7 +57,8 @@ const AgencyCommentBox = (props) => {
   const [quotationAcceptForm, setQuotationAcceptForm] = useState({
     agencyId: localStorage.getItem("userId"),
     isQuotationAcceptedByAgency: true,
-    projectFinalCost: props.projectProposals[0].finalCostByClient
+    projectFinalCost: props.projectProposals[0].finalCostByClient,
+    projectStartDate: new Date()
   })
 
   const handleChange = (event) => {
@@ -64,6 +68,13 @@ const AgencyCommentBox = (props) => {
       ...apiData,
       [name]: value,
     });
+  };
+
+  const handleChangeDate = (name, value) => {
+    setQuotationAcceptForm({
+      ...quotationAcceptForm,
+      [name]: value
+    })
   };
 
   const [quotationRejectionForm, setQuotationRejectionForm] = useState({
@@ -460,7 +471,16 @@ const AgencyCommentBox = (props) => {
                   <p style={{ width: "75%" }}>Project Start Date By You</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <MobileDatePicker
+                      inputFormat="MM/dd/yyyy"
+                      minDate={props.projectProposals[0].projectExpectedEndDateByClient}
+                      value={props.projectProposals[0].projectExpectedEndDateByClient}
+                      onChange={(event) => handleChangeDate('projectStartDate',event)}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+
                 </div>
               </div>
               <div className="quotationTable">
@@ -480,103 +500,6 @@ const AgencyCommentBox = (props) => {
           </div>
         </div>
       </Modal>
-
-
-
-      {/* <Modal open={open} onClose={() => { setOpen(false) }}
-        classNames={{ overlay: "customOverlayAgencyProduct", modal: "customModalAgencyProduct" }}
-        center
-      >
-        <div className="modalHeaderProduct">
-          <h2>Accept Project</h2>
-        </div>
-        <div className="productModalForm">
-          <div className="quotationTable">
-            <div className="tableHeaderQuotation">
-              <p>Final Cost </p>
-            </div>
-            <div className="tableContentQuotation">
-              <p>{props.projectProposals[0].finalCostByClient}</p>
-            </div>
-          </div>
-
-          <div className="quotationTable">
-            <div className="tableHeaderQuotation">
-              <p>Project Start Date By Client</p>
-            </div>
-            <div className="tableContentQuotation">
-              <p><Moment format="D MMM YYYY" withTitle>{props.projectStartDateByClient}</Moment></p>
-            </div>
-          </div>
-
-          <div className="quotationTable">
-            <div className="tableHeaderQuotation">
-              <p>Project Delayed Start Date By Client</p>
-            </div>
-            <div className="tableContentQuotation">
-              <p><Moment format="D MMM YYYY" withTitle>{props.projectDelayedStartDateByClient}</Moment></p>
-            </div>
-          </div>
-
-          <div className="quotationTable">
-            <div className="tableHeaderQuotation">
-              <p>Project End Date By Client</p>
-            </div>
-            <div className="tableContentQuotation">
-              <p><Moment format="D MMM YYYY" withTitle>{props.projectEndDateByClient}</Moment></p>
-            </div>
-          </div>
-
-          <div className="quotationTable">
-            <div className="tableHeaderQuotation">
-              <p>Project Expected End Date By Client</p>
-            </div>
-            <div className="tableContentQuotation">
-              <p><Moment format="D MMM YYYY" withTitle>{props.projectExpectedEndDateByClient}</Moment></p>
-            </div>
-          </div>
-
-          <div className="quotationTable">
-            <div className="tableHeaderQuotation">
-              <p>Project Start Date By You</p>
-            </div>
-            <div className="tableContentQuotation">
-              <input type='date' name='projectStartDate' onChange={onQuotationAcceptChange} />
-            </div>
-          </div>
-        </div>
-        <div className="connectedButton">
-          <p onClick={handleProjectAcceptance}>
-            Accept<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </Modal> */}
-
-      {/* <Modal open={openWithdrawModal} onClose={() => { setOpenWithdrawModal(false) }}
-        classNames={{ overlay: "customOverlayAgencyProduct", modal: "customModalAgencyProduct" }}
-        center>
-        <div className="quotationTable">
-          <div className="tableHeaderQuotation">
-            <p>Reason for Rejection</p>
-          </div>
-          <div className="tableContentQuotation">
-            <input type='text' name='rejectReasonByAgency' onChange={onQuotationRejectionChange} />
-            {rejectErrors !== undefined && (
-              <p
-                style={{
-                  color: "red",
-                  fontWeight: "normal",
-                  fontSize: "14px",
-                }}
-              >
-                {rejectErrors}
-              </p>
-            )
-            }
-          </div>
-        </div>
-        <button onClick={() => handleProjectRejection()}>Yes</button>
-      </Modal> */}
 
       <Modal
         open={openWithdrawModal}

@@ -476,34 +476,13 @@
   border-radius: 5px;
 } */
 
-.QuotationModal {
-  max-width: 650px;
-  width: 100%;
-  border-radius: 10px;
-}
 
 .QuotationModal {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Segoe UI';
 }
 
 .tableHeaderQuotation p {
   font-weight: 500;
-}
-
-.tableContentQuotation p {
-  margin-top: 3px;
-  margin-right: 20px;
-}
-
-.tableContentQuotation input {
-  width: 100%;
-  height: 40px;
-  padding-left: 10px;
-  outline: none;
-  border: 1px solid #e0e0e0;
-  font-size: 0.9rem;
-  border-radius: 6px;
-  padding-right: 2rem;
 }
 
 .tableContentQuotation textarea {
