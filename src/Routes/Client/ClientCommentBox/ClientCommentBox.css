@@ -45,6 +45,10 @@
     text-transform: uppercase;
 }
 
+.datePicker_quotation:hover {
+    cursor: pointer;
+}
+
 .commentBox>p {
     font-size: 10px;
     color: #484848;
@@ -68,10 +72,6 @@
 .radioButtons_with_textBox .MuiSvgIcon-root {
     font-size: 13px;
 }
-
-/* .detailed_description_clientCommentBox>label {
-    font: 500 14px 'Open Sans', sans-serif !important;
-} */
 
 .reject-reason_label {
     text-align: center;
@@ -137,16 +137,35 @@
 .submit-rejection:hover {
     cursor: pointer;
 }
-/* input[type="date"]::-webkit-calendar-picker-indicator {
-    background: transparent;
-    bottom: 0;
-    color: transparent;
-    cursor: pointer;
-    height: auto;
-    left: 0;
-    position: absolute;
-    right: 0rem;
-    top: 0rem;
-    width: 0rem;
-    height: 0rem;
-} */
+
+.conditional_datePicker {
+    background-color: #d9d6d62e;
+}
+
+.acceptance-parent_clientCommentBox {
+    max-width: 530px;
+}
+
+.QuotationModal.QuotationModal_clientCommentBox {
+    max-width: 530px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.tableContentQuotation p {
+    margin-top: 3px;
+    margin-right: 20px;
+    font-family: 'Segoe UI';
+    font-size: 1rem;
+}
+
+.tableContentQuotation input {
+    width: 95% !important;
+    height: 40px;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    padding-right: 2rem;
+}

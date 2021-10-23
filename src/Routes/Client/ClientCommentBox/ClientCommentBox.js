@@ -41,6 +41,7 @@ const ClientCommentBox = (props) => {
   const [open, setOpen] = useState(false);
   const onCloseModal = () => setOpen(false);
   const [openRejectionModal, setOpenRejectionModal] = useState(false);
+  const [acceptErrors, setAcceptErrors] = useState('');
   const [rejectErrors, setRejectErrors] = useState('');
   const [singleRejectError, setSingleRejectError] = useState('');
 
@@ -48,9 +49,10 @@ const ClientCommentBox = (props) => {
     agencyId: props?.agencyId || "",
     isQuotationAcceptedByClient: true,
     projectStartDateByClient: new Date(),
-    projectDelayedStartDateByClient: new Date(),
-    projectEndDateByClient: new Date(),
-    projectExpectedEndDateByClient: new Date()
+    projectDelayedStartDateByClient: '',
+    projectEndDateByClient: '',
+    projectExpectedEndDateByClient: '',
+    finalCostByClient: ''
   })
 
   const [quotationRejectionForm, setQuotationRejectionForm] = useState({
@@ -129,15 +131,43 @@ const ClientCommentBox = (props) => {
       })
   };
 
+  const validateForm = () => {
+    if (quotationFormData.isQuotationAcceptedByClient === '') {
+      toast.error('Start date can"t be empty');
+      return false;
+    }
+    else if (quotationFormData.projectDelayedStartDateByClient === '') {
+      toast.error('Delayed date can"t be empty');
+      return false;
+
+    }
+    else if (quotationFormData.projectEndDateByClient === '') {
+      toast.error("End date can't be empty");
+      return false;
+    }
+    else if (quotationFormData.projectExpectedEndDateByClient === '') {
+      toast.error("Expected end date can't be empty");
+      return false
+    }
+    else if (quotationFormData.finalCostByClient === '') {
+      toast.error("Expected end date can't be empty");
+    }
+    else {
+      return true;
+    }
+  }
+
   const handleProjectAcceptance = () => {
-    instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationFormData)
-      .then(function (response) {
-        props.giveReplies(true);
-        onCloseModal();
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    if (validateForm()) {
+      instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationFormData)
+        .then(function (response) {
+          props.giveReplies(true);
+          onCloseModal();
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
   }
 
   const checkErrors = () => {
@@ -268,7 +298,6 @@ const ClientCommentBox = (props) => {
           }}></div>
           {props.projectProposals[0].isProposalActionActive}
           <div className="proposalCard">
-            {/* {props.projectProposals[0].isCommentSectionActive && */}
             <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
               <p>Accept or Reject the Project.</p>
             </div>
@@ -295,7 +324,6 @@ const ClientCommentBox = (props) => {
                 </div>
               )}
             </div>
-            {/* {props.projectProposals[0].isCommentSectionActive && */}
             <div className="detailsButtons" style={{ marginBottom: "1rem" }} >
               <div>
                 <button className="acceptButton" onClick={() => { setOpen(true) }}>
@@ -306,7 +334,6 @@ const ClientCommentBox = (props) => {
                 </button>
               </div>
             </div>
-            {/* } */}
           </div>
         </div>
       </div>
@@ -317,7 +344,7 @@ const ClientCommentBox = (props) => {
         center
         classNames={{
           overlay: "QuotationModalOverlay",
-          modal: "QuotationModal",
+          modal: "QuotationModal QuotationModal_clientCommentBox",
         }}
       >
         <div className="QuotationModal acceptance-parent_clientCommentBox">
@@ -338,17 +365,17 @@ const ClientCommentBox = (props) => {
                 </div>
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <MobileDatePicker
-                      className={classes.root}
-                      inputFormat="MM/dd/yyyy"
-                      minDate={new Date()}
-                      value={quotationFormData.projectStartDateByClient}
-                      onChange={(event) => handleChangeDate('projectStartDateByClient',event)}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
+                    <div>
+                      <MobileDatePicker
+                        className={classes.root}
+                        inputFormat="MM/dd/yyyy"
+                        minDate={new Date()}
+                        value={quotationFormData.projectStartDateByClient}
+                        onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
                   </LocalizationProvider>
-
-                  {/* <input type ='date'  name='projectStartDateByClient'  onChange={onQuotationChange} /> */}
 
                 </div>
               </div>
@@ -357,16 +384,17 @@ const ClientCommentBox = (props) => {
                   <p>Project Delayed Start Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  {/* <input type='date' name='projectDelayedStartDateByClient' onChange={onQuotationChange} /> */}
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <MobileDatePicker
-                      inputFormat="MM/dd/yyyy"
-                      minDate={quotationFormData.projectStartDateByClient}
-                      value={quotationFormData.projectDelayedStartDateByClient}
-                      onChange={(event) => handleChangeDate('projectDelayedStartDateByClient',event)}
-                      toolbarTitle
-                      renderInput={(params) => <TextField {...params} />}
-                    />
+                    <div className={`${quotationFormData.projectStartDateByClient === '' ? 'conditional_datePicker' : 'datePicker_quotation'}`}>
+                      <MobileDatePicker
+                        inputFormat="MM/dd/yyyy"
+                        minDate={quotationFormData.projectStartDateByClient}
+                        value={quotationFormData.projectDelayedStartDateByClient}
+                        disabled={quotationFormData.projectStartDateByClient === '' ? true : false}
+                        onChange={(event) => handleChangeDate('projectDelayedStartDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
                   </LocalizationProvider>
                 </div>
               </div>
@@ -375,16 +403,17 @@ const ClientCommentBox = (props) => {
                   <p>Project End Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  {/* <input type='date' name='projectEndDateByClient' onChange={onQuotationChange} /> */}
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <MobileDatePicker
-                      inputFormat="MM/dd/yyyy"
-                      minDate={quotationFormData.projectDelayedStartDateByClient}
-                      value={quotationFormData.projectEndDateByClient}
-                      onChange={(event) => handleChangeDate('projectEndDateByClient',event)}
-                      toolbarTitle
-                      renderInput={(params) => <TextField {...params} />}
-                    />
+                    <div className={`${quotationFormData.projectDelayedStartDateByClient === '' ? 'conditional_datePicker' : 'datePicker_quotation'}`} >
+                      <MobileDatePicker
+                        inputFormat="MM/dd/yyyy"
+                        disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : false}
+                        minDate={quotationFormData.projectDelayedStartDateByClient}
+                        value={quotationFormData.projectEndDateByClient}
+                        onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
                   </LocalizationProvider>
                 </div>
               </div>
@@ -393,16 +422,17 @@ const ClientCommentBox = (props) => {
                   <p>Project Expected End Date</p>
                 </div>
                 <div className="tableContentQuotation">
-                  {/* <input type='date' name='projectExpectedEndDateByClient' onChange={onQuotationChange} /> */}
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <MobileDatePicker
-                      inputFormat="MM/dd/yyyy"
-                      minDate={quotationFormData.projectEndDateByClient}
-                      value={quotationFormData.projectExpectedEndDateByClient}
-                      onChange={(event) => handleChangeDate('projectExpectedEndDateByClient',event)}
-                      toolbarTitle
-                      renderInput={(params) => <TextField {...params} />}
-                    />
+                    <div className={`${quotationFormData.projectEndDateByClient === '' ? 'conditional_datePicker' : 'datePicker_quotation'}`}>
+                      <MobileDatePicker
+                        inputFormat="MM/dd/yyyy"
+                        disabled={quotationFormData.projectEndDateByClient === '' ? true : false}
+                        minDate={quotationFormData.projectEndDateByClient}
+                        value={quotationFormData.projectExpectedEndDateByClient}
+                        onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
                   </LocalizationProvider>
                 </div>
               </div>
