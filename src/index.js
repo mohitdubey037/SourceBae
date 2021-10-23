@@ -1,33 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import Sidebar from './Components/ClientNewestDashboard/Sidebar/Sidebar';
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Sidebar from "./Components/ClientNewestDashboard/Sidebar/Sidebar";
 import * as serviceWorker from "./serviceWorker";
 
 //REDUX
 
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './Redux/rootReducer';
-import clientProjectsReducer from './Redux/Reducer/clientProjects';
+import { createStore, compose } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./Redux/rootReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(clientProjectsReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+// const gettingReduxState = useSelector((state) => {
+//   console.log("state", state);
+// });
+
+navigator.serviceWorker.addEventListener("message", (message) => {
+  store.dispatch({
+    type: "NOTIFICATION",
+    notification: 1,
+  });
+});
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <ToastContainer />
-        <App />
+      <App />
     </BrowserRouter>
-  </Provider>
-  , document.getElementById('root')
+  </Provider>,
+  document.getElementById("root")
 );
 
 serviceWorker.register();
-
