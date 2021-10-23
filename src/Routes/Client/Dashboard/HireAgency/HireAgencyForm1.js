@@ -60,24 +60,21 @@ const HireAgencyForm1 = (props) => {
       [name]: value,
     });
   };
-console.log(props,"form 1111")
+  
   useEffect(() => {
-    if (props.location.state) {
+    if (props.location.state?.agencyForm1) {
       setData({
         stepsCompleted:1,
-        clientId:props.location.state.data.clientId,
-        projectName: props.location.state.data.projectName,
-        projectDescription: props.location.state.data.projectDescription,
-        projectProposalCost: props.location.state.data.projectProposalCost,
-        projectExpectedStartingDays:props.location.state.data.projectExpectedStartingDays,
+        clientId:props.location.state.agencyForm1.clientId,
+        projectName: props.location.state.agencyForm1.projectName,
+        projectDescription: props.location.state.agencyForm1.projectDescription,
+        projectProposalCost: props.location.state.agencyForm1.projectProposalCost,
+        projectExpectedStartingDays:props.location.state.agencyForm1.projectExpectedStartingDays,
       });
     }
   }, []);
 
-  useEffect(() => {
-    console.log(words);
-    console.log(data, "data");
-  }, [words, data]);
+
 
   // const upArrow = () => {
   //   if (data.projectExpectedStartingDays < 180)
@@ -137,7 +134,7 @@ console.log(props,"form 1111")
         .then(function (response) {
           setLoading(false);
           props.history.replace(`/hire-agency-form-two:${response._id}`, {
-            data,
+            agencyForm1:data,
           });
         })
         .catch((err) => {

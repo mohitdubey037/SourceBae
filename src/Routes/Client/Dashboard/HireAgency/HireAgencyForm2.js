@@ -41,7 +41,7 @@ function HireAgencyForm2(props) {
   projectId = helper.cleanParam(projectId);
   console.log(projectId);
   const id = localStorage.getItem("userId");
-
+ const propData=props.location.state
   const [apiData, setApiData] = useState({
     stepsCompleted: 2,
     clientId: id,
@@ -50,12 +50,13 @@ function HireAgencyForm2(props) {
     projectExpertiseRequired: [],
     agencyExperience: "capable",
   });
-
+ 
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState(null);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedDomainHL,setSelectedDomainHL]=useState('');
   const [error, setError] = useState({
     projectDomainIdError: "",
     projectExpertiseRequiredError: [],
@@ -65,12 +66,13 @@ function HireAgencyForm2(props) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log("name handle set",name , value)
     setApiData({
       ...apiData,
       [name]: value,
     });
   };
-
+//  console.log("form 2 props",props.location.state)
 
   // useEffect(() => {
   //   if (props.location.state) {
@@ -85,6 +87,13 @@ function HireAgencyForm2(props) {
   //   }
   // }, []);
 
+useEffect(()=>{
+  console.log('prop data',propData.agencyForm2);
+  if(propData.agencyForm2){
+    setSelectedDomainHL(propData.agencyForm2?.projectDomainId);
+    setApiData(propData.agencyForm2)
+  }
+},[propData])
 
   const handleDomains = (event) => {
     const { className } = event.target;
@@ -92,10 +101,13 @@ function HireAgencyForm2(props) {
       if (domain.domainName === className) {
 
         if (!domain.selected)
+          {
+            setSelectedDomainHL('');
           setApiData({
             ...apiData,
             projectDomainId: domain._id
           })
+        }
         else
           setApiData({
             ...apiData,
@@ -124,7 +136,6 @@ function HireAgencyForm2(props) {
   };
 
   //Api Calls methods
-console.log(props,"hsfnhire2222")
   const getAllDomains = () => {
     instance
       .get(`api/${Role}/domains/all`,apiData)
@@ -179,7 +190,8 @@ console.log(props,"hsfnhire2222")
         .then(function (response) {
           console.log(response);
           setLoading(false);
-          props.history.replace(`/hire-agency-form-three:${projectId}`,apiData);
+          propData.agencyForm2=apiData
+          props.history.replace(`/hire-agency-form-three:${projectId}`,propData);
         })
         .catch((err) => {
           setLoading(false);
@@ -286,10 +298,12 @@ console.log(props,"hsfnhire2222")
                 </ul>
                 <div className="servicesCardsHireAgency">
                   {allDomainsData.map((domain) => {
+                    console.log('domain',domain);
+                    console.log('selectedDomain',selectedDomain);
                     return (
                       <div className="tech-container">
                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                          style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }}>
+                          style={{ filter: domain.selected || selectedDomainHL===domain._id ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }}>
                           <img className={`${domain.domainName}`} src={domain.domainIcon} alt="image" />
                         </div>
                         <p className={`${domain.domainName}`} style={{ color: "#707070", fontFamily: "Segoe UI", fontSize: "12px" }}>
@@ -320,15 +334,19 @@ console.log(props,"hsfnhire2222")
                     <RadioGroup
                       aria-label="agencyExperience"
                       name="agencyExperience"
-                      value={apiData.agencyExperience}
+                      // value={propData?.agencyExperience? propData.agencyExperience:apiData.agencyExperience}
+                      // checked={ propData?.agencyExperience == "capable" ? true : false}
                       onChange={handleChange}
                     >
+                    {console.log("api data ",apiData.agencyExperience)}
                       <div className="radio-label_hireAgencyForm2">
                         <FormControlLabel
                           color="primary"
                           value="capable"
                           control={<BlueRadio className={classes.root} />}
                           label="Capable"
+                          // checked={ propData?.agencyExperience == "capable" ? true : true}
+                        
                         />
                       </div>
                       <div className="radio-label_hireAgencyForm2">
@@ -336,6 +354,8 @@ console.log(props,"hsfnhire2222")
                           value="skilled"
                           control={<BlueRadio />}
                           label="Skilled"
+                          // checked={propData?.agencyExperience == "skilled" ? true : false}
+
                         />
                       </div>
                       <div className="radio-label_hireAgencyForm2">
@@ -343,6 +363,7 @@ console.log(props,"hsfnhire2222")
                           value="proficient"
                           control={<BlueRadio />}
                           label="Proficient"
+                          // checked={propData?.agencyExperience == "proficient" ? true : false}
                         />
                       </div>
                       <div className="radio-label_hireAgencyForm2">
@@ -350,6 +371,7 @@ console.log(props,"hsfnhire2222")
                           value="accomplished"
                           control={<BlueRadio />}
                           label="Accomplished"
+                          // checked={propData?.agencyExperience == "accomplished" ? true : false}
                         />
                       </div>
                     </RadioGroup>
@@ -358,7 +380,7 @@ console.log(props,"hsfnhire2222")
               </div>
 
               <div className="nextbutton">
-                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`,{data:apiData})} style={{ backgroundColor: "#707070" }}>
+                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`,propData)} style={{ backgroundColor: "#707070" }}>
                   Back
                 </div>
                 <div onClick={() => handleSubmit()}>
