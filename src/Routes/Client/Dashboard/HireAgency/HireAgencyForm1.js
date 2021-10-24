@@ -60,7 +60,7 @@ const HireAgencyForm1 = (props) => {
       [name]: value,
     });
   };
-  
+
   useEffect(() => {
     if (props.location.state?.agencyForm1) {
       setData({
@@ -92,7 +92,6 @@ const HireAgencyForm1 = (props) => {
   //   });
   // };
 
-  // console.log(props.location.state, "jnffjnejnfklamad,lsfm");
   const handleSubmit = () => {
     let tempError = {
       projectNameError: "",

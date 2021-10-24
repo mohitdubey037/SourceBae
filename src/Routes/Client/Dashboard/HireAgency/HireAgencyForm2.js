@@ -32,14 +32,14 @@ const BlueRadio = withStyles({
       color: "#26AFFF",
     },
   },
-  checked: {},
+  checked:{}
 })((props) => <Radio color="default" {...props} />);
 
 function HireAgencyForm2(props) {
   const Role = localStorage.getItem('role');
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
-  console.log(projectId);
+  // console.log(projectId);
   const id = localStorage.getItem("userId");
  const propData=props.location.state
   const [apiData, setApiData] = useState({
@@ -48,7 +48,7 @@ function HireAgencyForm2(props) {
     id: projectId,
     projectDomainId: "",
     projectExpertiseRequired: [],
-    agencyExperience: "capable",
+    agencyExperience: "",
   });
  
   const [allDomainsData, setAllDomainsData] = useState([]);
@@ -66,32 +66,16 @@ function HireAgencyForm2(props) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log("name handle set",name , value)
     setApiData({
       ...apiData,
       [name]: value,
     });
   };
-//  console.log("form 2 props",props.location.state)
-
-  // useEffect(() => {
-  //   if (props.location.state) {
-  //     setApiData({
-  //       stepsCompleted: 2,
-  //       // clientId: props.location.state.apiData.id,
-  //       // id:props.location.state.apiData.projectId,
-  //       projectDomainId: "",
-  //       // projectExpertiseRequired: props.location.state.apiData.projectExpertiseRequired,
-  //       agencyExperience: "capable",
-  //     });
-  //   }
-  // }, []);
 
 useEffect(()=>{
-  console.log('prop data',propData.agencyForm2);
   if(propData.agencyForm2){
     setSelectedDomainHL(propData.agencyForm2?.projectDomainId);
-    setApiData(propData.agencyForm2)
+    setApiData(propData?.agencyForm2)
   }
 },[propData])
 
@@ -209,10 +193,6 @@ useEffect(()=>{
   }, [selectedDomain]);
 
   useEffect(() => {
-    console.log(apiData);
-  });
-
-  useEffect(() => {
     setApiData({
       ...apiData,
       projectExpertiseRequired: selected.map((service) => {
@@ -298,8 +278,6 @@ useEffect(()=>{
                 </ul>
                 <div className="servicesCardsHireAgency">
                   {allDomainsData.map((domain) => {
-                    console.log('domain',domain);
-                    console.log('selectedDomain',selectedDomain);
                     return (
                       <div className="tech-container">
                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
@@ -334,19 +312,15 @@ useEffect(()=>{
                     <RadioGroup
                       aria-label="agencyExperience"
                       name="agencyExperience"
-                      // value={propData?.agencyExperience? propData.agencyExperience:apiData.agencyExperience}
-                      // checked={ propData?.agencyExperience == "capable" ? true : false}
+                      value={apiData.agencyExperience ||propData?.agencyForm2?.agencyExperience}
                       onChange={handleChange}
                     >
-                    {console.log("api data ",apiData.agencyExperience)}
                       <div className="radio-label_hireAgencyForm2">
                         <FormControlLabel
                           color="primary"
                           value="capable"
                           control={<BlueRadio className={classes.root} />}
                           label="Capable"
-                          // checked={ propData?.agencyExperience == "capable" ? true : true}
-                        
                         />
                       </div>
                       <div className="radio-label_hireAgencyForm2">
@@ -354,8 +328,6 @@ useEffect(()=>{
                           value="skilled"
                           control={<BlueRadio />}
                           label="Skilled"
-                          // checked={propData?.agencyExperience == "skilled" ? true : false}
-
                         />
                       </div>
                       <div className="radio-label_hireAgencyForm2">
@@ -363,7 +335,6 @@ useEffect(()=>{
                           value="proficient"
                           control={<BlueRadio />}
                           label="Proficient"
-                          // checked={propData?.agencyExperience == "proficient" ? true : false}
                         />
                       </div>
                       <div className="radio-label_hireAgencyForm2">
@@ -371,7 +342,6 @@ useEffect(()=>{
                           value="accomplished"
                           control={<BlueRadio />}
                           label="Accomplished"
-                          // checked={propData?.agencyExperience == "accomplished" ? true : false}
                         />
                       </div>
                     </RadioGroup>
