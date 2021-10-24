@@ -24,7 +24,6 @@ const useStyles = makeStyles({
     },
   },
 });
-
 const BlueRadio = withStyles({
   root: {
     color: "#26AFFF",
@@ -39,7 +38,6 @@ function HireAgencyForm2(props) {
   const Role = localStorage.getItem('role');
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
-  // console.log(projectId);
   const id = localStorage.getItem("userId");
  const propData=props.location.state
   const [apiData, setApiData] = useState({
@@ -48,7 +46,7 @@ function HireAgencyForm2(props) {
     id: projectId,
     projectDomainId: "",
     projectExpertiseRequired: [],
-    agencyExperience: "",
+    agencyExperience: propData?.agencyForm2?.agencyExperience ? propData?.agencyForm2?.agencyExperience:"",
   });
  
   const [allDomainsData, setAllDomainsData] = useState([]);
@@ -69,13 +67,21 @@ function HireAgencyForm2(props) {
     setApiData({
       ...apiData,
       [name]: value,
+    },{
+      agencyExperience:propData?.agencyForm2?.agencyExperience
     });
   };
-
 useEffect(()=>{
-  if(propData.agencyForm2){
+  if(propData?.agencyForm2){
     setSelectedDomainHL(propData.agencyForm2?.projectDomainId);
-    setApiData(propData?.agencyForm2)
+    setApiData({
+      stepsCompleted: 2,
+    clientId: propData.agencyForm2.clientId,
+    id: propData.agencyForm2.id,
+    projectDomainId:propData.agencyForm2.projectDomainId,
+    projectExpertiseRequired: propData.agencyForm2.projectExpertiseRequired,
+    agencyExperience:propData.agencyForm2.agencyExperience,
+    })
   }
 },[propData])
 
