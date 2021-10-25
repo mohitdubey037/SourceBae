@@ -8,7 +8,8 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment'
 
 function AgencyProjectCard({ key, ...props }) {
-    console.log(props, "agencyProjectCard");
+console.log(props, "agencyProjectCard");
+
     const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">

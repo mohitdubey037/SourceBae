@@ -319,6 +319,9 @@ function AgencyForm1(props) {
                             agencyLogo: response[0].mediaURL
                         })
                     })
+                    .catch(err => {
+                        setLoading(false);
+                    })
             }
 
         }
