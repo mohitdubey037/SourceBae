@@ -244,3 +244,7 @@ li::marker {
   font-size: 1rem;
   margin-top: 2rem;
 }
+
+.detailsCard-header {
+  word-break: break-all;
+}
