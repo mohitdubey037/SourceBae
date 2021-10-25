@@ -45,6 +45,7 @@ function AgencyNewestDashboard(props) {
                 console.log(response);
             })
             .catch((err) => {
+
             });
     };
 
@@ -61,9 +62,7 @@ function AgencyNewestDashboard(props) {
             .then(function (response) {
                 if (response.stepsCompleted === response.totalSteps) {
                     setSteps(-1);
-                    cookie.save("isStepsCompleted", true);
-                    setTempStatus(false);
-                    console.log('h2');
+                    localStorage.setItem('isVerified', true);
                 }
                 else {
                     setSteps(response.stepsCompleted);
@@ -75,13 +74,11 @@ function AgencyNewestDashboard(props) {
             });
     };
 
-    const getAgencyProfile = () => {
+    const getAgencyProfile = (agencyId) => {
         instance
             .get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
-                console.log('h1');
-                cookie.save("isAgencyVerified", response.isAgencyVerified);
-                setTempStatus(true)
+                console.log(response);
                 setVerified(response.isAgencyVerified);
                 setUserEmailVerified(response.isUserEmailVerified);
                 setUserPhoneVerified(response.isUserPhoneVerified);
@@ -93,17 +90,9 @@ function AgencyNewestDashboard(props) {
     }, [tempStatus])
 
     useEffect(() => {
-        // console.log(isAgencyVerified)
-        if (isAgencyVerified != 'true') {
-            console.log('object1')
-            getAgencyProfile();
-        }
-        if (isStepsCompleted != 'true') {
-            console.log('object2')
-            getStepsCompleted();
-        }
+        getStepsCompleted();
+        getAgencyProfile(localStorage.getItem("userId"));
     }, []);
-
 
     const verifyEmailPhone = () => {
         instance
@@ -122,7 +111,7 @@ function AgencyNewestDashboard(props) {
     };
 
     const quotation = (link) => {
-        if (isAgencyVerified != 'true' || isStepsCompleted != 'true') {
+        if (!verified || steps !== -1) {
             props.history.push(`${props.history.location.pathname}`);
         }
         else {
@@ -170,7 +159,7 @@ function AgencyNewestDashboard(props) {
                         {(!verified || steps !== -1) && (
                             //  the major reason of applying tempStatus is that at first event when the agency is verified this check is running becoz isAgencyVerified is storing in cookies a little bit later. so initially we are checking with tempStatus i.e it will be false initially and after the api call it will set to true and hence this check will be verified
                             <div className="mainUpdateVerify">
-                                {!verified != 'true' && steps !== -1 ? (
+                                {!verified && steps !== -1 ? (
                                     <div className="innerMainVerify">
                                         <p>
                                             Please
