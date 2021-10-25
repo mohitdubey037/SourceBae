@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import { withRouter } from 'react-router-dom';
 import './Navbar.css';
+import { Avatar } from '@material-ui/core';
 
 function Navbar(props) {
     const url = props.history.location.pathname;
@@ -63,7 +64,8 @@ function Navbar(props) {
                     {Role === 'Agency' ?
                         <img src={data?.agencyLogo} />
                         :
-                        <img src={data?.imageurl} />}
+                        <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`}/>
+                       }
                 </div>
             </div>
         </div>
