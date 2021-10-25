@@ -174,6 +174,7 @@ console.log(project,"comme ejg rjfgvjl");
                                       alt="agency Logo"
                                     />
                                   </div>
+                                  {console.log(agencyList,"agency")}
                                   <div className="agencyProfileInfo agencyProfileInfodiv">
                                     <h6>{agency.agencyName}</h6>
                                     <div>

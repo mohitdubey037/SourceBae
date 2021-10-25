@@ -330,14 +330,14 @@
   width: 2rem;
 }
 
-.estimatedBudget .MuiTypography-body1 , .hourlyPaymentBudget .MuiTypography-body1 {
+.estimatedBudget .MuiTypography-body1 , .hourlyPaymentBudget .MuiTypography-body1 , .agencyExperience .MuiTypography-body1{
   font-family: 'Segoe UI' !important;
   margin-left: 0.5rem !important;
   color: #707070 !important;
   font-size: 0.8rem;
 }
 
-.estimatedBudget .MuiFormControlLabel-root , .hourlyPaymentBudget  .MuiFormControlLabel-root {
+.estimatedBudget .MuiFormControlLabel-root , .hourlyPaymentBudget  .MuiFormControlLabel-root , .agencyExperience .MuiFormControlLabel-root{
   margin-right: 3.2rem;
 }
 
@@ -345,8 +345,11 @@
   font-size: 1rem !important;
 }
 
-.estimatedBudget .MuiSvgIcon-root , .hourlyPaymentBudget .MuiSvgIcon-root {
+.estimatedBudget .MuiSvgIcon-root , .hourlyPaymentBudget .MuiSvgIcon-root, .agencyExperience .MuiSvgIcon-root {
   font-size: 1rem !important;
+}
+.agencyExperience .MuiFormGroup-root {
+  margin-left: 0.8rem;
 }
 
 .fixedContent h6, .fixedContent p {

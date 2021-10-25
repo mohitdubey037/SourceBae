@@ -78,6 +78,7 @@
   width: 50%;
   font-family: 'Segoe UI';
   color: #5C6DFF;
+  word-break: break-all;
 }
 
 .projectCardHeading div h2 {

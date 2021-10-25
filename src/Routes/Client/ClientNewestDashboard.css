@@ -19,6 +19,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 10%;
+  height: 34rem;
+  overflow-y: scroll;
 }
 
 .user-project-details>.graphic {
@@ -243,4 +245,8 @@ li::marker {
   font-family: 'Segoe UI Semibold';
   font-size: 1rem;
   margin-top: 2rem;
+}
+
+.detailsCard-header {
+  word-break: break-all;
 }
