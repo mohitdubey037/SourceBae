@@ -311,8 +311,8 @@ const AgencyCommentBox = (props) => {
             )}
           </div>
           {props.projectProposals[0].isReplySectionActive === true &&
-            <div className="sendIcon_clientCommentBox">
-              <SendIcon onClick={() => replyApi()} />
+            <div className="sendIcon_clientCommentBox" onClick={() => replyApi()} >
+              <SendIcon/>
             </div>
           }
         </div>

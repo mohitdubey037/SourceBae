@@ -52,7 +52,7 @@ function RespondedDetails(props) {
 
   useEffect(() => {
     getAllProjects();
-  },[])
+  },[isRepliedToClient])
 
   return (
     <>
@@ -329,12 +329,12 @@ function RespondedDetails(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    projects: state.projects,
-    condition: state.condition,
-  };
-};
+// const mapStateToProps = (state) => {
+//   console.log(state);
+//   return {
+//     projects: state.projects,
+//     condition: state.condition,
+//   };
+// };
 
-export default connect(mapStateToProps)(RespondedDetails);
+export default RespondedDetails;

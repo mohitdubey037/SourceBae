@@ -44,24 +44,26 @@ function AgencyRespondedDetails(props) {
         console.error(err);
       });
   };
-  // console.log(project, "responded Details");
+  console.log(project, "responded Details");
+
+  // useEffect(() => {
+  //   if (Object.keys(props["projects"]).length === 0) {
+  //     getAllProjects();
+  //   } else {
+  //     setProject(props.projects);
+  //   }
+  // }, [isRepliedToClient]);
+
   useEffect(() => {
-    if (Object.keys(props["projects"]).length === 0) {
       getAllProjects();
-    } else {
-      setProject(props.projects);
-    }
   }, [isRepliedToClient]);
 
-  useEffect(() => {
-  }, [isRepliedToClient]);
-
-  const goBack = () => {
-    routerHistory.push({
-      pathname: "/quotation",
-      origin: routerHistory.location.origin
-    })
-  }
+  // const goBack = () => {
+  //   routerHistory.push({
+  //     pathname: "/quotation",
+  //     origin: routerHistory.location.origin
+  //   })
+  // }
 
   return (
     <>
@@ -103,12 +105,12 @@ function AgencyRespondedDetails(props) {
             <p>Client</p>
             <p>{`${project?.clientId?.companyName}`}</p>
           </div>
-          {project.projectExpectedStartingDays === 0 &&
+          {/* {project.projectExpectedStartingDays === 0 && */}
             <div>
               <p>Expected Timeline</p>
               <p>{`${project?.projectExpectedStartingDays} Days`}</p>
             </div>
-          }
+          {/* } */}
           <div>
             <p>Project Proposal Cost</p>
             <p>{`$${project?.projectProposalCost}`}</p>
@@ -319,11 +321,11 @@ function AgencyRespondedDetails(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    projects: state.projects,
-    condition: state.condition,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     projects: state.projects,
+//     condition: state.condition,
+//   };
+// };
 
-export default connect(mapStateToProps)(AgencyRespondedDetails);
+export default AgencyRespondedDetails;
