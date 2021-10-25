@@ -21,7 +21,7 @@ console.log(props, "agencyProjectCard");
 
             <div className="user-project-status">
                 <div className='date'>
-                    <div className="imageClass" style={{ marginRight: 10 }}>
+                    <div className="imageClass">
                         <img src={DateImage} alt="dateImage" />
                     </div>
                     <div>

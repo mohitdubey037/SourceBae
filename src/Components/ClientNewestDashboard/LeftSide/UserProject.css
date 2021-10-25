@@ -21,6 +21,7 @@
   margin: 2rem 2rem;
   position: relative;
   border-radius: 1rem;
+  max-height: 9.5rem;
 }
 
 .project-details-card:hover {
