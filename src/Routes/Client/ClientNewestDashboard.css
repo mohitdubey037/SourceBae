@@ -19,6 +19,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 10%;
+  height: 34rem;
+  overflow-y: scroll;
 }
 
 .user-project-details>.graphic {
