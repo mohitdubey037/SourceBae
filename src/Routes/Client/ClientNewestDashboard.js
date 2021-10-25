@@ -111,18 +111,18 @@ function ClientNewestDashboard(props) {
                             <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
                             <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
                         </div>
-                        <div className="graphic">
-                            {projects.length > 0 &&
+                        {projects.length > 0 &&
+                            <div className="graphic">
                                 <div className="graphic-illustration-heading">
                                     <h6>Project details</h6>
                                 </div>
-                            }
-                            <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">
                                 {projects.length > 4 &&
-                                    <p>View More Project</p>
+                                    <div onClick={() => props.history.push('/agencyNewestAllProject')} className="showDetail_onClientNewestDashboard">
+                                        <p>View More Project</p>
+                                    </div>
                                 }
                             </div>
-                        </div>
+                        }
                         <div className="user-project position">
                             <div className="user-project-details">
                                 {

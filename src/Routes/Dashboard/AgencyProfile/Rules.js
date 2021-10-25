@@ -21,6 +21,12 @@ function Rules(props) {
     const [rules, setRules] = useState([]);
     const [editRules, setEditRules] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [form, setForm] = useState({
+        agencyTiming: {
+            startTime: "11:00 AM",
+            endTime: "08:00 PM"
+        },
+    })
 
     const handleEditRules = (value) => {
         setLoading(true);
@@ -43,6 +49,13 @@ function Rules(props) {
             })
     }
 
+    const permanentDisable = (name) => {
+        if (name === "startTime" || name === 'endTime') {
+            return false
+        }
+        else return true
+    }
+
     const getAgencyProfile = (agencyId, profileviewStatus) => {
         let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
@@ -61,11 +74,18 @@ function Rules(props) {
         }
     }, []);
 
+    const handleChange = (event) => {
+        const { name, value } = event.target
+        setForm({
+            ...form,
+            [name]: value
+        })
+    }
+
     const handleRules = (event, rule) => {
         const { value } = event.target
         let tempArr = [...rules]
         let index = tempArr.indexOf(rule)
-
         tempArr[index].selection = value === "true" ? true : false
         setRules(tempArr)
     }
@@ -89,14 +109,45 @@ function Rules(props) {
                                 <div className="rules_parent">
                                     <p>AGENCY RULES</p>
                                 </div>
-                                <i onClick={() => { setEditRules(true)}} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
+                                <i onClick={() => { setEditRules(true) }} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
                             </div> : null
                     }
                     <div className="rulesCard">
                         <div className="rulesUpper">
                             <div className="openTiming">
-                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i>Opening &  Closing Time</h4>
-                                <p>9:00AM to 5:00PM</p>
+                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i>Default Opening &  Closing Time</h4>
+                                {/* <div className="default_timings"> */}
+                                {/* <p>Default Timings:</p> */}
+                                {/* <p>9:00AM to 5:00PM</p> */}
+                                <div className="date_parent">
+                                    <input style={{
+                                        outline: editRules ? 'none' : 'none',
+                                        width: '40%',
+                                        border: permanentDisable('startTime') || !editRules ? 'none' : '1px solid #02044a',
+                                        textAlign: 'center'
+                                    }}
+                                        disabled={permanentDisable('startTime') || !editRules}
+                                        type="text"
+                                        value={form.agencyTiming.startTime}
+                                        name='startTime'
+                                        onChange={(event) => handleChange(event)}
+                                        id="" />
+                                    {/* </div> */}
+                                    <p style={{ marginTop: '0' }}>To</p>
+                                    <input style={{
+                                        outline: editRules ? 'none' : 'none',
+                                        width: '40%',
+                                        border: permanentDisable('endTime') || !editRules ? 'none' : '1px solid #02044a',
+                                        textAlign: 'center'
+                                    }}
+                                        disabled={permanentDisable('endTime') || !editRules}
+                                        type="text"
+                                        value={form.agencyTiming.endTime}
+                                        name='endTime'
+                                        onChange={(event) => handleChange(event)}
+                                        id="" />
+                                    {/* </div> */}
+                                </div>
                             </div>
                             <div className="weekendOpening">
                                 <h4><i class="fa fa-calendar" aria-hidden="true"></i>Weekend Open</h4>

@@ -11,14 +11,15 @@ import foods from "../../../assets/images/Quotation/foods.png";
 import completedImage from '../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg';
 import loadingStatus from '../../../assets/images/Newestdashboard/Not_found/loading_status2.jpg';
 import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
-
+import { useSelector } from 'react-redux'
 //RESPONDED DETAILS
 function RespondedDetails(props) {
+  const state = useSelector(state => console.log("redux state", state))
   console.log(props);
   let { projectId, agencyId } = useParams();
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
 
   const Role = localStorage.getItem("role");
 
@@ -41,13 +42,17 @@ function RespondedDetails(props) {
     console.log(project);
   }, [project])
 
+  // useEffect(() => {
+  //   // if (Object.keys(props["projects"]).length === 0) {
+  //   getAllProjects();
+  //   // } else {
+  //   setProject(props.projects);
+  // }
+  // [isRepliedToClient]);
+
   useEffect(() => {
-    if (Object.keys(props["projects"]).length === 0) {
-      getAllProjects();
-    } else {
-      setProject(props.projects);
-    }
-  }, [isRepliedToClient]);
+    getAllProjects();
+  },[])
 
   return (
     <>
@@ -92,7 +97,6 @@ function RespondedDetails(props) {
             <p>Agency</p>
             <p>{project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}</p>
           </div>
-          {/* {project.projectExpectedStartingDays !== 0 && */}
           <div>
             <p>Expected Timeline</p>
             <p>{`${project?.projectExpectedStartingDays} Days`}</p>
@@ -102,13 +106,10 @@ function RespondedDetails(props) {
             <p>Project Proposal Cost</p>
             <p style={{ fontWeight: "600" }}>{`$${project?.projectProposalCost}`}</p>
           </div>
-          {/* {project.agencyExperience !== undefined && */}
           <div>
             <p>Agency Experience</p>
             <p>{`${project?.agencyExperience}`}</p>
           </div>
-
-          {/* } */}
         </div>
         <div className="innerResponseCard">
           <span className="leftLine"></span>
@@ -235,7 +236,8 @@ function RespondedDetails(props) {
                       </div>
                     </div>
                     :
-                    project.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true ?
+                  
+                    project?.projectProposals && project?.projectProposals[0].isQuotationAcceptedByClient === true ?
                       <p>Please wait for the agency to accept the Quotation</p>
                       :
                       <>
@@ -328,6 +330,7 @@ function RespondedDetails(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     projects: state.projects,
     condition: state.condition,

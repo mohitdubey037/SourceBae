@@ -281,7 +281,7 @@ function HireDeveloper(props) {
               <div className="preferredBillingMode">
                 <ul>
                   <li>
-                    Preffered Billing   <span className="requiredStar">*</span>
+                    Preffered Billing <span className="requiredStar">*</span>
                   </li>
                 </ul>
 
@@ -442,9 +442,9 @@ function HireDeveloper(props) {
                   id="contractPeriod"
                   onChange={handleChange}
                 >
-                  <option value="1 Month">1 Month</option>
-                  <option value="2 Months">3 Months</option>
+                  <option value="3 Month">3 Month</option>
                   <option value="6 Months">6 Months</option>
+                  <option value="9 Months">9 Months</option>
                   <option value="12 Months">12 Months</option>
                 </select>
               </div>
