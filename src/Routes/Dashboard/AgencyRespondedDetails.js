@@ -44,7 +44,7 @@ function AgencyRespondedDetails(props) {
         console.error(err);
       });
   };
-  console.log(project, "responded Details");
+  // console.log(project, "responded Details");
   useEffect(() => {
     if (Object.keys(props["projects"]).length === 0) {
       getAllProjects();

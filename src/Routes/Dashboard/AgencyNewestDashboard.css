@@ -4,7 +4,7 @@
 
 .user-project_parent {
   overflow-y: auto;
-  height: 29rem;
+  /* height: 29rem; */
   margin-right: 6px;
   display: flex;
   flex-wrap: wrap;
