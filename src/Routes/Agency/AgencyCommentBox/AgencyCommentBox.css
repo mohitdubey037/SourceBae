@@ -263,21 +263,15 @@
   flex-direction: column;
 }
 
-/* .yellowBg {
+.QuotationModal.QuotationModal_agencyCommentBox {
+  max-width: 650px;
   width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  border-radius: 10px;
 }
 
-.yellowBg img {
-  width: 245px;
-  object-fit: contain;
-  position: absolute;
-  top: 6.5rem;
-} */
+.tableContentQuotation .MuiFormControl-root {
+  width: 100%;
+}
 
 .acceptOrReject_agencyCommentBox {
   position: absolute;

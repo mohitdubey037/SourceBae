@@ -26,7 +26,7 @@ function Navbar(props) {
         if (Role === 'Client') {
             instance.get(`/api/${Role}/clients/get/${roleId}`)
                 .then(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     setData(response);
                 })
                 .catch(err => {

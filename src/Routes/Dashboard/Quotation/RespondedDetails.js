@@ -293,7 +293,7 @@ function RespondedDetails(props) {
               </ul>
             </div>
 
-            {project.projectTechnologies ?
+            {project.projectTechnologiesRequired ?
               <div>
                 <h4>Technology</h4>
                 <ul>

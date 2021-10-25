@@ -25,6 +25,11 @@
   align-items: center;
 }
 
+.completedImage img {
+  width: 80%;
+  transform: translateX(1rem);
+}
+
 .mainDetailHeader_agencyRespondedDetails {
   border-radius: 8px;
   display: flex;
