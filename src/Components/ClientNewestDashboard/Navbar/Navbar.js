@@ -62,10 +62,11 @@ function Navbar(props) {
                 </div>
                 <div className="userprofile-circle nav-left-item" >
                     {Role === 'Agency' ?
-                        <img src={data?.agencyLogo} />
+                        <img src={data?.agencyLogo?  data?.agencyLogo: `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
                         :
                         <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`}/>
                        }
+                        {console.log(data)}
                 </div>
             </div>
         </div>
