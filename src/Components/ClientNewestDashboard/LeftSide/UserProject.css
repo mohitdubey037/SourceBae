@@ -13,7 +13,7 @@
 }
 
 .project-details-card {
-  min-width: 40%;
+  width: 40%;
   justify-self: flex-start;
   background: linear-gradient( 90deg, #f5faff 0%, #ffffff 100%);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
@@ -21,6 +21,7 @@
   margin: 2rem 2rem;
   position: relative;
   border-radius: 1rem;
+  max-height: 9.5rem;
 }
 
 .project-details-card:hover {

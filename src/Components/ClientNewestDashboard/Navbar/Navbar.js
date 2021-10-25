@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import { withRouter } from 'react-router-dom';
 import './Navbar.css';
+import { Avatar } from '@material-ui/core';
 
 function Navbar(props) {
     const url = props.history.location.pathname;
@@ -25,7 +26,7 @@ function Navbar(props) {
         if (Role === 'Client') {
             instance.get(`/api/${Role}/clients/get/${roleId}`)
                 .then(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     setData(response);
                 })
                 .catch(err => {
@@ -61,9 +62,11 @@ function Navbar(props) {
                 </div>
                 <div className="userprofile-circle nav-left-item" >
                     {Role === 'Agency' ?
-                        <img src={data?.agencyLogo} />
+                        <img src={data?.agencyLogo?  data?.agencyLogo: `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
                         :
-                        <img src={data?.imageurl} />}
+                        <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`}/>
+                       }
+                        {console.log(data)}
                 </div>
             </div>
         </div>

@@ -271,11 +271,11 @@ function AddingDeveloper(props) {
                                             {errors.developerTechnologies && (<p className="error_paragraph experience">{errors.developerTechnologies}</p>)}
                                         </div>
                                         <div className="developerDesignation_addingDeveloper">
-                                            <h4>Upload Resume *</h4>
+                                            <h4>Upload Resume(pdf, doc, docx)*</h4>
                                             <div className="uploadBlock_addingDeveloper">
                                                 <div className="fileUploadButton_addingDeveloper">
                                                     <FilePicker
-                                                        extensions={['pdf', 'xlsx']}
+                                                        extensions={['pdf', 'doc', 'docx']}
                                                         onChange={(fileObj) => inputFileChoosen(fileObj)}
                                                         onError={errMsg => toast.error(errMsg)}
                                                     >

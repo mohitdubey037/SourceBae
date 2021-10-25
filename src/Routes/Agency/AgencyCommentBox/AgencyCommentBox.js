@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
-  console.log(props);
+  console.log(props.projectProposals[0].projectStartDateByClient);
+  console.log(<moment>props.projectProposals[0].projectStartDateByClient</moment>)
   const classes = useStyles();
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -159,20 +160,16 @@ const AgencyCommentBox = (props) => {
   }
 
   const inputFileChosen = (event) => {
-    console.log(event);
+    // console.log(event);
     setFile(event.target.files[0]);
   };
 
   useEffect(() => {
-    console.log(file);
+    // console.log(file);
   }, [file])
 
   useEffect(() => {
-    console.log(apiData)
-  }, [apiData])
-
-  useEffect(() => {
-    console.log(apiData.rejectReasonByAgency);
+    // console.log(apiData)
   }, [apiData])
 
   useEffect(() => {
@@ -194,7 +191,6 @@ const AgencyCommentBox = (props) => {
       instance
         .patch(`api/agency/projects/propose/${props.projectId}`, data)
         .then(function (response) {
-          console.log('chala ki nhi');
           props.giveReplies(true);
         });
     }
@@ -311,8 +307,8 @@ const AgencyCommentBox = (props) => {
             )}
           </div>
           {props.projectProposals[0].isReplySectionActive === true &&
-            <div className="sendIcon_clientCommentBox">
-              <SendIcon onClick={() => replyApi()} />
+            <div className="sendIcon_clientCommentBox" onClick={() => replyApi()} >
+              <SendIcon />
             </div>
           }
         </div>
@@ -355,7 +351,7 @@ const AgencyCommentBox = (props) => {
                         <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
                       </div>
                     )}
-                    
+
                     {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
                       <div className="detailsButtons md-m10" >
                         <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
@@ -424,7 +420,7 @@ const AgencyCommentBox = (props) => {
         center
         classNames={{
           overlay: "QuotationModalOverlay",
-          modal: "QuotationModal",
+          modal: "QuotationModal QuotationModal_agencyCommentBox",
         }}
       >
         <div className="QuotationModal acceptance-parent_clientCommentBox">
@@ -468,15 +464,16 @@ const AgencyCommentBox = (props) => {
 
               <div className="quotationTable">
                 <div className="tableHeaderQuotation">
-                  <p style={{ width: "75%" }}>Project Start Date By You</p>
+                  <p>Project Start Date By You</p>
                 </div>
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <MobileDatePicker
                       inputFormat="MM/dd/yyyy"
-                      minDate={props.projectProposals[0].projectExpectedEndDateByClient}
-                      value={props.projectProposals[0].projectExpectedEndDateByClient}
-                      onChange={(event) => handleChangeDate('projectStartDate',event)}
+                      // minDate={props.projectProposals[0].projectStartDateByClient}
+                      // maxDate={props.projectProposals[0].projectDelayedStartDateByClient}
+                      // value={props.projectProposals[0].projectStartDateByClient}
+                      onChange={(event) => handleChangeDate('projectStartDate', event)}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </LocalizationProvider>

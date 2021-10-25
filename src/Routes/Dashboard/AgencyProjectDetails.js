@@ -7,8 +7,6 @@ import './AgencyProjectDetails.css';
 import Back from '../../Components/Back/Back';
 
 function ProjectDetails(props) {
-    console.log(props);
-
     const [visible, setVisible] = useState(false);
 
     const notificationVisible = (status) => {

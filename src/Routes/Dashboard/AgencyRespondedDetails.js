@@ -19,6 +19,7 @@ import AgencyCommentBox from '../Agency/AgencyCommentBox/AgencyCommentBox';
 
 
 function AgencyRespondedDetails(props) {
+  console.log(props);
   const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
@@ -45,23 +46,25 @@ function AgencyRespondedDetails(props) {
       });
   };
   console.log(project, "responded Details");
-  useEffect(() => {
-    if (Object.keys(props["projects"]).length === 0) {
-      getAllProjects();
-    } else {
-      setProject(props.projects);
-    }
-  }, [isRepliedToClient]);
+
+  // useEffect(() => {
+  //   if (Object.keys(props["projects"]).length === 0) {
+  //     getAllProjects();
+  //   } else {
+  //     setProject(props.projects);
+  //   }
+  // }, [isRepliedToClient]);
 
   useEffect(() => {
+    getAllProjects();
   }, [isRepliedToClient]);
 
-  const goBack = () => {
-    routerHistory.push({
-      pathname: "/quotation",
-      origin: routerHistory.location.origin
-    })
-  }
+  // const goBack = () => {
+  //   routerHistory.push({
+  //     pathname: "/quotation",
+  //     origin: routerHistory.location.origin
+  //   })
+  // }
 
   return (
     <>
@@ -103,12 +106,10 @@ function AgencyRespondedDetails(props) {
             <p>Client</p>
             <p>{`${project?.clientId?.companyName}`}</p>
           </div>
-          {project.projectExpectedStartingDays === 0 &&
-            <div>
-              <p>Expected Timeline</p>
-              <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-            </div>
-          }
+          <div>
+            <p>Expected Timeline</p>
+            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+          </div>
           <div>
             <p>Project Proposal Cost</p>
             <p>{`$${project?.projectProposalCost}`}</p>
@@ -244,7 +245,7 @@ function AgencyRespondedDetails(props) {
                         </div>
                       </div>
                     </div>
-                    <div style={{ marginRight: "3rem" }}>
+                    <div style={{display: 'flex', justifyContent: 'center'}} className="completedImage">
                       <img src={completedImage} alt="" />
                     </div>
                   </div>
@@ -285,9 +286,10 @@ function AgencyRespondedDetails(props) {
                     }
                   </>
             }
-
-
           </div>
+
+
+
 
           <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
@@ -298,20 +300,48 @@ function AgencyRespondedDetails(props) {
             </div>
 
             <div className="straightAfterLine">
-              <h4>Estimated Timeline</h4>
+              <h4>Espected Timeline</h4>
               <ul style={{ display: "flex", marginLeft: "-1rem" }}>
                 <li style={{ listStyle: "none" }}> <img className="dotImg" src={dot} alt="" /> {`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
-
-            <div>
+            {project?.projectTechnologiesRequired && project?.projectTechnologiesRequired.length > 0 ?
+              <div>
+                <h4>Technology</h4>
+                <ul>
+                  {project?.projectTechnologiesRequired?.map((p) =>
+                  (
+                    <>
+                      <img className="dotImg" src={dot} alt="" />
+                      <li style={{ listStyle: "none" }}>{p?.technologyName}</li>
+                    </>
+                  )
+                  )}
+                </ul>
+              </div>
+              :
+              <div>
+                <h4>Services</h4>
+                <ul>
+                  {project?.projectServicesRequired?.map((p) =>
+                  (
+                    <>
+                      <img className="dotImg" src={dot} alt="" />
+                      <li style={{ listStyle: "none" }}>{p?.serviceName}</li>
+                    </>
+                  )
+                  )}
+                </ul>
+              </div>
+            }
+            {/* <div>
               <h4>Technology</h4>
               <ul style={{ display: "grid", marginLeft: "-2rem", gridTemplateColumns: "auto" }}>
                 {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
                   return <li style={{ listStyle: "none", display: "flex", alignItems: "flex-end" }}> <img className="dotImg" src={dot} alt="" />{p?.technologyName}</li>;
                 })}
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -321,9 +351,8 @@ function AgencyRespondedDetails(props) {
 
 const mapStateToProps = (state) => {
   return {
-    projects: state.projects,
-    condition: state.condition,
-  };
+    projects: state.notification
+  }
 };
 
 export default connect(mapStateToProps)(AgencyRespondedDetails);
