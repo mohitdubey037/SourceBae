@@ -300,6 +300,7 @@ function ShortTerm(props) {
                     placeholder="Give a name to identity requirement"
                     name="projectName"
                     value={apiData.projectName}
+                    maxLength="22"
                     onChange={(event) => handleChange(event)}
                   />
                 </div>
