@@ -305,7 +305,7 @@ function AgencyRespondedDetails(props) {
                 <li style={{ listStyle: "none" }}> <img className="dotImg" src={dot} alt="" /> {`${project?.projectExpectedStartingDays} Days`}</li>
               </ul>
             </div>
-            {project.projectTechnologiesRequired ?
+            {project?.projectTechnologiesRequired && project?.projectTechnologiesRequired.length > 0 ?
               <div>
                 <h4>Technology</h4>
                 <ul>
