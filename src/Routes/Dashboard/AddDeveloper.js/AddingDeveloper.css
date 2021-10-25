@@ -58,7 +58,7 @@
   width: 15%;
 }
 
-.html {
+/* .html {
   bottom: 0;
 }
 
@@ -89,7 +89,7 @@
 .mongodb {
   bottom: 25%;
   left: 40%;
-}
+} */
 
 .addingDeveloperHeadings h1 {
   font-family: 'Segoe UI Bold';
@@ -202,7 +202,7 @@
 .developerName_addingDeveloper>h4, .developerDesignation_addingDeveloper>h4 {
   font-family: 'Segoe UI';
   font-size: 16px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   color: #707070;
 }
 

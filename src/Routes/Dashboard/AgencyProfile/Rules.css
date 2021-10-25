@@ -62,6 +62,16 @@
     padding-right: 5rem;
 }
 
+/* .default_timings {
+    display: flex;
+} */
+
+.date_parent {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
 .leftQuestion {
     width: 70%;
 }
