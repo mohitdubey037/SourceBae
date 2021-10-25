@@ -29,7 +29,7 @@ function HireAgencyForm3(props) {
         projectTechnologiesRequired: [],
         projectServicesRequired: []
     })
-
+const oldFormData=props.location.state
     useEffect(() => {
         console.log(allServices);
     }, [allServices])
@@ -246,7 +246,7 @@ function HireAgencyForm3(props) {
                             </div>
 
                             <div className="nextbutton" style={{ width: "100%" }}>
-                                <div className="backbutton_hireAgencyForm3" onClick={() => props.history.push(`/hire-agency-form-two:${projectId}`)} style={{ backgroundColor: '#707070' }}>
+                                <div className="backbutton_hireAgencyForm3" onClick={() => props.history.push(`/hire-agency-form-two:${projectId}`,oldFormData)} style={{ backgroundColor: '#707070' }}>
                                     Back
                                 </div>
                                 <div onClick={() => handleSubmit()}>

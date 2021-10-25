@@ -20,6 +20,7 @@ import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 import Spinner from "../../Components/Spinner/Spinner";
 import cookie from "react-cookies";
+import firebase from "../../firebase";
 
 const borderLight = "rgba(206,212,218, .993)";
 
@@ -39,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
   passwordEye: {
     color: "rgba(131,153,167,0.9)",
     opacity: 0.9,
-    marginTop: '1rem',
-    cursor: 'pointer'
+    marginTop: "1rem",
+    cursor: "pointer",
   },
   root: {
     "& .MuiSvgIcon-root": {
@@ -51,10 +52,10 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFilledInput-input": {
       padding: "37px 0px 10px",
       fontSize: "14px",
-      background: 'none'
+      background: "none",
     },
     "& .MuiFilledInput-root": {
-      background: 'none'
+      background: "none",
     },
     "& .MuiInputLabel-filled.MuiInputLabel-shrink": {
       transform: "translate(0px, 10px)",
@@ -80,6 +81,18 @@ const Login = (props) => {
   });
 
   const [token, setToken] = useState(null);
+  const [device_token, setDevice_token] = useState("");
+
+  useEffect(() => {
+    if (window.Notification.permission === "denied") {
+    } else {
+      const messaging = firebase.messaging();
+      messaging.getToken().then((token) => {
+        setDevice_token(token);
+        console.log("token", token);
+      });
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("toggle", state);
@@ -109,13 +122,12 @@ const Login = (props) => {
 
   const handleChange = (e) => {
     let { name, value } = e.target;
-    if (name === 'user') {
+    if (name === "user") {
       setForm({
         ...form,
-        [name]: value.toLowerCase()
+        [name]: value.toLowerCase(),
       });
-    }
-    else {
+    } else {
       setForm({
         ...form,
         [name]: value,
@@ -181,18 +193,46 @@ const Login = (props) => {
       ) : (
         <div className="mainLoginPage">
           <div className="innerLoginPage">
-            <div className={`loginIllustrator ${roleString === 'Client' && 'conditional_background'}`}>
+            <div
+              className={`loginIllustrator ${
+                roleString === "Client" && "conditional_background"
+              }`}
+            >
               <div className="loginImage1">
-                <img src={roleString === 'Client' ? downImage1_client : downImage1_agency} alt="image1" />
+                <img
+                  src={
+                    roleString === "Client"
+                      ? downImage1_client
+                      : downImage1_agency
+                  }
+                  alt="image1"
+                />
               </div>
               <div className="loginImage2">
-                <img src={roleString === 'Client' ? downImage2_client : downImage2_agency} alt="image2" />
+                <img
+                  src={
+                    roleString === "Client"
+                      ? downImage2_client
+                      : downImage2_agency
+                  }
+                  alt="image2"
+                />
               </div>
               <div className="loginImage3">
-                <img src={roleString === 'Client' ? upImage1_client : upImage1_agency} alt="image3" />
+                <img
+                  src={
+                    roleString === "Client" ? upImage1_client : upImage1_agency
+                  }
+                  alt="image3"
+                />
               </div>
               <div className="loginImage4">
-                <img src={roleString === 'Client' ? upImage2_client : upImage2_agency} alt="image4" />
+                <img
+                  src={
+                    roleString === "Client" ? upImage2_client : upImage2_agency
+                  }
+                  alt="image4"
+                />
               </div>
               <div className="dot-image">
                 <img src={dotImage} alt="" />
@@ -211,16 +251,17 @@ const Login = (props) => {
                     <div className="login_switch">
                       <button
                         onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${(roleString === "Agency") &&
-                          "active__buttonagency"
-                          }`}
+                        className={`agency__button ${
+                          roleString === "Agency" && "active__buttonagency"
+                        }`}
                       >
                         <p>Agency</p>
                       </button>
                       <button
                         onClick={() => handleChangeToggle("client")}
-                        className={`client__button ${roleString === "Client" && "active__buttonclient"
-                          }`}
+                        className={`client__button ${
+                          roleString === "Client" && "active__buttonclient"
+                        }`}
                       >
                         <p>Client</p>
                       </button>
@@ -265,7 +306,7 @@ const Login = (props) => {
                         placeholder="••••••••"
                         id="filled-number"
                         label="Enter a password"
-                        type={hidePassword ? 'password' : 'text'}
+                        type={hidePassword ? "password" : "text"}
                         fullWidth
                         className={classes.input}
                         InputLabelProps={{
@@ -298,14 +339,19 @@ const Login = (props) => {
                       />
                       <div className="button_action_login">
                         <button
-                          className={`submit_login ${roleString === 'Client' && 'conditional_backgroundSubmit'}`}
+                          className={`submit_login ${
+                            roleString === "Client" &&
+                            "conditional_backgroundSubmit"
+                          }`}
                           // onClick={() => logIn(role, form)}
                           type="submit"
                         >
                           <p>Login</p>
                         </button>
                         <div
-                          className={`forgot-password_login ${roleString === "Client" && "conditional_color"}`}
+                          className={`forgot-password_login ${
+                            roleString === "Client" && "conditional_color"
+                          }`}
                           onClick={() => props.history.push("/enter-email")}
                         >
                           <p>Forgot Password</p>
@@ -317,7 +363,12 @@ const Login = (props) => {
                     <p>Or</p>
                   </div>
                   <div className="signup_toggle">
-                    <div className={`googleLogin ${roleString === 'Client' && 'conditional_backgroundGoogle'}`}>
+                    <div
+                      className={`googleLogin ${
+                        roleString === "Client" &&
+                        "conditional_backgroundGoogle"
+                      }`}
+                    >
                       <img src={googleImg} alt="no_image" />
                       <p>Sign in with Google</p>
                     </div>

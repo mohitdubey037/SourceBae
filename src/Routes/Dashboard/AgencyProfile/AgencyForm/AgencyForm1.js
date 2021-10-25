@@ -397,7 +397,7 @@ function AgencyForm1(props) {
                                                     <img src={fileIcon} alt="finish" />
                                                 </button>
                                             </FilePicker>
-                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name ?? "(jpeg, png, jpg)"}`}</p>
+                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name.slice(0,20) ?? "(jpeg, png, jpg)"}`}</p>
                                             {formDataErrors.agencyLogoError !== '' &&
                                                 <p className="error_agencyForm">
                                                     {formDataErrors.agencyLogoError}
