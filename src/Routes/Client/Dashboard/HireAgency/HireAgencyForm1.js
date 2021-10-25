@@ -60,17 +60,10 @@ const HireAgencyForm1 = (props) => {
       [name]: value,
     });
   };
-  
+
   useEffect(() => {
     if (props.location.state?.agencyForm1) {
-      setData({
-        stepsCompleted:1,
-        clientId:props.location.state.agencyForm1.clientId,
-        projectName: props.location.state.agencyForm1.projectName,
-        projectDescription: props.location.state.agencyForm1.projectDescription,
-        projectProposalCost: props.location.state.agencyForm1.projectProposalCost,
-        projectExpectedStartingDays:props.location.state.agencyForm1.projectExpectedStartingDays,
-      });
+      setData(props.location.state.agencyForm1);
     }
   }, []);
 
@@ -92,7 +85,6 @@ const HireAgencyForm1 = (props) => {
   //   });
   // };
 
-  // console.log(props.location.state, "jnffjnejnfklamad,lsfm");
   const handleSubmit = () => {
     let tempError = {
       projectNameError: "",
