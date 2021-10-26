@@ -23,7 +23,7 @@ function Portfolio(props) {
                 setAgencyProfileData(response);
             })
             .catch((err) => {
-s            });
+            });
     };
 
     useEffect(() => {

@@ -14,7 +14,6 @@ import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
 import { useSelector } from 'react-redux'
 //RESPONDED DETAILS
 function RespondedDetails(props) {
-  const state = useSelector(/*state => console.log("redux state", state)*/)
   let { projectId, agencyId } = useParams();
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
