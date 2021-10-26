@@ -232,6 +232,7 @@ function HireDeveloper(props) {
                   </li>
                 </ul>
                 <FormControl component="fieldset">
+                <div className="left-margin1">
                   <RadioGroup
                     aria-label="experience"
                     name="developerExperienceRequired"
@@ -243,11 +244,12 @@ function HireDeveloper(props) {
                         <FormControlLabel
                           value="Junior (1-3years)"
                           control={<BlueRadio />}
+                          label="Junior (1-3years)"
                         />
                       </div>
-                      <div className="radio-description">
+                      {/* <div className="radio-description">
                         Junior (1 - 3 Years)
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="Mid-Range" style={{ display: 'flex' }}>
@@ -255,11 +257,12 @@ function HireDeveloper(props) {
                         <FormControlLabel
                           value="Mid Range (3-6 years)"
                           control={<BlueRadio />}
+                          label="Mid Range (3-6 years)"
                         />
                       </div>
-                      <div className="radio-description">
+                      {/* <div className="radio-description">
                         Mid Range ( 3 - 6  Years)
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="Senior" style={{ display: 'flex' }}>
@@ -267,14 +270,16 @@ function HireDeveloper(props) {
                         <FormControlLabel
                           value="Senior (6-9 years)"
                           control={<BlueRadio />}
+                          label="Senior (6-9 years)"
                         />
                       </div>
-                      <div className="radio-description">
+                      {/* <div className="radio-description">
                         Senior ( 6 - 9 Years)
-                      </div>
+                      </div> */}
                     </div>
 
                   </RadioGroup>
+                  </div>
                 </FormControl>
               </div>
 
@@ -286,6 +291,7 @@ function HireDeveloper(props) {
                 </ul>
 
                 <FormControl component="fieldset">
+                <div className="left-margin1">
                   <RadioGroup
                     aria-label="billing"
                     name="preferredBillingMode"
@@ -297,11 +303,12 @@ function HireDeveloper(props) {
                         <FormControlLabel
                           value="Weekly"
                           control={<BlueRadio />}
+                          label="Weekly"
                         />
                       </div>
-                      <div className="radio-description">
+                      {/* <div className="radio-description">
                         Weekly
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="Monthly" style={{ display: 'flex' }}>
@@ -309,13 +316,15 @@ function HireDeveloper(props) {
                         <FormControlLabel
                           value="Monthly"
                           control={<BlueRadio />}
+                          label="Monthly"
                         />
                       </div>
-                      <div className="radio-description">
+                      {/* <div className="radio-description">
                         Monthly
-                      </div>
+                      </div> */}
                     </div>
                   </RadioGroup>
+                  </div>
                 </FormControl>
               </div>
 
