@@ -21,11 +21,9 @@ function Information(props) {
         let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
-                console.log(response);
                 setAgencyProfileData(response);
             })
             .catch((err) => {
-                console.log(err)
             });
     };
 
@@ -106,10 +104,8 @@ function Information(props) {
     }
     const handleChange = (event) => {
         const { name, value } = event.target
-        console.log(name, value)
         let temp = [...arr]
         let index = temp.findIndex((item) => item.title === name)
-        // console.log(index)
         temp[index].inputValue = value
         setArr(temp)
     }
@@ -117,7 +113,6 @@ function Information(props) {
     const updateAgency = () => {
 
         const ay = arr.find(a => a.title === 'Agency Website');
-        console.log(ay.inputValue);
         if (handleErrorsValidation(ay.inputValue) === true) {
             const id = localStorage.getItem("userId")
             instance.patch(`/api/${Role}/agencies/update/${id}`,

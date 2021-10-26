@@ -72,7 +72,6 @@ function DeveloperList(props) {
                 setDevelopers(response)
             })
             .catch(err => {
-                console.error(err?.response?.data?.message)
                 setErr(err?.response?.data?.message)
             })
     };
@@ -90,7 +89,6 @@ function DeveloperList(props) {
     };
 
     const deleteDevelopers = () => {
-        console.log('hi');
         instance.delete(`api/${Role}/developers/delete/${developerId}`)
             .then(function (response) {
                 setOpenWithdrawModal(false);
@@ -98,12 +96,10 @@ function DeveloperList(props) {
                 setDevelopers(tempDevelopers);
             })
             .catch(error => {
-                console.log(error);
             })
     }
 
     const IndexSetter = (index) => {
-        console.log(index);
         setToggleIndexes(index);
         setOpen(!open)
     }

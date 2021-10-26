@@ -33,7 +33,6 @@ function ClientProfile() {
         const clientId = localStorage.getItem("userId")
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
-                console.log(response);
                 setClientData({
                     firstName: response[0].firstName,
                     lastName: response[0].lastName,
@@ -48,7 +47,6 @@ function ClientProfile() {
             })
             .catch(err => {
                 setLoading(false)
-                console.log(err?.response?.data?.message)
                 setErr(err?.response?.data?.message)
             })
     };
@@ -63,7 +61,6 @@ function ClientProfile() {
         const clientId = localStorage.getItem("userId")
         instance.patch(`/api/${Role}/clients/update/${clientId}`, body)
             .then(function (response) {
-                console.log(response);
                 setClientData({
                     firstName: response[0].firstName,
                     lastName: response[0].lastName,
@@ -80,14 +77,12 @@ function ClientProfile() {
             .catch(err => {
                 setLoading(false)
                 setIsEdit(false)
-                console.log(err?.response?.data?.message)
                 setErr(err?.response?.data?.message)
             })
     };
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        console.log(name, value)
         if (name !== "countryCode" && name !== "userEmail" && name !== "userName" && name !== "userPhone") {
             setClientData({
                 ...clientData,

@@ -50,7 +50,6 @@ const oldFormData=props.location.state
 
             if (service.serviceName === className) {
                 if (!service.selected) {
-                    console.log(techs)
                     technologies = [...technologies, ...techs]
                     servicesRequired = [...servicesRequired, service._id]
                 }
@@ -118,7 +117,6 @@ const oldFormData=props.location.state
             setLoading(true)
             instance.post(`/api/${Role}/projects/create`, apiData)
                 .then(function (response) {
-                    console.log(response);
                     setLoading(false);
                     props.history.replace(`/agency-list:${projectId}`)
                 })

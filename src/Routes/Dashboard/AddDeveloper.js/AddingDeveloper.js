@@ -66,7 +66,6 @@ function AddingDeveloper(props) {
     const [multipleSelectId, setMultipleSelectId] = useState([]);
 
     useEffect(() => {
-        console.log(multipleSelectId.map(t => t.value))
         setDeveloperData({
             ...developerData,
             'developerTechnologies': multipleSelectId.map(t => t.value)
@@ -74,7 +73,6 @@ function AddingDeveloper(props) {
     }, [multipleSelectId])
 
     useEffect(() => {
-        console.log(developerData);
     }, [developerData])
 
 
@@ -106,13 +104,11 @@ function AddingDeveloper(props) {
     }
 
     const inputFileChoosen = (projectDoc) => {
-        console.log(projectDoc);
         setResume(projectDoc);
         setIsDisabled(false)
     }
 
     const errorValidation = () => {
-        console.log('h');
         const errors = {};
         if (developerData.firstName === '') {
             errors.firstName = 'First Name is required'

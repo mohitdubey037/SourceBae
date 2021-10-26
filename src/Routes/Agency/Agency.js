@@ -25,10 +25,6 @@ const Agency = ({ location }) => {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
-    useEffect( () => {
-        console.log(state)
-    },[])
-
     const getChildProps = param => setIsDrawerOpen(param)
 
     return (

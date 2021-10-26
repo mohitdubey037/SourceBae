@@ -50,7 +50,6 @@ const HireAgencyForm1 = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(value);
     if (name === "projectDescription") {
       if (value.length <= 100) setWords(value.length);
       if (value.length > 100) setWords(100);
@@ -120,7 +119,6 @@ const HireAgencyForm1 = (props) => {
       });
     } else {
       setLoading(true);
-      console.log(data);
       instance
         .post(`/api/${Role}/projects/create`,data)
         .then(function (response) {

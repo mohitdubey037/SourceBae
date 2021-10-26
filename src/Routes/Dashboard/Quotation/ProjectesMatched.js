@@ -22,7 +22,6 @@ function ProjectesMatched(props) {
         setLoading(true)
         instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&projectMatched=1`)
             .then(response => {
-                console.log(response);
                 setLoading(false);
                 setProjects(response.projects);
             })

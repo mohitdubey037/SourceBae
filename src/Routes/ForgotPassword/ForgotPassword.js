@@ -42,7 +42,6 @@ const ForgotPassword = (props) => {
 
     let {token} = useParams();
     token = token.slice(1);
-    console.log(token);
 
     const [hidePassword, SetPasswordStatus] = useState(true);
 
@@ -55,7 +54,6 @@ const ForgotPassword = (props) => {
 
     
     const showPassword = (e) => {
-        console.log(e);
         SetPasswordStatus((prevCheck) => !prevCheck);
     };
 
@@ -75,15 +73,12 @@ const ForgotPassword = (props) => {
 
     const changePassword = () => {
         // setLoading(true);
-        console.log(form);
         instance
             .patch(`/api/${Role}/auths/reset-password`, form)
             .then(response => {
-                console.log(response);
                 props.history.push('/');
             })
             .catch((err) => {
-                console.log(err);
             });
     };
 

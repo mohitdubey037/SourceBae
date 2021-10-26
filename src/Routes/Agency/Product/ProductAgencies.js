@@ -150,33 +150,25 @@ function ProductAgencies(props) {
         setDomain('');
     }
 
-    useEffect(() => {
-        console.log(bmodal, fundName, searchLocation);
-    }, [bmodal, fundName, searchLocation])
 
     const onSearchHandler = () => {
         if ((bmodal === '' && fundName === '' && searchLocation === '' && domain === '')) {
-            console.log('hi');
             instance.get(`/api/${Role}/products/all`)
                 .then(response => {
-                    console.log(response);
                     setLoading(false);
                     setState(response);
                 })
                 .catch(err => {
                     setLoading(false)
-                    console.log(err)
                     setErr(err?.response?.data?.message)
                 })
         }
         else {
             instance.get(`/api/${Role}/products/all?businessModel=${bmodal}&fundingType=${fundName}&location=${searchLocation}&domain=${domain}`)
                 .then(response => {
-                    console.log(response)
                     setState(response);
                 })
                 .catch(err => {
-                    console.log(err);
                     setErr(err?.response?.data?.message)
                 })
         }
@@ -187,13 +179,11 @@ function ProductAgencies(props) {
     //     setLoading(true)
     //     instance.get(`/api/${Role}/products/all`)
     //         .then(response => {
-    //             console.log(response);
     //             setLoading(false);
     //             setState(response);
     //         })
     //         .catch(err => {
     //             setLoading(false)
-    //             console.log(err)
     //             setErr(err?.response?.data?.message)
     //         })
     // }
@@ -205,7 +195,6 @@ function ProductAgencies(props) {
                 setLoading(false);
             })
             .catch((err) => {
-                console.error(err?.response?.data?.message);
             });
     };
 
@@ -214,9 +203,6 @@ function ProductAgencies(props) {
         getAllDomains()
     }, [])
 
-    useEffect(() => {
-        console.log(state)
-    }, [state])
 
     return (
         <>

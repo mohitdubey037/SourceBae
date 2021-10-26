@@ -22,12 +22,10 @@ function ClientHireDeveloper(props) {
     instance.get(`/api/${Role}/hire-developers/all?clientId=${userId}`)
       .then(response => {
         setLoading(false);
-        console.log(response);
         setHiredDevelopers(response)
       })
       .catch(err => {
         setLoading(false)
-        console.log(err);
       })
   }, [])
 
@@ -96,7 +94,6 @@ function ClientHireDeveloper(props) {
                               </div>
                               <div className="agencyDescInfo">
                                 <h6>Developers Role Required</h6>
-                                {console.log(hireDeveloperRequirement)}
                                 {hiredDevelopers !== undefined && hireDeveloperRequirement?.developerRolesRequired?.map(drr => <p>{drr}</p>)}
                               </div>
                             </div>

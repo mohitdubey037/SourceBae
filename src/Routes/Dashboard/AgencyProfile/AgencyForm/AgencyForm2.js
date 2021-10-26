@@ -53,7 +53,6 @@ function AgencyForm2(props) {
   const getStepsCompleted = () => {
     instance.get(`api/${Role}/agencies/steps-completed`)
       .then(function (response) {
-        console.log(response.stepsCompleted);
         setSteps(response.stepsCompleted);
       });
   };
@@ -127,7 +126,6 @@ function AgencyForm2(props) {
 
   const handleDomains = (event) => {
     const { className } = event.target;
-    console.log(className)
     const toggledDomains = allDomainsData.map((domain) => {
       if (domain.domainName === className) {
         return {

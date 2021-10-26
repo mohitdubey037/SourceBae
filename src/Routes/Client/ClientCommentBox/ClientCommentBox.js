@@ -86,9 +86,7 @@ const ClientCommentBox = (props) => {
     })
   }
 
-  useEffect(() => {
-    console.log(quotationFormData);
-  }, [quotationFormData])
+
 
   const [apiData, setApiData] = useState({
     agencyId: props.agencyId,
@@ -109,7 +107,6 @@ const ClientCommentBox = (props) => {
     instance
       .patch(`api/client/projects/propose/${props.projectId}`, apiData)
       .then(function (response) {
-        console.log(response);
         props.giveReplies(true);
       });
   };
@@ -127,7 +124,6 @@ const ClientCommentBox = (props) => {
         props.giveReplies(true);
       })
       .catch(err => {
-        console.log(err);
       })
   };
 
@@ -165,7 +161,6 @@ const ClientCommentBox = (props) => {
           onCloseModal();
         })
         .catch(err => {
-          console.log(err);
         })
     }
   }
@@ -188,14 +183,10 @@ const ClientCommentBox = (props) => {
           props.giveReplies(true);
         })
         .catch(err => {
-          console.log(err);
         })
     }
   }
 
-  useEffect(() => {
-    console.log(quotationRejectionForm.rejectReasonByClient);
-  }, [quotationRejectionForm])
 
   return (
     <>

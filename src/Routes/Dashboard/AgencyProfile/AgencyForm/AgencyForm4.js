@@ -31,7 +31,6 @@ function AgencyForm4(props) {
     function handleChange(i, event) {
         const values = [...fields];
         values[i].value = event.target.value;
-        console.log(values);
         setFields(values);
     }
 
@@ -63,7 +62,6 @@ function AgencyForm4(props) {
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
-                console.log(response.stepsCompleted);
                 setSteps(response.stepsCompleted);
             });
     };
@@ -102,7 +100,6 @@ function AgencyForm4(props) {
         setLoading(true);
         instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
-                console.log(response);
                 setLoading(false);
                 props.history.replace("/agencyNewestDashboard")
             })
@@ -111,9 +108,6 @@ function AgencyForm4(props) {
             })
     }
 
-    useEffect(() => {
-        console.log(githubLink, stackoverflow, featuredLink);
-    }, [githubLink, stackoverflow, featuredLink]);
 
     const goBack = () => {
         if (url.includes('agency-form-one')) {
@@ -177,7 +171,6 @@ function AgencyForm4(props) {
 
 
     const finalUpdate = () => {
-        console.log('finish')
         if (validateInfo()) {
             let apiData;
             let socialPlatformDetails = [];
@@ -210,8 +203,6 @@ function AgencyForm4(props) {
                 }
             }
             if (fields[0].value !== null) {
-                console.log(fields[0].value);
-                console.log('fldsf');
                 const portfolios = fields.map((link, index) => {
                     return {
                         platformName: `portfolio${index + 1}`,

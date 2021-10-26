@@ -572,7 +572,6 @@ function ShortTerm(props) {
                   </p>
                 )}
               </div>
-              {console.log(apiData,"apidata")}
               <div className="numberOfDays">
                 <ul  style={{marginLeft:"0"}}><li>
                   How soon do you want to start?{" "}

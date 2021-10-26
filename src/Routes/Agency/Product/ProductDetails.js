@@ -20,7 +20,6 @@ import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profil
 
 function ProductDetails(props) {
   const condition = props.location.condition;
-  console.log(condition);
   let { productId } = useParams();
   productId = productId ? helper.cleanParam(productId) : "";
 
@@ -37,7 +36,6 @@ function ProductDetails(props) {
       .get(`/api/${Role}/products/get/${productId}`)
       .then((response) => {
         setLoading(false)
-        console.log(response);
         if (Role === 'Client') {
           setSimilarAgency(response.similarAgencies);
         }
@@ -407,7 +405,6 @@ function ProductDetails(props) {
                       <div className="moreAgencyList_productDetails">
                         {similarAgency?.length > 0 ? (
                           similarAgency?.map((value) => {
-                            console.log(value);
                             return (
                               <>
                                 <div style={{ cursor: "pointer" }}

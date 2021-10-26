@@ -22,7 +22,6 @@ const store = createStore(
 );
 
 // const gettingReduxState = useSelector((state) => {
-//   console.log("state", state);
 // });
 
 navigator.serviceWorker.addEventListener("message", (message) => {

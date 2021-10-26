@@ -9,9 +9,7 @@ import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail
 import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
 
 function UserProject(props, index) {
-    console.log(props);
     const routerHistory = useHistory();
-    console.log(props);
 
     const showDetail = () => {
         if (props?.projectProposals[0]?.isQuotationAcceptedByClient === true && props?.projectProposals[0]?.isQuotationAcceptedByAgency === true) {
