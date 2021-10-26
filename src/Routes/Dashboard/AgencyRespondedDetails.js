@@ -206,10 +206,10 @@ function AgencyRespondedDetails(props) {
 
                           <div>
                             <div className="question" style={{ width: '62%' }}>
-                              <p>Cost</p>
+                              <p>Final Cost</p>
                             </div>
                             <div className="answer">
-                              <p>$ {project?.projectProposalCost}</p>
+                              <p>$ {project?.projectProposals[0].finalCostByClient}</p>
                             </div>
                           </div>
                         </div>
@@ -287,9 +287,6 @@ function AgencyRespondedDetails(props) {
                   </>
             }
           </div>
-
-
-
 
           <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">

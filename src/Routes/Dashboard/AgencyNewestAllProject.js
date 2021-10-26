@@ -142,13 +142,12 @@ function AgencyNewestAllProject(props) {
     }
 
     useEffect(() => {
-        console.log(projects, 'effect');
     }, [projects])
 
     return (
         <div className="dashboard-container" style={{ overflow: "hidden" }}>
             <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" />
-            <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" />
+            {/* <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" /> */}
             <Sidebar />
             <div className="container-body">
                 <Navbar />

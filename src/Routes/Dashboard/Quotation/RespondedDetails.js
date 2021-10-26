@@ -179,10 +179,10 @@ function RespondedDetails(props) {
 
                             <div >
                               <div className="question" style={{ width: '62%' }}>
-                                <p>Cost</p>
+                                <p>Final Cost</p>
                               </div>
                               <div className="answer">
-                                <p>$ {project?.projectProposalCost}</p>
+                                <p>$ {project?.projectProposals[0].finalCostByClient}</p>
                               </div>
                             </div>
                           </div>
@@ -292,7 +292,7 @@ function RespondedDetails(props) {
               </ul>
             </div>
 
-            {project.projectTechnologiesRequired ?
+            {project?.projectTechnologiesRequired && project?.projectTechnologiesRequired.length > 0 ?
               <div>
                 <h4>Technology</h4>
                 <ul>
