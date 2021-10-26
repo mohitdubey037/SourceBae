@@ -208,7 +208,6 @@ function ProductForm(props) {
     }
     else {
       let ab = apiData.productDescription.split(' ');
-      console.log(ab);
       setWordsRequired(100 - ab.length); // add 1 to totalsoFar to account for extra space since 1 space = 2 words
     }
   }, [apiData.productDescription])
@@ -224,28 +223,21 @@ function ProductForm(props) {
   };
 
   useEffect(() => {
-    console.log(multipleSelectTech);
     setApiData({
       ...apiData,
       'productDomainId': multipleSelectTech.map(t => t.value)
     });
   }, [multipleSelectTech])
 
-  useEffect(() => {
-    console.log(apiData);
-  }, [apiData])
-
   const getAllDomains = () => {
     setLoading(true);
     instance
       .get(`api/${Role}/domains/all`)
       .then(function (response) {
-        console.log(response);
         setAllDomainsData(response);
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err?.response?.data?.message);
       });
   };
 
@@ -318,7 +310,6 @@ function ProductForm(props) {
   };
 
   const inputFileChoosen = (e) => {
-    console.log("e", e)
     setFile(e);
   };
 
@@ -399,7 +390,6 @@ function ProductForm(props) {
           err.productFounderLinkedinProfiles = `LinkedIn url of product founder ${index + 1} is wrong`;
         }
         else {
-          console.log('validated');
         }
       })
     }
@@ -447,7 +437,6 @@ function ProductForm(props) {
           setLoading(false);
         });
     } else {
-      console.error(errors);
     }
   };
 

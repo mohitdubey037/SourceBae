@@ -572,7 +572,6 @@ function ShortTerm(props) {
                   </p>
                 )}
               </div>
-              {console.log(apiData,"apidata")}
               <div className="numberOfDays">
                 <ul  style={{marginLeft:"0"}}><li>
                   How soon do you want to start?{" "}
@@ -582,8 +581,8 @@ function ShortTerm(props) {
                 <input
                   style={{
                     height: "35px",
-                    width: "21rem",
-                    border: "1px solid #015F9A",
+                    width: "25rem",
+                    border: "1px solid #707070",
                     padding: "1rem",
                     borderRadius: "8px",
                   }}
@@ -613,7 +612,7 @@ function ShortTerm(props) {
               <div className="agencyExperience">
                 <ul>
                   <li>
-                    <p>
+                    <p style={{width: "24rem"}}>
                       How experience should the agency be in the domain of the
                       project? <span className="requiredStar">*</span>
                     </p>
@@ -626,7 +625,7 @@ function ShortTerm(props) {
                       value={apiData.agencyExperience}
                       onChange={(event) => handleChange(event)}
                     >
-                      <div className="radio-label_hireAgencyForm2">
+                      <div className="radio-label_shortTermForm">
                         <FormControlLabel
                           color="primary"
                           value="capable"
@@ -634,21 +633,21 @@ function ShortTerm(props) {
                           label="Capable"
                         />
                       </div>
-                      <div className="radio-label_hireAgencyForm2">
+                      <div className="radio-label_shortTermForm">
                         <FormControlLabel
                           value="skilled"
                           control={<BlueRadio />}
                           label="Skilled"
                         />
                       </div>
-                      <div className="radio-label_hireAgencyForm2">
+                      <div className="radio-label_shortTermForm">
                         <FormControlLabel
                           value="proficient"
                           control={<BlueRadio />}
                           label="Proficient"
                         />
                       </div>
-                      <div className="radio-label_hireAgencyForm2">
+                      <div className="radio-label_shortTermForm">
                         <FormControlLabel
                           value="accomplished"
                           control={<BlueRadio />}

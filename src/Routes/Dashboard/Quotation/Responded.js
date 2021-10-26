@@ -27,7 +27,6 @@ function Responded(props) {
             })
 
     }
-    // console.log(projects,"memjokmej")
 
     useEffect(() => {
         getAllReceivedData()

@@ -89,7 +89,6 @@ const Login = (props) => {
       const messaging = firebase.messaging();
       messaging.getToken().then((token) => {
         setDevice_token(token);
-        console.log("token", token);
       });
     }
   }, []);
@@ -102,12 +101,10 @@ const Login = (props) => {
   }, [state]);
 
   const showPassword = (e) => {
-    console.log(e);
     SetPasswordStatus((prevCheck) => !prevCheck);
   };
 
   const handleChangeToggle = (name) => {
-    console.log(name);
     setState(name);
   };
 
@@ -165,7 +162,6 @@ const Login = (props) => {
         setLoading(false);
         props.history.push("/clientNewestDashboard");
       } else {
-        console.log(localStorage.getItem("Authorization", token));
       }
     }
   }, [token]);

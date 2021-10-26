@@ -34,7 +34,6 @@ function CancelledProjects(props) {
         getAllCancelledData()
     }, [])
 
- console.log(projects,"projectsdkmdkjlf")
     return (
         <>
             {loading ? <Spinner /> :

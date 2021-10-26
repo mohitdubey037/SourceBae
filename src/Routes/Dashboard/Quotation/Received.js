@@ -37,7 +37,6 @@ function Received(props) {
         getAllReceivedData()
     }, [])
 
-    console.log(projects,"data in recived")
 
     return (
         <>

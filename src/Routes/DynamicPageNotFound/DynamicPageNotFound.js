@@ -43,7 +43,6 @@ export default function PageNotFound() {
         500 : 'Internal Server Error' 
     }
 
-    console.log(code, status[code])
 
     return (
         <Container className={classes.container}>

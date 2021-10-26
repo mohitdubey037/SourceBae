@@ -14,7 +14,7 @@ import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg'
 import { useSelector } from 'react-redux'
 //RESPONDED DETAILS
 function RespondedDetails(props) {
-  const state = useSelector(state => console.log("redux state", state))
+  const state = useSelector(/*state => console.log("redux state", state)*/)
   let { projectId, agencyId } = useParams();
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
@@ -28,17 +28,14 @@ function RespondedDetails(props) {
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
         setProject(response);
-        console.log(response, 'response');
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
       });
   };
 
   useEffect(() => {
-    console.log(project);
   }, [project])
 
   // useEffect(() => {
@@ -329,7 +326,6 @@ function RespondedDetails(props) {
 }
 
 // const mapStateToProps = (state) => {
-//   console.log(state);
 //   return {
 //     projects: state.projects,
 //     condition: state.condition,

@@ -96,6 +96,5 @@ data.forEach((obj)=>{
 })
 
 Object.keys(myObj).forEach((ob)=>{
-console.log(myObj[ob])
 })
 

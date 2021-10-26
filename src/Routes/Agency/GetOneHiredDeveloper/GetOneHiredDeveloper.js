@@ -44,7 +44,6 @@ function RespondedDetails(props) {
         instance
             .patch(`/api/${Role}/hire-developers/share-developer/${hireDevId}`, body)
             .then(function (response) {
-                console.log(response);
                 setLoading(false);
                 props.history.push('/get-hire-developer')
             })
@@ -68,7 +67,6 @@ function RespondedDetails(props) {
     }
 
     useEffect(()=>{
-        console.log(selectedDevelopers,"selected dev")
     },[selectedDevelopers])
     useEffect(() => {
         getOneDeveloper();

@@ -9,8 +9,6 @@ function Back(props) {
     const [steps, setSteps] = useState('');
     const Role = localStorage.getItem('role');
     const verificationStatus = localStorage.getItem('isVerified');
-    // console.log(verificationStatus);
-
     const url = props.history.location.pathname;
 
     const goBack = () => {
@@ -39,7 +37,6 @@ function Back(props) {
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
-                console.log(response.stepsCompleted);
                 setSteps(response.stepsCompleted);
             });
     };
@@ -48,7 +45,6 @@ function Back(props) {
         if (url.includes('/agency-form-one') || url.includes('/agency-form-two') ||
             url.includes('/agency-form-three') || url.includes('/agency-form-four')) {
             getStepsCompleted();
-            console.log('running back on agency form');
         }
     }, [])
 

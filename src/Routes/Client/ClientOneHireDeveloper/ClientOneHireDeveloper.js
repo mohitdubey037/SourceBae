@@ -31,13 +31,11 @@ function ClientOneHireDeveloper(props) {
         instance
             .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`)
             .then(function (response) {
-                console.log(response);
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })
             .catch((err) => {
                 setLoading(false);
-                console.log(err);
             });
     };
 

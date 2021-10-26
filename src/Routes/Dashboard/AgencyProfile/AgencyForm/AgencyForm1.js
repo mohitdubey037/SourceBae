@@ -69,7 +69,6 @@ function AgencyForm1(props) {
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
-                console.log(response.stepsCompleted);
                 setSteps(response.stepsCompleted);
             });
     };

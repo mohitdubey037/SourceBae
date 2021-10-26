@@ -130,7 +130,6 @@ useEffect(()=>{
     instance
       .get(`api/${Role}/domains/all`,apiData)
       .then(function (response) {
-        console.log(response);
         const domainNames = response.map((domain) => {
           return {
             ...domain,
@@ -178,7 +177,6 @@ useEffect(()=>{
       instance
         .post(`/api/${Role}/projects/create`,apiData)
         .then(function (response) {
-          console.log(response);
           setLoading(false);
           propData.agencyForm2=apiData
           props.history.replace(`/hire-agency-form-three:${projectId}`,propData);

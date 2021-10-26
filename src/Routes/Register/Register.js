@@ -222,7 +222,6 @@ const Register = (props) => {
     }, [state]);
 
     const handleChangeToggle = (name) => {
-        console.log(name);
         setState(name);
     };
 
@@ -242,7 +241,6 @@ const Register = (props) => {
                     localStorage.setItem("userId", `${response._id}`);
                 })
                 .catch(err => {
-                    console.log(err);
                     setApiErrors(true);
                     localStorage.removeItem("Authorization");
                     localStorage.removeItem('role');
@@ -276,9 +274,7 @@ const Register = (props) => {
     }
 
     useEffect(() => {
-        console.log('token use effect called');
         if (token !== null && apiErrors === false) {
-            console.log('token is not null');
             const apiRole = helper.lowerize(role)
             let api_param_const = ``
             let api_create_form = {}
