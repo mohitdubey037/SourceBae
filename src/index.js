@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Sidebar from "./Components/ClientNewestDashboard/Sidebar/Sidebar";
 import * as serviceWorker from "./serviceWorker";
-
+import firebaseConfig from "./firebase";
 //REDUX
 
 import { createStore, compose } from "redux";
@@ -24,14 +24,26 @@ const store = createStore(
 // const gettingReduxState = useSelector((state) => {
 // });
 
-navigator.serviceWorker.addEventListener("message", (message) => {
-  if (message?.data?.data?.type === "chat") {
-    store.dispatch({
-      type: "NOTIFICATION",
-      notification: 1,
-    });
-  }
-});
+const msg = firebaseConfig.messaging();
+    if (window.Notification.permission !== "denied") {
+      msg.onMessage((message) => {
+        store.dispatch({
+                type: "NOTIFICATION",
+                notification: 1,
+              });
+      });
+    }
+
+// navigator.serviceWorker.addEventListener("message", (message) => {
+//   console.log("message");
+//   if (message?.data?.data?.type === "chat") {
+//     console.log("store")
+//     store.dispatch({
+//       type: "NOTIFICATION",
+//       notification: 1,
+//     });
+//   }
+// });
 
 ReactDOM.render(
   <Provider store={store}>

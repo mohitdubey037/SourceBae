@@ -26,8 +26,6 @@ import FormControl from '@material-ui/core/FormControl';
 import bgPic from "../../../assets/images/Quotation/bgPic.svg";
 import FileUploadImage from '../../../assets/images/Newestdashboard/Short_Term/short_term.svg';
 
-
-
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
