@@ -629,7 +629,7 @@ function ProductForm(props) {
                           className={clsx(classes.root, classes.inputField)}
                         >
                           <MenuItem value="">
-                            <span className="selectFromHere" style={{ color: "#707070", marginTop: "0.2rem", fontSize: "14px"}}>
+                            <span className="selectFromHere" style={{ color: "#707070", marginTop: "0.2rem", fontSize: "14px" }}>
                               Select from here
                             </span>
                           </MenuItem>
@@ -712,7 +712,9 @@ function ProductForm(props) {
                     </section>
                     {apiData.productPreviousFunding === "true" ? (
                       <section className="amountRaised">
-                        <span className="howMuchHaveYouRaised"><li>How much amount have you raised yet?   <span className="requiredStar">*</span></li></span>
+                        <span className="howMuchHaveYouRaised">
+                            <span style={{color: 'red', fontSize: '1.6rem'}}>*</span>How much amount have you raised yet?
+                        </span>
                         <FormControl /*variant="outlined"*/ className={classes.formControl}>
                           <Select
                             labelId="demo-simple-select-label"
@@ -834,7 +836,7 @@ function ProductForm(props) {
                           className={clsx(classes.root, classes.inputField)}
                         >
                           <MenuItem value="">
-                            <span style={{fontFamily: "Segoe UI", color: "#707070", fontSize: "14px" }}>
+                            <span style={{ fontFamily: "Segoe UI", color: "#707070", fontSize: "14px" }}>
                               Select from here
                             </span>
                           </MenuItem>
@@ -1034,7 +1036,8 @@ function ProductForm(props) {
             </div>
           </div>
         </>
-      )}
+      )
+      }
 
       <Modal
         open={openmodal}

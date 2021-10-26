@@ -6,7 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
 import instance from "../../../Constants/axiosConstants";
-import Rules_edit from "../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg";
+// import Rules_edit from "../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg";
 
 import check from "../../../assets/images/Newestdashboard/Agency-Profile/check.png";
 import cancel from "../../../assets/images/Newestdashboard/Agency-Profile/cancel.png";

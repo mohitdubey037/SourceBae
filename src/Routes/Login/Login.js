@@ -84,10 +84,10 @@ const Login = (props) => {
   const [device_token, setDevice_token] = useState("");
 
   useEffect(() => {
-    if (window.Notification.permission === "denied") {
-    } else {
+    if (window.Notification.permission !== "denied") {
       const messaging = firebase.messaging();
       messaging.getToken().then((token) => {
+        console.log("devi",token)
         setDevice_token(token);
       });
     }
@@ -134,10 +134,11 @@ const Login = (props) => {
 
   const logIn = async (event) => {
     event.preventDefault();
+    console.log(device_token, 'through login');
     let apiRole = helper.lowerize(role);
     return new Promise((resolve, reject) => {
       instance
-        .post(`/api/${apiRole}/auths/login`, form)
+        .post(`/api/${apiRole}/auths/login`, {...form, 'notificationDeviceToken': device_token})
         .then(function (response) {
           cookie.save("Authorization", `Bearer ${response.accessToken}`, {
             path: "/",
