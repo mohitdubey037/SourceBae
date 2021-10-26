@@ -90,6 +90,12 @@
   width: 100%;
 }
 
+.left-margin1 {
+  margin-left: -3px;
+  display: flex;
+  width: 100%;
+}
+
 .resourceNumber input::placeholder {
   color: #A8A8A8;
 }
@@ -399,7 +405,7 @@
   justify-content: stretch;
 }
 
-.left-margin .MuiTypography-body1 {
+.left-margin .MuiTypography-body1 ,  .left-margin1 .MuiTypography-body1{
   color: #707070;
   font-size: 14px !important;
 }

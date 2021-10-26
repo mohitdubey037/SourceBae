@@ -42,7 +42,7 @@ function AgencyProjectCard({ key, ...props }) {
                 </div>
                 <div className='currentStatus'>
                     <div className="imageClass">
-                        <img src={CurrentStatusImage} alt="CurrentStatus" />
+                        <img style={{ filter:"hue-rotate(-90deg) "}} src={CurrentStatusImage} alt="CurrentStatus" />
                     </div>
                     <p>{props?.projectCurrentStatus}</p>
                 </div>
