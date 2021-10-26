@@ -35,13 +35,11 @@ function RespondedDetails(props) {
     setLoading(true);
     instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response);
         setSingleHiredDeveloper(response);
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
       });
   };
 
@@ -61,7 +59,6 @@ function RespondedDetails(props) {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
       });
   };
 
@@ -69,11 +66,9 @@ function RespondedDetails(props) {
     instance
       .get(`/api/${Role}/developers/all`)
       .then(function (response) {
-        console.log(response);
         setAgencyDeveloper(response);
       })
       .catch((err) => {
-        console.log(err?.response?.data?.message);
       });
   };
 
@@ -82,7 +77,6 @@ function RespondedDetails(props) {
   }
 
   useEffect(() => {
-    console.log(selectedDevelopers, "selected dev");
   }, [selectedDevelopers]);
 
   useEffect(() => {
@@ -91,16 +85,12 @@ function RespondedDetails(props) {
   }, []);
 
   useEffect(() => {
-    console.log(showDevelopers);
   }, [showDevelopers]);
 
 
   useEffect(() => {
-    console.log(initial);
-    console.log('1');
   }, [initial])
 
-  console.log(agencyDeveloper.length);
 
   return (
     <>

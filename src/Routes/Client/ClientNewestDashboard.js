@@ -56,8 +56,6 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 
 function ClientNewestDashboard(props) {
 
-    console.log(props)
-
     const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem("userId");
 
@@ -72,10 +70,8 @@ function ClientNewestDashboard(props) {
             .then(function (response) {
                 setProjects(response.projects);
                 setStatuses(response.statuses);
-                console.log(response);
             })
             .catch(err => {
-                console.log(err);
             })
     }
 
@@ -85,8 +81,6 @@ function ClientNewestDashboard(props) {
 
 
     useEffect(() => {
-        console.log(projects);
-        console.log(visible);
     }, [statuses, projects, visible])
 
     useEffect(() => {
@@ -94,7 +88,6 @@ function ClientNewestDashboard(props) {
     }, [])
 
     useEffect(() => {
-        console.log(visible);
     }, [visible])
 
     return (

@@ -112,7 +112,6 @@ const Register = (props) => {
     }
 
     useEffect(() => {
-        console.log(apiErrors);
     }, [apiErrors])
 
     const setForm = (event) => {

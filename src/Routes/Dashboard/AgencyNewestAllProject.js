@@ -123,15 +123,12 @@ function AgencyNewestAllProject(props) {
     }, [])
 
     useEffect(() => {
-        console.log(tab);
     }, [tab])
 
     useEffect(() => {
-        console.log(filterTab);
     }, [filterTab])
 
     useEffect(() => {
-        console.log(err);
     }, [err])
 
     const filterButton = (num) => {

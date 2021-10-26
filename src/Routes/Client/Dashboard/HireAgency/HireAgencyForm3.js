@@ -31,7 +31,6 @@ function HireAgencyForm3(props) {
     })
 const oldFormData=props.location.state
     useEffect(() => {
-        console.log(allServices);
     }, [allServices])
 
     const [allTechnologies, setAllTechnologies] = useState([])
@@ -77,13 +76,11 @@ const oldFormData=props.location.state
     }
 
     useEffect(() => {
-        console.log(apiData, "apiData")
     }, [apiData])
 
     const getAllServices = () => {
         instance.get(`api/${Role}/services/all?with_technologies=1`)
             .then(function (response) {
-                console.log(response);
                 const servicesNames = response.map((service) => {
                     return {
                         ...service,
@@ -97,7 +94,6 @@ const oldFormData=props.location.state
 
     const validateInfo = () => {
         const err = {}
-        console.log('hi')
         if (apiData.projectServicesRequired.length === 0) {
             err.projectServicesRequiredError = "Please Select a Service"
             setErrors(err);
@@ -118,10 +114,8 @@ const oldFormData=props.location.state
     }, [])
 
     const handleSubmit = () => {
-        console.log(apiData);
         if (validateInfo()) {
             setLoading(true)
-            console.log('handle submit api');
             instance.post(`/api/${Role}/projects/create`, apiData)
                 .then(function (response) {
                     console.log(response);
@@ -135,11 +129,9 @@ const oldFormData=props.location.state
     }
 
     useEffect(() => {
-        console.log(allTechnologies)
     }, [allTechnologies]);
 
     useEffect(() => {
-        console.log(errors);
     }, [errors])
 
     useEffect(() => {

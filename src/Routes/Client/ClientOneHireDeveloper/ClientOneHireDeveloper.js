@@ -50,17 +50,14 @@ function ClientOneHireDeveloper(props) {
     }
 
     useEffect(() => {
-        console.log(selectedDevelopers, "selected dev")
     }, [selectedDevelopers])
     useEffect(() => {
-        console.log(singleHiredDeveloper, "selected dev")
     }, [singleHiredDeveloper])
     useEffect(() => {
         getOneDeveloper();
     }, []);
 
     const routeDirect = () => {
-        console.log('hi')
         if (singleHiredDeveloper?.agenciesMatched?.length > 0) {
             props.history.push({
                 pathname: `/agency-profile:${singleHiredDeveloper?.agenciesMatched[0]._id}`,

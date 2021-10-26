@@ -153,7 +153,6 @@ function ShortTerm(props) {
       instance
         .post(`api/${Role}/media/create`, formData)
         .then(function (response) {
-          console.log(response);
           setApiData({
             ...apiData,
             projectFiles: [response[0]?.mediaURL],
@@ -205,7 +204,6 @@ function ShortTerm(props) {
   };
 
   const fileHandler = (projectDoc) => {
-    console.log(projectDoc);
     setProjectFiles(projectDoc);
   };
 
@@ -214,15 +212,12 @@ function ShortTerm(props) {
   }, []);
 
   useEffect(() => {
-    console.log(allServices);
   }, [allServices]);
 
   useEffect(() => {
-    console.log(projectFiles?.name);
   }, [projectFiles]);
 
   useEffect(() => {
-    console.log(apiData);
     if (apiData.projectFiles.length !== 0) {
       shortTermProjectApi();
     }

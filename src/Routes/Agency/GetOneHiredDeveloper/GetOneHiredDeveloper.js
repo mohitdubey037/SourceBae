@@ -26,13 +26,11 @@ function RespondedDetails(props) {
         instance
             .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${userId}`)
             .then(function (response) {
-                console.log(response);
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })
             .catch((err) => {
                 setLoading(false);
-                console.log(err);
             });
     };
 
@@ -52,7 +50,6 @@ function RespondedDetails(props) {
             })
             .catch((err) => {
                 setLoading(false);
-                console.log(err);
             });
     };
 
