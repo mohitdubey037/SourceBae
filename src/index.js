@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import ReactDOM from "react-dom";
 
 import "./index.css";
@@ -13,7 +13,7 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./Redux/rootReducer";
-
+import firebaseConfig from './firebase'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
@@ -24,14 +24,30 @@ const store = createStore(
 // const gettingReduxState = useSelector((state) => {
 // });
 
-navigator.serviceWorker.addEventListener("message", (message) => {
-  if (message?.data?.data?.type === "chat") {
-    store.dispatch({
-      type: "NOTIFICATION",
-      notification: 1,
+
+  const msg = firebaseConfig.messaging();
+  if (window.Notification.permission !== "denied") {
+    msg.onMessage((message) => {
+      console.log("message onMessage", message);
+      // if (message?.data?.data?.type === "chat") {
+        store.dispatch({
+          type: "NOTIFICATION",
+          notification: 1,
+        });
+      // }
     });
   }
-});
+
+
+// navigator.serviceWorker.addEventListener("message", (message) => {
+//   console.log("message",message)
+//   if (message?.data?.data?.type === "chat") {
+//     store.dispatch({
+//       type: "NOTIFICATION",
+//       notification: 1,
+//     });
+//   }
+// });
 
 ReactDOM.render(
   <Provider store={store}>
