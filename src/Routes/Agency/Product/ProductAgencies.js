@@ -121,12 +121,10 @@ function ProductAgencies(props) {
 
     const handleFundType = (event) => {
         const { value } = event.target
-        console.log(event.target.value);
         setFundName(value);
     };
     const handleDomainType = (event) => {
         const { value } = event.target
-        console.log(event.target.value);
         setDomain(value);
     };
     const handleBmodal = (event) => {

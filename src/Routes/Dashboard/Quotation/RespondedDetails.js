@@ -15,7 +15,6 @@ import { useSelector } from 'react-redux'
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   const state = useSelector(state => console.log("redux state", state))
-  console.log(props);
   let { projectId, agencyId } = useParams();
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
@@ -180,10 +179,10 @@ function RespondedDetails(props) {
 
                             <div >
                               <div className="question" style={{ width: '62%' }}>
-                                <p>Cost</p>
+                                <p>Final Cost</p>
                               </div>
                               <div className="answer">
-                                <p>$ {project?.projectProposalCost}</p>
+                                <p>$ {project?.projectProposals[0].finalCostByClient}</p>
                               </div>
                             </div>
                           </div>
@@ -293,7 +292,7 @@ function RespondedDetails(props) {
               </ul>
             </div>
 
-            {project.projectTechnologiesRequired ?
+            {project?.projectTechnologiesRequired && project?.projectTechnologiesRequired.length > 0 ?
               <div>
                 <h4>Technology</h4>
                 <ul>

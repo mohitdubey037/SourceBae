@@ -40,14 +40,12 @@ function ProductDetails(props) {
         console.log(response);
         if (Role === 'Client') {
           setSimilarAgency(response.similarAgencies);
-          console.log('hii');
         }
         setDetails([response.product]);
         setDetailsInJson(response.product);
       })
       .catch((err) => {
         setLoading(false)
-        console.log(err);
         setErr(err?.response?.data?.message);
       });
   };
@@ -186,11 +184,9 @@ function ProductDetails(props) {
     instance
       .post(`/api/${Role}/investments/create`, dummyForm)
       .then((response) => {
-        console.log(response);
         onCloseModal();
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
