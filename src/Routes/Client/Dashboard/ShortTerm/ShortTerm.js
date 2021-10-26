@@ -574,7 +574,7 @@ function ShortTerm(props) {
               </div>
               <div className="numberOfDays">
                 <ul  style={{marginLeft:"0"}}><li>
-                  How soon do you want to start?{" "}
+                  How soon do you want to start?(in days){" "}
                   <span className="requiredStar">*</span>{" "}
                 </li></ul>
                 {/* <div className="daysInputAgency"> */}

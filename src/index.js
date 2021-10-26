@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import ReactDOM from "react-dom";
 
 import "./index.css";
@@ -13,7 +13,7 @@ import firebaseConfig from "./firebase";
 import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./Redux/rootReducer";
-
+import firebaseConfig from './firebase'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
