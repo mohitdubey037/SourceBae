@@ -408,3 +408,10 @@
 .post-project:hover i {
   transform: translateX(10px);
 }
+
+.agencyExperience, .numberOfDays {
+  margin-top: 1rem;
+}
+.radio-label_shortTermForm{
+   margin-right: -1rem;
+}
