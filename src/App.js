@@ -50,15 +50,18 @@ const App = (props) => {
   });
   useEffect(() => {
     const msg = firebaseConfig.messaging();
-    msg.onMessage((message) => {
-      console.log("me", message);
-      setShow(true);
-      setNotification({
-        title: message?.notification?.title,
-        body: message?.notification?.body,
+    if (window.Notification.permission !== "denied") {
+      msg.onMessage((message) => {
+        console.log("me", message);
+        setShow(true);
+        setNotification({
+          title: message?.notification?.title,
+          body: message?.notification?.body,
+        });
+        setShow(false);
       });
-      setShow(false);
-    });
+    }
+ 
   }, []);
   return (
     <>

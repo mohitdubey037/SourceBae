@@ -461,6 +461,12 @@
   font-family: "Segoe UI";
   color: #45a9ea;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.howMuchHaveYouRaised > ul {
+  list-style-type: circle;
 }
 
 .character_specification {
