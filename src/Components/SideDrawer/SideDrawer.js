@@ -22,11 +22,9 @@ const SideDrawer = ({ active , sendProps }) => {
         if(width <= 500) {
             sendProps(!isDrawerOpen)
             setIsDrawerOpen(!isDrawerOpen)
-            // console.log('dfhjkdf',sendProps.getChildProps(true))
         }
     }
 
-    // console.log('efhvjfkerbh',sendProps)
 
     return (
         <div>

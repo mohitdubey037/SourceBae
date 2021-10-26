@@ -31,13 +31,11 @@ function ClientOneHireDeveloper(props) {
         instance
             .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`)
             .then(function (response) {
-                console.log(response);
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })
             .catch((err) => {
                 setLoading(false);
-                console.log(err);
             });
     };
 
@@ -50,17 +48,14 @@ function ClientOneHireDeveloper(props) {
     }
 
     useEffect(() => {
-        console.log(selectedDevelopers, "selected dev")
     }, [selectedDevelopers])
     useEffect(() => {
-        console.log(singleHiredDeveloper, "selected dev")
     }, [singleHiredDeveloper])
     useEffect(() => {
         getOneDeveloper();
     }, []);
 
     const routeDirect = () => {
-        console.log('hi')
         if (singleHiredDeveloper?.agenciesMatched?.length > 0) {
             props.history.push({
                 pathname: `/agency-profile:${singleHiredDeveloper?.agenciesMatched[0]._id}`,

@@ -22,7 +22,6 @@ function ProjectesMatched(props) {
         setLoading(true)
         instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&projectMatched=1`)
             .then(response => {
-                console.log(response);
                 setLoading(false);
                 setProjects(response.projects);
             })
@@ -81,15 +80,17 @@ function ProjectesMatched(props) {
                                         </div>
 
                                         <div className="projectDetailsTable">
-                                            <div className="projectDetailsTableContainer">
-                                                <div className="projectTableHeading" >
-                                                    <p>Industry</p>
+                                            {s.projectType !== 'Short Term' &&
+                                                <div className="projectDetailsTableContainer">
+                                                    <div className="projectTableHeading" >
+                                                        <p>Industry</p>
+                                                    </div>
+                                                    <div className="projectTableContent">
+                                                        <p>{s?.projectDomainId?.domainName}</p>
+                                                    </div>
                                                 </div>
-                                                <div className="projectTableContent">
-                                                    <p>{s?.projectDomainId?.domainName}</p>
-                                                </div>
-                                            </div>
-                                            <div className="projectDetailsTableContainer">
+                                            }
+                                            <div style={{padding: s.projectType === 'Short Term' && '1.23rem 0'}} className="projectDetailsTableContainer">
                                                 <div className="projectTableHeading" >
                                                     <p>Fixed Budget</p>
                                                 </div>
@@ -97,15 +98,17 @@ function ProjectesMatched(props) {
                                                     <p>$ {s?.projectProposalCost}</p>
                                                 </div>
                                             </div>
-                                            <div className="projectDetailsTableContainer">
-                                                <div className="projectTableHeading" >
-                                                    <p>Expert Categories</p>
+                                            {s.projectType !== 'Short Term' &&
+                                                <div className="projectDetailsTableContainer">
+                                                    <div className="projectTableHeading" >
+                                                        <p>Expert Categories</p>
+                                                    </div>
+                                                    <div className="projectTableContent">
+                                                        {s?.projectExpertiseRequired?.map(expertise => <p style={{ marginRight: '10px' }}>{expertise?.expertiseName}</p>)}
+                                                    </div>
                                                 </div>
-                                                <div className="projectTableContent">
-                                                    {s?.projectExpertiseRequired?.map(expertise => <p style={{ marginRight: '10px' }}>{expertise?.expertiseName}</p>)}
-                                                </div>
-                                            </div>
-                                            <div className="projectDetailsTableContainer">
+                                            }
+                                            <div style={{padding: s.projectType === 'Short Term' && '1.23rem 0'}} className="projectDetailsTableContainer">
                                                 <div className="projectTableHeading" >
                                                     <p>Services</p>
                                                 </div>
@@ -117,14 +120,14 @@ function ProjectesMatched(props) {
                                                     })}
                                                 </div>
                                             </div>
-                                            <div className="projectDetailsTableContainer">
+                                            <div style={{padding: s.projectType === 'Short Term' && '1.23rem 0'}} className="projectDetailsTableContainer">
                                                 <div className="projectTableHeading" >
                                                     <p>Project Type</p>
-                                                    </div>
+                                                </div>
                                                 <div className="projectTableContent">
-                                                    <p style={{color:"#45A4EA"}}>{s.projectType}</p>
+                                                    <p style={{ color: "#45A4EA" }}>{s.projectType}</p>
                                                 </div>
-                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

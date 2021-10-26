@@ -37,18 +37,15 @@ function AgencyNewestAllProject(props) {
     const getInitialData = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
             .then(response => {
-                console.log(response, 'api')
                 setProjects(response.projects);
             })
             .catch((err) => {
-                console.error(err?.response?.data?.message);
                 setErr(err?.response?.data?.message)
                 setTab(0);
             });
     }
 
     const onSearchHandler = (status) => {
-        console.log(status)
         if (status === 'all') {
             instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
                 .then(response => {
@@ -123,15 +120,12 @@ function AgencyNewestAllProject(props) {
     }, [])
 
     useEffect(() => {
-        console.log(tab);
     }, [tab])
 
     useEffect(() => {
-        console.log(filterTab);
     }, [filterTab])
 
     useEffect(() => {
-        console.log(err);
     }, [err])
 
     const filterButton = (num) => {
@@ -145,13 +139,12 @@ function AgencyNewestAllProject(props) {
     }
 
     useEffect(() => {
-        console.log(projects, 'effect');
     }, [projects])
 
     return (
         <div className="dashboard-container" style={{ overflow: "hidden" }}>
             <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" />
-            <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" />
+            {/* <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" /> */}
             <Sidebar />
             <div className="container-body">
                 <Navbar />

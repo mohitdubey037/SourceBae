@@ -19,7 +19,6 @@ import AgencyCommentBox from '../Agency/AgencyCommentBox/AgencyCommentBox';
 
 
 function AgencyRespondedDetails(props) {
-  console.log(props);
   const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
@@ -36,16 +35,13 @@ function AgencyRespondedDetails(props) {
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response);
         setProject(response);
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
-        console.error(err);
       });
   };
-  console.log(project, "responded Details");
 
   // useEffect(() => {
   //   if (Object.keys(props["projects"]).length === 0) {
@@ -206,10 +202,10 @@ function AgencyRespondedDetails(props) {
 
                           <div>
                             <div className="question" style={{ width: '62%' }}>
-                              <p>Cost</p>
+                              <p>Final Cost</p>
                             </div>
                             <div className="answer">
-                              <p>$ {project?.projectProposalCost}</p>
+                              <p>$ {project?.projectProposals[0].finalCostByClient}</p>
                             </div>
                           </div>
                         </div>
@@ -287,9 +283,6 @@ function AgencyRespondedDetails(props) {
                   </>
             }
           </div>
-
-
-
 
           <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">

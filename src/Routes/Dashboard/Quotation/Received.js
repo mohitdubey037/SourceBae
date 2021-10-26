@@ -37,7 +37,6 @@ function Received(props) {
         getAllReceivedData()
     }, [])
 
-    console.log(projects,"data in recived")
 
     return (
         <>
@@ -96,17 +95,14 @@ function Received(props) {
                                                 <p>Food</p>
                                             </div>
                                             <div>
-                                                <p>Fixed Price</p>
+                                                <p>Project Proposal Cost</p>
                                                 <p>$ {s.projectProposalCost}</p>
                                             </div>
                                             <div>
                                                 <p>Timeline</p>
                                                 <p>{s.projectExpectedStartingDays} days</p>
                                             </div>
-
-
                                             
-                                            {console.log(s,"sssssss")}
                                             <div>
                                                     <p>Status</p>
                                                     <p style={{color:"#45A4EA"}}>{s.projectCurrentStatus}</p>

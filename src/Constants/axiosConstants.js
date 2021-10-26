@@ -18,7 +18,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function (request) {
   if (!request.url.includes("login")) {
-    // console.log(cookie.load("Authorization"), "cookies");
     request.headers["Authorization"] = cookie.load("Authorization");
   }
   return request;
@@ -43,7 +42,6 @@ instance.interceptors.response.use(
       });
       return response.data.data;
     } else {
-      console.log(response);
     }
   },
   function (error) {
@@ -55,7 +53,6 @@ instance.interceptors.response.use(
       else {
         const errors = error?.response?.data?.error ?? {};
         const errorName = Object.keys(errors);
-        console.log(typeof errors);
         if (typeof errors === "object" && errorName.length > 0) {
           trueError = trueError + errors[errorName[0]][0];
         } else {

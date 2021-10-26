@@ -22,7 +22,6 @@ function Quotation(props) {
     const projectMatchRef = useRef(null);
     const cancelledRef = useRef(null);
 
-    // console.log(props.location.origin);
     useEffect(() => {
         if (!navigated && receivedRef !== null && props.location.origin === 'received') {
             receivedRef?.current?.click();

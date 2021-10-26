@@ -20,7 +20,6 @@ import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profil
 
 function ProductDetails(props) {
   const condition = props.location.condition;
-  console.log(condition);
   let { productId } = useParams();
   productId = productId ? helper.cleanParam(productId) : "";
 
@@ -37,17 +36,14 @@ function ProductDetails(props) {
       .get(`/api/${Role}/products/get/${productId}`)
       .then((response) => {
         setLoading(false)
-        console.log(response);
         if (Role === 'Client') {
           setSimilarAgency(response.similarAgencies);
-          console.log('hii');
         }
         setDetails([response.product]);
         setDetailsInJson(response.product);
       })
       .catch((err) => {
         setLoading(false)
-        console.log(err);
         setErr(err?.response?.data?.message);
       });
   };
@@ -186,11 +182,9 @@ function ProductDetails(props) {
     instance
       .post(`/api/${Role}/investments/create`, dummyForm)
       .then((response) => {
-        console.log(response);
         onCloseModal();
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -411,7 +405,6 @@ function ProductDetails(props) {
                       <div className="moreAgencyList_productDetails">
                         {similarAgency?.length > 0 ? (
                           similarAgency?.map((value) => {
-                            console.log(value);
                             return (
                               <>
                                 <div style={{ cursor: "pointer" }}

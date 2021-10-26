@@ -8,8 +8,6 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment'
 
 function AgencyProjectCard({ key, ...props }) {
-console.log(props, "agencyProjectCard");
-
     const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">
@@ -44,7 +42,7 @@ console.log(props, "agencyProjectCard");
                 </div>
                 <div className='currentStatus'>
                     <div className="imageClass">
-                        <img src={CurrentStatusImage} alt="CurrentStatus" />
+                        <img style={{ filter:"hue-rotate(-90deg) "}} src={CurrentStatusImage} alt="CurrentStatus" />
                     </div>
                     <p>{props?.projectCurrentStatus}</p>
                 </div>

@@ -3,8 +3,9 @@
   display: flex;
   align-items: center;
   margin: 2rem 1rem 1rem 2rem;
+  position: relative;
   width: 42%;
-  /* height: 18rem; */
+  height: 21rem;
   border: 1px solid #f5f5f5;
   padding: 1rem;
   background-color: #ffffff;
@@ -37,6 +38,8 @@
   background: linear-gradient( 262deg, #45a4ea 0%, #5C6DFF 100%);
   color: white;
   border-radius: 1rem;
+  position: absolute;
+  bottom: 1rem;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 

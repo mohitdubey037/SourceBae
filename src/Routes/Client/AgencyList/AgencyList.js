@@ -68,7 +68,6 @@ function AgencyList(props) {
     instance
       .get(`/api/${Role}/projects/${projectId}/agencies`)
       .then(function (response) {
-        console.log(response.agencies, "response");
         setAgencyList(response.agencies);
         setProject(response.project);
         setLoading(false);
@@ -76,9 +75,7 @@ function AgencyList(props) {
   }, []);
 
   useEffect(() => {
-    console.log(project);
   }, [project]);
-console.log(project,"comme ejg rjfgvjl");
   const handleChange = (event) => {
     const { name, value } = event.target;
     setShortlistFormData({
@@ -96,17 +93,14 @@ console.log(project,"comme ejg rjfgvjl");
   };
 
   const shortlistHandler = () => {
-    console.log(agencyList, "agencyList");
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
-        console.log(agencyList, Object.keys(agencyList));
         const tempAgencyList = [...agencyList];
         tempAgencyList[index].isAgencyShortListed = true;
         setAgencyList(tempAgencyList);
       })
       .catch((err) => {
-        console.log(err);
       });
     onCloseModal();
   };
@@ -120,7 +114,6 @@ console.log(project,"comme ejg rjfgvjl");
         setAgencyList(tempAgencyList);
       })
       .catch((err) => {
-        console.log(err);
       });
     onCloseQuotation();
   };
@@ -130,7 +123,6 @@ console.log(project,"comme ejg rjfgvjl");
   };
 
   useEffect(() => {
-    console.log(shortlistFormData);
   }, [shortlistFormData]);
 
   return (
@@ -174,7 +166,6 @@ console.log(project,"comme ejg rjfgvjl");
                                       alt="agency Logo"
                                     />
                                   </div>
-                                  {console.log(agencyList,"agency")}
                                   <div className="agencyProfileInfo agencyProfileInfodiv">
                                     <h6>{agency.agencyName}</h6>
                                     <div>

@@ -73,7 +73,6 @@ function AgencyForm3(props) {
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
-                console.log(response.stepsCompleted);
                 setSteps(response.stepsCompleted);
             });
     };
@@ -129,7 +128,6 @@ function AgencyForm3(props) {
     }
 
     const handleUpload = async (event) => {
-        console.log(status)
         if (status === "Upload" && pickedAll) {
             await uploadMedia()
             setLoading(false);

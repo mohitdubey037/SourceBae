@@ -22,16 +22,15 @@ const store = createStore(
 );
 
 // const gettingReduxState = useSelector((state) => {
-//   console.log("state", state);
 // });
 
 navigator.serviceWorker.addEventListener("message", (message) => {
- if(message?.data?.data?.type==='chat'){
-  store.dispatch({
-    type: "NOTIFICATION",
-    notification: 1,
-  });
- }
+  if (message?.data?.data?.type === "chat") {
+    store.dispatch({
+      type: "NOTIFICATION",
+      notification: 1,
+    });
+  }
 });
 
 ReactDOM.render(

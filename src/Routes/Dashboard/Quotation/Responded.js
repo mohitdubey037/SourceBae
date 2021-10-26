@@ -27,7 +27,6 @@ function Responded(props) {
             })
 
     }
-    // console.log(projects,"memjokmej")
 
     useEffect(() => {
         getAllReceivedData()
@@ -89,7 +88,7 @@ function Responded(props) {
                                                     <p>Food</p>
                                                 </div>
                                                 <div>
-                                                    <p>Fixed Price</p>
+                                                    <p>Project Proposal Cost</p>
                                                     <p>$ {s.projectProposalCost}</p>
                                                 </div>
                                                 <div>

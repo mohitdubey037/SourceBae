@@ -42,7 +42,6 @@ function AgencyNewestDashboard(props) {
         instance.get(`api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`)
             .then(function (response) {
                 setAllProjects(response);
-                console.log(response);
             })
             .catch((err) => {
 
@@ -78,7 +77,6 @@ function AgencyNewestDashboard(props) {
         instance
             .get(`/api/${Role}/agencies/get/${agencyId}`)
             .then(function (response) {
-                console.log(response);
                 setVerified(response.isAgencyVerified);
                 setUserEmailVerified(response.isUserEmailVerified);
                 setUserPhoneVerified(response.isUserPhoneVerified);
@@ -86,7 +84,6 @@ function AgencyNewestDashboard(props) {
     };
 
     useEffect(() => {
-        console.log(tempStatus);
     }, [tempStatus])
 
     useEffect(() => {

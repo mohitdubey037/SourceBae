@@ -71,16 +71,13 @@ function EnterEmail(props) {
     const sendVerificationLink = () => {
         instance.post(`/api/${Role}/auths/send-forget-password-link`, state)
             .then(response => {
-                console.log(response);
                 props.history.push(`/login:${Role}`)
             })
             .catch(err => {
-                console.log(err);
             })
     }
 
     useEffect(() => {
-        console.log(Role);
     }, [Role])
 
 
@@ -97,7 +94,6 @@ function EnterEmail(props) {
     };
 
     useEffect(() => {
-        console.log(state);
     }, [state])
 
     return (

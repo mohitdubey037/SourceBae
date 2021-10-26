@@ -17,8 +17,6 @@ function Navbar(props) {
             const urlTemp = url.slice(indexTemp + 1);
             setIndex(urlTemp);
         }
-        // console.log(url.includes('/shared-developers')
-        // )
     }, [])
 
 
@@ -26,11 +24,9 @@ function Navbar(props) {
         if (Role === 'Client') {
             instance.get(`/api/${Role}/clients/get/${roleId}`)
                 .then(function (response) {
-                    // console.log(response);
                     setData(response);
                 })
                 .catch(err => {
-                    console.log(err?.response?.data?.message)
                 })
         }
 
@@ -40,7 +36,6 @@ function Navbar(props) {
                     setData(response);
                 })
                 .catch((err) => {
-                    console.log(err);
                 });
         }
     }, [])
@@ -66,7 +61,6 @@ function Navbar(props) {
                         :
                         <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`}/>
                        }
-                        {console.log(data)}
                 </div>
             </div>
         </div>

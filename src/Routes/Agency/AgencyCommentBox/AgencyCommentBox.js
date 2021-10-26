@@ -41,8 +41,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
-  console.log(props.projectProposals[0].projectStartDateByClient);
-  console.log(<moment>props.projectProposals[0].projectStartDateByClient</moment>)
   const classes = useStyles();
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -64,7 +62,6 @@ const AgencyCommentBox = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     setApiData({
       ...apiData,
       [name]: value,
@@ -130,7 +127,6 @@ const AgencyCommentBox = (props) => {
           props.giveReplies(true);
         })
         .catch(err => {
-          console.log(err)
         })
     }
   };
@@ -141,15 +137,12 @@ const AgencyCommentBox = (props) => {
       formData.append("files", file, "files.pdf");
       instance.post(`api/agency/media/create`, formData)
         .then(function (response) {
-          console.log(response[0].mediaURL);
           const data = { ...apiData, quotationLink: response[0].mediaURL };
-          console.log(data);
           if (props.isAskedForQuotation) {
             data["isAskedForQuotation"] = true;
           }
           instance.patch(`api/agency/projects/propose/${props.projectId}`, data)
             .then(function (response) {
-              console.log('chala ki nhi');
               props.giveReplies(true);
             });
         })
@@ -160,20 +153,16 @@ const AgencyCommentBox = (props) => {
   }
 
   const inputFileChosen = (event) => {
-    // console.log(event);
     setFile(event.target.files[0]);
   };
 
   useEffect(() => {
-    // console.log(file);
   }, [file])
 
   useEffect(() => {
-    // console.log(apiData)
   }, [apiData])
 
   useEffect(() => {
-    console.log(rejectErrors);
   }, [rejectErrors])
 
   const replyApi = async () => {
@@ -470,9 +459,9 @@ const AgencyCommentBox = (props) => {
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <MobileDatePicker
                       inputFormat="MM/dd/yyyy"
-                      // minDate={props.projectProposals[0].projectStartDateByClient}
-                      // maxDate={props.projectProposals[0].projectDelayedStartDateByClient}
-                      // value={props.projectProposals[0].projectStartDateByClient}
+                      minDate={new Date(props.projectProposals[0].projectStartDateByClient)}
+                      maxDate={new Date(props.projectProposals[0].projectDelayedStartDateByClient)}
+                      value={props.projectProposals[0].projectStartDateByClient}
                       onChange={(event) => handleChangeDate('projectStartDate', event)}
                       renderInput={(params) => <TextField {...params} />}
                     />
