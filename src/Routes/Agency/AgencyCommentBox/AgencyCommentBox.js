@@ -459,9 +459,9 @@ const AgencyCommentBox = (props) => {
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <MobileDatePicker
                       inputFormat="MM/dd/yyyy"
-                      // minDate={props.projectProposals[0].projectStartDateByClient}
-                      // maxDate={props.projectProposals[0].projectDelayedStartDateByClient}
-                      // value={props.projectProposals[0].projectStartDateByClient}
+                      minDate={new Date(props.projectProposals[0].projectStartDateByClient)}
+                      maxDate={new Date(props.projectProposals[0].projectDelayedStartDateByClient)}
+                      value={props.projectProposals[0].projectStartDateByClient}
                       onChange={(event) => handleChangeDate('projectStartDate', event)}
                       renderInput={(params) => <TextField {...params} />}
                     />

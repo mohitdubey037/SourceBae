@@ -9,7 +9,13 @@ h6 {
 
 .agency-card-parent {
     overflow: auto;
-    height: 30rem;
+    height: 39%;
+}
+
+@media (min-width: 1020px) {
+    .agency-card-parent {
+        height: 50%;
+    }
 }
 
 .agency-card-parent::-webkit-scrollbar {
