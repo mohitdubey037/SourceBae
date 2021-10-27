@@ -210,7 +210,7 @@ const AgencyCommentBox = (props) => {
                     )}
                     {index.reply && (
                       <div className="chatBox chatBox-right">
-                        <p style={{ backgroundColor: '#eaf3ff' }}>{index.reply}</p>
+                        <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
                         <b>You</b>
                       </div>
                     )}
