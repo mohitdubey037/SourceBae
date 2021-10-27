@@ -25,18 +25,18 @@ const store = createStore(
 // });
 
 
-  const msg = firebaseConfig.messaging();
-  if (window.Notification.permission !== "denied") {
-    msg.onMessage((message) => {
-      console.log("message onMessage", message);
-      // if (message?.data?.data?.type === "chat") {
-        store.dispatch({
-          type: "NOTIFICATION",
-          notification: 1,
-        });
-      // }
-    });
-  }
+  // const msg = firebaseConfig.messaging();
+  // if (window.Notification.permission !== "denied") {
+  //   msg.onMessage((message) => {
+  //     console.log("message onMessage", message);
+  //     // if (message?.data?.data?.type === "chat") {
+  //       store.dispatch({
+  //         type: "NOTIFICATION",
+  //         notification: 1,
+  //       });
+  //     // }
+  //   });
+  // }
 
 
 // navigator.serviceWorker.addEventListener("message", (message) => {

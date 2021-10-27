@@ -41,6 +41,12 @@ import { withRouter } from "react-router";
 import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
+import { createStore, compose } from "redux";
+import rootReducer from "./Redux/rootReducer";
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const App = (props) => {
   const [show, setShow] = useState(false);
@@ -58,6 +64,12 @@ const App = (props) => {
           title: message?.notification?.title,
           body: message?.notification?.body,
         });
+
+        store.dispatch({
+                  type: "NOTIFICATION",
+                  notification: 1,
+                });
+
         setShow(false);
       });
     }
