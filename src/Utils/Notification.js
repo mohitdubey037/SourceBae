@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Notification = ({ title, body, show }) => {
-  let hideNotif = title === "";
-  if (title && body && show) {
-    toast.info(<Display />, {
-      autoClose: false,
-    });
-  }
+  useEffect(() => {
+    if (title && body && show) {
+      toast.info(<Display />, {
+        autoClose: false,
+      });
+    }
+  }, []);
 
   function Display() {
     return (
