@@ -364,7 +364,7 @@ function SkillsSet(props) {
                     </div>
                     {editStatus ?
                     <div onClick={handleDisabledCancel} className="information_save_parent">
-                        <div className="information_save">
+                        <div className="information_cancel">
                             <p>Cancel</p>
                         </div>
                     </div>:null}

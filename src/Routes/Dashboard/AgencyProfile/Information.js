@@ -183,18 +183,18 @@ function Information(props) {
                 </div>
                 {isDisabled ? null :
 
-                     <>
-                    <div onClick={handleDisabledCancel} className="information_save_parent">
-                        <div className="information_save">
+                     <div className="handleButtons">
+                    <div className="information_save_parent">
+                        <div  onClick={handleDisabledCancel} className="information_cancel">
                             <p>Cancel</p>
                         </div>
                     </div>
-                    <div onClick={handleDisabledSave} className="information_save_parent">
-                        <div className="information_save">
+                    <div className="information_save_parent">
+                        <div  onClick={handleDisabledSave}  className="information_save">
                             <p>Submit</p>
                         </div>
                     </div>
-                    </>
+                    </div>
                 }
             </div>
         </>

@@ -246,7 +246,7 @@ function Rules(props) {
                     );
                   })
                 : "There are no rules available for this Agency."}
-              {editRules && (<>
+              {editRules && (<div className="handleButtons">
                 <div className="submitEditBtn">
                   <div
                     onClick={() => {
@@ -259,11 +259,11 @@ function Rules(props) {
                     </div>
                   </div>
                 </div>
-                <div onClick={handalLoading} className="information_save_parent">
-                        <div className="information_save">
+                <div onClick={handalLoading} className="submitEditBtn">
+                        <div className="information_cancel">
                             <p>Cancel</p>
                         </div>
-                    </div></>
+                    </div></div>
               )}
             </div>
           </div>

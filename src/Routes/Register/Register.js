@@ -222,6 +222,7 @@ const Register = (props) => {
     }, [state]);
 
     const handleChangeToggle = (name) => {
+        console.log(name);
         setState(name);
     };
 
@@ -241,6 +242,7 @@ const Register = (props) => {
                     localStorage.setItem("userId", `${response._id}`);
                 })
                 .catch(err => {
+                    console.log(err);
                     setApiErrors(true);
                     localStorage.removeItem("Authorization");
                     localStorage.removeItem('role');
@@ -274,7 +276,9 @@ const Register = (props) => {
     }
 
     useEffect(() => {
+        console.log('token use effect called');
         if (token !== null && apiErrors === false) {
+            console.log('token is not null');
             const apiRole = helper.lowerize(role)
             let api_param_const = ``
             let api_create_form = {}
@@ -440,7 +444,7 @@ const Register = (props) => {
                                                 (state === '' || state === "agency") ?
                                                     <><span>an</span><span style={{ fontSize: '25px' }} className="agencyOrClient">{` ${roleString}`}</span></>
                                                     :
-                                                    <><span>a</span><span style={{ fontSize: '25px',color:"#015F9A" }} className="agencyOrClient">{` ${roleString}`}</span></>
+                                                    <><span>a</span><span style={{ fontSize: '25px' }} className="agencyOrClient">{` ${roleString}`}</span></>
                                             }
                                         </h6>
 
@@ -494,35 +498,34 @@ const Register = (props) => {
 
                                         <div>
                                             <div className="input_with_error">
-                                                <label>User Name</label>
-                                                <input
-                                                    type="text"
-                                                    name="userName"
-                                                    placeholder='Username'
-                                                    // value={signupForm.userName}
-                                                    onChange={(e) => setForm(e)}
-                                                />
-                                                {
-                                                    errors.userNameError &&
-                                                    <p className="error_productForm">
-                                                        {errors.userNameError}
-                                                    </p>
-                                                }
-                                            </div>
-
-                                            <div className="input_with_error">
                                                 <label>Email</label>
                                                 <input
                                                     type="email"
                                                     name="userEmail"
                                                     placeholder='Email'
-                                                    // value={signupForm.userEmail}
+                                                    value={signupForm.userEmail}
                                                     onChange={(e) => setForm(e)}
                                                 />
                                                 {
                                                     errors.emailError &&
                                                     <p className="error_productForm">
                                                         {errors.emailError}
+                                                    </p>
+                                                }
+                                            </div>
+                                            <div className="input_with_error">
+                                                <label>User Name</label>
+                                                <input
+                                                    type="text"
+                                                    name="userName"
+                                                    placeholder='Username'
+                                                    value={signupForm.userName}
+                                                    onChange={(e) => setForm(e)}
+                                                />
+                                                {
+                                                    errors.userNameError &&
+                                                    <p className="error_productForm">
+                                                        {errors.userNameError}
                                                     </p>
                                                 }
                                             </div>

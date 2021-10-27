@@ -195,7 +195,7 @@ function AgencyForm3(props) {
                     <div className="mainDocumentsForm">
                         <div className="innerDocumentForm">
                             <div className="documentDetails">
-                                <p>1. Provide your Valid Document</p>
+                                <p>* Provide your Valid Document</p>
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
                                         <FilePicker
@@ -210,6 +210,7 @@ function AgencyForm3(props) {
                                         <p className="logo-type_agencyForm1">{`${(registrationCertificate?.document?.name) ? registrationCertificate?.document?.name.slice(0,20) : "Company Registration Certificate"}`}</p>
                                     </div>
                                     <div className="agencyBrochure">
+                                    {/* <p>2. Upload Agency Brochure</p> */}
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
@@ -224,7 +225,7 @@ function AgencyForm3(props) {
                                     </div>
                                 </div>
                                 <div className="panDetails">
-                                    <p>2. Enter your Pan Card number</p>
+                                    {/* <p>3. Upload your PanCard</p> */}
                                     <div className="panCardContent">
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}

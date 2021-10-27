@@ -201,7 +201,7 @@
 .information_save_parent {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .information_save_parent:hover {
@@ -210,6 +210,17 @@
 
 .information_save {
   background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-family: 'Segoe UI Semibold';
+}
+
+.information_cancel {
+  background: #707070;
   color: #fff;
   outline: none;
   border: none;
@@ -228,4 +239,9 @@
 
 .Edit-icon_information:hover {
   cursor: pointer;
+}
+
+.handleButtons {
+  display: flex;
+  justify-content: space-between;
 }

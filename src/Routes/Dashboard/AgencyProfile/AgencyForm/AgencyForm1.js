@@ -399,7 +399,7 @@ function AgencyForm1(props) {
                                                     <img src={fileIcon} alt="finish" />
                                                 </button>
                                             </FilePicker>
-                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name.slice(0,20) ?? "(jpeg, png, jpg)"}`}</p>
+                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name.slice(0,20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p>
                                             {formDataErrors.agencyLogoError !== '' &&
                                                 <p className="error_agencyForm">
                                                     {formDataErrors.agencyLogoError}
@@ -413,6 +413,7 @@ function AgencyForm1(props) {
                                             name="agencyDescription"
                                             cols="30"
                                             rows="5"
+                                            placeholder="Add Description"
                                             value={formData?.agencyDescription}
                                             onChange={(event) => handleChange(event)} />
                                         {formDataErrors.agencyDescriptionError !== '' &&
@@ -428,7 +429,7 @@ function AgencyForm1(props) {
                                         <p>Owner Name</p>
                                         <input
                                             type="text"
-                                            placeholder="Jack Morrison"
+                                            placeholder="Enter Owner's Name"
                                             name="ownerName"
                                             value={formData?.ownerName}
                                             onChange={(event) => handleChange(event)}
@@ -444,7 +445,7 @@ function AgencyForm1(props) {
                                         <p>Company Email</p>
                                         <input
                                             type="text"
-                                            placeholder="abc@abc.in"
+                                            placeholder="Enter Company Email"
                                             name="agencyEmail"
                                             value={formData?.agencyEmail}
                                             onChange={(event) => handleChange(event)} />
@@ -462,7 +463,7 @@ function AgencyForm1(props) {
                                         <input
                                             maxLength='10'
                                             type="text"
-                                            placeholder="9876543210"
+                                            placeholder="Enter Company Contact Number"
                                             name="agencyPhone"
                                             value={formData?.agencyPhone}
                                             onChange={(event) => handleChange(event)} />
@@ -492,7 +493,7 @@ function AgencyForm1(props) {
                                         <p>Company Address</p>
                                         <input
                                             type="text"
-                                            placeholder="scheme 54, Vijay Nagar"
+                                            placeholder="Enter Company Address"
                                             name="address"
                                             id="address_location"
                                             value={formData?.agencyAddress?.address}
@@ -508,7 +509,7 @@ function AgencyForm1(props) {
                                         <p>Company Location</p>
                                         <input
                                             type="text"
-                                            placeholder="Indore,MP"
+                                            placeholder="Enter Company Location"
                                             name="location"
                                             id="address_location"
                                             value={formData?.agencyAddress?.location}
