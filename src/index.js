@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Sidebar from "./Components/ClientNewestDashboard/Sidebar/Sidebar";
 import * as serviceWorker from "./serviceWorker";
-
+import firebaseConfig from "./firebase";
 //REDUX
 
 import { createStore, compose } from "redux";
@@ -40,8 +40,9 @@ const store = createStore(
 
 
 // navigator.serviceWorker.addEventListener("message", (message) => {
-//   console.log("message",message)
+//   console.log("message");
 //   if (message?.data?.data?.type === "chat") {
+//     console.log("store")
 //     store.dispatch({
 //       type: "NOTIFICATION",
 //       notification: 1,

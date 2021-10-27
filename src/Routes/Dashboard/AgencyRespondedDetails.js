@@ -16,9 +16,13 @@ import "react-responsive-modal/styles.css";
 import detailImage from '../../assets/images/details.png';
 
 import AgencyCommentBox from '../Agency/AgencyCommentBox/AgencyCommentBox';
+import {useSelector} from 'react-redux';
+import useIsFirstRender from "../../Utils/useIsFirstRender";
+
 
 
 function AgencyRespondedDetails(props) {
+  
   const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
@@ -29,7 +33,16 @@ function AgencyRespondedDetails(props) {
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState({});
   const [loading, setLoading] = useState(false);
+  const [chatNotification, setChatNotification] = useState(0);
+  useSelector((state)=>{
+    console.log("state",state)
+    if(!useIsFirstRender) setChatNotification(state?.notification)
+  })
 
+  useEffect(() => {
+
+  },[chatNotification])
+  
   const getAllProjects = () => {
     setLoading(true);
     instance
@@ -43,6 +56,13 @@ function AgencyRespondedDetails(props) {
       });
   };
 
+  // useEffect(()=>{
+  //   const gettingReduxState = useSelector((state) => {
+  //     console.log(state);
+  //     setChatNotification(state.notification);
+  //   });
+  // },[])
+
   // useEffect(() => {
   //   if (Object.keys(props["projects"]).length === 0) {
   //     getAllProjects();
@@ -53,7 +73,7 @@ function AgencyRespondedDetails(props) {
 
   useEffect(() => {
     getAllProjects();
-  }, [isRepliedToClient]);
+  }, [isRepliedToClient,chatNotification]);
 
   // const goBack = () => {
   //   routerHistory.push({
@@ -241,7 +261,7 @@ function AgencyRespondedDetails(props) {
                         </div>
                       </div>
                     </div>
-                    <div style={{display: 'flex', justifyContent: 'center'}} className="completedImage">
+                    <div style={{ display: 'flex', justifyContent: 'center' }} className="completedImage">
                       <img src={completedImage} alt="" />
                     </div>
                   </div>
