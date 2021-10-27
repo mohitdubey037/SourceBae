@@ -7,13 +7,12 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Sidebar from "./Components/ClientNewestDashboard/Sidebar/Sidebar";
 import * as serviceWorker from "./serviceWorker";
-import firebaseConfig from "./firebase";
+// import firebaseConfig from "./firebase";
 //REDUX
 
 import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./Redux/rootReducer";
-import firebaseConfig from './firebase'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
