@@ -22,14 +22,15 @@ import useIsFirstRender from "../../Utils/useIsFirstRender";
 function AgencyRespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
   const [chatNotification, setChatNotification] = useState(-1);
-  // useSelector((state) => {
-  //   console.log("state in res", state);
-  //   console.log("isFirstRender", isFirstRender);
-  //   if (!isFirstRender && state?.notification > 0) {
-  //     console.log("in useIs");
-  //     setChatNotification(state?.notification);
-  //   }
-  // });
+  useSelector((state) => {
+    if (
+      !isFirstRender &&
+      state?.notification > 0 &&
+      chatNotification !== state.notification
+    ) {
+      setChatNotification(state?.notification);
+    }
+  });
   const routerHistory = useHistory();
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
