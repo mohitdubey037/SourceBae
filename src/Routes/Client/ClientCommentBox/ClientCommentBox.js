@@ -363,15 +363,6 @@ const ClientCommentBox = (props) => {
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <div className="datePickers">
-                      {/* <MobileDatePicker
-                        className={classes.root}
-                        inputFormat="dd/MM/yyyy"
-                        minDate={new Date()}
-                        value={quotationFormData.projectStartDateByClient}
-                        onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
-                      /> */}
-
                       <DesktopDatePicker
                         className={classes.root}
                         inputFormat="dd/MM/yyyy"
@@ -392,14 +383,6 @@ const ClientCommentBox = (props) => {
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
-                      {/* <MobileDatePicker
-                        inputFormat="dd/MM/yyyy"
-                        minDate={quotationFormData.projectStartDateByClient}
-                        value={quotationFormData.projectDelayedStartDateByClient}
-                        disabled={quotationFormData.projectStartDateByClient === '' ? true : false}
-                        onChange={(event) => handleChangeDate('projectDelayedStartDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
-                      /> */}
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         minDate={quotationFormData.projectStartDateByClient}
@@ -419,14 +402,6 @@ const ClientCommentBox = (props) => {
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
-                      {/* <MobileDatePicker
-                        inputFormat="dd/MM/yyyy"
-                        disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : false}
-                        minDate={quotationFormData.projectDelayedStartDateByClient}
-                        value={quotationFormData.projectEndDateByClient}
-                        onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
-                      /> */}
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : false}
@@ -446,14 +421,6 @@ const ClientCommentBox = (props) => {
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
-                      {/* <MobileDatePicker
-                        inputFormat="dd/MM/yyyy"
-                        disabled={quotationFormData.projectEndDateByClient === '' ? true : false}
-                        minDate={quotationFormData.projectEndDateByClient}
-                        value={quotationFormData.projectExpectedEndDateByClient}
-                        onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
-                      /> */}
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         disabled={quotationFormData.projectEndDateByClient === '' ? true : false}
