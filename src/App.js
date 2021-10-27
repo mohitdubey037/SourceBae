@@ -58,10 +58,10 @@ const App = (props) => {
     title: "",
     body: "",
   });
-  
+
   useEffect(() => {
     const msg = firebaseConfig.messaging();
-    if (window.Notification.permission = "granted") {
+    if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
         console.log("me", message);
         setShow(true);
