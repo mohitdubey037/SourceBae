@@ -13,7 +13,6 @@ import firebaseConfig from "./firebase";
 import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./Redux/rootReducer";
-import firebaseConfig from './firebase'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
@@ -24,26 +23,27 @@ const store = createStore(
 // const gettingReduxState = useSelector((state) => {
 // });
 
-const msg = firebaseConfig.messaging();
-    if (window.Notification.permission !== "denied") {
-      msg.onMessage((message) => {
-        store.dispatch({
-                type: "NOTIFICATION",
-                notification: 1,
-              });
-      });
-    }
+// const msg = firebaseConfig.messaging();
+//     if (window.Notification.permission !== "denied") {
+//       msg.onMessage((message) => {
+//         console.log("in dispatch")
+//         store.dispatch({
+//                 type: "NOTIFICATION",
+//                 notification: 1,
+//               });
+//       });
+//     }
 
-// navigator.serviceWorker.addEventListener("message", (message) => {
-//   console.log("message");
-//   if (message?.data?.data?.type === "chat") {
-//     console.log("store")
-//     store.dispatch({
-//       type: "NOTIFICATION",
-//       notification: 1,
-//     });
-//   }
-// });
+navigator.serviceWorker.addEventListener("message", (message) => {
+  console.log("message in dis");
+  if (message?.data?.data?.type === "chat") {
+    console.log("store")
+    store.dispatch({
+      type: "NOTIFICATION",
+      notification: 1,
+    });
+  }
+});
 
 ReactDOM.render(
   <Provider store={store}>

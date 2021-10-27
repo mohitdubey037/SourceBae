@@ -33,9 +33,9 @@ function AgencyRespondedDetails(props) {
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState({});
   const [loading, setLoading] = useState(false);
-  const [chatNotification, setChatNotification] = useState(0);
+  const [chatNotification, setChatNotification] = useState(-1);
   useSelector((state)=>{
-    console.log("state",state)
+    console.log("state in res",state)
     if(!useIsFirstRender) setChatNotification(state?.notification)
   })
 
