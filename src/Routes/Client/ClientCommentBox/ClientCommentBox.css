@@ -159,13 +159,36 @@
     font-size: 1rem;
 }
 
-.tableContentQuotation input {
-    width: 95% !important;
+.tableContentQuotation.finalCost>input {
     height: 40px;
     padding-left: 10px;
     outline: none;
     border: 1px solid #e0e0e0;
     font-size: 0.9rem;
-    border-radius: 6px;
+    border-radius: 5px;
     padding-right: 2rem;
+}
+
+.datePickers {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    padding-right: 1rem;
+}
+
+.datePickers .MuiFormControl-root .MuiButtonBase-root {
+    padding: 0 !important;
+    /* padding-right: 1rem !important; */
+}
+
+.datePickers .MuiFormControl-root .MuiButtonBase-root:focus {
+    outline: none !important;
+}
+
+.datePickers .MuiInputBase-root:focus {
+    border: none !important;
+    outline: none !important;
 }

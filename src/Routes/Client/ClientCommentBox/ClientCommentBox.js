@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import Radio from '@material-ui/core/Radio';
@@ -361,10 +362,19 @@ const ClientCommentBox = (props) => {
                 </div>
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <div>
-                      <MobileDatePicker
+                    <div className="datePickers">
+                      {/* <MobileDatePicker
                         className={classes.root}
-                        inputFormat="MM/dd/yyyy"
+                        inputFormat="dd/MM/yyyy"
+                        minDate={new Date()}
+                        value={quotationFormData.projectStartDateByClient}
+                        onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      /> */}
+
+                      <DesktopDatePicker
+                        className={classes.root}
+                        inputFormat="dd/MM/yyyy"
                         minDate={new Date()}
                         value={quotationFormData.projectStartDateByClient}
                         onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
@@ -381,9 +391,17 @@ const ClientCommentBox = (props) => {
                 </div>
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <div className={`${quotationFormData.projectStartDateByClient === '' ? 'conditional_datePicker' : 'datePicker_quotation'}`}>
-                      <MobileDatePicker
-                        inputFormat="MM/dd/yyyy"
+                    <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
+                      {/* <MobileDatePicker
+                        inputFormat="dd/MM/yyyy"
+                        minDate={quotationFormData.projectStartDateByClient}
+                        value={quotationFormData.projectDelayedStartDateByClient}
+                        disabled={quotationFormData.projectStartDateByClient === '' ? true : false}
+                        onChange={(event) => handleChangeDate('projectDelayedStartDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      /> */}
+                      <DesktopDatePicker
+                        inputFormat="dd/MM/yyyy"
                         minDate={quotationFormData.projectStartDateByClient}
                         value={quotationFormData.projectDelayedStartDateByClient}
                         disabled={quotationFormData.projectStartDateByClient === '' ? true : false}
@@ -400,9 +418,17 @@ const ClientCommentBox = (props) => {
                 </div>
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <div className={`${quotationFormData.projectDelayedStartDateByClient === '' ? 'conditional_datePicker' : 'datePicker_quotation'}`} >
-                      <MobileDatePicker
-                        inputFormat="MM/dd/yyyy"
+                    <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
+                      {/* <MobileDatePicker
+                        inputFormat="dd/MM/yyyy"
+                        disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : false}
+                        minDate={quotationFormData.projectDelayedStartDateByClient}
+                        value={quotationFormData.projectEndDateByClient}
+                        onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      /> */}
+                      <DesktopDatePicker
+                        inputFormat="dd/MM/yyyy"
                         disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : false}
                         minDate={quotationFormData.projectDelayedStartDateByClient}
                         value={quotationFormData.projectEndDateByClient}
@@ -419,9 +445,17 @@ const ClientCommentBox = (props) => {
                 </div>
                 <div className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <div className={`${quotationFormData.projectEndDateByClient === '' ? 'conditional_datePicker' : 'datePicker_quotation'}`}>
-                      <MobileDatePicker
-                        inputFormat="MM/dd/yyyy"
+                    <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
+                      {/* <MobileDatePicker
+                        inputFormat="dd/MM/yyyy"
+                        disabled={quotationFormData.projectEndDateByClient === '' ? true : false}
+                        minDate={quotationFormData.projectEndDateByClient}
+                        value={quotationFormData.projectExpectedEndDateByClient}
+                        onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      /> */}
+                      <DesktopDatePicker
+                        inputFormat="dd/MM/yyyy"
                         disabled={quotationFormData.projectEndDateByClient === '' ? true : false}
                         minDate={quotationFormData.projectEndDateByClient}
                         value={quotationFormData.projectExpectedEndDateByClient}
@@ -436,7 +470,7 @@ const ClientCommentBox = (props) => {
                 <div className="tableHeaderQuotation">
                   <p>Final Cost </p>
                 </div>
-                <div className="tableContentQuotation">
+                <div className="tableContentQuotation finalCost">
                   <input type="number" name="finalCostByClient" onChange={onQuotationChange} />
                 </div>
               </div>

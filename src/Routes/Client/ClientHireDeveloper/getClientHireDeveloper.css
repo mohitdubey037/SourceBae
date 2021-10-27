@@ -492,11 +492,11 @@
   border: 1px solid #e0e0e0;
 }
 
-.quotationTable button {
+/* .quotationTable button {
   display: flex;
   align-self: flex-end;
   float: right;
-}
+} */
 
 /* .quotationSubmitButton {
   display: flex;
