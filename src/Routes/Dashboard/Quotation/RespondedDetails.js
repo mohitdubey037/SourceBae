@@ -18,8 +18,13 @@ function RespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
   const [chatNotification, setChatNotification] = useState(-1);
   useSelector((state) => {
-    console.log("state in res", state);
-    if (!isFirstRender) setChatNotification(state?.notification);
+    if (
+      !isFirstRender &&
+      state?.notification > 0 &&
+      chatNotification !== state.notification
+    ) {
+      setChatNotification(state?.notification);
+    }
   });
   let { projectId, agencyId } = useParams();
   const [isRepliedToClient, setRepliedToClient] = useState(false);
