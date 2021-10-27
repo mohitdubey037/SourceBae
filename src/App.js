@@ -43,20 +43,15 @@ import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
 import { createStore, compose } from "redux";
 import rootReducer from "./Redux/rootReducer";
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-
-import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from "./Redux/rootReducer";
-
 const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+
+// import { createStore, compose } from "redux";
+// import rootReducer from "./Redux/rootReducer";
 
 const App = (props) => {
   const [show, setShow] = useState(false);

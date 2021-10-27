@@ -96,6 +96,10 @@ function Information(props) {
         updateAgency()
     }
 
+    const handleDisabledCancel = () => {
+        setIsdisabled(true)
+    }
+
     const permanentDisable = (name) => {
         if (name === "Director Name" || name === "Agency Website" || name === "Team Size" ) {
             return false
@@ -178,11 +182,19 @@ function Information(props) {
                     </div>
                 </div>
                 {isDisabled ? null :
+
+                     <>
+                    <div onClick={handleDisabledCancel} className="information_save_parent">
+                        <div className="information_save">
+                            <p>Cancel</p>
+                        </div>
+                    </div>
                     <div onClick={handleDisabledSave} className="information_save_parent">
                         <div className="information_save">
                             <p>Submit</p>
                         </div>
                     </div>
+                    </>
                 }
             </div>
         </>

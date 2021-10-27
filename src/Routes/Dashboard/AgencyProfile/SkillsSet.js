@@ -35,6 +35,10 @@ function SkillsSet(props) {
         }
     }, []);
 
+    const handleDisabledCancel = () => {
+        setEditStatus(false)
+    }
+
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {
         setAddItem("")
@@ -358,6 +362,12 @@ function SkillsSet(props) {
                             })
                         }
                     </div>
+                    {editStatus ?
+                    <div onClick={handleDisabledCancel} className="information_save_parent">
+                        <div className="information_save">
+                            <p>Cancel</p>
+                        </div>
+                    </div>:null}
                     {/* {editStatus &&
                         <div onClick={() => handleEdit(false)} className="information_save_parent">
                             <div className="information_save">
@@ -436,7 +446,9 @@ function SkillsSet(props) {
                             <p onClick={() => handleAddItem(modalValue)}>Add</p>
                         </div>
                     </div>
+
                 </div>
+                
             </Modal>
 
         </>

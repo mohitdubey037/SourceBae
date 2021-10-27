@@ -32,6 +32,10 @@ function Rules(props) {
     },
   });
 
+  const handalLoading = () => {
+    setEditRules(false);
+  }
+
   const handleEditRules = (value) => {
     setLoading(true);
     setEditRules(value);
@@ -242,7 +246,7 @@ function Rules(props) {
                     );
                   })
                 : "There are no rules available for this Agency."}
-              {editRules && (
+              {editRules && (<>
                 <div className="submitEditBtn">
                   <div
                     onClick={() => {
@@ -255,6 +259,11 @@ function Rules(props) {
                     </div>
                   </div>
                 </div>
+                <div onClick={handalLoading} className="information_save_parent">
+                        <div className="information_save">
+                            <p>Cancel</p>
+                        </div>
+                    </div></>
               )}
             </div>
           </div>

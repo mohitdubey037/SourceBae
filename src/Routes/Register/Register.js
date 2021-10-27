@@ -440,7 +440,7 @@ const Register = (props) => {
                                                 (state === '' || state === "agency") ?
                                                     <><span>an</span><span style={{ fontSize: '25px' }} className="agencyOrClient">{` ${roleString}`}</span></>
                                                     :
-                                                    <><span>a</span><span style={{ fontSize: '25px' }} className="agencyOrClient">{` ${roleString}`}</span></>
+                                                    <><span>a</span><span style={{ fontSize: '25px',color:"#015F9A" }} className="agencyOrClient">{` ${roleString}`}</span></>
                                             }
                                         </h6>
 
