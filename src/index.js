@@ -34,16 +34,16 @@ const store = createStore(
 //       });
 //     }
 
-navigator.serviceWorker.addEventListener("message", (message) => {
-  console.log("message in dis");
-  if (message?.data?.data?.type === "chat") {
-    console.log("store")
-    store.dispatch({
-      type: "NOTIFICATION",
-      notification: 1,
-    });
-  }
-});
+// navigator.serviceWorker.addEventListener("message", (message) => {
+//   console.log("message in dis");
+//   if (message?.data?.data?.type === "chat") {
+//     console.log("store")
+//     store.dispatch({
+//       type: "NOTIFICATION",
+//       notification: 1,
+//     });
+//   }
+// });
 
 ReactDOM.render(
   <Provider store={store}>
