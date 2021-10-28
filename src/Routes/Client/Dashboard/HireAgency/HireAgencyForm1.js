@@ -127,10 +127,13 @@ const HireAgencyForm1 = (props) => {
     }
      else {
       setLoading(true);
+      console.log("agencyForm1s",props?.location?.state?.agencyForm1);
+      console.log("id",props?.location?.state?.agencyForm1?.projectId);
       instance
-        .post(`/api/${Role}/projects/create`,data)
+        .post(`/api/${Role}/projects/create`,(props?.location?.state?.agencyForm1?.projectId)?{...data, id:props.location.state.agencyForm1?.projectId}:data)
         .then(function (response) {
           setLoading(false);
+          data.projectId=response._id
           props.history.replace(`/hire-agency-form-two:${response._id}`, {
             agencyForm1:data,
           });
@@ -303,7 +306,7 @@ const HireAgencyForm1 = (props) => {
                       <input
                         style={{
                           height: "35px",
-                          width: "30.5rem",
+                          width: "79%",
                           border: "1px solid #015F9A",
                           padding: "1rem",
                           borderRadius: "8px",
@@ -331,7 +334,7 @@ const HireAgencyForm1 = (props) => {
                       <input
                         style={{
                           height: "35px",
-                          width: "30.5rem",
+                          width: "79%",
                           border: "1px solid #015F9A",
                           padding: "1rem",
                           borderRadius: "8px",
