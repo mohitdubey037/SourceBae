@@ -39,7 +39,6 @@ const HireAgencyForm1 = (props) => {
     projectName: "",
     projectDescription: "",
     projectProposalCost: "5000",
-    id: '617a36517ea8734c09eacced',
     projectExpectedStartingDays: 5,
   });
 
@@ -83,7 +82,12 @@ const HireAgencyForm1 = (props) => {
   //     ...data,
   //     projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
   //   });
-  // };
+  // }; 
+
+  const handleBack = () => {
+    if (window.confirm("Do you want to discard changes?") == true) {
+    props.history.push(`/clientNewestDashboard`) 
+  }}
 
   const handleSubmit = () => {
     let tempError = {
@@ -369,8 +373,8 @@ const HireAgencyForm1 = (props) => {
                   <div className="nextbutton nextbutton_hireAgencyForm1">
                     <div
                       className="backbutton_hireAgencyForm2"
-                      onClick={() =>
-                        props.history.push(`/clientNewestDashboard`)
+                      onClick={() => handleBack()
+                        // props.history.push(`/clientNewestDashboard`)
                       }
                       style={{ backgroundColor: "#707070" }}
                     >

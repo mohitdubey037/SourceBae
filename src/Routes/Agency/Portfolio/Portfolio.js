@@ -9,25 +9,30 @@ import { FilePicker } from "react-file-picker";
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 import fileUpload from '../../../assets/images/Newestdashboard/Portfolio/upload_file.svg';
 import instance from "../../../Constants/axiosConstants";
+import { withRouter } from "react-router";
 
+import { useHistory } from 'react-router-dom';
 import { toast } from "react-toastify";
 
-function Portfolio() {
+function Portfolio(props) {
 
     const Role = localStorage.getItem('role');
     const [errors, setErrors] = useState({})
+    const [loading, setLoading] = useState(true);
 
     const [form, setForm] = useState({
-        field1: '',
-        field2: '',
-        field3: '',
+        projectName: '',
+        projectTimeline: '5',
+        projectDescription: '',
         field4: '',
         field5: '',
     })
 
     const [logo, setLogo] = useState(null);
+    const routerHistory = useHistory();
 
     const handleChange = (event) => {
+        errorValidation()
         const { name, value } = event.target
         setForm({
             ...form,
@@ -41,9 +46,21 @@ function Portfolio() {
 
     const errorValidation = () => {
         const errors = {}
-        if (logo === null) {
-            errors.developerResume = 'Resume is required';
+        // if (logo === null) {
+            //     errors.developerResume = 'Resume is required';}
+         if (form.projectName === '') {
+            errors.projectName = 'Project Name is required'
         }
+        else if (form.projectDescription === '') {
+            errors.projectDescription = 'Project Description  is required'
+        }
+        // else if (form.webLink === '') {
+        //     errors.webLink = 'Web Link is required'
+        // }
+        else if (form.projectTimeline <=4) {
+            errors.projectTimeline = 'timeline must be more than 4 dyas'
+        }
+       
         setErrors(errors);
         if (Object.keys(errors).length === 0)
             return true;
@@ -52,21 +69,27 @@ function Portfolio() {
     }
 
 
-    function uploadMedia() {
+    const uploadMedia = () => {
         if (errorValidation()) {
+            setLoading(true)
             return new Promise((resolve, reject) => {
-                const formData = new FormData();
-                logo && formData.append(
+                const form = new FormData();
+                logo && form.append(
                     "files",
                     logo,
                     logo.name
                 );
-                instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
+                instance.post(`api/${Role}/portfolios/create`, form)
                     .then(function (response) {
+                        setLoading(false);
                         setForm({
                             ...form,
                             documentLink: response[0].mediaURL
                         })
+                        // props.history.replace({
+                        //     pathname: "/agency-profile",
+                        //     origin: 'portfolio'
+                        // })
                     })
                     .catch(err => {
                     })
@@ -130,7 +153,7 @@ function Portfolio() {
                                         <img src={fileUpload} alt="fileUpload" />
                                     </div> */}
                                 <FilePicker
-                                    extensions={['pdf', 'doc', 'docx']}
+                                    extensions={['jpeg', 'jpg', 'png']}
                                     onChange={(fileObj) => inputFileChoosen(fileObj)}
                                     onError={errMsg => toast.error(errMsg)}
                                 >
@@ -150,25 +173,29 @@ function Portfolio() {
                             <div className="portfolio_inputs">
                                 <div>
                                     <p className="project-question">What was your project named ?</p>
-                                    <input name="input1" type="text" placeholder="Enter project name" onChange={(event) => handleChange(event)} />
+                                    <input name="projectName" type="text" placeholder="Enter project name" value={form.projectName} onChange={(event) => handleChange(event)} />
+                                    {errors.projectName && (<p className="error_paragraph basic">{errors.projectName}</p>)}                             
                                 </div>
                                 <div>
                                     <p className="project-question">Do You have a website(product) link ?</p>
-                                    <input name="input1" type="text" placeholder="Enter url" onChange={(event) => handleChange(event)} />
+                                    <input name="input1" type="text" placeholder="Enter url" /*value={form.field4}*/ onChange={(event) => handleChange(event)} />
+                                    {errors.field4 && (<p className="error_paragraph basic">{errors.field4}</p>)}
                                 </div>
                             </div>
                             <div className="portfolio_inputs portfolio_inputs_second">
                                 <div>
                                     <p className="project-question">Write about the project ?</p>
-                                    <textarea name="input1" id="input1" cols="30" rows="10" placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
+                                    <textarea name="projectDescription" id="input1" cols="30" rows="10" value={form.projectDescription} placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
+                                    {errors.projectDescription && (<p className="error_paragraph basic">{errors.projectDescription}</p>)}
                                 </div>
                                 <div>
-                                    <p className="project-question">What was the project timeline ? </p>
-                                    <input name="input1" type="text" placeholder="Enter project timeline" onChange={(event) => handleChange(event)} />
+                                    <p className="project-question">What was the project timeline ?(in days) </p>
+                                    <input name="projectTimeline" type="number" min="5" value={form.projectTimeline} placeholder="Enter project timeline" onChange={(event) => handleChange(event)} />
+                                    {errors.projectTimeline && (<p className="error_paragraph basic">{errors.projectTimeline}</p>)}
                                 </div>
                             </div>
                             <div className="submit_portfolio_parent">
-                                <button className="submit_portfolio" type="submit">Submit Project</button>
+                                <button className="submit_portfolio" type="submit" /*onclick={uploadMedia}*/>Submit Project</button>
                             </div>
                         </div>
 
