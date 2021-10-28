@@ -205,10 +205,9 @@ const Register = (props) => {
   }, []);
 
   useEffect(() => {
-    role.toLowerCase() === "agency" || state === "agency"
-      ? props.history.push("/register:agency")
-      : props.history.push("/register:client");
-  }, [state]);
+    localStorage.setItem('toggle', state);
+    (state === '' || state === 'agency') ? props.history.push('/register:agency') : props.history.push('/register:client');
+}, [state]);
 
   const handleChangeToggle = (name) => {
     console.log(name);
