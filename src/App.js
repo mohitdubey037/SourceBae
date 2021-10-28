@@ -21,17 +21,20 @@ import HireAgencyForm2 from "./Routes/Client/Dashboard/HireAgency/HireAgencyForm
 import HireAgencyForm3 from "./Routes/Client/Dashboard/HireAgency/HireAgencyForm3";
 import ShortTerm from "./Routes/Client/Dashboard/ShortTerm/ShortTerm";
 import HireDeveloper from "./Routes/Client/Dashboard/HireDeveloper/HireDeveloper";
+
 import AgencyList from "./Routes/Client/AgencyList/AgencyList";
 import ClientProfile from "./Routes/Client/ClientProfile";
-import ProductForm from "./Routes/Agency/Product/ProductForm";
-import ProductDetails from "./Routes/Agency/Product/ProductDetails";
-import ProductAgencies from "./Routes/Agency/Product/ProductAgencies";
 import CustomRoute from "./HOCRoute/CustomRoute";
 import GetClientHireDeveloper from "./Routes/Client/ClientHireDeveloper/getClientHireDeveloper";
 import ClientOneHireDeveloper from "./Routes/Client/ClientOneHireDeveloper/ClientOneHireDeveloper";
 import SharedDevelopers from "./Routes/Client/SharedDevelopers/SharedDevelopers";
 import ForgotPassword from "./Routes/ForgotPassword/ForgotPassword";
 import EnterEmail from "./Routes/EnterEmail/EnterEmail";
+
+import ProductForm from "./Routes/Agency/Product/ProductForm";
+import ProductDetails from "./Routes/Agency/Product/ProductDetails";
+import ProductAgencies from "./Routes/Agency/Product/ProductAgencies";
+import Portfolio from './Routes/Agency/Portfolio/Portfolio';
 
 import ClientNewestDashboard from "./Routes/Client/ClientNewestDashboard";
 import AgencyNewestDashboard from "./Routes/Dashboard/AgencyNewestDashboard";
@@ -218,6 +221,12 @@ const App = (props) => {
           exact
           path="/project-details:projectId"
           component={ProjectDetails}
+        />
+        <CustomRoute
+          condition="Agency"
+          exact
+          path="/portfolio"
+          component={Portfolio}
         />
         <CustomRoute
           condition="Client"
