@@ -35,8 +35,8 @@
 
 .width div {
   border-bottom: none;
-  width: 65%;
 }
+
 
 .moreAgencies_shared .fas {
   color: white !important;
@@ -208,4 +208,42 @@
 
 .show-more_sharedDeveloper:hover {
   border-bottom: 2px solid #407bff;
+}
+
+
+.devops p{
+font-family: 'Segoe UI';
+    color: #707070;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #707070;
+    border-radius: 999px;
+    margin-bottom: 3px;
+    margin-right: 15px;
+    font-size: 0.7rem;
+    }
+
+.devops div {
+  display: flex;
+  grid-row-gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.acceptButtonShare , .rejectButtonShare {
+margin: 0 0.5rem;
+padding: 0.5rem 1rem;
+border-radius: 999px;
+outline: none;
+background-color: rgb(69, 164, 228);
+border: none;
+color: #fff;
+font-family: 'Segoe UI';
+box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+letter-spacing: 1px;
+}
+
+.rejectButtonShare {
+  border: 1px solid #707070;
+  background-color: #707070;
 }

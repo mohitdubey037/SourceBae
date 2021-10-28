@@ -122,50 +122,12 @@ function RespondedDetails(props) {
                         <p>{devData.contractPeriod}</p>
                       </div>
 
-                      <div style={{ width: '83.5%' }} >
+                      <div>
                         <p>Developer Experience Required</p>
                         <p>
                           {devData.developerExperienceRequired}
                         </p>
                       </div>
-
-                      <div>
-                        <p>Developer Roles Required</p>
-                        {devData.developerRolesRequired.length > 0 &&
-                          <ul>
-                            {devData.developerRolesRequired.map(dd => {
-                              return (
-                                <li>{dd}</li>
-                              )
-                            })}
-                          </ul>
-                        }
-                      </div>
-
-                      <div>
-                        <p>Developer Technologies Required</p>
-                        {/* {console.log(devData.developerTechnologiesRequired,"tech required")} */}
-                        {devData.developerTechnologiesRequired.length > 0 &&
-                          <ul>
-                            {devData.developerTechnologiesRequired.map(dt => {
-                              return (
-                                <li>{dt.technologyName}</li>
-                              )
-                            })
-                            }
-                          </ul>
-                        }
-                        {/* {devData.developerTechnologiesRequired.length > 0 &&
-                          <ul>
-                            {devData.developerTechnologiesRequired.map(dt => {
-                              return (
-                                <li>{dt}</li>
-                              )
-                            })}
-                          </ul>
-                        } */}
-                      </div>
-
                       <div>
                         <p>Project Expected Starting Days</p>
                         <p>{devData.expectedStartDate}</p>
@@ -185,6 +147,58 @@ function RespondedDetails(props) {
                         <p>Requirement Name</p>
                         <p>{devData.requirementName}</p>
                       </div>
+
+                      <div className="technologies">
+                        <div style={{width:"30%"}}>Developer Roles Required</div>
+                        <div className="devops">
+                        {devData.developerRolesRequired.length > 0 &&
+                         <div style={{marginLeft:"1rem"}}>
+                            {devData.developerRolesRequired.map(dd => {
+                              return (
+                                <p>{dd}</p>
+                              )
+                            })}
+                         </div>
+                        }
+                        </div>
+                      </div>
+
+                      <div className="technologies">
+                        <div style={{width:"30%"}}>Developer Technologies Required</div>
+                        <div className="devops">
+                        {/* {console.log(devData.developerTechnologiesRequired,"tech required")} */}
+                        {devData.developerTechnologiesRequired.length > 0 &&
+                          <div style={{marginLeft:"1rem"}} >
+                            {devData.developerTechnologiesRequired.map(dt => {
+                              return (
+                                <p>{dt.technologyName}</p>
+                              )
+                            })
+                            }
+                          </div>
+                        }
+                        {/* {devData.developerTechnologiesRequired.length > 0 &&
+                          <ul>
+                            {devData.developerTechnologiesRequired.map(dt => {
+                              return (
+                                <li>{dt}</li>
+                              )
+                            })}
+                          </ul>
+                        } */}
+                        </div>
+                      </div>
+                      <div>
+                      <div>
+                        <button className="acceptButtonShare" /*onClick={}*/>
+                          Accept
+                        </button>
+                        <button className="rejectButtonShare" /*onClick={}*/>
+                           Reject
+                          </button>
+                       </div>
+                      </div>
+                     
                     </div>
                   )
                 })
