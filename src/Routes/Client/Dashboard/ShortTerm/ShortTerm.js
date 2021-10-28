@@ -58,7 +58,7 @@ function ShortTerm(props) {
     projectName: "",
     projectDescription: "",
     projectFiles: [],
-    projectExpectedTimeline: "5",
+    projectExpectedStartingDays: "5",
     projectRequirements: "",
     projectProposalCost: "",
     projectServicesRequired: [],
@@ -131,14 +131,16 @@ function ShortTerm(props) {
       err.projectProposalCost = "Please select a project proposal cost.";
     } else if (apiData.projectServicesRequired.length === 0) {
       err.projectServicesRequired = "Please select a project service.";
-    } else if (apiData.projectExpectedTimeline === "") {
-      err.projectExpectedTimeline =
+    } else if (apiData.projectExpectedStartingDays === "") {
+      err.projectExpectedStartingDays =
         "Please select Project Expected Starting Days.";
-    } else if (apiData.projectExpectedTimeline < 5) {
-      err.projectExpectedTimeline = "Please choose more than 5 days .";
+    } else if (apiData.projectExpectedStartingDays < 5) {
+      err.projectExpectedStartingDays = "Please choose more than 5 days .";
     } else if (apiData.agencyExperience === "") {
       err.agencyExperience = "Please select a Agency Experience.";
     }
+
+    console.log(apiData,"api data")
 
     setErrors(err);
     if (Object.keys(err).length === 0) return true;
@@ -574,7 +576,7 @@ function ShortTerm(props) {
               </div>
               <div className="numberOfDays">
                 <ul  style={{marginLeft:"0"}}><li>
-                  How soon do you want to start?{" "}
+                  How soon do you want to start?(in days){" "}
                   <span className="requiredStar">*</span>{" "}
                 </li></ul>
                 {/* <div className="daysInputAgency"> */}
@@ -586,23 +588,23 @@ function ShortTerm(props) {
                     padding: "1rem",
                     borderRadius: "8px",
                   }}
-                  name="projectExpectedTimeline"
+                  name="projectExpectedStartingDays"
                   type="number" 
                   onChange={(event) => handleChange(event)}
                   min="5"
-                  value={apiData.projectExpectedTimeline}
+                  value={apiData.projectExpectedStartingDays}
                   placeholder="Text should be number "
                 />
-                {errors.projectExpectedTimeline && (
+                {errors.projectExpectedStartingDays && (
                   <p className="error_productForm_shortTerm">
-                    {errors.projectExpectedTimeline}
+                    {errors.projectExpectedStartingDays}
                   </p>
                 )}
-                {/* <p>{data.projectExpectedTimeline} days</p>
+                {/* <p>{data.projectExpectedStartingDays} days</p>
                         <div className="upArrow" onClick={upArrow}>
                           <i class="fa fa-angle-up" aria-hidden="true"></i>
                         </div>
-                        {data.projectExpectedTimeline > 5 ? ( 
+                        {data.projectExpectedStartingDays > 5 ? ( 
                         <div className="downArrow" onClick={downArrow}>
                           <i class="fa fa-angle-down" aria-hidden="true"></i>
                         </div> 

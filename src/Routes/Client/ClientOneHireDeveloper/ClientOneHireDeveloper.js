@@ -15,22 +15,23 @@ import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire
 import Back from "../../../Components/Back/Back";
 
 function ClientOneHireDeveloper(props) {
+    // const routerHistory = useHistory();
     let { hireDeveloperId } = useParams();
+
     hireDeveloperId = helper.cleanParam(hireDeveloperId);
-    const routerHistory = useHistory();
-
-    const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
-
-    const [loading, setLoading] = useState(false);
-
     const Role = localStorage.getItem("role");
-    const [selectedDevelopers, setSelectedDevelopers] = useState([])
-    const userId = localStorage.getItem("userId")
+    const userId = localStorage.getItem("userId");
+
+    const [selectedDevelopers, setSelectedDevelopers] = useState([]);
+    const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [disability, setDisability] = useState(false);
+
     const getOneDeveloper = () => {
         setLoading(true);
-        instance
-            .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`)
+        instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`)
             .then(function (response) {
+                console.log(response);
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })
@@ -41,16 +42,24 @@ function ClientOneHireDeveloper(props) {
 
 
     const handleDevelopers = (agencyId) => {
-        props.history.push({
-            pathname: `/shared-developers/:${hireDeveloperId}/:${agencyId}`,
-            condition: `Client`
-        })
+        setLoading(true);
+        instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, {isShortListed: true, agencyId: agencyId })
+            .then(res => {
+                setDisability(true);    
+                setLoading(false);
+            })
+            .catch(err => {
+                setLoading(false);
+            })
     }
 
     useEffect(() => {
-    }, [selectedDevelopers])
+        
+    }, [disability])
+
     useEffect(() => {
-    }, [singleHiredDeveloper])
+    }, [selectedDevelopers, singleHiredDeveloper]);
+
     useEffect(() => {
         getOneDeveloper();
     }, []);
@@ -82,23 +91,25 @@ function ClientOneHireDeveloper(props) {
                                         <>
                                             <div className="moreAgencyList new_design_clientOneHireDeveloper">
                                                 <div className="moreAgencyInfo">
-                                                    <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
-                                                    <div>
-                                                        <div className="phone_clientOneHireDeveloper">
+                                                    <div className="agencyDesc_clientOneHireDeveloper">
+                                                        <h6 className="name-title">About the company:{" "}</h6>
+                                                        <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                                                    </div>
+                                                    {/* <div className="phone_clientOneHireDeveloper">
                                                             <img src={PhoneImage} alt="phone_image" />
                                                             <p>{agency?.agencyId?.agencyPhone}</p>
-                                                        </div>
-                                                        <div className="email_clientOneHireDeveloper">
-                                                            <img src={Group} alt="group" />
-                                                            <p>{agency?.agencyId?.agencyEmail}</p>
-                                                        </div>
+                                                        </div> */}
+                                                    <div className="email_clientOneHireDeveloper">
+                                                        {/* <img src={Group} alt="group" /> */}
+                                                        <p>Description:</p>
+                                                        <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
                                                     </div>
                                                 </div>
 
                                                 <div className="button_parent">
-                                                    <div onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
-                                                        <p>Check Resources</p>
-                                                    </div>
+                                                    <button style={singleHiredDeveloper.agenciesMatched[0].isShortListed &&{backgroundColor: 'grey',backgroundImage:"unset"}} disabled={singleHiredDeveloper.agenciesMatched[0].isShortListed && true} onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
+                                                        <p>Get connected to the company</p>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </>

@@ -23,6 +23,7 @@ function SkillsSet(props) {
         let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
+                console.log(response);
                 setAgencyProfileData(response);
             })
             .catch((err) => {
@@ -34,6 +35,10 @@ function SkillsSet(props) {
             getAgencyProfile(localStorage.getItem("userId"), false);
         }
     }, []);
+
+    const handleDisabledCancel = () => {
+        setEditStatus(false)
+    }
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {
@@ -121,7 +126,6 @@ function SkillsSet(props) {
     }
 
     const handleAddItem = (arrItem) => {
-        updateAgency()
         let temp = arr
         let index = temp.indexOf(arrItem)
         if (index > -1 && addItem !== "") {
@@ -188,7 +192,7 @@ function SkillsSet(props) {
                     ]
                 }
             }
-
+            updateAgency()
             setArr(temp)
             setEditStatus(false);
         }
@@ -260,7 +264,6 @@ function SkillsSet(props) {
         instance.patch(`/api/${Role}/agencies/update/${id}`,
             {
                 agencyDomains: arr[0].content.map((domain) => {
-
                     return {
                         domainId: domain.id,
                         domainBaseAmount: 100,
@@ -277,6 +280,9 @@ function SkillsSet(props) {
 
             }
         )
+            .then(resp => {
+                console.log(resp);
+            })
     }
 
     useEffect(() => {
@@ -312,7 +318,7 @@ function SkillsSet(props) {
                                 {/* <img src={Skillset_edit} alt="Skill-Set" /> */}
                                 <p>SKILL SET</p>
                             </div>
-                            <i onClick={() => handleEdit(true)} class="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
+                            <i onClick={() => handleEdit(true)} className="fa fa-pencil-square-o Edit-icon_information" aria-hidden="true"></i>
 
                             {/* <div className="editable_parent"> */}
                             {/* <div className="editableBtn" style={{ position: 'relative' }}>
@@ -349,8 +355,10 @@ function SkillsSet(props) {
                                             }
                                         </div>
                                         {editStatus && (value.title !== 'Language of Content' && value.title !== 'Relevant Exp In Industry' && value.title !== 'Expertise') && <div className="editButtons">
-                                            <div className={value?.title} onClick={() => { handleAddData(value) }}>
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <div className={value?.title}>
+                                                <button style={{cursor: value?.title === 'Industry' && 'auto' }} disabled={value?.title === 'Industry' && true} onClick={() => { handleAddData(value) }} className='plusIcon_skillSet'>
+                                                    <i class="fa fa-plus " aria-hidden="true"></i>
+                                                </button>
                                             </div>
                                         </div>}
                                     </div>
@@ -358,6 +366,12 @@ function SkillsSet(props) {
                             })
                         }
                     </div>
+                    {editStatus ?
+                    <div onClick={handleDisabledCancel} className="information_save_parent">
+                        <div className="information_cancel">
+                            <p>Cancel</p>
+                        </div>
+                    </div>:null}
                     {/* {editStatus &&
                         <div onClick={() => handleEdit(false)} className="information_save_parent">
                             <div className="information_save">
@@ -436,7 +450,9 @@ function SkillsSet(props) {
                             <p onClick={() => handleAddItem(modalValue)}>Add</p>
                         </div>
                     </div>
+
                 </div>
+                
             </Modal>
 
         </>

@@ -39,6 +39,7 @@ const HireAgencyForm1 = (props) => {
     projectName: "",
     projectDescription: "",
     projectProposalCost: "5000",
+    id: '617a36517ea8734c09eacced',
     projectExpectedStartingDays: 5,
   });
 
@@ -111,13 +112,21 @@ const HireAgencyForm1 = (props) => {
         projectDescriptionError:
           "Project name should be more than 100 characters.",
       });
-    } else if (data.projectExpectedStartingDays <= 4) {
+    } 
+    else if (data.projectProposalCost <= 499) {
+      setError({
+        ...tempError,
+        projectProposalCostError:
+          "Project ammount should be greater than 500 $",
+      });
+    }else if (data.projectExpectedStartingDays <= 4) {
       setError({
         ...tempError,
         projectExpectedStartingDaysError:
           "Project starting days should be greater than 5 days",
       });
-    } else {
+    }
+     else {
       setLoading(true);
       instance
         .post(`/api/${Role}/projects/create`,data)
@@ -251,7 +260,7 @@ const HireAgencyForm1 = (props) => {
                         </p>
                       )}
                     </div>
-                    <div className="budgetSectionAreaAgency">
+                    {/* <div className="budgetSectionAreaAgency">
                       <p>
                         3.&nbsp;What's your budget for this project?{" "}
                         <span className="requiredStar">*</span>
@@ -266,36 +275,64 @@ const HireAgencyForm1 = (props) => {
                           <FormControlLabel
                             value="5000"
                             control={<BlueRadio />}
-                            label="Below $5,000"
+                            label="$5,000"
                           />
                           <FormControlLabel
-                            value="10000"
+                            value="15000"
                             control={<BlueRadio />}
-                            label="$15,000-$25,000"
+                            label="$15,000"
                           />
                           <FormControlLabel
-                            value="20000"
+                            value="25000"
                             control={<BlueRadio />}
-                            label="$25,000-$4,000"
+                            label="$25,000"
                           />
                           <FormControlLabel
-                            value="50000"
+                            value="35000"
                             control={<BlueRadio />}
-                            label="More Than $4000 Per Month"
+                            label="More Than $35000 Per Month"
                           />
                         </RadioGroup>
                       </FormControl>
-                    </div>
-                    <div className="numberOfDays">
+                    </div> */}
+                    <div className="budgetSectionAreaAgency">
                       <p>
-                        4.&nbsp;How soon do you want to start?{" "}
+                      3.&nbsp;What's your budget for this project? (in $){" "}
                         <span className="requiredStar">*</span>{" "}
                       </p>
                       {/* <div className="daysInputAgency"> */}
                       <input
                         style={{
                           height: "35px",
-                          width: "21rem",
+                          width: "30.5rem",
+                          border: "1px solid #015F9A",
+                          padding: "1rem",
+                          borderRadius: "8px",
+                        }}
+                        name="projectProposalCost"
+                        type="number"
+                        onChange={handleChange}
+                        min="500"
+                        // max="180"
+                        value={data.projectProposalCost}
+                        placeholder="Text should be number "
+                      />
+                      {error.projectProposalCostError && (
+                        <p className="error_hireAgencyForm2 error_hireAgencyForm1">
+                          {error.projectProposalCostError}
+                        </p>
+                      )}
+                      </div>
+                    <div className="numberOfDays">
+                      <p>
+                        4.&nbsp;How soon do you want to start? (in days){" "}
+                        <span className="requiredStar">*</span>{" "}
+                      </p>
+                      {/* <div className="daysInputAgency"> */}
+                      <input
+                        style={{
+                          height: "35px",
+                          width: "30.5rem",
                           border: "1px solid #015F9A",
                           padding: "1rem",
                           borderRadius: "8px",
@@ -313,6 +350,7 @@ const HireAgencyForm1 = (props) => {
                           {error.projectExpectedStartingDaysError}
                         </p>
                       )}
+                      </div>
                       {/* <p>{data.projectExpectedStartingDays} days</p>
                         <div className="upArrow" onClick={upArrow}>
                           <i class="fa fa-angle-up" aria-hidden="true"></i>
@@ -323,7 +361,7 @@ const HireAgencyForm1 = (props) => {
                         </div> 
                         ):(null)}
                       </div> */}
-                    </div>
+                    
                   </div>
                   <div className="nextbutton nextbutton_hireAgencyForm1">
                     <div

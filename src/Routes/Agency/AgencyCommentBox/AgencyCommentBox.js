@@ -16,6 +16,8 @@ import SendIcon from '@material-ui/icons/Send';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
@@ -25,8 +27,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import bgPic from "../../../assets/images/Quotation/bgPic.svg";
 import FileUploadImage from '../../../assets/images/Newestdashboard/Short_Term/short_term.svg';
-
-
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -210,7 +210,7 @@ const AgencyCommentBox = (props) => {
                     )}
                     {index.reply && (
                       <div className="chatBox chatBox-right">
-                        <p style={{ backgroundColor: '#eaf3ff' }}>{index.reply}</p>
+                        <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
                         <b>You</b>
                       </div>
                     )}
@@ -455,16 +455,18 @@ const AgencyCommentBox = (props) => {
                 <div className="tableHeaderQuotation">
                   <p>Project Start Date By You</p>
                 </div>
-                <div className="tableContentQuotation">
+                <div style={{width: '40%'}} className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <MobileDatePicker
-                      inputFormat="MM/dd/yyyy"
-                      minDate={new Date(props.projectProposals[0].projectStartDateByClient)}
-                      maxDate={new Date(props.projectProposals[0].projectDelayedStartDateByClient)}
-                      value={props.projectProposals[0].projectStartDateByClient}
-                      onChange={(event) => handleChangeDate('projectStartDate', event)}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
+                    <div className="datePickers">
+                      <DesktopDatePicker
+                        inputFormat="dd/MM/yyyy"
+                        minDate={new Date(props.projectProposals[0].projectStartDateByClient)}
+                        maxDate={new Date(props.projectProposals[0].projectDelayedStartDateByClient)}
+                        value={props.projectProposals[0].projectStartDateByClient}
+                        onChange={(event) => handleChangeDate('projectStartDate', event)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
                   </LocalizationProvider>
 
                 </div>

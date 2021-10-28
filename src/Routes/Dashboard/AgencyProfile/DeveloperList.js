@@ -7,6 +7,7 @@ import TrashIcon from '../../../assets/images/Newestdashboard/Agency-Profile/mat
 import { Modal } from "react-responsive-modal";
 import developerImage from '../../../assets/images/Newestdashboard/Agency-Profile/add-developer.svg';
 import { withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
+import { SettingsOutlined } from '@material-ui/icons';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -57,10 +58,9 @@ function DeveloperList(props) {
     const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
     const [developerId, setDeveloperId] = useState(null);
     const [open, setOpen] = useState(false);
-
+    const [isDeveloperActive, setIsDeveloperActive] = useState(true);
     const [err, setErr] = useState();
     const [toggleIndexes, setToggleIndexes] = useState({});
-
     const [state, setState] = useState({
         checked: false
     })
@@ -69,11 +69,36 @@ function DeveloperList(props) {
     const getAgencyDevelopers = () => {
         instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
             .then(function (response) {
+                console.log("res", response)
+                let temp = {};
+                // let temp2={};
+
+                response.forEach((dev, index) => {
+                    temp[index] = !dev.isDeveloperActive;
+                    //    temp2[index]=dev.isDeveloperActive;
+                })
+                //  setState(temp2)
+                setToggleIndexes(temp);
                 setDevelopers(response)
             })
             .catch(err => {
                 setErr(err?.response?.data?.message)
             })
+    };
+    const updateDevelopers = (data, developerId) => {
+        let url = `/api/${Role}/developers/update/${developerId}`;
+        instance.patch(url, data).then((res) => {
+            console.log("res", res)
+        }).catch((err) => {
+            console.log("err", err)
+        })
+        // instance.patch(`/api/${Role}/developers/update/${developerId}`)
+        //     .then(function (response) {
+        //         setToggleIndexes(response)
+        //     })
+        //     .catch(err => {
+        //         setErr(err?.response?.data?.message)
+        //     })
     };
 
     const handleChangeToggle = (event, ind) => {
@@ -84,9 +109,27 @@ function DeveloperList(props) {
         else {
             tempIndexes[ind] = true
         }
+        console.log('tempIndexes', tempIndexes)
         setToggleIndexes(tempIndexes)
+
+        console.log("developer", developers)
+        let tempDevs = developers;
+        tempDevs[ind].isDeveloperActive = !tempDevs[ind].isDeveloperActive;
+
+        let data = {
+            'isDeveloperActive': developers[ind].isDeveloperActive
+        }
+        updateDevelopers(data, developers[ind]._id)
+        // setDevelopers(tempDevs)
+        console.log("state", state)
+        console.log("event", event)
         setState({ ...state, [event.target.name]: event.target.checked })
     };
+
+
+    // useEffect((index) => {
+    //     setToggleIndexes(developers[index].isDeveloperActive)
+    // }, [])
 
     const deleteDevelopers = () => {
         instance.delete(`api/${Role}/developers/delete/${developerId}`)
@@ -100,8 +143,9 @@ function DeveloperList(props) {
     }
 
     const IndexSetter = (index) => {
-        setToggleIndexes(index);
-        setOpen(!open)
+        setToggleIndexes(toggleIndexes);
+        console.log(developers[index], "developers");
+        setOpen(!open);
     }
 
     useEffect(() => {
@@ -119,6 +163,7 @@ function DeveloperList(props) {
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
                 setAgencyProfileData(response);
+                console.log(response);
             })
             .catch((err) => {
             });
@@ -141,14 +186,13 @@ function DeveloperList(props) {
         <>
             <div className="mainDeveloperList">
                 <div className="innerDeveloperList" style={{ backgroundColor: err && 'white' }}>
-                    {err ?
-                        <>
+                    {/*err ?*/
+                        /* <>
                             <div style={{ textAlign: 'center', width: '100%' }}>
                                 <img height="300px" src={PageNotFound} alt="no_data_img" />
                                 <h6>{err}</h6>
                             </div>
-                        </>
-                        :
+                        </> */
                         developers.map((developer, index) => {
                             return (
                                 <div className="developerCard">
@@ -163,7 +207,7 @@ function DeveloperList(props) {
                                                 <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
                                             </div>
                                             {/* <p>{`${developer.developerExperience} year`}</p> */}
-                                            <div className={`rounded_developerList ${state.checked && toggleIndexes[index] && "conditionalColor"}`}></div>
+                                            <div className={`rounded_developerList ${toggleIndexes[index] && "conditionalColor"}`}></div>
                                         </div>
                                         <div className="developerExp">
                                             {(toggleIndexes[index]) ?
@@ -204,7 +248,6 @@ function DeveloperList(props) {
 
                                             </div> */}
                                         </div>
-
                                         <div className="developers_content">
                                             <div className="developers-status_parent" onClick={() => IndexSetter(index)}>
                                                 <div className="developer-status_developerList">
@@ -250,7 +293,7 @@ function DeveloperList(props) {
 
                     {Role === 'Agency' ?
                         agencyProfiledata.isAgencyVerified &&
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
                             <div className="add-developer_parent">
                                 {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}
                                 <img src={developerImage} alt="developerImage" />
@@ -273,7 +316,7 @@ function DeveloperList(props) {
             >
                 <div className="rejection_modal_clientCommentBox">
                     <div className="reject-reason_label reject_or_not-label">
-                        <h2>Are you sure..!!</h2>
+                        <h2>Do you want to delete developer from Agency's Profile !!</h2>
                     </div>
                 </div>
                 <div className='reject_or_not'>

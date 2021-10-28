@@ -6,7 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
 import instance from "../../../Constants/axiosConstants";
-import Rules_edit from "../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg";
+// import Rules_edit from "../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg";
 
 import check from "../../../assets/images/Newestdashboard/Agency-Profile/check.png";
 import cancel from "../../../assets/images/Newestdashboard/Agency-Profile/cancel.png";
@@ -31,6 +31,10 @@ function Rules(props) {
         : "08:00 PM",
     },
   });
+
+  const handalLoading = () => {
+    setEditRules(false);
+  }
 
   const handleEditRules = (value) => {
     setLoading(true);
@@ -242,7 +246,7 @@ function Rules(props) {
                     );
                   })
                 : "There are no rules available for this Agency."}
-              {editRules && (
+              {editRules && (<div className="handleButtons">
                 <div className="submitEditBtn">
                   <div
                     onClick={() => {
@@ -255,6 +259,11 @@ function Rules(props) {
                     </div>
                   </div>
                 </div>
+                <div onClick={handalLoading} className="submitEditBtn">
+                        <div className="information_cancel">
+                            <p>Cancel</p>
+                        </div>
+                    </div></div>
               )}
             </div>
           </div>
