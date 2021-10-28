@@ -30,13 +30,13 @@
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 12px;
   padding: 1.5rem;
+  margin: 0 4rem;
   margin-bottom: 1rem;
 }
 
 .width div {
   border-bottom: none;
 }
-
 
 .moreAgencies_shared .fas {
   color: white !important;
@@ -210,17 +210,16 @@
   border-bottom: 2px solid #407bff;
 }
 
-
-.devops p{
-font-family: 'Segoe UI';
-    color: #707070;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid #707070;
-    border-radius: 999px;
-    margin-bottom: 3px;
-    margin-right: 15px;
-    font-size: 0.7rem;
-    }
+.devops p {
+  font-family: 'Segoe UI';
+  color: #707070;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #707070;
+  border-radius: 999px;
+  margin-bottom: 3px;
+  margin-right: 15px;
+  font-size: 0.7rem;
+}
 
 .devops div {
   display: flex;
@@ -230,17 +229,17 @@ font-family: 'Segoe UI';
   flex-wrap: wrap;
 }
 
-.acceptButtonShare , .rejectButtonShare {
-margin: 0 0.5rem;
-padding: 0.5rem 1rem;
-border-radius: 999px;
-outline: none;
-background-color: rgb(69, 164, 228);
-border: none;
-color: #fff;
-font-family: 'Segoe UI';
-box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
-letter-spacing: 1px;
+.acceptButtonShare, .rejectButtonShare {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  outline: none;
+  background-color: rgb(69, 164, 228);
+  border: none;
+  color: #fff;
+  font-family: 'Segoe UI';
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
 }
 
 .rejectButtonShare {
