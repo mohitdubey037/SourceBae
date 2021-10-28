@@ -63,18 +63,31 @@
   text-align: center;
 }
 
-.name-Font {
+.name-title, .name-Font{
   font-family: 'Segoe UI semibold', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1rem;
   text-transform: capitalize;
   padding-top: 2%;
   color: #015F9A;
   text-align: center;
 }
 
-.moreAgencyInfo>div {
-  margin-top: 2rem;
+.name-title {
+  color: #080808;
 }
+
+.name-Font {
+  transform: translateX(0.5rem);
+}
+
+.agencyDesc_clientOneHireDeveloper {
+  display: flex;
+  justify-content: center;
+}
+
+/* .moreAgencyInfo>div {
+  margin-top: 2rem;
+} */
 
 .innerMoreAgencies_clientOneHireDeveloper .moreAgencyHeading {
   padding-bottom: 1%;
@@ -89,14 +102,13 @@
 }
 
 .email_clientOneHireDeveloper {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
-  width: 55%;
-  margin-left: 1rem;
+  justify-content: center;
+  width: 100%;
 }
 
-.phone_clientOneHireDeveloper img,
-.email_clientOneHireDeveloper img {
+.phone_clientOneHireDeveloper img, .email_clientOneHireDeveloper img {
   width: 20px;
 }
 
@@ -113,18 +125,24 @@
 .moreAgencyLogo {
   background-image: linear-gradient(to right, #01304D, #015F9A);
   padding: 8px;
-  width: 45%;
+  width: 80%;
   display: flex;
   justify-content: center;
   color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
   font-size: 12px;
   border-radius: 8px;
+  outline: none;
+  border: none;
 }
 
-.checkResource.moreAgencyLogo:hover {
+.checkResource.moreAgencyLogo:hover,
+.checkResource.moreAgencyLogo:focus,
+.checkResource.moreAgencyLogo:active {
   background-color: rgb(17, 166, 192);
   color: white;
+  outline: none;
+  border: none;
 }
 
 .moreAgencyLogo.show-details:hover {
@@ -159,6 +177,10 @@
   margin-left: 1rem;
 }
 
-.moreAgencyList .moreAgencyInfo .email_clientOneHireDeveloper p {
-  margin-left: 1rem;
+.description_sharedDeveloper {
+  transform: translateX(1rem);
 }
+
+/* .moreAgencyList .moreAgencyInfo .email_clientOneHireDeveloper p {
+  margin-left: 1rem;
+} */

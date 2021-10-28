@@ -6,6 +6,8 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import * as serviceWorker from "./serviceWorker";
+import store from './Redux/Store/store'
+
 // import firebaseConfig from "./firebase";
 //REDUX
 

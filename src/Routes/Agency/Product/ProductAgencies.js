@@ -441,10 +441,10 @@ function ProductAgencies(props) {
                         <p>Message</p>
                         <textarea cols="30" rows="6" type="text" placeholder="Enter your message here" />
                     </div>
-                    <div className="productModalInput">
+                    {/* <div className="productModalInput">
                         <p>Email ID</p>
                         <input type="text" placeholder="Enter your email" />
-                    </div>
+                    </div> */}
                     <div className="productModalInput">
                         <p>Linkedin URL</p>
                         <input type="text" placeholder="Enter your url" />

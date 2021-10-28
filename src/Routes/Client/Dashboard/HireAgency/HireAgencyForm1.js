@@ -39,6 +39,7 @@ const HireAgencyForm1 = (props) => {
     projectName: "",
     projectDescription: "",
     projectProposalCost: "5000",
+    id: '617a36517ea8734c09eacced',
     projectExpectedStartingDays: 5,
   });
 
