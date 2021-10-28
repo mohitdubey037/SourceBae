@@ -94,7 +94,7 @@ function Sidebar(props) {
                     <p>Notification</p>
                 </div>
                 {Role === 'Agency' &&
-                    <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
+                    <div onClick={() => routerHistory.push('/shared-developers')} className="postProject-icon icons developers-icon">
                         <img src={developersIcon} alt="developers_icon" />
                         <div style={{ width: '62%', lineHeight: '13px' }}>
                             <p>Developer Request</p>

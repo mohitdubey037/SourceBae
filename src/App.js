@@ -203,10 +203,17 @@ const App = (props) => {
           path="/client-one-hire-developer:hireDeveloperId"
           component={ClientOneHireDeveloper}
         />
-        <CustomRoute
+        {/* <CustomRoute
           condition="Client"
           exact
           path="/shared-developers/:hireDeveloperId/:agencyId"
+          component={SharedDevelopers}
+        /> */}
+
+        <CustomRoute
+          condition="Agency"
+          exact
+          path="/shared-developers"
           component={SharedDevelopers}
         />
         <CustomRoute

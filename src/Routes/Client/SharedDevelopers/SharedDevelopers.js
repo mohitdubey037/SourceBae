@@ -16,11 +16,13 @@ import DownArrow from '../../../assets/images/Newestdashboard/Agency-Profile/Arr
 
 function RespondedDetails(props) {
   const [initial, setInitial] = useState(5);
-  let { hireDeveloperId, agencyId } = useParams();
+  // let { hireDeveloperId, agencyId } = useParams();
 
-  hireDeveloperId = helper.cleanParam(hireDeveloperId);
-  agencyId = helper.cleanParam(agencyId);
-  const routerHistory = useHistory();
+  // hireDeveloperId = helper.cleanParam(hireDeveloperId);
+  // agencyId = helper.cleanParam(agencyId);
+
+  const agencyId = localStorage.getItem('userId');
+  // const routerHistory = useHistory();
 
   const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
   const [agencyDeveloper, setAgencyDeveloper] = useState([]);
@@ -31,10 +33,13 @@ function RespondedDetails(props) {
 
   const Role = localStorage.getItem("role");
   const [selectedDevelopers, setSelectedDevelopers] = useState([]);
+
   const getOneDeveloper = () => {
     setLoading(true);
-    instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${agencyId}`)
+    // instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${agencyId}`)
+    instance.get(`/api/agency/hire-developers/all?agencyId=${agencyId}`)
       .then(function (response) {
+        console.log(response);
         setSingleHiredDeveloper(response);
         setLoading(false);
       })
@@ -43,33 +48,33 @@ function RespondedDetails(props) {
       });
   };
 
-  const shareDeveloper = (hireDevId) => {
-    setLoading(true);
-    const body = {
-      agencyId: localStorage.getItem("userId"),
-      reply: "Find the devlopers' Resume",
-      developersShared: selectedDevelopers,
-    };
-    instance
-      .patch(`/api/${Role}/hire-developers/share-developer/${hireDevId}`, body)
-      .then(function (response) {
-        setLoading(false);
-        props.history.push("/get-hire-developer");
-      })
-      .catch((err) => {
-        setLoading(false);
-      });
-  };
+  // const shareDeveloper = (hireDevId) => {
+  //   setLoading(true);
+  //   const body = {
+  //     agencyId: localStorage.getItem("userId"),
+  //     reply: "Find the devlopers' Resume",
+  //     developersShared: selectedDevelopers,
+  //   };
+  //   instance
+  //     .patch(`/api/${Role}/hire-developers/share-developer/${hireDevId}`, body)
+  //     .then(function (response) {
+  //       setLoading(false);
+  //       props.history.push("/get-hire-developer");
+  //     })
+  //     .catch((err) => {
+  //       setLoading(false);
+  //     });
+  // };
 
-  const getAgencyDeveloper = () => {
-    instance
-      .get(`/api/${Role}/developers/all`)
-      .then(function (response) {
-        setAgencyDeveloper(response);
-      })
-      .catch((err) => {
-      });
-  };
+  // const getAgencyDeveloper = () => {
+  //   instance
+  //     .get(`/api/${Role}/developers/all`)
+  //     .then(function (response) {
+  //       setAgencyDeveloper(response);
+  //     })
+  //     .catch((err) => {
+  //     });
+  // };
 
   const showMore = () => {
     setInitial(initial + 5);
@@ -80,11 +85,11 @@ function RespondedDetails(props) {
 
   useEffect(() => {
     getOneDeveloper();
-    getAgencyDeveloper();
+    // getAgencyDeveloper();
   }, []);
 
-  useEffect(() => {
-  }, [showDevelopers]);
+  // useEffect(() => {
+  // }, [showDevelopers]);
 
 
   useEffect(() => {
@@ -103,62 +108,89 @@ function RespondedDetails(props) {
           <div className="main-card_SharedDevelopers">
             <Back name="Matched Developer" />
             <div className="respond-card_parent">
-              {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                <div className="innerResponseCard width innerResponseCard_sharedDeveloper">
-                  <div>
-                    <p>Agency Name</p>
-                    <p>{`${singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                      ?.agencyName || ""
-                      }`}</p>
-                  </div>
-                  <div style={{ width: '83.5%' }} >
-                    <p>Agency Description</p>
-                    <p style={{ width: '342px' }}>
-                      {
-                        singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                          ?.agencyDescription
-                      }
-                    </p>
-                  </div>
-                  <div>
-                    <p>Agency Email</p>
-                    <p>
-                      {
-                        singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                          ?.agencyEmail
-                      }
-                    </p>
-                  </div>
-                  <div style={{ paddingBottom: '0px' }}>
-                    <p>Agency Phone</p>
-                    <p>
-                      {
-                        singleHiredDeveloper?.agenciesMatched[0]?.agencyId
-                          ?.agencyPhone
-                      }
-                    </p>
-                  </div>
-
-                  <div style={{ display: singleHiredDeveloper?.agencyMatched === undefined && 'none' }} onClick={() => setShowDevelopers(!showDevelopers)} className="moreAgencies_shared new_design no_border">
-                    <div style={{ paddingBottom: '0' }}>
-                      <h3>Matched Developer</h3>
-                      <i style={{ display: singleHiredDeveloper?.agencyMatched === undefined && 'none' }} className={`fas fa-chevron-down ${showDevelopers && "conditionalRotate"}`}></i>
-                    </div>
-
-                    {(singleHiredDeveloper?.agencyMatched?.length > 0
-                      && singleHiredDeveloper?.agencyMatched[0]?.developersShared?.length > 0)
-                      &&
-                      <div className="moreAgencySeeMore">
-                        <button onClick={() => alert("Agency Selected")}>
-                          Select Agency
-                        </button>
+              {singleHiredDeveloper?.length > 0 ?
+                singleHiredDeveloper.map(devData => {
+                  return (
+                    <div className="innerResponseCard width innerResponseCard_sharedDeveloper">
+                      <div>
+                        <p>Agency Average Budget</p>
+                        <p>{devData.averageBudget} </p>
                       </div>
-                    }
-                  </div>
-                </div>
-              ) : (
-                "No Data Found"
-              )}
+
+                      <div>
+                        <p>Contract Period</p>
+                        <p>{devData.contractPeriod}</p>
+                      </div>
+
+                      <div style={{ width: '83.5%' }} >
+                        <p>Developer Experience Required</p>
+                        <p>
+                          {devData.developerExperienceRequired}
+                        </p>
+                      </div>
+
+                      <div>
+                        <p>Developer Roles Required</p>
+                        {devData.developerRolesRequired.length > 0 &&
+                          <ul>
+                            {devData.developerRolesRequired.map(dd => {
+                              return (
+                                <li>{dd}</li>
+                              )
+                            })}
+                          </ul>
+                        }
+                      </div>
+
+                      <div>
+                        <p>Developer Technologies Required</p>
+                        {/* {console.log(devData.developerTechnologiesRequired,"tech required")} */}
+                        {devData.developerTechnologiesRequired.length > 0 &&
+                          <ul>
+                            {devData.developerTechnologiesRequired.map(dt => {
+                              return (
+                                <li>{dt.technologyName}</li>
+                              )
+                            })
+                            }
+                          </ul>
+                        }
+                        {/* {devData.developerTechnologiesRequired.length > 0 &&
+                          <ul>
+                            {devData.developerTechnologiesRequired.map(dt => {
+                              return (
+                                <li>{dt}</li>
+                              )
+                            })}
+                          </ul>
+                        } */}
+                      </div>
+
+                      <div>
+                        <p>Project Expected Starting Days</p>
+                        <p>{devData.expectedStartDate}</p>
+                      </div>
+
+                      <div>
+                        <p>Number Of Resources Required</p>
+                        <p>{devData.numberOfResourcesRequired}</p>
+                      </div>
+
+                      <div>
+                        <p>Preferred Billing Mode</p>
+                        <p>{devData.preferredBillingMode}</p>
+                      </div>
+
+                      <div>
+                        <p>Requirement Name</p>
+                        <p>{devData.requirementName}</p>
+                      </div>
+                    </div>
+                  )
+                })
+                : (
+                  "No Data Found"
+                )}
 
 
               {(showDevelopers === true && singleHiredDeveloper?.agencyMatched !== undefined) &&
