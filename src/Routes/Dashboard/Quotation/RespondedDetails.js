@@ -26,6 +26,7 @@ function RespondedDetails(props) {
       setChatNotification(state?.notification);
     }
   });
+
   let { projectId, agencyId } = useParams();
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
@@ -49,10 +50,6 @@ function RespondedDetails(props) {
   useEffect(() => {}, [project]);
 
   // useEffect(() => {
-  //   console.log("Notification state", chatNotification);
-  // }, [chatNotification]);
-
-  // useEffect(() => {
   //   // if (Object.keys(props["projects"]).length === 0) {
   //   getAllProjects();
   //   // } else {
@@ -62,7 +59,7 @@ function RespondedDetails(props) {
 
   useEffect(() => {
     getAllProjects();
-  }, [isRepliedToClient]);
+  }, [isRepliedToClient, chatNotification]);
 
   return (
     <>

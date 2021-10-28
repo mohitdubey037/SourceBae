@@ -41,11 +41,6 @@ function AgencyRespondedDetails(props) {
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState({});
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    console.log("state", chatNotification);
-  }, [chatNotification]);
-
   const getAllProjects = () => {
     setLoading(true);
     instance
