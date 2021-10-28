@@ -45,15 +45,9 @@ import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
 
-
 import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
-// import rootReducer from "./Redux/rootReducer";
-import store from './Redux/Store/store';
-// const store = createStore(
-//   rootReducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
+import store from "./Redux/Store/store";
 
 const App = (props) => {
   const [show, setShow] = useState(false);
@@ -66,7 +60,6 @@ const App = (props) => {
     const msg = firebaseConfig.messaging();
     if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
-        console.log("me", message);
         setShow(true);
         setNotification({
           title: message?.notification?.title,
@@ -79,7 +72,6 @@ const App = (props) => {
         setShow(false);
       });
     }
-
   }, []);
 
   return (
