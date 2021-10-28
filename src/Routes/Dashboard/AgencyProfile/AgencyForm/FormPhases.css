@@ -790,6 +790,8 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    border: none;
+    width: 100%;
 }
 
 .linksImages img {
@@ -811,7 +813,7 @@
     font-family: 'Segoe UI Semibold';
     font-size: 0.8rem;
     cursor: pointer;
-    left: 30%;
+    left: 15%;
 }
 
 .extraFields {
