@@ -45,12 +45,13 @@ import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
 import { createStore, compose } from "redux";
-import rootReducer from "./Redux/rootReducer";
 import { Provider } from "react-redux";
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// import rootReducer from "./Redux/rootReducer";
+import store from './Redux/Store/store';
+// const store = createStore(
+//   rootReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
 
 
 // import { createStore, compose } from "redux";

@@ -48,7 +48,7 @@ function HireAgencyForm2(props) {
     projectExpertiseRequired: [],
     agencyExperience: propData?.agencyForm2?.agencyExperience ? propData?.agencyForm2?.agencyExperience:"",
   });
- 
+ console.log(projectId,"projectId")
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState(null);
   const [options, setOptions] = useState([]);

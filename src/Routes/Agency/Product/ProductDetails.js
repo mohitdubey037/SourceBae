@@ -52,7 +52,6 @@ function ProductDetails(props) {
     getProduct();
   }, [productId]);
 
-
   const brr = [
     {
       heading: "Product Stage",
@@ -226,7 +225,7 @@ function ProductDetails(props) {
                   >
                     <div className="productDetailsHeader">
                       <div className="productDetailsImage">
-                        <img src={logo} alt="" />
+                        <img src={value?.agencyId?.agencyLogo} alt="" />
                       </div>
                       <div className="peoductNameTags">
                         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: '0.7rem' }}>

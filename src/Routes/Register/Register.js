@@ -456,7 +456,7 @@ const Register = (props) => {
                                     </div>
                                 </div>
                                 <div className="client__formsContainer">
-                                    <form className='client__form form__1' autoComplete='off' >
+                                    <form className='client__form form__1' autoComplete="off" >
                                         <div>
                                             <div className="input_with_error">
                                                 <label>First Name</label>
@@ -515,6 +515,7 @@ const Register = (props) => {
                                             </div>
                                             <div className="input_with_error">
                                                 <label>User Name</label>
+                                                <input type="text" name="user" style={{display:"none"}}/>
                                                 <input
                                                     type="text"
                                                     name="userName"

@@ -73,6 +73,7 @@ function AgencyList(props) {
         setLoading(false);
       });
   }, []);
+  console.log(agencyList,"agency list datatagsb")
 
   useEffect(() => {
   }, [project]);
@@ -201,7 +202,6 @@ function AgencyList(props) {
                                   {/* ) : null} */}
                                 </div>
                               </div>
-
                               <div className="middleAgencyArea agencylistCont">
                                 <div className="agencyAddressTeam addressTeam_AgencyList">
                                   <h6 style={{fontSize:"14px"}}>Miscellaneous Info</h6>
