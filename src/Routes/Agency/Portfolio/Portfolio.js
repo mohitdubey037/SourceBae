@@ -160,7 +160,7 @@ function Portfolio(props) {
                         </div>
                     </div>
 
-                    <section>
+                    <section className="portfolio_section">
                         <div className="improves_profile">
                             <p>Improves your profile by 20%</p>
                         </div>
