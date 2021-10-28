@@ -42,12 +42,13 @@ import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
 import { createStore, compose } from "redux";
-import rootReducer from "./Redux/rootReducer";
 import { Provider } from "react-redux";
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// import rootReducer from "./Redux/rootReducer";
+import store from './Redux/Store/store';
+// const store = createStore(
+//   rootReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
 
 
 // import { createStore, compose } from "redux";
@@ -59,9 +60,10 @@ const App = (props) => {
     title: "",
     body: "",
   });
+
   useEffect(() => {
     const msg = firebaseConfig.messaging();
-    if (window.Notification.permission !== "denied") {
+    if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
         console.log("me", message);
         setShow(true);
@@ -69,16 +71,16 @@ const App = (props) => {
           title: message?.notification?.title,
           body: message?.notification?.body,
         });
-
         store.dispatch({
-                          type: "NOTIFICATION",
-                          notification: 1,
-                        });
+          type: "NOTIFICATION",
+          notification: 1,
+        });
         setShow(false);
       });
     }
- 
+
   }, []);
+
   return (
     <>
       {show ? (

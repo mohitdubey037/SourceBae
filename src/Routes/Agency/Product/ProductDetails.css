@@ -376,6 +376,7 @@
 
 .moreAgencyInfo_productDetails {
     width: 100%;
+    overflow: hidden;
 }
 
 .moreAgencySeeMore {

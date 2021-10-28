@@ -10,15 +10,9 @@ import * as serviceWorker from "./serviceWorker";
 // import firebaseConfig from "./firebase";
 //REDUX
 
-import { createStore, compose } from "redux";
-import { Provider } from "react-redux";
-import rootReducer from "./Redux/rootReducer";
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import store from './Redux/Store/store';
+import {Provider} from 'react-redux'
 
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 // const gettingReduxState = useSelector((state) => {
 // });

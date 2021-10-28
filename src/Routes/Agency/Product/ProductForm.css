@@ -173,6 +173,10 @@
   margin-top: 0 !important;
 }
 
+.form4_Fields .error_productForm {
+  margin-left: 1.5rem !important;
+}
+
 .previousFunding .MuiFormGroup-root {
   flex-direction: row !important;
   margin-left: 3rem;

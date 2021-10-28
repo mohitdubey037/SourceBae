@@ -186,6 +186,10 @@ function ProductForm(props) {
   // const Role = "agency";
   const Role = localStorage.getItem('role');
 
+  useEffect(() => {
+    console.log(apiData.productDomainId);
+  }, [apiData])
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -326,7 +330,7 @@ function ProductForm(props) {
         "Description should be of minimum 100 characters.";
     }
 
-    if (apiData.productDomainId === "") {
+    if (apiData.productDomainId.length === 0) {
       err.productDomainId = "Domain required";
     }
 
@@ -369,6 +373,14 @@ function ProductForm(props) {
       err.productCompanyLocation = "Company Location Required.";
     }
 
+    if (apiData.productFeatureLink === "") {
+      err.productFeatureLink = "Invalid link";
+    }
+
+    if (apiData.productPlatformLink === "") {
+      err.productPlatformLink = "Invalid link";
+    }
+
     if (apiData.productPlatformLink !== "" && !helper.validateLink(apiData.productPlatformLink)) {
       err.productPlatformLink = "Wrong Platform link Provided";
     }
@@ -384,10 +396,10 @@ function ProductForm(props) {
     if (apiData.productFounderLinkedinProfiles.length > 0) {
       apiData.productFounderLinkedinProfiles.forEach((a, index) => {
         if (a === '') {
-          err.productFounderLinkedinProfiles = `LinkedIn url of product founder ${index + 1} is empty`
+          err.productFounderLinkedinProfiles = `founder ${index + 1} url is empty`
         }
         else if (!helper.validateLinkedIn(a)) {
-          err.productFounderLinkedinProfiles = `LinkedIn url of product founder ${index + 1} is wrong`;
+          err.productFounderLinkedinProfiles = `founder ${index + 1} url is incorrect`;
         }
         else {
         }
@@ -555,7 +567,7 @@ function ProductForm(props) {
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          value={domainName}
+                          value={apiData.productDomainId}
                           name="productDomainId"
                           onChange={(event) => handleSelectChange(event)}
                           displayEmpty
@@ -664,7 +676,7 @@ function ProductForm(props) {
                         })}
                       </div>
                       {errors.productBusinessModel && (
-                        <p className="error_productForm">
+                        <p style={{marginLeft: '1.4rem'}} className="error_productForm">
                           {errors.productBusinessModel}
                         </p>
                       )}
@@ -713,7 +725,7 @@ function ProductForm(props) {
                     {apiData.productPreviousFunding === "true" ? (
                       <section className="amountRaised">
                         <span className="howMuchHaveYouRaised">
-                            <span style={{color: 'red', fontSize: '1.6rem'}}>*</span>How much amount have you raised yet?
+                          <span style={{ color: 'red', fontSize: '1.6rem' }}>*</span>How much amount have you raised yet?
                         </span>
                         <FormControl /*variant="outlined"*/ className={classes.formControl}>
                           <Select
