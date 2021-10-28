@@ -69,15 +69,15 @@ function DeveloperList(props) {
     const getAgencyDevelopers = () => {
         instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
             .then(function (response) {
-                console.log("res",response)
-                let temp={};
+                console.log("res", response)
+                let temp = {};
                 // let temp2={};
-               
-                response.forEach((dev,index)=>{
-                   temp[index]=!dev.isDeveloperActive;
-                //    temp2[index]=dev.isDeveloperActive;
+
+                response.forEach((dev, index) => {
+                    temp[index] = !dev.isDeveloperActive;
+                    //    temp2[index]=dev.isDeveloperActive;
                 })
-            //  setState(temp2)
+                //  setState(temp2)
                 setToggleIndexes(temp);
                 setDevelopers(response)
             })
@@ -85,12 +85,12 @@ function DeveloperList(props) {
                 setErr(err?.response?.data?.message)
             })
     };
-    const updateDevelopers = (data,developerId) => {
-        let url=`/api/${Role}/developers/update/${developerId}`;
-        instance.patch(url,data).then((res)=>{
-            console.log("res",res)
-        }).catch((err)=>{
-            console.log("err",err)
+    const updateDevelopers = (data, developerId) => {
+        let url = `/api/${Role}/developers/update/${developerId}`;
+        instance.patch(url, data).then((res) => {
+            console.log("res", res)
+        }).catch((err) => {
+            console.log("err", err)
         })
         // instance.patch(`/api/${Role}/developers/update/${developerId}`)
         //     .then(function (response) {
@@ -109,20 +109,20 @@ function DeveloperList(props) {
         else {
             tempIndexes[ind] = true
         }
-        console.log('tempIndexes',tempIndexes)
+        console.log('tempIndexes', tempIndexes)
         setToggleIndexes(tempIndexes)
 
-        console.log("developer",developers)
-        let tempDevs=developers;
-        tempDevs[ind].isDeveloperActive=!tempDevs[ind].isDeveloperActive;
+        console.log("developer", developers)
+        let tempDevs = developers;
+        tempDevs[ind].isDeveloperActive = !tempDevs[ind].isDeveloperActive;
 
-        let data={
-            'isDeveloperActive':developers[ind].isDeveloperActive
+        let data = {
+            'isDeveloperActive': developers[ind].isDeveloperActive
         }
-        updateDevelopers(data,developers[ind]._id)
+        updateDevelopers(data, developers[ind]._id)
         // setDevelopers(tempDevs)
-        console.log("state",state)
-        console.log("event",event)
+        console.log("state", state)
+        console.log("event", event)
         setState({ ...state, [event.target.name]: event.target.checked })
     };
 
@@ -144,7 +144,7 @@ function DeveloperList(props) {
 
     const IndexSetter = (index) => {
         setToggleIndexes(toggleIndexes);
-        console.log(developers[index],"developers");
+        console.log(developers[index], "developers");
         setOpen(!open);
     }
 
@@ -207,7 +207,7 @@ function DeveloperList(props) {
                                                 <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
                                             </div>
                                             {/* <p>{`${developer.developerExperience} year`}</p> */}
-                                            <div className={`rounded_developerList ${  toggleIndexes[index] && "conditionalColor"}`}></div>
+                                            <div className={`rounded_developerList ${toggleIndexes[index] && "conditionalColor"}`}></div>
                                         </div>
                                         <div className="developerExp">
                                             {(toggleIndexes[index]) ?
@@ -248,7 +248,6 @@ function DeveloperList(props) {
 
                                             </div> */}
                                         </div>
-   {console.log(developer,"developer")}
                                         <div className="developers_content">
                                             <div className="developers-status_parent" onClick={() => IndexSetter(index)}>
                                                 <div className="developer-status_developerList">
@@ -294,7 +293,7 @@ function DeveloperList(props) {
 
                     {Role === 'Agency' ?
                         agencyProfiledata.isAgencyVerified &&
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
                             <div className="add-developer_parent">
                                 {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}
                                 <img src={developerImage} alt="developerImage" />

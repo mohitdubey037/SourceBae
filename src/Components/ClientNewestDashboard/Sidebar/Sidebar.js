@@ -83,7 +83,6 @@ function Sidebar(props) {
                             <img src={developersIcon} alt="developers_icon" />
                             <div style={{ width: '62%', lineHeight: '13px' }}>
                                 <p>Developer Request</p>
-                                {/* <p>Request</p> */}
                             </div>
                         </div>
                     </>
@@ -96,32 +95,11 @@ function Sidebar(props) {
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
-                {/* <div className="setting-icon icons">
-                    <img src={settingIcon} alt="dashboard icon" />
-                    <p>Setting</p>
-                </div> */}
                 <div onClick={logout} className="setting-icon icons">
-                    {/* <ExitToAppIcon color="#999" /> */}
                     <img src={logoutIcon} alt="icon" />
                     <p>Log Out</p>
                 </div>
-                {/* <div className="setting-icon icons">
-                    <img src={settingIcon} alt="dashboard icon" />
-                    <p>Setting</p>
-                </div> */}
             </div>
-            {/* <div className="sidebar-help">
-                <div className="help-img">
-                    <img src={helpImg} alt="help" />
-                </div>
-                <div className="help-desc">
-                    <p>any confusion</p>
-                    <p>reach out us</p>
-                </div>
-                <div className="help-button">
-                    <button>Help</button>
-                </div>
-            </div> */}
             <div className={isNotification ? 'overlay' : null} ></div>
             <div className={isNotification ? 'notificationPanel open' : 'notificationPanel'}>
                 <div className="innerNotificationPanel">
@@ -130,9 +108,6 @@ function Sidebar(props) {
                             <i onClick={notificationPanel} className="fa fa-times" aria-hidden="true"></i>
                         </div>
                         <div className="allNotification">
-                            {/* <div className="allNotificationIcon">
-                                <img src={notification} alt="" />
-                            </div> */}
                             <div className="allNotificationText">
                                 <p>All Notification</p>
                             </div>

@@ -22,15 +22,10 @@ function ClientOneHireDeveloper(props) {
     const Role = localStorage.getItem("role");
     const userId = localStorage.getItem("userId");
 
-    const [selectedDevelopers, setSelectedDevelopers] = useState([])
+    const [selectedDevelopers, setSelectedDevelopers] = useState([]);
     const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
     const [loading, setLoading] = useState(false);
     const [disability, setDisability] = useState(false);
-    const [form, setForm] = useState({
-        isShortListed: true,
-        agencyId: ''
-    })
-
 
     const getOneDeveloper = () => {
         setLoading(true);
@@ -47,15 +42,20 @@ function ClientOneHireDeveloper(props) {
 
 
     const handleDevelopers = (agencyId) => {
-        // props.history.push({
-        //     pathname: `/shared-developers/:${hireDeveloperId}/:${agencyId}`,
-        //     condition: `Client`
-        // })
-        instance.post(`/api/agency/hire-developers/update-matched-agency/${hireDeveloperId}}`, form)
+        setLoading(true);
+        instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, {isShortListed: true, agencyId: agencyId })
             .then(res => {
-                setDisability(true);
+                setDisability(true);    
+                setLoading(false);
+            })
+            .catch(err => {
+                setLoading(false);
             })
     }
+
+    useEffect(() => {
+        
+    }, [disability])
 
     useEffect(() => {
     }, [selectedDevelopers, singleHiredDeveloper]);
@@ -107,7 +107,7 @@ function ClientOneHireDeveloper(props) {
                                                 </div>
 
                                                 <div className="button_parent">
-                                                    <button onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
+                                                    <button style={singleHiredDeveloper.agenciesMatched[0].isShortListed &&{backgroundColor: 'grey',backgroundImage:"unset"}} disabled={singleHiredDeveloper.agenciesMatched[0].isShortListed && true} onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
                                                         <p>Get connected to the company</p>
                                                     </button>
                                                 </div>
