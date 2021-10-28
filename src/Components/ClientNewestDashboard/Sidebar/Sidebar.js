@@ -9,8 +9,6 @@ import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout.sv
 import { withRouter } from "react-router";
 import cookie from "react-cookies";
 
-
-
 import React, { useEffect, useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
@@ -95,6 +93,14 @@ function Sidebar(props) {
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
+                {Role === 'Agency' &&
+                    <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
+                        <img src={developersIcon} alt="developers_icon" />
+                        <div style={{ width: '62%', lineHeight: '13px' }}>
+                            <p>Developer Request</p>
+                        </div>
+                    </div>
+                }
                 <div onClick={logout} className="setting-icon icons">
                     <img src={logoutIcon} alt="icon" />
                     <p>Log Out</p>
