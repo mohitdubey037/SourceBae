@@ -124,9 +124,9 @@ function AgencyNewestDashboard(props) {
                     condition: 'Agency'
                 });
             }
-            if (link === 'Add Your Product') {
+            if (link === 'portfolio') {
                 props.history.push({
-                    pathname: 'product-form',
+                    pathname: 'portfolio',
                     condition: 'Agency'
                 })
             }
@@ -195,8 +195,8 @@ function AgencyNewestDashboard(props) {
                                 :
                                 <UserOperations
                                     disabled={(!verified || steps !== -1)}
-                                    nextpage={() => quotation('Add Your Product')}
-                                    text="Add Your Product"
+                                    nextpage={() => quotation('portfolio')}
+                                    text="Add Your Portfolio"
                                     img={ThirdIcon} />
                             }
                         </div>

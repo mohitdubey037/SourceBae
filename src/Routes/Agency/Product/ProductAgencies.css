@@ -4,9 +4,7 @@
     left: 2%;
     z-index: 100;
 }
-/* .agencyProfileInfo {
-    width: 100%;
-} */
+
 .backArrow_productAgencies i {
     width: 40px;
     height: 40px;
@@ -386,6 +384,7 @@
     border: none;
     background-color: #F8F9F9;
     border: 1px solid #e0e0e0;
+    margin-top: 0.3rem;
 }
 
 .productModalInput input:focus {
@@ -400,6 +399,7 @@
     border: none;
     background-color: #F8F9F9;
     border: 1px solid #e0e0e0;
+    margin-top: 0.3rem;
 }
 
 .productModalInput textarea:focus {

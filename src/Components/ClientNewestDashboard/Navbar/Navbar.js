@@ -52,6 +52,7 @@ function Navbar(props) {
                             url.includes('/client-one-hire-developer') ||
                             url.includes('/agencyNewestAllProject') ||
                             url.includes('/agencyNewestDashboard')) ||
+                            url.includes('/portfolio') ||
                             props.history.location.pathname === '/clientNewestDashboard' ? 'white' : 'blue'
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
