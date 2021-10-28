@@ -112,38 +112,38 @@ function RespondedDetails(props) {
                 singleHiredDeveloper.map(devData => {
                   return (
                     <div className="innerResponseCard width innerResponseCard_sharedDeveloper">
-                      <div>
+                      <div className="parentDivShared">
                         <p>Agency Average Budget</p>
                         <p>{devData.averageBudget} </p>
                       </div>
 
-                      <div>
+                      <div className="parentDivShared">
                         <p>Contract Period</p>
                         <p>{devData.contractPeriod}</p>
                       </div>
 
-                      <div>
+                      <div className="parentDivShared">
                         <p>Developer Experience Required</p>
                         <p>
                           {devData.developerExperienceRequired}
                         </p>
                       </div>
-                      <div>
+                      <div className="parentDivShared">
                         <p>Project Expected Starting Days</p>
                         <p>{devData.expectedStartDate}</p>
                       </div>
 
-                      <div>
+                      <div className="parentDivShared">
                         <p>Number Of Resources Required</p>
                         <p>{devData.numberOfResourcesRequired}</p>
                       </div>
 
-                      <div>
+                      <div className="parentDivShared">
                         <p>Preferred Billing Mode</p>
                         <p>{devData.preferredBillingMode}</p>
                       </div>
 
-                      <div>
+                      <div className="parentDivShared">
                         <p>Requirement Name</p>
                         <p>{devData.requirementName}</p>
                       </div>
