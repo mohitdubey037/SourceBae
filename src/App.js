@@ -44,10 +44,17 @@ import { withRouter } from "react-router";
 import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
-
 import { createStore, compose } from "redux";
+import rootReducer from "./Redux/rootReducer";
 import { Provider } from "react-redux";
-import store from "./Redux/Store/store";
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
+// import { createStore, compose } from "redux";
+// import rootReducer from "./Redux/rootReducer";
 
 const App = (props) => {
   const [show, setShow] = useState(false);

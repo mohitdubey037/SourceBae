@@ -169,8 +169,16 @@ function AgencyList(props) {
                                   <div className="agencyProfileInfo agencyProfileInfodiv">
                                     <h6>{agency.agencyName}</h6>
                                     <div>
-                                      <p>Media & Social</p>
+                                    {console.log(agency,"agency")}
+                                    {
+                                      agency.agencyServices.map((service)=>{
+                                        return <>
+                                        <p>{service?.serviceName}</p>
                                       <p>Proficient</p>
+                                        </>
+                                      })
+                                    }
+                                      
                                     </div>
                                   </div>
                                 </div>
@@ -355,7 +363,7 @@ function AgencyList(props) {
                   <p> $ {project.projectProposalCost}</p>
                 </div>
               </div>
-              <div className="quotationTable">
+              {/* <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Tech</p>
                 </div>
@@ -363,16 +371,16 @@ function AgencyList(props) {
                   <p>ReactJs </p>
                   <p>React Native</p>
                 </div>
-              </div>
-              <div className="quotationTable">
+              </div> */}
+              {/* <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Time</p>
                 </div>
                 <div className="tableContentQuotation">
                   <p>90 days </p>
                 </div>
-              </div>
-              <div className="quotationTable">
+              </div> */}
+              {/* <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Business Type</p>
                 </div>
@@ -380,7 +388,7 @@ function AgencyList(props) {
                   <p>B2B</p>
                   <p>B2C</p>
                 </div>
-              </div>
+              </div> */}
               <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Negotiable Upto</p>
