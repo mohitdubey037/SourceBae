@@ -69,7 +69,6 @@ function DeveloperList(props) {
     const getAgencyDevelopers = () => {
         instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
             .then(function (response) {
-                console.log("res", response)
                 let temp = {};
                 // let temp2={};
 
