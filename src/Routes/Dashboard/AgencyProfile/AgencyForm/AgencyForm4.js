@@ -12,7 +12,7 @@ import Spinner from '../../../../Components/Spinner/Spinner';
 import Back from '../../../../Components/Back/Back';
 import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/agencyForm4_image.svg';
 //axios instance
-import instance from "../../../../Constants/axiosConstants"
+import instance from "../../../../Constants/axiosConstants";
 import * as helper from "../../../../shared/helper"
 
 
