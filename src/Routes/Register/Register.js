@@ -41,7 +41,10 @@ const dateStyles = makeStyles((theme) => ({
 }));
 
 const Register = (props) => {
-  //Regular Variables
+  let localRole = localStorage.getItem("role");
+  if (props.history.action === "POP") {
+    props.history.push(`/register:${localRole}`);
+  }
   const dateClasses = dateStyles();
   const [state, setState] = useState("");
   const [token, setToken] = useState(null);
@@ -108,7 +111,7 @@ const Register = (props) => {
     }
   };
 
-  useEffect(() => { }, [apiErrors]);
+  useEffect(() => {}, [apiErrors]);
 
   const setForm = (event) => {
     let { name, value } = event.target;
@@ -205,12 +208,13 @@ const Register = (props) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('toggle', state);
-    (state === '' || state === 'agency') ? props.history.push('/register:agency') : props.history.push('/register:client');
+    localStorage.setItem("role", state);
+    state === "" || state === "agency"
+      ? props.history.push("/register:agency")
+      : props.history.push("/register:client");
   }, [state]);
 
   const handleChangeToggle = (name) => {
-    console.log(name);
     setState(name);
   };
 
@@ -400,14 +404,16 @@ const Register = (props) => {
         <>
           <div className="client__registrationContainer">
             <img
-              className={`Image1 ${state === "client" && "conditional_colorChange"
-                }`}
+              className={`Image1 ${
+                state === "client" && "conditional_colorChange"
+              }`}
               src={Signup1}
               alt="signup"
             />
             <img
-              className={`Image2 ${state === "client" && "conditional_colorChange"
-                } `}
+              className={`Image2 ${
+                state === "client" && "conditional_colorChange"
+              } `}
               src={Signup2}
               alt="signup"
             />
@@ -440,16 +446,18 @@ const Register = (props) => {
                   <div className="login_switch signup_switch">
                     <button
                       onClick={() => handleChangeToggle("agency")}
-                      className={`agency__button ${(state === "" || state === "agency") &&
+                      className={`agency__button ${
+                        (state === "" || state === "agency") &&
                         "active__buttonagency"
-                        }`}
+                      }`}
                     >
                       <p>Agency</p>
                     </button>
                     <button
                       onClick={() => handleChangeToggle("client")}
-                      className={`client__button ${state === "client" && "active__buttonclient"
-                        }`}
+                      className={`client__button ${
+                        state === "client" && "active__buttonclient"
+                      }`}
                     >
                       <p>Client</p>
                     </button>
@@ -564,8 +572,9 @@ const Register = (props) => {
 
                     <div className="already_next_register">
                       <div
-                        className={`next_Register ${state === "client" && "active__buttonclient"
-                          }`}
+                        className={`next_Register ${
+                          state === "client" && "active__buttonclient"
+                        }`}
                         onClick={() => toggleForms("next")}
                       >
                         <p>NEXT</p>
