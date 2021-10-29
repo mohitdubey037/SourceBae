@@ -70,7 +70,7 @@ const Login = (props) => {
   let { role } = useParams();
   role = helper.capitalize(helper.cleanParam(role));
   if (!(role.toLowerCase() === "agency" || role.toLowerCase() === "client"))
-    props.history.push("/page-not-found");
+    props.history.replace("/page-not-found");
 
   const [loading, setLoading] = useState(false);
   const [state, setState] = useState("");
@@ -84,20 +84,18 @@ const Login = (props) => {
   const [device_token, setDevice_token] = useState("");
 
   useEffect(() => {
-    if (window.Notification.permission !== "denied") {
+    if (window.Notification.permission === "granted") {
       const messaging = firebase.messaging();
       messaging.getToken().then((token) => {
-        console.log("devi",token)
         setDevice_token(token);
       });
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("toggle", state);
     state === "" || state === "agency"
-      ? props.history.push("/login:agency")
-      : props.history.push("/login:client");
+      ? props.history.replace("/login:agency")
+      : props.history.replace("/login:client");
   }, [state]);
 
   const showPassword = (e) => {
@@ -134,11 +132,13 @@ const Login = (props) => {
 
   const logIn = async (event) => {
     event.preventDefault();
-    console.log(device_token, 'through login');
     let apiRole = helper.lowerize(role);
     return new Promise((resolve, reject) => {
       instance
-        .post(`/api/${apiRole}/auths/login`, {...form, 'notificationDeviceToken': device_token})
+        .post(`/api/${apiRole}/auths/login`, {
+          ...form,
+          notificationDeviceToken: device_token,
+        })
         .then(function (response) {
           cookie.save("Authorization", `Bearer ${response.accessToken}`, {
             path: "/",
@@ -158,10 +158,10 @@ const Login = (props) => {
       axios.defaults.headers.common["Authorization"] = `${token}`;
       if (role === "Agency") {
         setLoading(false);
-        props.history.push("/agencyNewestDashboard");
+        props.history.replace("/agencyNewestDashboard");
       } else if (role === "Client") {
         setLoading(false);
-        props.history.push("/clientNewestDashboard");
+        props.history.replace("/clientNewestDashboard");
       } else {
       }
     }
@@ -177,9 +177,9 @@ const Login = (props) => {
       tempRole !== undefined
     ) {
       if (tempRole.toLowerCase() === "agency") {
-        props.history.push("/agencyNewestDashboard");
+        props.history.replace("/agencyNewestDashboard");
       } else if (tempRole.toLowerCase() === "client") {
-        props.history.push("/clientNewestDashboard");
+        props.history.replace("/clientNewestDashboard");
       }
     }
   }, []);
@@ -349,7 +349,7 @@ const Login = (props) => {
                           className={`forgot-password_login ${
                             roleString === "Client" && "conditional_color"
                           }`}
-                          onClick={() => props.history.push("/enter-email")}
+                          onClick={() => props.history.replace("/enter-email")}
                         >
                           <p>Forgot Password</p>
                         </div>
@@ -374,7 +374,7 @@ const Login = (props) => {
                         Don't have an account?{" "}
                         <span
                           onClick={() =>
-                            props.history.push(
+                            props.history.replace(
                               `/register:${role.toLowerCase()}`
                             )
                           }

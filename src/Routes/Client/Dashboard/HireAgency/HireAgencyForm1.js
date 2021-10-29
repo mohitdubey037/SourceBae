@@ -39,7 +39,6 @@ const HireAgencyForm1 = (props) => {
     projectName: "",
     projectDescription: "",
     projectProposalCost: "5000",
-    id: '617a36517ea8734c09eacced',
     projectExpectedStartingDays: 5,
   });
 
@@ -83,7 +82,12 @@ const HireAgencyForm1 = (props) => {
   //     ...data,
   //     projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
   //   });
-  // };
+  // }; 
+
+  const handleBack = () => {
+    if (window.confirm("Do you want to discard changes?") == true) {
+    props.history.push(`/clientNewestDashboard`) 
+  }}
 
   const handleSubmit = () => {
     let tempError = {
@@ -128,10 +132,13 @@ const HireAgencyForm1 = (props) => {
     }
      else {
       setLoading(true);
+      console.log("agencyForm1s",props?.location?.state?.agencyForm1);
+      console.log("id",props?.location?.state?.agencyForm1?.projectId);
       instance
-        .post(`/api/${Role}/projects/create`,data)
+        .post(`/api/${Role}/projects/create`,(props?.location?.state?.agencyForm1?.projectId)?{...data, id:props.location.state.agencyForm1?.projectId}:data)
         .then(function (response) {
           setLoading(false);
+          data.projectId=response._id
           props.history.replace(`/hire-agency-form-two:${response._id}`, {
             agencyForm1:data,
           });
@@ -304,7 +311,7 @@ const HireAgencyForm1 = (props) => {
                       <input
                         style={{
                           height: "35px",
-                          width: "30.5rem",
+                          width: "79%",
                           border: "1px solid #015F9A",
                           padding: "1rem",
                           borderRadius: "8px",
@@ -332,7 +339,7 @@ const HireAgencyForm1 = (props) => {
                       <input
                         style={{
                           height: "35px",
-                          width: "30.5rem",
+                          width: "79%",
                           border: "1px solid #015F9A",
                           padding: "1rem",
                           borderRadius: "8px",
@@ -366,8 +373,8 @@ const HireAgencyForm1 = (props) => {
                   <div className="nextbutton nextbutton_hireAgencyForm1">
                     <div
                       className="backbutton_hireAgencyForm2"
-                      onClick={() =>
-                        props.history.push(`/clientNewestDashboard`)
+                      onClick={() => handleBack()
+                        // props.history.push(`/clientNewestDashboard`)
                       }
                       style={{ backgroundColor: "#707070" }}
                     >

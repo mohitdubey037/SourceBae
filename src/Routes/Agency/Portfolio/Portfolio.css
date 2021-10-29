@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.main_portfolio_parent {
+    background: linear-gradient( 2deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
+}
+
 .improves_profile {
     width: 22%;
     text-align: center;
@@ -61,7 +65,7 @@
     width: 60%;
 }
 
-section {
+.portfolio_section {
     border: 1px solid;
     width: 80%;
     margin: auto;
