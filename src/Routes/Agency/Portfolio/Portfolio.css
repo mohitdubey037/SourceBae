@@ -8,7 +8,7 @@
 }
 
 .improves_profile {
-    width: 33%;
+    padding: 0rem 3rem;
     text-align: center;
     background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
     border-radius: 1.2rem;
@@ -71,28 +71,35 @@
 }
 
 .portfolio_section {
-    border: 1px solid;
-    width: 80%;
+    /* border: 1px solid; */
+    width: 53%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
     margin-top: 2rem;
-    padding: 1rem;
+    padding: 2rem 0rem;
     background-color: white;
+    border-radius: 1rem;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .add_a_new_definition p {
     font-size: 18px;
+    margin-top: 1rem;
     font-family: 'Segoe UI semibold';
     color: #707070;
 }
 
 .add_a_new_portfolio_project {
-    border: 1px solid;
-    width: 20%;
-    margin: auto;
+    width: 60%;
     text-align: center;
-    padding: 1rem 0rem;
+    padding: 1rem 1rem;
     border-radius: 1rem;
     margin-top: 1rem;
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 18%);
 }
 
 .add_a_new_portfolio_project p {
@@ -102,6 +109,7 @@
 
 .portfolio_inputs {
     display: flex;
+    padding-right: 2rem;
     justify-content: space-between;
 }
 
@@ -129,6 +137,7 @@
 
 .logo_parent_div {
     margin-top: 2rem;
+    width: 90%;
 }
 
 .project-question {
@@ -142,18 +151,23 @@
 }
 
 .portfolio_inputs div {
-    width: 35%;
+    width: 40%;
 }
 
+.portfolio_inputs input:focus, .portfolio_inputs textarea:focus {
+     outline: none;
+}
+
+
 .portfolio_inputs input, .portfolio_inputs textarea {
-    width: 100%;
     border-radius: 0.5rem;
-    height: 2.5rem;
+    height: 2.2rem;
     padding: 0 0.8rem;
     border: 1px solid #45A4EA;
     transition: 0.3s ease-in-out;
     margin-top: 5px;
     margin-bottom: 6px;
+    width: 18.7rem;
 }
 
 .portfolio_inputs textarea {
@@ -168,11 +182,23 @@
 }
 
 .submit_portfolio {
-    outline: none;
+    /* outline: none;
     border: none;
     background: transparent;
     padding: 0.5rem 0.7rem;
     background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
     border-radius: 1rem;
+    font-family: 'Segoe UI'; */
+    outline: none;
+    border: none;
+    /* background-color: #707070; */
+    background: #ced3ff;
+    color: black;
+    border-radius: 30px;
+    width: 150px;
+    height: 34px;
     font-family: 'Segoe UI';
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
