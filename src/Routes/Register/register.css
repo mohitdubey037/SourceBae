@@ -224,6 +224,13 @@
 
 .next_Register {
   width: 12%;
+  border: none;
+  outline: none;
+}
+
+.next_Register:hover, .next_Register:active, .next_Register:focus {
+  outline: none;
+  border: none;
 }
 
 .nextRegister_onClient, .backRegister_onClient {
