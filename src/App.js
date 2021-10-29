@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspence } from "react";
 import { Route, Switch } from "react-router-dom";
 import firebase from "./firebase";
 import Mainhomepage from "./Routes/LandingPage/Mainhomepage";
@@ -34,28 +34,18 @@ import EnterEmail from "./Routes/EnterEmail/EnterEmail";
 import ProductForm from "./Routes/Agency/Product/ProductForm";
 import ProductDetails from "./Routes/Agency/Product/ProductDetails";
 import ProductAgencies from "./Routes/Agency/Product/ProductAgencies";
-import Portfolio from './Routes/Agency/Portfolio/Portfolio';
+import Portfolio from "./Routes/Agency/Portfolio/Portfolio";
 
 import ClientNewestDashboard from "./Routes/Client/ClientNewestDashboard";
 import AgencyNewestDashboard from "./Routes/Dashboard/AgencyNewestDashboard";
+
 import AgencyNewestAllProject from "./Routes/Dashboard/AgencyNewestAllProject";
 
 import { withRouter } from "react-router";
 import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
-import { createStore, compose } from "redux";
-import { Provider } from "react-redux";
-// import rootReducer from "./Redux/rootReducer";
-import store from './Redux/Store/store';
-// const store = createStore(
-//   rootReducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
-
-
-// import { createStore, compose } from "redux";
-// import rootReducer from "./Redux/rootReducer";
+import store from "./Redux/Store/store";
 
 const App = (props) => {
   const [show, setShow] = useState(false);
@@ -97,6 +87,7 @@ const App = (props) => {
         <Route exact path="/register:role" component={Register} />
         <Route exact path="/enter-email" component={EnterEmail} />
         <Route exact path="/password-reset:token" component={ForgotPassword} />
+
         <Route exact path="/page-not-found" component={PageNotFound} />
 
         <Route
@@ -284,6 +275,8 @@ const App = (props) => {
           component={ClientProfile}
         />
         <CustomRoute condition="Client" component={PageNotFound} />
+
+        {/* <Suspence fallback={<div>...loading</div>}></Suspence> */}
       </Switch>
     </>
   );

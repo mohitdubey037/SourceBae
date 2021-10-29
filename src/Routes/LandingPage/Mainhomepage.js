@@ -12,23 +12,19 @@ const Mainhomepage = (props) => {
 
 
     return (
-
-
         <>
             <div className="mainHomePage">
                 <div className="innerHomePage">
-                    <div className="HomePageCard" onClick={() => props.history.push("/login:client")} >
+                    <div className="HomePageCard" onClick={() => props.history.replace("/login:client")} >
                         <span className="leftHomePageBorder"></span>
                         <p>Login</p>
                     </div>
-                    <div className="HomePageCard" onClick={() => props.history.push("/register:client")} >
+                    <div className="HomePageCard" onClick={() => props.history.replace("/register:client")} >
                         <span className="leftHomePageBorder"></span>
                         <p>Sign Up</p>
                     </div>
-
                 </div>
             </div>
-
         </>
     );
 };

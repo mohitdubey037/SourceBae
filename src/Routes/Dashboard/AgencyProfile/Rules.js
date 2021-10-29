@@ -14,7 +14,6 @@ import cancel from "../../../assets/images/Newestdashboard/Agency-Profile/cancel
 import "./Rules.css";
 
 function Rules(props) {
-  console.log("props", props);
   const Role = localStorage.getItem("role");
   const [agencyProfiledata, setAgencyProfileData] = useState({});
 

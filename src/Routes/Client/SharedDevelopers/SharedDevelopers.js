@@ -16,22 +16,19 @@ import DownArrow from '../../../assets/images/Newestdashboard/Agency-Profile/Arr
 
 function RespondedDetails(props) {
   const [initial, setInitial] = useState(5);
-  // let { hireDeveloperId, agencyId } = useParams();
-
-  // hireDeveloperId = helper.cleanParam(hireDeveloperId);
-  // agencyId = helper.cleanParam(agencyId);
 
   const agencyId = localStorage.getItem('userId');
-  // const routerHistory = useHistory();
 
   const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);
   const [agencyDeveloper, setAgencyDeveloper] = useState([]);
+
+  const [disability, setDisability] = useState(false);
 
   const [showDevelopers, setShowDevelopers] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
-  const Role = localStorage.getItem("role");
+  const Role = localStorage.getItem("role").toLowerCase();
   const [selectedDevelopers, setSelectedDevelopers] = useState([]);
 
   const getOneDeveloper = () => {
@@ -95,6 +92,16 @@ function RespondedDetails(props) {
   useEffect(() => {
   }, [initial])
 
+  const agencyAction = (task, hireDeveloperId) => {
+    instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, { interested: task, agencyId })
+      .then(response => {
+        setDisability(true)
+      })
+      .catch(err => {
+
+      })
+  }
+
 
   return (
     <>
@@ -149,35 +156,35 @@ function RespondedDetails(props) {
                       </div>
 
                       <div className="technologies">
-                        <div style={{width:"30%"}}>Developer Roles Required</div>
+                        <div style={{ width: "30%" }}>Developer Roles Required</div>
                         <div className="devops">
-                        {devData.developerRolesRequired.length > 0 &&
-                         <div style={{marginLeft:"1rem"}}>
-                            {devData.developerRolesRequired.map(dd => {
-                              return (
-                                <p>{dd}</p>
-                              )
-                            })}
-                         </div>
-                        }
+                          {devData.developerRolesRequired.length > 0 &&
+                            <div style={{ marginLeft: "1rem" }}>
+                              {devData.developerRolesRequired.map(dd => {
+                                return (
+                                  <p>{dd}</p>
+                                )
+                              })}
+                            </div>
+                          }
                         </div>
                       </div>
 
                       <div className="technologies">
-                        <div style={{width:"30%"}}>Developer Technologies Required</div>
+                        <div style={{ width: "30%" }}>Developer Technologies Required</div>
                         <div className="devops">
-                        {/* {console.log(devData.developerTechnologiesRequired,"tech required")} */}
-                        {devData.developerTechnologiesRequired.length > 0 &&
-                          <div style={{marginLeft:"1rem"}} >
-                            {devData.developerTechnologiesRequired.map(dt => {
-                              return (
-                                <p>{dt.technologyName}</p>
-                              )
-                            })
-                            }
-                          </div>
-                        }
-                        {/* {devData.developerTechnologiesRequired.length > 0 &&
+                          {/* {console.log(devData.developerTechnologiesRequired,"tech required")} */}
+                          {devData.developerTechnologiesRequired.length > 0 &&
+                            <div style={{ marginLeft: "1rem" }} >
+                              {devData.developerTechnologiesRequired.map(dt => {
+                                return (
+                                  <p>{dt.technologyName}</p>
+                                )
+                              })
+                              }
+                            </div>
+                          }
+                          {/* {devData.developerTechnologiesRequired.length > 0 &&
                           <ul>
                             {devData.developerTechnologiesRequired.map(dt => {
                               return (
@@ -189,77 +196,82 @@ function RespondedDetails(props) {
                         </div>
                       </div>
                       <div>
-                      <div>
-                        <button className="acceptButtonShare" /*onClick={}*/>
-                          Accept
-                        </button>
-                        <button className="rejectButtonShare" /*onClick={}*/>
-                           Reject
-                          </button>
-                       </div>
+                        <div>
+                          { devData.agenciesMatched[0].interested === 0 ? <>
+                            <button onClick={() => agencyAction(1, devData._id)} className="acceptButtonShare" /*onClick={}*/>
+                              Accept
+                            </button>
+                            <button onClick={() => agencyAction(2,devData._id)} className="rejectButtonShare" /*onClick={}*/>
+                              Reject
+                            </button></> : <>
+                            <button disabled="true" className="acceptButtonShare" >
+                             {devData.agenciesMatched[0].interested===1?"Accepted":"Rejected" } </button>
+                            </>
+                          }
+                          </div>
                       </div>
-                     
-                    </div>
-                  )
+
+                      </div>
+                      )
                 })
-                : (
-                  "No Data Found"
+                      : (
+                      "No Data Found"
                 )}
 
 
-              {(showDevelopers === true && singleHiredDeveloper?.agencyMatched !== undefined) &&
-                <div className="developers-div">
-                  <div className="moreAgencyList new_design_sharedDeveloper">
-                    {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
-                    {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                      singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
-                        singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.slice(0, 5)?.map(
-                          developer => {
-                            return (
-                              <>
-                                <div className="names_of_developer">
-                                  <div className="name_circle">
-                                    <div>
-                                      <p>{developer?.developerId?.firstName.charAt(0)}</p>
-                                    </div>
-                                  </div>
-                                  <div className="moreAgencyInfo">
-                                    <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
-                                    <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
-                                  </div>
-                                  {developer?.developerId?.developerDocuments?.length > 0 ? (
-                                    <div className="view-resume_div">
-                                      <a className="view-resume_child" href={developer?.developerId?.developerDocuments[0].documentLink} target="new">
-                                        Check Resume
-                                      </a>
-                                    </div>
-                                  ) : (
-                                    "No resume"
-                                  )}
-                                </div>
-                              </>
-                            );
-                          }
-                        )
-                        : <div>No Developers shared by the Agency.</div>
-                    )
-                      : <div>No Matched Agency Found.</div>
-                    }
+                      {(showDevelopers === true && singleHiredDeveloper?.agencyMatched !== undefined) &&
+                        <div className="developers-div">
+                          <div className="moreAgencyList new_design_sharedDeveloper">
+                            {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
+                            {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                              singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
+                                singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.slice(0, 5)?.map(
+                                  developer => {
+                                    return (
+                                      <>
+                                        <div className="names_of_developer">
+                                          <div className="name_circle">
+                                            <div>
+                                              <p>{developer?.developerId?.firstName.charAt(0)}</p>
+                                            </div>
+                                          </div>
+                                          <div className="moreAgencyInfo">
+                                            <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
+                                            <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
+                                          </div>
+                                          {developer?.developerId?.developerDocuments?.length > 0 ? (
+                                            <div className="view-resume_div">
+                                              <a className="view-resume_child" href={developer?.developerId?.developerDocuments[0].documentLink} target="new">
+                                                Check Resume
+                                              </a>
+                                            </div>
+                                          ) : (
+                                            "No resume"
+                                          )}
+                                        </div>
+                                      </>
+                                    );
+                                  }
+                                )
+                                : <div>No Developers shared by the Agency.</div>
+                            )
+                              : <div>No Matched Agency Found.</div>
+                            }
 
-                    {singleHiredDeveloper?.agenciesMatched?.length > 4 &&
-                      singleHiredDeveloper?.agenciesMatched?.length >= initial &&
-                      <div onClick={() => showMore()} className="show-more_sharedDeveloper">
-                        <p>Show More</p>
-                      </div>
-                    }
-                  </div>
-                </div>
-              }
-            </div>
+                            {singleHiredDeveloper?.agenciesMatched?.length > 4 &&
+                              singleHiredDeveloper?.agenciesMatched?.length >= initial &&
+                              <div onClick={() => showMore()} className="show-more_sharedDeveloper">
+                                <p>Show More</p>
+                              </div>
+                            }
+                          </div>
+                        </div>
+                      }
+                    </div>
           </div>
-        </div>
+          </div>
       }
-    </>
+        </>
   );
 }
 
@@ -267,9 +279,9 @@ function RespondedDetails(props) {
 
 const mapStateToProps = (state) => {
   return {
-    projects: state.projects,
-    condition: state.condition,
+        projects: state.projects,
+      condition: state.condition,
   };
 };
 
-export default connect(mapStateToProps)(RespondedDetails);
+      export default connect(mapStateToProps)(RespondedDetails);
