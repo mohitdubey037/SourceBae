@@ -13,6 +13,9 @@ import instance from "../../../../Constants/axiosConstants"
 import Spinner from '../../../../Components/Spinner/Spinner'
 
 function AgencyForm3(props) {
+    console.log(props);
+
+    const propData = props.location.state ? props.location.state : {}
 
     const Role = localStorage.getItem('role');
     const url = props.history.location.pathname;
@@ -140,13 +143,14 @@ function AgencyForm3(props) {
     const handleUpdate = () => {
         setLoading(true);
         const apiData = {
-            stepsCompleted: "4",
+            stepsCompleted: 4,
             agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
         }
         instance.post(`/api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 setLoading(false);
-                props.history.push("/agency-form-four")
+                propData.agencyForm3 = apiData;
+                props.history.push("/agency-form-four", propData)
             })
             .catch(err => {
                 setLoading(false);
@@ -161,7 +165,7 @@ function AgencyForm3(props) {
             props.history.push('/agency-form-one');
         }
         else if (url.includes('agency-form-three')) {
-            props.history.push('/agency-form-two');
+            props.history.push('/agency-form-two', propData);
         }
         else if (url.includes('agency-form-four')) {
             props.history.push('/agency-form-three');
@@ -170,6 +174,20 @@ function AgencyForm3(props) {
             props.history.goBack();
         }
     }
+
+    useEffect(() => {
+        if (props.location.state?.agencyForm3) {
+            setRegistrationCertificate({
+                documentName: propData.agencyForm3.documentName
+            })
+            setBrochureDoc({
+                documentName: propData.agencyForm3.documentName
+            })
+            setPanCardDoc({
+                documentName: propData.agencyForm3.documentName
+            })
+        }
+    }, [propData])
 
     useEffect(() => {
         if (registrationCertificate.documentPicked && brochureDoc.documentPicked && panCardDoc.documentPicked) {
@@ -207,10 +225,10 @@ function AgencyForm3(props) {
                                                 <img src={fileIcon} alt="finish" /></button>
                                         </FilePicker>
                                         {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${(registrationCertificate?.document?.name) ? registrationCertificate?.document?.name.slice(0,20) : "Company Registration Certificate"}`}</p>
+                                        <p className="logo-type_agencyForm1">{`${(registrationCertificate?.document?.name) ? registrationCertificate?.document?.name.slice(0, 20) : "Company Registration Certificate"}`}</p>
                                     </div>
                                     <div className="agencyBrochure">
-                                    {/* <p>2. Upload Agency Brochure</p> */}
+                                        {/* <p>2. Upload Agency Brochure</p> */}
                                         <FilePicker
                                             extensions={['pdf', 'jpg', 'png', 'jpeg']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
@@ -221,7 +239,7 @@ function AgencyForm3(props) {
                                             </button>
                                         </FilePicker>
                                         {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? registrationCertificate?.document?.name.slice(0,20) : "Brochure"}`}</p>
+                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? registrationCertificate?.document?.name.slice(0, 20) : "Brochure"}`}</p>
                                     </div>
                                 </div>
                                 <div className="panDetails">

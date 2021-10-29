@@ -31,30 +31,31 @@ const BlueRadio = withStyles({
       color: "#26AFFF",
     },
   },
-  checked:{}
+  checked: {}
 })((props) => <Radio color="default" {...props} />);
 
 function HireAgencyForm2(props) {
+  const propData = props.location.state;
+  console.log(props);
   const Role = localStorage.getItem('role');
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
   const id = localStorage.getItem("userId");
- const propData=props.location.state
   const [apiData, setApiData] = useState({
     stepsCompleted: 2,
     clientId: id,
     id: projectId,
     projectDomainId: "",
     projectExpertiseRequired: [],
-    agencyExperience: propData?.agencyForm2?.agencyExperience ? propData?.agencyForm2?.agencyExperience:"",
+    agencyExperience: propData?.agencyForm2?.agencyExperience ? propData?.agencyForm2?.agencyExperience : "",
   });
- console.log(projectId,"projectId")
+  console.log(projectId, "projectId")
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState(null);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedDomainHL,setSelectedDomainHL]=useState('');
+  const [selectedDomainHL, setSelectedDomainHL] = useState('');
   const [error, setError] = useState({
     projectDomainIdError: "",
     projectExpertiseRequiredError: [],
@@ -67,32 +68,31 @@ function HireAgencyForm2(props) {
     setApiData({
       ...apiData,
       [name]: value,
-    },{
-      agencyExperience:propData?.agencyForm2?.agencyExperience
+    }, {
+      agencyExperience: propData?.agencyForm2?.agencyExperience
     });
   };
-useEffect(()=>{
-  if(propData?.agencyForm2){
-    setSelectedDomainHL(propData.agencyForm2?.projectDomainId);
-    setApiData({
-      stepsCompleted: 2,
-    clientId: propData.agencyForm2.clientId,
-    id: propData.agencyForm2.id,
-    projectDomainId:propData.agencyForm2.projectDomainId,
-    projectExpertiseRequired: propData.agencyForm2.projectExpertiseRequired,
-    agencyExperience:propData.agencyForm2.agencyExperience,
-    })
-  }
-},[propData])
+  useEffect(() => {
+    if (propData?.agencyForm2) {
+      setSelectedDomainHL(propData.agencyForm2?.projectDomainId);
+      setApiData({
+        stepsCompleted: 2,
+        clientId: propData.agencyForm2.clientId,
+        id: propData.agencyForm2.id,
+        projectDomainId: propData.agencyForm2.projectDomainId,
+        projectExpertiseRequired: propData.agencyForm2.projectExpertiseRequired,
+        agencyExperience: propData.agencyForm2.agencyExperience,
+      })
+    }
+  }, [propData])
 
   const handleDomains = (event) => {
     const { className } = event.target;
     const toggledDomains = allDomainsData.map((domain) => {
       if (domain.domainName === className) {
 
-        if (!domain.selected)
-          {
-            setSelectedDomainHL('');
+        if (!domain.selected) {
+          setSelectedDomainHL('');
           setApiData({
             ...apiData,
             projectDomainId: domain._id
@@ -128,7 +128,7 @@ useEffect(()=>{
   //Api Calls methods
   const getAllDomains = () => {
     instance
-      .get(`api/${Role}/domains/all`,apiData)
+      .get(`api/${Role}/domains/all`, apiData)
       .then(function (response) {
         const domainNames = response.map((domain) => {
           return {
@@ -175,11 +175,11 @@ useEffect(()=>{
     else {
       setLoading(true);
       instance
-        .post(`/api/${Role}/projects/create`,apiData)
+        .post(`/api/${Role}/projects/create`, apiData)
         .then(function (response) {
           setLoading(false);
-          propData.agencyForm2=apiData
-          props.history.replace(`/hire-agency-form-three:${projectId}`,propData);
+          propData.agencyForm2 = apiData
+          props.history.replace(`/hire-agency-form-three:${projectId}`, propData);
         })
         .catch((err) => {
           setLoading(false);
@@ -249,7 +249,7 @@ useEffect(()=>{
                       <div className="serviceSelectionInput">
                         <>
                           <p className="uiuxtext">
-                            Select {selectedDomain.domainName} services    <span style={{fontSize:"12px"}} className="requiredStar">*</span>
+                            Select {selectedDomain.domainName} services    <span style={{ fontSize: "12px" }} className="requiredStar">*</span>
                           </p>
                           <MultiSelect
                             options={options}
@@ -285,7 +285,7 @@ useEffect(()=>{
                     return (
                       <div className="tech-container">
                         <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                          style={{ filter: domain.selected || selectedDomainHL===domain._id ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }}>
+                          style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }}>
                           <img className={`${domain.domainName}`} src={domain.domainIcon} alt="image" />
                         </div>
                         <p className={`${domain.domainName}`} style={{ color: "#707070", fontFamily: "Segoe UI", fontSize: "12px" }}>
@@ -316,7 +316,7 @@ useEffect(()=>{
                     <RadioGroup
                       aria-label="agencyExperience"
                       name="agencyExperience"
-                      value={apiData.agencyExperience ||propData?.agencyForm2?.agencyExperience}
+                      value={apiData.agencyExperience || propData?.agencyForm2?.agencyExperience}
                       onChange={handleChange}
                     >
                       <div className="radio-label_hireAgencyForm2">
@@ -354,7 +354,7 @@ useEffect(()=>{
               </div>
 
               <div className="nextbutton">
-                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`,propData)} style={{ backgroundColor: "#707070" }}>
+                <div className="backbutton_hireAgencyForm2" onClick={() => props.history.push(`/hire-agency-form-one`, propData)} style={{ backgroundColor: "#707070" }}>
                   Back
                 </div>
                 <div onClick={() => handleSubmit()}>

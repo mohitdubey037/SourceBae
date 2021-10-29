@@ -20,14 +20,20 @@ import { toast } from "react-toastify";
 
 
 function AgencyForm2(props) {
+  console.log(props);
   const Role = localStorage.getItem("role");
   const [loading, setLoading] = useState(true);
   const [steps, setSteps] = useState('');
+
+  const propData = props.location.state?props.location.state:{}
 
   const url = props.history.location.pathname;
 
   // selecting Domains
   const [allDomainsData, setAllDomainsData] = useState([]);
+
+  const [selectedDomain, setSelectedDomain] = useState(null);
+  const [selectedServices, setSelectedServices] = useState(null);
 
   //selecting services
   const [allServicesData, setAllServicesData] = useState([]);
@@ -39,15 +45,17 @@ function AgencyForm2(props) {
   const [visibleTechData, setVisibleTechData] = useState([]);
   const [visibleTechNames, setVisibleTechNames] = useState([]);
   const [toggle, setToggle] = useState(null);
+
+  const [selectedDomainHL, setSelectedDomainHL] = useState('');
   const [dom, setDom] = useState([]);
 
   //API DATA STATE VARIABLES
   const [apiData, setApiData] = useState({
-    stepsCompleted: "3",
+    stepsCompleted: 3,
     agencyDomains: [],
     agencyServices: [],
     agencyTechnologies: [],
-    agencyMonthlyBudget: "",
+    agencyMonthlyBudget: propData?.agencyForm2?.agencyMonthlyBudget ? propData?.agencyForm2?.agencyMonthlyBudget : "",
   });
 
   const getStepsCompleted = () => {
@@ -79,7 +87,7 @@ function AgencyForm2(props) {
       props.history.push('/agencyNewestDashboard');
     }
     else if (url.includes('agency-form-two')) {
-      props.history.push('/agency-form-one');
+      props.history.push('/agency-form-one', propData);
     }
     else if (url.includes('agency-form-three')) {
       props.history.push('/agency-form-two');
@@ -195,7 +203,8 @@ function AgencyForm2(props) {
       .post(`api/${Role}/agencies/create`, apiData)
       .then(function (response) {
         setLoading(false);
-        props.history.push("/agency-form-three");
+        propData.agencyForm2 = apiData;
+        props.history.push("/agency-form-three", propData);
       })
       .catch((err) => {
         setLoading(false);
@@ -283,7 +292,7 @@ function AgencyForm2(props) {
         <Spinner />
       ) : (
         <div className="agency-form_parent">
-          <Navbar />
+          <                             Navbar />
           <Back name="Agency form 2" />
           <FormPhases steps={steps} />
           <div className="mainTechStackFormParent">
@@ -349,9 +358,11 @@ function AgencyForm2(props) {
                       <RadioGroup
                         aria-label="budget"
                         name="budget"
-                        value={apiData.agencyMonthlyBudget}
+                        value={apiData?.agencyMonthlyBudget}
+                        defaultChecked={apiData?.agencyMonthlyBudget}
                         onChange={handleChange}
                       >
+                        {console.log(apiData?.agencyMonthlyBudget,"radio checkS")}
                         <FormControlLabel
                           value="1000"
                           control={<Radio />}
