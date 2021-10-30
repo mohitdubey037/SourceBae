@@ -21,7 +21,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import DeveloperList from "./AgencyProfile/DeveloperList";
-import Portfolio from "./AgencyProfile/Portfolio";
+import AgencyPortfolio from "./AgencyProfile/AgencyPortfolio";
 import FeatureLink from "./AgencyProfile/FeatureLink";
 
 import { useParams } from "react-router";
@@ -437,6 +437,20 @@ function AgencyProfile(props) {
                   </button>
                 </div>
 
+                <div id="nav-portfolio-tab"
+                  className="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-portfolio"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-portfolio"
+                  aria-selected="false">
+                  <img src={iicon} alt="Portfolio" />
+                  <button class="nav-button nav-link_agencyProfile">
+                     Agency Portfolio
+                  </button>
+                </div>
+
                 {Role === "Agency" &&
                   <div id="nav-developer-tab"
                     className="nav-link"
@@ -523,7 +537,7 @@ function AgencyProfile(props) {
                   role="tabpanel"
                   aria-labelledby="nav-portfolio-tab"
                 >
-                  <Portfolio id={id} />
+                  <AgencyPortfolio  id={id}/>
                 </div>
                 <div
                   class="tab-pane fade"

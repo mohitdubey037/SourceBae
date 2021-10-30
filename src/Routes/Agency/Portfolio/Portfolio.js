@@ -52,6 +52,9 @@ function Portfolio(props) {
         if (form.projectName === '') {
             errors.projectName = 'Project Name is required'
         }
+        else if (form.projectName.length > 50) {
+            errors.projectName = 'Projret name must be shorter thm 50 letter'
+        }
         else if (form.projectDescription === '') {
             errors.projectDescription = 'Project Description  is required'
         }

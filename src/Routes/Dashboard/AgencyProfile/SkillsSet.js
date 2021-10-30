@@ -18,12 +18,11 @@ function SkillsSet(props) {
         Services: [],
         Technology: []
     })
-
     const getAgencyProfile = (agencyId, profileviewStatus) => {
         let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 setAgencyProfileData(response);
             })
             .catch((err) => {
