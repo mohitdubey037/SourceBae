@@ -110,6 +110,7 @@ function AgencyForm4(props) {
 
 
     const goBack = () => {
+        if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
         if (url.includes('agency-form-one')) {
             props.history.push('/agencyNewestDashboard');
         }
@@ -124,7 +125,7 @@ function AgencyForm4(props) {
         }
         else {
             props.history.goBack();
-        }
+        }}
     }
 
 
