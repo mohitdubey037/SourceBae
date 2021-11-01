@@ -301,8 +301,7 @@ const Register = (props) => {
           }
         })
         .catch(err => {
-          console.log('err', err.response.data);
-
+          // console.log('err', err.response.data);
         })
     }
   }
@@ -554,7 +553,6 @@ const Register = (props) => {
                         )}
                       </div>
                       <div className="input_with_error">
-                        <input type="email" name="user" style={{display:'none'}}/>
                         <label>User Name</label>
                         <input
                           type="text"
@@ -563,6 +561,7 @@ const Register = (props) => {
                           value={signupForm.userName}
                           onChange={(e) => setForm(e)}
                         />
+                        <input type="text" name="username" placeholder="Username" style={{display:'none'}}/>
                         {errors.userNameError && (
                           <p className="error_productForm">
                             {errors.userNameError}
