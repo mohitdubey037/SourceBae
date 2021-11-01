@@ -197,21 +197,21 @@ function AgencyNewestDashboard(props) {
                 img={addDeveloperIcon}
               />
 
-              {agencyProfileData.productId ? (
+              {/* {agencyProfileData.productId ? (
                 <UserOperations
                   disabled={!verified || steps !== -1}
                   nextpage={() => quotation("product-details")}
                   text="View Product"
                   img={ThirdIcon}
                 />
-              ) : (
+              ) : ( */}
                 <UserOperations
                   disabled={!verified || steps !== -1}
                   nextpage={() => quotation("portfolio")}
                   text="Add Your Portfolio"
                   img={ThirdIcon}
                 />
-              )}
+              {/* )} */}
             </div>
             <div
               className={`${

@@ -267,7 +267,9 @@ const Register = (props) => {
   const signUpApi = (event) => {
     event.preventDefault();
     if (firstFormErrorValidation()) {
-      instance.post(`/api/${role}/auths/signup`, signupForm)
+      // instance.post(`/api/${role}/auths/signup`, signupForm)
+      let { userName, userEmail, userPhone} = signupForm
+      instance.get(`api/${role}/auths/verify-signup`, {userName, userEmail, userPhone})
         .then(function (response) {
           cookie.save("Authorization", `Bearer ${response.accessToken}`, {
             path: "/",
@@ -303,7 +305,7 @@ const Register = (props) => {
         };
       }
       instance.defaults.headers.common["Authorization"] = localStorage.getItem("Authorization");
-      instance.post(`api/${role}/${api_param_const}/create`, signupForm)
+      instance.post(`api/${role}/${api_param_const}/create`, api_create_form)
         .then(function (response) {
           if (role === "Client") {
             props.history.push("/clientNewestDashboard");

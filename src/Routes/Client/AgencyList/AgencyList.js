@@ -19,7 +19,6 @@ import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownIma
 function AgencyList(props) {
   const Role = localStorage.getItem("role");
   let { projectId } = useParams();
-
   projectId = projectId ? helper.cleanParam(projectId) : "";
   const [agencyList, setAgencyList] = useState([]);
   const [isOfficeVisit, setOfficeVisit] = useState(false);
