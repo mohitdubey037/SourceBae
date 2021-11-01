@@ -35,8 +35,6 @@ span.welcome-back_sourceBae {
   font-weight: bold;
 }
 
-
-
 .mainLoginForm_child {
   display: flex;
   justify-content: space-between;
@@ -113,10 +111,8 @@ span.welcome-back_sourceBae {
   user-select: none;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); 
+  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
 }
-
-
 
 .welcome-back_loginIllustrator {
   top: 15rem;
@@ -130,7 +126,7 @@ span.welcome-back_sourceBae {
   z-index: 10;
 }
 
-.welcome-back_loginIllustrator >p{
+.welcome-back_loginIllustrator>p {
   font-size: larger;
 }
 
@@ -149,17 +145,20 @@ span.welcome-back_sourceBae {
   z-index: 150;
   padding-bottom: 4.5rem;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  width: 30%;
 }
 
-.loginCards-wrapper{
+.loginCards-wrapper {
   display: flex;
-    flex-direction: row;
-    height: 100%;
-    position: relative;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 10;
+  flex-direction: row;
+  /* height: 100%; */
+  height: 100vh;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 10;
 }
+
 .mainLoginForm, .googleLogin {
   width: 80%;
 }
@@ -187,7 +186,6 @@ span.welcome-back_sourceBae {
   padding: 7px;
   position: absolute;
   font-family: 'Segoe UI';
-  
 }
 
 .agency__button {
@@ -198,7 +196,7 @@ span.welcome-back_sourceBae {
 }
 
 .client__button {
-  color: #4786FE ;
+  color: #4786FE;
   right: 3px;
 }
 
@@ -207,6 +205,7 @@ span.welcome-back_sourceBae {
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%) !important;
   color: white !important;
 }
+
 .active__buttonclient {
   z-index: 2 !important;
   background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
@@ -284,7 +283,7 @@ span.welcome-back_sourceBae {
   margin-top: 2rem;
 }
 
-.button_action_login>div, .button_action_login > button {
+.button_action_login>div, .button_action_login>button {
   width: 41%;
   height: 40px;
   font-family: 'Segoe UI';
@@ -299,8 +298,7 @@ span.welcome-back_sourceBae {
   border: none;
 }
 
-.button_action_login > button:focus,
-.button_action_login > button:active {
+.button_action_login>button:focus, .button_action_login>button:active {
   outline: none;
   border: none;
 }
@@ -406,7 +404,6 @@ span.welcome-back_sourceBae {
   z-index: 4;
 }
 
-
 .loginImage1 {
   position: absolute;
   width: 100%;
@@ -457,18 +454,20 @@ span.welcome-back_sourceBae {
   position: relative;
   right: 55%;
 }
-.conditional_background {
-  background: linear-gradient(2deg, #015F9A 0%, #0376BA 100%) ;
 
+.conditional_background {
+  background: linear-gradient(2deg, #015F9A 0%, #0376BA 100%);
 }
-.conditional_backgroundSubmit  {
+
+.conditional_backgroundSubmit {
   background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
 }
 
 .conditional_backgroundSubmit:hover {
   background: linear-gradient(262deg, #0376BA 0%, #015F9A 100%) !important;
 }
-.conditional_backgroundGoogle  {
+
+.conditional_backgroundGoogle {
   background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
 }
 
