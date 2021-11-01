@@ -107,13 +107,23 @@ function ProductAgencies(props) {
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+    const [form, setForm] = useState({
+        input1: '',
+        input2: '',
+        input3: ''
+    })
+
+    // const arr = [1, 2, 3, 4, 5, 6, 7, 8];
     const classes = useStyles();
     const theme = useTheme();
 
-    const handleChange = (event) => {
-        setPersonName(event.target.value);
-    };
+    // const handleChange = (event) => {
+    //     const {name, value} = event.target;
+    //     const setForm({
+    //         ...form,
+    //         [name]: value
+    //     })
+    // };
 
     const handleLocation = (event) => {
         setSearchLocation(event.target.value);
@@ -435,7 +445,7 @@ function ProductAgencies(props) {
 
                     <div className="productModalInput">
                         <p>Subject</p>
-                        <input type="text" placeholder="Enter your subject" />
+                        <input type="text" placeholder="Enter your subject"  />
                     </div>
                     <div className="productModalInput">
                         <p>Message</p>

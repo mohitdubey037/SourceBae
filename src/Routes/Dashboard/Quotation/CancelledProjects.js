@@ -17,7 +17,8 @@ function CancelledProjects(props) {
 
     const getAllCancelledData = () => {
         setLoading(true)
-        instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=1`)
+        // instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=1`)
+        instance.get(`/api/${Role}/projects/all?agencyId=${agencyId}&quotationReceived=0`)
             .then(response => {
                 setLoading(false);
                 setProjects(response.projects);
@@ -34,6 +35,10 @@ function CancelledProjects(props) {
         getAllCancelledData()
     }, [])
 
+    useEffect(() => {
+        console.log(projects);
+    }, [projects])
+
     return (
         <>
             {loading ? <Spinner /> :
@@ -48,10 +53,9 @@ function CancelledProjects(props) {
                                 </div>
                             </>
                             :
-                            projects && projects?.map((s) =>  
-                               (s?.projectProposals[0]?.rejectReasonByAgency ||  s?.projectProposals[0]?.rejectReasonByClient) ?
-                              (
-                                <div className="respondedCard">
+                            projects?.map((s) =>
+                                (s?.projectProposals[0]?.rejectReasonByAgency || s?.projectProposals[0]?.rejectReasonByClient) ?
+                                    <div className="respondedCard">
                                         <div className="leftBorder"></div>
                                         <div className="date_and_time">
                                             <div className="dateCreated">
@@ -67,11 +71,11 @@ function CancelledProjects(props) {
                                         </div>
                                         <div className="respondCardHeader">
                                             <div className="respondName">
-                                                <h4 style={{ textTransform: 'capitalize', overflowWrap:'anywhere' }}>{s.projectName}</h4>
+                                                <h4 style={{ textTransform: 'capitalize', overflowWrap: 'anywhere' }}>{s.projectName}</h4>
                                             </div>
                                         </div>
                                         <div className="respondCardDescription">
-                                            <p title={s.projectDescription} style={{ overflowWrap:'anywhere' }}>{`${(s.projectDescription).slice(0, 40)}...`}</p>
+                                            <p title={s.projectDescription} style={{ overflowWrap: 'anywhere' }}>{`${(s.projectDescription).slice(0, 40)}...`}</p>
                                         </div>
                                         <div className="respondCardPoints">
                                             <ul>
@@ -99,13 +103,13 @@ function CancelledProjects(props) {
                                                 <p>45</p>
                                             </div>
                                             <div>
-                                                    <p>Status</p>
-                                                    <p style={{color:"#45A4EA"}}>{s.projectCurrentStatus}</p>
+                                                <p>Status</p>
+                                                <p style={{ color: "#45A4EA" }}>{s.projectCurrentStatus}</p>
                                             </div>
                                             <div>
-                                                    <p>Project Type</p>
-                                                    <p style={{color:"#45A4EA"}}>{s.projectType}</p>
-                                                </div>
+                                                <p>Project Type</p>
+                                                <p style={{ color: "#45A4EA" }}>{s.projectType}</p>
+                                            </div>
                                         </div>
                                         <div className="respondedCardButton">
                                             <div className="showDetail_receivedCardButton" onClick={() => props.history.push({
@@ -117,9 +121,8 @@ function CancelledProjects(props) {
                                                 </p>
                                             </div>
                                         </div>
-                                </div>
-                                
-                               ):null
+                                    </div>
+                                    : null
                             )
 
                         }
