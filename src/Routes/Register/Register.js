@@ -289,16 +289,20 @@ const Register = (props) => {
     if (firstFormErrorValidation()) {
       instance.post(`/api/${role}/auths/verify-signup`, { userEmail, userName, userPhone })
         .then(res => {
-          console.log("res",res);
-          toggleForms("next");
+          if (res.data.userEmail && res.data.userName && res.data.userPhone) {
+            toggleForms("next");
+          }
+          else {
+            setErrorData({
+              userEmail: res.data.userEmail,
+              userName: res.data.userName,
+              userPhone: res.data.userPhone,
+            })
+          }
         })
         .catch(err => {
-          console.log('err',err.response.data);
-          setErrorData({
-            userEmail: err.response.data.userEmail,
-            userName: err.response.data.userName,
-            userPhone: err.response.data.userPhone,
-          })
+          console.log('err', err.response.data);
+
         })
     }
   }
@@ -474,25 +478,25 @@ const Register = (props) => {
                     </h6>
                   </div>
                   {
-                    step <= 1 &&  <div  className="login_switch signup_switch">
-                    <button
-                      onClick={() => handleChangeToggle("agency")}
-                      className={`agency__button ${(state === "" || state === "agency") &&
-                        "active__buttonagency"
-                        }`}
-                    >
-                      <p>Agency</p>
-                    </button>
-                    <button
-                      onClick={() => handleChangeToggle("client")}
-                      className={`client__button ${state === "client" && "active__buttonclient"
-                        }`}
-                    >
-                      <p>Client</p>
-                    </button>
-                  </div> 
+                    step <= 1 && <div className="login_switch signup_switch">
+                      <button
+                        onClick={() => handleChangeToggle("agency")}
+                        className={`agency__button ${(state === "" || state === "agency") &&
+                          "active__buttonagency"
+                          }`}
+                      >
+                        <p>Agency</p>
+                      </button>
+                      <button
+                        onClick={() => handleChangeToggle("client")}
+                        className={`client__button ${state === "client" && "active__buttonclient"
+                          }`}
+                      >
+                        <p>Client</p>
+                      </button>
+                    </div>
                   }
-                 
+
                 </div>
                 <div className="client__formsContainer">
                   <form className="client__form form__1" autoComplete="off">
@@ -550,6 +554,7 @@ const Register = (props) => {
                         )}
                       </div>
                       <div className="input_with_error">
+                        <input type="email" name="user" style={{display:'none'}}/>
                         <label>User Name</label>
                         <input
                           type="text"
