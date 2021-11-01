@@ -11,7 +11,7 @@ import cookie from "react-cookies";
 import imgRegister from "../../assets/images/Newestdashboard/Register/img_register.svg";
 import Signup1 from "../../assets/images/Newestdashboard/Register/signup_up.svg";
 import Signup2 from "../../assets/images/Newestdashboard/Register/signup_down.svg";
-
+import useIsFirstRender from '../../Utils/useIsFirstRender';
 const dateStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -41,6 +41,7 @@ const dateStyles = makeStyles((theme) => ({
 }));
 
 const Register = (props) => {
+  const isFirstRender = useIsFirstRender();
   let localRole = localStorage.getItem("role");
   if (props.history.action === "POP") {
     props.history.push(`/register:${localRole}`);
@@ -175,15 +176,11 @@ const Register = (props) => {
       signupForm.userName.length > 50
     ) {
       err.userNameError = "User name must be between 2-50 characters.";
-    } else if (errorData.userName === false) {
-      err.emailError = "UserName already Exist";
     }
     else if (signupForm.userEmail === "") {
       err.emailError = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(signupForm.userEmail)) {
       err.emailError = "Invalid email address.";
-    } else if (errorData.userEmail === false) {
-      err.emailError = "Email already exist";
     }
     else if (signupForm.userPhone === "") {
       err.phoneError = "Phone is required.";
@@ -191,8 +188,6 @@ const Register = (props) => {
       err.phoneError = "Phone number must be digit.";
     } else if (signupForm.userPhone.length < 10) {
       err.phoneError = "Phone must be of 10 digits.";
-    } else if (errorData.userPhone === false) {
-      err.emailError = "Phone Number already exist";
     }
     else if (signupForm.password === "") {
       err.passwordError = "Password is required.";
@@ -267,6 +262,23 @@ const Register = (props) => {
     }
   };
 
+
+  const verifyValidation = () => {
+    const err = {};
+    if (errorData.userEmail === false) {
+      err.emailError = "Email already exist";
+    }
+    else if (errorData.userName === false) {
+      err.emailError = "UserName already Exist";
+    }
+    else if (errorData.userPhone === false) {
+      err.emailError = "Phone Number already exist";
+    }
+    setErrors(err);
+    if (Object.keys(err).length === 0) return true;
+    else return false;
+  }
+
   useEffect(() => {
     setState(role.toLowerCase());
   }, []);
@@ -289,24 +301,28 @@ const Register = (props) => {
     if (firstFormErrorValidation()) {
       instance.post(`/api/${role}/auths/verify-signup`, { userEmail, userName, userPhone })
         .then(res => {
-          if (res.data.userEmail && res.data.userName && res.data.userPhone) {
+          if (res.userEmail && res.userName && res.userPhone) {
             toggleForms("next");
           }
           else {
             setErrorData({
-              userEmail: res.data.userEmail,
-              userName: res.data.userName,
-              userPhone: res.data.userPhone,
+              userEmail: res.userEmail,
+              userName: res.userName,
+              userPhone: res.userPhone,
             })
+            // firstFormErrorValidation();
           }
         })
         .catch(err => {
           // console.log('err', err.response.data);
         })
-    }
+    };
+    // firstFormErrorValidation()
   }
 
   useEffect(() => {
+    console.log(errorData)
+    if (!isFirstRender) verifyValidation()
   }, [errorData])
 
 
@@ -561,7 +577,7 @@ const Register = (props) => {
                           value={signupForm.userName}
                           onChange={(e) => setForm(e)}
                         />
-                        <input type="text" name="username" placeholder="Username" style={{display:'none'}}/>
+                        <input type="text" name="username" placeholder="Username" style={{ display: 'none' }} />
                         {errors.userNameError && (
                           <p className="error_productForm">
                             {errors.userNameError}
