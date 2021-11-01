@@ -15,6 +15,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import loginImage from "../../assets/images/Logo/loginImage.png";
+import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
+import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 
 const borderLight = "rgba(206,212,218, .993)";
@@ -23,17 +25,18 @@ const borderLight = "rgba(206,212,218, .993)";
 const useStyles = makeStyles((theme) => ({
     inputs: {
         position: "relative",
-        fontFamily: "Cutive Mono, monospace",
-        fontSize: "17px",
+        fontFamily: "Segoe UI Semibold, monospace",
+        fontSize: "16px",
         padding: `${theme.spacing(1.5)}px ${theme.spacing(1)}px`,
         borderRadius: "8px",
-        border: "1.4px solid",
-        boxShadow: "1px 2px 20px rgba(169,198,217,0.29457423) ",
-        borderColor: borderLight,
+        border: "2px solid #45a4ea",
+        marginBottom:"1rem",
+        height: "3rem",
     },
     passwordEye: {
         color: "rgba(131,153,167,0.9)",
         opacity: 0.9,
+        zIndex:1,
     },
 }));
 
@@ -86,24 +89,26 @@ const ForgotPassword = (props) => {
     return (
         <>
             <div style={{ marginTop: '20px' }}>
-
+            <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
+            <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
             </div>
             <div className="mainLoginPage">
                 <div className="innerLoginPage">
-                    <div className="loginIllustrator">
+                    {/* <div className="loginIllustrator">
                         <img src={loginImage} alt="" />
-                    </div>
-                    <div className="loginContent">
+                    </div> */}
+                    <div className="ForgetContent">
+                    <div className="HeadingForgetPassword">Reset Password </div>
                         <div className="mainLoginForm">
                             <FormControl component="fieldset" className="roleRadio">
                                 <FormLabel className='role' component="legend">Role</FormLabel>
-                                <RadioGroup aria-label="Role" name="Role" value={Role} onChange={handleRole}>
+                                <RadioGroup style ={{display:"flex"}} aria-label="Role" name="Role" value={Role} onChange={handleRole}>
                                     <FormControlLabel value="agency" control={<Radio />} label="Agency" />
                                     <FormControlLabel value="client" control={<Radio />} label="Client" />
                                 </RadioGroup>
                             </FormControl>
                             <div style={{ marginTop: '0px' }} className="loginForm">
-                                <p style={{ marginBottom: "10px" }}>Password</p>
+                                <p style={{marginLeft:"-7rem", marginBottom: "10px" }}>Enter New Password Here</p>
                                 <Input
                                     className={classes.inputs}
                                     placeholder="Enter a Password"

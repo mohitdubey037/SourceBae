@@ -12,7 +12,7 @@ import Spinner from '../../../../Components/Spinner/Spinner';
 import Back from '../../../../Components/Back/Back';
 import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/agencyForm4_image.svg';
 //axios instance
-import instance from "../../../../Constants/axiosConstants"
+import instance from "../../../../Constants/axiosConstants";
 import * as helper from "../../../../shared/helper"
 
 
@@ -110,6 +110,7 @@ function AgencyForm4(props) {
 
 
     const goBack = () => {
+        if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
         if (url.includes('agency-form-one')) {
             props.history.push('/agencyNewestDashboard');
         }
@@ -124,7 +125,7 @@ function AgencyForm4(props) {
         }
         else {
             props.history.goBack();
-        }
+        }}
     }
 
 

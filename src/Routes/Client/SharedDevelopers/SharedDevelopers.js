@@ -118,48 +118,51 @@ function RespondedDetails(props) {
               {singleHiredDeveloper?.length > 0 ?
                 singleHiredDeveloper.map(devData => {
                   return (
-                    <div className="innerResponseCard width innerResponseCard_sharedDeveloper">
+                    <div className=" width innerResponseCard_sharedDeveloper">
+                   <div className="sharedDevDetails1">
+                    <div className="childDiv1">
                       <div className="parentDivShared">
                         <p>Agency Average Budget</p>
-                        <p>{devData.averageBudget} </p>
+                        <h2>{devData.averageBudget} </h2>
                       </div>
 
                       <div className="parentDivShared">
                         <p>Contract Period</p>
-                        <p>{devData.contractPeriod}</p>
+                        <h2>{devData.contractPeriod}</h2>
                       </div>
 
                       <div className="parentDivShared">
-                        <p>Developer Experience Required</p>
-                        <p>
+                        <p>Developer's Experience Required</p>
+                        <h2>
                           {devData.developerExperienceRequired}
-                        </p>
+                        </h2>
                       </div>
                       <div className="parentDivShared">
                         <p>Project Expected Starting Days</p>
-                        <p>{devData.expectedStartDate}</p>
+                        <h2>{devData.expectedStartDate}</h2>
                       </div>
 
                       <div className="parentDivShared">
                         <p>Number Of Resources Required</p>
-                        <p>{devData.numberOfResourcesRequired}</p>
+                        <h2>{devData.numberOfResourcesRequired}</h2>
                       </div>
 
                       <div className="parentDivShared">
                         <p>Preferred Billing Mode</p>
-                        <p>{devData.preferredBillingMode}</p>
+                        <h2>{devData.preferredBillingMode}</h2>
                       </div>
 
                       <div className="parentDivShared">
                         <p>Requirement Name</p>
-                        <p>{devData.requirementName}</p>
+                        <h2>{devData.requirementName}</h2>
                       </div>
-
+                      </div>
+                      <div className="childDiv2">
                       <div className="technologies">
-                        <div style={{ width: "30%" }}>Developer Roles Required</div>
+                        <div >Developer Roles Required</div>
                         <div className="devops">
                           {devData.developerRolesRequired.length > 0 &&
-                            <div style={{ marginLeft: "1rem" }}>
+                            <div>
                               {devData.developerRolesRequired.map(dd => {
                                 return (
                                   <p>{dd}</p>
@@ -171,11 +174,11 @@ function RespondedDetails(props) {
                       </div>
 
                       <div className="technologies">
-                        <div style={{ width: "30%" }}>Developer Technologies Required</div>
+                        <div>Developer Technologies Required</div>
                         <div className="devops">
                           {/* {console.log(devData.developerTechnologiesRequired,"tech required")} */}
                           {devData.developerTechnologiesRequired.length > 0 &&
-                            <div style={{ marginLeft: "1rem" }} >
+                            <div>
                               {devData.developerTechnologiesRequired.map(dt => {
                                 return (
                                   <p>{dt.technologyName}</p>
@@ -195,7 +198,9 @@ function RespondedDetails(props) {
                         } */}
                         </div>
                       </div>
-                      <div>
+                      </div>
+                      </div>
+                      <div className="sharedDevDetails2">
                         <div>
                           { devData.agenciesMatched[0].interested === 0 ? <>
                             <button onClick={() => agencyAction(1, devData._id)} className="acceptButtonShare" /*onClick={}*/>
@@ -204,13 +209,12 @@ function RespondedDetails(props) {
                             <button onClick={() => agencyAction(2,devData._id)} className="rejectButtonShare" /*onClick={}*/>
                               Reject
                             </button></> : <>
-                            <button disabled="true" className="acceptButtonShare" >
+                            <button disabled="true" style={{backgroundColor:devData.agenciesMatched[0].interested===1? "green": "red", borderRadius:devData.agenciesMatched[0].interested===1||2}} className="acceptButtonShare" >
                              {devData.agenciesMatched[0].interested===1?"Accepted":"Rejected" } </button>
                             </>
                           }
-                          </div>
                       </div>
-
+                      </div>
                       </div>
                       )
                 })

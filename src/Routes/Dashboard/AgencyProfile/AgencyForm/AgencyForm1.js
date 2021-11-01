@@ -19,25 +19,25 @@ function AgencyForm1(props) {
     const api_param_const = "agencies"
 
     const [loading, setLoading] = useState(false);
-    const [linkedIn, setLinkedIn] = useState({
-        platformName: "linkedIn",
-        platformLink: ""
-    })
     const [steps, setSteps] = useState('')
 
     const [agencyLogo, setAgencyLogo] = useState(null)
     const [formData, setFormData] = useState({
-        stepsCompleted: "2",
-        ownerName: "",
-        agencyEmail: "",
-        agencyPhone: "",
-        agencyDescription: "",
-        socialPlatformDetails: [],
+        stepsCompleted: 2,
+        ownerName: props?.location?.state?.agencyForm1 ? props.location.state.agencyForm1.ownerName : "",
+        agencyEmail: props?.location?.state?.agencyForm1 ? props.location.state.agencyForm1.agencyEmail : "",
+        agencyPhone: props?.location?.state?.agencyForm1 ? props.location.state.agencyForm1.agencyPhone : "",
+        agencyDescription: props?.location?.state?.agencyForm1 ? props.location.state.agencyForm1.agencyDescription : "",
+        socialPlatformDetails: props?.location?.state?.agencyForm1 ? props.location.state.agencyForm1.socialPlatformDetails : [],
         agencyLogo: null,
-        agencyAddress: {
+        agencyAddress: props.location.state?.agencyForm1 ? props.location.state.agencyForm1.agencyAddress : {
             address: "",
             location: ""
         },
+    })
+    const [linkedIn, setLinkedIn] = useState({
+        platformName: "linkedIn",
+        platformLink: formData.socialPlatformDetails[0] ? formData.socialPlatformDetails[0].platformLink : ""
     })
 
     const [formDataErrors, setFormDataErrors] = useState({
@@ -58,7 +58,7 @@ function AgencyForm1(props) {
             instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
                 .then(function (response) {
                     setLoading(false);
-                    props.history.push("/agency-form-two");
+                    props.history.push("/agency-form-two", { agencyForm1: formData });
                 })
                 .catch(err => {
                     setLoading(false);
@@ -72,6 +72,10 @@ function AgencyForm1(props) {
                 setSteps(response.stepsCompleted);
             });
     };
+
+    useEffect(() => {
+        console.log(formData);
+    }, [formData])
 
     useEffect(() => {
         getStepsCompleted();
@@ -399,7 +403,7 @@ function AgencyForm1(props) {
                                                     <img src={fileIcon} alt="finish" />
                                                 </button>
                                             </FilePicker>
-                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name.slice(0,20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p>
+                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name.slice(0, 20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p>
                                             {formDataErrors.agencyLogoError !== '' &&
                                                 <p className="error_agencyForm">
                                                     {formDataErrors.agencyLogoError}
@@ -409,6 +413,7 @@ function AgencyForm1(props) {
                                     </div>
                                     <div className="getAgencyDesc">
                                         <p>Description</p>
+                                        {console.log(formData, "formdata check")}
                                         <textarea
                                             name="agencyDescription"
                                             cols="30"

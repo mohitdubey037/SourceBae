@@ -5,6 +5,7 @@ import Mainhomepage from "./Routes/LandingPage/Mainhomepage";
 import PageNotFound from "./Routes/PageNotFound/PageNotFound";
 import Login from "./Routes/Login/Login";
 import Register from "./Routes/Register/Register";
+import VerifyPage from './Components/Verify_Page/Verify_Page';
 
 import AddingDeveloper from "./Routes/Dashboard/AddDeveloper.js/AddingDeveloper";
 import Quotation from "./Routes/Dashboard/Quotation/Quotation";
@@ -58,6 +59,7 @@ const App = (props) => {
     const msg = firebaseConfig.messaging();
     if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
+        console.log("on message",message)
         setShow(true);
         setNotification({
           title: message?.notification?.title,
@@ -83,6 +85,7 @@ const App = (props) => {
       ) : null}
       <Switch>
         <Route exact path="/" component={Mainhomepage} />
+        <Route exact path="/Verify_Page" component={VerifyPage} />
         <Route exact path="/login:role" component={Login} />
         <Route exact path="/register:role" component={Register} />
         <Route exact path="/enter-email" component={EnterEmail} />

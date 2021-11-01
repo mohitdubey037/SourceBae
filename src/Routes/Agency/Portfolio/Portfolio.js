@@ -52,6 +52,9 @@ function Portfolio(props) {
         if (form.projectName === '') {
             errors.projectName = 'Project Name is required'
         }
+        else if (form.projectName.length > 50) {
+            errors.projectName = 'Projret name must be shorter thm 50 letter'
+        }
         else if (form.projectDescription === '') {
             errors.projectDescription = 'Project Description  is required'
         }
@@ -198,15 +201,15 @@ function Portfolio(props) {
                                     {errors.projectName && (<p className="error_paragraph basic">{errors.projectName}</p>)}
                                 </div>
                                 <div>
-                                    {/* <p className="project-question">Do You have a website(product) link ?</p>
+                                    <p className="project-question">Do You have a website(product) link ?</p>
                                     <input name="input1" type="text" placeholder="Enter url" onChange={(event) => handleChange(event)} />
-                                    {errors.field4 && (<p className="error_paragraph basic">{errors.field4}</p>)} */}
+                                    {errors.field4 && (<p className="error_paragraph basic">{errors.field4}</p>)}
                                 </div>
                             </div>
                             <div className="portfolio_inputs portfolio_inputs_second">
                                 <div>
                                     <p className="project-question">Write about the project ?</p>
-                                    <textarea name="projectDescription" id="input1" cols="30" rows="10" value={form.projectDescription} placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
+                                    <textarea name="projectDescription" style={{width:"108%"}} id="input1" cols="30" rows="10" value={form.projectDescription} placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
                                     {errors.projectDescription && (<p className="error_paragraph basic">{errors.projectDescription}</p>)}
                                 </div>
                                 <div>
