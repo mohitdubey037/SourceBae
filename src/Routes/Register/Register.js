@@ -47,6 +47,14 @@ const Register = (props) => {
   }
   const dateClasses = dateStyles();
   const [state, setState] = useState("");
+  const [errorData, setErrorData] = useState({
+    userEmail: true,
+    userName: true,
+    userPhone: true,
+  })
+
+
+  const [token, setToken] = useState(null);
   let { role } = useParams();
   role = helper.capitalize(helper.cleanParam(role));
   if (!(role === "Agency" || role === "Client"))
@@ -91,6 +99,8 @@ const Register = (props) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [apiErrors, setApiErrors] = useState(false);
+
   const [step, setStep] = useState(1);
 
   const handleSocialPlatform = (event) => {
@@ -108,7 +118,7 @@ const Register = (props) => {
     }
   };
 
-  // useEffect(() => { }, [apiErrors]);
+  useEffect(() => { }, [apiErrors]);
 
   const setForm = (event) => {
     let { name, value } = event.target;
@@ -165,17 +175,26 @@ const Register = (props) => {
       signupForm.userName.length > 50
     ) {
       err.userNameError = "User name must be between 2-50 characters.";
-    } else if (signupForm.userEmail === "") {
+    } else if (errorData.userName === false) {
+      err.emailError = "UserName already Exist";
+    }
+    else if (signupForm.userEmail === "") {
       err.emailError = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(signupForm.userEmail)) {
       err.emailError = "Invalid email address.";
-    } else if (signupForm.userPhone === "") {
+    } else if (errorData.userEmail === false) {
+      err.emailError = "Email already exist";
+    }
+    else if (signupForm.userPhone === "") {
       err.phoneError = "Phone is required.";
     } else if (signupForm.userPhone.match(/[^0-9]/g)) {
       err.phoneError = "Phone number must be digit.";
     } else if (signupForm.userPhone.length < 10) {
       err.phoneError = "Phone must be of 10 digits.";
-    } else if (signupForm.password === "") {
+    } else if (errorData.userPhone === false) {
+      err.emailError = "Phone Number already exist";
+    }
+    else if (signupForm.password === "") {
       err.passwordError = "Password is required.";
     } else if (signupForm.password.length < 6) {
       err.passwordError = "Password must be 8 characters in length.";
@@ -188,9 +207,9 @@ const Register = (props) => {
     else return false;
   }
 
-  const handleErrorsValidation = () => {
+  const handleErrorsValidation = (Role) => {
     const err = {};
-    if (role === "Agency") {
+    if (Role === "Agency") {
       if (agencyProfileDetails?.agencyName === "") {
         err.agencyNameError = "Agency name is required";
       } else if (agencyProfileDetails?.agencyName.match(/^[0-9]+$/)) {
@@ -221,7 +240,7 @@ const Register = (props) => {
       setErrors(err);
       if (Object.keys(err).length === 0) return true;
       else return false;
-    } else if (role === "Client") {
+    } else if (Role === "Client") {
       if (clientProfileDetails.userDesignation === "") {
         err.userDesignationError = "User Designation Field is required";
       } else if (clientProfileDetails.userDesignation.length < 2) {
@@ -264,62 +283,106 @@ const Register = (props) => {
   };
 
   //API call methods
-  const signUpApi = (event) => {
-    event.preventDefault();
+
+  const verifyInput = () => {
+    let { userEmail, userName, userPhone } = signupForm;
     if (firstFormErrorValidation()) {
-      // instance.post(`/api/${role}/auths/signup`, signupForm)
-      let { userName, userEmail, userPhone} = signupForm
-      instance.get(`api/${role}/auths/verify-signup`, {userName, userEmail, userPhone})
+      instance.post(`/api/${role}/auths/verify-signup`, { userEmail, userName, userPhone })
+        .then(res => {
+          console.log("res",res);
+          toggleForms("next");
+        })
+        .catch(err => {
+          console.log('err',err.response.data);
+          setErrorData({
+            userEmail: err.response.data.userEmail,
+            userName: err.response.data.userName,
+            userPhone: err.response.data.userPhone,
+          })
+        })
+    }
+  }
+
+  useEffect(() => {
+  }, [errorData])
+
+
+  const signUpApi = async (role, form) => {
+    return new Promise((resolve, reject) => {
+      instance
+        .post(`/api/${role}/auths/signup`, form)
         .then(function (response) {
           cookie.save("Authorization", `Bearer ${response.accessToken}`, {
             path: "/",
           });
+          setApiErrors(false);
+          setToken(cookie.load("Authorization"));
           localStorage.setItem("role", role);
           localStorage.setItem("userId", `${response._id}`);
-          toggleForms("next")
         })
         .catch((err) => {
+          console.log(err);
+          setApiErrors(true);
           localStorage.removeItem("Authorization");
           localStorage.removeItem("role");
           cookie.remove("user");
         });
-    };
-  }
+    });
+  };
 
-  const createProfileApi = () => {
-    if (handleErrorsValidation()) {
-      setLoading(true);
+  const createProfileApi = (Role, api_param_const, createForm) => {
+    setLoading(true);
+    instance
+      .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
+      .then(function (response) {
+        if (role.toLowerCase() === "client") {
+          props.history.push("/clientNewestDashboard");
+          setLoading(false);
+        } else if (role.toLowerCase() === "agency") {
+          props.history.push("/agencyNewestDashboard");
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+  };
+
+
+
+  const handleSubmit = (Role, Form) => {
+    if (handleErrorsValidation(Role)) {
+      signUpApi(Role, Form);
+    }
+  };
+
+  useEffect(() => {
+    if (token !== null && apiErrors === false) {
+      const apiRole = helper.lowerize(role);
       let api_param_const = ``;
       let api_create_form = {};
-      if (role === `Client`) {
+      if (apiRole === `client`) {
         api_param_const = `clients`;
         api_create_form = {
           stepsCompleted: 1,
           ...clientProfileDetails,
         };
-      } else if (role === `Agency`) {
+      } else if (apiRole === `agency`) {
         api_param_const = `agencies`;
         api_create_form = {
           stepsCompleted: 1,
           ...agencyProfileDetails,
         };
       }
-      instance.defaults.headers.common["Authorization"] = localStorage.getItem("Authorization");
-      instance.post(`api/${role}/${api_param_const}/create`, api_create_form)
-        .then(function (response) {
-          if (role === "Client") {
-            props.history.push("/clientNewestDashboard");
-            setLoading(false);
-          } else if (role === "Agency") {
-            props.history.push("/agencyNewestDashboard");
-            setLoading(false);
-          }
-        })
-        .catch((err) => {
-          setLoading(false);
-        });
-    };
-  }
+      if (token !== null) {
+        instance.defaults.headers.common["Authorization"] =
+          localStorage.getItem("Authorization");
+        createProfileApi(apiRole, api_param_const, api_create_form);
+      } else {
+        toast.error("Token not set", { autoClose: 2000 });
+      }
+    }
+  }, [token, apiErrors]);
 
   const createRoleString = (role) => {
     role = role.charAt(0).toUpperCase() + role.slice(1);
@@ -339,6 +402,7 @@ const Register = (props) => {
   }
 
   const backOnForm2 = () => {
+    setStep((prev) => prev - 1);
     let form1 = document.querySelector(".form__1");
     let form2 = document.querySelector(".form__2");
     form1.classList.toggle("hide__form1");
@@ -409,8 +473,8 @@ const Register = (props) => {
                       )}
                     </h6>
                   </div>
-
-                  <div className="login_switch signup_switch">
+                  {
+                    step <= 1 &&  <div  className="login_switch signup_switch">
                     <button
                       onClick={() => handleChangeToggle("agency")}
                       className={`agency__button ${(state === "" || state === "agency") &&
@@ -426,7 +490,9 @@ const Register = (props) => {
                     >
                       <p>Client</p>
                     </button>
-                  </div>
+                  </div> 
+                  }
+                 
                 </div>
                 <div className="client__formsContainer">
                   <form className="client__form form__1" autoComplete="off">
@@ -536,11 +602,14 @@ const Register = (props) => {
                     </div>
 
                     <div className="already_next_register">
-                      <button className={`next_Register ${state === "client" && "active__buttonclient"}`}
-                        onClick={signUpApi}
+                      <div
+                        className={`next_Register ${state === "client" && "active__buttonclient"
+                          }`}
+                        // onClick={() => toggleForms("next")}
+                        onClick={verifyInput}
                       >
                         <p>NEXT</p>
-                      </button>
+                      </div>
                       <div className="registerOption">
                         <p>
                           Already have an account?{" "}
@@ -660,8 +729,7 @@ const Register = (props) => {
                             </div>
                             <div
                               className="nextRegister_onAgency"
-                              // onClick={() => handleSubmit(role, signupForm)}
-                              onClick={createProfileApi}
+                              onClick={() => handleSubmit(role, signupForm)}
                             >
                               <p>Submit</p>
                             </div>
@@ -732,8 +800,7 @@ const Register = (props) => {
                             </div>
                             <div
                               className="nextRegister_onClient"
-                              // onClick={() => handleSubmit(role, signupForm)}
-                              onClick={createProfileApi}
+                              onClick={() => handleSubmit(role, signupForm)}
                             >
                               <p>Submit</p>
                             </div>
@@ -743,6 +810,9 @@ const Register = (props) => {
                     )}
 
                     <div className="already_next_register">
+                      {/* <div className="next_Register" onClick={() => handleSubmit(role, signupForm)}>
+                                                <p>Submit</p>
+                                            </div> */}
                       <div className="registerOption">
                         <p>
                           Already have an account?{" "}
@@ -758,6 +828,9 @@ const Register = (props) => {
                       </div>
                     </div>
                   </form>
+                  {/* <div className="existing_accountText">
+                                        <p>Step {step} of 4</p>
+                                    </div> */}
                 </div>
               </div>
             </div>
