@@ -18,6 +18,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Back from '../../../Components/Back/Back';
 
+import * as helper from "../../../shared/helper";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -104,6 +105,8 @@ function ProductAgencies(props) {
     const [err, setErr] = useState();
     const [allDomainsData, setAllDomainsData] = useState([]);
 
+    const [errors, setErrors] = useState({});
+
 
     const onOpenModal = (agencyId) => {
         setOpen(true);
@@ -126,14 +129,35 @@ function ProductAgencies(props) {
     }, [form])
 
     const handleConnect = (agencyId) => {
-        instance.post(`/api/${Role}/products/connect-agency`, form)
-            .then(res => {
-                // console.log(res);
-                onCloseModal()
-            })
-            .catch(err => {
-                // console.log(err);
-            })
+        if (handleValidation()) {
+            instance.post(`/api/${Role}/products/connect-agency`, form)
+                .then(res => {
+                    // console.log(res);
+                    onCloseModal()
+                })
+                .catch(err => {
+                    // console.log(err);
+                })
+        }
+    }
+
+    const handleValidation = () => {
+        const err = {}
+        if (form.subject === '') {
+            err.subject = "subject can't be empty";
+        }
+        else if (form.message === '') {
+            err.message = "message can't be empty";
+        }
+        else if (form.linkedIn === '') {
+            err.linkedIn = "linked url is required";
+        }
+        else if (!helper.validateLinkedIn(form.linkedIn)) {
+            err.linkedIn = "invalid linked url";
+        }
+        setErrors(err);
+        if (Object.keys(err).length === 0) return true;
+        else return false;
     }
 
     // const arr = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -469,10 +493,20 @@ function ProductAgencies(props) {
                     <div className="productModalInput">
                         <p>Subject</p>
                         <input name="subject" onChange={handleChange} type="text" placeholder="Enter your subject" />
+                        {errors.subject && (
+                            <p className="error_productAgencies">
+                                {errors.subject}
+                            </p>
+                        )}
                     </div>
                     <div className="productModalInput">
                         <p>Message</p>
                         <textarea name="message" onChange={handleChange} cols="30" rows="6" type="text" placeholder="Enter your message here" />
+                        {errors.message && (
+                            <p className="error_productAgencies">
+                                {errors.message}
+                            </p>
+                        )}
                     </div>
                     {/* <div className="productModalInput">
                         <p>Email ID</p>
@@ -481,6 +515,11 @@ function ProductAgencies(props) {
                     <div className="productModalInput">
                         <p>Linkedin URL</p>
                         <input name="linkedIn" onChange={handleChange} type="text" placeholder="Enter your url" />
+                        {errors.linkedIn && (
+                            <p className="error_productAgencies">
+                                {errors.linkedIn}
+                            </p>
+                        )}
                     </div>
                 </div>
                 <div className="connectedButton">
