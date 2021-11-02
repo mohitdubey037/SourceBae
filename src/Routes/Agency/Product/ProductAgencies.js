@@ -505,10 +505,6 @@ function ProductAgencies(props) {
                             </p>
                         )}
                     </div>
-                    {/* <div className="productModalInput">
-                        <p>Email ID</p>
-                        <input type="text" placeholder="Enter your email" />
-                    </div> */}
                     <div className="productModalInput">
                         <p>Linkedin URL</p>
                         <input name="linkedIn" onChange={handleChange} type="text" placeholder="Enter your url" />

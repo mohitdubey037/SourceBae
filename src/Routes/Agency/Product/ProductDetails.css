@@ -348,7 +348,9 @@
 
 .moreAgencyInfo_productDetails {
     padding: 0.5rem 2rem 0rem;
-    text-align: justify;
+    /* text-align: justify; */
+    width: 100%;
+    overflow: hidden;
 }
 
 .moreAgencyLogo_productDetails {
@@ -372,11 +374,6 @@
 .moreAgencyLogo_productDetails div img {
     width: 100%;
     object-fit: contain;
-}
-
-.moreAgencyInfo_productDetails {
-    width: 100%;
-    overflow: hidden;
 }
 
 .moreAgencySeeMore {
