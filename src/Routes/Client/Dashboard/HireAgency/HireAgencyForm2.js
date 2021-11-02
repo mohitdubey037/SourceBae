@@ -36,7 +36,6 @@ const BlueRadio = withStyles({
 
 function HireAgencyForm2(props) {
   const propData = props.location.state;
-  console.log(props);
   const Role = localStorage.getItem('role');
   let { projectId } = useParams();
   projectId = helper.cleanParam(projectId);
@@ -49,7 +48,6 @@ function HireAgencyForm2(props) {
     projectExpertiseRequired: [],
     agencyExperience: propData?.agencyForm2?.agencyExperience ? propData?.agencyForm2?.agencyExperience : "",
   });
-  console.log(projectId, "projectId")
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState(null);
   const [options, setOptions] = useState([]);

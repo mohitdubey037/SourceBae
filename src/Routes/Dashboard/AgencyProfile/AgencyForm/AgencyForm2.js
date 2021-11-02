@@ -20,7 +20,6 @@ import { toast } from "react-toastify";
 
 
 function AgencyForm2(props) {
-  console.log(props);
   const Role = localStorage.getItem("role");
   const [loading, setLoading] = useState(true);
   const [steps, setSteps] = useState('');
@@ -362,7 +361,6 @@ function AgencyForm2(props) {
                         defaultChecked={apiData?.agencyMonthlyBudget}
                         onChange={handleChange}
                       >
-                        {console.log(apiData?.agencyMonthlyBudget,"radio checkS")}
                         <FormControlLabel
                           value="1000"
                           control={<Radio />}

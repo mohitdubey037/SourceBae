@@ -140,8 +140,6 @@ function ShortTerm(props) {
       err.agencyExperience = "Please select a Agency Experience.";
     }
 
-    console.log(apiData,"api data")
-
     setErrors(err);
     if (Object.keys(err).length === 0) return true;
     else return false;

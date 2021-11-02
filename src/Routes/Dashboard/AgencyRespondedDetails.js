@@ -56,7 +56,6 @@ function AgencyRespondedDetails(props) {
 
   // useEffect(()=>{
   //   const gettingReduxState = useSelector((state) => {
-  //     console.log(state);
   //     setChatNotification(state.notification);
   //   });
   // },[])

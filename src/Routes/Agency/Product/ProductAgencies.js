@@ -125,18 +125,15 @@ function ProductAgencies(props) {
     })
 
     useEffect(() => {
-        // console.log(form);
     }, [form])
 
     const handleConnect = (agencyId) => {
         if (handleValidation()) {
             instance.post(`/api/${Role}/products/connect-agency`, form)
                 .then(res => {
-                    // console.log(res);
                     onCloseModal()
                 })
                 .catch(err => {
-                    // console.log(err);
                 })
         }
     }

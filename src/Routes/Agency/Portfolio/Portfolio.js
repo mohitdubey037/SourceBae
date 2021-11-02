@@ -30,7 +30,6 @@ function Portfolio(props) {
     const [logo, setLogo] = useState(null);
 
     useEffect(() => {
-        console.log(logo);
     }, [logo])
 
     const handleChange = (event) => {
@@ -75,7 +74,6 @@ function Portfolio(props) {
     const createPortfolio = () => {
         instance.post(`/api/${Role}/portfolios/create`, form)
             .then(res => {
-                console.log(res);
             })
             .catch(err => {
 
@@ -96,7 +94,6 @@ function Portfolio(props) {
                 instance.post(`api/${Role}/media/create`, fileForm)
                     .then(function (response) {
                         setLoading(false);
-                        console.log(response[0].mediaURL);
                         setForm({
                             ...form,
                             projectLogo: response[0].mediaURL
@@ -110,15 +107,12 @@ function Portfolio(props) {
     }
 
     useEffect(() => {
-        console.log(form);
     }, [form])
 
     useEffect(() => {
         if (form.projectLogo !== '') {
-            console.log('mohit')
             createPortfolio();
         }
-        console.log(form);
     }, [form])
 
     return (

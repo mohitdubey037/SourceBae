@@ -314,14 +314,12 @@ const Register = (props) => {
           }
         })
         .catch(err => {
-          // console.log('err', err.response.data);
         })
     };
     // firstFormErrorValidation()
   }
 
   useEffect(() => {
-    console.log(errorData)
     if (!isFirstRender) verifyValidation()
   }, [errorData])
 
@@ -340,7 +338,6 @@ const Register = (props) => {
           localStorage.setItem("userId", `${response._id}`);
         })
         .catch((err) => {
-          console.log(err);
           setApiErrors(true);
           localStorage.removeItem("Authorization");
           localStorage.removeItem("role");

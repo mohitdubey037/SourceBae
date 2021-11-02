@@ -36,7 +36,6 @@ function CancelledProjects(props) {
     }, [])
 
     useEffect(() => {
-        console.log(projects);
     }, [projects])
 
     return (

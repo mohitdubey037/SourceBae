@@ -187,7 +187,6 @@ function ProductForm(props) {
   const Role = localStorage.getItem('role');
 
   useEffect(() => {
-    console.log(apiData.productDomainId);
   }, [apiData])
 
 

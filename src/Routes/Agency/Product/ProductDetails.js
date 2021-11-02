@@ -476,15 +476,6 @@ function ProductDetails(props) {
             />
           </div>
           <div className="productModalInput">
-            <p>Email ID</p>
-            <input
-              onChange={formHandler}
-              name="emailId"
-              type="text"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div className="productModalInput">
             <p>Linkedin URL</p>
             <input
               onChange={formHandler}

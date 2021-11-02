@@ -132,8 +132,6 @@ const HireAgencyForm1 = (props) => {
     }
      else {
       setLoading(true);
-      console.log("agencyForm1s",props?.location?.state?.agencyForm1);
-      console.log("id",props?.location?.state?.agencyForm1?.projectId);
       instance
         .post(`/api/${Role}/projects/create`,(props?.location?.state?.agencyForm1?.projectId)?{...data, id:props.location.state.agencyForm1?.projectId}:data)
         .then(function (response) {

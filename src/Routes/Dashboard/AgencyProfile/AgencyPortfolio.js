@@ -23,7 +23,6 @@ function AgencyPortfolio(props) {
   const [editRules, setEditRules] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({});
-console.log(props.agencyId,"agencyId")
   const handalLoading = () => {
     setEditRules(false);
   }
@@ -43,11 +42,9 @@ console.log(props.agencyId,"agencyId")
     instance
       .get(`api/${Role}/portfolios/all?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response,'response');
         setAgencyPortfoliodata(response);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -80,7 +77,6 @@ console.log(props.agencyId,"agencyId")
 //   }, []);
 
   useEffect(() => {
-    console.log(rules);
   }, [rules]);
 
   return (

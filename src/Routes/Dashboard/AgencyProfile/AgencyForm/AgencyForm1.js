@@ -74,7 +74,6 @@ function AgencyForm1(props) {
     };
 
     useEffect(() => {
-        console.log(formData);
     }, [formData])
 
     useEffect(() => {
@@ -413,7 +412,6 @@ function AgencyForm1(props) {
                                     </div>
                                     <div className="getAgencyDesc">
                                         <p>Description</p>
-                                        {console.log(formData, "formdata check")}
                                         <textarea
                                             name="agencyDescription"
                                             cols="30"

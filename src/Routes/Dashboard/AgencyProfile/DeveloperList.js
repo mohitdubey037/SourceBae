@@ -87,9 +87,7 @@ function DeveloperList(props) {
     const updateDevelopers = (data, developerId) => {
         let url = `/api/${Role}/developers/update/${developerId}`;
         instance.patch(url, data).then((res) => {
-            console.log("res", res)
         }).catch((err) => {
-            console.log("err", err)
         })
         // instance.patch(`/api/${Role}/developers/update/${developerId}`)
         //     .then(function (response) {
@@ -108,10 +106,8 @@ function DeveloperList(props) {
         else {
             tempIndexes[ind] = true
         }
-        console.log('tempIndexes', tempIndexes)
         setToggleIndexes(tempIndexes)
 
-        console.log("developer", developers)
         let tempDevs = developers;
         tempDevs[ind].isDeveloperActive = !tempDevs[ind].isDeveloperActive;
 
@@ -120,8 +116,6 @@ function DeveloperList(props) {
         }
         updateDevelopers(data, developers[ind]._id)
         // setDevelopers(tempDevs)
-        console.log("state", state)
-        console.log("event", event)
         setState({ ...state, [event.target.name]: event.target.checked })
     };
 
@@ -143,7 +137,6 @@ function DeveloperList(props) {
 
     const IndexSetter = (index) => {
         setToggleIndexes(toggleIndexes);
-        console.log(developers[index], "developers");
         setOpen(!open);
     }
 
@@ -162,7 +155,6 @@ function DeveloperList(props) {
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
                 setAgencyProfileData(response);
-                console.log(response);
             })
             .catch((err) => {
             });
