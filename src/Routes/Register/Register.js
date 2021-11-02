@@ -268,11 +268,11 @@ const Register = (props) => {
     if (errorData.userEmail === false) {
       err.emailError = "Email already exist";
     }
-    else if (errorData.userName === false) {
-      err.emailError = "UserName already Exist";
+    if (errorData.userName === false) {
+      err.userNameError = "UserName already Exist";
     }
-    else if (errorData.userPhone === false) {
-      err.emailError = "Phone Number already exist";
+    if (errorData.userPhone === false) {
+      err.phoneError = "Phone Number already exist";
     }
     setErrors(err);
     if (Object.keys(err).length === 0) return true;
