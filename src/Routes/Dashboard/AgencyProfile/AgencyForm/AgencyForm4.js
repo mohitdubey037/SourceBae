@@ -59,6 +59,18 @@ function AgencyForm4(props) {
         }
     }
 
+    // window.addEventListener('popstate', (event) => {
+    //     alert("You message");
+    // })
+
+    // useEffect(() => {
+    //     if (props.history.action === "POP") {
+    //         console.log("write your logic here")
+    //         alert('hiiiiiiiiiiiiiii');
+    //     }
+
+    // }, [])
+
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
@@ -111,21 +123,22 @@ function AgencyForm4(props) {
 
     const goBack = () => {
         if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-        if (url.includes('agency-form-one')) {
-            props.history.push('/agencyNewestDashboard');
+            if (url.includes('agency-form-one')) {
+                props.history.push('/agencyNewestDashboard');
+            }
+            else if (url.includes('agency-form-two')) {
+                props.history.push('/agency-form-one');
+            }
+            else if (url.includes('agency-form-three')) {
+                props.history.push('/agency-form-two');
+            }
+            else if (url.includes('agency-form-four')) {
+                props.history.push('/agency-form-three');
+            }
+            else {
+                props.history.goBack();
+            }
         }
-        else if (url.includes('agency-form-two')) {
-            props.history.push('/agency-form-one');
-        }
-        else if (url.includes('agency-form-three')) {
-            props.history.push('/agency-form-two');
-        }
-        else if (url.includes('agency-form-four')) {
-            props.history.push('/agency-form-three');
-        }
-        else {
-            props.history.goBack();
-        }}
     }
 
 
