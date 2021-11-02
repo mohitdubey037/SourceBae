@@ -102,28 +102,51 @@ function ProductAgencies(props) {
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState([]);
     const [err, setErr] = useState();
-    const [allDomainsData, setAllDomainsData] = useState([])
+    const [allDomainsData, setAllDomainsData] = useState([]);
 
-    const onOpenModal = () => setOpen(true);
+
+    const onOpenModal = (agencyId) => {
+        setOpen(true);
+        setForm({
+            ...form,
+            agencyId: agencyId
+        })
+    }
     const onCloseModal = () => setOpen(false);
 
     const [form, setForm] = useState({
-        input1: '',
-        input2: '',
-        input3: ''
+        agencyId: '',
+        subject: '',
+        message: '',
+        linkedIn: ''
     })
+
+    useEffect(() => {
+        // console.log(form);
+    }, [form])
+
+    const handleConnect = (agencyId) => {
+        instance.post(`/api/${Role}/products/connect-agency`, form)
+            .then(res => {
+                // console.log(res);
+                onCloseModal()
+            })
+            .catch(err => {
+                // console.log(err);
+            })
+    }
 
     // const arr = [1, 2, 3, 4, 5, 6, 7, 8];
     const classes = useStyles();
     const theme = useTheme();
 
-    // const handleChange = (event) => {
-    //     const {name, value} = event.target;
-    //     const setForm({
-    //         ...form,
-    //         [name]: value
-    //     })
-    // };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setForm({
+            ...form,
+            [name]: value
+        })
+    };
 
     const handleLocation = (event) => {
         setSearchLocation(event.target.value);
@@ -296,7 +319,7 @@ function ProductAgencies(props) {
                                                                         </div>
                                                                     </div>
                                                                     <div className="productAgencyDescPara">
-                                                                        <p style={{width:"80%"}}>{value?.agencyId?.agencyDescription}</p>
+                                                                        <p style={{ width: "80%" }}>{value?.agencyId?.agencyDescription}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -309,7 +332,7 @@ function ProductAgencies(props) {
                                                                     condition: 'Client'
                                                                 }}>View Product</NavLink>
                                                             </div>
-                                                            <div onClick={onOpenModal}><p>Connect</p></div>
+                                                            <div onClick={() => onOpenModal(value.agencyId._id)}><p>Connect</p></div>
                                                         </div>
                                                     </div>
                                                 )
@@ -326,7 +349,7 @@ function ProductAgencies(props) {
 
                                             <div className="locationFilter">
                                                 <p>Location</p>
-                                                <input style={{paddingLeft: '2px'}} name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." value={searchLocation} />
+                                                <input style={{ paddingLeft: '2px' }} name='location' id="filterLocation" onChange={(event) => handleLocation(event)} type="text" placeholder="Type here.." value={searchLocation} />
                                             </div>
 
                                             <div className="officeVisitFilter_productAgencies">
@@ -445,11 +468,11 @@ function ProductAgencies(props) {
 
                     <div className="productModalInput">
                         <p>Subject</p>
-                        <input type="text" placeholder="Enter your subject"  />
+                        <input name="subject" onChange={handleChange} type="text" placeholder="Enter your subject" />
                     </div>
                     <div className="productModalInput">
                         <p>Message</p>
-                        <textarea cols="30" rows="6" type="text" placeholder="Enter your message here" />
+                        <textarea name="message" onChange={handleChange} cols="30" rows="6" type="text" placeholder="Enter your message here" />
                     </div>
                     {/* <div className="productModalInput">
                         <p>Email ID</p>
@@ -457,11 +480,11 @@ function ProductAgencies(props) {
                     </div> */}
                     <div className="productModalInput">
                         <p>Linkedin URL</p>
-                        <input type="text" placeholder="Enter your url" />
+                        <input name="linkedIn" onChange={handleChange} type="text" placeholder="Enter your url" />
                     </div>
                 </div>
                 <div className="connectedButton">
-                    <div>
+                    <div onClick={() => handleConnect()}>
                         <p>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
                     </div>
                 </div>
