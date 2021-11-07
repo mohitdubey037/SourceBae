@@ -90,6 +90,7 @@ const Login = (props) => {
         setDevice_token(token);
       });
     }
+    setState(role);
   }, []);
 
   useEffect(() => {
