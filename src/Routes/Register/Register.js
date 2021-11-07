@@ -43,9 +43,9 @@ const dateStyles = makeStyles((theme) => ({
 const Register = (props) => {
   const isFirstRender = useIsFirstRender();
   let localRole = localStorage.getItem("role");
-  // if (props.history.action === "POP") {
-  //   props.history.push(`/register:${localRole}`);
-  // }
+  if (props.history.action === "POP") {
+    props.history.push(`/register:${localRole}`);
+  }
   const dateClasses = dateStyles();
   const [state, setState] = useState("");
   const [errorData, setErrorData] = useState({
