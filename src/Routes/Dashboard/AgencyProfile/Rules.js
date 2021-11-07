@@ -71,7 +71,6 @@ function Rules(props) {
         setAgencyProfileData(response);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -103,6 +102,11 @@ function Rules(props) {
     setRules(props.data.agencyRules);
   }, []);
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+  }, [rules]);
+>>>>>>> 9ef4222e76ab35b31260f3d194ce201061527415
 
   return (
     <>

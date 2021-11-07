@@ -22,7 +22,6 @@ function SkillsSet(props) {
         let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
         instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
             .then(function (response) {
-                // console.log(response);
                 setAgencyProfileData(response);
             })
             .catch((err) => {

@@ -12,7 +12,8 @@ import UpImage1 from '../../../assets/images/Newestdashboard/Client-one-hire-dev
 import DownImage2 from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownImage2.svg';
 import UpBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpBigImage.svg';
 import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownBigImage.svg';
-import DownArrow from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg'
+import DownArrow from '../../../assets/images/Newestdashboard/Agency-Profile/Arrow-button.svg';
+import NotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
 function RespondedDetails(props) {
   const [initial, setInitial] = useState(5);
@@ -118,153 +119,165 @@ function RespondedDetails(props) {
                 singleHiredDeveloper.map(devData => {
                   return (
                     <div className=" width innerResponseCard_sharedDeveloper">
-                   <div className="sharedDevDetails1">
-                    <div className="childDiv1">
-                      <div className="parentDivShared">
-                        <p>Agency Average Budget</p>
-                        <h2>{devData.averageBudget} </h2>
-                      </div>
+                      <div className="sharedDevDetails1">
+                        <div className="childDiv1">
+                          <div className="parentDivShared">
+                            <p>Agency Average Budget</p>
+                            <h2>{devData.averageBudget} </h2>
+                          </div>
 
-                      <div className="parentDivShared">
-                        <p>Contract Period</p>
-                        <h2>{devData.contractPeriod}</h2>
-                      </div>
+                          <div className="parentDivShared">
+                            <p>Contract Period</p>
+                            <h2>{devData.contractPeriod}</h2>
+                          </div>
 
-                      <div className="parentDivShared">
-                        <p>Developer's Experience Required</p>
-                        <h2>
-                          {devData.developerExperienceRequired}
-                        </h2>
-                      </div>
-                      <div className="parentDivShared">
-                        <p>Project Expected Starting Days</p>
-                        <h2>{devData.expectedStartDate}</h2>
-                      </div>
+                          <div className="parentDivShared">
+                            <p>Developer's Experience Required</p>
+                            <h2>
+                              {devData.developerExperienceRequired}
+                            </h2>
+                          </div>
+                          <div className="parentDivShared">
+                            <p>Project Expected Starting Days</p>
+                            <h2>{devData.expectedStartDate}</h2>
+                          </div>
 
-                      <div className="parentDivShared">
-                        <p>Number Of Resources Required</p>
-                        <h2>{devData.numberOfResourcesRequired}</h2>
-                      </div>
+                          <div className="parentDivShared">
+                            <p>Number Of Resources Required</p>
+                            <h2>{devData.numberOfResourcesRequired}</h2>
+                          </div>
 
-                      <div className="parentDivShared">
-                        <p>Preferred Billing Mode</p>
-                        <h2>{devData.preferredBillingMode}</h2>
-                      </div>
+                          <div className="parentDivShared">
+                            <p>Preferred Billing Mode</p>
+                            <h2>{devData.preferredBillingMode}</h2>
+                          </div>
 
-                      <div className="parentDivShared">
-                        <p>Requirement Name</p>
-                        <h2>{devData.requirementName}</h2>
-                      </div>
-                      </div>
-                      <div className="childDiv2">
-                      <div className="technologies">
-                        <div >Developer Roles Required</div>
-                        <div className="devops">
-                          {devData.developerRolesRequired.length > 0 &&
-                            <div>
-                              {devData.developerRolesRequired.map(dd => {
-                                return (
-                                  <p>{dd}</p>
-                                )
-                              })}
-                            </div>
-                          }
+                          <div className="parentDivShared">
+                            <p>Requirement Name</p>
+                            <h2>{devData.requirementName}</h2>
+                          </div>
                         </div>
-                      </div>
-
-                      <div className="technologies">
-                        <div>Developer Technologies Required</div>
-                        <div className="devops">
-                          {devData.developerTechnologiesRequired.length > 0 &&
-                            <div>
-                              {devData.developerTechnologiesRequired.map(dt => {
-                                return (
-                                  <p>{dt.technologyName}</p>
-                                )
-                              })
+                        <div className="childDiv2">
+                          <div className="technologies">
+                            <div >Developer Roles Required</div>
+                            <div className="devops">
+                              {devData.developerRolesRequired.length > 0 &&
+                                <div>
+                                  {devData.developerRolesRequired.map(dd => {
+                                    return (
+                                      <p>{dd}</p>
+                                    )
+                                  })}
+                                </div>
                               }
                             </div>
-                          }
+                          </div>
+
+                          <div className="technologies">
+                            <div>Developer Technologies Required</div>
+                            <div className="devops">
+                              {devData.developerTechnologiesRequired.length > 0 &&
+                                <div>
+                                  {devData.developerTechnologiesRequired.map(dt => {
+                                    return (
+                                      <p>{dt.technologyName}</p>
+                                    )
+                                  })
+                                  }
+                                </div>
+                              }
+                              {/* {devData.developerTechnologiesRequired.length > 0 &&
+                          <ul>
+                            {devData.developerTechnologiesRequired.map(dt => {
+                              return (
+                                <li>{dt}</li>
+                              )
+                            })}
+                          </ul>
+                        } */}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      </div>
                       </div>
                       <div className="sharedDevDetails2">
                         <div>
-                          { devData.agenciesMatched[0].interested === 0 ? <>
+                          {devData.agenciesMatched[0].interested === 0 ? <>
                             <button onClick={() => agencyAction(1, devData._id)} className="acceptButtonShare" /*onClick={}*/>
                               Accept
                             </button>
-                            <button onClick={() => agencyAction(2,devData._id)} className="rejectButtonShare" /*onClick={}*/>
+                            <button onClick={() => agencyAction(2, devData._id)} className="rejectButtonShare" /*onClick={}*/>
                               Reject
                             </button></> : <>
-                            <button disabled="true" style={{backgroundColor:devData.agenciesMatched[0].interested===1? "green": "red", borderRadius:devData.agenciesMatched[0].interested===1||2}} className="acceptButtonShare" >
-                             {devData.agenciesMatched[0].interested===1?"Accepted":"Rejected" } </button>
-                            </>
+                            <button disabled="true" style={{ backgroundColor: devData.agenciesMatched[0].interested === 1 ? "green" : "red", borderRadius: devData.agenciesMatched[0].interested === 1 || 2 }} className="acceptButtonShare" >
+                              {devData.agenciesMatched[0].interested === 1 ? "Accepted" : "Rejected"} </button>
+                          </>
                           }
+                        </div>
                       </div>
-                      </div>
-                      </div>
-                      )
+                    </div>
+                  )
                 })
-                      : (
-                      "No Data Found"
+                : (
+                  <div className="NotFound_SharedDeveloper">
+                    <img src={NotFound} alt="not_found" />
+                    <p>No Data Found</p>
+                  </div>
                 )}
 
 
-                      {(showDevelopers === true && singleHiredDeveloper?.agencyMatched !== undefined) &&
-                        <div className="developers-div">
-                          <div className="moreAgencyList new_design_sharedDeveloper">
-                            {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
-                            {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
-                              singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
-                                singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.slice(0, 5)?.map(
-                                  developer => {
-                                    return (
-                                      <>
-                                        <div className="names_of_developer">
-                                          <div className="name_circle">
-                                            <div>
-                                              <p>{developer?.developerId?.firstName.charAt(0)}</p>
-                                            </div>
-                                          </div>
-                                          <div className="moreAgencyInfo">
-                                            <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
-                                            <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
-                                          </div>
-                                          {developer?.developerId?.developerDocuments?.length > 0 ? (
-                                            <div className="view-resume_div">
-                                              <a className="view-resume_child" href={developer?.developerId?.developerDocuments[0].documentLink} target="new">
-                                                Check Resume
-                                              </a>
-                                            </div>
-                                          ) : (
-                                            "No resume"
-                                          )}
-                                        </div>
-                                      </>
-                                    );
-                                  }
-                                )
-                                : <div>No Developers shared by the Agency.</div>
-                            )
-                              : <div>No Matched Agency Found.</div>
-                            }
+              {(showDevelopers === true && singleHiredDeveloper?.agencyMatched !== undefined) &&
+                <div className="developers-div">
+                  <div className="moreAgencyList new_design_sharedDeveloper">
+                    {/* {singleHiredDeveloper?.agenciesMatched?.length > 0 && singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length >0 && `${JSON.stringify(singleHiredDeveloper?.agenciesMatched[0]?.developersShared[0]?.developerId)}`} */}
+                    {singleHiredDeveloper?.agenciesMatched?.length > 0 ? (
+                      singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.length > 0 ?
+                        singleHiredDeveloper?.agenciesMatched[0]?.developersShared?.slice(0, 5)?.map(
+                          developer => {
+                            return (
+                              <>
+                                <div className="names_of_developer">
+                                  <div className="name_circle">
+                                    <div>
+                                      <p>{developer?.developerId?.firstName.charAt(0)}</p>
+                                    </div>
+                                  </div>
+                                  <div className="moreAgencyInfo">
+                                    <p style={{ textAlign: 'center' }}>{`${developer?.developerId?.firstName} ${developer?.developerId?.lastName}`}</p>
+                                    <p style={{ textAlign: 'center' }}>{developer?.developerId?.developerDesignation}</p>
+                                  </div>
+                                  {developer?.developerId?.developerDocuments?.length > 0 ? (
+                                    <div className="view-resume_div">
+                                      <a className="view-resume_child" href={developer?.developerId?.developerDocuments[0].documentLink} target="new">
+                                        Check Resume
+                                      </a>
+                                    </div>
+                                  ) : (
+                                    "No resume"
+                                  )}
+                                </div>
+                              </>
+                            );
+                          }
+                        )
+                        : <div>No Developers shared by the Agency.</div>
+                    )
+                      : <div>No Matched Agency Found.</div>
+                    }
 
-                            {singleHiredDeveloper?.agenciesMatched?.length > 4 &&
-                              singleHiredDeveloper?.agenciesMatched?.length >= initial &&
-                              <div onClick={() => showMore()} className="show-more_sharedDeveloper">
-                                <p>Show More</p>
-                              </div>
-                            }
-                          </div>
-                        </div>
-                      }
-                    </div>
+                    {singleHiredDeveloper?.agenciesMatched?.length > 4 &&
+                      singleHiredDeveloper?.agenciesMatched?.length >= initial &&
+                      <div onClick={() => showMore()} className="show-more_sharedDeveloper">
+                        <p>Show More</p>
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
           </div>
-          </div>
+        </div>
       }
-        </>
+    </>
   );
 }
 
@@ -272,9 +285,9 @@ function RespondedDetails(props) {
 
 const mapStateToProps = (state) => {
   return {
-        projects: state.projects,
-      condition: state.condition,
+    projects: state.projects,
+    condition: state.condition,
   };
 };
 
-      export default connect(mapStateToProps)(RespondedDetails);
+export default connect(mapStateToProps)(RespondedDetails);

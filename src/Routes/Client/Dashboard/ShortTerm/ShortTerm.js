@@ -140,7 +140,10 @@ function ShortTerm(props) {
       err.agencyExperience = "Please select a Agency Experience.";
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9ef4222e76ab35b31260f3d194ce201061527415
     setErrors(err);
     if (Object.keys(err).length === 0) return true;
     else return false;

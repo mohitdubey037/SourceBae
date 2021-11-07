@@ -174,6 +174,15 @@ function AgencyForm3(props) {
         }
     }
 
+
+
+    // useEffect(() => {
+    //     if (props.history.action === "POP") {
+    //         console.log("write your logic here")
+    //         alert('hiiiiiiiiiiiiiii');
+    //     }
+    // }, [])
+
     useEffect(() => {
         if (props.location.state?.agencyForm3) {
             setRegistrationCertificate({
