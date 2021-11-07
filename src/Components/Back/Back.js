@@ -5,25 +5,32 @@ import { withRouter } from "react-router";
 import instance from '../../Constants/axiosConstants';
 
 function Back(props) {
-
     const [steps, setSteps] = useState('');
     const Role = localStorage.getItem('role');
     const verificationStatus = localStorage.getItem('isVerified');
     const url = props.history.location.pathname;
-
+    
     const goBack = () => {
         if (Role === 'Agency') {
             if (url.includes('agency-form-one')) {
-                props.history.push('/agencyNewestDashboard');
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.push('/agencyNewestDashboard');
+                }
             }
             else if (url.includes('agency-form-two')) {
-                props.history.push('/agency-form-one');
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.push('/agency-form-one');
+                }
             }
             else if (url.includes('agency-form-three')) {
-                props.history.push('/agency-form-two');
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.push('/agency-form-two');
+                }
             }
             else if (url.includes('agency-form-four')) {
-                props.history.push('/agency-form-three');
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.push('/agency-form-three');
+                }
             }
             else {
                 props.history.goBack();

@@ -21,6 +21,19 @@ function AgencyPortfolio(props) {
 
   const [rules, setRules] = useState([]);
   const [form, setForm] = useState({});
+  // const handalLoading = () => {
+  //   setEditRules(false);
+  // }
+
+  // const handleEditRules = (value) => {
+  //   setLoading(true);
+  // };
+
+//   const permanentDisable = (name) => {
+//     if (name === "startTime" || name === "endTime") {
+//       return false;
+//     } else return true;
+//   };
 
   const getAgencyPortfolio = (profileviewStatus) => {
     instance
@@ -29,7 +42,6 @@ function AgencyPortfolio(props) {
         setAgencyPortfoliodata(response);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 

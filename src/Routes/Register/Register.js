@@ -314,7 +314,6 @@ const Register = (props) => {
           }
         })
         .catch(err => {
-          // console.log('err', err.response.data);
         })
     };
     // firstFormErrorValidation()
@@ -339,7 +338,6 @@ const Register = (props) => {
           localStorage.setItem("userId", `${response._id}`);
         })
         .catch((err) => {
-          console.log(err);
           setApiErrors(true);
           localStorage.removeItem("Authorization");
           localStorage.removeItem("role");

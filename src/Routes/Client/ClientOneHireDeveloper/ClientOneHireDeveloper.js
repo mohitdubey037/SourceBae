@@ -42,9 +42,9 @@ function ClientOneHireDeveloper(props) {
 
     const handleDevelopers = (agencyId) => {
         setLoading(true);
-        instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, {isShortListed: true, agencyId: agencyId })
+        instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, { isShortListed: true, agencyId: agencyId })
             .then(res => {
-                setDisability(true);    
+                setDisability(true);
                 setLoading(false);
             })
             .catch(err => {
@@ -53,7 +53,7 @@ function ClientOneHireDeveloper(props) {
     }
 
     useEffect(() => {
-        
+
     }, [disability])
 
     useEffect(() => {
@@ -84,38 +84,37 @@ function ClientOneHireDeveloper(props) {
                     <div className="respondCards_clientOneHireDeveloper">
                         <Back name="Matched Agencies" />
                         <div className="moreAgency_parent">
-                            {(singleHiredDeveloper?.agenciesMatched?.length > 0) ?
-                                singleHiredDeveloper?.agenciesMatched?.map(agency => {
-                                    return (
-                                        <>
-                                            <div className="moreAgencyList new_design_clientOneHireDeveloper">
-                                                <div className="moreAgencyInfo">
-                                                    <div className="agencyDesc_clientOneHireDeveloper">
-                                                        <h6 className="name-title">About the company:{" "}</h6>
-                                                        <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                            {singleHiredDeveloper.length > 0 ?
+                                singleHiredDeveloper?.agenciesMatched?.length > 0 ?
+                                    singleHiredDeveloper?.agenciesMatched?.map(agency => {
+                                        return (
+                                            <>
+                                                <div className="moreAgencyList new_design_clientOneHireDeveloper">
+                                                    <div className="moreAgencyInfo">
+                                                        <div className="agencyDesc_clientOneHireDeveloper">
+                                                            <h6 className="name-title">About the company:{" "}</h6>
+                                                            <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                                                        </div>
+                                                        <div className="email_clientOneHireDeveloper">
+                                                            <p>Description:</p>
+                                                            <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
+                                                        </div>
                                                     </div>
-                                                    {/* <div className="phone_clientOneHireDeveloper">
-                                                            <img src={PhoneImage} alt="phone_image" />
-                                                            <p>{agency?.agencyId?.agencyPhone}</p>
-                                                        </div> */}
-                                                    <div className="email_clientOneHireDeveloper">
-                                                        {/* <img src={Group} alt="group" /> */}
-                                                        <p>Description:</p>
-                                                        <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
-                                                    </div>
-                                                </div>
 
-                                                <div className="button_parent">
-                                                    <button style={singleHiredDeveloper.agenciesMatched[0].isShortListed &&{backgroundColor: 'grey',backgroundImage:"unset"}} disabled={singleHiredDeveloper.agenciesMatched[0].isShortListed && true} onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
-                                                        <p>Get connected to the company</p>
-                                                    </button>
+                                                    <div className="button_parent">
+                                                        <button style={singleHiredDeveloper.agenciesMatched[0].isShortListed && { backgroundColor: 'grey', backgroundImage: "unset" }} disabled={singleHiredDeveloper.agenciesMatched[0].isShortListed && true} onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
+                                                            <p>Get connected to the company</p>
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </>
-                                    )
-                                })
-                                :
-                                <div className="no_matched_agency"><h2>Sorry No Matched Agencies Found.</h2></div>}
+                                            </>
+                                        )
+                                    })
+                                    :
+                                    <div className="no_matched_agency"><h2>Sorry No Matched Agencies Found.</h2></div>
+                                : 
+                                <h2 className="no_matched_agency">Sorry No Matched Agencies Found.</h2>
+                                }
                         </div>
                     </div>
                 </div>

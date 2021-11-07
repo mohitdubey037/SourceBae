@@ -265,10 +265,6 @@ font-family: 'Segoe UI';
     font-size: 14px;
     margin-bottom: 0.8rem;
 }
-/* .technologies div {
-  font-family: "Segoe UI semibold";
-    color: #707070;
-} */
 
 .parentDivShared p {
   font-size: 14px !important;
@@ -286,4 +282,17 @@ font-family: 'Segoe UI';
   display: flex;
   justify-content: space-between;
   padding-bottom: 0.5rem;
+}
+
+.NotFound_SharedDeveloper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.NotFound_SharedDeveloper p {
+  font-family: 'Segoe UI';
+  color: white;
+  transform: translateY(1rem)
 }

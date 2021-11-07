@@ -31,10 +31,12 @@
     font-size: 1rem;
     margin-top: 1rem;
 }
+
 .officeVisitFilter p {
     font-size: 1rem;
     font-family: "Segoe UI semibold";
 }
+
 .MuiSelect-root em {
     font-family: "Segoe UI";
     color: #707070;
@@ -72,16 +74,18 @@
     width: 43rem;
     z-index: 0;
 }
+
 .Image1_productAgencies {
     left: -7rem;
     position: absolute;
     top: -5.5rem;
     width: 43rem;
-  }
+}
 
 .locationFilter input {
     border: 1px solid #999;
 }
+
 .mainAgencyList_productAgencies {
     width: 100%;
     height: 100%;
@@ -112,9 +116,11 @@
     letter-spacing: 0.1rem;
     font-weight: bold;
 }
-.locationFilter p::after, .officeVisitFilter_productAgencies p::after, .officeVisitFilter p::after{
+
+.locationFilter p::after, .officeVisitFilter_productAgencies p::after, .officeVisitFilter p::after {
     content: none !important;
 }
+
 .locationFilter p {
     font-family: 'Segoe UI';
     font-size: 1rem;
@@ -154,16 +160,18 @@
     margin-left: 2rem;
 }
 
-.productAgencyMiddle.bottom{
-    margin-top: -15% ;
+.productAgencyMiddle.bottom {
+    margin-top: -15%;
     margin-left: 3%;
     flex-direction: row-reverse;
 }
+
 .agencyProfileInfo.name h6 {
-    padding-top: 0rem ;
-    padding-left: 1rem ;
+    padding-top: 0rem;
+    padding-left: 1rem;
 }
-.quotationShortlistButton.button{
+
+.quotationShortlistButton.button {
     top: 16rem;
     left: 8.2rem;
 }
@@ -176,9 +184,9 @@
 }
 
 .agencyImageProfile.innerdiv {
- position: relative;
- top: 0rem;
- left: 0.8rem;
+    position: relative;
+    top: 0rem;
+    left: 0.8rem;
 }
 
 .productAgenciesTeam {
@@ -202,28 +210,28 @@
 }
 
 .agencyImageArea.image {
-    width: 100px ;
-    height: 100px  ;
-    margin:0 ;
+    width: 100px;
+    height: 100px;
+    margin: 0;
 }
 
 .agencyPreciseCard.agencyPreciseCard_productAgencies {
     /* background-image: url(../../../assets/images/AddProductAgency/background.svg); */
     height: 19.5rem;
     box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
-    background-image: linear-gradient(to right, #ffffff,#ffffff,#8EC1E0 );
-   margin-bottom: 1rem;
+    background-image: linear-gradient(to right, #ffffff, #ffffff, #8EC1E0);
+    margin-bottom: 1rem;
 }
 
 .agencyPreciseCard {
     background-repeat: no-repeat;
-      background-size: contain;
+    background-size: contain;
     min-height: 30vh;
     background-color: #fff;
     position: relative;
     z-index: 1;
     margin-bottom: -5%;
-  }
+}
 
 .horizontalLine {
     position: absolute;
@@ -252,7 +260,7 @@
     overflow: hidden;
     display: flex;
     margin: 0.54rem 1.2rem 0.2rem 1.2rem;
-    padding: 0.1rem 0.3rem ;
+    padding: 0.1rem 0.3rem;
     justify-content: space-between;
     border-bottom: 1px dotted #707070;
     color: #707070;
@@ -369,7 +377,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.productModalInput p {
+.productModalInput > p {
     font-size: 0.7rem;
     font-weight: bold;
 }
@@ -385,6 +393,14 @@
     background-color: #F8F9F9;
     border: 1px solid #e0e0e0;
     margin-top: 0.3rem;
+}
+
+.error_productAgencies {
+    font-family: 'Segoe UI' !important;
+    color: red !important;
+    font-size: 14px !important;
+    margin-top: 0 !important;
+    font-weight: normal !important ;
 }
 
 .productModalInput input:focus {
