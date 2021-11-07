@@ -280,7 +280,7 @@ function SkillsSet(props) {
             }
         )
             .then(resp => {
-                console.log(resp);
+                // console.log(resp);
             })
     }
 

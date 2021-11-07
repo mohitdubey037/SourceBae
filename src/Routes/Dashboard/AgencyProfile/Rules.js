@@ -68,7 +68,6 @@ function Rules(props) {
     instance
       .get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
       .then(function (response) {
-        console.log(response);
         setAgencyProfileData(response);
       })
       .catch((err) => {
@@ -104,9 +103,6 @@ function Rules(props) {
     setRules(props.data.agencyRules);
   }, []);
 
-  useEffect(() => {
-    console.log(rules);
-  }, [rules]);
 
   return (
     <>

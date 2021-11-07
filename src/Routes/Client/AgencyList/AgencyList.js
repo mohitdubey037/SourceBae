@@ -72,7 +72,6 @@ function AgencyList(props) {
         setLoading(false);
       });
   }, []);
-  console.log(agencyList,"agency list datatagsb")
 
   useEffect(() => {
   }, [project]);
@@ -169,7 +168,6 @@ function AgencyList(props) {
                                   <div className="agencyProfileInfo agencyProfileInfodiv">
                                     <h6>{agency.agencyName}</h6>
                                     <div>
-                                    {console.log(agency,"agency")}
                                     {
                                       agency.agencyServices.map((service)=>{
                                         return <>

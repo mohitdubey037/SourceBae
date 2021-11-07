@@ -31,7 +31,6 @@ function ClientOneHireDeveloper(props) {
         setLoading(true);
         instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`)
             .then(function (response) {
-                console.log(response);
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })

@@ -321,7 +321,6 @@ const Register = (props) => {
   }
 
   useEffect(() => {
-    console.log(errorData)
     if (!isFirstRender) verifyValidation()
   }, [errorData])
 

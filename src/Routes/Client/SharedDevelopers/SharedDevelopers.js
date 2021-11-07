@@ -36,7 +36,6 @@ function RespondedDetails(props) {
     // instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${agencyId}`)
     instance.get(`/api/agency/hire-developers/all?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response);
         setSingleHiredDeveloper(response);
         setLoading(false);
       })
@@ -176,7 +175,6 @@ function RespondedDetails(props) {
                       <div className="technologies">
                         <div>Developer Technologies Required</div>
                         <div className="devops">
-                          {/* {console.log(devData.developerTechnologiesRequired,"tech required")} */}
                           {devData.developerTechnologiesRequired.length > 0 &&
                             <div>
                               {devData.developerTechnologiesRequired.map(dt => {
@@ -187,15 +185,6 @@ function RespondedDetails(props) {
                               }
                             </div>
                           }
-                          {/* {devData.developerTechnologiesRequired.length > 0 &&
-                          <ul>
-                            {devData.developerTechnologiesRequired.map(dt => {
-                              return (
-                                <li>{dt}</li>
-                              )
-                            })}
-                          </ul>
-                        } */}
                         </div>
                       </div>
                       </div>

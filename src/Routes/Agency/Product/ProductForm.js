@@ -186,10 +186,6 @@ function ProductForm(props) {
   // const Role = "agency";
   const Role = localStorage.getItem('role');
 
-  useEffect(() => {
-    console.log(apiData.productDomainId);
-  }, [apiData])
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;

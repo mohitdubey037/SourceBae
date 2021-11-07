@@ -20,30 +20,12 @@ function AgencyPortfolio(props) {
   const agencyId = localStorage.getItem('userId')
 
   const [rules, setRules] = useState([]);
-  const [editRules, setEditRules] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({});
-console.log(props.agencyId,"agencyId")
-  const handalLoading = () => {
-    setEditRules(false);
-  }
-
-  const handleEditRules = (value) => {
-    setLoading(true);
-  };
-
-//   const permanentDisable = (name) => {
-//     if (name === "startTime" || name === "endTime") {
-//       return false;
-//     } else return true;
-//   };
 
   const getAgencyPortfolio = (profileviewStatus) => {
-    let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
     instance
       .get(`api/${Role}/portfolios/all?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response,'response');
         setAgencyPortfoliodata(response);
       })
       .catch((err) => {
@@ -75,13 +57,6 @@ console.log(props.agencyId,"agencyId")
     setRules(tempArr);
   };
 
-//   useEffect(() => {
-//     setRules(props.data.agencyRules);
-//   }, []);
-
-  useEffect(() => {
-    console.log(rules);
-  }, [rules]);
 
   return (
     <>

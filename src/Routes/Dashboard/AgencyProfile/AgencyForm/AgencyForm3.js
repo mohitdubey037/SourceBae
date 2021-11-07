@@ -13,7 +13,6 @@ import instance from "../../../../Constants/axiosConstants"
 import Spinner from '../../../../Components/Spinner/Spinner'
 
 function AgencyForm3(props) {
-    console.log(props);
 
     const propData = props.location.state ? props.location.state : {}
 

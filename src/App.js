@@ -59,7 +59,6 @@ const App = (props) => {
     const msg = firebaseConfig.messaging();
     if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
-        console.log("on message",message)
         setShow(true);
         setNotification({
           title: message?.notification?.title,
