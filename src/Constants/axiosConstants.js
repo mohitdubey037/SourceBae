@@ -59,6 +59,9 @@ instance.interceptors.response.use(
         } else {
           trueError = error?.response?.data?.message;
         }
+        if(trueError==="" || trueError===undefined||trueError===null){
+          trueError = "Something went wrong. Please try again later."
+        }
         toast.error(trueError, {
           position: "top-right",
           autoClose: 3000,
