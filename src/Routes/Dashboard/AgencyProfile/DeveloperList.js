@@ -87,9 +87,7 @@ function DeveloperList(props) {
     const updateDevelopers = (data, developerId) => {
         let url = `/api/${Role}/developers/update/${developerId}`;
         instance.patch(url, data).then((res) => {
-            // console.log("res", res)
         }).catch((err) => {
-            console.log("err", err)
         })
         // instance.patch(`/api/${Role}/developers/update/${developerId}`)
         //     .then(function (response) {
@@ -117,6 +115,7 @@ function DeveloperList(props) {
             'isDeveloperActive': developers[ind].isDeveloperActive
         }
         updateDevelopers(data, developers[ind]._id)
+        // setDevelopers(tempDevs)
         setState({ ...state, [event.target.name]: event.target.checked })
     };
 

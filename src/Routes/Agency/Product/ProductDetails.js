@@ -30,6 +30,24 @@ function ProductDetails(props) {
   const [detailsInJson, setDetailsInJson] = useState();
   const [err, setErr] = useState();
 
+  const [errors, setErrors] = useState({});
+
+  const [form, setForm] = useState({
+    agencyId: '',
+    subject: '',
+    message: '',
+    linkedIn: ''
+  })
+
+  const onOpenModal = (agencyId) => {
+    setOpen(true);
+    setForm({
+      ...form,
+      agencyId: agencyId
+    })
+  }
+  const onCloseModal = () => setOpen(false);
+
   const getProduct = () => {
     setLoading(true)
     instance
@@ -47,6 +65,45 @@ function ProductDetails(props) {
         setErr(err?.response?.data?.message);
       });
   };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm({
+      ...form,
+      [name]: value
+    })
+  };
+
+  const handleValidation = () => {
+    const err = {}
+    if (form.subject === '') {
+      err.subject = "subject can't be empty";
+    }
+    else if (form.message === '') {
+      err.message = "message can't be empty";
+    }
+    else if (form.linkedIn === '') {
+      err.linkedIn = "linked url is required";
+    }
+    else if (!helper.validateLinkedIn(form.linkedIn)) {
+      err.linkedIn = "invalid linked url";
+    }
+    setErrors(err);
+    if (Object.keys(err).length === 0) return true;
+    else return false;
+  }
+
+  const handleConnect = (agencyId) => {
+    console.log('hii');
+    if (handleValidation()) {
+      instance.post(`/api/${Role}/products/connect-agency`, form)
+        .then(res => {
+          onCloseModal()
+        })
+        .catch(err => {
+        })
+    }
+  }
 
   useEffect(() => {
     getProduct();
@@ -187,8 +244,8 @@ function ProductDetails(props) {
       });
   };
 
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  // const onOpenModal = () => setOpen(true);
+  // const onCloseModal = () => setOpen(false);
 
   return (
     <>
@@ -260,7 +317,7 @@ function ProductDetails(props) {
                     {Role === 'Client' &&
                       <div className="connectButton">
                         <div></div>
-                        <div onClick={onOpenModal}>
+                        <div onClick={() => onOpenModal(value.agencyId._id)}>
                           <p>
                             Connect
                             <i
@@ -438,67 +495,48 @@ function ProductDetails(props) {
         )
       }
 
-      <Modal
-        open={open}
-        onClose={onCloseModal}
-        classNames={{
-          overlay: "customOverlayAgencyProduct",
-          modal: "customModalAgencyProduct",
-        }}
-        center
-      >
+      <Modal open={open} onClose={onCloseModal} classNames={{
+        overlay: 'customOverlayAgencyProduct',
+        modal: 'customModalAgencyProduct',
+      }} center>
         <div className="modalHeaderProduct">
           <h2>Get Connected</h2>
         </div>
         <div className="productModalForm">
-          <p onChange={formHandler} name="founderName" className="toText">
-            To : Founder at SheThink
-          </p>
+          <p className="toText">To : Founder at SheThink</p>
 
           <div className="productModalInput">
             <p>Subject</p>
-            <input
-              onChange={formHandler}
-              name="subject"
-              type="text"
-              placeholder="Enter your subject"
-            />
+            <input name="subject" onChange={handleChange} type="text" placeholder="Enter your subject" />
+            {errors.subject && (
+              <p className="error_productAgencies">
+                {errors.subject}
+              </p>
+            )}
           </div>
           <div className="productModalInput">
             <p>Message</p>
-            <textarea
-              onChange={formHandler}
-              name="message"
-              cols="30"
-              rows="6"
-              type="text"
-              placeholder="Enter your message here"
-            />
-          </div>
-          <div className="productModalInput">
-            <p>Email ID</p>
-            <input
-              onChange={formHandler}
-              name="emailId"
-              type="text"
-              placeholder="Enter your email"
-            />
+            <textarea name="message" onChange={handleChange} cols="30" rows="6" type="text" placeholder="Enter your message here" />
+            {errors.message && (
+              <p className="error_productAgencies">
+                {errors.message}
+              </p>
+            )}
           </div>
           <div className="productModalInput">
             <p>Linkedin URL</p>
-            <input
-              onChange={formHandler}
-              name="linkedInUrl"
-              type="text"
-              placeholder="Enter your url"
-            />
+            <input name="linkedIn" onChange={handleChange} type="text" placeholder="Enter your url" />
+            {errors.linkedIn && (
+              <p className="error_productAgencies">
+                {errors.linkedIn}
+              </p>
+            )}
           </div>
         </div>
         <div className="connectedButton">
-          <p onClick={postSubmitHandler}>
-            Get connected to the Company{" "}
-            <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-          </p>
+          <div onClick={() => handleConnect()}>
+            <p>Get connected to the Company <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+          </div>
         </div>
       </Modal>
     </>

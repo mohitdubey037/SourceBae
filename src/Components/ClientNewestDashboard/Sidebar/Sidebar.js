@@ -10,6 +10,8 @@ import developersIcon from "../../../assets/images/Newestdashboard/SideBar/devel
 import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout.svg";
 import { withRouter } from "react-router";
 import cookie from "react-cookies";
+import instance from "../../../Constants/axiosConstants";
+
 
 import React, { useEffect, useState } from 'react';
 
@@ -20,11 +22,23 @@ function Sidebar(props) {
     const routerHistory = useHistory();
 
     const [isNotification, setIsnotification] = useState(false);
+    const [notificationData, setNotificationData] = useState([])
 
     const notificationPanel = () => {
         setIsnotification(!isNotification);
         props.notificationVisible(!isNotification);
     }
+
+
+    useEffect(() => {
+        instance.get(`/api/${Role}/notifications/all?type=push`)
+            .then(response => {
+                setNotificationData(response);
+                console.log(response);
+            })
+            .catch(err => {
+            })
+    }, [])
 
     useEffect(() => {
     }, [isNotification]);
@@ -126,10 +140,18 @@ function Sidebar(props) {
                         </div>
                         <div className="notificationsCard">
                             {
-                                arr.map(() => {
+                                notificationData.map((nd) => {
                                     return (
                                         <div className="notificationPoint">
-                                            <div className="notificationPointIn"><ul><li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus et officia laboriosam repellendus, sit impedit.</p></li></ul> <i className="fa fa-times" aria-hidden="true" style={{ paddingRight: "1rem", marginTop: "0.8rem" }}></i></div>
+                                            <div className="notificationPointIn">
+                                                <ul>
+                                                    <li>
+                                                        <p>{nd.notificationTitle}</p>
+                                                        <p>{nd.notificationData}</p>
+                                                    </li>
+                                                </ul>
+                                                {/* <i className="fa fa-times" aria-hidden="true" style={{ paddingRight: "1rem", marginTop: "0.8rem" }}></i> */}
+                                                </div>
                                         </div>
                                     )
                                 })

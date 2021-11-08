@@ -1,6 +1,6 @@
 const prod = {
     url:{
-        API_URL:`https://api.onesourcing.in`
+        API_URL:`https://api.sourcebae.com`
     }
 }
 

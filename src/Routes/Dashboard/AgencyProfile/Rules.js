@@ -71,7 +71,6 @@ function Rules(props) {
         setAgencyProfileData(response);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 

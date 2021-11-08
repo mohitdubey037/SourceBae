@@ -180,6 +180,7 @@
 
 .getAgencyDesc {
     width: 40%;
+    position: relative;
 }
 
 .getAgencyLogo {
