@@ -17,14 +17,19 @@ import FormControl from "@material-ui/core/FormControl";
 import MultiSearchSelect from "react-search-multi-select";
 import Spinner from "../../../../Components/Spinner/Spinner";
 import { toast } from "react-toastify";
+import useIsFirstRender from "../../../../Utils/useIsFirstRender";
+import { useIsFocusVisible } from "@material-ui/core";
 
+import MultiSelect from "react-multi-select-component";
 
 function AgencyForm2(props) {
+
+  const isFirstRender = useIsFocusVisible();
   const Role = localStorage.getItem("role");
   const [loading, setLoading] = useState(true);
   const [steps, setSteps] = useState('');
 
-  const propData = props.location.state?props.location.state:{}
+  const propData = props.location.state ? props.location.state : {}
 
   const url = props.history.location.pathname;
 
@@ -38,7 +43,7 @@ function AgencyForm2(props) {
 
   //selecting Techs
   const [allTechData, setAllTechData] = useState([]);
-  const [visibleTechData, setVisibleTechData] = useState([]);
+  const [visibleTechData, setVisibleTechData] = useState(null);
   const [visibleTechNames, setVisibleTechNames] = useState([]);
   const [toggle, setToggle] = useState(null);
 
@@ -75,7 +80,9 @@ function AgencyForm2(props) {
   };
 
   const handleTechSelect = (arr) => {
-    setSelectedTechNames(arr);
+    console.log(arr);
+    // setSelectedTechNames(arr);
+    setSelectedTechNames(arr.value);
   };
 
   const goBack = () => {
@@ -97,8 +104,9 @@ function AgencyForm2(props) {
   }
 
   const setAgencyTechnologies = () => {
+    console.log(selectedTechName);
     const selectedTechs = selectedTechName.map((tech) => {
-      return visibleTechData[tech]._id;
+      return visibleTechData[tech.value]._id;
     });
     setApiData({
       ...apiData,
@@ -145,6 +153,19 @@ function AgencyForm2(props) {
     setAllDomainsData(toggledDomains);
   };
 
+  const getSelectedServicesIds = (allServices) => {
+    // console.log(allServices);
+    return allServices
+      .filter(function (service) {
+        // console.log(service.selected);
+        return service.selected === true;
+      })
+      .map(function (service) {
+        // console.log(service._id);
+        return service._id;
+      });
+  };
+
   const getAllServices = () => {
     instance.get(`api/${Role}/services/all`).then(function (response) {
       const servicesNames = response.map((service) => {
@@ -165,12 +186,53 @@ function AgencyForm2(props) {
           ...service,
           selected: !service.selected,
         };
-
       return service;
     });
-
     setAllServicesData(toggledServices);
   };
+
+  useEffect(() => {
+    // console.log(allServicesData);
+    setSelectedServicesId(getSelectedServicesIds(allServicesData));
+  }, [allServicesData]);
+
+  useEffect(() => {
+    console.log(visibleTechNames);
+  }, [visibleTechNames])
+
+  // useEffect(() => {
+  //   console.log(selectedServicesId);
+  // }, [selectedServicesId]);
+
+  // useEffect(() => {
+  //   console.log(allTechData);
+  // }, [allTechData])
+
+  useEffect(() => {
+    console.log(selectedTechName);
+  }, [selectedTechName])
+
+  useEffect(() => {
+    const filteredTech = {};
+    // if (selectedServicesId.length > 0) {
+      console.log('hii');
+      allTechData.forEach((tech) => {
+        if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
+          filteredTech[tech.technologyName] = tech;
+        }
+      });
+      setVisibleTechData(filteredTech);
+      setVisibleTechNames(Object.keys(filteredTech));
+      setApiData({
+        ...apiData,
+        agencyServices: selectedServicesId,
+      });
+    // }
+  }, [selectedServicesId]);
+
+  useEffect(() => {
+    // console.log(visibleTechData, "vid");
+  }, [visibleTechData])
 
   const getAllTechs = () => {
     instance.get(`api/${Role}/technologies/all`).then(function (response) {
@@ -184,15 +246,6 @@ function AgencyForm2(props) {
     });
   };
 
-  const getSelectedServicesIds = (allServices) => {
-    return allServices
-      .filter(function (service) {
-        return service.selected === true;
-      })
-      .map(function (service) {
-        return service._id;
-      });
-  };
   const createAgencyForm2Api = () => {
     setLoading(true);
     instance
@@ -247,25 +300,6 @@ function AgencyForm2(props) {
     setAgencyDomains();
   }, [allDomainsData, allServicesData, allTechData]);
 
-  useEffect(() => {
-    setSelectedServicesId(getSelectedServicesIds(allServicesData));
-  }, [allServicesData]);
-
-  useEffect(() => {
-    const filteredTech = {};
-    allTechData.forEach((tech) => {
-      if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
-        filteredTech[tech.technologyName] = tech;
-      }
-    });
-    setVisibleTechData(filteredTech);
-    setVisibleTechNames(Object.keys(filteredTech));
-    setApiData({
-      ...apiData,
-      agencyServices: selectedServicesId,
-    });
-  }, [selectedServicesId, allTechData]);
-
   const handleNext = () => {
     if (dom.length > 0) {
       if (getSelectedServicesIds(allServicesData).length > 0) {
@@ -305,7 +339,6 @@ function AgencyForm2(props) {
                         return (
                           <div className="tech-container">
                             <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}
-                            // style={{ backgroundColor: domain.selected ? "#D6EAF8" : "white" }}
                             >
                               <img style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }} className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
                             </div>
@@ -331,7 +364,6 @@ function AgencyForm2(props) {
                         return (
                           <div className="tech-container">
                             <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}
-                            // style={{ backgroundColor: service.selected ? "#D6EAF8" : "white" }}
                             >
                               <img style={{ filter: service.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }} className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                             </div>
@@ -396,28 +428,42 @@ function AgencyForm2(props) {
             {/* </div> */}
             <div className={`${visibleTechNames?.length ? "serviceFieldsOptions_agencyForm2" : "conditional_please_select"}`}>
               <div className="serviceSelectionInput input_agencyForm2">
-                {visibleTechNames?.length ? (
-                  <>
-                    <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
-                    <div style={{ display: "flex", justifyContent: "flex-start" }}>
-                      <MultiSearchSelect
-                        searchable={true}
-                        showTags={true}
-                        multiSelect={true}
-                        width="23vw"
-                        onSelect={(arr) => handleTechSelect(arr)}
-                        options={visibleTechNames}
-                        primaryColor="#D6EAF8"
-                        secondaryColor="#02044a"
-                        textSecondaryColor="#fff"
-                        className="UIUXServices"
-                        textColor="#02044a"
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <p>Please select one or more services.</p>
-                )}
+                {
+                  // visibleTechData !== null ?
+                  visibleTechNames?.length ? (
+                    <>
+                      <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
+                      <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                        {/* <MultiSearchSelect
+                          className="UIUXServices"
+                          searchable={true}
+                          showTags={true}
+                          multiSelect={true}
+                          width="23vw"
+                          onSelect={(arr) => handleTechSelect(arr)}
+                          options={visibleTechNames}
+                          primaryColor="#D6EAF8"
+                          secondaryColor="#02044a"
+                          textSecondaryColor="#fff"
+                          textColor="black"
+                        /> */}
+
+                        <MultiSelect
+                          options={visibleTechNames.map(t => ({ "label": t, "value": t }))}
+                          value={selectedTechName}
+                          onChange={setSelectedTechNames}
+                          labelledBy="Select"
+                          className="multi-select"
+                        />
+
+                      </div>
+                    </>
+                  ) : (
+                    <p>Please select one or more services.</p>
+                  )
+                  // :
+                  // <p>No Technologies Found...</p>
+                }
               </div>
             </div>
           </div>

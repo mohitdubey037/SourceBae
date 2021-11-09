@@ -202,7 +202,7 @@ const oldFormData=props.location.state
                     <div className="innerHireAgencyForm3">
                         <div className="techStackFields">
                             <div className="HireAgencyForm3Heading">
-                                <h2>How can <span> OneSourcing </span> may help you?</h2>
+                                <h2>How can <span> SourceBae </span> may help you?</h2>
                             </div>
 
                             <div className="serivcesHireAgency">

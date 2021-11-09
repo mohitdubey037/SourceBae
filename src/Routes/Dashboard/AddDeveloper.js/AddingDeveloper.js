@@ -66,6 +66,7 @@ function AddingDeveloper(props) {
     const [multipleSelectId, setMultipleSelectId] = useState([]);
 
     useEffect(() => {
+        console.log('hiiiiiiii, adding developer');
         setDeveloperData({
             ...developerData,
             'developerTechnologies': multipleSelectId.map(t => t.value)

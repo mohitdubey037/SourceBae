@@ -390,6 +390,7 @@
 .uiuxtext_agencyForm3 {
     font-family: 'Segoe UI';
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .domainFieldsCard {
@@ -507,9 +508,16 @@
     background: #ced3ff !important;
 }
 
-.UIUXServices .input-area, .UIUXServices .option-area, .UIUXServices .input-area input {
+.UIUXServices .input-area, .UIUXServices .option-area {
     background-color: white !important;
     margin: 10px 1rem;
+}
+
+.UIUXServices .input-area input {
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    background: rgb(214, 234, 248);
+    color: white;
 }
 
 .UIUXServices .option-area button {
@@ -517,8 +525,11 @@
 }
 
 .UIUXServices .option-area .option {
-    margin-top: 5px;
     padding: 5px;
+    /* margin-top: 5px; */
+    width: 80%;
+    margin: 0.5rem auto 0;
+    /* margin-top: 0.5rem; */
 }
 
 .UIUXServices .option-area .option:hover {
@@ -528,6 +539,17 @@
 .UIUXServices input {
     outline: none;
     border: none;
+}
+
+.input_agencyForm2 .multi-select {
+    width: 90%;
+    text-transform: capitalize;
+    color: black;
+    background: #ffffff;
+    border-radius: 8px;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 0.5rem;
 }
 
 .serviceFieldsOptions .uiuxtext.uiuxtext_agencyForm3 {
@@ -540,7 +562,7 @@
 .input_agencyForm2 {
     font-family: 'Segoe UI';
     font-size: 1.8rem;
-    text-align: center !important;
+    /* text-align: center !important; */
     text-transform: capitalize !important;
     color: #45A4E4;
     padding: 2rem 10px 10px 10px !important;
@@ -562,6 +584,7 @@
     margin-left: 2rem;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     border-radius: 20px;
+    width: 30%;
 }
 
 .monthlyBudget {
