@@ -459,7 +459,7 @@ input:focus-visible, input:focus {
   .form__area{
     width: 100%;
     height: 88%;
-    padding-top: 14rem;
+    padding-top: 16rem;
     overflow-y: auto;
     display: flex;
     position: initial;
