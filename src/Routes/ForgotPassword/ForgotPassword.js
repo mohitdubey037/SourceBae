@@ -17,6 +17,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 import loginImage from "../../assets/images/Logo/loginImage.png";
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+
+import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
+import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 
 const borderLight = "rgba(206,212,218, .993)";
@@ -113,7 +116,7 @@ const ForgotPassword = (props) => {
                                     className={classes.inputs}
                                     placeholder="Enter a Password"
                                     variant="outlined"
-                                    type="password"
+                                    type={hidePassword ? "password" : "text"}
                                     value={form.password}
                                     disableUnderline={true}
                                     required
@@ -125,9 +128,21 @@ const ForgotPassword = (props) => {
                                         handleChange(e);
                                     }}
                                     endAdornment={
-                                        <InputAdornment>
-                                            <AccountCircleRoundedIcon fontSize="default" />
-                                        </InputAdornment>
+                                        <InputAdornment position="end">
+                              {hidePassword ? (
+                                <VisibilityTwoToneIcon
+                                  fontSize="small"
+                                  className={classes.passwordEye}
+                                  onClick={showPassword}
+                                />
+                              ) : (
+                                <VisibilityOffTwoToneIcon
+                                  fontSize="small"
+                                  className={classes.passwordEye}
+                                  onClick={showPassword}
+                                />
+                              )}
+                            </InputAdornment>
                                     }
                                 />
                                 <button onClick={() => changePassword()} type="submit">
