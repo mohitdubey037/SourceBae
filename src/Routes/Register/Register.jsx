@@ -107,20 +107,7 @@ const Register = (props) => {
 
   const [step, setStep] = useState(1);
 
-  const handleSocialPlatform = (event) => {
-    const { name, value } = event.target;
-    if (name === "linkedIn") {
-      setLinkedIn({
-        platformName: name,
-        platformLink: value,
-      });
-    } else if (name === "website") {
-      setSite({
-        platformName: name,
-        platformLink: value,
-      });
-    }
-  };
+ 
 
   useEffect(() => {}, [apiErrors]);
 
@@ -139,21 +126,7 @@ const Register = (props) => {
     }
   };
 
-  const handleCreateProfile = (event, role) => {
-    let { name, value } = event.target;
-
-    if (role === "Agency") {
-      setAgencyProfileDetails({
-        ...agencyProfileDetails,
-        [name]: value,
-      });
-    } else if (role === "Client")
-      setClientProfileDetails({
-        ...clientProfileDetails,
-        [name]: value,
-      });
-  };
-
+ 
   const firstFormErrorValidation = () => {
     const err = {};
     if (signupForm.firstName === "") {
@@ -613,9 +586,6 @@ const Register = (props) => {
                       <p className="existing_accountText">Step {step} of 2</p>
                     </div>
                   </div>
-                  {/* <div className="existing_accountText">
-                                        <p>Step {step} of 4</p>
-                                    </div> */}
                 </div>
               </div>
             </div>
