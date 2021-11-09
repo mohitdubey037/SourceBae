@@ -14,7 +14,7 @@ const Mainhomepage = (props) => {
         <div className="innerHomePage">
           <div
             className="HomePageCard"
-            onClick={() => props.history.replace("/login:client")}
+            onClick={() => props.history.replace("/login:agency")}
           >
             <span className="leftHomePageBorder"></span>
             <p>Login</p>
