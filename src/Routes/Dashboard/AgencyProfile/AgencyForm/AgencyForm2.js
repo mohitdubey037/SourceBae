@@ -154,14 +154,11 @@ function AgencyForm2(props) {
   };
 
   const getSelectedServicesIds = (allServices) => {
-    // console.log(allServices);
     return allServices
       .filter(function (service) {
-        // console.log(service.selected);
         return service.selected === true;
       })
       .map(function (service) {
-        // console.log(service._id);
         return service._id;
       });
   };
@@ -192,21 +189,12 @@ function AgencyForm2(props) {
   };
 
   useEffect(() => {
-    // console.log(allServicesData);
     setSelectedServicesId(getSelectedServicesIds(allServicesData));
   }, [allServicesData]);
 
   useEffect(() => {
     console.log(visibleTechNames);
   }, [visibleTechNames])
-
-  // useEffect(() => {
-  //   console.log(selectedServicesId);
-  // }, [selectedServicesId]);
-
-  // useEffect(() => {
-  //   console.log(allTechData);
-  // }, [allTechData])
 
   useEffect(() => {
     console.log(selectedTechName);
@@ -215,7 +203,6 @@ function AgencyForm2(props) {
   useEffect(() => {
     const filteredTech = {};
     // if (selectedServicesId.length > 0) {
-      console.log('hii');
       allTechData.forEach((tech) => {
         if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
           filteredTech[tech.technologyName] = tech;
@@ -229,10 +216,6 @@ function AgencyForm2(props) {
       });
     // }
   }, [selectedServicesId]);
-
-  useEffect(() => {
-    // console.log(visibleTechData, "vid");
-  }, [visibleTechData])
 
   const getAllTechs = () => {
     instance.get(`api/${Role}/technologies/all`).then(function (response) {
