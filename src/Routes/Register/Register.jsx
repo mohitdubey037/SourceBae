@@ -107,8 +107,6 @@ const Register = (props) => {
 
   const [step, setStep] = useState(1);
 
- 
-
   useEffect(() => {}, [apiErrors]);
 
   const setForm = (event) => {
@@ -126,7 +124,6 @@ const Register = (props) => {
     }
   };
 
- 
   const firstFormErrorValidation = () => {
     const err = {};
     if (signupForm.firstName === "") {
@@ -455,7 +452,7 @@ const Register = (props) => {
                           <span>an</span>
                           <span
                             style={{ fontSize: "25px" }}
-                            className="agencyOrClient"
+                            className={`agencyOrClient as_a_client`}
                           >{` ${roleString}`}</span>
                         </>
                       ) : (
@@ -463,7 +460,7 @@ const Register = (props) => {
                           <span>a</span>
                           <span
                             style={{ fontSize: "25px" }}
-                            className="agencyOrClient"
+                            className={`agencyOrClient as_an_agency`}
                           >{` ${roleString}`}</span>
                         </>
                       )}
@@ -512,13 +509,11 @@ const Register = (props) => {
                       setForm={setForm}
                     />
                   )}
-                  {console.log(step, "step", signupForm, "signupform register")}
                   <div className="right_image">
                     <img src={imgRegister} alt="img" />
                   </div>
 
                   <form autoComplete="off" className="client__form form__2">
-                    {console.log(step, "step2")}
                     {role === `Agency` ? (
                       <>
                         <RegisterAgencyForm2
@@ -547,9 +542,11 @@ const Register = (props) => {
                   </form>
                   <div className="already_next_register">
                     {step == 1 ? (
-                      <div
+                      <div style={{width: '15%'}}
                         className={`next_Register ${
-                          state === "client" && "active__buttonclient"
+                          state === "client"
+                            ? "active__buttonclient"
+                            : "active_buttonagency"
                         }`}
                         // onClick={() => toggleForms("next")}
                         onClick={verifyInput}
@@ -559,13 +556,21 @@ const Register = (props) => {
                     ) : (
                       <div className="navigationButtonsSignup">
                         <div
-                          className="backRegister_onAgency"
+                          className={`backRegister_onAgency ${
+                            state === "client"
+                              ? "active__buttonclient"
+                              : "active_buttonagency"
+                          }`}
                           onClick={() => backOnForm2()}
                         >
                           <p>Back</p>
                         </div>
                         <div
-                          className="next_Register"
+                          className={`next_Register ${
+                            state === "client"
+                              ? "active__buttonclient"
+                              : "active_buttonAgency"
+                          }`}
                           onClick={() => handleSubmit(role, signupForm)}
                         >
                           <p>Submit</p>

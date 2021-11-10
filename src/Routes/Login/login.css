@@ -212,6 +212,10 @@ span.welcome-back_sourceBae {
   color: white !important;
 }
 
+/* .active__buttonAgency {
+  background: linear-gradient( 262deg, #015F9A 0%, #0376BA 100%) !important;
+} */
+
 .loginHeading {
   width: 100%;
   text-transform: capitalize;
@@ -356,6 +360,7 @@ span.welcome-back_sourceBae {
   font-family: 'Segoe UI';
   font-size: 13px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  display: none;
 }
 
 .googleLogin:hover {
@@ -393,8 +398,6 @@ span.welcome-back_sourceBae {
   width: 90%;
   height: 70px;
 }
-
-
 
 .loginImage1 {
   z-index: 4;
@@ -470,19 +473,21 @@ span.welcome-back_sourceBae {
 .conditional_backgroundGoogle:hover {
   background: linear-gradient(262deg, #0376BA 0%, #015F9A 100%) !important;
 }
+
 @media (max-width: 992px) {
   .loginContent {
     width: 38%;
   }
 }
+
 @media (max-width: 768px) {
   .loginContent {
     width: 50%;
   }
 }
-@media only screen and (max-width : 480px) {
 
-  .loginCards-wrapper{
+@media only screen and (max-width: 480px) {
+  .loginCards-wrapper {
     flex-direction: column;
   }
   .loginContent {
@@ -494,6 +499,4 @@ span.welcome-back_sourceBae {
   .loginImage3 {
     top: -102%;
   }
- }
-
- 
+}

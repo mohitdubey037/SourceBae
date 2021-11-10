@@ -147,11 +147,10 @@
   height: 105px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
 }
 
 .input_with_error label {
-  font-family: 'Segoe UI';
   font-family: 'Segoe UI Semibold';
   font-size: 14px;
   text-transform: capitalize;
@@ -209,8 +208,10 @@
   margin-left: 0 !important;
 }
 
-.next_Register, .nextRegister_onAgency, .backRegister_onAgency, .nextRegister_onClient, .backRegister_onClient {
-  width: 14%;
+/* .next_Register, .nextRegister_onAgency, .backRegister_onAgency, .nextRegister_onClient, .backRegister_onClient { */
+
+.next_Register, .backRegister_onAgency {
+  width: 25%;
   min-width: 5rem;
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
   border-radius: 20px;
@@ -224,11 +225,11 @@
   cursor: pointer
 }
 
-.next_Register {
+/* .next_Register {
   width: 12%;
   border: none;
   outline: none;
-}
+} */
 
 .next_Register:hover, .next_Register:active, .next_Register:focus {
   outline: none;
@@ -253,7 +254,7 @@
   width: 90%;
 }
 
-.next_Register:hover {
+.next_Register:hover, .backRegister_onAgency:hover {
   cursor: pointer;
   background: #3477f1fd;
 }
@@ -264,6 +265,7 @@
   text-transform: capitalize;
   color: #8692a6;
 }
+
 .clientSignupForm2Parent {
   display: flex;
   flex-direction: column;
@@ -302,10 +304,10 @@ input:focus-visible, input:focus {
   outline: none;
 }
 
-.client__primaryForm {
+/* .client__primaryForm {
   z-index: 2;
   transition: 0.4s ease;
-}
+} */
 
 .client__secondaryForm {
   position: absolute;
@@ -421,42 +423,45 @@ input:focus-visible, input:focus {
   transform: translateX(0);
   transition: 0.4s ease;
 }
+
 .navigationButtonsSignup {
   display: flex;
   justify-content: space-between;
+  width: 55%;
 }
 
-@media only screen and (max-width : 500px) {
+.as_a_client {
+  color: #5e5ee8;
+}
+
+.as_an_agency {
+  color: #094cc7;
+}
+
+@media only screen and (max-width: 500px) {
   .form__1>div, .form__2>div {
     width: 100%;
-    /* display: flex; */
     flex-direction: column;
-    flex:1;
+    flex: 1;
   }
   .navigationButtonsSignup {
-    padding-right:  2rem ;
+    padding-right: 2rem;
     padding-top: 1rem;
   }
   .input_with_error input {
     width: 88%;
   }
-  .toggleButton.register{
-    /* display: flex; */
+  .toggleButton.register {
     flex-direction: column-reverse;
-    /* align-items: center; */
     width: 100%;
-    /* margin-top: 6rem; */
     padding: 1.5rem;
   }
-  .client__form{
-    /* display: flex; */
+  .client__form {
     flex-direction: column;
-    /* flex-wrap: wrap; */
-    /* align-items: center; */
     justify-content: center;
     width: 94%;
   }
-  .form__area{
+  .form__area {
     width: 100%;
     height: 88%;
     padding-top: 16rem;
@@ -471,12 +476,12 @@ input:focus-visible, input:focus {
   .right_image img {
     display: none;
   }
-  .client__registrationContainer{
+  .client__registrationContainer {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .Image1{
+  .Image1 {
     left: -1.5rem;
     top: -1rem;
     width: 16rem;
