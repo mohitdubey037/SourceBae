@@ -47,23 +47,23 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     width: "70%",
   },
-  chips: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  chip: {
-    margin: 2,
-  },
-  check: {
-    fontSize: "0.7rem",
-    fontFamily: 'Segoe UI',
-  },
-  noLabel: {
-    marginTop: theme.spacing(3),
-  },
-  menuFont: {
-    fontFamily: "Segoe UI",
-  },
+  // chips: {
+  //   display: "flex",
+  //   flexWrap: "wrap",
+  // },
+  // chip: {
+  //   margin: 2,
+  // },
+  // check: {
+  //   fontSize: "0.7rem",
+  //   fontFamily: 'Segoe UI',
+  // },
+  // noLabel: {
+  //   marginTop: theme.spacing(3),
+  // },
+  // menuFont: {
+  //   fontFamily: "Segoe UI",
+  // },
   inputField: {
     fontFamily: "Segoe UI",
     border: "1px solid #45A4EA",
@@ -77,17 +77,17 @@ const useStyles = makeStyles((theme) => ({
     borderColor: "#000",
   },
   root: {
-    "& .MuiOutlinedInput-input": {
-      color: "green",
-      padding: "11.5px 14px"
-    },
+    // "& .MuiOutlinedInput-input": {
+    //   color: "green",
+    //   padding: "11.5px 14px"
+    // },
     "& .MuiTypography-body1": {
       fontFamily: 'Segoe UI',
       fontSize: '12px'
     },
-    "& MuiMenuItem": {
-      fontSize: "0.8rem"
-    }
+    // "& MuiMenuItem": {
+    //   fontSize: "0.8rem"
+    // }
   }
 }));
 
