@@ -158,16 +158,16 @@ function AgencyForm3(props) {
 
     const goBack = () => {
         if (url.includes('agency-form-one')) {
-            props.history.push('/agencyNewestDashboard');
+            props.history.replace('/agencyNewestDashboard');
         }
         else if (url.includes('agency-form-two')) {
-            props.history.push('/agency-form-one');
+            props.history.replace('/agency-form-one');
         }
         else if (url.includes('agency-form-three')) {
-            props.history.push('/agency-form-two', propData);
+            props.history.replace('/agency-form-two', propData);
         }
         else if (url.includes('agency-form-four')) {
-            props.history.push('/agency-form-three');
+            props.history.replace('/agency-form-three');
         }
         else {
             props.history.goBack();

@@ -14,22 +14,22 @@ function Back(props) {
         if (Role === 'Agency') {
             if (url.includes('agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agencyNewestDashboard');
+                    props.history.replace('/agencyNewestDashboard');
                 }
             }
             else if (url.includes('agency-form-two')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agency-form-one');
+                    props.history.replace('/agency-form-one');
                 }
             }
             else if (url.includes('agency-form-three')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agency-form-two');
+                    props.history.replace('/agency-form-two');
                 }
             }
             else if (url.includes('agency-form-four')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agency-form-three');
+                    props.history.replace('/agency-form-three');
                 }
             }
             else {

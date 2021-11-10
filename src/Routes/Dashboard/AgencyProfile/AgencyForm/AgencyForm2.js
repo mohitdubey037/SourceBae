@@ -87,16 +87,16 @@ function AgencyForm2(props) {
 
   const goBack = () => {
     if (url.includes('agency-form-one')) {
-      props.history.push('/agencyNewestDashboard');
+      props.history.replace('/agencyNewestDashboard');
     }
     else if (url.includes('agency-form-two')) {
-      props.history.push('/agency-form-one', propData);
+      props.history.replace('/agency-form-one', propData);
     }
     else if (url.includes('agency-form-three')) {
-      props.history.push('/agency-form-two');
+      props.history.replace('/agency-form-two');
     }
     else if (url.includes('agency-form-four')) {
-      props.history.push('/agency-form-three');
+      props.history.replace('/agency-form-three');
     }
     else {
       props.history.goBack();
@@ -203,17 +203,17 @@ function AgencyForm2(props) {
   useEffect(() => {
     const filteredTech = {};
     // if (selectedServicesId.length > 0) {
-      allTechData.forEach((tech) => {
-        if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
-          filteredTech[tech.technologyName] = tech;
-        }
-      });
-      setVisibleTechData(filteredTech);
-      setVisibleTechNames(Object.keys(filteredTech));
-      setApiData({
-        ...apiData,
-        agencyServices: selectedServicesId,
-      });
+    allTechData.forEach((tech) => {
+      if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
+        filteredTech[tech.technologyName] = tech;
+      }
+    });
+    setVisibleTechData(filteredTech);
+    setVisibleTechNames(Object.keys(filteredTech));
+    setApiData({
+      ...apiData,
+      agencyServices: selectedServicesId,
+    });
     // }
   }, [selectedServicesId]);
 
@@ -305,7 +305,7 @@ function AgencyForm2(props) {
         <Spinner />
       ) : (
         <div className="agency-form_parent">
-          <                             Navbar />
+          <Navbar />
           <Back name="Agency form 2" />
           <FormPhases steps={steps} />
           <div className="mainTechStackFormParent">

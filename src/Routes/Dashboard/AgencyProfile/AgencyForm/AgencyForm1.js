@@ -373,8 +373,7 @@ function AgencyForm1(props) {
             ...formData,
             socialPlatformDetails: [linkedIn]
         })
-    }, [linkedIn])
-
+    }, [linkedIn]);
 
     return (
         <>

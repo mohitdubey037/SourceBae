@@ -161,7 +161,7 @@ function AgencyNewestDashboard(props) {
                   <div className="innerMainVerify">
                     <p>
                       Please
-                      <span onClick={() => props.history.push(formRoute)}>
+                      <span onClick={() => props.history.replace(formRoute)}>
                         Update
                       </span>
                       your profile to use our services.

@@ -150,7 +150,7 @@ function AgencyProfile(props) {
               <div className='backButtonAgencyProfile'>
                 <div className='backButton-child' onClick={() => props.history.goBack()}>
                   <img src={Back2} alt="back" />
-                  <h6 onClick={() => props.history.goBack()}>Back</h6>
+                  <h6>Back</h6>
                 </div>
               </div>
               {Role === "Agency" ? (
