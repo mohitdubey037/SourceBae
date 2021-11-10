@@ -4,7 +4,7 @@ import firebase from "./firebase";
 import Mainhomepage from "./Routes/LandingPage/Mainhomepage";
 import PageNotFound from "./Routes/PageNotFound/PageNotFound";
 import Login from "./Routes/Login/Login";
-import Register from "./Routes/Register/Register";
+import Register from "./Routes/Register/Register.jsx";
 import VerifyPage from './Components/Verify_Page/Verify_Page';
 
 import AddingDeveloper from "./Routes/Dashboard/AddDeveloper.js/AddingDeveloper";
