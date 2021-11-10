@@ -207,7 +207,6 @@ function AgencyForm3(props) {
             handleUpdate();
         }
 
-
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
     return (
@@ -247,7 +246,7 @@ function AgencyForm3(props) {
                                             </button>
                                         </FilePicker>
                                         {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? registrationCertificate?.document?.name.slice(0, 20) : "Brochure"}`}</p>
+                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? brochureDoc?.document?.name.slice(0, 20) : "Brochure"}`}</p>
                                     </div>
                                 </div>
                                 <div className="panDetails">

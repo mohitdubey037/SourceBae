@@ -2,11 +2,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import "./mainhomepage.css";
+import cookie from "react-cookies";
 
 const Mainhomepage = (props) => {
+  const auth = cookie.load("Authorization");
+  const role = localStorage.getItem('role');
   useEffect(() => {
     localStorage.setItem("toggle", false);
   }, []);
+
+  useEffect(() => {
+    if (auth !== null && auth !== undefined) {
+      props.history.replace(`/login:${role}`)
+    }
+  }, [])
+
 
   return (
     <>
