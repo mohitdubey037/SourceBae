@@ -394,11 +394,7 @@ span.welcome-back_sourceBae {
   height: 70px;
 }
 
-@media (max-width: 768px) {
-  .loginIllustrator {
-    display: none;
-  }
-}
+
 
 .loginImage1 {
   z-index: 4;
@@ -474,3 +470,30 @@ span.welcome-back_sourceBae {
 .conditional_backgroundGoogle:hover {
   background: linear-gradient(262deg, #0376BA 0%, #015F9A 100%) !important;
 }
+@media (max-width: 992px) {
+  .loginContent {
+    width: 38%;
+  }
+}
+@media (max-width: 768px) {
+  .loginContent {
+    width: 50%;
+  }
+}
+@media only screen and (max-width : 480px) {
+
+  .loginCards-wrapper{
+    flex-direction: column;
+  }
+  .loginContent {
+    width: 85%;
+  }
+  .welcome-back_loginIllustrator {
+    font-size: 24px;
+  }
+  .loginImage3 {
+    top: -102%;
+  }
+ }
+
+ 

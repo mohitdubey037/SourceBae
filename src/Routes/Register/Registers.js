@@ -841,7 +841,7 @@ const Register = (props) => {
                             Log In
                           </span>
                         </p>
-                        <p className="existing_accountText">Step {step} of 4</p>
+                        <p className="existing_accountText">Step {step} of 2</p>
                       </div>
                     </div>
                   </form>
