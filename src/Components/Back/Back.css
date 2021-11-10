@@ -46,3 +46,15 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 360px) {
+  .image-div_newestAddDeveloper h6, .add-developer-div h6 {
+    font-size: 0.8rem;
+  }
+  .back-button_newestAddDeveloper {
+    height: 33px;
+  }
+  .hover img {
+    width: 24px;
+  }
+}

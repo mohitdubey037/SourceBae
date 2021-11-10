@@ -3,15 +3,15 @@ import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from './FormPhases';
 import { FilePicker } from 'react-file-picker'
 // import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
-import agency3d from '../../../../assets/images/AgencyProfile/form1_3d.png'
-import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png'
 import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
-import Spinner from '../../../../Components/Spinner/Spinner'
+import Spinner from '../../../../Components/Spinner/Spinner';
+
+import './ResponsiveAgencyForm.css';
 
 function AgencyForm1(props) {
 

@@ -141,6 +141,7 @@ function AgencyNewestDashboard(props) {
         <Navbar />
         <div className="content-body">
           <div className="content-leftBody">
+
             {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
               <div className="mainUpdateVerify">
                 <div className="innerMainVerify">
@@ -155,7 +156,6 @@ function AgencyNewestDashboard(props) {
               </div>
             )}
             {(!verified || steps !== -1) && (
-              //  the major reason of applying tempStatus is that at first event when the agency is verified this check is running becoz isAgencyVerified is storing in cookies a little bit later. so initially we are checking with tempStatus i.e it will be false initially and after the api call it will set to true and hence this check will be verified
               <div className="mainUpdateVerify">
                 {!verified && steps !== -1 ? (
                   <div className="innerMainVerify">
@@ -179,10 +179,7 @@ function AgencyNewestDashboard(props) {
                 )}
               </div>
             )}
-            <div
-              className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"
-                }`}
-            >
+            <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}>
               <UserOperations
                 disabled={!verified || steps !== -1}
                 nextpage={() => quotation("quotation")}
@@ -197,26 +194,15 @@ function AgencyNewestDashboard(props) {
                 img={addDeveloperIcon}
               />
 
-              {/* {agencyProfileData.productId ? (
-                <UserOperations
-                  disabled={!verified || steps !== -1}
-                  nextpage={() => quotation("product-details")}
-                  text="View Product"
-                  img={ThirdIcon}
-                />
-              ) : ( */}
               <UserOperations
                 disabled={!verified || steps !== -1}
                 nextpage={() => quotation("portfolio")}
                 text="Add Your Portfolio"
                 img={ThirdIcon}
               />
-              {/* )} */}
+
             </div>
-            <div
-              className={`${(!verified || steps !== -1) && "conditional_opacity"
-                }`}
-            >
+            <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
               {allProjects?.projects?.length > 0 && (
                 <div className="graphic">
                   <div className="graphic-illustration-heading">
@@ -225,7 +211,6 @@ function AgencyNewestDashboard(props) {
                 </div>
               )}
               <div className="user-project_parent">
-                {/* <div> */}
                 {allProjects?.projects?.length > 0 ? (
                   allProjects?.projects?.map((value, index) => {
                     return <AgencyProjectCard key={index} {...value} />;
@@ -237,7 +222,6 @@ function AgencyNewestDashboard(props) {
                   </div>
                 )}
               </div>
-              {/* </div> */}
             </div>
           </div>
           <RightSide />

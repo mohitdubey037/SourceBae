@@ -362,6 +362,7 @@
     justify-content: space-between;
     margin: auto;
     width: 82%;
+    /* padding: 0 7rem; */
 }
 
 .innerTechStackForm {
@@ -427,7 +428,7 @@
     color: #707070;
     width: 99%;
     text-align: center;
-    margin-top: 7px;
+    /* margin-top: 7px; */
     font-size: 0.9rem;
 }
 
@@ -588,7 +589,7 @@
 }
 
 .monthlyBudget {
-    margin-top: 3rem !important;
+    margin-top: 3rem;
 }
 
 .servicesCardsHireAgency.agencyForm2 {

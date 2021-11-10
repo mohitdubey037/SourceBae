@@ -145,15 +145,17 @@ function AgencyForm3(props) {
             stepsCompleted: 4,
             agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
         }
-        instance.post(`/api/${Role}/agencies/create`, apiData)
-            .then(function (response) {
-                setLoading(false);
-                propData.agencyForm3 = apiData;
-                props.history.push("/agency-form-four", propData)
-            })
-            .catch(err => {
-                setLoading(false);
-            })
+        if (apiData.agencyDocuments.length < 8) {
+            instance.post(`/api/${Role}/agencies/create`, apiData)
+                .then(function (response) {
+                    setLoading(false);
+                    propData.agencyForm3 = apiData;
+                    props.history.push("/agency-form-four", propData)
+                })
+                .catch(err => {
+                    setLoading(false);
+                })
+        }
     }
 
     const goBack = () => {
@@ -173,8 +175,6 @@ function AgencyForm3(props) {
             props.history.goBack();
         }
     }
-
-
 
     // useEffect(() => {
     //     if (props.history.action === "POP") {
@@ -220,7 +220,7 @@ function AgencyForm3(props) {
                     <div className="mainDocumentsForm">
                         <div className="innerDocumentForm">
                             <div className="documentDetails">
-                                <p>* Provide your Valid Document</p>
+                                <p>* Provide your Valid Document<span style={{ color: 'red' }}>max 3 file</span></p>
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
                                         <FilePicker

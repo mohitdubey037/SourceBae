@@ -22,6 +22,8 @@ import { useIsFocusVisible } from "@material-ui/core";
 
 import MultiSelect from "react-multi-select-component";
 
+import './ResponsiveAgencyForm.css';
+
 function AgencyForm2(props) {
 
   const isFirstRender = useIsFocusVisible();
@@ -398,7 +400,7 @@ function AgencyForm2(props) {
                   </div>
                 </div>
 
-                <div className="nextBtn">
+                <div className="nextBtn bothBtn">
                   <button onClick={() => goBack()} style={{ backgroundColor: '#707070' }}>
                     Back
                   </button>

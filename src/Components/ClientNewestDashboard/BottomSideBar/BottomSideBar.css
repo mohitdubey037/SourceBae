@@ -1,9 +1,8 @@
 .container-bottom-sidebar {
-    height: 7%;
+    height: 10%;
     width: 100%;
     display: flex;
     justify-content: center;
-    position: fixed;
     bottom: 6px;
     z-index: 3;
     display: none;

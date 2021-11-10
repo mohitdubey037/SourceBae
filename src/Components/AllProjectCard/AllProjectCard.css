@@ -129,10 +129,9 @@ td:nth-child(even) {
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .user-operations {
-        flex-direction: column;
         justify-content: space-between;
         height: 30rem;
     }
-}
+} */

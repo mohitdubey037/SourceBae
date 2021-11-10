@@ -1,0 +1,73 @@
+/* Agency form 1 */
+
+@media (max-width: 360px) {
+    .mainPersonelDetailsForm {
+        padding: 0 1rem;
+    }
+    .getAgencyLogo {
+        height: 7rem;
+    }
+    .innerLeftPersonelDetailsForm .formContentPartOne, .formContentPartTwo {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0;
+    }
+    .agencyLogo_parent label, .getAgencyDesc p, .innerLeftPersonelDetailsForm p {
+        font-size: 0.8rem;
+    }
+    .innerLeftPersonelDetailsForm .formContentPartOne .agencyLogo_parent, .getAgencyDesc, .getOwnerName {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    .innerLeftPersonelDetailsForm {
+        padding: 1rem 2rem 2rem;
+    }
+    .getAgencyDesc textarea {
+        height: 7rem;
+        font-size: 0.8rem;
+    }
+    .innerLeftPersonelDetailsForm .agencyLogo_pick_file, .getAgencyLogo .logo-type_agencyForm1, .formContentPartTwo input {
+        font-size: 0.8rem;
+    }
+    .nextBtn {
+        justify-content: flex-end;
+    }
+    .nextBtn button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0;
+        width: 5rem;
+    }
+    .agency-form_parent {
+        padding-top: 4rem;
+    }
+}
+
+/* Agency form 2 */
+
+@media (max-width: 360px) {
+    .mainTechStackFormParent {
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+    }
+    .innerTechStackForm {
+        width: 100%;
+        padding: 2rem 2rem 2rem 2rem;
+    }
+    .serivcesAgency, .monthlyBudget {
+        margin-top: 2rem;
+    }
+    .nextBtn.bothBtn {
+        justify-content: space-between;
+    }
+    .conditional_please_select {
+        width: 100%;
+    }
+    .serviceFieldsOptions_agencyForm2 {
+        margin-left: 0;
+        width: 100%;
+    }
+    .input_agencyForm2, .uiuxtext_agencyForm3 {
+        font-size: 1rem;
+    }
+}

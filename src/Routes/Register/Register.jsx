@@ -182,8 +182,8 @@ const Register = (props) => {
         err.agencyNameError = "Agency name is required";
       } else if (agencyProfileDetails?.agencyName.match(/^[0-9]+$/)) {
         err.agencyNameError = "Agency name must be in characters.";
-      } else if (agencyProfileDetails?.agencyName.length < 2) {
-        err.agencyNameError = "Agency name must be between 2 characters.";
+      } else if (agencyProfileDetails?.agencyName.length <= 4) {
+        err.agencyNameError = "Agency name must be more than 4 characters.";
       } else if (agencyProfileDetails?.agencyTeamSize === "") {
         err.agencyTeamSizeError = "Team strength is required";
       } else if (

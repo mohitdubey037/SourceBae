@@ -114,12 +114,24 @@
 }
 
 @media (max-width: 768px) {
+  .not_found.agencyNewestDashboard img {
+    width: 14rem;
+  }
+}
+
+@media (max-width: 360px) {
   .user-operations {
     flex-direction: column;
     justify-content: space-between;
     height: 30rem;
   }
-  .not_found.agencyNewestDashboard img {
-    width: 14rem;
+  .innerMainVerify p {
+    font-size: 0.8rem;
+  }
+  .innerMainVerify span {
+    font-size: 0.9rem;
+  }
+  .conditional_marginTop {
+    margin-top: 10px;
   }
 }

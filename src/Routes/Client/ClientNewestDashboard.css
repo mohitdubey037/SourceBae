@@ -256,9 +256,16 @@ li::marker {
 @media (max-width: 768px) {
   .container-body>.content-body>.content-leftBody {
     width: 100%;
+    height: 87%;
   }
   .container-body {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .container-body>.content-body {
+    overflow: visible;
   }
 }
