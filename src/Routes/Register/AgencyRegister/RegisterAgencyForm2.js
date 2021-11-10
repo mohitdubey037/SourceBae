@@ -130,6 +130,7 @@ const RegisterAgencyForm2 = (props) => {
                             style={{
                               paddingLeft: "2.5%",
                               paddingRight: "2%",
+                              width: '39%'
                             }}
                             id="incorporation_date"
                             type="date"
@@ -148,9 +149,9 @@ const RegisterAgencyForm2 = (props) => {
                         </div>
 
                         <div className="input_with_error" >
-                          <label style={{paddingTop:"1rem"}}>Website Url</label>
+                          <label>Website Url</label>
                           <input
-                            style={{paddingLeft: "2.5%" }}
+                            style={{paddingLeft: "2.5%", width: '39%' }}
                             type="text"
                             name="website"
                             placeholder="Website URL"
