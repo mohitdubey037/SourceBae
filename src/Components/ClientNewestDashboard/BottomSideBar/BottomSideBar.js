@@ -1,4 +1,4 @@
-import './Sidebar.css';
+import './BottomSideBar.css';
 import oneSourcingLogo from "../../../assets/images/Newestdashboard/SideBar/sidebarLogo.svg";
 // import TemporaryLogo from '../../../assets/images/temporary_logo.jpeg';
 import TemporaryLogo from '../../../assets/images/Logo/temporary_logo.jpeg';
@@ -14,7 +14,7 @@ import instance from "../../../Constants/axiosConstants";
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function Sidebar(props) {
+function BottomSidebar(props) {
     const Role = localStorage.getItem('role');
     const routerHistory = useHistory();
 
@@ -76,11 +76,8 @@ function Sidebar(props) {
     }
 
     return (
-        <div className="container-sidebar">
-            <div className="temporary_logo">
-                <img src={TemporaryLogo} alt="logo" />
-            </div>
-            <div className="sidebar-menu">
+        <div className="container-bottom-sidebar">
+            <div className="bottom-sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div>
                         <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
@@ -148,7 +145,7 @@ function Sidebar(props) {
                                                     </li>
                                                 </ul>
                                                 {/* <i className="fa fa-times" aria-hidden="true" style={{ paddingRight: "1rem", marginTop: "0.8rem" }}></i> */}
-                                                </div>
+                                            </div>
                                         </div>
                                     )
                                 })
@@ -161,4 +158,4 @@ function Sidebar(props) {
     )
 }
 
-export default withRouter(Sidebar);
+export default withRouter(BottomSidebar);

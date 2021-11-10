@@ -10,7 +10,7 @@
   height: 100vh;
   display: flex;
   margin-left: 11%;
-  background-image: linear-gradient(to right, #015F9A , hsl(202, 97%, 37%));
+  background-image: linear-gradient(to right, #015F9A, hsl(202, 97%, 37%));
   width: 89%;
   position: relative;
 }
@@ -251,4 +251,14 @@ li::marker {
 
 .detailsCard-header {
   word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .container-body>.content-body>.content-leftBody {
+    width: 100%;
+  }
+  .container-body {
+    margin-left: 0;
+    width: 100%;
+  }
 }

@@ -125,3 +125,9 @@
   border: none;
   outline: none;
 }
+
+@media (max-width: 768px) {
+  .content-rightBody_parent {
+    display: none;
+  }
+}

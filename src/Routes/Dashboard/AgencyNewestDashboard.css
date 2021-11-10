@@ -112,3 +112,14 @@
 .requiredStar {
   color: red;
 }
+
+@media (max-width: 768px) {
+  .user-operations {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30rem;
+  }
+  .not_found.agencyNewestDashboard img {
+    width: 14rem;
+  }
+}

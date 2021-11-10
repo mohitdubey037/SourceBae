@@ -12,7 +12,6 @@
 .sidebar-menu {
   background: #ffffff;
   height: 90%;
-  /* margin: 32% 15% 32% 15%; */
   margin: 15% 15% 32% 15%;
   display: flex;
   flex-direction: column;
@@ -120,5 +119,15 @@
 }
 
 .temporary_logo img {
-  width: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 768px) {
+  .container-sidebar {
+    display: none;
+  }
+  .temporary_logo {
+    display: none;
+  }
 }

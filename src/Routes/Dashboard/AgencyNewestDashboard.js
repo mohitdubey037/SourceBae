@@ -15,6 +15,7 @@ import * as helper from "../../shared/helper";
 import NotFound from "../../assets/images/Newestdashboard/Not_found/PageNotFound.svg";
 import Navbar from "../../Components/ClientNewestDashboard/Navbar/Navbar";
 import cookie from "react-cookies";
+import BottomSideBar from "../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar";
 
 function AgencyNewestDashboard(props) {
   const Role = localStorage.getItem("role");
@@ -49,7 +50,7 @@ function AgencyNewestDashboard(props) {
       .then(function (response) {
         setAllProjects(response);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   useEffect(() => {
@@ -87,7 +88,7 @@ function AgencyNewestDashboard(props) {
       });
   };
 
-  useEffect(() => {}, [tempStatus]);
+  useEffect(() => { }, [tempStatus]);
 
   useEffect(() => {
     getStepsCompleted();
@@ -100,14 +101,14 @@ function AgencyNewestDashboard(props) {
         userId: agencyId,
         verify: "email",
       })
-      .then(function (response) {});
+      .then(function (response) { });
 
     instance
       .post(`/api/${Role}/auths/send-verification-link`, {
         userId: agencyId,
         verify: "phone",
       })
-      .then(function (response) {});
+      .then(function (response) { });
   };
 
   const quotation = (link) => {
@@ -179,9 +180,8 @@ function AgencyNewestDashboard(props) {
               </div>
             )}
             <div
-              className={`user-operations ${
-                (!verified || steps !== -1) && "conditional_marginTop"
-              }`}
+              className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"
+                }`}
             >
               <UserOperations
                 disabled={!verified || steps !== -1}
@@ -205,18 +205,17 @@ function AgencyNewestDashboard(props) {
                   img={ThirdIcon}
                 />
               ) : ( */}
-                <UserOperations
-                  disabled={!verified || steps !== -1}
-                  nextpage={() => quotation("portfolio")}
-                  text="Add Your Portfolio"
-                  img={ThirdIcon}
-                />
+              <UserOperations
+                disabled={!verified || steps !== -1}
+                nextpage={() => quotation("portfolio")}
+                text="Add Your Portfolio"
+                img={ThirdIcon}
+              />
               {/* )} */}
             </div>
             <div
-              className={`${
-                (!verified || steps !== -1) && "conditional_opacity"
-              }`}
+              className={`${(!verified || steps !== -1) && "conditional_opacity"
+                }`}
             >
               {allProjects?.projects?.length > 0 && (
                 <div className="graphic">
@@ -244,6 +243,7 @@ function AgencyNewestDashboard(props) {
           <RightSide />
         </div>
       </div>
+      <BottomSideBar />
     </div>
   );
 }
