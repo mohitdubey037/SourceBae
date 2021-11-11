@@ -406,7 +406,7 @@ function AgencyProfile(props) {
             <div className="innerQuotation_agencyProfile">
               <div class="nav nav-tabs nav-tabs_agencyProfile" id="nav-tab" role="tablist">
                 <div id="nav-home-tab"
-                  className="nav-link"
+                  className="nav-link active"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-home"
                   type="button"
