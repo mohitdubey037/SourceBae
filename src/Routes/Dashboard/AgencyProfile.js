@@ -63,9 +63,11 @@ function AgencyProfile(props) {
   const { id } = useParams();
   const Role = localStorage.getItem('role');
   const inputEl = useRef(null);
+  const inputPort = useRef(null);
 
   const [open, setOpen] = useState(false);
   const [navigated, setNavigation] = useState(false);
+  const [portNavigated, setPortNavigated] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [hoverModal, setHoverModal] = useState(false)
@@ -136,6 +138,13 @@ function AgencyProfile(props) {
     else if (navigated) {
       inputEl?.current?.click();
     }
+    if (!portNavigated && inputPort !== null && props.location.origin === "portfolio") {
+      inputPort?.current?.click();
+      setPortNavigated(true);
+    }
+    else if (portNavigated) {
+      inputPort?.current?.click();
+    }
   });
 
 
@@ -189,17 +198,17 @@ function AgencyProfile(props) {
                   </div>
 
                   {agencyProfileData.productId !== undefined ? (
-                  <button
-                    style={{ backgroundImage: 'linear-gradient(284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%)' }}
-                    onClick={() => props.history.push({
-                      pathname: `/product-details:${agencyProfileData.productId}`,
-                      condition: id !== '' ? 'Agency' : 'Client'
-                    })
-                    }
-                  >
-                    View Your Product
-                    <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
-                  </button>):null}
+                    <button
+                      style={{ backgroundImage: 'linear-gradient(284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%)' }}
+                      onClick={() => props.history.push({
+                        pathname: `/product-details:${agencyProfileData.productId}`,
+                        condition: id !== '' ? 'Agency' : 'Client'
+                      })
+                      }
+                    >
+                      View Your Product
+                      <i class="fa fa-long-arrow-right" aqqria-hidden="true"></i>
+                    </button>) : null}
                 </>
               )}
             </div>
@@ -445,10 +454,11 @@ function AgencyProfile(props) {
                   type="button"
                   role="tab"
                   aria-controls="nav-portfolio"
-                  aria-selected="false">
+                  aria-selected="false"
+                  ref={inputPort}>
                   <img src={iicon} alt="Portfolio" />
                   <button class="nav-button nav-link_agencyProfile">
-                     Agency Portfolio
+                    Agency Portfolio
                   </button>
                 </div>
 
@@ -469,20 +479,7 @@ function AgencyProfile(props) {
                   </div>
                 }
 
-                {/* <div id="nav-developer-tab"
-                  className="nav-link"
-                  data-bs-toggle="tab"
-                  data-bs-target="#nav-portfolio"
-                  type="button"
-                  role="tab"
-                  aria-controls="nav-developer"
-                  aria-selected="false"
-                  ref={inputEl}>
-                  <img src={PortfolioImage} alt="portfolio" />
-                  <button class="nav-button nav-link_agencyProfile">
-                    Portfolio
-                  </button>
-                </div> */}
+
                 {/* <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
                                             <img src={matched} alt="Reviews" /> Reviews
                             </button> */}
@@ -538,7 +535,7 @@ function AgencyProfile(props) {
                   role="tabpanel"
                   aria-labelledby="nav-portfolio-tab"
                 >
-                  <ProfilePortfolio id={id}/>
+                  <ProfilePortfolio id={id} />
                 </div>
                 <div
                   class="tab-pane fade"

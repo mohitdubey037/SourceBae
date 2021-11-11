@@ -100,7 +100,10 @@ function Portfolio(props) {
                             ...form,
                             projectLogo: response[0].mediaURL
                         })
-                        props.history.replace("/agency-profile");
+                        props.history.replace({
+                            pathname: "/agency-profile",
+                            origin: 'portfolio'
+                        })
                     })
                     .catch(err => {
                     })
@@ -203,7 +206,7 @@ function Portfolio(props) {
                             <div className="portfolio_inputs portfolio_inputs_second">
                                 <div>
                                     <p className="project-question">Write about the project ?</p>
-                                    <textarea name="projectDescription" style={{width:"108%"}} id="input1" cols="30" rows="10" value={form.projectDescription} placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
+                                    <textarea name="projectDescription" style={{ width: "108%" }} id="input1" cols="30" rows="10" value={form.projectDescription} placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
                                     {errors.projectDescription && (<p className="error_paragraph basic">{errors.projectDescription}</p>)}
                                 </div>
                                 <div>
