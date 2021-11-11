@@ -1,10 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import "./AgencyPortfolio.css"
+import { useHistory } from 'react-router-dom';
+
+import "./ProfilePortfolio.css"
 import instance from "../../../Constants/axiosConstants";
 // import Rules_edit from "../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg";
 
@@ -14,6 +12,8 @@ import cancel from "../../../assets/images/Newestdashboard/Agency-Profile/cancel
 import "./Rules.css";
 
 function AgencyPortfolio(props) {
+  const routerHistory = useHistory();
+
   const Role = localStorage.getItem("role");
   const [agencyPortfoliodata, setAgencyPortfoliodata] = useState([]);
 
@@ -29,11 +29,11 @@ function AgencyPortfolio(props) {
   //   setLoading(true);
   // };
 
-//   const permanentDisable = (name) => {
-//     if (name === "startTime" || name === "endTime") {
-//       return false;
-//     } else return true;
-//   };
+  //   const permanentDisable = (name) => {
+  //     if (name === "startTime" || name === "endTime") {
+  //       return false;
+  //     } else return true;
+  //   };
 
   const getAgencyPortfolio = (profileviewStatus) => {
     instance
@@ -47,7 +47,7 @@ function AgencyPortfolio(props) {
 
   useEffect(() => {
     if (Role === "Agency") {
-        getAgencyPortfolio();
+      getAgencyPortfolio();
     }
   }, []);
 
@@ -73,32 +73,36 @@ function AgencyPortfolio(props) {
   return (
     <>
       <div className="mainPortfolioDiv">
-      <div className="portfolioHeading"><p>PORTFOLIO{agencyPortfoliodata.length>0 ?"'S":""} ({agencyPortfoliodata.length})</p></div>
-      <div className="portfolioParent">
-      {agencyPortfoliodata.map((data)=> {
-          return (
-
-
-          <div className="PortfolioMainDiv">
-          <div className="ProjectDataPortfolio">
-          <div className="logoPortfolio">
-          <img src={data.projectLogo} alt="logo"/>
-          </div>
-          <div className="detialPortfolio">
-          <p>{data.projectName}</p>
-          <div className="PortfolioPriceAndTimeline">
-          {/* <div>price</div> */}<p style={{backgroundColor:"#ffffff" , padding:"0"}}>Project Timeline</p>
-          <p style={{ marginLeft:"15px"}}>{data.projectTimeline} days</p>
+        <div className="portfolioHeading"><p>PORTFOLIO{agencyPortfoliodata.length > 0 ? "'S" : ""} ({agencyPortfoliodata.length})</p></div>
+        <div className="portfolioParent">
+          {agencyPortfoliodata.map((data) => {
+            return (
+              <div className="PortfolioMainDiv">
+                <div className="ProjectDataPortfolio">
+                  <div className="logoPortfolio">
+                    <img src={data.projectLogo} alt="logo" />
+                  </div>
+                  <div className="detialPortfolio">
+                    <p>{data.projectName}</p>
+                    <div className="PortfolioPriceAndTimeline">
+                      {/* <div>price</div> */}<p style={{ backgroundColor: "#ffffff", padding: "0" }}>Project Timeline</p>
+                      <p style={{ marginLeft: "15px" }}>{data.projectTimeline} days</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="ProjectDescriptionPortfolio">
+                  <p>{data.projectDescription}</p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        <div className="No_portfolio" onClick={() => routerHistory.push("/portfolio")}>
+          <div className="add-portfolio-parent">
+            <h6 className="add-portfolio">Add A Portfolio</h6>
           </div>
         </div>
-          </div>
-          <div className="ProjectDescriptionPortfolio">
-          <p>{data.projectDescription}</p>
-          </div>
-          </div>
-       ) })}
-         </div>
-         </div>
+      </div>
     </>
   );
 }

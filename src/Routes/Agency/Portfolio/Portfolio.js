@@ -22,6 +22,7 @@ function Portfolio(props) {
 
     const [form, setForm] = useState({
         projectName: '',
+        projectLink: '',
         projectTimeline: '5',
         projectDescription: '',
         projectLogo: ''
@@ -55,11 +56,11 @@ function Portfolio(props) {
         else if (form.projectDescription === '') {
             errors.projectDescription = 'Project Description  is required'
         }
-        // else if (form.webLink === '') {
-        //     errors.webLink = 'Web Link is required'
-        // }
+        else if (form.projectLink === '') {
+            errors.projectLink = 'Web Link is required'
+        }
         else if (form.projectTimeline <= 4) {
-            errors.projectTimeline = 'timeline must be more than 4 dyas'
+            errors.projectTimeline = 'timeline must be more than 4 days'
         }
 
         setErrors(errors);
@@ -73,6 +74,7 @@ function Portfolio(props) {
         instance.post(`/api/${Role}/portfolios/create`, form)
             .then(res => {
                 // console.log(res);
+                props.history.replace('/agency-profile')
             })
             .catch(err => {
 
@@ -193,8 +195,8 @@ function Portfolio(props) {
                                 </div>
                                 <div>
                                     <p className="project-question">Do You have a website(product) link ?</p>
-                                    <input name="input1" type="text" placeholder="Enter url" onChange={(event) => handleChange(event)} />
-                                    {errors.field4 && (<p className="error_paragraph basic">{errors.field4}</p>)}
+                                    <input name="projectLink" type="text" placeholder="Enter url" onChange={(event) => handleChange(event)} />
+                                    {errors.projectLink && (<p className="error_paragraph basic">{errors.field4}</p>)}
                                 </div>
                             </div>
                             <div className="portfolio_inputs portfolio_inputs_second">

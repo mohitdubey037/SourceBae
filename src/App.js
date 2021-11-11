@@ -172,6 +172,13 @@ const App = (props) => {
           path="/agency-profile"
           component={AgencyProfile}
         />
+        <CustomRoute
+          condition="Agency"
+          exact
+          path="/portfolio"
+          component={Portfolio}
+        />
+
         <Route
           exact
           path="/agency-project-details"
@@ -221,12 +228,6 @@ const App = (props) => {
           exact
           path="/project-details:projectId"
           component={ProjectDetails}
-        />
-        <CustomRoute
-          condition="Agency"
-          exact
-          path="/portfolio"
-          component={Portfolio}
         />
         <CustomRoute
           condition="Client"

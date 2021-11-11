@@ -8,38 +8,39 @@
 .ProjectDataPortfolio {
     display: flex;
 }
+
 .detialPortfolio {
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
 }
+
 .PortfolioPriceAndTimeline {
     display: flex;
     flex-direction: row;
     margin-top: 1rem;
 }
+
 .logoPortfolio img {
     width: 4rem;
     height: 4rem;
-   
 }
+
 .mainPortfolioDiv {
     display: flex;
-    flex-wrap: wrap;
-     width: 100%;
-    margin: auto;
     padding: 1rem;
-    margin-bottom: 1rem;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     border-radius: 20px;
     background-color: #ffffff;
+    flex-direction: column;
 }
 
 .logoPortfolio {
     box-shadow: 2px 2px 7px rgb(0 0 0 / 52%);
     margin: 1rem;
 }
-.detialPortfolio p{
+
+.detialPortfolio p {
     word-break: break-all;
     font-family: 'Segoe UI Semibold';
     color: #45a4ea;
@@ -53,6 +54,7 @@
     padding: 0px 15px;
     border-radius: 1rem;
 }
+
 .ProjectDescriptionPortfolio {
     padding: 0 1rem 1rem;
 }
@@ -60,6 +62,7 @@
 .ProjectDescriptionPortfolio p {
     word-break: break-all;
 }
+
 .portfolioHeading {
     width: 100%;
     display: flex;
@@ -68,6 +71,7 @@
     margin-bottom: 1%;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
+
 .portfolioParent {
     display: flex;
     flex-wrap: wrap;
@@ -75,11 +79,24 @@
     overflow: auto;
     background-color: #ffffff;
 }
-.portfolioHeading p{
+
+.portfolioHeading p {
     font-family: 'Segoe UI Bold';
     font-size: 14px;
     text-transform: capitalize;
     color: #5C6DFF;
     padding: 8px 0px;
     margin-left: 2rem;
+}
+
+.No_portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-portfolio-parent {
+    font-family: 'Segoe UI';
+    font-size: 1.1rem;
+    margin-top: 1rem;
 }

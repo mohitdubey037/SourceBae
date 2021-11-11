@@ -31,7 +31,7 @@ function BottomSidebar(props) {
         instance.get(`/api/${Role}/notifications/all?type=push`)
             .then(response => {
                 setNotificationData(response);
-                console.log(response);
+                // console.log(response);
             })
             .catch(err => {
             })

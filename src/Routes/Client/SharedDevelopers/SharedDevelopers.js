@@ -96,6 +96,7 @@ function RespondedDetails(props) {
     instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, { interested: task, agencyId })
       .then(response => {
         setDisability(true)
+        getOneDeveloper()
       })
       .catch(err => {
 
@@ -208,7 +209,7 @@ function RespondedDetails(props) {
                             <button onClick={() => agencyAction(2, devData._id)} className="rejectButtonShare" /*onClick={}*/>
                               Reject
                             </button></> : <>
-                            <button disabled="true" style={{ backgroundColor: devData.agenciesMatched[0].interested === 1 ? "green" : "red", borderRadius: devData.agenciesMatched[0].interested === 1 || 2 }} className="acceptButtonShare" >
+                            <button disabled="true" style={{ backgroundColor: devData.agenciesMatched[0].interested === 1 ? "green" : "red" }} className="acceptButtonShare" >
                               {devData.agenciesMatched[0].interested === 1 ? "Accepted" : "Rejected"} </button>
                           </>
                           }

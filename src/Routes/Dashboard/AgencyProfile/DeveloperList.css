@@ -10,12 +10,13 @@
 }
 
 .developerCard {
-  width: 30%;
+  /* width: 30%; */
+  width: 33%;
   background-color: #fff;
   padding: 1rem;
   border-radius: 15px;
   position: relative;
-  margin: 1rem;
+  margin: 2rem 3rem;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
