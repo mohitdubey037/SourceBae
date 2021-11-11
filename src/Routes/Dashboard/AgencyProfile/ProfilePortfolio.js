@@ -39,11 +39,16 @@ function AgencyPortfolio(props) {
     instance
       .get(`api/${Role}/portfolios/all?agencyId=${agencyId}`)
       .then(function (response) {
+        console.log(response, 'hiiiiiii');
         setAgencyPortfoliodata(response);
       })
       .catch((err) => {
       });
   };
+
+  const RedirectNew = (link) => {
+    window.open(link)
+  }
 
   useEffect(() => {
     if (Role === "Agency") {
@@ -88,6 +93,9 @@ function AgencyPortfolio(props) {
                       {/* <div>price</div> */}<p style={{ backgroundColor: "#ffffff", padding: "0" }}>Project Timeline</p>
                       <p style={{ marginLeft: "15px" }}>{data.projectTimeline} days</p>
                     </div>
+                    <div className="profile_link">
+                      <a target="_blank" href={`//${data.projectLink}`}>{data.projectLink}</a>
+                    </div>
                   </div>
                 </div>
                 <div className="ProjectDescriptionPortfolio">
@@ -96,10 +104,10 @@ function AgencyPortfolio(props) {
               </div>
             )
           })}
-        </div>
-        <div className="No_portfolio" onClick={() => routerHistory.push("/portfolio")}>
-          <div className="add-portfolio-parent">
-            <h6 className="add-portfolio">Add A Portfolio</h6>
+          <div className="No_portfolio" onClick={() => routerHistory.push("/portfolio")}>
+            <div className="add-portfolio-parent">
+              <h6 className="add-portfolio">Add A Portfolio</h6>
+            </div>
           </div>
         </div>
       </div>

@@ -3,10 +3,12 @@
     width: 48%;
     margin: 0.5rem;
     border-radius: 5px;
+    height: max-content;
 }
 
 .ProjectDataPortfolio {
     display: flex;
+    align-items: center;
 }
 
 .detialPortfolio {
@@ -18,7 +20,7 @@
 .PortfolioPriceAndTimeline {
     display: flex;
     flex-direction: row;
-    margin-top: 1rem;
+    margin: 1rem 0rem;
 }
 
 .logoPortfolio img {
@@ -29,15 +31,16 @@
 .mainPortfolioDiv {
     display: flex;
     padding: 1rem;
-    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
     border-radius: 20px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     flex-direction: column;
 }
 
 .logoPortfolio {
     box-shadow: 2px 2px 7px rgb(0 0 0 / 52%);
     margin: 1rem;
+    height: max-content;
 }
 
 .detialPortfolio p {
@@ -75,7 +78,7 @@
 .portfolioParent {
     display: flex;
     flex-wrap: wrap;
-    height: 30rem;
+    /* height: 30rem; */
     overflow: auto;
     background-color: #ffffff;
 }
@@ -93,10 +96,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid;
+    padding: 1rem;
+    width: 48%;
+    border-radius: 1rem;
+    margin: 0.5rem;
 }
 
-.add-portfolio-parent {
+.No_portfolio:hover {
+    cursor: pointer;
+}
+
+.add-portfolio {
     font-family: 'Segoe UI';
-    font-size: 1.1rem;
-    margin-top: 1rem;
+    font-size: 0.8rem;
+    /* margin-top: 1rem; */
 }

@@ -33,6 +33,7 @@ function Portfolio(props) {
 
     const handleChange = (event) => {
         const { name, value } = event.target
+        console.log(name);
         setForm({
             ...form,
             [name]: value
