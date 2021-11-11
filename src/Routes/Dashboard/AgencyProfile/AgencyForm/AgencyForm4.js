@@ -34,6 +34,10 @@ function AgencyForm4(props) {
         setFields(values);
     }
 
+    useEffect(() => {
+        console.log(fields);
+    }, [fields])
+
     function handleAdd() {
         const values = [...fields];
         values.push({ value: null });
@@ -58,18 +62,6 @@ function AgencyForm4(props) {
             })
         }
     }
-
-    // window.addEventListener('popstate', (event) => {
-    //     alert("You message");
-    // })
-
-    // useEffect(() => {
-    //     if (props.history.action === "POP") {
-    //         console.log("write your logic here")
-    //         alert('hiiiiiiiiiiiiiii');
-    //     }
-
-    // }, [])
 
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
@@ -186,47 +178,53 @@ function AgencyForm4(props) {
 
     const finalUpdate = () => {
         if (validateInfo()) {
-            let apiData;
-            let socialPlatformDetails = [];
-            if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value == null) {
+            let PlatformDetails = [];
+            let apiData = {
+                stepsCompleted: '5',
+                socialPlatformDetails: []
+            }
+            
+            if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value === null && fields[0].value === '') {
+                console.log('hhhhhhhh');
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
 
             if (Object.entries(githubLink).length !== 0) {
-                socialPlatformDetails.push(githubLink)
+                PlatformDetails.push(githubLink)
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
             if (Object.entries(stackoverflow).length !== 0) {
-                socialPlatformDetails.push(stackoverflow);
+                PlatformDetails.push(stackoverflow);
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
             if (Object.entries(featuredLink).length !== 0) {
-                socialPlatformDetails.push(featuredLink)
+                PlatformDetails.push(featuredLink)
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
-            if (fields[0].value !== null) {
+            if (fields[0].value !== null && fields[0].value !== '') {
+                console.log('my name is');
                 const portfolios = fields.map((link, index) => {
                     return {
                         platformName: `portfolio${index + 1}`,
                         platformLink: link.value
                     }
                 })
-                socialPlatformDetails.push(...portfolios);
+                PlatformDetails.push(...portfolios);
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
             finishAgencyForm4Api(apiData);
