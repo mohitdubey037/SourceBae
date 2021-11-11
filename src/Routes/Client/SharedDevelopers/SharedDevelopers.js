@@ -110,9 +110,9 @@ function RespondedDetails(props) {
         <div className='main_parent_sharedDeveloper'>
           <Navbar />
           <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
-          <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
-          <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
-          <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1" />
+          {/* <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" /> */}
+          <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" /> 
+          {/* <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1" /> */}
           <div className="main-card_SharedDevelopers">
             <Back name="Matched Developer" />
             <div className="respond-card_parent">
