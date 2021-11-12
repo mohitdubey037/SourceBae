@@ -39,7 +39,6 @@ function AgencyPortfolio(props) {
     instance
       .get(`api/${Role}/portfolios/all?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response, 'hiiiiiii');
         setAgencyPortfoliodata(response);
       })
       .catch((err) => {

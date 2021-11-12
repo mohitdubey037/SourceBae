@@ -94,7 +94,6 @@ function ProductDetails(props) {
   }
 
   const handleConnect = (agencyId) => {
-    console.log('hii');
     if (handleValidation()) {
       instance.post(`/api/${Role}/products/connect-agency`, form)
         .then(res => {

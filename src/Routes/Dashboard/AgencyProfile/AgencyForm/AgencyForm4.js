@@ -35,7 +35,6 @@ function AgencyForm4(props) {
     }
 
     useEffect(() => {
-        console.log(fields);
     }, [fields])
 
     function handleAdd() {
@@ -174,8 +173,6 @@ function AgencyForm4(props) {
     }, [githubLink, stackoverflow, featuredLink])
 
 
-
-
     const finalUpdate = () => {
         if (validateInfo()) {
             let PlatformDetails = [];
@@ -185,7 +182,6 @@ function AgencyForm4(props) {
             }
             
             if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value === null && fields[0].value === '') {
-                console.log('hhhhhhhh');
                 apiData = {
                     stepsCompleted: '5',
                     socialPlatformDetails: PlatformDetails
@@ -213,8 +209,7 @@ function AgencyForm4(props) {
                     socialPlatformDetails: PlatformDetails
                 }
             }
-            if (fields[0].value !== null && fields[0].value !== '') {
-                console.log('my name is');
+            if (fields[0].value !== null && fields[0].value !== '') {  
                 const portfolios = fields.map((link, index) => {
                     return {
                         platformName: `portfolio${index + 1}`,
@@ -230,7 +225,6 @@ function AgencyForm4(props) {
             finishAgencyForm4Api(apiData);
         }
     };
-
 
     return (
         <>

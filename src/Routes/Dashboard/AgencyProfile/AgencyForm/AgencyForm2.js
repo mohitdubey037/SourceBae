@@ -82,7 +82,6 @@ function AgencyForm2(props) {
   };
 
   const handleTechSelect = (arr) => {
-    console.log(arr);
     // setSelectedTechNames(arr);
     setSelectedTechNames(arr.value);
   };
@@ -106,7 +105,6 @@ function AgencyForm2(props) {
   }
 
   const setAgencyTechnologies = () => {
-    console.log(selectedTechName);
     const selectedTechs = selectedTechName.map((tech) => {
       return visibleTechData[tech.value]._id;
     });
@@ -195,11 +193,9 @@ function AgencyForm2(props) {
   }, [allServicesData]);
 
   useEffect(() => {
-    console.log(visibleTechNames);
   }, [visibleTechNames])
 
   useEffect(() => {
-    console.log(selectedTechName);
   }, [selectedTechName])
 
   useEffect(() => {

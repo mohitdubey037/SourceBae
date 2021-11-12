@@ -5,7 +5,7 @@ import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
 import {
-    InputAdornment,
+InputAdornment,
     Input,
     makeStyles,
 } from "@material-ui/core";
@@ -22,6 +22,8 @@ import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 
+import Back from '../../Components/Back/Back';
+
 const borderLight = "rgba(206,212,218, .993)";
 
 
@@ -33,20 +35,20 @@ const useStyles = makeStyles((theme) => ({
         padding: `${theme.spacing(1.5)}px ${theme.spacing(1)}px`,
         borderRadius: "8px",
         border: "2px solid #45a4ea",
-        marginBottom:"1rem",
+        marginBottom: "1rem",
         height: "3rem",
     },
     passwordEye: {
         color: "rgba(131,153,167,0.9)",
         opacity: 0.9,
-        zIndex:1,
+        zIndex: 1,
     },
 }));
 
 const ForgotPassword = (props) => {
     const classes = useStyles();
 
-    let {token} = useParams();
+    let { token } = useParams();
     token = token.slice(1);
 
     const [hidePassword, SetPasswordStatus] = useState(true);
@@ -58,7 +60,7 @@ const ForgotPassword = (props) => {
         token: token
     });
 
-    
+
     const showPassword = (e) => {
         SetPasswordStatus((prevCheck) => !prevCheck);
     };
@@ -92,26 +94,27 @@ const ForgotPassword = (props) => {
     return (
         <>
             <div style={{ marginTop: '20px' }}>
-            <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
-            <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
+                <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
+                <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
             </div>
             <div className="mainLoginPage">
+                <Back name = "Forgot Password"/>
                 <div className="innerLoginPage">
                     {/* <div className="loginIllustrator">
                         <img src={loginImage} alt="" />
                     </div> */}
                     <div className="ForgetContent">
-                    <div className="HeadingForgetPassword">Reset Password </div>
+                        <div className="HeadingForgetPassword">Reset Password </div>
                         <div className="mainLoginForm">
                             <FormControl component="fieldset" className="roleRadio">
                                 <FormLabel className='role' component="legend">Role</FormLabel>
-                                <RadioGroup style ={{display:"flex"}} aria-label="Role" name="Role" value={Role} onChange={handleRole}>
+                                <RadioGroup style={{ display: "flex" }} aria-label="Role" name="Role" value={Role} onChange={handleRole}>
                                     <FormControlLabel value="agency" control={<Radio />} label="Agency" />
                                     <FormControlLabel value="client" control={<Radio />} label="Client" />
                                 </RadioGroup>
                             </FormControl>
                             <div style={{ marginTop: '0px' }} className="loginForm">
-                                <p style={{marginLeft:"-7rem", marginBottom: "10px" }}>Enter New Password Here</p>
+                                <p style={{ marginLeft: "-7rem", marginBottom: "10px" }}>Enter New Password Here</p>
                                 <Input
                                     className={classes.inputs}
                                     placeholder="Enter a Password"
@@ -129,20 +132,20 @@ const ForgotPassword = (props) => {
                                     }}
                                     endAdornment={
                                         <InputAdornment position="end">
-                              {hidePassword ? (
-                                <VisibilityTwoToneIcon
-                                  fontSize="small"
-                                  className={classes.passwordEye}
-                                  onClick={showPassword}
-                                />
-                              ) : (
-                                <VisibilityOffTwoToneIcon
-                                  fontSize="small"
-                                  className={classes.passwordEye}
-                                  onClick={showPassword}
-                                />
-                              )}
-                            </InputAdornment>
+                                            {hidePassword ? (
+                                                <VisibilityTwoToneIcon
+                                                    fontSize="small"
+                                                    className={classes.passwordEye}
+                                                    onClick={showPassword}
+                                                />
+                                            ) : (
+                                                <VisibilityOffTwoToneIcon
+                                                    fontSize="small"
+                                                    className={classes.passwordEye}
+                                                    onClick={showPassword}
+                                                />
+                                            )}
+                                        </InputAdornment>
                                     }
                                 />
                                 <button onClick={() => changePassword()} type="submit">

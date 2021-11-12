@@ -265,7 +265,6 @@ const Register = (props) => {
   };
 
   //API call methods
-  console.log(props, "props in parent register");
   const verifyInput = () => {
     let { userEmail, userName, userPhone } = signupForm;
     if (firstFormErrorValidation()) {
@@ -343,8 +342,6 @@ const Register = (props) => {
   };
 
   useEffect(() => {
-    console.log(step);
-    console.log(signupForm, "signupform use effect");
   }, [step, signupForm]);
 
   useEffect(() => {
@@ -489,7 +486,6 @@ const Register = (props) => {
                   )}
                 </div>
                 <div className="client__formsContainer">
-                  {console.log(role, "role")}
                   {role == "agency" || "Agency" ? (
                     <RegisterAgencyForm1
                       step={step}

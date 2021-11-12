@@ -49,10 +49,7 @@ const RegisterAgencyForm2 = (props) => {
 
   const handleCreateProfile = (event, role) => {
     let { name, value } = event.target;
-    console.log("hsnflr profile")
-    console.log(role,"role")
     if (role === "Agency") {
-      console.log("in agency")
       props.setAgencyProfileDetails({
         ...props.agencyProfileDetails,
         [name]: value,
