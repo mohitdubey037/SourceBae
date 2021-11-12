@@ -17,19 +17,23 @@ import Navbar from "../../Components/ClientNewestDashboard/Navbar/Navbar";
 import cookie from "react-cookies";
 import BottomSideBar from "../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar";
 
+import { Modal } from 'react-responsive-modal';
+
+import { toast } from "react-toastify";
+
 function AgencyNewestDashboard(props) {
+
+  const [open, setOpen] = useState(false);
+
+  const onCloseModal = () => setOpen(false);
+
+  const onOpenModal = () => {
+    setOpen(true);
+  }
+
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
 
-  const isAgencyVerified = cookie.load("isAgencyVerified");
-  const isStepsCompleted = cookie.load("isStepsCompleted");
-
-  const [agencyProfileData, setAgencyProfileData] = useState([]);
-  const [tempStatus, setTempStatus] =
-    useState(
-      false
-    ); /* this is for checking the component first time, if we remove it then the isAgencyVerified and isStepCompleted will take time to store in cookies and hence the check will fail, So don't remove it  */
-  // DON'T REMOVE IT //
   const [allProjects, setAllProjects] = useState([]);
   const [steps, setSteps] = useState(0);
   const [verified, setVerified] = useState(true);
@@ -57,17 +61,12 @@ function AgencyNewestDashboard(props) {
     getAllProjects();
   }, []);
 
-  // useEffect(() => {
-
-  // }, [agencyProfileData])
-
   const getStepsCompleted = () => {
     instance
       .get(`api/${Role}/agencies/steps-completed`)
       .then(function (response) {
         if (response.stepsCompleted === response.totalSteps) {
           setSteps(-1);
-          localStorage.setItem("isVerified", true);
         } else {
           setSteps(response.stepsCompleted);
           let route = `/agency-form-${helper.getNumberSpell(
@@ -88,7 +87,11 @@ function AgencyNewestDashboard(props) {
       });
   };
 
-  useEffect(() => { }, [tempStatus]);
+  useEffect(() => {
+    if (!verified && steps !== -1) {
+      onOpenModal();
+    }
+  }, [verified, steps])
 
   useEffect(() => {
     getStepsCompleted();
@@ -119,12 +122,6 @@ function AgencyNewestDashboard(props) {
 
       if (link === "add-developer") props.history.push(`/${link}`);
 
-      if (link === "product-details") {
-        props.history.push({
-          pathname: `/${link}:${agencyProfileData.productId}`,
-          condition: "Agency",
-        });
-      }
       if (link === "portfolio") {
         props.history.push({
           pathname: "portfolio",
@@ -135,100 +132,121 @@ function AgencyNewestDashboard(props) {
   };
 
   return (
-    <div className="Navbar-clientDashboard">
-      <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-      <div style={{ zIndex: visible && "-1" }} className="container-body">
-        <Navbar />
-        <div className="content-body">
-          <div className="content-leftBody">
+    <>
+      <div className="Navbar-clientDashboard">
+        <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+        <div style={{ zIndex: visible && "-1" }} className="container-body">
+          <Navbar />
+          <div className="content-body">
+            <div className="content-leftBody">
 
-            {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
-              <div className="mainUpdateVerify">
-                <div className="innerMainVerify">
-                  <p>
-                    Please
-                    <span onClick={() => verifyEmailPhone()}>
-                      Verify Phone & Email
-                    </span>
-                    to use our services.
-                  </p>
-                </div>
-              </div>
-            )}
-            {(!verified || steps !== -1) && (
-              <div className="mainUpdateVerify">
-                {!verified && steps !== -1 ? (
+              {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
+                <div className="mainUpdateVerify">
                   <div className="innerMainVerify">
                     <p>
                       Please
-                      <span onClick={() => props.history.replace(formRoute)}>
-                        Update
+                      <span onClick={() => verifyEmailPhone()}>
+                        Verify Phone & Email
                       </span>
-                      your profile to use our services.
+                      to use our services.
                     </p>
-                  </div>
-                ) : (
-                  !verified && (
-                    <div
-                      className="innerMainVerify"
-                      style={{ marginTop: "1rem" }}
-                    >
-                      <p>Please wait for your profile to be verified by us.</p>
-                    </div>
-                  )
-                )}
-              </div>
-            )}
-            <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}>
-              <UserOperations
-                disabled={!verified || steps !== -1}
-                nextpage={() => quotation("quotation")}
-                text="Quotation"
-                img={QuotationIcon}
-              />
-
-              <UserOperations
-                disabled={!verified || steps !== -1}
-                nextpage={() => quotation("add-developer")}
-                text="Add Developer"
-                img={addDeveloperIcon}
-              />
-
-              <UserOperations
-                disabled={!verified || steps !== -1}
-                nextpage={() => quotation("portfolio")}
-                text="Add Your Portfolio"
-                img={ThirdIcon}
-              />
-
-            </div>
-            <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
-              {allProjects?.projects?.length > 0 && (
-                <div className="graphic">
-                  <div className="graphic-illustration-heading">
-                    <h6>Project details</h6>
                   </div>
                 </div>
               )}
-              <div className="user-project_parent">
-                {allProjects?.projects?.length > 0 ? (
-                  allProjects?.projects?.map((value, index) => {
-                    return <AgencyProjectCard key={index} {...value} />;
-                  })
-                ) : (
-                  <div className={`not_found agencyNewestDashboard`}>
-                    <img src={NotFound} alt="NotFound" />
-                    <p className="no_project_found">No Project Found</p>
+              {(!verified || steps !== -1) && (
+                <div className="mainUpdateVerify">
+                  {!verified && steps !== -1 ? (
+                    <div className="innerMainVerify">
+                      <p>
+                        Please
+                        <span onClick={() => props.history.replace(formRoute)}>
+                          Update
+                        </span>
+                        your profile to use our services.
+                      </p>
+                    </div>
+                  ) : (
+                    !verified && (
+                      <div
+                        className="innerMainVerify"
+                        style={{ marginTop: "1rem" }}
+                      >
+                        <p>Please wait for your profile to be verified by us.</p>
+                      </div>
+                    )
+                  )}
+                </div>
+              )}
+              <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}>
+                <UserOperations
+                  disabled={!verified || steps !== -1}
+                  nextpage={() => quotation("quotation")}
+                  text="Quotation"
+                  img={QuotationIcon}
+                />
+
+                <UserOperations
+                  disabled={!verified || steps !== -1}
+                  nextpage={() => quotation("add-developer")}
+                  text="Add Developer"
+                  img={addDeveloperIcon}
+                />
+
+                <UserOperations
+                  disabled={!verified || steps !== -1}
+                  nextpage={() => quotation("portfolio")}
+                  text="Add Your Portfolio"
+                  img={ThirdIcon}
+                />
+
+              </div>
+              <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
+                {allProjects?.projects?.length > 0 && (
+                  <div className="graphic">
+                    <div className="graphic-illustration-heading">
+                      <h6>Project details</h6>
+                    </div>
                   </div>
                 )}
+                <div className="user-project_parent">
+                  {allProjects?.projects?.length > 0 ? (
+                    allProjects?.projects?.map((value, index) => {
+                      return <AgencyProjectCard key={index} {...value} />;
+                    })
+                  ) : (
+                    <div className={`not_found agencyNewestDashboard`}>
+                      <img src={NotFound} alt="NotFound" />
+                      <p className="no_project_found">No Project Found</p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
+            <RightSide />
           </div>
-          <RightSide />
         </div>
+        <BottomSideBar />
       </div>
-      <BottomSideBar />
-    </div>
+
+      <Modal open={open} onClose={onCloseModal} classNames={{
+        overlay: 'customOverlayAgencyProduct',
+        modal: 'customModalClientOneHireDeveloper',
+      }} center>
+
+        <div className="connect_or_not">
+          <h4>Please Update Your Profile</h4>
+        </div>
+
+        <div className='verify_or_not'>
+          <div onClick={() => props.history.replace('/agency-form-one')}>
+            <p>Update Now</p>
+          </div>
+          <div onClick={onCloseModal}>
+            <p>Update Later</p>
+          </div>
+        </div>
+      </Modal>
+    </>
   );
 }
 

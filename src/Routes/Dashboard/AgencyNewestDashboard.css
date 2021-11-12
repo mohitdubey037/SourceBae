@@ -113,6 +113,29 @@
   color: red;
 }
 
+.verify_or_not {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 20px
+}
+
+.verify_or_not div {
+  color: white;
+  background-color: #3498db;
+  padding: 4px;
+  text-align: center;
+  border-radius: 11px;
+  width: 40%;
+}
+
+.verify_or_not div:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .not_found.agencyNewestDashboard img {
     width: 14rem;
