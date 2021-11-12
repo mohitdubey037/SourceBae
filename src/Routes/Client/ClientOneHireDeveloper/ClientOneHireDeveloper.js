@@ -151,16 +151,18 @@ function ClientOneHireDeveloper(props) {
                         modal: 'customModalClientOneHireDeveloper',
                     }} center>
 
-                        <div className="connect_or_not">
-                            <h4>Show interest in this agency!!</h4>
-                        </div>
-
-                        <div className='interested_or_not'>
-                            <div onClick={handleDevelopers}>
-                                <p>Yes</p>
+                        <div className="want_to_accept">
+                            <div className="connect_or_not">
+                                <p>Show interest in this agency!!</p>
                             </div>
-                            <div onClick={onCloseModal}>
-                                <p>No</p>
+
+                            <div className='interested_or_not'>
+                                <div className="update_now" onClick={handleDevelopers}>
+                                    <p>Yes</p>
+                                </div>
+                                <div className="update_later" onClick={onCloseModal}>
+                                    <p>No</p>
+                                </div>
                             </div>
                         </div>
                     </Modal>

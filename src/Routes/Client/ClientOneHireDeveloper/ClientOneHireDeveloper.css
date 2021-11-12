@@ -185,25 +185,17 @@
 
 .connect_or_not {
   text-align: center;
-  font-weight: 'Segoe UI';
+  font-family: 'Segoe UI';
   font-size: 20px;
   font-style: normal;
 }
 
 .customModalClientOneHireDeveloper {
   background: #fff;
-  max-width: 751px;
+  max-width: 330px;
   width: 100%;
-}
-
-.interested_or_not {
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-around;
-  margin: auto;
-  margin-top: 20px;
+  border-radius: 1.4rem;
+  height: 8rem;
 }
 
 .agency_pending {
@@ -219,15 +211,35 @@
   color: grey;
 }
 
-.interested_or_not div:hover {
-  cursor: pointer;
+.interested_or_not {
+  width: 68%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
 }
 
 .interested_or_not div {
-  color: white;
-  background-color: #3498db;
   padding: 4px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border-radius: 31px;
+  width: 35%;
+  height: 27px;
+  font-family: 'Segoe UI';
+  font-size: 14px;
   text-align: center;
-  border-radius: 11px;
-  width: 40%;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+}
+
+.connect_or_not p {
+  font-size: 1rem;
+}
+
+.interested_or_not div:hover {
+  cursor: pointer;
 }

@@ -113,23 +113,21 @@
   color: red;
 }
 
-.verify_or_not {
-  width: 45%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-around;
-  margin: auto;
-  margin-top: 20px
+.interested_or_not.verify_or_not {
+  width: 90%;
 }
 
-.verify_or_not div {
-  color: white;
-  background-color: #3498db;
-  padding: 4px;
-  text-align: center;
-  border-radius: 11px;
-  width: 40%;
+.update_now {
+  background-color: #45A4EA !important;
+  color: white !important;
+}
+
+.update_now:hover {
+  color: white !important;
+}
+
+.update_later {
+  background-color: #eaf2ff !important;
 }
 
 .verify_or_not div:hover {

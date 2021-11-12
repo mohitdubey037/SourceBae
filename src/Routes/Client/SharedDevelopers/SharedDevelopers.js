@@ -279,16 +279,20 @@ function RespondedDetails(props) {
             modal: 'customModalClientOneHireDeveloper',
           }} center>
 
-            <div className="connect_or_not">
-              <h5>Do you want to accept??</h5>
-            </div>
-
-            <div className='interested_or_not'>
-              <div onClick={() => agencyAction(1)}>
-                <p>Accept</p>
+            <div className="want_to_accept">
+              <div className="connect_or_not">
+                <p>Do you want to accept??</p>
               </div>
-              <div onClick={() => agencyAction(2)}>
-                <p>Reject</p>
+
+              <div className='interested_or_not'>
+                {/* <div> */}
+                  <div className="update_now" onClick={() => agencyAction(1)}>
+                    <p>Accept</p>
+                  </div>
+                  <div className="update_later" onClick={() => agencyAction(2)}>
+                    <p>Reject</p>
+                  </div>
+                {/* </div> */}
               </div>
             </div>
           </Modal>

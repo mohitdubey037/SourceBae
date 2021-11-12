@@ -58,39 +58,6 @@
   width: 15%;
 }
 
-/* .html {
-  bottom: 0;
-}
-
-.css {
-  bottom: 50px;
-  left: 30%;
-}
-
-.javascripts {
-  bottom: 12%;
-  left: 2%;
-}
-
-.reacts {
-  bottom: 18%;
-  left: 30%;
-}
-
-.angular {
-  bottom: 22%;
-}
-
-.nodejs {
-  bottom: 0;
-  left: 40%;
-}
-
-.mongodb {
-  bottom: 25%;
-  left: 40%;
-} */
-
 .addingDeveloperHeadings h1 {
   font-family: 'Segoe UI Bold';
   color: #45A4E4;
@@ -106,10 +73,6 @@
 .pointsToRemember {
   margin-top: 8%;
 }
-
-/* .pointsToRemember ul {
-  list-style: circle;
-} */
 
 .pointsToRemember h2 {
   color: #45A4EA;
@@ -337,14 +300,14 @@
   position: relative;
 }
 
-.submitButton {
+/* .submitButton {
   margin-top: 2rem;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 5%;
-}
+} */
 
 .submitButton button {
   border-radius: 8px;
@@ -383,7 +346,6 @@
 
 .mainAddDeveloperForm {
   width: 100%;
-  /* min-height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -524,7 +486,6 @@
 }
 
 .yearsOfExperience_addingDeveloper {
-  /* position: relative; */
   margin-top: 4%;
 }
 

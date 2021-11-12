@@ -233,16 +233,18 @@ function AgencyNewestDashboard(props) {
         modal: 'customModalClientOneHireDeveloper',
       }} center>
 
-        <div className="connect_or_not">
-          <h4>Please Update Your Profile</h4>
-        </div>
-
-        <div className='verify_or_not'>
-          <div onClick={() => props.history.replace('/agency-form-one')}>
-            <p>Update Now</p>
+        <div className="want_to_accept">
+          <div className="connect_or_not">
+            <h6>Please Update Your Profile</h6>
           </div>
-          <div onClick={onCloseModal}>
-            <p>Update Later</p>
+
+          <div className='interested_or_not verify_or_not'>
+            <div className="update_now" onClick={() => props.history.replace('/agency-form-one')}>
+              <p>Update Now</p>
+            </div>
+            <div className="update_later" onClick={onCloseModal}>
+              <p>Update Later</p>
+            </div>
           </div>
         </div>
       </Modal>

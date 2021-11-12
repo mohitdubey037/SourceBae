@@ -254,8 +254,7 @@
   letter-spacing: 1px;
 }
 
-.acceptButtonShare:active, .acceptButtonShare:focus, .acceptButtonShare:hover, 
-.rejectButtonShare:active, .rejectButtonShare:focus, .rejectButtonShare:hover {
+.acceptButtonShare:active, .acceptButtonShare:focus, .acceptButtonShare:hover, .rejectButtonShare:active, .rejectButtonShare:focus, .rejectButtonShare:hover {
   border: none;
   outline: none;
 }
@@ -301,4 +300,11 @@
   font-family: 'Segoe UI';
   color: white;
   transform: translateY(1rem)
+}
+
+.want_to_accept {
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+  justify-content: space-around;
 }
