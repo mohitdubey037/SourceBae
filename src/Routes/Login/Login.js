@@ -350,7 +350,7 @@ const Login = (props) => {
                           className={`forgot-password_login ${
                             roleString === "Client" && "conditional_color"
                           }`}
-                          onClick={() => props.history.replace("/enter-email")}
+                          onClick={() => props.history.push("/enter-email")}
                         >
                           <p>Forgot Password</p>
                         </div>

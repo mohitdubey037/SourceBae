@@ -13,6 +13,7 @@ import DownImage2 from '../../../assets/images/Newestdashboard/Client-one-hire-d
 import UpBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/UpBigImage.svg';
 import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownBigImage.svg';
 import Back from "../../../Components/Back/Back";
+import { Modal } from 'react-responsive-modal';
 
 function ClientOneHireDeveloper(props) {
     // const routerHistory = useHistory();
@@ -26,11 +27,22 @@ function ClientOneHireDeveloper(props) {
     const [singleHiredDeveloper, setSingleHiredDeveloper] = useState({});
     const [loading, setLoading] = useState(false);
     const [disability, setDisability] = useState(false);
+    const [agencyId, setAgencyId] = useState(null);
+
+    const [open, setOpen] = useState(false);
+
+    const onCloseModal = () => setOpen(false);
+
+    const onOpenModal = (agencyId) => {
+        setOpen(true);
+        setAgencyId(agencyId)
+    }
 
     const getOneDeveloper = () => {
         setLoading(true);
         instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`)
             .then(function (response) {
+                console.log(response, 'getonedeveloper');
                 setSingleHiredDeveloper(response);
                 setLoading(false);
             })
@@ -40,13 +52,13 @@ function ClientOneHireDeveloper(props) {
     };
 
 
-    const handleDevelopers = (agencyId) => {
+    const handleDevelopers = () => {
         setLoading(true);
         instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, { isShortListed: true, agencyId: agencyId })
             .then(res => {
-                
+                console.log(res, 'handledevelopers')
+                onCloseModal()
                 getOneDeveloper()
-                
             })
             .catch(err => {
                 setLoading(false);
@@ -76,51 +88,84 @@ function ClientOneHireDeveloper(props) {
     return (
         <>
             {loading ? <Spinner /> :
-                <div className="main_parent_clientOneHireDeveloper">
-                    <Navbar />
-                    <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
-                    <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
-                    <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
-                    <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1" />
-                    <div className="respondCards_clientOneHireDeveloper">
-                        <Back name="Matched Agencies" />
-                        <div className="moreAgency_parent">
-                            {Object.keys(singleHiredDeveloper).length !== 0 ?
-                                singleHiredDeveloper?.agenciesMatched?.length > 0 ?
-                                    singleHiredDeveloper?.agenciesMatched?.map(agency => {
-
-                                         let temp =agency.isShortListed
-                                        return (
-                                            <div className="moreAgencyList new_design_clientOneHireDeveloper">
-                                                <div className="moreAgencyInfo">
-                                                    <div className="agencyDesc_clientOneHireDeveloper">
-                                                        <h6 className="name-title">About the company:{" "}</h6>
-                                                        <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                <>
+                    <div className="main_parent_clientOneHireDeveloper">
+                        <Navbar />
+                        <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
+                        <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
+                        <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
+                        <img className="downImage4_clientOneHireDeveloper" src={DownBigImage} alt="upImage1" />
+                        <div className="respondCards_clientOneHireDeveloper">
+                            <Back name="Matched Agencies" />
+                            <div className="moreAgency_parent">
+                                {Object.keys(singleHiredDeveloper).length !== 0 ?
+                                    singleHiredDeveloper?.agenciesMatched?.length > 0 ?
+                                        singleHiredDeveloper?.agenciesMatched?.map(agency => {
+                                            let isShortListed = agency.isShortListed
+                                            let interested = agency.interested
+                                            return (
+                                                <div className="moreAgencyList new_design_clientOneHireDeveloper">
+                                                    <div className="moreAgencyInfo">
+                                                        <div className="agencyDesc_clientOneHireDeveloper">
+                                                            <h6 className="name-title">About the company:{" "}</h6>
+                                                            <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                                                        </div>
+                                                        <div className="email_clientOneHireDeveloper">
+                                                            <p className="description_clientOne">Description:</p>
+                                                            <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
+                                                        </div>
                                                     </div>
-                                                    <div className="email_clientOneHireDeveloper">
-                                                        <p>Description:</p>
-                                                        <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
+
+                                                    <div className="button_parent">
+                                                        {!isShortListed
+                                                            ?
+                                                            <button onClick={() => onOpenModal(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
+                                                                <p>Get Connected!!</p>
+                                                            </button>
+                                                            :
+                                                            isShortListed && interested === 0 ?
+                                                                <p className="agency_pending">Great Step!!.Our support will contact you soon</p>
+                                                                :
+                                                                isShortListed && interested === 1
+                                                                    ?
+                                                                    <p className="agency_accepted">Congratulations!!..Agency is interested</p>
+                                                                    :
+                                                                    <p className="agency_rejected_interested">Sorry Agency is not interested</p>
+
+                                                        }
                                                     </div>
                                                 </div>
-
-                                                <div className="button_parent">
-                                                    <button style={{ backgroundColor: temp && 'grey', backgroundImage: temp && "unset" }} disabled={temp} onClick={() => handleDevelopers(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
-                                                        <p>Get connected to the company</p>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
+                                            )
+                                        })
+                                        :
+                                        <div className="no_matched_agency"><h2>Sorry No Matched Agencies Found.</h2></div>
                                     :
-                                    <div className="no_matched_agency"><h2>Sorry No Matched Agencies Found.</h2></div>
-                                :
-                                <h2 className="no_matched_agency">Sorry No Matched Agencies Found.</h2>
-                            }
+                                    <h2 className="no_matched_agency">Sorry No Matched Agencies Found.</h2>
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
 
+                    <Modal open={open} onClose={onCloseModal} classNames={{
+                        overlay: 'customOverlayAgencyProduct',
+                        modal: 'customModalClientOneHireDeveloper',
+                    }} center>
+
+                        <div className="connect_or_not">
+                            <h4>Show interest in this agency!!</h4>
+                        </div>
+
+                        <div className='interested_or_not'>
+                            <div onClick={handleDevelopers}>
+                                <p>Yes</p>
+                            </div>
+                            <div onClick={onCloseModal}>
+                                <p>No</p>
+                            </div>
+                        </div>
+                    </Modal>
+                </>
+            }
         </>
     );
 }

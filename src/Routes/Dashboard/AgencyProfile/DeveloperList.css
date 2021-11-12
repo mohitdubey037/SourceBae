@@ -219,20 +219,10 @@
 
 .reject_or_not-label {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 'Segoe UI';
   font-size: 20px;
   font-style: normal;
 }
-
-/* .reject_or_not-label h2::after {
-  content: '' !important;
-  width: 50px !important;
-  height: 2px !important;
-  background: #000 !important;
-  display: block !important;
-  margin-left: 187px !important;
-} */
 
 .reject_or_not>div {
   color: white;

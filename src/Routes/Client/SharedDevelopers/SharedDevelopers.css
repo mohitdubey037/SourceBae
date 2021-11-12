@@ -34,9 +34,11 @@
   margin: 0 3rem 2rem;
   width: 40%;
 }
+
 .childDiv1 {
   width: 15rem;
 }
+
 .childDiv2 {
   width: 18rem;
 }
@@ -220,16 +222,15 @@
   border-bottom: 2px solid #407bff;
 }
 
-
-.devops p{
-font-family: 'Segoe UI';
-    color: #707070 !important;
-    padding: 0.2rem 0.4rem;
-    border: 1px solid #707070;
-    border-radius: 999px;
-    margin-right: 3px;
-    font-size: 0.7rem !important;
-    }
+.devops p {
+  font-family: 'Segoe UI';
+  color: #707070 !important;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #707070;
+  border-radius: 999px;
+  margin-right: 3px;
+  font-size: 0.7rem !important;
+}
 
 .devops div {
   display: flex;
@@ -253,6 +254,12 @@ font-family: 'Segoe UI';
   letter-spacing: 1px;
 }
 
+.acceptButtonShare:active, .acceptButtonShare:focus, .acceptButtonShare:hover, 
+.rejectButtonShare:active, .rejectButtonShare:focus, .rejectButtonShare:hover {
+  border: none;
+  outline: none;
+}
+
 .rejectButtonShare {
   border: 1px solid #707070;
   background-color: #707070;
@@ -260,21 +267,21 @@ font-family: 'Segoe UI';
 
 .technologies {
   font-family: "Segoe UI";
-    color: #45a4ea;
-    font-size: 14px;
-    margin-bottom: 0.8rem;
+  color: #45a4ea;
+  font-size: 14px;
+  margin-bottom: 0.8rem;
 }
 
 .parentDivShared p {
   font-size: 14px !important;
   font-family: "Segoe UI" !important;
   color: #45a4Ea !important;
-} 
+}
 
 .parentDivShared h2 {
   font-size: 12px;
   font-family: "Segoe UI" !important;
-   color: #ababab;
+  color: #ababab;
 }
 
 .sharedDevDetails1 {

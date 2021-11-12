@@ -48,8 +48,6 @@ function Navbar(props) {
                     <p style={{
                         color: (props.history.location.pathname === '/client-profile' ||
                             props.history.location.pathname === `/product-details:${index}` ||
-                            url.includes('/shared-developers') ||
-                            url.includes('/client-one-hire-developer') ||
                             url.includes('/agencyNewestAllProject') ||
                             url.includes('/agencyNewestDashboard')) ||
                             url.includes('/portfolio') ||

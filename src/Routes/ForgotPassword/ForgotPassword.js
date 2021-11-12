@@ -22,8 +22,6 @@ import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 
-import Back from '../../Components/Back/Back';
-
 const borderLight = "rgba(206,212,218, .993)";
 
 
@@ -98,7 +96,6 @@ const ForgotPassword = (props) => {
                 <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
             </div>
             <div className="mainLoginPage">
-                <Back name = "Forgot Password"/>
                 <div className="innerLoginPage">
                     {/* <div className="loginIllustrator">
                         <img src={loginImage} alt="" />

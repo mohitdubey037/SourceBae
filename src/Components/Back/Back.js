@@ -63,7 +63,7 @@ function Back(props) {
                 </div>
                 <h6>Back</h6>
             </div>
-            <div className="add-developer-div">
+            <div style={{width: url.includes('enter-email') && '84%'}} className="add-developer-div">
                 <h6>{props.name}</h6>
             </div>
         </div>

@@ -6,6 +6,12 @@
     transform: translateY(-50px);
   }
 
+  .forgot_parent {
+    padding-top: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
   .MuiFormGroup-root {
     color:#015F9a
   }

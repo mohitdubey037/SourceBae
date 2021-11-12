@@ -107,7 +107,6 @@ function ProductAgencies(props) {
 
     const [errors, setErrors] = useState({});
 
-
     const onOpenModal = (agencyId) => {
         setOpen(true);
         setForm({
@@ -115,6 +114,7 @@ function ProductAgencies(props) {
             agencyId: agencyId
         })
     }
+    
     const onCloseModal = () => setOpen(false);
 
     const [form, setForm] = useState({

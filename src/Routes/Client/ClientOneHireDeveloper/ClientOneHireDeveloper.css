@@ -53,6 +53,7 @@
   flex-wrap: wrap;
   margin: auto;
   width: 84%;
+  overflow: auto;
 }
 
 .moreAgencyHeading {
@@ -68,12 +69,17 @@
 }
 
 .name-title, .name-Font {
-  font-family: 'Segoe UI semibold', sans-serif;
+  font-family: 'Segoe UI Semibold', sans-serif;
   font-size: 1rem;
   text-transform: capitalize;
   padding-top: 2%;
   color: #015F9A;
   text-align: center;
+}
+
+.description_clientOne {
+  font-family: 'Segoe UI Semibold', sans-serif;
+  color: #080808;
 }
 
 .name-title {
@@ -105,7 +111,8 @@
   margin-top: 2rem;
   width: 100%;
   display: flex;
-  padding-left: 0.8rem
+  padding-left: 0.8rem;
+  align-items: center;
 }
 
 .phone_clientOneHireDeveloper img, .email_clientOneHireDeveloper img {
@@ -164,7 +171,7 @@
   z-index: 1;
 }
 
-.moreAgencyList .moreAgencyInfo p {
+.description_sharedDeveloper {
   font-family: 'Segoe UI', sans-serif;
   font-size: 13px;
   color: #707070;
@@ -179,6 +186,50 @@
   transform: translateX(1rem);
 }
 
-/* .moreAgencyList .moreAgencyInfo .email_clientOneHireDeveloper p {
-  margin-left: 1rem;
-} */
+.connect_or_not {
+  text-align: center;
+  font-weight: 'Segoe UI';
+  font-size: 20px;
+  font-style: normal;
+}
+
+.customModalClientOneHireDeveloper {
+  background: #fff;
+  max-width: 751px;
+  width: 100%;
+}
+
+.interested_or_not {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.agency_pending {
+  color: #ac79db;
+}
+
+.agency_accepted {
+  color: green;
+}
+
+.agency_rejected_interested {
+  color: red;
+}
+
+.interested_or_not div:hover {
+  cursor: pointer;
+}
+
+.interested_or_not div {
+  color: white;
+  background-color: #3498db;
+  padding: 4px;
+  text-align: center;
+  border-radius: 11px;
+  width: 40%;
+}
