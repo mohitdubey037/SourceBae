@@ -111,8 +111,9 @@
   margin-top: 2rem;
   width: 100%;
   display: flex;
-  padding-left: 0.8rem;
+  /* padding-left: 0.8rem; */
   align-items: center;
+  justify-content: center;
 }
 
 .phone_clientOneHireDeveloper img, .email_clientOneHireDeveloper img {
@@ -182,9 +183,9 @@
   margin-left: 1rem;
 }
 
-.description_sharedDeveloper {
+/* .description_sharedDeveloper {
   transform: translateX(1rem);
-}
+} */
 
 .connect_or_not {
   text-align: center;
@@ -218,7 +219,8 @@
 }
 
 .agency_rejected_interested {
-  color: red;
+  font-size: 0.8rem;
+  color: grey;
 }
 
 .interested_or_not div:hover {

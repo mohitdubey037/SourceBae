@@ -107,11 +107,11 @@ function ClientOneHireDeveloper(props) {
                                                 <div className="moreAgencyList new_design_clientOneHireDeveloper">
                                                     <div className="moreAgencyInfo">
                                                         <div className="agencyDesc_clientOneHireDeveloper">
-                                                            <h6 className="name-title">About the company:{" "}</h6>
-                                                            <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6>
+                                                            <h6 className="name-title">About the company</h6>
+                                                            {/* <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6> */}
                                                         </div>
                                                         <div className="email_clientOneHireDeveloper">
-                                                            <p className="description_clientOne">Description:</p>
+                                                            {/* <p className="description_clientOne">Description:</p> */}
                                                             <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
                                                         </div>
                                                     </div>
@@ -130,7 +130,7 @@ function ClientOneHireDeveloper(props) {
                                                                     ?
                                                                     <p className="agency_accepted">Congratulations!!..Agency is interested</p>
                                                                     :
-                                                                    <p className="agency_rejected_interested">Sorry Agency is not interested</p>
+                                                                    <p className="agency_rejected_interested">Sorry!!Agency declined your request, our support team will connect you soon with more profiles.</p>
 
                                                         }
                                                     </div>
