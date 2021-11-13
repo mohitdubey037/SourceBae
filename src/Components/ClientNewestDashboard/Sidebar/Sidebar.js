@@ -75,7 +75,7 @@ function Sidebar(props) {
     return (
         <div className="container-sidebar">
             <div className="temporary_logo">
-                <img src={TemporaryLogo} alt="logo" />
+                <img src= {require('../../../assets/images/Logo/temporary_logo.jpeg').default} alt="logo" />
             </div>
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
