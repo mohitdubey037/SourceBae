@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 
+import * as helper from "../../../shared/helper";
+
 import "./ProfilePortfolio.css"
 import instance from "../../../Constants/axiosConstants";
 // import Rules_edit from "../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg";
@@ -13,6 +15,7 @@ import "./Rules.css";
 
 function AgencyPortfolio(props) {
   const routerHistory = useHistory();
+  const propsAgencyId = helper.cleanParam(props.id);
 
   const Role = localStorage.getItem("role");
   const [agencyPortfoliodata, setAgencyPortfoliodata] = useState([]);
@@ -37,7 +40,7 @@ function AgencyPortfolio(props) {
 
   const getAgencyPortfolio = (profileviewStatus) => {
     instance
-      .get(`api/${Role}/portfolios/all?agencyId=${agencyId}`)
+      .get(`api/${Role}/portfolios/all?agencyId=${Role === 'Agency' ? agencyId : propsAgencyId}`)
       .then(function (response) {
         setAgencyPortfoliodata(response);
       })
@@ -45,14 +48,14 @@ function AgencyPortfolio(props) {
       });
   };
 
-  const RedirectNew = (link) => {
-    window.open(link)
-  }
+  // const RedirectNew = (link) => {
+  //   window.open(link)
+  // }
 
   useEffect(() => {
-    if (Role === "Agency") {
+    // if (Role === "Agency") {
       getAgencyPortfolio();
-    }
+    // }
   }, []);
 
   const handleChange = (event) => {
@@ -103,11 +106,13 @@ function AgencyPortfolio(props) {
               </div>
             )
           })}
-          <div className="No_portfolio" onClick={() => routerHistory.push("/portfolio")}>
-            <div className="add-portfolio-parent">
-              <h6 className="add-portfolio">Add A Portfolio</h6>
+          {Role === "Agency" &&
+            <div className="No_portfolio" onClick={() => routerHistory.push("/portfolio")}>
+              <div className="add-portfolio-parent">
+                <h6 className="add-portfolio">Add A Portfolio</h6>
+              </div>
             </div>
-          </div>
+          }
         </div>
       </div>
     </>
