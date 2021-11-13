@@ -13,7 +13,9 @@ import Back from '../../../../Components/Back/Back';
 import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/agencyForm4_image.svg';
 //axios instance
 import instance from "../../../../Constants/axiosConstants";
-import * as helper from "../../../../shared/helper"
+import * as helper from "../../../../shared/helper";
+
+import './ResponsiveAgencyForm.css';
 
 
 function AgencyForm4(props) {
@@ -305,7 +307,7 @@ function AgencyForm4(props) {
                                         {errors.featuredLinkError && <Alert severity="error">{errors.featuredLinkError}</Alert>}
                                     </div>
 
-                                    <div className="nextBtn buttonParent_agencyForm4">
+                                    <div className="nextBtn bothBtn buttonParent_agencyForm4">
                                         <button style={{ backgroundColor: '#707070' }} onClick={() => goBack()}>
                                             Back
                                         </button>

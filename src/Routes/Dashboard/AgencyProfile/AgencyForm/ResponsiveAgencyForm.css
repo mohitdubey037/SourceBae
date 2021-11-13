@@ -62,10 +62,14 @@
     }
     .conditional_please_select {
         width: 100%;
+        height: 20rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
     .serviceFieldsOptions_agencyForm2 {
         margin-left: 0;
         width: 100%;
+        height: 20rem;
     }
     .input_agencyForm2, .uiuxtext_agencyForm3 {
         font-size: 1rem;
@@ -119,4 +123,21 @@
     }
 }
 
-/* Agency form 4 */ 
+/* Agency form 4 */
+
+@media (max-width: 360px) {
+    .socialInputs {
+        width: 100%;
+    }
+    .image_div {
+        display: none;
+    }
+    .addMoreFields {
+        left: 3%;
+        width: 63%;
+        padding: 0.2rem 0.7rem;
+    }
+    .buttonParent_agencyForm4 {
+        margin-top: 2rem;
+    }
+}
