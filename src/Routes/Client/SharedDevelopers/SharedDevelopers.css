@@ -298,7 +298,7 @@
 
 .NotFound_SharedDeveloper p {
   font-family: 'Segoe UI';
-  color: white;
+  color: black;
   transform: translateY(1rem)
 }
 

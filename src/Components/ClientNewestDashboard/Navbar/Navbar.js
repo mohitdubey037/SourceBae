@@ -10,16 +10,7 @@ function Navbar(props) {
     const roleId = localStorage.getItem("userId");
     const [data, setData] = useState({});
     const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        if (url.includes(':')) {
-            const indexTemp = url.indexOf(':')
-            const urlTemp = url.slice(indexTemp + 1);
-            setIndex(urlTemp);
-        }
-    }, [])
-
-
+    
     useEffect(() => {
         if (Role === 'Client') {
             instance.get(`/api/${Role}/clients/get/${roleId}`)
@@ -47,7 +38,6 @@ function Navbar(props) {
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{
                         color: (props.history.location.pathname === '/client-profile' ||
-                            props.history.location.pathname === `/product-details:${index}` ||
                             url.includes('/agencyNewestAllProject') ||
                             url.includes('/agencyNewestDashboard')) ||
                             url.includes('/portfolio') ||
@@ -56,10 +46,10 @@ function Navbar(props) {
                 </div>
                 <div className="userprofile-circle nav-left-item" >
                     {Role === 'Agency' ?
-                        <img src={data?.agencyLogo?  data?.agencyLogo: `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
+                        <img src={data?.agencyLogo ? data?.agencyLogo : `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
                         :
-                        <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`}/>
-                       }
+                        <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`} />
+                    }
                 </div>
             </div>
         </div>
