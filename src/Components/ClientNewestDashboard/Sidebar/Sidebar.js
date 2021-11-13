@@ -75,7 +75,7 @@ function Sidebar(props) {
     return (
         <div className="container-sidebar">
             <div className="temporary_logo">
-                <img src= {require('../../../assets/images/Logo/temporary_logo.jpeg').default} alt="logo" />
+                <img src= 'https://api.onesourcing.in/media/images/1636785308442.jpeg' alt="logo" />
             </div>
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
