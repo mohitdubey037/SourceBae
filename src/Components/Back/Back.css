@@ -48,6 +48,11 @@
 }
 
 @media (max-width: 360px) {
+
+  .image-div_newestAddDeveloper {
+    width: 15%;
+  }
+
   .image-div_newestAddDeveloper h6, .add-developer-div h6 {
     font-size: 0.8rem;
   }
