@@ -62,12 +62,82 @@
     }
     .conditional_please_select {
         width: 100%;
+        height: 20rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
     .serviceFieldsOptions_agencyForm2 {
         margin-left: 0;
         width: 100%;
+        height: 20rem;
     }
     .input_agencyForm2, .uiuxtext_agencyForm3 {
         font-size: 1rem;
+    }
+}
+
+/* Agency form 3 */
+
+@media (max-width: 360px) {
+    .mainDocumentsForm {
+        flex-direction: column;
+    }
+    .innerDocumentForm {
+        width: 100%;
+    }
+    .documentInformation {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 14rem;
+        margin-top: 0;
+    }
+    .panDetails {
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    .miscellaneousArea {
+        display: none;
+    }
+    .documentInformation .logo-type_agencyForm1, .panCardContent .logo-type_agencyForm1 {
+        font-size: 10px;
+    }
+    .agencyCertification, .agencyBrochure, .panCardContent {
+        width: 100%;
+    }
+    .agencyCertification button, .agencyBrochure button, .panCardContent button {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+        width: 75%;
+    }
+    .agencyCertification button img, .agencyBrochure button img, .panCardContent button img {
+        width: 0.5rem;
+    }
+    .panCardContent {
+        min-height: 3rem;
+    }
+    .documentDetails>p, .panDetails>p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Agency form 4 */
+
+@media (max-width: 360px) {
+    .socialInputs {
+        width: 100%;
+    }
+    .image_div {
+        display: none;
+    }
+    .addMoreFields {
+        left: 3%;
+        width: 63%;
+        padding: 0.2rem 0.7rem;
+    }
+    .buttonParent_agencyForm4 {
+        margin-top: 2rem;
     }
 }

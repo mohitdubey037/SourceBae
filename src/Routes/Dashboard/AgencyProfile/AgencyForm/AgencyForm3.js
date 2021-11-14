@@ -9,8 +9,10 @@ import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
 
 //axios instance
-import instance from "../../../../Constants/axiosConstants"
-import Spinner from '../../../../Components/Spinner/Spinner'
+import instance from "../../../../Constants/axiosConstants";
+import Spinner from '../../../../Components/Spinner/Spinner';
+
+import './ResponsiveAgencyForm.css';
 
 function AgencyForm3(props) {
 
@@ -213,7 +215,7 @@ function AgencyForm3(props) {
                     <div className="mainDocumentsForm">
                         <div className="innerDocumentForm">
                             <div className="documentDetails">
-                                <p>* Provide your Valid Document<span style={{ color: 'red' }}>max 3 file</span></p>
+                                <p>* Provide your Valid Document:{" "}<span style={{ color: 'red' }}>max 3 file</span></p>
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
                                         <FilePicker
@@ -258,7 +260,7 @@ function AgencyForm3(props) {
                                     </div>
                                 </div>
 
-                                <div className="nextBtn">
+                                <div className="nextBtn bothBtn">
                                     <button onClick={() => goBack()} style={{ backgroundColor: '#707070' }}>
                                         Back
                                     </button>
@@ -270,7 +272,9 @@ function AgencyForm3(props) {
                         </div>
                         <div className="miscellaneousArea">
                             <p>Your Information is safe with us.</p>
-                            <img src={illustrationImage} alt="agency-form-3" />
+                            <div className="information_safe_image">
+                                <img src={illustrationImage} alt="agency-form-3" />
+                            </div>
                         </div>
                     </div>
                 }

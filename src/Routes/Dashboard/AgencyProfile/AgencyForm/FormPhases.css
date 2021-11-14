@@ -627,7 +627,7 @@
 .documentInformation {
     display: flex;
     min-height: 8rem;
-    width: 95%;
+    width: 100%;
     margin-top: 12px;
     justify-content: space-between;
 }
@@ -640,12 +640,13 @@
 }
 
 .documentDetails span {
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
     font-size: 0.9rem;
     margin-bottom: 5%;
-    font-weight: bold;
-    text-align: left !important;
-    float: left !important;
+    /* font-weight: bold; */
+    /* text-align: left !important;
+    float: left !important; */
 }
 
 .agencyCertification, .agencyBrochure, .panCardContent {
@@ -662,7 +663,7 @@
 }
 
 .panCardContent {
-    width: 38%;
+    width: 40%;
 }
 
 .agencyCertification>div, .agencyBrochure>div, .panCardContent>div {
@@ -735,17 +736,23 @@
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
+.information_safe_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64%;
+}
+
 .miscellaneousArea img {
     width: 90%;
-    margin-top: 3rem;
 }
 
 .miscellaneousArea p {
     font-family: 'Segoe UI Bold';
     font-size: 1.3rem;
-    padding: 0 2rem 1rem;
+    padding: 1rem 2rem 1rem;
     color: #45A4E4;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
 }
 
 /* Agency Form four  */
