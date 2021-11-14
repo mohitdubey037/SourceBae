@@ -56,7 +56,7 @@ const App = (props) => {
   });
 
   useEffect(() => {
-    console.log("Atul: 13Nov : 12:06")
+    console.log("Atul: 14Nov : 9:00AM")
     const msg = firebaseConfig.messaging();
     if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
