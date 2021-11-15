@@ -613,6 +613,6 @@ svg.MuiSvgIcon-root {
 
 
 .Toastify__toast--success ,.Toastify__toast--error {
-    border: 1px solid !important;
+    /* border: 7px solid !important; */
     border-radius: 50px !important;
   }
