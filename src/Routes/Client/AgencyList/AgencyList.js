@@ -172,7 +172,7 @@ function AgencyList(props) {
                                       agency.agencyServices.map((service)=>{
                                         return <>
                                         <p>{service?.serviceName}</p>
-                                      <p>Proficient</p>
+                                      {/* <p>Proficient</p> */}
                                         </>
                                       })
                                     }
