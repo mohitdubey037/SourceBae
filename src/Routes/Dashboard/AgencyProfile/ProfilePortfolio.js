@@ -15,7 +15,10 @@ import "./Rules.css";
 
 function AgencyPortfolio(props) {
   const routerHistory = useHistory();
-  const propsAgencyId = helper.cleanParam(props.id);
+  let propsAgencyId;
+  if (props.id !== undefined) {
+    propsAgencyId = helper.cleanParam(props.id);
+  }
 
   const Role = localStorage.getItem("role");
   const [agencyPortfoliodata, setAgencyPortfoliodata] = useState([]);
@@ -54,7 +57,7 @@ function AgencyPortfolio(props) {
 
   useEffect(() => {
     // if (Role === "Agency") {
-      getAgencyPortfolio();
+    getAgencyPortfolio();
     // }
   }, []);
 
