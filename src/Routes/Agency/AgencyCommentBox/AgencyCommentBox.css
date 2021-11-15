@@ -572,23 +572,22 @@
   }
 }
 
-.agencyQuotation {
+/* .agencyQuotation {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-bottom: 3%;
-}
+} */
 
-.innerAgencyQuotation {
-  /* padding: 1.5rem; */
+/* .innerAgencyQuotation {
   width: 95%;
   background-color: #fff;
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 15px;
-}
+} */
 
 .quotationleftLine {
   position: absolute;

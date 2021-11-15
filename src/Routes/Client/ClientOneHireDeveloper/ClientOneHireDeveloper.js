@@ -14,6 +14,8 @@ import UpBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-d
 import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownBigImage.svg';
 import Back from "../../../Components/Back/Back";
 import { Modal } from 'react-responsive-modal';
+import Moment from 'react-moment'
+
 
 function ClientOneHireDeveloper(props) {
     // const routerHistory = useHistory();
@@ -108,12 +110,18 @@ function ClientOneHireDeveloper(props) {
                                                     <div className="moreAgencyInfo">
                                                         <div className="agencyDesc_clientOneHireDeveloper">
                                                             <h6 className="name-title">About the company</h6>
-                                                            {/* <h6 className="name-Font">{`${agency?.agencyId?.agencyName}`}</h6> */}
+                                                            <div className="border-bottom_onAgency"></div>
                                                         </div>
+
                                                         <div className="email_clientOneHireDeveloper">
-                                                            {/* <p className="description_clientOne">Description:</p> */}
                                                             <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
+                                                        </div>   
+
+                                                        <div className="email_clientOneHireDeveloper description_parent">
+                                                            <p className="description_clientOne">Experience:</p>
+                                                            <p className="description_sharedDeveloper agency_age"><Moment fromNow ago>{agency?.agencyId?.incorporationDate}</Moment></p>
                                                         </div>
+                                                                                                             
                                                     </div>
 
                                                     <div className="button_parent">

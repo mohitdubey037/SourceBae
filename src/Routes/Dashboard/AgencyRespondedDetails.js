@@ -95,7 +95,7 @@ function AgencyRespondedDetails(props) {
             <div className="clientExperience">
               <div className="btnInfoDiv">
                 <div className="rightBorder"></div>
-                <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
+                <div className="innerBtnInfoDiv project_name">
                   <p>{project?.projectName}</p>
                 </div>
               </div>
@@ -169,30 +169,11 @@ function AgencyRespondedDetails(props) {
         </div>
       </div>
       <div className="ProjectDescriptionRespondedDetails">
-        <h4
-          style={{
-            color: "#707070",
-            fontFamily: "Segoe UI",
-            fontWeight: "600",
-            fontSize: "22px",
-          }}
-        >
-          Project Description
+        <h4 className="ProjectDescriptionRespondedDetails_heading">
+          Project Description:
         </h4>
-        <p
-          style={{
-            overflowWrap: "break-word",
-            fontFamily: "Segoe UI",
-            fontSize: "12px",
-            color: "#707070",
-            width: "93%",
-            padding: "0.2rem",
-            margin: "0.2rem",
-            marginLeft: "0",
-            boxShadow: "0px 0px 3px rgb(0 0 0 / 20%)",
-          }}
-        >
-          {project.projectDescription}{" "}
+        <p className="ProjectDescriptionRespondedDetails_Paragraph">
+          {project.projectDescription}
         </p>
       </div>
 

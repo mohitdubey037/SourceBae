@@ -85,8 +85,8 @@ function RespondedDetails(props) {
                   className="rightBorder"
                   style={{ backgroundColor: "#ffffff" }}
                 ></div>
-                <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
-                  <p style={{ color: "#ffffff" }}>{project?.projectName}</p>
+                <div className="innerBtnInfoDiv project_name">
+                  <p>{project?.projectName}</p>
                 </div>
               </div>
               <div
@@ -166,11 +166,8 @@ function RespondedDetails(props) {
       </div>
 
       <div className="ProjectDescriptionRespondedDetails">
-        <h4 style={{ color: "#707070", fontFamily: 'Segoe UI', fontWeight: "600", fontSize: "22px", }}>Project Description</h4>
-        <p style={{
-          overflowWrap: "break-word", fontFamily: "Segoe UI", fontSize: "16px", color: "#707070", width: '78%', padding: '0.2rem', margin: '0.2rem',
-          boxShadow: '0px 0px 3px rgb(0 0 0 / 20%)'
-        }}>{project.projectDescription} </p>
+        <h4 className="ProjectDescriptionRespondedDetails_heading">Project Description:</h4>
+        <p className="ProjectDescriptionRespondedDetails_Paragraph">{project.projectDescription}</p>
       </div>
 
       <div className="agencyQuotation">
