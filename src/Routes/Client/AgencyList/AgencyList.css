@@ -124,7 +124,7 @@
 .agencyProfileInfo.agencyProfileInfodiv h6 {
   font-family: "Segoe UI semibold", sans-serif;
   font-size: 1.5rem;
-  width: 50%;
+  /* width: 55%; */
   padding-top: 2rem;
 }
 
@@ -166,6 +166,7 @@
   width: 48%;
   padding: 1.5rem;
   overflow: hidden;
+  margin-left: 0;
 }
 
 .agencyAddressArea, .agencyTeamNumber {

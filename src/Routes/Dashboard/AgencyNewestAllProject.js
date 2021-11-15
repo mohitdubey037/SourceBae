@@ -146,7 +146,7 @@ function AgencyNewestAllProject(props) {
             <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" />
             {/* <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" /> */}
             <Sidebar />
-            <div className="container-body">
+            <div className="container-body container-body_agencyNewestAllProject">
                 <Navbar />
                 <div className="content-body">
                     <div className="content-leftBody_AgencyNewestDashboard">

@@ -38,7 +38,6 @@ function Navbar(props) {
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{
                         color: (props.history.location.pathname === '/client-profile' ||
-                            url.includes('/agencyNewestAllProject') ||
                             url.includes('/agencyNewestDashboard')) ||
                             url.includes('/portfolio') ||
                             props.history.location.pathname === '/clientNewestDashboard' ? 'white' : 'blue'

@@ -125,12 +125,12 @@ function ShortTerm(props) {
     } else if (apiData.projectPaymentModel === "") {
       err.projectPaymentModel = "Please select a project Payment Model.";
     } else if (apiData.projectHourBasisCost === "" && apiData.projectPaymentModel === "By Hour") {
-        err.projectHourBasisCost =
-          "Please select a Hourly project proposal cost.";
+      err.projectHourBasisCost =
+        "Please select a Hourly project proposal cost.";
     } else if (apiData.projectProposalCost === "") {
       err.projectProposalCost = "Please select a project proposal cost.";
     } else if (apiData.projectServicesRequired.length === 0) {
-      err.projectServicesRequired = "Please select a project service.";
+      err.projectServicesRequired = "Please select a service.";
     } else if (apiData.projectExpectedStartingDays === "") {
       err.projectExpectedStartingDays =
         "Please select Project Expected Starting Days.";
@@ -251,33 +251,40 @@ function ShortTerm(props) {
             <div className="shortTermProjectType_child">
               {allServices.map((service) => {
                 return (
-                  <div className="tech-container_shortTerm">
-                    <div
-                      style={{
-                        filter: service.selected
-                          ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)"
-                          : "none",
-                        color: service.selected ? "#fff" : "#000",
-                        textAlign: "center",
-                        padding: "5px 2px 1px 4px",
-                      }}
-                      className={`${service.serviceName}`}
-                      onClick={(event) => handleServices(event)}
-                    >
-                      <span className={`${service.serviceName}`}></span>
-                      <img
+                  <>
+                    <div className="tech-container_shortTerm">
+                      <div
+                        style={{
+                          filter: service.selected
+                            ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)"
+                            : "none",
+                          color: service.selected ? "#fff" : "#000",
+                          textAlign: "center",
+                          padding: "5px 2px 1px 4px",
+                        }}
                         className={`${service.serviceName}`}
-                        src={service.serviceIcon}
-                        alt="icon"
-                      />
+                        onClick={(event) => handleServices(event)}
+                      >
+                        <span className={`${service.serviceName}`}></span>
+                        <img
+                          className={`${service.serviceName}`}
+                          src={service.serviceIcon}
+                          alt="icon"
+                        />
+                      </div>
+                      <h2 className={`${service.serviceName}`}>
+                        {service.serviceName}
+                      </h2>
                     </div>
-                    <h2 className={`${service.serviceName}`}>
-                      {service.serviceName}
-                    </h2>
-                  </div>
-                );
+                  </>
+                )
               })}
             </div>
+            {errors.projectServicesRequired &&
+              <p className="error_productForm_shortTerm">
+                {errors.projectServicesRequired}
+              </p>
+            }
           </div>
 
           <div className="left_and_right_side">
@@ -365,10 +372,9 @@ function ShortTerm(props) {
                     </div>
                   </div>
                   <div className="uploadInfo">
-                    <p>{`${
-                      projectFiles?.name ??
+                    <p>{`${projectFiles?.name ??
                       "Upload an image or a document that might be helpful in explaining your project in brief."
-                    }`}</p>
+                      }`}</p>
                   </div>
                 </div>
                 {errors.projectUpload && (
@@ -422,7 +428,7 @@ function ShortTerm(props) {
                       aria-label="howToPay"
                       name="projectPaymentModel"
                       value={apiData.projectPaymentModel}
-                      // onChange={(event) => handleChange(event)}
+                    // onChange={(event) => handleChange(event)}
                     >
                       <div
                         className="fixedPrice"
@@ -573,7 +579,7 @@ function ShortTerm(props) {
                 )}
               </div>
               <div className="numberOfDays">
-                <ul  style={{marginLeft:"0"}}><li>
+                <ul style={{ marginLeft: "0" }}><li>
                   How soon do you want to start?(in days){" "}
                   <span className="requiredStar">*</span>{" "}
                 </li></ul>
@@ -587,7 +593,7 @@ function ShortTerm(props) {
                     borderRadius: "8px",
                   }}
                   name="projectExpectedStartingDays"
-                  type="number" 
+                  type="number"
                   onChange={(event) => handleChange(event)}
                   min="5"
                   value={apiData.projectExpectedStartingDays}
@@ -612,50 +618,50 @@ function ShortTerm(props) {
               <div className="agencyExperience">
                 <ul>
                   <li>
-                    <p style={{width: "24rem"}}>
+                    <p style={{ width: "24rem" }}>
                       How experience should the agency be in the domain of the
                       project? <span className="requiredStar">*</span>
                     </p>
                   </li>
                 </ul>
-                  <FormControl component="fieldset">
-                    <RadioGroup
-                      aria-label="agencyExperience"
-                      name="agencyExperience"
-                      value={apiData.agencyExperience}
-                      onChange={(event) => handleChange(event)}
-                    >
-                      <div className="radio-label_shortTermForm">
-                        <FormControlLabel
-                          color="primary"
-                          value="capable"
-                          control={<BlueRadio className={classes.root} />}
-                          label="Capable"
-                        />
-                      </div>
-                      <div className="radio-label_shortTermForm">
-                        <FormControlLabel
-                          value="skilled"
-                          control={<BlueRadio />}
-                          label="Skilled"
-                        />
-                      </div>
-                      <div className="radio-label_shortTermForm">
-                        <FormControlLabel
-                          value="proficient"
-                          control={<BlueRadio />}
-                          label="Proficient"
-                        />
-                      </div>
-                      <div className="radio-label_shortTermForm">
-                        <FormControlLabel
-                          value="accomplished"
-                          control={<BlueRadio />}
-                          label="Accomplished"
-                        />
-                      </div>
-                    </RadioGroup>
-                  </FormControl>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="agencyExperience"
+                    name="agencyExperience"
+                    value={apiData.agencyExperience}
+                    onChange={(event) => handleChange(event)}
+                  >
+                    <div className="radio-label_shortTermForm">
+                      <FormControlLabel
+                        color="primary"
+                        value="capable"
+                        control={<BlueRadio className={classes.root} />}
+                        label="Capable"
+                      />
+                    </div>
+                    <div className="radio-label_shortTermForm">
+                      <FormControlLabel
+                        value="skilled"
+                        control={<BlueRadio />}
+                        label="Skilled"
+                      />
+                    </div>
+                    <div className="radio-label_shortTermForm">
+                      <FormControlLabel
+                        value="proficient"
+                        control={<BlueRadio />}
+                        label="Proficient"
+                      />
+                    </div>
+                    <div className="radio-label_shortTermForm">
+                      <FormControlLabel
+                        value="accomplished"
+                        control={<BlueRadio />}
+                        label="Accomplished"
+                      />
+                    </div>
+                  </RadioGroup>
+                </FormControl>
                 {errors.agencyExperience && (
                   <p className="error_productForm_shortTerm">
                     {errors.agencyExperience}
