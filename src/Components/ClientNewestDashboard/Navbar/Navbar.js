@@ -5,12 +5,13 @@ import './Navbar.css';
 import { Avatar } from '@material-ui/core';
 
 function Navbar(props) {
+    console.log(props.logoLink);
     const url = props.history.location.pathname;
     const Role = localStorage.getItem('role');
     const roleId = localStorage.getItem("userId");
     const [data, setData] = useState({});
     const [index, setIndex] = useState(0);
-    
+
     useEffect(() => {
         if (Role === 'Client') {
             instance.get(`/api/${Role}/clients/get/${roleId}`)
@@ -33,7 +34,11 @@ function Navbar(props) {
 
 
     return (
-        <div style={{ top: Role === 'Client' && '1rem' }} className='navbar'>
+        // <div style={{ top: Role === 'Client' && '1rem', justifyContent:props.logoLink && 'space-between'}} className='navbar'>
+        <div style={{justifyContent:props.logoLink && 'space-between'}} className='navbar'>
+            <div style={{display: props.logoLink === undefined && 'none' }} className="logoLink_navbar">
+                <img src={props.logoLink} alt="logo" />
+            </div>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{

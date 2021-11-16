@@ -68,12 +68,10 @@ h6 {
 }
 
 .completed-project, .running-project, .rejected-project {
-    /* background-image: linear-gradient(to right, #015F9A, #0376BA); */
     border-radius: 4px;
     padding: 16px;
     width: 16%;
     text-align: center;
-    /* color: #F9F9F9; */
     color: black;
     background: #eee5e5;
 }
@@ -238,10 +236,7 @@ h6 {
     z-index: 1;
 }
 
-/* .Image2_AgencyNewest {
-    right: -6rem;
-    position: fixed;
-    bottom: -3rem;
-    width: 34rem;
-    z-index: 1;
-  } */
+.no_project_found.no_project_agencyNewestAllProject {
+    color: black;
+    margin-top: 0.5rem;
+}

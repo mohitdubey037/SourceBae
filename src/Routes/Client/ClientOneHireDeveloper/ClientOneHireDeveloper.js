@@ -20,6 +20,7 @@ import Moment from 'react-moment'
 function ClientOneHireDeveloper(props) {
     // const routerHistory = useHistory();
     let { hireDeveloperId } = useParams();
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
     hireDeveloperId = helper.cleanParam(hireDeveloperId);
     const Role = localStorage.getItem("role");
@@ -92,7 +93,7 @@ function ClientOneHireDeveloper(props) {
             {loading ? <Spinner /> :
                 <>
                     <div className="main_parent_clientOneHireDeveloper">
-                        <Navbar />
+                        <Navbar logoLink={logoLink}/>
                         <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
                         <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
                         <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />

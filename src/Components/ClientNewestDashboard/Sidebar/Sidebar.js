@@ -17,6 +17,7 @@ import { useHistory } from 'react-router-dom';
 function Sidebar(props) {
     const Role = localStorage.getItem('role');
     const routerHistory = useHistory();
+    const url = props.history.location.pathname;
 
     const [isNotification, setIsnotification] = useState(false);
     const [notificationData, setNotificationData] = useState([])
@@ -74,11 +75,12 @@ function Sidebar(props) {
 
     return (
         <div className="container-sidebar">
-            <div className="temporary_logo">
+            <div style={{ display: (url.includes('agency-list') || url.includes('agencyNewestAllProject')) && 'none' }}
+                className="temporary_logo">
                 {/* <img src= 'https://api.onesourcing.in/media/images/1636785308442.jpeg' alt="logo" /> */}
                 <img src='https://api.onesourcing.in/media/images/1637044803259.svg' alt="logo" />
             </div>
-            <div className="sidebar-menu">
+            <div style={{ marginTop: url.includes('agencyNewestAllProject') && '43%' }} className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div>
                         <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
@@ -146,7 +148,7 @@ function Sidebar(props) {
                                                     </li>
                                                 </ul>
                                                 {/* <i className="fa fa-times" aria-hidden="true" style={{ paddingRight: "1rem", marginTop: "0.8rem" }}></i> */}
-                                                </div>
+                                            </div>
                                         </div>
                                     )
                                 })

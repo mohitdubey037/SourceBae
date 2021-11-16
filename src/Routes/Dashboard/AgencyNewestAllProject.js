@@ -11,7 +11,6 @@ import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
-
 const useStyles = makeStyles((theme) => ({
     formControl: {
         marginLeft: theme.spacing(1.5)
@@ -171,12 +170,12 @@ function AgencyNewestAllProject(props) {
                                         <h6>Rejected Project</h6>
                                     </div>
                                 </div>
-                                <div className="agency-card-parent" style={{height:err === true ?"100%":"39%"}}>
+                                <div className="agency-card-parent" style={{ height: err === true ? "100%" : "15%" }}>
                                     {err === true ?
                                         <>
-                                            <div style={{ textAlign: 'center'}}>
-                                                <img style={{marginTop: '3rem'}} height="300px" src={NotFound} alt="no_data_img" />
-                                                <p className="no_project_found">No Project Found</p>
+                                            <div style={{ textAlign: 'center' }}>
+                                                <img style={{ marginTop: '3rem' }} height="300px" src={NotFound} alt="no_data_img" />
+                                                <p className="no_project_found no_project_agencyNewestAllProject">No Project Found</p>
                                             </div>
                                         </>
                                         :
