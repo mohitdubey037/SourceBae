@@ -12,7 +12,8 @@
 .sidebar-menu {
   background: #ffffff;
   height: 90%;
-  margin: 15% 15% 32% 15%;
+  /* margin: 15% 15% 32% 15%; */
+  margin: 0% 15% 32% 15%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -63,7 +64,6 @@
   background: #ffffff;
   height: 100%;
   margin: 0% 10%;
-  /* min-height: 44px; */
   min-width: 111px;
   display: flex;
   flex-direction: column;
@@ -88,7 +88,6 @@
 
 .help-desc>p {
   font-family: 'Segoe UI Semibold';
-  font-weight: 600;
   font-size: 10px;
   word-wrap: break-word;
   margin-bottom: 0;
@@ -118,10 +117,10 @@
   justify-content: center;
 }
 
-.temporary_logo img {
+/* .temporary_logo img {
   width: 65px;
   height: 65px;
-}
+} */
 
 @media (max-width: 768px) {
   .container-sidebar {
