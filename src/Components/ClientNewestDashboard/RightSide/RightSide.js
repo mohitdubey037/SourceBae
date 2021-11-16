@@ -14,27 +14,27 @@ function RightSide() {
                     <div className="itemContent-heading">
                         <div className="heading-text">
                             <p>Get In Touch</p>
-                            <img src={CallIcon} alt="callIcon"/>
+                            <img className="getInTouch" src={CallIcon} alt="callIcon"/>
                         </div>
                     </div>
                     <div className="itemContent-videoCard"></div>
                     <div className="itemContent-cta">
                         <div className="cta-item">
                             <div>
-                                <p>Call To Action</p>
+                                <p>Need Any Help?</p>
                             </div>
                             <div className={`view-details-btn`}>
-                                <button className={`${Role === 'Client' && 'conditionalGradient'}`}>View Detail</button>
+                                <button className={`${Role === 'Client' && 'conditionalGradient'}`}>Contact Us</button>
                             </div>
                         </div>
-                        <div className="cta-item">
+                        {/* <div className="cta-item">
                             <div>
                                 <p>Call To Action</p>
                             </div>
                             <div className={`view-details-btn`}>
                                 <button className={`${Role === 'Client' && 'conditionalGradient'}`}>View Detail</button>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             {/* </div> */}

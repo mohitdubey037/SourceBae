@@ -6,6 +6,7 @@
   padding: 1rem;
   height: 97%;
   min-width: 24%;
+  display: flex;
 }
 
 .content-rightBody {
@@ -24,6 +25,18 @@
 
 .rightBody-navigation>.navigation-name {
   margin-right: 25px;
+}
+
+.getInTouch {
+  border: 1px solid;
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  box-shadow: 1px 0px 1px 0px;
+  border-color: blue;
+}
+
+.getInTouch:hover {
+  cursor: pointer;
 }
 
 .rightBody-navigation>.navigation-name:nth-last-child(1) {
@@ -51,6 +64,7 @@
   justify-content: space-around;
   border-radius: 8px;
   background-color: #Fdfff5;
+  width: 100%;
 }
 
 .itemContent-heading {
@@ -68,12 +82,10 @@
 
 .itemContent-videoCard {
   width: 90%;
-  min-height: 148px;
+  min-height: 191px;
   border-radius: 8px;
   background: url(../../../assets/images/Newestdashboard/RightSide/tech.svg);
   background-size: cover;
-  /* margin: 0 15px; */
-  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .itemContent-1 {
@@ -120,8 +132,7 @@
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.cta-item>.view-details-btn>button:active,
-.cta-item>.view-details-btn>button:focus {
+.cta-item>.view-details-btn>button:active, .cta-item>.view-details-btn>button:focus {
   border: none;
   outline: none;
 }

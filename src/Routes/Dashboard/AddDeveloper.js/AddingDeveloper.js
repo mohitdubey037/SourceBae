@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 function AddingDeveloper(props) {
 
     const theme = useTheme();
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
     const classes = useStyles();
     const Role = localStorage.getItem('role')
@@ -199,7 +200,7 @@ function AddingDeveloper(props) {
 
     return (
         <>
-            <Navbar />
+            <Navbar logoLink={logoLink}/>
 
             {loading ? <Spinner /> :
                 <>

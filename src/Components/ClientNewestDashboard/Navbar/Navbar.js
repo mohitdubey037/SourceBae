@@ -35,7 +35,7 @@ function Navbar(props) {
 
     return (
         // <div style={{ top: Role === 'Client' && '1rem', justifyContent:props.logoLink && 'space-between'}} className='navbar'>
-        <div style={{justifyContent:props.logoLink && 'space-between'}} className='navbar'>
+        <div style={{justifyContent:props.logoLink && 'space-between', top: props.logoLink && '0.5rem'}} className='navbar'>
             <div style={{display: props.logoLink === undefined && 'none' }} className="logoLink_navbar">
                 <img src={props.logoLink} alt="logo" />
             </div>
@@ -44,7 +44,6 @@ function Navbar(props) {
                     <p style={{
                         color: (props.history.location.pathname === '/client-profile' ||
                             url.includes('/agencyNewestDashboard')) ||
-                            url.includes('/portfolio') ||
                             props.history.location.pathname === '/clientNewestDashboard' ? 'white' : 'blue'
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>

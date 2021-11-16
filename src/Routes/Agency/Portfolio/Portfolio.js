@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 
 function Portfolio(props) {
 
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+
     const Role = localStorage.getItem('role');
     const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(true);
@@ -118,7 +120,7 @@ function Portfolio(props) {
 
     return (
         <>
-            <Navbar />
+            <Navbar logoLink={logoLink} />
             <div className="main_portfolio_parent" style={{ paddingTop: '5rem' }}>
                 <Back name="Portfolio" />
                 <div className="portfolio_parent">
