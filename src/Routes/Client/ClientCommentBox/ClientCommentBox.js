@@ -6,6 +6,7 @@ import './ClientCommentBox.css';
 import clsx from 'clsx';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { toast } from "react-toastify";
+import moment from 'moment';
 // import DatePicker from "react-datepicker";
 
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -385,7 +386,7 @@ const ClientCommentBox = (props) => {
                     <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
-                        minDate={quotationFormData.projectStartDateByClient}
+                        minDate={new Date(moment(quotationFormData.projectStartDateByClient).add('1','days'))}
                         value={quotationFormData.projectDelayedStartDateByClient}
                         disabled={quotationFormData.projectStartDateByClient === '' ? true : false}
                         onChange={(event) => handleChangeDate('projectDelayedStartDateByClient', event)}
