@@ -406,7 +406,7 @@ const ClientCommentBox = (props) => {
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : false}
-                        minDate={quotationFormData.projectDelayedStartDateByClient}
+                        minDate={new Date(moment(quotationFormData.projectDelayedStartDateByClient).add('1','days'))}
                         value={quotationFormData.projectEndDateByClient}
                         onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
                         renderInput={(params) => <TextField {...params} />}
@@ -425,7 +425,7 @@ const ClientCommentBox = (props) => {
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         disabled={quotationFormData.projectEndDateByClient === '' ? true : false}
-                        minDate={quotationFormData.projectEndDateByClient}
+                        minDate={new Date(moment(quotationFormData.projectEndDateByClient).add('1','days'))}
                         value={quotationFormData.projectExpectedEndDateByClient}
                         onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
                         renderInput={(params) => <TextField {...params} />}
