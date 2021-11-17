@@ -5,12 +5,10 @@ import './Navbar.css';
 import { Avatar } from '@material-ui/core';
 
 function Navbar(props) {
-    console.log(props.logoLink);
     const url = props.history.location.pathname;
     const Role = localStorage.getItem('role');
     const roleId = localStorage.getItem("userId");
     const [data, setData] = useState({});
-    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         if (Role === 'Client') {

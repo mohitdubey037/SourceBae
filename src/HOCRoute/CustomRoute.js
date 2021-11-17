@@ -1,38 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, Route, withRouter } from "react-router-dom";
 import * as helper from "../shared/helper"
-
-
+import cookie from "react-cookies";
 
 const CustomRoute = props => {
-    console.log('hfkhdsakhf');
-    const temp = localStorage.getItem('role');
-    let user = ''
-    if (temp !== null && temp !== '' && temp !== 'undefined'){
-        user = helper.capitalize(temp)
+    const Role = localStorage.getItem('role');
+    // console.log(Role);
+    // let user;
+    // if (Role !== null && Role !== '' && Role !== 'undefined') {
+    //     user = helper.capitalize(Role)
+    // }
+    switch (props.condition) {
+        case "Agency":
+            return (
+                Role === "Agency" ?
+                    <Route {...props} />
+                    :
+                    // token !== 'undefined' ?
+                    <Redirect to="/clientNewestDashboard" />
+            );
+        case "Client":
+            return (
+                Role === "Client" ? (
+                    <Route {...props} />
+                ) : (
+                    <Redirect to="/agencyNewestDashboard" />
+                )
+            );
+        default:
+            return (<Redirect to={`login:${Role}`} />);
     }
-        switch (props.condition) {
-            case "Agency":
-                user==="Client" && alert("Invalid urlsss")
-                return (
-                    user === "Agency" ? (
-                        <Route {...props} />
-                    ) : (
-                        <Redirect to="/page-not-found" />
-                    )
-                );
-            case "Client":
-                user==="Agency" && alert("Invalid url")
-                return (
-                    user === "Client" ? (
-                        <Route {...props} />
-                    ) : (
-                        <Redirect to="/page-not-found" />
-                    )
-                );
-            default:
-                return (<Redirect to='page-not-found'/>);
-        }
 };
 
 export default withRouter(CustomRoute);

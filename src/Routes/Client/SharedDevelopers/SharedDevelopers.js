@@ -16,6 +16,9 @@ import NotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFo
 import { Modal } from 'react-responsive-modal';
 
 function RespondedDetails(props) {
+
+  const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+
   const [initial, setInitial] = useState(5);
   const Role = localStorage.getItem("role").toLowerCase();
   const agencyId = localStorage.getItem('userId');
@@ -109,7 +112,7 @@ function RespondedDetails(props) {
       {loading ? <Spinner /> :
         <>
           <div className='main_parent_sharedDeveloper'>
-            <Navbar />
+            <Navbar logoLink={logoLink}/>
             <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
             {/* <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" /> */}
             <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
