@@ -5,6 +5,7 @@ import * as helper from "../shared/helper"
 
 
 const CustomRoute = props => {
+    console.log('hfkhdsakhf');
     const temp = localStorage.getItem('role');
     let user = ''
     if (temp !== null && temp !== '' && temp !== 'undefined'){
