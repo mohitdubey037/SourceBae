@@ -94,7 +94,6 @@ const Login = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log('hhhh');
     state === "client"
       ? props.history.replace("/login:client")
       : props.history.replace("/login:agency")

@@ -18,6 +18,8 @@ function Rules(props) {
   const [agencyProfiledata, setAgencyProfileData] = useState({});
 
   const [rules, setRules] = useState([]);
+  const [permanentRules, setPermanentRules] = useState([]);
+
   const [editRules, setEditRules] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -28,7 +30,7 @@ function Rules(props) {
       endTime: props?.data?.agencyTiming?.endTime
         ? props?.data?.agencyTiming?.endTime
         : "08:00 PM",
-    },
+    }
   });
 
   const handalLoading = () => {
@@ -39,16 +41,15 @@ function Rules(props) {
     setLoading(true);
     setEditRules(value);
     const id = localStorage.getItem("userId");
-    instance
-      .patch(`/api/${Role}/agencies/update/${id}`, {
-        agencyRules: rules.map((rules) => {
-          return {
-            ruleId: rules.ruleId._id,
-            selection: rules.selection,
-          };
-        }),
-        agencyTiming: { ...form.agencyTiming },
-      })
+    instance.patch(`/api/${Role}/agencies/update/${id}`, {
+      agencyRules: rules.map((rules) => {
+        return {
+          ruleId: rules.ruleId._id,
+          selection: rules.selection,
+        };
+      }),
+      agencyTiming: { ...form.agencyTiming },
+    })
       .then((response) => {
         setLoading(false);
       })
@@ -65,8 +66,7 @@ function Rules(props) {
 
   const getAgencyProfile = (agencyId, profileviewStatus) => {
     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-    instance
-      .get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+    instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
       .then(function (response) {
         setAgencyProfileData(response);
       })
@@ -102,26 +102,22 @@ function Rules(props) {
     setRules(props.data.agencyRules);
   }, []);
 
-
   return (
     <>
       <div className="mainRules">
         <div className="innerRules">
           {Role === "Agency"
             ? agencyProfiledata.isAgencyVerified && (
-                <div className="editableBtn_rules">
-                  <div className="rules_parent">
-                    <p>AGENCY RULES</p>
-                  </div>
-                  <i
-                    onClick={() => {
-                      setEditRules(true);
-                    }}
-                    class="fa fa-pencil-square-o Edit-icon_information"
-                    aria-hidden="true"
-                  ></i>
+              <div className="editableBtn_rules">
+                <div className="rules_parent">
+                  <p>AGENCY RULES</p>
                 </div>
-              )
+                <i onClick={() => { setEditRules(true); }}
+                  class="fa fa-pencil-square-o Edit-icon_information"
+                  aria-hidden="true"
+                ></i>
+              </div>
+            )
             : null}
           <div className="rulesCard">
             <div className="rulesUpper">
@@ -130,18 +126,12 @@ function Rules(props) {
                   <i class="fa fa-clock-o" aria-hidden="true"></i>Default
                   Opening & Closing Time
                 </h4>
-                {/* <div className="default_timings"> */}
-                {/* <p>Default Timings:</p> */}
-                {/* <p>9:00AM to 5:00PM</p> */}
                 <div className="date_parent">
                   <input
                     style={{
-                      outline: editRules ? "none" : "none",
+                      outline: "none",
                       width: "40%",
-                      border:
-                        permanentDisable("startTime") || !editRules
-                          ? "none"
-                          : "1px solid #02044a",
+                      border: permanentDisable("startTime") || !editRules ? "none" : "1px solid #02044a",
                       textAlign: "center",
                     }}
                     disabled={permanentDisable("startTime") || !editRules}
@@ -155,12 +145,9 @@ function Rules(props) {
                   <p style={{ marginTop: "0" }}>To</p>
                   <input
                     style={{
-                      outline: editRules ? "none" : "none",
+                      outline: "none",
                       width: "40%",
-                      border:
-                        permanentDisable("endTime") || !editRules
-                          ? "none"
-                          : "1px solid #02044a",
+                      border: permanentDisable("endTime") || !editRules ? "none" : "1px solid #02044a",
                       textAlign: "center",
                     }}
                     disabled={permanentDisable("endTime") || !editRules}
@@ -181,84 +168,68 @@ function Rules(props) {
               </div>
             </div>
 
-            <div
-              className="rulesQuestions"
-              style={{ marginTop: editRules && "15px" }}
-            >
-              {rules.length > 0
-                ? rules.map((value) => {
-                    return (
-                      <div
-                        className={`questionPart ${
-                          editRules === false && "conditionalPadding"
-                        }`}
-                      >
-                        <div className="leftQuestion">
-                          <p>{value?.ruleId.rule}</p>
-                        </div>
-
-                        {!editRules && (
-                          <div className="rulesMark">
-                            {value?.selection ? (
-                              <img
-                                className="check-img"
-                                src={check}
-                                alt="check"
-                              />
-                            ) : (
-                              <img
-                                className="cancel-img"
-                                src={cancel}
-                                alt="cancel"
-                              />
-                            )}
-                          </div>
-                        )}
-
-                        {editRules && (
-                          <FormControl component="fieldset">
-                            <RadioGroup
-                              aria-label={value?._id}
-                              name={value?._id}
-                              value={`${value?.selection}`}
-                              onChange={(event) => handleRules(event, value)}
-                            >
-                              <FormControlLabel
-                                value="true"
-                                control={<Radio />}
-                                label="Yes"
-                              />
-                              <FormControlLabel
-                                value="false"
-                                control={<Radio />}
-                                label="No"
-                              />
-                            </RadioGroup>
-                          </FormControl>
-                        )}
+            <div className="rulesQuestions" style={{ marginTop: editRules && "15px" }} >
+              {rules.length > 0 ? 
+                rules.map((value) => {
+                  return (
+                    <div className={`questionPart ${editRules === false && "conditionalPadding"}`} >
+                      <div className="leftQuestion">
+                        <p>{value.ruleId.rule}</p>
                       </div>
-                    );
-                  })
-                : "There are no rules available for this Agency."}
-              {editRules && (<div className="handleButtons">
-                <div className="submitEditBtn">
-                  <div
-                    onClick={() => {
-                      handleEditRules(false);
-                    }}
-                    className="information_save_parent"
-                  >
+
+                      {!editRules && (
+                        <div className="rulesMark">
+                          {value?.selection ?
+                            <img className="check-img" src={check} alt="check" />
+                            :
+                            <img className="cancel-img" src={cancel} alt="cancel" />
+                          }
+                        </div>
+                      )}
+
+                      {editRules && (
+                        <FormControl component="fieldset">
+                          <RadioGroup
+                            aria-label={value._id}
+                            name={value._id}
+                            value={`${value.selection}`}
+                            onChange={(event) => handleRules(event, value)}
+                          >
+                            <FormControlLabel
+                              value="true"
+                              control={<Radio />}
+                              label="Yes"
+                            />
+
+                            <FormControlLabel
+                              value="false"
+                              control={<Radio />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </FormControl>
+                      )}
+                    </div>
+                  );
+                })
+                : "There are no rules available for this Agency."
+              }
+              {editRules &&
+                <div className="handleButtons">
+                  <div className="submitEditBtn">
+                    <div onClick={() => { handleEditRules(false) }} className="information_save_parent" >
+                      <div className="information_cancel">
+                        <p>Cancel</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div onClick={handalLoading} className="submitEditBtn">
                     <div className="information_save">
                       <p>Submit</p>
                     </div>
                   </div>
                 </div>
-                <div onClick={handalLoading} className="submitEditBtn">
-                        <div className="information_cancel">
-                            <p>Cancel</p>
-                        </div>
-                    </div></div>
-              )}
+              }
             </div>
           </div>
         </div>
