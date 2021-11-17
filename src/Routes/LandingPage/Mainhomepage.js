@@ -23,17 +23,11 @@ const Mainhomepage = (props) => {
       {!auth ?
         <div className="mainHomePage">
           <div className="innerHomePage">
-            <div
-              className="HomePageCard"
-              onClick={() => props.history.replace("/login:agency")}
-            >
+            <div className="HomePageCard" onClick={() => props.history.replace("/login:agency")}>
               <span className="leftHomePageBorder"></span>
               <p>Login</p>
             </div>
-            <div
-              className="HomePageCard"
-              onClick={() => props.history.replace("/register:agency")}
-            >
+            <div className="HomePageCard" onClick={() => props.history.replace("/register:agency")}>
               <span className="leftHomePageBorder"></span>
               <p>Sign Up</p>
             </div>

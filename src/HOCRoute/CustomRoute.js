@@ -16,19 +16,21 @@ const CustomRoute = props => {
                 Role === "Agency" ?
                     <Route {...props} />
                     :
-                    // token !== 'undefined' ?
                     <Redirect to="/clientNewestDashboard" />
             );
         case "Client":
             return (
-                Role === "Client" ? (
+                Role === "Client" ?
                     <Route {...props} />
-                ) : (
+                    :
                     <Redirect to="/agencyNewestDashboard" />
-                )
             );
+
+        case "None":
+            return <Redirect exact to="/" />
+
         default:
-            return (<Redirect to={`login:${Role}`} />);
+            return <Redirect exact to='/' />;
     }
 };
 

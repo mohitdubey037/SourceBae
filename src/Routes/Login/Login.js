@@ -94,9 +94,10 @@ const Login = (props) => {
   }, []);
 
   useEffect(() => {
-    state === "" || state === "agency"
-      ? props.history.replace("/login:agency")
-      : props.history.replace("/login:client");
+    console.log('hhhh');
+    state === "client"
+      ? props.history.replace("/login:client")
+      : props.history.replace("/login:agency")
   }, [state]);
 
   const showPassword = (e) => {
