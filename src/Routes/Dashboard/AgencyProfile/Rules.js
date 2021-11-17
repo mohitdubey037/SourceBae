@@ -16,9 +16,9 @@ import "./Rules.css";
 function Rules(props) {
   const Role = localStorage.getItem("role");
   const [agencyProfiledata, setAgencyProfileData] = useState({});
+  const userId = localStorage.getItem('userId');
 
   const [rules, setRules] = useState([]);
-  const [permanentRules, setPermanentRules] = useState([]);
 
   const [editRules, setEditRules] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,15 +40,14 @@ function Rules(props) {
   const handleEditRules = (value) => {
     setLoading(true);
     setEditRules(value);
-    const id = localStorage.getItem("userId");
-    instance.patch(`/api/${Role}/agencies/update/${id}`, {
+    instance.patch(`/api/${Role}/agencies/update/${userId}`, {
       agencyRules: rules.map((rules) => {
         return {
           ruleId: rules.ruleId._id,
           selection: rules.selection,
         };
       }),
-      agencyTiming: { ...form.agencyTiming },
+      agencyTiming: { ...form.agencyTiming }
     })
       .then((response) => {
         setLoading(false);
@@ -61,14 +60,18 @@ function Rules(props) {
   const permanentDisable = (name) => {
     if (name === "startTime" || name === "endTime") {
       return false;
-    } else return true;
+    } else
+      return true;
   };
 
-  const getAgencyProfile = (agencyId, profileviewStatus) => {
+  const getAgencyProfile = (profileviewStatus) => {
     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-    instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+    instance.get(`/api/${Role}/agencies/get/${userId}${addParam}`)
       .then(function (response) {
+        console.log(response);
         setAgencyProfileData(response);
+        setRules(response.agencyRules);
+        setEditRules(false);
       })
       .catch((err) => {
       });
@@ -76,7 +79,7 @@ function Rules(props) {
 
   useEffect(() => {
     if (Role === "Agency") {
-      getAgencyProfile(localStorage.getItem("userId"), false);
+      getAgencyProfile(false);
     }
   }, []);
 
@@ -99,7 +102,7 @@ function Rules(props) {
   };
 
   useEffect(() => {
-    setRules(props.data.agencyRules);
+    getAgencyProfile()
   }, []);
 
   return (
@@ -169,7 +172,7 @@ function Rules(props) {
             </div>
 
             <div className="rulesQuestions" style={{ marginTop: editRules && "15px" }} >
-              {rules.length > 0 ? 
+              {rules.length > 0 ?
                 rules.map((value) => {
                   return (
                     <div className={`questionPart ${editRules === false && "conditionalPadding"}`} >
@@ -217,13 +220,13 @@ function Rules(props) {
               {editRules &&
                 <div className="handleButtons">
                   <div className="submitEditBtn">
-                    <div onClick={() => { handleEditRules(false) }} className="information_save_parent" >
-                      <div className="information_cancel">
+                    <div className="information_save_parent" >
+                      <div onClick={() => getAgencyProfile(false)} className="information_cancel">
                         <p>Cancel</p>
                       </div>
                     </div>
                   </div>
-                  <div onClick={handalLoading} className="submitEditBtn">
+                  <div onClick={() => { handleEditRules(false) }} className="submitEditBtn">
                     <div className="information_save">
                       <p>Submit</p>
                     </div>
