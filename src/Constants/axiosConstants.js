@@ -22,10 +22,7 @@ instance.interceptors.request.use(function (request) {
   }
   return request;
 });
-
-console.log(toast);
 const customToast = new toast()
-console.log(customToast);
 instance.interceptors.response.use(
   function (response) {
     if (response.status === 200) {

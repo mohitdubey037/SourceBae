@@ -93,11 +93,11 @@ const Login = (props) => {
     setState(role.toLowerCase());
   }, []);
 
-  useEffect(() => {
-    state === "" || state === "agency"
-      ? props.history.replace("/login:agency")
-      : props.history.replace("/login:client");
-  }, [state]);
+  // useEffect(() => {
+  //   state === "" || state === "agency"
+  //     ? props.history.replace("/login:agency")
+  //     : props.history.replace("/login:client");
+  // }, [state]);
 
   const showPassword = (e) => {
     SetPasswordStatus((prevCheck) => !prevCheck);
