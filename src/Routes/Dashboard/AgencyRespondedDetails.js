@@ -99,11 +99,11 @@ function AgencyRespondedDetails(props) {
                   <p>{project?.projectName}</p>
                 </div>
               </div>
-              <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
+              {/* <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
                 <p style={{ fontSize: "20px", color: "#45A4E4" }}>
                   {project?.projectDomainId?.domainName}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -20,9 +20,9 @@
     flex-direction: row !important;
   } 
 
-  .MuiFormGroup-root {
+  /* .MuiFormGroup-root {
     flex-direction: row;
-  }
+  } */
 
   .makeStyles-button-3 {
     background-color: #015F9a  !important;

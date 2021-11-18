@@ -33,6 +33,12 @@ const useStyles = makeStyles((theme) => ({
   noLabel: {
     marginTop: theme.spacing(3),
   },
+  radioParent: {
+    "& .MuiFormGroup-root": {
+      flexDirection: 'row'
+    }
+  }
+
 }));
 
 const BlueRadio = withStyles({
@@ -422,7 +428,7 @@ function ShortTerm(props) {
                   </li>
                 </ul>
                 <div className="innerHowToPay">
-                  <FormControl component="fieldset">
+                  <FormControl className={classes.radioParent} component="fieldset">
                     <RadioGroup
                       className={classes.root}
                       aria-label="howToPay"
