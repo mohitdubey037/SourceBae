@@ -532,14 +532,14 @@
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.Image1_agencyList {
+/* .Image1_agencyList {
   left: -2rem;
   position: fixed;
   top: -4rem;
   width: 34rem;
   z-index: 0;
   transform: rotate( 2deg);
-}
+} */
 
 .Image2_agencyList {
   right: -8rem;

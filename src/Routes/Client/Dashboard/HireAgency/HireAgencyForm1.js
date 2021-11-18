@@ -155,7 +155,7 @@ const HireAgencyForm1 = (props) => {
       ) : (
         <>
           <div className="main_HireAgencyParent">
-            <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
+            {/* <img className="Image1_hireAgency" src={UpImage} alt="upImage" /> */}
             <img
               className="Image2_hireAgency"
               src={DownImage}

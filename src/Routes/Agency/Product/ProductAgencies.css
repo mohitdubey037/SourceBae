@@ -75,12 +75,12 @@
     z-index: 0;
 }
 
-.Image1_productAgencies {
+/* .Image1_productAgencies {
     left: -7rem;
     position: absolute;
     top: -5.5rem;
     width: 43rem;
-}
+} */
 
 .locationFilter input {
     border: 1px solid #999;

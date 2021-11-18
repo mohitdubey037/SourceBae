@@ -226,7 +226,7 @@ function ShortTerm(props) {
     <>
       <Navbar />
       <div className="mainShortTerm">
-        <img className="Image1_shortTerm" src={UpImage} alt="upImage" />
+        {/* <img className="Image1_shortTerm" src={UpImage} alt="upImage" /> */}
         <img className="Image2_shortTerm" src={DownImage} alt="downImage" />
         <Back name="Short Term" />
         <div className="innerShortTerm">

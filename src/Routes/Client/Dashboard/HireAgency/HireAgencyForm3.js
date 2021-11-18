@@ -144,7 +144,7 @@ const oldFormData=props.location.state
             <Navbar />
             {loading ? <Spinner /> :
                 <div className="mainHireAgencyForm3">
-                    <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
+                    {/* <img className="Image1_hireAgency" src={UpImage} alt="upImage" /> */}
                     <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
                     <div className="servicesHirecover">
                         {allTechnologies.length > 0 &&

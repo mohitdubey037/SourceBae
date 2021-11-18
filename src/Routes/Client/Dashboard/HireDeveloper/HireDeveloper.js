@@ -145,7 +145,7 @@ function HireDeveloper(props) {
     <>
       <Navbar />
       <div className="back_and_hireDeveloper_Parent">
-        <img className="Image1_hireDeveloper" src={UpImage} alt="upImage" />
+        {/* <img className="Image1_hireDeveloper" src={UpImage} alt="upImage" /> */}
         <img className="Image2" src={DownImage} alt="downImage" />
         <Back name="Hire Developer" />
         <div className="mainHireDeveloper">

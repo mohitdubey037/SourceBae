@@ -32,7 +32,7 @@ function ClientHireDeveloper(props) {
 
   return (
     <div className="MainDevDiv">
-      <img className="Image1_GetHireDev" src={UpImage} alt="upImage" />
+      {/* <img className="Image1_GetHireDev" src={UpImage} alt="upImage" /> */}
       <img className="Image2_GetHireDev" src={DownImage} alt="downImage" />
       <>
         {loading ? (

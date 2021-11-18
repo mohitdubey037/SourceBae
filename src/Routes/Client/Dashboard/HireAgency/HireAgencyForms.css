@@ -1,9 +1,9 @@
-.Image1_hireAgency {
+/* .Image1_hireAgency {
     left: -10rem;
     position: absolute;
     top: -5.5rem;
     width: 43rem;
-}
+} */
 
 .Image2_hireAgency {
     right: -7rem;
@@ -209,7 +209,7 @@ li::marker {
 }
 
 .main_HireAgencyParent {
-    padding-top: 5rem;
+    padding-top: 4.1rem;
     position: relative;
     overflow: hidden;
 }

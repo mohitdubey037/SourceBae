@@ -5,6 +5,8 @@ import './Navbar.css';
 import { Avatar } from '@material-ui/core';
 
 function Navbar(props) {
+
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
     const url = props.history.location.pathname;
     const Role = localStorage.getItem('role');
     const roleId = localStorage.getItem("userId");
@@ -33,9 +35,25 @@ function Navbar(props) {
 
     return (
         // <div style={{ top: Role === 'Client' && '1rem', justifyContent:props.logoLink && 'space-between'}} className='navbar'>
-        <div style={{justifyContent:props.logoLink && 'space-between', top: props.logoLink && '0.5rem'}} className='navbar'>
-            <div style={{display: props.logoLink === undefined && 'none' }} className="logoLink_navbar">
-                <img src={props.logoLink} alt="logo" />
+        <div style={{
+            justifyContent: (url.includes('/clientNewestDashboard') ||
+                url.includes('/agencyNewestDashboard') ||
+                url.includes('/quotation') ||
+                url.includes('/agency-list')
+            ) && 'flex-end',
+            top: (url.includes('/clientNewestDashboard') ||
+                url.includes('/agencyNewestDashboard') ||
+                url.includes('/quotation') ||
+                url.includes('agency-list')) && '1rem'
+        }} className='navbar'>
+            <div style={{
+                display: (url.includes('/clientNewestDashboard') ||
+                    url.includes('/agencyNewestDashboard') ||
+                    url.includes('/quotation') ||
+                    url.includes('agency-list')
+                ) && 'none'
+            }} className="logoLink_navbar">
+                <img src={logoLink} alt="logo" />
             </div>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">

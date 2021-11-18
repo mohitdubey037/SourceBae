@@ -214,7 +214,7 @@ function HireAgencyForm2(props) {
         <Spinner />
       ) : (
         <div className="mainHireAgencyFormTwo">
-          <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
+          {/* <img className="Image1_hireAgency" src={UpImage} alt="upImage" /> */}
           <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
           <div className="steps_hireAgencyForm2">
             <div className="step3_disabled" style={{ width: "30%" }}>

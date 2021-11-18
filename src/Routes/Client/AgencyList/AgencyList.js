@@ -126,7 +126,7 @@ function AgencyList(props) {
 
   return (
     <div classname="mainImageDiv">
-      <img className="Image1_agencyList" src={UpImage} alt="upImage" />
+      {/* <img className="Image1_agencyList" src={UpImage} alt="upImage" /> */}
       <img className="Image2_agencyList" src={DownImage} alt="downImage" />
       <>
         <div className="SidebarAgencyList">
