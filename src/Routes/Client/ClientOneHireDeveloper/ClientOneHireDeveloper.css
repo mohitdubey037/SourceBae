@@ -62,7 +62,9 @@
   margin: auto;
   width: 84%;
   overflow: auto;
-  height: 33rem;
+  /* height: 33rem; */
+  height: 87%;
+  margin-top: 1rem;
 }
 
 .moreAgencyHeading {

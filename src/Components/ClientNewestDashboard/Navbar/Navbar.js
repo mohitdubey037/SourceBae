@@ -39,18 +39,25 @@ function Navbar(props) {
             justifyContent: (url.includes('/clientNewestDashboard') ||
                 url.includes('/agencyNewestDashboard') ||
                 url.includes('/quotation') ||
-                url.includes('/agency-list')
+                url.includes('/agency-list') || 
+                url.includes('/project-details') || 
+                url.includes('/agency-project-details') 
             ) && 'flex-end',
             top: (url.includes('/clientNewestDashboard') ||
                 url.includes('/agencyNewestDashboard') ||
                 url.includes('/quotation') ||
-                url.includes('agency-list')) && '1rem'
+                url.includes('agency-list')) || 
+                url.includes('/project-details') ||
+                url.includes('/agency-project-details') && '1rem'
         }} className='navbar'>
             <div style={{
-                display: (url.includes('/clientNewestDashboard') ||
+                display: (
+                    url.includes('/clientNewestDashboard') ||
                     url.includes('/agencyNewestDashboard') ||
                     url.includes('/quotation') ||
-                    url.includes('agency-list')
+                    url.includes('agency-list') || 
+                    url.includes('/project-details') || 
+                    url.includes('/agency-project-details')
                 ) && 'none'
             }} className="logoLink_navbar">
                 <img src={logoLink} alt="logo" />
