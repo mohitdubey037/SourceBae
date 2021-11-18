@@ -5,6 +5,10 @@
     width: 43rem;
 } */
 
+.higherAgencyInfoParent {
+    margin-top: 1rem;
+}
+
 .Image2_hireAgency {
     right: -7rem;
     position: absolute;
@@ -115,7 +119,7 @@
     display: flex;
     justify-content: flex-end;
     position: absolute;
-    top: 16rem;
+    top: 13rem;
 }
 
 .input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
@@ -209,7 +213,7 @@ li::marker {
 }
 
 .main_HireAgencyParent {
-    padding-top: 4.1rem;
+    padding-top: 4.5rem;
     position: relative;
     overflow: hidden;
 }
@@ -251,15 +255,25 @@ li::marker {
 }
 
 .mainHireAgencyForm3 {
-    width: 100%;
+    /* width: 100%;
     position: absolute;
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: 106%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+
+    width: 100%;
+    height: 97vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: absolute;
+    overflow: hidden;
+    padding-top: 0rem;
 }
 
 .innerHireAgencyFormTwo {
@@ -566,7 +580,7 @@ li::marker {
     color: #eaf2ff;
 }
 
-.backbutton_hireAgencyForm2:hover, .backbutton_hireAgencyForm3:hover   {
+.backbutton_hireAgencyForm2:hover, .backbutton_hireAgencyForm3:hover {
     background-color: rgb(95, 185, 178) !important;
     color: #eaf2ff !important;
 }
@@ -605,14 +619,13 @@ svg.MuiSvgIcon-root {
     margin-left: 0;
 }
 
-.steps_hireAgencyForm3{
+.steps_hireAgencyForm3 {
     display: flex;
     width: 48%;
     justify-content: space-between;
 }
 
-
-.Toastify__toast--success ,.Toastify__toast--error {
+.Toastify__toast--success, .Toastify__toast--error {
     /* border: 7px solid !important; */
     border-radius: 50px !important;
-  }
+}

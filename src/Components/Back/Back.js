@@ -11,18 +11,42 @@ function Back(props) {
     const url = props.history.location.pathname;
     
     const goBack = () => {
-        if (Role === 'Agency') {
-            if (url.includes('agency-form-one')) {
+        if (Role === 'Client') {
+            if (url.includes('hire-agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                     props.history.replace('/agencyNewestDashboard');
                 }
             }
-            else if (url.includes('agency-form-two')) {
+            else if (url.includes('hire-agency-form-two')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                     props.history.replace('/agency-form-one');
                 }
             }
-            else if (url.includes('agency-form-three')) {
+            else if (url.includes('hire-agency-form-three')) {
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.replace('/agency-form-two');
+                }
+            }
+            else {
+                props.history.goBack();
+            }
+        }
+        else {
+            props.history.goBack();
+        }
+
+        if (Role === 'Agency') {
+            if (url.includes('agency-form-one') || url.includes('hire-agency-form-one')) {
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.replace('/agencyNewestDashboard');
+                }
+            }
+            else if (url.includes('agency-form-two') || url.includes('hire-agency-form-two')) {
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.replace('/agency-form-one');
+                }
+            }
+            else if (url.includes('agency-form-three' || url.includes('hire-agency-form-three'))) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                     props.history.replace('/agency-form-two');
                 }
