@@ -111,7 +111,7 @@ function ClientProfile() {
                 :
                 loading ? <Spinner /> :
                     <div className="mainClient_parent">
-                        <img className="Image1" src={Profile_image1} alt="signup" />
+                        {/* <img className="Image1" src={Profile_image1} alt="signup" /> */}
                         <img className="Image2" src={Profile_image2} alt="signup" />
                         <Back name="Hire Agency" />
                         <div className="mainClientProfile">

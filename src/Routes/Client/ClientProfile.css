@@ -19,7 +19,7 @@
 
 .mainClient_parent {
     padding-top: 5rem;
-    background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+    /* background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%); */
     position: relative;
     overflow: hidden;
 }
