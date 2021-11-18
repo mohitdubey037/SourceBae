@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import instance from "../../../Constants/axiosConstants";
 import { Modal } from "react-responsive-modal";
@@ -7,13 +7,11 @@ import clsx from 'clsx';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { toast } from "react-toastify";
 import moment from 'moment';
-// import DatePicker from "react-datepicker";
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
-import MobileDatePicker from '@mui/lab/MobileDatePicker';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -22,7 +20,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import bgPic from "../../../assets/images/Quotation/bgPic.svg";
-
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -39,13 +36,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClientCommentBox = (props) => {
+
+  const projectStartDateByClientRef = useRef();
+
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const onCloseModal = () => setOpen(false);
   const [openRejectionModal, setOpenRejectionModal] = useState(false);
-  const [acceptErrors, setAcceptErrors] = useState('');
   const [rejectErrors, setRejectErrors] = useState('');
-  const [singleRejectError, setSingleRejectError] = useState('');
 
   const [quotationFormData, setQuotationFormData] = useState({
     agencyId: props?.agencyId || "",
@@ -66,6 +64,12 @@ const ClientCommentBox = (props) => {
   const [value, setValue] = React.useState(new Date());
 
   const handleChangeDate = (name, value) => {
+    if (value === null) {
+      quotationFormData.projectStartDateByClient = null
+      quotationFormData.projectDelayedStartDateByClient = null
+      quotationFormData.projectEndDateByClient = null
+      quotationFormData.projectExpectedEndDateByClient = null
+    }
     setQuotationFormData({
       ...quotationFormData,
       [name]: value
@@ -87,8 +91,6 @@ const ClientCommentBox = (props) => {
       [name]: value
     })
   }
-
-
 
   const [apiData, setApiData] = useState({
     agencyId: props.agencyId,
@@ -130,25 +132,25 @@ const ClientCommentBox = (props) => {
   };
 
   const validateForm = () => {
-    if (quotationFormData.isQuotationAcceptedByClient === '') {
+    if (quotationFormData.projectStartDateByClient === '' || quotationFormData.projectStartDateByClient === null) {
       toast.error('Start date can"t be empty');
       return false;
     }
-    else if (quotationFormData.projectDelayedStartDateByClient === '') {
-      toast.error('Delayed date can"t be empty');
+    else if (quotationFormData.projectDelayedStartDateByClient === '' || quotationFormData.projectDelayedStartDateByClient === null) {
+      toast.error("Delayed date cant be empty");
       return false;
 
     }
-    else if (quotationFormData.projectEndDateByClient === '') {
+    else if (quotationFormData.projectEndDateByClient === '' || quotationFormData.projectEndDateByClient === null) {
       toast.error("End date can't be empty");
       return false;
     }
-    else if (quotationFormData.projectExpectedEndDateByClient === '') {
+    else if (quotationFormData.projectExpectedEndDateByClient === '' || quotationFormData.projectExpectedEndDateByClient === '') {
       toast.error("Expected end date can't be empty");
       return false
     }
     else if (quotationFormData.finalCostByClient === '') {
-      toast.error("Expected end date can't be empty");
+      toast.error("Price can't be empty");
     }
     else {
       return true;
@@ -368,6 +370,7 @@ const ClientCommentBox = (props) => {
                         className={classes.root}
                         inputFormat="dd/MM/yyyy"
                         minDate={new Date()}
+                        ref = {projectStartDateByClientRef}
                         value={quotationFormData.projectStartDateByClient}
                         onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
                         renderInput={(params) => <TextField {...params} />}
@@ -386,9 +389,11 @@ const ClientCommentBox = (props) => {
                     <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
-                        minDate={new Date(moment(quotationFormData.projectStartDateByClient).add('1','days'))}
+                        minDate={new Date(moment(quotationFormData.projectStartDateByClient).add('1', 'days'))}
+
                         value={quotationFormData.projectDelayedStartDateByClient}
-                        disabled={quotationFormData.projectStartDateByClient === '' ? true : false}
+                        disabled={quotationFormData.projectStartDateByClient === '' ? true : quotationFormData.projectStartDateByClient === 'Invalid Date' ? true : quotationFormData.projectStartDateByClient === null ? true : false
+                        }
                         onChange={(event) => handleChangeDate('projectDelayedStartDateByClient', event)}
                         renderInput={(params) => <TextField {...params} />}
                       />
@@ -405,8 +410,9 @@ const ClientCommentBox = (props) => {
                     <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
-                        disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : false}
-                        minDate={new Date(moment(quotationFormData.projectDelayedStartDateByClient).add('1','days'))}
+                        disabled={quotationFormData.projectDelayedStartDateByClient === '' ? true : quotationFormData.projectDelayedStartDateByClient === 'Invalid Date' ? true : quotationFormData.projectDelayedStartDateByClient === null ? true : false
+                        }
+                        minDate={new Date(moment(quotationFormData.projectDelayedStartDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectEndDateByClient}
                         onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
                         renderInput={(params) => <TextField {...params} />}
@@ -424,8 +430,9 @@ const ClientCommentBox = (props) => {
                     <div className={`datePickers ${quotationFormData.projectStartDateByClient === '' && 'conditional_datePicker'}`}>
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
-                        disabled={quotationFormData.projectEndDateByClient === '' ? true : false}
-                        minDate={new Date(moment(quotationFormData.projectEndDateByClient).add('1','days'))}
+                        disabled={quotationFormData.projectEndDateByClient === '' ? true : quotationFormData.projectEndDateByClient === 'Invalid Date' ? true : quotationFormData.projectEndDateByClient === null ? true : false
+                        }
+                        minDate={new Date(moment(quotationFormData.projectEndDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectExpectedEndDateByClient}
                         onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
                         renderInput={(params) => <TextField {...params} />}
