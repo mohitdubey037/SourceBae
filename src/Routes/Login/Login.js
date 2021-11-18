@@ -191,38 +191,15 @@ const Login = (props) => {
       ) : (
         <div className="mainLoginPage">
           <div className="innerLoginPage">
-            <div
-              className={`loginIllustrator ${
-                roleString === "Client" && "conditional_background"
-              }`}
-            >
+            <div className={`loginIllustrator ${roleString === "Client" && "conditional_background"}`} >
               <div className="loginImage1">
-                <img
-                  src={
-                    roleString === "Client"
-                      ? downImage1_client
-                      : downImage1_agency
-                  }
-                  alt="image1"
-                />
+                <img src={ roleString === "Client" ? downImage1_client : downImage1_agency} alt="image1" />
               </div>
               <div className="loginImage2">
-                <img
-                  src={
-                    roleString === "Client"
-                      ? downImage2_client
-                      : downImage2_agency
-                  }
-                  alt="image2"
-                />
+                <img src={ roleString === "Client" ? downImage2_client : downImage2_agency } alt="image2" />
               </div>
               <div className="loginImage3">
-                <img
-                  src={
-                    roleString === "Client" ? upImage1_client : upImage1_agency
-                  }
-                  alt="image3"
-                />
+                <img src={ roleString === "Client" ? upImage1_client : upImage1_agency } alt="image3" />
               </div>
               <div className="loginImage4">
                 <img
@@ -237,12 +214,7 @@ const Login = (props) => {
               </div>
               <div className="loginCards-wrapper">
                 <div className="welcome-back_loginIllustrator">
-                  <p>
-                    Welcome back<br></br>
-                    <span>to</span>
-                    <br />
-                    <span className="welcome-back_sourceBae">Sourcebae</span>
-                  </p>
+                  <p> Welcome back<br></br><span>to</span><br/><span className="welcome-back_sourceBae">Sourcebae</span> </p>
                 </div>
                 <div className="loginContent">
                   <div className="mainLoginForm">
@@ -289,12 +261,8 @@ const Login = (props) => {
                         type="text"
                         fullWidth
                         className={classes.input}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
+                        InputLabelProps={{ shrink: true, }}
+                        onChange={(e) => { handleChange(e); }}
                         placeholder="Enter an email"
                         variant="filled"
                       />
@@ -307,12 +275,8 @@ const Login = (props) => {
                         type={hidePassword ? "password" : "text"}
                         fullWidth
                         className={classes.input}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
+                        InputLabelProps={{ shrink: true, }}
+                        onChange={(e) => { handleChange(e); }}
                         variant="filled"
                         InputProps={{
                           // <-- This is where the toggle button is added.
@@ -373,13 +337,7 @@ const Login = (props) => {
                     <div className="signUpOption">
                       <p>
                         Don't have an account?{" "}
-                        <span
-                          onClick={() =>
-                            props.history.replace(
-                              `/register:${role.toLowerCase()}`
-                            )
-                          }
-                        >
+                        <span onClick={()=>props.history.replace(`/register:${role.toLowerCase()}`)}>
                           Sign Up
                         </span>
                       </p>

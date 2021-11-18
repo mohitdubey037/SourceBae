@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
 
-
-
 function RegisterAgencyForm1(props) {
 
   const setForm = (event) => {
@@ -31,8 +29,6 @@ function RegisterAgencyForm1(props) {
     }
   };
 
-
-
   return (
     <form className="client__form form__1" autoComplete="off">
       <div>
@@ -43,7 +39,6 @@ function RegisterAgencyForm1(props) {
             type="text"
             name="firstName"
             placeholder="First Name"
-            // value={signupForm.firstName}
             onChange={(e) => setForm(e)}
           />
           <div>
@@ -61,7 +56,6 @@ function RegisterAgencyForm1(props) {
             type="text"
             name="lastName"
             placeholder="Last Name"
-            // value={signupForm.lastName}
             onChange={(e) => setForm(e)}
           />
           {props.errors.lastNameError && (
@@ -79,7 +73,6 @@ function RegisterAgencyForm1(props) {
             type="email"
             name="userEmail"
             placeholder="Email"
-            // value={signupForm.userEmail}
             onChange={(e) => setForm(e)}
           />
           {props.errors.emailError && (
@@ -94,7 +87,6 @@ function RegisterAgencyForm1(props) {
             type="text"
             name="userName"
             placeholder="Username"
-            // value={signupForm.userName}
             onChange={(e) => setForm(e)}
           />
           <input type="text" name="username" placeholder="Username" style={{ display: 'none' }} />

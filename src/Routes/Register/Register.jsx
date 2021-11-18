@@ -46,10 +46,6 @@ const dateStyles = makeStyles((theme) => ({
 
 const Register = (props) => {
   const isFirstRender = useIsFirstRender();
-  // let localRole = localStorage.getItem("role");
-  // if (props.history.action === "POP") {
-  //   props.history.push(`/register:${localRole}`);
-  // }
   const dateClasses = dateStyles();
   const [state, setState] = useState("");
   const [errorData, setErrorData] = useState({
@@ -268,12 +264,7 @@ const Register = (props) => {
   const verifyInput = () => {
     let { userEmail, userName, userPhone } = signupForm;
     if (firstFormErrorValidation()) {
-      instance
-        .post(`/api/${role}/auths/verify-signup`, {
-          userEmail,
-          userName,
-          userPhone,
-        })
+      instance .post(`/api/${role}/auths/verify-signup`,{userEmail, userName, userPhone})
         .then((res) => {
           if (res.userEmail && res.userName && res.userPhone) {
             toggleForms("next");
@@ -283,12 +274,10 @@ const Register = (props) => {
               userName: res.userName,
               userPhone: res.userPhone,
             });
-            // firstFormErrorValidation();
           }
         })
         .catch((err) => {});
     }
-    // firstFormErrorValidation()
   };
 
   useEffect(() => {
@@ -319,8 +308,7 @@ const Register = (props) => {
 
   const createProfileApi = (Role, api_param_const, createForm) => {
     setLoading(true);
-    instance
-      .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
+    instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
       .then(function (response) {
         if (role.toLowerCase() === "client") {
           props.history.push("/clientNewestDashboard");
@@ -424,19 +412,11 @@ const Register = (props) => {
       ) : (
         <>
           <div className="client__registrationContainer">
-            <img
-              className={`Image1 ${
-                state === "client" && "conditional_colorChange"
-              }`}
-              src={Signup1}
-              alt="signup"
+            <img className={`Image1 ${state === "client" && "conditional_colorChange"}`}
+              src={Signup1} alt="signup"
             />
-            <img
-              className={`Image2 ${
-                state === "client" && "conditional_colorChange"
-              } `}
-              src={Signup2}
-              alt="signup"
+            <img className={`Image2 ${ state === "client" && "conditional_colorChange" } `}
+              src={Signup2} alt="signup"
             />
             <div className="form__area">
               <div className="client__form">
@@ -447,10 +427,7 @@ const Register = (props) => {
                       {state === "" || state === "agency" ? (
                         <>
                           <span>an</span>
-                          <span
-                            style={{ fontSize: "25px" }}
-                            className={`agencyOrClient as_a_client`}
-                          >{` ${roleString}`}</span>
+                          <span style={{ fontSize: "25px" }} className={`agencyOrClient as_a_client`} >{` ${roleString}`}</span>
                         </>
                       ) : (
                         <>
@@ -544,7 +521,6 @@ const Register = (props) => {
                             ? "active__buttonclient"
                             : "active_buttonagency"
                         }`}
-                        // onClick={() => toggleForms("next")}
                         onClick={verifyInput}
                       >
                         <p>NEXT</p>
@@ -576,11 +552,7 @@ const Register = (props) => {
                     <div className="registerOption">
                       <p>
                         Already have an account?{" "}
-                        <span
-                          onClick={() =>
-                            props.history.push(`/login:${role.toLowerCase()}`)
-                          }
-                        >
+                        <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>
                           Log In
                         </span>
                       </p>
