@@ -261,10 +261,16 @@ const Register = (props) => {
   };
 
   //API call methods
-  const verifyInput = () => {
+  const verifyInput = (event) => {
+    event.preventDefault();
     let { userEmail, userName, userPhone } = signupForm;
     if (firstFormErrorValidation()) {
-      instance .post(`/api/${role}/auths/verify-signup`,{userEmail, userName, userPhone})
+      instance
+        .post(`/api/${role}/auths/verify-signup`, {
+          userEmail,
+          userName,
+          userPhone,
+        })
         .then((res) => {
           if (res.userEmail && res.userName && res.userPhone) {
             toggleForms("next");
@@ -308,7 +314,8 @@ const Register = (props) => {
 
   const createProfileApi = (Role, api_param_const, createForm) => {
     setLoading(true);
-    instance.post(`api/${Role}/${api_param_const}/create`, { ...createForm })
+    instance
+      .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
       .then(function (response) {
         if (role.toLowerCase() === "client") {
           props.history.push("/clientNewestDashboard");
@@ -329,8 +336,7 @@ const Register = (props) => {
     }
   };
 
-  useEffect(() => {
-  }, [step, signupForm]);
+  useEffect(() => {}, [step, signupForm]);
 
   useEffect(() => {
     if (token !== null && apiErrors === false) {
@@ -412,11 +418,19 @@ const Register = (props) => {
       ) : (
         <>
           <div className="client__registrationContainer">
-            <img className={`Image1 ${state === "client" && "conditional_colorChange"}`}
-              src={Signup1} alt="signup"
+            <img
+              className={`Image1 ${
+                state === "client" && "conditional_colorChange"
+              }`}
+              src={Signup1}
+              alt="signup"
             />
-            <img className={`Image2 ${ state === "client" && "conditional_colorChange" } `}
-              src={Signup2} alt="signup"
+            <img
+              className={`Image2 ${
+                state === "client" && "conditional_colorChange"
+              } `}
+              src={Signup2}
+              alt="signup"
             />
             <div className="form__area">
               <div className="client__form">
@@ -427,7 +441,10 @@ const Register = (props) => {
                       {state === "" || state === "agency" ? (
                         <>
                           <span>an</span>
-                          <span style={{ fontSize: "25px" }} className={`agencyOrClient as_a_client`} >{` ${roleString}`}</span>
+                          <span
+                            style={{ fontSize: "25px" }}
+                            className={`agencyOrClient as_a_client`}
+                          >{` ${roleString}`}</span>
                         </>
                       ) : (
                         <>
@@ -435,7 +452,7 @@ const Register = (props) => {
                           <span
                             style={{ fontSize: "25px" }}
                             className={`agencyOrClient as_an_agency`}
-                          >{` ${roleString}`}</span>
+                          >{`${roleString}`}</span>
                         </>
                       )}
                     </h6>
@@ -488,7 +505,6 @@ const Register = (props) => {
 
                   <form autoComplete="off" className="client__form form__2">
                     {role === `Agency` ? (
-                      <>
                         <RegisterAgencyForm2
                           errors={errors}
                           setLinkedIn={setLinkedIn}
@@ -498,9 +514,7 @@ const Register = (props) => {
                           site={site}
                           setSite={setSite}
                         />
-                      </>
                     ) : (
-                      <>
                         <RegisterClientForm2
                           errors={errors}
                           setLinkedIn={setLinkedIn}
@@ -510,12 +524,12 @@ const Register = (props) => {
                           site={site}
                           setSite={setSite}
                         />
-                      </>
                     )}
                   </form>
                   <div className="already_next_register">
                     {step == 1 ? (
-                      <div style={{width: '15%'}}
+                      <div
+                        style={{ width: "15%" }}
                         className={`next_Register ${
                           state === "client"
                             ? "active__buttonclient"
@@ -552,7 +566,11 @@ const Register = (props) => {
                     <div className="registerOption">
                       <p>
                         Already have an account?{" "}
-                        <span onClick={() => props.history.push(`/login:${role.toLowerCase()}`)}>
+                        <span
+                          onClick={() =>
+                            props.history.push(`/login:${role.toLowerCase()}`)
+                          }
+                        >
                           Log In
                         </span>
                       </p>

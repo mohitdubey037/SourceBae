@@ -3,19 +3,7 @@ import { useEffect, useState } from "react";
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
 
-
-
 function RegisterClientForm1(props) {
-
-    // const [signupForm, setSignupForm] = useState({
-    //     firstName: "",
-    //     lastName: "",
-    //     userName: "",
-    //     userEmail: "",
-    //     userPhone: "",
-    //     countryCode: "+91",
-    //     password: "",
-    //   });
     const [step, setStep] = useState(1);
     let { role } = useParams();
     const [state, setState] = useState("");
@@ -52,7 +40,6 @@ function RegisterClientForm1(props) {
               type="text"
               name="firstName"
               placeholder="First Name"
-              // value={signupForm.firstName}
               onChange={(e) => setForm(e)}
             />
             <div>
@@ -70,7 +57,6 @@ function RegisterClientForm1(props) {
               type="text"
               name="lastName"
               placeholder="Last Name"
-              // value={signupForm.lastName}
               onChange={(e) => setForm(e)}
             />
             {props.errors.lastNameError && (
@@ -88,7 +74,6 @@ function RegisterClientForm1(props) {
               type="email"
               name="userEmail"
               placeholder="Email"
-              // value={signupForm.userEmail}
               onChange={(e) => setForm(e)}
             />
             {props.errors.emailError && (
@@ -103,7 +88,6 @@ function RegisterClientForm1(props) {
               type="text"
               name="userName"
               placeholder="Username"
-              // value={signupForm.userName}
               onChange={(e) => setForm(e)}
             />
             <input type="text" name="username" placeholder="Username" style={{ display: 'none' }} />

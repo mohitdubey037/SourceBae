@@ -141,9 +141,7 @@ const Login = (props) => {
           notificationDeviceToken: device_token,
         })
         .then(function (response) {
-          cookie.save("Authorization", `Bearer ${response.accessToken}`, {
-            path: "/",
-          });
+          cookie.save("Authorization", `Bearer ${response.accessToken}`,{path: "/"});
           setToken(cookie.load("Authorization"));
           localStorage.setItem("role", role);
           localStorage.setItem("userId", `${response._id}`);
@@ -202,37 +200,27 @@ const Login = (props) => {
                 <img src={ roleString === "Client" ? upImage1_client : upImage1_agency } alt="image3" />
               </div>
               <div className="loginImage4">
-                <img
-                  src={
-                    roleString === "Client" ? upImage2_client : upImage2_agency
-                  }
-                  alt="image4"
-                />
+                <img src={ roleString === "Client" ? upImage2_client : upImage2_agency } alt="image4" />
               </div>
               <div className="dot-image">
                 <img src={dotImage} alt="" />
               </div>
               <div className="loginCards-wrapper">
                 <div className="welcome-back_loginIllustrator">
-                  <p> Welcome back<br></br><span>to</span><br/><span className="welcome-back_sourceBae">Sourcebae</span> </p>
+                  <p>Welcome back<br></br><span>to</span><br/><span className="welcome-back_sourceBae">Sourcebae</span> </p>
                 </div>
                 <div className="loginContent">
                   <div className="mainLoginForm">
                     <div className="login_switch">
                       <button
                         onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${
-                          roleString === "Agency" && "active__buttonagency"
-                        }`}
-                      >
+                        className={`agency__button ${roleString === "Agency" && "active__buttonagency"
+                        }`}>
                         <p>Agency</p>
                       </button>
                       <button
                         onClick={() => handleChangeToggle("client")}
-                        className={`client__button ${
-                          roleString === "Client" && "active__buttonclient"
-                        }`}
-                      >
+                        className={`client__button ${roleString === "Client" && "active__buttonclient"}`}>
                         <p>Client</p>
                       </button>
                     </div>
