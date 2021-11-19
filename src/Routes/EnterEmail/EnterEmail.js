@@ -96,51 +96,53 @@ function EnterEmail(props) {
 
     return (
         <>
-            <div className="forgot_parent">
-                <Back name="Forgot Password" />
-            </div>
-            <Container component="main">
+            <div className="image_and_forgot">
+                <div className="forgot_parent">
+                    <Back name="Forgot Password" />
+                </div>
                 <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
                 <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <img src={lock} alt="" style={{ width: "2rem" }} />
-                    <Typography component="h1" variant="h5" style={{ color: "#707070", fontFamily: "Segoe UI Semibold" }}>
-                        Send Mail
-                    </Typography>
-                    <div style={{ marginTop: '20px' }}>
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend" style={{ display: "flex", justifyContent: "center" }}>Role</FormLabel>
-                            <RadioGroup aria-label="Role" className="roleform" name="Role" value={Role} onChange={handleRole} style={{ display: "flex", flexDirection: "row" }} style={{ color: '#015F9A' }}>
-                                <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
-                                <FormControlLabel value="Client" control={<Radio />} label="Client" />
-                            </RadioGroup>
-                        </FormControl>
-                    </div>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
+                <Container component="main">
+                    <CssBaseline />
+                    <div className={classes.paper}>
+                        <img src={lock} alt="" style={{ width: "2rem" }} />
+                        <Typography component="h1" variant="h5" style={{ color: "#707070", fontFamily: "Segoe UI Semibold" }}>
+                            Send Mail
+                        </Typography>
+                        <div style={{ marginTop: '20px' }}>
+                            <FormControl component="fieldset">
+                                <FormLabel component="legend" style={{ display: "flex", justifyContent: "center" }}>Role</FormLabel>
+                                <RadioGroup aria-label="Role" className="roleform" name="Role" value={Role} onChange={handleRole} style={{ display: "flex", flexDirection: "row" }} style={{ color: '#015F9A' }}>
+                                    <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
+                                    <FormControlLabel value="Client" control={<Radio />} label="Client" />
+                                </RadioGroup>
+                            </FormControl>
+                        </div>
+                        <form className={classes.form} noValidate>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                placeholder="Enter Email"
+                                name="userEmail"
+                                autoComplete="email"
+                                autoFocus
+                                onChange={(e) => handleChange(e)}
+                                style={{ color: "#707070" }}
+                            />
+                        </form>
+                        <Button type="submit"
                             fullWidth
-                            id="email"
-                            placeholder="Enter Email"
-                            name="userEmail"
-                            autoComplete="email"
-                            autoFocus
-                            onChange={(e) => handleChange(e)}
-                            style={{ color: "#707070" }}
-                        />
-                    </form>
-                    <Button type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.button}
-                        onClick={() => sendVerificationLink()}>
-                        Send Verification Link</Button>
-                </div>
-            </Container>
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
+                            onClick={() => sendVerificationLink()}>
+                            Send Verification Link</Button>
+                    </div>
+                </Container>
+            </div>
         </>
     )
 }
