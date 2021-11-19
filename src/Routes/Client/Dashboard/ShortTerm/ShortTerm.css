@@ -247,10 +247,6 @@
   margin-top: 1.5rem;
 }
 
-.mainShortTerm .MuiFormGroup-root {
-  flex-direction: row !important;
-}
-
 .left_and_right_side {
   display: flex;
   justify-content: space-around;

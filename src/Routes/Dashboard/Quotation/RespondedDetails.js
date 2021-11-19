@@ -89,14 +89,14 @@ function RespondedDetails(props) {
                   <p>{project?.projectName}</p>
                 </div>
               </div>
-              <div
+              {/* <div
                 className="innerBtnInfoDiv"
                 style={{ marginLeft: "20px", color: "#ffffff" }}
               >
                 <p style={{ fontSize: "20px", color: "#ffffff" }}>
                   {project?.projectDomainId?.domainName}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

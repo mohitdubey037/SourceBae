@@ -291,3 +291,16 @@
 .conditionalColor {
   background-color: #FF0000;
 }
+
+@media (max-width: 1200px)  {
+  .developer-detail {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 9rem;
+    margin: 1rem 0;
+  }
+  .developerBudget h6 {
+    text-align: initial;
+    margin-top: 0;
+  }
+}

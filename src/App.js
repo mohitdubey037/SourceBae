@@ -29,7 +29,7 @@ import CustomRoute from "./HOCRoute/CustomRoute";
 import GetClientHireDeveloper from "./Routes/Client/ClientHireDeveloper/getClientHireDeveloper";
 import ClientOneHireDeveloper from "./Routes/Client/ClientOneHireDeveloper/ClientOneHireDeveloper";
 import SharedDevelopers from "./Routes/Client/SharedDevelopers/SharedDevelopers";
-import ForgotPassword from "./Routes/ForgotPassword/ForgotPassword";
+import PasswordReset from "./Routes/PasswordReset/PasswordReset";
 import EnterEmail from "./Routes/EnterEmail/EnterEmail";
 
 import ProductForm from "./Routes/Agency/Product/ProductForm";
@@ -58,7 +58,6 @@ const App = (props) => {
   });
 
   useEffect(() => {
-    console.log("Atul: 14Nov : 9:00AM")
     const msg = firebaseConfig.messaging();
     if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
@@ -91,7 +90,7 @@ const App = (props) => {
         <Route exact path="/login:role" component={Login} />
         <Route exact path="/register:role" component={Register} />
         <Route exact path="/enter-email" component={EnterEmail} />
-        <Route exact path="/password-reset:token" component={ForgotPassword} />
+        <Route exact path="/password-reset:token" component={PasswordReset} />
 
         <Route exact path="/page-not-found" component={PageNotFound} />
 
