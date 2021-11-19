@@ -9,7 +9,7 @@ function Back(props) {
     const Role = localStorage.getItem('role');
     const verificationStatus = localStorage.getItem('isVerified');
     const url = props.history.location.pathname;
-    
+
     const goBack = () => {
         if (Role === 'Client') {
             if (url.includes('hire-agency-form-one')) {
@@ -27,9 +27,7 @@ function Back(props) {
                     props.history.replace('/agency-form-two');
                 }
             }
-            else if (url.includes('quotation')) {
-                    props.history.push('/agencyNewestDashboard');
-            }
+
             else {
                 props.history.goBack();
             }
@@ -58,6 +56,9 @@ function Back(props) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                     props.history.replace('/agency-form-three');
                 }
+            }
+            else if (url.includes('quotation')) {
+                props.history.push('/agencyNewestDashboard');
             }
             else {
                 props.history.goBack();
@@ -90,7 +91,7 @@ function Back(props) {
                 </div>
                 <h6>Back</h6>
             </div>
-            <div style={{width: url.includes('enter-email') && '84%'}} className="add-developer-div">
+            <div style={{ width: url.includes('enter-email') && '84%' }} className="add-developer-div">
                 <h6>{props.name}</h6>
             </div>
         </div>
