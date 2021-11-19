@@ -27,6 +27,9 @@ function Back(props) {
                     props.history.replace('/agency-form-two');
                 }
             }
+            else if (url.includes('quotation')) {
+                    props.history.push('/agencyNewestDashboard');
+            }
             else {
                 props.history.goBack();
             }

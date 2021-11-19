@@ -113,7 +113,7 @@ function ClientProfile() {
                     <div className="mainClient_parent">
                         {/* <img className="Image1" src={Profile_image1} alt="signup" /> */}
                         <img className="Image2" src={Profile_image2} alt="signup" />
-                        <Back name="Hire Agency" />
+                        <Back name="Client Profile" />
                         <div className="mainClientProfile">
                             <div className="innerClientProfile">
                                 <div className="clientProfileHeading" style={{ display: "flex", justifyContent: "center" }}>
