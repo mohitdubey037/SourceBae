@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import './ForgotPassword.css'
+import './PasswordReset.css';
 import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
@@ -91,7 +91,7 @@ const ForgotPassword = (props) => {
 
     return (
         <>
-            <div>
+            <div className="mainLoginPage_Parent">
                 <div style={{ marginTop: '20px' }}>
                     <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
                     <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
