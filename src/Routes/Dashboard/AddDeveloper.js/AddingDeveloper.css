@@ -39,11 +39,11 @@
   display: flex;
 }
 
-.inputForm {
+/* .inputForm {
   height: 36rem;
   width: 65%;
   background-color: #fff;
-}
+} */
 
 .model3d {
   position: absolute;
@@ -169,7 +169,8 @@
   color: #707070;
 }
 
-.inputField1 .developerName_addingDeveloper input, .inputField1 .developerDesignation_addingDeveloper input {
+.inputField1 .developerName_addingDeveloper input, .inputField1 .developerDesignation_addingDeveloper input,
+.availability_days {
   border: 1px solid #45A4EA;
   border-radius: 6px;
   width: 73%;
@@ -179,6 +180,11 @@
   font-size: 12px;
   text-transform: capitalize;
   margin-top: 0.4rem;
+}
+
+.availability_days {
+  width: 33%;
+  margin-top: 0;
 }
 
 #browsers {
@@ -298,6 +304,7 @@
 .availabilityArea {
   margin-top: 3%;
   position: relative;
+  width: 80%;
 }
 
 /* .submitButton {

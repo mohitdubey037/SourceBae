@@ -13,6 +13,12 @@
   border: 1px solid blue !important;
 }
 
+.react-responsive-modal-closeButton:focus
+.react-responsive-modal-closeButton:hover 
+.react-responsive-modal-closeButton:active {
+  outline: none !important;
+  border: none !important;
+}
 
 .container {
   display: flex;

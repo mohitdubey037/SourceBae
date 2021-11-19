@@ -56,14 +56,14 @@ function AddingDeveloper(props) {
             ],
             developerExperience: "",
             developerPriceRange: "",
-            developerAvailability: ""
+            developerAvailability: null
         })
 
     const [techs, setTechs] = useState([]);
     const [isDisabled, setIsDisabled] = useState(true)
     const [resume, setResume] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
     const [multipleSelectId, setMultipleSelectId] = useState([]);
 
     useEffect(() => {
@@ -77,15 +77,16 @@ function AddingDeveloper(props) {
     }, [developerData])
 
 
-    const handleChange = (event) => {
+    const handleChange = (event, type) => {
         const { name, value } = event.currentTarget
-        if (name === "developerTechnologies") {
-            setDeveloperData(
-                {
-                    ...developerData,
-                    [name]: [value]
-                }
-            )
+        if (type === 'negoPrice') {
+            if (value > 3) {
+                setDeveloperData(
+                    {
+                        ...developerData,
+                        [name]: value
+                    })
+            }
         }
         else {
             setDeveloperData(
@@ -95,6 +96,10 @@ function AddingDeveloper(props) {
                 })
         }
     }
+
+    useEffect(() => {
+        console.log(developerData)
+    }, [developerData])
 
     const getAllTechs = () => {
         instance.get(`api/${Role}/technologies/all`)
@@ -110,6 +115,7 @@ function AddingDeveloper(props) {
     }
 
     const errorValidation = () => {
+
         const errors = {};
         if (developerData.firstName === '') {
             errors.firstName = 'First Name is required'
@@ -119,6 +125,9 @@ function AddingDeveloper(props) {
         }
         else if (developerData.developerDesignation === '') {
             errors.developerDesignation = 'Developer Designation is required'
+        }
+        else if (developerData.developerDesignation.length < 4) {
+            errors.developerDesignation = 'Developer Designation must be at least 4 character'
         }
         else if (developerData.developerTechnologies.length === 0) {
             errors.developerTechnologies = 'Technologies is required'
@@ -134,6 +143,14 @@ function AddingDeveloper(props) {
         }
         else if (developerData.developerAvailability === '') {
             errors.developerAvailability = 'Developer Availability is required'
+        }
+        else if (developerData.developerAvailability === null) {
+            errors.developerAvailability = 'Developer Availability is required'
+        }
+        else if (developerData.developerAvailability === 'Negotiable') {
+            console.log(typeof (developerData.developerAvailability));
+            console.log(developerData.developerAvailability);
+            errors.developerAvailability = 'Please enter a day'
         }
         setErrors(errors);
         if (Object.keys(errors).length === 0)
@@ -200,7 +217,7 @@ function AddingDeveloper(props) {
 
     return (
         <>
-            <Navbar logoLink={logoLink}/>
+            <Navbar logoLink={logoLink} />
 
             {loading ? <Spinner /> :
                 <>
@@ -277,7 +294,7 @@ function AddingDeveloper(props) {
                                                         onError={errMsg => toast.error(errMsg)}
                                                     >
                                                         <div>
-                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name.slice(0,25) : 'pick file'}</p>
+                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name.slice(0, 25) : 'pick file'}</p>
                                                             <img src={fileIcon} alt="finish" />
                                                         </div>
                                                     </FilePicker>
@@ -315,14 +332,20 @@ function AddingDeveloper(props) {
                                     <div className="availabilityArea">
                                         <FormControl component="fieldset">
                                             <FormLabel component="legend">Availability *</FormLabel>
-                                            <RadioGroup aria-label="developerAvailability" name="developerAvailability" value={developerData.developerAvailability} onChange={(event) => handleChange(event)}>
+                                            <RadioGroup aria-label="developerAvailability" name="developerAvailability" onChange={(event) => handleChange(event)}>
                                                 <FormControlLabel value="0" control={<Radio />} label="Immediately" />
                                                 <FormControlLabel value="1" control={<Radio />} label="less than 2 weeks" />
                                                 <FormControlLabel value="2" control={<Radio />} label="More than 2 weeks" />
-                                                <FormControlLabel value="-1" control={<Radio />} label="Negotiable" />
+                                                <FormControlLabel value="Negotiable" control={<Radio />} label="Negotiable" />
                                             </RadioGroup>
+                                            {developerData.developerAvailability != '0' &&
+                                                developerData.developerAvailability != '1' &&
+                                                developerData.developerAvailability != '2' &&
+                                                developerData.developerAvailability != null &&
+                                                <input min={4} type="number" className="availability_days" placeholder="Enter Days" name="developerAvailability" onChange={(event) => handleChange(event, 'negoPrice')} />
+                                            }
                                         </FormControl>
-                                        {errors.developerAvailability && (<p className="error_paragraph">{errors.developerAvailability}</p>)}
+                                        {errors.developerAvailability && (<p style={{ marginTop: developerData.developerAvailability && '0' }} className="error_paragraph">{errors.developerAvailability}</p>)}
                                     </div>
                                     <div className="submitButton">
                                         <button onClick={() => uploadMedia()}>Submit</button>
