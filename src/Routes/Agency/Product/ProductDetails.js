@@ -338,9 +338,7 @@ function ProductDetails(props) {
                           </div>
                           <div className="productDescImage">
                             <div className="imageContainer">
-                              <div>
                                 <img src={value?.productLogo} alt="" />
-                              </div>
                             </div>
                           </div>
                         </div>

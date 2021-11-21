@@ -194,7 +194,7 @@
     margin-top: 5%;
 }
 
-.productDescImage > div {
+.productDescImage {
     width: 105px;
     height: 105px;
     border-radius: 0.5rem;
@@ -204,7 +204,13 @@
     align-items: center;
 }
 
-.productDescImage div img {
+.productDescImage .imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productDescImage .imageContainer img {
     width: 100%;
 }
 
@@ -350,7 +356,7 @@
 }
 
 .moreAgencyInfo_productDetails {
-    padding: 0.5rem 2rem 0rem;
+    /* padding: 0.5rem 2rem 0rem; */
     /* text-align: justify; */
     width: 100%;
     overflow: hidden;
