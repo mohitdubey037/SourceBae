@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import Spinner from '../../../Components/Spinner/Spinner';
-import './ProductAgencies.css'
-import logo from '../../../assets/images/Logo/logo.png';
+import './ProductAgencies.css';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -93,6 +92,7 @@ const bType = [
 function ProductAgencies(props) {
 
     const Role = localStorage.getItem('role');
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
     const [fundName, setFundName] = React.useState('');
     const [bmodal, setBmodal] = React.useState('');
@@ -114,7 +114,7 @@ function ProductAgencies(props) {
             agencyId: agencyId
         })
     }
-    
+
     const onCloseModal = () => setOpen(false);
 
     const [form, setForm] = useState({
@@ -281,15 +281,15 @@ function ProductAgencies(props) {
                                         {
                                             state?.map((value, index) => {
                                                 return (
-                                                    <div className="agencyPreciseCard agencyPreciseCard_productAgencies">
-                                                        <div className="agencyCardHeaderInfo">
-                                                            <div className="agencyImageProfile innerdiv">
-                                                                <div className="agencyImageArea image">
-                                                                    <img src={logo} alt="" />
+                                                    <div className="agencyPreciseCard_productAgencies">
+                                                        <div className="agencyCardHeaderInfo_productAgencies">
+                                                            <div className="agencyImageProfile_productAgency">
+                                                                <div className="agencyImageArea_productAgencies">
+                                                                    <img src={logoLink} alt="logo" />
                                                                 </div>
-                                                                <div className="agencyProfileInfo name">
+                                                                <div className="agencyProfileInfo_productAgencies name">
                                                                     <h6>{value?.agencyId?.agencyName}</h6>
-                                                                    <div>
+                                                                    <div className="agencyProfileInfo_productAgencies_domain">
                                                                         {value?.agencyId?.agencyDomains?.map(p => {
                                                                             return (
                                                                                 <p>{p?.domainId?.domainName}</p>
@@ -305,48 +305,47 @@ function ProductAgencies(props) {
                                                             </div>
                                                         </div>
 
-                                                        <div className="productInformationHeading">
-                                                            <h5>Product Information</h5>
-                                                        </div>
-
-                                                        <div className="middleAgencyArea productAgencyMiddle bottom">
-                                                            <div className="productAgenciesTeam">
-                                                                <div className="productAgencyList">
-                                                                    <div className="productAgencyContent">
-                                                                        <span>Location:</span>
-                                                                        <p>{value?.productCompanyLocation}</p>
+                                                        <div className="productAgencyMiddle">
+                                                            <div className="productInfo_productTeam">
+                                                                <div className="agencyDescInfo_productAgencies">
+                                                                    <div className="productInformationHeading">
+                                                                        <h5>Product Information</h5>
                                                                     </div>
-                                                                    <div className="productAgencyContent">
-                                                                        <span>Team Size</span>
-                                                                        <p>{value?.productTeamSize}</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="productAgencyList">
-                                                                    <div className="productAgencyContent">
-                                                                        <span>Total Funding</span>
-                                                                        <p>$ {value?.productRevenueGenerated}</p>
-                                                                    </div>
-                                                                    <div className="productAgencyContent">
-                                                                        <span>Product Type</span>
-                                                                        <p>E-commerce</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="agencyDescInfo">
-                                                                <div className="productDescArea">
-                                                                    <div className="productLogoHere">
-                                                                        <div>
-                                                                            <img src={value?.agencyId?.agencyLogo} alt="" />
+                                                                    <div className="productDescArea">
+                                                                        <div className="productLogoHere">
+                                                                            <img src={value?.agencyId?.agencyLogo} alt="agency_logo" />
+                                                                        </div>
+                                                                        <div className="productAgencyDescPara">
+                                                                            <p>{value?.agencyId?.agencyDescription}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="productAgencyDescPara">
-                                                                        <p style={{ width: "80%" }}>{value?.agencyId?.agencyDescription}</p>
+                                                                </div>
+                                                                <div className="productAgenciesTeam">
+                                                                    <div className="productAgencyList">
+                                                                        <div className="productAgencyContent">
+                                                                            <span>Location:</span>
+                                                                            <p>{value?.productCompanyLocation}</p>
+                                                                        </div>
+                                                                        <div className="productAgencyContent">
+                                                                            <span>Team Size</span>
+                                                                            <p>{value?.productTeamSize}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="productAgencyList">
+                                                                        <div className="productAgencyContent">
+                                                                            <span>Total Funding</span>
+                                                                            <p>$ {value?.productRevenueGenerated}</p>
+                                                                        </div>
+                                                                        <div className="productAgencyContent">
+                                                                            <span>Product Type</span>
+                                                                            <p>E-commerce</p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                        <div className="quotationShortlistButton button">
+                                                        <div className="quotationShortlistButton_productAgencies">
                                                             <div>
                                                                 <NavLink style={{ textDecoration: 'none', color: "#ffffff" }} to={{
                                                                     pathname: `/product-details:${value._id}`,
