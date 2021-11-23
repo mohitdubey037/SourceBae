@@ -217,6 +217,53 @@ const ClientCommentBox = (props) => {
                         <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
                       </div>
                     )}
+                    {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
+                      (
+                        <div className='commentParent'>
+                          {(props.projectProposals[0].clientNegotiablePrice === null ||
+                            props.projectProposals[0].clientNegotiablePrice === undefined) && (
+
+                              <div className="postQuotation" style={{ width: '55%' }}>
+                                <TextField
+                                  className={clsx(classes.margin, classes.width)}
+                                  name="clientNegotiablePrice"
+                                  id="outlined-number"
+                                  type="number"
+                                  placeholder="Client Negotiable Price"
+                                  onChange={(event) => handleChange(event)}
+                                  variant="outlined"
+                                  InputLabelProps={{
+                                    shrink: true,
+                                  }}
+                                  InputProps={{
+                                    endAdornment: (
+                                      <InputAdornment position="end">
+                                        <AttachMoneyIcon />
+                                      </InputAdornment>
+                                    )
+                                  }}
+                                />
+                              </div>
+                            )}
+                          <div className="price-section" style={{ width: '40%' }}>
+                            <TextField
+                              className={clsx(classes.margin, classes.width)}
+                              id="outlined-size-small"
+                              placeholder="Enter Your Reply"
+                              onChange={(event) => handleChange(event)}
+                              name="comment"
+                              multiline
+                              maxRows={4}
+                              variant="outlined"
+                            />
+                          </div>
+                          {props.projectProposals[0].isCommentSectionActive === true &&
+                            <div className="sendIcon_clientCommentBox" onClick={() => { replyApi() }}>
+                              <SendIcon />
+                            </div>
+                          }
+                        </div>
+                      )}
                   </div>
                 </>
               );
@@ -225,53 +272,7 @@ const ClientCommentBox = (props) => {
             }
           })}
 
-          {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
-            (
-              <div className='commentParent'>
-                {(props.projectProposals[0].clientNegotiablePrice === null ||
-                  props.projectProposals[0].clientNegotiablePrice === undefined) && (
 
-                    <div className="postQuotation" style={{ width: '55%' }}>
-                      <TextField
-                        className={clsx(classes.margin, classes.width)}
-                        name="clientNegotiablePrice"
-                        id="outlined-number"
-                        type="number"
-                        placeholder="Client Negotiable Price"
-                        onChange={(event) => handleChange(event)}
-                        variant="outlined"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <AttachMoneyIcon />
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                    </div>
-                  )}
-                <div className="price-section" style={{ width: '40%' }}>
-                  <TextField
-                    className={clsx(classes.margin, classes.width)}
-                    id="outlined-size-small"
-                    placeholder="Enter Your Reply"
-                    onChange={(event) => handleChange(event)}
-                    name="comment"
-                    multiline
-                    maxRows={4}
-                    variant="outlined"
-                  />
-                </div>
-                {props.projectProposals[0].isCommentSectionActive === true &&
-                  <div className="sendIcon_clientCommentBox" onClick={() => { replyApi() }}>
-                    <SendIcon />
-                  </div>
-                }
-              </div>
-            )}
           {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
             <>
               <div className="conversation-over">
@@ -370,7 +371,7 @@ const ClientCommentBox = (props) => {
                         className={classes.root}
                         inputFormat="dd/MM/yyyy"
                         minDate={new Date()}
-                        ref = {projectStartDateByClientRef}
+                        ref={projectStartDateByClientRef}
                         value={quotationFormData.projectStartDateByClient}
                         onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
                         renderInput={(params) => <TextField {...params} />}
