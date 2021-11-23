@@ -36,27 +36,27 @@ function Navbar(props) {
     return (
         // <div style={{ top: Role === 'Client' && '1rem', justifyContent:props.logoLink && 'space-between'}} className='navbar'>
         <div style={{
-            justifyContent: (url.includes('/clientNewestDashboard') ||
-                url.includes('/agencyNewestDashboard') ||
-                url.includes('/quotation') ||
-                url.includes('/agency-list') || 
-                url.includes('/project-details') || 
-                url.includes('/agency-project-details') 
-            ) && 'flex-end',
             top: (url.includes('/clientNewestDashboard') ||
                 url.includes('/agencyNewestDashboard') ||
                 url.includes('/quotation') ||
-                url.includes('agency-list')) || 
+                url.includes('agency-list') ||
                 url.includes('/project-details') ||
-                url.includes('/agency-project-details') && '1rem'
+                url.includes('/agency-project-details')) && '1rem',
+            justifyContent: (url.includes('/clientNewestDashboard') ||
+                url.includes('/agencyNewestDashboard') ||
+                url.includes('/quotation') ||
+                url.includes('/agency-list') ||
+                url.includes('/project-details') ||
+                url.includes('/agency-project-details')
+            ) && 'flex-end'
         }} className='navbar'>
             <div style={{
                 display: (
                     url.includes('/clientNewestDashboard') ||
                     url.includes('/agencyNewestDashboard') ||
                     url.includes('/quotation') ||
-                    url.includes('agency-list') || 
-                    url.includes('/project-details') || 
+                    url.includes('agency-list') ||
+                    url.includes('/project-details') ||
                     url.includes('/agency-project-details')
                 ) && 'none'
             }} className="logoLink_navbar">
@@ -65,7 +65,7 @@ function Navbar(props) {
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{
-                        color:  (url.includes('/agencyNewestDashboard') ||
+                        color: (url.includes('/agencyNewestDashboard') ||
                             props.history.location.pathname === '/clientNewestDashboard') ? 'white' : 'blue'
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>

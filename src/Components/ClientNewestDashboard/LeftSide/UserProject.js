@@ -7,6 +7,7 @@ import Tooltip from "react-power-tooltip";
 import QuotationAccept from '../../../assets/images/Newestdashboard/Dashboard/quotation_req.svg';
 import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail_show.svg';
 import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
+import MessageRejected from '../../../assets/images/Newestdashboard/Dashboard/rejected.jpg';
 
 function UserProject(props, index) {
     const routerHistory = useHistory();
@@ -39,18 +40,30 @@ function UserProject(props, index) {
 
             <div className="centerImage">
                 {(props?.projectProposals[0]?.isQuotationAcceptedByClient && props?.projectProposals[0]?.isQuotationAcceptedByAgency) ?
-                    <img src={MessageReceived} alt="centerIcon" />
+                    <img className="receivedImage" src={MessageReceived} alt="centerIcon" />
                     :
-                    <img src={CenterImage} alt='centerIcon' />
+                    (props.projectProposals[0].rejectReasonByClient != undefined || props.projectProposals[0].rejectReasonByClient != undefined)
+                        ?
+                        // <img src={CenterImage} alt='centerIcon' />
+                        <img className="rejectedImage" src={MessageRejected} alt="centerIcon" />
+                        :
+                        <img className="receivedImage" src={CenterImage} alt='centerIcon' />
+
                 }
                 <div>
                     {props?.projectProposals[0]?.isCommentSectionActive ?
                         <div className="message_received">
-                            <p style={{color: '#007eff'}}>New Message is Received</p>
+                            <p style={{ color: '#007eff' }}>New Message is Received</p>
                             <i className="newMessageReceived_icon fas fa-envelope-open"></i>
                         </div>
                         :
-                        <p>{props?.projectCurrentStatus}</p>
+                        props.projectProposals[0].rejectReasonByClient != undefined ?
+                            <p className="anyoneRejected">Rejected By Client</p>
+                            :
+                            props.projectProposals[0].rejectReasonByAgency != undefined ?
+                                <p className="anyoneRejected">Rejected By You</p>
+                                :
+                                <p>{props.projectCurrentStatus}</p>
                     }
                 </div>
             </div>
