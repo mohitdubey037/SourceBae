@@ -204,6 +204,7 @@
 .Toastify__toast--success {
   border: 1px solid blue !important;
   background: white !important;
+  color: black !important;
 }
 
 .Toastify__toast--error {

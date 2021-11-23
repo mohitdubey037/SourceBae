@@ -46,7 +46,7 @@ function UserProject(props, index) {
                 <div>
                     {props?.projectProposals[0]?.isCommentSectionActive ?
                         <div className="message_received">
-                            <p>New Message is Received</p>
+                            <p style={{color: '#007eff'}}>New Message is Received</p>
                             <i className="newMessageReceived_icon fas fa-envelope-open"></i>
                         </div>
                         :

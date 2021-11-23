@@ -528,7 +528,8 @@ li::marker {
 
 .serviceFieldsOptions .uiuxtext {
     padding: 0rem 1rem;
-    font: bold 1.2rem 'Open Sans', sans-serif;
+    font-family: 'Segoe UI Bold';
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -539,7 +540,7 @@ li::marker {
 }
 
 .innerHireAgencyFormTwo .monthlyBudget p {
-    font: 18px 'Segoe UI semibold';
+    font: 18px 'Segoe UI Semibold';
     line-height: 27px;
     text-transform: capitalize;
     color: #707070;
@@ -628,4 +629,10 @@ svg.MuiSvgIcon-root {
 .Toastify__toast--success, .Toastify__toast--error {
     /* border: 7px solid !important; */
     border-radius: 50px !important;
+}
+
+@media (max-width: 1024px) {
+    .serviceFieldsOptions .uiuxtext {
+        font-size: 1rem;
+    }
 }
