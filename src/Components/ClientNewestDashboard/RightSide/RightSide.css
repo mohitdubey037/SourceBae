@@ -190,6 +190,17 @@
   outline: none !important;
 }
 
+/* toast styling */
+
+.Toastify__toast {
+  min-height: 33px !important;
+}
+
+.Toastify__toast-container {
+  padding: 4px !important;
+  width: 290px !important;
+}
+
 .Toastify__toast--success {
   border: 1px solid blue !important;
   background: white !important;
@@ -198,6 +209,7 @@
 .Toastify__toast--error {
   color: black !important;
   border: 1px solid blue !important;
+  background: white !important;
 }
 
 @media (max-width: 768px) {
