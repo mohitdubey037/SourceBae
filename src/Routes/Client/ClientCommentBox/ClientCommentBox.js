@@ -198,79 +198,86 @@ const ClientCommentBox = (props) => {
         <div className="commentBox">
           <div className="topLine" style={{
           }}></div>
-          <img src={bgPic} alt="img" style={{ position: "absolute", top: "5rem", left: "9rem", zIndex: "-1", opacity: "0.4" }} />
-          {props.projectProposals[0].comments.map((index) => {
-            if (index.commentType === props.commentType) {
+          <img className="hardcoded_comment_image" src={bgPic} alt="img" />
+          <div className="chatBox-parent">
+            {props.projectProposals[0].comments.map((index) => {
               return (
+                index.commentType === props.commentType &&
                 <>
-                  <div className="chatBox-parent">
-                    {index.comment && (
+                  {
+                    index.comment && (
                       <div className="chatBox">
                         <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                         <b>You</b>
                       </div>
-                    )}
-
-                    {index.reply && (
-                      <div className="chatBox chatBox-left">
-                        <p style={{ backgroundColor: 'rgb(234, 243, 255)', color: 'black' }}>{index.reply}</p>
-                        <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
+                    )
+                  }
+                  {index.reply && (
+                    <div className="chatBox chatBox-left">
+                      <p style={{ backgroundColor: 'rgb(234, 243, 255)', color: 'black' }}>{index.reply}</p>
+                      <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
+                    </div>
+                  )}
+                  {props.projectProposals[0].isReplySectionActive && <p className="waiting_left">Waiting for the reply from Agency.</p>}
+                  {!props.projectProposals[0].isAskedForQuotation &&
+                    props.projectProposals[0].isCommentSectionActive &&
+                    props.isShortListed && (
+                      <div className="detailsButtons margin-0">
+                        <button onClick={askForQuotation}>Ask For Quotation</button>
                       </div>
                     )}
-                    {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
-                      (
-                        <div className='commentParent'>
-                          {(props.projectProposals[0].clientNegotiablePrice === null ||
-                            props.projectProposals[0].clientNegotiablePrice === undefined) && (
-
-                              <div className="postQuotation" style={{ width: '55%' }}>
-                                <TextField
-                                  className={clsx(classes.margin, classes.width)}
-                                  name="clientNegotiablePrice"
-                                  id="outlined-number"
-                                  type="number"
-                                  placeholder="Client Negotiable Price"
-                                  onChange={(event) => handleChange(event)}
-                                  variant="outlined"
-                                  InputLabelProps={{
-                                    shrink: true,
-                                  }}
-                                  InputProps={{
-                                    endAdornment: (
-                                      <InputAdornment position="end">
-                                        <AttachMoneyIcon />
-                                      </InputAdornment>
-                                    )
-                                  }}
-                                />
-                              </div>
-                            )}
-                          <div className="price-section" style={{ width: '40%' }}>
-                            <TextField
-                              className={clsx(classes.margin, classes.width)}
-                              id="outlined-size-small"
-                              placeholder="Enter Your Reply"
-                              onChange={(event) => handleChange(event)}
-                              name="comment"
-                              multiline
-                              maxRows={4}
-                              variant="outlined"
-                            />
-                          </div>
-                          {props.projectProposals[0].isCommentSectionActive === true &&
-                            <div className="sendIcon_clientCommentBox" onClick={() => { replyApi() }}>
-                              <SendIcon />
-                            </div>
-                          }
-                        </div>
-                      )}
-                  </div>
                 </>
-              );
-            } else {
-              return "";
-            }
-          })}
+              )
+            })}
+          </div>
+
+          {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
+            (
+              <div className='commentParent'>
+                {(props.projectProposals[0].clientNegotiablePrice === null ||
+                  props.projectProposals[0].clientNegotiablePrice === undefined) && (
+
+                    <div className="postQuotation" style={{ width: '55%' }}>
+                      <TextField
+                        className={clsx(classes.margin, classes.width)}
+                        name="clientNegotiablePrice"
+                        id="outlined-number"
+                        type="number"
+                        placeholder="Client Negotiable Price"
+                        onChange={(event) => handleChange(event)}
+                        variant="outlined"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <AttachMoneyIcon />
+                            </InputAdornment>
+                          )
+                        }}
+                      />
+                    </div>
+                  )}
+                <div className="price-section" style={{ width: '40%' }}>
+                  <TextField
+                    className={clsx(classes.margin, classes.width)}
+                    id="outlined-size-small"
+                    placeholder="Enter Your Reply"
+                    onChange={(event) => handleChange(event)}
+                    name="comment"
+                    multiline
+                    maxRows={4}
+                    variant="outlined"
+                  />
+                </div>
+                {props.projectProposals[0].isCommentSectionActive === true &&
+                  <div className="sendIcon_clientCommentBox" onClick={() => { replyApi() }}>
+                    <SendIcon />
+                  </div>
+                }
+              </div>
+            )}
 
 
           {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
@@ -283,14 +290,7 @@ const ClientCommentBox = (props) => {
               </div>
             </>
           )}
-          {!props.projectProposals[0].isAskedForQuotation &&
-            props.projectProposals[0].isCommentSectionActive &&
-            props.isShortListed && (
-              <div className="detailsButtons margin-0">
-                <button onClick={askForQuotation}>Ask For Quotation</button>
-              </div>
-            )}
-          {props.projectProposals[0].isReplySectionActive && <p style={{ textAlign: 'right', marginTop: '-13px' }}>Waiting for the reply from Agency.</p>}
+
         </div>
 
         <div className='action-wait'>

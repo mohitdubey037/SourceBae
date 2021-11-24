@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
+import uploadImage from '../../assets/images/Newestdashboard/Client_Profile/upload_image_icon.png';
+import { toast } from "react-toastify";
 
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../Components/Back/Back';
+
+import { FilePicker } from 'react-file-picker';
 
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
@@ -23,11 +27,14 @@ function ClientProfile() {
         countryCode: "",
         userPhone: "",
         userDesignation: "",
-        companyName: "",
+        companyName: ""
     })
     const [err, setErr] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [file, setFile] = useState()
+
+    const [logoUrl, setLogoUrl] = useState(null)
 
     const getClientProfileApi = () => {
         const clientId = localStorage.getItem("userId")
@@ -41,7 +48,7 @@ function ClientProfile() {
                     countryCode: response[0].countryCode,
                     userPhone: response[0].userPhone,
                     companyName: response[0].companyName,
-                    userDesignation: response[0].userDesignation,
+                    userDesignation: response[0].userDesignation
                 })
                 setLoading(false);
             })
@@ -51,12 +58,46 @@ function ClientProfile() {
             })
     };
 
-    const updateClientApi = () => {
+    const inputFileChoosen = (profileDoc) => {
+        setFile(profileDoc)
+    };
+
+    useEffect(() => {
+        console.log(file);
+    }, [file]);
+
+    // useEffect(() => {
+    //     console.log(logoUrl);
+    // }, [logoUrl]);
+
+    const uploadMedia = async () => {
+        const formData = new FormData();
+        console.log(file.name)
+        formData.append(
+            "files",
+            file,
+            file.name
+        );
+        console.log(formData);    
+        const a = await instance.post(`api/${Role}/media/create`, formData)
+            .then(function (response) {
+                console.log(response[0].mediaUrl);
+                setLogoUrl(response[0].mediaUrl);
+                return response[0].mediaUrl;
+            })
+            .catch(err => {
+            })
+    }
+
+    const updateClientApi = async() => {
+        let mediaData = await uploadMedia();
+        console.log(mediaData);
         const body = {
             firstName: clientData.firstName,
             lastName: clientData.lastName,
             companyName: clientData.companyName,
             userDesignation: clientData.userDesignation,
+            clientLogo: mediaData
         }
         const clientId = localStorage.getItem("userId")
         instance.patch(`/api/${Role}/clients/update/${clientId}`, body)
@@ -69,7 +110,7 @@ function ClientProfile() {
                     countryCode: response[0].countryCode,
                     userPhone: response[0].userPhone,
                     companyName: response[0].companyName,
-                    userDesignation: response[0].userDesignation,
+                    userDesignation: response[0].userDesignation
                 })
                 setLoading(false);
                 setIsEdit(false)
@@ -133,9 +174,21 @@ function ClientProfile() {
 
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
-                                            <div>
-                                                <img src={avatar} alt="" />
-                                            </div>
+                                            {/* <div> */}
+                                            <img className="avatarImg" src={avatar} alt="" />
+                                            {isEdit === true &&
+                                                // <img className="client_profile_image" src={uploadImage} alt="image" />
+                                                <FilePicker
+                                                    extensions={['jpg', 'png', 'jpeg']}
+                                                    onChange={inputFileChoosen}
+                                                    onError={errMsg => toast.error(errMsg)}
+                                                >
+                                                    {/* <button className="filePicker"> */}
+                                                        <img className="client_profile_image" src={uploadImage} alt="upload" />
+                                                    {/* </button> */}
+                                                </FilePicker>
+                                            }
+                                            {/* </div> */}
                                         </div>
                                         <div className="clientProfileDetails">
                                             {Object.keys(clientData).map((key) => {

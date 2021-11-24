@@ -191,36 +191,33 @@ const AgencyCommentBox = (props) => {
         <div className="topLine" style={{
           backgroundColor: "rgb(69, 164, 228)"
         }}></div>
-        <img src={bgPic} alt="img" style={{ position: "absolute", top: "5rem", left: "9rem", zIndex: "-1", opacity: "0.4" }} />
+        <img className="hardcoded_comment_image" src={bgPic} alt="img" />
         {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
           :
-          !props.projectProposals[0].isRepliedToClient &&
-          props.projectProposals[0].comments &&
-          props.projectProposals[0].comments.map((index) => {
-            if (index.commentType === props.commentType) {
+          <div className="chatBox-parent">
+            {props.projectProposals[0].comments.map((index) => {
               return (
+                index.commentType === props.commentType &&
                 <>
-                  <div className="chatBox-parent">
-                    {index.comment && (
-                      <div className="chatBox chatBox-left" >
-                        <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
-                        <b>{`${props?.clientId?.companyName}`}</b>
-                      </div>
-                    )}
-                    {index.reply && (
-                      <div className="chatBox chatBox-right">
-                        <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
-                        <b>You</b>
-                      </div>
-                    )}
-                  </div>
+                  {index.comment && (
+                    <div className="chatBox chatBox-left" >
+                      <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
+                      <b>{`${props?.clientId?.companyName}`}</b>
+                    </div>
+                  )}
+                  {index.reply && (
+                    <div className="chatBox chatBox-right">
+                      <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
+                      <b>You</b>
+                    </div>
+                  )}
+                  {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>}
                 </>
-              );
-            } else {
-              return "";
+              )
+            })
             }
-          })
+          </div>
         }
         <div className='commentParent'>
           {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
@@ -455,7 +452,7 @@ const AgencyCommentBox = (props) => {
                 <div className="tableHeaderQuotation">
                   <p>Project Start Date By You</p>
                 </div>
-                <div style={{width: '40%'}} className="tableContentQuotation">
+                <div style={{ width: '40%' }} className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <div className="datePickers">
                       <DesktopDatePicker

@@ -185,7 +185,6 @@ function AddingDeveloper(props) {
                     setLoading(false);
                 })
         }
-
     }
 
     useEffect(() => {

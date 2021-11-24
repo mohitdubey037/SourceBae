@@ -30,7 +30,7 @@
     align-items: center;
     margin: 2% 0;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    padding: 4.5rem 0;
+    padding: 4rem 0;
     background-color: #fff;
     position: relative;
     border-radius: 5px;
@@ -91,20 +91,25 @@
     width: 70%;
 }
 
-.avatarArea div {
-    width: 20rem;
-    height: 20rem;
-    display: flex;
-    justify-content: center;
+.avatarArea {
     box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 10rem;
+    border-radius: 50%;
+    position: relative;
 }
 
-.avatarArea div img {
+.avatarImg {
     width: 100%;
-    border-radius: 10rem;
     object-fit: cover;
-    background-color: #015F9A;
+    /* background-color: #015F9A; */
+}
+
+.client_profile_image {
+    position: absolute;
+    z-index: 3;
+    width: 2rem;
+    right: 1px;
+    top: 0;
+    cursor: pointer;
 }
 
 .clientProfileDetails {

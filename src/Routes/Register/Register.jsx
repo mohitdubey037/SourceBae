@@ -452,7 +452,7 @@ const Register = (props) => {
                           <span
                             style={{ fontSize: "25px" }}
                             className={`agencyOrClient as_an_agency`}
-                          >{`${roleString}`}</span>
+                          >{` ${roleString}`}</span>
                         </>
                       )}
                     </h6>
