@@ -13,17 +13,21 @@ const CustomRoute = props => {
     switch (props.condition) {
         case "Agency":
             return (
-                Role === "Agency" ?
-                    <Route {...props} />
+                Role == undefined ?
+                    <Redirect to="/" />
                     :
-                    <Redirect to="/clientNewestDashboard" />
+                    Role === "Agency" && <Route {...props} />
+                        // :
+                        // <Redirect to="/agencyNewestDashboard" />
             );
         case "Client":
             return (
-                Role === "Client" ?
-                    <Route {...props} />
+                Role == undefined ?
+                    <Redirect to="/" />
                     :
-                    <Redirect to="/agencyNewestDashboard" />
+                    Role === "Client" && <Route {...props} />
+                        // :
+                        // <Redirect to="/clientNewestDashboard" />
             );
 
         case "None":

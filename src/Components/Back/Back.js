@@ -58,7 +58,7 @@ function Back(props) {
                 }
             }
             else if (url.includes('quotation')) {
-                props.history.push('/agencyNewestDashboard');
+                props.history.replace('/agencyNewestDashboard');
             }
             else {
                 props.history.goBack();

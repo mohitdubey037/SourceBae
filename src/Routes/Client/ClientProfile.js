@@ -19,6 +19,7 @@ import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/D
 function ClientProfile() {
 
     const Role = localStorage.getItem('role');
+    const clientId = localStorage.getItem("userId")
     const [clientData, setClientData] = useState({
         firstName: "",
         lastName: "",
@@ -27,14 +28,15 @@ function ClientProfile() {
         countryCode: "",
         userPhone: "",
         userDesignation: "",
-        companyName: ""
+        companyName: "",
+        clientLogo: null
     })
     const [err, setErr] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [file, setFile] = useState()
+    const [file, setFile] = useState();
 
-    const [logoUrl, setLogoUrl] = useState(null)
+    let logoURL;
 
     const getClientProfileApi = () => {
         const clientId = localStorage.getItem("userId")
@@ -48,8 +50,10 @@ function ClientProfile() {
                     countryCode: response[0].countryCode,
                     userPhone: response[0].userPhone,
                     companyName: response[0].companyName,
-                    userDesignation: response[0].userDesignation
+                    userDesignation: response[0].userDesignation,
+                    clientLogo: response[0].clientLogo
                 })
+                // )
                 setLoading(false);
             })
             .catch(err => {
@@ -70,6 +74,11 @@ function ClientProfile() {
     //     console.log(logoUrl);
     // }, [logoUrl]);
 
+    useEffect(() => {
+        // console.log(clientData);
+        console.log(clientData.clientLogo);
+    }, [clientData.clientLogo])
+
     const uploadMedia = async () => {
         const formData = new FormData();
         console.log(file.name)
@@ -78,39 +87,50 @@ function ClientProfile() {
             file,
             file.name
         );
-        console.log(formData);    
-        const a = await instance.post(`api/${Role}/media/create`, formData)
+        console.log(formData);
+        await instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
-                console.log(response[0].mediaUrl);
-                setLogoUrl(response[0].mediaUrl);
-                return response[0].mediaUrl;
+                // setClientData({
+                //     ...clientData,
+                //     clientLogo: response[0].mediaURL
+                // })
+                // console.log(response[0]);
+                // console.log(response[0].mediaUrl);
+                // setLogoUrl(response[0].mediaURL);
+                // console.log(response[0].mediaURL);
+                // return response[0].mediaURL;
+                logoURL = response[0].mediaURL;
+                console.log(logoURL);
             })
             .catch(err => {
             })
     }
 
-    const updateClientApi = async() => {
-        let mediaData = await uploadMedia();
-        console.log(mediaData);
+    const updateClientApi = async () => {
+        await uploadMedia();
+        // console.log(mediaData);
         const body = {
             firstName: clientData.firstName,
             lastName: clientData.lastName,
             companyName: clientData.companyName,
             userDesignation: clientData.userDesignation,
-            clientLogo: mediaData
+            clientLogo: logoURL
         }
-        const clientId = localStorage.getItem("userId")
         instance.patch(`/api/${Role}/clients/update/${clientId}`, body)
             .then(function (response) {
+                console.log(response.firstName);
+                console.log(response[0].firstName);
+                console.log(response.clientLogo);
                 setClientData({
-                    firstName: response[0].firstName,
-                    lastName: response[0].lastName,
-                    userName: response[0].userName,
-                    userEmail: response[0].userEmail,
-                    countryCode: response[0].countryCode,
-                    userPhone: response[0].userPhone,
-                    companyName: response[0].companyName,
-                    userDesignation: response[0].userDesignation
+                    firstName: response.firstName,
+                    lastName: response.lastName,
+                    userName: response.userName,
+                    userEmail: response.userEmail,
+                    countryCode: response.countryCode,
+                    userPhone: response.userPhone,
+                    companyName: response.companyName,
+                    userDesignation: response.userDesignation,
+                    clientLogo: response.clientLogo
                 })
                 setLoading(false);
                 setIsEdit(false)
@@ -154,6 +174,7 @@ function ClientProfile() {
                     <div className="mainClient_parent">
                         {/* <img className="Image1" src={Profile_image1} alt="signup" /> */}
                         <img className="Image2" src={Profile_image2} alt="signup" />
+
                         <Back name="Client Profile" />
                         <div className="mainClientProfile">
                             <div className="innerClientProfile">
@@ -169,40 +190,50 @@ function ClientProfile() {
                                             (
                                                 <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>
                                                     <div onClick={() => updateClientApi()} className="save">Save</div>
-                                                </>)
+                                                </>
+                                            )
                                     }
 
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
-                                            {/* <div> */}
-                                            <img className="avatarImg" src={avatar} alt="" />
-                                            {isEdit === true &&
-                                                // <img className="client_profile_image" src={uploadImage} alt="image" />
-                                                <FilePicker
-                                                    extensions={['jpg', 'png', 'jpeg']}
-                                                    onChange={inputFileChoosen}
-                                                    onError={errMsg => toast.error(errMsg)}
-                                                >
-                                                    {/* <button className="filePicker"> */}
+                                            <div className="avatarArea_div">
+                                                {/* <div> */}
+                                                {console.log(clientData.clientLogo)}
+                                                <img className="avatarImg" src={`${clientData.clientLogo === null ? avatar : clientData.clientLogo}`} alt="signup" />
+                                                {/* </div> */}
+
+                                                {/* <img className="avatarImg" src={avatar} alt="" /> */}
+
+                                                {isEdit === true &&
+                                                    // <img className="client_profile_image" src={uploadImage} alt="image" />
+                                                    <FilePicker
+                                                        extensions={['jpg', 'png', 'jpeg']}
+                                                        onChange={inputFileChoosen}
+                                                        onError={errMsg => toast.error(errMsg)}
+                                                    >
+                                                        {/* <button className="filePicker"> */}
                                                         <img className="client_profile_image" src={uploadImage} alt="upload" />
-                                                    {/* </button> */}
-                                                </FilePicker>
-                                            }
-                                            {/* </div> */}
+                                                        {/* </button> */}
+                                                    </FilePicker>
+                                                }
+                                            </div>
                                         </div>
                                         <div className="clientProfileDetails">
                                             {Object.keys(clientData).map((key) => {
-                                                return (
-                                                    <div className="clientProfilDesc">
-                                                        <div className="clientFormHeading">
-                                                            <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
+                                                if (key !== 'clientLogo') {
+                                                    return (
+                                                        <div className="clientProfilDesc">
+                                                            <div className="clientFormHeading">
+                                                                <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
+                                                            </div>
+                                                            <div className="clientFormAnswer">
+                                                                {
+                                                                    isEdit && (key !== "countryCode" && key !== "userEmail" && key !== "userName" && key !== "userPhone") ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
+                                                                }
+                                                            </div>
                                                         </div>
-                                                        <div className="clientFormAnswer">
-                                                            {
-                                                                isEdit && (key !== "countryCode" && key !== "userEmail" && key !== "userName" && key !== "userPhone") ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
-                                                            }
-                                                        </div>
-                                                    </div>)
+                                                    )
+                                                }
                                             })}
                                         </div>
                                     </div>
