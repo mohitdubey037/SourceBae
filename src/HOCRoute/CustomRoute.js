@@ -38,4 +38,28 @@ const CustomRoute = props => {
     }
 };
 
+
+// switch (props.condition) {
+//     case "Agency":
+//         user==="Client" && alert("Invalid urlsss")
+//         return (
+//             user === "Agency" ? (
+//                 <Route {...props} />
+//             ) : (
+//                 <Redirect to="/page-not-found" />
+//             )
+//         );
+//     case "Client":
+//         user==="Agency" && alert("Invalid url")
+//         return (
+//             user === "Client" ? (
+//                 <Route {...props} />
+//             ) : (
+//                 <Redirect to="/page-not-found" />
+//             )
+//         );
+//     default:
+//         return (<Redirect to='page-not-found'/>);
+// }
+
 export default withRouter(CustomRoute);
