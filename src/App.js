@@ -130,7 +130,10 @@ const App = (props) => {
         <CustomRoute condition="Client" exact path="/hire-developer" component={HireDeveloper} />
         <CustomRoute condition="Client" exact path="/agency-list:projectId" component={AgencyList} />
         <CustomRoute condition="Client" exact path="/client-profile" component={ClientProfile} />
-        <CustomRoute condition={`${Role === 'Client' ? 'Agency' : Role === 'Agency' ? 'Client' : Role === 'None'}`}/>
+        {/* <CustomRoute condition={`${Role === 'Client' ? 'Agency' : Role === 'Agency' ? 'Client' : Role === 'None'}`}/> */}
+
+        <CustomRoute component={PageNotFound} />
+
 
         {/* <Suspence fallback={<div>...loading</div>}></Suspence> */}
       </Switch>

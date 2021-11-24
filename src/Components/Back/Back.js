@@ -32,9 +32,6 @@ function Back(props) {
                 props.history.goBack();
             }
         }
-        else {
-            props.history.goBack();
-        }
 
         if (Role === 'Agency') {
             if (url.includes('agency-form-one') || url.includes('hire-agency-form-one')) {
@@ -58,7 +55,7 @@ function Back(props) {
                 }
             }
             else if (url.includes('quotation')) {
-                props.history.push('/agencyNewestDashboard');
+                props.history.replace('/agencyNewestDashboard');
             }
             else {
                 props.history.goBack();
