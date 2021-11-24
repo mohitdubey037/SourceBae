@@ -42,7 +42,7 @@ function UserProject(props, index) {
                 {(props?.projectProposals[0]?.isQuotationAcceptedByClient && props?.projectProposals[0]?.isQuotationAcceptedByAgency) ?
                     <img className="receivedImage" src={MessageReceived} alt="centerIcon" />
                     :
-                    (props.projectProposals[0].rejectReasonByClient != undefined || props.projectProposals[0].rejectReasonByClient != undefined)
+                    (props.projectProposals[0]?.rejectReasonByClient != undefined || props.projectProposals[0]?.rejectReasonByAgency != undefined)
                         ?
                         // <img src={CenterImage} alt='centerIcon' />
                         <img className="rejectedImage" src={MessageRejected} alt="centerIcon" />
@@ -57,10 +57,10 @@ function UserProject(props, index) {
                             <i className="newMessageReceived_icon fas fa-envelope-open"></i>
                         </div>
                         :
-                        props.projectProposals[0].rejectReasonByClient != undefined ?
+                        props.projectProposals[0]?.rejectReasonByClient != undefined ?
                             <p className="anyoneRejected">Rejected By Client</p>
                             :
-                            props.projectProposals[0].rejectReasonByAgency != undefined ?
+                            props.projectProposals[0]?.rejectReasonByAgency != undefined ?
                                 <p className="anyoneRejected">Rejected By You</p>
                                 :
                                 <p>{props.projectCurrentStatus}</p>

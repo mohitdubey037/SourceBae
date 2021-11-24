@@ -27,13 +27,14 @@ function ClientProfile() {
         countryCode: "",
         userPhone: "",
         userDesignation: "",
-        companyName: "",
-        clientLogo: null
+        companyName: ""
     })
     const [err, setErr] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState()
+
+    const [logoUrl, setLogoUrl] = useState(null)
 
     const getClientProfileApi = () => {
         const clientId = localStorage.getItem("userId")
@@ -47,8 +48,7 @@ function ClientProfile() {
                     countryCode: response[0].countryCode,
                     userPhone: response[0].userPhone,
                     companyName: response[0].companyName,
-                    userDesignation: response[0].userDesignation,
-                    clientLogo: response[0].clientLogo
+                    userDesignation: response[0].userDesignation
                 })
                 setLoading(false);
             })
@@ -59,28 +59,30 @@ function ClientProfile() {
     };
 
     const inputFileChoosen = (profileDoc) => {
-        setFile(profileDoc);
+        setFile(profileDoc)
     };
 
     useEffect(() => {
         console.log(file);
-    }, [file])
+    }, [file]);
 
+    // useEffect(() => {
+    //     console.log(logoUrl);
+    // }, [logoUrl]);
 
-    const uploadMedia = () => {
+    const uploadMedia = async () => {
         const formData = new FormData();
-        file && formData.append(
+        console.log(file.name)
+        formData.append(
             "files",
             file,
             file.name
         );
         console.log(formData);    
-        instance.post(`api/${Role}/media/create`, formData)
+        const a = await instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
-                setClientData({
-                    ...clientData,
-                    clientLogoUrl: response[0].mediaUrl
-                })
+                console.log(response[0].mediaUrl);
+                setLogoUrl(response[0].mediaUrl);
                 return response[0].mediaUrl;
             })
             .catch(err => {
@@ -89,6 +91,7 @@ function ClientProfile() {
 
     const updateClientApi = async() => {
         let mediaData = await uploadMedia();
+        console.log(mediaData);
         const body = {
             firstName: clientData.firstName,
             lastName: clientData.lastName,
@@ -107,8 +110,7 @@ function ClientProfile() {
                     countryCode: response[0].countryCode,
                     userPhone: response[0].userPhone,
                     companyName: response[0].companyName,
-                    userDesignation: response[0].userDesignation,
-                    clientLogo: response[0].clientLogo
+                    userDesignation: response[0].userDesignation
                 })
                 setLoading(false);
                 setIsEdit(false)

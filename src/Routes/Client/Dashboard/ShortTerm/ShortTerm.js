@@ -156,6 +156,7 @@ function ShortTerm(props) {
 
     if (validation()) {
       formData.append("files", projectFiles, "projectFile.pdf");
+      console.log(formData);
       instance
         .post(`api/${Role}/media/create`, formData)
         .then(function (response) {
@@ -573,7 +574,6 @@ function ShortTerm(props) {
                         value="15000"
                         control={<BlueRadio />}
                         label="Max $15000"
-                        style={{ marginTop: "0.5rem" }}
                       />
                     </RadioGroup>
                   </FormControl>
