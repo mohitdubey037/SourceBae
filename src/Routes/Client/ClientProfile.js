@@ -200,7 +200,8 @@ function ClientProfile() {
                                                     return (
                                                         <div className="clientProfilDesc">
                                                             <div className="clientFormHeading">
-                                                                <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
+                                                                <p>{helper.multiwordCapitalize(key)}</p>
+                                                                {/* <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p> */}
                                                             </div>
                                                             <div className="clientFormAnswer">
                                                                 {
