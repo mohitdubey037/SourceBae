@@ -35,14 +35,13 @@ function ClientProfile() {
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
     const [file, setFile] = useState();
-
     let logoURL;
 
     const getClientProfileApi = () => {
         const clientId = localStorage.getItem("userId")
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
-                setClientData({
+                let temp = {
                     firstName: response[0].firstName,
                     lastName: response[0].lastName,
                     userName: response[0].userName,
@@ -52,8 +51,8 @@ function ClientProfile() {
                     companyName: response[0].companyName,
                     userDesignation: response[0].userDesignation,
                     clientLogo: response[0].clientLogo
-                })
-                // )
+                }
+                setClientData(temp)
                 setLoading(false);
             })
             .catch(err => {
@@ -70,14 +69,8 @@ function ClientProfile() {
         console.log(file);
     }, [file]);
 
-    // useEffect(() => {
-    //     console.log(logoUrl);
-    // }, [logoUrl]);
-
     useEffect(() => {
-        // console.log(clientData);
-        console.log(clientData.clientLogo);
-    }, [clientData.clientLogo])
+    }, [clientData])
 
     const uploadMedia = async () => {
         const formData = new FormData();
@@ -90,17 +83,7 @@ function ClientProfile() {
         console.log(formData);
         await instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
-                // setClientData({
-                //     ...clientData,
-                //     clientLogo: response[0].mediaURL
-                // })
-                // console.log(response[0]);
-                // console.log(response[0].mediaUrl);
-                // setLogoUrl(response[0].mediaURL);
-                // console.log(response[0].mediaURL);
-                // return response[0].mediaURL;
                 logoURL = response[0].mediaURL;
-                console.log(logoURL);
             })
             .catch(err => {
             })
@@ -108,7 +91,6 @@ function ClientProfile() {
 
     const updateClientApi = async () => {
         await uploadMedia();
-        // console.log(mediaData);
         const body = {
             firstName: clientData.firstName,
             lastName: clientData.lastName,
@@ -118,22 +100,17 @@ function ClientProfile() {
         }
         instance.patch(`/api/${Role}/clients/update/${clientId}`, body)
             .then(function (response) {
-                console.log(response.firstName);
-                console.log(response[0].firstName);
-                console.log(response.clientLogo);
+                console.log(response,"response")
+                setLoading(false);
+                setIsEdit(false)
                 setClientData({
+                    ...clientData,
                     firstName: response.firstName,
                     lastName: response.lastName,
-                    userName: response.userName,
-                    userEmail: response.userEmail,
-                    countryCode: response.countryCode,
-                    userPhone: response.userPhone,
                     companyName: response.companyName,
                     userDesignation: response.userDesignation,
                     clientLogo: response.clientLogo
                 })
-                setLoading(false);
-                setIsEdit(false)
             })
             .catch(err => {
                 setLoading(false)
@@ -198,8 +175,7 @@ function ClientProfile() {
                                         <div className="avatarArea">
                                             <div className="avatarArea_div">
                                                 {/* <div> */}
-                                                {console.log(clientData.clientLogo)}
-                                                <img className="avatarImg" src={`${clientData.clientLogo === null ? avatar : clientData.clientLogo}`} alt="signup" />
+                                                {clientData.clientLogo && <img className="avatarImg" src={`${clientData.clientLogo === null ? avatar : clientData.clientLogo}`} alt="signup" />}
                                                 {/* </div> */}
 
                                                 {/* <img className="avatarImg" src={avatar} alt="" /> */}

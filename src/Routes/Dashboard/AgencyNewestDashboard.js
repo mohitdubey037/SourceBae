@@ -15,7 +15,8 @@ import * as helper from "../../shared/helper";
 import NotFound from "../../assets/images/Newestdashboard/Not_found/PageNotFound.svg";
 import Navbar from "../../Components/ClientNewestDashboard/Navbar/Navbar";
 import cookie from "react-cookies";
-import BottomSideBar from "../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar";
+// import BottomSideBar from "../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar";
+import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar';
 
 import { Modal } from 'react-responsive-modal';
 
