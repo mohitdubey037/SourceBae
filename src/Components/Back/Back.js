@@ -33,7 +33,7 @@ function Back(props) {
             }
         }
 
-        if (Role === 'Agency') {
+        else if (Role === 'Agency') {
             if (url.includes('agency-form-one') || url.includes('hire-agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                     props.history.replace('/agencyNewestDashboard');
