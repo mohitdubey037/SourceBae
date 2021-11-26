@@ -32,12 +32,22 @@ const useStyles = makeStyles({
 })
 
 export default function PageNotFound(props) {
-    const classes = useStyles()
+    const Role = localStorage.getItem('role');
+    const classes = useStyles();
 
     const homePage = () => {
-        localStorage.removeItem("Authorization");
-        localStorage.removeItem('role');
-        props.history.push('/');
+        // localStorage.removeItem("Authorization");
+        // localStorage.removeItem('role');
+        if (Role === 'Client') {
+            props.history.replace('/clientNewestDashboard');
+        }
+        else if (Role === 'Agency') {
+            props.history.replace('/agencyNewestDashboard');
+        }
+        else {
+            props.history.replace('/');
+        }
+
     }
 
     return (
