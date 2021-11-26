@@ -148,8 +148,6 @@ function AddingDeveloper(props) {
             errors.developerAvailability = 'Developer Availability is required'
         }
         else if (developerData.developerAvailability === 'Negotiable') {
-            console.log(typeof (developerData.developerAvailability));
-            console.log(developerData.developerAvailability);
             errors.developerAvailability = 'Please enter a day'
         }
         setErrors(errors);
