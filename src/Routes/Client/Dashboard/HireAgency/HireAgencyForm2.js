@@ -216,7 +216,7 @@ function HireAgencyForm2(props) {
         <Spinner />
       ) : (
         <div style={{paddingTop: '5rem'}}>
-          <Back formState2={apiData} name="Hire Agency Form 2" />
+          <Back propData={propData} formState2={apiData} name="Hire Agency Form 2" />
           <div className="mainHireAgencyFormTwo">
             {/* <img className="Image1_hireAgency" src={UpImage} alt="upImage" /> */}
             <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
