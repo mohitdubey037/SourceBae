@@ -9,22 +9,33 @@ function Back(props) {
     const Role = localStorage.getItem('role');
     const verificationStatus = localStorage.getItem('isVerified');
     const url = props.history.location.pathname;
+    console.log(props);
 
     const goBack = () => {
         if (Role === 'Client') {
             if (url.includes('hire-agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.replace('/agencyNewestDashboard');
+                    props.history.replace('/clientNewestDashboard');
                 }
             }
             else if (url.includes('hire-agency-form-two')) {
-                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.replace('/agency-form-one');
+                if (props.formState2.projectDomainId !== '' || props.formState2.projectExpertiseRequired.length > 0 || props.formState.agencyExperience !== '') {
+                    if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                        props.history.replace('/clientNewestDashboard');
+                    }
+                }
+                else {
+                    props.history.replace('/clientNewestDashboard');
                 }
             }
             else if (url.includes('hire-agency-form-three')) {
-                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.replace('/agency-form-two');
+                if (props.formState3.projectTechnologiesRequired.length > 0 || props.formState3.projectServicesRequired.length > 0) {
+                    if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                        props.history.replace(`/clientNewestDashboard`);
+                    }
+                }
+                else {
+                    props.history.replace('/clientNewestDashboard');
                 }
             }
 
