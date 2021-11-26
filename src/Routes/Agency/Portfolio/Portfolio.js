@@ -44,10 +44,6 @@ function Portfolio(props) {
         setLogo(projectDoc);
     }
 
-    useEffect(() => {
-        
-    },[form.projectLogo])
-
     const errorValidation = () => {
         const errors = {}
         if (logo === null) {
@@ -76,7 +72,7 @@ function Portfolio(props) {
             return false;
     }
 
-    const uploadMedia = async () => {
+    const uploadMedia = () => {
         setLoading(true)
         const fileForm = new FormData();
         logo && fileForm.append(
@@ -84,8 +80,9 @@ function Portfolio(props) {
             logo,
             logo.name
         );
-        await instance.post(`api/${Role}/media/create`, fileForm)
+        instance.post(`api/${Role}/media/create`, fileForm)
             .then(function (response) {
+                console.log(response);
                 setLoading(false);
                 setForm({
                     ...form,
@@ -96,27 +93,30 @@ function Portfolio(props) {
             })
     }
 
-    const createPortfolio = async () => {
-        if (errorValidation()) {
-            await uploadMedia();
-            instance.post(`/api/${Role}/portfolios/create`, form)
-                .then(res => {
-                    props.history.replace('/agency-profile', {
-                        origin: 'portfolio'
-                    })
+    const portfolioCreate = () => {
+        instance.post(`/api/${Role}/portfolios/create`, form)
+            .then(res => {
+                console.log(res);
+                props.history.replace('/agency-profile', {
+                    origin: 'portfolio'
                 })
-                .catch(err => {
+            })
+            .catch(err => {
 
-                })
-        }
+            })
     }
 
-    // useEffect(() => {
-    //     if (logo !== null) {
-    //         console.log('hiii');
-    //         createPortfolio();
-    //     }
-    // }, [logo])
+    useEffect(() => {
+        if (form.projectLogo !== '') {
+            portfolioCreate();
+        }
+    }, [form.projectLogo])
+
+    const createPortfolio = () => {
+        if (errorValidation()) {
+            uploadMedia();
+        }
+    }
 
     return (
         <>
