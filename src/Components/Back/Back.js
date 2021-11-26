@@ -9,7 +9,6 @@ function Back(props) {
     const Role = localStorage.getItem('role');
     const verificationStatus = localStorage.getItem('isVerified');
     const url = props.history.location.pathname;
-    console.log(props);
 
     const goBack = () => {
         if (Role === 'Client') {
