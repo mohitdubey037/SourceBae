@@ -74,13 +74,11 @@ function ClientProfile() {
 
     const uploadMedia = async () => {
         const formData = new FormData();
-        console.log(file.name)
         formData.append(
             "files",
             file,
             file.name
         );
-        console.log(formData);
         await instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
                 logoURL = response[0].mediaURL;
@@ -100,7 +98,6 @@ function ClientProfile() {
         }
         instance.patch(`/api/${Role}/clients/update/${clientId}`, body)
             .then(function (response) {
-                console.log(response,"response")
                 setLoading(false);
                 setIsEdit(false)
                 setClientData({

@@ -111,6 +111,7 @@
     display: flex;
     padding-right: 2rem;
     justify-content: space-between;
+    position: relative;
 }
 
 .new_project_div {
@@ -147,14 +148,30 @@
 }
 
 .portfolio_inputs_second {
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 .portfolio_inputs div {
     width: 40%;
+    position: relative;
 }
 
 .portfolio_inputs input:focus, .portfolio_inputs textarea:focus {
+    outline: none;
+}
+
+.error_paragraph.basic.error_portfolio {
+    top: 4.7rem;
+}
+
+.error_paragraph.basic.error_portfolio_description {
+    top: 10.4rem
+}
+
+.submit_portfolio:hover,
+.submit_portfolio:focus,
+.submit_portfolio:active {
+    cursor: pointer;
     outline: none;
 }
 
@@ -166,7 +183,7 @@
     border: 1px solid #45A4EA;
     transition: 0.3s ease-in-out;
     margin-top: 5px;
-    margin-bottom: 6px;
+    /* margin-bottom: 6px; */
     width: 18.7rem;
 }
 
@@ -213,6 +230,7 @@
 
     .portfolio_inputs div {
         width: 42%;
+        position: relative;
     }
 
     .portfolio_section {
