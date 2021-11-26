@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
-import uploadImage from '../../assets/images/Newestdashboard/Client_Profile/upload_image_icon.png';
+import uploadImage from '../../assets/images/Newestdashboard/Client_Profile/camera_icon.png';
 import { toast } from "react-toastify";
 
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
@@ -15,6 +15,7 @@ import * as helper from "../../shared/helper"
 import Spinner from '../../Components/Spinner/Spinner';
 import Profile_image1 from '../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
+import { FaCamera } from "react-icons/fa";
 
 function ClientProfile() {
 
@@ -35,6 +36,7 @@ function ClientProfile() {
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
     const [file, setFile] = useState();
+    const [isShown, setIsShown] = useState(false);
     let logoURL;
 
     const getClientProfileApi = () => {
@@ -170,26 +172,21 @@ function ClientProfile() {
 
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
-                                            <div className="avatarArea_div">
-                                                {/* <div> */}
+                                            <div className={`avatarArea_div ${isShown && 'conditional_filter_clientProfile'}`}>
                                                 {clientData.clientLogo && <img className="avatarImg" src={`${clientData.clientLogo === null ? avatar : clientData.clientLogo}`} alt="signup" />}
-                                                {/* </div> */}
-
-                                                {/* <img className="avatarImg" src={avatar} alt="" /> */}
-
-                                                {isEdit === true &&
-                                                    // <img className="client_profile_image" src={uploadImage} alt="image" />
-                                                    <FilePicker
-                                                        extensions={['jpg', 'png', 'jpeg']}
-                                                        onChange={inputFileChoosen}
-                                                        onError={errMsg => toast.error(errMsg)}
-                                                    >
-                                                        {/* <button className="filePicker"> */}
-                                                        <img className="client_profile_image" src={uploadImage} alt="upload" />
-                                                        {/* </button> */}
-                                                    </FilePicker>
-                                                }
                                             </div>
+                                            {isEdit === true &&
+                                                <FilePicker
+                                                    extensions={['jpg', 'png', 'jpeg']}
+                                                    onChange={inputFileChoosen}
+                                                    onError={errMsg => toast.error(errMsg)}
+                                                >
+                                                    <FaCamera
+                                                        onMouseEnter={() => setIsShown(true)}
+                                                        onMouseLeave={() => setIsShown(false)} 
+                                                        className="client_profile_image" />
+                                                </FilePicker>
+                                            }
                                         </div>
                                         <div className="clientProfileDetails">
                                             {Object.keys(clientData).map((key) => {

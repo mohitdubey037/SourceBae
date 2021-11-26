@@ -85,7 +85,7 @@
 }
 
 .avatarArea {
-    width: 25%;
+    position: relative;
 }
 
 /* .clientProfileDetails {
@@ -96,12 +96,17 @@
     height: 14rem;
     box-shadow: 0 2px 8px 2px rgb(0 0 0 / 20%);
     border-radius: 50%;
-    position: relative;
+    /* position: relative; */
     width: 14rem;
     display: flex;
     justify-content: center;
     background-repeat: no-repeat;
     align-items: center;
+    pointer-events: none;
+}
+
+.conditional_filter_clientProfile{
+    filter: blur(3px);
 }
 
 .avatarImg {
@@ -115,10 +120,24 @@
     position: absolute;
     z-index: 3;
     width: 2rem;
-    right: 1px;
-    top: 0;
+    right: 42%;
     cursor: pointer;
+    font-size: 4rem;
+    top: 39%;
+    pointer-events: auto;
 }
+
+.avatarArea_div:hover {
+    filter: blur(1px);
+}
+
+/* .client_profile_image:hover .avatarArea_div  {
+}
+
+.avatarArea_div .client_profile_image:hover .avatarImg {
+    display: none;
+} */
+
 
 .clientProfileDetails {
     width: 55%;
