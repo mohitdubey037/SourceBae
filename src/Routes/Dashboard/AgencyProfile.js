@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
 function AgencyProfile(props) {
   const classes = useStyles();
   const { id } = useParams();
-  console.log(id);
   const Role = localStorage.getItem('role');
   const inputEl = useRef(null);
   const inputPort = useRef(null);
@@ -132,6 +131,8 @@ function AgencyProfile(props) {
   }, []);
 
   useEffect(() => {
+    console.log(props.location);
+    console.log(props.location.origin);
     if (!navigated && inputEl !== null && props.location.origin === "addingDeveloper") {
       inputEl?.current?.click();
       setNavigation(true);
@@ -139,14 +140,18 @@ function AgencyProfile(props) {
     else if (navigated) {
       inputEl?.current?.click();
     }
-    if (!portNavigated && inputPort !== null && props.location.origin === "portfolio") {
+  });
+
+  useEffect(() => {
+    console.log(props.location.origin == 'portfolio');
+    if (!portNavigated && inputPort !== null && props.location.origin == "portfolio") {
       inputPort?.current?.click();
       setPortNavigated(true);
     }
     else if (portNavigated) {
       inputPort?.current?.click();
     }
-  });
+  })
 
 
   return (

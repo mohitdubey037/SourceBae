@@ -33,6 +33,7 @@
     "react-dom": "^17.0.1",
     "react-file-picker": "^0.0.6",
     "react-ga": "^3.3.0",
+    "react-icons": "^4.3.1",
     "react-modal": "^3.12.1",
     "react-moment": "^1.1.1",
     "react-multi-search-select": "^1.2.2",

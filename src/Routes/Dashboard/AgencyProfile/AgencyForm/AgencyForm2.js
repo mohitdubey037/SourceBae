@@ -313,6 +313,9 @@ function AgencyForm2(props) {
                 <div className="domainsFields">
                   <p className="domainHeading">
                     1. Which business sector are you targeting?
+                    <span className="requiredStar">
+                      *
+                    </span>
                   </p>
                   <div className="servicesCardsHireAgency agencyForm2 domainChild">
                     {allDomainsData?.length > 0 ? (
@@ -338,6 +341,9 @@ function AgencyForm2(props) {
                 <div className="serivcesAgency">
                   <p className="servicesHeading">
                     2. In which services you have good command?
+                    <span className="requiredStar">
+                      *
+                    </span>
                   </p>
                   <div className="servicesCardsHireAgency agencyForm2">
                     {allServicesData?.length > 0 ? (
@@ -361,7 +367,11 @@ function AgencyForm2(props) {
                 </div>
 
                 <div className="monthlyBudget">
-                  <p>3. What is the monthly budget?</p>
+                  <p>3. What is the monthly budget?
+                    <span className="requiredStar">
+                      *
+                    </span>
+                  </p>
                   <div className="domainBudgetOptions">
                     <FormControl component="fieldset">
                       <RadioGroup

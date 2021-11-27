@@ -96,8 +96,8 @@ function Portfolio(props) {
     const portfolioCreate = () => {
         instance.post(`/api/${Role}/portfolios/create`, form)
             .then(res => {
-                console.log(res);
-                props.history.replace('/agency-profile', {
+                props.history.replace({
+                    pathname: "/agency-profile",
                     origin: 'portfolio'
                 })
             })

@@ -126,14 +126,14 @@ const Register = (props) => {
       err.firstNameError = "First name is required.";
     } else if (
       signupForm.firstName.length < 2 ||
-      signupForm.firstName.length > 12
+      signupForm.firstName.length > 18
     ) {
       err.firstNameError = "First name must be between 2-12 characters.";
     } else if (signupForm.lastName === "") {
       err.lastNameError = "Last name is required.";
     } else if (
       signupForm.lastName.length < 2 ||
-      signupForm.lastName.length > 12
+      signupForm.lastName.length > 18
     ) {
       err.lastNameError = "Last name must be between 2-12 characters.";
     } else if (signupForm.userName === "") {
