@@ -164,6 +164,14 @@ function AgencyForm1(props) {
                 }
             })
         }
+        else if (name === 'agencyPhone') {
+            if (helper.noTextNumber(value)) {
+                setFormData({
+                    ...formData,
+                    [name]: value
+                })
+            }
+        }
         else {
             setFormData({
                 ...formData,
