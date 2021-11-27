@@ -35,6 +35,11 @@ const validateLink = (link) => {
   return result;
 };
 
+const noTextNumber = (link) => {
+  let pattern = /^[0-9]*$/;
+  return pattern.test(link);
+}
+
 const validateLinkedIn = (link) => {
   // var linkedIn=/(ftp|http|https):\/\/?((www|\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
   var linkedIn = /((https?:\/\/)?((www|\w\w)\.)?linkedin\.com\/)((([\w]{2,3})?)|([^\/]+\/(([\w|\d-&#?=])+\/?){1,}))$/
@@ -65,4 +70,5 @@ export {
   camelcaseToWords,
   validateLinkedIn,
   multiwordCapitalize,
+  noTextNumber
 };
