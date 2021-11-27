@@ -387,7 +387,11 @@ function AgencyForm1(props) {
                             <div className="innerLeftPersonelDetailsForm">
                                 <div className="formContentPartOne">
                                     <div className="agencyLogo_parent">
-                                        <label>Agency Logo</label>
+                                        <label>Agency Logo
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="getAgencyLogo">
                                             <FilePicker
                                                 extensions={['jpg', 'png', 'jpeg']}
@@ -407,7 +411,11 @@ function AgencyForm1(props) {
                                         </div>
                                     </div>
                                     <div className="getAgencyDesc">
-                                        <p>Description</p>
+                                        <p>Description
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <textarea
                                             name="agencyDescription"
                                             cols="30"
@@ -425,7 +433,10 @@ function AgencyForm1(props) {
 
                                 <div className="formContentPartTwo">
                                     <div className="getOwnerName">
-                                        <p>Owner Name</p>
+                                        <p>Owner Name <span className="requiredStar">
+                                            *
+                                        </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Owner's Name"
@@ -441,7 +452,11 @@ function AgencyForm1(props) {
                                     </div>
 
                                     <div className="getOwnerName">
-                                        <p>Company Email</p>
+                                        <p>Company Email
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Company Email"
@@ -458,7 +473,11 @@ function AgencyForm1(props) {
 
                                 <div className="formContentPartTwo">
                                     <div className="getOwnerName">
-                                        <p>Company Phone</p>
+                                        <p>Company Phone
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             maxLength='10'
                                             type="text"
@@ -473,7 +492,11 @@ function AgencyForm1(props) {
                                         }
                                     </div>
                                     <div className="getOwnerName">
-                                        <p>LinkedIn URL</p>
+                                        <p>LinkedIn URL
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input placeholder="E.g - https://www.linkedin.com/shethink-pvt-ltd/"
                                             type="text"
                                             name={linkedIn?.platformName}
@@ -489,7 +512,11 @@ function AgencyForm1(props) {
 
                                 <div className="formContentPartTwo">
                                     <div className="getOwnerName">
-                                        <p>Company Address</p>
+                                        <p>Company Address
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Company Address"
@@ -505,7 +532,11 @@ function AgencyForm1(props) {
                                     </div>
 
                                     <div className="getOwnerName">
-                                        <p>Company Location</p>
+                                        <p>Company Location
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Company Location"

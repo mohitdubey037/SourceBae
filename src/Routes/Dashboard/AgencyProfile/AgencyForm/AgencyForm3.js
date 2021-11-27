@@ -215,7 +215,11 @@ function AgencyForm3(props) {
                     <div className="mainDocumentsForm">
                         <div className="innerDocumentForm">
                             <div className="documentDetails">
-                                <p>* Provide your Valid Document:{" "}<span style={{ color: 'red' }}>max 3 file</span></p>
+                                <p>
+                                    <span className="requiredStar">
+                                        *
+                                    </span>
+                                    Provide your Valid Document:{" "}<span style={{ color: 'red' }}>max 3 file</span></p>
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
                                         <FilePicker
@@ -223,7 +227,11 @@ function AgencyForm3(props) {
                                             onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
-                                                <p>Pick File</p>
+                                                <p>Pick File
+                                                    <span className="requiredStar">
+                                                        *
+                                                    </span>
+                                                </p>
                                                 <img src={fileIcon} alt="finish" /></button>
                                         </FilePicker>
                                         {/* </div> */}
@@ -236,7 +244,11 @@ function AgencyForm3(props) {
                                             onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
-                                                <p>Pick File</p>
+                                                <p>Pick File
+                                                    <span className="requiredStar">
+                                                        *
+                                                    </span>
+                                                </p>
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
@@ -252,7 +264,11 @@ function AgencyForm3(props) {
                                             onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
-                                                <p>Pick File</p>
+                                                <p>Pick File
+                                                    <span className="requiredStar">
+                                                        *
+                                                    </span>
+                                                </p>
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
