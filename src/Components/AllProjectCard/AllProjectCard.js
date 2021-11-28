@@ -16,7 +16,7 @@ function AllProjectCard(props) {
 
     return (
         <div className="user-project_agencyNewestAllProject allProject">
-            <div style={{ flex: "0.5", paddingLeft: "3rem" }}>
+            <div style={{ flex: "0.5", paddingLeft: "2rem" }}>
                 <div className="user-project_heading_agencyNewestAllProject">
                     <div className="user-project_child_agencyNewestAllProject">
                         <h5>{props?.projectName}</h5>
