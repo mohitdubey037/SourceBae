@@ -228,13 +228,13 @@ h6 {
     color: white;
 }
 
-.Image1_AgencyNewest {
+/* .Image1_AgencyNewest {
     left: -10rem;
     position: fixed;
     top: -3rem;
     width: 34rem;
     z-index: 1;
-}
+} */
 
 .no_project_found.no_project_agencyNewestAllProject {
     color: black;

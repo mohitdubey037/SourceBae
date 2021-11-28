@@ -41,13 +41,17 @@ function Navbar(props) {
                 url.includes('/quotation') ||
                 url.includes('agency-list') ||
                 url.includes('/project-details') ||
-                url.includes('/agency-project-details')) && '1rem',
+                url.includes('/agency-project-details') ||
+                url.includes('/agencyNewestDashboard') || 
+                url.includes('/agencyNewestAllProject')
+                ) && '1rem',
             justifyContent: (url.includes('/clientNewestDashboard') ||
                 url.includes('/agencyNewestDashboard') ||
                 url.includes('/quotation') ||
                 url.includes('/agency-list') ||
                 url.includes('/project-details') ||
-                url.includes('/agency-project-details')
+                url.includes('/agency-project-details') ||
+                url.includes('/agencyNewestAllProject')
             ) && 'flex-end'
         }} className='navbar'>
             <div style={{
@@ -57,7 +61,8 @@ function Navbar(props) {
                     url.includes('/quotation') ||
                     url.includes('agency-list') ||
                     url.includes('/project-details') ||
-                    url.includes('/agency-project-details')
+                    url.includes('/agency-project-details') ||
+                    url.includes('/agencyNewestAllProject')
                 ) && 'none'
             }} className="logoLink_navbar">
                 <img src={logoLink} alt="logo" />
