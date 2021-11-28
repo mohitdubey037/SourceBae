@@ -126,6 +126,10 @@ p.action-wait {
   color: #FFFFFF;
 }
 
+.project_rejection {
+  margin-bottom: 1rem;
+}
+
 /* .mainDetailHeader_agencyRespondedDetails {
   background-image: linear-gradient(to right, #0376BA, #015F9A);
 } */

@@ -8,6 +8,7 @@ import QuotationAccept from '../../../assets/images/Newestdashboard/Dashboard/qu
 import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail_show.svg';
 import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
 import MessageRejected from '../../../assets/images/Newestdashboard/Dashboard/rejected.jpg';
+import { FaBan } from 'react-icons/fa';
 
 function UserProject(props, index) {
     const routerHistory = useHistory();
@@ -69,12 +70,21 @@ function UserProject(props, index) {
             </div>
 
             <div className="projectDetail">
-                <div className="header-currentStatus">
-                    <img src={QuotationAccept} alt="project status" />
-                    <div className="currentStatus-text currentStatus-item">
-                        <p>{props?.projectCurrentStatus}</p>
+                {props.projectProposals[0]?.rejectReasonByClient != undefined || props.projectProposals[0].rejectReasonByAgency != undefined ?
+                    <div className="header-currentStatus">
+                        <FaBan className="project_status_image"/>
+                        <div className="currentStatus-text currentStatus-item">
+                            <p>Rejected</p>
+                        </div>
                     </div>
-                </div>
+                    :
+                    <div className="header-currentStatus">
+                        <img className="project_status_image" src={QuotationAccept} alt="project status" />
+                        <div className="currentStatus-text currentStatus-item">
+                            <p>{props?.projectCurrentStatus}</p>
+                        </div>
+                    </div>
+                }
 
                 <div onClick={() => showDetail()} className="show-project-detail">
                     <div className="projectDetail-text projectDetail-item">

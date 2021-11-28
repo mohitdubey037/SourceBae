@@ -2,14 +2,14 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
+import * as helper from '../../../shared/helper';
 
 function RegisterAgencyForm1(props) {
 
   const setForm = (event) => {
     let { name, value } = event.target;
     if (name === 'userPhone') {
-      let pattern = /^[0-9]*$/;
-      if (pattern.test(value)) {
+      if (helper.noTextNumber(value)) {
         props.setSignupForm({
           ...props.signupForm,
           [name]: value,
