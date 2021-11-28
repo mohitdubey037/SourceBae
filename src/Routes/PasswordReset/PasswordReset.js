@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
         color: "rgba(131,153,167,0.9)",
         opacity: 0.9,
         zIndex: 1,
+        cursor: 'pointer'
     },
 }));
 

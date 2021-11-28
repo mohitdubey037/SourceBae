@@ -511,7 +511,7 @@ const ClientCommentBox = (props) => {
               <div className="detailed_description_clientCommentBox">
                 <label>Detailed description:</label>
                 <textarea
-                  style={{ padding: '10px', margin: '1rem 0rem', width: '70%', fontSize: "12px", maxHeight: "6rem", borderRadius: '4px' }}
+                  className="reject_textArea"
                   placeholder="Please type your reason here"
                   name="rejectReasonByClient"
                   cols="30"
