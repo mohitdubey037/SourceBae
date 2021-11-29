@@ -5,9 +5,14 @@ import CurrentStatusImage from '../../assets/images/Newestdashboard/Agency_Proje
 import { useHistory } from "react-router-dom";
 import './AgencyProjectCard.css';
 
-import Moment from 'react-moment'
+import Moment from 'react-moment';
+import moment from 'moment';
 
 function AgencyProjectCard({ key, ...props }) {
+
+    const dateCreate = moment(props.createdAt).format("MMM Do YY");
+    const dateUpdate = moment(props.updatedAt).format("MMM Do YY");
+
     const routerHistory = useHistory();
     return (
         <div className="user-project_agencyNewestDashboard">
@@ -23,32 +28,34 @@ function AgencyProjectCard({ key, ...props }) {
                         <img src={DateImage} alt="dateImage" />
                     </div>
                     <div>
-                         <p><Moment format="D MMM YYYY" withTitle>{props?.createdAt}</Moment></p>
+                        <p>{dateCreate}</p>
                     </div>
                     {/* <Moment format="DD MM YYYY" withTitle>
                         <p className="creation_date" style={{ marginLeft: 10 }}>{props?.createdAt}</p>
                     </Moment> */}
                 </div>
-                <div className='matchedDate'>
-                    <div className="imageClass">
-                        <img src={DateImage2} alt="dateImage2" />
-                    </div>
-                    <div>
-                        <p><Moment format="D MMM YYYY" withTitle>{props?.updatedAt}</Moment></p>
-                     </div>
-                    {/* <Moment format="DD MM YYYY" withTitle>
+                {dateCreate !== dateUpdate &&
+                    <div className='matchedDate'>
+                        <div className="imageClass">
+                            <img src={DateImage2} alt="dateImage2" />
+                        </div>
+                        <div>
+                            <p>{dateUpdate}</p>
+                        </div>
+                        {/* <Moment format="DD MM YYYY" withTitle>
                         <p className="creation_date" style={{ marginLeft: 10 }}>{props?.updatedAt}</p>
                     </Moment> */}
-                </div>
+                    </div>
+                }
                 <div className='currentStatus'>
                     <div className="imageClass">
-                        <img style={{ filter:"hue-rotate(-90deg) "}} src={CurrentStatusImage} alt="CurrentStatus" />
+                        <img style={{ filter: "hue-rotate(-90deg) " }} src={CurrentStatusImage} alt="CurrentStatus" />
                     </div>
                     <p>{props?.projectCurrentStatus}</p>
                 </div>
             </div>
 
-            <div style={{height: props?.projectType === 'Short Term'? '64%':""}} className="user-project_details agencyProjectCard">
+            <div style={{ height: props?.projectType === 'Short Term' ? '64%' : "" }} className="user-project_details agencyProjectCard">
                 <table>
                     <thead>
                         {props?.projectType != 'Short Term' &&

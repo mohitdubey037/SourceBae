@@ -56,6 +56,10 @@ function getStyles(singleTechObject, allTechnologies, theme) {
 
 function ClientNewestDashboard(props) {
 
+    if (props.history.action === 'POP') {
+        props.history.push('/agencyNewestDashboard');
+    }
+
     const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem("userId");
 
