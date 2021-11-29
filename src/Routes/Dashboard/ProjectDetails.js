@@ -7,16 +7,10 @@ import Back from '../../Components/Back/Back';
 
 function ProjectDetails() {
 
-    const [visible, setVisible] = useState(false);
-
-    const notificationVisible = (status) => {
-        setVisible(status);
-    };
-
     return (
         <>
-            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-            <div className={`details-parent ${visible && "conditionalPosition"}`}>
+            <Sidebar />
+            <div className={`details-parent`}>
                 <Navbar />
                 <Back name="Client Project Details" />
                 <RespondedDetails />
