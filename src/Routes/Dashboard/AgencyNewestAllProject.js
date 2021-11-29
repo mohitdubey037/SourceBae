@@ -132,17 +132,17 @@ function AgencyNewestAllProject(props) {
         onSearchHandler();
     }
 
-    const filterFunction = (event) => {
-        setStatusFilter(event.target.value);
-        onSearchHandler();
-    }
+    // const filterFunction = (event) => {
+    //     setStatusFilter(event.target.value);
+    //     onSearchHandler();
+    // }
 
     useEffect(() => {
     }, [projects])
 
     return (
         <div className="dashboard-container" style={{ overflow: "hidden" }}>
-            <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" />
+            {/* <img className="Image1_AgencyNewest" src={UpImage} alt="upImage" /> */}
             {/* <img className="Image2_AgencyNewest" src={DownImage} alt="downImage" /> */}
             <Sidebar />
             <div className="container-body container-body_agencyNewestAllProject">
@@ -170,7 +170,7 @@ function AgencyNewestAllProject(props) {
                                         <h6>Rejected Project</h6>
                                     </div>
                                 </div>
-                                <div className="agency-card-parent" style={{ height: err === true ? "100%" : "15%" }}>
+                                <div className="agency-card-parent" style={{ height: err === true ? "100%" : "27%" }}>
                                     {err === true ?
                                         <>
                                             <div style={{ textAlign: 'center' }}>

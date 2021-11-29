@@ -100,12 +100,11 @@ function Sidebar(props) {
 
     return (
         <div className="container-sidebar">
-            <div style={{ display: url.includes('agencyNewestAllProject') && 'none' }}
-                className="temporary_logo">
+            <div className="temporary_logo">
                 {/* <img src= 'https://api.onesourcing.in/media/images/1636785308442.jpeg' alt="logo" /> */}
                 <img src='https://api.onesourcing.in/media/images/1637044803259.svg' alt="logo" />
             </div>
-            <div style={{ marginTop: url.includes('agencyNewestAllProject') && '43%' }} className="sidebar-menu">
+            <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
                     <div>
                         <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />

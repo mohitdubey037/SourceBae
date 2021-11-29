@@ -195,109 +195,111 @@ const AgencyCommentBox = (props) => {
         {props.projectProposals[0].isQuotationAcceptedByClient === true ?
           <p>Quotation accepted by client!!.Waiting for your side</p>
           :
-          <div className="chatBox-parent">
-            {props.projectProposals[0].comments.map((index) => {
-              return (
-                index.commentType === props.commentType &&
-                <>
-                  {index.comment && (
-                    <div className="chatBox chatBox-left" >
-                      <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
-                      <b>{`${props?.clientId?.companyName}`}</b>
-                    </div>
-                  )}
-                  {index.reply && (
-                    <div className="chatBox chatBox-right">
-                      <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
-                      <b>You</b>
-                    </div>
-                  )}
-                  {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>}
-                </>
-              )
-            })
-            }
-          </div>
-        }
-        <div className='commentParent'>
-          {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
-            (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
-            && (
-              <div className="postQuotation" style={{ width: '52%' }}>
-                <TextField
-                  className={clsx(classes.margin, classes.width)}
-                  name="agencyNegotiablePrice"
-                  id="outlined-number"
-                  type="number"
-                  placeholder="Agency Negotiable Price"
-                  variant="outlined"
-                  onChange={(event) => handleChange(event)}
+          <>
+            <div className="chatBox-parent">
+              {props.projectProposals[0].comments.map((index) => {
+                return (
+                  index.commentType === props.commentType &&
+                  <>
+                    {index.comment && (
+                      <div className="chatBox chatBox-left" >
+                        <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
+                        <b>{`${props?.clientId?.companyName}`}</b>
+                      </div>
+                    )}
+                    {index.reply && (
+                      <div className="chatBox chatBox-right">
+                        <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
+                        <b>You</b>
+                      </div>
+                    )}
+                    {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>}
+                  </>
+                )
+              })
+              }
+            </div>
+            <div className='commentParent'>
+              {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
+                (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
+                && (
+                  <div className="postQuotation" style={{ width: '52%' }}>
+                    <TextField
+                      className={clsx(classes.margin, classes.width)}
+                      name="agencyNegotiablePrice"
+                      id="outlined-number"
+                      type="number"
+                      placeholder="Agency Negotiable Price"
+                      variant="outlined"
+                      onChange={(event) => handleChange(event)}
 
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <AttachMoneyIcon />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              </div>
-            )}
-          <div className="price-section" style={{
-            width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
-              ? '96%' :
-              props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
-                ? '96%' : '45%'
-          }}>
-            {props.projectProposals[0].isReplySectionActive && (
-              <>
-                <TextField
-                  className={clsx(classes.margin, classes.width)}
-                  id="outlined-size-small"
-                  // label="Agency"
-                  placeholder="Enter Your Reply"
-                  onChange={(event) => handleChange(event)}
-                  name="reply"
-                  multiline
-                  maxRows={4}
-                  variant="outlined"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        {props.projectProposals[0].isReplySectionActive &&
-                          props.projectProposals[0].isAskedForQuotation &&
-                          (props.projectProposals[0].quotationLink === null ||
-                            props.projectProposals[0].quotationLink === undefined) &&
-                          (
-                            <>
-                              <input
-                                color="primary"
-                                type="file"
-                                onChange={(event) => inputFileChosen(event)}
-                                id="icon-button-file"
-                                style={{ display: 'none', }}
-                              />
-                              {/* <label htmlFor="icon-button-file">
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <AttachMoneyIcon />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  </div>
+                )}
+              <div className="price-section" style={{
+                width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
+                  ? '96%' :
+                  props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
+                    ? '96%' : '45%'
+              }}>
+                {props.projectProposals[0].isReplySectionActive && (
+                  <>
+                    <TextField
+                      className={clsx(classes.margin, classes.width)}
+                      id="outlined-size-small"
+                      // label="Agency"
+                      placeholder="Enter Your Reply"
+                      onChange={(event) => handleChange(event)}
+                      name="reply"
+                      multiline
+                      maxRows={4}
+                      variant="outlined"
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            {props.projectProposals[0].isReplySectionActive &&
+                              props.projectProposals[0].isAskedForQuotation &&
+                              (props.projectProposals[0].quotationLink === null ||
+                                props.projectProposals[0].quotationLink === undefined) &&
+                              (
+                                <>
+                                  <input
+                                    color="primary"
+                                    type="file"
+                                    onChange={(event) => inputFileChosen(event)}
+                                    id="icon-button-file"
+                                    style={{ display: 'none', }}
+                                  />
+                                  {/* <label htmlFor="icon-button-file">
                                 <AttachmentIcon onChange={(event) => inputFileChosen(event)} />
                               </label> */}
-                            </>
-                          )}
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              </>
-            )}
-          </div>
-          {props.projectProposals[0].isReplySectionActive === true &&
-            <div className="sendIcon_clientCommentBox" onClick={() => replyApi()} >
-              <SendIcon />
+                                </>
+                              )}
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  </>
+                )}
+              </div>
+              {props.projectProposals[0].isReplySectionActive === true &&
+                <div className="sendIcon_clientCommentBox" onClick={() => replyApi()} >
+                  <SendIcon />
+                </div>
+              }
             </div>
-          }
-        </div>
+          </>
+        }
         {props.projectProposals[0].isQuotationAcceptedByClient === false
           && !props.projectProposals[0].isCommentSectionActive
           && !props.projectProposals[0].isReplySectionActive
@@ -418,7 +420,7 @@ const AgencyCommentBox = (props) => {
                   <p>Project Start Date By Client</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectStartDateByClient}</Moment></p>
+                  <span className="dot"></span><p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectStartDateByClient}</Moment></p>
                 </div>
               </div>
 
@@ -427,7 +429,7 @@ const AgencyCommentBox = (props) => {
                   <p>Project Delayed Start Date By Client</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectDelayedStartDateByClient}</Moment></p>
+                  <span className="dot"></span><p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectDelayedStartDateByClient}</Moment></p>
                 </div>
               </div>
 
@@ -436,7 +438,7 @@ const AgencyCommentBox = (props) => {
                   <p>Project End Date By Client</p>
                 </div>
                 <div className="tableContentQuotation">
-                  <span className="dot"></span> <p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectEndDateByClient}</Moment></p>
+                  <span className="dot"></span><p><Moment format="D MMM YYYY" withTitle>{props.projectProposals[0].projectEndDateByClient}</Moment></p>
                 </div>
               </div>
               <div className="quotationTable">
@@ -452,9 +454,9 @@ const AgencyCommentBox = (props) => {
                 <div className="tableHeaderQuotation">
                   <p>Project Start Date By You</p>
                 </div>
-                <div style={{ width: '40%' }} className="tableContentQuotation">
+                <div style={{ width: '50%' }} className="tableContentQuotation">
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <div className="datePickers">
+                    <div className="datePickers" style={{ width: '100%' }}>
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         minDate={new Date(props.projectProposals[0].projectStartDateByClient)}
@@ -470,7 +472,7 @@ const AgencyCommentBox = (props) => {
               </div>
               <div className="quotationTable">
                 <div className="tableHeaderQuotation">
-                  <p >Final Cost </p>
+                  <p>Final Cost </p>
                 </div>
                 <div className="tableContentQuotation">
                   <p>{props.projectProposals[0].finalCostByClient}</p>
@@ -480,8 +482,6 @@ const AgencyCommentBox = (props) => {
             <div className="quotationSubmitButton quotationSubmit_clientCommentBox">
               <button style={{ textAlign: 'center' }} onClick={handleProjectAcceptance}>Submit</button>
             </div>
-
-
           </div>
         </div>
       </Modal>

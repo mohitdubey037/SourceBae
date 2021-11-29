@@ -93,7 +93,7 @@ function ClientOneHireDeveloper(props) {
             {loading ? <Spinner /> :
                 <>
                     <div className="main_parent_clientOneHireDeveloper">
-                        <Navbar logoLink={logoLink}/>
+                        <Navbar logoLink={logoLink} />
                         <img className="upImage1_clientOneHireDeveloper" src={UpImage1} alt="upImage1" />
                         <img className="upImage2_clientOneHireDeveloper" src={UpBigImage} alt="upImage1" />
                         <img className="downImage3_clientOneHireDeveloper" src={DownImage2} alt="upImage1" />
@@ -116,33 +116,36 @@ function ClientOneHireDeveloper(props) {
 
                                                         <div className="email_clientOneHireDeveloper">
                                                             <p className="description_sharedDeveloper">{agency?.agencyId?.agencyDescription}</p>
-                                                        </div>   
+                                                        </div>
 
                                                         <div className="email_clientOneHireDeveloper description_parent">
                                                             <p className="description_clientOne">Experience:</p>
                                                             <p className="description_sharedDeveloper agency_age"><Moment fromNow ago>{agency?.agencyId?.incorporationDate}</Moment></p>
                                                         </div>
-                                                                                                             
+
                                                     </div>
 
-                                                    <div className="button_parent">
-                                                        {!isShortListed
-                                                            ?
-                                                            <button onClick={() => onOpenModal(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
-                                                                <p>Get Connected!!</p>
-                                                            </button>
-                                                            :
-                                                            isShortListed && interested === 0 ?
-                                                                <p className="agency_pending">Great Step!!.Our support will contact you soon</p>
+                                                    <div className="shortlist_and_interest_parent"> 
+                                                        <div className="button_parent">
+                                                            {!isShortListed
+                                                                ?
+                                                                <button onClick={() => onOpenModal(agency?.agencyId?._id)} className="moreAgencyLogo checkResource">
+                                                                    <p>Get Connected!!</p>
+                                                                </button>
                                                                 :
-                                                                isShortListed && interested === 1
-                                                                    ?
-                                                                    <p className="agency_accepted">Congratulations!!..Agency is interested</p>
+                                                                isShortListed && interested === 0 ?
+                                                                    <p className="agency_pending">Great Step!!.Our support will contact you soon</p>
                                                                     :
-                                                                    <p className="agency_rejected_interested">Sorry!!Agency declined your request, our support team will connect you soon with more profiles.</p>
+                                                                    isShortListed && interested === 1
+                                                                        ?
+                                                                        <p className="agency_accepted">Congratulations!!..Agency is interested</p>
+                                                                        :
+                                                                        <p className="agency_rejected_interested">Sorry!!Agency declined your request, our support team will connect you soon with more profiles.</p>
 
-                                                        }
+                                                            }
+                                                        </div>
                                                     </div>
+
                                                 </div>
                                             )
                                         })
