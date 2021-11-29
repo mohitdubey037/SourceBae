@@ -45,6 +45,11 @@ const dateStyles = makeStyles((theme) => ({
 }));
 
 const Register = (props) => {
+
+  if (props.history.action === 'pop') {
+    console.log(props.history.action);
+    console.log('hiiiii');
+  }
   const isFirstRender = useIsFirstRender();
   const dateClasses = dateStyles();
   const [state, setState] = useState("");
@@ -250,9 +255,13 @@ const Register = (props) => {
 
   useEffect(() => {
     localStorage.setItem("role", state);
-    state === "" || state === "agency"
-      ? props.history.push("/register:agency")
-      : props.history.push("/register:client");
+    if (state === "" || state === "agency") {
+      console.log('hii from register');
+      props.history.push("/register:agency")
+    }
+    else {
+      props.history.push("/register:client");
+    }
   }, [state]);
 
   const handleChangeToggle = (name) => {
