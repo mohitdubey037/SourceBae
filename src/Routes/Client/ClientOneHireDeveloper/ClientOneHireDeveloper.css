@@ -20,10 +20,11 @@
   position: relative;
 }
 
-.button_parent {
-  position: absolute;
-  bottom: 10px;
-  left: 38%;
+.shortlist_and_interest_parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .upImage1_clientOneHireDeveloper {
@@ -107,6 +108,10 @@
   padding-left: 20px;
 }
 
+/* .moreAgencyInfo {
+  margin-bottom: 3rem;
+} */
+
 .phone_clientOneHireDeveloper {
   margin-top: 0rem;
   display: flex;
@@ -120,7 +125,8 @@
 }
 
 .email_clientOneHireDeveloper.description_parent {
-  width: 50%;
+  /* width: 50%; */
+  width: max-content;
   background-color: grey;
   padding: 0.7rem;
   border-radius: 0.4rem;
