@@ -43,8 +43,11 @@ function Sidebar(props) {
 
     const handleNotificationRead = (id) => {
         console.log(id);
+        const body = {
+            id
+        }
         if (id != undefined) {
-            instance.patch(`/api/${Role}/notifications/update`, id)
+            instance.patch(`/api/${Role}/notifications/update`, body)
             .then(response => {
                 handleGetNotification();
             })
