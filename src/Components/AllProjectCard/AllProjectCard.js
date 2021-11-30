@@ -3,11 +3,16 @@ import './AllProjectCard.css';
 
 import DateImage from '../../assets/images/Newestdashboard/Agency_Project_Card/vec.svg';
 import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/vec.svg';
+import moment from 'moment';
 import Moment from 'react-moment';
 import { withRouter } from "react-router";
 import { useHistory } from 'react-router-dom';
 
 function AllProjectCard(props) {
+
+    const dateCreate = moment(props.createdAt).format("MMM Do YY");
+    const dateUpdate = moment(props.updatedAt).format("MMM Do YY");
+
     const routerHistory = useHistory();
 
     const showDetails = () => {
@@ -29,17 +34,19 @@ function AllProjectCard(props) {
                             <img src={DateImage} alt="dateImage" />
                         </div>
                         <div>
-                            <p><Moment format="D MMM YYYY" withTitle>{props?.createdAt}</Moment></p>
+                            <p>{dateCreate}</p>
                         </div>
                     </div>
-                    <div className='matchedDate_AgencyNewestAllProject'>
-                        <div>
-                            <img src={DateImage2} alt="dateImage2" />
+                    {dateCreate !== dateUpdate &&
+                        <div className='matchedDate_AgencyNewestAllProject'>
+                            <div>
+                                <img src={DateImage2} alt="dateImage2" />
+                            </div>
+                            <div>
+                                <p>{dateUpdate}</p>
+                            </div>
                         </div>
-                        <div>
-                            <p><Moment format="D MMM YYYY" withTitle>{props?.updatedAt}</Moment></p>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
 
