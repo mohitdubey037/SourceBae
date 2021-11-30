@@ -20,9 +20,11 @@ import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/
 
 import { Modal } from 'react-responsive-modal';
 
-import { toast } from "react-toastify";
-
 function AgencyNewestDashboard(props) {
+
+  // useEffect(() => {
+  //   console.log(props.history.action === 'POP');
+  // }, [props])
 
   const [open, setOpen] = useState(false);
 

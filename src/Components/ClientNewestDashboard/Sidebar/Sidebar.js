@@ -93,9 +93,7 @@ function Sidebar(props) {
         localStorage.removeItem('userId');
         localStorage.removeItem('toggle');
         cookie.remove("Authorization");
-        cookie.remove("isAgencyVerified");
-        cookie.remove("isStepsCompleted");
-        routerHistory.push('/');
+        routerHistory.replace('/');
     }
 
     return (

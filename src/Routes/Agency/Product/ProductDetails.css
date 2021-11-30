@@ -17,11 +17,12 @@
     align-items: flex-start;
     /* padding: 3rem 2rem 1rem; */
     padding: 2rem 0;
-    width: 93%;
+    width: 75%;
 }
 
 .productDetailsArea {
-    width: 70%;
+    /* width: 70%; */
+    width: 100%;
     box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
     padding: 1.5rem 1rem;
     background-color: #ffffff;
@@ -345,6 +346,7 @@
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
     height: 100%;
     border-radius: 8px;
+    display: none;
 }
 
 .moreAgencyList_productDetails {
