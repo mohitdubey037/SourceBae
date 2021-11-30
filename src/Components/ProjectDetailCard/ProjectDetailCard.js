@@ -34,11 +34,11 @@ function ProjectDetailCard(props) {
 
                     <div>
                         <p>Shortlisted</p>
-                        <p>{props.isShortListed}</p>
+                        <p>{String(props.isShortListed)}</p>
                     </div>
                     <div>
                         <p>Quotation Asked</p>
-                        <p>{props.isAskedForQuotation}</p>
+                        <p>{String(props.isAskedForQuotation)}</p>
                     </div>
                     <div>
                         <p>Project Creation Date</p>

@@ -121,8 +121,8 @@ function AgencyRespondedDetails(props) {
         projectProposalCost={project?.projectProposalCost}
         agencyExperience={project?.agencyExperience}
         projectType={project?.projectType}
-        isShortListed={project.projectProposals && project?.projectProposals[0]?.isShortListed}
-        isAskedForQuotation={project.projectProposals && project?.projectProposals[0]?.isAskedForQuotation}
+        isShortListed={project?.projectProposals && project?.projectProposals[0]?.isShortListed}
+        isAskedForQuotation={project?.projectProposals && project?.projectProposals[0]?.isAskedForQuotation}
         projectCreationDate={project?.createdAt} />
 
       {/* <div className="respondCards_AgencyRespondedDetails">

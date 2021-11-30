@@ -102,16 +102,18 @@ function RespondedDetails(props) {
           </div>
         </div>
       </div>
-      <ProjectDetailCard
-        role="Client"
-        name={project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}
-        expectedTimeline={project?.projectExpectedStartingDays}
-        projectProposalCost={project?.projectProposalCost}
-        agencyExperience={project?.agencyExperience}
-        projectType={project?.projectType}
-        isShortListed={project.projectProposals && project?.projectProposals[0]?.isShortListed}
-        isAskedForQuotation={project.projectProposals && project?.projectProposals[0]?.isAskedForQuotation}
-        projectCreationDate={project?.createdAt} />
+      {project.projectProposals &&
+        <ProjectDetailCard
+          role="Client"
+          name={project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}
+          expectedTimeline={project?.projectExpectedStartingDays}
+          projectProposalCost={project?.projectProposalCost}
+          agencyExperience={project?.agencyExperience}
+          projectType={project?.projectType}
+          isShortListed={project.projectProposals[0].isShortListed}
+          isAskedForQuotation={project.projectProposals[0].isAskedForQuotation}
+          projectCreationDate={project?.createdAt} />
+      }
       {/* <div className="respondCards_AgencyRespondedDetails">
         <div className="innerResponseCard">
           <span className="leftLine"></span>
