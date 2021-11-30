@@ -102,6 +102,7 @@ function RespondedDetails(props) {
           </div>
         </div>
       </div>
+
       {project.projectProposals &&
         <ProjectDetailCard
           role="Client"
@@ -114,66 +115,6 @@ function RespondedDetails(props) {
           isAskedForQuotation={project.projectProposals[0].isAskedForQuotation}
           projectCreationDate={project?.createdAt} />
       }
-      {/* <div className="respondCards_AgencyRespondedDetails">
-        <div className="innerResponseCard">
-          <span className="leftLine"></span>
-          <div>
-            <p>Agency</p>
-            <p>
-              {project.projectProposals &&
-                project?.projectProposals[0]?.agencyId?.agencyName}
-            </p>
-          </div>
-          <div>
-            <p>Expected Timeline</p>
-            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-          </div>
-          <div>
-            <p>Project Proposal Cost</p>
-            <p
-              style={{ fontWeight: "600" }}
-            >{`$${project?.projectProposalCost}`}</p>
-          </div>
-          <div>
-            <p>Agency Experience</p>
-            <p>{`${project?.agencyExperience}`}</p>
-          </div>
-        </div>
-        <div className="innerResponseCard">
-          <span className="leftLine"></span>
-          <div>
-            <p>Project Type</p>
-            <p>{`${project?.projectType}`}</p>
-          </div>
-
-          <div>
-            <p>Shortlisted</p>
-            <p>{`${project?.projectProposals?.length > 0 &&
-              project?.projectProposals[0]?.isShortListed
-              ? "Yes"
-              : "No"
-              }`}</p>
-          </div>
-
-          <div>
-            <p>Quotation Asked</p>
-            <p>{`${project?.projectProposals?.length > 0 &&
-              project?.projectProposals[0]?.isAskedForQuotation
-              ? "Yes"
-              : "No"
-              }`}</p>
-          </div>
-
-          <div>
-            <p>Project Creation Date</p>
-            <p>
-              <Moment format="D MMM YYYY" withTitle>
-                {project?.createdAt}
-              </Moment>
-            </p>
-          </div>
-        </div>
-      </div> */}
 
       <div className="ProjectDescriptionRespondedDetails">
         <h4 className="ProjectDescriptionRespondedDetails_heading">Project Description:</h4>
