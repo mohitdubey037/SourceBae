@@ -93,9 +93,9 @@ const Login = (props) => {
   }, []);
 
   useEffect(() => {
-    state === "" || state === "agency"
-      ? props.history.replace("/login:agency")
-      : props.history.replace("/login:client");
+    state === "client"
+      ? props.history.replace("/login:client")
+      : props.history.replace("/login:agency")
   }, [state]);
 
   const showPassword = (e) => {
@@ -140,9 +140,7 @@ const Login = (props) => {
           notificationDeviceToken: device_token,
         })
         .then(function (response) {
-          cookie.save("Authorization", `Bearer ${response.accessToken}`, {
-            path: "/",
-          });
+          cookie.save("Authorization", `Bearer ${response.accessToken}`,{path: "/"});
           setToken(cookie.load("Authorization"));
           localStorage.setItem("role", role);
           localStorage.setItem("userId", `${response._id}`);
@@ -190,76 +188,38 @@ const Login = (props) => {
       ) : (
         <div className="mainLoginPage">
           <div className="innerLoginPage">
-            <div
-              className={`loginIllustrator ${
-                roleString === "Client" && "conditional_background"
-              }`}
-            >
+            <div className={`loginIllustrator ${roleString === "Client" && "conditional_background"}`} >
               <div className="loginImage1">
-                <img
-                  src={
-                    roleString === "Client"
-                      ? downImage1_client
-                      : downImage1_agency
-                  }
-                  alt="image1"
-                />
+                <img src={ roleString === "Client" ? downImage1_client : downImage1_agency} alt="image1" />
               </div>
               <div className="loginImage2">
-                <img
-                  src={
-                    roleString === "Client"
-                      ? downImage2_client
-                      : downImage2_agency
-                  }
-                  alt="image2"
-                />
+                <img src={ roleString === "Client" ? downImage2_client : downImage2_agency } alt="image2" />
               </div>
               <div className="loginImage3">
-                <img
-                  src={
-                    roleString === "Client" ? upImage1_client : upImage1_agency
-                  }
-                  alt="image3"
-                />
+                <img src={ roleString === "Client" ? upImage1_client : upImage1_agency } alt="image3" />
               </div>
               <div className="loginImage4">
-                <img
-                  src={
-                    roleString === "Client" ? upImage2_client : upImage2_agency
-                  }
-                  alt="image4"
-                />
+                <img src={ roleString === "Client" ? upImage2_client : upImage2_agency } alt="image4" />
               </div>
               <div className="dot-image">
                 <img src={dotImage} alt="" />
               </div>
               <div className="loginCards-wrapper">
                 <div className="welcome-back_loginIllustrator">
-                  <p>
-                    Welcome back<br></br>
-                    <span>to</span>
-                    <br />
-                    <span className="welcome-back_sourceBae">Sourcebae</span>
-                  </p>
+                  <p>Welcome back<br></br><span>to</span><br/><span className="welcome-back_sourceBae">Sourcebae</span> </p>
                 </div>
                 <div className="loginContent">
                   <div className="mainLoginForm">
                     <div className="login_switch">
                       <button
                         onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${
-                          roleString === "Agency" && "active__buttonagency"
-                        }`}
-                      >
+                        className={`agency__button ${roleString === "Agency" && "active__buttonagency"
+                        }`}>
                         <p>Agency</p>
                       </button>
                       <button
                         onClick={() => handleChangeToggle("client")}
-                        className={`client__button ${
-                          roleString === "Client" && "active__buttonclient"
-                        }`}
-                      >
+                        className={`client__button ${roleString === "Client" && "active__buttonclient"}`}>
                         <p>Client</p>
                       </button>
                     </div>
@@ -288,12 +248,8 @@ const Login = (props) => {
                         type="text"
                         fullWidth
                         className={classes.input}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
+                        InputLabelProps={{ shrink: true, }}
+                        onChange={(e) => { handleChange(e); }}
                         placeholder="Enter an email"
                         variant="filled"
                       />
@@ -306,12 +262,8 @@ const Login = (props) => {
                         type={hidePassword ? "password" : "text"}
                         fullWidth
                         className={classes.input}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
+                        InputLabelProps={{ shrink: true, }}
+                        onChange={(e) => { handleChange(e); }}
                         variant="filled"
                         InputProps={{
                           // <-- This is where the toggle button is added.
@@ -349,7 +301,7 @@ const Login = (props) => {
                           className={`forgot-password_login ${
                             roleString === "Client" && "conditional_color"
                           }`}
-                          onClick={() => props.history.replace("/enter-email")}
+                          onClick={() => props.history.push("/enter-email")}
                         >
                           <p>Forgot Password</p>
                         </div>
@@ -372,13 +324,7 @@ const Login = (props) => {
                     <div className="signUpOption">
                       <p>
                         Don't have an account?{" "}
-                        <span
-                          onClick={() =>
-                            props.history.replace(
-                              `/register:${role.toLowerCase()}`
-                            )
-                          }
-                        >
+                        <span onClick={()=>props.history.replace(`/register:${role.toLowerCase()}`)}>
                           Sign Up
                         </span>
                       </p>

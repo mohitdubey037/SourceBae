@@ -1,4 +1,5 @@
 import './FormPhases.css';
+import './StepPhases.css';
 
 function FormPhases(props) {
     return (

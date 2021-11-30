@@ -1,28 +1,40 @@
 .toggleButton_enterEmail {
-    /* background-color: red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-50px);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50px);
+}
 
-  .MuiFormGroup-root {
-    color:#015F9a
-  }
-  .roleform {
-    display: flex;
-    flex-direction: row !important;
-  } 
+.forgot_parent {
+  padding-top: 4rem;
+  position: relative;
+  z-index: 1;
+}
 
-  .MuiFormGroup-root {
-    flex-direction: row;
-  }
+.image_and_forgot .MuiContainer-root {
+  width: 30% !important;
+}
 
-  .makeStyles-button-3 {
-    background-color: #015F9a  !important;
-    width: 15rem !important;
-  }
+.MuiFormGroup-root {
+  color: #015F9a
+}
 
-  .makeStyles-form-4 {
-    width: 15rem !important;
-  }
+.roleform {
+  display: flex;
+  flex-direction: row !important;
+}
+
+.image_and_forgot {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.makeStyles-button-3 {
+  background-color: #015F9a !important;
+  width: 15rem !important;
+}
+
+.makeStyles-form-4 {
+  width: 15rem !important;
+}

@@ -19,7 +19,7 @@
 
 .mainClient_parent {
     padding-top: 5rem;
-    background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+    /* background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%); */
     position: relative;
     overflow: hidden;
 }
@@ -30,7 +30,7 @@
     align-items: center;
     margin: 2% 0;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    padding: 4.5rem 0;
+    padding: 4rem 0;
     background-color: #fff;
     position: relative;
     border-radius: 5px;
@@ -81,35 +81,67 @@
     width: 90%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 .avatarArea {
-    width: 25%;
+    position: relative;
 }
 
-.clientProfileDetails {
+/* .clientProfileDetails {
     width: 70%;
-}
+} */
 
-.avatarArea div {
-    width: 20rem;
-    height: 20rem;
+.avatarArea_div {
+    height: 14rem;
+    box-shadow: 0 2px 8px 2px rgb(0 0 0 / 20%);
+    border-radius: 50%;
+    /* position: relative; */
+    width: 14rem;
     display: flex;
     justify-content: center;
-    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 10rem;
+    background-repeat: no-repeat;
+    align-items: center;
+    pointer-events: none;
 }
 
-.avatarArea div img {
-    width: 100%;
-    border-radius: 10rem;
-    object-fit: cover;
-    background-color: #015F9A;
+.conditional_filter_clientProfile{
+    filter: blur(3px);
 }
+
+.avatarImg {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+    height: 100%;
+}
+
+.client_profile_image {
+    position: absolute;
+    z-index: 3;
+    width: 2rem;
+    right: 42%;
+    cursor: pointer;
+    font-size: 4rem;
+    top: 39%;
+    pointer-events: auto;
+}
+
+.avatarArea_div:hover {
+    filter: blur(1px);
+}
+
+/* .client_profile_image:hover .avatarArea_div  {
+}
+
+.avatarArea_div .client_profile_image:hover .avatarImg {
+    display: none;
+} */
+
 
 .clientProfileDetails {
     width: 55%;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     margin-top: 1%;
 }
 

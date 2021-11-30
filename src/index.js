@@ -13,7 +13,7 @@ import Spinner from "./Components/Spinner/Spinner";
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <ToastContainer />
+      <ToastContainer/>
       <App />
     </BrowserRouter>
   </Provider>,

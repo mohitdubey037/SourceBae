@@ -60,7 +60,7 @@
     padding: 0.4rem;
     background-color: white;
     color: #ffffff;
-    background-image: linear-gradient( #015F9A, #0376BA);
+    background-image: linear-gradient(#015F9A, #0376BA);
 }
 
 .searchButton:hover {
@@ -73,13 +73,6 @@
     bottom: -5rem;
     width: 43rem;
     z-index: 0;
-}
-
-.Image1_productAgencies {
-    left: -7rem;
-    position: absolute;
-    top: -5.5rem;
-    width: 43rem;
 }
 
 .locationFilter input {
@@ -128,7 +121,7 @@
 }
 
 .AgencyCardsArea_productAgencies {
-    width: 87%;
+    width: 93%;
     padding: 18px;
 }
 
@@ -136,6 +129,7 @@
     margin-top: 1rem;
     width: 25%;
     position: relative;
+    display: none;
 }
 
 .innerAgencyList_productAgencies {
@@ -143,37 +137,98 @@
     height: 90%;
     overflow-y: scroll;
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: center;
 }
 
 .productInformationHeading {
     width: 100%;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
 }
 
 .productInformationHeading h5 {
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI Semibold';
     font-size: 1rem;
-    font-weight: bold;
     color: #707070;
+    margin-bottom: 0;
+}
+
+.productInfo_productTeam {
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 1rem; */
+}
+
+.productAgencyMiddle {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 0rem 1rem 1rem;
+}
+
+.agencyImageProfile_productAgency {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.agencyProfileInfo_productAgencies {
+    display: flex;
+    flex-direction: column;
     margin-left: 2rem;
 }
 
-.productAgencyMiddle.bottom {
-    margin-top: -15%;
-    margin-left: 3%;
-    flex-direction: row-reverse;
+.agencyProfileInfo_productAgencies_domain {
+    font-family: 'Segoe UI';
+    display: flex;
+    margin-top: 0.5rem;
 }
 
-.agencyProfileInfo.name h6 {
-    padding-top: 0rem;
-    padding-left: 1rem;
+.agencyProfileInfo_productAgencies_domain p {
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #015f9a, #0376ba);
+    color: #fff;
+    font-family: "Segoe UI";
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.quotationShortlistButton.button {
-    top: 16rem;
-    left: 8.2rem;
+.agencyProfileInfo_productAgencies h6 {
+    font-family: "Segoe UI Semibold";
+    font-size: 1.3rem;
+    color: #707070;
+    letter-spacing: 1px;
+}
+
+.quotationShortlistButton_productAgencies {
+    display: flex;
+    padding: 0rem 0rem 1rem 1rem;
+}
+
+.quotationShortlistButton_productAgencies div {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.quotationShortlistButton_productAgencies div:nth-child(1) {
+    color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0, 18%);
+    background-image: linear-gradient(to right, #015f9a, #0376ba);
+}
+
+.quotationShortlistButton_productAgencies div:nth-child(2) {
+    background-color: #3498db;
+    border-radius: 3px;
+    color: #ffffff;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0, 18%);
+    background-image: linear-gradient(to right, #0376ba, #015f9a);
+    margin-left: 1rem;
 }
 
 .agencyProfileInfo.name div {
@@ -183,18 +238,11 @@
     left: 7rem;
 }
 
-.agencyImageProfile.innerdiv {
-    position: relative;
-    top: 0rem;
-    left: 0.8rem;
-}
-
-.productAgenciesTeam {
-    width: 48%;
-    height: 10rem;
-    padding: 0.5rem;
-    overflow: hidden;
-    background-color: #fff;
+.agencyCardHeaderInfo_productAgencies {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
 }
 
 .productAgenciesTeam {
@@ -202,35 +250,40 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: relative;
-    top: 6rem;
-    left: 38rem;
-    width: 36%;
     box-shadow: 0px 3px 6px rgb(0 0 0 / 18%);
+    width: 48%;
+    height: 10rem;
+    padding: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
 }
 
-.agencyImageArea.image {
-    width: 100px;
-    height: 100px;
-    margin: 0;
+.agencyImageArea_productAgencies {
+    width: 7.5rem;
+    height: 7.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
-.agencyPreciseCard.agencyPreciseCard_productAgencies {
-    /* background-image: url(../../../assets/images/AddProductAgency/background.svg); */
-    height: 19.5rem;
+.agencyPreciseCard_productAgencies {
     box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
     background-image: linear-gradient(to right, #ffffff, #ffffff, #8EC1E0);
     margin-bottom: 1rem;
-}
-
-.agencyPreciseCard {
     background-repeat: no-repeat;
     background-size: contain;
-    min-height: 30vh;
     background-color: #fff;
     position: relative;
     z-index: 1;
-    margin-bottom: -5%;
+    box-shadow: 1px 2px 3px 1px rgb(0 0 0 / 18%);
+}
+
+.agencyImageArea_productAgencies img {
+    width: 100%;
+    object-fit: contain;
 }
 
 .horizontalLine {
@@ -274,9 +327,6 @@
     overflow: hidden;
 }
 
-/* .productAgencyContent p {
-} */
-
 .productLogoHere img {
     width: 100%;
     object-fit: contain;
@@ -284,19 +334,14 @@
 
 .productDescArea {
     display: flex;
-    margin-top: 1rem;
-    justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    margin-top: 0.5rem;
 }
 
-.productLogoHere {
-    width: 20%;
-    position: sticky;
-    top: 0;
-}
-
-.agencyDescInfo {
-    position: relative;
+.agencyDescInfo_productAgencies {
+    width: 48%;
+    overflow-y: auto;
+    color: #015f9a;
 }
 
 .productLogoHere {
@@ -307,7 +352,6 @@
     align-items: center;
     border: 1px solid #999;
     padding: 0.5rem;
-    margin-left: 0.5rem;
 }
 
 .productLogoHere img {
@@ -316,7 +360,11 @@
 }
 
 .productAgencyDescPara {
-    width: 75%;
+    margin-left: 0.5rem;
+}
+
+.productAgencyDescPara p{
+    font-family: 'Segoe UI';
 }
 
 .agencyTeamNumber {
@@ -377,7 +425,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.productModalInput > p {
+.productModalInput>p {
     font-size: 0.7rem;
     font-weight: bold;
 }
@@ -400,7 +448,7 @@
     color: red !important;
     font-size: 14px !important;
     margin-top: 0 !important;
-    font-weight: normal !important ;
+    font-weight: normal !important;
 }
 
 .productModalInput input:focus {
@@ -412,7 +460,6 @@
     width: 100%;
     font-size: 0.9rem;
     outline: none;
-    border: none;
     background-color: #F8F9F9;
     border: 1px solid #e0e0e0;
     margin-top: 0.3rem;
@@ -425,11 +472,10 @@
 .connectedButton {
     margin-top: 4%;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Segoe UI Semibold';
     font-size: 1rem;
     color: #3498DB;
     cursor: pointer;
-    font-weight: bold;
 }
 
 .connectedButton>div {

@@ -31,13 +31,16 @@
 }
 
 .mainDetailHeader_agencyRespondedDetails {
-  border-radius: 8px;
+  border-radius: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  margin: auto;
   margin-top: 1rem;
+  width: 97%;
+  padding: 0.4rem;
 }
 
 .innerDetailHeader_agencyRespondedDetails {
@@ -52,18 +55,18 @@
 }
 
 .detailHeaderImage_agencyRespondedDetails div {
-  width: 68px;
-  height: 65px;
-  margin: 0.5rem 0rem;
-  background-color: #fff;
+  background-color: #f1ebeb;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid;
 }
 
 .detailHeaderImage_agencyRespondedDetails div img {
-  width: 45px;
+  width: 36px;
   object-fit: contain;
 }
 
@@ -131,10 +134,10 @@
 .rightBorder {
   position: absolute;
   width: 2px;
-  height: 134% !important;
+  height: 168% !important;
   top: -8px;
   right: 0%;
-  background-color: #aaa;
+  /* background-color: #aaa; */
   background-color: #707070;
   border-radius: 999px;
 }
@@ -143,11 +146,15 @@
   margin-right: 20px;
 }
 
+.innerBtnInfoDiv.project_name {
+  transform: translateX(5px);
+}
+
 .innerBtnInfoDiv p {
   font-family: 'Segoe UI';
-  font-size: 32px;
+  font-size: 1rem;
   text-transform: capitalize;
-  color: #707070;
+  color: #000;
 }
 
 .postQuotation>button {
@@ -343,7 +350,6 @@
   width: 40%;
   background-color: #fff;
   padding: 1rem 2.5rem 2rem 2.5rem;
-  /* box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2); */
   border-radius: 8px;
   margin: 0 2rem;
   position: relative;
@@ -371,23 +377,19 @@
 }
 
 .respondCards_AgencyRespondedDetails .innerResponseCard div p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
   margin-top: 4%;
-  font-weight: 500;
   font-size: 1rem;
   transform: translateY(20px);
 }
 
 .innerResponseCard div p:nth-child(1) {
   color: #000;
-  font-weight: 500;
   font-size: 1.1rem;
   white-space: nowrap;
 }
 
 .innerResponseCard div p:nth-child(2) {
-  /* color: #68e1fd; */
-  font-weight: 500;
   font-size: 1.1rem;
 }
 
@@ -552,11 +554,13 @@
 }
 
 .innerAgencyQuotation {
-  width: 95%;
+  width: 93%;
   background-color: #fff;
   box-shadow: none !important;
   position: relative;
   border-radius: 15px;
+  padding: 1.5rem;
+  margin-top: 1rem;
 }
 
 .agencyQuotationHeader {
@@ -605,15 +609,15 @@
   font-size: 22px;
 }
 
-.agencyQuotationDesc_AgencyRespondedDetails {
+/* .agencyQuotationDesc_AgencyRespondedDetails {
   font-family: "Inter";
   padding: 1rem 2rem;
-}
+} */
 
 .agencyQuotationDesc_AgencyRespondedDetails h4 {
   color: #000;
   margin-left: 15px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
   font-size: 22px;
   letter-spacing: 0.4px;
   text-transform: capitalize;
@@ -745,5 +749,24 @@
 }
 
 .ProjectDescriptionRespondedDetails {
-  margin-left: 5rem;
+  padding: 1rem;
+  width: 89%;
+  border-radius: 0.5rem;
+  margin: auto;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  display: flex;
+  align-items: center;
+}
+
+.ProjectDescriptionRespondedDetails_Paragraph {
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  color: #707070;
+  transform: translate(6px, 2px);
+}
+
+.ProjectDescriptionRespondedDetails_heading {
+  font-family: 'Segoe UI';
+  font-size: 1.1rem;
+  margin-bottom: 0;
 }

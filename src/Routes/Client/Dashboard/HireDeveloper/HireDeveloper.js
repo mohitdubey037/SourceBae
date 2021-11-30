@@ -34,10 +34,11 @@ function HireDeveloper(props) {
     preferredBillingMode: "",
     averageBudget: "",
     expectedStartDate: "",
-    contractPeriod: "1 Month",
+    contractPeriod: "3 Months",
     clientId: localStorage.getItem("userId")
   });
   const [billing, setBilling] = useState(1);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setApiData({
@@ -87,9 +88,11 @@ function HireDeveloper(props) {
       value: "Security Developer",
     },
   ];
+
   const [allTechnologies, setAllTechnologies] = useState([]);
   const [selectedRoles, setSelectedRoles] = useState([]);
   const [selectedTechnologies, setSelectedTechnologies] = useState([]);
+
   const changeBilling = (id) => {
     if (id !== billing) setBilling(id);
     if (id === 1)
@@ -142,7 +145,7 @@ function HireDeveloper(props) {
     <>
       <Navbar />
       <div className="back_and_hireDeveloper_Parent">
-        <img className="Image1_hireDeveloper" src={UpImage} alt="upImage" />
+        {/* <img className="Image1_hireDeveloper" src={UpImage} alt="upImage" /> */}
         <img className="Image2" src={DownImage} alt="downImage" />
         <Back name="Hire Developer" />
         <div className="mainHireDeveloper">
@@ -451,7 +454,7 @@ function HireDeveloper(props) {
                   id="contractPeriod"
                   onChange={handleChange}
                 >
-                  <option value="3 Month">3 Month</option>
+                  <option value="3 Months">3 Months</option>
                   <option value="6 Months">6 Months</option>
                   <option value="9 Months">9 Months</option>
                   <option value="12 Months">12 Months</option>

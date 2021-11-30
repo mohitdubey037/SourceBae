@@ -9,8 +9,10 @@ import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
 
 //axios instance
-import instance from "../../../../Constants/axiosConstants"
-import Spinner from '../../../../Components/Spinner/Spinner'
+import instance from "../../../../Constants/axiosConstants";
+import Spinner from '../../../../Components/Spinner/Spinner';
+
+import './ResponsiveAgencyForm.css';
 
 function AgencyForm3(props) {
 
@@ -145,43 +147,36 @@ function AgencyForm3(props) {
             stepsCompleted: 4,
             agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
         }
-        instance.post(`/api/${Role}/agencies/create`, apiData)
-            .then(function (response) {
-                setLoading(false);
-                propData.agencyForm3 = apiData;
-                props.history.push("/agency-form-four", propData)
-            })
-            .catch(err => {
-                setLoading(false);
-            })
+        if (apiData.agencyDocuments.length < 8) {
+            instance.post(`/api/${Role}/agencies/create`, apiData)
+                .then(function (response) {
+                    setLoading(false);
+                    propData.agencyForm3 = apiData;
+                    props.history.push("/agency-form-four", propData)
+                })
+                .catch(err => {
+                    setLoading(false);
+                })
+        }
     }
 
     const goBack = () => {
         if (url.includes('agency-form-one')) {
-            props.history.push('/agencyNewestDashboard');
+            props.history.replace('/agencyNewestDashboard');
         }
         else if (url.includes('agency-form-two')) {
-            props.history.push('/agency-form-one');
+            props.history.replace('/agency-form-one');
         }
         else if (url.includes('agency-form-three')) {
-            props.history.push('/agency-form-two', propData);
+            props.history.replace('/agency-form-two', propData);
         }
         else if (url.includes('agency-form-four')) {
-            props.history.push('/agency-form-three');
+            props.history.replace('/agency-form-three');
         }
         else {
             props.history.goBack();
         }
     }
-
-
-
-    // useEffect(() => {
-    //     if (props.history.action === "POP") {
-    //         console.log("write your logic here")
-    //         alert('hiiiiiiiiiiiiiii');
-    //     }
-    // }, [])
 
     useEffect(() => {
         if (props.location.state?.agencyForm3) {
@@ -207,7 +202,6 @@ function AgencyForm3(props) {
             handleUpdate();
         }
 
-
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
     return (
@@ -221,7 +215,11 @@ function AgencyForm3(props) {
                     <div className="mainDocumentsForm">
                         <div className="innerDocumentForm">
                             <div className="documentDetails">
-                                <p>* Provide your Valid Document</p>
+                                <p>
+                                    <span className="requiredStar">
+                                        *
+                                    </span>
+                                    Provide your Valid Document:{" "}<span style={{ color: 'red' }}>max 3 file</span></p>
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
                                         <FilePicker
@@ -229,7 +227,11 @@ function AgencyForm3(props) {
                                             onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
-                                                <p>Pick File</p>
+                                                <p>Pick File
+                                                    <span className="requiredStar">
+                                                        *
+                                                    </span>
+                                                </p>
                                                 <img src={fileIcon} alt="finish" /></button>
                                         </FilePicker>
                                         {/* </div> */}
@@ -242,12 +244,16 @@ function AgencyForm3(props) {
                                             onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
-                                                <p>Pick File</p>
+                                                <p>Pick File
+                                                    <span className="requiredStar">
+                                                        *
+                                                    </span>
+                                                </p>
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
                                         {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? registrationCertificate?.document?.name.slice(0, 20) : "Brochure"}`}</p>
+                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? brochureDoc?.document?.name.slice(0, 20) : "Brochure"}`}</p>
                                     </div>
                                 </div>
                                 <div className="panDetails">
@@ -258,7 +264,11 @@ function AgencyForm3(props) {
                                             onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
-                                                <p>Pick File</p>
+                                                <p>Pick File
+                                                    <span className="requiredStar">
+                                                        *
+                                                    </span>
+                                                </p>
                                                 <img src={fileIcon} alt="finish" />
                                             </button>
                                         </FilePicker>
@@ -266,7 +276,7 @@ function AgencyForm3(props) {
                                     </div>
                                 </div>
 
-                                <div className="nextBtn">
+                                <div className="nextBtn bothBtn">
                                     <button onClick={() => goBack()} style={{ backgroundColor: '#707070' }}>
                                         Back
                                     </button>
@@ -278,7 +288,9 @@ function AgencyForm3(props) {
                         </div>
                         <div className="miscellaneousArea">
                             <p>Your Information is safe with us.</p>
-                            <img src={illustrationImage} alt="agency-form-3" />
+                            <div className="information_safe_image">
+                                <img src={illustrationImage} alt="agency-form-3" />
+                            </div>
                         </div>
                     </div>
                 }

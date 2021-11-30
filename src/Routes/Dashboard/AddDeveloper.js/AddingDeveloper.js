@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 function AddingDeveloper(props) {
 
     const theme = useTheme();
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
     const classes = useStyles();
     const Role = localStorage.getItem('role')
@@ -55,14 +56,14 @@ function AddingDeveloper(props) {
             ],
             developerExperience: "",
             developerPriceRange: "",
-            developerAvailability: ""
+            developerAvailability: null
         })
 
     const [techs, setTechs] = useState([]);
     const [isDisabled, setIsDisabled] = useState(true)
     const [resume, setResume] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
     const [multipleSelectId, setMultipleSelectId] = useState([]);
 
     useEffect(() => {
@@ -76,15 +77,16 @@ function AddingDeveloper(props) {
     }, [developerData])
 
 
-    const handleChange = (event) => {
+    const handleChange = (event, type) => {
         const { name, value } = event.currentTarget
-        if (name === "developerTechnologies") {
-            setDeveloperData(
-                {
-                    ...developerData,
-                    [name]: [value]
-                }
-            )
+        if (type === 'negoPrice') {
+            if (value > 3) {
+                setDeveloperData(
+                    {
+                        ...developerData,
+                        [name]: value
+                    })
+            }
         }
         else {
             setDeveloperData(
@@ -94,6 +96,10 @@ function AddingDeveloper(props) {
                 })
         }
     }
+
+    useEffect(() => {
+        console.log(developerData)
+    }, [developerData])
 
     const getAllTechs = () => {
         instance.get(`api/${Role}/technologies/all`)
@@ -109,6 +115,7 @@ function AddingDeveloper(props) {
     }
 
     const errorValidation = () => {
+
         const errors = {};
         if (developerData.firstName === '') {
             errors.firstName = 'First Name is required'
@@ -118,6 +125,9 @@ function AddingDeveloper(props) {
         }
         else if (developerData.developerDesignation === '') {
             errors.developerDesignation = 'Developer Designation is required'
+        }
+        else if (developerData.developerDesignation.length < 4) {
+            errors.developerDesignation = 'Developer Designation must be at least 4 character'
         }
         else if (developerData.developerTechnologies.length === 0) {
             errors.developerTechnologies = 'Technologies is required'
@@ -133,6 +143,12 @@ function AddingDeveloper(props) {
         }
         else if (developerData.developerAvailability === '') {
             errors.developerAvailability = 'Developer Availability is required'
+        }
+        else if (developerData.developerAvailability === null) {
+            errors.developerAvailability = 'Developer Availability is required'
+        }
+        else if (developerData.developerAvailability === 'Negotiable') {
+            errors.developerAvailability = 'Please enter a day'
         }
         setErrors(errors);
         if (Object.keys(errors).length === 0)
@@ -167,7 +183,6 @@ function AddingDeveloper(props) {
                     setLoading(false);
                 })
         }
-
     }
 
     useEffect(() => {
@@ -199,7 +214,7 @@ function AddingDeveloper(props) {
 
     return (
         <>
-            <Navbar />
+            <Navbar logoLink={logoLink} />
 
             {loading ? <Spinner /> :
                 <>
@@ -237,26 +252,41 @@ function AddingDeveloper(props) {
                                 <div className="inputForm">
                                     <div className="inputField1">
                                         <div className="developerName_addingDeveloper">
-                                            <h4>First Name *</h4>
+                                            <h4>First Name
+                                                <span className="requiredStar">
+                                                    *
+                                                </span>
+                                            </h4>
                                             <input type="text" placeholder="First Name" name="firstName" value={developerData.firstName} onChange={(event) => handleChange(event)} />
                                             {errors.firstName && (<p className="error_paragraph basic">{errors.firstName}</p>)}
                                         </div>
 
                                         <div className="developerName_addingDeveloper">
-                                            <h4>Last Name *</h4>
+                                            <h4>Last Name
+                                                <span className="requiredStar">
+                                                    *
+                                                </span>
+                                            </h4>
                                             <input type="text" placeholder="Last Name" name="lastName" value={developerData.lastName} onChange={(event) => handleChange(event)} />
                                             {errors.lastName && (<p className="error_paragraph basic">{errors.lastName}</p>)}
                                         </div>
 
                                         <div className="developerDesignation_addingDeveloper">
-                                            <h4>Designation *</h4>
+                                            <h4>Designation
+                                                <span className="requiredStar">
+                                                    *
+                                                </span></h4>
                                             <input type="text" placeholder="E.g- Angular Developer" name="developerDesignation" value={developerData.developerDesignation} onChange={(event) => handleChange(event)} />
                                             {errors.developerDesignation && (<p className="error_paragraph basic">{errors.developerDesignation}</p>)}
                                         </div>
                                     </div>
                                     <div className="inputField2">
                                         <div className="developerName_addingDeveloper">
-                                            <h4>Technology & Skills *</h4>
+                                            <h4>Technology & Skills
+                                                <span className="requiredStar">
+                                                    *
+                                                </span>
+                                            </h4>
                                             <MultiSelect
                                                 options={techs.map(t => ({ "label": t.technologyName, "value": t._id }))}
                                                 value={multipleSelectId}
@@ -267,7 +297,11 @@ function AddingDeveloper(props) {
                                             {errors.developerTechnologies && (<p className="error_paragraph experience">{errors.developerTechnologies}</p>)}
                                         </div>
                                         <div className="developerDesignation_addingDeveloper">
-                                            <h4>Upload Resume(pdf, doc, docx)*</h4>
+                                            <h4>Upload Resume(pdf, doc, docx)
+                                                <span className="requiredStar">
+                                                    *
+                                                </span>
+                                            </h4>
                                             <div className="uploadBlock_addingDeveloper">
                                                 <div className="fileUploadButton_addingDeveloper">
                                                     <FilePicker
@@ -276,7 +310,7 @@ function AddingDeveloper(props) {
                                                         onError={errMsg => toast.error(errMsg)}
                                                     >
                                                         <div>
-                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name.slice(0,25) : 'pick file'}</p>
+                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name.slice(0, 25) : 'pick file'}</p>
                                                             <img src={fileIcon} alt="finish" />
                                                         </div>
                                                     </FilePicker>
@@ -288,7 +322,9 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="yearsOfExperience_addingDeveloper">
                                         <FormControl component="fieldset">
-                                            <FormLabel component="legend">Years of Experience *</FormLabel>
+                                            <FormLabel component="legend">Years of Experience <span className="requiredStar">
+                                                *
+                                            </span></FormLabel>
                                             <div className="experience-radio-parent">
                                                 <RadioGroup aria-label="developerExperience" name="developerExperience" value={developerData.developerExperience} onChange={(event) => handleChange(event)}>
                                                     <FormControlLabel value="1" control={<Radio />} label="Junior(1-3years)" />
@@ -301,7 +337,9 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="priceRange">
                                         <FormControl component="fieldset">
-                                            <FormLabel component="legend">Price Range(Monthly) *</FormLabel>
+                                            <FormLabel component="legend">Price Range(Monthly) <span className="requiredStar">
+                                                *
+                                            </span></FormLabel>
                                             <RadioGroup aria-label="developerPriceRange" name="developerPriceRange" value={developerData.developerPriceRange} onChange={(event) => handleChange(event)}>
                                                 <FormControlLabel value="1500" control={<Radio />} label="less than $1500 per month" />
                                                 <FormControlLabel value="2500" control={<Radio />} label="$1500-$2500 per month" />
@@ -313,15 +351,23 @@ function AddingDeveloper(props) {
                                     </div>
                                     <div className="availabilityArea">
                                         <FormControl component="fieldset">
-                                            <FormLabel component="legend">Availability *</FormLabel>
-                                            <RadioGroup aria-label="developerAvailability" name="developerAvailability" value={developerData.developerAvailability} onChange={(event) => handleChange(event)}>
+                                            <FormLabel component="legend">Availability <span className="requiredStar">
+                                                *
+                                            </span></FormLabel>
+                                            <RadioGroup aria-label="developerAvailability" name="developerAvailability" onChange={(event) => handleChange(event)}>
                                                 <FormControlLabel value="0" control={<Radio />} label="Immediately" />
                                                 <FormControlLabel value="1" control={<Radio />} label="less than 2 weeks" />
                                                 <FormControlLabel value="2" control={<Radio />} label="More than 2 weeks" />
-                                                <FormControlLabel value="-1" control={<Radio />} label="Negotiable" />
+                                                <FormControlLabel value="Negotiable" control={<Radio />} label="Negotiable" />
                                             </RadioGroup>
+                                            {developerData.developerAvailability != '0' &&
+                                                developerData.developerAvailability != '1' &&
+                                                developerData.developerAvailability != '2' &&
+                                                developerData.developerAvailability != null &&
+                                                <input min={4} type="number" className="availability_days" placeholder="Enter Days" name="developerAvailability" onChange={(event) => handleChange(event, 'negoPrice')} />
+                                            }
                                         </FormControl>
-                                        {errors.developerAvailability && (<p className="error_paragraph">{errors.developerAvailability}</p>)}
+                                        {errors.developerAvailability && (<p style={{ marginTop: developerData.developerAvailability && '0' }} className="error_paragraph">{errors.developerAvailability}</p>)}
                                     </div>
                                     <div className="submitButton">
                                         <button onClick={() => uploadMedia()}>Submit</button>

@@ -3,43 +3,47 @@
     width: 48%;
     margin: 0.5rem;
     border-radius: 5px;
+    height: max-content;
 }
 
 .ProjectDataPortfolio {
     display: flex;
+    align-items: center;
 }
+
 .detialPortfolio {
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
 }
+
 .PortfolioPriceAndTimeline {
     display: flex;
     flex-direction: row;
-    margin-top: 1rem;
+    margin: 1rem 0rem;
 }
+
 .logoPortfolio img {
     width: 4rem;
     height: 4rem;
-   
 }
+
 .mainPortfolioDiv {
     display: flex;
-    flex-wrap: wrap;
-     width: 100%;
-    margin: auto;
     padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
     border-radius: 20px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    flex-direction: column;
 }
 
 .logoPortfolio {
     box-shadow: 2px 2px 7px rgb(0 0 0 / 52%);
     margin: 1rem;
+    height: max-content;
 }
-.detialPortfolio p{
+
+.detialPortfolio p {
     word-break: break-all;
     font-family: 'Segoe UI Semibold';
     color: #45a4ea;
@@ -53,6 +57,7 @@
     padding: 0px 15px;
     border-radius: 1rem;
 }
+
 .ProjectDescriptionPortfolio {
     padding: 0 1rem 1rem;
 }
@@ -60,6 +65,7 @@
 .ProjectDescriptionPortfolio p {
     word-break: break-all;
 }
+
 .portfolioHeading {
     width: 100%;
     display: flex;
@@ -68,18 +74,41 @@
     margin-bottom: 1%;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
+
 .portfolioParent {
     display: flex;
     flex-wrap: wrap;
-    height: 30rem;
+    /* height: 30rem; */
     overflow: auto;
     background-color: #ffffff;
 }
-.portfolioHeading p{
+
+.portfolioHeading p {
     font-family: 'Segoe UI Bold';
     font-size: 14px;
     text-transform: capitalize;
     color: #5C6DFF;
     padding: 8px 0px;
     margin-left: 2rem;
+}
+
+.No_portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    padding: 1rem;
+    width: 48%;
+    border-radius: 1rem;
+    margin: 0.5rem;
+}
+
+.No_portfolio:hover {
+    cursor: pointer;
+}
+
+.add-portfolio {
+    font-family: 'Segoe UI';
+    font-size: 0.8rem;
+    /* margin-top: 1rem; */
 }

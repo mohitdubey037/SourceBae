@@ -6,6 +6,7 @@
   padding: 1rem;
   height: 97%;
   min-width: 24%;
+  display: flex;
 }
 
 .content-rightBody {
@@ -26,6 +27,18 @@
   margin-right: 25px;
 }
 
+.getInTouch {
+  border: 1px solid;
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  box-shadow: 1px 0px 1px 0px;
+  border-color: blue;
+}
+
+.getInTouch:hover {
+  cursor: pointer;
+}
+
 .rightBody-navigation>.navigation-name:nth-last-child(1) {
   margin-right: 0;
 }
@@ -40,6 +53,44 @@
   padding: 5px 0;
 }
 
+.contact-us {
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: black;
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  text-align: center;
+}
+
+.contact-us>div {
+  display: flex;
+  justify-content: center;
+}
+
+.customModalRightSide {
+  background: #fff;
+  max-width: 290px;
+  width: 100%;
+  border-radius: 1.4rem;
+  height: 7rem;
+}
+
+.email_contactUs {
+  font-family: 'Segoe UI Semibold';
+}
+
+.contact_shethink {
+  color: #45a4ea;
+  transform: translateX(10px);
+}
+
+.react-responsive-modal-closeButton {
+  top: 10px;
+}
+
 .navigation-name.active>p {
   border-bottom: 3px solid #02044a;
 }
@@ -51,6 +102,7 @@
   justify-content: space-around;
   border-radius: 8px;
   background-color: #Fdfff5;
+  width: 100%;
 }
 
 .itemContent-heading {
@@ -68,12 +120,10 @@
 
 .itemContent-videoCard {
   width: 90%;
-  min-height: 148px;
+  min-height: 191px;
   border-radius: 8px;
   background: url(../../../assets/images/Newestdashboard/RightSide/tech.svg);
   background-size: cover;
-  /* margin: 0 15px; */
-  /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
 }
 
 .itemContent-1 {
@@ -109,7 +159,7 @@
 
 .cta-item>.view-details-btn>button {
   padding: 0.3rem 1.1rem;
-  background: linear-gradient( 262deg, #45a4ea 0%, #5C6DFF 100%);
+  background: linear-gradient(262deg, #45a4ea 0%, #5C6DFF 100%);
   border-radius: 22px;
   /* border: inherit; */
   border: none;
@@ -120,8 +170,52 @@
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.cta-item>.view-details-btn>button:active,
-.cta-item>.view-details-btn>button:focus {
+.interested_or_not.contactus_or_not {
+  width: 90%;
+}
+
+.update_now.contact-us {
+  width: max-content;
+  padding: 0.8rem;
+}
+
+.cta-item>.view-details-btn>button:active, .cta-item>.view-details-btn>button:focus {
   border: none;
   outline: none;
+}
+
+.react-responsive-modal-closeButton {
+  top: 10px !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* toast styling */
+
+.Toastify__toast {
+  min-height: 33px !important;
+  font-size: 0.7rem !important;
+}
+
+.Toastify__toast-container {
+  padding: 4px !important;
+  width: 290px !important;
+}
+
+.Toastify__toast--success {
+  border: 1px solid blue !important;
+  background: white !important;
+  color: black !important;
+}
+
+.Toastify__toast--error {
+  color: black !important;
+  border: 1px solid blue !important;
+  background: white !important;
+}
+
+@media (max-width: 768px) {
+  .content-rightBody_parent {
+    display: none;
+  }
 }

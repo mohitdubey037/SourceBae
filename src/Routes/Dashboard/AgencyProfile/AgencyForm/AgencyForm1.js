@@ -3,15 +3,15 @@ import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from './FormPhases';
 import { FilePicker } from 'react-file-picker'
 // import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
-import agency3d from '../../../../assets/images/AgencyProfile/form1_3d.png'
-import squareShape from '../../../../assets/images/AgencyProfile/squareShape.png'
 import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import instance from "../../../../Constants/axiosConstants"
 import { toast } from 'react-toastify'
-import Spinner from '../../../../Components/Spinner/Spinner'
+import Spinner from '../../../../Components/Spinner/Spinner';
+
+import './ResponsiveAgencyForm.css';
 
 function AgencyForm1(props) {
 
@@ -19,9 +19,11 @@ function AgencyForm1(props) {
     const api_param_const = "agencies"
 
     const [loading, setLoading] = useState(false);
-    const [steps, setSteps] = useState('')
+    const [steps, setSteps] = useState('');
+    const [errors, setErrors] = useState({});
 
-    const [agencyLogo, setAgencyLogo] = useState(null)
+    const [logo, setLogo] = useState(null);
+
     const [formData, setFormData] = useState({
         stepsCompleted: 2,
         ownerName: props?.location?.state?.agencyForm1 ? props.location.state.agencyForm1.ownerName : "",
@@ -40,31 +42,98 @@ function AgencyForm1(props) {
         platformLink: formData.socialPlatformDetails[0] ? formData.socialPlatformDetails[0].platformLink : ""
     })
 
-    const [formDataErrors, setFormDataErrors] = useState({
-        agencyLogoError: "",
-        ownerNameError: "",
-        agencyEmailError: "",
-        agencyPhoneError: "",
-        agencyDescriptionError: "",
-        socialPlatformDetailsError: "",
-        agencyAddressError: {
-            addressError: "",
-            locationError: ""
-        },
-    })
+    const handleValidation = () => {
+        const errors = {};
+        if (logo === null) {
+            errors.agencyLogo = "Agency Logo is required"
+        }
+        else if (formData.ownerName === "") {
+            errors.ownerName = "Owner name is required"
+        }
+        else if (formData.ownerName.length < 2) {
+            errors.ownerName = "Owner name must be more than 2 characters."
+        }
+        else if (formData.ownerName === "") {
+            errors.ownerName = "Owner name is required"
+        }
+        else if (formData.ownerName.length < 2) {
+            errors.ownerName = "Owner name must be more than 2 characters."
+        }
+        else if (formData.agencyEmail === "") {
+            errors.agencyEmail = "Email is required."
+        }
+        else if (!/\S+@\S+\.\S+/.test(formData.agencyEmail)) {
+            errors.agencyEmail = "Invalid email address."
+        }
+        else if (formData.agencyPhone === "") {
+            errors.agencyPhone = "Phone is required"
+        }
+        else if (formData.agencyPhone.length < 10) {
+            errors.agencyPhone = "Phone must be of 10 digits."
+        }
+        else if (formData.agencyPhone.match(/[^0-9]/g)) {
+            errors.agencyPhone = "Phone must be digits."
+        }
+        else if (formData.agencyDescription === "") {
+            errors.agencyDescription = "Description is required"
+        }
+        else if (formData.agencyDescription < 100 && formData.agencyDescription > 300) {
+            errors.agencyDescription = "Description must be between 100-300 characters."
+        }
+        else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)) {
+            errors.socialPlatformDetails = "Invalid website address"
+        }
+        else if (formData.agencyAddress.address === "") {
+            errors.address = "Address is required";
+        }
+        else if (formData.agencyAddress.address > 200) {
+            errors.address = "Address must be less than 200 characters.";
+        }
+        else if (formData.agencyAddress.location === "") {
+            errors.location = "Location is required";
+        }
+        setErrors(errors);
+        if (Object.keys(errors).length === 0)
+            return true;
+        else
+            return false;
+    };
 
-    useEffect(() => {
-        if (formData.agencyLogo !== null) {
-            instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
+    const inputFileChoosen = (projectDoc) => {
+        setLogo(projectDoc);
+    }
+
+    const uploadMedia = () => {
+        if (handleValidation()) {
+            const data = new FormData();
+            data.append(
+                "files",
+                logo,
+                logo.name
+            );
+            instance.post(`api/${Role}/media/create`, data)
                 .then(function (response) {
-                    setLoading(false);
-                    props.history.push("/agency-form-two", { agencyForm1: formData });
+                    setFormData({
+                        ...formData,
+                        agencyLogo: response[0].mediaURL
+                    })
                 })
                 .catch(err => {
                     setLoading(false);
                 })
         }
-    }, [formData, formDataErrors]);
+    }
+
+    const handleSubmit = () => {
+        instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
+            .then(function (response) {
+                setLoading(false);
+                props.history.push("/agency-form-two", { agencyForm1: formData });
+            })
+            .catch(err => {
+                setLoading(false);
+            })
+    }
 
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
@@ -74,260 +143,14 @@ function AgencyForm1(props) {
     };
 
     useEffect(() => {
-    }, [formData])
-
-    useEffect(() => {
         getStepsCompleted();
     }, []);
 
-    const handleSubmit = (category, document) => {
-        if (agencyLogo === null) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "Agency Logo is required",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    }
-                }
-            )
+    useEffect(() => {
+        if (formData.agencyLogo !== null) {
+            handleSubmit()
         }
-        else if (formData.ownerName === "") {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "Owner name is required",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    }
-                }
-            )
-        }
-        else if (formData.ownerName.length < 2) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "Owner name must be more than 2 characters.",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyEmail === "") {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "Email is required.",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (!/\S+@\S+\.\S+/.test(formData.agencyEmail)) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "Invalid email address.",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyPhone === "") {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "Phone is required",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyPhone.length < 10) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "Phone must be of 10 digits.",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyPhone.match(/[^0-9]/g)) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "Phone must be digits.",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyDescription === "") {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "Description is required",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyDescription < 100 && formData.agencyDescription > 300) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "Description must be between 100-300 characters.",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "Invalid website address",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyAddress.address === "") {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "Address is required",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyAddress.address > 200) {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "Address must be less than 200 characters.",
-                        locationError: ""
-                    },
-                }
-            )
-        }
-        else if (formData.agencyAddress.location === "") {
-            setFormDataErrors(
-                {
-                    agencyLogoError: "",
-                    ownerNameError: "",
-                    agencyEmailError: "",
-                    agencyPhoneError: "",
-                    agencyDescriptionError: "",
-                    socialPlatformDetailsError: "",
-                    agencyAddressError: {
-                        addressError: "",
-                        locationError: "Location is required"
-                    },
-                }
-            )
-        }
-        else {
-            setLoading(true);
-            if (agencyLogo !== null) {
-                const data = new FormData();
-                data.append(
-                    "files",
-                    agencyLogo.document,
-                    agencyLogo.category
-                );
-                instance.post(`api/${Role}/media/create`, data)
-                    .then(function (response) {
-                        setFormData({
-                            ...formData,
-                            agencyLogo: response[0].mediaURL
-                        })
-                    })
-                    .catch(err => {
-                        setLoading(false);
-                    })
-            }
-
-        }
-    };
+    }, [formData])
 
     const handleChange = (event) => {
         const { id, name, value } = event.target
@@ -340,6 +163,14 @@ function AgencyForm1(props) {
                 }
             })
         }
+        else if (name === 'agencyPhone') {
+            if (helper.noTextNumber(value)) {
+                setFormData({
+                    ...formData,
+                    [name]: value
+                })
+            }
+        }
         else {
             setFormData({
                 ...formData,
@@ -347,7 +178,6 @@ function AgencyForm1(props) {
             })
         }
     }
-
 
     const handleSocialPlatform = (event) => {
         const { name, value } = event.target
@@ -364,20 +194,12 @@ function AgencyForm1(props) {
         toast.error(error)
     }
 
-    const handleDocumentPicker = (document, category) => {
-        setAgencyLogo({
-            category,
-            document
-        })
-    };
-
     useEffect(() => {
         setFormData({
             ...formData,
             socialPlatformDetails: [linkedIn]
         })
-    }, [linkedIn])
-
+    }, [linkedIn]);
 
     return (
         <>
@@ -391,27 +213,35 @@ function AgencyForm1(props) {
                             <div className="innerLeftPersonelDetailsForm">
                                 <div className="formContentPartOne">
                                     <div className="agencyLogo_parent">
-                                        <label>Agency Logo</label>
+                                        <label>Agency Logo
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="getAgencyLogo">
                                             <FilePicker
                                                 extensions={['jpg', 'png', 'jpeg']}
-                                                onChange={fileObj => handleDocumentPicker(fileObj, "agencyLogo")}
+                                                onChange={(fileObj) => inputFileChoosen(fileObj)}
                                                 onError={error => handleUploadError(error)}>
                                                 <button>
                                                     <p className="agencyLogo_pick_file">Pick File</p>
                                                     <img src={fileIcon} alt="finish" />
                                                 </button>
                                             </FilePicker>
-                                            <p className="logo-type_agencyForm1">{`${agencyLogo?.document?.name.slice(0, 20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p>
-                                            {formDataErrors.agencyLogoError !== '' &&
+                                            <p className="logo-type_agencyForm1">{`${logo?.name.slice(0, 20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p>
+                                            {errors?.agencyLogo !== '' &&
                                                 <p className="error_agencyForm">
-                                                    {formDataErrors.agencyLogoError}
+                                                    {errors.agencyLogo}
                                                 </p>
                                             }
                                         </div>
                                     </div>
                                     <div className="getAgencyDesc">
-                                        <p>Description</p>
+                                        <p>Description
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <textarea
                                             name="agencyDescription"
                                             cols="30"
@@ -419,9 +249,9 @@ function AgencyForm1(props) {
                                             placeholder="Add Description"
                                             value={formData?.agencyDescription}
                                             onChange={(event) => handleChange(event)} />
-                                        {formDataErrors.agencyDescriptionError !== '' &&
+                                        {errors?.agencyDescription !== '' &&
                                             <p className="error_agencyForm">
-                                                {formDataErrors.agencyDescriptionError}
+                                                {errors.agencyDescription}
                                             </p>
                                         }
                                     </div>
@@ -429,7 +259,10 @@ function AgencyForm1(props) {
 
                                 <div className="formContentPartTwo">
                                     <div className="getOwnerName">
-                                        <p>Owner Name</p>
+                                        <p>Owner Name <span className="requiredStar">
+                                            *
+                                        </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Owner's Name"
@@ -437,24 +270,28 @@ function AgencyForm1(props) {
                                             value={formData?.ownerName}
                                             onChange={(event) => handleChange(event)}
                                         />
-                                        {formDataErrors.ownerNameError !== '' &&
+                                        {errors.ownerName !== '' &&
                                             <p className="error_agencyForm">
-                                                {formDataErrors.ownerNameError}
+                                                {errors.ownerName}
                                             </p>
                                         }
                                     </div>
 
                                     <div className="getOwnerName">
-                                        <p>Company Email</p>
+                                        <p>Company Email
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Company Email"
                                             name="agencyEmail"
                                             value={formData?.agencyEmail}
                                             onChange={(event) => handleChange(event)} />
-                                        {formDataErrors.agencyEmailError !== '' &&
+                                        {errors.agencyEmail !== '' &&
                                             <p className="error_agencyForm">
-                                                {formDataErrors.agencyEmailError}
+                                                {errors.agencyEmail}
                                             </p>
                                         }
                                     </div>
@@ -462,7 +299,11 @@ function AgencyForm1(props) {
 
                                 <div className="formContentPartTwo">
                                     <div className="getOwnerName">
-                                        <p>Company Phone</p>
+                                        <p>Company Phone
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             maxLength='10'
                                             type="text"
@@ -470,22 +311,26 @@ function AgencyForm1(props) {
                                             name="agencyPhone"
                                             value={formData?.agencyPhone}
                                             onChange={(event) => handleChange(event)} />
-                                        {formDataErrors.agencyPhoneError !== '' &&
+                                        {errors.agencyPhone !== '' &&
                                             <p className="error_agencyForm">
-                                                {formDataErrors.agencyPhoneError}
+                                                {errors.agencyPhone}
                                             </p>
                                         }
                                     </div>
                                     <div className="getOwnerName">
-                                        <p>LinkedIn URL</p>
+                                        <p>LinkedIn URL
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input placeholder="E.g - https://www.linkedin.com/shethink-pvt-ltd/"
                                             type="text"
                                             name={linkedIn?.platformName}
                                             value={linkedIn?.platformLink}
                                             onChange={(event) => handleSocialPlatform(event)} />
-                                        {formDataErrors.socialPlatformDetailsError !== '' &&
+                                        {errors.socialPlatformDetails !== '' &&
                                             <p className="error_agencyForm">
-                                                {formDataErrors.socialPlatformDetailsError}
+                                                {errors.socialPlatformDetails}
                                             </p>
                                         }
                                     </div>
@@ -493,7 +338,11 @@ function AgencyForm1(props) {
 
                                 <div className="formContentPartTwo">
                                     <div className="getOwnerName">
-                                        <p>Company Address</p>
+                                        <p>Company Address
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Company Address"
@@ -501,15 +350,19 @@ function AgencyForm1(props) {
                                             id="address_location"
                                             value={formData?.agencyAddress?.address}
                                             onChange={(event) => handleChange(event)} />
-                                        {formDataErrors.agencyAddressError.addressError !== '' &&
+                                        {errors.address !== '' &&
                                             <p className="error_agencyForm">
-                                                {formDataErrors.agencyAddressError.addressError}
+                                                {errors.address}
                                             </p>
                                         }
                                     </div>
 
                                     <div className="getOwnerName">
-                                        <p>Company Location</p>
+                                        <p>Company Location
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                        </p>
                                         <input
                                             type="text"
                                             placeholder="Enter Company Location"
@@ -517,16 +370,16 @@ function AgencyForm1(props) {
                                             id="address_location"
                                             value={formData?.agencyAddress?.location}
                                             onChange={(event) => handleChange(event)} />
-                                        {formDataErrors.agencyAddressError.locationError !== '' &&
+                                        {errors.location !== '' &&
                                             <p className="error_agencyForm">
-                                                {formDataErrors.agencyAddressError.locationError}
+                                                {errors.location}
                                             </p>
                                         }
                                     </div>
                                 </div>
 
                                 <div className="nextBtn">
-                                    <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={(event) => handleSubmit(event)}>
+                                    <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={() => uploadMedia()}>
                                         Next
                                     </button>
                                 </div>

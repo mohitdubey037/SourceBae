@@ -1,5 +1,5 @@
 .main_parent_clientOneHireDeveloper {
-  background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+  /* background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%); */
   overflow: hidden;
   position: relative;
   height: 100vh;
@@ -9,12 +9,22 @@
   border-bottom: none;
   cursor: pointer;
   flex-direction: column;
-  min-width: 17rem;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 40%;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   padding: 1rem;
   background-color: #ffffff;
   border-radius: 8px;
   margin: 1rem 1rem;
+  overflow: hidden;
+  min-height: 15rem;
+  position: relative;
+}
+
+.shortlist_and_interest_parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .upImage1_clientOneHireDeveloper {
@@ -48,7 +58,14 @@
   padding: 1rem;
   display: flex;
   align-items: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
+  margin: auto;
+  width: 84%;
+  overflow: auto;
+  /* height: 33rem; */
+  height: 87%;
+  margin-top: 1rem;
 }
 
 .moreAgencyHeading {
@@ -63,26 +80,26 @@
   text-align: center;
 }
 
-.name-title, .name-Font{
-  font-family: 'Segoe UI semibold', sans-serif;
+.name-title, .name-Font {
+  font-family: 'Segoe UI Semibold', sans-serif;
   font-size: 1rem;
   text-transform: capitalize;
-  padding-top: 2%;
   color: #015F9A;
-  text-align: center;
 }
 
-.name-title {
-  color: #080808;
+.description_clientOne {
+  font-family: 'Segoe UI Semibold', sans-serif;
 }
 
 .name-Font {
   transform: translateX(0.5rem);
 }
 
-.agencyDesc_clientOneHireDeveloper {
-  display: flex;
-  justify-content: center;
+.border-bottom_onAgency {
+  position: relative;
+  height: 1px;
+  background-color: grey;
+  margin-top: 1rem;
 }
 
 .innerMoreAgencies_clientOneHireDeveloper .moreAgencyHeading {
@@ -91,6 +108,10 @@
   padding-left: 20px;
 }
 
+/* .moreAgencyInfo {
+  margin-bottom: 3rem;
+} */
+
 .phone_clientOneHireDeveloper {
   margin-top: 0rem;
   display: flex;
@@ -98,10 +119,24 @@
 }
 
 .email_clientOneHireDeveloper {
-  margin-top: 2rem;
-  width: 100%;
   display: flex;
-  padding-left: 0.8rem
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.email_clientOneHireDeveloper.description_parent {
+  /* width: 50%; */
+  width: max-content;
+  background-color: grey;
+  padding: 0.7rem;
+  border-radius: 0.4rem;
+  justify-content: center;
+  background: #F6F7FA;
+}
+
+.description_parent>p {
+  background: #F6F7FA;
+  color: rgba(48, 48, 48, 0.6);
 }
 
 .phone_clientOneHireDeveloper img, .email_clientOneHireDeveloper img {
@@ -120,23 +155,18 @@
 
 .moreAgencyLogo {
   background-image: linear-gradient(to right, #01304D, #015F9A);
-  padding: 8px;
-  width: 80%;
+  padding: 12px;
   display: flex;
   justify-content: center;
   color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   border-radius: 8px;
   outline: none;
   border: none;
 }
 
-.checkResource.moreAgencyLogo:hover,
-.checkResource.moreAgencyLogo:focus,
-.checkResource.moreAgencyLogo:active {
-  background-color: rgb(17, 166, 192);
-  color: white;
+.checkResource.moreAgencyLogo:hover, .checkResource.moreAgencyLogo:focus, .checkResource.moreAgencyLogo:active {
   outline: none;
   border: none;
 }
@@ -150,33 +180,85 @@
   margin-left: 30px;
 }
 
-.button_parent {
-  display: flex;
-  justify-content: center;
-  margin-top: 2.2rem;
-}
-
 .respondCards_clientOneHireDeveloper {
   padding-top: 5rem;
   position: relative;
   z-index: 1;
+  height: 100%
 }
 
-.moreAgencyList .moreAgencyInfo p {
+.description_sharedDeveloper {
   font-family: 'Segoe UI', sans-serif;
   font-size: 13px;
   color: #707070;
   text-transform: capitalize;
 }
 
+.description_sharedDeveloper.agency_age {
+  margin-left: 0.3rem;
+}
+
 .moreAgencyList .moreAgencyInfo .phone_clientOneHireDeveloper p {
   margin-left: 1rem;
 }
 
-.description_sharedDeveloper {
-  transform: translateX(1rem);
+.connect_or_not {
+  text-align: center;
+  font-family: 'Segoe UI';
+  font-size: 20px;
+  font-style: normal;
 }
 
-/* .moreAgencyList .moreAgencyInfo .email_clientOneHireDeveloper p {
-  margin-left: 1rem;
-} */
+.customModalClientOneHireDeveloper {
+  background: #fff;
+  max-width: 330px;
+  width: 100%;
+  border-radius: 1.4rem;
+  height: 8rem;
+}
+
+.agency_pending {
+  color: #ac79db;
+}
+
+.agency_accepted {
+  color: green;
+}
+
+.agency_rejected_interested {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.interested_or_not {
+  width: 68%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.interested_or_not div {
+  padding: 4px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border-radius: 31px;
+  width: 35%;
+  height: 27px;
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  text-align: center;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+}
+
+.connect_or_not p {
+  font-size: 1rem;
+}
+
+.interested_or_not div:hover {
+  cursor: pointer;
+}

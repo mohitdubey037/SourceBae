@@ -126,30 +126,30 @@ function AgencyList(props) {
 
   return (
     <div classname="mainImageDiv">
-    <img className="Image1_agencyList" src={UpImage} alt="upImage" />
-    <img className="Image2_agencyList" src={DownImage} alt="downImage" />
-    <>
-    <div className="SidebarAgencyList">
-      <Sidebar notificationVisible={(status) => notificationVisible(status)} />
-      </div>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <>
-          <div style={{ zIndex: visible && '-1' }} className="main_parent_agencyList">
-            <Navbar />
-             <div className="innerProjectDetail_parent">
-              <div className="innerprojectDetailsInfo_agencyList">
-                <p>
-                  {`Project Title:- `}
-                  <span>{project.projectName}</span>
-                </p>
-                <p style={{ fontSize: "1rem" }}>
-                  {`Budget:-`}
-                  <span>$ {project.projectProposalCost}</span>
-                </p>
-              </div>
-              {/* <div className="mainAgencyList_agencyList"> */}
+      {/* <img className="Image1_agencyList" src={UpImage} alt="upImage" /> */}
+      <img className="Image2_agencyList" src={DownImage} alt="downImage" />
+      <>
+        <div className="SidebarAgencyList">
+          <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+        </div>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <>
+            <div style={{ zIndex: visible && '-1' }} className="main_parent_agencyList">
+              <Navbar />
+              <div className="innerProjectDetail_parent">
+                <div className="innerprojectDetailsInfo_agencyList">
+                  <p>
+                    {`Project Title:- `}
+                    <span>{project.projectName}</span>
+                  </p>
+                  <p style={{ fontSize: "1rem" }}>
+                    {`Budget:-`}
+                    <span>$ {project.projectProposalCost}</span>
+                  </p>
+                </div>
+                {/* <div className="mainAgencyList_agencyList"> */}
                 {agencyList?.length > 0 ? (
                   <div className="innerAgencyList_agencyList">
                     <div className="AgencyCardsArea_agencyList">
@@ -167,41 +167,38 @@ function AgencyList(props) {
                                   </div>
                                   <div className="agencyProfileInfo agencyProfileInfodiv">
                                     <h6>{agency.agencyName}</h6>
-                                    <div>
                                     {
-                                      agency.agencyServices.map((service)=>{
-                                        return <>
-                                        <p>{service?.serviceName}</p>
-                                      <p>Proficient</p>
-                                        </>
-                                      })
+                                      agency.agencyServices.length > 0 &&
+                                      agency.agencyServices.map(service =>
+                                        <div>
+                                          <p>{service?.serviceName}</p>
+                                        </div>
+                                      )
                                     }
-                                      
-                                    </div>
                                   </div>
                                 </div>
                                 <div className="profileButton">
                                   {/* {agency.productId !== undefined ? ( */}
-                                    <p
-                                      onClick={() =>
-                                        props.history.push({
-                                          pathname: `/agency-profile:${agency._id}`,
-                                          condition: `Client`,
-                                        })
-                                      }
-                                    >
-                                      View Profile Details
-                                      <i
-                                        class="fa fa-angle-double-right"
-                                        aria-hidden="true"
-                                      ></i>
-                                    </p>
+                                  <p
+                                    onClick={() =>
+                                      props.history.push({
+                                        pathname: `/agency-profile:${agency._id}`,
+                                        condition: `Client`,
+                                      })
+                                    }
+                                  >
+                                    View Profile Details
+                                    <i
+                                      class="fa fa-angle-double-right"
+                                      aria-hidden="true"
+                                    ></i>
+                                  </p>
                                   {/* ) : null} */}
                                 </div>
                               </div>
                               <div className="middleAgencyArea agencylistCont">
                                 <div className="agencyAddressTeam addressTeam_AgencyList">
-                                  <h6 style={{fontSize:"14px"}}>Miscellaneous Info</h6>
+                                  <h6 style={{ fontSize: "14px" }}>Miscellaneous Info</h6>
                                   <div className="agencyAddressArea">
                                     <div className="locationIcon">
                                       <i
@@ -262,7 +259,7 @@ function AgencyList(props) {
                                   </>
                                 ) : (
                                   <>
-                                    <div  className="ShortlistTool"
+                                    <div className="ShortlistTool"
                                       onClick={() =>
                                         openShortlistModal(agency._id, index)
                                       }
@@ -294,73 +291,73 @@ function AgencyList(props) {
                     </h6>
                   </div>
                 )}
-              {/* </div> */}
+                {/* </div> */}
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Modal for shortlist  */}
+        <Modal
+          open={open}
+          onClose={onCloseModal}
+          center
+          classNames={{
+            overlay: "ShortListModalOverlay",
+            modal: "ShortListModal",
+          }}
+        >
+          <div className="shortlistModal_agencyList">
+            <h2>ShortList</h2>
+            <div className="shortlistForm comment">
+              <span>Comment Box</span>
+              <textarea
+                style={{ fontSize: "14px" }}
+                onChange={(event) => handleChange(event)}
+                name="comment"
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Type from here..."
+              ></textarea>
+              <button className="margin-top" onClick={shortlistHandler}>
+                Submit
+              </button>
             </div>
           </div>
-        </>
-      )}
+        </Modal>
 
-      {/* Modal for shortlist  */}
-      <Modal
-        open={open}
-        onClose={onCloseModal}
-        center
-        classNames={{
-          overlay: "ShortListModalOverlay",
-          modal: "ShortListModal",
-        }}
-      >
-        <div className="shortlistModal_agencyList">
-          <h2>ShortList</h2>
-          <div className="shortlistForm comment">
-            <span>Comment Box</span>
-            <textarea
-            style={{fontSize:"14px"}}
-              onChange={(event) => handleChange(event)}
-              name="comment"
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="Type from here..."
-            ></textarea>
-            <button className="margin-top" onClick={shortlistHandler}>
-              Submit
-            </button>
-          </div>
-        </div>
-      </Modal>
-
-      {/* Quotation Modal  */}
-      <Modal
-        open={openQuotation}
-        onClose={onCloseQuotation}
-        center
-        classNames={{
-          overlay: "QuotationModalOverlay",
-          modal: "QuotationModal",
-        }}
-      >
-        <div className="QuotationModal">
-          <h2>Quotation</h2>
-          <div className="QuotationModalForm">
-            <div className="innerQuotation">
-              <div className="quotationTable">
-                <div className="tableHeaderQuotation">
-                  <p>Project Name</p>
+        {/* Quotation Modal  */}
+        <Modal
+          open={openQuotation}
+          onClose={onCloseQuotation}
+          center
+          classNames={{
+            overlay: "QuotationModalOverlay",
+            modal: "QuotationModal",
+          }}
+        >
+          <div className="QuotationModal">
+            <h2>Quotation</h2>
+            <div className="QuotationModalForm">
+              <div className="innerQuotation">
+                <div className="quotationTable">
+                  <div className="tableHeaderQuotation">
+                    <p>Project Name</p>
+                  </div>
+                  <div className="tableContentQuotation">
+                    <p>{project.projectName}</p>
+                  </div>
                 </div>
-                <div className="tableContentQuotation">
-                  <p>{project.projectName}</p>
+                <div className="quotationTable">
+                  <div className="tableHeaderQuotation">
+                    <p>Budget</p>
+                  </div>
+                  <div className="tableContentQuotation">
+                    <p> $ {project.projectProposalCost}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="quotationTable">
-                <div className="tableHeaderQuotation">
-                  <p>Budget</p>
-                </div>
-                <div className="tableContentQuotation">
-                  <p> $ {project.projectProposalCost}</p>
-                </div>
-              </div>
-              {/* <div className="quotationTable">
+                {/* <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Tech</p>
                 </div>
@@ -369,7 +366,7 @@ function AgencyList(props) {
                   <p>React Native</p>
                 </div>
               </div> */}
-              {/* <div className="quotationTable">
+                {/* <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Time</p>
                 </div>
@@ -377,7 +374,7 @@ function AgencyList(props) {
                   <p>90 days </p>
                 </div>
               </div> */}
-              {/* <div className="quotationTable">
+                {/* <div className="quotationTable">
                 <div className="tableHeaderQuotation">
                   <p>Business Type</p>
                 </div>
@@ -386,46 +383,46 @@ function AgencyList(props) {
                   <p>B2C</p>
                 </div>
               </div> */}
-              <div className="quotationTable">
-                <div className="tableHeaderQuotation">
-                  <p>Negotiable Upto</p>
+                <div className="quotationTable">
+                  <div className="tableHeaderQuotation">
+                    <p>Negotiable Upto</p>
+                  </div>
+                  <div className="tableContentQuotation" style={{ display: "flex", alignItems: 'center', flexWrap: 'nowrap' }} >
+                    <i class="fas fa-dollar-sign" />
+                    <input
+                      style={{ marginTop: "0", marginLeft: "0.5rem", height: "35px" }}
+                      name="negotiablePrice"
+                      onChange={handleQuotationChange}
+                      type="number"
+                      placeholder="Text should be number "
+                      min="0"
+                    />
+                  </div>
                 </div>
-                <div className="tableContentQuotation" style={{display:"flex", alignItems:'center', flexWrap:'nowrap'}} >
-                <i class="fas fa-dollar-sign" />
-                  <input
-                  style={{marginTop:"0",marginLeft:"0.5rem", height:"35px"}}
-                    name="negotiablePrice"
-                    onChange={handleQuotationChange}
-                    type="number"
-                    placeholder="Text should be number "
-                    min="0"
-                  />
+                <div className="quotationTable">
+                  <div className="tableHeaderQuotation">
+                    <p style={{ position: "relative", top: "-4rem" }} name="comment">Comment Box</p>
+                  </div>
+                  <div className="tableContentQuotation">
+                    <textarea
+                      onChange={(event) => handleQuotationChange(event)}
+                      name="comment"
+                      id=""
+                      cols="30"
+                      rows="6"
+                      placeholder="Type from here.."
+                    ></textarea>
+                  </div>
                 </div>
-              </div>
-              <div className="quotationTable">
-                <div className="tableHeaderQuotation">
-                  <p style={{position:"relative",top:"-4rem"}} name="comment">Comment Box</p>
-                </div>
-                <div className="tableContentQuotation">
-                  <textarea
-                    onChange={(event) => handleQuotationChange(event)}
-                    name="comment"
-                    id=""
-                    cols="30"
-                    rows="6"
-                    placeholder="Type from here.."
-                  ></textarea>
-                </div>
-              </div>
 
-              <div className="quotationSubmitButton_agencyList quotation" style={{display:'flex', justifyContent:"center"}}>
-                {/* <div></div> */}
-                <button onClick={quotationSubmitHandler}>Submit</button>
+                <div className="quotationSubmitButton_agencyList quotation" style={{ display: 'flex', justifyContent: "center" }}>
+                  {/* <div></div> */}
+                  <button onClick={quotationSubmitHandler}>Submit</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Modal>
+        </Modal>
       </>
     </div>
   );

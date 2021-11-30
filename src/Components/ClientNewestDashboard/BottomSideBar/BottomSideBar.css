@@ -1,0 +1,117 @@
+.container-bottom-sidebar {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 6px;
+    z-index: 3;
+    display: none;
+}
+
+.bottom-sidebar-menu {
+    background: #ffffff;
+    height: 100%;
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 18%);
+    border-radius: 5px;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.icons>img {
+    height: 19px;
+    width: 22px;
+}
+
+.icons>p {
+    font-size: 13px;
+    padding: 5px;
+    font-family: 'Segoe UI Semibold';
+}
+
+.developers-icon>div>p {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* .sidebar-help {
+    background: #ffffff;
+    height: 100%;
+    margin: 20% 10%;
+    min-height: 80px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 22px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+} */
+
+/* .sidebar-help {
+    background: #ffffff;
+    height: 100%;
+    margin: 0% 10%;
+    min-width: 111px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 22px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+} */
+
+/* .help-img {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.help-img>img {
+    height: 80px;
+}
+
+.help-desc {
+    padding: 4px;
+}
+
+.help-desc>p {
+    font-family: 'Segoe UI Semibold';
+    font-weight: 600;
+    font-size: 10px;
+    word-wrap: break-word;
+    margin-bottom: 0;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3a3a3a;
+}
+
+.help-button {
+    display: flex;
+    padding: 0px 20px 20px 20px;
+}
+
+.help-button>button {
+    background: #68e1fd;
+    margin: 0;
+    border: solid;
+    border-radius: 22px;
+    border-color: #68e1fd;
+    width: 100%;
+} */
+
+@media (max-width: 768px) {
+    .container-bottom-sidebar {
+        display: flex;
+    }
+}

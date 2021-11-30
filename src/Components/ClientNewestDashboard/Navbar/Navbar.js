@@ -5,20 +5,12 @@ import './Navbar.css';
 import { Avatar } from '@material-ui/core';
 
 function Navbar(props) {
+
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
     const url = props.history.location.pathname;
     const Role = localStorage.getItem('role');
     const roleId = localStorage.getItem("userId");
     const [data, setData] = useState({});
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        if (url.includes(':')) {
-            const indexTemp = url.indexOf(':')
-            const urlTemp = url.slice(indexTemp + 1);
-            setIndex(urlTemp);
-        }
-    }, [])
-
 
     useEffect(() => {
         if (Role === 'Client') {
@@ -42,26 +34,52 @@ function Navbar(props) {
 
 
     return (
-        <div style={{ top: Role === 'Client' && '1rem' }} className='navbar'>
+        // <div style={{ top: Role === 'Client' && '1rem', justifyContent:props.logoLink && 'space-between'}} className='navbar'>
+        <div style={{
+            top: (url.includes('/clientNewestDashboard') ||
+                url.includes('/agencyNewestDashboard') ||
+                url.includes('/quotation') ||
+                url.includes('agency-list') ||
+                url.includes('/project-details') ||
+                url.includes('/agency-project-details') ||
+                url.includes('/agencyNewestDashboard') || 
+                url.includes('/agencyNewestAllProject')
+                ) && '1rem',
+            justifyContent: (url.includes('/clientNewestDashboard') ||
+                url.includes('/agencyNewestDashboard') ||
+                url.includes('/quotation') ||
+                url.includes('/agency-list') ||
+                url.includes('/project-details') ||
+                url.includes('/agency-project-details') ||
+                url.includes('/agencyNewestAllProject')
+            ) && 'flex-end'
+        }} className='navbar'>
+            <div style={{
+                display: (
+                    url.includes('/clientNewestDashboard') ||
+                    url.includes('/agencyNewestDashboard') ||
+                    url.includes('/quotation') ||
+                    url.includes('agency-list') ||
+                    url.includes('/project-details') ||
+                    url.includes('/agency-project-details') ||
+                    url.includes('/agencyNewestAllProject')
+                ) && 'none'
+            }} className="logoLink_navbar">
+                <img src={logoLink} alt="logo" />
+            </div>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{
-                        color: (props.history.location.pathname === '/client-profile' ||
-                            props.history.location.pathname === `/product-details:${index}` ||
-                            url.includes('/shared-developers') ||
-                            url.includes('/client-one-hire-developer') ||
-                            url.includes('/agencyNewestAllProject') ||
-                            url.includes('/agencyNewestDashboard')) ||
-                            url.includes('/portfolio') ||
-                            props.history.location.pathname === '/clientNewestDashboard' ? 'white' : 'blue'
+                        color: (url.includes('/agencyNewestDashboard') ||
+                            props.history.location.pathname === '/clientNewestDashboard') ? 'white' : 'blue'
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
                     {Role === 'Agency' ?
-                        <img src={data?.agencyLogo?  data?.agencyLogo: `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
+                        <img src={data?.agencyLogo ? data?.agencyLogo : `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
                         :
-                        <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`}/>
-                       }
+                        <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`} />
+                    }
                 </div>
             </div>
         </div>

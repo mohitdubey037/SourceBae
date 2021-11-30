@@ -47,7 +47,7 @@ function RespondedDetails(props) {
       });
   };
 
-  useEffect(() => {}, [project]);
+  useEffect(() => { }, [project]);
 
   // useEffect(() => {
   //   // if (Object.keys(props["projects"]).length === 0) {
@@ -85,18 +85,18 @@ function RespondedDetails(props) {
                   className="rightBorder"
                   style={{ backgroundColor: "#ffffff" }}
                 ></div>
-                <div className="innerBtnInfoDiv" style={{ marginLeft: "0" }}>
-                  <p style={{ color: "#ffffff" }}>{project?.projectName}</p>
+                <div className="innerBtnInfoDiv project_name">
+                  <p>{project?.projectName}</p>
                 </div>
               </div>
-              <div
+              {/* <div
                 className="innerBtnInfoDiv"
                 style={{ marginLeft: "20px", color: "#ffffff" }}
               >
                 <p style={{ fontSize: "20px", color: "#ffffff" }}>
                   {project?.projectDomainId?.domainName}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -136,22 +136,20 @@ function RespondedDetails(props) {
 
           <div>
             <p>Shortlisted</p>
-            <p>{`${
-              project?.projectProposals?.length > 0 &&
+            <p>{`${project?.projectProposals?.length > 0 &&
               project?.projectProposals[0]?.isShortListed
-                ? "Yes"
-                : "No"
-            }`}</p>
+              ? "Yes"
+              : "No"
+              }`}</p>
           </div>
 
           <div>
             <p>Quotation Asked</p>
-            <p>{`${
-              project?.projectProposals?.length > 0 &&
+            <p>{`${project?.projectProposals?.length > 0 &&
               project?.projectProposals[0]?.isAskedForQuotation
-                ? "Yes"
-                : "No"
-            }`}</p>
+              ? "Yes"
+              : "No"
+              }`}</p>
           </div>
 
           <div>
@@ -166,22 +164,21 @@ function RespondedDetails(props) {
       </div>
 
       <div className="ProjectDescriptionRespondedDetails">
-        <h4 style={{ color: "#707070", fontFamily: 'Segoe UI', fontWeight: "600", fontSize: "22px", }}>Project Description</h4>
-        <p style={{
-          overflowWrap: "break-word", fontFamily: "Segoe UI", fontSize: "16px", color: "#707070", width: '78%', padding: '0.2rem', margin: '0.2rem',
-          boxShadow: '0px 0px 3px rgb(0 0 0 / 20%)'
-        }}>{project.projectDescription} </p>
+        <h4 className="ProjectDescriptionRespondedDetails_heading">Project Description:</h4>
+        <p className="ProjectDescriptionRespondedDetails_Paragraph">{project.projectDescription}</p>
       </div>
 
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {project.projectProposals &&
-            project?.projectProposals[0].rejectReasonByClient !== undefined ? (
-              <p>Project is rejected by you</p>
+              project?.projectProposals[0].rejectReasonByClient !== undefined ? (
+              <div className="project_rejection">
+                <p>Project is rejected by you</p>
+              </div>
             ) : project.projectProposals &&
               project?.projectProposals[0].rejectReasonByAgency !==
-                undefined ? (
+              undefined ? (
               <>
                 <p>Project is rejected by the Agency due to following reason</p>
                 <ul>
@@ -192,7 +189,7 @@ function RespondedDetails(props) {
               (project?.projectProposals[0].isQuotationAcceptedByClient ===
                 true ||
                 project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                  true) ? (
+                true) ? (
               <div className="image_with_logo">
                 <div className="respondedDetails_afterCompletion">
                   <div className="project-details">
@@ -268,7 +265,7 @@ function RespondedDetails(props) {
                   <div className="project_is_completed">
                     {project?.projectProposals[0]
                       .isQuotationAcceptedByClient === true &&
-                    project?.projectProposals[0].isQuotationAcceptedByAgency ===
+                      project?.projectProposals[0].isQuotationAcceptedByAgency ===
                       true ? (
                       <p>Project is started from both side</p>
                     ) : (
@@ -279,7 +276,7 @@ function RespondedDetails(props) {
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   {project?.projectProposals[0].isQuotationAcceptedByClient ===
                     true &&
-                  project?.projectProposals[0].isQuotationAcceptedByAgency ===
+                    project?.projectProposals[0].isQuotationAcceptedByAgency ===
                     true ? (
                     <img style={{ width: "70%" }} src={completedImage} alt="" />
                   ) : (
@@ -289,7 +286,7 @@ function RespondedDetails(props) {
               </div>
             ) : project?.projectProposals &&
               project?.projectProposals[0].isQuotationAcceptedByClient ===
-                true ? (
+              true ? (
               <p>Please wait for the agency to accept the Quotation</p>
             ) : (
               <>
@@ -355,7 +352,7 @@ function RespondedDetails(props) {
             </div>
 
             {project?.projectTechnologiesRequired &&
-            project?.projectTechnologiesRequired.length > 0 ? (
+              project?.projectTechnologiesRequired.length > 0 ? (
               <div>
                 <h4>Technology</h4>
                 <ul>

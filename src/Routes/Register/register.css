@@ -60,7 +60,7 @@
 }
 
 .existing_accountText {
-  width: 8%;
+  width: 11%;
   /* position: absolute; */
   /* bottom: 50px; */
   /* right: 13px; */
@@ -147,11 +147,10 @@
   height: 105px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
 }
 
 .input_with_error label {
-  font-family: 'Segoe UI';
   font-family: 'Segoe UI Semibold';
   font-size: 14px;
   text-transform: capitalize;
@@ -175,6 +174,7 @@
 .login_switch.signup_switch {
   display: flex;
   width: 20%;
+  min-width: 8rem;
   margin: 0;
   border-radius: 20px;
   background-color: #fff9f9;
@@ -208,12 +208,15 @@
   margin-left: 0 !important;
 }
 
-.next_Register, .nextRegister_onAgency, .backRegister_onAgency, .nextRegister_onClient, .backRegister_onClient {
-  width: 20%;
+/* .next_Register, .nextRegister_onAgency, .backRegister_onAgency, .nextRegister_onClient, .backRegister_onClient { */
+
+.next_Register, .backRegister_onAgency {
+  width: 25%;
+  min-width: 5rem;
   background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
   border-radius: 20px;
   color: #fff;
-  padding: 10px;
+  padding: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,11 +225,11 @@
   cursor: pointer
 }
 
-.next_Register {
+/* .next_Register {
   width: 12%;
   border: none;
   outline: none;
-}
+} */
 
 .next_Register:hover, .next_Register:active, .next_Register:focus {
   outline: none;
@@ -251,7 +254,7 @@
   width: 90%;
 }
 
-.next_Register:hover {
+.next_Register:hover, .backRegister_onAgency:hover {
   cursor: pointer;
   background: #3477f1fd;
 }
@@ -263,12 +266,18 @@
   color: #8692a6;
 }
 
+.clientSignupForm2Parent {
+  display: flex;
+  flex-direction: column;
+}
+
 .registerOption {
   font-family: 'Segoe UI';
   font-size: 16px;
   text-transform: capitalize;
   display: flex;
   justify-content: space-between;
+  margin: 0.5rem 0;
 }
 
 .registerOption span {
@@ -295,10 +304,10 @@ input:focus-visible, input:focus {
   outline: none;
 }
 
-.client__primaryForm {
+/* .client__primaryForm {
   z-index: 2;
   transition: 0.4s ease;
-}
+} */
 
 .client__secondaryForm {
   position: absolute;
@@ -413,4 +422,92 @@ input:focus-visible, input:focus {
 .show__form4 {
   transform: translateX(0);
   transition: 0.4s ease;
+}
+
+.navigationButtonsSignup {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+}
+
+.as_a_client {
+  color: #5e5ee8;
+}
+
+.as_an_agency {
+  color: #094cc7;
+}
+
+@media only screen and (max-width: 500px) {
+  .form__1>div, .form__2>div {
+    width: 100%;
+    flex-direction: column;
+    flex: 1;
+  }
+  .navigationButtonsSignup {
+    padding-right: 2rem;
+    padding-top: 1rem;
+  }
+  .input_with_error input {
+    width: 88%;
+  }
+  .toggleButton.register {
+    flex-direction: column-reverse;
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .client__form {
+    flex-direction: column;
+    justify-content: center;
+    width: 94%;
+  }
+  .form__area {
+    width: 100%;
+    height: 88%;
+    padding-top: 16rem;
+    overflow-y: auto;
+    display: flex;
+    position: initial;
+    justify-content: center;
+    align-items: center;
+    border-right: none;
+    box-shadow: none;
+  }
+  .right_image img {
+    display: none;
+  }
+  .client__registrationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Image1 {
+    left: -1.5rem;
+    top: -1rem;
+    width: 16rem;
+  }
+  .Image2 {
+    right: -1rem;
+    bottom: -1rem;
+    width: 15rem;
+  }
+  .next_Register {
+    width: 20%;
+    border: none;
+    outline: none;
+  }
+  .registerOption {
+    flex-direction: column;
+  }
+  .existing_accountText {
+    width: 25%;
+    font-size: 12px;
+  }
+  .login_switch.signup_switch {
+    width: 58%;
+    margin: 1rem;
+  }
+  .client__formsContainer {
+    width: 86%;
+  }
 }

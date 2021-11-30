@@ -14,10 +14,10 @@ function VerifyPage(props) {
 
     useEffect(() => {
         setLoading(true);
-        instance.post(`api/${Role}/auths/verify/${verificationToken}`)
+        instance.get(`api/${Role}/auths/verify/${verificationToken}`)
         .then(res => {
             setLoading(false);
-            props.history.push('/login');
+            props.history.push(`/login:${Role}`);
         })
         .catch(err => {
             setLoading(false);

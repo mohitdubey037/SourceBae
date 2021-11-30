@@ -1,5 +1,5 @@
 .mainProductDetails {
-    background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%);
+    /* background: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%); */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -15,11 +15,14 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 3rem 2rem 1rem;
+    /* padding: 3rem 2rem 1rem; */
+    padding: 2rem 0;
+    width: 75%;
 }
 
 .productDetailsArea {
-    width: 70%;
+    /* width: 70%; */
+    width: 100%;
     box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
     padding: 1.5rem 1rem;
     background-color: #ffffff;
@@ -48,6 +51,7 @@
     width: 70%;
     padding: 1rem 1rem;
     background-color: white;
+    box-shadow: 0 1px 1px 1px rgb(0 0 0 / 16%);
 }
 
 .productDetailsHeader {
@@ -64,22 +68,22 @@
     justify-content: center;
     align-items: center;
     margin-right: 4%;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
-.imageContainer {
+/* .imageContainer {
     display: inline-block;
     position: relative;
     width: 200px;
     height: 200px;
     overflow: hidden;
     border-radius: 50%;
-}
+} */
 
-.imageContainer img {
+/* .imageContainer img {
     width: auto;
     height: 100%;
-}
+} */
 
 .productDetailsImage img {
     width: 100%;
@@ -191,7 +195,7 @@
     margin-top: 5%;
 }
 
-.productDescImage div {
+.productDescImage {
     width: 105px;
     height: 105px;
     border-radius: 0.5rem;
@@ -201,7 +205,13 @@
     align-items: center;
 }
 
-.productDescImage div img {
+.productDescImage .imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productDescImage .imageContainer img {
     width: 100%;
 }
 
@@ -336,6 +346,7 @@
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
     height: 100%;
     border-radius: 8px;
+    display: none;
 }
 
 .moreAgencyList_productDetails {
@@ -347,7 +358,7 @@
 }
 
 .moreAgencyInfo_productDetails {
-    padding: 0.5rem 2rem 0rem;
+    /* padding: 0.5rem 2rem 0rem; */
     /* text-align: justify; */
     width: 100%;
     overflow: hidden;

@@ -3,13 +3,17 @@
   margin-left: 4px;
 }
 
-.header-currentStatus img{
+.project_status_image{
   width: 0.6rem;
   margin-right: 4px;
 }
 
-.centerImage img {
+.receivedImage {
   width: 19px;
+}
+
+.rejectedImage {
+  width: 45px;
 }
 
 .project-details-card {
@@ -62,10 +66,8 @@
 .projectDetail {
   display: flex;
   justify-content: space-between;
-  margin: auto;
-  margin-top: 1.2rem;
+  margin: 7% auto 0.5rem;
   width: 100%;
-  margin-bottom: 0.5rem;
 }
 
 .centerImage>div {
@@ -87,6 +89,10 @@
   text-align: center;
   color: #707070;
 }
+
+/* .anyoneRejected {
+  color: red !important;
+} */
 
 .centerImage>div>p {
   font-size: 0.8rem;

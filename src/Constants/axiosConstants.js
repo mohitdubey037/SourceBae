@@ -23,7 +23,7 @@ instance.interceptors.request.use(function (request) {
   }
   return request;
 });
-
+const customToast = new toast()
 instance.interceptors.response.use(
   function (response) {
     if (response.status === 200) {
@@ -61,11 +61,10 @@ instance.interceptors.response.use(
         }
         toast.error(trueError, {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 10000,
           hideProgressBar: true,
-          closeOnClick: true,
           pauseOnHover: true,
-          draggable: true,
+          draggable: true
         });
       }
     }

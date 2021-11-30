@@ -16,21 +16,21 @@ import { toast } from "react-toastify";
 
 function Portfolio(props) {
 
+    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+
     const Role = localStorage.getItem('role');
     const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(true);
 
     const [form, setForm] = useState({
         projectName: '',
+        projectLink: '',
         projectTimeline: '5',
         projectDescription: '',
         projectLogo: ''
     })
 
     const [logo, setLogo] = useState(null);
-
-    useEffect(() => {
-    }, [logo])
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -46,9 +46,11 @@ function Portfolio(props) {
 
     const errorValidation = () => {
         const errors = {}
-        // if (logo === null) {
-        //     errors.developerResume = 'Resume is required';}
-        if (form.projectName === '') {
+        if (logo === null) {
+            errors.projectLogo = "Please upload a portfolio logo";
+            toast.error("Please Upload Portfolio logo.");
+        }
+        else if (form.projectName === '') {
             errors.projectName = 'Project Name is required'
         }
         else if (form.projectName.length > 50) {
@@ -57,13 +59,12 @@ function Portfolio(props) {
         else if (form.projectDescription === '') {
             errors.projectDescription = 'Project Description  is required'
         }
-        // else if (form.webLink === '') {
-        //     errors.webLink = 'Web Link is required'
-        // }
-        else if (form.projectTimeline <= 4) {
-            errors.projectTimeline = 'timeline must be more than 4 dyas'
+        else if (form.projectLink === '') {
+            errors.projectLink = 'Web Link is required'
         }
-
+        else if (form.projectTimeline <= 4) {
+            errors.projectTimeline = 'timeline must be more than 4 days'
+        }
         setErrors(errors);
         if (Object.keys(errors).length === 0)
             return true;
@@ -71,53 +72,55 @@ function Portfolio(props) {
             return false;
     }
 
-    const createPortfolio = () => {
+    const uploadMedia = () => {
+        setLoading(true)
+        const fileForm = new FormData();
+        logo && fileForm.append(
+            "files",
+            logo,
+            logo.name
+        );
+        instance.post(`api/${Role}/media/create`, fileForm)
+            .then(function (response) {
+                console.log(response);
+                setLoading(false);
+                setForm({
+                    ...form,
+                    projectLogo: response[0].mediaURL
+                })
+            })
+            .catch(err => {
+            })
+    }
+
+    const portfolioCreate = () => {
         instance.post(`/api/${Role}/portfolios/create`, form)
             .then(res => {
+                props.history.replace({
+                    pathname: "/agency-profile",
+                    origin: 'portfolio'
+                })
             })
             .catch(err => {
 
             })
     }
 
+    useEffect(() => {
+        if (form.projectLogo !== '') {
+            portfolioCreate();
+        }
+    }, [form.projectLogo])
 
-    const uploadMedia = () => {
+    const createPortfolio = () => {
         if (errorValidation()) {
-            setLoading(true)
-            return new Promise((resolve, reject) => {
-                const fileForm = new FormData();
-                logo && fileForm.append(
-                    "files",
-                    logo,
-                    logo.name
-                );
-                instance.post(`api/${Role}/media/create`, fileForm)
-                    .then(function (response) {
-                        setLoading(false);
-                        setForm({
-                            ...form,
-                            projectLogo: response[0].mediaURL
-                        })
-                        props.history.replace("/agency-profile");
-                    })
-                    .catch(err => {
-                    })
-            })
+            uploadMedia();
         }
     }
 
-    useEffect(() => {
-    }, [form])
-
-    useEffect(() => {
-        if (form.projectLogo !== '') {
-            createPortfolio();
-        }
-    }, [form])
-
     return (
         <>
-            <Navbar />
+            <Navbar logoLink={logoLink} />
             <div className="main_portfolio_parent" style={{ paddingTop: '5rem' }}>
                 <Back name="Portfolio" />
                 <div className="portfolio_parent">
@@ -184,7 +187,6 @@ function Portfolio(props) {
                                 </FilePicker>
                                 <p><span>Browse</span> and upload your logo</p>
                             </div>
-
                         </div>
 
                         <div className="logo_parent_div">
@@ -192,28 +194,29 @@ function Portfolio(props) {
                                 <div>
                                     <p className="project-question">What was your project named ?</p>
                                     <input name="projectName" type="text" placeholder="Enter project name" value={form.projectName} onChange={(event) => handleChange(event)} />
-                                    {errors.projectName && (<p className="error_paragraph basic">{errors.projectName}</p>)}
+                                    {errors.projectName && (<p className="error_paragraph basic error_portfolio">{errors.projectName}</p>)}
                                 </div>
+
                                 <div>
                                     <p className="project-question">Do You have a website(product) link ?</p>
-                                    <input name="input1" type="text" placeholder="Enter url" onChange={(event) => handleChange(event)} />
-                                    {errors.field4 && (<p className="error_paragraph basic">{errors.field4}</p>)}
+                                    <input name="projectLink" type="text" placeholder="Enter url" onChange={(event) => handleChange(event)} />
+                                    {errors.projectLink && (<p className="error_paragraph basic error_portfolio">{errors.projectLink}</p>)}
                                 </div>
                             </div>
                             <div className="portfolio_inputs portfolio_inputs_second">
                                 <div>
                                     <p className="project-question">Write about the project ?</p>
-                                    <textarea name="projectDescription" style={{width:"108%"}} id="input1" cols="30" rows="10" value={form.projectDescription} placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
-                                    {errors.projectDescription && (<p className="error_paragraph basic">{errors.projectDescription}</p>)}
+                                    <textarea name="projectDescription" style={{ width: "108%" }} id="input1" cols="30" rows="10" value={form.projectDescription} placeholder="Enter project description" onChange={(event) => handleChange(event)} ></textarea>
+                                    {errors.projectDescription && (<p className="error_paragraph basic error_portfolio_description">{errors.projectDescription}</p>)}
                                 </div>
                                 <div>
                                     <p className="project-question">What was the project timeline ?(in days) </p>
                                     <input name="projectTimeline" type="number" min="5" value={form.projectTimeline} placeholder="Enter project timeline" onChange={(event) => handleChange(event)} />
-                                    {errors.projectTimeline && (<p className="error_paragraph basic">{errors.projectTimeline}</p>)}
+                                    {errors.projectTimeline && (<p className="error_paragraph basic error_portfolio">{errors.projectTimeline}</p>)}
                                 </div>
                             </div>
                             <div className="submit_portfolio_parent">
-                                <button className="submit_portfolio" type="submit" onClick={() => uploadMedia()}>Submit Project</button>
+                                <button className="submit_portfolio" type="submit" onClick={createPortfolio}>Submit Project</button>
                             </div>
                         </div>
 

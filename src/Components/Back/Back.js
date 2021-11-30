@@ -9,28 +9,64 @@ function Back(props) {
     const Role = localStorage.getItem('role');
     const verificationStatus = localStorage.getItem('isVerified');
     const url = props.history.location.pathname;
-    
+
     const goBack = () => {
-        if (Role === 'Agency') {
-            if (url.includes('agency-form-one')) {
+        if (Role === 'Client') {
+            if (url.includes('hire-agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agencyNewestDashboard');
+                    props.history.replace('/clientNewestDashboard');
                 }
             }
-            else if (url.includes('agency-form-two')) {
-                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agency-form-one');
+            else if (url.includes('hire-agency-form-two')) {
+                if (props.formState2.projectDomainId !== '' || props.formState2.projectExpertiseRequired.length > 0 || props.formState2.agencyExperience !== '') {
+                    if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                        props.history.replace('/hire-agency-form-one', props.propData);
+                    }
+                }
+                else {
+                    props.history.replace('/hire-agency-form-one');
                 }
             }
-            else if (url.includes('agency-form-three')) {
+            else if (url.includes('hire-agency-form-three')) {
+                if (props.formState3.projectTechnologiesRequired.length > 0 || props.formState3.projectServicesRequired.length > 0) {
+                    if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                        // props.history.replace(`/clientNewestDashboard`);
+                        props.history.replace(`/hire-agency-form-two:${props.formState3.id}`, props.oldFormData);
+                    }
+                }
+                else {
+                    props.history.replace(`/hire-agency-form-two:${props.formState3.id}`, props.oldFormData);
+                }
+            }
+
+            else {
+                props.history.goBack();
+            }
+        }
+
+        else if (Role === 'Agency') {
+            if (url.includes('agency-form-one') || url.includes('hire-agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agency-form-two');
+                    props.history.replace('/agencyNewestDashboard');
+                }
+            }
+            else if (url.includes('agency-form-two') || url.includes('hire-agency-form-two')) {
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.replace('/agency-form-one');
+                }
+            }
+            else if (url.includes('agency-form-three' || url.includes('hire-agency-form-three'))) {
+                if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
+                    props.history.replace('/agency-form-two');
                 }
             }
             else if (url.includes('agency-form-four')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
-                    props.history.push('/agency-form-three');
+                    props.history.replace('/agency-form-three');
                 }
+            }
+            else if (url.includes('quotation')) {
+                props.history.replace('/agencyNewestDashboard');
             }
             else {
                 props.history.goBack();
@@ -63,7 +99,7 @@ function Back(props) {
                 </div>
                 <h6>Back</h6>
             </div>
-            <div className="add-developer-div">
+            <div style={{ width: url.includes('enter-email') && '84%' }} className="add-developer-div">
                 <h6>{props.name}</h6>
             </div>
         </div>

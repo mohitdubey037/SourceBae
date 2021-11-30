@@ -20,6 +20,8 @@ import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profil
 
 function ProductDetails(props) {
   const condition = props.location.condition;
+  const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+
   let { productId } = useParams();
   productId = productId ? helper.cleanParam(productId) : "";
 
@@ -94,7 +96,6 @@ function ProductDetails(props) {
   }
 
   const handleConnect = (agencyId) => {
-    console.log('hii');
     if (handleValidation()) {
       instance.post(`/api/${Role}/products/connect-agency`, form)
         .then(res => {
@@ -249,7 +250,7 @@ function ProductDetails(props) {
 
   return (
     <>
-      <Navbar />
+      <Navbar logoLink={logoLink}/>
       {loading === true ? <Spinner /> :
         err ? (
           <>
@@ -267,8 +268,7 @@ function ProductDetails(props) {
                 <img className="Image2" src={Profile_image2} alt="signup" />
 
                 <Back name="Product Details" />
-                <div
-                  className={
+                <div style={{justifyContent: similarAgency?.length < 0 && 'center'}} className={
                     Role === "Client"
                       ? "innerProductDetails"
                       : "innerProductDetails_conditional"
@@ -338,7 +338,7 @@ function ProductDetails(props) {
                           </div>
                           <div className="productDescImage">
                             <div className="imageContainer">
-                              <img src={value?.productLogo} alt="" />
+                                <img src={value?.productLogo} alt="" />
                             </div>
                           </div>
                         </div>
@@ -453,41 +453,37 @@ function ProductDetails(props) {
                       </div>
                     </div>
                   </div>
-                  {Role === "Client" && (
-                    <div className="innerMoreAgencie">
-                      <div className="moreAgencyHeading">
-                        <h3>Similar Agencies</h3>
-                      </div>
-                      <div className="moreAgencyList_productDetails">
-                        {similarAgency?.length > 0 ? (
-                          similarAgency?.map((value) => {
-                            return (
-                              <>
-                                <div style={{ cursor: "pointer" }}
-                                  onClick={() => props.history.push(
-                                    `/product-details/:${value._id}`
-                                  )}
-                                  className="moreAgencyCard_productDetails"
-                                >
-                                  <div className="moreAgencyLogo_productDetails">
-                                    <div>
-                                      <img src={logo} alt="" />
-                                    </div>
-                                    <p>not coming name</p>
-                                  </div>
-                                  <div className="moreAgencyInfo_productDetails">
-                                    <p>{value?.agencyId?.agencyDescription}</p>
-                                  </div>
+                  {Role === "Client" &&
+                    similarAgency?.length > 0 ?
+                    (
+                      <div className="innerMoreAgencie">
+                        <div className="moreAgencyHeading">
+                          <h3>Similar Agencies</h3>
+                        </div>
+                        {similarAgency?.map(value => (
+                          <div className="moreAgencyList_productDetails">
+                            <div style={{ cursor: "pointer" }}
+                              onClick={() => props.history.push(
+                                `/product-details/:${value._id}`
+                              )}
+                              className="moreAgencyCard_productDetails"
+                            >
+                              <div className="moreAgencyLogo_productDetails">
+                                <div>
+                                  <img src={logo} alt="alt" />
                                 </div>
-                              </>
-                            );
-                          })
-                        ) : (
-                          <p>No Similar Agencies Found</p>
-                        )}
+                                <p>not coming name</p>
+                              </div>
+                              <div className="moreAgencyInfo_productDetails">
+                                <p>{value?.agencyId?.agencyDescription}</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                        }
                       </div>
-                    </div>
-                  )}
+                    ) : null
+                  }
                 </div>
               </div>
             );

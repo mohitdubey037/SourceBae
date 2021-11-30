@@ -58,7 +58,6 @@ function DeveloperList(props) {
     const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
     const [developerId, setDeveloperId] = useState(null);
     const [open, setOpen] = useState(false);
-    const [isDeveloperActive, setIsDeveloperActive] = useState(true);
     const [err, setErr] = useState();
     const [toggleIndexes, setToggleIndexes] = useState({});
     const [state, setState] = useState({
@@ -70,13 +69,10 @@ function DeveloperList(props) {
         instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
             .then(function (response) {
                 let temp = {};
-                // let temp2={};
 
                 response.forEach((dev, index) => {
                     temp[index] = !dev.isDeveloperActive;
-                    //    temp2[index]=dev.isDeveloperActive;
                 })
-                //  setState(temp2)
                 setToggleIndexes(temp);
                 setDevelopers(response)
             })
@@ -197,7 +193,6 @@ function DeveloperList(props) {
                                             <div>
                                                 <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
                                             </div>
-                                            {/* <p>{`${developer.developerExperience} year`}</p> */}
                                             <div className={`rounded_developerList ${toggleIndexes[index] && "conditionalColor"}`}></div>
                                         </div>
                                         <div className="developerExp">
@@ -228,16 +223,13 @@ function DeveloperList(props) {
 
                                                 <div>
                                                     <p>Timeline</p>
-                                                    <h6>{developer.developerAvailability === -1 ? `Immediately Avaialable` : `${developer.developerAvailability} Weeks`}</h6>
+                                                    <h6>{developer.developerAvailability == "0" ? `Immediately Available` : `${developer.developerAvailability} Weeks`}</h6>
                                                 </div>
                                                 <div>
                                                     <p>Budget</p>
                                                     <h6>{`$${developer.developerPriceRange}-$${developer.developerPriceRange + 3 * 1000}`}</h6>
                                                 </div>
                                             </div>
-                                            {/* <div className="developer-detail">
-
-                                            </div> */}
                                         </div>
                                         <div className="developers_content">
                                             <div className="developers-status_parent" onClick={() => IndexSetter(index)}>

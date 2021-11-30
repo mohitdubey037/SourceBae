@@ -205,8 +205,7 @@ button {
 
 .customModal {
   background: #fff !important;
-  min-width: 70vw !important;
-  width: 100%;
+  min-width: 33vw !important;
   border-radius: 20px;
 }
 

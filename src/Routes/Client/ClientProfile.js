@@ -2,19 +2,25 @@ import React, { useEffect, useState } from 'react'
 import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
+import uploadImage from '../../assets/images/Newestdashboard/Client_Profile/camera_icon.png';
+import { toast } from "react-toastify";
 
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../Components/Back/Back';
+
+import { FilePicker } from 'react-file-picker';
 
 import instance from "../../Constants/axiosConstants"
 import * as helper from "../../shared/helper"
 import Spinner from '../../Components/Spinner/Spinner';
 import Profile_image1 from '../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
+import { FaCamera } from "react-icons/fa";
 
 function ClientProfile() {
 
     const Role = localStorage.getItem('role');
+    const clientId = localStorage.getItem("userId")
     const [clientData, setClientData] = useState({
         firstName: "",
         lastName: "",
@@ -24,16 +30,20 @@ function ClientProfile() {
         userPhone: "",
         userDesignation: "",
         companyName: "",
+        clientLogo: null
     })
     const [err, setErr] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [file, setFile] = useState();
+    const [isShown, setIsShown] = useState(false);
+    let logoURL;
 
     const getClientProfileApi = () => {
         const clientId = localStorage.getItem("userId")
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
-                setClientData({
+                let temp = {
                     firstName: response[0].firstName,
                     lastName: response[0].lastName,
                     userName: response[0].userName,
@@ -42,7 +52,9 @@ function ClientProfile() {
                     userPhone: response[0].userPhone,
                     companyName: response[0].companyName,
                     userDesignation: response[0].userDesignation,
-                })
+                    clientLogo: response[0].clientLogo
+                }
+                setClientData(temp)
                 setLoading(false);
             })
             .catch(err => {
@@ -51,28 +63,53 @@ function ClientProfile() {
             })
     };
 
-    const updateClientApi = () => {
+    const inputFileChoosen = (profileDoc) => {
+        setFile(profileDoc)
+    };
+
+    useEffect(() => {
+        console.log(file);
+    }, [file]);
+
+    useEffect(() => {
+    }, [clientData])
+
+    const uploadMedia = async () => {
+        const formData = new FormData();
+        formData.append(
+            "files",
+            file,
+            file.name
+        );
+        await instance.post(`api/${Role}/media/create`, formData)
+            .then(function (response) {
+                logoURL = response[0].mediaURL;
+            })
+            .catch(err => {
+            })
+    }
+
+    const updateClientApi = async () => {
+        await uploadMedia();
         const body = {
             firstName: clientData.firstName,
             lastName: clientData.lastName,
             companyName: clientData.companyName,
             userDesignation: clientData.userDesignation,
+            clientLogo: logoURL
         }
-        const clientId = localStorage.getItem("userId")
         instance.patch(`/api/${Role}/clients/update/${clientId}`, body)
             .then(function (response) {
-                setClientData({
-                    firstName: response[0].firstName,
-                    lastName: response[0].lastName,
-                    userName: response[0].userName,
-                    userEmail: response[0].userEmail,
-                    countryCode: response[0].countryCode,
-                    userPhone: response[0].userPhone,
-                    companyName: response[0].companyName,
-                    userDesignation: response[0].userDesignation,
-                })
                 setLoading(false);
                 setIsEdit(false)
+                setClientData({
+                    ...clientData,
+                    firstName: response.firstName,
+                    lastName: response.lastName,
+                    companyName: response.companyName,
+                    userDesignation: response.userDesignation,
+                    clientLogo: response.clientLogo
+                })
             })
             .catch(err => {
                 setLoading(false)
@@ -111,9 +148,10 @@ function ClientProfile() {
                 :
                 loading ? <Spinner /> :
                     <div className="mainClient_parent">
-                        <img className="Image1" src={Profile_image1} alt="signup" />
+                        {/* <img className="Image1" src={Profile_image1} alt="signup" /> */}
                         <img className="Image2" src={Profile_image2} alt="signup" />
-                        <Back name="Hire Agency" />
+
+                        <Back name="Client Profile" />
                         <div className="mainClientProfile">
                             <div className="innerClientProfile">
                                 <div className="clientProfileHeading" style={{ display: "flex", justifyContent: "center" }}>
@@ -128,28 +166,45 @@ function ClientProfile() {
                                             (
                                                 <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>
                                                     <div onClick={() => updateClientApi()} className="save">Save</div>
-                                                </>)
+                                                </>
+                                            )
                                     }
 
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
-                                            <div>
-                                                <img src={avatar} alt="" />
+                                            <div className={`avatarArea_div ${isShown && 'conditional_filter_clientProfile'}`}>
+                                                {clientData.clientLogo && <img className="avatarImg" src={`${clientData.clientLogo === null ? avatar : clientData.clientLogo}`} alt="signup" />}
                                             </div>
+                                            {isEdit === true &&
+                                                <FilePicker
+                                                    extensions={['jpg', 'png', 'jpeg']}
+                                                    onChange={inputFileChoosen}
+                                                    onError={errMsg => toast.error(errMsg)}
+                                                >
+                                                    <FaCamera
+                                                        onMouseEnter={() => setIsShown(true)}
+                                                        onMouseLeave={() => setIsShown(false)} 
+                                                        className="client_profile_image" />
+                                                </FilePicker>
+                                            }
                                         </div>
                                         <div className="clientProfileDetails">
                                             {Object.keys(clientData).map((key) => {
-                                                return (
-                                                    <div className="clientProfilDesc">
-                                                        <div className="clientFormHeading">
-                                                            <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p>
+                                                if (key !== 'clientLogo') {
+                                                    return (
+                                                        <div className="clientProfilDesc">
+                                                            <div className="clientFormHeading">
+                                                                <p>{helper.multiwordCapitalize(key)}</p>
+                                                                {/* <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p> */}
+                                                            </div>
+                                                            <div className="clientFormAnswer">
+                                                                {
+                                                                    isEdit && (key !== "countryCode" && key !== "userEmail" && key !== "userName" && key !== "userPhone") ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
+                                                                }
+                                                            </div>
                                                         </div>
-                                                        <div className="clientFormAnswer">
-                                                            {
-                                                                isEdit && (key !== "countryCode" && key !== "userEmail" && key !== "userName" && key !== "userPhone") ? <input type="text" value={clientData[key]} name={key} onChange={(event) => handleChange(event)} /> : <p>{clientData[key]}</p>
-                                                            }
-                                                        </div>
-                                                    </div>)
+                                                    )
+                                                }
                                             })}
                                         </div>
                                     </div>

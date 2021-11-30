@@ -1,7 +1,7 @@
 import './Sidebar.css';
-import oneSourcingLogo from "../../../assets/images/Newestdashboard/SideBar/sidebarLogo.svg";
-// import TemporaryLogo from '../../../assets/images/temporary_logo.jpeg';
 import TemporaryLogo from '../../../assets/images/Logo/temporary_logo.jpeg';
+
+import SourceBaeLogo from '../../../assets/images/Logo/Sourcebae-14.svg';
 import dashboardIcon from "../../../assets/images/Newestdashboard/SideBar/home.svg";
 import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/post.svg";
 import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile.svg";
@@ -11,15 +11,13 @@ import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout.sv
 import { withRouter } from "react-router";
 import cookie from "react-cookies";
 import instance from "../../../Constants/axiosConstants";
-
-
 import React, { useEffect, useState } from 'react';
-
 import { useHistory } from 'react-router-dom';
 
 function Sidebar(props) {
     const Role = localStorage.getItem('role');
     const routerHistory = useHistory();
+    const url = props.history.location.pathname;
 
     const [isNotification, setIsnotification] = useState(false);
     const [notificationData, setNotificationData] = useState([])
@@ -29,21 +27,43 @@ function Sidebar(props) {
         props.notificationVisible(!isNotification);
     }
 
-
-    useEffect(() => {
+    const handleGetNotification = () => {
         instance.get(`/api/${Role}/notifications/all?type=push`)
             .then(response => {
                 setNotificationData(response);
-                console.log(response);
             })
             .catch(err => {
             })
+    }
+
+
+    useEffect(() => {
+        handleGetNotification();
     }, [])
+
+    const handleNotificationRead = (id) => {
+        console.log(id);
+        if (id != undefined) {
+            instance.patch(`/api/${Role}/notifications/update`, id)
+            .then(response => {
+                handleGetNotification();
+            })
+            .catch(err => {
+
+            })
+        }
+        else {
+            instance.patch(`/api/${Role}/notifications/update`)
+            .then(response => {
+                handleGetNotification();
+            })
+            .catch(err => {
+            })
+        }
+    }
 
     useEffect(() => {
     }, [isNotification]);
-
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
     const agencyProfileHandler = () => {
         if (Role === 'Agency') {
@@ -73,15 +93,14 @@ function Sidebar(props) {
         localStorage.removeItem('userId');
         localStorage.removeItem('toggle');
         cookie.remove("Authorization");
-        cookie.remove("isAgencyVerified");
-        cookie.remove("isStepsCompleted");
-        routerHistory.push('/');
+        routerHistory.replace('/');
     }
 
     return (
         <div className="container-sidebar">
             <div className="temporary_logo">
-                <img src={TemporaryLogo} alt="logo" />
+                {/* <img src= 'https://api.onesourcing.in/media/images/1636785308442.jpeg' alt="logo" /> */}
+                <img src='https://api.onesourcing.in/media/images/1637044803259.svg' alt="logo" />
             </div>
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
@@ -129,32 +148,41 @@ function Sidebar(props) {
             <div className={isNotification ? 'notificationPanel open' : 'notificationPanel'}>
                 <div className="innerNotificationPanel">
                     <div className="notificationsCards">
-                        <div className="closeNotification">
-                            <i onClick={notificationPanel} className="fa fa-times" aria-hidden="true"></i>
-                        </div>
-                        <div className="allNotification">
-                            <div className="allNotificationText">
-                                <p>All Notification</p>
+                        <div className="close_and_all">
+                            <div className="closeNotification">
+                                <i onClick={notificationPanel} className="fa fa-times" aria-hidden="true"></i>
                             </div>
-
+                            <div className="allNotification">
+                                {/* <div className="allNotificationText"> */}
+                                    <p>All Notification</p>
+                                {/* </div> */}
+                            </div>
+                            <div onClick={() => handleNotificationRead()} className="clearAll">
+                                <p>Clear All</p>
+                            </div>
                         </div>
                         <div className="notificationsCard">
                             {
-                                notificationData.map((nd) => {
-                                    return (
-                                        <div className="notificationPoint">
-                                            <div className="notificationPointIn">
+                                notificationData.length > 0 ?
+                                    notificationData.map((nd) => {
+                                        return (
+                                            <div onClick={() => handleNotificationRead(nd?._id)} className={`notificationPoint ${nd?.isNotificationRead && 'conditionalFilter_Sidebar'}`}>
+                                                {/* <div className="notificationPointIn"> */}
                                                 <ul>
-                                                    <li>
-                                                        <p>{nd.notificationTitle}</p>
-                                                        <p>{nd.notificationData}</p>
+                                                    <li className={`notificationPointLi ${nd?.isNotificationRead && 'conditionalColor_Sidebar'}`}>
+                                                        <p>{nd?.notificationTitle}</p>
+                                                        <p>{nd?.notificationData}</p>
                                                     </li>
                                                 </ul>
                                                 {/* <i className="fa fa-times" aria-hidden="true" style={{ paddingRight: "1rem", marginTop: "0.8rem" }}></i> */}
-                                                </div>
-                                        </div>
-                                    )
-                                })
+                                                {/* </div> */}
+                                            </div>
+                                        )
+                                    })
+                                    :
+                                    <div className="no_new_notification">
+                                        <p>No New Notification</p>
+                                    </div>
                             }
                         </div>
                     </div>

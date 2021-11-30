@@ -35,9 +35,6 @@ function CancelledProjects(props) {
         getAllCancelledData()
     }, [])
 
-    useEffect(() => {
-    }, [projects])
-
     return (
         <>
             {loading ? <Spinner /> :

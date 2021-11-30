@@ -62,10 +62,6 @@
     padding-right: 5rem;
 }
 
-/* .default_timings {
-    display: flex;
-} */
-
 .date_parent {
     display: flex;
     justify-content: space-between;
@@ -104,7 +100,6 @@
 }
 
 .submitEditBtn {
-    /* width: 100%; */
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
@@ -125,7 +120,7 @@
 
 .rulesMark img {
     width: 12px;
-    transform: translateY(10px);
+    transform: translateY(5px);
 }
 
 .cancel-img {
@@ -136,20 +131,12 @@
     filter: invert(42%) sepia(19%) saturate(6449%) hue-rotate(219deg) brightness(105%) contrast(451%)
 }
 
-/* .submitEditBtn button {
-    padding: 0.5rem 1rem;
-    outline: none;
-    background-color: transparent;
-    border: 1px solid #5cb85c;
-    color: #5cb85c;
-    transition: 0.3s ease-in-out;
-    font-family: 'Open Sans', sans-serif;
-    border-radius: 999px;
-    font-weight: bold;
-    margin-right: 2%;
-} */
-
 .submitEditBtn button:hover {
     background-color: #5cb85c;
     color: #fff;
+}
+
+.information_cancel:hover, 
+.information_save:hover {
+    cursor: pointer;
 }

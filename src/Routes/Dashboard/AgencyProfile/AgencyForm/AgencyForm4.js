@@ -13,7 +13,9 @@ import Back from '../../../../Components/Back/Back';
 import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/agencyForm4_image.svg';
 //axios instance
 import instance from "../../../../Constants/axiosConstants";
-import * as helper from "../../../../shared/helper"
+import * as helper from "../../../../shared/helper";
+
+import './ResponsiveAgencyForm.css';
 
 
 function AgencyForm4(props) {
@@ -33,6 +35,9 @@ function AgencyForm4(props) {
         values[i].value = event.target.value;
         setFields(values);
     }
+
+    useEffect(() => {
+    }, [fields])
 
     function handleAdd() {
         const values = [...fields];
@@ -58,18 +63,6 @@ function AgencyForm4(props) {
             })
         }
     }
-
-    // window.addEventListener('popstate', (event) => {
-    //     alert("You message");
-    // })
-
-    // useEffect(() => {
-    //     if (props.history.action === "POP") {
-    //         console.log("write your logic here")
-    //         alert('hiiiiiiiiiiiiiii');
-    //     }
-
-    // }, [])
 
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
@@ -182,57 +175,58 @@ function AgencyForm4(props) {
     }, [githubLink, stackoverflow, featuredLink])
 
 
-
-
     const finalUpdate = () => {
         if (validateInfo()) {
-            let apiData;
-            let socialPlatformDetails = [];
-            if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value == null) {
+            let PlatformDetails = [];
+            let apiData = {
+                stepsCompleted: '5',
+                socialPlatformDetails: []
+            }
+            
+            if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value === null && fields[0].value === '') {
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
 
             if (Object.entries(githubLink).length !== 0) {
-                socialPlatformDetails.push(githubLink)
+                PlatformDetails.push(githubLink)
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
             if (Object.entries(stackoverflow).length !== 0) {
-                socialPlatformDetails.push(stackoverflow);
+                PlatformDetails.push(stackoverflow);
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
             if (Object.entries(featuredLink).length !== 0) {
-                socialPlatformDetails.push(featuredLink)
+                PlatformDetails.push(featuredLink)
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
-            if (fields[0].value !== null) {
+            if (fields[0].value !== null && fields[0].value !== '') {  
                 const portfolios = fields.map((link, index) => {
                     return {
                         platformName: `portfolio${index + 1}`,
                         platformLink: link.value
                     }
                 })
-                socialPlatformDetails.push(...portfolios);
+                PlatformDetails.push(...portfolios);
                 apiData = {
                     stepsCompleted: '5',
-                    socialPlatformDetails: socialPlatformDetails
+                    socialPlatformDetails: PlatformDetails
                 }
             }
             finishAgencyForm4Api(apiData);
         }
     };
-
 
     return (
         <>
@@ -313,7 +307,7 @@ function AgencyForm4(props) {
                                         {errors.featuredLinkError && <Alert severity="error">{errors.featuredLinkError}</Alert>}
                                     </div>
 
-                                    <div className="nextBtn buttonParent_agencyForm4">
+                                    <div className="nextBtn bothBtn buttonParent_agencyForm4">
                                         <button style={{ backgroundColor: '#707070' }} onClick={() => goBack()}>
                                             Back
                                         </button>
