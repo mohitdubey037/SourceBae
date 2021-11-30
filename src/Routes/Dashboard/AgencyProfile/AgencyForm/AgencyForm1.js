@@ -100,7 +100,6 @@ function AgencyForm1(props) {
     };
 
     const inputFileChoosen = (projectDoc) => {
-        console.log(projectDoc);
         setLogo(projectDoc);
     }
 
