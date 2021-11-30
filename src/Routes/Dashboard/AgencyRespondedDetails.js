@@ -142,21 +142,19 @@ function AgencyRespondedDetails(props) {
 
           <div>
             <p>Shortlisted</p>
-            <p>{`${
-              project?.projectProposals?.length > 0 &&
+            <p>{`${project?.projectProposals?.length > 0 &&
               project?.projectProposals[0]?.isShortListed
-                ? "Yes"
-                : "No"
-            }`}</p>
+              ? "Yes"
+              : "No"
+              }`}</p>
           </div>
           <div>
             <p>Quotation Asked</p>
-            <p>{`${
-              project?.projectProposals?.length > 0 &&
+            <p>{`${project?.projectProposals?.length > 0 &&
               project?.projectProposals[0]?.isAskedForQuotation
-                ? "Yes"
-                : "No"
-            }`}</p>
+              ? "Yes"
+              : "No"
+              }`}</p>
           </div>
           <div>
             <p>Project Creation Date</p>
@@ -181,22 +179,24 @@ function AgencyRespondedDetails(props) {
         <div className="innerAgencyQuotation">
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {project.projectProposals &&
-            project?.projectProposals[0].rejectReasonByClient !== undefined ? (
-              <>
+              project?.projectProposals[0].rejectReasonByClient !== undefined ? (
+              <div className="project_rejection">
                 <p>Project is rejected by the Client due to following reason</p>
                 <ul>
                   <li>{project?.projectProposals[0].rejectReasonByClient}</li>
                 </ul>
-              </>
+              </div>
             ) : project.projectProposals &&
               project?.projectProposals[0].rejectReasonByAgency !==
-                undefined ? (
-              <p>Project is rejected by you</p>
+              undefined ? (
+              <div className="project_rejection">
+                <p>Project is rejected by you</p>
+              </div>
             ) : project.projectProposals &&
               project?.projectProposals[0].isQuotationAcceptedByClient ===
-                true &&
+              true &&
               project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                true ? (
+              true ? (
               <div className="image_with_logo">
                 <div className="respondedDetails_afterCompletion">
                   <div className="project-details">
@@ -283,7 +283,7 @@ function AgencyRespondedDetails(props) {
               <>
                 {project.projectProposals &&
                   project?.projectProposals[0].isQuotationAcceptedByClient ===
-                    false && <h4>Comments and Replies</h4>}
+                  false && <h4>Comments and Replies</h4>}
                 {loading ? (
                   <p style={{ textAlign: "center" }}>Comments are loading...</p>
                 ) : project?.projectProposals &&
@@ -339,7 +339,7 @@ function AgencyRespondedDetails(props) {
               </ul>
             </div>
             {project?.projectTechnologiesRequired &&
-            project?.projectTechnologiesRequired.length > 0 ? (
+              project?.projectTechnologiesRequired.length > 0 ? (
               <div>
                 <h4>Technology</h4>
                 <ul>

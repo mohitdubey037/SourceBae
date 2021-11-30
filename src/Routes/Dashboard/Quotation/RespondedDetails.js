@@ -179,209 +179,211 @@ function RespondedDetails(props) {
             ) : project.projectProposals &&
               project?.projectProposals[0].rejectReasonByAgency !==
               undefined ? (
-              <>
+              <div className="project_rejection">
                 <p>Project is rejected by the Agency due to following reason</p>
                 <ul>
                   <li>{project?.projectProposals[0].rejectReasonByAgency}</li>
                 </ul>
-              </>
-            ) : project.projectProposals &&
-              (project?.projectProposals[0].isQuotationAcceptedByClient ===
-                true ||
-                project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                true) ? (
-              <div className="image_with_logo">
-                <div className="respondedDetails_afterCompletion">
-                  <div className="project-details">
-                    <h4>Project Details</h4>
-                  </div>
-                  <div className="project-details_child">
-                    <div className="respondedDetails_afterCompletion_child1">
-                      <div>
-                        <div className="question" style={{ width: "62%" }}>
-                          <p>Client</p>
-                        </div>
-                        <div className="answer">
-                          <p>{project?.clientId?.companyName}</p>
-                        </div>
+              </div>
+                  ) : project.projectProposals &&
+                  (project?.projectProposals[0].isQuotationAcceptedByClient ===
+                  true ||
+                  project?.projectProposals[0].isQuotationAcceptedByAgency ===
+                  true) ? (
+                  <div className="image_with_logo">
+                    <div className="respondedDetails_afterCompletion">
+                      <div className="project-details">
+                        <h4>Project Details</h4>
                       </div>
+                      <div className="project-details_child">
+                        <div className="respondedDetails_afterCompletion_child1">
+                          <div>
+                            <div className="question" style={{ width: "62%" }}>
+                              <p>Client</p>
+                            </div>
+                            <div className="answer">
+                              <p>{project?.clientId?.companyName}</p>
+                            </div>
+                          </div>
 
-                      <div>
-                        <div className="question" style={{ width: "62%" }}>
-                          <p>Agency</p>
-                        </div>
-                        <div className="answer">
-                          <p>
-                            {project?.projectProposals[0]?.agencyId?.agencyName}
-                          </p>
-                        </div>
-                      </div>
+                          <div>
+                            <div className="question" style={{ width: "62%" }}>
+                              <p>Agency</p>
+                            </div>
+                            <div className="answer">
+                              <p>
+                                {project?.projectProposals[0]?.agencyId?.agencyName}
+                              </p>
+                            </div>
+                          </div>
 
-                      <div>
-                        <div className="question" style={{ width: "62%" }}>
-                          <p>Final Cost</p>
+                          <div>
+                            <div className="question" style={{ width: "62%" }}>
+                              <p>Final Cost</p>
+                            </div>
+                            <div className="answer">
+                              <p>
+                                $ {project?.projectProposals[0].finalCostByClient}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="answer">
-                          <p>
-                            $ {project?.projectProposals[0].finalCostByClient}
-                          </p>
+
+                        <div className="respondedDetails_afterCompletion_child2">
+                          <div>
+                            <div className="question after">
+                              <p>Project Creation Date</p>
+                            </div>
+                            <div className="answer">
+                              <p>
+                                <Moment format="D MMM YYYY" withTitle>
+                                  {project?.createdAt}
+                                </Moment>
+                              </p>
+                            </div>
+                          </div>
+                          {project.projectExpectedStartingDays !== 0 && (
+                            <div>
+                              <div className="question after">
+                                <p>Expected Timeline</p>
+                              </div>
+                              <div className="answer">
+                                <p>{`${project?.projectExpectedStartingDays} Days`}</p>
+                              </div>
+                            </div>
+                          )}
+                          <div>
+                            <div className="question after">
+                              <p>Project Type</p>
+                            </div>
+                            <div className="answer">
+                              <p>{project?.projectType}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="project_is_completed_parent">
+                          <div className="project_is_completed">
+                            {project?.projectProposals[0]
+                              .isQuotationAcceptedByClient === true &&
+                              project?.projectProposals[0].isQuotationAcceptedByAgency ===
+                              true ? (
+                              <p>Project is started from both side</p>
+                            ) : (
+                              <p>Please wait for the agency to accept the Quotation</p>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
-
-                    <div className="respondedDetails_afterCompletion_child2">
-                      <div>
-                        <div className="question after">
-                          <p>Project Creation Date</p>
-                        </div>
-                        <div className="answer">
-                          <p>
-                            <Moment format="D MMM YYYY" withTitle>
-                              {project?.createdAt}
-                            </Moment>
-                          </p>
-                        </div>
-                      </div>
-                      {project.projectExpectedStartingDays !== 0 && (
-                        <div>
-                          <div className="question after">
-                            <p>Expected Timeline</p>
-                          </div>
-                          <div className="answer">
-                            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-                          </div>
-                        </div>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      {project?.projectProposals[0].isQuotationAcceptedByClient ===
+                        true &&
+                        project?.projectProposals[0].isQuotationAcceptedByAgency ===
+                        true ? (
+                        <img style={{ width: "70%" }} src={completedImage} alt="" />
+                      ) : (
+                        <img style={{ width: "70%" }} src={loadingStatus} alt="" />
                       )}
-                      <div>
-                        <div className="question after">
-                          <p>Project Type</p>
-                        </div>
-                        <div className="answer">
-                          <p>{project?.projectType}</p>
-                        </div>
-                      </div>
                     </div>
                   </div>
-                  <div className="project_is_completed">
-                    {project?.projectProposals[0]
-                      .isQuotationAcceptedByClient === true &&
-                      project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                      true ? (
-                      <p>Project is started from both side</p>
-                    ) : (
-                      <p>Please wait for the agency to accept the Quotation</p>
-                    )}
-                  </div>
-                </div>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  {project?.projectProposals[0].isQuotationAcceptedByClient ===
-                    true &&
-                    project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                    true ? (
-                    <img style={{ width: "70%" }} src={completedImage} alt="" />
+                  ) : project?.projectProposals &&
+                  project?.projectProposals[0].isQuotationAcceptedByClient ===
+                  true ? (
+                  <p>Please wait for the agency to accept the Quotation</p>
                   ) : (
-                    <img style={{ width: "70%" }} src={loadingStatus} alt="" />
+                  <>
+                    <h4>Comments and Replies</h4>
+                    {loading ? (
+                      <p style={{ textAlign: "center" }}>Comments are loading...</p>
+                    ) : project?.projectProposals &&
+                      project.projectProposals[0]?.isAskedForQuotation === true ? (
+                      <ClientCommentBox
+                        projectId={projectId}
+                        agencyId={agencyId}
+                        isShortListed={true}
+                        giveReplies={(gr) => {
+                          setRepliedToClient(gr);
+                        }}
+                        {...project}
+                        isAskedForQuotation={true}
+                        commentType="Quotation"
+                      />
+                    ) : (
+                      project?.projectProposals && (
+                        <ClientCommentBox
+                          projectId={projectId}
+                          agencyId={agencyId}
+                          isShortListed={true}
+                          s
+                          giveReplies={(gr) => {
+                            setRepliedToClient(gr);
+                          }}
+                          {...project}
+                          isAskedForQuotation={false}
+                          commentType="Shortlist"
+                        />
+                      )
+                    )}
+                  </>
+            )}
+                </div>
+
+                <div className="agencyQuestions_AgencyRespondedDetails">
+                  <div className="straightAfterLine">
+                    <h4>Fixed Budget</h4>
+                    <ul>
+                      <li style={{ listStyle: "none" }}>
+                        {" "}
+                        <img className="dotImg" src={dot} alt="" /> Min $
+                        {project.projectProposalCost}
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="straightAfterLine">
+                    <h4>Estimated Timeline</h4>
+                    <ul>
+                      <img className="dotImg" src={dot} alt="" />
+                      <li
+                        style={{
+                          listStyle: "none",
+                          display: "flex",
+                          marginLeft: "-4rem",
+                        }}
+                      >{`${project?.projectExpectedStartingDays} Days`}</li>
+                    </ul>
+                  </div>
+
+                  {project?.projectTechnologiesRequired &&
+                    project?.projectTechnologiesRequired.length > 0 ? (
+                    <div>
+                      <h4>Technology</h4>
+                      <ul>
+                        {project?.projectTechnologiesRequired?.map((p) => (
+                          <>
+                            <img className="dotImg" src={dot} alt="" />
+                            <li style={{ listStyle: "none" }}>{p?.technologyName}</li>
+                          </>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <div>
+                      <h4>Services</h4>
+                      <ul>
+                        {project?.projectServicesRequired?.map((p) => (
+                          <>
+                            <img className="dotImg" src={dot} alt="" />
+                            <li style={{ listStyle: "none" }}>{p?.serviceName}</li>
+                          </>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </div>
               </div>
-            ) : project?.projectProposals &&
-              project?.projectProposals[0].isQuotationAcceptedByClient ===
-              true ? (
-              <p>Please wait for the agency to accept the Quotation</p>
-            ) : (
-              <>
-                <h4>Comments and Replies</h4>
-                {loading ? (
-                  <p style={{ textAlign: "center" }}>Comments are loading...</p>
-                ) : project?.projectProposals &&
-                  project.projectProposals[0]?.isAskedForQuotation === true ? (
-                  <ClientCommentBox
-                    projectId={projectId}
-                    agencyId={agencyId}
-                    isShortListed={true}
-                    giveReplies={(gr) => {
-                      setRepliedToClient(gr);
-                    }}
-                    {...project}
-                    isAskedForQuotation={true}
-                    commentType="Quotation"
-                  />
-                ) : (
-                  project?.projectProposals && (
-                    <ClientCommentBox
-                      projectId={projectId}
-                      agencyId={agencyId}
-                      isShortListed={true}
-                      s
-                      giveReplies={(gr) => {
-                        setRepliedToClient(gr);
-                      }}
-                      {...project}
-                      isAskedForQuotation={false}
-                      commentType="Shortlist"
-                    />
-                  )
-                )}
-              </>
-            )}
-          </div>
-
-          <div className="agencyQuestions_AgencyRespondedDetails">
-            <div className="straightAfterLine">
-              <h4>Fixed Budget</h4>
-              <ul>
-                <li style={{ listStyle: "none" }}>
-                  {" "}
-                  <img className="dotImg" src={dot} alt="" /> Min $
-                  {project.projectProposalCost}
-                </li>
-              </ul>
-            </div>
-            <div className="straightAfterLine">
-              <h4>Estimated Timeline</h4>
-              <ul>
-                <img className="dotImg" src={dot} alt="" />
-                <li
-                  style={{
-                    listStyle: "none",
-                    display: "flex",
-                    marginLeft: "-4rem",
-                  }}
-                >{`${project?.projectExpectedStartingDays} Days`}</li>
-              </ul>
-            </div>
-
-            {project?.projectTechnologiesRequired &&
-              project?.projectTechnologiesRequired.length > 0 ? (
-              <div>
-                <h4>Technology</h4>
-                <ul>
-                  {project?.projectTechnologiesRequired?.map((p) => (
-                    <>
-                      <img className="dotImg" src={dot} alt="" />
-                      <li style={{ listStyle: "none" }}>{p?.technologyName}</li>
-                    </>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <div>
-                <h4>Services</h4>
-                <ul>
-                  {project?.projectServicesRequired?.map((p) => (
-                    <>
-                      <img className="dotImg" src={dot} alt="" />
-                      <li style={{ listStyle: "none" }}>{p?.serviceName}</li>
-                    </>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
       </div>
-    </>
-  );
+        </>
+        );
 }
 
 // const mapStateToProps = (state) => {
