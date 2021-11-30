@@ -266,12 +266,11 @@ function ShortTerm(props) {
                             : "none",
                           color: service.selected ? "#fff" : "#000",
                           textAlign: "center",
-                          padding: "5px 2px 1px 4px",
                         }}
                         className={`${service.serviceName}`}
                         onClick={(event) => handleServices(event)}
                       >
-                        <span className={`${service.serviceName}`}></span>
+                        {/* <span className={`${service.serviceName}`}></span> */}
                         <img
                           className={`${service.serviceName}`}
                           src={service.serviceIcon}

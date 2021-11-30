@@ -496,10 +496,8 @@
 }
 
 .innerResponseCard div p:nth-child(2) {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
+  font-family: 'Segoe UI';
   font-size: 16px;
-  line-height: 17px;
   text-align: center;
   letter-spacing: 0.4px;
   text-transform: capitalize;

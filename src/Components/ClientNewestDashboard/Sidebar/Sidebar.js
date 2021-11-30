@@ -25,6 +25,45 @@ function Sidebar(props) {
 
     const notificationPanel = () => {
         setIsnotification(!isNotification);
+        props.notificationVisible(!isNotification);
+    }
+
+    const handleGetNotification = () => {
+        instance.get(`/api/${Role}/notifications/all?type=push`)
+            .then(response => {
+                setNotificationData(response);
+            })
+            .catch(err => {
+            })
+    }
+
+
+    useEffect(() => {
+        handleGetNotification();
+    }, [])
+
+    const handleNotificationRead = (id) => {
+        const body = {
+            id
+        }
+        console.log(id);
+        if (id != undefined) {
+            instance.patch(`/api/${Role}/notifications/update`, body)
+            .then(response => {
+                handleGetNotification();
+            })
+            .catch(err => {
+
+            })
+        }
+        else {
+            instance.patch(`/api/${Role}/notifications/update`)
+            .then(response => {
+                handleGetNotification();
+            })
+            .catch(err => {
+            })
+        }
     }
 
     useEffect(() => {
@@ -58,9 +97,7 @@ function Sidebar(props) {
         localStorage.removeItem('userId');
         localStorage.removeItem('toggle');
         cookie.remove("Authorization");
-        cookie.remove("isAgencyVerified");
-        cookie.remove("isStepsCompleted");
-        routerHistory.push('/');
+        routerHistory.replace('/');
     }
 
     return (
