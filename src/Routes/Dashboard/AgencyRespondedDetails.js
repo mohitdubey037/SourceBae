@@ -18,6 +18,7 @@ import detailImage from "../../assets/images/details.png";
 import AgencyCommentBox from "../Agency/AgencyCommentBox/AgencyCommentBox";
 import { useSelector } from "react-redux";
 import useIsFirstRender from "../../Utils/useIsFirstRender";
+import ProjectDetailCard from "../../Components/ProjectDetailCard/ProjectDetailCard";
 
 function AgencyRespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -113,7 +114,18 @@ function AgencyRespondedDetails(props) {
         <h2 style={{ color: "#707070" }}>About Your Project</h2>
       </div>
 
-      <div className="respondCards_AgencyRespondedDetails">
+      <ProjectDetailCard
+        role="Agency"
+        name={project?.clientId?.companyName}
+        expectedTimeline={project?.projectExpectedStartingDays}
+        projectProposalCost={project?.projectProposalCost}
+        agencyExperience={project?.agencyExperience}
+        projectType={project?.projectType}
+        isShortListed={project?.projectProposals && project?.projectProposals[0]?.isShortListed}
+        isAskedForQuotation={project?.projectProposals && project?.projectProposals[0]?.isAskedForQuotation}
+        projectCreationDate={project?.createdAt} />
+
+      {/* <div className="respondCards_AgencyRespondedDetails">
         <div className="innerResponseCard">
           <span className="leftLine"></span>
           <div>
@@ -165,7 +177,7 @@ function AgencyRespondedDetails(props) {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="ProjectDescriptionRespondedDetails">
         <h4 className="ProjectDescriptionRespondedDetails_heading">
           Project Description:
