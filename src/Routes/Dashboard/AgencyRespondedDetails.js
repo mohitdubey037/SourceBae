@@ -18,6 +18,7 @@ import detailImage from "../../assets/images/details.png";
 import AgencyCommentBox from "../Agency/AgencyCommentBox/AgencyCommentBox";
 import { useSelector } from "react-redux";
 import useIsFirstRender from "../../Utils/useIsFirstRender";
+import ProjectDetailCard from "../../Components/ProjectDetailCard/ProjectDetailCard";
 
 function AgencyRespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -113,59 +114,17 @@ function AgencyRespondedDetails(props) {
         <h2 style={{ color: "#707070" }}>About Your Project</h2>
       </div>
 
-      <div className="respondCards_AgencyRespondedDetails">
-        <div className="innerResponseCard">
-          <span className="leftLine"></span>
-          <div>
-            <p>Client</p>
-            <p>{`${project?.clientId?.companyName}`}</p>
-          </div>
-          <div>
-            <p>Expected Timeline</p>
-            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-          </div>
-          <div>
-            <p>Project Proposal Cost</p>
-            <p>{`$${project?.projectProposalCost}`}</p>
-          </div>
-          <div>
-            <p>Agency Experience</p>
-            <p>{`${project?.agencyExperience}`}</p>
-          </div>
-        </div>
-        <div className="innerResponseCard">
-          <span className="leftLine"></span>
-          <div>
-            <p>Project Type</p>
-            <p>{`${project?.projectType}`}</p>
-          </div>
+      <ProjectDetailCard
+        role="Agency"
+        name={project?.clientId?.companyName}
+        expectedTimeline={project?.projectExpectedStartingDays}
+        projectProposalCost={project?.projectProposalCost}
+        agencyExperience={project?.agencyExperience}
+        projectType={project?.projectType}
+        isShortListed={project?.projectProposals && project?.projectProposals[0]?.isShortListed}
+        isAskedForQuotation={project?.projectProposals && project?.projectProposals[0]?.isAskedForQuotation}
+        projectCreationDate={project?.createdAt} />
 
-          <div>
-            <p>Shortlisted</p>
-            <p>{`${project?.projectProposals?.length > 0 &&
-              project?.projectProposals[0]?.isShortListed
-              ? "Yes"
-              : "No"
-              }`}</p>
-          </div>
-          <div>
-            <p>Quotation Asked</p>
-            <p>{`${project?.projectProposals?.length > 0 &&
-              project?.projectProposals[0]?.isAskedForQuotation
-              ? "Yes"
-              : "No"
-              }`}</p>
-          </div>
-          <div>
-            <p>Project Creation Date</p>
-            <p>
-              <Moment format="D MMM YYYY" withTitle>
-                {project?.createdAt}
-              </Moment>
-            </p>
-          </div>
-        </div>
-      </div>
       <div className="ProjectDescriptionRespondedDetails">
         <h4 className="ProjectDescriptionRespondedDetails_heading">
           Project Description:
