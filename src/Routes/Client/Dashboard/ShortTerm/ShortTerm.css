@@ -141,6 +141,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* padding: 5px 2px 1px 4px; */
+  cursor: pointer;
 }
 
 .innerShortTerm ul~span {
@@ -209,7 +211,7 @@
 }
 
 .shortTermProjectDesc textarea {
-  padding: 0px 10px;
+  padding: 5px 10px;
   border: 1px solid #707070;
   font-family: 'Segoe UI';
   width: 100%;

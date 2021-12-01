@@ -42,6 +42,9 @@ function Sidebar(props) {
     }, [])
 
     const handleNotificationRead = (id) => {
+        const body = {
+            id
+        }
         console.log(id);
         const body = {
             id

@@ -13,6 +13,7 @@ import loadingStatus from "../../../assets/images/Newestdashboard/Not_found/load
 import dot from "../../../assets/images/Newestdashboard/Agency_Details/dot.svg";
 import { useSelector } from "react-redux";
 import useIsFirstRender from "../../../Utils/useIsFirstRender";
+import ProjectDetailCard from "../../../Components/ProjectDetailCard/ProjectDetailCard";
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -101,67 +102,19 @@ function RespondedDetails(props) {
           </div>
         </div>
       </div>
-      <div className="respondCards_AgencyRespondedDetails">
-        <div className="innerResponseCard">
-          <span className="leftLine"></span>
-          <div>
-            <p>Agency</p>
-            <p>
-              {project.projectProposals &&
-                project?.projectProposals[0]?.agencyId?.agencyName}
-            </p>
-          </div>
-          <div>
-            <p>Expected Timeline</p>
-            <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-          </div>
-          {/* } */}
-          <div>
-            <p>Project Proposal Cost</p>
-            <p
-              style={{ fontWeight: "600" }}
-            >{`$${project?.projectProposalCost}`}</p>
-          </div>
-          <div>
-            <p>Agency Experience</p>
-            <p>{`${project?.agencyExperience}`}</p>
-          </div>
-        </div>
-        <div className="innerResponseCard">
-          <span className="leftLine"></span>
-          <div>
-            <p>Project Type</p>
-            <p>{`${project?.projectType}`}</p>
-          </div>
 
-          <div>
-            <p>Shortlisted</p>
-            <p>{`${project?.projectProposals?.length > 0 &&
-              project?.projectProposals[0]?.isShortListed
-              ? "Yes"
-              : "No"
-              }`}</p>
-          </div>
-
-          <div>
-            <p>Quotation Asked</p>
-            <p>{`${project?.projectProposals?.length > 0 &&
-              project?.projectProposals[0]?.isAskedForQuotation
-              ? "Yes"
-              : "No"
-              }`}</p>
-          </div>
-
-          <div>
-            <p>Project Creation Date</p>
-            <p>
-              <Moment format="D MMM YYYY" withTitle>
-                {project?.createdAt}
-              </Moment>
-            </p>
-          </div>
-        </div>
-      </div>
+      {project.projectProposals &&
+        <ProjectDetailCard
+          role="Client"
+          name={project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}
+          expectedTimeline={project?.projectExpectedStartingDays}
+          projectProposalCost={project?.projectProposalCost}
+          agencyExperience={project?.agencyExperience}
+          projectType={project?.projectType}
+          isShortListed={project.projectProposals[0].isShortListed}
+          isAskedForQuotation={project.projectProposals[0].isAskedForQuotation}
+          projectCreationDate={project?.createdAt} />
+      }
 
       <div className="ProjectDescriptionRespondedDetails">
         <h4 className="ProjectDescriptionRespondedDetails_heading">Project Description:</h4>
@@ -179,12 +132,12 @@ function RespondedDetails(props) {
             ) : project.projectProposals &&
               project?.projectProposals[0].rejectReasonByAgency !==
               undefined ? (
-              <>
+              <div className="project_rejection">
                 <p>Project is rejected by the Agency due to following reason</p>
                 <ul>
                   <li>{project?.projectProposals[0].rejectReasonByAgency}</li>
                 </ul>
-              </>
+              </div>
             ) : project.projectProposals &&
               (project?.projectProposals[0].isQuotationAcceptedByClient ===
                 true ||
@@ -261,16 +214,18 @@ function RespondedDetails(props) {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="project_is_completed">
-                    {project?.projectProposals[0]
-                      .isQuotationAcceptedByClient === true &&
-                      project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                      true ? (
-                      <p>Project is started from both side</p>
-                    ) : (
-                      <p>Please wait for the agency to accept the Quotation</p>
-                    )}
+                    <div className="project_is_completed_parent">
+                      <div className="project_is_completed">
+                        {project?.projectProposals[0]
+                          .isQuotationAcceptedByClient === true &&
+                          project?.projectProposals[0].isQuotationAcceptedByAgency ===
+                          true ? (
+                          <p>Project is started from both side</p>
+                        ) : (
+                          <p>Please wait for the agency to accept the Quotation</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div style={{ display: "flex", justifyContent: "center" }}>
