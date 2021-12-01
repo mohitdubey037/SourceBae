@@ -66,7 +66,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = (props) => {
-  const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+  const logoLink = "https://sourcebae.s3.amazonaws.com/image/1638354759751.svg";
+  // const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+  
   const classes = useStyles();
   let { role } = useParams();
   role = helper.capitalize(helper.cleanParam(role));
