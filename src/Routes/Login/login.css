@@ -54,12 +54,25 @@ span.welcome-back_sourceBae {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI';
   font-size: 18px;
   text-transform: capitalize;
   color: #B5B2B2;
   padding: 1rem;
 }
+
+.sourceBae_logo {
+  position: absolute;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.sourceBae_logo img {
+  width: 9rem;
+}
+
 
 .message {
   display: flex;
@@ -219,10 +232,6 @@ span.welcome-back_sourceBae {
   background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
   color: white !important;
 }
-
-/* .active__buttonAgency {
-  background: linear-gradient( 262deg, #015F9A 0%, #0376BA 100%) !important;
-} */
 
 .loginHeading {
   width: 100%;

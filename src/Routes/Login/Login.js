@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = (props) => {
+  const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
   const classes = useStyles();
   let { role } = useParams();
   role = helper.capitalize(helper.cleanParam(role));
@@ -141,7 +142,7 @@ const Login = (props) => {
           notificationDeviceToken: device_token,
         })
         .then(function (response) {
-          cookie.save("Authorization", `Bearer ${response.accessToken}`,{path: "/"});
+          cookie.save("Authorization", `Bearer ${response.accessToken}`, { path: "/" });
           setToken(cookie.load("Authorization"));
           localStorage.setItem("role", role);
           localStorage.setItem("userId", `${response._id}`);
@@ -188,26 +189,29 @@ const Login = (props) => {
         <Spinner />
       ) : (
         <div className="mainLoginPage">
+          <div onClick={() => props.history.replace('/')} className="sourceBae_logo">
+            <img src={logoLink} alt="sourceBae-log" />
+          </div>
           <div className="innerLoginPage">
             <div className={`loginIllustrator ${roleString === "Client" && "conditional_background"}`} >
               <div className="loginImage1">
-                <img src={ roleString === "Client" ? downImage1_client : downImage1_agency} alt="image1" />
+                <img src={roleString === "Client" ? downImage1_client : downImage1_agency} alt="image1" />
               </div>
               <div className="loginImage2">
-                <img src={ roleString === "Client" ? downImage2_client : downImage2_agency } alt="image2" />
+                <img src={roleString === "Client" ? downImage2_client : downImage2_agency} alt="image2" />
               </div>
               <div className="loginImage3">
-                <img src={ roleString === "Client" ? upImage1_client : upImage1_agency } alt="image3" />
+                <img src={roleString === "Client" ? upImage1_client : upImage1_agency} alt="image3" />
               </div>
               <div className="loginImage4">
-                <img src={ roleString === "Client" ? upImage2_client : upImage2_agency } alt="image4" />
+                <img src={roleString === "Client" ? upImage2_client : upImage2_agency} alt="image4" />
               </div>
               <div className="dot-image">
                 <img src={dotImage} alt="" />
               </div>
               <div className="loginCards-wrapper">
                 <div className="welcome-back_loginIllustrator">
-                  <p>Welcome back<br></br><span>to</span><br/><span className="welcome-back_sourceBae">Sourcebae</span> </p>
+                  <p>Welcome back<br></br><span>to</span><br /><span className="welcome-back_sourceBae">Sourcebae</span> </p>
                 </div>
                 <div className="loginContent">
                   <div className="mainLoginForm">
@@ -215,7 +219,7 @@ const Login = (props) => {
                       <button
                         onClick={() => handleChangeToggle("agency")}
                         className={`agency__button ${roleString === "Agency" && "active__buttonagency"
-                        }`}>
+                          }`}>
                         <p>Agency</p>
                       </button>
                       <button
@@ -289,19 +293,17 @@ const Login = (props) => {
                       />
                       <div className="button_action_login">
                         <button
-                          className={`submit_login ${
-                            roleString === "Client" &&
+                          className={`submit_login ${roleString === "Client" &&
                             "conditional_backgroundSubmit"
-                          }`}
+                            }`}
                           // onClick={() => logIn(role, form)}
                           type="submit"
                         >
                           <p>Login</p>
                         </button>
                         <div
-                          className={`forgot-password_login ${
-                            roleString === "Client" && "conditional_color"
-                          }`}
+                          className={`forgot-password_login ${roleString === "Client" && "conditional_color"
+                            }`}
                           onClick={() => props.history.push("/enter-email")}
                         >
                           <p>Forgot Password</p>
@@ -314,10 +316,9 @@ const Login = (props) => {
                   </div>
                   <div className="signup_toggle">
                     <div
-                      className={`googleLogin ${
-                        roleString === "Client" &&
+                      className={`googleLogin ${roleString === "Client" &&
                         "conditional_backgroundGoogle"
-                      }`}
+                        }`}
                     >
                       <img src={googleImg} alt="no_image" />
                       <p>Sign in with Google</p>
@@ -325,7 +326,7 @@ const Login = (props) => {
                     <div className="signUpOption">
                       <p>
                         Don't have an account?{" "}
-                        <span onClick={()=>props.history.replace(`/register:${role.toLowerCase()}`)}>
+                        <span onClick={() => props.history.replace(`/register:${role.toLowerCase()}`)}>
                           Sign Up
                         </span>
                       </p>
