@@ -33,7 +33,8 @@
 }
 
 .conditional_colorChange {
-  filter: invert(136%) sepia(94%) saturate(1759%) hue-rotate(183deg) brightness(64%) contrast(112%)
+  /* filter: invert(136%) sepia(94%) saturate(1759%) hue-rotate(183deg) brightness(64%) contrast(112%); */
+  filter: invert(136%) sepia(115%) saturate(1759%) hue-rotate(161deg) brightness(64%) contrast(161%);
 }
 
 .logoPart {
@@ -238,7 +239,7 @@
 
 .nextRegister_onClient, .backRegister_onClient {
   width: 35%;
-  background: linear-gradient( 262deg, #015F9A 0%, #0376BA 100%) !important;
+  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
   cursor: pointer;
 }
 
@@ -444,23 +445,28 @@ input:focus-visible, input:focus {
     flex-direction: column;
     flex: 1;
   }
+
   .navigationButtonsSignup {
     padding-right: 2rem;
     padding-top: 1rem;
   }
+
   .input_with_error input {
     width: 88%;
   }
+
   .toggleButton.register {
     flex-direction: column-reverse;
     width: 100%;
     padding: 1.5rem;
   }
+
   .client__form {
     flex-direction: column;
     justify-content: center;
     width: 94%;
   }
+
   .form__area {
     width: 100%;
     height: 88%;
@@ -473,40 +479,49 @@ input:focus-visible, input:focus {
     border-right: none;
     box-shadow: none;
   }
+
   .right_image img {
     display: none;
   }
+
   .client__registrationContainer {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .Image1 {
     left: -1.5rem;
     top: -1rem;
     width: 16rem;
   }
+
   .Image2 {
     right: -1rem;
     bottom: -1rem;
     width: 15rem;
   }
+
   .next_Register {
     width: 20%;
     border: none;
     outline: none;
   }
+
   .registerOption {
     flex-direction: column;
   }
+
   .existing_accountText {
     width: 25%;
     font-size: 12px;
   }
+
   .login_switch.signup_switch {
     width: 58%;
     margin: 1rem;
   }
+
   .client__formsContainer {
     width: 86%;
   }
