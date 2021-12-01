@@ -86,11 +86,17 @@ function AgencyForm1(props) {
         else if (formData.agencyAddress.address === "") {
             errors.address = "Address is required";
         }
+        else if (formData.agencyAddress.address.length < 3) {
+            errors.address = "Address must be at least 3 characters";
+        }
         else if (formData.agencyAddress.address > 200) {
             errors.address = "Address must be less than 200 characters.";
         }
         else if (formData.agencyAddress.location === "") {
             errors.location = "Location is required";
+        }
+        else if (formData.agencyAddress.location.length < 3) {
+            errors.location = "Location must be atleast 3 characters";
         }
         setErrors(errors);
         if (Object.keys(errors).length === 0)
