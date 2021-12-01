@@ -100,8 +100,8 @@ function EnterEmail(props) {
                 <div className="forgot_parent">
                     <Back name="Forgot Password" />
                 </div>
-                <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
-                <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
+                <img className={`Image1_hireAgency ${Role === "Client" && 'conditional_colorChange'}`} src={UpImage} alt="upImage" />
+                <img className={`Image2_hireAgency ${Role === "Client" && 'conditional_colorChange'}`} src={DownImage} alt="downImage" />
                 <Container component="main">
                     <CssBaseline />
                     <div className={classes.paper}>
