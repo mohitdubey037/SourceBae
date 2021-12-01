@@ -108,7 +108,7 @@ function AgencyForm3(props) {
                 panCardDoc.document,
                 panCardDoc.name
             );
-            instance.post(`https://api.onesourcing.in/api/${Role}/media/create`, formData)
+            instance.post(`api/${Role}/media/create`, formData)
                 .then(function (response) {
                     setRegistrationCertificate({
                         ...registrationCertificate,
