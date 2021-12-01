@@ -47,6 +47,12 @@ function AgencyForm1(props) {
         if (logo === null) {
             errors.agencyLogo = "Agency Logo is required"
         }
+        else if (formData.agencyDescription === "") {
+            errors.agencyDescription = "Description is required"
+        }
+        else if (formData.agencyDescription.length < 2) {
+            errors.agencyDescription = "Description must be atleast 2 characters."
+        }
         else if (formData.ownerName === "") {
             errors.ownerName = "Owner name is required"
         }
@@ -74,14 +80,14 @@ function AgencyForm1(props) {
         else if (formData.agencyPhone.match(/[^0-9]/g)) {
             errors.agencyPhone = "Phone must be digits."
         }
-        else if (formData.agencyDescription === "") {
-            errors.agencyDescription = "Description is required"
+        else if (formData.socialPlatformDetails[0].platformLink === '') {
+            errors.socialPlatformDetails = "LinkedIn URL required";
         }
-        else if (formData.agencyDescription < 100 && formData.agencyDescription > 300) {
-            errors.agencyDescription = "Description must be between 100-300 characters."
+        else if (!helper.validateLinkedIn(formData?.socialPlatformDetails[0]?.platformLink)) {
+            errors.socialPlatformDetails = "Invalid LinkedIn URL";
         }
         else if (!helper.validateLink(formData?.socialPlatformDetails[0]?.platformLink)) {
-            errors.socialPlatformDetails = "Invalid website address"
+            errors.socialPlatformDetails = "Invalid website address";
         }
         else if (formData.agencyAddress.address === "") {
             errors.address = "Address is required";
@@ -324,7 +330,7 @@ function AgencyForm1(props) {
                                         }
                                     </div>
                                     <div className="getOwnerName">
-                                        <p>LinkedIn URL
+                                        <p>LinkedIn Profile URL
                                             <span className="requiredStar">
                                                 *
                                             </span>
