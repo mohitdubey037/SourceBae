@@ -6,7 +6,7 @@ const prod = {
 
 const dev = {
     url: {
-        API_URL: `https://api.sourcebae.com`
+        API_URL: `https://api.onesourcing.com`
     }
 }
 

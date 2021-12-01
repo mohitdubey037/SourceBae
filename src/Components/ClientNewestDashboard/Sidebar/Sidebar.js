@@ -45,10 +45,6 @@ function Sidebar(props) {
         const body = {
             id
         }
-        console.log(id);
-        const body = {
-            id
-        }
         if (id != undefined) {
             instance.patch(`/api/${Role}/notifications/update`, body)
             .then(response => {
