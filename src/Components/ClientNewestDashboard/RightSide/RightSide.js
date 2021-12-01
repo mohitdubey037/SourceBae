@@ -1,6 +1,5 @@
 import './RightSide.css';
 import { useState } from 'react';
-// import itemIllustration from "../../../assets/images/Newestdashboard/RightSide/itemIllustration.svg";
 import getInTouch from "../../../assets/images/Newestdashboard/RightSide/GetInTouch.svg";
 import CallIcon from '../../../assets/images/Newestdashboard/Dashboard/phone_call.svg';
 import { Modal } from 'react-responsive-modal';
