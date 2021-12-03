@@ -13,6 +13,8 @@ import cookie from "react-cookies";
 import instance from "../../../Constants/axiosConstants";
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import RouteRedirect from '../../../Utils/RouteRedirect';
+
 
 function Sidebar(props) {
     const Role = localStorage.getItem('role');
@@ -48,20 +50,20 @@ function Sidebar(props) {
         console.log(id);
         if (id != undefined) {
             instance.patch(`/api/${Role}/notifications/update`, body)
-            .then(response => {
-                handleGetNotification();
-            })
-            .catch(err => {
+                .then(response => {
+                    handleGetNotification();
+                })
+                .catch(err => {
 
-            })
+                })
         }
         else {
             instance.patch(`/api/${Role}/notifications/update`)
-            .then(response => {
-                handleGetNotification();
-            })
-            .catch(err => {
-            })
+                .then(response => {
+                    handleGetNotification();
+                })
+                .catch(err => {
+                })
         }
     }
 
@@ -77,17 +79,17 @@ function Sidebar(props) {
         }
     }
 
-    const handleDashboard = () => {
-        if (Role === 'Agency') {
-            routerHistory.push('/agencyNewestDashboard');
-        }
-        else {
-            routerHistory.push('/clientNewestDashboard');
-        }
-    }
-
     const postProject = () => {
         routerHistory.push('/hire-agency-form-one')
+    }
+
+    const RouteRedirect1 = () => {
+        if (Role === "Client") {
+            props.history.replace('/clientNewestDashboard');
+        }
+        if (Role === "Agency") {
+            props.history.replace('/agencyNewestDashboard');
+        }
     }
 
     const logout = () => {
@@ -101,12 +103,12 @@ function Sidebar(props) {
 
     return (
         <div className="container-sidebar">
-            <div className="temporary_logo">
+            <div onClick={RouteRedirect1} className="temporary_logo">
                 {/* <img src= 'https://api.onesourcing.in/media/images/1636785308442.jpeg' alt="logo" /> */}
                 <img src='https://api.onesourcing.in/media/images/1637044803259.svg' alt="logo" />
             </div>
             <div className="sidebar-menu">
-                <div className="dashboard-icon icons" onClick={() => handleDashboard()} >
+                <div className="dashboard-icon icons" onClick={RouteRedirect1} >
                     <div>
                         <img style={{ filter: (props.location.pathname === '/clientNewestDashboard' || props.location.pathname === '/agencyNewestDashboard') && 'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)' }} src={dashboardIcon} alt="dashboard icon" />
                     </div>
@@ -157,7 +159,7 @@ function Sidebar(props) {
                             </div>
                             <div className="allNotification">
                                 {/* <div className="allNotificationText"> */}
-                                    <p>All Notification</p>
+                                <p>All Notification</p>
                                 {/* </div> */}
                             </div>
                             <div onClick={() => handleNotificationRead()} className="clearAll">
