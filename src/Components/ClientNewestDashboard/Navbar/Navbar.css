@@ -12,7 +12,11 @@
   padding-top: 0;
   top: 1rem;
   top: 0.5rem;
-  z-index: 1;
+  z-index: 30;
+}
+
+.logoLink_navbar {
+  cursor: pointer;
 }
 
 .logoLink_navbar img{
