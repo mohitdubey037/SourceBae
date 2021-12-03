@@ -108,13 +108,6 @@ function AgencyNewestDashboard(props) {
         verify: "email",
       })
       .then(function (response) { });
-
-    instance
-      .post(`/api/${Role}/auths/send-verification-link`, {
-        userId: agencyId,
-        verify: "phone",
-      })
-      .then(function (response) { });
   };
 
   const quotation = (link) => {
