@@ -15,12 +15,11 @@
   z-index: 30;
 }
 
-.logoLink_navbar {
-  cursor: pointer;
-}
+/* .logoLink_navbar {
+} */
 
 .logoLink_navbar img{
-  /* width: 40%; */
+  cursor: pointer;
   width: 47%;
 }
 

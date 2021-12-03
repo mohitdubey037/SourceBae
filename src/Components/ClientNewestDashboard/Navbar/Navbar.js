@@ -73,8 +73,8 @@ function Navbar(props) {
                     url.includes('/agency-project-details') ||
                     url.includes('/agencyNewestAllProject')
                 ) && 'none'
-            }} onClick={RouteRedirect1} className="logoLink_navbar">
-                <img src={logoLink} alt="logo" />
+            }} className="logoLink_navbar">
+                <img onClick={RouteRedirect1} src={logoLink} alt="logo" />
             </div>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
