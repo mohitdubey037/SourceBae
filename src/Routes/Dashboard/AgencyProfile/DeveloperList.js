@@ -146,26 +146,26 @@ function DeveloperList(props) {
     useEffect(() => {
     }, [developerId])
 
-    const getAgencyProfile = (agencyId, profileviewStatus) => {
-        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
-            .then(function (response) {
-                setAgencyProfileData(response);
-            })
-            .catch((err) => {
-            });
-    };
+    // const getAgencyProfile = (agencyId, profileviewStatus) => {
+    //     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+    //     instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+    //         .then(function (response) {
+    //             setAgencyProfileData(response);
+    //         })
+    //         .catch((err) => {
+    //         });
+    // };
 
     const deleteFunctionality = (agencyId) => {
         setDeveloperId(agencyId);
         setOpenWithdrawModal(true);
     }
 
-    useEffect(() => {
-        if (Role === 'Agency') {
-            getAgencyProfile(agencyId, false);
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (Role === 'Agency') {
+    //         getAgencyProfile(agencyId, false);
+    //     }
+    // }, []);
 
 
 
@@ -275,7 +275,7 @@ function DeveloperList(props) {
                     }
 
                     {Role === 'Agency' ?
-                        agencyProfiledata.isAgencyVerified &&
+                        props.data.isAgencyVerified &&
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
                             <div className="add-developer_parent">
                                 {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}

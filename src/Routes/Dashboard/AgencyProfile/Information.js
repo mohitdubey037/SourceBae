@@ -10,28 +10,28 @@ import * as helper from "../../../shared/helper";
 import { toast } from "react-toastify";
 
 function Information(props) {
-
+    console.log(props);
     // const { id } = useParams();
     const Role = localStorage.getItem('role');
     const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY");
 
     const [agencyProfiledata, setAgencyProfileData] = useState({})
 
-    const getAgencyProfile = (agencyId, profileviewStatus) => {
-        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
-            .then(function (response) {
-                setAgencyProfileData(response);
-            })
-            .catch((err) => {
-            });
-    };
+    // const getAgencyProfile = (agencyId, profileviewStatus) => {
+    //     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+    //     instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+    //         .then(function (response) {
+    //             setAgencyProfileData(response);
+    //         })
+    //         .catch((err) => {
+    //         });
+    // };
 
-    useEffect(() => {
-        if (Role === 'Agency') {
-            getAgencyProfile(localStorage.getItem("userId"), false);
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (Role === 'Agency') {
+    //         getAgencyProfile(localStorage.getItem("userId"), false);
+    //     }
+    // }, []);
 
     const handleErrorsValidation = (url) => {
         if (!helper.validateLink(url)) {
@@ -101,7 +101,7 @@ function Information(props) {
     }
 
     const permanentDisable = (name) => {
-        if (name === "Director Name" || name === "Agency Website" || name === "Team Size" ) {
+        if (name === "Director Name" || name === "Agency Website" || name === "Team Size") {
             return false
         }
         else return true
@@ -140,7 +140,7 @@ function Information(props) {
             <div className="mainInformation">
                 <div className="innerInformation">
                     {Role === 'Agency' ?
-                        agencyProfiledata.isAgencyVerified &&
+                        props.data.isAgencyVerified &&
                         <div className="editableBtn">
                             <div className="information_parent">
                                 {/* <img src={Information_edit} alt="information_edit" /> */}
@@ -183,17 +183,17 @@ function Information(props) {
                 </div>
                 {isDisabled ? null :
 
-                     <div className="handleButtons">
-                    <div className="information_save_parent">
-                        <div  onClick={handleDisabledCancel} className="information_cancel">
-                            <p>Cancel</p>
+                    <div className="handleButtons">
+                        <div className="information_save_parent">
+                            <div onClick={handleDisabledCancel} className="information_cancel">
+                                <p>Cancel</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="information_save_parent">
-                        <div  onClick={handleDisabledSave}  className="information_save">
-                            <p>Submit</p>
+                        <div className="information_save_parent">
+                            <div onClick={handleDisabledSave} className="information_save">
+                                <p>Submit</p>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 }
             </div>

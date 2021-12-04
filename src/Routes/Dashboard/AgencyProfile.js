@@ -131,8 +131,6 @@ function AgencyProfile(props) {
   }, []);
 
   useEffect(() => {
-    console.log(props.location);
-    console.log(props.location.origin);
     if (!navigated && inputEl !== null && props.location.origin === "addingDeveloper") {
       inputEl?.current?.click();
       setNavigation(true);
@@ -533,7 +531,7 @@ function AgencyProfile(props) {
                   role="tabpanel"
                   aria-labelledby="nav-developer-tab"
                 >
-                  <DeveloperList id={id} />
+                  <DeveloperList data={agencyProfileData} id={id} />
                 </div>
                 <div
                   class="tab-pane fade"
@@ -549,7 +547,7 @@ function AgencyProfile(props) {
                   role="tabpanel"
                   aria-labelledby="nav-review-tab"
                 >
-                  <DeveloperList id={id} />
+                  <DeveloperList data={agencyProfileData} id={id} />
                 </div>
                 <div
                   class="tab-pane fade"
