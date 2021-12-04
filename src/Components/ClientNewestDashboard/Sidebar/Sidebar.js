@@ -1,6 +1,4 @@
 import './Sidebar.css';
-
-import SourceBaeLogo from '../../../assets/images/Logo/Sourcebae-14.svg';
 import dashboardIcon from "../../../assets/images/Newestdashboard/SideBar/home.svg";
 import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/post.svg";
 import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile.svg";
@@ -9,72 +7,20 @@ import developersIcon from "../../../assets/images/Newestdashboard/SideBar/devel
 import logoutIcon from "../../../assets/images/Newestdashboard/SideBar/logout.svg";
 import { withRouter } from "react-router";
 import cookie from "react-cookies";
-import instance from "../../../Constants/axiosConstants";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NotificationPanel from '../../Notification/NotificationPanel';
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 function Sidebar(props) {
     const dispatch = useDispatch();
     
     const Role = localStorage.getItem('role');
-    const routerHistory = useHistory();
-    // const url = props.history.location.pathname;
-
-    // const [isNotification, setIsnotification] = useState(false);
-
-    // const notificationPanel = () => {
-    //     setIsnotification(!isNotification);
-    //     props.notificationVisible(!isNotification);
-    // }
-    
+    const routerHistory = useHistory();    
 
     const handleShowNotification = () => {
         dispatch({type: 'SHOW_NOTIFICATION'});
     }
-
-    // const handleGetNotification = () => {
-    //     instance.get(`/api/${Role}/notifications/all?type=push`)
-    //         .then(response => {
-    //             setNotificationData(response);
-    //         })
-    //         .catch(err => {
-    //         })
-    // }
-
-
-    // useEffect(() => {
-    //     handleGetNotification();
-    // }, [])
-
-    // const handleNotificationRead = (id) => {
-    //     const body = {
-    //         id
-    //     }
-    //     console.log(id);
-    //     if (id != undefined) {
-    //         instance.patch(`/api/${Role}/notifications/update`, body)
-    //             .then(response => {
-    //                 handleGetNotification();
-    //             })
-    //             .catch(err => {
-
-    //             })
-    //     }
-    //     else {
-    //         instance.patch(`/api/${Role}/notifications/update`)
-    //             .then(response => {
-    //                 handleGetNotification();
-    //             })
-    //             .catch(err => {
-    //             })
-    //     }
-    // }
-
-    // useEffect(() => {
-    // }, [isNotification]);
 
     const agencyProfileHandler = () => {
         if (Role === 'Agency') {

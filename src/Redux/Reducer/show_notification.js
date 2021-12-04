@@ -5,8 +5,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(state);
-  console.log(!initialState.show_notification)
   switch (action.type) {
     case actionTypes.SHOW_NOTIFICATION:
       return {
