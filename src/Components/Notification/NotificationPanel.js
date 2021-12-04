@@ -1,24 +1,31 @@
-
 import './NotificationPanel.css';
 import instance from "../../Constants/axiosConstants";
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
 
 function NotificationPanel(props) {
-
-    console.log(props);
-
     const Role = localStorage.getItem('role');
+
+    const dispatch = useDispatch();
+    const isNotification = useSelector((state) => state.showNotification);
+    console.log(isNotification);
+
     
-    const [isNotification, setIsnotification] = useState(false);
+    // const [isNotification, setIsnotification] = useState(false);
     const [notificationData, setNotificationData] = useState([]);
     
-    useEffect(() => {
-        setIsnotification(props.isNotification);
-    },[props])
+    // useEffect(() => {
+    //     setIsnotification(props.isNotification);
+    // },[props])
 
-    const notificationPanel = () => {
-        setIsnotification(!props.isNotification);
+    // const notificationPanel = () => {
+    //     setIsnotification(!props.isNotification);
+    // }
+
+    const handleShowNotification = () => {
+        dispatch({type: 'SHOW_NOTIFICATION'});
     }
 
     const handleGetNotification = () => {
@@ -57,13 +64,13 @@ function NotificationPanel(props) {
 
     return (
         <>
-            <div className={isNotification ? 'overlay' : null} ></div>
-            <div className={isNotification ? 'notificationPanel open' : 'notificationPanel'}>
+            <div className={isNotification.show_notification ? 'overlay' : null} ></div>
+            <div className={isNotification.show_notification ? 'notificationPanel open' : 'notificationPanel'}>
                 <div className="innerNotificationPanel">
                     <div className="notificationsCards">
                         <div className="close_and_all">
                             <div className="closeNotification">
-                                <i onClick={() => notificationPanel(props.isNotification)} className="fa fa-times" aria-hidden="true"></i>
+                                <i onClick={handleShowNotification} className="fa fa-times" aria-hidden="true"></i>
                             </div>
                             <div className="allNotification">
                                 {/* <div className="allNotificationText"> */}

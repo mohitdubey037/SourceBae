@@ -13,61 +13,68 @@ import instance from "../../../Constants/axiosConstants";
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import NotificationPanel from '../../Notification/NotificationPanel';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function Sidebar(props) {
-    const ThemeContext = React.createContext(false);
+    const dispatch = useDispatch();
     
     const Role = localStorage.getItem('role');
     const routerHistory = useHistory();
-    const url = props.history.location.pathname;
+    // const url = props.history.location.pathname;
 
-    const [isNotification, setIsnotification] = useState(false);
+    // const [isNotification, setIsnotification] = useState(false);
 
-    const notificationPanel = () => {
-        setIsnotification(!isNotification);
-        props.notificationVisible(!isNotification);
+    // const notificationPanel = () => {
+    //     setIsnotification(!isNotification);
+    //     props.notificationVisible(!isNotification);
+    // }
+    
+
+    const handleShowNotification = () => {
+        dispatch({type: 'SHOW_NOTIFICATION'});
     }
 
-    const handleGetNotification = () => {
-        instance.get(`/api/${Role}/notifications/all?type=push`)
-            .then(response => {
-                setNotificationData(response);
-            })
-            .catch(err => {
-            })
-    }
+    // const handleGetNotification = () => {
+    //     instance.get(`/api/${Role}/notifications/all?type=push`)
+    //         .then(response => {
+    //             setNotificationData(response);
+    //         })
+    //         .catch(err => {
+    //         })
+    // }
 
 
-    useEffect(() => {
-        handleGetNotification();
-    }, [])
+    // useEffect(() => {
+    //     handleGetNotification();
+    // }, [])
 
-    const handleNotificationRead = (id) => {
-        const body = {
-            id
-        }
-        console.log(id);
-        if (id != undefined) {
-            instance.patch(`/api/${Role}/notifications/update`, body)
-                .then(response => {
-                    handleGetNotification();
-                })
-                .catch(err => {
+    // const handleNotificationRead = (id) => {
+    //     const body = {
+    //         id
+    //     }
+    //     console.log(id);
+    //     if (id != undefined) {
+    //         instance.patch(`/api/${Role}/notifications/update`, body)
+    //             .then(response => {
+    //                 handleGetNotification();
+    //             })
+    //             .catch(err => {
 
-                })
-        }
-        else {
-            instance.patch(`/api/${Role}/notifications/update`)
-                .then(response => {
-                    handleGetNotification();
-                })
-                .catch(err => {
-                })
-        }
-    }
+    //             })
+    //     }
+    //     else {
+    //         instance.patch(`/api/${Role}/notifications/update`)
+    //             .then(response => {
+    //                 handleGetNotification();
+    //             })
+    //             .catch(err => {
+    //             })
+    //     }
+    // }
 
-    useEffect(() => {
-    }, [isNotification]);
+    // useEffect(() => {
+    // }, [isNotification]);
 
     const agencyProfileHandler = () => {
         if (Role === 'Agency') {
@@ -131,7 +138,7 @@ function Sidebar(props) {
                     <img src={profileIcon} alt="dashboard icon" />
                     <p>Profile</p>
                 </div>
-                <div className="notification-icon icons" onClick={notificationPanel}>
+                <div className="notification-icon icons" onClick={handleShowNotification}>
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
@@ -148,7 +155,7 @@ function Sidebar(props) {
                     <p>Log Out</p>
                 </div>
             </div>
-            <NotificationPanel isNotification={isNotification} />
+            <NotificationPanel />
         </div>
     )
 }

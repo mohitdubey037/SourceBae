@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
-export const Notification = () => {
+export const Show_Notification = () => {
   return {
     type: actionTypes.SHOW_NOTIFICATION,
   };

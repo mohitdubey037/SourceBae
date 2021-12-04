@@ -5,11 +5,13 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  console.log(state);
+  console.log(!initialState.show_notification)
   switch (action.type) {
     case actionTypes.SHOW_NOTIFICATION:
       return {
         ...state,
-        show_notification: !initialState.show_notification
+        show_notification: !state.show_notification
       };
     default:
       return state;

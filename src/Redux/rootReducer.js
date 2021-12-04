@@ -6,7 +6,7 @@ import showNotification from "./Reducer/show_notification";
 // import clientProjects from "./Reducer/clientProjects";
 const rootReducer = combineReducers({
   notification: notification,
-  show_notification: showNotification
+  showNotification: showNotification
   // register: registerReducer,
   // clientProjects: clientProjects,
 });
