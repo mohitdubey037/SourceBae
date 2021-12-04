@@ -118,6 +118,7 @@
 .temporary_logo {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

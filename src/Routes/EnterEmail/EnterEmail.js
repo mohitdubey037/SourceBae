@@ -33,24 +33,28 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         backgroundColor: theme.palette.primary.main,
     },
-    button: {
-        backgroundColor: 'blue',
-        width: '100%'
-    },
     form: {
-        width: '100%',
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-    root: {
-        "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#015F9A"
+        width: '75%',
+        border: '1px solid #45A4EA',
+        borderRadius: '0.5rem',
+        padding: '0.4rem',
+        height: '35px',
+        "& .MuiFormControl-marginNormal": {
+            // fontSize: '12px',
+            verticalAlign: 'initial',
+            fontFamily: 'Segoe UI',
+            marginTop: '0',
         },
-        " &  .makeStyles-button-3 ": {
-            backgroundColor: "red !imporant"
+        "& .MuiOutlinedInput-input": {
+            paddingLeft: '10px',
+            // padding: '11px 14px'
+        },
+        "& .MuiInputBase-root": {
+            fontSize: '12px'
         }
+    },
+    inputClass: {
+        padding: '0'
     }
 }));
 
@@ -100,14 +104,14 @@ function EnterEmail(props) {
                 <div className="forgot_parent">
                     <Back name="Forgot Password" />
                 </div>
-                <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
-                <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
+                <img className={`Image1_hireAgency ${Role === "Client" && 'conditional_colorChange'}`} src={UpImage} alt="upImage" />
+                <img className={`Image2_hireAgency ${Role === "Client" && 'conditional_colorChange'}`} src={DownImage} alt="downImage" />
                 <Container component="main">
                     <CssBaseline />
                     <div className={classes.paper}>
                         <img src={lock} alt="" style={{ width: "2rem" }} />
                         <Typography component="h1" variant="h5" style={{ color: "#707070", fontFamily: "Segoe UI Semibold" }}>
-                            Send Mail
+                            Send Link
                         </Typography>
                         <div style={{ marginTop: '20px' }}>
                             <FormControl component="fieldset">
@@ -120,7 +124,8 @@ function EnterEmail(props) {
                         </div>
                         <form className={classes.form} noValidate>
                             <TextField
-                                variant="outlined"
+                                // className={classes.inputClass}
+                                // variant="outlined"
                                 margin="normal"
                                 required
                                 fullWidth
@@ -133,13 +138,16 @@ function EnterEmail(props) {
                                 style={{ color: "#707070" }}
                             />
                         </form>
-                        <Button type="submit"
+                        <div className="submitButton submitButton_enterEmail">
+                            <button onClick={() => sendVerificationLink()}>Submit</button>
+                        </div>
+                        {/* <Button type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
                             className={classes.button}
                             onClick={() => sendVerificationLink()}>
-                            Send Verification Link</Button>
+                            Send Verification Link</Button> */}
                     </div>
                 </Container>
             </div>

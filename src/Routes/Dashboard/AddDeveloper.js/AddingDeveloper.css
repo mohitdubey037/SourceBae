@@ -336,7 +336,7 @@
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.inputForm .submitButton {
+.inputForm .submitButton, .submitButton_enterEmail {
   margin-top: 2rem;
   width: 100%;
   display: flex;
@@ -345,7 +345,8 @@
   margin-bottom: 5%;
 }
 
-.inputForm .submitButton button:hover {
+.inputForm .submitButton button:hover, 
+.submitButton_enterEmail button:hover {
   cursor: pointer;
   background-color: #45A4EA;
   color: #eaf2ff;

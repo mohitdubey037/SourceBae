@@ -45,11 +45,8 @@ const dateStyles = makeStyles((theme) => ({
 }));
 
 const Register = (props) => {
-
-  if (props.history.action === 'pop') {
-    console.log(props.history.action);
-    console.log('hiiiii');
-  }
+  // const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+  const logoLink = "https://sourcebae.s3.amazonaws.com/image/1638354759751.svg";
   const isFirstRender = useIsFirstRender();
   const dateClasses = dateStyles();
   const [state, setState] = useState("");
@@ -256,10 +253,9 @@ const Register = (props) => {
   useEffect(() => {
     localStorage.setItem("role", state);
     if (state === "" || state === "agency") {
-      console.log('hii from register');
-      props.history.push("/register:agency")
-    }
-    else {
+      console.log("hii from register");
+      props.history.push("/register:agency");
+    } else {
       props.history.push("/register:client");
     }
   }, [state]);
@@ -427,6 +423,12 @@ const Register = (props) => {
       ) : (
         <>
           <div className="client__registrationContainer">
+            <div
+              onClick={() => props.history.replace("/")}
+              className="sourceBae_logo logo_register"
+            >
+              <img src={logoLink} alt="sourceBae-log" />
+            </div>
             <img
               className={`Image1 ${
                 state === "client" && "conditional_colorChange"
@@ -514,25 +516,25 @@ const Register = (props) => {
 
                   <form autoComplete="off" className="client__form form__2">
                     {role === `Agency` ? (
-                        <RegisterAgencyForm2
-                          errors={errors}
-                          setLinkedIn={setLinkedIn}
-                          setSite={setSite}
-                          setAgencyProfileDetails={setAgencyProfileDetails}
-                          agencyProfileDetails={agencyProfileDetails}
-                          site={site}
-                          setSite={setSite}
-                        />
+                      <RegisterAgencyForm2
+                        errors={errors}
+                        setLinkedIn={setLinkedIn}
+                        setSite={setSite}
+                        setAgencyProfileDetails={setAgencyProfileDetails}
+                        agencyProfileDetails={agencyProfileDetails}
+                        site={site}
+                        setSite={setSite}
+                      />
                     ) : (
-                        <RegisterClientForm2
-                          errors={errors}
-                          setLinkedIn={setLinkedIn}
-                          setSite={setSite}
-                          setClientProfileDetails={setClientProfileDetails}
-                          clientProfileDetails={clientProfileDetails}
-                          site={site}
-                          setSite={setSite}
-                        />
+                      <RegisterClientForm2
+                        errors={errors}
+                        setLinkedIn={setLinkedIn}
+                        setSite={setSite}
+                        setClientProfileDetails={setClientProfileDetails}
+                        clientProfileDetails={clientProfileDetails}
+                        site={site}
+                        setSite={setSite}
+                      />
                     )}
                   </form>
                   <div className="already_next_register">

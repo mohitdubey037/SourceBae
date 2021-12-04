@@ -6,6 +6,7 @@ import instance from "../../../Constants/axiosConstants";
 import Skillset_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Skill-Set_edit.svg';
 
 function SkillsSet(props) {
+    console.log(props);
     const Role = localStorage.getItem('role');
     const [agencyProfiledata, setAgencyProfileData] = useState({})
     const [selectedId, setSelectedId] = useState("")
@@ -18,21 +19,21 @@ function SkillsSet(props) {
         Services: [],
         Technology: []
     })
-    const getAgencyProfile = (agencyId, profileviewStatus) => {
-        let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-        instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
-            .then(function (response) {
-                setAgencyProfileData(response);
-            })
-            .catch((err) => {
-            });
-    };
+    // const getAgencyProfile = (agencyId, profileviewStatus) => {
+    //     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
+    //     instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+    //         .then(function (response) {
+    //             setAgencyProfileData(response);
+    //         })
+    //         .catch((err) => {
+    //         });
+    // };
 
-    useEffect(() => {
-        if (Role === 'Agency') {
-            getAgencyProfile(localStorage.getItem("userId"), false);
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (Role === 'Agency') {
+    //         getAgencyProfile(localStorage.getItem("userId"), false);
+    //     }
+    // }, []);
 
     const handleDisabledCancel = () => {
         setEditStatus(false)
@@ -309,7 +310,7 @@ function SkillsSet(props) {
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
                     {Role !== 'Client' ?
-                        agencyProfiledata.isAgencyVerified &&
+                        props.data.isAgencyVerified &&
                         <div className="skill-set_parent_parent">
                             <div className="skill-set_parent">
                                 {/* <img src={Skillset_edit} alt="Skill-Set" /> */}

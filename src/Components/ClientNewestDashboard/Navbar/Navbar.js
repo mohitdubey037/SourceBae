@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import { withRouter } from 'react-router-dom';
+import RouteRedirect from '../../../Utils/RouteRedirect';
 import './Navbar.css';
 import { Avatar } from '@material-ui/core';
 
@@ -32,6 +33,14 @@ function Navbar(props) {
         }
     }, [])
 
+    const RouteRedirect1 = () => {
+        if (Role === "Client") {
+            props.history.replace('/clientNewestDashboard');
+        }
+        if (Role === "Agency") {
+            props.history.replace('/agencyNewestDashboard');
+        }
+    }
 
     return (
         // <div style={{ top: Role === 'Client' && '1rem', justifyContent:props.logoLink && 'space-between'}} className='navbar'>
@@ -65,7 +74,7 @@ function Navbar(props) {
                     url.includes('/agencyNewestAllProject')
                 ) && 'none'
             }} className="logoLink_navbar">
-                <img src={logoLink} alt="logo" />
+                <img onClick={RouteRedirect1} src={logoLink} alt="logo" />
             </div>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
