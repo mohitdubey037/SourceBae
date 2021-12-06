@@ -173,7 +173,12 @@ function ClientProfile() {
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
                                             <div className={`avatarArea_div ${isShown && 'conditional_filter_clientProfile'}`}>
-                                                {clientData.clientLogo && <img className="avatarImg" src={`${clientData.clientLogo === null ? avatar : clientData.clientLogo}`} alt="signup" />}
+                                                {
+                                                    clientData.clientLogo ?
+                                                        <img className="avatarImg" src={clientData.clientLogo} alt="signup" />
+                                                        :
+                                                        <img className="avatarImg" src={avatar} alt="signup" />
+                                                }
                                             </div>
                                             {isEdit === true &&
                                                 <FilePicker
@@ -183,7 +188,7 @@ function ClientProfile() {
                                                 >
                                                     <FaCamera
                                                         onMouseEnter={() => setIsShown(true)}
-                                                        onMouseLeave={() => setIsShown(false)} 
+                                                        onMouseLeave={() => setIsShown(false)}
                                                         className="client_profile_image" />
                                                 </FilePicker>
                                             }

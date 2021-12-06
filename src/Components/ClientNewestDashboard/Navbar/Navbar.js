@@ -110,13 +110,11 @@ function Navbar(props) {
                     {Role === 'Agency' ?
                         <>
                             <img onMouseEnter={() => setIsPopoverOpen(true)}
-                                onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-                                src={data?.agencyLogo ? data?.agencyLogo : `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
-
+                                onClick={() => setIsPopoverOpen(!isPopoverOpen)} src={data?.agencyLogo ? data?.agencyLogo : `https://ui-avatars.com/api/?name=${data?.agencyName}`} />
                             <Popover
                                 // className="popover"
                                 isOpen={isPopoverOpen}
-                                onClickOutside={() => setIsPopoverOpen(false)} 
+                                onClickOutside={() => setIsPopoverOpen(false)}
                                 positions={['top', 'bottom', 'left', 'right:10']} // preferred positions by priority
                                 marginTop={10}
                                 content={
@@ -127,16 +125,28 @@ function Navbar(props) {
                                     </div>
                                 }
                             >
-                                {/* <p>i</p> */}
                                 <div></div>
-                                {/* <div className="popover_div">
-                                    <button onClick={myProfileHandler}>My Profile</button>
-                                    <button onClick={logoutHandler}>Logout</button>
-                                </div> */}
                             </Popover>
                         </>
                         :
-                        <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`} />
+                        <div onMouseEnter={() => setIsPopoverOpen(true)} onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
+                            <Avatar src={`https://ui-avatars.com/api/?name=${data[0]?.firstName}+${data[0]?.lastName}`} />
+                            <Popover
+                                isOpen={isPopoverOpen}
+                                onClickOutside={() => setIsPopoverOpen(false)}
+                                positions={['top', 'bottom', 'left', 'right:10']} // preferred positions by priority
+                                marginTop={10}
+                                content={
+                                    <div className="popover_div">
+                                        <button onClick={myProfileHandler}>My Profile</button>
+                                        <div className="horizontal_div"></div>
+                                        <button className="logout_button" onClick={logoutHandler}>Logout</button>
+                                    </div>
+                                }
+                            >
+                                <div></div>
+                            </Popover>
+                        </div>
                     }
                 </div>
             </div>
