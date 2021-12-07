@@ -12,20 +12,17 @@
   padding-top: 0;
   top: 1rem;
   top: 0.5rem;
-  z-index: 30;
+  z-index: 2;
 }
 
-/* .logoLink_navbar {
-} */
-
-.logoLink_navbar img{
+.logoLink_navbar img {
   cursor: pointer;
   width: 47%;
 }
 
 .userprofile-circle .MuiAvatar-root {
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
 
 .navbar h1 {
@@ -78,11 +75,51 @@
   background-position: center center;
   background-size: cover;
   background-color: white;
+  cursor: pointer;
 }
 
 .navbar-items>.userprofile-circle>img {
   height: 100%;
   width: 100%;
+}
+
+.react-tiny-popover-container {
+  left: -20px !important;
+  top: 0.3rem !important
+}
+
+.horizontal_div {
+  width: 100%;
+  background-color: black;
+  height: 1px;
+}
+
+.popover_div {
+  /* background: grey; */
+  background: white;
+  padding: 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 6rem;
+}
+
+.popover_div button {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Segoe UI';
+}
+
+/* .logout_button {
+  margin-top: 0.5rem;
+} */
+
+.popover_div button:active,
+.popover_div button:focus,
+.popover_div button:hover {
+  outline: none;
+  border: none;
 }
 
 @media (max-width: 360px) {

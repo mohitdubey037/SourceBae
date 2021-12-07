@@ -16,7 +16,7 @@ import './ResponsiveAgencyForm.css';
 function AgencyForm1(props) {
 
     const Role = localStorage.getItem('role');
-    const api_param_const = "agencies"
+    const api_param_const = "agencies";
 
     const [loading, setLoading] = useState(false);
     const [steps, setSteps] = useState('');
@@ -151,6 +151,9 @@ function AgencyForm1(props) {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 setSteps(response.stepsCompleted);
+                if (response.stepsCompleted === response.totalSteps) {
+                    props.history.push('agencyNewestDashboard');
+                }
             });
     };
 

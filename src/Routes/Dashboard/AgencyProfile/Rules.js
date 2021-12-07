@@ -77,12 +77,6 @@ function Rules(props) {
       });
   };
 
-  useEffect(() => {
-    if (Role === "Agency") {
-      getAgencyProfile(false);
-    }
-  }, []);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm({

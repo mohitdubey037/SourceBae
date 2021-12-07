@@ -1,7 +1,5 @@
 import './BottomSideBar.css';
 import oneSourcingLogo from "../../../assets/images/Newestdashboard/SideBar/sidebarLogo.svg";
-// import TemporaryLogo from '../../../assets/images/temporary_logo.jpeg';
-import TemporaryLogo from '../../../assets/images/Logo/temporary_logo.jpeg';
 import dashboardIcon from "../../../assets/images/Newestdashboard/SideBar/home.svg";
 import postProjectIcon from "../../../assets/images/Newestdashboard/SideBar/post.svg";
 import profileIcon from "../../../assets/images/Newestdashboard/SideBar/profile.svg";
