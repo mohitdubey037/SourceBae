@@ -200,11 +200,11 @@ const ClientCommentBox = (props) => {
           <div className="topLine" style={{
           }}></div>
           <img className="hardcoded_comment_image" src={bgPic} alt="img" />
-          {props.projectProposals[0].comments.map((index) => {
-            console.log(props.projectProposals[0].isReplySectionActive)
-            return (
-              index.commentType === props.commentType &&
-              <div className="chatBox-parent">
+          <div className="chatBox-parent">
+            {props.projectProposals[0].comments.map((index) => {
+              console.log(props.projectProposals[0].isReplySectionActive)
+              return (
+                index.commentType === props.commentType &&
                 <>
                   {
                     index.comment && (
@@ -229,9 +229,9 @@ const ClientCommentBox = (props) => {
                       </div>
                     )}
                 </>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
 
           {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
             (
