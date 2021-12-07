@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
+  console.log(props);
   const classes = useStyles();
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),

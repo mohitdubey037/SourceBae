@@ -160,17 +160,17 @@ function AgencyNewestAllProject(props) {
                                     <div onClick={() => onSearchHandler("all")} className={`completed-project ${tab === 4 && "blueConditional"}`}>
                                         <h6>All Project</h6>
                                     </div>
-                                    <div onClick={() => onSearchHandler("Done")} className={`completed-project ${tab === 1 && "greenConditional"}`}>
-                                        <h6>Completed Project</h6>
-                                    </div>
                                     <div onClick={() => onSearchHandler("In Progress")} className={`running-project ${tab === 2 && "yellowConditional"}`}>
                                         <h6>Running Project</h6>
+                                    </div>
+                                    <div onClick={() => onSearchHandler("Done")} className={`completed-project ${tab === 1 && "greenConditional"}`}>
+                                        <h6>Completed Project</h6>
                                     </div>
                                     <div onClick={() => onSearchHandler("Cancelled")} className={`rejected-project ${tab === 3 && "redConditional"}`}>
                                         <h6>Rejected Project</h6>
                                     </div>
                                 </div>
-                                <div className="agency-card-parent" style={{ height: err === true ? "100%" : "12%" }}>
+                                <div className="agency-card-parent" style={{ height: err === true ? "100%" : "34%" }}>
                                     {err === true ?
                                         <>
                                             <div style={{ textAlign: 'center' }}>

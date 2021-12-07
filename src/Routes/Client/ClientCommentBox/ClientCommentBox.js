@@ -220,7 +220,7 @@ const ClientCommentBox = (props) => {
                       <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
                     </div>
                   )}
-                  {props.projectProposals[0].isReplySectionActive && <p className="waiting_left">Waiting for the reply from Agency.</p>}
+                  {props.projectProposals[0].isReplySectionActive && index.reply === undefined && <p className="waiting_left">Waiting for the reply from Agency.</p>}
                   {!props.projectProposals[0].isAskedForQuotation &&
                     props.projectProposals[0].isCommentSectionActive &&
                     props.isShortListed && (

@@ -18,6 +18,8 @@
     margin-bottom: 1rem;
     background-image: linear-gradient(to right, #ffffff, #ffffff, #8EC1E0);
     box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+    border: 1px solid #f5f5f5;
+    border-radius: 6px;
 }
 
 .user-project_agencyNewestAllProject h6 {

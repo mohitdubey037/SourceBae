@@ -195,7 +195,7 @@
 
 .waiting_left {
     text-align: right;
-    margin-top: -13px;
+    /* margin-top: -13px; */
     font-size: 10px;
     color: #484848;
     font-family: 'Segoe UI';

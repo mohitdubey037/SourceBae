@@ -22,10 +22,11 @@
   flex-direction: column;
   overflow: auto;
   height: 23rem;
+  /* height: max-content; */
 }
 
 .chatBox {
-  margin: 2% 0;
+  /* margin: 2% 0; */
   width: 100%;
   text-align: right;
   justify-content: flex-end;
