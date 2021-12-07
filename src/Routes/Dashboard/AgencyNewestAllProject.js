@@ -170,7 +170,7 @@ function AgencyNewestAllProject(props) {
                                         <h6>Rejected Project</h6>
                                     </div>
                                 </div>
-                                <div className="agency-card-parent" style={{ height: err === true ? "100%" : "27%" }}>
+                                <div className="agency-card-parent" style={{ height: err === true ? "100%" : "12%" }}>
                                     {err === true ?
                                         <>
                                             <div style={{ textAlign: 'center' }}>

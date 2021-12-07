@@ -110,6 +110,7 @@ const RegisterAgencyForm2 = (props) => {
         </label>
         <input style={{ paddingLeft: "2.5%", paddingRight: "2%", width: '39%' }}
           id="incorporation_date"
+          onKeyDown={(e) => e.preventDefault()}
           type="date"
           name="incorporationDate"
           max={new Date().toJSON().slice(0, 10)}
