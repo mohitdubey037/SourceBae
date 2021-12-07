@@ -19,6 +19,17 @@ import { FaCamera } from "react-icons/fa";
 
 function ClientProfile() {
 
+    const formValueKey = {
+        firstName: "First Name",
+        lastName: "Last Name",
+        userName: "User Name",
+        userEmail: "Email",
+        countryCode: "Country Code",
+        userPhone: "Phone Number",
+        userDesignation: "Designation",
+        companyName: "Company Name"
+    }
+
     const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem("userId")
     const [clientData, setClientData] = useState({
@@ -36,7 +47,9 @@ function ClientProfile() {
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
     const [file, setFile] = useState();
+    const [show, setShow] = useState();
     const [isShown, setIsShown] = useState(false);
+    const [isUploaded, setIsUploaded] = useState(false);
     let logoURL;
 
     const getClientProfileApi = () => {
@@ -63,12 +76,18 @@ function ClientProfile() {
             })
     };
 
-    const inputFileChoosen = (profileDoc) => {
-        setFile(profileDoc)
-    };
+    const inputFileChoosen = (ev) => {
+        setFile(ev)
+        let reader = new FileReader();
+        reader.readAsDataURL(ev)
+        reader.onload = () => {
+            setShow(reader.result) ;
+            setIsUploaded(true)
+        }
+    }
 
     useEffect(() => {
-        console.log(file);
+        // console.log(file);
     }, [file]);
 
     useEffect(() => {
@@ -102,6 +121,8 @@ function ClientProfile() {
             .then(function (response) {
                 setLoading(false);
                 setIsEdit(false)
+                setIsUploaded(false)
+                setShow()
                 setClientData({
                     ...clientData,
                     firstName: response.firstName,
@@ -173,9 +194,11 @@ function ClientProfile() {
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
                                             <div className={`avatarArea_div ${isShown && 'conditional_filter_clientProfile'}`}>
-                                                {
-                                                    clientData.clientLogo ?
+                                                { clientData.clientLogo &&!isUploaded ?
                                                         <img className="avatarImg" src={clientData.clientLogo} alt="signup" />
+                                                    :
+                                                   isUploaded ?
+                                                        <img className="avatarImg" src={show} alt="signup" />
                                                         :
                                                         <img className="avatarImg" src={avatar} alt="signup" />
                                                 }
@@ -193,13 +216,14 @@ function ClientProfile() {
                                                 </FilePicker>
                                             }
                                         </div>
+                                        
                                         <div className="clientProfileDetails">
                                             {Object.keys(clientData).map((key) => {
                                                 if (key !== 'clientLogo') {
                                                     return (
                                                         <div className="clientProfilDesc">
                                                             <div className="clientFormHeading">
-                                                                <p>{helper.multiwordCapitalize(key)}</p>
+                                                                <p>{formValueKey[key]}</p>
                                                                 {/* <p>{helper.multiwordCapitalize(helper.camelcaseToWords(key))}</p> */}
                                                             </div>
                                                             <div className="clientFormAnswer">

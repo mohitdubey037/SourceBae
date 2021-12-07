@@ -248,9 +248,9 @@ const AgencyCommentBox = (props) => {
                 )}
               <div className="price-section" style={{
                 width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
-                  ? '96%' :
+                  ? '100%' :
                   props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
-                    ? '96%' : '45%'
+                    ? '100%' : '45%'
               }}>
                 {props.projectProposals[0].isReplySectionActive && (
                   <>
@@ -392,7 +392,7 @@ const AgencyCommentBox = (props) => {
                     </div>
                     :
                     <div className="quotation_file_upload">
-                      <p>{file?.name}</p>
+                      <p>{file?.name.slice(0, 20)}</p>
                     </div>
                   :
                   null

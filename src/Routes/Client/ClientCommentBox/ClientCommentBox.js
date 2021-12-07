@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ClientCommentBox = (props) => {
 
+  console.log(props);
   const projectStartDateByClientRef = useRef();
 
   const classes = useStyles();
@@ -199,10 +200,11 @@ const ClientCommentBox = (props) => {
           <div className="topLine" style={{
           }}></div>
           <img className="hardcoded_comment_image" src={bgPic} alt="img" />
-          <div className="chatBox-parent">
-            {props.projectProposals[0].comments.map((index) => {
-              return (
-                index.commentType === props.commentType &&
+          {props.projectProposals[0].comments.map((index) => {
+            console.log(props.projectProposals[0].isReplySectionActive)
+            return (
+              index.commentType === props.commentType &&
+              <div className="chatBox-parent">
                 <>
                   {
                     index.comment && (
@@ -227,9 +229,9 @@ const ClientCommentBox = (props) => {
                       </div>
                     )}
                 </>
-              )
-            })}
-          </div>
+              </div>
+            )
+          })}
 
           {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
             (
