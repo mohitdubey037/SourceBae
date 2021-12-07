@@ -1,19 +1,15 @@
-const prod = {
-    // url: {
-    //     API_URL: `https://api.onesourcing.in`
-    // }
-    url: {
-        API_URL: `https://api.sourcebae.com`
-    }
-}
+const env = 'development' // localhost or master i.e. amplify
+// const env = 'production' // sourcebae.com i.e. production
 
-const dev = {
-    url: {
-        API_URL: `https://api.onesourcing.in`
+export const config = {
+    production: {
+        url: {
+            API_URL: `https://api.sourcebae.com`
+        }
+    },
+    development: {
+        url: {
+            API_URL: `https://api.onesourcing.in`
+        }
     }
-    // url: {
-    //     API_URL: `https://api.sourcebae.com`
-    // }
-}
-
-export const config = process.env.NODE_ENV === `development` ? dev : prod;
+}[env || 'development']
