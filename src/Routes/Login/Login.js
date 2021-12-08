@@ -136,7 +136,8 @@ const Login = (props) => {
 
   const handleLogout = () => {
     // props.history.push('/');
-    window.location.href = 'http://sourcebae.com';
+    window.location.href = 'https://sourcebae.com/';
+    
   }
 
   const logIn = async (event) => {

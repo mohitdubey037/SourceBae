@@ -33,7 +33,7 @@ function Navbar(props) {
         localStorage.clear();
         cookie.remove("Authorization");
         // props.history.replace('/');
-        window.location.href = 'http://sourcebae.com';
+        window.location.href = 'https://sourcebae.com/';
 
     }
 
