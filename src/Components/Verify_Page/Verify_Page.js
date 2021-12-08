@@ -17,9 +17,9 @@ function VerifyPage(props) {
         instance.get(`api/${Role}/auths/verify/${verificationToken}`)
         .then(res => {
             setLoading(false);
-            props.history.push(`/login:${Role}`);
         })
         .catch(err => {
+            props.history.push(`/login:${Role}`);
             setLoading(false);
             toast.error(err);
         })

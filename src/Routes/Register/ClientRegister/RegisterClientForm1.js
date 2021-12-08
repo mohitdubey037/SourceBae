@@ -26,9 +26,7 @@ function RegisterClientForm1(props) {
             [name]: value,
           });
         }
-    };
-
-  
+    };  
 
     return (
         <form className="client__form form__1" autoComplete="off">

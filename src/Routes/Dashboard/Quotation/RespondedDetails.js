@@ -267,7 +267,6 @@ function RespondedDetails(props) {
                       projectId={projectId}
                       agencyId={agencyId}
                       isShortListed={true}
-                      s
                       giveReplies={(gr) => {
                         setRepliedToClient(gr);
                       }}

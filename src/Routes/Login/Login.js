@@ -133,6 +133,11 @@ const Login = (props) => {
     }
   };
 
+  const handleLogout = () => {
+    // props.history.push('/');
+    window.location.href = 'http://sourcebae.com';
+  }
+
   const logIn = async (event) => {
     event.preventDefault();
     let apiRole = helper.lowerize(role);
@@ -190,7 +195,7 @@ const Login = (props) => {
         <Spinner />
       ) : (
         <div className="mainLoginPage">
-          <div onClick={() => props.history.replace('/')} className="sourceBae_logo">
+          <div onClick={handleLogout} className="sourceBae_logo">
             <img src={logoLink} alt="sourceBae-log" />
           </div>
           <div className="innerLoginPage">

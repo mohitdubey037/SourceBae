@@ -59,10 +59,10 @@ function UserProject(props, index) {
                         </div>
                         :
                         props.projectProposals[0]?.rejectReasonByClient != undefined ?
-                            <p className="anyoneRejected">Rejected By Client</p>
+                            <p className="anyoneRejected">Rejected By You</p>
                             :
                             props.projectProposals[0]?.rejectReasonByAgency != undefined ?
-                                <p className="anyoneRejected">Rejected By You</p>
+                                <p className="anyoneRejected">Rejected By Agency</p>
                                 :
                                 <p>{props.projectCurrentStatus}</p>
                     }
@@ -70,7 +70,7 @@ function UserProject(props, index) {
             </div>
 
             <div className="projectDetail">
-                {props.projectProposals[0]?.rejectReasonByClient != undefined || props.projectProposals[0].rejectReasonByAgency != undefined ?
+                {/* {props.projectProposals[0]?.rejectReasonByClient != undefined || props.projectProposals[0].rejectReasonByAgency != undefined ?
                     <div className="header-currentStatus">
                         <FaBan className="project_status_image"/>
                         <div className="currentStatus-text currentStatus-item">
@@ -84,7 +84,7 @@ function UserProject(props, index) {
                             <p>{props?.projectCurrentStatus}</p>
                         </div>
                     </div>
-                }
+                } */}
 
                 <div onClick={() => showDetail()} className="show-project-detail">
                     <div className="projectDetail-text projectDetail-item">

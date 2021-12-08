@@ -45,7 +45,8 @@ export default function PageNotFound(props) {
             props.history.replace('/agencyNewestDashboard');
         }
         else {
-            props.history.replace('/');
+            // props.history.replace('/');
+            window.location.href = 'http://sourcebae.com';
         }
 
     }
@@ -61,8 +62,8 @@ export default function PageNotFound(props) {
                 root: classes.root, // class name, e.g. `classes-nesting-root-x`
                 label: classes.label, // class name, e.g. `classes-nesting-label-x`
             }}
-            onClick={homePage}
-            variant='contained'>GO TO HOMEPAGE</Button>
+                onClick={homePage}
+                variant='contained'>GO TO HOMEPAGE</Button>
         </Container>
     )
 }

@@ -226,8 +226,10 @@ function AgencyRespondedDetails(props) {
                         </div>
                       </div>
                     </div>
-                    <div className="project_is_completed">
-                      <p>Project is started from both side</p>
+                    <div className="project_is_completed_parent">
+                      <div className="project_is_completed">
+                        <p>Project is started from both side</p>
+                      </div>
                     </div>
                   </div>
                 </div>

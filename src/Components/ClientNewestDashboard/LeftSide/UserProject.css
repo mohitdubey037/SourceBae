@@ -17,7 +17,7 @@
 }
 
 .project-details-card {
-  width: 40%;
+  width: 35%;
   justify-self: flex-start;
   background: linear-gradient( 90deg, #f5faff 0%, #ffffff 100%);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
@@ -65,7 +65,7 @@
 
 .projectDetail {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin: 7% auto 0.5rem;
   width: 100%;
 }

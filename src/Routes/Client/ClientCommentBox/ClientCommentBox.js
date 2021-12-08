@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ClientCommentBox = (props) => {
 
+  console.log(props);
   const projectStartDateByClientRef = useRef();
 
   const classes = useStyles();
@@ -201,6 +202,7 @@ const ClientCommentBox = (props) => {
           <img className="hardcoded_comment_image" src={bgPic} alt="img" />
           <div className="chatBox-parent">
             {props.projectProposals[0].comments.map((index) => {
+              console.log(props.projectProposals[0].isReplySectionActive)
               return (
                 index.commentType === props.commentType &&
                 <>
@@ -218,7 +220,7 @@ const ClientCommentBox = (props) => {
                       <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
                     </div>
                   )}
-                  {props.projectProposals[0].isReplySectionActive && <p className="waiting_left">Waiting for the reply from Agency.</p>}
+                  {props.projectProposals[0].isReplySectionActive && index.reply === undefined && <p className="waiting_left">Waiting for the reply from Agency.</p>}
                   {!props.projectProposals[0].isAskedForQuotation &&
                     props.projectProposals[0].isCommentSectionActive &&
                     props.isShortListed && (

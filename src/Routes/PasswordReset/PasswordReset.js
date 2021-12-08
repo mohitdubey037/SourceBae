@@ -14,7 +14,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import loginImage from "../../assets/images/Logo/loginImage.png";
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
@@ -83,7 +82,8 @@ const ForgotPassword = (props) => {
         instance
             .patch(`/api/${Role}/auths/reset-password`, form)
             .then(response => {
-                props.history.push('/');
+                // props.history.push('/');
+                window.location.href = 'http://sourcebae.com';
             })
             .catch((err) => {
             });
@@ -99,9 +99,6 @@ const ForgotPassword = (props) => {
                 </div>
                 <div className="mainLoginPage">
                     <div className="innerLoginPage">
-                        {/* <div className="loginIllustrator">
-                            <img src={loginImage} alt="" />
-                        </div> */}
                         <div className="ForgetContent">
                             <div className="HeadingForgetPassword">Reset Password </div>
                             <div className="mainLoginForm">

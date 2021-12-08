@@ -118,6 +118,13 @@ function AgencyProfile(props) {
       });
   };
 
+  const handleBackOnProfile = () => {
+    if (Role === "Agency")
+      props.history.replace('agencyNewestDashboard');
+    else
+      props.history.goBack();
+  }
+
   const [link, setLink] = useState('');
 
   const handleChange = (event) => {
@@ -131,8 +138,6 @@ function AgencyProfile(props) {
   }, []);
 
   useEffect(() => {
-    console.log(props.location);
-    console.log(props.location.origin);
     if (!navigated && inputEl !== null && props.location.origin === "addingDeveloper") {
       inputEl?.current?.click();
       setNavigation(true);
@@ -164,7 +169,7 @@ function AgencyProfile(props) {
           <div className="mainProfileHeaderImage">
             <div className={`innerProfileHeaderImage ${Role === 'Client' && 'conditionalGradient'}`}>
               <div className='backButtonAgencyProfile'>
-                <div className='backButton-child' onClick={() => props.history.goBack()}>
+                <div className='backButton-child' onClick={handleBackOnProfile}>
                   <img src={Back2} alt="back" />
                   <h6>Back</h6>
                 </div>
@@ -533,7 +538,7 @@ function AgencyProfile(props) {
                   role="tabpanel"
                   aria-labelledby="nav-developer-tab"
                 >
-                  <DeveloperList id={id} />
+                  <DeveloperList data={agencyProfileData} id={id} />
                 </div>
                 <div
                   class="tab-pane fade"
@@ -549,7 +554,7 @@ function AgencyProfile(props) {
                   role="tabpanel"
                   aria-labelledby="nav-review-tab"
                 >
-                  <DeveloperList id={id} />
+                  <DeveloperList data={agencyProfileData} id={id} />
                 </div>
                 <div
                   class="tab-pane fade"
