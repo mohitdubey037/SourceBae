@@ -85,7 +85,8 @@
 
 .react-tiny-popover-container {
   left: -20px !important;
-  top: 0.3rem !important
+  top: 0.3rem !important;
+  z-index: 10000 !important;
 }
 
 .horizontal_div {

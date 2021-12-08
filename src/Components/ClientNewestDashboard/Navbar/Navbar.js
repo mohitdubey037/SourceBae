@@ -32,7 +32,9 @@ function Navbar(props) {
         // localStorage.removeItem('toggle');
         localStorage.clear();
         cookie.remove("Authorization");
-        props.history.replace('/');
+        // props.history.replace('/');
+        window.location.href = 'http://sourcebae.com';
+
     }
 
     useEffect(() => {

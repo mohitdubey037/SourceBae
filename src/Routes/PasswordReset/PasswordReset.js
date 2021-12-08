@@ -82,7 +82,8 @@ const ForgotPassword = (props) => {
         instance
             .patch(`/api/${Role}/auths/reset-password`, form)
             .then(response => {
-                props.history.push('/');
+                // props.history.push('/');
+                window.location.href = 'http://sourcebae.com';
             })
             .catch((err) => {
             });

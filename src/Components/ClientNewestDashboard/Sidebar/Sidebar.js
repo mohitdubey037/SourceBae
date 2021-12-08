@@ -14,12 +14,12 @@ import { useDispatch } from 'react-redux';
 
 function Sidebar(props) {
     const dispatch = useDispatch();
-    
+
     const Role = localStorage.getItem('role');
-    const routerHistory = useHistory();    
+    const routerHistory = useHistory();
 
     const handleShowNotification = () => {
-        dispatch({type: 'SHOW_NOTIFICATION'});
+        dispatch({ type: 'SHOW_NOTIFICATION' });
     }
 
     const agencyProfileHandler = () => {
@@ -50,7 +50,8 @@ function Sidebar(props) {
         localStorage.removeItem('userId');
         localStorage.removeItem('toggle');
         cookie.remove("Authorization");
-        routerHistory.replace('/');
+        // routerHistory.replace('/');
+        window.location.href = 'http://sourcebae.com';
     }
 
     return (
