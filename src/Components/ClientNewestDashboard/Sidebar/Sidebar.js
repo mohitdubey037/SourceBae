@@ -45,11 +45,12 @@ function Sidebar(props) {
     }
 
     const logout = () => {
-        localStorage.removeItem("Authorization");
-        localStorage.removeItem('role');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('toggle');
+        // localStorage.removeItem("Authorization");
+        // localStorage.removeItem('role');
+        // localStorage.removeItem('userId');
+        // localStorage.removeItem('toggle');
         cookie.remove("Authorization");
+        localStorage.clear();
         // routerHistory.replace('/');
         window.location.href = 'http://sourcebae.com';
     }

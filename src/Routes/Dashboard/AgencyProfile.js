@@ -118,6 +118,13 @@ function AgencyProfile(props) {
       });
   };
 
+  const handleBackOnProfile = () => {
+    if (Role === "Agency")
+      props.history.replace('agencyNewestDashboard');
+    else
+      props.history.goBack();
+  }
+
   const [link, setLink] = useState('');
 
   const handleChange = (event) => {
@@ -162,7 +169,7 @@ function AgencyProfile(props) {
           <div className="mainProfileHeaderImage">
             <div className={`innerProfileHeaderImage ${Role === 'Client' && 'conditionalGradient'}`}>
               <div className='backButtonAgencyProfile'>
-                <div className='backButton-child' onClick={() => props.history.goBack()}>
+                <div className='backButton-child' onClick={handleBackOnProfile}>
                   <img src={Back2} alt="back" />
                   <h6>Back</h6>
                 </div>

@@ -151,9 +151,9 @@ function AgencyForm1(props) {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 setSteps(response.stepsCompleted);
-                if (response.stepsCompleted === response.totalSteps) {
-                    props.history.push('agencyNewestDashboard');
-                }
+                // if (response.stepsCompleted === response.totalSteps) {
+                //     props.history.push('agencyNewestDashboard');
+                // }
             });
     };
 
