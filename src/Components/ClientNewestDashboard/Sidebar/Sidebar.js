@@ -44,7 +44,7 @@ function Sidebar(props) {
         }
     }
 
-    const logout = () => {
+    const handleLogout = () => {
         // localStorage.removeItem("Authorization");
         // localStorage.removeItem('role');
         // localStorage.removeItem('userId');
@@ -52,7 +52,7 @@ function Sidebar(props) {
         cookie.remove("Authorization");
         localStorage.clear();
         // routerHistory.replace('/');
-        window.location.href = 'http://sourcebae.com';
+        window.location.href = 'https://sourcebae.com/';
     }
 
     return (
@@ -98,7 +98,7 @@ function Sidebar(props) {
                         </div>
                     </div>
                 }
-                <div onClick={logout} className="setting-icon icons">
+                <div onClick={handleLogout} className="setting-icon icons">
                     <img src={logoutIcon} alt="icon" />
                     <p>Log Out</p>
                 </div>

@@ -12,7 +12,7 @@ const Mainhomepage = (props) => {
   if (props.history.action === 'POP') {
     // console.log(props.history.action);
     // props.history.push('/');
-    window.location.href = 'http://sourcebae.com';
+    window.location.href = 'https://sourcebae.com/';
   }
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Mainhomepage = (props) => {
 
   return (
     <>
-      {!auth ?
+      {/* {!auth ?
         <div className="mainHomePage">
           <div className="innerHomePage">
             <div className="HomePageCard" onClick={() => props.history.push("/login:agency")}>
@@ -43,7 +43,7 @@ const Mainhomepage = (props) => {
         </div>
         :
         null
-      }
+      } */}
     </>
   );
 };
