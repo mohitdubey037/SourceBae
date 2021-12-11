@@ -86,12 +86,15 @@ function ClientProfile() {
         }
     }
 
-    useEffect(() => {
-        // console.log(file);
-    }, [file]);
+    // useEffect(() => {
+    // }, [file]);
+    const handleCancel = () => {
+        setIsEdit(false);
+        setIsUploaded(false);
+    }
 
     useEffect(() => {
-    }, [clientData])
+    }, [clientData, file])
 
     const uploadMedia = async () => {
         const formData = new FormData();
@@ -185,7 +188,7 @@ function ClientProfile() {
                                             <div onClick={() => setIsEdit(true)} className="profileEditBtn">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>
                                             :
                                             (
-                                                <><div onClick={() => setIsEdit(false)} className="cancel">Cancel</div>
+                                                <><div onClick={handleCancel} className="cancel">Cancel</div>
                                                     <div onClick={() => updateClientApi()} className="save">Save</div>
                                                 </>
                                             )
@@ -194,7 +197,7 @@ function ClientProfile() {
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
                                             <div className={`avatarArea_div ${isShown && 'conditional_filter_clientProfile'}`}>
-                                                { clientData.clientLogo &&!isUploaded ?
+                                                { clientData.clientLogo && !isUploaded ?
                                                         <img className="avatarImg" src={clientData.clientLogo} alt="signup" />
                                                     :
                                                    isUploaded ?
