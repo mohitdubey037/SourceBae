@@ -114,25 +114,46 @@ function AgencyRespondedDetails(props) {
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {project.projectProposals &&
               project?.projectProposals[0].rejectReasonByClient !== undefined ? (
-              <div className="project_rejection">
-                <p>Project is rejected by the Client due to following reason</p>
-                <ul>
-                  <li>{project?.projectProposals[0].rejectReasonByClient}</li>
-                </ul>
-              </div>
+              <>
+                <div className="project_rejection">
+                  <p>Project is rejected by the Client due to following reason</p>
+                  <ul>
+                    <li>{project?.projectProposals[0].rejectReasonByClient}</li>
+                  </ul>
+                </div>
+                <afterAcceptOrReject
+                  role="Client"
+                  companyName={project?.clientId?.companyName}
+                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                  finalCost={project?.projectProposals[0]?.finalCostByClient}
+                  projectCreationDate={project?.createdAt}
+                  expectedTimeline={project?.projectExpectedStartingDays}
+                  projectType={project?.projectType}
+                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                />
+              </>
+            ) : project.projectProposals && project?.projectProposals[0].rejectReasonByAgency !== undefined ? (
+              <>
+                <div className="project_rejection">
+                  <p>Project is rejected by you</p>
+                </div>
+                <afterAcceptOrReject
+                  role="Client"
+                  companyName={project?.clientId?.companyName}
+                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                  finalCost={project?.projectProposals[0]?.finalCostByClient}
+                  projectCreationDate={project?.createdAt}
+                  expectedTimeline={project?.projectExpectedStartingDays}
+                  projectType={project?.projectType}
+                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                />
+              </>
             ) : project.projectProposals &&
-              project?.projectProposals[0].rejectReasonByAgency !==
-              undefined ? (
-              <div className="project_rejection">
-                <p>Project is rejected by you</p>
-              </div>
-            ) : project.projectProposals &&
-              project?.projectProposals[0].isQuotationAcceptedByClient ===
-              true &&
-              project?.projectProposals[0].isQuotationAcceptedByAgency ===
-              true ? (
+              project?.projectProposals[0].isQuotationAcceptedByClient === true &&
+              project?.projectProposals[0].isQuotationAcceptedByAgency === true ? (
               <div className="image_with_logo">
-
                 <afterAcceptOrReject
                   role="Client"
                   companyName={project?.clientId?.companyName}
@@ -220,18 +241,16 @@ function AgencyRespondedDetails(props) {
                     </div>
                   </div>
                 </div> */}
-                <div
-                  style={{ display: "flex", justifyContent: "center" }}
-                  className="completedImage"
-                >
+                <div style={{ display: "flex", justifyContent: "center" }} className="completedImage">
                   <img src={completedImage} alt="" />
                 </div>
               </div>
             ) : (
               <>
                 {project.projectProposals &&
-                  project?.projectProposals[0].isQuotationAcceptedByClient ===
-                  false && <h4>Comments and Replies</h4>}
+                  project?.projectProposals[0].isQuotationAcceptedByClient === false &&
+                  <h4>Comments and Replies</h4>
+                }
                 {loading ? (
                   <p style={{ textAlign: "center" }}>Comments are loading...</p>
                 ) : project?.projectProposals &&
@@ -318,7 +337,7 @@ function AgencyRespondedDetails(props) {
                 </ul>
               </div>
             )} */}
-            {/* <div>
+          {/* <div>
               <h4>Technology</h4>
               <ul style={{ display: "grid", marginLeft: "-2rem", gridTemplateColumns: "auto" }}>
                 {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
