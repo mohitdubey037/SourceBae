@@ -221,11 +221,4 @@ function RespondedDetails(props) {
   );
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     projects: state.projects,
-//     condition: state.condition,
-//   };
-// };
-
 export default RespondedDetails;

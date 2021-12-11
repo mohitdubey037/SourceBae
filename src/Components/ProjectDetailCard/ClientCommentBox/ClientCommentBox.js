@@ -391,7 +391,7 @@ const ClientCommentBox = (props) => {
                         ref={projectStartDateByClientRef}
                         value={quotationFormData.projectStartDateByClient}
                         onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>
@@ -413,7 +413,7 @@ const ClientCommentBox = (props) => {
                         disabled={quotationFormData.projectStartDateByClient === '' ? true : quotationFormData.projectStartDateByClient === 'Invalid Date' ? true : quotationFormData.projectStartDateByClient === null ? true : false
                         }
                         onChange={(event) => handleChangeDate('projectDelayedStartDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>
@@ -433,7 +433,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectDelayedStartDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectEndDateByClient}
                         onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
                       />
                     </div>
                   </LocalizationProvider>
@@ -453,7 +453,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectEndDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectExpectedEndDateByClient}
                         onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
                       />
                     </div>
                   </LocalizationProvider>
