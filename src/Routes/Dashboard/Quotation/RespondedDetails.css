@@ -8,7 +8,7 @@ p.action-wait {
   margin: 0 1rem;
   position: relative;
   overflow-y: hidden;
-  width: 45%;
+  /* width: 45%; */
 }
 
 .project-details {
@@ -60,8 +60,7 @@ p.action-wait {
 }
 
 .project-details_child {
-  width: 99%;
-  /* height: 342px; */
+  width: 58%;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px rgb(0, 0, 0, 18%);
   margin-top: 1rem;
@@ -69,14 +68,6 @@ p.action-wait {
   position: inherit;
   overflow: hidden;
 }
-
-/* .question {
-  width: 50%;
-} */
-
-/* .question.after {
-  width: 62%;
-} */
 
 .straightAfterLine ul {
   padding-left: 1rem;
@@ -134,7 +125,3 @@ p.action-wait {
 .project_rejection p {
   font-family: 'Segoe UI';
 }
-
-/* .mainDetailHeader_agencyRespondedDetails {
-  background-image: linear-gradient(to right, #0376BA, #015F9A);
-} */

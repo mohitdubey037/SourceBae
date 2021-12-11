@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import useIsFirstRender from "../../../Utils/useIsFirstRender";
 import ProjectDetailCard from "../../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
 import DownTechnologyDetail from "../../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
-import afterAcceptOrReject from "../../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject";
+import AfterAcceptOrRejectComponent from '../../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject';
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -112,7 +112,7 @@ function RespondedDetails(props) {
                   <div className="project_rejection">
                     <p>Project is rejected by you</p>
                   </div>
-                  <afterAcceptOrReject
+                  <AfterAcceptOrRejectComponent
                     role="Client"
                     companyName={project?.clientId?.companyName}
                     agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
@@ -122,8 +122,8 @@ function RespondedDetails(props) {
                     projectType={project?.projectType}
                     isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
                     isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
-                    // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                    // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                    isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                    isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                   />
                 </>
               ) :
@@ -136,7 +136,7 @@ function RespondedDetails(props) {
                         <li>{project?.projectProposals[0]?.rejectReasonByAgency}</li>
                       </ul>
                     </div>
-                    <afterAcceptOrReject
+                    <AfterAcceptOrRejectComponent
                       role="Client"
                       companyName={project?.clientId?.companyName}
                       agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
@@ -146,8 +146,8 @@ function RespondedDetails(props) {
                       projectType={project?.projectType}
                       isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
                       isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
-                      // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                      // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                      isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                      isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                     />
                   </>
                 ) :
@@ -157,7 +157,7 @@ function RespondedDetails(props) {
                     (project?.projectProposals[0]?.isQuotationAcceptedByClient === true ||
                       project?.projectProposals[0]?.isQuotationAcceptedByAgency === true) ? (
                     <div className="image_with_logo">
-                      <afterAcceptOrReject
+                      <AfterAcceptOrRejectComponent
                         role="Client"
                         companyName={project?.clientId?.companyName}
                         agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
@@ -254,7 +254,7 @@ function RespondedDetails(props) {
                     </div>
                   </div>
                 </div> */}
-                      <div style={{ display: "flex", justifyContent: "center" }}>
+                      {/* <div style={{ display: "flex", justifyContent: "center" }}>
                         {project?.projectProposals[0]?.isQuotationAcceptedByClient ===
                           true &&
                           project?.projectProposals[0]?.isQuotationAcceptedByAgency ===
@@ -263,7 +263,7 @@ function RespondedDetails(props) {
                         ) : (
                           <img style={{ width: "70%" }} src={loadingStatus} alt="" />
                         )}
-                      </div>
+                      </div> */}
                     </div>
                   ) :
                     project?.projectProposals &&

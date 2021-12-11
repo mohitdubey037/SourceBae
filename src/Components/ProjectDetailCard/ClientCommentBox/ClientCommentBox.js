@@ -64,8 +64,6 @@ const ClientCommentBox = (props) => {
     isQuotationAcceptedByClient: false,
   })
 
-  const [value, setValue] = React.useState(new Date());
-
   const handleChangeDate = (name, value) => {
     if (value === null) {
       quotationFormData.projectStartDateByClient = null
@@ -111,11 +109,16 @@ const ClientCommentBox = (props) => {
   };
 
   const replyApi = () => {
+    setLoading(true);
     instance
       .patch(`api/client/projects/propose/${props.projectId}`, apiData)
       .then(function (response) {
         props.giveReplies(true);
-      });
+        setLoading(true);
+      })
+      .catch(err => {
+        setLoading(true);
+      })
   };
 
   const askForQuotation = () => {
@@ -533,7 +536,7 @@ const ClientCommentBox = (props) => {
             }
           </div>
         </div>
-        <div className='submit-rejection' onClick={() => handleProjectRejection()}>
+        <div className='submit-rejection' onClick={handleProjectRejection}>
           <div>
             <p>Submit</p>
           </div>

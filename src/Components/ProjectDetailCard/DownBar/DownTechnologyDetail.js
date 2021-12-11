@@ -1,3 +1,4 @@
+import React from "react";
 import dot from "../../../assets/images/Newestdashboard/Agency_Details/dot.svg";
 
 function DownTechnologyDetail(props) {

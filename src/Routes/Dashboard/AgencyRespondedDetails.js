@@ -18,7 +18,7 @@ import AgencyCommentBox from "../../Components/ProjectDetailCard/AgencyCommentBo
 import { useSelector } from "react-redux";
 import useIsFirstRender from "../../Utils/useIsFirstRender";
 import ProjectDetailCard from "../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
-import afterAcceptOrReject from "../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject";
+import AfterAcceptOrRejectComponent from "../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject";
 import DownTechnologyDetail from "../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
 
 function AgencyRespondedDetails(props) {
@@ -121,8 +121,8 @@ function AgencyRespondedDetails(props) {
                     <li>{project?.projectProposals[0].rejectReasonByClient}</li>
                   </ul>
                 </div>
-                <afterAcceptOrReject
-                  role="Client"
+                <AfterAcceptOrRejectComponent
+                  role="Agency"
                   companyName={project?.clientId?.companyName}
                   agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
                   finalCost={project?.projectProposals[0]?.finalCostByClient}
@@ -131,6 +131,8 @@ function AgencyRespondedDetails(props) {
                   projectType={project?.projectType}
                   isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
                   isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                 />
               </>
             ) : project.projectProposals && project?.projectProposals[0].rejectReasonByAgency !== undefined ? (
@@ -138,8 +140,8 @@ function AgencyRespondedDetails(props) {
                 <div className="project_rejection">
                   <p>Project is rejected by you</p>
                 </div>
-                <afterAcceptOrReject
-                  role="Client"
+                <AfterAcceptOrRejectComponent
+                  role="Agency"
                   companyName={project?.clientId?.companyName}
                   agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
                   finalCost={project?.projectProposals[0]?.finalCostByClient}
@@ -148,14 +150,16 @@ function AgencyRespondedDetails(props) {
                   projectType={project?.projectType}
                   isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
                   isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                 />
               </>
             ) : project.projectProposals &&
               project?.projectProposals[0].isQuotationAcceptedByClient === true &&
               project?.projectProposals[0].isQuotationAcceptedByAgency === true ? (
               <div className="image_with_logo">
-                <afterAcceptOrReject
-                  role="Client"
+                <AfterAcceptOrRejectComponent
+                  role="Agency"
                   companyName={project?.clientId?.companyName}
                   agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
                   finalCost={project?.projectProposals[0]?.finalCostByClient}
@@ -164,6 +168,8 @@ function AgencyRespondedDetails(props) {
                   projectType={project?.projectType}
                   isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
                   isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                 />
                 {/* <div className="respondedDetails_afterCompletion">
                   <div className="project-details">
@@ -241,9 +247,9 @@ function AgencyRespondedDetails(props) {
                     </div>
                   </div>
                 </div> */}
-                <div style={{ display: "flex", justifyContent: "center" }} className="completedImage">
+                {/* <div style={{ display: "flex", justifyContent: "center" }} className="completedImage">
                   <img src={completedImage} alt="" />
-                </div>
+                </div> */}
               </div>
             ) : (
               <>
