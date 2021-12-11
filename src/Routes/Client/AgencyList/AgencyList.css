@@ -62,10 +62,6 @@
   top: 0;
 }
 
-/* .innerprojectDetailsInfo_agencyList {
-  margin-left: 0.6rem;
-} */
-
 .innerprojectDetailsInfo_agencyList p {
   font-size: 1rem;
   color: #707070;
@@ -122,16 +118,18 @@
 }
 
 .agencyProfileInfo.agencyProfileInfodiv h6 {
-  font-family: "Segoe UI semibold", sans-serif;
+  font-family: "Segoe UI Semibold", sans-serif;
   font-size: 1.5rem;
-  /* width: 55%; */
   padding-top: 2rem;
 }
 
 .agencyProfileInfo.agencyProfileInfodiv div {
   display: flex;
   padding: 2rem 1rem 6.5rem;
-  /* width: 62%; */
+}
+
+.addressTeam_AgencyList .locationAddressArea {
+  width: 80%;
 }
 
 .agencyProfileInfo div p {
@@ -504,12 +502,6 @@
   margin: 6px;
   border: 1px solid #e0e0e0;
 }
-
-/* .quotationTable button {
-  display: flex;
-  align-self: flex-end;
-  float: right;
-} */
 
 .quotationSubmitButton.quotation {
   display: flex;

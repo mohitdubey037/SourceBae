@@ -48,13 +48,13 @@
   color: #000;
 }
 
-.mainAgencyList {
+/* .mainAgencyList {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-}
+} */
 
 .innerAgencyList {
   width: 100%;
@@ -64,6 +64,11 @@
   height: 35rem;
   overflow-y: scroll;
   margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: fixed; */
 }
 
 .AgencyCardsArea {

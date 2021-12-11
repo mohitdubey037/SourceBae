@@ -199,7 +199,7 @@ function AgencyList(props) {
                               <div className="middleAgencyArea agencylistCont">
                                 <div className="agencyAddressTeam addressTeam_AgencyList">
                                   <h6 style={{ fontSize: "14px" }}>Miscellaneous Info</h6>
-                                  <div className="agencyAddressArea">
+                                  <div className="agencyAddressArea locationAddressArea">
                                     <div className="locationIcon">
                                       <i
                                         class="fa fa-globe"

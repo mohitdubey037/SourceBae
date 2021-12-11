@@ -57,9 +57,8 @@ function ClientOneHireDeveloper(props) {
 
     const handleDevelopers = () => {
         setLoading(true);
-        instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`, { isShortListed: true, agencyId: agencyId })
+        instance.patch(`/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`,{isShortListed: true, agencyId: agencyId})
             .then(res => {
-                console.log(res, 'handledevelopers')
                 onCloseModal()
                 getOneDeveloper()
             })
