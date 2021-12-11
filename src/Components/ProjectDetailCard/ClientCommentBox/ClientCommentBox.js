@@ -114,10 +114,10 @@ const ClientCommentBox = (props) => {
       .patch(`api/client/projects/propose/${props.projectId}`, apiData)
       .then(function (response) {
         props.giveReplies(true);
-        setLoading(true);
+        setLoading(false);
       })
       .catch(err => {
-        setLoading(true);
+        setLoading(false);
       })
   };
 
@@ -141,6 +141,7 @@ const ClientCommentBox = (props) => {
   };
 
   const validateForm = () => {
+    setLoading(false);
     if (quotationFormData.projectStartDateByClient === '' || quotationFormData.projectStartDateByClient === null) {
       toast.error('Start date can"t be empty');
       return false;
@@ -148,7 +149,6 @@ const ClientCommentBox = (props) => {
     else if (quotationFormData.projectDelayedStartDateByClient === '' || quotationFormData.projectDelayedStartDateByClient === null) {
       toast.error("Delayed date cant be empty");
       return false;
-
     }
     else if (quotationFormData.projectEndDateByClient === '' || quotationFormData.projectEndDateByClient === null) {
       toast.error("End date can't be empty");
@@ -167,13 +167,16 @@ const ClientCommentBox = (props) => {
   }
 
   const handleProjectAcceptance = () => {
+    setLoading(true)
     if (validateForm()) {
       instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationFormData)
         .then(function (response) {
           props.giveReplies(true);
           onCloseModal();
+          setLoading(false);
         })
         .catch(err => {
+          setLoading(false);
         })
     }
   }
@@ -327,7 +330,6 @@ const ClientCommentBox = (props) => {
                 {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
                   <div className="detailsButtons margin-0">
                     <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-
                   </div>
                 )}
 
