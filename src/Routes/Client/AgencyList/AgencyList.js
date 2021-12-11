@@ -92,27 +92,33 @@ function AgencyList(props) {
   };
 
   const shortlistHandler = () => {
+    setLoading(true);
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, shortlistFormData)
       .then(function (response) {
         const tempAgencyList = [...agencyList];
         tempAgencyList[index].isAgencyShortListed = true;
         setAgencyList(tempAgencyList);
+        setLoading(false);
       })
       .catch((err) => {
+        setLoading(false);
       });
     onCloseModal();
   };
 
   const quotationSubmitHandler = () => {
+    setLoading(true);
     instance
       .patch(`/api/${Role}/projects/propose/${projectId}`, QuotationFormData)
       .then(function (response) {
         const tempAgencyList = [...agencyList];
         tempAgencyList[index].isAgencyAskedForQuotation = true;
         setAgencyList(tempAgencyList);
+        setLoading(false);
       })
       .catch((err) => {
+        setLoading(false);
       });
     onCloseQuotation();
   };
@@ -149,7 +155,6 @@ function AgencyList(props) {
                     <span>$ {project.projectProposalCost}</span>
                   </p>
                 </div>
-                {/* <div className="mainAgencyList_agencyList"> */}
                 {agencyList?.length > 0 ? (
                   <div className="innerAgencyList_agencyList">
                     <div className="AgencyCardsArea_agencyList">
@@ -178,7 +183,6 @@ function AgencyList(props) {
                                   </div>
                                 </div>
                                 <div className="profileButton">
-                                  {/* {agency.productId !== undefined ? ( */}
                                   <p
                                     onClick={() =>
                                       props.history.push({
@@ -193,7 +197,6 @@ function AgencyList(props) {
                                       aria-hidden="true"
                                     ></i>
                                   </p>
-                                  {/* ) : null} */}
                                 </div>
                               </div>
                               <div className="middleAgencyArea agencylistCont">
@@ -291,7 +294,6 @@ function AgencyList(props) {
                     </h6>
                   </div>
                 )}
-                {/* </div> */}
               </div>
             </div>
           </>
@@ -357,32 +359,6 @@ function AgencyList(props) {
                     <p> $ {project.projectProposalCost}</p>
                   </div>
                 </div>
-                {/* <div className="quotationTable">
-                <div className="tableHeaderQuotation">
-                  <p>Tech</p>
-                </div>
-                <div className="tableContentQuotation">
-                  <p>ReactJs </p>
-                  <p>React Native</p>
-                </div>
-              </div> */}
-                {/* <div className="quotationTable">
-                <div className="tableHeaderQuotation">
-                  <p>Time</p>
-                </div>
-                <div className="tableContentQuotation">
-                  <p>90 days </p>
-                </div>
-              </div> */}
-                {/* <div className="quotationTable">
-                <div className="tableHeaderQuotation">
-                  <p>Business Type</p>
-                </div>
-                <div className="tableContentQuotation">
-                  <p>B2B</p>
-                  <p>B2C</p>
-                </div>
-              </div> */}
                 <div className="quotationTable">
                   <div className="tableHeaderQuotation">
                     <p>Negotiable Upto</p>

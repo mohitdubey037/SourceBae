@@ -1,19 +1,16 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./RespondedDetails.css";
-import Moment from "react-moment";
-import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
-import { useParams, useHistory } from "react-router-dom";
-import ClientCommentBox from "../../Client/ClientCommentBox/ClientCommentBox";
-// import detailImage from '../../../assets/images/details.png';
+import { useParams } from "react-router-dom";
+import ClientCommentBox from "../../../Components/ProjectDetailCard/ClientCommentBox/ClientCommentBox";
 import foods from "../../../assets/images/Quotation/foods.png";
 import completedImage from "../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg";
 import loadingStatus from "../../../assets/images/Newestdashboard/Not_found/loading_status2.jpg";
-import dot from "../../../assets/images/Newestdashboard/Agency_Details/dot.svg";
 import { useSelector } from "react-redux";
 import useIsFirstRender from "../../../Utils/useIsFirstRender";
-import ProjectDetailCard from "../../../Components/ProjectDetailCard/ProjectDetailCard";
+import ProjectDetailCard from "../../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
+import DownTechnologyDetail from "../../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
+import afterAcceptOrReject from "../../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject";
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -50,14 +47,6 @@ function RespondedDetails(props) {
 
   useEffect(() => { }, [project]);
 
-  // useEffect(() => {
-  //   // if (Object.keys(props["projects"]).length === 0) {
-  //   getAllProjects();
-  //   // } else {
-  //   setProject(props.projects);
-  // }
-  // [isRepliedToClient]);
-
   useEffect(() => {
     getAllProjects();
   }, [isRepliedToClient, chatNotification]);
@@ -90,14 +79,6 @@ function RespondedDetails(props) {
                   <p>{project?.projectName}</p>
                 </div>
               </div>
-              {/* <div
-                className="innerBtnInfoDiv"
-                style={{ marginLeft: "20px", color: "#ffffff" }}
-              >
-                <p style={{ fontSize: "20px", color: "#ffffff" }}>
-                  {project?.projectDomainId?.domainName}
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
@@ -111,8 +92,8 @@ function RespondedDetails(props) {
           projectProposalCost={project?.projectProposalCost}
           agencyExperience={project?.agencyExperience}
           projectType={project?.projectType}
-          isShortListed={project.projectProposals[0].isShortListed}
-          isAskedForQuotation={project.projectProposals[0].isAskedForQuotation}
+          isShortListed={project?.projectProposals[0].isShortListed}
+          isAskedForQuotation={project?.projectProposals[0].isAskedForQuotation}
           projectCreationDate={project?.createdAt} />
       }
 
@@ -124,27 +105,41 @@ function RespondedDetails(props) {
       <div className="agencyQuotation">
         <div className="innerAgencyQuotation">
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
-            {project.projectProposals &&
-              project?.projectProposals[0].rejectReasonByClient !== undefined ? (
-              <div className="project_rejection">
-                <p>Project is rejected by you</p>
-              </div>
-            ) : project.projectProposals &&
-              project?.projectProposals[0].rejectReasonByAgency !==
-              undefined ? (
-              <div className="project_rejection">
-                <p>Project is rejected by the Agency due to following reason</p>
-                <ul>
-                  <li>{project?.projectProposals[0].rejectReasonByAgency}</li>
-                </ul>
-              </div>
-            ) : project.projectProposals &&
-              (project?.projectProposals[0].isQuotationAcceptedByClient ===
-                true ||
-                project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                true) ? (
-              <div className="image_with_logo">
-                <div className="respondedDetails_afterCompletion">
+            {
+              // project.projectProposals &&
+              project?.projectProposals[0]?.rejectReasonByClient !== undefined ? (
+                <div className="project_rejection">
+                  <p>Project is rejected by you</p>
+                </div>
+              ) :
+                // project.projectProposals &&
+                project?.projectProposals[0]?.rejectReasonByAgency !==
+                  undefined ? (
+                  <div className="project_rejection">
+                    <p>Project is rejected by the Agency due to following reason</p>
+                    <ul>
+                      <li>{project?.projectProposals[0].rejectReasonByAgency}</li>
+                    </ul>
+                  </div>
+                ) :
+                  // project.projectProposals &&
+                  (project?.projectProposals[0]?.isQuotationAcceptedByClient ===
+                    true ||
+                    project?.projectProposals[0]?.isQuotationAcceptedByAgency ===
+                    true) ? (
+                    <div className="image_with_logo">
+                      <afterAcceptOrReject
+                        role="Client"
+                        companyName={project?.clientId?.companyName}
+                        agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                        finalCost={project?.projectProposals[0]?.finalCostByClient}
+                        projectCreationDate={project?.createdAt}
+                        expectedTimeline={project?.projectExpectedStartingDays}
+                        projectType={project?.projectType}
+                        isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                        isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                      />
+                      {/* <div className="respondedDetails_afterCompletion">
                   <div className="project-details">
                     <h4>Project Details</h4>
                   </div>
@@ -227,60 +222,67 @@ function RespondedDetails(props) {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  {project?.projectProposals[0].isQuotationAcceptedByClient ===
-                    true &&
-                    project?.projectProposals[0].isQuotationAcceptedByAgency ===
-                    true ? (
-                    <img style={{ width: "70%" }} src={completedImage} alt="" />
-                  ) : (
-                    <img style={{ width: "70%" }} src={loadingStatus} alt="" />
-                  )}
-                </div>
-              </div>
-            ) : project?.projectProposals &&
-              project?.projectProposals[0].isQuotationAcceptedByClient ===
-              true ? (
-              <p>Please wait for the agency to accept the Quotation</p>
-            ) : (
-              <>
-                <h4>Comments and Replies</h4>
-                {loading ? (
-                  <p style={{ textAlign: "center" }}>Comments are loading...</p>
-                ) : project?.projectProposals &&
-                  project.projectProposals[0]?.isAskedForQuotation === true ? (
-                  <ClientCommentBox
-                    projectId={projectId}
-                    agencyId={agencyId}
-                    isShortListed={true}
-                    giveReplies={(gr) => {
-                      setRepliedToClient(gr);
-                    }}
-                    {...project}
-                    isAskedForQuotation={true}
-                    commentType="Quotation"
-                  />
-                ) : (
-                  project?.projectProposals && (
-                    <ClientCommentBox
-                      projectId={projectId}
-                      agencyId={agencyId}
-                      isShortListed={true}
-                      giveReplies={(gr) => {
-                        setRepliedToClient(gr);
-                      }}
-                      {...project}
-                      isAskedForQuotation={false}
-                      commentType="Shortlist"
-                    />
-                  )
-                )}
-              </>
-            )}
+                </div> */}
+                      <div style={{ display: "flex", justifyContent: "center" }}>
+                        {project?.projectProposals[0]?.isQuotationAcceptedByClient ===
+                          true &&
+                          project?.projectProposals[0]?.isQuotationAcceptedByAgency ===
+                          true ? (
+                          <img style={{ width: "70%" }} src={completedImage} alt="" />
+                        ) : (
+                          <img style={{ width: "70%" }} src={loadingStatus} alt="" />
+                        )}
+                      </div>
+                    </div>
+                  ) :
+                    // project?.projectProposals &&
+                    project?.projectProposals[0]?.isQuotationAcceptedByClient ===
+                      true ?
+                      <p>Please wait for the agency to accept the Quotation</p>
+                      :
+                      (
+                        <>
+                          <h4>Comments and Replies</h4>
+                          {loading ? <p style={{ textAlign: "center" }}>Comments are loading...</p> :
+                            // project?.projectProposals &&
+                            project?.projectProposals[0]?.isAskedForQuotation === true ? (
+                              <ClientCommentBox
+                                projectId={projectId}
+                                agencyId={agencyId}
+                                isShortListed={true}
+                                giveReplies={(gr) => {
+                                  setRepliedToClient(gr);
+                                }}
+                                {...project}
+                                isAskedForQuotation={true}
+                                commentType="Quotation"
+                              />
+                            ) : (
+                              project?.projectProposals && (
+                                <ClientCommentBox
+                                  projectId={projectId}
+                                  agencyId={agencyId}
+                                  isShortListed={true}
+                                  giveReplies={(gr) => {
+                                    setRepliedToClient(gr);
+                                  }}
+                                  {...project}
+                                  isAskedForQuotation={false}
+                                  commentType="Shortlist"
+                                />
+                              )
+                            )}
+                        </>
+                      )}
           </div>
 
-          <div className="agencyQuestions_AgencyRespondedDetails">
+          <DownTechnologyDetail
+            projectProposalCost={project?.projectProposalCost}
+            estimatedTimeline={project?.projectExpectedStartingDays}
+            projectTechnologiesRequired={project?.projectTechnologiesRequired}
+            services={project?.projectServicesRequired} />
+
+          {/* <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul>
@@ -331,7 +333,7 @@ function RespondedDetails(props) {
                 </ul>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </>

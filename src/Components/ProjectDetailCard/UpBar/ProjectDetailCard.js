@@ -34,11 +34,11 @@ function ProjectDetailCard(props) {
 
                     <div>
                         <p>Shortlisted</p>
-                        <p>{String(props.isShortListed)}</p>
+                        <p>{props.isShortListed ? "Yes" : "No"}</p>
                     </div>
                     <div>
                         <p>Quotation Asked</p>
-                        <p>{String(props.isAskedForQuotation)}</p>
+                        <p>{props.isAskedForQuotation ? "Yes" : "No"}</p>
                     </div>
                     <div>
                         <p>Project Creation Date</p>

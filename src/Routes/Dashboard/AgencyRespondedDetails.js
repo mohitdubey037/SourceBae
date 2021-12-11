@@ -11,14 +11,15 @@ import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { useHistory } from "react-router-dom";
-import Moment from "react-moment";
 import "react-responsive-modal/styles.css";
 import detailImage from "../../assets/images/details.png";
 
-import AgencyCommentBox from "../Agency/AgencyCommentBox/AgencyCommentBox";
+import AgencyCommentBox from "../../Components/ProjectDetailCard/AgencyCommentBox/AgencyCommentBox";
 import { useSelector } from "react-redux";
 import useIsFirstRender from "../../Utils/useIsFirstRender";
-import ProjectDetailCard from "../../Components/ProjectDetailCard/ProjectDetailCard";
+import ProjectDetailCard from "../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
+import afterAcceptOrReject from "../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject";
+import DownTechnologyDetail from "../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
 
 function AgencyRespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -55,30 +56,9 @@ function AgencyRespondedDetails(props) {
       });
   };
 
-  // useEffect(()=>{
-  //   const gettingReduxState = useSelector((state) => {
-  //     setChatNotification(state.notification);
-  //   });
-  // },[])
-
-  // useEffect(() => {
-  //   if (Object.keys(props["projects"]).length === 0) {
-  //     getAllProjects();
-  //   } else {
-  //     setProject(props.projects);
-  //   }
-  // }, [isRepliedToClient]);
-
   useEffect(() => {
     getAllProjects();
   }, [isRepliedToClient, chatNotification]);
-
-  // const goBack = () => {
-  //   routerHistory.push({
-  //     pathname: "/quotation",
-  //     origin: routerHistory.location.origin
-  //   })
-  // }
 
   return (
     <>
@@ -100,11 +80,6 @@ function AgencyRespondedDetails(props) {
                   <p>{project?.projectName}</p>
                 </div>
               </div>
-              {/* <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
-                <p style={{ fontSize: "20px", color: "#45A4E4" }}>
-                  {project?.projectDomainId?.domainName}
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
@@ -157,7 +132,19 @@ function AgencyRespondedDetails(props) {
               project?.projectProposals[0].isQuotationAcceptedByAgency ===
               true ? (
               <div className="image_with_logo">
-                <div className="respondedDetails_afterCompletion">
+
+                <afterAcceptOrReject
+                  role="Client"
+                  companyName={project?.clientId?.companyName}
+                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                  finalCost={project?.projectProposals[0]?.finalCostByClient}
+                  projectCreationDate={project?.createdAt}
+                  expectedTimeline={project?.projectExpectedStartingDays}
+                  projectType={project?.projectType}
+                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                />
+                {/* <div className="respondedDetails_afterCompletion">
                   <div className="project-details">
                     <h4>Project Details</h4>
                   </div>
@@ -232,7 +219,7 @@ function AgencyRespondedDetails(props) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div
                   style={{ display: "flex", justifyContent: "center" }}
                   className="completedImage"
@@ -277,7 +264,13 @@ function AgencyRespondedDetails(props) {
             )}
           </div>
 
-          <div className="agencyQuestions_AgencyRespondedDetails">
+          <DownTechnologyDetail
+            projectProposalCost={project?.projectProposalCost}
+            estimatedTimeline={project?.projectExpectedStartingDays}
+            projectTechnologiesRequired={project?.projectTechnologiesRequired}
+            services={project?.projectServicesRequired} />
+
+          {/* <div className="agencyQuestions_AgencyRespondedDetails">
             <div className="straightAfterLine">
               <h4>Fixed Budget</h4>
               <ul style={{ display: "flex", marginLeft: "-1rem" }}>
@@ -324,7 +317,7 @@ function AgencyRespondedDetails(props) {
                   ))}
                 </ul>
               </div>
-            )}
+            )} */}
             {/* <div>
               <h4>Technology</h4>
               <ul style={{ display: "grid", marginLeft: "-2rem", gridTemplateColumns: "auto" }}>
@@ -333,7 +326,7 @@ function AgencyRespondedDetails(props) {
                 })}
               </ul>
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </>
