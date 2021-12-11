@@ -9,7 +9,7 @@ function DownTechnologyDetail(props) {
                     <li style={{ listStyle: "none" }}>
                         {" "}
                         <img className="dotImg" src={dot} alt="" /> Min $
-                        {props.projectProposalCost}
+                        {props?.projectProposalCost}
                     </li>
                 </ul>
             </div>
@@ -23,12 +23,12 @@ function DownTechnologyDetail(props) {
                             display: "flex",
                             marginLeft: "-4rem",
                         }}
-                    >{`${props?.projectExpectedStartingDays} Days`}</li>
+                    >{`${props?.estimatedTimeline} Days`}</li>
                 </ul>
             </div>
 
             {/* {props?.projectTechnologiesRequired && */}
-                {props?.projectTechnologiesRequired.length > 0 ? (
+                {props?.projectTechnologiesRequired?.length > 0 ? (
                 <div>
                     <h4>Technology</h4>
                     <ul>

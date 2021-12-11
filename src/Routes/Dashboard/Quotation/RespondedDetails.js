@@ -106,13 +106,13 @@ function RespondedDetails(props) {
         <div className="innerAgencyQuotation">
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {
-              // project.projectProposals &&
+              project.projectProposals &&
               project?.projectProposals[0]?.rejectReasonByClient !== undefined ? (
                 <div className="project_rejection">
                   <p>Project is rejected by you</p>
                 </div>
               ) :
-                // project.projectProposals &&
+                project.projectProposals &&
                 project?.projectProposals[0]?.rejectReasonByAgency !==
                   undefined ? (
                   <div className="project_rejection">
@@ -122,7 +122,7 @@ function RespondedDetails(props) {
                     </ul>
                   </div>
                 ) :
-                  // project.projectProposals &&
+                  project.projectProposals &&
                   (project?.projectProposals[0]?.isQuotationAcceptedByClient ===
                     true ||
                     project?.projectProposals[0]?.isQuotationAcceptedByAgency ===
@@ -235,7 +235,7 @@ function RespondedDetails(props) {
                       </div>
                     </div>
                   ) :
-                    // project?.projectProposals &&
+                    project?.projectProposals &&
                     project?.projectProposals[0]?.isQuotationAcceptedByClient ===
                       true ?
                       <p>Please wait for the agency to accept the Quotation</p>
@@ -244,7 +244,7 @@ function RespondedDetails(props) {
                         <>
                           <h4>Comments and Replies</h4>
                           {loading ? <p style={{ textAlign: "center" }}>Comments are loading...</p> :
-                            // project?.projectProposals &&
+                            project?.projectProposals &&
                             project?.projectProposals[0]?.isAskedForQuotation === true ? (
                               <ClientCommentBox
                                 projectId={projectId}
