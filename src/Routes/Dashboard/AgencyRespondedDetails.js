@@ -11,14 +11,15 @@ import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
 import * as helper from "../../shared/helper";
 import { useHistory } from "react-router-dom";
-import Moment from "react-moment";
 import "react-responsive-modal/styles.css";
 import detailImage from "../../assets/images/details.png";
 
-import AgencyCommentBox from "../Agency/AgencyCommentBox/AgencyCommentBox";
+import AgencyCommentBox from "../../Components/ProjectDetailCard/AgencyCommentBox/AgencyCommentBox";
 import { useSelector } from "react-redux";
 import useIsFirstRender from "../../Utils/useIsFirstRender";
-import ProjectDetailCard from "../../Components/ProjectDetailCard/ProjectDetailCard";
+import ProjectDetailCard from "../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
+import AfterAcceptOrRejectComponent from "../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject";
+import DownTechnologyDetail from "../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
 
 function AgencyRespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -55,30 +56,9 @@ function AgencyRespondedDetails(props) {
       });
   };
 
-  // useEffect(()=>{
-  //   const gettingReduxState = useSelector((state) => {
-  //     setChatNotification(state.notification);
-  //   });
-  // },[])
-
-  // useEffect(() => {
-  //   if (Object.keys(props["projects"]).length === 0) {
-  //     getAllProjects();
-  //   } else {
-  //     setProject(props.projects);
-  //   }
-  // }, [isRepliedToClient]);
-
   useEffect(() => {
     getAllProjects();
   }, [isRepliedToClient, chatNotification]);
-
-  // const goBack = () => {
-  //   routerHistory.push({
-  //     pathname: "/quotation",
-  //     origin: routerHistory.location.origin
-  //   })
-  // }
 
   return (
     <>
@@ -100,11 +80,6 @@ function AgencyRespondedDetails(props) {
                   <p>{project?.projectName}</p>
                 </div>
               </div>
-              {/* <div className="innerBtnInfoDiv" style={{ marginLeft: "20px" }}>
-                <p style={{ fontSize: "20px", color: "#45A4E4" }}>
-                  {project?.projectDomainId?.domainName}
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
@@ -139,112 +114,70 @@ function AgencyRespondedDetails(props) {
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {project.projectProposals &&
               project?.projectProposals[0].rejectReasonByClient !== undefined ? (
-              <div className="project_rejection">
-                <p>Project is rejected by the Client due to following reason</p>
-                <ul>
-                  <li>{project?.projectProposals[0].rejectReasonByClient}</li>
-                </ul>
-              </div>
+              <>
+                <div className="project_rejection">
+                  <p>Project is rejected by the Client due to following reason</p>
+                  <ul>
+                    <li>{project?.projectProposals[0].rejectReasonByClient}</li>
+                  </ul>
+                </div>
+                <AfterAcceptOrRejectComponent
+                  role="Agency"
+                  companyName={project?.clientId?.companyName}
+                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                  finalCost={project?.projectProposals[0]?.finalCostByClient}
+                  projectCreationDate={project?.createdAt}
+                  expectedTimeline={project?.projectExpectedStartingDays}
+                  projectType={project?.projectType}
+                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                />
+              </>
+            ) : project.projectProposals && project?.projectProposals[0].rejectReasonByAgency !== undefined ? (
+              <>
+                <div className="project_rejection">
+                  <p>Project is rejected by you</p>
+                </div>
+                <AfterAcceptOrRejectComponent
+                  role="Agency"
+                  companyName={project?.clientId?.companyName}
+                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                  finalCost={project?.projectProposals[0]?.finalCostByClient}
+                  projectCreationDate={project?.createdAt}
+                  expectedTimeline={project?.projectExpectedStartingDays}
+                  projectType={project?.projectType}
+                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                />
+              </>
             ) : project.projectProposals &&
-              project?.projectProposals[0].rejectReasonByAgency !==
-              undefined ? (
-              <div className="project_rejection">
-                <p>Project is rejected by you</p>
-              </div>
-            ) : project.projectProposals &&
-              project?.projectProposals[0].isQuotationAcceptedByClient ===
-              true &&
-              project?.projectProposals[0].isQuotationAcceptedByAgency ===
-              true ? (
+              project?.projectProposals[0].isQuotationAcceptedByClient === true &&
+              project?.projectProposals[0].isQuotationAcceptedByAgency === true ? (
               <div className="image_with_logo">
-                <div className="respondedDetails_afterCompletion">
-                  <div className="project-details">
-                    <h4>Project Details</h4>
-                  </div>
-                  <div className="project-details_child">
-                    <span className="leftLine"></span>
-                    <div className="respondedDetails_afterCompletion_child1">
-                      <div style={{ marginTop: "2rem" }}>
-                        <div className="question" style={{ width: "62%" }}>
-                          <p>Client</p>
-                        </div>
-                        <div className="answer">
-                          <p>{project?.clientId?.companyName}</p>
-                        </div>
-                      </div>
-
-                      <div>
-                        <div className="question" style={{ width: "62%" }}>
-                          <p>Agency</p>
-                        </div>
-                        <div className="answer">
-                          <p>
-                            {project?.projectProposals[0]?.agencyId?.agencyName}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div>
-                        <div className="question" style={{ width: "62%" }}>
-                          <p>Final Cost</p>
-                        </div>
-                        <div className="answer">
-                          <p>
-                            $ {project?.projectProposals[0].finalCostByClient}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="respondedDetails_afterCompletion_child2">
-                      <div>
-                        <div className="question after">
-                          <p>Project Creation Date</p>
-                        </div>
-                        <div className="answer">
-                          <p>
-                            <Moment format="D MMM YYYY" withTitle>
-                              {project?.createdAt}
-                            </Moment>
-                          </p>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="question after">
-                          <p>Expected Timeline</p>
-                        </div>
-                        <div className="answer">
-                          <p>{`${project?.projectExpectedStartingDays} Days`}</p>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="question after">
-                          <p>Project Type</p>
-                        </div>
-                        <div className="answer">
-                          <p>{project?.projectType}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="project_is_completed_parent">
-                      <div className="project_is_completed">
-                        <p>Project is started from both side</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  style={{ display: "flex", justifyContent: "center" }}
-                  className="completedImage"
-                >
-                  <img src={completedImage} alt="" />
-                </div>
+                <AfterAcceptOrRejectComponent
+                  role="Agency"
+                  companyName={project?.clientId?.companyName}
+                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                  finalCost={project?.projectProposals[0]?.finalCostByClient}
+                  projectCreationDate={project?.createdAt}
+                  expectedTimeline={project?.projectExpectedStartingDays}
+                  projectType={project?.projectType}
+                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                />
               </div>
             ) : (
               <>
                 {project.projectProposals &&
-                  project?.projectProposals[0].isQuotationAcceptedByClient ===
-                  false && <h4>Comments and Replies</h4>}
+                  project?.projectProposals[0].isQuotationAcceptedByClient === false &&
+                  <h4>Comments and Replies</h4>
+                }
                 {loading ? (
                   <p style={{ textAlign: "center" }}>Comments are loading...</p>
                 ) : project?.projectProposals &&
@@ -277,63 +210,11 @@ function AgencyRespondedDetails(props) {
             )}
           </div>
 
-          <div className="agencyQuestions_AgencyRespondedDetails">
-            <div className="straightAfterLine">
-              <h4>Fixed Budget</h4>
-              <ul style={{ display: "flex", marginLeft: "-1rem" }}>
-                <li style={{ listStyle: "none" }}>
-                  {" "}
-                  <img className="dotImg" src={dot} alt="" /> Min $
-                  {project.projectProposalCost}
-                </li>
-              </ul>
-            </div>
-
-            <div className="straightAfterLine">
-              <h4>Espected Timeline</h4>
-              <ul style={{ display: "flex", marginLeft: "-1rem" }}>
-                <li style={{ listStyle: "none" }}>
-                  {" "}
-                  <img className="dotImg" src={dot} alt="" />{" "}
-                  {`${project?.projectExpectedStartingDays} Days`}
-                </li>
-              </ul>
-            </div>
-            {project?.projectTechnologiesRequired &&
-              project?.projectTechnologiesRequired.length > 0 ? (
-              <div>
-                <h4>Technology</h4>
-                <ul>
-                  {project?.projectTechnologiesRequired?.map((p) => (
-                    <>
-                      <img className="dotImg" src={dot} alt="" />
-                      <li style={{ listStyle: "none" }}>{p?.technologyName}</li>
-                    </>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <div>
-                <h4>Services</h4>
-                <ul>
-                  {project?.projectServicesRequired?.map((p) => (
-                    <>
-                      <img className="dotImg" src={dot} alt="" />
-                      <li style={{ listStyle: "none" }}>{p?.serviceName}</li>
-                    </>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {/* <div>
-              <h4>Technology</h4>
-              <ul style={{ display: "grid", marginLeft: "-2rem", gridTemplateColumns: "auto" }}>
-                {project.projectTechnologiesRequired && project?.projectTechnologiesRequired?.map((p) => {
-                  return <li style={{ listStyle: "none", display: "flex", alignItems: "flex-end" }}> <img className="dotImg" src={dot} alt="" />{p?.technologyName}</li>;
-                })}
-              </ul>
-            </div> */}
-          </div>
+          <DownTechnologyDetail
+            projectProposalCost={project?.projectProposalCost}
+            estimatedTimeline={project?.projectExpectedStartingDays}
+            projectTechnologiesRequired={project?.projectTechnologiesRequired}
+            services={project?.projectServicesRequired} />
         </div>
       </div>
     </>

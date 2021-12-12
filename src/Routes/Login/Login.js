@@ -133,10 +133,9 @@ const Login = (props) => {
     }
   };
 
-  const handleLogout = () => {
+  const handleImageClick = () => {
     // props.history.push('/');
     window.location.href = 'https://sourcebae.com/';
-    
   }
 
   const logIn = async (event) => {
@@ -196,7 +195,7 @@ const Login = (props) => {
         <Spinner />
       ) : (
         <div className="mainLoginPage">
-          <div onClick={handleLogout} className="sourceBae_logo">
+          <div onClick={handleImageClick} className="sourceBae_logo">
             <img src={logoLink} alt="sourceBae-log" />
           </div>
           <div className="innerLoginPage">

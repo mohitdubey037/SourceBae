@@ -9,11 +9,11 @@ const Mainhomepage = (props) => {
   const auth = cookie.load("Authorization");
   const role = localStorage.getItem('role');
 
-  if (props.history.action === 'POP') {
-    // console.log(props.history.action);
-    // props.history.push('/');
-    window.location.href = 'https://sourcebae.com/';
-  }
+  // if (props.history.action === 'POP') {
+  //   console.log(props.history.action);
+  //   props.history.push('/');
+  //   window.location.href = 'https://sourcebae.com/';
+  // }
 
   useEffect(() => {
     localStorage.setItem("toggle", false);
@@ -28,7 +28,7 @@ const Mainhomepage = (props) => {
 
   return (
     <>
-      {/* {!auth ?
+      {!auth ?
         <div className="mainHomePage">
           <div className="innerHomePage">
             <div className="HomePageCard" onClick={() => props.history.push("/login:agency")}>
@@ -43,7 +43,7 @@ const Mainhomepage = (props) => {
         </div>
         :
         null
-      } */}
+      }
     </>
   );
 };

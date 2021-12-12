@@ -20,6 +20,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import bgPic from "../../../assets/images/Quotation/bgPic.svg";
+import Spinner from "../../Spinner/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -37,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ClientCommentBox = (props) => {
 
-  console.log(props);
+  // console.log(props);
+  const [loading, setLoading] = useState(false);
   const projectStartDateByClientRef = useRef();
 
   const classes = useStyles();
@@ -61,8 +63,6 @@ const ClientCommentBox = (props) => {
     agencyId: props?.agencyId || "",
     isQuotationAcceptedByClient: false,
   })
-
-  const [value, setValue] = React.useState(new Date());
 
   const handleChangeDate = (name, value) => {
     if (value === null) {
@@ -109,14 +109,20 @@ const ClientCommentBox = (props) => {
   };
 
   const replyApi = () => {
+    setLoading(true);
     instance
       .patch(`api/client/projects/propose/${props.projectId}`, apiData)
       .then(function (response) {
         props.giveReplies(true);
-      });
+        setLoading(false);
+      })
+      .catch(err => {
+        setLoading(false);
+      })
   };
 
   const askForQuotation = () => {
+    setLoading(true);
     const quotationData = {
       agencyId: props.agencyId,
       isShortListed: true,
@@ -127,12 +133,15 @@ const ClientCommentBox = (props) => {
     instance.patch(`api/client/projects/propose/${props.projectId}`, quotationData)
       .then(function (response) {
         props.giveReplies(true);
+        setLoading(false);
       })
       .catch(err => {
+        setLoading(false);
       })
   };
 
   const validateForm = () => {
+    setLoading(false);
     if (quotationFormData.projectStartDateByClient === '' || quotationFormData.projectStartDateByClient === null) {
       toast.error('Start date can"t be empty');
       return false;
@@ -140,7 +149,6 @@ const ClientCommentBox = (props) => {
     else if (quotationFormData.projectDelayedStartDateByClient === '' || quotationFormData.projectDelayedStartDateByClient === null) {
       toast.error("Delayed date cant be empty");
       return false;
-
     }
     else if (quotationFormData.projectEndDateByClient === '' || quotationFormData.projectEndDateByClient === null) {
       toast.error("End date can't be empty");
@@ -159,13 +167,16 @@ const ClientCommentBox = (props) => {
   }
 
   const handleProjectAcceptance = () => {
+    setLoading(true)
     if (validateForm()) {
       instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationFormData)
         .then(function (response) {
           props.giveReplies(true);
           onCloseModal();
+          setLoading(false);
         })
         .catch(err => {
+          setLoading(false);
         })
     }
   }
@@ -173,6 +184,7 @@ const ClientCommentBox = (props) => {
   const checkErrors = () => {
     if (quotationRejectionForm.rejectReasonByClient === '' || quotationRejectionForm.rejectReasonByClient === undefined) {
       setRejectErrors("Field can't be empty");
+      setLoading(false);
       toast.error('Field can"t be empty');
       return false;
     }
@@ -182,12 +194,15 @@ const ClientCommentBox = (props) => {
   }
 
   const handleProjectRejection = () => {
+    setLoading(true);
     if (checkErrors()) {
       instance.patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
         .then(function (response) {
           props.giveReplies(true);
+          setLoading(false);
         })
         .catch(err => {
+          setLoading(false);
         })
     }
   }
@@ -195,151 +210,151 @@ const ClientCommentBox = (props) => {
 
   return (
     <>
-      <div style={{ display: "flex" }}>
-        <div className="commentBox">
-          <div className="topLine" style={{
-          }}></div>
-          <img className="hardcoded_comment_image" src={bgPic} alt="img" />
-          <div className="chatBox-parent">
-            {props.projectProposals[0].comments.map((index) => {
-              console.log(props.projectProposals[0].isReplySectionActive)
-              return (
-                index.commentType === props.commentType &&
-                <>
-                  {
-                    index.comment && (
-                      <div className="chatBox">
-                        <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
-                        <b>You</b>
-                      </div>
-                    )
-                  }
-                  {index.reply && (
-                    <div className="chatBox chatBox-left">
-                      <p style={{ backgroundColor: 'rgb(234, 243, 255)', color: 'black' }}>{index.reply}</p>
-                      <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
-                    </div>
-                  )}
-                  {props.projectProposals[0].isReplySectionActive && index.reply === undefined && <p className="waiting_left">Waiting for the reply from Agency.</p>}
-                  {!props.projectProposals[0].isAskedForQuotation &&
-                    props.projectProposals[0].isCommentSectionActive &&
-                    props.isShortListed && (
-                      <div className="detailsButtons margin-0">
-                        <button onClick={askForQuotation}>Ask For Quotation</button>
+      {loading ? <Spinner /> :
+        <div style={{ display: "flex" }}>
+          <div className="commentBox">
+            <div className="topLine" style={{
+            }}></div>
+            <img className="hardcoded_comment_image" src={bgPic} alt="img" />
+            <div className="chatBox-parent">
+              {props.projectProposals[0].comments.map((index) => {
+                return (
+                  index.commentType === props.commentType &&
+                  <>
+                    {
+                      index.comment && (
+                        <div className="chatBox">
+                          <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
+                          <b>You</b>
+                        </div>
+                      )
+                    }
+                    {index.reply && (
+                      <div className="chatBox chatBox-left">
+                        <p style={{ backgroundColor: 'rgb(234, 243, 255)', color: 'black' }}>{index.reply}</p>
+                        <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
                       </div>
                     )}
-                </>
-              )
-            })}
-          </div>
+                    {props.projectProposals[0].isReplySectionActive && index.reply === undefined && <p className="waiting_left">Waiting for the reply from Agency.</p>}
+                    {!props.projectProposals[0].isAskedForQuotation &&
+                      props.projectProposals[0].isCommentSectionActive &&
+                      props.isShortListed && (
+                        <div className="detailsButtons margin-0">
+                          <button onClick={askForQuotation}>Ask For Quotation</button>
+                        </div>
+                      )}
+                  </>
+                )
+              })}
+            </div>
 
-          {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
-            (
-              <div className='commentParent'>
-                {(props.projectProposals[0].clientNegotiablePrice === null ||
-                  props.projectProposals[0].clientNegotiablePrice === undefined) && (
+            {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
+              (
+                <div className='commentParent'>
+                  {(props.projectProposals[0].clientNegotiablePrice === null ||
+                    props.projectProposals[0].clientNegotiablePrice === undefined) && (
 
-                    <div className="postQuotation" style={{ width: '55%' }}>
-                      <TextField
-                        className={clsx(classes.margin, classes.width)}
-                        name="clientNegotiablePrice"
-                        id="outlined-number"
-                        type="number"
-                        placeholder="Client Negotiable Price"
-                        onChange={(event) => handleChange(event)}
-                        variant="outlined"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <AttachMoneyIcon />
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                    </div>
-                  )}
-                <div className="price-section" style={{ width: '40%' }}>
-                  <TextField
-                    className={clsx(classes.margin, classes.width)}
-                    id="outlined-size-small"
-                    placeholder="Enter Your Reply"
-                    onChange={(event) => handleChange(event)}
-                    name="comment"
-                    multiline
-                    maxRows={4}
-                    variant="outlined"
-                  />
-                </div>
-                {props.projectProposals[0].isCommentSectionActive === true &&
-                  <div className="sendIcon_clientCommentBox" onClick={() => { replyApi() }}>
-                    <SendIcon />
+                      <div className="postQuotation" style={{ width: '55%' }}>
+                        <TextField
+                          className={clsx(classes.margin, classes.width)}
+                          name="clientNegotiablePrice"
+                          id="outlined-number"
+                          type="number"
+                          placeholder="Client Negotiable Price"
+                          onChange={(event) => handleChange(event)}
+                          variant="outlined"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <AttachMoneyIcon />
+                              </InputAdornment>
+                            )
+                          }}
+                        />
+                      </div>
+                    )}
+                  <div className="price-section" style={{ width: '40%' }}>
+                    <TextField
+                      className={clsx(classes.margin, classes.width)}
+                      id="outlined-size-small"
+                      placeholder="Enter Your Reply"
+                      onChange={(event) => handleChange(event)}
+                      name="comment"
+                      multiline
+                      maxRows={4}
+                      variant="outlined"
+                    />
                   </div>
-                }
-              </div>
+                  {props.projectProposals[0].isCommentSectionActive === true &&
+                    <div className="sendIcon_clientCommentBox" onClick={() => { replyApi() }}>
+                      <SendIcon />
+                    </div>
+                  }
+                </div>
+              )}
+
+
+            {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
+              <>
+                <div className="conversation-over">
+                  <p>Coversation Over.</p>
+                </div>
+                <div className="please_wait">
+                  <p>Kindly accept or reject the project</p>
+                </div>
+              </>
             )}
 
+          </div>
 
-          {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
-            <>
-              <div className="conversation-over">
-                <p>Coversation Over.</p>
+          <div className='action-wait'>
+            <div className="topLine" style={{
+              backgroundColor: "rgb(69, 164, 228)"
+            }}></div>
+            {props.projectProposals[0].isProposalActionActive}
+            <div className="proposalCard">
+              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
+                <p>Accept or Reject the Project.</p>
               </div>
-              <div className="please_wait">
-                <p>Kindly accept or reject the project</p>
+              {/* } */}
+              <div className="postQuotation">
+                {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
+                  <div className="detailsButtons margin-0">
+                    <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                  </div>
+                )}
+
+                {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
+                  <div className="detailsButtons margin-0">
+                    <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                  </div>
+                )}
+
+                {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+                  <div className="detailsButtons margin-0">
+                    <a href={props.projectProposals[0].quotationLink} target="new">
+                      View Quotation
+                    </a>
+                  </div>
+                )}
               </div>
-            </>
-          )}
-
-        </div>
-
-        <div className='action-wait'>
-          <div className="topLine" style={{
-            backgroundColor: "rgb(69, 164, 228)"
-          }}></div>
-          {props.projectProposals[0].isProposalActionActive}
-          <div className="proposalCard">
-            <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-              <p>Accept or Reject the Project.</p>
-            </div>
-            {/* } */}
-            <div className="postQuotation">
-              {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-                <div className="detailsButtons margin-0">
-                  <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+              <div className="detailsButtons" style={{ marginBottom: "1rem" }} >
+                <div>
+                  <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                    Accept
+                  </button>
+                  <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
+                    Reject
+                  </button>
                 </div>
-              )}
-
-              {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-                <div className="detailsButtons margin-0">
-                  <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-
-                </div>
-              )}
-
-              {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-                <div className="detailsButtons margin-0">
-                  <a href={props.projectProposals[0].quotationLink} target="new">
-                    View Quotation
-                  </a>
-                </div>
-              )}
-            </div>
-            <div className="detailsButtons" style={{ marginBottom: "1rem" }} >
-              <div>
-                <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                  Accept
-                </button>
-                <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
-                  Reject
-                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      }
 
       <Modal
         open={open}
@@ -376,7 +391,7 @@ const ClientCommentBox = (props) => {
                         ref={projectStartDateByClientRef}
                         value={quotationFormData.projectStartDateByClient}
                         onChange={(event) => handleChangeDate('projectStartDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>
@@ -398,7 +413,7 @@ const ClientCommentBox = (props) => {
                         disabled={quotationFormData.projectStartDateByClient === '' ? true : quotationFormData.projectStartDateByClient === 'Invalid Date' ? true : quotationFormData.projectStartDateByClient === null ? true : false
                         }
                         onChange={(event) => handleChangeDate('projectDelayedStartDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>
@@ -418,7 +433,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectDelayedStartDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectEndDateByClient}
                         onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
                       />
                     </div>
                   </LocalizationProvider>
@@ -438,7 +453,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectEndDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectExpectedEndDateByClient}
                         onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
                       />
                     </div>
                   </LocalizationProvider>
@@ -523,7 +538,7 @@ const ClientCommentBox = (props) => {
             }
           </div>
         </div>
-        <div className='submit-rejection' onClick={() => handleProjectRejection()}>
+        <div className='submit-rejection' onClick={handleProjectRejection}>
           <div>
             <p>Submit</p>
           </div>

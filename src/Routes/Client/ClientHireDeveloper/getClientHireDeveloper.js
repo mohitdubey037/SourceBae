@@ -42,7 +42,7 @@ function ClientHireDeveloper(props) {
             <Navbar />
             <div className="mainAgencyList_parent">
               <Back name="Requested Developers" />
-              <div className="mainAgencyList">
+              {/* <div className="mainAgencyList"> */}
                 <div className="innerAgencyList">
                   <div className="AgencyCardsArea">
                     {hiredDevelopers?.length > 0 ?
@@ -108,7 +108,7 @@ function ClientHireDeveloper(props) {
                     }
                   </div>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           </>
         )}
