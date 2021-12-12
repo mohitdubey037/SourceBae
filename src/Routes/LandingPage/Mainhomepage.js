@@ -9,11 +9,11 @@ const Mainhomepage = (props) => {
   const auth = cookie.load("Authorization");
   const role = localStorage.getItem('role');
 
-  // if (props.history.action === 'POP') {
-  //   console.log(props.history.action);
-  //   props.history.push('/');
-  //   window.location.href = 'https://sourcebae.com/';
-  // }
+  if (props.history.action === 'POP') {
+    // console.log(props.history.action);
+    // props.history.push('/');
+    window.location.href = 'https://sourcebae.com/';
+  }
 
   useEffect(() => {
     localStorage.setItem("toggle", false);
