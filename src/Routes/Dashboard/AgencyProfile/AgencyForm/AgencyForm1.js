@@ -164,13 +164,9 @@ function AgencyForm1(props) {
             .then(function (response) {
                 setSteps(response.stepsCompleted);
                 stepsCompleted = response.stepsCompleted
-                // firstLoad();
+                firstLoad();
             });
     };
-
-    useEffect(() => {
-        firstLoad();
-    },[])
 
     const firstLoad = () => {
         console.log('outer function');
