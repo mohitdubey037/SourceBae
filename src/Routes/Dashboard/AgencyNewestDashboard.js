@@ -239,7 +239,7 @@ function AgencyNewestDashboard(props) {
           </div>
 
           <div className='interested_or_not verify_or_not'>
-            <div className="update_now" onClick={() => props.history.replace('/agency-form-one')}>
+            <div className="update_now" onClick={() => props.history.replace(formRoute)}>
               <p>Update Now</p>
             </div>
             <div className="update_later" onClick={onCloseModal}>
