@@ -14,7 +14,11 @@ import Spinner from '../../../../Components/Spinner/Spinner';
 
 import './ResponsiveAgencyForm.css';
 
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
+
 function AgencyForm3(props) {
+    const dispatch = useDispatch();
 
     const propData = props.location.state ? props.location.state : {}
 
@@ -152,6 +156,7 @@ function AgencyForm3(props) {
                 .then(function (response) {
                     setLoading(false);
                     propData.agencyForm3 = apiData;
+                    dispatch({ type: 'NEXT_PRESSED' });
                     props.history.push("/agency-form-four", propData)
                 })
                 .catch(err => {
@@ -168,6 +173,7 @@ function AgencyForm3(props) {
             props.history.replace('/agency-form-one');
         }
         else if (url.includes('agency-form-three')) {
+            dispatch({ type: 'BACK_PRESSED' });
             props.history.replace('/agency-form-two', propData);
         }
         else if (url.includes('agency-form-four')) {

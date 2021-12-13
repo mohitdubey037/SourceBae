@@ -5,8 +5,7 @@ import FormPhases from './FormPhases'
 import github from '../../../../assets/images/agencyForm/github.svg'
 import stack from '../../../../assets/images/agencyForm/stack.svg'
 import portfolio from '../../../../assets/images/agencyForm/portfolio.svg'
-import featureLink from '../../../../assets/images/agencyForm/featureLink.svg'
-import { NavLink } from 'react-router-dom'
+import featureLink from '../../../../assets/images/agencyForm/featureLink.svg';
 import Alert from '@material-ui/lab/Alert';
 import Spinner from '../../../../Components/Spinner/Spinner';
 import Back from '../../../../Components/Back/Back';
@@ -17,9 +16,12 @@ import * as helper from "../../../../shared/helper";
 
 import './ResponsiveAgencyForm.css';
 
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
+
 
 function AgencyForm4(props) {
-
+    const dispatch = useDispatch();
     const Role = localStorage.getItem('role');
     const url = props.history.location.pathname;
     const [loading, setLoading] = useState(false);
@@ -106,6 +108,7 @@ function AgencyForm4(props) {
         instance.post(`api/${Role}/agencies/create`, apiData)
             .then(function (response) {
                 setLoading(false);
+                dispatch({ type: 'NEXT_PRESSED' });
                 props.history.replace("/agencyNewestDashboard")
             })
             .catch(errors => {
@@ -126,6 +129,7 @@ function AgencyForm4(props) {
                 props.history.push('/agency-form-two');
             }
             else if (url.includes('agency-form-four')) {
+                dispatch({ type: 'BACK_PRESSED' });
                 props.history.push('/agency-form-three');
             }
             else {
@@ -182,7 +186,7 @@ function AgencyForm4(props) {
                 stepsCompleted: '5',
                 socialPlatformDetails: []
             }
-            
+
             if (Object.entries(githubLink).length === 0 && Object.entries(stackoverflow).length === 0 && Object.entries(featuredLink).length === 0 && fields[0].value === null && fields[0].value === '') {
                 apiData = {
                     stepsCompleted: '5',
@@ -211,7 +215,7 @@ function AgencyForm4(props) {
                     socialPlatformDetails: PlatformDetails
                 }
             }
-            if (fields[0].value !== null && fields[0].value !== '') {  
+            if (fields[0].value !== null && fields[0].value !== '') {
                 const portfolios = fields.map((link, index) => {
                     return {
                         platformName: `portfolio${index + 1}`,

@@ -20,7 +20,11 @@ import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/
 
 import { Modal } from 'react-responsive-modal';
 
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 function AgencyNewestDashboard(props) {
+  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   console.log(props.history.action === 'POP');

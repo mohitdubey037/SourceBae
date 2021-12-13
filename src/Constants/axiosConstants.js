@@ -17,6 +17,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(function (request) {
+  console.log('request from interceptor', request); // TODO: remove this;
   if (!request.url.includes("login")) {
     request.headers["Authorization"] = cookie.load("Authorization");
   }
@@ -57,9 +58,6 @@ instance.interceptors.response.use(
           trueError = trueError + errors[errorName[0]][0];
         } else {
           trueError = error?.response?.data?.message;
-        }
-        if(trueError==="" || trueError===undefined||trueError===null){
-          trueError = "Something went wrong. Please try again later."
         }
         toast.error(trueError, {
           position: "top-right",

@@ -24,7 +24,11 @@ import MultiSelect from "react-multi-select-component";
 
 import './ResponsiveAgencyForm.css';
 
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
+
 function AgencyForm2(props) {
+  const dispatch = useDispatch();
 
   const isFirstRender = useIsFocusVisible();
   const Role = localStorage.getItem("role");
@@ -37,6 +41,9 @@ function AgencyForm2(props) {
 
   // selecting Domains
   const [allDomainsData, setAllDomainsData] = useState([]);
+
+  const [selectedDomain, setSelectedDomain] = useState(null);
+  const [selectedServices, setSelectedServices] = useState(null);
 
   //selecting services
   const [allServicesData, setAllServicesData] = useState([]);
@@ -86,11 +93,20 @@ function AgencyForm2(props) {
     setSelectedTechNames(arr.value);
   };
 
+  const handleBackButton = () => {
+    dispatch({ type: 'BACK_PRESSED' });
+  }
+
+  const handleNextButton = () => {
+    dispatch({ type: 'NEXT_PRESSED' });
+  }
+
   const goBack = () => {
     if (url.includes('agency-form-one')) {
       props.history.replace('/agencyNewestDashboard');
     }
     else if (url.includes('agency-form-two')) {
+      dispatch({ type: 'BACK_PRESSED' });
       props.history.replace('/agency-form-one', propData);
     }
     else if (url.includes('agency-form-three')) {
@@ -234,6 +250,7 @@ function AgencyForm2(props) {
       .then(function (response) {
         setLoading(false);
         propData.agencyForm2 = apiData;
+        dispatch({ type: 'NEXT_PRESSED' });
         props.history.push("/agency-form-three", propData);
       })
       .catch((err) => {
@@ -410,22 +427,22 @@ function AgencyForm2(props) {
                   <button onClick={() => goBack()} style={{ backgroundColor: '#707070' }}>
                     Back
                   </button>
-                  <button style={{ backgroundImage: 'linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff)' }} className="next-click" onClick={() => { handleNext() }}>
-                    Next
-                  </button>
-                </div>
+                  <button style={{ backgroundImage: 'linear-gradient(to right, #45a4e4, #259af0, #1a8ef9, #377fff, #5c6dff)' }} className="next-click" onClick={handleNext}>
+                  Next
+                </button>
               </div>
             </div>
-            {/* </div> */}
-            <div className={`${visibleTechNames?.length ? "serviceFieldsOptions_agencyForm2" : "conditional_please_select"}`}>
-              <div className="serviceSelectionInput input_agencyForm2">
-                {
-                  // visibleTechData !== null ?
-                  visibleTechNames?.length ? (
-                    <>
-                      <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
-                      <div style={{ display: "flex", justifyContent: "flex-start" }}>
-                        {/* <MultiSearchSelect
+          </div>
+          {/* </div> */}
+          <div className={`${visibleTechNames?.length ? "serviceFieldsOptions_agencyForm2" : "conditional_please_select"}`}>
+            <div className="serviceSelectionInput input_agencyForm2">
+              {
+                // visibleTechData !== null ?
+                visibleTechNames?.length ? (
+                  <>
+                    <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
+                    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                      {/* <MultiSearchSelect
                           className="UIUXServices"
                           searchable={true}
                           showTags={true}
@@ -439,28 +456,28 @@ function AgencyForm2(props) {
                           textColor="black"
                         /> */}
 
-                        <MultiSelect
-                          options={visibleTechNames.map(t => ({ "label": t, "value": t }))}
-                          value={selectedTechName}
-                          onChange={setSelectedTechNames}
-                          labelledBy="Select"
-                          className="multi-select"
-                        />
+                      <MultiSelect
+                        options={visibleTechNames.map(t => ({ "label": t, "value": t }))}
+                        value={selectedTechName}
+                        onChange={setSelectedTechNames}
+                        labelledBy="Select"
+                        className="multi-select"
+                      />
 
-                      </div>
-                    </>
-                  ) : (
-                    <p>Please select one or more services.</p>
-                  )
-                  // :
-                  // <p>No Technologies Found...</p>
-                }
-              </div>
+                    </div>
+                  </>
+                ) : (
+                  <p>Please select one or more services.</p>
+                )
+                // :
+                // <p>No Technologies Found...</p>
+              }
             </div>
           </div>
+        </div>
         </div >
-      )
-      }
+  )
+}
     </>
   );
 }
