@@ -72,6 +72,7 @@ const Login = (props) => {
   const classes = useStyles();
   let { role } = useParams();
   role = helper.capitalize(helper.cleanParam(role));
+  console.log(role);
   if (!(role.toLowerCase() === "agency" || role.toLowerCase() === "client"))
     props.history.replace("/page-not-found");
 
