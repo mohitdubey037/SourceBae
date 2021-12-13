@@ -7,14 +7,18 @@ import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
-import instance from "../../../../Constants/axiosConstants"
+import instance from "../../../../Constants/axiosConstants";
 import { toast } from 'react-toastify'
 import Spinner from '../../../../Components/Spinner/Spinner';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
 
 import './ResponsiveAgencyForm.css';
 
 function AgencyForm1(props) {
+    const dispatch = useDispatch();
 
+    const AgencyForm = useSelector((state) => state.AgencyForm);
     const Role = localStorage.getItem('role');
     const api_param_const = "agencies";
 
@@ -37,10 +41,16 @@ function AgencyForm1(props) {
             location: ""
         },
     })
+
+
     const [linkedIn, setLinkedIn] = useState({
         platformName: "linkedIn",
         platformLink: formData.socialPlatformDetails[0] ? formData.socialPlatformDetails[0].platformLink : ""
     })
+
+    // useEffect(() => {
+    //     getAgencyProfile();
+    // }, [])
 
     const handleValidation = () => {
         const errors = {};
@@ -140,6 +150,7 @@ function AgencyForm1(props) {
         instance.post(`api/${Role}/${api_param_const}/create`, { ...formData })
             .then(function (response) {
                 setLoading(false);
+                dispatch({ type: 'NEXT_PRESSED' });
                 props.history.push("/agency-form-two", { agencyForm1: formData });
             })
             .catch(err => {
@@ -151,11 +162,26 @@ function AgencyForm1(props) {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 setSteps(response.stepsCompleted);
-                // if (response.stepsCompleted === response.totalSteps) {
-                //     props.history.push('agencyNewestDashboard');
-                // }
+                firstLoad();
             });
     };
+
+    const firstLoad = () => {
+        if (AgencyForm.is_Back_Pressed === false) {
+            switch (steps) {
+                case 2:
+                    props.history.replace('agency-form-two');
+                case 3:
+                    props.history.replace('agency-form-three');
+                case 4:
+                    props.history.replace('agency-form-four');
+                case 5:
+                    props.history.replace('agencyNewestDashboard');
+                default:
+                    props.history.replace('/agencyNewestDashboard');
+            }
+        }
+    }
 
     useEffect(() => {
         getStepsCompleted();

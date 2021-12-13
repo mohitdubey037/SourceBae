@@ -11,8 +11,8 @@ const Mainhomepage = (props) => {
 
   if (props.history.action === 'POP') {
     // console.log(props.history.action);
-    // props.history.push('/');
-    window.location.href = 'https://sourcebae.com/';
+    props.history.push('/');
+    // window.location.href = 'https://sourcebae.com/';
   }
 
   useEffect(() => {

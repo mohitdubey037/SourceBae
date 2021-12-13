@@ -1,5 +1,5 @@
-// const env = 'development' // localhost or master i.e. amplify
-const env = 'production' // sourcebae.com i.e. production
+const env = 'development' // localhost or master i.e. amplify
+// const env = 'production' // sourcebae.com i.e. production
 
 export const config = {
     production: {

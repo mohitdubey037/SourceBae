@@ -1,3 +1,5 @@
 export const ADD_PROJECT = "ADD_PROJECT";
 export const NOTIFICATION = "NOTIFICATION";
 export const SHOW_NOTIFICATION = "SHOW_NOTIFICATION";
+export const BACK_PRESSED = "BACK_PRESSED";
+export const NEXT_PRESSED = "NEXT_PRESSED";
