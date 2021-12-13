@@ -178,7 +178,8 @@ function AgencyForm1(props) {
                 case 5:
                     props.history.replace('agencyNewestDashboard');
                 default:
-                    props.history.replace('/agencyNewestDashboard');
+                    // props.history.replace('/agencyNewestDashboard');
+                    return;
             }
         }
     }
