@@ -27,6 +27,7 @@ function AgencyForm1(props) {
     const [errors, setErrors] = useState({});
 
     const [logo, setLogo] = useState(null);
+    let stepsCompleted = ''
 
     const [formData, setFormData] = useState({
         stepsCompleted: 2,
@@ -162,13 +163,16 @@ function AgencyForm1(props) {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 setSteps(response.stepsCompleted);
+                stepsCompleted = response.stepsCompleted
                 firstLoad();
             });
     };
 
     const firstLoad = () => {
+        console.log('outer function');
         if (AgencyForm.is_Back_Pressed === false) {
-            switch (steps) {
+            console.log('inner function');
+            switch (stepsCompleted) {
                 case 2:
                     props.history.replace('agency-form-two');
                 case 3:
