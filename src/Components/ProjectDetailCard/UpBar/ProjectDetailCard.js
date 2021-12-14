@@ -1,5 +1,6 @@
 import React from "react";
 import Moment from "react-moment";
+import './ProjectDetailCard.css';
 
 function ProjectDetailCard(props) {
     console.log(props);
