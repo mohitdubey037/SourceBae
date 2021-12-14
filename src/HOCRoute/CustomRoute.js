@@ -7,10 +7,11 @@ import * as helper from "../shared/helper"
 const CustomRoute = props => {
     const Role = localStorage.getItem('role');
         switch (props.condition) {
+
             case "Agency":
                 Role === "Client" && alert(`You are login as a ${Role}`)
                 return (
-                    Role === "Agency" ? (
+                    helper.capitalize(Role) === "Agency" ? (
                         <Route {...props} />
                     ) : (
                         // <Redirect to="/page-not-found" />
@@ -18,7 +19,7 @@ const CustomRoute = props => {
                     )
                 );
             case "Client":
-                Role === "Agency" && alert(`You are login as a ${Role}`)
+                helper.capitalize(Role) === "Agency" && alert(`You are login as a ${Role}`)
                 return (
                     Role === "Client" ? (
                         <Route {...props} />
