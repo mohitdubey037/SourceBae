@@ -81,11 +81,11 @@ const App = (props) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (!id || !cookies) {
-      window.location.href = 'https://sourcebae.com/';
-    }
-  },[])
+  // useEffect(() => {
+  //   if (!id || !cookies) {
+  //     window.location.href = 'https://sourcebae.com/';
+  //   }
+  // },[])
 
   return (
     <>
