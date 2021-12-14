@@ -31,7 +31,8 @@ const CustomRoute = props => {
                     )
                 );
             default:
-                return (<Redirect to='page-not-found'/>);
+                // return (<Redirect to='page-not-found'/>);
+                window.location.href = 'https://sourcebae.com/';
         }
 };
 
