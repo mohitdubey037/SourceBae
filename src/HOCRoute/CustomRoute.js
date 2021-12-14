@@ -5,7 +5,7 @@ import * as helper from "../shared/helper"
 
 
 const CustomRoute = props => {
-    const Role = localStorage.getItem('role');
+    const Role = helper.capitalize(localStorage.getItem('role'));
         switch (props.condition) {
             case "Agency":
                 Role === "Client" && alert(`You are login as a ${Role}`)
