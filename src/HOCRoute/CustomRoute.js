@@ -13,21 +13,23 @@ const CustomRoute = props => {
     // }
         switch (props.condition) {
             case "Agency":
-                Role === "Client" && alert("Invalid urlsss")
+                Role === "Client" && alert(`You are login as a ${Role}`)
                 return (
                     Role === "Agency" ? (
                         <Route {...props} />
                     ) : (
-                        <Redirect to="/page-not-found" />
+                        // <Redirect to="/page-not-found" />
+                        window.location.href = 'https://sourcebae.com/'
                     )
                 );
             case "Client":
-                Role === "Agency" && alert("Invalid url")
+                Role === "Agency" && alert(`You are login as a ${Role}`)
                 return (
                     Role === "Client" ? (
                         <Route {...props} />
                     ) : (
-                        <Redirect to="/page-not-found" />
+                        // <Redirect to="/page-not-found" />
+                        window.location.href = 'https://sourcebae.com/'
                     )
                 );
             default:
