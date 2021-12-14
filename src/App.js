@@ -97,51 +97,51 @@ const App = (props) => {
         />
       ) : null}
       <Switch>
-        <Route exact path="/" component={Mainhomepage} />
-        <Route exact path="/Verify_Page" component={VerifyPage} />
-        <Route exact path="/login:role" component={Login} />
-        <Route exact path="/register:role" component={Register} />
-        <Route exact path="/enter-email" component={EnterEmail} />
-        <Route exact path="/password-reset:token" component={PasswordReset} />
+        <Route exact path="/app/" component={Mainhomepage} />
+        <Route exact path="/app/Verify_Page" component={VerifyPage} />
+        <Route exact path="/app/login:role" component={Login} />
+        <Route exact path="/app/register:role" component={Register} />
+        <Route exact path="/app/enter-email" component={EnterEmail} />
+        <Route exact path="/app/password-reset:token" component={PasswordReset} />
 
-        <Route exact path="/page-not-found" component={PageNotFound} />
+        <Route exact path="/app/page-not-found" component={PageNotFound} />
 
-        <Route exact path="/agencyNewestAllProject" component={AgencyNewestAllProject} />
+        <Route exact path="/app/agencyNewestAllProject" component={AgencyNewestAllProject} />
 
-        <CustomRoute condition="Agency" exact path="/agencyNewestDashboard" component={AgencyNewestDashboard} />
+        <CustomRoute condition="Agency" exact path="/app/agencyNewestDashboard" component={AgencyNewestDashboard} />
         {/* <CustomRoute condition="Agency" exact path="/agency-project-dashboard" component={AgencyProjectDashboard} /> */}
-        <CustomRoute condition="Agency" exact path="/add-developer" component={AddingDeveloper} />
-        <CustomRoute condition="Agency" exact path="/quotation" component={Quotation} />
-        <CustomRoute condition="Agency" exact path="/agency-form-one" component={AgencyForm1} />
-        <CustomRoute condition="Agency" exact path="/agency-form-two" component={AgencyForm2} />
-        <CustomRoute condition="Agency" exact path="/agency-form-three" component={AgencyForm3} />
-        <CustomRoute condition="Agency" exact path="/agency-form-four" component={AgencyForm4} />
-        <CustomRoute condition="Agency" exact path="/product-form" component={ProductForm} />
-        <CustomRoute condition="Agency" exact path="/agency-project-details:projectId" component={AgencyProjectDetails} />
-        <CustomRoute condition="Agency" exact path="/agency-profile" component={AgencyProfile} />
-        <CustomRoute condition="Agency" exact path="/portfolio" component={Portfolio} />
-        <CustomRoute condition="Agency" exact path="/shared-developers" component={SharedDevelopers} />
+        <CustomRoute condition="Agency" exact path="/app/add-developer" component={AddingDeveloper} />
+        <CustomRoute condition="Agency" exact path="/app/quotation" component={Quotation} />
+        <CustomRoute condition="Agency" exact path="/app/agency-form-one" component={AgencyForm1} />
+        <CustomRoute condition="Agency" exact path="/app/agency-form-two" component={AgencyForm2} />
+        <CustomRoute condition="Agency" exact path="/app/agency-form-three" component={AgencyForm3} />
+        <CustomRoute condition="Agency" exact path="/app/agency-form-four" component={AgencyForm4} />
+        <CustomRoute condition="Agency" exact path="/app/product-form" component={ProductForm} />
+        <CustomRoute condition="Agency" exact path="/app/agency-project-details:projectId" component={AgencyProjectDetails} />
+        <CustomRoute condition="Agency" exact path="/app/agency-profile" component={AgencyProfile} />
+        <CustomRoute condition="Agency" exact path="/app/portfolio" component={Portfolio} />
+        <CustomRoute condition="Agency" exact path="/app/shared-developers" component={SharedDevelopers} />
 
         {/* Both */}
-        <Route exact path="/agency-project-details" component={AgencyProjectDetails} />
-        <Route exact path="/product-details:productId" component={ProductDetails} />
+        <Route exact path="/app/agency-project-details" component={AgencyProjectDetails} />
+        <Route exact path="/app/product-details:productId" component={ProductDetails} />
         {/* Client Components  */}
-        <CustomRoute condition="Client" exact path="/agency-profile:id" component={AgencyProfile} />
-        <CustomRoute condition="Client" exact path="/product-agencies" component={ProductAgencies} />
-        <CustomRoute condition="Client" exact path="/clientNewestDashboard" component={ClientNewestDashboard} />
-        <CustomRoute condition="Client" exact path="/client-one-hire-developer:hireDeveloperId" component={ClientOneHireDeveloper} />
+        <CustomRoute condition="Client" exact path="/app/agency-profile:id" component={AgencyProfile} />
+        <CustomRoute condition="Client" exact path="/app/product-agencies" component={ProductAgencies} />
+        <CustomRoute condition="Client" exact path="/app/clientNewestDashboard" component={ClientNewestDashboard} />
+        <CustomRoute condition="Client" exact path="/app/client-one-hire-developer:hireDeveloperId" component={ClientOneHireDeveloper} />
         {/* <CustomRoute condition="Client" exact path="/shared-developers/:hireDeveloperId/:agencyId" component={SharedDevelopers} /> */}
 
-        <CustomRoute condition="Client" exact path="/get-client-hire-developer" component={GetClientHireDeveloper} />
-        <CustomRoute condition="Client" exact path="/project-details:projectId" component={ProjectDetails} />
-        <CustomRoute condition="Client" exact path="/project-details/:projectId/:agencyId" component={ProjectDetails} />
-        <CustomRoute condition="Client" exact path="/hire-agency-form-one" component={HireAgencyForm1} />
-        <CustomRoute condition="Client" exact path="/hire-agency-form-two:projectId" component={HireAgencyForm2} />
-        <CustomRoute condition="Client" exact path="/hire-agency-form-three:projectId" component={HireAgencyForm3} />
-        <CustomRoute condition="Client" exact path="/short-term" component={ShortTerm} />
-        <CustomRoute condition="Client" exact path="/hire-developer" component={HireDeveloper} />
-        <CustomRoute condition="Client" exact path="/agency-list:projectId" component={AgencyList} />
-        <CustomRoute condition="Client" exact path="/client-profile" component={ClientProfile} />
+        <CustomRoute condition="Client" exact path="/app/get-client-hire-developer" component={GetClientHireDeveloper} />
+        <CustomRoute condition="Client" exact path="/app/project-details:projectId" component={ProjectDetails} />
+        <CustomRoute condition="Client" exact path="/app/project-details/:projectId/:agencyId" component={ProjectDetails} />
+        <CustomRoute condition="Client" exact path="/app/hire-agency-form-one" component={HireAgencyForm1} />
+        <CustomRoute condition="Client" exact path="/app/hire-agency-form-two:projectId" component={HireAgencyForm2} />
+        <CustomRoute condition="Client" exact path="/app/hire-agency-form-three:projectId" component={HireAgencyForm3} />
+        <CustomRoute condition="Client" exact path="/app/short-term" component={ShortTerm} />
+        <CustomRoute condition="Client" exact path="/app/hire-developer" component={HireDeveloper} />
+        <CustomRoute condition="Client" exact path="/app/agency-list:projectId" component={AgencyList} />
+        <CustomRoute condition="Client" exact path="/app/client-profile" component={ClientProfile} />
         {/* <CustomRoute condition={`${Role === 'Client' ? 'Agency' : Role === 'Agency' ? 'Client' : Role === 'None'}`}/> */}
 
         <CustomRoute component={PageNotFound} />
