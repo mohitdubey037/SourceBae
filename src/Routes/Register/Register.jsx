@@ -579,7 +579,7 @@ const Register = (props) => {
                         Already have an account?{" "}
                         <span
                           onClick={() =>
-                            props.history.push(`/login:${role.toLowerCase()}`)
+                            props.history.replace(`/login:${role.toLowerCase()}`)
                           }
                         >
                           Log In

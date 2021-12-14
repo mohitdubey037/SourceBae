@@ -8,7 +8,6 @@ import QuotationAccept from '../../../assets/images/Newestdashboard/Dashboard/qu
 import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail_show.svg';
 import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
 import MessageRejected from '../../../assets/images/Newestdashboard/Dashboard/rejected.jpg';
-import { FaBan } from 'react-icons/fa';
 
 function UserProject(props, index) {
     const routerHistory = useHistory();
