@@ -47,10 +47,16 @@ import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
 import store from "./Redux/Store/store";
+import cookie from "react-cookies";
+
+const id = localStorage.getItem('userId');
+const cookies = cookie.load("Authorization");
 
 const App = (props) => {
 
   const Role = localStorage.getItem('role');
+
+
   const [show, setShow] = useState(false);
   const [notification, setNotification] = useState({
     title: "",
@@ -75,6 +81,12 @@ const App = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!id || !cookies) {
+      window.location.href = 'https://sourcebae.com/';
+    }
+  },[])
+
   return (
     <>
       {show ? (
@@ -84,6 +96,7 @@ const App = (props) => {
           show={show}
         />
       ) : null}
+
       <Switch>
         <Route exact path="/" component={Mainhomepage} />
         <Route exact path="/Verify_Page" component={VerifyPage} />
