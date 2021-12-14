@@ -163,6 +163,7 @@ function AgencyForm1(props) {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 setSteps(response.stepsCompleted);
+                console.log(response.stepsCompleted);
                 stepsCompleted = response.stepsCompleted
                 firstLoad();
             });
@@ -175,12 +176,16 @@ function AgencyForm1(props) {
             switch (stepsCompleted) {
                 case 2:
                     props.history.replace('agency-form-two');
+                    console.log('agency-form-two');
                 case 3:
                     props.history.replace('agency-form-three');
+                    console.log('agency-form-three');
                 case 4:
                     props.history.replace('agency-form-four');
+                    console.log('agency-form-four');
                 case 5:
                     props.history.replace('agencyNewestDashboard');
+                    console.log('agency-form-agencyNewestDashboard');
                 default:
                     // props.history.replace('/agencyNewestDashboard');
                     return;
