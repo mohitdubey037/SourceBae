@@ -47,15 +47,18 @@ import "./App.css";
 import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
 import store from "./Redux/Store/store";
+import cookie from "react-cookies";
 
 const App = (props) => {
-
+  const cookie = cookie.load("Authorization");
+  const id = localStorage.getItem('userId');
   const Role = localStorage.getItem('role');
   const [show, setShow] = useState(false);
   const [notification, setNotification] = useState({
     title: "",
     body: "",
   });
+
 
   useEffect(() => {
     const msg = firebaseConfig.messaging();
@@ -75,6 +78,15 @@ const App = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (Role === 'Agency' || Role === "Client") {
+      console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
+    }
+    if (!id || !cookie ) {
+      window.location.href = "https://sourcebae.com/";
+    }
+  }, [])
+
   return (
     <>
       {show ? (
@@ -84,6 +96,7 @@ const App = (props) => {
           show={show}
         />
       ) : null}
+      { }
       <Switch>
         <Route exact path="/" component={Mainhomepage} />
         <Route exact path="/Verify_Page" component={VerifyPage} />
@@ -133,6 +146,7 @@ const App = (props) => {
         {/* <CustomRoute condition={`${Role === 'Client' ? 'Agency' : Role === 'Agency' ? 'Client' : Role === 'None'}`}/> */}
 
         <CustomRoute component={PageNotFound} />
+
         {/* <Route component={PageNotFound} /> */}
 
 
