@@ -49,10 +49,13 @@ import Notification from "./Utils/Notification";
 import store from "./Redux/Store/store";
 import cookie from "react-cookies";
 
+const id = localStorage.getItem('userId');
+const cookies = cookie.load("Authorization");
+
 const App = (props) => {
-  const cookie = cookie.load("Authorization");
-  const id = localStorage.getItem('userId');
   const Role = localStorage.getItem('role');
+
+
   const [show, setShow] = useState(false);
   const [notification, setNotification] = useState({
     title: "",
@@ -79,13 +82,10 @@ const App = (props) => {
   }, []);
 
   useEffect(() => {
-    if (Role === 'Agency' || Role === "Client") {
-      console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
+    if (!id || !cookies) {
+      window.location.href = 'https://sourcebae.com/';
     }
-    if (!id || !cookie ) {
-      window.location.href = "https://sourcebae.com/";
-    }
-  }, [])
+  },[])
 
   return (
     <>
@@ -96,7 +96,6 @@ const App = (props) => {
           show={show}
         />
       ) : null}
-      { }
       <Switch>
         <Route exact path="/" component={Mainhomepage} />
         <Route exact path="/Verify_Page" component={VerifyPage} />
