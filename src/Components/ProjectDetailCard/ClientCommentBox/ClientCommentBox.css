@@ -1,3 +1,7 @@
+.commentBox_parent {
+    display: flex;
+}
+
 .sendIcon_clientCommentBox {
     position: absolute;
     right: -62px;

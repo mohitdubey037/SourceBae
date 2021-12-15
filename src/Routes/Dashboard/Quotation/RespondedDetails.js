@@ -113,15 +113,16 @@ function RespondedDetails(props) {
                   <AfterAcceptOrRejectComponent
                     role="Client"
                     companyName={project?.clientId?.companyName}
-                    agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
-                    finalCost={project?.projectProposals[0]?.finalCostByClient}
-                    projectCreationDate={project?.createdAt}
-                    expectedTimeline={project?.projectExpectedStartingDays}
-                    projectType={project?.projectType}
-                    isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
-                    isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
-                    isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                    isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                    projectProposals={project?.projectProposals[0]}
+                    // agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                    // finalCost={project?.projectProposals[0]?.finalCostByClient}
+                    // projectCreationDate={project?.createdAt}
+                    // expectedTimeline={project?.projectExpectedStartingDays}
+                    // projectType={project?.projectType}
+                    // isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
+                    // isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
+                    // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                    // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                   />
                 </>
               ) :
@@ -137,15 +138,16 @@ function RespondedDetails(props) {
                     <AfterAcceptOrRejectComponent
                       role="Client"
                       companyName={project?.clientId?.companyName}
-                      agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
-                      finalCost={project?.projectProposals[0]?.finalCostByClient}
-                      projectCreationDate={project?.createdAt}
-                      expectedTimeline={project?.projectExpectedStartingDays}
-                      projectType={project?.projectType}
-                      isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
-                      isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
-                      isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                      isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                      projectProposals={project?.projectProposals[0]}
+                      // agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                      // finalCost={project?.projectProposals[0]?.finalCostByClient}
+                      // projectCreationDate={project?.createdAt}
+                      // expectedTimeline={project?.projectExpectedStartingDays}
+                      // projectType={project?.projectType}
+                      // isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
+                      // isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
+                      // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                      // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                     />
                   </>
                 ) :
@@ -156,15 +158,16 @@ function RespondedDetails(props) {
                       <AfterAcceptOrRejectComponent
                         role="Client"
                         companyName={project?.clientId?.companyName}
-                        agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
-                        finalCost={project?.projectProposals[0]?.finalCostByClient}
-                        projectCreationDate={project?.createdAt}
-                        expectedTimeline={project?.projectExpectedStartingDays}
-                        projectType={project?.projectType}
-                        isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
-                        isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
-                        isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                        isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                        projectProposals={project?.projectProposals[0]}
+                        // agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                        // finalCost={project?.projectProposals[0]?.finalCostByClient}
+                        // projectCreationDate={project?.createdAt}
+                        // expectedTimeline={project?.projectExpectedStartingDays}
+                        // projectType={project?.projectType}
+                        // isQuotationAcceptedByClient={project?.projectProposals[0]?.isQuotationAcceptedByClient}
+                        // isQuotationAcceptedByAgency={project?.projectProposals[0]?.isQuotationAcceptedByAgency}
+                        // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                        // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                       />
                     </div>
                   ) :

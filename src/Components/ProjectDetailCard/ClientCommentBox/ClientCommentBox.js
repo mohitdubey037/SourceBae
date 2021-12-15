@@ -211,8 +211,9 @@ const ClientCommentBox = (props) => {
   return (
     <>
       {loading ? <Spinner /> :
-        <div style={{ display: "flex" }}>
-          <div className="commentBox">
+        <div className="commentBox_parent">
+          <div className={`commentBox ${(props?.projectProposals[0]?.rejectReasonByAgency !== undefined && 
+            props?.projectProposals[0]?.rejectReasonByClient !== undefined) && 'conditional_width_commentBox' }`}>
             <div className="topLine" style={{
             }}></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />

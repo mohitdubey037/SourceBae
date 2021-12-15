@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
-const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   console.log(props);
   const classes = useStyles();
   const [apiData, setApiData] = useState({
@@ -197,8 +197,9 @@ const [loading, setLoading] = useState(false);
   return (
     <>
       {loading ? <Spinner /> :
-        <div style={{ display: "flex" }}>
-          <div className="commentBox">
+        <div className="commentBox_parent">
+          <div className={`commentBox ${(props?.projectProposals[0]?.rejectReasonByAgency !== undefined &&
+            props?.projectProposals[0]?.rejectReasonByClient !== undefined) && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>

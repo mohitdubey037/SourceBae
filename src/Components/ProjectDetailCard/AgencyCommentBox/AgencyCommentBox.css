@@ -70,6 +70,10 @@
   padding-top: 0.3rem;
 }
 
+.conditional_width_commentBox {
+  width: 100%;
+}
+
 .commentBox {
   display: flex;
   flex-direction: column;
