@@ -5,115 +5,90 @@ import completedImage from "../../../assets/images/Newestdashboard/Project_compl
 import loadingStatus from "../../../assets/images/Newestdashboard/Not_found/loading_status.jpg";
 import './AfterAcceptOrReject.css';
 
-function afterAcceptOrReject(props) {
+function afterAcceptOrReject({ projectProposals, role, companyName }) {
+
     return (
         <div className="respondedDetails_afterCompletion">
             <div className="project-details">
-                <h4>Project Details</h4>
+                <h4>Chat Details</h4>
             </div>
             <div className="details_with_rejected">
                 <div className="project-details_child">
                     <div className="respondedDetails_afterCompletion_child1">
                         <div>
                             <div className="question" style={{ width: "62%" }}>
-                                <p>{props?.role === "Client" ? "Client" : "Agency"}</p>
+                                <p>{role === "Client" ? "Client" : "Agency"}</p>
                             </div>
                             <div className="answer">
-                                <p>{props?.companyName}</p>
+                                <p>{companyName}</p>
                             </div>
                         </div>
-
-                        <div>
-                            <div className="question" style={{ width: "62%" }}>
-                                <p>{props?.role === "Client" ? "Agency" : "Client"}</p>
-                            </div>
-                            <div className="answer">
-                                <p>
-                                    {props.agencyOrClientName}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className="question" style={{ width: "62%" }}>
-                                <p>Final Cost</p>
-                            </div>
-                            <div className="answer">
-                                <p>
-                                    $ {props?.finalCost}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="respondedDetails_afterCompletion_child2">
-                        <div>
-                            <div className="question after">
-                                <p>Project Creation Date</p>
-                            </div>
-                            <div className="answer">
-                                <p>
-                                    <Moment format="D MMM YYYY" withTitle>
-                                        {props?.projectCreationDate}
-                                    </Moment>
-                                </p>
-                            </div>
-                        </div>
-                        {props?.expectedTimeline !== 0 && (
+                        {projectProposals?.comments?.map(pp =>
+                        (
                             <div>
-                                <div className="question after">
-                                    <p>Expected Timeline</p>
+                                <div className="question" style={{ width: "62%" }}>
+                                    <p>{pp?.comment}</p>
                                 </div>
                                 <div className="answer">
-                                    <p>{`${props?.expectedTimeline} Days`}</p>
+                                    <p>{pp?.reply}</p>
                                 </div>
                             </div>
+                        )
                         )}
-                        <div>
-                            <div className="question after">
-                                <p>Project Type</p>
+                        {projectProposals.agencyNegotiablePrice &&
+                            <div>
+                                <div className="question" style={{ width: "62%" }}>
+                                    <p>Agency Negotiable Price</p>
+                                </div>
+                                <div className="answer">
+                                    <p>{projectProposals?.agencyNegotiablePrice}</p>
+                                </div>
                             </div>
-                            <div className="answer">
-                                <p>{props?.projectType}</p>
+                        }
+                        {projectProposals.clientNegotiablePrice &&
+                            <div>
+                                <div className="question" style={{ width: "62%" }}>
+                                    <p>Client Negotiable Price</p>
+                                </div>
+                                <div className="answer">
+                                    <p>{projectProposals?.clientNegotiablePrice}</p>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
+
+
                     <div className="project_is_completed_parent">
                         <div className="project_is_completed">
                             {
-                                props.isQuotationAcceptedByClient && props.isQuotationAcceptedByAgency ?
+                                projectProposals?.isQuotationAcceptedByClient && projectProposals?.isQuotationAcceptedByAgency ?
                                     <p>Project is started from both side</p>
                                     :
-                                    props.isQuotationAcceptedByClient ?
-                                        <p>{`Project is started from ${props.role === 'Client' ? "You" : "Client"}`}</p>
+                                    projectProposals?.isQuotationAcceptedByClient ?
+                                        <p>{`Project is started from ${role === 'Client' ? "You" : "Client"}`}</p>
                                         :
-                                        props.isQuotationAcceptedByAgency ?
-                                            <p>{`Project is started from ${props.role === 'Agency' ? "You" : "Agency"}`}</p>
+                                        projectProposals?.isQuotationAcceptedByAgency ?
+                                            <p>{`Project is started from ${role === 'Agency' ? "You" : "Agency"}`}</p>
                                             :
-                                            props.isProjectRejectedByClient === undefined || props.isProjectRejectedByAgency &&
+                                            projectProposals?.isProjectRejectedByClient === undefined || projectProposals?.isProjectRejectedByAgency &&
                                             <p>Project is started from both side</p>
                             }
                         </div>
                     </div>
                 </div>
-                {(props.isQuotationAcceptedByClient === true && props.isQuotationAcceptedByClient === true) ?
+                {(projectProposals?.isQuotationAcceptedByClient === true && projectProposals?.isQuotationAcceptedByClient === true) ?
                     <img className="completedImage" src={completedImage} alt="completedImage" />
                     :
-                    (props.isQuotationAcceptedByClient === false || props.isQuotationAcceptedByClient === false) ?
+                    (projectProposals?.isQuotationAcceptedByClient === false || projectProposals?.isQuotationAcceptedByClient === false) ?
                         <img className="completedImage" src={loadingStatus} alt="completedImage" />
                         :
-                        (props.isProjectRejectedByClient !== undefined || props.isProjectRejectedByAgency !== undefined) &&
-                        // <div className="rejected_image">
-                            <img className="completedImage" src={RejectedImage} alt="completedImage" />
-                        // </div>
+                        (projectProposals?.isProjectRejectedByClient !== undefined || projectProposals?.isProjectRejectedByAgency !== undefined) &&
+
+                        <img className="completedImage" src={RejectedImage} alt="completedImage" />
+
                 }
-                {/* {(props.isProjectRejectedByClient !== undefined || props.isProjectRejectedByAgency !== undefined) &&
-                    <div className="rejected_image">
-                        <img src={RejectedImage} alt="completedImage" />
-                    </div>
-                } */}
             </div>
-        </div>
+        </div >
     )
 }
 

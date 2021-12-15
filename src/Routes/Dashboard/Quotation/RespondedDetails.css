@@ -76,7 +76,7 @@ p.action-wait {
 .question p {
   font-family: 'Segoe UI Semibold';
   font-size: 16px;
-  text-align: center;
+  /* text-align: center; */
   text-transform: capitalize;
   color: #3A3A3A;
 }
