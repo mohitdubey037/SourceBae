@@ -220,7 +220,6 @@ const ClientCommentBox = (props) => {
             <div className="chatBox-parent">
               {props.projectProposals[0].comments.map((index) => {
                 return (
-                  // index.commentType === props.commentType &&
                   <>
                     {
                       index.comment && (
@@ -239,7 +238,7 @@ const ClientCommentBox = (props) => {
                     {props.projectProposals[0].isReplySectionActive && index.reply === undefined && <p className="waiting_left">Waiting for the reply from Agency.</p>}
                     {!props.projectProposals[0].isAskedForQuotation &&
                       props.projectProposals[0].isCommentSectionActive &&
-                      props.isShortListed && (
+                      props.projectProposals[0].isShortListed && (
                         <div className="detailsButtons margin-0">
                           <button onClick={askForQuotation}>Ask For Quotation</button>
                         </div>
@@ -252,9 +251,7 @@ const ClientCommentBox = (props) => {
               {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
               (
                 <div className='commentParent'>
-                  {(props.projectProposals[0].clientNegotiablePrice === null ||
-                    props.projectProposals[0].clientNegotiablePrice === undefined) && (
-
+                  {(!props.projectProposals[0].clientNegotiablePrice) && (
                       <div className="postQuotation" style={{ width: '40%' }}>
                         <TextField
                           className={clsx(classes.margin, classes.width)}

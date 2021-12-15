@@ -198,15 +198,15 @@ const AgencyCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${(props?.projectProposals[0]?.rejectReasonByAgency !== undefined &&
-            props?.projectProposals[0]?.rejectReasonByClient !== undefined) && 'conditional_width_commentBox'}`}>
+          <div className={`commentBox ${(!props?.projectProposals[0]?.rejectReasonByAgency &&
+            !props?.projectProposals[0]?.rejectReasonByClient) && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
-            {props.projectProposals[0].isQuotationAcceptedByClient === true ?
+            {/* {props.projectProposals[0].isQuotationAcceptedByClient === true ?
               <p>Quotation accepted by client!!.Waiting for your side</p>
-              :
+              : */}
               <>
                 <div className="chatBox-parent">
                   {props.projectProposals[0].comments.map((index) => {
@@ -282,8 +282,7 @@ const AgencyCommentBox = (props) => {
                                 <InputAdornment position="end">
                                   {props.projectProposals[0].isReplySectionActive &&
                                     props.projectProposals[0].isAskedForQuotation &&
-                                    (props.projectProposals[0].quotationLink === null ||
-                                      props.projectProposals[0].quotationLink === undefined) &&
+                                    (!props.projectProposals[0].quotationLink) &&
                                     (
                                       <>
                                         <input
@@ -313,7 +312,7 @@ const AgencyCommentBox = (props) => {
                   </div>
                 }
               </>
-            }
+            {/* } */}
             {props.projectProposals[0].isQuotationAcceptedByClient === false
               && !props.projectProposals[0].isCommentSectionActive
               && !props.projectProposals[0].isReplySectionActive
