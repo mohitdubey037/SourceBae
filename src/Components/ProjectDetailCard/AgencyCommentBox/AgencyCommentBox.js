@@ -198,8 +198,8 @@ const AgencyCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${(props?.projectProposals[0]?.rejectReasonByAgency !== undefined &&
-            props?.projectProposals[0]?.rejectReasonByClient !== undefined) && 'conditional_width_commentBox'}`}>
+          <div className={`commentBox ${(!props?.projectProposals[0]?.rejectReasonByAgency ||
+            !props?.projectProposals[0]?.rejectReasonByClient) && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>
@@ -214,13 +214,13 @@ const AgencyCommentBox = (props) => {
                       // index.commentType === props.commentType &&
                       <>
                         {index.comment && (
-                          <div className="chatBox chatBox-left" >
+                          <div className="chatBox max-width chatBox-left" >
                             <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                             <b>{`${props?.clientId?.companyName}`}</b>
                           </div>
                         )}
                         {index.reply && (
-                          <div className="chatBox chatBox-right">
+                          <div className="chatBox">
                             <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
                             <b>You</b>
                           </div>
@@ -292,9 +292,6 @@ const AgencyCommentBox = (props) => {
                                         id="icon-button-file"
                                         style={{ display: 'none', }}
                                       />
-                                      {/* <label htmlFor="icon-button-file">
-                                <AttachmentIcon onChange={(event) => inputFileChosen(event)} />
-                              </label> */}
                                     </>
                                   )}
                               </InputAdornment>
@@ -331,7 +328,6 @@ const AgencyCommentBox = (props) => {
             <div className="topLine" style={{
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>
-
 
             {!(
               props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient

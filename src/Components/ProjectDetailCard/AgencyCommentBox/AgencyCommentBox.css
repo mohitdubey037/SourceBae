@@ -40,7 +40,6 @@
   padding: 0.5rem 1rem;
   font-family: 'Segoe UI';
   width: 60%;
-  color: black;
   color: white;
   border-radius: 10px;
   border-top-right-radius: 0;
@@ -55,6 +54,10 @@
   align-items: flex-start;
   overflow-wrap: break-word;
   margin-top: 0;
+}
+
+.chatBox.max-width p {
+  width: max-content;
 }
 
 .chatBox-left p {
@@ -117,9 +120,9 @@
 }
 
 .quotation_file_upload {
-  height: 30px;
+  /* height: 30px; */
   top: 2rem;
-  position: absolute;
+  /* position: absolute; */
   text-transform: capitalize;
   color: #3A3A3A;
 }

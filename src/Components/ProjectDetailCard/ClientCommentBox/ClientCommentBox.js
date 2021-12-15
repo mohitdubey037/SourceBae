@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ClientCommentBox = (props) => {
 
-  // console.log(props);
+  console.log(props);
   const [loading, setLoading] = useState(false);
   const projectStartDateByClientRef = useRef();
 
@@ -212,8 +212,8 @@ const ClientCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${(props?.projectProposals[0]?.rejectReasonByAgency !== undefined &&
-            props?.projectProposals[0]?.rejectReasonByClient !== undefined) && 'conditional_width_commentBox'}`}>
+          <div className={`commentBox ${(!props?.projectProposals[0]?.rejectReasonByAgency||
+            !props?.projectProposals[0]?.rejectReasonByClient) && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
             }}></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
@@ -223,7 +223,7 @@ const ClientCommentBox = (props) => {
                   <>
                     {
                       index.comment && (
-                        <div className="chatBox">
+                        <div className="chatBox max-width">
                           <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                           <b>You</b>
                         </div>

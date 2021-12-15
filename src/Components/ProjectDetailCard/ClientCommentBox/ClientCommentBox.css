@@ -1,5 +1,6 @@
 .commentBox_parent {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .sendIcon_clientCommentBox {
@@ -13,6 +14,10 @@
     background-color: #45A4EA;
     width: 13%;
 }
+
+/* .chatBox.chatBox-right > p{
+    width: max-content;
+} */
 
 .normal_acceptOrReject_clientCommentBox {
     font-size: 25px;
