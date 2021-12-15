@@ -252,7 +252,7 @@ const ClientCommentBox = (props) => {
               (
                 <div className='commentParent'>
                   {(!props.projectProposals[0].clientNegotiablePrice) && (
-                      <div className="postQuotation" style={{ width: '40%' }}>
+                      <div className="postQuotation" style={{ width: '48%' }}>
                         <TextField
                           className={clsx(classes.margin, classes.width)}
                           name="clientNegotiablePrice"
@@ -274,7 +274,7 @@ const ClientCommentBox = (props) => {
                         />
                       </div>
                     )}
-                  <div className="price-section" style={{ width: '48%' }}>
+                  <div className="price-section">
                     <TextField
                       className={clsx(classes.margin, classes.width)}
                       id="outlined-size-small"
