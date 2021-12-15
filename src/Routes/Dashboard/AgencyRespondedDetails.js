@@ -114,103 +114,58 @@ function AgencyRespondedDetails(props) {
           <div className="agencyQuotationDesc_AgencyRespondedDetails">
             {project.projectProposals &&
               project?.projectProposals[0].rejectReasonByClient !== undefined ? (
-              <>
-                <div className="project_rejection">
-                  <p>Project is rejected by the Client due to following reason</p>
-                  <ul>
-                    <li>{project?.projectProposals[0].rejectReasonByClient}</li>
-                  </ul>
-                </div>
-                <AfterAcceptOrRejectComponent
-                  role="Agency"
-                  companyName={project?.clientId?.companyName}
-                  projectProposals={project?.projectProposals[0]}
-                  // agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
-                  // finalCost={project?.projectProposals[0]?.finalCostByClient}
-                  // projectCreationDate={project?.createdAt}
-                  // expectedTimeline={project?.projectExpectedStartingDays}
-                  // projectType={project?.projectType}
-                  // isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
-                  // isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
-                  // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                  // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
-                />
-              </>
-            ) : project.projectProposals && project?.projectProposals[0].rejectReasonByAgency !== undefined ? (
-              <>
-                <div className="project_rejection">
-                  <p>Project is rejected by you</p>
-                </div>
-                <AfterAcceptOrRejectComponent
-                  role="Agency"
-                  companyName={project?.clientId?.companyName}
-                  projectProposals={project?.projectProposals[0]}
-                  // agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
-                  // finalCost={project?.projectProposals[0]?.finalCostByClient}
-                  // projectCreationDate={project?.createdAt}
-                  // expectedTimeline={project?.projectExpectedStartingDays}
-                  // projectType={project?.projectType}
-                  // isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
-                  // isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
-                  // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                  // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
-                />
-              </>
+              <div className="project_rejection">
+                <p>Project is rejected by the Client due to following reason</p>
+                <ul>
+                  <li>{project?.projectProposals[0].rejectReasonByClient}</li>
+                </ul>
+              </div>
             ) : project.projectProposals &&
-              project?.projectProposals[0].isQuotationAcceptedByClient === true &&
-              project?.projectProposals[0].isQuotationAcceptedByAgency === true ? (
-              <div className="image_with_logo">
-                <AfterAcceptOrRejectComponent
+            project?.projectProposals[0].rejectReasonByAgency !== undefined && (
+              <div className="project_rejection">
+                <p>Project is rejected by you</p>
+              </div>
+            )
+            }
+            {/* : project.projectProposals &&
+            project?.projectProposals[0].isQuotationAcceptedByClient === true &&
+            project?.projectProposals[0].isQuotationAcceptedByAgency === true ? (
+            <div className="image_with_logo">
+             <AfterAcceptOrRejectComponent
                   role="Agency"
                   companyName={project?.clientId?.companyName}
                   projectProposals={project?.projectProposals[0]}
-                  // agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
-                  // finalCost={project?.projectProposals[0]?.finalCostByClient}
-                  // projectCreationDate={project?.createdAt}
-                  // expectedTimeline={project?.projectExpectedStartingDays}
-                  // projectType={project?.projectType}
-                  // isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
-                  // isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
-                  // isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                  // isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
+                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
+                  finalCost={project?.projectProposals[0]?.finalCostByClient}
+                  projectCreationDate={project?.createdAt}
+                  expectedTimeline={project?.projectExpectedStartingDays}
+                  projectType={project?.projectType}
+                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
+                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
+                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
+                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
                 />
               </div>
-            ) : (
+            )
+            : (
               <>
                 {project.projectProposals &&
                   project?.projectProposals[0].isQuotationAcceptedByClient === false &&
                   <h4>Comments and Replies</h4>
                 }
                 {loading ? (
-                  <p style={{ textAlign: "center" }}>Comments are loading...</p>
-                ) : project?.projectProposals &&
-                  project.projectProposals[0]?.isAskedForQuotation === true ? (
-                  <AgencyCommentBox
-                    giveReplies={(gr) => {
-                      setRepliedToClient(gr);
-                    }}
-                    projectId={projectId}
-                    isAskedForQuotation={true}
-                    isShortListed={true}
-                    commentType="Quotation"
-                    {...project}
-                  />
-                ) : (
-                  project?.projectProposals && (
-                    <AgencyCommentBox
-                      giveReplies={(gr) => {
-                        setRepliedToClient(gr);
-                      }}
-                      projectId={projectId}
-                      isAskedForQuotation={false}
-                      isShortListed={true}
-                      commentType="Shortlist"
-                      {...project}
-                    />
-                  )
-                )}
-              </>
-            )}
+                  <p style={{ textAlign: "center" }}>Comments are loading...</p> */}
+            {/* ) : */}
+            {project?.projectProposals &&
+              <AgencyCommentBox
+                giveReplies={(gr) => {
+                  setRepliedToClient(gr);
+                }}
+                projectId={projectId}
+                commentType="Quotation"
+                {...project}
+              />
+            }
           </div>
 
           <DownTechnologyDetail

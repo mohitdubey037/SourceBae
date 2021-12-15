@@ -211,7 +211,7 @@ const AgencyCommentBox = (props) => {
                 <div className="chatBox-parent">
                   {props.projectProposals[0].comments.map((index) => {
                     return (
-                      index.commentType === props.commentType &&
+                      // index.commentType === props.commentType &&
                       <>
                         {index.comment && (
                           <div className="chatBox chatBox-left" >
@@ -231,85 +231,87 @@ const AgencyCommentBox = (props) => {
                   })
                   }
                 </div>
-                <div className='commentParent'>
-                  {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
-                    (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
-                    && (
-                      <div className="postQuotation" style={{ width: '52%' }}>
-                        <TextField
-                          className={clsx(classes.margin, classes.width)}
-                          name="agencyNegotiablePrice"
-                          id="outlined-number"
-                          type="number"
-                          placeholder="Agency Negotiable Price"
-                          variant="outlined"
-                          onChange={(event) => handleChange(event)}
+                {
+                  <div className='commentParent'>
+                    {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation ||
+                      (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
+                      && (
+                        <div className="postQuotation" style={{ width: '48%' }}>
+                          <TextField
+                            className={clsx(classes.margin, classes.width)}
+                            name="agencyNegotiablePrice"
+                            id="outlined-number"
+                            type="number"
+                            placeholder="Agency Negotiable Price"
+                            variant="outlined"
+                            onChange={(event) => handleChange(event)}
 
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <AttachMoneyIcon />
-                              </InputAdornment>
-                            )
-                          }}
-                        />
-                      </div>
-                    )}
-                  <div className="price-section" style={{
-                    width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
-                      ? '100%' :
-                      props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
-                        ? '100%' : '45%'
-                  }}>
-                    {props.projectProposals[0].isReplySectionActive && (
-                      <>
-                        <TextField
-                          className={clsx(classes.margin, classes.width)}
-                          id="outlined-size-small"
-                          // label="Agency"
-                          placeholder="Enter Your Reply"
-                          onChange={(event) => handleChange(event)}
-                          name="reply"
-                          multiline
-                          maxRows={4}
-                          variant="outlined"
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                {props.projectProposals[0].isReplySectionActive &&
-                                  props.projectProposals[0].isAskedForQuotation &&
-                                  (props.projectProposals[0].quotationLink === null ||
-                                    props.projectProposals[0].quotationLink === undefined) &&
-                                  (
-                                    <>
-                                      <input
-                                        color="primary"
-                                        type="file"
-                                        onChange={(event) => inputFileChosen(event)}
-                                        id="icon-button-file"
-                                        style={{ display: 'none', }}
-                                      />
-                                      {/* <label htmlFor="icon-button-file">
+                            InputLabelProps={{
+                              shrink: true,
+                            }}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <AttachMoneyIcon />
+                                </InputAdornment>
+                              )
+                            }}
+                          />
+                        </div>
+                      )}
+                    <div className="price-section" style={{
+                      width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
+                        ? '40%' :
+                        props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
+                          ? '40%' : '40%'
+                    }}>
+                      {props.projectProposals[0].isReplySectionActive && (
+                        <>
+                          <TextField
+                            className={clsx(classes.margin, classes.width)}
+                            id="outlined-size-small"
+                            // label="Agency"
+                            placeholder="Enter Your Reply"
+                            onChange={(event) => handleChange(event)}
+                            name="reply"
+                            multiline
+                            maxRows={4}
+                            variant="outlined"
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  {props.projectProposals[0].isReplySectionActive &&
+                                    props.projectProposals[0].isAskedForQuotation &&
+                                    (props.projectProposals[0].quotationLink === null ||
+                                      props.projectProposals[0].quotationLink === undefined) &&
+                                    (
+                                      <>
+                                        <input
+                                          color="primary"
+                                          type="file"
+                                          onChange={(event) => inputFileChosen(event)}
+                                          id="icon-button-file"
+                                          style={{ display: 'none', }}
+                                        />
+                                        {/* <label htmlFor="icon-button-file">
                                 <AttachmentIcon onChange={(event) => inputFileChosen(event)} />
                               </label> */}
-                                    </>
-                                  )}
-                              </InputAdornment>
-                            )
-                          }}
-                        />
-                      </>
-                    )}
-                  </div>
-                  {props.projectProposals[0].isReplySectionActive === true &&
-                    <div className="sendIcon_clientCommentBox" onClick={() => replyApi()} >
-                      <SendIcon />
+                                      </>
+                                    )}
+                                </InputAdornment>
+                              )
+                            }}
+                          />
+                        </>
+                      )}
                     </div>
-                  }
-                </div>
+                    {props.projectProposals[0].isReplySectionActive === true &&
+                      <div className="sendIcon_clientCommentBox" onClick={() => replyApi()} >
+                        <SendIcon />
+                      </div>
+                    }
+                  </div>
+                }
               </>
             }
             {props.projectProposals[0].isQuotationAcceptedByClient === false

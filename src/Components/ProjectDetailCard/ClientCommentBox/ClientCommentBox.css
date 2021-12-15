@@ -3,9 +3,10 @@
 }
 
 .sendIcon_clientCommentBox {
-    position: absolute;
-    right: -62px;
-    bottom: 17px;
+    /* position: absolute; */
+    /* right: -62px;
+    bottom: 17px; */
+    position: relative;
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -35,7 +36,7 @@
 
 .sendIcon_clientCommentBox .MuiSvgIcon-root {
     top: 8px !important;
-    right: 7px !important;
+    right: 6px !important;
     position: absolute !important;
     color: white !important;
 }

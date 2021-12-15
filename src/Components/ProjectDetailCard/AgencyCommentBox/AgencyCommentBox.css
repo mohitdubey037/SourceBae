@@ -71,7 +71,7 @@
 }
 
 .conditional_width_commentBox {
-  width: 100%;
+  width: 100% !important;
 }
 
 .commentBox {
@@ -88,13 +88,14 @@
 }
 
 .commentParent {
-  width: 85%;
+  width: 100%;
   position: relative;
   bottom: 10px;
   transform: translateY(1rem);
   display: flex;
   align-items: center;
   justify-content: space-around;
+  justify-content: space-between;
 }
 
 .chatBox-right {

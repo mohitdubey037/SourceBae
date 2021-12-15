@@ -212,15 +212,15 @@ const ClientCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${(props?.projectProposals[0]?.rejectReasonByAgency !== undefined && 
-            props?.projectProposals[0]?.rejectReasonByClient !== undefined) && 'conditional_width_commentBox' }`}>
+          <div className={`commentBox ${(props?.projectProposals[0]?.rejectReasonByAgency !== undefined &&
+            props?.projectProposals[0]?.rejectReasonByClient !== undefined) && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
             }}></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
             <div className="chatBox-parent">
               {props.projectProposals[0].comments.map((index) => {
                 return (
-                  index.commentType === props.commentType &&
+                  // index.commentType === props.commentType &&
                   <>
                     {
                       index.comment && (
@@ -248,14 +248,14 @@ const ClientCommentBox = (props) => {
                 )
               })}
             </div>
-
-            {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
+            
+              {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
               (
                 <div className='commentParent'>
                   {(props.projectProposals[0].clientNegotiablePrice === null ||
                     props.projectProposals[0].clientNegotiablePrice === undefined) && (
 
-                      <div className="postQuotation" style={{ width: '55%' }}>
+                      <div className="postQuotation" style={{ width: '40%' }}>
                         <TextField
                           className={clsx(classes.margin, classes.width)}
                           name="clientNegotiablePrice"
@@ -277,7 +277,7 @@ const ClientCommentBox = (props) => {
                         />
                       </div>
                     )}
-                  <div className="price-section" style={{ width: '40%' }}>
+                  <div className="price-section" style={{ width: '48%' }}>
                     <TextField
                       className={clsx(classes.margin, classes.width)}
                       id="outlined-size-small"
@@ -296,7 +296,6 @@ const ClientCommentBox = (props) => {
                   }
                 </div>
               )}
-
 
             {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
               <>
@@ -434,7 +433,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectDelayedStartDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectEndDateByClient}
                         onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>
@@ -454,7 +453,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectEndDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectExpectedEndDateByClient}
                         onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>
