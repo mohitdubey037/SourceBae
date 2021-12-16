@@ -160,7 +160,7 @@ function RespondedDetails(props) {
                 }}
                 {...project}
                 // isAskedForQuotation={true}
-                commentType="Quotation"
+                // commentType="Quotation"
               />
             }
           </div>

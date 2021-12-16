@@ -6,6 +6,7 @@ import PageNotFound from "./Routes/PageNotFound/PageNotFound";
 import Login from "./Routes/Login/Login";
 import Register from "./Routes/Register/Register.jsx";
 import VerifyPage from './Components/Verify_Page/Verify_Page';
+// import NewReactPage from './Components/NewReactPage/NewReactPage';
 
 import AddingDeveloper from "./Routes/Dashboard/AddDeveloper.js/AddingDeveloper";
 import Quotation from "./Routes/Dashboard/Quotation/Quotation";
@@ -98,6 +99,7 @@ const App = (props) => {
       ) : null}
 
       <Switch>
+        {/* <Route exact path="/newReactPage" component={NewReactPage}/> */}
         <Route exact path="/" component={Mainhomepage} />
         <Route exact path="/Verify_Page" component={VerifyPage} />
         <Route exact path="/login:role" component={Login} />
