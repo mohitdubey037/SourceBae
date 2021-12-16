@@ -48,6 +48,11 @@ const AgencyCommentBox = (props) => {
   const isReject = props.projectProposals[0].rejectReasonByClient ||
     props.projectProposals[0].rejectReasonByClient
 
+  const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
+    props.projectProposals[0].clientNegotiablePrice
+
+  console.log(overallPriceSection);
+
   const [loading, setLoading] = useState(false);
   console.log(props);
   const classes = useStyles();
@@ -207,7 +212,7 @@ const AgencyCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${isReject && 'conditional_width_commentBox'}`}>
+          <div className={`commentBox ${isReject || !overallPriceSection && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>
@@ -332,86 +337,87 @@ const AgencyCommentBox = (props) => {
               )}
           </div>
 
-          <div className={`action-wait ${isRejectOrAccept && "conditional_width_commentBox"}`}>
-            <div className="topLine"></div>
-            {!(
-              props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
-            ) && (
-                <div className="proposalCard">
-                  {/* {props.projectProposals[0].isProposalActionActive ? */}
-                  {/* <> */}
-                  {(props.projectProposals[0].isProposalActionActive && !isReject) &&
-                    <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
-                      <p>Accept or Reject the Project.</p>
-                    </div>
-                  }
-
-                  <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
-                    {props.projectProposals[0].clientNegotiablePrice && (
-                      <div className="detailsButtons md-m10">
-                        <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
-                      </div>
-                    )}
-
-                    {props.projectProposals[0].agencyNegotiablePrice && (
-                      <div className="detailsButtons md-m10" >
-                        <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-                      </div>
-                    )}
-
-                    {props.projectProposals[0].isQuotationAcceptedByClient &&
-                      <div className="detailsButtons md-m10" >
-                        <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
+          {overallPriceSection &&
+            <div className={`action-wait ${isRejectOrAccept || !overallPriceSection && "conditional_width_commentBox"}`}>
+              <div className="topLine"></div>
+              {!(
+                props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
+              ) && (
+                  <div className="proposalCard">
+                    {/* {props.projectProposals[0].isProposalActionActive ? */}
+                    {/* <> */}
+                    {(props.projectProposals[0].isProposalActionActive && !isReject) &&
+                      <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
+                        <p>Accept or Reject the Project.</p>
                       </div>
                     }
 
-                    {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-                      <div className="detailsButtons md-m10">
-                        <a href={props.projectProposals[0].quotationLink} target="new">
-                          View Quotation
-                        </a>
-                      </div>
-                    )}
-                  </div>
-
-
-                  {!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
-                    &&
-                    <div>
-                      <div className={`detailsButtons `} style={{ marginBottom: "1rem" }}>
-                        <div>
-                          <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                            Accept
-                          </button>
-                          <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
-                            Reject
-                          </button>
+                    <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
+                      {props.projectProposals[0].clientNegotiablePrice && (
+                        <div className="detailsButtons md-m10">
+                          <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
                         </div>
-                      </div>
-                      {props.projectProposals[0].isReplySectionActive === 'false' &&
-                        <p className="color-black">Please provide some reply</p>
+                      )}
+
+                      {props.projectProposals[0].agencyNegotiablePrice && (
+                        <div className="detailsButtons md-m10" >
+                          <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                        </div>
+                      )}
+
+                      {props.projectProposals[0].isQuotationAcceptedByClient &&
+                        <div className="detailsButtons md-m10" >
+                          <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
+                        </div>
                       }
+
+                      {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+                        <div className="detailsButtons md-m10">
+                          <a href={props.projectProposals[0].quotationLink} target="new">
+                            View Quotation
+                          </a>
+                        </div>
+                      )}
                     </div>
-                  }
-                  {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
-                    &&
-                    file === null ?
-                    <div className="quotation_file_upload">
-                      <p>Please upload a file of quotation</p>
-                      <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
-                        <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
-                          onChange={(event) => inputFileChosen(event)} />
-                      </label>
-                    </div>
-                    :
-                    <div className="quotation_file_upload">
-                      <p>{file?.name.slice(0, 20)}</p>
-                    </div>
-                  }
-                  {/* } */}
-                </div>
-              )}
-          </div>
+
+                    {!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
+                      &&
+                      <div>
+                        <div className={`detailsButtons `} style={{ marginBottom: "1rem" }}>
+                          <div>
+                            <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                              Accept
+                            </button>
+                            <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
+                              Reject
+                            </button>
+                          </div>
+                        </div>
+                        {props.projectProposals[0].isReplySectionActive === 'false' &&
+                          <p className="color-black">Please provide some reply</p>
+                        }
+                      </div>
+                    }
+                    {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
+                      &&
+                      file === null ?
+                      <div className="quotation_file_upload">
+                        <p>Please upload a file of quotation</p>
+                        <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
+                          <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
+                            onChange={(event) => inputFileChosen(event)} />
+                        </label>
+                      </div>
+                      :
+                      <div className="quotation_file_upload">
+                        <p>{file?.name.slice(0, 20)}</p>
+                      </div>
+                    }
+                    {/* } */}
+                  </div>
+                )}
+            </div>
+          }
 
           <Modal
             open={open}
@@ -478,7 +484,6 @@ const AgencyCommentBox = (props) => {
                           />
                         </div>
                       </LocalizationProvider>
-
                     </div>
                   </div>
                   <div className="quotationTable">

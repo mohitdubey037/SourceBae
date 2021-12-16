@@ -48,6 +48,8 @@ const ClientCommentBox = (props) => {
   const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
     props.projectProposals[0].clientNegotiablePrice || props.projectProposals[0].quotationLink
 
+  console.log(overallPriceSection);
+
   console.log(props);
   const [loading, setLoading] = useState(false);
   const projectStartDateByClientRef = useRef();
@@ -225,7 +227,7 @@ const ClientCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${isReject && 'conditional_width_commentBox'}`}>
+          <div className={`commentBox ${isReject || !overallPriceSection && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
             }}></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
