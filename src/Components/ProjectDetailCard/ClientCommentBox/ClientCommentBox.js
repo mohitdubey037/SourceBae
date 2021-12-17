@@ -227,9 +227,8 @@ const ClientCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${isReject || !overallPriceSection && 'conditional_width_commentBox'}`}>
-            <div className="topLine" style={{
-            }}></div>
+          <div className={`commentBox ${isReject && 'conditional_width_commentBox'}`}>
+            <div className="topLine"></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
             <div className="chatBox-parent">
               {props.projectProposals[0].comments.map((index) => {
@@ -324,7 +323,7 @@ const ClientCommentBox = (props) => {
             )}
           </div>
 
-          {overallPriceSection &&
+          {/* {overallPriceSection && */}
             <div className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
               <div className="topLine"
               >
@@ -374,7 +373,7 @@ const ClientCommentBox = (props) => {
                 }
               </div>
             </div>
-          }
+          {/* } */}
         </div>
       }
 

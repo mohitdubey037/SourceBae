@@ -25,6 +25,7 @@ const BlueRadio = withStyles({
 const HireAgencyForm1 = (props) => {
   // let { projectId, agencyId } = useParams();
   const [loading, setLoading] = useState(false);
+  const [verifiedEmail, setVerifiedEmail] = useState(false);
   const id = localStorage.getItem("userId");
   const Role = "Client";
   // const [project, setProject] = useState([]);
@@ -61,6 +62,20 @@ const HireAgencyForm1 = (props) => {
       setData(props.location.state.agencyForm1);
     }
   }, []);
+
+
+  // const handleClientData = () => {
+  //   instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
+  //     .then(function (response) {
+  //       setIsEmailVerified(response.projects.isUserEmailVerified);
+  //     })
+  //     .catch(err => {
+  //     })
+  // }
+
+  // useEffect(() => {
+  //   handleClientData()
+  // },[])
 
 
 
@@ -143,6 +158,7 @@ const HireAgencyForm1 = (props) => {
         });
     }
   };
+
 
   return (
     <>
