@@ -222,7 +222,7 @@ const AgencyCommentBox = (props) => {
               :
               <>
                 <div className="chatBox-parent">
-                  {props.projectProposals[0].comments.map((index,id) => {
+                  {props.projectProposals[0].comments.map((index, id) => {
                     console.log(id === index.length)
                     return (
                       <>
@@ -239,7 +239,7 @@ const AgencyCommentBox = (props) => {
                             <b>You</b>
                           </div>
                         )}
-                        {!isReject && props.projectProposals[0].isCommentSectionActive && id === props.projectProposals[0].comments.length - 1  &&
+                        {!isReject && props.projectProposals[0].isCommentSectionActive && id === props.projectProposals[0].comments.length - 1 &&
                           <p className="waiting_left">Waiting for the reply from Client.
                           </p>
                         }
