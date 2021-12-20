@@ -40,7 +40,6 @@
   padding: 0.5rem 1rem;
   font-family: 'Segoe UI';
   width: 60%;
-  color: black;
   color: white;
   border-radius: 10px;
   border-top-right-radius: 0;
@@ -57,6 +56,10 @@
   margin-top: 0;
 }
 
+.chatBox.max-width p {
+  width: max-content;
+}
+
 .chatBox-left p {
   border-radius: 10px;
   border-top-left-radius: 0;
@@ -70,13 +73,17 @@
   padding-top: 0.3rem;
 }
 
+.conditional_width_commentBox {
+  width: 100% !important;
+}
+
 .commentBox {
   display: flex;
   flex-direction: column;
   border-radius: 8px;
   padding: 1rem;
   margin: 2rem 1rem 1rem 1rem;
-  width: 50%;
+  width: 46%;
   height: 25rem;
   position: relative;
   opacity: 0.99;
@@ -84,13 +91,14 @@
 }
 
 .commentParent {
-  width: 85%;
+  width: 100%;
   position: relative;
   bottom: 10px;
   transform: translateY(1rem);
   display: flex;
   align-items: center;
   justify-content: space-around;
+  justify-content: space-between;
 }
 
 .chatBox-right {
@@ -112,9 +120,9 @@
 }
 
 .quotation_file_upload {
-  height: 30px;
+  /* height: 30px; */
   top: 2rem;
-  position: absolute;
+  /* position: absolute; */
   text-transform: capitalize;
   color: #3A3A3A;
 }
@@ -156,8 +164,9 @@
 }
 
 .clientName h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI Bold';
+  /* font-weight: bold; */
 }
 
 .action-wait .postQuotation .detailsButtons {
@@ -336,7 +345,8 @@
   }
 
   .clientName h2 {
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI Bold';
     font-weight: bold;
   }
 
@@ -384,7 +394,8 @@
   }
 
   .innerBtnInfoDiv p {
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI Semibold';
     font-weight: 500;
     font-size: 1.1rem;
   }
@@ -469,12 +480,14 @@
 }
 
 .respondDescription h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
+  /* font-weight: 400; */
 }
 
 .respondDescription p {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   font-weight: 400;
   width: 80%;
   margin-top: 1%;
@@ -554,17 +567,19 @@
 }
 
 .briefHeading h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI Semibold';
+  /* font-weight: 600; */
 }
 
 .briefHeading p {
   background-color: #02044a;
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI Semibold';
   color: #fff;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 .briefQuestions {
@@ -576,13 +591,15 @@
 }
 
 .briefQuestions div h4 {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   color: #000;
   font-size: 1.3rem;
 }
 
 .briefQuestions div p {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   color: #484848;
   font-size: 1rem;
 }
@@ -601,13 +618,15 @@
   }
 
   .briefQuestions div h4 {
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
     color: #000;
     font-size: 1rem;
   }
 
   .briefQuestions div p {
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
     color: #484848;
     font-size: 0.8rem;
   }
@@ -647,7 +666,8 @@
   align-items: center;
   background-color: #e9f0ef;
   padding: 1rem 2rem;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   border-radius: 15px;
 }
 
@@ -673,7 +693,8 @@
 
 .agencyQuotationDesc {
   margin-top: 2%;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   padding: 1rem 2rem;
 }
 
@@ -692,13 +713,15 @@
 }
 
 .agencyQuestions div h4 {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI Bold';
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 .agencyQuestions div ul {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   color: #02044a;
   font-size: 1.1rem;
   margin-top: 20px;
@@ -736,7 +759,8 @@
     align-items: center;
     background-color: #e9f0ef;
     padding: 1rem 2rem;
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
     border-radius: 15px;
   }
 
@@ -762,7 +786,8 @@
 
   .agencyQuotationDesc {
     margin-top: 2%;
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
     padding: 1rem 2rem;
   }
 

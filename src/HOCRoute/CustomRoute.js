@@ -3,7 +3,7 @@ import { Redirect, Route, withRouter } from "react-router-dom";
 import * as helper from "../shared/helper"
 
 const CustomRoute = props => {
-    const Role = localStorage.getItem('role');
+    const Role = helper.capitalize(localStorage.getItem('role'));
         switch (props.condition) {
 
             case "Agency":

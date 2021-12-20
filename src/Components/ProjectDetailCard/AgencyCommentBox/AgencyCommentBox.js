@@ -40,7 +40,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
-const [loading, setLoading] = useState(false);
+  const isRejectOrAccept = props.projectProposals[0].rejectReasonByClient ||
+    props.projectProposals[0].rejectReasonByClient ||
+    props.projectProposals[0].isQuotationAcceptedByClient ||
+    props.projectProposals[0].isQuotationAcceptedByAgency
+
+  const isReject = props.projectProposals[0].rejectReasonByClient ||
+    props.projectProposals[0].rejectReasonByAgency
+
+  const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
+    props.projectProposals[0].clientNegotiablePrice
+
+  console.log(overallPriceSection);
+
+  const [loading, setLoading] = useState(false);
   console.log(props);
   const classes = useStyles();
   const [apiData, setApiData] = useState({
@@ -157,6 +170,7 @@ const [loading, setLoading] = useState(false);
         });
     } else {
       toast.error("Please Pick a File before Uploading.");
+      setLoading(false);
     }
   }
 
@@ -197,8 +211,8 @@ const [loading, setLoading] = useState(false);
   return (
     <>
       {loading ? <Spinner /> :
-        <div style={{ display: "flex" }}>
-          <div className="commentBox">
+        <div className="commentBox_parent">
+          <div className={`commentBox ${isReject && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>
@@ -208,23 +222,28 @@ const [loading, setLoading] = useState(false);
               :
               <>
                 <div className="chatBox-parent">
-                  {props.projectProposals[0].comments.map((index) => {
+                  {props.projectProposals[0].comments.map((index, id) => {
+                    console.log(id === index.length)
                     return (
-                      index.commentType === props.commentType &&
                       <>
                         {index.comment && (
+                          // <div className="chatBox max-width chatBox-left" >
                           <div className="chatBox chatBox-left" >
                             <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                             <b>{`${props?.clientId?.companyName}`}</b>
                           </div>
                         )}
                         {index.reply && (
-                          <div className="chatBox chatBox-right">
+                          <div className="chatBox">
                             <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
                             <b>You</b>
                           </div>
                         )}
-                        {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>}
+                        {!isReject && props.projectProposals[0].isCommentSectionActive && id === props.projectProposals[0].comments.length - 1 &&
+                          <p className="waiting_left">Waiting for the reply from Client.
+                          </p>
+                        }
+                        {/* {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>} */}
                       </>
                     )
                   })
@@ -234,7 +253,7 @@ const [loading, setLoading] = useState(false);
                   {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
                     (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
                     && (
-                      <div className="postQuotation" style={{ width: '52%' }}>
+                      <div className="postQuotation" style={{ width: '48%' }}>
                         <TextField
                           className={clsx(classes.margin, classes.width)}
                           name="agencyNegotiablePrice"
@@ -243,7 +262,6 @@ const [loading, setLoading] = useState(false);
                           placeholder="Agency Negotiable Price"
                           variant="outlined"
                           onChange={(event) => handleChange(event)}
-
                           InputLabelProps={{
                             shrink: true,
                           }}
@@ -261,7 +279,7 @@ const [loading, setLoading] = useState(false);
                     width: props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].agencyNegotiablePrice !== undefined
                       ? '100%' :
                       props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation === false
-                        ? '100%' : '45%'
+                        ? '100%' : '40%'
                   }}>
                     {props.projectProposals[0].isReplySectionActive && (
                       <>
@@ -291,9 +309,6 @@ const [loading, setLoading] = useState(false);
                                         id="icon-button-file"
                                         style={{ display: 'none', }}
                                       />
-                                      {/* <label htmlFor="icon-button-file">
-                                <AttachmentIcon onChange={(event) => inputFileChosen(event)} />
-                              </label> */}
                                     </>
                                   )}
                               </InputAdornment>
@@ -314,6 +329,7 @@ const [loading, setLoading] = useState(false);
             {props.projectProposals[0].isQuotationAcceptedByClient === false
               && !props.projectProposals[0].isCommentSectionActive
               && !props.projectProposals[0].isReplySectionActive
+              && !isReject
               && (
                 <>
                   <div className="conversation-over">
@@ -326,91 +342,88 @@ const [loading, setLoading] = useState(false);
               )}
           </div>
 
-          <div className='action-wait'>
-            <div className="topLine" style={{
-              backgroundColor: "rgb(69, 164, 228)"
-            }}></div>
-
-
+          {/* // {overallPriceSection && */}
+          <div className={`action-wait ${isRejectOrAccept && "conditional_width_commentBox"}`}>
+            <div className="topLine"></div>
             {!(
               props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
             ) && (
                 <div className="proposalCard">
-                  {props.projectProposals[0].isProposalActionActive ?
-                    <>
-                      {(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) &&
-                        <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
-                          <p>Accept or Reject the Project.</p>
-                        </div>
-                      }
+                  {/* {props.projectProposals[0].isProposalActionActive ? */}
+                  {/* <> */}
+                  {/* {(props.projectProposals[0].isProposalActionActive && !isReject) && */}
+                  {(!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) &&
+                    <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
+                      <p>Accept or Reject the Project.</p>
+                    </div>
+                  }
 
-                      <div className="postQuotation">
-                        {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-                          <div className="detailsButtons md-m10">
-                            <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
-                          </div>
-                        )}
-
-                        {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-                          <div className="detailsButtons md-m10" >
-                            <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-                          </div>
-                        )}
-
-                        {props.projectProposals[0].isQuotationAcceptedByClient &&
-                          <div className="detailsButtons md-m10" >
-                            <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
-                          </div>
-                        }
-
-                        {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-                          <div className="detailsButtons md-m10">
-                            <a href={props.projectProposals[0].quotationLink} target="new">
-                              View Quotation
-                            </a>
-                          </div>
-                        )}
-
+                  <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
+                    {props.projectProposals[0].clientNegotiablePrice && (
+                      <div className="detailsButtons md-m10">
+                        <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
                       </div>
+                    )}
 
-                      {props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
-                        &&
-                        <div className="detailsButtons height" style={{ marginBottom: "1rem" }}>
-                          <div>
-                            <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                              Accept
-                            </button>
-                            <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
-                              Reject
-                            </button>
-                          </div>
+                    {props.projectProposals[0].agencyNegotiablePrice && (
+                      <div className="detailsButtons md-m10" >
+                        <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                      </div>
+                    )}
+
+                    {props.projectProposals[0].isQuotationAcceptedByClient &&
+                      <div className="detailsButtons md-m10" >
+                        <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
+                      </div>
+                    }
+
+                    {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+                      <div className="detailsButtons md-m10">
+                        <a href={props.projectProposals[0].quotationLink} target="new">
+                          View Quotation
+                        </a>
+                      </div>
+                    )}
+                  </div>
+
+                  {!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
+                    &&
+                    <div>
+                      <div className={`detailsButtons `} style={{ marginBottom: "1rem" }}>
+                        <div>
+                          <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                            Accept
+                          </button>
+                          <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
+                            Reject
+                          </button>
                         </div>
-                      }
+                      </div>
                       {props.projectProposals[0].isReplySectionActive === 'false' &&
                         <p className="color-black">Please provide some reply</p>
                       }
-                    </>
-                    :
-                    props.projectProposals[0].isAskedForQuotation
-                      ?
-                      file === null ?
-                        <div className="quotation_file_upload">
-                          <p>Please upload a file of quotation</p>
-                          <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
-                            <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
-                              onChange={(event) => inputFileChosen(event)} />
-                          </label>
-                        </div>
-                        :
-                        <div className="quotation_file_upload">
-                          <p>{file?.name.slice(0, 20)}</p>
-                        </div>
-                      :
-                      null
+                    </div>
                   }
+                  {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
+                    &&
+                    file === null ?
+                    <div className="quotation_file_upload">
+                      <p>Please upload a file of quotation</p>
+                      <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
+                        <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
+                          onChange={(event) => inputFileChosen(event)} />
+                      </label>
+                    </div>
+                    :
+                    <div className="quotation_file_upload">
+                      <p>{file?.name.slice(0, 20)}</p>
+                    </div>
+                  }
+                  {/* } */}
                 </div>
               )}
           </div>
+          {/* } */}
 
           <Modal
             open={open}
@@ -477,7 +490,6 @@ const [loading, setLoading] = useState(false);
                           />
                         </div>
                       </LocalizationProvider>
-
                     </div>
                   </div>
                   <div className="quotationTable">
@@ -561,7 +573,7 @@ const [loading, setLoading] = useState(false);
                 }
               </div>
             </div>
-            <div className='submit-rejection' onClick={() => handleProjectRejection()}>
+            <div className='submit-rejection' onClick={handleProjectRejection}>
               <div>
                 <p>Submit</p>
               </div>

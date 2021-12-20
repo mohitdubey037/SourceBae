@@ -1,11 +1,31 @@
+.commentBox_parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .sendIcon_clientCommentBox {
-    position: absolute;
-    right: -62px;
-    bottom: 17px;
+    /* position: absolute; */
+    /* right: -62px;
+    bottom: 17px; */
+    position: relative;
     border-radius: 50%;
     height: 40px;
     width: 40px;
     background-color: #45A4EA;
+    /* width: 13%; */
+}
+
+/* .chatBox.chatBox-right > p{
+    width: max-content;
+} */
+
+/* .isRejectOrAccept {
+    display: none;
+} */
+
+.is_flex_direction {
+    flex-direction: row !important;
+    width: 100% !important;
 }
 
 .normal_acceptOrReject_clientCommentBox {
@@ -31,16 +51,17 @@
 
 .sendIcon_clientCommentBox .MuiSvgIcon-root {
     top: 8px !important;
-    right: 7px !important;
+    right: 6px !important;
     position: absolute !important;
     color: white !important;
 }
 
 .commentParent .MuiInputBase-input {
     font-size: 10px;
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI Semibold';
+    /* font-style: normal;
+    font-weight: 600; */
     line-height: 17px;
     text-transform: uppercase;
 }
@@ -75,8 +96,9 @@
 
 .reject-reason_label {
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI Semibold';
+    /* font-weight: 600; */
     font-size: 20px;
     font-style: normal;
 }

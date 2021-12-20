@@ -37,8 +37,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClientCommentBox = (props) => {
+  const isRejectOrAccept = props.projectProposals[0].rejectReasonByClient ||
+    props.projectProposals[0].rejectReasonByAgency ||
+    props.projectProposals[0].isQuotationAcceptedByClient ||
+    props.projectProposals[0].isQuotationAcceptedByAgency
 
-  // console.log(props);
+  const isReject = props.projectProposals[0].rejectReasonByClient ||
+    props.projectProposals[0].rejectReasonByAgency
+
+  const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
+    props.projectProposals[0].clientNegotiablePrice || props.projectProposals[0].quotationLink
+
+  console.log(overallPriceSection);
+
+  console.log(props);
   const [loading, setLoading] = useState(false);
   const projectStartDateByClientRef = useRef();
 
@@ -174,9 +186,11 @@ const ClientCommentBox = (props) => {
           props.giveReplies(true);
           onCloseModal();
           setLoading(false);
+          setOpenRejectionModal(false)
         })
         .catch(err => {
           setLoading(false);
+          setOpenRejectionModal(false)
         })
     }
   }
@@ -200,30 +214,30 @@ const ClientCommentBox = (props) => {
         .then(function (response) {
           props.giveReplies(true);
           setLoading(false);
+          setOpenRejectionModal(false)
         })
         .catch(err => {
           setLoading(false);
+          setOpenRejectionModal(false)
         })
     }
   }
 
-
   return (
     <>
       {loading ? <Spinner /> :
-        <div style={{ display: "flex" }}>
-          <div className="commentBox">
-            <div className="topLine" style={{
-            }}></div>
+        <div className="commentBox_parent">
+          <div className={`commentBox ${isReject && 'conditional_width_commentBox'}`}>
+            <div className="topLine"></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
             <div className="chatBox-parent">
               {props.projectProposals[0].comments.map((index) => {
                 return (
-                  index.commentType === props.commentType &&
                   <>
                     {
                       index.comment && (
                         <div className="chatBox">
+                          {/* <div className="chatBox max-width"> */}
                           <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                           <b>You</b>
                         </div>
@@ -235,10 +249,13 @@ const ClientCommentBox = (props) => {
                         <b>{`${props.projectProposals[0]?.agencyId?.agencyName}`}</b>
                       </div>
                     )}
-                    {props.projectProposals[0].isReplySectionActive && index.reply === undefined && <p className="waiting_left">Waiting for the reply from Agency.</p>}
+                    {!isReject && props.projectProposals[0].isReplySectionActive && index.reply === undefined &&
+                      <p className="waiting_left">Waiting for the reply from Agency.
+                      </p>
+                    }
                     {!props.projectProposals[0].isAskedForQuotation &&
                       props.projectProposals[0].isCommentSectionActive &&
-                      props.isShortListed && (
+                      props.projectProposals[0].isShortListed && (
                         <div className="detailsButtons margin-0">
                           <button onClick={askForQuotation}>Ask For Quotation</button>
                         </div>
@@ -251,32 +268,30 @@ const ClientCommentBox = (props) => {
             {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
               (
                 <div className='commentParent'>
-                  {(props.projectProposals[0].clientNegotiablePrice === null ||
-                    props.projectProposals[0].clientNegotiablePrice === undefined) && (
-
-                      <div className="postQuotation" style={{ width: '55%' }}>
-                        <TextField
-                          className={clsx(classes.margin, classes.width)}
-                          name="clientNegotiablePrice"
-                          id="outlined-number"
-                          type="number"
-                          placeholder="Client Negotiable Price"
-                          onChange={(event) => handleChange(event)}
-                          variant="outlined"
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <AttachMoneyIcon />
-                              </InputAdornment>
-                            )
-                          }}
-                        />
-                      </div>
-                    )}
-                  <div className="price-section" style={{ width: '40%' }}>
+                  {(!props.projectProposals[0].clientNegotiablePrice) && (
+                    <div className="postQuotation" style={{ width: '48%' }}>
+                      <TextField
+                        className={clsx(classes.margin, classes.width)}
+                        name="clientNegotiablePrice"
+                        id="outlined-number"
+                        type="number"
+                        placeholder="Client Negotiable Price"
+                        onChange={(event) => handleChange(event)}
+                        variant="outlined"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <AttachMoneyIcon />
+                            </InputAdornment>
+                          )
+                        }}
+                      />
+                    </div>
+                  )}
+                  <div className="price-section">
                     <TextField
                       className={clsx(classes.margin, classes.width)}
                       id="outlined-size-small"
@@ -296,8 +311,7 @@ const ClientCommentBox = (props) => {
                 </div>
               )}
 
-
-            {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && (
+            {!props.projectProposals[0].isCommentSectionActive && !props.projectProposals[0].isReplySectionActive && !isReject && (
               <>
                 <div className="conversation-over">
                   <p>Coversation Over.</p>
@@ -307,52 +321,59 @@ const ClientCommentBox = (props) => {
                 </div>
               </>
             )}
-
           </div>
 
-          <div className='action-wait'>
-            <div className="topLine" style={{
-              backgroundColor: "rgb(69, 164, 228)"
-            }}></div>
-            {props.projectProposals[0].isProposalActionActive}
-            <div className="proposalCard">
-              <div className={`${props.projectProposals[0].isProposalActionActive ? 'conditional_acceptOrReject' : 'normal_acceptOrReject_clientCommentBox'}`}>
-                <p>Accept or Reject the Project.</p>
+          {/* {overallPriceSection && */}
+            <div className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
+              <div className="topLine"
+              >
               </div>
-              {/* } */}
-              <div className="postQuotation">
-                {props.projectProposals[0].agencyNegotiablePrice && props.projectProposals[0].agencyNegotiablePrice !== null && (
-                  <div className="detailsButtons margin-0">
-                    <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+              {/* {props.projectProposals[0].isProposalActionActive} */}
+              <div className="proposalCard">
+                {!isRejectOrAccept &&
+                  <div className={`${props.projectProposals[0].isProposalActionActive ?
+                    'conditional_acceptOrReject' :
+                    'normal_acceptOrReject_clientCommentBox'}
+                `}>
+                    <p>Accept or Reject the Project.</p>
                   </div>
-                )}
+                }
+                <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
+                  {props.projectProposals[0].agencyNegotiablePrice && (
+                    <div className="detailsButtons margin-0">
+                      <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                    </div>
+                  )}
 
-                {props.projectProposals[0].clientNegotiablePrice && props.projectProposals[0].clientNegotiablePrice !== null && (
-                  <div className="detailsButtons margin-0">
-                    <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-                  </div>
-                )}
+                  {props.projectProposals[0].clientNegotiablePrice && (
+                    <div className="detailsButtons margin-0">
+                      <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                    </div>
+                  )}
 
-                {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-                  <div className="detailsButtons margin-0">
-                    <a href={props.projectProposals[0].quotationLink} target="new">
-                      View Quotation
-                    </a>
-                  </div>
-                )}
-              </div>
-              <div className="detailsButtons" style={{ marginBottom: "1rem" }} >
-                <div>
-                  <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                    Accept
-                  </button>
-                  <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
-                    Reject
-                  </button>
+                  {props.projectProposals[0].quotationLink && (
+                    <div className="detailsButtons margin-0">
+                      <a href={props.projectProposals[0].quotationLink} target="new">
+                        View Quotation
+                      </a>
+                    </div>
+                  )}
                 </div>
+                {!isReject &&
+                  <div className={`detailsButtons ${isRejectOrAccept} && isRejectOrAccept`} style={{ marginBottom: "1rem" }} >
+                    <div>
+                      <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                        Accept
+                      </button>
+                      <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
+                        Reject
+                      </button>
+                    </div>
+                  </div>
+                }
               </div>
             </div>
-          </div>
+          {/* } */}
         </div>
       }
 
@@ -433,7 +454,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectDelayedStartDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectEndDateByClient}
                         onChange={(event) => handleChangeDate('projectEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>
@@ -453,7 +474,7 @@ const ClientCommentBox = (props) => {
                         minDate={new Date(moment(quotationFormData.projectEndDateByClient).add('1', 'days'))}
                         value={quotationFormData.projectExpectedEndDateByClient}
                         onChange={(event) => handleChangeDate('projectExpectedEndDateByClient', event)}
-                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()}/>}
+                        renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                       />
                     </div>
                   </LocalizationProvider>

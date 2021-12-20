@@ -81,6 +81,10 @@ p.action-wait {
   color: #3A3A3A;
 }
 
+.comments_are_loading {
+  text-align: center;
+}
+
 .answer p {
   font-family: 'Segoe UI';
 }
@@ -123,5 +127,5 @@ p.action-wait {
 }
 
 .project_rejection p {
-  font-family: 'Segoe UI';
+  font-family: 'Segoe UI Semibold';
 }

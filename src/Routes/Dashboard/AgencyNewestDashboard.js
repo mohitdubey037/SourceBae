@@ -14,29 +14,16 @@ import instance from "../../Constants/axiosConstants";
 import * as helper from "../../shared/helper";
 import NotFound from "../../assets/images/Newestdashboard/Not_found/PageNotFound.svg";
 import Navbar from "../../Components/ClientNewestDashboard/Navbar/Navbar";
-import cookie from "react-cookies";
-// import BottomSideBar from "../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar";
 import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar';
 
 import { Modal } from 'react-responsive-modal';
 
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 function AgencyNewestDashboard(props) {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log(props.history.action === 'POP');
-  // }, [props])
-
   const [open, setOpen] = useState(false);
-
-  const onCloseModal = () => setOpen(false);
-
-  const onOpenModal = () => {
-    setOpen(true);
-  }
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
@@ -48,6 +35,12 @@ function AgencyNewestDashboard(props) {
   const [isUserPhoneVerified, setUserPhoneVerified] = useState(true);
   const [formRoute, setFormRoute] = useState("/");
   const [visible, setVisible] = useState(false);
+
+  const onCloseModal = () => setOpen(false);
+
+  const onOpenModal = () => {
+    setOpen(true);
+  }
 
   const notificationVisible = (status) => {
     setVisible(status);
@@ -106,8 +99,7 @@ function AgencyNewestDashboard(props) {
   }, []);
 
   const verifyEmailPhone = () => {
-    instance
-      .post(`/api/${Role}/auths/send-verification-link`, {
+    instance.post(`/api/${Role}/auths/send-verification-link`, {
         userId: agencyId,
         verify: "email",
       })
