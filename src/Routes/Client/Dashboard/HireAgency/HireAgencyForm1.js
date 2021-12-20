@@ -5,6 +5,8 @@ import Radio from "@material-ui/core/Radio";
 import { withStyles } from "@material-ui/core/styles";
 import Back from "../../../../Components/Back/Back";
 
+import { Modal } from "react-responsive-modal";
+
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
 import illustration from "../../../../assets/images/Newestdashboard/Hire-Agency-Form/illustration.svg";
@@ -25,11 +27,21 @@ const BlueRadio = withStyles({
 const HireAgencyForm1 = (props) => {
   // let { projectId, agencyId } = useParams();
   const [loading, setLoading] = useState(false);
-  const [verifiedEmail, setVerifiedEmail] = useState(false);
+  const [isUserEmailVerified, setIsUserEmailVerified] = useState(false);
+  const [checkEmail, setCheckEmail] = useState(false);
+
   const id = localStorage.getItem("userId");
-  const Role = "Client";
-  // const [project, setProject] = useState([]);
+  const Role = localStorage.getItem('role');
   const [words, setWords] = useState(0);
+
+  const [open, setOpen] = useState(false);
+
+  const onCloseModal = () => setOpen(false);
+
+  const onOpenModal = () => {
+    setOpen(true);
+  }
+
   const [data, setData] = useState({
     stepsCompleted: 1,
     clientId: id,
@@ -64,36 +76,47 @@ const HireAgencyForm1 = (props) => {
   }, []);
 
 
-  // const handleClientData = () => {
-  //   instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
-  //     .then(function (response) {
-  //       setIsEmailVerified(response.projects.isUserEmailVerified);
-  //     })
-  //     .catch(err => {
-  //     })
-  // }
+  const handleClientData = () => {
+    // instance.get(`/api/${Role}/projects/all?clientId=${id}`)
+    instance.get(`/api/${Role}/clients/get/${id}`)
+      .then(function (response) {
+        // console.log(response.projects);
+        // console.log(response);
+        setIsUserEmailVerified(response[0].isUserEmailVerified);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
-  // useEffect(() => {
-  //   handleClientData()
-  // },[])
+  useEffect(() => {
+    handleClientData();
+  }, [])
 
+  const verifyEmailPhone = () => {
+    setLoading(true);
+    instance.post(`/api/${Role}/auths/send-verification-link`, {
+      userId: id,
+      verify: "email",
+    })
+      .then(function (response) {
+        setLoading(false);
+        setCheckEmail(true);
+      })
+      .catch(err => {
+        setLoading(false);
+      })
+  };
 
+  useEffect(() => {
+    if (!isUserEmailVerified) {
+      onOpenModal();
+    }
+  }, [isUserEmailVerified])
 
-  // const upArrow = () => {
-  //   if (data.projectExpectedStartingDays < 180)
-  //     setData({
-  //       ...data,
-  //       projectExpectedStartingDays: data.projectExpectedStartingDays + 1,
-  //     });
-  // };
-
-  // const downArrow = () => {
-  //   if (data.projectExpectedStartingDays > 5)
-  //   setData({
-  //     ...data,
-  //     projectExpectedStartingDays: data.projectExpectedStartingDays - 1,
-  //   });
-  // }; 
+  useEffect(() => {
+    handleClientData()
+  }, [])
 
   const handleBack = () => {
     if (window.confirm("Do you want to discard changes?") == true) {
@@ -369,23 +392,11 @@ const HireAgencyForm1 = (props) => {
                           </p>
                         )}
                       </div>
-                      {/* <p>{data.projectExpectedStartingDays} days</p>
-                        <div className="upArrow" onClick={upArrow}>
-                          <i class="fa fa-angle-up" aria-hidden="true"></i>
-                        </div>
-                        {data.projectExpectedStartingDays > 5 ? ( 
-                        <div className="downArrow" onClick={downArrow}>
-                          <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </div> 
-                        ):(null)}
-                      </div> */}
-
                     </div>
                     <div className="nextbutton nextbutton_hireAgencyForm1">
                       <div
                         className="backbutton_hireAgencyForm2"
                         onClick={() => handleBack()
-                          // props.history.push(`/clientNewestDashboard`)
                         }
                         style={{ backgroundColor: "#707070" }}
                       >
@@ -401,10 +412,38 @@ const HireAgencyForm1 = (props) => {
               </div>
             </div>
           </div>
+
+          <Modal open={open} onClose={onCloseModal} classNames={{
+            overlay: 'customOverlayAgencyProduct',
+            modal: 'customModalClientOneHireDeveloper',
+          }} center>
+
+            <div className="want_to_accept">
+              {checkEmail ?
+                <div className="connect_or_not">
+                  <p>Please check Your Email</p>
+                </div>
+                :
+                <>
+                  <div className="connect_or_not">
+                    <h6>Please Verify Your Email</h6>
+                  </div>
+
+                  <div className='interested_or_not verify_or_not'>
+                    <div className="update_now" onClick={verifyEmailPhone}>
+                      <p>Verify Now</p>
+                    </div>
+                  </div>
+                </>
+              }
+            </div>
+          </Modal>
         </>
       )}
     </>
   );
+
+
 };
 
 export default HireAgencyForm1;
