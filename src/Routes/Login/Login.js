@@ -135,7 +135,6 @@ const Login = (props) => {
   };
 
   const handleImageClick = () => {
-    // props.history.push('/');
     window.location.href = 'https://sourcebae.com/';
   }
 

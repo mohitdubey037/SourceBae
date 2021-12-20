@@ -334,6 +334,7 @@ li::marker {
     flex-direction: column;
     align-items: center;
     width: 7rem;
+    cursor: pointer;
 }
 
 .mainHireAgencyFormTwo .tech-container div, .mainHireAgencyForm3 .tech-container div {

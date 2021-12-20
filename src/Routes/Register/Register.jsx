@@ -265,6 +265,10 @@ const Register = (props) => {
     role == "agency" ? <RegisterAgencyForm1 /> : <RegisterClientForm1 />;
   };
 
+  const handleImageClick = () => {
+    window.location.href = "https://sourcebae.com/";
+  };
+
   //API call methods
   const verifyInput = (event) => {
     event.preventDefault();
@@ -424,7 +428,7 @@ const Register = (props) => {
         <>
           <div className="client__registrationContainer">
             <div
-              onClick={() => props.history.replace("/")}
+              onClick={handleImageClick}
               className="sourceBae_logo logo_register"
             >
               <img src={logoLink} alt="sourceBae-log" />
@@ -579,7 +583,9 @@ const Register = (props) => {
                         Already have an account?{" "}
                         <span
                           onClick={() =>
-                            props.history.replace(`/login:${role.toLowerCase()}`)
+                            props.history.replace(
+                              `/login:${role.toLowerCase()}`
+                            )
                           }
                         >
                           Log In

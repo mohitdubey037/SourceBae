@@ -691,6 +691,9 @@
 
 .agencyForm2 .tech-container div {
     cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border: 1px solid black; 
 }
 
 .pick_icon {
