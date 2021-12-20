@@ -122,7 +122,8 @@
   width: 90%;
   min-height: 191px;
   border-radius: 8px;
-  background: url(../../../assets/images/Newestdashboard/RightSide/tech.svg);
+  /* background: url(../../../assets/images/Newestdashboard/RightSide/tech.svg); */
+  background: url(../../../assets/images/Newestdashboard/RightSide/side_image.png);
   background-size: cover;
 }
 

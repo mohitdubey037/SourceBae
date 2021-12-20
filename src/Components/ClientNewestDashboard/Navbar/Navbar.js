@@ -104,8 +104,7 @@ function Navbar(props) {
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
                     <p style={{
-                        color: (url.includes('/agencyNewestDashboard') ||
-                            props.history.location.pathname === '/clientNewestDashboard') ? 'white' : 'blue'
+                        color: (url.includes('/agencyNewestDashboard') ? 'white' : 'blue')
                     }}>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
