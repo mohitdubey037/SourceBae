@@ -81,7 +81,7 @@ const HireAgencyForm1 = (props) => {
     instance.get(`/api/${Role}/clients/get/${id}`)
       .then(function (response) {
         // console.log(response.projects);
-        // console.log(response);
+        // console.log(response);        
         setIsUserEmailVerified(response[0].isUserEmailVerified);
       })
       .catch(err => {
@@ -110,6 +110,7 @@ const HireAgencyForm1 = (props) => {
 
   useEffect(() => {
     if (!isUserEmailVerified) {
+      console.log(isUserEmailVerified);
       onOpenModal();
     }
   }, [isUserEmailVerified])
@@ -413,10 +414,14 @@ const HireAgencyForm1 = (props) => {
             </div>
           </div>
 
-          <Modal open={open} onClose={onCloseModal} classNames={{
-            overlay: 'customOverlayAgencyProduct',
-            modal: 'customModalClientOneHireDeveloper',
-          }} center>
+          <Modal open={open}
+            onClose={onCloseModal}
+            closeOnOverlayClick={false}
+            showCloseIcon={false}
+            classNames={{
+              overlay: 'customOverlayAgencyProduct',
+              modal: 'customModalClientOneHireDeveloper',
+            }} center>
 
             <div className="want_to_accept">
               {checkEmail ?
