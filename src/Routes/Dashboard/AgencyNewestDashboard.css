@@ -15,6 +15,11 @@
   top: 0;
 }
 
+/* .interested_or_not.verify_or_not div {
+  width: 39%;
+  font-size: 12px;
+} */
+
 .not_found.agencyNewestDashboard {
   width: max-content;
   height: 325px;
