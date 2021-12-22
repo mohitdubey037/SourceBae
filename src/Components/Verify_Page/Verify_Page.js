@@ -17,11 +17,11 @@ function VerifyPage(props) {
         instance.get(`api/${Role}/auths/verify/${verificationToken}`)
         .then(res => {
             setLoading(false);
-            window.location.history.push('/login');
+            props.history.push('/login');
         })
         .catch(err => {
             // props.history.push(`/login:${Role}`);
-            window.location.history.push('/page-not-found');
+            props.history.push('/page-not-found');
             setLoading(false);
             toast.error(err);
         })
