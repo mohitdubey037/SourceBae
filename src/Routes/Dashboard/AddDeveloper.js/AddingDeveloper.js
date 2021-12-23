@@ -166,6 +166,9 @@ function AddingDeveloper(props) {
                 resume,
                 resume.name
             );
+            console.log(resume)
+            console.log(resume.name)
+            console.log(formData);
             instance.post(`api/${Role}/media/create`, formData)
                 .then(function (response) {
                     setLoading(false);
