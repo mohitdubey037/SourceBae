@@ -329,6 +329,10 @@ li::marker {
     flex-wrap: wrap;
 }
 
+/* .want_to_accept ~ .react-responsive-modal-closeButton {
+    display: none;
+} */
+
 .tech-container {
     display: flex;
     flex-direction: column;

@@ -204,7 +204,6 @@
 
 .connect_or_not {
   text-align: center;
-  font-family: 'Segoe UI';
   font-size: 20px;
   font-style: normal;
 }
@@ -213,7 +212,7 @@
   background: #fff;
   max-width: 330px;
   width: 100%;
-  border-radius: 1.4rem;
+  border-radius: 1rem;
   height: 8rem;
 }
 
@@ -239,7 +238,7 @@
 }
 
 .interested_or_not div {
-  padding: 4px;
+  padding: 4px 10px;
   outline: none;
   border: none;
   display: flex;
@@ -247,10 +246,11 @@
   align-items: center;
   color: black;
   border-radius: 31px;
-  width: 35%;
-  height: 27px;
+  /* width: 35%;
+  height: 27px; */
   font-family: 'Segoe UI';
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 12px;
   text-align: center;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
