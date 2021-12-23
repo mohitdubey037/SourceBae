@@ -461,8 +461,8 @@ function ShortTerm(props) {
                           </p>
                         </div>
                       </div>
-
-                      <div
+                        {/* don't remove this....even after commenting}
+                      {/* <div
                         style={{ marginTop: "1rem" }}
                         className="fixedPrice"
                         name="projectPaymentModel"
@@ -484,7 +484,7 @@ function ShortTerm(props) {
                             billed. Best for ongoing work
                           </p>
                         </div>
-                      </div>
+                      </div> */}
                     </RadioGroup>
                   </FormControl>
                 </div>
