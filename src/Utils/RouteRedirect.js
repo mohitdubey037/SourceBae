@@ -1,12 +1,12 @@
-import React from 'react';
 import { useHistory } from "react-router-dom";
+import { AGENCY, CLIENT } from "../shared/constants";
 
 function RouteRedirect(Role) {
     const routerHistory = useHistory();
-    if (Role === "Client") {
+    if (Role === CLIENT) {
         routerHistory.replace('/clientNewestDashboard');
     }
-    if (Role === "Agency") {
+    if (Role ===AGENCY) {
         routerHistory.replace('/agencyNewestDashboard');
     }
 }

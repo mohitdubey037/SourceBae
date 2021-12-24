@@ -19,11 +19,10 @@ import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profil
 
 
 function ProductDetails(props) {
-  const condition = props.location.condition;
   const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
   let { productId } = useParams();
-  productId = productId ? helper.cleanParam(productId) : "";
+  productId = productId || "";
 
   const Role = localStorage.getItem("role");
   const [loading, setLoading] = useState(false)

@@ -1,35 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { Redirect, Route, withRouter } from "react-router-dom";
-import * as helper from "../shared/helper"
+import React from "react";
+import {  Route, withRouter } from "react-router-dom";
+import { CLIENT, AGENCY } from "../shared/constants";
 
 
 
 const CustomRoute = props => {
-    const Role = helper.capitalize(localStorage.getItem('role'));
+    const role = localStorage.getItem('role')
         switch (props.condition) {
 
-            case "Agency":
-                Role === "Client" && alert(`You are login as a ${Role}`)
+            case AGENCY:
+                role === CLIENT && alert(`You are login as a ${role}`)
                 return (
-                    helper.capitalize(Role) === "Agency" ? (
+                    role === AGENCY ? (
                         <Route {...props} />
                     ) : (
-                        // <Redirect to="/page-not-found" />
                         window.location.href = 'https://sourcebae.com/'
                     )
                 );
-            case "Client":
-                helper.capitalize(Role) === "Agency" && alert(`You are login as a ${Role}`)
+            case CLIENT:
+                role === CLIENT && alert(`You are login as a ${role}`)
                 return (
-                    Role === "Client" ? (
+                    role === CLIENT ? (
                         <Route {...props} />
                     ) : (
-                        // <Redirect to="/page-not-found" />
                         window.location.href = 'https://sourcebae.com/'
                     )
                 );
             default:
-                // return (<Redirect to='page-not-found'/>);
                 window.location.href = 'https://sourcebae.com/';
         }
 };

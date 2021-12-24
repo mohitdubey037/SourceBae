@@ -286,7 +286,6 @@ const AgencyCommentBox = (props) => {
                         <TextField
                           className={clsx(classes.margin, classes.width)}
                           id="outlined-size-small"
-                          // label="Agency"
                           placeholder="Enter Your Reply"
                           onChange={(event) => handleChange(event)}
                           name="reply"

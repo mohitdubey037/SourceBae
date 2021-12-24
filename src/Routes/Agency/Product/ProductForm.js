@@ -66,17 +66,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  getContentAnchorEl: () => null,
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
 
 const arr = [
   {
@@ -128,8 +117,6 @@ function ProductForm(props) {
 
   const [multipleSelectTech, setMultipleSelect] = useState([]);
 
-  const [domainName, setDomainName] = useState("");
-
   const [errors, setErrors] = useState({});
 
   const [apiData, setApiData] = useState({
@@ -158,8 +145,7 @@ function ProductForm(props) {
 
   const classes = useStyles();
 
-  // const Role = "agency";
-  const Role = localStorage.getItem('role');
+  const role = localStorage.getItem('role');
 
 
   const handleChange = (event) => {
@@ -193,8 +179,6 @@ function ProductForm(props) {
       ...apiData,
       [name]: value,
     });
-    // setBusinesstype(value);
-    setDomainName(value);
   };
 
   useEffect(() => {
@@ -207,7 +191,7 @@ function ProductForm(props) {
   const getAllDomains = () => {
     setLoading(true);
     instance
-      .get(`api/${Role}/domains/all`)
+      .get(`api/${role}/domains/all`)
       .then(function (response) {
         setAllDomainsData(response);
         setLoading(false);
@@ -393,7 +377,7 @@ function ProductForm(props) {
       file !== null && formData.append("files", file, file?.name);
 
       instance
-        .post(`api/${Role}/media/create`, formData)
+        .post(`api/${role}/media/create`, formData)
         .then(function (response) {
           setApiData({
             ...apiData,
@@ -411,7 +395,7 @@ function ProductForm(props) {
     if (validateInfo()) {
       setLoading(true);
       instance
-        .post(`api/${Role}/products/create`, apiData)
+        .post(`api/${role}/products/create`, apiData)
         .then((response) => {
           setLoading(false);
           onOpenModal();
@@ -521,7 +505,7 @@ function ProductForm(props) {
 
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form1} />
+                    <img className="image_div_child" src={form1} alt = "form pic" />
                   </div>
                 </div>
 
@@ -654,7 +638,7 @@ function ProductForm(props) {
                     </section>
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form2} />
+                    <img className="image_div_child" src={form2} alt = "form_image" />
                   </div>
                 </div>
 
@@ -875,7 +859,7 @@ function ProductForm(props) {
                     </section>
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form3} />
+                    <img className="image_div_child" src={form3}  alt = "Form"/>
                   </div>
                 </div>
 
@@ -1005,7 +989,7 @@ function ProductForm(props) {
 
                     </div>
                     <div className="image_div">
-                      <img className="image_div_child" src={form4} />
+                      <img className="image_div_child" src={form4} alt = "form4" />
                     </div>
 
                   </div>

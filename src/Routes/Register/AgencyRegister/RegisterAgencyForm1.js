@@ -1,7 +1,4 @@
 import React from 'react'
-import { useEffect, useState } from "react";
-import instance from "../../../Constants/axiosConstants";
-import { useParams } from "react-router";
 import * as helper from '../../../shared/helper';
 
 function RegisterAgencyForm1(props) {

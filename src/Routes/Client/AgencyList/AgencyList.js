@@ -9,20 +9,15 @@ import Sidebar from "../../../Components/ClientNewestDashboard/Sidebar/Sidebar";
 
 import instance from "../../../Constants/axiosConstants";
 import { useParams } from "react-router";
-import * as helper from "../../../shared/helper";
 import Spinner from "../../../Components/Spinner/Spinner";
 import Navbar from "../../../Components/ClientNewestDashboard/Navbar/Navbar";
-import Back from "../../../Components/Back/Back";
-import UpImage from '../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
 function AgencyList(props) {
   const Role = localStorage.getItem("role");
   let { projectId } = useParams();
-  projectId = projectId ? helper.cleanParam(projectId) : "";
+  projectId = projectId || "";
   const [agencyList, setAgencyList] = useState([]);
-  const [isOfficeVisit, setOfficeVisit] = useState(false);
-  const [isOffsiteTravel, setOffsiteTravel] = useState(false);
   const [open, setOpen] = useState(false);
   const [openQuotation, setOpenQuotation] = useState(false);
   const [loading, setLoading] = useState(true);

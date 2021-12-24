@@ -4,12 +4,13 @@ import Navbar from '../../Dashboard/Navbar';
 import "./GetHireDeveloper.css";
 
 import "react-responsive-modal/styles.css";
-
 import instance from "../../../Constants/axiosConstants";
 import Spinner from "../../../Components/Spinner/Spinner";
 
+import { AGENCY} from "../../../shared/constants";
+
 function HireDeveloper(props) {
-  const Role = "agency";
+  const Role = AGENCY;
   const userId = localStorage.getItem('userId');
 
   const [loading, setLoading] = useState(true);

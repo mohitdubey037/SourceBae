@@ -20,6 +20,7 @@ import useIsFirstRender from "../../Utils/useIsFirstRender";
 import ProjectDetailCard from "../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
 import AfterAcceptOrRejectComponent from "../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject";
 import DownTechnologyDetail from "../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
+import { AGENCY } from "../../shared/constants";
 
 function AgencyRespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -33,9 +34,7 @@ function AgencyRespondedDetails(props) {
       setChatNotification(state?.notification);
     }
   });
-  const routerHistory = useHistory();
   let { projectId } = useParams();
-  projectId = helper.cleanParam(projectId);
 
   const Role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
@@ -90,7 +89,7 @@ function AgencyRespondedDetails(props) {
       </div>
 
       <ProjectDetailCard
-        role="Agency"
+        role={AGENCY}
         name={project?.clientId?.companyName}
         expectedTimeline={project?.projectExpectedStartingDays}
         projectProposalCost={project?.projectProposalCost}
@@ -127,35 +126,7 @@ function AgencyRespondedDetails(props) {
               </div>
             )
             }
-            {/* : project.projectProposals &&
-            project?.projectProposals[0].isQuotationAcceptedByClient === true &&
-            project?.projectProposals[0].isQuotationAcceptedByAgency === true ? (
-            <div className="image_with_logo">
-             <AfterAcceptOrRejectComponent
-                  role="Agency"
-                  companyName={project?.clientId?.companyName}
-                  projectProposals={project?.projectProposals[0]}
-                  agencyOrClientName={project?.projectProposals[0]?.agencyId?.agencyName}
-                  finalCost={project?.projectProposals[0]?.finalCostByClient}
-                  projectCreationDate={project?.createdAt}
-                  expectedTimeline={project?.projectExpectedStartingDays}
-                  projectType={project?.projectType}
-                  isQuotationAcceptedByClient={project.projectProposals[0].isQuotationAcceptedByClient}
-                  isQuotationAcceptedByAgency={project?.projectProposals[0].isQuotationAcceptedByAgency}
-                  isProjectRejectedByClient={project?.projectProposals[0]?.rejectReasonByClient}
-                  isProjectRejectedByAgency={project?.projectProposals[0]?.rejectReasonByAgency}
-                />
-              </div>
-            )
-            : (
-              <>
-                {project.projectProposals &&
-                  project?.projectProposals[0].isQuotationAcceptedByClient === false &&
-                  <h4>Comments and Replies</h4>
-                }
-                {loading ? (
-                  <p style={{ textAlign: "center" }}>Comments are loading...</p> */}
-            {/* ) : */}
+          
             {project?.projectProposals &&
               <AgencyCommentBox
                 giveReplies={(gr) => {

@@ -18,14 +18,13 @@ import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/
 
 import { Modal } from 'react-responsive-modal';
 
-import { useDispatch } from 'react-redux';
+import {AGENCY} from "../../shared/constants";
 
 function AgencyNewestDashboard(props) {
-  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
 
-  const Role = localStorage.getItem("role");
+  const role = localStorage.getItem("role");
   const agencyId = localStorage.getItem("userId");
 
   const [allProjects, setAllProjects] = useState([]);
@@ -49,7 +48,7 @@ function AgencyNewestDashboard(props) {
   const getAllProjects = () => {
     instance
       .get(
-        `api/${Role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`
+        `api/${role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`
       )
       .then(function (response) {
         setAllProjects(response);
@@ -59,11 +58,12 @@ function AgencyNewestDashboard(props) {
 
   useEffect(() => {
     getAllProjects();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getStepsCompleted = () => {
     instance
-      .get(`api/${Role}/agencies/steps-completed`)
+      .get(`api/${role}/agencies/steps-completed`)
       .then(function (response) {
         if (response.stepsCompleted === response.totalSteps) {
           setSteps(-1);
@@ -79,7 +79,7 @@ function AgencyNewestDashboard(props) {
 
   const getAgencyProfile = (agencyId) => {
     instance
-      .get(`/api/${Role}/agencies/get/${agencyId}`)
+      .get(`/api/${role}/agencies/get/${agencyId}`)
       .then(function (response) {
         setVerified(response.isAgencyVerified);
         setUserEmailVerified(response.isUserEmailVerified);
@@ -96,10 +96,11 @@ function AgencyNewestDashboard(props) {
   useEffect(() => {
     getStepsCompleted();
     getAgencyProfile(localStorage.getItem("userId"));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const verifyEmailPhone = () => {
-    instance.post(`/api/${Role}/auths/send-verification-link`, {
+    instance.post(`/api/${role}/auths/send-verification-link`, {
         userId: agencyId,
         verify: "email",
       })
@@ -117,7 +118,7 @@ function AgencyNewestDashboard(props) {
       if (link === "portfolio") {
         props.history.push({
           pathname: "portfolio",
-          condition: "Agency",
+          condition: AGENCY,
         });
       }
     }

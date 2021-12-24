@@ -4,6 +4,7 @@ import RejectedImage from '../../../assets/images/Newestdashboard/Rejection_reas
 import completedImage from "../../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg";
 import loadingStatus from "../../../assets/images/Newestdashboard/Not_found/loading_status.jpg";
 import './AfterAcceptOrReject.css';
+import {CLIENT, AGENCY} from "../../../shared/constants";
 
 function afterAcceptOrReject({ projectProposals, role, companyName }) {
 
@@ -17,7 +18,7 @@ function afterAcceptOrReject({ projectProposals, role, companyName }) {
                     <div className="respondedDetails_afterCompletion_child1">
                         <div>
                             <div className="question" style={{ width: "62%" }}>
-                                <p>{role === "Client" ? "Client" : "Agency"}</p>
+                                <p>{role === CLIENT ? CLIENT : AGENCY}</p>
                             </div>
                             <div className="answer">
                                 <p>{companyName}</p>
@@ -65,12 +66,12 @@ function afterAcceptOrReject({ projectProposals, role, companyName }) {
                                     <p>Project is started from both side</p>
                                     :
                                     projectProposals?.isQuotationAcceptedByClient ?
-                                        <p>{`Project is started from ${role === 'Client' ? "You" : "Client"}`}</p>
+                                        <p>{`Project is started from ${role === CLIENT ? "You" : "Client"}`}</p>
                                         :
                                         projectProposals?.isQuotationAcceptedByAgency ?
-                                            <p>{`Project is started from ${role === 'Agency' ? "You" : "Agency"}`}</p>
+                                            <p>{`Project is started from ${role === AGENCY ? "You" : "Agency"}`}</p>
                                             :
-                                            projectProposals?.isProjectRejectedByClient === undefined || projectProposals?.isProjectRejectedByAgency &&
+                                            (projectProposals?.isProjectRejectedByClient === undefined || projectProposals?.isProjectRejectedByAgency) &&
                                             <p>Project is started from both side</p>
                             }
                         </div>

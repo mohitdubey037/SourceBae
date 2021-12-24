@@ -22,7 +22,6 @@ function ClientOneHireDeveloper(props) {
     let { hireDeveloperId } = useParams();
     const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
-    hireDeveloperId = helper.cleanParam(hireDeveloperId);
     const Role = localStorage.getItem("role");
     const userId = localStorage.getItem("userId");
 

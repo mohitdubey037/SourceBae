@@ -39,7 +39,6 @@ function HireAgencyForm2(props) {
   const propData = props.location.state;
   const Role = localStorage.getItem('role');
   let { projectId } = useParams();
-  projectId = helper.cleanParam(projectId);
   const id = localStorage.getItem("userId");
   const [apiData, setApiData] = useState({
     stepsCompleted: 2,

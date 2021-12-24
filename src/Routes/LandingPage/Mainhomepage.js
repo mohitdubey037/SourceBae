@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import "./mainhomepage.css";
 import cookie from "react-cookies";
 

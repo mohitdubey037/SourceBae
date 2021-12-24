@@ -11,6 +11,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NotificationPanel from '../../Notification/NotificationPanel';
 import { useDispatch } from 'react-redux';
+import { AGENCY, CLIENT } from '../../../shared/constants';
 
 function Sidebar(props) {
     const dispatch = useDispatch();
@@ -36,22 +37,17 @@ function Sidebar(props) {
     }
 
     const RouteRedirect1 = () => {
-        if (Role === "Client") {
+        if (Role === CLIENT) {
             props.history.replace('/clientNewestDashboard');
         }
-        if (Role === "Agency") {
+        if (Role === AGENCY) {
             props.history.replace('/agencyNewestDashboard');
         }
     }
 
     const handleLogout = () => {
-        // localStorage.removeItem("Authorization");
-        // localStorage.removeItem('role');
-        // localStorage.removeItem('userId');
-        // localStorage.removeItem('toggle');
         cookie.remove("Authorization");
         localStorage.clear();
-        // routerHistory.replace('/');
         window.location.href = 'https://sourcebae.com/';
     }
 

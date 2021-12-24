@@ -26,12 +26,11 @@ import ProfilePortfolio from './AgencyProfile/ProfilePortfolio';
 import FeatureLink from "./AgencyProfile/FeatureLink";
 
 import { useParams } from "react-router";
-
+import { AGENCY } from "../../shared/constants";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
 import instance from "../../Constants/axiosConstants";
-import * as helper from "../../shared/helper";
 
 import Spinner from "../../Components/Spinner/Spinner";
 import Moment from "react-moment";
@@ -61,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 function AgencyProfile(props) {
   const classes = useStyles();
   const { id } = useParams();
-  const Role = localStorage.getItem('role');
+  const role = localStorage.getItem('role');
   const inputEl = useRef(null);
   const inputPort = useRef(null);
 
@@ -71,7 +70,6 @@ function AgencyProfile(props) {
   const [loading, setLoading] = useState(true);
 
   const [hoverModal, setHoverModal] = useState(false)
-  const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   const [agencyProfileData, setAgencyProfileData] = useState({
@@ -108,7 +106,7 @@ function AgencyProfile(props) {
 
   const getAgencyProfile = (agencyId, profileviewStatus) => {
     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-    instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
+    instance.get(`/api/${role}/agencies/get/${agencyId}${addParam}`)
       .then(function (response) {
         setAgencyProfileData({ ...response });
         setLoading(false);
@@ -119,7 +117,7 @@ function AgencyProfile(props) {
   };
 
   const handleBackOnProfile = () => {
-    if (Role === "Agency")
+    if (role === AGENCY)
       props.history.replace('agencyNewestDashboard');
     else
       props.history.goBack();
@@ -133,7 +131,7 @@ function AgencyProfile(props) {
 
   useEffect(() => {
     id !== null && id !== undefined
-      ? getAgencyProfile(helper.cleanParam(id), true)
+      ? getAgencyProfile(id, true)
       : getAgencyProfile(localStorage.getItem("userId"), false);
   }, []);
 
@@ -148,8 +146,8 @@ function AgencyProfile(props) {
   });
 
   useEffect(() => {
-    console.log(props.location.origin == 'portfolio');
-    if (!portNavigated && inputPort !== null && props.location.origin == "portfolio") {
+    console.log(props.location.origin === 'portfolio');
+    if (!portNavigated && inputPort !== null && props.location.origin === "portfolio") {
       inputPort?.current?.click();
       setPortNavigated(true);
     }
@@ -167,21 +165,21 @@ function AgencyProfile(props) {
         <div className="agnecyProfilemainDiv">
           <img className="Image2_AgencyProfile" src={DownImage} alt="downImage" />
           <div className="mainProfileHeaderImage">
-            <div className={`innerProfileHeaderImage ${Role === 'Client' && 'conditionalGradient'}`}>
+            <div className={`innerProfileHeaderImage ${role === 'Client' && 'conditionalGradient'}`}>
               <div className='backButtonAgencyProfile'>
                 <div className='backButton-child' onClick={handleBackOnProfile}>
                   <img src={Back2} alt="back" />
                   <h6>Back</h6>
                 </div>
               </div>
-              {Role === "Agency" ? (
+              {role === AGENCY ? (
                 agencyProfileData.productId === undefined ? (
                   <>
                     <span>You haven't added any product.</span>
                     <button
                       disabled={agencyProfileData.isAgencyVerified === false && true}
                       style={{ filter: `${!agencyProfileData.isAgencyVerified ? `grayscale(100%)` : `none`}` }}
-                      onClick={() => props.history.push({ pathname: `/product-form`, condition: "Agency" })}>
+                      onClick={() => props.history.push({ pathname: `/product-form`, condition: AGENCY })}>
                       Add Your Product
                       <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                     </button>
@@ -356,7 +354,7 @@ function AgencyProfile(props) {
           <div className="mainAgencyProfileDesc">
             <div className="innerAgencyProfileDesc">
               <div className="leftAgencyProfileDesc">
-                <div className={`aboutUs_parent ${Role === 'Client' && 'conditionalGradient'}`}>
+                <div className={`aboutUs_parent ${role === 'Client' && 'conditionalGradient'}`}>
                   <h2>About us</h2>
                 </div>
                 <div style={{ width: '70%' }}>
@@ -473,7 +471,7 @@ function AgencyProfile(props) {
                   </button>
                 </div>
 
-                {Role === "Agency" &&
+                {role === AGENCY &&
                   <div id="nav-developer-tab"
                     className="nav-link"
                     data-bs-toggle="tab"

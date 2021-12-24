@@ -6,10 +6,10 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
 import instance from "../../../Constants/axiosConstants";
-// import Rules_edit from "../../../assets/images/Newestdashboard/Agency-Profile/Agency-Rules_edit.svg";
-
 import check from "../../../assets/images/Newestdashboard/Agency-Profile/check.png";
 import cancel from "../../../assets/images/Newestdashboard/Agency-Profile/cancel.png";
+
+import { AGENCY } from "../../../shared/constants";
 
 import "./Rules.css";
 
@@ -33,9 +33,6 @@ function Rules(props) {
     }
   });
 
-  const handalLoading = () => {
-    setEditRules(false);
-  }
 
   const handleEditRules = (value) => {
     setLoading(true);
@@ -103,7 +100,7 @@ function Rules(props) {
     <>
       <div className="mainRules">
         <div className="innerRules">
-          {Role === "Agency"
+          {Role === {AGENCY}
             ? agencyProfiledata.isAgencyVerified && (
               <div className="editableBtn_rules">
                 <div className="rules_parent">

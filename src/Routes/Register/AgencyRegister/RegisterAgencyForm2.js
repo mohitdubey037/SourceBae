@@ -4,6 +4,7 @@ import "./../register.css";
 import { useParams } from "react-router";
 import { makeStyles } from "@material-ui/core";
 import * as helper from "../../../shared/helper";
+import { AGENCY } from "../../../shared/constants";
 
 const dateStyles = makeStyles((theme) => ({
   container: {
@@ -35,13 +36,12 @@ const dateStyles = makeStyles((theme) => ({
 
 const RegisterAgencyForm2 = (props) => {
   let { role } = useParams();
-  role = helper.capitalize(helper.cleanParam(role));
 
   const dateClasses = dateStyles();
 
   const handleCreateProfile = (event, role) => {
     let { name, value } = event.target;
-    if (role === "Agency") {
+    if (role === AGENCY) {
       props.setAgencyProfileDetails({
         ...props.agencyProfileDetails,
         [name]: value,
