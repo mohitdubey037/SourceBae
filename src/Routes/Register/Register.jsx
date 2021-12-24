@@ -49,7 +49,7 @@ const Register = (props) => {
   const logoLink = "https://sourcebae.s3.amazonaws.com/image/1638354759751.svg";
   const isFirstRender = useIsFirstRender();
   const dateClasses = dateStyles();
-  const [state, setState] = useState("");
+  const [roleState, setRoleState] = useState("");
   const [errorData, setErrorData] = useState({
     userEmail: true,
     userName: true,
@@ -247,21 +247,27 @@ const Register = (props) => {
   };
 
   useEffect(() => {
-    setState(role.toLowerCase());
+    let existingRole = localStorage.getItem("role");
+    let existingToken = cookie.load("Authorization");
+    if (existingRole && existingToken) {
+      props.history.push(`/login${existingRole}`);
+    } else {
+      setRoleState(role.toLowerCase());
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("role", state);
-    if (state === "" || state === "agency") {
+    localStorage.setItem("role", roleState);
+    if (roleState === "" || roleState === "agency") {
       console.log("hii from register");
       props.history.push("/register:agency");
     } else {
       props.history.push("/register:client");
     }
-  }, [state]);
+  }, [roleState]);
 
   const handleChangeToggle = (name) => {
-    setState(name);
+    setRoleState(name);
     role == "agency" ? <RegisterAgencyForm1 /> : <RegisterClientForm1 />;
   };
 
@@ -435,14 +441,14 @@ const Register = (props) => {
             </div>
             <img
               className={`Image1 ${
-                state === "client" && "conditional_colorChange"
+                roleState === "client" && "conditional_colorChange"
               }`}
               src={Signup1}
               alt="signup"
             />
             <img
               className={`Image2 ${
-                state === "client" && "conditional_colorChange"
+                roleState === "client" && "conditional_colorChange"
               } `}
               src={Signup2}
               alt="signup"
@@ -453,7 +459,7 @@ const Register = (props) => {
                   <div className="form__title">
                     <h6>
                       Register as{" "}
-                      {state === "" || state === "agency" ? (
+                      {roleState === "" || roleState === "agency" ? (
                         <>
                           <span>an</span>
                           <span
@@ -477,7 +483,7 @@ const Register = (props) => {
                       <button
                         onClick={() => handleChangeToggle("agency")}
                         className={`agency__button ${
-                          (state === "" || state === "agency") &&
+                          (roleState === "" || roleState === "agency") &&
                           "active__buttonagency"
                         }`}
                       >
@@ -486,7 +492,7 @@ const Register = (props) => {
                       <button
                         onClick={() => handleChangeToggle("client")}
                         className={`client__button ${
-                          state === "client" && "active__buttonclient"
+                          roleState === "client" && "active__buttonclient"
                         }`}
                       >
                         <p>Client</p>
@@ -546,7 +552,7 @@ const Register = (props) => {
                       <div
                         style={{ width: "15%" }}
                         className={`next_Register ${
-                          state === "client"
+                          roleState === "client"
                             ? "active__buttonclient"
                             : "active_buttonagency"
                         }`}
@@ -558,7 +564,7 @@ const Register = (props) => {
                       <div className="navigationButtonsSignup">
                         <div
                           className={`backRegister_onAgency ${
-                            state === "client"
+                            roleState === "client"
                               ? "active__buttonclient"
                               : "active_buttonagency"
                           }`}
@@ -568,7 +574,7 @@ const Register = (props) => {
                         </div>
                         <div
                           className={`next_Register ${
-                            state === "client"
+                            roleState === "client"
                               ? "active__buttonclient"
                               : "active_buttonAgency"
                           }`}
