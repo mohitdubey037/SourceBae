@@ -233,9 +233,9 @@ const Register = (props) => {
     localStorage.setItem("role", roleState);
     if (roleState === "" || roleState === AGENCY) {
       console.log("hii from register");
-      props.history.push(`/register/:${AGENCY}`);
+      props.history.push(`/register/${AGENCY}`);
     } else {
-      props.history.push(`/register/:${CLIENT}`);
+      props.history.push(`/register/${CLIENT}`);
     }
   }, [roleState]);
 

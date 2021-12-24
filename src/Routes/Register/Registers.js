@@ -286,8 +286,8 @@ const Register = (props) => {
   useEffect(() => {
     localStorage.setItem("role", state);
     state === "" || state === AGENCY
-      ? props.history.push(`/register/:${AGENCY}`)
-      : props.history.push(`/register/:${CLIENT}`);
+      ? props.history.push(`/register/${AGENCY}`)
+      : props.history.push(`/register/s${CLIENT}`);
   }, [state]);
 
   const handleChangeToggle = (name) => {
@@ -626,7 +626,7 @@ const Register = (props) => {
                           Already have an account?{" "}
                           <span
                             onClick={() =>
-                              props.history.push(`/login/:${role}`)
+                              props.history.push(`/login/${role}`)
                             }
                           >
                             Log In

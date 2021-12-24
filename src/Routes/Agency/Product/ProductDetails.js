@@ -463,7 +463,7 @@ function ProductDetails(props) {
                           <div className="moreAgencyList_productDetails">
                             <div style={{ cursor: "pointer" }}
                               onClick={() => props.history.push(
-                                `/product-details/:${value._id}`
+                                `/product-details/${value._id}`
                               )}
                               className="moreAgencyCard_productDetails"
                             >

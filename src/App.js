@@ -94,7 +94,7 @@ const App = (props) => {
         <Route exact path="/login/:role" component={Login} />
         <Route exact path="/register/:role" component={Register} />
         <Route exact path="/enter-email" component={EnterEmail} />
-        <Route exact path="/password-reset:token" component={PasswordReset} />
+        <Route exact path="/password-reset/:token" component={PasswordReset} />
 
         <Route exact path="/page-not-found" component={PageNotFound} />
 
@@ -116,23 +116,23 @@ const App = (props) => {
         {/* <CustomRoute condition={AGENCY} exact path="/agency-project-dashboard" component={AgencyProjectDashboard} /> */}
         {/* Both */}
         <Route exact path="/agency-project-details" component={AgencyProjectDetails} />
-        <Route exact path="/product-details:productId" component={ProductDetails} />
+        <Route exact path="/product-details/:productId" component={ProductDetails} />
         {/* Client Components  */}
         <CustomRoute condition={CLIENT} exact path="/agency-profile/:id" component={AgencyProfile} />
         <CustomRoute condition={CLIENT} exact path="/product-agencies" component={ProductAgencies} />
         <CustomRoute condition={CLIENT} exact path="/clientNewestDashboard" component={ClientNewestDashboard} />
-        <CustomRoute condition={CLIENT} exact path="/client-one-hire-developer:hireDeveloperId" component={ClientOneHireDeveloper} />
+        <CustomRoute condition={CLIENT} exact path="/client-one-hire-developer/:hireDeveloperId" component={ClientOneHireDeveloper} />
         {/* <CustomRoute condition={CLIENT} exact path="/shared-developers/:hireDeveloperId/:agencyId" component={SharedDevelopers} /> */}
 
         <CustomRoute condition={CLIENT} exact path="/get-client-hire-developer" component={GetClientHireDeveloper} />
-        <CustomRoute condition={CLIENT} exact path="/project-details:projectId" component={ProjectDetails} />
+        <CustomRoute condition={CLIENT} exact path="/project-details/:projectId" component={ProjectDetails} />
         <CustomRoute condition={CLIENT} exact path="/project-details/:projectId/:agencyId" component={ProjectDetails} />
         <CustomRoute condition={CLIENT} exact path="/hire-agency-form-one" component={HireAgencyForm1} />
-        <CustomRoute condition={CLIENT} exact path="/hire-agency-form-two:projectId" component={HireAgencyForm2} />
-        <CustomRoute condition={CLIENT} exact path="/hire-agency-form-three:projectId" component={HireAgencyForm3} />
+        <CustomRoute condition={CLIENT} exact path="/hire-agency-form-two/:projectId" component={HireAgencyForm2} />
+        <CustomRoute condition={CLIENT} exact path="/hire-agency-form-three/:projectId" component={HireAgencyForm3} />
         <CustomRoute condition={CLIENT} exact path="/short-term" component={ShortTerm} />
         <CustomRoute condition={CLIENT} exact path="/hire-developer" component={HireDeveloper} />
-        <CustomRoute condition={CLIENT} exact path="/agency-list:projectId" component={AgencyList} />
+        <CustomRoute condition={CLIENT} exact path="/agency-list/:projectId" component={AgencyList} />
         <CustomRoute condition={CLIENT} exact path="/client-profile" component={ClientProfile} />
         <CustomRoute component={PageNotFound} />
         {/* <Suspence fallback={<div>...loading</div>}></Suspence> */}

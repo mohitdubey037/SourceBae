@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "../Login/login.css";
-import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
 import axios from "axios";
@@ -72,6 +71,8 @@ const Login = (props) => {
 
   const classes = useStyles();
   let { role } = useParams();
+  debugger;
+  console.log(role,"rolee");
   if (!(role === AGENCY || role === CLIENT))
     props.history.replace("/page-not-found");
 
@@ -96,9 +97,9 @@ const Login = (props) => {
   }, []);
 
   useEffect(() => {
-    state === "client"
-      ? props.history.replace("/login:client")
-      : props.history.replace("/login:agency");
+    state === CLIENT
+      ? props.history.replace(`/login/${CLIENT}`)
+      : props.history.replace(`/login/${AGENCY}`);
   }, [state]);
 
   const showPassword = (e) => {
@@ -232,7 +233,7 @@ const Login = (props) => {
               <div className="loginImage4">
                 <img
                   src={
-                    role === "Client" ? upImage2_client : upImage2_agency
+                    role === CLIENT ? upImage2_client : upImage2_agency
                   }
                   alt="image4"
                 />
@@ -265,7 +266,7 @@ const Login = (props) => {
                       <button
                         onClick={() => handleChangeToggle("client")}
                         className={`client__button ${
-                          role === "Client" && "active__buttonclient"
+                          role === CLIENT && "active__buttonclient"
                         }`}
                       >
                         <p>Client</p>
@@ -341,17 +342,16 @@ const Login = (props) => {
                       <div className="button_action_login">
                         <button
                           className={`submit_login ${
-                            role === "Client" &&
+                            role === CLIENT &&
                             "conditional_backgroundSubmit"
                           }`}
-                          // onClick={() => logIn(role, form)}
                           type="submit"
                         >
                           <p>Login</p>
                         </button>
                         <div
                           className={`forgot-password_login ${
-                            role === "Client" && "conditional_color"
+                            role === CLIENT && "conditional_color"
                           }`}
                           onClick={() => props.history.push("/enter-email")}
                         >
@@ -366,7 +366,7 @@ const Login = (props) => {
                   <div className="signup_toggle">
                     <div
                       className={`googleLogin ${
-                        role === "Client" &&
+                        role === CLIENT &&
                         "conditional_backgroundGoogle"
                       }`}
                     >
