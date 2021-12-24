@@ -16,6 +16,7 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../Components/Back/Back';
 import Profile_image1 from '../../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
+import { CLIENT } from "../../../shared/constants";
 
 
 function ProductDetails(props) {
@@ -292,7 +293,7 @@ function ProductDetails(props) {
                               onClick={() =>
                                 props.history.push({
                                   pathname: `/agency-profile:${value?.agencyId?._id}`,
-                                  condition: `Client`,
+                                  condition: CLIENT,
                                 })
                               }
                             >

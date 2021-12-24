@@ -6,8 +6,8 @@ import { CLIENT, AGENCY } from "../shared/constants";
 
 const CustomRoute = props => {
     const role = localStorage.getItem('role')
-        switch (props.condition) {
-
+    let switchCondition = props.condition || props?.location?.condition
+        switch (switchCondition) {
             case AGENCY:
                 role === CLIENT && alert(`You are login as a ${role}`)
                 return (

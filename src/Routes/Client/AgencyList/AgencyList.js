@@ -12,6 +12,7 @@ import { useParams } from "react-router";
 import Spinner from "../../../Components/Spinner/Spinner";
 import Navbar from "../../../Components/ClientNewestDashboard/Navbar/Navbar";
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+import { CLIENT } from "../../../shared/constants";
 
 function AgencyList(props) {
   const Role = localStorage.getItem("role");
@@ -182,7 +183,7 @@ function AgencyList(props) {
                                     onClick={() =>
                                       props.history.push({
                                         pathname: `/agency-profile:${agency._id}`,
-                                        condition: `Client`,
+                                        condition: CLIENT,
                                       })
                                     }
                                   >

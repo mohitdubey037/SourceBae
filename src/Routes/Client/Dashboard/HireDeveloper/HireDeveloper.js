@@ -129,7 +129,7 @@ function HireDeveloper(props) {
       .then(function (response) {
         props.history.replace({
           pathname: `/get-client-hire-developer`,
-          condition: `Client`,
+          condition: `client`,
         });
       });
   };
