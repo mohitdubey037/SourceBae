@@ -1,19 +1,21 @@
-import React from 'react'
-import * as helper from '../../../shared/helper';
+import React from "react";
+import * as helper from "../../../shared/helper";
 
 function RegisterAgencyForm1(props) {
-
   const setForm = (event) => {
     let { name, value } = event.target;
-    if (name === 'userPhone') {
+    if (name === "userPhone") {
       if (helper.noTextNumber(value)) {
         props.setSignupForm({
           ...props.signupForm,
           [name]: value,
         });
       }
-    }
-    else if (name === "firstName" || name === "lastName" || name === "userEmail") {
+    } else if (
+      name === "firstName" ||
+      name === "lastName" ||
+      name === "userEmail"
+    ) {
       props.setSignupForm({
         ...props.signupForm,
         [name]: value.toLowerCase(),
@@ -40,9 +42,7 @@ function RegisterAgencyForm1(props) {
           />
           <div>
             {props.errors.firstNameError && (
-              <p className="error_productForm">
-                {props.errors.firstNameError}
-              </p>
+              <p className="error_productForm">{props.errors.firstNameError}</p>
             )}
           </div>
         </div>
@@ -56,9 +56,7 @@ function RegisterAgencyForm1(props) {
             onChange={(e) => setForm(e)}
           />
           {props.errors.lastNameError && (
-            <p className="error_productForm">
-              {props.errors.lastNameError}
-            </p>
+            <p className="error_productForm">{props.errors.lastNameError}</p>
           )}
         </div>
       </div>
@@ -66,31 +64,31 @@ function RegisterAgencyForm1(props) {
       <div>
         <div className="input_with_error">
           <label>Email</label>
-          <input
-            type="email"
-            name="userEmail"
-            placeholder="Email"
-            onChange={(e) => setForm(e)}
-          />
+          <form autoComplete="new-email">
+            <input
+              type="email"
+              name="userEmail"
+              placeholder="Email"
+              onChange={(e) => setForm(e)}
+            />
+          </form>
           {props.errors.emailError && (
-            <p className="error_productForm">
-              {props.errors.emailError}
-            </p>
+            <p className="error_productForm">{props.errors.emailError}</p>
           )}
         </div>
         <div className="input_with_error">
           <label>User Name</label>
-          <input
-            type="text"
-            name="userName"
-            placeholder="Username"
-            onChange={(e) => setForm(e)}
-          />
-          <input type="text" name="username" placeholder="Username" style={{ display: 'none' }} />
+          <form autoComplete="user">
+            <input
+              type="text"
+              name="userName"
+              placeholder="Username"
+              onChange={(e) => setForm(e)}
+            />
+          </form>
+          {/* <input type="text" name="username" placeholder="Username" style={{ display: 'none' }} /> */}
           {props.errors.userNameError && (
-            <p className="error_productForm">
-              {props.errors.userNameError}
-            </p>
+            <p className="error_productForm">{props.errors.userNameError}</p>
           )}
         </div>
       </div>
@@ -107,29 +105,27 @@ function RegisterAgencyForm1(props) {
             onChange={(e) => setForm(e)}
           />
           {props.errors.phoneError && (
-            <p className="error_productForm">
-              {props.errors.phoneError}
-            </p>
+            <p className="error_productForm">{props.errors.phoneError}</p>
           )}
         </div>
 
         <div className="input_with_error">
-          <label>Create Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Create Password"
-            value={props.signupForm.password}
-            onChange={(e) => setForm(e)}
-          />
+          <form autoComplete="new-password">
+            <label>Create Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Create Password"
+              value={props.signupForm.password}
+              onChange={(e) => setForm(e)}
+            />
+          </form>
           {props.errors.passwordError && (
-            <p className="error_productForm">
-              {props.errors.passwordError}
-            </p>
+            <p className="error_productForm">{props.errors.passwordError}</p>
           )}
         </div>
       </div>
     </form>
-  )
+  );
 }
 export default RegisterAgencyForm1;

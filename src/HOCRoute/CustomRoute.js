@@ -18,7 +18,7 @@ const CustomRoute = props => {
                     )
                 );
             case CLIENT:
-                role === CLIENT && alert(`You are login as a ${role}`)
+                role === AGENCY && alert(`You are login as a ${role}`)
                 return (
                     role === CLIENT ? (
                         <Route {...props} />

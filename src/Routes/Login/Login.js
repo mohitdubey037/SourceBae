@@ -71,7 +71,6 @@ const Login = (props) => {
 
   const classes = useStyles();
   let { role } = useParams();
-  debugger;
   console.log(role,"rolee");
   if (!(role === AGENCY || role === CLIENT))
     props.history.replace("/page-not-found");
