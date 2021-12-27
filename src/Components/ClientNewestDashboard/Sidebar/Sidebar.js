@@ -55,7 +55,7 @@ function Sidebar(props) {
         <div className="container-sidebar">
             <div onClick={RouteRedirect1} className="temporary_logo">
                 {/* <img src= 'https://api.onesourcing.in/media/images/1636785308442.jpeg' alt="logo" /> */}
-                <img src='https://api.onesourcing.in/media/images/1637044803259.svg' alt="logo" />
+                <img src='https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg' alt="logo" />
             </div>
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={RouteRedirect1} >
