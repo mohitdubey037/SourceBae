@@ -46,8 +46,11 @@ instance.interceptors.response.use(
   function (error) {
     let trueError = "";
     if (error?.response?.status !== 404) {
-      if (error?.response?.data?.message === "Bearer Token not found")
+      if (error?.response?.data?.message === "Bearer Token not found" ||error?.response?.data?.message === "Unauthorized") {
+        alert(error?.response?.data?.message);
+        cookie.remove("Authorization");
         window.location.href = "/";
+      }
 
       else {
         const errors = error?.response?.data?.error ?? {};
