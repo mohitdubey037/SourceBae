@@ -16,7 +16,7 @@ import { AGENCY, CLIENT } from '../../../shared/constants';
 function Sidebar(props) {
     const dispatch = useDispatch();
 
-    const Role = localStorage.getItem('role');
+    const role = localStorage.getItem('role');
     const routerHistory = useHistory();
 
     const handleShowNotification = () => {
@@ -24,7 +24,7 @@ function Sidebar(props) {
     }
 
     const agencyProfileHandler = () => {
-        if (Role === 'agency') {
+        if (role === AGENCY) {
             routerHistory.push('/agency-profile');
         }
         else {
@@ -37,10 +37,10 @@ function Sidebar(props) {
     }
 
     const RouteRedirect1 = () => {
-        if (Role === CLIENT) {
+        if (role === CLIENT) {
             props.history.replace('/clientNewestDashboard');
         }
-        if (Role === AGENCY) {
+        if (role === AGENCY) {
             props.history.replace('/agencyNewestDashboard');
         }
     }
@@ -64,7 +64,7 @@ function Sidebar(props) {
                     </div>
                     <p>Dashboard</p>
                 </div>
-                {Role === "Client" &&
+                {role === CLIENT &&
                     <>
                         <div onClick={() => postProject()} className="postProject-icon icons">
                             <img src={postProjectIcon} alt="dashboard icon" />
@@ -86,7 +86,7 @@ function Sidebar(props) {
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
-                {Role === 'Agency' &&
+                {role === CLIENT &&
                     <div onClick={() => routerHistory.push('/shared-developers')} className="postProject-icon icons developers-icon">
                         <img src={developersIcon} alt="developers_icon" />
                         <div style={{ width: '62%', lineHeight: '13px' }}>
