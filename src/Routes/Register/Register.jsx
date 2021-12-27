@@ -222,17 +222,17 @@ const Register = (props) => {
   useEffect(() => {
     let existingRole = localStorage.getItem("role");
     let existingToken = cookie.load("Authorization");
-    if (existingRole && existingToken) {
-      props.history.push(`/login${existingRole}`);
+    setRoleState(existingRole)
+    if (existingRole && existingRole!=="" && existingToken) {
+      window.location.href = `/login/${existingRole}`
     } else {
-      setRoleState(role.toLowerCase());
+      setRoleState(role)
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("role", roleState);
     if (roleState === "" || roleState === AGENCY) {
-      console.log("hii from register");
       props.history.push(`/register/${AGENCY}`);
     } else {
       props.history.push(`/register/${CLIENT}`);
