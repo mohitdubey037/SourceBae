@@ -377,7 +377,7 @@ const Login = (props) => {
                         <span
                           onClick={() =>
                             props.history.replace(
-                              `/register:${role.toLowerCase()}`
+                              `/register/${role.toLowerCase()}`
                             )
                           }
                         >

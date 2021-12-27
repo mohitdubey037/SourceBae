@@ -235,6 +235,8 @@
   color: #707070;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 0;
 }
 
 .inputField2 .MuiFormControl-root {
@@ -244,6 +246,27 @@
   display: flex !important;
   justify-content: center !important;
 }
+
+.container_addingDeveloper {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.file_click_addingDeveloper svg {
+  font-size: 1rem;
+}
+
+.file_click_addingDeveloper p {
+  font-family: 'Segoe UI';
+  font-size: 0.7rem;
+}
+
+/* .accepted_file_para p {
+  font-family: 'Segoe UI';
+  font-size: 0.7rem;
+} */
 
 .inputField2 .MuiSelect-root {
   padding-left: 4px;
@@ -345,7 +368,7 @@
   margin-bottom: 5%;
 }
 
-.inputForm .submitButton button:hover, 
+.inputForm .submitButton button:hover,
 .submitButton_enterEmail button:hover {
   cursor: pointer;
   background-color: #45A4EA;

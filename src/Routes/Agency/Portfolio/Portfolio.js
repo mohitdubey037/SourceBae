@@ -6,7 +6,6 @@ import pastWork from '../../../assets/images/Newestdashboard/Portfolio/past_work
 import feedback from '../../../assets/images/Newestdashboard/Portfolio/feedback.svg';
 import win_more from '../../../assets/images/Newestdashboard/Portfolio/win_more.svg';
 // import { FilePicker } from "react-file-picker";
-import Dropzone from 'react-dropzone';
 import { useDropzone } from 'react-dropzone';
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 import fileUpload from '../../../assets/images/Newestdashboard/Portfolio/upload_file.svg';
@@ -40,6 +39,9 @@ function Portfolio(props) {
             </p>
         )
     });
+
+    console.log(acceptedFiles);
+    console.log(acceptedFileItems);
 
     const fileRejectionItems = fileRejections.map(({ file, errors }) => (
         <li key={file.path}>
@@ -80,11 +82,10 @@ function Portfolio(props) {
 
     const errorValidation = () => {
         const errors = {}
-        // if (!acceptedFileItems) {
-        //     console.log(acceptedFileItems);
-        //     errors.projectLogo = "Please upload a portfolio logo";
-        //     toast.error("Please Upload Portfolio logo.");
-        // }
+        if (!acceptedFileItems) {
+            errors.projectLogo = "Please upload a portfolio logo";
+            toast.error("Please Upload Portfolio logo.");
+        }
         if (form.projectName === '') {
             errors.projectName = 'Project Name is required';
             console.log('1');
@@ -122,8 +123,8 @@ function Portfolio(props) {
         const fileForm = new FormData();
         acceptedFileItems && fileForm.append(
             "files",
-            acceptedFileItems,
-            acceptedFileItems[0]._source.fileName,
+            acceptedFiles[0],
+            acceptedFiles[0].name
         );
         instance.post(`api/${Role}/media/create`, fileForm)
             .then(function (response) {

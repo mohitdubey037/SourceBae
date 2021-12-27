@@ -208,7 +208,7 @@ function AgencyNewestDashboard(props) {
                     })
                   ) : (
                     <div className={`not_found agencyNewestDashboard`}>
-                      <img src={NotFound} alt="NotFound" />
+                      <img style={{width: (!(isUserEmailVerified && isUserPhoneVerified) || !verified) && '18rem'}} src={NotFound} alt="NotFound" />
                       <p className="no_project_found">No Project Found</p>
                     </div>
                   )}

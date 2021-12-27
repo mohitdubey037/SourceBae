@@ -559,7 +559,7 @@ const Register = (props) => {
                         <span
                           onClick={() =>
                             props.history.replace(
-                              `/login:${role}`
+                              `/login/${role}`
                             )
                           }
                         >
