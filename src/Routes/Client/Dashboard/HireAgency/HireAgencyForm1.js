@@ -76,37 +76,35 @@ const HireAgencyForm1 = (props) => {
   }, []);
 
 
-  const handleClientData = () => {
-    // instance.get(`/api/${Role}/projects/all?clientId=${id}`)
-    instance.get(`/api/${Role}/clients/get/${id}`)
-      .then(function (response) {
-        // console.log(response.projects);
-        // console.log(response);        
-        setIsUserEmailVerified(response[0].isUserEmailVerified);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
+  // const handleClientData = () => {
+  //   // instance.get(`/api/${Role}/projects/all?clientId=${id}`)
+  //   instance.get(`/api/${Role}/clients/get/${id}`)
+  //     .then(function (response) {
+  //       setIsUserEmailVerified(response[0].isUserEmailVerified);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     })
+  // }
 
-  useEffect(() => {
-    handleClientData();
-  }, [])
+  // useEffect(() => {
+  //   handleClientData();
+  // }, [])
 
-  const verifyEmailPhone = () => {
-    setLoading(true);
-    instance.post(`/api/${Role}/auths/send-verification-link`, {
-      userId: id,
-      verify: "email",
-    })
-      .then(function (response) {
-        setLoading(false);
-        setCheckEmail(true);
-      })
-      .catch(err => {
-        setLoading(false);
-      })
-  };
+  // const verifyEmailPhone = () => {
+  //   setLoading(true);
+  //   instance.post(`/api/${Role}/auths/send-verification-link`, {
+  //     userId: id,
+  //     verify: "email",
+  //   })
+  //     .then(function (response) {
+  //       setLoading(false);
+  //       setCheckEmail(true);
+  //     })
+  //     .catch(err => {
+  //       setLoading(false);
+  //     })
+  // };
 
   // useEffect(() => {
   //   if (!isUserEmailVerified) {
@@ -115,9 +113,9 @@ const HireAgencyForm1 = (props) => {
   //   }
   // }, [isUserEmailVerified])
 
-  useEffect(() => {
-    handleClientData()
-  }, [])
+  // useEffect(() => {
+  //   handleClientData()
+  // }, [])
 
   const handleBack = () => {
     if (window.confirm("Do you want to discard changes?") == true) {

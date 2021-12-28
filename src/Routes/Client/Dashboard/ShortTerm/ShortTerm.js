@@ -109,8 +109,8 @@ function ShortTerm(props) {
     )
   });
 
-  console.log(acceptedFileItems, 'hii');
-  console.log(acceptedFileItems.length == 0, 'hii');
+  // console.log(acceptedFileItems, 'hii');
+  // console.log(acceptedFileItems.length == 0, 'hii');
 
   const handleServices = (event) => {
     const { className } = event.target;
