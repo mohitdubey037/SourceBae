@@ -4,15 +4,31 @@
 
 .user-project_parent {
   overflow-y: auto;
-  height: 26rem;
+  height: 28.7rem;
   margin-right: 6px;
   display: flex;
+  justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
+  /* border: 1px solid; */
 }
 
 .sidebar_parent .container-sPidebar {
   position: fixed;
   top: 0;
+}
+
+.verify_update_wait {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0rem;
+  /* border: 1px solid; */
+  margin: auto;
+  width: 75%;
+  height: 10%;
+  justify-content: space-evenly;
+  z-index: 100;
 }
 
 /* .interested_or_not.verify_or_not div {
@@ -58,22 +74,31 @@
   }
 }
 
-.mainUpdateVerify {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 1%; */
-  height: 40px;
+.down_seperator {
+  /* position: absolute; */
+  width: 40%;
+  background-color: #d5d5d5;
+  height: 1px;
+  color: green;
+  align-self: center;
 }
 
-.innerMainVerify {
-  width: 97.5%;
-  color: #fff;
+/* .mainUpdateVerify {
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #68e1fd;
+  margin: auto;
+  height: 40px;
+} */
+
+.innerMainVerify {
+  width: 100%;
+  /* color: #fff; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #68e1fd; */
   height: 100%;
   border-radius: 0.3rem;
 }
@@ -92,21 +117,39 @@
 
 .innerMainVerify p {
   font-family: 'Segoe UI';
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-top: 0;
 }
 
 .innerMainVerify span {
   color: #5c1fff;
-  font-size: 1rem;
+  /* color: black; */
+  font-family: 'Segoe UI Semibold';
+  font-size: 0.9rem;
   margin: 0 10px;
-  border-bottom: 1px solid #5c1fff;
+  /* border-bottom: 1px solid #5c1fff; */
   cursor: pointer;
 }
 
 .conditional_opacity {
   filter: opacity(0.5);
 }
+
+/* .modal-custom {
+  height: 92vh;
+  width: 74%;
+  background: rgba(9, 8, 8, 0.25);
+  position: absolute;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  background: rgba(9, 8, 8, 0.25);
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(-0.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  top: 4rem;
+} */
 
 .userprofile-circle.nav-left-item img {
   width: 100%;
@@ -151,12 +194,15 @@
     justify-content: space-between;
     height: 30rem;
   }
+
   .innerMainVerify p {
     font-size: 0.8rem;
   }
+
   .innerMainVerify span {
     font-size: 0.9rem;
   }
+
   .conditional_marginTop {
     margin-top: 10px;
   }

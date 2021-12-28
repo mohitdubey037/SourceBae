@@ -5,7 +5,9 @@ import FormPhases from './FormPhases'
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/illustration_3.svg'
 
-import { FilePicker } from 'react-file-picker'
+import { FilePicker } from 'react-file-picker';
+
+import { useDropzone } from 'react-dropzone';
 import { toast } from 'react-toastify'
 
 //axios instance
@@ -15,7 +17,7 @@ import Spinner from '../../../../Components/Spinner/Spinner';
 import './ResponsiveAgencyForm.css';
 
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 function AgencyForm3(props) {
     const dispatch = useDispatch();

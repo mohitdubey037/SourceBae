@@ -12,7 +12,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import instance from "../../../../Constants/axiosConstants";
-import { FilePicker } from "react-file-picker";
+import { useDropzone } from 'react-dropzone';
 import { toast } from "react-toastify";
 import Back from "../../../../Components/Back/Back";
 import FileUploadImage from "../../../../assets/images/Newestdashboard/Short_Term/short_term.svg";
@@ -93,6 +93,25 @@ function ShortTerm(props) {
     });
   };
 
+  const {
+    acceptedFiles,
+    getRootProps,
+    getInputProps
+  } = useDropzone({
+    accept: '.jpg, .pdf, .png, .jpeg, .xlsx'
+  });
+
+  const acceptedFileItems = acceptedFiles.map(file => {
+    return (
+      <p>
+        {file.path}
+      </p>
+    )
+  });
+
+  console.log(acceptedFileItems, 'hii');
+  console.log(acceptedFileItems.length == 0, 'hii');
+
   const handleServices = (event) => {
     const { className } = event.target;
     const toggledServices = allServices.map((service) => {
@@ -124,9 +143,10 @@ function ShortTerm(props) {
     } else if (apiData.projectDescription.length < 100) {
       err.projectDescription =
         "Project description should be more than 100 characters";
-    } else if (projectFiles === null || projectFiles === undefined) {
-      err.projectUpload = "Please upload a project Document";
-    } else if (apiData.projectRequirements === "") {
+    } else if (!acceptedFileItems) {
+      errors.projectUpload = 'Document is required'
+    }
+    else if (apiData.projectRequirements === "") {
       err.projectRequirements = "Project qequirement ain't be empty.";
     } else if (apiData.projectPaymentModel === "") {
       err.projectPaymentModel = "Please select a project Payment Model.";
@@ -154,8 +174,13 @@ function ShortTerm(props) {
     const formData = new FormData();
 
     if (validation()) {
-      formData.append("files", projectFiles, "projectFile.pdf");
-      console.log(formData);
+      // formData.append("files", projectFiles, "projectFile.pdf");
+      acceptedFileItems && formData.append(
+        "files",
+        acceptedFiles[0],
+        acceptedFiles[0].name
+      );
+      // console.log(formData);
       instance
         .post(`api/${Role}/media/create`, formData)
         .then(function (response) {
@@ -172,7 +197,7 @@ function ShortTerm(props) {
       instance
         .post(`api/${Role}/projects/create-short-term`, apiData)
         .then(function (response) {
-          props.history.replace(`/agency-list:${response.project._id}`);
+          props.history.replace(`/agency-list/${response.project._id}`);
         });
     } else {
       toast.error("Please Upload Project Document.");
@@ -183,18 +208,18 @@ function ShortTerm(props) {
     uploadMedia();
   };
 
-  const handlePaymentModel = (status) => {
-    if (status)
-      setApiData({
-        ...apiData,
-        projectPaymentModel: "Fixed Price",
-      });
-    else
-      setApiData({
-        ...apiData,
-        projectPaymentModel: "By Hour",
-      });
-  };
+  // const handlePaymentModel = (status) => {
+  //   if (status)
+  //     setApiData({
+  //       ...apiData,
+  //       projectPaymentModel: "Fixed Price",
+  //     });
+  //   else
+  //     setApiData({
+  //       ...apiData,
+  //       projectPaymentModel: "By Hour",
+  //     });
+  // };
 
   //Api Calls methods
   const getAllDomains = () => {
@@ -209,9 +234,9 @@ function ShortTerm(props) {
     });
   };
 
-  const fileHandler = (projectDoc) => {
-    setProjectFiles(projectDoc);
-  };
+  // const fileHandler = (projectDoc) => {
+  //   setProjectFiles(projectDoc);
+  // };
 
   useEffect(() => {
     getAllDomains();
@@ -220,8 +245,8 @@ function ShortTerm(props) {
   useEffect(() => {
   }, [allServices]);
 
-  useEffect(() => {
-  }, [projectFiles]);
+  // useEffect(() => {
+  // }, [projectFiles]);
 
   useEffect(() => {
     if (apiData.projectFiles.length !== 0) {
@@ -362,7 +387,7 @@ function ShortTerm(props) {
                         width: "20%",
                       }}
                     >
-                      <FilePicker
+                      {/* <FilePicker
                         extensions={["jpg", "pdf", "png", "jpeg", "xlsx"]}
                         onChange={(fileObj) => fileHandler(fileObj)}
                         onError={(errMsg) => toast.error(errMsg)}
@@ -372,14 +397,38 @@ function ShortTerm(props) {
                           src={FileUploadImage}
                           alt="image"
                         />
-                      </FilePicker>{" "}
-                      <span className="requiredStar">*</span>
+                      </FilePicker>{" "} */}
+                      {/* <div className="fileUploadButton_addingDeveloper"> */}
+                      <section className="container_addingDeveloper">
+                        <div {...getRootProps({ className: 'dropzone' })}>
+                          <input {...getInputProps()} />
+                          <div className="file_click_addingDeveloper">
+                            {/* {acceptedFileItems.length === 0 && */}
+                            {/* <> */}
+                            <img
+                              className="fileUpload_shortTerm"
+                              src={FileUploadImage}
+                              alt="image"
+                            />
+                            {/* <p className="select_file">click to select files</p> */}
+                            {/* </> */}
+                            {/* } */}
+                          </div>
+                        </div>
+                      </section>
+                      {/* </div> */}
+                      {/* <span className="requiredStar">*</span> */}
                     </div>
                   </div>
                   <div className="uploadInfo">
-                    <p>{`${projectFiles?.name ??
+                    {acceptedFileItems.length === 0 ?
+                      <p>Upload an image or a document that might be helpful in explaining your project in brief.</p>
+                      :
+                      <p>{acceptedFileItems}</p>
+                    }
+                    {/* <p>{`${projectFiles?.name ??
                       "Upload an image or a document that might be helpful in explaining your project in brief."
-                      }`}</p>
+                      }`}</p> */}
                   </div>
                 </div>
                 {errors.projectUpload && (
@@ -461,7 +510,7 @@ function ShortTerm(props) {
                           </p>
                         </div>
                       </div>
-                        {/* don't remove this....even after commenting}
+                      {/* don't remove this....even after commenting}
                       {/* <div
                         style={{ marginTop: "1rem" }}
                         className="fixedPrice"

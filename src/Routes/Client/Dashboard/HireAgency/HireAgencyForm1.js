@@ -36,11 +36,11 @@ const HireAgencyForm1 = (props) => {
 
   const [open, setOpen] = useState(false);
 
-  const onCloseModal = () => setOpen(false);
+  // const onCloseModal = () => setOpen(false);
 
-  const onOpenModal = () => {
-    setOpen(true);
-  }
+  // const onOpenModal = () => {
+  //   setOpen(true);
+  // }
 
   const [data, setData] = useState({
     stepsCompleted: 1,
@@ -108,12 +108,12 @@ const HireAgencyForm1 = (props) => {
       })
   };
 
-  useEffect(() => {
-    if (!isUserEmailVerified) {
-      console.log(isUserEmailVerified);
-      onOpenModal();
-    }
-  }, [isUserEmailVerified])
+  // useEffect(() => {
+  //   if (!isUserEmailVerified) {
+  //     console.log(isUserEmailVerified);
+  //     onOpenModal();
+  //   }
+  // }, [isUserEmailVerified])
 
   useEffect(() => {
     handleClientData()
@@ -414,7 +414,7 @@ const HireAgencyForm1 = (props) => {
             </div>
           </div>
 
-          <Modal open={open}
+          {/* <Modal open={open}
             onClose={onCloseModal}
             closeOnOverlayClick={false}
             showCloseIcon={false}
@@ -442,7 +442,7 @@ const HireAgencyForm1 = (props) => {
                 </>
               }
             </div>
-          </Modal>
+          </Modal> */}
         </>
       )}
     </>

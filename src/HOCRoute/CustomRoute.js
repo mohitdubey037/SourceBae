@@ -5,8 +5,7 @@ import { CLIENT, AGENCY } from "../shared/constants";
 
 
 const CustomRoute = props => {
-    const role = localStorage.getItem('role')
-    debugger
+    const role = localStorage.getItem('role');
     let switchCondition = props.condition || props?.location?.condition
         switch (switchCondition) {
             case AGENCY:

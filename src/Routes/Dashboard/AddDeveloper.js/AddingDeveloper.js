@@ -18,7 +18,6 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Spinner from '../../../Components/Spinner/Spinner';
 import MultiSelect from "react-multi-select-component";
 import { FaFileUpload } from 'react-icons/fa';
-import { FilePicker } from "react-file-picker";
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import { toast } from "react-toastify";
@@ -119,7 +118,7 @@ function AddingDeveloper(props) {
     }
 
     useEffect(() => {
-        console.log(developerData)
+        // console.log(developerData)
     }, [developerData])
 
     const getAllTechs = () => {
@@ -130,10 +129,10 @@ function AddingDeveloper(props) {
             })
     }
 
-    const inputFileChoosen = (projectDoc) => {
-        setResume(projectDoc);
-        setIsDisabled(false)
-    }
+    // const inputFileChoosen = (projectDoc) => {
+    //     setResume(projectDoc);
+    //     setIsDisabled(false)
+    // }
 
     const errorValidation = () => {
 
@@ -178,9 +177,9 @@ function AddingDeveloper(props) {
             return false;
     }
 
-    useEffect(() => {
-        console.log(resume);
-    }, [resume])
+    // useEffect(() => {
+    //     console.log(resume);
+    // }, [resume])
 
     const uploadMedia = () => {
         if (errorValidation()) {
@@ -191,9 +190,6 @@ function AddingDeveloper(props) {
                 acceptedFiles[0],
                 acceptedFiles[0].name
             );
-            console.log(resume)
-            console.log(resume.name)
-            console.log(formData);
             instance.post(`api/${Role}/media/create`, formData)
                 .then(function (response) {
                     setLoading(false);

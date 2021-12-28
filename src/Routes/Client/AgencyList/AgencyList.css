@@ -11,7 +11,11 @@
 }
 
 .innerProjectDetail_parent {
-  padding-top: 5rem;
+  padding-top: 4rem;
+}
+
+.innerprojectDetailsInfo_agencyList {
+  padding-left: 1rem ;
 }
 
 .backArrow_agencyList {

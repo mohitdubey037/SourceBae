@@ -18,9 +18,9 @@
     margin-right: 0;
 }
 
-.conditional_disabled {
+/* .conditional_disabled {
     filter: blur(1px);
-}
+} */
 
 .conditional_disabled:hover {
     cursor: auto;
