@@ -232,7 +232,6 @@ const Register = (props) => {
 
   useEffect(() => {
     localStorage.setItem("role", roleState);
-    console.log("role", roleState);
     if (roleState === "" || roleState === AGENCY) {
       props.history.push(`/register/${AGENCY}`);
     } else {
