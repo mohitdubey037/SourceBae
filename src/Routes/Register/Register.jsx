@@ -76,7 +76,6 @@ const Register = (props) => {
   const [apiErrors, setApiErrors] = useState(false);
 
   const [step, setStep] = useState(1);
-
   useEffect(() => {}, [apiErrors]);
 
   const setForm = (event) => {
