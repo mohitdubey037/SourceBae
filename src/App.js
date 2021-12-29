@@ -48,7 +48,6 @@ import firebaseConfig from "./firebase";
 import Notification from "./Utils/Notification";
 import store from "./Redux/Store/store";
 import { CLIENT, AGENCY } from "./shared/constants";
-import { RestfulProvider } from "restful-react";
 import { ErrorBoundary } from "react-error-boundary";
 
 const App = (props) => {
