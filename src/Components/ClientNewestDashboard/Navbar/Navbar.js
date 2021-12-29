@@ -26,21 +26,17 @@ function Navbar(props) {
     }
 
     const logoutHandler = () => {
-        // localStorage.removeItem("Authorization");
-        // localStorage.removeItem('role');
-        // localStorage.removeItem('userId');
-        // localStorage.removeItem('toggle');
         localStorage.clear();
         cookie.remove("Authorization");
-        // props.history.replace('/');
         window.location.href = 'https://sourcebae.com/';
 
     }
 
     useEffect(() => {
-        if (role === 'Client') {
+        if (role === CLIENT) {
             instance.get(`/api/${role}/clients/get/${roleId}`)
                 .then(function (response) {
+                    console.log(response);
                     setData(response);
                 })
                 .catch(err => {
@@ -50,6 +46,7 @@ function Navbar(props) {
         else {
             instance.get(`/api/${role}/agencies/get/${roleId}`)
                 .then(function (response) {
+                    console.log(response);
                     setData(response);
                 })
                 .catch((err) => {
@@ -103,7 +100,7 @@ function Navbar(props) {
             </div>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
-                    <p>{role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
+                    <p>{role === "client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
                     {role === 'Agency' ?

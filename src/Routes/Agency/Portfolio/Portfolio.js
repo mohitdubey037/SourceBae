@@ -5,7 +5,6 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import pastWork from '../../../assets/images/Newestdashboard/Portfolio/past_work.svg';
 import feedback from '../../../assets/images/Newestdashboard/Portfolio/feedback.svg';
 import win_more from '../../../assets/images/Newestdashboard/Portfolio/win_more.svg';
-// import { FilePicker } from "react-file-picker";
 import { useDropzone } from 'react-dropzone';
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 import fileUpload from '../../../assets/images/Newestdashboard/Portfolio/upload_file.svg';

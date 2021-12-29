@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from './FormPhases';
-import { FilePicker } from 'react-file-picker'
 // import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
 import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';

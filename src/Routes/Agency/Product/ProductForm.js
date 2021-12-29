@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import "./ProductForm.css";
-import { FilePicker } from 'react-file-picker'
+import { useDropzone } from 'react-dropzone';
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -163,6 +163,20 @@ function ProductForm(props) {
     });
   };
 
+  const {
+    acceptedFiles,
+    getRootProps,
+    getInputProps
+  } = useDropzone({
+    accept: '.jpg, .png, .jpeg'
+  });
+
+  const acceptedFileItems = acceptedFiles.map(file => {
+    return (
+      file.path
+    )
+  });
+
   useEffect(() => {
     if (apiData.productDescription === '') {
       setWordsRequired(100);
@@ -268,9 +282,9 @@ function ProductForm(props) {
     }
   };
 
-  const inputFileChoosen = (e) => {
-    setFile(e);
-  };
+  // const inputFileChoosen = (e) => {
+  //   setFile(e);
+  // };
 
 
   function validateInfo() {
@@ -361,7 +375,7 @@ function ProductForm(props) {
       })
     }
 
-    if (file === null) {
+    if (!acceptedFileItems) {
       err.filePicked = "Please pick up a logo for the Product";
     }
     setErrors(err);
@@ -373,11 +387,13 @@ function ProductForm(props) {
     if (validateInfo()) {
       setLoading(true);
       const formData = new FormData();
-
-      file !== null && formData.append("files", file, file?.name);
-
-      instance
-        .post(`api/${role}/media/create`, formData)
+      // file !== null && formData.append("files", file, file?.name);
+      acceptedFileItems && formData.append(
+        "files",
+        acceptedFiles[0],
+        acceptedFiles[0].name
+      );
+      instance.post(`api/${role}/media/create`, formData)
         .then(function (response) {
           setApiData({
             ...apiData,
@@ -443,7 +459,7 @@ function ProductForm(props) {
                           <p>Upload your latest logo of product  <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
-                      <FilePicker
+                      {/* <FilePicker
                         extensions={['jpg', 'png', 'jpeg']}
                         onChange={inputFileChoosen}
                         onError={errMsg => toast.error(errMsg)}
@@ -452,7 +468,26 @@ function ProductForm(props) {
                           <p style={{ marginTop: "0", color: "#707070", fontFamily: "Segoe UI", fontSize: "14px" }}>{file ? file.name : 'pick file'}</p>
                           <img src={fileIcon} alt="finish" />
                         </button>
-                      </FilePicker>
+                      </FilePicker> */}
+                      {/* <section className="container_addingDeveloper"> */}
+                      <div {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        {/* <div className="file_click_addingDeveloper"> */}
+                        {/* {acceptedFileItems.length === 0 && */}
+                        {/* <> */}
+                        {/* <img
+                              className="fileUpload_shortTerm"
+                              src={FileUploadImage}
+                              alt="image"
+                            /> */}
+                        {/* </div> */}
+                        <button className="filePicker">
+
+                          <p className="pick_file">{acceptedFileItems.length > 0 ? acceptedFileItems : 'pick file'}</p>
+                          <img src={fileIcon} alt="finish" />
+                        </button>
+                      </div>
+                      {/* </section> */}
                       {errors.filePicked && (
                         <p className="error_productForm">
                           {errors.filePicked}
@@ -505,7 +540,7 @@ function ProductForm(props) {
 
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form1} alt = "form pic" />
+                    <img className="image_div_child" src={form1} alt="form pic" />
                   </div>
                 </div>
 
@@ -631,14 +666,14 @@ function ProductForm(props) {
                         })}
                       </div>
                       {errors.productBusinessModel && (
-                        <p style={{marginLeft: '1.4rem'}} className="error_productForm">
+                        <p style={{ marginLeft: '1.4rem' }} className="error_productForm">
                           {errors.productBusinessModel}
                         </p>
                       )}
                     </section>
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form2} alt = "form_image" />
+                    <img className="image_div_child" src={form2} alt="form_image" />
                   </div>
                 </div>
 
@@ -859,7 +894,7 @@ function ProductForm(props) {
                     </section>
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form3}  alt = "Form"/>
+                    <img className="image_div_child" src={form3} alt="Form" />
                   </div>
                 </div>
 
@@ -989,7 +1024,7 @@ function ProductForm(props) {
 
                     </div>
                     <div className="image_div">
-                      <img className="image_div_child" src={form4} alt = "form4" />
+                      <img className="image_div_child" src={form4} alt="form4" />
                     </div>
 
                   </div>

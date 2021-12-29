@@ -18,7 +18,7 @@ import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/
 
 import { Modal } from 'react-responsive-modal';
 
-import {AGENCY} from "../../shared/constants";
+import { AGENCY } from "../../shared/constants";
 
 function AgencyNewestDashboard(props) {
 
@@ -58,7 +58,7 @@ function AgencyNewestDashboard(props) {
 
   useEffect(() => {
     getAllProjects();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getStepsCompleted = () => {
@@ -96,14 +96,14 @@ function AgencyNewestDashboard(props) {
   useEffect(() => {
     getStepsCompleted();
     getAgencyProfile(localStorage.getItem("userId"));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const verifyEmailPhone = () => {
     instance.post(`/api/${role}/auths/send-verification-link`, {
-        userId: agencyId,
-        verify: "email",
-      })
+      userId: agencyId,
+      verify: "email",
+    })
       .then(function (response) { });
   };
 
@@ -131,11 +131,10 @@ function AgencyNewestDashboard(props) {
         <div style={{ zIndex: visible && "-1" }} className="container-body">
           <Navbar />
           <div className="content-body">
-            <div className="content-leftBody">
-
+            <div className="verify_update_wait">
               {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
                 <div className="mainUpdateVerify">
-                  <div className="innerMainVerify">
+                  <div className="innerMainVerify please_verify" >
                     <p>
                       Please
                       <span onClick={() => verifyEmailPhone()}>
@@ -149,7 +148,7 @@ function AgencyNewestDashboard(props) {
               {(!verified || steps !== -1) && (
                 <div className="mainUpdateVerify">
                   {!verified && steps !== -1 ? (
-                    <div className="innerMainVerify">
+                    <div className="innerMainVerify please_update">
                       <p>
                         Please
                         <span onClick={() => props.history.replace(formRoute)}>
@@ -160,17 +159,21 @@ function AgencyNewestDashboard(props) {
                     </div>
                   ) : (
                     !verified && (
-                      <div
-                        className="innerMainVerify"
-                        style={{ marginTop: "1rem" }}
-                      >
+                      <div className="innerMainVerify please_wait">
                         <p>Please wait for your profile to be verified by us.</p>
                       </div>
                     )
                   )}
                 </div>
               )}
-              <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}>
+              <div className="down_seperator"></div>
+
+            </div>
+
+            <div className="content-leftBody">
+              {/* <div className="modal-custom"></div> */}
+              {/* <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}> */}
+              <div className={`user-operations`}>
                 <UserOperations
                   disabled={!verified || steps !== -1}
                   nextpage={() => quotation("quotation")}
@@ -208,7 +211,7 @@ function AgencyNewestDashboard(props) {
                     })
                   ) : (
                     <div className={`not_found agencyNewestDashboard`}>
-                      <img style={{width: (!(isUserEmailVerified && isUserPhoneVerified) || !verified) && '18rem'}} src={NotFound} alt="NotFound" />
+                      <img style={{ width: (!(isUserEmailVerified && isUserPhoneVerified) || !verified) && '18rem' }} src={NotFound} alt="NotFound" />
                       <p className="no_project_found">No Project Found</p>
                     </div>
                   )}
