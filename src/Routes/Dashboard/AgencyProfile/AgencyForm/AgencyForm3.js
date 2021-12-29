@@ -229,7 +229,7 @@ function AgencyForm3(props) {
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
                                         <FilePicker
-                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
+                                            extensions={['.jpg, .pdf, .png, .jpeg, .xlsx', '.docx']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
@@ -246,7 +246,7 @@ function AgencyForm3(props) {
                                     <div className="agencyBrochure">
                                         {/* <p>2. Upload Agency Brochure</p> */}
                                         <FilePicker
-                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
+                                            extensions={['.jpg, .pdf, .png, .jpeg, .xlsx', '.docx']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
@@ -266,7 +266,8 @@ function AgencyForm3(props) {
                                     {/* <p>3. Upload your PanCard</p> */}
                                     <div className="panCardContent">
                                         <FilePicker
-                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
+                                            // extensions={['pdf', 'jpg', 'png', 'jpeg']}
+                                            extensions={['.jpg, .pdf, .png, .jpeg, .xlsx, .docx']}
                                             onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
                                             onError={error => handleUploadError(error)}>
                                             <button className="pick_btn">
