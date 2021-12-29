@@ -166,7 +166,9 @@ function AgencyNewestDashboard(props) {
                   )}
                 </div>
               )}
-              <div className="down_seperator"></div>
+              {(isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1) &&
+                <div className="down_seperator"></div>
+              }
 
             </div>
 
