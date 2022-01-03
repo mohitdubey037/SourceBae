@@ -86,6 +86,14 @@ function Sidebar(props) {
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
+                {/* {role === CLIENT &&
+                    <div onClick={() => routerHistory.push('/shared-developers')} className="postProject-icon icons developers-icon">
+                        <img src={developersIcon} alt="developers_icon" />
+                        <div style={{ width: '62%', lineHeight: '13px' }}>
+                            <p>Developer Request</p>
+                        </div>
+                    </div>
+                } */}
                 <div onClick={handleLogout} className="setting-icon icons">
                     <img src={logoutIcon} alt="icon" />
                     <p>Log Out</p>

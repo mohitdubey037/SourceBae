@@ -11,48 +11,48 @@ import './ClientNewestDashboard.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+// import { makeStyles, useTheme } from '@material-ui/core/styles';
 import instance from '../../Constants/axiosConstants';
 import * as actions from '../../Redux/action/addProject';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import { connect } from 'react-redux';
 
-const MenuProps = {
-    getContentAnchorEl: () => null,
-    PaperProps: {
-        style: {
-            maxHeight: 215,
-            width: 200,
-            top: 360
-        },
-    },
-};
+// const MenuProps = {
+//     getContentAnchorEl: () => null,
+//     PaperProps: {
+//         style: {
+//             maxHeight: 215,
+//             width: 200,
+//             top: 360
+//         },
+//     },
+// };
 
-const useStyles = makeStyles((theme) => ({
-    button: {
-        display: 'block',
-        marginTop: theme.spacing(2),
-    },
-    formControl: {
-        margin: theme.spacing(0),
-        minWidth: 100,
-    },
-    filterValue: {
-        fontWeight: '100',
-    },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    }
-}));
+// const useStyles = makeStyles((theme) => ({
+//     button: {
+//         display: 'block',
+//         marginTop: theme.spacing(2),
+//     },
+//     formControl: {
+//         margin: theme.spacing(0),
+//         minWidth: 100,
+//     },
+//     filterValue: {
+//         fontWeight: '100',
+//     },
+//     selectEmpty: {
+//         marginTop: theme.spacing(2),
+//     }
+// }));
 
-function getStyles(singleTechObject, allTechnologies, theme) {
-    return {
-        fontWeight:
-            allTechnologies.indexOf(singleTechObject) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    };
-}
+// function getStyles(singleTechObject, allTechnologies, theme) {
+//     return {
+//         fontWeight:
+//             allTechnologies.indexOf(singleTechObject) === -1
+//                 ? theme.typography.fontWeightRegular
+//                 : theme.typography.fontWeightMedium,
+//     };
+// }
 
 function ClientNewestDashboard(props) {
 
@@ -63,15 +63,19 @@ function ClientNewestDashboard(props) {
     const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem("userId");
 
-    const [open, setOpen] = React.useState(false);
-    const [openmodal, setOpenModal] = useState(false);
+    // const [open, setOpen] = React.useState(false);
+    // const [openmodal, setOpenModal] = useState(false);
     const [projects, setProjects] = useState([]);
     const [statuses, setStatuses] = useState([]);
     const [visible, setVisible] = useState(false);
+    const [isUserEmailVerified, setUserEmailVerified] = useState(true);
+    const [isUserPhoneVerified, setUserPhoneVerified] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
             .then(function (response) {
+                console.log(response);
                 setProjects(response.projects);
                 setStatuses(response.statuses);
             })
@@ -83,7 +87,6 @@ function ClientNewestDashboard(props) {
         setVisible(status);
     };
 
-
     useEffect(() => {
     }, [statuses, projects, visible])
 
@@ -92,21 +95,76 @@ function ClientNewestDashboard(props) {
     }, [])
 
     useEffect(() => {
-    }, [visible])
+    }, [visible]);
+
+    const handleClientData = () => {
+        // instance.get(`/api/${Role}/projects/all?clientId=${id}`)
+        instance.get(`/api/${Role}/clients/get/${clientId}`)
+            .then(function (response) {
+                console.log(response);
+                setUserEmailVerified(response[0].isUserEmailVerified);
+                setUserPhoneVerified(response[0].isUserPhoneVerified);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        handleClientData();
+    }, [])
+
+    const verifyEmailPhone = () => {
+        // setLoading(true);
+        instance.post(`/api/${Role}/auths/send-verification-link`, {
+            userId: clientId,
+            verify: "email",
+        })
+            .then(function (response) {
+                // setLoading(false);
+                // setCheckEmail(true);
+            })
+            // .catch(err => {
+            //     setLoading(false);
+            // })
+    };
+
+    // useEffect(() => {
+    //   if (!isUserEmailVerified) {
+    //     console.log(isUserEmailVerified);
+    //     onOpenModal();
+    //   }
+    // }, [isUserEmailVerified])
+
+    useEffect(() => {
+        handleClientData()
+    }, [])
 
     return (
         <>
-
             <Sidebar notificationVisible={(status) => notificationVisible(status)} />
             <div style={{ zIndex: visible && '-1', backgroundImage: Role === 'Client' && 'linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%)' }} className="container-body">
                 <Navbar />
                 <div className="content-body">
+                    {!(isUserEmailVerified && isUserPhoneVerified) && (
+                        // <div className="mainUpdateVerify">
+                            <div className="innerMainVerify innerMainVerify_clientDashboard please_verify" >
+                                <p>
+                                    Please
+                                    <span onClick={() => verifyEmailPhone()}>
+                                        Verify Phone & Email
+                                    </span>
+                                    to use our services.
+                                </p>
+                            </div>
+                        // </div>
+                    )}
                     <div className="content-leftBody">
                         <div className="user-operations">
-                            <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} />
-                            <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} />
-                            <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} />
-                            <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} />
+                            <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
+                            <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
+                            <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
+                            <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
                         </div>
                         {projects.length > 0 &&
                             <div className="graphic">
@@ -124,6 +182,7 @@ function ClientNewestDashboard(props) {
                             <div className="user-project-details">
                                 {
                                     projects.length > 0 ? projects.slice(0, 4).map((p, index) => {
+
                                         return (
                                             <>
                                                 <UserProject
