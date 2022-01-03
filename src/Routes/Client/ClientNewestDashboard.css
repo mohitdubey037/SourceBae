@@ -64,6 +64,7 @@
 
 .container-body>.content-body>.content-leftBody {
   min-width: 75%;
+  /* position: relative; */
 }
 
 @media (max-width: 768px) {

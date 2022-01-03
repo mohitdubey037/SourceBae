@@ -173,7 +173,9 @@ function AgencyNewestDashboard(props) {
             </div>
 
             <div className="content-leftBody">
-              {/* <div className="modal-custom"></div> */}
+              {/* {(isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1) &&
+                <div className="modal-custom"></div>
+              } */}
               {/* <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}> */}
               <div className={`user-operations`}>
                 <UserOperations
