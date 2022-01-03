@@ -16,6 +16,7 @@ import instance from '../../../Constants/axiosConstants';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Back from '../../../Components/Back/Back';
+import VerifyModal from "../../../Components/VerifyModal/VerifyModal";
 
 import * as helper from "../../../shared/helper";
 
@@ -92,6 +93,8 @@ const bType = [
 function ProductAgencies(props) {
 
     const Role = localStorage.getItem('role');
+    const id = localStorage.getItem('userId');
+
     const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
     const [fundName, setFundName] = React.useState('');
@@ -520,6 +523,8 @@ function ProductAgencies(props) {
                     </div>
                 </div>
             </Modal>
+
+            <VerifyModal Role={Role} id={id} />
         </>
     )
 }

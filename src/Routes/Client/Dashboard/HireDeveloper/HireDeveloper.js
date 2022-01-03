@@ -12,6 +12,8 @@ import Back from '../../../../Components/Back/Back';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import DownImage from '../../../../assets/images/Newestdashboard/Register/signup_down.svg';
 
+import VerifyModal from "../../../../Components/VerifyModal/VerifyModal";
+
 const BlueRadio = withStyles({
   root: {
     color: "#3A3A3A",
@@ -23,6 +25,10 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function HireDeveloper(props) {
+
+  const Role = localStorage.getItem('role');
+  const id = localStorage.getItem('userId');
+
   const [apiData, setApiData] = useState({
     developerRolesRequired: [],
     numberOfResourcesRequired: "",
@@ -32,7 +38,7 @@ function HireDeveloper(props) {
     averageBudget: "",
     expectedStartDate: "",
     contractPeriod: "3 Months",
-    clientId: localStorage.getItem("userId")
+    clientId: id
   });
   const [billing, setBilling] = useState(1);
 
@@ -469,6 +475,8 @@ function HireDeveloper(props) {
           </div>
         </div>
       </div>
+
+      <VerifyModal Role={Role} id={id} />
     </>
   );
 }

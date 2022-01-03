@@ -5,6 +5,8 @@ import "./ShortTerm.css";
 import fixed from "../../../../assets/images/Newestdashboard/Short_Term/payment.svg";
 import hour from "../../../../assets/images/Newestdashboard/Short_Term/hourglass.svg";
 
+import VerifyModal from "../../../../Components/VerifyModal/VerifyModal";
+
 //material-ui
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -729,6 +731,8 @@ function ShortTerm(props) {
           </div>
         </div>
       </div>
+
+      <VerifyModal Role={Role} id={id} />
     </>
   );
 }

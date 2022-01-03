@@ -65,12 +65,35 @@ function ClientNewestDashboard(props) {
 
     // const [open, setOpen] = React.useState(false);
     // const [openmodal, setOpenModal] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [projects, setProjects] = useState([]);
     const [statuses, setStatuses] = useState([]);
     const [visible, setVisible] = useState(false);
+    const [isUserVerified, setUserVerified] = useState(false);
     const [isUserEmailVerified, setUserEmailVerified] = useState(true);
     const [isUserPhoneVerified, setUserPhoneVerified] = useState(true);
-    const [loading, setLoading] = useState(false);
+
+    const handleClientData = () => {
+        instance.get(`/api/${Role}/clients/get/${clientId}`)
+            .then(function (response) {
+                console.log(response[0].isUserEmailVerified);
+                console.log(response[0].isUserPhoneVerified);
+                setUserVerified(response[0].isUserEmailVerified || response[0].isUserPhoneVerified);
+                setUserEmailVerified(response[0].isUserEmailVerified);
+                setUserPhoneVerified(response[0].isUserPhoneVerified);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        console.log(isUserVerified);
+    },[isUserVerified])
+
+    useEffect(() => {
+        handleClientData();
+    }, []);
 
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
@@ -92,79 +115,24 @@ function ClientNewestDashboard(props) {
 
     useEffect(() => {
         getAllProjects();
-    }, [])
+    }, []);
 
     useEffect(() => {
     }, [visible]);
 
-    const handleClientData = () => {
-        // instance.get(`/api/${Role}/projects/all?clientId=${id}`)
-        instance.get(`/api/${Role}/clients/get/${clientId}`)
-            .then(function (response) {
-                console.log(response);
-                setUserEmailVerified(response[0].isUserEmailVerified);
-                setUserPhoneVerified(response[0].isUserPhoneVerified);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    useEffect(() => {
-        handleClientData();
-    }, [])
-
-    const verifyEmailPhone = () => {
-        // setLoading(true);
-        instance.post(`/api/${Role}/auths/send-verification-link`, {
-            userId: clientId,
-            verify: "email",
-        })
-            .then(function (response) {
-                // setLoading(false);
-                // setCheckEmail(true);
-            })
-            // .catch(err => {
-            //     setLoading(false);
-            // })
-    };
-
-    // useEffect(() => {
-    //   if (!isUserEmailVerified) {
-    //     console.log(isUserEmailVerified);
-    //     onOpenModal();
-    //   }
-    // }, [isUserEmailVerified])
-
-    useEffect(() => {
-        handleClientData()
-    }, [])
-
     return (
         <>
-            <Sidebar notificationVisible={(status) => notificationVisible(status)} />
+            <Sidebar isUserVerified={isUserVerified} notificationVisible={(status) => notificationVisible(status)} />
             <div style={{ zIndex: visible && '-1', backgroundImage: Role === 'Client' && 'linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%)' }} className="container-body">
                 <Navbar />
                 <div className="content-body">
-                    {!(isUserEmailVerified && isUserPhoneVerified) && (
-                        // <div className="mainUpdateVerify">
-                            <div className="innerMainVerify innerMainVerify_clientDashboard please_verify" >
-                                <p>
-                                    Please
-                                    <span onClick={() => verifyEmailPhone()}>
-                                        Verify Phone & Email
-                                    </span>
-                                    to use our services.
-                                </p>
-                            </div>
-                        // </div>
-                    )}
+                    
                     <div className="content-leftBody">
                         <div className="user-operations">
-                            <UserOperations nextpage={() => props.history.push("/hire-developer")} text='Hire Developer' img={HireDeveloperIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
-                            <UserOperations nextpage={() => props.history.push("/hire-agency-form-one")} text="Hire Agency" img={HireAgencyIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
-                            <UserOperations nextpage={() => props.history.push("/short-term")} text="Short Term Project" img={ShortTermProjectIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
-                            <UserOperations nextpage={() => props.history.push("/product-agencies")} text="Interested To Investment" img={InvestmentIcon} disabled={!(isUserEmailVerified && isUserPhoneVerified)}/>
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/hire-developer", state:{isUserVerified}})} text='Hire Developer' img={HireDeveloperIcon} />
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/hire-agency-form-one", state:{isUserVerified}})} text="Hire Agency" img={HireAgencyIcon} />
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/short-term", state:{isUserVerified}})} text="Short Term Project" img={ShortTermProjectIcon} />
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/product-agencies", state:{isUserVerified}})} text="Interested To Investment" img={InvestmentIcon} />
                         </div>
                         {projects.length > 0 &&
                             <div className="graphic">

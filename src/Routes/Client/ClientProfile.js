@@ -17,6 +17,8 @@ import Profile_image1 from '../../assets/images/Newestdashboard/Client_Profile/U
 import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
 import { FaCamera } from "react-icons/fa";
 
+import VerifyModal from "../../Components/VerifyModal/VerifyModal";
+
 function ClientProfile() {
 
     const formValueKey = {
@@ -53,7 +55,6 @@ function ClientProfile() {
     let logoURL;
 
     const getClientProfileApi = () => {
-        const clientId = localStorage.getItem("userId")
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
                 let temp = {
@@ -244,6 +245,7 @@ function ClientProfile() {
                         </div>
                     </div>
             }
+        <VerifyModal Role={Role} id={clientId} />
         </>
     );
 }

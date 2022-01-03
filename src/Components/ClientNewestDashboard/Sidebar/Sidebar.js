@@ -28,12 +28,25 @@ function Sidebar(props) {
             routerHistory.push('/agency-profile');
         }
         else {
-            routerHistory.push('/client-profile');
+            routerHistory.push({
+                pathname: '/client-profile',
+                state: props.isUserVerified
+            });
         }
     }
 
+    const handleGetClientHireDeveloper = () => {
+        routerHistory.push({
+            pathname: '/get-client-hire-developer',
+            state: props.isUserVerified
+        })
+    }
+
     const postProject = () => {
-        routerHistory.push('/hire-agency-form-one')
+        routerHistory.push({
+            pathname: '/hire-agency-form-one',
+            state: props.isUserVerified
+        })
     }
 
     const RouteRedirect1 = () => {
@@ -66,11 +79,11 @@ function Sidebar(props) {
                 </div>
                 {role === CLIENT &&
                     <>
-                        <div onClick={() => postProject()} className="postProject-icon icons">
+                        <div onClick={postProject} className="postProject-icon icons">
                             <img src={postProjectIcon} alt="dashboard icon" />
                             <p>Post Project</p>
                         </div>
-                        <div onClick={() => routerHistory.push('/get-client-hire-developer')} className="postProject-icon icons developers-icon">
+                        <div onClick={handleGetClientHireDeveloper} className="postProject-icon icons developers-icon">
                             <img src={developersIcon} alt="developers_icon" />
                             <div style={{ width: '62%', lineHeight: '13px' }}>
                                 <p>Developer Request</p>
@@ -78,7 +91,7 @@ function Sidebar(props) {
                         </div>
                     </>
                 }
-                <div onClick={() => agencyProfileHandler()} className="profile-icon icons">
+                <div onClick={agencyProfileHandler} className="profile-icon icons">
                     <img src={profileIcon} alt="dashboard icon" />
                     <p>Profile</p>
                 </div>

@@ -5,14 +5,13 @@ import Radio from "@material-ui/core/Radio";
 import { withStyles } from "@material-ui/core/styles";
 import Back from "../../../../Components/Back/Back";
 
-import { Modal } from "react-responsive-modal";
-
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from "../../../../Components/Spinner/Spinner";
 import illustration from "../../../../assets/images/Newestdashboard/Hire-Agency-Form/illustration.svg";
 import UpImage from "../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg";
 import DownImage from "../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg";
 import "./HireAgencyForm1.css";
+import VerifyModal from "../../../../Components/VerifyModal/VerifyModal";
 
 const BlueRadio = withStyles({
   root: {
@@ -25,22 +24,11 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 const HireAgencyForm1 = (props) => {
-  // let { projectId, agencyId } = useParams();
-  const [loading, setLoading] = useState(false);
-  const [isUserEmailVerified, setIsUserEmailVerified] = useState(false);
-  const [checkEmail, setCheckEmail] = useState(false);
-
   const id = localStorage.getItem("userId");
   const Role = localStorage.getItem('role');
+  
+  const [loading, setLoading] = useState(false);
   const [words, setWords] = useState(0);
-
-  const [open, setOpen] = useState(false);
-
-  // const onCloseModal = () => setOpen(false);
-
-  // const onOpenModal = () => {
-  //   setOpen(true);
-  // }
 
   const [data, setData] = useState({
     stepsCompleted: 1,
@@ -74,48 +62,6 @@ const HireAgencyForm1 = (props) => {
       setData(props.location.state.agencyForm1);
     }
   }, []);
-
-
-  // const handleClientData = () => {
-  //   // instance.get(`/api/${Role}/projects/all?clientId=${id}`)
-  //   instance.get(`/api/${Role}/clients/get/${id}`)
-  //     .then(function (response) {
-  //       setIsUserEmailVerified(response[0].isUserEmailVerified);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   handleClientData();
-  // }, [])
-
-  // const verifyEmailPhone = () => {
-  //   setLoading(true);
-  //   instance.post(`/api/${Role}/auths/send-verification-link`, {
-  //     userId: id,
-  //     verify: "email",
-  //   })
-  //     .then(function (response) {
-  //       setLoading(false);
-  //       setCheckEmail(true);
-  //     })
-  //     .catch(err => {
-  //       setLoading(false);
-  //     })
-  // };
-
-  // useEffect(() => {
-  //   if (!isUserEmailVerified) {
-  //     console.log(isUserEmailVerified);
-  //     onOpenModal();
-  //   }
-  // }, [isUserEmailVerified])
-
-  // useEffect(() => {
-  //   handleClientData()
-  // }, [])
 
   const handleBack = () => {
     if (window.confirm("Do you want to discard changes?") == true) {
@@ -180,7 +126,6 @@ const HireAgencyForm1 = (props) => {
         });
     }
   };
-
 
   return (
     <>
@@ -412,35 +357,7 @@ const HireAgencyForm1 = (props) => {
             </div>
           </div>
 
-          {/* <Modal open={open}
-            onClose={onCloseModal}
-            closeOnOverlayClick={false}
-            showCloseIcon={false}
-            classNames={{
-              overlay: 'customOverlayAgencyProduct',
-              modal: 'customModalClientOneHireDeveloper',
-            }} center>
-
-            <div className="want_to_accept">
-              {checkEmail ?
-                <div className="connect_or_not">
-                  <p>Please check Your Email</p>
-                </div>
-                :
-                <>
-                  <div className="connect_or_not">
-                    <h6>Please Verify Your Email</h6>
-                  </div>
-
-                  <div className='interested_or_not verify_or_not'>
-                    <div className="update_now" onClick={verifyEmailPhone}>
-                      <p>Verify Now</p>
-                    </div>
-                  </div>
-                </>
-              }
-            </div>
-          </Modal> */}
+          <VerifyModal Role={Role} id={id} />
         </>
       )}
     </>
