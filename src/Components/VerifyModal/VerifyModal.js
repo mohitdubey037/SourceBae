@@ -7,25 +7,21 @@ import Spinner from "../../Components/Spinner/Spinner";
 
 function VerifyModal(props) {
 
+    var isUserVerified = (localStorage.getItem('userVerified') === 'true');
     const [loading, setLoading] = useState(false);
 
     const [checkEmail, setCheckEmail] = useState(false);
     const [open, setOpen] = useState(false);
-    const [isUserVerified, setUserVerified] = useState(props.location.state.isUserVerified);
 
     const onOpenModal = () => {
         setOpen(true);
     }
 
     useEffect(() => {
-        setUserVerified(props.location.state.isUserVerified)
-    }, []);
-
-    useEffect(() => {
         if (!isUserVerified) {
-            onOpenModal();
+            onOpenModal()
         }
-    }, [isUserVerified])
+    }, [])
 
     const verifyEmailPhone = () => {
         setLoading(true);

@@ -29,7 +29,6 @@ function Navbar(props) {
         localStorage.clear();
         cookie.remove("Authorization");
         window.location.href = 'https://sourcebae.com/';
-
     }
 
     useEffect(() => {

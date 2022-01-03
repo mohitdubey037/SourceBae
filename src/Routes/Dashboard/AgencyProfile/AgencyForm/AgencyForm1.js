@@ -17,6 +17,7 @@ import { FaFileUpload } from 'react-icons/fa';
 
 import './ResponsiveAgencyForm.css';
 
+
 function AgencyForm1(props) {
 
     const dispatch = useDispatch();
@@ -24,6 +25,8 @@ function AgencyForm1(props) {
     const AgencyForm = useSelector((state) => state.AgencyForm);
     const Role = localStorage.getItem('role');
     const api_param_const = "agencies";
+
+    const [showExitPrompt, setShowExitPrompt] = useState(false);
 
     const [loading, setLoading] = useState(false);
     const [steps, setSteps] = useState('');
@@ -72,7 +75,6 @@ function AgencyForm1(props) {
         )
     });
 
-    console.log(acceptedFileItems);
 
     const handleValidation = () => {
         const errors = {};
@@ -143,9 +145,9 @@ function AgencyForm1(props) {
             return false;
     };
 
-    const inputFileChoosen = (projectDoc) => {
-        setLogo(projectDoc);
-    }
+    // const inputFileChoosen = (projectDoc) => {
+    //     setLogo(projectDoc);
+    // }
 
     const uploadMedia = () => {
         if (handleValidation()) {
@@ -207,6 +209,7 @@ function AgencyForm1(props) {
         }
     }
 
+
     useEffect(() => {
         getStepsCompleted();
     }, []);
@@ -255,9 +258,9 @@ function AgencyForm1(props) {
         }
     }
 
-    const handleUploadError = (error) => {
-        toast.error(error)
-    }
+    // const handleUploadError = (error) => {
+    //     toast.error(error)
+    // }
 
     useEffect(() => {
         setFormData({

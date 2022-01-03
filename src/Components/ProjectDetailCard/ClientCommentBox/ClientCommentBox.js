@@ -429,7 +429,7 @@ const ClientCommentBox = (props) => {
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         minDate={new Date(moment(quotationFormData.projectStartDateByClient).add('1', 'days'))}
-
+                        
                         value={quotationFormData.projectDelayedStartDateByClient}
                         disabled={quotationFormData.projectStartDateByClient === '' ? true : quotationFormData.projectStartDateByClient === 'Invalid Date' ? true : quotationFormData.projectStartDateByClient === null ? true : false
                         }

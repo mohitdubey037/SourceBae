@@ -79,6 +79,7 @@ function ClientNewestDashboard(props) {
                 console.log(response[0].isUserEmailVerified);
                 console.log(response[0].isUserPhoneVerified);
                 setUserVerified(response[0].isUserEmailVerified || response[0].isUserPhoneVerified);
+                localStorage.setItem('userVerified', (response[0].isUserEmailVerified || response[0].isUserPhoneVerified))
                 setUserEmailVerified(response[0].isUserEmailVerified);
                 setUserPhoneVerified(response[0].isUserPhoneVerified);
             })

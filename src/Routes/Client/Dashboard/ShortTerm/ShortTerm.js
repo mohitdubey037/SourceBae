@@ -54,6 +54,12 @@ const BlueRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function ShortTerm(props) {
+
+  useEffect(() => {
+    window.onbeforeunload = function () {
+        return "you can not refresh the page";
+    }
+}, [])
   const Role = localStorage.getItem("role");
   const id = localStorage.getItem("userId");
 
