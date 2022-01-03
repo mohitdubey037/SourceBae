@@ -16,14 +16,14 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../Components/Back/Back';
 import Profile_image1 from '../../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
+import { CLIENT } from "../../../shared/constants";
 
 
 function ProductDetails(props) {
-  const condition = props.location.condition;
   const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
 
   let { productId } = useParams();
-  productId = productId ? helper.cleanParam(productId) : "";
+  productId = productId || "";
 
   const Role = localStorage.getItem("role");
   const [loading, setLoading] = useState(false)
@@ -293,7 +293,7 @@ function ProductDetails(props) {
                               onClick={() =>
                                 props.history.push({
                                   pathname: `/agency-profile:${value?.agencyId?._id}`,
-                                  condition: `Client`,
+                                  condition: CLIENT,
                                 })
                               }
                             >
@@ -464,7 +464,7 @@ function ProductDetails(props) {
                           <div className="moreAgencyList_productDetails">
                             <div style={{ cursor: "pointer" }}
                               onClick={() => props.history.push(
-                                `/product-details/:${value._id}`
+                                `/product-details/${value._id}`
                               )}
                               className="moreAgencyCard_productDetails"
                             >

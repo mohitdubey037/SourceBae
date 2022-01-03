@@ -116,7 +116,7 @@ function EnterEmail(props) {
                         <div style={{ marginTop: '20px' }}>
                             <FormControl component="fieldset">
                                 <FormLabel component="legend" style={{ display: "flex", justifyContent: "center" }}>Role</FormLabel>
-                                <RadioGroup aria-label="Role" className="roleform" name="Role" value={Role} onChange={handleRole} style={{ display: "flex", flexDirection: "row" }} style={{ color: '#015F9A' }}>
+                                <RadioGroup aria-label="Role" className="roleform" name="Role" value={Role} onChange={handleRole} style={{ color: '#015F9A' }}>
                                     <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
                                     <FormControlLabel value="Client" control={<Radio />} label="Client" />
                                 </RadioGroup>

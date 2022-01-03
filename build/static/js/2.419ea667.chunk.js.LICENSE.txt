@@ -64,6 +64,8 @@ and limitations under the License.
      *  Released under the MIT license
      */
 
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+
 /**
  * @license
  * Copyright 2017 Google LLC

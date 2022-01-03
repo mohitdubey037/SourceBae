@@ -17,7 +17,6 @@ function HireAgencyForm3(props) {
 
     const Role = localStorage.getItem('role');
     let { projectId } = useParams();
-    projectId = helper.cleanParam(projectId);
     const [errors, setErrors] = useState({})
 
     const [loading, setLoading] = useState(true);

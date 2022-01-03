@@ -11,11 +11,12 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NotificationPanel from '../../Notification/NotificationPanel';
 import { useDispatch } from 'react-redux';
+import { AGENCY, CLIENT } from '../../../shared/constants';
 
 function Sidebar(props) {
     const dispatch = useDispatch();
 
-    const Role = localStorage.getItem('role');
+    const role = localStorage.getItem('role');
     const routerHistory = useHistory();
 
     const handleShowNotification = () => {
@@ -23,7 +24,7 @@ function Sidebar(props) {
     }
 
     const agencyProfileHandler = () => {
-        if (Role === 'Agency') {
+        if (role === AGENCY) {
             routerHistory.push('/agency-profile');
         }
         else {
@@ -36,22 +37,17 @@ function Sidebar(props) {
     }
 
     const RouteRedirect1 = () => {
-        if (Role === "Client") {
+        if (role === CLIENT) {
             props.history.replace('/clientNewestDashboard');
         }
-        if (Role === "Agency") {
+        if (role === AGENCY) {
             props.history.replace('/agencyNewestDashboard');
         }
     }
 
     const handleLogout = () => {
-        // localStorage.removeItem("Authorization");
-        // localStorage.removeItem('role');
-        // localStorage.removeItem('userId');
-        // localStorage.removeItem('toggle');
         cookie.remove("Authorization");
         localStorage.clear();
-        // routerHistory.replace('/');
         window.location.href = 'https://sourcebae.com/';
     }
 
@@ -59,7 +55,7 @@ function Sidebar(props) {
         <div className="container-sidebar">
             <div onClick={RouteRedirect1} className="temporary_logo">
                 {/* <img src= 'https://api.onesourcing.in/media/images/1636785308442.jpeg' alt="logo" /> */}
-                <img src='https://api.onesourcing.in/media/images/1637044803259.svg' alt="logo" />
+                <img src='https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg' alt="logo" />
             </div>
             <div className="sidebar-menu">
                 <div className="dashboard-icon icons" onClick={RouteRedirect1} >
@@ -68,7 +64,7 @@ function Sidebar(props) {
                     </div>
                     <p>Dashboard</p>
                 </div>
-                {Role === "Client" &&
+                {role === CLIENT &&
                     <>
                         <div onClick={() => postProject()} className="postProject-icon icons">
                             <img src={postProjectIcon} alt="dashboard icon" />
@@ -90,14 +86,6 @@ function Sidebar(props) {
                     <img src={notificationIcon} alt="dashboard icon" />
                     <p>Notification</p>
                 </div>
-                {Role === 'Agency' &&
-                    <div onClick={() => routerHistory.push('/shared-developers')} className="postProject-icon icons developers-icon">
-                        <img src={developersIcon} alt="developers_icon" />
-                        <div style={{ width: '62%', lineHeight: '13px' }}>
-                            <p>Developer Request</p>
-                        </div>
-                    </div>
-                }
                 <div onClick={handleLogout} className="setting-icon icons">
                     <img src={logoutIcon} alt="icon" />
                     <p>Log Out</p>

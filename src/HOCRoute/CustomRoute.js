@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Redirect, Route, withRouter } from "react-router-dom";
-import * as helper from "../shared/helper"
+import React from "react";
+import { Route, withRouter } from "react-router-dom";
+import { CLIENT, AGENCY } from "../shared/constants";
 
-const CustomRoute = props => {
-    const Role = helper.capitalize(localStorage.getItem('role'));
-        switch (props.condition) {
-
-            case "Agency":
-                Role === "Client" && alert(`You are login as a ${Role}`)
-                return (
-                    helper.capitalize(Role) === "Agency" ? (
-                        <Route {...props} />
-                    ) : (
-                        // <Redirect to="/page-not-found" />
-                        window.location.href = 'https://sourcebae.com/'
-                    )
-                );
-            case "Client":
-                helper.capitalize(Role) === "Agency" && alert(`You are login as a ${Role}`)
-                return (
-                    Role === "Client" ? (
-                        <Route {...props} />
-                    ) : (
-                        // <Redirect to="/page-not-found" />
-                        window.location.href = 'https://sourcebae.com/'
-                    )
-                );
-            default:
-                // return (<Redirect to='page-not-found'/>);
-                window.location.href = 'https://sourcebae.com/';
-        }
+const CustomRoute = (props) => {
+  const role = localStorage.getItem("role");
+  let switchCondition = props.condition || props?.location?.condition;
+  switch (switchCondition) {
+    case AGENCY:
+      role === CLIENT && alert(`You are login as a ${role}`);
+      return role === AGENCY ? (
+        <Route {...props} />
+      ) : (
+        (window.location.href = "https://sourcebae.com/")
+      );
+    case CLIENT:
+      role === AGENCY && alert(`You are login as a ${role}`);
+      return role === CLIENT ? (
+        <Route {...props} />
+      ) : (
+        (window.location.href = "https://sourcebae.com/")
+      );
+    default:
+      window.location.href = "https://sourcebae.com/";
+  }
 };
 
 export default withRouter(CustomRoute);

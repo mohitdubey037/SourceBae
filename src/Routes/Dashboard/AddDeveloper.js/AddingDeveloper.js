@@ -12,11 +12,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import instance from "../../../Constants/axiosConstants";
+import { useDropzone } from 'react-dropzone';
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Spinner from '../../../Components/Spinner/Spinner';
 import MultiSelect from "react-multi-select-component";
-import { FilePicker } from "react-file-picker";
+import { FaFileUpload } from 'react-icons/fa';
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import { toast } from "react-toastify";
@@ -76,6 +77,25 @@ function AddingDeveloper(props) {
     useEffect(() => {
     }, [developerData])
 
+    const {
+        acceptedFiles,
+        getRootProps,
+        getInputProps
+    } = useDropzone({
+        accept: '.pdf,.doc,.docx'
+    });
+
+    const acceptedFileItems = acceptedFiles.map(file => {
+        return (
+            <p>
+                {file.path}
+            </p>
+        )
+    });
+
+    console.log(acceptedFileItems)
+
+    
 
     const handleChange = (event, type) => {
         const { name, value } = event.currentTarget
@@ -98,7 +118,7 @@ function AddingDeveloper(props) {
     }
 
     useEffect(() => {
-        console.log(developerData)
+        // console.log(developerData)
     }, [developerData])
 
     const getAllTechs = () => {
@@ -109,10 +129,10 @@ function AddingDeveloper(props) {
             })
     }
 
-    const inputFileChoosen = (projectDoc) => {
-        setResume(projectDoc);
-        setIsDisabled(false)
-    }
+    // const inputFileChoosen = (projectDoc) => {
+    //     setResume(projectDoc);
+    //     setIsDisabled(false)
+    // }
 
     const errorValidation = () => {
 
@@ -132,7 +152,7 @@ function AddingDeveloper(props) {
         else if (developerData.developerTechnologies.length === 0) {
             errors.developerTechnologies = 'Technologies is required'
         }
-        else if (resume === null) {
+        else if (!acceptedFileItems) {
             errors.developerResume = 'Resume is required'
         }
         else if (developerData.developerExperience === '') {
@@ -157,14 +177,18 @@ function AddingDeveloper(props) {
             return false;
     }
 
+    // useEffect(() => {
+    //     console.log(resume);
+    // }, [resume])
+
     const uploadMedia = () => {
         if (errorValidation()) {
             setLoading(true)
             const formData = new FormData();
-            resume && formData.append(
+            acceptedFileItems && formData.append(
                 "files",
-                resume,
-                resume.name
+                acceptedFiles[0],
+                acceptedFiles[0].name
             );
             instance.post(`api/${Role}/media/create`, formData)
                 .then(function (response) {
@@ -304,16 +328,25 @@ function AddingDeveloper(props) {
                                             </h4>
                                             <div className="uploadBlock_addingDeveloper">
                                                 <div className="fileUploadButton_addingDeveloper">
-                                                    <FilePicker
-                                                        extensions={['pdf', 'doc', 'docx']}
-                                                        onChange={(fileObj) => inputFileChoosen(fileObj)}
-                                                        onError={errMsg => toast.error(errMsg)}
-                                                    >
-                                                        <div>
-                                                            <p style={{ fontSize: "12px" }}>{resume ? resume.name.slice(0, 25) : 'pick file'}</p>
-                                                            <img src={fileIcon} alt="finish" />
+                                                    <section className="container_addingDeveloper">
+                                                        <div {...getRootProps({ className: 'dropzone' })}>
+                                                            <input {...getInputProps()} />
+                                                            <div className="file_click_addingDeveloper">
+                                                                {acceptedFileItems.length === 0 ?
+                                                                    <>
+                                                                        <FaFileUpload />
+                                                                        <p className="select_file">click to select files</p>
+                                                                    </>
+                                                                    :
+                                                                    <div className="accepted_file_para">{acceptedFileItems}</div>
+                                                                }
+                                                            </div>
                                                         </div>
-                                                    </FilePicker>
+                                                        {/* {acceptedFileItems &&
+                                                            <aside>
+                                                            </aside>
+                                                        } */}
+                                                    </section>
                                                 </div>
                                             </div>
 

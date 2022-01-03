@@ -89,11 +89,7 @@ function AgencyProjectDashboard(props) {
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                                         <p>The 1 agencies you have shortlisted have been notified. Wait for 24-48 hours for their response.</p>
                                     </div>
-                                    {/* <div className="clientProject"> */}
-                                    {/* <div onClick={() => routeRedirecter(p._id)}><p>View Proposal</p></div> */}
                                     <div className='clientProjectLink' onClick={() => routeRedirecter(index)}><p>View details </p></div>
-                                    {/* <div className='clientProjectLink'><p>Visit Selected Agency</p></div> */}
-                                    {/* </div> */}
                                 </div>
                             </div>
                         </div>

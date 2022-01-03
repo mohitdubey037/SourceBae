@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "../Login/login.css";
-import * as helper from "../../shared/helper";
 import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
 import axios from "axios";
@@ -21,6 +21,7 @@ import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 import Spinner from "../../Components/Spinner/Spinner";
 import cookie from "react-cookies";
 import firebase from "../../firebase";
+import { CLIENT, AGENCY } from "../../shared/constants";
 
 const borderLight = "rgba(206,212,218, .993)";
 
@@ -67,13 +68,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
   const logoLink = "https://sourcebae.s3.amazonaws.com/image/1638354759751.svg";
-  // const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
-  
+
   const classes = useStyles();
   let { role } = useParams();
-  role = helper.capitalize(helper.cleanParam(role));
-  console.log(role);
-  if (!(role.toLowerCase() === "agency" || role.toLowerCase() === "client"))
+  if (!(role === AGENCY || role === CLIENT))
     props.history.replace("/page-not-found");
 
   const [loading, setLoading] = useState(false);
@@ -97,9 +95,9 @@ const Login = (props) => {
   }, []);
 
   useEffect(() => {
-    state === "client"
-      ? props.history.replace("/login:client")
-      : props.history.replace("/login:agency")
+    state === CLIENT
+      ? props.history.replace(`/login/${CLIENT}`)
+      : props.history.replace(`/login/${AGENCY}`);
   }, [state]);
 
   const showPassword = (e) => {
@@ -112,12 +110,6 @@ const Login = (props) => {
 
   //Methods
 
-  const createRoleString = () => {
-    role = role.charAt(0).toUpperCase() + role.slice(1);
-    return role;
-  };
-
-  const roleString = createRoleString();
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -135,12 +127,12 @@ const Login = (props) => {
   };
 
   const handleImageClick = () => {
-    window.location.href = 'https://sourcebae.com/';
-  }
+    window.location.href = "https://sourcebae.com/";
+  };
 
   const logIn = async (event) => {
     event.preventDefault();
-    let apiRole = helper.lowerize(role);
+    let apiRole = role
     return new Promise((resolve, reject) => {
       instance
         .post(`/api/${apiRole}/auths/login`, {
@@ -148,7 +140,9 @@ const Login = (props) => {
           notificationDeviceToken: device_token,
         })
         .then(function (response) {
-          cookie.save("Authorization", `Bearer ${response.accessToken}`, { path: "/" });
+          cookie.save("Authorization", `Bearer ${response.accessToken}`, {
+            path: "/",
+          });
           setToken(cookie.load("Authorization"));
           localStorage.setItem("role", role);
           localStorage.setItem("userId", `${response._id}`);
@@ -162,15 +156,16 @@ const Login = (props) => {
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `${token}`;
-      if (role === "Agency") {
+      if (role === AGENCY) {
         setLoading(false);
         props.history.replace("/agencyNewestDashboard");
-      } else if (role === "Client") {
+      } else if (role === CLIENT) {
         setLoading(false);
         props.history.replace("/clientNewestDashboard");
       } else {
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   useEffect(() => {
@@ -182,12 +177,13 @@ const Login = (props) => {
       tempRole !== null &&
       tempRole !== undefined
     ) {
-      if (tempRole.toLowerCase() === "agency") {
+      if (tempRole === AGENCY) {
         props.history.replace("/agencyNewestDashboard");
-      } else if (tempRole.toLowerCase() === "client") {
+      } else if (tempRole === CLIENT) {
         props.history.replace("/clientNewestDashboard");
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -199,53 +195,93 @@ const Login = (props) => {
             <img src={logoLink} alt="sourceBae-log" />
           </div>
           <div className="innerLoginPage">
-            <div className={`loginIllustrator ${roleString === "Client" && "conditional_background"}`} >
+            <div
+              className={`loginIllustrator ${
+                role === "Client" && "conditional_background"
+              }`}
+            >
               <div className="loginImage1">
-                <img src={roleString === "Client" ? downImage1_client : downImage1_agency} alt="image1" />
+                <img
+                  src={
+                    role === "Client"
+                      ? downImage1_client
+                      : downImage1_agency
+                  }
+                  alt="image1"
+                />
               </div>
               <div className="loginImage2">
-                <img src={roleString === "Client" ? downImage2_client : downImage2_agency} alt="image2" />
+                <img
+                  src={
+                    role === "Client"
+                      ? downImage2_client
+                      : downImage2_agency
+                  }
+                  alt="image2"
+                />
               </div>
               <div className="loginImage3">
-                <img src={roleString === "Client" ? upImage1_client : upImage1_agency} alt="image3" />
+                <img
+                  src={
+                    role === "Client" ? upImage1_client : upImage1_agency
+                  }
+                  alt="image3"
+                />
               </div>
               <div className="loginImage4">
-                <img src={roleString === "Client" ? upImage2_client : upImage2_agency} alt="image4" />
+                <img
+                  src={
+                    role === CLIENT ? upImage2_client : upImage2_agency
+                  }
+                  alt="image4"
+                />
               </div>
               <div className="dot-image">
                 <img src={dotImage} alt="" />
               </div>
               <div className="loginCards-wrapper">
                 <div className="welcome-back_loginIllustrator">
-                  <p>Welcome back<br></br><span>to</span><br /><span className="welcome-back_sourceBae">Sourcebae</span> </p>
+                  <p>
+                    Welcome back<br></br>
+                    <span>to</span>
+                    <br />
+                    <span className="welcome-back_sourceBae">
+                      Sourcebae
+                    </span>{" "}
+                  </p>
                 </div>
                 <div className="loginContent">
                   <div className="mainLoginForm">
                     <div className="login_switch">
                       <button
-                        onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${roleString === "Agency" && "active__buttonagency"
-                          }`}>
+                        onClick={() => handleChangeToggle(AGENCY)}
+                        className={`agency__button ${
+                          role === AGENCY && "active__buttonagency"
+                        }`}
+                      >
                         <p>Agency</p>
                       </button>
                       <button
                         onClick={() => handleChangeToggle("client")}
-                        className={`client__button ${roleString === "Client" && "active__buttonclient"}`}>
+                        className={`client__button ${
+                          role === CLIENT && "active__buttonclient"
+                        }`}
+                      >
                         <p>Client</p>
                       </button>
                     </div>
                     <div className="loginHeading">
                       <h6>
                         Login as
-                        {roleString === "Agency" ? (
+                        {role === AGENCY ? (
                           <>
                             <span>{` an`}</span>
-                            <span className="agencyOrClient">{` ${roleString}`}</span>
+                            <span className="agencyOrClient">{` ${role}`}</span>
                           </>
                         ) : (
                           <>
                             <span>&nbsp;a</span>
-                            <span className="agencyOrClient conditional_color">{` ${roleString}`}</span>
+                            <span className="agencyOrClient conditional_color">{` ${role}`}</span>
                           </>
                         )}
                       </h6>
@@ -259,8 +295,10 @@ const Login = (props) => {
                         type="text"
                         fullWidth
                         className={classes.input}
-                        InputLabelProps={{ shrink: true, }}
-                        onChange={(e) => { handleChange(e); }}
+                        InputLabelProps={{ shrink: true }}
+                        onChange={(e) => {
+                          handleChange(e);
+                        }}
                         placeholder="Enter an email"
                         variant="filled"
                       />
@@ -273,8 +311,10 @@ const Login = (props) => {
                         type={hidePassword ? "password" : "text"}
                         fullWidth
                         className={classes.input}
-                        InputLabelProps={{ shrink: true, }}
-                        onChange={(e) => { handleChange(e); }}
+                        InputLabelProps={{ shrink: true }}
+                        onChange={(e) => {
+                          handleChange(e);
+                        }}
                         variant="filled"
                         InputProps={{
                           // <-- This is where the toggle button is added.
@@ -299,17 +339,18 @@ const Login = (props) => {
                       />
                       <div className="button_action_login">
                         <button
-                          className={`submit_login ${roleString === "Client" &&
+                          className={`submit_login ${
+                            role === CLIENT &&
                             "conditional_backgroundSubmit"
-                            }`}
-                          // onClick={() => logIn(role, form)}
+                          }`}
                           type="submit"
                         >
                           <p>Login</p>
                         </button>
                         <div
-                          className={`forgot-password_login ${roleString === "Client" && "conditional_color"
-                            }`}
+                          className={`forgot-password_login ${
+                            role === CLIENT && "conditional_color"
+                          }`}
                           onClick={() => props.history.push("/enter-email")}
                         >
                           <p>Forgot Password</p>
@@ -322,9 +363,10 @@ const Login = (props) => {
                   </div>
                   <div className="signup_toggle">
                     <div
-                      className={`googleLogin ${roleString === "Client" &&
+                      className={`googleLogin ${
+                        role === CLIENT &&
                         "conditional_backgroundGoogle"
-                        }`}
+                      }`}
                     >
                       <img src={googleImg} alt="no_image" />
                       <p>Sign in with Google</p>
@@ -332,7 +374,13 @@ const Login = (props) => {
                     <div className="signUpOption">
                       <p>
                         Don't have an account?{" "}
-                        <span onClick={() => props.history.replace(`/register:${role.toLowerCase()}`)}>
+                        <span
+                          onClick={() =>
+                            props.history.replace(
+                              `/register/${role.toLowerCase()}`
+                            )
+                          }
+                        >
                           Sign Up
                         </span>
                       </p>

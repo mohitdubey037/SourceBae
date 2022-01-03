@@ -6,8 +6,8 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Spinner from "../../../Components/Spinner/Spinner";
 import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg'
 import Back from '../../../Components/Back/Back';
-import UpImage from '../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+import { CLIENT } from "../../../shared/constants";
 
 function ClientHireDeveloper(props) {
   const Role = localStorage.getItem('role');
@@ -62,7 +62,8 @@ function ClientHireDeveloper(props) {
                               </div>
                               <div className="profileButton">
                                 <p onClick={() => props.history.push({
-                                  pathname: `/client-one-hire-developer:${hireDeveloperRequirement._id}`
+                                  pathname: `/client-one-hire-developer/:${hireDeveloperRequirement._id}`,
+                                  condition: CLIENT,
                                 })}>
                                   View Developer Requirements{" "}
                                   <i

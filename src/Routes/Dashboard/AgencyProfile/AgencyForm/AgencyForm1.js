@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from './FormPhases';
-import { FilePicker } from 'react-file-picker'
 // import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
 import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
+import { useDropzone } from 'react-dropzone';
+
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import instance from "../../../../Constants/axiosConstants";
 import { toast } from 'react-toastify'
 import Spinner from '../../../../Components/Spinner/Spinner';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import { FaFileUpload } from 'react-icons/fa';
 
 import './ResponsiveAgencyForm.css';
 
 function AgencyForm1(props) {
+
     const dispatch = useDispatch();
 
     const AgencyForm = useSelector((state) => state.AgencyForm);
@@ -53,9 +56,27 @@ function AgencyForm1(props) {
     //     getAgencyProfile();
     // }, [])
 
+    const {
+        acceptedFiles,
+        getRootProps,
+        getInputProps
+    } = useDropzone({
+        accept: '.jpg,.jpeg,.png'
+    });
+
+    const acceptedFileItems = acceptedFiles.map(file => {
+        return (
+            <p>
+                {file.path}
+            </p>
+        )
+    });
+
+    console.log(acceptedFileItems);
+
     const handleValidation = () => {
         const errors = {};
-        if (logo === null) {
+        if (!acceptedFileItems) {
             errors.agencyLogo = "Agency Logo is required"
         }
         else if (formData.agencyDescription === "") {
@@ -129,10 +150,10 @@ function AgencyForm1(props) {
     const uploadMedia = () => {
         if (handleValidation()) {
             const data = new FormData();
-            data.append(
+            acceptedFileItems && data.append(
                 "files",
-                logo,
-                logo.name
+                acceptedFiles[0],
+                acceptedFiles[0].name
             );
             instance.post(`api/${Role}/media/create`, data)
                 .then(function (response) {
@@ -163,29 +184,22 @@ function AgencyForm1(props) {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
                 setSteps(response.stepsCompleted);
-                console.log(response.stepsCompleted);
                 stepsCompleted = response.stepsCompleted
                 firstLoad();
             });
     };
 
     const firstLoad = () => {
-        console.log('outer function');
         if (AgencyForm.is_Back_Pressed === false) {
-            console.log('inner function');
             switch (stepsCompleted) {
                 case 2:
                     props.history.replace('agency-form-two');
-                    console.log('agency-form-two');
                 case 3:
                     props.history.replace('agency-form-three');
-                    console.log('agency-form-three');
                 case 4:
                     props.history.replace('agency-form-four');
-                    console.log('agency-form-four');
                 case 5:
                     props.history.replace('agencyNewestDashboard');
-                    console.log('agency-form-agencyNewestDashboard');
                 default:
                     // props.history.replace('/agencyNewestDashboard');
                     return;
@@ -270,7 +284,7 @@ function AgencyForm1(props) {
                                             </span>
                                         </label>
                                         <div className="getAgencyLogo">
-                                            <FilePicker
+                                            {/* <FilePicker
                                                 extensions={['jpg', 'png', 'jpeg']}
                                                 onChange={(fileObj) => inputFileChoosen(fileObj)}
                                                 onError={error => handleUploadError(error)}>
@@ -278,8 +292,24 @@ function AgencyForm1(props) {
                                                     <p className="agencyLogo_pick_file">Pick File</p>
                                                     <img src={fileIcon} alt="finish" />
                                                 </button>
-                                            </FilePicker>
-                                            <p className="logo-type_agencyForm1">{`${logo?.name.slice(0, 20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p>
+                                            </FilePicker> */}
+                                            <div className="fileUploadButton_addingDeveloper upload_logo">
+                                                <section className="container_agencyForm1">
+                                                    <div {...getRootProps({ className: 'dropzone' })}>
+                                                        <input {...getInputProps()} />
+                                                        <div className="file_click_addingDeveloper">
+                                                            <FaFileUpload />
+                                                            <p className="agencyLogo_pick_file">Pick File</p>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            {/* <p className="logo-type_agencyForm1">{`${acceptedFileItems.slice(0, 20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p> */}
+                                            {acceptedFileItems.length === 0 ?
+                                                <p className="logo-type_agencyForm1">Please Choose file (jpeg, png, jpg)</p>
+                                                :
+                                                <div className="accepted_file_items">{acceptedFileItems}</div>
+                                            }
                                             {errors?.agencyLogo !== '' &&
                                                 <p className="error_agencyForm">
                                                     {errors.agencyLogo}

@@ -17,13 +17,11 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(function (request) {
-  console.log('request from interceptor', request); // TODO: remove this;
   if (!request.url.includes("login")) {
     request.headers["Authorization"] = cookie.load("Authorization");
   }
   return request;
 });
-const customToast = new toast()
 instance.interceptors.response.use(
   function (response) {
     if (response.status === 200) {
@@ -48,8 +46,11 @@ instance.interceptors.response.use(
   function (error) {
     let trueError = "";
     if (error?.response?.status !== 404) {
-      if (error?.response?.data?.message === "Bearer Token not found")
+      if (error?.response?.data?.message === "Bearer Token not found" ||error?.response?.data?.message === "Unauthorized") {
+        alert(error?.response?.data?.message);
+        cookie.remove("Authorization");
         window.location.href = "/";
+      }
 
       else {
         const errors = error?.response?.data?.error ?? {};

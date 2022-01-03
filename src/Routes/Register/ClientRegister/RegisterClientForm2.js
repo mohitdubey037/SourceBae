@@ -1,54 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./../register.css";
 import { useParams } from "react-router";
-import { makeStyles } from "@material-ui/core";
-import instance from "../../../Constants/axiosConstants";
-import * as helper from "../../../shared/helper";
-import { toast } from "react-toastify";
-import Spinner from "../../../Components/Spinner/Spinner";
-import cookie from "react-cookies";
-import imgRegister from "../../../assets/images/Newestdashboard/Register/img_register.svg";
-import Signup1 from "../../../assets/images/Newestdashboard/Register/signup_up.svg";
-import Signup2 from "../../../assets/images/Newestdashboard/Register/signup_down.svg";
-import useIsFirstRender from '../../../Utils/useIsFirstRender';
-const dateStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-    border: `1px solid lightgrey`,
-    color: `gray`,
-    borderRadius: `10px`,
-    outline: "none",
-    textColor: `gray`,
-    marginTop: `1%`,
-    paddingLeft: `4%`,
-    paddingTop: `1%`,
-    width: `60%`,
-    height: `60px`,
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: `100%`,
-    color: `gray`,
-    border: "none",
-    background: "none",
-  },
-  label: {
-    color: `gray`,
-  },
-}));
+import { CLIENT } from "../../../shared/constants";
 
 const RegisterClientForm2 = (props) => {
-  const isFirstRender = useIsFirstRender();
   let { role } = useParams();
-  role = helper.capitalize(helper.cleanParam(role));
 
 
   const handleCreateProfile = (event, role) => {
     let { name, value } = event.target;
-      if (role === "Client")
+      if (role === CLIENT)
       props.setClientProfileDetails({
         ...props.clientProfileDetails,
         [name]: value,

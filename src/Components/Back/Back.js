@@ -3,15 +3,17 @@ import BackLeft from '../../assets/images/Back/GroupBack.svg';
 import './Back.css';
 import { withRouter } from "react-router";
 import instance from '../../Constants/axiosConstants';
+import * as helper from "../../shared/helper";
+import { AGENCY, CLIENT } from '../../shared/constants';
 
 function Back(props) {
     const [steps, setSteps] = useState('');
-    const Role = localStorage.getItem('role');
-    const verificationStatus = localStorage.getItem('isVerified');
+    const role = localStorage.getItem('role')
+
     const url = props.history.location.pathname;
 
     const goBack = () => {
-        if (Role === 'Client') {
+        if (role === CLIENT) {
             if (url.includes('hire-agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                     props.history.replace('/clientNewestDashboard');
@@ -44,7 +46,7 @@ function Back(props) {
             }
         }
 
-        else if (Role === 'Agency') {
+        else if (role === AGENCY) {
             if (url.includes('agency-form-one') || url.includes('hire-agency-form-one')) {
                 if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                     props.history.replace('/agencyNewestDashboard');
@@ -78,7 +80,7 @@ function Back(props) {
     }
 
     const getStepsCompleted = () => {
-        instance.get(`api/${Role}/agencies/steps-completed`)
+        instance.get(`api/${role}/agencies/steps-completed`)
             .then(function (response) {
                 setSteps(response.stepsCompleted);
             });

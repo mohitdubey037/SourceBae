@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import "./ProductForm.css";
-import { FilePicker } from 'react-file-picker'
+import { useDropzone } from 'react-dropzone';
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -33,7 +33,6 @@ import { Modal } from "react-responsive-modal";
 
 const BlueRadio = withStyles({
   root: {
-    // width: "1.2rem",
     color: "#2E86C1",
     "&$checked": {
       color: "#2E86C1",
@@ -47,23 +46,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     width: "70%",
   },
-  // chips: {
-  //   display: "flex",
-  //   flexWrap: "wrap",
-  // },
-  // chip: {
-  //   margin: 2,
-  // },
-  // check: {
-  //   fontSize: "0.7rem",
-  //   fontFamily: 'Segoe UI',
-  // },
-  // noLabel: {
-  //   marginTop: theme.spacing(3),
-  // },
-  // menuFont: {
-  //   fontFamily: "Segoe UI",
-  // },
   inputField: {
     fontFamily: "Segoe UI",
     border: "1px solid #45A4EA",
@@ -77,31 +59,13 @@ const useStyles = makeStyles((theme) => ({
     borderColor: "#000",
   },
   root: {
-    // "& .MuiOutlinedInput-input": {
-    //   color: "green",
-    //   padding: "11.5px 14px"
-    // },
     "& .MuiTypography-body1": {
       fontFamily: 'Segoe UI',
       fontSize: '12px'
-    },
-    // "& MuiMenuItem": {
-    //   fontSize: "0.8rem"
-    // }
+    }
   }
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  getContentAnchorEl: () => null,
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
 
 const arr = [
   {
@@ -153,8 +117,6 @@ function ProductForm(props) {
 
   const [multipleSelectTech, setMultipleSelect] = useState([]);
 
-  const [domainName, setDomainName] = useState("");
-
   const [errors, setErrors] = useState({});
 
   const [apiData, setApiData] = useState({
@@ -183,8 +145,7 @@ function ProductForm(props) {
 
   const classes = useStyles();
 
-  // const Role = "agency";
-  const Role = localStorage.getItem('role');
+  const role = localStorage.getItem('role');
 
 
   const handleChange = (event) => {
@@ -202,6 +163,20 @@ function ProductForm(props) {
     });
   };
 
+  const {
+    acceptedFiles,
+    getRootProps,
+    getInputProps
+  } = useDropzone({
+    accept: '.jpg, .png, .jpeg'
+  });
+
+  const acceptedFileItems = acceptedFiles.map(file => {
+    return (
+      file.path
+    )
+  });
+
   useEffect(() => {
     if (apiData.productDescription === '') {
       setWordsRequired(100);
@@ -218,8 +193,6 @@ function ProductForm(props) {
       ...apiData,
       [name]: value,
     });
-    // setBusinesstype(value);
-    setDomainName(value);
   };
 
   useEffect(() => {
@@ -232,7 +205,7 @@ function ProductForm(props) {
   const getAllDomains = () => {
     setLoading(true);
     instance
-      .get(`api/${Role}/domains/all`)
+      .get(`api/${role}/domains/all`)
       .then(function (response) {
         setAllDomainsData(response);
         setLoading(false);
@@ -309,9 +282,9 @@ function ProductForm(props) {
     }
   };
 
-  const inputFileChoosen = (e) => {
-    setFile(e);
-  };
+  // const inputFileChoosen = (e) => {
+  //   setFile(e);
+  // };
 
 
   function validateInfo() {
@@ -402,7 +375,7 @@ function ProductForm(props) {
       })
     }
 
-    if (file === null) {
+    if (!acceptedFileItems) {
       err.filePicked = "Please pick up a logo for the Product";
     }
     setErrors(err);
@@ -414,11 +387,13 @@ function ProductForm(props) {
     if (validateInfo()) {
       setLoading(true);
       const formData = new FormData();
-
-      file !== null && formData.append("files", file, file?.name);
-
-      instance
-        .post(`api/${Role}/media/create`, formData)
+      // file !== null && formData.append("files", file, file?.name);
+      acceptedFileItems && formData.append(
+        "files",
+        acceptedFiles[0],
+        acceptedFiles[0].name
+      );
+      instance.post(`api/${role}/media/create`, formData)
         .then(function (response) {
           setApiData({
             ...apiData,
@@ -436,7 +411,7 @@ function ProductForm(props) {
     if (validateInfo()) {
       setLoading(true);
       instance
-        .post(`api/${Role}/products/create`, apiData)
+        .post(`api/${role}/products/create`, apiData)
         .then((response) => {
           setLoading(false);
           onOpenModal();
@@ -484,7 +459,7 @@ function ProductForm(props) {
                           <p>Upload your latest logo of product  <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
-                      <FilePicker
+                      {/* <FilePicker
                         extensions={['jpg', 'png', 'jpeg']}
                         onChange={inputFileChoosen}
                         onError={errMsg => toast.error(errMsg)}
@@ -493,7 +468,26 @@ function ProductForm(props) {
                           <p style={{ marginTop: "0", color: "#707070", fontFamily: "Segoe UI", fontSize: "14px" }}>{file ? file.name : 'pick file'}</p>
                           <img src={fileIcon} alt="finish" />
                         </button>
-                      </FilePicker>
+                      </FilePicker> */}
+                      {/* <section className="container_addingDeveloper"> */}
+                      <div {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        {/* <div className="file_click_addingDeveloper"> */}
+                        {/* {acceptedFileItems.length === 0 && */}
+                        {/* <> */}
+                        {/* <img
+                              className="fileUpload_shortTerm"
+                              src={FileUploadImage}
+                              alt="image"
+                            /> */}
+                        {/* </div> */}
+                        <button className="filePicker">
+
+                          <p className="pick_file">{acceptedFileItems.length > 0 ? acceptedFileItems : 'pick file'}</p>
+                          <img src={fileIcon} alt="finish" />
+                        </button>
+                      </div>
+                      {/* </section> */}
                       {errors.filePicked && (
                         <p className="error_productForm">
                           {errors.filePicked}
@@ -546,7 +540,7 @@ function ProductForm(props) {
 
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form1} />
+                    <img className="image_div_child" src={form1} alt="form pic" />
                   </div>
                 </div>
 
@@ -672,14 +666,14 @@ function ProductForm(props) {
                         })}
                       </div>
                       {errors.productBusinessModel && (
-                        <p style={{marginLeft: '1.4rem'}} className="error_productForm">
+                        <p style={{ marginLeft: '1.4rem' }} className="error_productForm">
                           {errors.productBusinessModel}
                         </p>
                       )}
                     </section>
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form2} />
+                    <img className="image_div_child" src={form2} alt="form_image" />
                   </div>
                 </div>
 
@@ -900,7 +894,7 @@ function ProductForm(props) {
                     </section>
                   </div>
                   <div className="image_div">
-                    <img className="image_div_child" src={form3} />
+                    <img className="image_div_child" src={form3} alt="Form" />
                   </div>
                 </div>
 
@@ -934,6 +928,7 @@ function ProductForm(props) {
                         </ul>
                         <input
                           type="date"
+                          onKeyDown={(e) => e.preventDefault()}
                           name="productStartingDate"
                           value={apiData.productStartingDate}
                           onChange={handleChange}
@@ -1029,7 +1024,7 @@ function ProductForm(props) {
 
                     </div>
                     <div className="image_div">
-                      <img className="image_div_child" src={form4} />
+                      <img className="image_div_child" src={form4} alt="form4" />
                     </div>
 
                   </div>

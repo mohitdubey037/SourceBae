@@ -5,13 +5,11 @@ import "./GetOneHiredDeveloper.css";
 import { connect } from "react-redux";
 import instance from "../../../Constants/axiosConstants";
 import { useParams, useHistory } from "react-router-dom";
-import * as helper from '../../../shared/helper';
 import Spinner from '../../../Components/Spinner/Spinner';
 import Navbar from '../../Dashboard/Navbar';
 
 function RespondedDetails(props) {
     let { hireDeveloperId } = useParams();
-    hireDeveloperId = helper.cleanParam(hireDeveloperId);
     const routerHistory = useHistory();
 
     const [singleHiredDeveloper, setSingleHiredDeveloper] = useState([]);

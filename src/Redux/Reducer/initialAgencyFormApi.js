@@ -1,14 +1,15 @@
 import instance from "../../Constants/axiosConstants";
+import {AGENCY} from "../../shared/constants";
 
-const Role = localStorage.getItem('role');
+const role = localStorage.getItem('role');
 const agencyId = localStorage.getItem('userId');
 
 let step = '';
 
 const initialApi = () => {
     // instance.get(`api/${Role}/agencies/steps-completed`)
-    if (Role === "Agency") {
-        instance.get(`/api/${Role}/agencies/get/${agencyId}`)
+    if (role === AGENCY) {
+        instance.get(`/api/${role}/agencies/get/${agencyId}`)
             .then(function (response) {
                 step = response.stepsCompleted
             })
@@ -23,7 +24,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    if (Role === "Agency" && step === '') {
+    if (role === AGENCY && step === '') {
         initialApi();
     }
     return state;

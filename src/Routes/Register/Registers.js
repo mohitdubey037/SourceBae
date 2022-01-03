@@ -12,6 +12,7 @@ import imgRegister from "../../assets/images/Newestdashboard/Register/img_regist
 import Signup1 from "../../assets/images/Newestdashboard/Register/signup_up.svg";
 import Signup2 from "../../assets/images/Newestdashboard/Register/signup_down.svg";
 import useIsFirstRender from '../../Utils/useIsFirstRender';
+import { AGENCY, CLIENT } from "../../shared/constants";
 const dateStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -57,8 +58,7 @@ const Register = (props) => {
 
   const [token, setToken] = useState(null);
   let { role } = useParams();
-  role = helper.capitalize(helper.cleanParam(role));
-  if (!(role === "Agency" || role === "Client"))
+  if (!(role === AGENCY || role === CLIENT))
     props.history.push("/page-not-found");
   //Social Media State Variables
   const [linkedIn, setLinkedIn] = useState({
@@ -139,12 +139,12 @@ const Register = (props) => {
   const handleCreateProfile = (event, role) => {
     let { name, value } = event.target;
 
-    if (role === "Agency") {
+    if (role === AGENCY) {
       setAgencyProfileDetails({
         ...agencyProfileDetails,
         [name]: value,
       });
-    } else if (role === "Client")
+    } else if (role === CLIENT)
       setClientProfileDetails({
         ...clientProfileDetails,
         [name]: value,
@@ -202,9 +202,9 @@ const Register = (props) => {
     else return false;
   }
 
-  const handleErrorsValidation = (Role) => {
+  const handleErrorsValidation = (role) => {
     const err = {};
-    if (Role === "Agency") {
+    if (role === AGENCY) {
       if (agencyProfileDetails?.agencyName === "") {
         err.agencyNameError = "Agency name is required";
       } else if (agencyProfileDetails?.agencyName.match(/^[0-9]+$/)) {
@@ -235,7 +235,7 @@ const Register = (props) => {
       setErrors(err);
       if (Object.keys(err).length === 0) return true;
       else return false;
-    } else if (Role === "Client") {
+    } else if (role === CLIENT) {
       if (clientProfileDetails.userDesignation === "") {
         err.userDesignationError = "User Designation Field is required";
       } else if (clientProfileDetails.userDesignation.length < 2) {
@@ -280,14 +280,14 @@ const Register = (props) => {
   }
 
   useEffect(() => {
-    setState(role.toLowerCase());
+    setState(role);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("role", state);
-    state === "" || state === "agency"
-      ? props.history.push("/register:agency")
-      : props.history.push("/register:client");
+    state === "" || state === AGENCY
+      ? props.history.push(`/register/${AGENCY}`)
+      : props.history.push(`/register/s${CLIENT}`);
   }, [state]);
 
   const handleChangeToggle = (name) => {
@@ -346,15 +346,15 @@ const Register = (props) => {
     });
   };
 
-  const createProfileApi = (Role, api_param_const, createForm) => {
+  const createProfileApi = (apiRole, api_param_const, createForm) => {
     setLoading(true);
     instance
-      .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
+      .post(`api/${apiRole}/${api_param_const}/create`, { ...createForm })
       .then(function (response) {
-        if (role.toLowerCase() === "client") {
+        if (apiRole === CLIENT) {
           props.history.push("/clientNewestDashboard");
           setLoading(false);
-        } else if (role.toLowerCase() === "agency") {
+        } else if (apiRole === AGENCY) {
           props.history.push("/agencyNewestDashboard");
           setLoading(false);
         }
@@ -366,25 +366,25 @@ const Register = (props) => {
 
 
 
-  const handleSubmit = (Role, Form) => {
-    if (handleErrorsValidation(Role)) {
-      signUpApi(Role, Form);
+  const handleSubmit = (role, Form) => {
+    if (handleErrorsValidation(role)) {
+      signUpApi(role, Form);
     }
   };
 
   useEffect(() => {
     if (token !== null && apiErrors === false) {
-      const apiRole = helper.lowerize(role);
+      const apiRole = role
       let api_param_const = ``;
       let api_create_form = {};
-      if (apiRole === `client`) {
-        api_param_const = `clients`;
+      if (apiRole === CLIENT) {
+        api_param_const = `${CLIENT}s`;
         api_create_form = {
           stepsCompleted: 1,
           ...clientProfileDetails,
         };
-      } else if (apiRole === `agency`) {
-        api_param_const = `agencies`;
+      } else if (apiRole === AGENCY) {
+        api_param_const = `${AGENCY}s`;
         api_create_form = {
           stepsCompleted: 1,
           ...agencyProfileDetails,
@@ -399,11 +399,6 @@ const Register = (props) => {
       }
     }
   }, [token, apiErrors]);
-
-  const createRoleString = (role) => {
-    role = role.charAt(0).toUpperCase() + role.slice(1);
-    return role;
-  };
 
   const toggleForms = (direction) => {
     if (direction === "next") {
@@ -430,12 +425,12 @@ const Register = (props) => {
   //============= USE-EFFECT HOOKS============//
 
   useEffect(() => {
-    if (role === "Agency")
+    if (role === AGENCY)
       setAgencyProfileDetails({
         ...agencyProfileDetails,
         socialPlatformDetails: [site],
       });
-    else if (role === "Client")
+    else if (role === CLIENT)
       setClientProfileDetails({
         ...clientProfileDetails,
         socialPlatformDetails: [site],
@@ -444,7 +439,6 @@ const Register = (props) => {
 
   //__________ USE-EFFECT ENDS ______//
 
-  const roleString = createRoleString(role);
   return (
     <>
       {loading ? (
@@ -470,13 +464,13 @@ const Register = (props) => {
                   <div className="form__title">
                     <h6>
                       Register as{" "}
-                      {state === "" || state === "agency" ? (
+                      {state === "" || state === AGENCY ? (
                         <>
                           <span>an</span>
                           <span
                             style={{ fontSize: "25px" }}
                             className="agencyOrClient"
-                          >{` ${roleString}`}</span>
+                          >{` ${role}`}</span>
                         </>
                       ) : (
                         <>
@@ -484,7 +478,7 @@ const Register = (props) => {
                           <span
                             style={{ fontSize: "25px" }}
                             className="agencyOrClient"
-                          >{` ${roleString}`}</span>
+                          >{` ${role}`}</span>
                         </>
                       )}
                     </h6>
@@ -492,8 +486,8 @@ const Register = (props) => {
                   {
                     step <= 1 && <div className="login_switch signup_switch">
                       <button
-                        onClick={() => handleChangeToggle("agency")}
-                        className={`agency__button ${(state === "" || state === "agency") &&
+                        onClick={() => handleChangeToggle(AGENCY)}
+                        className={`agency__button ${(state === "" || state === AGENCY) &&
                           "active__buttonagency"
                           }`}
                       >
@@ -632,7 +626,7 @@ const Register = (props) => {
                           Already have an account?{" "}
                           <span
                             onClick={() =>
-                              props.history.push(`/login:${role.toLowerCase()}`)
+                              props.history.push(`/login/${role}`)
                             }
                           >
                             Log In
@@ -648,7 +642,7 @@ const Register = (props) => {
                   </div>
 
                   <form autoComplete="off" className="client__form form__2">
-                    {role === `Agency` ? (
+                    {role === AGENCY ? (
                       <>
                         <div>
                           <div className="input_with_error">
@@ -827,9 +821,6 @@ const Register = (props) => {
                     )}
 
                     <div className="already_next_register">
-                      {/* <div className="next_Register" onClick={() => handleSubmit(role, signupForm)}>
-                                                <p>Submit</p>
-                                            </div> */}
                       <div className="registerOption">
                         <p>
                           Already have an account?{" "}

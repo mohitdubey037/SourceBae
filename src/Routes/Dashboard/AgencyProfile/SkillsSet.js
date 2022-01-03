@@ -6,7 +6,6 @@ import instance from "../../../Constants/axiosConstants";
 import Skillset_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Skill-Set_edit.svg';
 
 function SkillsSet(props) {
-    console.log(props);
     const Role = localStorage.getItem('role');
     const [agencyProfiledata, setAgencyProfileData] = useState({})
     const [selectedId, setSelectedId] = useState("")

@@ -1,17 +1,6 @@
 import React from 'react'
-import { useEffect, useState } from "react";
-import instance from "../../../Constants/axiosConstants";
-import { useParams } from "react-router";
 
 function RegisterClientForm1(props) {
-    const [step, setStep] = useState(1);
-    let { role } = useParams();
-    const [state, setState] = useState("");
-    const [errorData, setErrorData] = useState({
-        userEmail: true,
-        userName: true,
-        userPhone: true,
-    })
 
     const setForm = (event) => {
         let { name, value } = event.target;
@@ -82,13 +71,14 @@ function RegisterClientForm1(props) {
           </div>
           <div className="input_with_error">
             <label>User Name</label>
+            <form autoComplete="user">
             <input
               type="text"
               name="userName"
               placeholder="Username"
               onChange={(e) => setForm(e)}
             />
-            <input type="text" name="username" placeholder="Username" style={{ display: 'none' }} />
+            </form>
             {props.errors.userNameError && (
               <p className="error_productForm">
                 {props.errors.userNameError}
@@ -117,6 +107,7 @@ function RegisterClientForm1(props) {
 
           <div className="input_with_error">
             <label>Create Password</label>
+            <form autoComplete="password">
             <input
               type="password"
               name="password"
@@ -124,6 +115,7 @@ function RegisterClientForm1(props) {
               value={props.signupForm.password}
               onChange={(e) => setForm(e)}
             />
+            </form>
             {props.errors.passwordError && (
               <p className="error_productForm">
                 {props.errors.passwordError}

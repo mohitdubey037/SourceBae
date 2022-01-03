@@ -2,6 +2,8 @@ import React from "react";
 import Moment from "react-moment";
 import './ProjectDetailCard.css';
 
+import { AGENCY} from "../../../shared/constants";
+
 function ProjectDetailCard(props) {
     console.log(props);
     return (
@@ -10,7 +12,7 @@ function ProjectDetailCard(props) {
                 <div className="innerResponseCard">
                     <span className="leftLine"></span>
                     <div>
-                        <p>{`${props.role === "Agency" ? 'Client' : 'Agency'}`}</p>
+                        <p>{`${props.role === AGENCY ? 'Client' : 'Agency'}`}</p>
                         <p>{props.name}</p>
                     </div>
                     <div>

@@ -1,46 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import instance from '../../../Constants/axiosConstants';
 import { withRouter } from 'react-router-dom';
-import RouteRedirect from '../../../Utils/RouteRedirect';
 import { Popover } from 'react-tiny-popover';
 import './Navbar.css';
 import { Avatar } from '@material-ui/core';
 import cookie from "react-cookies";
+import { CLIENT, AGENCY } from "../../../shared/constants"
 
 function Navbar(props) {
 
     const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const url = props.history.location.pathname;
-    const Role = localStorage.getItem('role');
+    const role = localStorage.getItem('role');
     const roleId = localStorage.getItem("userId");
     const [data, setData] = useState({});
 
     const myProfileHandler = () => {
-        if (Role === "Agency") {
+        if (role === AGENCY) {
             props.history.push('/agency-profile')
         }
-        if (Role === "Client") {
+        if (role === CLIENT) {
             props.history.push('/client-profile');
         }
     }
 
     const logoutHandler = () => {
-        // localStorage.removeItem("Authorization");
-        // localStorage.removeItem('role');
-        // localStorage.removeItem('userId');
-        // localStorage.removeItem('toggle');
         localStorage.clear();
         cookie.remove("Authorization");
-        // props.history.replace('/');
         window.location.href = 'https://sourcebae.com/';
 
     }
 
     useEffect(() => {
-        if (Role === 'Client') {
-            instance.get(`/api/${Role}/clients/get/${roleId}`)
+        if (role === CLIENT) {
+            instance.get(`/api/${role}/clients/get/${roleId}`)
                 .then(function (response) {
+                    console.log(response);
                     setData(response);
                 })
                 .catch(err => {
@@ -48,8 +44,9 @@ function Navbar(props) {
         }
 
         else {
-            instance.get(`/api/${Role}/agencies/get/${roleId}`)
+            instance.get(`/api/${role}/agencies/get/${roleId}`)
                 .then(function (response) {
+                    console.log(response);
                     setData(response);
                 })
                 .catch((err) => {
@@ -58,10 +55,10 @@ function Navbar(props) {
     }, [])
 
     const RouteRedirect1 = () => {
-        if (Role === "Client") {
+        if (role === CLIENT) {
             props.history.replace('/clientNewestDashboard');
         }
-        if (Role === "Agency") {
+        if (role === AGENCY) {
             props.history.replace('/agencyNewestDashboard');
         }
     }
@@ -103,10 +100,10 @@ function Navbar(props) {
             </div>
             <div className="navbar-items">
                 <div style={{ paddingRight: '10px' }} className="username">
-                    <p>{Role === "Client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
+                    <p>{role === "client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
-                    {Role === 'Agency' ?
+                    {role === 'Agency' ?
                         <>
                             <img onMouseEnter={() => setIsPopoverOpen(true)}
                                 onClick={() => setIsPopoverOpen(!isPopoverOpen)} src={data?.agencyLogo ? data?.agencyLogo : `https://ui-avatars.com/api/?name=${data?.agencyName}`} />

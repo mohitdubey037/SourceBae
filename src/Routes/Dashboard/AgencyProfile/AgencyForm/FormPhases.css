@@ -7,7 +7,7 @@
 }
 
 .agency-form_parent {
-    padding-top: 5rem;
+    padding-top: 4rem;
 }
 
 .innerFormPhase {
@@ -208,6 +208,27 @@
     align-items: center;
     justify-content: space-between;
     width: 6.5rem;
+}
+
+.fileUploadButton_addingDeveloper.upload_logo {
+    border-radius: 2rem;
+    width: 32%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accepted_file_items {
+    padding: 7px !important;
+}
+.accepted_file_items p {
+    font-family: 'Segoe UI' !important;
+    font-size: 13px !important;
+    color: #3A3A3A !important;
+}
+
+.container_agencyForm1 {
+    width: 80%;
 }
 
 .documentInformation .logo-type_agencyForm1, .panCardContent .logo-type_agencyForm1 {
@@ -693,7 +714,7 @@
     cursor: pointer;
     height: 100px;
     width: 100px;
-    border: 1px solid black; 
+    border: 1px solid black;
 }
 
 .pick_icon {

@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import "./register.css";
 import { useParams } from "react-router";
-import { makeStyles } from "@material-ui/core";
 import instance from "../../Constants/axiosConstants";
 import * as helper from "../../shared/helper";
 import { toast } from "react-toastify";
@@ -16,40 +15,13 @@ import RegisterClientForm1 from "./ClientRegister/RegisterClientForm1";
 import RegisterAgencyForm1 from "./AgencyRegister/RegisterAgencyForm1";
 import RegisterAgencyForm2 from "./AgencyRegister/RegisterAgencyForm2";
 import RegisterClientForm2 from "./ClientRegister/RegisterClientForm2";
-const dateStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-    border: `1px solid lightgrey`,
-    color: `gray`,
-    borderRadius: `10px`,
-    outline: "none",
-    textColor: `gray`,
-    marginTop: `1%`,
-    paddingLeft: `4%`,
-    paddingTop: `1%`,
-    width: `60%`,
-    height: `60px`,
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: `100%`,
-    color: `gray`,
-    border: "none",
-    background: "none",
-  },
-  label: {
-    color: `gray`,
-  },
-}));
+
+import { CLIENT, AGENCY } from "../../shared/constants";
 
 const Register = (props) => {
-  // const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
   const logoLink = "https://sourcebae.s3.amazonaws.com/image/1638354759751.svg";
   const isFirstRender = useIsFirstRender();
-  const dateClasses = dateStyles();
-  const [state, setState] = useState("");
+  const [roleState, setRoleState] = useState("");
   const [errorData, setErrorData] = useState({
     userEmail: true,
     userName: true,
@@ -58,9 +30,9 @@ const Register = (props) => {
 
   const [token, setToken] = useState(null);
   let { role } = useParams();
-  role = helper.capitalize(helper.cleanParam(role));
-  if (!(role === "Agency" || role === "Client"))
+  if (!(role === AGENCY || role === CLIENT))
     props.history.push("/page-not-found");
+
   //Social Media State Variables
   const [linkedIn, setLinkedIn] = useState({
     platformId: "",
@@ -104,7 +76,6 @@ const Register = (props) => {
   const [apiErrors, setApiErrors] = useState(false);
 
   const [step, setStep] = useState(1);
-
   useEffect(() => {}, [apiErrors]);
 
   const setForm = (event) => {
@@ -170,9 +141,10 @@ const Register = (props) => {
     else return false;
   };
 
-  const handleErrorsValidation = (Role) => {
+  const handleErrorsValidation = (role) => {
     const err = {};
-    if (Role === "Agency") {
+
+    if (role === AGENCY) {
       if (agencyProfileDetails?.agencyName === "") {
         err.agencyNameError = "Agency name is required";
       } else if (agencyProfileDetails?.agencyName.match(/^[0-9]+$/)) {
@@ -203,7 +175,7 @@ const Register = (props) => {
       setErrors(err);
       if (Object.keys(err).length === 0) return true;
       else return false;
-    } else if (Role === "Client") {
+    } else if (role === CLIENT) {
       if (clientProfileDetails.userDesignation === "") {
         err.userDesignationError = "User Designation Field is required";
       } else if (clientProfileDetails.userDesignation.length < 2) {
@@ -247,22 +219,28 @@ const Register = (props) => {
   };
 
   useEffect(() => {
-    setState(role.toLowerCase());
+    let existingRole = localStorage.getItem("role");
+    let existingToken = cookie.load("Authorization");
+    setRoleState(existingRole);
+    if (existingRole && existingRole !== "" && existingToken) {
+      window.location.href = `/login/${existingRole}`;
+    } else {
+      setRoleState(role);
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("role", state);
-    if (state === "" || state === "agency") {
-      console.log("hii from register");
-      props.history.push("/register:agency");
+    localStorage.setItem("role", roleState);
+    if (roleState === "" || roleState === AGENCY) {
+      props.history.push(`/register/${AGENCY}`);
     } else {
-      props.history.push("/register:client");
+      props.history.push(`/register/${CLIENT}`);
     }
-  }, [state]);
+  }, [roleState]);
 
   const handleChangeToggle = (name) => {
-    setState(name);
-    role == "agency" ? <RegisterAgencyForm1 /> : <RegisterClientForm1 />;
+    setRoleState(name);
+    // role === AGENCY ? <RegisterAgencyForm1 /> : <RegisterClientForm1 />;
   };
 
   const handleImageClick = () => {
@@ -326,10 +304,10 @@ const Register = (props) => {
     instance
       .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
       .then(function (response) {
-        if (role.toLowerCase() === "client") {
+        if (role === CLIENT) {
           props.history.push("/clientNewestDashboard");
           setLoading(false);
-        } else if (role.toLowerCase() === "agency") {
+        } else if (role === AGENCY) {
           props.history.push("/agencyNewestDashboard");
           setLoading(false);
         }
@@ -339,9 +317,9 @@ const Register = (props) => {
       });
   };
 
-  const handleSubmit = (Role, Form) => {
-    if (handleErrorsValidation(Role)) {
-      signUpApi(Role, Form);
+  const handleSubmit = (role, Form) => {
+    if (handleErrorsValidation(role)) {
+      signUpApi(role, Form);
     }
   };
 
@@ -349,7 +327,7 @@ const Register = (props) => {
 
   useEffect(() => {
     if (token !== null && apiErrors === false) {
-      const apiRole = helper.lowerize(role);
+      const apiRole = role;
       let api_param_const = ``;
       let api_create_form = {};
       if (apiRole === `client`) {
@@ -375,12 +353,12 @@ const Register = (props) => {
     }
   }, [token, apiErrors]);
 
-  const createRoleString = (role) => {
-    role = role.charAt(0).toUpperCase() + role.slice(1);
-    return role;
-  };
-
   const toggleForms = (direction) => {
+    if (roleState === "" || roleState === AGENCY) {
+      props.history.push(`/register/${AGENCY}`);
+    } else {
+      props.history.push(`/register/${CLIENT}`);
+    }
     if (direction === "next") {
       setStep((prev) => prev + 1);
       let form1 = document.querySelector(".form__1");
@@ -393,24 +371,33 @@ const Register = (props) => {
   };
 
   const backOnForm2 = () => {
-    setStep((prev) => prev - 1);
-    let form1 = document.querySelector(".form__1");
-    let form2 = document.querySelector(".form__2");
-    form1.classList.toggle("hide__form1");
-    form1.classList.toggle("display__form1");
-    form2.classList.toggle("show__form2");
-    form2.classList.toggle("display__form2");
+    if (step === 1) {
+      props.history.push("/");
+    } else {
+      setStep((prev) => prev - 1);
+      let form1 = document.querySelector(".form__1");
+      let form2 = document.querySelector(".form__2");
+      form1.classList.toggle("hide__form1");
+      form1.classList.toggle("display__form1");
+      form2.classList.toggle("show__form2");
+      form2.classList.toggle("display__form2");
+    }
   };
+  useEffect(() => {
+    if (props.history.action === "POP" && !isFirstRender) {
+      backOnForm2();
+    }
+  }, [props]);
 
   //============= USE-EFFECT HOOKS============//
 
   useEffect(() => {
-    if (role === "Agency")
+    if (role === AGENCY)
       setAgencyProfileDetails({
         ...agencyProfileDetails,
         socialPlatformDetails: [site],
       });
-    else if (role === "Client")
+    else if (role === CLIENT)
       setClientProfileDetails({
         ...clientProfileDetails,
         socialPlatformDetails: [site],
@@ -419,7 +406,6 @@ const Register = (props) => {
 
   //__________ USE-EFFECT ENDS ______//
 
-  const roleString = createRoleString(role);
   return (
     <>
       {loading ? (
@@ -435,14 +421,14 @@ const Register = (props) => {
             </div>
             <img
               className={`Image1 ${
-                state === "client" && "conditional_colorChange"
+                roleState === CLIENT && "conditional_colorChange"
               }`}
               src={Signup1}
               alt="signup"
             />
             <img
               className={`Image2 ${
-                state === "client" && "conditional_colorChange"
+                roleState === CLIENT && "conditional_colorChange"
               } `}
               src={Signup2}
               alt="signup"
@@ -453,13 +439,13 @@ const Register = (props) => {
                   <div className="form__title">
                     <h6>
                       Register as{" "}
-                      {state === "" || state === "agency" ? (
+                      {roleState === "" || roleState === AGENCY ? (
                         <>
                           <span>an</span>
                           <span
                             style={{ fontSize: "25px" }}
                             className={`agencyOrClient as_a_client`}
-                          >{` ${roleString}`}</span>
+                          >{` ${role}`}</span>
                         </>
                       ) : (
                         <>
@@ -467,7 +453,7 @@ const Register = (props) => {
                           <span
                             style={{ fontSize: "25px" }}
                             className={`agencyOrClient as_an_agency`}
-                          >{` ${roleString}`}</span>
+                          >{` ${role}`}</span>
                         </>
                       )}
                     </h6>
@@ -475,9 +461,9 @@ const Register = (props) => {
                   {step <= 1 && (
                     <div className="login_switch signup_switch">
                       <button
-                        onClick={() => handleChangeToggle("agency")}
+                        onClick={() => handleChangeToggle(AGENCY)}
                         className={`agency__button ${
-                          (state === "" || state === "agency") &&
+                          (roleState === "" || roleState === AGENCY) &&
                           "active__buttonagency"
                         }`}
                       >
@@ -486,7 +472,7 @@ const Register = (props) => {
                       <button
                         onClick={() => handleChangeToggle("client")}
                         className={`client__button ${
-                          state === "client" && "active__buttonclient"
+                          roleState === CLIENT && "active__buttonclient"
                         }`}
                       >
                         <p>Client</p>
@@ -495,7 +481,7 @@ const Register = (props) => {
                   )}
                 </div>
                 <div className="client__formsContainer">
-                  {role == "agency" || "Agency" ? (
+                  {role === AGENCY && (
                     <RegisterAgencyForm1
                       step={step}
                       setStep={setStep}
@@ -504,7 +490,9 @@ const Register = (props) => {
                       signupForm={signupForm}
                       setForm={setForm}
                     />
-                  ) : (
+                  )}
+
+                  {role === CLIENT && (
                     <RegisterClientForm1
                       step={step}
                       setStep={setStep}
@@ -519,7 +507,7 @@ const Register = (props) => {
                   </div>
 
                   <form autoComplete="off" className="client__form form__2">
-                    {role === `Agency` ? (
+                    {role === AGENCY && (
                       <RegisterAgencyForm2
                         errors={errors}
                         setLinkedIn={setLinkedIn}
@@ -527,9 +515,9 @@ const Register = (props) => {
                         setAgencyProfileDetails={setAgencyProfileDetails}
                         agencyProfileDetails={agencyProfileDetails}
                         site={site}
-                        setSite={setSite}
                       />
-                    ) : (
+                    )}
+                    {role === CLIENT && (
                       <RegisterClientForm2
                         errors={errors}
                         setLinkedIn={setLinkedIn}
@@ -537,16 +525,15 @@ const Register = (props) => {
                         setClientProfileDetails={setClientProfileDetails}
                         clientProfileDetails={clientProfileDetails}
                         site={site}
-                        setSite={setSite}
                       />
                     )}
                   </form>
                   <div className="already_next_register">
-                    {step == 1 ? (
+                    {step === 1 ? (
                       <div
                         style={{ width: "15%" }}
                         className={`next_Register ${
-                          state === "client"
+                          roleState === CLIENT
                             ? "active__buttonclient"
                             : "active_buttonagency"
                         }`}
@@ -558,7 +545,7 @@ const Register = (props) => {
                       <div className="navigationButtonsSignup">
                         <div
                           className={`backRegister_onAgency ${
-                            state === "client"
+                            roleState === CLIENT
                               ? "active__buttonclient"
                               : "active_buttonagency"
                           }`}
@@ -568,7 +555,7 @@ const Register = (props) => {
                         </div>
                         <div
                           className={`next_Register ${
-                            state === "client"
+                            roleState === CLIENT
                               ? "active__buttonclient"
                               : "active_buttonAgency"
                           }`}
@@ -583,9 +570,7 @@ const Register = (props) => {
                         Already have an account?{" "}
                         <span
                           onClick={() =>
-                            props.history.replace(
-                              `/login:${role.toLowerCase()}`
-                            )
+                            props.history.replace(`/login/${role}`)
                           }
                         >
                           Log In

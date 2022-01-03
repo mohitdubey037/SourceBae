@@ -36,7 +36,7 @@
   font-family: 'Segoe UI Semibold';
   font-size: 15px;
   text-transform: capitalize;
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
 }
 
 .not_found.clientNewestDashboard {

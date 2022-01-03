@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Sample Asset System 1",
+    "items": [
+      {
+        "name": "Sample Asset System 2",
+        "items": [
+          {
+            "name": "Sample Asset System 4",
+            "items": [
+              {
+                "name": "Sample Asset System 4.1",
+                "items": [
+                  {
+                    "name": "Augtra54",
+                    "items": [
+                      {
+                        "name": "Demo 133",
+                        "items": [],
+                        "id": "system#5hHDZ9ZiTkGMB6MCqVr8g",
+                        "reference": null,
+                        "createdOn": "2021-12-22T11:57:37.356Z",
+                        "userId": "contact@augtra.com",
+                        "userName": "Vignesh Velmurugan",
+                        "status": "Active"
+                      }
+                    ],
+                    "id": "system#MuWvDE2yOESMFwvtQU9Yyw",
+                    "reference": null,
+                    "createdOn": "2021-12-22T11:08:47.373Z",
+                    "userId": "contact@augtra.com",
+                    "userName": "Vignesh Velmurugan",
+                    "status": "Active"
+                  }
+                ],
+                "id": "system#XrvyO3ROkW1Xk05QTTgfA",
+                "reference": null,
+                "createdOn": "2021-12-19T10:26:12.386Z",
+                "userId": "contact@augtra.com",
+                "userName": "vignesh.velmurugan.mail@gmail.com",
+                "status": "Active"
+              }
+            ],
+            "id": "system#zZEcNqZXW0SrghNwLDBcA",
+            "reference": null,
+            "createdOn": "2021-12-16T11:22:30.867Z",
+            "userId": "contact@augtra.com",
+            "userName": "vignesh.velmurugan.mail@gmail.com",
+            "status": "Active"
+          },
+          {
+            "name": "Sample Asset System 21",
+            "items": [
+              {
+                "name": "Sample Asset System 211",
+                "items": [],
+                "id": "system#s84sFWBY5kuMmChaHchKQ",
+                "reference": null,
+                "createdOn": "2021-12-16T13:13:08.929Z",
+                "userId": "contact@augtra.com",
+                "userName": "vignesh.velmurugan.mail@gmail.com",
+                "status": "Active"
+              }
+            ],
+            "id": "system#2eAHbUWU27qQzqeLcEIQ",
+            "reference": null,
+            "createdOn": "2021-12-16T13:12:03.317Z",
+            "userId": "contact@augtra.com",
+            "userName": "vignesh.velmurugan.mail@gmail.com",
+            "status": "Active"
+          },
+          {
+            "name": "Google",
+            "items": [],
+            "id": "system#fEhDYfdZtE2W6GOm932AxQ",
+            "reference": null,
+            "createdOn": "2021-12-22T07:13:15.68Z",
+            "userId": "contact@augtra.com",
+            "userName": "Vignesh Velmurugan",
+            "status": "Active"
+          },
+          {
+            "name": "SOmething",
+            "items": [],
+            "id": "system#uFErbMMO1EiqzNoxcDKvw",
+            "reference": null,
+            "createdOn": "2021-12-22T10:30:20.744Z",
+            "userId": "contact@augtra.com",
+            "userName": "Vignesh Velmurugan",
+            "status": "Active"
+          }
+        ],
+        "id": "system#TwUwrqG5tkqna7EWO5moYA",
+        "reference": null,
+        "createdOn": "2021-12-16T08:37:44.495Z",
+        "userId": "contact@augtra.com",
+        "userName": "vignesh.velmurugan.mail@gmail.com",
+        "status": "Active"
+      },
+      {
+        "name": "Sample Asset System 54",
+        "items": [],
+        "id": "system#bAsEI6Zm4ESeBWs3SgDw",
+        "reference": null,
+        "createdOn": "2021-12-16T13:09:06.185Z",
+        "userId": "contact@augtra.com",
+        "userName": "vignesh.velmurugan.mail@gmail.com",
+        "status": "Active"
+      },
+      {
+        "name": "Jan",
+        "items": [],
+        "id": "system#fXkzANbKLEaBRNJgQVnWPQ",
+        "reference": null,
+        "createdOn": "2021-12-22T07:20:27.421Z",
+        "userId": "contact@augtra.com",
+        "userName": "Vignesh Velmurugan",
+        "status": "Active"
+      },
+      {
+        "name": "fans",
+        "items": [],
+        "id": "system#qNP44ObT1EWwsmkczYnBQg",
+        "reference": null,
+        "createdOn": "2021-12-22T07:21:33.473Z",
+        "userId": "contact@augtra.com",
+        "userName": "Vignesh Velmurugan",
+        "status": "Active"
+      },
+      {
+        "name": "Muqthar",
+        "items": [],
+        "id": "system#8iQXFzCZH0CadeOQDDdcQ",
+        "reference": null,
+        "createdOn": "2021-12-23T07:28:49.391Z",
+        "userId": "contact@augtra.com",
+        "userName": "Vignesh Velmurugan",
+        "status": "Active"
+      },
+      {
+        "name": "RW",
+        "items": [],
+        "id": "system#HSOyCOtfxkp8V1Oj0udig",
+        "reference": null,
+        "createdOn": "2021-12-23T07:31:39.475Z",
+        "userId": "contact@augtra.com",
+        "userName": "Vignesh Velmurugan",
+        "status": "Active"
+      }
+    ],
+    "id": "system#vb4rmbhEdkKNPuLiuLnM7Q",
+    "reference": null,
+    "createdOn": "2021-12-16T08:33:40.925Z",
+    "userId": "contact@augtra.com",
+    "userName": "vignesh.velmurugan.mail@gmail.com",
+    "status": "Active"
+  },
+  {
+    "name": "Sample Asset System 3",
+    "items": [],
+    "id": "system#2SmM35ndLEGtKfrUYT25Uw",
+    "reference": null,
+    "createdOn": "2021-12-16T08:38:32.136Z",
+    "userId": "contact@augtra.com",
+    "userName": "vignesh.velmurugan.mail@gmail.com",
+    "status": "Active"
+  },
+  {
+    "name": "Sample Asset System 5",
+    "items": [],
+    "id": "system#l57Xq7mMZUShm922pZyLvw",
+    "reference": null,
+    "createdOn": "2021-12-16T13:06:19.594Z",
+    "userId": "contact@augtra.com",
+    "userName": "vignesh.velmurugan.mail@gmail.com",
+    "status": "Active"
+  }
+]
