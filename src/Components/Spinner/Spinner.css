@@ -97,10 +97,6 @@
 
 /* new loader */
 
-body {
-  overflow: hidden;
-}
-
 .loader {
   display: flex;
   flex-direction: row;
