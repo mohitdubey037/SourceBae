@@ -40,8 +40,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
+  console.log(props);
   const isRejectOrAccept = props.projectProposals[0].rejectReasonByClient ||
-    props.projectProposals[0].rejectReasonByClient ||
+    props.projectProposals[0].rejectReasonByAgency ||
     props.projectProposals[0].isQuotationAcceptedByClient ||
     props.projectProposals[0].isQuotationAcceptedByAgency
 
@@ -52,10 +53,7 @@ const AgencyCommentBox = (props) => {
   const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
     props.projectProposals[0].clientNegotiablePrice
 
-  console.log(overallPriceSection);
-
   const [loading, setLoading] = useState(false);
-  console.log(props);
   const classes = useStyles();
   const [apiData, setApiData] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -215,18 +213,17 @@ const AgencyCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${isReject && 'conditional_width_commentBox'}`}>
+          <div className={`commentBox ${isRejectOrAccept && 'conditional_width_commentBox'}`}>
             <div className="topLine" style={{
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
-            {props.projectProposals[0].isQuotationAcceptedByClient === true ?
+            {/* {props.projectProposals[0].isQuotationAcceptedByClient &&
               <p>Quotation accepted by client!!.Waiting for your side</p>
-              :
+              : */}
               <>
                 <div className="chatBox-parent">
                   {props.projectProposals[0].comments.map((index, id) => {
-                    console.log(id === index.length)
                     return (
                       <>
                         {index.comment && (
@@ -242,7 +239,7 @@ const AgencyCommentBox = (props) => {
                             <b>You</b>
                           </div>
                         )}
-                        {!isReject && props.projectProposals[0].isCommentSectionActive && id === props.projectProposals[0].comments.length - 1 &&
+                        {!isRejectOrAccept && props.projectProposals[0].isCommentSectionActive && id === props.projectProposals[0].comments.length - 1 &&
                           <p className="waiting_left">Waiting for the reply from Client.
                           </p>
                         }
@@ -327,7 +324,7 @@ const AgencyCommentBox = (props) => {
                   }
                 </div>
               </>
-            }
+            {/* } */}
             {props.projectProposals[0].isQuotationAcceptedByClient === false
               && !props.projectProposals[0].isCommentSectionActive
               && !props.projectProposals[0].isReplySectionActive
@@ -347,9 +344,8 @@ const AgencyCommentBox = (props) => {
           {/* // {overallPriceSection && */}
           <div className={`action-wait ${isRejectOrAccept && "conditional_width_commentBox"}`}>
             <div className="topLine"></div>
-            {!(
-              props.projectProposals[0].isQuotationAcceptedByAgency && props.projectProposals[0].isQuotationAcceptedByClient
-            ) && (
+            {/* {(!props.projectProposals[0].isQuotationAcceptedByAgency || props.projectProposals[0].rejectReasonByAgency) && props.projectProposals[0].isQuotationAcceptedByClient
+             && ( */}
                 <div className="proposalCard">
                   {/* {props.projectProposals[0].isProposalActionActive ? */}
                   {/* <> */}
@@ -358,13 +354,7 @@ const AgencyCommentBox = (props) => {
                     <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
                       <p>Accept or Reject the Project.</p>
                     </div>
-                  }
-
-                  {
-                    (props.projectProposals[0].clientNegotiablePrice ||
-                      props.projectProposals[0].agencyNegotiablePrice ||
-                      props.projectProposals[0].isQuotationAcceptedByClient)
-                    &&
+                  }                  
                     <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
                       {props.projectProposals[0].clientNegotiablePrice && (
                         <div className="detailsButtons md-m10">
@@ -372,17 +362,17 @@ const AgencyCommentBox = (props) => {
                         </div>
                       )}
 
-                      {/* {props.projectProposals[0].agencyNegotiablePrice && ( */}
+                      {props.projectProposals[0].agencyNegotiablePrice && (
                       <div className="detailsButtons md-m10" >
                         <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                       </div>
-                      {/* )} */}
+                      )}
 
-                      {/* {props.projectProposals[0].isQuotationAcceptedByClient && */}
+                      {props.projectProposals[0].isQuotationAcceptedByClient &&
                       <div className="detailsButtons md-m10" >
                         <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
                       </div>
-                      {/* } */}
+                      }
 
                       {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
                         <div className="detailsButtons md-m10">
@@ -392,8 +382,6 @@ const AgencyCommentBox = (props) => {
                         </div>
                       )}
                     </div>
-                  }
-
                   {!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
                     &&
                     <div>
@@ -430,7 +418,7 @@ const AgencyCommentBox = (props) => {
                   }
                   {/* } */}
                 </div>
-              )}
+              {/* )} */}
           </div>
           {/* } */}
 

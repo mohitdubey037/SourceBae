@@ -48,9 +48,6 @@ const ClientCommentBox = (props) => {
   const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
     props.projectProposals[0].clientNegotiablePrice || props.projectProposals[0].quotationLink
 
-  console.log(overallPriceSection);
-
-  console.log(props);
   const [loading, setLoading] = useState(false);
   const projectStartDateByClientRef = useRef();
 
@@ -255,7 +252,9 @@ const ClientCommentBox = (props) => {
                     }
                     {!props.projectProposals[0].isAskedForQuotation &&
                       props.projectProposals[0].isCommentSectionActive &&
-                      props.projectProposals[0].isShortListed && (
+                      props.projectProposals[0].isShortListed && 
+                      !props.projectProposals[0].isQuotationAcceptedByClient &&
+                      !props.projectProposals[0].rejectReasonByClient && (
                         <div className="detailsButtons margin-0">
                           <button onClick={askForQuotation}>Ask For Quotation</button>
                         </div>
@@ -324,61 +323,55 @@ const ClientCommentBox = (props) => {
           </div>
 
           {/* {overallPriceSection && */}
-            <div className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
-              <div className="topLine"
-              >
-              </div>
-              {/* {props.projectProposals[0].isProposalActionActive} */}
+          <div className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
+            <div className="topLine"></div>
+            {/* {props.projectProposals[0].isProposalActionActive} */}
 
-              <div className="proposalCard">
-                {!isRejectOrAccept &&
-                  <div className={`${props.projectProposals[0].isProposalActionActive ?
-                    'conditional_acceptOrReject' :
-                    'normal_acceptOrReject_clientCommentBox'}
+            <div className="proposalCard">
+              {!isRejectOrAccept &&
+                <div className={`${props.projectProposals[0].isProposalActionActive ?
+                  'conditional_acceptOrReject' :
+                  'normal_acceptOrReject_clientCommentBox'}
                 `}>
-                    <p>Accept or Reject the Project.</p>
-                  </div>
-                }
-                {(props.projectProposals[0].clientNegotiablePrice ||
-                  props.projectProposals[0].agencyNegotiablePrice ||
-                  props.projectProposals[0].isQuotationAcceptedByClient)
-                  &&
-                  <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
-                    {/* {props.projectProposals[0].agencyNegotiablePrice && ( */}
-                    <div className="detailsButtons margin-0">
-                      <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-                    </div>
-                    {/* )} */}
+                  <p>Accept or Reject the Project.</p>
+                </div>
+              }
 
-                    {props.projectProposals[0].clientNegotiablePrice && (
-                      <div className="detailsButtons margin-0">
-                        <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-                      </div>
-                    )}
+              <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
+                {props.projectProposals[0].agencyNegotiablePrice && (
+                  <div className="detailsButtons margin-0">
+                    <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                  </div>
+                )}
 
-                    {props.projectProposals[0].quotationLink && (
-                      <div className="detailsButtons margin-0">
-                        <a href={props.projectProposals[0].quotationLink} target="new">
-                          View Quotation
-                        </a>
-                      </div>
-                    )}
+                {props.projectProposals[0].clientNegotiablePrice && (
+                  <div className="detailsButtons margin-0">
+                    <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
                   </div>
-                }
-                {!isRejectOrAccept &&
-                  <div className={`detailsButtons ${isRejectOrAccept} && isRejectOrAccept`} style={{ marginBottom: "1rem" }} >
-                    <div>
-                      <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                        Accept
-                      </button>
-                      <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
-                        Reject
-                      </button>
-                    </div>
+                )}
+
+                {props.projectProposals[0].quotationLink && (
+                  <div className="detailsButtons margin-0">
+                    <a href={props.projectProposals[0].quotationLink} target="new">
+                      View Quotation
+                    </a>
                   </div>
-                }
+                )}
               </div>
+              {!isRejectOrAccept &&
+                <div className={`detailsButtons ${isRejectOrAccept} && isRejectOrAccept`} style={{ marginBottom: "1rem" }} >
+                  <div>
+                    <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                      Accept
+                    </button>
+                    <button className="rejectButton" onClick={() => setOpenRejectionModal(true)}>
+                      Reject
+                    </button>
+                  </div>
+                </div>
+              }
             </div>
+          </div>
           {/* } */}
         </div>
       }
