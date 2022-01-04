@@ -48,6 +48,7 @@ const AgencyCommentBox = (props) => {
   const isReject = props.projectProposals[0].rejectReasonByClient ||
     props.projectProposals[0].rejectReasonByAgency
 
+
   const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
     props.projectProposals[0].clientNegotiablePrice
 
@@ -129,6 +130,7 @@ const AgencyCommentBox = (props) => {
         .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationAcceptForm)
         .then(function (response) {
           props.giveReplies(true);
+          setOpen(false)
         });
     } else {
       toast.error("Final cost cannot be empty.");
@@ -141,6 +143,7 @@ const AgencyCommentBox = (props) => {
         .patch(`api/client/projects/proposal-action/${props.projectId}`, quotationRejectionForm)
         .then(function (response) {
           props.giveReplies(true);
+          setOpenWithdrawModal(false);
           setLoading(false);
         })
         .catch(err => {
@@ -357,33 +360,39 @@ const AgencyCommentBox = (props) => {
                     </div>
                   }
 
-                  <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
-                    {props.projectProposals[0].clientNegotiablePrice && (
-                      <div className="detailsButtons md-m10">
-                        <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
-                      </div>
-                    )}
+                  {
+                    (props.projectProposals[0].clientNegotiablePrice ||
+                      props.projectProposals[0].agencyNegotiablePrice ||
+                      props.projectProposals[0].isQuotationAcceptedByClient)
+                    &&
+                    <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
+                      {props.projectProposals[0].clientNegotiablePrice && (
+                        <div className="detailsButtons md-m10">
+                          <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                        </div>
+                      )}
 
-                    {props.projectProposals[0].agencyNegotiablePrice && (
+                      {/* {props.projectProposals[0].agencyNegotiablePrice && ( */}
                       <div className="detailsButtons md-m10" >
                         <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                       </div>
-                    )}
+                      {/* )} */}
 
-                    {props.projectProposals[0].isQuotationAcceptedByClient &&
+                      {/* {props.projectProposals[0].isQuotationAcceptedByClient && */}
                       <div className="detailsButtons md-m10" >
                         <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
                       </div>
-                    }
+                      {/* } */}
 
-                    {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-                      <div className="detailsButtons md-m10">
-                        <a href={props.projectProposals[0].quotationLink} target="new">
-                          View Quotation
-                        </a>
-                      </div>
-                    )}
-                  </div>
+                      {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+                        <div className="detailsButtons md-m10">
+                          <a href={props.projectProposals[0].quotationLink} target="new">
+                            View Quotation
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  }
 
                   {!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
                     &&
@@ -406,7 +415,6 @@ const AgencyCommentBox = (props) => {
                   {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
                     &&
                     file === null ?
-                    !props.replyToClient &&
                     <div className="quotation_file_upload">
                       <p>Please upload a file of quotation</p>
                       <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
@@ -415,6 +423,7 @@ const AgencyCommentBox = (props) => {
                       </label>
                     </div>
                     :
+                    !props.replyToClient &&
                     <div className="quotation_file_upload">
                       <p>{file?.name.slice(0, 20)}</p>
                     </div>

@@ -227,7 +227,7 @@ const ClientCommentBox = (props) => {
     <>
       {loading ? <Spinner /> :
         <div className="commentBox_parent">
-          <div className={`commentBox ${isReject && 'conditional_width_commentBox'}`}>
+          <div className={`commentBox ${isRejectOrAccept && 'conditional_width_commentBox'}`}>
             <div className="topLine"></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
             <div className="chatBox-parent">
@@ -329,6 +329,7 @@ const ClientCommentBox = (props) => {
               >
               </div>
               {/* {props.projectProposals[0].isProposalActionActive} */}
+
               <div className="proposalCard">
                 {!isRejectOrAccept &&
                   <div className={`${props.projectProposals[0].isProposalActionActive ?
@@ -338,28 +339,33 @@ const ClientCommentBox = (props) => {
                     <p>Accept or Reject the Project.</p>
                   </div>
                 }
-                <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
-                  {props.projectProposals[0].agencyNegotiablePrice && (
+                {(props.projectProposals[0].clientNegotiablePrice ||
+                  props.projectProposals[0].agencyNegotiablePrice ||
+                  props.projectProposals[0].isQuotationAcceptedByClient)
+                  &&
+                  <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
+                    {/* {props.projectProposals[0].agencyNegotiablePrice && ( */}
                     <div className="detailsButtons margin-0">
                       <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                     </div>
-                  )}
+                    {/* )} */}
 
-                  {props.projectProposals[0].clientNegotiablePrice && (
-                    <div className="detailsButtons margin-0">
-                      <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
-                    </div>
-                  )}
+                    {props.projectProposals[0].clientNegotiablePrice && (
+                      <div className="detailsButtons margin-0">
+                        <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                      </div>
+                    )}
 
-                  {props.projectProposals[0].quotationLink && (
-                    <div className="detailsButtons margin-0">
-                      <a href={props.projectProposals[0].quotationLink} target="new">
-                        View Quotation
-                      </a>
-                    </div>
-                  )}
-                </div>
-                {!isReject &&
+                    {props.projectProposals[0].quotationLink && (
+                      <div className="detailsButtons margin-0">
+                        <a href={props.projectProposals[0].quotationLink} target="new">
+                          View Quotation
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                }
+                {!isRejectOrAccept &&
                   <div className={`detailsButtons ${isRejectOrAccept} && isRejectOrAccept`} style={{ marginBottom: "1rem" }} >
                     <div>
                       <button className="acceptButton" onClick={() => { setOpen(true) }}>
@@ -429,7 +435,7 @@ const ClientCommentBox = (props) => {
                       <DesktopDatePicker
                         inputFormat="dd/MM/yyyy"
                         minDate={new Date(moment(quotationFormData.projectStartDateByClient).add('1', 'days'))}
-                        
+
                         value={quotationFormData.projectDelayedStartDateByClient}
                         disabled={quotationFormData.projectStartDateByClient === '' ? true : quotationFormData.projectStartDateByClient === 'Invalid Date' ? true : quotationFormData.projectStartDateByClient === null ? true : false
                         }
