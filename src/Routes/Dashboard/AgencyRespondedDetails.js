@@ -132,6 +132,7 @@ function AgencyRespondedDetails(props) {
                 giveReplies={(gr) => {
                   setRepliedToClient(gr);
                 }}
+                replyToClient={isRepliedToClient}
                 projectId={projectId}
                 commentType="Quotation"
                 {...project}

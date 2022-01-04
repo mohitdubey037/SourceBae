@@ -406,6 +406,7 @@ const AgencyCommentBox = (props) => {
                   {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
                     &&
                     file === null ?
+                    !props.replyToClient &&
                     <div className="quotation_file_upload">
                       <p>Please upload a file of quotation</p>
                       <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
