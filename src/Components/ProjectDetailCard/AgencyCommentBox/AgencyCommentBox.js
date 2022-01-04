@@ -221,34 +221,35 @@ const AgencyCommentBox = (props) => {
             {/* {props.projectProposals[0].isQuotationAcceptedByClient &&
               <p>Quotation accepted by client!!.Waiting for your side</p>
               : */}
-              <>
-                <div className="chatBox-parent">
-                  {props.projectProposals[0].comments.map((index, id) => {
-                    return (
-                      <>
-                        {index.comment && (
-                          // <div className="chatBox max-width chatBox-left" >
-                          <div className="chatBox chatBox-left" >
-                            <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
-                            <b>{`${props?.clientId?.companyName}`}</b>
-                          </div>
-                        )}
-                        {index.reply && (
-                          <div className="chatBox">
-                            <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
-                            <b>You</b>
-                          </div>
-                        )}
-                        {!isRejectOrAccept && props.projectProposals[0].isCommentSectionActive && id === props.projectProposals[0].comments.length - 1 &&
-                          <p className="waiting_left">Waiting for the reply from Client.
-                          </p>
-                        }
-                        {/* {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>} */}
-                      </>
-                    )
-                  })
-                  }
-                </div>
+            <>
+              <div className="chatBox-parent">
+                {props.projectProposals[0].comments.map((index, id) => {
+                  return (
+                    <>
+                      {index.comment && (
+                        // <div className="chatBox max-width chatBox-left" >
+                        <div className="chatBox chatBox-left" >
+                          <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
+                          <b>{`${props?.clientId?.companyName}`}</b>
+                        </div>
+                      )}
+                      {index.reply && (
+                        <div className="chatBox">
+                          <p style={{ backgroundColor: '#eaf3ff', color: 'black' }}>{index.reply}</p>
+                          <b>You</b>
+                        </div>
+                      )}
+                      {!isRejectOrAccept && props.projectProposals[0].isCommentSectionActive && id === props.projectProposals[0].comments.length - 1 &&
+                        <p className="waiting_left">Waiting for the reply from Client.
+                        </p>
+                      }
+                      {/* {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>} */}
+                    </>
+                  )
+                })
+                }
+              </div>
+              {!props.projectProposals[0].rejectReasonByClient &&
                 <div className='commentParent'>
                   {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
                     (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
@@ -323,8 +324,9 @@ const AgencyCommentBox = (props) => {
                     </div>
                   }
                 </div>
-              </>
-            {/* } */}
+              }
+            </>
+
             {props.projectProposals[0].isQuotationAcceptedByClient === false
               && !props.projectProposals[0].isCommentSectionActive
               && !props.projectProposals[0].isReplySectionActive
@@ -346,79 +348,80 @@ const AgencyCommentBox = (props) => {
             <div className="topLine"></div>
             {/* {(!props.projectProposals[0].isQuotationAcceptedByAgency || props.projectProposals[0].rejectReasonByAgency) && props.projectProposals[0].isQuotationAcceptedByClient
              && ( */}
-                <div className="proposalCard">
-                  {/* {props.projectProposals[0].isProposalActionActive ? */}
-                  {/* <> */}
-                  {/* {(props.projectProposals[0].isProposalActionActive && !isReject) && */}
-                  {(!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) &&
-                    <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
-                      <p>Accept or Reject the Project.</p>
-                    </div>
-                  }                  
-                    <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
-                      {props.projectProposals[0].clientNegotiablePrice && (
-                        <div className="detailsButtons md-m10">
-                          <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
-                        </div>
-                      )}
-
-                      {props.projectProposals[0].agencyNegotiablePrice && (
-                      <div className="detailsButtons md-m10" >
-                        <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-                      </div>
-                      )}
-
-                      {props.projectProposals[0].isQuotationAcceptedByClient &&
-                      <div className="detailsButtons md-m10" >
-                        <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
-                      </div>
-                      }
-
-                      {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
-                        <div className="detailsButtons md-m10">
-                          <a href={props.projectProposals[0].quotationLink} target="new">
-                            View Quotation
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  {!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
-                    &&
-                    <div>
-                      <div className={`detailsButtons `} style={{ marginBottom: "1rem" }}>
-                        <div>
-                          <button className="acceptButton" onClick={() => { setOpen(true) }}>
-                            Accept
-                          </button>
-                          <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
-                            Reject
-                          </button>
-                        </div>
-                      </div>
-                      {props.projectProposals[0].isReplySectionActive === 'false' &&
-                        <p className="color-black">Please provide some reply</p>
-                      }
-                    </div>
-                  }
-                  {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
-                    &&
-                    file === null ?
-                    <div className="quotation_file_upload">
-                      <p>Please upload a file of quotation</p>
-                      <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
-                        <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
-                          onChange={(event) => inputFileChosen(event)} />
-                      </label>
-                    </div>
-                    :
-                    !props.replyToClient &&
-                    <div className="quotation_file_upload">
-                      <p>{file?.name.slice(0, 20)}</p>
-                    </div>
-                  }
-                  {/* } */}
+            <div className="proposalCard">
+              {/* {props.projectProposals[0].isProposalActionActive ? */}
+              {/* <> */}
+              {/* {(props.projectProposals[0].isProposalActionActive && !isReject) && */}
+              {(!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) &&
+                <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
+                  <p>Accept or Reject the Project.</p>
                 </div>
-              {/* )} */}
+              }
+              <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
+                {props.projectProposals[0].clientNegotiablePrice && (
+                  <div className="detailsButtons md-m10">
+                    <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                  </div>
+                )}
+
+                {props.projectProposals[0].agencyNegotiablePrice && (
+                  <div className="detailsButtons md-m10" >
+                    <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                  </div>
+                )}
+
+                {props.projectProposals[0].isQuotationAcceptedByClient &&
+                  <div className="detailsButtons md-m10" >
+                    <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
+                  </div>
+                }
+
+                {props.projectProposals[0].quotationLink && props.projectProposals[0].quotationLink !== "" && (
+                  <div className="detailsButtons md-m10">
+                    <a href={props.projectProposals[0].quotationLink} target="new">
+                      View Quotation
+                    </a>
+                  </div>
+                )}
+              </div>
+              {!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient
+                &&
+                <div>
+                  <div className={`detailsButtons `} style={{ marginBottom: "1rem" }}>
+                    <div>
+                      <button className="acceptButton" onClick={() => { setOpen(true) }}>
+                        Accept
+                      </button>
+                      <button className="rejectButton" onClick={() => setOpenWithdrawModal(true)}>
+                        Reject
+                      </button>
+                    </div>
+                  </div>
+                  {props.projectProposals[0].isReplySectionActive === 'false' &&
+                    <p className="color-black">Please provide some reply</p>
+                  }
+                </div>
+              }
+              {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
+                &&
+                file === null ?
+                <div className="quotation_file_upload">
+                  <p>Please upload a file of quotation</p>
+                  <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
+                    <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
+                      onChange={(event) => inputFileChosen(event)} />
+                  </label>
+                </div>
+                :
+                // !props.replyToClient &&
+                props.projectProposals[0].isReplySectionActive &&
+                <div className="quotation_file_upload">
+                  <p>{file?.name.slice(0, 20)}</p>
+                </div>
+              }
+              {/* } */}
+            </div>
+            {/* )} */}
           </div>
           {/* } */}
 
