@@ -117,7 +117,7 @@ const HireAgencyForm1 = (props) => {
         .then(function (response) {
           setLoading(false);
           data.projectId = response._id
-          props.history.replace(`/hire-agency-form-two:${response._id}`, {
+          props.history.replace(`/hire-agency-form-two/${response._id}`, {
             agencyForm1: data,
           });
         })

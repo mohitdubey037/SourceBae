@@ -33,11 +33,11 @@ function Back(props) {
                 if (props.formState3.projectTechnologiesRequired.length > 0 || props.formState3.projectServicesRequired.length > 0) {
                     if (window.confirm("Your Previous Saved Documents Will Be Lost") == true) {
                         // props.history.replace(`/clientNewestDashboard`);
-                        props.history.replace(`/hire-agency-form-two:${props.formState3.id}`, props.oldFormData);
+                        props.history.replace(`/hire-agency-form-two/${props.formState3.id}`, props.oldFormData);
                     }
                 }
                 else {
-                    props.history.replace(`/hire-agency-form-two:${props.formState3.id}`, props.oldFormData);
+                    props.history.replace(`/hire-agency-form-two/${props.formState3.id}`, props.oldFormData);
                 }
             }
 

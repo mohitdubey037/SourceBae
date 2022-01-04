@@ -16,6 +16,7 @@ import Spinner from "../../../../Components/Spinner/Spinner";
 function HireAgencyForm3(props) {
 
     const Role = localStorage.getItem('role');
+    const userId = localStorage.getItem('userId');
     let { projectId } = useParams();
     const [errors, setErrors] = useState({})
 
@@ -23,6 +24,7 @@ function HireAgencyForm3(props) {
     const [allServices, setAllServices] = useState([])
     const [selected, setSelected] = useState([]);
     const [apiData, setApiData] = useState({
+        clientId: userId,
         id: projectId,
         stepsCompleted: 3,
         projectTechnologiesRequired: [],
@@ -117,7 +119,7 @@ function HireAgencyForm3(props) {
             instance.post(`/api/${Role}/projects/create`, apiData)
                 .then(function (response) {
                     setLoading(false);
-                    props.history.replace(`/agency-list:${projectId}`)
+                    props.history.replace(`/agency-list/${projectId}`)
                 })
                 .catch(err => {
                     setLoading(false);
@@ -239,7 +241,7 @@ function HireAgencyForm3(props) {
                                 </div>
 
                                 <div className="nextbutton" style={{ width: "100%" }}>
-                                    <div className="backbutton_hireAgencyForm3" onClick={() => props.history.push(`/hire-agency-form-two:${projectId}`, oldFormData)} style={{ backgroundColor: '#707070' }}>
+                                    <div className="backbutton_hireAgencyForm3" onClick={() => props.history.push(`/hire-agency-form-two/${projectId}`, oldFormData)} style={{ backgroundColor: '#707070' }}>
                                         Back
                                     </div>
                                     <div onClick={() => handleSubmit()}>

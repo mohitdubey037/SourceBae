@@ -106,7 +106,7 @@ function Responded(props) {
                                             </div>
                                             <div className="respondedCardButton">
                                                 <div className="showDetail_respondedCardButton" onClick={() => props.history.push({
-                                                    pathname: `agency-project-details:${s._id}`,
+                                                    pathname: `agency-project-details/${s._id}`,
                                                     origin: 'received'
                                                 })}><p>Show Details</p>
                                                 </div>

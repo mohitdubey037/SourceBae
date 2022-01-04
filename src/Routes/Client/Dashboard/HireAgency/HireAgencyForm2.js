@@ -175,10 +175,9 @@ function HireAgencyForm2(props) {
       instance
         .post(`/api/${Role}/projects/create`, apiData)
         .then(function (response) {
-          console.log('hii');
           setLoading(false);
           propData.agencyForm2 = apiData
-          props.history.replace(`/hire-agency-form-three:${projectId}`, propData);
+          props.history.replace(`/hire-agency-form-three/${projectId}`, propData);
         })
         .catch((err) => {
           setLoading(false);

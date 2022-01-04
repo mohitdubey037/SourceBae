@@ -151,7 +151,7 @@ const App = (props) => {
         <CustomRoute
           condition={AGENCY}
           exact
-          path="/agency-project-details:projectId"
+          path="/agency-project-details/:projectId"
           component={AgencyProjectDetails}
         />
         <CustomRoute

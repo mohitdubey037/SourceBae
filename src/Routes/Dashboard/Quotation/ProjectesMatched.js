@@ -63,7 +63,7 @@ function ProjectesMatched(props) {
                                             <div className="projectHeadingButton">
                                                 <div className="showInterestBtn">
                                                     <div className="showDetail_projectMatched" onClick={() => props.history.push({
-                                                        pathname: `agency-project-details:${s?._id}`,
+                                                        pathname: `agency-project-details/${s?._id}`,
                                                         origin: 'project-match'
                                                     })}><p>Show Details</p>
                                                     </div>
