@@ -351,7 +351,7 @@ const Login = (props) => {
                           className={`forgot-password_login ${
                             role === CLIENT && "conditional_color"
                           }`}
-                          onClick={() => props.history.push("/enter-email")}
+                          onClick={() => props.history.push(`/enter-email/${role}`)}
                         >
                           <p>Forgot Password</p>
                         </div>

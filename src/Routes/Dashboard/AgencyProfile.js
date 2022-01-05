@@ -146,7 +146,6 @@ function AgencyProfile(props) {
   });
 
   useEffect(() => {
-    console.log(props.location.origin === 'portfolio');
     if (!portNavigated && inputPort !== null && props.location.origin === "portfolio") {
       inputPort?.current?.click();
       setPortNavigated(true);

@@ -89,7 +89,7 @@ const App = (props) => {
         <Route exact path="/Verify_Page" component={VerifyPage} />
         <Route exact path="/login/:role" component={Login} />
         <Route exact path="/register/:role" component={Register} />
-        <Route exact path="/enter-email" component={EnterEmail} />
+        <Route exact path="/enter-email/:role" component={EnterEmail} />
         <Route exact path="/password-reset/:token" component={PasswordReset} />
 
         <Route exact path="/page-not-found" component={PageNotFound} />
