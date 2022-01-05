@@ -76,7 +76,6 @@ const Register = (props) => {
   const [apiErrors, setApiErrors] = useState(false);
 
   const [step, setStep] = useState(1);
-
   useEffect(() => {}, [apiErrors]);
 
   const setForm = (event) => {
@@ -222,11 +221,11 @@ const Register = (props) => {
   useEffect(() => {
     let existingRole = localStorage.getItem("role");
     let existingToken = cookie.load("Authorization");
-    setRoleState(existingRole)
-    if (existingRole && existingRole!=="" && existingToken) {
-      window.location.href = `/login/${existingRole}`
+    setRoleState(existingRole);
+    if (existingRole && existingRole !== "" && existingToken) {
+      window.location.href = `/login/${existingRole}`;
     } else {
-      setRoleState(role)
+      setRoleState(role);
     }
   }, []);
 
@@ -241,7 +240,7 @@ const Register = (props) => {
 
   const handleChangeToggle = (name) => {
     setRoleState(name);
-    role === AGENCY ? <RegisterAgencyForm1 /> : <RegisterClientForm1 />;
+    // role === AGENCY ? <RegisterAgencyForm1 /> : <RegisterClientForm1 />;
   };
 
   const handleImageClick = () => {
@@ -328,7 +327,7 @@ const Register = (props) => {
 
   useEffect(() => {
     if (token !== null && apiErrors === false) {
-      const apiRole = role
+      const apiRole = role;
       let api_param_const = ``;
       let api_create_form = {};
       if (apiRole === `client`) {
@@ -354,8 +353,12 @@ const Register = (props) => {
     }
   }, [token, apiErrors]);
 
-
   const toggleForms = (direction) => {
+    if (roleState === "" || roleState === AGENCY) {
+      props.history.push(`/register/${AGENCY}`);
+    } else {
+      props.history.push(`/register/${CLIENT}`);
+    }
     if (direction === "next") {
       setStep((prev) => prev + 1);
       let form1 = document.querySelector(".form__1");
@@ -368,14 +371,23 @@ const Register = (props) => {
   };
 
   const backOnForm2 = () => {
-    setStep((prev) => prev - 1);
-    let form1 = document.querySelector(".form__1");
-    let form2 = document.querySelector(".form__2");
-    form1.classList.toggle("hide__form1");
-    form1.classList.toggle("display__form1");
-    form2.classList.toggle("show__form2");
-    form2.classList.toggle("display__form2");
+    if (step === 1) {
+      props.history.push("/");
+    } else {
+      setStep((prev) => prev - 1);
+      let form1 = document.querySelector(".form__1");
+      let form2 = document.querySelector(".form__2");
+      form1.classList.toggle("hide__form1");
+      form1.classList.toggle("display__form1");
+      form2.classList.toggle("show__form2");
+      form2.classList.toggle("display__form2");
+    }
   };
+  useEffect(() => {
+    if (props.history.action === "POP" && !isFirstRender) {
+      backOnForm2();
+    }
+  }, [props]);
 
   //============= USE-EFFECT HOOKS============//
 
@@ -480,7 +492,7 @@ const Register = (props) => {
                     />
                   )}
 
-                  {(role === CLIENT &&
+                  {role === CLIENT && (
                     <RegisterClientForm1
                       step={step}
                       setStep={setStep}
@@ -495,7 +507,7 @@ const Register = (props) => {
                   </div>
 
                   <form autoComplete="off" className="client__form form__2">
-                    {(role === AGENCY &&
+                    {role === AGENCY && (
                       <RegisterAgencyForm2
                         errors={errors}
                         setLinkedIn={setLinkedIn}
@@ -505,7 +517,7 @@ const Register = (props) => {
                         site={site}
                       />
                     )}
-                    {(role === CLIENT &&
+                    {role === CLIENT && (
                       <RegisterClientForm2
                         errors={errors}
                         setLinkedIn={setLinkedIn}
@@ -558,9 +570,7 @@ const Register = (props) => {
                         Already have an account?{" "}
                         <span
                           onClick={() =>
-                            props.history.replace(
-                              `/login/${role}`
-                            )
+                            props.history.replace(`/login/${role}`)
                           }
                         >
                           Log In
