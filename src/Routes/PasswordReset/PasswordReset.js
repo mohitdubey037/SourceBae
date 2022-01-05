@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import './PasswordReset.css';
 import * as helper from "../../shared/helper";
-import { useParams } from "react-router";
 import instance from "../../Constants/axiosConstants";
+import { useParams, useHistory, useLocation } from "react-router-dom";
 import {
     InputAdornment,
     Input,
@@ -16,6 +16,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+import Spinner from "../../Components/Spinner/Spinner";
 
 import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
@@ -44,14 +45,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ForgotPassword = (props) => {
+
+    const search = useLocation().search;
+    const token = new URLSearchParams(search).get('token')
+    let role = new URLSearchParams(search).get('role');
+
     const classes = useStyles();
 
-    let { token } = useParams();
-    token = token.slice(1);
+    // let { token } = useParams();
+    // token = token.slice(1);
 
     const [hidePassword, SetPasswordStatus] = useState(true);
+    const [loading, setLoading] = useState(false);
 
-    const [Role, setRole] = useState('agency')
+    const [Role, setRole] = useState(role)
 
     const [form, setForm] = useState({
         password: "",
@@ -78,14 +85,16 @@ const ForgotPassword = (props) => {
     };
 
     const changePassword = () => {
-        // setLoading(true);
+        setLoading(true);
         instance
             .patch(`/api/${Role}/auths/reset-password`, form)
             .then(response => {
-                // props.history.push('/');
-                window.location.href = 'https://sourcebae.com/';
+                setLoading(false)
+                props.history.push(`/login/:${Role}`);
+                // window.location.href = 'https://sourcebae.com/';
             })
             .catch((err) => {
+                setLoading(false);
             });
     };
 
@@ -97,61 +106,63 @@ const ForgotPassword = (props) => {
                     <img className="Image1_hireAgency" src={UpImage} alt="upImage" />
                     <img className="Image2_hireAgency" src={DownImage} alt="downImage" />
                 </div>
-                <div className="mainLoginPage">
-                    <div className="innerLoginPage">
-                        <div className="ForgetContent">
-                            <div className="HeadingForgetPassword">Reset Password </div>
-                            <div className="mainLoginForm">
-                                <FormControl component="fieldset" className="roleRadio">
-                                    <FormLabel className='role' component="legend">Role</FormLabel>
-                                    <RadioGroup style={{ display: "flex" }} aria-label="Role" name="Role" value={Role} onChange={handleRole}>
-                                        <FormControlLabel value="agency" control={<Radio />} label="Agency" />
-                                        <FormControlLabel value="client" control={<Radio />} label="Client" />
-                                    </RadioGroup>
-                                </FormControl>
-                                <div style={{ marginTop: '0px' }} className="loginForm">
-                                    <p style={{ marginLeft: "-7rem", marginBottom: "10px" }}>Enter New Password Here</p>
-                                    <Input
-                                        className={classes.inputs}
-                                        placeholder="Enter a Password"
-                                        variant="outlined"
-                                        type={hidePassword ? "password" : "text"}
-                                        value={form.password}
-                                        disableUnderline={true}
-                                        required
-                                        fullWidth
-                                        name="password"
-                                        autoComplete="password"
-                                        autoFocus
-                                        onChange={(e) => {
-                                            handleChange(e);
-                                        }}
-                                        endAdornment={
-                                            <InputAdornment position="end">
-                                                {hidePassword ? (
-                                                    <VisibilityTwoToneIcon
-                                                        fontSize="small"
-                                                        className={classes.passwordEye}
-                                                        onClick={showPassword}
-                                                    />
-                                                ) : (
-                                                    <VisibilityOffTwoToneIcon
-                                                        fontSize="small"
-                                                        className={classes.passwordEye}
-                                                        onClick={showPassword}
-                                                    />
-                                                )}
-                                            </InputAdornment>
-                                        }
-                                    />
-                                    <button onClick={() => changePassword()} type="submit">
-                                        Change Password
-                                    </button>
+                {loading ? <Spinner /> :
+                    <div className="mainLoginPage">
+                        <div className="innerLoginPage">
+                            <div className="ForgetContent">
+                                <div className="HeadingForgetPassword">Reset Password </div>
+                                <div className="mainLoginForm">
+                                    <FormControl component="fieldset" className="roleRadio">
+                                        <FormLabel className='role' component="legend">Role</FormLabel>
+                                        <RadioGroup style={{ display: "flex" }} aria-label="Role" name="Role" value={Role} onChange={handleRole}>
+                                            <FormControlLabel value="agency" control={<Radio />} label="Agency" />
+                                            <FormControlLabel value="client" control={<Radio />} label="Client" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <div style={{ marginTop: '0px' }} className="loginForm">
+                                        <p style={{ marginLeft: "-7rem", marginBottom: "10px" }}>Enter New Password Here</p>
+                                        <Input
+                                            className={classes.inputs}
+                                            placeholder="Enter a Password"
+                                            variant="outlined"
+                                            type={hidePassword ? "password" : "text"}
+                                            value={form.password}
+                                            disableUnderline={true}
+                                            required
+                                            fullWidth
+                                            name="password"
+                                            autoComplete="password"
+                                            autoFocus
+                                            onChange={(e) => {
+                                                handleChange(e);
+                                            }}
+                                            endAdornment={
+                                                <InputAdornment position="end">
+                                                    {hidePassword ? (
+                                                        <VisibilityTwoToneIcon
+                                                            fontSize="small"
+                                                            className={classes.passwordEye}
+                                                            onClick={showPassword}
+                                                        />
+                                                    ) : (
+                                                        <VisibilityOffTwoToneIcon
+                                                            fontSize="small"
+                                                            className={classes.passwordEye}
+                                                            onClick={showPassword}
+                                                        />
+                                                    )}
+                                                </InputAdornment>
+                                            }
+                                        />
+                                        <button onClick={() => changePassword()} type="submit">
+                                            Change Password
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </>
     );

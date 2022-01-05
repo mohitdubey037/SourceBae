@@ -3,6 +3,7 @@ import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
 import uploadImage from '../../assets/images/Newestdashboard/Client_Profile/camera_icon.png';
+import { useDropzone } from 'react-dropzone';
 import { toast } from "react-toastify";
 
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
@@ -78,17 +79,50 @@ function ClientProfile() {
     };
 
     const inputFileChoosen = (ev) => {
+        console.log(ev);
         setFile(ev)
         let reader = new FileReader();
         reader.readAsDataURL(ev)
         reader.onload = () => {
-            setShow(reader.result) ;
+            setShow(reader.result);
             setIsUploaded(true)
         }
     }
 
+    const {
+        acceptedFiles,
+        getRootProps,
+        getInputProps
+    } = useDropzone({
+        accept: '.jpg, .png, .jpeg'
+    });
+
+    const acceptedFileItems = acceptedFiles.map(file => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+            setShow(reader.result);
+            setIsUploaded(true)
+        }
+        return (
+            <p>
+                {file.path}
+            </p>
+        )
+
+    });
+
     // useEffect(() => {
-    // }, [file]);
+    //     let reader = new FileReader();
+    //     reader.readAsDataURL(ev)
+    //     reader.onload = () => {
+    //         setShow(reader.result);
+    //         setIsUploaded(true)
+    //     }
+    // }, [acceptedFileItems])
+
+    useEffect(() => {
+    }, [file]);
     const handleCancel = () => {
         setIsEdit(false);
         setIsUploaded(false);
@@ -99,10 +133,10 @@ function ClientProfile() {
 
     const uploadMedia = async () => {
         const formData = new FormData();
-        formData.append(
+        acceptedFileItems && formData.append(
             "files",
-            file,
-            file.name
+            acceptedFiles[0],
+            acceptedFiles[0].name
         );
         await instance.post(`api/${Role}/media/create`, formData)
             .then(function (response) {
@@ -198,29 +232,40 @@ function ClientProfile() {
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
                                             <div className={`avatarArea_div ${isShown && 'conditional_filter_clientProfile'}`}>
-                                                { clientData.clientLogo && !isUploaded ?
-                                                        <img className="avatarImg" src={clientData.clientLogo} alt="signup" />
+                                                {clientData.clientLogo && !isUploaded ?
+                                                    <img className="avatarImg" src={clientData.clientLogo} alt="signup" />
                                                     :
-                                                   isUploaded ?
+                                                    isUploaded ?
                                                         <img className="avatarImg" src={show} alt="signup" />
                                                         :
                                                         <img className="avatarImg" src={avatar} alt="signup" />
                                                 }
                                             </div>
                                             {isEdit === true &&
-                                                <FilePicker
-                                                    extensions={['jpg', 'png', 'jpeg']}
-                                                    onChange={inputFileChoosen}
-                                                    onError={errMsg => toast.error(errMsg)}
-                                                >
-                                                    <FaCamera
-                                                        onMouseEnter={() => setIsShown(true)}
-                                                        onMouseLeave={() => setIsShown(false)}
-                                                        className="client_profile_image" />
-                                                </FilePicker>
+                                                // <FilePicker
+                                                //     extensions={['jpg', 'png', 'jpeg']}
+                                                //     onChange={inputFileChoosen}
+                                                //     onError={errMsg => toast.error(errMsg)}
+                                                // >
+                                                //     <FaCamera
+                                                //         onMouseEnter={() => setIsShown(true)}
+                                                //         onMouseLeave={() => setIsShown(false)}
+                                                //         className="client_profile_image" />
+                                                // </FilePicker>
+                                                <section className="container_addingDeveloper">
+                                                    <div {...getRootProps({ className: 'dropzone' })}>
+                                                        <input {...getInputProps()} />
+                                                        <div>
+                                                            <FaCamera
+                                                                onMouseEnter={() => setIsShown(true)}
+                                                                onMouseLeave={() => setIsShown(false)}
+                                                                className="client_profile_image" />
+                                                        </div>
+                                                    </div>
+                                                </section>
                                             }
                                         </div>
-                                        
+
                                         <div className="clientProfileDetails">
                                             {Object.keys(clientData).map((key) => {
                                                 if (key !== 'clientLogo') {
@@ -245,7 +290,7 @@ function ClientProfile() {
                         </div>
                     </div>
             }
-        <VerifyModal Role={Role} id={clientId} />
+            <VerifyModal Role={Role} id={clientId} />
         </>
     );
 }

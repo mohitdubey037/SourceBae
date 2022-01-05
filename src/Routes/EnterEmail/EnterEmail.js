@@ -14,6 +14,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import Spinner from '../../Components/Spinner/Spinner';
+import * as helper from '../../shared/helper';
 
 import Back from '../../Components/Back/Back';
 
@@ -67,6 +68,7 @@ function EnterEmail(props) {
     // const [portNavigated, setPortNavigated] = useState(false);
 
     const [loading, setLoading] = useState(false);
+    const [Role, setRole] = React.useState(role);
 
     const classes = useStyles();
 
@@ -85,8 +87,6 @@ function EnterEmail(props) {
     //     }
     // })
 
-    const [Role, setRole] = React.useState('Agency');
-
     const sendVerificationLink = () => {
         setLoading(true);
         instance.post(`/api/${Role}/auths/send-forget-password-link`, state)
@@ -101,7 +101,6 @@ function EnterEmail(props) {
 
     useEffect(() => {
     }, [Role])
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -139,8 +138,8 @@ function EnterEmail(props) {
                                 <FormControl component="fieldset">
                                     <FormLabel component="legend" style={{ display: "flex", justifyContent: "center" }}>Role</FormLabel>
                                     <RadioGroup aria-label="Role" className="roleform" name="Role" value={Role} onChange={handleRole} style={{ color: '#015F9A' }}>
-                                        <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
-                                        <FormControlLabel value="Client" control={<Radio />} label="Client" />
+                                        <FormControlLabel value="agency" control={<Radio />} label="Agency" />
+                                        <FormControlLabel value="client" control={<Radio />} label="Client" />
                                     </RadioGroup>
                                 </FormControl>
                             </div>

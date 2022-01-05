@@ -80,7 +80,7 @@ function ShortTerm(props) {
     agencyExperience: "",
     projectHourBasisCost: "",
   });
-  const [projectFiles, setProjectFiles] = useState(null);
+  // const [projectFiles, setProjectFiles] = useState(null);
   const classes = useStyles();
 
   const handleChange = (event) => {
