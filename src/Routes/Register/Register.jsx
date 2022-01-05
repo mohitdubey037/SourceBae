@@ -19,6 +19,8 @@ import RegisterClientForm2 from "./ClientRegister/RegisterClientForm2";
 import { CLIENT, AGENCY } from "../../shared/constants";
 
 const Register = (props) => {
+  let arr;
+  arr.map((v)=>console.log(v))
   const logoLink = "https://sourcebae.s3.amazonaws.com/image/1638354759751.svg";
   const isFirstRender = useIsFirstRender();
   const [roleState, setRoleState] = useState("");
