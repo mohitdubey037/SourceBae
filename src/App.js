@@ -49,6 +49,7 @@ import Notification from "./Utils/Notification";
 import store from "./Redux/Store/store";
 import { CLIENT, AGENCY } from "./shared/constants";
 import { ErrorBoundary } from "react-error-boundary";
+import firebase from "firebase/app";
 
 const App = (props) => {
   const [show, setShow] = useState(false);
@@ -59,7 +60,7 @@ const App = (props) => {
 
   useEffect(() => {
     const msg = firebaseConfig.messaging();
-    if (window.Notification.permission === "granted") {
+    if (firebase.messaging.isSupported() && window.Notification.permission === "granted") {
       msg.onMessage((message) => {
         setShow(true);
         setNotification({
