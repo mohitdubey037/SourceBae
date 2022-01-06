@@ -301,7 +301,7 @@ function ProductAgencies(props) {
                                                             </div>
                                                             <div className="profileButton">
                                                                 <p onClick={() => props.history.push({
-                                                                    pathname: `/agency-profile:${value?.agencyId?._id}`,
+                                                                    pathname: `/agency-profile/${value?.agencyId?._id}`,
                                                                 })}>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
                                                             </div>
                                                         </div>
@@ -349,7 +349,7 @@ function ProductAgencies(props) {
                                                         <div className="quotationShortlistButton_productAgencies">
                                                             <div>
                                                                 <NavLink style={{ textDecoration: 'none', color: "#ffffff" }} to={{
-                                                                    pathname: `/product-details:${value._id}`,
+                                                                    pathname: `/product-details/${value._id}`,
                                                                     condition: 'Client'
                                                                 }}>View Product</NavLink>
                                                             </div>

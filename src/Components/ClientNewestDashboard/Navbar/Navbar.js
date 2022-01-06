@@ -9,7 +9,7 @@ import { CLIENT, AGENCY } from "../../../shared/constants"
 
 function Navbar(props) {
 
-    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+    const logoLink = "https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg";
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const url = props.history.location.pathname;
     const role = localStorage.getItem('role');

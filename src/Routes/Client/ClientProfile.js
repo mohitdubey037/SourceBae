@@ -78,16 +78,16 @@ function ClientProfile() {
       });
   };
 
-  const inputFileChoosen = (ev) => {
-    console.log(ev);
-    setFile(ev);
-    let reader = new FileReader();
-    reader.readAsDataURL(ev);
-    reader.onload = () => {
-      setShow(reader.result);
-      setIsUploaded(true);
-    };
-  };
+  // const inputFileChoosen = (ev) => {
+  //     // console.log(ev);
+  //     setFile(ev)
+  //     let reader = new FileReader();
+  //     reader.readAsDataURL(ev)
+  //     reader.onload = () => {
+  //         setShow(reader.result);
+  //         setIsUploaded(true)
+  //     }
+  // }
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: ".jpg, .png, .jpeg",
@@ -103,11 +103,22 @@ function ClientProfile() {
     return <p>{file.path}</p>;
   });
 
+  // useEffect(() => {
+  //     let reader = new FileReader();
+  //     reader.readAsDataURL(ev)
+  //     reader.onload = () => {
+  //         setShow(reader.result);
+  //         setIsUploaded(true)
+  //     }
+  // }, [acceptedFileItems])
+
+  useEffect(() => {}, [file]);
   const handleCancel = () => {
     setIsEdit(false);
     setIsUploaded(false);
   };
 
+  useEffect(() => {}, [clientData, file]);
 
   const uploadMedia = async () => {
     const formData = new FormData();
@@ -121,8 +132,15 @@ function ClientProfile() {
       .catch((err) => {});
   };
 
+  // useEffect(() => {
+  //     uploadMedia();
+  // },[acceptedFileItems])
+
   const updateClientApi = async () => {
-    await uploadMedia();
+    // console.log('hiiiii');
+    if (acceptedFileItems.length > 0) {
+      await uploadMedia();
+    }
     const body = {
       firstName: clientData.firstName,
       lastName: clientData.lastName,

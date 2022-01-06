@@ -74,6 +74,7 @@
   align-items: flex-start;
   flex-direction: column;
 }
+
 .developerName {
   width: 90%;
   position: relative;
@@ -157,7 +158,7 @@
 .developerResume button {
   padding: 0.4rem 1rem;
   border-radius: 20px;
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%) !important;
+  background: linear-gradient(262deg, #45A4E4 0%, #5C6DFF 100%) !important;
   font-family: 'Segoe UI';
   color: white;
   font-size: 0.8rem;
@@ -225,12 +226,28 @@
 }
 
 .reject_or_not>div {
-  color: white;
+  /* color: white;
   background-color: #3498db;
   padding: 8px;
   text-align: center;
   border-radius: 11px;
-  width: 33%;
+  width: 33%; */
+
+  color: white;
+  background-color: #3498db;
+  padding: 4px;
+  text-align: center;
+  border-radius: 11px;
+  width: 23%;
+}
+
+.QuotationModal.QuotationModal_DeveloperList {
+  max-width: 490px;
+}
+
+.QuotationModal_DeveloperList button {
+  top: 0px !important;
+  right: 10px !important;
 }
 
 .reject_or_not>div:hover {
@@ -292,13 +309,14 @@
   background-color: #FF0000;
 }
 
-@media (max-width: 1200px)  {
+@media (max-width: 1200px) {
   .developer-detail {
     flex-direction: column;
     align-items: flex-start;
     height: 9rem;
     margin: 1rem 0;
   }
+
   .developerBudget h6 {
     text-align: initial;
     margin-top: 0;

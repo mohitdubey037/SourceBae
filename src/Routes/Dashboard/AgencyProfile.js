@@ -186,7 +186,7 @@ function AgencyProfile(props) {
                 ) : (
                   <button
                     onClick={() => props.history.push({
-                      pathname: `/product-details:${agencyProfileData.productId}`,
+                      pathname: `/product-details/${agencyProfileData.productId}`,
                       condition: id !== '' ? 'Agency' : 'Client'
                     })
                     }>
@@ -209,7 +209,7 @@ function AgencyProfile(props) {
                     <button
                       style={{ backgroundImage: 'linear-gradient(284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%)' }}
                       onClick={() => props.history.push({
-                        pathname: `/product-details:${agencyProfileData.productId}`,
+                        pathname: `/product-details/${agencyProfileData.productId}`,
                         condition: id !== '' ? 'Agency' : 'Client'
                       })
                       }
