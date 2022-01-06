@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
 import { useParams } from "react-router";
 import TextField from '@material-ui/core/TextField';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,7 +13,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import Spinner from '../../Components/Spinner/Spinner';
-import * as helper from '../../shared/helper';
 
 import Back from '../../Components/Back/Back';
 
@@ -77,15 +75,6 @@ function EnterEmail(props) {
         resetThrough: 'email'
     });
 
-    // useEffect(() => {
-    //     if (!portNavigated && inputPort !== null && props.location.origin === "portfolio") {
-    //         inputPort?.current?.click();
-    //         setPortNavigated(true);
-    //     }
-    //     else if (portNavigated) {
-    //         inputPort?.current?.click();
-    //     }
-    // })
 
     const sendVerificationLink = () => {
         setLoading(true);
@@ -114,8 +103,6 @@ function EnterEmail(props) {
         setRole(event.target.value);
     };
 
-    useEffect(() => {
-    }, [state])
 
     return (
         <>

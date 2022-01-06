@@ -210,15 +210,9 @@ function AgencyForm2(props) {
     setSelectedServicesId(getSelectedServicesIds(allServicesData));
   }, [allServicesData]);
 
-  useEffect(() => {
-  }, [visibleTechNames])
-
-  useEffect(() => {
-  }, [selectedTechName])
 
   useEffect(() => {
     const filteredTech = {};
-    // if (selectedServicesId.length > 0) {
     allTechData.forEach((tech) => {
       if (selectedServicesId.indexOf(tech.serviceId) !== -1) {
         filteredTech[tech.technologyName] = tech;

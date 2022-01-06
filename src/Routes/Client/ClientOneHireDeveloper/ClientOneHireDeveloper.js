@@ -68,9 +68,6 @@ function ClientOneHireDeveloper(props) {
       });
   };
 
-  useEffect(() => {}, [disability]);
-
-  useEffect(() => {}, [selectedDevelopers, singleHiredDeveloper]);
 
   useEffect(() => {
     getOneDeveloper();

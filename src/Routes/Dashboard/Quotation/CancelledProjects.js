@@ -33,6 +33,7 @@ function CancelledProjects(props) {
 
     useEffect(() => {
         getAllCancelledData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

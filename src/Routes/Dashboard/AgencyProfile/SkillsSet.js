@@ -3,11 +3,9 @@ import './SkillsSet.css'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import instance from "../../../Constants/axiosConstants";
-import Skillset_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Skill-Set_edit.svg';
 
 function SkillsSet(props) {
     const Role = localStorage.getItem('role');
-    const [agencyProfiledata, setAgencyProfileData] = useState({})
     const [selectedId, setSelectedId] = useState("")
     const [open, setOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false)
@@ -18,21 +16,6 @@ function SkillsSet(props) {
         Services: [],
         Technology: []
     })
-    // const getAgencyProfile = (agencyId, profileviewStatus) => {
-    //     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-    //     instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
-    //         .then(function (response) {
-    //             setAgencyProfileData(response);
-    //         })
-    //         .catch((err) => {
-    //         });
-    // };
-
-    // useEffect(() => {
-    //     if (Role === 'Agency') {
-    //         getAgencyProfile(localStorage.getItem("userId"), false);
-    //     }
-    // }, []);
 
     const handleDisabledCancel = () => {
         setEditStatus(false)
@@ -293,6 +276,7 @@ function SkillsSet(props) {
 
     useEffect(() => {
         setVisibleTechData(skillset.Technology.filter((tech) => selectedServicesId.indexOf(tech.serviceId) !== -1))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedServicesId])
 
 

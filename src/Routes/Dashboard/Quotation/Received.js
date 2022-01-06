@@ -12,7 +12,6 @@ function Received(props) {
     const Role = localStorage.getItem('role');
 
     const [projects, setProjects] = useState([]);
-    const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState();
 
@@ -24,7 +23,6 @@ function Received(props) {
             .then(response => {
                 setLoading(false);
                 setProjects(response.projects);
-                setStatuses(response.statuses);
             })
             .catch(err => {
                 setLoading(false)
@@ -35,6 +33,7 @@ function Received(props) {
 
     useEffect(() => {
         getAllReceivedData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

@@ -38,9 +38,6 @@ function AgencyForm4(props) {
         setFields(values);
     }
 
-    useEffect(() => {
-    }, [fields])
-
     function handleAdd() {
         const values = [...fields];
         values.push({ value: null });

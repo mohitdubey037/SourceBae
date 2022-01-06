@@ -196,6 +196,7 @@ function AgencyForm3(props) {
                 documentName: propData.agencyForm3.documentName
             })
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [propData])
 
     useEffect(() => {
@@ -208,6 +209,7 @@ function AgencyForm3(props) {
             handleUpdate();
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
     return (

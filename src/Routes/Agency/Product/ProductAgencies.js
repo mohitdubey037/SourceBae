@@ -127,8 +127,6 @@ function ProductAgencies(props) {
         linkedIn: ''
     })
 
-    useEffect(() => {
-    }, [form])
 
     const handleConnect = (agencyId) => {
         if (handleValidation()) {

@@ -88,9 +88,6 @@ function ClientNewestDashboard(props) {
             })
     }
 
-    useEffect(() => {
-        console.log(isUserVerified);
-    },[isUserVerified])
 
     useEffect(() => {
         handleClientData();
@@ -111,15 +108,10 @@ function ClientNewestDashboard(props) {
         setVisible(status);
     };
 
-    useEffect(() => {
-    }, [statuses, projects, visible])
 
     useEffect(() => {
         getAllProjects();
     }, []);
-
-    useEffect(() => {
-    }, [visible]);
 
     return (
         <>

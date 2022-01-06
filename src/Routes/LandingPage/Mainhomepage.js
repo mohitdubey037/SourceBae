@@ -6,15 +6,9 @@ import cookie from "react-cookies";
 import { AGENCY } from "../../shared/constants";
 
 const Mainhomepage = (props) => {
-  // console.log(props);
   const auth = cookie.load("Authorization");
   const role = localStorage.getItem('role');
 
-  // if (props.history.action === 'POP') {
-  //   console.log(props.history.action);
-  //   props.history.push('/');
-  //   window.location.href = 'https://sourcebae.com/';
-  // }
 
   useEffect(() => {
     localStorage.setItem("toggle", false);

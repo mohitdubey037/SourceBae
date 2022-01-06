@@ -13,7 +13,6 @@ import { useRef, useState, useEffect } from 'react';
 import Sidebar from '../../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 import Back from '../../../Components/Back/Back';
-import cancelledProjects from './CancelledProjects';
 
 function Quotation(props) {
     const [navigated, setNavigation] = useState(false)
@@ -39,6 +38,7 @@ function Quotation(props) {
             cancelledRef?.current?.click();
             setNavigation(true)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const [visible, setVisible] = useState(false);

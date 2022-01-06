@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./AgencyCommentBox.css";
-
-import foods from "../../../assets/images/Quotation/foods.png";
 
 import instance from '../../../Constants/axiosConstants';
 import Moment from "react-moment";
@@ -179,14 +177,6 @@ const AgencyCommentBox = (props) => {
     setFile(event.target.files[0]);
   };
 
-  useEffect(() => {
-  }, [file])
-
-  useEffect(() => {
-  }, [apiData])
-
-  useEffect(() => {
-  }, [rejectErrors])
 
   const replyApi = async () => {
     setLoading(true)

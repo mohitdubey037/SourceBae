@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 
-import * as helper from "../../../../shared/helper"
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../../Components/Back/Back';
 
 import MultiSelect from "react-multi-select-component";
-import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
 import instance from "../../../../Constants/axiosConstants";
@@ -31,8 +29,6 @@ function HireAgencyForm3(props) {
         projectServicesRequired: []
     })
     const oldFormData = props.location.state
-    useEffect(() => {
-    }, [allServices])
 
     const [allTechnologies, setAllTechnologies] = useState([])
 
@@ -111,6 +107,7 @@ function HireAgencyForm3(props) {
 
     useEffect(() => {
         getAllServices()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSubmit = () => {
@@ -127,17 +124,14 @@ function HireAgencyForm3(props) {
         }
     }
 
-    useEffect(() => {
-    }, [allTechnologies]);
 
-    useEffect(() => {
-    }, [errors])
 
     useEffect(() => {
         setApiData({
             ...apiData,
             projectTechnologiesRequired: selected.map((tech) => { return tech.value })
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected])
 
     return (

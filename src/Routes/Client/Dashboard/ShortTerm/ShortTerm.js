@@ -242,9 +242,6 @@ function ShortTerm(props) {
     });
   };
 
-  // const fileHandler = (projectDoc) => {
-  //   setProjectFiles(projectDoc);
-  // };
 
   useEffect(() => {
     getAllDomains();
@@ -252,9 +249,6 @@ function ShortTerm(props) {
 
   useEffect(() => {
   }, [allServices]);
-
-  // useEffect(() => {
-  // }, [projectFiles]);
 
   useEffect(() => {
     if (apiData.projectFiles.length !== 0) {

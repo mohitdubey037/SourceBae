@@ -1,6 +1,6 @@
 import { Avatar } from '@material-ui/core'
 import { AccountCircle, Email, Work } from '@material-ui/icons'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ProfileHeader from '../../Components/ProfileHeader/ProfileHeader'
 import SideDrawer from '../../Components/SideDrawer/SideDrawer'
 import { useWindowDimensions } from '../../Utils/commonFunctions'

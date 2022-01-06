@@ -20,9 +20,7 @@ import Spinner from "../../Components/Spinner/Spinner";
 
 import VisibilityTwoToneIcon from "@material-ui/icons/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
-import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 
-const borderLight = "rgba(206,212,218, .993)";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,8 +50,6 @@ const ForgotPassword = (props) => {
 
     const classes = useStyles();
 
-    // let { token } = useParams();
-    // token = token.slice(1);
 
     const [hidePassword, SetPasswordStatus] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -91,7 +87,6 @@ const ForgotPassword = (props) => {
             .then(response => {
                 setLoading(false)
                 props.history.push(`/login/:${Role}`);
-                // window.location.href = 'https://sourcebae.com/';
             })
             .catch((err) => {
                 setLoading(false);

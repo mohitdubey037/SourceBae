@@ -71,14 +71,6 @@ function Portfolio(props) {
 
     console.log(acceptedFileItems);
 
-    // const inputFileChoosen = (projectDoc) => {
-    //     setLogo(projectDoc);
-    // }
-    // useEffect(() => {
-    //     console.log('hhhhhhhiiiiiiiiiii llllllo;og');
-
-    // }, [logo])
-
     const errorValidation = () => {
         const errors = {}
         if (!acceptedFileItems) {

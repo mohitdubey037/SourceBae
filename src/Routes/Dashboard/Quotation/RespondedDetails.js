@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./RespondedDetails.css";
 import instance from "../../../Constants/axiosConstants";
@@ -8,7 +9,6 @@ import { useSelector } from "react-redux";
 import useIsFirstRender from "../../../Utils/useIsFirstRender";
 import ProjectDetailCard from "../../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
 import DownTechnologyDetail from "../../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
-import AfterAcceptOrRejectComponent from '../../../Components/ProjectDetailCard/AfterAcceptOrReject/AfterAcceptOrReject';
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -26,24 +26,17 @@ function RespondedDetails(props) {
   let { projectId, agencyId } = useParams();
   const [isRepliedToClient, setRepliedToClient] = useState(false);
   const [project, setProject] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const Role = localStorage.getItem("role");
 
   const getAllProjects = () => {
-    setLoading(true);
     instance
       .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
         setProject(response);
-        setLoading(false);
       })
-      .catch((err) => {
-        setLoading(false);
-      });
   };
 
-  useEffect(() => { }, [project]);
 
   useEffect(() => {
     getAllProjects();

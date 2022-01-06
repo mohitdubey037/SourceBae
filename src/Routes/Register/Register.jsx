@@ -76,7 +76,6 @@ const Register = (props) => {
   const [apiErrors, setApiErrors] = useState(false);
 
   const [step, setStep] = useState(1);
-  useEffect(() => {}, [apiErrors]);
 
   const setForm = (event) => {
     let { name, value } = event.target;
@@ -323,7 +322,6 @@ const Register = (props) => {
     }
   };
 
-  useEffect(() => {}, [step, signupForm]);
 
   useEffect(() => {
     if (token !== null && apiErrors === false) {

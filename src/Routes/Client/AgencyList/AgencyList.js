@@ -69,8 +69,6 @@ function AgencyList(props) {
       });
   }, []);
 
-  useEffect(() => {
-  }, [project]);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setShortlistFormData({
@@ -123,8 +121,6 @@ function AgencyList(props) {
     setVisible(status);
   };
 
-  useEffect(() => {
-  }, [shortlistFormData]);
 
   return (
     <div classname="mainImageDiv">
