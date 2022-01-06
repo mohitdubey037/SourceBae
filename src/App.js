@@ -59,8 +59,8 @@ const App = (props) => {
   });
 
   useEffect(() => {
-    const msg = firebaseConfig.messaging();
     if (firebase.messaging.isSupported() && window.Notification.permission === "granted") {
+      const msg = firebaseConfig.messaging();
       msg.onMessage((message) => {
         setShow(true);
         setNotification({
