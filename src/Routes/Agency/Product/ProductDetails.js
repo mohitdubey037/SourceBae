@@ -250,7 +250,7 @@ function ProductDetails(props) {
 
   return (
     <>
-      <Navbar logoLink={logoLink}/>
+      <Navbar logoLink={logoLink} />
       {loading === true ? <Spinner /> :
         err ? (
           <>
@@ -268,11 +268,11 @@ function ProductDetails(props) {
                 <img className="Image2" src={Profile_image2} alt="signup" />
 
                 <Back name="Product Details" />
-                <div style={{justifyContent: similarAgency?.length < 0 && 'center'}} className={
-                    Role === "Client"
-                      ? "innerProductDetails"
-                      : "innerProductDetails_conditional"
-                  }
+                <div style={{ justifyContent: similarAgency?.length < 0 && 'center' }} className={
+                  Role === "Client"
+                    ? "innerProductDetails"
+                    : "innerProductDetails_conditional"
+                }
                 >
                   <div
                     className={Role === "Client"
@@ -336,9 +336,11 @@ function ProductDetails(props) {
                           <div className="productDescPara">
                             <p>{value?.productDescription}</p>
                           </div>
-                          <div className="productDescImage">
-                            <div className="imageContainer">
+                          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <div className="productDescImage">
+                              <div className="imageContainer">
                                 <img src={value?.productLogo} alt="" />
+                              </div>
                             </div>
                           </div>
                         </div>

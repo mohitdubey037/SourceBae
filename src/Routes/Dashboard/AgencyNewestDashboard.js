@@ -131,46 +131,48 @@ function AgencyNewestDashboard(props) {
         <div style={{ zIndex: visible && "-1" }} className="container-body">
           <Navbar />
           <div className="content-body">
-            <div className="verify_update_wait">
-              {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
-                <div className="mainUpdateVerify">
-                  <div className="innerMainVerify please_verify" >
-                    <p>
-                      Please
-                      <span onClick={() => verifyEmailPhone()}>
-                        Verify Phone & Email
-                      </span>
-                      to use our services.
-                    </p>
-                  </div>
-                </div>
-              )}
-              {(!verified || steps !== -1) && (
-                <div className="mainUpdateVerify">
-                  {!verified && steps !== -1 ? (
-                    <div className="innerMainVerify please_update">
+            {(!isUserEmailVerified || !verified)
+              &&
+              <div className="verify_update_wait">
+                {!(isUserEmailVerified && isUserPhoneVerified) && steps === -1 && (
+                  <div className="mainUpdateVerify">
+                    <div className="innerMainVerify please_verify" >
                       <p>
                         Please
-                        <span onClick={() => props.history.replace(formRoute)}>
-                          Update
+                        <span onClick={() => verifyEmailPhone()}>
+                          Verify Phone & Email
                         </span>
-                        your profile to use our services.
+                        to use our services.
                       </p>
                     </div>
-                  ) : (
-                    !verified && (
-                      <div className="innerMainVerify please_wait">
-                        <p>Please wait for your profile to be verified by us.</p>
+                  </div>
+                )}
+                {(!verified || steps !== -1) && (
+                  <div className="mainUpdateVerify">
+                    {!verified && steps !== -1 ? (
+                      <div className="innerMainVerify please_update">
+                        <p>
+                          Please
+                          <span onClick={() => props.history.replace(formRoute)}>
+                            Update
+                          </span>
+                          your profile to use our services.
+                        </p>
                       </div>
-                    )
-                  )}
-                </div>
-              )}
-              {(isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1) &&
-                <div className="down_seperator"></div>
-              }
-
-            </div>
+                    ) : (
+                      !verified && (
+                        <div className="innerMainVerify please_wait">
+                          <p>Please wait for your profile to be verified by us.</p>
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
+                {(isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1) &&
+                  <div className="down_seperator"></div>
+                }
+              </div>
+            }
 
             <div className="content-leftBody">
               {/* {(isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1) &&

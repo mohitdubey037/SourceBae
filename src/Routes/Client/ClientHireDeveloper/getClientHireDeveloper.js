@@ -63,7 +63,7 @@ function ClientHireDeveloper(props) {
                             </div>
                             <div className="profileButton">
                               <p onClick={() => props.history.push({
-                                pathname: `/client-one-hire-developer/:${hireDeveloperRequirement._id}`,
+                                pathname: `/client-one-hire-developer/${hireDeveloperRequirement._id}`,
                                 condition: CLIENT,
                               })}>
                                 View Developer Requirements{" "}

@@ -100,7 +100,7 @@ function Rules(props) {
     <>
       <div className="mainRules">
         <div className="innerRules">
-          {Role === {AGENCY}
+          {Role === "agency"
             ? agencyProfiledata.isAgencyVerified && (
               <div className="editableBtn_rules">
                 <div className="rules_parent">

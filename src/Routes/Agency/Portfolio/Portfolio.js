@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Portfolio.css';
 import Back from '../../../Components/Back/Back';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
@@ -13,44 +13,46 @@ import { FaFileUpload } from 'react-icons/fa';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { toast } from "react-toastify";
 
+
+
 function Portfolio(props) {
 
-    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+    const logoLink = "https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg";
     // const [logo, setLogo] = useState(null);
     const Role = localStorage.getItem('role');
     const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(false);
+    const [logo, setLogo] = useState(null)
 
-    const {
-        acceptedFiles,
-        fileRejections,
-        getRootProps,
-        getInputProps
-    } = useDropzone({
-        accept: '.jpeg,.png,.jpg'
+    // const {
+    //     acceptedFiles,
+    //     fileRejections,
+    //     getRootProps,
+    //     getInputProps
+    // } = useDropzone({
+    //     accept: '.jpeg,.png,.jpg'
+    // });
+
+    const maxSize = 1048576;
+
+    const onDrop = useCallback(acceptedFiles => {
+        setLogo(acceptedFiles);
+        console.log('onDrop',acceptedFiles);
+    }, []);
+
+    useEffect(() => {
+        console.log(logo);
+    },[logo]);
+
+
+    const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+        onDrop,
+        accept: '.jpeg,.png,.jpg',
+        minSize: 0,
+        maxSize,
     });
 
-    const acceptedFileItems = acceptedFiles.map(file => {
-        // setLogo(file.path)
-        return (
-            <p style={{ color: 'green' }}>
-                {file.path}
-            </p>
-        )
-    });
-
-    console.log(acceptedFiles);
-    console.log(acceptedFileItems);
-
-    const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-        <li key={file.path}>
-            <ul>
-                {errors.map(e => (
-                    <li key={e.code}>{e.message}</li>
-                ))}
-            </ul>
-        </li>
-    ));
+    const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
     const [form, setForm] = useState({
         projectName: '',
@@ -69,39 +71,25 @@ function Portfolio(props) {
         })
     }
 
-    console.log(acceptedFileItems);
-
-    // const inputFileChoosen = (projectDoc) => {
-    //     setLogo(projectDoc);
-    // }
-    // useEffect(() => {
-    //     console.log('hhhhhhhiiiiiiiiiii llllllo;og');
-
-    // }, [logo])
-
     const errorValidation = () => {
         const errors = {}
-        if (!acceptedFileItems) {
+        console.log(form.projectLogo);
+        if (logo === null) {
             errors.projectLogo = "Please upload a portfolio logo";
-            toast.error("Please Upload Portfolio logo.");
         }
-        if (form.projectName === '') {
+        else if (form.projectName === '') {
             errors.projectName = 'Project Name is required';
-            console.log('1');
         }
         else if (form.projectName.length > 50) {
             errors.projectName = 'Projret name must be shorter thm 50 letter';
-            console.log('2');
 
         }
         else if (form.projectDescription === '') {
             errors.projectDescription = 'Project Description  is required'
-            console.log('3');
 
         }
         else if (form.projectLink === '') {
             errors.projectLink = 'Web Link is required'
-            console.log('4');
 
         }
         else if (form.projectTimeline <= 4) {
@@ -117,17 +105,15 @@ function Portfolio(props) {
     }
 
     const uploadMedia = () => {
-        console.log('upload called');
         setLoading(true);
         const fileForm = new FormData();
-        acceptedFileItems && fileForm.append(
+        logo && fileForm.append(
             "files",
-            acceptedFiles[0],
-            acceptedFiles[0].name
+            logo[0],
+            logo[0].name
         );
         instance.post(`api/${Role}/media/create`, fileForm)
             .then(function (response) {
-                console.log(response);
                 setLoading(false);
                 setForm({
                     ...form,
@@ -135,21 +121,22 @@ function Portfolio(props) {
                 })
             })
             .catch(err => {
-                console.log(err)
                 setLoading(false);
             })
     }
 
     const portfolioCreate = () => {
+        setLoading(true);
         instance.post(`/api/${Role}/portfolios/create`, form)
             .then(res => {
                 props.history.replace({
                     pathname: "/agency-profile",
                     origin: 'portfolio'
                 })
+                setLoading(false);
             })
             .catch(err => {
-
+                setLoading(false);
             })
     }
 
@@ -161,7 +148,6 @@ function Portfolio(props) {
 
     const createPortfolio = () => {
         if (errorValidation()) {
-            console.log('mohit dubey');
             uploadMedia();
         }
     }
@@ -220,35 +206,20 @@ function Portfolio(props) {
                                 </div>
                                 <div className="add_a_new_portfolio_project">
                                     <p>Project logo</p>
-                                    {/* <div className="upload_portfolio_image">
-                                        <img src={fileUpload} alt="fileUpload" />
-                                    </div> */}
-                                    {/* <Dropzone noDrag={true}>
-                                    {({ getRootProps, getInputProps }) => (
-                                        <section>
-                                            <div className="logo_div" {...getRootProps()}>
-                                                <input {...getInputProps()} />
-                                                <p style={{ fontSize: "12px" }}>{logo ? logo.name.slice(0, 25) : 'pick file'}</p>
-                                            </div>
-                                        </section>
-                                    )}
-                                </Dropzone> */}
 
                                     <section className="container_portfolio">
-                                        <div {...getRootProps({ className: 'dropzone' })}>
+                                        <div {...getRootProps()}>
                                             <input {...getInputProps()} />
-                                            <div className="File_Click">
-                                                <FaFileUpload />
-                                                <p className="select_file">click to select files</p>
-                                            </div>
-                                            {/* <em className="select_file">(Only *.jpeg, *.ppg and *.png images will be accepted)</em> */}
+                                            {!isDragActive && 'Click here to upload a file!'}
+                                            {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                                            {isDragReject && "File type not accepted, sorry!"}
+                                            {isFileTooLarge && (
+                                                <div className="text-danger mt-2">
+                                                    File is too large.
+                                                </div>
+                                            )}
                                         </div>
-                                        {acceptedFileItems || fileRejectionItems &&
-                                            <aside>
-                                                <ul>{acceptedFileItems}</ul>
-                                                <ul>{fileRejectionItems}</ul>
-                                            </aside>
-                                        }
+                                        <p className="logo_detail">{logo !== null && logo[0].name}</p>
                                     </section>
 
                                     {/* <FilePicker
@@ -264,6 +235,9 @@ function Portfolio(props) {
                                     </div>
                                 </FilePicker> */}
                                     {/* <p><span>Browse</span> and upload your logo</p> */}
+                                </div>
+                                <div className='projectLogo_error'>
+                                    {errors.projectLogo && (<p className="error_paragraph basic error_portfolio">{errors.projectLogo}</p>)}
                                 </div>
                             </div>
 

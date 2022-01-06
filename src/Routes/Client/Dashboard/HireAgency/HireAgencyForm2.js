@@ -46,7 +46,7 @@ function HireAgencyForm2(props) {
     id: projectId,
     projectDomainId: "",
     projectExpertiseRequired: [],
-    agencyExperience: propData?.agencyForm2?.agencyExperience ? propData?.agencyForm2?.agencyExperience : "",
+    agencyExperience: propData?.agencyForm2?.agencyExperience ? propData?.agencyForm2?.agencyExperience : "capable",
   });
   const [allDomainsData, setAllDomainsData] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState(null);
@@ -306,7 +306,7 @@ function HireAgencyForm2(props) {
                     <li>
                       <p>
                         How experience should the agency be in the domain of the
-                        project?     <span className="requiredStar">*</span>
+                        project? <span className="requiredStar">*</span>
                       </p>
                     </li>
                   </ul>

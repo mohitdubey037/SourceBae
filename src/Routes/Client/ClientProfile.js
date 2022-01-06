@@ -78,16 +78,16 @@ function ClientProfile() {
             })
     };
 
-    const inputFileChoosen = (ev) => {
-        console.log(ev);
-        setFile(ev)
-        let reader = new FileReader();
-        reader.readAsDataURL(ev)
-        reader.onload = () => {
-            setShow(reader.result);
-            setIsUploaded(true)
-        }
-    }
+    // const inputFileChoosen = (ev) => {
+    //     // console.log(ev);
+    //     setFile(ev)
+    //     let reader = new FileReader();
+    //     reader.readAsDataURL(ev)
+    //     reader.onload = () => {
+    //         setShow(reader.result);
+    //         setIsUploaded(true)
+    //     }
+    // }
 
     const {
         acceptedFiles,
@@ -146,8 +146,15 @@ function ClientProfile() {
             })
     }
 
-    const updateClientApi = async () => {
-        await uploadMedia();
+    // useEffect(() => {
+    //     uploadMedia();
+    // },[acceptedFileItems])
+
+    const updateClientApi = async() => {
+        // console.log('hiiiii');
+        if (acceptedFileItems.length > 0) {
+            await uploadMedia();
+        }
         const body = {
             firstName: clientData.firstName,
             lastName: clientData.lastName,

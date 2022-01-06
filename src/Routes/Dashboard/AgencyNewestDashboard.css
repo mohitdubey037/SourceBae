@@ -4,7 +4,8 @@
 
 .user-project_parent {
   overflow-y: auto;
-  height: 28.7rem;
+  /* height: 28.7rem; */
+  height: 69vh;
   margin-right: 6px;
   display: flex;
   justify-content: center;
@@ -28,7 +29,7 @@
   width: 75%;
   height: 10%;
   justify-content: space-evenly;
-  z-index: 100;
+  z-index: 50;
 }
 
 /* .interested_or_not.verify_or_not div {
@@ -39,7 +40,7 @@
 .not_found.agencyNewestDashboard {
   width: max-content;
   height: 325px;
-  margin: 2rem auto 0rem;
+  /* margin: 2rem auto 0rem; */
   display: flex;
   flex-direction: column;
   align-items: center;

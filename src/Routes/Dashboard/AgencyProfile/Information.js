@@ -13,6 +13,7 @@ function Information(props) {
     console.log(props);
     // const { id } = useParams();
     const Role = localStorage.getItem('role');
+    console.log(Role);
     const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY");
 
     const [agencyProfiledata, setAgencyProfileData] = useState({})
@@ -139,7 +140,7 @@ function Information(props) {
         <>
             <div className="mainInformation">
                 <div className="innerInformation">
-                    {Role === 'Agency' ?
+                    {Role === 'agency' ?
                         props.data.isAgencyVerified &&
                         <div className="editableBtn">
                             <div className="information_parent">

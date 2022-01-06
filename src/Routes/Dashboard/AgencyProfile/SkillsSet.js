@@ -308,7 +308,7 @@ function SkillsSet(props) {
         <>
             <div className="mainSkillsSet">
                 <div className="innerSkillsSet">
-                    {Role !== 'Client' ?
+                    {Role !== 'client' ?
                         props.data.isAgencyVerified &&
                         <div className="skill-set_parent_parent">
                             <div className="skill-set_parent">

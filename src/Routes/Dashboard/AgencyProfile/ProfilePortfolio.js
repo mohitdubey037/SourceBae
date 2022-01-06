@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import "./ProfilePortfolio.css"
 import instance from "../../../Constants/axiosConstants";
 
-import {AGENCY} from "../../../shared/constants";
+// import "agency" from "../../../shared/constants";
 import "./Rules.css";
 
 function AgencyPortfolio(props) {
@@ -60,7 +60,7 @@ function AgencyPortfolio(props) {
               </div>
             )
           })}
-          {Role === {AGENCY} &&
+          {Role === "agency" &&
             <div className="No_portfolio" onClick={() => routerHistory.push("/portfolio")}>
               <div className="add-portfolio-parent">
                 <h6 className="add-portfolio">Add A Portfolio</h6>

@@ -49,6 +49,7 @@ import Notification from "./Utils/Notification";
 import store from "./Redux/Store/store";
 import { CLIENT, AGENCY } from "./shared/constants";
 import { ErrorBoundary } from "react-error-boundary";
+import firebase from "firebase/app";
 
 const App = (props) => {
   const [show, setShow] = useState(false);
@@ -58,6 +59,9 @@ const App = (props) => {
   });
 
   useEffect(() => {
+    if (firebase.messaging.isSupported()){
+      // firebase.initializeApp(config);
+  
     const msg = firebaseConfig.messaging();
     if (window.Notification.permission === "granted") {
       msg.onMessage((message) => {
@@ -73,6 +77,7 @@ const App = (props) => {
         setShow(false);
       });
     }
+  }
   }, []);
 
   return (
@@ -191,7 +196,7 @@ const App = (props) => {
           <CustomRoute
             condition={AGENCY}
             exact
-            path="/agency-project-details:projectId"
+            path="/agency-project-details/:projectId"
             component={AgencyProjectDetails}
           />
           <CustomRoute
