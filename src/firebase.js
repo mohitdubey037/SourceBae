@@ -11,5 +11,12 @@ const config = {
   measurementId: "G-52KBXT2G6E",
 };
 // Initialize Firebase
-firebase.initializeApp(config);
+
+if (firebase.messaging.isSupported()) {
+  firebase.initializeApp(config)
+} else {
+  console.log('no-support :(')
+}
+
+
 export default firebase;
