@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../Components/Back/Back';
 
@@ -77,25 +77,44 @@ function AddingDeveloper(props) {
     useEffect(() => {
     }, [developerData])
 
-    const {
-        acceptedFiles,
-        getRootProps,
-        getInputProps
-    } = useDropzone({
-        accept: '.pdf,.doc,.docx'
+    // const {
+    //     acceptedFiles,
+    //     getRootProps,
+    //     getInputProps
+    // } = useDropzone({
+    //     accept: '.pdf,.doc,.docx'
+    // });
+
+    // const acceptedFileItems = acceptedFiles.map(file => {
+    //     return (
+    //         <p>
+    //             {file.path}
+    //         </p>
+    //     )
+    // });
+
+    const maxSize = 1048576;
+
+    const onDrop = useCallback(acceptedFiles => {
+        setResume(acceptedFiles);
+    }, []);
+
+    useEffect(() => {
+        console.log(resume);
+    }, [resume]);
+
+
+    const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+        onDrop,
+        // accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
+        accept: '.pdf,.doc,.docx',
+        minSize: 0,
+        maxSize,
     });
 
-    const acceptedFileItems = acceptedFiles.map(file => {
-        return (
-            <p>
-                {file.path}
-            </p>
-        )
-    });
+    const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
-    console.log(acceptedFileItems)
 
-    
 
     const handleChange = (event, type) => {
         const { name, value } = event.currentTarget
@@ -152,8 +171,8 @@ function AddingDeveloper(props) {
         else if (developerData.developerTechnologies.length === 0) {
             errors.developerTechnologies = 'Technologies is required'
         }
-        else if (!acceptedFileItems) {
-            errors.developerResume = 'Resume is required'
+        else if (resume === null) {
+            errors.developerResume = "Resume is required";
         }
         else if (developerData.developerExperience === '') {
             errors.developerExperience = 'Developer Experience is required'
@@ -182,31 +201,29 @@ function AddingDeveloper(props) {
     // }, [resume])
 
     const uploadMedia = () => {
-        if (errorValidation()) {
-            setLoading(true)
-            const formData = new FormData();
-            acceptedFileItems && formData.append(
-                "files",
-                acceptedFiles[0],
-                acceptedFiles[0].name
-            );
-            instance.post(`api/${Role}/media/create`, formData)
-                .then(function (response) {
-                    setLoading(false);
-                    setDeveloperData({
-                        ...developerData,
-                        developerDocuments: [
-                            {
-                                documentName: "Resume",
-                                documentLink: response[0].mediaURL
-                            }
-                        ]
-                    })
+        setLoading(true)
+        const fileForm = new FormData();
+        resume && fileForm.append(
+            "files",
+            resume[0],
+            resume[0].name
+        );
+        instance.post(`api/${Role}/media/create`, fileForm)
+            .then(function (response) {
+                setLoading(false);
+                setDeveloperData({
+                    ...developerData,
+                    developerDocuments: [
+                        {
+                            documentName: "Resume",
+                            documentLink: response[0].mediaURL
+                        }
+                    ]
                 })
-                .catch(err => {
-                    setLoading(false);
-                })
-        }
+            })
+            .catch(err => {
+                setLoading(false);
+            })
     }
 
     useEffect(() => {
@@ -215,20 +232,31 @@ function AddingDeveloper(props) {
         }
     }, [developerData])
 
+
     const createDeveloperApi = () => {
+        setLoading(true)
+        instance.post(`api/${Role}/developers/create`, developerData)
+            .then(function (response) {
+                setLoading(false);
+                props.history.replace({
+                    pathname: "/agency-profile",
+                    origin: 'addingDeveloper'
+                })
+            })
+            .catch(error => {
+                setLoading(false)
+            })
+    }
+
+    useEffect(() => {
+        if (developerData.developerDocuments[0].documentLink !== '') {
+            createDeveloperApi();
+        }
+    }, [developerData.developerDocuments])
+
+    const handleButton = () => {
         if (errorValidation()) {
-            setLoading(true)
-            instance.post(`api/${Role}/developers/create`, developerData)
-                .then(function (response) {
-                    setLoading(false);
-                    props.history.replace({
-                        pathname: "/agency-profile",
-                        origin: 'addingDeveloper'
-                    })
-                })
-                .catch(error => {
-                    setLoading(false)
-                })
+            uploadMedia();
         }
     }
 
@@ -329,23 +357,27 @@ function AddingDeveloper(props) {
                                             <div className="uploadBlock_addingDeveloper">
                                                 <div className="fileUploadButton_addingDeveloper">
                                                     <section className="container_addingDeveloper">
-                                                        <div {...getRootProps({ className: 'dropzone' })}>
+                                                        <div className="file_click_addingDeveloper" {...getRootProps()}>
                                                             <input {...getInputProps()} />
-                                                            <div className="file_click_addingDeveloper">
-                                                                {acceptedFileItems.length === 0 ?
-                                                                    <>
-                                                                        <FaFileUpload />
+                                                            {!isDragActive &&
+                                                                <>
+                                                                    <FaFileUpload />
+                                                                    {resume === null ?
                                                                         <p className="select_file">click to select files</p>
-                                                                    </>
-                                                                    :
-                                                                    <div className="accepted_file_para">{acceptedFileItems}</div>
-                                                                }
-                                                            </div>
+                                                                        :
+                                                                        <p className="logo_detail">{resume !== null && resume[0].name}</p>
+                                                                    }
+                                                                </>
+                                                            }
+                                                            {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                                                            {isDragReject && "File type not accepted, sorry!"}
+                                                            {isFileTooLarge && (
+                                                                <div className="text-danger mt-2">
+                                                                    File is too large.
+                                                                </div>
+                                                            )}
                                                         </div>
-                                                        {/* {acceptedFileItems &&
-                                                            <aside>
-                                                            </aside>
-                                                        } */}
+                                                        {/* <p className="logo_detail">{resume !== null && resume[0].name}</p> */}
                                                     </section>
                                                 </div>
                                             </div>
@@ -403,7 +435,7 @@ function AddingDeveloper(props) {
                                         {errors.developerAvailability && (<p style={{ marginTop: developerData.developerAvailability && '0' }} className="error_paragraph">{errors.developerAvailability}</p>)}
                                     </div>
                                     <div className="submitButton">
-                                        <button onClick={() => uploadMedia()}>Submit</button>
+                                        <button onClick={handleButton}>Submit</button>
                                     </div>
                                 </div>
                             </div>

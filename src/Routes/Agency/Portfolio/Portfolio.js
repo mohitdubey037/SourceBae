@@ -18,20 +18,10 @@ import { toast } from "react-toastify";
 function Portfolio(props) {
 
     const logoLink = "https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg";
-    // const [logo, setLogo] = useState(null);
     const Role = localStorage.getItem('role');
     const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(false);
     const [logo, setLogo] = useState(null)
-
-    // const {
-    //     acceptedFiles,
-    //     fileRejections,
-    //     getRootProps,
-    //     getInputProps
-    // } = useDropzone({
-    //     accept: '.jpeg,.png,.jpg'
-    // });
 
     const maxSize = 1048576;
 
