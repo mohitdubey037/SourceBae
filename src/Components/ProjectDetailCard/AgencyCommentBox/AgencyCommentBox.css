@@ -17,6 +17,10 @@
   opacity: 0.4;
 }
 
+.upload_file_quoatation {
+  font-family: 'Segoe UI Semibold';
+}
+
 .chatBox-parent {
   display: flex;
   flex-direction: column;
@@ -74,7 +78,9 @@
 }
 
 .conditional_width_commentBox {
-  width: 100% !important;
+  width: 99% !important;
+  margin-top: 1rem;
+  margin-right: 0 !important;
 }
 
 .commentBox {
@@ -82,8 +88,9 @@
   flex-direction: column;
   border-radius: 8px;
   padding: 1rem;
-  margin: 2rem 1rem 1rem 1rem;
-  width: 46%;
+  /* margin: 2rem 1rem 1rem 1rem; */
+  margin: 0rem 1rem 1rem 0rem;
+  width: 49%;
   height: 25rem;
   position: relative;
   opacity: 0.99;
@@ -111,6 +118,11 @@
 
 .price-section .makeStyles-margin-1 {
   margin-left: 0 !important;
+  width: 100%;
+}
+
+.price-section {
+  width: 40%;
 }
 
 .reply-parent {
@@ -135,10 +147,11 @@
   border-radius: 4px
 }
 
-.conditional_acceptOrReject {
+.conditional_acceptOrReject p {
   font-size: 18px;
-  line-height: 39px;
-  text-align: center;
+  /* line-height: 39px; */
+  /* text-align: center; */
+  font-family: 'Segoe UI Semibold';
   text-transform: capitalize;
   color: #3A3A3A;
 }

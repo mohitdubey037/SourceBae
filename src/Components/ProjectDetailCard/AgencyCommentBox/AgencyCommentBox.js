@@ -406,7 +406,7 @@ const AgencyCommentBox = (props) => {
                 &&
                 file === null ?
                 <div className="quotation_file_upload">
-                  <p>Please upload a file of quotation</p>
+                  <p className="upload_file_quoatation">Please upload a file of quotation</p>
                   <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
                     <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
                       onChange={(event) => inputFileChosen(event)} />
@@ -415,7 +415,7 @@ const AgencyCommentBox = (props) => {
                 :
                 // !props.replyToClient &&
                 props.projectProposals[0].isReplySectionActive &&
-                <div className="quotation_file_upload">
+                <div className="upload_file_quoatation">
                   <p>{file?.name.slice(0, 20)}</p>
                 </div>
               }
@@ -486,7 +486,7 @@ const AgencyCommentBox = (props) => {
                             maxDate={new Date(props.projectProposals[0].projectDelayedStartDateByClient)}
                             value={props.projectProposals[0].projectStartDateByClient}
                             onChange={(event) => handleChangeDate('projectStartDate', event)}
-                            renderInput={(params) => <TextField {...params} />}
+                            renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                           />
                         </div>
                       </LocalizationProvider>

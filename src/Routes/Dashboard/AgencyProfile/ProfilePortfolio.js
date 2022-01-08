@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import "./ProfilePortfolio.css"
 import instance from "../../../Constants/axiosConstants";
+import { AGENCY } from "../../../shared/constants";
 
 // import "agency" from "../../../shared/constants";
 import "./Rules.css";
@@ -16,8 +17,8 @@ function AgencyPortfolio(props) {
   const agencyId = localStorage.getItem('userId')
 
   const getAgencyPortfolio = (profileviewStatus) => {
-    instance
-      .get(`api/${Role}/portfolios/all?agencyId=${Role === 'Agency' ? agencyId : propsAgencyId}`)
+    // instance.get(`api/${Role}/portfolios/all?agencyId=${Role === 'Agency' ? agencyId : propsAgencyId}`)
+    instance.get(`api/${Role}/portfolios/all?agencyId=${Role === AGENCY ? agencyId : propsAgencyId}`)
       .then(function (response) {
         setAgencyPortfoliodata(response);
       })

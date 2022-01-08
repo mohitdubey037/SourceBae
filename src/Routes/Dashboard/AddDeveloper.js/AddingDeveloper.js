@@ -248,12 +248,6 @@ function AddingDeveloper(props) {
             })
     }
 
-    useEffect(() => {
-        if (developerData.developerDocuments[0].documentLink !== '') {
-            createDeveloperApi();
-        }
-    }, [developerData.developerDocuments])
-
     const handleButton = () => {
         if (errorValidation()) {
             uploadMedia();

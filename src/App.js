@@ -212,7 +212,7 @@ const App = (props) => {
             component={Portfolio}
           />
           <CustomRoute
-            condition={CLIENT}
+            condition={AGENCY}
             exact
             path="/shared-developers"
             component={SharedDevelopers}

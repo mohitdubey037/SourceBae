@@ -96,7 +96,6 @@ const Login = (props) => {
   }, []);
 
   useEffect(() => {
-    debugger
     if (state !== "") {
       if (state === CLIENT) {
         props.history.push(`/login/${CLIENT}`)

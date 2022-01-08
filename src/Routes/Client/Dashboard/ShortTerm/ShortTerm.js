@@ -150,7 +150,10 @@ function ShortTerm(props) {
 
   const errorValidation = () => {
     const err = {};
-    if (apiData.projectName === "") {
+    if (apiData.projectServicesRequired.length === 0) {
+      err.projectServicesRequired = "Please select a service.";
+    }
+    else if (apiData.projectName === "") {
       err.projectName = 'Project name can"t be empty.';
     }
     else if (apiData.projectDescription.length === "") {
@@ -175,8 +178,6 @@ function ShortTerm(props) {
         "Please select a Hourly project proposal cost.";
     } else if (apiData.projectProposalCost === "") {
       err.projectProposalCost = "Please select a project proposal cost.";
-    } else if (apiData.projectServicesRequired.length === 0) {
-      err.projectServicesRequired = "Please select a service.";
     } else if (apiData.projectExpectedStartingDays === "") {
       err.projectExpectedStartingDays =
         "Please select Project Expected Starting Days.";
@@ -275,11 +276,11 @@ function ShortTerm(props) {
   // useEffect(() => {
   // }, [projectFiles]);
 
-  useEffect(() => {
-    if (apiData.projectFiles.length !== 0) {
-      shortTermProjectApi();
-    }
-  }, [apiData]);
+  // useEffect(() => {
+  //   if (apiData.projectFiles.length !== 0) {
+  //     shortTermProjectApi();
+  //   }
+  // }, [apiData]);
   return (
     <>
       <Navbar />
@@ -311,15 +312,8 @@ function ShortTerm(props) {
                 {allServices.map((service) => {
                   return (
                     <>
-                      <div className="tech-container_shortTerm">
+                      <div className={`tech-container_shortTerm ${service.selected && 'conditional_transparency'}`}>
                         <div
-                          style={{
-                            filter: service.selected
-                              ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)"
-                              : "none",
-                            color: service.selected ? "#fff" : "#000",
-                            textAlign: "center",
-                          }}
                           className={`${service.serviceName}`}
                           onClick={(event) => handleServices(event)}
                         >
@@ -434,8 +428,6 @@ function ShortTerm(props) {
                             )}
                           </div>
                         </section>
-                        {/* </div> */}
-                        {/* <span className="requiredStar">*</span> */}
                       </div>
                     </div>
                     <div className="uploadInfo">
