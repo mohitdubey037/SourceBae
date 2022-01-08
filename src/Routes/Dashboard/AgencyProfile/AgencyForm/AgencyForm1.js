@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import FormPhases from './FormPhases';
 // import agencyLogo from '../../../../assets/images/LandingPage/agencyLogo.png'
@@ -59,26 +59,47 @@ function AgencyForm1(props) {
     //     getAgencyProfile();
     // }, [])
 
-    const {
-        acceptedFiles,
-        getRootProps,
-        getInputProps
-    } = useDropzone({
-        accept: '.jpg,.jpeg,.png'
+    // const {
+    //     acceptedFiles,
+    //     getRootProps,
+    //     getInputProps
+    // } = useDropzone({
+    //     accept: '.jpg,.jpeg,.png'
+    // });
+
+    // const acceptedFileItems = acceptedFiles.map(file => {
+    //     return (
+    //         <p>
+    //             {file.path}
+    //         </p>
+    //     )
+    // });
+
+    const maxSize = 1048576;
+
+    const onDrop = useCallback(acceptedFiles => {
+        setLogo(acceptedFiles);
+    }, []);
+
+    useEffect(() => {
+        console.log(logo);
+    }, [logo]);
+
+
+    const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+        onDrop,
+        // accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
+        accept: '.jpg,.jpeg,.png',
+        minSize: 0,
+        maxSize,
     });
 
-    const acceptedFileItems = acceptedFiles.map(file => {
-        return (
-            <p>
-                {file.path}
-            </p>
-        )
-    });
+    const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
 
-    const handleValidation = () => {
+    const errorValidation = () => {
         const errors = {};
-        if (!acceptedFileItems) {
+        if (logo === null) {
             errors.agencyLogo = "Agency Logo is required"
         }
         else if (formData.agencyDescription === "") {
@@ -150,14 +171,14 @@ function AgencyForm1(props) {
     // }
 
     const uploadMedia = () => {
-        if (handleValidation()) {
-            const data = new FormData();
-            acceptedFileItems && data.append(
+        // if (handleValidation()) {
+            const fileForm = new FormData();
+            logo && fileForm.append(
                 "files",
-                acceptedFiles[0],
-                acceptedFiles[0].name
+                logo[0],
+                logo[0].name
             );
-            instance.post(`api/${Role}/media/create`, data)
+            instance.post(`api/${Role}/media/create`, fileForm)
                 .then(function (response) {
                     setFormData({
                         ...formData,
@@ -167,7 +188,7 @@ function AgencyForm1(props) {
                 .catch(err => {
                     setLoading(false);
                 })
-        }
+        // }
     }
 
     const handleSubmit = () => {
@@ -210,15 +231,27 @@ function AgencyForm1(props) {
     }
 
 
-    useEffect(() => {
-        getStepsCompleted();
-    }, []);
+    // useEffect(() => {
+    //     getStepsCompleted();
+    // }, []);
+
+    // useEffect(() => {
+    //     if (formData.agencyLogo !== null) {
+    //         handleSubmit()
+    //     }
+    // }, [formData])
 
     useEffect(() => {
         if (formData.agencyLogo !== null) {
             handleSubmit()
         }
-    }, [formData])
+    }, [formData.agencyLogo])
+
+    const handleButton = () => {
+        if (errorValidation()) {
+            uploadMedia();
+        }
+    }
 
     const handleChange = (event) => {
         const { id, name, value } = event.target
@@ -298,20 +331,38 @@ function AgencyForm1(props) {
                                             </FilePicker> */}
                                             <div className="fileUploadButton_addingDeveloper upload_logo">
                                                 <section className="container_agencyForm1">
-                                                    <div {...getRootProps({ className: 'dropzone' })}>
+                                                    {/* <div {...getRootProps({ className: 'dropzone' })}>
                                                         <input {...getInputProps()} />
                                                         <div className="file_click_addingDeveloper">
                                                             <FaFileUpload />
                                                             <p className="agencyLogo_pick_file">Pick File</p>
                                                         </div>
+                                                    </div> */}
+                                                    <div {...getRootProps()}>
+                                                        <input {...getInputProps()} />
+                                                        {!isDragActive &&
+                                                            <>
+                                                                <FaFileUpload />
+                                                                <p className="agencyLogo_pick_file">Pick File</p>
+                                                            </>
+                                                        }
+                                                        {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                                                        {isDragReject && "File type not accepted, sorry!"}
+                                                        {isFileTooLarge && (
+                                                            <div className="text-danger mt-2">
+                                                                File is too large.
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </section>
                                             </div>
                                             {/* <p className="logo-type_agencyForm1">{`${acceptedFileItems.slice(0, 20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p> */}
-                                            {acceptedFileItems.length === 0 ?
+                                            {logo === null ?
                                                 <p className="logo-type_agencyForm1">Please Choose file (jpeg, png, jpg)</p>
                                                 :
-                                                <div className="accepted_file_items">{acceptedFileItems}</div>
+                                                <div className="accepted_file_items">
+                                                    <p>{logo[0].name}</p>
+                                                </div>
                                             }
                                             {errors?.agencyLogo !== '' &&
                                                 <p className="error_agencyForm">
@@ -463,7 +514,7 @@ function AgencyForm1(props) {
                                 </div>
 
                                 <div className="nextBtn">
-                                    <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={() => uploadMedia()}>
+                                    <button style={{ backgroundImage: 'linear-gradient(to right, #5C6DFF, #45A4EA)' }} onClick={() => handleButton()}>
                                         Next
                                     </button>
                                 </div>

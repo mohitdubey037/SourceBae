@@ -197,7 +197,6 @@ function ShortTerm(props) {
       logo[0],
       logo[0].name
     );
-    // console.log(fileForm);
     instance
       .post(`api/${Role}/media/create`, fileForm)
       .then(function (response) {
@@ -416,29 +415,7 @@ function ShortTerm(props) {
                           width: "20%",
                         }}
                       >
-                        {/* <FilePicker
-                        extensions={["jpg", "pdf", "png", "jpeg", "xlsx"]}
-                        onChange={(fileObj) => fileHandler(fileObj)}
-                        onError={(errMsg) => toast.error(errMsg)}
-                      >
-                        <img
-                          className="fileUpload_shortTerm"
-                          src={FileUploadImage}
-                          alt="image"
-                        />
-                      </FilePicker>{" "} */}
-                        {/* <div className="fileUploadButton_addingDeveloper"> */}
                         <section className="container_addingDeveloper">
-                          {/* <div {...getRootProps({ className: 'dropzone' })}>
-                            <input {...getInputProps()} />
-                            <div className="file_click_addingDeveloper">
-                              <img
-                                className="fileUpload_shortTerm"
-                                src={FileUploadImage}
-                                alt="image"
-                              />
-                            </div>
-                          </div> */}
                           <div className="file_click_addingDeveloper" {...getRootProps()}>
                             <input {...getInputProps()} />
                             {!isDragActive &&

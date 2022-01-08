@@ -52,9 +52,6 @@ const ForgotPassword = (props) => {
 
     const classes = useStyles();
 
-    // let { token } = useParams();
-    // token = token.slice(1);
-
     const [hidePassword, SetPasswordStatus] = useState(true);
     const [loading, setLoading] = useState(false);
 
@@ -80,18 +77,13 @@ const ForgotPassword = (props) => {
         });
     };
 
-    const handleRole = (event) => {
-        setRole(event.target.value);
-    };
-
     const changePassword = () => {
         setLoading(true);
         instance
-            .patch(`/api/${Role}/auths/reset-password`, form)
+            .patch(`/api/${role}/auths/reset-password`, form)
             .then(response => {
                 setLoading(false)
-                props.history.push(`/login/:${Role}`);
-                // window.location.href = 'https://sourcebae.com/';
+                props.history.push(`/login/${role}`);
             })
             .catch((err) => {
                 setLoading(false);
@@ -112,13 +104,6 @@ const ForgotPassword = (props) => {
                             <div className="ForgetContent">
                                 <div className="HeadingForgetPassword">Reset Password </div>
                                 <div className="mainLoginForm">
-                                    <FormControl component="fieldset" className="roleRadio">
-                                        <FormLabel className='role' component="legend">Role</FormLabel>
-                                        <RadioGroup style={{ display: "flex" }} aria-label="Role" name="Role" value={Role} onChange={handleRole}>
-                                            <FormControlLabel value="agency" control={<Radio />} label="Agency" />
-                                            <FormControlLabel value="client" control={<Radio />} label="Client" />
-                                        </RadioGroup>
-                                    </FormControl>
                                     <div style={{ marginTop: '0px' }} className="loginForm">
                                         <p style={{ marginLeft: "-7rem", marginBottom: "10px" }}>Enter New Password Here</p>
                                         <Input

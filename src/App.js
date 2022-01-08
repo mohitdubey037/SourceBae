@@ -143,7 +143,7 @@ const App = (props) => {
             exact
             path="/agencyNewestAllProject"
             component={AgencyNewestAllProject}
-          />
+          /> //correct this turn into custom route
 
           <CustomRoute
             condition={AGENCY}

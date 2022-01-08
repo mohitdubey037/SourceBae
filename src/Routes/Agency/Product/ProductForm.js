@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./ProductForm.css";
 import { useDropzone } from 'react-dropzone';
 
@@ -112,6 +112,7 @@ function ProductForm(props) {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [allDomainsData, setAllDomainsData] = useState([]);
+  const [logo, setLogo] = useState(null)
   // const [businesstype, setBusinesstype] = useState([]);
   const [wordsRequired, setWordsRequired] = useState(100);
 
@@ -163,19 +164,40 @@ function ProductForm(props) {
     });
   };
 
-  const {
-    acceptedFiles,
-    getRootProps,
-    getInputProps
-  } = useDropzone({
-    accept: '.jpg, .png, .jpeg'
+  // const {
+  //   acceptedFiles,
+  //   getRootProps,
+  //   getInputProps
+  // } = useDropzone({
+  //   accept: '.jpg, .png, .jpeg'
+  // });
+
+  // const acceptedFileItems = acceptedFiles.map(file => {
+  //   return (
+  //     file.path
+  //   )
+  // });
+
+  const maxSize = 1048576;
+
+  const onDrop = useCallback(acceptedFiles => {
+    setLogo(acceptedFiles);
+    console.log('onDrop', acceptedFiles);
+  }, []);
+
+  useEffect(() => {
+    console.log(logo);
+  }, [logo]);
+
+
+  const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+    onDrop,
+    accept: '.jpg, .png, .jpeg',
+    minSize: 0,
+    maxSize,
   });
 
-  const acceptedFileItems = acceptedFiles.map(file => {
-    return (
-      file.path
-    )
-  });
+  const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
   useEffect(() => {
     if (apiData.productDescription === '') {
@@ -287,8 +309,12 @@ function ProductForm(props) {
   // };
 
 
-  function validateInfo() {
+  function errorValidation() {
     const err = {};
+
+    if (logo === null) {
+      err.filePicked = "Please pick up a logo for the Product";
+    }
 
     if (apiData.productName.length < 3) {
       err.productName = "Name required";
@@ -375,40 +401,36 @@ function ProductForm(props) {
       })
     }
 
-    if (!acceptedFileItems) {
-      err.filePicked = "Please pick up a logo for the Product";
-    }
     setErrors(err);
     if (Object.keys(err).length === 0) return true;
     else return false;
   };
 
-  const updateButtonHandler = () => {
-    if (validateInfo()) {
-      setLoading(true);
-      const formData = new FormData();
-      // file !== null && formData.append("files", file, file?.name);
-      acceptedFileItems && formData.append(
-        "files",
-        acceptedFiles[0],
-        acceptedFiles[0].name
-      );
-      instance.post(`api/${role}/media/create`, formData)
-        .then(function (response) {
-          setApiData({
-            ...apiData,
-            productLogo: response[0].mediaURL,
-          });
-          setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false);
+  const uploadMedia = () => {
+    // if (errorValidation()) {
+    setLoading(true);
+    const fileForm = new FormData();
+    logo && fileForm.append(
+      "files",
+      logo[0],
+      logo[0].name
+    );
+    instance.post(`api/${role}/media/create`, fileForm)
+      .then(function (response) {
+        setApiData({
+          ...apiData,
+          productLogo: response[0].mediaURL,
         });
-    }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+    // }
   };
 
-  const uploadProduct = () => {
-    if (validateInfo()) {
+  const handleSubmit = () => {
+    if (errorValidation()) {
       setLoading(true);
       instance
         .post(`api/${role}/products/create`, apiData)
@@ -424,10 +446,17 @@ function ProductForm(props) {
   };
 
   useEffect(() => {
-    if (apiData.productLogo !== "") {
-      uploadProduct()
+    if (apiData.productLogo !== '') {
+      handleSubmit();
     }
-  }, [apiData]);
+  }, [apiData.productLogo])
+
+  const handleButton = () => {
+    if (errorValidation()) {
+      uploadMedia();
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -459,35 +488,23 @@ function ProductForm(props) {
                           <p>Upload your latest logo of product  <span className="requiredStar">*</span></p>
                         </li>
                       </ul>
-                      {/* <FilePicker
-                        extensions={['jpg', 'png', 'jpeg']}
-                        onChange={inputFileChoosen}
-                        onError={errMsg => toast.error(errMsg)}
-                      >
-                        <button className="filePicker">
-                          <p style={{ marginTop: "0", color: "#707070", fontFamily: "Segoe UI", fontSize: "14px" }}>{file ? file.name : 'pick file'}</p>
-                          <img src={fileIcon} alt="finish" />
-                        </button>
-                      </FilePicker> */}
-                      {/* <section className="container_addingDeveloper"> */}
-                      <div {...getRootProps({ className: 'dropzone' })}>
+                      <div className="filePicker" {...getRootProps()}>
                         <input {...getInputProps()} />
-                        {/* <div className="file_click_addingDeveloper"> */}
-                        {/* {acceptedFileItems.length === 0 && */}
-                        {/* <> */}
-                        {/* <img
-                              className="fileUpload_shortTerm"
-                              src={FileUploadImage}
-                              alt="image"
-                            /> */}
-                        {/* </div> */}
-                        <button className="filePicker">
-
-                          <p className="pick_file">{acceptedFileItems.length > 0 ? acceptedFileItems : 'pick file'}</p>
-                          <img src={fileIcon} alt="finish" />
-                        </button>
+                        {!isDragActive &&
+                          <>
+                            <p className="pick_file">{logo !== null ? logo[0].name : 'pick file'}</p>
+                            <img src={fileIcon} alt="finish" />
+                          </>
+                        }
+                        {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                        {isDragReject && "File type not accepted, sorry!"}
+                        {isFileTooLarge && (
+                          <div className="text-danger mt-2">
+                            File is too large.
+                          </div>
+                        )}
                       </div>
-                      {/* </section> */}
+
                       {errors.filePicked && (
                         <p className="error_productForm">
                           {errors.filePicked}
@@ -1029,7 +1046,7 @@ function ProductForm(props) {
 
                   </div>
                   <div className="submitButton_productForm">
-                    <div className="subbutton" onClick={() => updateButtonHandler()}>
+                    <div className="subbutton" onClick={() => handleButton()}>
                       <p>Upload Your Product
                       </p>
                     </div>

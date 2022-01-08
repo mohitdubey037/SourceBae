@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
@@ -9,10 +9,7 @@ import { toast } from "react-toastify";
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../Components/Back/Back';
 
-import { FilePicker } from 'react-file-picker';
-
 import instance from "../../Constants/axiosConstants"
-import * as helper from "../../shared/helper"
 import Spinner from '../../Components/Spinner/Spinner';
 import Profile_image1 from '../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
@@ -53,6 +50,8 @@ function ClientProfile() {
     const [show, setShow] = useState();
     const [isShown, setIsShown] = useState(false);
     const [isUploaded, setIsUploaded] = useState(false);
+    const [logo, setLogo] = useState(null)
+
     let logoURL;
 
     const getClientProfileApi = () => {
@@ -89,28 +88,56 @@ function ClientProfile() {
     //     }
     // }
 
-    const {
-        acceptedFiles,
-        getRootProps,
-        getInputProps
-    } = useDropzone({
-        accept: '.jpg, .png, .jpeg'
-    });
+    // const {
+    //     acceptedFiles,
+    //     getRootProps,
+    //     getInputProps
+    // } = useDropzone({
+    //     accept: '.jpg, .png, .jpeg'
+    // });
 
-    const acceptedFileItems = acceptedFiles.map(file => {
+    // const acceptedFileItems = acceptedFiles.map(file => {
+    //     let reader = new FileReader();
+    //     reader.readAsDataURL(file)
+    //     reader.onload = () => {
+    //         setShow(reader.result);
+    //         setIsUploaded(true)
+    //     }
+    //     return (
+    //         <p>
+    //             {file.path}
+    //         </p>
+    //     )
+
+    // });
+
+    const maxSize = 1048576;
+
+    const onDrop = useCallback(acceptedFiles => {
+        console.log(acceptedFiles);
+        setLogo(acceptedFiles);
         let reader = new FileReader();
-        reader.readAsDataURL(file)
+        reader.readAsDataURL(acceptedFiles[0])
         reader.onload = () => {
             setShow(reader.result);
             setIsUploaded(true)
         }
-        return (
-            <p>
-                {file.path}
-            </p>
-        )
+        console.log('onDrop', acceptedFiles);
+    }, []);
 
+    useEffect(() => {
+        console.log(logo);
+    }, [logo]);
+
+
+    const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+        onDrop,
+        accept: '.jpg, .png, .jpeg',
+        minSize: 0,
+        maxSize,
     });
+
+    const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
     // useEffect(() => {
     //     let reader = new FileReader();
@@ -132,13 +159,13 @@ function ClientProfile() {
     }, [clientData, file])
 
     const uploadMedia = async () => {
-        const formData = new FormData();
-        acceptedFileItems && formData.append(
+        const fileForm = new FormData();
+        logo && fileForm.append(
             "files",
-            acceptedFiles[0],
-            acceptedFiles[0].name
+            logo[0],
+            logo[0].name
         );
-        await instance.post(`api/${Role}/media/create`, formData)
+        await instance.post(`api/${Role}/media/create`, fileForm)
             .then(function (response) {
                 logoURL = response[0].mediaURL;
             })
@@ -146,13 +173,9 @@ function ClientProfile() {
             })
     }
 
-    // useEffect(() => {
-    //     uploadMedia();
-    // },[acceptedFileItems])
-
-    const updateClientApi = async() => {
+    const handleButton = async () => {
         // console.log('hiiiii');
-        if (acceptedFileItems.length > 0) {
+        if (logo !== null) {
             await uploadMedia();
         }
         const body = {
@@ -231,7 +254,7 @@ function ClientProfile() {
                                             :
                                             (
                                                 <><div onClick={handleCancel} className="cancel">Cancel</div>
-                                                    <div onClick={() => updateClientApi()} className="save">Save</div>
+                                                    <div onClick={() => handleButton()} className="save">Save</div>
                                                 </>
                                             )
                                     }
@@ -249,18 +272,8 @@ function ClientProfile() {
                                                 }
                                             </div>
                                             {isEdit === true &&
-                                                // <FilePicker
-                                                //     extensions={['jpg', 'png', 'jpeg']}
-                                                //     onChange={inputFileChoosen}
-                                                //     onError={errMsg => toast.error(errMsg)}
-                                                // >
-                                                //     <FaCamera
-                                                //         onMouseEnter={() => setIsShown(true)}
-                                                //         onMouseLeave={() => setIsShown(false)}
-                                                //         className="client_profile_image" />
-                                                // </FilePicker>
                                                 <section className="container_addingDeveloper">
-                                                    <div {...getRootProps({ className: 'dropzone' })}>
+                                                    {/* <div {...getRootProps({ className: 'dropzone' })}>
                                                         <input {...getInputProps()} />
                                                         <div>
                                                             <FaCamera
@@ -268,6 +281,25 @@ function ClientProfile() {
                                                                 onMouseLeave={() => setIsShown(false)}
                                                                 className="client_profile_image" />
                                                         </div>
+                                                    </div> */}
+
+                                                    <div {...getRootProps()}>
+                                                        <input {...getInputProps()} />
+                                                        {!isDragActive &&
+                                                            <div>
+                                                                <FaCamera
+                                                                    onMouseEnter={() => setIsShown(true)}
+                                                                    onMouseLeave={() => setIsShown(false)}
+                                                                    className="client_profile_image" />
+                                                            </div>
+                                                        }
+                                                        {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                                                        {isDragReject && "File type not accepted, sorry!"}
+                                                        {isFileTooLarge && (
+                                                            <div className="text-danger mt-2">
+                                                                File is too large.
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </section>
                                             }
