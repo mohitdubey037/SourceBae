@@ -6,8 +6,10 @@ import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
 import { useDropzone } from 'react-dropzone';
 
+import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import instance from "../../../../Constants/axiosConstants";
+import { toast } from 'react-toastify'
 import Spinner from '../../../../Components/Spinner/Spinner';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -24,11 +26,13 @@ function AgencyForm1(props) {
     const Role = localStorage.getItem('role');
     const api_param_const = "agencies";
 
+    const [showExitPrompt, setShowExitPrompt] = useState(false);
 
     const [loading, setLoading] = useState(false);
     const [steps, setSteps] = useState('');
     const [errors, setErrors] = useState({});
 
+    const [logo, setLogo] = useState(null);
     let stepsCompleted = ''
 
     const [formData, setFormData] = useState({
@@ -51,6 +55,9 @@ function AgencyForm1(props) {
         platformLink: formData.socialPlatformDetails[0] ? formData.socialPlatformDetails[0].platformLink : ""
     })
 
+    // useEffect(() => {
+    //     getAgencyProfile();
+    // }, [])
 
     // const {
     //     acceptedFiles,
@@ -210,17 +217,14 @@ function AgencyForm1(props) {
             switch (stepsCompleted) {
                 case 2:
                     props.history.replace('agency-form-two');
-                    break;
                 case 3:
                     props.history.replace('agency-form-three');
-                    break;
                 case 4:
                     props.history.replace('agency-form-four');
-                    break;
                 case 5:
                     props.history.replace('agencyNewestDashboard');
-                    break;
                 default:
+                    // props.history.replace('/agencyNewestDashboard');
                     return;
             }
         }
