@@ -140,7 +140,7 @@ const App = (props) => {
             exact
             path="/agencyNewestAllProject"
             component={AgencyNewestAllProject}
-          />
+          /> //correct this turn into custom route
 
           <CustomRoute
             condition={AGENCY}
@@ -209,7 +209,7 @@ const App = (props) => {
             component={Portfolio}
           />
           <CustomRoute
-            condition={CLIENT}
+            condition={AGENCY}
             exact
             path="/shared-developers"
             component={SharedDevelopers}

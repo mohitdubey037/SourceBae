@@ -154,15 +154,16 @@
 
 .action-wait {
   overflow: auto;
-  font-weight: 500;
+  /* font-weight: 500; */
   border-radius: 4px;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   position: relative;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  margin: 2rem 1rem 1rem 1rem;
-  width: 43%;
+  /* margin: 2rem 1rem 1rem 1rem; */
+  margin: 0rem 0rem 1rem 0rem;
+  width: 49%;
 }
 
 .disabled {
@@ -522,15 +523,18 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 3%;
+  height: 100vh;
 }
 
 .innerAgencyQuotation {
-  width: 93%;
+  /* width: 93%; */
+  width: 88%;
   background-color: #fff;
   box-shadow: none !important;
   position: relative;
   border-radius: 15px;
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
+  margin: auto;
   margin-top: 1rem;
 }
 
@@ -731,9 +735,10 @@
 
 .ProjectDescriptionRespondedDetails {
   padding: 1rem;
-  width: 89%;
+  width: 87%;
   border-radius: 0.5rem;
   margin: auto;
+  margin-bottom: 1rem;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   display: flex;
   align-items: center;

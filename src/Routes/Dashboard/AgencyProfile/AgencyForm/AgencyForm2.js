@@ -336,8 +336,8 @@ function AgencyForm2(props) {
                         return (
                           <div className={`tech-container ${domain.domainName}`} onClick={(event) => handleDomains(event)}>
                             {/* <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}> */}
-                            <div className={`${domain.domainName}`} style={{ filter: domain.selected ? "invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }}>
-                              <img style={{ filter: domain.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }} className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
+                            <div className={`${domain.domainName} ${domain.selected && 'conditional_transparency'}`}>
+                              <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
                             </div>
                             <p className={`${domain.domainName}`}>
                               {`${domain.domainName}`}
@@ -365,8 +365,8 @@ function AgencyForm2(props) {
                           <div className={`tech-container ${service.serviceName}`} onClick={(event) => handleServices(event)}>
                             {/* <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}> */}
                             {/* <div className={`${service.serviceName}`}> */}
-                            <div className={`${service.serviceName}`} style={{ filter: service.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }}>
-                              <img style={{ filter: service.selected ? " invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)" : "none" }} className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
+                            <div className={`${service.serviceName} ${service.selected && 'conditional_transparency'}`}>
+                              <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                             </div>
                             <p className={`${service.serviceName}`}>
                               {`${service.serviceName}`}

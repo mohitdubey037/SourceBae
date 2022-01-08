@@ -7,7 +7,7 @@
 }
 
 .agency-form_parent {
-    padding-top: 4rem;
+    padding-top: 5rem;
 }
 
 .innerFormPhase {
@@ -714,7 +714,14 @@
     cursor: pointer;
     height: 100px;
     width: 100px;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conditional_transparency {
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 40%);
+    background: #0000001f;
 }
 
 .pick_icon {

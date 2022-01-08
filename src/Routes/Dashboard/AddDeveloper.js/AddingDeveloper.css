@@ -234,9 +234,13 @@
   cursor: pointer;
   color: #707070;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   margin-top: 0;
+}
+
+.file_click_addingDeveloper p {
+  transform: translateX(10px);
 }
 
 .inputField2 .MuiFormControl-root {
