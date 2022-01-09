@@ -47,7 +47,9 @@ instance.interceptors.response.use(
     let trueError = "";
     if (error?.response?.status !== 404) {
       if (error?.response?.data?.message === "Bearer Token not found" ||error?.response?.data?.message === "Unauthorized") {
-        alert(error?.response?.data?.message);
+        if(cookie.load("Authorization")){
+          alert(error?.response?.data?.message);
+        }
         cookie.remove("Authorization");
         window.location.href = "/";
       }
