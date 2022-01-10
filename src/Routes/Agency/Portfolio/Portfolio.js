@@ -39,10 +39,10 @@ function Portfolio(props) {
         onDrop,
         accept: '.jpeg,.png,.jpg',
         minSize: 0,
-        maxSize,
+        // maxSize,
     });
 
-    const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
+    // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
     const [form, setForm] = useState({
         projectName: '',
@@ -203,11 +203,11 @@ function Portfolio(props) {
                                             {!isDragActive && 'Click here to upload a file!'}
                                             {isDragActive && !isDragReject && "Drop it like it's hot!"}
                                             {isDragReject && "File type not accepted, sorry!"}
-                                            {isFileTooLarge && (
+                                            {/* {isFileTooLarge && (
                                                 <div className="text-danger mt-2">
                                                     File is too large.
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                         <p className="logo_detail">{logo !== null && logo[0].name}</p>
                                     </section>

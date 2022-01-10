@@ -178,7 +178,7 @@ function ProductForm(props) {
   //   )
   // });
 
-  const maxSize = 1048576;
+  // const maxSize = 1048576;
 
   const onDrop = useCallback(acceptedFiles => {
     setLogo(acceptedFiles);
@@ -194,10 +194,10 @@ function ProductForm(props) {
     onDrop,
     accept: '.jpg, .png, .jpeg',
     minSize: 0,
-    maxSize,
+    // maxSize,
   });
 
-  const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
+  // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
   useEffect(() => {
     if (apiData.productDescription === '') {
@@ -498,11 +498,11 @@ function ProductForm(props) {
                         }
                         {isDragActive && !isDragReject && "Drop it like it's hot!"}
                         {isDragReject && "File type not accepted, sorry!"}
-                        {isFileTooLarge && (
+                        {/* {isFileTooLarge && (
                           <div className="text-danger mt-2">
                             File is too large.
                           </div>
-                        )}
+                        )} */}
                       </div>
 
                       {errors.filePicked && (

@@ -75,7 +75,7 @@ function AgencyForm1(props) {
     //     )
     // });
 
-    const maxSize = 1048576;
+    // const maxSize = 1048576;
 
     const onDrop = useCallback(acceptedFiles => {
         setLogo(acceptedFiles);
@@ -91,10 +91,10 @@ function AgencyForm1(props) {
         // accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
         accept: '.jpg,.jpeg,.png',
         minSize: 0,
-        maxSize,
+        // maxSize,
     });
 
-    const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
+    // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
 
     const errorValidation = () => {
@@ -348,11 +348,11 @@ function AgencyForm1(props) {
                                                         }
                                                         {isDragActive && !isDragReject && "Drop it like it's hot!"}
                                                         {isDragReject && "File type not accepted, sorry!"}
-                                                        {isFileTooLarge && (
+                                                        {/* {isFileTooLarge && (
                                                             <div className="text-danger mt-2">
                                                                 File is too large.
                                                             </div>
-                                                        )}
+                                                        )} */}
                                                     </div>
                                                 </section>
                                             </div>
