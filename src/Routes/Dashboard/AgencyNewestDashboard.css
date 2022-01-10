@@ -29,7 +29,7 @@
   width: 75%;
   height: 10%;
   justify-content: space-evenly;
-  z-index: 50;
+  z-index: 1;
 }
 
 /* .interested_or_not.verify_or_not div {

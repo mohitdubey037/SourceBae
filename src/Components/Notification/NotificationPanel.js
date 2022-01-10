@@ -54,7 +54,7 @@ function NotificationPanel(props) {
 
     return (
         <>
-            <div className={isNotification.show_notification ? 'overlay' : null} ></div>
+            <div onClick={handleShowNotification} className={isNotification.show_notification ? 'overlay' : null} ></div>
             <div className={isNotification.show_notification ? 'notificationPanel open' : 'notificationPanel'}>
                 <div className="innerNotificationPanel">
                     <div className="notificationsCards">

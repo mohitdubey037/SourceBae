@@ -524,6 +524,7 @@
   flex-direction: column;
   margin-bottom: 3%;
   height: 100vh;
+  margin-top: 2.5rem;
 }
 
 .innerAgencyQuotation {
@@ -535,7 +536,7 @@
   border-radius: 15px;
   /* padding: 1.5rem; */
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 0rem;
 }
 
 .agencyQuotationHeader {

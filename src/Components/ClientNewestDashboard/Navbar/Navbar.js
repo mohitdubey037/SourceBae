@@ -102,7 +102,7 @@ function Navbar(props) {
                     <p>{role === "client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
-                    {role === 'Agency' ?
+                    {role === AGENCY ?
                         <>
                             <img onMouseEnter={() => setIsPopoverOpen(true)}
                                 onClick={() => setIsPopoverOpen(!isPopoverOpen)} src={data?.agencyLogo ? data?.agencyLogo : `https://ui-avatars.com/api/?name=${data?.agencyName}`} />

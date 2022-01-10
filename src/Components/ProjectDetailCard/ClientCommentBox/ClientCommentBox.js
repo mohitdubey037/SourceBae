@@ -484,7 +484,7 @@ const ClientCommentBox = (props) => {
                   <p>Final Cost </p>
                 </div>
                 <div className="tableContentQuotation finalCost">
-                  <input type="number" name="finalCostByClient" onChange={onQuotationChange} />
+                  <input type="number" name="finalCostByClient" value={quotationFormData.finalCostByClient} onChange={onQuotationChange} />
                 </div>
               </div>
 

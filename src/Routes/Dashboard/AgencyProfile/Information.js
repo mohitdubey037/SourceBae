@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './Information.css';
-import axios from 'axios';
-import { useParams } from "react-router";
 import Information_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Information_edit.svg';
 import moment from 'moment'
 import instance from "../../../Constants/axiosConstants";
-import Alert from '@material-ui/lab/Alert';
+import { AGENCY } from '../../../shared/constants';
 import * as helper from "../../../shared/helper";
 import { toast } from "react-toastify";
 
 function Information(props) {
-    console.log(props);
-    // const { id } = useParams();
     const Role = localStorage.getItem('role');
-    console.log(Role);
     const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY");
 
     const [agencyProfiledata, setAgencyProfileData] = useState({})
@@ -108,9 +103,19 @@ function Information(props) {
         else return true
     }
     const handleChange = (event) => {
-        const { name, value } = event.target
+        let { name, value } = event.target;
         let temp = [...arr]
         let index = temp.findIndex((item) => item.title === name)
+        if (name === 'Team Size') {
+            // debugger
+            console.log(value.length);
+            if (helper.noTextNumber(value) && value.length <= 3) {
+                temp[index].inputValue = value;
+            }
+            else {
+                return
+            }
+        }
         temp[index].inputValue = value
         setArr(temp)
     }
@@ -140,7 +145,7 @@ function Information(props) {
         <>
             <div className="mainInformation">
                 <div className="innerInformation">
-                    {Role === 'agency' ?
+                    {Role === AGENCY ?
                         props.data.isAgencyVerified &&
                         <div className="editableBtn">
                             <div className="information_parent">

@@ -95,7 +95,7 @@ function ProductAgencies(props) {
     const Role = localStorage.getItem('role');
     const id = localStorage.getItem('userId');
 
-    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+    const logoLink = "https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg";
 
     const [fundName, setFundName] = React.useState('');
     const [bmodal, setBmodal] = React.useState('');
