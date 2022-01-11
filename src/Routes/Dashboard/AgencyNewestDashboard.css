@@ -51,8 +51,8 @@
 }
 
 .not_found.agencyNewestDashboard p {
-  font-family: 'Segoe UI';
-  font-size: 1rem;
+  font-family: 'Segoe UI Semibold';
+  font-size: 0.8rem;
   margin-top: 1rem;
 }
 

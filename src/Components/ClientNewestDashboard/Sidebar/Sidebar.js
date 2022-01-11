@@ -61,7 +61,8 @@ function Sidebar(props) {
     const handleLogout = () => {
         cookie.remove("Authorization");
         localStorage.clear();
-        window.location.href = 'https://sourcebae.com/';
+        // window.location.href = 'https://sourcebae.com/';
+        window.location.href('/');
     }
 
     return (

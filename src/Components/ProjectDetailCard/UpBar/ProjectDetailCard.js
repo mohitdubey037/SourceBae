@@ -2,10 +2,9 @@ import React from "react";
 import Moment from "react-moment";
 import './ProjectDetailCard.css';
 
-import { AGENCY} from "../../../shared/constants";
+import { AGENCY } from "../../../shared/constants";
 
 function ProjectDetailCard(props) {
-    console.log(props);
     return (
         <>
             <div className="respondCards_AgencyRespondedDetails">
@@ -51,6 +50,16 @@ function ProjectDetailCard(props) {
                             </Moment>
                         </p>
                     </div>
+                    {props.projectEndDate &&
+                        <div>
+                            <p>Project End Date</p>
+                            <p>
+                                <Moment format="D MMM YYYY" withTitle>
+                                    {props.projectEndDate}
+                                </Moment>
+                            </p>
+                        </div>
+                    }
                 </div>
             </div>
         </>

@@ -252,7 +252,7 @@ const ClientCommentBox = (props) => {
                     }
                     {!props.projectProposals[0].isAskedForQuotation &&
                       props.projectProposals[0].isCommentSectionActive &&
-                      props.projectProposals[0].isShortListed && 
+                      props.projectProposals[0].isShortListed &&
                       !props.projectProposals[0].isQuotationAcceptedByClient &&
                       !props.projectProposals[0].rejectReasonByClient && (
                         <div className="detailsButtons margin-0">
@@ -338,25 +338,27 @@ const ClientCommentBox = (props) => {
               }
 
               <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
-                {props.projectProposals[0].agencyNegotiablePrice ?
-                 (
-                  <div className="detailsButtons margin-0">
-                    <p>{`Agency Negotiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
-                  </div>
-                )
-                : 
-                (
-                 <div className="detailsButtons margin-0">
-                   <p>{`Your Final Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].finalCostByClient}`}</p>
-                 </div>
-               )
-              }
+                {props.projectProposals[0].agencyNegotiablePrice &&
+                  (
+                    <div className="detailsButtons margin-0">
+                      <p>{`Agency Negotiable Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                    </div>
+                  )
+                }
 
                 {props.projectProposals[0].clientNegotiablePrice && (
                   <div className="detailsButtons margin-0">
-                    <p>{`Your Negotiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                    <p>{`Your Negotiable Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].clientNegotiablePrice}`}</p>
                   </div>
                 )}
+
+                {props.projectProposals[0].finalCostByClient &&
+                  (
+                    <div className="detailsButtons margin-0">
+                      <p>{`Your Final Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].finalCostByClient}`}</p>
+                    </div>
+                  )
+                }
 
                 {props.projectProposals[0].quotationLink && (
                   <div className="detailsButtons margin-0">

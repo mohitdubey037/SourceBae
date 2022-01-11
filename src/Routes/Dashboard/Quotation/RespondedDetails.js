@@ -85,7 +85,8 @@ function RespondedDetails(props) {
           projectType={project?.projectType}
           isShortListed={project?.projectProposals[0].isShortListed}
           isAskedForQuotation={project?.projectProposals[0].isAskedForQuotation}
-          projectCreationDate={project?.createdAt} />
+          projectCreationDate={project?.createdAt} 
+          projectEndDate = {project?.projectProposals[0]?.projectExpectedEndDateByClient} />
       }
 
       <div className="ProjectDescriptionRespondedDetails">
