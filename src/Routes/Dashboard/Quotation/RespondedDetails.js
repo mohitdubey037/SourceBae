@@ -30,9 +30,9 @@ function RespondedDetails(props) {
   const Role = localStorage.getItem("role");
 
   const getAllProjects = () => {
-    instance
-      .get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
+    instance.get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
+        console.log(response);
         setProject(response);
       })
   };

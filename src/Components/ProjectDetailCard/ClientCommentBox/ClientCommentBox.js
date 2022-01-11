@@ -338,15 +338,23 @@ const ClientCommentBox = (props) => {
               }
 
               <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
-                {props.projectProposals[0].agencyNegotiablePrice && (
+                {props.projectProposals[0].agencyNegotiablePrice ?
+                 (
                   <div className="detailsButtons margin-0">
-                    <p>{`Agency Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                    <p>{`Agency Negotiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                   </div>
-                )}
+                )
+                : 
+                (
+                 <div className="detailsButtons margin-0">
+                   <p>{`Your Final Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].finalCostByClient}`}</p>
+                 </div>
+               )
+              }
 
                 {props.projectProposals[0].clientNegotiablePrice && (
                   <div className="detailsButtons margin-0">
-                    <p>{`Client Negotiatiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                    <p>{`Your Negotiable Price:`}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
                   </div>
                 )}
 

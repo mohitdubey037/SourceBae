@@ -350,19 +350,22 @@ const AgencyCommentBox = (props) => {
               <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
                 {props.projectProposals[0].clientNegotiablePrice && (
                   <div className="detailsButtons md-m10">
-                    <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                    {/* <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p> */}
+                    <p>{`Client Negotiable Price: `}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
                   </div>
                 )}
 
                 {props.projectProposals[0].agencyNegotiablePrice && (
                   <div className="detailsButtons md-m10" >
-                    <p>{`Agency Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                    {/* <p>{`Your Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p> */}
+                    <p>{`Your Negotiable Price: `}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                   </div>
                 )}
 
                 {props.projectProposals[0].isQuotationAcceptedByClient &&
                   <div className="detailsButtons md-m10" >
-                    <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p>
+                    {/* <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p> */}
+                    <p>{`Client Final Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].finalCostByClient}`}</p>
                   </div>
                 }
 
