@@ -119,7 +119,8 @@ p.action-wait {
 }
 
 .innerBtnInfoDiv p {
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
+  color: #000;
 }
 
 .project_rejection {

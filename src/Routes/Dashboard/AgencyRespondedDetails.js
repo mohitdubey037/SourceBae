@@ -98,7 +98,7 @@ function AgencyRespondedDetails(props) {
         isShortListed={project?.projectProposals && project?.projectProposals[0]?.isShortListed}
         isAskedForQuotation={project?.projectProposals && project?.projectProposals[0]?.isAskedForQuotation}
         projectCreationDate={project?.createdAt} 
-        projectEndDate = {project?.projectProposals[0]?.projectExpectedEndDateByClient} 
+        projectEndDate = {project?.projectProposals?.[0]?.projectExpectedEndDateByClient} 
         />
 
       <div className="ProjectDescriptionRespondedDetails">

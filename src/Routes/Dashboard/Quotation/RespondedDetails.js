@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import useIsFirstRender from "../../../Utils/useIsFirstRender";
 import ProjectDetailCard from "../../../Components/ProjectDetailCard/UpBar/ProjectDetailCard";
 import DownTechnologyDetail from "../../../Components/ProjectDetailCard/DownBar/DownTechnologyDetail";
+import { CLIENT } from "../../../shared/constants";
+
 //RESPONDED DETAILS
 function RespondedDetails(props) {
   const isFirstRender = useIsFirstRender();
@@ -64,7 +66,6 @@ function RespondedDetails(props) {
               <div className="btnInfoDiv">
                 <div
                   className="rightBorder"
-                  style={{ backgroundColor: "#ffffff" }}
                 ></div>
                 <div className="innerBtnInfoDiv project_name">
                   <p>{project?.projectName}</p>
@@ -77,7 +78,7 @@ function RespondedDetails(props) {
 
       {project.projectProposals &&
         <ProjectDetailCard
-          role="Client"
+          role={CLIENT}
           name={project.projectProposals && project?.projectProposals[0]?.agencyId?.agencyName}
           expectedTimeline={project?.projectExpectedStartingDays}
           projectProposalCost={project?.projectProposalCost}
@@ -86,7 +87,8 @@ function RespondedDetails(props) {
           isShortListed={project?.projectProposals[0].isShortListed}
           isAskedForQuotation={project?.projectProposals[0].isAskedForQuotation}
           projectCreationDate={project?.createdAt} 
-          projectEndDate = {project?.projectProposals[0]?.projectExpectedEndDateByClient} />
+          projectEndDate = { project?.projectProposals[0]?.projectExpectedEndDateByClient} 
+          />
       }
 
       <div className="ProjectDescriptionRespondedDetails">
