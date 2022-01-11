@@ -26,6 +26,16 @@ function ProjectDetailCard(props) {
                         <p>Agency Experience</p>
                         <p>{props.agencyExperience}</p>
                     </div>
+                    {props.projectStartDate &&
+                        <div>
+                            <p>Agency Start Date</p>
+                            <p>
+                                <Moment format="D MMM YYYY" withTitle>
+                                    {props.projectStartDate}
+                                </Moment>
+                            </p>
+                        </div>
+                    }
                 </div>
                 <div className="innerResponseCard">
                     <span className="leftLine"></span>
@@ -50,12 +60,33 @@ function ProjectDetailCard(props) {
                             </Moment>
                         </p>
                     </div>
+                    
+                    {props.projectStartDate &&
+                        <div>
+                            <p>Client Delayed Start Date</p>
+                            <p>
+                                <Moment format="D MMM YYYY" withTitle>
+                                    {props.projectDelayedStartDateByClient}
+                                </Moment>
+                            </p>
+                        </div>
+                    }
                     {props.projectEndDate &&
                         <div>
-                            <p>Project End Date</p>
+                            <p>Client End Date</p>
                             <p>
                                 <Moment format="D MMM YYYY" withTitle>
                                     {props.projectEndDate}
+                                </Moment>
+                            </p>
+                        </div>
+                    }
+                    {props.projectEndDate &&
+                        <div>
+                            <p>Client Expected End Date</p>
+                            <p>
+                                <Moment format="D MMM YYYY" withTitle>
+                                    {props.projectExpectedEndDateByClient}
                                 </Moment>
                             </p>
                         </div>

@@ -86,9 +86,13 @@ function RespondedDetails(props) {
           projectType={project?.projectType}
           isShortListed={project?.projectProposals[0].isShortListed}
           isAskedForQuotation={project?.projectProposals[0].isAskedForQuotation}
-          projectCreationDate={project?.createdAt} 
-          projectEndDate = { project?.projectProposals[0]?.projectExpectedEndDateByClient} 
-          />
+          // agencyStartDate = {project?.projectProposals[0].isAskedForQuotation}
+          projectCreationDate={project?.createdAt}
+          projectStartDate={project?.projectProposals?.[0]?.projectStartDateByClient}
+          projectDelayedStartDateByClient={project?.projectProposals?.[0]?.projectDelayedStartDateByClient}
+          projectEndDate={project?.projectProposals?.[0]?.projectEndDateByClient}
+          projectExpectedEndDateByClient={project?.projectProposals?.[0]?.projectEndDateByClient}
+        />
       }
 
       <div className="ProjectDescriptionRespondedDetails">
@@ -155,8 +159,8 @@ function RespondedDetails(props) {
                   setRepliedToClient(gr);
                 }}
                 {...project}
-                // isAskedForQuotation={true}
-                // commentType="Quotation"
+              // isAskedForQuotation={true}
+              // commentType="Quotation"
               />
             }
           </div>
