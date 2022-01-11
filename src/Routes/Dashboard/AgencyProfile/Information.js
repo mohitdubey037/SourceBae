@@ -107,8 +107,6 @@ function Information(props) {
         let temp = [...arr]
         let index = temp.findIndex((item) => item.title === name)
         if (name === 'Team Size') {
-            // debugger
-            console.log(value.length);
             if (helper.noTextNumber(value) && value.length <= 3) {
                 temp[index].inputValue = value;
             }

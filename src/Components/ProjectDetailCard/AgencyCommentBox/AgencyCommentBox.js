@@ -473,7 +473,7 @@ const AgencyCommentBox = (props) => {
                           <DesktopDatePicker
                             inputFormat="dd/MM/yyyy"
                             minDate={new Date(props.projectProposals[0].projectStartDateByClient)}
-                            maxDate={new Date(props.projectProposals[0].projectDelayedStartDateByClient)}
+                            maxDate={new Date(props.projectProposals[0].projectExpectedEndDateByClient)}
                             value={props.projectProposals[0].projectStartDateByClient}
                             onChange={(event) => handleChangeDate('projectStartDate', event)}
                             renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}

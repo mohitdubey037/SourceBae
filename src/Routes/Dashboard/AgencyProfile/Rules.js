@@ -14,9 +14,10 @@ import { AGENCY } from "../../../shared/constants";
 import "./Rules.css";
 
 function Rules(props) {
+  // console.log(props);
   const Role = localStorage.getItem("role");
   const [agencyProfiledata, setAgencyProfileData] = useState({});
-  const userId = localStorage.getItem('userId');
+  const userId = props.id ? props.id : localStorage.getItem('userId');
 
   const [rules, setRules] = useState([]);
 

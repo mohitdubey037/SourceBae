@@ -55,7 +55,7 @@ function AgencyList(props) {
   const [QuotationFormData, setQuotationFormData] = useState({
     isShortListed: true,
     isAskedForQuotation: true,
-    negotiablePrice: "",
+    negotiablePrice: null,
     comment: "",
   });
 
@@ -78,11 +78,21 @@ function AgencyList(props) {
   };
 
   const handleQuotationChange = (event) => {
-    const { name, value } = event.target;
-    setQuotationFormData({
-      ...QuotationFormData,
-      [name]: value,
-    });
+    let { name, value } = event.target;
+    if (name === 'negotiablePrice' && value !== "") {
+      if (parseInt(value) <= project.projectProposalCost * 2 ) {
+        setQuotationFormData({
+          ...QuotationFormData,
+          [name]: value,
+        });
+      }
+    }
+    else {
+      setQuotationFormData({
+        ...QuotationFormData,
+        [name]: value,
+      });
+    }
   };
 
   const shortlistHandler = () => {
@@ -360,10 +370,10 @@ function AgencyList(props) {
                     <input
                       style={{ marginTop: "0", marginLeft: "0.5rem", height: "35px" }}
                       name="negotiablePrice"
+                      value={QuotationFormData.negotiablePrice}
                       onChange={handleQuotationChange}
                       type="number"
-                      placeholder="Text should be number "
-                      min="0"
+                      placeholder="Text should be number"
                     />
                   </div>
                 </div>

@@ -88,7 +88,7 @@ function AgencyProjectCard({ key, ...props }) {
                 </table>
             </div>
             <div onClick={() =>
-                routerHistory.push(`/agency-project-details:${props?._id}`)
+                routerHistory.push(`/agency-project-details/${props?._id}`)
             } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
                 <h6>Show Details</h6>
             </div>
