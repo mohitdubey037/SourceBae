@@ -26,12 +26,12 @@ function ProjectDetailCard(props) {
                         <p>Agency Experience</p>
                         <p>{props.agencyExperience}</p>
                     </div>
-                    {props.projectStartDate &&
+                    {props.agencyStartDate &&
                         <div>
                             <p>Agency Start Date</p>
                             <p>
                                 <Moment format="D MMM YYYY" withTitle>
-                                    {props.projectStartDate}
+                                    {props.agencyStartDate}
                                 </Moment>
                             </p>
                         </div>
@@ -63,6 +63,16 @@ function ProjectDetailCard(props) {
                     
                     {props.projectStartDate &&
                         <div>
+                            <p>Client Start Date</p>
+                            <p>
+                                <Moment format="D MMM YYYY" withTitle>
+                                    {props.projectStartDate}
+                                </Moment>
+                            </p>
+                        </div>
+                    }
+                    {props.projectDelayedStartDateByClient &&
+                        <div>
                             <p>Client Delayed Start Date</p>
                             <p>
                                 <Moment format="D MMM YYYY" withTitle>
@@ -81,7 +91,7 @@ function ProjectDetailCard(props) {
                             </p>
                         </div>
                     }
-                    {props.projectEndDate &&
+                    {props.projectExpectedEndDateByClient &&
                         <div>
                             <p>Client Expected End Date</p>
                             <p>

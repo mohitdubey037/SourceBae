@@ -47,6 +47,9 @@ const AgencyCommentBox = (props) => {
   const isReject = props.projectProposals[0].rejectReasonByClient ||
     props.projectProposals[0].rejectReasonByAgency
 
+  const isAccept = props.projectProposals[0].isQuotationAcceptedByClient ||
+  props.projectProposals[0].isQuotationAcceptedByAgency
+
 
   const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
     props.projectProposals[0].clientNegotiablePrice
@@ -68,7 +71,7 @@ const AgencyCommentBox = (props) => {
     agencyId: localStorage.getItem("userId"),
     isQuotationAcceptedByAgency: true,
     projectFinalCost: props.projectProposals[0].finalCostByClient,
-    projectStartDate: new Date()
+    projectStartDate: new Date(props.projectProposals[0].projectStartDateByClient)
   })
 
   const handleChange = (event) => {
@@ -100,13 +103,13 @@ const AgencyCommentBox = (props) => {
     })
   }
 
-  const onQuotationAcceptChange = (event) => {
-    const { name, value } = event.target
-    setQuotationAcceptForm({
-      ...quotationAcceptForm,
-      [name]: value
-    })
-  }
+  // const onQuotationAcceptChange = (event) => {
+  //   const { name, value } = event.target
+  //   setQuotationAcceptForm({
+  //     ...quotationAcceptForm,
+  //     [name]: value
+  //   })
+  // }
 
   const checkErrors = () => {
     if (quotationRejectionForm.rejectReasonByAgency === '' || quotationRejectionForm.rejectReasonByAgency === undefined) {
@@ -177,7 +180,6 @@ const AgencyCommentBox = (props) => {
     setFile(event.target.files[0]);
   };
 
-
   const replyApi = async () => {
     setLoading(true)
     if (props.projectProposals[0].isReplySectionActive && props.projectProposals[0].isAskedForQuotation &&
@@ -239,7 +241,7 @@ const AgencyCommentBox = (props) => {
                 })
                 }
               </div>
-              {!props.projectProposals[0].rejectReasonByClient &&
+              {!props.projectProposals[0].rejectReasonByClient && !props.projectProposals[0].isQuotationAcceptedByClient &&
                 <div className='commentParent'>
                   {props.projectProposals[0].isReplySectionActive === true && props.projectProposals[0].isAskedForQuotation &&
                     (props.projectProposals[0].agencyNegotiablePrice === null || props.projectProposals[0].agencyNegotiablePrice === undefined)
@@ -395,7 +397,7 @@ const AgencyCommentBox = (props) => {
                   }
                 </div>
               }
-              {(!isReject && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
+              {(!isReject && !isAccept && props.projectProposals[0].isAskedForQuotation && !props.projectProposals[0].quotationLink)
                 &&
                 file === null ?
                 <div className="quotation_file_upload">
@@ -477,7 +479,7 @@ const AgencyCommentBox = (props) => {
                             inputFormat="dd/MM/yyyy"
                             minDate={new Date(props.projectProposals[0].projectStartDateByClient)}
                             maxDate={new Date(props.projectProposals[0].projectExpectedEndDateByClient)}
-                            value={props.projectProposals[0].projectStartDateByClient}
+                            value={quotationAcceptForm.projectStartDate}
                             onChange={(event) => handleChangeDate('projectStartDate', event)}
                             renderInput={(params) => <TextField {...params} onKeyDown={(e) => e.preventDefault()} />}
                           />

@@ -76,6 +76,10 @@ function RespondedDetails(props) {
         </div>
       </div>
 
+      <div className="respondDescription_AgencyRespondedDetails">
+        <h2 style={{ color: "#707070" }}>About Your Project</h2>
+      </div>
+
       {project.projectProposals &&
         <ProjectDetailCard
           role={CLIENT}
@@ -86,12 +90,12 @@ function RespondedDetails(props) {
           projectType={project?.projectType}
           isShortListed={project?.projectProposals[0].isShortListed}
           isAskedForQuotation={project?.projectProposals[0].isAskedForQuotation}
-          // agencyStartDate = {project?.projectProposals[0].isAskedForQuotation}
           projectCreationDate={project?.createdAt}
           projectStartDate={project?.projectProposals?.[0]?.projectStartDateByClient}
           projectDelayedStartDateByClient={project?.projectProposals?.[0]?.projectDelayedStartDateByClient}
           projectEndDate={project?.projectProposals?.[0]?.projectEndDateByClient}
-          projectExpectedEndDateByClient={project?.projectProposals?.[0]?.projectEndDateByClient}
+          projectExpectedEndDateByClient={project?.projectProposals?.[0]?.projectExpectedEndDateByClient}
+          agencyStartDate = {project?.projectStartDate}
         />
       }
 

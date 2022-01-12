@@ -264,7 +264,7 @@ const ClientCommentBox = (props) => {
               })}
             </div>
 
-            {props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
+            {!isRejectOrAccept && props.projectProposals[0].isAskedForQuotation && props.projectProposals[0].isCommentSectionActive &&
               (
                 <div className='commentParent'>
                   {(!props.projectProposals[0].clientNegotiablePrice) && (
