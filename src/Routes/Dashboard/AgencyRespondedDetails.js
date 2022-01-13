@@ -3,16 +3,11 @@ import React, { useEffect, useState } from "react";
 import "./AgencyRespondedDetails.css";
 
 import foods from "../../assets/images/Quotation/foods.png";
-import completedImage from "../../assets/images/Newestdashboard/Project_completed/agency_detail_completed.svg";
-import dot from "../../assets/images/Newestdashboard/Agency_Details/dot.svg";
 
 import { connect } from "react-redux";
 import instance from "../../Constants/axiosConstants";
 import { useParams } from "react-router-dom";
-import * as helper from "../../shared/helper";
-import { useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
-import detailImage from "../../assets/images/details.png";
 
 import AgencyCommentBox from "../../Components/ProjectDetailCard/AgencyCommentBox/AgencyCommentBox";
 import { useSelector } from "react-redux";

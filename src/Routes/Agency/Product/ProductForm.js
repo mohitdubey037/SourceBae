@@ -182,11 +182,9 @@ function ProductForm(props) {
 
   const onDrop = useCallback(acceptedFiles => {
     setLogo(acceptedFiles);
-    console.log('onDrop', acceptedFiles);
   }, []);
 
   useEffect(() => {
-    console.log(logo);
   }, [logo]);
 
 

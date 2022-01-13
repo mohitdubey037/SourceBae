@@ -60,7 +60,6 @@ const AgencyCommentBox = (props) => {
     agencyId: localStorage.getItem("userId"),
     isShortListed: true,
     reply: "",
-    agencyNegotiablePrice: ""
   });
 
   const [file, setFile] = useState(null);
@@ -84,24 +83,10 @@ const AgencyCommentBox = (props) => {
   };
 
   const handleChangeDate = (name, value) => {
-    // setQuotationAcceptForm({
-    //   ...quotationAcceptForm,
-    //   [name]: value
-    // })
-    if (name === 'agencyNegotiablePrice') {
-      if (value.length <= 8) {
-        setApiData({
-          ...apiData,
-          [name]: value,
-        });
-      }
-    }
-    else {
-      setApiData({
-        ...apiData,
-        [name]: value,
-      });
-    }
+    setQuotationAcceptForm({
+      ...quotationAcceptForm,
+      [name]: value
+    })
   };
 
   const [quotationRejectionForm, setQuotationRejectionForm] = useState({
@@ -117,14 +102,6 @@ const AgencyCommentBox = (props) => {
       [name]: value
     })
   }
-
-  // const onQuotationAcceptChange = (event) => {
-  //   const { name, value } = event.target
-  //   setQuotationAcceptForm({
-  //     ...quotationAcceptForm,
-  //     [name]: value
-  //   })
-  // }
 
   const checkErrors = () => {
     if (quotationRejectionForm.rejectReasonByAgency === '' || quotationRejectionForm.rejectReasonByAgency === undefined) {
@@ -225,16 +202,12 @@ const AgencyCommentBox = (props) => {
               backgroundColor: "rgb(69, 164, 228)"
             }}></div>
             <img className="hardcoded_comment_image" src={bgPic} alt="img" />
-            {/* {props.projectProposals[0].isQuotationAcceptedByClient &&
-              <p>Quotation accepted by client!!.Waiting for your side</p>
-              : */}
             <>
               <div className="chatBox-parent">
                 {props.projectProposals[0].comments.map((index, id) => {
                   return (
                     <>
                       {index.comment && (
-                        // <div className="chatBox max-width chatBox-left" >
                         <div className="chatBox chatBox-left" >
                           <p style={{ backgroundColor: 'rgb(69, 164, 228)' }}>{index.comment}</p>
                           <b>{`${props?.clientId?.companyName}`}</b>
@@ -250,7 +223,6 @@ const AgencyCommentBox = (props) => {
                         <p className="waiting_left">Waiting for the reply from Client.
                         </p>
                       }
-                      {/* {props.projectProposals[0].isCommentSectionActive && <p className="waiting_left">Waiting for the reply from client</p>} */}
                     </>
                   )
                 })
@@ -270,7 +242,6 @@ const AgencyCommentBox = (props) => {
                           placeholder="Agency Negotiable Price"
                           variant="outlined"
                           onChange={(event) => handleChange(event)}
-                          value={apiData.agencyNegotiablePrice}
                           InputLabelProps={{
                             shrink: true,
                           }}
@@ -354,12 +325,7 @@ const AgencyCommentBox = (props) => {
           {/* // {overallPriceSection && */}
           <div className={`action-wait ${isRejectOrAccept && "conditional_width_commentBox"}`}>
             <div className="topLine"></div>
-            {/* {(!props.projectProposals[0].isQuotationAcceptedByAgency || props.projectProposals[0].rejectReasonByAgency) && props.projectProposals[0].isQuotationAcceptedByClient
-             && ( */}
             <div className="proposalCard">
-              {/* {props.projectProposals[0].isProposalActionActive ? */}
-              {/* <> */}
-              {/* {(props.projectProposals[0].isProposalActionActive && !isReject) && */}
               {(!isReject && props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) &&
                 <div className={`${(props.projectProposals[0].isProposalActionActive && props.projectProposals[0].isQuotationAcceptedByClient) ? 'conditional_acceptOrReject' : 'normal_acceptOrReject'}`}>
                   <p>Accept or Reject the Project.</p>
@@ -368,21 +334,18 @@ const AgencyCommentBox = (props) => {
               <div className={`postQuotation ${isRejectOrAccept && "is_flex_direction"}`}>
                 {props.projectProposals[0].clientNegotiablePrice && (
                   <div className="detailsButtons md-m10">
-                    {/* <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p> */}
-                    <p>{`Client Negotiable Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                    <p>{`Client Negotiable Price: `}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
                   </div>
                 )}
 
                 {props.projectProposals[0].agencyNegotiablePrice && (
                   <div className="detailsButtons md-m10" >
-                    {/* <p>{`Your Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p> */}
-                    <p>{`Your Negotiable Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                    <p>{`Your Negotiable Price: `}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                   </div>
                 )}
 
                 {props.projectProposals[0].isQuotationAcceptedByClient &&
                   <div className="detailsButtons md-m10" >
-                    {/* <p>{`Client Final Price: $ ${props.projectProposals[0].finalCostByClient}`}</p> */}
                     <p>{`Client Final Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].finalCostByClient}`}</p>
                   </div>
                 }
@@ -424,17 +387,13 @@ const AgencyCommentBox = (props) => {
                   </label>
                 </div>
                 :
-                // !props.replyToClient &&
                 props.projectProposals[0].isReplySectionActive &&
                 <div className="upload_file_quoatation">
                   <p>{file?.name.slice(0, 20)}</p>
                 </div>
               }
-              {/* } */}
             </div>
-            {/* )} */}
           </div>
-          {/* } */}
 
           <Modal
             open={open}

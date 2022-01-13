@@ -128,43 +128,15 @@ function RespondedDetails(props) {
                   </>
                 )
             }
-            {/* project.projectProposals &&
-            (project?.projectProposals[0]?.isQuotationAcceptedByClient === true ||
-            project?.projectProposals[0]?.isQuotationAcceptedByAgency === true) ? (
-            <ClientCommentBox 
-              //     projectId={projectId}
-              //     agencyId={agencyId}
-              //     isShortListed={true}
-              //     giveReplies={(gr) => {
-              //       setRepliedToClient(gr);
-              //     }}
-              //     {...project}
-              //     isAskedForQuotation={true}
-              //     commentType="Quotation"
-              //   />
-              // ) :
-              {
-                    // project?.projectProposals &&
-              // project?.projectProposals[0]?.isQuotationAcceptedByClient ===
-              // true ?
-              // <p>Please wait for the agency to accept the Quotation</p>
-              // :
-              // (
-              //   <>
-              //     <h4>Comments and Replies</h4>
-              //     {loading ? <p className="comments_are_loading">Comments are loading...</p> :
-              */}
+            
             {project?.projectProposals &&
               <ClientCommentBox
                 projectId={projectId}
                 agencyId={agencyId}
-                // isShortListed={true}
                 giveReplies={(gr) => {
                   setRepliedToClient(gr);
                 }}
                 {...project}
-              // isAskedForQuotation={true}
-              // commentType="Quotation"
               />
             }
           </div>
@@ -174,7 +146,6 @@ function RespondedDetails(props) {
             estimatedTimeline={project?.projectExpectedStartingDays}
             projectTechnologiesRequired={project?.projectTechnologiesRequired}
             services={project?.projectServicesRequired} />
-
         </div>
       </div>
     </>

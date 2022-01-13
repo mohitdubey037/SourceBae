@@ -341,8 +341,6 @@ const ClientCommentBox = (props) => {
           {/* {overallPriceSection && */}
           <div className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
             <div className="topLine"></div>
-            {/* {props.projectProposals[0].isProposalActionActive} */}
-
             <div className="proposalCard">
               {!isRejectOrAccept &&
                 <div className={`${props.projectProposals[0].isProposalActionActive ?

@@ -208,7 +208,7 @@ function AgencyNewestDashboard(props) {
                     </div>
                   </div>
                 )}
-                <div className="user-project_parent">
+                <div className={`user-project_parent ${allProjects?.length <= 0 && 'conditional_flex'}`}>
                   {allProjects?.projects?.length > 0 ? (
                     allProjects?.projects?.map((value, index) => {
                       return <AgencyProjectCard uniqueId={index} {...value} />;
