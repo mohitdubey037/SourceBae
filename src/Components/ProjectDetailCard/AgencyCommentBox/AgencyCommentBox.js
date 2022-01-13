@@ -60,6 +60,7 @@ const AgencyCommentBox = (props) => {
     agencyId: localStorage.getItem("userId"),
     isShortListed: true,
     reply: "",
+    agencyNegotiablePrice: ""
   });
 
   const [file, setFile] = useState(null);
@@ -83,10 +84,24 @@ const AgencyCommentBox = (props) => {
   };
 
   const handleChangeDate = (name, value) => {
-    setQuotationAcceptForm({
-      ...quotationAcceptForm,
-      [name]: value
-    })
+    // setQuotationAcceptForm({
+    //   ...quotationAcceptForm,
+    //   [name]: value
+    // })
+    if (name === 'agencyNegotiablePrice') {
+      if (value.length <= 8) {
+        setApiData({
+          ...apiData,
+          [name]: value,
+        });
+      }
+    }
+    else {
+      setApiData({
+        ...apiData,
+        [name]: value,
+      });
+    }
   };
 
   const [quotationRejectionForm, setQuotationRejectionForm] = useState({
@@ -255,6 +270,7 @@ const AgencyCommentBox = (props) => {
                           placeholder="Agency Negotiable Price"
                           variant="outlined"
                           onChange={(event) => handleChange(event)}
+                          value={apiData.agencyNegotiablePrice}
                           InputLabelProps={{
                             shrink: true,
                           }}
@@ -353,14 +369,14 @@ const AgencyCommentBox = (props) => {
                 {props.projectProposals[0].clientNegotiablePrice && (
                   <div className="detailsButtons md-m10">
                     {/* <p>{`Client Negotiatiable Price: $ ${props.projectProposals[0].clientNegotiablePrice}`}</p> */}
-                    <p>{`Client Negotiable Price: `}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].clientNegotiablePrice}`}</p>
+                    <p>{`Client Negotiable Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].clientNegotiablePrice}`}</p>
                   </div>
                 )}
 
                 {props.projectProposals[0].agencyNegotiablePrice && (
                   <div className="detailsButtons md-m10" >
                     {/* <p>{`Your Negotiatiable Price: $ ${props.projectProposals[0].agencyNegotiablePrice}`}</p> */}
-                    <p>{`Your Negotiable Price: `}<i class="fas fa-dollar-sign"></i>{`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
+                    <p>{`Your Negotiable Price: `}<i class="fas fa-dollar-sign"></i> {`${props.projectProposals[0].agencyNegotiablePrice}`}</p>
                   </div>
                 )}
 

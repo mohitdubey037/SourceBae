@@ -1,0 +1,31 @@
+.agencyQuestions_AgencyRespondedDetails {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    margin-top: 0rem;
+}
+
+.agencyQuestions_AgencyRespondedDetails div h4 {
+    font-family: 'Segoe UI';
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.agencyQuestions_AgencyRespondedDetails div ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left: -1rem;
+    font-family: 'Segoe UI';
+    font-size: 1.1rem;
+    margin-top: 20px;
+    list-style: disc;
+}
+
+@media (max-width: 768px) {
+    .agencyQuestions {
+        flex-direction: column;
+        margin-bottom: 3%;
+    }
+}
