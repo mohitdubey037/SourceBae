@@ -8,14 +8,15 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment';
 import moment from 'moment';
 
-function AgencyProjectCard({ key, ...props }) {
-
+function AgencyProjectCard({ ...props }) {
+    console.log(props);
+    console.log(props.key);
     const dateCreate = moment(props.createdAt).format("MMM Do YY");
     const dateUpdate = moment(props.updatedAt).format("MMM Do YY");
 
     const routerHistory = useHistory();
     return (
-        <div className="user-project_agencyNewestDashboard">
+        <div style={{marginTop: props.uniqueId < 2 ? '0rem' : '2rem'}} className="user-project_agencyNewestDashboard">
             <div className="user-project_heading_agencyNewestDashboard">
                 <div className="user-project_child_agencyNewestDashboard">
                     <h5>{props?.projectName}</h5>

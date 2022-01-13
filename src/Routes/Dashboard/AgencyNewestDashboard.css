@@ -8,8 +8,8 @@
   height: 69vh;
   margin-right: 6px;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  /* justify-content: center; */
+  /* align-content: center; */
   flex-wrap: wrap;
   /* border: 1px solid; */
 }
@@ -17,6 +17,10 @@
 .sidebar_parent .container-sPidebar {
   position: fixed;
   top: 0;
+}
+
+.graphic.graphic_agencyDashboard {
+  margin: 2rem auto;
 }
 
 .verify_update_wait {

@@ -46,10 +46,8 @@ function AgencyNewestDashboard(props) {
   };
 
   const getAllProjects = () => {
-    instance
-      .get(
-        `api/${role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`
-      )
+    // instance.get(`api/${role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=Quotation Accepted`)
+    instance.get(`api/${role}/projects/all?agencyId=${agencyId}&projectCurrentStatus=In Progress`)
       .then(function (response) {
         setAllProjects(response);
       })
@@ -204,7 +202,7 @@ function AgencyNewestDashboard(props) {
               </div>
               <div className={`${(!verified || steps !== -1) && "conditional_opacity"}`}>
                 {allProjects?.projects?.length > 0 && (
-                  <div className="graphic">
+                  <div className="graphic graphic_agencyDashboard">
                     <div className="graphic-illustration-heading">
                       <h6>Project details</h6>
                     </div>
@@ -213,7 +211,7 @@ function AgencyNewestDashboard(props) {
                 <div className="user-project_parent">
                   {allProjects?.projects?.length > 0 ? (
                     allProjects?.projects?.map((value, index) => {
-                      return <AgencyProjectCard key={index} {...value} />;
+                      return <AgencyProjectCard uniqueId={index} {...value} />;
                     })
                   ) : (
                     <div className={`not_found agencyNewestDashboard`}>
