@@ -8,15 +8,14 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment';
 import moment from 'moment';
 
-function AgencyProjectCard({ ...props }) {
-    console.log(props);
-    console.log(props.key);
+function AgencyProjectCard(props) {
     const dateCreate = moment(props.createdAt).format("MMM Do YY");
     const dateUpdate = moment(props.updatedAt).format("MMM Do YY");
 
     const routerHistory = useHistory();
     return (
-        <div style={{marginTop: props.uniqueId < 2 ? '0rem' : '2rem'}} className="user-project_agencyNewestDashboard">
+        <div className={`user-project_agencyNewestDashboard ${props.uniqueId < 2 && 'conditional_margin_projectCard'}`
+            }>
             <div className="user-project_heading_agencyNewestDashboard">
                 <div className="user-project_child_agencyNewestDashboard">
                     <h5>{props?.projectName}</h5>
