@@ -339,7 +339,11 @@ const ClientCommentBox = (props) => {
           </div>
 
           {/* {overallPriceSection && */}
-          <div className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
+          
+          <div style={{display: (isRejectOrAccept && !props.projectProposals[0].clientNegotiablePrice 
+          && !props.projectProposals[0].agencyNegotiablePrice
+          && !props.projectProposals[0].finalCostByClient) 
+            && 'none' }} className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
             <div className="topLine"></div>
             <div className="proposalCard">
               {!isRejectOrAccept &&
