@@ -124,17 +124,27 @@ function ClientOneHireDeveloper(props) {
                                 {agency?.agencyId?.agencyDescription}
                               </p>
                             </div>
-
-                            <div className="email_clientOneHireDeveloper description_parent">
-                              <p className="description_clientOne">
-                                Experience:
-                              </p>
-                              <p className="description_sharedDeveloper agency_age">
-                                <Moment fromNow ago>
-                                  {agency?.agencyId?.incorporationDate}
-                                </Moment>
-                              </p>
+                            <div className="experience_and_interest">
+                              <div className="email_clientOneHireDeveloper description_parent">
+                                <p className="description_clientOne">
+                                  Experience:
+                                </p>
+                                <p className="description_sharedDeveloper agency_age">
+                                  <Moment fromNow ago>
+                                    {agency?.agencyId?.incorporationDate}
+                                  </Moment>
+                                </p>
+                              </div>
+                              <div className="email_clientOneHireDeveloper description_parent">
+                                <p className="description_clientOne">
+                                  Interest Shown:
+                                </p>
+                                <p className="description_sharedDeveloper agency_age">
+                                    {agency?.agencyId?.interestedClientCount}
+                                </p>
+                              </div>
                             </div>
+
                           </div>
 
                           <div className="shortlist_and_interest_parent">
@@ -168,7 +178,8 @@ function ClientOneHireDeveloper(props) {
                         </div>
                       );
                     })
-                  ) : (
+                  ) 
+                  : (
                     <div className="no_matched_agency">
                       <h2>Sorry No Matched Agencies Found.</h2>
                     </div>
