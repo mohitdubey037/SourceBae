@@ -1,11 +1,11 @@
-.back-button_AgencyRespondedDetails {
+/* .back-button_AgencyRespondedDetails {
   position: relative;
   background: #F9F9F9;
   display: flex;
   width: auto;
   height: 50px;
   top: 12px;
-}
+} */
 
 .image-div_AgencyRespondedDetails {
   width: 7%;
@@ -86,7 +86,8 @@
 }
 
 .clientName h2 {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI Bold';
   font-weight: bold;
 }
 
@@ -101,7 +102,7 @@
   flex-wrap: wrap;
 }
 
-.straightLineParent_agencyRespondedDetails2 {
+/* .straightLineParent_agencyRespondedDetails2 {
   position: absolute;
   width: 21%;
   height: 4%;
@@ -113,7 +114,7 @@
 
 .straightAfterLine ul {
   padding-left: 1rem;
-}
+} */
 
 .btnInfoDiv {
   position: relative;
@@ -208,10 +209,10 @@
     width: 50%;
   }
 
-  .clientName h2 {
+  /* .clientName h2 {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-  }
+  } */
 
   .detailsButtons {
     display: flex;
@@ -243,13 +244,13 @@
   }
 
   .rightBorder {
-    position: absolute;
-    width: 2px;
+    /* position: absolute;
+    width: 2px; */
     height: 60%;
     top: 0;
     right: 0%;
     background-color: #aaa;
-    border-radius: 999px;
+    /* border-radius: 999px; */
   }
 
   .innerBtnInfoDiv {
@@ -342,12 +343,14 @@
 }
 
 .respondDescription h2 {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   font-weight: 400;
 }
 
 .respondDescription p {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Segoe UI';
   font-weight: 400;
   width: 80%;
   margin-top: 1%;
@@ -490,12 +493,12 @@
   font-size: 1rem;
 }
 
-@media (max-width: 768px) {
-  .briefHeading {
+/* @media (max-width: 768px) { */
+  /* .briefHeading {
     flex-direction: column;
-  }
+  } */
 
-  .briefHeading p {
+  /* .briefHeading p {
     padding: 0;
     background-color: transparent;
     color: #02044a;
@@ -513,8 +516,8 @@
     font-family: 'Open Sans', sans-serif;
     color: #484848;
     font-size: 0.8rem;
-  }
-}
+  } */
+/* } */
 
 .agencyQuotation {
   width: 100%;
@@ -605,36 +608,7 @@
   font-family: 'Segoe UI';
 } */
 
-.agencyQuestions_AgencyRespondedDetails {
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  margin: auto;
-  margin-top: 0rem;
-}
-
-.agencyQuestions_AgencyRespondedDetails div h4 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;
-  margin-bottom: 0;
-}
-
-.agencyQuestions_AgencyRespondedDetails div ul {
-  display: grid;
-  grid-template-columns: auto auto;
-  margin-left: -1rem;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
-  margin-top: 20px;
-  list-style: disc;
-}
-
 @media (max-width: 768px) {
-  .agencyQuestions {
-    flex-direction: column;
-    margin-bottom: 3%;
-  }
 
   .innerAgencyQuotation {
     width: 95%;

@@ -20,6 +20,17 @@
   position: relative;
 }
 
+.experience_and_interest {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.experience_and_interest div {
+  margin-top: 0;
+}
+
 .shortlist_and_interest_parent {
   display: flex;
   justify-content: center;

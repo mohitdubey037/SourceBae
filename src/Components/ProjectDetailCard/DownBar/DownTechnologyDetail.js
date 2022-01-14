@@ -1,5 +1,6 @@
 import React from "react";
 import dot from "../../../assets/images/Newestdashboard/Agency_Details/dot.svg";
+import './DownTechnologyDetail.css';
 
 function DownTechnologyDetail(props) {
     return (
@@ -45,7 +46,7 @@ function DownTechnologyDetail(props) {
                 <div>
                     <h4>Services</h4>
                     <ul>
-                        {props?.projectServicesRequired?.map((p) => (
+                        {props?.services?.map((p) => (
                             <>
                                 <img className="dotImg" src={dot} alt="" />
                                 <li style={{ listStyle: "none" }}>{p?.serviceName}</li>

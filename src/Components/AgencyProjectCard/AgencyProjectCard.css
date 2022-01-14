@@ -2,7 +2,8 @@
   flex-direction: column;
   display: flex;
   align-items: center;
-  margin: 2rem 1rem 1rem 2rem;
+  /* margin: 2rem 1rem 1rem 2rem; */
+  margin: 1rem 1rem 1rem 2rem;
   position: relative;
   width: 42%;
   height: 21rem;
@@ -12,6 +13,13 @@
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   border-radius: 10px;
   font-family: 'Segoe UI Semibold';
+}
+
+.conditional_margin_projectCard {
+  margin-top: 0rem !important; 
+}
+.conditional_marginB_projectCard {
+  margin-bottom: 3rem;
 }
 
 .user-project_heading_agencyNewestDashboard {

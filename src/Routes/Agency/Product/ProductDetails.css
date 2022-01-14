@@ -86,7 +86,7 @@
 } */
 
 .productDetailsImage img {
-    width: 100%;
+    width: 80%;
     object-fit: contain;
 }
 
@@ -212,7 +212,7 @@
 }
 
 .productDescImage .imageContainer img {
-    width: 100%;
+    width: 80%;
 }
 
 .allPoints {

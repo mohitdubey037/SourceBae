@@ -107,14 +107,29 @@ const ClientCommentBox = (props) => {
     isShortListed: true,
     negotiablePrice: "",
     comment: "",
+    clientNegotiablePrice: ""
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setApiData({
-      ...apiData,
-      [name]: value,
-    });
+    // setApiData({
+    //   ...apiData,
+    //   [name]: value,
+    // });
+    if (name === 'clientNegotiablePrice') {
+      if (value.length <= 8) {
+        setApiData({
+          ...apiData,
+          [name]: value,
+        });
+      }
+    }
+    else {
+      setApiData({
+        ...apiData,
+        [name]: value,
+      });
+    }
   };
 
   const replyApi = () => {
@@ -277,6 +292,7 @@ const ClientCommentBox = (props) => {
                         placeholder="Client Negotiable Price"
                         onChange={(event) => handleChange(event)}
                         variant="outlined"
+                        value={apiData.clientNegotiablePrice}
                         InputLabelProps={{
                           shrink: true,
                         }}
@@ -323,10 +339,12 @@ const ClientCommentBox = (props) => {
           </div>
 
           {/* {overallPriceSection && */}
-          <div className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
+          
+          <div style={{display: (isRejectOrAccept && !props.projectProposals[0].clientNegotiablePrice 
+          && !props.projectProposals[0].agencyNegotiablePrice
+          && !props.projectProposals[0].finalCostByClient) 
+            && 'none' }} className={`action-wait ${isRejectOrAccept ? "conditional_width_commentBox" : ""}`}>
             <div className="topLine"></div>
-            {/* {props.projectProposals[0].isProposalActionActive} */}
-
             <div className="proposalCard">
               {!isRejectOrAccept &&
                 <div className={`${props.projectProposals[0].isProposalActionActive ?
@@ -494,7 +512,12 @@ const ClientCommentBox = (props) => {
                   <p>Final Cost </p>
                 </div>
                 <div className="tableContentQuotation finalCost">
-                  <input type="number" name="finalCostByClient" value={quotationFormData.finalCostByClient} onChange={onQuotationChange} />
+                  <input
+                    maxLength="8"
+                    type="tel"
+                    name="finalCostByClient"
+                    value={quotationFormData.finalCostByClient}
+                    onChange={onQuotationChange} />
                 </div>
               </div>
 

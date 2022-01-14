@@ -224,11 +224,11 @@ function ShortTerm(props) {
   //   uploadMedia();
   // };
 
-  useEffect(() => {
-    if (apiData.projectFiles.length > 0) {
-      shortTermProjectApi();
-    }
-  }, [apiData.projectFiles])
+  // useEffect(() => {
+  //   if (apiData.projectFiles.length > 0) {
+  //     shortTermProjectApi();
+  //   }
+  // }, [apiData.projectFiles])
 
   const handleButton = () => {
     if (errorValidation()) {
