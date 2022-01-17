@@ -106,25 +106,16 @@ function ShortTerm(props) {
     });
   };
 
-  // const maxSize = 1048576;
-
   const onDrop = useCallback(acceptedFiles => {
+    console.log(acceptedFiles);
     setLogo(acceptedFiles);
   }, []);
-
-  useEffect(() => {
-    console.log(logo);
-  }, [logo]);
-
 
   const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
     onDrop,
     accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
-    minSize: 0,
-    // maxSize,
+    minSize: 0
   });
-
-  // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
   const handleServices = (event) => {
     const { className } = event.target;
@@ -214,16 +205,6 @@ function ShortTerm(props) {
         setLoading(false);
       })
   };
-
-  // const handleButton = () => {
-  //   uploadMedia();
-  // };
-
-  // useEffect(() => {
-  //   if (apiData.projectFiles.length > 0) {
-  //     shortTermProjectApi();
-  //   }
-  // }, [apiData.projectFiles])
 
   const handleButton = () => {
     if (errorValidation()) {
@@ -410,11 +391,6 @@ function ShortTerm(props) {
                             }
                             {isDragActive && !isDragReject && "Drop it like it's hot!"}
                             {isDragReject && "File type not accepted, sorry!"}
-                            {/* {isFileTooLarge && (
-                              <div className="text-danger mt-2">
-                                File is too large.
-                              </div>
-                            )} */}
                           </div>
                         </section>
                       </div>
