@@ -239,7 +239,7 @@ function AgencyForm3(props) {
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
                                         <div className="Company Registration Certificate">
-                                            <Dropzone onDrop={(acceptedFiles) => handleDocumentPicker(registrationCertificate.documentName, acceptedFiles) }>
+                                            <Dropzone accept='.pdf, .jpg, .png, .jpeg' onDrop={(acceptedFiles) => handleDocumentPicker(registrationCertificate.documentName, acceptedFiles) }>
                                                 {({ getRootProps, getInputProps }) => (
                                                     <section>
                                                         <div {...getRootProps()}>
@@ -262,7 +262,7 @@ function AgencyForm3(props) {
                                     </div>
                                     <div className="agencyBrochure">
                                         <div className='Brochure'>
-                                            <Dropzone onDrop={(acceptedFiles) => handleDocumentPicker(brochureDoc.documentName, acceptedFiles)}>
+                                            <Dropzone accept='.pdf, .jpg, .png, .jpeg' onDrop={(acceptedFiles) => handleDocumentPicker(brochureDoc.documentName, acceptedFiles)}>
                                                 {({ getRootProps, getInputProps }) => (
                                                     <section>
                                                         <div {...getRootProps()}>
@@ -287,7 +287,7 @@ function AgencyForm3(props) {
                                 <div className="panDetails">
                                     <div className="panCardContent">
                                         <div className="Pancard">
-                                            <Dropzone onDrop={(acceptedFiles) => handleDocumentPicker(panCardDoc.documentName, acceptedFiles)}>
+                                            <Dropzone accept='.pdf, .jpg, .png, .jpeg' onDrop={(acceptedFiles) => handleDocumentPicker(panCardDoc.documentName, acceptedFiles)}>
                                                 {({ getRootProps, getInputProps }) => (
                                                     <section>
                                                         <div {...getRootProps()}>
