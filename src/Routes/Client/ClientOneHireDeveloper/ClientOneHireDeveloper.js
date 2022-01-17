@@ -115,36 +115,39 @@ function ClientOneHireDeveloper(props) {
                         <div className="moreAgencyList new_design_clientOneHireDeveloper">
                           <div className="moreAgencyInfo">
                             <div className="agencyDesc_clientOneHireDeveloper">
-                              <h6 className="name-title">About the company</h6>
-                              <div className="border-bottom_onAgency"></div>
+                              <div className="about_the_company">
+                                <h3 className="name-title">{agency?.agencyId?.agencyName}</h3>
+                              </div>
+                              <div className="experience_and_interest">
+                                <div className="email_clientOneHireDeveloper description_parent">
+                                  <p className="description_clientOne">
+                                    {`Experience:`}&nbsp;
+                                    <span className="description_sharedDeveloper">
+                                      <Moment fromNow ago>
+                                        {`${agency?.agencyId?.incorporationDate}`}
+                                      </Moment>
+                                    </span>
+                                  </p>
+                                </div>
+                                <div className="email_clientOneHireDeveloper description_parent">
+                                  <p className="description_clientOne">
+                                    {`Interest Shown:`}&nbsp;
+                                    <span className="description_sharedDeveloper">
+                                      {agency?.agencyId?.interestedClientCount}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                             </div>
 
-                            <div className="email_clientOneHireDeveloper">
-                              <p className="description_sharedDeveloper">
+                            <div className="about_the_company_clientOne">
+                              <p style={{ color: '#40A3FF' }} className="description_sharedDeveloper">
+                                about the company
+                              </p>
+                              <p style={{marginTop: '0.6rem'}} className="description_sharedDeveloper">
                                 {agency?.agencyId?.agencyDescription}
                               </p>
                             </div>
-                            <div className="experience_and_interest">
-                              <div className="email_clientOneHireDeveloper description_parent">
-                                <p className="description_clientOne">
-                                  Experience:
-                                </p>
-                                <p className="description_sharedDeveloper agency_age">
-                                  <Moment fromNow ago>
-                                    {agency?.agencyId?.incorporationDate}
-                                  </Moment>
-                                </p>
-                              </div>
-                              <div className="email_clientOneHireDeveloper description_parent">
-                                <p className="description_clientOne">
-                                  Interest Shown:
-                                </p>
-                                <p className="description_sharedDeveloper agency_age">
-                                    {agency?.agencyId?.interestedClientCount}
-                                </p>
-                              </div>
-                            </div>
-
                           </div>
 
                           <div className="shortlist_and_interest_parent">
@@ -178,12 +181,12 @@ function ClientOneHireDeveloper(props) {
                         </div>
                       );
                     })
-                  ) 
-                  : (
-                    <div className="no_matched_agency">
-                      <h2>Sorry No Matched Agencies Found.</h2>
-                    </div>
                   )
+                    : (
+                      <div className="no_matched_agency">
+                        <h2>Sorry No Matched Agencies Found.</h2>
+                      </div>
+                    )
                 ) : (
                   <h2 className="no_matched_agency">
                     Sorry No Matched Agencies Found.
