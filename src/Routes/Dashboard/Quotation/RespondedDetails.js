@@ -34,7 +34,6 @@ function RespondedDetails(props) {
   const getAllProjects = () => {
     instance.get(`api/${Role}/projects/get/${projectId}?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response);
         setProject(response);
       })
   };

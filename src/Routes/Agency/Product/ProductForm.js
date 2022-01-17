@@ -8,7 +8,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
-import { toast } from "react-toastify";
 
 import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -30,6 +29,8 @@ import Back from '../../../Components/Back/Back';
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+
+import { upload } from "../../../shared/helper";
 
 const BlueRadio = withStyles({
   root: {
@@ -105,6 +106,7 @@ const brr = [
 ];
 
 function ProductForm(props) {
+  const Role = localStorage.getItem('role');
   const [businessModal, setBusinesmodal] = useState(arr);
   const [currentStage, setCurrentStage] = useState(brr);
   const [fields, setFields] = useState([{ value: null }]);
@@ -164,22 +166,6 @@ function ProductForm(props) {
     });
   };
 
-  // const {
-  //   acceptedFiles,
-  //   getRootProps,
-  //   getInputProps
-  // } = useDropzone({
-  //   accept: '.jpg, .png, .jpeg'
-  // });
-
-  // const acceptedFileItems = acceptedFiles.map(file => {
-  //   return (
-  //     file.path
-  //   )
-  // });
-
-  // const maxSize = 1048576;
-
   const onDrop = useCallback(acceptedFiles => {
     setLogo(acceptedFiles);
   }, []);
@@ -191,11 +177,8 @@ function ProductForm(props) {
   const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
     onDrop,
     accept: '.jpg, .png, .jpeg',
-    minSize: 0,
-    // maxSize,
+    minSize: 0
   });
-
-  // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
   useEffect(() => {
     if (apiData.productDescription === '') {
@@ -404,28 +387,16 @@ function ProductForm(props) {
     else return false;
   };
 
-  const uploadMedia = () => {
-    // if (errorValidation()) {
-    setLoading(true);
-    const fileForm = new FormData();
-    logo && fileForm.append(
-      "files",
-      logo[0],
-      logo[0].name
-    );
-    instance.post(`api/${role}/media/create`, fileForm)
-      .then(function (response) {
-        setApiData({
-          ...apiData,
-          productLogo: response[0].mediaURL,
-        });
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
+  async function uploadMedia() {
+    try {
+      const detail = await upload(logo, Role);
+      detail && setApiData({
+        ...apiData,
+        productLogo: detail,
       });
-    // }
-  };
+    } catch (err) {
+    }
+  }
 
   const handleSubmit = () => {
     if (errorValidation()) {

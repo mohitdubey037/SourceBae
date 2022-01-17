@@ -60,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
 function AgencyProfile(props) {
   const classes = useStyles();
   const { id } = useParams();
-  console.log(id);
   const role = localStorage.getItem('role');
   const inputEl = useRef(null);
   const inputPort = useRef(null);

@@ -15,6 +15,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { FaFileUpload } from 'react-icons/fa';
 
+import { upload } from '../../../../shared/helper';
+
 import './ResponsiveAgencyForm.css';
 
 
@@ -55,28 +57,6 @@ function AgencyForm1(props) {
         platformLink: formData.socialPlatformDetails[0] ? formData.socialPlatformDetails[0].platformLink : ""
     })
 
-    // useEffect(() => {
-    //     getAgencyProfile();
-    // }, [])
-
-    // const {
-    //     acceptedFiles,
-    //     getRootProps,
-    //     getInputProps
-    // } = useDropzone({
-    //     accept: '.jpg,.jpeg,.png'
-    // });
-
-    // const acceptedFileItems = acceptedFiles.map(file => {
-    //     return (
-    //         <p>
-    //             {file.path}
-    //         </p>
-    //     )
-    // });
-
-    // const maxSize = 1048576;
-
     const onDrop = useCallback(acceptedFiles => {
         setLogo(acceptedFiles);
     }, []);
@@ -88,14 +68,10 @@ function AgencyForm1(props) {
 
     const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
         onDrop,
-        // accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
         accept: '.jpg,.jpeg,.png',
         minSize: 0,
         // maxSize,
     });
-
-    // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
-
 
     const errorValidation = () => {
         const errors = {};
@@ -170,25 +146,16 @@ function AgencyForm1(props) {
     //     setLogo(projectDoc);
     // }
 
-    const uploadMedia = () => {
-        // if (handleValidation()) {
-            const fileForm = new FormData();
-            logo && fileForm.append(
-                "files",
-                logo[0],
-                logo[0].name
-            );
-            instance.post(`api/${Role}/media/create`, fileForm)
-                .then(function (response) {
-                    setFormData({
-                        ...formData,
-                        agencyLogo: response[0].mediaURL
-                    })
-                })
-                .catch(err => {
-                    setLoading(false);
-                })
-        // }
+    async function uploadMedia() {
+        try {
+            const detail = await upload(logo, Role);
+            detail && setFormData({
+                ...formData,
+                agencyLogo: detail
+            })
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const handleSubmit = () => {

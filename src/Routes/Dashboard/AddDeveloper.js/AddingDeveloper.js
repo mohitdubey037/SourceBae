@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../Components/Back/Back';
 
@@ -18,6 +18,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Spinner from '../../../Components/Spinner/Spinner';
 import MultiSelect from "react-multi-select-component";
 import { FaFileUpload } from 'react-icons/fa';
+
+import { upload } from '../../../shared/helper';
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 
 import { toast } from "react-toastify";
@@ -76,25 +78,7 @@ function AddingDeveloper(props) {
 
     useEffect(() => {
     }, [developerData])
-
-    // const {
-    //     acceptedFiles,
-    //     getRootProps,
-    //     getInputProps
-    // } = useDropzone({
-    //     accept: '.pdf,.doc,.docx'
-    // });
-
-    // const acceptedFileItems = acceptedFiles.map(file => {
-    //     return (
-    //         <p>
-    //             {file.path}
-    //         </p>
-    //     )
-    // });
-
-    // const maxSize = 1048576;
-
+    
     const onDrop = useCallback(acceptedFiles => {
         setResume(acceptedFiles);
     }, []);
@@ -106,13 +90,9 @@ function AddingDeveloper(props) {
 
     const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
         onDrop,
-        // accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
         accept: '.pdf,.doc,.docx',
-        minSize: 0,
-        // maxSize,
+        minSize: 0
     });
-
-    // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
     const handleChange = (event, type) => {
         const { name, value } = event.currentTarget
@@ -135,7 +115,6 @@ function AddingDeveloper(props) {
     }
 
     useEffect(() => {
-        // console.log(developerData)
     }, [developerData])
 
     const getAllTechs = () => {
@@ -194,34 +173,21 @@ function AddingDeveloper(props) {
             return false;
     }
 
-    // useEffect(() => {
-    //     console.log(resume);
-    // }, [resume])
-
-    const uploadMedia = () => {
-        setLoading(true)
-        const fileForm = new FormData();
-        resume && fileForm.append(
-            "files",
-            resume[0],
-            resume[0].name
-        );
-        instance.post(`api/${Role}/media/create`, fileForm)
-            .then(function (response) {
-                setLoading(false);
-                setDeveloperData({
-                    ...developerData,
-                    developerDocuments: [
-                        {
-                            documentName: "Resume",
-                            documentLink: response[0].mediaURL
-                        }
-                    ]
-                })
+    async function uploadMedia() {
+        try {
+            const detail = await upload(resume, Role);
+            detail && setDeveloperData({
+                ...developerData,
+                developerDocuments: [
+                    {
+                        documentName: "Resume",
+                        documentLink: detail
+                    }
+                ]
             })
-            .catch(err => {
-                setLoading(false);
-            })
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     useEffect(() => {

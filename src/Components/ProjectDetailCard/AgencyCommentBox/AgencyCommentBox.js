@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AgencyCommentBox = (props) => {
-  console.log(props);
   const isRejectOrAccept = props.projectProposals[0].rejectReasonByClient ||
     props.projectProposals[0].rejectReasonByAgency ||
     props.projectProposals[0].isQuotationAcceptedByClient ||

@@ -39,7 +39,6 @@ function RespondedDetails(props) {
     instance
       .get(`/api/agency/hire-developers/all?agencyId=${agencyId}`)
       .then(function (response) {
-        console.log(response, "getonedeveloper");
         setSingleHiredDeveloper(response);
         setLoading(false);
       })
@@ -56,7 +55,6 @@ function RespondedDetails(props) {
       })
       .then((response) => {
         // setDisability(true)
-        console.log(response, "agencyAction");
         onCloseModal();
         getOneDeveloper();
       })

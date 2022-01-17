@@ -11,61 +11,16 @@ import './ClientNewestDashboard.css'
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
-// import { makeStyles, useTheme } from '@material-ui/core/styles';
 import instance from '../../Constants/axiosConstants';
 import * as actions from '../../Redux/action/addProject';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import { connect } from 'react-redux';
 
-// const MenuProps = {
-//     getContentAnchorEl: () => null,
-//     PaperProps: {
-//         style: {
-//             maxHeight: 215,
-//             width: 200,
-//             top: 360
-//         },
-//     },
-// };
-
-// const useStyles = makeStyles((theme) => ({
-//     button: {
-//         display: 'block',
-//         marginTop: theme.spacing(2),
-//     },
-//     formControl: {
-//         margin: theme.spacing(0),
-//         minWidth: 100,
-//     },
-//     filterValue: {
-//         fontWeight: '100',
-//     },
-//     selectEmpty: {
-//         marginTop: theme.spacing(2),
-//     }
-// }));
-
-// function getStyles(singleTechObject, allTechnologies, theme) {
-//     return {
-//         fontWeight:
-//             allTechnologies.indexOf(singleTechObject) === -1
-//                 ? theme.typography.fontWeightRegular
-//                 : theme.typography.fontWeightMedium,
-//     };
-// }
-
 function ClientNewestDashboard(props) {
-
-    // if (props.history.action === 'POP') {
-    //     props.history.push('/clientNewestDashboard');
-    // }
 
     const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem("userId");
 
-    // const [open, setOpen] = React.useState(false);
-    // const [openmodal, setOpenModal] = useState(false);
-    // const [loading, setLoading] = useState(false);
     const [projects, setProjects] = useState([]);
     const [statuses, setStatuses] = useState([]);
     const [visible, setVisible] = useState(false);
@@ -76,8 +31,6 @@ function ClientNewestDashboard(props) {
     const handleClientData = () => {
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
-                console.log(response[0].isUserEmailVerified);
-                console.log(response[0].isUserPhoneVerified);
                 setUserVerified(response[0].isUserEmailVerified || response[0].isUserPhoneVerified);
                 localStorage.setItem('userVerified', (response[0].isUserEmailVerified || response[0].isUserPhoneVerified))
                 setUserEmailVerified(response[0].isUserEmailVerified);
@@ -96,7 +49,6 @@ function ClientNewestDashboard(props) {
     const getAllProjects = () => {
         instance.get(`/api/${Role}/projects/all?clientId=${clientId}`)
             .then(function (response) {
-                console.log(response);
                 setProjects(response.projects);
                 setStatuses(response.statuses);
             })

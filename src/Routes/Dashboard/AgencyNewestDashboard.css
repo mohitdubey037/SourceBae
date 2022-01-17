@@ -8,11 +8,6 @@
   padding-bottom: 6rem;
   display: flex;
   flex-wrap: wrap;
-  /* height: 28.7rem; */
-  /* margin-right: 6px; */
-  /* justify-content: center; */
-  /* align-content: center; */
-  /* border: 1px solid; */
 }
 
 .conditional_flex {
@@ -41,7 +36,7 @@
   width: 75%;
   height: 10%;
   justify-content: space-evenly;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* .interested_or_not.verify_or_not div {

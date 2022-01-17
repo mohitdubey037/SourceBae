@@ -44,7 +44,6 @@ function ClientOneHireDeveloper(props) {
         `/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`
       )
       .then(function (response) {
-        console.log(response, "getonedeveloper");
         setSingleHiredDeveloper(response);
         setLoading(false);
       })

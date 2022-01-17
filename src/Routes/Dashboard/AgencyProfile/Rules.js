@@ -14,7 +14,6 @@ import { AGENCY } from "../../../shared/constants";
 import "./Rules.css";
 
 function Rules(props) {
-  // console.log(props);
   const Role = localStorage.getItem("role");
   const [agencyProfiledata, setAgencyProfileData] = useState({});
   const userId = props.id ? props.id : localStorage.getItem('userId');
@@ -66,7 +65,6 @@ function Rules(props) {
     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
     instance.get(`/api/${Role}/agencies/get/${userId}${addParam}`)
       .then(function (response) {
-        console.log(response);
         setAgencyProfileData(response);
         setRules(response.agencyRules);
         setEditRules(false);

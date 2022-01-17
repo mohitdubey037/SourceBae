@@ -13,11 +13,8 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-//multi-select
-import MultiSearchSelect from "react-search-multi-select";
 import Spinner from "../../../../Components/Spinner/Spinner";
 import { toast } from "react-toastify";
-import useIsFirstRender from "../../../../Utils/useIsFirstRender";
 import { useIsFocusVisible } from "@material-ui/core";
 
 import MultiSelect from "react-multi-select-component";
@@ -25,7 +22,6 @@ import MultiSelect from "react-multi-select-component";
 import './ResponsiveAgencyForm.css';
 
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux'
 
 function AgencyForm2(props) {
   const dispatch = useDispatch();
@@ -153,7 +149,6 @@ function AgencyForm2(props) {
   };
 
   const handleDomains = (event) => {
-    console.log('handle domains agency 2')
     const { className } = event.target;
     const toggledDomains = allDomainsData.map((domain) => {
       if (domain.domainName === className) {
@@ -193,7 +188,6 @@ function AgencyForm2(props) {
   };
 
   const handleServices = (event) => {
-    console.log('hii, agencyform 2');
     const { className } = event.target;
     const toggledServices = allServicesData.map((service) => {
       if (service.serviceName === className)
