@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, createRef } from 'react';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../../Components/Back/Back';
 import FormPhases from './FormPhases'
 import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 import illustrationImage from '../../../../assets/images/Newestdashboard/Agency-form/illustration_3.svg'
 
-import { FilePicker } from 'react-file-picker'
 import { toast } from 'react-toastify'
 
 //axios instance
 import instance from "../../../../Constants/axiosConstants";
 import Spinner from '../../../../Components/Spinner/Spinner';
+import { useDropzone } from 'react-dropzone';
+import { useDispatch } from 'react-redux';
+import Dropzone from 'react-dropzone'
 
 import './ResponsiveAgencyForm.css';
 
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux'
 
 function AgencyForm3(props) {
     const dispatch = useDispatch();
@@ -36,6 +36,11 @@ function AgencyForm3(props) {
         document: ""
     })
 
+    // useEffect(() => {
+    //     console.log(registrationCertificate.name, 'mohitdubey');
+    //     console.log(registrationCertificate,'kdhfkdsk');
+    // },[registrationCertificate])
+
     const [brochureDoc, setBrochureDoc] = useState({
         documentName: "Brochure",
         documentLink: "",
@@ -50,34 +55,6 @@ function AgencyForm3(props) {
         document: ""
     })
 
-    const handleDocumentPicker = (document, category) => {
-        if (category === registrationCertificate.documentName) {
-            setRegistrationCertificate({
-                ...registrationCertificate,
-                documentPicked: true,
-                name: document.name,
-                document
-            })
-        }
-
-        else if (category === brochureDoc.documentName) {
-            setBrochureDoc({
-                ...brochureDoc,
-                documentPicked: true,
-                name: document.name,
-                document
-            })
-        }
-        else if (category === panCardDoc.documentName) {
-            setPanCardDoc({
-                ...panCardDoc,
-                documentPicked: true,
-                name: document.name,
-                document
-            })
-        }
-    }
-
     const getStepsCompleted = () => {
         instance.get(`api/${Role}/agencies/steps-completed`)
             .then(function (response) {
@@ -89,11 +66,45 @@ function AgencyForm3(props) {
         getStepsCompleted();
     }, []);
 
-    const handleUploadError = (error) => {
-        toast.error(error)
+    const handleDocumentPicker = (category, acceptedFiles) => {
+        // console.log(category);
+        // console.log(acceptedFiles[0]);
+        if (category === registrationCertificate.documentName) {
+            setRegistrationCertificate({
+                ...registrationCertificate,
+                documentPicked: true,
+                name: acceptedFiles[0].name,
+                document : acceptedFiles[0]
+            })
+        }
+
+        else if (category === brochureDoc.documentName) {
+            setBrochureDoc({
+                ...brochureDoc,
+                documentPicked: true,
+                name: acceptedFiles[0].name,
+                document : acceptedFiles[0]
+            })
+        }
+        else if (category === panCardDoc.documentName) {
+            setPanCardDoc({
+                ...panCardDoc,
+                documentPicked: true,
+                name: acceptedFiles[0].name,
+                document : acceptedFiles[0]
+            })
+        }
     }
 
+    // const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+    //     onDrop,
+    //     accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
+    //     minSize: 0
+    // });
+
+
     function uploadMedia() {
+        console.log(registrationCertificate);
         setLoading(true);
         return new Promise((resolve, reject) => {
             const formData = new FormData();
@@ -196,7 +207,6 @@ function AgencyForm3(props) {
                 documentName: propData.agencyForm3.documentName
             })
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [propData])
 
     useEffect(() => {
@@ -208,8 +218,6 @@ function AgencyForm3(props) {
             setLoading(false);
             handleUpdate();
         }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [registrationCertificate, brochureDoc, panCardDoc])
 
     return (
@@ -230,57 +238,75 @@ function AgencyForm3(props) {
                                     Provide your Valid Document:{" "}<span style={{ color: 'red' }}>max 3 file</span></p>
                                 <div className="documentInformation">
                                     <div className="agencyCertification">
-                                        <FilePicker
-                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
-                                            onChange={fileObj => handleDocumentPicker(fileObj, registrationCertificate.documentName)}
-                                            onError={error => handleUploadError(error)}>
-                                            <button className="pick_btn">
-                                                <p>Pick File
-                                                    <span className="requiredStar">
-                                                        *
-                                                    </span>
-                                                </p>
-                                                <img src={fileIcon} alt="finish" /></button>
-                                        </FilePicker>
-                                        {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${(registrationCertificate?.document?.name) ? registrationCertificate?.document?.name.slice(0, 20) : "Company Registration Certificate"}`}</p>
+                                        <div className="Company Registration Certificate">
+                                            <Dropzone onDrop={(acceptedFiles) => handleDocumentPicker(registrationCertificate.documentName, acceptedFiles) }>
+                                                {({ getRootProps, getInputProps }) => (
+                                                    <section>
+                                                        <div {...getRootProps()}>
+                                                            <input {...getInputProps()} />
+                                                            <button className="pick_btn">
+                                                                <p>Pick File
+                                                                    <span className="requiredStar">
+                                                                        *
+                                                                    </span>
+                                                                </p>
+                                                                <img src={fileIcon} alt="finish" />
+                                                            </button>
+                                                        </div>
+                                                    </section>
+                                                )}
+                                            </Dropzone>
+                                        </div>
+                                        {/* <p className="logo-type_agencyForm1">{`${registrationCertificate?.documentName?.slice(0, 20)}`}</p> */}
+                                        <p className="logo-type_agencyForm1">{`${(registrationCertificate?.name) ? registrationCertificate?.name.slice(0, 20) : "Company Registration Certificate"}`}</p>
                                     </div>
                                     <div className="agencyBrochure">
-                                        {/* <p>2. Upload Agency Brochure</p> */}
-                                        <FilePicker
-                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
-                                            onChange={fileObj => handleDocumentPicker(fileObj, brochureDoc.documentName)}
-                                            onError={error => handleUploadError(error)}>
-                                            <button className="pick_btn">
-                                                <p>Pick File
-                                                    <span className="requiredStar">
-                                                        *
-                                                    </span>
-                                                </p>
-                                                <img src={fileIcon} alt="finish" />
-                                            </button>
-                                        </FilePicker>
-                                        {/* </div> */}
-                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.document?.name) ? brochureDoc?.document?.name.slice(0, 20) : "Brochure"}`}</p>
+                                        <div className='Brochure'>
+                                            <Dropzone onDrop={(acceptedFiles) => handleDocumentPicker(brochureDoc.documentName, acceptedFiles)}>
+                                                {({ getRootProps, getInputProps }) => (
+                                                    <section>
+                                                        <div {...getRootProps()}>
+                                                            <input {...getInputProps()} />
+                                                            <button className="pick_btn">
+                                                                <p>Pick File
+                                                                    <span className="requiredStar">
+                                                                        *
+                                                                    </span>
+                                                                </p>
+                                                                <img src={fileIcon} alt="finish" />
+                                                            </button>
+                                                        </div>
+                                                    </section>
+                                                )}
+                                            </Dropzone>
+                                        </div>
+                                        {/* <p className="logo-type_agencyForm1">{`${brochureDoc?.documentName?.slice(0, 20)}`}</p> */}
+                                        <p className="logo-type_agencyForm1">{`${(brochureDoc?.name) ? brochureDoc?.name.slice(0, 20) : "Brochure"}`}</p>
                                     </div>
                                 </div>
                                 <div className="panDetails">
-                                    {/* <p>3. Upload your PanCard</p> */}
                                     <div className="panCardContent">
-                                        <FilePicker
-                                            extensions={['pdf', 'jpg', 'png', 'jpeg']}
-                                            onChange={fileObj => handleDocumentPicker(fileObj, panCardDoc.documentName)}
-                                            onError={error => handleUploadError(error)}>
-                                            <button className="pick_btn">
-                                                <p>Pick File
-                                                    <span className="requiredStar">
-                                                        *
-                                                    </span>
-                                                </p>
-                                                <img src={fileIcon} alt="finish" />
-                                            </button>
-                                        </FilePicker>
-                                        <p className="logo-type_agencyForm1">{`${(panCardDoc?.document?.name) ? panCardDoc?.document?.name.slice(0, 20) : "Pancard"}`}</p>
+                                        <div className="Pancard">
+                                            <Dropzone onDrop={(acceptedFiles) => handleDocumentPicker(panCardDoc.documentName, acceptedFiles)}>
+                                                {({ getRootProps, getInputProps }) => (
+                                                    <section>
+                                                        <div {...getRootProps()}>
+                                                            <input {...getInputProps()} />
+                                                            <button className="pick_btn">
+                                                                <p>Pick File
+                                                                    <span className="requiredStar">
+                                                                        *
+                                                                    </span>
+                                                                </p>
+                                                                <img src={fileIcon} alt="finish" />
+                                                            </button>
+                                                        </div>
+                                                    </section>
+                                                )}
+                                            </Dropzone>
+                                        </div>
+                                        {/* <p className="logo-type_agencyForm1">{`${panCardDoc?.documentName?.slice(0, 20)}`}</p> */}
+                                        <p className="logo-type_agencyForm1">{`${(panCardDoc?.name) ? panCardDoc?.name.slice(0, 20) : "Pancard"}`}</p>
                                     </div>
                                 </div>
 
