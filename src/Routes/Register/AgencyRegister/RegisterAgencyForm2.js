@@ -67,7 +67,11 @@ const RegisterAgencyForm2 = (props) => {
     <>
       <div>
         <div className="input_with_error">
-          <label>Agency Name</label>
+          <label>Agency Name
+            <span className="requiredStar">
+              *
+            </span>
+          </label>
           <input
             type="text"
             name="agencyName"
@@ -85,7 +89,11 @@ const RegisterAgencyForm2 = (props) => {
         </div>
 
         <div className="input_with_error">
-          <label>Team Strength</label>
+          <label>Team Strength
+            <span className="requiredStar">
+              *
+            </span>
+          </label>
           <input
             type="number"
             min="1"
@@ -107,6 +115,9 @@ const RegisterAgencyForm2 = (props) => {
       <div className="input_with_error">
         <label className={dateClasses.label} id="incorporationLabel" htmlFor="social" >
           Incorporation Date
+          <span className="requiredStar">
+            *
+          </span>
         </label>
         <input style={{ paddingLeft: "2.5%", paddingRight: "2%", width: '39%' }}
           id="incorporation_date"
@@ -115,7 +126,7 @@ const RegisterAgencyForm2 = (props) => {
           name="incorporationDate"
           max={new Date().toJSON().slice(0, 10)}
           className={dateClasses.textField}
-          onChange={(event) => handleCreateProfile(event, role) }
+          onChange={(event) => handleCreateProfile(event, role)}
         />
         {props.errors.incorporationDateError && (
           <p className="error_productForm">
@@ -125,7 +136,11 @@ const RegisterAgencyForm2 = (props) => {
       </div>
 
       <div className="input_with_error" >
-        <label>Website Url</label>
+        <label>Website Url
+          <span className="requiredStar">
+            *
+          </span>
+        </label>
         <input
           style={{ paddingLeft: "2.5%", width: '39%' }}
           type="text"
