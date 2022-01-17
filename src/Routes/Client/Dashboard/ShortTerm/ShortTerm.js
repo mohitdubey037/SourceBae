@@ -6,6 +6,7 @@ import fixed from "../../../../assets/images/Newestdashboard/Short_Term/payment.
 import hour from "../../../../assets/images/Newestdashboard/Short_Term/hourglass.svg";
 
 import VerifyModal from "../../../../Components/VerifyModal/VerifyModal";
+import { upload } from "../../../../shared/helper";
 
 //material-ui
 import Radio from "@material-ui/core/Radio";
@@ -109,7 +110,6 @@ function ShortTerm(props) {
 
   const onDrop = useCallback(acceptedFiles => {
     setLogo(acceptedFiles);
-    console.log('onDrop', acceptedFiles);
   }, []);
 
   useEffect(() => {
@@ -191,21 +191,16 @@ function ShortTerm(props) {
     else return false;
   };
 
-  function uploadMedia() {
-    const fileForm = new FormData();
-    logo && fileForm.append(
-      "files",
-      logo[0],
-      logo[0].name
-    );
-    instance
-      .post(`api/${Role}/media/create`, fileForm)
-      .then(function (response) {
-        setApiData({
-          ...apiData,
-          projectFiles: [response[0]?.mediaURL],
-        });
-      });
+  async function uploadMedia() {
+    try {
+      const detail = await upload(logo, Role);
+      detail && setApiData({
+        ...apiData,
+        projectFiles: [detail]
+      })
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const shortTermProjectApi = () => {

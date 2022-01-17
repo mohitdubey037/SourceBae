@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react'
 import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
-import uploadImage from '../../assets/images/Newestdashboard/Client_Profile/camera_icon.png';
 import { useDropzone } from 'react-dropzone';
 import { toast } from "react-toastify";
 
@@ -77,44 +76,7 @@ function ClientProfile() {
             })
     };
 
-    // const inputFileChoosen = (ev) => {
-    //     // console.log(ev);
-    //     setFile(ev)
-    //     let reader = new FileReader();
-    //     reader.readAsDataURL(ev)
-    //     reader.onload = () => {
-    //         setShow(reader.result);
-    //         setIsUploaded(true)
-    //     }
-    // }
-
-    // const {
-    //     acceptedFiles,
-    //     getRootProps,
-    //     getInputProps
-    // } = useDropzone({
-    //     accept: '.jpg, .png, .jpeg'
-    // });
-
-    // const acceptedFileItems = acceptedFiles.map(file => {
-    //     let reader = new FileReader();
-    //     reader.readAsDataURL(file)
-    //     reader.onload = () => {
-    //         setShow(reader.result);
-    //         setIsUploaded(true)
-    //     }
-    //     return (
-    //         <p>
-    //             {file.path}
-    //         </p>
-    //     )
-
-    // });
-
-    // const maxSize = 1048576;
-
     const onDrop = useCallback(acceptedFiles => {
-        console.log(acceptedFiles);
         setLogo(acceptedFiles);
         let reader = new FileReader();
         reader.readAsDataURL(acceptedFiles[0])
@@ -122,7 +84,6 @@ function ClientProfile() {
             setShow(reader.result);
             setIsUploaded(true)
         }
-        console.log('onDrop', acceptedFiles);
     }, []);
 
     useEffect(() => {
@@ -136,17 +97,6 @@ function ClientProfile() {
         minSize: 0,
         // maxSize,
     });
-
-    // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
-
-    // useEffect(() => {
-    //     let reader = new FileReader();
-    //     reader.readAsDataURL(ev)
-    //     reader.onload = () => {
-    //         setShow(reader.result);
-    //         setIsUploaded(true)
-    //     }
-    // }, [acceptedFileItems])
 
     useEffect(() => {
     }, [file]);
@@ -174,7 +124,6 @@ function ClientProfile() {
     }
 
     const handleButton = async () => {
-        // console.log('hiiiii');
         if (logo !== null) {
             await uploadMedia();
         }

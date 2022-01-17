@@ -6,12 +6,9 @@ import pastWork from '../../../assets/images/Newestdashboard/Portfolio/past_work
 import feedback from '../../../assets/images/Newestdashboard/Portfolio/feedback.svg';
 import win_more from '../../../assets/images/Newestdashboard/Portfolio/win_more.svg';
 import { useDropzone } from 'react-dropzone';
-import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
-import fileUpload from '../../../assets/images/Newestdashboard/Portfolio/upload_file.svg';
 import instance from "../../../Constants/axiosConstants";
-import { FaFileUpload } from 'react-icons/fa';
 import Spinner from '../../../Components/Spinner/Spinner';
-import { toast } from "react-toastify";
+import { upload } from '../../../shared/helper';
 
 
 
@@ -27,12 +24,11 @@ function Portfolio(props) {
 
     const onDrop = useCallback(acceptedFiles => {
         setLogo(acceptedFiles);
-        console.log('onDrop',acceptedFiles);
     }, []);
 
     useEffect(() => {
         console.log(logo);
-    },[logo]);
+    }, [logo]);
 
 
     const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
@@ -41,8 +37,6 @@ function Portfolio(props) {
         minSize: 0,
         // maxSize,
     });
-
-    // const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0]?.size > maxSize;
 
     const [form, setForm] = useState({
         projectName: '',
@@ -63,7 +57,6 @@ function Portfolio(props) {
 
     const errorValidation = () => {
         const errors = {}
-        console.log(form.projectLogo);
         if (logo === null) {
             errors.projectLogo = "Please upload a portfolio logo";
         }
@@ -84,7 +77,6 @@ function Portfolio(props) {
         }
         else if (form.projectTimeline <= 4) {
             errors.projectTimeline = 'timeline must be more than 4 days'
-            console.log('5');
 
         }
         setErrors(errors);
@@ -94,25 +86,16 @@ function Portfolio(props) {
             return false;
     }
 
-    const uploadMedia = () => {
-        setLoading(true);
-        const fileForm = new FormData();
-        logo && fileForm.append(
-            "files",
-            logo[0],
-            logo[0].name
-        );
-        instance.post(`api/${Role}/media/create`, fileForm)
-            .then(function (response) {
-                setLoading(false);
-                setForm({
-                    ...form,
-                    projectLogo: response[0].mediaURL
-                })
+    async function uploadMedia() {
+        try {
+            const detail = await upload(logo, Role);
+            detail && setForm({
+                ...form,
+                projectLogo: detail
             })
-            .catch(err => {
-                setLoading(false);
-            })
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const portfolioCreate = () => {

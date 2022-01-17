@@ -11,7 +11,6 @@ function VerifyPage(props) {
     const search = useLocation().search;
     const verificationToken = new URLSearchParams(search).get('token')
     let role = new URLSearchParams(search).get('role');
-    console.log(role);
 
     const [loading, setLoading] = useState(false);
 
@@ -19,7 +18,6 @@ function VerifyPage(props) {
         setLoading(true);
         instance.get(`api/${role}/auths/verify/${verificationToken}`)
             .then(res => {
-                console.log(res);
                 if (role !== localRole) {
                     localStorage.clear();
                     cookie.remove("Authorization");

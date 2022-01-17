@@ -46,8 +46,9 @@ const HireAgencyForm1 = (props) => {
   });
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
     if (name === "projectDescription") {
+      value = value.slice(0, 1).toUpperCase() + value.slice(1);
       if (value.length <= 100) setWords(value.length);
       if (value.length > 100) setWords(100);
     }
