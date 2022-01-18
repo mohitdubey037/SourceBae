@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './Information.css';
-import Information_edit from '../../../assets/images/Newestdashboard/Agency-Profile/Information_edit.svg';
 import moment from 'moment'
 import instance from "../../../Constants/axiosConstants";
 import { AGENCY } from '../../../shared/constants';
@@ -11,27 +10,10 @@ function Information(props) {
     const Role = localStorage.getItem('role');
     const day = moment(`${props?.data?.incorporationDate}`).format("MM-DD-YYYY");
 
-    const [agencyProfiledata, setAgencyProfileData] = useState({})
-
-    // const getAgencyProfile = (agencyId, profileviewStatus) => {
-    //     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-    //     instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
-    //         .then(function (response) {
-    //             setAgencyProfileData(response);
-    //         })
-    //         .catch((err) => {
-    //         });
-    // };
-
-    // useEffect(() => {
-    //     if (Role === 'Agency') {
-    //         getAgencyProfile(localStorage.getItem("userId"), false);
-    //     }
-    // }, []);
 
     const handleErrorsValidation = (url) => {
         if (!helper.validateLink(url)) {
-            toast.error('Wrong link provided');
+            toast.error('Incorrect url provided.');
             return false;
         }
         else {

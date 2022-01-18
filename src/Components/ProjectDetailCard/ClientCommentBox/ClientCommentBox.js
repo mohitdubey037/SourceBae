@@ -167,23 +167,23 @@ const ClientCommentBox = (props) => {
   const validateForm = () => {
     setLoading(false);
     if (quotationFormData.projectStartDateByClient === '' || quotationFormData.projectStartDateByClient === null) {
-      toast.error('Start date can"t be empty');
+      toast.error("Start date can't be blank");
       return false;
     }
     else if (quotationFormData.projectDelayedStartDateByClient === '' || quotationFormData.projectDelayedStartDateByClient === null) {
-      toast.error("Delayed date cant be empty");
+      toast.error("Delayed date can't be blank");
       return false;
     }
     else if (quotationFormData.projectEndDateByClient === '' || quotationFormData.projectEndDateByClient === null) {
-      toast.error("End date can't be empty");
+      toast.error("End date can't be blank");
       return false;
     }
     else if (quotationFormData.projectExpectedEndDateByClient === '' || quotationFormData.projectExpectedEndDateByClient === '') {
-      toast.error("Expected end date can't be empty");
+      toast.error("Expected End-Date can't be blank");
       return false
     }
     else if (quotationFormData.finalCostByClient === '') {
-      toast.error("Price can't be empty");
+      toast.error("Price can't be blank");
     }
     else {
       return true;

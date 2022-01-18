@@ -294,13 +294,13 @@ function AgencyForm2(props) {
         if (selectedTechName.length > 0) {
           setAgencyTechnologies();
         } else {
-          toast.error("Please Select at least one Technology.");
+          toast.error("Please select at least one Technology.");
         }
       } else {
-        toast.error("Please Select at least one Service.");
+        toast.error("Please select at least one Service.");
       }
     } else {
-      toast.error("Please Select at least one domain.");
+      toast.error("Please select at least one Domain.");
     }
   };
 
@@ -329,7 +329,6 @@ function AgencyForm2(props) {
                       allDomainsData.map((domain) => {
                         return (
                           <div className={`tech-container ${domain.domainName}`} onClick={(event) => handleDomains(event)}>
-                            {/* <div className={`${domain.domainName}`} onClick={(event) => handleDomains(event)}> */}
                             <div className={`${domain.domainName} ${domain.selected && 'conditional_transparency'}`}>
                               <img className={`${domain.domainName}`} src={domain.domainIcon} alt="" />
                             </div>
@@ -357,8 +356,6 @@ function AgencyForm2(props) {
                       allServicesData.map((service) => {
                         return (
                           <div className={`tech-container ${service.serviceName}`} onClick={(event) => handleServices(event)}>
-                            {/* <div className={`${service.serviceName}`} onClick={(event) => handleServices(event)}> */}
-                            {/* <div className={`${service.serviceName}`}> */}
                             <div className={`${service.serviceName} ${service.selected && 'conditional_transparency'}`}>
                               <img className={`${service.serviceName}`} src={service.serviceIcon} alt="" />
                             </div>
@@ -428,24 +425,10 @@ function AgencyForm2(props) {
           <div className={`${visibleTechNames?.length ? "serviceFieldsOptions_agencyForm2" : "conditional_please_select"}`}>
             <div className="serviceSelectionInput input_agencyForm2">
               {
-                // visibleTechData !== null ?
                 visibleTechNames?.length ? (
                   <>
                     <p className="uiuxtext uiuxtext_agencyForm3">Select Technologies</p>
                     <div style={{ display: "flex", justifyContent: "flex-start" }}>
-                      {/* <MultiSearchSelect
-                          className="UIUXServices"
-                          searchable={true}
-                          showTags={true}
-                          multiSelect={true}
-                          width="23vw"
-                          onSelect={(arr) => handleTechSelect(arr)}
-                          options={visibleTechNames}
-                          primaryColor="#D6EAF8"
-                          secondaryColor="#02044a"
-                          textSecondaryColor="#fff"
-                          textColor="black"
-                        /> */}
 
                       <MultiSelect
                         options={visibleTechNames.map(t => ({ "label": t, "value": t }))}
@@ -460,8 +443,6 @@ function AgencyForm2(props) {
                 ) : (
                   <p>Please select one or more services.</p>
                 )
-                // :
-                // <p>No Technologies Found...</p>
               }
             </div>
           </div>

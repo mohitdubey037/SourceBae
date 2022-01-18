@@ -121,7 +121,7 @@ const AgencyCommentBox = (props) => {
     if (quotationRejectionForm.rejectReasonByAgency === '' || quotationRejectionForm.rejectReasonByAgency === undefined) {
       setLoading(false);
       setRejectErrors("Field can't be empty");
-      toast.error('Field can"t be empty');
+      toast.error("Field can't be empty");
       return false;
     }
     else {
@@ -138,7 +138,7 @@ const AgencyCommentBox = (props) => {
           setOpen(false)
         });
     } else {
-      toast.error("Final cost cannot be empty.");
+      toast.error("Final cost can't be blank.");
     }
   };
   const handleProjectRejection = () => {
@@ -177,7 +177,7 @@ const AgencyCommentBox = (props) => {
           setLoading(false);
         });
     } else {
-      toast.error("Please Pick a File before Uploading.");
+      toast.error("Please pick a file before uploading.");
       setLoading(false);
     }
   }

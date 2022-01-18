@@ -258,15 +258,13 @@ function AgencyForm1(props) {
         }
     }
 
-    // const handleUploadError = (error) => {
-    //     toast.error(error)
-    // }
 
     useEffect(() => {
         setFormData({
             ...formData,
             socialPlatformDetails: [linkedIn]
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [linkedIn]);
 
     return (

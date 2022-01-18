@@ -186,28 +186,10 @@ function Portfolio(props) {
                                             {!isDragActive && 'Click here to upload a file!'}
                                             {isDragActive && !isDragReject && "Drop it like it's hot!"}
                                             {isDragReject && "File type not accepted, sorry!"}
-                                            {/* {isFileTooLarge && (
-                                                <div className="text-danger mt-2">
-                                                    File is too large.
-                                                </div>
-                                            )} */}
                                         </div>
                                         <p className="logo_detail">{logo !== null && logo[0].name}</p>
                                     </section>
 
-                                    {/* <FilePicker
-                                    extensions={['jpeg', 'jpg', 'png']}
-                                    onChange={(fileObj) => inputFileChoosen(fileObj)}
-                                    onError={errMsg => toast.error(errMsg)}
-                                >
-                                    <div className="logo_div">
-                                        <p style={{ fontSize: "12px" }}>{logo ? logo.name.slice(0, 25) : 'pick file'}</p>
-                                        
-                                        <img src={fileUpload} alt="fileUpload" />
-
-                                    </div>
-                                </FilePicker> */}
-                                    {/* <p><span>Browse</span> and upload your logo</p> */}
                                 </div>
                                 <div className='projectLogo_error'>
                                     {errors.projectLogo && (<p className="error_paragraph basic error_portfolio">{errors.projectLogo}</p>)}

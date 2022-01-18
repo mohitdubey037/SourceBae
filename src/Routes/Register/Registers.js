@@ -394,7 +394,7 @@ const Register = (props) => {
           localStorage.getItem("Authorization");
         createProfileApi(apiRole, api_param_const, api_create_form);
       } else {
-        toast.error("Token not set", { autoClose: 2000 });
+        toast.error("Token not set!", { autoClose: 2000 });
       }
     }
   }, [token, apiErrors]);
