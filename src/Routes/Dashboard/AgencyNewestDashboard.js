@@ -64,6 +64,7 @@ function AgencyNewestDashboard(props) {
     instance
       .get(`api/${role}/agencies/steps-completed`)
       .then(function (response) {
+        console.log(response);
         if (response.stepsCompleted === response.totalSteps) {
           setSteps(-1);
         } else {
