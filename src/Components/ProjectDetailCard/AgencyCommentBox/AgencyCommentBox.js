@@ -50,9 +50,6 @@ const AgencyCommentBox = (props) => {
     props.projectProposals[0].isQuotationAcceptedByAgency
 
 
-  const overallPriceSection = props.projectProposals[0].agencyNegotiablePrice ||
-    props.projectProposals[0].clientNegotiablePrice
-
   const [loading, setLoading] = useState(false);
   const classes = useStyles();
   const [apiData, setApiData] = useState({
@@ -65,7 +62,6 @@ const AgencyCommentBox = (props) => {
   const [file, setFile] = useState(null);
   const [open, setOpen] = useState(false);
   const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
-  const [rejectErrors, setRejectErrors] = useState('');
 
   const [quotationAcceptForm, setQuotationAcceptForm] = useState({
     agencyId: localStorage.getItem("userId"),
@@ -120,7 +116,6 @@ const AgencyCommentBox = (props) => {
   const checkErrors = () => {
     if (quotationRejectionForm.rejectReasonByAgency === '' || quotationRejectionForm.rejectReasonByAgency === undefined) {
       setLoading(false);
-      setRejectErrors("Field can't be empty");
       toast.error("Field can't be empty");
       return false;
     }
@@ -401,7 +396,7 @@ const AgencyCommentBox = (props) => {
                 <div className="quotation_file_upload">
                   <p className="upload_file_quoatation">Please upload a file of quotation</p>
                   <label htmlFor="icon-button-file" style={{ margin: "25% 33%" }}>
-                    <img className="fileUpload_shortTerm" src={FileUploadImage} alt="image"
+                    <img className="fileUpload_shortTerm" src={FileUploadImage} alt="file_upload_icon"
                       onChange={(event) => inputFileChosen(event)} />
                   </label>
                 </div>
