@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RightSide from "../../Components/ClientNewestDashboard/RightSide/RightSide";
+import CTAContainer from "../../Components/ClientNewestDashboard/CTAContainer/CTAContainer";
 import UserOperations from "../../Components/ClientNewestDashboard/LeftSide/UserOperations";
 
 import QuotationIcon from "../../assets/images/Newestdashboard/Agency_Navbar/q-icon.svg";
@@ -218,7 +219,7 @@ function AgencyNewestDashboard(props) {
                 </div>
               </div>
             </div>
-            <RightSide />
+            <CTAContainer />
           </div>
         </div>
         <BottomSideBar />
