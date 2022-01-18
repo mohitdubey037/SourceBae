@@ -166,17 +166,13 @@ function AgencyNewestDashboard(props) {
                     )}
                   </div>
                 )}
-                {(isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1) &&
+                {((isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1)) &&
                   <div className="down_seperator"></div>
                 }
               </div>
             }
 
             <div className="content-leftBody">
-              {/* {(isUserEmailVerified && isUserPhoneVerified) || (!verified || steps !== -1) &&
-                <div className="modal-custom"></div>
-              } */}
-              {/* <div className={`user-operations ${(!verified || steps !== -1) && "conditional_marginTop"}`}> */}
               <div className={`user-operations`}>
                 <UserOperations
                   disabled={!verified || steps !== -1}
