@@ -1,10 +1,18 @@
 import React from 'react'
+import * as helper from "../../../shared/helper";
 
 function RegisterClientForm1(props) {
 
   const setForm = (event) => {
     let { name, value } = event.target;
-    if (name === "firstName" || name === "lastName" || name === "userEmail") {
+    if (name === "userPhone") {
+      if (helper.noTextNumber(value)) {
+        props.setSignupForm({
+          ...props.signupForm,
+          [name]: value,
+        });
+      }
+    } else if (name === "firstName" || name === "lastName" || name === "userEmail") {
       props.setSignupForm({
         ...props.signupForm,
         [name]: value.toLowerCase(),
