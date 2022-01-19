@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/UserOperations';
 import UserProject from '../../Components/ClientNewestDashboard/LeftSide/UserProject';
 import RightSide from '../../Components/ClientNewestDashboard/RightSide/RightSide';
+import CTA from '../../Components/ClientNewestDashboard/CTAContainer/CTAContainer';
 
 import HireDeveloperIcon from "../../assets/images/Newestdashboard/LeftSide/hire_developer.svg";
 import HireAgencyIcon from '../../assets/images/Newestdashboard/LeftSide/hire_agency.svg';
@@ -71,13 +72,13 @@ function ClientNewestDashboard(props) {
             <div style={{ zIndex: visible && '-1', backgroundImage: Role === 'Client' && 'linear-gradient(284deg, rgba(3,118,186,1) 0%, rgba(1,48,77,1) 100%)' }} className="container-body">
                 <Navbar />
                 <div className="content-body">
-                    
+
                     <div className="content-leftBody">
                         <div className="user-operations">
-                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/hire-developer", state:{isUserVerified}})} text='Hire Developer' img={HireDeveloperIcon} />
-                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/hire-agency-form-one", state:{isUserVerified}})} text="Hire Agency" img={HireAgencyIcon} />
-                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/short-term", state:{isUserVerified}})} text="Short Term Project" img={ShortTermProjectIcon} />
-                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/product-agencies", state:{isUserVerified}})} text="Interested To Investment" img={InvestmentIcon} />
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/hire-developer", state: { isUserVerified } })} text='Hire Developer' img={HireDeveloperIcon} />
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/hire-agency-form-one", state: { isUserVerified } })} text="Hire Agency" img={HireAgencyIcon} />
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/short-term", state: { isUserVerified } })} text="Short Term Project" img={ShortTermProjectIcon} />
+                            <UserOperations isUserVerified={isUserVerified} nextpage={() => props.history.push({ pathname: "/product-agencies", state: { isUserVerified } })} text="Interested To Investment" img={InvestmentIcon} />
                         </div>
                         {projects.length > 0 &&
                             <div className="graphic">
@@ -112,7 +113,8 @@ function ClientNewestDashboard(props) {
                             </div>
                         </div>
                     </div>
-                    <RightSide />
+                    {/* <RightSide /> */}
+                    <CTA />
                 </div>
             </div>
         </>

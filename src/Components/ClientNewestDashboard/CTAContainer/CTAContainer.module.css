@@ -9,6 +9,27 @@
     display: flex;
 }
 
+.flex_display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_column {
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.technology_detail {
+    font-family: 'Segoe UI Semibold';
+    font-size: 0.9rem;
+}
+
+.technology_detail~p {
+    font-size: 0.8rem;
+}
+
 .content_rightBody {
     display: flex;
     flex-direction: column;
@@ -18,12 +39,12 @@
     background-color: #fdfff5;
 }
 
-.content_rightBody > .rightBody_navigation {
+.content_rightBody>.rightBody_navigation {
     display: flex;
     justify-content: space-evenly;
 }
 
-.rightBody_navigation > .navigation_name {
+.rightBody_navigation>.navigation_name {
     margin-right: 25px;
 }
 
@@ -35,12 +56,12 @@
     cursor: pointer;
 }
 
-.rightBody_navigation > .navigation_name:nth-last-child(1) {
+.rightBody_navigation>.navigation_name:nth-last-child(1) {
     margin-right: 0;
 }
 
-.navigation_name > p,
-.heading_text > p {
+.navigation_name>p,
+.heading_text>p {
     font-family: 'Segoe UI Semibold';
     font-size: 0.8rem;
     text-align: center;
@@ -62,7 +83,7 @@
     text-align: center;
 }
 
-.contact_us > div {
+.contact_us>div {
     display: flex;
     justify-content: center;
 }
@@ -88,7 +109,7 @@
     top: 10px;
 }
 
-.navigation-name.active > p {
+.navigation-name.active>p {
     border-bottom: 3px solid #02044a;
 }
 
@@ -129,7 +150,7 @@
     align-items: flex-end;
 }
 
-.review_platform_card > p {
+.review_platform_card>p {
     font-family: Segoe UI;
     font-size: 15px;
     font-style: normal;
@@ -138,6 +159,7 @@
     letter-spacing: 0em;
     text-align: left;
 }
+
 .itemContent_heading .heading_text {
     display: flex;
     justify-content: space-between;
@@ -194,7 +216,8 @@
     line-height: 16px;
     color: #ffffff;
 }
-.itemContent_cta > .cta_item p {
+
+.itemContent_cta>.cta_item p {
     font-size: 0.8rem;
 }
 
@@ -210,13 +233,15 @@
     flex: 1;
     max-width: 10rem;
 }
-.view_details_btn > button {
+
+.view_details_btn>button {
     padding: 6px;
     background: rgba(255, 255, 255, 0.12);
     border: transparent;
     border-radius: 4px;
     color: rgba(255, 255, 255, 1);
 }
+
 .backgroundIllustration {
     position: absolute;
     bottom: 0;
@@ -231,8 +256,8 @@
     padding: 0.8rem;
 }
 
-.cta-item > .view-details-btn > button:active,
-.cta-item > .view-details-btn > button:focus {
+.cta-item>.view-details-btn>button:active,
+.cta-item>.view-details-btn>button:focus {
     border: none;
     outline: none;
 }
