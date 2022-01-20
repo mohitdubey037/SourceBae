@@ -63,11 +63,21 @@ function RightSide() {
                                 ))}
                             </div>
                             :
-                            <p>
-                                We've{' '}
-                                <span style={{ fontWeight: 500 }}>helped</span>{' '}
-                                build and scale 100s of successful startups
-                            </p>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    textAlign: 'center',
+                                    marginTop: '1.5rem'
+                                }}>
+                                <p>
+                                    We've{' '}
+                                    <span style={{ fontWeight: 500 }}>helped</span>{' '}
+                                    build and scale 100s of successful startups
+                                </p>
+
+                            </div>
                         }
                         {/* </div> */}
                     </div>
