@@ -17,7 +17,7 @@
 }
 
 .stepCheck .ste {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .stepCheck {
@@ -26,7 +26,7 @@
     position: absolute;
     left: -79px;
     top: 20px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 4px 6px rgb(0 0 0 / 25%);
     border-radius: 0 12px 12px 0;
 }
@@ -52,19 +52,22 @@
     align-items: center;
 }
 
-.steps_hireAgencyForm>div>div>p, .steps_hireAgencyForm2>div>div>p, .steps_hireAgencyForm3>div>div>p {
+.steps_hireAgencyForm > div > div > p,
+.steps_hireAgencyForm2 > div > div > p,
+.steps_hireAgencyForm3 > div > div > p {
     font-family: 'Segoe UI Semibold';
     font-size: 18px;
     color: #707070;
     display: flex;
 }
 
-.keep_the_project_name p, .write_about_your_project p, .in_case_you_think p {
+.keep_the_project_name p,
+.write_about_your_project p,
+.in_case_you_think p {
     font-family: 'Segoe UI';
     font-size: 14px;
     text-align: center;
     letter-spacing: 0.611765px;
-    text-transform: capitalize;
     color: #ffffff;
     padding: 1rem;
 }
@@ -84,8 +87,8 @@
 
 .strip2 {
     left: 28.5rem;
-    color: #A8A8A8;
-    background-color: #A8A8A8;
+    color: #a8a8a8;
+    background-color: #a8a8a8;
 }
 
 .color_hireAgencyForm {
@@ -103,16 +106,19 @@
     margin: 1rem 0rem;
 }
 
-.color_hireAgencyForm.green, .color_hireAgencyForm2.green, .color_hireAgencyForm3.green {
-    background-color: #015F9A;
+.color_hireAgencyForm.green,
+.color_hireAgencyForm2.green,
+.color_hireAgencyForm3.green {
+    background-color: #015f9a;
 }
 
-.color_hireAgencyForm.grey, .color_hireAgencyForm2.grey {
-    background-color: #A8A8A8;
+.color_hireAgencyForm.grey,
+.color_hireAgencyForm2.grey {
+    background-color: #a8a8a8;
 }
 
 .servicesHirecover {
-    background-color: #015F9A;
+    background-color: #015f9a;
     width: 100%;
     min-height: 25%;
     padding: 2rem;
@@ -122,9 +128,11 @@
     top: 13rem;
 }
 
-.input-form_hireAgencyForm1 .projectNameAgency p, .input-form_hireAgencyForm1 .descriptionProjectAgency p, .input-form_hireAgencyForm1 .budgetSectionAreaAgency p, .input-form_hireAgencyForm1 .numberOfDays p {
+.input-form_hireAgencyForm1 .projectNameAgency p,
+.input-form_hireAgencyForm1 .descriptionProjectAgency p,
+.input-form_hireAgencyForm1 .budgetSectionAreaAgency p,
+.input-form_hireAgencyForm1 .numberOfDays p {
     font: 14px 'Segoe UI';
-    text-transform: capitalize;
     color: #707070;
 }
 
@@ -167,7 +175,10 @@
     font-size: 2rem;
 }
 
-.projectNameAgency ul, .descriptionProjectAgency ul, .budgetSectionAreaAgency ul, .numberOfDays ul {
+.projectNameAgency ul,
+.descriptionProjectAgency ul,
+.budgetSectionAreaAgency ul,
+.numberOfDays ul {
     margin-left: 1.5rem;
 }
 
@@ -208,8 +219,7 @@ li::marker {
 .budgetSectionAreaAgency .MuiTypography-root {
     font-family: 'Segoe UI' !important;
     font-size: 14px !important;
-    text-transform: capitalize !important;
-    color: #707070 !important
+    color: #707070 !important;
 }
 
 .main_HireAgencyParent {
@@ -225,10 +235,10 @@ li::marker {
     position: relative;
 }
 
-.points-to-remember_hireAgencyForm1>h4 {
+.points-to-remember_hireAgencyForm1 > h4 {
     font-family: 'Segoe UI semibold';
     font-size: 22px;
-    color: #015F9A;
+    color: #015f9a;
     padding-left: 1rem;
 }
 
@@ -244,7 +254,7 @@ li::marker {
     color: #fff;
     outline: none;
     border: none;
-    background-color: #26AFFF;
+    background-color: #26afff;
     font: bold 1.2rem 'Open Sans', sans-serif;
 }
 
@@ -318,8 +328,7 @@ li::marker {
 }
 
 .serivcesHireAgency .servicesAgencyHeading {
-    font: 18px 'Segoe UI semibold';
-    text-transform: capitalize;
+    font: 16px 'Segoe UI semibold';
     color: #707070;
 }
 
@@ -329,10 +338,6 @@ li::marker {
     flex-wrap: wrap;
 }
 
-/* .want_to_accept ~ .react-responsive-modal-closeButton {
-    display: none;
-} */
-
 .tech-container {
     display: flex;
     flex-direction: column;
@@ -341,7 +346,8 @@ li::marker {
     cursor: pointer;
 }
 
-.mainHireAgencyFormTwo .tech-container div, .mainHireAgencyForm3 .tech-container div {
+.mainHireAgencyFormTwo .tech-container div,
+.mainHireAgencyForm3 .tech-container div {
     width: 85px;
     display: flex;
     justify-content: center;
@@ -357,12 +363,12 @@ li::marker {
     user-select: none;
 }
 
-.innerHireAgencyFormTwo .servicesCardsHireAgency div p, .innerHireAgencyForm3 .servicesCardsHireAgency div p {
+.innerHireAgencyFormTwo .servicesCardsHireAgency div p,
+.innerHireAgencyForm3 .servicesCardsHireAgency div p {
     margin-top: 10px;
     user-select: none;
     font: 14px 'Segoe UI';
     line-height: 150%;
-    text-transform: capitalize;
     width: 76%;
     text-align: center;
     margin-left: 0rem;
@@ -396,10 +402,11 @@ li::marker {
 
 .UIUXServices {
     font-family: 'Segoe UI';
-    padding-top: 0
+    padding-top: 0;
 }
 
-.UIUXServices div, .UIUXServices input {
+.UIUXServices div,
+.UIUXServices input {
     outline: none;
     border: none;
 }
@@ -471,8 +478,7 @@ li::marker {
 
 .HireAgencyForm3Heading h2 {
     font: 22px 'Segoe UI';
-    text-transform: capitalize;
-    color: #015F9A;
+    color: #015f9a;
 }
 
 .HireAgencyForm3Heading span::after {
@@ -484,7 +490,6 @@ li::marker {
 
 .serivcesHireAgency .servicesAgencyHeadingForm3 {
     font: 14px 'Segoe UI semibold';
-    text-transform: capitalize;
     color: #707070;
 }
 
@@ -532,10 +537,8 @@ li::marker {
 }
 
 .serviceFieldsOptions .uiuxtext {
-    padding: 0rem 1rem;
     font-family: 'Segoe UI Bold';
     font-size: 1.2rem;
-    text-align: center;
 }
 
 .hireAgencyForm2 .serviceSelectionInput {
@@ -545,9 +548,8 @@ li::marker {
 }
 
 .innerHireAgencyFormTwo .monthlyBudget p {
-    font: 18px 'Segoe UI Semibold';
+    font: 16px 'Segoe UI Semibold';
     line-height: 27px;
-    text-transform: capitalize;
     color: #707070;
 }
 
@@ -576,7 +578,7 @@ li::marker {
     font: 14px 'Segoe UI';
     color: #ffffff;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-    background-color: #015F9A;
+    background-color: #015f9a;
     cursor: pointer;
 }
 
@@ -586,7 +588,8 @@ li::marker {
     color: #eaf2ff;
 }
 
-.backbutton_hireAgencyForm2:hover, .backbutton_hireAgencyForm3:hover {
+.backbutton_hireAgencyForm2:hover,
+.backbutton_hireAgencyForm3:hover {
     background-color: rgb(95, 185, 178) !important;
     color: #eaf2ff !important;
 }
@@ -631,7 +634,8 @@ svg.MuiSvgIcon-root {
     justify-content: space-between;
 }
 
-.Toastify__toast--success, .Toastify__toast--error {
+.Toastify__toast--success,
+.Toastify__toast--error {
     /* border: 7px solid !important; */
     border-radius: 50px !important;
 }

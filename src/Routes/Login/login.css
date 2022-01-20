@@ -1,518 +1,542 @@
-
 .react-responsive-modal-closeButton:focus
-.react-responsive-modal-closeButton:hover 
-.react-responsive-modal-closeButton:active {
-  outline: none !important;
-  border: none !important;
+    .react-responsive-modal-closeButton:hover
+    .react-responsive-modal-closeButton:active {
+    outline: none !important;
+    border: none !important;
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
 }
 
 p {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .form-box {
-  width: 380px;
-  height: 450px;
-  background-color: black;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  opacity: 0.5;
-  border-radius: 2%;
+    width: 380px;
+    height: 450px;
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0.5;
+    border-radius: 2%;
 }
 
 .header-form {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 button {
-  margin-top: 40px;
-  margin-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 10px;
 }
 
 span.welcome-back_sourceBae {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .mainLoginForm_child {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .or_login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI';
-  font-size: 18px;
-  text-transform: capitalize;
-  color: #B5B2B2;
-  padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI';
+    font-size: 18px;
+    color: #b5b2b2;
+    padding: 1rem;
 }
 
 .sourceBae_logo {
-  position: absolute;
-  z-index: 12;
-  top: 0;
-  left: 0;
-  cursor: pointer;
+    position: absolute;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    cursor: pointer;
 }
 
 .sourceBae_logo img {
-  width: 9rem;
+    width: 9rem;
 }
 
 .message {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .social {
-  display: flex;
-  justify-content: space-around;
-  padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
 }
 
 .social i {
-  font-size: 35px;
+    font-size: 35px;
 }
 
 .social i:hover {
-  color: red;
-  cursor: pointer;
+    color: red;
+    cursor: pointer;
 }
 
 .mainLoginPage {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .loginForm .makeStyles-inputs-1 {
-  border-radius: 12px !important;
+    border-radius: 12px !important;
 }
 
 .form-check {
-  display: flex;
+    display: flex;
 }
 
 .form-check input {
-  margin: 0 25%;
+    margin: 0 25%;
 }
 
 .innerLoginPage {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
 .loginIllustrator {
-  width: 100%;
+    width: 100%;
 }
 
 .loginIllustrator {
-  user-select: none;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        262deg,
+        rgba(70, 44, 202, 1) 0%,
+        rgba(92, 109, 255, 1) 100%
+    );
 }
 
 .welcome-back_loginIllustrator {
-  top: 15rem;
-  left: 13rem;
-  font-family: 'Segoe UI';
-  font-weight: 300;
-  font-size: 36px;
-  text-align: center;
-  text-transform: capitalize;
-  color: white;
-  z-index: 10;
+    top: 15rem;
+    left: 13rem;
+    font-family: 'Segoe UI';
+    font-weight: 300;
+    font-size: 36px;
+    text-align: center;
+    color: white;
+    z-index: 10;
 }
 
-.welcome-back_loginIllustrator>p {
-  font-size: larger;
+.welcome-back_loginIllustrator > p {
+    font-size: larger;
 }
 
 .white-color_loginIllustrator a {
-  color: blue;
+    color: blue;
 }
 
 .loginContent {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background: white;
-  top: 3rem;
-  border-radius: 20px;
-  right: 8rem;
-  z-index: 150;
-  padding-bottom: 4.5rem;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  width: 28%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    top: 3rem;
+    border-radius: 20px;
+    right: 8rem;
+    z-index: 150;
+    padding-bottom: 4.5rem;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    width: 28%;
 }
 
 .loginCards-wrapper {
-  display: flex;
-  flex-direction: row;
-  /* height: 100%; */
-  height: 100vh;
-  position: relative;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 10;
+    display: flex;
+    flex-direction: row;
+    /* height: 100%; */
+    height: 100vh;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
 }
 
-.mainLoginForm, .googleLogin {
-  width: 80%;
+.mainLoginForm,
+.googleLogin {
+    width: 80%;
 }
 
 .login_switch {
-  display: flex;
-  width: 75%;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  border-radius: 20px;
-  background-color: #fff9f9;
-  align-items: center;
-  position: relative;
-  height: 43px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    display: flex;
+    width: 75%;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    background-color: #fff9f9;
+    align-items: center;
+    position: relative;
+    height: 43px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.login_switch>button {
-  background: transparent;
-  outline: none;
-  border: none;
-  width: 54%;
-  border-radius: 20px;
-  font-size: 13px;
-  padding: 7px;
-  position: absolute;
-  font-family: 'Segoe UI';
+.login_switch > button {
+    background: transparent;
+    outline: none;
+    border: none;
+    width: 54%;
+    border-radius: 20px;
+    font-size: 13px;
+    padding: 7px;
+    position: absolute;
+    font-family: 'Segoe UI';
 }
 
 .agency__button {
-  left: 4px;
-  z-index: 1;
-  border: none;
-  color: #015F9A;
+    left: 4px;
+    z-index: 1;
+    border: none;
+    color: #015f9a;
 }
 
 .client__button {
-  color: #4786FE;
-  right: 3px;
+    color: #4786fe;
+    right: 3px;
 }
 
 .active__buttonagency {
-  z-index: 2 !important;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%) !important;
-  color: white !important;
+    z-index: 2 !important;
+    background: linear-gradient(
+        262deg,
+        rgba(70, 44, 202, 1) 0%,
+        rgba(92, 109, 255, 1) 100%
+    ) !important;
+    color: white !important;
 }
 
 .active__buttonclient {
-  z-index: 2 !important;
-  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
-  color: white !important;
+    z-index: 2 !important;
+    background: linear-gradient(262deg, #015f9a 0%, #0376ba 100%) !important;
+    color: white !important;
 }
 
 .loginHeading {
-  width: 100%;
-  text-transform: capitalize;
-  color: #3A3A3A;
-  font-family: 'Segoe UI Bold';
+    width: 100%;
+    color: #3a3a3a;
+    font-family: 'Segoe UI Bold';
 }
 
 .loginHeading h6 {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #707070;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #707070;
 }
 
 .agencyOrClient {
-  font-family: 'Segoe UI Bold';
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: blue;
+    font-family: 'Segoe UI Bold';
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: blue;
 }
 
 .conditional_color {
-  color: #015F9A !important;
+    color: #015f9a !important;
 }
 
 .signUpOption {
-  font-family: 'Segoe UI';
-  font-weight: 500;
-  font-size: 13px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #3A3A3A;
+    font-family: 'Segoe UI';
+    font-weight: 500;
+    font-size: 13px;
+    text-align: center;
+    color: #3a3a3a;
 }
 
 .signUpOption span {
-  color: #4786FE;
-  cursor: pointer;
+    color: #4786fe;
+    cursor: pointer;
 }
 
 .emailLogin {
-  margin-bottom: 2%;
+    margin-bottom: 2%;
 }
 
-.emailLogin p, .passwordLogin p {
-  font-family: 'Segoe UI Bold';
-  color: #000;
+.emailLogin p,
+.passwordLogin p {
+    font-family: 'Segoe UI Bold';
+    color: #000;
 }
 
-.emailLogin input, .passwordLogin input {
-  transform: translateY(-10px);
-  height: 60px;
-  width: 100%;
-  padding-left: 13px;
-  font-family: 'Segoe UI Bold';
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  border: 1px solid #e0e0e0;
+.emailLogin input,
+.passwordLogin input {
+    transform: translateY(-10px);
+    height: 60px;
+    width: 100%;
+    padding-left: 13px;
+    font-family: 'Segoe UI Bold';
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    border: 1px solid #e0e0e0;
 }
 
-.emailLogin input::placeholder, .passwordLogin input::placeholder {
-  font-size: 0.9rem;
+.emailLogin input::placeholder,
+.passwordLogin input::placeholder {
+    font-size: 0.9rem;
 }
 
 .button_action_login {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-evenly;
-  margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 2rem;
 }
 
-.button_action_login>div, .button_action_login>button {
-  width: 41%;
-  height: 40px;
-  font-family: 'Segoe UI';
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  color: blue;
-  font-size: 13px;
-  outline: none;
-  border: none;
+.button_action_login > div,
+.button_action_login > button {
+    width: 41%;
+    height: 40px;
+    font-family: 'Segoe UI';
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    color: blue;
+    font-size: 13px;
+    outline: none;
+    border: none;
 }
 
-.button_action_login>button:focus, .button_action_login>button:active {
-  outline: none;
-  border: none;
+.button_action_login > button:focus,
+.button_action_login > button:active {
+    outline: none;
+    border: none;
 }
 
 .button_action_login .submit_login {
-  position: relative;
-  color: #fff;
-  border-radius: 40px;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
-  width: 135px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    position: relative;
+    color: #fff;
+    border-radius: 40px;
+    background: linear-gradient(
+        262deg,
+        rgba(70, 44, 202, 1) 0%,
+        rgba(92, 109, 255, 1) 100%
+    );
+    width: 135px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .button_action_login .forgot-password_login {
-  background-color: #80808014;
-  border-radius: 20px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  width: 135px;
+    background-color: #80808014;
+    border-radius: 20px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    width: 135px;
 }
 
 .button_action_login .submit_login:hover {
-  cursor: pointer;
-  background: linear-gradient(262deg, rgba(92, 109, 255, 1) 0%, rgba(70, 44, 202, 1) 100%);
+    cursor: pointer;
+    background: linear-gradient(
+        262deg,
+        rgba(92, 109, 255, 1) 0%,
+        rgba(70, 44, 202, 1) 100%
+    );
 }
 
 .forgot-password_login:hover {
-  background-color: rgba(13, 110, 253, 0.04);
-  cursor: pointer;
+    background-color: rgba(13, 110, 253, 0.04);
+    cursor: pointer;
 }
 
 .loginForm span {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  font-family: 'Open Sans', sans-serif;
-  color: #7cb9e8;
-  font-size: 0.9rem;
-  font-weight: bold;
-  cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: 'Open Sans', sans-serif;
+    color: #7cb9e8;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .googleLogin {
-  position: relative;
-  cursor: pointer;
-  width: 78%;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
-  justify-content: center;
-  border-radius: 40px;
-  padding: 0.7rem;
-  font-family: 'Segoe UI';
-  font-size: 13px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  display: none;
+    position: relative;
+    cursor: pointer;
+    width: 78%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        262deg,
+        rgba(70, 44, 202, 1) 0%,
+        rgba(92, 109, 255, 1) 100%
+    );
+    justify-content: center;
+    border-radius: 40px;
+    padding: 0.7rem;
+    font-family: 'Segoe UI';
+    font-size: 13px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    display: none;
 }
 
 .googleLogin:hover {
-  cursor: pointer;
-  background: linear-gradient(262deg, rgba(92, 109, 255, 1) 0%, rgba(70, 44, 202, 1) 100%);
+    cursor: pointer;
+    background: linear-gradient(
+        262deg,
+        rgba(92, 109, 255, 1) 0%,
+        rgba(70, 44, 202, 1) 100%
+    );
 }
 
 .googleLogin p {
-  text-transform: capitalize;
-  color: white;
-  transform: translateX(10px);
+    color: white;
+    transform: translateX(10px);
 }
 
 .googleLogin img {
-  width: 14px;
-  height: 19px;
+    width: 14px;
+    height: 19px;
 }
 
 .toggleButton.login .MuiTypography-body1 {
-  font-family: 'Open Sans', sans-serif !important;
-  font-style: normal !important;
-  font-weight: 600 !important;
-  font-size: 18px !important;
-  letter-spacing: 0.20221px !important;
-  text-transform: capitalize !important;
-  color: #3A3A3A !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    letter-spacing: 0.20221px !important;
+    text-transform: capitalize !important;
+    color: #3a3a3a !important;
 }
 
 .signup_toggle {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-  justify-content: space-between;
-  width: 90%;
-  height: 70px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 90%;
+    height: 70px;
 }
 
 .loginImage1 {
-  z-index: 4;
+    z-index: 4;
 }
 
 .loginImage1 {
-  position: absolute;
-  width: 100%;
-  height: 85%;
-  z-index: 4;
-  width: 65%;
-  top: 178px;
-  right: 768px;
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    z-index: 4;
+    width: 65%;
+    top: 178px;
+    right: 768px;
 }
 
 .loginImage2 {
-  position: absolute;
-  bottom: -86%;
-  left: -23%;
-  z-index: 3;
+    position: absolute;
+    bottom: -86%;
+    left: -23%;
+    z-index: 3;
 }
 
 .loginImage3 {
-  position: absolute;
-  z-index: 7;
-  top: -72%;
-  right: -49%;
+    position: absolute;
+    z-index: 7;
+    top: -72%;
+    right: -49%;
 }
 
 .loginImage4 {
-  position: absolute;
-  z-index: 6;
-  top: -154%;
-  left: 19%;
+    position: absolute;
+    z-index: 6;
+    top: -154%;
+    left: 19%;
 }
 
 .bg-image {
-  z-index: 1;
-  position: absolute;
-  top: -8px;
-  left: -9px;
+    z-index: 1;
+    position: absolute;
+    top: -8px;
+    left: -9px;
 }
 
 .dot-image {
-  position: absolute;
-  z-index: 2;
-  width: 100%;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
 }
 
 .dot-image img {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  right: 55%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    right: 55%;
 }
 
 .conditional_background {
-  background: linear-gradient(2deg, #015F9A 0%, #0376BA 100%);
+    background: linear-gradient(2deg, #015f9a 0%, #0376ba 100%);
 }
 
 .conditional_backgroundSubmit {
-  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
+    background: linear-gradient(262deg, #015f9a 0%, #0376ba 100%) !important;
 }
 
 .conditional_backgroundSubmit:hover {
-  background: linear-gradient(262deg, #0376BA 0%, #015F9A 100%) !important;
+    background: linear-gradient(262deg, #0376ba 0%, #015f9a 100%) !important;
 }
 
 .conditional_backgroundGoogle {
-  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
+    background: linear-gradient(262deg, #015f9a 0%, #0376ba 100%) !important;
 }
 
 .conditional_backgroundGoogle:hover {
-  background: linear-gradient(262deg, #0376BA 0%, #015F9A 100%) !important;
+    background: linear-gradient(262deg, #0376ba 0%, #015f9a 100%) !important;
 }
 
 @media (max-width: 992px) {
-  .loginContent {
-    width: 38%;
-  }
+    .loginContent {
+        width: 38%;
+    }
 }
 
 @media (max-width: 768px) {
-  .loginContent {
-    width: 50%;
-  }
+    .loginContent {
+        width: 50%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
-  .loginCards-wrapper {
-    flex-direction: column;
-  }
-  .loginContent {
-    width: 85%;
-  }
-  .welcome-back_loginIllustrator {
-    font-size: 24px;
-  }
-  .loginImage3 {
-    top: -102%;
-  }
+    .loginCards-wrapper {
+        flex-direction: column;
+    }
+    .loginContent {
+        width: 85%;
+    }
+    .welcome-back_loginIllustrator {
+        font-size: 24px;
+    }
+    .loginImage3 {
+        top: -102%;
+    }
 }

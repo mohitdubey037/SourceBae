@@ -1,21 +1,21 @@
 .client__registrationContainer {
-  background: #fff;
-  overflow: hidden;
-  height: 100vh;
-  position: relative;
-  /* background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); */
+    background: #fff;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+    /* background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%); */
 }
 
 .form__area {
-  background: #ffff;
-  font-family: 'Segoe UI';
-  width: 85%;
-  position: absolute;
-  left: 6rem;
-  top: 6rem;
-  border: 7px solid #FFFFFF;
-  box-shadow: 0px 6.29787px 31.4894px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
+    background: #ffff;
+    font-family: 'Segoe UI';
+    width: 85%;
+    position: absolute;
+    left: 6rem;
+    top: 6rem;
+    border: 7px solid #ffffff;
+    box-shadow: 0px 6.29787px 31.4894px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
 }
 
 /* .sourceBae_logo.logo_register {
@@ -23,203 +23,208 @@
 } */
 
 .Image1 {
-  /* left: -10.5rem; */
-  left: -5.5rem;
-  position: absolute;
-  top: -5rem;
-  width: 48rem;
+    /* left: -10.5rem; */
+    left: -5.5rem;
+    position: absolute;
+    top: -5rem;
+    width: 48rem;
 }
 
 .Image2 {
-  right: -12rem;
-  position: absolute;
-  bottom: -4.5rem;
-  width: 48rem;
+    right: -12rem;
+    position: absolute;
+    bottom: -4.5rem;
+    width: 48rem;
 }
 
 .conditional_colorChange {
-  /* filter: invert(136%) sepia(94%) saturate(1759%) hue-rotate(183deg) brightness(64%) contrast(112%); */
-  filter: invert(136%) sepia(115%) saturate(1759%) hue-rotate(161deg) brightness(64%) contrast(161%);
+    /* filter: invert(136%) sepia(94%) saturate(1759%) hue-rotate(183deg) brightness(64%) contrast(112%); */
+    filter: invert(136%) sepia(115%) saturate(1759%) hue-rotate(161deg)
+        brightness(64%) contrast(161%);
 }
 
 .logoPart {
-  position: absolute;
-  top: 5%;
-  left: 2%;
+    position: absolute;
+    top: 5%;
+    left: 2%;
 }
 
 .logoPart img {
-  width: 50%;
-  object-fit: contain;
+    width: 50%;
+    object-fit: contain;
 }
 
 .client__form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
 }
 
-.form__1>div, .form__2>div {
-  width: 60%;
-  display: flex;
+.form__1 > div,
+.form__2 > div {
+    width: 60%;
+    display: flex;
 }
 
 .existing_accountText {
-  width: 11%;
-  font-family: 'Segoe UI';
-  font-size: 16px;
-  text-transform: capitalize;
-  color: #3A3A3A;
+    width: 11%;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    color: #3a3a3a;
 }
 
 .right_image {
-  position: absolute;
-  top: 7%;
-  right: 1%;
-  width: 41%;
+    position: absolute;
+    top: 7%;
+    right: 1%;
+    width: 41%;
 }
 
 .right_image img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .client__form input {
-  margin-top: 0.7rem;
-  width: 78%;
-  background: none;
-  border: 1px solid #5C6DFF;
-  border-radius: 8px;
-  padding-left: 5%;
-  height: 43px;
-  transition: 0.2s ease-in-out;
+    margin-top: 0.7rem;
+    width: 78%;
+    background: none;
+    border: 1px solid #5c6dff;
+    border-radius: 8px;
+    padding-left: 5%;
+    height: 43px;
+    transition: 0.2s ease-in-out;
 }
 
 .toggleButton.register {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 4rem 1rem 3.5rem;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem 1rem 3.5rem;
+    width: 100%;
 }
 
 .toggleButton.register .MuiTypography-body1 {
-  font-family: 'Open Sans', sans-serif !important;
-  font-style: normal !important;
-  font-weight: 600 !important;
-  font-size: 18px !important;
-  letter-spacing: 0.20221px !important;
-  color: #3A3A3A !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    letter-spacing: 0.20221px !important;
+    color: #3a3a3a !important;
 }
 
 .MuiSwitch-root {
-  overflow: visible !important;
+    overflow: visible !important;
 }
 
-.form__title>h6 {
-  font-family: 'Segoe UI';
-  font-size: 25px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #707070;
+.form__title > h6 {
+    font-family: 'Segoe UI';
+    font-size: 25px;
+    text-align: center;
+    color: #707070;
 }
 
 .title__subtext {
-  margin-top: 1.5vh;
-  margin-bottom: 1.5vh;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
 }
 
 .title__subtext p {
-  margin: 0;
-  padding: 0;
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: #888;
-  white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #888;
+    white-space: nowrap;
 }
 
 .input_with_error {
-  position: relative;
-  height: 105px;
-  display: flex;
-  flex-direction: column;
-  width: 60%;
+    position: relative;
+    height: 105px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
 }
 
 .input_with_error label {
-  font-family: 'Segoe UI Semibold';
-  font-size: 14px;
-  text-transform: capitalize;
-  color: #707070;
+    font-family: 'Segoe UI Semibold';
+    font-size: 14px;
+    color: #707070;
 }
 
 .input_with_error .error_productForm {
-  color: red;
-  font-weight: normal;
-  font-size: 14px;
-  margin-left: 0;
+    color: red;
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 0;
 }
 
 .client__formsContainer {
-  width: 90%;
-  position: relative;
-  border-radius: 8px;
-  margin-left: 3.5rem;
+    width: 90%;
+    position: relative;
+    border-radius: 8px;
+    margin-left: 3.5rem;
 }
 
 .login_switch.signup_switch {
-  display: flex;
-  width: 20%;
-  min-width: 8rem;
-  margin: 0;
-  border-radius: 20px;
-  background-color: #fff9f9;
-  align-items: center;
-  position: relative;
-  height: 43px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    width: 20%;
+    min-width: 8rem;
+    margin: 0;
+    border-radius: 20px;
+    background-color: #fff9f9;
+    align-items: center;
+    position: relative;
+    height: 43px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
-.client__form.form__1 .already_next_register, .client__form.form__2 .already_next_register {
-  width: 100%;
-  margin-bottom: 23px;
-  display: flex;
-  flex-direction: column;
-  height: 80px;
-  justify-content: space-between;
-  margin-top: 10px;
+.client__form.form__1 .already_next_register,
+.client__form.form__2 .already_next_register {
+    width: 100%;
+    margin-bottom: 23px;
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .client__form.form__2 .already_next_register {
-  width: 100%;
-  margin-bottom: 30px;
-  height: 23px;
-  margin-top: 26px;
+    width: 100%;
+    margin-bottom: 30px;
+    height: 23px;
+    margin-top: 26px;
 }
 
 #incorporation_date {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 
 /* .next_Register, .nextRegister_onAgency, .backRegister_onAgency, .nextRegister_onClient, .backRegister_onClient { */
 
-.next_Register, .backRegister_onAgency {
-  width: 25%;
-  min-width: 5rem;
-  background: linear-gradient(262deg, rgba(70, 44, 202, 1) 0%, rgba(92, 109, 255, 1) 100%);
-  border-radius: 20px;
-  color: #fff;
-  padding: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  font-size: 13px;
-  cursor: pointer
+.next_Register,
+.backRegister_onAgency {
+    width: 25%;
+    min-width: 5rem;
+    background: linear-gradient(
+        262deg,
+        rgba(70, 44, 202, 1) 0%,
+        rgba(92, 109, 255, 1) 100%
+    );
+    border-radius: 20px;
+    color: #fff;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 13px;
+    cursor: pointer;
 }
 
 /* .next_Register {
@@ -228,77 +233,81 @@
   outline: none;
 } */
 
-.next_Register:hover, .next_Register:active, .next_Register:focus {
-  outline: none;
-  border: none;
+.next_Register:hover,
+.next_Register:active,
+.next_Register:focus {
+    outline: none;
+    border: none;
 }
 
-.nextRegister_onClient, .backRegister_onClient {
-  width: 35%;
-  background: linear-gradient(262deg, #015F9A 0%, #0376BA 100%) !important;
-  cursor: pointer;
+.nextRegister_onClient,
+.backRegister_onClient {
+    width: 35%;
+    background: linear-gradient(262deg, #015f9a 0%, #0376ba 100%) !important;
+    cursor: pointer;
 }
 
 .registerParent_onClient {
-  display: flex;
-  justify-content: space-between;
-  width: 39%;
+    display: flex;
+    justify-content: space-between;
+    width: 39%;
 }
 
 .registerParent_onAgency {
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
 }
 
-.next_Register:hover, .backRegister_onAgency:hover {
-  cursor: pointer;
-  background: #3477f1fd;
+.next_Register:hover,
+.backRegister_onAgency:hover {
+    cursor: pointer;
+    background: #3477f1fd;
 }
 
 .existing_accountText {
-  font-family: 'Segoe UI';
-  font-size: 16px;
-  text-transform: capitalize;
-  color: #8692a6;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    color: #8692a6;
 }
 
 .clientSignupForm2Parent {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .registerOption {
-  font-family: 'Segoe UI';
-  font-size: 16px;
-  text-transform: capitalize;
-  display: flex;
-  justify-content: space-between;
-  margin: 0.5rem 0;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
 }
 
 .registerOption span {
-  color: #4786FE;
-  cursor: pointer;
+    color: #4786fe;
+    cursor: pointer;
 }
 
-.client__primaryForm, .client__secondaryForm {
-  width: 80%;
-  display: flex;
+.client__primaryForm,
+.client__secondaryForm {
+    width: 80%;
+    display: flex;
 }
 
-.client__form>label {
-  width: 50%;
-  color: #696f79;
-  margin-top: 2.5%;
+.client__form > label {
+    width: 50%;
+    color: #696f79;
+    margin-top: 2.5%;
 }
 
-.client__form>input:hover {
-  border: 2px solid #aed6f1;
+.client__form > input:hover {
+    border: 2px solid #aed6f1;
 }
 
-input:focus-visible, input:focus {
-  outline: none;
+input:focus-visible,
+input:focus {
+    outline: none;
 }
 
 /* .client__primaryForm {
@@ -307,218 +316,224 @@ input:focus-visible, input:focus {
 } */
 
 .client__secondaryForm {
-  position: absolute;
-  top: 0;
-  left: 10%;
-  transition: 0.4s ease;
-  transform: translateX(2000px);
+    position: absolute;
+    top: 0;
+    left: 10%;
+    transition: 0.4s ease;
+    transform: translateX(2000px);
 }
 
 .hide__primaryForm {
-  transform: translateX(2000px);
-  transition: 0.4s ease;
+    transform: translateX(2000px);
+    transition: 0.4s ease;
 }
 
 .show__secondaryForm {
-  transform: translateX(0);
-  transition: 0.4s ease;
+    transform: translateX(0);
+    transition: 0.4s ease;
 }
 
-.client__form>input:focus {
-  outline: none;
+.client__form > input:focus {
+    outline: none;
 }
 
 .form__2 {
-  display: none;
+    display: none;
 }
 
-.form__2, .form__3, .form__4 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(2000px);
-  transition: 0.4s ease;
+.form__2,
+.form__3,
+.form__4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(2000px);
+    transition: 0.4s ease;
 }
 
-.client__form>input {
-  margin-top: 1vh;
-  height: 64px;
-  width: 50%;
-  background: none;
-  border: 1px solid gray;
-  border-radius: 10px;
-  padding-left: 4%;
+.client__form > input {
+    margin-top: 1vh;
+    height: 64px;
+    width: 50%;
+    background: none;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding-left: 4%;
 }
 
-.client__form>input:focus {
-  background: #f2f2f2;
-  outline: none;
+.client__form > input:focus {
+    background: #f2f2f2;
+    outline: none;
 }
 
 .client__primaryForm {
-  z-index: 2;
-  transition: .4s ease;
+    z-index: 2;
+    transition: 0.4s ease;
 }
 
 .client__secondaryForm {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(2000px);
-  transition: .4s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(2000px);
+    transition: 0.4s ease;
 }
 
 .hide__primaryForm {
-  transform: translateX(2000px);
-  transition: .4s ease;
+    transform: translateX(2000px);
+    transition: 0.4s ease;
 }
 
 .show__secondaryForm {
-  transform: translateX(0);
-  transition: .4s ease;
+    transform: translateX(0);
+    transition: 0.4s ease;
 }
 
-.form__1, .form__2, .form__3, .form__4 {
-  transition: 0.4s ease;
+.form__1,
+.form__2,
+.form__3,
+.form__4 {
+    transition: 0.4s ease;
 }
 
 .hide__form1 {
-  transform: translateX(2000px);
-  transition: 0.4s ease;
+    transform: translateX(2000px);
+    transition: 0.4s ease;
 }
 
 .display__form1 {
-  display: none;
+    display: none;
 }
 
 .display__form2 {
-  display: flex;
+    display: flex;
 }
 
 .show__form2 {
-  transform: translateX(0);
-  transition: 0.4s ease;
-  position: relative;
+    transform: translateX(0);
+    transition: 0.4s ease;
+    position: relative;
 }
 
 .hide__form2 {
-  transform: translateX(2000px);
-  transition: 0.4s ease;
+    transform: translateX(2000px);
+    transition: 0.4s ease;
 }
 
 .show__form3 {
-  transform: translateX(0);
-  transition: 0.4s ease;
+    transform: translateX(0);
+    transition: 0.4s ease;
 }
 
 .hide__form3 {
-  transform: translateX(2000px);
-  transition: 0.4s ease;
+    transform: translateX(2000px);
+    transition: 0.4s ease;
 }
 
 .show__form4 {
-  transform: translateX(0);
-  transition: 0.4s ease;
+    transform: translateX(0);
+    transition: 0.4s ease;
 }
 
 .navigationButtonsSignup {
-  display: flex;
-  justify-content: space-between;
-  width: 55%;
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
 }
 
 .as_a_client {
-  color: #5e5ee8;
+    color: #5e5ee8;
 }
 
 .as_an_agency {
-  color: #094cc7;
+    color: #094cc7;
 }
 
 @media only screen and (max-width: 500px) {
-  .form__1>div, .form__2>div {
-    width: 100%;
-    flex-direction: column;
-    flex: 1;
-  }
+    .form__1 > div,
+    .form__2 > div {
+        width: 100%;
+        flex-direction: column;
+        flex: 1;
+    }
 
-  .navigationButtonsSignup {
-    padding-right: 2rem;
-    padding-top: 1rem;
-  }
+    .navigationButtonsSignup {
+        padding-right: 2rem;
+        padding-top: 1rem;
+    }
 
-  .input_with_error input {
-    width: 88%;
-  }
+    .input_with_error input {
+        width: 88%;
+    }
 
-  .toggleButton.register {
-    flex-direction: column-reverse;
-    width: 100%;
-    padding: 1.5rem;
-  }
+    .toggleButton.register {
+        flex-direction: column-reverse;
+        width: 100%;
+        padding: 1.5rem;
+    }
 
-  .client__form {
-    flex-direction: column;
-    justify-content: center;
-    width: 94%;
-  }
+    .client__form {
+        flex-direction: column;
+        justify-content: center;
+        width: 94%;
+    }
 
-  .form__area {
-    width: 100%;
-    height: 88%;
-    padding-top: 16rem;
-    overflow-y: auto;
-    display: flex;
-    position: initial;
-    justify-content: center;
-    align-items: center;
-    border-right: none;
-    box-shadow: none;
-  }
+    .form__area {
+        width: 100%;
+        height: 88%;
+        padding-top: 16rem;
+        overflow-y: auto;
+        display: flex;
+        position: initial;
+        justify-content: center;
+        align-items: center;
+        border-right: none;
+        box-shadow: none;
+    }
 
-  .right_image img {
-    display: none;
-  }
+    .right_image img {
+        display: none;
+    }
 
-  .client__registrationContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .client__registrationContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .Image1 {
-    left: -1.5rem;
-    top: -1rem;
-    width: 16rem;
-  }
+    .Image1 {
+        left: -1.5rem;
+        top: -1rem;
+        width: 16rem;
+    }
 
-  .Image2 {
-    right: -1rem;
-    bottom: -1rem;
-    width: 15rem;
-  }
+    .Image2 {
+        right: -1rem;
+        bottom: -1rem;
+        width: 15rem;
+    }
 
-  .next_Register {
-    width: 20%;
-    border: none;
-    outline: none;
-  }
+    .next_Register {
+        width: 20%;
+        border: none;
+        outline: none;
+    }
 
-  .registerOption {
-    flex-direction: column;
-  }
+    .registerOption {
+        flex-direction: column;
+    }
 
-  .existing_accountText {
-    width: 25%;
-    font-size: 12px;
-  }
+    .existing_accountText {
+        width: 25%;
+        font-size: 12px;
+    }
 
-  .login_switch.signup_switch {
-    width: 58%;
-    margin: 1rem;
-  }
+    .login_switch.signup_switch {
+        width: 58%;
+        margin: 1rem;
+    }
 
-  .client__formsContainer {
-    width: 86%;
-  }
+    .client__formsContainer {
+        width: 86%;
+    }
 }
