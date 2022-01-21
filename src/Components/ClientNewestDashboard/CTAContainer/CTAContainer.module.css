@@ -2,10 +2,9 @@
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%);
-    margin-right: 1%;
-    padding: 1rem;
+    margin-right: 2%;
     height: 97%;
-    min-width: 24%;
+    min-width: 20%;
     display: flex;
 }
 
@@ -17,8 +16,8 @@
 
 .flex_column {
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
+    margin-top: 1rem;
 }
 
 .technology_detail {
@@ -26,7 +25,7 @@
     font-size: 0.9rem;
 }
 
-.technology_detail~p {
+.technology_detail ~ p {
     font-size: 0.8rem;
 }
 
@@ -39,12 +38,12 @@
     background-color: #fdfff5;
 }
 
-.content_rightBody>.rightBody_navigation {
+.content_rightBody > .rightBody_navigation {
     display: flex;
     justify-content: space-evenly;
 }
 
-.rightBody_navigation>.navigation_name {
+.rightBody_navigation > .navigation_name {
     margin-right: 25px;
 }
 
@@ -52,16 +51,24 @@
     padding: 0.5rem;
 }
 
+.agencyLogo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: fill;
+    box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 18%);
+}
+
 .getInTouch:hover {
     cursor: pointer;
 }
 
-.rightBody_navigation>.navigation_name:nth-last-child(1) {
+.rightBody_navigation > .navigation_name:nth-last-child(1) {
     margin-right: 0;
 }
 
-.navigation_name>p,
-.heading_text>p {
+.navigation_name > p,
+.heading_text > p {
     font-family: 'Segoe UI Semibold';
     font-size: 0.8rem;
     text-align: center;
@@ -83,7 +90,7 @@
     text-align: center;
 }
 
-.contact_us>div {
+.contact_us > div {
     display: flex;
     justify-content: center;
 }
@@ -109,7 +116,7 @@
     top: 10px;
 }
 
-.navigation-name.active>p {
+.navigation-name.active > p {
     border-bottom: 3px solid #02044a;
 }
 
@@ -136,7 +143,7 @@
     flex-direction: column;
     align-items: flex-start;
     height: 120px;
-    width: 222px;
+    width: 90%;
     border-radius: 12px;
     padding: 18px;
     background: rgba(249, 249, 249, 1);
@@ -150,7 +157,7 @@
     align-items: flex-end;
 }
 
-.review_platform_card>p {
+.review_platform_card > p {
     font-family: Segoe UI;
     font-size: 15px;
     font-style: normal;
@@ -192,9 +199,8 @@
     display: flex;
     flex-direction: column;
     position: relative;
-
     height: 162px;
-    width: 225px;
+    width: 90%;
     border-radius: 12px;
     font-family: Segoe UI;
     font-size: 15px;
@@ -205,6 +211,7 @@
     text-align: left;
     background: rgba(2, 118, 186, 1);
     padding: 18px;
+    overflow: hidden;
 }
 
 .description {
@@ -217,7 +224,7 @@
     color: #ffffff;
 }
 
-.itemContent_cta>.cta_item p {
+.itemContent_cta > .cta_item p {
     font-size: 0.8rem;
 }
 
@@ -234,7 +241,7 @@
     max-width: 10rem;
 }
 
-.view_details_btn>button {
+.view_details_btn > button {
     padding: 6px;
     background: rgba(255, 255, 255, 0.12);
     border: transparent;
@@ -245,6 +252,8 @@
 .backgroundIllustration {
     position: absolute;
     bottom: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .interested_or_not.contactus_or_not {
@@ -256,8 +265,8 @@
     padding: 0.8rem;
 }
 
-.cta-item>.view-details-btn>button:active,
-.cta-item>.view-details-btn>button:focus {
+.cta-item > .view-details-btn > button:active,
+.cta-item > .view-details-btn > button:focus {
     border: none;
     outline: none;
 }

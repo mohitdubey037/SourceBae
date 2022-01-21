@@ -3,11 +3,10 @@ import { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 import HalfCircleProgress from './HalfCircleProgress.svg';
 import G2Icon from './G2Icon.svg';
-import GoogleIcon from './googleIcon.svg';
-import PIcon from './PIcon.svg';
-import StarIcon from './starIcon.svg';
+import ProductHuntIcon from './producthunt.svg';
+import TrustPilot from './trustpilot.svg';
+import GoogleIcon from './google.svg';
 import ContactUSBackground from './ContactUsBackground.svg';
-import Unsplash from './unsplash.svg';
 import { AGENCY, CLIENT } from '../../../shared/constants';
 
 function RightSide() {
@@ -21,7 +20,26 @@ function RightSide() {
         setOpen(true);
     };
 
-    const arr = [1, 2, 3];
+    const topAgencies = [
+        {
+            name: 'CoodeIT Solutions Pvt Ltd',
+            revenue: '25k$',
+            logoUrl:
+                'https://sourcebae.s3.amazonaws.com/staging/image/1642750955591.jpeg'
+        },
+        {
+            name: 'Gyizer Systems Private Limited',
+            revenue: '55k$',
+            logoUrl:
+                'https://sourcebae.s3.amazonaws.com/staging/image/1642750890774.jpeg'
+        },
+        {
+            name: 'Syscort',
+            revenue: '42k$',
+            logoUrl:
+                'https://sourcebae.s3.amazonaws.com/staging/image/1642750848457.jpeg'
+        }
+    ];
 
     return (
         <>
@@ -29,40 +47,58 @@ function RightSide() {
                 <div className={styles.navigation_item}>
                     <div className={styles.itemContent_heading}>
                         <div className={styles.heading_text}>
-                            {Role === CLIENT ?
+                            {Role === CLIENT ? (
                                 <img
                                     onClick={onOpenModal}
                                     className={styles.getInTouch}
                                     src={HalfCircleProgress}
                                     alt="callIcon"
                                 />
-                                :
-                                <h3 style={{ marginBottom: '0' }}>Our top Agencies</h3>
-                            }
+                            ) : (
+                                <h3
+                                    style={{
+                                        marginBottom: '0',
+                                        color: '#3A3A3A',
+                                        fontWeight: 700
+                                    }}
+                                >
+                                    Our top Agencies
+                                </h3>
+                            )}
                         </div>
-                        {/* <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                textAlign: 'center',
-                                marginTop: Role === CLIENT && '1.5rem'
-                            }}
-                        > */}
-                        {Role === AGENCY ?
-                            <div className={styles.flex_column} >
-                                {arr.map(a => (
-                                    <div style={{ marginTop: '0.8rem', justifyContent: 'space-around' }} className={styles.flex_display}>
-                                        <img style={{ width: '20%' }} src={Unsplash} alt="unsplash" />
+                        {Role === AGENCY ? (
+                            <div className={styles.flex_column}>
+                                {topAgencies.map((agency) => (
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            marginTop: '0.8rem',
+                                            gap: '1rem',
+                                            alignItems: 'center'
+                                        }}
+                                    >
+                                        <img
+                                            src={agency?.logoUrl}
+                                            alt="unsplash"
+                                            className={styles.agencyLogo}
+                                        />
                                         <div>
-                                            <p className={styles.technology_detail}>Robosoft technology</p>
-                                            <p className={{ fontFamily: 'Segoe UI' }}>generate more than <br></br> 25K$</p>
+                                            <p
+                                                className={
+                                                    styles.technology_detail
+                                                }
+                                            >
+                                                {agency?.name}
+                                            </p>
+                                            <p>
+                                                generated more than <br></br>{' '}
+                                                {agency?.revenue}
+                                            </p>
                                         </div>
                                     </div>
-
                                 ))}
                             </div>
-                            :
+                        ) : (
                             <div
                                 style={{
                                     display: 'flex',
@@ -70,24 +106,46 @@ function RightSide() {
                                     alignItems: 'center',
                                     textAlign: 'center',
                                     marginTop: '1.5rem'
-                                }}>
+                                }}
+                            >
                                 <p>
                                     We've{' '}
-                                    <span style={{ fontWeight: 500 }}>helped</span>{' '}
+                                    <span style={{ fontWeight: 500 }}>
+                                        helped
+                                    </span>{' '}
                                     build and scale 100s of successful startups
                                 </p>
-
                             </div>
-                        }
+                        )}
                         {/* </div> */}
                     </div>
                     <div className={styles.review_platform_card}>
                         <p> Review us on</p>
                         <div className={styles.review_platforms}>
-                            <img src={StarIcon} alt="StarIcon" />
-                            <img src={PIcon} alt="PIIcon" />
-                            <img src={GoogleIcon} alt="GoogleIcon" />
-                            <img src={G2Icon} alt="G2Icon" />
+                            <img
+                                src={TrustPilot}
+                                style={{ minHeight: '36px' }}
+                                width="40px"
+                                alt="TrustPilot"
+                            />
+                            <img
+                                src={ProductHuntIcon}
+                                style={{ minHeight: '36px' }}
+                                width="40px"
+                                alt="PIIcon"
+                            />
+                            <img
+                                src={GoogleIcon}
+                                style={{ minHeight: '36px' }}
+                                width="40px"
+                                alt="GoogleIcon"
+                            />
+                            <img
+                                src={G2Icon}
+                                style={{ minHeight: '36px' }}
+                                width="40px"
+                                alt="G2Icon"
+                            />
                         </div>
                     </div>
                     <div className={styles.cta_item}>
@@ -105,15 +163,17 @@ function RightSide() {
                         <div className={styles.view_details_btn}>
                             <button
                                 onClick={onOpenModal}
-                                className={`${Role === 'Client' && 'conditionalGradient'
-                                    }`}
+                                className={`${
+                                    Role === 'Client' && 'conditionalGradient'
+                                }`}
                             >
                                 Email Us
                             </button>
                             <button
                                 onClick={onOpenModal}
-                                className={`${Role === 'Client' && 'conditionalGradient'
-                                    }`}
+                                className={`${
+                                    Role === 'Client' && 'conditionalGradient'
+                                }`}
                             >
                                 Feedback Form
                             </button>
