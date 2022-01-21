@@ -224,7 +224,7 @@ function AgencyNewestDashboard(props) {
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
                                     nextpage={() => quotation('portfolio')}
-                                    text="Add your Portfolio"
+                                    text="Add Portfolio"
                                     img={ThirdIcon}
                                 />
                             </div>
@@ -277,7 +277,7 @@ function AgencyNewestDashboard(props) {
                                             />
                                             <p>
                                                 Nothing to show here yet! <br />{' '}
-                                                Please Check again later.
+                                                Please check again later.
                                             </p>
                                         </div>
                                     )}

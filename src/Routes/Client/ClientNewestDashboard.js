@@ -168,7 +168,7 @@ function ClientNewestDashboard(props) {
                                         <p className="no_project_found">
                                             <p>
                                                 Nothing to show here yet! <br />{' '}
-                                                Please Check again later.
+                                                Please check again later.
                                             </p>
                                         </p>
                                     </div>
