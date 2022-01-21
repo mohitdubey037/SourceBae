@@ -1,4 +1,4 @@
-.user-operations>.operation {
+.user-operations > .operation {
     flex-direction: column;
     cursor: pointer;
     padding: 0.7rem;
@@ -14,7 +14,7 @@
     height: 8rem;
 }
 
-.user-operations>.operation:nth-last-child(1) {
+.user-operations > .operation:nth-last-child(1) {
     margin-right: 0;
 }
 
@@ -34,7 +34,6 @@
     font-family: 'Segoe UI Semibold';
     font-size: 0.8rem;
     text-align: center;
-    text-transform: capitalize;
     color: #707070;
 }
 
