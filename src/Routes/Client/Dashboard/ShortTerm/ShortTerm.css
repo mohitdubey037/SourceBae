@@ -1,20 +1,20 @@
 .backArrow_shortTerm {
-  position: absolute;
-  top: 12%;
-  left: 4%;
+    position: absolute;
+    top: 12%;
+    left: 4%;
 }
 
 .backArrow_shortTerm i {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-  cursor: pointer;
-  font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
 }
 
 /* .Image1_shortTerm {
@@ -25,361 +25,366 @@
 } */
 
 .Image2_shortTerm {
-  right: -8rem;
-  position: absolute;
-  bottom: -5.5rem;
-  width: 48rem;
+    right: -8rem;
+    position: absolute;
+    bottom: -5.5rem;
+    width: 48rem;
 }
 
 .howToPay .fixedPrice .MuiFormControlLabel-root {
-  display: block;
-  margin-right: 0;
+    display: block;
+    margin-right: 0;
 }
 
 .mainShortTerm {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5rem;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .innerShortTerm {
-  padding: 2rem 1rem 1rem;
-  width: 100%;
+    padding: 2rem 1rem 1rem;
+    width: 100%;
 }
 
 .innerShortTerm ul {
-  font-family: 'Segoe UI';
-  text-transform: capitalize;
-  color: #707070;
-  margin-bottom: 0.3rem;
-  font-size: 1rem;
+    font-family: 'Segoe UI';
+    color: #707070;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
 }
 
 .shortTermHeading {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  color: #707070;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    color: #707070;
 }
 
-.shortTermHeading h1, .shortTermHeading p {
-  font-family: 'Segoe UI Bold';
-  text-transform: capitalize;
-  color: #707070;
+.shortTermHeading h1,
+.shortTermHeading p {
+    font-family: 'Segoe UI Bold';
+    color: #707070;
 }
 
 .shortTermHeading p {
-  font-family: 'Segoe UI Semibold';
-  font-size: 0.7rem;
+    font-family: 'Segoe UI Semibold';
+    font-size: 0.7rem;
 }
 
 .tellUsWhatYouNeed {
-  margin-top: 2%;
-  text-align: center;
+    margin-top: 2%;
+    text-align: center;
 }
 
 .tellUsWhatYouNeed h6 {
-  text-transform: capitalize;
-  color: #707070;
-  font-family: 'Segoe UI';
-  font-size: 1.4rem;
+    color: #707070;
+    font-family: 'Segoe UI';
+    font-size: 1.4rem;
 }
 
 .shortTermProjectType {
-  margin: 2% auto 0;
-  font-family: 'Segoe UI';
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  flex-direction: column;
+    margin: 2% auto 0;
+    font-family: 'Segoe UI';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: column;
 }
 
 .select_technology_shortTerm {
-  font-family: 'Segoe UI';
-  font-size: 1rem;
-  color: #707070;
+    font-family: 'Segoe UI';
+    font-size: 1rem;
+    color: #707070;
 }
 
 .shortTermProjectType_child {
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
 }
 
-.shortTermProjectName input, .shortTermOptionSelect input {
-  color: #707070;
-  width: 100%;
-  border-radius: 0.3rem;
-  font-family: 'Segoe UI';
-  font-size: 12px;
-  height: 2.2rem;
-  padding: 0 0.8rem;
-  text-transform: capitalize;
-  border: 1px solid #707070;
+.shortTermProjectName input,
+.shortTermOptionSelect input {
+    color: #707070;
+    width: 100%;
+    border-radius: 0.3rem;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    height: 2.2rem;
+    padding: 0 0.8rem;
+    text-transform: capitalize;
+    border: 1px solid #707070;
 }
 
 .tech-container_shortTerm {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 17%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 17%;
 }
 
 .tech-container_shortTerm div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding: 5px 2px 1px 4px; */
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 5px 2px 1px 4px; */
+    cursor: pointer;
 }
 
-.innerShortTerm ul~span {
-  margin-left: 35px;
+.innerShortTerm ul ~ span {
+    margin-left: 35px;
 }
 
-.innerShortTerm ul~div {
-  margin-left: 0.8rem;
+.innerShortTerm ul ~ div {
+    margin-left: 0.8rem;
 }
 
 .leftLineProject {
-  position: absolute;
-  width: 8px;
-  height: 100%;
-  background-color: #3498db;
-  top: 0;
-  left: 0;
-  transition: 0.3s ease-in-out;
-  z-index: -1;
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    background-color: #3498db;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+    z-index: -1;
 }
 
 .shortTermProjectType div h2 {
-  text-align: center;
-  font-family: 'Segoe UI';
-  font-size: 0.8rem;
-  text-transform: capitalize;
-  color: #707070;
+    text-align: center;
+    font-family: 'Segoe UI';
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    color: #707070;
 }
 
 .shortTermProjectType div img {
-  width: 4rem;
+    width: 4rem;
 }
 
 .shortTermProjectType div:hover .leftLineProject {
-  width: 100%;
+    width: 100%;
 }
 
 .shortTermProjectName div input::placeholder {
-  color: #A8A8A8;
+    color: #a8a8a8;
 }
 
 .shortTermProjectName input:focus {
-  border: 1px solid #3498db;
+    border: 1px solid #3498db;
 }
 
 .shortTermProjectDesc {
-  margin-top: 0.8rem;
+    margin-top: 0.8rem;
 }
 
 .error_productForm_shortTerm {
-  color: red;
-  font-size: 14px;
-  font-family: 'Segoe UI';
-  padding-left: 0.8rem;
+    color: red;
+    font-size: 14px;
+    font-family: 'Segoe UI';
+    padding-left: 0.8rem;
 }
 
 .startABit_shortTermProjectDesc {
-  font-size: 0.7rem;
-  text-transform: capitalize;
-  color: #707070;
+    font-size: 0.7rem;
+    color: #707070;
 }
 
 .shortTermProjectDesc span {
-  color: #999;
-  font-size: 0.9rem;
+    color: #999;
+    font-size: 0.9rem;
 }
 
 .shortTermProjectDesc textarea {
-  padding: 5px 10px;
-  border: 1px solid #707070;
-  font-family: 'Segoe UI';
-  width: 100%;
-  border-radius: 0.5rem;
-  font-size: 12px;
+    padding: 5px 10px;
+    border: 1px solid #707070;
+    font-family: 'Segoe UI';
+    width: 100%;
+    border-radius: 0.5rem;
+    font-size: 12px;
 }
 
 .shortTermProjectDesc textarea:focus {
-  border: 1px solid #3498db;
+    border: 1px solid #3498db;
 }
 
 .wordsLimit {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 99%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 99%;
 }
 
 .wordsLimit p {
-  font-size: 0.6rem;
-  text-transform: capitalize;
-  color: #706E6E;
+    font-size: 0.6rem;
+    text-transform: capitalize;
+    color: #706e6e;
 }
 
 .shortTermFileUpload {
-  margin-top: 2%;
+    margin-top: 2%;
 }
 
 .fileUpload_shortTerm {
-  width: 7rem;
+    width: 7rem;
 }
 
 .uploadBlock {
-  margin-left: 0.8rem;
-  margin-top: 1.5rem;
+    margin-left: 0.8rem;
+    margin-top: 1.5rem;
 }
 
 .left_and_right_side {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1.5rem;
 }
 
 .left_side_shortTerm {
-  width: 33%;
+    width: 33%;
 }
 
 .right_side_shortTerm {
-  width: 40%;
+    width: 40%;
 }
 
 .custom-file-upload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
 .uploadInfo {
-  margin-top: 0.4rem;
+    margin-top: 0.4rem;
 }
 
 .uploadInfo p {
-  font-family: 'Segoe UI';
-  font-size: 0.7rem;
-  text-transform: capitalize;
+    font-family: 'Segoe UI';
+    font-size: 0.7rem;
+    text-transform: capitalize;
 }
 
 .upload_question {
-  color: #707070;
+    color: #707070;
 }
 
 .upload_answer {
-  color: green;
+    color: green;
 }
 
 .shortTermOptionSelect {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
-.shortTermOptionSelect>div:nth-child(3) {
-  margin-top: 10px;
+.shortTermOptionSelect > div:nth-child(3) {
+    margin-top: 10px;
 }
 
-.shortTermOptionSelect ul~div>div {
-  font-family: 'Segoe UI';
-  font-size: 0.7rem;
-  text-transform: capitalize;
-  color: #707070;
+.shortTermOptionSelect ul ~ div > div {
+    font-family: 'Segoe UI';
+    font-size: 0.7rem;
+    text-transform: capitalize;
+    color: #707070;
 }
 
 .shortTermOptionSelect h6 {
-  font: bold 1.2rem 'Open Sans', sans-serif;
+    font: bold 1.2rem 'Open Sans', sans-serif;
 }
 
 .innerHowToPay {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .fixedPrice {
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  width: 80%;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    width: 80%;
 }
 
 .fixedPrice .fixedImage {
-  margin: 0 0.5rem;
+    margin: 0 0.5rem;
 }
 
 .fixedPrice i {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  font-size: 1.2rem;
-  color: #2fab73;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 1.2rem;
+    color: #2fab73;
 }
 
 .fixedImage img {
-  width: 2rem;
+    width: 2rem;
 }
 
-.estimatedBudget .MuiTypography-body1 , .hourlyPaymentBudget .MuiTypography-body1 , .agencyExperience .MuiTypography-body1{
-  font-family: 'Segoe UI' !important;
-  margin-left: 0.5rem !important;
-  color: #707070 !important;
-  font-size: 0.8rem;
+.estimatedBudget .MuiTypography-body1,
+.hourlyPaymentBudget .MuiTypography-body1,
+.agencyExperience .MuiTypography-body1 {
+    font-family: 'Segoe UI' !important;
+    margin-left: 0.5rem !important;
+    color: #707070 !important;
+    font-size: 0.8rem;
 }
 
-.estimatedBudget .MuiFormControlLabel-root , .hourlyPaymentBudget  .MuiFormControlLabel-root , .agencyExperience .MuiFormControlLabel-root{
-  margin-right: 3.2rem;
+.estimatedBudget .MuiFormControlLabel-root,
+.hourlyPaymentBudget .MuiFormControlLabel-root,
+.agencyExperience .MuiFormControlLabel-root {
+    margin-right: 3.2rem;
 }
 
 .innerHowToPay .MuiSvgIcon-root {
-  font-size: 1rem !important;
+    font-size: 1rem !important;
 }
 
-.estimatedBudget .MuiSvgIcon-root , .hourlyPaymentBudget .MuiSvgIcon-root, .agencyExperience .MuiSvgIcon-root {
-  font-size: 1rem !important;
+.estimatedBudget .MuiSvgIcon-root,
+.hourlyPaymentBudget .MuiSvgIcon-root,
+.agencyExperience .MuiSvgIcon-root {
+    font-size: 1rem !important;
 }
 .agencyExperience .MuiFormGroup-root {
-  margin-left: 0.8rem;
+    margin-left: 0.8rem;
 }
 
-.fixedContent h6, .fixedContent p {
-  font-family: 'Segoe UI';
-  text-transform: capitalize;
-  color: #707070;
+.fixedContent h6,
+.fixedContent p {
+    font-family: 'Segoe UI';
+    text-transform: capitalize;
+    color: #707070;
 }
 
 .fixedContent h6 {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 .fixedContent p {
-  font-size: 0.7rem;
-  margin-top: 7px;
+    font-size: 0.7rem;
+    margin-top: 7px;
 }
 
 .estimatedBudget {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
-.estimatedBudgetText~div {
-  width: 100%;
-  margin-left: 1rem;
+.estimatedBudgetText ~ div {
+    width: 100%;
+    margin-left: 1rem;
 }
 
 /* .hourlyPaymentBudget {
@@ -387,37 +392,38 @@
 } */
 
 .post-project {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1.5rem;
-  border-radius: 1.5rem;
-  font-family: 'Segoe UI';
-  font-size: 0.8rem;
-  color: #707070;
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    border-radius: 1.5rem;
+    font-family: 'Segoe UI';
+    font-size: 0.8rem;
+    color: #707070;
+    cursor: pointer;
 }
 
 .post-project p {
-  background-color: #015F9A;
-  padding: 0.5rem 1.5rem;
-  border-radius: 1rem;
-  color: white;
+    background-color: #015f9a;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    color: white;
 }
 
 .post-project div:hover {
-  cursor: pointer;
-  background-color: blue;
-  color: #eaf2ff;
+    cursor: pointer;
+    background-color: blue;
+    color: #eaf2ff;
 }
 
 .post-project:hover i {
-  transform: translateX(10px);
+    transform: translateX(10px);
 }
 
-.agencyExperience, .numberOfDays {
-  margin-top: 1rem;
+.agencyExperience,
+.numberOfDays {
+    margin-top: 1rem;
 }
-.radio-label_shortTermForm{
-   margin-right: -1rem;
+.radio-label_shortTermForm {
+    margin-right: -1rem;
 }

@@ -143,7 +143,7 @@ const HireAgencyForm1 = (props) => {
                         <div className="higherAgencyInfoParent">
                             <div className="higherAgencyInfoArea">
                                 <div className="points-to-remember_hireAgencyForm1">
-                                    <h4>About Your Project</h4>
+                                    <h4>About Project</h4>
                                 </div>
                                 <div className="cardsDetail_hireAgencyForm1">
                                     <div className="cards_hireAgencyForm1">

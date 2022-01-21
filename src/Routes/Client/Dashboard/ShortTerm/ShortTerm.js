@@ -3,7 +3,6 @@ import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import './ShortTerm.css';
 
 import fixed from '../../../../assets/images/Newestdashboard/Short_Term/payment.svg';
-import hour from '../../../../assets/images/Newestdashboard/Short_Term/hourglass.svg';
 
 import VerifyModal from '../../../../Components/VerifyModal/VerifyModal';
 import { upload } from '../../../../shared/helper';
@@ -16,10 +15,8 @@ import FormControl from '@material-ui/core/FormControl';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import instance from '../../../../Constants/axiosConstants';
 import { useDropzone } from 'react-dropzone';
-import { toast } from 'react-toastify';
 import Back from '../../../../Components/Back/Back';
 import FileUploadImage from '../../../../assets/images/Newestdashboard/Short_Term/short_term.svg';
-import UpImage from '../../../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import Spinner from '../../../../Components/Spinner/Spinner';
 
@@ -108,18 +105,12 @@ function ShortTerm(props) {
         setLogo(acceptedFiles);
     }, []);
 
-    const {
-        isDragActive,
-        getRootProps,
-        getInputProps,
-        isDragReject,
-        acceptedFiles,
-        rejectedFiles
-    } = useDropzone({
-        onDrop,
-        accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
-        minSize: 0
-    });
+    const { isDragActive, getRootProps, getInputProps, isDragReject } =
+        useDropzone({
+            onDrop,
+            accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
+            minSize: 0
+        });
 
     const handleServices = (event) => {
         const { className } = event.target;
@@ -246,6 +237,7 @@ function ShortTerm(props) {
 
     useEffect(() => {
         getAllDomains();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {}, [allServices]);
@@ -254,6 +246,7 @@ function ShortTerm(props) {
         if (apiData.projectFiles.length !== 0) {
             shortTermProjectApi();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [apiData]);
     return (
         <>
@@ -274,9 +267,9 @@ function ShortTerm(props) {
                             <div className="shortTermHeading">
                                 <h2>Short Term Projects</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Qui modi pariatur animi,
-                                    beatae ab tempore.
+                                    Need to outsource a short term project
+                                    modification or a specific task? We’ve got
+                                    you covered.
                                 </p>
                             </div>
                         </div>
@@ -306,7 +299,6 @@ function ShortTerm(props) {
                                                         handleServices(event)
                                                     }
                                                 >
-                                                    {/* <span className={`${service.serviceName}`}></span> */}
                                                     <img
                                                         className={`${service.serviceName}`}
                                                         src={
@@ -337,7 +329,7 @@ function ShortTerm(props) {
                                 <div className="shortTermProjectName">
                                     <ul>
                                         <li>
-                                            Choose a name for your project{' '}
+                                            Project Name
                                             <span className="requiredStar">
                                                 *
                                             </span>
@@ -376,8 +368,8 @@ function ShortTerm(props) {
                                     </ul>
                                     <div className="startABit_shortTermProjectDesc">
                                         Start with a bit about yourself or your
-                                        business, and include an overview what
-                                        you need done.
+                                        business, include An overview of the
+                                        project and what do you require.
                                     </div>
                                     <div style={{ marginTop: '0.5rem' }}>
                                         <textarea
@@ -426,7 +418,7 @@ function ShortTerm(props) {
                                                                 src={
                                                                     FileUploadImage
                                                                 }
-                                                                alt="image"
+                                                                alt="upload"
                                                             />
                                                         )}
                                                         {isDragActive &&
@@ -500,7 +492,7 @@ function ShortTerm(props) {
                                 <div className="howToPay">
                                     <ul>
                                         <li>
-                                            How do you want to pay?{' '}
+                                            Here's our payment policy?
                                             <span className="requiredStar">
                                                 *
                                             </span>
@@ -558,30 +550,6 @@ function ShortTerm(props) {
                                                         </p>
                                                     </div>
                                                 </div>
-                                                {/* don't remove this....even after commenting}
-                      {/* <div
-                        style={{ marginTop: "1rem" }}
-                        className="fixedPrice"
-                        name="projectPaymentModel"
-                        onClick={() =>
-                          handleChangeRadio("projectPaymentModel", "By Hour")
-                        }
-                      >
-                        <FormControlLabel
-                          value="By Hour"
-                          control={<BlueRadio className={classes.root} />}
-                        />
-                        <div className="fixedImage">
-                          <img src={hour} alt="hour" />
-                        </div>
-                        <div className="fixedContent">
-                          <h6>Pay by the hour</h6>
-                          <p>
-                            Hire based on an hourly rate and pay for hours
-                            billed. Best for ongoing work
-                          </p>
-                        </div>
-                      </div> */}
                                             </RadioGroup>
                                         </FormControl>
                                     </div>
@@ -738,23 +706,12 @@ function ShortTerm(props) {
                                             {errors.projectExpectedStartingDays}
                                         </p>
                                     )}
-                                    {/* <p>{data.projectExpectedStartingDays} days</p>
-                        <div className="upArrow" onClick={upArrow}>
-                          <i class="fa fa-angle-up" aria-hidden="true"></i>
-                        </div>
-                        {data.projectExpectedStartingDays > 5 ? ( 
-                        <div className="downArrow" onClick={downArrow}>
-                          <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </div> 
-                        ):(null)}
-                      </div> */}
                                 </div>
                                 <div className="agencyExperience">
                                     <ul>
                                         <li>
                                             <p style={{ width: '24rem' }}>
-                                                Desired level of proficiency in
-                                                the project's domain?{' '}
+                                                Desired level of proficiency?
                                                 <span className="requiredStar">
                                                     *
                                                 </span>

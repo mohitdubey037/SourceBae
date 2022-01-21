@@ -138,8 +138,8 @@ function HireDeveloper(props) {
                     <div className="hireDeveloperForm">
                         <div className="hireDeveloperFormInfo">
                             <p className="hire-developer-heading">
-                                Fulfill your specific requirements with skilled,
-                                experienced developers
+                                Fulfill your specific requirements with skilled
+                                and experienced developers
                             </p>
                         </div>
                         <div className="resourceNumberCover">
@@ -162,7 +162,7 @@ function HireDeveloper(props) {
                             <div className="resourceNumber">
                                 <ul>
                                     <li>
-                                        What roles are you looking for?{' '}
+                                        Roles Required?{' '}
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>

@@ -65,7 +65,6 @@
     text-align: center;
     font-weight: 600;
     font-size: 35px;
-    text-transform: capitalize;
     color: #707070;
 }
 
@@ -81,7 +80,6 @@
 .hireDeveloperFormInfo p {
     font-family: 'Segoe UI', sans-serif;
     font-size: 20px;
-    text-transform: capitalize;
     color: #707070;
     margin-top: 28px;
     font-weight: 600;
@@ -125,7 +123,6 @@
 .hireDeveloperForm .contractPeriod ul {
     font-family: 'Segoe UI Semibold', sans-serif;
     font-size: 16px;
-    text-transform: capitalize;
     color: #707070;
     margin-bottom: 4px;
 }
