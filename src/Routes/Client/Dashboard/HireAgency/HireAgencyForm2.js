@@ -249,7 +249,7 @@ function HireAgencyForm2(props) {
                             alt="downImage"
                         />
                         <div className="steps_hireAgencyForm2">
-                            <div
+                            {/* <div
                                 className="step3_disabled"
                                 style={{ width: '30%' }}
                             >
@@ -257,9 +257,33 @@ function HireAgencyForm2(props) {
                                     <p>Step 1</p>
                                 </div>
                                 <div className="color_hireAgencyForm2 green"></div>
+                            </div> */}
+                            <div className="steps_hireAgencyForm step3_disabled" style={{ width: '30%' }}>
+                                <div className='steps_on_hire_agency'>
+                                    <p>Step 1</p>
+                                    <div className="color_hireAgencyForm green"></div>
+                                </div>
                             </div>
 
-                            <div
+                            <div className="steps_hireAgencyForm diabled-step_hireAgencyForm" style={{ width: '30%' }}>
+                                <div className='steps_on_hire_agency'>
+                                    <p>
+                                        Step 2
+                                    </p>
+                                </div>
+                                <div className="color_hireAgencyForm green"></div>
+                            </div>
+
+                            <div className="diabled-step_hireAgencyForm" style={{ width: '30%' }}>
+                                <div className='steps_on_hire_agency'>
+                                    <p className="grey-step_hireAgencyForm">
+                                        Step 3
+                                    </p>
+                                </div>
+                                <div className="color_hireAgencyForm grey"></div>
+                            </div>
+
+                            {/* <div
                                 className="diabled-step_hireAgencyForm"
                                 style={{ width: '30%' }}
                             >
@@ -269,9 +293,9 @@ function HireAgencyForm2(props) {
                                     </p>
                                 </div>
                                 <div className="color_hireAgencyForm2 green"></div>
-                            </div>
+                            </div> */}
 
-                            <div
+                            {/* <div
                                 className="step3_disabled"
                                 style={{ width: '30%' }}
                             >
@@ -281,7 +305,7 @@ function HireAgencyForm2(props) {
                                     </p>
                                 </div>
                                 <div className="color_hireAgencyForm2 grey"></div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="servicesHirecover">
                             {selectedDomain && options && (

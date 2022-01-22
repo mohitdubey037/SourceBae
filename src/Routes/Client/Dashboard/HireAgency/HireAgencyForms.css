@@ -1,12 +1,8 @@
-/* .Image1_hireAgency {
-    left: -10rem;
-    position: absolute;
-    top: -5.5rem;
-    width: 43rem;
-} */
-
 .higherAgencyInfoParent {
+    gap: 2rem;
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .Image2_hireAgency {
@@ -52,9 +48,7 @@
     align-items: center;
 }
 
-.steps_hireAgencyForm>div>div>p,
-.steps_hireAgencyForm2>div>div>p,
-.steps_hireAgencyForm3>div>div>p {
+.steps_on_hire_agency p {
     font-family: 'Segoe UI Semibold';
     font-size: 18px;
     color: #707070;
@@ -70,6 +64,7 @@
     letter-spacing: 0.611765px;
     color: #ffffff;
     padding: 1rem;
+    width: 260px;
 }
 
 .black-strip_hireAgencyForm1 {
@@ -230,9 +225,10 @@ li::marker {
 
 .cardsDetail_hireAgencyForm1 {
     display: flex;
+    justify-content: center;
     width: 100%;
-    justify-content: space-around;
-    position: relative;
+    grid-gap: 5rem;
+    gap: 5rem;
 }
 
 .points-to-remember_hireAgencyForm1>h4 {
@@ -264,6 +260,12 @@ li::marker {
     padding: 0.3rem 1rem;
 }
 
+.stepContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
 .mainHireAgencyForm3 {
     width: 100%;
     height: 97vh;
@@ -274,6 +276,7 @@ li::marker {
     position: absolute;
     overflow: hidden;
     padding-top: 0rem;
+    top: 4rem;
 }
 
 .innerHireAgencyFormTwo {

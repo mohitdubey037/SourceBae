@@ -1,6 +1,6 @@
 .higherAgencyInfoArea {
     width: 75%;
-    height: 8rem;
+    /* height: 8rem; */
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -14,6 +14,7 @@
 .points-to-remember_hireAgencyForm1 h4 {
     margin: 1rem 0 1.5rem 0;
 }
+
 .cards_hireAgencyForm1 {
     background-image: linear-gradient(to right, #015f9a, #0376ba);
     border: 1px solid #a2a2a6;
@@ -21,16 +22,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    width: 25%;
 }
 
-.steps_hireAgencyForm {
-    display: flex;
-    justify-content: space-between;
-    width: 68%;
-    margin: auto;
-    padding: 2rem 0;
-}
+/* .steps_hireAgencyForm {
+    padding: 0.5rem 0;
+} */
 
 .steps_hireAgencyForm .grey-step_hireAgencyForm {
     color: #a8a8a8 !important;

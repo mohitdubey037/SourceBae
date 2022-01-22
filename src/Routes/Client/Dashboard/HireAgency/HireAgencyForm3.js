@@ -220,14 +220,26 @@ function HireAgencyForm3(props) {
                         </div>
 
                         <div className="steps_hireAgencyForm3">
-                            <div style={{ width: '30%' }}>
-                                <div>
+                            <div className="steps_hireAgencyForm" style={{ width: '30%' }}>
+                                <div className='steps_on_hire_agency'>
                                     <p>Step 1</p>
+                                    <div className="color_hireAgencyForm green"></div>
                                 </div>
-                                <div className="color_hireAgencyForm3 green"></div>
+                            </div>
+                            <div className="steps_hireAgencyForm step3_disabled" style={{ width: '30%' }}>
+                                <div className='steps_on_hire_agency'>
+                                    <p>Step 2</p>
+                                    <div className="color_hireAgencyForm green"></div>
+                                </div>
+                            </div>
+                            <div className="steps_hireAgencyForm step3_disabled" style={{ width: '30%' }}>
+                                <div className='steps_on_hire_agency'>
+                                    <p>Step 3</p>
+                                    <div className="color_hireAgencyForm green"></div>
+                                </div>
                             </div>
 
-                            <div
+                            {/* <div
                                 className="diabled-step_hireAgencyForm"
                                 style={{ width: '30%' }}
                             >
@@ -246,7 +258,7 @@ function HireAgencyForm3(props) {
                                     </p>
                                 </div>
                                 <div className="color_hireAgencyForm3 green"></div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="innerHireAgencyForm3">
                             <div className="techStackFields" style={{ width: '95%' }}>

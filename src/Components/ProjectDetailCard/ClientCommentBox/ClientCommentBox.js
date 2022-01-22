@@ -24,7 +24,8 @@ import Spinner from '../../Spinner/Spinner';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
-        margin: theme.spacing(1)
+        margin: theme.spacing(1),
+        width: '100%'
     },
     extendedIcon: {
         marginRight: theme.spacing(1)
@@ -353,7 +354,7 @@ const ClientCommentBox = (props) => {
                                         .clientNegotiablePrice && (
                                             <div
                                                 className="postQuotation"
-                                                style={{ width: '48%' }}
+                                                style={{ width: '100%' }}
                                             >
                                                 <TextField
                                                     className={clsx(
@@ -403,14 +404,16 @@ const ClientCommentBox = (props) => {
                                     </div>
                                     {props.projectProposals[0]
                                         .isCommentSectionActive === true && (
-                                            <div
-                                                className="sendIcon_clientCommentBox"
-                                                onClick={() => {
-                                                    replyApi();
-                                                }}
-                                            >
-                                                <SendIcon />
-                                            </div>
+                                            // <div
+                                            //     className="sendIcon_clientCommentBox"
+                                            //     onClick={() => {
+                                            //         replyApi();
+                                            //     }}
+                                            // >
+                                            <SendIcon className='sendIcon_clientCommentBox' onClick={() => {
+                                                replyApi();
+                                            }} />
+                                            // </div>
                                         )}
                                 </div>
                             )}

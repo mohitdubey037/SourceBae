@@ -313,7 +313,7 @@ const AgencyCommentBox = (props) => {
                                                 undefined) && (
                                                 <div
                                                     className="postQuotation"
-                                                    style={{ width: '48%' }}
+                                                    style={{ width: '100%' }}
                                                 >
                                                     <TextField
                                                         className={clsx(
@@ -430,12 +430,12 @@ const AgencyCommentBox = (props) => {
                                         </div>
                                         {props.projectProposals[0]
                                             .isReplySectionActive === true && (
-                                                <div
-                                                    className="sendIcon_clientCommentBox"
-                                                    onClick={() => replyApi()}
-                                                >
-                                                    <SendIcon />
-                                                </div>
+                                                // <div
+                                                //     className="sendIcon_clientCommentBox"
+                                                //     onClick={() => replyApi()}
+                                                // >
+                                                <SendIcon className='sendIcon_clientCommentBox' onClick={() => replyApi()} />
+                                                // </div>
                                             )}
                                     </div>
                                 )}
