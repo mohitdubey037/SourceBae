@@ -210,9 +210,8 @@ function HireAgencyForm2(props) {
         console.log(checked, option, onClick, disabled, 'checked');
         return (
             <div
-                className={`item-renderer ${
-                    disabled && 'disabled'
-                } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'
+                    } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -352,15 +351,11 @@ function HireAgencyForm2(props) {
                                             return (
                                                 <div className="tech-container">
                                                     <div
-                                                        className={`${domain.domainName}`}
+                                                        className={`${domain.domainName} ${domain.selected && 'conditional_transparency'}`}
                                                         onClick={(event) =>
                                                             handleDomains(event)
                                                         }
-                                                        style={{
-                                                            filter: domain.selected
-                                                                ? ' invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)'
-                                                                : 'none'
-                                                        }}
+
                                                     >
                                                         <img
                                                             className={`${domain.domainName}`}

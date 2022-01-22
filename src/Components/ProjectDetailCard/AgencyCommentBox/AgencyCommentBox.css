@@ -125,7 +125,7 @@
 }
 
 .price-section {
-    width: 40%;
+    width: 100%;
 }
 
 .reply-parent {
@@ -201,7 +201,7 @@
     align-items: center;
 }
 
-.negotiablePrice > input[type='number'] {
+.negotiablePrice>input[type='number'] {
     margin-left: 1rem;
     min-height: 48px;
 }
@@ -226,7 +226,7 @@
 
 .acceptButton,
 .rejectButton,
-.detailsButtons > button {
+.detailsButtons>button {
     margin: 0 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 999px;
@@ -239,14 +239,14 @@
     letter-spacing: 1px;
 }
 
-.detailsButtons > button {
+.detailsButtons>button {
     margin: 0;
     letter-spacing: 0px;
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
 }
 
-.detailsButtons > a {
+.detailsButtons>a {
     text-decoration: none;
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
@@ -258,7 +258,7 @@
     box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%);
 }
 
-.detailsButtons > button:hover {
+.detailsButtons>button:hover {
     background: rgb(2, 69, 124);
     color: white;
 }
@@ -287,7 +287,7 @@
     outline: none;
 }
 
-.postQuotation > button {
+.postQuotation>button {
     background-color: #02044a;
 }
 
@@ -863,7 +863,7 @@
 
 .price-section .MuiOutlinedInput-multiline {
     padding: 16.5px 14px;
-    margin-right: 0.6rem;
+    /* margin-right: 0.6rem; */
 }
 
 .fileUpload_shortTerm:hover {

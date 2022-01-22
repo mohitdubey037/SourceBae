@@ -3,20 +3,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: repeating-linear-gradient(
-            45deg,
+    background-image: repeating-linear-gradient(45deg,
             rgb(255, 255, 255) 0px,
             rgb(255, 255, 255) 10px,
             transparent 10px,
-            transparent 11px
-        ),
-        repeating-linear-gradient(
-            135deg,
+            transparent 11px),
+        repeating-linear-gradient(135deg,
             rgb(255, 255, 255) 0px,
             rgb(255, 255, 255) 10px,
             transparent 10px,
-            transparent 11px
-        ),
+            transparent 11px),
         linear-gradient(90deg, hsl(256, 7%, 84%), hsl(256, 7%, 84%));
     position: relative;
     margin-bottom: 5%;
@@ -30,23 +26,23 @@
     overflow: hidden;
 }
 
-.backArrow {
+/* .backArrow {
     position: absolute;
     top: 3%;
     left: 4%;
-}
+} */
 
-.upper-image {
+/* .upper-image {
     position: fixed;
     top: -19px;
     left: 39px;
-}
+} */
 
-.lower-image {
+/* .lower-image {
     position: fixed;
     right: 0px;
     top: 0%;
-}
+} */
 
 .multi-select {
     color: black;
@@ -67,6 +63,12 @@
     font-size: 35px;
     color: #707070;
 }
+
+.go2139093995 * {
+    z-index: 10;
+    /* position: relative; */
+}
+
 
 .predilection-strip {
     position: relative;
@@ -94,7 +96,7 @@
 .averageBudget,
 .startPeriod,
 .contractPeriod {
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 .left-margin {
@@ -149,17 +151,17 @@
     flex-direction: column;
 }
 
-.Weekly > div,
-.Monthly > div {
+.Weekly>div,
+.Monthly>div {
     display: flex;
     color: #707070;
     font-size: 14px;
     align-items: center;
 }
 
-.Junior > div,
-.Mid-Range > div,
-.Senior > div {
+.Junior>div,
+.Mid-Range>div,
+.Senior>div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,8 +173,8 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-.Weekly > div > .MuiFormControlLabel-root,
-.Monthly > div > .MuiFormControlLabel-root {
+.Weekly>div>.MuiFormControlLabel-root,
+.Monthly>div>.MuiFormControlLabel-root {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
@@ -203,9 +205,9 @@
     left: 58px;
 }
 
-.Junior > div > .MuiFormControlLabel-root,
-.Mid-Range > div > .MuiFormControlLabel-root,
-.Senior > div > .MuiFormControlLabel-root {
+.Junior>div>.MuiFormControlLabel-root,
+.Mid-Range>div>.MuiFormControlLabel-root,
+.Senior>div>.MuiFormControlLabel-root {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
@@ -319,9 +321,10 @@
 }
 
 .dropdown-heading-value {
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
     font-style: normal;
-    font-weight: 500;
+    /* font-weight: 500; */
     font-size: 12px;
 }
 
@@ -419,9 +422,11 @@
     padding-left: 0.3rem;
     height: 35px;
 }
+
 .Image2 {
     z-index: 1;
 }
+
 .hireDeveloperForm .MuiFormGroup-root {
     flex-direction: row !important;
     margin-left: 20px !important;
@@ -450,13 +455,13 @@
     margin-bottom: 5%;
 }
 
-.submitBtn > div:hover {
+.submitBtn>div:hover {
     cursor: pointer;
     background-color: blue;
     color: #eaf2ff;
 }
 
-.submitBtn > div {
+.submitBtn>div {
     width: 11%;
     background: #eaf2ff;
     border-radius: 25px;
@@ -470,9 +475,9 @@
     color: #ffffff;
 }
 
-.resourceNumber .dropdown-heading {
+/* .resourceNumber .dropdown-heading {
     border-radius: 0rem !important;
-}
+} */
 
 .preferredBillingMode .PrivateSwitchBase-input-6 {
     z-index: 0;

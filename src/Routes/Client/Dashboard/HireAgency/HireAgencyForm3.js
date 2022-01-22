@@ -69,7 +69,7 @@ function HireAgencyForm3(props) {
         setAllTechnologies(technologies);
     };
 
-    useEffect(() => {}, [apiData]);
+    useEffect(() => { }, [apiData]);
 
     const getAllServices = () => {
         instance
@@ -135,9 +135,8 @@ function HireAgencyForm3(props) {
         console.log(checked, option, onClick, disabled, 'checked');
         return (
             <div
-                className={`item-renderer ${
-                    disabled && 'disabled'
-                } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'
+                    } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -250,7 +249,7 @@ function HireAgencyForm3(props) {
                             </div>
                         </div>
                         <div className="innerHireAgencyForm3">
-                            <div className="techStackFields">
+                            <div className="techStackFields" style={{ width: '95%' }}>
                                 <div className="HireAgencyForm3Heading">
                                     <h2>
                                         How can <span> SourceBae </span> assist
@@ -277,17 +276,12 @@ function HireAgencyForm3(props) {
                                                 return (
                                                     <div className="tech-container">
                                                         <div
-                                                            className={`${service.serviceName}`}
+                                                            className={`${service.serviceName} ${service.selected && 'conditional_transparency'}`}
                                                             onClick={(event) =>
                                                                 handleServices(
                                                                     event
                                                                 )
                                                             }
-                                                            style={{
-                                                                filter: service.selected
-                                                                    ? ' invert(90%) sepia(21%) saturate(287%) hue-rotate(150deg) brightness(98%) contrast(98%)'
-                                                                    : 'none'
-                                                            }}
                                                         >
                                                             <img
                                                                 className={`${service.serviceName}`}

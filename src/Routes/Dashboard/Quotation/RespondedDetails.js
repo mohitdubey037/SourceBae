@@ -119,6 +119,7 @@ function RespondedDetails(props) {
                     {project.projectDescription}
                 </p>
             </div>
+            <hr></hr>
 
             <div
                 style={{
@@ -135,7 +136,7 @@ function RespondedDetails(props) {
                 <div className="innerAgencyQuotation">
                     <div className="agencyQuotationDesc_AgencyRespondedDetails">
                         {project?.projectProposals &&
-                        project?.projectProposals[0]?.rejectReasonByClient !==
+                            project?.projectProposals[0]?.rejectReasonByClient !==
                             undefined ? (
                             <>
                                 <div className="project_rejection">
