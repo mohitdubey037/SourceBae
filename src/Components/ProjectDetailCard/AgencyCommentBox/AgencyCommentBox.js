@@ -344,30 +344,7 @@ const AgencyCommentBox = (props) => {
                                                     />
                                                 </div>
                                             )}
-                                        <div
-                                            className="price-section"
-                                        // style={{
-                                        //     width:
-                                        //         props.projectProposals[0]
-                                        //             .isReplySectionActive ===
-                                        //             true &&
-                                        //             props.projectProposals[0]
-                                        //                 .agencyNegotiablePrice !==
-                                        //             undefined
-                                        //             ? '100%'
-                                        //             :
-                                        //             props
-                                        //                 .projectProposals[0]
-                                        //                 .isReplySectionActive ===
-                                        //                 true &&
-                                        //                 props
-                                        //                     .projectProposals[0]
-                                        //                     .isAskedForQuotation ===
-                                        //                 false
-                                        //                 ? '100%'
-                                        //                 : '40%'
-                                        // }}
-                                        >
+                                        <div className="price-section">
                                             {props.projectProposals[0]
                                                 .isReplySectionActive && (
                                                     <>
@@ -430,12 +407,7 @@ const AgencyCommentBox = (props) => {
                                         </div>
                                         {props.projectProposals[0]
                                             .isReplySectionActive === true && (
-                                                // <div
-                                                //     className="sendIcon_clientCommentBox"
-                                                //     onClick={() => replyApi()}
-                                                // >
                                                 <SendIcon className='sendIcon_clientCommentBox' onClick={() => replyApi()} />
-                                                // </div>
                                             )}
                                     </div>
                                 )}

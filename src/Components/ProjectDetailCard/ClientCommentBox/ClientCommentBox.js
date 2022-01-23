@@ -285,7 +285,6 @@ const ClientCommentBox = (props) => {
                                     <>
                                         {index.comment && (
                                             <div className="chatBox">
-                                                {/* <div className="chatBox max-width"> */}
                                                 <p
                                                     style={{
                                                         backgroundColor:
@@ -404,16 +403,9 @@ const ClientCommentBox = (props) => {
                                     </div>
                                     {props.projectProposals[0]
                                         .isCommentSectionActive === true && (
-                                            // <div
-                                            //     className="sendIcon_clientCommentBox"
-                                            //     onClick={() => {
-                                            //         replyApi();
-                                            //     }}
-                                            // >
                                             <SendIcon className='sendIcon_clientCommentBox' onClick={() => {
                                                 replyApi();
                                             }} />
-                                            // </div>
                                         )}
                                 </div>
                             )}

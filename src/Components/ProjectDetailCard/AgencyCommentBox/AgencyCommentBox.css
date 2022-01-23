@@ -101,20 +101,12 @@
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.price-section {
-    width: 100%;
-}
-
 .commentParent {
     width: 100%;
-    /* position: relative; */
-    /* bottom: 10px; */
     transform: translateY(1rem);
     display: flex;
     gap: 1rem;
     align-items: center;
-    /* justify-content: space-around; */
-    /* justify-content: space-between;
 }
 
 .chatBox-right {
