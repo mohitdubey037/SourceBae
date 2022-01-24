@@ -10,7 +10,7 @@ import ContactUSBackground from './ContactUsBackground.svg';
 import { AGENCY, CLIENT } from '../../../shared/constants';
 
 function RightSide() {
-    const Role = localStorage.getItem('role');
+    const role = localStorage.getItem('role');
 
     const [open, setOpen] = useState(false);
 
@@ -47,7 +47,7 @@ function RightSide() {
                 <div className={styles.navigation_item}>
                     <div className={styles.itemContent_heading}>
                         <div className={styles.heading_text}>
-                            {Role === CLIENT ? (
+                            {role === CLIENT ? (
                                 <img
                                     onClick={onOpenModal}
                                     className={styles.getInTouch}
@@ -66,7 +66,7 @@ function RightSide() {
                                 </h3>
                             )}
                         </div>
-                        {Role === AGENCY ? (
+                        {role === AGENCY ? (
                             <div className={styles.flex_column}>
                                 {topAgencies.map((agency) => (
                                     <div
@@ -148,7 +148,14 @@ function RightSide() {
                             />
                         </div>
                     </div>
-                    <div className={styles.cta_item}>
+                    <div
+                        className={styles.cta_item}
+                        style={{
+                            background: `${
+                                role === CLIENT ? '#0276BA' : '#6C63FF'
+                            }`
+                        }}
+                    >
                         <img
                             src={ContactUSBackground}
                             className={styles.backgroundIllustration}
@@ -164,7 +171,7 @@ function RightSide() {
                             <button
                                 onClick={onOpenModal}
                                 className={`${
-                                    Role === 'Client' && 'conditionalGradient'
+                                    role === 'Client' && 'conditionalGradient'
                                 }`}
                             >
                                 Email Us
@@ -172,7 +179,7 @@ function RightSide() {
                             <button
                                 onClick={onOpenModal}
                                 className={`${
-                                    Role === 'Client' && 'conditionalGradient'
+                                    role === 'Client' && 'conditionalGradient'
                                 }`}
                             >
                                 Feedback Form
