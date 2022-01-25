@@ -26,7 +26,7 @@ function BottomSidebar(props) {
 
     useEffect(() => {
         instance
-            .get(`/api/${Role}/notifications/all?type=push`)
+            .get(`/api/${Role}/notifications/all`)
             .then((response) => {
                 setNotificationData(response);
             })

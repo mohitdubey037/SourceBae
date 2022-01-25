@@ -1,9 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Modal } from "react-responsive-modal";
+import { Modal } from 'react-responsive-modal';
 
 function CustomModal({ showModal, message, buttonText, action }) {
-
     return (
         <>
             <Modal
@@ -12,7 +11,7 @@ function CustomModal({ showModal, message, buttonText, action }) {
                 showCloseIcon={false}
                 classNames={{
                     overlay: 'customOverlayAgencyProduct',
-                    modal: 'customModalClientOneHireDeveloper',
+                    modal: 'customModalClientOneHireDeveloper'
                 }}
                 center
             >
@@ -21,17 +20,15 @@ function CustomModal({ showModal, message, buttonText, action }) {
                         <h6>{message}</h6>
                     </div>
 
-                    <div className='interested_or_not verify_or_not'>
+                    <div className="interested_or_not verify_or_not">
                         <div className="update_now" onClick={action}>
                             <p>{buttonText}</p>
                         </div>
                     </div>
                 </div>
             </Modal>
-
         </>
-    )
-
+    );
 }
 
-export default withRouter(CustomModal)
+export default withRouter(CustomModal);

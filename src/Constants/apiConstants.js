@@ -1,6 +1,7 @@
-const env = 'development' // localhost or master i.e. amplify
+const env = process.env.APP_ENVIRONMENT; // localhost or master i.e. amplify
 // const env = 'production' // sourcebae.com i.e. production
 
+console.log(process.env.NODE_ENV, 'env');
 export const config = {
     production: {
         url: {
@@ -12,4 +13,4 @@ export const config = {
             API_URL: `https://api.onesourcing.in`
         }
     }
-}[env || 'development']
+}[env || 'development'];

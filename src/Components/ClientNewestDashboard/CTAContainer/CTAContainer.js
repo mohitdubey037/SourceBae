@@ -49,7 +49,6 @@ function RightSide() {
                         <div className={styles.heading_text}>
                             {role === CLIENT ? (
                                 <img
-                                    onClick={onOpenModal}
                                     className={styles.getInTouch}
                                     src={HalfCircleProgress}
                                     alt="callIcon"
@@ -173,6 +172,7 @@ function RightSide() {
                                 className={`${
                                     role === 'Client' && 'conditionalGradient'
                                 }`}
+                                style={{ zIndex: 1 }}
                             >
                                 Email Us
                             </button>
@@ -194,7 +194,7 @@ function RightSide() {
                 onClose={onCloseModal}
                 classNames={{
                     overlay: 'customOverlayAgencyProduct',
-                    modal: 'customModalRightSide'
+                    modal: styles.customModalRightSide
                 }}
                 center
             >

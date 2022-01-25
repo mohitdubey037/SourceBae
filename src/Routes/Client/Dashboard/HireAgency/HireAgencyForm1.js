@@ -105,9 +105,9 @@ const HireAgencyForm1 = (props) => {
                     `/api/${Role}/projects/create`,
                     props?.location?.state?.agencyForm1?.projectId
                         ? {
-                            ...data,
-                            id: props.location.state.agencyForm1?.projectId
-                        }
+                              ...data,
+                              id: props.location.state.agencyForm1?.projectId
+                          }
                         : data
                 )
                 .then(function (response) {
@@ -134,7 +134,7 @@ const HireAgencyForm1 = (props) => {
             ) : (
                 <>
                     <div className="main_HireAgencyParent">
-                        <Back name="Hire Agency Form 1" />
+                        <Back name="Hire Agency" />
                         <img
                             className="Image2_hireAgency"
                             src={DownImage}
@@ -146,18 +146,17 @@ const HireAgencyForm1 = (props) => {
                                     <h4>About Project</h4>
                                 </div>
                                 <div className="cardsDetail_hireAgencyForm1">
-                                    <div className='stepContainer'>
+                                    <div className="stepContainer">
                                         <div className="cards_hireAgencyForm1">
                                             <div className="keep_the_project_name">
                                                 <p>
-                                                    1. Give your project a simple
-                                                    and meaningful name.
+                                                    1. Give your project a
+                                                    simple and meaningful name.
                                                 </p>
                                             </div>
-
                                         </div>
                                         <div className="steps_hireAgencyForm">
-                                            <div className='steps_on_hire_agency'>
+                                            <div className="steps_on_hire_agency">
                                                 <div>
                                                     <p>Step 1</p>
                                                 </div>
@@ -166,19 +165,18 @@ const HireAgencyForm1 = (props) => {
                                         </div>
                                     </div>
 
-                                    <div className='stepContainer'>
+                                    <div className="stepContainer">
                                         <div className="cards_hireAgencyForm1">
                                             <div className="write_about_your_project">
                                                 <p>
-                                                    2. Describe your service or idea
-                                                    in a precise with relevant
-                                                    details.
+                                                    2. Describe your service or
+                                                    idea in a precise with
+                                                    relevant details.
                                                 </p>
                                             </div>
-
                                         </div>
                                         <div className="diabled-step_hireAgencyForm">
-                                            <div className='steps_on_hire_agency'>
+                                            <div className="steps_on_hire_agency">
                                                 <p className="grey-step_hireAgencyForm">
                                                     Step 2
                                                 </p>
@@ -191,13 +189,14 @@ const HireAgencyForm1 = (props) => {
                                         <div className="cards_hireAgencyForm1">
                                             <div className="in_case_you_think">
                                                 <p>
-                                                    3. Missed something, don't worry
-                                                    you can edit it later anytime.
+                                                    3. Missed something, don't
+                                                    worry you can edit it later
+                                                    anytime.
                                                 </p>
                                             </div>
                                         </div>
                                         <div className="diabled-step_hireAgencyForm">
-                                            <div className='steps_on_hire_agency'>
+                                            <div className="steps_on_hire_agency">
                                                 <p className="grey-step_hireAgencyForm">
                                                     Step 3
                                                 </p>
@@ -205,7 +204,6 @@ const HireAgencyForm1 = (props) => {
                                             <div className="color_hireAgencyForm grey"></div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
 

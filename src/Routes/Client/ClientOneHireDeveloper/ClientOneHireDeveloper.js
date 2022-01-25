@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import * as helper from '../../../shared/helper';
 import './ClientOneHireDeveloper.css';
 import { connect } from 'react-redux';
 import instance from '../../../Constants/axiosConstants';
@@ -23,10 +22,8 @@ function ClientOneHireDeveloper(props) {
     const Role = localStorage.getItem('role');
     const userId = localStorage.getItem('userId');
 
-    const [selectedDevelopers, setSelectedDevelopers] = useState([]);
     const [singleHiredDeveloper, setSingleHiredDeveloper] = useState({});
     const [loading, setLoading] = useState(false);
-    const [disability, setDisability] = useState(false);
     const [agencyId, setAgencyId] = useState(null);
 
     const [open, setOpen] = useState(false);

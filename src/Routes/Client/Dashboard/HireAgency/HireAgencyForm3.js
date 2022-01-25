@@ -69,7 +69,7 @@ function HireAgencyForm3(props) {
         setAllTechnologies(technologies);
     };
 
-    useEffect(() => { }, [apiData]);
+    useEffect(() => {}, [apiData]);
 
     const getAllServices = () => {
         instance
@@ -135,8 +135,9 @@ function HireAgencyForm3(props) {
         console.log(checked, option, onClick, disabled, 'checked');
         return (
             <div
-                className={`item-renderer ${disabled && 'disabled'
-                    } custom-item-renderer`}
+                className={`item-renderer ${
+                    disabled && 'disabled'
+                } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -166,7 +167,7 @@ function HireAgencyForm3(props) {
                         oldFormData={oldFormData}
                         formState3={apiData}
                         projectId={projectId}
-                        name="Hire Agency Form 3"
+                        name="Hire Agency"
                     />
                     <div className="mainHireAgencyForm3">
                         <img
@@ -220,48 +221,39 @@ function HireAgencyForm3(props) {
                         </div>
 
                         <div className="steps_hireAgencyForm3">
-                            <div className="steps_hireAgencyForm" style={{ width: '30%' }}>
-                                <div className='steps_on_hire_agency'>
+                            <div
+                                className="steps_hireAgencyForm"
+                                style={{ width: '30%' }}
+                            >
+                                <div className="steps_on_hire_agency">
                                     <p>Step 1</p>
                                     <div className="color_hireAgencyForm green"></div>
                                 </div>
                             </div>
-                            <div className="steps_hireAgencyForm step3_disabled" style={{ width: '30%' }}>
-                                <div className='steps_on_hire_agency'>
+                            <div
+                                className="steps_hireAgencyForm step3_disabled"
+                                style={{ width: '30%' }}
+                            >
+                                <div className="steps_on_hire_agency">
                                     <p>Step 2</p>
                                     <div className="color_hireAgencyForm green"></div>
                                 </div>
                             </div>
-                            <div className="steps_hireAgencyForm step3_disabled" style={{ width: '30%' }}>
-                                <div className='steps_on_hire_agency'>
+                            <div
+                                className="steps_hireAgencyForm step3_disabled"
+                                style={{ width: '30%' }}
+                            >
+                                <div className="steps_on_hire_agency">
                                     <p>Step 3</p>
                                     <div className="color_hireAgencyForm green"></div>
                                 </div>
                             </div>
-
-                            {/* <div
-                                className="diabled-step_hireAgencyForm"
-                                style={{ width: '30%' }}
-                            >
-                                <div>
-                                    <p className="grey-step_hireAgencyForm">
-                                        Step 2
-                                    </p>
-                                </div>
-                                <div className="color_hireAgencyForm3 green"></div>
-                            </div>
-
-                            <div style={{ width: '30%' }}>
-                                <div>
-                                    <p className="grey-step_hireAgencyForm">
-                                        Step 3
-                                    </p>
-                                </div>
-                                <div className="color_hireAgencyForm3 green"></div>
-                            </div> */}
                         </div>
                         <div className="innerHireAgencyForm3">
-                            <div className="techStackFields" style={{ width: '95%' }}>
+                            <div
+                                className="techStackFields"
+                                style={{ width: '95%' }}
+                            >
                                 <div className="HireAgencyForm3Heading">
                                     <h2>
                                         How can <span> SourceBae </span> assist
@@ -288,7 +280,12 @@ function HireAgencyForm3(props) {
                                                 return (
                                                     <div className="tech-container">
                                                         <div
-                                                            className={`${service.serviceName} ${service.selected && 'conditional_transparency'}`}
+                                                            className={`${
+                                                                service.serviceName
+                                                            } ${
+                                                                service.selected &&
+                                                                'conditional_transparency'
+                                                            }`}
                                                             onClick={(event) =>
                                                                 handleServices(
                                                                     event

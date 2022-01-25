@@ -210,8 +210,9 @@ function HireAgencyForm2(props) {
         console.log(checked, option, onClick, disabled, 'checked');
         return (
             <div
-                className={`item-renderer ${disabled && 'disabled'
-                    } custom-item-renderer`}
+                className={`item-renderer ${
+                    disabled && 'disabled'
+                } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -240,7 +241,7 @@ function HireAgencyForm2(props) {
                     <Back
                         propData={propData}
                         formState2={apiData}
-                        name="Hire Agency Form 2"
+                        name="Hire Agency"
                     />
                     <div className="mainHireAgencyFormTwo">
                         <img
@@ -249,63 +250,37 @@ function HireAgencyForm2(props) {
                             alt="downImage"
                         />
                         <div className="steps_hireAgencyForm2">
-                            {/* <div
-                                className="step3_disabled"
+                            <div
+                                className="steps_hireAgencyForm step3_disabled"
                                 style={{ width: '30%' }}
                             >
-                                <div>
-                                    <p>Step 1</p>
-                                </div>
-                                <div className="color_hireAgencyForm2 green"></div>
-                            </div> */}
-                            <div className="steps_hireAgencyForm step3_disabled" style={{ width: '30%' }}>
-                                <div className='steps_on_hire_agency'>
+                                <div className="steps_on_hire_agency">
                                     <p>Step 1</p>
                                     <div className="color_hireAgencyForm green"></div>
                                 </div>
                             </div>
 
-                            <div className="steps_hireAgencyForm diabled-step_hireAgencyForm" style={{ width: '30%' }}>
-                                <div className='steps_on_hire_agency'>
-                                    <p>
-                                        Step 2
-                                    </p>
+                            <div
+                                className="steps_hireAgencyForm diabled-step_hireAgencyForm"
+                                style={{ width: '30%' }}
+                            >
+                                <div className="steps_on_hire_agency">
+                                    <p>Step 2</p>
                                 </div>
                                 <div className="color_hireAgencyForm green"></div>
                             </div>
 
-                            <div className="diabled-step_hireAgencyForm" style={{ width: '30%' }}>
-                                <div className='steps_on_hire_agency'>
+                            <div
+                                className="diabled-step_hireAgencyForm"
+                                style={{ width: '30%' }}
+                            >
+                                <div className="steps_on_hire_agency">
                                     <p className="grey-step_hireAgencyForm">
                                         Step 3
                                     </p>
                                 </div>
                                 <div className="color_hireAgencyForm grey"></div>
                             </div>
-
-                            {/* <div
-                                className="diabled-step_hireAgencyForm"
-                                style={{ width: '30%' }}
-                            >
-                                <div>
-                                    <p className="grey-step_hireAgencyForm">
-                                        Step 2
-                                    </p>
-                                </div>
-                                <div className="color_hireAgencyForm2 green"></div>
-                            </div> */}
-
-                            {/* <div
-                                className="step3_disabled"
-                                style={{ width: '30%' }}
-                            >
-                                <div>
-                                    <p className="grey-step_hireAgencyForm">
-                                        Step 3
-                                    </p>
-                                </div>
-                                <div className="color_hireAgencyForm2 grey"></div>
-                            </div> */}
                         </div>
                         <div className="servicesHirecover">
                             {selectedDomain && options && (
@@ -375,11 +350,15 @@ function HireAgencyForm2(props) {
                                             return (
                                                 <div className="tech-container">
                                                     <div
-                                                        className={`${domain.domainName} ${domain.selected && 'conditional_transparency'}`}
+                                                        className={`${
+                                                            domain.domainName
+                                                        } ${
+                                                            domain.selected &&
+                                                            'conditional_transparency'
+                                                        }`}
                                                         onClick={(event) =>
                                                             handleDomains(event)
                                                         }
-
                                                     >
                                                         <img
                                                             className={`${domain.domainName}`}

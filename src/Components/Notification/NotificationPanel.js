@@ -18,7 +18,7 @@ function NotificationPanel(props) {
 
     const handleGetNotification = () => {
         instance
-            .get(`/api/${Role}/notifications/all?type=push`)
+            .get(`/api/${Role}/notifications/all`)
             .then((response) => {
                 setNotificationData(response);
             })
@@ -107,8 +107,17 @@ function NotificationPanel(props) {
                                                     <p>
                                                         {nd?.notificationTitle}
                                                     </p>
-                                                    <p>
-                                                        {nd?.notificationData}
+                                                    <p
+                                                        style={{
+                                                            display: 'flex',
+                                                            flexDirection:
+                                                                'column'
+                                                        }}
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: nd?.notificationData
+                                                        }}
+                                                    >
+                                                        {/* {nd?.notificationData} */}
                                                     </p>
                                                 </li>
                                             </ul>
