@@ -1,6 +1,6 @@
 .higherAgencyInfoArea {
     width: 75%;
-    height: 8rem;
+    /* height: 8rem; */
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -11,26 +11,25 @@
     margin-left: 1.9rem;
 }
 
+.points-to-remember_hireAgencyForm1 h4 {
+    margin: 1rem 0 1.5rem 0;
+}
+
 .cards_hireAgencyForm1 {
-    background-image: linear-gradient(to right, #015F9A, #0376BA);
-    border: 1px solid #A2A2A6;
+    background-image: linear-gradient(to right, #015f9a, #0376ba);
+    border: 1px solid #a2a2a6;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    width: 25%;
 }
 
-.steps_hireAgencyForm {
-    display: flex;
-    justify-content: space-between;
-    width: 68%;
-    margin: auto;
-    padding: 2rem 0;
-}
+/* .steps_hireAgencyForm {
+    padding: 0.5rem 0;
+} */
 
 .steps_hireAgencyForm .grey-step_hireAgencyForm {
-    color: #A8A8A8 !important;
+    color: #a8a8a8 !important;
 }
 
 .mainHireAgencyForm1 {
@@ -69,8 +68,7 @@
 .understand_your_project {
     font-family: 'Segoe UI';
     font-size: 1.5rem;
-    text-transform: capitalize;
-    color: #015F9A;
+    color: #015f9a;
     padding-top: 0.5rem;
 }
 
@@ -85,15 +83,16 @@
     flex-direction: column;
 }
 
-.projectNameAgency input, .descriptionProjectAgency textarea, .daysInputAgency {
+.projectNameAgency input,
+.descriptionProjectAgency textarea,
+.daysInputAgency {
     margin-top: 10px;
     width: 79%;
-    background: #FFFFFF;
+    background: #ffffff;
     font-family: 'Segoe UI';
     font-size: 14px;
-    text-transform: capitalize;
     color: #707070;
-    border: 1px solid #015F9A;
+    border: 1px solid #015f9a;
     border-radius: 8px;
     height: 35px;
     padding-left: 10px;
@@ -111,7 +110,9 @@
     padding: 10px;
 }
 
-.descriptionProjectAgency, .budgetSectionAreaAgency, .numberOfDays {
+.descriptionProjectAgency,
+.budgetSectionAreaAgency,
+.numberOfDays {
     font-family: 'Segoe UI';
     width: 100%;
     display: flex;
@@ -129,8 +130,8 @@
     padding: 5px;
 }
 
-
-.daysInputAgency .upArrow, .daysInputAgency .downArrow {
+.daysInputAgency .upArrow,
+.daysInputAgency .downArrow {
     position: absolute;
     width: 15px;
     height: 15px;

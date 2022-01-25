@@ -1,34 +1,42 @@
-.agencyNewestDashboard>div {
-  width: 88%;
+.agencyNewestDashboard > div {
+    width: 88%;
 }
 
 .user-project_parent {
-  overflow-y: auto;
-  height: 28.7rem;
-  margin-right: 6px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  /* border: 1px solid; */
+    overflow-y: auto;
+    height: 69vh;
+    padding-bottom: 6rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.conditional_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0;
 }
 
 .sidebar_parent .container-sPidebar {
-  position: fixed;
-  top: 0;
+    position: fixed;
+    top: 0;
+}
+
+.graphic.graphic_agencyDashboard {
+    margin: 2rem auto;
 }
 
 .verify_update_wait {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0rem;
-  /* border: 1px solid; */
-  margin: auto;
-  width: 75%;
-  height: 10%;
-  justify-content: space-evenly;
-  z-index: 100;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0rem;
+    /* border: 1px solid; */
+    margin: auto;
+    width: 75%;
+    height: 10%;
+    justify-content: space-evenly;
+    z-index: 2;
 }
 
 /* .interested_or_not.verify_or_not div {
@@ -37,50 +45,52 @@
 } */
 
 .not_found.agencyNewestDashboard {
-  width: max-content;
-  height: 325px;
-  margin: 2rem auto 0rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    /* width: max-content;
+  height: 325px; */
+    /* margin: 2rem auto 0rem; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .not_found p {
-  color: black;
+    color: black;
 }
 
 .not_found.agencyNewestDashboard p {
-  font-family: 'Segoe UI';
-  font-size: 1rem;
-  margin-top: 1rem;
+    font-family: 'Segoe UI Semibold';
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
 }
 
 .not_found.agencyNewestDashboard img {
-  width: 23rem;
+    width: 16rem;
 }
 
 .conditional_marginTop {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .navbar_parent .navbar {
-  width: 90%;
-  margin-left: 10%;
+    width: 90%;
+    margin-left: 10%;
 }
 
 @media (max-width: 768px) {
-  .project-details-card {
-    width: 300px;
-  }
+    .project-details-card {
+        width: 300px;
+    }
 }
 
 .down_seperator {
-  /* position: absolute; */
-  width: 40%;
-  background-color: #d5d5d5;
-  height: 1px;
-  color: green;
-  align-self: center;
+    /* position: absolute; */
+    width: 40%;
+    background-color: #d5d5d5;
+    height: 1px;
+    color: green;
+    align-self: center;
 }
 
 /* .mainUpdateVerify {
@@ -93,117 +103,112 @@
 } */
 
 .innerMainVerify {
-  width: 100%;
-  /* color: #fff; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background: #68e1fd; */
-  height: 100%;
-  border-radius: 0.3rem;
+    width: 100%;
+    /* color: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #68e1fd; */
+    height: 100%;
+    border-radius: 0.3rem;
 }
 
 .innerMainVerify img {
-  width: 20px;
+    width: 20px;
 }
 
 .innerMainVerify div {
-  margin-right: 5px;
-  width: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin-right: 5px;
+    width: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .innerMainVerify p {
-  font-family: 'Segoe UI';
-  font-size: 0.8rem;
-  margin-top: 0;
+    font-family: 'Segoe UI';
+    font-size: 0.8rem;
+    margin-top: 0;
 }
 
 .innerMainVerify span {
-  color: #5c1fff;
-  /* color: black; */
-  font-family: 'Segoe UI Semibold';
-  font-size: 0.9rem;
-  margin: 0 10px;
-  /* border-bottom: 1px solid #5c1fff; */
-  cursor: pointer;
+    color: #5c1fff;
+    /* color: black; */
+    font-family: 'Segoe UI Semibold';
+    font-size: 0.9rem;
+    margin: 0 10px;
+    /* border-bottom: 1px solid #5c1fff; */
+    cursor: pointer;
 }
 
 .conditional_opacity {
-  filter: opacity(0.5);
+    filter: opacity(0.5);
 }
 
-/* .modal-custom {
-  height: 92vh;
-  width: 74%;
-  background: rgba(9, 8, 8, 0.25);
-  position: absolute;
-  align-items: center;
-  align-self: center;
-  justify-self: center;
-  background: rgba(9, 8, 8, 0.25);
-  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
-  backdrop-filter: blur(-0.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  top: 4rem;
-} */
+.modal-custom {
+    position: fixed;
+    height: 100%;
+    width: 74%;
+    top: 4rem;
+    right: 0;
+    z-index: 1000;
+    /* background: rgba(0, 0, 0, 0.9); */
+    background: rgba(0, 0, 0, 0.2);
+}
 
 .userprofile-circle.nav-left-item img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 .requiredStar {
-  color: red;
+    color: red;
 }
 
 .interested_or_not.verify_or_not {
-  width: 90%;
+    width: 90%;
 }
 
 .update_now {
-  background-color: #45A4EA !important;
-  color: white !important;
+    background-color: #45a4ea !important;
+    color: white !important;
 }
 
 .update_now:hover {
-  color: white !important;
+    color: white !important;
 }
 
 .update_later {
-  background-color: #eaf2ff !important;
+    background-color: #eaf2ff !important;
 }
 
 .verify_or_not div:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  .not_found.agencyNewestDashboard img {
-    width: 14rem;
-  }
+    .not_found.agencyNewestDashboard img {
+        width: 14rem;
+    }
 }
 
 @media (max-width: 360px) {
-  .user-operations {
-    flex-direction: column;
-    justify-content: space-between;
-    height: 30rem;
-  }
+    .user-operations {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 30rem;
+    }
 
-  .innerMainVerify p {
-    font-size: 0.8rem;
-  }
+    .innerMainVerify p {
+        font-size: 0.8rem;
+    }
 
-  .innerMainVerify span {
-    font-size: 0.9rem;
-  }
+    .innerMainVerify span {
+        font-size: 0.9rem;
+    }
 
-  .conditional_marginTop {
-    margin-top: 10px;
-  }
+    .conditional_marginTop {
+        margin-top: 10px;
+    }
 }

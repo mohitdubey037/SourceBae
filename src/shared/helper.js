@@ -1,3 +1,5 @@
+import instance from "../Constants/axiosConstants";
+
 const capitalize = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
@@ -27,9 +29,9 @@ const validateLink = (link) => {
   let result = false;
   if (containSpaces === false) {
     let re =
-    // /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
-    /(http(s)?:\/\/.)?()?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&=]*)/;
-    result =  re.test(link);
+      // /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
+      /(http(s)?:\/\/.)?()?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&=]*)/;
+    result = re.test(link);
     return result
   }
   return result;
@@ -44,7 +46,7 @@ const validateLinkedIn = (link) => {
   // var linkedIn=/(ftp|http|https):\/\/?((www|\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
   var linkedIn = /((https?:\/\/)?((www|\w\w)\.)?linkedin\.com\/)((([\w]{2,3})?)|([^\/]+\/(([\w|\d-&#?=])+\/?){1,}))$/
   let result = false;
-  result =  linkedIn.test(link);
+  result = linkedIn.test(link);
   return result;
 }
 
@@ -61,6 +63,23 @@ const multiwordCapitalize = (str) => {
   });
   return finalStr.slice(1);
 };
+
+const upload = (mediaDetail, Role) => {
+  const fileForm = new FormData();
+  mediaDetail && fileForm.append(
+    "files",
+    mediaDetail[0],
+    mediaDetail[0].name
+  );
+  return new Promise((resolve, reject) => {
+    instance.post(`api/${Role}/media/create`, fileForm)
+      .then(function (response) {
+        resolve(response[0]?.mediaURL)
+      })
+      .catch(err => reject(err));
+  })
+}
+
 export {
   capitalize,
   lowerize,
@@ -70,5 +89,6 @@ export {
   camelcaseToWords,
   validateLinkedIn,
   multiwordCapitalize,
-  noTextNumber
+  noTextNumber,
+  upload
 };

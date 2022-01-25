@@ -9,7 +9,9 @@ import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail
 import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
 import MessageRejected from '../../../assets/images/Newestdashboard/Dashboard/rejected.jpg';
 
-function UserProject(props, index) {
+function UserProject({index,...rest}) {
+    
+    let props=rest;
     const routerHistory = useHistory();
 
     const showDetail = () => {
@@ -25,7 +27,7 @@ function UserProject(props, index) {
     const [popindex, setPopIndex] = useState("");
 
     return (
-        <div onClick={showDetail} className="project-details-card">
+        <div onClick={showDetail} style={{marginTop: index < 2 ? '1rem' : '0'}} className="project-details-card">
             <div className="detailsCard-header">
                 <div className="header-heading">
                     <h6>{props?.projectName}</h6>

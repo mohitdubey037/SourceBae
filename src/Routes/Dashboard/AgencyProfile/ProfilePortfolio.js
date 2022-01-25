@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import "./ProfilePortfolio.css"
 import instance from "../../../Constants/axiosConstants";
+import { AGENCY } from "../../../shared/constants";
 
-import {AGENCY} from "../../../shared/constants";
+// import "agency" from "../../../shared/constants";
 import "./Rules.css";
 
 function AgencyPortfolio(props) {
@@ -16,8 +17,8 @@ function AgencyPortfolio(props) {
   const agencyId = localStorage.getItem('userId')
 
   const getAgencyPortfolio = (profileviewStatus) => {
-    instance
-      .get(`api/${Role}/portfolios/all?agencyId=${Role === 'Agency' ? agencyId : propsAgencyId}`)
+    // instance.get(`api/${Role}/portfolios/all?agencyId=${Role === 'Agency' ? agencyId : propsAgencyId}`)
+    instance.get(`api/${Role}/portfolios/all?agencyId=${Role === AGENCY ? agencyId : propsAgencyId}`)
       .then(function (response) {
         setAgencyPortfoliodata(response);
       })
@@ -60,7 +61,7 @@ function AgencyPortfolio(props) {
               </div>
             )
           })}
-          {Role === {AGENCY} &&
+          {Role === "agency" &&
             <div className="No_portfolio" onClick={() => routerHistory.push("/portfolio")}>
               <div className="add-portfolio-parent">
                 <h6 className="add-portfolio">Add A Portfolio</h6>

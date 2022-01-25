@@ -1,7 +1,11 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
-importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
+// importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");
+// importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
+
+importScripts("https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js")
+importScripts("https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js")
+importScripts("https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.js")
 
 const config = {
   apiKey: "AIzaSyA0G6lLOIX4oPNgDlDNbohB4UnkgqDakDk",

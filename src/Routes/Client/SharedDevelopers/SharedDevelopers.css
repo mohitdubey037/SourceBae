@@ -293,7 +293,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
+}
+
+.NotFound_SharedDeveloper img {
+  width: 30%;
 }
 
 .NotFound_SharedDeveloper p {

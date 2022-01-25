@@ -9,7 +9,7 @@ import { CLIENT, AGENCY } from "../../../shared/constants"
 
 function Navbar(props) {
 
-    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+    const logoLink = "https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg";
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const url = props.history.location.pathname;
     const role = localStorage.getItem('role');
@@ -29,14 +29,12 @@ function Navbar(props) {
         localStorage.clear();
         cookie.remove("Authorization");
         window.location.href = 'https://sourcebae.com/';
-
     }
 
     useEffect(() => {
         if (role === CLIENT) {
             instance.get(`/api/${role}/clients/get/${roleId}`)
                 .then(function (response) {
-                    console.log(response);
                     setData(response);
                 })
                 .catch(err => {
@@ -46,7 +44,6 @@ function Navbar(props) {
         else {
             instance.get(`/api/${role}/agencies/get/${roleId}`)
                 .then(function (response) {
-                    console.log(response);
                     setData(response);
                 })
                 .catch((err) => {
@@ -103,7 +100,7 @@ function Navbar(props) {
                     <p>{role === "client" ? data[0]?.firstName + " " + data[0]?.lastName : data?.agencyName}</p>
                 </div>
                 <div className="userprofile-circle nav-left-item" >
-                    {role === 'Agency' ?
+                    {role === AGENCY ?
                         <>
                             <img onMouseEnter={() => setIsPopoverOpen(true)}
                                 onClick={() => setIsPopoverOpen(!isPopoverOpen)} src={data?.agencyLogo ? data?.agencyLogo : `https://ui-avatars.com/api/?name=${data?.agencyName}`} />

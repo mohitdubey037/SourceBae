@@ -16,6 +16,7 @@ import instance from '../../../Constants/axiosConstants';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Back from '../../../Components/Back/Back';
+import VerifyModal from "../../../Components/VerifyModal/VerifyModal";
 
 import * as helper from "../../../shared/helper";
 
@@ -92,7 +93,9 @@ const bType = [
 function ProductAgencies(props) {
 
     const Role = localStorage.getItem('role');
-    const logoLink = "https://api.onesourcing.in/media/images/1637044803259.svg";
+    const id = localStorage.getItem('userId');
+
+    const logoLink = "https://sourcebae.s3.ap-south-1.amazonaws.com/staging/image/Sourcebae-14.svg";
 
     const [fundName, setFundName] = React.useState('');
     const [bmodal, setBmodal] = React.useState('');
@@ -124,8 +127,6 @@ function ProductAgencies(props) {
         linkedIn: ''
     })
 
-    useEffect(() => {
-    }, [form])
 
     const handleConnect = (agencyId) => {
         if (handleValidation()) {
@@ -300,7 +301,7 @@ function ProductAgencies(props) {
                                                             </div>
                                                             <div className="profileButton">
                                                                 <p onClick={() => props.history.push({
-                                                                    pathname: `/agency-profile:${value?.agencyId?._id}`,
+                                                                    pathname: `/agency-profile/${value?.agencyId?._id}`,
                                                                 })}>View Agency Profile <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
                                                             </div>
                                                         </div>
@@ -348,7 +349,7 @@ function ProductAgencies(props) {
                                                         <div className="quotationShortlistButton_productAgencies">
                                                             <div>
                                                                 <NavLink style={{ textDecoration: 'none', color: "#ffffff" }} to={{
-                                                                    pathname: `/product-details:${value._id}`,
+                                                                    pathname: `/product-details/${value._id}`,
                                                                     condition: 'Client'
                                                                 }}>View Product</NavLink>
                                                             </div>
@@ -520,6 +521,8 @@ function ProductAgencies(props) {
                     </div>
                 </div>
             </Modal>
+
+            <VerifyModal Role={Role} id={id} />
         </>
     )
 }

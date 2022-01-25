@@ -16,7 +16,7 @@ import "./Rules.css";
 function Rules(props) {
   const Role = localStorage.getItem("role");
   const [agencyProfiledata, setAgencyProfileData] = useState({});
-  const userId = localStorage.getItem('userId');
+  const userId = props.id ? props.id : localStorage.getItem('userId');
 
   const [rules, setRules] = useState([]);
 
@@ -65,7 +65,6 @@ function Rules(props) {
     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
     instance.get(`/api/${Role}/agencies/get/${userId}${addParam}`)
       .then(function (response) {
-        console.log(response);
         setAgencyProfileData(response);
         setRules(response.agencyRules);
         setEditRules(false);
@@ -100,7 +99,7 @@ function Rules(props) {
     <>
       <div className="mainRules">
         <div className="innerRules">
-          {Role === {AGENCY}
+          {Role === "agency"
             ? agencyProfiledata.isAgencyVerified && (
               <div className="editableBtn_rules">
                 <div className="rules_parent">

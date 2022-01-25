@@ -10,7 +10,7 @@ const RegisterClientForm2 = (props) => {
 
   const handleCreateProfile = (event, role) => {
     let { name, value } = event.target;
-      if (role === CLIENT)
+    if (role === CLIENT)
       props.setClientProfileDetails({
         ...props.clientProfileDetails,
         [name]: value,
@@ -30,59 +30,71 @@ const RegisterClientForm2 = (props) => {
       });
     }
   };
-  
+
   return (
     <div className="clientSignupForm2Parent">
-    <div className="input_with_error">
-      <label>User Designation</label>
-      <input
-        type="text"
-        name="userDesignation"
-        placeholder="User Designation"
-        onChange={(event) =>
-          handleCreateProfile(event, role)
-        }
-      />
-      {props.errors.userDesignationError && (
-        <p className="error_productForm">
-          {props.errors.userDesignationError}
-        </p>
-      )}
-    </div>
+      <div className="input_with_error">
+        <label>User Designation
+          <span className="requiredStar">
+            *
+          </span>
+        </label>
+        <input
+          type="text"
+          name="userDesignation"
+          placeholder="User Designation"
+          onChange={(event) =>
+            handleCreateProfile(event, role)
+          }
+        />
+        {props.errors.userDesignationError && (
+          <p className="error_productForm">
+            {props.errors.userDesignationError}
+          </p>
+        )}
+      </div>
 
-    <div className="input_with_error">
-      <label>Company Name</label>
-      <input
-        type="text"
-        name="companyName"
-        value={props.clientProfileDetails.companyName}
-        placeholder="Company Name"
-        onChange={(event) =>
-          handleCreateProfile(event, role)
-        }
-      />
-      {props.errors.companyNameError && (
-        <p className="error_productForm">
-          {props.errors.companyNameError}
-        </p>
-      )}
+      <div className="input_with_error">
+        <label>Company Name
+          <span className="requiredStar">
+            *
+          </span>
+        </label>
+        <input
+          type="text"
+          name="companyName"
+          value={props.clientProfileDetails.companyName}
+          placeholder="Company Name"
+          onChange={(event) =>
+            handleCreateProfile(event, role)
+          }
+        />
+        {props.errors.companyNameError && (
+          <p className="error_productForm">
+            {props.errors.companyNameError}
+          </p>
+        )}
+      </div>
+      <div className="input_with_error">
+        <label>Website Url
+          <span className="requiredStar">
+            *
+          </span>
+        </label>
+        <input
+          type="text"
+          name="website"
+          placeholder="Website URL"
+          value={props.site.platformLink}
+          onChange={(event) => handleSocialPlatform(event)}
+        />
+        {props.errors.socialPlatformDetailsError && (
+          <p className="error_productForm">
+            {props.errors.socialPlatformDetailsError}
+          </p>
+        )}
+      </div>
     </div>
-    <div className="input_with_error">
-      <label>Website Url</label>
-      <input
-        type="text"
-        name="website"
-        placeholder="Website URL"
-        value={props.site.platformLink}
-        onChange={(event) => handleSocialPlatform(event)}
-      />
-      {props.errors.socialPlatformDetailsError && (
-        <p className="error_productForm">
-          {props.errors.socialPlatformDetailsError}
-        </p>
-      )}
-    </div>
-  </div>
   )
 };
 export default RegisterClientForm2;

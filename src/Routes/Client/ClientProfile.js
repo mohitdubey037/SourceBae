@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import './ClientProfile.css'
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
-import uploadImage from '../../assets/images/Newestdashboard/Client_Profile/camera_icon.png';
+import { useDropzone } from 'react-dropzone';
 import { toast } from "react-toastify";
 
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../Components/Back/Back';
 
-import { FilePicker } from 'react-file-picker';
-
 import instance from "../../Constants/axiosConstants"
-import * as helper from "../../shared/helper"
 import Spinner from '../../Components/Spinner/Spinner';
 import Profile_image1 from '../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
 import { FaCamera } from "react-icons/fa";
+
+import VerifyModal from "../../Components/VerifyModal/VerifyModal";
 
 function ClientProfile() {
 
@@ -50,10 +49,11 @@ function ClientProfile() {
     const [show, setShow] = useState();
     const [isShown, setIsShown] = useState(false);
     const [isUploaded, setIsUploaded] = useState(false);
+    const [logo, setLogo] = useState(null)
+
     let logoURL;
 
     const getClientProfileApi = () => {
-        const clientId = localStorage.getItem("userId")
         instance.get(`/api/${Role}/clients/get/${clientId}`)
             .then(function (response) {
                 let temp = {
@@ -76,18 +76,30 @@ function ClientProfile() {
             })
     };
 
-    const inputFileChoosen = (ev) => {
-        setFile(ev)
+    const onDrop = useCallback(acceptedFiles => {
+        setLogo(acceptedFiles);
         let reader = new FileReader();
-        reader.readAsDataURL(ev)
+        reader.readAsDataURL(acceptedFiles[0])
         reader.onload = () => {
-            setShow(reader.result) ;
+            setShow(reader.result);
             setIsUploaded(true)
         }
-    }
+    }, []);
 
-    // useEffect(() => {
-    // }, [file]);
+    useEffect(() => {
+        console.log(logo);
+    }, [logo]);
+
+
+    const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+        onDrop,
+        accept: '.jpg, .png, .jpeg',
+        minSize: 0,
+        // maxSize,
+    });
+
+    useEffect(() => {
+    }, [file]);
     const handleCancel = () => {
         setIsEdit(false);
         setIsUploaded(false);
@@ -97,13 +109,13 @@ function ClientProfile() {
     }, [clientData, file])
 
     const uploadMedia = async () => {
-        const formData = new FormData();
-        formData.append(
+        const fileForm = new FormData();
+        logo && fileForm.append(
             "files",
-            file,
-            file.name
+            logo[0],
+            logo[0].name
         );
-        await instance.post(`api/${Role}/media/create`, formData)
+        await instance.post(`api/${Role}/media/create`, fileForm)
             .then(function (response) {
                 logoURL = response[0].mediaURL;
             })
@@ -111,8 +123,10 @@ function ClientProfile() {
             })
     }
 
-    const updateClientApi = async () => {
-        await uploadMedia();
+    const handleButton = async () => {
+        if (logo !== null) {
+            await uploadMedia();
+        }
         const body = {
             firstName: clientData.firstName,
             lastName: clientData.lastName,
@@ -189,7 +203,7 @@ function ClientProfile() {
                                             :
                                             (
                                                 <><div onClick={handleCancel} className="cancel">Cancel</div>
-                                                    <div onClick={() => updateClientApi()} className="save">Save</div>
+                                                    <div onClick={() => handleButton()} className="save">Save</div>
                                                 </>
                                             )
                                     }
@@ -197,29 +211,49 @@ function ClientProfile() {
                                     <div className="myProfileCard">
                                         <div className="avatarArea">
                                             <div className={`avatarArea_div ${isShown && 'conditional_filter_clientProfile'}`}>
-                                                { clientData.clientLogo && !isUploaded ?
-                                                        <img className="avatarImg" src={clientData.clientLogo} alt="signup" />
+                                                {clientData.clientLogo && !isUploaded ?
+                                                    <img className="avatarImg" src={clientData.clientLogo} alt="signup" />
                                                     :
-                                                   isUploaded ?
+                                                    isUploaded ?
                                                         <img className="avatarImg" src={show} alt="signup" />
                                                         :
                                                         <img className="avatarImg" src={avatar} alt="signup" />
                                                 }
                                             </div>
                                             {isEdit === true &&
-                                                <FilePicker
-                                                    extensions={['jpg', 'png', 'jpeg']}
-                                                    onChange={inputFileChoosen}
-                                                    onError={errMsg => toast.error(errMsg)}
-                                                >
-                                                    <FaCamera
-                                                        onMouseEnter={() => setIsShown(true)}
-                                                        onMouseLeave={() => setIsShown(false)}
-                                                        className="client_profile_image" />
-                                                </FilePicker>
+                                                <section className="container_addingDeveloper">
+                                                    {/* <div {...getRootProps({ className: 'dropzone' })}>
+                                                        <input {...getInputProps()} />
+                                                        <div>
+                                                            <FaCamera
+                                                                onMouseEnter={() => setIsShown(true)}
+                                                                onMouseLeave={() => setIsShown(false)}
+                                                                className="client_profile_image" />
+                                                        </div>
+                                                    </div> */}
+
+                                                    <div {...getRootProps()}>
+                                                        <input {...getInputProps()} />
+                                                        {!isDragActive &&
+                                                            <div>
+                                                                <FaCamera
+                                                                    onMouseEnter={() => setIsShown(true)}
+                                                                    onMouseLeave={() => setIsShown(false)}
+                                                                    className="client_profile_image" />
+                                                            </div>
+                                                        }
+                                                        {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                                                        {isDragReject && "File type not accepted, sorry!"}
+                                                        {/* {isFileTooLarge && (
+                                                            <div className="text-danger mt-2">
+                                                                File is too large.
+                                                            </div>
+                                                        )} */}
+                                                    </div>
+                                                </section>
                                             }
                                         </div>
-                                        
+
                                         <div className="clientProfileDetails">
                                             {Object.keys(clientData).map((key) => {
                                                 if (key !== 'clientLogo') {
@@ -244,6 +278,7 @@ function ClientProfile() {
                         </div>
                     </div>
             }
+            <VerifyModal Role={Role} id={clientId} />
         </>
     );
 }

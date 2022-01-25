@@ -8,14 +8,14 @@ import './AgencyProjectCard.css';
 import Moment from 'react-moment';
 import moment from 'moment';
 
-function AgencyProjectCard({ key, ...props }) {
-
+function AgencyProjectCard(props) {
     const dateCreate = moment(props.createdAt).format("MMM Do YY");
     const dateUpdate = moment(props.updatedAt).format("MMM Do YY");
 
     const routerHistory = useHistory();
     return (
-        <div className="user-project_agencyNewestDashboard">
+        <div className={`user-project_agencyNewestDashboard ${props.uniqueId < 2 && 'conditional_margin_projectCard'}`
+            }>
             <div className="user-project_heading_agencyNewestDashboard">
                 <div className="user-project_child_agencyNewestDashboard">
                     <h5>{props?.projectName}</h5>
@@ -88,7 +88,7 @@ function AgencyProjectCard({ key, ...props }) {
                 </table>
             </div>
             <div onClick={() =>
-                routerHistory.push(`/agency-project-details:${props?._id}`)
+                routerHistory.push(`/agency-project-details/${props?._id}`)
             } className="user-project-button_agencyNewestDashboard" style={{ cursor: 'pointer' }}>
                 <h6>Show Details</h6>
             </div>

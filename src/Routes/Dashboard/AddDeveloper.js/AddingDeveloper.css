@@ -1,42 +1,47 @@
 .mainAddingDeveloper_parent {
-  padding-top: 5rem;
+    padding-top: 5rem;
 }
 
+.custom-item-renderer {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
 .mainAddingDeveloper {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
 }
 
 .innerAddingDeveloper {
-  width: 65%;
-  display: flex;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  background: #fff;
-  border-radius: 8px;
+    width: 65%;
+    display: flex;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    background: #fff;
+    border-radius: 8px;
 }
 
 .addingDeveloperHeadings {
-  height: 36rem;
-  width: 29%;
-  background-color: #ffffff;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  border-radius: 8px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+    height: 36rem;
+    width: 29%;
+    background-color: #ffffff;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .inputField2 .developerName_addingDeveloper .mohit {
-  border: 2px solid red !important;
-  border-radius: 5px !important;
+    border: 2px solid red !important;
+    border-radius: 5px !important;
 }
 
 .experience-radio-parent {
-  width: 100%;
-  display: flex;
+    width: 100%;
+    display: flex;
 }
 
 /* .inputForm {
@@ -46,221 +51,228 @@
 } */
 
 .model3d {
-  position: absolute;
-  width: 60%;
-  bottom: 0;
-  z-index: -1;
-  left: 50%;
+    position: absolute;
+    width: 60%;
+    bottom: 0;
+    z-index: -1;
+    left: 50%;
 }
 
 .techImage {
-  position: absolute;
-  width: 15%;
+    position: absolute;
+    width: 15%;
 }
 
 .addingDeveloperHeadings h1 {
-  font-family: 'Segoe UI Bold';
-  color: #45A4E4;
-  font-size: 1.6rem;
+    font-family: 'Segoe UI Bold';
+    color: #45a4e4;
+    font-size: 1.6rem;
 }
 
 .addingDeveloperHeadings p {
-  font-family: 'Segoe UI';
-  color: #707070;
-  font-size: 0.9rem;
+    font-family: 'Segoe UI';
+    color: #707070;
+    font-size: 0.9rem;
 }
 
 .pointsToRemember {
-  margin-top: 8%;
+    margin-top: 8%;
 }
 
 .pointsToRemember h2 {
-  color: #45A4EA;
-  font-family: 'Segoe UI';
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0;
+    color: #45a4ea;
+    font-family: 'Segoe UI';
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0;
 }
 
 .pointsToRemember ul li {
-  font-family: 'Segoe UI';
-  color: #45A4EA;
+    font-family: 'Segoe UI';
+    color: #45a4ea;
 }
 
 .inputForm {
-  padding: 3rem 0rem 3rem 3rem;
-  width: 100%;
-  border-radius: 8px;
+    padding: 3rem 0rem 3rem 3rem;
+    width: 100%;
+    border-radius: 8px;
 }
 
 .inputField1 {
-  height: 14%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
+    height: 14%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
 
 .inputField2 {
-  height: 14%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2%;
-  position: relative;
-  margin-top: 2%;
-  align-items: center;
+    height: 14%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    position: relative;
+    margin-top: 2%;
+    align-items: center;
 }
 
-.inputField1 .developerName_addingDeveloper, .inputField1 .developerDesignation_addingDeveloper {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
+.inputField1 .developerName_addingDeveloper,
+.inputField1 .developerDesignation_addingDeveloper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 
 .inputField2 .developerName_addingDeveloper {
-  width: 31%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    width: 31%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .inputField2 .developerDesignation_addingDeveloper {
-  width: 67%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .upload-box {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-transform: capitalize;
-  color: #a8a8a8;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: capitalize;
+    color: #a8a8a8;
 }
 
 .resume_div:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .developerDesignation_addingDeveloper ::-webkit-file-upload-button {
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 12px;
-  text-transform: capitalize;
-  color: #407bff;
-  border: none;
-  outline: none;
-  border: 1px solid #a1a1a1;
-  box-sizing: border-box;
-  border-radius: 9px;
-  padding: 13px;
-  background-color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 12px;
+    text-transform: capitalize;
+    color: #407bff;
+    border: none;
+    outline: none;
+    border: 1px solid #a1a1a1;
+    box-sizing: border-box;
+    border-radius: 9px;
+    padding: 13px;
+    background-color: white;
 }
 
-.developerName_addingDeveloper>h4, .developerDesignation_addingDeveloper>h4 {
-  font-family: 'Segoe UI';
-  font-size: 16px;
-  /* text-transform: capitalize; */
-  color: #707070;
+.developerName_addingDeveloper > h4,
+.developerDesignation_addingDeveloper > h4 {
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    /* text-transform: capitalize; */
+    color: #707070;
 }
 
-.inputField1 .developerName_addingDeveloper input, .inputField1 .developerDesignation_addingDeveloper input,
+.inputField1 .developerName_addingDeveloper input,
+.inputField1 .developerDesignation_addingDeveloper input,
 .availability_days {
-  border: 1px solid #45A4EA;
-  border-radius: 6px;
-  width: 73%;
-  height: 35px;
-  padding-left: 10px;
-  font-family: 'Segoe UI';
-  font-size: 12px;
-  text-transform: capitalize;
-  margin-top: 0.4rem;
+    border: 1px solid #45a4ea;
+    border-radius: 6px;
+    width: 73%;
+    height: 35px;
+    padding-left: 10px;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-top: 0.4rem;
 }
 
 .availability_days {
-  width: 33%;
-  margin-top: 0;
+    width: 33%;
+    margin-top: 0;
 }
 
 #browsers {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 .mainAddingDeveloper .MuiFormGroup-root {
-  flex-direction: row !important;
-  margin-left: 0 !important;
+    flex-direction: row !important;
+    margin-left: 0 !important;
 }
 
 .uploadBlock_addingDeveloper {
-  width: 76%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.5rem;
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
 }
 
 .uploadInfo_addingDeveloper {
-  width: max-content;
+    width: max-content;
 }
 
 .uploadInfo_addingDeveloper p {
-  font-family: 'Segoe UI';
-  font-size: 14px;
-  text-transform: capitalize;
-  color: #707070;
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #707070;
 }
 
 .fileUploadButton_addingDeveloper {
-  width: 50%;
-  display: flex;
-  border: 1px solid #45A4EA;
-  border-radius: 6px;
-  padding: 7px;
-  height: 35px;
+    width: 50%;
+    display: flex;
+    border: 1px solid #45a4ea;
+    border-radius: 6px;
+    padding: 7px;
+    height: 35px;
 }
 
 .fileUploadButton_addingDeveloper:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .fileUploadButton_addingDeveloper div {
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-  color: #707070;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0;
-}
-
-.inputField2 .MuiFormControl-root {
-  border-radius: 8px !important;
-  border: 1.19898px solid #a1a1a1 !important;
-  height: 39px !important;
-  display: flex !important;
-  justify-content: center !important;
-}
-
-.container_addingDeveloper {
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.file_click_addingDeveloper svg {
-  font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    color: #707070;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-top: 0;
 }
 
 .file_click_addingDeveloper p {
-  font-family: 'Segoe UI';
-  font-size: 0.7rem;
+    transform: translateX(10px);
+}
+
+.inputField2 .MuiFormControl-root {
+    border-radius: 8px !important;
+    border: 1.19898px solid #a1a1a1 !important;
+    height: 39px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.container_addingDeveloper {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.file_click_addingDeveloper svg {
+    font-size: 1rem;
+}
+
+.file_click_addingDeveloper p {
+    font-family: 'Segoe UI';
+    font-size: 0.7rem;
 }
 
 /* .accepted_file_para p {
@@ -269,65 +281,66 @@
 } */
 
 .inputField2 .MuiSelect-root {
-  padding-left: 4px;
+    padding-left: 4px;
 }
 
-.MuiInput-underline:before, .MuiInput-underline::after {
-  content: none !important;
+.MuiInput-underline:before,
+.MuiInput-underline::after {
+    content: none !important;
 }
 
 .MuiRadio-colorSecondary.Mui-checked {
-  color: #45A4EA !important;
+    color: #45a4ea !important;
 }
 
 .MuiRadio-colorSecondary:hover {
-  background-color: none !important;
+    background-color: none !important;
 }
 
 .PrivateSwitchBase-root-1 {
-  background-color: #fff !important;
+    background-color: #fff !important;
 }
 
 .mainAddingDeveloper .MuiTypography-body1 {
-  font-family: 'Segoe UI';
-  color: #707070;
-  font-size: 12px !important;
-  text-transform: capitalize !important;
-  margin-right: 24px !important;
+    font-family: 'Segoe UI';
+    color: #707070;
+    font-size: 12px !important;
+    text-transform: capitalize !important;
+    margin-right: 24px !important;
 }
 
 .inputField2 .makeStyles-formControl-10 {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .mainAddingDeveloper .MuiFormLabel-root {
-  font-size: 16px !important;
-  text-transform: capitalize !important;
-  font-family: 'Segoe UI';
-  color: #707070 !important;
-  margin-bottom: 0;
+    font-size: 16px !important;
+    text-transform: capitalize !important;
+    font-family: 'Segoe UI';
+    color: #707070 !important;
+    margin-bottom: 0;
 }
 
 .MuiSelect-root em {
-  width: 73%;
-  height: 40px;
-  padding-left: 2px;
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
+    width: 73%;
+    height: 40px;
+    padding-left: 2px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 .priceRange {
-  margin-top: 3%;
-  position: relative;
+    margin-top: 3%;
+    position: relative;
 }
 
 .availabilityArea {
-  margin-top: 3%;
-  position: relative;
-  width: 80%;
+    margin-top: 3%;
+    position: relative;
+    width: 80%;
 }
 
 /* .submitButton {
@@ -340,210 +353,211 @@
 } */
 
 .submitButton button {
-  border-radius: 8px;
-  outline: none;
-  border: none;
-  /* background-color: #707070; */
-  background: #ced3ff;
-  color: black;
-  border-radius: 30px;
-  width: 105px;
-  height: 34px;
-  font-family: 'Segoe UI';
-  font-size: 14px;
-  text-align: center;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    /* background-color: #707070; */
+    background: #ced3ff;
+    color: black;
+    border-radius: 30px;
+    width: 105px;
+    height: 34px;
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .mainAddingDeveloper .submitButton button:hover {
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.inputForm .submitButton, .submitButton_enterEmail {
-  margin-top: 2rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 5%;
+.inputForm .submitButton,
+.submitButton_enterEmail {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
 }
 
 .inputForm .submitButton button:hover,
 .submitButton_enterEmail button:hover {
-  cursor: pointer;
-  background-color: #45A4EA;
-  color: #eaf2ff;
+    cursor: pointer;
+    background-color: #45a4ea;
+    color: #eaf2ff;
 }
 
 .mainAddDeveloperForm {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../../../assets/images/AddDeveloper/bgImage.png');
-  background-size: 100%;
-  background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../assets/images/AddDeveloper/bgImage.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .innermainAddDeveloperForm {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 35px;
-  margin: 4rem 0;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 35px;
+    margin: 4rem 0;
 }
 
 .formArea {
-  width: 90%;
+    width: 90%;
 }
 
 .formHeading {
-  margin-bottom: 5%;
-  margin-top: 3%;
+    margin-bottom: 5%;
+    margin-top: 3%;
 }
 
 .formHeading h2 {
-  font-family: 'Josefin Sans';
+    font-family: 'Josefin Sans';
 }
 
 .projectNameForm {
-  margin-bottom: 3%;
+    margin-bottom: 3%;
 }
 
 .projectNameForm h2 {
-  font-family: 'Josefin Sans';
-  font-size: 1.3rem;
+    font-family: 'Josefin Sans';
+    font-size: 1.3rem;
 }
 
 .projectNameForm input {
-  width: 90%;
-  height: 50px;
-  padding-left: 20px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+    width: 90%;
+    height: 50px;
+    padding-left: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 .projectNameForm input:focus {
-  outline: none;
+    outline: none;
 }
 
 .projectDescForm {
-  margin-bottom: 3%;
+    margin-bottom: 3%;
 }
 
 .projectDescForm h2 {
-  font-family: 'Josefin Sans';
-  font-size: 1.3rem;
+    font-family: 'Josefin Sans';
+    font-size: 1.3rem;
 }
 
 .projectDescForm textarea {
-  width: 90%;
-  height: 200px;
-  padding-left: 20px;
-  padding-top: 10px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+    width: 90%;
+    height: 200px;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 .projectDescForm textarea:focus {
-  outline: none;
+    outline: none;
 }
 
 .limitsOfWords {
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #777;
-  font-family: 'Open Sans', sans-serif;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #777;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .MuiButtonBase-root {
-  font-family: 'Open Sans', sans-serif !important;
-  border: none !important;
+    font-family: 'Open Sans', sans-serif !important;
+    border: none !important;
 }
 
 .mainAddingDeveloper .MuiInputBase-root {
-  font-family: 'Open Sans', sans-serif !important;
-  background-color: #fff !important;
+    font-family: 'Open Sans', sans-serif !important;
+    background-color: #fff !important;
 }
 
 .MuiInputBase-root:focus {
-  background-color: #fff !important;
+    background-color: #fff !important;
 }
 
 .MuiInputBase-root:hover {
-  outline: none;
+    outline: none;
 }
 
 .nextButton {
-  margin-top: 2%;
-  margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
 }
 
 .nextButton button {
-  width: 10%;
-  height: 40px;
-  outline: none;
-  border: none;
-  background-color: #1566D8;
-  border-radius: 6px;
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
+    width: 10%;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #1566d8;
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .error_paragraph {
-  color: red;
-  font-weight: normal;
-  font-size: 14px;
-  margin-bottom: 0px;
-  position: absolute;
-  margin-top: -10px;
+    color: red;
+    font-weight: normal;
+    font-size: 14px;
+    margin-bottom: 0px;
+    position: absolute;
+    margin-top: -10px;
 }
 
 .error_paragraph.basic {
-  top: 4.4rem;
+    top: 4.4rem;
 }
 
 .error_paragraph.experience {
-  top: 5rem;
+    top: 5rem;
 }
 
 .yearsOfExperience_addingDeveloper {
-  margin-top: 4%;
+    margin-top: 4%;
 }
 
 .inputField2 .multi-select {
-  display: flex;
-  text-transform: capitalize;
-  color: black;
-  width: 78%;
-  background: #ffffff;
-  border-radius: 8px;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin-top: 0.5rem;
+    display: flex;
+    text-transform: capitalize;
+    color: black;
+    width: 78%;
+    background: #ffffff;
+    border-radius: 8px;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
 }
 
 .inputField2 .dropdown-container {
-  border: 1px solid #45A4EA;
-  border-radius: 6px;
+    border: 1px solid #45a4ea;
+    border-radius: 6px;
 }
 
 .developerName_addingDeveloper .go2642161244 {
-  height: 34px;
+    height: 34px;
 }
 
 .inputField2 .dropdown-container .dropdown-heading-value span {
-  font-family: 'Segoe UI';
-  font-size: 12px;
-  text-transform: capitalize;
-  color: #707070;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    text-transform: capitalize;
+    color: #707070;
 }

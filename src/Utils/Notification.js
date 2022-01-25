@@ -10,6 +10,7 @@ const Notification = ({ title, body, show }) => {
         autoClose: false,
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function Display() {

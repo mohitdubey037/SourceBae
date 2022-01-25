@@ -1,635 +1,656 @@
 .topLine {
-  position: absolute;
-  top: 0px;
-  width: 100%;
-  background-color: #45A4ea;
-  height: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 999px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    background-color: #45a4ea;
+    height: 4px;
+    left: 50%;
+    flex: 1;
+    transform: translateX(-50%);
+    border-radius: 999px;
 }
 
 .hardcoded_comment_image {
-  position: absolute;
-  top: 5rem;
-  left: 9rem;
-  z-index: -1;
-  opacity: 0.4;
+    position: absolute;
+    top: 5rem;
+    left: 9rem;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.upload_file_quoatation {
+    font-family: 'Segoe UI Semibold';
+    font-size: 11px;
 }
 
 .chatBox-parent {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  height: 23rem;
-  /* height: max-content; */
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 23rem;
+    /* height: max-content; */
 }
 
 .chatBox {
-  /* margin: 2% 0; */
-  width: 100%;
-  text-align: right;
-  justify-content: flex-end;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  overflow-wrap: break-word;
+    /* margin: 2% 0; */
+    width: 100%;
+    text-align: right;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow-wrap: break-word;
 }
 
 .chatBox p {
-  padding: 0.5rem 1rem;
-  font-family: 'Segoe UI';
-  width: 60%;
-  color: white;
-  border-radius: 10px;
-  border-top-right-radius: 0;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    padding: 0.5rem 1rem;
+    font-family: 'Segoe UI';
+    /* width: 60%; */
+    width: max-content;
+    max-width: 60%;
+    color: white;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .chatBox-left {
-  text-align: left;
-  justify-content: flex-start;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow-wrap: break-word;
-  margin-top: 0;
+    text-align: left;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-wrap: break-word;
+    margin-top: 0;
 }
 
 .chatBox.max-width p {
-  width: max-content;
+    width: max-content;
 }
 
 .chatBox-left p {
-  border-radius: 10px;
-  border-top-left-radius: 0;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .chatBox b {
-  font-family: 'Segoe UI';
-  font-size: 10px;
-  text-transform: capitalize;
-  padding-top: 0.3rem;
+    font-family: 'Segoe UI';
+    font-size: 10px;
+    text-transform: capitalize;
+    padding-top: 0.3rem;
 }
 
 .conditional_width_commentBox {
-  width: 100% !important;
+    width: 99% !important;
+    margin-top: 1rem;
+    margin-right: 0 !important;
 }
 
 .commentBox {
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 2rem 1rem 1rem 1rem;
-  width: 46%;
-  height: 25rem;
-  position: relative;
-  opacity: 0.99;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 1rem;
+    /* margin: 2rem 1rem 1rem 1rem; */
+    margin: 0rem 1rem 1rem 0rem;
+    width: 49%;
+    height: 25rem;
+    position: relative;
+    opacity: 0.99;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .commentParent {
-  width: 100%;
-  position: relative;
-  bottom: 10px;
-  transform: translateY(1rem);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  justify-content: space-between;
+    width: 100%;
+    transform: translateY(1rem);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 .chatBox-right {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .detailHeaderImage_agencyRespondedDetails {
-  margin-right: 1.5%;
+    margin-right: 1.5%;
 }
 
 .price-section .makeStyles-margin-1 {
-  margin-left: 0 !important;
+    margin-left: 0 !important;
+    width: 100%;
+}
+
+.price-section {
+    width: 100%;
 }
 
 .reply-parent {
-  display: flex;
-  flex-direction: column;
-  width: 30%,
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 .quotation_file_upload {
-  /* height: 30px; */
-  top: 2rem;
-  /* position: absolute; */
-  text-transform: capitalize;
-  color: #3A3A3A;
+    /* height: 30px; */
+    top: 2rem;
+    /* position: absolute; */
+    text-transform: capitalize;
+    color: #3a3a3a;
 }
 
 .reply-button {
-  background: none;
-  min-width: 40px;
-  max-width: 80px;
-  border: 2px solid black;
-  border-radius: 4px
+    background: none;
+    min-width: 40px;
+    max-width: 80px;
+    border: 2px solid black;
+    border-radius: 4px;
 }
 
-.conditional_acceptOrReject {
-  font-size: 18px;
-  line-height: 39px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #3A3A3A;
+.conditional_acceptOrReject p {
+    font-size: 18px;
+    /* line-height: 39px; */
+    /* text-align: center; */
+    font-family: 'Segoe UI Semibold';
+    text-transform: capitalize;
+    color: #3a3a3a;
 }
 
 .normal_acceptOrReject {
-  font-size: 18px;
-  line-height: 39px;
-  text-align: center;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #3A3A3A;
+    font-size: 18px;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3a3a3a;
 }
 
 .clientName {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-}
-
-.clientName div {
-  width: 50%;
-}
-
-.clientName h2 {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI Bold';
-  /* font-weight: bold; */
-}
-
-.action-wait .postQuotation .detailsButtons {
-  margin: 1rem 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-family: 'Segoe UI';
-}
-
-.postQuotation {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.negotiablePrice>input[type='number'] {
-  margin-left: 1rem;
-  min-height: 48px;
-}
-
-.clientExperience {
-  width: 130%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.conversation-over p {
-  font-size: 0.8rem !important;
-}
-
-.btnInfoDiv {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.acceptButton, .rejectButton, .detailsButtons>button {
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  outline: none;
-  background-color: rgb(69, 164, 228);
-  border: none;
-  color: #fff;
-  font-family: 'Segoe UI';
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
-  letter-spacing: 1px;
-}
-
-.detailsButtons>button {
-  margin: 0;
-  letter-spacing: 0px;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-}
-
-.detailsButtons>a {
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.7rem;
-  background-color: rgb(234, 243, 255);
-  outline: none;
-  border-radius: 999px;
-  font-family: 'Segoe UI';
-  color: black;
-  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%);
-}
-
-.detailsButtons>button:hover {
-  background: rgb(2, 69, 124);
-  color: white;
-}
-
-.rejectButton {
-  border: 1px solid #707070;
-  background-color: #707070;
-}
-
-.acceptButton:hover {
-  color: green;
-  background: white;
-}
-
-.rejectButton:hover {
-  color: red;
-  background: white;
-}
-
-.acceptButton:hover, .acceptButton:focus, .acceptButton:active, .rejectButton:hover, .rejectButton:focus, .rejectButton:active {
-  outline: none;
-}
-
-.postQuotation>button {
-  background-color: #02044a;
-}
-
-.disabled {
-  pointer-events: fill;
-  opacity: 0.5;
-  filter: grayscale(0%);
-}
-
-.margin-0 p {
-  font-size: small;
-}
-
-.proposalCard {
-  width: 100%;
-  background-color: #fff;
-  height: 100%;
-  display: flex;
-  /* justify-content: space-between; */
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.QuotationModal.QuotationModal_agencyCommentBox {
-  max-width: 650px;
-  width: 100%;
-  border-radius: 10px;
-}
-
-.tableContentQuotation .MuiFormControl-root {
-  width: 100%;
-}
-
-.acceptOrReject_agencyCommentBox {
-  position: absolute;
-  top: 2rem;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 39px;
-  text-align: center;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #3A3A3A;
-  left: 6rem;
-}
-
-@media (max-width: 768px) {
-  .detailHeaderImage div {
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  .detailHeaderImage div img {
-    width: 100px;
-    object-fit: contain;
-  }
-
-  .headerInformation {
-    width: 100%;
-  }
-
-  .clientName {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-  }
+}
 
-  .clientName div {
+.clientName div {
     width: 50%;
-  }
+}
 
-  .clientName h2 {
+.clientName h2 {
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Segoe UI Bold';
-    font-weight: bold;
-  }
+    /* font-weight: bold; */
+}
 
-  .detailsButtons {
+.action-wait .postQuotation .detailsButtons {
+    margin: 1rem 0;
+    width: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 1rem;
-    margin: 0.5rem 0;
-  }
+    justify-content: center;
+    font-size: 0.8rem;
+    font-family: 'Segoe UI';
+}
 
-  .postQuotation {
+.postQuotation {
     display: flex;
-    color: #fff;
     flex-direction: column;
-    align-items: flex-start;
-  }
+    justify-content: center;
+    align-items: center;
+}
 
-  .clientExperience {
+.negotiablePrice > input[type='number'] {
+    margin-left: 1rem;
+    min-height: 48px;
+}
+
+.clientExperience {
+    width: 130%;
     display: flex;
     align-items: center;
-    margin-top: 2%;
     flex-wrap: wrap;
-  }
+}
 
-  .btnInfoDiv {
+.conversation-over p {
+    font-size: 0.8rem !important;
+}
+
+.btnInfoDiv {
     position: relative;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-  }
+}
 
-  .rightBorder {
-    position: absolute;
-    width: 2px;
-    height: 60%;
-    top: 0;
-    right: 0%;
-    background-color: #aaa;
+.acceptButton,
+.rejectButton,
+.detailsButtons > button {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 999px;
-  }
+    outline: none;
+    background-color: rgb(69, 164, 228);
+    border: none;
+    color: #fff;
+    font-family: 'Segoe UI';
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
 
-  .innerBtnInfoDiv {
-    margin-right: 20px;
-  }
+.detailsButtons > button {
+    margin: 0;
+    letter-spacing: 0px;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+}
 
-  .innerBtnInfoDiv p {
-    /* font-family: 'Open Sans', sans-serif; */
-    font-family: 'Segoe UI Semibold';
-    font-weight: 500;
-    font-size: 1.1rem;
-  }
+.detailsButtons > a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    background-color: rgb(234, 243, 255);
+    outline: none;
+    border-radius: 999px;
+    font-family: 'Segoe UI';
+    color: black;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%);
+}
+
+.detailsButtons > button:hover {
+    background: rgb(2, 69, 124);
+    color: white;
+}
+
+.rejectButton {
+    border: 1px solid #707070;
+    background-color: #707070;
+}
+
+.acceptButton:hover {
+    color: green;
+    background: white;
+}
+
+.rejectButton:hover {
+    color: red;
+    background: white;
+}
+
+.acceptButton:hover,
+.acceptButton:focus,
+.acceptButton:active,
+.rejectButton:hover,
+.rejectButton:focus,
+.rejectButton:active {
+    outline: none;
+}
+
+.postQuotation > button {
+    background-color: #02044a;
+}
+
+.disabled {
+    pointer-events: fill;
+    opacity: 0.5;
+    filter: grayscale(0%);
+}
+
+.margin-0 p {
+    font-size: small;
+}
+
+.proposalCard {
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.QuotationModal.QuotationModal_agencyCommentBox {
+    max-width: 650px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.tableContentQuotation .MuiFormControl-root {
+    width: 100%;
+}
+
+.acceptOrReject_agencyCommentBox {
+    position: absolute;
+    top: 2rem;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3a3a3a;
+    left: 6rem;
 }
 
 @media (max-width: 768px) {
-  .detailHeaderImage div {
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10%;
-  }
+    .detailHeaderImage div {
+        width: 60px;
+        height: 60px;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    }
 
-  .innerDetailHeader {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 1rem 0;
-  }
+    .detailHeaderImage div img {
+        width: 100px;
+        object-fit: contain;
+    }
 
-  .detailHeaderImage div img {
-    width: 40px;
-    object-fit: contain;
-  }
+    .headerInformation {
+        width: 100%;
+    }
 
-  .clientExperience {
-    flex-direction: column;
-  }
+    .clientName {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+    }
 
-  .clientName {
-    flex-direction: column;
-    align-items: center;
-  }
+    .clientName div {
+        width: 50%;
+    }
 
-  .clientName div {
-    width: 100%;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
+    .clientName h2 {
+        /* font-family: 'Open Sans', sans-serif; */
+        font-family: 'Segoe UI Bold';
+        font-weight: bold;
+    }
 
-  .detailsButtons button {
-    width: 30%;
-    margin: 0 20px 0 0;
-    position: absolute;
-    top: 10%;
-    right: -5%;
-    font-size: 0.8rem;
-    padding: 0.5rem 0.1rem;
-  }
+    .detailsButtons {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-right: 1rem;
+        margin: 0.5rem 0;
+    }
 
-  .clientExperience {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 5%;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
+    .postQuotation {
+        display: flex;
+        color: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-  .innerBtnInfoDiv {
-    margin-right: 0;
-  }
+    .clientExperience {
+        display: flex;
+        align-items: center;
+        margin-top: 2%;
+        flex-wrap: wrap;
+    }
 
-  .clientExperience p {
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .btnInfoDiv {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 
-  .rightBorder {
-    display: none;
-  }
+    .rightBorder {
+        position: absolute;
+        width: 2px;
+        height: 60%;
+        top: 0;
+        right: 0%;
+        background-color: #aaa;
+        border-radius: 999px;
+    }
+
+    .innerBtnInfoDiv {
+        margin-right: 20px;
+    }
+
+    .innerBtnInfoDiv p {
+        /* font-family: 'Open Sans', sans-serif; */
+        font-family: 'Segoe UI Semibold';
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .detailHeaderImage div {
+        width: 60px;
+        height: 60px;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+        margin-bottom: 10%;
+    }
+
+    .innerDetailHeader {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .detailHeaderImage div img {
+        width: 40px;
+        object-fit: contain;
+    }
+
+    .clientExperience {
+        flex-direction: column;
+    }
+
+    .clientName {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .clientName div {
+        width: 100%;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .detailsButtons button {
+        width: 30%;
+        margin: 0 20px 0 0;
+        position: absolute;
+        top: 10%;
+        right: -5%;
+        font-size: 0.8rem;
+        padding: 0.5rem 0.1rem;
+    }
+
+    .clientExperience {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 5%;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .innerBtnInfoDiv {
+        margin-right: 0;
+    }
+
+    .clientExperience p {
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .rightBorder {
+        display: none;
+    }
 }
 
 .respondDescription {
-  margin-top: 3%;
-  margin-left: 2%;
+    margin-top: 3%;
+    margin-left: 2%;
 }
 
 .respondDescription h2 {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI';
-  /* font-weight: 400; */
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
+    /* font-weight: 400; */
 }
 
 .respondDescription p {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI';
-  font-weight: 400;
-  width: 80%;
-  margin-top: 1%;
-  color: #9a9a9a;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
+    font-weight: 400;
+    width: 80%;
+    margin-top: 1%;
+    color: #9a9a9a;
 }
 
 @media (max-width: 768px) {
-  .respondDescription p {
-    width: 100% !important;
-  }
+    .respondDescription p {
+        width: 100% !important;
+    }
 }
 
 .leftLine {
-  position: absolute;
-  width: 4px;
-  background-color: rgb(69, 164, 228);
-  top: 50%;
-  left: 0;
-  height: 100%;
+    position: absolute;
+    width: 4px;
+    background-color: rgb(69, 164, 228);
+    top: 50%;
+    left: 0;
+    height: 100%;
 }
 
 .innerResponseCard div p:nth-child(2) {
-  font-family: 'Segoe UI';
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
 }
 
 @media (max-width: 768px) {
-  .respondCards {
-    flex-direction: column;
-  }
+    .respondCards {
+        flex-direction: column;
+    }
 
-  .innerResponseCard {
-    width: 100%;
-    margin-bottom: 5%;
-  }
+    .innerResponseCard {
+        width: 100%;
+        margin-bottom: 5%;
+    }
 
-  .innerResponseCard div p {
-    font-size: 0.9rem;
-  }
+    .innerResponseCard div p {
+        font-size: 0.9rem;
+    }
 }
 
 .briefDetails {
-  width: 100%;
-  margin-bottom: 5%;
-  position: relative;
+    width: 100%;
+    margin-bottom: 5%;
+    position: relative;
 }
 
 .briefDetails img {
-  position: absolute;
-  width: 10%;
-  object-fit: contain;
+    position: absolute;
+    width: 10%;
+    object-fit: contain;
 }
 
 .leftQuote {
-  top: 0;
-  left: 3%;
+    top: 0;
+    left: 3%;
 }
 
 .rightQuote {
-  bottom: 0;
-  right: 3%;
+    bottom: 0;
+    right: 3%;
 }
 
 .innerBriefDetails {
-  width: 70%;
-  margin-top: 5%;
+    width: 70%;
+    margin-top: 5%;
 }
 
 .briefHeading {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1%;
-  border-bottom: 1px solid #ebebeb;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1%;
+    border-bottom: 1px solid #ebebeb;
 }
 
 .briefHeading h2 {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI Semibold';
-  /* font-weight: 600; */
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI Semibold';
+    /* font-weight: 600; */
 }
 
 .briefHeading p {
-  background-color: #02044a;
-  padding: 0.4rem 1rem;
-  border-radius: 999px;
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI Semibold';
-  color: #fff;
-  /* font-weight: 600; */
+    background-color: #02044a;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI Semibold';
+    color: #fff;
+    /* font-weight: 600; */
 }
 
 .briefQuestions {
-  margin-top: 3%;
+    margin-top: 3%;
 }
 
 .briefQuestions div {
-  margin-bottom: 3%;
+    margin-bottom: 3%;
 }
 
 .briefQuestions div h4 {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI';
-  color: #000;
-  font-size: 1.3rem;
-}
-
-.briefQuestions div p {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI';
-  color: #484848;
-  font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-  .briefHeading {
-    flex-direction: column;
-  }
-
-  .briefHeading p {
-    padding: 0;
-    background-color: transparent;
-    color: #02044a;
-    font-weight: bold !important;
-    font-size: 1rem;
-  }
-
-  .briefQuestions div h4 {
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Segoe UI';
     color: #000;
-    font-size: 1rem;
-  }
+    font-size: 1.3rem;
+}
 
-  .briefQuestions div p {
+.briefQuestions div p {
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Segoe UI';
     color: #484848;
-    font-size: 0.8rem;
-  }
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .briefHeading {
+        flex-direction: column;
+    }
+
+    .briefHeading p {
+        padding: 0;
+        background-color: transparent;
+        color: #02044a;
+        font-weight: bold !important;
+        font-size: 1rem;
+    }
+
+    .briefQuestions div h4 {
+        /* font-family: 'Open Sans', sans-serif; */
+        font-family: 'Segoe UI';
+        color: #000;
+        font-size: 1rem;
+    }
+
+    .briefQuestions div p {
+        /* font-family: 'Open Sans', sans-serif; */
+        font-family: 'Segoe UI';
+        color: #484848;
+        font-size: 0.8rem;
+    }
 }
 
 /* .agencyQuotation {
@@ -650,99 +671,6 @@
 } */
 
 .quotationleftLine {
-  position: absolute;
-  width: 10px;
-  height: 98%;
-  top: 50%;
-  left: 0;
-  background-color: #02044a;
-  border-radius: 999px;
-  transform: translateY(-50%);
-}
-
-.agencyQuotationHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #e9f0ef;
-  padding: 1rem 2rem;
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI';
-  border-radius: 15px;
-}
-
-.agencyQuotationHeading h2 {
-  font-weight: bold;
-}
-
-.agencyLogo {
-  width: 200px;
-  height: 80px;
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.agencyLogo img {
-  width: 60%;
-  /* height: 80px; */
-  object-fit: contain;
-  mix-blend-mode: multiply;
-}
-
-.agencyQuotationDesc {
-  margin-top: 2%;
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI';
-  padding: 1rem 2rem;
-}
-
-.agencyQuotationDesc h4 {
-  color: #000;
-}
-
-.agencyQuotationDesc p {
-  color: #484848;
-}
-
-.agencyQuestions {
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.agencyQuestions div h4 {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI Bold';
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.agencyQuestions div ul {
-  /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Segoe UI';
-  color: #02044a;
-  font-size: 1.1rem;
-  margin-top: 20px;
-  list-style: disc;
-}
-
-@media (max-width: 768px) {
-  .agencyQuestions {
-    flex-direction: column;
-    margin-bottom: 3%;
-  }
-
-  .innerAgencyQuotation {
-    width: 95%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-    position: relative;
-    border-radius: 15px;
-  }
-
-  .quotationleftLine {
     position: absolute;
     width: 10px;
     height: 98%;
@@ -751,9 +679,9 @@
     background-color: #02044a;
     border-radius: 999px;
     transform: translateY(-50%);
-  }
+}
 
-  .agencyQuotationHeader {
+.agencyQuotationHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -762,91 +690,189 @@
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Segoe UI';
     border-radius: 15px;
-  }
+}
 
-  .agencyQuotationHeading h2 {
+.agencyQuotationHeading h2 {
     font-weight: bold;
-  }
+}
 
-  .agencyLogo {
+.agencyLogo {
     width: 200px;
     height: 80px;
     overflow: hidden;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  }
+}
 
-  .agencyLogo img {
+.agencyLogo img {
     width: 60%;
     /* height: 80px; */
     object-fit: contain;
     mix-blend-mode: multiply;
-  }
+}
 
-  .agencyQuotationDesc {
+.agencyQuotationDesc {
     margin-top: 2%;
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'Segoe UI';
     padding: 1rem 2rem;
-  }
+}
 
-  .agencyQuotationDesc h4 {
+.agencyQuotationDesc h4 {
     color: #000;
-  }
+}
 
-  .agencyQuotationDesc p {
+.agencyQuotationDesc p {
     color: #484848;
-    font-size: 0.9rem;
-  }
+}
+
+.agencyQuestions {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.agencyQuestions div h4 {
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI Bold';
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.agencyQuestions div ul {
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Segoe UI';
+    color: #02044a;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    list-style: disc;
+}
+
+@media (max-width: 768px) {
+    .agencyQuestions {
+        flex-direction: column;
+        margin-bottom: 3%;
+    }
+
+    .innerAgencyQuotation {
+        width: 95%;
+        background-color: #fff;
+        box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+        position: relative;
+        border-radius: 15px;
+    }
+
+    .quotationleftLine {
+        position: absolute;
+        width: 10px;
+        height: 98%;
+        top: 50%;
+        left: 0;
+        background-color: #02044a;
+        border-radius: 999px;
+        transform: translateY(-50%);
+    }
+
+    .agencyQuotationHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #e9f0ef;
+        padding: 1rem 2rem;
+        /* font-family: 'Open Sans', sans-serif; */
+        font-family: 'Segoe UI';
+        border-radius: 15px;
+    }
+
+    .agencyQuotationHeading h2 {
+        font-weight: bold;
+    }
+
+    .agencyLogo {
+        width: 200px;
+        height: 80px;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .agencyLogo img {
+        width: 60%;
+        /* height: 80px; */
+        object-fit: contain;
+        mix-blend-mode: multiply;
+    }
+
+    .agencyQuotationDesc {
+        margin-top: 2%;
+        /* font-family: 'Open Sans', sans-serif; */
+        font-family: 'Segoe UI';
+        padding: 1rem 2rem;
+    }
+
+    .agencyQuotationDesc h4 {
+        color: #000;
+    }
+
+    .agencyQuotationDesc p {
+        color: #484848;
+        font-size: 0.9rem;
+    }
 }
 
 .detailsButtons.md-flex {
-  display: flex !important;
-  justify-content: center !important;
-  flex-direction: row !important;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: row !important;
 }
 
 .detailsButtons.md-m10 {
-  margin: 10px 0 !important;
+    margin: 10px 0 !important;
 }
 
 .md-flex .color-black {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 .extraDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .tableContentQuotation input {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .dot {
-  background-color: #707070;
-  margin: 0.5rem 0.4rem 0rem 0rem;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  opacity: 1;
+    background-color: #707070;
+    margin: 0.5rem 0.4rem 0rem 0rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    opacity: 1;
 }
 
+.react-responsive-modal-closeButton {
+    top: 2px;
+    outline: none;
+    border: none;
+}
 .react-responsive-modal-closeButton svg {
-  width: 20px
+    width: 20px;
 }
 
 .price-section .MuiOutlinedInput-multiline {
-  padding: 16.5px 14px;
-  margin-right: 0.6rem;
+    padding: 16.5px 14px;
+    /* margin-right: 0.6rem; */
 }
 
 .fileUpload_shortTerm:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .please_wait p {
-  font-size: 0.5rem;
+    font-size: 0.5rem;
 }

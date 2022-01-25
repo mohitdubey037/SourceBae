@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
+import { useParams } from "react-router";
 import TextField from '@material-ui/core/TextField';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import lock from "../../assets/images/Logo/lock.svg";
 import "./EnterEmail.css";
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import UpImage from '../../assets/images/Newestdashboard/Short_Term/UpImage.svg';
 import DownImage from '../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
+import Spinner from '../../Components/Spinner/Spinner';
 
 import Back from '../../Components/Back/Back';
 
@@ -28,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'space-around',
+        height: '15rem'
     },
     avatar: {
         margin: theme.spacing(1),
@@ -45,10 +43,6 @@ const useStyles = makeStyles((theme) => ({
             fontFamily: 'Segoe UI',
             marginTop: '0',
         },
-        "& .MuiOutlinedInput-input": {
-            paddingLeft: '10px',
-            // padding: '11px 14px'
-        },
         "& .MuiInputBase-root": {
             fontSize: '12px'
         }
@@ -60,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 function EnterEmail(props) {
+    let { role } = useParams();
+
+    const [loading, setLoading] = useState(false);
 
     const classes = useStyles();
 
@@ -68,20 +65,17 @@ function EnterEmail(props) {
         resetThrough: 'email'
     });
 
-    const [Role, setRole] = React.useState('Agency');
-
     const sendVerificationLink = () => {
-        instance.post(`/api/${Role}/auths/send-forget-password-link`, state)
+        setLoading(true);
+        instance.post(`/api/${role}/auths/send-forget-password-link`, state)
             .then(response => {
-                props.history.push(`/login:${Role}`)
+                setLoading(false)
+                props.history.push(`/login/${role}`)
             })
             .catch(err => {
+                setLoading(false);
             })
     }
-
-    useEffect(() => {
-    }, [Role])
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -90,10 +84,6 @@ function EnterEmail(props) {
             [name]: value
         })
     }
-
-    const handleRole = (event) => {
-        setRole(event.target.value);
-    };
 
     useEffect(() => {
     }, [state])
@@ -104,52 +94,37 @@ function EnterEmail(props) {
                 <div className="forgot_parent">
                     <Back name="Forgot Password" />
                 </div>
-                <img className={`Image1_hireAgency ${Role === "Client" && 'conditional_colorChange'}`} src={UpImage} alt="upImage" />
-                <img className={`Image2_hireAgency ${Role === "Client" && 'conditional_colorChange'}`} src={DownImage} alt="downImage" />
-                <Container component="main">
-                    <CssBaseline />
-                    <div className={classes.paper}>
-                        <img src={lock} alt="" style={{ width: "2rem" }} />
-                        <Typography component="h1" variant="h5" style={{ color: "#707070", fontFamily: "Segoe UI Semibold" }}>
-                            Send Link
-                        </Typography>
-                        <div style={{ marginTop: '20px' }}>
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend" style={{ display: "flex", justifyContent: "center" }}>Role</FormLabel>
-                                <RadioGroup aria-label="Role" className="roleform" name="Role" value={Role} onChange={handleRole} style={{ color: '#015F9A' }}>
-                                    <FormControlLabel value="Agency" control={<Radio />} label="Agency" />
-                                    <FormControlLabel value="Client" control={<Radio />} label="Client" />
-                                </RadioGroup>
-                            </FormControl>
+                <img className={`Image1_hireAgency ${role === "client" && 'conditional_colorChange'}`} src={UpImage} alt="upImage" />
+                <img className={`Image2_hireAgency ${role === "client" && 'conditional_colorChange'}`} src={DownImage} alt="downImage" />
+                {loading ? <Spinner />
+                    :
+                    <Container component="main">
+                        <CssBaseline />
+                        <div className={classes.paper}>
+                            <img src={lock} alt="" style={{ width: "2rem" }} />
+                            <Typography component="h2" variant="h5" style={{ color: "#707070", fontFamily: "Segoe UI Semibold"}}>
+                                Send Link
+                            </Typography>
+                            <form className={classes.form} noValidate>
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    placeholder="Enter Email"
+                                    name="userEmail"
+                                    autoComplete="email"
+                                    autoFocus
+                                    onChange={(e) => handleChange(e)}
+                                    style={{ color: "#707070" }}
+                                />
+                            </form>
+                            <div className="submitButton submitButton_enterEmail">
+                                <button onClick={() => sendVerificationLink()}>Submit</button>
+                            </div>
                         </div>
-                        <form className={classes.form} noValidate>
-                            <TextField
-                                // className={classes.inputClass}
-                                // variant="outlined"
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                placeholder="Enter Email"
-                                name="userEmail"
-                                autoComplete="email"
-                                autoFocus
-                                onChange={(e) => handleChange(e)}
-                                style={{ color: "#707070" }}
-                            />
-                        </form>
-                        <div className="submitButton submitButton_enterEmail">
-                            <button onClick={() => sendVerificationLink()}>Submit</button>
-                        </div>
-                        {/* <Button type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.button}
-                            onClick={() => sendVerificationLink()}>
-                            Send Verification Link</Button> */}
-                    </div>
-                </Container>
+                    </Container>
+                }
             </div>
         </>
     )

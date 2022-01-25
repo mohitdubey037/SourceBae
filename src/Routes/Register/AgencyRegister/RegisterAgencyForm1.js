@@ -32,7 +32,11 @@ function RegisterAgencyForm1(props) {
     <form className="client__form form__1" autoComplete="off">
       <div>
         <div className="input_with_error">
-          <label>First Name</label>
+          <label>First Name
+            <span className="requiredStar">
+              *
+            </span>
+          </label>
           <input
             required
             type="text"
@@ -48,7 +52,11 @@ function RegisterAgencyForm1(props) {
         </div>
 
         <div className="input_with_error">
-          <label>Last Name</label>
+          <label>Last Name
+            <span className="requiredStar">
+              *
+            </span>
+          </label>
           <input
             type="text"
             name="lastName"
@@ -63,7 +71,11 @@ function RegisterAgencyForm1(props) {
 
       <div>
         <div className="input_with_error">
-          <label>Email</label>
+          <label>Email
+            <span className="requiredStar">
+              *
+            </span>
+          </label>
           <form autoComplete="new-email">
             <input
               type="email"
@@ -77,7 +89,11 @@ function RegisterAgencyForm1(props) {
           )}
         </div>
         <div className="input_with_error">
-          <label>User Name</label>
+          <label>User Name
+            <span className="requiredStar">
+              *
+            </span>
+          </label>
           <form autoComplete="user">
             <input
               type="text"
@@ -95,7 +111,11 @@ function RegisterAgencyForm1(props) {
 
       <div>
         <div className="input_with_error">
-          <label>Phone number</label>
+          <label>Phone number
+            <span className="requiredStar">
+              *
+            </span>
+          </label>
           <input
             type="tel"
             name="userPhone"
@@ -111,7 +131,11 @@ function RegisterAgencyForm1(props) {
 
         <div className="input_with_error">
           <form autoComplete="new-password">
-            <label>Create Password</label>
+            <label>Create Password
+              <span className="requiredStar">
+                *
+              </span>
+            </label>
             <input
               type="password"
               name="password"

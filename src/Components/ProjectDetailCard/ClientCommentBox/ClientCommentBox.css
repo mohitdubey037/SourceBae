@@ -3,17 +3,14 @@
     flex-wrap: wrap;
 }
 
-.sendIcon_clientCommentBox {
-    /* position: absolute; */
-    /* right: -62px;
-    bottom: 17px; */
+/* .sendIcon_clientCommentBox {
     position: relative;
     border-radius: 50%;
     height: 40px;
-    width: 40px;
+    width: 44px;
     background-color: #45A4EA;
-    /* width: 13%; */
-}
+    width: 13%;
+} */
 
 /* .chatBox.chatBox-right > p{
     width: max-content;
@@ -49,10 +46,12 @@
     background-color: #31c53180;
 }
 
-.sendIcon_clientCommentBox .MuiSvgIcon-root {
-    top: 8px !important;
-    right: 6px !important;
-    position: absolute !important;
+.sendIcon_clientCommentBox.MuiSvgIcon-root {
+    height: 40px;
+    width: 40px;
+    background: #45A4EA;
+    border-radius: 50%;
+    padding: 9px;
     color: white !important;
 }
 
