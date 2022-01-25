@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { config } from './apiConstants';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import cookie from 'react-cookies';
 
-var url = config.url.API_URL;
+var url =
+    process.env.NODE_ENV === 'development'
+        ? 'https://api.onesourcing.in'
+        : 'https://api.sourcebae.com';
 
 axios.defaults.headers.common['Authorization'] = `${localStorage.getItem(
     'Authorization'
