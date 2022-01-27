@@ -258,7 +258,7 @@ const Login = (props) => {
                                         <span>to</span>
                                         <br />
                                         <span className="welcome-back_sourceBae">
-                                            Sourcebae
+                                            SourceBae
                                         </span>{' '}
                                     </p>
                                 </div>

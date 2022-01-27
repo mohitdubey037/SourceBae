@@ -628,7 +628,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 /* Agency Form three  */

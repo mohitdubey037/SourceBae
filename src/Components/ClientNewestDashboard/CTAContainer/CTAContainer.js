@@ -133,12 +133,18 @@ function RightSide() {
                                 width="40px"
                                 alt="PIIcon"
                             />
-                            <img
-                                src={GoogleIcon}
-                                style={{ minHeight: '36px' }}
-                                width="40px"
-                                alt="GoogleIcon"
-                            />
+                            <a
+                                href="https://www.google.com/maps/place/SourceBae/@22.7649603,75.8855584,17z/data=!3m1!4b1!4m5!3m4!1s0x3963038bc717de2b:0x2bb4835a0227ba8c!8m2!3d22.7649603!4d75.8877471"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src={GoogleIcon}
+                                    style={{ minHeight: '36px' }}
+                                    width="40px"
+                                    alt="GoogleIcon"
+                                />
+                            </a>
                             <img
                                 src={G2Icon}
                                 style={{ minHeight: '36px' }}

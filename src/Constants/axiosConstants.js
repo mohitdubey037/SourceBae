@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import cookie from 'react-cookies';
-const buildType = 'production';
+const buildType = 'development';
 var url =
     process.env.NODE_ENV === 'development' || buildType === 'development'
         ? 'https://api.onesourcing.in'

@@ -1,113 +1,115 @@
 .no_new_notification {
-  color: black;
-  font-family: 'Segoe UI Semibold';
-  font-size: 0.8rem;
-  display: flex;
-  justify-content: center;
+    color: black;
+    font-family: 'Segoe UI Semibold';
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
 }
 
 .no_new_notification p {
-  font-family: inherit;
-  font-size: inherit;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .notificationPanel {
-  position: fixed;
-  width: 30%;
-  height: 100%;
-  top: 0;
-  z-index: 999;
-  background: #EEF0FF;
-  right: -50%;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.3s ease-in-out;
-  display: flex;
-  justify-content: center;
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    top: 0;
+    z-index: 999;
+    background: #eef0ff;
+    right: -50%;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
 }
 
 .notificationPanel.open {
-  right: 0;
+    right: 0;
 }
 
 .overlay {
-  width: 100%;
-  display: block;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
+    width: 100%;
+    display: block;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
 
 .close_and_all {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .innerNotificationPanel {
-  width: 90%;
-  margin-top: 5%;
-  height: 100vh !important;
+    width: 90%;
+    margin-top: 5%;
+    height: 100vh !important;
 }
 
 .notificationsCards {
-  width: 100%;
+    width: 100%;
 }
 
 .closeNotification i {
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.4s ease-in-out;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
 }
 
 .closeNotification i:hover {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .allNotification {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
 }
 
 .allNotificationIcon {
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
 }
 
 .allNotificationIcon img {
-  width: 100%;
-  object-fit: contain;
+    width: 100%;
+    object-fit: contain;
 }
 
-.allNotification p, .clearAll p {
-  color: #45A4E4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  font-size: 0.8rem;
-  font-family: 'Segoe UI Bold';
+.allNotification p,
+.clearAll p {
+    color: #45a4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    font-size: 0.8rem;
+    font-family: 'Segoe UI Bold';
 }
 
-.allNotification, .clearAll {
-  cursor: pointer;
+.allNotification,
+.clearAll {
+    cursor: pointer;
 }
 
 .allNotification p {
-  padding: 0.5rem 3rem;
+    padding: 0.5rem 3rem;
 }
 
 .clearAll p {
-  padding: 0.5rem 1rem;
-  color: #ff5454;
+    padding: 0.5rem 1rem;
+    color: #ff5454;
 }
 
 /* .allNotificationText p {
@@ -116,65 +118,66 @@
 } */
 
 .notificationsCard {
-  height: 89vh;
-  overflow: auto;
-  padding: .8rem;
-  padding-top: 1.2rem;
+    height: 89vh;
+    overflow: auto;
+    padding: 0.8rem;
+    padding-top: 1.2rem;
+    margin-top: 1rem;
 }
 
 .notificationPoint {
-  background-color: white;
-  margin-top: 2%;
-  border-radius: 0.8rem;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  display: flex;
-  cursor: pointer;
+    background-color: white;
+    margin-top: 2%;
+    border-radius: 0.8rem;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    display: flex;
+    cursor: pointer;
 }
 
 .notificationPoint p {
-  display: flex;
-  font-family: 'Segoe UI Semibold';
-  font-size: 0.72rem;
-  padding: 0.5rem;
-  transform: translateY(-0.35rem);
+    display: flex;
+    font-family: 'Segoe UI Semibold';
+    font-size: 0.72rem;
+    padding: 0.5rem;
+    transform: translateY(-0.35rem);
 }
 
 .notificationsCard::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 .notificationsCard::-webkit-scrollbar-track {
-  background: #fff;
+    background: #fff;
 }
 
 .notificationsCard::-webkit-scrollbar-thumb {
-  background-color: #3498DB;
-  border-radius: 10px;
+    background-color: #3498db;
+    border-radius: 10px;
 }
 
 .notificationPointLi::marker {
-  margin-bottom: -0.5rem;
-  font-size: 1.6rem;
-  color: #707070;
-  color: green;
+    margin-bottom: -0.5rem;
+    font-size: 1.6rem;
+    color: #707070;
+    color: green;
 }
 
 .conditionalColor_Sidebar::marker {
-  color: #707070;
+    color: #707070;
 }
 
 .conditionalColor_Sidebar p {
-  font-family: 'Segoe UI';
+    font-family: 'Segoe UI';
 }
 
 .ul {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 0rem;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0rem;
 }
 
 .notificationPointIn i {
-  color: #45A4E4;
-  font-size: 1rem;
-  cursor: pointer;
+    color: #45a4e4;
+    font-size: 1rem;
+    cursor: pointer;
 }

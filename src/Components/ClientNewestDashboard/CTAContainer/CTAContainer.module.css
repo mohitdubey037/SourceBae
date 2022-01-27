@@ -240,6 +240,15 @@
     max-width: 10rem;
 }
 
+.view_details_btn > a {
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border: transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
 .view_details_btn > button {
     padding: 6px;
     background: rgba(255, 255, 255, 0.12);
