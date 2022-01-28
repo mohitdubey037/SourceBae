@@ -91,9 +91,11 @@ const AgencyCommentBox = (props) => {
                     'Negotiable price should be less than twice of the project proposal price'
                 );
             } else if (value < props?.projectProposalCost) {
-                toast.error(
-                    `Negotiable price can't be less than project proposal price`
-                );
+                console.log('in elsif2');
+                setApiData({
+                    ...apiData,
+                    [name]: value
+                });
             }
         } else {
             setApiData({
