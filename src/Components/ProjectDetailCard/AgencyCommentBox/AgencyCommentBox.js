@@ -77,7 +77,11 @@ const AgencyCommentBox = (props) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (name === 'agencyNegotiablePrice') {
-            if (value <= props?.projectProposalCost * 2 && value.length <= 8) {
+            if (
+                value >= props?.projectProposalCost &&
+                value <= props?.projectProposalCost * 2 &&
+                value.length <= 8
+            ) {
                 setApiData({
                     ...apiData,
                     [name]: value
@@ -85,6 +89,10 @@ const AgencyCommentBox = (props) => {
             } else if (value > props?.projectProposalCost * 2) {
                 toast.error(
                     'Negotiable price should be less than twice of the project proposal price'
+                );
+            } else if (value < props?.projectProposalCost) {
+                toast.error(
+                    `Negotiable price can't be less than project proposal price`
                 );
             }
         } else {
