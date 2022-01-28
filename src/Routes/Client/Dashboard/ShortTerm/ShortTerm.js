@@ -396,10 +396,16 @@ function ShortTerm(props) {
 
                                 <div className="shortTermFileUpload">
                                     <div className="uploadBlock">
-                                        <div className="fileUploadButton">
+                                        <div
+                                            className="fileUploadButton"
+                                            style={{
+                                                display: 'flex'
+                                            }}
+                                        >
                                             <div
                                                 style={{
                                                     display: 'flex',
+
                                                     cursor: 'pointer',
                                                     width: '20%'
                                                 }}
@@ -429,6 +435,12 @@ function ShortTerm(props) {
                                                     </div>
                                                 </section>
                                             </div>
+                                            <span
+                                                className="requiredStar"
+                                                style={{ color: 'red' }}
+                                            >
+                                                *
+                                            </span>
                                         </div>
                                         <div className="uploadInfo">
                                             {logo === null ? (
