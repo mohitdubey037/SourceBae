@@ -122,10 +122,17 @@ const ClientCommentBox = (props) => {
         //   [name]: value,
         // });
         if (name === 'clientNegotiablePrice') {
-            if (value.length <= 8 && value <= props.projectProposals[0].agencyNegotiablePrice * 2) {
+            if (
+                value.length <= 8 &&
+                value <= props.projectProposals[0].agencyNegotiablePrice * 2
+            ) {
                 console.log(value);
                 console.log(props.projectProposals[0].agencyNegotiablePrice);
-                console.log(value.length == value.length <= props.projectProposals[0].agencyNegotiablePrice * 2)
+                console.log(
+                    value.length ==
+                        value.length <=
+                            props.projectProposals[0].agencyNegotiablePrice * 2
+                );
                 setApiData({
                     ...apiData,
                     [name]: value
@@ -159,7 +166,7 @@ const ClientCommentBox = (props) => {
             isShortListed: true,
             isAskedForQuotation: true,
             negotiablePrice: '',
-            comment: 'Kindly Share the document.'
+            comment: 'Kindly Share the Quotation document.'
         };
         instance
             .patch(
@@ -270,8 +277,9 @@ const ClientCommentBox = (props) => {
             ) : (
                 <div className="commentBox_parent">
                     <div
-                        className={`commentBox ${isRejectOrAccept && 'conditional_width_commentBox'
-                            }`}
+                        className={`commentBox ${
+                            isRejectOrAccept && 'conditional_width_commentBox'
+                        }`}
                     >
                         <div className="topLine"></div>
                         <img
@@ -351,39 +359,39 @@ const ClientCommentBox = (props) => {
                                 <div className="commentParent">
                                     {!props.projectProposals[0]
                                         .clientNegotiablePrice && (
-                                            <div
-                                                className="postQuotation"
-                                                style={{ width: '100%' }}
-                                            >
-                                                <TextField
-                                                    className={clsx(
-                                                        classes.margin,
-                                                        classes.width
-                                                    )}
-                                                    name="clientNegotiablePrice"
-                                                    id="outlined-number"
-                                                    type="text"
-                                                    placeholder="Client Negotiable Price"
-                                                    onChange={(event) =>
-                                                        handleChange(event)
-                                                    }
-                                                    variant="outlined"
-                                                    value={
-                                                        apiData.clientNegotiablePrice
-                                                    }
-                                                    InputLabelProps={{
-                                                        shrink: true
-                                                    }}
-                                                    InputProps={{
-                                                        endAdornment: (
-                                                            <InputAdornment position="end">
-                                                                <AttachMoneyIcon />
-                                                            </InputAdornment>
-                                                        )
-                                                    }}
-                                                />
-                                            </div>
-                                        )}
+                                        <div
+                                            className="postQuotation"
+                                            style={{ width: '100%' }}
+                                        >
+                                            <TextField
+                                                className={clsx(
+                                                    classes.margin,
+                                                    classes.width
+                                                )}
+                                                name="clientNegotiablePrice"
+                                                id="outlined-number"
+                                                type="text"
+                                                placeholder="Client Negotiable Price"
+                                                onChange={(event) =>
+                                                    handleChange(event)
+                                                }
+                                                variant="outlined"
+                                                value={
+                                                    apiData.clientNegotiablePrice
+                                                }
+                                                InputLabelProps={{
+                                                    shrink: true
+                                                }}
+                                                InputProps={{
+                                                    endAdornment: (
+                                                        <InputAdornment position="end">
+                                                            <AttachMoneyIcon />
+                                                        </InputAdornment>
+                                                    )
+                                                }}
+                                            />
+                                        </div>
+                                    )}
                                     <div className="price-section">
                                         <TextField
                                             className={clsx(
@@ -403,10 +411,13 @@ const ClientCommentBox = (props) => {
                                     </div>
                                     {props.projectProposals[0]
                                         .isCommentSectionActive === true && (
-                                            <SendIcon className='sendIcon_clientCommentBox' onClick={() => {
+                                        <SendIcon
+                                            className="sendIcon_clientCommentBox"
+                                            onClick={() => {
                                                 replyApi();
-                                            }} />
-                                        )}
+                                            }}
+                                        />
+                                    )}
                                 </div>
                             )}
 
@@ -437,20 +448,22 @@ const ClientCommentBox = (props) => {
                                 !props.projectProposals[0].finalCostByClient &&
                                 'none'
                         }}
-                        className={`action-wait ${isRejectOrAccept
-                            ? 'conditional_width_commentBox'
-                            : ''
-                            }`}
+                        className={`action-wait ${
+                            isRejectOrAccept
+                                ? 'conditional_width_commentBox'
+                                : ''
+                        }`}
                     >
                         <div className="topLine"></div>
                         <div className="proposalCard">
                             {!isRejectOrAccept && (
                                 <div
-                                    className={`${props.projectProposals[0]
-                                        .isProposalActionActive
-                                        ? 'conditional_acceptOrReject'
-                                        : 'normal_acceptOrReject_clientCommentBox'
-                                        }
+                                    className={`${
+                                        props.projectProposals[0]
+                                            .isProposalActionActive
+                                            ? 'conditional_acceptOrReject'
+                                            : 'normal_acceptOrReject_clientCommentBox'
+                                    }
                 `}
                                 >
                                     <p>Proceed ahead with this company?</p>
@@ -458,41 +471,42 @@ const ClientCommentBox = (props) => {
                             )}
 
                             <div
-                                className={`postQuotation ${isRejectOrAccept && 'is_flex_direction'
-                                    }`}
+                                className={`postQuotation ${
+                                    isRejectOrAccept && 'is_flex_direction'
+                                }`}
                             >
                                 {props.projectProposals[0]
                                     .agencyNegotiablePrice && (
-                                        <div className="detailsButtons margin-0">
-                                            <p>
-                                                {`Agency Negotiable Price: `}
-                                                <i class="fas fa-dollar-sign"></i>{' '}
-                                                {`${props.projectProposals[0].agencyNegotiablePrice}`}
-                                            </p>
-                                        </div>
-                                    )}
+                                    <div className="detailsButtons margin-0">
+                                        <p>
+                                            {`Agency Negotiable Price: `}
+                                            <i class="fas fa-dollar-sign"></i>{' '}
+                                            {`${props.projectProposals[0].agencyNegotiablePrice}`}
+                                        </p>
+                                    </div>
+                                )}
 
                                 {props.projectProposals[0]
                                     .clientNegotiablePrice && (
-                                        <div className="detailsButtons margin-0">
-                                            <p>
-                                                {`Your Negotiable Price: `}
-                                                <i class="fas fa-dollar-sign"></i>{' '}
-                                                {`${props.projectProposals[0].clientNegotiablePrice}`}
-                                            </p>
-                                        </div>
-                                    )}
+                                    <div className="detailsButtons margin-0">
+                                        <p>
+                                            {`Your Negotiable Price: `}
+                                            <i class="fas fa-dollar-sign"></i>{' '}
+                                            {`${props.projectProposals[0].clientNegotiablePrice}`}
+                                        </p>
+                                    </div>
+                                )}
 
                                 {props.projectProposals[0]
                                     .finalCostByClient && (
-                                        <div className="detailsButtons margin-0">
-                                            <p>
-                                                {`Your Final Price: `}
-                                                <i class="fas fa-dollar-sign"></i>{' '}
-                                                {`${props.projectProposals[0].finalCostByClient}`}
-                                            </p>
-                                        </div>
-                                    )}
+                                    <div className="detailsButtons margin-0">
+                                        <p>
+                                            {`Your Final Price: `}
+                                            <i class="fas fa-dollar-sign"></i>{' '}
+                                            {`${props.projectProposals[0].finalCostByClient}`}
+                                        </p>
+                                    </div>
+                                )}
 
                                 {props.projectProposals[0].quotationLink && (
                                     <div className="detailsButtons margin-0">
@@ -607,10 +621,11 @@ const ClientCommentBox = (props) => {
                                         dateAdapter={AdapterDateFns}
                                     >
                                         <div
-                                            className={`datePickers ${quotationFormData.projectStartDateByClient ===
-                                                '' &&
+                                            className={`datePickers ${
+                                                quotationFormData.projectStartDateByClient ===
+                                                    '' &&
                                                 'conditional_datePicker'
-                                                }`}
+                                            }`}
                                         >
                                             <DesktopDatePicker
                                                 inputFormat="dd/MM/yyyy"
@@ -626,15 +641,15 @@ const ClientCommentBox = (props) => {
                                                 }
                                                 disabled={
                                                     quotationFormData.projectStartDateByClient ===
-                                                        ''
+                                                    ''
                                                         ? true
                                                         : quotationFormData.projectStartDateByClient ===
-                                                            'Invalid Date'
-                                                            ? true
-                                                            : quotationFormData.projectStartDateByClient ===
-                                                                null
-                                                                ? true
-                                                                : false
+                                                          'Invalid Date'
+                                                        ? true
+                                                        : quotationFormData.projectStartDateByClient ===
+                                                          null
+                                                        ? true
+                                                        : false
                                                 }
                                                 onChange={(event) =>
                                                     handleChangeDate(
@@ -664,24 +679,25 @@ const ClientCommentBox = (props) => {
                                         dateAdapter={AdapterDateFns}
                                     >
                                         <div
-                                            className={`datePickers ${quotationFormData.projectStartDateByClient ===
-                                                '' &&
+                                            className={`datePickers ${
+                                                quotationFormData.projectStartDateByClient ===
+                                                    '' &&
                                                 'conditional_datePicker'
-                                                }`}
+                                            }`}
                                         >
                                             <DesktopDatePicker
                                                 inputFormat="dd/MM/yyyy"
                                                 disabled={
                                                     quotationFormData.projectDelayedStartDateByClient ===
-                                                        ''
+                                                    ''
                                                         ? true
                                                         : quotationFormData.projectDelayedStartDateByClient ===
-                                                            'Invalid Date'
-                                                            ? true
-                                                            : quotationFormData.projectDelayedStartDateByClient ===
-                                                                null
-                                                                ? true
-                                                                : false
+                                                          'Invalid Date'
+                                                        ? true
+                                                        : quotationFormData.projectDelayedStartDateByClient ===
+                                                          null
+                                                        ? true
+                                                        : false
                                                 }
                                                 minDate={
                                                     new Date(
@@ -721,24 +737,25 @@ const ClientCommentBox = (props) => {
                                         dateAdapter={AdapterDateFns}
                                     >
                                         <div
-                                            className={`datePickers ${quotationFormData.projectStartDateByClient ===
-                                                '' &&
+                                            className={`datePickers ${
+                                                quotationFormData.projectStartDateByClient ===
+                                                    '' &&
                                                 'conditional_datePicker'
-                                                }`}
+                                            }`}
                                         >
                                             <DesktopDatePicker
                                                 inputFormat="dd/MM/yyyy"
                                                 disabled={
                                                     quotationFormData.projectEndDateByClient ===
-                                                        ''
+                                                    ''
                                                         ? true
                                                         : quotationFormData.projectEndDateByClient ===
-                                                            'Invalid Date'
-                                                            ? true
-                                                            : quotationFormData.projectEndDateByClient ===
-                                                                null
-                                                                ? true
-                                                                : false
+                                                          'Invalid Date'
+                                                        ? true
+                                                        : quotationFormData.projectEndDateByClient ===
+                                                          null
+                                                        ? true
+                                                        : false
                                                 }
                                                 minDate={
                                                     new Date(
@@ -847,9 +864,9 @@ const ClientCommentBox = (props) => {
                         {quotationRejectionForm.rejectReasonByClient !==
                             'No Matching Requirements' &&
                             quotationRejectionForm.rejectReasonByClient !==
-                            'Taking Too Much Time' &&
+                                'Taking Too Much Time' &&
                             quotationRejectionForm.rejectReasonByClient !==
-                            'Cost is too high' && (
+                                'Cost is too high' && (
                                 <div className="detailed_description_clientCommentBox">
                                     <label>Detailed description:</label>
                                     <textarea

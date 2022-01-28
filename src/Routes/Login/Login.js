@@ -258,7 +258,7 @@ const Login = (props) => {
                                         <span>to</span>
                                         <br />
                                         <span className="welcome-back_sourceBae">
-                                            Sourcebae
+                                            SourceBae
                                         </span>{' '}
                                     </p>
                                 </div>
@@ -312,7 +312,7 @@ const Login = (props) => {
                                             <TextField
                                                 name="user"
                                                 id="filled-number"
-                                                label="Email"
+                                                label="Email/Username"
                                                 type="text"
                                                 fullWidth
                                                 className={classes.input}
@@ -322,7 +322,7 @@ const Login = (props) => {
                                                 onChange={(e) => {
                                                     handleChange(e);
                                                 }}
-                                                placeholder="Enter email"
+                                                placeholder="Enter email/username"
                                                 variant="filled"
                                             />
                                             <TextField

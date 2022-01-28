@@ -3,6 +3,11 @@ import instance from '../../Constants/axiosConstants';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMoreOutlined';
 
 function NotificationPanel(props) {
     const Role = localStorage.getItem('role');
@@ -81,32 +86,41 @@ function NotificationPanel(props) {
                                 onClick={() => handleNotificationRead()}
                                 className="clearAll"
                             >
-                                <p>Clear All</p>
+                                <p>Read All</p>
                             </div>
                         </div>
                         <div className="notificationsCard">
                             {notificationData.length > 0 ? (
                                 notificationData.map((nd) => {
                                     return (
-                                        <div
-                                            onClick={() =>
-                                                handleNotificationRead(nd?._id)
-                                            }
-                                            className={`notificationPoint ${
-                                                nd?.isNotificationRead &&
-                                                'conditionalFilter_Sidebar'
-                                            }`}
+                                        <Accordion
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"
+                                            expandIcon={<ExpandMoreIcon />}
+                                            // onClick={() =>
+                                            //     handleNotificationRead(nd?._id)
+                                            // }
+                                            // className={`notificationPoint ${
+                                            //     nd?.isNotificationRead &&
+                                            //     'conditionalFilter_Sidebar'
+                                            // }`}
+                                            // style={{
+                                            //     display: 'flex',
+                                            //     flexDirection: 'column'
+                                            // }}
                                         >
-                                            <ul>
-                                                <li
-                                                    className={`notificationPointLi ${
-                                                        nd?.isNotificationRead &&
-                                                        'conditionalColor_Sidebar'
-                                                    }`}
+                                            <AccordionSummary
+                                                aria-controls="panel1a-content"
+                                                id="panel1a-header"
+                                            >
+                                                <Typography
+                                                    style={{ fontSize: '14px' }}
                                                 >
-                                                    <p>
-                                                        {nd?.notificationTitle}
-                                                    </p>
+                                                    {nd?.notificationTitle}
+                                                </Typography>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                                <Typography>
                                                     <p
                                                         style={{
                                                             display: 'flex',
@@ -116,12 +130,10 @@ function NotificationPanel(props) {
                                                         dangerouslySetInnerHTML={{
                                                             __html: nd?.notificationData
                                                         }}
-                                                    >
-                                                        {/* {nd?.notificationData} */}
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                                    />
+                                                </Typography>
+                                            </AccordionDetails>
+                                        </Accordion>
                                     );
                                 })
                             ) : (
