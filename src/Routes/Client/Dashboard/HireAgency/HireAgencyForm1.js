@@ -9,6 +9,7 @@ import illustration from '../../../../assets/images/Newestdashboard/Hire-Agency-
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import './HireAgencyForm1.css';
 import VerifyModal from '../../../../Components/VerifyModal/VerifyModal';
+import { toast } from 'react-toastify';
 
 const HireAgencyForm1 = (props) => {
     const id = localStorage.getItem('userId');
@@ -34,15 +35,27 @@ const HireAgencyForm1 = (props) => {
 
     const handleChange = (event) => {
         let { name, value } = event.target;
+
         if (name === 'projectDescription') {
             value = value.slice(0, 1).toUpperCase() + value.slice(1);
             if (value.length <= 100) setWords(value.length);
             if (value.length > 100) setWords(100);
+            setData({
+                ...data,
+                [name]: value
+            });
+        } else if (name === 'projectExpectedStartingDays') {
+            if (value.length <= 2) {
+                setData({ ...data, projectExpectedStartingDays: value });
+            } else {
+                toast.error('Starting days should be less than 100');
+            }
+        } else {
+            setData({
+                ...data,
+                [name]: value
+            });
         }
-        setData({
-            ...data,
-            [name]: value
-        });
     };
 
     useEffect(() => {
@@ -323,7 +336,7 @@ const HireAgencyForm1 = (props) => {
                                                     type="number"
                                                     onChange={handleChange}
                                                     min="5"
-                                                    // max="180"
+                                                    max="60"
                                                     value={
                                                         data.projectExpectedStartingDays
                                                     }

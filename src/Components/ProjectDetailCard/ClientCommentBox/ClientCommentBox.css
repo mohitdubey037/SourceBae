@@ -1,6 +1,5 @@
 .commentBox_parent {
     display: flex;
-    flex-wrap: wrap;
 }
 
 /* .sendIcon_clientCommentBox {
@@ -32,13 +31,13 @@
     text-align: center;
     letter-spacing: 0.4px;
     text-transform: capitalize;
-    color: #3A3A3A;
+    color: #3a3a3a;
 }
 
 .normal_acceptOrReject_clientCommentBox p {
     padding: none;
     font-size: 1rem;
-    transform: translateY(-13px)
+    transform: translateY(-13px);
 }
 
 .sendIcon_clientCommentBox:hover {
@@ -49,7 +48,7 @@
 .sendIcon_clientCommentBox.MuiSvgIcon-root {
     height: 40px;
     width: 40px;
-    background: #45A4EA;
+    background: #45a4ea;
     border-radius: 50%;
     padding: 9px;
     color: white !important;
@@ -69,7 +68,7 @@
     cursor: pointer;
 }
 
-.commentBox>p {
+.commentBox > p {
     font-size: 10px;
     color: #484848;
     font-family: 'Segoe UI';
@@ -102,7 +101,8 @@
     font-style: normal;
 }
 
-.submit-rejection, .quotationSubmit_clientCommentBox {
+.submit-rejection,
+.quotationSubmit_clientCommentBox {
     width: 99%;
     display: flex;
     justify-content: center;
@@ -110,12 +110,17 @@
     margin-top: 1rem;
 }
 
-.submit-rejection>div, .quotationSubmit_clientCommentBox>button {
+.submit-rejection > div,
+.quotationSubmit_clientCommentBox > button {
     display: flex;
     align-items: center;
     outline: none;
     border: none;
-    background-image: linear-gradient(284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%);
+    background-image: linear-gradient(
+        284deg,
+        rgb(3, 118, 186) 0%,
+        rgb(1, 48, 77) 100%
+    );
     border-radius: 25px;
     color: white;
     background-color: #3498db;
@@ -124,7 +129,7 @@
     font-size: 0.9rem;
 }
 
-.acceptance-parent_clientCommentBox>h2::after {
+.acceptance-parent_clientCommentBox > h2::after {
     margin-left: 90px;
 }
 
@@ -180,7 +185,7 @@
     font-size: 1rem;
 }
 
-.tableContentQuotation.finalCost>input {
+.tableContentQuotation.finalCost > input {
     height: 40px;
     padding-left: 10px;
     outline: none;

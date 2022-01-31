@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClientCommentBox = (props) => {
+    console.log(props);
     const isRejectOrAccept =
         props.projectProposals[0].rejectReasonByClient ||
         props.projectProposals[0].rejectReasonByAgency ||
@@ -361,7 +362,9 @@ const ClientCommentBox = (props) => {
                                         .clientNegotiablePrice && (
                                         <div
                                             className="postQuotation"
-                                            style={{ width: '100%' }}
+                                            style={{
+                                                width: '100%'
+                                            }}
                                         >
                                             <TextField
                                                 className={clsx(
@@ -423,7 +426,9 @@ const ClientCommentBox = (props) => {
 
                         {!props.projectProposals[0].isCommentSectionActive &&
                             !props.projectProposals[0].isReplySectionActive &&
-                            !isReject && (
+                            !isReject &&
+                            props?.projectProposals[0]
+                                ?.agencyNegotiablePrice && (
                                 <>
                                     <div className="conversation-over">
                                         <p>Coversation Over.</p>
@@ -440,12 +445,14 @@ const ClientCommentBox = (props) => {
                     <div
                         style={{
                             display:
-                                isRejectOrAccept &&
-                                !props.projectProposals[0]
-                                    .clientNegotiablePrice &&
-                                !props.projectProposals[0]
-                                    .agencyNegotiablePrice &&
-                                !props.projectProposals[0].finalCostByClient &&
+                                ((isRejectOrAccept &&
+                                    !props.projectProposals[0]
+                                        .clientNegotiablePrice &&
+                                    !props.projectProposals[0]
+                                        .agencyNegotiablePrice &&
+                                    !props.projectProposals[0]
+                                        .finalCostByClient) ||
+                                    !props.projectProposals[0].quotationLink) &&
                                 'none'
                         }}
                         className={`action-wait ${
@@ -463,8 +470,7 @@ const ClientCommentBox = (props) => {
                                             .isProposalActionActive
                                             ? 'conditional_acceptOrReject'
                                             : 'normal_acceptOrReject_clientCommentBox'
-                                    }
-                `}
+                                    }`}
                                 >
                                     <p>Proceed ahead with this company?</p>
                                 </div>

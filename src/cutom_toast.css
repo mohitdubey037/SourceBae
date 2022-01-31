@@ -1,0 +1,10 @@
+.toastify_custom {
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    border-radius: 10px !important;
+}
+
+.toast_body {
+    margin: 0 !important;
+    padding: 0 !important;
+}

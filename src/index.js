@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
@@ -8,11 +8,14 @@ import { ToastContainer } from 'react-toastify';
 import * as serviceWorker from './serviceWorker';
 import store from './Redux/Store/store';
 import { Provider } from 'react-redux';
-
+import './cutom_toast.css';
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <ToastContainer />
+            <ToastContainer
+                toastClassName="toastify_custom"
+                bodyClassName={() => 'toastify_body '}
+            />
             <App />
         </BrowserRouter>
     </Provider>,

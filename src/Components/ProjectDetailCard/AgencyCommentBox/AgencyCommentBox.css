@@ -92,10 +92,9 @@
     flex-direction: column;
     border-radius: 8px;
     padding: 1rem;
-    /* margin: 2rem 1rem 1rem 1rem; */
     margin: 0rem 1rem 1rem 0rem;
-    width: 49%;
     height: 25rem;
+    flex: 1;
     position: relative;
     opacity: 0.99;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
