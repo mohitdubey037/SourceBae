@@ -37,9 +37,6 @@ function Rules(props) {
         }
     });
 
-    useEffect(() => {
-        console.log(form, 'form');
-    }, [form]);
     const handleEditRules = (value) => {
         setEditRules(value);
         instance
@@ -87,7 +84,6 @@ function Rules(props) {
             });
     };
     const handleChangeWeekend = (event) => {
-        console.log(event.target.value);
         setForm({
             ...form,
             agencyTiming: {

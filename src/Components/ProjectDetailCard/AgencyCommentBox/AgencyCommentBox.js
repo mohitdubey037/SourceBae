@@ -91,7 +91,6 @@ const AgencyCommentBox = (props) => {
                     'Negotiable price should be less than twice of the project proposal price'
                 );
             } else if (value < props?.projectProposalCost) {
-                console.log('in elsif2');
                 setApiData({
                     ...apiData,
                     [name]: value
@@ -179,6 +178,16 @@ const AgencyCommentBox = (props) => {
             formData.append('files', file, 'files.pdf');
             if (apiData.agencyNegotiablePrice === '') {
                 toast.error('Negotiable price can not be empty');
+                setLoading(false);
+                return;
+            } else if (
+                `${apiData.agencyNegotiablePrice}`.length ===
+                    `${props.projectProposalCost}`.length &&
+                apiData.agencyNegotiablePrice < props.projectProposalCost
+            ) {
+                toast.error(
+                    `Negotiable price can't be less than the project proposal price`
+                );
                 setLoading(false);
                 return;
             } else if (apiData.reply === '') {

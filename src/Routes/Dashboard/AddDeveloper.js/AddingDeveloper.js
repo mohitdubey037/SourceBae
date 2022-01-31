@@ -62,10 +62,6 @@ function AddingDeveloper(props) {
         setResume(acceptedFiles);
     }, []);
 
-    useEffect(() => {
-        console.log(resume);
-    }, [resume]);
-
     const { isDragActive, getRootProps, getInputProps, isDragReject } =
         useDropzone({
             onDrop,
@@ -183,7 +179,6 @@ function AddingDeveloper(props) {
     }, []);
 
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
-        console.log(checked, option, onClick, disabled, 'checked');
         return (
             <div
                 className={`item-renderer ${

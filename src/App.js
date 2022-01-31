@@ -118,13 +118,6 @@ const App = (props) => {
                         </button>
                     </div>
                 )}
-                onError={(error, info) => {
-                    //call api
-                    console.log('error boundary', error, info);
-                }}
-                onReset={() => {
-                    console.log('reset triggered');
-                }}
             >
                 <Switch>
                     <Route exact path="/" component={Mainhomepage} />

@@ -35,11 +35,6 @@ function AgencyForm3(props) {
         document: ''
     });
 
-    // useEffect(() => {
-    //     console.log(registrationCertificate.name, 'mohitdubey');
-    //     console.log(registrationCertificate,'kdhfkdsk');
-    // },[registrationCertificate])
-
     const [brochureDoc, setBrochureDoc] = useState({
         documentName: 'Brochure',
         documentLink: '',
@@ -67,8 +62,6 @@ function AgencyForm3(props) {
     }, []);
 
     const handleDocumentPicker = (category, acceptedFiles) => {
-        // console.log(category);
-        // console.log(acceptedFiles[0]);
         if (category === registrationCertificate.documentName) {
             setRegistrationCertificate({
                 ...registrationCertificate,
@@ -93,14 +86,7 @@ function AgencyForm3(props) {
         }
     };
 
-    // const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
-    //     onDrop,
-    //     accept: '.jpg, .pdf, .png, .jpeg, .xlsx',
-    //     minSize: 0
-    // });
-
     function uploadMedia() {
-        console.log(registrationCertificate);
         setLoading(true);
         return new Promise((resolve, reject) => {
             const formData = new FormData();

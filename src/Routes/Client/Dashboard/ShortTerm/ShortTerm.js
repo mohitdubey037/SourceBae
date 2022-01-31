@@ -101,7 +101,6 @@ function ShortTerm(props) {
     };
 
     const onDrop = useCallback((acceptedFiles) => {
-        console.log(acceptedFiles);
         setLogo(acceptedFiles);
     }, []);
 

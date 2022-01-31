@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClientCommentBox = (props) => {
-    console.log(props);
     const isRejectOrAccept =
         props.projectProposals[0].rejectReasonByClient ||
         props.projectProposals[0].rejectReasonByAgency ||
@@ -127,13 +126,6 @@ const ClientCommentBox = (props) => {
                 value.length <= 8 &&
                 value <= props.projectProposals[0].agencyNegotiablePrice * 2
             ) {
-                console.log(value);
-                console.log(props.projectProposals[0].agencyNegotiablePrice);
-                console.log(
-                    value.length ==
-                        value.length <=
-                            props.projectProposals[0].agencyNegotiablePrice * 2
-                );
                 setApiData({
                     ...apiData,
                     [name]: value

@@ -72,23 +72,13 @@ function AgencyForm1(props) {
         setLogo(acceptedFiles);
     }, []);
 
-    useEffect(() => {
-        console.log(logo);
-    }, [logo]);
-
-    const {
-        isDragActive,
-        getRootProps,
-        getInputProps,
-        isDragReject,
-        acceptedFiles,
-        rejectedFiles
-    } = useDropzone({
-        onDrop,
-        accept: '.jpg,.jpeg,.png',
-        minSize: 0
-        // maxSize,
-    });
+    const { isDragActive, getRootProps, getInputProps, isDragReject } =
+        useDropzone({
+            onDrop,
+            accept: '.jpg,.jpeg,.png',
+            minSize: 0
+            // maxSize,
+        });
 
     const errorValidation = () => {
         const errors = {};

@@ -18,29 +18,17 @@ function Portfolio(props) {
     const [loading, setLoading] = useState(false);
     const [logo, setLogo] = useState(null);
 
-    const maxSize = 1048576;
-
     const onDrop = useCallback((acceptedFiles) => {
         setLogo(acceptedFiles);
     }, []);
 
-    useEffect(() => {
-        console.log(logo);
-    }, [logo]);
-
-    const {
-        isDragActive,
-        getRootProps,
-        getInputProps,
-        isDragReject,
-        acceptedFiles,
-        rejectedFiles
-    } = useDropzone({
-        onDrop,
-        accept: '.jpeg,.png,.jpg',
-        minSize: 0
-        // maxSize,
-    });
+    const { isDragActive, getRootProps, getInputProps, isDragReject } =
+        useDropzone({
+            onDrop,
+            accept: '.jpeg,.png,.jpg',
+            minSize: 0
+            // maxSize,
+        });
 
     const [form, setForm] = useState({
         projectName: '',

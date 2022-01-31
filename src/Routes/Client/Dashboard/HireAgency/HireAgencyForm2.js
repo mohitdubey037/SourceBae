@@ -207,7 +207,6 @@ function HireAgencyForm2(props) {
         getAllDomains();
     }, []);
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
-        console.log(checked, option, onClick, disabled, 'checked');
         return (
             <div
                 className={`item-renderer ${

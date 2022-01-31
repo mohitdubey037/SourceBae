@@ -132,7 +132,6 @@ function HireAgencyForm3(props) {
     }, [selected]);
 
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
-        console.log(checked, option, onClick, disabled, 'checked');
         return (
             <div
                 className={`item-renderer ${

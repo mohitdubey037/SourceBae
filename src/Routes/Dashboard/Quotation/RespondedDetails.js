@@ -27,7 +27,7 @@ function RespondedDetails(props) {
 
     let { projectId, agencyId } = useParams();
     const [isRepliedToClient, setRepliedToClient] = useState(false);
-    const [project, setProject] = useState([])
+    const [project, setProject] = useState([]);
     // const [project, setProject] = useState({
     //     projectProposals: [
     //         {
@@ -53,12 +53,6 @@ function RespondedDetails(props) {
     useEffect(() => {
         getAllProjects();
     }, [isRepliedToClient, chatNotification]);
-
-    useEffect(() => {
-        console.log(project);
-        console.log(typeof project);
-        console.log(project.projectProposals);
-    }, [project])
 
     return (
         <>
@@ -138,32 +132,28 @@ function RespondedDetails(props) {
             </div>
             <hr></hr>
 
-
-
-            {(!project?.projectProposals?.[0]?.rejectReasonByAgency &&
+            {!project?.projectProposals?.[0]?.rejectReasonByAgency &&
                 !project?.projectProposals?.[0]?.rejectReasonByClient &&
                 !project?.projectProposals?.[0]?.isQuotationAcceptedByClient &&
-                !project?.projectProposals?.[0]?.isQuotationAcceptedByAgency)
-                &&
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        padding: '1rem'
-                    }}
-                >
-
-                    <p style={{ fontWeight: '500' }}>
-                        You have only three messages. Make them count!
-                    </p>
-
-                </div>
-            }
+                !project?.projectProposals?.[0]
+                    ?.isQuotationAcceptedByAgency && (
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            padding: '1rem'
+                        }}
+                    >
+                        <p style={{ fontWeight: '500' }}>
+                            You have only three messages. Make them count!
+                        </p>
+                    </div>
+                )}
             <div className="agencyQuotation">
                 <div className="innerAgencyQuotation">
                     <div className="agencyQuotationDesc_AgencyRespondedDetails">
                         {project?.projectProposals &&
-                            project?.projectProposals[0]?.rejectReasonByClient !==
+                        project?.projectProposals[0]?.rejectReasonByClient !==
                             undefined ? (
                             <>
                                 <div className="project_rejection">
