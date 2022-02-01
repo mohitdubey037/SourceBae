@@ -1,23 +1,7 @@
 .commentBox_parent {
     display: flex;
+    flex-wrap: wrap;
 }
-
-/* .sendIcon_clientCommentBox {
-    position: relative;
-    border-radius: 50%;
-    height: 40px;
-    width: 44px;
-    background-color: #45A4EA;
-    width: 13%;
-} */
-
-/* .chatBox.chatBox-right > p{
-    width: max-content;
-} */
-
-/* .isRejectOrAccept {
-    display: none;
-} */
 
 .is_flex_direction {
     flex-direction: row !important;

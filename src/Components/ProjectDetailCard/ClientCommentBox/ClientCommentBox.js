@@ -48,11 +48,6 @@ const ClientCommentBox = (props) => {
         props.projectProposals[0].rejectReasonByClient ||
         props.projectProposals[0].rejectReasonByAgency;
 
-    const overallPriceSection =
-        props.projectProposals[0].agencyNegotiablePrice ||
-        props.projectProposals[0].clientNegotiablePrice ||
-        props.projectProposals[0].quotationLink;
-
     const [loading, setLoading] = useState(false);
     const projectStartDateByClientRef = useRef();
 
@@ -93,6 +88,14 @@ const ClientCommentBox = (props) => {
 
     const onQuotationChange = (event) => {
         const { name, value } = event.target;
+        if (name === 'finalCostByClient') {
+            if (value > 2 * props?.projectProposalCost) {
+                toast.error(
+                    'Final cost cannot be greater than the twice the proposal cost'
+                );
+                return;
+            }
+        }
         setQuotationFormData({
             ...quotationFormData,
             [name]: value

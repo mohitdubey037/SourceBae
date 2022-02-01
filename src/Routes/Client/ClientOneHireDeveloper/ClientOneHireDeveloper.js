@@ -118,11 +118,7 @@ function ClientOneHireDeveloper(props) {
                                                             <div className="agencyDesc_clientOneHireDeveloper">
                                                                 <div className="about_the_company">
                                                                     <h3 className="name-title">
-                                                                        {
-                                                                            agency
-                                                                                ?.agencyId
-                                                                                ?.agencyName
-                                                                        }
+                                                                        Anonymous
                                                                     </h3>
                                                                 </div>
                                                                 <div className="experience_and_interest">
