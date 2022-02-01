@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import instance from '../../../Constants/axiosConstants';
 import { Modal } from 'react-responsive-modal';
