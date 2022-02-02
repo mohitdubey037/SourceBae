@@ -114,11 +114,18 @@ function ShortTerm(props) {
     const handleServices = (event) => {
         const { className } = event.target;
         const toggledServices = allServices.map((service) => {
-            setApiData({
-                ...apiData,
-                projectServicesRequired: [service._id]
-            });
             if (service.serviceName === className) {
+                if (!service.selected) {
+                    setApiData({
+                        ...apiData,
+                        projectServicesRequired: [service._id]
+                    });
+                } else if (service.selected) {
+                    setApiData({
+                        ...apiData,
+                        projectServicesRequired: []
+                    });
+                }
                 return {
                     ...service,
                     selected: !service.selected
@@ -133,6 +140,9 @@ function ShortTerm(props) {
         setAllServices(toggledServices);
     };
 
+    useEffect(() => {
+        console.log(apiData, 'api data');
+    }, [apiData.projectServicesRequired]);
     const errorValidation = () => {
         const err = {};
         if (apiData.projectServicesRequired.length === 0) {

@@ -29,6 +29,7 @@
     position: absolute;
     bottom: -5.5rem;
     width: 48rem;
+    z-index: -1;
 }
 
 .howToPay .fixedPrice .MuiFormControlLabel-root {
