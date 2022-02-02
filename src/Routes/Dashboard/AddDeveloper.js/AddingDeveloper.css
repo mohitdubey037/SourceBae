@@ -42,13 +42,8 @@
 .experience-radio-parent {
     width: 100%;
     display: flex;
+    z-index: 0;
 }
-
-/* .inputForm {
-  height: 36rem;
-  width: 65%;
-  background-color: #fff;
-} */
 
 .model3d {
     position: absolute;
@@ -544,6 +539,7 @@
     flex-direction: column;
     justify-content: flex-end;
     margin-top: 0.5rem;
+    z-index: 1;
 }
 
 .inputField2 .dropdown-container {

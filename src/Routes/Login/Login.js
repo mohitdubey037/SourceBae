@@ -22,6 +22,7 @@ import Spinner from '../../Components/Spinner/Spinner';
 import cookie from 'react-cookies';
 import firebase from '../../firebase';
 import { CLIENT, AGENCY } from '../../shared/constants';
+import { toast } from 'react-toastify';
 
 const borderLight = 'rgba(206,212,218, .993)';
 
@@ -136,6 +137,10 @@ const Login = (props) => {
 
     const logIn = async (event) => {
         event.preventDefault();
+        if (form.user === '' || form.password === '') {
+            toast.error('Username and Password are required');
+            return;
+        }
         let apiRole = role;
         return new Promise((resolve, reject) => {
             instance
