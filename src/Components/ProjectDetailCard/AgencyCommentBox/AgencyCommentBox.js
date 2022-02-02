@@ -412,6 +412,7 @@ const AgencyCommentBox = (props) => {
                                                                                 <input
                                                                                     color="primary"
                                                                                     type="file"
+                                                                                    accept="application/pdf"
                                                                                     onChange={(
                                                                                         event
                                                                                     ) =>

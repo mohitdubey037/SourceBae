@@ -26,7 +26,8 @@ function Portfolio(props) {
         useDropzone({
             onDrop,
             accept: '.jpeg,.png,.jpg',
-            minSize: 0
+            minSize: 0,
+            multiple: false
             // maxSize,
         });
 

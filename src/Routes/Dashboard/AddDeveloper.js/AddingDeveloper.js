@@ -66,7 +66,8 @@ function AddingDeveloper(props) {
         useDropzone({
             onDrop,
             accept: '.pdf,.doc,.docx',
-            minSize: 0
+            minSize: 0,
+            multiple: false
         });
 
     const handleChange = (event, type) => {
