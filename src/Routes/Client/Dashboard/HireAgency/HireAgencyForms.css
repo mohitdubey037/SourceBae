@@ -231,7 +231,7 @@ li::marker {
     gap: 5rem;
 }
 
-.points-to-remember_hireAgencyForm1>h4 {
+.points-to-remember_hireAgencyForm1 > h4 {
     font-family: 'Segoe UI semibold';
     font-size: 22px;
     color: #015f9a;
@@ -329,7 +329,7 @@ li::marker {
     margin-left: 7px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 
 .tech-container {
@@ -388,6 +388,7 @@ li::marker {
     border-radius: 1rem;
     width: 18rem;
     padding: 8px;
+    max-width: 500px;
 }
 
 .mainHireAgencyFormTwo .MuiFormGroup-root {

@@ -5,7 +5,6 @@ import { Modal } from 'react-responsive-modal';
 import Spinner from '../../Components/Spinner/Spinner';
 
 function VerifyModal(props) {
-    var isUserVerified = localStorage.getItem('userVerified') === 'true';
     const [loading, setLoading] = useState(false);
 
     const [checkEmail, setCheckEmail] = useState(false);
@@ -14,12 +13,18 @@ function VerifyModal(props) {
     const onOpenModal = () => {
         setOpen(true);
     };
+    const onCloseModal = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
-        if (!isUserVerified) {
+        if (props?.isUserVerified) {
+            onCloseModal();
+        } else if (props?.isUserVerified === false) {
             onOpenModal();
         }
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props?.isUserVerified]);
 
     const verifyEmailPhone = () => {
         setLoading(true);
@@ -45,7 +50,10 @@ function VerifyModal(props) {
                 <Modal
                     open={open}
                     closeOnOverlayClick={false}
-                    showCloseIcon={true}
+                    showCloseIcon={false}
+                    onClose={() => {
+                        onCloseModal();
+                    }}
                     classNames={{
                         overlay: 'customOverlayAgencyProduct',
                         modal: 'customModalClientOneHireDeveloper',
@@ -58,6 +66,7 @@ function VerifyModal(props) {
                         {checkEmail ? (
                             <div className="connect_or_not">
                                 <p>Please check Your Email</p>
+                                <p>Please Reload this page after verifying.</p>
                             </div>
                         ) : (
                             <>

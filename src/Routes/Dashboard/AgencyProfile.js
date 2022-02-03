@@ -559,14 +559,27 @@ function AgencyProfile(props) {
                                                 </MenuItem>
                                             </Select>
                                         </FormControl>
-                                        <a
-                                            style={{ textDecoration: 'none' }}
-                                            className="uploadButton"
-                                            href={link}
-                                            target="new"
-                                        >
-                                            View Document
-                                        </a>
+                                        {link === '' ? (
+                                            <span
+                                                style={{
+                                                    color: '#707070',
+                                                    fontSize: '14px'
+                                                }}
+                                            >
+                                                Nothing Selected
+                                            </span>
+                                        ) : (
+                                            <a
+                                                style={{
+                                                    textDecoration: 'none'
+                                                }}
+                                                className="uploadButton"
+                                                href={link}
+                                                target="new"
+                                            >
+                                                View Document
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             )}
@@ -663,22 +676,6 @@ function AgencyProfile(props) {
                                         </button>
                                     </div>
                                 )}
-
-                                {/* <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">
-                                            <img src={matched} alt="Reviews" /> Reviews
-                            </button> */}
-                                {/* <button
-                    class="nav-link"
-                    id="nav-question-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-question"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-question"
-                    aria-selected="false"
-                  >
-                    <img src={matched} alt="Feature Link" /> Feature Link
-                  </button> */}
                             </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div

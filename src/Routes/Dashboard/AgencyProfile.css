@@ -1,37 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 button {
-  margin-top: 0;
-  margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .mainProfileHeaderImage {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .conditionalGradient {
-  background-image: linear-gradient(284deg, rgb(3, 118, 186) 0%, rgb(1, 48, 77) 100%) !important;
+    background-image: linear-gradient(
+        284deg,
+        rgb(3, 118, 186) 0%,
+        rgb(1, 48, 77) 100%
+    ) !important;
 }
 
 .Image2_AgencyProfile {
-  right: -6rem;
-  position: fixed;
-  bottom: -3rem;
-  width: 34rem;
-  z-index: 0;
+    right: -6rem;
+    position: fixed;
+    bottom: -3rem;
+    width: 34rem;
+    z-index: 0;
 }
 
 .mainInformation {
-  background-color: #ffffff;
-  margin-bottom: 4rem;
+    background-color: #ffffff;
+    margin-bottom: 4rem;
 }
 
 .question_icon {
-  position: absolute;
-  right: 1rem;
-  margin-top: 2rem;
+    position: absolute;
+    right: 1rem;
+    margin-top: 2rem;
 }
 
 /* .profileButton {
@@ -39,605 +43,612 @@ button {
 } */
 
 .innerProfileHeaderImage {
-  width: 100%;
-  height: 25vh;
-  background-size: cover;
-  position: relative;
-  display: flex;
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    width: 100%;
+    height: 25vh;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%);
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .backButtonAgencyProfile {
-  width: 7%;
-  display: flex;
-  position: absolute;
-  left: 1%;
-  top: 15px;
-  align-items: center;
-  height: 50px;
+    width: 7%;
+    display: flex;
+    position: absolute;
+    left: 1%;
+    top: 15px;
+    align-items: center;
+    height: 50px;
 }
 
 .backButtonAgencyProfile i {
-  margin-right: 10px;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 13px;
-  cursor: pointer;
+    margin-right: 10px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 13px;
+    cursor: pointer;
 }
 
 .backButtonAgencyProfile h6 {
-  color: #fff;
-  cursor: pointer;
-  color: #5C6DFF;
+    color: #fff;
+    cursor: pointer;
+    color: #5c6dff;
 }
 
 .innerProfileHeaderImage img {
-  width: 22px;
+    width: 22px;
 }
 
 .backButton-child {
-  align-items: center;
-  display: flex;
-  background-color: white;
-  width: 100%;
-  justify-content: space-evenly;
-  border-radius: 40px;
-  height: 40px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  cursor: pointer;
+    align-items: center;
+    display: flex;
+    background-color: white;
+    width: 100%;
+    justify-content: space-evenly;
+    border-radius: 40px;
+    height: 40px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    cursor: pointer;
 }
 
 .innerProfileHeaderImage div p {
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  text-decoration: underline;
-  cursor: pointer;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .innerProfileHeaderImage div p i {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .innerProfileHeaderImage button {
-  position: absolute;
-  bottom: -15px;
-  right: 0;
-  width: 17%;
-  height: 40px;
-  font-size: 0.8rem;
-  font-family: 'Segoe UI Semibold';
-  outline: none;
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
-  color: #fff;
-  border: none;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    position: absolute;
+    margin-top: 8.5rem;
+    max-width: 200px;
+    height: 25px;
+    width: 100%;
+    right: 0;
+    font-size: 0.8rem;
+    font-family: 'Segoe UI Semibold';
+    outline: none;
+    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%);
+    color: #fff;
+    border: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .innerProfileHeaderImage button i {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .innerProfileHeaderImage span {
-  top: 7rem;
-  color: #fff;
-  font-family: 'Segoe UI';
-  height: max-content;
-  position: absolute;
-  right: 0.3rem;
-  font-size: 0.7rem;
+    top: 7rem;
+    color: #fff;
+    font-family: 'Segoe UI';
+    height: max-content;
+    position: absolute;
+    right: 0.3rem;
+    font-size: 0.7rem;
 }
 
 .mainAskQuestion {
-  width: 100%;
+    width: 100%;
 }
 
-.mainAskQuestion h3, .mainAskQuestion h5 {
-  font-family: 'Segoe UI';
-  font-size: 1.1rem;
+.mainAskQuestion h3,
+.mainAskQuestion h5 {
+    font-family: 'Segoe UI';
+    font-size: 1.1rem;
 }
 
 .mainAskQuestion h3 {
-  font-family: 'Segoe UI Semibold';
+    font-family: 'Segoe UI Semibold';
 }
 
 .questionFields input {
-  width: 100%;
-  height: 50px;
-  padding-left: 10px;
-  font-size: 1.2rem;
-  outline: none;
-  border: 1px solid #ebebeb;
-  margin-bottom: 3%;
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    border: 1px solid #ebebeb;
+    margin-bottom: 3%;
 }
 
 .questionFields button {
-  padding: 0.5rem 1rem;
-  background-color: #02044a;
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  border-radius: 999px;
-  outline: none;
-  border: none;
+    padding: 0.5rem 1rem;
+    background-color: #02044a;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 999px;
+    outline: none;
+    border: none;
 }
 
 .recetlyAskedQuestion {
-  margin-top: 5%;
-  padding: 1rem;
+    margin-top: 5%;
+    padding: 1rem;
 }
 
 .recetlyAskedQuestion h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  font-size: 1.2rem;
-  border-bottom: 1px dashed #ebebeb;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed #ebebeb;
 }
 
 .recetlyAskedQuestion div {
-  margin-top: 3%;
+    margin-top: 3%;
 }
 
 .recetlyAskedQuestion h3 {
-  font-family: 'Open Sans', sans-serif;
-  color: #707070;
-  font-size: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+    color: #707070;
+    font-size: 1.2rem;
 }
 
 .recetlyAskedQuestion p {
-  font-family: 'Open Sans', sans-serif;
-  color: #000;
-  font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    font-weight: bold;
 }
 
 .customOverlay {
-  background: rgba(0, 0, 0, 0.6) !important;
+    background: rgba(0, 0, 0, 0.6) !important;
 }
 
 .customModal {
-  background: #fff !important;
-  min-width: 33vw !important;
-  border-radius: 20px;
+    background: #fff !important;
+    min-width: 33vw !important;
+    border-radius: 20px;
 }
 
 .mainAgencyProfileInfo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .innerAgencyProfileInfo {
-  width: 90%;
-  display: flex;
+    width: 90%;
+    display: flex;
 }
 
 .mainAgencyProfileLogo {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 3%;
-  transform: translateY(-50px);
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  background-color: #fff;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3%;
+    transform: translateY(-50px);
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    background-color: #fff;
 }
 
 .innerAgencyProfileLogo {
-  width: 80%;
-  height: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .innerAgencyProfileLogo img {
-  width: 100%;
-  width: -webkit-fill-available;
-  mix-blend-mode: multiply;
+    width: 100%;
+    width: -webkit-fill-available;
+    mix-blend-mode: multiply;
 }
 
 .mainAgencyProfileContent {
-  margin-top: 2%;
-  width: 80%;
+    margin-top: 2%;
+    width: 80%;
 }
 
 .agencyName {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 100%;
-  padding-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 5px;
 }
 
 .agencyNameURL {
-  display: flex;
-  width: 100%;
-  align-items: flex-start;
-  justify-content: space-between;
-  position: relative;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
 }
 
 .agencyNameURL .agencyDEtails {
-  width: 100%;
-  margin-bottom: 1%;
-  margin-top: -3%;
+    width: 100%;
+    margin-bottom: 1%;
+    margin-top: -3%;
 }
 
 .verifiedStatus {
-  display: flex;
-  color: #5cb85c;
-  align-items: center;
+    display: flex;
+    color: #5cb85c;
+    align-items: center;
 }
 
 .verifiedStatus i {
-  margin-right: 5px;
-  font-size: 1rem;
+    margin-right: 5px;
+    font-size: 1rem;
 }
 
 .verifiedStatus span {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.9rem !important;
-  margin-left: 2px;
-  font-weight: bold;
-  margin-top: 2px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem !important;
+    margin-left: 2px;
+    font-weight: bold;
+    margin-top: 2px;
 }
 
 .agencyAddress {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
 }
 
 .agencyAddress i {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .agencyAddress span {
-  font-family: 'Segoe UI Semibold';
-  color: #707070;
-  font-size: 14px;
-  margin-left: 8px;
+    font-family: 'Segoe UI Semibold';
+    color: #707070;
+    font-size: 14px;
+    margin-left: 8px;
 }
 
 .agencyName h2 {
-  font-family: 'Segoe UI Bold';
-  color: #5C6DFF;
-  font-size: 1.5rem;
+    font-family: 'Segoe UI Bold';
+    color: #5c6dff;
+    font-size: 1.5rem;
 }
 
 .agencyName p {
-  font-family: 'Segoe UI Semibold';
-  font-size: 0.9rem;
-  color: #707070;
+    font-family: 'Segoe UI Semibold';
+    font-size: 0.9rem;
+    color: #707070;
 }
 
 .agencyProfileConstantPoints {
-  display: flex;
-  margin-top: 1%;
-  justify-content: space-between;
+    display: flex;
+    margin-top: 1%;
+    justify-content: space-between;
 }
 
 .agencyAddress img {
-  width: 14px;
+    width: 14px;
 }
 
-.agencyProfileConstantPoints .pointContent:nth-child(1), .agencyProfileConstantPoints .pointContent:nth-child(2), .agencyProfileConstantPoints .pointContent:nth-child(3) {
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
+.agencyProfileConstantPoints .pointContent:nth-child(1),
+.agencyProfileConstantPoints .pointContent:nth-child(2),
+.agencyProfileConstantPoints .pointContent:nth-child(3) {
+    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%);
 }
 
 .agencyProfileConstantPoints .pointContent:nth-child(4) {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  background: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background: #fff;
 }
 
 .agencyProfileConstantPoints .pointContent:nth-child(4) i {
-  font-size: 22px;
-  color: #14ff00;
+    font-size: 22px;
+    color: #14ff00;
 }
 
 .agencyProfileConstantPoints .pointContent:nth-child(4) p {
-  font-size: 1rem;
-  font-family: 'Segoe UI Bold';
-  transform: translateX(10px);
-  color: #5C6DFF;
+    font-size: 1rem;
+    font-family: 'Segoe UI Bold';
+    transform: translateX(10px);
+    color: #5c6dff;
 }
 
 .view_image {
-  width: 17px;
-  height: 20px;
-  margin-right: 5px;
-  object-fit: contain;
+    width: 17px;
+    height: 20px;
+    margin-right: 5px;
+    object-fit: contain;
 }
 
 .view_image_parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pointContent {
-  height: 80px;
-  width: 20%;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 0 10px;
-  background-color: #939dff;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    height: 80px;
+    width: 20%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10px;
+    background-color: #939dff;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .pointContent p {
-  color: white;
-  font-family: 'Segoe UI Semibold';
-  font-weight: 500;
-  font-size: 14px;
+    color: white;
+    font-family: 'Segoe UI Semibold';
+    font-weight: 500;
+    font-size: 14px;
 }
 
 .pointContent h4 {
-  font-family: 'Segoe UI Semibold';
-  font-size: 0.78rem;
-  margin-top: 10px;
-  color: #3a3a3a;
-  color: white;
+    font-family: 'Segoe UI Semibold';
+    font-size: 0.78rem;
+    margin-top: 10px;
+    color: #3a3a3a;
+    color: white;
 }
 
 .mainAgencyProfileDesc {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .innerAgencyProfileDesc {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-right: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-right: 2rem;
 }
 
 .leftAgencyProfileDesc {
-  width: 75%;
-  display: flex;
-  justify-content: space-between;
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .aboutUs_parent {
-  font-family: 'Segoe UI Bold';
-  color: #555;
-  font-size: 1rem;
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
-  padding: 10px;
-  border-radius: 0 20px 20px 0;
-  color: white;
-  height: fit-content;
-  width: 400px;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  right: 100px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    font-family: 'Segoe UI Bold';
+    color: #555;
+    font-size: 1rem;
+    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%);
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+    color: white;
+    height: fit-content;
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    right: 100px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .innerAgencyProfileDesc h2 {
-  margin-bottom: 0;
-  font-size: 1rem;
-  padding-right: 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    padding-right: 1rem;
 }
 
 .leftAgencyProfileDesc p {
-  font-family: 'Segoe UI';
-  color: #555;
-  font-size: 14px;
+    font-family: 'Segoe UI';
+    color: #555;
+    font-size: 14px;
 }
 
 .agencyProfileIndustry {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 2%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2%;
 }
 
 .agencyProfileIndustry p {
-  background-color: #F5F5F5;
-  margin-right: 5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI Semibold';
-  color: #707070;
-  padding: 11px 34px;
-  border-radius: 27px;
-  font-size: 12px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    background-color: #f5f5f5;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI Semibold';
+    color: #707070;
+    padding: 11px 34px;
+    border-radius: 27px;
+    font-size: 12px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .rightAgencyProfileDesc {
-  width: 40%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .monthyView {
-  width: 48%;
-  border: 1px solid#5C6DFF;
-  height: 137px;
-  text-align: center;
-  padding: 1rem 0;
-  position: relative;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  background-color: white;
+    width: 48%;
+    border: 1px solid#5C6DFF;
+    height: 137px;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    background-color: white;
 }
 
 .monthyView.agencyProfile {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 .monthyView h3 {
-  font-family: 'Segoe UI';
-  color: #5C6DFF;
-  font-size: 0.8rem;
-  margin-bottom: 0;
+    font-family: 'Segoe UI';
+    color: #5c6dff;
+    font-size: 0.8rem;
+    margin-bottom: 0;
 }
 
 .monthyView p {
-  font-size: 2rem;
-  font-family: 'Segoe UI Bold';
-  color: #707070;
+    font-size: 2rem;
+    font-family: 'Segoe UI Bold';
+    color: #707070;
 }
 
 .profile_count {
-  transform: translateY(-23px);
+    transform: translateY(-23px);
 }
 
 .monthBorder {
-  position: absolute;
-  width: 8px;
-  height: 90%;
-  background-color: #02044a;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  border-radius: 999px;
+    position: absolute;
+    width: 8px;
+    height: 90%;
+    background-color: #02044a;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 999px;
 }
 
 .uploadButton {
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
-  color: #fff;
-  outline: none;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-family: 'Segoe UI Semibold';
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%);
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-family: 'Segoe UI Semibold';
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .uploadButton i {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 
 .uploadButton:focus {
-  outline: none;
+    outline: none;
 }
 
 .innerQuotation_agencyProfile {
-  width: 100%;
-  margin-top: 0;
-  position: relative;
+    width: 100%;
+    margin-top: 0;
+    position: relative;
 }
 
 .innerQuotation_agencyProfile .nav {
-  display: block;
+    display: block;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button {
-  background-color: transparent !important;
-  border: none !important;
-  outline: none !important;
-  margin-right: 4%;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    margin-right: 4%;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link {
-  border-top-left-radius: 0rem;
-  border-top-right-radius: 0rem;
-  border-radius: 15px;
-  border: none;
-  width: 100px;
-  height: 100px;
-  margin-left: 4%;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border-radius: 15px;
+    border: none;
+    width: 100px;
+    height: 100px;
+    margin-left: 4%;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button img {
-  width: 15%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
+    width: 15%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active {
-  border: none;
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%) !important;
+    border: none;
+    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%) !important;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active button {
-  color: white !important;
+    color: white !important;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active img {
-  color: white !important;
-  filter: invert(100%) sepia(97%) saturate(0%) hue-rotate(49deg) brightness(154%) contrast(105%);
+    color: white !important;
+    filter: invert(100%) sepia(97%) saturate(0%) hue-rotate(49deg)
+        brightness(154%) contrast(105%);
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link:hover {
-  border: none;
+    border: none;
 }
 
-.nav-tabs_agencyProfile>#nav-home-tab {
-  margin-top: 10px;
+.nav-tabs_agencyProfile > #nav-home-tab {
+    margin-top: 10px;
 }
 
-.nav-tabs_agencyProfile>div {
-  border-top-left-radius: 0rem;
-  border-top-right-radius: 0rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: #FEFEFE;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  width: 120px;
-  height: 123px;
-  margin-left: 20px;
-  margin-bottom: 12px !important;
+.nav-tabs_agencyProfile > div {
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fefefe;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    width: 120px;
+    height: 123px;
+    margin-left: 20px;
+    margin-bottom: 12px !important;
 }
 
 .innerQuotation_agencyProfile .nav.nav-tabs {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile {
-  font-size: 10px;
-  font-family: 'Segoe UI Bold';
-  text-align: center;
-  text-transform: uppercase;
-  color: #A8A8A8;
-  margin-right: 0;
-  margin-top: 10px;
+    font-size: 10px;
+    font-family: 'Segoe UI Bold';
+    text-align: center;
+    text-transform: uppercase;
+    color: #a8a8a8;
+    margin-right: 0;
+    margin-top: 10px;
 }
 
-.innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile:hover, .nav-button.nav-link_agencyProfile:active .nav-button.nav-link_agencyProfile:focus {
-  border: none !important;
-  outline: none !important;
+.innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile:hover,
+.nav-button.nav-link_agencyProfile:active
+    .nav-button.nav-link_agencyProfile:focus {
+    border: none !important;
+    outline: none !important;
 }
 
 .innerQuotation_agencyProfile #nav-tabContent {
-  width: 80%;
-  position: absolute;
-  top: 4%;
-  left: 193px;
+    width: 80%;
+    position: absolute;
+    top: 4%;
+    left: 193px;
 }

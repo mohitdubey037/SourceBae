@@ -3,14 +3,12 @@ import './ClientProfile.css';
 import PageNotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import avatar from '../../assets/images/Newestdashboard/Client_Profile/client_profile.svg';
 import { useDropzone } from 'react-dropzone';
-import { toast } from 'react-toastify';
 
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../Components/Back/Back';
 
 import instance from '../../Constants/axiosConstants';
 import Spinner from '../../Components/Spinner/Spinner';
-import Profile_image1 from '../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
 import { FaCamera } from 'react-icons/fa';
 
@@ -30,6 +28,7 @@ function ClientProfile() {
 
     const Role = localStorage.getItem('role');
     const clientId = localStorage.getItem('userId');
+    const [isUserVerified, setIsUserVerified] = useState(null);
     const [clientData, setClientData] = useState({
         firstName: '',
         lastName: '',
@@ -69,6 +68,10 @@ function ClientProfile() {
                 };
                 setClientData(temp);
                 setLoading(false);
+                setIsUserVerified(
+                    response[0].isUserPhoneVerified &&
+                        response[0].isUserEmailVerified
+                );
             })
             .catch((err) => {
                 setLoading(false);
@@ -165,6 +168,7 @@ function ClientProfile() {
 
     useEffect(() => {
         getClientProfileApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -368,7 +372,11 @@ function ClientProfile() {
                     </div>
                 </div>
             )}
-            <VerifyModal Role={Role} id={clientId} />
+            <VerifyModal
+                Role={Role}
+                id={clientId}
+                isUserVerified={isUserVerified}
+            />
         </>
     );
 }

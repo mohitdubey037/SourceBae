@@ -97,13 +97,16 @@ function NotificationPanel(props) {
                                             aria-controls="panel1a-content"
                                             id="panel1a-header"
                                             expandIcon={<ExpandMoreIcon />}
-                                            // onClick={() =>
-                                            //     handleNotificationRead(nd?._id)
-                                            // }
-                                            // className={`notificationPoint ${
-                                            //     nd?.isNotificationRead &&
-                                            //     'conditionalFilter_Sidebar'
-                                            // }`}
+                                            onClick={() =>
+                                                handleNotificationRead(nd?._id)
+                                            }
+                                            className={`${
+                                                !nd?.isNotificationRead &&
+                                                'notificationPoint'
+                                            } ${
+                                                nd?.isNotificationRead &&
+                                                'conditionalFilter_Sidebar'
+                                            }`}
                                             // style={{
                                             //     display: 'flex',
                                             //     flexDirection: 'column'
