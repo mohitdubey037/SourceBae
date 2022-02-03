@@ -294,7 +294,6 @@ function SkillsSet(props) {
                         ? props.data.isAgencyVerified && (
                               <div className="skill-set_parent_parent">
                                   <div className="skill-set_parent">
-                                      {/* <img src={Skillset_edit} alt="Skill-Set" /> */}
                                       <p>SKILL SET</p>
                                   </div>
                                   <i
@@ -302,22 +301,11 @@ function SkillsSet(props) {
                                       className="fa fa-pencil-square-o Edit-icon_information"
                                       aria-hidden="true"
                                   ></i>
-
-                                  {/* <div className="editable_parent"> */}
-                                  {/* <div className="editableBtn" style={{ position: 'relative' }}>
-                                    <button onClick={() => handleEdit(false)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Submit</button>
-                                </div> */}
-                                  {/* <div className="editableBtn">
-                                    <button onClick={() => handleEdit(true)} ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Your Skills Set</button>
-                                </div> */}
-                                  {/* </div> */}
                               </div>
                           )
                         : null}
 
                     <div className="skillsSetsContent">
-                        {/* <div className="skillsSetBorder"></div> */}
-                        {/* <div className="skillsSetSemiCircle" style={{ zIndex: -1 }}></div> */}
                         {arr.map((value) => {
                             return (
                                 <div className="skillsSetTable">
