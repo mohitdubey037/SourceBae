@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import cookie from 'react-cookies';
 const buildType = 'production';
 var url =
-    process.env.NODE_ENV === 'development' || buildType === 'development'
+    // process.env.NODE_ENV === 'development' ||
+    buildType === 'development'
         ? 'https://api.onesourcing.in'
         : 'https://api.sourcebae.com';
 

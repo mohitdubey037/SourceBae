@@ -29,16 +29,19 @@ function HireDeveloper(props) {
     const id = localStorage.getItem('userId');
 
     const [apiData, setApiData] = useState({
+        requirementName: '',
         developerRolesRequired: [],
         numberOfResourcesRequired: '',
         developerTechnologiesRequired: [],
-        developerExperienceRequired: '',
-        preferredBillingMode: '',
-        averageBudget: '',
-        expectedStartDate: '',
+        developerExperienceRequired: 'Junior (1-3years)',
+        preferredBillingMode: 'Weekly',
+        averageBudget: 'less than $1500',
+        expectedStartDate: 'Immediately',
         contractPeriod: '3 Months',
         clientId: id
     });
+
+    const [errors, setErrors] = useState({});
     const billing = 1;
 
     const handleChange = (event) => {
@@ -108,6 +111,10 @@ function HireDeveloper(props) {
     };
 
     const handleSubmit = () => {
+        let validated = errorValidation();
+        if (!validated) {
+            return;
+        }
         const body = {
             ...apiData,
             developerRolesRequired: selectedRoles.map((role) => role.value),
@@ -128,6 +135,55 @@ function HireDeveloper(props) {
         getAllTechnologies();
     }, []);
 
+    const errorValidation = () => {
+        const errors = {};
+
+        if (apiData.requirementName === '') {
+            errors.requirementName = 'Requirement name cannot be blank';
+        }
+        if (selectedRoles.length === 0) {
+            errors.developerRolesRequired =
+                'Atleast one developer role is Required';
+        }
+        if (apiData.numberOfResourcesRequired === '') {
+            errors.numberOfResourcesRequired = 'Resources cannot be blank';
+        } else if (apiData.numberOfResourcesRequired < 1) {
+            errors.numberOfResourcesRequired =
+                'Resources cannot be less than 1';
+        }
+        if (selectedTechnologies.length === 0) {
+            errors.developerTechnologiesRequired =
+                'Atleast one technology is Required';
+        }
+
+        setErrors(errors);
+        if (Object.keys(errors).length === 0) return true;
+        else return false;
+    };
+
+    const customItemRenderer = ({ checked, option, onClick, disabled }) => {
+        return (
+            <div
+                className={`item-renderer ${
+                    disabled && 'disabled'
+                } custom-item-renderer`}
+            >
+                <input
+                    type="checkbox"
+                    onChange={onClick}
+                    checked={checked}
+                    tabIndex={-1}
+                    disabled={disabled}
+                />
+                <p>{option.label}</p>
+            </div>
+        );
+    };
+    const customValueRenderer = (selected, _options) => {
+        return selected.length
+            ? selected.map(({ label }) => '✔️ ' + label)
+            : 'No services selected';
+    };
     return (
         <>
             <Navbar />
@@ -150,13 +206,20 @@ function HireDeveloper(props) {
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
-                                <input
-                                    type="text"
-                                    name="requirementName"
-                                    value={apiData.requirementName}
-                                    placeholder="Give a name to identify requirement"
-                                    onChange={handleChange}
-                                />
+                                <div className="inputs-container">
+                                    <input
+                                        type="text"
+                                        name="requirementName"
+                                        value={apiData.requirementName}
+                                        placeholder="Give a name to identify requirement"
+                                        onChange={handleChange}
+                                    />
+                                    {errors?.requirementName && (
+                                        <span className="validation_message">
+                                            {errors?.requirementName}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
 
                             <div className="resourceNumber">
@@ -166,13 +229,22 @@ function HireDeveloper(props) {
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
-                                <MultiSelect
-                                    options={options}
-                                    value={selectedRoles}
-                                    onChange={setSelectedRoles}
-                                    labelledBy="Select"
-                                    className="multi-select"
-                                />
+                                <div className="inputs-container">
+                                    <MultiSelect
+                                        options={options}
+                                        value={selectedRoles}
+                                        onChange={setSelectedRoles}
+                                        labelledBy="Select"
+                                        className="multi-select developerrole-select"
+                                        ItemRenderer={customItemRenderer}
+                                        valueRenderer={customValueRenderer}
+                                    />
+                                    {errors?.developerRolesRequired && (
+                                        <span className="validation_message">
+                                            {errors?.developerRolesRequired}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
 
                             <div className="resourceNumber">
@@ -182,14 +254,23 @@ function HireDeveloper(props) {
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
-                                <input
-                                    type="number"
-                                    min="1"
-                                    name="numberOfResourcesRequired"
-                                    value={apiData.numberOfResourcesRequired}
-                                    placeholder="E.g- 1 or 2"
-                                    onChange={handleChange}
-                                />
+                                <div className="inputs-container">
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        name="numberOfResourcesRequired"
+                                        value={
+                                            apiData.numberOfResourcesRequired
+                                        }
+                                        placeholder="E.g- 1 or 2"
+                                        onChange={handleChange}
+                                    />
+                                    {errors?.numberOfResourcesRequired && (
+                                        <span className="validation_message">
+                                            {errors?.numberOfResourcesRequired}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
                             <div className="resourceNumber">
                                 <ul>
@@ -198,15 +279,24 @@ function HireDeveloper(props) {
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
-                                {allTechnologies.length > 0 ? (
-                                    <MultiSelect
-                                        options={allTechnologies}
-                                        value={selectedTechnologies}
-                                        onChange={setSelectedTechnologies}
-                                        labelledBy="Select"
-                                    />
-                                ) : (
-                                    'Sorry no Technologies to select'
+                                <div className="inputs-container">
+                                    {allTechnologies.length > 0 ? (
+                                        <MultiSelect
+                                            options={allTechnologies}
+                                            value={selectedTechnologies}
+                                            onChange={setSelectedTechnologies}
+                                            labelledBy="Select"
+                                            ItemRenderer={customItemRenderer}
+                                            valueRenderer={customValueRenderer}
+                                        />
+                                    ) : (
+                                        'Sorry no Technologies to select'
+                                    )}
+                                </div>
+                                {errors?.developerTechnologiesRequired && (
+                                    <span className="validation_message">
+                                        {errors?.developerTechnologiesRequired}
+                                    </span>
                                 )}
                             </div>
                         </div>
@@ -223,7 +313,9 @@ function HireDeveloper(props) {
                                         <RadioGroup
                                             aria-label="experience"
                                             name="developerExperienceRequired"
-                                            value={apiData.experience}
+                                            value={
+                                                apiData.developerExperienceRequired
+                                            }
                                             onChange={handleChange}
                                         >
                                             <div
@@ -237,9 +329,6 @@ function HireDeveloper(props) {
                                                         label="Junior (1-3years)"
                                                     />
                                                 </div>
-                                                {/* <div className="radio-description">
-                        Junior (1 - 3 Years)
-                      </div> */}
                                             </div>
 
                                             <div
@@ -253,9 +342,6 @@ function HireDeveloper(props) {
                                                         label="Mid Range (3-6 years)"
                                                     />
                                                 </div>
-                                                {/* <div className="radio-description">
-                        Mid Range ( 3 - 6  Years)
-                      </div> */}
                                             </div>
 
                                             <div
@@ -269,9 +355,6 @@ function HireDeveloper(props) {
                                                         label="Senior (6-9 years)"
                                                     />
                                                 </div>
-                                                {/* <div className="radio-description">
-                        Senior ( 6 - 9 Years)
-                      </div> */}
                                             </div>
                                         </RadioGroup>
                                     </div>
@@ -291,7 +374,7 @@ function HireDeveloper(props) {
                                         <RadioGroup
                                             aria-label="billing"
                                             name="preferredBillingMode"
-                                            value={apiData.experience}
+                                            value={apiData.preferredBillingMode}
                                             onChange={handleChange}
                                         >
                                             <div
@@ -305,9 +388,6 @@ function HireDeveloper(props) {
                                                         label="Weekly"
                                                     />
                                                 </div>
-                                                {/* <div className="radio-description">
-                        Weekly
-                      </div> */}
                                             </div>
 
                                             <div
@@ -321,9 +401,6 @@ function HireDeveloper(props) {
                                                         label="Monthly"
                                                     />
                                                 </div>
-                                                {/* <div className="radio-description">
-                        Monthly
-                      </div> */}
                                             </div>
                                         </RadioGroup>
                                     </div>
