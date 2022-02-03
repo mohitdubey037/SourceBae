@@ -306,6 +306,10 @@ function AgencyForm2(props) {
             ? selected.map(({ label }) => '✔️ ' + label)
             : 'No technologies selected';
     };
+
+    useEffect(() => {
+        setSelectedTechNames([]);
+    }, [allDomainsData, allServicesData]);
     return (
         <>
             {loading ? (
