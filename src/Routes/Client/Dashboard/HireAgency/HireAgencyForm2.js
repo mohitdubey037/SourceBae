@@ -121,6 +121,9 @@ function HireAgencyForm2(props) {
         setAllDomainsData(toggledDomains);
     };
 
+    useEffect(() => {
+        setSelected([]);
+    }, [selectedDomain]);
     //Api Calls methods
     const getAllDomains = () => {
         instance

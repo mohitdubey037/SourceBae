@@ -50,6 +50,7 @@ import store from './Redux/Store/store';
 import { CLIENT, AGENCY } from './shared/constants';
 import { ErrorBoundary } from 'react-error-boundary';
 import firebase from 'firebase/app';
+import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 
 const App = (props) => {
     const [show, setShow] = useState(false);
