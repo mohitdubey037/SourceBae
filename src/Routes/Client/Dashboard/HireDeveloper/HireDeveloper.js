@@ -27,7 +27,7 @@ const BlueRadio = withStyles({
 function HireDeveloper(props) {
     const Role = localStorage.getItem('role');
     const id = localStorage.getItem('userId');
-
+    const [validateEffect, setValidateEffect] = useState({ validate: true });
     const [apiData, setApiData] = useState({
         requirementName: '',
         developerRolesRequired: [],
@@ -111,6 +111,7 @@ function HireDeveloper(props) {
     };
 
     const handleSubmit = () => {
+        fieldsClearer();
         let validated = errorValidation();
         if (!validated) {
             return;
@@ -134,6 +135,18 @@ function HireDeveloper(props) {
     useEffect(() => {
         getAllTechnologies();
     }, []);
+
+    const fieldsClearer = () => {
+        setApiData({
+            ...apiData,
+            requirementName: apiData.requirementName?.replace(/^\s+|\s+$/g, '')
+        });
+        setValidateEffect({ validate: true });
+    };
+
+    useEffect(() => {
+        errorValidation();
+    }, [validateEffect]); // eslint-disable-line
 
     const errorValidation = () => {
         const errors = {};
