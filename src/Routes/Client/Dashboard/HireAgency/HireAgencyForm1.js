@@ -88,54 +88,39 @@ const HireAgencyForm1 = (props) => {
     };
 
     function errorValidation() {
-        let tempError = false;
+        let returnValue = false;
+        let tempError = {};
         if (data.projectName === '') {
-            tempError = true;
-            setError({
-                ...tempError,
-                projectNameError: 'Project name is required'
-            });
+            returnValue = true;
+            tempError.projectNameError = 'Project name is required';
         }
         if (data.projectName.length < 2) {
-            tempError = true;
-            setError({
-                ...tempError,
-                projectNameError:
-                    'Project name should be more than 2 characters.'
-            });
+            returnValue = true;
+            tempError.projectNameError =
+                'Project name should be atleast 2 characters';
         }
         if (data.projectDescription === '') {
-            tempError = true;
-            setError({
-                ...tempError,
-                projectDescriptionError: 'Project description is required'
-            });
+            returnValue = true;
+            tempError.projectDescriptionError =
+                'Project description is required';
         }
         if (data.projectDescription.length <= 100) {
-            tempError = true;
-            setError({
-                ...tempError,
-                projectDescriptionError:
-                    'Project description should be more than 100 characters.'
-            });
+            returnValue = true;
+            tempError.projectDescriptionError =
+                'Project description should be atleast 100 characters';
         }
         if (data.projectProposalCost <= 499) {
-            tempError = true;
-            setError({
-                ...tempError,
-                projectProposalCostError:
-                    'Project ammount should be greater than 500 $'
-            });
+            returnValue = true;
+            tempError.projectProposalCostError =
+                'Project proposal cost should be greater than 500';
         }
         if (data.projectExpectedStartingDays <= 4) {
-            tempError = true;
-            setError({
-                ...tempError,
-                projectExpectedStartingDaysError:
-                    'Project starting days should be greater than 5 days'
-            });
+            returnValue = true;
+            tempError.projectExpectedStartingDaysError =
+                'Project expected starting days should be greater than 4';
         }
-        return !tempError;
+        setError(tempError);
+        return !returnValue;
     }
     const handleSubmit = async () => {
         fieldsClearer();

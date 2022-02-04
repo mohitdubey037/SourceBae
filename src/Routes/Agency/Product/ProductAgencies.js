@@ -193,19 +193,6 @@ function ProductAgencies(props) {
         }
     };
 
-    // const getAllProducts = () => {
-    //     setLoading(true)
-    //     instance.get(`/api/${Role}/products/all`)
-    //         .then(response => {
-    //             setLoading(false);
-    //             setState(response);
-    //         })
-    //         .catch(err => {
-    //             setLoading(false)
-    //             setErr(err?.response?.data?.message)
-    //         })
-    // }
-
     const getAllDomains = () => {
         instance
             .get(`api/${Role}/domains/all`)

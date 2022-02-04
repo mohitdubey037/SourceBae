@@ -38,7 +38,7 @@ function VerifyModal(props) {
             })
             .catch((err) => {});
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props?.isUserVerified]);
+    }, []);
 
     const verifyEmailPhone = () => {
         setLoading(true);
