@@ -17,7 +17,7 @@ const HireAgencyForm1 = (props) => {
 
     const [loading, setLoading] = useState(false);
     const [words, setWords] = useState(0);
-    const [validateEffect, setValidateEffect] = useState({ validate: true });
+    const [validateEffect, setValidateEffect] = useState({ validate: false });
 
     const [data, setData] = useState({
         stepsCompleted: 1,
@@ -79,7 +79,7 @@ const HireAgencyForm1 = (props) => {
     };
 
     useEffect(() => {
-        errorValidation();
+        if (validateEffect.validate) errorValidation();
     }, [validateEffect]); // eslint-disable-line
     const handleBack = () => {
         if (window.confirm('Do you want to discard changes?') === true) {
@@ -404,7 +404,7 @@ const HireAgencyForm1 = (props) => {
                         </div>
                     </div>
 
-                    <VerifyModal Role={Role} id={id} />
+                    <VerifyModal Role={Role} id={id} isUserVerified={null} />
                 </>
             )}
         </>

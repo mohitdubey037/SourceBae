@@ -6,9 +6,10 @@ import Spinner from '../../Components/Spinner/Spinner';
 
 function VerifyModal(props) {
     const [loading, setLoading] = useState(false);
-
     const [checkEmail, setCheckEmail] = useState(false);
     const [open, setOpen] = useState(false);
+    const Role = localStorage.getItem('role');
+    const clientId = localStorage.getItem('userId');
 
     const onOpenModal = () => {
         setOpen(true);
@@ -18,11 +19,24 @@ function VerifyModal(props) {
     };
 
     useEffect(() => {
-        if (props?.isUserVerified) {
-            onCloseModal();
-        } else if (props?.isUserVerified === false) {
-            onOpenModal();
-        }
+        instance
+            .get(`/api/${Role}/clients/get/${clientId}`)
+            .then(function (response) {
+                if (
+                    response[0].isUserPhoneVerified &&
+                    response[0].isUserEmailVerified
+                ) {
+                    onCloseModal();
+                } else if (
+                    !(
+                        response[0].isUserPhoneVerified &&
+                        response[0].isUserEmailVerified
+                    )
+                ) {
+                    onOpenModal();
+                }
+            })
+            .catch((err) => {});
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props?.isUserVerified]);
 
@@ -39,6 +53,9 @@ function VerifyModal(props) {
             })
             .catch((err) => {
                 setLoading(false);
+            })
+            .finally(() => {
+                props.history.push('/client-profile');
             });
     };
 

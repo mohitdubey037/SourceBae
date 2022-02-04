@@ -801,7 +801,7 @@ function ShortTerm(props) {
                 </div>
             )}
 
-            <VerifyModal Role={Role} id={id} />
+            <VerifyModal Role={Role} id={id} isUserVerified={null} />
         </>
     );
 }

@@ -562,7 +562,7 @@ function HireDeveloper(props) {
                 </div>
             </div>
 
-            <VerifyModal Role={Role} id={id} />
+            <VerifyModal Role={Role} id={id} isUserVerified={null} />
         </>
     );
 }

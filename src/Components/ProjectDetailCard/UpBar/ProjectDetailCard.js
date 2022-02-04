@@ -5,7 +5,6 @@ import './ProjectDetailCard.css';
 import { AGENCY } from '../../../shared/constants';
 
 function ProjectDetailCard(props) {
-    console.log(props, 'props');
     return (
         <>
             <div className="respondCards_AgencyRespondedDetails">
