@@ -53,9 +53,6 @@ function VerifyModal(props) {
             })
             .catch((err) => {
                 setLoading(false);
-            })
-            .finally(() => {
-                props.history.push('/client-profile');
             });
     };
 

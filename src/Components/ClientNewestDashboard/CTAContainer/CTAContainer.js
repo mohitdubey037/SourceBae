@@ -17,7 +17,10 @@ function RightSide() {
     const onCloseModal = () => setOpen(false);
 
     const onOpenModal = () => {
-        setOpen(true);
+        window.open(
+            'https://docs.google.com/forms/d/1r38zxJpTgXe8m2iAFwBsKpkLWq33hgw8TXW0mQQ4JHo/prefill',
+            '_blank'
+        );
     };
 
     const topAgencies = [
@@ -145,12 +148,19 @@ function RightSide() {
                                     alt="GoogleIcon"
                                 />
                             </a>
-                            <img
-                                src={G2Icon}
-                                style={{ minHeight: '36px' }}
-                                width="40px"
-                                alt="G2Icon"
-                            />
+
+                            <a
+                                href="https://www.g2.com/products/sourcebae/take_survey"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src={G2Icon}
+                                    style={{ minHeight: '36px' }}
+                                    width="40px"
+                                    alt="GoogleIcon"
+                                />
+                            </a>
                         </div>
                     </div>
                     <div
@@ -187,6 +197,7 @@ function RightSide() {
                                 className={`${
                                     role === 'Client' && 'conditionalGradient'
                                 }`}
+                                style={{ zIndex: 1 }}
                             >
                                 Feedback Form
                             </button>
