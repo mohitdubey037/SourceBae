@@ -45,7 +45,8 @@ function HireDeveloper(props) {
     const billing = 1;
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        let { name, value } = event.target;
+        value = value.replace(/[^\w\s]/gi, '').trim();
         setApiData({
             ...apiData,
             [name]: value
