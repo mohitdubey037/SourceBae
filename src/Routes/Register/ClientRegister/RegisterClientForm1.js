@@ -31,11 +31,12 @@ function RegisterClientForm1(props) {
                     [name]: value
                 });
             }
-        } else if (
-            name === 'firstName' ||
-            name === 'lastName' ||
-            name === 'userEmail'
-        ) {
+        } else if (name === 'firstName' || name === 'lastName') {
+            props.setSignupForm({
+                ...props.signupForm,
+                [name]: value?.charAt(0)?.toUpperCase() + value?.slice(1)
+            });
+        } else if (name === 'userEmail') {
             props.setSignupForm({
                 ...props.signupForm,
                 [name]: value.toLowerCase()
