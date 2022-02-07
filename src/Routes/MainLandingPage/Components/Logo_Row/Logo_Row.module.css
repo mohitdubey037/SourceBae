@@ -1,0 +1,26 @@
+.logo_row_heading_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo_row_heading {
+    align-items: center;
+    text-align: center;
+}
+.logo_row_icons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding-top: 2rem;
+}
+.logo_icon {
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    align-items: center;
+    padding: 0 2rem;
+}
+.logo_icon img {
+    width: 100%;
+}

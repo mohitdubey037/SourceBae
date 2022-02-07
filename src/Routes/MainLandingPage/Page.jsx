@@ -1,5 +1,47 @@
 import React from 'react';
+import Hero_section from './Components/Hero_section/Hero_section';
+import LNavbar from './Components/Navbar/LNavbar';
+import styles from './Page.module.css';
+import './Page.css';
+import Logo_Row from './Components/Logo_Row/Logo_Row';
+import LHire from './Components/Hire_Section/LHire';
+import L_Features from './Components/Features/L_Features';
+import L_CTA from './Components/CTA/L_CTA';
+import L_Hiring_Steps from './Components/Hiring_Steps/L_Hiring_Steps';
 
 export default function Page() {
-    return <div>Hello</div>;
+    return (
+        <>
+            <div className={`${styles.landing_navbar}`}>
+                <LNavbar />
+            </div>
+            <div className={`${styles.hero_section}`}>
+                <Hero_section />
+            </div>
+            <div className={`${styles.logo_row_wrap}`}>
+                <Logo_Row />
+            </div>
+            <div className={`${styles.hire_section}`}>
+                <LHire />
+            </div>
+            <div className={`${styles.features_wrap}`}>
+                <L_Features />
+            </div>
+            <div className={`${styles.CTA_wrap}`}>
+                <L_CTA />
+            </div>
+            <div className={`${styles.hiring_steps_wrap}`}>
+                <L_Hiring_Steps />
+            </div>
+            <div className={`${styles.testimonial} ${styles.temporray_border}`}>
+                <h1>Testimonial</h1>
+            </div>
+            <div className={`${styles.CTA_bottom} ${styles.temporray_border}`}>
+                <h1>CTA-Bottom</h1>
+            </div>
+            <div className={`${styles.footer} ${styles.temporray_border}`}>
+                <h1>Footer</h1>
+            </div>
+        </>
+    );
 }

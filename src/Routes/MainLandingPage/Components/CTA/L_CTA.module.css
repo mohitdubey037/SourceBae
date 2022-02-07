@@ -1,0 +1,10 @@
+.CTA_heading {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+.CTA_btn {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}

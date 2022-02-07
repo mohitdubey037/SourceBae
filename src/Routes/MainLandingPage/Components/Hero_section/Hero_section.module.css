@@ -1,0 +1,34 @@
+.hero_section_wrap {
+    display: flex;
+    flex-direction: column;
+    font-family: 'GraphikBold';
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    background: url('../../../../assets/images/LandingPage/sourcebae-landing-hero.png')
+        no-repeat;
+    color: #ffffff;
+    background-size: cover;
+}
+.hero_first_heading {
+    display: flex;
+    padding-top: 4rem;
+}
+.hero_subheading {
+    padding-bottom: 4rem;
+}
+.hero_main_heading > h1 {
+    font-size: 85px;
+}
+.hero_description {
+    width: 70%;
+    text-align: center;
+    padding: 2rem 0;
+}
+.hero_btn_div {
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+.hero_btn {
+    padding: 0.5rem 1rem;
+}

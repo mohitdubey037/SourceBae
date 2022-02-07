@@ -5,33 +5,55 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300;1,400&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap');
 
 @font-face {
-  font-family: 'Segoe UI Bold';
-  src: url('./Fonts/Segoe\ UI\ Bold.ttf');
+    font-family: 'Segoe UI Bold';
+    src: url('./Fonts/Segoe\ UI\ Bold.ttf');
 }
 @font-face {
-  font-family: 'Segoe UI Semibold';
-  src: url('./Fonts/seguisb.ttf');
+    font-family: 'Segoe UI Semibold';
+    src: url('./Fonts/seguisb.ttf');
 }
 @font-face {
-  font-family: 'Segoe UI';
-  src: url('./Fonts/Segoe\ UI.ttf');
+    font-family: 'Segoe UI';
+    src: url('./Fonts/Segoe\ UI.ttf');
 }
-
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@font-face {
+    font-family: 'GraphikBold';
+    src: url('./Fonts/GraphikBold.otf');
+}
+@font-face {
+    font-family: 'GraphikLight';
+    src: url('./Fonts/GraphikBold.otf');
+}
+@font-face {
+    font-family: 'GraphikMedium';
+    src: url('./Fonts/GraphikBold.otf');
+}
+@font-face {
+    font-family: 'GraphikRegular';
+    src: url('./Fonts/GraphikBold.otf');
+}
+@font-face {
+    font-family: 'GraphikSemibold';
+    src: url('./Fonts/GraphikBold.otf');
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  /* margin: 0; */
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    /* margin: 0; */
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* code {

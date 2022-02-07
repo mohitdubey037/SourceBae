@@ -1,0 +1,43 @@
+.temporray_border {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 4rem 0;
+}
+.hero_section {
+    display: flex;
+    width: 100%;
+}
+.logo_row_wrap {
+    display: flex;
+    flex-direction: column;
+    font-family: 'GraphikBold';
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 4rem 3rem;
+}
+.hire_section {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+.features_wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.CTA_wrap {
+    display: flex;
+    flex-direction: column;
+    background-color: #d5e5f3;
+    justify-content: center;
+    padding: 3rem;
+}
+.hiring_steps_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}

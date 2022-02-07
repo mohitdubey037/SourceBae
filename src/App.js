@@ -121,7 +121,7 @@ const App = (props) => {
                 )}
             >
                 <Switch>
-                    <Route exact path="/" component={Mainhomepage} />
+                    <Route exact path="/" component={LandingPage} />
                     <Route exact path="/Verify_Page" component={VerifyPage} />
                     <Route exact path="/login/:role" component={Login} />
                     <Route exact path="/register/:role" component={Register} />

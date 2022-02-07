@@ -1,0 +1,93 @@
+.navbar_wrap {
+    display: flex;
+    width: 100%;
+    padding: 0 2rem;
+    font-size: 16px;
+}
+.nav_logo {
+    display: flex;
+    width: 15%;
+    cursor: pointer;
+}
+.nav_menu_wrap {
+    display: flex;
+    justify-content: end;
+    width: 60%;
+    align-items: center;
+}
+.nav_menu {
+    display: flex;
+    font-family: 'Cabin';
+    font-weight: 700;
+    padding: 0 2rem;
+    cursor: pointer;
+}
+.nav_menu:hover,
+.nav_menu:active {
+    color: #554dde;
+}
+.nav_login,
+.nav_signup {
+    display: flex;
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+}
+.nav_login {
+    justify-content: end;
+}
+
+.nav_Lbutton {
+    font-family: 'Graphik', Sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 5px 17px;
+    cursor: pointer;
+}
+.L_login {
+    color: #ffffff;
+    background-color: #554dde;
+    border: solid #554dde;
+}
+.L_login:hover {
+    color: #554dde;
+    background-color: #ffffff;
+}
+.L_signup {
+    background-color: #ffffff;
+    color: #554dde;
+    border: solid #554dde;
+}
+.L_signup:hover {
+    color: #ffffff;
+    background-color: transparent;
+    background-image: linear-gradient(230deg, #2218d1 0%, #554dde 90%);
+}
+.nav_arrow {
+    padding-left: 0.5rem;
+}
+.nav_services {
+    position: relative;
+}
+.nav_services:hover ~ .service_option_wrap {
+    display: flex;
+}
+.service_option_wrap {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(90deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 1rem 2rem 1rem 1rem;
+    font-family: 'Cabin';
+    font-weight: 700;
+    position: absolute;
+    top: 4rem;
+    right: 22rem;
+}
+.option_1 {
+    display: flex;
+    padding: 0.5rem;
+    cursor: pointer;
+}

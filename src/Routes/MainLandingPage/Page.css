@@ -1,0 +1,17 @@
+.L_para {
+    font-family: Cabin;
+    font-size: 18px;
+    font-weight: 500;
+}
+.span_yellow {
+    color: #ffd25f;
+}
+.span_pink {
+    color: #f44e77;
+}
+.L_h2 {
+    font-size: 30px;
+    font-family: 'GraphikBold';
+    font-style: normal;
+    line-height: 39.6px;
+}

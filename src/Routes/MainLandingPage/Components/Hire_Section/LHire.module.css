@@ -1,0 +1,53 @@
+.hire_section_heading {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.hire_cards_wrap {
+    display: flex;
+    background-color: #eef7ff;
+    max-width: 100%;
+    margin: 4rem 0;
+    padding: 3rem 0;
+    justify-content: center;
+}
+.hire_main_card {
+    display: flex;
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    flex-direction: column;
+    margin: 0 2rem;
+    border-radius: 2rem;
+    width: 35%;
+    font-family: 'GraphikBold';
+}
+.hire_card_img {
+    display: flex;
+    max-width: 100%;
+}
+.hire_card_img img {
+    width: 100%;
+}
+.hire_card_heading {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+.hire_card_description {
+    display: flex;
+}
+.hire_card_btn {
+    display: flex;
+    justify-content: center;
+    font-family: 'Cabin';
+    padding: 1rem 0;
+}
+.hire_card_ul {
+    text-align: left;
+    font-family: 'Cabin';
+    font-weight: 500;
+    font-size: 18px;
+}
+.hire_card_ul li::marker {
+    color: #000000;
+}

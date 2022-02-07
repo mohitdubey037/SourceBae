@@ -5,8 +5,10 @@
     ],
 
     "emmet.includeLanguages": {
-        "javascript" : "javascriptreact"
+        "javascript" : "javascriptreact",
+        
     },
     "prettier.useEditorConfig": false,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "emmet.triggerExpansionOnTab":false,
 }

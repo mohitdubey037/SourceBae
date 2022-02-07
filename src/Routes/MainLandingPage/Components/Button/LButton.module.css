@@ -1,0 +1,19 @@
+.LButton {
+    display: flex;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #554dde;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    font-family: 'GraphikSemibold';
+}
+.LButton h6 {
+    font-size: 20px;
+    font-family: 'GraphikBold';
+}
+.LButton:hover {
+    cursor: pointer;
+    background-color: transparent;
+    background-image: linear-gradient(230deg, #2218d1 0%, #554dde 90%);
+}
