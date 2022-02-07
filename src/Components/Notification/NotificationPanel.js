@@ -107,17 +107,17 @@ function NotificationPanel(props) {
                                                 nd?.isNotificationRead &&
                                                 'conditionalFilter_Sidebar'
                                             }`}
-                                            // style={{
-                                            //     display: 'flex',
-                                            //     flexDirection: 'column'
-                                            // }}
                                         >
                                             <AccordionSummary
                                                 aria-controls="panel1a-content"
                                                 id="panel1a-header"
+                                                style={{ minWidth: '100%' }}
                                             >
                                                 <Typography
-                                                    style={{ fontSize: '14px' }}
+                                                    style={{
+                                                        fontSize: '14px',
+                                                        minWidth: 'fit-content'
+                                                    }}
                                                 >
                                                     {nd?.notificationTitle}
                                                 </Typography>
