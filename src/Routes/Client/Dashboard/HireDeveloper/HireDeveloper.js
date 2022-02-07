@@ -45,12 +45,20 @@ function HireDeveloper(props) {
     const billing = 1;
 
     const handleChange = (event) => {
+        let filterList = ['averageBudget', 'developerExperienceRequired'];
         let { name, value } = event.target;
-        value = value.replace(/[^\w\s]/gi, '');
-        setApiData({
-            ...apiData,
-            [name]: value
-        });
+        if (filterList.includes(event.target.name)) {
+            setApiData({
+                ...apiData,
+                [name]: value
+            });
+        } else {
+            value = value.replace(/[^\w\s]/gi, '');
+            setApiData({
+                ...apiData,
+                [name]: value
+            });
+        }
     };
     const options = [
         {
