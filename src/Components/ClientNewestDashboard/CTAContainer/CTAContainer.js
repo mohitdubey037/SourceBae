@@ -61,7 +61,8 @@ function RightSide() {
                                     style={{
                                         marginBottom: '0',
                                         color: '#3A3A3A',
-                                        fontWeight: 700
+                                        fontWeight: 700,
+                                        fontSize: '1.2rem'
                                     }}
                                 >
                                     Our top Agencies
@@ -119,7 +120,6 @@ function RightSide() {
                                 </p>
                             </div>
                         )}
-                        {/* </div> */}
                     </div>
                     <div className={styles.review_platform_card}>
                         <p> Review us on</p>
