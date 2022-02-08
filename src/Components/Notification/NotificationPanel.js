@@ -9,7 +9,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreOutlined';
 
-function NotificationPanel(props) {
+function NotificationPanel({ setNotificationCount }) {
     const Role = localStorage.getItem('role');
 
     const dispatch = useDispatch();
@@ -26,6 +26,10 @@ function NotificationPanel(props) {
             .get(`/api/${Role}/notifications/all`)
             .then((response) => {
                 setNotificationData(response);
+                setNotificationCount(
+                    response.filter((item) => item.isNotificationRead === false)
+                        .length
+                );
             })
             .catch((err) => {});
     };
