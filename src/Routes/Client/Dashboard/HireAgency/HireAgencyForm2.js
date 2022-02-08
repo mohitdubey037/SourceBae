@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
-import { MultiSelect } from 'react-multi-select-component';
+import MultiSelect from 'react-multi-select-component';
 import { useParams } from 'react-router';
 
 import Radio from '@material-ui/core/Radio';

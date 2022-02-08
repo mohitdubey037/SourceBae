@@ -16,7 +16,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Spinner from '../../../../Components/Spinner/Spinner';
 import { toast } from 'react-toastify';
 
-import { MultiSelect } from 'react-multi-select-component';
+import MultiSelect from 'react-multi-select-component';
 
 import './ResponsiveAgencyForm.css';
 

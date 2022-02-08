@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../../Components/Back/Back';
 
-import { MultiSelect } from 'react-multi-select-component';
+import MultiSelect from 'react-multi-select-component';
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 
 import instance from '../../../../Constants/axiosConstants';
