@@ -14,7 +14,7 @@ import instance from '../../../Constants/axiosConstants';
 import { useDropzone } from 'react-dropzone';
 
 import Spinner from '../../../Components/Spinner/Spinner';
-import MultiSelect from 'react-multi-select-component';
+import { MultiSelect } from 'react-multi-select-component';
 import { FaFileUpload } from 'react-icons/fa';
 
 import { upload } from '../../../shared/helper';

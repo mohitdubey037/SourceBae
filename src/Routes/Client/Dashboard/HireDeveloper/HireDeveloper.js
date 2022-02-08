@@ -6,7 +6,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { withStyles } from '@material-ui/core/styles';
-import MultiSelect from 'react-multi-select-component';
+import { MultiSelect } from 'react-multi-select-component';
 import instance from '../../../../Constants/axiosConstants';
 import Back from '../../../../Components/Back/Back';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
