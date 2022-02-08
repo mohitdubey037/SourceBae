@@ -1,6 +1,7 @@
 import React from 'react';
 import LButton from '../Button/LButton';
 import styles from './L_CTA.module.css';
+import hireBtnImg from '../../../../assets/images/LandingPage/hirebtn.svg';
 
 export default function L_CTA() {
     return (
@@ -12,7 +13,7 @@ export default function L_CTA() {
                 </h2>
             </div>
             <div className={`${styles.CTA_btn}`}>
-                <LButton name="Hire Now" />
+                <LButton name="Hire Now" img={hireBtnImg} />
             </div>
         </>
     );

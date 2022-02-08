@@ -5,7 +5,7 @@ export default function LButton(props) {
     return (
         <div className={`${styles.LButton}`}>
             <h6>{props.name}</h6>
-            <img src={props.img} alt="" />
+            {props?.img && <img src={props.img} alt="" />}
         </div>
     );
 }

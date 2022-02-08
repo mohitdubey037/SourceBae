@@ -12,6 +12,10 @@
     font-size: 20px;
     font-family: 'GraphikBold';
 }
+.LButton img {
+    margin-left: 0.5rem;
+    width: 1.5rem;
+}
 .LButton:hover {
     cursor: pointer;
     background-color: transparent;

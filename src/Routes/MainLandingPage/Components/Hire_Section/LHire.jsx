@@ -43,7 +43,7 @@ export default function LHire() {
                 </span>,
                 'Experienced engineers, Available from NEXT day'
             ],
-            btn: 'Hire Deveploer'
+            btn: 'Hire Developer'
         }
     ];
     return (

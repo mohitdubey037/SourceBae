@@ -1,0 +1,16 @@
+.CTA_bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    /* border: 2px solid green; */
+}
+.CTA_bottom_heading {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+.CTA_bottom_btn {
+    display: flex;
+    justify-content: center;
+}

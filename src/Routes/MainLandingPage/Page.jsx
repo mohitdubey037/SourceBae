@@ -8,6 +8,9 @@ import LHire from './Components/Hire_Section/LHire';
 import L_Features from './Components/Features/L_Features';
 import L_CTA from './Components/CTA/L_CTA';
 import L_Hiring_Steps from './Components/Hiring_Steps/L_Hiring_Steps';
+import L_CTA_Bottom from './Components/CTA_Bottom/L_CTA_Bottom';
+import L_Footer from './Components/L_Footer/L_Footer';
+import L_Testimonial from './Components/Testimonial/L_Testimonial';
 
 export default function Page() {
     return (
@@ -33,14 +36,14 @@ export default function Page() {
             <div className={`${styles.hiring_steps_wrap}`}>
                 <L_Hiring_Steps />
             </div>
-            <div className={`${styles.testimonial} ${styles.temporray_border}`}>
-                <h1>Testimonial</h1>
+            <div className={`${styles.testimonial_wrap}`}>
+                <L_Testimonial />
             </div>
-            <div className={`${styles.CTA_bottom} ${styles.temporray_border}`}>
-                <h1>CTA-Bottom</h1>
+            <div className={`${styles.CTA_bottom_wrap}`}>
+                <L_CTA_Bottom />
             </div>
-            <div className={`${styles.footer} ${styles.temporray_border}`}>
-                <h1>Footer</h1>
+            <div className={`${styles.L_footer_wrap}`}>
+                <L_Footer />
             </div>
         </>
     );

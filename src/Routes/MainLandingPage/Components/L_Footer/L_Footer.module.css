@@ -1,0 +1,21 @@
+.L_footer_address {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.L_footer_address h2,
+.L_footer_contact h2 {
+    font-family: 'Cabin';
+    font-size: 30px;
+    font-weight: 600;
+}
+.L_footer_address p,
+.L_footer_contact p {
+    font-family: 'Cabin';
+    color: #a8a8a8;
+}
+.L_footer_contact {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+}
