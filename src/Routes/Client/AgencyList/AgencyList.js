@@ -26,6 +26,7 @@ function AgencyList(props) {
     const [index, setIndex] = useState(-1);
 
     const [project, setProject] = useState([]);
+    const [originalAgencyList, setOriginalAgencyList] = useState([]);
 
     const openShortlistModal = (_id, indexParam) => {
         setOpen(true);
@@ -64,6 +65,7 @@ function AgencyList(props) {
             .get(`/api/${Role}/projects/${projectId}/agencies`)
             .then(function (response) {
                 setAgencyList(response.agencies);
+                setOriginalAgencyList(response.agencies);
                 setProject(response.project);
                 setLoading(false);
             });
@@ -136,6 +138,21 @@ function AgencyList(props) {
         setVisible(status);
     };
 
+    const [searchText, setSearchText] = useState('');
+
+    useEffect(() => {
+        if (searchText !== '') {
+            const tempAgencyList = agencyList.filter((agency) => {
+                return agency?.agencyName
+                    ?.toLowerCase()
+                    ?.includes(searchText?.toLowerCase());
+            });
+            setAgencyList(tempAgencyList);
+        } else {
+            setAgencyList(originalAgencyList);
+        }
+    }, [searchText]);
+
     return (
         <div classname="mainImageDiv">
             {/* <img className="Image1_agencyList" src={UpImage} alt="upImage" /> */}
@@ -163,16 +180,32 @@ function AgencyList(props) {
                             <Navbar />
                             <div className="innerProjectDetail_parent">
                                 <div className="innerprojectDetailsInfo_agencyList">
-                                    <p>
-                                        {`Project Title:- `}
-                                        <span>{project.projectName}</span>
-                                    </p>
-                                    <p style={{ fontSize: '1rem' }}>
-                                        {`Budget:-`}
-                                        <span>
-                                            $ {project.projectProposalCost}
-                                        </span>
-                                    </p>
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'column'
+                                        }}
+                                    >
+                                        <p>
+                                            {`Project Title:- `}
+                                            <span>{project.projectName}</span>
+                                        </p>
+                                        <p style={{ fontSize: '1rem' }}>
+                                            {`Budget:-`}
+                                            <span>
+                                                $ {project.projectProposalCost}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <input
+                                        type="text"
+                                        onChange={(e) =>
+                                            setSearchText(e.target.value)
+                                        }
+                                        value={searchText}
+                                        placeholder="Search Agency"
+                                    />
                                 </div>
                                 {agencyList?.length > 0 ? (
                                     <div className="innerAgencyList_agencyList">
