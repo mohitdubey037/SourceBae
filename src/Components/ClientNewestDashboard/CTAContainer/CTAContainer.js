@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 import HalfCircleProgress from './HalfCircleProgress.svg';
 import G2Icon from './G2Icon.svg';
-import ProductHuntIcon from './producthunt.svg';
+import LinkedIn from './linkedin.svg';
 import TrustPilot from './trustpilot.svg';
 import GoogleIcon from './google.svg';
 import ContactUSBackground from './ContactUsBackground.svg';
@@ -17,6 +17,9 @@ function RightSide() {
     const onCloseModal = () => setOpen(false);
 
     const onOpenModal = () => {
+        setOpen(true);
+    };
+    const openForm = () => {
         window.open(
             'https://docs.google.com/forms/d/1r38zxJpTgXe8m2iAFwBsKpkLWq33hgw8TXW0mQQ4JHo/prefill',
             '_blank'
@@ -124,18 +127,18 @@ function RightSide() {
                     <div className={styles.review_platform_card}>
                         <p> Review us on</p>
                         <div className={styles.review_platforms}>
-                            <img
-                                src={TrustPilot}
-                                style={{ minHeight: '36px' }}
-                                width="40px"
-                                alt="TrustPilot"
-                            />
-                            <img
-                                src={ProductHuntIcon}
-                                style={{ minHeight: '36px' }}
-                                width="40px"
-                                alt="PIIcon"
-                            />
+                            <a
+                                href="https://www.linkedin.com/company/sourcebae"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <img
+                                    src={LinkedIn}
+                                    style={{ minHeight: '36px' }}
+                                    width="40px"
+                                    alt="LinkedInIcon"
+                                />
+                            </a>
                             <a
                                 href="https://www.google.com/maps/place/SourceBae/@22.7649603,75.8855584,17z/data=!3m1!4b1!4m5!3m4!1s0x3963038bc717de2b:0x2bb4835a0227ba8c!8m2!3d22.7649603!4d75.8877471"
                                 target="_blank"
@@ -184,7 +187,7 @@ function RightSide() {
                         </span>
                         <div className={styles.view_details_btn}>
                             <button
-                                onClick={onOpenModal}
+                                onClick={() => setOpen(true)}
                                 className={`${
                                     role === 'Client' && 'conditionalGradient'
                                 }`}
@@ -193,7 +196,7 @@ function RightSide() {
                                 Email Us
                             </button>
                             <button
-                                onClick={onOpenModal}
+                                onClick={openForm}
                                 className={`${
                                     role === 'Client' && 'conditionalGradient'
                                 }`}
