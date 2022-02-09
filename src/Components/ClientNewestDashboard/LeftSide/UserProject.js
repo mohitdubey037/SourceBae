@@ -97,22 +97,6 @@ function UserProject({ index, ...rest }) {
             </div>
 
             <div className="projectDetail">
-                {/* {props.projectProposals[0]?.rejectReasonByClient != undefined || props.projectProposals[0].rejectReasonByAgency != undefined ?
-                    <div className="header-currentStatus">
-                        <FaBan className="project_status_image"/>
-                        <div className="currentStatus-text currentStatus-item">
-                            <p>Rejected</p>
-                        </div>
-                    </div>
-                    :
-                    <div className="header-currentStatus">
-                        <img className="project_status_image" src={QuotationAccept} alt="project status" />
-                        <div className="currentStatus-text currentStatus-item">
-                            <p>{props?.projectCurrentStatus}</p>
-                        </div>
-                    </div>
-                } */}
-
                 <div
                     onClick={() => showDetail()}
                     className="show-project-detail"
