@@ -19,6 +19,7 @@ import Back from '../../../Components/Back/Back';
 import VerifyModal from '../../../Components/VerifyModal/VerifyModal';
 
 import * as helper from '../../../shared/helper';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -79,13 +80,15 @@ function ProductAgencies(props) {
     const [err, setErr] = useState();
     const [allDomainsData, setAllDomainsData] = useState([]);
     const [errors, setErrors] = useState({});
+    const [currentAgency, setCurrentAgency] = useState('');
 
-    const onOpenModal = (agencyId) => {
+    const onOpenModal = (agencyId, agencyName) => {
         setOpen(true);
         setForm({
             ...form,
             agencyId: agencyId
         });
+        setCurrentAgency(agencyName);
     };
 
     const onCloseModal = () => setOpen(false);
@@ -99,11 +102,13 @@ function ProductAgencies(props) {
 
     const handleConnect = (agencyId) => {
         setLoading(true);
+        onCloseModal();
         if (handleValidation()) {
             instance
                 .post(`/api/${Role}/products/connect-agency`, form)
                 .then((res) => {
                     onCloseModal();
+                    toast.success('Connection request sent successfully');
                 })
                 .catch((err) => {});
         }
@@ -217,7 +222,6 @@ function ProductAgencies(props) {
                 <>
                     <Navbar />
                     <div className="mainAgencyList_productAgencies">
-                        {/* <img className="Image1_productAgencies" src={UpImage} alt="upImage" /> */}
                         <img
                             className="Image2_productAgencies"
                             src={DownImage}
@@ -407,7 +411,10 @@ function ProductAgencies(props) {
                                                                 onOpenModal(
                                                                     value
                                                                         .agencyId
-                                                                        ._id
+                                                                        ._id,
+                                                                    value
+                                                                        .agencyId
+                                                                        .agencyName
                                                                 )
                                                             }
                                                         >
@@ -679,7 +686,7 @@ function ProductAgencies(props) {
                     <h2>Get Connected</h2>
                 </div>
                 <div className="productModalForm">
-                    <p className="toText">To : Founder at SheThink</p>
+                    <p className="toText">To : Founder at {currentAgency}</p>
 
                     <div className="productModalInput">
                         <p>Subject</p>
