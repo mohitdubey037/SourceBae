@@ -1,6 +1,5 @@
 import './UserProject.css';
 import React from 'react';
-import Moment from 'react-moment';
 import CenterImage from '../../../assets/images/Newestdashboard/Dashboard/Center_Image.svg';
 import { useHistory } from 'react-router-dom';
 import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail_show.svg';
@@ -9,7 +8,6 @@ function RequestedDevCard({ index, ...rest }) {
     let props = rest;
     const routerHistory = useHistory();
 
-    console.log(props, 'props');
     const showDetail = () => {
         routerHistory.push(`/client-one-hire-developer/${props?._id}`);
     };

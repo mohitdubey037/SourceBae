@@ -570,6 +570,12 @@
     padding: 1rem;
 }
 
+.search_agencyList {
+    border-radius: 26px;
+    border: 1px solid #404070;
+    padding: 0.4rem 0.4rem 0.4rem 1rem;
+    width: 14rem;
+}
 .agencyPreciseCard_agencyList {
     min-height: 30vh;
     background-color: #fff;
