@@ -6,10 +6,6 @@ import { Modal } from 'react-responsive-modal';
 function RightSide() {
     const Role = localStorage.getItem('role');
 
-    const openAlert = () => {
-        alert('Email: mohitdubey037@gmail.com');
-    };
-
     const [open, setOpen] = useState(false);
 
     const onCloseModal = () => setOpen(false);
@@ -52,17 +48,8 @@ function RightSide() {
                                 </button>
                             </div>
                         </div>
-                        {/* <div className="cta-item">
-                            <div>
-                                <p>Call To Action</p>
-                            </div>
-                            <div className={`view-details-btn`}>
-                                <button className={`${Role === 'Client' && 'conditionalGradient'}`}>View Detail</button>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
-                {/* </div> */}
             </div>
 
             <Modal

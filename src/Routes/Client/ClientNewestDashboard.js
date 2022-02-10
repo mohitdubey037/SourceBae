@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UserOperations from '../../Components/ClientNewestDashboard/LeftSide/UserOperations';
 import UserProject from '../../Components/ClientNewestDashboard/LeftSide/UserProject';
+import RequestedDevCard from '../../Components/ClientNewestDashboard/LeftSide/RequestedDevCard';
 import CTA from '../../Components/ClientNewestDashboard/CTAContainer/CTAContainer';
 
 import HireDeveloperIcon from '../../assets/images/Newestdashboard/LeftSide/hire_developer.svg';
@@ -23,6 +24,8 @@ function ClientNewestDashboard(props) {
     const [projects, setProjects] = useState([]);
     const [visible, setVisible] = useState(false);
     const [isUserVerified, setUserVerified] = useState(false);
+    const [hiredDevelopers, setHiredDevelopers] = useState([]);
+    const userId = localStorage.getItem('userId');
 
     const handleClientData = () => {
         instance
@@ -45,6 +48,12 @@ function ClientNewestDashboard(props) {
 
     useEffect(() => {
         handleClientData();
+        instance
+            .get(`/api/${Role}/hire-developers/all?clientId=${userId}`)
+            .then((response) => {
+                setHiredDevelopers(response);
+            });
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -135,7 +144,7 @@ function ClientNewestDashboard(props) {
                                 <div className="graphic-illustration-heading">
                                     <h6>Project details</h6>
                                 </div>
-                                {projects.length > 4 && (
+                                {projects.length > 2 && (
                                     <div
                                         onClick={() =>
                                             props.history.push(
@@ -151,8 +160,8 @@ function ClientNewestDashboard(props) {
                         )}
                         <div className="user-project position">
                             <div className="user-project-details">
-                                {projects.length > 0 ? (
-                                    projects.slice(0, 4).map((p, index) => {
+                                {projects.length > 0 &&
+                                    projects.slice(0, 2).map((p, index) => {
                                         return (
                                             <>
                                                 <UserProject
@@ -161,22 +170,46 @@ function ClientNewestDashboard(props) {
                                                 />
                                             </>
                                         );
-                                    })
-                                ) : (
-                                    <div className="not_found clientNewestDashboard">
-                                        <img src={NotFound} alt="NotFound" />
-                                        <p className="no_project_found">
-                                            <p>
-                                                Nothing to show here yet! <br />{' '}
-                                                Please check again later.
-                                            </p>
-                                        </p>
+                                    })}
+                            </div>
+                        </div>
+                        {hiredDevelopers.length > 0 && (
+                            <div className="graphic">
+                                <div className="graphic-illustration-heading">
+                                    <h6>Developers Requirement</h6>
+                                </div>
+                                {hiredDevelopers.length > 2 && (
+                                    <div
+                                        onClick={() =>
+                                            props.history.push(
+                                                '/get-client-hire-developer'
+                                            )
+                                        }
+                                        className="showDetail_onClientNewestDashboard"
+                                    >
+                                        <p>View More Requirements</p>
                                     </div>
                                 )}
                             </div>
+                        )}
+                        <div className="user-project position">
+                            <div className="user-project-details">
+                                {hiredDevelopers.length > 0 &&
+                                    hiredDevelopers
+                                        .slice(0, 2)
+                                        .map((dev, index) => {
+                                            return (
+                                                <>
+                                                    <RequestedDevCard
+                                                        {...dev}
+                                                        index={index}
+                                                    />
+                                                </>
+                                            );
+                                        })}
+                            </div>
                         </div>
                     </div>
-                    {/* <RightSide /> */}
                     <CTA />
                 </div>
             </div>

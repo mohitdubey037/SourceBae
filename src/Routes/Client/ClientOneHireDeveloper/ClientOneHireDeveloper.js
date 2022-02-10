@@ -25,6 +25,7 @@ function ClientOneHireDeveloper(props) {
     const [singleHiredDeveloper, setSingleHiredDeveloper] = useState({});
     const [loading, setLoading] = useState(false);
     const [agencyId, setAgencyId] = useState(null);
+    const [originalAgenciesMatched, setOriginalAgenciesMatched] = useState([]);
 
     const [open, setOpen] = useState(false);
 
@@ -43,6 +44,7 @@ function ClientOneHireDeveloper(props) {
             )
             .then(function (response) {
                 setSingleHiredDeveloper(response);
+                setOriginalAgenciesMatched(response?.agenciesMatched);
                 setLoading(false);
             })
             .catch((err) => {
@@ -70,6 +72,25 @@ function ClientOneHireDeveloper(props) {
         getOneDeveloper();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const [searchText, setSearchText] = useState('');
+
+    useEffect(() => {
+        if (searchText !== '') {
+            const tempAgencyList = singleHiredDeveloper?.agenciesMatched.filter(
+                (agency) => {
+                    return agency?.agencyId?.agencyName
+                        ?.toLowerCase()
+                        ?.includes(searchText?.toLowerCase());
+                }
+            );
+            setSingleHiredDeveloper({ agenciesMatched: tempAgencyList });
+        } else {
+            setSingleHiredDeveloper({
+                agenciesMatched: originalAgenciesMatched
+            });
+        }
+    }, [searchText]);
 
     return (
         <>
@@ -102,6 +123,14 @@ function ClientOneHireDeveloper(props) {
                         <div className="respondCards_clientOneHireDeveloper">
                             <Back name="Matched Agencies" />
                             <div className="moreAgency_parent">
+                                <input
+                                    type="text"
+                                    onChange={(e) =>
+                                        setSearchText(e.target.value)
+                                    }
+                                    value={searchText}
+                                    placeholder="Search Agency"
+                                />
                                 {Object.keys(singleHiredDeveloper).length !==
                                 0 ? (
                                     singleHiredDeveloper?.agenciesMatched

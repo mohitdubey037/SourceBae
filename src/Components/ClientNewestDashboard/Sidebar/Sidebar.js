@@ -7,7 +7,7 @@ import developersIcon from '../../../assets/images/Newestdashboard/SideBar/devel
 import logoutIcon from '../../../assets/images/Newestdashboard/SideBar/logout.svg';
 import { withRouter } from 'react-router';
 import cookie from 'react-cookies';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import NotificationPanel from '../../Notification/NotificationPanel';
 import { useDispatch } from 'react-redux';
@@ -64,6 +64,15 @@ function Sidebar(props) {
         // window.location.href('/');
     };
 
+    const [notificationCount, setNotificationCount] = useState(0);
+
+    const activeNotificationStyle = {
+        backgroundColor: '#7fff7f',
+        borderRadius: '50%',
+        width: '25px',
+        height: '25px',
+        padding: '5px'
+    };
     return (
         <div className="container-sidebar">
             <div onClick={RouteRedirect1} className="temporary_logo">
@@ -133,7 +142,15 @@ function Sidebar(props) {
                     className="notification-icon icons"
                     onClick={handleShowNotification}
                 >
-                    <img src={notificationIcon} alt="dashboard icon" />
+                    <img
+                        src={notificationIcon}
+                        style={
+                            notificationCount > 0
+                                ? activeNotificationStyle
+                                : null
+                        }
+                        alt="dashboard icon"
+                    />
                     <p>Notification</p>
                 </div>
 
@@ -142,7 +159,7 @@ function Sidebar(props) {
                     <p>Log Out</p>
                 </div>
             </div>
-            <NotificationPanel />
+            <NotificationPanel setNotificationCount={setNotificationCount} />
         </div>
     );
 }

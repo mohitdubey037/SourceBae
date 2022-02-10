@@ -1,532 +1,543 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
 .Navbar-parent.margin-left {
-  width: 90%;
-  margin-left: 10%;
+    width: 90%;
+    margin-left: 10%;
 }
 
 .main_parent_agencyList {
-  width: 89%;
-  margin-left: 11%;
-  position: fixed;
+    width: 89%;
+    margin-left: 11%;
+    position: fixed;
 }
 
 .innerProjectDetail_parent {
-  padding-top: 4rem;
+    padding-top: 4rem;
 }
 
 .innerprojectDetailsInfo_agencyList {
-  padding-left: 1rem ;
+    display: flex;
+    padding: 0 3rem 0 1rem;
+    justify-content: space-between;
+
+    max-height: 2rem;
 }
 
 .backArrow_agencyList {
-  position: absolute;
-  top: 12%;
-  left: 1.5%;
-  z-index: 100;
+    position: absolute;
+    top: 12%;
+    left: 1.5%;
+    z-index: 100;
 }
 
 .backArrow_agencyList i {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-  cursor: pointer;
-  font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
 }
 
 .projectDetailsInfo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .noDataFound {
-  width: 40%;
-  margin-top: 10px;
-  text-align: center;
-  margin: auto;
+    width: 40%;
+    margin-top: 10px;
+    text-align: center;
+    margin: auto;
 }
 
 .noDataFound img {
-  width: 80%;
-  height: 50%;
+    width: 80%;
+    height: 50%;
 }
 
 .addressTeam_AgencyList {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  position: relative;
-  left: 10rem;
-  top: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    position: relative;
+    left: 10rem;
+    top: 0;
 }
 
 .innerprojectDetailsInfo_agencyList p {
-  font-size: 1rem;
-  color: #707070;
-  font-family: "Segoe UI Semibold", sans-serif;
+    font-size: 1rem;
+    color: #707070;
+    font-family: 'Segoe UI Semibold', sans-serif;
 }
 
 .innerprojectDetailsInfo_agencyList span {
-  font-family: "Segoe UI", sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .innerprojectDetailsInfo_agencyList span em {
-  color: #000;
+    color: #000;
 }
 
 .mainAgencyList {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .agencyCardHeaderLine {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  min-height: 10vh;
-  background-color: #ebf5fb;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    min-height: 10vh;
+    background-color: #ebf5fb;
 }
 
 .agencyCardHeaderInfo.agencyListDiv {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .agencyImageProfile_agencyList {
-  width: 60%;
-  display: flex;
+    width: 60%;
+    display: flex;
 }
 
 .agencyImageArea.agencyImageArea_Img {
-  width: 8.5rem;
-  min-width: 8.5rem;
-  height: 8.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    width: 8.5rem;
+    min-width: 8.5rem;
+    height: 8.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 .agencyImageArea img {
-  width: 100%;
-  object-fit: contain;
+    width: 100%;
+    object-fit: contain;
 }
 
 .agencyProfileInfo.agencyProfileInfodiv h6 {
-  font-family: "Segoe UI Semibold", sans-serif;
-  font-size: 1.5rem;
-  padding-top: 2rem;
+    font-family: 'Segoe UI Semibold', sans-serif;
+    font-size: 1.5rem;
+    padding-top: 2rem;
 }
 
 .agencyProfileInfo.agencyProfileInfodiv div {
-  display: flex;
-  padding: 2rem 1rem 6.5rem;
+    display: flex;
+    padding: 2rem 1rem 6.5rem;
 }
 
 .addressTeam_AgencyList .locationAddressArea {
-  width: 80%;
+    width: 80%;
 }
 
 .agencyProfileInfo div p {
-  padding: 0.1rem 0.5rem;
-  margin-right: 10px;
-  border-radius: 999px;
-  background-color: #02044a;
-  color: #fff;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.8rem;
-  font-weight: bold;
+    padding: 0.1rem 0.5rem;
+    margin-right: 10px;
+    border-radius: 999px;
+    background-color: #02044a;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 .profileButton p i {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 .profileButton p:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .middleAgencyArea.agencylistCont {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
-  padding-bottom: 1rem;
-  margin-top: -7.5rem;
-  height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+    margin-top: -7.5rem;
+    height: 6rem;
 }
 
 .agencyAddressTeam.addressTeam_AgencyList {
-  width: 48%;
-  padding: 1.5rem;
-  overflow: hidden;
-  margin-left: 0;
+    width: 48%;
+    padding: 1.5rem;
+    overflow: hidden;
+    margin-left: 0;
 }
 
-.agencyAddressArea, .agencyTeamNumber {
-  display: flex;
+.agencyAddressArea,
+.agencyTeamNumber {
+    display: flex;
 }
 
-.locationIcon i, .teamIcon i {
-  font-size: 1.2rem;
-  color: #02044a;
-  margin-right: 10px;
+.locationIcon i,
+.teamIcon i {
+    font-size: 1.2rem;
+    color: #02044a;
+    margin-right: 10px;
 }
 
-.locationText, .teamNumberPart :is(p) {
-  font-family: "Work Sans", sans-serif;
-  font-size: 1rem;
+.locationText,
+.teamNumberPart :is(p) {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
 }
 
 .locationText {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .locationText p {
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .teamNumberPart span {
-  font-weight: bold;
-  margin-right: 3px;
+    font-weight: bold;
+    margin-right: 3px;
 }
 
 .agencyDescInfo.agencydiv {
-  width: 45%;
+    width: 45%;
 }
 
 .agencyDescInfo::-webkit-scrollbar-thumb {
-  background-color: #3498db;
-  border-radius: 20px;
+    background-color: #3498db;
+    border-radius: 20px;
 }
 
 .agencyDescInfo p {
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.9rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-.agencyAddressTeam h6::after, .agencyDescInfo h6::after {
-  content: "";
-  width: 40px;
-  height: 2px;
-  display: block;
-  background-color: #000;
+.agencyAddressTeam h6::after,
+.agencyDescInfo h6::after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    display: block;
+    background-color: #000;
 }
 
 .quotationShortlistButton2.agencyListButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: -17.2rem;
-  font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -17.2rem;
+    font-size: 12px;
 }
 
 .quotationShortlistButton2 div {
-  width: 20%;
-  margin-right: 3%;
-  height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  width: 8rem;
-  height: 2rem;
-  background-color: #015F9A;
-  border-radius: 1rem;
+    width: 20%;
+    margin-right: 3%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    width: 8rem;
+    height: 2rem;
+    background-color: #015f9a;
+    border-radius: 1rem;
 }
 
 .quotationShortlistButton2 div:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .quotationShortlistButton2 div:nth-child(1) {
-  border: 1px solid #3498db;
-  color: #ffffff;
+    border: 1px solid #3498db;
+    color: #ffffff;
 }
 
 .quotationShortlistButton2 div:nth-child(2) {
-  background-color: #3498db;
-  color: #fff;
+    background-color: #3498db;
+    color: #fff;
 }
 
 .agencyFilterArea_agencyList {
-  margin-top: "2px";
-  width: 22%;
-  position: relative;
+    margin-top: '2px';
+    width: 22%;
+    position: relative;
 }
 
 .filterForm {
-  width: 100%;
-  background-color: #fff;
-  overflow: hidden;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  position: sticky;
-  top: 3%;
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    position: sticky;
+    top: 3%;
 }
 
 .filterHeading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px dashed #999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #999;
 }
 
 .filterText {
-  font-family: "Fredoka One", cursive;
-  font-size: 1.4rem;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
 }
 
 .filterText::after {
-  content: "";
-  width: 30px;
-  height: 2px;
-  background-color: #000;
-  display: block;
+    content: '';
+    width: 30px;
+    height: 2px;
+    background-color: #000;
+    display: block;
 }
 
 .filterHeading div p {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  color: #3498db;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #3498db;
 }
 
 .locationFilter {
-  margin-top: 4%;
-  margin-bottom: 6%;
-  padding-bottom: 5%;
+    margin-top: 4%;
+    margin-bottom: 6%;
+    padding-bottom: 5%;
 }
 
-.locationFilter p, .officeVisitFilter p {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
+.locationFilter p,
+.officeVisitFilter p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
-.locationFilter p::after, .officeVisitFilter p::after {
-  content: "";
-  width: 20px;
-  height: 2px;
-  background-color: #000;
-  display: block;
+.locationFilter p::after,
+.officeVisitFilter p::after {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    display: block;
 }
 
 .locationFilter input {
-  margin-top: 2%;
-  width: 100%;
-  height: 40px;
-  font-size: 1.1rem;
-  font-family: "Open Sans", sans-serif;
-  border: 1px solid #999;
+    margin-top: 2%;
+    width: 100%;
+    height: 40px;
+    font-size: 1.1rem;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #999;
 }
 
 .locationFilter input:focus {
-  outline: none;
+    outline: none;
 }
 
 .officeVisitFilter {
-  margin-bottom: 3%;
+    margin-bottom: 3%;
 }
 
 .officeVisitRadio {
-  display: flex;
-  align-items: center;
-  margin-top: 10%;
-  cursor: pointer;
-  width: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+    cursor: pointer;
+    width: 50%;
 }
 
 .officeVisitRadioImage {
-  width: 22px;
-  height: 22px;
-  background-color: #fff;
-  border: 2px solid #3498db;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  margin-right: 10%;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border: 2px solid #3498db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 10%;
 }
 
 .officeVisitRadioImage i {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 
 .officeVisitRadio span {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.1rem;
-  user-select: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    user-select: none;
 }
 
-.ShortListModalOverlay, .QuotationModalOverlay {
-  background: #707070 !important;
-  opacity: 0.3;
+.ShortListModalOverlay,
+.QuotationModalOverlay {
+    background: #707070 !important;
+    opacity: 0.3;
 }
 
 .ShortListModal {
-  max-width: 500px;
-  width: 100%;
-  border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .shortlistModal_agencyList {
-  font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .shortlistModal_agencyList h2 {
-  font-family: "Segoe UI Semibold", sans-serif;
-  margin-bottom: 4%;
-  font-size: 24px;
-  text-align: center;
+    font-family: 'Segoe UI Semibold', sans-serif;
+    margin-bottom: 4%;
+    font-size: 24px;
+    text-align: center;
 }
 
 .shortlistForm {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
 }
 
 .shortlistForm.comment span {
-  font-size: 0.8rem;
-  color: #015F9A;
+    font-size: 0.8rem;
+    color: #015f9a;
 }
 
 .shortlistForm textarea {
-  width: 100%;
-  border: 1px solid #e0e0e0;
-  padding: 1rem;
-  font-size: 0.9rem;
-  border-radius: 4px;
-  margin-top: 1%;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    margin-top: 1%;
 }
 
 .shortlistForm textarea:focus {
-  outline: none;
+    outline: none;
 }
 
 .shortlistForm button {
-  height: 44px;
-  outline: none;
-  border: none;
-  background: #3498db;
-  color: #fff;
-  font-size: 1.0rem;
-  border-radius: 5px;
+    height: 44px;
+    outline: none;
+    border: none;
+    background: #3498db;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
 }
 
 .shortlistForm .margin-top {
-  background-image: linear-gradient(#015F9A, #01304D);
-  margin-top: 1.5rem;
+    background-image: linear-gradient(#015f9a, #01304d);
+    margin-top: 1.5rem;
 }
 
 .QuotationModal {
-  max-width: 650px;
-  width: 100%;
-  border-radius: 10px;
+    max-width: 650px;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .QuotationModal {
-  color: #015F9A;
-  font-family: "Segoe UI", sans-serif;
+    color: #015f9a;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .QuotationModal h2 {
-  font-size: 1.4rem;
-  text-align: center;
-  margin-top: 4%;
-  margin-bottom: 5%;
-  font-family: 'Segoe UI semibold';
-  color: #707070;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 5%;
+    font-family: 'Segoe UI semibold';
+    color: #707070;
 }
 
 .quotationTable {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1.5px dashed #e0e0e0;
-  min-height: 50px;
-  margin-top: 2%;
-  border-radius: 8px;
-  color: #707070;
-  padding: 0px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1.5px dashed #e0e0e0;
+    min-height: 50px;
+    margin-top: 2%;
+    border-radius: 8px;
+    color: #707070;
+    padding: 0px 12px;
 }
 
 .tableHeaderQuotation p {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .tableContentQuotation {
-  width: 50%;
-  display: flex;
-  font-size: small;
-  flex-wrap: wrap;
+    width: 50%;
+    display: flex;
+    font-size: small;
+    flex-wrap: wrap;
 }
 
 .tableContentQuotation p {
-  margin-right: 20px;
+    margin-right: 20px;
 }
 
 .tableContentQuotation > input {
-  width: 100%;
-  height: 35px;
-  padding-left: 10px;
-  outline: none;
-  border: 1px solid #e0e0e0;
-  font-size: 0.9rem;
-  margin-top: 0;
+    width: 100%;
+    height: 35px;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+    margin-top: 0;
 }
 
-.tableContentQuotation input[type=number]::-webkit-inner-spin-button, 
-.tableContentQuotation input[type=number]::-webkit-outer-spin-button { 
+.tableContentQuotation input[type='number']::-webkit-inner-spin-button,
+.tableContentQuotation input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 0; 
+    margin: 0;
 }
 
 .tableContentQuotation textarea {
-  width: 100%;
-  font-size: 0.9rem;
-  padding: 0.5rem;
-  margin: 6px;
-  border: 1px solid #e0e0e0;
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin: 6px;
+    border: 1px solid #e0e0e0;
 }
 
 .quotationSubmitButton.quotation {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 .quotationSubmitButton_agencyList button {
-  transform: translateY(-10px);
-  width: 20%;
-  height: 30px;
-  margin-top: 2rem;
-  outline: none;
-  border: none;
-  background-image: linear-gradient(#015F9A, #01304D);
-  background-color: #3498db;
-  color: #fff;
-  font-family: "Segoe UI";
-  border-radius: 25px;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    transform: translateY(-10px);
+    width: 20%;
+    height: 30px;
+    margin-top: 2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(#015f9a, #01304d);
+    background-color: #3498db;
+    color: #fff;
+    font-family: 'Segoe UI';
+    border-radius: 25px;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 /* .Image1_agencyList {
@@ -539,55 +550,56 @@
 } */
 
 .Image2_agencyList {
-  right: -8rem;
-  position: fixed;
-  bottom: -4rem;
-  width: 43rem;
-  z-index: 1;
+    right: -8rem;
+    position: fixed;
+    bottom: -4rem;
+    width: 43rem;
+    z-index: 1;
 }
 
 .mainImageDiv {
-  position: relative;
+    position: relative;
 }
 
 .innerAgencyList_agencyList {
-  overflow-y: scroll;
-  height: 79vh;
-  margin-bottom: 0rem;
-  margin-top: 0.5rem;
-  width: 99%;
-  padding: 1rem;
+    overflow-y: scroll;
+    height: 79vh;
+    margin-bottom: 0rem;
+    margin-top: 1.5rem;
+    width: 99%;
+    padding: 1rem;
 }
 
 .agencyPreciseCard_agencyList {
-  min-height: 30vh;
-  background-color: #fff;
-  height: 16rem;
-  margin-bottom: 1rem;
-  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
-  background-image: linear-gradient(to right, #ffffff, #ffffff, #8EC1E0);
+    min-height: 30vh;
+    background-color: #fff;
+    height: 16rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+    background-image: linear-gradient(to right, #ffffff, #ffffff, #8ec1e0);
 }
 
-.ShortlistTool:hover .tooltiptext, .getQuotationTool:hover .tooltiptext {
-  visibility: visible;
+.ShortlistTool:hover .tooltiptext,
+.getQuotationTool:hover .tooltiptext {
+    visibility: visible;
 }
-
 
 .ShortlistTool {
-  position: relative;
+    position: relative;
 }
 .getQuotationTool {
-  position: relative;
+    position: relative;
 }
-.ShortlistTool .tooltiptext , .getQuotationTool .tooltiptext {
-  visibility: hidden;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 5px;
-  color: black;
-  position: absolute;
-  top: 2.5rem;
-  left: 3rem;
-  z-index: 1;
+.ShortlistTool .tooltiptext,
+.getQuotationTool .tooltiptext {
+    visibility: hidden;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    color: black;
+    position: absolute;
+    top: 2.5rem;
+    left: 3rem;
+    z-index: 1;
 }

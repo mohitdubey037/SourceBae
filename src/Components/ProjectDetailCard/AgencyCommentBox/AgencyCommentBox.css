@@ -46,7 +46,7 @@
     padding: 0.5rem 1rem;
     font-family: 'Segoe UI';
     /* width: 60%; */
-    width: max-content;
+    /* width: max-content; */
     max-width: 60%;
     color: white;
     border-radius: 10px;

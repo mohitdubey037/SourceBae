@@ -9,7 +9,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreOutlined';
 
-function NotificationPanel(props) {
+function NotificationPanel({ setNotificationCount }) {
     const Role = localStorage.getItem('role');
 
     const dispatch = useDispatch();
@@ -26,6 +26,10 @@ function NotificationPanel(props) {
             .get(`/api/${Role}/notifications/all`)
             .then((response) => {
                 setNotificationData(response);
+                setNotificationCount(
+                    response.filter((item) => item.isNotificationRead === false)
+                        .length
+                );
             })
             .catch((err) => {});
     };
@@ -107,17 +111,17 @@ function NotificationPanel(props) {
                                                 nd?.isNotificationRead &&
                                                 'conditionalFilter_Sidebar'
                                             }`}
-                                            // style={{
-                                            //     display: 'flex',
-                                            //     flexDirection: 'column'
-                                            // }}
                                         >
                                             <AccordionSummary
                                                 aria-controls="panel1a-content"
                                                 id="panel1a-header"
+                                                style={{ minWidth: '100%' }}
                                             >
                                                 <Typography
-                                                    style={{ fontSize: '14px' }}
+                                                    style={{
+                                                        fontSize: '14px',
+                                                        minWidth: 'fit-content'
+                                                    }}
                                                 >
                                                     {nd?.notificationTitle}
                                                 </Typography>

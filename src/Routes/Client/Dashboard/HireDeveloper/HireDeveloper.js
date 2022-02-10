@@ -27,7 +27,7 @@ const BlueRadio = withStyles({
 function HireDeveloper(props) {
     const Role = localStorage.getItem('role');
     const id = localStorage.getItem('userId');
-
+    const [validateEffect, setValidateEffect] = useState({ validate: false });
     const [apiData, setApiData] = useState({
         requirementName: '',
         developerRolesRequired: [],
@@ -45,11 +45,20 @@ function HireDeveloper(props) {
     const billing = 1;
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setApiData({
-            ...apiData,
-            [name]: value
-        });
+        let filterList = ['averageBudget', 'developerExperienceRequired'];
+        let { name, value } = event.target;
+        if (filterList.includes(event.target.name)) {
+            setApiData({
+                ...apiData,
+                [name]: value
+            });
+        } else {
+            value = value.replace(/[^\w\s]/gi, '');
+            setApiData({
+                ...apiData,
+                [name]: value
+            });
+        }
     };
     const options = [
         {
@@ -111,6 +120,7 @@ function HireDeveloper(props) {
     };
 
     const handleSubmit = () => {
+        fieldsClearer();
         let validated = errorValidation();
         if (!validated) {
             return;
@@ -134,6 +144,18 @@ function HireDeveloper(props) {
     useEffect(() => {
         getAllTechnologies();
     }, []);
+
+    const fieldsClearer = () => {
+        setApiData({
+            ...apiData,
+            requirementName: apiData.requirementName?.replace(/^\s+|\s+$/g, '')
+        });
+        setValidateEffect({ validate: true });
+    };
+
+    useEffect(() => {
+        if (validateEffect.validate) errorValidation();
+    }, [validateEffect]); // eslint-disable-line
 
     const errorValidation = () => {
         const errors = {};
@@ -548,7 +570,7 @@ function HireDeveloper(props) {
                 </div>
             </div>
 
-            <VerifyModal Role={Role} id={id} />
+            <VerifyModal Role={Role} id={id} isUserVerified={null} />
         </>
     );
 }

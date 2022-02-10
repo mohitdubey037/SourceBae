@@ -83,13 +83,6 @@ const App = (props) => {
 
     return (
         <>
-            {show ? (
-                <Notification
-                    title={notification.title}
-                    body={notification.body}
-                    show={show}
-                />
-            ) : null}
             <ErrorBoundary
                 FallbackComponent={({ error, resetErrorBoundary }) => (
                     <div

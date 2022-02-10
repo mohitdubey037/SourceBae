@@ -17,6 +17,7 @@ const HireAgencyForm1 = (props) => {
 
     const [loading, setLoading] = useState(false);
     const [words, setWords] = useState(0);
+    const [validateEffect, setValidateEffect] = useState({ validate: false });
 
     const [data, setData] = useState({
         stepsCompleted: 1,
@@ -35,7 +36,7 @@ const HireAgencyForm1 = (props) => {
 
     const handleChange = (event) => {
         let { name, value } = event.target;
-
+        value = value.replace(/[^\w\s]/gi, '');
         if (name === 'projectDescription') {
             value = value.slice(0, 1).toUpperCase() + value.slice(1);
             if (value.length <= 100) setWords(value.length);
@@ -65,53 +66,67 @@ const HireAgencyForm1 = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const fieldsClearer = () => {
+        let desc = data.projectDescription?.replace(/^\s+|\s+$/g, '');
+        setData({
+            ...data,
+            projectDescription: desc,
+            projectName: data.projectName?.replace(/^\s+|\s+$/g, '')
+        });
+
+        setWords(desc.length);
+        setValidateEffect({ validate: true });
+    };
+
+    useEffect(() => {
+        if (validateEffect.validate) errorValidation();
+    }, [validateEffect]); // eslint-disable-line
     const handleBack = () => {
         if (window.confirm('Do you want to discard changes?') === true) {
             props.history.push(`/clientNewestDashboard`);
         }
     };
 
-    const handleSubmit = () => {
-        let tempError = {
-            projectNameError: '',
-            projectDescriptionError: '',
-            projectExpectedStartingDaysError: ''
-        };
+    function errorValidation() {
+        let returnValue = false;
+        let tempError = {};
         if (data.projectName === '') {
-            setError({
-                ...tempError,
-                projectNameError: 'Project name is required'
-            });
-        } else if (data.projectName.length < 2) {
-            setError({
-                ...tempError,
-                projectNameError:
-                    'Project name should be more than 2 characters.'
-            });
-        } else if (data.projectDescription === '') {
-            setError({
-                ...tempError,
-                projectDescriptionError: 'Project description is required'
-            });
-        } else if (data.projectDescription.length <= 100) {
-            setError({
-                ...tempError,
-                projectDescriptionError:
-                    'Project description should be more than 100 characters.'
-            });
-        } else if (data.projectProposalCost <= 499) {
-            setError({
-                ...tempError,
-                projectProposalCostError:
-                    'Project ammount should be greater than 500 $'
-            });
-        } else if (data.projectExpectedStartingDays <= 4) {
-            setError({
-                ...tempError,
-                projectExpectedStartingDaysError:
-                    'Project starting days should be greater than 5 days'
-            });
-        } else {
+            returnValue = true;
+            tempError.projectNameError = 'Project name is required';
+        }
+        if (data.projectName.length < 2) {
+            returnValue = true;
+            tempError.projectNameError =
+                'Project name should be atleast 2 characters';
+        }
+        if (data.projectDescription === '') {
+            returnValue = true;
+            tempError.projectDescriptionError =
+                'Project description is required';
+        }
+        if (data.projectDescription.length <= 100) {
+            returnValue = true;
+            tempError.projectDescriptionError =
+                'Project description should be atleast 100 characters';
+        }
+        if (data.projectProposalCost <= 499) {
+            returnValue = true;
+            tempError.projectProposalCostError =
+                'Project proposal cost should be greater than 500';
+        }
+        if (data.projectExpectedStartingDays <= 4) {
+            returnValue = true;
+            tempError.projectExpectedStartingDaysError =
+                'Project expected starting days should be greater than 4';
+        }
+        setError(tempError);
+        return !returnValue;
+    }
+    const handleSubmit = async () => {
+        fieldsClearer();
+        let isValidated = await errorValidation();
+
+        if (isValidated) {
             setLoading(true);
             instance
                 .post(
@@ -374,7 +389,7 @@ const HireAgencyForm1 = (props) => {
                         </div>
                     </div>
 
-                    <VerifyModal Role={Role} id={id} />
+                    <VerifyModal Role={Role} id={id} isUserVerified={null} />
                 </>
             )}
         </>

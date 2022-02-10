@@ -7,7 +7,7 @@ function CustomModal({ showModal, message, buttonText, action }) {
         <>
             <Modal
                 open={showModal}
-                closeOnOverlayClick={false}
+                closeOnOverlayClick={true}
                 showCloseIcon={false}
                 classNames={{
                     overlay: 'customOverlayAgencyProduct',
