@@ -1,0 +1,22 @@
+.about_career_img {
+    display: flex;
+}
+.about_career_img img {
+    width: 100%;
+}
+.about_career_headig {
+    display: flex;
+    flex-direction: column;
+}
+.about_career_headig span {
+    font-family: 'GraphikBold';
+    font-size: 30px;
+}
+.about_career_detail {
+    display: flex;
+    flex-direction: column;
+}
+.about_career_btn {
+    display: flex;
+    padding: 2rem 0;
+}

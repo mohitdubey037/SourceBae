@@ -19,9 +19,14 @@ export default function Hero_section() {
             </div>
             <div className={`${styles.hero_main_heading}`}>
                 <h1>Hire?</h1>
-                <span className={'span_yellow'}>
-                    <h1>SourceBae</h1>{' '}
-                </span>
+                <div className={`{'span_yellow'} ${styles.L_animated_text}`}>
+                    <ul className={`${styles.flip4}`}>
+                        <li>Remote Development Team</li>
+                        <li> Short Term Project Developer</li>
+                        <li>Dedicated Remote Developer</li>
+                        <li>IT Agency</li>
+                    </ul>
+                </div>
             </div>
             <div className={`${styles.hero_description}`}>
                 <p className={`L_para`}>
@@ -38,7 +43,7 @@ export default function Hero_section() {
             </div>
             <div className={`${styles.hero_btn_div}`}>
                 <LButton
-                    name="Hire Now - it’s FREE "
+                    name="Get Started - it’s FREE "
                     img={RightWhitArrow}
                     className={`${styles.hero_btn}`}
                 />

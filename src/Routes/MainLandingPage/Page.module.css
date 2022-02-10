@@ -36,24 +36,9 @@
     justify-content: center;
     width: 100%;
 }
-.CTA_bottom_wrap {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem 0;
-    flex-direction: column;
-}
-.L_footer_wrap {
-    display: flex;
-    background-color: #383738;
-    color: #ffffff;
-    padding: 3rem;
-}
+
 .testimonial_wrap {
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
     padding: 3rem;
 }

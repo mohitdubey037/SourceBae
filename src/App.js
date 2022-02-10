@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Mainhomepage from './Routes/LandingPage/Mainhomepage';
+import Page from './Routes/L_About_us/Components/Page';
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
 import Register from './Routes/Register/Register.jsx';
@@ -122,6 +123,7 @@ const App = (props) => {
             >
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/whoAreYou" component={Page} />
                     <Route exact path="/Verify_Page" component={VerifyPage} />
                     <Route exact path="/login/:role" component={Login} />
                     <Route exact path="/register/:role" component={Register} />

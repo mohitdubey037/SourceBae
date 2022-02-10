@@ -1,9 +1,14 @@
 .testimonial_title {
     display: flex;
+    justify-content: center;
 }
 .testimonial_title_img {
     width: 12%;
     padding-right: 1rem;
+}
+.testimonial_cards_wrap {
+    display: flex;
+    justify-content: center;
 }
 .testimonial_main_card {
     display: flex;
@@ -14,6 +19,7 @@
     border-radius: 1rem;
     width: 30%;
     font-family: 'Cabin';
+    margin: 2rem 1.5rem 1rem 0;
 }
 .testimonial_star_row {
     display: flex;
@@ -37,4 +43,11 @@
     flex-direction: column;
     padding-left: 1rem;
     color: #005490;
+}
+.testimonial_client_info h5 {
+    font-size: 20px;
+}
+.testimonial_client_info p {
+    font-size: 14px;
+    color: #90a3b4;
 }

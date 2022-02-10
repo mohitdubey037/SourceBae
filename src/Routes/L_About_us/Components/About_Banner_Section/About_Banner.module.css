@@ -1,0 +1,48 @@
+.about_titles_wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.about_main_title {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 3rem;
+}
+.about_banner_div {
+    display: flex;
+    padding: 1rem 4rem;
+    width: 100%;
+    margin: 1rem 0 3rem;
+}
+.about_banner_left_div {
+    display: flex;
+    width: 70%;
+    margin-right: 2rem;
+}
+.about_banner_right_div {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.about_banner_left_div img,
+.about_banner_right_img img {
+    width: 100%;
+    border-radius: 1.5rem;
+}
+
+.about_banner_btn {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
+.about_heading_bg {
+    background-image: url('../../../../assets/images/LandingPage/pink_bg.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    padding-right: 3.5rem;
+    padding-top: 0.5rem;
+}
+.about_heading_bg span {
+    color: #ffffff;
+}

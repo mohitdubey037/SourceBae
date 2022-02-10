@@ -13,7 +13,7 @@ export default function L_CTA() {
                 </h2>
             </div>
             <div className={`${styles.CTA_btn}`}>
-                <LButton name="Hire Now" img={hireBtnImg} />
+                <LButton name="Get Started" img={hireBtnImg} />
             </div>
         </>
     );

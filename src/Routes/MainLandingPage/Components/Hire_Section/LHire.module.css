@@ -35,6 +35,7 @@
 }
 .hire_card_description {
     display: flex;
+    min-height: 230px;
 }
 .hire_card_btn {
     display: flex;

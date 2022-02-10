@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './LNavbar.module.css';
 import LNavLogo from '../../../../assets/images/Logo/Sourcebae-14.svg';
 import selectArrow from '../../../../assets/images/LandingPage/SelectArrow.svg';
+import { Link } from 'react-router-dom';
 export default function LNavbar() {
     return (
         <div className={`${styles.navbar_wrap}`}>
@@ -9,8 +10,14 @@ export default function LNavbar() {
                 <img src={LNavLogo} alt="" />
             </div>
             <div className={`${styles.nav_menu_wrap}`}>
-                <div className={`${styles.nav_menu}`}>Home</div>
-                <div className={`${styles.nav_menu}`}>Who We Are</div>
+                <div className={`${styles.nav_menu}`}>
+                    {/* <Link to="/home">Home</Link> */}
+                    Home
+                </div>
+                <div className={`${styles.nav_menu}`}>
+                    {' '}
+                    <Link to="/whoAreYou">Who We Are</Link>
+                </div>
                 <div className={`${styles.nav_services} ${styles.nav_menu} `}>
                     Services
                     <img

@@ -5,6 +5,7 @@ import clientImg from '../../../../assets/images/LandingPage/client.png';
 import testimonialStars from '../../../../assets/images/LandingPage/testimonial-star.svg';
 export default function L_Testimonial() {
     const testimonialStar = [1, 2, 3, 4, 5];
+    const testimonialCards = [1, 2, 3];
     return (
         <>
             <div className={`${styles.testimonial_title}`}>
@@ -19,27 +20,39 @@ export default function L_Testimonial() {
                 </h2>
             </div>
             <div className={`${styles.testimonial_cards_wrap}`}>
-                <div className={`${styles.testimonial_main_card}`}>
-                    <div className={`${styles.testimonial_star_row}`}>
-                        {testimonialStar?.map((value) => {
-                            return <img src={testimonialStars}></img>;
-                        })}
-                    </div>
-                    <div className={`${styles.testimonial_des}`}>
-                        "Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Ea, nam magnam exercitationem sint excepturi
-                        optio."
-                    </div>
-                    <div className={`${styles.testimonial_client_info_row}`}>
-                        <div className={`${styles.testimonial_client_img}`}>
-                            <img src={clientImg} alt="" />
+                {testimonialCards.map(() => {
+                    return (
+                        <div className={`${styles.testimonial_main_card}`}>
+                            <div className={`${styles.testimonial_star_row}`}>
+                                {testimonialStar?.map((value) => {
+                                    return <img src={testimonialStars}></img>;
+                                })}
+                            </div>
+                            <div className={`${styles.testimonial_des}`}>
+                                "Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Ea, nam magnam exercitationem
+                                sint excepturi optio."
+                            </div>
+                            <div
+                                className={`${styles.testimonial_client_info_row}`}
+                            >
+                                <div
+                                    className={`${styles.testimonial_client_img}`}
+                                >
+                                    <img src={clientImg} alt="" />
+                                </div>
+                                <div
+                                    className={`${styles.testimonial_client_info}`}
+                                >
+                                    <h5>Jaquon Hart</h5>
+                                    <p>
+                                        Digital Marketing Executive, Hypebeast
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div className={`${styles.testimonial_client_info}`}>
-                            <h5>Jaquon Hart</h5>
-                            <p>Digital Marketing Executive, Hypebeast</p>
-                        </div>
-                    </div>
-                </div>
+                    );
+                })}
             </div>
         </>
     );

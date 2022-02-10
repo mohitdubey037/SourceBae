@@ -1,0 +1,18 @@
+.about_info_heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.about_info_para {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+}
+.about_info_para p {
+    padding: 1rem 0;
+    font-weight: 400;
+}

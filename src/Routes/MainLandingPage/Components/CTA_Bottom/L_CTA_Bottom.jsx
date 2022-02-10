@@ -17,7 +17,7 @@ export default function L_CTA_Bottom() {
                 </h2>
             </div>
             <div className={`${styles.CTA_bottom_btn}`}>
-                <LButton name="Hire Now" img={hireBtnImg} />
+                <LButton name="Get Started" img={hireBtnImg} />
             </div>
         </div>
     );

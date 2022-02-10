@@ -39,10 +39,10 @@ export default function Page() {
             <div className={`${styles.testimonial_wrap}`}>
                 <L_Testimonial />
             </div>
-            <div className={`${styles.CTA_bottom_wrap}`}>
+            <div className="CTA_bottom_wrap">
                 <L_CTA_Bottom />
             </div>
-            <div className={`${styles.L_footer_wrap}`}>
+            <div className="L_footer_wrap">
                 <L_Footer />
             </div>
         </>

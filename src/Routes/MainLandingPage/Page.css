@@ -9,9 +9,27 @@
 .span_pink {
     color: #f44e77;
 }
+.span_blue {
+    color: #045295;
+}
 .L_h2 {
     font-size: 30px;
     font-family: 'GraphikBold';
     font-style: normal;
     line-height: 39.6px;
+}
+.L_footer_wrap {
+    display: flex;
+    background-color: #383738;
+    color: #ffffff;
+    padding: 3rem;
+}
+.CTA_bottom_wrap {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0;
+    flex-direction: column;
 }
