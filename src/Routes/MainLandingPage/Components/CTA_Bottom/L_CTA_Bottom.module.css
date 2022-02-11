@@ -14,3 +14,8 @@
     display: flex;
     justify-content: center;
 }
+@media screen and (max-width: 580px) {
+    .CTA_bottom_img img {
+        width: 100%;
+    }
+}

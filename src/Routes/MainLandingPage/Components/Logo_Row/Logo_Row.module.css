@@ -24,3 +24,14 @@
 .logo_icon img {
     width: 100%;
 }
+@media screen and (max-width: 580px) {
+    .logo_row_icons {
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logo_icon {
+        padding: 0;
+        margin: 1rem;
+    }
+}

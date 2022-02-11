@@ -6,6 +6,10 @@ import aboutBanner2 from '../../../../assets/images/LandingPage/banner-2.jpg';
 import RightWhitArrow from '../../../../assets/images/LandingPage/RightWhitArrow.svg';
 
 export default function About_Banner() {
+    const onClickEvent = () => {
+        window.location.href =
+            'https://www.google.com/maps/uv?pb=!1s0x396302a97eaaaaab%3A0x47d2f775686fee19!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPONzx7q6f62pbrlgQ8ydDxmDH-QHW6vjYAr2U2%3Dw426-h240-k-no!5sshethink%20private%20limited%20-%20Google%20Search!15sCgIgAQ&imagekey=!1e10!2sAF1QipPONzx7q6f62pbrlgQ8ydDxmDH-QHW6vjYAr2U2&hl=en&sa=X&ved=2ahUKEwiQ8srXsM31AhUYc3AKHZHfAv0Qoip6BAgkEAM';
+    };
     return (
         <>
             <div className={`${styles.about_titles_wrap}`}>
@@ -32,7 +36,11 @@ export default function About_Banner() {
                         <img src={aboutBanner2} alt="" />
                     </div>
                     <div className={`${styles.about_banner_btn}`}>
-                        <LButton name="See More" img={RightWhitArrow} />
+                        <LButton
+                            name="See More"
+                            img={RightWhitArrow}
+                            onClickEvent={onClickEvent}
+                        />
                     </div>
                 </div>
             </div>

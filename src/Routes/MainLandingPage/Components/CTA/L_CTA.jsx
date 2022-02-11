@@ -4,6 +4,9 @@ import styles from './L_CTA.module.css';
 import hireBtnImg from '../../../../assets/images/LandingPage/hirebtn.svg';
 
 export default function L_CTA() {
+    const onClickEvent = () => {
+        window.location.href = 'https://app.sourcebae.com/register/agency';
+    };
     return (
         <>
             <div className={`${styles.CTA_heading}`}>
@@ -13,7 +16,11 @@ export default function L_CTA() {
                 </h2>
             </div>
             <div className={`${styles.CTA_btn}`}>
-                <LButton name="Get Started" img={hireBtnImg} />
+                <LButton
+                    name="Get Started"
+                    img={hireBtnImg}
+                    onClickEvent={onClickEvent}
+                />
             </div>
         </>
     );

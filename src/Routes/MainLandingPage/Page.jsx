@@ -14,7 +14,11 @@ import L_Testimonial from './Components/Testimonial/L_Testimonial';
 
 export default function Page() {
     return (
-        <>
+        <div
+            onClick={() =>
+                (document.getElementById('pop-up').style.display = 'none')
+            }
+        >
             <div className={`${styles.landing_navbar}`}>
                 <LNavbar />
             </div>
@@ -45,6 +49,6 @@ export default function Page() {
             <div className="L_footer_wrap">
                 <L_Footer />
             </div>
-        </>
+        </div>
     );
 }

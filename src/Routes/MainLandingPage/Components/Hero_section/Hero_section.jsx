@@ -4,6 +4,9 @@ import styles from './Hero_section.module.css';
 import RightWhitArrow from '../../../../assets/images/LandingPage/RightWhitArrow.svg';
 
 export default function Hero_section() {
+    const onClickEvent = () => {
+        window.location.href = 'https://app.sourcebae.com/register/agency';
+    };
     return (
         <div className={`${styles.hero_section_wrap}`}>
             <div className={`${styles.hero_first_heading}`}>
@@ -46,6 +49,7 @@ export default function Hero_section() {
                     name="Get Started - it’s FREE "
                     img={RightWhitArrow}
                     className={`${styles.hero_btn}`}
+                    onClickEvent={onClickEvent}
                 />
             </div>
         </div>

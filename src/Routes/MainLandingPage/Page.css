@@ -13,16 +13,17 @@
     color: #045295;
 }
 .L_h2 {
-    font-size: 30px;
-    font-family: 'GraphikBold';
-    font-style: normal;
+    font-size: 28px;
+    font-family: 'GraphikMedium';
     line-height: 39.6px;
+    font-weight: 600;
 }
 .L_footer_wrap {
     display: flex;
     background-color: #383738;
     color: #ffffff;
     padding: 3rem;
+    width: 100%;
 }
 .CTA_bottom_wrap {
     display: flex;

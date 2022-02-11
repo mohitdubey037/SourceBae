@@ -25,12 +25,17 @@
 }
 @font-face {
     font-family: 'GraphikLight';
-    src: url('./Fonts/GraphikBold.otf');
+    src: url('./Fonts/GraphikLight.otf');
 }
 @font-face {
     font-family: 'GraphikMedium';
-    src: url('./Fonts/GraphikBold.otf');
+    src: url('./Fonts/GraphikMedium.otf');
 }
+@font-face {
+    font-family: 'GraphikRegular';
+    src: url('./Fonts/GraphikRegular.otf');
+}
+
 @font-face {
     font-family: 'GraphikRegular';
     src: url('./Fonts/GraphikBold.otf');

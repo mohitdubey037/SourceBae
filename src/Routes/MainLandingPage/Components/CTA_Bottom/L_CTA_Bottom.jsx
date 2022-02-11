@@ -5,6 +5,9 @@ import ctaImg from '../../../../assets/images/LandingPage/CTA-bottom.svg';
 import hireBtnImg from '../../../../assets/images/LandingPage/hirebtn.svg';
 
 export default function L_CTA_Bottom() {
+    const onClickEvent = () => {
+        window.location.href = 'https://app.sourcebae.com/register/agency';
+    };
     return (
         <div className={`${styles.CTA_bottom}`}>
             <div className={`${styles.CTA_bottom_img}`}>
@@ -17,7 +20,11 @@ export default function L_CTA_Bottom() {
                 </h2>
             </div>
             <div className={`${styles.CTA_bottom_btn}`}>
-                <LButton name="Get Started" img={hireBtnImg} />
+                <LButton
+                    name="Get Started"
+                    img={hireBtnImg}
+                    onClickEvent={onClickEvent}
+                />
             </div>
         </div>
     );

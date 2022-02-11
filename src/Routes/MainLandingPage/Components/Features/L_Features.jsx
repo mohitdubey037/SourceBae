@@ -5,7 +5,7 @@ import feature2 from '../../../../assets/images/LandingPage/feature-2.png';
 import feature3 from '../../../../assets/images/LandingPage/feature-3.png';
 
 export default function L_Features() {
-    const featurecards = [
+    const featureCards = [
         {
             img: featureImg1,
             heading: '250+',
@@ -46,8 +46,8 @@ export default function L_Features() {
                     you??
                 </h2>
             </div>
-            <div className={`${styles.fetaures_cards_wrap}`}>
-                {featurecards?.map((value, index) => {
+            <div className={`${styles.feature_cards_wrap}`}>
+                {featureCards?.map((value, index) => {
                     return (
                         <div
                             className={`${styles.feature_main_card} ${

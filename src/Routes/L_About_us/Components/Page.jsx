@@ -10,7 +10,11 @@ import LNavbar from '../../MainLandingPage/Components/Navbar/LNavbar';
 
 export default function Page() {
     return (
-        <>
+        <div
+            onClick={() =>
+                (document.getElementById('pop-up').style.display = 'none')
+            }
+        >
             {' '}
             <div className={`${styles.landing_navbar}`}>
                 <LNavbar />
@@ -35,6 +39,6 @@ export default function Page() {
             <div className={'L_footer_wrap'}>
                 <L_Footer />
             </div>
-        </>
+        </div>
     );
 }

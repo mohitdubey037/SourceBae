@@ -4,6 +4,9 @@ import styles from './About_Career.module.css';
 import btnArrow from '../../../../assets/images/LandingPage/RightWhitArrow.svg';
 import careerImg from '../../../../assets/images/LandingPage/career-about.png';
 export default function About_Career() {
+    const onClickEvent = () => {
+        window.location.href = 'https://shethink.in/career/';
+    };
     return (
         <>
             <div className={`${styles.about_career_img}`}>
@@ -22,7 +25,11 @@ export default function About_Career() {
                     </p>
                 </div>
                 <div className={`${styles.about_career_btn}`}>
-                    <LButton name="See All position" img={btnArrow} />
+                    <LButton
+                        name="See All position"
+                        img={btnArrow}
+                        onClickEvent={onClickEvent}
+                    />
                 </div>
             </div>
         </>

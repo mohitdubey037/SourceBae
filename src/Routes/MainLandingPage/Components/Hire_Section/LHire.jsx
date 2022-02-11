@@ -4,6 +4,9 @@ import hireCard1 from '../../../../assets/images/LandingPage/card-1.png';
 import hireCard2 from '../../../../assets/images/LandingPage/card-2.png';
 import LButton from '../Button/LButton';
 export default function LHire() {
+    const onClickEvent = () => {
+        window.location.href = 'https://app.sourcebae.com/register/agency';
+    };
     const hireCards = [
         {
             img: hireCard1,
@@ -81,6 +84,7 @@ export default function LHire() {
                                 <LButton
                                     name={card.btn}
                                     className={`${styles.hire_card_btn}`}
+                                    onClickEvent={onClickEvent}
                                 />
                             </div>
                         </div>

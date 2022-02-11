@@ -80,3 +80,11 @@
         margin-top: -270px;
     }
 }
+@media screen and (max-width: 580px) {
+    .flip4 li {
+        font-size: 34px;
+    }
+    .hero_main_heading > h1 {
+        font-size: 75px;
+    }
+}

@@ -11,7 +11,7 @@
 }
 .nav_menu_wrap {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     width: 60%;
     align-items: center;
 }
@@ -20,10 +20,15 @@
     font-family: 'Cabin';
     font-weight: 700;
     padding: 0 2rem;
-    cursor: pointer;
 }
-.nav_menu:hover,
-.nav_menu:active {
+.nav_menu a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000000;
+}
+.nav_menu a:hover,
+.option_1:hover,
+.nav_menu a:active {
     color: #554dde;
 }
 .nav_login,
@@ -50,7 +55,8 @@
     background-color: #554dde;
     border: solid #554dde;
 }
-.L_login:hover {
+.L_login:hover,
+.L_login:active {
     color: #554dde;
     background-color: #ffffff;
 }
@@ -59,7 +65,8 @@
     color: #554dde;
     border: solid #554dde;
 }
-.L_signup:hover {
+.L_signup:hover,
+.L_signup:active {
     color: #ffffff;
     background-color: transparent;
     background-image: linear-gradient(230deg, #2218d1 0%, #554dde 90%);
@@ -70,9 +77,9 @@
 .nav_services {
     position: relative;
 }
-.nav_services:hover ~ .service_option_wrap {
+/* .nav_services:hover ~ .service_option_wrap {
     display: flex;
-}
+} */
 .service_option_wrap {
     display: none;
     flex-direction: column;
@@ -90,4 +97,19 @@
     display: flex;
     padding: 0.5rem;
     cursor: pointer;
+}
+@media screen and (max-width: 580px) {
+    .nav_Lbutton {
+        padding: 5px;
+    }
+    .nav_logo {
+        width: 28%;
+    }
+    .nav_login,
+    .nav_signup {
+        width: 25%;
+    }
+    .nav_menu_wrap {
+        display: none;
+    }
 }

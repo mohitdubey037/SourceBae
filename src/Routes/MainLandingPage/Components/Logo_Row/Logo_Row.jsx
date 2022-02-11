@@ -17,10 +17,10 @@ export default function Logo_Row() {
     return (
         <>
             <div className={`${styles.logo_row_heading_div}`}>
-                <h2 className={`${styles.logo_row_heading} L_h2`}>
+                <h3 className={`${styles.logo_row_heading} L_h2`}>
                     <span className="span_pink">MANY BUSINESSES </span>TRUST US
                     WITH THEIR HIRING AND PROJECT DISTRIBUTION
-                </h2>
+                </h3>
             </div>
             <div className={`${styles.logo_row_icons}`}>
                 {logo_row?.map((item) => {

@@ -52,3 +52,12 @@
     font-size: 15px;
     padding: 0.5rem 0;
 }
+@media screen and (max-width: 580px) {
+    .hiring_steps_main_card {
+        width: unset;
+        min-width: 94%;
+    }
+    .hiring_steps_main_heading {
+        padding: 3rem 2rem 0;
+    }
+}
