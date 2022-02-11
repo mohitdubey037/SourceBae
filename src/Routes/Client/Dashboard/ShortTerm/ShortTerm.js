@@ -218,19 +218,6 @@ function ShortTerm(props) {
         }
     };
 
-    // const handlePaymentModel = (status) => {
-    //   if (status)
-    //     setApiData({
-    //       ...apiData,
-    //       projectPaymentModel: "Fixed Price",
-    //     });
-    //   else
-    //     setApiData({
-    //       ...apiData,
-    //       projectPaymentModel: "By Hour",
-    //     });
-    // };
-
     //Api Calls methods
     const getAllDomains = () => {
         instance.get(`api/${Role}/services/all`).then(function (response) {

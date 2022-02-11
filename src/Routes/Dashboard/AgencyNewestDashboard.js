@@ -77,13 +77,14 @@ function AgencyNewestDashboard(props) {
     };
 
     const getAgencyProfile = (agencyId) => {
-        instance
-            .get(`/api/${role}/agencies/get/${agencyId}`)
-            .then(function (response) {
-                setVerified(response.isAgencyVerified);
-                setUserEmailVerified(response.isUserEmailVerified);
-                setUserPhoneVerified(response.isUserPhoneVerified);
-            });
+        if (agencyId)
+            instance
+                .get(`/api/${role}/agencies/get/${agencyId}`)
+                .then(function (response) {
+                    setVerified(response.isAgencyVerified);
+                    setUserEmailVerified(response.isUserEmailVerified);
+                    setUserPhoneVerified(response.isUserPhoneVerified);
+                });
     };
 
     useEffect(() => {

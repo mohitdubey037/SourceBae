@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import './SharedDevelopers.css';
 
@@ -36,16 +37,17 @@ function RespondedDetails(props) {
 
     const getOneDeveloper = () => {
         setLoading(true);
-        // instance.get(`/api/${Role}/hire-developers/get/${hireDeveloperId}?agencyId=${agencyId}`)
-        instance
-            .get(`/api/agency/hire-developers/all?agencyId=${agencyId}`)
-            .then(function (response) {
-                setSingleHiredDeveloper(response);
-                setLoading(false);
-            })
-            .catch((err) => {
-                setLoading(false);
-            });
+        if (agencyId)
+            instance
+                .get(`/api/agency/hire-developers/all?agencyId=${agencyId}`)
+                .then(function (response) {
+                    setSingleHiredDeveloper(response);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    setLoading(false);
+                });
+        setLoading(false);
     };
 
     const agencyAction = (task) => {

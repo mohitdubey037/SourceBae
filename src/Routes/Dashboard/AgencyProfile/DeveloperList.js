@@ -1,42 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import './DeveloperList.css'
-import instance from "../../../Constants/axiosConstants";
+import React, { useEffect, useState } from 'react';
+import './DeveloperList.css';
+import instance from '../../../Constants/axiosConstants';
 import { useHistory } from 'react-router-dom';
-import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import TrashIcon from '../../../assets/images/Newestdashboard/Agency-Profile/material-delete.svg';
-import { Modal } from "react-responsive-modal";
+import { Modal } from 'react-responsive-modal';
 import developerImage from '../../../assets/images/Newestdashboard/Agency-Profile/add-developer.svg';
-import { withStyles, FormGroup, Switch, Grid, Typography, Button } from '@material-ui/core';
-import { SettingsOutlined } from '@material-ui/icons';
+import {
+    withStyles,
+    FormGroup,
+    Switch,
+    Grid,
+    Typography
+} from '@material-ui/core';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
         width: 28,
         height: 14,
         padding: 0,
-        borderColor: "#fff",
+        borderColor: '#fff'
     },
     switchBase: {
         padding: 2,
         top: -2,
         left: -2,
         color: 'green',
-        border: "1px solid #EBF5FB",
-        "&$checked": {
-            transform: "translateX(14px)",
+        border: '1px solid #EBF5FB',
+        '&$checked': {
+            transform: 'translateX(14px)',
             color: '#FF0000',
-            "& + $track": {
+            '& + $track': {
                 opacity: 0.82,
-                backgroundColor: "blue",
+                backgroundColor: 'blue'
                 // border: '2px solid #FF0000',
             },
-            border: "1px solid #FF0000",
-        },
+            border: '1px solid #FF0000'
+        }
     },
     thumb: {
         width: '12px',
         height: '12px',
-        boxShadow: "none",
+        boxShadow: 'none',
         borderRadius: '46%',
         color: 'white',
         marginTop: '1px',
@@ -44,16 +48,16 @@ const AntSwitch = withStyles((theme) => ({
     },
     track: {
         borderRadius: 78 / 2,
-        backgroundColor: "blue",
-        opacity: 0.82,
+        backgroundColor: 'blue',
+        opacity: 0.82
     },
-    checked: {},
+    checked: {}
 }))(Switch);
 
 function DeveloperList(props) {
     const routerHistory = useHistory();
-    const Role = localStorage.getItem('role')
-    const agencyId = localStorage.getItem("userId")
+    const Role = localStorage.getItem('role');
+    const agencyId = localStorage.getItem('userId');
     const [developers, setDevelopers] = useState([]);
     const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
     const [developerId, setDeveloperId] = useState(null);
@@ -62,29 +66,31 @@ function DeveloperList(props) {
     const [toggleIndexes, setToggleIndexes] = useState({});
     const [state, setState] = useState({
         checked: false
-    })
+    });
 
-    const [agencyProfiledata, setAgencyProfileData] = useState({});
     const getAgencyDevelopers = () => {
-        instance.get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
-            .then(function (response) {
-                let temp = {};
+        if (agencyId)
+            instance
+                .get(`/api/${Role}/developers/all?agencyId=${agencyId}`)
+                .then(function (response) {
+                    let temp = {};
 
-                response.forEach((dev, index) => {
-                    temp[index] = !dev.isDeveloperActive;
+                    response.forEach((dev, index) => {
+                        temp[index] = !dev.isDeveloperActive;
+                    });
+                    setToggleIndexes(temp);
+                    setDevelopers(response);
                 })
-                setToggleIndexes(temp);
-                setDevelopers(response)
-            })
-            .catch(err => {
-                setErr(err?.response?.data?.message)
-            })
+                .catch((err) => {
+                    setErr(err?.response?.data?.message);
+                });
     };
     const updateDevelopers = (data, developerId) => {
         let url = `/api/${Role}/developers/update/${developerId}`;
-        instance.patch(url, data).then((res) => {
-        }).catch((err) => {
-        })
+        instance
+            .patch(url, data)
+            .then((res) => {})
+            .catch((err) => {});
         // instance.patch(`/api/${Role}/developers/update/${developerId}`)
         //     .then(function (response) {
         //         setToggleIndexes(response)
@@ -95,71 +101,60 @@ function DeveloperList(props) {
     };
 
     const handleChangeToggle = (event, ind) => {
-        let tempIndexes = { ...toggleIndexes }
+        let tempIndexes = { ...toggleIndexes };
         if (tempIndexes[ind]) {
-            tempIndexes[ind] = !tempIndexes[ind]
+            tempIndexes[ind] = !tempIndexes[ind];
+        } else {
+            tempIndexes[ind] = true;
         }
-        else {
-            tempIndexes[ind] = true
-        }
-        setToggleIndexes(tempIndexes)
+        setToggleIndexes(tempIndexes);
 
         let tempDevs = developers;
         tempDevs[ind].isDeveloperActive = !tempDevs[ind].isDeveloperActive;
 
         let data = {
-            'isDeveloperActive': developers[ind].isDeveloperActive
-        }
-        updateDevelopers(data, developers[ind]._id)
+            isDeveloperActive: developers[ind].isDeveloperActive
+        };
+        updateDevelopers(data, developers[ind]._id);
         // setDevelopers(tempDevs)
-        setState({ ...state, [event.target.name]: event.target.checked })
+        setState({ ...state, [event.target.name]: event.target.checked });
     };
-
 
     // useEffect((index) => {
     //     setToggleIndexes(developers[index].isDeveloperActive)
     // }, [])
 
     const deleteDevelopers = () => {
-        instance.delete(`api/${Role}/developers/delete/${developerId}`)
+        instance
+            .delete(`api/${Role}/developers/delete/${developerId}`)
             .then(function (response) {
                 setOpenWithdrawModal(false);
-                const tempDevelopers = developers.filter(dev => dev._id !== developerId);
+                const tempDevelopers = developers.filter(
+                    (dev) => dev._id !== developerId
+                );
                 setDevelopers(tempDevelopers);
             })
-            .catch(error => {
-            })
-    }
+            .catch((error) => {});
+    };
 
     const IndexSetter = (index) => {
         setToggleIndexes(toggleIndexes);
         setOpen(!open);
-    }
+    };
 
     useEffect(() => {
-        getAgencyDevelopers()
-    }, [])
+        getAgencyDevelopers();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    useEffect(() => {
-    }, [open])
+    useEffect(() => {}, [open]);
 
-    useEffect(() => {
-    }, [developerId])
-
-    // const getAgencyProfile = (agencyId, profileviewStatus) => {
-    //     let addParam = profileviewStatus ? `?agencyProfileView=1` : ``;
-    //     instance.get(`/api/${Role}/agencies/get/${agencyId}${addParam}`)
-    //         .then(function (response) {
-    //             setAgencyProfileData(response);
-    //         })
-    //         .catch((err) => {
-    //         });
-    // };
+    useEffect(() => {}, [developerId]);
 
     const deleteFunctionality = (agencyId) => {
         setDeveloperId(agencyId);
         setOpenWithdrawModal(true);
-    }
+    };
 
     // useEffect(() => {
     //     if (Role === 'Agency') {
@@ -167,13 +162,15 @@ function DeveloperList(props) {
     //     }
     // }, []);
 
-
-
     return (
         <>
             <div className="mainDeveloperList">
-                <div className="innerDeveloperList" style={{ backgroundColor: err && 'white' }}>
-                    {/*err ?*/
+                <div
+                    className="innerDeveloperList"
+                    style={{ backgroundColor: err && 'white' }}
+                >
+                    {
+                        /*err ?*/
                         /* <>
                             <div style={{ textAlign: 'center', width: '100%' }}>
                                 <img height="300px" src={PageNotFound} alt="no_data_img" />
@@ -184,7 +181,14 @@ function DeveloperList(props) {
                             return (
                                 <>
                                     <div className="developerCard">
-                                        <div className="cross-icon" onClick={() => deleteFunctionality(developer._id)}>
+                                        <div
+                                            className="cross-icon"
+                                            onClick={() =>
+                                                deleteFunctionality(
+                                                    developer._id
+                                                )
+                                            }
+                                        >
                                             {/* <img src={crossIcon} alt="cross-icon" /> */}
                                             {/* <i className="fas fa-trash-alt"></i> */}
                                             <img src={TrashIcon} alt="trash" />
@@ -192,25 +196,58 @@ function DeveloperList(props) {
                                         <div className="developerNameExp">
                                             <div className="developerName">
                                                 <div>
-                                                    <h2>{`${developer.firstName.charAt(0).toUpperCase() + developer.firstName.slice(1)} ${developer.lastName.charAt(0).toUpperCase() + developer.lastName.slice(1)}`}</h2>
+                                                    <h2>{`${
+                                                        developer.firstName
+                                                            .charAt(0)
+                                                            .toUpperCase() +
+                                                        developer.firstName.slice(
+                                                            1
+                                                        )
+                                                    } ${
+                                                        developer.lastName
+                                                            .charAt(0)
+                                                            .toUpperCase() +
+                                                        developer.lastName.slice(
+                                                            1
+                                                        )
+                                                    }`}</h2>
                                                 </div>
-                                                <div className={`rounded_developerList ${toggleIndexes[index] && "conditionalColor"}`}></div>
+                                                <div
+                                                    className={`rounded_developerList ${
+                                                        toggleIndexes[index] &&
+                                                        'conditionalColor'
+                                                    }`}
+                                                ></div>
                                             </div>
                                             <div className="developerExp">
-                                                {(toggleIndexes[index]) ?
-                                                    <p style={{ color: '#FF0000' }}>Unavailable</p>
-                                                    :
+                                                {toggleIndexes[index] ? (
+                                                    <p
+                                                        style={{
+                                                            color: '#FF0000'
+                                                        }}
+                                                    >
+                                                        Unavailable
+                                                    </p>
+                                                ) : (
                                                     <p>Available</p>
-                                                }
+                                                )}
                                             </div>
                                         </div>
 
                                         <div className="developerTech">
                                             <h6>Techstack</h6>
                                             <div className="developerTechNames">
-                                                {developer.developerTechnologies.map((tech) => {
-                                                    return <p>{tech.technologyName}</p>
-                                                })}
+                                                {developer.developerTechnologies.map(
+                                                    (tech) => {
+                                                        return (
+                                                            <p>
+                                                                {
+                                                                    tech.technologyName
+                                                                }
+                                                            </p>
+                                                        );
+                                                    }
+                                                )}
                                             </div>
                                         </div>
 
@@ -224,20 +261,44 @@ function DeveloperList(props) {
 
                                                     <div>
                                                         <p>Timeline</p>
-                                                        <h6>{developer.developerAvailability == "0" ? `Immediately Available` : `${developer.developerAvailability} Weeks`}</h6>
+                                                        <h6>
+                                                            {developer.developerAvailability ==
+                                                            '0'
+                                                                ? `Immediately Available`
+                                                                : `${developer.developerAvailability} Weeks`}
+                                                        </h6>
                                                     </div>
                                                     <div>
                                                         <p>Budget</p>
-                                                        <h6>{`$${developer.developerPriceRange}-$${developer.developerPriceRange + 3 * 1000}`}</h6>
+                                                        <h6>{`$${
+                                                            developer.developerPriceRange
+                                                        }-$${
+                                                            developer.developerPriceRange +
+                                                            3 * 1000
+                                                        }`}</h6>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="developers_content">
-                                                <div className="developers-status_parent" onClick={() => IndexSetter(index)}>
+                                                <div
+                                                    className="developers-status_parent"
+                                                    onClick={() =>
+                                                        IndexSetter(index)
+                                                    }
+                                                >
                                                     <div className="developer-status_developerList">
                                                         <p>Developer Status</p>
                                                     </div>
-                                                    <div style={{ display: (open && toggleIndexes === index) && 'none' }} className="availability_toggle">
+                                                    <div
+                                                        style={{
+                                                            display:
+                                                                open &&
+                                                                toggleIndexes ===
+                                                                    index &&
+                                                                'none'
+                                                        }}
+                                                        className="availability_toggle"
+                                                    >
                                                         <FormGroup>
                                                             <Typography component="div">
                                                                 <Grid
@@ -246,17 +307,34 @@ function DeveloperList(props) {
                                                                     alignItems="center"
                                                                     spacing={1}
                                                                 >
-                                                                    <Grid item className="statusLabel">
+                                                                    <Grid
+                                                                        item
+                                                                        className="statusLabel"
+                                                                    >
                                                                         Available
                                                                     </Grid>
                                                                     <Grid item>
                                                                         <AntSwitch
-                                                                            checked={!!toggleIndexes[index]}
-                                                                            onChange={(event) => handleChangeToggle(event, index)}
+                                                                            checked={
+                                                                                !!toggleIndexes[
+                                                                                    index
+                                                                                ]
+                                                                            }
+                                                                            onChange={(
+                                                                                event
+                                                                            ) =>
+                                                                                handleChangeToggle(
+                                                                                    event,
+                                                                                    index
+                                                                                )
+                                                                            }
                                                                             name="checked"
                                                                         />
                                                                     </Grid>
-                                                                    <Grid item className="statusLabel">
+                                                                    <Grid
+                                                                        item
+                                                                        className="statusLabel"
+                                                                    >
                                                                         Unavailable
                                                                     </Grid>
                                                                 </Grid>
@@ -265,50 +343,75 @@ function DeveloperList(props) {
                                                     </div>
                                                 </div>
                                                 <div className="developerResume">
-                                                    <button onClick={() => window.open(`${developer.developerDocuments[0].documentLink}`, "_blank")} >Download</button>
+                                                    <button
+                                                        onClick={() =>
+                                                            window.open(
+                                                                `${developer.developerDocuments[0].documentLink}`,
+                                                                '_blank'
+                                                            )
+                                                        }
+                                                    >
+                                                        Download
+                                                    </button>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </>
-                            )
+                            );
                         })
                     }
 
                     {/* {Role === 'Agency' ?
                         props.data.isAgencyVerified && */}
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="developerCard" onClick={() => routerHistory.push("/add-developer")}>
-                            <div className="add-developer_parent">
-                                {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}
-                                <img src={developerImage} alt="developerImage" />
-                                <h6 className="addDeveloperText">Add Developer</h6>
-                            </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                        className="developerCard"
+                        onClick={() => routerHistory.push('/add-developer')}
+                    >
+                        <div className="add-developer_parent">
+                            {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}
+                            <img src={developerImage} alt="developerImage" />
+                            <h6 className="addDeveloperText">Add Developer</h6>
                         </div>
-                        {/* : null */}
+                    </div>
+                    {/* : null */}
                     {/* } */}
                 </div>
             </div>
 
             <Modal
                 open={openWithdrawModal}
-                onClose={() => { setOpenWithdrawModal(false) }}
+                onClose={() => {
+                    setOpenWithdrawModal(false);
+                }}
                 center
                 classNames={{
-                    overlay: "QuotationModalOverlay",
-                    modal: "QuotationModal QuotationModal_DeveloperList",
+                    overlay: 'QuotationModalOverlay',
+                    modal: 'QuotationModal QuotationModal_DeveloperList'
                 }}
             >
                 <div className="rejection_modal_clientCommentBox">
                     <div className="reject-reason_label reject_or_not-label">
-                        <h2 style={{fontSize: '1rem', marginTop: '0rem'}}>Do you want to delete developer from Agency's Profile !!</h2>
+                        <h2 style={{ fontSize: '1rem', marginTop: '0rem' }}>
+                            Do you want to delete developer from Agency's
+                            Profile !!
+                        </h2>
                     </div>
                 </div>
-                <div className='reject_or_not'>
+                <div className="reject_or_not">
                     <div onClick={deleteDevelopers}>
                         <p>Yes</p>
                     </div>
-                    <div onClick={() => { setOpenWithdrawModal(false) }}>
+                    <div
+                        onClick={() => {
+                            setOpenWithdrawModal(false);
+                        }}
+                    >
                         <p>No</p>
                     </div>
                 </div>
@@ -317,4 +420,4 @@ function DeveloperList(props) {
     );
 }
 
-export default DeveloperList
+export default DeveloperList;
