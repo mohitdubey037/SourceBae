@@ -52,6 +52,7 @@
 .hire_card_ul li::marker {
     color: #000000;
 }
+
 @media screen and (max-width: 580px) {
     .hire_cards_wrap {
         flex-direction: column;

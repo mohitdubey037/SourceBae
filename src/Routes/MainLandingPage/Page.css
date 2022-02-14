@@ -34,3 +34,7 @@
     padding: 2rem 0;
     flex-direction: column;
 }
+.L_Link {
+    text-decoration: none;
+    color: unset;
+}

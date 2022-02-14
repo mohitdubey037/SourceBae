@@ -5,9 +5,9 @@ import selectArrow from '../../../../assets/images/LandingPage/SelectArrow.svg';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 export default function LNavbar() {
-    const onClickFun = () => {
-        window.location.href = 'https://app.sourcebae.com/register/agency';
-    };
+    // const onClickFun = () => {
+    //     window.location.href = 'https://app.sourcebae.com/register/agency';
+    // };
     const [popupShow, setPopupShow] = useState(false);
     function handleMenuToggle() {
         console.log('Hi');
@@ -51,37 +51,37 @@ export default function LNavbar() {
                         className={`${styles.service_option_wrap}`}
                         id="pop-up"
                     >
-                        <div
-                            className={`${styles.option_1}`}
-                            onClick={onClickFun}
-                        >
-                            Hire Agency
+                        <div className={`${styles.option_1}`}>
+                            <Link to="/register/agency" className="L_Link">
+                                {' '}
+                                Hire Agency
+                            </Link>
                         </div>
-                        <div
-                            className={`${styles.option_1}`}
-                            onClick={onClickFun}
-                        >
-                            Hire Developer
+                        <div className={`${styles.option_1}`}>
+                            <Link to="/register/agency" className="L_Link">
+                                {' '}
+                                Hire Developer
+                            </Link>
                         </div>
                     </div>
                 </div>
                 <div className={`${styles.nav_login} `}>
                     <button
                         className={`${styles.L_login} ${styles.nav_Lbutton}`}
-                        onClick={() => {
-                            window.location.href =
-                                'https://app.sourcebae.com/login/agency';
-                        }}
                     >
-                        Log In
-                    </button>
+                        <Link to="/login/agency" className="L_Link">
+                            Log In
+                        </Link>
+                    </button>{' '}
                 </div>
                 <div className={`${styles.nav_signup} `}>
                     <button
                         className={`${styles.L_signup} ${styles.nav_Lbutton}`}
-                        onClick={onClickFun}
                     >
-                        Sign Up
+                        <Link to="/register/agency" className="L_Link">
+                            {' '}
+                            Sign Up
+                        </Link>
                     </button>
                 </div>
                 <div

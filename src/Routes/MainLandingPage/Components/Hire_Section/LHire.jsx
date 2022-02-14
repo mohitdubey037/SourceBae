@@ -3,10 +3,9 @@ import styles from './LHire.module.css';
 import hireCard1 from '../../../../assets/images/LandingPage/card-1.png';
 import hireCard2 from '../../../../assets/images/LandingPage/card-2.png';
 import LButton from '../Button/LButton';
+import { Link } from 'react-router-dom';
+
 export default function LHire() {
-    const onClickEvent = () => {
-        window.location.href = 'https://app.sourcebae.com/register/agency';
-    };
     const hireCards = [
         {
             img: hireCard1,
@@ -81,11 +80,13 @@ export default function LHire() {
                                 </ul>
                             </div>
                             <div className={`${styles.hire_card_btn} `}>
-                                <LButton
-                                    name={card.btn}
-                                    className={`${styles.hire_card_btn}`}
-                                    onClickEvent={onClickEvent}
-                                />
+                                <Link to="/register/agency" className="L_Link">
+                                    {' '}
+                                    <LButton
+                                        name={card.btn}
+                                        className={`${styles.hire_card_btn}`}
+                                    />
+                                </Link>
                             </div>
                         </div>
                     );

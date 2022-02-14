@@ -2,11 +2,8 @@ import React from 'react';
 import LButton from '../Button/LButton';
 import styles from './L_CTA.module.css';
 import hireBtnImg from '../../../../assets/images/LandingPage/hirebtn.svg';
-
+import { Link } from 'react-router-dom';
 export default function L_CTA() {
-    const onClickEvent = () => {
-        window.location.href = 'https://app.sourcebae.com/register/agency';
-    };
     return (
         <>
             <div className={`${styles.CTA_heading}`}>
@@ -16,11 +13,9 @@ export default function L_CTA() {
                 </h2>
             </div>
             <div className={`${styles.CTA_btn}`}>
-                <LButton
-                    name="Get Started"
-                    img={hireBtnImg}
-                    onClickEvent={onClickEvent}
-                />
+                <Link to="/register/agency" className="L_Link">
+                    <LButton name="Get Started" img={hireBtnImg} />
+                </Link>
             </div>
         </>
     );
