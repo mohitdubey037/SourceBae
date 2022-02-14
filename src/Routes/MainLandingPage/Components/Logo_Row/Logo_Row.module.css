@@ -35,3 +35,8 @@
         margin: 1rem;
     }
 }
+@media screen and (max-width: 420px) {
+    .logo_icon {
+        width: 60%;
+    }
+}

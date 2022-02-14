@@ -37,7 +37,7 @@ export default function Hero_section() {
                     is a Marketplace that connects you with{' '}
                     <span className={'span_pink'}>IT Agencies </span> and{' '}
                     <span className={'span_pink'}>
-                        Dedicated Remote Developer
+                        Dedicated Remote Developer{' '}
                     </span>
                     from around the world. We make it easy for you to find an
                     agency to build MVP at a fixed cost or hire Developers on a

@@ -61,5 +61,8 @@
     .hire_main_card {
         width: 80%;
         margin: 1rem 0;
+        padding: 1rem;
     }
+}
+@media screen and (max-width: 380px) {
 }

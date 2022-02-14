@@ -46,3 +46,15 @@
 .about_heading_bg span {
     color: #ffffff;
 }
+@media screen and (max-width: 580px) {
+    .about_banner_div {
+        flex-direction: column;
+    }
+    .about_banner_left_div,
+    .about_banner_right_div {
+        width: 100%;
+    }
+    .about_banner_right_img img {
+        display: none;
+    }
+}

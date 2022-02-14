@@ -36,3 +36,8 @@
     background-repeat: no-repeat;
     background-position: right;
 }
+@media screen and (max-width: 580px) {
+    .about_career_wrap {
+        flex-direction: column;
+    }
+}

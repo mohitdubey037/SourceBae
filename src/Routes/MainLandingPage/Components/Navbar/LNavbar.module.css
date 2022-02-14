@@ -93,23 +93,57 @@
     top: 4rem;
     right: 22rem;
 }
+.navbar_responsive_icon {
+    display: none;
+}
 .option_1 {
     display: flex;
     padding: 0.5rem;
     cursor: pointer;
 }
+.responsive_L_navbar_wrap {
+    display: none;
+    width: 50%;
+    position: absolute;
+    background-color: #ffffff;
+    top: 73px;
+    left: 0;
+    box-shadow: 0 10px 30px 0 rgb(255 165 0 / 0%);
+}
+.responsive_L_navbar_ul {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Cabin';
+    font-weight: 700;
+}
+.responsive_L_navbar_ul li {
+    list-style: none;
+    padding: 0.5rem 0;
+}
 @media screen and (max-width: 580px) {
+    .navbar_wrap {
+        padding: 0;
+    }
     .nav_Lbutton {
         padding: 5px;
     }
     .nav_logo {
-        width: 28%;
+        width: 30%;
     }
     .nav_login,
     .nav_signup {
-        width: 25%;
+        width: 20%;
     }
     .nav_menu_wrap {
         display: none;
+    }
+    .navbar_responsive_icon {
+        position: relative;
+        right: 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 20%;
+        cursor: pointer;
     }
 }

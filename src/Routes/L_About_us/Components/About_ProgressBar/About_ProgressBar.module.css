@@ -25,3 +25,23 @@
     color: #ffffff;
     text-align: left;
 }
+@media screen and (max-width: 580px) {
+    .about_progress_heading {
+        padding: 0 1rem;
+    }
+    .about_progress_box {
+        flex-direction: column;
+        background-color: #4facfe;
+        background-image: none;
+        align-items: center;
+    }
+    .about_common_progress_box {
+        border-bottom: 5px solid #ffffff;
+        border-left: navajowhite;
+        justify-content: center;
+        align-items: center;
+    }
+    .about_common_progress_box p {
+        text-align: center;
+    }
+}

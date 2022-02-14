@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styles from './About_ProgressBar.module.css';
 
 export default function About_ProgressBar() {
@@ -17,6 +18,10 @@ export default function About_ProgressBar() {
             title: 'Project completed successfully'
         }
     ];
+
+    useEffect(() => {
+        console.log('hi');
+    });
     return (
         <>
             <div className={`${styles.about_progress_heading}`}>
@@ -31,6 +36,7 @@ export default function About_ProgressBar() {
                         className={`${styles.about_common_progress_box}`}
                         style={{ marginTop: `${index * 3}rem` }}
                     >
+                        {}
                         <h2 className="L_h2 span_blue">{section?.value}</h2>
                         <p className="L_para">{section?.title}</p>
                     </div>
