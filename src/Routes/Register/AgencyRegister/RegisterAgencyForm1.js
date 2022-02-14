@@ -21,7 +21,7 @@ function RegisterAgencyForm1(props) {
         let { name, value } = event.target;
 
         value = value.trim();
-        if (name === 'userEmail') {
+        if (name === 'userEmail' || name === 'password') {
             value = value.replaceAll(' ', '');
         } else {
             value = value.replace(/[^\w\s]/gi, '').trim();

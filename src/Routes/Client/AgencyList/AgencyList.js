@@ -205,6 +205,7 @@ function AgencyList(props) {
                                         }
                                         value={searchText}
                                         placeholder="Search Agency"
+                                        className="search_agencyList"
                                     />
                                 </div>
                                 {agencyList?.length > 0 ? (

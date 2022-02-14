@@ -26,6 +26,8 @@ function ClientOneHireDeveloper(props) {
     const [loading, setLoading] = useState(false);
     const [agencyId, setAgencyId] = useState(null);
     const [originalAgenciesMatched, setOriginalAgenciesMatched] = useState([]);
+    const [developersShow, setShowDevelopers] = useState(false);
+    const [currentDevList, setCurrentDevList] = useState([]);
 
     const [open, setOpen] = useState(false);
 
@@ -68,11 +70,31 @@ function ClientOneHireDeveloper(props) {
             });
     };
 
+    function showDevelopers() {
+        setShowDevelopers(true);
+    }
+
     useEffect(() => {
         getOneDeveloper();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    function getMatchedDevelopers(agency_id) {
+        setLoading(true);
+        showDevelopers();
+        instance
+            .get(
+                `/api/${Role}/hire-developers/get/${hireDeveloperId}/${agency_id}`
+            )
+            .then((res) => {
+                setLoading(false);
+                setCurrentDevList(res);
+            })
+            .catch((err) => {
+                setLoading(false);
+                setShowDevelopers(false);
+            });
+    }
     const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
@@ -130,6 +152,7 @@ function ClientOneHireDeveloper(props) {
                                     }
                                     value={searchText}
                                     placeholder="Search Agency"
+                                    className="searchBox"
                                 />
                                 {Object.keys(singleHiredDeveloper).length !==
                                 0 ? (
@@ -145,7 +168,16 @@ function ClientOneHireDeveloper(props) {
                                                     <div className="moreAgencyList new_design_clientOneHireDeveloper">
                                                         <div className="moreAgencyInfo">
                                                             <div className="agencyDesc_clientOneHireDeveloper">
-                                                                <div className="about_the_company">
+                                                                <div
+                                                                    className="about_the_company"
+                                                                    onClick={() =>
+                                                                        getMatchedDevelopers(
+                                                                            agency
+                                                                                ?.agencyId
+                                                                                ?._id
+                                                                        )
+                                                                    }
+                                                                >
                                                                     <h3 className="name-title">
                                                                         {
                                                                             agency
@@ -153,6 +185,7 @@ function ClientOneHireDeveloper(props) {
                                                                                 ?.agencyName
                                                                         }
                                                                     </h3>
+                                                                    <span className="developers-count">{`${agency?.matchedDeveloperCount} Developers Available`}</span>
                                                                 </div>
                                                                 <div className="experience_and_interest">
                                                                     <div className="email_clientOneHireDeveloper description_parent">
@@ -314,6 +347,91 @@ function ClientOneHireDeveloper(props) {
                                 >
                                     <p>No</p>
                                 </div>
+                            </div>
+                        </div>
+                    </Modal>
+
+                    <Modal
+                        open={developersShow}
+                        onClose={() => setShowDevelopers(false)}
+                        classNames={{
+                            overlay: 'customOverlayAgencyProduct',
+                            modal: 'customModalDeveloperList'
+                        }}
+                        style={{ width: '100%', maxWidth: 'unset' }}
+                        center
+                        closeOnOverlayClick={true}
+                        showCloseIcon={false}
+                    >
+                        <div className="developer-list-modal">
+                            <span className="modal-heading">
+                                Available Developer
+                            </span>
+                            <div className="developer-card-holder">
+                                {!loading
+                                    ? currentDevList?.map((item, index) => (
+                                          <div className="developer-card">
+                                              <span className="developer-name">
+                                                  {`Developer ${index + 1}`}
+                                              </span>
+                                              <div className="row-holder">
+                                                  <div className="row-label">
+                                                      Designation
+                                                  </div>
+                                                  <div className="row-value">
+                                                      {
+                                                          item?.developerDesignation
+                                                      }
+                                                  </div>
+                                              </div>
+                                              <div className="row-holder">
+                                                  <div className="row-label">
+                                                      Year Of Experience
+                                                  </div>
+                                                  <div className="row-value">
+                                                      {
+                                                          item?.developerExperience
+                                                      }{' '}
+                                                      {item?.developerExperience >
+                                                      1
+                                                          ? 'Years'
+                                                          : 'Year'}
+                                                  </div>
+                                              </div>
+                                              <div className="row-holder">
+                                                  <div className="row-label">
+                                                      Skills
+                                                  </div>
+                                                  <div className="row-value">
+                                                      {item
+                                                          ?.developerTechnologies
+                                                          ?.length > 0}{' '}
+                                                      <div className="skill-pill">
+                                                          <span className="pill">
+                                                              {
+                                                                  item
+                                                                      ?.developerTechnologies?.[0]
+                                                                      ?.technologyName
+                                                              }
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div className="row-holder">
+                                                  <div className="row-label">
+                                                      Price
+                                                  </div>
+                                                  <div className="row-value">
+                                                      {
+                                                          item?.developerPriceRange
+                                                      }
+                                                      $ Per Hour
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      ))
+                                    : 'Loading...'}
                             </div>
                         </div>
                     </Modal>

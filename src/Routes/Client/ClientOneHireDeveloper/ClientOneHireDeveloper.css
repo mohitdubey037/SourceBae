@@ -1,265 +1,389 @@
 .main_parent_clientOneHireDeveloper {
-  /* background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%); */
-  overflow: hidden;
-  position: relative;
-  height: 100vh;
+    /* background-image: linear-gradient(284deg, rgba(3, 118, 186, 1) 0%, rgba(1, 48, 77, 1) 100%); */
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
 }
 
 .new_design_clientOneHireDeveloper {
-  border-bottom: none;
-  cursor: pointer;
-  flex-direction: column;
-  width: 90%;
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-  padding: 1rem;
-  background-color: #ffffff;
-  border-radius: 8px;
-  margin: 0rem 1rem 2rem 1rem;
-  overflow: hidden;
-  min-height: 13rem;
-  position: relative;
+    border-bottom: none;
+    flex-direction: column;
+    width: 90%;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 0rem 1rem 2rem 1rem;
+    overflow: hidden;
+    min-height: 13rem;
+    position: relative;
+}
+
+.searchBox {
+    border-radius: 26px;
+    border: 1px solid #404070;
+    padding: 0.4rem 0.4rem 0.4rem 0.5rem;
+    width: 14rem;
+}
+
+.developers-count {
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+
+    color: #f17540;
 }
 
 .agencyDesc_clientOneHireDeveloper {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .about_the_company {
-  width: 45%;
+    width: 45%;
+    cursor: pointer;
+}
+
+.about_the_company:hover {
+    color: #f17540;
 }
 
 .experience_and_interest {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 35%;
 }
 
 .shortlist_and_interest_parent {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  margin-top: 1rem;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 1rem;
 }
 
 .upImage1_clientOneHireDeveloper {
-  position: absolute;
-  top: -19rem;
-  right: -9rem;
-  z-index: 1;
+    position: absolute;
+    top: -19rem;
+    right: -9rem;
+    z-index: 1;
 }
 
 .upImage2_clientOneHireDeveloper {
-  position: absolute;
-  top: -68.5rem;
-  left: -21rem;
-  z-index: 1;
+    position: absolute;
+    top: -68.5rem;
+    left: -21rem;
+    z-index: 1;
 }
 
 .downImage3_clientOneHireDeveloper {
-  position: absolute;
-  bottom: -9rem;
-  left: -7rem;
-  z-index: 3;
+    position: absolute;
+    bottom: -9rem;
+    left: -7rem;
+    z-index: 3;
 }
 
 .downImage4_clientOneHireDeveloper {
-  position: absolute;
-  bottom: -41rem;
-  left: -20rem;
+    position: absolute;
+    bottom: -41rem;
+    left: -20rem;
 }
 
 .moreAgency_parent {
-  padding: 0rem 1rem 1rem 1rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: auto;
-  width: 84%;
-  overflow: auto;
-  /* height: 33rem; */
-  height: 87%;
-  margin-top: 1rem;
+    padding: 0rem 1rem 1rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 84%;
+    overflow: auto;
+    /* height: 33rem; */
+    height: 87%;
+    margin-top: 1rem;
 }
 
 .moreAgencyHeading {
-  padding-bottom: 1%;
-  border-bottom: 1px solid #e0e0e0;
-  padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: 1px solid #e0e0e0;
+    padding-top: 1%;
 }
 
 .moreAgencyHeading h3 {
-  font-family: 'Segoe UI';
-  font-size: 1.2rem;
-  text-align: center;
+    font-family: 'Segoe UI';
+    font-size: 1.2rem;
+    text-align: center;
 }
 
-.name-title, .name-Font {
-  font-family: 'Segoe UI Semibold', sans-serif;
-  text-transform: capitalize;
-  margin: 0;
+.name-title,
+.name-Font {
+    font-family: 'Segoe UI Semibold', sans-serif;
+    text-transform: capitalize;
+    margin: 0;
 }
 
 .description_clientOne {
-  font-family: 'Segoe UI Semibold', sans-serif;
+    font-family: 'Segoe UI Semibold', sans-serif;
 }
 
 .name-Font {
-  transform: translateX(0.5rem);
+    transform: translateX(0.5rem);
 }
 
 .innerMoreAgencies_clientOneHireDeveloper .moreAgencyHeading {
-  padding-bottom: 1%;
-  margin-top: 3%;
-  padding-left: 20px;
+    padding-bottom: 1%;
+    margin-top: 3%;
+    padding-left: 20px;
 }
 
 .phone_clientOneHireDeveloper {
-  margin-top: 0rem;
-  display: flex;
-  margin-left: 1rem;
+    margin-top: 0rem;
+    display: flex;
+    margin-left: 1rem;
 }
 
 .email_clientOneHireDeveloper.description_parent {
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  background: rgba(64, 123, 255, 0.09);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    background: rgba(64, 123, 255, 0.09);
 }
 
 .email_clientOneHireDeveloper {
-  display: flex;
-  align-items: baseline;
+    display: flex;
+    align-items: baseline;
 }
 
-.description_parent>p {
-  color: #407BFF;
-
+.description_parent > p {
+    color: #407bff;
 }
 
-.phone_clientOneHireDeveloper img, .email_clientOneHireDeveloper img {
-  width: 20px;
+.phone_clientOneHireDeveloper img,
+.email_clientOneHireDeveloper img {
+    width: 20px;
 }
 
 .no_matched_agency {
-  padding: 1rem;
-  color: white;
-  width: 100%;
+    padding: 1rem;
+    color: white;
+    width: 100%;
 }
 
 .no_matched_agency h2 {
-  text-align: center;
+    text-align: center;
 }
 
 .moreAgencyLogo {
-  background-image: linear-gradient(to right, #01304D, #015F9A);
-  /* padding: 12px; */
-  padding: 0.7rem 3rem;
-  display: flex;
-  justify-content: center;
-  color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 13px;
-  border-radius: 8px;
-  outline: none;
-  border: none;
+    background-image: linear-gradient(to right, #01304d, #015f9a);
+    /* padding: 12px; */
+    padding: 0.7rem 3rem;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
 }
 
-.checkResource.moreAgencyLogo:hover, .checkResource.moreAgencyLogo:focus, .checkResource.moreAgencyLogo:active {
-  outline: none;
-  border: none;
+.checkResource.moreAgencyLogo:hover,
+.checkResource.moreAgencyLogo:focus,
+.checkResource.moreAgencyLogo:active {
+    outline: none;
+    border: none;
 }
 
 .moreAgencyLogo.show-details:hover {
-  color: rgb(17, 166, 192);
-  background-color: rgb(212, 191, 212);
+    color: rgb(17, 166, 192);
+    background-color: rgb(212, 191, 212);
 }
 
 .new_design_clientOneHireDeveloper .show-details {
-  margin-left: 30px;
+    margin-left: 30px;
 }
 
 .respondCards_clientOneHireDeveloper {
-  padding-top: 5rem;
-  position: relative;
-  z-index: 1;
-  height: 100%
+    padding-top: 5rem;
+    position: relative;
+    z-index: 1;
+    height: 100%;
 }
 
 .about_the_company_clientOne {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
 }
 
-
 .description_sharedDeveloper {
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 13px;
-  text-transform: capitalize;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    text-transform: capitalize;
 }
 
 .moreAgencyList .moreAgencyInfo .phone_clientOneHireDeveloper p {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .connect_or_not {
-  text-align: center;
-  font-size: 20px;
-  font-style: normal;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
 }
 
 .customModalClientOneHireDeveloper {
-  background: #fff;
-  max-width: 330px;
-  width: 100%;
-  border-radius: 1rem;
-  height: 8rem;
+    background: #fff;
+    max-width: 330px;
+    width: 100%;
+    border-radius: 1rem;
+    height: 8rem;
+}
+
+.customModalDeveloperList {
+    background: #fff;
+    width: 100%;
+    border-radius: 1rem;
+    height: 25rem;
+    max-width: 60rem;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+}
+
+.customModalDeveloperList::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-heading {
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+}
+
+.developer-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: #f9f9f9;
+    width: 100%;
+    height: 100%;
+    min-height: 197px;
+    max-width: 279px;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    overflow: auto;
+}
+
+.developer-name {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.4000000059604645px;
+}
+
+.row-holder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill-pill {
+    display: flex;
+    align-items: center;
+}
+
+.pill {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4px;
+    color: #ffffff;
+    width: fit-content;
+    background: #5bc2ff;
+    border-radius: 6px;
+}
+.row-label {
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: left;
+    width: 140px;
+    display: flex;
+    align-items: center;
+}
+
+.developer-card-holder {
+    margin: 1.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.row-value {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #8d8686;
+    flex: 1;
 }
 
 .agency_pending {
-  color: #ac79db;
+    color: #ac79db;
 }
 
 .agency_accepted {
-  color: green;
+    color: green;
 }
 
 .agency_rejected_interested {
-  font-size: 0.8rem;
-  color: grey;
+    font-size: 0.8rem;
+    color: grey;
 }
 
 .interested_or_not {
-  width: 68%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: 0 auto;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
 }
 
 .interested_or_not div {
-  padding: 6px 20px;
-  outline: none;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  border-radius: 31px;
-  font-family: 'Segoe UI';
-  font-size: 13px;
-  text-align: center;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    padding: 6px 20px;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border-radius: 31px;
+    font-family: 'Segoe UI';
+    font-size: 13px;
+    text-align: center;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .connect_or_not p {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 .interested_or_not div:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
