@@ -5,7 +5,7 @@ import RightWhitArrow from '../../../../assets/images/LandingPage/RightWhitArrow
 
 export default function Hero_section() {
     const onClickEvent = () => {
-        window.location.href = 'https://app.sourcebae.com/register/agency';
+        window.location.href = '/register/agency';
     };
     return (
         <div className={`${styles.hero_section_wrap}`}>

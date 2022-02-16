@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Mainhomepage from './Routes/LandingPage/Mainhomepage';
 import Page from './Routes/L_About_us/Components/Page';
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
@@ -53,12 +52,6 @@ import firebase from 'firebase/app';
 import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 
 const App = (props) => {
-    const [show, setShow] = useState(false);
-    const [notification, setNotification] = useState({
-        title: '',
-        body: ''
-    });
-
     useEffect(() => {
         if (
             firebase.messaging.isSupported() &&
@@ -66,16 +59,10 @@ const App = (props) => {
         ) {
             const msg = firebaseConfig.messaging();
             msg.onMessage((message) => {
-                setShow(true);
-                setNotification({
-                    title: message?.notification?.title,
-                    body: message?.notification?.body
-                });
                 store.dispatch({
                     type: 'NOTIFICATION',
                     notification: 1
                 });
-                setShow(false);
             });
         }
     }, []);

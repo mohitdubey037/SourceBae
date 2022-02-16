@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './LNavbar.module.css';
 import LNavLogo from '../../../../assets/images/Logo/Sourcebae-14.svg';
 import selectArrow from '../../../../assets/images/LandingPage/SelectArrow.svg';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 export default function LNavbar() {
-    // const onClickFun = () => {
-    //     window.location.href = 'https://app.sourcebae.com/register/agency';
-    // };
-    const [popupShow, setPopupShow] = useState(false);
     function handleMenuToggle() {
         console.log('Hi');
         let demo = document.getElementById('demo');
@@ -22,10 +18,7 @@ export default function LNavbar() {
                 <div className={`${styles.nav_logo} `}>
                     <img src={LNavLogo} alt="" />
                 </div>
-                <div
-                    className={`${styles.nav_menu_wrap}`}
-                    onClick={() => setPopupShow(false)}
-                >
+                <div className={`${styles.nav_menu_wrap}`}>
                     <div className={`${styles.nav_menu}`}>
                         <Link to="/">Home</Link>
                     </div>
@@ -52,15 +45,21 @@ export default function LNavbar() {
                         id="pop-up"
                     >
                         <div className={`${styles.option_1}`}>
-                            <Link to="/register/agency" className="L_Link">
+                            <Link to="/register/client" className="L_Link">
                                 {' '}
                                 Hire Agency
                             </Link>
                         </div>
                         <div className={`${styles.option_1}`}>
-                            <Link to="/register/agency" className="L_Link">
+                            <Link to="/register/client" className="L_Link">
                                 {' '}
                                 Hire Developer
+                            </Link>
+                        </div>
+                        <div className={`${styles.option_1}`}>
+                            <Link to="/register/agency" className="L_Link">
+                                {' '}
+                                Onboard Developer
                             </Link>
                         </div>
                     </div>
