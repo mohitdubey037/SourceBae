@@ -17,7 +17,7 @@ const Mainhomepage = (props) => {
         if (auth !== null && auth !== undefined) {
             props.history.replace(`/login/${role}`);
         } else {
-            window.location.href = 'https://sourcebae.com/';
+            window.location.href = '/';
         }
     }, []);
 

@@ -132,7 +132,7 @@ const Login = (props) => {
     };
 
     const handleImageClick = () => {
-        window.location.href = 'https://sourcebae.com/';
+        window.location.href = '/';
     };
 
     const logIn = async (event) => {

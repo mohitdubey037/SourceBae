@@ -251,11 +251,10 @@ const Register = (props) => {
 
     const handleChangeToggle = (name) => {
         setRoleState(name);
-        // role === AGENCY ? <RegisterAgencyForm1 /> : <RegisterClientForm1 />;
     };
 
     const handleImageClick = () => {
-        window.location.href = 'https://sourcebae.com/';
+        window.location.href = '/';
     };
 
     //API call methods

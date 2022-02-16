@@ -3,7 +3,6 @@ import instance from '../../../Constants/axiosConstants';
 import { withRouter } from 'react-router-dom';
 import { Popover } from 'react-tiny-popover';
 import './Navbar.css';
-import { Avatar } from '@material-ui/core';
 import cookie from 'react-cookies';
 import { CLIENT, AGENCY } from '../../../shared/constants';
 
@@ -28,7 +27,7 @@ function Navbar(props) {
     const logoutHandler = () => {
         localStorage.clear();
         cookie.remove('Authorization');
-        window.location.href = 'https://sourcebae.com/';
+        window.location.href = '/';
     };
 
     useEffect(() => {

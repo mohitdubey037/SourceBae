@@ -7,7 +7,7 @@ import developersIcon from '../../../assets/images/Newestdashboard/SideBar/devel
 import logoutIcon from '../../../assets/images/Newestdashboard/SideBar/logout.svg';
 import { withRouter } from 'react-router';
 import cookie from 'react-cookies';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import NotificationPanel from '../../Notification/NotificationPanel';
 import { useDispatch } from 'react-redux';
@@ -60,8 +60,7 @@ function Sidebar(props) {
     const handleLogout = () => {
         cookie.remove('Authorization');
         localStorage.clear();
-        window.location.href = 'https://sourcebae.com/';
-        // window.location.href('/');
+        window.location.href = '/';
     };
 
     const [notificationCount, setNotificationCount] = useState(0);

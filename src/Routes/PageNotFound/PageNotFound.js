@@ -1,5 +1,5 @@
 import { Container, Typography, Button } from '@material-ui/core';
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 
 const useStyles = makeStyles({
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
         margin: '10px'
     },
     label: {
-        textTransform: 'capitalize',
+        textTransform: 'capitalize'
     },
     container: {
         display: 'flex',
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     paragraphStyling: {
         textAlign: 'center'
     }
-})
+});
 
 export default function PageNotFound(props) {
     const Role = localStorage.getItem('role');
@@ -40,30 +40,51 @@ export default function PageNotFound(props) {
         // localStorage.removeItem('role');
         if (Role === 'Client') {
             props.history.replace('/clientNewestDashboard');
-        }
-        else if (Role === 'Agency') {
+        } else if (Role === 'Agency') {
             props.history.replace('/agencyNewestDashboard');
+        } else {
+            window.location.href = '/';
         }
-        else {
-            // props.history.replace('/');
-            window.location.href = 'https://sourcebae.com/';
-        }
-
-    }
+    };
 
     return (
         <Container className={classes.container}>
-            <Typography style={{ fontSize: '135px', fontWeight: '900', margin: '10px' }} variant='h1'>Oops!</Typography>
-            <Typography style={{ fontWeight: 'bold', margin: '10px' }} variant='h6'>404 - PAGE NOT FOUND</Typography>
+            <Typography
+                style={{ fontSize: '135px', fontWeight: '900', margin: '10px' }}
+                variant="h1"
+            >
+                Oops!
+            </Typography>
+            <Typography
+                style={{ fontWeight: 'bold', margin: '10px' }}
+                variant="h6"
+            >
+                404 - PAGE NOT FOUND
+            </Typography>
             <div className={classes.paragraphStyling}>
-                <Typography style={{ margin: '10px', padding: '0 20%', width: '80ch', color: 'black' }} variant='body1'>The page you are looking for might have been removed, had its name changed or is temporarily unavailable</Typography>
+                <Typography
+                    style={{
+                        margin: '10px',
+                        padding: '0 20%',
+                        width: '80ch',
+                        color: 'black'
+                    }}
+                    variant="body1"
+                >
+                    The page you are looking for might have been removed, had
+                    its name changed or is temporarily unavailable
+                </Typography>
             </div>
-            <Button classes={{
-                root: classes.root, // class name, e.g. `classes-nesting-root-x`
-                label: classes.label, // class name, e.g. `classes-nesting-label-x`
-            }}
+            <Button
+                classes={{
+                    root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                    label: classes.label // class name, e.g. `classes-nesting-label-x`
+                }}
                 onClick={homePage}
-                variant='contained'>GO TO HOMEPAGE</Button>
+                variant="contained"
+            >
+                GO TO HOMEPAGE
+            </Button>
         </Container>
-    )
+    );
 }
