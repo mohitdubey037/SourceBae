@@ -534,6 +534,7 @@ const Register = (props) => {
                                     <form
                                         autoComplete="off"
                                         className="client__form form__2"
+                                        onSubmit={(e) => e.preventDefault()}
                                     >
                                         {role === AGENCY && (
                                             <RegisterAgencyForm2

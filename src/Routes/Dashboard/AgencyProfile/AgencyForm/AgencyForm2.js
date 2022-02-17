@@ -317,7 +317,7 @@ function AgencyForm2(props) {
             ) : (
                 <div className="agency-form_parent">
                     <Navbar />
-                    <Back name="Agency form 2" />
+                    <Back name="Tell Us More" />
                     <FormPhases steps={steps} />
                     <div className="mainTechStackFormParent">
                         {/* <div className="mainTechStackForm"> */}
@@ -448,7 +448,7 @@ function AgencyForm2(props) {
                                                 <FormControlLabel
                                                     value="5000"
                                                     control={<Radio />}
-                                                    label="50000$-7000$"
+                                                    label="5000$-7000$"
                                                     style={{ color: 'black' }}
                                                 />
                                                 <FormControlLabel

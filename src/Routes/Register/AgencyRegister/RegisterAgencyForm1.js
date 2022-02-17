@@ -66,6 +66,9 @@ function RegisterAgencyForm1(props) {
                         placeholder="First Name"
                         onChange={(e) => setForm(e)}
                         value={props.signupForm.firstName}
+                        onKeyDown={(e) => {
+                            e.key === 'Enter' && e.preventDefault();
+                        }}
                     />
                     <div>
                         {props.errors.firstNameError && (
@@ -87,6 +90,9 @@ function RegisterAgencyForm1(props) {
                         placeholder="Last Name"
                         onChange={(e) => setForm(e)}
                         value={props.signupForm.lastName}
+                        onKeyDown={(e) => {
+                            e.key === 'Enter' && e.preventDefault();
+                        }}
                     />
                     {props.errors.lastNameError && (
                         <p className="error_productForm">
@@ -109,6 +115,9 @@ function RegisterAgencyForm1(props) {
                             placeholder="Email"
                             onChange={(e) => setForm(e)}
                             value={props.signupForm.userEmail}
+                            onKeyDown={(e) => {
+                                e.key === 'Enter' && e.preventDefault();
+                            }}
                         />
                     </form>
                     {props.errors.emailError && (
@@ -129,6 +138,9 @@ function RegisterAgencyForm1(props) {
                             placeholder="Username"
                             onChange={(e) => setForm(e)}
                             value={props.signupForm.userName}
+                            onKeyDown={(e) => {
+                                e.key === 'Enter' && e.preventDefault();
+                            }}
                         />
                     </form>
                     {/* <input type="text" name="username" placeholder="Username" style={{ display: 'none' }} /> */}
@@ -147,12 +159,15 @@ function RegisterAgencyForm1(props) {
                         <span className="requiredStar">*</span>
                     </label>
                     <input
-                        type="tel"
+                        type="text"
                         name="userPhone"
                         maxLength="10"
                         placeholder="Phone No"
                         value={props.signupForm.userPhone}
                         onChange={(e) => setForm(e)}
+                        onKeyDown={(e) => {
+                            e.key === 'Enter' && e.preventDefault();
+                        }}
                     />
                     {props.errors.phoneError && (
                         <p className="error_productForm">
@@ -181,6 +196,9 @@ function RegisterAgencyForm1(props) {
                                 value={props.signupForm.password}
                                 onChange={(e) => setForm(e)}
                                 style={{ paddingRight: '25px' }}
+                                onKeyDown={(e) => {
+                                    e.key === 'Enter' && e.preventDefault();
+                                }}
                             />
                             {!showPassword ? (
                                 <VisibilityTwoToneIcon

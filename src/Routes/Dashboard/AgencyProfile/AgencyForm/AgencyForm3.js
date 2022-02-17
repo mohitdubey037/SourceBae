@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, createRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import Back from '../../../../Components/Back/Back';
 import FormPhases from './FormPhases';
@@ -10,7 +10,6 @@ import { toast } from 'react-toastify';
 //axios instance
 import instance from '../../../../Constants/axiosConstants';
 import Spinner from '../../../../Components/Spinner/Spinner';
-import { useDropzone } from 'react-dropzone';
 import { useDispatch } from 'react-redux';
 import Dropzone from 'react-dropzone';
 
@@ -59,6 +58,7 @@ function AgencyForm3(props) {
 
     useEffect(() => {
         getStepsCompleted();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleDocumentPicker = (category, acceptedFiles) => {
@@ -95,7 +95,14 @@ function AgencyForm3(props) {
                 registrationCertificate.document,
                 registrationCertificate.name
             );
-            formData.append('files', brochureDoc.document, brochureDoc.name);
+
+            if (brochureDoc?.document) {
+                formData.append(
+                    'files',
+                    brochureDoc.document,
+                    brochureDoc.name
+                );
+            }
             formData.append('files', panCardDoc.document, panCardDoc.name);
             instance
                 .post(`api/${Role}/media/create`, formData)
@@ -105,15 +112,22 @@ function AgencyForm3(props) {
                         documentLink: response[0].mediaURL
                     });
 
-                    setBrochureDoc({
-                        ...brochureDoc,
-                        documentLink: response[1].mediaURL
-                    });
+                    if (brochureDoc?.document) {
+                        setBrochureDoc({
+                            ...brochureDoc,
+                            documentLink: response[1]?.mediaURL
+                        });
 
-                    setPanCardDoc({
-                        ...panCardDoc,
-                        documentLink: response[2].mediaURL
-                    });
+                        setPanCardDoc({
+                            ...panCardDoc,
+                            documentLink: response[2]?.mediaURL
+                        });
+                    } else {
+                        setPanCardDoc({
+                            ...panCardDoc,
+                            documentLink: response[1]?.mediaURL
+                        });
+                    }
                 })
                 .catch((err) => {
                     setLoading(false);
@@ -134,7 +148,9 @@ function AgencyForm3(props) {
         setLoading(true);
         const apiData = {
             stepsCompleted: 4,
-            agencyDocuments: [registrationCertificate, brochureDoc, panCardDoc]
+            agencyDocuments: brochureDoc?.document
+                ? [registrationCertificate, brochureDoc, panCardDoc]
+                : [registrationCertificate, panCardDoc]
         };
         if (apiData.agencyDocuments.length < 8) {
             instance
@@ -178,12 +194,12 @@ function AgencyForm3(props) {
                 documentName: propData.agencyForm3.documentName
             });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [propData]);
 
     useEffect(() => {
         if (
             registrationCertificate.documentPicked &&
-            brochureDoc.documentPicked &&
             panCardDoc.documentPicked
         ) {
             setPickedAll(true);
@@ -191,19 +207,19 @@ function AgencyForm3(props) {
 
         if (
             registrationCertificate.documentLink !== '' &&
-            brochureDoc.documentLink !== '' &&
             panCardDoc.documentLink !== ''
         ) {
             setLoading(false);
             handleUpdate();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [registrationCertificate, brochureDoc, panCardDoc]);
 
     return (
         <>
             <div className="agency-form_parent">
                 <Navbar />
-                <Back name="Agency Form 3" />
+                <Back name="Documentation" />
                 <FormPhases steps={steps} />
 
                 {loading ? (
@@ -260,10 +276,10 @@ function AgencyForm3(props) {
                                         </div>
                                         <p className="logo-type_agencyForm1">{`${
                                             registrationCertificate?.name
-                                                ? registrationCertificate?.name.slice(
+                                                ? `Incorporation : ${registrationCertificate?.name.slice(
                                                       0,
                                                       20
-                                                  )
+                                                  )}`
                                                 : 'Incorporation Certificate'
                                         }`}</p>
                                     </div>
@@ -290,12 +306,7 @@ function AgencyForm3(props) {
                                                                 {...getInputProps()}
                                                             />
                                                             <button className="pick_btn">
-                                                                <p>
-                                                                    Pick File
-                                                                    <span className="requiredStar">
-                                                                        *
-                                                                    </span>
-                                                                </p>
+                                                                <p>Pick File</p>
                                                                 <img
                                                                     src={
                                                                         fileIcon
@@ -308,10 +319,12 @@ function AgencyForm3(props) {
                                                 )}
                                             </Dropzone>
                                         </div>
-                                        {/* <p className="logo-type_agencyForm1">{`${brochureDoc?.documentName?.slice(0, 20)}`}</p> */}
                                         <p className="logo-type_agencyForm1">{`${
                                             brochureDoc?.name
-                                                ? brochureDoc?.name.slice(0, 20)
+                                                ? `Brochure: ${brochureDoc?.name.slice(
+                                                      0,
+                                                      20
+                                                  )}`
                                                 : 'Brochure'
                                         }`}</p>
                                     </div>
@@ -358,10 +371,12 @@ function AgencyForm3(props) {
                                                 )}
                                             </Dropzone>
                                         </div>
-                                        {/* <p className="logo-type_agencyForm1">{`${panCardDoc?.documentName?.slice(0, 20)}`}</p> */}
                                         <p className="logo-type_agencyForm1">{`${
                                             panCardDoc?.name
-                                                ? panCardDoc?.name.slice(0, 20)
+                                                ? `Pancard: ${panCardDoc?.name.slice(
+                                                      0,
+                                                      20
+                                                  )}`
                                                 : 'Pancard'
                                         }`}</p>
                                     </div>

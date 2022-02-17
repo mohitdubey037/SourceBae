@@ -6,13 +6,9 @@ import * as helper from '../../../../shared/helper';
 import Back from '../../../../Components/Back/Back';
 import { useDropzone } from 'react-dropzone';
 
-import fileIcon from '../../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
-
 import instance from '../../../../Constants/axiosConstants';
-import { toast } from 'react-toastify';
 import Spinner from '../../../../Components/Spinner/Spinner';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { FaFileUpload } from 'react-icons/fa';
 
 import { upload } from '../../../../shared/helper';
@@ -22,18 +18,14 @@ import './ResponsiveAgencyForm.css';
 function AgencyForm1(props) {
     const dispatch = useDispatch();
 
-    const AgencyForm = useSelector((state) => state.AgencyForm);
     const Role = localStorage.getItem('role');
     const api_param_const = 'agencies';
 
-    const [showExitPrompt, setShowExitPrompt] = useState(false);
-
     const [loading, setLoading] = useState(false);
-    const [steps, setSteps] = useState('');
+    const steps = '';
     const [errors, setErrors] = useState({});
 
     const [logo, setLogo] = useState(null);
-    let stepsCompleted = '';
 
     const [formData, setFormData] = useState({
         stepsCompleted: 2,
@@ -137,10 +129,6 @@ function AgencyForm1(props) {
         else return false;
     };
 
-    // const inputFileChoosen = (projectDoc) => {
-    //     setLogo(projectDoc);
-    // }
-
     async function uploadMedia() {
         try {
             const detail = await upload(logo, Role);
@@ -169,48 +157,11 @@ function AgencyForm1(props) {
             });
     };
 
-    const getStepsCompleted = () => {
-        instance
-            .get(`api/${Role}/agencies/steps-completed`)
-            .then(function (response) {
-                setSteps(response.stepsCompleted);
-                stepsCompleted = response.stepsCompleted;
-                firstLoad();
-            });
-    };
-
-    const firstLoad = () => {
-        if (AgencyForm.is_Back_Pressed === false) {
-            switch (stepsCompleted) {
-                case 2:
-                    props.history.replace('agency-form-two');
-                case 3:
-                    props.history.replace('agency-form-three');
-                case 4:
-                    props.history.replace('agency-form-four');
-                case 5:
-                    props.history.replace('agencyNewestDashboard');
-                default:
-                    // props.history.replace('/agencyNewestDashboard');
-                    return;
-            }
-        }
-    };
-
-    // useEffect(() => {
-    //     getStepsCompleted();
-    // }, []);
-
-    // useEffect(() => {
-    //     if (formData.agencyLogo !== null) {
-    //         handleSubmit()
-    //     }
-    // }, [formData])
-
     useEffect(() => {
         if (formData.agencyLogo !== null) {
             handleSubmit();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formData.agencyLogo]);
 
     const handleButton = () => {
@@ -270,7 +221,7 @@ function AgencyForm1(props) {
                 <>
                     <Navbar />
                     <div className="agency-form_parent">
-                        <Back name="Agency Form 1" />
+                        <Back name="Basic Details" />
                         <FormPhases value1={true} steps={steps} />
                         <div className="mainPersonelDetailsForm">
                             <div className="innerLeftPersonelDetailsForm">
@@ -283,24 +234,8 @@ function AgencyForm1(props) {
                                             </span>
                                         </label>
                                         <div className="getAgencyLogo">
-                                            {/* <FilePicker
-                                                extensions={['jpg', 'png', 'jpeg']}
-                                                onChange={(fileObj) => inputFileChoosen(fileObj)}
-                                                onError={error => handleUploadError(error)}>
-                                                <button>
-                                                    <p className="agencyLogo_pick_file">Pick File</p>
-                                                    <img src={fileIcon} alt="finish" />
-                                                </button>
-                                            </FilePicker> */}
                                             <div className="fileUploadButton_addingDeveloper upload_logo">
                                                 <section className="container_agencyForm1">
-                                                    {/* <div {...getRootProps({ className: 'dropzone' })}>
-                                                        <input {...getInputProps()} />
-                                                        <div className="file_click_addingDeveloper">
-                                                            <FaFileUpload />
-                                                            <p className="agencyLogo_pick_file">Pick File</p>
-                                                        </div>
-                                                    </div> */}
                                                     <div {...getRootProps()}>
                                                         <input
                                                             {...getInputProps()}
@@ -318,15 +253,9 @@ function AgencyForm1(props) {
                                                             "Drop it like it's hot!"}
                                                         {isDragReject &&
                                                             'File type not accepted, sorry!'}
-                                                        {/* {isFileTooLarge && (
-                                                            <div className="text-danger mt-2">
-                                                                File is too large.
-                                                            </div>
-                                                        )} */}
                                                     </div>
                                                 </section>
                                             </div>
-                                            {/* <p className="logo-type_agencyForm1">{`${acceptedFileItems.slice(0, 20) ?? "Please Choose file (jpeg, png, jpg)"}`}</p> */}
                                             {logo === null ? (
                                                 <p className="logo-type_agencyForm1">
                                                     Please Choose file (jpeg,

@@ -49,6 +49,7 @@
     background: #fff;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
@@ -71,7 +72,6 @@
 }
 
 .formPhaseCards span {
-    margin-left: 10px;
     font-family: 'Segoe UI Semibold';
     font-size: 16px;
     text-align: center;
