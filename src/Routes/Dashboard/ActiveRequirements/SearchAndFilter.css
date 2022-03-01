@@ -1,0 +1,109 @@
+.searchBoxAR{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 24px 18px 24px 18px;
+}
+
+.searchText{
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.searchWrapper{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.searchTitle{
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.SAFfilter{
+  display: flex;
+  height: 44px;
+  width: 100%;
+  justify-content: space-between;
+  background: #F9F9F9;
+  border: 1px solid #E1E1E1;
+  box-sizing: border-box;
+  border-radius: 6px;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+  outline: none;
+}
+
+.dropdown-container{
+  display: flex;
+  height: 44px;
+  width: 100%;
+  justify-content: space-between;
+  background: #F9F9F9;
+  border: 1px solid #E1E1E1;
+  box-sizing: border-box;
+  border-radius: 6px;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+  outline: none;
+}
+
+.gray{
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #ACACAC !important;
+}
+
+.filterImage{
+  height: 26px;
+  width: 26px;
+}
+
+.filterArrow{
+  height: 8px;
+  width: 16px;
+}
+
+.SAFfilterText{
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.infoCardStyle{
+  position: absolute;
+  display: none;
+  width: 100%;
+  top: 120%;
+  left: 0%;
+}
+

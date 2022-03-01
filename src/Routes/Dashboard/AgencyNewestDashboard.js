@@ -52,7 +52,7 @@ function AgencyNewestDashboard(props) {
             .then(function (response) {
                 setAllProjects(response);
             })
-            .catch((err) => {});
+            .catch((err) => { });
     };
 
     useEffect(() => {
@@ -105,7 +105,7 @@ function AgencyNewestDashboard(props) {
                 userId: agencyId,
                 verify: 'email'
             })
-            .then(function (response) {});
+            .then(function (response) { });
     };
 
     const quotation = (link) => {
@@ -115,6 +115,10 @@ function AgencyNewestDashboard(props) {
             if (link === 'quotation') props.history.push(`/${link}`);
 
             if (link === 'add-developer') props.history.push(`/${link}`);
+
+            if (link === 'active-requirements') props.history.push(`/${link}`);
+
+            if (link === 'agency-requirements-listing') props.history.push(`/${link}`);
 
             if (link === 'portfolio') {
                 props.history.push({
@@ -200,13 +204,25 @@ function AgencyNewestDashboard(props) {
                                     isUserPhoneVerified) ||
                                     !verified ||
                                     steps !== -1) && (
-                                    <div className="down_seperator"></div>
-                                )}
+                                        <div className="down_seperator"></div>
+                                    )}
                             </div>
                         )}
 
                         <div className="content-leftBody">
                             <div className={`user-operations`}>
+                                <UserOperations
+                                    disabled={!verified || steps !== -1}
+                                    nextpage={() => quotation('agency-requirements-listing')}
+                                    text="Agency Requirements"
+                                    img={QuotationIcon}
+                                />
+                                <UserOperations
+                                    disabled={!verified || steps !== -1}
+                                    nextpage={() => quotation('active-requirements')}
+                                    text="Active Requirements"
+                                    img={QuotationIcon}
+                                />
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
                                     nextpage={() => quotation('quotation')}
@@ -229,10 +245,9 @@ function AgencyNewestDashboard(props) {
                                 />
                             </div>
                             <div
-                                className={`${
-                                    (!verified || steps !== -1) &&
+                                className={`${(!verified || steps !== -1) &&
                                     'conditional_opacity'
-                                }`}
+                                    }`}
                             >
                                 {allProjects?.projects?.length > 0 && (
                                     <div className="graphic graphic_agencyDashboard">
@@ -242,10 +257,9 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 )}
                                 <div
-                                    className={`user-project_parent ${
-                                        allProjects?.length <= 0 &&
+                                    className={`user-project_parent ${allProjects?.length <= 0 &&
                                         'conditional_flex'
-                                    }`}
+                                        }`}
                                 >
                                     {allProjects?.projects?.length > 0 ? (
                                         allProjects?.projects?.map(

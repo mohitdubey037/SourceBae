@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './LNavbar.module.css';
+import styles from './ARequirementsNavBar.module.css';
 import LNavLogo from '../../../../assets/images/Logo/Sourcebae-14.svg';
 import selectArrow from '../../../../assets/images/LandingPage/SelectArrow.svg';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
-export default function LNavbar() {
+export default function ARequirementsNavBar() {
     function handleMenuToggle() {
         console.log('Hi');
         let demo = document.getElementById('demo');
@@ -39,24 +39,6 @@ export default function LNavbar() {
                             alt=""
                             className={`${styles.nav_arrow}`}
                         />
-                    </div>
-                    <div
-                        className={`${styles.nav_services} ${styles.nav_menu} `}
-                        onMouseOver={() =>
-                        (document.getElementById('pop-up').style.display =
-                            'block')
-                        }
-                    >
-                        For Agencies
-                        <img
-                            src={selectArrow}
-                            alt=""
-                            className={`${styles.nav_arrow}`}
-                        />
-                    </div>
-                    <div className={`${styles.nav_menu}`}>
-                        {' '}
-                        <Link to="/whoAreYou">Review</Link>
                     </div>
                     <div
                         className={`${styles.service_option_wrap}`}

@@ -1,0 +1,44 @@
+.navbarDiv{
+  height: 76px;
+}
+
+.partition{
+  display: flex;
+  flex: 1;
+}
+
+.listContainer{
+  width: 63%;
+  margin-left: 100px;
+}
+
+.optionsContainer{
+  margin: 2%;
+  flex: 1;
+  margin-right: 100px;
+}
+
+.partionWrapper{
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+
+.searchBarContainer{
+  background-color: #F9F9F9;
+  padding: 20px;
+  display: flex;
+  border-radius: 6px;
+  margin: 30px 100px 30px 100px;
+}
+
+.searchBarStyle{
+  width: 75%;
+}
+
+.searchBtn{
+  background-color: #5C6DFF;
+  border-color: #5C6DFF;
+}
