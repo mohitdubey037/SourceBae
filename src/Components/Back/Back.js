@@ -91,7 +91,7 @@ function Back(props) {
             } else if (
                 url.includes(
                     'agency-form-three' ||
-                        url.includes('hire-agency-form-three')
+                    url.includes('hire-agency-form-three')
                 )
             ) {
                 if (

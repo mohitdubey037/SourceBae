@@ -1,0 +1,20 @@
+.SBstyle{
+  background: #F9F9F9;
+  border: 1px solid #E1E1E1;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 10px 14px;
+  width: 100%;
+}
+
+.SBstyle:focus {
+  border:1px solid #554DDE;
+}
+
+.SBstyle:hover {
+  border:1px solid #554DDE;
+}
+
+::placeholder { 
+  color: #ACACAC;
+}

@@ -1,0 +1,38 @@
+
+.bodyWrapper{
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+
+.greyCard{
+  border-radius: 12px;
+  width: 95%;
+  padding: 2%;
+  margin-top: 1%;
+}
+
+.heading{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: capitalize;
+  color: #3A3A3A;
+}
+
+.partition{
+  display: flex;
+  flex: 1;
+}
+
+.listContainer{
+  width: 70%;
+}
+
+.optionsContainer{
+ margin: 2%;
+ flex: 1;
+}
+

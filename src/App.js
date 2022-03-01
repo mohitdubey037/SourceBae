@@ -50,6 +50,8 @@ import { CLIENT, AGENCY } from './shared/constants';
 import { ErrorBoundary } from 'react-error-boundary';
 import firebase from 'firebase/app';
 import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
+import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequirements';
+import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
 
 const App = (props) => {
     useEffect(() => {
@@ -140,6 +142,18 @@ const App = (props) => {
                         exact
                         path="/add-developer"
                         component={AddingDeveloper}
+                    />
+                    <CustomRoute
+                        condition={AGENCY}
+                        exact
+                        path="/active-requirements"
+                        component={ActiveRequirements}
+                    />
+                    <CustomRoute
+                        condition={AGENCY}
+                        exact
+                        path="/agency-requirements-listing"
+                        component={RequirementListing}
                     />
                     <CustomRoute
                         condition={AGENCY}
