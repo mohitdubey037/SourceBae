@@ -10,6 +10,7 @@ export default function LHire() {
         {
             img: hireCard1,
             title: 'Agency',
+            id: 'dummy131',
             desc: [
                 <span>
                     <span className="span_pink">
@@ -30,6 +31,7 @@ export default function LHire() {
         {
             img: hireCard2,
             title: 'Developer',
+            id: 'dummy132',
             desc: [
                 'Handpicked Agencies Bench resources',
                 <span>
@@ -60,7 +62,10 @@ export default function LHire() {
             <div className={`${styles.hire_cards_wrap}`}>
                 {hireCards?.map((card, i) => {
                     return (
-                        <div className={`${styles.hire_main_card}`}>
+                        <div
+                            className={`${styles.hire_main_card}`}
+                            key={card?.id}
+                        >
                             <div className={`${styles.hire_card_img}`}>
                                 <img src={card.img} alt="" />
                             </div>

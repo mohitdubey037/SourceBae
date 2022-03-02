@@ -33,6 +33,7 @@
         "react-dom": "^17.0.1",
         "react-dropzone": "^11.4.2",
         "react-error-boundary": "^3.1.4",
+        "react-error-overlay": "6.0.9",
         "react-file-picker": "^0.0.6",
         "react-ga": "^3.3.0",
         "react-icons": "^4.3.1",

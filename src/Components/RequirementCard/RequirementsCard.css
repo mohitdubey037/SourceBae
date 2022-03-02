@@ -1,175 +1,174 @@
-.requirementCard{
-  border-radius: 6px;
-  box-sizing: border-box;
-  padding: 2% 2% 3% 2%;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  border: 1px solid #E1E1E1
+.requirementCard {
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 2% 2% 3% 2%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border: 1px solid #e1e1e1;
 }
 
 .requirementCard:hover {
-  box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.12);
-  border: 1px solid #C560F1;
+    box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.12);
+    border: 1px solid #c560f1;
 }
 
-.requirementCard:hover #RequirementsListCTA{
-  display: block !important ;  
+.requirementCard:hover #RequirementsListCTA {
+    display: block !important ;
 }
 
-.headingText{
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 32px;
-  text-align: center;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #131520;
-  font-family: Segoe UI;
+.headingText {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #131520;
+    font-family: Segoe UI;
 }
 
-.verticalBar{
-  border: 0.4px solid #000;
-  margin: 0% 1.5% 0% 1.5%;
-  height: 16px;
-  width: 1px;
-  background-color: #000;
+.verticalBar {
+    border: 0.4px solid #000;
+    margin: 0% 1.5% 0% 1.5%;
+    height: 16px;
+    width: 1px;
+    background-color: #000;
 }
 
-
-.tag{
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 21px;
-  text-align: center;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #007A5A;
+.tag {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #007a5a;
 }
 
-.headingContainer{
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
+.headingContainer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.titleNTag{
-  display: flex;
-  flex: 1;
-  align-items: center;
-  font-family: Segoe UI
+.titleNTag {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-family: Segoe UI;
 }
 
-.insight{
-  display: flex;
-  flex: 1;
-  margin-top: 24px;
+.insight {
+    display: flex;
+    flex: 1;
+    margin-top: 24px;
 }
 
-.tagContainer{
-  display: flex;
-  flex: 1;
-  margin-top: 26px;
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    margin-top: 26px;
 }
 
-.documentImg{
-  height: 18px;
-  width: 18px;
-  background-size: cover;
-  margin: 10px;
+.documentImg {
+    height: 18px;
+    width: 18px;
+    background-size: cover;
+    margin: 10px;
 }
 
-.modalContainer{
-  min-width: 600px;
-  padding: 24px;
+.modalContainer {
+    min-width: 600px;
+    padding: 24px;
 }
 
-.modalHeading{
-  display: grid;
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #131520;
-  grid-template-columns: 99% 1%;
+.modalHeading {
+    display: grid;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #131520;
+    grid-template-columns: 99% 1%;
 }
 
-.modalSubHeading{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 19px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #707070;
+.modalSubHeading {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #707070;
 }
 
-.modalJDHeading{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 21px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #5C6DFF;
+.modalJDHeading {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #5c6dff;
 }
 
-.modalJD{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  text-transform: capitalize;
-  color: #707070;
+.modalJD {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #707070;
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
 }
 
-.gridLabel{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 21px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #5C6DFF;
+.gridLabel {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #5c6dff;
 }
 
-.gridValue{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 19px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #131520;
+.gridValue {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #131520;
 }
 
-.modalRoot{
-  border-radius: 6px;
+.modalRoot {
+    border-radius: 6px;
 }
 
-.modalCancelButton{
-  height: 22px;
-  width: 22px;
-  object-fit: contain;
+.modalCancelButton {
+    height: 22px;
+    width: 22px;
+    object-fit: contain;
 }
 
-.RequirementsListCTA{
-  width: 150px !important;
-  background-color: #5C6DFF;
-  border-color: #5C6DFF;
+.RequirementsListCTA {
+    width: 150px !important;
+    background-color: #5c6dff;
+    border-color: #5c6dff;
 }
-

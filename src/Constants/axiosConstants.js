@@ -49,7 +49,12 @@ instance.interceptors.response.use(
         let trueError = '';
 
         if (error?.response?.status !== 404) {
-            if (
+            if (error?.response?.status === 401) {
+                localStorage.clear();
+                cookie.remove('Authorization');
+
+                window.location.href = '/';
+            } else if (
                 error?.response?.data?.message === 'Bearer Token not found' ||
                 error?.response?.data?.message === 'Unauthorized' ||
                 error?.response?.data?.error?.includes('CastError') ||

@@ -143,14 +143,14 @@ const App = (props) => {
                         path="/add-developer"
                         component={AddingDeveloper}
                     />
-                    <CustomRoute
+                    <Route
                         condition={AGENCY}
                         exact
                         path="/active-requirements"
                         component={ActiveRequirements}
                     />
-                    <CustomRoute
-                        condition={AGENCY}
+                    <Route
+                        // condition={AGENCY}
                         exact
                         path="/agency-requirements-listing"
                         component={RequirementListing}

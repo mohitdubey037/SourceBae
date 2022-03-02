@@ -18,8 +18,7 @@ function Navbar(props) {
     const myProfileHandler = () => {
         if (role === AGENCY) {
             props.history.push('/agency-profile');
-        }
-        if (role === CLIENT) {
+        } else if (role === CLIENT) {
             props.history.push('/client-profile');
         }
     };
@@ -31,20 +30,23 @@ function Navbar(props) {
     };
 
     useEffect(() => {
-        if (role === CLIENT) {
-            instance
-                .get(`/api/${role}/clients/get/${roleId}`)
-                .then(function (response) {
-                    setData(response);
-                })
-                .catch((err) => {});
-        } else {
-            instance
-                .get(`/api/${role}/agencies/get/${roleId}`)
-                .then(function (response) {
-                    setData(response);
-                })
-                .catch((err) => {});
+        console.log(role, roleId, 'data');
+        if (roleId) {
+            if (role === CLIENT) {
+                instance
+                    .get(`/api/${role}/clients/get/${roleId}`)
+                    .then(function (response) {
+                        setData(response);
+                    })
+                    .catch((err) => {});
+            } else if (role === AGENCY) {
+                instance
+                    .get(`/api/${role}/agencies/get/${roleId}`)
+                    .then(function (response) {
+                        setData(response);
+                    })
+                    .catch((err) => {});
+            }
         }
     }, []);
 

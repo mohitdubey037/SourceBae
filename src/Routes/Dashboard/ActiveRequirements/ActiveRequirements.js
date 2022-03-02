@@ -1,33 +1,90 @@
-import React from 'react'
-import './ActiveRequirements.css'
-import SearchAndFilter from './SearchAndFilter'
-import PromotionalStrip from './PromotionalStrip'
-import LNavbar from '../../MainLandingPage/Components/Navbar/LNavbar'
-import RequirementsCard from '../../../Components/RequirementCard/RequirementsCard'
+import React, { useEffect, useState, useCallback } from 'react';
+import './ActiveRequirements.css';
+import SearchAndFilter from './SearchAndFilter';
+import PromotionalStrip from './PromotionalStrip';
+import LNavbar from '../../MainLandingPage/Components/Navbar/LNavbar';
+import RequirementsCard from '../../../Components/RequirementCard/RequirementsCard';
+import instance from '../../../Constants/axiosConstants';
+import { AGENCY } from '../../../shared/constants';
+// eslint-disable-next-line no-unused-vars
+import { debounce } from 'lodash';
 
 export default function ActiveRequirements() {
+    const [requirementsList, setRequirementsList] = useState([]);
+    const role = AGENCY;
 
-  let data = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium nibh pellentesque in egestas velit, risus turpis mi. Tempor sed morbi ut lobortis dictum ac fames. Aenean lobortis elementum tempus interdum odio aenean sollicitudin bibendum. Ac ante pulvinar ullamcorper sed dui cursus rutrum. Non morbi lorem netus tempor, id. Nullam erat donec facilisi vel amet ridiculus velit quis.'
+    const [searchText, setSearchText] = useState('');
 
-  return (
-    <>
-      <LNavbar />
-      <PromotionalStrip />
-      <div className='bodyWrapper' >
-        <div className='greyCard' >
-          <h1 className='heading' >Current Requirements</h1>
-          <div className='partition' >
-            <div className='listContainer' >
-              {Array(6).fill('maq').map((ele, index) =>
-                <RequirementsCard des={{ des: data }} showButton={false} buttonTitle={'Apply now'} />
-              )}
+    const [filterState, setFilterState] = useState({
+        contractPeriod: undefined,
+        budget: undefined,
+        createdWithin: undefined
+    });
+
+    let currentPage = 1;
+
+    const hireDevApi = async (isParam = false) => {
+        const url = `/api/${role}/hire-developers/all`;
+        instance
+            .get(url, {
+                params: isParam
+                    ? {
+                          contractPeriod: filterState.contractPeriod,
+                          createdWithin: filterState.createdWithin,
+                          searchKeyWord: searchText,
+                          page: currentPage
+                      }
+                    : { page: currentPage }
+            })
+            .then((res) => {
+                setRequirementsList(res);
+            })
+            .catch((err) => {
+                setRequirementsList([]);
+            });
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
+
+    useEffect(() => {
+        hireDevApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [role]);
+
+    return (
+        <>
+            <LNavbar />
+            <PromotionalStrip />
+            <div className="bodyWrapper">
+                <div className="greyCard">
+                    <h1 className="heading">Current Requirements</h1>
+                    <div className="partition">
+                        <div className="listContainer">
+                            {requirementsList?.docs?.map((req, index) => (
+                                <RequirementsCard
+                                    key={req?._id}
+                                    data={req}
+                                    showButton={false}
+                                    buttonTitle={'Apply now'}
+                                />
+                            ))}
+                        </div>
+                        <div className="optionsContainer">
+                            <SearchAndFilter
+                                searchText={searchText}
+                                setSearchText={(val) => {
+                                    setSearchText(val);
+                                    debounceFn(true, val);
+                                }}
+                                filterState={filterState}
+                                setFilterState={setFilterState}
+                                filterApplier={hireDevApi}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className='optionsContainer' >
-              <SearchAndFilter />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
+        </>
+    );
 }

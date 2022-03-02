@@ -1,19 +1,20 @@
-.TAGcontainer{
-  background: #EAEAEA;
-  border-radius: 8px;
-  margin: 0px 10px 0px 10px;
-  height: 27px;
-  align-items: center;
+.tag_container {
+    background: #eaeaea;
+    border-radius: 8px;
+    margin: 0px 10px 0px 10px;
+    height: 27px;
+    align-items: center;
+    margin: 0.5rem;
 }
 
-.TAGText{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #3A3A3A;
-  margin-left: 10px;
-  margin-right: 10px;
+.tag_text {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #3a3a3a;
+    margin-left: 10px;
+    margin-right: 10px;
 }
