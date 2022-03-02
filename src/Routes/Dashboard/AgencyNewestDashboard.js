@@ -118,7 +118,7 @@ function AgencyNewestDashboard(props) {
 
             if (link === 'active-requirements') props.history.push(`/${link}`);
 
-            if (link === 'agency-requirements-listing') props.history.push(`/${link}`);
+            if (link === 'developer-request') props.history.push(`/${link}`);
 
             if (link === 'portfolio') {
                 props.history.push({
@@ -219,8 +219,8 @@ function AgencyNewestDashboard(props) {
                                 />
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation('active-requirements')}
-                                    text="Active Requirements"
+                                    nextpage={() => quotation('developer-request')}
+                                    text="Developer Request"
                                     img={QuotationIcon}
                                 />
                                 <UserOperations
