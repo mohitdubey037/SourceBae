@@ -6,11 +6,13 @@ import LNavbar from '../../MainLandingPage/Components/Navbar/LNavbar';
 import RequirementsCard from '../../../Components/RequirementCard/RequirementsCard';
 import instance from '../../../Constants/axiosConstants';
 import { AGENCY } from '../../../shared/constants';
+import Button from '../../../Components/Button/Button';
 // eslint-disable-next-line no-unused-vars
 import { debounce } from 'lodash';
 
+let currentPage = 1;
 export default function ActiveRequirements() {
-  const [requirementsList, setRequirementsList] = useState([]);
+  const [requirementsList, setRequirementsList] = useState({ docs: [] });
   const role = AGENCY;
 
   const [searchText, setSearchText] = useState('');
@@ -43,14 +45,22 @@ export default function ActiveRequirements() {
           : { page: currentPage }
       })
       .then((res) => {
-        setRequirementsList(res);
+        setRequirementsList((prevState) => ({
+          ...res,
+          docs: prevState?.docs
+            ? [...prevState?.docs, ...res.docs]
+            : [...res.docs]
+        }));
       })
       .catch((err) => {
-        setRequirementsList([]);
+        setRequirementsList({ docs: [] });
       });
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function handlePagination() {
+    currentPage++;
+    hireDevApi(true);
+  }
   const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
 
   useEffect(() => {
@@ -89,8 +99,35 @@ export default function ActiveRequirements() {
               />
             </div>
           </div>
+          {currentPage < requirementsList.totalPages && (
+            <div className={`showMorebtn`}>
+              <Button
+                name="show more"
+                buttonExtraStyle={buttonExtraStyle}
+                buttonTextStyle={buttonTextStyle}
+                onClick={() => handlePagination()}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
   );
 }
+const buttonExtraStyle = {
+  background: 'rgba(1, 95, 154, 0.12)',
+  borderRadius: '6px',
+  border: 'none',
+  width: '100px'
+};
+
+const buttonTextStyle = {
+  fontFamily: 'Segoe UI',
+  fontStyle: 'normal',
+  fontWeight: 600,
+  fontSize: '12px',
+  lineHeight: '16px',
+  letterSpacing: '0.4px',
+  textTransform: 'capitalize',
+  color: '#015F9A'
+};
