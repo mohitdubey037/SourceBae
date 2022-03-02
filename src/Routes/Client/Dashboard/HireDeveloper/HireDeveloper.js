@@ -13,6 +13,7 @@ import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import DownImage from '../../../../assets/images/Newestdashboard/Register/signup_down.svg';
 
 import VerifyModal from '../../../../Components/VerifyModal/VerifyModal';
+import SizedBox from '../../../../Components/SizedBox/SizedBox';
 
 const BlueRadio = withStyles({
     root: {
@@ -186,9 +187,8 @@ function HireDeveloper(props) {
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
         return (
             <div
-                className={`item-renderer ${
-                    disabled && 'disabled'
-                } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'
+                    } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -219,35 +219,64 @@ function HireDeveloper(props) {
                                 Fulfill your specific requirements with skilled
                                 and experienced developers
                             </p>
+                            <span className="hire-developer-heading-note">
+                                note - payment in monthly type system
+                            </span>
+                        </div>
+                        <SizedBox height={'10px'} />
+                        <div className="resourceNumber">
+                            <ul>
+                                <li>
+                                    Requirement Name{' '}
+                                    <span className="requiredStar">*</span>
+                                </li>
+                            </ul>
+                            <div className="inputs-container">
+                                <input
+                                    type="text"
+                                    name="requirementName"
+                                    value={apiData.requirementName}
+                                    placeholder="Give a name to identify requirement"
+                                    onChange={handleChange}
+                                />
+                                {errors?.requirementName && (
+                                    <span className="validation_message">
+                                        {errors?.requirementName}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                        <SizedBox height={'10px'} />
+                        <div className="resourceNumber">
+                            <ul>
+                                <li>
+                                    Description{' '}
+                                    <span className="requiredStar">*</span>
+                                </li>
+                            </ul>
+                            <div className="inputs-container">
+                                <textarea
+                                    // type="text"
+                                    name="requirementName"
+                                    value={apiData.requirementName}
+                                    placeholder="Give a name to identify requirement"
+
+                                    onChange={handleChange}
+                                    rows={5}
+                                    style={{ height: '100px', fontSize: '14px', padding: '8px', borderColor: '#E1E1E1', borderRadius: 6, width: '420px' }}
+                                />
+                                {errors?.requirementName && (
+                                    <span className="validation_message">
+                                        {errors?.requirementName}
+                                    </span>
+                                )}
+                            </div>
                         </div>
                         <div className="resourceNumberCover">
                             <div className="resourceNumber">
                                 <ul>
                                     <li>
-                                        Requirement Name{' '}
-                                        <span className="requiredStar">*</span>
-                                    </li>
-                                </ul>
-                                <div className="inputs-container">
-                                    <input
-                                        type="text"
-                                        name="requirementName"
-                                        value={apiData.requirementName}
-                                        placeholder="Give a name to identify requirement"
-                                        onChange={handleChange}
-                                    />
-                                    {errors?.requirementName && (
-                                        <span className="validation_message">
-                                            {errors?.requirementName}
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="resourceNumber">
-                                <ul>
-                                    <li>
-                                        Roles Required?{' '}
+                                        What Roles Are You looking For ?{' '}
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
@@ -268,6 +297,36 @@ function HireDeveloper(props) {
                                     )}
                                 </div>
                             </div>
+
+                            <div className="resourceNumber">
+                                <ul>
+                                    <li>
+                                        Skills Required{' '}
+                                        {/* <span className="requiredStar">*</span> */}
+                                    </li>
+                                </ul>
+                                <div className="inputs-container">
+                                    {allTechnologies.length > 0 ? (
+                                        <MultiSelect
+                                            options={allTechnologies}
+                                            value={selectedTechnologies}
+                                            onChange={setSelectedTechnologies}
+                                            labelledBy="Select"
+                                            ItemRenderer={customItemRenderer}
+                                            valueRenderer={customValueRenderer}
+                                        />
+                                    ) : (
+                                        'Sorry no Technologies to select'
+                                    )}
+                                </div>
+                                {errors?.developerTechnologiesRequired && (
+                                    <span className="validation_message">
+                                        {errors?.developerTechnologiesRequired}
+                                    </span>
+                                )}
+                                <SizedBox height={'28px'} />
+                            </div>
+
 
                             <div className="resourceNumber">
                                 <ul>
@@ -294,34 +353,28 @@ function HireDeveloper(props) {
                                     )}
                                 </div>
                             </div>
-                            <div className="resourceNumber">
+
+                            <div className="contractPeriod">
                                 <ul>
                                     <li>
-                                        Skills Required{' '}
+                                        Contract Periods{' '}
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
-                                <div className="inputs-container">
-                                    {allTechnologies.length > 0 ? (
-                                        <MultiSelect
-                                            options={allTechnologies}
-                                            value={selectedTechnologies}
-                                            onChange={setSelectedTechnologies}
-                                            labelledBy="Select"
-                                            ItemRenderer={customItemRenderer}
-                                            valueRenderer={customValueRenderer}
-                                        />
-                                    ) : (
-                                        'Sorry no Technologies to select'
-                                    )}
-                                </div>
-                                {errors?.developerTechnologiesRequired && (
-                                    <span className="validation_message">
-                                        {errors?.developerTechnologiesRequired}
-                                    </span>
-                                )}
+                                <select
+                                    name="contractPeriod"
+                                    id="contractPeriod"
+                                    onChange={handleChange}
+                                >
+                                    <option value="3 Months">3 Months</option>
+                                    <option value="6 Months">6 Months</option>
+                                    <option value="9 Months">9 Months</option>
+                                    <option value="12 Months">12 Months</option>
+                                </select>
                             </div>
+
                         </div>
+                        <SizedBox height={'30px'} />
                         <div className="radioContainer">
                             <div className="developerExperienceRequired">
                                 <ul>
@@ -383,53 +436,49 @@ function HireDeveloper(props) {
                                 </FormControl>
                             </div>
 
-                            <div className="preferredBillingMode">
+
+                            <div className="startPeriod">
                                 <ul>
                                     <li>
-                                        Preffered Billing{' '}
+                                        Start Date{' '}
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
-
                                 <FormControl component="fieldset">
-                                    <div className="left-margin1">
+                                    <div className="left-margin">
                                         <RadioGroup
-                                            aria-label="billing"
-                                            name="preferredBillingMode"
-                                            value={apiData.preferredBillingMode}
+                                            aria-label="startDate"
+                                            name="expectedStartDate"
+                                            value={apiData.expectedStartDate}
                                             onChange={handleChange}
                                         >
-                                            <div
-                                                className="Weekly"
-                                                style={{ display: 'flex' }}
-                                            >
-                                                <div>
-                                                    <FormControlLabel
-                                                        value="Weekly"
-                                                        control={<BlueRadio />}
-                                                        label="Weekly"
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div
-                                                className="Monthly"
-                                                style={{ display: 'flex' }}
-                                            >
-                                                <div>
-                                                    <FormControlLabel
-                                                        value="Monthly"
-                                                        control={<BlueRadio />}
-                                                        label="Monthly"
-                                                    />
-                                                </div>
-                                            </div>
+                                            <FormControlLabel
+                                                value="Immediately"
+                                                control={<BlueRadio />}
+                                                label="Immediately"
+                                            />
+                                            <FormControlLabel
+                                                value="in 1 to 2 weeks"
+                                                control={<BlueRadio />}
+                                                label="in 1 to 2 weeks"
+                                            />
+                                            <FormControlLabel
+                                                value="more than 2 weeks"
+                                                control={<BlueRadio />}
+                                                label="more than 2 weeks"
+                                            />
+                                            <FormControlLabel
+                                                value="negotiable"
+                                                control={<BlueRadio />}
+                                                label="negotiable"
+                                            />
                                         </RadioGroup>
                                     </div>
                                 </FormControl>
                             </div>
 
                             <div className="averageBudget">
+                                <SizedBox height={'20px'} />
                                 <ul>
                                     <li>
                                         Average Budget{' '}
@@ -501,65 +550,6 @@ function HireDeveloper(props) {
                                         </div>
                                     </FormControl>
                                 )}
-                            </div>
-
-                            <div className="startPeriod">
-                                <ul>
-                                    <li>
-                                        Start Date{' '}
-                                        <span className="requiredStar">*</span>
-                                    </li>
-                                </ul>
-                                <FormControl component="fieldset">
-                                    <div className="left-margin">
-                                        <RadioGroup
-                                            aria-label="startDate"
-                                            name="expectedStartDate"
-                                            value={apiData.expectedStartDate}
-                                            onChange={handleChange}
-                                        >
-                                            <FormControlLabel
-                                                value="Immediately"
-                                                control={<BlueRadio />}
-                                                label="Immediately"
-                                            />
-                                            <FormControlLabel
-                                                value="in 1 to 2 weeks"
-                                                control={<BlueRadio />}
-                                                label="in 1 to 2 weeks"
-                                            />
-                                            <FormControlLabel
-                                                value="more than 2 weeks"
-                                                control={<BlueRadio />}
-                                                label="more than 2 weeks"
-                                            />
-                                            <FormControlLabel
-                                                value="negotiable"
-                                                control={<BlueRadio />}
-                                                label="negotiable"
-                                            />
-                                        </RadioGroup>
-                                    </div>
-                                </FormControl>
-                            </div>
-
-                            <div className="contractPeriod">
-                                <ul>
-                                    <li>
-                                        Contract Periods{' '}
-                                        <span className="requiredStar">*</span>
-                                    </li>
-                                </ul>
-                                <select
-                                    name="contractPeriod"
-                                    id="contractPeriod"
-                                    onChange={handleChange}
-                                >
-                                    <option value="3 Months">3 Months</option>
-                                    <option value="6 Months">6 Months</option>
-                                    <option value="9 Months">9 Months</option>
-                                    <option value="12 Months">12 Months</option>
-                                </select>
                             </div>
                         </div>
 

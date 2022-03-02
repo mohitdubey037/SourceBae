@@ -65,7 +65,7 @@
   position: relative;
   outline: none;
 }
-
+/* 
 .gray{
   font-family: Segoe UI;
   font-style: normal;
@@ -75,7 +75,7 @@
   letter-spacing: 0.4px;
   text-transform: capitalize;
   color: #ACACAC !important;
-}
+} */
 
 .filterImage{
   height: 26px;

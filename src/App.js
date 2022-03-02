@@ -52,6 +52,7 @@ import firebase from 'firebase/app';
 import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequirements';
 import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
+import DevelopersRequest from './Routes/DevelpoperRequest/DevelopersRequest';
 
 const App = (props) => {
     useEffect(() => {
@@ -148,6 +149,12 @@ const App = (props) => {
                         exact
                         path="/active-requirements"
                         component={ActiveRequirements}
+                    />
+                    <CustomRoute
+                        condition={AGENCY}
+                        exact
+                        path="/developer-request"
+                        component={DevelopersRequest}
                     />
                     <CustomRoute
                         condition={AGENCY}

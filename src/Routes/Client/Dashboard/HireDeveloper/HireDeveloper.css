@@ -81,9 +81,9 @@
     font-family: 'Segoe UI', sans-serif;
     font-size: 20px;
     color: #707070;
-    margin-top: 28px;
+    margin-top: 20px;
     font-weight: 600;
-    padding-bottom: 1rem;
+    padding-bottom: 10px;
 }
 
 .roleLooking,
@@ -123,8 +123,9 @@
 .hireDeveloperForm .contractPeriod ul {
     font-family: 'Segoe UI Semibold', sans-serif;
     font-size: 16px;
-    color: #707070;
-    margin-bottom: 4px;
+    color: #000000;
+    margin-bottom: 8px;
+    list-style: none !important;
 }
 
 .preferredBillingMode .MuiFormControl-root {
@@ -226,6 +227,7 @@
 .inputs-container {
     display: flex;
     flex-direction: column;
+    width: 26rem;
 }
 
 .validation_message {
@@ -247,8 +249,7 @@
 
 .resourceNumber .multi-select {
     text-transform: capitalize;
-    color: #707070;
-    margin-left: 7px;
+    color: #ffffff;
     width: 60%;
 }
 
@@ -263,8 +264,7 @@
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
-    margin-top: 0.5rem;
-    width: 92.5%;
+    margin-top: 28px;
 }
 
 .radioContainer {
@@ -274,19 +274,23 @@
 }
 
 .resourceNumber .dropdown-container {
-    width: 18.5rem;
+    width: 26rem;
     justify-content: center;
     align-items: center;
     display: flex;
-    border: 1px solid #a2a2a2;
+    border: 1px solid #E1E1E1;
     border-radius: 5px;
     height: 35px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: white !important;
     /* font-size: 12px; */
 }
 
 .dropdown-content {
     width: 100% !important;
     border: none !important;
+    background-color: white;
 }
 
 .panel-content {
@@ -348,16 +352,15 @@
 }
 
 .resourceNumber input {
-    margin-left: 7px;
-    width: 18.5rem;
+    width: 26rem;
     font-family: 'Segoe UI', sans-serif;
     font-size: 12px;
     text-transform: capitalize;
     color: #707070;
-    border: 1px solid #a2a2a2;
+    border: 1px solid #E1E1E1;
     border-radius: 5px;
     height: 35px;
-    padding-left: 0.3rem;
+    padding-left: 0.6rem;
 }
 
 .dropdown-heading-dropdown-arrow {
@@ -416,8 +419,7 @@
 }
 
 .contractPeriod select {
-    margin-left: 7px;
-    width: 18.5rem;
+    width: 26rem;
     font-family: 'Segoe UI', sans-serif;
     font-size: 12px;
     text-transform: capitalize;
@@ -437,7 +439,7 @@
     margin-left: 20px !important;
     display: grid;
     grid-template-columns: auto auto;
-    width: 22.5rem;
+    width: 24rem;
     justify-content: stretch;
 }
 
@@ -486,4 +488,30 @@
 
 .preferredBillingMode .PrivateSwitchBase-input-6 {
     z-index: 0;
+}
+
+.hire-developer-heading-note{
+    font-family: 'Segoe UI', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #707070;
+}
+
+li::marker{
+    color: #000000 !important;
+}
+
+li:before{ 
+    content: "•"; 
+    font-size: 14pt; 
+    padding-right: 6px !important;
+}
+
+.resourceNumber, .contractPeriod, ul{
+    padding-left: 16px !important;
+}
+
+.startPeriod{
 }
