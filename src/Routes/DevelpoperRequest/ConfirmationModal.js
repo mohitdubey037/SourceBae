@@ -1,15 +1,15 @@
 import React from 'react'
+import { ACCEPT, DELETE } from './types'
 import Modal from 'react-responsive-modal'
 import styles from './ConfirmationModal.module.css'
+import Button from '../../Components/Button/Button'
 import cross from '../../assets/images/OtherIcons/crossInCircle.svg'
 import SizedBox from '../../Components/SizedBox/SizedBox'
 import acceptSvg from '../../assets/images/DeveloperRequest/approval.svg'
 import deleteSvg from '../../assets/images/DeveloperRequest/delete.svg'
-import Button from '../../Components/Button/Button'
-import { ACCEPT, DELETE } from './types'
 
 
-export default function ConfirmationModal({ type, onCloseModal, text, }) {
+export default function ConfirmationModal({ type, onCloseModal, }) {
 
   console.log(type)
 

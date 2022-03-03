@@ -39,11 +39,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(CreatedWithin, 0)}
           >
             <input
               type="radio"
               name="recentRadio"
-              onClick={() => handleRadioChecks(CreatedWithin, 0)}
               checked={filterState[CreatedWithin] === 0}
             />
             <SizedBox width={'8px'} />
@@ -57,11 +57,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(CreatedWithin, 7)}
           >
             <input
               type="radio"
               name="recentRadio"
-              onClick={() => handleRadioChecks(CreatedWithin, 7)}
               checked={filterState[CreatedWithin] === 7}
             />
             <SizedBox width={'8px'} />
@@ -75,11 +75,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(CreatedWithin, 30)}
           >
             <input
               type="radio"
               name="recentRadio"
-              onClick={() => handleRadioChecks(CreatedWithin, 30)}
               checked={filterState[CreatedWithin] === 30}
             />
             <SizedBox width={'8px'} />
@@ -99,13 +99,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(budget, '500-1000')}
           >
             <input
               type="radio"
               name="budgetRadio"
-              onClick={() =>
-                handleRadioChecks(budget, '500-1000')
-              }
               checked={filterState[budget] === '500-1000'}
             />
             <SizedBox width={'8px'} />
@@ -119,13 +117,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(budget, '1000-2000')}
           >
             <input
               type="radio"
               name="budgetRadio"
-              onClick={() =>
-                handleRadioChecks(budget, '1000-2000')
-              }
               checked={filterState[budget] === '1000-2000'}
             />
             <SizedBox width={'8px'} />
@@ -139,13 +135,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(budget, '2000-3000')}
           >
             <input
               type="radio"
               name="budgetRadio"
-              onClick={() =>
-                handleRadioChecks(budget, '2000-3000')
-              }
               checked={filterState[budget] === '2000-3000'}
             />
             <SizedBox width={'8px'} />
@@ -159,11 +153,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(budget, '4000')}
           >
             <input
               type="radio"
               name="budgetRadio"
-              onClick={() => handleRadioChecks(budget, '4000')}
             />
             <SizedBox width={'8px'} />
             <div
@@ -182,11 +176,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(contractPeriod, 3)}
           >
             <input
               type="radio"
               name="contractRadio"
-              onClick={() => handleRadioChecks(contractPeriod, 3)}
               checked={filterState.contractPeriod === 3}
             />
             <SizedBox width={'8px'} />
@@ -200,11 +194,11 @@ export default function RequirementFilter({
           <div
             class="pretty p-icon p-curve p-pulse"
             className={styles.radioStyle}
+            onClick={() => handleRadioChecks(contractPeriod, 6)}
           >
             <input
               type="radio"
               name="contractRadio"
-              onClick={() => handleRadioChecks(contractPeriod, 6)}
               checked={filterState.contractPeriod === 6}
             />
             <SizedBox width={'8px'} />
@@ -219,11 +213,11 @@ export default function RequirementFilter({
         <div
           class="pretty p-icon p-curve p-pulse"
           className={styles.radioStyle}
+          onClick={() => handleRadioChecks(contractPeriod, 12)}
         >
           <input
             type="radio"
             name="contractRadio"
-            onClick={() => handleRadioChecks(contractPeriod, 12)}
             checked={filterState.contractPeriod === 12}
           />
           <SizedBox width={'8px'} />
@@ -246,7 +240,6 @@ export default function RequirementFilter({
             />
           </div>
           <div style={{ display: 'flex' }}>
-            <FilterButton title={'Cancel'} color={colors.GREY} />
             <SizedBox width={'16px'} />
             <FilterButton
               title={'Apply'}
@@ -265,7 +258,7 @@ export const FilterTitle = ({ title }) => (
 );
 
 export const FilterButton = ({ title, color, onClick }) => (
-  <div>
+  <div style={{ cursor: 'pointer' }} >
     <text
       className={styles.filterButton}
       style={{ color }}

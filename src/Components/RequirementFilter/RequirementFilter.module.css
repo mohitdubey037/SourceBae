@@ -33,6 +33,11 @@
 .radioStyle{
   display: flex;
   align-items: center;
+  cursor: pointer !important;
+}
+
+.radioStyle *{
+  cursor: pointer !important;
 }
 
 .radioLabel{

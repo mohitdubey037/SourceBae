@@ -24,7 +24,7 @@ export default function DetailsModal({ open, onCloseModal }) {
 
         <SizedBox height={'14px'} />
         <div>
-          <span className={styles.requirementTitle}>
+          <span className={styles.requirementTitle}  >
             react js developer
           </span>
         </div>

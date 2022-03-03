@@ -79,6 +79,7 @@
     width: 18px;
     background-size: cover;
     margin: 10px;
+    cursor: pointer;
 }
 
 .modalContainer {
@@ -165,6 +166,7 @@
     height: 22px;
     width: 22px;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .RequirementsListCTA {
