@@ -90,7 +90,7 @@ export default function ActiveRequirements() {
                                 filterApplier={hireDevApi}
                                 setSearchText={(val) => {
                                     setSearchText(val);
-                                    debounceFn(true, val);
+                                    debounceFn({ isParam: true }, val);
                                 }}
                             />
                         </div>

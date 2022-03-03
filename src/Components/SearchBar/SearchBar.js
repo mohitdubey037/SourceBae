@@ -2,11 +2,13 @@ import React from 'react';
 import colors from '../../Constants/colors';
 import './SearchBar.css';
 
-const SearchBar = ({ bgColor, placeholder, onChange }) => {
+const SearchBar = ({ bgColor, placeholder, onChange, setSearchText }) => {
     return (
         <div>
             <input
-                onChange={onChange}
+                onChange={(event) => {
+                    setSearchText(event?.target?.value);
+                }}
                 style={{ backgroundColor: bgColor || 'none' }}
                 className="SBstyle"
                 placeholder={placeholder || 'Type here'}

@@ -51,43 +51,49 @@ const RequirementListing = () => {
         createdWithin: undefined
     });
 
-    useEffect(() => {
-        hireDevApi({ isParam: true, isShowMore: false });
-    }, [filterState]);
-
     const hireDevApi = async (config, val) => {
         const url = `/api/${role}/hire-developers/all?agencyId=${agencyId}`;
         const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
+        if (config?.isShowMore) currentPage += 1;
+        else currentPage = 1;
+
+        let params = config?.isParam
+            ? {
+                  createdWithin: filterState?.createdWithin,
+                  contractPeriod: filterState?.contractPeriod,
+                  minBudget,
+                  maxBudget,
+                  page: currentPage,
+                  searchKeyWord: searchText || val
+              }
+            : { page: currentPage };
+
         instance
             .get(url, {
-                params: config?.isparam
-                    ? {
-                          contractPeriod: filterState.contractPeriod,
-                          createdWithin: filterState.createdWithin,
-                          searchKeyWord: searchText || val,
-                          minBudget,
-                          maxBudget,
-                          page: currentPage
-                      }
-                    : { page: currentPage }
+                params
             })
             .then((res) => {
-                setRequirementsList((prevState) => ({
-                    ...res,
-                    docs: prevState?.docs
-                        ? [...prevState?.docs, ...res.docs]
-                        : [...res.docs]
-                }));
+                config?.isShowMore
+                    ? setRequirementsList((prevState) => ({
+                          ...res,
+                          docs: prevState?.docs
+                              ? [...prevState?.docs, ...res.docs]
+                              : [...res.docs]
+                      }))
+                    : setRequirementsList({ ...res });
             })
             .catch((err) => {
                 setRequirementsList({ docs: [] });
             });
     };
-
     function handlePagination() {
         currentPage++;
         hireDevApi({ isParam: true });
     }
+    useEffect(() => {
+        hireDevApi({ isParam: true, isShowMore: false });
+    }, [filterState]);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
 
@@ -110,6 +116,11 @@ const RequirementListing = () => {
                         onChange={onSearch}
                         bgColor={colors.WHITE}
                         placeholder={'Type keyword here example “react js”'}
+                        value={searchText}
+                        setSearchText={(val) => {
+                            setSearchText(val);
+                            debounceFn({ isParam: true }, val);
+                        }}
                     />
                 </div>
 
@@ -117,19 +128,19 @@ const RequirementListing = () => {
                 <FilterSelect
                     options={recentOptions}
                     applyFilter={setFilterState}
-                    key={'createdWithin'}
+                    objkey={'createdWithin'}
                 />
                 <SizedBox width={'30px'} />
                 <FilterSelect
                     options={budgetOptions}
                     applyFilter={setFilterState}
-                    key={'budget'}
+                    objkey={'budget'}
                 />
                 <SizedBox width={'30px'} />
                 <FilterSelect
                     options={contractOptions}
                     applyFilter={setFilterState}
-                    key={'contractPeriod'}
+                    objkey={'contractPeriod'}
                 />
                 <SizedBox width={'30px'} />
 
