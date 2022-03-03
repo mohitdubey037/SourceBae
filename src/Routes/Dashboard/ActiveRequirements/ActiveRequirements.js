@@ -20,9 +20,7 @@ export default function ActiveRequirements() {
     const [filterState, setFilterState] = useState({
         contractPeriod: undefined,
         budget: undefined,
-        createdWithin: undefined,
-        minBudget: undefined,
-        maxBudget: undefined
+        createdWithin: undefined
     });
 
     const hireDevApi = async (config, val) => {

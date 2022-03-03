@@ -12,142 +12,145 @@ import SizedBox from '../../Components/SizedBox/SizedBox';
 import cross from '../../assets/images/RequirementsListing/boldCancel.png';
 
 export default function RequirementsList({
-  des = '',
-  showButton = '',
-  buttonTitle = '',
-  data = {}
+    des = '',
+    showButton = '',
+    buttonTitle = '',
+    data = {}
 }) {
-  const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
-  const onCloseModal = () => setOpen(false);
-  const onOpenModal = (data) => {
-    setOpen(true);
-  };
+    const onCloseModal = () => setOpen(false);
+    const onOpenModal = (data) => {
+        setOpen(true);
+    };
 
-  let {
-    areDevelopersShared,
-    averageBudget,
-    contractPeriod,
-    developerExperienceRequired,
-    developerTechnologiesRequired,
-    isHotRequest,
-    isSourceBaeSelected,
-    numberOfResourcesRequired,
-    requirementName,
-    client = {}
-  } = data;
+    let {
+        areDevelopersShared,
+        averageBudget,
+        contractPeriod,
+        developerExperienceRequired,
+        developerTechnologiesRequired,
+        isHotRequest,
+        isSourceBaeSelected,
+        numberOfResourcesRequired,
+        requirementName,
+        client = {}
+    } = data;
 
-  return (
-    <div className="requirementCard">
-      <div className="headingContainer">
-        <div className="titleNTag">
-          <text className="headingText">{requirementName || ''}</text>
-          <div onClick={() => onOpenModal(des)}>
-            <img
-              className="documentImg"
-              src={document}
-              alt="document_icon"
-            />
-          </div>
-          <div className="verticalBar" />
-          <text className="tag">{`experience: ${developerExperienceRequired || ''
-            } year`}</text>
+    return (
+        <div className="requirementCard">
+            <div className="headingContainer">
+                <div className="titleNTag">
+                    <span className="headingText">{requirementName || ''}</span>
+                    <div onClick={() => onOpenModal(des)}>
+                        <img
+                            className="documentImg"
+                            src={document}
+                            alt="document_icon"
+                        />
+                    </div>
+                    <div className="verticalBar" />
+                    <span className="tag">{`experience: ${
+                        developerExperienceRequired || ''
+                    } year`}</span>
+                </div>
+                <button
+                    id={'RequirementsListCTA'}
+                    style={{ display: showButton ? 'block' : 'none' }}
+                    className={`${styles.L_login} ${
+                        styles.nav_Lbutton
+                    } ${'RequirementsListCTA'}`}
+                >
+                    <span>{buttonTitle}</span>
+                </button>
+            </div>
+            <div className="insight">
+                <IconNText
+                    icon={moneyBag}
+                    text={`INR ${averageBudget || ''} per month`}
+                />
+                <div style={{ marginRight: '12px' }} />
+                <IconNText
+                    icon={clock}
+                    text={`${contractPeriod || ''} month contract`}
+                />
+                <div style={{ marginRight: '12px' }} />
+                <IconNText
+                    icon={people}
+                    text={`${developerExperienceRequired || ''} resources`}
+                />
+            </div>
+            <div className="tagsContainer">
+                {developerTechnologiesRequired?.map((tech, index) => (
+                    <Tag key={tech?._id} title={tech?.technologyName || ''} />
+                ))}
+            </div>
+
+            <Modal
+                classNames={{
+                    modal: 'modalRoot'
+                }}
+                showCloseIcon={false}
+                open={open}
+                onClose={onCloseModal}
+                center
+            >
+                <div className="modalContainer">
+                    <div className="modalHeading">
+                        <div className="modalHeadingGrid1">
+                            {requirementName || ''}
+                        </div>
+                        <img
+                            onClick={onCloseModal}
+                            src={cross}
+                            className="modalCancelButton"
+                            alt="cross"
+                        />
+                    </div>
+                    <SizedBox height="4px" />
+                    <div className="modalSubHeading">
+                        posted by- {client?.firstName || ''}{' '}
+                        {client?.lastName || ''}
+                    </div>
+                    <SizedBox height="32px" />
+                    <div className="modalJDHeading">job description :</div>
+                    <SizedBox height="12px" />
+                    <div className="modalJD">{`${
+                        data?.jobDescription || ''
+                    }`}</div>
+                    <SizedBox height="30px" />
+                    <div class="grid-container">
+                        <div className="grid-item">
+                            <div className="gridLabel">time period</div>
+                            <SizedBox height="12px" />
+                            <div className="gridValue">
+                                {contractPeriod || ''} month contract{' '}
+                            </div>
+                        </div>
+                        <div className="grid-item">
+                            <div className="gridLabel">payment</div>
+                            <SizedBox height="12px" />
+                            <div className="gridValue">
+                                ₹{averageBudget || ''}/month
+                            </div>
+                        </div>
+                        <div className="grid-item">
+                            <div className="gridLabel">experience</div>
+                            <SizedBox height="12px" />
+                            <div className="gridValue">
+                                {developerExperienceRequired || ''} year
+                            </div>
+                        </div>
+                        <div className="grid-item">
+                            <div className="gridLabel">resources required</div>
+                            <SizedBox height="12px" />
+                            <div className="gridValue">
+                                {numberOfResourcesRequired || ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Modal>
         </div>
-        <button
-          id={'RequirementsListCTA'}
-          style={{ display: showButton ? 'block' : 'none' }}
-          className={`${styles.L_login} ${styles.nav_Lbutton
-            } ${'RequirementsListCTA'}`}
-        >
-          <text>{buttonTitle}</text>
-        </button>
-      </div>
-      <div className="insight">
-        <IconNText
-          icon={moneyBag}
-          text={`INR ${averageBudget || ''} per month`}
-        />
-        <div style={{ marginRight: '12px' }} />
-        <IconNText
-          icon={clock}
-          text={`${contractPeriod || ''} month contract`}
-        />
-        <div style={{ marginRight: '12px' }} />
-        <IconNText
-          icon={people}
-          text={`${developerExperienceRequired || ''} resources`}
-        />
-      </div>
-      <div className="tagsContainer">
-        {developerTechnologiesRequired?.map((tech, index) => (
-          <Tag key={tech?._id} title={tech?.technologyName || ''} />
-        ))}
-      </div>
-
-      <Modal
-        classNames={{
-          modal: 'modalRoot'
-        }}
-        showCloseIcon={false}
-        open={open}
-        onClose={onCloseModal}
-        center
-      >
-        <div className="modalContainer">
-          <div className="modalHeading">
-            <div className="modalHeadingGrid1">
-              {requirementName || ''}
-            </div>
-            <img
-              onClick={onCloseModal}
-              src={cross}
-              className="modalCancelButton"
-              alt="cross"
-            />
-          </div>
-          <SizedBox height="4px" />
-          <div className="modalSubHeading">
-            posted by- {client?.firstName || ''}{' '}
-            {client?.lastName || ''}
-          </div>
-          <SizedBox height="32px" />
-          <div className="modalJDHeading">job description :</div>
-          <SizedBox height="12px" />
-          <div className="modalJD">{`${data?.jobDescription || ''
-            }`}</div>
-          <SizedBox height="30px" />
-          <div class="grid-container">
-            <div className="grid-item">
-              <div className="gridLabel">time period</div>
-              <SizedBox height="12px" />
-              <div className="gridValue">
-                {contractPeriod || ''} month contract{' '}
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="gridLabel">payment</div>
-              <SizedBox height="12px" />
-              <div className="gridValue">
-                ₹{averageBudget || ''}/month
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="gridLabel">experience</div>
-              <SizedBox height="12px" />
-              <div className="gridValue">
-                {developerExperienceRequired || ''} year
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="gridLabel">resources required</div>
-              <SizedBox height="12px" />
-              <div className="gridValue">
-                {numberOfResourcesRequired || ''}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
+    );
 }

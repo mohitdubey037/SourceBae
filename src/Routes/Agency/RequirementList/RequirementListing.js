@@ -21,9 +21,9 @@ import { debounce } from 'lodash';
 let currentPage = 1;
 const RequirementListing = () => {
     const recentOptions = [
-        { value: 'today', label: 'Today' },
-        { value: 'week', label: 'This Week' },
-        { value: 'month', label: 'This Month' }
+        { value: 0, label: 'Today' },
+        { value: 7, label: 'This Week' },
+        { value: 30, label: 'This Month' }
     ];
 
     const budgetOptions = [
@@ -34,9 +34,9 @@ const RequirementListing = () => {
     ];
 
     const contractOptions = [
-        { value: '3-6', label: '03-06 Months' },
-        { value: '6-12', label: '06-12 Months' },
-        { value: 'more_than_12', label: 'More Than 12 Months' }
+        { value: 3, label: '03-06 Months' },
+        { value: 6, label: '06-12 Months' },
+        { value: 12, label: 'More Than 12 Months' }
     ];
 
     const [requirementsList, setRequirementsList] = useState({ docs: [] });
@@ -48,10 +48,12 @@ const RequirementListing = () => {
     const [filterState, setFilterState] = useState({
         contractPeriod: undefined,
         budget: undefined,
-        createdWithin: undefined,
-        minBudget: undefined,
-        maxBudget: undefined
+        createdWithin: undefined
     });
+
+    useEffect(() => {
+        hireDevApi({ isParam: true, isShowMore: false });
+    }, [filterState]);
 
     const hireDevApi = async (config, val) => {
         const url = `/api/${role}/hire-developers/all?agencyId=${agencyId}`;
@@ -94,9 +96,6 @@ const RequirementListing = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role]);
 
-    let data =
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium nibh pellentesque in egestas velit, risus turpis mi. Tempor sed morbi ut lobortis dictum ac fames. Aenean lobortis elementum tempus interdum odio aenean sollicitudin bibendum. Ac ante pulvinar ullamcorper sed dui cursus rutrum. Non morbi lorem netus tempor, id. Nullam erat donec facilisi vel amet ridiculus velit quis.';
-
     const onSearch = (text) => {};
 
     return (
@@ -115,37 +114,37 @@ const RequirementListing = () => {
                 </div>
 
                 <SizedBox width={'30px'} />
-                <FilterSelect options={recentOptions} />
+                <FilterSelect
+                    options={recentOptions}
+                    applyFilter={setFilterState}
+                    key={'createdWithin'}
+                />
                 <SizedBox width={'30px'} />
-                <FilterSelect options={budgetOptions} />
+                <FilterSelect
+                    options={budgetOptions}
+                    applyFilter={setFilterState}
+                    key={'budget'}
+                />
                 <SizedBox width={'30px'} />
-                <FilterSelect options={contractOptions} />
+                <FilterSelect
+                    options={contractOptions}
+                    applyFilter={setFilterState}
+                    key={'contractPeriod'}
+                />
                 <SizedBox width={'30px'} />
 
                 <button
                     className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.searchBtn}`}
                 >
-                    <text>Search</text>
+                    <span>Search</span>
                 </button>
                 <SizedBox width={'30px'} />
-                <div style={{ width: '110px' }}>
-                    {/* <RequirementFilter
-                        searchText={searchText}
-                        setSearchText={(val) => {
-                            setSearchText(val);
-                            debounceFn(true, val);
-                        }}
-                        filterState={filterState}
-                        setFilterState={setFilterState}
-                        filterApplier={hireDevApi}
-                    /> */}
-                </div>
             </div>
             <div className={styles.partition}>
                 <div className={styles.listContainer}>
                     {requirementsList?.docs?.map((req, index) => (
                         <RequirementsCard
-                            key={req?._id}
+                            key={`${req?._id} ${index}`}
                             data={req}
                             showButton={false}
                             buttonTitle={'Apply now'}
