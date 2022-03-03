@@ -109,6 +109,11 @@ const App = (props) => {
                     <Route exact path="/Verify_Page" component={VerifyPage} />
                     <Route exact path="/login/:role" component={Login} />
                     <Route exact path="/register/:role" component={Register} />
+                    {/* <Route
+                        exact
+                        path="/agency-requirements-listing"
+                        component={RequirementListing}
+                    /> */}
                     <Route
                         exact
                         path="/enter-email/:role"

@@ -5,8 +5,8 @@ import PromotionalStrip from './PromotionalStrip';
 import LNavbar from '../../MainLandingPage/Components/Navbar/LNavbar';
 import RequirementsCard from '../../../Components/RequirementCard/RequirementsCard';
 import instance from '../../../Constants/axiosConstants';
-import { AGENCY } from '../../../shared/constants';
 import Button from '../../../Components/Button/Button';
+import { AGENCY } from '../../../shared/constants';
 // eslint-disable-next-line no-unused-vars
 import { debounce } from 'lodash';
 
@@ -86,11 +86,6 @@ export default function ActiveRequirements() {
                         </div>
                         <div className="optionsContainer">
                             <SearchAndFilter
-                                searchText={searchText}
-                                setSearchText={(val) => {
-                                    setSearchText(val);
-                                    debounceFn(true, val);
-                                }}
                                 filterState={filterState}
                                 setFilterState={setFilterState}
                                 filterApplier={hireDevApi}

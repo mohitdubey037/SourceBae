@@ -6,6 +6,7 @@ import cookie from 'react-cookies';
 const CustomRoute = (props) => {
     const role = localStorage.getItem('role');
     let switchCondition = props.condition || props?.location?.condition;
+    debugger;
     switch (switchCondition) {
         case AGENCY:
             if (role === AGENCY) {
@@ -16,8 +17,9 @@ const CustomRoute = (props) => {
                 } else {
                     return <Redirect to={`/login/${role}`} />;
                 }
+            } else {
+                return <Redirect to={`/active-requirements`} />;
             }
-            break;
 
         case CLIENT:
             if (role === CLIENT) {
@@ -28,8 +30,9 @@ const CustomRoute = (props) => {
                 } else {
                     return <Redirect to={`/login/${role}`} />;
                 }
+            } else {
+                return <Redirect to={`/active-requirements`} />;
             }
-            break;
 
         default:
             return (window.location.href = '/');

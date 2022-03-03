@@ -1,61 +1,63 @@
-.filterOptionsBox{
-  background: #FFFFFF;
-  border: 1px solid #E1E1E1;
-  box-sizing: border-box;
-  border-radius: 12px;
-  padding: 10px 14px;
-  width: 19rem;
+.filterOptionsBox {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 10px 14px;
+    width: 19rem;
+    position: absolute;
+    z-index: 1;
 }
 
-.filterTitle{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #212529;
+.filterTitle {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #212529;
 }
 
-.recentFilter{
-  display: flex;
-  justify-content: space-between;
+.recentFilter {
+    display: flex;
+    justify-content: space-between;
 }
 
-.budgetFilter{
-  display: flex;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 40px;
+.budgetFilter {
+    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 40px;
 }
 
-.radioStyle{
-  display: flex;
-  align-items: center;
+.radioStyle {
+    display: flex;
+    align-items: center;
 }
 
-.radioLabel{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 19px;
-  text-transform: capitalize;
-  color: #ACACAC;
+.radioLabel {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: capitalize;
+    color: #acacac;
 }
 
-.radioRecent{
-  background-color:aqua
+.radioRecent {
+    background-color: aqua;
 }
 
-.filterButton{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 21px;
-  letter-spacing: 0.4px;
-  text-transform: capitalize;
-  color: #FF5656;
+.filterButton {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    color: #ff5656;
 }
