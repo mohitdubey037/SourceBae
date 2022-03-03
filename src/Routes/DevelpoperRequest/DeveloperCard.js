@@ -12,7 +12,7 @@ const DeveloperCard = (props) => {
 
       <div className={styles.nameBar} >
         <div className={styles.name} >Mujahid AQ</div>
-        <img src={cross} onClick={props.onDelete} />
+        <img src={cross} onClick={props.onDelete} style={{ cursor: 'pointer' }} />
       </div>
 
       <SizedBox height={'16px'} />
@@ -20,7 +20,7 @@ const DeveloperCard = (props) => {
       <div>
         <span className={styles.techDescription} >Quantum physics, atomic physics, nuclear physics</span>
         <span className={styles.viewMore} >View More</span>
-        <img src={downArrow} className={styles.downArrow} />
+        <img src={downArrow} className={styles.downArrow} style={{ cursor: 'pointer' }} />
       </div>
 
       <SizedBox height={'16px'} />
