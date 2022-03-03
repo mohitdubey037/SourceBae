@@ -15,7 +15,6 @@ import Button from '../../../Components/Button/Button';
 import FilterSelect from './FilterSelect';
 
 import { AGENCY } from '../../../shared/constants';
-// eslint-disable-next-line no-unused-vars
 import { debounce } from 'lodash';
 
 let currentPage = 1;
@@ -51,6 +50,9 @@ const RequirementListing = () => {
         createdWithin: undefined
     });
 
+    const [developersList, setdevelopersList] = useState([]);
+    const [selectedCard, setselectedCard] = useState('');
+
     const hireDevApi = async (config, val) => {
         const url = `/api/${role}/hire-developers/all?agencyId=${agencyId}`;
         const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
@@ -85,6 +87,26 @@ const RequirementListing = () => {
             .catch((err) => {
                 setRequirementsList({ docs: [] });
             });
+    };
+
+    const getDevelopers = async (cardId, agencyId) => {
+        const url = `/api/${role}/hire-developers/get/${cardId}/${agencyId}`;
+        instance
+            .get(url)
+            .then((res) => {
+                setdevelopersList(res);
+            })
+            .catch((err) => {
+                setdevelopersList([]);
+            });
+    };
+
+    const shareDeveloperPatchCall = async () => {
+        let url = `/api/${role}/hire-developers/share-developer/62177e85639f3794f4293970`;
+        instance
+            .patch(url)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
     };
     function handlePagination() {
         currentPage++;
@@ -159,11 +181,16 @@ const RequirementListing = () => {
                             data={req}
                             showButton={false}
                             buttonTitle={'Apply now'}
+                            isSelected={selectedCard === req?._id}
+                            onClick={(id) => {
+                                setselectedCard(id);
+                                getDevelopers(id, agencyId);
+                            }}
                         />
                     ))}
                 </div>
                 <div className={styles.optionsContainer}>
-                    <DeveloperListing />
+                    <DeveloperListing item={developersList} />
                 </div>
             </div>
             {currentPage < requirementsList.totalPages && (

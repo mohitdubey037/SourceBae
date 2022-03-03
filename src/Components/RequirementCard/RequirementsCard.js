@@ -15,9 +15,12 @@ export default function RequirementsList({
     des = '',
     showButton = '',
     buttonTitle = '',
-    data = {}
+    data = {},
+    onClick,
+    isSelected
 }) {
     const [open, setOpen] = useState(false);
+    const [selectedCard, setselectedCard] = useState('');
 
     const onCloseModal = () => setOpen(false);
     const onOpenModal = (data) => {
@@ -34,14 +37,18 @@ export default function RequirementsList({
         isSourceBaeSelected,
         numberOfResourcesRequired,
         requirementName,
+        _id,
         client = {}
     } = data;
 
     return (
-        <div className="requirementCard">
+        <div
+            style={{ borderColor: isSelected ? '#45A4EA' : null }}
+            className="requirementCard"
+        >
             <div className="headingContainer">
                 <div className="titleNTag">
-                    <span className="headingText">{requirementName || ''}</span>
+                    <text className="headingText">{requirementName || ''}</text>
                     <div onClick={() => onOpenModal(des)}>
                         <img
                             className="documentImg"
@@ -50,18 +57,19 @@ export default function RequirementsList({
                         />
                     </div>
                     <div className="verticalBar" />
-                    <span className="tag">{`experience: ${
+                    <text className="tag">{`experience: ${
                         developerExperienceRequired || ''
-                    } year`}</span>
+                    } year`}</text>
                 </div>
                 <button
+                    onClick={() => onClick(_id)}
                     id={'RequirementsListCTA'}
                     style={{ display: showButton ? 'block' : 'none' }}
                     className={`${styles.L_login} ${
                         styles.nav_Lbutton
                     } ${'RequirementsListCTA'}`}
                 >
-                    <span>{buttonTitle}</span>
+                    <text>{buttonTitle}</text>
                 </button>
             </div>
             <div className="insight">
