@@ -32,13 +32,13 @@ export default function ActiveRequirements() {
             .get(url, {
                 params: isParam
                     ? {
-                          contractPeriod: filterState.contractPeriod,
-                          createdWithin: filterState.createdWithin,
-                          searchKeyWord: searchText || val,
-                          minBudget,
-                          maxBudget,
-                          page: currentPage
-                      }
+                        contractPeriod: filterState.contractPeriod,
+                        createdWithin: filterState.createdWithin,
+                        searchKeyWord: searchText || val,
+                        minBudget,
+                        maxBudget,
+                        page: currentPage
+                    }
                     : { page: currentPage }
             })
             .then((res) => {
@@ -62,7 +62,6 @@ export default function ActiveRequirements() {
 
     useEffect(() => {
         hireDevApi();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role]);
 
     return (
