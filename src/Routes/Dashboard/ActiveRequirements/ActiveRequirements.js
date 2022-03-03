@@ -25,29 +25,33 @@ export default function ActiveRequirements() {
         maxBudget: undefined
     });
 
-    const hireDevApi = async (isParam = false, val) => {
+    const hireDevApi = async (config, val) => {
         const url = `/api/${role}/hire-developers/all`;
         const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
+        if (config?.isShowMore) currentPage += 1;
+        else currentPage = 1;
         instance
             .get(url, {
-                params: isParam
+                params: config?.isParam
                     ? {
-                        contractPeriod: filterState.contractPeriod,
-                        createdWithin: filterState.createdWithin,
-                        searchKeyWord: searchText || val,
-                        minBudget,
-                        maxBudget,
-                        page: currentPage
-                    }
+                          contractPeriod: filterState.contractPeriod,
+                          createdWithin: filterState.createdWithin,
+                          searchKeyWord: searchText || val,
+                          minBudget,
+                          maxBudget,
+                          page: currentPage
+                      }
                     : { page: currentPage }
             })
             .then((res) => {
-                setRequirementsList((prevState) => ({
-                    ...res,
-                    docs: prevState?.docs
-                        ? [...prevState?.docs, ...res.docs]
-                        : [...res.docs]
-                }));
+                config?.isShowMore
+                    ? setRequirementsList((prevState) => ({
+                          ...res,
+                          docs: prevState?.docs
+                              ? [...prevState?.docs, ...res.docs]
+                              : [...res.docs]
+                      }))
+                    : setRequirementsList({ ...res });
             })
             .catch((err) => {
                 setRequirementsList({ docs: [] });
@@ -55,8 +59,7 @@ export default function ActiveRequirements() {
     };
 
     function handlePagination() {
-        currentPage++;
-        hireDevApi(true);
+        hireDevApi({ isParam: true, isShowMore: true });
     }
     const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
 
