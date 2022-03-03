@@ -15,7 +15,6 @@ import Button from '../../../Components/Button/Button';
 import FilterSelect from './FilterSelect'
 
 import { AGENCY } from '../../../shared/constants';
-// eslint-disable-next-line no-unused-vars
 import { debounce } from 'lodash';
 
 let currentPage = 1;
@@ -40,12 +39,12 @@ const RequirementListing = () => {
     { value: 'more_than_12', label: 'More Than 12 Months' }
   ]
 
-  const [requirementsList, setRequirementsList] = useState({ docs: [] });
   const role = AGENCY;
   const agencyId = localStorage.getItem('userId') || '';
 
-  const [searchText, setSearchText] = useState('');
 
+  const [requirementsList, setRequirementsList] = useState({ docs: [] });
+  const [searchText, setSearchText] = useState('');
   const [filterState, setFilterState] = useState({
     contractPeriod: undefined,
     budget: undefined,
@@ -53,6 +52,8 @@ const RequirementListing = () => {
     minBudget: undefined,
     maxBudget: undefined
   });
+  const [developersList, setdevelopersList] = useState([])
+  const [selectedCard, setselectedCard] = useState('')
 
   const hireDevApi = async (isParam = false, val) => {
     const url = `/api/${role}/hire-developers/all?agencyId=${agencyId}`;
@@ -83,20 +84,36 @@ const RequirementListing = () => {
       });
   };
 
+  const getDevelopers = async (cardId, agencyId) => {
+    const url = `/api/${role}/hire-developers/get/${cardId}/${agencyId}`;
+    console.log(url)
+    instance
+      .get(url)
+      .then((res) => { setdevelopersList(res) })
+      .catch((err) => { setdevelopersList([]) })
+  }
+
+  const shareDeveloperPatchCall = async () => {
+    let url = `/api/${role}/hire-developers/share-developer/62177e85639f3794f4293970`
+    instance
+      .patch(url)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
+
+
   function handlePagination() {
     currentPage++;
     hireDevApi(true);
   }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
 
   useEffect(() => {
+    let cardId = '621df7e2b03bc7d00344fb59'
     hireDevApi();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getDevelopers(cardId, agencyId)
   }, [role]);
-
-  let data =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium nibh pellentesque in egestas velit, risus turpis mi. Tempor sed morbi ut lobortis dictum ac fames. Aenean lobortis elementum tempus interdum odio aenean sollicitudin bibendum. Ac ante pulvinar ullamcorper sed dui cursus rutrum. Non morbi lorem netus tempor, id. Nullam erat donec facilisi vel amet ridiculus velit quis.';
 
   const onSearch = (text) => { };
 
@@ -130,16 +147,6 @@ const RequirementListing = () => {
         </button>
         <SizedBox width={'30px'} />
         <div style={{ width: '110px' }}>
-          {/* <RequirementFilter
-                        searchText={searchText}
-                        setSearchText={(val) => {
-                            setSearchText(val);
-                            debounceFn(true, val);
-                        }}
-                        filterState={filterState}
-                        setFilterState={setFilterState}
-                        filterApplier={hireDevApi}
-                    /> */}
         </div>
       </div>
       <div className={styles.partition}>
@@ -150,11 +157,16 @@ const RequirementListing = () => {
               data={req}
               showButton={false}
               buttonTitle={'Apply now'}
+              isSelected={selectedCard === req?._id}
+              onClick={id => {
+                setselectedCard(id)
+                getDevelopers(id, agencyId)
+              }}
             />
           ))}
         </div>
         <div className={styles.optionsContainer}>
-          <DeveloperListing />
+          <DeveloperListing item={developersList} />
         </div>
       </div>
       {currentPage < requirementsList.totalPages && (
