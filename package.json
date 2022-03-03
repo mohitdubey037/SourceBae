@@ -49,6 +49,7 @@
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.3",
         "react-search-multi-select": "^1.0.8",
+        "react-select": "^5.2.2",
         "react-timezone-select": "^0.10.7",
         "react-tiny-popover": "^7.0.1",
         "react-toastify": "^7.0.3",
