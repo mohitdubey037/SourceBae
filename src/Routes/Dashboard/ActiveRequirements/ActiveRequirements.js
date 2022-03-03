@@ -28,7 +28,6 @@ export default function ActiveRequirements() {
     const hireDevApi = async (isParam = false, val) => {
         const url = `/api/${role}/hire-developers/all`;
         const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
-        console.log(minBudget);
         instance
             .get(url, {
                 params: isParam
@@ -89,6 +88,10 @@ export default function ActiveRequirements() {
                                 filterState={filterState}
                                 setFilterState={setFilterState}
                                 filterApplier={hireDevApi}
+                                setSearchText={(val) => {
+                                    setSearchText(val);
+                                    debounceFn(true, val);
+                                }}
                             />
                         </div>
                     </div>
