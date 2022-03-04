@@ -49,12 +49,7 @@ instance.interceptors.response.use(
         let trueError = '';
 
         if (error?.response?.status !== 404) {
-            if (error?.response?.status === 401) {
-                localStorage.clear();
-                cookie.remove('Authorization');
-
-                window.location.href = '/';
-            } else if (
+            if (
                 error?.response?.data?.message === 'Bearer Token not found' ||
                 error?.response?.data?.message === 'Unauthorized' ||
                 error?.response?.data?.error?.includes('CastError') ||
@@ -64,7 +59,15 @@ instance.interceptors.response.use(
                     alert(error?.response?.data?.message);
                 }
                 cookie.remove('Authorization');
+                if (error?.response?.data?.message === 'Unauthorized')
+                    alert('Please login with correct details');
                 window.location.href = '/';
+            } else if (error?.response?.status === 401) {
+                localStorage.clear();
+                cookie.remove('Authorization');
+                if (error?.config?.url?.includes('login'))
+                    toast.error('Please login with correct details');
+                else window.location.href = '/';
             } else {
                 const errors = error?.response?.data?.error ?? {};
                 const errorName = Object.keys(errors);
