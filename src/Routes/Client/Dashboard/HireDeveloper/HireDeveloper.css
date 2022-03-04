@@ -301,14 +301,6 @@
     width: 100%;
 }
 
-.select-panel .search {
-    /* width: 100% !important; */
-}
-
-.select-panel .search button {
-    /* display: none !important; */
-}
-
 .select-panel .search input {
     width: 200px !important;
 }
