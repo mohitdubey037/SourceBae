@@ -11,8 +11,6 @@ import deleteSvg from '../../assets/images/DeveloperRequest/delete.svg'
 
 export default function ConfirmationModal({ type, onCloseModal, }) {
 
-  console.log(type)
-
   return (
     <Modal
       center

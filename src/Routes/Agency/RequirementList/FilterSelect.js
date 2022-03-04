@@ -9,6 +9,7 @@ export default function FilterSelect({ options, applyFilter, objkey }) {
                 options={options}
                 className={styles.selectBox}
                 isSearchable={false}
+                isClearable
                 onChange={(selected) =>
                     applyFilter((prev) => ({
                         ...prev,
