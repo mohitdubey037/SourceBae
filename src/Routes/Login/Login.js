@@ -71,6 +71,8 @@ const Login = (props) => {
     const logoLink =
         'https://sourcebae.s3.amazonaws.com/image/1638354759751.svg';
 
+    let isRequirement = props?.location?.state?.isAgencyRequirement;
+
     const classes = useStyles();
     let { role } = useParams();
     if (!(role === AGENCY || role === CLIENT))
@@ -171,7 +173,9 @@ const Login = (props) => {
             axios.defaults.headers.common['Authorization'] = `${token}`;
             if (role === AGENCY) {
                 setLoading(false);
-                props.history.replace('/agencyNewestDashboard');
+                if (isRequirement)
+                    props.history.push('/agency-requirements-listing');
+                else props.history.replace('/agencyNewestDashboard');
             } else if (role === CLIENT) {
                 setLoading(false);
                 props.history.push(`/clientNewestDashboard`);
@@ -209,8 +213,9 @@ const Login = (props) => {
                     </div>
                     <div className="innerLoginPage">
                         <div
-                            className={`loginIllustrator ${role === 'Client' && 'conditional_background'
-                                }`}
+                            className={`loginIllustrator ${
+                                role === 'Client' && 'conditional_background'
+                            }`}
                         >
                             <div className="loginImage1">
                                 <img
@@ -273,9 +278,10 @@ const Login = (props) => {
                                                 onClick={() =>
                                                     handleChangeToggle(AGENCY)
                                                 }
-                                                className={`agency__button ${role === AGENCY &&
+                                                className={`agency__button ${
+                                                    role === AGENCY &&
                                                     'active__buttonagency'
-                                                    }`}
+                                                }`}
                                             >
                                                 <p>Agency</p>
                                             </button>
@@ -283,9 +289,10 @@ const Login = (props) => {
                                                 onClick={() =>
                                                     handleChangeToggle(CLIENT)
                                                 }
-                                                className={`client__button ${role === CLIENT &&
+                                                className={`client__button ${
+                                                    role === CLIENT &&
                                                     'active__buttonclient'
-                                                    }`}
+                                                }`}
                                             >
                                                 <p>Client</p>
                                             </button>
@@ -378,17 +385,19 @@ const Login = (props) => {
                                             />
                                             <div className="button_action_login">
                                                 <button
-                                                    className={`submit_login ${role === CLIENT &&
+                                                    className={`submit_login ${
+                                                        role === CLIENT &&
                                                         'conditional_backgroundSubmit'
-                                                        }`}
+                                                    }`}
                                                     type="submit"
                                                 >
                                                     <p>Login</p>
                                                 </button>
                                                 <div
-                                                    className={`forgot-password_login ${role === CLIENT &&
+                                                    className={`forgot-password_login ${
+                                                        role === CLIENT &&
                                                         'conditional_color'
-                                                        }`}
+                                                    }`}
                                                     onClick={() =>
                                                         props.history.push(
                                                             `/enter-email/${role}`
@@ -405,9 +414,10 @@ const Login = (props) => {
                                     </div>
                                     <div className="signup_toggle">
                                         <div
-                                            className={`googleLogin ${role === CLIENT &&
+                                            className={`googleLogin ${
+                                                role === CLIENT &&
                                                 'conditional_backgroundGoogle'
-                                                }`}
+                                            }`}
                                         >
                                             <img
                                                 src={googleImg}

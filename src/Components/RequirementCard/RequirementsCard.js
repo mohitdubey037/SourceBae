@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import IconNText from '../../Components/IconNText/IconNText';
 import Tag from '../../Components/Tag/Tag';
 import styles from '../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
@@ -10,23 +10,26 @@ import './RequirementsCard.css';
 import Modal from 'react-responsive-modal';
 import SizedBox from '../../Components/SizedBox/SizedBox';
 import cross from '../../assets/images/RequirementsListing/boldCancel.png';
+import cookie from 'react-cookies';
+import { useHistory } from 'react-router-dom';
+import { AGENCY } from '../../shared/constants';
 
-export default function RequirementsList({
-    des = '',
-    showButton = '',
-    buttonTitle = '',
-    data = {},
-    onClick,
-    isSelected
-}) {
+export default function RequirementsList(props) {
+    let {
+        des = '',
+        showButton = '',
+        buttonTitle = '',
+        data = {},
+        isSelected
+    } = props;
     const [open, setOpen] = useState(false);
     const [selectedCard, setselectedCard] = useState('');
+    const routerHistory = useHistory();
 
     const onCloseModal = () => setOpen(false);
     const onOpenModal = (data) => {
         setOpen(true);
     };
-
     let {
         areDevelopersShared,
         averageBudget,
@@ -40,6 +43,22 @@ export default function RequirementsList({
         _id,
         client = {}
     } = data;
+
+    function onClick(cardId) {
+        let user = localStorage.getItem('userId');
+        let auth = cookie.load('Authorization');
+        console.log(user, auth, 'user - auth', props);
+
+        if (user && auth) {
+            routerHistory.push(`/agency-requirements-listing`);
+        } else {
+            alert('Please login to continue');
+            routerHistory.push({
+                pathname: `login/${AGENCY}`,
+                state: { isAgencyRequirement: true }
+            });
+        }
+    }
 
     return (
         <div
@@ -69,7 +88,7 @@ export default function RequirementsList({
                         styles.nav_Lbutton
                     } ${'RequirementsListCTA'}`}
                 >
-                    <text>{buttonTitle}</text>
+                    <span>{buttonTitle}</span>
                 </button>
             </div>
             <div className="insight">

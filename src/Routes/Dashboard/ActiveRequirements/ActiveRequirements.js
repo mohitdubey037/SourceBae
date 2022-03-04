@@ -59,10 +59,12 @@ export default function ActiveRequirements() {
     function handlePagination() {
         hireDevApi({ isParam: true, isShowMore: true });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
 
     useEffect(() => {
         hireDevApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role]);
 
     return (
