@@ -249,7 +249,6 @@
 
 .resourceNumber .multi-select {
     text-transform: capitalize;
-    color: #ffffff;
     width: 60%;
 }
 
@@ -278,7 +277,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    border: 1px solid #E1E1E1;
+    border: 1px solid #e1e1e1;
     border-radius: 5px;
     height: 35px;
     padding-left: 0px;
@@ -357,7 +356,7 @@
     font-size: 12px;
     text-transform: capitalize;
     color: #707070;
-    border: 1px solid #E1E1E1;
+    border: 1px solid #e1e1e1;
     border-radius: 5px;
     height: 35px;
     padding-left: 0.6rem;
@@ -490,7 +489,7 @@
     z-index: 0;
 }
 
-.hire-developer-heading-note{
+.hire-developer-heading-note {
     font-family: 'Segoe UI', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -499,19 +498,8 @@
     color: #707070;
 }
 
-li::marker{
-    color: #000000 !important;
-}
-
-li:before{ 
-    content: "•"; 
-    font-size: 14pt; 
-    padding-right: 6px !important;
-}
-
-.resourceNumber, .contractPeriod, ul{
+.resourceNumber,
+.contractPeriod,
+ul {
     padding-left: 16px !important;
-}
-
-.startPeriod{
 }
