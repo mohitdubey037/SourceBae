@@ -36,14 +36,13 @@ function HireDeveloper(props) {
         developerTechnologiesRequired: [],
         developerExperienceRequired: 'Junior (1-3years)',
         preferredBillingMode: 'Weekly',
-        averageBudget: 'less than $1500',
+        averageBudget: 'less than 50,000₹',
         expectedStartDate: 'Immediately',
         contractPeriod: '3 Months',
         clientId: id
     });
 
     const [errors, setErrors] = useState({});
-    const billing = 1;
 
     const handleChange = (event) => {
         let filterList = ['averageBudget', 'developerExperienceRequired'];
@@ -187,8 +186,9 @@ function HireDeveloper(props) {
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
         return (
             <div
-                className={`item-renderer ${disabled && 'disabled'
-                    } custom-item-renderer`}
+                className={`item-renderer ${
+                    disabled && 'disabled'
+                } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -260,10 +260,16 @@ function HireDeveloper(props) {
                                     name="requirementName"
                                     value={apiData.requirementName}
                                     placeholder="Give a name to identify requirement"
-
                                     onChange={handleChange}
                                     rows={5}
-                                    style={{ height: '100px', fontSize: '14px', padding: '8px', borderColor: '#E1E1E1', borderRadius: 6, width: '420px' }}
+                                    style={{
+                                        height: '100px',
+                                        fontSize: '14px',
+                                        padding: '8px',
+                                        borderColor: '#E1E1E1',
+                                        borderRadius: 6,
+                                        width: '420px'
+                                    }}
                                 />
                                 {errors?.requirementName && (
                                     <span className="validation_message">
@@ -327,7 +333,6 @@ function HireDeveloper(props) {
                                 <SizedBox height={'28px'} />
                             </div>
 
-
                             <div className="resourceNumber">
                                 <ul>
                                     <li>
@@ -372,7 +377,6 @@ function HireDeveloper(props) {
                                     <option value="12 Months">12 Months</option>
                                 </select>
                             </div>
-
                         </div>
                         <SizedBox height={'30px'} />
                         <div className="radioContainer">
@@ -436,7 +440,6 @@ function HireDeveloper(props) {
                                 </FormControl>
                             </div>
 
-
                             <div className="startPeriod">
                                 <ul>
                                     <li>
@@ -485,71 +488,38 @@ function HireDeveloper(props) {
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
-                                {billing === 1 ? (
-                                    <FormControl component="fieldset">
-                                        <div className="left-margin">
-                                            <RadioGroup
-                                                aria-label="averageBudget"
-                                                name="averageBudget"
-                                                value={apiData.averageBudget}
-                                                onChange={handleChange}
-                                            >
-                                                <FormControlLabel
-                                                    value="less than $1500"
-                                                    control={<BlueRadio />}
-                                                    label="less than $1500"
-                                                />
-                                                <FormControlLabel
-                                                    value="$1500-$2500"
-                                                    control={<BlueRadio />}
-                                                    label="$1500-$2500 Per Month"
-                                                />
-                                                <FormControlLabel
-                                                    value="$2500-$4000"
-                                                    control={<BlueRadio />}
-                                                    label="$2500-$4000 Per Month"
-                                                />
-                                                <FormControlLabel
-                                                    value="More than $4000"
-                                                    control={<BlueRadio />}
-                                                    label="More than $4000 Per Month"
-                                                />
-                                            </RadioGroup>
-                                        </div>
-                                    </FormControl>
-                                ) : (
-                                    <FormControl component="fieldset">
-                                        <div className="left-margin">
-                                            <RadioGroup
-                                                aria-label="hourlyBudget"
-                                                name="averageBudget"
-                                                value={apiData.averageBudget}
-                                                onChange={handleChange}
-                                            >
-                                                <FormControlLabel
-                                                    value="less than $20"
-                                                    control={<BlueRadio />}
-                                                    label="less than $20"
-                                                />
-                                                <FormControlLabel
-                                                    value="$20-$40"
-                                                    control={<BlueRadio />}
-                                                    label="$20-$40"
-                                                />
-                                                <FormControlLabel
-                                                    value="$40-$60"
-                                                    control={<BlueRadio />}
-                                                    label="$40-$60"
-                                                />
-                                                <FormControlLabel
-                                                    value="Above $60"
-                                                    control={<BlueRadio />}
-                                                    label="Above $60"
-                                                />
-                                            </RadioGroup>
-                                        </div>
-                                    </FormControl>
-                                )}
+
+                                <FormControl component="fieldset">
+                                    <div className="left-margin">
+                                        <RadioGroup
+                                            aria-label="averageBudget"
+                                            name="averageBudget"
+                                            value={apiData.averageBudget}
+                                            onChange={handleChange}
+                                        >
+                                            <FormControlLabel
+                                                value="less than 50,000₹"
+                                                control={<BlueRadio />}
+                                                label="less than 50,000₹"
+                                            />
+                                            <FormControlLabel
+                                                value="50,000₹-1,25,000₹"
+                                                control={<BlueRadio />}
+                                                label="50,000₹-1,25,000₹ Per Month"
+                                            />
+                                            <FormControlLabel
+                                                value="1,25,000₹-2,00,000₹"
+                                                control={<BlueRadio />}
+                                                label="1,25,000₹-2,00,000₹ Per Month"
+                                            />
+                                            <FormControlLabel
+                                                value="More than 2,00,000₹"
+                                                control={<BlueRadio />}
+                                                label="More than 2,00,000₹ Per Month"
+                                            />
+                                        </RadioGroup>
+                                    </div>
+                                </FormControl>
                             </div>
                         </div>
 
