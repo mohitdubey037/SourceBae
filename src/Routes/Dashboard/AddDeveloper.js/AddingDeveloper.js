@@ -474,24 +474,24 @@ function AddingDeveloper(props) {
                                                 }
                                             >
                                                 <FormControlLabel
-                                                    value="1500"
+                                                    value="50000"
                                                     control={<Radio />}
-                                                    label="less than $1500 per month"
+                                                    label="50,000₹-60,000₹"
                                                 />
                                                 <FormControlLabel
-                                                    value="2500"
+                                                    value="65000"
                                                     control={<Radio />}
-                                                    label="$1500-$2500 per month"
+                                                    label="65,000₹-75,000₹ per month"
                                                 />
                                                 <FormControlLabel
-                                                    value="4000"
+                                                    value="80000"
                                                     control={<Radio />}
-                                                    label="$2500-$4000 per month"
+                                                    label="80000₹-90,000₹ per month"
                                                 />
                                                 <FormControlLabel
-                                                    value="6000"
+                                                    value="90000"
                                                     control={<Radio />}
-                                                    label="More than $4000 per month"
+                                                    label="Less than 1Lakh ₹ per month"
                                                 />
                                             </RadioGroup>
                                         </FormControl>

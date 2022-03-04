@@ -369,10 +369,10 @@ function ProductAgencies(props) {
                                                                             Funding
                                                                         </span>
                                                                         <p>
-                                                                            ${' '}
                                                                             {
                                                                                 value?.productRevenueGenerated
                                                                             }
+                                                                            ₹
                                                                         </p>
                                                                     </div>
                                                                     <div className="productAgencyContent">

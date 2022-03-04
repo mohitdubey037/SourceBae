@@ -480,8 +480,7 @@ const ClientCommentBox = (props) => {
                                     .agencyNegotiablePrice && (
                                     <div className="detailsButtons margin-0">
                                         <p>
-                                            {`Agency Negotiable Price: `}
-                                            <i class="fas fa-dollar-sign"></i>{' '}
+                                            {`Agency Negotiable Price: `}₹
                                             {`${props.projectProposals[0].agencyNegotiablePrice}`}
                                         </p>
                                     </div>
@@ -491,8 +490,7 @@ const ClientCommentBox = (props) => {
                                     .clientNegotiablePrice && (
                                     <div className="detailsButtons margin-0">
                                         <p>
-                                            {`Your Negotiable Price: `}
-                                            <i class="fas fa-dollar-sign"></i>{' '}
+                                            {`Your Negotiable Price: `}₹
                                             {`${props.projectProposals[0].clientNegotiablePrice}`}
                                         </p>
                                     </div>
@@ -502,8 +500,7 @@ const ClientCommentBox = (props) => {
                                     .finalCostByClient && (
                                     <div className="detailsButtons margin-0">
                                         <p>
-                                            {`Your Final Price: `}
-                                            <i class="fas fa-dollar-sign"></i>{' '}
+                                            {`Your Final Price: `}₹
                                             {`${props.projectProposals[0].finalCostByClient}`}
                                         </p>
                                     </div>

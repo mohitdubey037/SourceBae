@@ -434,27 +434,27 @@ function AgencyForm2(props) {
                                                 onChange={handleChange}
                                             >
                                                 <FormControlLabel
-                                                    value="1000"
+                                                    value="50000"
                                                     control={<Radio />}
-                                                    label="1000$-3000$"
+                                                    label="50,000₹-200,000₹"
                                                     style={{ color: 'black' }}
                                                 />
                                                 <FormControlLabel
-                                                    value="3000"
+                                                    value="200000"
                                                     control={<Radio />}
-                                                    label="3000$-5000$"
+                                                    label="200,000₹-500,000₹"
                                                     style={{ color: 'black' }}
                                                 />
                                                 <FormControlLabel
-                                                    value="5000"
+                                                    value="500000"
                                                     control={<Radio />}
-                                                    label="5000$-7000$"
+                                                    label="5,00,000₹-10,00,000₹"
                                                     style={{ color: 'black' }}
                                                 />
                                                 <FormControlLabel
-                                                    value="7000"
+                                                    value="1000000"
                                                     control={<Radio />}
-                                                    label="7000$-10000$"
+                                                    label="10,00,000₹-Above"
                                                     style={{ color: 'black' }}
                                                 />
                                             </RadioGroup>

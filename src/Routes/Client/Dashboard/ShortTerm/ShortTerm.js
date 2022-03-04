@@ -551,7 +551,7 @@ function ShortTerm(props) {
                                                         <h6>Pay fixed price</h6>
                                                         <p>
                                                             Agree on a price and
-                                                            release payemnt when
+                                                            release payment when
                                                             the job is done.
                                                             Best for one-off
                                                             tasks.
@@ -650,7 +650,7 @@ function ShortTerm(props) {
                                             >
                                                 <FormControlLabel
                                                     color="primary"
-                                                    value="5000"
+                                                    value="50000"
                                                     control={
                                                         <BlueRadio
                                                             className={
@@ -658,17 +658,17 @@ function ShortTerm(props) {
                                                             }
                                                         />
                                                     }
-                                                    label="$5000 - $10000"
+                                                    label="5000₹ - 100,000₹"
                                                 />
                                                 <FormControlLabel
                                                     value="10000"
                                                     control={<BlueRadio />}
-                                                    label="$10000 - $150000"
+                                                    label="100,000₹ - 1,50,000₹"
                                                 />
                                                 <FormControlLabel
-                                                    value="15000"
+                                                    value="200000"
                                                     control={<BlueRadio />}
-                                                    label="Max $15000"
+                                                    label="Max 2,00,000₹"
                                                 />
                                             </RadioGroup>
                                         </FormControl>

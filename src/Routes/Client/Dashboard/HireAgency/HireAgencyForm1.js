@@ -24,7 +24,7 @@ const HireAgencyForm1 = (props) => {
         clientId: id,
         projectName: '',
         projectDescription: '',
-        projectProposalCost: '5000',
+        projectProposalCost: '50000',
         projectExpectedStartingDays: 5
     });
 
@@ -299,7 +299,7 @@ const HireAgencyForm1 = (props) => {
                                             <div className="budgetSectionAreaAgency">
                                                 <p>
                                                     3.&nbsp;What's your budget
-                                                    for this project? (in $){' '}
+                                                    for this project? (in ₹){' '}
                                                     <span className="requiredStar">
                                                         *
                                                     </span>{' '}
@@ -316,7 +316,7 @@ const HireAgencyForm1 = (props) => {
                                                     name="projectProposalCost"
                                                     type="number"
                                                     onChange={handleChange}
-                                                    min="500"
+                                                    min="50000"
                                                     value={
                                                         data.projectProposalCost
                                                     }

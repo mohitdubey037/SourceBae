@@ -426,7 +426,7 @@ function ClientOneHireDeveloper(props) {
                                                       {
                                                           item?.developerPriceRange
                                                       }
-                                                      $ Per Hour
+                                                      ₹ Per Hour
                                                   </div>
                                               </div>
                                           </div>

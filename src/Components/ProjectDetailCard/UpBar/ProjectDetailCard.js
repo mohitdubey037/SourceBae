@@ -22,7 +22,7 @@ function ProjectDetailCard(props) {
                     </div>
                     <div>
                         <p>Project Proposal Cost</p>
-                        <p>{`$${props.projectProposalCost}`}</p>
+                        <p>{`${props.projectProposalCost}₹`}</p>
                     </div>
                     <div>
                         <p>Agency Experience</p>

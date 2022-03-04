@@ -102,7 +102,7 @@ function AgencyProjectCard(props) {
                         <tr>
                             <td>Final Budget</td>
                             <td>
-                                $
+                                ₹
                                 {props?.projectFinalCost ||
                                     props?.projectProposalCost ||
                                     props?.finalCostByClient}
