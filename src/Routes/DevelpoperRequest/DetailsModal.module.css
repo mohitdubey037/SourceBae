@@ -87,4 +87,5 @@
 .tagsContainer{
   display: flex;
   margin-left: -10px;
+  flex-wrap: wrap;
 }

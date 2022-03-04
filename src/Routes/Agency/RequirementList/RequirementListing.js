@@ -109,8 +109,8 @@ const RequirementListing = () => {
     }
     instance
       .patch(url, body)
-      .then((res) => console.log(res, 'dfggdfs'))
-      .catch((err) => console.log(err, 'dfgsgf'));
+      .then((res) => { })
+      .catch((err) => console.log(err));
   };
   function handlePagination() {
     currentPage++;
@@ -174,7 +174,7 @@ const RequirementListing = () => {
         <button
           className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.searchBtn}`}
         >
-          <span>Search</span>
+          <span>Clear</span>
         </button>
         <SizedBox width={'30px'} />
       </div>
@@ -187,7 +187,7 @@ const RequirementListing = () => {
               showButton={false}
               buttonTitle={'Apply now'}
               isSelected={selectedCard === req?._id}
-              onClick={(id) => {
+              onApplyClick={(id) => {
                 setselectedCard(id);
                 getDevelopers(id, agencyId);
               }}
