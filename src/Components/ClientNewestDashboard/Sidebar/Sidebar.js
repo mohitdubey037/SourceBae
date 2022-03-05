@@ -99,7 +99,7 @@ function Sidebar(props) {
                     </div>
                     <p>Dashboard</p>
                 </div>
-                {role === AGENCY && (
+                {/* {role === AGENCY && (
                     <div
                         onClick={() => routerHistory.push('/shared-developers')}
                         className="postProject-icon icons developers-icon"
@@ -109,7 +109,7 @@ function Sidebar(props) {
                             <p>Developer Request</p>
                         </div>
                     </div>
-                )}
+                )} */}
                 {role === CLIENT && (
                     <>
                         <div

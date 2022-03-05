@@ -118,6 +118,9 @@ function AgencyNewestDashboard(props) {
 
             if (link === 'active-requirements') props.history.push(`/${link}`);
 
+            if (link === 'agency-requirements-listing')
+                props.history.push(`/${link}`);
+
             if (link === 'developer-request') props.history.push(`/${link}`);
 
             if (link === 'portfolio') {
