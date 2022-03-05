@@ -4,9 +4,8 @@ import LNavLogo from '../../../../assets/images/Logo/Sourcebae-14.svg';
 import selectArrow from '../../../../assets/images/LandingPage/SelectArrow.svg';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
-export default function LNavbar() {
+export default function LNavbar(props) {
     function handleMenuToggle() {
-        console.log('Hi');
         let demo = document.getElementById('demo');
         console.log(demo);
         if (demo.style.display === 'flex') demo.style.display = 'none';
@@ -15,7 +14,10 @@ export default function LNavbar() {
     return (
         <>
             <div className={`${styles.navbar_wrap}`}>
-                <div className={`${styles.nav_logo} `}>
+                <div
+                    className={`${styles.nav_logo} `}
+                    onClick={() => (window.location.href = '/')}
+                >
                     <img src={LNavLogo} alt="" />
                 </div>
                 <div className={`${styles.nav_menu_wrap}`}>
@@ -29,8 +31,8 @@ export default function LNavbar() {
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
                         onMouseOver={() =>
-                        (document.getElementById('pop-up').style.display =
-                            'block')
+                            (document.getElementById('pop-up').style.display =
+                                'block')
                         }
                     >
                         Services
@@ -43,8 +45,8 @@ export default function LNavbar() {
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
                         onMouseOver={() =>
-                        (document.getElementById('pop-up').style.display =
-                            'block')
+                            (document.getElementById('pop-up').style.display =
+                                'block')
                         }
                     >
                         For Agencies
