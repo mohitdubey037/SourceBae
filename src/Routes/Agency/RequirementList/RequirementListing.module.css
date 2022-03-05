@@ -43,3 +43,9 @@
   background-color: #5C6DFF;
   border-color: #5C6DFF;
 }
+
+.showMorebtn {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
