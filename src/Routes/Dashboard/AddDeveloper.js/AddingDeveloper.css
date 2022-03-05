@@ -266,14 +266,10 @@
 }
 
 .file_click_addingDeveloper p {
+    overflow-x: clip;
     font-family: 'Segoe UI';
     font-size: 0.7rem;
 }
-
-/* .accepted_file_para p {
-  font-family: 'Segoe UI';
-  font-size: 0.7rem;
-} */
 
 .inputField2 .MuiSelect-root {
     padding-left: 4px;

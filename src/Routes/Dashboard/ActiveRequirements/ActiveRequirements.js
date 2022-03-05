@@ -13,11 +13,6 @@ import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
 
 let currentPage = 1;
-let filters = {
-    contractPeriod: undefined,
-    budget: undefined,
-    createdWithin: undefined
-};
 export default function ActiveRequirements() {
     const [requirementsList, setRequirementsList] = useState({ docs: [] });
     const role = AGENCY;
@@ -80,14 +75,14 @@ export default function ActiveRequirements() {
     return (
         <>
             <LNavbar />
-            <PromotionalStrip />
-            {isLoading && currentPage == 1 ? (
-                <Spinner />
-            ) : (
-                <div className="bodyWrapper">
-                    <div className="greyCard">
-                        <h1 className="heading">Current Requirements</h1>
-                        <div className="partition">
+            <PromotionalStrip />(
+            <div className="bodyWrapper">
+                <div className="greyCard">
+                    <h1 className="heading">Current Requirements</h1>
+                    <div className="partition">
+                        {isLoading && currentPage === 1 ? (
+                            <Spinner style={{ width: '100%' }} />
+                        ) : (
                             <div className="listContainer">
                                 {requirementsList?.docs?.length ? (
                                     requirementsList?.docs?.map(
@@ -104,36 +99,37 @@ export default function ActiveRequirements() {
                                     <NoDataComponent />
                                 )}
                             </div>
-                            <div className="optionsContainer">
-                                <SearchAndFilter
-                                    filterState={filterState}
-                                    setFilterState={setFilterState}
-                                    filterApplier={() =>
-                                        hireDevApi({ isParam: true })
-                                    }
-                                    setSearchText={(val) => {
-                                        setSearchText(val);
-                                        debounceFn({ isParam: true }, val);
-                                    }}
-                                />
-                            </div>
-                        </div>
-                        <div className={`showMorebtn`}>
-                            {currentPage < requirementsList.totalPages &&
-                                (isLoading ? (
-                                    <Spinner style={{ height: '60px' }} />
-                                ) : (
-                                    <Button
-                                        name="show more"
-                                        buttonExtraStyle={buttonExtraStyle}
-                                        buttonTextStyle={buttonTextStyle}
-                                        onClick={() => handlePagination()}
-                                    />
-                                ))}
+                        )}
+                        <div className="optionsContainer">
+                            <SearchAndFilter
+                                filterState={filterState}
+                                setFilterState={setFilterState}
+                                filterApplier={() =>
+                                    hireDevApi({ isParam: true })
+                                }
+                                setSearchText={(val) => {
+                                    setSearchText(val);
+                                    debounceFn({ isParam: true }, val);
+                                }}
+                            />
                         </div>
                     </div>
+                    <div className={`showMorebtn`}>
+                        {currentPage < requirementsList.totalPages &&
+                            (isLoading ? (
+                                <Spinner style={{ height: '60px' }} />
+                            ) : (
+                                <Button
+                                    name="show more"
+                                    buttonExtraStyle={buttonExtraStyle}
+                                    buttonTextStyle={buttonTextStyle}
+                                    onClick={() => handlePagination()}
+                                />
+                            ))}
+                    </div>
                 </div>
-            )}
+            </div>
+            )
         </>
     );
 }
