@@ -180,7 +180,7 @@ const RequirementListing = () => {
                     </button>
                     <SizedBox width={'30px'} />
                 </div>
-                {isLoading && currentPage == 1 ? (
+                {isLoading && currentPage === 1 ? (
                     <Spinner />
                 ) : (
                     <>
