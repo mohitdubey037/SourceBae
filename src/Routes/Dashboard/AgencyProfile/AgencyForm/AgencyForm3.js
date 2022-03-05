@@ -12,6 +12,7 @@ import instance from '../../../../Constants/axiosConstants';
 import Spinner from '../../../../Components/Spinner/Spinner';
 import { useDispatch } from 'react-redux';
 import Dropzone from 'react-dropzone';
+import { AGENCY } from '../../../../shared/constants';
 
 import './ResponsiveAgencyForm.css';
 
@@ -20,7 +21,7 @@ function AgencyForm3(props) {
 
     const propData = props.location.state ? props.location.state : {};
 
-    const Role = localStorage.getItem('role');
+    const Role = localStorage.getItem('role') || AGENCY;
     const url = props.history.location.pathname;
     const status = 'Upload';
     const [pickedAll, setPickedAll] = useState(false);
