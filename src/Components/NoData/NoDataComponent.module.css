@@ -1,0 +1,27 @@
+.mainContainer{
+  margin: 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem 1rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.heading, .subText{
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  color: #3a3a3a;
+}
+
+.subText{
+  font-size: 18px;
+  font-weight: 100;
+}
