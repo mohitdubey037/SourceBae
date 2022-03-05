@@ -7,7 +7,6 @@ import { FiMenu } from 'react-icons/fi';
 export default function LNavbar(props) {
     function handleMenuToggle() {
         let demo = document.getElementById('demo');
-        console.log(demo);
         if (demo.style.display === 'flex') demo.style.display = 'none';
         else demo.style.display = 'flex';
     }
@@ -30,10 +29,10 @@ export default function LNavbar(props) {
                     </div>
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
-                        onMouseOver={() =>
-                            (document.getElementById('pop-up').style.display =
-                                'block')
-                        }
+                        // onMouseOver={() =>
+                        //     (document.getElementById('pop-up').style.display =
+                        //         'block')
+                        // }
                     >
                         Services
                         <img
@@ -44,17 +43,21 @@ export default function LNavbar(props) {
                     </div>
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
-                        onMouseOver={() =>
-                            (document.getElementById('pop-up').style.display =
-                                'block')
-                        }
                     >
-                        For Agencies
-                        <img
-                            src={selectArrow}
-                            alt=""
-                            className={`${styles.nav_arrow}`}
-                        />
+                        <span
+                            onMouseOver={() =>
+                                (document.getElementById(
+                                    'pop-up'
+                                ).style.display = 'block')
+                            }
+                        >
+                            For Agencies
+                            <img
+                                src={selectArrow}
+                                alt=""
+                                className={`${styles.nav_arrow}`}
+                            />
+                        </span>
                     </div>
                     <div className={`${styles.nav_menu}`}>
                         {' '}
@@ -80,6 +83,12 @@ export default function LNavbar(props) {
                             <Link to="/register/agency" className="L_Link">
                                 {' '}
                                 Onboard Developer
+                            </Link>
+                        </div>
+                        <div className={`${styles.option_1}`}>
+                            <Link to="/active-requirements" className="L_Link">
+                                {' '}
+                                Active Requirements
                             </Link>
                         </div>
                     </div>

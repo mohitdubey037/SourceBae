@@ -52,7 +52,7 @@ function AgencyNewestDashboard(props) {
             .then(function (response) {
                 setAllProjects(response);
             })
-            .catch((err) => { });
+            .catch((err) => {});
     };
 
     useEffect(() => {
@@ -105,7 +105,7 @@ function AgencyNewestDashboard(props) {
                 userId: agencyId,
                 verify: 'email'
             })
-            .then(function (response) { });
+            .then(function (response) {});
     };
 
     const quotation = (link) => {
@@ -204,8 +204,8 @@ function AgencyNewestDashboard(props) {
                                     isUserPhoneVerified) ||
                                     !verified ||
                                     steps !== -1) && (
-                                        <div className="down_seperator"></div>
-                                    )}
+                                    <div className="down_seperator"></div>
+                                )}
                             </div>
                         )}
 
@@ -213,13 +213,17 @@ function AgencyNewestDashboard(props) {
                             <div className={`user-operations`}>
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation('agency-requirements-listing')}
+                                    nextpage={() =>
+                                        quotation('agency-requirements-listing')
+                                    }
                                     text="Agency Requirements"
                                     img={QuotationIcon}
                                 />
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation('developer-request')}
+                                    nextpage={() =>
+                                        quotation('developer-request')
+                                    }
                                     text="Developer Request"
                                     img={QuotationIcon}
                                 />
@@ -245,9 +249,10 @@ function AgencyNewestDashboard(props) {
                                 />
                             </div>
                             <div
-                                className={`${(!verified || steps !== -1) &&
+                                className={`${
+                                    (!verified || steps !== -1) &&
                                     'conditional_opacity'
-                                    }`}
+                                }`}
                             >
                                 {allProjects?.projects?.length > 0 && (
                                     <div className="graphic graphic_agencyDashboard">
@@ -257,9 +262,10 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 )}
                                 <div
-                                    className={`user-project_parent ${allProjects?.length <= 0 &&
+                                    className={`user-project_parent ${
+                                        allProjects?.length <= 0 &&
                                         'conditional_flex'
-                                        }`}
+                                    }`}
                                 >
                                     {allProjects?.projects?.length > 0 ? (
                                         allProjects?.projects?.map(
