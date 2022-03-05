@@ -138,96 +138,101 @@ const RequirementListing = () => {
                 <Navbar />
             </div>
             <Back name="Active Requirement" />
-            {isLoading && currentPage == 1 ? (
-                <Spinner />
-            ) : (
-                <>
-                    <div className={styles.searchBarContainer}>
-                        <div className={styles.searchBarStyle}>
-                            <SearchBar
-                                onChange={onSearch}
-                                bgColor={colors.WHITE}
-                                placeholder={
-                                    'Type keyword here example “react js”'
-                                }
-                                value={searchText}
-                                setSearchText={(val) => {
-                                    setSearchText(val);
-                                    debounceFn({ isParam: true }, val);
-                                }}
-                            />
-                        </div>
-                        <SizedBox width={'30px'} />
-                        <FilterSelect
-                            options={recentOptions}
-                            applyFilter={setFilterState}
-                            objkey={'createdWithin'}
-                        />
-                        <SizedBox width={'30px'} />
-                        <FilterSelect
-                            options={budgetOptions}
-                            applyFilter={setFilterState}
-                            objkey={'budget'}
-                        />
-                        <SizedBox width={'30px'} />
-                        <FilterSelect
-                            options={contractOptions}
-                            applyFilter={setFilterState}
-                            objkey={'contractPeriod'}
-                        />
-                        <SizedBox width={'30px'} />
 
-                        <button
-                            className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.searchBtn}`}
-                        >
-                            <span>Clear</span>
-                        </button>
-                        <SizedBox width={'30px'} />
+            <>
+                <div className={styles.searchBarContainer}>
+                    <div className={styles.searchBarStyle}>
+                        <SearchBar
+                            onChange={onSearch}
+                            bgColor={colors.WHITE}
+                            placeholder={'Type keyword here example “react js”'}
+                            value={searchText}
+                            setSearchText={(val) => {
+                                setSearchText(val);
+                                debounceFn({ isParam: true }, val);
+                            }}
+                        />
                     </div>
-                    <div className={styles.partition}>
-                        <div className={styles.listContainer}>
-                            {requirementsList?.docs?.length ? (
-                                requirementsList?.docs?.map((req, index) => (
-                                    <RequirementsCard
-                                        key={`${req?._id} ${index}`}
-                                        data={req}
-                                        showButton={false}
-                                        buttonTitle={'Apply now'}
-                                        isSelected={selectedCard === req?._id}
-                                        onApplyClick={(id) => {
-                                            setselectedCard(id);
-                                            getDevelopers(id, agencyId);
-                                        }}
-                                    />
-                                ))
-                            ) : (
-                                <NoDataComponent />
-                            )}
-                        </div>
-                        <div className={styles.optionsContainer}>
-                            <DeveloperListing
-                                item={developersList}
-                                onApply={(devs) =>
-                                    shareDeveloperPatchCall(devs)
-                                }
-                            />
-                        </div>
-                    </div>
-                    <div className={styles.showMorebtn}>
-                        {currentPage < requirementsList.totalPages &&
-                            (isLoading ? (
-                                <Spinner style={{ height: '60px' }} />
-                            ) : (
-                                <Button
-                                    name="show more"
-                                    buttonExtraStyle={buttonExtraStyle}
-                                    buttonTextStyle={buttonTextStyle}
-                                    onClick={() => handlePagination()}
+                    <SizedBox width={'30px'} />
+                    <FilterSelect
+                        options={recentOptions}
+                        applyFilter={setFilterState}
+                        objkey={'createdWithin'}
+                    />
+                    <SizedBox width={'30px'} />
+                    <FilterSelect
+                        options={budgetOptions}
+                        applyFilter={setFilterState}
+                        objkey={'budget'}
+                    />
+                    <SizedBox width={'30px'} />
+                    <FilterSelect
+                        options={contractOptions}
+                        applyFilter={setFilterState}
+                        objkey={'contractPeriod'}
+                    />
+                    <SizedBox width={'30px'} />
+
+                    <button
+                        className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.searchBtn}`}
+                    >
+                        <span>Clear</span>
+                    </button>
+                    <SizedBox width={'30px'} />
+                </div>
+                {isLoading && currentPage == 1 ? (
+                    <Spinner />
+                ) : (
+                    <>
+                        <div className={styles.partition}>
+                            <div className={styles.listContainer}>
+                                {requirementsList?.docs?.length ? (
+                                    requirementsList?.docs?.map(
+                                        (req, index) => (
+                                            <RequirementsCard
+                                                key={`${req?._id} ${index}`}
+                                                data={req}
+                                                showButton={false}
+                                                buttonTitle={'Apply now'}
+                                                isSelected={
+                                                    selectedCard === req?._id
+                                                }
+                                                onApplyClick={(id) => {
+                                                    setselectedCard(id);
+                                                    getDevelopers(id, agencyId);
+                                                }}
+                                            />
+                                        )
+                                    )
+                                ) : (
+                                    <NoDataComponent />
+                                )}
+                            </div>
+                            <div className={styles.optionsContainer}>
+                                <DeveloperListing
+                                    item={developersList}
+                                    onApply={(devs) =>
+                                        shareDeveloperPatchCall(devs)
+                                    }
                                 />
-                            ))}
-                    </div>
-                </>
-            )}
+                            </div>
+                        </div>
+                        <div className={styles.showMorebtn}>
+                            {currentPage < requirementsList.totalPages &&
+                                (isLoading ? (
+                                    <Spinner style={{ height: '60px' }} />
+                                ) : (
+                                    <Button
+                                        name="show more"
+                                        buttonExtraStyle={buttonExtraStyle}
+                                        buttonTextStyle={buttonTextStyle}
+                                        onClick={() => handlePagination()}
+                                    />
+                                ))}
+                        </div>
+                    </>
+                )}
+            </>
         </div>
     );
 };
