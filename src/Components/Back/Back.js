@@ -17,7 +17,7 @@ function Back(props) {
                 if (
                     window.confirm(
                         'Your Previous Saved Documents Will Be Lost'
-                    ) == true
+                    ) === true
                 ) {
                     props.history.replace('/clientNewestDashboard');
                 }
@@ -73,7 +73,7 @@ function Back(props) {
                 if (
                     window.confirm(
                         'Your Previous Saved Documents Will Be Lost'
-                    ) == true
+                    ) === true
                 ) {
                     props.history.replace('/agencyNewestDashboard');
                 }
@@ -84,20 +84,20 @@ function Back(props) {
                 if (
                     window.confirm(
                         'Your Previous Saved Documents Will Be Lost'
-                    ) == true
+                    ) === true
                 ) {
                     props.history.replace('/agency-form-one');
                 }
             } else if (
                 url.includes(
                     'agency-form-three' ||
-                    url.includes('hire-agency-form-three')
+                        url.includes('hire-agency-form-three')
                 )
             ) {
                 if (
                     window.confirm(
                         'Your Previous Saved Documents Will Be Lost'
-                    ) == true
+                    ) === true
                 ) {
                     props.history.replace('/agency-form-two');
                 }
@@ -105,13 +105,15 @@ function Back(props) {
                 if (
                     window.confirm(
                         'Your Previous Saved Documents Will Be Lost'
-                    ) == true
+                    ) === true
                 ) {
                     props.history.replace('/agency-form-three');
                 }
             } else if (url.includes('quotation')) {
                 props.history.replace('/agencyNewestDashboard');
-            } else {
+            } else if (url.includes('agency-requirements-listing'))
+                props.history.push('/agencyNewestDashboard');
+            else {
                 props.history.goBack();
             }
         } else {
