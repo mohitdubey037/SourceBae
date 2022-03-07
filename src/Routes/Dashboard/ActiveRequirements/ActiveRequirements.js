@@ -13,6 +13,11 @@ import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
 
 let currentPage = 1;
+let filters = {
+  contractPeriod: undefined,
+  budget: undefined,
+  createdWithin: undefined
+};
 export default function ActiveRequirements() {
   const [requirementsList, setRequirementsList] = useState({ docs: [] });
   const role = AGENCY;
@@ -26,24 +31,36 @@ export default function ActiveRequirements() {
     createdWithin: undefined
   });
 
+  useEffect(() => {
+    filters = filterState;
+  }, [
+    filterState,
+    filterState?.contractPeriod,
+    filterState?.budget,
+    filterState?.createdWithin
+  ]);
   const hireDevApi = async (config, val) => {
     setisLoading(true)
     const url = `/api/${role}/hire-developers/all`;
     const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
     if (config?.isShowMore) currentPage += 1;
     else currentPage = 1;
+
+    let params = config?.isParam
+      ? {
+        page: currentPage,
+        searchKeyWord: searchText || val,
+        contractPeriod: filters?.contractPeriod,
+        minBudget,
+        maxBudget,
+        createdWithin: filters?.createdWithin
+      }
+      : { page: currentPage };
+
+    debugger;
     instance
       .get(url, {
-        params: config?.isParam
-          ? {
-            contractPeriod: filterState.contractPeriod,
-            createdWithin: filterState.createdWithin,
-            searchKeyWord: searchText || val,
-            minBudget,
-            maxBudget,
-            page: currentPage
-          }
-          : { page: currentPage }
+        params
       })
       .then((res) => {
         config?.isShowMore
@@ -58,7 +75,7 @@ export default function ActiveRequirements() {
       .catch((err) => {
         setRequirementsList({ docs: [] });
       })
-      .finally(() => setisLoading(false));
+      .finally(() => setisLoading(false))
   };
 
   function handlePagination() {

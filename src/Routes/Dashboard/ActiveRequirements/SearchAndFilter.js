@@ -2,7 +2,6 @@ import React from 'react';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
 import './SearchAndFilter.css';
 import RequirementFilter from '../../../Components/RequirementFilter/RequirementFilter';
-import { debounce } from 'lodash';
 
 export default function SearchAndFilter({
     searchText,

@@ -34,12 +34,13 @@ function HireDeveloper(props) {
         developerRolesRequired: [],
         numberOfResourcesRequired: '',
         developerTechnologiesRequired: [],
-        developerExperienceRequired: 'Junior (1-3years)',
+        developerExperienceRequired: '1',
         preferredBillingMode: 'Weekly',
-        averageBudget: 'less than 50,000₹',
-        expectedStartDate: 'Immediately',
-        contractPeriod: '3 Months',
-        clientId: id
+        averageBudget: '50,000',
+        expectedStartTime: 'Immediately',
+        contractPeriod: '3',
+        clientId: id,
+        jobDescription: ''
     });
 
     const [errors, setErrors] = useState({});
@@ -132,6 +133,7 @@ function HireDeveloper(props) {
                 (tech) => tech.value
             )
         };
+        console.log(body)
         instance
             .post(`api/client/hire-developers/create`, body)
             .then(function (response) {
@@ -163,6 +165,9 @@ function HireDeveloper(props) {
         if (apiData.requirementName === '') {
             errors.requirementName = 'Requirement name cannot be blank';
         }
+        // if (apiData.jobDescription.length >= 50) {
+        //     errors.jobDescription = "The Job Description must be at least 50 characters.";
+        // }
         if (selectedRoles.length === 0) {
             errors.developerRolesRequired =
                 'Atleast one developer role is Required';
@@ -186,9 +191,8 @@ function HireDeveloper(props) {
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
         return (
             <div
-                className={`item-renderer ${
-                    disabled && 'disabled'
-                } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'
+                    } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -210,7 +214,7 @@ function HireDeveloper(props) {
         <>
             <Navbar />
             <div className="back_and_hireDeveloper_Parent">
-                <img className="Image2" src={DownImage} alt="downImage" />
+                {/* <img className="Image2" src={DownImage} alt="downImage" /> */}
                 <Back name="Hire Developer" />
                 <div className="mainHireDeveloper">
                     <div className="hireDeveloperForm">
@@ -257,8 +261,8 @@ function HireDeveloper(props) {
                             <div className="inputs-container">
                                 <textarea
                                     // type="text"
-                                    name="requirementName"
-                                    value={apiData.requirementName}
+                                    name="jobDescription"
+                                    value={apiData.jobDescription}
                                     placeholder="Give a name to identify requirement"
                                     onChange={handleChange}
                                     rows={5}
@@ -271,9 +275,9 @@ function HireDeveloper(props) {
                                         width: '420px'
                                     }}
                                 />
-                                {errors?.requirementName && (
+                                {errors?.jobDescription && (
                                     <span className="validation_message">
-                                        {errors?.requirementName}
+                                        {errors?.jobDescription}
                                     </span>
                                 )}
                             </div>
@@ -371,10 +375,10 @@ function HireDeveloper(props) {
                                     id="contractPeriod"
                                     onChange={handleChange}
                                 >
-                                    <option value="3 Months">3 Months</option>
-                                    <option value="6 Months">6 Months</option>
-                                    <option value="9 Months">9 Months</option>
-                                    <option value="12 Months">12 Months</option>
+                                    <option value="3">3 Months</option>
+                                    <option value="6">6 Months</option>
+                                    <option value="9">9 Months</option>
+                                    <option value="12">12 Months</option>
                                 </select>
                             </div>
                         </div>
@@ -403,7 +407,7 @@ function HireDeveloper(props) {
                                             >
                                                 <div>
                                                     <FormControlLabel
-                                                        value="Junior (1-3years)"
+                                                        value="1"
                                                         control={<BlueRadio />}
                                                         label="Junior (1-3years)"
                                                     />
@@ -416,7 +420,7 @@ function HireDeveloper(props) {
                                             >
                                                 <div>
                                                     <FormControlLabel
-                                                        value="Mid Range (3-6 years)"
+                                                        value="3"
                                                         control={<BlueRadio />}
                                                         label="Mid Range (3-6 years)"
                                                     />
@@ -429,7 +433,7 @@ function HireDeveloper(props) {
                                             >
                                                 <div>
                                                     <FormControlLabel
-                                                        value="Senior (6-9 years)"
+                                                        value="6"
                                                         control={<BlueRadio />}
                                                         label="Senior (6-9 years)"
                                                     />
@@ -451,8 +455,8 @@ function HireDeveloper(props) {
                                     <div className="left-margin">
                                         <RadioGroup
                                             aria-label="startDate"
-                                            name="expectedStartDate"
-                                            value={apiData.expectedStartDate}
+                                            name="expectedStartTime"
+                                            value={apiData.expectedStartTime}
                                             onChange={handleChange}
                                         >
                                             <FormControlLabel
@@ -461,7 +465,7 @@ function HireDeveloper(props) {
                                                 label="Immediately"
                                             />
                                             <FormControlLabel
-                                                value="in 1 to 2 weeks"
+                                                value="1"
                                                 control={<BlueRadio />}
                                                 label="in 1 to 2 weeks"
                                             />
@@ -498,17 +502,17 @@ function HireDeveloper(props) {
                                             onChange={handleChange}
                                         >
                                             <FormControlLabel
-                                                value="less than 50,000₹"
+                                                value="50000"
                                                 control={<BlueRadio />}
                                                 label="less than 50,000₹"
                                             />
                                             <FormControlLabel
-                                                value="50,000₹-1,25,000₹"
+                                                value="125000"
                                                 control={<BlueRadio />}
                                                 label="50,000₹-1,25,000₹ Per Month"
                                             />
                                             <FormControlLabel
-                                                value="1,25,000₹-2,00,000₹"
+                                                value="200000"
                                                 control={<BlueRadio />}
                                                 label="1,25,000₹-2,00,000₹ Per Month"
                                             />
