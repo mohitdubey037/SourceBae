@@ -90,6 +90,7 @@
     font-weight: 700;
     position: absolute;
     top: 4rem;
+    margin-right: -6rem;
 }
 .navbar_responsive_icon {
     display: none;
