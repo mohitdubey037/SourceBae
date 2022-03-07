@@ -214,6 +214,7 @@ const RequirementListing = () => {
                                     onApply={(devs) =>
                                         shareDeveloperPatchCall(devs)
                                     }
+                                    selectedCard={selectedCard}
                                 />
                             </div>
                         </div>

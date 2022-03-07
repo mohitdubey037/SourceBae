@@ -29,20 +29,6 @@ export default function LNavbar(props) {
                     </div>
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
-                        // onMouseOver={() =>
-                        //     (document.getElementById('pop-up').style.display =
-                        //         'block')
-                        // }
-                    >
-                        Services
-                        <img
-                            src={selectArrow}
-                            alt=""
-                            className={`${styles.nav_arrow}`}
-                        />
-                    </div>
-                    <div
-                        className={`${styles.nav_services} ${styles.nav_menu} `}
                     >
                         <span
                             onMouseOver={() =>
@@ -51,17 +37,13 @@ export default function LNavbar(props) {
                                 ).style.display = 'block')
                             }
                         >
-                            For Agencies
+                            Services
                             <img
                                 src={selectArrow}
                                 alt=""
                                 className={`${styles.nav_arrow}`}
                             />
                         </span>
-                    </div>
-                    <div className={`${styles.nav_menu}`}>
-                        {' '}
-                        <Link to="/whoAreYou">Review</Link>
                     </div>
                     <div
                         className={`${styles.service_option_wrap}`}

@@ -73,7 +73,11 @@ export default function ActiveRequirements() {
     }, [role]);
 
     return (
-        <>
+        <div
+            onClick={() =>
+                (document.getElementById('pop-up').style.display = 'none')
+            }
+        >
             <LNavbar />
             <PromotionalStrip />(
             <div className="bodyWrapper">
@@ -130,7 +134,7 @@ export default function ActiveRequirements() {
                 </div>
             </div>
             )
-        </>
+        </div>
     );
 }
 const buttonExtraStyle = {
