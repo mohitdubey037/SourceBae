@@ -151,6 +151,7 @@ function HireDeveloper(props) {
             },
             expectedStartTime: parseInt(apiData.expectedStartTime)
         };
+        console.log(body);
         instance
             .post(`api/client/hire-developers/create`, body)
             .then(function (response) {
@@ -182,6 +183,9 @@ function HireDeveloper(props) {
         if (apiData.requirementName === '') {
             errors.requirementName = 'Requirement name cannot be blank';
         }
+        // if (apiData.jobDescription.length >= 50) {
+        //     errors.jobDescription = "The Job Description must be at least 50 characters.";
+        // }
         if (selectedRoles.length === 0) {
             errors.developerRolesRequired =
                 'Atleast one developer role is Required';
@@ -229,7 +233,7 @@ function HireDeveloper(props) {
         <>
             <Navbar />
             <div className="back_and_hireDeveloper_Parent">
-                <img className="Image2" src={DownImage} alt="downImage" />
+                {/* <img className="Image2" src={DownImage} alt="downImage" /> */}
                 <Back name="Hire Developer" />
                 <div className="mainHireDeveloper">
                     <div className="hireDeveloperForm">
@@ -289,9 +293,9 @@ function HireDeveloper(props) {
                                         width: '420px'
                                     }}
                                 />
-                                {errors?.requirementName && (
+                                {errors?.jobDescription && (
                                     <span className="validation_message">
-                                        {errors?.requirementName}
+                                        {errors?.jobDescription}
                                     </span>
                                 )}
                             </div>

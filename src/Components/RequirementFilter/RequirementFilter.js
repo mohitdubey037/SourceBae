@@ -20,7 +20,7 @@ export default function RequirementFilter({
             budget: undefined,
             createdWithin: undefined
         });
-        filterApplier(false);
+        filterApplier({ isParam: false });
     };
 
     const CreatedWithin = 'createdWithin';
@@ -152,7 +152,11 @@ export default function RequirementFilter({
                         className={styles.radioStyle}
                         onClick={() => handleRadioChecks(budget, '4000')}
                     >
-                        <input type="radio" name="budgetRadio" />
+                        <input
+                            type="radio"
+                            name="budgetRadio"
+                            checked={filterState[budget] === '4000'}
+                        />
                         <SizedBox width={'8px'} />
                         <div
                             class="state p-info-o"
@@ -238,7 +242,7 @@ export default function RequirementFilter({
                         <FilterButton
                             title={'Apply'}
                             color={colors.BLUE}
-                            onClick={() => filterApplier(true)}
+                            onClick={() => filterApplier({ isParam: true })}
                         />
                     </div>
                 </div>

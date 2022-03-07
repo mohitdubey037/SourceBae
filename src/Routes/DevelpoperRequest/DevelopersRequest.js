@@ -34,16 +34,16 @@ const DevelopersRequest = () => {
 
   const hireDevApi = async () => {
     setisLoading(true)
-    // const url = `/api/${role}/hire-developers/all`;
-    const url = `/api/client/hire-developers/all?clientId=61e541916343484c6752efc0&page=${nextPage}`;
+    const url = `/api/${role}/hire-developers/all`;
     let params = {
       clientId,
       page: nextPage
     }
     instance
-      .get(url)
+      .get(url, params)
       .then((res) => {
-        setfetchedDevelopers([...fetchedDevelopers, ...res?.docs])
+        const sharedDevsEntryOnly = res?.docs?.filter(item => item?.developersShared?.length)
+        setfetchedDevelopers([...fetchedDevelopers, ...sharedDevsEntryOnly])
         setnextPage(res?.nextPage)
       })
       .catch((err) => {
@@ -96,19 +96,11 @@ const DevelopersRequest = () => {
                           :
                           <div className={styles.noDevsShared} >No developers shared yet:(</div>
                       }
-                      {/* <div className={styles.showMorebtn}>
-                      <Button
-                        onClick={() => { }}
-                        name={'Load More'}
-                        buttonExtraStyle={buttonExtraStyle}
-                        buttonTextStyle={buttonTextStyle}
-                      />
-                    </div> */}
                     </ListingContainer>
                   </>
                 ))
                 :
-                <NoDataComponent />
+                <NoDataComponent heading={''} text={"Seems like you haven't shared any developers yet!"} />
             }
             <div className={styles.showMorebtn}>
               {

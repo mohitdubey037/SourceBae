@@ -61,14 +61,13 @@
     background-color: #ffffff;
 }
 .L_signup {
-    background-color: #ffffff;
     color: #554dde;
+    background-color: #ffffff;
     border: solid #554dde;
 }
 .L_signup:hover,
 .L_signup:active {
     color: #ffffff;
-    background-color: transparent;
     background-image: linear-gradient(230deg, #2218d1 0%, #554dde 90%);
 }
 .nav_arrow {
