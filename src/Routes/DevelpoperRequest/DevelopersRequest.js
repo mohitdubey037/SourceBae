@@ -18,12 +18,13 @@ import Spinner from '../../Components/Spinner/Spinner';
 let page = 1
 const DevelopersRequest = () => {
 
-  const clientId = localStorage.getItem('userId') || '';
+  const agencyId = localStorage.getItem('userId') || '';
   const [nextPage, setnextPage] = useState(page)
   const [modalData, setmodalData] = useState({})
   const [confirmationModalType, setconfirmationModalType] = useState('');
   const [fetchedDevelopers, setfetchedDevelopers] = useState([])
   const [isLoading, setisLoading] = useState(false)
+  const [selectedDevs, setselectedDevs] = useState([])
 
   const role = AGENCY;
 
@@ -35,8 +36,9 @@ const DevelopersRequest = () => {
   const hireDevApi = async () => {
     setisLoading(true)
     const url = `/api/${role}/hire-developers/all`;
+    // const url = `/api/client/hire-developers/all?clientId=61e541916343484c6752efc0&page=${nextPage}`;
     let params = {
-      clientId,
+      agencyId,
       page: nextPage
     }
     instance
@@ -50,6 +52,32 @@ const DevelopersRequest = () => {
         console.log(err)
       })
       .finally(() => setisLoading(false));
+  };
+
+  const acceptMyDevsPatchCall = async (id) => {
+    let url = `/api/${role}/hire-developers/share-developer/${id}`;
+    let body = {
+      agencyId: agencyId,
+      developerIds: selectedDevs,
+      developerStatus: '3'
+    };
+    instance
+      .patch(url, body)
+      .then((res) => { console.log(res, 'dfdgsddffdggs') })
+      .catch((err) => console.log(err, 'u8r9we89fsa89d9'));
+  };
+
+
+
+  const selectedMyDev = (newDevId) => {
+    let isAlreadyChecked = selectedDevs?.some(
+      (devId) => devId === newDevId
+    );
+    isAlreadyChecked
+      ? setselectedDevs(() =>
+        selectedDevs?.filter((devId) => devId !== newDevId)
+      )
+      : setselectedDevs([...selectedDevs, newDevId]);
   };
 
   return (
@@ -81,6 +109,7 @@ const DevelopersRequest = () => {
                           <div className={styles.cardHolder}>
                             {devs?.developersShared?.map((item) => (
                               <div className={styles.cardContainer}>
+                                <input type="checkbox" onChange={() => selectedMyDev(item?.developerId?._id)} />
                                 <DeveloperCard
                                   data={item}
                                   onDelete={() =>
@@ -96,6 +125,7 @@ const DevelopersRequest = () => {
                           :
                           <div className={styles.noDevsShared} >No developers shared yet:(</div>
                       }
+                      <div onClick={() => acceptMyDevsPatchCall(devs?._id)} >Apply</div>
                     </ListingContainer>
                   </>
                 ))
@@ -104,7 +134,7 @@ const DevelopersRequest = () => {
             }
             <div className={styles.showMorebtn}>
               {
-                nextPage &&
+                !!fetchedDevelopers?.length && nextPage &&
                 (
                   isLoading
                     ? <Spinner style={{ height: '60px' }} />
