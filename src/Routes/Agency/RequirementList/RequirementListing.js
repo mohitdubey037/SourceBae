@@ -77,20 +77,21 @@ const RequirementListing = () => {
       }
       : { page: currentPage };
 
+    switchValue && (params.isHotRequest = 1)
+
     instance
       .get(url, {
         params
       })
       .then((res) => {
-        let sorted = res?.docs?.filter(ele => ele.isSourceBaeSelected === switchValue)
         config?.isShowMore
           ? setRequirementsList((prevState) => ({
             ...res,
             docs: prevState?.docs
-              ? [...prevState?.docs, ...sorted]
-              : [...sorted]
+              ? [...prevState?.docs, ...res?.docs]
+              : [...res?.docs]
           }))
-          : setRequirementsList({ ...res, docs: sorted });
+          : setRequirementsList({ ...res, docs: res?.docs });
       })
       .catch((err) => {
         setRequirementsList({ docs: [] });
@@ -138,7 +139,7 @@ const RequirementListing = () => {
   useEffect(() => {
     hireDevApi();
     // getDevelopers(cardId, agencyId)
-  }, [role, switchValue]);
+  }, [role]);
 
   return (
     <div>
