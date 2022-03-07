@@ -68,7 +68,15 @@ export default function RequirementsList(props) {
 
   const generateBudgetStr = budget => !budget?.min
     ? `Less than INR ${budget?.max ?? ''} per month`
-    : `INR ${budget?.max ?? ''} - INR ${budget?.max ?? ''} per month`
+    : `INR ${budget?.min ?? ''} - INR ${budget?.max ?? ''} per month`
+
+  const generateExperienceStr = exp => !exp?.min
+    ? `Less than ${exp?.max ?? ''}`
+    : `${exp?.min ?? ''} - ${exp?.max ?? ''}`
+
+  const generateResourcesStr = res => !res?.min
+    ? `${res}`
+    : `${res?.min ?? ''} - ${res?.max ?? ''}`
 
 
   return (
@@ -87,7 +95,7 @@ export default function RequirementsList(props) {
             />
           </div>
           <div className="verticalBar" />
-          <text className="tag">{`experience: ${developerExperienceRequired || ''
+          <text className="tag">{`experience: ${generateExperienceStr(developerExperienceRequired) || ''
             } year`}</text>
         </div>
         <button
@@ -113,7 +121,7 @@ export default function RequirementsList(props) {
         <div style={{ marginRight: '12px' }} />
         <IconNText
           icon={people}
-          text={`${developerExperienceRequired || ''} resources`}
+          text={`${generateResourcesStr(numberOfResourcesRequired) || ''} resources`}
         />
       </div>
       <div className="tagsContainer">

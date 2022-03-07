@@ -113,13 +113,13 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
           />
           {!selectedCard ? (
             <span className={styles.noDataMsg}>
-              select one of the available recuirement then select
+              select one of the available requirement then select
               your developer
             </span>
           ) : (
             <>
-              <p style={{ margin: '1rem 0' }}>
-                No Developers For Selected Requirement
+              <p className={styles.noDataMsg} style={{ textTransform: 'unset', marginBottom: '20px' }}  >
+                Looks like you haven't added any developers matches with the requirement
               </p>
               <button
                 onClick={() => history.push('/add-developer')}

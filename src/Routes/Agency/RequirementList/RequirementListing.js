@@ -223,6 +223,7 @@ const RequirementListing = () => {
               <div className={styles.optionsContainer}>
                 <DeveloperListing
                   item={developersList}
+                  selectedCard={selectedCard}
                   onApply={(devs) =>
                     shareDeveloperPatchCall(devs)
                   }
