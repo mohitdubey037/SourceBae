@@ -29,7 +29,7 @@
 .searchBarContainer{
   background-color: #F9F9F9;
   padding: 20px;
-  display: flex;
+  /* display: flex; */
   border-radius: 6px;
   margin: 30px 100px 30px 100px;
   align-items: center;
@@ -37,6 +37,11 @@
 
 .searchBarStyle{
   width: 75%;
+}
+
+.searchAndBtnWrapper{
+  display: flex;
+  justify-content: space-between;
 }
 
 .searchBtn{
@@ -48,4 +53,54 @@
   padding: 20px;
   display: flex;
   justify-content: center;
+}
+
+.login_switch {
+  display: flex;
+  width: 25%;
+  border-radius: 20px;
+  background-color: #fff9f9;
+  align-items: center;
+  position: relative;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+}
+
+.login_switch > button {
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 54%;
+  border-radius: 20px;
+  font-size: 13px;
+  padding: 7px;
+  position: absolute;
+  font-family: 'Segoe UI';
+}
+
+.agency__button {
+  left: 4px;
+  z-index: 1;
+  border: none;
+  color: #015f9a;
+}
+
+.client__button {
+  color: #4786fe;
+  right: 3px;
+}
+
+.active__buttonagency {
+  z-index: 2 !important;
+  background: linear-gradient(
+      262deg,
+      rgba(70, 44, 202, 1) 0%,
+      rgba(92, 109, 255, 1) 100%
+  ) !important;
+  color: white !important;
+}
+
+.active__buttonclient {
+  z-index: 2 !important;
+  background: linear-gradient(262deg, #015f9a 0%, #0376ba 100%) !important;
+  color: white !important;
 }

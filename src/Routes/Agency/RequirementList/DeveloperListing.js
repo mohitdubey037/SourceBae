@@ -46,7 +46,7 @@ function DeveloperListing({ item, onApply }) {
             item?.map((person) => (
               <div className={styles.DLCard}>
                 <SizedBox height={'6px'} />
-                <div className={styles.nameContainer}>
+                <div className={styles.nameContainer} style={{ pointerEvents: isAlreadyShared(person?._id) ? 'none' : 'all' }} >
                   <span
                     className={styles.name}
                   >{`${person?.firstName} ${person?.lastName}`}</span>

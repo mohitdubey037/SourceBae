@@ -13,17 +13,12 @@ import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
 
 let currentPage = 1;
-let filters = {
-  contractPeriod: undefined,
-  budget: undefined,
-  createdWithin: undefined
-};
 export default function ActiveRequirements() {
   const [requirementsList, setRequirementsList] = useState({ docs: [] });
   const role = AGENCY;
 
   const [searchText, setSearchText] = useState('');
-  const [isLoading, setisLoading] = useState(true)
+  const [isLoading, setisLoading] = useState(true);
 
   const [filterState, setFilterState] = useState({
     contractPeriod: undefined,
@@ -31,36 +26,24 @@ export default function ActiveRequirements() {
     createdWithin: undefined
   });
 
-  useEffect(() => {
-    filters = filterState;
-  }, [
-    filterState,
-    filterState?.contractPeriod,
-    filterState?.budget,
-    filterState?.createdWithin
-  ]);
   const hireDevApi = async (config, val) => {
-    setisLoading(true)
+    setisLoading(true);
     const url = `/api/${role}/hire-developers/all`;
     const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
     if (config?.isShowMore) currentPage += 1;
     else currentPage = 1;
-
-    let params = config?.isParam
-      ? {
-        page: currentPage,
-        searchKeyWord: searchText || val,
-        contractPeriod: filters?.contractPeriod,
-        minBudget,
-        maxBudget,
-        createdWithin: filters?.createdWithin
-      }
-      : { page: currentPage };
-
-    debugger;
     instance
       .get(url, {
-        params
+        params: config?.isParam
+          ? {
+            contractPeriod: filterState.contractPeriod,
+            createdWithin: filterState.createdWithin,
+            searchKeyWord: searchText || val,
+            minBudget,
+            maxBudget,
+            page: currentPage
+          }
+          : { page: currentPage }
       })
       .then((res) => {
         config?.isShowMore
@@ -75,7 +58,7 @@ export default function ActiveRequirements() {
       .catch((err) => {
         setRequirementsList({ docs: [] });
       })
-      .finally(() => setisLoading(false))
+      .finally(() => setisLoading(false));
   };
 
   function handlePagination() {
@@ -92,57 +75,59 @@ export default function ActiveRequirements() {
   return (
     <>
       <LNavbar />
-      <PromotionalStrip />
-      {
-        isLoading && (currentPage == 1)
-          ? <Spinner />
-          : <div className="bodyWrapper">
-            <div className="greyCard">
-              <h1 className="heading">Current Requirements</h1>
-              <div className="partition">
-                <div className="listContainer">
-                  {
-                    requirementsList?.docs?.length
-                      ?
-                      requirementsList?.docs?.map((req, index) => (
-                        <RequirementsCard
-                          key={req?._id}
-                          data={req}
-                          showButton={false}
-                          buttonTitle={'Apply now'}
-                        />
-                      ))
-                      :
-                      <NoDataComponent />
-                  }
-                </div>
-                <div className="optionsContainer">
-                  <SearchAndFilter
-                    filterState={filterState}
-                    setFilterState={setFilterState}
-                    filterApplier={() => hireDevApi({ isParam: true })}
-                    setSearchText={(val) => {
-                      setSearchText(val);
-                      debounceFn({ isParam: true }, val);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className={`showMorebtn`}>
-                {currentPage < requirementsList.totalPages && (
-                  isLoading
-                    ? <Spinner style={{ height: '60px' }} />
-                    : <Button
-                      name="show more"
-                      buttonExtraStyle={buttonExtraStyle}
-                      buttonTextStyle={buttonTextStyle}
-                      onClick={() => handlePagination()}
-                    />
+      <PromotionalStrip />(
+      <div className="bodyWrapper">
+        <div className="greyCard">
+          <h1 className="heading">Current Requirements</h1>
+          <div className="partition">
+            {isLoading && currentPage === 1 ? (
+              <Spinner style={{ width: '100%' }} />
+            ) : (
+              <div className="listContainer">
+                {requirementsList?.docs?.length ? (
+                  requirementsList?.docs?.map(
+                    (req, index) => (
+                      <RequirementsCard
+                        key={req?._id}
+                        data={req}
+                        showButton={false}
+                        buttonTitle={'Apply now'}
+                      />
+                    )
+                  )
+                ) : (
+                  <NoDataComponent />
                 )}
               </div>
+            )}
+            <div className="optionsContainer">
+              <SearchAndFilter
+                filterState={filterState}
+                setFilterState={setFilterState}
+                filterApplier={(val) => hireDevApi(val)}
+                setSearchText={(val) => {
+                  setSearchText(val);
+                  debounceFn({ isParam: true }, val);
+                }}
+              />
             </div>
           </div>
-      }
+          <div className={`showMorebtn`}>
+            {currentPage < requirementsList.totalPages &&
+              (isLoading ? (
+                <Spinner style={{ height: '60px' }} />
+              ) : (
+                <Button
+                  name="show more"
+                  buttonExtraStyle={buttonExtraStyle}
+                  buttonTextStyle={buttonTextStyle}
+                  onClick={() => handlePagination()}
+                />
+              ))}
+          </div>
+        </div>
+      </div>
+      )
     </>
   );
 }

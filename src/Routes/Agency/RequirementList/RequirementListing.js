@@ -12,13 +12,15 @@ import instance from '../../../Constants/axiosConstants';
 import Button from '../../../Components/Button/Button';
 import FilterSelect from './FilterSelect';
 
-import { AGENCY } from '../../../shared/constants';
+import { AGENCY, CLIENT } from '../../../shared/constants';
 import { debounce } from 'lodash';
 import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
+import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';
 
 let currentPage = 1;
 const RequirementListing = () => {
+
   const recentOptions = [
     { value: 0, label: 'Today' },
     { value: 7, label: 'This Week' },
@@ -26,10 +28,10 @@ const RequirementListing = () => {
   ];
 
   const budgetOptions = [
-    { value: '500-1000', label: '500-1000' },
-    { value: '1000-2000', label: '1000-2000' },
-    { value: '2000-3000', label: '2000-3000' },
-    { value: '4000', label: 'More than 4000' }
+    { value: '50000-65000', label: '₹50,000 - ₹65,000' },
+    { value: '65000-85000', label: '₹65,000 - ₹85,0000' },
+    { value: '85000-110000', label: '₹85,000 - ₹1,10,000' },
+    { value: '100000', label: 'More than ₹1,00,000' }
   ];
 
   const contractOptions = [
@@ -38,11 +40,12 @@ const RequirementListing = () => {
     { value: 12, label: 'More Than 12 Months' }
   ];
 
-  const [requirementsList, setRequirementsList] = useState({ docs: [] });
   const role = AGENCY;
   const agencyId = localStorage.getItem('userId') || '';
+  const [requirementsList, setRequirementsList] = useState({ docs: [] });
 
   const [searchText, setSearchText] = useState('');
+  const [switchValue, setswitchValue] = useState(false)
 
   const [filterState, setFilterState] = useState({
     contractPeriod: undefined,
@@ -52,10 +55,12 @@ const RequirementListing = () => {
 
   const [developersList, setdevelopersList] = useState([]);
   const [selectedCard, setselectedCard] = useState('');
-  const [isLoading, setisLoading] = useState(true)
+  const [isLoading, setisLoading] = useState(true);
 
   const hireDevApi = async (config, val) => {
-    setisLoading(true)
+    setisLoading(true);
+    setselectedCard('')
+    setdevelopersList([])
     const url = `/api/${role}/hire-developers/all?agencyId=${agencyId}`;
     const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
     if (config?.isShowMore) currentPage += 1;
@@ -77,19 +82,20 @@ const RequirementListing = () => {
         params
       })
       .then((res) => {
+        let sorted = res?.docs?.filter(ele => ele.isSourceBaeSelected === switchValue)
         config?.isShowMore
           ? setRequirementsList((prevState) => ({
             ...res,
             docs: prevState?.docs
-              ? [...prevState?.docs, ...res.docs]
-              : [...res.docs]
+              ? [...prevState?.docs, ...sorted]
+              : [...sorted]
           }))
-          : setRequirementsList({ ...res });
+          : setRequirementsList({ ...res, docs: sorted });
       })
       .catch((err) => {
         setRequirementsList({ docs: [] });
       })
-      .finally(() => setisLoading(false))
+      .finally(() => setisLoading(false));
   };
 
   const getDevelopers = async (cardId, agencyId) => {
@@ -107,17 +113,19 @@ const RequirementListing = () => {
   const shareDeveloperPatchCall = async (devs) => {
     let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
     let body = {
-      "agencyId": agencyId,
-      "developerIds": devs
-    }
+      agencyId: agencyId,
+      developerIds: devs
+    };
     instance
       .patch(url, body)
       .then((res) => { })
       .catch((err) => console.log(err));
   };
+
   function handlePagination() {
     hireDevApi({ isParam: true, isShowMore: true });
   }
+
   useEffect(() => {
     hireDevApi({ isParam: true, isShowMore: false });
   }, [filterState]);
@@ -125,12 +133,12 @@ const RequirementListing = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
 
+  const handleSwitch = () => setswitchValue(preV => !preV)
+
   useEffect(() => {
     hireDevApi();
     // getDevelopers(cardId, agencyId)
-  }, [role]);
-
-  const onSearch = (text) => { };
+  }, [role, switchValue]);
 
   return (
     <div>
@@ -138,90 +146,104 @@ const RequirementListing = () => {
         <Navbar />
       </div>
       <Back name="Active Requirement" />
-      {
-        isLoading && (currentPage == 1)
-          ? <Spinner />
-          : <>
-            <div className={styles.searchBarContainer}>
-              <div className={styles.searchBarStyle}>
-                <SearchBar
-                  onChange={onSearch}
-                  bgColor={colors.WHITE}
-                  placeholder={'Type keyword here example “react js”'}
-                  value={searchText}
-                  setSearchText={(val) => {
-                    setSearchText(val);
-                    debounceFn({ isParam: true }, val);
-                  }}
-                />
-              </div>
-              <SizedBox width={'30px'} />
-              <FilterSelect
-                options={recentOptions}
-                applyFilter={setFilterState}
-                objkey={'createdWithin'}
-              />
-              <SizedBox width={'30px'} />
-              <FilterSelect
-                options={budgetOptions}
-                applyFilter={setFilterState}
-                objkey={'budget'}
-              />
-              <SizedBox width={'30px'} />
-              <FilterSelect
-                options={contractOptions}
-                applyFilter={setFilterState}
-                objkey={'contractPeriod'}
-              />
-              <SizedBox width={'30px'} />
 
-              <button
-                className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.searchBtn}`}
-              >
-                <span>Clear</span>
-              </button>
-              <SizedBox width={'30px'} />
+      <>
+        <div className={styles.searchBarContainer}>
+          <div className={styles.searchAndBtnWrapper} >
+            <div className={styles.searchBarStyle}>
+              <SearchBar
+                height={'40px'}
+                bgColor={colors.WHITE}
+                placeholder={'Type keyword here example “react js”'}
+                value={searchText}
+                setSearchText={(val) => {
+                  setSearchText(val);
+                  debounceFn({ isParam: true }, val);
+                }}
+              />
             </div>
+            <div style={{ width: '200px' }} >
+              <CustomSwitch label={'SourceBae Picks'} switchValue={switchValue} onChange={handleSwitch} />
+            </div>
+          </div>
+          <div style={{ display: 'flex', marginTop: '20px', justifyContent: 'space-between', width: '75%' }} >
+            <FilterSelect
+              placeholder={'Posting date'}
+              options={recentOptions}
+              applyFilter={setFilterState}
+              objkey={'createdWithin'}
+            />
+
+            <FilterSelect
+              placeholder={'Budget'}
+              options={budgetOptions}
+              applyFilter={setFilterState}
+              objkey={'budget'}
+            />
+
+            <FilterSelect
+              placeholder={'Contract Period'}
+              options={contractOptions}
+              applyFilter={setFilterState}
+              objkey={'contractPeriod'}
+            />
+          </div>
+          <SizedBox width={'30px'} />
+
+        </div>
+        {isLoading && currentPage === 1 ? (
+          <Spinner />
+        ) : (
+          <>
             <div className={styles.partition}>
               <div className={styles.listContainer}>
-                {
-                  requirementsList?.docs?.length
-                    ?
-                    requirementsList?.docs?.map((req, index) => (
+                {requirementsList?.docs?.length ? (
+                  requirementsList?.docs?.map(
+                    (req, index) => (
                       <RequirementsCard
                         key={`${req?._id} ${index}`}
                         data={req}
                         showButton={false}
                         buttonTitle={'Apply now'}
-                        isSelected={selectedCard === req?._id}
+                        isSelected={
+                          selectedCard === req?._id
+                        }
                         onApplyClick={(id) => {
                           setselectedCard(id);
                           getDevelopers(id, agencyId);
                         }}
                       />
-                    ))
-                    :
-                    <NoDataComponent />
-                }
+                    )
+                  )
+                ) : (
+                  <NoDataComponent />
+                )}
               </div>
               <div className={styles.optionsContainer}>
-                <DeveloperListing item={developersList} onApply={devs => shareDeveloperPatchCall(devs)} />
+                <DeveloperListing
+                  item={developersList}
+                  onApply={(devs) =>
+                    shareDeveloperPatchCall(devs)
+                  }
+                />
               </div>
             </div>
             <div className={styles.showMorebtn}>
-              {currentPage < requirementsList.totalPages && (
-                isLoading
-                  ? <Spinner style={{ height: '60px' }} />
-                  : <Button
+              {currentPage < requirementsList.totalPages &&
+                (isLoading ? (
+                  <Spinner style={{ height: '60px' }} />
+                ) : (
+                  <Button
                     name="show more"
                     buttonExtraStyle={buttonExtraStyle}
                     buttonTextStyle={buttonTextStyle}
                     onClick={() => handlePagination()}
                   />
-              )}
+                ))}
             </div>
           </>
-      }
+        )}
+      </>
     </div>
   );
 };

@@ -380,7 +380,15 @@ function AddingDeveloper(props) {
                                                                             files
                                                                         </p>
                                                                     ) : (
-                                                                        <p className="logo_detail">
+                                                                        <p
+                                                                            className="logo_detail"
+                                                                            title={
+                                                                                resume !==
+                                                                                    null &&
+                                                                                resume[0]
+                                                                                    .name
+                                                                            }
+                                                                        >
                                                                             {resume !==
                                                                                 null &&
                                                                                 resume[0]

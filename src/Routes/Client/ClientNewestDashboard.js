@@ -10,7 +10,6 @@ import ShortTermProjectIcon from '../../assets/images/Newestdashboard/LeftSide/s
 import InvestmentIcon from '../../assets/images/Newestdashboard/LeftSide/interest_to_investment.svg';
 import './ClientNewestDashboard.css';
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
-import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 
 import instance from '../../Constants/axiosConstants';
 import * as actions from '../../Redux/action/addProject';
