@@ -34,18 +34,23 @@ function HireDeveloper(props) {
         developerRolesRequired: [],
         numberOfResourcesRequired: '',
         developerTechnologiesRequired: [],
-        developerExperienceRequired: 'Junior (1-3years)',
+        developerExperienceRequired: '1,3',
         preferredBillingMode: 'Weekly',
-        averageBudget: 'less than 50,000₹',
-        expectedStartDate: 'Immediately',
-        contractPeriod: '3 Months',
+        averageBudget: '0,50000',
+        jobDescription: '',
+        expectedStartTime: '0',
+        contractPeriod: 3,
         clientId: id
     });
 
     const [errors, setErrors] = useState({});
 
     const handleChange = (event) => {
-        let filterList = ['averageBudget', 'developerExperienceRequired'];
+        let filterList = [
+            'averageBudget',
+            'developerExperienceRequired',
+            'jobDescription'
+        ];
         let { name, value } = event.target;
         if (filterList.includes(event.target.name)) {
             setApiData({
@@ -125,12 +130,26 @@ function HireDeveloper(props) {
         if (!validated) {
             return;
         }
+        console.log(apiData.developerExperienceRequired.split(','), 'api');
         const body = {
             ...apiData,
             developerRolesRequired: selectedRoles.map((role) => role.value),
             developerTechnologiesRequired: selectedTechnologies.map(
                 (tech) => tech.value
-            )
+            ),
+            averageBudget: {
+                min: parseInt(apiData.averageBudget.split(',')?.[0]),
+                max: parseInt(apiData.averageBudget.split(',')?.[1])
+            },
+            developerExperienceRequired: {
+                min: parseInt(
+                    apiData.developerExperienceRequired.split(',')?.[0]
+                ),
+                max: parseInt(
+                    apiData.developerExperienceRequired.split(',')?.[1]
+                )
+            },
+            expectedStartTime: parseInt(apiData.expectedStartTime)
         };
         instance
             .post(`api/client/hire-developers/create`, body)
@@ -256,9 +275,8 @@ function HireDeveloper(props) {
                             </ul>
                             <div className="inputs-container">
                                 <textarea
-                                    // type="text"
-                                    name="requirementName"
-                                    value={apiData.requirementName}
+                                    name="jobDescription"
+                                    value={apiData.jobDescription}
                                     placeholder="Give a name to identify requirement"
                                     onChange={handleChange}
                                     rows={5}
@@ -371,10 +389,10 @@ function HireDeveloper(props) {
                                     id="contractPeriod"
                                     onChange={handleChange}
                                 >
-                                    <option value="3 Months">3 Months</option>
-                                    <option value="6 Months">6 Months</option>
-                                    <option value="9 Months">9 Months</option>
-                                    <option value="12 Months">12 Months</option>
+                                    <option value={3}>3 Months</option>
+                                    <option value={6}>6 Months</option>
+                                    <option value={9}>9 Months</option>
+                                    <option value={12}>12 Months</option>
                                 </select>
                             </div>
                         </div>
@@ -403,7 +421,7 @@ function HireDeveloper(props) {
                                             >
                                                 <div>
                                                     <FormControlLabel
-                                                        value="Junior (1-3years)"
+                                                        value="1,3"
                                                         control={<BlueRadio />}
                                                         label="Junior (1-3years)"
                                                     />
@@ -416,7 +434,7 @@ function HireDeveloper(props) {
                                             >
                                                 <div>
                                                     <FormControlLabel
-                                                        value="Mid Range (3-6 years)"
+                                                        value="3,6"
                                                         control={<BlueRadio />}
                                                         label="Mid Range (3-6 years)"
                                                     />
@@ -429,7 +447,7 @@ function HireDeveloper(props) {
                                             >
                                                 <div>
                                                     <FormControlLabel
-                                                        value="Senior (6-9 years)"
+                                                        value="6,9"
                                                         control={<BlueRadio />}
                                                         label="Senior (6-9 years)"
                                                     />
@@ -443,7 +461,7 @@ function HireDeveloper(props) {
                             <div className="startPeriod">
                                 <ul>
                                     <li>
-                                        Start Date{' '}
+                                        Start Time{' '}
                                         <span className="requiredStar">*</span>
                                     </li>
                                 </ul>
@@ -451,29 +469,19 @@ function HireDeveloper(props) {
                                     <div className="left-margin">
                                         <RadioGroup
                                             aria-label="startDate"
-                                            name="expectedStartDate"
-                                            value={apiData.expectedStartDate}
+                                            name="expectedStartTime"
+                                            value={apiData.expectedStartTime}
                                             onChange={handleChange}
                                         >
                                             <FormControlLabel
-                                                value="Immediately"
+                                                value="0"
                                                 control={<BlueRadio />}
                                                 label="Immediately"
                                             />
                                             <FormControlLabel
-                                                value="in 1 to 2 weeks"
+                                                value="1"
                                                 control={<BlueRadio />}
-                                                label="in 1 to 2 weeks"
-                                            />
-                                            <FormControlLabel
-                                                value="more than 2 weeks"
-                                                control={<BlueRadio />}
-                                                label="more than 2 weeks"
-                                            />
-                                            <FormControlLabel
-                                                value="negotiable"
-                                                control={<BlueRadio />}
-                                                label="negotiable"
+                                                label="within 1 week"
                                             />
                                         </RadioGroup>
                                     </div>
@@ -498,22 +506,22 @@ function HireDeveloper(props) {
                                             onChange={handleChange}
                                         >
                                             <FormControlLabel
-                                                value="less than 50,000₹"
+                                                value={'0,50000'}
                                                 control={<BlueRadio />}
                                                 label="less than 50,000₹"
                                             />
                                             <FormControlLabel
-                                                value="50,000₹-1,25,000₹"
+                                                value={'50000,100000'}
                                                 control={<BlueRadio />}
                                                 label="50,000₹-1,25,000₹ Per Month"
                                             />
                                             <FormControlLabel
-                                                value="1,25,000₹-2,00,000₹"
+                                                value={'125000,200000'}
                                                 control={<BlueRadio />}
                                                 label="1,25,000₹-2,00,000₹ Per Month"
                                             />
                                             <FormControlLabel
-                                                value="More than 2,00,000₹"
+                                                value={'200000,100000000'}
                                                 control={<BlueRadio />}
                                                 label="More than 2,00,000₹ Per Month"
                                             />

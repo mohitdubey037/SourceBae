@@ -47,13 +47,16 @@ instance.interceptors.response.use(
     },
     function (error) {
         let trueError = '';
-
         if (error?.response?.status !== 404) {
+            let isMongoError =
+                Array.isArray(error.response.data.error) &&
+                (error?.response?.data?.error?.includes('CastError') ||
+                    error?.response?.data?.error?.includes('MongooseError'));
+
             if (
                 error?.response?.data?.message === 'Bearer Token not found' ||
                 error?.response?.data?.message === 'Unauthorized' ||
-                error?.response?.data?.error?.includes('CastError') ||
-                error?.response?.data?.error?.includes('MongooseError')
+                isMongoError
             ) {
                 if (cookie.load('Authorization')) {
                     alert(error?.response?.data?.message);
