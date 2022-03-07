@@ -6,12 +6,13 @@ import RequirementsCard from '../../../Components/RequirementCard/RequirementsCa
 import DeveloperListing from './DeveloperListing';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
 import colors from '../../../Constants/colors';
+import buttonStyles from '../../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
 import instance from '../../../Constants/axiosConstants';
 import Button from '../../../Components/Button/Button';
 import FilterSelect from './FilterSelect';
 
-import { AGENCY } from '../../../shared/constants';
+import { AGENCY, CLIENT } from '../../../shared/constants';
 import { debounce } from 'lodash';
 import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
@@ -75,22 +76,21 @@ const RequirementListing = () => {
               }
             : { page: currentPage };
 
+        switchValue && (params.isHotRequest = 1);
+
         instance
             .get(url, {
                 params
             })
             .then((res) => {
-                let sorted = res?.docs?.filter(
-                    (ele) => ele.isSourceBaeSelected === switchValue
-                );
                 config?.isShowMore
                     ? setRequirementsList((prevState) => ({
                           ...res,
                           docs: prevState?.docs
-                              ? [...prevState?.docs, ...sorted]
-                              : [...sorted]
+                              ? [...prevState?.docs, ...res?.docs]
+                              : [...res?.docs]
                       }))
-                    : setRequirementsList({ ...res, docs: sorted });
+                    : setRequirementsList({ ...res, docs: res?.docs });
             })
             .catch((err) => {
                 setRequirementsList({ docs: [] });
@@ -138,7 +138,7 @@ const RequirementListing = () => {
     useEffect(() => {
         hireDevApi();
         // getDevelopers(cardId, agencyId)
-    }, [role, switchValue]);
+    }, [role]);
 
     return (
         <div>
@@ -234,6 +234,7 @@ const RequirementListing = () => {
                             <div className={styles.optionsContainer}>
                                 <DeveloperListing
                                     item={developersList}
+                                    selectedCard={selectedCard}
                                     onApply={(devs) =>
                                         shareDeveloperPatchCall(devs)
                                     }
