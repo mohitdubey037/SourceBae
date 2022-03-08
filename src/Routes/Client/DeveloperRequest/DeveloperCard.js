@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './DeveloperCard.module.css'
-import cross from '../../assets/images/OtherIcons/crossInCircle.svg'
-import downArrow from '../../assets/images/OtherIcons/downArrow.svg'
-import SizedBox from '../../Components/SizedBox/SizedBox'
-import Button from '../../Components/Button/Button'
-import colors from '../../Constants/colors'
+import cross from '../../../assets/images/OtherIcons/crossInCircle.svg'
+import downArrow from '../../../assets/images/OtherIcons/downArrow.svg'
+import SizedBox from '../../../Components/SizedBox/SizedBox'
+import Button from '../../../Components/Button/Button'
+import colors from '../../../Constants/colors'
 
 const DeveloperCard = (props) => {
 

@@ -7,14 +7,17 @@ import RequirementsCard from '../../../Components/RequirementCard/RequirementsCa
 import instance from '../../../Constants/axiosConstants';
 import Button from '../../../Components/Button/Button';
 import { AGENCY } from '../../../shared/constants';
+import cookie from 'react-cookies'
 // eslint-disable-next-line no-unused-vars
 import { debounce } from 'lodash';
 import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
+import { useHistory } from 'react-router-dom';
 
 let currentPage = 1;
 export default function ActiveRequirements() {
   const [requirementsList, setRequirementsList] = useState({ docs: [] });
+  const routerHistory = useHistory()
   const role = AGENCY;
 
   const [searchText, setSearchText] = useState('');
@@ -72,6 +75,22 @@ export default function ActiveRequirements() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [role]);
 
+  const onApplyClick = () => {
+    let user = localStorage.getItem('userId');
+    let auth = cookie.load('Authorization');
+
+    if (user && auth) {
+      routerHistory.push(`/agency-requirements-listing`);
+    } else {
+      alert('Please login to continue');
+      routerHistory.push({
+        pathname: `login/${AGENCY}`,
+        state: { isAgencyRequirement: true }
+      });
+    }
+  }
+
+
   return (
     <div
       onClick={() =>
@@ -96,6 +115,7 @@ export default function ActiveRequirements() {
                         data={req}
                         showButton={false}
                         buttonTitle={'Apply now'}
+                        onApplyClick={onApplyClick}
                       />
                     )
                   )

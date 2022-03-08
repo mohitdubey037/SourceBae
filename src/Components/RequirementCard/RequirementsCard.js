@@ -21,7 +21,7 @@ export default function RequirementsList(props) {
     buttonTitle = '',
     data = {},
     isSelected,
-    onApplyClick = undefined,
+    onApplyClick = () => { },
     selectedCard
   } = props;
   const [open, setOpen] = useState(false);
@@ -99,7 +99,7 @@ export default function RequirementsList(props) {
             } year`}</text>
         </div>
         <button
-          onClick={() => onClick(_id)}
+          onClick={() => onApplyClick(_id)}
           id={'RequirementsListCTA'}
           style={{ display: showButton ? 'block' : 'none' }}
           className={`${styles.L_login} ${styles.nav_Lbutton
@@ -107,6 +107,15 @@ export default function RequirementsList(props) {
         >
           <span>{buttonTitle}</span>
         </button>
+        {/* <button
+          onClick={() => onClick(_id)}
+          id={'RequirementsListCTA'}
+          style={{ display: showButton ? 'block' : 'none' }}
+          className={`${styles.L_login} ${styles.nav_Lbutton
+            } ${'RequirementsListCTA'}`}
+        >
+          <span>{buttonTitle}</span>
+        </button> */}
       </div>
       <div className="insight">
         <IconNText
