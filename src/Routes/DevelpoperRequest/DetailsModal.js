@@ -6,7 +6,15 @@ import SizedBox from '../../Components/SizedBox/SizedBox'
 
 export default function DetailsModal({ data, open, onCloseModal }) {
 
-  let descrip = 'The user interface (UI) is the point of human-computer interaction and communication in a device.The user interface (UI) is the point of human-computer interaction and communication in a device.'
+
+  const generateBudgetStr = budget => !budget?.min
+    ? `Less than INR ${budget?.max ?? ''} per month`
+    : `INR ${budget?.min ?? ''} - INR ${budget?.max ?? ''} per month`
+
+  const generateExperienceStr = exp => !exp?.min
+    ? `Less than ${exp?.max ?? ''}`
+    : `${exp?.min ?? ''} - ${exp?.max ?? ''}`
+
 
   return (
     <Modal
@@ -32,7 +40,7 @@ export default function DetailsModal({ data, open, onCloseModal }) {
         <SizedBox height={'12px'} />
         <div className={styles.experienceTag} >
           <span className={styles.experience}>
-            {`experience - ${data?.developerExperienceRequired || '0'} year`}
+            {`experience: ${generateExperienceStr(data?.developerExperienceRequired) || '0'} year`}
           </span>
         </div>
 

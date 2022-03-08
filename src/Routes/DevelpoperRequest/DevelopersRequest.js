@@ -9,7 +9,7 @@ import Button from '../../Components/Button/Button';
 import DetailsModal from './DetailsModal';
 import ConfirmationModal from './ConfirmationModal';
 import { ACCEPT, DELETE } from './types';
-import { AGENCY } from '../../shared/constants';
+import { AGENCY, CLIENT } from '../../shared/constants';
 import instance from '../../Constants/axiosConstants';
 import NoDataComponent from '../../Components/NoData/NoDataComponent';
 import Spinner from '../../Components/Spinner/Spinner';
@@ -18,7 +18,8 @@ import Spinner from '../../Components/Spinner/Spinner';
 let page = 1
 const DevelopersRequest = () => {
 
-  const agencyId = localStorage.getItem('userId') || '';
+  const id = localStorage.getItem('userId') || '';
+  const role = localStorage.getItem('role') || '';
   const [nextPage, setnextPage] = useState(page)
   const [modalData, setmodalData] = useState({})
   const [confirmationModalType, setconfirmationModalType] = useState('');
@@ -26,23 +27,17 @@ const DevelopersRequest = () => {
   const [isLoading, setisLoading] = useState(false)
   const [selectedDevs, setselectedDevs] = useState([])
 
-  const role = AGENCY;
+  // const role = CLIENT;
 
   useEffect(() => {
     hireDevApi()
   }, [])
 
-
   const hireDevApi = async () => {
     setisLoading(true)
-    const url = `/api/${role}/hire-developers/all`;
-    // const url = `/api/client/hire-developers/all?clientId=61e541916343484c6752efc0&page=${nextPage}`;
-    let params = {
-      agencyId,
-      page: nextPage
-    }
+    const url = `/api/${role}/hire-developers/all?clientId=${id}`;
     instance
-      .get(url, params)
+      .get(url)
       .then((res) => {
         const sharedDevsEntryOnly = res?.docs?.filter(item => item?.developersShared?.length)
         setfetchedDevelopers([...fetchedDevelopers, ...sharedDevsEntryOnly])
@@ -57,7 +52,7 @@ const DevelopersRequest = () => {
   const acceptMyDevsPatchCall = async (id) => {
     let url = `/api/${role}/hire-developers/share-developer/${id}`;
     let body = {
-      agencyId: agencyId,
+      clientId: id,
       developerIds: selectedDevs,
       developerStatus: '3'
     };
@@ -66,8 +61,6 @@ const DevelopersRequest = () => {
       .then((res) => { console.log(res, 'dfdgsddffdggs') })
       .catch((err) => console.log(err, 'u8r9we89fsa89d9'));
   };
-
-
 
   const selectedMyDev = (newDevId) => {
     let isAlreadyChecked = selectedDevs?.some(
@@ -156,7 +149,7 @@ const DevelopersRequest = () => {
         type={confirmationModalType}
         onCloseModal={() => setconfirmationModalType('')}
       />
-    </div >
+    </div>
   );
 };
 
