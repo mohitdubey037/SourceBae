@@ -1,0 +1,45 @@
+.modalRoot{
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  min-width: 90vw;
+  max-height: 90vh;
+  padding: 24px;
+}
+
+
+.modalContainer{
+  display: block;
+}
+
+.listingLabel{
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+}
+
+.cardHolder{
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 23% 23% 23% 23%;
+  grid-column-gap: 2%;
+}
+
+.showMorebtn{
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.noDevsShared{
+  margin: 1rem;
+  justify-content: center;
+  display: flex;
+}

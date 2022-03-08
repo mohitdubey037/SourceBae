@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './DeveloperCard.module.css'
-import cross from '../../assets/images/OtherIcons/crossInCircle.svg'
-import downArrow from '../../assets/images/OtherIcons/downArrow.svg'
-import SizedBox from '../../Components/SizedBox/SizedBox'
-import Button from '../../Components/Button/Button'
-import colors from '../../Constants/colors'
+import cross from '../../../assets/images/OtherIcons/crossInCircle.svg'
+import downArrow from '../../../assets/images/OtherIcons/downArrow.svg'
+import SizedBox from '../../../Components/SizedBox/SizedBox'
+import Button from '../../../Components/Button/Button'
+import colors from '../../../Constants/colors'
 
 const DeveloperCard = (props) => {
 
@@ -51,10 +51,10 @@ const DeveloperCard = (props) => {
       <SizedBox height={'12px'} />
       <div className={styles.buttonContainer} >
         <Button
-          name={'Accepted'}
+          name={props?.data?.developerStatus === 3 ? 'Accepted' : 'Accept'}
           onClick={props.onAccept}
-          buttonExtraStyle={{ ...buttonExtraStyle }, { backgroundColor: props.data == 'maq1' ? 'rgba(0, 123, 64, 0.12)' : '#015F9A', border: 'none' }}
-          buttonTextStyle={{ ...buttonTextStyle }, { color: props.data == 'maq1' ? '#007B40' : '#ffffff' }}
+          buttonExtraStyle={{ ...buttonExtraStyle }, { backgroundColor: props?.data?.developerStatus === 3 ? 'rgba(0, 123, 64, 0.12)' : '#015F9A', border: 'none' }}
+          buttonTextStyle={{ ...buttonTextStyle }, { color: props?.data?.developerStatus === 3 ? '#007B40' : '#ffffff' }}
         />
       </div>
 

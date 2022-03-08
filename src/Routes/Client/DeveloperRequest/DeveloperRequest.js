@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Back from '../../../Components/Back/Back';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
-import styles from './RequirementListing.module.css';
+import styles from './DeveloperRequest.module.css';
 import RequirementsCard from '../../../Components/RequirementCard/RequirementsCard';
 import DeveloperListing from './DeveloperListing';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
@@ -11,18 +11,16 @@ import SizedBox from '../../../Components/SizedBox/SizedBox';
 import instance from '../../../Constants/axiosConstants';
 import Button from '../../../Components/Button/Button';
 import FilterSelect from './FilterSelect';
-import cookie from 'react-cookies';
 
 import { AGENCY, CLIENT } from '../../../shared/constants';
 import { debounce } from 'lodash';
 import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
 import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';
-import { useHistory } from 'react-router-dom';
+import DeveloperModal from './DeveloperModal';
 
 let currentPage = 1;
-const RequirementListing = () => {
-
+const DeveloperRequest = () => {
   const recentOptions = [
     { value: 0, label: 'Today' },
     { value: 7, label: 'This Week' },
@@ -43,12 +41,13 @@ const RequirementListing = () => {
   ];
 
   const role = AGENCY;
-  const agencyId = localStorage.getItem('userId') || '';
+  const clientId = localStorage.getItem('userId') || '';
   const [requirementsList, setRequirementsList] = useState({ docs: [] });
-  const routerHistory = useHistory();
+  const [modal, setmodal] = useState({ open: false, data: null })
 
   const [searchText, setSearchText] = useState('');
   const [switchValue, setswitchValue] = useState(false);
+  const [fetchedRequirement, setfetchedRequirement] = useState([])
 
   const [filterState, setFilterState] = useState({
     contractPeriod: undefined,
@@ -59,119 +58,61 @@ const RequirementListing = () => {
   const [developersList, setdevelopersList] = useState([]);
   const [selectedCard, setselectedCard] = useState('');
   const [isLoading, setisLoading] = useState(true);
-
-  const hireDevApi = async (config, val) => {
-    setisLoading(true);
-    setselectedCard('');
-    setdevelopersList([]);
-    const url = `/api/${role}/hire-developers/all?agencyId=${agencyId}`;
-    const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
-    if (config?.isShowMore) currentPage += 1;
-    else currentPage = 1;
-
-    let params = config?.isParam
-      ? {
-        createdWithin: filterState?.createdWithin,
-        contractPeriod: filterState?.contractPeriod,
-        minBudget,
-        maxBudget,
-        page: currentPage,
-        searchKeyWord: searchText || val
-      }
-      : { page: currentPage };
-
-    switchValue && (params.isHotRequest = 1);
-
-    instance
-      .get(url, {
-        params
-      })
-      .then((res) => {
-        config?.isShowMore
-          ? setRequirementsList((prevState) => ({
-            ...res,
-            docs: prevState?.docs
-              ? [...prevState?.docs, ...res?.docs]
-              : [...res?.docs]
-          }))
-          : setRequirementsList({ ...res, docs: res?.docs });
-      })
-      .catch((err) => {
-        setRequirementsList({ docs: [] });
-      })
-      .finally(() => setisLoading(false));
-  };
-
-  const getDevelopers = async (cardId, agencyId) => {
-    const url = `/api/${role}/hire-developers/get/${cardId}/${agencyId}`;
-    instance
-      .get(url)
-      .then((res) => {
-        setdevelopersList(res);
-      })
-      .catch((err) => {
-        setdevelopersList([]);
-      });
-  };
-
-  const shareDeveloperPatchCall = async (devs) => {
-    let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
-    let body = {
-      agencyId: agencyId,
-      developerIds: devs
-    };
-    instance
-      .patch(url, body)
-      .then((res) => { })
-      .catch((err) => console.log(err));
-  };
-
-  function handlePagination() {
-    hireDevApi({ isParam: true, isShowMore: true });
-  }
-
-  useEffect(() => {
-    hireDevApi({ isParam: true, isShowMore: false });
-  }, [filterState]);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
+  const [nextPage, setnextPage] = useState(1)
+  const [selectedDevs, setselectedDevs] = useState([])
 
   const handleSwitch = () => setswitchValue((preV) => !preV);
 
   useEffect(() => {
-    hireDevApi();
-    // getDevelopers(cardId, agencyId)
-  }, [role]);
+    hireDevApi()
+  }, [])
 
-  const onApplyClick = (id) => {
-    let user = localStorage.getItem('userId');
-    let auth = cookie.load('Authorization');
+  const hireDevApi = async () => {
+    setisLoading(true)
+    const url = `/api/${role}/hire-developers/all?clientId=${clientId}`;
+    instance
+      .get(url)
+      .then((res) => {
+        const sharedDevsEntryOnly = res?.docs?.filter(item => item?.developersShared?.length)
+        setfetchedRequirement([...fetchedRequirement, ...sharedDevsEntryOnly])
+        setnextPage(res?.nextPage)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => setisLoading(false));
+  };
 
-    if (user && auth) {
-      if (
-        routerHistory.location.pathname ===
-        '/agency-requirements-listing'
-      ) {
-        setselectedCard(id);
-        getDevelopers(id, agencyId);
-      }
-      routerHistory.push(`/agency-requirements-listing`);
-    } else {
-      alert('Please login to continue');
-      routerHistory.push({
-        pathname: `login/${AGENCY}`,
-        state: { isAgencyRequirement: true }
-      });
-    }
-  }
+  const acceptMyDevsPatchCall = async (id) => {
+    let url = `/api/${role}/hire-developers/share-developer/${id}`;
+    let body = {
+      clientId: id,
+      developerIds: selectedDevs,
+      developerStatus: '3'
+    };
+    instance
+      .patch(url, body)
+      .then((res) => { console.log(res, 'dfdgsddffdggs') })
+      .catch((err) => console.log(err, 'u8r9we89fsa89d9'));
+  };
+
+  const selectedMyDev = (newDevId) => {
+    let isAlreadyChecked = selectedDevs?.some(
+      (devId) => devId === newDevId
+    );
+    isAlreadyChecked
+      ? setselectedDevs(() =>
+        selectedDevs?.filter((devId) => devId !== newDevId)
+      )
+      : setselectedDevs([...selectedDevs, newDevId]);
+  };
 
   return (
     <div>
       <div className={styles.navbarDiv}>
         <Navbar />
       </div>
-      <Back name="Active Requirement" />
+      <Back name="Developer Request" />
 
       <>
         <div className={styles.searchBarContainer}>
@@ -186,7 +127,6 @@ const RequirementListing = () => {
                 value={searchText}
                 setSearchText={(val) => {
                   setSearchText(val);
-                  debounceFn({ isParam: true }, val);
                 }}
               />
             </div>
@@ -235,20 +175,18 @@ const RequirementListing = () => {
           <>
             <div className={styles.partition}>
               <div className={styles.listContainer}>
-                {requirementsList?.docs?.length ? (
-                  requirementsList?.docs?.map(
+                {fetchedRequirement ? (
+                  fetchedRequirement?.map(
                     (req, index) => (
                       <RequirementsCard
-                        key={`${req?._id} ${index}`}
+                        key={`${req?._id}${index}`}
                         data={req}
-                        showButton={false}
-                        buttonTitle={'Apply now'}
+                        showButton={true}
+                        buttonTitle={'Detail'}
                         isSelected={
                           selectedCard === req?._id
                         }
-                        onApplyClick={(id) => {
-                          onApplyClick(id)
-                        }}
+                        onApplyClick={() => setmodal({ open: true, data: req })}
                       />
                     )
                   )
@@ -260,9 +198,7 @@ const RequirementListing = () => {
                 <DeveloperListing
                   item={developersList}
                   selectedCard={selectedCard}
-                  onApply={(devs) =>
-                    shareDeveloperPatchCall(devs)
-                  }
+                  onApply={(devs) => { }}
                 />
               </div>
             </div>
@@ -275,13 +211,17 @@ const RequirementListing = () => {
                     name="show more"
                     buttonExtraStyle={buttonExtraStyle}
                     buttonTextStyle={buttonTextStyle}
-                    onClick={() => handlePagination()}
+                    onClick={() => { }}
                   />
                 ))}
             </div>
           </>
         )}
+
       </>
+
+      <DeveloperModal modal={modal} onCloseModal={() => setmodal({ open: false })} />
+
     </div>
   );
 };
@@ -304,4 +244,4 @@ const buttonTextStyle = {
   color: '#015F9A'
 };
 
-export default RequirementListing;
+export default DeveloperRequest;

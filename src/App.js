@@ -52,7 +52,7 @@ import firebase from 'firebase/app';
 import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequirements';
 import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
-import DevelopersRequest from './Routes/DevelpoperRequest/DevelopersRequest';
+import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest'
 
 const App = (props) => {
     useEffect(() => {

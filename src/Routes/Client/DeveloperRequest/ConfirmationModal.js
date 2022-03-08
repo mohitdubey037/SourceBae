@@ -2,14 +2,14 @@ import React from 'react'
 import { ACCEPT, DELETE } from './types'
 import Modal from 'react-responsive-modal'
 import styles from './ConfirmationModal.module.css'
-import Button from '../../Components/Button/Button'
-import cross from '../../assets/images/OtherIcons/crossInCircle.svg'
-import SizedBox from '../../Components/SizedBox/SizedBox'
-import acceptSvg from '../../assets/images/DeveloperRequest/approval.svg'
-import deleteSvg from '../../assets/images/DeveloperRequest/delete.svg'
+import Button from '../../../Components/Button/Button'
+import cross from '../../../assets/images/OtherIcons/crossInCircle.svg'
+import SizedBox from '../../../Components/SizedBox/SizedBox'
+import acceptSvg from '../../../assets/images/DeveloperRequest/approval.svg'
+import deleteSvg from '../../../assets/images/DeveloperRequest/delete.svg'
 
 
-export default function ConfirmationModal({ type, onCloseModal, }) {
+export default function ConfirmationModal({ type, onCloseModal, onAffirmation }) {
 
   return (
     <Modal
@@ -39,8 +39,18 @@ export default function ConfirmationModal({ type, onCloseModal, }) {
         </div>
 
         <div className={styles.btnHolder} >
-          <Button name='No' buttonExtraStyle={{ ...buttonExtraStyle, backgroundColor: '#ffffff', borderColor: '#015F9A', }} buttonTextStyle={{ ...buttonTextStyle }, { color: '#015F9A' }} />
-          <Button name='Yes' buttonExtraStyle={{ ...buttonExtraStyle, backgroundColor: '#015F9A', border: 'none', }} buttonTextStyle={{ ...buttonTextStyle }, { color: '#ffffff' }} />
+          <Button
+            name='No'
+            buttonExtraStyle={{ ...buttonExtraStyle, backgroundColor: '#ffffff', borderColor: '#015F9A', }}
+            buttonTextStyle={{ ...buttonTextStyle }, { color: '#015F9A' }}
+            onClick={onCloseModal}
+          />
+          <Button
+            name='Yes'
+            buttonExtraStyle={{ ...buttonExtraStyle, backgroundColor: '#015F9A', border: 'none', }}
+            buttonTextStyle={{ ...buttonTextStyle }, { color: '#ffffff' }}
+            onClick={onAffirmation}
+          />
         </div>
       </div>
     </Modal>
