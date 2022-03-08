@@ -24,6 +24,7 @@ function ClientHireDeveloper(props) {
             .get(`/api/${Role}/hire-developers/all?clientId=${userId}`)
             .then((response) => {
                 setLoading(false);
+                console.log(response, 'response');
                 setHiredDevelopers(response);
             })
             .catch((err) => {
@@ -49,8 +50,8 @@ function ClientHireDeveloper(props) {
                             {/* <div className="mainAgencyList"> */}
                             <div className="innerAgencyList">
                                 <div className="AgencyCardsArea">
-                                    {hiredDevelopers?.length > 0 ? (
-                                        hiredDevelopers.map(
+                                    {hiredDevelopers?.docs?.length > 0 ? (
+                                        hiredDevelopers?.docs?.map(
                                             (
                                                 hireDeveloperRequirement,
                                                 index
@@ -149,7 +150,14 @@ function ClientHireDeveloper(props) {
                                                                                 Budget
                                                                                 :{' '}
                                                                                 {
-                                                                                    hireDeveloperRequirement.averageBudget
+                                                                                    hireDeveloperRequirement
+                                                                                        .averageBudget
+                                                                                        ?.min
+                                                                                }
+                                                                                {
+                                                                                    hireDeveloperRequirement
+                                                                                        .averageBudget
+                                                                                        ?.max
                                                                                 }
                                                                             </span>
                                                                         </p>
