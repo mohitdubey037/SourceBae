@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import Back from '../../../Components/Back/Back';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import styles from './DeveloperRequest.module.css';
@@ -6,14 +6,12 @@ import RequirementsCard from '../../../Components/RequirementCard/RequirementsCa
 import DeveloperListing from './DeveloperListing';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
 import colors from '../../../Constants/colors';
-import buttonStyles from '../../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
 import instance from '../../../Constants/axiosConstants';
 import Button from '../../../Components/Button/Button';
 import FilterSelect from './FilterSelect';
 
-import { AGENCY, CLIENT } from '../../../shared/constants';
-import { debounce } from 'lodash';
+import { AGENCY } from '../../../shared/constants';
 import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
 import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';

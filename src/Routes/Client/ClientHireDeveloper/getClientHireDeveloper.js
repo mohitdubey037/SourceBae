@@ -19,12 +19,16 @@ function ClientHireDeveloper(props) {
 
     const [hiredDevelopers, setHiredDevelopers] = useState([]);
 
+    const generateBudgetStr = (budget) =>
+        !budget?.min
+            ? `Less than INR ${budget?.max ?? ''} per month`
+            : `INR ${budget?.min ?? ''} - INR ${budget?.max ?? ''} per month`;
+
     useEffect(() => {
         instance
             .get(`/api/${Role}/hire-developers/all?clientId=${userId}`)
             .then((response) => {
                 setLoading(false);
-                console.log(response, 'response');
                 setHiredDevelopers(response);
             })
             .catch((err) => {
@@ -77,9 +81,7 @@ function ClientHireDeveloper(props) {
                                                                             Period
                                                                         </p>
                                                                         <p>
-                                                                            {
-                                                                                hireDeveloperRequirement.contractPeriod
-                                                                            }
+                                                                            {`${hireDeveloperRequirement.contractPeriod} months`}
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -149,16 +151,9 @@ function ClientHireDeveloper(props) {
                                                                             <span>
                                                                                 Budget
                                                                                 :{' '}
-                                                                                {
-                                                                                    hireDeveloperRequirement
-                                                                                        .averageBudget
-                                                                                        ?.min
-                                                                                }
-                                                                                {
-                                                                                    hireDeveloperRequirement
-                                                                                        .averageBudget
-                                                                                        ?.max
-                                                                                }
+                                                                                {generateBudgetStr(
+                                                                                    hireDeveloperRequirement.averageBudget
+                                                                                )}
                                                                             </span>
                                                                         </p>
                                                                     </div>
