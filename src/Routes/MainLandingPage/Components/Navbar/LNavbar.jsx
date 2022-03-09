@@ -75,25 +75,20 @@ export default function LNavbar(props) {
                         </div>
                     </div>
                 </div>
-                <div className={`${styles.nav_login} `}>
+                <Link to="/login/agency" className={`${styles.L_Link} ${styles.nav_login}`}>
                     <button
                         className={`${styles.L_login} ${styles.nav_Lbutton}`}
                     >
-                        <Link to="/login/agency" className="L_Link">
-                            Log In
-                        </Link>
+                        Log In
                     </button>{' '}
-                </div>
-                <div className={`${styles.nav_signup} `}>
+                </Link>
+                <Link id={'nav_sign_up_btn'} to="/register/agency" className={`${styles.L_Link} ${styles.nav_signup}`}>
                     <button
                         className={`${styles.L_signup} ${styles.nav_Lbutton}`}
                     >
-                        <Link to="/register/agency" className="L_Link">
-                            {' '}
-                            Sign Up
-                        </Link>
+                        Sign Up
                     </button>
-                </div>
+                </Link>
                 <div
                     className={`${styles.navbar_responsive_icon}`}
                     onClick={handleMenuToggle}

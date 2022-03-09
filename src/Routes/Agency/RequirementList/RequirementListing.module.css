@@ -12,16 +12,18 @@
 }
 
 .listContainer {
-    width: 63%;
-    margin-left: 100px;
+    width: 65%;
+    margin-left: 60px;
 }
 
 .optionsContainer {
     flex: 1;
     position: fixed;
-    margin: 0% 2% 0% 74%;
+    min-height: 100vh;
+    /* margin: 0% 2% 0% 74%; */
+    max-width: 28%;
     right: -1rem;
-    top: 122px;
+    top: 18vh;
     background-color: #fff;
 }
 
@@ -38,8 +40,12 @@
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 6px;
-    margin: 30px 100px 30px 100px;
+    margin: 30px 100px 30px 60px;
     align-items: center;
+}
+
+.searchBarContainer{
+    width: 65%;
 }
 
 .recommendedJobs {
@@ -51,7 +57,7 @@
 }
 
 .searchAndBtnWrapper {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
 }
 

@@ -34,12 +34,20 @@
 .nav_login,
 .nav_signup {
     display: flex;
-    width: 15%;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
+    width: 11%;
 }
 .nav_login {
     justify-content: end;
+}
+
+.L_signup:hover :first-child{
+    color: white;
+}
+
+.L_login:hover :first-child{
+    color: #554dde;
 }
 
 .nav_Lbutton {
@@ -118,6 +126,10 @@
 .responsive_L_navbar_ul li {
     list-style: none;
     padding: 0.5rem 0;
+}
+.L_Link {
+    text-decoration: none;
+    color: unset;
 }
 @media screen and (max-width: 580px) {
     .navbar_wrap {

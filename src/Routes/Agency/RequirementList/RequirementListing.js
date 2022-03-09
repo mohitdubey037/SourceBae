@@ -71,13 +71,13 @@ const RequirementListing = () => {
 
         let params = config?.isParam
             ? {
-                  createdWithin: filterState?.createdWithin,
-                  contractPeriod: filterState?.contractPeriod,
-                  minBudget,
-                  maxBudget,
-                  page: currentPage,
-                  searchKeyWord: searchText || val
-              }
+                createdWithin: filterState?.createdWithin,
+                contractPeriod: filterState?.contractPeriod,
+                minBudget,
+                maxBudget,
+                page: currentPage,
+                searchKeyWord: searchText || val
+            }
             : { page: currentPage };
 
         switchValue && (params.isHotRequest = 1);
@@ -93,11 +93,11 @@ const RequirementListing = () => {
                 }
                 config?.isShowMore
                     ? setRequirementsList((prevState) => ({
-                          ...res,
-                          docs: prevState?.docs
-                              ? [...prevState?.docs, ...res?.docs]
-                              : [...res?.docs]
-                      }))
+                        ...res,
+                        docs: prevState?.docs
+                            ? [...prevState?.docs, ...res?.docs]
+                            : [...res?.docs]
+                    }))
                     : setRequirementsList({ ...res, docs: res?.docs });
             })
             .catch((err) => {
@@ -168,7 +168,7 @@ const RequirementListing = () => {
         };
         instance
             .patch(url, body)
-            .then((res) => {})
+            .then((res) => { })
             .catch((err) => console.log(err));
     };
 
@@ -216,49 +216,38 @@ const RequirementListing = () => {
     };
 
     return (
-        <div className={styles.requirement_listing_container}>
+        <div >
             <div className={styles.navbarDiv}>
                 <Navbar />
             </div>
             <Back name="Active Requirement" />
 
-            <>
+            <div className={styles.requirement_listing_container} >
                 <div className={styles.searchBarContainer}>
                     <div className={styles.searchAndBtnWrapper}>
-                        <div className={styles.searchBarStyle}>
-                            <SearchBar
-                                height={'40px'}
-                                bgColor={colors.WHITE}
-                                placeholder={
-                                    'Type keyword here example “react js”'
-                                }
-                                value={searchText}
-                                setSearchText={(val) => {
-                                    setSearchText(val);
-                                    debounceFn({ isParam: true }, val);
-                                }}
-                            />
-                        </div>
-                        <div
-                            style={{
-                                width: '200px',
-                                justifyContent: 'end',
-                                display: 'flex'
+                        {/* <div className={styles.searchBarStyle}> */}
+                        <SearchBar
+                            height={'40px'}
+                            bgColor={colors.WHITE}
+                            placeholder={
+                                'Type keyword here example “react js”'
+                            }
+                            value={searchText}
+                            setSearchText={(val) => {
+                                setSearchText(val);
+                                debounceFn({ isParam: true }, val);
                             }}
-                        >
-                            <CustomSwitch
-                                label={'Hot Request'}
-                                switchValue={switchValue}
-                                onChange={handleSwitch}
-                            />
-                        </div>
+                        />
+                        {/* </div> */}
+
                     </div>
                     <div
                         style={{
                             display: 'flex',
-                            marginTop: '20px',
+                            marginTop: '10px',
                             justifyContent: 'space-between',
-                            width: '75%'
+                            alignItems: 'center',
+                            flexWrap: 'wrap'
                         }}
                     >
                         <FilterSelect
@@ -281,6 +270,18 @@ const RequirementListing = () => {
                             applyFilter={setFilterState}
                             objkey={'contractPeriod'}
                         />
+                        <div
+                            style={{
+                                justifyContent: 'end',
+                                display: 'flex',
+                            }}
+                        >
+                            <CustomSwitch
+                                label={'Hot Request'}
+                                switchValue={switchValue}
+                                onChange={handleSwitch}
+                            />
+                        </div>
                     </div>
                     <SizedBox width={'30px'} />
                 </div>
@@ -403,7 +404,7 @@ const RequirementListing = () => {
                         )}
                     </>
                 )}
-            </>
+            </div>
         </div>
     );
 };

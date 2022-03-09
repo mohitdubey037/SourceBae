@@ -1,9 +1,12 @@
 .developerListingContainer {
-    width: 80%;
+    max-width: 100%;
+    margin-right: 70px;
     border-radius: 6px;
     border: 1px solid #e1e1e1;
-    min-height: 550px;
+    min-height: 80vh;
+    max-height: 80vh;
     position: relative;
+    overflow-y: auto;
 }
 
 .DLCard {
