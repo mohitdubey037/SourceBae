@@ -8,7 +8,7 @@ import DeveloperCard from './DeveloperCard';
 import Button from '../../Components/Button/Button';
 import DetailsModal from './DetailsModal';
 import ConfirmationModal from './ConfirmationModal';
-import { ACCEPT, DELETE } from './types';
+import { ACCEPT, DELETE } from '../Client/DeveloperRequest/types';
 import { AGENCY, CLIENT } from '../../shared/constants';
 import instance from '../../Constants/axiosConstants';
 import NoDataComponent from '../../Components/NoData/NoDataComponent';
@@ -116,7 +116,7 @@ const DevelopersRequest = () => {
                             ))}
                           </div>
                           :
-                          <div className={styles.noDevsShared} >No developers shared yet:(</div>
+                          <div className={styles.noDevsShared} >No developers shared yet:</div>
                       }
                       <div onClick={() => acceptMyDevsPatchCall(devs?._id)} >Apply</div>
                     </ListingContainer>
