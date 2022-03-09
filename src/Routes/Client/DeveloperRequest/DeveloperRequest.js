@@ -176,7 +176,7 @@ const DeveloperRequest = () => {
             <div className={styles.partition}>
               <div className={styles.listContainer}>
                 {fetchedRequirement ? (
-                  fetchedRequirement?.map(
+                  Array(10).fill(fetchedRequirement[0])?.map(
                     (req, index) => (
                       <RequirementsCard
                         key={`${req?._id}${index}`}

@@ -108,6 +108,17 @@ function ClientNewestDashboard(props) {
                                 isUserVerified={isUserVerified}
                                 nextpage={() =>
                                     props.history.push({
+                                        pathname: '/developer-request',
+                                        state: { isUserVerified }
+                                    })
+                                }
+                                text="Developer Applications"
+                                img={HireDeveloperIcon}
+                            />
+                            <UserOperations
+                                isUserVerified={isUserVerified}
+                                nextpage={() =>
+                                    props.history.push({
                                         pathname: '/hire-agency-form-one',
                                         state: { isUserVerified }
                                     })

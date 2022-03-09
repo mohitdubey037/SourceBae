@@ -47,7 +47,7 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
     <div className={styles.developerListingContainer}>
       <span className={styles.heading}>developer listing</span>
       {item?.length ? (
-        <div>
+        <div style={{ minWidth: '260px' }} >
           {item?.map((person) => (
             <div className={styles.DLCard}>
               <SizedBox height={'6px'} />
@@ -130,9 +130,10 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
             </>
           )}
         </div>
-      )}
+      )
+      }
       <SizedBox height={'16px'} />
-    </div>
+    </div >
   );
 }
 

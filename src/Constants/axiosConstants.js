@@ -92,7 +92,13 @@ instance.interceptors.response.use(
             error?.response?.config?.url?.includes('login')
         ) {
             toast.error(error?.response?.data?.message);
+        } else if (
+            error?.response?.status === 404 &&
+            error?.response?.data?.message === 'Api not found'
+        ) {
+            window.location.href = '/';
         }
+
         return Promise.reject(error);
     }
 );

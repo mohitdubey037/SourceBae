@@ -19,6 +19,11 @@ function ClientHireDeveloper(props) {
 
     const [hiredDevelopers, setHiredDevelopers] = useState([]);
 
+    const generateBudgetStr = (budget) =>
+        !budget?.min
+            ? `Less than INR ${budget?.max ?? ''} per month`
+            : `INR ${budget?.min ?? ''} - INR ${budget?.max ?? ''} per month`;
+
     useEffect(() => {
         instance
             .get(`/api/${Role}/hire-developers/all?clientId=${userId}`)
@@ -49,8 +54,8 @@ function ClientHireDeveloper(props) {
                             {/* <div className="mainAgencyList"> */}
                             <div className="innerAgencyList">
                                 <div className="AgencyCardsArea">
-                                    {hiredDevelopers?.length > 0 ? (
-                                        hiredDevelopers.map(
+                                    {hiredDevelopers?.docs?.length > 0 ? (
+                                        hiredDevelopers?.docs?.map(
                                             (
                                                 hireDeveloperRequirement,
                                                 index
@@ -76,9 +81,7 @@ function ClientHireDeveloper(props) {
                                                                             Period
                                                                         </p>
                                                                         <p>
-                                                                            {
-                                                                                hireDeveloperRequirement.contractPeriod
-                                                                            }
+                                                                            {`${hireDeveloperRequirement.contractPeriod} months`}
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -148,9 +151,9 @@ function ClientHireDeveloper(props) {
                                                                             <span>
                                                                                 Budget
                                                                                 :{' '}
-                                                                                {
+                                                                                {generateBudgetStr(
                                                                                     hireDeveloperRequirement.averageBudget
-                                                                                }
+                                                                                )}
                                                                             </span>
                                                                         </p>
                                                                     </div>
