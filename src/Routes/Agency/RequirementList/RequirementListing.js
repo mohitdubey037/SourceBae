@@ -6,7 +6,6 @@ import RequirementsCard from '../../../Components/RequirementCard/RequirementsCa
 import DeveloperListing from './DeveloperListing';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
 import colors from '../../../Constants/colors';
-import buttonStyles from '../../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
 import instance from '../../../Constants/axiosConstants';
 import Button from '../../../Components/Button/Button';
@@ -21,6 +20,7 @@ import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';
 import { useHistory } from 'react-router-dom';
 
 let currentPage = 1;
+let recommendedPage = 0;
 const RequirementListing = () => {
     const recentOptions = [
         { value: 0, label: 'Today' },
@@ -44,6 +44,7 @@ const RequirementListing = () => {
     const role = AGENCY;
     const agencyId = localStorage.getItem('userId') || '';
     const [requirementsList, setRequirementsList] = useState({ docs: [] });
+    const [recommendedList, setRecommendedList] = useState({ docs: [] });
     const routerHistory = useHistory();
 
     const [searchText, setSearchText] = useState('');
@@ -86,6 +87,10 @@ const RequirementListing = () => {
                 params
             })
             .then((res) => {
+                if (!res?.hasNextPage) {
+                    recommendedPage = 1;
+                    recommendedJobs({ isShowMore: false, isParam: true }, val);
+                }
                 config?.isShowMore
                     ? setRequirementsList((prevState) => ({
                           ...res,
@@ -97,6 +102,48 @@ const RequirementListing = () => {
             })
             .catch((err) => {
                 setRequirementsList({ docs: [] });
+            })
+            .finally(() => setisLoading(false));
+    };
+
+    const recommendedJobs = async (config, val) => {
+        setisLoading(true);
+        setselectedCard('');
+        setdevelopersList([]);
+        const url = `/api/${role}/hire-developers/get-recommended?agencyId=${agencyId}`;
+        const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
+        if (config?.isShowMore) recommendedPage += 1;
+        else recommendedPage = 1;
+
+        let params = config?.isParam
+            ? {
+                  createdWithin: filterState?.createdWithin,
+                  contractPeriod: filterState?.contractPeriod,
+                  minBudget,
+                  maxBudget,
+                  page: recommendedPage,
+                  searchKeyWord: searchText || val
+              }
+            : { page: recommendedPage };
+
+        switchValue && (params.isHotRequest = 1);
+
+        instance
+            .get(url, {
+                params
+            })
+            .then((res) => {
+                config?.isShowMore
+                    ? setRecommendedList((prevState) => ({
+                          ...res,
+                          docs: prevState?.docs
+                              ? [...prevState?.docs, ...res?.docs]
+                              : [...res?.docs]
+                      }))
+                    : setRecommendedList({ ...res, docs: res?.docs });
+            })
+            .catch((err) => {
+                setRecommendedList({ docs: [] });
             })
             .finally(() => setisLoading(false));
     };
@@ -127,6 +174,9 @@ const RequirementListing = () => {
 
     function handlePagination() {
         hireDevApi({ isParam: true, isShowMore: true });
+    }
+    function handleRecommendedPagination() {
+        recommendedJobs({ isParam: true, isShowMore: true });
     }
 
     useEffect(() => {
@@ -284,11 +334,73 @@ const RequirementListing = () => {
                                     />
                                 ))}
                         </div>
-                        <div className={`${styles.recommendedJobs}`}>
-                            <span className="headingText">
-                                Recommended Jobs
-                            </span>
-                        </div>
+                        {recommendedPage > 0 && (
+                            <>
+                                <div className={`${styles.recommendedJobs}`}>
+                                    <span className="headingText">
+                                        Recommended Jobs
+                                    </span>
+                                </div>
+                                <div className={styles.partition}>
+                                    <div className={styles.listContainer}>
+                                        {recommendedList?.docs?.length ? (
+                                            recommendedList?.docs?.map(
+                                                (req, index) => (
+                                                    <RequirementsCard
+                                                        key={`${req?._id} ${index}`}
+                                                        data={req}
+                                                        showButton={false}
+                                                        buttonTitle={
+                                                            'Apply now'
+                                                        }
+                                                        isSelected={
+                                                            selectedCard ===
+                                                            req?._id
+                                                        }
+                                                        onApplyClick={(id) => {
+                                                            onApplyClick(id);
+                                                        }}
+                                                    />
+                                                )
+                                            )
+                                        ) : (
+                                            <NoDataComponent />
+                                        )}
+                                    </div>
+                                    <div className={styles.optionsContainer}>
+                                        <DeveloperListing
+                                            item={developersList}
+                                            selectedCard={selectedCard}
+                                            onApply={(devs) =>
+                                                shareDeveloperPatchCall(devs)
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className={styles.showMorebtn}>
+                                    {recommendedPage <
+                                        recommendedJobs.totalPages &&
+                                        (isLoading ? (
+                                            <Spinner
+                                                style={{ height: '60px' }}
+                                            />
+                                        ) : (
+                                            <Button
+                                                name="show more"
+                                                buttonExtraStyle={
+                                                    buttonExtraStyle
+                                                }
+                                                buttonTextStyle={
+                                                    buttonTextStyle
+                                                }
+                                                onClick={() =>
+                                                    handleRecommendedPagination()
+                                                }
+                                            />
+                                        ))}
+                                </div>
+                            </>
+                        )}
                     </>
                 )}
             </>
