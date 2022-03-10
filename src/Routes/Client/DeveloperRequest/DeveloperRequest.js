@@ -45,7 +45,6 @@ const DeveloperRequest = () => {
 
     const [searchText, setSearchText] = useState('');
     const [switchValue, setswitchValue] = useState(false);
-    const [fetchedRequirement, setfetchedRequirement] = useState([]);
 
     const [filterState, setFilterState] = useState({
         contractPeriod: undefined,
@@ -56,7 +55,6 @@ const DeveloperRequest = () => {
     const [developersList, setdevelopersList] = useState([]);
     const [selectedCard, setselectedCard] = useState('');
     const [isLoading, setisLoading] = useState(true);
-    const [nextPage, setnextPage] = useState(1);
 
     const handleSwitch = () => setswitchValue((preV) => !preV);
 
@@ -68,16 +66,18 @@ const DeveloperRequest = () => {
         setisLoading(true);
         const url = `/api/${role}/hire-developers/all?clientId=${clientId}`;
         instance
-            .get(url)
+            .get(url, { params: { page: requirementsList?.nextPage || 1 } })
             .then((res) => {
                 const sharedDevsEntryOnly = res?.docs?.filter(
                     (item) => item?.developersShared?.length
                 );
-                setfetchedRequirement([
-                    ...fetchedRequirement,
-                    ...sharedDevsEntryOnly
-                ]);
-                setnextPage(res?.nextPage);
+
+                setRequirementsList((prev) => ({
+                    ...res,
+                    docs: prev?.docs
+                        ? [...prev.docs, ...sharedDevsEntryOnly]
+                        : [...sharedDevsEntryOnly]
+                }));
             })
             .catch((err) => {
                 console.log(err);
@@ -159,25 +159,27 @@ const DeveloperRequest = () => {
                     <>
                         <div className={styles.partition}>
                             <div className={styles.listContainer}>
-                                {fetchedRequirement ? (
-                                    fetchedRequirement?.map((req, index) => (
-                                        <RequirementsCard
-                                            key={`${req?._id}${index}`}
-                                            data={req}
-                                            showButton={true}
-                                            buttonTitle={'Detail'}
-                                            isSelected={
-                                                selectedCard === req?._id
-                                            }
-                                            onApplyClick={() => {
-                                                setmodal({
-                                                    open: true,
-                                                    data: req
-                                                });
-                                                setselectedCard(req?._id);
-                                            }}
-                                        />
-                                    ))
+                                {requirementsList?.docs ? (
+                                    requirementsList?.docs?.map(
+                                        (req, index) => (
+                                            <RequirementsCard
+                                                key={`${req?._id}${index}`}
+                                                data={req}
+                                                showButton={true}
+                                                buttonTitle={'Detail'}
+                                                isSelected={
+                                                    selectedCard === req?._id
+                                                }
+                                                onApplyClick={() => {
+                                                    setmodal({
+                                                        open: true,
+                                                        data: req
+                                                    });
+                                                    setselectedCard(req?._id);
+                                                }}
+                                            />
+                                        )
+                                    )
                                 ) : (
                                     <NoDataComponent />
                                 )}
@@ -191,7 +193,7 @@ const DeveloperRequest = () => {
                             </div>
                         </div>
                         <div className={styles.showMorebtn}>
-                            {currentPage < requirementsList.totalPages &&
+                            {requirementsList?.hasNextPage &&
                                 (isLoading ? (
                                     <Spinner style={{ height: '60px' }} />
                                 ) : (
@@ -199,7 +201,7 @@ const DeveloperRequest = () => {
                                         name="show more"
                                         buttonExtraStyle={buttonExtraStyle}
                                         buttonTextStyle={buttonTextStyle}
-                                        onClick={() => {}}
+                                        onClick={hireDevApi}
                                     />
                                 ))}
                         </div>
