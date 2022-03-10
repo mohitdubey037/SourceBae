@@ -17,23 +17,35 @@ function ClientHireDeveloper(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const [hiredDevelopers, setHiredDevelopers] = useState([]);
+    const [hiredDevelopers, setHiredDevelopers] = useState({});
 
     const generateBudgetStr = (budget) =>
         !budget?.min
             ? `Less than INR ${budget?.max ?? ''} per month`
             : `INR ${budget?.min ?? ''} - INR ${budget?.max ?? ''} per month`;
 
-    useEffect(() => {
+    const requirementApi = () => {
         instance
-            .get(`/api/${Role}/hire-developers/all?clientId=${userId}`)
+            .get(`/api/${Role}/hire-developers/all?clientId=${userId}`, {
+                params: {
+                    page: hiredDevelopers?.nextPage || 1
+                }
+            })
             .then((response) => {
                 setLoading(false);
-                setHiredDevelopers(response);
+                setHiredDevelopers((prev) => ({
+                    ...response,
+                    docs: prev?.docs
+                        ? [...prev.docs, ...response.docs]
+                        : [...response.docs]
+                }));
             })
             .catch((err) => {
                 setLoading(false);
             });
+    };
+    useEffect(() => {
+        requirementApi();
     }, []);
 
     return (
@@ -206,6 +218,24 @@ function ClientHireDeveloper(props) {
                             </div>
                             {/* </div> */}
                         </div>
+                        {hiredDevelopers?.hasNextPage && (
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    position: 'relative',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    zIndex: '2'
+                                }}
+                            >
+                                <button
+                                    className="loadmore_button"
+                                    onClick={requirementApi}
+                                >
+                                    Load More{' '}
+                                </button>
+                            </div>
+                        )}
                         <VerifyModal
                             Role={Role}
                             id={userId}
