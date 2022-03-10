@@ -30,7 +30,9 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             developerIds: selectedDevs,
             developerStatus: '3'
         };
-        instance.patch(url, body).then(onCloseModal);
+        instance.patch(url, body).then(() => {
+            window.location.reload();
+        });
     };
 
     return (
@@ -55,27 +57,34 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                 <SizedBox height={'20px'} />
                 {modal?.data?.developersShared?.length ? (
                     <div className={styles.cardHolder}>
-                        {modal?.data?.developersShared?.map((item) => (
-                            <div className={styles.cardContainer}>
-                                <input
-                                    type="checkbox"
-                                    onChange={() =>
-                                        selectedMyDev(item?.developerId?._id)
-                                    }
-                                    className={styles.developer_checkbox}
-                                />
-                                <DeveloperCard
-                                    data={item}
-                                    selectedDevs={selectedDevs}
-                                    onDelete={() =>
-                                        setconfirmationModalType(DELETE)
-                                    }
-                                    onAccept={() =>
-                                        setconfirmationModalType(ACCEPT)
-                                    }
-                                />
-                            </div>
-                        ))}
+                        {modal?.data?.developersShared?.map((item) => {
+                            const sharedbyClient =
+                                item?.developerSharedBy === 2 ? true : false;
+                            return (
+                                <div className={styles.cardContainer}>
+                                    <input
+                                        type="checkbox"
+                                        onChange={() =>
+                                            selectedMyDev(
+                                                item?.developerId?._id
+                                            )
+                                        }
+                                        className={styles.developer_checkbox}
+                                        defaultChecked={sharedbyClient}
+                                    />
+                                    <DeveloperCard
+                                        data={item}
+                                        selectedDevs={selectedDevs}
+                                        onDelete={() =>
+                                            setconfirmationModalType(DELETE)
+                                        }
+                                        onAccept={() =>
+                                            setconfirmationModalType(ACCEPT)
+                                        }
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
                 ) : (
                     <div className={styles.noDevsShared}>

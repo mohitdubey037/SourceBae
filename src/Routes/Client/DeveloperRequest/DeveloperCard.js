@@ -16,6 +16,13 @@ const DeveloperCard = ({ data = {}, onAccept, onReject, selectedDevs }) => {
         return result;
     };
 
+    const buttonString =
+        data?.developerSharedBy === 1
+            ? 'Rejected'
+            : data?.developerSharedBy === 2
+            ? 'Accepted'
+            : 'To be Accepted';
+
     return (
         <div className={styles.mainContainer}>
             <div className={styles.nameBar}>
@@ -50,7 +57,7 @@ const DeveloperCard = ({ data = {}, onAccept, onReject, selectedDevs }) => {
 
             <SizedBox height={'12px'} />
             <div className={styles.status_container}>
-                <div className={styles.status_label}>Approved</div>
+                <div className={styles.status_label}>{`${buttonString}`}</div>
             </div>
         </div>
     );
