@@ -1,73 +1,95 @@
-.mainContainer{
-  background: #FFFFFF;
-  border: 1px solid #E1E1E1;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  padding: 14px;
-  display: block;
+.mainContainer {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 14px;
+    display: block;
+    min-height: 18rem;
 }
 
-.nameBar{
-  display: flex;
-  justify-content: space-between;
+.nameBar {
+    display: flex;
+    justify-content: space-between;
 }
 
-.name{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 21px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #45A4EA;
+.status_container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 4px 12px;
+    border-radius: 5px 0px 0px 0px;
+    background: rgba(0, 123, 64, 0.12);
 }
 
-.techLabel{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 19px;
-  text-transform: capitalize;
-  color: #212529;
-  display: block;
+.status_label {
+    font-family: Segoe UI;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #007b40;
+    padding: 0.5rem;
 }
 
-.techDescription{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  text-transform: capitalize;
-  color: #707070;
+.name {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #45a4ea;
 }
 
-.viewMore{
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 8px;
-  line-height: 11px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #45A4EA;
-  margin-left: 8px;
+.techLabel {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: capitalize;
+    color: #212529;
+    display: block;
 }
 
-.downArrow{
-  margin: 4px;
-  margin-top: 6px;
+.techDescription {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: capitalize;
+    color: #707070;
 }
 
-.experienceDiv{
-  display: grid;
-  grid-template-columns: 50% 50%;
+.viewMore {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 11px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #45a4ea;
+    margin-left: 8px;
 }
 
-.buttonContainer{
-  display: flex;
-  justify-content: flex-end;
+.downArrow {
+    margin: 4px;
+    margin-top: 6px;
+}
+
+.experienceDiv {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
 }

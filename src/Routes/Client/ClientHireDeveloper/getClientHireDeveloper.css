@@ -162,6 +162,7 @@
 
 .agencyProfileInfo div {
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
 }
@@ -176,8 +177,10 @@
     font-size: 0.7rem;
     display: flex;
     justify-content: center;
-    /* margin-bottom: 12px; */
     box-shadow: 1px 2px 3px rgb(0, 0, 0, 18%);
+    flex: 1;
+    min-width: 8rem;
+    max-width: 8rem;
 }
 
 .profileButton p {

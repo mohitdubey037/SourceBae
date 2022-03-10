@@ -75,7 +75,14 @@ function ClientHireDeveloper(props) {
                                                                             hireDeveloperRequirement.requirementName
                                                                         }
                                                                     </h6>
-                                                                    <div>
+                                                                    <div
+                                                                        style={{
+                                                                            minWidth:
+                                                                                '15rem',
+                                                                            marginLeft:
+                                                                                '1rem'
+                                                                        }}
+                                                                    >
                                                                         <p>
                                                                             Contract
                                                                             Period

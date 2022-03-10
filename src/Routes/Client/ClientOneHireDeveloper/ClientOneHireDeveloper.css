@@ -278,7 +278,6 @@
     width: 100%;
     height: 100%;
     min-height: 197px;
-    max-width: 279px;
     border-radius: 6px;
     padding: 1rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -302,6 +301,7 @@
 .skill-pill {
     display: flex;
     align-items: center;
+    margin: 0 0.5rem 0.5rem 0;
 }
 
 .pill {
@@ -323,7 +323,7 @@
     text-align: left;
     width: 140px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .developer-card-holder {
@@ -334,6 +334,7 @@
 }
 
 .row-value {
+    display: flex;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -342,6 +343,7 @@
     text-transform: capitalize;
     color: #8d8686;
     flex: 1;
+    flex-wrap: wrap;
 }
 
 .agency_pending {

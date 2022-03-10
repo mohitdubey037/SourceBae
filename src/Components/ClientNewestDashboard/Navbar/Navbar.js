@@ -37,14 +37,14 @@ function Navbar(props) {
                 .then(function (response) {
                     setData(response);
                 })
-                .catch((err) => { });
+                .catch((err) => {});
         } else {
             instance
                 .get(`/api/${role}/agencies/get/${roleId}`)
                 .then(function (response) {
                     setData(response);
                 })
-                .catch((err) => { });
+                .catch((err) => {});
         }
     }, []);
 
@@ -111,7 +111,6 @@ function Navbar(props) {
                     {role === AGENCY ? (
                         <>
                             <img
-                                onMouseEnter={() => setIsPopoverOpen(true)}
                                 onClick={() => setIsPopoverOpen(!isPopoverOpen)}
                                 src={
                                     data?.agencyLogo
@@ -121,7 +120,6 @@ function Navbar(props) {
                                 alt="a logo"
                             />
                             <Popover
-                                // className="popover"
                                 isOpen={isPopoverOpen}
                                 onClickOutside={() => setIsPopoverOpen(false)}
                                 positions={[
@@ -152,7 +150,6 @@ function Navbar(props) {
                     ) : (
                         <>
                             <img
-                                onMouseEnter={() => setIsPopoverOpen(true)}
                                 onClick={() => setIsPopoverOpen(!isPopoverOpen)}
                                 src={
                                     data?.[0]?.clientLogo

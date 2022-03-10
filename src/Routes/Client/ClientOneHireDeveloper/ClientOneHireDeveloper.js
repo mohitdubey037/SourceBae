@@ -27,23 +27,21 @@ function ClientOneHireDeveloper(props) {
     const [agencyId, setAgencyId] = useState(null);
     const [originalAgenciesMatched, setOriginalAgenciesMatched] = useState([]);
     const [developersShow, setShowDevelopers] = useState(false);
-    const [currentDevList, setCurrentDevList] = useState([]);
-
+    const [developerId, setDeveloperId] = useState(null);
     const [open, setOpen] = useState(false);
 
     const onCloseModal = () => setOpen(false);
 
-    const onOpenModal = (agencyId) => {
+    const onOpenModal = (agencyId, developerId) => {
         setOpen(true);
         setAgencyId(agencyId);
+        setDeveloperId(developerId);
     };
 
     const getOneDeveloper = () => {
         setLoading(true);
         instance
-            .get(
-                `/api/${Role}/hire-developers/get/${hireDeveloperId}?clientId=${userId}`
-            )
+            .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}`)
             .then(function (response) {
                 setSingleHiredDeveloper(response);
                 setOriginalAgenciesMatched(response?.agenciesMatched);
@@ -58,8 +56,15 @@ function ClientOneHireDeveloper(props) {
         setLoading(true);
         instance
             .patch(
-                `/api/${Role}/hire-developers/update-matched-agency/${hireDeveloperId}`,
-                { isShortListed: true, agencyId: agencyId }
+                `/api/${Role}/hire-developers/share-developer/${hireDeveloperId}`,
+                {
+                    developerSharedByClient: [
+                        {
+                            agencyId: agencyId,
+                            developerId: developerId
+                        }
+                    ]
+                }
             )
             .then((res) => {
                 onCloseModal();
@@ -70,49 +75,27 @@ function ClientOneHireDeveloper(props) {
             });
     };
 
-    function showDevelopers() {
-        setShowDevelopers(true);
-    }
-
     useEffect(() => {
         getOneDeveloper();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    function getMatchedDevelopers(agency_id) {
-        setLoading(true);
-        showDevelopers();
-        instance
-            .get(
-                `/api/${Role}/hire-developers/get/${hireDeveloperId}/${agency_id}`
-            )
-            .then((res) => {
-                setLoading(false);
-                setCurrentDevList(res);
-            })
-            .catch((err) => {
-                setLoading(false);
-                setShowDevelopers(false);
-            });
-    }
     const [searchText, setSearchText] = useState('');
 
-    useEffect(() => {
-        if (searchText !== '') {
-            const tempAgencyList = singleHiredDeveloper?.agenciesMatched.filter(
-                (agency) => {
-                    return agency?.agencyId?.agencyName
-                        ?.toLowerCase()
-                        ?.includes(searchText?.toLowerCase());
-                }
-            );
-            setSingleHiredDeveloper({ agenciesMatched: tempAgencyList });
-        } else {
-            setSingleHiredDeveloper({
-                agenciesMatched: originalAgenciesMatched
-            });
-        }
-    }, [searchText]);
+    // useEffect(() => {
+    //     if (searchText !== '') {
+    //         const tempAgencyList = singleHiredDeveloper?.filter((agency) => {
+    //             return agency?.agencyId?.firstName
+    //                 ?.toLowerCase()
+    //                 ?.includes(searchText?.toLowerCase());
+    //         });
+    //         setSingleHiredDeveloper({ agenciesMatched: tempAgencyList });
+    //     } else {
+    //         setSingleHiredDeveloper({
+    //             agenciesMatched: originalAgenciesMatched
+    //         });
+    //     }
+    // }, [searchText]);
 
     return (
         <>
@@ -143,7 +126,7 @@ function ClientOneHireDeveloper(props) {
                             alt="upImage1"
                         />
                         <div className="respondCards_clientOneHireDeveloper">
-                            <Back name="Matched Agencies" />
+                            <Back name="Matched Developers" />
                             <div className="moreAgency_parent">
                                 <input
                                     type="text"
@@ -151,171 +134,156 @@ function ClientOneHireDeveloper(props) {
                                         setSearchText(e.target.value)
                                     }
                                     value={searchText}
-                                    placeholder="Search Agency"
+                                    placeholder="Search Developer"
                                     className="searchBox"
                                 />
-                                {Object.keys(singleHiredDeveloper).length !==
-                                0 ? (
-                                    singleHiredDeveloper?.agenciesMatched
-                                        ?.length > 0 ? (
-                                        singleHiredDeveloper?.agenciesMatched?.map(
-                                            (agency) => {
-                                                let isShortListed =
-                                                    agency.isShortListed;
-                                                let interested =
-                                                    agency.interested;
-                                                return (
-                                                    <div className="moreAgencyList new_design_clientOneHireDeveloper">
-                                                        <div className="moreAgencyInfo">
-                                                            <div className="agencyDesc_clientOneHireDeveloper">
-                                                                <div
-                                                                    className="about_the_company"
-                                                                    onClick={() =>
-                                                                        getMatchedDevelopers(
-                                                                            agency
-                                                                                ?.agencyId
-                                                                                ?._id
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    <h3 className="name-title">
-                                                                        {
-                                                                            agency
-                                                                                ?.agencyId
-                                                                                ?.agencyName
-                                                                        }
-                                                                    </h3>
-                                                                    <span className="developers-count">{`${agency?.matchedDeveloperCount} Developers Available`}</span>
-                                                                </div>
-                                                                <div className="experience_and_interest">
-                                                                    <div className="email_clientOneHireDeveloper description_parent">
-                                                                        <p className="description_clientOne">
-                                                                            {`Experience:`}
-                                                                            &nbsp;
-                                                                            <span className="description_sharedDeveloper">
-                                                                                <Moment
-                                                                                    fromNow
-                                                                                    ago
-                                                                                >
-                                                                                    {`${agency?.agencyId?.incorporationDate}`}
-                                                                                </Moment>
-                                                                            </span>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div className="email_clientOneHireDeveloper description_parent">
-                                                                        <p className="description_clientOne">
-                                                                            {`Interest Shown:`}
-                                                                            &nbsp;
-                                                                            <span className="description_sharedDeveloper">
-                                                                                {
-                                                                                    agency
-                                                                                        ?.agencyId
-                                                                                        ?.interestedClientCount
-                                                                                }
-                                                                            </span>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
 
-                                                            <div className="about_the_company_clientOne">
-                                                                <p
-                                                                    style={{
-                                                                        color: '#40A3FF'
-                                                                    }}
-                                                                    className="description_sharedDeveloper"
-                                                                >
-                                                                    about the
-                                                                    company
-                                                                </p>
-                                                                <p
-                                                                    style={{
-                                                                        marginTop:
-                                                                            '0.6rem'
-                                                                    }}
-                                                                    className="description_sharedDeveloper"
-                                                                >
-                                                                    {
-                                                                        agency
-                                                                            ?.agencyId
-                                                                            ?.agencyDescription
-                                                                    }
-                                                                </p>
-                                                            </div>
-                                                        </div>
+                                <div className="developer-list-modal">
+                                    <span className="modal-heading">
+                                        Available Developers
+                                    </span>
+                                    <div className="developer-card-holder">
+                                        {!loading
+                                            ? singleHiredDeveloper?.length >
+                                                  0 &&
+                                              singleHiredDeveloper?.map(
+                                                  (item, index) => {
+                                                      let isShortListed =
+                                                          item.isShortListed;
+                                                      let interested =
+                                                          item.interested;
 
-                                                        <div className="shortlist_and_interest_parent">
-                                                            <div className="button_parent">
-                                                                {!isShortListed ? (
-                                                                    <button
-                                                                        onClick={() =>
-                                                                            onOpenModal(
-                                                                                agency
-                                                                                    ?.agencyId
-                                                                                    ?._id
-                                                                            )
-                                                                        }
-                                                                        className="moreAgencyLogo checkResource"
-                                                                    >
-                                                                        <p>
-                                                                            Get
-                                                                            Connected!!
-                                                                        </p>
-                                                                    </button>
-                                                                ) : isShortListed &&
-                                                                  interested ===
-                                                                      0 ? (
-                                                                    <p className="agency_pending">
-                                                                        Great
-                                                                        Step!!.Our
-                                                                        support
-                                                                        will
-                                                                        contact
-                                                                        you soon
-                                                                    </p>
-                                                                ) : isShortListed &&
-                                                                  interested ===
-                                                                      1 ? (
-                                                                    <p className="agency_accepted">
-                                                                        Congratulations!!..Agency
-                                                                        is
-                                                                        interested
-                                                                    </p>
-                                                                ) : (
-                                                                    <p className="agency_rejected_interested">
-                                                                        Sorry!!Agency
-                                                                        declined
-                                                                        your
-                                                                        request,
-                                                                        our
-                                                                        support
-                                                                        team
-                                                                        will
-                                                                        connect
-                                                                        you soon
-                                                                        with
-                                                                        more
-                                                                        profiles.
-                                                                    </p>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }
-                                        )
-                                    ) : (
-                                        <div className="no_matched_agency">
-                                            <h2>
-                                                Sorry No Matched Agencies Found.
-                                            </h2>
-                                        </div>
-                                    )
-                                ) : (
-                                    <h2 className="no_matched_agency">
-                                        Sorry No Matched Agencies Found.
-                                    </h2>
-                                )}
+                                                      return (
+                                                          <div className="developer-card">
+                                                              <span className="developer-name">
+                                                                  {`${item?.firstName} ${item?.lastName}`}
+                                                              </span>
+                                                              <div className="row-holder">
+                                                                  <div className="row-label">
+                                                                      Designation
+                                                                  </div>
+                                                                  <div className="row-value">
+                                                                      {
+                                                                          item?.developerDesignation
+                                                                      }
+                                                                  </div>
+                                                              </div>
+                                                              <div className="row-holder">
+                                                                  <div className="row-label">
+                                                                      Year Of
+                                                                      Experience
+                                                                  </div>
+                                                                  <div className="row-value">
+                                                                      {
+                                                                          item?.developerExperience
+                                                                      }{' '}
+                                                                      {item?.developerExperience >
+                                                                      1
+                                                                          ? 'Years'
+                                                                          : 'Year'}
+                                                                  </div>
+                                                              </div>
+                                                              <div className="row-holder">
+                                                                  <div className="row-label">
+                                                                      Skills
+                                                                  </div>
+                                                                  <div className="row-value">
+                                                                      {item
+                                                                          ?.developerTechnologies
+                                                                          ?.length >
+                                                                          0}{' '}
+                                                                      {item?.developerTechnologies?.map(
+                                                                          (
+                                                                              tech,
+                                                                              index
+                                                                          ) => (
+                                                                              <div className="skill-pill">
+                                                                                  <span className="pill">
+                                                                                      {
+                                                                                          tech?.technologyName
+                                                                                      }
+                                                                                  </span>
+                                                                              </div>
+                                                                          )
+                                                                      )}
+                                                                  </div>
+                                                              </div>
+
+                                                              <div className="row-holder">
+                                                                  <div className="row-label">
+                                                                      Price
+                                                                  </div>
+                                                                  <div className="row-value">
+                                                                      {
+                                                                          item?.developerPriceRange
+                                                                      }
+                                                                      ₹ Per Hour
+                                                                  </div>
+                                                              </div>
+                                                              <div className="shortlist_and_interest_parent">
+                                                                  <div className="button_parent">
+                                                                      {!isShortListed ? (
+                                                                          <button
+                                                                              onClick={() =>
+                                                                                  onOpenModal(
+                                                                                      item?.agencyId,
+                                                                                      item?._id
+                                                                                  )
+                                                                              }
+                                                                              className="moreAgencyLogo checkResource"
+                                                                          >
+                                                                              <p>
+                                                                                  Get
+                                                                                  Connected!!
+                                                                              </p>
+                                                                          </button>
+                                                                      ) : isShortListed &&
+                                                                        interested ===
+                                                                            0 ? (
+                                                                          <p className="agency_pending">
+                                                                              Great
+                                                                              Step!!.Our
+                                                                              support
+                                                                              will
+                                                                              contact
+                                                                              you
+                                                                              soon
+                                                                          </p>
+                                                                      ) : isShortListed &&
+                                                                        interested ===
+                                                                            1 ? (
+                                                                          <p className="agency_accepted">
+                                                                              Congratulations!!..Agency
+                                                                              is
+                                                                              interested
+                                                                          </p>
+                                                                      ) : (
+                                                                          <p className="agency_rejected_interested">
+                                                                              Sorry!!Agency
+                                                                              declined
+                                                                              your
+                                                                              request,
+                                                                              our
+                                                                              support
+                                                                              team
+                                                                              will
+                                                                              connect
+                                                                              you
+                                                                              soon
+                                                                              with
+                                                                              more
+                                                                              profiles.
+                                                                          </p>
+                                                                      )}
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      );
+                                                  }
+                                              )
+                                            : 'Loading...'}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -347,91 +315,6 @@ function ClientOneHireDeveloper(props) {
                                 >
                                     <p>No</p>
                                 </div>
-                            </div>
-                        </div>
-                    </Modal>
-
-                    <Modal
-                        open={developersShow}
-                        onClose={() => setShowDevelopers(false)}
-                        classNames={{
-                            overlay: 'customOverlayAgencyProduct',
-                            modal: 'customModalDeveloperList'
-                        }}
-                        style={{ width: '100%', maxWidth: 'unset' }}
-                        center
-                        closeOnOverlayClick={true}
-                        showCloseIcon={false}
-                    >
-                        <div className="developer-list-modal">
-                            <span className="modal-heading">
-                                Available Developer
-                            </span>
-                            <div className="developer-card-holder">
-                                {!loading
-                                    ? currentDevList?.map((item, index) => (
-                                          <div className="developer-card">
-                                              <span className="developer-name">
-                                                  {`Developer ${index + 1}`}
-                                              </span>
-                                              <div className="row-holder">
-                                                  <div className="row-label">
-                                                      Designation
-                                                  </div>
-                                                  <div className="row-value">
-                                                      {
-                                                          item?.developerDesignation
-                                                      }
-                                                  </div>
-                                              </div>
-                                              <div className="row-holder">
-                                                  <div className="row-label">
-                                                      Year Of Experience
-                                                  </div>
-                                                  <div className="row-value">
-                                                      {
-                                                          item?.developerExperience
-                                                      }{' '}
-                                                      {item?.developerExperience >
-                                                      1
-                                                          ? 'Years'
-                                                          : 'Year'}
-                                                  </div>
-                                              </div>
-                                              <div className="row-holder">
-                                                  <div className="row-label">
-                                                      Skills
-                                                  </div>
-                                                  <div className="row-value">
-                                                      {item
-                                                          ?.developerTechnologies
-                                                          ?.length > 0}{' '}
-                                                      <div className="skill-pill">
-                                                          <span className="pill">
-                                                              {
-                                                                  item
-                                                                      ?.developerTechnologies?.[0]
-                                                                      ?.technologyName
-                                                              }
-                                                          </span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-
-                                              <div className="row-holder">
-                                                  <div className="row-label">
-                                                      Price
-                                                  </div>
-                                                  <div className="row-value">
-                                                      {
-                                                          item?.developerPriceRange
-                                                      }
-                                                      ₹ Per Hour
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      ))
-                                    : 'Loading...'}
                             </div>
                         </div>
                     </Modal>
