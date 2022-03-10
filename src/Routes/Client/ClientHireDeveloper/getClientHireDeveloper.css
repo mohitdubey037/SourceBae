@@ -160,6 +160,26 @@
     letter-spacing: 1px;
 }
 
+.loadmore_container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    padding: 1rem 0;
+}
+.loadmore_button {
+    align-items: center;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    background-color: #165479;
+    box-shadow: 1px 1px 3px rgb(0 0 0 / 18%);
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Segoe UI';
+    font-size: 1rem;
+    display: flex;
+}
 .agencyProfileInfo div {
     display: flex;
     flex: 1;

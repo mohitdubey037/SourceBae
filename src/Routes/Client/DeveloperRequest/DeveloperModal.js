@@ -8,7 +8,7 @@ import DeveloperCard from './DeveloperCard';
 import styles from './DeveloperModal.module.css';
 import { ACCEPT, DELETE } from './types';
 
-export default function DeveloperModal({ modal, onCloseModal }) {
+export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
     const [selectedDevs, setselectedDevs] = useState([]);
     const [confirmationModalType, setconfirmationModalType] = useState('');
     const role = CLIENT;
@@ -24,18 +24,13 @@ export default function DeveloperModal({ modal, onCloseModal }) {
             : setselectedDevs([...selectedDevs, newDevId]);
     };
 
-    const acceptMyDevsPatchCall = async (id) => {
-        let url = `/api/${role}/hire-developers/share-developer/${id}`;
+    const acceptMyDevsPatchCall = async () => {
+        let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
         let body = {
             developerIds: selectedDevs,
             developerStatus: '3'
         };
-        instance
-            .patch(url, body)
-            .then((res) => {
-                console.log(res, 'dfdgsddffdggs');
-            })
-            .catch((err) => console.log(err, 'u8r9we89fsa89d9'));
+        instance.patch(url, body).then(onCloseModal);
     };
 
     return (
@@ -71,6 +66,7 @@ export default function DeveloperModal({ modal, onCloseModal }) {
                                 />
                                 <DeveloperCard
                                     data={item}
+                                    selectedDevs={selectedDevs}
                                     onDelete={() =>
                                         setconfirmationModalType(DELETE)
                                     }

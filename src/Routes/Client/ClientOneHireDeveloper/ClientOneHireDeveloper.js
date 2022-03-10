@@ -222,7 +222,7 @@ function ClientOneHireDeveloper(props) {
                                                               </div>
                                                               <div className="shortlist_and_interest_parent">
                                                                   <div className="button_parent">
-                                                                      {!isShortListed ? (
+                                                                      {!item?.developersShared ? (
                                                                           <button
                                                                               onClick={() =>
                                                                                   onOpenModal(
@@ -242,12 +242,11 @@ function ClientOneHireDeveloper(props) {
                                                                             0 ? (
                                                                           <p className="agency_pending">
                                                                               Great
-                                                                              Step!!.Our
-                                                                              support
+                                                                              Step!!.
+                                                                              Agency
                                                                               will
-                                                                              contact
-                                                                              you
-                                                                              soon
+                                                                              be
+                                                                              notified
                                                                           </p>
                                                                       ) : isShortListed &&
                                                                         interested ===

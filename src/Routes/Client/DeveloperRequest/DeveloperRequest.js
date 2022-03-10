@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import Back from '../../../Components/Back/Back';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import styles from './DeveloperRequest.module.css';
@@ -57,7 +57,6 @@ const DeveloperRequest = () => {
     const [selectedCard, setselectedCard] = useState('');
     const [isLoading, setisLoading] = useState(true);
     const [nextPage, setnextPage] = useState(1);
-    const [selectedDevs, setselectedDevs] = useState([]);
 
     const handleSwitch = () => setswitchValue((preV) => !preV);
 
@@ -84,32 +83,6 @@ const DeveloperRequest = () => {
                 console.log(err);
             })
             .finally(() => setisLoading(false));
-    };
-
-    const acceptMyDevsPatchCall = async (id) => {
-        let url = `/api/${role}/hire-developers/share-developer/${id}`;
-        let body = {
-            clientId: id,
-            developerIds: selectedDevs,
-            developerStatus: '3'
-        };
-        instance
-            .patch(url, body)
-            .then((res) => {
-                console.log(res, 'dfdgsddffdggs');
-            })
-            .catch((err) => console.log(err, 'u8r9we89fsa89d9'));
-    };
-
-    const selectedMyDev = (newDevId) => {
-        let isAlreadyChecked = selectedDevs?.some(
-            (devId) => devId === newDevId
-        );
-        isAlreadyChecked
-            ? setselectedDevs(() =>
-                  selectedDevs?.filter((devId) => devId !== newDevId)
-              )
-            : setselectedDevs([...selectedDevs, newDevId]);
     };
 
     return (
@@ -187,25 +160,24 @@ const DeveloperRequest = () => {
                         <div className={styles.partition}>
                             <div className={styles.listContainer}>
                                 {fetchedRequirement ? (
-                                    Array(10)
-                                        .fill(fetchedRequirement[0])
-                                        ?.map((req, index) => (
-                                            <RequirementsCard
-                                                key={`${req?._id}${index}`}
-                                                data={req}
-                                                showButton={true}
-                                                buttonTitle={'Detail'}
-                                                isSelected={
-                                                    selectedCard === req?._id
-                                                }
-                                                onApplyClick={() =>
-                                                    setmodal({
-                                                        open: true,
-                                                        data: req
-                                                    })
-                                                }
-                                            />
-                                        ))
+                                    fetchedRequirement?.map((req, index) => (
+                                        <RequirementsCard
+                                            key={`${req?._id}${index}`}
+                                            data={req}
+                                            showButton={true}
+                                            buttonTitle={'Detail'}
+                                            isSelected={
+                                                selectedCard === req?._id
+                                            }
+                                            onApplyClick={() => {
+                                                setmodal({
+                                                    open: true,
+                                                    data: req
+                                                });
+                                                setselectedCard(req?._id);
+                                            }}
+                                        />
+                                    ))
                                 ) : (
                                     <NoDataComponent />
                                 )}
@@ -238,6 +210,7 @@ const DeveloperRequest = () => {
             <DeveloperModal
                 modal={modal}
                 onCloseModal={() => setmodal({ open: false })}
+                selectedCard={selectedCard}
             />
         </div>
     );

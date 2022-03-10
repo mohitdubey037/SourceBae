@@ -220,6 +220,7 @@ function ClientHireDeveloper(props) {
                         </div>
                         {hiredDevelopers?.hasNextPage && (
                             <div
+                                className="loadmore_container"
                                 style={{
                                     display: 'flex',
                                     position: 'relative',
