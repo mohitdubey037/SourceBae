@@ -9,6 +9,30 @@
     overflow-y: auto;
 }
 
+.accept_reject_dev_btn {
+    border-radius: 6px;
+    margin-right: 10px;
+    background-color: #ffffff;
+    border-color: #4b4747;
+    margin-top: 10px;
+}
+
+.status-text {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: capitalize;
+}
+.status-text-Accepted {
+    color: #04a56f;
+}
+
+.status-text-Rejected {
+    color: #ff0000;
+}
+
 .DLCard {
     border: 1px solid #e1e1e1;
     box-sizing: border-box;

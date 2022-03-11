@@ -71,13 +71,13 @@ const RequirementListing = () => {
 
         let params = config?.isParam
             ? {
-                createdWithin: filterState?.createdWithin,
-                contractPeriod: filterState?.contractPeriod,
-                minBudget,
-                maxBudget,
-                page: currentPage,
-                searchKeyWord: searchText || val
-            }
+                  createdWithin: filterState?.createdWithin,
+                  contractPeriod: filterState?.contractPeriod,
+                  minBudget,
+                  maxBudget,
+                  page: currentPage,
+                  searchKeyWord: searchText || val
+              }
             : { page: currentPage };
 
         switchValue && (params.isHotRequest = 1);
@@ -93,11 +93,11 @@ const RequirementListing = () => {
                 }
                 config?.isShowMore
                     ? setRequirementsList((prevState) => ({
-                        ...res,
-                        docs: prevState?.docs
-                            ? [...prevState?.docs, ...res?.docs]
-                            : [...res?.docs]
-                    }))
+                          ...res,
+                          docs: prevState?.docs
+                              ? [...prevState?.docs, ...res?.docs]
+                              : [...res?.docs]
+                      }))
                     : setRequirementsList({ ...res, docs: res?.docs });
             })
             .catch((err) => {
@@ -161,14 +161,24 @@ const RequirementListing = () => {
     };
 
     const shareDeveloperPatchCall = async (devs) => {
+        console.log(devs, 'devs');
         let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
+        // "agencyId": "61e66c236343484c6752f034",
+        // "developerIds":[
+        //    {
+        //         "developerStatus": 2,
+        //         "developerId": "61ee4fa064ab8741b5237262"
+        //    }
         let body = {
             agencyId: agencyId,
-            developerIds: devs
+            developerIds: devs?.map((id) => ({
+                developerStatus: 2,
+                developerId: id
+            }))
         };
         instance
             .patch(url, body)
-            .then((res) => { })
+            .then((res) => {})
             .catch((err) => console.log(err));
     };
 
@@ -216,22 +226,20 @@ const RequirementListing = () => {
     };
 
     return (
-        <div >
+        <div>
             <div className={styles.navbarDiv}>
                 <Navbar />
             </div>
             <Back name="Active Requirement" />
 
-            <div className={styles.requirement_listing_container} >
+            <div className={styles.requirement_listing_container}>
                 <div className={styles.searchBarContainer}>
                     <div className={styles.searchAndBtnWrapper}>
                         {/* <div className={styles.searchBarStyle}> */}
                         <SearchBar
                             height={'40px'}
                             bgColor={colors.WHITE}
-                            placeholder={
-                                'Type keyword here example “react js”'
-                            }
+                            placeholder={'Type keyword here example “react js”'}
                             value={searchText}
                             setSearchText={(val) => {
                                 setSearchText(val);
@@ -239,7 +247,6 @@ const RequirementListing = () => {
                             }}
                         />
                         {/* </div> */}
-
                     </div>
                     <div
                         style={{
@@ -273,7 +280,7 @@ const RequirementListing = () => {
                         <div
                             style={{
                                 justifyContent: 'end',
-                                display: 'flex',
+                                display: 'flex'
                             }}
                         >
                             <CustomSwitch
