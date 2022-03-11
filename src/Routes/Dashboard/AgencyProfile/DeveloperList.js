@@ -91,13 +91,6 @@ function DeveloperList(props) {
             .patch(url, data)
             .then((res) => {})
             .catch((err) => {});
-        // instance.patch(`/api/${Role}/developers/update/${developerId}`)
-        //     .then(function (response) {
-        //         setToggleIndexes(response)
-        //     })
-        //     .catch(err => {
-        //         setErr(err?.response?.data?.message)
-        //     })
     };
 
     const handleChangeToggle = (event, ind) => {
@@ -116,13 +109,8 @@ function DeveloperList(props) {
             isDeveloperActive: developers[ind].isDeveloperActive
         };
         updateDevelopers(data, developers[ind]._id);
-        // setDevelopers(tempDevs)
         setState({ ...state, [event.target.name]: event.target.checked });
     };
-
-    // useEffect((index) => {
-    //     setToggleIndexes(developers[index].isDeveloperActive)
-    // }, [])
 
     const deleteDevelopers = () => {
         instance
@@ -156,12 +144,6 @@ function DeveloperList(props) {
         setOpenWithdrawModal(true);
     };
 
-    // useEffect(() => {
-    //     if (Role === 'Agency') {
-    //         getAgencyProfile(agencyId, false);
-    //     }
-    // }, []);
-
     return (
         <>
             <div className="mainDeveloperList">
@@ -169,198 +151,181 @@ function DeveloperList(props) {
                     className="innerDeveloperList"
                     style={{ backgroundColor: err && 'white' }}
                 >
-                    {
-                        /*err ?*/
-                        /* <>
-                            <div style={{ textAlign: 'center', width: '100%' }}>
-                                <img height="300px" src={PageNotFound} alt="no_data_img" />
-                                <h6>{err}</h6>
-                            </div>
-                        </> */
-                        developers.map((developer, index) => {
-                            return (
-                                <>
-                                    <div className="developerCard">
-                                        <div
-                                            className="cross-icon"
-                                            onClick={() =>
-                                                deleteFunctionality(
-                                                    developer._id
-                                                )
-                                            }
-                                        >
-                                            {/* <img src={crossIcon} alt="cross-icon" /> */}
-                                            {/* <i className="fas fa-trash-alt"></i> */}
-                                            <img src={TrashIcon} alt="trash" />
+                    {developers.map((developer, index) => {
+                        return (
+                            <>
+                                <div className="developerCard">
+                                    <div
+                                        className="cross-icon"
+                                        onClick={() =>
+                                            deleteFunctionality(developer._id)
+                                        }
+                                    >
+                                        <img src={TrashIcon} alt="trash" />
+                                    </div>
+                                    <div className="developerNameExp">
+                                        <div className="developerName">
+                                            <div>
+                                                <h2>{`${
+                                                    developer.firstName
+                                                        .charAt(0)
+                                                        .toUpperCase() +
+                                                    developer.firstName.slice(1)
+                                                } ${
+                                                    developer.lastName
+                                                        .charAt(0)
+                                                        .toUpperCase() +
+                                                    developer.lastName.slice(1)
+                                                }`}</h2>
+                                            </div>
+                                            <div
+                                                className={`rounded_developerList ${
+                                                    toggleIndexes[index] &&
+                                                    'conditionalColor'
+                                                }`}
+                                            ></div>
                                         </div>
-                                        <div className="developerNameExp">
-                                            <div className="developerName">
+                                        <div className="developerExp">
+                                            {toggleIndexes[index] ? (
+                                                <p
+                                                    style={{
+                                                        color: '#FF0000'
+                                                    }}
+                                                >
+                                                    Unavailable
+                                                </p>
+                                            ) : (
+                                                <p>Available</p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="developerTech">
+                                        <h6>Techstack</h6>
+                                        <div className="developerTechNames">
+                                            {developer.developerTechnologies.map(
+                                                (tech) => {
+                                                    return (
+                                                        <p>
+                                                            {
+                                                                tech.technologyName
+                                                            }
+                                                        </p>
+                                                    );
+                                                }
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="developerBudgetResume">
+                                        <div className="developerBudget">
+                                            <div className="developer-detail">
                                                 <div>
-                                                    <h2>{`${
-                                                        developer.firstName
-                                                            .charAt(0)
-                                                            .toUpperCase() +
-                                                        developer.firstName.slice(
-                                                            1
-                                                        )
-                                                    } ${
-                                                        developer.lastName
-                                                            .charAt(0)
-                                                            .toUpperCase() +
-                                                        developer.lastName.slice(
-                                                            1
-                                                        )
-                                                    }`}</h2>
+                                                    <p>Experience</p>
+                                                    <h6>{`${developer.developerExperience} year`}</h6>
                                                 </div>
-                                                <div
-                                                    className={`rounded_developerList ${
-                                                        toggleIndexes[index] &&
-                                                        'conditionalColor'
-                                                    }`}
-                                                ></div>
-                                            </div>
-                                            <div className="developerExp">
-                                                {toggleIndexes[index] ? (
-                                                    <p
-                                                        style={{
-                                                            color: '#FF0000'
-                                                        }}
-                                                    >
-                                                        Unavailable
-                                                    </p>
-                                                ) : (
-                                                    <p>Available</p>
-                                                )}
-                                            </div>
-                                        </div>
 
-                                        <div className="developerTech">
-                                            <h6>Techstack</h6>
-                                            <div className="developerTechNames">
-                                                {developer.developerTechnologies.map(
-                                                    (tech) => {
-                                                        return (
-                                                            <p>
-                                                                {
-                                                                    tech.technologyName
-                                                                }
-                                                            </p>
-                                                        );
-                                                    }
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        <div className="developerBudgetResume">
-                                            <div className="developerBudget">
-                                                <div className="developer-detail">
-                                                    <div>
-                                                        <p>Experience</p>
-                                                        <h6>{`${developer.developerExperience} year`}</h6>
-                                                    </div>
-
-                                                    <div>
-                                                        <p>Timeline</p>
-                                                        <h6>
-                                                            {developer.developerAvailability ==
-                                                            '0'
-                                                                ? `Immediately Available`
-                                                                : `${developer.developerAvailability} Weeks`}
-                                                        </h6>
-                                                    </div>
-                                                    <div>
-                                                        <p>Budget</p>
-                                                        <h6>{`$${
-                                                            developer.developerPriceRange
-                                                        }-$${
-                                                            developer.developerPriceRange +
-                                                            3 * 1000
-                                                        }`}</h6>
-                                                    </div>
+                                                <div>
+                                                    <p>Timeline</p>
+                                                    <h6>
+                                                        {developer.developerAvailability ==
+                                                        '0'
+                                                            ? `Immediately Available`
+                                                            : `${developer.developerAvailability} Weeks`}
+                                                    </h6>
+                                                </div>
+                                                <div>
+                                                    <p>Budget</p>
+                                                    <h6>{`$${
+                                                        developer.developerPriceRange
+                                                    }-$${
+                                                        developer.developerPriceRange +
+                                                        3 * 1000
+                                                    }`}</h6>
                                                 </div>
                                             </div>
-                                            <div className="developers_content">
+                                        </div>
+                                        <div className="developers_content">
+                                            <div
+                                                className="developers-status_parent"
+                                                onClick={() =>
+                                                    IndexSetter(index)
+                                                }
+                                            >
+                                                <div className="developer-status_developerList">
+                                                    <p>Developer Status</p>
+                                                </div>
                                                 <div
-                                                    className="developers-status_parent"
+                                                    style={{
+                                                        display:
+                                                            open &&
+                                                            toggleIndexes ===
+                                                                index &&
+                                                            'none'
+                                                    }}
+                                                    className="availability_toggle"
+                                                >
+                                                    <FormGroup>
+                                                        <Typography component="div">
+                                                            <Grid
+                                                                component="label"
+                                                                container
+                                                                alignItems="center"
+                                                                spacing={1}
+                                                            >
+                                                                <Grid
+                                                                    item
+                                                                    className="statusLabel"
+                                                                >
+                                                                    Available
+                                                                </Grid>
+                                                                <Grid item>
+                                                                    <AntSwitch
+                                                                        checked={
+                                                                            !!toggleIndexes[
+                                                                                index
+                                                                            ]
+                                                                        }
+                                                                        onChange={(
+                                                                            event
+                                                                        ) =>
+                                                                            handleChangeToggle(
+                                                                                event,
+                                                                                index
+                                                                            )
+                                                                        }
+                                                                        name="checked"
+                                                                    />
+                                                                </Grid>
+                                                                <Grid
+                                                                    item
+                                                                    className="statusLabel"
+                                                                >
+                                                                    Unavailable
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Typography>
+                                                    </FormGroup>
+                                                </div>
+                                            </div>
+                                            <div className="developerResume">
+                                                <button
                                                     onClick={() =>
-                                                        IndexSetter(index)
+                                                        window.open(
+                                                            `${developer.developerDocuments[0].documentLink}`,
+                                                            '_blank'
+                                                        )
                                                     }
                                                 >
-                                                    <div className="developer-status_developerList">
-                                                        <p>Developer Status</p>
-                                                    </div>
-                                                    <div
-                                                        style={{
-                                                            display:
-                                                                open &&
-                                                                toggleIndexes ===
-                                                                    index &&
-                                                                'none'
-                                                        }}
-                                                        className="availability_toggle"
-                                                    >
-                                                        <FormGroup>
-                                                            <Typography component="div">
-                                                                <Grid
-                                                                    component="label"
-                                                                    container
-                                                                    alignItems="center"
-                                                                    spacing={1}
-                                                                >
-                                                                    <Grid
-                                                                        item
-                                                                        className="statusLabel"
-                                                                    >
-                                                                        Available
-                                                                    </Grid>
-                                                                    <Grid item>
-                                                                        <AntSwitch
-                                                                            checked={
-                                                                                !!toggleIndexes[
-                                                                                    index
-                                                                                ]
-                                                                            }
-                                                                            onChange={(
-                                                                                event
-                                                                            ) =>
-                                                                                handleChangeToggle(
-                                                                                    event,
-                                                                                    index
-                                                                                )
-                                                                            }
-                                                                            name="checked"
-                                                                        />
-                                                                    </Grid>
-                                                                    <Grid
-                                                                        item
-                                                                        className="statusLabel"
-                                                                    >
-                                                                        Unavailable
-                                                                    </Grid>
-                                                                </Grid>
-                                                            </Typography>
-                                                        </FormGroup>
-                                                    </div>
-                                                </div>
-                                                <div className="developerResume">
-                                                    <button
-                                                        onClick={() =>
-                                                            window.open(
-                                                                `${developer.developerDocuments[0].documentLink}`,
-                                                                '_blank'
-                                                            )
-                                                        }
-                                                    >
-                                                        Download
-                                                    </button>
-                                                </div>
+                                                    Download
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </>
-                            );
-                        })
-                    }
+                                </div>
+                            </>
+                        );
+                    })}
 
                     {/* {Role === 'Agency' ?
                         props.data.isAgencyVerified && */}

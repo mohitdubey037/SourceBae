@@ -6,9 +6,10 @@ import cookie from 'react-cookies';
 const buildType = 'development';
 var url =
     process.env.NODE_ENV === 'development' || buildType === 'development'
-        ? 'https://api.onesourcing.in'
+        ? 'https://testapi.sourcebae.com'
         : 'https://api.sourcebae.com';
 
+// ? 'https://api.onesourcing.in'
 axios.defaults.headers.common['Authorization'] = `${localStorage.getItem(
     'Authorization'
 )}`;

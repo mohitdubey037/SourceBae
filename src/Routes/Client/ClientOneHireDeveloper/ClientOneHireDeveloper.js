@@ -148,10 +148,16 @@ function ClientOneHireDeveloper(props) {
                                                   0 &&
                                               singleHiredDeveloper?.map(
                                                   (item, index) => {
-                                                      let isShortListed =
-                                                          item.isShortListed;
-                                                      let interested =
-                                                          item.interested;
+                                                      let areDevsShared =
+                                                          !!item
+                                                              ?.idDevelopersShared
+                                                              ?.length;
+                                                      let developerSharedCode =
+                                                          areDevsShared
+                                                              ? item
+                                                                    ?.idDevelopersShared?.[0]
+                                                                    ?.developerStatus
+                                                              : 0;
 
                                                       return (
                                                           <div className="developer-card">
@@ -222,7 +228,7 @@ function ClientOneHireDeveloper(props) {
                                                               </div>
                                                               <div className="shortlist_and_interest_parent">
                                                                   <div className="button_parent">
-                                                                      {!item?.developersShared ? (
+                                                                      {!areDevsShared ? (
                                                                           <button
                                                                               onClick={() =>
                                                                                   onOpenModal(
@@ -237,9 +243,9 @@ function ClientOneHireDeveloper(props) {
                                                                                   Connected!!
                                                                               </p>
                                                                           </button>
-                                                                      ) : isShortListed &&
-                                                                        interested ===
-                                                                            0 ? (
+                                                                      ) : areDevsShared &&
+                                                                        developerSharedCode ===
+                                                                            2 ? (
                                                                           <p className="agency_pending">
                                                                               Great
                                                                               Step!!.
@@ -247,10 +253,13 @@ function ClientOneHireDeveloper(props) {
                                                                               will
                                                                               be
                                                                               notified
+                                                                              about
+                                                                              your
+                                                                              selections.
                                                                           </p>
-                                                                      ) : isShortListed &&
-                                                                        interested ===
-                                                                            1 ? (
+                                                                      ) : areDevsShared &&
+                                                                        developerSharedCode ===
+                                                                            3 ? (
                                                                           <p className="agency_accepted">
                                                                               Congratulations!!..Agency
                                                                               is

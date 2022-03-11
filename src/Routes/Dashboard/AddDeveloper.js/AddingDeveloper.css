@@ -269,6 +269,7 @@
     overflow-x: clip;
     font-family: 'Segoe UI';
     font-size: 0.7rem;
+    word-break: break-all;
 }
 
 .inputField2 .MuiSelect-root {

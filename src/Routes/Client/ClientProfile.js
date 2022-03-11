@@ -107,6 +107,7 @@ function ClientProfile() {
     const uploadMedia = async () => {
         const fileForm = new FormData();
         logo && fileForm.append('files', logo[0], logo[0].name);
+        console.log(fileForm, 'fileform');
         await instance
             .post(`api/${Role}/media/create`, fileForm)
             .then(function (response) {

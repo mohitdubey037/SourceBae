@@ -38,8 +38,8 @@ const DeveloperRequest = () => {
         { value: 12, label: 'More Than 12 Months' }
     ];
 
-    const role = AGENCY;
-    const clientId = localStorage.getItem('userId') || '';
+    const role = localStorage.getItem('role') || '';
+    const userId = localStorage.getItem('userId') || '';
     const [requirementsList, setRequirementsList] = useState({ docs: [] });
     const [modal, setmodal] = useState({ open: false, data: null });
 
@@ -64,14 +64,19 @@ const DeveloperRequest = () => {
 
     const hireDevApi = async () => {
         setisLoading(true);
-        const url = `/api/${role}/hire-developers/all?clientId=${clientId}`;
+        let url;
+        if (role === AGENCY) {
+            url = `/api/${role}/hire-developers/all?agencyId=${userId}`;
+        } else {
+            url = `/api/${role}/hire-developers/all?clientId=${userId}`;
+        }
         instance
             .get(url, { params: { page: requirementsList?.nextPage || 1 } })
             .then((res) => {
-                const sharedDevsEntryOnly = res?.docs?.filter(
-                    (item) => item?.developersShared?.length
-                );
-
+                // const sharedDevsEntryOnly = res?.docs?.filter(
+                //     (item) => !item?.developersShared?.length
+                // );
+                const sharedDevsEntryOnly = res?.docs || [];
                 setRequirementsList((prev) => ({
                     ...res,
                     docs: prev?.docs
@@ -161,36 +166,41 @@ const DeveloperRequest = () => {
                             <div className={styles.listContainer}>
                                 {requirementsList?.docs ? (
                                     requirementsList?.docs?.map(
-                                        (req, index) => (
-                                            <RequirementsCard
-                                                key={`${req?._id}${index}`}
-                                                data={req}
-                                                showButton={true}
-                                                buttonTitle={'Detail'}
-                                                isSelected={
-                                                    selectedCard === req?._id
-                                                }
-                                                onApplyClick={() => {
-                                                    setmodal({
-                                                        open: true,
-                                                        data: req
-                                                    });
-                                                    setselectedCard(req?._id);
-                                                }}
-                                            />
-                                        )
+                                        (req, index) => {
+                                            return (
+                                                <RequirementsCard
+                                                    key={`${req?._id}${index}`}
+                                                    data={req}
+                                                    showButton={true}
+                                                    buttonTitle={'Detail'}
+                                                    isSelected={
+                                                        selectedCard ===
+                                                        req?._id
+                                                    }
+                                                    onApplyClick={() => {
+                                                        setmodal({
+                                                            open: true,
+                                                            data: req
+                                                        });
+                                                        setselectedCard(
+                                                            req?._id
+                                                        );
+                                                    }}
+                                                />
+                                            );
+                                        }
                                     )
                                 ) : (
                                     <NoDataComponent />
                                 )}
                             </div>
-                            <div className={styles.optionsContainer}>
+                            {/* <div className={styles.optionsContainer}>
                                 <DeveloperListing
                                     item={developersList}
                                     selectedCard={selectedCard}
                                     onApply={(devs) => {}}
                                 />
-                            </div>
+                            </div> */}
                         </div>
                         <div className={styles.showMorebtn}>
                             {requirementsList?.hasNextPage &&

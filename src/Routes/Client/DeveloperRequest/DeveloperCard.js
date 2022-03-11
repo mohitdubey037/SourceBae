@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './DeveloperCard.module.css';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
 
-const DeveloperCard = ({ data = {}, onAccept, onReject, selectedDevs }) => {
+const DeveloperCard = ({ data = {} }) => {
     const getTechnologies = (data) => {
         let result = '';
         Array.isArray(data) &&
@@ -17,11 +17,18 @@ const DeveloperCard = ({ data = {}, onAccept, onReject, selectedDevs }) => {
     };
 
     const buttonString =
-        data?.developerSharedBy === 1
+        data?.developerStatus === 1
             ? 'Rejected'
-            : data?.developerSharedBy === 2
-            ? 'Accepted'
-            : 'To be Accepted';
+            : data?.developerStatus === 2
+            ? 'To be Accepted'
+            : 'Accepted';
+
+    const buttonColor =
+        data?.developerStatus === 1
+            ? 'red'
+            : data?.developerStatus === 2
+            ? 'blue'
+            : 'green';
 
     return (
         <div className={styles.mainContainer}>
@@ -56,7 +63,10 @@ const DeveloperCard = ({ data = {}, onAccept, onReject, selectedDevs }) => {
             </div>
 
             <SizedBox height={'12px'} />
-            <div className={styles.status_container}>
+            <div
+                className={styles.status_container}
+                style={{ backgroundColor: buttonColor }}
+            >
                 <div className={styles.status_label}>{`${buttonString}`}</div>
             </div>
         </div>
