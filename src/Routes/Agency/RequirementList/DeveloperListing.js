@@ -18,17 +18,6 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
         return result;
     };
 
-    useEffect(() => {
-        let sharedDevs = [];
-        // item?.forEach((ele) => {
-        //     ele.isDeveloperShared && sharedDevs.push(ele?._id);
-        // });
-        // setselectedDevs(sharedDevs);
-        // item?.map((dev) => ({
-        //     developerId: dev?._id
-        // }));
-    }, [item]);
-
     const isAlreadyShared = (id) => selectedDevs?.some((devId) => devId === id);
 
     const selectedMyDev = (newDevId) => {

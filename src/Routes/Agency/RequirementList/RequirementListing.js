@@ -161,14 +161,7 @@ const RequirementListing = () => {
     };
 
     const shareDeveloperPatchCall = async (devs) => {
-        console.log(devs, 'devs');
         let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
-        // "agencyId": "61e66c236343484c6752f034",
-        // "developerIds":[
-        //    {
-        //         "developerStatus": 2,
-        //         "developerId": "61ee4fa064ab8741b5237262"
-        //    }
         let body = {
             agencyId: agencyId,
             developerIds: devs?.map((id) => ({
@@ -178,7 +171,9 @@ const RequirementListing = () => {
         };
         instance
             .patch(url, body)
-            .then((res) => {})
+            .then((res) => {
+                window.location.reload();
+            })
             .catch((err) => console.log(err));
     };
 
