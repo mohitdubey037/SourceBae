@@ -130,7 +130,6 @@ function HireDeveloper(props) {
         if (!validated) {
             return;
         }
-        console.log(apiData.developerExperienceRequired.split(','), 'api');
         const body = {
             ...apiData,
             developerRolesRequired: selectedRoles.map((role) => role.value),
@@ -151,7 +150,6 @@ function HireDeveloper(props) {
             },
             expectedStartTime: parseInt(apiData.expectedStartTime)
         };
-        console.log(body);
         instance
             .post(`api/client/hire-developers/create`, body)
             .then(function (response) {
