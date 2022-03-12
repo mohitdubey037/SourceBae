@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Back from '../../../Components/Back/Back';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import styles from './DeveloperRequest.module.css';
 import RequirementsCard from '../../../Components/RequirementCard/RequirementsCard';
-import DeveloperListing from './DeveloperListing';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
 import colors from '../../../Constants/colors';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
@@ -16,6 +15,7 @@ import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
 import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';
 import DeveloperModal from './DeveloperModal';
+import { debounce } from 'lodash';
 
 let currentPage = 1;
 const DeveloperRequest = () => {
@@ -55,41 +55,66 @@ const DeveloperRequest = () => {
     const [developersList, setdevelopersList] = useState([]);
     const [selectedCard, setselectedCard] = useState('');
     const [isLoading, setisLoading] = useState(true);
-
     const handleSwitch = () => setswitchValue((preV) => !preV);
 
     useEffect(() => {
         hireDevApi();
     }, []);
 
-    const hireDevApi = async () => {
+    useEffect(() => {
+        hireDevApi({ isParam: true, isShowMore: false });
+    }, [switchValue]);
+
+    useEffect(() => {
+        hireDevApi({ isParam: true, isShowMore: false });
+    }, [filterState]);
+    const hireDevApi = async (config, val) => {
         setisLoading(true);
+        setselectedCard('');
+        setdevelopersList([]);
         let url;
         if (role === AGENCY) {
             url = `/api/${role}/hire-developers/all?agencyId=${userId}`;
         } else {
             url = `/api/${role}/hire-developers/all?clientId=${userId}`;
         }
+        const [minBudget, maxBudget] = filterState?.budget?.split('-') ?? [];
+        if (config?.isShowMore) currentPage += 1;
+        else currentPage = 1;
+
+        let params = config?.isParam
+            ? {
+                  createdWithin: filterState?.createdWithin,
+                  contractPeriod: filterState?.contractPeriod,
+                  minBudget,
+                  maxBudget,
+                  page: requirementsList?.nextPage || 1,
+                  searchKeyWord: searchText || val
+              }
+            : { page: requirementsList?.nextPage || 1 };
+
+        switchValue && (params.isHotRequest = 1);
+
         instance
-            .get(url, { params: { page: requirementsList?.nextPage || 1 } })
+            .get(url, {
+                params
+            })
             .then((res) => {
-                // const sharedDevsEntryOnly = res?.docs?.filter(
-                //     (item) => !item?.developersShared?.length
-                // );
-                const sharedDevsEntryOnly = res?.docs || [];
-                setRequirementsList((prev) => ({
-                    ...res,
-                    docs: prev?.docs
-                        ? [...prev.docs, ...sharedDevsEntryOnly]
-                        : [...sharedDevsEntryOnly]
-                }));
+                config?.isShowMore
+                    ? setRequirementsList((prevState) => ({
+                          ...res,
+                          docs: prevState?.docs
+                              ? [...prevState?.docs, ...res?.docs]
+                              : [...res?.docs]
+                      }))
+                    : setRequirementsList({ ...res, docs: res?.docs });
             })
             .catch((err) => {
-                console.log(err);
+                setRequirementsList({ docs: [] });
             })
             .finally(() => setisLoading(false));
     };
-
+    const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
     return (
         <div>
             <div className={styles.navbarDiv}>
@@ -110,6 +135,7 @@ const DeveloperRequest = () => {
                                 value={searchText}
                                 setSearchText={(val) => {
                                     setSearchText(val);
+                                    debounceFn({ isParam: true }, val);
                                 }}
                             />
                         </div>
@@ -164,7 +190,7 @@ const DeveloperRequest = () => {
                     <>
                         <div className={styles.partition}>
                             <div className={styles.listContainer}>
-                                {requirementsList?.docs ? (
+                                {requirementsList?.docs?.length > 0 ? (
                                     requirementsList?.docs?.map(
                                         (req, index) => {
                                             return (

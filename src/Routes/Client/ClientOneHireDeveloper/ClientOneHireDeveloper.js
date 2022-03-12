@@ -128,7 +128,7 @@ function ClientOneHireDeveloper(props) {
                         <div className="respondCards_clientOneHireDeveloper">
                             <Back name="Matched Developers" />
                             <div className="moreAgency_parent">
-                                <input
+                                {/* <input
                                     type="text"
                                     onChange={(e) =>
                                         setSearchText(e.target.value)
@@ -136,7 +136,7 @@ function ClientOneHireDeveloper(props) {
                                     value={searchText}
                                     placeholder="Search Developer"
                                     className="searchBox"
-                                />
+                                /> */}
 
                                 <div className="developer-list-modal">
                                     <span className="modal-heading">

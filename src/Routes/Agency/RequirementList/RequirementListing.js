@@ -191,12 +191,18 @@ const RequirementListing = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const debounceFn = useCallback(debounce(hireDevApi, 1000), []);
 
-    const handleSwitch = () => setswitchValue((preV) => !preV);
+    const handleSwitch = () => {
+        setswitchValue((prev) => !prev);
+    };
 
     useEffect(() => {
         hireDevApi();
         // getDevelopers(cardId, agencyId)
     }, [role]);
+
+    useEffect(() => {
+        hireDevApi({ isParam: true, isShowMore: false });
+    }, [switchValue]);
 
     const onApplyClick = (id) => {
         let user = localStorage.getItem('userId');

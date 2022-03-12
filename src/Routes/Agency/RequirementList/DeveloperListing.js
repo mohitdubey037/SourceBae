@@ -41,7 +41,9 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
         };
         instance
             .patch(url, body)
-            .then((res) => {})
+            .then((res) => {
+                window.location.reload();
+            })
             .catch((err) => console.log(err));
     }
 
