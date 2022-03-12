@@ -14,7 +14,6 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
     const role = CLIENT;
 
     const selectedMyDev = (newDevId) => {
-        console.log(developerIds, 'developerIds selectd');
         const updatedDev = developerIds?.map((item) => {
             if (item.developerId === newDevId) {
                 if (item.developerStatus === 1 || item.developerStatus === 2) {
@@ -26,16 +25,7 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             return item;
         });
 
-        console.log(updatedDev, 'updatedDev');
         setDeveloperIds(updatedDev);
-        // let isAlreadyChecked = developerIds?.some(
-        //     (devId) => devId === newDevId
-        // );
-        // isAlreadyChecked
-        //     ? setDeveloperIds(() =>
-        //           developerIds?.filter((devId) => devId !== newDevId)
-        //       )
-        //     : setDeveloperIds([...developerIds, newDevId]);
     };
 
     useEffect(() => {
@@ -45,7 +35,6 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                 developerId: item?.developerId?._id
             }))
         );
-        console.log(developerIds, 'developerIds');
     }, [modal?.data?.developersShared]);
     const acceptMyDevsPatchCall = async () => {
         let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
@@ -83,18 +72,24 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                         {modal?.data?.developersShared?.map((item) => {
                             const sharedbyClient =
                                 item?.developerStatus === 3 ? true : false;
+                            const isNotShortlistedByClient =
+                                item?.developerSharedBy === 2 ? false : true;
                             return (
                                 <div className={styles.cardContainer}>
-                                    <input
-                                        type="checkbox"
-                                        onChange={() =>
-                                            selectedMyDev(
-                                                item?.developerId?._id
-                                            )
-                                        }
-                                        className={styles.developer_checkbox}
-                                        defaultChecked={sharedbyClient}
-                                    />
+                                    {isNotShortlistedByClient && (
+                                        <input
+                                            type="checkbox"
+                                            onChange={() =>
+                                                selectedMyDev(
+                                                    item?.developerId?._id
+                                                )
+                                            }
+                                            className={
+                                                styles.developer_checkbox
+                                            }
+                                            defaultChecked={sharedbyClient}
+                                        />
+                                    )}
                                     <DeveloperCard
                                         data={item}
                                         developerIds={developerIds}

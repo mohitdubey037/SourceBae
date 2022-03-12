@@ -352,12 +352,12 @@ function AddingDeveloper(props) {
                                             )}
                                         </div>
                                         <div className="developerDesignation_addingDeveloper">
-                                            <h4>
+                                            {/* <h4>
                                                 Upload Resume(pdf, doc, docx)
                                                 <span className="requiredStar">
                                                     *
                                                 </span>
-                                            </h4>
+                                            </h4> */}
                                             <div className="uploadBlock_addingDeveloper">
                                                 <div className="fileUploadButton_addingDeveloper">
                                                     <section className="container_addingDeveloper">

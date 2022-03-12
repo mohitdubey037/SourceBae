@@ -19,9 +19,6 @@ export default function About_ProgressBar() {
         }
     ];
 
-    useEffect(() => {
-        console.log('hi');
-    });
     return (
         <>
             <div className={`${styles.about_progress_heading}`}>

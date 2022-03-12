@@ -455,6 +455,7 @@ button {
 .leftAgencyProfileDesc p {
     font-family: 'Segoe UI';
     color: #555;
+    margin-right: 0.5rem;
     font-size: 14px;
 }
 

@@ -51,14 +51,14 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
             {item?.length ? (
                 <div style={{ minWidth: '260px' }}>
                     {item?.map((person) => {
-                        let statusText =
-                            person?.isDeveloperShared &&
-                            person?.developerSharedBy?.developerStatus === 3
+                        let statusText = person?.isDeveloperShared
+                            ? person?.developerSharedBy?.developerStatus === 3
                                 ? 'Accepted'
                                 : person?.developerSharedBy?.developerStatus ===
                                   1
                                 ? 'Rejected'
-                                : 'Not Shared';
+                                : 'Shared'
+                            : 'Not Shared';
                         return (
                             <div className={styles.DLCard}>
                                 <SizedBox height={'6px'} />
@@ -129,7 +129,9 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
                                     />
                                     {person?.isDeveloperShared &&
                                         person?.developerSharedBy
-                                            ?.isAnswered === false && (
+                                            ?.isAnswered === false &&
+                                        person?.developerSharedBy
+                                            ?.developerSharedBy === 2 && (
                                             <>
                                                 <button
                                                     className={`${styles.accept_reject_dev_btn}`}

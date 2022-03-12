@@ -140,9 +140,6 @@ function ShortTerm(props) {
         setAllServices(toggledServices);
     };
 
-    useEffect(() => {
-        console.log(apiData, 'api data');
-    }, [apiData.projectServicesRequired]);
     const errorValidation = () => {
         const err = {};
         if (apiData.projectServicesRequired.length === 0) {

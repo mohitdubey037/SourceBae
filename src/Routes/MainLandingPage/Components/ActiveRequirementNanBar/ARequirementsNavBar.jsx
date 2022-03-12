@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 export default function ARequirementsNavBar() {
     function handleMenuToggle() {
-        console.log('Hi');
         let demo = document.getElementById('demo');
-        console.log(demo);
         if (demo.style.display === 'flex') demo.style.display = 'none';
         else demo.style.display = 'flex';
     }
@@ -29,8 +27,8 @@ export default function ARequirementsNavBar() {
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
                         onMouseOver={() =>
-                        (document.getElementById('pop-up').style.display =
-                            'block')
+                            (document.getElementById('pop-up').style.display =
+                                'block')
                         }
                     >
                         Services
