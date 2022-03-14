@@ -21,34 +21,7 @@ const Mainhomepage = (props) => {
         }
     }, []);
 
-    return (
-        <>
-            {/* {!auth ? (
-                <div className="mainHomePage">
-                    <div className="innerHomePage">
-                        <div
-                            className="HomePageCard"
-                            onClick={() =>
-                                props.history.push(`/login/${AGENCY}`)
-                            }
-                        >
-                            <span className="leftHomePageBorder"></span>
-                            <p>Login</p>
-                        </div>
-                        <div
-                            className="HomePageCard"
-                            onClick={() =>
-                                props.history.push(`/register/${AGENCY}`)
-                            }
-                        >
-                            <span className="leftHomePageBorder"></span>
-                            <p>Sign Up</p>
-                        </div>
-                    </div>
-                </div>
-            ) : null} */}
-        </>
-    );
+    return <></>;
 };
 
 export default Mainhomepage;
