@@ -139,19 +139,21 @@ const DeveloperRequest = () => {
                                 }}
                             />
                         </div>
-                        <div
-                            style={{
-                                width: '200px',
-                                justifyContent: 'end',
-                                display: 'flex'
-                            }}
-                        >
-                            <CustomSwitch
-                                label={'Hot Request'}
-                                switchValue={switchValue}
-                                onChange={handleSwitch}
-                            />
-                        </div>
+                        {role === AGENCY && (
+                            <div
+                                style={{
+                                    width: '200px',
+                                    justifyContent: 'end',
+                                    display: 'flex'
+                                }}
+                            >
+                                <CustomSwitch
+                                    label={'Hot Request'}
+                                    switchValue={switchValue}
+                                    onChange={handleSwitch}
+                                />
+                            </div>
+                        )}
                     </div>
                     <div
                         style={{

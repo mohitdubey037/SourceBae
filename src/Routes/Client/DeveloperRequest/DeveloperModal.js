@@ -6,6 +6,7 @@ import { CLIENT } from '../../../shared/constants';
 import ConfirmationModal from './ConfirmationModal';
 import DeveloperCard from './DeveloperCard';
 import styles from './DeveloperModal.module.css';
+import infoIcon from './informationNew.svg';
 import { ACCEPT, DELETE } from './types';
 
 export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
@@ -74,9 +75,26 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                                 item?.developerStatus === 3 ? true : false;
                             const isNotShortlistedByClient =
                                 item?.developerSharedBy === 2 ? false : true;
+
+                            let titleText = '';
+                            if (item?.developerSharedBy === 2) {
+                                if (item?.isAnswered) {
+                                    if (item?.developerStatus === 1)
+                                        titleText =
+                                            'Agency rejected the developer request';
+                                    else if (item?.developerStatus === 3)
+                                        titleText =
+                                            'Agency accepted the developer request';
+                                } else {
+                                    if (item?.isAnswered === false)
+                                        if (item?.developerStatus === 2)
+                                            titleText =
+                                                'Waiting for the response from the Agency';
+                                }
+                            }
                             return (
                                 <div className={styles.cardContainer}>
-                                    {isNotShortlistedByClient && (
+                                    {isNotShortlistedByClient ? (
                                         <input
                                             type="checkbox"
                                             onChange={() =>
@@ -89,6 +107,20 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                                             }
                                             defaultChecked={sharedbyClient}
                                         />
+                                    ) : (
+                                        <span
+                                            className={
+                                                styles.developer_checkbox
+                                            }
+                                            title={titleText}
+                                        >
+                                            {' '}
+                                            <img
+                                                width={20}
+                                                src={infoIcon}
+                                                alt=""
+                                            />
+                                        </span>
                                     )}
                                     <DeveloperCard
                                         data={item}
