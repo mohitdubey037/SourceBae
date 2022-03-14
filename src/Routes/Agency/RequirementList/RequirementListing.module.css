@@ -44,7 +44,7 @@
     align-items: center;
 }
 
-.searchBarContainer{
+.searchBarContainer {
     width: 65%;
 }
 
@@ -57,7 +57,8 @@
 }
 
 .searchAndBtnWrapper {
-    /* display: flex; */
+    display: flex;
+    gap: 1rem;
     justify-content: space-between;
 }
 

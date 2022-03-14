@@ -59,6 +59,8 @@ const RequirementListing = () => {
     const [developersList, setdevelopersList] = useState([]);
     const [selectedCard, setselectedCard] = useState('');
     const [isLoading, setisLoading] = useState(true);
+    const [sharedByYou, setSharedByYou] = useState(false);
+    const [shortListedByClient, setShortListedByClient] = useState(false);
 
     const hireDevApi = async (config, val) => {
         setisLoading(true);
@@ -81,6 +83,8 @@ const RequirementListing = () => {
             : { page: currentPage };
 
         switchValue && (params.isHotRequest = 1);
+        shortListedByClient && (params.shortListedByClient = 1);
+        sharedByYou && (params.SharedByYou = 1);
 
         instance
             .get(url, {
@@ -214,7 +218,7 @@ const RequirementListing = () => {
 
     useEffect(() => {
         hireDevApi({ isParam: true, isShowMore: false });
-    }, [switchValue]);
+    }, [switchValue, shortListedByClient, sharedByYou]);
 
     const onApplyClick = (id) => {
         let user = localStorage.getItem('userId');
@@ -248,9 +252,9 @@ const RequirementListing = () => {
             <div className={styles.requirement_listing_container}>
                 <div className={styles.searchBarContainer}>
                     <div className={styles.searchAndBtnWrapper}>
-                        {/* <div className={styles.searchBarStyle}> */}
                         <SearchBar
                             height={'40px'}
+                            style={{ width: '50%' }}
                             bgColor={colors.WHITE}
                             placeholder={'Type keyword here example “react js”'}
                             value={searchText}
@@ -259,7 +263,32 @@ const RequirementListing = () => {
                                 debounceFn({ isParam: true }, val);
                             }}
                         />
-                        {/* </div> */}
+                        <div
+                            style={{
+                                justifyContent: 'end',
+                                display: 'flex'
+                            }}
+                        >
+                            <CustomSwitch
+                                label={'Shortlisted By Client'}
+                                switchValue={shortListedByClient}
+                                onChange={() =>
+                                    setShortListedByClient(!shortListedByClient)
+                                }
+                            />
+                        </div>
+                        <div
+                            style={{
+                                justifyContent: 'end',
+                                display: 'flex'
+                            }}
+                        >
+                            <CustomSwitch
+                                label={'Shared By You'}
+                                switchValue={sharedByYou}
+                                onChange={() => setSharedByYou(!sharedByYou)}
+                            />
+                        </div>
                     </div>
                     <div
                         style={{

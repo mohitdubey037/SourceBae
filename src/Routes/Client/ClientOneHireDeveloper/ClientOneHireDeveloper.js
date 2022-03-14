@@ -150,12 +150,12 @@ function ClientOneHireDeveloper(props) {
                                                   (item, index) => {
                                                       let areDevsShared =
                                                           !!item
-                                                              ?.idDevelopersShared
+                                                              ?.isDevelopersShared
                                                               ?.length;
                                                       let developerSharedCode =
                                                           areDevsShared
                                                               ? item
-                                                                    ?.idDevelopersShared?.[0]
+                                                                    ?.isDevelopersShared?.[0]
                                                                     ?.developerStatus
                                                               : 0;
 
