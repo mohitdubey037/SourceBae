@@ -255,7 +255,6 @@
 }
 
 .container_addingDeveloper {
-    width: 60%;
     display: flex;
     align-items: center;
     justify-content: flex-start;

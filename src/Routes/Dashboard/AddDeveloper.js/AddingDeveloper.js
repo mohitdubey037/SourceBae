@@ -358,13 +358,13 @@ function AddingDeveloper(props) {
                                                     *
                                                 </span>
                                             </h4> */}
-                                            <div className="uploadBlock_addingDeveloper">
+                                            <div
+                                                className="uploadBlock_addingDeveloper"
+                                                {...getRootProps()}
+                                            >
                                                 <div className="fileUploadButton_addingDeveloper">
                                                     <section className="container_addingDeveloper">
-                                                        <div
-                                                            className="file_click_addingDeveloper"
-                                                            {...getRootProps()}
-                                                        >
+                                                        <div className="file_click_addingDeveloper">
                                                             <input
                                                                 {...getInputProps()}
                                                             />

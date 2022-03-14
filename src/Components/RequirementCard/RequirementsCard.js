@@ -150,14 +150,17 @@ export default function RequirementsList(props) {
                             <div className="gridLabel">payment</div>
                             <SizedBox height="12px" />
                             <div className="gridValue">
-                                ₹{averageBudget || ''}/month
+                                {generateBudgetStr(averageBudget) || ''}
                             </div>
                         </div>
                         <div className="grid-item">
                             <div className="gridLabel">experience</div>
                             <SizedBox height="12px" />
                             <div className="gridValue">
-                                {developerExperienceRequired || ''} year
+                                {generateExperienceStr(
+                                    developerExperienceRequired
+                                ) || ''}{' '}
+                                year
                             </div>
                         </div>
                         <div className="grid-item">
