@@ -83,7 +83,7 @@ const HireAgencyForm1 = (props) => {
     }, [validateEffect]); // eslint-disable-line
     const handleBack = () => {
         if (window.confirm('Do you want to discard changes?') === true) {
-            props.history.push(`/clientNewestDashboard`);
+            props.history.push(`/client-newest-dashboard`);
         }
     };
 

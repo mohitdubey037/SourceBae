@@ -39,9 +39,9 @@ export default function PageNotFound(props) {
         // localStorage.removeItem("Authorization");
         // localStorage.removeItem('role');
         if (Role === 'Client') {
-            props.history.replace('/clientNewestDashboard');
+            props.history.replace('/client-newest-dashboard');
         } else if (Role === 'Agency') {
-            props.history.replace('/agencyNewestDashboard');
+            props.history.replace('/agency-newest-dashboard');
         } else {
             window.location.href = '/';
         }

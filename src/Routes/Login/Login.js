@@ -175,10 +175,10 @@ const Login = (props) => {
                 setLoading(false);
                 if (isRequirement)
                     props.history.push('/agency-requirements-listing');
-                else props.history.replace('/agencyNewestDashboard');
+                else props.history.replace('/agency-newest-dashboard');
             } else if (role === CLIENT) {
                 setLoading(false);
-                props.history.push(`/clientNewestDashboard`);
+                props.history.push(`/client-newest-dashboard`);
             } else {
             }
         }
@@ -195,9 +195,9 @@ const Login = (props) => {
             tempRole !== undefined
         ) {
             if (tempRole === AGENCY) {
-                props.history.replace('/agencyNewestDashboard');
+                props.history.replace('/agency-newest-dashboard');
             } else if (tempRole === CLIENT) {
-                props.history.replace('/clientNewestDashboard');
+                props.history.replace('/client-newest-dashboard');
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

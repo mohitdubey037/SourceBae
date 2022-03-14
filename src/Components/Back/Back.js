@@ -19,7 +19,7 @@ function Back(props) {
                         'Your Previous Saved Documents Will Be Lost'
                     ) === true
                 ) {
-                    props.history.replace('/clientNewestDashboard');
+                    props.history.replace('/client-newest-dashboard');
                 }
             } else if (url.includes('hire-agency-form-two')) {
                 if (
@@ -50,7 +50,6 @@ function Back(props) {
                             'Your Previous Saved Documents Will Be Lost'
                         ) == true
                     ) {
-                        // props.history.replace(`/clientNewestDashboard`);
                         props.history.replace(
                             `/hire-agency-form-two/${props.formState3.id}`,
                             props.oldFormData
@@ -75,7 +74,7 @@ function Back(props) {
                         'Your Previous Saved Documents Will Be Lost'
                     ) === true
                 ) {
-                    props.history.replace('/agencyNewestDashboard');
+                    props.history.replace('/agency-newest-dashboard');
                 }
             } else if (
                 url.includes('agency-form-two') ||
@@ -110,9 +109,9 @@ function Back(props) {
                     props.history.replace('/agency-form-three');
                 }
             } else if (url.includes('quotation')) {
-                props.history.replace('/agencyNewestDashboard');
+                props.history.replace('/agency-newest-dashboard');
             } else if (url.includes('agency-requirements-listing'))
-                props.history.push('/agencyNewestDashboard');
+                props.history.push('/agency-newest-dashboard');
             else {
                 props.history.goBack();
             }

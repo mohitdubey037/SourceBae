@@ -158,7 +158,7 @@ function ClientNewestDashboard(props) {
                                     <div
                                         onClick={() =>
                                             props.history.push(
-                                                '/agencyNewestAllProject'
+                                                '/agency-newest-all-project'
                                             )
                                         }
                                         className="showDetail_onClientNewestDashboard"

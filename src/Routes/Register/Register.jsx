@@ -319,10 +319,10 @@ const Register = (props) => {
             .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
                 if (role === CLIENT) {
-                    props.history.push('/clientNewestDashboard');
+                    props.history.push('/client-newest-dashboard');
                     setLoading(false);
                 } else if (role === AGENCY) {
-                    props.history.push('/agencyNewestDashboard');
+                    props.history.push('/agency-newest-dashboard');
                     setLoading(false);
                 }
             })

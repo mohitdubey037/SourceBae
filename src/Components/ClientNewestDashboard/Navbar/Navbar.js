@@ -50,10 +50,10 @@ function Navbar(props) {
 
     const RouteRedirect1 = () => {
         if (role === CLIENT) {
-            props.history.replace('/clientNewestDashboard');
+            props.history.replace('/client-newest-dashboard');
         }
         if (role === AGENCY) {
-            props.history.replace('/agencyNewestDashboard');
+            props.history.replace('/agency-newest-dashboard');
         }
     };
 
@@ -62,23 +62,23 @@ function Navbar(props) {
         <div
             style={{
                 top:
-                    (url.includes('/clientNewestDashboard') ||
-                        url.includes('/agencyNewestDashboard') ||
+                    (url.includes('/client-newest-dashboard') ||
+                        url.includes('/agency-newest-dashboard') ||
                         url.includes('/quotation') ||
                         url.includes('agency-list') ||
                         url.includes('/project-details') ||
                         url.includes('/agency-project-details') ||
-                        url.includes('/agencyNewestDashboard') ||
-                        url.includes('/agencyNewestAllProject')) &&
+                        url.includes('/agency-newest-dashboard') ||
+                        url.includes('/agency-newest-all-project')) &&
                     '1rem',
                 justifyContent:
-                    (url.includes('/clientNewestDashboard') ||
-                        url.includes('/agencyNewestDashboard') ||
+                    (url.includes('/client-newest-dashboard') ||
+                        url.includes('/agency-newest-dashboard') ||
                         url.includes('/quotation') ||
                         url.includes('/agency-list') ||
                         url.includes('/project-details') ||
                         url.includes('/agency-project-details') ||
-                        url.includes('/agencyNewestAllProject')) &&
+                        url.includes('/agency-newest-all-project')) &&
                     'flex-end'
             }}
             className="navbar"
@@ -86,13 +86,13 @@ function Navbar(props) {
             <div
                 style={{
                     display:
-                        (url.includes('/clientNewestDashboard') ||
-                            url.includes('/agencyNewestDashboard') ||
+                        (url.includes('/client-newest-dashboard') ||
+                            url.includes('/agency-newest-dashboard') ||
                             url.includes('/quotation') ||
                             url.includes('agency-list') ||
                             url.includes('/project-details') ||
                             url.includes('/agency-project-details') ||
-                            url.includes('/agencyNewestAllProject')) &&
+                            url.includes('/agency-newest-all-project')) &&
                         'none'
                 }}
                 className="logoLink_navbar"

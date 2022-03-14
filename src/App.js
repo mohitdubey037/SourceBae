@@ -105,7 +105,7 @@ const App = (props) => {
             >
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
-                    <Route exact path="/whoAreYou" component={Page} />
+                    <Route exact path="/who-are-you" component={Page} />
                     <Route exact path="/Verify_Page" component={VerifyPage} />
                     <Route exact path="/login/:role" component={Login} />
                     <Route exact path="/register/:role" component={Register} />
@@ -133,14 +133,14 @@ const App = (props) => {
 
                     <Route
                         exact
-                        path="/agencyNewestAllProject"
+                        path="/agency-newest-all-project"
                         component={AgencyNewestAllProject}
                     />
 
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agencyNewestDashboard"
+                        path="/agency-newest-dashboard"
                         component={AgencyNewestDashboard}
                     />
                     <CustomRoute
@@ -256,7 +256,7 @@ const App = (props) => {
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/clientNewestDashboard"
+                        path="/client-newest-dashboard"
                         component={ClientNewestDashboard}
                     />
                     <CustomRoute
@@ -328,7 +328,6 @@ const App = (props) => {
                         component={ClientProfile}
                     />
                     <CustomRoute component={PageNotFound} />
-                    {/* <Suspence fallback={<div>...loading</div>}></Suspence> */}
                 </Switch>
             </ErrorBoundary>
         </>

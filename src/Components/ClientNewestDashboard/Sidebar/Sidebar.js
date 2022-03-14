@@ -50,10 +50,10 @@ function Sidebar(props) {
 
     const RouteRedirect1 = () => {
         if (role === CLIENT) {
-            props.history.replace('/clientNewestDashboard');
+            props.history.replace('/client-newest-dashboard');
         }
         if (role === AGENCY) {
-            props.history.replace('/agencyNewestDashboard');
+            props.history.replace('/agency-newest-dashboard');
         }
     };
 
@@ -88,9 +88,9 @@ function Sidebar(props) {
                             style={{
                                 filter:
                                     (props.location.pathname ===
-                                        '/clientNewestDashboard' ||
+                                        '/client-newest-dashboard' ||
                                         props.location.pathname ===
-                                            '/agencyNewestDashboard') &&
+                                            '/agency-newest-dashboard') &&
                                     'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'
                             }}
                             src={dashboardIcon}

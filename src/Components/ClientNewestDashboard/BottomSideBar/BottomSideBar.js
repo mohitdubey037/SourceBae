@@ -42,9 +42,9 @@ function BottomSidebar(props) {
 
     const handleDashboard = () => {
         if (Role === 'Agency') {
-            routerHistory.push('/agencyNewestDashboard');
+            routerHistory.push('/agency-newest-dashboard');
         } else {
-            routerHistory.push('/clientNewestDashboard');
+            routerHistory.push('/client-newest-dashboard');
         }
     };
 
@@ -75,9 +75,9 @@ function BottomSidebar(props) {
                             style={{
                                 filter:
                                     (props.location.pathname ===
-                                        '/clientNewestDashboard' ||
+                                        '/client-newest-dashboard' ||
                                         props.location.pathname ===
-                                            '/agencyNewestDashboard') &&
+                                            '/agency-newest-dashboard') &&
                                     'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'
                             }}
                             src={dashboardIcon}

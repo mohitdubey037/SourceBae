@@ -25,16 +25,16 @@ export default function LNavbar(props) {
                     </div>
                     <div className={`${styles.nav_menu}`}>
                         {' '}
-                        <Link to="/whoAreYou">Who We Are</Link>
+                        <Link to="/who-are-you">Who We Are</Link>
                     </div>
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
                     >
                         <span
                             onMouseOver={() =>
-                            (document.getElementById(
-                                'pop-up'
-                            ).style.display = 'block')
+                                (document.getElementById(
+                                    'pop-up'
+                                ).style.display = 'block')
                             }
                         >
                             Services
@@ -75,14 +75,21 @@ export default function LNavbar(props) {
                         </div>
                     </div>
                 </div>
-                <Link to="/login/agency" className={`${styles.L_Link} ${styles.nav_login}`}>
+                <Link
+                    to="/login/agency"
+                    className={`${styles.L_Link} ${styles.nav_login}`}
+                >
                     <button
                         className={`${styles.L_login} ${styles.nav_Lbutton}`}
                     >
                         Log In
                     </button>{' '}
                 </Link>
-                <Link id={'nav_sign_up_btn'} to="/register/agency" className={`${styles.L_Link} ${styles.nav_signup}`}>
+                <Link
+                    id={'nav_sign_up_btn'}
+                    to="/register/agency"
+                    className={`${styles.L_Link} ${styles.nav_signup}`}
+                >
                     <button
                         className={`${styles.L_signup} ${styles.nav_Lbutton}`}
                     >
@@ -102,7 +109,7 @@ export default function LNavbar(props) {
                         <Link to="/">Home</Link>
                     </li>
                     <li className={`${styles.nav_menu}`}>
-                        <Link to="/whoAreYou">Who We Are</Link>
+                        <Link to="/who-are-you">Who We Are</Link>
                     </li>
                     <li className={`${styles.nav_menu}`}>Services</li>
                 </ul>
