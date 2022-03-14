@@ -28,7 +28,7 @@ const DeveloperRequest = () => {
     const budgetOptions = [
         { value: '50000-65000', label: '₹50,000 - ₹65,000' },
         { value: '65000-85000', label: '₹65,000 - ₹85,0000' },
-        { value: '85000-110000', label: '₹85,000 - ₹1,10,000' },
+        { value: '85000-100000', label: '₹85,000 - ₹1,00,000' },
         { value: '100000', label: 'More than ₹1,00,000' }
     ];
 

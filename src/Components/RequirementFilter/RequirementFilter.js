@@ -96,73 +96,59 @@ export default function RequirementFilter({
                     <div
                         class="pretty p-icon p-curve p-pulse"
                         className={styles.radioStyle}
-                        onClick={() => handleRadioChecks(budget, '500-1000')}
+                        onClick={() => handleRadioChecks(budget, '50000')}
                     >
                         <input
                             type="radio"
                             name="budgetRadio"
-                            checked={filterState[budget] === '500-1000'}
+                            checked={filterState[budget] === '50000'}
                         />
                         <SizedBox width={'8px'} />
                         <div
                             class="state p-info-o"
                             className={styles.radioLabel}
                         >
-                            <label>₹500-₹1000</label>
+                            <label>less than 50,000</label>
                         </div>
                     </div>
                     <div
                         class="pretty p-icon p-curve p-pulse"
                         className={styles.radioStyle}
-                        onClick={() => handleRadioChecks(budget, '1000-2000')}
+                        onClick={() =>
+                            handleRadioChecks(budget, '50000-125000')
+                        }
                     >
                         <input
                             type="radio"
                             name="budgetRadio"
-                            checked={filterState[budget] === '1000-2000'}
+                            checked={filterState[budget] === '125000-200000'}
                         />
                         <SizedBox width={'8px'} />
                         <div
                             class="state p-info-o"
                             className={styles.radioLabel}
                         >
-                            <label>₹1000-₹2000</label>
+                            <label>₹125000-₹200000</label>
                         </div>
                     </div>
                     <div
                         class="pretty p-icon p-curve p-pulse"
                         className={styles.radioStyle}
-                        onClick={() => handleRadioChecks(budget, '2000-3000')}
+                        onClick={() =>
+                            handleRadioChecks(budget, '20000-99999999')
+                        }
                     >
                         <input
                             type="radio"
                             name="budgetRadio"
-                            checked={filterState[budget] === '2000-3000'}
+                            checked={filterState[budget] === '200000-99999999'}
                         />
                         <SizedBox width={'8px'} />
                         <div
                             class="state p-info-o"
                             className={styles.radioLabel}
                         >
-                            <label>₹2000-₹3000</label>
-                        </div>
-                    </div>
-                    <div
-                        class="pretty p-icon p-curve p-pulse"
-                        className={styles.radioStyle}
-                        onClick={() => handleRadioChecks(budget, '4000')}
-                    >
-                        <input
-                            type="radio"
-                            name="budgetRadio"
-                            checked={filterState[budget] === '4000'}
-                        />
-                        <SizedBox width={'8px'} />
-                        <div
-                            class="state p-info-o"
-                            className={styles.radioLabel}
-                        >
-                            <label>more than ₹4000</label>
+                            <label>More than ₹200000</label>
                         </div>
                     </div>
                 </div>
