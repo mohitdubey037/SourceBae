@@ -162,13 +162,25 @@ const RequirementListing = () => {
 
     const shareDeveloperPatchCall = async (devs) => {
         let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
+
+        const updatedDevsStatus = developersList?.map((dev) => {
+            if (devs?.includes(dev?._id))
+                return {
+                    developerStatus: 2,
+                    developerId: dev?._id
+                };
+            else if (dev?.developerSharedBy?.developerStatus)
+                return {
+                    developerStatus: dev?.developerSharedBy?.developerStatus,
+                    developerId: dev?._id
+                };
+            return 0;
+        });
         let body = {
             agencyId: agencyId,
-            developerIds: devs?.map((id) => ({
-                developerStatus: 2,
-                developerId: id
-            }))
+            developerIds: updatedDevsStatus.filter((dev) => dev)
         };
+
         instance
             .patch(url, body)
             .then((res) => {
