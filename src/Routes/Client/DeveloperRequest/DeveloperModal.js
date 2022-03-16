@@ -8,13 +8,21 @@ import DeveloperCard from './DeveloperCard';
 import styles from './DeveloperModal.module.css';
 import infoIcon from './informationNew.svg';
 import { ACCEPT, DELETE } from './types';
+import { toast } from 'react-toastify';
 
+let limitReached = false;
 export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
     const [developerIds, setDeveloperIds] = useState([]);
     const [confirmationModalType, setconfirmationModalType] = useState('');
+
     const role = CLIENT;
 
+    let requiredResources = modal?.data?.numberOfResourcesRequired;
+    //if developerStatus = 3 then it means required resource is accepted
+    console.log(modal, 'modal');
+
     const selectedMyDev = (newDevId) => {
+        limitReached = false;
         const updatedDev = developerIds?.map((item) => {
             if (item.developerId === newDevId) {
                 if (item.developerStatus === 1 || item.developerStatus === 2) {
@@ -26,9 +34,26 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             return item;
         });
 
+        let acceptedDevs = updatedDev?.filter(
+            (item) => item.developerStatus === 3
+        );
+
+        console.log(acceptedDevs?.length, 'accepted devs', requiredResources);
+        if (acceptedDevs?.length > requiredResources) {
+            toast.error(
+                'Only ' + requiredResources + ' developers are required'
+            );
+            limitReached = true;
+            return;
+        }
+        console.log(updatedDev, acceptedDevs.length, 'count');
+
         setDeveloperIds(updatedDev);
     };
 
+    useEffect(() => {
+        requiredResources = modal?.data?.numberOfResourcesRequired;
+    }, [modal?.data?.numberOfResourcesRequired]);
     useEffect(() => {
         setDeveloperIds(
             modal?.data?.developersShared?.map((item) => ({
@@ -47,6 +72,20 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             window.location.reload();
         });
     };
+
+    function checkedOrNot(developerId) {
+        let checked = false;
+        if (!limitReached)
+            developerIds?.forEach((item) => {
+                if (item.developerId === developerId) {
+                    if (item.developerStatus === 3) {
+                        checked = true;
+                    }
+                }
+            });
+
+        return checked;
+    }
 
     return (
         <Modal
@@ -71,8 +110,10 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                 {modal?.data?.developersShared?.length ? (
                     <div className={styles.cardHolder}>
                         {modal?.data?.developersShared?.map((item) => {
-                            const sharedbyClient =
-                                item?.developerStatus === 3 ? true : false;
+                            {
+                                /* const sharedbyClient =
+                                item?.developerStatus === 3 ? true : false; */
+                            }
                             const isNotShortlistedByClient =
                                 item?.developerSharedBy === 2 ? false : true;
 
@@ -92,6 +133,9 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                                                 'Waiting for the response from the Agency';
                                 }
                             }
+                            let isChecked = checkedOrNot(
+                                item?.developerId?._id
+                            );
                             return (
                                 <div className={styles.cardContainer}>
                                     {isNotShortlistedByClient ? (
@@ -105,7 +149,7 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                                             className={
                                                 styles.developer_checkbox
                                             }
-                                            defaultChecked={sharedbyClient}
+                                            checked={isChecked}
                                         />
                                     ) : (
                                         <span
