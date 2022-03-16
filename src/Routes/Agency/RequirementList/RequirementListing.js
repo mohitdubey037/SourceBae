@@ -84,7 +84,7 @@ const RequirementListing = () => {
 
         switchValue && (params.isHotRequest = 1);
         shortListedByClient && (params.shortListedByClient = 1);
-        sharedByYou && (params.SharedByYou = 1);
+        sharedByYou && (params.sharedByYou = 1);
 
         instance
             .get(url, {
