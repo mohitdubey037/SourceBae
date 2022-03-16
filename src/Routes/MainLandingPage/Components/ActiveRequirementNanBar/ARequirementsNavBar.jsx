@@ -22,7 +22,7 @@ export default function ARequirementsNavBar() {
                     </div>
                     <div className={`${styles.nav_menu}`}>
                         {' '}
-                        <Link to="/who-are-you">Who We Are</Link>
+                        <Link to="/aboutus">Who We Are</Link>
                     </div>
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
@@ -94,7 +94,7 @@ export default function ARequirementsNavBar() {
                         <Link to="/">Home</Link>
                     </li>
                     <li className={`${styles.nav_menu}`}>
-                        <Link to="/who-are-you">Who We Are</Link>
+                        <Link to="/aboutus">Who We Are</Link>
                     </li>
                     <li className={`${styles.nav_menu}`}>Services</li>
                 </ul>
