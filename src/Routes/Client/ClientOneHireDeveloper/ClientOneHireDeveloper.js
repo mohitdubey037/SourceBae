@@ -11,7 +11,7 @@ import UpBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-d
 import DownBigImage from '../../../assets/images/Newestdashboard/Client-one-hire-developer/DownBigImage.svg';
 import Back from '../../../Components/Back/Back';
 import { Modal } from 'react-responsive-modal';
-import Moment from 'react-moment';
+import styles from '../../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
 
 function ClientOneHireDeveloper(props) {
     // const routerHistory = useHistory();
@@ -230,18 +230,30 @@ function ClientOneHireDeveloper(props) {
                                                                   <div className="button_parent">
                                                                       {!areDevsShared ? (
                                                                           <button
+                                                                              id={
+                                                                                  'RequirementsListCTA'
+                                                                              }
+                                                                              className={`${
+                                                                                  styles.L_login
+                                                                              } ${
+                                                                                  styles.nav_Lbutton
+                                                                              } ${'RequirementsListCTA'}`}
+                                                                              style={{
+                                                                                  fontSize:
+                                                                                      '0.85rem'
+                                                                              }}
                                                                               onClick={() =>
                                                                                   onOpenModal(
                                                                                       item?.agencyId,
                                                                                       item?._id
                                                                                   )
                                                                               }
-                                                                              className="moreAgencyLogo checkResource"
                                                                           >
-                                                                              <p>
+                                                                              <span>
+                                                                                  {' '}
                                                                                   Get
                                                                                   Connected!!
-                                                                              </p>
+                                                                              </span>
                                                                           </button>
                                                                       ) : areDevsShared &&
                                                                         developerSharedCode ===

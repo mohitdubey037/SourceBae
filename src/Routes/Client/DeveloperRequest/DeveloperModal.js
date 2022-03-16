@@ -98,22 +98,20 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             <div className={styles.modalContainer}>
                 <div className={styles.header_holder}>
                     <DeveloperListingTag label={'developer listing:'} />
-                    <button
-                        className={styles.apply_now}
-                        onClick={() => setconfirmationModalType(ACCEPT)}
-                    >
-                        Apply
-                    </button>
+                    {modal?.data?.developersShared?.length > 0 && (
+                        <button
+                            className={styles.apply_now}
+                            onClick={() => setconfirmationModalType(ACCEPT)}
+                        >
+                            Apply
+                        </button>
+                    )}
                 </div>
 
                 <SizedBox height={'20px'} />
                 {modal?.data?.developersShared?.length ? (
                     <div className={styles.cardHolder}>
                         {modal?.data?.developersShared?.map((item) => {
-                            {
-                                /* const sharedbyClient =
-                                item?.developerStatus === 3 ? true : false; */
-                            }
                             const isNotShortlistedByClient =
                                 item?.developerSharedBy === 2 ? false : true;
 
