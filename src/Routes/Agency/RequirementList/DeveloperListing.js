@@ -49,7 +49,7 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
 
     return (
         <div className={styles.developerListingContainer}>
-            <span className={styles.heading}>developer listing</span>
+            <span className={styles.heading}>My Resources</span>
             {item?.length ? (
                 <div style={{ minWidth: '260px' }}>
                     {item?.map((person) => {

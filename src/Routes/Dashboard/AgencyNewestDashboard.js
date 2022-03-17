@@ -219,17 +219,9 @@ function AgencyNewestDashboard(props) {
                                     nextpage={() =>
                                         quotation('agency-requirements-listing')
                                     }
-                                    text="Agency Requirements"
+                                    text="Current Requirements"
                                     img={QuotationIcon}
                                 />
-                                {/* <UserOperations
-                                    disabled={!verified || steps !== -1}
-                                    nextpage={() =>
-                                        quotation('developer-request')
-                                    }
-                                    text="Developer Request"
-                                    img={QuotationIcon}
-                                /> */}
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
                                     nextpage={() => quotation('quotation')}

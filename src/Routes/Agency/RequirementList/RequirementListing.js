@@ -40,6 +40,10 @@ const RequirementListing = () => {
         { value: 6, label: '06-12 Months' },
         { value: 12, label: 'More Than 12 Months' }
     ];
+    const shortlistedSharedOpt = [
+        { value: 1, label: 'Already Applied' },
+        { value: 2, label: 'Invited By Client' }
+    ];
 
     const role = AGENCY;
     const agencyId = localStorage.getItem('userId') || '';
@@ -53,7 +57,8 @@ const RequirementListing = () => {
     const [filterState, setFilterState] = useState({
         contractPeriod: undefined,
         budget: undefined,
-        createdWithin: undefined
+        createdWithin: undefined,
+        shortlistedOrShared: undefined
     });
 
     const [developersList, setdevelopersList] = useState([]);
@@ -83,8 +88,9 @@ const RequirementListing = () => {
             : { page: currentPage };
 
         switchValue && (params.isHotRequest = 1);
-        shortListedByClient && (params.shortListedByClient = 1);
-        sharedByYou && (params.sharedByYou = 1);
+        filterState?.shortlistedOrShared === 1 && (params.sharedByYou = 1);
+        filterState?.shortlistedOrShared === 2 &&
+            (params.shortListedByClient = 1);
 
         instance
             .get(url, {
@@ -251,10 +257,13 @@ const RequirementListing = () => {
 
             <div className={styles.requirement_listing_container}>
                 <div className={styles.searchBarContainer}>
-                    <div className={styles.searchAndBtnWrapper}>
+                    <div
+                        className={styles.searchAndBtnWrapper}
+                        style={{ display: 'flex', alignItems: 'center' }}
+                    >
                         <SearchBar
                             height={'40px'}
-                            style={{ width: '50%' }}
+                            style={{ width: '100%' }}
                             bgColor={colors.WHITE}
                             placeholder={'Type keyword here example “react js”'}
                             value={searchText}
@@ -269,24 +278,11 @@ const RequirementListing = () => {
                                 display: 'flex'
                             }}
                         >
-                            <CustomSwitch
-                                label={'Shortlisted By Client'}
-                                switchValue={shortListedByClient}
-                                onChange={() =>
-                                    setShortListedByClient(!shortListedByClient)
-                                }
-                            />
-                        </div>
-                        <div
-                            style={{
-                                justifyContent: 'end',
-                                display: 'flex'
-                            }}
-                        >
-                            <CustomSwitch
-                                label={'Shared By You'}
-                                switchValue={sharedByYou}
-                                onChange={() => setSharedByYou(!sharedByYou)}
+                            <FilterSelect
+                                placeholder={'Applied and Invited'}
+                                options={shortlistedSharedOpt}
+                                applyFilter={setFilterState}
+                                objkey={'shortlistedOrShared'}
                             />
                         </div>
                     </div>

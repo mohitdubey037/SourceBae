@@ -20,13 +20,10 @@ function ClientOneHireDeveloper(props) {
         'https://api.onesourcing.in/media/images/1637044803259.svg';
 
     const Role = localStorage.getItem('role');
-    const userId = localStorage.getItem('userId');
 
     const [singleHiredDeveloper, setSingleHiredDeveloper] = useState({});
     const [loading, setLoading] = useState(false);
     const [agencyId, setAgencyId] = useState(null);
-    const [originalAgenciesMatched, setOriginalAgenciesMatched] = useState([]);
-    const [developersShow, setShowDevelopers] = useState(false);
     const [developerId, setDeveloperId] = useState(null);
     const [open, setOpen] = useState(false);
 
@@ -44,7 +41,6 @@ function ClientOneHireDeveloper(props) {
             .get(`/api/${Role}/hire-developers/get/${hireDeveloperId}`)
             .then(function (response) {
                 setSingleHiredDeveloper(response);
-                setOriginalAgenciesMatched(response?.agenciesMatched);
                 setLoading(false);
             })
             .catch((err) => {
@@ -79,23 +75,6 @@ function ClientOneHireDeveloper(props) {
         getOneDeveloper();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    const [searchText, setSearchText] = useState('');
-
-    // useEffect(() => {
-    //     if (searchText !== '') {
-    //         const tempAgencyList = singleHiredDeveloper?.filter((agency) => {
-    //             return agency?.agencyId?.firstName
-    //                 ?.toLowerCase()
-    //                 ?.includes(searchText?.toLowerCase());
-    //         });
-    //         setSingleHiredDeveloper({ agenciesMatched: tempAgencyList });
-    //     } else {
-    //         setSingleHiredDeveloper({
-    //             agenciesMatched: originalAgenciesMatched
-    //         });
-    //     }
-    // }, [searchText]);
 
     return (
         <>

@@ -145,7 +145,7 @@ function ClientNewestDashboard(props) {
                                         state: { isUserVerified }
                                     })
                                 }
-                                text="Interested To Investment"
+                                text="Investment Opportunities"
                                 img={InvestmentIcon}
                             />
                         </div>

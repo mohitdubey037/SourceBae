@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-responsive-modal';
 import SizedBox from '../../../Components/SizedBox/SizedBox';

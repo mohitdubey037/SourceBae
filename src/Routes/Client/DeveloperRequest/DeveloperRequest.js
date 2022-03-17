@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useCallback } from 'react';
 import Back from '../../../Components/Back/Back';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
@@ -52,7 +53,6 @@ const DeveloperRequest = () => {
         createdWithin: undefined
     });
 
-    const [developersList, setdevelopersList] = useState([]);
     const [selectedCard, setselectedCard] = useState('');
     const [isLoading, setisLoading] = useState(true);
     const handleSwitch = () => setswitchValue((preV) => !preV);
@@ -71,7 +71,6 @@ const DeveloperRequest = () => {
     const hireDevApi = async (config, val) => {
         setisLoading(true);
         setselectedCard('');
-        setdevelopersList([]);
         let url;
         if (role === AGENCY) {
             url = `/api/${role}/hire-developers/all?agencyId=${userId}`;
