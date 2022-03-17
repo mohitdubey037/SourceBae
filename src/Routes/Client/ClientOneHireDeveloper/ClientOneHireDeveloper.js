@@ -324,7 +324,7 @@ function ClientOneHireDeveloper(props) {
                     >
                         <div className="want_to_accept">
                             <div className="connect_or_not">
-                                <p>Send a request for this developer?</p>
+                                <p>Shortlist this developer?</p>
                             </div>
 
                             <div className="interested_or_not">

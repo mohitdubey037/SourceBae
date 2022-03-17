@@ -323,8 +323,8 @@
     bottom: -1rem;
 }
 .button_parent {
-    font-size: 1em;
-    font-weight: 500;
+    font-size: 0.8em;
+    font-weight: 400;
 }
 .row-label {
     font-family: Inter;

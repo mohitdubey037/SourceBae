@@ -125,7 +125,7 @@ function Sidebar(props) {
                         >
                             <img src={developersIcon} alt="developers_icon" />
                             <div style={{ width: '62%', lineHeight: '13px' }}>
-                                <p>Developer Request</p>
+                                <p>Job Posted</p>
                             </div>
                         </div>
                     </>

@@ -62,8 +62,7 @@ function ClientHireDeveloper(props) {
                     <>
                         <Navbar />
                         <div className="mainAgencyList_parent">
-                            <Back name="Requested Developers" />
-                            {/* <div className="mainAgencyList"> */}
+                            <Back name="Posted Jobs" />
                             <div className="innerAgencyList">
                                 <div className="AgencyCardsArea">
                                     {hiredDevelopers?.docs?.length > 0 ? (
@@ -117,9 +116,9 @@ function ClientHireDeveloper(props) {
                                                                         )
                                                                     }
                                                                 >
-                                                                    View
-                                                                    Developer
-                                                                    Requirements{' '}
+                                                                    Select
+                                                                    Vetted
+                                                                    Developers{' '}
                                                                     <i
                                                                         className="fa fa-angle-double-right"
                                                                         aria-hidden="true"

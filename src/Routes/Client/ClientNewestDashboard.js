@@ -101,7 +101,7 @@ function ClientNewestDashboard(props) {
                                         state: { isUserVerified }
                                     })
                                 }
-                                text="Hire Developer"
+                                text="Hire Remote Developer"
                                 img={HireDeveloperIcon}
                             />
                             <UserOperations
@@ -112,7 +112,7 @@ function ClientNewestDashboard(props) {
                                         state: { isUserVerified }
                                     })
                                 }
-                                text="Developer Applications"
+                                text="Received Applications"
                                 img={HireDeveloperIcon}
                             />
                             <UserOperations

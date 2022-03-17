@@ -64,7 +64,7 @@ export default function LNavbar(props) {
                         <div className={`${styles.option_1}`}>
                             <Link to="/register/agency" className="L_Link">
                                 {' '}
-                                Onboard Developer
+                                List Your Developer
                             </Link>
                         </div>
                         <div className={`${styles.option_1}`}>
