@@ -273,7 +273,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     background: #f9f9f9;
     width: 100%;
     height: 100%;
@@ -314,6 +313,19 @@
     background: #5bc2ff;
     border-radius: 6px;
 }
+
+.shortlist_and_interest_parent {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 5px 5px 0px 0px;
+    color: rgb(66, 69, 77);
+    bottom: -1rem;
+}
+.button_parent {
+    font-size: 1em;
+    font-weight: 500;
+}
 .row-label {
     font-family: Inter;
     font-size: 12px;
@@ -347,7 +359,7 @@
 }
 
 .agency_pending {
-    color: #ac79db;
+    color: #0034cd;
 }
 
 .agency_accepted {

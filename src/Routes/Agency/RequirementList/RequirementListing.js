@@ -64,8 +64,6 @@ const RequirementListing = () => {
     const [developersList, setdevelopersList] = useState([]);
     const [selectedCard, setselectedCard] = useState('');
     const [isLoading, setisLoading] = useState(true);
-    const [sharedByYou, setSharedByYou] = useState(false);
-    const [shortListedByClient, setShortListedByClient] = useState(false);
 
     const hireDevApi = async (config, val) => {
         setisLoading(true);
@@ -224,7 +222,7 @@ const RequirementListing = () => {
 
     useEffect(() => {
         hireDevApi({ isParam: true, isShowMore: false });
-    }, [switchValue, shortListedByClient, sharedByYou]);
+    }, [switchValue]);
 
     const onApplyClick = (id) => {
         let user = localStorage.getItem('userId');

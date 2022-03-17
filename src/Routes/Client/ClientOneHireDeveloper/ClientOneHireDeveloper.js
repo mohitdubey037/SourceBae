@@ -205,8 +205,23 @@ function ClientOneHireDeveloper(props) {
                                                                       ₹ Per Hour
                                                                   </div>
                                                               </div>
-                                                              <div className="shortlist_and_interest_parent">
-                                                                  <div className="button_parent">
+                                                              <div
+                                                                  className={`shortlist_and_interest_parent  ${
+                                                                      developerSharedCode ===
+                                                                      2
+                                                                          ? 'agency_pending'
+                                                                          : developerSharedCode ===
+                                                                            3
+                                                                          ? 'agency_accepted'
+                                                                          : 'agency_rejected'
+                                                                  }`}
+                                                              >
+                                                                  <div
+                                                                      className={
+                                                                          areDevsShared &&
+                                                                          `button_parent`
+                                                                      }
+                                                                  >
                                                                       {!areDevsShared ? (
                                                                           <button
                                                                               id={
@@ -237,7 +252,7 @@ function ClientOneHireDeveloper(props) {
                                                                       ) : areDevsShared &&
                                                                         developerSharedCode ===
                                                                             2 ? (
-                                                                          <p className="agency_pending">
+                                                                          <p>
                                                                               Great
                                                                               Step!!.
                                                                               Agency
@@ -251,13 +266,24 @@ function ClientOneHireDeveloper(props) {
                                                                       ) : areDevsShared &&
                                                                         developerSharedCode ===
                                                                             3 ? (
-                                                                          <p className="agency_accepted">
-                                                                              Congratulations!!..Agency
-                                                                              is
-                                                                              interested
+                                                                          <p>
+                                                                              Greetings!!
+                                                                              Agency
+                                                                              accepted
+                                                                              the
+                                                                              request.
+                                                                              SourceBae
+                                                                              team
+                                                                              will
+                                                                              connect
+                                                                              with
+                                                                              you
+                                                                              for
+                                                                              further
+                                                                              details.
                                                                           </p>
                                                                       ) : (
-                                                                          <p className="agency_rejected_interested">
+                                                                          <p>
                                                                               Sorry!!Agency
                                                                               declined
                                                                               your
@@ -298,7 +324,7 @@ function ClientOneHireDeveloper(props) {
                     >
                         <div className="want_to_accept">
                             <div className="connect_or_not">
-                                <p>Request developers from this agency?</p>
+                                <p>Send a request for this developer?</p>
                             </div>
 
                             <div className="interested_or_not">
