@@ -148,6 +148,10 @@ const AgencyCommentBox = (props) => {
                 .then(function (response) {
                     props.giveReplies(true);
                     setOpen(false);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    setOpen(false);
                 });
         } else {
             toast.error("Final cost can't be blank.");
@@ -167,7 +171,7 @@ const AgencyCommentBox = (props) => {
                     setLoading(false);
                 })
                 .catch((err) => {
-                    setLoading(true);
+                    setLoading(false);
                 });
         }
     };
@@ -176,6 +180,7 @@ const AgencyCommentBox = (props) => {
         if (file) {
             const formData = new FormData();
             formData.append('files', file, 'files.pdf');
+            debugger;
             if (apiData.agencyNegotiablePrice === '') {
                 toast.error('Negotiable price can not be empty');
                 setLoading(false);
@@ -187,6 +192,17 @@ const AgencyCommentBox = (props) => {
             ) {
                 toast.error(
                     `Negotiable price can't be less than the project proposal price`
+                );
+                setLoading(false);
+                return;
+            } else if (
+                apiData.agencyNegotiablePrice < props.projectProposalCost ||
+                apiData.agencyNegotiablePrice > 2 * props.projectProposalCost
+            ) {
+                toast.error(
+                    `Negotiable price should be between ${
+                        props.projectProposalCost
+                    } and ${2 * props.projectProposalCost}`
                 );
                 setLoading(false);
                 return;
@@ -212,6 +228,10 @@ const AgencyCommentBox = (props) => {
                         )
                         .then(function (response) {
                             props.giveReplies(true);
+                            setLoading(false);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
                             setLoading(false);
                         });
                 })
