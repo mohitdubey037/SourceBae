@@ -36,7 +36,8 @@ const HireAgencyForm1 = (props) => {
 
     const handleChange = (event) => {
         let { name, value } = event.target;
-        value = value.replace(/[^\w\s]/gi, '');
+        if (name !== 'projectDescription')
+            value = value.replace(/[^\w\s]/gi, '');
         if (name === 'projectDescription') {
             value = value.slice(0, 1).toUpperCase() + value.slice(1);
             if (value.length <= 100) setWords(value.length);
