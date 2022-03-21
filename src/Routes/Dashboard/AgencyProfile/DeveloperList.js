@@ -145,7 +145,7 @@ function DeveloperList(props) {
     };
 
     return (
-        <>
+        <div style={{ height: '600px', overflowY: 'scroll' }}>
             <div className="mainDeveloperList">
                 <div
                     className="innerDeveloperList"
@@ -381,7 +381,7 @@ function DeveloperList(props) {
                     </div>
                 </div>
             </Modal>
-        </>
+        </div>
     );
 }
 
