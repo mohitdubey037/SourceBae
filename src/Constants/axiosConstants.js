@@ -21,6 +21,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function (request) {
     if (!request.url.includes('login')) {
+        let token = cookie.load('Authorization');
+        console.log(token, 'token');
         request.headers['Authorization'] = cookie.load('Authorization');
     }
     return request;
@@ -48,7 +50,12 @@ instance.interceptors.response.use(
     },
     function (error) {
         let trueError = '';
-        if (error?.response?.status !== 404) {
+        let isCookieFilled = !cookie.load('Authorization');
+        if (isCookieFilled && error?.response?.status === 500) {
+            cookie.remove('Authorization');
+            alert('Something went wrong, taking you to home page');
+            window.location.href = '/';
+        } else if (error?.response?.status !== 404) {
             let isMongoError =
                 Array.isArray(error.response.data.error) &&
                 (error?.response?.data?.error?.includes('CastError') ||
