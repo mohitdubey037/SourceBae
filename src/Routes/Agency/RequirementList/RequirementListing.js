@@ -413,6 +413,9 @@ const RequirementListing = () => {
                                     </div>
                                     <div className={styles.optionsContainer}>
                                         <DeveloperListing
+                                            requirementData={
+                                                requirementsList?.docs || []
+                                            }
                                             item={developersList}
                                             selectedCard={selectedCard}
                                             onApply={(devs) =>

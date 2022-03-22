@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './DeveloperListing.module.css';
 import Button from '../../../Components/Button/Button';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
@@ -9,10 +9,10 @@ import { AGENCY } from '../../../shared/constants';
 import instance from '../../../Constants/axiosConstants';
 
 const agencyId = localStorage.getItem('userId') || '';
-function DeveloperListing({ item, onApply, selectedCard, ...props }) {
+function DeveloperListing({ item, onApply, selectedCard, requirementData }) {
     const [selectedDevs, setselectedDevs] = useState([]);
     const history = useHistory();
-
+    const [isResourceNeedSatified, setIsResourceNeedSatified] = useState(false);
     const getTechnologies = (data) => {
         let result = data.map((item) => item.technologyName)?.join(', ');
         return result;
@@ -47,6 +47,19 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
             .catch((err) => console.log(err));
     }
 
+    React.useEffect(() => {
+        if (selectedCard) {
+            let currentRequirement = requirementData?.filter(
+                (item) => item._id === selectedCard
+            );
+            if (currentRequirement?.length > 0) {
+                setIsResourceNeedSatified(
+                    currentRequirement[0]?.numberOfAcceptedResources >=
+                        currentRequirement[0]?.numberOfResourcesRequired
+                );
+            }
+        }
+    }, [requirementData, selectedCard]);
     return (
         <div className={styles.developerListingContainer}>
             <span className={styles.heading}>My Resources</span>
@@ -75,17 +88,19 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
                                     <span
                                         className={styles.name}
                                     >{`${person?.firstName} ${person?.lastName}`}</span>
-                                    {person?.isDeveloperShared === false && (
-                                        <input
-                                            type={'checkbox'}
-                                            checked={isAlreadyShared(
-                                                person?._id
-                                            )}
-                                            onChange={() =>
-                                                selectedMyDev(person?._id)
-                                            }
-                                        />
-                                    )}
+
+                                    {isResourceNeedSatified === false &&
+                                        person?.isDeveloperShared === false && (
+                                            <input
+                                                type={'checkbox'}
+                                                checked={isAlreadyShared(
+                                                    person?._id
+                                                )}
+                                                onChange={() =>
+                                                    selectedMyDev(person?._id)
+                                                }
+                                            />
+                                        )}
                                 </div>
                                 <SizedBox height={'6px'} />
                                 <span className={styles.techText}>
@@ -129,7 +144,8 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
                                         }}
                                         buttonTextStyle={buttonTextStyle}
                                     />
-                                    {person?.isDeveloperShared &&
+                                    {!isResourceNeedSatified &&
+                                        person?.isDeveloperShared &&
                                         person?.developerSharedBy
                                             ?.isAnswered === false &&
                                         person?.developerSharedBy
@@ -145,7 +161,7 @@ function DeveloperListing({ item, onApply, selectedCard, ...props }) {
                                                         );
                                                     }}
                                                 >
-                                                    ✔
+                                                    ✔{/* accept checkbox */}
                                                 </button>
                                                 <button
                                                     className={`${styles.accept_reject_dev_btn}`}
