@@ -386,7 +386,7 @@ const AgencyCommentBox = (props) => {
                                                         InputProps={{
                                                             endAdornment: (
                                                                 <InputAdornment position="end">
-                                                                    <AttachMoneyIcon />
+                                                                    ₹
                                                                 </InputAdornment>
                                                             )
                                                         }}

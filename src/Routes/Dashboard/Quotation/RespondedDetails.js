@@ -28,17 +28,6 @@ function RespondedDetails(props) {
     let { projectId, agencyId } = useParams();
     const [isRepliedToClient, setRepliedToClient] = useState(false);
     const [project, setProject] = useState([]);
-    // const [project, setProject] = useState({
-    //     projectProposals: [
-    //         {
-    //             rejectReasonByAgency: false,
-    //             rejectReasonByClient: false,
-    //             isQuotationAcceptedByClient: false,
-    //             isQuotationAcceptedByAgency: false,
-    //             comments: [],
-    //         }
-    //     ]
-    // });
 
     const Role = localStorage.getItem('role');
 

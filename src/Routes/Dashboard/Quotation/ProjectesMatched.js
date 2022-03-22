@@ -150,7 +150,7 @@ function ProjectesMatched(props) {
                                                 </div>
                                                 <div className="projectTableContent">
                                                     <p>
-                                                        ${' '}
+                                                        ₹{' '}
                                                         {s?.projectProposalCost}
                                                     </p>
                                                 </div>

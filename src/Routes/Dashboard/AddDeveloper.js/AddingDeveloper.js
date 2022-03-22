@@ -489,17 +489,17 @@ function AddingDeveloper(props) {
                                                 <FormControlLabel
                                                     value="65000"
                                                     control={<Radio />}
-                                                    label="65,000₹-75,000₹ per month"
+                                                    label="65,000₹-75,000₹"
                                                 />
                                                 <FormControlLabel
                                                     value="80000"
                                                     control={<Radio />}
-                                                    label="80000₹-90,000₹ per month"
+                                                    label="80000₹-90,000₹"
                                                 />
                                                 <FormControlLabel
                                                     value="90000"
                                                     control={<Radio />}
-                                                    label="Less than 1Lakh ₹ per month"
+                                                    label="Less than 1Lakh₹"
                                                 />
                                             </RadioGroup>
                                         </FormControl>

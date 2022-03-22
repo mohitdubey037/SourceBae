@@ -104,7 +104,7 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                             className={styles.apply_now}
                             onClick={() => setconfirmationModalType(ACCEPT)}
                         >
-                            Apply
+                            Accept
                         </button>
                     )}
                 </div>

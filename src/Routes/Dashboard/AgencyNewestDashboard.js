@@ -316,7 +316,11 @@ function AgencyNewestDashboard(props) {
             >
                 <div className="want_to_accept">
                     <div className="connect_or_not">
-                        <h6>Enable us to assit you better.</h6>
+                        <h6>
+                            Complete your verification to move forward. <br />
+                            Update company details <br />
+                            Upload verification documents
+                        </h6>
                     </div>
 
                     <div className="interested_or_not verify_or_not">

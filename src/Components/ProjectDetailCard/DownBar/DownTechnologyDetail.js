@@ -1,5 +1,5 @@
-import React from "react";
-import dot from "../../../assets/images/Newestdashboard/Agency_Details/dot.svg";
+import React from 'react';
+import dot from '../../../assets/images/Newestdashboard/Agency_Details/dot.svg';
 import './DownTechnologyDetail.css';
 
 function DownTechnologyDetail(props) {
@@ -8,36 +8,41 @@ function DownTechnologyDetail(props) {
             <div className="straightAfterLine">
                 <h4>Fixed Budget</h4>
                 <ul>
-                    <li style={{ listStyle: "none" }}>
-                        {" "}
-                        <img className="dotImg" src={dot} alt="" /> Min $
-                        {props?.projectProposalCost}
+                    <li style={{ listStyle: 'none' }}>
+                        {' '}
+                        <img className="dotImg" src={dot} alt="" />{' '}
+                        {`Min
+                        ${props?.projectProposalCost} ₹`}
                     </li>
                 </ul>
             </div>
             <div className="straightAfterLine">
-                <h4>Estimated Timeline</h4>
+                <h4>Start in Days</h4>
                 <ul>
-                    <img className="dotImg" src={dot} alt="" />
                     <li
                         style={{
-                            listStyle: "none",
-                            display: "flex",
-                            marginLeft: "-4rem",
+                            listStyle: 'none',
+                            display: 'flex',
+                            marginLeft: '-4rem'
                         }}
-                    >{`${props?.estimatedTimeline} Days`}</li>
+                    >
+                        <img className="dotImg" src={dot} alt="" />
+                        {`${props?.estimatedTimeline} Days`}
+                    </li>
                 </ul>
             </div>
 
             {/* {props?.projectTechnologiesRequired && */}
-                {props?.projectTechnologiesRequired?.length > 0 ? (
+            {props?.projectTechnologiesRequired?.length > 0 ? (
                 <div>
                     <h4>Technology</h4>
                     <ul>
                         {props?.projectTechnologiesRequired?.map((p) => (
                             <>
                                 <img className="dotImg" src={dot} alt="" />
-                                <li style={{ listStyle: "none" }}>{p?.technologyName}</li>
+                                <li style={{ listStyle: 'none' }}>
+                                    {p?.technologyName}
+                                </li>
                             </>
                         ))}
                     </ul>
@@ -49,14 +54,16 @@ function DownTechnologyDetail(props) {
                         {props?.services?.map((p) => (
                             <>
                                 <img className="dotImg" src={dot} alt="" />
-                                <li style={{ listStyle: "none" }}>{p?.serviceName}</li>
+                                <li style={{ listStyle: 'none' }}>
+                                    {p?.serviceName}
+                                </li>
                             </>
                         ))}
                     </ul>
                 </div>
             )}
         </div>
-    )
+    );
 }
 
-export default DownTechnologyDetail
+export default DownTechnologyDetail;

@@ -55,9 +55,9 @@ export default function LHire() {
             {' '}
             <div>
                 <h2 className={`${styles.hire_section_heading} L_h2`}>
-                    Get hiring done with SourceBae.{' '}
+                    Get hiring done with SourceBae{' '}
                 </h2>
-                <span className="span_pink L_h2">Hire Now. </span>
+                <span className="span_pink L_h2">Hire Now</span>
             </div>
             <div className={`${styles.hire_cards_wrap}`}>
                 {hireCards?.map((card, i) => {

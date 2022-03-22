@@ -17,7 +17,7 @@ export default function About_Info() {
         <div className={`${styles.about_info_heading}`}>
             <h2 className="L_h2">
                 <span className="span_blue">SourceBae</span> is the platform to
-                solve all your Outsourcing problems.
+                solve all your Outsourcing problems
             </h2>
             <div className={`${styles.about_info_para}`}>
                 {infoPara?.map((value) => {

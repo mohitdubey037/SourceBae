@@ -30,6 +30,18 @@ const DeveloperCard = ({ data = {} }) => {
             ? 'blue'
             : 'green';
 
+    const generateExperienceString = (experience) => {
+        let result = '';
+        let expCount = parseInt(experience);
+
+        if (expCount > 1) {
+            result = expCount + ' Years';
+        } else if (expCount === 1) {
+            result = expCount + ' Year';
+        }
+        return result;
+    };
+
     return (
         <div className={styles.mainContainer}>
             <div className={styles.nameBar}>
@@ -51,7 +63,9 @@ const DeveloperCard = ({ data = {} }) => {
                 <div>
                     <span className={styles.techLabel}>experience</span>
                     <span className={styles.techDescription}>
-                        {data?.developerId?.developerExperience}{' '}
+                        {generateExperienceString(
+                            data?.developerId?.developerExperience
+                        )}{' '}
                     </span>
                 </div>
                 <div>

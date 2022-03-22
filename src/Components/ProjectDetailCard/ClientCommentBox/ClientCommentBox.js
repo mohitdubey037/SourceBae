@@ -383,7 +383,7 @@ const ClientCommentBox = (props) => {
                                                 InputProps={{
                                                     endAdornment: (
                                                         <InputAdornment position="end">
-                                                            <AttachMoneyIcon />
+                                                            ₹
                                                         </InputAdornment>
                                                     )
                                                 }}

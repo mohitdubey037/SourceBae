@@ -1,85 +1,86 @@
 .mainInformation {
-  width: 100%;
-  margin: auto;
-  /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
+    width: 100%;
+    margin: auto;
+    /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
 }
 
 .mainInformation button {
-  margin-top: 0;
-  margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .innerInformation {
-  width: 100%;
+    width: 100%;
 }
 
 .informationTitle ul {
-  font-family: 'Segoe UI';
-  margin-bottom: 0;
-  font-size: 18px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #707070
+    font-family: 'Segoe UI';
+    margin-bottom: 0;
+    font-size: 18px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #707070;
+    margin-left: 1rem;
 }
 
 .information_parent p {
-  font-family: 'Segoe UI Bold';
-  font-size: 14px;
-  text-transform: capitalize;
-  color: #5C6DFF;
+    font-family: 'Segoe UI Bold';
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #5c6dff;
 }
 
 .editableBtn {
-  width: 100%;
-  display: flex;
-  margin-bottom: 2%;
-  border-radius: 5px;
-  background: #EEF0FF;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    width: 100%;
+    display: flex;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    background: #eef0ff;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
 .editableBtn button {
-  padding: 0.5rem 1rem;
-  outline: none;
-  border: none;
-  font-family: 'Segoe UI';
-  color: #000;
-  background-color: #eaf2ff;
-  border-radius: 0px;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    font-family: 'Segoe UI';
+    color: #000;
+    background-color: #eaf2ff;
+    border-radius: 0px;
 }
 
 .editableBtn button:nth-child(2) {
-  background-color: transparent;
-  border: 1px solid #5cb85c;
-  color: #5cb85c;
-  transition: 0.3s ease-in-out;
+    background-color: transparent;
+    border: 1px solid #5cb85c;
+    color: #5cb85c;
+    transition: 0.3s ease-in-out;
 }
 
 .editableBtn button:nth-child(2):hover {
-  background-color: #5cb85c;
-  color: #fff;
+    background-color: #5cb85c;
+    color: #fff;
 }
 
 .editableBtn button i {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .informationForm {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .informationInputForm {
-  width: 100%;
-  background-color: #fff;
-  position: relative;
-  border-radius: 15px;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    border-radius: 15px;
 }
 
 /* .informationBorder {
@@ -94,88 +95,88 @@
 } */
 
 .informationImageForm {
-  width: 40%;
+    width: 40%;
 }
 
 .informationInputForm div {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #ebebeb;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 1px rgb(0 0 0 / 18%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ebebeb;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px rgb(0 0 0 / 18%);
 }
 
 .informationInputForm div p {
-  margin-top: 16px;
-  font-size: 1.1rem;
-  color: #999;
+    margin-top: 16px;
+    font-size: 1.1rem;
+    color: #999;
 }
 
 .informationInputForm div input {
-  width: 50%;
-  height: 40px;
-  font-family: 'Segoe UI';
-  padding-left: 10px;
-  font-size: 1.1rem;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  color: #707070;
+    width: 50%;
+    height: 40px;
+    font-family: 'Segoe UI';
+    padding-left: 10px;
+    font-size: 1.1rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #707070;
 }
 
 .informationImageForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .informationImageForm div {
-  width: 70%;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 5%;
-  min-height: 26vh;
-  border-radius: 15px;
-  background-color: #fff;
-  z-index: 1;
-  position: relative;
-  overflow: hidden;
+    width: 70%;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 5%;
+    min-height: 26vh;
+    border-radius: 15px;
+    background-color: #fff;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
 }
 
 .informationImageForm div p {
-  font-size: 2rem;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  color: #000;
+    font-size: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #000;
 }
 
 .informationImageForm div h2 {
-  color: #000;
+    color: #000;
 }
 
 .informationImageForm div img {
-  position: absolute;
-  width: 20%;
-  bottom: 10px;
-  right: 10px;
+    position: absolute;
+    width: 20%;
+    bottom: 10px;
+    right: 10px;
 }
 
 .brochureBorder {
-  position: absolute;
-  width: 8px;
-  height: 93%;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  background-color: #02044a;
-  border-radius: 999px;
+    position: absolute;
+    width: 8px;
+    height: 93%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #02044a;
+    border-radius: 999px;
 }
 
 /* .roundedCircle {
@@ -190,58 +191,58 @@
 } */
 
 .information_parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 12%;
-  margin-left: 10px;
-  padding: 8px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12%;
+    margin-left: 10px;
+    padding: 8px 0px;
 }
 
 .information_save_parent {
-  display: flex;
-  justify-content: flex-end;
-  /* width: 100%; */
+    display: flex;
+    justify-content: flex-end;
+    /* width: 100%; */
 }
 
 .information_save_parent:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .information_save {
-  background: linear-gradient( 262deg, #45A4E4 0%, #5C6DFF 100%);
-  color: #fff;
-  outline: none;
-  border: none;
-  padding: 0.5rem 2rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-family: 'Segoe UI Semibold';
+    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%);
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-family: 'Segoe UI Semibold';
 }
 
 .information_cancel {
-  background: #707070;
-  color: #fff;
-  outline: none;
-  border: none;
-  padding: 0.5rem 2rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-family: 'Segoe UI Semibold';
+    background: #707070;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-family: 'Segoe UI Semibold';
 }
 
 .Edit-icon_information {
-  display: flex;
-  align-items: center;
-  font-size: 18px !important;
-  color: blue !important;
+    display: flex;
+    align-items: center;
+    font-size: 18px !important;
+    color: blue !important;
 }
 
 .Edit-icon_information:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .handleButtons {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
