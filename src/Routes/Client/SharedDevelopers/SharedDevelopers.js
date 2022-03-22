@@ -424,6 +424,9 @@ function RespondedDetails(props) {
                             overlay: 'customOverlayAgencyProduct',
                             modal: 'customModalClientOneHireDeveloper'
                         }}
+                        styles={{
+                            closeButton: { outline: 'none' }
+                        }}
                         center
                     >
                         <div className="want_to_accept">

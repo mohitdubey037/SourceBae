@@ -1,107 +1,106 @@
-import React, { useState, useEffect, useCallback } from "react";
-import "./ProductForm.css";
+import React, { useState, useEffect, useCallback } from 'react';
+import './ProductForm.css';
 import { useDropzone } from 'react-dropzone';
 
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import { withStyles } from "@material-ui/core/styles";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import { withStyles } from '@material-ui/core/styles';
 
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
-import instance from "../../../Constants/axiosConstants";
-import Spinner from "../../../Components/Spinner/Spinner";
-import form1 from "../../../assets/images/Newestdashboard/ProductForm/product form1.svg"
-import form2 from "../../../assets/images/Newestdashboard/ProductForm/product form2.svg"
-import form3 from "../../../assets/images/Newestdashboard/ProductForm/product form3.svg"
-import form4 from "../../../assets/images/Newestdashboard/ProductForm/product form4.svg"
-import * as helper from "../../../shared/helper";
-import moment from 'moment'
+import instance from '../../../Constants/axiosConstants';
+import Spinner from '../../../Components/Spinner/Spinner';
+import form1 from '../../../assets/images/Newestdashboard/ProductForm/product form1.svg';
+import form2 from '../../../assets/images/Newestdashboard/ProductForm/product form2.svg';
+import form3 from '../../../assets/images/Newestdashboard/ProductForm/product form3.svg';
+import form4 from '../../../assets/images/Newestdashboard/ProductForm/product form4.svg';
+import * as helper from '../../../shared/helper';
+import moment from 'moment';
 import clsx from 'clsx';
 
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
-import success from "../../../assets/images/agencyForm/success.gif";
+import success from '../../../assets/images/agencyForm/success.gif';
 import Back from '../../../Components/Back/Back';
 
-import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
-import { upload } from "../../../shared/helper";
+import { upload } from '../../../shared/helper';
 
 const BlueRadio = withStyles({
     root: {
-        color: "#2E86C1",
-        "&$checked": {
-            color: "#2E86C1",
-        },
+        color: '#2E86C1',
+        '&$checked': {
+            color: '#2E86C1'
+        }
     },
-    checked: {},
+    checked: {}
 })((props) => <Radio color="default" {...props} />);
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
-        width: "70%",
+        width: '70%'
     },
     inputField: {
-        fontFamily: "Segoe UI",
-        border: "1px solid #45A4EA",
-        borderRadius: "5px",
-        marginTop: "0.2rem",
-        marginLeft: "1rem",
-        width: "100%",
+        fontFamily: 'Segoe UI',
+        border: '1px solid #45A4EA',
+        borderRadius: '5px',
+        marginTop: '0.2rem',
+        marginLeft: '1rem',
+        width: '100%'
     },
     radioBox: {
         borderWidth: 1,
-        borderColor: "#000",
+        borderColor: '#000'
     },
     root: {
-        "& .MuiTypography-body1": {
+        '& .MuiTypography-body1': {
             fontFamily: 'Segoe UI',
             fontSize: '12px'
         }
     }
 }));
 
-
 const arr = [
     {
         status: false,
-        value: "B2B",
+        value: 'B2B'
     },
     {
         status: false,
-        value: "B2C",
+        value: 'B2C'
     },
     {
         status: false,
-        value: "B2B2C",
+        value: 'B2B2C'
     },
     {
         status: false,
-        value: "B2G",
-    },
+        value: 'B2G'
+    }
 ];
 const brr = [
     {
         status: false,
-        value: "Idea",
+        value: 'Idea'
     },
     {
         status: false,
-        value: "Development",
+        value: 'Development'
     },
     {
         status: false,
-        value: "MVP",
+        value: 'MVP'
     },
     {
         status: false,
-        value: "Running in Market",
-    },
+        value: 'Running in Market'
+    }
 ];
 
 function ProductForm(props) {
@@ -113,7 +112,7 @@ function ProductForm(props) {
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState(null);
     const [allDomainsData, setAllDomainsData] = useState([]);
-    const [logo, setLogo] = useState(null)
+    const [logo, setLogo] = useState(null);
     // const [businesstype, setBusinesstype] = useState([]);
     const [wordsRequired, setWordsRequired] = useState(100);
 
@@ -122,25 +121,25 @@ function ProductForm(props) {
     const [errors, setErrors] = useState({});
 
     const [apiData, setApiData] = useState({
-        agencyId: localStorage.getItem("userId"),
-        productName: "",
-        productLogo: "",
-        productDescription: "",
-        productDomainId: "",
-        productTeamSize: "",
-        productRevenueGenerated: "",
-        productBusinessModel: "",
-        productPreviousFunding: "",
-        projectPreviousFundingRaised: "",
-        productFundingTypeLookingFor: "",
-        productCurrentStatus: "",
-        productCustomerAccquired: "",
-        productActiveUsers: "",
-        productCompanyLocation: "",
-        productStartingDate: moment().format("YYYY-MM-DD"),
-        productFeatureLink: "",
-        productPlatformLink: "",
-        productFounderLinkedinProfiles: [],
+        agencyId: localStorage.getItem('userId'),
+        productName: '',
+        productLogo: '',
+        productDescription: '',
+        productDomainId: '',
+        productTeamSize: '',
+        productRevenueGenerated: '',
+        productBusinessModel: '',
+        productPreviousFunding: '',
+        projectPreviousFundingRaised: '',
+        productFundingTypeLookingFor: '',
+        productCurrentStatus: '',
+        productCustomerAccquired: '',
+        productActiveUsers: '',
+        productCompanyLocation: '',
+        productStartingDate: moment().format('YYYY-MM-DD'),
+        productFeatureLink: '',
+        productPlatformLink: '',
+        productFounderLinkedinProfiles: []
     });
     const onOpenModal = () => setOpenModal(true);
     const onCloseModal = () => setOpenModal(false);
@@ -149,31 +148,35 @@ function ProductForm(props) {
 
     const role = localStorage.getItem('role');
 
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         setApiData({
             ...apiData,
-            [name]: value,
+            [name]: value
         });
     };
     const handleDescChange = (event) => {
         const { name, value } = event.target;
         setApiData({
             ...apiData,
-            [name]: value,
+            [name]: value
         });
     };
 
-    const onDrop = useCallback(acceptedFiles => {
+    const onDrop = useCallback((acceptedFiles) => {
         setLogo(acceptedFiles);
     }, []);
 
-    useEffect(() => {
-    }, [logo]);
+    useEffect(() => {}, [logo]);
 
-
-    const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+    const {
+        isDragActive,
+        getRootProps,
+        getInputProps,
+        isDragReject,
+        acceptedFiles,
+        rejectedFiles
+    } = useDropzone({
         onDrop,
         accept: '.jpg, .png, .jpeg',
         minSize: 0
@@ -182,27 +185,26 @@ function ProductForm(props) {
     useEffect(() => {
         if (apiData.productDescription === '') {
             setWordsRequired(100);
-        }
-        else {
+        } else {
             let ab = apiData.productDescription.split(' ');
             setWordsRequired(100 - ab.length); // add 1 to totalsoFar to account for extra space since 1 space = 2 words
         }
-    }, [apiData.productDescription])
+    }, [apiData.productDescription]);
 
     const handleSelectChange = (event) => {
         const { name, value } = event.target;
         setApiData({
             ...apiData,
-            [name]: value,
+            [name]: value
         });
     };
 
     useEffect(() => {
         setApiData({
             ...apiData,
-            'productDomainId': multipleSelectTech.map(t => t.value)
+            productDomainId: multipleSelectTech.map((t) => t.value)
         });
-    }, [multipleSelectTech])
+    }, [multipleSelectTech]);
 
     const getAllDomains = () => {
         setLoading(true);
@@ -212,13 +214,12 @@ function ProductForm(props) {
                 setAllDomainsData(response);
                 setLoading(false);
             })
-            .catch((err) => {
-            });
+            .catch((err) => {});
     };
 
     useEffect(() => {
         getAllDomains();
-        setErrors({})
+        setErrors({});
     }, []);
 
     function handleChangeLink(i, event) {
@@ -227,12 +228,12 @@ function ProductForm(props) {
         setFields(values);
         setApiData({
             ...apiData,
-            productFounderLinkedinProfiles: values.map((link) => link.value),
+            productFounderLinkedinProfiles: values.map((link) => link.value)
         });
     }
 
     function handleAdd() {
-        const values = [...fields, { value: "" }];
+        const values = [...fields, { value: '' }];
         setFields(values);
     }
 
@@ -256,7 +257,7 @@ function ProductForm(props) {
         } else {
             let newarr = [...businessModal];
             newarr[id].status = false;
-            setApiData({ ...apiData, productBusinessModel: "" });
+            setApiData({ ...apiData, productBusinessModel: '' });
             setBusinesmodal(newarr);
         }
     };
@@ -279,7 +280,7 @@ function ProductForm(props) {
                 x.status = false;
                 return x;
             });
-            setApiData({ ...apiData, productCurrentStatus: "" });
+            setApiData({ ...apiData, productCurrentStatus: '' });
             setCurrentStage(newarr);
         }
     };
@@ -288,113 +289,122 @@ function ProductForm(props) {
     //   setFile(e);
     // };
 
-
     function errorValidation() {
         const err = {};
 
         if (logo === null) {
-            err.filePicked = "Please pick up a logo for the Product";
+            err.filePicked = 'Please pick up a logo for the Product';
         }
 
         if (apiData.productName.length < 3) {
-            err.productName = "Name required";
+            err.productName = 'Name required';
         }
 
         if (apiData.productDescription.length < 100) {
             err.productDescription =
-                "Description should be of minimum 100 characters.";
+                'Description should be of minimum 100 characters.';
         }
 
         if (apiData.productDomainId.length === 0) {
-            err.productDomainId = "Domain required";
+            err.productDomainId = 'Domain required';
         }
 
-        if (apiData.productTeamSize === "") {
-            err.productTeamSize = "Team Size required";
+        if (apiData.productTeamSize === '') {
+            err.productTeamSize = 'Team Size required';
         }
 
-        if (apiData.productRevenueGenerated === "") {
-            err.productRevenueGenerated = "Revenue required";
+        if (apiData.productRevenueGenerated === '') {
+            err.productRevenueGenerated = 'Revenue required';
         }
 
-        if (apiData.productBusinessModel === "") {
-            err.productBusinessModel = "Business Model required";
+        if (apiData.productBusinessModel === '') {
+            err.productBusinessModel = 'Business Model required';
         }
 
-        if (apiData.productPreviousFunding === "") {
-            err.productPreviousFunding = "Previous Funding required";
+        if (apiData.productPreviousFunding === '') {
+            err.productPreviousFunding = 'Previous Funding required';
         }
 
-        if (apiData.productPreviousFunding === "true" && apiData.projectPreviousFundingRaised === "") {
-            err.fundingMoneyRaised = "Funding Money Raised is Required.";
+        if (
+            apiData.productPreviousFunding === 'true' &&
+            apiData.projectPreviousFundingRaised === ''
+        ) {
+            err.fundingMoneyRaised = 'Funding Money Raised is Required.';
         }
-        if (apiData.productFundingTypeLookingFor === "") {
-            err.productFundingTypeLookingFor = "Funding type Required.";
-        }
-
-        if (apiData.productCurrentStatus === "") {
-            err.productCurrentStatus = "Current status Required.";
-        }
-
-        if (apiData.productCustomerAccquired === "") {
-            err.productCustomerAccquired = "Customer field Required.";
+        if (apiData.productFundingTypeLookingFor === '') {
+            err.productFundingTypeLookingFor = 'Funding type Required.';
         }
 
-        if (apiData.productActiveUsers === "") {
-            err.productActiveUsers = "Active users Required.";
+        if (apiData.productCurrentStatus === '') {
+            err.productCurrentStatus = 'Current status Required.';
         }
 
-        if (apiData.productCompanyLocation === "") {
-            err.productCompanyLocation = "Company Location Required.";
+        if (apiData.productCustomerAccquired === '') {
+            err.productCustomerAccquired = 'Customer field Required.';
         }
 
-        if (apiData.productFeatureLink === "") {
-            err.productFeatureLink = "Invalid link";
+        if (apiData.productActiveUsers === '') {
+            err.productActiveUsers = 'Active users Required.';
         }
 
-        if (apiData.productPlatformLink === "") {
-            err.productPlatformLink = "Invalid link";
+        if (apiData.productCompanyLocation === '') {
+            err.productCompanyLocation = 'Company Location Required.';
         }
 
-        if (apiData.productPlatformLink !== "" && !helper.validateLink(apiData.productPlatformLink)) {
-            err.productPlatformLink = "Wrong Platform link Provided";
+        if (apiData.productFeatureLink === '') {
+            err.productFeatureLink = 'Invalid link';
+        }
+
+        if (apiData.productPlatformLink === '') {
+            err.productPlatformLink = 'Invalid link';
+        }
+
+        if (
+            apiData.productPlatformLink !== '' &&
+            !helper.validateLink(apiData.productPlatformLink)
+        ) {
+            err.productPlatformLink = 'Wrong Platform link Provided';
         }
 
         if (apiData.productFounderLinkedinProfiles.length === 0) {
-            err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
+            err.productFounderLinkedinProfiles =
+                'Please add atleast one founder profile.';
         }
 
         if (apiData.productFounderLinkedinProfiles.length === 0) {
-            err.productFounderLinkedinProfiles = "Please add atleast one founder profile."
+            err.productFounderLinkedinProfiles =
+                'Please add atleast one founder profile.';
         }
 
         if (apiData.productFounderLinkedinProfiles.length > 0) {
             apiData.productFounderLinkedinProfiles.forEach((a, index) => {
                 if (a === '') {
-                    err.productFounderLinkedinProfiles = `founder ${index + 1} url is empty`
+                    err.productFounderLinkedinProfiles = `founder ${
+                        index + 1
+                    } url is empty`;
+                } else if (!helper.validateLinkedIn(a)) {
+                    err.productFounderLinkedinProfiles = `founder ${
+                        index + 1
+                    } url is incorrect`;
+                } else {
                 }
-                else if (!helper.validateLinkedIn(a)) {
-                    err.productFounderLinkedinProfiles = `founder ${index + 1} url is incorrect`;
-                }
-                else {
-                }
-            })
+            });
         }
 
         setErrors(err);
         if (Object.keys(err).length === 0) return true;
         else return false;
-    };
+    }
 
     async function uploadMedia() {
         try {
             const detail = await upload(logo, Role);
-            detail && setApiData({
-                ...apiData,
-                productLogo: detail,
-            });
-        } catch (err) {
-        }
+            detail &&
+                setApiData({
+                    ...apiData,
+                    productLogo: detail
+                });
+        } catch (err) {}
     }
 
     const handleSubmit = () => {
@@ -417,13 +427,13 @@ function ProductForm(props) {
         if (apiData.productLogo !== '') {
             handleSubmit();
         }
-    }, [apiData.productLogo])
+    }, [apiData.productLogo]);
 
     const handleButton = () => {
         if (errorValidation()) {
             uploadMedia();
         }
-    }
+    };
 
     return (
         <>
@@ -793,7 +803,7 @@ function ProductForm(props) {
                                                             >
                                                                 <span>
                                                                     {value?.status ===
-                                                                        true ? (
+                                                                    true ? (
                                                                         <div></div>
                                                                     ) : null}
                                                                 </span>
@@ -881,7 +891,7 @@ function ProductForm(props) {
                                             )}
                                         </section>
                                         {apiData.productPreviousFunding ===
-                                            'true' ? (
+                                        'true' ? (
                                             <section className="amountRaised">
                                                 <span className="howMuchHaveYouRaised">
                                                     <span
@@ -1069,7 +1079,7 @@ function ProductForm(props) {
                                                                 style={{
                                                                     borderColor:
                                                                         value.status ===
-                                                                            true
+                                                                        true
                                                                             ? '#2E86C1'
                                                                             : null
                                                                 }}
@@ -1082,7 +1092,7 @@ function ProductForm(props) {
                                                             >
                                                                 <span>
                                                                     {value?.status ===
-                                                                        true ? (
+                                                                    true ? (
                                                                         <div></div>
                                                                     ) : null}
                                                                 </span>
@@ -1423,9 +1433,10 @@ function ProductForm(props) {
                                                                         >
                                                                             <input
                                                                                 type="text"
-                                                                                placeholder={`Founder ${idx +
+                                                                                placeholder={`Founder ${
+                                                                                    idx +
                                                                                     1
-                                                                                    } Linkedin Profile Link`}
+                                                                                } Linkedin Profile Link`}
                                                                                 onChange={(
                                                                                     e
                                                                                 ) =>
@@ -1487,6 +1498,9 @@ function ProductForm(props) {
                 classNames={{
                     overlay: 'NavbarModalLayer',
                     modal: 'NavbarModalStyle'
+                }}
+                styles={{
+                    closeButton: { outline: 'none' }
                 }}
                 center
             >

@@ -126,7 +126,7 @@ function ClientOneHireDeveloper(props) {
                                             ? singleHiredDeveloper?.length >
                                                   0 &&
                                               singleHiredDeveloper?.map(
-                                                  (item, index) => {
+                                                  (item) => {
                                                       let areDevsShared =
                                                           !!item
                                                               ?.isDevelopersShared
@@ -139,7 +139,10 @@ function ClientOneHireDeveloper(props) {
                                                               : 0;
 
                                                       return (
-                                                          <div className="developer-card">
+                                                          <div
+                                                              className="developer-card"
+                                                              key={item?._id}
+                                                          >
                                                               <span className="developer-name">
                                                                   {`${item?.firstName} ${item?.lastName}`}
                                                               </span>
@@ -179,10 +182,14 @@ function ClientOneHireDeveloper(props) {
                                                                           0}{' '}
                                                                       {item?.developerTechnologies?.map(
                                                                           (
-                                                                              tech,
-                                                                              index
+                                                                              tech
                                                                           ) => (
-                                                                              <div className="skill-pill">
+                                                                              <div
+                                                                                  className="skill-pill"
+                                                                                  key={
+                                                                                      tech._id
+                                                                                  }
+                                                                              >
                                                                                   <span className="pill">
                                                                                       {
                                                                                           tech?.technologyName
@@ -202,7 +209,12 @@ function ClientOneHireDeveloper(props) {
                                                                       {
                                                                           item?.developerPriceRange
                                                                       }
-                                                                      ₹ Per Hour
+                                                                      ₹ -{' '}
+                                                                      {item?.developerPriceRange +
+                                                                          10 *
+                                                                              1000}
+                                                                      ₹ Per
+                                                                      Month
                                                                   </div>
                                                               </div>
                                                               <div
@@ -217,10 +229,10 @@ function ClientOneHireDeveloper(props) {
                                                                   }`}
                                                               >
                                                                   <div
-                                                                      className={
+                                                                      className={`${
                                                                           areDevsShared &&
-                                                                          `button_parent`
-                                                                      }
+                                                                          'button_parent'
+                                                                      }`}
                                                                   >
                                                                       {!areDevsShared ? (
                                                                           <button
@@ -321,6 +333,9 @@ function ClientOneHireDeveloper(props) {
                             modal: 'customModalClientOneHireDeveloper'
                         }}
                         center
+                        styles={{
+                            closeButton: { outline: 'none' }
+                        }}
                     >
                         <div className="want_to_accept">
                             <div className="connect_or_not">

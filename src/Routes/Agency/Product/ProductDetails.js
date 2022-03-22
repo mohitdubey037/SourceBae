@@ -618,6 +618,9 @@ function ProductDetails(props) {
                     overlay: 'customOverlayAgencyProduct',
                     modal: 'customModalAgencyProduct'
                 }}
+                styles={{
+                    closeButton: { outline: 'none' }
+                }}
                 center
             >
                 <div className="modalHeaderProduct">

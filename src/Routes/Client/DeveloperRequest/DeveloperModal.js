@@ -95,6 +95,9 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             showCloseIcon={false}
             onClose={onCloseModal}
             classNames={{ modal: styles.modalRoot }}
+            styles={{
+                closeButton: { outline: 'none' }
+            }}
         >
             <div className={styles.modalContainer}>
                 <div className={styles.header_holder}>

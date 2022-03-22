@@ -559,6 +559,9 @@ const ClientCommentBox = (props) => {
                     overlay: 'QuotationModalOverlay',
                     modal: 'QuotationModal QuotationModal_clientCommentBox'
                 }}
+                styles={{
+                    closeButton: { outline: 'none' }
+                }}
             >
                 <div className="QuotationModal acceptance-parent_clientCommentBox">
                     <h2>Quotation Acceptance Form</h2>
@@ -821,6 +824,9 @@ const ClientCommentBox = (props) => {
                 classNames={{
                     overlay: 'QuotationModalOverlay',
                     modal: 'QuotationModal'
+                }}
+                styles={{
+                    closeButton: { outline: 'none' }
                 }}
             >
                 <div className="rejection_modal_clientCommentBox">

@@ -445,6 +445,9 @@ function AgencyList(props) {
                         overlay: 'ShortListModalOverlay',
                         modal: 'ShortListModal'
                     }}
+                    styles={{
+                        closeButton: { outline: 'none' }
+                    }}
                 >
                     <div className="shortlistModal_agencyList">
                         <h2>ShortList</h2>
@@ -477,6 +480,9 @@ function AgencyList(props) {
                     classNames={{
                         overlay: 'QuotationModalOverlay',
                         modal: 'QuotationModal'
+                    }}
+                    styles={{
+                        closeButton: { outline: 'none' }
                     }}
                 >
                     <div className="QuotationModal">

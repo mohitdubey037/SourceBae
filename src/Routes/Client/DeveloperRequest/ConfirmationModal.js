@@ -20,6 +20,9 @@ export default function ConfirmationModal({
             showCloseIcon={false}
             onClose={onCloseModal}
             classNames={{ modal: styles.modalRoot }}
+            styles={{
+                closeButton: { outline: 'none' }
+            }}
         >
             <div className={styles.modalContainer}>
                 <div>

@@ -385,6 +385,9 @@ function SkillsSet(props) {
                     overlay: 'customOverlay',
                     modal: 'editModal'
                 }}
+                styles={{
+                    closeButton: { outline: 'none' }
+                }}
             >
                 <h2 className="modalHeading">{`Add ${modalValue?.title}`}</h2>
                 <div className="modalEditContainer">

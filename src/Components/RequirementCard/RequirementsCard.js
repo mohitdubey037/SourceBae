@@ -113,6 +113,9 @@ export default function RequirementsList(props) {
                 open={open}
                 onClose={onCloseModal}
                 center
+                styles={{
+                    closeButton: { outline: 'none' }
+                }}
             >
                 <div className="modalContainer">
                     <div className="modalHeading">

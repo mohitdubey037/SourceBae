@@ -16,9 +16,6 @@ function RightSide() {
 
     const onCloseModal = () => setOpen(false);
 
-    const onOpenModal = () => {
-        setOpen(true);
-    };
     const openForm = () => {
         window.open(
             'https://docs.google.com/forms/d/1r38zxJpTgXe8m2iAFwBsKpkLWq33hgw8TXW0mQQ4JHo/prefill',
@@ -215,6 +212,9 @@ function RightSide() {
                 classNames={{
                     overlay: 'customOverlayAgencyProduct',
                     modal: styles.customModalRightSide
+                }}
+                styles={{
+                    closeButton: { outline: 'none' }
                 }}
                 center
             >

@@ -236,12 +236,12 @@ function DeveloperList(props) {
                                                 </div>
                                                 <div>
                                                     <p>Budget</p>
-                                                    <h6>{`$${
+                                                    <h6>{`${
                                                         developer.developerPriceRange
-                                                    }-$${
+                                                    }₹-${
                                                         developer.developerPriceRange +
-                                                        3 * 1000
-                                                    }`}</h6>
+                                                        10 * 1000
+                                                    }₹`}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -353,6 +353,9 @@ function DeveloperList(props) {
                 open={openWithdrawModal}
                 onClose={() => {
                     setOpenWithdrawModal(false);
+                }}
+                styles={{
+                    closeButton: { outline: 'none' }
                 }}
                 center
                 classNames={{

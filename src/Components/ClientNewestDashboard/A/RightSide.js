@@ -59,6 +59,9 @@ function RightSide() {
                     overlay: 'customOverlayAgencyProduct',
                     modal: 'customModalRightSide'
                 }}
+                styles={{
+                    closeButton: { outline: 'none' }
+                }}
                 center
             >
                 <div className="contact-us">

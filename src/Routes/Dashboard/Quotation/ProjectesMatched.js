@@ -248,6 +248,9 @@ function ProjectesMatched(props) {
                     overlay: 'ShortListModalOverlay',
                     modal: 'ShortListModal'
                 }}
+                styles={{
+                    closeButton: { outline: 'none' }
+                }}
             >
                 <div className="shortlistModal">
                     <h2>ShortList</h2>

@@ -291,6 +291,9 @@ function AgencyProfile(props) {
                         }}
                         onClose={onCloseModal}
                         center
+                        styles={{
+                            closeButton: { outline: 'none' }
+                        }}
                     >
                         <div className="mainAskQuestion">
                             <div className="innerAskQuestion">
@@ -342,6 +345,9 @@ function AgencyProfile(props) {
                             modal: 'customModal'
                         }}
                         onClose={() => setHoverModal(false)}
+                        styles={{
+                            closeButton: { outline: 'none' }
+                        }}
                         center
                     >
                         <div className="mainAskQuestion">

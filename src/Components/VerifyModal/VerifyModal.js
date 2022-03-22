@@ -73,7 +73,7 @@ function VerifyModal(props) {
                         modal: 'customModalClientOneHireDeveloper',
                         closeButton: 'customCloseButton'
                     }}
-                    styles={{ closeIcon: { top: '2px' } }}
+                    styles={{ closeIcon: { top: '2px', outline: 'none' } }}
                     center
                 >
                     <div className="want_to_accept">

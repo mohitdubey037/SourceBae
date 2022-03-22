@@ -665,6 +665,9 @@ const AgencyCommentBox = (props) => {
                             overlay: 'QuotationModalOverlay',
                             modal: 'QuotationModal QuotationModal_agencyCommentBox'
                         }}
+                        styles={{
+                            closeButton: { outline: 'none' }
+                        }}
                     >
                         <div className="QuotationModal acceptance-parent_clientCommentBox">
                             <h2>Quotation Acceptance Form</h2>
