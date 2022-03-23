@@ -655,7 +655,7 @@ function ShortTerm(props) {
                                                             }
                                                         />
                                                     }
-                                                    label="5000₹ - 100,000₹"
+                                                    label="50,000₹ - 100,000₹"
                                                 />
                                                 <FormControlLabel
                                                     value="10000"

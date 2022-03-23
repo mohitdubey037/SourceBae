@@ -10,7 +10,6 @@ import MultiSelect from 'react-multi-select-component';
 import instance from '../../../../Constants/axiosConstants';
 import Back from '../../../../Components/Back/Back';
 import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
-import DownImage from '../../../../assets/images/Newestdashboard/Register/signup_down.svg';
 
 import VerifyModal from '../../../../Components/VerifyModal/VerifyModal';
 import SizedBox from '../../../../Components/SizedBox/SizedBox';
@@ -513,7 +512,7 @@ function HireDeveloper(props) {
                                                 label="less than 50,000₹"
                                             />
                                             <FormControlLabel
-                                                value={'50000,100000'}
+                                                value={'50000,125000'}
                                                 control={<BlueRadio />}
                                                 label="50,000₹-1,25,000₹ Per Month"
                                             />

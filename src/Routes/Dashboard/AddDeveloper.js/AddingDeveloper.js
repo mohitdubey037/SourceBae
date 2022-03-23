@@ -159,7 +159,7 @@ function AddingDeveloper(props) {
             .then(function (response) {
                 setLoading(false);
                 props.history.replace({
-                    pathname: '/agency-profile',
+                    pathname: '/agency-requirements-listing',
                     origin: 'addingDeveloper'
                 });
             })

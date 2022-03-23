@@ -118,8 +118,9 @@ function AgencyProfile(props) {
     };
 
     const handleBackOnProfile = () => {
-        if (role === AGENCY) props.history.replace('agency-newest-dashboard');
-        else props.history.goBack();
+        // if (role === AGENCY) props.history.replace('agency-newest-dashboard');
+        // else
+        props.history.goBack();
     };
 
     const [link, setLink] = useState('');
