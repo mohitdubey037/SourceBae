@@ -37,9 +37,9 @@ function AddingDeveloper(props) {
                 documentLink: ''
             }
         ],
-        developerExperience: '',
-        developerPriceRange: '',
-        developerAvailability: null
+        developerExperience: '1',
+        developerPriceRange: '50000',
+        developerAvailability: '0'
     });
 
     const [techs, setTechs] = useState([]);
@@ -443,16 +443,28 @@ function AddingDeveloper(props) {
                                                         value="1"
                                                         control={<Radio />}
                                                         label="Junior(1-3years)"
+                                                        checked={
+                                                            developerData.developerExperience ===
+                                                            '1'
+                                                        }
                                                     />
                                                     <FormControlLabel
                                                         value="3"
                                                         control={<Radio />}
                                                         label="Mid Range(3-6years)"
+                                                        checked={
+                                                            developerData.developerExperience ===
+                                                            '3'
+                                                        }
                                                     />
                                                     <FormControlLabel
                                                         value="6"
                                                         control={<Radio />}
                                                         label="Senior(6-9years)"
+                                                        checked={
+                                                            developerData.developerExperience ===
+                                                            '6'
+                                                        }
                                                     />
                                                 </RadioGroup>
                                             </div>
@@ -485,21 +497,37 @@ function AddingDeveloper(props) {
                                                     value="50000"
                                                     control={<Radio />}
                                                     label="50,000₹-60,000₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '50000'
+                                                    }
                                                 />
                                                 <FormControlLabel
                                                     value="65000"
                                                     control={<Radio />}
                                                     label="65,000₹-75,000₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '65000'
+                                                    }
                                                 />
                                                 <FormControlLabel
                                                     value="80000"
                                                     control={<Radio />}
                                                     label="80000₹-90,000₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '80000'
+                                                    }
                                                 />
                                                 <FormControlLabel
                                                     value="90000"
                                                     control={<Radio />}
                                                     label="Less than 1Lakh₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '90000'
+                                                    }
                                                 />
                                             </RadioGroup>
                                         </FormControl>
@@ -528,21 +556,37 @@ function AddingDeveloper(props) {
                                                     value="0"
                                                     control={<Radio />}
                                                     label="Immediately"
+                                                    checked={
+                                                        developerData?.developerAvailability ===
+                                                        '0'
+                                                    }
                                                 />
                                                 <FormControlLabel
                                                     value="1"
                                                     control={<Radio />}
                                                     label="less than 2 weeks"
+                                                    checked={
+                                                        developerData?.developerAvailability ===
+                                                        '1'
+                                                    }
                                                 />
                                                 <FormControlLabel
                                                     value="2"
                                                     control={<Radio />}
                                                     label="More than 2 weeks"
+                                                    checked={
+                                                        developerData?.developerAvailability ===
+                                                        '2'
+                                                    }
                                                 />
                                                 <FormControlLabel
                                                     value="Negotiable"
                                                     control={<Radio />}
                                                     label="Negotiable"
+                                                    checked={
+                                                        developerData?.developerAvailability ===
+                                                        'Negotiable'
+                                                    }
                                                 />
                                             </RadioGroup>
                                             {developerData.developerAvailability !==
