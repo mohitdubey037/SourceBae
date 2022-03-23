@@ -24,7 +24,7 @@ function AgencyForm3(props) {
     const Role = localStorage.getItem('role') || AGENCY;
     const url = props.history.location.pathname;
     const status = 'Upload';
-    const [pickedAll, setPickedAll] = useState(false);
+    const [isMediaUploaded, setIsMediauploaded] = useState(false);
     const [loading, setLoading] = useState(false);
     const [steps, setSteps] = useState('');
 
@@ -90,45 +90,62 @@ function AgencyForm3(props) {
     function uploadMedia() {
         setLoading(true);
         return new Promise((resolve, reject) => {
+            let index = 0;
+            let trackObj = {};
+
             const formData = new FormData();
-            formData.append(
-                'files',
-                registrationCertificate.document,
-                registrationCertificate.name
-            );
+
+            if (registrationCertificate?.document) {
+                trackObj['registrationCertificate'] = index;
+                index++;
+                formData.append(
+                    'files',
+                    registrationCertificate.document,
+                    registrationCertificate.name
+                );
+            }
 
             if (brochureDoc?.document) {
+                trackObj['brochureDoc'] = index;
+                index++;
                 formData.append(
                     'files',
                     brochureDoc.document,
                     brochureDoc.name
                 );
             }
-            formData.append('files', panCardDoc.document, panCardDoc.name);
+
+            if (panCardDoc?.document) {
+                trackObj['panCardDoc'] = index;
+                index++;
+                formData.append('files', panCardDoc.document, panCardDoc.name);
+            }
+
             instance
                 .post(`api/${Role}/media/create`, formData)
                 .then(function (response) {
-                    setRegistrationCertificate({
-                        ...registrationCertificate,
-                        documentLink: response[0].mediaURL
+                    Object.keys(trackObj).forEach((key) => {
+                        if (key === 'registrationCertificate') {
+                            setRegistrationCertificate({
+                                ...registrationCertificate,
+                                documentLink:
+                                    response?.[trackObj[key]]?.mediaURL
+                            });
+                        } else if (key === 'brochureDoc') {
+                            setBrochureDoc({
+                                ...brochureDoc,
+                                documentLink:
+                                    response?.[trackObj[key]]?.mediaURL
+                            });
+                        } else if (key === 'panCardDoc') {
+                            setPanCardDoc({
+                                ...panCardDoc,
+                                documentLink:
+                                    response?.[trackObj[key]]?.mediaURL
+                            });
+                        }
                     });
-
-                    if (brochureDoc?.document) {
-                        setBrochureDoc({
-                            ...brochureDoc,
-                            documentLink: response[1]?.mediaURL
-                        });
-
-                        setPanCardDoc({
-                            ...panCardDoc,
-                            documentLink: response[2]?.mediaURL
-                        });
-                    } else {
-                        setPanCardDoc({
-                            ...panCardDoc,
-                            documentLink: response[1]?.mediaURL
-                        });
-                    }
+                    setIsMediauploaded(true);
                 })
                 .catch((err) => {
                     setLoading(false);
@@ -137,7 +154,7 @@ function AgencyForm3(props) {
     }
 
     const handleUpload = async (event) => {
-        if (status === 'Upload' && pickedAll) {
+        if (status === 'Upload') {
             await uploadMedia();
             setLoading(false);
         } else {
@@ -199,22 +216,13 @@ function AgencyForm3(props) {
     }, [propData]);
 
     useEffect(() => {
-        if (
-            registrationCertificate.documentPicked &&
-            panCardDoc.documentPicked
-        ) {
-            setPickedAll(true);
-        }
-
-        if (
-            registrationCertificate.documentLink !== '' &&
-            panCardDoc.documentLink !== ''
-        ) {
+        console.log(isMediaUploaded, 'uploaded');
+        if (isMediaUploaded) {
             setLoading(false);
             handleUpdate();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [registrationCertificate, brochureDoc, panCardDoc]);
+    }, [isMediaUploaded]);
 
     return (
         <>
@@ -230,7 +238,7 @@ function AgencyForm3(props) {
                         <div className="innerDocumentForm">
                             <div className="documentDetails">
                                 <p>
-                                    <span className="requiredStar">*</span>
+                                    {/* <span className="requiredStar">*</span> */}
                                     Provide your valid document:{' '}
                                 </p>
                                 <div className="documentInformation">
@@ -259,9 +267,9 @@ function AgencyForm3(props) {
                                                             <button className="pick_btn">
                                                                 <p>
                                                                     Pick File
-                                                                    <span className="requiredStar">
+                                                                    {/* <span className="requiredStar">
                                                                         *
-                                                                    </span>
+                                                                    </span> */}
                                                                 </p>
                                                                 <img
                                                                     src={
@@ -356,9 +364,9 @@ function AgencyForm3(props) {
                                                             <button className="pick_btn">
                                                                 <p>
                                                                     Pick File
-                                                                    <span className="requiredStar">
+                                                                    {/* <span className="requiredStar">
                                                                         *
-                                                                    </span>
+                                                                    </span> */}
                                                                 </p>
                                                                 <img
                                                                     src={
