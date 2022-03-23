@@ -10,7 +10,7 @@ var url =
         : 'https://api.sourcebae.com';
 
 // ? 'https://api.onesourcing.in'
-axios.defaults.headers.common['Authorization'] = `${localStorage.getItem(
+axios.defaults.headers.common['Authorization'] = `${cookie.load(
     'Authorization'
 )}`;
 const instance = axios.create({
@@ -21,8 +21,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function (request) {
     if (!request.url.includes('login')) {
-        let token = cookie.load('Authorization');
-        console.log(token, 'token');
         request.headers['Authorization'] = cookie.load('Authorization');
     }
     return request;
@@ -49,62 +47,72 @@ instance.interceptors.response.use(
         }
     },
     function (error) {
-        let trueError = '';
-        let isCookieFilled = !cookie.load('Authorization');
-        if (isCookieFilled && error?.response?.status === 500) {
-            cookie.remove('Authorization');
-            alert('Something went wrong, taking you to home page');
-            window.location.href = '/';
-        } else if (error?.response?.status !== 404) {
-            let isMongoError =
-                Array.isArray(error.response.data.error) &&
-                (error?.response?.data?.error?.includes('CastError') ||
-                    error?.response?.data?.error?.includes('MongooseError'));
+        let isAuth = !!cookie.load('Authorization');
+        if (isAuth) {
+            switch (error?.response?.status) {
+                case 400:
+                    let trueError = '';
 
-            if (
-                error?.response?.data?.message === 'Bearer Token not found' ||
-                error?.response?.data?.message === 'Unauthorized' ||
-                isMongoError
-            ) {
-                if (cookie.load('Authorization')) {
+                    if (
+                        error?.response?.data?.message ===
+                        'Invalid parameters passed'
+                    ) {
+                        const errors = error?.response?.data?.error ?? {};
+                        const errorName = Object.keys(errors);
+                        if (
+                            typeof errors === 'object' &&
+                            errorName.length > 0
+                        ) {
+                            trueError = trueError + errors[errorName[0]][0];
+                            toast.error(trueError);
+                        } else {
+                            toast.error(error?.response?.data?.message);
+                        }
+                    }
+
+                    break;
+                case 401:
+                    alert('Session Expired');
+                    localStorage.clear();
+                    cookie.remove('Authorization');
+                    window.location.href = '/';
+                    break;
+                case 403:
+                    break;
+                case 404:
+                    if (error?.response?.data?.message === 'User not found')
+                        toast.error(error?.response?.data?.message);
+                    break;
+                case 500:
                     alert(error?.response?.data?.message);
-                }
-                cookie.remove('Authorization');
-                if (error?.response?.data?.message === 'Unauthorized')
-                    alert('Please login with correct details');
-                window.location.href = '/';
-            } else if (error?.response?.status === 401) {
-                localStorage.clear();
-                cookie.remove('Authorization');
-                if (error?.config?.url?.includes('login'))
-                    toast.error('Please login with correct details');
-                else window.location.href = '/';
-            } else {
-                const errors = error?.response?.data?.error ?? {};
-                const errorName = Object.keys(errors);
-                if (typeof errors === 'object' && errorName.length > 0) {
-                    trueError = trueError + errors[errorName[0]][0];
-                } else {
-                    trueError = error?.response?.data?.message;
-                }
-                toast.error(trueError, {
-                    position: 'top-right',
-                    autoClose: 10000,
-                    hideProgressBar: true,
-                    pauseOnHover: true,
-                    draggable: true
-                });
+                    localStorage.clear();
+                    cookie.remove('Authorization');
+                    window.location.href = '/';
+                    break;
+                default:
+                    break;
             }
-        } else if (
-            error?.response?.status === 404 &&
-            error?.response?.config?.url?.includes('login')
-        ) {
-            toast.error(error?.response?.data?.message);
-        } else if (
-            error?.response?.status === 404 &&
-            error?.response?.data?.message === 'Api not found'
-        ) {
-            window.location.href = '/';
+        } else {
+            switch (error?.response?.status) {
+                case 400:
+                    toast.error(error?.response?.data?.message);
+                    break;
+
+                case 401:
+                    toast.error(error?.response?.data?.message);
+                    break;
+                case 403:
+                    break;
+                case 404:
+                    if (error?.response?.data?.message === 'User not found')
+                        toast.error(error?.response?.data?.message);
+
+                    break;
+                case 500:
+                    break;
+                default:
+                    window.location.href = '/';
+            }
         }
 
         return Promise.reject(error);

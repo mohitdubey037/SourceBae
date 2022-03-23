@@ -1,5 +1,4 @@
-import * as actionTypes from "../action/actionTypes";
-import instance from "../../Constants/axiosConstants";
+import * as actionTypes from '../action/actionTypes';
 
 const initialState = {
     is_Back_Pressed: false
@@ -16,7 +15,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 is_Back_Pressed: false
-            }
+            };
         default:
             return state;
     }
