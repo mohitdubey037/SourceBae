@@ -266,12 +266,6 @@ function RespondedDetails(props) {
                                                                     Accept or
                                                                     Reject
                                                                 </button>
-                                                                {/* <button onClick={() => agencyAction(1, devData._id)} className="acceptButtonShare">
-                                  Accept
-                                </button>
-                                <button onClick={() => agencyAction(2, devData._id)} className="rejectButtonShare">
-                                  Reject
-                                </button> */}
                                                             </>
                                                         ) : (
                                                             <button
