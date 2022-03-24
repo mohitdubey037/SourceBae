@@ -206,6 +206,7 @@ const RequirementListing = () => {
 
     useEffect(() => {
         hireDevApi({ isParam: true, isShowMore: false });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterState]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -218,10 +219,12 @@ const RequirementListing = () => {
     useEffect(() => {
         hireDevApi();
         // getDevelopers(cardId, agencyId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role]);
 
     useEffect(() => {
         hireDevApi({ isParam: true, isShowMore: false });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [switchValue]);
 
     const onApplyClick = (id) => {
