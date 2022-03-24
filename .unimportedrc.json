@@ -1,0 +1,33 @@
+{
+  "ignoreUnresolved": [],
+  "ignoreUnused": [
+    "@date-io/date-fns",
+    "@date-io/moment",
+    "@material-ui/pickers",
+    "@testing-library/jest-dom",
+    "@testing-library/react",
+    "@testing-library/user-event",
+    "multiselect-react-dropdown",
+    "pretty-checkbox-react",
+    "react-circular-progressbar",
+    "react-datepicker",
+    "react-error-overlay",
+    "react-file-picker",
+    "react-ga",
+    "react-modal",
+    "react-multi-search-select",
+    "react-places-autocomplete",
+    "react-power-tooltip",
+    "react-rangeslider",
+    "react-scripts",
+    "react-search-multi-select",
+    "react-timezone-select",
+    "restful-react",
+    "styled-components",
+    "web-vitals"
+  ],
+  "ignoreUnimported": [
+    "src/Routes/Dashboard/AddDeveloper.js",
+    "src/index.js"
+  ]
+}

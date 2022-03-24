@@ -32,9 +32,6 @@ function AgencyProjectCard(props) {
                     <div>
                         <p>{dateCreate}</p>
                     </div>
-                    {/* <Moment format="DD MM YYYY" withTitle>
-                        <p className="creation_date" style={{ marginLeft: 10 }}>{props?.createdAt}</p>
-                    </Moment> */}
                 </div>
                 {dateCreate !== dateUpdate && (
                     <div className="matchedDate">
