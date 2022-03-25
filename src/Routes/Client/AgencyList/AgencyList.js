@@ -13,6 +13,7 @@ import Spinner from '../../../Components/Spinner/Spinner';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import { CLIENT } from '../../../shared/constants';
+import Back2 from '../../../assets/images/Back/Back2.svg';
 
 function AgencyList(props) {
     const Role = localStorage.getItem('role');
@@ -48,6 +49,9 @@ function AgencyList(props) {
     };
     const onCloseQuotation = () => setOpenQuotation(false);
 
+    const handleBackOnProfile = () => {
+        props.history.goBack();
+    };
     const [shortlistFormData, setShortlistFormData] = useState({
         comment: '',
         isShortListed: true
@@ -178,7 +182,22 @@ function AgencyList(props) {
                             className="main_parent_agencyList"
                         >
                             <Navbar />
+
                             <div className="innerProjectDetail_parent">
+                                <div
+                                    className="backButton-child"
+                                    onClick={handleBackOnProfile}
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        width: '10%',
+                                        marginLeft: '1rem',
+                                        marginBottom: '2rem'
+                                    }}
+                                >
+                                    <img src={Back2} alt="back" />
+                                    <h6>Back</h6>
+                                </div>
                                 <div className="innerprojectDetailsInfo_agencyList">
                                     <div
                                         style={{
@@ -208,6 +227,7 @@ function AgencyList(props) {
                                         className="search_agencyList"
                                     />
                                 </div>
+
                                 {agencyList?.length > 0 ? (
                                     <div className="innerAgencyList_agencyList">
                                         <div className="AgencyCardsArea_agencyList">

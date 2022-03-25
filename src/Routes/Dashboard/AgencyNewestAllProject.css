@@ -15,6 +15,7 @@ h6 {
 .agency-card-parent {
     overflow: auto;
     height: 39%;
+    margin: 1rem 0;
 }
 
 @media (min-width: 1020px) {
@@ -35,7 +36,7 @@ h6 {
 }
 
 .agency-card-parent::-webkit-scrollbar-thumb {
-    background: #68E1FD;
+    background: #68e1fd;
 }
 
 .content-leftBody_AgencyNewestDashboard {
@@ -68,7 +69,9 @@ h6 {
     font-size: 16px;
 }
 
-.completed-project, .running-project, .rejected-project {
+.completed-project,
+.running-project,
+.rejected-project {
     border-radius: 4px;
     padding: 16px;
     width: 16%;
@@ -77,13 +80,15 @@ h6 {
     background: #eee5e5;
 }
 
-.completed-project:hover, .running-project:hover, .rejected-project:hover {
+.completed-project:hover,
+.running-project:hover,
+.rejected-project:hover {
     cursor: pointer;
 }
 
 .filter {
     width: 100%;
-    background: #F9F9F9;
+    background: #f9f9f9;
     border-radius: 12px;
     min-height: 415px;
     width: 263px;
@@ -94,7 +99,8 @@ h6 {
     margin-top: 7px;
 }
 
-.reset-filter h6, .apply-filter h6 {
+.reset-filter h6,
+.apply-filter h6 {
     padding: 8px;
     border-radius: 4px;
     font-style: normal;
@@ -103,13 +109,13 @@ h6 {
 }
 
 .reset-filter h6 {
-    color: #3A3A3A;
-    background: #EAF2FF;
+    color: #3a3a3a;
+    background: #eaf2ff;
 }
 
 .filterActiveClass {
-    color: #FFFFFF;
-    background: #A6C8FF;
+    color: #ffffff;
+    background: #a6c8ff;
 }
 
 .apply-filter:hover {
@@ -117,8 +123,8 @@ h6 {
 }
 
 .apply-filter h6 {
-    color: #3A3A3A;
-    background: #EAF2FF;
+    color: #3a3a3a;
+    background: #eaf2ff;
 }
 
 .filter-button {
@@ -159,7 +165,7 @@ h6 {
     font-size: 18px;
 }
 
-.search-name-heading+input {
+.search-name-heading + input {
     width: 88%;
     margin-left: 13px;
     margin-top: 10px;
@@ -186,7 +192,7 @@ h6 {
     width: 50%;
     font-weight: 600;
     font-size: 18px;
-    background: #EAF2FF;
+    background: #eaf2ff;
     border-radius: 4px;
     padding: 7px 10px;
 }
@@ -202,8 +208,8 @@ h6 {
 }
 
 .all-project_div p {
-    color: #015F9A;
-    font-family: "Segoe UI bold";
+    color: #015f9a;
+    font-family: 'Segoe UI bold';
     margin-left: 20px;
     font-size: 1.7rem;
     line-height: 17px;
@@ -215,17 +221,17 @@ h6 {
 }
 
 .greenConditional {
-    background-color: #26E826;
+    background-color: #26e826;
     color: white;
 }
 
 .redConditional {
-    background-color: #FF0000;
+    background-color: #ff0000;
     color: white;
 }
 
 .yellowConditional {
-    background-color: #FFD200;
+    background-color: #ffd200;
     color: white;
 }
 

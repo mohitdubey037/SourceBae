@@ -14,7 +14,7 @@ function AgencyNewestAllProject(props) {
     const [projects, setProjects] = useState([]);
     const [err, setErr] = useState(false);
 
-    const [tab, setTab] = useState(0);
+    const [tab, setTab] = useState(4);
 
     const getInitialData = () => {
         instance
@@ -159,7 +159,7 @@ function AgencyNewestAllProject(props) {
                                 <div
                                     className="agency-card-parent"
                                     style={{
-                                        height: err === true ? '100%' : '34%'
+                                        height: err === true ? '100%' : '44%'
                                     }}
                                 >
                                     {err === true ? (
