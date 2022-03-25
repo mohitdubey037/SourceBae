@@ -11,6 +11,7 @@ import instance from '../../Constants/axiosConstants';
 import Spinner from '../../Components/Spinner/Spinner';
 import Profile_image2 from '../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
 import { FaCamera } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 import VerifyModal from '../../Components/VerifyModal/VerifyModal';
 
@@ -80,20 +81,25 @@ function ClientProfile() {
     };
 
     const onDrop = useCallback((acceptedFiles) => {
-        setLogo(acceptedFiles);
-        let reader = new FileReader();
-        reader.readAsDataURL(acceptedFiles[0]);
-        reader.onload = () => {
-            setShow(reader.result);
-            setIsUploaded(true);
-        };
+        if (acceptedFiles.length > 0) {
+            setLogo(acceptedFiles);
+            let reader = new FileReader();
+            reader.readAsDataURL(acceptedFiles[0]);
+            reader.onload = () => {
+                setShow(reader.result);
+                setIsUploaded(true);
+            };
+        } else {
+            toast.error('Only .jpg, .jpeg, .png, files are allowed');
+        }
     }, []);
 
     const { isDragActive, getRootProps, getInputProps, isDragReject } =
         useDropzone({
             onDrop,
             accept: '.jpg, .png, .jpeg',
-            minSize: 0
+            minSize: 0,
+            maxSize: 5242880
         });
 
     useEffect(() => {}, [file]);

@@ -18,6 +18,7 @@ import MultiSelect from 'react-multi-select-component';
 import { FaFileUpload } from 'react-icons/fa';
 
 import { upload } from '../../../shared/helper';
+import { toast } from 'react-toastify';
 
 function AddingDeveloper(props) {
     const logoLink =
@@ -59,7 +60,11 @@ function AddingDeveloper(props) {
     useEffect(() => {}, [developerData]);
 
     const onDrop = useCallback((acceptedFiles) => {
-        setResume(acceptedFiles);
+        if (acceptedFiles.length > 0) {
+            setResume(acceptedFiles);
+        } else {
+            toast.error('Only .jpg, .jpeg, .png, files are allowed');
+        }
     }, []);
 
     const { isDragActive, getRootProps, getInputProps, isDragReject } =

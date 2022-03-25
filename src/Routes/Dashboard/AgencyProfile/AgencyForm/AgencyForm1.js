@@ -14,6 +14,7 @@ import { FaFileUpload } from 'react-icons/fa';
 import { upload } from '../../../../shared/helper';
 
 import './ResponsiveAgencyForm.css';
+import { toast } from 'react-toastify';
 
 function AgencyForm1(props) {
     const dispatch = useDispatch();
@@ -61,15 +62,19 @@ function AgencyForm1(props) {
     });
 
     const onDrop = useCallback((acceptedFiles) => {
-        setLogo(acceptedFiles);
+        if (acceptedFiles.length > 0) {
+            setLogo(acceptedFiles);
+        } else {
+            toast.error('Only .jpg, .jpeg, .png, files are allowed');
+        }
     }, []);
 
     const { isDragActive, getRootProps, getInputProps, isDragReject } =
         useDropzone({
             onDrop,
             accept: '.jpg,.jpeg,.png',
-            minSize: 0
-            // maxSize,
+            minSize: 0,
+            maxSize: 5000000
         });
 
     const errorValidation = () => {

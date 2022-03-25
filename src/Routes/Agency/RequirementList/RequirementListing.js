@@ -3,7 +3,7 @@ import Back from '../../../Components/Back/Back';
 import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import styles from './RequirementListing.module.css';
 import RequirementsCard from '../../../Components/RequirementCard/RequirementsCard';
-import DeveloperListing from './DeveloperListing';
+import DeveloperListing from './Components/DeveloperListing';
 import SearchBar from '../../../Components/SearchBar/SearchBar';
 import colors from '../../../Constants/colors';
 import SizedBox from '../../../Components/SizedBox/SizedBox';

@@ -21,6 +21,7 @@ import form4 from '../../../assets/images/Newestdashboard/ProductForm/product fo
 import * as helper from '../../../shared/helper';
 import moment from 'moment';
 import clsx from 'clsx';
+import { toast } from 'react-toastify';
 
 import fileIcon from '../../../assets/images/Newestdashboard/Agency-form/attach-file.svg';
 import success from '../../../assets/images/agencyForm/success.gif';
@@ -164,7 +165,11 @@ function ProductForm(props) {
     };
 
     const onDrop = useCallback((acceptedFiles) => {
-        setLogo(acceptedFiles);
+        if (acceptedFiles.length > 0) {
+            setLogo(acceptedFiles);
+        } else {
+            toast.error('Only .jpg, .jpeg, .png, files are allowed');
+        }
     }, []);
 
     useEffect(() => {}, [logo]);
@@ -179,7 +184,8 @@ function ProductForm(props) {
     } = useDropzone({
         onDrop,
         accept: '.jpg, .png, .jpeg',
-        minSize: 0
+        minSize: 0,
+        maxSize: 5000000
     });
 
     useEffect(() => {

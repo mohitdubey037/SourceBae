@@ -19,6 +19,7 @@ import Back from '../../../../Components/Back/Back';
 import FileUploadImage from '../../../../assets/images/Newestdashboard/Short_Term/short_term.svg';
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import Spinner from '../../../../Components/Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -101,7 +102,11 @@ function ShortTerm(props) {
     };
 
     const onDrop = useCallback((acceptedFiles) => {
-        setLogo(acceptedFiles);
+        if (acceptedFiles.length > 0) {
+            setLogo(acceptedFiles);
+        } else {
+            toast.error('Only .jpg, .jpeg, .png, files are allowed');
+        }
     }, []);
 
     const { isDragActive, getRootProps, getInputProps, isDragReject } =

@@ -9,6 +9,7 @@ import { useDropzone } from 'react-dropzone';
 import instance from '../../../Constants/axiosConstants';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { upload } from '../../../shared/helper';
+import { toast } from 'react-toastify';
 
 function Portfolio(props) {
     const logoLink =
@@ -19,7 +20,11 @@ function Portfolio(props) {
     const [logo, setLogo] = useState(null);
 
     const onDrop = useCallback((acceptedFiles) => {
-        setLogo(acceptedFiles);
+        if (acceptedFiles.length > 0) {
+            setLogo(acceptedFiles);
+        } else {
+            toast.error('Only .jpg, .jpeg, .png, files are allowed');
+        }
     }, []);
 
     const { isDragActive, getRootProps, getInputProps, isDragReject } =
@@ -27,8 +32,8 @@ function Portfolio(props) {
             onDrop,
             accept: '.jpeg,.png,.jpg',
             minSize: 0,
-            multiple: false
-            // maxSize,
+            multiple: false,
+            maxSize: 5242880
         });
 
     const [form, setForm] = useState({

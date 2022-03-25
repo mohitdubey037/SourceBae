@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styles from './DeveloperListing.module.css';
-import Button from '../../../Components/Button/Button';
-import SizedBox from '../../../Components/SizedBox/SizedBox';
-import paperPlane from '../../../assets/images/DeveloperRequest/paperPlane.svg';
-import buttonStyles from '../../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
+import Button from '../../../../Components/Button/Button';
+import SizedBox from '../../../../Components/SizedBox/SizedBox';
+import paperPlane from '../../../../assets/images/DeveloperRequest/paperPlane.svg';
+import buttonStyles from '../../../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
 import { useHistory } from 'react-router-dom';
-import { AGENCY } from '../../../shared/constants';
-import instance from '../../../Constants/axiosConstants';
+import { AGENCY } from '../../../../shared/constants';
+import instance from '../../../../Constants/axiosConstants';
 
 const agencyId = localStorage.getItem('userId') || '';
 function DeveloperListing({ item, onApply, selectedCard, requirementData }) {
