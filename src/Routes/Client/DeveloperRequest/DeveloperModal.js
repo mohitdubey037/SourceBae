@@ -176,6 +176,7 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                                         onAccept={() =>
                                             setconfirmationModalType(ACCEPT)
                                         }
+                                        titleText={titleText}
                                     />
                                 </div>
                             );

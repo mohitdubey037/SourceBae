@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './DeveloperCard.module.css';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
 
-const DeveloperCard = ({ data = {} }) => {
+const DeveloperCard = ({ data = {}, titleText }) => {
     const getTechnologies = (data) => {
         let result = '';
         Array.isArray(data) &&
@@ -77,6 +77,12 @@ const DeveloperCard = ({ data = {} }) => {
             </div>
 
             <SizedBox height={'12px'} />
+            {!!titleText && (
+                <div style={{ fontSize: '0.7rem' }}>
+                    <strong>Status: </strong>
+                    <span>{titleText}</span>
+                </div>
+            )}
             <div
                 className={styles.status_container}
                 style={{ backgroundColor: buttonColor }}

@@ -193,7 +193,12 @@ function DeveloperListing({ item, onApply, selectedCard, requirementData }) {
                         <button
                             onClick={() => history.push('/add-developer')}
                             className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.applyBtn}`}
-                            style={{ marginBottom: '1rem' }}
+                            style={{
+                                marginBottom: '1rem',
+                                backgroundColor: 'transparent',
+                                border: '0',
+                                color: '#5c6dff'
+                            }}
                         >
                             <span>Add Developers</span>
                         </button>
