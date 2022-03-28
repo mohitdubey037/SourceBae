@@ -99,7 +99,10 @@ instance.interceptors.response.use(
                     break;
 
                 case 401:
-                    toast.error(error?.response?.data?.message);
+                    alert(error?.response?.data?.message);
+                    localStorage.clear();
+                    cookie.remove('Authorization');
+                    window.location.href = '/';
                     break;
                 case 403:
                     break;

@@ -68,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = (props) => {
+    console.log(props, 'props');
     const logoLink =
         'https://sourcebae.s3.amazonaws.com/image/1638354759751.svg';
 
@@ -75,6 +76,10 @@ const Login = (props) => {
 
     const classes = useStyles();
     let { role } = useParams();
+    let { roles } = props;
+    if (!role) {
+        role = roles;
+    }
     if (!(role === AGENCY || role === CLIENT))
         props.history.replace('/page-not-found');
 
@@ -214,13 +219,13 @@ const Login = (props) => {
                     <div className="innerLoginPage">
                         <div
                             className={`loginIllustrator ${
-                                role === 'Client' && 'conditional_background'
+                                role === CLIENT && 'conditional_background'
                             }`}
                         >
                             <div className="loginImage1">
                                 <img
                                     src={
-                                        role === 'Client'
+                                        role === CLIENT
                                             ? downImage1_client
                                             : downImage1_agency
                                     }
@@ -230,7 +235,7 @@ const Login = (props) => {
                             <div className="loginImage2">
                                 <img
                                     src={
-                                        role === 'Client'
+                                        role === CLIENT
                                             ? downImage2_client
                                             : downImage2_agency
                                     }
@@ -240,7 +245,7 @@ const Login = (props) => {
                             <div className="loginImage3">
                                 <img
                                     src={
-                                        role === 'Client'
+                                        role === CLIENT
                                             ? upImage1_client
                                             : upImage1_agency
                                     }

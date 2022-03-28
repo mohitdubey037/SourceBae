@@ -221,13 +221,6 @@ const DeveloperRequest = () => {
                                     <NoDataComponent />
                                 )}
                             </div>
-                            {/* <div className={styles.optionsContainer}>
-                                <DeveloperListing
-                                    item={developersList}
-                                    selectedCard={selectedCard}
-                                    onApply={(devs) => {}}
-                                />
-                            </div> */}
                         </div>
                         <div className={styles.showMorebtn}>
                             {requirementsList?.hasNextPage &&

@@ -365,6 +365,9 @@ const RequirementListing = () => {
                                     onApply={(devs) =>
                                         shareDeveloperPatchCall(devs)
                                     }
+                                    requirementData={
+                                        requirementsList?.docs || []
+                                    }
                                 />
                             </div>
                         </div>

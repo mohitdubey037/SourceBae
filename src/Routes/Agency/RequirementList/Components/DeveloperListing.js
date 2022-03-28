@@ -75,7 +75,7 @@ function DeveloperListing({ item, onApply, selectedCard, requirementData }) {
                                 : 'Shared'
                             : 'Not Shared';
                         return (
-                            <div className={styles.DLCard}>
+                            <div className={styles.DLCard} key={person?._id}>
                                 <SizedBox height={'6px'} />
                                 <div
                                     className={styles.nameContainer}

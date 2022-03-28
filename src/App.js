@@ -53,6 +53,7 @@ import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequirements';
 import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
 import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest';
+import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
 
 const App = (props) => {
     useEffect(() => {
@@ -105,10 +106,34 @@ const App = (props) => {
             >
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
+                    <Route
+                        exact
+                        path={USERROUTES.HOME}
+                        component={LandingPage}
+                    />
                     <Route exact path="/aboutus" component={Page} />
+                    <Route exact path={USERROUTES.ABOUT_US} component={Page} />
                     <Route exact path="/Verify_Page" component={VerifyPage} />
                     <Route exact path="/login/:role" component={Login} />
+                    <Route
+                        exact
+                        path={AGENCYROUTES.LOGIN}
+                        render={(props) => <Login {...props} roles={AGENCY} />}
+                    />
+
+                    <Route
+                        exact
+                        path={CLIENTROUTES.LOGIN}
+                        render={(props) => <Login {...props} roles={CLIENT} />}
+                    />
+
                     <Route exact path="/register/:role" component={Register} />
+                    <Route exact path={AGENCYROUTES.REGISTER}>
+                        <Register roles={AGENCY} />
+                    </Route>
+                    <Route exact path={CLIENTROUTES.REGISTER}>
+                        <Register roles={CLIENT} />
+                    </Route>
                     <Route
                         exact
                         path="/enter-email/:role"

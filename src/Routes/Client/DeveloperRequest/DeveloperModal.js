@@ -20,7 +20,6 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
 
     let requiredResources = modal?.data?.numberOfResourcesRequired;
     //if developerStatus = 3 then it means required resource is accepted
-    console.log(modal, 'modal');
 
     const selectedMyDev = (newDevId) => {
         limitReached = false;
