@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import { withRouter } from 'react-router';
 import './Received.css';
+import { USERROUTES } from '../../../Navigation/CONSTANTS';
 
 function CancelledProjects(props) {
     const agencyId = localStorage.getItem('userId');
@@ -45,7 +46,7 @@ function CancelledProjects(props) {
                     <div className="innerResponded">
                         {err ? (
                             <>
-                                <div className="page-not-found">
+                                <div className={USERROUTES.NOT_FOUND}>
                                     <img
                                         height="300px"
                                         src={PageNotFound}

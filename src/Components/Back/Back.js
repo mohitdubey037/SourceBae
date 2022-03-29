@@ -4,6 +4,7 @@ import './Back.css';
 import { withRouter } from 'react-router';
 import instance from '../../Constants/axiosConstants';
 import { AGENCY, CLIENT } from '../../shared/constants';
+import { AGENCYROUTES, CLIENTROUTES } from '../../Navigation/CONSTANTS';
 
 function Back(props) {
     const [steps, setSteps] = useState('');
@@ -19,7 +20,7 @@ function Back(props) {
                         'Your Previous Saved Documents Will Be Lost'
                     ) === true
                 ) {
-                    props.history.replace('/client-newest-dashboard');
+                    props.history.replace(CLIENTROUTES.DASHBOARD);
                 }
             } else if (url.includes('hire-agency-form-two')) {
                 if (
@@ -74,7 +75,7 @@ function Back(props) {
                         'Your Previous Saved Documents Will Be Lost'
                     ) === true
                 ) {
-                    props.history.replace('/agency-newest-dashboard');
+                    props.history.replace(AGENCYROUTES.DASHBOARD);
                 }
             } else if (
                 url.includes('agency-form-two') ||
@@ -109,9 +110,9 @@ function Back(props) {
                     props.history.replace('/agency-form-three');
                 }
             } else if (url.includes('quotation')) {
-                props.history.replace('/agency-newest-dashboard');
+                props.history.replace(AGENCYROUTES.DASHBOARD);
             } else if (url.includes('agency-requirements-listing'))
-                props.history.push('/agency-newest-dashboard');
+                props.history.push(AGENCYROUTES.DASHBOARD);
             else {
                 props.history.goBack();
             }

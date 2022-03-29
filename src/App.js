@@ -105,15 +105,36 @@ const App = (props) => {
                 )}
             >
                 <Switch>
+                    {/* USER ROUTES */}
                     <Route exact path="/" component={LandingPage} />
                     <Route
                         exact
                         path={USERROUTES.HOME}
                         component={LandingPage}
                     />
-                    <Route exact path="/aboutus" component={Page} />
+                    <Route
+                        exact
+                        path={USERROUTES.NOT_FOUND}
+                        component={PageNotFound}
+                    />
                     <Route exact path={USERROUTES.ABOUT_US} component={Page} />
-                    <Route exact path="/Verify_Page" component={VerifyPage} />
+                    <Route
+                        exact
+                        path={USERROUTES.ACTIVE_REQUIREMENTS}
+                        component={ActiveRequirements}
+                    />
+
+                    <Route
+                        exact
+                        path={USERROUTES.VERIFY_PAGE}
+                        component={VerifyPage}
+                    />
+
+                    <Route
+                        exact
+                        path={USERROUTES.RESET_PASSWORD}
+                        component={PasswordReset}
+                    />
                     <Route exact path="/login/:role" component={Login} />
                     <Route
                         exact
@@ -139,17 +160,6 @@ const App = (props) => {
                         path="/enter-email/:role"
                         component={EnterEmail}
                     />
-                    <Route
-                        exact
-                        path="/password-reset"
-                        component={PasswordReset}
-                    />
-
-                    <Route
-                        exact
-                        path="/page-not-found"
-                        component={PageNotFound}
-                    />
 
                     <Route
                         exact
@@ -160,7 +170,7 @@ const App = (props) => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-newest-dashboard"
+                        path={AGENCYROUTES.DASHBOARD}
                         component={AgencyNewestDashboard}
                     />
                     <CustomRoute
@@ -169,12 +179,7 @@ const App = (props) => {
                         path="/add-developer"
                         component={AddingDeveloper}
                     />
-                    <Route
-                        condition={AGENCY}
-                        exact
-                        path="/active-requirements"
-                        component={ActiveRequirements}
-                    />
+
                     <CustomRoute
                         condition={CLIENT}
                         exact
@@ -276,7 +281,7 @@ const App = (props) => {
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/client-newest-dashboard"
+                        path={CLIENTROUTES.DASHBOARD}
                         component={ClientNewestDashboard}
                     />
                     <CustomRoute
@@ -323,28 +328,30 @@ const App = (props) => {
                         path="/hire-agency-form-three/:projectId"
                         component={HireAgencyForm3}
                     />
+
+                    {/* CLIENT ROUTES */}
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/short-term"
-                        component={ShortTerm}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path="/hire-developer"
+                        path={CLIENTROUTES.HIRE_DEVELOPER}
                         component={HireDeveloper}
                     />
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/agency-list/:projectId"
+                        path={CLIENTROUTES.CREATE_SHORT_TERM_PROJECT}
+                        component={ShortTerm}
+                    />
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId`}
                         component={AgencyList}
                     />
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/client-profile"
+                        path={CLIENTROUTES.PROFILE}
                         component={ClientProfile}
                     />
                     <CustomRoute component={PageNotFound} />

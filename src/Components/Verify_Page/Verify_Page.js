@@ -5,6 +5,7 @@ import instance from '../../Constants/axiosConstants';
 import { toast } from 'react-toastify';
 import cookie from 'react-cookies';
 import CustomModal from '../CustomModal/CustomModal';
+import { USERROUTES } from '../../Navigation/CONSTANTS';
 
 function VerifyPage(props) {
     const localRole = localStorage.getItem('role');
@@ -29,7 +30,7 @@ function VerifyPage(props) {
             })
             .catch((err) => {
                 setShowModal(true);
-                props.history.push('/page-not-found');
+                props.history.push(USERROUTES.NOT_FOUND);
                 setLoading(false);
                 toast.error(err);
             });

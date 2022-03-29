@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom';
 import NotificationPanel from '../../Notification/NotificationPanel';
 import { useDispatch } from 'react-redux';
 import { AGENCY, CLIENT } from '../../../shared/constants';
+import { AGENCYROUTES, CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 function Sidebar(props) {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function Sidebar(props) {
             routerHistory.push('/agency-profile');
         } else {
             routerHistory.push({
-                pathname: '/client-profile',
+                pathname: CLIENTROUTES.PROFILE,
                 state: props.isUserVerified
             });
         }
@@ -50,10 +51,10 @@ function Sidebar(props) {
 
     const RouteRedirect1 = () => {
         if (role === CLIENT) {
-            props.history.replace('/client-newest-dashboard');
+            props.history.replace(CLIENTROUTES.DASHBOARD);
         }
         if (role === AGENCY) {
-            props.history.replace('/agency-newest-dashboard');
+            props.history.replace(AGENCYROUTES.DASHBOARD);
         }
     };
 
@@ -88,9 +89,9 @@ function Sidebar(props) {
                             style={{
                                 filter:
                                     (props.location.pathname ===
-                                        '/client-newest-dashboard' ||
+                                        CLIENTROUTES.DASHBOARD ||
                                         props.location.pathname ===
-                                            '/agency-newest-dashboard') &&
+                                            AGENCYROUTES.DASHBOARD) &&
                                     'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'
                             }}
                             src={dashboardIcon}
@@ -99,17 +100,6 @@ function Sidebar(props) {
                     </div>
                     <p>Dashboard</p>
                 </div>
-                {/* {role === AGENCY && (
-                    <div
-                        onClick={() => routerHistory.push('/shared-developers')}
-                        className="postProject-icon icons developers-icon"
-                    >
-                        <img src={developersIcon} alt="developers_icon" />
-                        <div style={{ width: '62%', lineHeight: '13px' }}>
-                            <p>Developer Request</p>
-                        </div>
-                    </div>
-                )} */}
                 {role === CLIENT && (
                     <>
                         <div

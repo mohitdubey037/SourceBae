@@ -21,6 +21,7 @@ import MultiSelect from 'react-multi-select-component';
 import './ResponsiveAgencyForm.css';
 
 import { useDispatch } from 'react-redux';
+import { AGENCYROUTES } from '../../../../Navigation/CONSTANTS';
 
 function AgencyForm2(props) {
     const dispatch = useDispatch();
@@ -83,7 +84,7 @@ function AgencyForm2(props) {
 
     const goBack = () => {
         if (url.includes('agency-form-one')) {
-            props.history.replace('/agency-newest-dashboard');
+            props.history.replace(AGENCYROUTES.DASHBOARD);
         } else if (url.includes('agency-form-two')) {
             dispatch({ type: 'BACK_PRESSED' });
             props.history.replace('/agency-form-one', propData);

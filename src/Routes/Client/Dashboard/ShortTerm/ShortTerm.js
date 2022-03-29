@@ -20,6 +20,7 @@ import FileUploadImage from '../../../../assets/images/Newestdashboard/Short_Ter
 import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import Spinner from '../../../../Components/Spinner/Spinner';
 import { toast } from 'react-toastify';
+import { CLIENTROUTES } from '../../../../Navigation/CONSTANTS';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -207,7 +208,9 @@ function ShortTerm(props) {
             .post(`api/${Role}/projects/create-short-term`, apiData)
             .then(function (response) {
                 setLoading(false);
-                props.history.replace(`/agency-list/${response.project._id}`);
+                props.history.replace(
+                    `${CLIENTROUTES.AGENCIES_LIST}/${response.project._id}`
+                );
             })
             .catch((err) => {
                 setLoading(false);

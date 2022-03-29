@@ -10,6 +10,7 @@ import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/Down
 import './HireAgencyForm1.css';
 import VerifyModal from '../../../../Components/VerifyModal/VerifyModal';
 import { toast } from 'react-toastify';
+import { CLIENTROUTES } from '../../../../Navigation/CONSTANTS';
 
 const HireAgencyForm1 = (props) => {
     const id = localStorage.getItem('userId');
@@ -84,7 +85,7 @@ const HireAgencyForm1 = (props) => {
     }, [validateEffect]); // eslint-disable-line
     const handleBack = () => {
         if (window.confirm('Do you want to discard changes?') === true) {
-            props.history.push(`/client-newest-dashboard`);
+            props.history.push(CLIENTROUTES.DASHBOARD);
         }
     };
 

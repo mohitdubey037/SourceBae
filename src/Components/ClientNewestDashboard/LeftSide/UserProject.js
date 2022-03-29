@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail_show.svg';
 import MessageReceived from '../../../assets/images/Newestdashboard/Dashboard/message_received.svg';
 import MessageRejected from '../../../assets/images/Newestdashboard/Dashboard/rejected.jpg';
+import { CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 function UserProject({ index, ...rest }) {
     let props = rest;
@@ -20,7 +21,7 @@ function UserProject({ index, ...rest }) {
                 `/project-details/${props._id}/${props.projectProposals[0].agencyId._id}`
             );
         } else {
-            routerHistory.push(`/agency-list/${props._id}`);
+            routerHistory.push(`${CLIENTROUTES.AGENCIES_LIST}/${props._id}`);
         }
     };
 

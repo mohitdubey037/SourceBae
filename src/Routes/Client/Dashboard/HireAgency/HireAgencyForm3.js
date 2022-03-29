@@ -9,6 +9,7 @@ import DownImage from '../../../../assets/images/Newestdashboard/Short_Term/Down
 
 import instance from '../../../../Constants/axiosConstants';
 import Spinner from '../../../../Components/Spinner/Spinner';
+import { CLIENTROUTES } from '../../../../Navigation/CONSTANTS';
 
 function HireAgencyForm3(props) {
     const Role = localStorage.getItem('role');
@@ -113,7 +114,9 @@ function HireAgencyForm3(props) {
                 .post(`/api/${Role}/projects/create`, apiData)
                 .then(function (response) {
                     setLoading(false);
-                    props.history.replace(`/agency-list/${projectId}`);
+                    props.history.replace(
+                        `${CLIENTROUTES.AGENCIES_LIST}/${projectId}`
+                    );
                 })
                 .catch((err) => {
                     setLoading(false);

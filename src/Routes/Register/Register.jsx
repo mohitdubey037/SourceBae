@@ -17,6 +17,11 @@ import RegisterAgencyForm2 from './AgencyRegister/RegisterAgencyForm2';
 import RegisterClientForm2 from './ClientRegister/RegisterClientForm2';
 
 import { CLIENT, AGENCY } from '../../shared/constants';
+import {
+    AGENCYROUTES,
+    CLIENTROUTES,
+    USERROUTES
+} from '../../Navigation/CONSTANTS';
 
 const Register = (props) => {
     const logoLink =
@@ -32,7 +37,7 @@ const Register = (props) => {
     const [token, setToken] = useState(null);
     let { role } = useParams();
     if (!(role === AGENCY || role === CLIENT))
-        props.history.push('/page-not-found');
+        props.history.push(USERROUTES.NOT_FOUND);
 
     //Social Media State Variables
     const [linkedIn, setLinkedIn] = useState({
@@ -319,10 +324,10 @@ const Register = (props) => {
             .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
                 if (role === CLIENT) {
-                    props.history.push('/client-newest-dashboard');
+                    props.history.push(CLIENTROUTES.DASHBOARD);
                     setLoading(false);
                 } else if (role === AGENCY) {
-                    props.history.push('/agency-newest-dashboard');
+                    props.history.push(AGENCYROUTES.DASHBOARD);
                     setLoading(false);
                 }
             })

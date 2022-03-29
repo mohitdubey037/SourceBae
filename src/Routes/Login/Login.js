@@ -23,6 +23,11 @@ import cookie from 'react-cookies';
 import firebase from '../../firebase';
 import { CLIENT, AGENCY } from '../../shared/constants';
 import { toast } from 'react-toastify';
+import {
+    AGENCYROUTES,
+    CLIENTROUTES,
+    USERROUTES
+} from '../../Navigation/CONSTANTS';
 
 const borderLight = 'rgba(206,212,218, .993)';
 
@@ -81,7 +86,7 @@ const Login = (props) => {
         role = roles;
     }
     if (!(role === AGENCY || role === CLIENT))
-        props.history.replace('/page-not-found');
+        props.history.replace(USERROUTES.NOT_FOUND);
 
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState('');
@@ -180,10 +185,10 @@ const Login = (props) => {
                 setLoading(false);
                 if (isRequirement)
                     props.history.push('/agency-requirements-listing');
-                else props.history.replace('/agency-newest-dashboard');
+                else props.history.replace(AGENCYROUTES.DASHBOARD);
             } else if (role === CLIENT) {
                 setLoading(false);
-                props.history.push(`/client-newest-dashboard`);
+                props.history.push(CLIENTROUTES.DASHBOARD);
             } else {
             }
         }
@@ -200,9 +205,9 @@ const Login = (props) => {
             tempRole !== undefined
         ) {
             if (tempRole === AGENCY) {
-                props.history.replace('/agency-newest-dashboard');
+                props.history.replace(AGENCYROUTES.DASHBOARD);
             } else if (tempRole === CLIENT) {
-                props.history.replace('/client-newest-dashboard');
+                props.history.replace(CLIENTROUTES.DASHBOARD);
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

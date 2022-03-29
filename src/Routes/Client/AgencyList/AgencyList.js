@@ -18,6 +18,7 @@ import Back2 from '../../../assets/images/Back/Back2.svg';
 function AgencyList(props) {
     const Role = localStorage.getItem('role');
     let { projectId } = useParams();
+    console.log(useParams());
     projectId = projectId || '';
     const [agencyList, setAgencyList] = useState([]);
     const [open, setOpen] = useState(false);

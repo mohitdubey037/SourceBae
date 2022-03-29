@@ -5,6 +5,7 @@ import { Popover } from 'react-tiny-popover';
 import './Navbar.css';
 import cookie from 'react-cookies';
 import { CLIENT, AGENCY } from '../../../shared/constants';
+import { AGENCYROUTES, CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 function Navbar(props) {
     const logoLink =
@@ -20,7 +21,7 @@ function Navbar(props) {
             props.history.push('/agency-profile');
         }
         if (role === CLIENT) {
-            props.history.push('/client-profile');
+            props.history.push(CLIENTROUTES.PROFILE);
         }
     };
 
@@ -50,10 +51,10 @@ function Navbar(props) {
 
     const RouteRedirect1 = () => {
         if (role === CLIENT) {
-            props.history.replace('/client-newest-dashboard');
+            props.history.replace(CLIENTROUTES.DASHBOARD);
         }
         if (role === AGENCY) {
-            props.history.replace('/agency-newest-dashboard');
+            props.history.replace(AGENCYROUTES.DASHBOARD);
         }
     };
 
@@ -62,18 +63,18 @@ function Navbar(props) {
         <div
             style={{
                 top:
-                    (url.includes('/client-newest-dashboard') ||
-                        url.includes('/agency-newest-dashboard') ||
+                    (url.includes(CLIENTROUTES.DASHBOARD) ||
+                        url.includes(AGENCYROUTES.DASHBOARD) ||
                         url.includes('/quotation') ||
                         url.includes('agency-list') ||
                         url.includes('/project-details') ||
                         url.includes('/agency-project-details') ||
-                        url.includes('/agency-newest-dashboard') ||
+                        url.includes(AGENCYROUTES.DASHBOARD) ||
                         url.includes('/agency-newest-all-project')) &&
                     '1rem',
                 justifyContent:
-                    (url.includes('/client-newest-dashboard') ||
-                        url.includes('/agency-newest-dashboard') ||
+                    (url.includes(CLIENTROUTES.DASHBOARD) ||
+                        url.includes(AGENCYROUTES.DASHBOARD) ||
                         url.includes('/quotation') ||
                         url.includes('/agency-list') ||
                         url.includes('/project-details') ||
@@ -86,8 +87,8 @@ function Navbar(props) {
             <div
                 style={{
                     display:
-                        (url.includes('/client-newest-dashboard') ||
-                            url.includes('/agency-newest-dashboard') ||
+                        (url.includes(CLIENTROUTES.DASHBOARD) ||
+                            url.includes(AGENCYROUTES.DASHBOARD) ||
                             url.includes('/quotation') ||
                             url.includes('agency-list') ||
                             url.includes('/project-details') ||

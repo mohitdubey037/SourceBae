@@ -1,6 +1,7 @@
 import { Container, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+import { AGENCYROUTES, CLIENTROUTES } from '../../Navigation/CONSTANTS';
 
 const useStyles = makeStyles({
     root: {
@@ -36,12 +37,10 @@ export default function PageNotFound(props) {
     const classes = useStyles();
 
     const homePage = () => {
-        // localStorage.removeItem("Authorization");
-        // localStorage.removeItem('role');
         if (Role === 'Client') {
-            props.history.replace('/client-newest-dashboard');
+            props.history.replace(CLIENTROUTES.DASHBOARD);
         } else if (Role === 'Agency') {
-            props.history.replace('/agency-newest-dashboard');
+            props.history.replace(AGENCYROUTES.DASHBOARD);
         } else {
             window.location.href = '/';
         }

@@ -9,6 +9,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { withRouter } from 'react-router';
+import { USERROUTES } from '../../../Navigation/CONSTANTS';
 
 function ProjectesMatched(props) {
     const agencyId = localStorage.getItem('userId');
@@ -50,7 +51,7 @@ function ProjectesMatched(props) {
                 <div className="mainProjectsMatched">
                     {err ? (
                         <>
-                            <div className="page-not-found">
+                            <div className={USERROUTES.NOT_FOUND}>
                                 <img
                                     height="300px"
                                     src={PageNotFound}

@@ -15,6 +15,7 @@ import instance from '../../Constants/axiosConstants';
 import * as actions from '../../Redux/action/addProject';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import { connect } from 'react-redux';
+import { CLIENTROUTES } from '../../Navigation/CONSTANTS';
 
 function ClientNewestDashboard(props) {
     const Role = localStorage.getItem('role');
@@ -97,7 +98,7 @@ function ClientNewestDashboard(props) {
                                 isUserVerified={isUserVerified}
                                 nextpage={() =>
                                     props.history.push({
-                                        pathname: '/hire-developer',
+                                        pathname: CLIENTROUTES.HIRE_DEVELOPER,
                                         state: { isUserVerified }
                                     })
                                 }
@@ -130,7 +131,8 @@ function ClientNewestDashboard(props) {
                                 isUserVerified={isUserVerified}
                                 nextpage={() =>
                                     props.history.push({
-                                        pathname: '/short-term',
+                                        pathname:
+                                            CLIENTROUTES.CREATE_SHORT_TERM_PROJECT,
                                         state: { isUserVerified }
                                     })
                                 }

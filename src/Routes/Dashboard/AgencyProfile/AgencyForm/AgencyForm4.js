@@ -18,6 +18,7 @@ import './ResponsiveAgencyForm.css';
 
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { AGENCYROUTES } from '../../../../Navigation/CONSTANTS';
 
 function AgencyForm4(props) {
     const dispatch = useDispatch();
@@ -104,7 +105,7 @@ function AgencyForm4(props) {
             .then(function (response) {
                 setLoading(false);
                 dispatch({ type: 'NEXT_PRESSED' });
-                props.history.replace('/agency-newest-dashboard');
+                props.history.replace(AGENCYROUTES.DASHBOARD);
             })
             .catch((errors) => {
                 setLoading(false);
@@ -116,7 +117,7 @@ function AgencyForm4(props) {
             window.confirm('Your Previous Saved Documents Will Be Lost') == true
         ) {
             if (url.includes('agency-form-one')) {
-                props.history.push('/agency-newest-dashboard');
+                props.history.push(AGENCYROUTES.DASHBOARD);
             } else if (url.includes('agency-form-two')) {
                 props.history.push('/agency-form-one');
             } else if (url.includes('agency-form-three')) {

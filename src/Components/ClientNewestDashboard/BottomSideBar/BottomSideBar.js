@@ -10,6 +10,7 @@ import cookie from 'react-cookies';
 import instance from '../../../Constants/axiosConstants';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { AGENCYROUTES, CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 function BottomSidebar(props) {
     const Role = localStorage.getItem('role');
@@ -36,15 +37,15 @@ function BottomSidebar(props) {
         if (Role === 'Agency') {
             routerHistory.push('/agency-profile');
         } else {
-            routerHistory.push('/client-profile');
+            routerHistory.push(CLIENTROUTES.PROFILE);
         }
     };
 
     const handleDashboard = () => {
         if (Role === 'Agency') {
-            routerHistory.push('/agency-newest-dashboard');
+            routerHistory.push(AGENCYROUTES.DASHBOARD);
         } else {
-            routerHistory.push('/client-newest-dashboard');
+            routerHistory.push(CLIENTROUTES.DASHBOARD);
         }
     };
 
@@ -75,9 +76,9 @@ function BottomSidebar(props) {
                             style={{
                                 filter:
                                     (props.location.pathname ===
-                                        '/client-newest-dashboard' ||
+                                        CLIENTROUTES.DASHBOARD ||
                                         props.location.pathname ===
-                                            '/agency-newest-dashboard') &&
+                                            AGENCYROUTES.DASHBOARD) &&
                                     'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'
                             }}
                             src={dashboardIcon}

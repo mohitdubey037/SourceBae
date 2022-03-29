@@ -4,6 +4,7 @@ import LNavLogo from '../../../../assets/images/Logo/Sourcebae-14.svg';
 import selectArrow from '../../../../assets/images/LandingPage/SelectArrow.svg';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
+import { USERROUTES } from '../../../../Navigation/CONSTANTS.js';
 export default function LNavbar(props) {
     function handleMenuToggle() {
         let demo = document.getElementById('demo');
@@ -25,7 +26,7 @@ export default function LNavbar(props) {
                     </div>
                     <div className={`${styles.nav_menu}`}>
                         {' '}
-                        <Link to="/aboutus">Who We Are</Link>
+                        <Link to={USERROUTES.ABOUT_US}>Who We Are</Link>
                     </div>
                     <div
                         className={`${styles.nav_services} ${styles.nav_menu} `}
@@ -106,10 +107,10 @@ export default function LNavbar(props) {
             <div className={`${styles.responsive_L_navbar_wrap}`} id="demo">
                 <ul className={`${styles.responsive_L_navbar_ul}`}>
                     <li className={`${styles.nav_menu}`}>
-                        <Link to="/">Home</Link>
+                        <Link to={USERROUTES.HOME}>Home</Link>
                     </li>
                     <li className={`${styles.nav_menu}`}>
-                        <Link to="/aboutus">Who We Are</Link>
+                        <Link to={USERROUTES.ABOUT_US}>Who We Are</Link>
                     </li>
                     <li className={`${styles.nav_menu}`}>Services</li>
                 </ul>

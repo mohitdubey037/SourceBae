@@ -6,6 +6,7 @@ import DateImage2 from '../../assets/images/Newestdashboard/Agency_Project_Card/
 import moment from 'moment';
 import { withRouter } from 'react-router';
 import { useHistory } from 'react-router-dom';
+import { CLIENTROUTES } from '../../Navigation/CONSTANTS';
 
 function AllProjectCard(props) {
     const dateCreate = moment(props.createdAt).format('MMM Do YY');
@@ -14,7 +15,7 @@ function AllProjectCard(props) {
     const routerHistory = useHistory();
 
     const showDetails = () => {
-        routerHistory.push(`/agency-list/${props._id}`);
+        routerHistory.push(`${CLIENTROUTES.AGENCIES_LIST}/${props._id}`);
     };
 
     return (

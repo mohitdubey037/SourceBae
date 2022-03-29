@@ -8,7 +8,8 @@ const AGENCYROUTES = {
     HIRE3: '/agency/hire/step-3',
     HIRE4: '/agency/hire/step-4',
     FORGOT_PASSWORD: '/agency/forgot-password',
-    RESET_PASSWORD: '/agency/reset-password'
+    RESET_PASSWORD: '/agency/reset-password',
+    PROFILE: '/agency/profile'
 };
 
 const CLIENTROUTES = {
@@ -16,7 +17,11 @@ const CLIENTROUTES = {
     REGISTER: '/client/register',
     DASHBOARD: '/client/dashboard',
     FORGOT_PASSWORD: '/client/forgot-password',
-    RESET_PASSWORD: '/client/reset-password'
+    RESET_PASSWORD: '/client/reset-password',
+    PROFILE: '/client/profile',
+    HIRE_DEVELOPER: '/client/create/hire-developer-request',
+    AGENCIES_LIST: '/client/agencies-list',
+    CREATE_SHORT_TERM_PROJECT: '/client/create/short-term-project'
 };
 
 const ADMINROUTES = {
@@ -26,9 +31,10 @@ const ADMINROUTES = {
 const USERROUTES = {
     HOME: '/',
     ABOUT_US: '/about-us',
-    VERIFY_PAGE: '/verify-page',
+    VERIFY_PAGE: '/Verify_Page',
     NOT_FOUND: '404',
-    ACTIVE_REQUIREMENTS: '/active-requirements'
+    ACTIVE_REQUIREMENTS: '/active-requirements',
+    RESET_PASSWORD: '/password-reset'
 };
 
 export { AGENCYROUTES, CLIENTROUTES, ADMINROUTES, USERROUTES };
