@@ -9,7 +9,8 @@ const AGENCYROUTES = {
     HIRE4: '/agency/hire/step-4',
     FORGOT_PASSWORD: '/agency/forgot-password',
     RESET_PASSWORD: '/agency/reset-password',
-    PROFILE: '/agency/profile'
+    PROFILE: '/agency/profile',
+    QUOTATIONS: '/agency/quotations'
 };
 
 const CLIENTROUTES = {
@@ -21,7 +22,8 @@ const CLIENTROUTES = {
     PROFILE: '/client/profile',
     HIRE_DEVELOPER: '/client/create/hire-developer-request',
     AGENCIES_LIST: '/client/agencies-list',
-    CREATE_SHORT_TERM_PROJECT: '/client/create/short-term-project'
+    CREATE_SHORT_TERM_PROJECT: '/client/create/short-term-project',
+    DEVELOPER_REQUESTS: '/client/developer-requests'
 };
 
 const ADMINROUTES = {

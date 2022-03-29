@@ -176,14 +176,14 @@ const App = (props) => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/add-developer"
+                        path={AGENCYROUTES.ADD_DEVELOPER}
                         component={AddingDeveloper}
                     />
 
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/developer-request"
+                        path={CLIENTROUTES.DEVELOPER_REQUESTS}
                         component={DevelopersRequest}
                     />
                     <CustomRoute
@@ -195,7 +195,7 @@ const App = (props) => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/quotation"
+                        path={AGENCYROUTES.QUOTATIONS}
                         component={Quotation}
                     />
                     <CustomRoute
@@ -253,7 +253,6 @@ const App = (props) => {
                         component={SharedDevelopers}
                     />
 
-                    {/* <CustomRoute condition={AGENCY} exact path="/agency-project-dashboard" component={AgencyProjectDashboard} /> */}
                     {/* Both */}
                     <Route
                         exact

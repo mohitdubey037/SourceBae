@@ -12,6 +12,7 @@ import {
     Grid,
     Typography
 } from '@material-ui/core';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -228,8 +229,9 @@ function DeveloperList(props) {
                                                 <div>
                                                     <p>Timeline</p>
                                                     <h6>
-                                                        {developer.developerAvailability ==
-                                                        '0'
+                                                        {parseInt(
+                                                            developer.developerAvailability
+                                                        ) === 0
                                                             ? `Immediately Available`
                                                             : `${developer.developerAvailability} Weeks`}
                                                     </h6>
@@ -327,8 +329,6 @@ function DeveloperList(props) {
                         );
                     })}
 
-                    {/* {Role === 'Agency' ?
-                        props.data.isAgencyVerified && */}
                     <div
                         style={{
                             display: 'flex',
@@ -336,10 +336,11 @@ function DeveloperList(props) {
                             alignItems: 'center'
                         }}
                         className="developerCard"
-                        onClick={() => routerHistory.push('/add-developer')}
+                        onClick={() =>
+                            routerHistory.push(AGENCYROUTES.ADD_DEVELOPER)
+                        }
                     >
                         <div className="add-developer_parent">
-                            {/* <img src={addDeveloper} alt="" style={{ width: '25%', objectFit: 'contain' }} /> */}
                             <img src={developerImage} alt="developerImage" />
                             <h6 className="addDeveloperText">Add Developer</h6>
                         </div>

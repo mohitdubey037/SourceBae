@@ -17,7 +17,6 @@ import * as helper from '../../../../shared/helper';
 import './ResponsiveAgencyForm.css';
 
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { AGENCYROUTES } from '../../../../Navigation/CONSTANTS';
 
 function AgencyForm4(props) {
@@ -114,7 +113,8 @@ function AgencyForm4(props) {
 
     const goBack = () => {
         if (
-            window.confirm('Your Previous Saved Documents Will Be Lost') == true
+            window.confirm('Your Previous Saved Documents Will Be Lost') ===
+            true
         ) {
             if (url.includes('agency-form-one')) {
                 props.history.push(AGENCYROUTES.DASHBOARD);
@@ -402,7 +402,10 @@ function AgencyForm4(props) {
                                     </div>
                                 </div>
                                 <div className="image_div">
-                                    <img src={illustrationImage} alt="image" />
+                                    <img
+                                        src={illustrationImage}
+                                        alt="illustration"
+                                    />
                                 </div>
                             </div>
                         </div>

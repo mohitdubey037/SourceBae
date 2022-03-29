@@ -7,6 +7,7 @@ import buttonStyles from '../../../../Routes/MainLandingPage/Components/Navbar/L
 import { useHistory } from 'react-router-dom';
 import { AGENCY } from '../../../../shared/constants';
 import instance from '../../../../Constants/axiosConstants';
+import { AGENCYROUTES } from '../../../../Navigation/CONSTANTS';
 
 const agencyId = localStorage.getItem('userId') || '';
 function DeveloperListing({ item, onApply, selectedCard, requirementData }) {
@@ -191,7 +192,9 @@ function DeveloperListing({ item, onApply, selectedCard, requirementData }) {
                         }}
                     >
                         <button
-                            onClick={() => history.push('/add-developer')}
+                            onClick={() =>
+                                history.push(AGENCYROUTES.ADD_DEVELOPER)
+                            }
                             className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.applyBtn}`}
                             style={{
                                 marginBottom: '1rem',
@@ -235,7 +238,9 @@ function DeveloperListing({ item, onApply, selectedCard, requirementData }) {
                                 matches with the requirement
                             </p>
                             <button
-                                onClick={() => history.push('/add-developer')}
+                                onClick={() =>
+                                    history.push(AGENCYROUTES.ADD_DEVELOPER)
+                                }
                                 className={`${buttonStyles.L_login} ${buttonStyles.nav_Lbutton} ${styles.applyBtn}`}
                             >
                                 <span>Add Developers</span>

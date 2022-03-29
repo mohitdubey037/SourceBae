@@ -19,6 +19,7 @@ import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/
 import { Modal } from 'react-responsive-modal';
 
 import { AGENCY } from '../../shared/constants';
+import { AGENCYROUTES } from '../../Navigation/CONSTANTS';
 
 function AgencyNewestDashboard(props) {
     const [open, setOpen] = useState(false);
@@ -112,16 +113,14 @@ function AgencyNewestDashboard(props) {
         if (!verified || steps !== -1) {
             props.history.push(`${props.history.location.pathname}`);
         } else {
-            if (link === 'quotation') props.history.push(`/${link}`);
+            if (AGENCYROUTES.QUOTATIONS.includes(link))
+                props.history.push(AGENCYROUTES.QUOTATIONS);
 
-            if (link === 'add-developer') props.history.push(`/${link}`);
-
-            if (link === 'active-requirements') props.history.push(`/${link}`);
+            if (AGENCYROUTES.ADD_DEVELOPER.includes(link))
+                props.history.push(AGENCYROUTES.ADD_DEVELOPER);
 
             if (link === 'agency-requirements-listing')
                 props.history.push(`/${link}`);
-
-            // if (link === 'developer-request') props.history.push(`/${link}`);
 
             if (link === 'portfolio') {
                 props.history.push({
@@ -224,14 +223,18 @@ function AgencyNewestDashboard(props) {
                                 />
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation('quotation')}
+                                    nextpage={() =>
+                                        quotation(AGENCYROUTES.QUOTATIONS)
+                                    }
                                     text="Quotation"
                                     img={QuotationIcon}
                                 />
 
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation('add-developer')}
+                                    nextpage={() =>
+                                        quotation(AGENCYROUTES.ADD_DEVELOPER)
+                                    }
                                     text="Add Developer"
                                     img={addDeveloperIcon}
                                 />

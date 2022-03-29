@@ -31,6 +31,7 @@ function BottomSidebar(props) {
                 setNotificationData(response);
             })
             .catch((err) => {});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const agencyProfileHandler = () => {

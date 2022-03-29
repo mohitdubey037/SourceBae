@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import BackLeft from '../../assets/images/Back/GroupBack.svg';
 import './Back.css';
 import { withRouter } from 'react-router';
@@ -7,7 +7,6 @@ import { AGENCY, CLIENT } from '../../shared/constants';
 import { AGENCYROUTES, CLIENTROUTES } from '../../Navigation/CONSTANTS';
 
 function Back(props) {
-    const [steps, setSteps] = useState('');
     const role = localStorage.getItem('role');
 
     const url = props.history.location.pathname;
@@ -31,7 +30,7 @@ function Back(props) {
                     if (
                         window.confirm(
                             'Your Previous Saved Documents Will Be Lost'
-                        ) == true
+                        ) === true
                     ) {
                         props.history.replace(
                             '/hire-agency-form-one',
@@ -49,7 +48,7 @@ function Back(props) {
                     if (
                         window.confirm(
                             'Your Previous Saved Documents Will Be Lost'
-                        ) == true
+                        ) === true
                     ) {
                         props.history.replace(
                             `/hire-agency-form-two/${props.formState3.id}`,
@@ -109,7 +108,7 @@ function Back(props) {
                 ) {
                     props.history.replace('/agency-form-three');
                 }
-            } else if (url.includes('quotation')) {
+            } else if (url.includes(AGENCYROUTES.QUOTATIONS)) {
                 props.history.replace(AGENCYROUTES.DASHBOARD);
             } else if (url.includes('agency-requirements-listing'))
                 props.history.push(AGENCYROUTES.DASHBOARD);
@@ -124,9 +123,7 @@ function Back(props) {
     const getStepsCompleted = () => {
         instance
             .get(`api/${role}/agencies/steps-completed`)
-            .then(function (response) {
-                setSteps(response.stepsCompleted);
-            });
+            .then(function (response) {});
     };
 
     useEffect(() => {
@@ -138,6 +135,7 @@ function Back(props) {
         ) {
             getStepsCompleted();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

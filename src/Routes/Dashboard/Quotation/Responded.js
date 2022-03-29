@@ -32,6 +32,7 @@ function Responded(props) {
 
     useEffect(() => {
         getAllReceivedData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [isDetail, setIsdetail] = useState(false);

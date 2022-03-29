@@ -111,13 +111,12 @@ function ProductForm(props) {
     const [fields, setFields] = useState([{ value: null }]);
     const [openmodal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [file, setFile] = useState(null);
     const [allDomainsData, setAllDomainsData] = useState([]);
     const [logo, setLogo] = useState(null);
     // const [businesstype, setBusinesstype] = useState([]);
     const [wordsRequired, setWordsRequired] = useState(100);
 
-    const [multipleSelectTech, setMultipleSelect] = useState([]);
+    const [multipleSelectTech] = useState([]);
 
     const [errors, setErrors] = useState({});
 
@@ -174,19 +173,13 @@ function ProductForm(props) {
 
     useEffect(() => {}, [logo]);
 
-    const {
-        isDragActive,
-        getRootProps,
-        getInputProps,
-        isDragReject,
-        acceptedFiles,
-        rejectedFiles
-    } = useDropzone({
-        onDrop,
-        accept: '.jpg, .png, .jpeg',
-        minSize: 0,
-        maxSize: 5000000
-    });
+    const { isDragActive, getRootProps, getInputProps, isDragReject } =
+        useDropzone({
+            onDrop,
+            accept: '.jpg, .png, .jpeg',
+            minSize: 0,
+            maxSize: 5000000
+        });
 
     useEffect(() => {
         if (apiData.productDescription === '') {
@@ -210,6 +203,7 @@ function ProductForm(props) {
             ...apiData,
             productDomainId: multipleSelectTech.map((t) => t.value)
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [multipleSelectTech]);
 
     const getAllDomains = () => {
@@ -226,6 +220,7 @@ function ProductForm(props) {
     useEffect(() => {
         getAllDomains();
         setErrors({});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     function handleChangeLink(i, event) {
@@ -433,6 +428,7 @@ function ProductForm(props) {
         if (apiData.productLogo !== '') {
             handleSubmit();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [apiData.productLogo]);
 
     const handleButton = () => {

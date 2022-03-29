@@ -1,5 +1,4 @@
 import React from 'react';
-import colors from '../../Constants/colors';
 import './SearchBar.css';
 
 const SearchBar = ({

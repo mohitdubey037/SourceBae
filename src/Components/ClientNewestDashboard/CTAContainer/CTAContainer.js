@@ -4,7 +4,6 @@ import { Modal } from 'react-responsive-modal';
 import HalfCircleProgress from './HalfCircleProgress.svg';
 import G2Icon from './G2Icon.svg';
 import LinkedIn from './linkedin.svg';
-import TrustPilot from './trustpilot.svg';
 import GoogleIcon from './google.svg';
 import ContactUSBackground from './ContactUsBackground.svg';
 import { AGENCY, CLIENT } from '../../../shared/constants';

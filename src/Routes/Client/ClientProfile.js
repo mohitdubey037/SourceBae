@@ -44,7 +44,6 @@ function ClientProfile() {
     const [err, setErr] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [file, setFile] = useState();
     const [show, setShow] = useState();
     const [isShown, setIsShown] = useState(false);
     const [isUploaded, setIsUploaded] = useState(false);
@@ -102,13 +101,10 @@ function ClientProfile() {
             maxSize: 5242880
         });
 
-    useEffect(() => {}, [file]);
     const handleCancel = () => {
         setIsEdit(false);
         setIsUploaded(false);
     };
-
-    useEffect(() => {}, [clientData, file]);
 
     const uploadMedia = async () => {
         const fileForm = new FormData();
@@ -370,6 +366,7 @@ function ClientProfile() {
                                                     </div>
                                                 );
                                             }
+                                            return null;
                                         })}
                                     </div>
                                 </div>

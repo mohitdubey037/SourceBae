@@ -4,7 +4,6 @@ import instance from '../../../Constants/axiosConstants';
 import { Modal } from 'react-responsive-modal';
 import './ClientCommentBox.css';
 import clsx from 'clsx';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { toast } from 'react-toastify';
 import moment from 'moment';
 
@@ -55,7 +54,6 @@ const ClientCommentBox = (props) => {
     const [open, setOpen] = useState(false);
     const onCloseModal = () => setOpen(false);
     const [openRejectionModal, setOpenRejectionModal] = useState(false);
-    const [rejectErrors, setRejectErrors] = useState('');
 
     const [quotationFormData, setQuotationFormData] = useState({
         agencyId: props?.agencyId || '',
@@ -237,7 +235,6 @@ const ClientCommentBox = (props) => {
             quotationRejectionForm.rejectReasonByClient === '' ||
             quotationRejectionForm.rejectReasonByClient === undefined
         ) {
-            setRejectErrors("Field can't be empty");
             setLoading(false);
             toast.error('Field can"t be empty');
             return false;

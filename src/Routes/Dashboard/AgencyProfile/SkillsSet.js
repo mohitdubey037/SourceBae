@@ -260,6 +260,7 @@ function SkillsSet(props) {
             serviceIds.push(service._id);
         });
         setSelectedServicesId(serviceIds);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -285,6 +286,7 @@ function SkillsSet(props) {
                 (tech) => selectedServicesId.indexOf(tech.serviceId) !== -1
             )
         );
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [skillset]);
     return (
         <>

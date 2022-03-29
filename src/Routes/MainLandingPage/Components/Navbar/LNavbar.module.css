@@ -35,18 +35,18 @@
 .nav_signup {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     width: 11%;
 }
 .nav_login {
     justify-content: end;
 }
 
-.L_signup:hover :first-child{
+.L_signup:hover :first-child {
     color: white;
 }
 
-.L_login:hover :first-child{
+.L_login:hover :first-child {
     color: #554dde;
 }
 

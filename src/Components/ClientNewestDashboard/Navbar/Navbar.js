@@ -47,6 +47,7 @@ function Navbar(props) {
                 })
                 .catch((err) => {});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const RouteRedirect1 = () => {
@@ -65,7 +66,7 @@ function Navbar(props) {
                 top:
                     (url.includes(CLIENTROUTES.DASHBOARD) ||
                         url.includes(AGENCYROUTES.DASHBOARD) ||
-                        url.includes('/quotation') ||
+                        url.includes(AGENCYROUTES.QUOTATIONS) ||
                         url.includes('agency-list') ||
                         url.includes('/project-details') ||
                         url.includes('/agency-project-details') ||
@@ -75,7 +76,7 @@ function Navbar(props) {
                 justifyContent:
                     (url.includes(CLIENTROUTES.DASHBOARD) ||
                         url.includes(AGENCYROUTES.DASHBOARD) ||
-                        url.includes('/quotation') ||
+                        url.includes(AGENCYROUTES.QUOTATIONS) ||
                         url.includes('/agency-list') ||
                         url.includes('/project-details') ||
                         url.includes('/agency-project-details') ||
@@ -89,7 +90,7 @@ function Navbar(props) {
                     display:
                         (url.includes(CLIENTROUTES.DASHBOARD) ||
                             url.includes(AGENCYROUTES.DASHBOARD) ||
-                            url.includes('/quotation') ||
+                            url.includes(AGENCYROUTES.QUOTATIONS) ||
                             url.includes('agency-list') ||
                             url.includes('/project-details') ||
                             url.includes('/agency-project-details') ||

@@ -25,7 +25,12 @@ export default function L_Testimonial() {
                         <div className={`${styles.testimonial_main_card}`}>
                             <div className={`${styles.testimonial_star_row}`}>
                                 {testimonialStar?.map((value) => {
-                                    return <img src={testimonialStars}></img>;
+                                    return (
+                                        <img
+                                            src={testimonialStars}
+                                            alt="testimonial"
+                                        ></img>
+                                    );
                                 })}
                             </div>
                             <div className={`${styles.testimonial_des}`}>

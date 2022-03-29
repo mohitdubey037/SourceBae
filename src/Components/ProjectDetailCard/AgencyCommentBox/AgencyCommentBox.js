@@ -11,7 +11,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import Spinner from '../../../Components/Spinner/Spinner';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 

@@ -105,6 +105,7 @@ function Portfolio(props) {
         if (form.projectLogo !== '') {
             portfolioCreate();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [form.projectLogo]);
 
     const createPortfolio = () => {

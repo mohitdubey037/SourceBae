@@ -109,7 +109,8 @@ function ClientNewestDashboard(props) {
                                 isUserVerified={isUserVerified}
                                 nextpage={() =>
                                     props.history.push({
-                                        pathname: '/developer-request',
+                                        pathname:
+                                            CLIENTROUTES.DEVELOPER_REQUESTS,
                                         state: { isUserVerified }
                                     })
                                 }

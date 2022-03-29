@@ -66,14 +66,14 @@ function AgencyProjectCard(props) {
             >
                 <table>
                     <thead>
-                        {props?.projectType != 'Short Term' && (
+                        {props?.projectType !== 'Short Term' && (
                             <tr>
                                 <td>Industry</td>
                                 <td>{props?.projectDomainId?.domainName}</td>
                             </tr>
                         )}
 
-                        {props?.projectType != 'Short Term' && (
+                        {props?.projectType !== 'Short Term' && (
                             <tr>
                                 <td>Expert Categories</td>
                                 <td>
