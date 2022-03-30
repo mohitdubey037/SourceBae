@@ -126,7 +126,9 @@ function BottomSidebar(props) {
                 </div>
                 {Role === 'Agency' && (
                     <div
-                        onClick={() => routerHistory.push('/shared-developers')}
+                        onClick={() =>
+                            routerHistory.push(AGENCYROUTES.SHARED_DEVELOPERS)
+                        }
                         className="postProject-icon developers-icon icons"
                     >
                         <img src={developersIcon} alt="developers_icon" />

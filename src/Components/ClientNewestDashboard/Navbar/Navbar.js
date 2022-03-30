@@ -60,7 +60,6 @@ function Navbar(props) {
     };
 
     return (
-        // <div style={{ top: Role === 'Client' && '1rem', justifyContent:props.logoLink && 'space-between'}} className='navbar'>
         <div
             style={{
                 top:
@@ -69,7 +68,7 @@ function Navbar(props) {
                         url.includes(AGENCYROUTES.QUOTATIONS) ||
                         url.includes('agency-list') ||
                         url.includes('/project-details') ||
-                        url.includes('/agency-project-details') ||
+                        url.includes(AGENCYROUTES.PROJECT_DETAILS) ||
                         url.includes(AGENCYROUTES.DASHBOARD) ||
                         url.includes('/agency-newest-all-project')) &&
                     '1rem',
@@ -79,7 +78,7 @@ function Navbar(props) {
                         url.includes(AGENCYROUTES.QUOTATIONS) ||
                         url.includes('/agency-list') ||
                         url.includes('/project-details') ||
-                        url.includes('/agency-project-details') ||
+                        url.includes(AGENCYROUTES.PROJECT_DETAILS) ||
                         url.includes('/agency-newest-all-project')) &&
                     'flex-end'
             }}
@@ -93,7 +92,7 @@ function Navbar(props) {
                             url.includes(AGENCYROUTES.QUOTATIONS) ||
                             url.includes('agency-list') ||
                             url.includes('/project-details') ||
-                            url.includes('/agency-project-details') ||
+                            url.includes(AGENCYROUTES.PROJECT_DETAILS) ||
                             url.includes('/agency-newest-all-project')) &&
                         'none'
                 }}

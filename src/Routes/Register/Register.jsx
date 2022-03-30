@@ -36,6 +36,10 @@ const Register = (props) => {
 
     const [token, setToken] = useState(null);
     let { role } = useParams();
+    let { roles } = props;
+    if (!role) {
+        role = roles;
+    }
     if (!(role === AGENCY || role === CLIENT))
         props.history.push(USERROUTES.NOT_FOUND);
 
@@ -248,9 +252,9 @@ const Register = (props) => {
     useEffect(() => {
         localStorage.setItem('role', roleState);
         if (roleState === '' || roleState === AGENCY) {
-            props.history.push(`/register/${AGENCY}`);
+            props.history.push(AGENCYROUTES.REGISTER);
         } else {
-            props.history.push(`/register/${CLIENT}`);
+            props.history.push(CLIENTROUTES.REGISTER);
         }
     }, [roleState]);
 
@@ -372,9 +376,9 @@ const Register = (props) => {
 
     const toggleForms = (direction) => {
         if (roleState === '' || roleState === AGENCY) {
-            props.history.push(`/register/${AGENCY}`);
+            props.history.push(AGENCYROUTES.REGISTER);
         } else {
-            props.history.push(`/register/${CLIENT}`);
+            props.history.push(CLIENTROUTES.REGISTER);
         }
         if (direction === 'next') {
             setStep((prev) => prev + 1);
@@ -620,7 +624,9 @@ const Register = (props) => {
                                                 <span
                                                     onClick={() =>
                                                         props.history.replace(
-                                                            `/login/${role}`
+                                                            role === AGENCY
+                                                                ? AGENCYROUTES.LOGIN
+                                                                : CLIENTROUTES.LOGIN
                                                         )
                                                     }
                                                 >

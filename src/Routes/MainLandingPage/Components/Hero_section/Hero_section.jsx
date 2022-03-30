@@ -2,10 +2,11 @@ import React from 'react';
 import LButton from '../Button/LButton';
 import styles from './Hero_section.module.css';
 import RightWhitArrow from '../../../../assets/images/LandingPage/RightWhitArrow.svg';
+import { AGENCYROUTES } from '../../../../Navigation/CONSTANTS';
 
 export default function Hero_section() {
     const onClickEvent = () => {
-        window.location.href = '/register/agency';
+        window.location.href = AGENCYROUTES.REGISTER;
     };
     return (
         <div className={`${styles.hero_section_wrap}`}>

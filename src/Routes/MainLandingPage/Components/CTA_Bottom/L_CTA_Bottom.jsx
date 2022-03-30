@@ -4,6 +4,7 @@ import styles from './L_CTA_Bottom.module.css';
 import ctaImg from '../../../../assets/images/LandingPage/CTA-bottom.svg';
 import hireBtnImg from '../../../../assets/images/LandingPage/hirebtn.svg';
 import { Link } from 'react-router-dom';
+import { AGENCYROUTES } from '../../../../Navigation/CONSTANTS';
 
 export default function L_CTA_Bottom() {
     return (
@@ -18,7 +19,7 @@ export default function L_CTA_Bottom() {
                 </h2>
             </div>
             <div className={`${styles.CTA_bottom_btn}`}>
-                <Link to="/register/agency" className="L_Link">
+                <Link to={AGENCYROUTES.REGISTER} className="L_Link">
                     {' '}
                     <LButton name="Get Started" img={hireBtnImg} />
                 </Link>

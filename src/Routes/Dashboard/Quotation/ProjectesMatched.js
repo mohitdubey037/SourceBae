@@ -9,7 +9,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { withRouter } from 'react-router';
-import { USERROUTES } from '../../../Navigation/CONSTANTS';
+import { AGENCYROUTES, USERROUTES } from '../../../Navigation/CONSTANTS';
 import { AGENCY } from '../../../shared/constants';
 
 function ProjectesMatched(props) {
@@ -85,7 +85,7 @@ function ProjectesMatched(props) {
                                                         className="showDetail_projectMatched"
                                                         onClick={() =>
                                                             props.history.push({
-                                                                pathname: `/agency-project-details/${s?._id}`,
+                                                                pathname: `${AGENCYROUTES.PROJECT_DETAILS}/${s?._id}`,
                                                                 origin: 'project-match',
                                                                 condition:
                                                                     AGENCY

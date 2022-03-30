@@ -5,7 +5,6 @@ import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
 import Register from './Routes/Register/Register.jsx';
 import VerifyPage from './Components/Verify_Page/Verify_Page';
-// import NewReactPage from './Components/NewReactPage/NewReactPage';
 
 import AddingDeveloper from './Routes/Dashboard/AddDeveloper.js/AddingDeveloper';
 import Quotation from './Routes/Dashboard/Quotation/Quotation';
@@ -54,8 +53,9 @@ import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequ
 import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
 import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest';
 import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
-
+import { useHistory } from 'react-router-dom';
 const App = () => {
+    const history = useHistory();
     useEffect(() => {
         if (
             firebase.messaging.isSupported() &&
@@ -70,7 +70,7 @@ const App = () => {
             });
         }
     }, []);
-
+    debugger;
     return (
         <>
             <ErrorBoundary
@@ -106,7 +106,11 @@ const App = () => {
             >
                 <Switch>
                     {/* USER ROUTES */}
-                    <Route exact path="/" component={LandingPage} />
+                    <Route
+                        exact
+                        path={USERROUTES.HOME}
+                        component={LandingPage}
+                    />
                     <Route
                         exact
                         path={USERROUTES.HOME}
@@ -135,25 +139,12 @@ const App = () => {
                         path={USERROUTES.RESET_PASSWORD}
                         component={PasswordReset}
                     />
-                    <Route exact path="/login/:role" component={Login} />
-                    <Route
-                        exact
-                        path={AGENCYROUTES.LOGIN}
-                        render={(props) => <Login {...props} roles={AGENCY} />}
-                    />
 
-                    <Route
-                        exact
-                        path={CLIENTROUTES.LOGIN}
-                        render={(props) => <Login {...props} roles={CLIENT} />}
-                    />
-
-                    <Route exact path="/register/:role" component={Register} />
                     <Route exact path={AGENCYROUTES.REGISTER}>
-                        <Register roles={AGENCY} />
+                        <Register history={history} roles={AGENCY} />
                     </Route>
                     <Route exact path={CLIENTROUTES.REGISTER}>
-                        <Register roles={CLIENT} />
+                        <Register history={history} roles={CLIENT} />
                     </Route>
                     <Route
                         exact
@@ -161,11 +152,16 @@ const App = () => {
                         component={EnterEmail}
                     />
 
+                    {/* AGENCY ROUTES */}
                     <Route
                         exact
                         path="/agency-newest-all-project"
                         component={AgencyNewestAllProject}
                     />
+
+                    <Route exact path={CLIENTROUTES.LOGIN}>
+                        <Login history={history} roles={CLIENT} />
+                    </Route>
 
                     <CustomRoute
                         condition={AGENCY}
@@ -180,12 +176,10 @@ const App = () => {
                         component={AddingDeveloper}
                     />
 
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.DEVELOPER_REQUESTS}
-                        component={DevelopersRequest}
-                    />
+                    <Route exact path={AGENCYROUTES.LOGIN}>
+                        <Login history={history} roles={AGENCY} />
+                    </Route>
+
                     <CustomRoute
                         condition={AGENCY}
                         exact
@@ -231,7 +225,7 @@ const App = () => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-project-details/:projectId"
+                        path={`${AGENCYROUTES.PROJECT_DETAILS}/:projectId`}
                         component={AgencyProjectDetails}
                     />
                     <CustomRoute
@@ -243,20 +237,20 @@ const App = () => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/portfolio"
+                        path={AGENCYROUTES.PORTFOLIO}
                         component={Portfolio}
                     />
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/shared-developers"
+                        path={AGENCYROUTES.SHARED_DEVELOPERS}
                         component={SharedDevelopers}
                     />
 
                     {/* Both */}
                     <Route
                         exact
-                        path="/agency-project-details"
+                        path={AGENCYROUTES.PRODUCT_DETAILS}
                         component={AgencyProjectDetails}
                     />
                     <Route
@@ -264,8 +258,15 @@ const App = () => {
                         path="/product-details/:productId"
                         component={ProductDetails}
                     />
+
                     {/* Client Components  */}
 
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={CLIENTROUTES.DEVELOPER_REQUESTS}
+                        component={DevelopersRequest}
+                    />
                     <CustomRoute
                         condition={CLIENT}
                         exact

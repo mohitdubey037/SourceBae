@@ -73,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = (props) => {
-    console.log(props, 'props');
     const logoLink =
         'https://sourcebae.s3.amazonaws.com/image/1638354759751.svg';
 
@@ -111,9 +110,9 @@ const Login = (props) => {
     useEffect(() => {
         if (state !== '') {
             if (state === CLIENT) {
-                props.history.push(`/login/${CLIENT}`);
+                props.history.push(CLIENTROUTES.LOGIN);
             } else if (state === AGENCY) {
-                props.history.push(`/login/${AGENCY}`);
+                props.history.push(AGENCYROUTES.LOGIN);
             }
         }
     }, [state]);
@@ -441,7 +440,9 @@ const Login = (props) => {
                                                 <span
                                                     onClick={() =>
                                                         props.history.replace(
-                                                            `/register/${role.toLowerCase()}`
+                                                            role === AGENCY
+                                                                ? AGENCYROUTES.REGISTER
+                                                                : CLIENTROUTES.REGISTER
                                                         )
                                                     }
                                                 >

@@ -11,7 +11,11 @@ const AGENCYROUTES = {
     RESET_PASSWORD: '/agency/reset-password',
     PROFILE: '/agency/profile',
     QUOTATIONS: '/agency/quotations',
-    PRODUCT_FORM: '/agency/product-form'
+    PRODUCT_FORM: '/agency/product-form',
+    SHARED_DEVELOPERS: '/agency/shared-developers',
+    PORTFOLIO: '/agency/portfolio',
+    PRODUCT_DETAILS: '/agency/product-details',
+    PROJECT_DETAILS: '/agency/project-details'
 };
 
 const CLIENTROUTES = {

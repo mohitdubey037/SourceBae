@@ -4,7 +4,11 @@ import LNavLogo from '../../../../assets/images/Logo/Sourcebae-14.svg';
 import selectArrow from '../../../../assets/images/LandingPage/SelectArrow.svg';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
-import { USERROUTES } from '../../../../Navigation/CONSTANTS.js';
+import {
+    AGENCYROUTES,
+    CLIENTROUTES,
+    USERROUTES
+} from '../../../../Navigation/CONSTANTS.js';
 export default function LNavbar(props) {
     function handleMenuToggle() {
         let demo = document.getElementById('demo');
@@ -51,19 +55,19 @@ export default function LNavbar(props) {
                         id="pop-up"
                     >
                         <div className={`${styles.option_1}`}>
-                            <Link to="/register/client" className="L_Link">
+                            <Link to={CLIENTROUTES.REGISTER} className="L_Link">
                                 {' '}
                                 Hire Agency
                             </Link>
                         </div>
                         <div className={`${styles.option_1}`}>
-                            <Link to="/register/client" className="L_Link">
+                            <Link to={CLIENTROUTES.REGISTER} className="L_Link">
                                 {' '}
                                 Hire Developer
                             </Link>
                         </div>
                         <div className={`${styles.option_1}`}>
-                            <Link to="/register/agency" className="L_Link">
+                            <Link to={AGENCYROUTES.REGISTER} className="L_Link">
                                 {' '}
                                 List Your Developer
                             </Link>
@@ -77,7 +81,7 @@ export default function LNavbar(props) {
                     </div>
                 </div>
                 <Link
-                    to="/login/agency"
+                    to={AGENCYROUTES.LOGIN}
                     className={`${styles.L_Link} ${styles.nav_login}`}
                 >
                     <button
@@ -88,7 +92,7 @@ export default function LNavbar(props) {
                 </Link>
                 <Link
                     id={'nav_sign_up_btn'}
-                    to="/register/agency"
+                    to={AGENCYROUTES.REGISTER}
                     className={`${styles.L_Link} ${styles.nav_signup}`}
                 >
                     <button

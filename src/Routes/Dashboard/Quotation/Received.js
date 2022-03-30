@@ -5,8 +5,8 @@ import Moment from 'react-moment';
 import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import { withRouter } from 'react-router';
 import './Received.css';
-import { USERROUTES } from '../../../Navigation/CONSTANTS';
-import { AGENCY, CLIENT } from '../../../shared/constants';
+import { AGENCYROUTES, USERROUTES } from '../../../Navigation/CONSTANTS';
+import { AGENCY } from '../../../shared/constants';
 
 function Received(props) {
     const agencyId = localStorage.getItem('userId');
@@ -174,7 +174,7 @@ function Received(props) {
                                                 className="showDetail_receivedCardButton"
                                                 onClick={() =>
                                                     props.history.push({
-                                                        pathname: `/agency-project-details/${s._id}`,
+                                                        pathname: `${AGENCYROUTES.PROJECT_DETAILS}/${s._id}`,
                                                         origin: 'received',
                                                         condition: AGENCY
                                                     })

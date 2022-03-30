@@ -6,6 +6,7 @@ import Moment from 'react-moment';
 import Spinner from '../../../Components/Spinner/Spinner';
 import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import { withRouter } from 'react-router';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 function Responded(props) {
     const agencyId = localStorage.getItem('userId');
@@ -175,7 +176,7 @@ function Responded(props) {
                                                     className="showDetail_respondedCardButton"
                                                     onClick={() =>
                                                         props.history.push({
-                                                            pathname: `agency-project-details/${s._id}`,
+                                                            pathname: `${AGENCYROUTES.PROJECT_DETAILS}/${s._id}`,
                                                             origin: 'received'
                                                         })
                                                     }

@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom';
 import './AgencyProjectCard.css';
 
 import moment from 'moment';
+import { AGENCYROUTES } from '../../Navigation/CONSTANTS';
+import { AGENCY } from '../../shared/constants';
 
 function AgencyProjectCard(props) {
     const dateCreate = moment(props.createdAt).format('MMM Do YY');
@@ -114,7 +116,9 @@ function AgencyProjectCard(props) {
             </div>
             <div
                 onClick={() =>
-                    routerHistory.push(`/agency-project-details/${props?._id}`)
+                    routerHistory.push(
+                        `${AGENCYROUTES.PROJECT_DETAILS}/${props?._id}`
+                    )
                 }
                 className="user-project-button_agencyNewestDashboard"
                 style={{ cursor: 'pointer' }}

@@ -122,9 +122,9 @@ function AgencyNewestDashboard(props) {
             if (link === 'agency-requirements-listing')
                 props.history.push(`/${link}`);
 
-            if (link === 'portfolio') {
+            if (AGENCYROUTES.PORTFOLIO.includes(link)) {
                 props.history.push({
-                    pathname: 'portfolio',
+                    pathname: AGENCYROUTES.PORTFOLIO,
                     condition: AGENCY
                 });
             }
@@ -241,7 +241,9 @@ function AgencyNewestDashboard(props) {
 
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
-                                    nextpage={() => quotation('portfolio')}
+                                    nextpage={() =>
+                                        quotation(AGENCYROUTES.PORTFOLIO)
+                                    }
                                     text="Add Portfolio"
                                     img={ThirdIcon}
                                 />
