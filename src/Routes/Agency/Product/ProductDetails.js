@@ -17,6 +17,7 @@ import Back from '../../../Components/Back/Back';
 import Profile_image1 from '../../../assets/images/Newestdashboard/Client_Profile/UpImage.svg';
 import Profile_image2 from '../../../assets/images/Newestdashboard/Client_Profile/DownImage.svg';
 import { CLIENT } from '../../../shared/constants';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 function ProductDetails(props) {
     const logoLink =
@@ -305,7 +306,7 @@ function ProductDetails(props) {
                                                         className="view-profile_productDetails"
                                                         onClick={() =>
                                                             props.history.push({
-                                                                pathname: `/agency-profile:${value?.agencyId?._id}`,
+                                                                pathname: `${AGENCYROUTES.PROFILE}:${value?.agencyId?._id}`,
                                                                 condition:
                                                                     CLIENT
                                                             })

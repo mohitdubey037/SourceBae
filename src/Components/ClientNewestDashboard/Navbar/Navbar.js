@@ -18,7 +18,7 @@ function Navbar(props) {
 
     const myProfileHandler = () => {
         if (role === AGENCY) {
-            props.history.push('/agency-profile');
+            props.history.push(AGENCYROUTES.PROFILE);
         }
         if (role === CLIENT) {
             props.history.push(CLIENTROUTES.PROFILE);

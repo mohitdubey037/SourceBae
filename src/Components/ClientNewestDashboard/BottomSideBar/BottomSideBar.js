@@ -36,7 +36,7 @@ function BottomSidebar(props) {
 
     const agencyProfileHandler = () => {
         if (Role === 'Agency') {
-            routerHistory.push('/agency-profile');
+            routerHistory.push(AGENCYROUTES.PROFILE);
         } else {
             routerHistory.push(CLIENTROUTES.PROFILE);
         }

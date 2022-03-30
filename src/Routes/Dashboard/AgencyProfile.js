@@ -34,6 +34,7 @@ import instance from '../../Constants/axiosConstants';
 
 import Spinner from '../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
+import { AGENCYROUTES } from '../../Navigation/CONSTANTS';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -206,7 +207,8 @@ function AgencyProfile(props) {
                                             }}
                                             onClick={() =>
                                                 props.history.push({
-                                                    pathname: `/product-form`,
+                                                    pathname:
+                                                        AGENCYROUTES.PRODUCT_FORM,
                                                     condition: AGENCY
                                                 })
                                             }

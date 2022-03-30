@@ -20,6 +20,7 @@ import VerifyModal from '../../../Components/VerifyModal/VerifyModal';
 
 import * as helper from '../../../shared/helper';
 import { toast } from 'react-toastify';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -292,7 +293,7 @@ function ProductAgencies(props) {
                                                                 onClick={() =>
                                                                     props.history.push(
                                                                         {
-                                                                            pathname: `/agency-profile/${value?.agencyId?._id}`
+                                                                            pathname: `${AGENCYROUTES.PROFILE}/${value?.agencyId?._id}`
                                                                         }
                                                                     )
                                                                 }

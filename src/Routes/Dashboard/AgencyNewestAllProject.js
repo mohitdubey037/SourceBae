@@ -24,79 +24,114 @@ function AgencyNewestAllProject(props) {
             })
             .catch((err) => {
                 setErr(err?.response?.data?.message);
-                setTab(0);
+                setTab(4);
             });
     };
 
     const onSearchHandler = (status) => {
-        if (status === 'all') {
-            instance
-                .get(`/api/${Role}/projects/all?clientId=${clientId}`)
-                .then((response) => {
-                    if (status === 'Done') {
-                        setTab(1);
-                    }
-                    if (status === 'In Progress') {
-                        setTab(2);
-                    }
-                    if (status === 'Cancelled') {
-                        setTab(3);
-                    }
-                    if (status === 'all') {
-                        setTab(4);
-                    }
-                    setProjects(response.projects);
-                    setErr(false);
-                })
-                .catch((err) => {
-                    setErr(true);
-                    if (status === 'Done') {
-                        setTab(1);
-                    }
-                    if (status === 'In Progress') {
-                        setTab(2);
-                    }
-                    if (status === 'Cancelled') {
-                        setTab(3);
-                    }
-                    if (status === '') {
-                        setTab(4);
-                    }
-                });
-        } else {
-            instance
-                .get(`/api/${Role}/projects/all?projectCurrentStatus=${status}`)
-                .then((response) => {
-                    if (status === 'Done') {
-                        setTab(1);
-                    }
-                    if (status === 'In Progress') {
-                        setTab(2);
-                    }
-                    if (status === 'Cancelled') {
-                        setTab(3);
-                    }
-                    if (status === '') {
-                        setTab(4);
-                    }
-                    setProjects(response.projects);
-                })
-                .catch((err) => {
-                    setErr(true);
-                    if (status === 'Done') {
-                        setTab(1);
-                    }
-                    if (status === 'In Progress') {
-                        setTab(2);
-                    }
-                    if (status === 'Cancelled') {
-                        setTab(3);
-                    }
-                    if (status === '') {
-                        setTab(4);
-                    }
-                });
-        }
+        instance
+            .get(
+                `/api/${Role}/projects/all?clientId=${clientId}&projectCurrentStatus=${status}`
+            )
+            .then((response) => {
+                setErr(false);
+                if (status === 'Done') {
+                    setTab(1);
+                }
+                if (status === 'In Progress') {
+                    setTab(2);
+                }
+                if (status === 'Cancelled') {
+                    setTab(3);
+                }
+                if (status === '') {
+                    setTab(4);
+                }
+                setProjects(response.projects);
+            })
+            .catch((err) => {
+                setErr(true);
+                if (status === 'Done') {
+                    setTab(1);
+                }
+                if (status === 'In Progress') {
+                    setTab(2);
+                }
+                if (status === 'Cancelled') {
+                    setTab(3);
+                }
+                if (status === '') {
+                    setTab(4);
+                }
+            });
+        // if (status === 'all') {
+        //     instance
+        //         .get(`/api/${Role}/projects/all?clientId=${clientId}`)
+        //         .then((response) => {
+        //             if (status === 'Done') {
+        //                 setTab(1);
+        //             }
+        //             if (status === 'In Progress') {
+        //                 setTab(2);
+        //             }
+        //             if (status === 'Cancelled') {
+        //                 setTab(3);
+        //             }
+        //             if (status === 'all') {
+        //                 setTab(4);
+        //             }
+        //             setProjects(response.projects);
+        //             setErr(false);
+        //         })
+        //         .catch((err) => {
+        //             setErr(true);
+        //             if (status === 'Done') {
+        //                 setTab(1);
+        //             }
+        //             if (status === 'In Progress') {
+        //                 setTab(2);
+        //             }
+        //             if (status === 'Cancelled') {
+        //                 setTab(3);
+        //             }
+        //             if (status === '') {
+        //                 setTab(4);
+        //             }
+        //         });
+        // } else {
+        //     instance
+        //         .get(`/api/${Role}/projects/all?projectCurrentStatus=${status}`)
+        //         .then((response) => {
+        //             if (status === 'Done') {
+        //                 setTab(1);
+        //             }
+        //             if (status === 'In Progress') {
+        //                 setTab(2);
+        //             }
+        //             if (status === 'Cancelled') {
+        //                 setTab(3);
+        //             }
+        //             if (status === '') {
+        //                 setTab(4);
+        //             }
+        //             setProjects(response.projects);
+        //         })
+        //         .catch((err) => {
+        //             setErr(true);
+        //             if (status === 'Done') {
+        //                 setTab(1);
+        //             }
+        //             if (status === 'In Progress') {
+        //                 setTab(2);
+        //             }
+        //             if (status === 'Cancelled') {
+        //                 setTab(3);
+        //             }
+        //             if (status === '') {
+        //                 setTab(4);
+        //             }
+        //         });
+        // }
     };
 
     useEffect(() => {
@@ -120,7 +155,7 @@ function AgencyNewestAllProject(props) {
                             <div className="user-project_AgencyNewestAllProject">
                                 <div className="project-actual-status">
                                     <div
-                                        onClick={() => onSearchHandler('all')}
+                                        onClick={() => onSearchHandler('')}
                                         className={`completed-project ${
                                             tab === 4 && 'blueConditional'
                                         }`}

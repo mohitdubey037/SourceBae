@@ -55,14 +55,14 @@ import RequirementListing from './Routes/Agency/RequirementList/RequirementListi
 import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest';
 import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
 
-const App = (props) => {
+const App = () => {
     useEffect(() => {
         if (
             firebase.messaging.isSupported() &&
             window.Notification.permission === 'granted'
         ) {
             const msg = firebaseConfig.messaging();
-            msg.onMessage((message) => {
+            msg.onMessage(() => {
                 store.dispatch({
                     type: 'NOTIFICATION',
                     notification: 1
@@ -74,7 +74,7 @@ const App = (props) => {
     return (
         <>
             <ErrorBoundary
-                FallbackComponent={({ error, resetErrorBoundary }) => (
+                FallbackComponent={() => (
                     <div
                         style={{
                             width: '100vw',
@@ -225,7 +225,7 @@ const App = (props) => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/product-form"
+                        path={AGENCYROUTES.PRODUCT_FORM}
                         component={ProductForm}
                     />
                     <CustomRoute
@@ -237,7 +237,7 @@ const App = (props) => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-profile"
+                        path={AGENCYROUTES.PROFILE}
                         component={AgencyProfile}
                     />
                     <CustomRoute
@@ -265,31 +265,20 @@ const App = (props) => {
                         component={ProductDetails}
                     />
                     {/* Client Components  */}
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path="/agency-profile/:id"
-                        component={AgencyProfile}
-                    />
+
                     <CustomRoute
                         condition={CLIENT}
                         exact
                         path="/product-agencies"
                         component={ProductAgencies}
                     />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.DASHBOARD}
-                        component={ClientNewestDashboard}
-                    />
+
                     <CustomRoute
                         condition={CLIENT}
                         exact
                         path="/client-one-hire-developer/:hireDeveloperId"
                         component={ClientOneHireDeveloper}
                     />
-                    {/* <CustomRoute condition={CLIENT} exact path="/shared-developers/:hireDeveloperId/:agencyId" component={SharedDevelopers} /> */}
 
                     <CustomRoute
                         condition={CLIENT}
@@ -334,6 +323,20 @@ const App = (props) => {
                         exact
                         path={CLIENTROUTES.HIRE_DEVELOPER}
                         component={HireDeveloper}
+                    />
+
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={`${AGENCYROUTES.PROFILE}/:id`}
+                        component={AgencyProfile}
+                    />
+
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={CLIENTROUTES.DASHBOARD}
+                        component={ClientNewestDashboard}
                     />
                     <CustomRoute
                         condition={CLIENT}

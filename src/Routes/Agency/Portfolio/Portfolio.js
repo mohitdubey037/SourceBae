@@ -10,6 +10,7 @@ import instance from '../../../Constants/axiosConstants';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { upload } from '../../../shared/helper';
 import { toast } from 'react-toastify';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 function Portfolio(props) {
     const logoLink =
@@ -91,7 +92,7 @@ function Portfolio(props) {
             .post(`/api/${Role}/portfolios/create`, form)
             .then((res) => {
                 props.history.replace({
-                    pathname: '/agency-profile',
+                    pathname: AGENCYROUTES.PROFILE,
                     origin: 'portfolio'
                 });
                 setLoading(false);

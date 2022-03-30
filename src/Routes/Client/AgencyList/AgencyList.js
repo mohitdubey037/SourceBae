@@ -14,6 +14,7 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import { CLIENT } from '../../../shared/constants';
 import Back2 from '../../../assets/images/Back/Back2.svg';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 function AgencyList(props) {
     const Role = localStorage.getItem('role');
@@ -277,7 +278,7 @@ function AgencyList(props) {
                                                                             onClick={() =>
                                                                                 props.history.push(
                                                                                     {
-                                                                                        pathname: `/agency-profile/${agency._id}`,
+                                                                                        pathname: `${AGENCYROUTES.PROFILE}/${agency._id}`,
                                                                                         condition:
                                                                                             CLIENT
                                                                                     }

@@ -10,7 +10,8 @@ const AGENCYROUTES = {
     FORGOT_PASSWORD: '/agency/forgot-password',
     RESET_PASSWORD: '/agency/reset-password',
     PROFILE: '/agency/profile',
-    QUOTATIONS: '/agency/quotations'
+    QUOTATIONS: '/agency/quotations',
+    PRODUCT_FORM: '/agency/product-form'
 };
 
 const CLIENTROUTES = {

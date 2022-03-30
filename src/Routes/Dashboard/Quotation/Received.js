@@ -6,6 +6,7 @@ import PageNotFound from '../../../assets/images/Newestdashboard/Not_found/PageN
 import { withRouter } from 'react-router';
 import './Received.css';
 import { USERROUTES } from '../../../Navigation/CONSTANTS';
+import { AGENCY, CLIENT } from '../../../shared/constants';
 
 function Received(props) {
     const agencyId = localStorage.getItem('userId');
@@ -173,8 +174,9 @@ function Received(props) {
                                                 className="showDetail_receivedCardButton"
                                                 onClick={() =>
                                                     props.history.push({
-                                                        pathname: `agency-project-details/${s._id}`,
-                                                        origin: 'received'
+                                                        pathname: `/agency-project-details/${s._id}`,
+                                                        origin: 'received',
+                                                        condition: AGENCY
                                                     })
                                                 }
                                             >

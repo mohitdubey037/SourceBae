@@ -31,6 +31,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
 import { upload } from '../../../shared/helper';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 const BlueRadio = withStyles({
     root: {
@@ -1520,7 +1521,9 @@ function ProductForm(props) {
                 </div>
                 <div className="modalButton">
                     <button
-                        onClick={() => props.history.replace('/agency-profile')}
+                        onClick={() =>
+                            props.history.replace(AGENCYROUTES.PROFILE)
+                        }
                     >
                         Go to Profile
                     </button>
