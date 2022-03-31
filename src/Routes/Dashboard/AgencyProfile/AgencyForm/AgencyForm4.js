@@ -116,15 +116,15 @@ function AgencyForm4(props) {
             window.confirm('Your Previous Saved Documents Will Be Lost') ===
             true
         ) {
-            if (url.includes('agency-form-one')) {
+            if (url.includes(AGENCYROUTES.AGENCY_UPDATE_1)) {
                 props.history.push(AGENCYROUTES.DASHBOARD);
-            } else if (url.includes('agency-form-two')) {
-                props.history.push('/agency-form-one');
-            } else if (url.includes('agency-form-three')) {
-                props.history.push('/agency-form-two');
-            } else if (url.includes('agency-form-four')) {
+            } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_2)) {
+                props.history.push(AGENCYROUTES.AGENCY_UPDATE_1);
+            } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_3)) {
+                props.history.push(AGENCYROUTES.AGENCY_UPDATE_2);
+            } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_4)) {
                 dispatch({ type: 'BACK_PRESSED' });
-                props.history.push('/agency-form-three');
+                props.history.push(AGENCYROUTES.AGENCY_UPDATE_3);
             } else {
                 props.history.goBack();
             }

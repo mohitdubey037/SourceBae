@@ -18,7 +18,7 @@ function UserProject({ index, ...rest }) {
             props?.projectProposals[0]?.isQuotationAcceptedByAgency === true
         ) {
             routerHistory.push(
-                `/project-details/${props._id}/${props.projectProposals[0].agencyId._id}`
+                `${CLIENTROUTES.PROJECT_DETAILS}/${props._id}/${props.projectProposals[0].agencyId._id}`
             );
         } else {
             routerHistory.push(`${CLIENTROUTES.AGENCIES_LIST}/${props._id}`);

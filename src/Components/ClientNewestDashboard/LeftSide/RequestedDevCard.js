@@ -3,13 +3,14 @@ import React from 'react';
 import CenterImage from '../../../assets/images/Newestdashboard/Dashboard/Center_Image.svg';
 import { useHistory } from 'react-router-dom';
 import ShowProject from '../../../assets/images/Newestdashboard/Dashboard/detail_show.svg';
+import { CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 function RequestedDevCard({ index, ...rest }) {
     let props = rest;
     const routerHistory = useHistory();
 
     const showDetail = () => {
-        routerHistory.push(`/client-one-hire-developer/${props?._id}`);
+        routerHistory.push(`${CLIENTROUTES.SHORTLIST_DEVELOPER}/${props?._id}`);
     };
 
     return (

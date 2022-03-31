@@ -183,7 +183,7 @@ const Login = (props) => {
             if (role === AGENCY) {
                 setLoading(false);
                 if (isRequirement)
-                    props.history.push('/agency-requirements-listing');
+                    props.history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
                 else props.history.replace(AGENCYROUTES.DASHBOARD);
             } else if (role === CLIENT) {
                 setLoading(false);

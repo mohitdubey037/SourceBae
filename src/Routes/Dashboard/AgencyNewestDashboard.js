@@ -11,7 +11,6 @@ import AgencyProjectCard from '../../Components/AgencyProjectCard/AgencyProjectC
 import Sidebar from '../../Components/ClientNewestDashboard/Sidebar/Sidebar';
 
 import instance from '../../Constants/axiosConstants';
-import * as helper from '../../shared/helper';
 import NotFound from '../../assets/images/Newestdashboard/Not_found/PageNotFound.svg';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import BottomSideBar from '../../Components/ClientNewestDashboard/BottomSideBar/BottomSideBar';
@@ -69,9 +68,7 @@ function AgencyNewestDashboard(props) {
                     setSteps(-1);
                 } else {
                     setSteps(response.stepsCompleted);
-                    let route = `/agency-form-${helper.getNumberSpell(
-                        response.stepsCompleted
-                    )}`;
+                    let route = `${AGENCYROUTES.AGENCY_UPDATE}/${response.stepsCompleted}`;
                     setFormRoute(route);
                 }
             });
@@ -119,8 +116,8 @@ function AgencyNewestDashboard(props) {
             if (AGENCYROUTES.ADD_DEVELOPER.includes(link))
                 props.history.push(AGENCYROUTES.ADD_DEVELOPER);
 
-            if (link === 'agency-requirements-listing')
-                props.history.push(`/${link}`);
+            if (AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST.includes(link))
+                props.history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
 
             if (AGENCYROUTES.PORTFOLIO.includes(link)) {
                 props.history.push({
@@ -216,7 +213,9 @@ function AgencyNewestDashboard(props) {
                                 <UserOperations
                                     disabled={!verified || steps !== -1}
                                     nextpage={() =>
-                                        quotation('agency-requirements-listing')
+                                        quotation(
+                                            AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST
+                                        )
                                     }
                                     text="Current Requirements"
                                     img={QuotationIcon}

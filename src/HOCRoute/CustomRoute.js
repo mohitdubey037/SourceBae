@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 import { CLIENT, AGENCY } from '../shared/constants';
-import cookie from 'react-cookies';
 import {
     AGENCYROUTES,
     CLIENTROUTES,

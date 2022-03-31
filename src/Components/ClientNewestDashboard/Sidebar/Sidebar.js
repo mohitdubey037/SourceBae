@@ -37,14 +37,14 @@ function Sidebar(props) {
 
     const handleGetClientHireDeveloper = () => {
         routerHistory.push({
-            pathname: '/get-client-hire-developer',
+            pathname: CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS,
             state: props.isUserVerified
         });
     };
 
     const postProject = () => {
         routerHistory.push({
-            pathname: '/hire-agency-form-one',
+            pathname: CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1,
             state: props.isUserVerified
         });
     };

@@ -153,11 +153,6 @@ const App = () => {
                     />
 
                     {/* AGENCY ROUTES */}
-                    <Route
-                        exact
-                        path="/agency-newest-all-project"
-                        component={AgencyNewestAllProject}
-                    />
 
                     <Route exact path={CLIENTROUTES.LOGIN}>
                         <Login history={history} roles={CLIENT} />
@@ -183,7 +178,7 @@ const App = () => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-requirements-listing"
+                        path={AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST}
                         component={RequirementListing}
                     />
                     <CustomRoute
@@ -195,25 +190,25 @@ const App = () => {
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-form-one"
+                        path={AGENCYROUTES.AGENCY_UPDATE_1}
                         component={AgencyForm1}
                     />
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-form-two"
+                        path={AGENCYROUTES.AGENCY_UPDATE_2}
                         component={AgencyForm2}
                     />
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-form-three"
+                        path={AGENCYROUTES.AGENCY_UPDATE_3}
                         component={AgencyForm3}
                     />
                     <CustomRoute
                         condition={AGENCY}
                         exact
-                        path="/agency-form-four"
+                        path={AGENCYROUTES.AGENCY_UPDATE_4}
                         component={AgencyForm4}
                     />
                     <CustomRoute
@@ -248,14 +243,16 @@ const App = () => {
                     />
 
                     {/* Both */}
-                    <Route
+                    <CustomRoute
+                        condition={AGENCY}
                         exact
-                        path={AGENCYROUTES.PRODUCT_DETAILS}
-                        component={AgencyProjectDetails}
+                        path={`${AGENCYROUTES.PRODUCT_DETAILS}/:productId`}
+                        component={ProductDetails}
                     />
-                    <Route
+                    <CustomRoute
+                        condition={CLIENT}
                         exact
-                        path="/product-details/:productId"
+                        path={`${CLIENTROUTES.PRODUCT_DETAILS}/:productId`}
                         component={ProductDetails}
                     />
 
@@ -270,21 +267,27 @@ const App = () => {
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/product-agencies"
+                        path={CLIENTROUTES.PROJECT_LIST}
+                        component={AgencyNewestAllProject}
+                    />
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={CLIENTROUTES.INVESTMENT_OPPORTUNITIES}
                         component={ProductAgencies}
                     />
 
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/client-one-hire-developer/:hireDeveloperId"
+                        path={`${CLIENTROUTES.SHORTLIST_DEVELOPER}/:hireDeveloperId`}
                         component={ClientOneHireDeveloper}
                     />
 
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path="/get-client-hire-developer"
+                        path={CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS}
                         component={GetClientHireDeveloper}
                     />
                     <CustomRoute
@@ -293,30 +296,6 @@ const App = () => {
                         path="/project-details/:projectId"
                         component={ProjectDetails}
                     />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path="/project-details/:projectId/:agencyId"
-                        component={ProjectDetails}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path="/hire-agency-form-one"
-                        component={HireAgencyForm1}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path="/hire-agency-form-two/:projectId"
-                        component={HireAgencyForm2}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path="/hire-agency-form-three/:projectId"
-                        component={HireAgencyForm3}
-                    />
 
                     {/* CLIENT ROUTES */}
                     <CustomRoute
@@ -324,6 +303,30 @@ const App = () => {
                         exact
                         path={CLIENTROUTES.HIRE_DEVELOPER}
                         component={HireDeveloper}
+                    />
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={`${CLIENTROUTES.PROJECT_DETAILS}/:projectId/:agencyId`}
+                        component={ProjectDetails}
+                    />
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1}
+                        component={HireAgencyForm1}
+                    />
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={`${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_2}/:projectId`}
+                        component={HireAgencyForm2}
+                    />
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
+                        path={`${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_3}/:projectId`}
+                        component={HireAgencyForm3}
                     />
 
                     <CustomRoute

@@ -17,13 +17,6 @@
     font-size: 2rem;
 }
 
-/* .Image1_shortTerm {
-  left: -7rem;
-  position: absolute;
-  top: -6.5rem;
-  width: 43rem;
-} */
-
 .Image2_shortTerm {
     right: -8rem;
     position: absolute;
@@ -100,6 +93,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    border: 1px dashed gray;
     width: 100%;
     flex-direction: column;
 }

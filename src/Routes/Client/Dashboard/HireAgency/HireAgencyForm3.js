@@ -334,7 +334,7 @@ function HireAgencyForm3(props) {
                                         className="backbutton_hireAgencyForm3"
                                         onClick={() =>
                                             props.history.push(
-                                                `/hire-agency-form-two/${projectId}`,
+                                                `${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_2}/${projectId}`,
                                                 oldFormData
                                             )
                                         }
@@ -347,33 +347,6 @@ function HireAgencyForm3(props) {
                                     </div>
                                 </div>
                             </div>
-                            {/* {allTechnologies.length > 0 &&
-                            <div className="serviceFieldsOptions newHireAgencyForm3">
-                                <div className="servicesHireAgencyContainer hireAgencyForm3">
-                                    <div className="serviceSelectionInput">
-                                        {allTechnologies ? (
-                                            <>
-                                                <p className="uiuxtext">
-                                                    Select Technologies
-                                                </p>
-                                                <MultiSelect
-                                                    options={allTechnologies}
-                                                    value={selected}
-                                                    onChange={setSelected}
-                                                    labelledBy="Select"
-                                                    className="margin-left"
-                                                />
-                                            </>
-                                        ) : null}
-                                        {errors.projectTechnologiesError && (
-                                            <p className="error_hireAgencyForm2 error-select_hireAgencyForm2">
-                                                {errors.projectTechnologiesError}
-                                            </p>)}
-                                    </div>
-                                </div>
-                            </div>
-                        } */}
-                            {/* </div> */}
                         </div>
                     </div>
                 </div>

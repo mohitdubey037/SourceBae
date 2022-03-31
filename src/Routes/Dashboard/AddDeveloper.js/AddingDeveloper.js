@@ -19,6 +19,7 @@ import { FaFileUpload } from 'react-icons/fa';
 
 import { upload } from '../../../shared/helper';
 import { toast } from 'react-toastify';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 function AddingDeveloper(props) {
     const logoLink =
@@ -164,7 +165,7 @@ function AddingDeveloper(props) {
             .then(function (response) {
                 setLoading(false);
                 props.history.replace({
-                    pathname: '/agency-requirements-listing',
+                    pathname: AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST,
                     origin: 'addingDeveloper'
                 });
             })

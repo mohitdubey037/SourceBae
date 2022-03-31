@@ -15,6 +15,7 @@ import { upload } from '../../../../shared/helper';
 
 import './ResponsiveAgencyForm.css';
 import { toast } from 'react-toastify';
+import { AGENCYROUTES } from '../../../../Navigation/CONSTANTS';
 
 function AgencyForm1(props) {
     const dispatch = useDispatch();
@@ -150,10 +151,10 @@ function AgencyForm1(props) {
     const handleSubmit = () => {
         instance
             .post(`api/${Role}/${api_param_const}/create`, { ...formData })
-            .then(function (response) {
+            .then(function () {
                 setLoading(false);
                 dispatch({ type: 'NEXT_PRESSED' });
-                props.history.push('/agency-form-two', {
+                props.history.push(AGENCYROUTES.AGENCY_UPDATE_2, {
                     agencyForm1: formData
                 });
             })

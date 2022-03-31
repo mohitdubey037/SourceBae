@@ -13,6 +13,7 @@ import Navbar from '../../../../Components/ClientNewestDashboard/Navbar/Navbar';
 
 import VerifyModal from '../../../../Components/VerifyModal/VerifyModal';
 import SizedBox from '../../../../Components/SizedBox/SizedBox';
+import { CLIENTROUTES } from '../../../../Navigation/CONSTANTS';
 
 const BlueRadio = withStyles({
     root: {
@@ -153,7 +154,7 @@ function HireDeveloper(props) {
             .post(`api/client/hire-developers/create`, body)
             .then(function (response) {
                 props.history.replace({
-                    pathname: `/get-client-hire-developer`,
+                    pathname: CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS,
                     condition: `client`
                 });
             });

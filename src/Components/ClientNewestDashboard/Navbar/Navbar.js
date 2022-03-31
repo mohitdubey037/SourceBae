@@ -70,7 +70,7 @@ function Navbar(props) {
                         url.includes('/project-details') ||
                         url.includes(AGENCYROUTES.PROJECT_DETAILS) ||
                         url.includes(AGENCYROUTES.DASHBOARD) ||
-                        url.includes('/agency-newest-all-project')) &&
+                        url.includes(CLIENTROUTES.PROJECT_LIST)) &&
                     '1rem',
                 justifyContent:
                     (url.includes(CLIENTROUTES.DASHBOARD) ||
@@ -79,7 +79,7 @@ function Navbar(props) {
                         url.includes('/agency-list') ||
                         url.includes('/project-details') ||
                         url.includes(AGENCYROUTES.PROJECT_DETAILS) ||
-                        url.includes('/agency-newest-all-project')) &&
+                        url.includes(CLIENTROUTES.PROJECT_LIST)) &&
                     'flex-end'
             }}
             className="navbar"
@@ -93,7 +93,7 @@ function Navbar(props) {
                             url.includes('agency-list') ||
                             url.includes('/project-details') ||
                             url.includes(AGENCYROUTES.PROJECT_DETAILS) ||
-                            url.includes('/agency-newest-all-project')) &&
+                            url.includes(CLIENTROUTES.PROJECT_LIST)) &&
                         'none'
                 }}
                 className="logoLink_navbar"

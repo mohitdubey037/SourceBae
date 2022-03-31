@@ -3,10 +3,11 @@ const AGENCYROUTES = {
     REGISTER: '/agency/register',
     DASHBOARD: '/agency/dashboard',
     ADD_DEVELOPER: '/agency/add-developer',
-    HIRE1: '/agency/hire/step-1',
-    HIRE2: '/agency/hire/step-2',
-    HIRE3: '/agency/hire/step-3',
-    HIRE4: '/agency/hire/step-4',
+    AGENCY_UPDATE: '/agency/update/step',
+    AGENCY_UPDATE_1: '/agency/update/step/1',
+    AGENCY_UPDATE_2: '/agency/update/step/2',
+    AGENCY_UPDATE_3: '/agency/update/step/3',
+    AGENCY_UPDATE_4: '/agency/update/step/4',
     FORGOT_PASSWORD: '/agency/forgot-password',
     RESET_PASSWORD: '/agency/reset-password',
     PROFILE: '/agency/profile',
@@ -15,7 +16,8 @@ const AGENCYROUTES = {
     SHARED_DEVELOPERS: '/agency/shared-developers',
     PORTFOLIO: '/agency/portfolio',
     PRODUCT_DETAILS: '/agency/product-details',
-    PROJECT_DETAILS: '/agency/project-details'
+    PROJECT_DETAILS: '/agency/project-details',
+    DEVELOPER_REQUIREMENT_LIST: '/agency/requirements/client/developer'
 };
 
 const CLIENTROUTES = {
@@ -28,7 +30,16 @@ const CLIENTROUTES = {
     HIRE_DEVELOPER: '/client/create/hire-developer-request',
     AGENCIES_LIST: '/client/agencies-list',
     CREATE_SHORT_TERM_PROJECT: '/client/create/short-term-project',
-    DEVELOPER_REQUESTS: '/client/developer-requests'
+    DEVELOPER_REQUESTS: '/client/developer-requests',
+    PROJECT_DETAILS: '/client/project-details',
+    PROJECT_LIST: '/client/project-list',
+    PRODUCT_DETAILS: '/client/agency/product-details',
+    DEVELOPER_HIRE_REQUIREMENTS: '/client/requirements/developer-hire',
+    INVESTMENT_OPPORTUNITIES: '/client/invest/agency-products',
+    HIRE_AGENCY_FOR_PROJECT_1: '/client/project/hire-agency/step/1',
+    HIRE_AGENCY_FOR_PROJECT_2: '/client/project/hire-agency/step/2',
+    HIRE_AGENCY_FOR_PROJECT_3: '/client/project/hire-agency/step/3',
+    SHORTLIST_DEVELOPER: '/client/shortlist-developer/requirement'
 };
 
 const ADMINROUTES = {

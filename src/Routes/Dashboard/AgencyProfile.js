@@ -34,7 +34,7 @@ import instance from '../../Constants/axiosConstants';
 
 import Spinner from '../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
-import { AGENCYROUTES } from '../../Navigation/CONSTANTS';
+import { AGENCYROUTES, CLIENTROUTES } from '../../Navigation/CONSTANTS';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -224,7 +224,13 @@ function AgencyProfile(props) {
                                     <button
                                         onClick={() =>
                                             props.history.push({
-                                                pathname: `${AGENCYROUTES.PRODUCT_DETAILS}/${agencyProfileData.productId}`,
+                                                pathname: `${
+                                                    role === AGENCY
+                                                        ? AGENCYROUTES.PRODUCT_DETAILS
+                                                        : CLIENTROUTES.PRODUCT_DETAILS
+                                                }/${
+                                                    agencyProfileData.productId
+                                                }`,
                                                 condition:
                                                     id !== ''
                                                         ? 'agency'
@@ -232,7 +238,11 @@ function AgencyProfile(props) {
                                             })
                                         }
                                     >
-                                        <p>View Your Product</p>
+                                        {role === AGENCY ? (
+                                            <p>View Your Product</p>
+                                        ) : (
+                                            <p>View Agency Product</p>
+                                        )}
                                         <img
                                             src={AddYourProduct}
                                             alt="add your product"
@@ -264,7 +274,13 @@ function AgencyProfile(props) {
                                             }}
                                             onClick={() =>
                                                 props.history.push({
-                                                    pathname: `/product-details/${agencyProfileData.productId}`,
+                                                    pathname: `${
+                                                        role === AGENCY
+                                                            ? AGENCYROUTES.PRODUCT_DETAILS
+                                                            : CLIENTROUTES.PRODUCT_DETAILS
+                                                    }/${
+                                                        agencyProfileData.productId
+                                                    }`,
                                                     condition:
                                                         id !== ''
                                                             ? 'Agency'
@@ -272,7 +288,9 @@ function AgencyProfile(props) {
                                                 })
                                             }
                                         >
-                                            View Your Product
+                                            {role === AGENCY
+                                                ? 'View Your Product'
+                                                : 'View Agency Product'}
                                             <i
                                                 class="fa fa-long-arrow-right"
                                                 aqqria-hidden="true"

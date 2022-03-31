@@ -15,6 +15,7 @@ import instance from '../../../../Constants/axiosConstants';
 import Spinner from '../../../../Components/Spinner/Spinner';
 import './HireAgencyForm2.css';
 import Back from '../../../../Components/Back/Back';
+import { CLIENTROUTES } from '../../../../Navigation/CONSTANTS';
 
 const useStyles = makeStyles({
     root: {
@@ -174,15 +175,15 @@ function HireAgencyForm2(props) {
             setLoading(true);
             instance
                 .post(`/api/${Role}/projects/create`, apiData)
-                .then(function (response) {
+                .then(function () {
                     setLoading(false);
                     propData.agencyForm2 = apiData;
                     props.history.replace(
-                        `/hire-agency-form-three/${projectId}`,
+                        `${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_3}/${projectId}`,
                         propData
                     );
                 })
-                .catch((err) => {
+                .catch(() => {
                     setLoading(false);
                 });
         }
@@ -462,7 +463,7 @@ function HireAgencyForm2(props) {
                                         className="backbutton_hireAgencyForm2"
                                         onClick={() =>
                                             props.history.push(
-                                                `/hire-agency-form-one`,
+                                                CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1,
                                                 propData
                                             )
                                         }

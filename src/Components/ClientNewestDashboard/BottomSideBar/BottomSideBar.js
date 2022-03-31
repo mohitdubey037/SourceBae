@@ -51,7 +51,7 @@ function BottomSidebar(props) {
     };
 
     const postProject = () => {
-        routerHistory.push('/hire-agency-form-one');
+        routerHistory.push(CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1);
     };
 
     const logout = () => {
@@ -99,7 +99,9 @@ function BottomSidebar(props) {
                         </div>
                         <div
                             onClick={() =>
-                                routerHistory.push('/get-client-hire-developer')
+                                routerHistory.push(
+                                    CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS
+                                )
                             }
                             className="postProject-icon icons developers-icon"
                         >

@@ -178,7 +178,7 @@ function AgencyForm3(props) {
                     setLoading(false);
                     propData.agencyForm3 = apiData;
                     dispatch({ type: 'NEXT_PRESSED' });
-                    props.history.push('/agency-form-four', propData);
+                    props.history.push(AGENCYROUTES.AGENCY_UPDATE_4, propData);
                 })
                 .catch((err) => {
                     setLoading(false);
@@ -187,15 +187,15 @@ function AgencyForm3(props) {
     };
 
     const goBack = () => {
-        if (url.includes('agency-form-one')) {
+        if (url.includes(AGENCYROUTES.AGENCY_UPDATE_1)) {
             props.history.replace(AGENCYROUTES.DASHBOARD);
-        } else if (url.includes('agency-form-two')) {
-            props.history.replace('/agency-form-one');
-        } else if (url.includes('agency-form-three')) {
+        } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_2)) {
+            props.history.replace(AGENCYROUTES.AGENCY_UPDATE_1);
+        } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_3)) {
             dispatch({ type: 'BACK_PRESSED' });
-            props.history.replace('/agency-form-two', propData);
-        } else if (url.includes('agency-form-four')) {
-            props.history.replace('/agency-form-three');
+            props.history.replace(AGENCYROUTES.AGENCY_UPDATE_2, propData);
+        } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_4)) {
+            props.history.replace(AGENCYROUTES.AGENCY_UPDATE_3);
         } else {
             props.history.goBack();
         }
@@ -217,7 +217,6 @@ function AgencyForm3(props) {
     }, [propData]);
 
     useEffect(() => {
-        console.log(isMediaUploaded, 'uploaded');
         if (isMediaUploaded) {
             setLoading(false);
             handleUpdate();

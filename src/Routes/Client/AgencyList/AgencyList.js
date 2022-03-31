@@ -14,7 +14,7 @@ import Navbar from '../../../Components/ClientNewestDashboard/Navbar/Navbar';
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import { CLIENT } from '../../../shared/constants';
 import Back2 from '../../../assets/images/Back/Back2.svg';
-import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
+import { AGENCYROUTES, CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 function AgencyList(props) {
     const Role = localStorage.getItem('role');
@@ -365,12 +365,15 @@ function AgencyList(props) {
                                                                     {agency.isAgencyAskedForQuotation ? (
                                                                         <div
                                                                             onClick={() =>
-                                                                                props.history.push(
-                                                                                    {
-                                                                                        pathname: `/project-details/${projectId}/${agency._id}`,
-                                                                                        condition:
-                                                                                            'Client'
-                                                                                    }
+                                                                                // props.history.push(
+                                                                                //     {
+                                                                                //         pathname: `${CLIENTROUTES.PROJECT_DETAILS}/${projectId}/${agency._id}`,
+                                                                                //         condition:
+                                                                                //             CLIENT
+                                                                                //     }
+                                                                                // )
+                                                                                alert(
+                                                                                    'ok'
                                                                                 )
                                                                             }
                                                                         >
@@ -386,9 +389,9 @@ function AgencyList(props) {
                                                                                 onClick={() =>
                                                                                     props.history.push(
                                                                                         {
-                                                                                            pathname: `/project-details/${projectId}/${agency._id}`,
+                                                                                            pathname: `${CLIENTROUTES.PROJECT_DETAILS}/${projectId}/${agency._id}`,
                                                                                             condition:
-                                                                                                'Client'
+                                                                                                CLIENT
                                                                                         }
                                                                                     )
                                                                                 }

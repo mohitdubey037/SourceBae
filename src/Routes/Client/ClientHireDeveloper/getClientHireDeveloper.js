@@ -9,6 +9,7 @@ import Back from '../../../Components/Back/Back';
 import DownImage from '../../../assets/images/Newestdashboard/Short_Term/DownImage.svg';
 import { CLIENT } from '../../../shared/constants';
 import VerifyModal from '../../../Components/VerifyModal/VerifyModal';
+import { CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 function ClientHireDeveloper(props) {
     const Role = localStorage.getItem('role');
@@ -109,7 +110,7 @@ function ClientHireDeveloper(props) {
                                                                     onClick={() =>
                                                                         props.history.push(
                                                                             {
-                                                                                pathname: `/client-one-hire-developer/${hireDeveloperRequirement._id}`,
+                                                                                pathname: `${CLIENTROUTES.SHORTLIST_DEVELOPER}/${hireDeveloperRequirement._id}`,
                                                                                 condition:
                                                                                     CLIENT
                                                                             }

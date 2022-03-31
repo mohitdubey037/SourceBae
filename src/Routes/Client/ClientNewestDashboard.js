@@ -16,6 +16,7 @@ import * as actions from '../../Redux/action/addProject';
 import Navbar from '../../Components/ClientNewestDashboard/Navbar/Navbar';
 import { connect } from 'react-redux';
 import { CLIENTROUTES } from '../../Navigation/CONSTANTS';
+import { CLIENT } from '../../shared/constants';
 
 function ClientNewestDashboard(props) {
     const Role = localStorage.getItem('role');
@@ -121,7 +122,8 @@ function ClientNewestDashboard(props) {
                                 isUserVerified={isUserVerified}
                                 nextpage={() =>
                                     props.history.push({
-                                        pathname: '/hire-agency-form-one',
+                                        pathname:
+                                            CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1,
                                         state: { isUserVerified }
                                     })
                                 }
@@ -144,7 +146,8 @@ function ClientNewestDashboard(props) {
                                 isUserVerified={isUserVerified}
                                 nextpage={() =>
                                     props.history.push({
-                                        pathname: '/product-agencies',
+                                        pathname:
+                                            CLIENTROUTES.INVESTMENT_OPPORTUNITIES,
                                         state: { isUserVerified }
                                     })
                                 }
@@ -160,9 +163,11 @@ function ClientNewestDashboard(props) {
                                 {projects.length > 2 && (
                                     <div
                                         onClick={() =>
-                                            props.history.push(
-                                                '/agency-newest-all-project'
-                                            )
+                                            props.history.push({
+                                                pathname:
+                                                    CLIENTROUTES.PROJECT_LIST,
+                                                condition: CLIENT
+                                            })
                                         }
                                         className="showDetail_onClientNewestDashboard"
                                     >
@@ -195,7 +200,7 @@ function ClientNewestDashboard(props) {
                                     <div
                                         onClick={() =>
                                             props.history.push(
-                                                '/get-client-hire-developer'
+                                                CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS
                                             )
                                         }
                                         className="showDetail_onClientNewestDashboard"

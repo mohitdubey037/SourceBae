@@ -18,6 +18,7 @@ import NoDataComponent from '../../../Components/NoData/NoDataComponent';
 import Spinner from '../../../Components/Spinner/Spinner';
 import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';
 import { useHistory } from 'react-router-dom';
+import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 
 let currentPage = 1;
 let recommendedPage = 0;
@@ -234,16 +235,16 @@ const RequirementListing = () => {
         if (user && auth) {
             if (
                 routerHistory.location.pathname ===
-                '/agency-requirements-listing'
+                AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST
             ) {
                 setselectedCard(id);
                 getDevelopers(id, agencyId);
             }
-            routerHistory.push(`/agency-requirements-listing`);
+            routerHistory.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         } else {
             alert('Please login to continue');
             routerHistory.push({
-                pathname: `login/${AGENCY}`,
+                pathname: AGENCYROUTES.LOGIN,
                 state: { isAgencyRequirement: true }
             });
         }

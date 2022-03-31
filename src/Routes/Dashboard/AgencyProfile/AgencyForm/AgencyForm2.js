@@ -83,15 +83,15 @@ function AgencyForm2(props) {
     };
 
     const goBack = () => {
-        if (url.includes('agency-form-one')) {
+        if (url.includes(AGENCYROUTES.AGENCY_UPDATE_1)) {
             props.history.replace(AGENCYROUTES.DASHBOARD);
-        } else if (url.includes('agency-form-two')) {
+        } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_2)) {
             dispatch({ type: 'BACK_PRESSED' });
-            props.history.replace('/agency-form-one', propData);
-        } else if (url.includes('agency-form-three')) {
-            props.history.replace('/agency-form-two');
-        } else if (url.includes('agency-form-four')) {
-            props.history.replace('/agency-form-three');
+            props.history.replace(AGENCYROUTES.AGENCY_UPDATE_1, propData);
+        } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_3)) {
+            props.history.replace(AGENCYROUTES.AGENCY_UPDATE_2);
+        } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_4)) {
+            props.history.replace(AGENCYROUTES.AGENCY_UPDATE_3);
         } else {
             props.history.goBack();
         }
@@ -221,7 +221,7 @@ function AgencyForm2(props) {
                 setLoading(false);
                 propData.agencyForm2 = apiData;
                 dispatch({ type: 'NEXT_PRESSED' });
-                props.history.push('/agency-form-three', propData);
+                props.history.push(AGENCYROUTES.AGENCY_UPDATE_3, propData);
             })
             .catch((err) => {
                 setLoading(false);
