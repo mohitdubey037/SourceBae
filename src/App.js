@@ -70,7 +70,6 @@ const App = () => {
             });
         }
     }, []);
-    debugger;
     return (
         <>
             <ErrorBoundary
@@ -106,11 +105,6 @@ const App = () => {
             >
                 <Switch>
                     {/* USER ROUTES */}
-                    <Route
-                        exact
-                        path={USERROUTES.HOME}
-                        component={LandingPage}
-                    />
                     <Route
                         exact
                         path={USERROUTES.HOME}

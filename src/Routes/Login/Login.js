@@ -15,13 +15,13 @@ import upImage2_client from '../../assets/images/Newestdashboard/Login/Path14_cl
 import dotImage from '../../assets/images/Newestdashboard/Login/ab_01.png';
 import googleImg from '../../assets/images/Newestdashboard/Login/Icon_google.svg';
 
-import { InputAdornment, TextField, makeStyles } from '@material-ui/core';
+import { InputAdornment, TextField } from '@material-ui/core';
 import VisibilityTwoToneIcon from '@material-ui/icons/VisibilityTwoTone';
 import VisibilityOffTwoToneIcon from '@material-ui/icons/VisibilityOffTwoTone';
 import Spinner from '../../Components/Spinner/Spinner';
 import cookie from 'react-cookies';
 import firebase from '../../firebase';
-import { CLIENT, AGENCY } from '../../shared/constants';
+import { CLIENT, AGENCY, CONTENT } from '../../shared/constants';
 import { toast } from 'react-toastify';
 import {
     AGENCYROUTES,
@@ -29,48 +29,9 @@ import {
     USERROUTES
 } from '../../Navigation/CONSTANTS';
 
-const borderLight = 'rgba(206,212,218, .993)';
+import * as mui from '././../../shared/muiConstants';
 
-const useStyles = makeStyles((theme) => ({
-    inputs: {
-        position: 'relative',
-        fontFamily: 'Segoe UI',
-        fontSize: '17px',
-        padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
-        paddingLeft: '1rem',
-        borderRadius: '8px',
-        border: '1.4px solid',
-        borderColor: borderLight,
-        width: '100%',
-        marginTop: '-5px'
-    },
-    passwordEye: {
-        color: 'rgba(131,153,167,0.9)',
-        opacity: 0.9,
-        marginTop: '1rem',
-        cursor: 'pointer'
-    },
-    root: {
-        '& .MuiSvgIcon-root': {
-            fontSize: '2.5rem'
-        }
-    },
-    input: {
-        '& .MuiFilledInput-input': {
-            padding: '37px 0px 10px',
-            fontSize: '14px',
-            background: 'none'
-        },
-        '& .MuiFilledInput-root': {
-            background: 'none'
-        },
-        '& .MuiInputLabel-filled.MuiInputLabel-shrink': {
-            transform: 'translate(0px, 10px)',
-            fontSize: '14px'
-        },
-        marginTop: '20px'
-    }
-}));
+const { useStyles } = mui;
 
 const Login = (props) => {
     const logoLink =
@@ -153,28 +114,23 @@ const Login = (props) => {
             return;
         }
         let apiRole = role;
-        return new Promise((resolve, reject) => {
-            instance
-                .post(`/api/${apiRole}/auths/login`, {
-                    ...form,
-                    notificationDeviceToken: device_token
-                })
-                .then(function (response) {
-                    cookie.save(
-                        'Authorization',
-                        `Bearer ${response.accessToken}`,
-                        {
-                            path: '/'
-                        }
-                    );
-                    setToken(cookie.load('Authorization'));
-                    localStorage.setItem('role', role);
-                    localStorage.setItem('userId', `${response._id}`);
-                })
-                .catch((err) => {
-                    setLoading(false);
+
+        instance
+            .post(`/api/${apiRole}/auths/login`, {
+                ...form,
+                notificationDeviceToken: device_token
+            })
+            .then(function (response) {
+                cookie.save('Authorization', `Bearer ${response.accessToken}`, {
+                    path: '/'
                 });
-        });
+                setToken(cookie.load('Authorization'));
+                localStorage.setItem('role', role);
+                localStorage.setItem('userId', `${response._id}`);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
     };
 
     useEffect(() => {
@@ -276,8 +232,9 @@ const Login = (props) => {
                                         <span>to</span>
                                         <br />
                                         <span className="welcome-back_sourceBae">
-                                            SourceBae
+                                            {CONTENT.SOURCEBAE}
                                         </span>{' '}
+                                        <br />
                                     </p>
                                 </div>
                                 <div className="loginContent">
@@ -292,7 +249,9 @@ const Login = (props) => {
                                                     'active__buttonagency'
                                                 }`}
                                             >
-                                                <p>Agency</p>
+                                                <p className="capitalize">
+                                                    {AGENCY}
+                                                </p>
                                             </button>
                                             <button
                                                 onClick={() =>
@@ -303,7 +262,9 @@ const Login = (props) => {
                                                     'active__buttonclient'
                                                 }`}
                                             >
-                                                <p>Client</p>
+                                                <p className="capitalize">
+                                                    {CLIENT}
+                                                </p>
                                             </button>
                                         </div>
                                         <div className="loginHeading">
@@ -340,7 +301,9 @@ const Login = (props) => {
                                                 onChange={(e) => {
                                                     handleChange(e);
                                                 }}
-                                                placeholder="Enter email/username"
+                                                placeholder={
+                                                    CONTENT.USER_IDENTIFIER_PLACEHOLDER
+                                                }
                                                 variant="filled"
                                             />
                                             <TextField
@@ -364,7 +327,6 @@ const Login = (props) => {
                                                 }}
                                                 variant="filled"
                                                 InputProps={{
-                                                    // <-- This is where the toggle button is added.
                                                     endAdornment: (
                                                         <InputAdornment position="end">
                                                             {hidePassword ? (
@@ -400,7 +362,7 @@ const Login = (props) => {
                                                     }`}
                                                     type="submit"
                                                 >
-                                                    <p>Login</p>
+                                                    <p>{CONTENT.LOGIN}</p>
                                                 </button>
                                                 <div
                                                     className={`forgot-password_login ${
@@ -413,7 +375,11 @@ const Login = (props) => {
                                                         )
                                                     }
                                                 >
-                                                    <p>Forgot Password</p>
+                                                    <p>
+                                                        {
+                                                            CONTENT.FORGOT_PASSWORD
+                                                        }
+                                                    </p>
                                                 </div>
                                             </div>
                                         </form>
@@ -436,7 +402,7 @@ const Login = (props) => {
                                         </div>
                                         <div className="signUpOption">
                                             <p>
-                                                Don't have an account?{' '}
+                                                {CONTENT.NO_ACCOUNT_MESSAGE}{' '}
                                                 <span
                                                     onClick={() =>
                                                         props.history.replace(
@@ -446,7 +412,7 @@ const Login = (props) => {
                                                         )
                                                     }
                                                 >
-                                                    Sign Up
+                                                    {CONTENT.SIGN_UP}
                                                 </span>
                                             </p>
                                         </div>

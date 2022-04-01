@@ -502,7 +502,7 @@ const Register = (props) => {
                                             </button>
                                             <button
                                                 onClick={() =>
-                                                    handleChangeToggle('client')
+                                                    handleChangeToggle(CLIENT)
                                                 }
                                                 className={`client__button ${
                                                     roleState === CLIENT &&

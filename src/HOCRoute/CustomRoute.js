@@ -10,7 +10,6 @@ import {
 const CustomRoute = (props) => {
     const role = localStorage.getItem('role');
     let switchCondition = props.condition || props?.location?.condition;
-    debugger;
     switch (switchCondition) {
         case AGENCY:
             if (role === AGENCY) {
