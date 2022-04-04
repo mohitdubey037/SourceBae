@@ -1,6 +1,14 @@
 import React from 'react';
 import styles from './LandingPage.module.css';
-import { sequoia, innovation, plane, hireDevUpGradient } from './Logos';
+import {
+    sequoia,
+    innovation,
+    plane,
+    hireDevUpGradient,
+    hireSectionEndGradient,
+    developer,
+    laptops
+} from './Logos';
 import { LandingNavbar } from './Components/index';
 
 const CtaButton = ({ text = 'Hire Now' }) => {
@@ -100,19 +108,67 @@ const HireDevSection = () => {
             <div className={styles.hire_dev_features_list}>
                 <ul>
                     <li>Handpicked Agencies Bench Resources</li>
-                    <li>Monthly Payments NDA Protected</li>
+                    <li>
+                        <span className={styles.emphasize_golden}>
+                            Monthly Payments
+                        </span>{' '}
+                        NDA Protected
+                    </li>
                     <li>
                         Engineers With Experience At Top Brands In Many
                         Industries
                     </li>
                     <li>
-                        NO Individual Freelancers, We Only Work With Registered
-                        IT Agencies
+                        <span className={styles.emphasize_golden}>
+                            {' '}
+                            NO Individual Freelancers,
+                        </span>{' '}
+                        We Only Work With Registered IT Agencies
                     </li>
                     <li>Experienced Engineers, Available From NEXT Day</li>
                 </ul>
             </div>
             <CtaButton text="Hire Now" />
+        </section>
+    );
+};
+const HireAgencySection = () => {
+    return (
+        <section className={styles.hire_agency}>
+            <div className={styles.hire_agency_title}>Hire Agency</div>
+            <div className={styles.hire_agency_features_list}>
+                <ul>
+                    <li>
+                        <span className={styles.emphasize_golden}>
+                            NDA Protected, ZERO Commisions
+                        </span>{' '}
+                        Or Hidden Costs
+                    </li>
+                    <li>Thousand's Of Reviews By Clients</li>
+                    <li>Many Companies Checks into Agency's</li>
+                    <li>Hire Domain Expertise Agency</li>
+                    <li>
+                        Save Time, Save Cost,
+                        <span className={styles.emphasize_golden}>
+                            {' '}
+                            Hire In Just 4 Steps
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <CtaButton text="Hire Now" />
+        </section>
+    );
+};
+
+const SourceBaeProcessSteps = () => {
+    return (
+        <section className={styles.steps_section}>
+            <div className={styles.steps_title}>
+                <span className={styles.title}>
+                    Using SourceBae For Your Remote Hiring Is
+                </span>
+            </div>
         </section>
     );
 };
@@ -138,6 +194,20 @@ export default function LandingPage() {
                 <span className={styles.text_button}>Hire Now</span>
             </div>
             <HireDevSection />
+            <div className={styles.devillusholder}>
+                <img src={developer} alt="developer illustration" />
+            </div>
+            <HireAgencySection />
+            <div className={styles.devillusholder}>
+                <img src={laptops} alt="developer illustration" />
+            </div>
+            <div className={styles.hire_dev_title}>
+                <img
+                    src={hireSectionEndGradient}
+                    alt="end_gradient"
+                    width="100%"
+                />
+            </div>
         </div>
     );
 }
