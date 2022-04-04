@@ -1,12 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import './../register.css';
-import { useParams } from 'react-router';
 
 const RegisterClientForm2 = (props) => {
-    let { role } = useParams();
-
-    const handleCreateProfile = (event, role) => {
+    const handleCreateProfile = (event) => {
         let { name, value } = event.target;
         props.setClientProfileDetails({
             ...props.clientProfileDetails,
@@ -42,7 +39,7 @@ const RegisterClientForm2 = (props) => {
                     type="text"
                     name="userDesignation"
                     placeholder="User Designation"
-                    onChange={(event) => handleCreateProfile(event, role)}
+                    onChange={(event) => handleCreateProfile(event)}
                 />
                 {props.errors.userDesignationError && (
                     <p className="error_productForm">
@@ -61,7 +58,7 @@ const RegisterClientForm2 = (props) => {
                     name="companyName"
                     value={props.clientProfileDetails.companyName}
                     placeholder="Company Name"
-                    onChange={(event) => handleCreateProfile(event, role)}
+                    onChange={(event) => handleCreateProfile(event)}
                 />
                 {props.errors.companyNameError && (
                     <p className="error_productForm">

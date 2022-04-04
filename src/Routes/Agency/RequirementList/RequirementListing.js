@@ -19,10 +19,14 @@ import Spinner from '../../../Components/Spinner/Spinner';
 import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';
 import { useHistory } from 'react-router-dom';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
+import { useLocation } from 'react-router-dom';
 
 let currentPage = 1;
 let recommendedPage = 0;
 const RequirementListing = () => {
+    const search = useLocation().search;
+    const redirectRequirementId = new URLSearchParams(search).get('id');
+    console.log(redirectRequirementId); //101
     const recentOptions = [
         { value: 0, label: 'Today' },
         { value: 7, label: 'This Week' },
@@ -50,6 +54,7 @@ const RequirementListing = () => {
     const agencyId = localStorage.getItem('userId') || '';
     const [requirementsList, setRequirementsList] = useState({ docs: [] });
     const [recommendedList, setRecommendedList] = useState({ docs: [] });
+    const [redirectedList, setRedirectedList] = useState({ docs: [] });
     const routerHistory = useHistory();
 
     const [searchText, setSearchText] = useState('');
@@ -65,6 +70,19 @@ const RequirementListing = () => {
     const [developersList, setdevelopersList] = useState([]);
     const [selectedCard, setselectedCard] = useState('');
     const [isLoading, setisLoading] = useState(true);
+
+    // const redirectedRequirement = async () => {
+    //     if (redirectRequirementId) {
+    //         setisLoading(true);
+    //         setdevelopersList([]);
+    //         const url = `/api/${role}/hire-developers/all?agencyId=${agencyId}`;
+    //         const response = await instance
+    //             .get(url, { id: redirectRequirementId })
+    //             .then((res) => res.data);
+    //         setRedirectedList(response);
+    //         setisLoading(false);
+    //     }
+    // };
 
     const hireDevApi = async (config, val) => {
         setisLoading(true);

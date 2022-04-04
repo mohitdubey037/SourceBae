@@ -48,12 +48,13 @@ import store from './Redux/Store/store';
 import { CLIENT, AGENCY } from './shared/constants';
 import { ErrorBoundary } from 'react-error-boundary';
 import firebase from 'firebase/app';
-import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
+// import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequirements';
 import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
 import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest';
 import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
 import { useHistory } from 'react-router-dom';
+import LandingPage from './Routes/LandingPage/LandingPage';
 const App = () => {
     const history = useHistory();
     useEffect(() => {

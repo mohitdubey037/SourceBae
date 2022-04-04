@@ -18,7 +18,7 @@ import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 let currentPage = 1;
 export default function ActiveRequirements() {
     const [requirementsList, setRequirementsList] = useState({ docs: [] });
-    const routerHistory = useHistory();
+    const history = useHistory();
     const role = AGENCY;
 
     const [searchText, setSearchText] = useState('');
@@ -81,11 +81,11 @@ export default function ActiveRequirements() {
         let auth = cookie.load('Authorization');
 
         if (user && auth) {
-            routerHistory.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
+            history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         } else {
             alert('Please login to continue');
-            routerHistory.push({
-                pathname: `login/${AGENCY}`,
+            history.push({
+                pathname: AGENCYROUTES.LOGIN,
                 state: { isAgencyRequirement: true }
             });
         }
