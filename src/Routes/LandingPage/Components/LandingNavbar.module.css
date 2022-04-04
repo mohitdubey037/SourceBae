@@ -1,0 +1,7 @@
+.landing_page_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    padding: 1rem;
+}

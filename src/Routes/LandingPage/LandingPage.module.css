@@ -5,26 +5,24 @@
     --secondary-color: #554dde;
     --success-color: #4dde9e;
     --primary-text-color: #fff;
-    --translucent-text-color: rgba(255, 255, 255, 0.87);
+    --translucent-text-color: rgba(255, 255, 255, 0.6);
 }
 
+.emphasize {
+    color: #f44e77;
+}
+.emphasize_blue {
+    color: #554dde;
+    font-weight: 700;
+}
 .landing_page_wrapper {
     background-color: var(--primary-color);
     color: var(--primary-text-color);
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: 'Catamaran', sans-serif;
-}
-
-.landing_page_nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10%;
-    border: 1px solid red;
-    padding: 1rem;
 }
 
 .intro_section {
@@ -33,7 +31,6 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    border: 1px solid green;
 }
 
 .intro_section_heading {
@@ -57,6 +54,15 @@
     text-align: center;
 }
 
+.cta_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta_subtext {
+    margin-top: 1rem;
+}
 .cta_button {
     display: flex;
     justify-content: center;
@@ -65,7 +71,6 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-text-color);
-    /* background-color: var(--secondary-color); */
     border: 1px solid var(--secondary-color);
     border-radius: 0.5rem;
     cursor: pointer;
@@ -81,4 +86,102 @@
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+}
+
+.logobar_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logobar_intro_text {
+    text-align: center;
+    padding: 5rem 6rem;
+}
+
+.logo_row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.feature_section {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 0;
+}
+.feature_question {
+    display: flex;
+}
+
+.question {
+    font-size: 2rem;
+    padding: 0 2rem;
+}
+
+/* Fact Card */
+
+.fact_card {
+    display: flex;
+    padding: 1rem;
+    margin: 1rem;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 12px;
+}
+
+.card_left {
+    margin-right: 1rem;
+}
+.card_left_text {
+    display: block;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.card_right {
+    font-size: 14px;
+}
+
+.card_right li {
+    margin-bottom: 0.6rem;
+    color: var(--translucent-text-color);
+}
+
+.fact_action {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3rem;
+}
+
+.text_button {
+    color: var(--secondary-color);
+    margin-top: 1rem;
+}
+
+/* Hire Dev */
+
+.hire_dev {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hire_dev_title {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 3rem 0;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.hire_dev_features_list {
+    padding: 0 1.5rem;
 }
