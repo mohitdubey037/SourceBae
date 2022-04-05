@@ -364,18 +364,14 @@ function AgencyList(props) {
                                                                 <div className="quotationShortlistButton2 agencyListButton">
                                                                     {agency.isAgencyAskedForQuotation ? (
                                                                         <div
-                                                                            onClick={
-                                                                                () =>
-                                                                                    props.history.push(
-                                                                                        {
-                                                                                            pathname: `${CLIENTROUTES.PROJECT_DETAILS}/${projectId}/${agency._id}`,
-                                                                                            condition:
-                                                                                                CLIENT
-                                                                                        }
-                                                                                    )
-                                                                                // alert(
-                                                                                //     'ok'
-                                                                                // )
+                                                                            onClick={() =>
+                                                                                props.history.push(
+                                                                                    {
+                                                                                        pathname: `${CLIENTROUTES.PROJECT_DETAILS}/${projectId}/${agency._id}`,
+                                                                                        condition:
+                                                                                            CLIENT
+                                                                                    }
+                                                                                )
                                                                             }
                                                                         >
                                                                             <p>
