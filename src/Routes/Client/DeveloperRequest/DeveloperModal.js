@@ -31,6 +31,7 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                     item.developerStatus = 1;
                 }
             }
+
             return item;
         });
 
@@ -38,7 +39,6 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             (item) => item.developerStatus === 3
         );
 
-        console.log(acceptedDevs?.length, 'accepted devs', requiredResources);
         if (acceptedDevs?.length > requiredResources) {
             toast.error(
                 'Only ' + requiredResources + ' developers are required'
@@ -46,7 +46,6 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             limitReached = true;
             return;
         }
-        console.log(updatedDev, acceptedDevs.length, 'count');
 
         setDeveloperIds(updatedDev);
     };
@@ -58,12 +57,14 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
         setDeveloperIds(
             modal?.data?.developersShared?.map((item) => ({
                 developerStatus: item?.developerStatus,
-                developerId: item?.developerId?._id
+                developerId: item?.developerId?._id,
+                agencyId: item?.agencyId
             }))
         );
     }, [modal?.data?.developersShared]);
     const acceptMyDevsPatchCall = async () => {
         let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
+        // let newDev = developerIds?.map((item) => {item.developerStatus === 3});
         let body = {
             updateStatusByClient: '1',
             developerIds: developerIds

@@ -8,8 +8,10 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreOutlined';
+import { useHistory } from 'react-router-dom';
 
 function NotificationPanel({ setNotificationCount }) {
+    const history = useHistory();
     const Role = localStorage.getItem('role');
 
     const dispatch = useDispatch();
@@ -138,6 +140,22 @@ function NotificationPanel({ setNotificationCount }) {
                                                             __html: nd?.notificationData
                                                         }}
                                                     />
+
+                                                    {!!nd?.url && (
+                                                        <p
+                                                            onClick={() =>
+                                                                history.push(
+                                                                    `${nd?.url}`
+                                                                )
+                                                            }
+                                                            style={{
+                                                                cursor: 'pointer',
+                                                                color: '#00bcd4'
+                                                            }}
+                                                        >
+                                                            Check Here
+                                                        </p>
+                                                    )}
                                                 </Typography>
                                             </AccordionDetails>
                                         </Accordion>
