@@ -71,6 +71,26 @@ function HireDeveloper(props) {
             value: 'Frontend'
         },
         {
+            label: 'UI/UX',
+            value: 'UI/UX'
+        },
+        {
+            label: 'Tester',
+            value: 'Tester'
+        },
+        {
+            label: 'CMS',
+            value: 'CMS'
+        },
+        {
+            label: 'Project Management',
+            value: 'Project Management'
+        },
+        {
+            label: 'Support',
+            value: 'Support'
+        },
+        {
             label: 'Backend',
             value: 'Backend'
         },
@@ -101,6 +121,10 @@ function HireDeveloper(props) {
         {
             label: 'Web Developer',
             value: 'Web Developer'
+        },
+        {
+            label: 'AI/ML',
+            value: 'AI/ML'
         },
         {
             label: 'Security Developer',
