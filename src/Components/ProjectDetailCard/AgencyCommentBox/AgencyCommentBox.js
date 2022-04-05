@@ -179,7 +179,6 @@ const AgencyCommentBox = (props) => {
         if (file) {
             const formData = new FormData();
             formData.append('files', file, 'files.pdf');
-            debugger;
             if (apiData.agencyNegotiablePrice === '') {
                 toast.error('Negotiable price can not be empty');
                 setLoading(false);

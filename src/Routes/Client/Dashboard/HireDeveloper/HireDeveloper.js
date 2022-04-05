@@ -58,7 +58,7 @@ function HireDeveloper(props) {
                 [name]: value
             });
         } else {
-            value = value.replace(/[^\w\s]/gi, '');
+            // value = value.replace(/[^\w\s]/gi, '');
             setApiData({
                 ...apiData,
                 [name]: value
