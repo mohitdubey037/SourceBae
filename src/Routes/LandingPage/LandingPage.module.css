@@ -5,7 +5,7 @@
     --secondary-color: #554dde;
     --success-color: #4dde9e;
     --primary-text-color: #fff;
-    --translucent-text-color: rgba(255, 255, 255, 0.6);
+    --translucent-text-color: rgba(255, 255, 255, 0.87);
 }
 
 .emphasize {
@@ -208,4 +208,87 @@
 .devillusholder {
     display: flex;
     justify-content: center;
+}
+
+/* Steps Componenet */
+
+.steps_section {
+    padding: 1.5rem;
+}
+.steps_title {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.adjective_easy {
+    color: #554dde;
+    margin: 1.5rem 0;
+}
+
+.steps_frame {
+    display: flex;
+    flex-direction: column;
+}
+
+.step_container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.step_content {
+    padding-left: 3rem;
+}
+.step_number_indicator {
+    display: flex;
+    align-items: center;
+}
+.step_number {
+    padding: 1.5rem 1rem;
+    font-size: 2rem;
+    color: #4dde9e;
+    font-weight: 600;
+}
+.step_number_indicator img {
+    height: 50px;
+}
+.left_bar {
+    border: 0.2rem solid var(--translucent-text-color);
+    height: 15rem;
+    width: 5px;
+}
+
+.step_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.step_heading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.step_description {
+    color: var(--translucent-text-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.step_options li {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.list_item {
+    display: flex;
+    flex-direction: column;
+}
+
+.list_item_description {
+    color: var(--translucent-text-color);
+    font-weight: normal;
+    margin-bottom: 1rem;
 }
