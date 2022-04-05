@@ -346,7 +346,7 @@ const App = () => {
                     <CustomRoute
                         condition={CLIENT}
                         exact
-                        path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId`}
+                        path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId/:agencyId`}
                         component={AgencyList}
                     />
                     <CustomRoute
