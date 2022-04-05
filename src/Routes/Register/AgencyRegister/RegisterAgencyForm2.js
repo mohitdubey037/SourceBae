@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import './../register.css';
-import { useParams } from 'react-router';
 import { makeStyles } from '@material-ui/core';
-import { AGENCY } from '../../../shared/constants';
 
 const dateStyles = makeStyles((theme) => ({
     container: {
@@ -34,18 +32,14 @@ const dateStyles = makeStyles((theme) => ({
 }));
 
 const RegisterAgencyForm2 = (props) => {
-    let { role } = useParams();
-
     const dateClasses = dateStyles();
 
-    const handleCreateProfile = (event, role) => {
+    const handleCreateProfile = (event) => {
         let { name, value } = event.target;
-        if (role === AGENCY) {
-            props.setAgencyProfileDetails({
-                ...props.agencyProfileDetails,
-                [name]: value
-            });
-        }
+        props.setAgencyProfileDetails({
+            ...props.agencyProfileDetails,
+            [name]: value
+        });
     };
     const handleSocialPlatform = (event) => {
         const { name, value } = event.target;
@@ -75,7 +69,7 @@ const RegisterAgencyForm2 = (props) => {
                         name="agencyName"
                         placeholder="Agency Name"
                         value={props.agencyProfileDetails.agencyName}
-                        onChange={(event) => handleCreateProfile(event, role)}
+                        onChange={(event) => handleCreateProfile(event)}
                     />
                     {props.errors.agencyNameError && (
                         <p className="error_productForm">
@@ -95,7 +89,7 @@ const RegisterAgencyForm2 = (props) => {
                         name="agencyTeamSize"
                         placeholder="Team Strength"
                         value={props.agencyProfileDetails.agencyTeamSize}
-                        onChange={(event) => handleCreateProfile(event, role)}
+                        onChange={(event) => handleCreateProfile(event)}
                     />
                     {props.errors.agencyTeamSizeError && (
                         <p className="error_productForm">
@@ -126,7 +120,7 @@ const RegisterAgencyForm2 = (props) => {
                     name="incorporationDate"
                     max={new Date().toJSON().slice(0, 10)}
                     className={dateClasses.textField}
-                    onChange={(event) => handleCreateProfile(event, role)}
+                    onChange={(event) => handleCreateProfile(event)}
                 />
                 {props.errors.incorporationDateError && (
                     <p className="error_productForm">

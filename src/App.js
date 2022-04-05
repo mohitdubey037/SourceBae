@@ -352,6 +352,12 @@ const App = () => {
                     <CustomRoute
                         condition={CLIENT}
                         exact
+                        path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId`}
+                        component={AgencyList}
+                    />
+                    <CustomRoute
+                        condition={CLIENT}
+                        exact
                         path={CLIENTROUTES.PROFILE}
                         component={ClientProfile}
                     />

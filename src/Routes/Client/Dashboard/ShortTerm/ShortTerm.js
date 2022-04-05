@@ -208,7 +208,7 @@ function ShortTerm(props) {
             .post(`api/${Role}/projects/create-short-term`, apiData)
             .then(function (response) {
                 setLoading(false);
-                props.history.replace(
+                props.history.push(
                     `${CLIENTROUTES.AGENCIES_LIST}/${response.project._id}`
                 );
             })

@@ -243,14 +243,20 @@ const Register = (props) => {
         let existingToken = cookie.load('Authorization');
         setRoleState(existingRole);
         if (existingRole && existingRole !== '' && existingToken) {
-            window.location.href = `/login/${existingRole}`;
+            if (existingRole === AGENCY) {
+                props.history.push(AGENCYROUTES.LOGIN);
+            } else {
+                props.history.push(CLIENTROUTES.LOGIN);
+            }
         } else {
             setRoleState(role);
         }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('role', roleState);
+        let existingToken = cookie.load('Authorization');
+        !!roleState && localStorage.setItem('role', roleState);
+        if (existingToken) return;
         if (roleState === '' || roleState === AGENCY) {
             props.history.push(AGENCYROUTES.REGISTER);
         } else {
