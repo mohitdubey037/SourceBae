@@ -1,3 +1,6 @@
+.emphasize {
+    color: #f44e77;
+}
 .logobar_container {
     display: flex;
     flex-direction: column;

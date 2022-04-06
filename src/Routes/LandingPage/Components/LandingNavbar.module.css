@@ -9,7 +9,7 @@
     display: none;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
     .landing_page_nav {
         padding: 1.5rem 5rem;
     }

@@ -26,3 +26,29 @@
     font-size: 1rem;
     text-align: center;
 }
+
+.intro_section_subtitle_web {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .intro_section {
+        padding: 4rem;
+    }
+    .intro_section_heading {
+        font-size: 2.5rem;
+    }
+    .intro_section_subheading {
+        font-size: 1.5rem;
+    }
+    .intro_section_subtitle {
+        display: none;
+    }
+    .intro_section_subtitle_web {
+        display: block;
+        font-size: 1rem;
+    }
+    .intro_section_subheading {
+        width: 50%;
+    }
+}
