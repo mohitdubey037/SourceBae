@@ -5,3 +5,42 @@
     height: 10%;
     padding: 1rem;
 }
+.nav_menu_web {
+    display: none;
+}
+
+@media only screen and (min-width: 992px) {
+    .landing_page_nav {
+        padding: 1.5rem 5rem;
+    }
+    .mobile {
+        display: none;
+    }
+    .nav_menu_web {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav_menu_web a {
+        text-decoration: none;
+        color: #fff;
+        padding: 0.5rem 1rem;
+    }
+
+    .nav_menu_web a + a {
+        margin-left: 1rem;
+    }
+
+    .nav_login_btn {
+        background: rgba(85, 77, 222, 1);
+        border-radius: 6px;
+        color: #fff;
+        padding: 0.5rem 2.5rem;
+        border: none;
+    }
+
+    .nav_signup_btn {
+        color: rgba(85, 77, 222, 1);
+    }
+}
