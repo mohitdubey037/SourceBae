@@ -1,0 +1,21 @@
+.connect_plans_section {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+}
+
+.heart_holder {
+    padding: 1rem 0;
+}
+.heart_holder img {
+    height: 40px;
+    object-fit: contain;
+}
+.connect_text_container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem 2rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}

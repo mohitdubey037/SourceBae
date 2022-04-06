@@ -1,0 +1,22 @@
+.hire_agency_title {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 3rem 0;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.hire_agency {
+    display: flex;
+    flex-direction: column;
+    background-image: url('../Logos/hire_section_end_bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hire_agency_features_list {
+    padding: 0 1.5rem;
+}
+.hire_agency_features_list li {
+    margin-bottom: 1.5rem;
+}

@@ -11,6 +11,8 @@ import step2 from './step2.svg';
 import step3 from './step3.svg';
 import step4 from './step4.svg';
 import step5 from './step5.svg';
+import star from './star.svg';
+import connectHeart from './connect_heart.svg';
 
 export {
     sequoia,
@@ -25,5 +27,7 @@ export {
     step2,
     step3,
     step4,
-    step5
+    step5,
+    star,
+    connectHeart
 };

@@ -1,0 +1,28 @@
+.intro_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.intro_section_heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--translucent-text-color);
+}
+
+.intro_section_subheading {
+    display: flex;
+    justify-content: center;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.67);
+    font-size: 1rem;
+    text-align: center;
+}

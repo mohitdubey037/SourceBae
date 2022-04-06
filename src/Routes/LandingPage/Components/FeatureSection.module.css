@@ -1,0 +1,13 @@
+.feature_section {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 0;
+}
+.feature_question {
+    display: flex;
+}
+
+.question {
+    font-size: 2rem;
+    padding: 0 2rem;
+}

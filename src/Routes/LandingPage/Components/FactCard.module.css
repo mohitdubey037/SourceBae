@@ -1,0 +1,43 @@
+.fact_card {
+    display: flex;
+    padding: 1rem;
+    margin: 1rem;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 12px;
+}
+
+.card_left {
+    margin-right: 1rem;
+}
+.card_left_text {
+    display: block;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.card_right {
+    font-size: 14px;
+}
+
+.card_right li {
+    margin-bottom: 0.6rem;
+    color: var(--translucent-text-color);
+}
+
+.fact_action {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3rem;
+}
+
+.text_button {
+    color: var(--secondary-color);
+    margin-top: 1rem;
+}
