@@ -3,7 +3,12 @@ const IntroSection = () => {
     return (
         <section className={styles.intro_section}>
             <div className={styles.intro_section_heading}>
-                <span>India's #1 Marketplace For Hiring Remote Developer</span>
+                <span className={styles.intro_heading}>
+                    India's #1 Marketplace For Hiring Remote Developer
+                </span>
+                <span className={styles.intro_heading_web}>
+                    India's Leading Marketplace For Hiring Remote Developer
+                </span>
             </div>
             <div className={styles.intro_section_subheading}>
                 <span className={styles.intro_section_subtitle}>

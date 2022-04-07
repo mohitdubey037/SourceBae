@@ -49,6 +49,18 @@
     margin-top: 1rem;
 }
 
+.feature_section_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+    .feature_section_wrapper {
+        padding: 3rem;
+        flex-direction: row;
+    }
+}
+
 /* Testimonials Section */
 
 /* Footer */

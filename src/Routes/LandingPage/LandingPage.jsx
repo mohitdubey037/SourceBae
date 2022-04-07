@@ -28,8 +28,10 @@ export default function LandingPage() {
                 </span>
             </CtaSection>
             <LogoBar />
-            <FeatureSection />
-            <FactCard />
+            <div className={styles.feature_section_wrapper}>
+                <FeatureSection />
+                <FactCard />
+            </div>
             <div className={styles.fact_action}>
                 <span className={styles.action_text}>
                     {' '}

@@ -11,3 +11,9 @@
     font-size: 2rem;
     padding: 0 2rem;
 }
+
+@media only screen and (min-width: 768px) {
+    .feature_section_wrapper {
+        flex-direction: row;
+    }
+}
