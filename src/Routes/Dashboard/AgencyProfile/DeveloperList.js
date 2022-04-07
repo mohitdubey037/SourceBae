@@ -90,8 +90,8 @@ function DeveloperList(props) {
         let url = `/api/${Role}/developers/update/${developerId}`;
         instance
             .patch(url, data)
-            .then((res) => {})
-            .catch((err) => {});
+            .then((res) => { })
+            .catch((err) => { });
     };
 
     const handleChangeToggle = (event, ind) => {
@@ -123,7 +123,7 @@ function DeveloperList(props) {
                 );
                 setDevelopers(tempDevelopers);
             })
-            .catch((error) => {});
+            .catch((error) => { });
     };
 
     const IndexSetter = (index) => {
@@ -136,9 +136,6 @@ function DeveloperList(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect(() => {}, [open]);
-
-    useEffect(() => {}, [developerId]);
 
     const deleteFunctionality = (agencyId) => {
         setDeveloperId(agencyId);
@@ -167,23 +164,20 @@ function DeveloperList(props) {
                                     <div className="developerNameExp">
                                         <div className="developerName">
                                             <div>
-                                                <h2>{`${
-                                                    developer.firstName
+                                                <h2>{`${developer.firstName
                                                         .charAt(0)
                                                         .toUpperCase() +
                                                     developer.firstName.slice(1)
-                                                } ${
-                                                    developer.lastName
+                                                    } ${developer.lastName
                                                         .charAt(0)
                                                         .toUpperCase() +
                                                     developer.lastName.slice(1)
-                                                }`}</h2>
+                                                    }`}</h2>
                                             </div>
                                             <div
-                                                className={`rounded_developerList ${
-                                                    toggleIndexes[index] &&
+                                                className={`rounded_developerList ${toggleIndexes[index] &&
                                                     'conditionalColor'
-                                                }`}
+                                                    }`}
                                             ></div>
                                         </div>
                                         <div className="developerExp">
@@ -238,12 +232,10 @@ function DeveloperList(props) {
                                                 </div>
                                                 <div>
                                                     <p>Budget</p>
-                                                    <h6>{`${
-                                                        developer.developerPriceRange
-                                                    }₹-${
-                                                        developer.developerPriceRange +
+                                                    <h6>{`${developer.developerPriceRange
+                                                        }₹-${developer.developerPriceRange +
                                                         10 * 1000
-                                                    }₹`}</h6>
+                                                        }₹`}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -262,7 +254,7 @@ function DeveloperList(props) {
                                                         display:
                                                             open &&
                                                             toggleIndexes ===
-                                                                index &&
+                                                            index &&
                                                             'none'
                                                     }}
                                                     className="availability_toggle"
@@ -285,7 +277,7 @@ function DeveloperList(props) {
                                                                     <AntSwitch
                                                                         checked={
                                                                             !!toggleIndexes[
-                                                                                index
+                                                                            index
                                                                             ]
                                                                         }
                                                                         onChange={(
