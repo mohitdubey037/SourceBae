@@ -27,8 +27,10 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             if (item.developerId === newDevId) {
                 if (item.developerStatus === 1 || item.developerStatus === 2) {
                     item.developerStatus = 3;
+                    item.isUpdated = true
                 } else {
                     item.developerStatus = 1;
+                    delete item?.isUpdated
                 }
             }
 
@@ -46,7 +48,6 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
             limitReached = true;
             return;
         }
-
         setDeveloperIds(updatedDev);
     };
 

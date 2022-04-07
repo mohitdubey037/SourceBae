@@ -33,7 +33,7 @@ function NotificationPanel({ setNotificationCount }) {
                         .length
                 );
             })
-            .catch((err) => {});
+            .catch((err) => { });
     };
 
     useEffect(() => {
@@ -51,14 +51,14 @@ function NotificationPanel({ setNotificationCount }) {
                 .then((response) => {
                     handleGetNotification();
                 })
-                .catch((err) => {});
+                .catch((err) => { });
         } else {
             instance
                 .patch(`/api/${Role}/notifications/update`)
                 .then((response) => {
                     handleGetNotification();
                 })
-                .catch((err) => {});
+                .catch((err) => { });
         }
     };
 
@@ -106,13 +106,11 @@ function NotificationPanel({ setNotificationCount }) {
                                             onClick={() =>
                                                 handleNotificationRead(nd?._id)
                                             }
-                                            className={`${
-                                                !nd?.isNotificationRead &&
+                                            className={`${!nd?.isNotificationRead &&
                                                 'notificationPoint'
-                                            } ${
-                                                nd?.isNotificationRead &&
+                                                } ${nd?.isNotificationRead &&
                                                 'conditionalFilter_Sidebar'
-                                            }`}
+                                                }`}
                                         >
                                             <AccordionSummary
                                                 aria-controls="panel1a-content"
@@ -143,11 +141,7 @@ function NotificationPanel({ setNotificationCount }) {
 
                                                     {!!nd?.url && (
                                                         <p
-                                                            onClick={() =>
-                                                                history.push(
-                                                                    `${nd?.url}`
-                                                                )
-                                                            }
+                                                            onClick={() => window.location.assign(nd?.url)}
                                                             style={{
                                                                 cursor: 'pointer',
                                                                 color: '#00bcd4'
