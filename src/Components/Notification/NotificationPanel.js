@@ -8,10 +8,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreOutlined';
-import { useHistory } from 'react-router-dom';
 
 function NotificationPanel({ setNotificationCount }) {
-    const history = useHistory();
     const Role = localStorage.getItem('role');
 
     const dispatch = useDispatch();
@@ -33,7 +31,7 @@ function NotificationPanel({ setNotificationCount }) {
                         .length
                 );
             })
-            .catch((err) => { });
+            .catch((err) => {});
     };
 
     useEffect(() => {
@@ -51,14 +49,14 @@ function NotificationPanel({ setNotificationCount }) {
                 .then((response) => {
                     handleGetNotification();
                 })
-                .catch((err) => { });
+                .catch((err) => {});
         } else {
             instance
                 .patch(`/api/${Role}/notifications/update`)
                 .then((response) => {
                     handleGetNotification();
                 })
-                .catch((err) => { });
+                .catch((err) => {});
         }
     };
 
@@ -106,11 +104,13 @@ function NotificationPanel({ setNotificationCount }) {
                                             onClick={() =>
                                                 handleNotificationRead(nd?._id)
                                             }
-                                            className={`${!nd?.isNotificationRead &&
+                                            className={`${
+                                                !nd?.isNotificationRead &&
                                                 'notificationPoint'
-                                                } ${nd?.isNotificationRead &&
+                                            } ${
+                                                nd?.isNotificationRead &&
                                                 'conditionalFilter_Sidebar'
-                                                }`}
+                                            }`}
                                         >
                                             <AccordionSummary
                                                 aria-controls="panel1a-content"
@@ -141,7 +141,11 @@ function NotificationPanel({ setNotificationCount }) {
 
                                                     {!!nd?.url && (
                                                         <p
-                                                            onClick={() => window.location.assign(nd?.url)}
+                                                            onClick={() =>
+                                                                window.location.assign(
+                                                                    nd?.url
+                                                                )
+                                                            }
                                                             style={{
                                                                 cursor: 'pointer',
                                                                 color: '#00bcd4'
