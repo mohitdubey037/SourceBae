@@ -21,35 +21,60 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
     let requiredResources = modal?.data?.numberOfResourcesRequired;
     //if developerStatus = 3 then it means required resource is accepted
 
-    const selectedMyDev = (newDevId) => {
+    const selectedMyDev = (newDevId, doAdd) => {
+
+
         limitReached = false;
-        const updatedDev = developerIds?.map((item) => {
-            if (item.developerId === newDevId) {
-                if (item.developerStatus === 1 || item.developerStatus === 2) {
-                    item.developerStatus = 3;
-                    item.isUpdated = true
-                } else {
-                    item.developerStatus = 1;
-                    delete item?.isUpdated
-                }
-            }
-
-            return item;
-        });
-
-        let acceptedDevs = updatedDev?.filter(
-            (item) => item.developerStatus === 3
-        );
-
-        if (acceptedDevs?.length > requiredResources) {
-            toast.error(
-                'Only ' + requiredResources + ' developers are required'
+        let updatedDev = []
+        if (doAdd) {
+            let acceptedDevs = developerIds?.filter(
+                (item) => item.developerStatus === 3
             );
-            limitReached = true;
-            return;
+
+            if (acceptedDevs?.length >= requiredResources) {
+                toast.error(
+                    'Only ' + requiredResources + ' developers are required'
+                );
+                limitReached = true;
+                updatedDev = developerIds
+                return;
+            }
+            updatedDev = developerIds?.map((item) => {
+                if (item.developerId === newDevId) {
+                    if (item.developerStatus === 1 || item.developerStatus === 2) {
+                        item.developerStatus = 3;
+                        item.isUpdated = true
+                    } else {
+                        item.developerStatus = 1;
+                        delete item?.isUpdated
+                    }
+                }
+
+                return item;
+            });
+        } else {
+            updatedDev = developerIds?.map((item) => {
+                if (item.developerId === newDevId) {
+                    if (item.developerStatus === 1 || item.developerStatus === 2) {
+                        item.developerStatus = 3;
+                        item.isUpdated = true
+                    } else {
+                        item.developerStatus = 1;
+                        delete item?.isUpdated
+                    }
+                }
+
+                return item;
+            });
         }
+
         setDeveloperIds(updatedDev);
     };
+
+    useEffect(() => {
+        console.log(developerIds)
+    }, [developerIds])
+
 
     useEffect(() => {
         requiredResources = modal?.data?.numberOfResourcesRequired;
@@ -146,7 +171,8 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                                             type="checkbox"
                                             onChange={() =>
                                                 selectedMyDev(
-                                                    item?.developerId?._id
+                                                    item?.developerId?._id,
+                                                    !isChecked
                                                 )
                                             }
                                             className={
