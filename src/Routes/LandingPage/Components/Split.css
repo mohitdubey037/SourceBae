@@ -1,0 +1,47 @@
+.gui-split-button {
+    display: inline-flex;
+    border-radius: var(--radius);
+    background: var(--theme);
+    color: var(--ontheme);
+    fill: var(--ontheme);
+
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.gui-split-button button {
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    border: none;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 1ch;
+    white-space: nowrap;
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+
+    padding-block: 1.25ch;
+    padding-inline: 2.5ch;
+
+    color: var(--ontheme);
+    outline-color: var(--theme);
+    outline-offset: -5px;
+
+    /* &:is(:hover, :focus-visible) {
+        background: var(--theme-hover);
+        color: var(--ontheme);
+
+        & > svg {
+            stroke: currentColor;
+            fill: none;
+        }
+    }
+
+    &:active {
+        background: var(--theme-active);
+    } */
+}

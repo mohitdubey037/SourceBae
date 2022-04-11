@@ -1,5 +1,5 @@
 .steps_section {
-    padding: 1.5rem;
+    padding: 3.5rem;
 }
 .steps_title {
     display: flex;
@@ -77,4 +77,34 @@
     color: var(--translucent-text-color);
     font-weight: normal;
     margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .steps_frame {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .step_container {
+        display: flex;
+        align-items: flex-start;
+        width: 30%;
+        height: 100%;
+    }
+    .step_container + .step_container {
+        margin-left: 2.5rem;
+    }
+
+    .steps_frame :nth-child(4) {
+        margin-left: 0rem;
+    }
+
+    .step_number,
+    .step_heading {
+        font-size: 1.5rem;
+    }
+
+    .step_description {
+        font-size: 1rem;
+    }
 }

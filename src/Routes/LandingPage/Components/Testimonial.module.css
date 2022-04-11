@@ -10,7 +10,7 @@
 .testimonial_container {
     display: flex;
     padding: 3rem 0;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 /* testimonials_card */
@@ -60,4 +60,11 @@
 
 .testimonial_content {
     padding: 1rem 0;
+}
+
+@media (min-width: 768px) {
+    .testimonial_card {
+        min-width: 20vw;
+        width: 45%;
+    }
 }

@@ -1,5 +1,5 @@
 import styles from './LogoBar.module.css';
-import { sequoia, innovation } from '../Logos';
+import { sequoia, innovation, innowrap, smartData, torinit } from '../Logos';
 const LogoBar = () => {
     return (
         <section className={styles.logobar_container}>
@@ -10,6 +10,9 @@ const LogoBar = () => {
             <div className={styles.logo_row}>
                 <img src={sequoia} alt="sequoia" />
                 <img src={innovation} alt="sequoia" />
+                <img src={innowrap} alt="sequoia" />
+                <img src={torinit} alt="sequoia" />
+                <img src={smartData} alt="sequoia" />
             </div>
         </section>
     );

@@ -1,3 +1,8 @@
+.emphasize_blue {
+    color: #554dde;
+    font-weight: 700;
+}
+
 .feature_section {
     display: flex;
     flex-direction: column;
@@ -8,12 +13,18 @@
 }
 
 .question {
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 0 2rem;
 }
 
 @media only screen and (min-width: 768px) {
     .feature_section_wrapper {
         flex-direction: row;
+    }
+    .feature_section {
+        width: 28%;
+    }
+    .feature_question {
+        flex-direction: column;
     }
 }

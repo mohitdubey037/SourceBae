@@ -56,11 +56,21 @@
 
 @media only screen and (min-width: 768px) {
     .feature_section_wrapper {
-        padding: 3rem;
+        padding: 6rem;
         flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .intro_container {
+        background-image: url('./Logos/IntroCard.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-y: 8rem;
+        background-size: 28%;
+    }
+
+    .fact_action {
+        font-size: 2rem;
+        padding: 2rem 4rem;
     }
 }
-
-/* Testimonials Section */
-
-/* Footer */
