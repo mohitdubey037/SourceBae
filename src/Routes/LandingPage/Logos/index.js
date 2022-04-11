@@ -18,6 +18,10 @@ import smartData from './smartData.svg';
 import torinit from './torinit.svg';
 import tellPlansCard from './TellPlansCard.svg';
 import testimonialsCard from './testimonial.svg';
+import hireAgencySuitcase from './hire_agency_suitcase.svg';
+import hireDevAngles from './hire_developer_angles.svg';
+import listDevs from './list_devs.svg';
+import activeReq from './active_requirements.svg';
 
 export {
     sequoia,
@@ -39,5 +43,9 @@ export {
     smartData,
     torinit,
     tellPlansCard,
-    testimonialsCard
+    testimonialsCard,
+    activeReq,
+    hireAgencySuitcase,
+    hireDevAngles,
+    listDevs
 };

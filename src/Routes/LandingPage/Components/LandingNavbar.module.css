@@ -43,4 +43,49 @@
     .nav_signup_btn {
         color: rgba(85, 77, 222, 1);
     }
+
+    .dropdown_content {
+        display: none;
+        position: absolute;
+        background-color: #000000;
+        min-width: 160px;
+        z-index: 1;
+        background: #0b0b0b;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        box-sizing: border-box;
+        box-shadow: 0px 25px 35px rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+    }
+
+    .services_dropdown {
+        display: block;
+    }
+    .dropdown_content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        margin-left: 0;
+        display: block;
+    }
+
+    .dropdown_item {
+        display: flex;
+        align-items: center;
+        line-height: 0;
+    }
+
+    .dropdown_content a + a {
+        margin-left: 0;
+    }
+
+    .dropdown_item img {
+        margin-right: 1rem;
+    }
+    .dropdown_content a:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Show the dropdown menu on hover */
+    .services_dropdown:hover .dropdown_content {
+        display: block;
+    }
 }

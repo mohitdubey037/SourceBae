@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './LandingPage.module.css';
-import './Components/Split.css';
 import {
     LandingNavbar,
     CtaButton,
