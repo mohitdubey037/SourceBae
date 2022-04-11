@@ -17,3 +17,29 @@
     justify-content: space-between;
     padding: 0 1rem;
 }
+.logo_row :nth-child(2) ~ img {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .logobar_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .logobar_intro_text {
+        width: 18%;
+        text-align: left;
+        padding: 1rem;
+    }
+    .logo_row {
+        width: 70%;
+    }
+    .logo_row img {
+        width: 15%;
+    }
+    .logo_row :nth-child(2) ~ img {
+        display: block;
+    }
+}

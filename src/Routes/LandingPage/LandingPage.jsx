@@ -20,13 +20,15 @@ export default function LandingPage() {
     return (
         <div className={styles.landing_page_wrapper}>
             <LandingNavbar />
-            <IntroSection />
-            <CtaSection>
-                <CtaButton text="Hire Now - it's Free" />
-                <span className={styles.cta_subtext}>
-                    Active jobs requirement
-                </span>
-            </CtaSection>
+            <div className={styles.intro_container}>
+                <IntroSection />
+                <CtaSection>
+                    <CtaButton text="Hire Now - it's Free" />
+                    <span className={styles.cta_subtext}>
+                        Active jobs requirement
+                    </span>
+                </CtaSection>
+            </div>
             <LogoBar />
             <div className={styles.feature_section_wrapper}>
                 <FeatureSection />

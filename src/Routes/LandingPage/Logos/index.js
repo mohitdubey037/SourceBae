@@ -13,6 +13,11 @@ import step4 from './step4.svg';
 import step5 from './step5.svg';
 import star from './star.svg';
 import connectHeart from './connect_heart.svg';
+import innowrap from './innowrap.svg';
+import smartData from './smartData.svg';
+import torinit from './torinit.svg';
+import tellPlansCard from './TellPlansCard.svg';
+import testimonialsCard from './testimonial.svg';
 
 export {
     sequoia,
@@ -29,5 +34,10 @@ export {
     step4,
     step5,
     star,
-    connectHeart
+    connectHeart,
+    innowrap,
+    smartData,
+    torinit,
+    tellPlansCard,
+    testimonialsCard
 };
