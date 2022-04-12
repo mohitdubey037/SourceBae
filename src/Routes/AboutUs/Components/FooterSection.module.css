@@ -1,0 +1,45 @@
+.footer {
+    background: rgba(85, 77, 222, 0.15);
+    padding: 5rem 1rem;
+}
+
+.centered_logo {
+    display: flex;
+    justify-content: center;
+    padding: 4rem;
+}
+
+.centered_logo img {
+    width: 100%;
+}
+
+.detail_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail_block + .detail_block {
+    margin-top: 2rem;
+}
+
+.block_heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.block_content {
+    font-size: 0.8rem;
+    color: var(--translucent60-text-color);
+}
+
+@media (min-width: 768px) {
+    .footer {
+        display: flex;
+    }
+
+    .centered_logo {
+        height: 200px;
+        margin-right: 10%;
+    }
+}

@@ -21,35 +21,60 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
     let requiredResources = modal?.data?.numberOfResourcesRequired;
     //if developerStatus = 3 then it means required resource is accepted
 
-    const selectedMyDev = (newDevId) => {
+    const selectedMyDev = (newDevId, doAdd) => {
+
+
         limitReached = false;
-        const updatedDev = developerIds?.map((item) => {
-            if (item.developerId === newDevId) {
-                if (item.developerStatus === 1 || item.developerStatus === 2) {
-                    item.developerStatus = 3;
-                } else {
-                    item.developerStatus = 1;
-                }
-            }
-            return item;
-        });
-
-        let acceptedDevs = updatedDev?.filter(
-            (item) => item.developerStatus === 3
-        );
-
-        console.log(acceptedDevs?.length, 'accepted devs', requiredResources);
-        if (acceptedDevs?.length > requiredResources) {
-            toast.error(
-                'Only ' + requiredResources + ' developers are required'
+        let updatedDev = []
+        if (doAdd) {
+            let acceptedDevs = developerIds?.filter(
+                (item) => item.developerStatus === 3
             );
-            limitReached = true;
-            return;
+
+            if (acceptedDevs?.length >= requiredResources) {
+                toast.error(
+                    'Only ' + requiredResources + ' developers are required'
+                );
+                limitReached = true;
+                updatedDev = developerIds
+                return;
+            }
+            updatedDev = developerIds?.map((item) => {
+                if (item.developerId === newDevId) {
+                    if (item.developerStatus === 1 || item.developerStatus === 2) {
+                        item.developerStatus = 3;
+                        item.isUpdated = true
+                    } else {
+                        item.developerStatus = 1;
+                        delete item?.isUpdated
+                    }
+                }
+
+                return item;
+            });
+        } else {
+            updatedDev = developerIds?.map((item) => {
+                if (item.developerId === newDevId) {
+                    if (item.developerStatus === 1 || item.developerStatus === 2) {
+                        item.developerStatus = 3;
+                        item.isUpdated = true
+                    } else {
+                        item.developerStatus = 1;
+                        delete item?.isUpdated
+                    }
+                }
+
+                return item;
+            });
         }
-        console.log(updatedDev, acceptedDevs.length, 'count');
 
         setDeveloperIds(updatedDev);
     };
+
+    useEffect(() => {
+        console.log(developerIds)
+    }, [developerIds])
+
 
     useEffect(() => {
         requiredResources = modal?.data?.numberOfResourcesRequired;
@@ -58,12 +83,14 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
         setDeveloperIds(
             modal?.data?.developersShared?.map((item) => ({
                 developerStatus: item?.developerStatus,
-                developerId: item?.developerId?._id
+                developerId: item?.developerId?._id,
+                agencyId: item?.agencyId
             }))
         );
     }, [modal?.data?.developersShared]);
     const acceptMyDevsPatchCall = async () => {
         let url = `/api/${role}/hire-developers/share-developer/${selectedCard}`;
+        // let newDev = developerIds?.map((item) => {item.developerStatus === 3});
         let body = {
             updateStatusByClient: '1',
             developerIds: developerIds
@@ -144,7 +171,8 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
                                             type="checkbox"
                                             onChange={() =>
                                                 selectedMyDev(
-                                                    item?.developerId?._id
+                                                    item?.developerId?._id,
+                                                    !isChecked
                                                 )
                                             }
                                             className={

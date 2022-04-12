@@ -11,7 +11,8 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@material-ui/core/TextField';
 function Information(props) {
     const Role = localStorage.getItem('role');
-    const day = moment(`${props?.data?.incorporationDate}`).format(
+    console.log(props?.data?.incorporationDate)
+    const day = moment(props?.data?.incorporationDate).format(
         'MM-DD-YYYY'
     );
 
@@ -57,9 +58,8 @@ function Information(props) {
         },
         {
             title: 'Fixed Budget',
-            inputValue: `${props?.data?.agencyMonthlyBudget}₹-${
-                props?.data?.agencyMonthlyBudget + 2 * 1000
-            }₹`,
+            inputValue: `${props?.data?.agencyMonthlyBudget}₹-${props?.data?.agencyMonthlyBudget + 2 * 1000
+                }₹`,
             disabled: props?.id ? true : false
         },
         {
@@ -69,7 +69,7 @@ function Information(props) {
         }
     ]);
 
-    const [inDate, setInDate] = useState(new Date());
+    const [inDate, setInDate] = useState(day);
     const [isDisabled, setIsdisabled] = useState(true);
 
     const handleDisabled = () => {
@@ -77,7 +77,7 @@ function Information(props) {
     };
     const handleDisabledSave = () => {
         setIsdisabled(true);
-        updateAgency();
+        updateAgency()
     };
 
     const handleDisabledCancel = () => {
@@ -119,7 +119,7 @@ function Information(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inDate]);
 
-    const updateAgency = () => {
+    const updateAgency = async () => {
         const ay = arr.find((a) => a.title === 'Agency Website');
         if (handleErrorsValidation(ay.inputValue) === true) {
             const id = localStorage.getItem('userId');
@@ -134,7 +134,7 @@ function Information(props) {
                     }
                 ],
                 incorporationDate: moment(inDate).format('YYYY-MM-DD')
-            });
+            }).then(() => window.location.reload())
         }
     };
     return (
@@ -143,18 +143,18 @@ function Information(props) {
                 <div className="innerInformation">
                     {Role === AGENCY
                         ? props.data.isAgencyVerified && (
-                              <div className="editableBtn">
-                                  <div className="information_parent">
-                                      {/* <img src={Information_edit} alt="information_edit" /> */}
-                                      <p>INFORMATION</p>
-                                  </div>
-                                  <i
-                                      onClick={handleDisabled}
-                                      class="fa fa-pencil-square-o Edit-icon_information"
-                                      aria-hidden="true"
-                                  ></i>
-                              </div>
-                          )
+                            <div className="editableBtn">
+                                <div className="information_parent">
+                                    {/* <img src={Information_edit} alt="information_edit" /> */}
+                                    <p>INFORMATION</p>
+                                </div>
+                                <i
+                                    onClick={handleDisabled}
+                                    class="fa fa-pencil-square-o Edit-icon_information"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
+                        )
                         : null}
                     <div className="informationForm">
                         <div className="informationInputForm">
@@ -171,7 +171,7 @@ function Information(props) {
                                             </ul>
                                             {value.title ===
                                                 'Date of Incorporation' &&
-                                            !isDisabled ? (
+                                                !isDisabled ? (
                                                 <LocalizationProvider
                                                     dateAdapter={AdapterDateFns}
                                                     style={{

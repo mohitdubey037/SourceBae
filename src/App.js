@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Page from './Routes/L_About_us/Components/Page';
+import AboutUs from './Routes/AboutUs/AboutUs';
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
 import Register from './Routes/Register/Register.jsx';
@@ -48,13 +48,13 @@ import store from './Redux/Store/store';
 import { CLIENT, AGENCY } from './shared/constants';
 import { ErrorBoundary } from 'react-error-boundary';
 import firebase from 'firebase/app';
-import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
+// import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequirements';
 import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
 import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest';
 import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
 import { useHistory } from 'react-router-dom';
-// import LandingPage from './Routes/LandingPage/LandingPage';
+import LandingPage from './Routes/LandingPage/LandingPage';
 const App = () => {
     const history = useHistory();
     useEffect(() => {
@@ -116,7 +116,11 @@ const App = () => {
                         path={USERROUTES.NOT_FOUND}
                         component={PageNotFound}
                     />
-                    <Route exact path={USERROUTES.ABOUT_US} component={Page} />
+                    <Route
+                        exact
+                        path={USERROUTES.ABOUT_US}
+                        component={AboutUs}
+                    />
                     <Route
                         exact
                         path={USERROUTES.ACTIVE_REQUIREMENTS}

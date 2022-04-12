@@ -138,6 +138,22 @@ function NotificationPanel({ setNotificationCount }) {
                                                             __html: nd?.notificationData
                                                         }}
                                                     />
+
+                                                    {!!nd?.url && (
+                                                        <p
+                                                            onClick={() =>
+                                                                window.location.assign(
+                                                                    nd?.url
+                                                                )
+                                                            }
+                                                            style={{
+                                                                cursor: 'pointer',
+                                                                color: '#00bcd4'
+                                                            }}
+                                                        >
+                                                            Check Here
+                                                        </p>
+                                                    )}
                                                 </Typography>
                                             </AccordionDetails>
                                         </Accordion>

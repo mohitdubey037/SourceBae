@@ -1,0 +1,66 @@
+.emphasize_golden {
+    color: #faad13;
+    font-weight: 700;
+}
+.hire_dev_container {
+    display: flex;
+    flex-direction: column;
+}
+.hire_agency_title,
+.hire_dev_title {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 3rem 0;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.hire_dev {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+    background-image: url('../Logos/hire_section_start_bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hire_dev_features_list {
+    padding: 0 1.5rem;
+}
+
+.hire_dev_features_list li {
+    margin-bottom: 1.5rem;
+}
+
+.devillusholder {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .hire_dev {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2.5rem 4rem;
+    }
+    .hire_dev_container {
+        display: block;
+    }
+    .hire_dev_title {
+        padding: 0 0 1rem 0;
+        justify-content: flex-start;
+    }
+
+    .hire_dev_container {
+        width: 80%;
+    }
+
+    .devillusholder {
+        justify-content: flex-end;
+        width: 60%;
+    }
+    .devillusholder img {
+        min-height: 450px;
+    }
+}
