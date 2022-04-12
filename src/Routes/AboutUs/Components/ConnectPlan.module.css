@@ -1,0 +1,44 @@
+.connect_plans_section {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+}
+.connect_plans_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.heart_holder {
+    padding: 1rem 0;
+}
+.heart_holder img {
+    height: 40px;
+    object-fit: contain;
+}
+.connect_text_container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem 2rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .connect_plans_section {
+        padding: 15rem 4rem 15rem 0;
+        align-items: flex-end;
+        background-image: url('../Logos/testimonial.svg');
+        background-repeat: no-repeat;
+        background-repeat: no-repeat;
+        background-size: 370px;
+        background-origin: content-box;
+        background-position-y: -126px;
+        margin-bottom: 5rem;
+    }
+    .connect_plans_container {
+        justify-content: center;
+        width: 70%;
+        padding-right: 8rem;
+    }
+}

@@ -1,0 +1,11 @@
+.cta_button {
+    background-color: var(--secondary-color);
+    color: var(--primary-text-color);
+    margin: 0 auto;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Page from './Routes/L_About_us/Components/Page';
+import AboutUs from './Routes/AboutUs/AboutUs';
 import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import Login from './Routes/Login/Login';
 import Register from './Routes/Register/Register.jsx';
@@ -116,7 +116,11 @@ const App = () => {
                         path={USERROUTES.NOT_FOUND}
                         component={PageNotFound}
                     />
-                    <Route exact path={USERROUTES.ABOUT_US} component={Page} />
+                    <Route
+                        exact
+                        path={USERROUTES.ABOUT_US}
+                        component={AboutUs}
+                    />
                     <Route
                         exact
                         path={USERROUTES.ACTIVE_REQUIREMENTS}

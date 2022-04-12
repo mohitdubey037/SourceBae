@@ -41,7 +41,6 @@
     padding: 2rem 1.6rem;
     font-size: 1.5rem;
     font-weight: 600;
-    margin-top: 3rem;
 }
 
 .text_button {
@@ -71,6 +70,6 @@
 
     .fact_action {
         font-size: 2rem;
-        padding: 2rem 4rem;
+        padding: 0 4rem 4rem 4rem;
     }
 }
