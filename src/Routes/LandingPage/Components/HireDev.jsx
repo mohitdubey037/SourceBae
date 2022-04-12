@@ -1,8 +1,13 @@
 import CtaButton from './CtaButton';
 import { developer } from '../Logos';
 import styles from './HireDev.module.css';
+import { useHistory } from 'react-router-dom';
+import { CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 
 const HireDevSection = () => {
+
+    const history = useHistory()
+
     return (
         <section className={styles.hire_dev}>
             <div className={styles.hire_dev_container}>
@@ -30,7 +35,7 @@ const HireDevSection = () => {
                         <li>Experienced Engineers, Available From NEXT Day</li>
                     </ul>
                 </div>
-                <CtaButton text="Hire Now" />
+                <CtaButton onClick={() => history.push(CLIENTROUTES.HIRE_DEVELOPER)} text="Hire Now" />
             </div>
             <div className={styles.devillusholder}>
                 <img src={developer} alt="developer illustration" />

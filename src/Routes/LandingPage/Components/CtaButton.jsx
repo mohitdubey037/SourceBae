@@ -1,8 +1,8 @@
 import styles from './CtaButton.module.css';
 
-const CtaButton = ({ text = 'Hire Now' }) => {
+const CtaButton = ({ text = 'Hire Now', onClick }) => {
     return (
-        <button className={styles.cta_button}>
+        <button onClick={onClick} className={styles.cta_button}>
             <span>{text}</span>
         </button>
     );

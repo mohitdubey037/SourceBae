@@ -1,7 +1,12 @@
 import CtaButton from './CtaButton';
 import { laptops } from '../Logos';
 import styles from './HireAgency.module.css';
+import { useHistory } from 'react-router-dom';
+import { CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 const HireAgencySection = () => {
+
+    const history = useHistory()
+
     return (
         <section className={styles.hire_agency}>
             {' '}
@@ -27,7 +32,7 @@ const HireAgencySection = () => {
                         </li>
                     </ul>
                 </div>
-                <CtaButton text="Hire Now" />
+                <CtaButton onClick={() => history.push(CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1)} text="Hire Now" />
             </div>
             <div className={styles.devillusholder}>
                 <img src={laptops} alt="developer illustration" />
