@@ -71,10 +71,6 @@ export default function DeveloperModal({ modal, onCloseModal, selectedCard }) {
         setDeveloperIds(updatedDev);
     };
 
-    useEffect(() => {
-        console.log(developerIds)
-    }, [developerIds])
-
 
     useEffect(() => {
         requiredResources = modal?.data?.numberOfResourcesRequired;

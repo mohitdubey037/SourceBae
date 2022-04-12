@@ -19,7 +19,6 @@ import { AGENCYROUTES, CLIENTROUTES } from '../../../Navigation/CONSTANTS';
 function AgencyList(props) {
     const Role = localStorage.getItem('role');
     let { projectId } = useParams();
-    console.log(useParams());
     projectId = projectId || '';
     const [agencyList, setAgencyList] = useState([]);
     const [open, setOpen] = useState(false);
@@ -380,7 +379,7 @@ function AgencyList(props) {
                                                                             </p>
                                                                         </div>
                                                                     ) : agency.isAgencyShortListed ||
-                                                                      agency.isAgencyAskedForQuotation ? (
+                                                                        agency.isAgencyAskedForQuotation ? (
                                                                         <>
                                                                             <div
                                                                                 onClick={() =>

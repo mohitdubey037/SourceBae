@@ -8,10 +8,10 @@ const DeveloperCard = ({ data = {}, titleText }) => {
         Array.isArray(data) &&
             data.forEach(
                 (item, index) =>
-                    (result =
-                        result +
-                        item.technologyName +
-                        (data?.length !== index + 1 && ', '))
+                (result =
+                    result +
+                    item.technologyName +
+                    (data?.length !== index + 1 ? ', ' : ''))
             );
         return result;
     };
@@ -20,15 +20,15 @@ const DeveloperCard = ({ data = {}, titleText }) => {
         data?.developerStatus === 1
             ? 'Rejected'
             : data?.developerStatus === 2
-            ? 'To be Accepted'
-            : 'Accepted';
+                ? 'To be Accepted'
+                : 'Accepted';
 
     const buttonColor =
         data?.developerStatus === 1
             ? 'red'
             : data?.developerStatus === 2
-            ? 'blue'
-            : 'green';
+                ? 'blue'
+                : 'green';
 
     const generateExperienceString = (experience) => {
         let result = '';
