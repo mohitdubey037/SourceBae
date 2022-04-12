@@ -10,7 +10,7 @@ const FooterSection = () => {
                 <div className={styles.detail_block}>
                     <span className={styles.block_heading}>Address</span>
                     <span className={styles.block_content}>
-                        No.1, Street, City, State, Country
+                        Plot no. 205, Vijay Nagar, Part II, Scheme Number 136, Indore, Madhya Pradesh 452010
                     </span>
                 </div>
                 <div className={styles.detail_block}>
