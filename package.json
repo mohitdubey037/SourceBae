@@ -28,6 +28,7 @@
         "pretty-checkbox": "^3.0.3",
         "pretty-checkbox-react": "^3.1.0",
         "react": "^17.0.1",
+        "react-cache-buster": "^0.1.6",
         "react-circular-progressbar": "^2.0.3",
         "react-cookies": "^0.1.1",
         "react-datepicker": "^4.3.0",
@@ -63,8 +64,9 @@
         "react-error-overlay": "6.0.9"
     },
     "scripts": {
+        "generate-meta-tag": "node ./node_modules/react-cache-buster/dist/generate-meta-tag.js",
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "npm run generate-meta-tag && react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
