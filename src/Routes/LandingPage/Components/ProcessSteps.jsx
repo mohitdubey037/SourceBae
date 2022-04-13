@@ -1,9 +1,26 @@
 import styles from './ProcessSteps.module.css';
 import { step1, step2, step3, step4, step5 } from '../Logos';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
 const SourceBaeProcessSteps = () => {
+    const [processStepsRef, processStepsRefInView] = useInView({
+        triggerOnce: true,
+        rootMargin: '-100px 0px'
+    });
+
+    const variants = {
+        show: { opacity: 1 }
+    };
     return (
-        <section className={styles.steps_section}>
+        <motion.section
+            className={styles.steps_section}
+            ref={processStepsRef}
+            style={{ opacity: 0 }}
+            animate={processStepsRefInView && 'show'}
+            variants={variants}
+            transition={{ duration: 2 }}
+        >
             <div className={styles.steps_title}>
                 <span className={styles.title}>
                     Using SourceBae For Your Remote Hiring Is
@@ -268,7 +285,7 @@ const SourceBaeProcessSteps = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 
