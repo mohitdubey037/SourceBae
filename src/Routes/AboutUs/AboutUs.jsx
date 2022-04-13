@@ -7,6 +7,8 @@ import {
 } from './Components/index';
 
 import { funding, foundation, team, projectCompleted, career } from './Logos';
+import Pic1 from '../../assets/images/AboutUs/familyPic1.jpg'
+import Pic2 from '../../assets/images/AboutUs/familyPic2.jpg'
 
 const QuoteBar = () => {
     return (
@@ -27,13 +29,13 @@ const GallerySection = () => {
         <div className={styles.gallery_section}>
             <div className={styles.gallery_left_side}>
                 <img
-                    src="https://images.unsplash.com/photo-1649353935169-fe9911bf240f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+                    src={Pic1}
                     alt="team"
                 />
             </div>
             <div className={styles.gallery_right_side}>
                 <img
-                    src="https://images.unsplash.com/photo-1649353935169-fe9911bf240f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+                    src={Pic2}
                     alt="team"
                 />
                 <button type="button">
