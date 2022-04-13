@@ -19,14 +19,10 @@ import Spinner from '../../../Components/Spinner/Spinner';
 import CustomSwitch from '../../../Components/CustomSwitch/CustomSwitch';
 import { useHistory } from 'react-router-dom';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
-import { useLocation } from 'react-router-dom';
 
 let currentPage = 1;
 let recommendedPage = 0;
 const RequirementListing = () => {
-    const search = useLocation().search;
-    const redirectRequirementId = new URLSearchParams(search).get('id');
-    console.log(redirectRequirementId); //101
     const recentOptions = [
         { value: 0, label: 'Today' },
         { value: 7, label: 'This Week' },
@@ -95,13 +91,13 @@ const RequirementListing = () => {
 
         let params = config?.isParam
             ? {
-                createdWithin: filterState?.createdWithin,
-                contractPeriod: filterState?.contractPeriod,
-                minBudget,
-                maxBudget,
-                page: currentPage,
-                searchKeyWord: searchText || val
-            }
+                  createdWithin: filterState?.createdWithin,
+                  contractPeriod: filterState?.contractPeriod,
+                  minBudget,
+                  maxBudget,
+                  page: currentPage,
+                  searchKeyWord: searchText || val
+              }
             : { page: currentPage };
 
         switchValue && (params.isHotRequest = 1);
@@ -120,11 +116,11 @@ const RequirementListing = () => {
                 }
                 config?.isShowMore
                     ? setRequirementsList((prevState) => ({
-                        ...res,
-                        docs: prevState?.docs
-                            ? [...prevState?.docs, ...res?.docs]
-                            : [...res?.docs]
-                    }))
+                          ...res,
+                          docs: prevState?.docs
+                              ? [...prevState?.docs, ...res?.docs]
+                              : [...res?.docs]
+                      }))
                     : setRequirementsList({ ...res, docs: res?.docs });
             })
             .catch((err) => {
@@ -144,13 +140,13 @@ const RequirementListing = () => {
 
         let params = config?.isParam
             ? {
-                createdWithin: filterState?.createdWithin,
-                contractPeriod: filterState?.contractPeriod,
-                minBudget,
-                maxBudget,
-                page: recommendedPage,
-                searchKeyWord: searchText || val
-            }
+                  createdWithin: filterState?.createdWithin,
+                  contractPeriod: filterState?.contractPeriod,
+                  minBudget,
+                  maxBudget,
+                  page: recommendedPage,
+                  searchKeyWord: searchText || val
+              }
             : { page: recommendedPage };
 
         switchValue && (params.isHotRequest = 1);
@@ -162,11 +158,11 @@ const RequirementListing = () => {
             .then((res) => {
                 config?.isShowMore
                     ? setRecommendedList((prevState) => ({
-                        ...res,
-                        docs: prevState?.docs
-                            ? [...prevState?.docs, ...res?.docs]
-                            : [...res?.docs]
-                    }))
+                          ...res,
+                          docs: prevState?.docs
+                              ? [...prevState?.docs, ...res?.docs]
+                              : [...res?.docs]
+                      }))
                     : setRecommendedList({ ...res, docs: res?.docs });
             })
             .catch((err) => {
@@ -462,7 +458,9 @@ const RequirementListing = () => {
                                                 buttonExtraStyle={
                                                     buttonExtraStyle
                                                 }
-                                                buttonTextStyle={buttonTextStyle}
+                                                buttonTextStyle={
+                                                    buttonTextStyle
+                                                }
                                                 onClick={() =>
                                                     handleRecommendedPagination()
                                                 }

@@ -31,7 +31,6 @@
     font-family: 'Catamaran', sans-serif;
 }
 
-.quote_bar,
 .gallery_section,
 .centered_message_strip {
     padding: 0 5rem;
@@ -59,6 +58,7 @@
 .gallery_section {
     padding: 4rem 5rem;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -66,28 +66,37 @@
 .gallery_right_side,
 .gallery_left_side {
     border-radius: 12px;
-    width: 48%;
+    /* width: 48%; */
 }
+
 .gallery_left_side img {
     width: 100%;
-    height: 450px;
+    /* height: 450px; */
     object-fit: cover;
     border-radius: 12px;
 }
 .gallery_right_side {
     position: relative;
+    margin-top: 1rem;
 }
 .gallery_right_side img {
-    width: 40vw;
-    height: 250px;
+    width: 100%;
+    /* width: 40vw; */
+    /* height: 250px; */
     border-radius: 12px;
 }
 
+.gallery_right_side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .gallery_right_side button {
-    position: relative;
+    /* position: relative;
+    top: 70px; */
+    margin-top: 2rem;
     height: 55px;
     width: 150px;
-    top: 70px;
     background: rgba(255, 255, 255, 0.12);
     border-radius: 6px;
     color: #fff;
@@ -98,7 +107,8 @@
 .centered_message_strip {
     display: flex;
     justify-content: center;
-    padding: 3.5rem 5rem;
+    /* padding: 3.5rem 5rem; */
+    padding: 3.5rem 2rem;
     font-size: 2rem;
     text-align: center;
     font-weight: 700;
@@ -106,7 +116,10 @@
 }
 
 .points_column_section {
-    padding: 1.5rem 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 1.5rem 10rem; */
 }
 
 .point_card ~ .point_card {
@@ -114,6 +127,7 @@
 }
 .point_card {
     display: flex;
+    flex-direction: column;
     align-items: center;
     background: linear-gradient(180deg, #292929 0%, rgba(41, 41, 41, 0) 100%);
     border-radius: 22px;
@@ -123,10 +137,6 @@
 .point_number {
     font-weight: 500;
     font-size: 8rem;
-}
-
-.point_card_2 {
-    margin-left: 8rem;
 }
 
 .point_text {
@@ -141,7 +151,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     align-items: center;
-    padding: 4rem 5rem;
+    padding: 4rem 2rem;
 }
 
 .stats_card {
@@ -195,7 +205,7 @@
 }
 
 .careers_section {
-    padding: 4rem 5rem;
+    padding: 4rem 2rem;
     display: flex;
     flex-direction: column;
 }
@@ -221,9 +231,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 4rem;
-}
-.career_card {
-    width: 50%;
+    flex-direction: column;
 }
 
 .career_body {
@@ -237,7 +245,68 @@
     font-size: 1.5rem;
     color: var(--translucent-text-color);
 }
+
+.career_card img {
+    width: 100%;
+}
+
 @media only screen and (min-width: 768px) {
+    .gallery_section {
+        flex-direction: row;
+    }
+    .gallery_right_side,
+    .gallery_left_side {
+        width: 48%;
+    }
+
+    .gallery_right_side {
+        display: block;
+        margin-top: 0;
+    }
+    .gallery_right_side button {
+        position: relative;
+        top: 70px;
+        margin-top: 0;
+    }
+    .gallery_left_side img {
+        height: 450px;
+    }
+    .gallery_right_side {
+        position: relative;
+    }
+    .gallery_right_side img {
+        height: 250px;
+        width: 40vw;
+    }
+
+    .quote_bar {
+        padding: 0 5rem;
+    }
+    .points_column_section {
+        padding: 1.5rem 10rem;
+    }
+
+    .point_card {
+        flex-direction: row;
+    }
+
+    .point_card_2 {
+        margin-left: 8rem;
+    }
+
+    .careers_section {
+        padding: 4rem 5rem;
+    }
+    .career_content {
+        flex-direction: row;
+    }
+    .career_card {
+        width: 50%;
+    }
+    .stats_card_row {
+        padding: 4rem 5rem;
+    }
+
     .feature_section_wrapper {
         padding: 6rem;
         flex-direction: row;

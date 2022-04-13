@@ -3,12 +3,30 @@ import { laptops } from '../Logos';
 import styles from './HireAgency.module.css';
 import { useHistory } from 'react-router-dom';
 import { CLIENTROUTES } from '../../../Navigation/CONSTANTS';
-const HireAgencySection = () => {
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
-    const history = useHistory()
+const HireAgencySection = () => {
+    const [hireAgencyRef, hireAgencyRefInView] = useInView({
+        triggerOnce: true,
+        rootMargin: '-100px 0px'
+    });
+
+    const variants = {
+        show: { opacity: 1 }
+    };
+
+    const history = useHistory();
 
     return (
-        <section className={styles.hire_agency}>
+        <motion.section
+            className={styles.hire_agency}
+            ref={hireAgencyRef}
+            style={{ opacity: 0 }}
+            animate={hireAgencyRefInView && 'show'}
+            variants={variants}
+            transition={{ duration: 2 }}
+        >
             {' '}
             <div className={styles.hire_agency_container}>
                 <div className={styles.hire_agency_title}>Hire Agency</div>
@@ -32,12 +50,17 @@ const HireAgencySection = () => {
                         </li>
                     </ul>
                 </div>
-                <CtaButton onClick={() => history.push(CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1)} text="Hire Now" />
+                <CtaButton
+                    onClick={() =>
+                        history.push(CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1)
+                    }
+                    text="Hire Now"
+                />
             </div>
             <div className={styles.devillusholder}>
                 <img src={laptops} alt="developer illustration" />
             </div>
-        </section>
+        </motion.section>
     );
 };
 

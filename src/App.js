@@ -55,8 +55,13 @@ import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest
 import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
 import { useHistory } from 'react-router-dom';
 import LandingPage from './Routes/LandingPage/LandingPage';
+import CacheBuster from 'react-cache-buster';
+import { version } from '../package.json';
+import Spinner from './Components/Spinner/Spinner';
+
 const App = () => {
     const history = useHistory();
+    const isProduction = process.env.NODE_ENV === 'production';
     useEffect(() => {
         if (
             firebase.messaging.isSupported() &&
@@ -73,301 +78,309 @@ const App = () => {
     }, []);
     return (
         <>
-            <ErrorBoundary
-                FallbackComponent={() => (
-                    <div
-                        style={{
-                            width: '100vw',
-                            height: '100vh',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexDirection: 'column'
-                        }}
-                    >
-                        <h4>
-                            An Error Occured while performing the last action.
-                        </h4>
-                        <br />
-                        <button
-                            onClick={() => window.location.reload()}
-                            className="btn btn-primary"
-                        >
-                            Try again
-                        </button>
-                        <button
-                            onClick={() => (window.location.href = '/')}
-                            className="btn btn-primary mt-2"
-                        >
-                            Redirect to SourceBae.com
-                        </button>
-                    </div>
-                )}
+            <CacheBuster
+                currentVersion={version}
+                isEnabled={isProduction} //If false, the library is disabled.
+                isVerboseMode={false} //If true, the library writes verbose logs to console.
+                loadingComponent={<Spinner />} //If not pass, nothing appears at the time of new version check.
             >
-                <Switch>
-                    {/* USER ROUTES */}
-                    <Route
-                        exact
-                        path={USERROUTES.HOME}
-                        component={LandingPage}
-                    />
-                    <Route
-                        exact
-                        path={USERROUTES.NOT_FOUND}
-                        component={PageNotFound}
-                    />
-                    <Route
-                        exact
-                        path={USERROUTES.ABOUT_US}
-                        component={AboutUs}
-                    />
-                    <Route
-                        exact
-                        path={USERROUTES.ACTIVE_REQUIREMENTS}
-                        component={ActiveRequirements}
-                    />
+                <ErrorBoundary
+                    FallbackComponent={() => (
+                        <div
+                            style={{
+                                width: '100vw',
+                                height: '100vh',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column'
+                            }}
+                        >
+                            <h4>
+                                An Error Occured while performing the last
+                                action.
+                            </h4>
+                            <br />
+                            <button
+                                onClick={() => window.location.reload()}
+                                className="btn btn-primary"
+                            >
+                                Try again
+                            </button>
+                            <button
+                                onClick={() => (window.location.href = '/')}
+                                className="btn btn-primary mt-2"
+                            >
+                                Redirect to SourceBae.com
+                            </button>
+                        </div>
+                    )}
+                >
+                    <Switch>
+                        {/* USER ROUTES */}
+                        <Route
+                            exact
+                            path={USERROUTES.HOME}
+                            component={LandingPage}
+                        />
+                        <Route
+                            exact
+                            path={USERROUTES.NOT_FOUND}
+                            component={PageNotFound}
+                        />
+                        <Route
+                            exact
+                            path={USERROUTES.ABOUT_US}
+                            component={AboutUs}
+                        />
+                        <Route
+                            exact
+                            path={USERROUTES.ACTIVE_REQUIREMENTS}
+                            component={ActiveRequirements}
+                        />
 
-                    <Route
-                        exact
-                        path={USERROUTES.VERIFY_PAGE}
-                        component={VerifyPage}
-                    />
+                        <Route
+                            exact
+                            path={USERROUTES.VERIFY_PAGE}
+                            component={VerifyPage}
+                        />
 
-                    <Route
-                        exact
-                        path={USERROUTES.RESET_PASSWORD}
-                        component={PasswordReset}
-                    />
+                        <Route
+                            exact
+                            path={USERROUTES.RESET_PASSWORD}
+                            component={PasswordReset}
+                        />
 
-                    <Route exact path={AGENCYROUTES.REGISTER}>
-                        <Register history={history} roles={AGENCY} />
-                    </Route>
-                    <Route exact path={CLIENTROUTES.REGISTER}>
-                        <Register history={history} roles={CLIENT} />
-                    </Route>
-                    <Route
-                        exact
-                        path="/enter-email/:role"
-                        component={EnterEmail}
-                    />
+                        <Route exact path={AGENCYROUTES.REGISTER}>
+                            <Register history={history} roles={AGENCY} />
+                        </Route>
+                        <Route exact path={CLIENTROUTES.REGISTER}>
+                            <Register history={history} roles={CLIENT} />
+                        </Route>
+                        <Route
+                            exact
+                            path="/enter-email/:role"
+                            component={EnterEmail}
+                        />
 
-                    {/* AGENCY ROUTES */}
+                        {/* AGENCY ROUTES */}
 
-                    <Route exact path={CLIENTROUTES.LOGIN}>
-                        <Login history={history} roles={CLIENT} />
-                    </Route>
+                        <Route exact path={CLIENTROUTES.LOGIN}>
+                            <Login history={history} roles={CLIENT} />
+                        </Route>
 
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.DASHBOARD}
-                        component={AgencyNewestDashboard}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.ADD_DEVELOPER}
-                        component={AddingDeveloper}
-                    />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.DASHBOARD}
+                            component={AgencyNewestDashboard}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.ADD_DEVELOPER}
+                            component={AddingDeveloper}
+                        />
 
-                    <Route exact path={AGENCYROUTES.LOGIN}>
-                        <Login history={history} roles={AGENCY} />
-                    </Route>
+                        <Route exact path={AGENCYROUTES.LOGIN}>
+                            <Login history={history} roles={AGENCY} />
+                        </Route>
 
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST}
-                        component={RequirementListing}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.QUOTATIONS}
-                        component={Quotation}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.AGENCY_UPDATE_1}
-                        component={AgencyForm1}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.AGENCY_UPDATE_2}
-                        component={AgencyForm2}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.AGENCY_UPDATE_3}
-                        component={AgencyForm3}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.AGENCY_UPDATE_4}
-                        component={AgencyForm4}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.PRODUCT_FORM}
-                        component={ProductForm}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={`${AGENCYROUTES.PROJECT_DETAILS}/:projectId`}
-                        component={AgencyProjectDetails}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.PROFILE}
-                        component={AgencyProfile}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.PORTFOLIO}
-                        component={Portfolio}
-                    />
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={AGENCYROUTES.SHARED_DEVELOPERS}
-                        component={SharedDevelopers}
-                    />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST}
+                            component={RequirementListing}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.QUOTATIONS}
+                            component={Quotation}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.AGENCY_UPDATE_1}
+                            component={AgencyForm1}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.AGENCY_UPDATE_2}
+                            component={AgencyForm2}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.AGENCY_UPDATE_3}
+                            component={AgencyForm3}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.AGENCY_UPDATE_4}
+                            component={AgencyForm4}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.PRODUCT_FORM}
+                            component={ProductForm}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={`${AGENCYROUTES.PROJECT_DETAILS}/:projectId`}
+                            component={AgencyProjectDetails}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.PROFILE}
+                            component={AgencyProfile}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.PORTFOLIO}
+                            component={Portfolio}
+                        />
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={AGENCYROUTES.SHARED_DEVELOPERS}
+                            component={SharedDevelopers}
+                        />
 
-                    {/* Both */}
-                    <CustomRoute
-                        condition={AGENCY}
-                        exact
-                        path={`${AGENCYROUTES.PRODUCT_DETAILS}/:productId`}
-                        component={ProductDetails}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${CLIENTROUTES.PRODUCT_DETAILS}/:productId`}
-                        component={ProductDetails}
-                    />
+                        {/* Both */}
+                        <CustomRoute
+                            condition={AGENCY}
+                            exact
+                            path={`${AGENCYROUTES.PRODUCT_DETAILS}/:productId`}
+                            component={ProductDetails}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${CLIENTROUTES.PRODUCT_DETAILS}/:productId`}
+                            component={ProductDetails}
+                        />
 
-                    {/* Client Components  */}
+                        {/* Client Components  */}
 
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.DEVELOPER_REQUESTS}
-                        component={DevelopersRequest}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.PROJECT_LIST}
-                        component={AgencyNewestAllProject}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.INVESTMENT_OPPORTUNITIES}
-                        component={ProductAgencies}
-                    />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.DEVELOPER_REQUESTS}
+                            component={DevelopersRequest}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.PROJECT_LIST}
+                            component={AgencyNewestAllProject}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.INVESTMENT_OPPORTUNITIES}
+                            component={ProductAgencies}
+                        />
 
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${CLIENTROUTES.SHORTLIST_DEVELOPER}/:hireDeveloperId`}
-                        component={ClientOneHireDeveloper}
-                    />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${CLIENTROUTES.SHORTLIST_DEVELOPER}/:hireDeveloperId`}
+                            component={ClientOneHireDeveloper}
+                        />
 
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS}
-                        component={GetClientHireDeveloper}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path="/project-details/:projectId"
-                        component={ProjectDetails}
-                    />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS}
+                            component={GetClientHireDeveloper}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path="/project-details/:projectId"
+                            component={ProjectDetails}
+                        />
 
-                    {/* CLIENT ROUTES */}
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.HIRE_DEVELOPER}
-                        component={HireDeveloper}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${CLIENTROUTES.PROJECT_DETAILS}/:projectId/:agencyId`}
-                        component={ProjectDetails}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1}
-                        component={HireAgencyForm1}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_2}/:projectId`}
-                        component={HireAgencyForm2}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_3}/:projectId`}
-                        component={HireAgencyForm3}
-                    />
+                        {/* CLIENT ROUTES */}
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.HIRE_DEVELOPER}
+                            component={HireDeveloper}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${CLIENTROUTES.PROJECT_DETAILS}/:projectId/:agencyId`}
+                            component={ProjectDetails}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_1}
+                            component={HireAgencyForm1}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_2}/:projectId`}
+                            component={HireAgencyForm2}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_3}/:projectId`}
+                            component={HireAgencyForm3}
+                        />
 
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${AGENCYROUTES.PROFILE}/:id`}
-                        component={AgencyProfile}
-                    />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${AGENCYROUTES.PROFILE}/:id`}
+                            component={AgencyProfile}
+                        />
 
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.DASHBOARD}
-                        component={ClientNewestDashboard}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.CREATE_SHORT_TERM_PROJECT}
-                        component={ShortTerm}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId/:agencyId`}
-                        component={AgencyList}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId`}
-                        component={AgencyList}
-                    />
-                    <CustomRoute
-                        condition={CLIENT}
-                        exact
-                        path={CLIENTROUTES.PROFILE}
-                        component={ClientProfile}
-                    />
-                    <CustomRoute component={PageNotFound} />
-                </Switch>
-            </ErrorBoundary>
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.DASHBOARD}
+                            component={ClientNewestDashboard}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.CREATE_SHORT_TERM_PROJECT}
+                            component={ShortTerm}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId/:agencyId`}
+                            component={AgencyList}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={`${CLIENTROUTES.AGENCIES_LIST}/:projectId`}
+                            component={AgencyList}
+                        />
+                        <CustomRoute
+                            condition={CLIENT}
+                            exact
+                            path={CLIENTROUTES.PROFILE}
+                            component={ClientProfile}
+                        />
+                        <CustomRoute component={PageNotFound} />
+                    </Switch>
+                </ErrorBoundary>
+            </CacheBuster>
         </>
     );
 };

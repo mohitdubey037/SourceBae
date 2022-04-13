@@ -24,10 +24,6 @@ const RegisterClientForm2 = (props) => {
             });
         }
     };
-
-    React.useEffect(() => {
-        console.log(props.clientProfileDetails);
-    }, []);
     return (
         <div className="clientSignupForm2Parent">
             <div className="input_with_error">

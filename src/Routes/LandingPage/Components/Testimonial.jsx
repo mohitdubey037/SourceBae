@@ -1,8 +1,25 @@
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import styles from './Testimonial.module.css';
 import { step1, star, connectHeart } from '../Logos';
 const TestimonialCard = () => {
+    const [testimonialRef, testimonialInView] = useInView({
+        triggerOnce: true,
+        rootMargin: '-100px 0px'
+    });
+
+    const variants = {
+        show: { opacity: 1 }
+    };
     return (
-        <div className={styles.testimonial_card}>
+        <motion.div
+            className={styles.testimonial_card}
+            ref={testimonialRef}
+            style={{ opacity: 0 }}
+            animate={testimonialInView && 'show'}
+            variants={variants}
+            transition={{ duration: 2 }}
+        >
             <img
                 className={styles.testimonial_card_image}
                 src={step1}
@@ -29,13 +46,13 @@ const TestimonialCard = () => {
                     </span>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
 const TestimonialsSection = () => {
     return (
-        <section className={styles.testimonials_section}>
+        <motion.section className={styles.testimonials_section}>
             <div className={styles.testimonial_intro}>
                 <div className={styles.heart_holder}>
                     <img src={connectHeart} alt="connect_heart" />
@@ -48,7 +65,7 @@ const TestimonialsSection = () => {
                 <TestimonialCard />
                 <TestimonialCard />
             </div>
-        </section>
+        </motion.section>
     );
 };
 
