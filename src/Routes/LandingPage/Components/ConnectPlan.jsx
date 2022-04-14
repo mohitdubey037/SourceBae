@@ -18,7 +18,7 @@ const ConnectPlansSection = () => {
             style={{ opacity: 0 }}
             animate={connectPlanRefInView && 'show'}
             variants={variants}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1 }}
         >
             <div className={styles.connect_plans_container}>
                 <div className={styles.connect_text_container}>

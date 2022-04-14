@@ -8,12 +8,16 @@ import {
     activeReq
 } from '../Logos';
 import { Link } from 'react-router-dom';
-import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from '../../../Navigation/CONSTANTS';
+import {
+    AGENCYROUTES,
+    CLIENTROUTES,
+    USERROUTES
+} from '../../../Navigation/CONSTANTS';
 const LandingNavbar = () => {
     return (
         <div className={styles.landing_page_nav}>
             <div className={styles.nav_logo}>
-                <img src={brandLogo} alt="logo" />
+                <img src={brandLogo} alt="logo" style={{ width: '130px' }} />
             </div>
             <div className={`${styles.nav_menu} ${styles.mobile}`}>
                 <MenuIcon htmlColor="#554dde" />

@@ -8,18 +8,35 @@ import {
     activeReq
 } from '../Logos';
 import { Link } from 'react-router-dom';
-import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from '../../../Navigation/CONSTANTS';
+import {
+    AGENCYROUTES,
+    CLIENTROUTES,
+    USERROUTES
+} from '../../../Navigation/CONSTANTS';
 const LandingNavbar = () => {
     return (
         <div className={styles.landing_page_nav}>
             <div className={styles.nav_logo}>
-                <img src={brandLogo} alt="logo" />
+                <img
+                    src={brandLogo}
+                    alt="logo"
+                    style={{ width: '130px' }}
+                    onClick={() => window.location.reload()}
+                />
             </div>
             <div className={`${styles.nav_menu} ${styles.mobile}`}>
                 <MenuIcon htmlColor="#554dde" />
             </div>
             <div className={`${styles.nav_menu_web}`}>
-                <Link to="/">Home</Link>
+                <Link
+                    to="/"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.location.reload();
+                    }}
+                >
+                    Home
+                </Link>
 
                 <div className={styles.services_dropdown}>
                     Services <i class="fa fa-caret-down"></i>
@@ -39,7 +56,7 @@ const LandingNavbar = () => {
                                 Hire Developer
                             </div>
                         </Link>
-                        <Link to="/">
+                        <Link to={CLIENTROUTES.LOGIN}>
                             <div className={styles.dropdown_item}>
                                 <img src={listDevs} alt="hire agency" /> List
                                 Your Developer
