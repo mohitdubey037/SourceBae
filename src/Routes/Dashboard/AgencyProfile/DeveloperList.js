@@ -13,6 +13,7 @@ import {
     Typography
 } from '@material-ui/core';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
+import { experienceRange } from '../../../shared/helper';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -68,6 +69,8 @@ function DeveloperList(props) {
     const [state, setState] = useState({
         checked: false
     });
+
+
 
     const getAgencyDevelopers = () => {
         if (agencyId)
@@ -165,8 +168,8 @@ function DeveloperList(props) {
                                         <div className="developerName">
                                             <div>
                                                 <h2>{`${developer.firstName
-                                                        .charAt(0)
-                                                        .toUpperCase() +
+                                                    .charAt(0)
+                                                    .toUpperCase() +
                                                     developer.firstName.slice(1)
                                                     } ${developer.lastName
                                                         .charAt(0)
@@ -217,7 +220,7 @@ function DeveloperList(props) {
                                             <div className="developer-detail">
                                                 <div>
                                                     <p>Experience</p>
-                                                    <h6>{`${developer.developerExperience} year`}</h6>
+                                                    <h6>{experienceRange(developer.developerExperience)}</h6>
                                                 </div>
 
                                                 <div>

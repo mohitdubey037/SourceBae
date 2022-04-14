@@ -77,6 +77,13 @@ const upload = (mediaDetail, Role) => {
     });
 };
 
+const experienceRange = (exp) => {
+    if (exp == 1) return '1 - 3 years'
+    if (exp == 3) return '3 - 6 years'
+    if (exp == 6) return '6 - 9 years'
+    return `${exp} years`
+}
+
 export {
     capitalize,
     lowerize,
@@ -87,5 +94,6 @@ export {
     validateLinkedIn,
     multiwordCapitalize,
     noTextNumber,
-    upload
+    upload,
+    experienceRange
 };
