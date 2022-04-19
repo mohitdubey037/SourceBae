@@ -19,7 +19,7 @@ const SourceBaeProcessSteps = () => {
             style={{ opacity: 0 }}
             animate={processStepsRefInView && 'show'}
             variants={variants}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1 }}
         >
             <div className={styles.steps_title}>
                 <span className={styles.title}>

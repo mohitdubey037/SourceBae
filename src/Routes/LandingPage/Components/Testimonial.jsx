@@ -18,7 +18,7 @@ const TestimonialCard = () => {
             style={{ opacity: 0 }}
             animate={testimonialInView && 'show'}
             variants={variants}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1 }}
         >
             <img
                 className={styles.testimonial_card_image}
@@ -61,10 +61,10 @@ const TestimonialsSection = () => {
                     By 50+ Startups & Enterprises
                 </div>
             </div>
-            <div className={styles.testimonial_container}>
+            {/* <div className={styles.testimonial_container}>
                 <TestimonialCard />
                 <TestimonialCard />
-            </div>
+            </div> */}
         </motion.section>
     );
 };

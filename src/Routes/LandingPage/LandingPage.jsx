@@ -61,7 +61,7 @@ export default function LandingPage() {
                 style={{ opacity: 0 }}
                 animate={featureCardInView && 'show'}
                 variants={variants}
-                transition={{ duration: 2 }}
+                transition={{ duration: 1 }}
             >
                 <FeatureSection />
                 <FactCard />
@@ -72,7 +72,7 @@ export default function LandingPage() {
                 style={{ opacity: 0 }}
                 animate={factRefInView && 'show'}
                 variants={variants}
-                transition={{ duration: 2 }}
+                transition={{ duration: 1 }}
             >
                 <span className={styles.action_text}>
                     {' '}

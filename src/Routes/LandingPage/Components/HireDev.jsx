@@ -23,7 +23,7 @@ const HireDevSection = () => {
             style={{ opacity: 0 }}
             animate={hireDevRefInView && 'show'}
             variants={variants}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1 }}
         >
             <div className={styles.hire_dev_container}>
                 <div className={styles.hire_dev_title}>Hire Developer</div>

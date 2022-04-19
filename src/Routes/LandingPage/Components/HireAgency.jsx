@@ -25,7 +25,7 @@ const HireAgencySection = () => {
             style={{ opacity: 0 }}
             animate={hireAgencyRefInView && 'show'}
             variants={variants}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1 }}
         >
             {' '}
             <div className={styles.hire_agency_container}>
