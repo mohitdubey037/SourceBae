@@ -56,7 +56,7 @@ import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
 import { useHistory } from 'react-router-dom';
 import LandingPage from './Routes/LandingPage/LandingPage';
 import CacheBuster from 'react-cache-buster';
-import { version } from '../package.json';
+import packageInfo from '../package.json';
 import Spinner from './Components/Spinner/Spinner';
 
 const App = () => {
@@ -79,7 +79,7 @@ const App = () => {
     return (
         <>
             <CacheBuster
-                currentVersion={version}
+                currentVersion={packageInfo.version}
                 isEnabled={isProduction} //If false, the library is disabled.
                 isVerboseMode={false} //If true, the library writes verbose logs to console.
                 loadingComponent={<Spinner />} //If not pass, nothing appears at the time of new version check.
