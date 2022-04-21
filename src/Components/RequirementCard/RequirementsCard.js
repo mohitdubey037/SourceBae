@@ -10,17 +10,23 @@ import './RequirementsCard.css';
 import Modal from 'react-responsive-modal';
 import SizedBox from '../../Components/SizedBox/SizedBox';
 import cross from '../../assets/images/RequirementsListing/boldCancel.png';
+import CustomSwitch from '../CustomSwitch/CustomSwitch';
+import { CLIENT } from '../../shared/constants';
+import instance from '../../Constants/axiosConstants';
 
 export default function RequirementsList(props) {
+    const role = CLIENT;
     let {
         des = '',
         showButton = '',
         buttonTitle = '',
         data = {},
         isSelected,
-        onApplyClick = () => {}
+        showToggle,
+        onApplyClick = () => { }
     } = props;
     const [open, setOpen] = useState(false);
+    const [hide, sethide] = useState(false)
 
     const onCloseModal = () => setOpen(false);
     const onOpenModal = (data) => {
@@ -33,6 +39,7 @@ export default function RequirementsList(props) {
         developerTechnologiesRequired,
         numberOfResourcesRequired,
         requirementName,
+        isVisible,
         _id,
         client = {}
     } = data;
@@ -50,6 +57,17 @@ export default function RequirementsList(props) {
     const generateResourcesStr = (res) =>
         !res?.min ? `${res}` : `${res?.min ?? ''} - ${res?.max ?? ''}`;
 
+    const handleSwitch = (id, value) => {
+        let url = `/api/${role}/hire-developers/update/${id}`;
+        let body = {
+            isVisible: value ? 2 : 1
+        };
+        console.log(body)
+        instance.patch(url, body).then(() => {
+            // window.location.reload();
+        });
+    }
+
     return (
         <div
             style={{ borderColor: isSelected ? '#45A4EA' : null }}
@@ -66,20 +84,26 @@ export default function RequirementsList(props) {
                         />
                     </div>
                     <div className="verticalBar" />
-                    <span className="tag">{`experience: ${
-                        generateExperienceStr(developerExperienceRequired) || ''
-                    } year`}</span>
+                    <span className="tag">{`experience: ${generateExperienceStr(developerExperienceRequired) || ''
+                        } year`}</span>
                 </div>
-                <button
-                    onClick={() => onApplyClick(_id)}
-                    id={'RequirementsListCTA'}
-                    style={{ display: showButton ? 'block' : 'none' }}
-                    className={`${styles.L_login} ${
-                        styles.nav_Lbutton
-                    } ${'RequirementsListCTA'}`}
-                >
-                    <span>{buttonTitle}</span>
-                </button>
+                <div className='flex flex-col justify-end' >
+                    <button
+                        onClick={() => onApplyClick(_id)}
+                        id={'RequirementsListCTA'}
+                        style={{ display: showButton ? 'block' : 'none' }}
+                        className={`${styles.L_login} ${styles.nav_Lbutton
+                            } ${'RequirementsListCTA'}`}
+                    >
+                        <span>{buttonTitle}</span>
+                    </button>
+                    <CustomSwitch
+                        // label={isVisible ? ' Visible' : 'Hidden'}
+                        label={isVisible.toString()}
+                        switchValue={isVisible}
+                        onChange={() => handleSwitch(_id, isVisible)}
+                    />
+                </div>
             </div>
             <div className="insight">
                 <IconNText
@@ -94,9 +118,8 @@ export default function RequirementsList(props) {
                 <div style={{ marginRight: '12px' }} />
                 <IconNText
                     icon={people}
-                    text={`${
-                        generateResourcesStr(numberOfResourcesRequired) || ''
-                    } resources`}
+                    text={`${generateResourcesStr(numberOfResourcesRequired) || ''
+                        } resources`}
                 />
             </div>
             <div className="tagsContainer">
@@ -137,9 +160,8 @@ export default function RequirementsList(props) {
                     <SizedBox height="32px" />
                     <div className="modalJDHeading">job description :</div>
                     <SizedBox height="12px" />
-                    <div className="modalJD">{`${
-                        data?.jobDescription || ''
-                    }`}</div>
+                    <div className="modalJD">{`${data?.jobDescription || ''
+                        }`}</div>
                     <SizedBox height="30px" />
                     <div class="grid-container">
                         <div className="grid-item">

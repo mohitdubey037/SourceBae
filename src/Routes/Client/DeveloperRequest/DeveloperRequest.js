@@ -83,13 +83,13 @@ const DeveloperRequest = () => {
 
         let params = config?.isParam
             ? {
-                  createdWithin: filterState?.createdWithin,
-                  contractPeriod: filterState?.contractPeriod,
-                  minBudget,
-                  maxBudget,
-                  page: requirementsList?.nextPage || 1,
-                  searchKeyWord: searchText || val
-              }
+                createdWithin: filterState?.createdWithin,
+                contractPeriod: filterState?.contractPeriod,
+                minBudget,
+                maxBudget,
+                page: requirementsList?.nextPage || 1,
+                searchKeyWord: searchText || val
+            }
             : { page: requirementsList?.nextPage || 1 };
 
         switchValue && (params.isHotRequest = 1);
@@ -101,11 +101,11 @@ const DeveloperRequest = () => {
             .then((res) => {
                 config?.isShowMore
                     ? setRequirementsList((prevState) => ({
-                          ...res,
-                          docs: prevState?.docs
-                              ? [...prevState?.docs, ...res?.docs]
-                              : [...res?.docs]
-                      }))
+                        ...res,
+                        docs: prevState?.docs
+                            ? [...prevState?.docs, ...res?.docs]
+                            : [...res?.docs]
+                    }))
                     : setRequirementsList({ ...res, docs: res?.docs });
             })
             .catch((err) => {
@@ -194,6 +194,7 @@ const DeveloperRequest = () => {
                                 {requirementsList?.docs?.length > 0 ? (
                                     requirementsList?.docs?.map(
                                         (req, index) => {
+                                            console.log(req)
                                             return (
                                                 <RequirementsCard
                                                     key={`${req?._id}${index}`}
