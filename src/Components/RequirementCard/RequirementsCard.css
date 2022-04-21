@@ -13,7 +13,7 @@
 }
 
 .requirementCard:hover #RequirementsListCTA {
-    display: block !important ;
+    display: block !important;
 }
 
 .headingText {
@@ -173,4 +173,8 @@
     width: 150px !important;
     background-color: #5c6dff;
     border-color: #5c6dff;
+}
+
+.requirementSwitch {
+    display: flex;
 }

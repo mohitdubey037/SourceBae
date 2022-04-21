@@ -199,6 +199,7 @@ const DeveloperRequest = () => {
                                                 <RequirementsCard
                                                     key={`${req?._id}${index}`}
                                                     data={req}
+                                                    showToggle={true}
                                                     showButton={true}
                                                     buttonTitle={'Detail'}
                                                     isSelected={
