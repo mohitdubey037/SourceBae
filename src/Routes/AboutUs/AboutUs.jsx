@@ -191,6 +191,10 @@ import L_CTA_Bottom from '../MainLandingPage/Components/CTA_Bottom/L_CTA_Bottom'
 import L_Footer from '../MainLandingPage/Components/L_Footer/L_Footer';
 import LNavbar from '../MainLandingPage/Components/Navbar/LNavbar';
 import styles from './AboutUs.module.css';
+import AboutBanner from './Components/About_Banner_Section/About_Banner';
+import AboutInfo from './Components/About_Info/About_Info';
+import AboutCareer from './Components/About_Career/About_Career';
+import AboutProgressBar from './Components/About_ProgressBar/About_ProgressBar';
 
 
 export default function AboutUs() {
@@ -204,7 +208,7 @@ export default function AboutUs() {
             <div className={`${styles.landing_navbar}`}>
                 <LNavbar />
             </div>
-            {/* <div className={`${styles.about_banner_wrap}`}>
+            <div className={`${styles.about_banner_wrap}`}>
                 <AboutBanner />
             </div>
             <div className={`${styles.about_info_wrap}`}>
@@ -215,7 +219,7 @@ export default function AboutUs() {
             </div>
             <div className={`${styles.about_career_wrap}`}>
                 <AboutCareer />
-            </div> */}
+            </div>
             <div
                 className={`${styles.about_CTA_bottom_padding} CTA_bottom_wrap`}
             >
