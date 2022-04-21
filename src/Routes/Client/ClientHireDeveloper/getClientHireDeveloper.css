@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+
 .backArrow_getClientHireDeveloper {
     position: fixed;
     top: 12%;
@@ -149,7 +150,7 @@
 .agencyProfileInfo {
     display: flex;
     justify-content: space-between;
-    width: 28rem;
+    width: 38rem;
 }
 
 .agencyProfileInfo h6 {
@@ -168,6 +169,7 @@
     z-index: 2;
     padding: 1rem 0;
 }
+
 .loadmore_button {
     align-items: center;
     padding: 0.5rem 2rem;
@@ -180,6 +182,7 @@
     font-size: 1rem;
     display: flex;
 }
+
 .agencyProfileInfo div {
     display: flex;
     flex: 1;
@@ -212,6 +215,7 @@
     background-color: #165479;
     box-shadow: 1px 1px 3px rgb(0 0 0 / 18%);
 }
+
 .profileButton p i {
     margin-left: 5px;
 }

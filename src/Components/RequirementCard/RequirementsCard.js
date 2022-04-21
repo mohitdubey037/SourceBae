@@ -88,7 +88,7 @@ export default function RequirementsList(props) {
           <span className="tag">{`experience: ${generateExperienceStr(developerExperienceRequired) || ''
             } year`}</span>
         </div>
-        <div>
+        <div className='requirementSwitchHolder' >
           <button
             onClick={() => onApplyClick(_id)}
             id={'RequirementsListCTA'}
@@ -98,15 +98,6 @@ export default function RequirementsList(props) {
           >
             <span>{buttonTitle}</span>
           </button>
-          <div>
-            {
-              showToggle &&
-              <div className='requirementSwitch' >
-                <Switch checked={isVisible} onClick={() => handleSwitch(_id, isVisible)} size="small" />
-                <p>{isVisible ? 'Visible' : 'Hidden'}</p>
-              </div>
-            }
-          </div>
         </div>
       </div>
       <div className="insight">
@@ -202,6 +193,12 @@ export default function RequirementsList(props) {
           </div>
         </div>
       </Modal>
+      {showToggle &&
+        <div className='requirementSwitch' >
+          <Switch checked={isVisible} onClick={() => handleSwitch(_id, isVisible)} size="small" />
+          <p>{isVisible ? 'Visible' : 'Hidden'}</p>
+        </div>
+      }
     </div>
   );
 }

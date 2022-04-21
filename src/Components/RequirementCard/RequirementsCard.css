@@ -5,6 +5,7 @@
     margin-top: 3%;
     margin-bottom: 3%;
     border: 1px solid #e1e1e1;
+    position: relative;
 }
 
 .requirementCard:hover {
@@ -21,7 +22,6 @@
     font-weight: bold;
     font-size: 24px;
     line-height: 32px;
-    text-align: center;
     letter-spacing: 0.4px;
     text-transform: capitalize;
     color: #131520;
@@ -176,5 +176,15 @@
 }
 
 .requirementSwitch {
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+    position: absolute;
+    right: 0px;
+    bottom: 4px;
+    padding: 4px;
+}
+
+.requirementSwitchHolder {
     display: flex;
 }

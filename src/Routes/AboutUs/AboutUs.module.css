@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@700&family=Roboto:wght@100;300;400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@700&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 :root {
     --primary-color: #0b0b0b;
@@ -47,7 +47,6 @@
     font-weight: 600;
     font-size: 24px;
     line-height: 150%;
-    /* or 36px */
 
     text-align: center;
     text-transform: capitalize;
@@ -66,12 +65,10 @@
 .gallery_right_side,
 .gallery_left_side {
     border-radius: 12px;
-    /* width: 48%; */
 }
 
 .gallery_left_side img {
     width: 100%;
-    /* height: 450px; */
     object-fit: cover;
     border-radius: 12px;
 }
@@ -81,8 +78,6 @@
 }
 .gallery_right_side img {
     width: 100%;
-    /* width: 40vw; */
-    /* height: 250px; */
     border-radius: 12px;
 }
 
@@ -92,8 +87,6 @@
     align-items: center;
 }
 .gallery_right_side button {
-    /* position: relative;
-    top: 70px; */
     margin-top: 2rem;
     height: 55px;
     width: 150px;
@@ -107,7 +100,6 @@
 .centered_message_strip {
     display: flex;
     justify-content: center;
-    /* padding: 3.5rem 5rem; */
     padding: 3.5rem 2rem;
     font-size: 2rem;
     text-align: center;
@@ -119,7 +111,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding: 1.5rem 10rem; */
 }
 
 .point_card ~ .point_card {
@@ -324,5 +315,56 @@
     .fact_action {
         font-size: 2rem;
         padding: 0 4rem 4rem 4rem;
+    }
+} */
+
+
+.about_banner_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.about_info_wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.about_career_wrap {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.08);
+    padding-bottom: 3rem;
+}
+
+.about_CTA_bottom_padding {
+    padding-top: 5rem !important;
+}
+
+.about_progress_bar_wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.about_heading_bg {
+    background-image: url('../../assets/images/LandingPage/pink_bg.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+@media screen and (max-width: 580px) {
+    .about_career_wrap {
+        flex-direction: column;
     }
 }
