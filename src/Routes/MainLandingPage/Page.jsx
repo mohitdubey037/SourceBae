@@ -40,9 +40,9 @@ export default function Page() {
             <div className={`${styles.hiring_steps_wrap}`}>
                 <LHiringSteps />
             </div>
-            <div className={`${styles.testimonial_wrap}`}>
+            {/* <div className={`${styles.testimonial_wrap}`}>
                 <LTestimonial />
-            </div>
+            </div> */}
             <div className="CTA_bottom_wrap">
                 <LCTABottom />
             </div>

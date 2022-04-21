@@ -84,11 +84,11 @@ function ClientHireDeveloper(props) {
                             <div className="agencyCardHeaderInfo">
                               <div className="agencyImageProfile">
                                 <div className="agencyProfileInfo">
-                                  <h6>
+                                  <p style={{ fontSize: '20px' }} >
                                     {
                                       stringSlice(hireDeveloperRequirement.requirementName)
                                     }
-                                  </h6>
+                                  </p>
                                   <div
                                     style={{
                                       minWidth:

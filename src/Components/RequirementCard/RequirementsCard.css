@@ -20,7 +20,7 @@
 .headingText {
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 32px;
     letter-spacing: 0.4px;
     text-transform: capitalize;
@@ -39,7 +39,7 @@
 .tag {
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 21px;
     text-align: center;
     letter-spacing: 0.4px;
@@ -75,8 +75,8 @@
 }
 
 .documentImg {
-    height: 18px;
-    width: 18px;
+    height: 16px;
+    width: 16px;
     background-size: cover;
     margin: 10px;
     cursor: pointer;
