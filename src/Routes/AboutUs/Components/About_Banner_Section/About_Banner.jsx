@@ -32,9 +32,9 @@ export default function About_Banner() {
                     <img src={aboutBanner1} alt="" />
                 </div>
                 <div className={`${styles.about_banner_right_div}`}>
-                    <div className={`${styles.about_banner_right_img}`}>
+                    {/* <div className={`${styles.about_banner_right_img}`}>
                         <img src={aboutBanner2} alt="" />
-                    </div>
+                    </div> */}
                     <div className={`${styles.about_banner_btn}`}>
                         <LButton
                             name="See More"
