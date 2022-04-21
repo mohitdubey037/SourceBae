@@ -197,7 +197,7 @@ export default function RequirementsList(props) {
         <div className='requirementSwitch' >
           <Switch checked={isVisible} onClick={() => handleSwitch(_id, isVisible)} size="small" />
           <SizedBox width='4px' />
-          <p>{isVisible ? 'Enable' : 'Disable'}</p>
+          <p>{isVisible ? 'Active' : 'Inactive'}</p>
         </div>
       }
     </div>
