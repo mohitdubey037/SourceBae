@@ -174,14 +174,15 @@ function HireDeveloper(props) {
             },
             expectedStartTime: parseInt(apiData.expectedStartTime)
         };
-        instance
-            .post(`api/client/hire-developers/create`, body)
-            .then(function (response) {
-                props.history.replace({
-                    pathname: CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS,
-                    condition: `client`
-                });
-            });
+        console.log(body)
+        // instance
+        //     .post(`api/client/hire-developers/create`, body)
+        //     .then(function (response) {
+        //         props.history.replace({
+        //             pathname: CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS,
+        //             condition: `client`
+        //         });
+        //     });
     };
     useEffect(() => {
         getAllTechnologies();
@@ -231,9 +232,8 @@ function HireDeveloper(props) {
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
         return (
             <div
-                className={`item-renderer ${
-                    disabled && 'disabled'
-                } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'
+                    } custom-item-renderer`}
             >
                 <input
                     type="checkbox"

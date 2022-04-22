@@ -145,6 +145,10 @@ function DeveloperList(props) {
         setOpenWithdrawModal(true);
     };
 
+    const editDeveloper = (id) => {
+        routerHistory.push(`${AGENCYROUTES.ADD_DEVELOPER}/${id}`)
+    }
+
     return (
         <div style={{ height: '600px', overflowY: 'scroll' }}>
             <div className="mainDeveloperList">
@@ -163,6 +167,13 @@ function DeveloperList(props) {
                                         }
                                     >
                                         <img src={TrashIcon} alt="trash" />
+                                    </div>
+                                    <div
+                                        onClick={() =>
+                                            editDeveloper(developer._id)
+                                        }
+                                    >
+                                        edit
                                     </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">

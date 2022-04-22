@@ -20,10 +20,10 @@ import { FaFileUpload } from 'react-icons/fa';
 import { upload } from '../../../shared/helper';
 import { toast } from 'react-toastify';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
+import { useParams } from 'react-router-dom';
 
 function AddingDeveloper(props) {
-    const logoLink =
-        'https://api.onesourcing.in/media/images/1637044803259.svg';
+    const logoLink = 'https://api.onesourcing.in/media/images/1637044803259.svg';
 
     const Role = localStorage.getItem('role');
 
@@ -48,7 +48,40 @@ function AddingDeveloper(props) {
     const [resume, setResume] = useState(null);
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState({});
+    const [haveResumeLink, sethaveResumeLink] = useState(false)
     const [multipleSelectId, setMultipleSelectId] = useState([]);
+    const { id } = useParams()
+
+    const autoFillFields = data => {
+        let technologies = []
+        let technologiesIds = []
+        data.developerTechnologies?.forEach(item => {
+            technologies.push({ label: item.technologyName, value: item._id })
+            technologiesIds.push(item?._id)
+        })
+        setDeveloperData({
+            firstName: data?.firstName,
+            lastName: data?.lastName,
+            agencyId: data?.agencyId,
+            developerDesignation: data?.developerDesignation,
+            developerTechnologies: technologiesIds,
+            developerDocuments: data?.developerDocuments,
+            developerExperience: data?.developerExperience.toString(),
+            developerPriceRange: data?.developerPriceRange.toString(),
+            developerAvailability: data?.developerAvailability.toString()
+        })
+        setResume([{ name: 'Resume' }])
+        sethaveResumeLink(true)
+        setMultipleSelectId(technologies)
+    }
+
+    const getDeveloperDetails = () => {
+        instance.get(`api/${Role}/developers/get/${id}`)
+            .then(function (response) {
+                autoFillFields(response)
+            })
+            .catch(err => console.log(err))
+    }
 
     useEffect(() => {
         setDeveloperData({
@@ -58,11 +91,15 @@ function AddingDeveloper(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [multipleSelectId]);
 
-    useEffect(() => {}, [developerData]);
+    useEffect(() => {
+        id && getDeveloperDetails()
+    }, [])
+
 
     const onDrop = useCallback((acceptedFiles) => {
         if (acceptedFiles.length > 0) {
             setResume(acceptedFiles);
+            sethaveResumeLink(false)
         } else {
             toast.error('Only .jpg, .jpeg, .png, files are allowed');
         }
@@ -92,8 +129,6 @@ function AddingDeveloper(props) {
             });
         }
     };
-
-    useEffect(() => {}, [developerData]);
 
     const getAllTechs = () => {
         instance.get(`api/${Role}/technologies/all`).then(function (response) {
@@ -136,8 +171,8 @@ function AddingDeveloper(props) {
     async function uploadMedia() {
         try {
             const detail = await upload(resume, Role);
-            detail &&
-                setDeveloperData({
+            if (detail) {
+                let data = {
                     ...developerData,
                     developerDocuments: [
                         {
@@ -145,23 +180,18 @@ function AddingDeveloper(props) {
                             documentLink: detail
                         }
                     ]
-                });
+                }
+                id ? updateDeveloper() : createDeveloperApi(data)
+            }
         } catch (err) {
             console.log(err);
         }
     }
 
-    useEffect(() => {
-        if (developerData.developerDocuments[0].documentLink !== '') {
-            createDeveloperApi();
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [developerData]);
-
-    const createDeveloperApi = () => {
+    const createDeveloperApi = (data) => {
         setLoading(true);
         instance
-            .post(`api/${Role}/developers/create`, developerData)
+            .post(`api/${Role}/developers/create`, (data ?? developerData))
             .then(function (response) {
                 setLoading(false);
                 props.history.replace({
@@ -174,23 +204,42 @@ function AddingDeveloper(props) {
             });
     };
 
+    const updateDeveloper = () => {
+        setLoading(true);
+        instance
+            .post(`api/${Role}/developers/update/${id}`, developerData)
+            .then(function (response) {
+                setLoading(false);
+                props.history.replace({
+                    pathname: AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST,
+                    origin: 'addingDeveloper'
+                });
+            })
+            .catch((error) => {
+                console.log(error)
+                setLoading(false);
+            });
+    }
+
     const handleButton = () => {
         if (errorValidation()) {
-            uploadMedia();
+            if (haveResumeLink) {
+                id ? updateDeveloper() : createDeveloperApi()
+            } else {
+                uploadMedia();
+            }
         }
     };
 
     useEffect(() => {
         getAllTechs();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
         return (
             <div
-                className={`item-renderer ${
-                    disabled && 'disabled'
-                } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'
+                    } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -378,7 +427,7 @@ function AddingDeveloper(props) {
                                                                 <>
                                                                     <FaFileUpload />
                                                                     {resume ===
-                                                                    null ? (
+                                                                        null ? (
                                                                         <p className="select_file">
                                                                             click
                                                                             to
@@ -390,7 +439,7 @@ function AddingDeveloper(props) {
                                                                             className="logo_detail"
                                                                             title={
                                                                                 resume !==
-                                                                                    null &&
+                                                                                null &&
                                                                                 resume[0]
                                                                                     .name
                                                                             }
@@ -598,11 +647,11 @@ function AddingDeveloper(props) {
                                             {developerData.developerAvailability !==
                                                 '0' &&
                                                 developerData.developerAvailability !==
-                                                    '1' &&
+                                                '1' &&
                                                 developerData.developerAvailability !==
-                                                    '2' &&
+                                                '2' &&
                                                 developerData.developerAvailability !==
-                                                    null && (
+                                                null && (
                                                     <input
                                                         min={4}
                                                         type="number"

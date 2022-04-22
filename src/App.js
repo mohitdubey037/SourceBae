@@ -48,13 +48,13 @@ import store from './Redux/Store/store';
 import { CLIENT, AGENCY } from './shared/constants';
 import { ErrorBoundary } from 'react-error-boundary';
 import firebase from 'firebase/app';
-import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
+// import LandingPage from '../src/Routes/MainLandingPage/Page.jsx';
 import ActiveRequirements from './Routes/Dashboard/ActiveRequirements/ActiveRequirements';
 import RequirementListing from './Routes/Agency/RequirementList/RequirementListing';
 import DevelopersRequest from './Routes/Client/DeveloperRequest/DeveloperRequest';
 import { AGENCYROUTES, CLIENTROUTES, USERROUTES } from './Navigation/CONSTANTS';
 import { useHistory } from 'react-router-dom';
-// import LandingPage from './Routes/LandingPage/LandingPage';
+import LandingPage from './Routes/LandingPage/LandingPage';
 import CacheBuster from 'react-cache-buster';
 import packageInfo from '../package.json';
 import Spinner from './Components/Spinner/Spinner';
@@ -178,7 +178,7 @@ const App = () => {
                         <CustomRoute
                             condition={AGENCY}
                             exact
-                            path={AGENCYROUTES.ADD_DEVELOPER}
+                            path={`${AGENCYROUTES.ADD_DEVELOPER}/:id?`}
                             component={AddingDeveloper}
                         />
 
