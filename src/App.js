@@ -178,7 +178,7 @@ const App = () => {
                         <CustomRoute
                             condition={AGENCY}
                             exact
-                            path={AGENCYROUTES.ADD_DEVELOPER}
+                            path={`${AGENCYROUTES.ADD_DEVELOPER}/:id?`}
                             component={AddingDeveloper}
                         />
 
