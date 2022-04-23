@@ -11,7 +11,6 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@material-ui/core/TextField';
 function Information(props) {
     const Role = localStorage.getItem('role');
-    console.log(props?.data?.incorporationDate)
     const day = moment(props?.data?.incorporationDate).format(
         'MM-DD-YYYY'
     );

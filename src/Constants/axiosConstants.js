@@ -122,4 +122,10 @@ instance.interceptors.response.use(
     }
 );
 
+export const axiosPatchModule = async (urlEndpoint, body, params, headers = { 'Authorization': cookie.load('Authorization') }) => {
+    return axios.patch(url + urlEndpoint, body, { headers, params })
+        .then(res => res.data)
+        .catch(err => { throw (err) })
+}
+
 export default instance;

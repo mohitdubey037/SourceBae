@@ -10,7 +10,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import instance from '../../../Constants/axiosConstants';
+import instance, { axiosPatchModule } from '../../../Constants/axiosConstants';
 import { useDropzone } from 'react-dropzone';
 
 import Spinner from '../../../Components/Spinner/Spinner';
@@ -21,6 +21,7 @@ import { upload } from '../../../shared/helper';
 import { toast } from 'react-toastify';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function AddingDeveloper(props) {
     const logoLink = 'https://api.onesourcing.in/media/images/1637044803259.svg';
@@ -205,21 +206,20 @@ function AddingDeveloper(props) {
     };
 
     const updateDeveloper = () => {
-        setLoading(true);
-        console.log(developerData)
-        instance
-            .patch(`api/${Role}/developers/update/${id}`, developerData)
-            .then(function (response) {
-                setLoading(false);
-                props.history.replace({
-                    pathname: AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST,
-                    origin: 'addingDeveloper'
-                });
+        axiosPatchModule(`/api/${Role}/developers/update/${id}`, developerData)
+            .then(res => {
+                if (res?.code == 206) {
+                    toast.success(res?.message)
+                    props.history(-1)
+                }
             })
-            .catch((error) => {
-                console.log(error)
-                setLoading(false);
-            });
+            .catch(err => {
+                let response = err?.response
+                if (response?.data?.code == 400) {
+                    return toast.error(response?.data?.message)
+                }
+            })
+            .finally(() => setLoading(false))
     }
 
     const handleButton = () => {
@@ -239,8 +239,7 @@ function AddingDeveloper(props) {
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
         return (
             <div
-                className={`item-renderer ${disabled && 'disabled'
-                    } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'} custom-item-renderer`}
             >
                 <input
                     type="checkbox"

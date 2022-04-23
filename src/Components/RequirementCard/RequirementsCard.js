@@ -63,7 +63,6 @@ export default function RequirementsList(props) {
     let body = {
       isVisible: value ? 2 : 1
     };
-    console.log(body)
     instance.patch(url, body).then(() => {
       window.location.reload();
     });
