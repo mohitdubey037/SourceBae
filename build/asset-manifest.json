@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6b3fd14a.css",
-    "main.js": "/static/js/main.50463a67.js",
+    "main.js": "/static/js/main.bbc3ae8f.js",
     "static/media/banner-2.jpg": "/static/media/banner-2.3d303784bbbf5d61fe60.jpg",
     "static/media/sourcebae-landing-hero.png": "/static/media/sourcebae-landing-hero.f55c141d4303e6a65a83.png",
     "static/media/about-banner-1.jpg": "/static/media/about-banner-1.d947923df3504e4177c7.jpg",
@@ -130,10 +130,10 @@
     "static/media/agency_document.svg": "/static/media/agency_document.2d36aaf0a9e639258cbe0ba63ad39cdd.svg",
     "static/media/SelectArrow.svg": "/static/media/SelectArrow.6ef7bc782daac5fc2547ffb1305298c1.svg",
     "main.6b3fd14a.css.map": "/static/css/main.6b3fd14a.css.map",
-    "main.50463a67.js.map": "/static/js/main.50463a67.js.map"
+    "main.bbc3ae8f.js.map": "/static/js/main.bbc3ae8f.js.map"
   },
   "entrypoints": [
     "static/css/main.6b3fd14a.css",
-    "static/js/main.50463a67.js"
+    "static/js/main.bbc3ae8f.js"
   ]
 }
