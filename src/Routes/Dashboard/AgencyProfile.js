@@ -173,9 +173,8 @@ function AgencyProfile(props) {
                     />
                     <div className="mainProfileHeaderImage">
                         <div
-                            className={`innerProfileHeaderImage ${
-                                role === 'Client' && 'conditionalGradient'
-                            }`}
+                            className={`innerProfileHeaderImage ${role === 'Client' && 'conditionalGradient'
+                                }`}
                         >
                             <div className="backButtonAgencyProfile">
                                 <div
@@ -196,14 +195,13 @@ function AgencyProfile(props) {
                                         <button
                                             disabled={
                                                 agencyProfileData.isAgencyVerified ===
-                                                    false && true
+                                                false && true
                                             }
                                             style={{
-                                                filter: `${
-                                                    !agencyProfileData.isAgencyVerified
-                                                        ? `grayscale(100%)`
-                                                        : `none`
-                                                }`
+                                                filter: `${!agencyProfileData.isAgencyVerified
+                                                    ? `grayscale(100%)`
+                                                    : `none`
+                                                    }`
                                             }}
                                             onClick={() =>
                                                 props.history.push({
@@ -224,13 +222,11 @@ function AgencyProfile(props) {
                                     <button
                                         onClick={() =>
                                             props.history.push({
-                                                pathname: `${
-                                                    role === AGENCY
-                                                        ? AGENCYROUTES.PRODUCT_DETAILS
-                                                        : CLIENTROUTES.PRODUCT_DETAILS
-                                                }/${
-                                                    agencyProfileData.productId
-                                                }`,
+                                                pathname: `${role === AGENCY
+                                                    ? AGENCYROUTES.PRODUCT_DETAILS
+                                                    : CLIENTROUTES.PRODUCT_DETAILS
+                                                    }/${agencyProfileData.productId
+                                                    }`,
                                                 condition:
                                                     id !== ''
                                                         ? 'agency'
@@ -266,7 +262,7 @@ function AgencyProfile(props) {
                                     </div>
 
                                     {agencyProfileData.productId !==
-                                    undefined ? (
+                                        undefined ? (
                                         <button
                                             style={{
                                                 backgroundImage:
@@ -274,13 +270,11 @@ function AgencyProfile(props) {
                                             }}
                                             onClick={() =>
                                                 props.history.push({
-                                                    pathname: `${
-                                                        role === AGENCY
-                                                            ? AGENCYROUTES.PRODUCT_DETAILS
-                                                            : CLIENTROUTES.PRODUCT_DETAILS
-                                                    }/${
-                                                        agencyProfileData.productId
-                                                    }`,
+                                                    pathname: `${role === AGENCY
+                                                        ? AGENCYROUTES.PRODUCT_DETAILS
+                                                        : CLIENTROUTES.PRODUCT_DETAILS
+                                                        }/${agencyProfileData.productId
+                                                        }`,
                                                     condition:
                                                         id !== ''
                                                             ? 'Agency'
@@ -421,22 +415,20 @@ function AgencyProfile(props) {
                                                 className="pointContent"
                                                 style={{
                                                     display: 'flex',
-                                                    filter: `${
-                                                        !agencyProfileData?.isAgencyVerified
-                                                            ? `grayscale(100%)`
-                                                            : `none`
-                                                    }`
+                                                    filter: `${!agencyProfileData?.isAgencyVerified
+                                                        ? `grayscale(100%)`
+                                                        : `none`
+                                                        }`
                                                 }}
                                             >
                                                 <img
                                                     src={verified}
                                                     alt="verified"
                                                 />
-                                                <p>{`${
-                                                    !agencyProfileData?.isAgencyVerified
-                                                        ? agencyProfileData?.verificationMessage
-                                                        : `Verified`
-                                                }`}</p>
+                                                <p>{`${!agencyProfileData?.isAgencyVerified
+                                                    ? agencyProfileData?.verificationMessage
+                                                    : `Verified`
+                                                    }`}</p>
                                             </div>
                                         )}
                                     </div>
@@ -471,10 +463,9 @@ function AgencyProfile(props) {
                         <div className="innerAgencyProfileDesc">
                             <div className="leftAgencyProfileDesc">
                                 <div
-                                    className={`aboutUs_parent ${
-                                        role === 'Client' &&
+                                    className={`aboutUs_parent ${role === 'Client' &&
                                         'conditionalGradient'
-                                    }`}
+                                        }`}
                                 >
                                     <h2>About us</h2>
                                 </div>
@@ -485,11 +476,10 @@ function AgencyProfile(props) {
                                             agencyProfileData?.agencyDomains?.map(
                                                 (domain) => {
                                                     return (
-                                                        <p>{`${
-                                                            domain?.domainId
-                                                                ?.domainName ||
+                                                        <p>{`${domain?.domainId
+                                                            ?.domainName ||
                                                             ''
-                                                        }`}</p>
+                                                            }`}</p>
                                                     );
                                                 }
                                             )}
@@ -505,7 +495,7 @@ function AgencyProfile(props) {
                                                 src={growth}
                                                 alt=""
                                             />
-                                            <h3>Total Profile View</h3>
+                                            <h3 style={{ color: '#000' }} >Total Profile View</h3>
                                         </div>
                                         <p className="profile_count">
                                             {
@@ -520,7 +510,7 @@ function AgencyProfile(props) {
                                                 src={document}
                                                 alt=""
                                             />
-                                            <h3>Company Documents</h3>
+                                            <h3 style={{ color: '#000' }} >Company Documents</h3>
                                         </div>
 
                                         <FormControl

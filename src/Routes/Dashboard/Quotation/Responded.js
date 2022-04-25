@@ -64,7 +64,7 @@ function Responded(props) {
                                     s?.projectProposals[0]
                                         ?.rejectReasonByClient ||
                                     s?.projectCurrentStatus ===
-                                        'Quotation Accepted'
+                                    'Quotation Accepted'
                                 ) ? (
                                     isDetail === false ? (
                                         <div className="respondedCard">
@@ -72,7 +72,7 @@ function Responded(props) {
                                             <div className="date_and_time">
                                                 <div className="dateCreated">
                                                     <div>
-                                                        <p>
+                                                        <p style={{ color: '#000' }} >
                                                             <Moment
                                                                 format="hh:mm A"
                                                                 withTitle
@@ -84,7 +84,7 @@ function Responded(props) {
                                                 </div>
                                                 <div className="dateCreated">
                                                     <div>
-                                                        <p>
+                                                        <p style={{ color: '#000' }} >
                                                             <Moment
                                                                 format="D MMM YYYY"
                                                                 withTitle
@@ -100,7 +100,8 @@ function Responded(props) {
                                                     <h4
                                                         style={{
                                                             textTransform:
-                                                                'capitalize'
+                                                                'capitalize',
+                                                            color: '#000'
                                                         }}
                                                     >
                                                         {s.projectName}
@@ -152,21 +153,13 @@ function Responded(props) {
                                                 </div>
                                                 <div>
                                                     <p>Status</p>
-                                                    <p
-                                                        style={{
-                                                            color: '#45A4EA'
-                                                        }}
-                                                    >
+                                                    <p>
                                                         {s.projectCurrentStatus}
                                                     </p>
                                                 </div>
                                                 <div>
                                                     <p>Project Type</p>
-                                                    <p
-                                                        style={{
-                                                            color: '#45A4EA'
-                                                        }}
-                                                    >
+                                                    <p>
                                                         {s.projectType}
                                                     </p>
                                                 </div>

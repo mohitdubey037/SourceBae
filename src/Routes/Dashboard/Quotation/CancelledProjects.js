@@ -59,7 +59,7 @@ function CancelledProjects(props) {
                         ) : (
                             projects?.map((s) =>
                                 s?.projectProposals[0]?.rejectReasonByAgency ||
-                                s?.projectProposals[0]?.rejectReasonByClient ? (
+                                    s?.projectProposals[0]?.rejectReasonByClient ? (
                                     <div className="respondedCard">
                                         <div className="leftBorder"></div>
                                         <div className="date_and_time">
@@ -144,13 +144,13 @@ function CancelledProjects(props) {
                                             </div>
                                             <div>
                                                 <p>Status</p>
-                                                <p style={{ color: '#45A4EA' }}>
+                                                <p>
                                                     {s.projectCurrentStatus}
                                                 </p>
                                             </div>
                                             <div>
                                                 <p>Project Type</p>
-                                                <p style={{ color: '#45A4EA' }}>
+                                                <p>
                                                     {s.projectType}
                                                 </p>
                                             </div>

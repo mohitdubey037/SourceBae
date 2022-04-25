@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 import { experienceRange } from '../../../shared/helper';
+import editImage from '../../../assets/images/OtherIcons/edit.png'
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -168,16 +169,9 @@ function DeveloperList(props) {
                                     >
                                         <img src={TrashIcon} alt="trash" />
                                     </div>
-                                    <div
-                                        onClick={() =>
-                                            editDeveloper(developer._id)
-                                        }
-                                    >
-                                        edit
-                                    </div>
                                     <div className="developerNameExp">
                                         <div className="developerName">
-                                            <div>
+                                            <div style={{ display: 'flex', alignItems: 'center' }} >
                                                 <h2>{`${developer.firstName
                                                     .charAt(0)
                                                     .toUpperCase() +
@@ -187,6 +181,13 @@ function DeveloperList(props) {
                                                         .toUpperCase() +
                                                     developer.lastName.slice(1)
                                                     }`}</h2>
+                                                <img
+                                                    src={editImage}
+                                                    onClick={() =>
+                                                        editDeveloper(developer._id)
+                                                    }
+                                                    style={{ height: '20px', width: '20px', marginLeft: '14px', cursor: 'pointer' }}
+                                                />
                                             </div>
                                             <div
                                                 className={`rounded_developerList ${toggleIndexes[index] &&
@@ -210,7 +211,7 @@ function DeveloperList(props) {
                                     </div>
 
                                     <div className="developerTech">
-                                        <h6>Techstack</h6>
+                                        <h6 style={{ color: '#000' }} >Techstack</h6>
                                         <div className="developerTechNames">
                                             {developer.developerTechnologies.map(
                                                 (tech) => {
@@ -230,12 +231,12 @@ function DeveloperList(props) {
                                         <div className="developerBudget">
                                             <div className="developer-detail">
                                                 <div>
-                                                    <p>Experience</p>
+                                                    <p style={{ color: '#000' }} >Experience</p>
                                                     <h6>{experienceRange(developer.developerExperience)}</h6>
                                                 </div>
 
                                                 <div>
-                                                    <p>Timeline</p>
+                                                    <p style={{ color: '#000' }} >Timeline</p>
                                                     <h6>
                                                         {parseInt(
                                                             developer.developerAvailability
@@ -245,7 +246,7 @@ function DeveloperList(props) {
                                                     </h6>
                                                 </div>
                                                 <div>
-                                                    <p>Budget</p>
+                                                    <p style={{ color: '#000' }} >Budget</p>
                                                     <h6>{`${developer.developerPriceRange
                                                         }₹-${developer.developerPriceRange +
                                                         10 * 1000
@@ -261,7 +262,7 @@ function DeveloperList(props) {
                                                 }
                                             >
                                                 <div className="developer-status_developerList">
-                                                    <p>Developer Status</p>
+                                                    <p style={{ color: '#000' }} >Developer Status</p>
                                                 </div>
                                                 <div
                                                     style={{

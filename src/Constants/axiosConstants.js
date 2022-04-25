@@ -19,6 +19,19 @@ const instance = axios.create({
     data: {}
 });
 
+let sessionExpiredShowed = false
+
+const throttle = () => {
+    if (!sessionExpiredShowed) {
+        toast.error('Session expired!')
+        sessionExpiredShowed = true
+        let timeOut = setTimeout(() => {
+            sessionExpiredShowed = false
+            clearTimeout(timeOut)
+        }, 1000);
+    }
+}
+
 instance.interceptors.request.use(function (request) {
     if (!request.url.includes('login')) {
         request.headers['Authorization'] = cookie.load('Authorization');
@@ -72,10 +85,13 @@ instance.interceptors.response.use(
 
                     break;
                 case 401:
-                    alert('Session Expired');
-                    localStorage.clear();
-                    cookie.remove('Authorization');
-                    window.location.href = '/';
+                    throttle()
+                    let timeOut = setTimeout(() => {
+                        localStorage.clear();
+                        cookie.remove('Authorization');
+                        window.location.href = '/';
+                        clearTimeout(timeOut)
+                    }, 1000);
                     break;
                 case 403:
                     break;

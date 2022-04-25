@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 button {
     margin-top: 0;
     margin-bottom: 0;
@@ -12,11 +13,9 @@ button {
 }
 
 .conditionalGradient {
-    background-image: linear-gradient(
-        284deg,
-        rgb(3, 118, 186) 0%,
-        rgb(1, 48, 77) 100%
-    ) !important;
+    background-image: linear-gradient(284deg,
+            rgb(3, 118, 186) 0%,
+            rgb(1, 48, 77) 100%) !important;
 }
 
 .Image2_AgencyProfile {
@@ -375,6 +374,7 @@ button {
 
 .view_image_parent {
     display: flex;
+    color: #000;
     align-items: center;
     justify-content: center;
 }
@@ -489,7 +489,7 @@ button {
 
 .monthyView {
     width: 48%;
-    border: 1px solid#5C6DFF;
+    border: 1px solid #5C6DFF;
     height: 137px;
     text-align: center;
     padding: 1rem 0;
@@ -599,19 +599,18 @@ button {
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active img {
     color: white !important;
-    filter: invert(100%) sepia(97%) saturate(0%) hue-rotate(49deg)
-        brightness(154%) contrast(105%);
+    filter: invert(100%) sepia(97%) saturate(0%) hue-rotate(49deg) brightness(154%) contrast(105%);
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link:hover {
     border: none;
 }
 
-.nav-tabs_agencyProfile > #nav-home-tab {
+.nav-tabs_agencyProfile>#nav-home-tab {
     margin-top: 10px;
 }
 
-.nav-tabs_agencyProfile > div {
+.nav-tabs_agencyProfile>div {
     border-top-left-radius: 0rem;
     border-top-right-radius: 0rem;
     display: flex;
@@ -641,8 +640,7 @@ button {
 }
 
 .innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile:hover,
-.nav-button.nav-link_agencyProfile:active
-    .nav-button.nav-link_agencyProfile:focus {
+.nav-button.nav-link_agencyProfile:active .nav-button.nav-link_agencyProfile:focus {
     border: none !important;
     outline: none !important;
 }

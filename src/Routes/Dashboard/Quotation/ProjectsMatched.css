@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .mainProjectsMatched {
   width: 100%;
   display: flex;
@@ -77,7 +78,6 @@
 .projectCardHeading .projectHeadingName {
   width: 50%;
   font-family: 'Segoe UI';
-  color: #5C6DFF;
   word-break: break-all;
 }
 
@@ -115,16 +115,20 @@
   .innerProjectsMatched {
     width: 98%;
   }
+
   .projectCard {
     padding-left: 2%;
   }
+
   .innerProjectsMatched .shapeImage {
     display: none;
   }
+
   .projectNumber {
     top: 0;
     right: 20px;
   }
+
   .projectNumber p {
     font-size: 5rem;
     transform: translate(0%, -20%);
@@ -132,9 +136,11 @@
     font-family: 'Fredoka One', cursive;
     transition: 0.3s ease-in-out;
   }
+
   .projectCardHeading {
     flex-direction: column-reverse;
   }
+
   .projectCardHeading .projectHeadingName {
     width: 100%;
     margin: 5% 0;
@@ -208,6 +214,7 @@
     flex-direction: column;
     width: 100%;
   }
+
   .projectPostedDetails div {
     margin-right: 0%;
     text-align: center;

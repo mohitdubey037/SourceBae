@@ -121,7 +121,9 @@
     font-weight: bold;
 }
 
-.locationFilter p::after, .officeVisitFilter_productAgencies p::after, .officeVisitFilter p::after {
+.locationFilter p::after,
+.officeVisitFilter_productAgencies p::after,
+.officeVisitFilter p::after {
     content: none !important;
 }
 
@@ -373,9 +375,10 @@
 .productAgencyDescPara {
     margin-left: 0.5rem;
     width: 80%;
+    color: #000;
 }
 
-.productAgencyDescPara p{
+.productAgencyDescPara p {
     font-family: 'Segoe UI';
 }
 

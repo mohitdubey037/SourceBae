@@ -46,13 +46,13 @@
 .rulesUpper p {
     font-family: 'Segoe UI Semibold';
     font-size: 1rem;
-    color: #5c6dff;
     margin-top: 1rem;
 }
 
 .openTiming i,
 .weekendOpening i {
     margin-right: 4px;
+    color: #000;
 }
 
 .questionPart {
@@ -84,6 +84,7 @@
 .rulesMark i {
     margin-right: 10%;
     font-size: 1.3rem;
+    color: #000;
 }
 
 .leftQuestion p {
@@ -127,13 +128,11 @@
 }
 
 .cancel-img {
-    filter: invert(16%) sepia(200%) saturate(6753%) hue-rotate(2deg)
-        brightness(101%) contrast(122%);
+    filter: invert(16%) sepia(200%) saturate(6753%) hue-rotate(2deg) brightness(101%) contrast(122%);
 }
 
 .check-img {
-    filter: invert(42%) sepia(19%) saturate(6449%) hue-rotate(219deg)
-        brightness(105%) contrast(451%);
+    filter: invert(42%) sepia(19%) saturate(6449%) hue-rotate(219deg) brightness(105%) contrast(451%);
 }
 
 .submitEditBtn button:hover {

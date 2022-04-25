@@ -49,8 +49,8 @@ function Rules(props) {
                 }),
                 agencyTiming: { ...form.agencyTiming }
             })
-            .then((response) => {})
-            .catch((err) => {});
+            .then((response) => { })
+            .catch((err) => { });
     };
 
     const getAgencyProfile = (profileviewStatus) => {
@@ -62,7 +62,7 @@ function Rules(props) {
                 setRules(response.agencyRules);
                 setEditRules(false);
             })
-            .catch((err) => {});
+            .catch((err) => { });
     };
 
     const handleChange = (value, isStart) => {
@@ -111,28 +111,28 @@ function Rules(props) {
                 <div className="innerRules">
                     {Role === 'agency'
                         ? agencyProfiledata.isAgencyVerified && (
-                              <div className="editableBtn_rules">
-                                  <div className="rules_parent">
-                                      <p>AGENCY RULES</p>
-                                  </div>
-                                  <i
-                                      onClick={() => {
-                                          setEditRules(true);
-                                      }}
-                                      class="fa fa-pencil-square-o Edit-icon_information"
-                                      aria-hidden="true"
-                                  ></i>
-                              </div>
-                          )
+                            <div className="editableBtn_rules">
+                                <div className="rules_parent">
+                                    <p>AGENCY RULES</p>
+                                </div>
+                                <i
+                                    onClick={() => {
+                                        setEditRules(true);
+                                    }}
+                                    class="fa fa-pencil-square-o Edit-icon_information"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
+                        )
                         : null}
                     <div className="rulesCard">
                         <div className="rulesUpper">
                             <div className="openTiming">
-                                <h4>
+                                <h4 style={{ color: '#000', fontWeight: "bold" }} >
                                     <i
                                         class="fa fa-clock-o"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                     Default Opening & Closing Time
                                 </h4>
                                 <div className="date_parent">
@@ -183,7 +183,7 @@ function Rules(props) {
                                 </div>
                             </div>
                             <div className="weekendOpening">
-                                <h4>
+                                <h4 style={{ color: '#000', fontWeight: 'bold' }} >
                                     <i
                                         class="fa fa-calendar"
                                         aria-hidden="true"
@@ -235,69 +235,68 @@ function Rules(props) {
                         >
                             {rules.length > 0
                                 ? rules.map((value) => {
-                                      return (
-                                          <div
-                                              className={`questionPart ${
-                                                  editRules === false &&
-                                                  'conditionalPadding'
-                                              }`}
-                                          >
-                                              <div className="leftQuestion">
-                                                  <p>{value.ruleId.rule}</p>
-                                              </div>
+                                    return (
+                                        <div
+                                            className={`questionPart ${editRules === false &&
+                                                'conditionalPadding'
+                                                }`}
+                                        >
+                                            <div className="leftQuestion">
+                                                <p>{value.ruleId.rule}</p>
+                                            </div>
 
-                                              {!editRules && (
-                                                  <div className="rulesMark">
-                                                      {value?.selection ? (
-                                                          <img
-                                                              className="check-img"
-                                                              src={check}
-                                                              alt="check"
-                                                          />
-                                                      ) : (
-                                                          <img
-                                                              className="cancel-img"
-                                                              src={cancel}
-                                                              alt="cancel"
-                                                          />
-                                                      )}
-                                                  </div>
-                                              )}
+                                            {!editRules && (
+                                                <div className="rulesMark">
+                                                    {value?.selection ? (
+                                                        <img
+                                                            className="check-img"
+                                                            src={check}
+                                                            alt="check"
+                                                        />
+                                                    ) : (
+                                                        <img
+                                                            className="cancel-img"
+                                                            src={cancel}
+                                                            alt="cancel"
+                                                        />
+                                                    )}
+                                                </div>
+                                            )}
 
-                                              {editRules && (
-                                                  <FormControl component="fieldset">
-                                                      <RadioGroup
-                                                          aria-label={value._id}
-                                                          name={value._id}
-                                                          value={`${value.selection}`}
-                                                          onChange={(event) =>
-                                                              handleRules(
-                                                                  event,
-                                                                  value
-                                                              )
-                                                          }
-                                                      >
-                                                          <FormControlLabel
-                                                              value="true"
-                                                              control={
-                                                                  <Radio />
-                                                              }
-                                                              label="Yes"
-                                                          />
+                                            {editRules && (
+                                                <FormControl component="fieldset">
+                                                    <RadioGroup
+                                                        aria-label={value._id}
+                                                        name={value._id}
+                                                        value={`${value.selection}`}
+                                                        onChange={(event) =>
+                                                            handleRules(
+                                                                event,
+                                                                value
+                                                            )
+                                                        }
+                                                    >
+                                                        <FormControlLabel
+                                                            value="true"
+                                                            control={
+                                                                <Radio />
+                                                            }
+                                                            label="Yes"
+                                                        />
 
-                                                          <FormControlLabel
-                                                              value="false"
-                                                              control={
-                                                                  <Radio />
-                                                              }
-                                                              label="No"
-                                                          />
-                                                      </RadioGroup>
-                                                  </FormControl>
-                                              )}
-                                          </div>
-                                      );
-                                  })
+                                                        <FormControlLabel
+                                                            value="false"
+                                                            control={
+                                                                <Radio />
+                                                            }
+                                                            label="No"
+                                                        />
+                                                    </RadioGroup>
+                                                </FormControl>
+                                            )}
+                                        </div>
+                                    );
+                                })
                                 : 'There are no rules available for this Agency.'}
                             {editRules && (
                                 <div className="handleButtons">

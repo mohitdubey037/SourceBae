@@ -144,7 +144,7 @@ function ProjectesMatched(props) {
                                                 style={{
                                                     padding:
                                                         s.projectType ===
-                                                            'Short Term' &&
+                                                        'Short Term' &&
                                                         '1.23rem 0'
                                                 }}
                                                 className="projectDetailsTableContainer"
@@ -186,7 +186,7 @@ function ProjectesMatched(props) {
                                                 style={{
                                                     padding:
                                                         s.projectType ===
-                                                            'Short Term' &&
+                                                        'Short Term' &&
                                                         '1.23rem 0'
                                                 }}
                                                 className="projectDetailsTableContainer"
@@ -217,7 +217,7 @@ function ProjectesMatched(props) {
                                                 style={{
                                                     padding:
                                                         s.projectType ===
-                                                            'Short Term' &&
+                                                        'Short Term' &&
                                                         '1.23rem 0'
                                                 }}
                                                 className="projectDetailsTableContainer"
@@ -226,11 +226,7 @@ function ProjectesMatched(props) {
                                                     <p>Project Type</p>
                                                 </div>
                                                 <div className="projectTableContent">
-                                                    <p
-                                                        style={{
-                                                            color: '#45A4EA'
-                                                        }}
-                                                    >
+                                                    <p>
                                                         {s.projectType}
                                                     </p>
                                                 </div>

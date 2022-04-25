@@ -66,14 +66,14 @@ function Received(props) {
                                     s?.projectProposals[0]
                                         ?.rejectReasonByClient ||
                                     s?.projectCurrentStatus ===
-                                        'Quotation Accepted'
+                                    'Quotation Accepted'
                                 ) ? (
                                     <div className="respondedCard">
                                         <div className="leftBorder"></div>
                                         <div className="date_and_time">
                                             <div className="dateCreated">
                                                 <div>
-                                                    <p>
+                                                    <p style={{ color: '#000' }} >
                                                         <Moment
                                                             format="HH:MM A"
                                                             withTitle
@@ -85,7 +85,7 @@ function Received(props) {
                                             </div>
                                             <div className="dateCreated">
                                                 <div>
-                                                    <p>
+                                                    <p style={{ color: '#000' }} >
                                                         <Moment
                                                             format="D MMM YYYY"
                                                             withTitle
@@ -102,7 +102,8 @@ function Received(props) {
                                                     style={{
                                                         textTransform:
                                                             'capitalize',
-                                                        overflowWrap: 'anywhere'
+                                                        overflowWrap: 'anywhere',
+                                                        color: '#000'
                                                     }}
                                                 >
                                                     {s.projectName}
@@ -158,13 +159,13 @@ function Received(props) {
 
                                             <div>
                                                 <p>Status</p>
-                                                <p style={{ color: '#45A4EA' }}>
+                                                <p>
                                                     {s.projectCurrentStatus}
                                                 </p>
                                             </div>
                                             <div>
                                                 <p>Project Type</p>
-                                                <p style={{ color: '#45A4EA' }}>
+                                                <p>
                                                     {s.projectType}
                                                 </p>
                                             </div>
