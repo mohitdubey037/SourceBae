@@ -194,7 +194,6 @@ const DeveloperRequest = () => {
                                 {requirementsList?.docs?.length > 0 ? (
                                     requirementsList?.docs?.map(
                                         (req, index) => {
-                                            console.log(req)
                                             return (
                                                 <RequirementsCard
                                                     key={`${req?._id}${index}`}
