@@ -28,6 +28,73 @@ function AddingDeveloper(props) {
 
     const Role = localStorage.getItem('role');
 
+    const options = [
+        {
+            label: 'Frontend',
+            value: 'Frontend'
+        },
+        {
+            label: 'UI/UX',
+            value: 'UI/UX'
+        },
+        {
+            label: 'Tester',
+            value: 'Tester'
+        },
+        {
+            label: 'CMS',
+            value: 'CMS'
+        },
+        {
+            label: 'Project Management',
+            value: 'Project Management'
+        },
+        {
+            label: 'Support',
+            value: 'Support'
+        },
+        {
+            label: 'Backend',
+            value: 'Backend'
+        },
+        {
+            label: 'Full stack Developer',
+            value: 'Full stack Developer'
+        },
+        {
+            label: 'Mobile Developer',
+            value: 'Mobile Developer'
+        },
+        {
+            label: 'Game Developer',
+            value: 'Game Developer'
+        },
+        {
+            label: 'Data Scientist Developer',
+            value: 'Data Scientist Developer'
+        },
+        {
+            label: 'DevOps Developer',
+            value: 'DevOps Developer'
+        },
+        {
+            label: 'Software Developer',
+            value: 'Software Developer'
+        },
+        {
+            label: 'Web Developer',
+            value: 'Web Developer'
+        },
+        {
+            label: 'AI/ML',
+            value: 'AI/ML'
+        },
+        {
+            label: 'Security Developer',
+            value: 'Security Developer'
+        }
+    ];
+
     const [developerData, setDeveloperData] = React.useState({
         firstName: '',
         lastName: '',
@@ -41,8 +108,9 @@ function AddingDeveloper(props) {
             }
         ],
         developerExperience: '1',
-        developerPriceRange: '50000',
-        developerAvailability: '0'
+        developerPriceRange: '',
+        developerAvailability: '0',
+        developerRolesRequired: []
     });
 
     const [techs, setTechs] = useState([]);
@@ -50,12 +118,14 @@ function AddingDeveloper(props) {
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState({});
     const [haveResumeLink, sethaveResumeLink] = useState(false)
-    const [multipleSelectId, setMultipleSelectId] = useState([]);
+    const [multipleSelectId, setMultipleSelectId] = useState([])
+    const [multiSelectRoles, setmultiSelectRoles] = useState([])
     const { id } = useParams()
 
     const autoFillFields = data => {
         let technologies = []
         let technologiesIds = []
+        let devRoles = []
         data.developerTechnologies?.forEach(item => {
             technologies.push({ label: item.technologyName, value: item._id })
             technologiesIds.push(item?._id)
@@ -69,8 +139,10 @@ function AddingDeveloper(props) {
             developerDocuments: data?.developerDocuments,
             developerExperience: data?.developerExperience.toString(),
             developerPriceRange: data?.developerPriceRange.toString(),
-            developerAvailability: data?.developerAvailability.toString()
+            developerAvailability: data?.developerAvailability.toString(),
+            developerRolesRequired: data?.developerRolesRequired
         })
+        setmultiSelectRoles(data?.developerRolesRequired ?? [])
         setResume([{ name: 'Resume' }])
         sethaveResumeLink(true)
         setMultipleSelectId(technologies)
@@ -91,6 +163,14 @@ function AddingDeveloper(props) {
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [multipleSelectId]);
+
+    useEffect(() => {
+        setDeveloperData({
+            ...developerData,
+            developerRolesRequired: multiSelectRoles.map(t => t.value)
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [multiSelectRoles]);
 
     useEffect(() => {
         id && getDeveloperDetails()
@@ -163,6 +243,8 @@ function AddingDeveloper(props) {
             errors.developerAvailability = 'Developer Availability is required';
         } else if (developerData.developerAvailability === 'Negotiable') {
             errors.developerAvailability = 'Please enter a day';
+        } else if (developerData.developerRolesRequired.length == 0) {
+            errors.developerRolesRequired = 'Please select role';
         }
         setErrors(errors);
         if (Object.keys(errors).length === 0) return true;
@@ -406,6 +488,31 @@ function AddingDeveloper(props) {
                                                 </p>
                                             )}
                                         </div>
+                                        <div className="developerName_addingDeveloper">
+                                            <h4>
+                                                Roles
+                                                <span className="requiredStar">
+                                                    *
+                                                </span>
+                                            </h4>
+                                            <MultiSelect
+                                                options={options}
+                                                value={multiSelectRoles}
+                                                onChange={setmultiSelectRoles}
+                                                labelledBy="Select"
+                                                className="multi-select"
+                                                ItemRenderer={
+                                                    customItemRenderer
+                                                }
+                                            />
+                                            {errors.developerTechnologies && (
+                                                <p className="error_paragraph experience">
+                                                    {
+                                                        errors.developerRolesRequired
+                                                    }
+                                                </p>
+                                            )}
+                                        </div>
                                         <div className="developerDesignation_addingDeveloper">
                                             {/* <h4>
                                                 Upload Resume(pdf, doc, docx)
@@ -475,6 +582,85 @@ function AddingDeveloper(props) {
                                             )}
                                         </div>
                                     </div>
+                                    <div>
+                                        {/* <FormControl component="fieldset">
+                                            <FormLabel component="legend">
+                                                Price Range(Monthly){' '}
+                                                <span className="requiredStar">
+                                                    *
+                                                </span>
+                                            </FormLabel>
+                                            <RadioGroup
+                                                aria-label="developerPriceRange"
+                                                name="developerPriceRange"
+                                                value={
+                                                    developerData.developerPriceRange
+                                                }
+                                                onChange={(event) =>
+                                                    handleChange(event)
+                                                }
+                                            >
+                                                <FormControlLabel
+                                                    value="50000"
+                                                    control={<Radio />}
+                                                    label="50,000₹-60,000₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '50000'
+                                                    }
+                                                />
+                                                <FormControlLabel
+                                                    value="65000"
+                                                    control={<Radio />}
+                                                    label="65,000₹-75,000₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '65000'
+                                                    }
+                                                />
+                                                <FormControlLabel
+                                                    value="80000"
+                                                    control={<Radio />}
+                                                    label="80000₹-90,000₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '80000'
+                                                    }
+                                                />
+                                                <FormControlLabel
+                                                    value="90000"
+                                                    control={<Radio />}
+                                                    label="Less than 1Lakh₹"
+                                                    checked={
+                                                        developerData.developerPriceRange ===
+                                                        '90000'
+                                                    }
+                                                />
+                                            </RadioGroup>
+                                        </FormControl> */}
+                                        <h4 className='priceTag' style={{ display: 'flex' }} >
+                                            Price
+                                            <span className="requiredStar">
+                                                *
+                                            </span>
+                                            <p style={{ fontSize: '12px', padding: '4px' }} >(in Dollar)</p>
+                                        </h4>
+                                        <input
+                                            type="number"
+                                            className='priceRangeClass'
+                                            placeholder="$5000"
+                                            name="developerPriceRange"
+                                            value={developerData.developerPriceRange}
+                                            onChange={(event) =>
+                                                handleChange(event)
+                                            }
+                                        /> / month
+                                        {errors.developerPrice && (
+                                            <p className="error_paragraph">
+                                                {errors.developerPrice}
+                                            </p>
+                                        )}
+                                    </div>
                                     <div className="yearsOfExperience_addingDeveloper">
                                         <FormControl component="fieldset">
                                             <FormLabel component="legend">
@@ -530,68 +716,7 @@ function AddingDeveloper(props) {
                                             </p>
                                         )}
                                     </div>
-                                    <div className="priceRange">
-                                        <FormControl component="fieldset">
-                                            <FormLabel component="legend">
-                                                Price Range(Monthly){' '}
-                                                <span className="requiredStar">
-                                                    *
-                                                </span>
-                                            </FormLabel>
-                                            <RadioGroup
-                                                aria-label="developerPriceRange"
-                                                name="developerPriceRange"
-                                                value={
-                                                    developerData.developerPriceRange
-                                                }
-                                                onChange={(event) =>
-                                                    handleChange(event)
-                                                }
-                                            >
-                                                <FormControlLabel
-                                                    value="50000"
-                                                    control={<Radio />}
-                                                    label="50,000₹-60,000₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '50000'
-                                                    }
-                                                />
-                                                <FormControlLabel
-                                                    value="65000"
-                                                    control={<Radio />}
-                                                    label="65,000₹-75,000₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '65000'
-                                                    }
-                                                />
-                                                <FormControlLabel
-                                                    value="80000"
-                                                    control={<Radio />}
-                                                    label="80000₹-90,000₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '80000'
-                                                    }
-                                                />
-                                                <FormControlLabel
-                                                    value="90000"
-                                                    control={<Radio />}
-                                                    label="Less than 1Lakh₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '90000'
-                                                    }
-                                                />
-                                            </RadioGroup>
-                                        </FormControl>
-                                        {errors.developerPrice && (
-                                            <p className="error_paragraph">
-                                                {errors.developerPrice}
-                                            </p>
-                                        )}
-                                    </div>
+
                                     <div className="availabilityArea">
                                         <FormControl component="fieldset">
                                             <FormLabel component="legend">

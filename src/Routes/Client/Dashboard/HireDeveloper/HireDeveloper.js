@@ -174,15 +174,14 @@ function HireDeveloper(props) {
             },
             expectedStartTime: parseInt(apiData.expectedStartTime)
         };
-        console.log(body)
-        // instance
-        //     .post(`api/client/hire-developers/create`, body)
-        //     .then(function (response) {
-        //         props.history.replace({
-        //             pathname: CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS,
-        //             condition: `client`
-        //         });
-        //     });
+        instance
+            .post(`api/client/hire-developers/create`, body)
+            .then(function (response) {
+                props.history.replace({
+                    pathname: CLIENTROUTES.DEVELOPER_HIRE_REQUIREMENTS,
+                    condition: `client`
+                });
+            });
     };
     useEffect(() => {
         getAllTechnologies();

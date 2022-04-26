@@ -7,6 +7,7 @@
     gap: 5px;
     align-items: center;
 }
+
 .mainAddingDeveloper {
     width: 100%;
     display: flex;
@@ -163,8 +164,15 @@
     background-color: white;
 }
 
-.developerName_addingDeveloper > h4,
-.developerDesignation_addingDeveloper > h4 {
+.developerName_addingDeveloper>h4,
+.developerDesignation_addingDeveloper>h4 {
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    /* text-transform: capitalize; */
+    color: #707070;
+}
+
+.priceTag {
     font-family: 'Segoe UI';
     font-size: 16px;
     /* text-transform: capitalize; */
@@ -177,6 +185,18 @@
     border: 1px solid #45a4ea;
     border-radius: 6px;
     width: 73%;
+    height: 35px;
+    padding-left: 10px;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-top: 0.4rem;
+}
+
+.priceRangeClass {
+    border: 1px solid #45a4ea;
+    border-radius: 6px;
+    width: 25%;
     height: 35px;
     padding-left: 10px;
     font-family: 'Segoe UI';

@@ -72,7 +72,7 @@ const DeveloperCard = ({ data = {}, titleText }) => {
                     <span className={styles.techLabel}>budget</span>
                     <span
                         className={styles.techDescription}
-                    >{`₹${data?.developerId?.developerPriceRange}/ month`}</span>
+                    >{`$${data?.developerId?.developerPriceRange}/ month`}</span>
                 </div>
             </div>
 

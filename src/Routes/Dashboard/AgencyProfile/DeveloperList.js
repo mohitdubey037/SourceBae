@@ -246,11 +246,12 @@ function DeveloperList(props) {
                                                     </h6>
                                                 </div>
                                                 <div>
-                                                    <p style={{ color: '#000' }} >Budget</p>
-                                                    <h6>{`${developer.developerPriceRange
-                                                        }₹-${developer.developerPriceRange +
-                                                        10 * 1000
-                                                        }₹`}</h6>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }} ><p style={{ color: '#000' }} >Budget</p><p style={{ fontSize: '10px', marginLeft: '4px' }} >(monthly)</p></div>
+                                                    <h6>
+                                                        ${developer?.developerPriceRange}
+                                                        {' '}-{' '}
+                                                        ${developer?.developerPriceRange + ((developer?.developerPriceRange / 100) * 20)}
+                                                    </h6>
                                                 </div>
                                             </div>
                                         </div>

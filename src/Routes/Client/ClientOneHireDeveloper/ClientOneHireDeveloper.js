@@ -124,200 +124,194 @@ function ClientOneHireDeveloper(props) {
                                     <div className="developer-card-holder">
                                         {!loading
                                             ? singleHiredDeveloper?.length >
-                                                  0 &&
-                                              singleHiredDeveloper?.map(
-                                                  (item) => {
-                                                      let areDevsShared =
-                                                          !!item
-                                                              ?.isDevelopersShared
-                                                              ?.length;
-                                                      let developerSharedCode =
-                                                          areDevsShared
-                                                              ? item
-                                                                    ?.isDevelopersShared?.[0]
-                                                                    ?.developerStatus
-                                                              : 0;
+                                            0 &&
+                                            singleHiredDeveloper?.map(
+                                                (item) => {
+                                                    let areDevsShared =
+                                                        !!item
+                                                            ?.isDevelopersShared
+                                                            ?.length;
+                                                    let developerSharedCode =
+                                                        areDevsShared
+                                                            ? item
+                                                                ?.isDevelopersShared?.[0]
+                                                                ?.developerStatus
+                                                            : 0;
 
-                                                      return (
-                                                          <div
-                                                              className="developer-card"
-                                                              key={item?._id}
-                                                          >
-                                                              <span className="developer-name">
-                                                                  {`${item?.firstName} ${item?.lastName}`}
-                                                              </span>
-                                                              <div className="row-holder">
-                                                                  <div className="row-label">
-                                                                      Designation
-                                                                  </div>
-                                                                  <div className="row-value">
-                                                                      {
-                                                                          item?.developerDesignation
-                                                                      }
-                                                                  </div>
-                                                              </div>
-                                                              <div className="row-holder">
-                                                                  <div className="row-label">
-                                                                      Year Of
-                                                                      Experience
-                                                                  </div>
-                                                                  <div className="row-value">
-                                                                      {
-                                                                          item?.developerExperience
-                                                                      }{' '}
-                                                                      {item?.developerExperience >
-                                                                      1
-                                                                          ? 'Years'
-                                                                          : 'Year'}
-                                                                  </div>
-                                                              </div>
-                                                              <div className="row-holder">
-                                                                  <div className="row-label">
-                                                                      Skills
-                                                                  </div>
-                                                                  <div className="row-value">
-                                                                      {item
-                                                                          ?.developerTechnologies
-                                                                          ?.length >
-                                                                          0}{' '}
-                                                                      {item?.developerTechnologies?.map(
-                                                                          (
-                                                                              tech
-                                                                          ) => (
-                                                                              <div
-                                                                                  className="skill-pill"
-                                                                                  key={
-                                                                                      tech._id
-                                                                                  }
-                                                                              >
-                                                                                  <span className="pill">
-                                                                                      {
-                                                                                          tech?.technologyName
-                                                                                      }
-                                                                                  </span>
-                                                                              </div>
-                                                                          )
-                                                                      )}
-                                                                  </div>
-                                                              </div>
+                                                    return (
+                                                        <div
+                                                            className="developer-card"
+                                                            key={item?._id}
+                                                        >
+                                                            <span className="developer-name">
+                                                                {`${item?.firstName} ${item?.lastName}`}
+                                                            </span>
+                                                            <div className="row-holder">
+                                                                <div className="row-label">
+                                                                    Designation
+                                                                </div>
+                                                                <div className="row-value">
+                                                                    {
+                                                                        item?.developerDesignation
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            <div className="row-holder">
+                                                                <div className="row-label">
+                                                                    Year Of
+                                                                    Experience
+                                                                </div>
+                                                                <div className="row-value">
+                                                                    {
+                                                                        item?.developerExperience
+                                                                    }{' '}
+                                                                    {item?.developerExperience >
+                                                                        1
+                                                                        ? 'Years'
+                                                                        : 'Year'}
+                                                                </div>
+                                                            </div>
+                                                            <div className="row-holder">
+                                                                <div className="row-label">
+                                                                    Skills
+                                                                </div>
+                                                                <div className="row-value">
+                                                                    {item
+                                                                        ?.developerTechnologies
+                                                                        ?.length >
+                                                                        0}{' '}
+                                                                    {item?.developerTechnologies?.map(
+                                                                        (
+                                                                            tech
+                                                                        ) => (
+                                                                            <div
+                                                                                className="skill-pill"
+                                                                                key={
+                                                                                    tech._id
+                                                                                }
+                                                                            >
+                                                                                <span className="pill">
+                                                                                    {
+                                                                                        tech?.technologyName
+                                                                                    }
+                                                                                </span>
+                                                                            </div>
+                                                                        )
+                                                                    )}
+                                                                </div>
+                                                            </div>
 
-                                                              <div className="row-holder">
-                                                                  <div className="row-label">
-                                                                      Price
-                                                                  </div>
-                                                                  <div className="row-value">
-                                                                      {
-                                                                          item?.developerPriceRange
-                                                                      }
-                                                                      ₹ -{' '}
-                                                                      {item?.developerPriceRange +
-                                                                          10 *
-                                                                              1000}
-                                                                      ₹ Per
-                                                                      Month
-                                                                  </div>
-                                                              </div>
-                                                              <div
-                                                                  className={`shortlist_and_interest_parent  ${
-                                                                      developerSharedCode ===
-                                                                      2
-                                                                          ? 'agency_pending'
-                                                                          : developerSharedCode ===
+                                                            <div className="row-holder">
+                                                                <div className="row-label">
+                                                                    Price
+                                                                </div>
+                                                                <div className="row-value">
+                                                                    {
+                                                                        item?.developerPriceRange
+                                                                    }
+                                                                    $ -{' '}
+                                                                    {item?.developerPriceRange + ((item?.developerPriceRange / 100) * 20)}
+                                                                    $ Per
+                                                                    Month
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                className={`shortlist_and_interest_parent  ${developerSharedCode ===
+                                                                        2
+                                                                        ? 'agency_pending'
+                                                                        : developerSharedCode ===
                                                                             3
-                                                                          ? 'agency_accepted'
-                                                                          : 'agency_rejected'
-                                                                  }`}
-                                                              >
-                                                                  <div
-                                                                      className={`${
-                                                                          areDevsShared &&
-                                                                          'button_parent'
-                                                                      }`}
-                                                                  >
-                                                                      {!areDevsShared ? (
-                                                                          <button
-                                                                              id={
-                                                                                  'RequirementsListCTA'
-                                                                              }
-                                                                              className={`${
-                                                                                  styles.L_login
-                                                                              } ${
-                                                                                  styles.nav_Lbutton
-                                                                              } ${'RequirementsListCTA'}`}
-                                                                              style={{
-                                                                                  fontSize:
-                                                                                      '0.85rem'
-                                                                              }}
-                                                                              onClick={() =>
-                                                                                  onOpenModal(
-                                                                                      item?.agencyId,
-                                                                                      item?._id
-                                                                                  )
-                                                                              }
-                                                                          >
-                                                                              <span>
-                                                                                  {' '}
-                                                                                  Get
-                                                                                  Connected!!
-                                                                              </span>
-                                                                          </button>
-                                                                      ) : areDevsShared &&
+                                                                            ? 'agency_accepted'
+                                                                            : 'agency_rejected'
+                                                                    }`}
+                                                            >
+                                                                <div
+                                                                    className={`${areDevsShared &&
+                                                                        'button_parent'
+                                                                        }`}
+                                                                >
+                                                                    {!areDevsShared ? (
+                                                                        <button
+                                                                            id={
+                                                                                'RequirementsListCTA'
+                                                                            }
+                                                                            className={`${styles.L_login
+                                                                                } ${styles.nav_Lbutton
+                                                                                } ${'RequirementsListCTA'}`}
+                                                                            style={{
+                                                                                fontSize:
+                                                                                    '0.85rem'
+                                                                            }}
+                                                                            onClick={() =>
+                                                                                onOpenModal(
+                                                                                    item?.agencyId,
+                                                                                    item?._id
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            <span>
+                                                                                {' '}
+                                                                                Get
+                                                                                Connected!!
+                                                                            </span>
+                                                                        </button>
+                                                                    ) : areDevsShared &&
                                                                         developerSharedCode ===
-                                                                            2 ? (
-                                                                          <p>
-                                                                              Great
-                                                                              Step!!.
-                                                                              Agency
-                                                                              will
-                                                                              be
-                                                                              notified
-                                                                              about
-                                                                              your
-                                                                              selections.
-                                                                          </p>
-                                                                      ) : areDevsShared &&
+                                                                        2 ? (
+                                                                        <p>
+                                                                            Great
+                                                                            Step!!.
+                                                                            Agency
+                                                                            will
+                                                                            be
+                                                                            notified
+                                                                            about
+                                                                            your
+                                                                            selections.
+                                                                        </p>
+                                                                    ) : areDevsShared &&
                                                                         developerSharedCode ===
-                                                                            3 ? (
-                                                                          <p>
-                                                                              Greetings!!
-                                                                              Agency
-                                                                              accepted
-                                                                              the
-                                                                              request.
-                                                                              SourceBae
-                                                                              team
-                                                                              will
-                                                                              connect
-                                                                              with
-                                                                              you
-                                                                              for
-                                                                              further
-                                                                              details.
-                                                                          </p>
-                                                                      ) : (
-                                                                          <p>
-                                                                              Sorry!!Agency
-                                                                              declined
-                                                                              your
-                                                                              request,
-                                                                              our
-                                                                              support
-                                                                              team
-                                                                              will
-                                                                              connect
-                                                                              you
-                                                                              soon
-                                                                              with
-                                                                              more
-                                                                              profiles.
-                                                                          </p>
-                                                                      )}
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                      );
-                                                  }
-                                              )
+                                                                        3 ? (
+                                                                        <p>
+                                                                            Greetings!!
+                                                                            Agency
+                                                                            accepted
+                                                                            the
+                                                                            request.
+                                                                            SourceBae
+                                                                            team
+                                                                            will
+                                                                            connect
+                                                                            with
+                                                                            you
+                                                                            for
+                                                                            further
+                                                                            details.
+                                                                        </p>
+                                                                    ) : (
+                                                                        <p>
+                                                                            Sorry!!Agency
+                                                                            declined
+                                                                            your
+                                                                            request,
+                                                                            our
+                                                                            support
+                                                                            team
+                                                                            will
+                                                                            connect
+                                                                            you
+                                                                            soon
+                                                                            with
+                                                                            more
+                                                                            profiles.
+                                                                        </p>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                }
+                                            )
                                             : 'Loading...'}
                                     </div>
                                 </div>
