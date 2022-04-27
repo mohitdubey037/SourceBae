@@ -70,7 +70,11 @@
         "start": "react-scripts start",
         "build": "npm run generate-meta-tag && react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "a": "git add .",
+        "gc": "git commit -m",
+        "gpull": "git pull origin",
+        "gpush": "git push origin"
     },
     "eslintConfig": {
         "extends": [
