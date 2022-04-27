@@ -108,7 +108,7 @@ export default function RequirementFilter({
                             class="state p-info-o"
                             className={styles.radioLabel}
                         >
-                            <label>less than ₹50,000</label>
+                            <label>less than $700</label>
                         </div>
                     </div>
                     <div
@@ -128,7 +128,7 @@ export default function RequirementFilter({
                             class="state p-info-o"
                             className={styles.radioLabel}
                         >
-                            <label>₹1,25,000-₹2,00,000</label>
+                            <label>$1500-$2500</label>
                         </div>
                     </div>
                     <div
@@ -148,7 +148,7 @@ export default function RequirementFilter({
                             class="state p-info-o"
                             className={styles.radioLabel}
                         >
-                            <label>More than ₹2,00,000</label>
+                            <label>More than $2000</label>
                         </div>
                     </div>
                 </div>

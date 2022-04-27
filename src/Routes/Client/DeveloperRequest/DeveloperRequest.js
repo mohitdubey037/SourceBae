@@ -27,10 +27,10 @@ const DeveloperRequest = () => {
     ];
 
     const budgetOptions = [
-        { value: '50000-65000', label: '₹50,000 - ₹65,000' },
-        { value: '65000-85000', label: '₹65,000 - ₹85,0000' },
-        { value: '85000-100000', label: '₹85,000 - ₹1,00,000' },
-        { value: '100000', label: 'More than ₹1,00,000' }
+        { value: '700-900', label: '$700 - $900' },
+        { value: '900-1100', label: '$900 - $1100' },
+        { value: '1100-1400', label: '$1100 - $1400' },
+        { value: '1300', label: 'More than $1300' }
     ];
 
     const contractOptions = [

@@ -531,24 +531,24 @@ function HireDeveloper(props) {
                                             onChange={handleChange}
                                         >
                                             <FormControlLabel
-                                                value={'0,50000'}
+                                                value={'0,700'}
                                                 control={<BlueRadio />}
-                                                label="less than 50,000₹"
+                                                label="less than $700"
                                             />
                                             <FormControlLabel
-                                                value={'50000,125000'}
+                                                value={'700,1600'}
                                                 control={<BlueRadio />}
-                                                label="50,000₹-1,25,000₹ Per Month"
+                                                label="$700-$1600 Per Month"
                                             />
                                             <FormControlLabel
-                                                value={'125000,200000'}
+                                                value={'1600,2600'}
                                                 control={<BlueRadio />}
-                                                label="1,25,000₹-2,00,000₹ Per Month"
+                                                label="$1600-$2600 Per Month"
                                             />
                                             <FormControlLabel
-                                                value={'200000,100000000'}
+                                                value={'2600,90000000'}
                                                 control={<BlueRadio />}
-                                                label="More than 2,00,000₹ Per Month"
+                                                label="More than $2600 Per Month"
                                             />
                                         </RadioGroup>
                                     </div>

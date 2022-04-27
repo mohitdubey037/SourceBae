@@ -57,8 +57,8 @@ function Information(props) {
         },
         {
             title: 'Fixed Budget',
-            inputValue: `${props?.data?.agencyMonthlyBudget}₹-${props?.data?.agencyMonthlyBudget + 2 * 1000
-                }₹`,
+            inputValue: `$${props?.data?.agencyMonthlyBudget}-$${props?.data?.agencyMonthlyBudget + 2 * 1000
+                }`,
             disabled: props?.id ? true : false
         },
         {

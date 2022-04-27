@@ -110,7 +110,7 @@ function AddingDeveloper(props) {
         developerExperience: '1',
         developerPriceRange: '',
         developerAvailability: '0',
-        developerRolesRequired: []
+        developerRoles: []
     });
 
     const [techs, setTechs] = useState([]);
@@ -130,6 +130,9 @@ function AddingDeveloper(props) {
             technologies.push({ label: item.technologyName, value: item._id })
             technologiesIds.push(item?._id)
         })
+        data?.developerRoles?.forEach(item => {
+            devRoles.push({ value: item, label: item })
+        })
         setDeveloperData({
             firstName: data?.firstName,
             lastName: data?.lastName,
@@ -140,9 +143,9 @@ function AddingDeveloper(props) {
             developerExperience: data?.developerExperience.toString(),
             developerPriceRange: data?.developerPriceRange.toString(),
             developerAvailability: data?.developerAvailability.toString(),
-            developerRolesRequired: data?.developerRolesRequired
+            developerRoles: data?.developerRoles
         })
-        setmultiSelectRoles(data?.developerRolesRequired ?? [])
+        setmultiSelectRoles(devRoles)
         setResume([{ name: 'Resume' }])
         sethaveResumeLink(true)
         setMultipleSelectId(technologies)
@@ -167,7 +170,7 @@ function AddingDeveloper(props) {
     useEffect(() => {
         setDeveloperData({
             ...developerData,
-            developerRolesRequired: multiSelectRoles.map(t => t.value)
+            developerRoles: multiSelectRoles.map(t => t.value)
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [multiSelectRoles]);
@@ -243,8 +246,8 @@ function AddingDeveloper(props) {
             errors.developerAvailability = 'Developer Availability is required';
         } else if (developerData.developerAvailability === 'Negotiable') {
             errors.developerAvailability = 'Please enter a day';
-        } else if (developerData.developerRolesRequired.length == 0) {
-            errors.developerRolesRequired = 'Please select role';
+        } else if (developerData.developerRoles.length == 0) {
+            errors.developerRoles = 'Please select role';
         }
         setErrors(errors);
         if (Object.keys(errors).length === 0) return true;
@@ -505,10 +508,10 @@ function AddingDeveloper(props) {
                                                     customItemRenderer
                                                 }
                                             />
-                                            {errors.developerTechnologies && (
+                                            {errors.developerRoles && (
                                                 <p className="error_paragraph experience">
                                                     {
-                                                        errors.developerRolesRequired
+                                                        errors.developerRoles
                                                     }
                                                 </p>
                                             )}

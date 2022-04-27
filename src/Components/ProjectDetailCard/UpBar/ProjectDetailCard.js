@@ -11,9 +11,8 @@ function ProjectDetailCard(props) {
                 <div className="innerResponseCard">
                     <span className="leftLine"></span>
                     <div>
-                        <p>{`${
-                            props.role === AGENCY ? 'Client' : 'Agency'
-                        }`}</p>
+                        <p>{`${props.role === AGENCY ? 'Client' : 'Agency'
+                            }`}</p>
                         <p>{props.name}</p>
                     </div>
                     <div>
@@ -22,7 +21,7 @@ function ProjectDetailCard(props) {
                     </div>
                     <div>
                         <p>Project Proposal Cost</p>
-                        <p>{`${props.projectProposalCost}₹`}</p>
+                        <p>{`$${props.projectProposalCost}`}</p>
                     </div>
                     <div>
                         <p>Agency Experience</p>

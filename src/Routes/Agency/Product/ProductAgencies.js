@@ -111,7 +111,7 @@ function ProductAgencies(props) {
                     onCloseModal();
                     toast.success('Connection request sent successfully');
                 })
-                .catch((err) => {});
+                .catch((err) => { });
         }
         setLoading(false);
     };
@@ -206,7 +206,7 @@ function ProductAgencies(props) {
                 setAllDomainsData(response);
                 setLoading(false);
             })
-            .catch((err) => {});
+            .catch((err) => { });
     };
 
     useEffect(() => {
@@ -370,10 +370,9 @@ function ProductAgencies(props) {
                                                                             Funding
                                                                         </span>
                                                                         <p>
-                                                                            {
+                                                                            ${
                                                                                 value?.productRevenueGenerated
                                                                             }
-                                                                            ₹
                                                                         </p>
                                                                     </div>
                                                                     <div className="productAgencyContent">

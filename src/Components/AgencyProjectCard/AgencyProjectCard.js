@@ -15,9 +15,8 @@ function AgencyProjectCard(props) {
     const routerHistory = useHistory();
     return (
         <div
-            className={`user-project_agencyNewestDashboard ${
-                props.uniqueId < 2 && 'conditional_margin_projectCard'
-            }`}
+            className={`user-project_agencyNewestDashboard ${props.uniqueId < 2 && 'conditional_margin_projectCard'
+                }`}
         >
             <div className="user-project_heading_agencyNewestDashboard">
                 <div className="user-project_child_agencyNewestDashboard">
@@ -100,7 +99,7 @@ function AgencyProjectCard(props) {
                         <tr>
                             <td>Final Budget</td>
                             <td>
-                                ₹
+                                $
                                 {props?.projectFinalCost ||
                                     props?.projectProposalCost ||
                                     props?.finalCostByClient}

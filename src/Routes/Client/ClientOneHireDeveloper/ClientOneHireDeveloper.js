@@ -201,7 +201,7 @@ function ClientOneHireDeveloper(props) {
                                                                 </div>
                                                             </div>
 
-                                                            <div className="row-holder">
+                                                            {/* <div className="row-holder">
                                                                 <div className="row-label">
                                                                     Price
                                                                 </div>
@@ -214,15 +214,15 @@ function ClientOneHireDeveloper(props) {
                                                                     $ Per
                                                                     Month
                                                                 </div>
-                                                            </div>
+                                                            </div> */}
                                                             <div
                                                                 className={`shortlist_and_interest_parent  ${developerSharedCode ===
-                                                                        2
-                                                                        ? 'agency_pending'
-                                                                        : developerSharedCode ===
-                                                                            3
-                                                                            ? 'agency_accepted'
-                                                                            : 'agency_rejected'
+                                                                    2
+                                                                    ? 'agency_pending'
+                                                                    : developerSharedCode ===
+                                                                        3
+                                                                        ? 'agency_accepted'
+                                                                        : 'agency_rejected'
                                                                     }`}
                                                             >
                                                                 <div

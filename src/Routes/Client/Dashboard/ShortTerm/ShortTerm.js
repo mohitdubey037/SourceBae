@@ -241,7 +241,7 @@ function ShortTerm(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect(() => {}, [allServices]);
+    useEffect(() => { }, [allServices]);
 
     useEffect(() => {
         if (apiData.projectFiles.length !== 0) {
@@ -289,10 +289,9 @@ function ShortTerm(props) {
                                     return (
                                         <>
                                             <div
-                                                className={`tech-container_shortTerm ${
-                                                    service.selected &&
+                                                className={`tech-container_shortTerm ${service.selected &&
                                                     'conditional_transparency'
-                                                }`}
+                                                    }`}
                                             >
                                                 <div
                                                     className={`${service.serviceName}`}
@@ -523,7 +522,7 @@ function ShortTerm(props) {
                                                 value={
                                                     apiData.projectPaymentModel
                                                 }
-                                                // onChange={(event) => handleChange(event)}
+                                            // onChange={(event) => handleChange(event)}
                                             >
                                                 <div
                                                     className="fixedPrice"
@@ -655,7 +654,7 @@ function ShortTerm(props) {
                                             >
                                                 <FormControlLabel
                                                     color="primary"
-                                                    value="50000"
+                                                    value="700"
                                                     control={
                                                         <BlueRadio
                                                             className={
@@ -663,17 +662,17 @@ function ShortTerm(props) {
                                                             }
                                                         />
                                                     }
-                                                    label="50,000₹ - 100,000₹"
+                                                    label="$700 - $1400"
                                                 />
                                                 <FormControlLabel
-                                                    value="10000"
+                                                    value="1400"
                                                     control={<BlueRadio />}
-                                                    label="100,000₹ - 1,50,000₹"
+                                                    label="$1400 - $1800"
                                                 />
                                                 <FormControlLabel
-                                                    value="200000"
+                                                    value="2600"
                                                     control={<BlueRadio />}
-                                                    label="Max 2,00,000₹"
+                                                    label="Max $2600"
                                                 />
                                             </RadioGroup>
                                         </FormControl>

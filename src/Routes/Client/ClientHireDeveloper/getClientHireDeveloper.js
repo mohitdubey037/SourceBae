@@ -22,8 +22,8 @@ function ClientHireDeveloper(props) {
 
   const generateBudgetStr = (budget) =>
     !budget?.min
-      ? `Less than INR ${budget?.max ?? ''} per month`
-      : `INR ${budget?.min ?? ''} - INR ${budget?.max ?? ''} per month`;
+      ? `Less than $${budget?.max ?? ''} per month`
+      : `$${budget?.min ?? ''} - $${budget?.max ?? ''} per month`;
 
   const requirementApi = () => {
     instance

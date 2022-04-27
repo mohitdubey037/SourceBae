@@ -135,9 +135,9 @@ const HireAgencyForm1 = (props) => {
                     `/api/${Role}/projects/create`,
                     props?.location?.state?.agencyForm1?.projectId
                         ? {
-                              ...data,
-                              id: props.location.state.agencyForm1?.projectId
-                          }
+                            ...data,
+                            id: props.location.state.agencyForm1?.projectId
+                        }
                         : data
                 )
                 .then(function (response) {
@@ -301,7 +301,7 @@ const HireAgencyForm1 = (props) => {
                                             <div className="budgetSectionAreaAgency">
                                                 <p>
                                                     3.&nbsp;What's your budget
-                                                    for this project? (in ₹){' '}
+                                                    for this project? (in $){' '}
                                                     <span className="requiredStar">
                                                         *
                                                     </span>{' '}

@@ -185,7 +185,7 @@ const AgencyCommentBox = (props) => {
                 return;
             } else if (
                 `${apiData.agencyNegotiablePrice}`.length ===
-                    `${props.projectProposalCost}`.length &&
+                `${props.projectProposalCost}`.length &&
                 apiData.agencyNegotiablePrice < props.projectProposalCost
             ) {
                 toast.error(
@@ -198,8 +198,7 @@ const AgencyCommentBox = (props) => {
                 apiData.agencyNegotiablePrice > 2 * props.projectProposalCost
             ) {
                 toast.error(
-                    `Negotiable price should be between ${
-                        props.projectProposalCost
+                    `Negotiable price should be between ${props.projectProposalCost
                     } and ${2 * props.projectProposalCost}`
                 );
                 setLoading(false);
@@ -278,9 +277,8 @@ const AgencyCommentBox = (props) => {
             ) : (
                 <div className="commentBox_parent">
                     <div
-                        className={`commentBox ${
-                            isRejectOrAccept && 'conditional_width_commentBox'
-                        }`}
+                        className={`commentBox ${isRejectOrAccept && 'conditional_width_commentBox'
+                            }`}
                     >
                         <div
                             className="topLine"
@@ -330,10 +328,10 @@ const AgencyCommentBox = (props) => {
                                                     props.projectProposals[0]
                                                         .isCommentSectionActive &&
                                                     id ===
-                                                        props
-                                                            .projectProposals[0]
-                                                            .comments.length -
-                                                            1 && (
+                                                    props
+                                                        .projectProposals[0]
+                                                        .comments.length -
+                                                    1 && (
                                                         <p className="waiting_left">
                                                             Waiting for the
                                                             reply from Client.
@@ -357,7 +355,7 @@ const AgencyCommentBox = (props) => {
                                                 null ||
                                                 props.projectProposals[0]
                                                     .agencyNegotiablePrice ===
-                                                    undefined) && (
+                                                undefined) && (
                                                 <div
                                                     className="postQuotation"
                                                     style={{ width: '100%' }}
@@ -384,7 +382,7 @@ const AgencyCommentBox = (props) => {
                                                         InputProps={{
                                                             endAdornment: (
                                                                 <InputAdornment position="end">
-                                                                    ₹
+                                                                    $
                                                                 </InputAdornment>
                                                             )
                                                         }}
@@ -394,72 +392,72 @@ const AgencyCommentBox = (props) => {
                                         <div className="price-section">
                                             {props.projectProposals[0]
                                                 .isReplySectionActive && (
-                                                <>
-                                                    <TextField
-                                                        className={clsx(
-                                                            classes.margin,
-                                                            classes.width
-                                                        )}
-                                                        id="outlined-size-small"
-                                                        placeholder="Enter Your Reply"
-                                                        onChange={(event) =>
-                                                            handleChange(event)
-                                                        }
-                                                        name="reply"
-                                                        multiline
-                                                        maxRows={4}
-                                                        variant="outlined"
-                                                        InputProps={{
-                                                            endAdornment: (
-                                                                <InputAdornment position="end">
-                                                                    {props
-                                                                        .projectProposals[0]
-                                                                        .isReplySectionActive &&
-                                                                        props
+                                                    <>
+                                                        <TextField
+                                                            className={clsx(
+                                                                classes.margin,
+                                                                classes.width
+                                                            )}
+                                                            id="outlined-size-small"
+                                                            placeholder="Enter Your Reply"
+                                                            onChange={(event) =>
+                                                                handleChange(event)
+                                                            }
+                                                            name="reply"
+                                                            multiline
+                                                            maxRows={4}
+                                                            variant="outlined"
+                                                            InputProps={{
+                                                                endAdornment: (
+                                                                    <InputAdornment position="end">
+                                                                        {props
                                                                             .projectProposals[0]
-                                                                            .isAskedForQuotation &&
-                                                                        (props
-                                                                            .projectProposals[0]
-                                                                            .quotationLink ===
-                                                                            null ||
+                                                                            .isReplySectionActive &&
                                                                             props
                                                                                 .projectProposals[0]
+                                                                                .isAskedForQuotation &&
+                                                                            (props
+                                                                                .projectProposals[0]
                                                                                 .quotationLink ===
+                                                                                null ||
+                                                                                props
+                                                                                    .projectProposals[0]
+                                                                                    .quotationLink ===
                                                                                 undefined) && (
-                                                                            <>
-                                                                                <input
-                                                                                    color="primary"
-                                                                                    type="file"
-                                                                                    accept="application/pdf"
-                                                                                    onChange={(
-                                                                                        event
-                                                                                    ) =>
-                                                                                        inputFileChosen(
+                                                                                <>
+                                                                                    <input
+                                                                                        color="primary"
+                                                                                        type="file"
+                                                                                        accept="application/pdf"
+                                                                                        onChange={(
                                                                                             event
-                                                                                        )
-                                                                                    }
-                                                                                    id="icon-button-file"
-                                                                                    style={{
-                                                                                        display:
-                                                                                            'none'
-                                                                                    }}
-                                                                                />
-                                                                            </>
-                                                                        )}
-                                                                </InputAdornment>
-                                                            )
-                                                        }}
-                                                    />
-                                                </>
-                                            )}
+                                                                                        ) =>
+                                                                                            inputFileChosen(
+                                                                                                event
+                                                                                            )
+                                                                                        }
+                                                                                        id="icon-button-file"
+                                                                                        style={{
+                                                                                            display:
+                                                                                                'none'
+                                                                                        }}
+                                                                                    />
+                                                                                </>
+                                                                            )}
+                                                                    </InputAdornment>
+                                                                )
+                                                            }}
+                                                        />
+                                                    </>
+                                                )}
                                         </div>
                                         {props.projectProposals[0]
                                             .isReplySectionActive === true && (
-                                            <SendIcon
-                                                className="sendIcon_clientCommentBox"
-                                                onClick={() => replyApi()}
-                                            />
-                                        )}
+                                                <SendIcon
+                                                    className="sendIcon_clientCommentBox"
+                                                    onClick={() => replyApi()}
+                                                />
+                                            )}
                                     </div>
                                 )}
                         </>
@@ -495,9 +493,8 @@ const AgencyCommentBox = (props) => {
                                 !props.projectProposals[0].finalCostByClient &&
                                 'none'
                         }}
-                        className={`action-wait ${
-                            isRejectOrAccept && 'conditional_width_commentBox'
-                        }`}
+                        className={`action-wait ${isRejectOrAccept && 'conditional_width_commentBox'
+                            }`}
                     >
                         <div className="topLine"></div>
                         <div className="proposalCard">
@@ -507,56 +504,54 @@ const AgencyCommentBox = (props) => {
                                 props.projectProposals[0]
                                     .isQuotationAcceptedByClient && (
                                     <div
-                                        className={`${
-                                            props.projectProposals[0]
-                                                .isProposalActionActive &&
+                                        className={`${props.projectProposals[0]
+                                            .isProposalActionActive &&
                                             props.projectProposals[0]
                                                 .isQuotationAcceptedByClient
-                                                ? 'conditional_acceptOrReject'
-                                                : 'normal_acceptOrReject'
-                                        }`}
+                                            ? 'conditional_acceptOrReject'
+                                            : 'normal_acceptOrReject'
+                                            }`}
                                     >
                                         <p>Proceed ahead with this company?</p>
                                     </div>
                                 )}
                             <div
-                                className={`postQuotation ${
-                                    isRejectOrAccept && 'is_flex_direction'
-                                }`}
+                                className={`postQuotation ${isRejectOrAccept && 'is_flex_direction'
+                                    }`}
                             >
                                 {props.projectProposals[0]
                                     .clientNegotiablePrice && (
-                                    <div className="detailsButtons md-m10">
-                                        <p>
-                                            {`Client Negotiable Price: `}₹
-                                            {`${props.projectProposals[0].clientNegotiablePrice}`}
-                                        </p>
-                                    </div>
-                                )}
+                                        <div className="detailsButtons md-m10">
+                                            <p>
+                                                {`Client Negotiable Price: `}$
+                                                {`${props.projectProposals[0].clientNegotiablePrice}`}
+                                            </p>
+                                        </div>
+                                    )}
 
                                 {props.projectProposals[0]
                                     .agencyNegotiablePrice && (
-                                    <div className="detailsButtons md-m10">
-                                        <p>
-                                            {`Your Negotiable Price: `}₹
-                                            {`${props.projectProposals[0].agencyNegotiablePrice}`}
-                                        </p>
-                                    </div>
-                                )}
+                                        <div className="detailsButtons md-m10">
+                                            <p>
+                                                {`Your Negotiable Price: `}$
+                                                {`${props.projectProposals[0].agencyNegotiablePrice}`}
+                                            </p>
+                                        </div>
+                                    )}
 
                                 {props.projectProposals[0]
                                     .isQuotationAcceptedByClient && (
-                                    <div className="detailsButtons md-m10">
-                                        <p>
-                                            {`Client Final Price: `}₹
-                                            {`${props.projectProposals[0].finalCostByClient}`}
-                                        </p>
-                                    </div>
-                                )}
+                                        <div className="detailsButtons md-m10">
+                                            <p>
+                                                {`Client Final Price: `}$
+                                                {`${props.projectProposals[0].finalCostByClient}`}
+                                            </p>
+                                        </div>
+                                    )}
 
                                 {props.projectProposals[0].quotationLink &&
                                     props.projectProposals[0].quotationLink !==
-                                        '' && (
+                                    '' && (
                                         <div className="detailsButtons md-m10">
                                             <a
                                                 href={
@@ -604,17 +599,17 @@ const AgencyCommentBox = (props) => {
                                         {props.projectProposals[0]
                                             .isReplySectionActive ===
                                             'false' && (
-                                            <p className="color-black">
-                                                Please provide some reply
-                                            </p>
-                                        )}
+                                                <p className="color-black">
+                                                    Please provide some reply
+                                                </p>
+                                            )}
                                     </div>
                                 )}
                             {!isReject &&
-                            !isAccept &&
-                            props.projectProposals[0].isAskedForQuotation &&
-                            !props.projectProposals[0].quotationLink &&
-                            file === null ? (
+                                !isAccept &&
+                                props.projectProposals[0].isAskedForQuotation &&
+                                !props.projectProposals[0].quotationLink &&
+                                file === null ? (
                                 <div className="quotation_file_upload">
                                     <p className="upload_file_quoatation">
                                         Please upload a document with the
@@ -870,34 +865,34 @@ const AgencyCommentBox = (props) => {
                                             value="No Matching Requirements"
                                             control={<Radio color="primary" />}
                                             label="Not Matching Requirement"
-                                            // labelPlacement="start"
+                                        // labelPlacement="start"
                                         />
                                         <FormControlLabel
                                             value="Taking Too Much Time"
                                             control={<Radio color="primary" />}
                                             label="Taking Too Much Time"
-                                            // labelPlacement="start"
+                                        // labelPlacement="start"
                                         />
                                         <FormControlLabel
                                             value="Cost is too low"
                                             control={<Radio color="primary" />}
                                             label="Cost is too low"
-                                            // labelPlacement="start"
+                                        // labelPlacement="start"
                                         />
                                         <FormControlLabel
                                             value="Other"
                                             control={<Radio color="primary" />}
                                             label="Other"
-                                            // labelPlacement="start"
+                                        // labelPlacement="start"
                                         />
                                     </RadioGroup>
                                 </FormControl>
                                 {quotationRejectionForm.rejectReasonByAgency !==
                                     'No Matching Requirements' &&
                                     quotationRejectionForm.rejectReasonByAgency !==
-                                        'Taking Too Much Time' &&
+                                    'Taking Too Much Time' &&
                                     quotationRejectionForm.rejectReasonByAgency !==
-                                        'Cost is too low' && (
+                                    'Cost is too low' && (
                                         <div
                                             className="detailed_description_clientCommentBox"
                                             style={{ display: 'grid' }}

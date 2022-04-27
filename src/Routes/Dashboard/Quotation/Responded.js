@@ -139,7 +139,7 @@ function Responded(props) {
                                                 <div>
                                                     <p>Project Proposal Cost</p>
                                                     <p>
-                                                        ₹{' '}
+                                                        ${' '}
                                                         {s.projectProposalCost}
                                                     </p>
                                                 </div>

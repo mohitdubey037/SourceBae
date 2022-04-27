@@ -213,7 +213,7 @@ function AgencyList(props) {
                                         <p style={{ fontSize: '1rem' }}>
                                             {`Budget:-`}
                                             <span>
-                                                ₹ {project.projectProposalCost}
+                                                $ {project.projectProposalCost}
                                             </span>
                                         </p>
                                     </div>
@@ -523,7 +523,7 @@ function AgencyList(props) {
                                         <p>Budget</p>
                                     </div>
                                     <div className="tableContentQuotation">
-                                        <p> ₹ {project.projectProposalCost}</p>
+                                        <p> $ {project.projectProposalCost}</p>
                                     </div>
                                 </div>
                                 <div className="quotationTable">

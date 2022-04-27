@@ -99,8 +99,8 @@ function ProductDetails(props) {
             onCloseModal();
             instance
                 .post(`/api/${Role}/products/connect-agency`, form)
-                .then((res) => {})
-                .catch((err) => {});
+                .then((res) => { })
+                .catch((err) => { });
             setLoading(false);
         }
     };
@@ -416,7 +416,7 @@ function ProductDetails(props) {
                                                                 .ans === '' ||
                                                                 value.content[0]
                                                                     .ans ===
-                                                                    null) &&
+                                                                null) &&
                                                             'none'
                                                     }}
                                                     className="allPointsCard"
@@ -434,7 +434,7 @@ function ProductDetails(props) {
                                                                 return (
                                                                     <>
                                                                         {value?.heading ===
-                                                                        'Founders' ? (
+                                                                            'Founders' ? (
                                                                             <>
                                                                                 {val
                                                                                     ?.ans
@@ -487,14 +487,14 @@ function ProductDetails(props) {
                                             <div className="totalRevenue">
                                                 <div>
                                                     <span>Total Revenue</span>
-                                                    <p>₹100k</p>
+                                                    <p>$100k</p>
                                                 </div>
                                             </div>
                                             <div className="totalFunding">
                                                 <span className="middleLine"></span>
                                                 <div>
                                                     <span>Total Funding</span>
-                                                    <p>₹5000k</p>
+                                                    <p>$5000k</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -512,7 +512,7 @@ function ProductDetails(props) {
                                                             display:
                                                                 value.content[0]
                                                                     .ans ===
-                                                                    '' && 'none'
+                                                                '' && 'none'
                                                         }}
                                                         className="allPointsCard"
                                                     >
@@ -532,7 +532,7 @@ function ProductDetails(props) {
                                                                         <>
                                                                             {value?.heading ===
                                                                                 'Feature Link' ||
-                                                                            value?.heading ===
+                                                                                value?.heading ===
                                                                                 'Platform Link' ? (
                                                                                 <>
                                                                                     <a
@@ -566,7 +566,7 @@ function ProductDetails(props) {
                                     </div>
                                 </div>
                                 {Role === 'Client' &&
-                                similarAgency?.length > 0 ? (
+                                    similarAgency?.length > 0 ? (
                                     <div className="innerMoreAgencie">
                                         <div className="moreAgencyHeading">
                                             <h3>Similar Agencies</h3>

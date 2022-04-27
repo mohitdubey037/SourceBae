@@ -11,8 +11,7 @@ function DownTechnologyDetail(props) {
                     <li style={{ listStyle: 'none' }}>
                         {' '}
                         <img className="dotImg" src={dot} alt="" />{' '}
-                        {`Min
-                        ${props?.projectProposalCost} ₹`}
+                        {`Min $${props?.projectProposalCost}`}
                     </li>
                 </ul>
             </div>

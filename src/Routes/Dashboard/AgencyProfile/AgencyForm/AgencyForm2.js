@@ -287,9 +287,8 @@ function AgencyForm2(props) {
     const customItemRenderer = ({ checked, option, onClick, disabled }) => {
         return (
             <div
-                className={`item-renderer ${
-                    disabled && 'disabled'
-                } custom-item-renderer`}
+                className={`item-renderer ${disabled && 'disabled'
+                    } custom-item-renderer`}
             >
                 <input
                     type="checkbox"
@@ -340,12 +339,10 @@ function AgencyForm2(props) {
                                                         }
                                                     >
                                                         <div
-                                                            className={`${
-                                                                domain.domainName
-                                                            } ${
-                                                                domain.selected &&
+                                                            className={`${domain.domainName
+                                                                } ${domain.selected &&
                                                                 'conditional_transparency'
-                                                            }`}
+                                                                }`}
                                                         >
                                                             <img
                                                                 className={`${domain.domainName}`}
@@ -387,12 +384,10 @@ function AgencyForm2(props) {
                                                         }
                                                     >
                                                         <div
-                                                            className={`${
-                                                                service.serviceName
-                                                            } ${
-                                                                service.selected &&
+                                                            className={`${service.serviceName
+                                                                } ${service.selected &&
                                                                 'conditional_transparency'
-                                                            }`}
+                                                                }`}
                                                         >
                                                             <img
                                                                 className={`${service.serviceName}`}
@@ -435,27 +430,27 @@ function AgencyForm2(props) {
                                                 onChange={handleChange}
                                             >
                                                 <FormControlLabel
-                                                    value="50000"
+                                                    value="700"
                                                     control={<Radio />}
-                                                    label="50,000₹-200,000₹"
+                                                    label="$700-$2600"
                                                     style={{ color: 'black' }}
                                                 />
                                                 <FormControlLabel
-                                                    value="200000"
+                                                    value="2600"
                                                     control={<Radio />}
-                                                    label="200,000₹-500,000₹"
+                                                    label="$2600-$6500"
                                                     style={{ color: 'black' }}
                                                 />
                                                 <FormControlLabel
-                                                    value="500000"
+                                                    value="6500"
                                                     control={<Radio />}
-                                                    label="5,00,000₹-10,00,000₹"
+                                                    label="$6500-$13000"
                                                     style={{ color: 'black' }}
                                                 />
                                                 <FormControlLabel
-                                                    value="1000000"
+                                                    value="13000"
                                                     control={<Radio />}
-                                                    label="10,00,000₹-Above"
+                                                    label="$13000-Above"
                                                     style={{ color: 'black' }}
                                                 />
                                             </RadioGroup>
@@ -485,11 +480,10 @@ function AgencyForm2(props) {
                         </div>
                         {/* </div> */}
                         <div
-                            className={`${
-                                visibleTechNames?.length
+                            className={`${visibleTechNames?.length
                                     ? 'serviceFieldsOptions_agencyForm2'
                                     : 'conditional_please_select'
-                            }`}
+                                }`}
                         >
                             <div className="serviceSelectionInput input_agencyForm2">
                                 {visibleTechNames?.length ? (
