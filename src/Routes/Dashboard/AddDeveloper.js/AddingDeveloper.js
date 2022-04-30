@@ -12,6 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import instance, { axiosPatchModule } from '../../../Constants/axiosConstants';
 import { useDropzone } from 'react-dropzone';
+import Select from 'react-select'
 
 import Spinner from '../../../Components/Spinner/Spinner';
 import MultiSelect from 'react-multi-select-component';
@@ -27,73 +28,7 @@ function AddingDeveloper(props) {
     const logoLink = 'https://api.onesourcing.in/media/images/1637044803259.svg';
 
     const Role = localStorage.getItem('role');
-
-    const options = [
-        {
-            label: 'Frontend',
-            value: 'Frontend'
-        },
-        {
-            label: 'UI/UX',
-            value: 'UI/UX'
-        },
-        {
-            label: 'Tester',
-            value: 'Tester'
-        },
-        {
-            label: 'CMS',
-            value: 'CMS'
-        },
-        {
-            label: 'Project Management',
-            value: 'Project Management'
-        },
-        {
-            label: 'Support',
-            value: 'Support'
-        },
-        {
-            label: 'Backend',
-            value: 'Backend'
-        },
-        {
-            label: 'Full stack Developer',
-            value: 'Full stack Developer'
-        },
-        {
-            label: 'Mobile Developer',
-            value: 'Mobile Developer'
-        },
-        {
-            label: 'Game Developer',
-            value: 'Game Developer'
-        },
-        {
-            label: 'Data Scientist Developer',
-            value: 'Data Scientist Developer'
-        },
-        {
-            label: 'DevOps Developer',
-            value: 'DevOps Developer'
-        },
-        {
-            label: 'Software Developer',
-            value: 'Software Developer'
-        },
-        {
-            label: 'Web Developer',
-            value: 'Web Developer'
-        },
-        {
-            label: 'AI/ML',
-            value: 'AI/ML'
-        },
-        {
-            label: 'Security Developer',
-            value: 'Security Developer'
-        }
-    ];
+    const [primaryRoles, setprimaryRoles] = useState([])
 
     const [developerData, setDeveloperData] = React.useState({
         firstName: '',
@@ -119,7 +54,9 @@ function AddingDeveloper(props) {
     const [errors, setErrors] = useState({});
     const [haveResumeLink, sethaveResumeLink] = useState(false)
     const [multipleSelectId, setMultipleSelectId] = useState([])
-    const [multiSelectRoles, setmultiSelectRoles] = useState([])
+    const [selectRoles, setselectRoles] = useState([])
+    const [selectedTechnologies, setselectedTechnologies] = useState([])
+    const [roleBasedTechnologies, setroleBasedTechnologies] = useState([``])
     const { id } = useParams()
 
     const autoFillFields = data => {
@@ -145,7 +82,7 @@ function AddingDeveloper(props) {
             developerAvailability: data?.developerAvailability.toString(),
             developerRoles: data?.developerRoles
         })
-        setmultiSelectRoles(devRoles)
+        setselectRoles(devRoles)
         setResume([{ name: 'Resume' }])
         sethaveResumeLink(true)
         setMultipleSelectId(technologies)
@@ -159,6 +96,19 @@ function AddingDeveloper(props) {
             .catch(err => console.log(err))
     }
 
+    const fetchRoles = () => {
+        instance.get(`api/${Role}/developer-roles/all`).then(function (response) {
+            let _temp = []
+            response?.forEach(item => {
+                _temp.push({
+                    label: item.roleName,
+                    value: item._id
+                })
+            })
+            setprimaryRoles(_temp);
+        });
+    }
+
     useEffect(() => {
         setDeveloperData({
             ...developerData,
@@ -170,12 +120,13 @@ function AddingDeveloper(props) {
     useEffect(() => {
         setDeveloperData({
             ...developerData,
-            developerRoles: multiSelectRoles.map(t => t.value)
+            developerRoles: selectRoles.map(t => t.value)
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [multiSelectRoles]);
+    }, [selectRoles]);
 
     useEffect(() => {
+        fetchRoles()
         id && getDeveloperDetails()
     }, [])
 
@@ -337,6 +288,30 @@ function AddingDeveloper(props) {
             </div>
         );
     };
+
+
+    const roleChoiceMade = role => {
+        setselectRoles([role])
+        instance.get(`/api/${Role}/technologies/${role?.value}`)
+            .then(res => {
+                let _temp = []
+                res?.forEach(item => {
+                    _temp.push({
+                        label: item.technologyName,
+                        value: item._id
+                    })
+                })
+                setroleBasedTechnologies(_temp)
+            })
+            .catch(() => {
+                toast.error('Oops! something went wrong!')
+                setselectRoles([])
+                setselectedTechnologies([])
+                setroleBasedTechnologies([])
+            })
+    }
+
+
     return (
         <>
             <Navbar logoLink={logoLink} />
@@ -465,12 +440,62 @@ function AddingDeveloper(props) {
                                     <div className="inputField2">
                                         <div className="developerName_addingDeveloper">
                                             <h4>
+                                                Roles
+                                                <span className="requiredStar">
+                                                    *
+                                                </span>
+                                            </h4>
+                                            <Select
+                                                options={primaryRoles}
+                                                className='multi-select'
+                                                isClearable={false}
+                                                value={selectRoles}
+                                                styles={{
+                                                    control: (base, state) => ({
+                                                        ...base,
+                                                        border: "1px solid #45a4ea",
+                                                    })
+                                                }}
+                                                onChange={role => roleChoiceMade(role)}
+                                            />
+                                            {errors.developerRoles && (
+                                                <p className="error_paragraph experience">
+                                                    {
+                                                        errors.developerRoles
+                                                    }
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className="developerName_addingDeveloper">
+                                            <h4>
                                                 Technology & Skills
                                                 <span className="requiredStar">
                                                     *
                                                 </span>
                                             </h4>
-                                            <MultiSelect
+                                            <Select
+                                                options={roleBasedTechnologies}
+                                                className='multi-select'
+                                                isClearable={false}
+                                                value={selectedTechnologies}
+                                                styles={{
+                                                    control: (base) => ({
+                                                        ...base,
+                                                        border: "1px solid #45a4ea",
+                                                    }),
+                                                    multiValue: (base) => ({
+                                                        ...base,
+                                                        minWidth: 'auto',
+                                                    }),
+                                                    valueContainer: (base) => ({
+                                                        ...base,
+                                                        overflow: 'scroll',
+                                                        flexWrap: 'nowrap'
+                                                    }),
+                                                }}
+                                                onChange={val => setselectedTechnologies([val])}
+                                            />
+                                            {/* <MultiSelect
                                                 options={techs.map((t) => ({
                                                     label: t.technologyName,
                                                     value: t._id
@@ -482,36 +507,11 @@ function AddingDeveloper(props) {
                                                 ItemRenderer={
                                                     customItemRenderer
                                                 }
-                                            />
+                                            /> */}
                                             {errors.developerTechnologies && (
                                                 <p className="error_paragraph experience">
                                                     {
                                                         errors.developerTechnologies
-                                                    }
-                                                </p>
-                                            )}
-                                        </div>
-                                        <div className="developerName_addingDeveloper">
-                                            <h4>
-                                                Roles
-                                                <span className="requiredStar">
-                                                    *
-                                                </span>
-                                            </h4>
-                                            <MultiSelect
-                                                options={options}
-                                                value={multiSelectRoles}
-                                                onChange={setmultiSelectRoles}
-                                                labelledBy="Select"
-                                                className="multi-select"
-                                                ItemRenderer={
-                                                    customItemRenderer
-                                                }
-                                            />
-                                            {errors.developerRoles && (
-                                                <p className="error_paragraph experience">
-                                                    {
-                                                        errors.developerRoles
                                                     }
                                                 </p>
                                             )}
