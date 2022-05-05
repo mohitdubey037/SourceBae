@@ -13,7 +13,8 @@ const colors = {
     LIGHT_PRIMARY_COLOR: '#ccdbfd80',
     RED: '#FF5656',
     GREY: '#ACACAC',
-    BLUE: '#5C6DFF'
+    BLUE: '#5C6DFF',
+    TEXT_BLACK: '#3a3a3a'
 
 }
 

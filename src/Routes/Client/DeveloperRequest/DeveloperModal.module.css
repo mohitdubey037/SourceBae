@@ -11,7 +11,7 @@
 
 .cardContainer {
     position: relative;
-    min-width: 18rem;
+    width: 18rem;
 }
 
 .header_holder {
@@ -41,13 +41,16 @@
     outline: none;
     border: none;
 }
+
 .developer_checkbox {
     position: absolute;
     left: 90%;
     top: 5%;
     width: 1.2rem;
     height: 1.2rem;
+    cursor: pointer;
 }
+
 .modalContainer {
     display: flex;
     flex-direction: column;
@@ -67,9 +70,11 @@
 .cardHolder {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 2%;
-    grid-row-gap: 2%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 22px;
+
+    /* grid-column-gap: 2%;
+    grid-row-gap: 2%; */
 }
 
 .showMorebtn {

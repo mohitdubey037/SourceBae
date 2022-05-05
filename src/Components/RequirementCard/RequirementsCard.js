@@ -22,13 +22,13 @@ export default function RequirementsList(props) {
     showButton = '',
     buttonTitle = '',
     data = {},
-    isSelected,
     showToggle,
+    isSelected,
+    tab,
+    showNote,
     onApplyClick = () => { }
   } = props;
   const [open, setOpen] = useState(false);
-  const [hide, sethide] = useState(false)
-
   const onCloseModal = () => setOpen(false);
   const onOpenModal = (data) => {
     setOpen(true);
@@ -47,8 +47,8 @@ export default function RequirementsList(props) {
 
   const generateBudgetStr = (budget) =>
     !budget?.min
-      ? `Less than $ ${budget?.max ?? ''} per month`
-      : `$ ${budget?.min ?? ''} - $ ${budget?.max ?? ''} per month`;
+      ? `Less than INR ${budget?.max ?? ''} per month`
+      : `INR ${budget?.min ?? ''} - INR ${budget?.max ?? ''} per month`;
 
   const generateExperienceStr = (exp) =>
     !exp?.min

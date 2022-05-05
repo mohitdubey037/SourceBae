@@ -1,24 +1,24 @@
-.navbarDiv{
+.navbarDiv {
   height: 76px;
 }
 
-.partition{
+.partition {
   display: flex;
   flex: 1;
 }
 
-.listContainer{
-  width: 63%;
-  margin-left: 100px;
+.listContainer {
+  width: 70%;
+  margin-left: 60px;
 }
 
-.optionsContainer{
+.optionsContainer {
   margin: 2%;
   flex: 1;
   margin-right: 100px;
 }
 
-.partionWrapper{
+.partionWrapper {
   display: flex;
   flex: 1;
   width: 100%;
@@ -26,25 +26,26 @@
   justify-content: center;
 }
 
-.searchBarContainer{
-  background-color: #F9F9F9;
+.searchBarContainer {
+  background-color: rgba(1, 95, 154, .12);
   padding: 20px;
   /* display: flex; */
   border-radius: 6px;
-  margin: 30px 100px 30px 100px;
+  width: 70%;
+  margin: 0px 100px 30px 60px;
   align-items: center;
 }
 
-.searchBarStyle{
-  width: 75%;
+.searchBarStyle {
+  width: 100%;
 }
 
-.searchAndBtnWrapper{
+.searchAndBtnWrapper {
   display: flex;
   justify-content: space-between;
 }
 
-.searchBtn{
+.searchBtn {
   background-color: #5C6DFF;
   border-color: #5C6DFF;
 }
@@ -65,7 +66,7 @@
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.login_switch > button {
+.login_switch>button {
   background: transparent;
   outline: none;
   border: none;
@@ -91,11 +92,9 @@
 
 .active__buttonagency {
   z-index: 2 !important;
-  background: linear-gradient(
-      262deg,
+  background: linear-gradient(262deg,
       rgba(70, 44, 202, 1) 0%,
-      rgba(92, 109, 255, 1) 100%
-  ) !important;
+      rgba(92, 109, 255, 1) 100%) !important;
   color: white !important;
 }
 
@@ -103,4 +102,9 @@
   z-index: 2 !important;
   background: linear-gradient(262deg, #015f9a 0%, #0376ba 100%) !important;
   color: white !important;
+}
+
+.top_tabs {
+  background-color: red;
+  display: flex;
 }

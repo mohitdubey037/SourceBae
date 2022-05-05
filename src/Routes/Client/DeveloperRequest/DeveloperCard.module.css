@@ -6,7 +6,8 @@
     border-radius: 6px;
     padding: 14px;
     display: block;
-    min-height: 18rem;
+    overflow: hidden;
+    min-height: 16rem;
 }
 
 .nameBar {
@@ -18,14 +19,15 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 4px 12px;
-    border-radius: 5px 0px 0px 0px;
+    padding: 0px 12px;
+    border-radius: 6px;
+    margin: 4px;
     background: rgba(0, 123, 64, 0.12);
 }
 
 .status_label {
     font-family: Segoe UI;
-    font-size: 16px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 600;
     line-height: 16px;
