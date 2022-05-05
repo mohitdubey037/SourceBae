@@ -52,7 +52,7 @@ function AgencyNewestDashboard(props) {
             .then(function (response) {
                 setAllProjects(response);
             })
-            .catch((err) => {});
+            .catch((err) => { });
     };
 
     useEffect(() => {
@@ -64,6 +64,7 @@ function AgencyNewestDashboard(props) {
         instance
             .get(`api/${role}/agencies/steps-completed`)
             .then(function (response) {
+                console.log(response.stepsCompleted, response.totalSteps, 'fdsfdf')
                 if (response.stepsCompleted === response.totalSteps) {
                     setSteps(-1);
                 } else {
@@ -80,6 +81,7 @@ function AgencyNewestDashboard(props) {
                 .get(`/api/${role}/agencies/get/${agencyId}`)
                 .then(function (response) {
                     setVerified(response.isAgencyVerified);
+                    console.log(response.isAgencyVerified)
                     setUserEmailVerified(response.isUserEmailVerified);
                     setUserPhoneVerified(response.isUserPhoneVerified);
                 });
@@ -103,7 +105,7 @@ function AgencyNewestDashboard(props) {
                 userId: agencyId,
                 verify: 'email'
             })
-            .then(function (response) {});
+            .then(function (response) { });
     };
 
     const quotation = (link) => {
@@ -203,8 +205,8 @@ function AgencyNewestDashboard(props) {
                                     isUserPhoneVerified) ||
                                     !verified ||
                                     steps !== -1) && (
-                                    <div className="down_seperator"></div>
-                                )}
+                                        <div className="down_seperator"></div>
+                                    )}
                             </div>
                         )}
 
@@ -248,10 +250,9 @@ function AgencyNewestDashboard(props) {
                                 />
                             </div>
                             <div
-                                className={`${
-                                    (!verified || steps !== -1) &&
+                                className={`${(!verified || steps !== -1) &&
                                     'conditional_opacity'
-                                }`}
+                                    }`}
                             >
                                 {allProjects?.projects?.length > 0 && (
                                     <div className="graphic graphic_agencyDashboard">
@@ -261,10 +262,9 @@ function AgencyNewestDashboard(props) {
                                     </div>
                                 )}
                                 <div
-                                    className={`user-project_parent ${
-                                        allProjects?.length <= 0 &&
+                                    className={`user-project_parent ${allProjects?.length <= 0 &&
                                         'conditional_flex'
-                                    }`}
+                                        }`}
                                 >
                                     {allProjects?.projects?.length > 0 ? (
                                         allProjects?.projects?.map(

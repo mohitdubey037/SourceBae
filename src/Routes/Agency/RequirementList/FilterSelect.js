@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './FilterSelect.module.css';
 import Select from 'react-select';
 
-export default function FilterSelect({ options, applyFilter, objkey, placeholder }) {
+export default function FilterSelect({ options, applyFilter, objkey, placeholder, style, value }) {
     return (
         <div>
             <Select
@@ -11,6 +11,8 @@ export default function FilterSelect({ options, applyFilter, objkey, placeholder
                 className={styles.selectBox}
                 isSearchable={false}
                 isClearable
+                value={value}
+                styles={style}
                 onChange={(selected) =>
                     applyFilter((prev) => ({
                         ...prev,

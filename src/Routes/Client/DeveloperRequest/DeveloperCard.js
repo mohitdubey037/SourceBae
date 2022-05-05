@@ -13,7 +13,7 @@ const DeveloperCard = ({ data = {}, titleText }) => {
                     item.technologyName +
                     (data?.length !== index + 1 ? ', ' : ''))
             );
-        return result;
+        return result.length > 75 ? `${result.slice(0, 75)}...` : result;
     };
 
     const buttonString =
@@ -29,6 +29,13 @@ const DeveloperCard = ({ data = {}, titleText }) => {
             : data?.developerStatus === 2
                 ? 'blue'
                 : 'green';
+
+    const buttonBGColor =
+        data?.developerStatus === 1
+            ? 'rgb(255, 230, 230)'
+            : data?.developerStatus === 2
+                ? 'rgb(230, 238, 255)'
+                : 'rgb(235, 250, 235)';
 
     const generateExperienceString = (experience) => {
         let result = '';
@@ -85,9 +92,9 @@ const DeveloperCard = ({ data = {}, titleText }) => {
             )}
             <div
                 className={styles.status_container}
-                style={{ backgroundColor: buttonColor }}
+                style={{ backgroundColor: buttonBGColor }}
             >
-                <div className={styles.status_label}>{`${buttonString}`}</div>
+                <div className={styles.status_label} style={{ color: buttonColor }}>{`${buttonString}`}</div>
             </div>
         </div>
     );

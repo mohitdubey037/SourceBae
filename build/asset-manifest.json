@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.31c5714e.css",
-    "main.js": "/static/js/main.e2a520cc.js",
+    "main.css": "/static/css/main.a5a7f93f.css",
+    "main.js": "/static/js/main.c34670ee.js",
     "static/media/banner-2.jpg": "/static/media/banner-2.3d303784bbbf5d61fe60.jpg",
     "static/media/sourcebae-landing-hero.png": "/static/media/sourcebae-landing-hero.f55c141d4303e6a65a83.png",
     "static/media/about-banner-1.jpg": "/static/media/about-banner-1.d947923df3504e4177c7.jpg",
@@ -75,6 +75,8 @@
     "static/media/win_more.svg": "/static/media/win_more.315a742a960889483956b54d69fc114d.svg",
     "static/media/add-developer.svg": "/static/media/add-developer.5acc206cccaa5fd5e31c5a739d9841a3.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.7ac52fbe4b6d03eccf295d03fc811e1b.svg",
+    "static/media/rejectedDevVector.svg": "/static/media/rejectedDevVector.8eb19cd14df151f86d600cc993cbba0c.svg",
+    "static/media/selectedDevVector.svg": "/static/media/selectedDevVector.39f69b2b9763d2728489c338230c2dea.svg",
     "static/media/G2Icon.svg": "/static/media/G2Icon.5c3c2bea52ce22fb605943495211247a.svg",
     "static/media/profile.svg": "/static/media/profile.157deb74b9ab4d6315f182df86ac8c87.svg",
     "static/media/vec.svg": "/static/media/vec.27842be20f8151712914bf90e8a08a39.svg",
@@ -127,14 +129,16 @@
     "static/media/view-product.svg": "/static/media/view-product.21714081c37b203fcd3322c4a5b363db.svg",
     "static/media/DownBigImage.svg": "/static/media/DownBigImage.7270fb9e951c322324d4e5cc25da1347.svg",
     "static/media/total_profile_view.svg": "/static/media/total_profile_view.e2aa08ddb1c5244b4a6b2110d7b88835.svg",
+    "static/media/agencyTag.svg": "/static/media/agencyTag.f1c839bafe000d92bca51a188200d9f6.svg",
+    "static/media/clientTag.svg": "/static/media/clientTag.7269f8e0ea96b89b4184934913ab79a1.svg",
     "static/media/detail_show.svg": "/static/media/detail_show.b41737ef4ed415668184d38dfb6efa1c.svg",
     "static/media/agency_document.svg": "/static/media/agency_document.2d36aaf0a9e639258cbe0ba63ad39cdd.svg",
     "static/media/SelectArrow.svg": "/static/media/SelectArrow.6ef7bc782daac5fc2547ffb1305298c1.svg",
-    "main.31c5714e.css.map": "/static/css/main.31c5714e.css.map",
-    "main.e2a520cc.js.map": "/static/js/main.e2a520cc.js.map"
+    "main.a5a7f93f.css.map": "/static/css/main.a5a7f93f.css.map",
+    "main.c34670ee.js.map": "/static/js/main.c34670ee.js.map"
   },
   "entrypoints": [
-    "static/css/main.31c5714e.css",
-    "static/js/main.e2a520cc.js"
+    "static/css/main.a5a7f93f.css",
+    "static/js/main.c34670ee.js"
   ]
 }

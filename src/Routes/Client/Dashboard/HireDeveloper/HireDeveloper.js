@@ -310,6 +310,7 @@ function HireDeveloper(props) {
                                         fontSize: '14px',
                                         padding: '8px',
                                         borderColor: '#E1E1E1',
+                                        borderWidth: '1px',
                                         borderRadius: 6,
                                         width: '420px'
                                     }}

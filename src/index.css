@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
@@ -11,26 +14,32 @@
     font-family: 'Segoe UI Bold';
     src: url('./Fonts/Segoe\ UI\ Bold.ttf');
 }
+
 @font-face {
     font-family: 'Segoe UI Semibold';
     src: url('./Fonts/seguisb.ttf');
 }
+
 @font-face {
     font-family: 'Segoe UI';
     src: url('./Fonts/Segoe\ UI.ttf');
 }
+
 @font-face {
     font-family: 'GraphikBold';
     src: url('./Fonts/GraphikBold.otf');
 }
+
 @font-face {
     font-family: 'GraphikLight';
     src: url('./Fonts/GraphikLight.otf');
 }
+
 @font-face {
     font-family: 'GraphikMedium';
     src: url('./Fonts/GraphikMedium.otf');
 }
+
 @font-face {
     font-family: 'GraphikRegular';
     src: url('./Fonts/GraphikRegular.otf');
@@ -40,10 +49,12 @@
     font-family: 'GraphikRegular';
     src: url('./Fonts/GraphikBold.otf');
 }
+
 @font-face {
     font-family: 'GraphikSemibold';
     src: url('./Fonts/GraphikBold.otf');
 }
+
 *,
 *::before,
 *::after {
@@ -64,6 +75,7 @@ body {
 .capitalize {
     text-transform: capitalize;
 }
+
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

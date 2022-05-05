@@ -37,10 +37,11 @@ export default function LNavbar(props) {
                     >
                         <span
                             onMouseOver={() =>
-                                (document.getElementById(
-                                    'pop-up'
-                                ).style.display = 'block')
+                            (document.getElementById(
+                                'pop-up'
+                            ).style.display = 'block')
                             }
+                            style={{ display: 'flex' }}
                         >
                             Services
                             <img
