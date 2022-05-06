@@ -1,6 +1,4 @@
-.react-responsive-modal-closeButton:focus
-    .react-responsive-modal-closeButton:hover
-    .react-responsive-modal-closeButton:active {
+.react-responsive-modal-closeButton:focus .react-responsive-modal-closeButton:hover .react-responsive-modal-closeButton:active {
     outline: none !important;
     border: none !important;
 }
@@ -129,11 +127,9 @@ span.welcome-back_sourceBae {
     user-select: none;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%);
 }
 
 .welcome-back_loginIllustrator {
@@ -147,7 +143,7 @@ span.welcome-back_sourceBae {
     z-index: 10;
 }
 
-.welcome-back_loginIllustrator > p {
+.welcome-back_loginIllustrator>p {
     font-size: larger;
 }
 
@@ -198,7 +194,7 @@ span.welcome-back_sourceBae {
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
 
-.login_switch > button {
+.login_switch>button {
     background: transparent;
     outline: none;
     border: none;
@@ -224,11 +220,9 @@ span.welcome-back_sourceBae {
 
 .active__buttonagency {
     z-index: 2 !important;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    ) !important;
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%) !important;
     color: white !important;
 }
 
@@ -310,8 +304,8 @@ span.welcome-back_sourceBae {
     margin-top: 2rem;
 }
 
-.button_action_login > div,
-.button_action_login > button {
+.button_action_login>div,
+.button_action_login>button {
     width: 41%;
     height: 40px;
     font-family: 'Segoe UI';
@@ -326,8 +320,8 @@ span.welcome-back_sourceBae {
     border: none;
 }
 
-.button_action_login > button:focus,
-.button_action_login > button:active {
+.button_action_login>button:focus,
+.button_action_login>button:active {
     outline: none;
     border: none;
 }
@@ -336,11 +330,9 @@ span.welcome-back_sourceBae {
     position: relative;
     color: #fff;
     border-radius: 40px;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%);
     width: 135px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
@@ -354,11 +346,9 @@ span.welcome-back_sourceBae {
 
 .button_action_login .submit_login:hover {
     cursor: pointer;
-    background: linear-gradient(
-        262deg,
-        rgba(92, 109, 255, 1) 0%,
-        rgba(70, 44, 202, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(92, 109, 255, 1) 0%,
+            rgba(70, 44, 202, 1) 100%);
 }
 
 .forgot-password_login:hover {
@@ -371,12 +361,9 @@ span.welcome-back_sourceBae {
     display: flex;
     justify-content: center;
     align-self: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-family: 'Open Sans', sans-serif;
-    color: #7cb9e8;
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-family: 'MulishSemiBold';
+    /* color: #7cb9e8; */
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -386,11 +373,9 @@ span.welcome-back_sourceBae {
     width: 78%;
     display: flex;
     align-items: center;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%);
     justify-content: center;
     border-radius: 40px;
     padding: 0.7rem;
@@ -402,11 +387,9 @@ span.welcome-back_sourceBae {
 
 .googleLogin:hover {
     cursor: pointer;
-    background: linear-gradient(
-        262deg,
-        rgba(92, 109, 255, 1) 0%,
-        rgba(70, 44, 202, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(92, 109, 255, 1) 0%,
+            rgba(70, 44, 202, 1) 100%);
 }
 
 .googleLogin p {
@@ -530,12 +513,15 @@ span.welcome-back_sourceBae {
     .loginCards-wrapper {
         flex-direction: column;
     }
+
     .loginContent {
         width: 85%;
     }
+
     .welcome-back_loginIllustrator {
         font-size: 24px;
     }
+
     .loginImage3 {
         top: -102%;
     }

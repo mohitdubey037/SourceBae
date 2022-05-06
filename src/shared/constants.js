@@ -19,7 +19,7 @@ const CONTENT = {
     SIGN_UP: 'Sign Up',
     SOURCEBAE: 'SourceBae',
     LOGIN: 'Login',
-    USER_IDENTIFIER_PLACEHOLDER: 'Enter Email/Username',
+    USER_IDENTIFIER_PLACEHOLDER: 'Enter Email Id',
     FORGOT_PASSWORD: 'Forgot Password?'
 };
 

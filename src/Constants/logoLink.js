@@ -1,0 +1,1 @@
+export const logoURL = 'https://sourcebae.s3.amazonaws.com/image/1638354759751.svg' 

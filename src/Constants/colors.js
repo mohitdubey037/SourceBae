@@ -14,7 +14,8 @@ const colors = {
     RED: '#FF5656',
     GREY: '#ACACAC',
     BLUE: '#5C6DFF',
-    TEXT_BLACK: '#3a3a3a'
+    TEXT_BLACK: '#3a3a3a',
+    PRIMARY_PINK: '#B23AFF'
 
 }
 

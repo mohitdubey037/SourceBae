@@ -55,6 +55,41 @@
     src: url('./Fonts/GraphikBold.otf');
 }
 
+@font-face {
+    font-family: 'MulishBold';
+    src: url('./Fonts/Mulish-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'MulishExtraBold';
+    src: url('./Fonts/Mulish-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'MulishExtraLight';
+    src: url('./Fonts/Mulish-ExtraLight.ttf');
+}
+
+@font-face {
+    font-family: 'MulishLight';
+    src: url('./Fonts/Mulish-Light.ttf');
+}
+
+@font-face {
+    font-family: 'MulishMedium';
+    src: url('./Fonts/Mulish-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'MulishRegular';
+    src: url('./Fonts/Mulish-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'MulishSemiBold';
+    src: url('./Fonts/Mulish-SemiBold.ttf');
+}
+
 *,
 *::before,
 *::after {
