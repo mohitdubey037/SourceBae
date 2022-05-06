@@ -175,6 +175,9 @@ const Login = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const onForgotPassword = () => props.history.push(`/enter-email/${role}`)
+
   return (
     <div className='flex' >
       {loading ? (
@@ -260,7 +263,13 @@ const Login = (props) => {
                   />
                 </div>
 
-                <SizedBox height={'100px'} />
+                <Regular1218
+                  text={'Forgot Password?'}
+                  onClick={onForgotPassword}
+                  style={{ cursor: 'pointer', width: '80%', textAlign: 'end', marginTop: '3%', color: colors.PRIMARY_PINK }}
+                />
+
+                <SizedBox height={'70px'} />
                 <div className='flex justify-between w-4/5' >
                   <ButtonOutlined label={'Register'} onClick={() =>
                     props.history.replace(
