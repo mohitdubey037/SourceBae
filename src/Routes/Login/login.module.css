@@ -4,33 +4,41 @@
 ::before {
     box-sizing: border-box;
 }
+
 h6 {
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
 }
+
 h6 {
     font-size: 1rem;
 }
+
 p {
     margin-top: 0;
     margin-bottom: 1rem;
 }
+
 img,
 svg {
     vertical-align: middle;
 }
+
 label {
     display: inline-block;
 }
+
 button {
     border-radius: 0;
 }
+
 button:focus {
     outline: dotted 1px;
     outline: -webkit-focus-ring-color auto 5px;
 }
+
 button,
 input {
     margin: 0;
@@ -38,17 +46,21 @@ input {
     font-size: inherit;
     line-height: inherit;
 }
+
 button {
     text-transform: none;
 }
+
 [type='submit'],
 button {
     -webkit-appearance: button;
 }
+
 ::-moz-focus-inner {
     padding: 0;
     border-style: none;
 }
+
 /*! CSS Used from: Embedded */
 *,
 *::before,
@@ -57,20 +69,25 @@ button {
     padding: 0;
     box-sizing: border-box;
 }
+
 .capitalize {
     text-transform: capitalize;
 }
+
 /*! CSS Used from: Embedded */
 p {
     margin-bottom: 0;
 }
+
 button {
     margin-top: 40px;
     margin-bottom: 10px;
 }
+
 span.welcome_back_sourceBae {
     font-weight: bold;
 }
+
 .or_login {
     display: flex;
     justify-content: center;
@@ -80,6 +97,7 @@ span.welcome_back_sourceBae {
     color: #b5b2b2;
     padding: 1rem;
 }
+
 .sourceBae_logo {
     position: absolute;
     z-index: 12;
@@ -87,9 +105,11 @@ span.welcome_back_sourceBae {
     left: 0;
     cursor: pointer;
 }
+
 .sourceBae_logo img {
     width: 9rem;
 }
+
 .mainLoginPage {
     width: 100%;
     display: flex;
@@ -100,26 +120,28 @@ span.welcome_back_sourceBae {
     box-sizing: border-box;
     position: relative;
 }
+
 .innerLoginPage {
     width: 100%;
     display: flex;
     justify-content: space-between;
     min-height: 100vh;
 }
+
 .loginIllustrator {
     width: 100%;
 }
+
 .loginIllustrator {
     -webkit-user-select: none;
     user-select: none;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%);
 }
+
 .welcome_back_loginIllustrator {
     top: 15rem;
     left: 13rem;
@@ -130,9 +152,11 @@ span.welcome_back_sourceBae {
     color: white;
     z-index: 10;
 }
-.welcome_back_loginIllustrator > p {
+
+.welcome_back_loginIllustrator>p {
     font-size: larger;
 }
+
 .loginContent {
     display: flex;
     align-items: center;
@@ -146,6 +170,7 @@ span.welcome_back_sourceBae {
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     width: 28%;
 }
+
 .loginCards_wrapper {
     display: flex;
     flex-direction: row;
@@ -155,10 +180,12 @@ span.welcome_back_sourceBae {
     align-items: center;
     z-index: 10;
 }
+
 .mainLoginForm,
 .googleLogin {
     width: 80%;
 }
+
 .login_switch {
     display: flex;
     width: 75%;
@@ -171,7 +198,8 @@ span.welcome_back_sourceBae {
     height: 43px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
-.login_switch > button {
+
+.login_switch>button {
     background: transparent;
     outline: none;
     border: none;
@@ -182,41 +210,46 @@ span.welcome_back_sourceBae {
     position: absolute;
     font-family: 'Segoe UI';
 }
+
 .agency__button {
     left: 4px;
     z-index: 1;
     border: none;
     color: #015f9a;
 }
+
 .client__button {
     color: #4786fe;
     right: 3px;
 }
+
 .active__buttonagency {
     z-index: 2 !important;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    ) !important;
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%) !important;
     color: white !important;
 }
+
 .loginHeading {
     width: 100%;
     color: #3a3a3a;
     font-family: 'Segoe UI Bold';
 }
+
 .loginHeading h6 {
     font-weight: bold;
     font-size: 1.5rem;
     color: #707070;
 }
+
 .agencyOrClient {
     font-family: 'Segoe UI Bold';
     font-size: 1.5rem;
     font-weight: 700;
     color: blue;
 }
+
 .signUpOption {
     font-family: 'Segoe UI';
     font-weight: 500;
@@ -224,10 +257,12 @@ span.welcome_back_sourceBae {
     text-align: center;
     color: #3a3a3a;
 }
+
 .signUpOption span {
     color: #4786fe;
     cursor: pointer;
 }
+
 .button_action_login {
     display: flex;
     align-items: center;
@@ -235,8 +270,9 @@ span.welcome_back_sourceBae {
     justify-content: space-evenly;
     margin-top: 2rem;
 }
-.button_action_login > div,
-.button_action_login > button {
+
+.button_action_login>div,
+.button_action_login>button {
     width: 41%;
     height: 40px;
     font-family: 'Segoe UI';
@@ -250,52 +286,52 @@ span.welcome_back_sourceBae {
     outline: none;
     border: none;
 }
-.button_action_login > button:focus,
-.button_action_login > button:active {
+
+.button_action_login>button:focus,
+.button_action_login>button:active {
     outline: none;
     border: none;
 }
+
 .button_action_login .submit_login {
     position: relative;
     color: #fff;
     border-radius: 40px;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%);
     width: 135px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
 }
+
 .button_action_login .forgot-password_login {
     background-color: #80808014;
     border-radius: 20px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     width: 135px;
 }
+
 .button_action_login .submit_login:hover {
     cursor: pointer;
-    background: linear-gradient(
-        262deg,
-        rgba(92, 109, 255, 1) 0%,
-        rgba(70, 44, 202, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(92, 109, 255, 1) 0%,
+            rgba(70, 44, 202, 1) 100%);
 }
+
 .forgot-password_login:hover {
     background-color: rgba(13, 110, 253, 0.04);
     cursor: pointer;
 }
+
 .googleLogin {
     position: relative;
     cursor: pointer;
     width: 78%;
     display: flex;
     align-items: center;
-    background: linear-gradient(
-        262deg,
-        rgba(70, 44, 202, 1) 0%,
-        rgba(92, 109, 255, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(70, 44, 202, 1) 0%,
+            rgba(92, 109, 255, 1) 100%);
     justify-content: center;
     border-radius: 40px;
     padding: 0.7rem;
@@ -304,22 +340,24 @@ span.welcome_back_sourceBae {
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     display: none;
 }
+
 .googleLogin:hover {
     cursor: pointer;
-    background: linear-gradient(
-        262deg,
-        rgba(92, 109, 255, 1) 0%,
-        rgba(70, 44, 202, 1) 100%
-    );
+    background: linear-gradient(262deg,
+            rgba(92, 109, 255, 1) 0%,
+            rgba(70, 44, 202, 1) 100%);
 }
+
 .googleLogin p {
     color: white;
     transform: translateX(10px);
 }
+
 .googleLogin img {
     width: 14px;
     height: 19px;
 }
+
 .signup_toggle {
     display: flex;
     align-items: center;
@@ -329,9 +367,11 @@ span.welcome_back_sourceBae {
     width: 90%;
     height: 70px;
 }
+
 .loginImage1 {
     z-index: 4;
 }
+
 .loginImage1 {
     position: absolute;
     width: 100%;
@@ -341,79 +381,96 @@ span.welcome_back_sourceBae {
     top: 178px;
     right: 768px;
 }
+
 .loginImage2 {
     position: absolute;
     bottom: -86%;
     left: -23%;
     z-index: 3;
 }
+
 .loginImage3 {
     position: absolute;
     z-index: 7;
     top: -72%;
     right: -49%;
 }
+
 .loginImage4 {
     position: absolute;
     z-index: 6;
     top: -154%;
     left: 19%;
 }
+
 .dot_image {
     position: absolute;
     z-index: 2;
     width: 100%;
 }
+
 .dot_image img {
     width: 100%;
     height: 100%;
     position: relative;
     right: 55%;
 }
+
 @media (max-width: 992px) {
     .loginContent {
         width: 38%;
     }
 }
+
 @media (max-width: 768px) {
     .loginContent {
         width: 50%;
     }
 }
+
 @media only screen and (max-width: 480px) {
     .loginCards_wrapper {
         flex-direction: column;
     }
+
     .loginContent {
         width: 85%;
     }
+
     .welcome_back_loginIllustrator {
         font-size: 24px;
     }
+
     .loginImage3 {
         top: -102%;
     }
 }
+
 /*! CSS Used from: Embedded */
 input:focus {
     outline: none;
 }
+
 /*! CSS Used from: Embedded */
 .MuiInputBase-root:focus {
     background-color: #fff !important;
 }
+
 .MuiInputBase-root:hover {
     outline: none;
 }
+
 /*! CSS Used from: Embedded */
 button {
     margin-top: 0;
     margin-bottom: 0;
 }
+
 /*! CSS Used from: Embedded */
 svg.MuiSvgIcon-root {
     width: 22px;
 }
+
 /*! CSS Used from: Embedded */
 .loginForm button {
     background-color: #45a4ea;
@@ -421,6 +478,7 @@ svg.MuiSvgIcon-root {
     border-radius: 5px;
     padding: 0.4rem;
 }
+
 .mainLoginPage {
     width: 100%;
     display: flex;
@@ -431,6 +489,7 @@ svg.MuiSvgIcon-root {
     box-sizing: border-box;
     position: relative;
 }
+
 .innerLoginPage {
     width: 100%;
     display: flex;
@@ -438,30 +497,36 @@ svg.MuiSvgIcon-root {
     min-height: 97vh;
     align-items: center;
 }
+
 .loginForm button {
     color: #ffffff;
     font-family: 'Segoe UI';
     outline: none;
 }
+
 .loginForm {
     margin-top: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 /*! CSS Used from: Embedded */
 h6 {
     font-size: small;
     margin-bottom: 0;
 }
+
 /*! CSS Used from: Embedded */
 ::placeholder {
     color: #acacac;
 }
+
 /*! CSS Used from: Embedded */
 ::placeholder {
     color: #acacac;
 }
+
 /*! CSS Used from: Embedded */
 .MuiSvgIcon-root {
     fill: currentColor;
@@ -473,9 +538,11 @@ h6 {
     flex-shrink: 0;
     user-select: none;
 }
+
 .MuiSvgIcon-fontSizeSmall {
     font-size: 1.25rem;
 }
+
 /*! CSS Used from: Embedded */
 .MuiInputBase-root {
     color: rgba(0, 0, 0, 0.87);
@@ -490,9 +557,11 @@ h6 {
     line-height: 1.1876em;
     letter-spacing: 0.00938em;
 }
+
 .MuiInputBase-fullWidth {
     width: 100%;
 }
+
 .MuiInputBase-input {
     font: inherit;
     color: currentColor;
@@ -510,32 +579,39 @@ h6 {
     animation-duration: 10ms;
     -webkit-tap-highlight-color: transparent;
 }
+
 .MuiInputBase-input::-webkit-input-placeholder {
     color: currentColor;
     opacity: 0.42;
     transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
+
 .MuiInputBase-input::-moz-placeholder {
     color: currentColor;
     opacity: 0.42;
     transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
+
 .MuiInputBase-input:-ms-input-placeholder {
     color: currentColor;
     opacity: 0.42;
     transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
+
 .MuiInputBase-input::-ms-input-placeholder {
     color: currentColor;
     opacity: 0.42;
     transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
+
 .MuiInputBase-input:focus {
     outline: 0;
 }
+
 .MuiInputBase-input:invalid {
     box-shadow: none;
 }
+
 /*! CSS Used from: Embedded */
 .MuiFilledInput-root {
     position: relative;
@@ -544,14 +620,17 @@ h6 {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
+
 .MuiFilledInput-root:hover {
     background-color: rgba(0, 0, 0, 0.13);
 }
+
 @media (hover: none) {
     .MuiFilledInput-root:hover {
         background-color: rgba(0, 0, 0, 0.09);
     }
 }
+
 .MuiFilledInput-underline:after {
     left: 0;
     right: 0;
@@ -563,6 +642,7 @@ h6 {
     border-bottom: 2px solid #3f51b5;
     pointer-events: none;
 }
+
 .MuiFilledInput-underline:before {
     left: 0;
     right: 0;
@@ -573,18 +653,23 @@ h6 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
     pointer-events: none;
 }
+
 .MuiFilledInput-underline:hover:before {
     border-bottom: 1px solid rgba(0, 0, 0, 0.87);
 }
+
 .MuiFilledInput-adornedEnd {
     padding-right: 12px;
 }
+
 .MuiFilledInput-input {
     padding: 27px 12px 10px;
 }
+
 .MuiFilledInput-inputAdornedEnd {
     padding-right: 0;
 }
+
 /*! CSS Used from: Embedded */
 .MuiFormControl-root {
     border: 0;
@@ -596,9 +681,11 @@ h6 {
     flex-direction: column;
     vertical-align: top;
 }
+
 .MuiFormControl-fullWidth {
     width: 100%;
 }
+
 /*! CSS Used from: Embedded */
 .MuiFormLabel-root {
     color: rgba(0, 0, 0, 0.54);
@@ -609,6 +696,7 @@ h6 {
     line-height: 1;
     letter-spacing: 0.00938em;
 }
+
 /*! CSS Used from: Embedded */
 .MuiInputAdornment-root {
     height: 0.01em;
@@ -617,36 +705,44 @@ h6 {
     align-items: center;
     white-space: nowrap;
 }
+
 .MuiInputAdornment-positionEnd {
     margin-left: 8px;
 }
+
 /*! CSS Used from: Embedded */
 .MuiInputLabel-root {
     display: block;
     transform-origin: top left;
 }
+
 .MuiInputLabel-formControl {
     top: 0;
     left: 0;
     position: absolute;
     transform: translate(0, 24px) scale(1);
 }
+
 .MuiInputLabel-shrink {
     transform: translate(0, 1.5px) scale(0.75);
     transform-origin: top left;
 }
+
 .MuiInputLabel-animated {
     transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
         transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
+
 .MuiInputLabel-filled {
     z-index: 1;
     transform: translate(12px, 20px) scale(1);
     pointer-events: none;
 }
+
 .MuiInputLabel-filled.MuiInputLabel-shrink {
     transform: translate(12px, 10px) scale(0.75);
 }
+
 /*! CSS Used from: Embedded */
 .makeStyles-passwordEye-2 {
     color: rgba(131, 153, 167, 0.9);
@@ -654,20 +750,87 @@ h6 {
     opacity: 0.9;
     margin-top: 1rem;
 }
+
 .makeStyles-input-4 {
     margin-top: 20px;
 }
+
 .makeStyles-input-4 .MuiFilledInput-input {
     padding: 37px 0px 10px;
     font-size: 14px;
     background: none;
 }
+
 .makeStyles-input-4 .MuiFilledInput-root {
     background: none;
 }
+
 .makeStyles-input-4 .MuiInputLabel-filled.MuiInputLabel-shrink {
     font-size: 14px;
     transform: translate(0px, 10px);
 }
+
+.L_animated_text {
+    overflow: hidden;
+    position: relative;
+    float: right;
+    height: 50px;
+}
+
+.flip4 p {
+    height: 45px;
+    display: flex;
+    margin-bottom: 45px;
+    font-size: 32px;
+    margin-left: 0px;
+    text-align: center;
+}
+
+/* .flip4 {
+    animation: flip4 15s cubic-bezier(0.23, 1, 0.32, 1.2) infinite;
+} */
+
+/* @keyframes flip4 {
+    0% {
+        margin-top: -360px;
+    }
+
+    5% {
+        margin-top: -270px;
+    }
+
+    25% {
+        margin-right: -270px;
+    }
+
+    30% {
+        margin-right: -180px;
+    }
+
+    50% {
+        margin-right: -180px;
+    }
+
+    55% {
+        margin-right: -90px;
+    }
+
+    75% {
+        margin-right: -90px;
+    }
+
+    80% {
+        margin-right: 0px;
+    }
+
+    99.99% {
+        margin-right: 0px;
+    }
+
+    100% {
+        margin-right: -270px;
+    }
+} */
+
 /*! CSS Used keyframes */
 /*! CSS Used fontfaces */

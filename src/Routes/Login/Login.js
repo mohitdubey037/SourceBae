@@ -1,24 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import '../Login/login.css';
+import styles from './login.module.css'
 import { useParams } from 'react-router';
 import instance from '../../Constants/axiosConstants';
-import { logoURL } from '../../Constants/logoLink';
 import axios from 'axios';
-import downImage1_agency from '../../assets/images/Newestdashboard/Login/Path11.svg';
-import downImage2_agency from '../../assets/images/Newestdashboard/Login/Path12.svg';
-import upImage1_agency from '../../assets/images/Newestdashboard/Login/Path13.svg';
-import upImage2_agency from '../../assets/images/Newestdashboard/Login/Path14.svg';
-import downImage1_client from '../../assets/images/Newestdashboard/Login/Path11_client.svg';
-import downImage2_client from '../../assets/images/Newestdashboard/Login/Path12_client.svg';
-import upImage1_client from '../../assets/images/Newestdashboard/Login/Path13_client.svg';
-import upImage2_client from '../../assets/images/Newestdashboard/Login/Path14_client.svg';
-import dotImage from '../../assets/images/Newestdashboard/Login/ab_01.png';
-import googleImg from '../../assets/images/Newestdashboard/Login/Icon_google.svg';
-
-import { InputAdornment, TextField } from '@material-ui/core';
-import VisibilityTwoToneIcon from '@material-ui/icons/VisibilityTwoTone';
-import VisibilityOffTwoToneIcon from '@material-ui/icons/VisibilityOffTwoTone';
 import Spinner from '../../Components/Spinner/Spinner';
 import cookie from 'react-cookies';
 import SizedBox from '../../Components/SizedBox/SizedBox'
@@ -66,6 +52,7 @@ const Login = (props) => {
 
   const [token, setToken] = useState(null);
   const [device_token, setDevice_token] = useState('');
+  const [showRoleOptions, setshowRoleOptions] = useState(false)
 
   useEffect(() => {
     if (window.Notification.permission === 'granted') {
@@ -193,20 +180,41 @@ const Login = (props) => {
               <div style={{ height: '100px', width: '250px' }} >
                 <img src={Images.sourceBaeLogo} alt="logo" />
               </div>
-              <div className='flex mr-4 mt-4' >
+              <div className='flex mr-4 mt-4 items-center' >
                 <Bold1827 text={'Login As\xa0'} />
-                <Bold1827 text={`${role === 'agency' ? 'an\xa0' + role : 'a\xa0' + role}`} style={{ textTransform: 'capitalize', color: colors.PRIMARY_PINK }} />
+                <div
+                  className='flex cursor-pointer'
+                  onMouseOver={() => setshowRoleOptions(true)}
+                  onMouseLeave={() => setshowRoleOptions(false)}
+                >
+                  {showRoleOptions.toString()}
+                  <Bold1827 text={`${role === 'agency' ? 'an\xa0' + role : 'a\xa0' + role}`} style={{ textTransform: 'capitalize', color: colors.PRIMARY_PINK }} />
+                  <SizedBox width={'8px'} />
+                  <img src={Images.downArrowPink} alt="picker" />
+                  <div className='bg-red-300' >
+                    assd
+                  </div>
+                </div>
               </div>
             </div>
 
             <SizedBox height={'3%'} />
             <div className='flex justify-center' >
-              <Bold3248 text='Welcome!' />
+              <Bold3248 text={'Welcome!'} />
+              {/* <div className={`${styles.L_animated_text}`}>
+                <div className='flex w-80 bg-red-900' >
+                  <p className='font-Mulish-Bold w-80 bg-red-400' >Welcome !</p>
+                  <p className='font-Mulish-Bold w-80' >स्वागत !</p>
+                  <p className='font-Mulish-Bold w-80' >!خوش آمدید</p>
+                  <p className='font-Mulish-Bold w-80' >Bienvenida!</p>
+                  <p className='font-Mulish-Bold w-80' >Receber!</p>
+                </div>
+              </div> */}
             </div>
 
             <SizedBox height={'8%'} />
             <div className='flex justify-center'>
-              <div className='w-4/5 bg-f9f9f9 border rounded-md border-1e1e1e items-center justify-center flex p-3' >
+              <div className='w-4/5 bg-f9f9f9 border rounded-md border-1e1e1e items-center justify-center flex p-3 cursor-pointer' >
                 <img src={Images.googleLogo} height='24px' width='24px' />
                 <SemiBold1624 text='Login with Google' style={{ color: 'rgba(29, 36, 52, 0.7)', marginLeft: '8px' }} />
               </div>

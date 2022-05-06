@@ -23,7 +23,7 @@ export default function Hero_section() {
             </div>
             <div className={`${styles.hero_main_heading}`}>
                 <h1>Hire?</h1>
-                <div className={`{'span_yellow'} ${styles.L_animated_text}`}>
+                <div className={`${styles.L_animated_text}`}>
                     <ul className={`${styles.flip4}`}>
                         <li>Remote Development Team</li>
                         <li> Short Term Project Developer</li>
