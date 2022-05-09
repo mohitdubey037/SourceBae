@@ -3,8 +3,10 @@ import { Images } from '../../assets/images'
 import { LoginImgs } from '../../assets/images/Login'
 import { Bold2401, SemiBold1624 } from '../Text/Texts'
 import SizedBox from '../../Components/SizedBox/SizedBox'
+import { AGENCY } from '../../shared/constants'
 
-const HalfCard = () => {
+const HalfCard = ({ role }) => {
+
   return (
     <div className='flex bg-primary-pink-700 h-full w-full relative overflow-hidden justify-center' >
 
@@ -15,7 +17,7 @@ const HalfCard = () => {
       />
       <img
         alt="info"
-        src={LoginImgs.agencyIllustration}
+        src={role === AGENCY ? LoginImgs.agencyIllustration : LoginImgs.clientIllustration}
         className='scale-85 absolute top-8 right-0'
       />
       <img

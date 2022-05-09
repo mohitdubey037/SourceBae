@@ -15,7 +15,11 @@ const colors = {
     GREY: '#ACACAC',
     BLUE: '#5C6DFF',
     TEXT_BLACK: '#3a3a3a',
-    PRIMARY_PINK: '#B23AFF'
+    PRIMARY_PINK: '#B23AFF',
+    PRIMARY_PINK_DARK: '#8e2ecc',
+    BLACK_700: 'rgba(29, 36, 52, 1)',
+    BLACK_500: 'rgba(29, 36, 52, 0.7)',
+    PURPLE_700: 'rgba(188, 83, 255, 1)'
 
 }
 

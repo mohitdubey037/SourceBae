@@ -1,3 +1,9 @@
+const Bold4265 = ({ text, ...props }) => (
+  <p {...props} className='text-42 leading-10 w-fit h-fit font-Mulish-Bold' >
+    {text}
+  </p>
+)
+
 const Bold3248 = ({ text, ...props }) => (
   <p {...props} className='text-32 leading-10 w-fit h-fit font-Mulish-Bold' >
     {text}
@@ -22,8 +28,26 @@ const Bold1827 = ({ text, ...props }) => (
   </p>
 )
 
+const Bold1619 = ({ text, ...props }) => (
+  <p {...props} className='text-base leading-5 w-fit h-fit font-Mulish-Bold' >
+    {text}
+  </p>
+)
+
+const SemiBold1421 = ({ text, ...props }) => (
+  <p {...props} className='text-sm leading-5 w-fit h-fit font-Mulish-SemiBold' >
+    {text}
+  </p>
+)
+
 const SemiBold1624 = ({ text, ...props }) => (
   <p {...props} className='text-base leading-6 w-fit h-fit font-Mulish-SemiBold' >
+    {text}
+  </p>
+)
+
+const SemiBold2030 = ({ text, ...props }) => (
+  <p {...props} className='text-xl leading-7 w-fit h-fit font-Mulish-SemiBold' >
     {text}
   </p>
 )
@@ -40,12 +64,23 @@ const Regular1218 = ({ text, ...props }) => (
   </p>
 )
 
+const Medium1624 = ({ text, ...props }) => (
+  <p {...props} className='text-base leading-5 w-fit h-fit font-Mulish-Medium' >
+    {text}
+  </p>
+)
+
 export {
-  Bold2024,
-  Bold2401,
+  Bold4265,
   Bold3248,
+  Bold2401,
+  Bold2024,
   Bold1827,
+  Bold1619,
+  Medium1624,
   Regular1218,
   Regular1624,
-  SemiBold1624
+  SemiBold1624,
+  SemiBold2030,
+  SemiBold1421,
 }

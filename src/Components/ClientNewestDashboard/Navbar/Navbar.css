@@ -62,7 +62,11 @@
   letter-spacing: 0.2px;
 }
 
-.inputForm h1, .inputForm h2, .inputForm h3, .inputForm h4, .inputForm h5 {
+.inputForm h1,
+.inputForm h2,
+.inputForm h3,
+.inputForm h4,
+.inputForm h5 {
   margin-bottom: 0;
 }
 

@@ -172,7 +172,7 @@ const Login = (props) => {
       ) : (
         <div className="flex w-full h-full">
           <div className='flex w-1/2 h-100vh' >
-            <HalfCard />
+            <HalfCard role={role} />
           </div>
           <div className='flex flex-col w-1/2 h-100vh p-3' >
 
@@ -180,20 +180,35 @@ const Login = (props) => {
               <div style={{ height: '100px', width: '250px' }} >
                 <img src={Images.sourceBaeLogo} alt="logo" />
               </div>
-              <div className='flex mr-4 mt-4 items-center' >
+              <div className='flex mr-4 mt-4 relative ' >
                 <Bold1827 text={'Login As\xa0'} />
                 <div
-                  className='flex cursor-pointer'
+                  className='flex cursor-pointer flex-col'
                   onMouseOver={() => setshowRoleOptions(true)}
                   onMouseLeave={() => setshowRoleOptions(false)}
                 >
-                  {showRoleOptions.toString()}
-                  <Bold1827 text={`${role === 'agency' ? 'an\xa0' + role : 'a\xa0' + role}`} style={{ textTransform: 'capitalize', color: colors.PRIMARY_PINK }} />
-                  <SizedBox width={'8px'} />
-                  <img src={Images.downArrowPink} alt="picker" />
-                  <div className='bg-red-300' >
-                    assd
+                  <div className='flex' >
+                    <Bold1827 text={`${role === AGENCY ? 'an\xa0' + role : 'a\xa0' + role}`} style={{ textTransform: 'capitalize', color: colors.PRIMARY_PINK }} />
+                    <SizedBox width={'8px'} />
+                    <img src={Images.downArrowPink} alt="picker" />
                   </div>
+                  {showRoleOptions && <div className='absolute -top-2 -right-2 p-2' >
+                    <div className='rounded-md py-1 w-28 flex items-center flex-col mt-9 bg-f9f9f9 border border-1e1e1e' >
+                      <div
+                        className={`${role === AGENCY && 'bg-primary-pink-300'} w-full justify-center flex py-2`}
+                        onClick={() => handleChangeToggle(AGENCY)}
+                      >
+                        <SemiBold1624 text={'Agency'} />
+                      </div>
+                      <div
+                        className={`${role === CLIENT && 'bg-primary-pink-300'} w-full justify-center flex py-2`}
+                        onClick={() => handleChangeToggle(CLIENT)}
+                      >
+                        <SemiBold1624 text={'Client'} />
+                      </div>
+                    </div>
+                  </div>
+                  }
                 </div>
               </div>
             </div>
@@ -242,9 +257,7 @@ const Login = (props) => {
                     id="filled-number"
                     placeholder='Enter Email Id'
                     className='bg-f9f9f9 w-full border border-1e1e1e rounded-md p-3'
-                    onChange={(e) => {
-                      handleChange(e);
-                    }}
+                    onChange={(e) => { handleChange(e) }}
                   />
                   <img
                     src={Images.person} alt="perso"
@@ -260,9 +273,7 @@ const Login = (props) => {
                     id="filled-number"
                     placeholder='Enter Password'
                     className='bg-f9f9f9 w-full border border-1e1e1e rounded-md p-3'
-                    onChange={(e) => {
-                      handleChange(e);
-                    }}
+                    onChange={(e) => { handleChange(e) }}
                   />
                   <img
                     src={Images.eye} alt="perso"
@@ -271,11 +282,13 @@ const Login = (props) => {
                   />
                 </div>
 
-                <Regular1218
-                  text={'Forgot Password?'}
-                  onClick={onForgotPassword}
-                  style={{ cursor: 'pointer', width: '80%', textAlign: 'end', marginTop: '3%', color: colors.PRIMARY_PINK }}
-                />
+                <div className='w-4/5 justify-end flex' >
+                  <Regular1218
+                    text={'Forgot Password?'}
+                    onClick={onForgotPassword}
+                    style={{ cursor: 'pointer', textAlign: 'end', marginTop: '3%', color: colors.PRIMARY_PINK }}
+                  />
+                </div>
 
                 <SizedBox height={'70px'} />
                 <div className='flex justify-between w-4/5' >

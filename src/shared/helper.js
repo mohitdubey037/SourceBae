@@ -49,6 +49,9 @@ const validateLinkedIn = (link) => {
     return result;
 };
 
+const emailRegex = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+
 const camelcaseToWords = (word) => {
     return word.replace(/[A-Z]/g, (letter) => ` ${letter.toLowerCase()}`);
 };
@@ -96,5 +99,6 @@ export {
     multiwordCapitalize,
     noTextNumber,
     upload,
-    experienceRange
+    experienceRange,
+    emailRegex
 };

@@ -23,6 +23,8 @@ import { toast } from 'react-toastify';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ProgressBar from '../../../Components/ProgressBar/ProgressBar';
+import LeftQuickInfoSection from './LeftQuickInfoSection/LeftQuickInfoSection';
 
 function AddingDeveloper(props) {
     const logoLink = 'https://api.onesourcing.in/media/images/1637044803259.svg';
@@ -319,8 +321,13 @@ function AddingDeveloper(props) {
             {loading ? (
                 <Spinner />
             ) : (
-                <>
-                    <div className="mainAddingDeveloper_parent">
+                <div className='mt-14 flex w-full p-4 bg-fafafb ' >
+                    <div className='flex w-1/4 h-full' >
+                        <LeftQuickInfoSection />
+                    </div>
+                    <div className='flex w-3/4 bg-green-50 m-3' >right</div>
+                    {/* <LeftQuickInfoSection /> */}
+                    {/* <div className="mainAddingDeveloper_parent">
                         <Back name="Add Developer" />
                         <div className="mainAddingDeveloper">
                             <div className="addingDeveloperHeadings">
@@ -495,19 +502,7 @@ function AddingDeveloper(props) {
                                                 }}
                                                 onChange={val => setselectedTechnologies([val])}
                                             />
-                                            {/* <MultiSelect
-                                                options={techs.map((t) => ({
-                                                    label: t.technologyName,
-                                                    value: t._id
-                                                }))}
-                                                value={multipleSelectId}
-                                                onChange={setMultipleSelectId}
-                                                labelledBy="Select"
-                                                className="multi-select"
-                                                ItemRenderer={
-                                                    customItemRenderer
-                                                }
-                                            /> */}
+
                                             {errors.developerTechnologies && (
                                                 <p className="error_paragraph experience">
                                                     {
@@ -517,12 +512,6 @@ function AddingDeveloper(props) {
                                             )}
                                         </div>
                                         <div className="developerDesignation_addingDeveloper">
-                                            {/* <h4>
-                                                Upload Resume(pdf, doc, docx)
-                                                <span className="requiredStar">
-                                                    *
-                                                </span>
-                                            </h4> */}
                                             <div
                                                 className="uploadBlock_addingDeveloper"
                                                 {...getRootProps()}
@@ -567,13 +556,7 @@ function AddingDeveloper(props) {
                                                                 "Drop it like it's hot!"}
                                                             {isDragReject &&
                                                                 'File type not accepted, sorry!'}
-                                                            {/* {isFileTooLarge && (
-                                                                <div className="text-danger mt-2">
-                                                                    File is too large.
-                                                                </div>
-                                                            )} */}
                                                         </div>
-                                                        {/* <p className="logo_detail">{resume !== null && resume[0].name}</p> */}
                                                     </section>
                                                 </div>
                                             </div>
@@ -586,61 +569,7 @@ function AddingDeveloper(props) {
                                         </div>
                                     </div>
                                     <div>
-                                        {/* <FormControl component="fieldset">
-                                            <FormLabel component="legend">
-                                                Price Range(Monthly){' '}
-                                                <span className="requiredStar">
-                                                    *
-                                                </span>
-                                            </FormLabel>
-                                            <RadioGroup
-                                                aria-label="developerPriceRange"
-                                                name="developerPriceRange"
-                                                value={
-                                                    developerData.developerPriceRange
-                                                }
-                                                onChange={(event) =>
-                                                    handleChange(event)
-                                                }
-                                            >
-                                                <FormControlLabel
-                                                    value="50000"
-                                                    control={<Radio />}
-                                                    label="50,000₹-60,000₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '50000'
-                                                    }
-                                                />
-                                                <FormControlLabel
-                                                    value="65000"
-                                                    control={<Radio />}
-                                                    label="65,000₹-75,000₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '65000'
-                                                    }
-                                                />
-                                                <FormControlLabel
-                                                    value="80000"
-                                                    control={<Radio />}
-                                                    label="80000₹-90,000₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '80000'
-                                                    }
-                                                />
-                                                <FormControlLabel
-                                                    value="90000"
-                                                    control={<Radio />}
-                                                    label="Less than 1Lakh₹"
-                                                    checked={
-                                                        developerData.developerPriceRange ===
-                                                        '90000'
-                                                    }
-                                                />
-                                            </RadioGroup>
-                                        </FormControl> */}
+
                                         <h4 className='priceTag' style={{ display: 'flex' }} >
                                             Price
                                             <span className="requiredStar">
@@ -816,8 +745,8 @@ function AddingDeveloper(props) {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </>
+                    </div> */}
+                </div>
             )}
         </>
     );
