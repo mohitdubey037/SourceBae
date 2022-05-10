@@ -30,10 +30,10 @@ const LeftQuickInfoSection = () => {
         <img src={Images.pinkRect} />
       </div>
       <div className='w-full flex flex-col absolute top-8 right-0' >
-        <div className='bg-ffffff h-fit rounded-10 border-1e1e1e border px-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]' >
+        <div className='bg-ffffff h-fit rounded-10 border-1e1e1e border px-3 shadow-[0_25px_35px_rgba(0,0,0,0.07)]' >
           {
             infoArray?.map(item => (
-              <div className='flex flex-col w-full pt-3 pl-1' >
+              <div className='flex flex-col w-full pt-3 pl-1' key={item.label} >
                 <div className='flex h-fit w-full' >
                   <Dot size={6} className='mt-2' />
                   <SizedBox height='4%' width='4%' />
@@ -50,14 +50,14 @@ const LeftQuickInfoSection = () => {
           }
           <SizedBox height={'10px'} />
         </div>
-        <div className='flex flex-col bg-ffffff h-fit rounded-10 border-1e1e1e border p-3 mt-12' >
+        <div className='flex flex-col bg-ffffff h-fit rounded-10 border-1e1e1e border p-3 mt-12 shadow-[0_25px_35px_rgba(0,0,0,0.07)]' >
           <div className='flex w-full justify-center items-center' >
             <img src={Images.bulb} />
             <Bold1619 text={'Pro Tips'} style={{ color: colors.PURPLE_700 }} />
           </div>
           {
             tips?.map(item => (
-              <div className='flex h-fit w-full pl-1 pt-6' >
+              <div key={item} className='flex h-fit w-full pl-1 pt-6' >
                 <Dot size={6} className='mt-2' />
                 <SizedBox height='4%' width='4%' />
                 <Regular1624 text={item} style={{ color: colors.BLACK_700, textTransform: 'capitalize' }} />

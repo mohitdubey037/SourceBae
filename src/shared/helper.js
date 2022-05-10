@@ -88,6 +88,13 @@ const experienceRange = (exp) => {
     return `${experience} years`
 }
 
+const addDelay = (func, delay) => {
+    const timer = setTimeout(() => {
+        func()
+        clearTimeout(timer)
+    }, delay);
+}
+
 export {
     capitalize,
     lowerize,
@@ -100,5 +107,6 @@ export {
     noTextNumber,
     upload,
     experienceRange,
+    addDelay,
     emailRegex
 };

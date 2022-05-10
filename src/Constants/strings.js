@@ -23,7 +23,7 @@ export const addingDeveloperStrs = {
     techAndSkill: 'Technology & Skill',
     resume: 'Upload resume( pdf,doc.docx)',
     email: 'Email',
-    linkedin: 'linkedin Profile URL',
+    linkedin: 'Linkedin Profile URL',
     experience: 'Year Of Experince',
     price: 'Price Range (Monthly)',
     availability: 'Availability'
