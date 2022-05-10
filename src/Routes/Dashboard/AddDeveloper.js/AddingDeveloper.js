@@ -15,6 +15,7 @@ import { useDropzone } from 'react-dropzone';
 import Select from 'react-select'
 
 import Spinner from '../../../Components/Spinner/Spinner';
+import RadioWithLabel from '../../../Components/RadioWithLabel/RadioWithLabel';
 import MultiSelect from 'react-multi-select-component';
 import { FaFileUpload } from 'react-icons/fa';
 
@@ -25,6 +26,13 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProgressBar from '../../../Components/ProgressBar/ProgressBar';
 import LeftQuickInfoSection from './LeftQuickInfoSection/LeftQuickInfoSection';
+import InputField from '../../../Components/InputField/InputField';
+import { Regular1421 } from '../../../Components/Text/Texts';
+import { addingDeveloperStrs as strs } from '../../../Constants/strings';
+import Dot from '../../../Components/Dot/Dot';
+import RedStar from '../../../Components/RedStar/RedStar';
+import SizedBox from '../../../Components/SizedBox/SizedBox';
+import { experience } from './radioConstants';
 
 function AddingDeveloper(props) {
     const logoLink = 'https://api.onesourcing.in/media/images/1637044803259.svg';
@@ -325,7 +333,106 @@ function AddingDeveloper(props) {
                     <div className='flex w-1/4 h-full' >
                         <LeftQuickInfoSection />
                     </div>
-                    <div className='flex w-3/4 bg-green-50 m-3' >right</div>
+                    <div className='flex flex-col w-3/4 m-3 p-4 rounded-10 border-1e1e1e border' >
+                        <div className='grid grid-cols-3 gap-y-9' >
+                            <div className='flex flex-col' >
+                                <RequiredLabel text={strs.label.firstName} />
+                                <SizedBox height={'6px'} width={'6px'} />
+                                <InputField
+                                    type="text"
+                                    name="user"
+                                    id="filled-number"
+                                    placeholder={strs.label.firstName}
+                                    className='bg-f9f9f9 border border-1e1e1e rounded-md p-3 w-4/5'
+                                // onChange={(e) => { handleChange(e) }}
+                                />
+                            </div>
+                            <div className='flex flex-col' >
+                                <RequiredLabel text={strs.label.lastName} />
+                                <SizedBox height={'6px'} width={'6px'} />
+                                <InputField
+                                    type="text"
+                                    name="user"
+                                    id="filled-number"
+                                    placeholder={strs.label.lastName}
+                                    className='bg-f9f9f9 border border-1e1e1e rounded-md p-3 w-4/5'
+                                // onChange={(e) => { handleChange(e) }}
+                                />
+                            </div>
+                            <div className='flex flex-col' >
+                                <RequiredLabel text={strs.label.designation} />
+                                <SizedBox height={'6px'} width={'6px'} />
+                                <InputField
+                                    type="text"
+                                    name="user"
+                                    id="filled-number"
+                                    placeholder={strs.label.designation}
+                                    className='bg-f9f9f9 border border-1e1e1e rounded-md p-3 w-4/5'
+                                // onChange={(e) => { handleChange(e) }}
+                                />
+                            </div>
+                            <div className='flex flex-col' >
+                                <RequiredLabel text={strs.label.roles} />
+                                <SizedBox height={'6px'} width={'6px'} />
+                                <InputField
+                                    type="text"
+                                    name="user"
+                                    id="filled-number"
+                                    placeholder={strs.label.roles}
+                                    className='bg-f9f9f9 border border-1e1e1e rounded-md p-3 w-4/5'
+                                // onChange={(e) => { handleChange(e) }}
+                                />
+                            </div>
+                            <div className='flex flex-col' >
+                                <RequiredLabel text={strs.label.techAndSkill} />
+                                <SizedBox height={'6px'} width={'6px'} />
+                                <InputField
+                                    type="text"
+                                    name="user"
+                                    id="filled-number"
+                                    placeholder={strs.label.techAndSkill}
+                                    className='bg-f9f9f9 border border-1e1e1e rounded-md p-3 w-4/5'
+                                // onChange={(e) => { handleChange(e) }}
+                                />
+                            </div>
+                            <div className='flex flex-col' >
+                                <RequiredLabel text={strs.label.email} />
+                                <SizedBox height={'6px'} width={'6px'} />
+                                <InputField
+                                    type="text"
+                                    name="user"
+                                    id="filled-number"
+                                    placeholder={strs.label.email}
+                                    className='bg-f9f9f9 border border-1e1e1e rounded-md p-3 w-4/5'
+                                // onChange={(e) => { handleChange(e) }}
+                                />
+                            </div>
+                            <div className='flex flex-col' >
+                                <RequiredLabel text={strs.label.price} />
+                                <SizedBox height={'6px'} width={'6px'} />
+                                <InputField
+                                    type="text"
+                                    name="user"
+                                    id="filled-number"
+                                    placeholder={strs.label.price}
+                                    className='bg-f9f9f9 border border-1e1e1e rounded-md p-3 w-4/5'
+                                // onChange={(e) => { handleChange(e) }}
+                                />
+                            </div>
+                        </div>
+                        <SizedBox height={'36px'} />
+                        <div>
+                            <RequiredLabel text={strs.label.experience} />
+                            <SizedBox height={'6px'} width={'6px'} />
+                            <div className='flex justify-between w-4/5' >
+                                {
+                                    experience?.map(item => (
+                                        <RadioWithLabel label={item.label} />
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
                     {/* <LeftQuickInfoSection /> */}
                     {/* <div className="mainAddingDeveloper_parent">
                         <Back name="Add Developer" />
@@ -751,5 +858,13 @@ function AddingDeveloper(props) {
         </>
     );
 }
+
+export const RequiredLabel = ({ text }) => (
+    <div className='flex' >
+        <Dot className={'m-2'} />
+        <Regular1421 text={text} />
+        <RedStar />
+    </div>
+)
 
 export default AddingDeveloper;

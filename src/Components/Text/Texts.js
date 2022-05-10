@@ -58,6 +58,12 @@ const Regular1624 = ({ text, ...props }) => (
   </p>
 )
 
+const Regular1421 = ({ text, ...props }) => (
+  <p {...props} className='text-sm leading-5 w-fit h-fit font-Mulish-Regular' >
+    {text}
+  </p>
+)
+
 const Regular1218 = ({ text, ...props }) => (
   <p {...props} className='text-xs leading-4 w-fit h-fit font-Mulish-Regular' >
     {text}
@@ -79,6 +85,7 @@ export {
   Bold1619,
   Medium1624,
   Regular1218,
+  Regular1421,
   Regular1624,
   SemiBold1624,
   SemiBold2030,

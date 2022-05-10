@@ -19,7 +19,8 @@ const colors = {
     PRIMARY_PINK_DARK: '#8e2ecc',
     BLACK_700: 'rgba(29, 36, 52, 1)',
     BLACK_500: 'rgba(29, 36, 52, 0.7)',
-    PURPLE_700: 'rgba(188, 83, 255, 1)'
+    PURPLE_700: 'rgba(188, 83, 255, 1)',
+    PURPLE_900: 'rgba(158, 6, 255, 1)',
 
 }
 

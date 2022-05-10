@@ -18,6 +18,7 @@ module.exports = {
         'primary-pink-300': 'rgba(178, 58, 255, 0.3) !important',
         'light-pink-700': 'rgba(237, 197, 255, 1)',
         'purple-700': 'rgba(188, 83, 255, 1)',
+        'purple-900': 'rgba(158, 6, 255, 1) !important',
         'ffffff': '#FFFFFF',
         '1e1e1e': '#1E1E1E',
         'f9f9f9': '#f9f9f9',
@@ -48,6 +49,9 @@ module.exports = {
       },
       borderRadius: {
         '10': '10px'
+      },
+      gridAutoColumns: {
+        'min2': 'minmax(200px, 1fr)',
       }
     },
   },
