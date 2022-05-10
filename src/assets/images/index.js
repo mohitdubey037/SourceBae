@@ -9,6 +9,8 @@ import person from './general/person.svg'
 import pinkRect from './general/pinkRect.svg'
 import longArrow from './general/longArrow.svg'
 import bulb from './general/bulb.svg'
+import paperClip from './general/paperClip.svg'
+import cloud from './general/cloud.svg'
 import downArrowPink from './general/downArrowPink.svg'
 
 export const Images = {
@@ -17,10 +19,12 @@ export const Images = {
   circleFilled,
   googleLogo,
   longArrow,
+  paperClip,
   pinkRect,
   suitcase,
   brackets,
   person,
+  cloud,
   clock,
   bulb,
   eye

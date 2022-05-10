@@ -50,6 +50,12 @@ module.exports = {
       borderRadius: {
         '10': '10px'
       },
+      borderWidth: {
+        '1': '1px !important'
+      },
+      boxShadow: {
+
+      },
       gridAutoColumns: {
         'min2': 'minmax(200px, 1fr)',
       }

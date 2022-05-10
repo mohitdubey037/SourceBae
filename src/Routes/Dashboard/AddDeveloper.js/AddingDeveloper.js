@@ -27,12 +27,13 @@ import axios from 'axios';
 import ProgressBar from '../../../Components/ProgressBar/ProgressBar';
 import LeftQuickInfoSection from './LeftQuickInfoSection/LeftQuickInfoSection';
 import InputField from '../../../Components/InputField/InputField';
-import { Regular1421 } from '../../../Components/Text/Texts';
-import { addingDeveloperStrs as strs } from '../../../Constants/strings';
+import { Bold1619, Bold2024, Regular1421 } from '../../../Components/Text/Texts';
+import { addingDeveloperStrs as strs, chooseFile, dragAndDrop } from '../../../Constants/strings';
 import Dot from '../../../Components/Dot/Dot';
 import RedStar from '../../../Components/RedStar/RedStar';
 import SizedBox from '../../../Components/SizedBox/SizedBox';
-import { experience } from './radioConstants';
+import { availability, experience } from './radioConstants';
+import { Images } from '../../../assets/images';
 
 function AddingDeveloper(props) {
     const logoLink = 'https://api.onesourcing.in/media/images/1637044803259.svg';
@@ -330,11 +331,11 @@ function AddingDeveloper(props) {
                 <Spinner />
             ) : (
                 <div className='mt-14 flex w-full p-4 bg-fafafb ' >
-                    <div className='flex w-1/4 h-full' >
+                    <div className='flex w-1/4 h-full bg-fafafb' >
                         <LeftQuickInfoSection />
                     </div>
-                    <div className='flex flex-col w-3/4 m-3 p-4 rounded-10 border-1e1e1e border' >
-                        <div className='grid grid-cols-3 gap-y-9' >
+                    <div className='flex flex-col w-3/4 m-3 p-4 rounded-10 border-1e1e1e border bg-fafafb' >
+                        <div className='grid grid-cols-3 gap-y-10' >
                             <div className='flex flex-col' >
                                 <RequiredLabel text={strs.label.firstName} />
                                 <SizedBox height={'6px'} width={'6px'} />
@@ -420,11 +421,12 @@ function AddingDeveloper(props) {
                                 />
                             </div>
                         </div>
-                        <SizedBox height={'36px'} />
+
+                        <SizedBox height={'48px'} />
                         <div>
                             <RequiredLabel text={strs.label.experience} />
                             <SizedBox height={'6px'} width={'6px'} />
-                            <div className='flex justify-between w-4/5' >
+                            <div className='flex justify-between w-10/12' >
                                 {
                                     experience?.map(item => (
                                         <RadioWithLabel label={item.label} />
@@ -432,6 +434,40 @@ function AddingDeveloper(props) {
                                 }
                             </div>
                         </div>
+
+                        <SizedBox height={'48px'} />
+                        <div>
+                            <RequiredLabel text={strs.label.availability} />
+                            <SizedBox height={'6px'} width={'6px'} />
+                            <div className='flex justify-between w-10/12' >
+                                {
+                                    availability?.map(item => (
+                                        <RadioWithLabel label={item.label} />
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <SizedBox height={'48px'} />
+                        <div className='flex justify-center items-center border-1 p-6 border-dashed border-black rounded-md' >
+                            <div className='flex flex-col justify-center items-center' >
+                                <img src={Images.cloud} className='mb-2' />
+                                <Bold1619 text={dragAndDrop} />
+                                <SizedBox height={'8px'} />
+                                <Bold1619 text={'or'} />
+                                <SizedBox height={'8px'} />
+                                <div
+                                    className='bg-primary-pink-700 hover:bg-primary-pink-900 py-2 px-3 rounded-lg border cursor-pointer justify-center items-center flex'
+                                    onClick={() => { }}
+                                >
+                                    <img src={Images.paperClip} className='mr-2' />
+                                    <Bold1619 text={chooseFile} style={{ color: '#fff' }} />
+                                </div>
+                                <SizedBox height={'8px'} />
+                                <Bold1619 text={strs.maxUploadSize} style={{ opacity: '0.5' }} />
+                            </div>
+                        </div>
+
                     </div>
                     {/* <LeftQuickInfoSection /> */}
                     {/* <div className="mainAddingDeveloper_parent">

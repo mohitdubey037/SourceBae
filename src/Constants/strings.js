@@ -1,5 +1,8 @@
 export const email = 'email@domain.com'
 export const submit = 'Submit'
+export const dragAndDrop = 'Drag & Drop File Here'
+export const chooseFile = 'Choose File'
+
 
 export const passwordResetStrs = {
   heading: 'Set New Password',
@@ -24,5 +27,6 @@ export const addingDeveloperStrs = {
     experience: 'Year Of Experince',
     price: 'Price Range (Monthly)',
     availability: 'Availability'
-  }
+  },
+  maxUploadSize: 'Maximum Upload Size N MB'
 }

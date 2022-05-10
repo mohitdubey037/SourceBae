@@ -30,7 +30,7 @@ const LeftQuickInfoSection = () => {
         <img src={Images.pinkRect} />
       </div>
       <div className='w-full flex flex-col absolute top-8 right-0' >
-        <div className='bg-ffffff h-fit rounded-10 border-1e1e1e border px-3' >
+        <div className='bg-ffffff h-fit rounded-10 border-1e1e1e border px-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]' >
           {
             infoArray?.map(item => (
               <div className='flex flex-col w-full pt-3 pl-1' >
