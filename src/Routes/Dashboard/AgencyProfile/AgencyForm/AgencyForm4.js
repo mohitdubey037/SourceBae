@@ -104,7 +104,7 @@ function AgencyForm4(props) {
             .then(function (response) {
                 setLoading(false);
                 dispatch({ type: 'NEXT_PRESSED' });
-                props.history.replace(AGENCYROUTES.DASHBOARD);
+                props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
             })
             .catch((errors) => {
                 setLoading(false);
@@ -117,7 +117,7 @@ function AgencyForm4(props) {
             true
         ) {
             if (url.includes(AGENCYROUTES.AGENCY_UPDATE_1)) {
-                props.history.push(AGENCYROUTES.DASHBOARD);
+                props.history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
             } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_2)) {
                 props.history.push(AGENCYROUTES.AGENCY_UPDATE_1);
             } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_3)) {

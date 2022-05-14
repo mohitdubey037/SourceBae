@@ -38,9 +38,9 @@ export default function PageNotFound(props) {
 
     const homePage = () => {
         if (Role === 'Client') {
-            props.history.replace(CLIENTROUTES.DASHBOARD);
+            props.history.replace(CLIENTROUTES.DEVELOPER_REQUESTS);
         } else if (Role === 'Agency') {
-            props.history.replace(AGENCYROUTES.DASHBOARD);
+            props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         } else {
             window.location.href = '/';
         }

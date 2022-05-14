@@ -84,7 +84,7 @@ function AgencyForm2(props) {
 
     const goBack = () => {
         if (url.includes(AGENCYROUTES.AGENCY_UPDATE_1)) {
-            props.history.replace(AGENCYROUTES.DASHBOARD);
+            props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_2)) {
             dispatch({ type: 'BACK_PRESSED' });
             props.history.replace(AGENCYROUTES.AGENCY_UPDATE_1, propData);
@@ -481,8 +481,8 @@ function AgencyForm2(props) {
                         {/* </div> */}
                         <div
                             className={`${visibleTechNames?.length
-                                    ? 'serviceFieldsOptions_agencyForm2'
-                                    : 'conditional_please_select'
+                                ? 'serviceFieldsOptions_agencyForm2'
+                                : 'conditional_please_select'
                                 }`}
                         >
                             <div className="serviceSelectionInput input_agencyForm2">

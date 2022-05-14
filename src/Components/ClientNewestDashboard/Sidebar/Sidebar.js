@@ -51,10 +51,10 @@ function Sidebar(props) {
 
     const RouteRedirect1 = () => {
         if (role === CLIENT) {
-            props.history.replace(CLIENTROUTES.DASHBOARD);
+            props.history.replace(CLIENTROUTES.DEVELOPER_REQUESTS);
         }
         if (role === AGENCY) {
-            props.history.replace(AGENCYROUTES.DASHBOARD);
+            props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         }
     };
 
@@ -89,9 +89,9 @@ function Sidebar(props) {
                             style={{
                                 filter:
                                     (props.location.pathname ===
-                                        CLIENTROUTES.DASHBOARD ||
+                                        CLIENTROUTES.DEVELOPER_REQUESTS ||
                                         props.location.pathname ===
-                                            AGENCYROUTES.DASHBOARD) &&
+                                        AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST) &&
                                     'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'
                             }}
                             src={dashboardIcon}

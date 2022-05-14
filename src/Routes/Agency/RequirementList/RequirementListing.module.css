@@ -176,6 +176,7 @@
 .modalContainer {
     display: flex;
     flex-direction: column;
+    width: 50vw;
 }
 
 .listingLabel {
@@ -246,12 +247,18 @@
 }
 
 .DLCard {
-    border: 1px solid #e1e1e1;
+    /* border: 1px solid #e1e1e1; */
     box-sizing: border-box;
-    border-radius: 8px;
-    margin: 20px 12px;
+    display: flex;
+    height: 52px;
+    align-items: center;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    justify-content: space-between;
+    /* border-radius: 8px; */
+    /* margin: 20px 12px; */
     position: relative;
-    padding: 0px 10px 10px 10px;
+    /* padding: 0px 10px 10px 10px; */
 }
 
 .nameContainer {

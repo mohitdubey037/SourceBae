@@ -188,7 +188,7 @@ function AgencyForm3(props) {
 
     const goBack = () => {
         if (url.includes(AGENCYROUTES.AGENCY_UPDATE_1)) {
-            props.history.replace(AGENCYROUTES.DASHBOARD);
+            props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_2)) {
             props.history.replace(AGENCYROUTES.AGENCY_UPDATE_1);
         } else if (url.includes(AGENCYROUTES.AGENCY_UPDATE_3)) {
@@ -283,14 +283,13 @@ function AgencyForm3(props) {
                                                 )}
                                             </Dropzone>
                                         </div>
-                                        <p className="logo-type_agencyForm1">{`${
-                                            registrationCertificate?.name
+                                        <p className="logo-type_agencyForm1">{`${registrationCertificate?.name
                                                 ? `Incorporation : ${registrationCertificate?.name.slice(
-                                                      0,
-                                                      20
-                                                  )}`
+                                                    0,
+                                                    20
+                                                )}`
                                                 : 'Incorporation Certificate'
-                                        }`}</p>
+                                            }`}</p>
                                     </div>
                                     <div className="agencyBrochure">
                                         <div className="Brochure">
@@ -328,14 +327,13 @@ function AgencyForm3(props) {
                                                 )}
                                             </Dropzone>
                                         </div>
-                                        <p className="logo-type_agencyForm1">{`${
-                                            brochureDoc?.name
+                                        <p className="logo-type_agencyForm1">{`${brochureDoc?.name
                                                 ? `Brochure: ${brochureDoc?.name.slice(
-                                                      0,
-                                                      20
-                                                  )}`
+                                                    0,
+                                                    20
+                                                )}`
                                                 : 'Brochure'
-                                        }`}</p>
+                                            }`}</p>
                                     </div>
                                 </div>
                                 <div className="panDetails">
@@ -380,14 +378,13 @@ function AgencyForm3(props) {
                                                 )}
                                             </Dropzone>
                                         </div>
-                                        <p className="logo-type_agencyForm1">{`${
-                                            panCardDoc?.name
+                                        <p className="logo-type_agencyForm1">{`${panCardDoc?.name
                                                 ? `Pancard: ${panCardDoc?.name.slice(
-                                                      0,
-                                                      20
-                                                  )}`
+                                                    0,
+                                                    20
+                                                )}`
                                                 : 'Pancard'
-                                        }`}</p>
+                                            }`}</p>
                                     </div>
                                 </div>
 

@@ -180,7 +180,7 @@ const Register = (props) => {
             } else if (
                 agencyProfileDetails?.socialPlatformDetails?.length > 0 &&
                 agencyProfileDetails?.socialPlatformDetails[0]?.platformLink ===
-                    ''
+                ''
             ) {
                 err.socialPlatformDetailsError = 'Website url is required';
             } else if (
@@ -294,7 +294,7 @@ const Register = (props) => {
                         });
                     }
                 })
-                .catch((err) => {});
+                .catch((err) => { });
         }
     };
 
@@ -334,10 +334,10 @@ const Register = (props) => {
             .post(`api/${Role}/${api_param_const}/create`, { ...createForm })
             .then(function (response) {
                 if (role === CLIENT) {
-                    props.history.push(CLIENTROUTES.DASHBOARD);
+                    props.history.push(CLIENTROUTES.DEVELOPER_REQUESTS);
                     setLoading(false);
                 } else if (role === AGENCY) {
-                    props.history.push(AGENCYROUTES.DASHBOARD);
+                    props.history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
                     setLoading(false);
                 }
             })
@@ -447,18 +447,16 @@ const Register = (props) => {
                             <img src={logoLink} alt="sourceBae-log" />
                         </div>
                         <img
-                            className={`Image1 ${
-                                roleState === CLIENT &&
+                            className={`Image1 ${roleState === CLIENT &&
                                 'conditional_colorChange'
-                            }`}
+                                }`}
                             src={Signup1}
                             alt="signup"
                         />
                         <img
-                            className={`Image2 ${
-                                roleState === CLIENT &&
+                            className={`Image2 ${roleState === CLIENT &&
                                 'conditional_colorChange'
-                            } `}
+                                } `}
                             src={Signup2}
                             alt="signup"
                         />
@@ -469,7 +467,7 @@ const Register = (props) => {
                                         <h6>
                                             Register as{' '}
                                             {roleState === '' ||
-                                            roleState === AGENCY ? (
+                                                roleState === AGENCY ? (
                                                 <>
                                                     <span>an</span>
                                                     <span
@@ -498,11 +496,10 @@ const Register = (props) => {
                                                 onClick={() =>
                                                     handleChangeToggle(AGENCY)
                                                 }
-                                                className={`agency__button ${
-                                                    (roleState === '' ||
-                                                        roleState === AGENCY) &&
+                                                className={`agency__button ${(roleState === '' ||
+                                                    roleState === AGENCY) &&
                                                     'active__buttonagency'
-                                                }`}
+                                                    }`}
                                             >
                                                 <p>Agency</p>
                                             </button>
@@ -510,10 +507,9 @@ const Register = (props) => {
                                                 onClick={() =>
                                                     handleChangeToggle(CLIENT)
                                                 }
-                                                className={`client__button ${
-                                                    roleState === CLIENT &&
+                                                className={`client__button ${roleState === CLIENT &&
                                                     'active__buttonclient'
-                                                }`}
+                                                    }`}
                                             >
                                                 <p>Client</p>
                                             </button>
@@ -584,11 +580,10 @@ const Register = (props) => {
                                         {step === 1 ? (
                                             <div
                                                 style={{ width: '15%' }}
-                                                className={`next_Register ${
-                                                    roleState === CLIENT
-                                                        ? 'active__buttonclient'
-                                                        : 'active_buttonagency'
-                                                }`}
+                                                className={`next_Register ${roleState === CLIENT
+                                                    ? 'active__buttonclient'
+                                                    : 'active_buttonagency'
+                                                    }`}
                                                 onClick={verifyInput}
                                             >
                                                 <p>NEXT</p>
@@ -596,11 +591,10 @@ const Register = (props) => {
                                         ) : (
                                             <div className="navigationButtonsSignup">
                                                 <div
-                                                    className={`backRegister_onAgency ${
-                                                        roleState === CLIENT
-                                                            ? 'active__buttonclient'
-                                                            : 'active_buttonagency'
-                                                    }`}
+                                                    className={`backRegister_onAgency ${roleState === CLIENT
+                                                        ? 'active__buttonclient'
+                                                        : 'active_buttonagency'
+                                                        }`}
                                                     onClick={() =>
                                                         backOnForm2()
                                                     }
@@ -608,11 +602,10 @@ const Register = (props) => {
                                                     <p>Back</p>
                                                 </div>
                                                 <div
-                                                    className={`next_Register ${
-                                                        roleState === CLIENT
-                                                            ? 'active__buttonclient'
-                                                            : 'active_buttonAgency'
-                                                    }`}
+                                                    className={`next_Register ${roleState === CLIENT
+                                                        ? 'active__buttonclient'
+                                                        : 'active_buttonAgency'
+                                                        }`}
                                                     onClick={() =>
                                                         handleSubmit(
                                                             role,

@@ -40,23 +40,23 @@ export default function ActiveRequirements() {
             .get(url, {
                 params: config?.isParam
                     ? {
-                          contractPeriod: filterState.contractPeriod,
-                          createdWithin: filterState.createdWithin,
-                          searchKeyWord: searchText || val,
-                          minBudget,
-                          maxBudget,
-                          page: currentPage
-                      }
+                        contractPeriod: filterState.contractPeriod,
+                        createdWithin: filterState.createdWithin,
+                        searchKeyWord: searchText || val,
+                        minBudget,
+                        maxBudget,
+                        page: currentPage
+                    }
                     : { page: currentPage }
             })
             .then((res) => {
                 config?.isShowMore
                     ? setRequirementsList((prevState) => ({
-                          ...res,
-                          docs: prevState?.docs
-                              ? [...prevState?.docs, ...res.docs]
-                              : [...res.docs]
-                      }))
+                        ...res,
+                        docs: prevState?.docs
+                            ? [...prevState?.docs, ...res.docs]
+                            : [...res.docs]
+                    }))
                     : setRequirementsList({ ...res });
             })
             .catch((err) => {

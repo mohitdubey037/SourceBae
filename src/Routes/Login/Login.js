@@ -133,12 +133,13 @@ const Login = (props) => {
       axios.defaults.headers.common['Authorization'] = `${token}`;
       if (role === AGENCY) {
         setLoading(false);
-        if (isRequirement)
-          props.history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
-        else props.history.replace(AGENCYROUTES.DASHBOARD);
+        if (isRequirement) props.history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
+        // else props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
+        else props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
       } else if (role === CLIENT) {
         setLoading(false);
-        props.history.push(CLIENTROUTES.DASHBOARD);
+        // props.history.push(CLIENTROUTES.DEVELOPER_REQUESTS);
+        props.history.push(CLIENTROUTES.DEVELOPER_REQUESTS);
       } else {
       }
     }
@@ -155,9 +156,9 @@ const Login = (props) => {
       tempRole !== undefined
     ) {
       if (tempRole === AGENCY) {
-        props.history.replace(AGENCYROUTES.DASHBOARD);
+        props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
       } else if (tempRole === CLIENT) {
-        props.history.replace(CLIENTROUTES.DASHBOARD);
+        props.history.replace(CLIENTROUTES.DEVELOPER_REQUESTS);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

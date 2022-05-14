@@ -19,7 +19,7 @@ function Back(props) {
                         'Your Previous Saved Documents Will Be Lost'
                     ) === true
                 ) {
-                    props.history.replace(CLIENTROUTES.DASHBOARD);
+                    props.history.replace(CLIENTROUTES.DEVELOPER_REQUESTS);
                 }
             } else if (url.includes(CLIENTROUTES.HIRE_AGENCY_FOR_PROJECT_2)) {
                 if (
@@ -76,7 +76,7 @@ function Back(props) {
                         'Your Previous Saved Documents Will Be Lost'
                     ) === true
                 ) {
-                    props.history.replace(AGENCYROUTES.DASHBOARD);
+                    props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
                 }
             } else if (
                 url.includes(AGENCYROUTES.AGENCY_UPDATE_2) ||
@@ -109,9 +109,9 @@ function Back(props) {
                     props.history.replace(AGENCYROUTES.AGENCY_UPDATE_3);
                 }
             } else if (url.includes(AGENCYROUTES.QUOTATIONS)) {
-                props.history.replace(AGENCYROUTES.DASHBOARD);
+                props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
             } else if (url.includes(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST))
-                props.history.push(AGENCYROUTES.DASHBOARD);
+                props.history.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
             else {
                 props.history.goBack();
             }
@@ -123,7 +123,7 @@ function Back(props) {
     const getStepsCompleted = () => {
         instance
             .get(`api/${role}/agencies/steps-completed`)
-            .then(function (response) {});
+            .then(function (response) { });
     };
 
     useEffect(() => {

@@ -38,24 +38,24 @@ function Navbar(props) {
                 .then(function (response) {
                     setData(response);
                 })
-                .catch((err) => {});
+                .catch((err) => { });
         } else {
             instance
                 .get(`/api/${role}/agencies/get/${roleId}`)
                 .then(function (response) {
                     setData(response);
                 })
-                .catch((err) => {});
+                .catch((err) => { });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const RouteRedirect1 = () => {
         if (role === CLIENT) {
-            props.history.replace(CLIENTROUTES.DASHBOARD);
+            props.history.replace(CLIENTROUTES.DEVELOPER_REQUESTS);
         }
         if (role === AGENCY) {
-            props.history.replace(AGENCYROUTES.DASHBOARD);
+            props.history.replace(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         }
     };
 
@@ -63,18 +63,18 @@ function Navbar(props) {
         <div
             style={{
                 top:
-                    (url.includes(CLIENTROUTES.DASHBOARD) ||
-                        url.includes(AGENCYROUTES.DASHBOARD) ||
+                    (url.includes(CLIENTROUTES.DEVELOPER_REQUESTS) ||
+                        url.includes(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST) ||
                         url.includes(AGENCYROUTES.QUOTATIONS) ||
                         url.includes('agency-list') ||
                         url.includes('/project-details') ||
                         url.includes(AGENCYROUTES.PROJECT_DETAILS) ||
-                        url.includes(AGENCYROUTES.DASHBOARD) ||
+                        url.includes(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST) ||
                         url.includes(CLIENTROUTES.PROJECT_LIST)) &&
                     '1rem',
                 justifyContent:
-                    (url.includes(CLIENTROUTES.DASHBOARD) ||
-                        url.includes(AGENCYROUTES.DASHBOARD) ||
+                    (url.includes(CLIENTROUTES.DEVELOPER_REQUESTS) ||
+                        url.includes(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST) ||
                         url.includes(AGENCYROUTES.QUOTATIONS) ||
                         url.includes('/agency-list') ||
                         url.includes('/project-details') ||
@@ -87,8 +87,8 @@ function Navbar(props) {
             <div
                 style={{
                     display:
-                        (url.includes(CLIENTROUTES.DASHBOARD) ||
-                            url.includes(AGENCYROUTES.DASHBOARD) ||
+                        (url.includes(CLIENTROUTES.DEVELOPER_REQUESTS) ||
+                            url.includes(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST) ||
                             url.includes(AGENCYROUTES.QUOTATIONS) ||
                             url.includes('agency-list') ||
                             url.includes('/project-details') ||

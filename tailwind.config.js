@@ -11,6 +11,7 @@ module.exports = {
         'blue-100': "rgba(92, 109, 255, 0.12)",
         'black': 'rgba(29, 36, 52, 1)',
         'black-500': 'rgba(29, 36, 52, 0.7)',
+        'black-350': 'rgba(29, 36, 52, 0.5)',
         'grey': '#e1e1e1 !important',
         'green-700': 'rgba(0, 122, 90, 1)',
         'primary-pink-700': 'rgba(178, 58, 255, 1) !important',
@@ -19,6 +20,7 @@ module.exports = {
         'light-pink-700': 'rgba(237, 197, 255, 1)',
         'purple-700': 'rgba(188, 83, 255, 1)',
         'purple-900': 'rgba(158, 6, 255, 1) !important',
+        'purple-100': 'rgba(158, 6, 255, 0.1) !important',
         'ffffff': '#FFFFFF',
         '1e1e1e': '#1E1E1E',
         'f9f9f9': '#f9f9f9',
@@ -29,6 +31,11 @@ module.exports = {
         '39px': '39px',
         '100vh': '100vh',
         '100wh': '100wh',
+        '70%': '70%'
+      },
+      width: {
+        '70%': '70%',
+        '30%': '30%',
       },
       fontFamily: {
         'Mulish-Light': 'MulishLight',
@@ -41,11 +48,12 @@ module.exports = {
       },
       scale: {
         '80': '0.8',
-        '85': '0.85'
+        '85': '0.85',
       },
       fontSize: {
         '32': '32px',
-        '42': '42px'
+        '42': '42px',
+        '10': '10px',
       },
       borderRadius: {
         '10': '10px'
@@ -58,6 +66,9 @@ module.exports = {
       },
       gridAutoColumns: {
         'min2': 'minmax(200px, 1fr)',
+      },
+      padding: {
+        '10px': '10px'
       }
     },
   },

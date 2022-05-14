@@ -34,6 +34,18 @@ const Bold1619 = ({ text, ...props }) => (
   </p>
 )
 
+const Bold1420 = ({ text, ...props }) => (
+  <p {...props} className='text-sm leading-5 w-fit h-fit font-Mulish-Bold' >
+    {text}
+  </p>
+)
+
+const SemiBold1219 = ({ text, ...props }) => (
+  <p {...props} className='text-xs leading-5 w-fit h-fit font-Mulish-SemiBold' >
+    {text}
+  </p>
+)
+
 const SemiBold1421 = ({ text, ...props }) => (
   <p {...props} className='text-sm leading-5 w-fit h-fit font-Mulish-SemiBold' >
     {text}
@@ -70,6 +82,18 @@ const Regular1218 = ({ text, ...props }) => (
   </p>
 )
 
+const Medium1014 = ({ text, ...props }) => (
+  <p {...props} className='text-10 leading-3 w-fit h-fit font-Mulish-Medium' >
+    {text}
+  </p>
+)
+
+const Medium1422 = ({ text, ...props }) => (
+  <p {...props} className='text-sm leading-5 w-fit h-fit font-Mulish-Medium' >
+    {text}
+  </p>
+)
+
 const Medium1624 = ({ text, ...props }) => (
   <p {...props} className='text-base leading-5 w-fit h-fit font-Mulish-Medium' >
     {text}
@@ -83,10 +107,14 @@ export {
   Bold2024,
   Bold1827,
   Bold1619,
+  Bold1420,
   Medium1624,
+  Medium1422,
+  Medium1014,
   Regular1218,
   Regular1421,
   Regular1624,
+  SemiBold1219,
   SemiBold1624,
   SemiBold2030,
   SemiBold1421,

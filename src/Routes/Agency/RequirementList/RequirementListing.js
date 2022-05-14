@@ -24,6 +24,12 @@ import clientTag from '../../../assets/images/general/clientTag.svg'
 import agencyTag from '../../../assets/images/general/agencyTag.svg'
 import paperPlane from '../../../assets/images/DeveloperRequest/paperPlane.svg';
 import Select from 'react-select';
+import Header from '../../../Components/Header/Header';
+import { Bold1619, Bold2401, Bold3248, Medium1422, Regular1218, SemiBold1219, SemiBold1421 } from '../../../Components/Text/Texts';
+import { Images } from '../../../assets/images';
+import ButtonFilled from '../../../Components/Button/ButtonFilled';
+import CheckBox from '../../../Components/CheckBox/CheckBox';
+import ButtonOutlined from '../../../Components/Button/ButtonOutlined';
 
 let currentPage = 1;
 let recommendedPage = 0;
@@ -62,17 +68,23 @@ const RequirementListing = () => {
     { title: 'Shortlisted', value: 2, key: 'shortListedByClient', linkKey: 'shortlisted' }
   ]
 
+  const reviewUs = [
+    { platform: 'LinkedIn', icon: Images.linkedIn, link: 'www.shethink.in' },
+    { platform: 'G2', icon: Images.g2, link: 'www.shethink.in' },
+    { platform: 'Google', icon: Images.google, link: 'www.shethink.in' },
+  ]
+
   const style = {
     control: (base, state) => ({
       ...base,
       border: '1px solid #e1e1e1',
+      borderRadius: '6px',
       width: `${window.innerWidth * 0.13}px`,
-      height: '38px',
+      height: '48px',
       overflow: 'hidden'
     }),
     placeholder: (base) => ({
       ...base,
-      fontFamily: 'Segoe UI',
       fontStyle: 'normal',
       fontWeight: '400',
       fontSize: '14px',
@@ -428,179 +440,82 @@ const RequirementListing = () => {
   }
 
   return (
-    <div>
-      <div className={styles.navbarDiv}>
-        <Navbar />
-      </div>
-      <Back name="Active Requirement" />
+    <div className='flex flex-col' >
+      <Header />
+      <div className='flex' >
+        <div className=' w-3/4 px-7' >
+          <div className='flex flex-col w-full justify-center' >
 
-      <div className='flex mx-16 mt-7' >
-        {
-          tabs?.map(item => {
-            let color = item.value === selectedTab ? 'border-blue-700 text-blue-700' : 'border-white text-black-500'
-            return (
-              <div key={item.value.toString()} className='flex flex-col mr-4' >
-                <div className={`px-5 m-3 border-b-2 ${color} cursor-pointer`} onClick={() => onTabClick(item)} >
-                  <p className={`font-semibold text-2xl text-center ${color}`} >{item.title}</p>
-                </div>
-                {item.value === selectedTab &&
-                  <div className='flex' >
-                    <div className='bg-blue-100 w-4 self-end h-4' >
-                      <div className='bg-white w-4 self-end h-4 rounded-br-xl' />
+            {/* top tabs section */}
+            <div className='flex justify-center my-2' >
+              {
+                tabs?.map(item => {
+                  let color = item.value === selectedTab ? 'border-purple-700 text-purple-700' : 'border-transparent text-black-350'
+                  return (
+                    <div
+                      className={`px-5 py-3 m-3 border-b-2 ${color} cursor-pointer`}
+                      onClick={() => onTabClick(item)}
+                    >
+                      <Bold1619 text={item.title} className={`${color}`} />
                     </div>
-                    <div className='bg-blue-100 w-11/12 self-center rounded-t-xl h-7' >
-                    </div>
-                    <div className='bg-blue-100 w-4 self-end h-4' >
-                      <div className='bg-white w-4 self-end h-4 rounded-bl-xl' />
-                    </div>
-                  </div>
-                }
-              </div>
-            )
-          })
-        }
-      </div>
-
-      <div className={styles.requirement_listing_container}>
-        <div className={styles.searchBarContainer}>
-          <div
-            className={styles.searchAndBtnWrapper}
-            style={{ display: 'flex', alignItems: 'center' }}
-          >
-            <SearchBar
-              height={'40px'}
-              style={{ width: '100%' }}
-              bgColor={colors.WHITE}
-              placeholder={'Type keyword here example “react js”'}
-              value={searchText}
-              setSearchText={(val) => {
-                setSearchText(val);
-                debounceFn({ isParam: true }, val);
-              }}
-            />
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              marginTop: '10px',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              // flexWrap: 'wrap'
-            }}
-          >
-
-            <FilterSelect
-              placeholder={'Budget'}
-              options={budgetOptions}
-              applyFilter={setFilterState}
-              objkey={'budget'}
-              style={style}
-            />
-
-            <FilterSelect
-              placeholder={'Posting date'}
-              options={recentOptions}
-              applyFilter={setFilterState}
-              objkey={'createdWithin'}
-              style={style}
-            />
-
-            <FilterSelect
-              placeholder={'Contract'}
-              options={contractOptions}
-              applyFilter={setFilterState}
-              objkey={'contractPeriod'}
-              style={style}
-            />
-            <div
-              className='flex bg-white h-9 justify-center items-center rounded border cursor-pointer'
-              style={{ width: `${window.innerWidth * 0.13}px`, fontSize: '0.9vw', fontWeight: '400', backgroundImage: switchValue ? 'linear-gradient(to right, #f0a0ad , #bd54fd)' : 'linear-gradient(to right, #fff ,#fff)' }}
-              onClick={onHotRequirementClick}
-            >
-              Hot Requirement 🔥
-            </div>
-          </div>
-          <SizedBox width={'30px'} />
-        </div>
-        {isLoading && currentPage === 1 ? (
-          <Spinner />
-        ) : (
-          <>
-            <div className={styles.partition}>
-              <div className={styles.listContainer}>
-                {requirementsList?.docs?.length ? (
-                  requirementsList?.docs?.map(
-                    (req, index) => (
-                      <RequirementsCard
-                        key={`${req?._id} ${index}`}
-                        data={req}
-                        tab={selectedTab}
-                        showButton={false}
-                        showNote={true}
-                        buttonTitle={'Apply now'}
-                        isSelected={
-                          selectedCard === req?._id
-                        }
-                        onApplyClick={(id) => {
-                          onApplyClick(id);
-                        }}
-                      />
-                    )
                   )
-                ) : (
-                  <NoDataComponent />
-                )}
-              </div>
-              <div className={styles.optionsContainer}>
-                {console.log(filterDevList)}
-                <DeveloperListing
-                  item={filterDevList}
-                  selectedTab={selectedTab}
-                  selectedCard={selectedCard}
-                  onApply={(devs) =>
-                    shareDeveloperPatchCall(devs)
-                  }
-                  requirementData={
-                    requirementsList?.docs || []
-                  }
-                />
+                })
+              }
+            </div>
+
+            <SizedBox height={'12px'} />
+            <div className='flex justify-evenly items-center w-full' >
+              <FilterSelect
+                placeholder={'Budget'}
+                options={budgetOptions}
+                applyFilter={setFilterState}
+                objkey={'budget'}
+                style={style}
+              />
+              <FilterSelect
+                placeholder={'Posting date'}
+                options={recentOptions}
+                applyFilter={setFilterState}
+                objkey={'createdWithin'}
+                style={style}
+              />
+              <FilterSelect
+                placeholder={'Contract'}
+                options={contractOptions}
+                applyFilter={setFilterState}
+                objkey={'contractPeriod'}
+                style={style}
+              />
+              <div
+                className='flex bg-white h-12 justify-between px-4 items-center rounded-md border cursor-pointer'
+                style={{ width: `${window.innerWidth * 0.13}px` }}
+                onClick={onHotRequirementClick}
+              >
+                <p style={{ fontSize: '16px', fontWeight: '400', fontFamily: 'MulishRegular' }} >
+                  Filter by
+                </p>
+                <img src={Images.filter} />
               </div>
             </div>
-            <div className={styles.showMorebtn}>
-              {currentPage < requirementsList.totalPages &&
-                (isLoading ? (
-                  <Spinner style={{ height: '60px' }} />
-                ) : (
-                  <Button
-                    name="show more"
-                    buttonExtraStyle={buttonExtraStyle}
-                    buttonTextStyle={buttonTextStyle}
-                    onClick={() => handlePagination()}
-                  />
-                ))}
-            </div>
-            {recommendedPage > 0 && (
-              <>
-                <div className={`${styles.recommendedJobs}`}>
-                  <span className="headingText">
-                    Recommended Jobs
-                  </span>
-                </div>
-                <div className={styles.partition}>
-                  <div className={styles.listContainer}>
-                    {recommendedList?.docs?.length ? (
-                      recommendedList?.docs?.map(
+
+            <div>
+              {isLoading && currentPage === 1 ? (
+                <Spinner />
+              ) : (
+                <div>
+                  <div >
+                    {requirementsList?.docs?.length ? (
+                      requirementsList?.docs?.map(
                         (req, index) => (
                           <RequirementsCard
                             key={`${req?._id} ${index}`}
                             data={req}
+                            tab={selectedTab}
                             showButton={false}
-                            buttonTitle={
-                              'Apply now'
-                            }
+                            showNote={true}
+                            buttonTitle={'Apply now'}
                             isSelected={
-                              selectedCard ===
-                              req?._id
+                              selectedCard === req?._id
                             }
                             onApplyClick={(id) => {
                               onApplyClick(id);
@@ -612,48 +527,313 @@ const RequirementListing = () => {
                       <NoDataComponent />
                     )}
                   </div>
-                  <div className={styles.optionsContainer}>
+                  {/* <div className={styles.optionsContainer}>
+                    {console.log(filterDevList)}
                     <DeveloperListing
                       item={filterDevList}
                       selectedTab={selectedTab}
                       selectedCard={selectedCard}
-                      onApply={(devs) => shareDeveloperPatchCall(devs)}
+                      onApply={(devs) =>
+                        shareDeveloperPatchCall(devs)
+                      }
                       requirementData={
                         requirementsList?.docs || []
                       }
                     />
-                  </div>
+                  </div> */}
+                </div>)}
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div className='w-1/4 my-4 mr-4'>
+
+          <div className='bg-ffffff h-fit rounded-10 py-3 border-1e1e1e border px-3 shadow-[0_25px_35px_rgba(0,0,0,0.07)] flex flex-col' >
+            <Bold2401 text={'Our Top Agency'} style={{ width: '100%', textAlign: 'center' }} />
+            <SizedBox height={'10px'} />
+            {
+              Array(3).fill('maq').map(item =>
+                <div className='my-2' >
+                  <AgencyCard />
                 </div>
-                <div className={styles.showMorebtn}>
-                  {recommendedPage <
-                    recommendedJobs.totalPages &&
-                    (isLoading ? (
-                      <Spinner
-                        style={{ height: '60px' }}
-                      />
-                    ) : (
-                      <Button
-                        name="show more"
-                        buttonExtraStyle={
-                          buttonExtraStyle
-                        }
-                        buttonTextStyle={
-                          buttonTextStyle
-                        }
-                        onClick={() => handleRecommendedPagination()}
-                      />
-                    ))}
+              )
+            }
+          </div>
+
+          <SizedBox height={'30px'} />
+          <div className='bg-ffffff h-fit w-fit overflow-hidden rounded-10 border-1e1e1e border shadow-[0_25px_35px_rgba(0,0,0,0.07)] flex flex-col relative justify-center items-center' >
+            <img src={Images.reviewUsBG} />
+            <div className='flex flex-col items-center justify-center w-full h-full absolute' >
+              <Bold2401 text={'Review us on'} style={{ color: colors.WHITE }} />
+              <SizedBox height={'1.245rem'} />
+              <div className='flex justify-evenly w-full' >
+                {
+                  reviewUs?.map(item => (
+                    <div className='flex items-center flex-col' >
+                      <img src={item.icon} />
+                      <SizedBox height={'10px'} />
+                      <SemiBold1219 text={item.platform} style={{ color: colors.WHITE }} />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          <SizedBox height={'30px'} />
+          <div className='bg-ffffff h-fit w-full rounded-10 border-1e1e1e border shadow-[0_25px_35px_rgba(0,0,0,0.07)] flex items-center py-2' >
+            <img src={Images.earth} />
+            <div className='flex flex-col  justify-center w-full h-full' >
+              <Bold2401 text={'Contact us'} />
+              <Regular1218 text={'We always help you in all way'} />
+              <SizedBox height={'3rem'} />
+              <div className='flex justify-evenly' >
+                <div
+                  className='bg-purple-100 p-2 w-fit rounded-md cursor-pointer justify-center items-center flex'
+                  onClick={() => { }}
+                >
+                  <Medium1422 text={'Email us'} style={{ color: colors.PURPLE_700 }} />
                 </div>
-              </>
-            )}
-          </>
-        )}
+                <div
+                  className='bg-purple-100 p-2 w-fit rounded-md cursor-pointer justify-center items-center flex'
+                  onClick={() => { }}
+                >
+                  <Medium1422 text={'Feedback form'} style={{ color: colors.PURPLE_700 }} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
       </div>
+      {/* <div>
+        <div className='flex mx-16 mt-7' >
+          {
+            tabs?.map(item => {
+              let color = item.value === selectedTab ? 'border-blue-700 text-blue-700' : 'border-white text-black-500'
+              return (
+                <div key={item.value.toString()} className='flex flex-col mr-4' >
+                  <div className={`px-5 m-3 border-b-2 ${color} cursor-pointer`} onClick={() => onTabClick(item)} >
+                    <p className={`font-semibold text-2xl text-center ${color}`} >{item.title}</p>
+                  </div>
+                  {item.value === selectedTab &&
+                    <div className='flex' >
+                      <div className='bg-blue-100 w-4 self-end h-4' >
+                        <div className='bg-white w-4 self-end h-4 rounded-br-xl' />
+                      </div>
+                      <div className='bg-blue-100 w-11/12 self-center rounded-t-xl h-7' >
+                      </div>
+                      <div className='bg-blue-100 w-4 self-end h-4' >
+                        <div className='bg-white w-4 self-end h-4 rounded-bl-xl' />
+                      </div>
+                    </div>
+                  }
+                </div>
+              )
+            })
+          }
+        </div>
+
+        <div className={styles.requirement_listing_container}>
+          <div className={styles.searchBarContainer}>
+            <div
+              className={styles.searchAndBtnWrapper}
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
+              <SearchBar
+                height={'40px'}
+                style={{ width: '100%' }}
+                bgColor={colors.WHITE}
+                placeholder={'Type keyword here example “react js”'}
+                value={searchText}
+                setSearchText={(val) => {
+                  setSearchText(val);
+                  debounceFn({ isParam: true }, val);
+                }}
+              />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                marginTop: '10px',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                // flexWrap: 'wrap'
+              }}
+            >
+
+              <FilterSelect
+                placeholder={'Budget'}
+                options={budgetOptions}
+                applyFilter={setFilterState}
+                objkey={'budget'}
+                style={style}
+              />
+
+              <FilterSelect
+                placeholder={'Posting date'}
+                options={recentOptions}
+                applyFilter={setFilterState}
+                objkey={'createdWithin'}
+                style={style}
+              />
+
+              <FilterSelect
+                placeholder={'Contract'}
+                options={contractOptions}
+                applyFilter={setFilterState}
+                objkey={'contractPeriod'}
+                style={style}
+              />
+              <div
+                className='flex bg-white h-9 justify-center items-center rounded border cursor-pointer'
+                style={{ width: `${window.innerWidth * 0.13}px`, fontSize: '0.9vw', fontWeight: '400', backgroundImage: switchValue ? 'linear-gradient(to right, #f0a0ad , #bd54fd)' : 'linear-gradient(to right, #fff ,#fff)' }}
+                onClick={onHotRequirementClick}
+              >
+                Hot Requirement 🔥
+              </div>
+            </div>
+            <SizedBox width={'30px'} />
+          </div>
+          {isLoading && currentPage === 1 ? (
+            <Spinner />
+          ) : (
+            <>
+              <div className={styles.partition}>
+                <div className={styles.listContainer}>
+                  {requirementsList?.docs?.length ? (
+                    requirementsList?.docs?.map(
+                      (req, index) => (
+                        <RequirementsCard
+                          key={`${req?._id} ${index}`}
+                          data={req}
+                          tab={selectedTab}
+                          showButton={false}
+                          showNote={true}
+                          buttonTitle={'Apply now'}
+                          isSelected={
+                            selectedCard === req?._id
+                          }
+                          onApplyClick={(id) => {
+                            onApplyClick(id);
+                          }}
+                        />
+                      )
+                    )
+                  ) : (
+                    <NoDataComponent />
+                  )}
+                </div>
+                <div className={styles.optionsContainer}>
+                  {console.log(filterDevList)}
+                  <DeveloperListing
+                    item={filterDevList}
+                    selectedTab={selectedTab}
+                    selectedCard={selectedCard}
+                    onApply={(devs) =>
+                      shareDeveloperPatchCall(devs)
+                    }
+                    requirementData={
+                      requirementsList?.docs || []
+                    }
+                  />
+                </div>
+              </div>
+              <div className={styles.showMorebtn}>
+                {currentPage < requirementsList.totalPages &&
+                  (isLoading ? (
+                    <Spinner style={{ height: '60px' }} />
+                  ) : (
+                    <Button
+                      name="show more"
+                      buttonExtraStyle={buttonExtraStyle}
+                      buttonTextStyle={buttonTextStyle}
+                      onClick={() => handlePagination()}
+                    />
+                  ))}
+              </div>
+              {recommendedPage > 0 && (
+                <>
+                  <div className={`${styles.recommendedJobs}`}>
+                    <span className="headingText">
+                      Recommended Jobs
+                    </span>
+                  </div>
+                  <div className={styles.partition}>
+                    <div className={styles.listContainer}>
+                      {recommendedList?.docs?.length ? (
+                        recommendedList?.docs?.map(
+                          (req, index) => (
+                            <RequirementsCard
+                              key={`${req?._id} ${index}`}
+                              data={req}
+                              showButton={false}
+                              buttonTitle={
+                                'Apply now'
+                              }
+                              isSelected={
+                                selectedCard ===
+                                req?._id
+                              }
+                              onApplyClick={(id) => {
+                                onApplyClick(id);
+                              }}
+                            />
+                          )
+                        )
+                      ) : (
+                        <NoDataComponent />
+                      )}
+                    </div>
+                    <div className={styles.optionsContainer}>
+                      <DeveloperListing
+                        item={filterDevList}
+                        selectedTab={selectedTab}
+                        selectedCard={selectedCard}
+                        onApply={(devs) => shareDeveloperPatchCall(devs)}
+                        requirementData={
+                          requirementsList?.docs || []
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.showMorebtn}>
+                    {recommendedPage <
+                      recommendedJobs.totalPages &&
+                      (isLoading ? (
+                        <Spinner
+                          style={{ height: '60px' }}
+                        />
+                      ) : (
+                        <Button
+                          name="show more"
+                          buttonExtraStyle={
+                            buttonExtraStyle
+                          }
+                          buttonTextStyle={
+                            buttonTextStyle
+                          }
+                          onClick={() => handleRecommendedPagination()}
+                        />
+                      ))}
+                  </div>
+                </>
+              )}
+            </>
+          )}
+                        </div>*/}
 
       <Modal
         center
         open={modal?.open}
-        showCloseIcon={true}
+        showCloseIcon={false}
         onClose={onCloseModal}
         classNames={{ modal: styles.modalRoot }}
         styles={{
@@ -661,8 +841,21 @@ const RequirementListing = () => {
         }}
       >
         <div className={styles.modalContainer} >
-          <div className='flex' >
-            {selectedTab == 1 && <div className='w-1/4' >
+          <div className='flex justify-between' >
+            <div className='flex flex-col' >
+              <Bold3248 text={'Developer Listing'} />
+              <SizedBox height={'10px'} />
+              <Regular1218
+                text={'Your developer list, Choose right one based on project need'}
+                style={{ color: colors.BLACK_500 }}
+              />
+            </div>
+            <img
+              src={Images.crossInCircle}
+              onClick={onCloseModal}
+              className='cursor-pointer'
+            />
+            {/* {selectedTab == 1 && <div className='w-1/4' >
               <Select
                 options={conversationOptions}
                 placeholder={"Shared by..."}
@@ -680,8 +873,8 @@ const RequirementListing = () => {
                 }}
                 isClearable
               />
-            </div>
-            <div className='flex h-10 items-center' >
+            </div> */}
+            {/* <div className='flex h-10 items-center' >
               <p
                 onClick={() => routerHistory.push(AGENCYROUTES.ADD_DEVELOPER)}
                 className='flex min-w-fit text-blue-700 font-semibold'
@@ -694,10 +887,23 @@ const RequirementListing = () => {
               >
                 <span>Apply</span>
               </button>
-            </div>
+            </div> */}
           </div>
+
+          <div className='relative my-3' >
+            <input
+              type="text"
+              className='bg-fafafb w-full pl-10 pr-10px h-10 rounded text-xs font-Mulish-Regular '
+              placeholder='Search Developer'
+            />
+            <img
+              src={Images.search}
+              className='absolute h-10 w-10 top-0 left-0 p-10px flex justify-center items-center'
+            />
+          </div>
+
           {(filterDevList)?.length ? (
-            <div className='grid grid-cols-4 gap-3' >
+            <div className='' >
               {(filterDevList)?.map((person) => {
                 let statusText = person?.isDeveloperShared
                   ? person?.developerSharedBy?.developerStatus === 3
@@ -709,78 +915,103 @@ const RequirementListing = () => {
                   : 'Not Shared';
                 return (
                   <div className={styles.DLCard} key={person?._id} style={{}} >
-                    {selectedTab == 1 && person?.developerSharedBy?.developerSharedBy == 1 &&
-                      <div className='flex justify-center relative' >
-                        <img src={agencyTag} height='24px' />
-                        <p className='absolute top-1 text-white text-xs' >Shared by You</p>
-                      </div>
-                    }
-                    {selectedTab == 1 && person?.developerSharedBy?.developerSharedBy == 2 &&
-                      <div className='flex justify-center relative' >
-                        <img src={clientTag} height='24px' />
-                        <p className='absolute top-1 text-white text-xs' >Shared by Client</p>
-                      </div>
-                    }
-                    <SizedBox height={'6px'} />
-                    <div
-                      className={styles.nameContainer}
-                      style={{
-                        pointerEvents: person?.isDeveloperShared
-                          ? 'none'
-                          : 'all'
-                      }}
-                    >
-                      <span
-                        className={styles.name}
-                      >{`${person?.firstName} ${person?.lastName}`}</span>
-
-                      {isResourceNeedSatified === false &&
-                        person?.isDeveloperShared === false ? (
-                        <input
-                          type={'checkbox'}
-                          checked={isAlreadyShared(
-                            person?._id
-                          )}
-                          onChange={() =>
-                            selectedMyDev(person?._id)
-                          }
+                    <div className='flex' >
+                      <div className='flex h-8 w-8 mx-2 justify-center items-center rounded bg-fafafb' >
+                        <CheckBox
+                          isChecked={isAlreadyShared(person?._id)}
+                          onClick={() => selectedMyDev(person?._id)}
                         />
-                      ) : <p className='text-sm text-green-700' >Shared</p>
-                      }
-                    </div>
-                    <SizedBox height={'6px'} />
-                    <div className='w-8/12' >
-                      <span className={styles.techText}>
-                        {getTechnologies(
-                          person?.developerTechnologies
-                        )}
-                      </span>
-                    </div>
-                    <SizedBox height={'1px'} />
-                    <span
+                      </div>
+                      <div className='ml-2 pt-1' >
+                        {selectedTab == 1 && person?.developerSharedBy?.developerSharedBy == 1 &&
+                          <div className='flex justify-center relative' >
+                            <img src={agencyTag} height='24px' />
+                            <p className='absolute top-1 text-white text-xs' >Shared by You</p>
+                          </div>
+                        }
+                        {selectedTab == 1 && person?.developerSharedBy?.developerSharedBy == 2 &&
+                          <div className='flex justify-center relative' >
+                            <img src={clientTag} height='24px' />
+                            <p className='absolute top-1 text-white text-xs' >Shared by Client</p>
+                          </div>
+                        }
+                        <div
+                          className={styles.nameContainer}
+                          style={{
+                            pointerEvents: person?.isDeveloperShared
+                              ? 'none'
+                              : 'all'
+                          }}
+                        >
+
+                          <Bold1619 text={`${person?.firstName} ${person?.lastName}`} />
+                          {/* <span
+                          className={styles.name}
+                        >{`${person?.firstName} ${person?.lastName}`}</span> */}
+
+                          {/* {isResourceNeedSatified === false &&
+                          person?.isDeveloperShared === false ? (
+                          <input
+                            type={'checkbox'}
+                            checked={isAlreadyShared(
+                              person?._id
+                            )}
+                            onChange={() =>
+                              selectedMyDev(person?._id)
+                            }
+                          />
+                        ) : <p className='text-sm text-green-700' >Shared</p>
+                        } */}
+                        </div>
+                        <SizedBox height={'6px'} />
+                        <Regular1218
+                          text={getTechnologies(person?.developerTechnologies)}
+                          style={{ color: colors.BLACK_500 }}
+                        />
+                        {/* <div className='w-8/12' >
+                        <span className={styles.techText}>
+                          {getTechnologies(
+                            person?.developerTechnologies
+                          )}
+                        </span>
+                      </div> */}
+                        {/* <span
                       className={styles.experienceText}
-                    >{`experience- ${person?.developerExperience} years`}</span>
-                    <SizedBox height={'14px'} />
+                    >{`experience- ${person?.developerExperience} years`}
+                    </span> */}
+                      </div>
+                    </div>
                     <div
                       style={{
                         pointerEvents: 'inherit',
                         display: 'flex'
                       }}
                     >
-                      {(selectedTab == 0 || selectedTab == 2) && <Button
-                        onClick={() =>
-                          window.open(
+                      {(selectedTab == 0 || selectedTab == 2) &&
+                        <ButtonOutlined
+                          label={'View Resume'}
+                          onClick={() => window.open(
                             person?.developerDocuments[0]
                               ?.documentLink
-                          )
-                        }
-                        name="View Resume"
-                        buttonExtraStyle={{
-                          borderColor: '#45A4EA',
-                          width: '110px'
-                        }}
-                        buttonTextStyle={buttonTextStyle}
-                      />}
+                          )}
+                          style={{ height: '36px', paddingInline: '8px', borderRadius: '4px', marginRight: '10px' }}
+                          medium
+                        />
+                        // <Button
+                        //   onClick={() =>
+                        //     window.open(
+                        //       person?.developerDocuments[0]
+                        //         ?.documentLink
+                        //     )
+                        //   }
+                        //   name="View Resume"
+                        //   buttonExtraStyle={{
+                        //     borderColor: '#45A4EA',
+                        //     width: '110px'
+                        //   }}
+                        //   buttonTextStyle={buttonTextStyle}
+                        // />
+                      }
 
                       {!isResourceNeedSatified &&
                         person?.isDeveloperShared &&
@@ -864,9 +1095,23 @@ const RequirementListing = () => {
           )}
         </div>
       </Modal>
+
     </div>
   );
 };
+
+export const AgencyCard = () => (
+  <div className='flex border border-1e1e1e rounded-xl items-center p-10px'  >
+    <div className='h-14 w-14 rounded-full border border-1e1e1e bg-black-350' />
+    <SizedBox height={'16px'} width={'16px'} />
+    <div>
+      <SemiBold1421 text={'RoboSoft Technologies'} />
+      <SizedBox height={'2px'} width={'16px'} />
+      <Regular1218 text={'Generated more than'} />
+      <Regular1218 text={'25k$'} />
+    </div>
+  </div>
+)
 
 const buttonExtraStyle = {
   background: 'rgba(1, 95, 154, 0.12)',

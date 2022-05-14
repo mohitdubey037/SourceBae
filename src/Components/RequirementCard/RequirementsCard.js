@@ -4,8 +4,9 @@ import Tag from '../../Components/Tag/Tag';
 import styles from '../../Routes/MainLandingPage/Components/Navbar/LNavbar.module.css';
 import moneyBag from '../../assets/images/RequirementsListing/noto_money-bag.png';
 import clock from '../../assets/images/RequirementsListing/flat-color-icons_clock.png';
-import people from '../../assets/images/RequirementsListing/people.png';
+import people from '../../assets/images/general/people.svg'
 import document from '../../assets/images/RequirementsListing/document.png';
+import borderedCircle from '../../assets/images/OtherIcons/borderedCircle.svg';
 import './RequirementsCard.css';
 import Modal from 'react-responsive-modal';
 import SizedBox from '../../Components/SizedBox/SizedBox';
@@ -14,6 +15,11 @@ import CustomSwitch from '../CustomSwitch/CustomSwitch';
 import { CLIENT } from '../../shared/constants';
 import instance from '../../Constants/axiosConstants';
 import { Switch } from '@mui/material';
+import { Bold1420, Medium1014, Medium1624, SemiBold1421 } from '../Text/Texts';
+import { Images } from '../../assets/images';
+import ButtonOutlined from '../Button/ButtonOutlined';
+import colors from '../../Constants/colors.js'
+
 
 export default function RequirementsList(props) {
   const role = CLIENT;
@@ -87,16 +93,9 @@ export default function RequirementsList(props) {
           <span className="tag">{`experience: ${generateExperienceStr(developerExperienceRequired) || ''
             } year`}</span>
         </div>
-        <div className='requirementSwitchHolder' >
-          <button
-            onClick={() => onApplyClick(_id)}
-            id={'RequirementsListCTA'}
-            style={{ display: showButton ? 'block' : 'none' }}
-            className={`${styles.L_login} ${styles.nav_Lbutton
-              } ${'RequirementsListCTA'}`}
-          >
-            <span>{buttonTitle}</span>
-          </button>
+        <div className='flex' >
+          <Bold1420 text={'Tentative Start Date:-\xa0'} />
+          <Bold1420 text={'Immediately'} style={{ color: colors.PURPLE_700 }} />
         </div>
       </div>
       <div className="insight">
@@ -116,13 +115,49 @@ export default function RequirementsList(props) {
             } resources`}
         />
       </div>
-      <div className="tagsContainer">
-        {developerTechnologiesRequired?.map((tech, index) => (
-          <Tag key={tech?._id} title={tech?.technologyName || ''} />
-        ))}
+      <SizedBox height={'36px'} />
+      <div className='px-4' >
+        <Medium1624 text={'Technology Requirement'} />
+        <SizedBox height={'14px'} />
+        <div className="tagsContainer">
+          {developerTechnologiesRequired?.map((tech, index) => (
+            <Tag key={tech?._id} title={tech?.technologyName || ''} />
+          ))}
+        </div>
       </div>
 
-      <Modal
+      <SizedBox height={'36px'} />
+      <div className='flex justify-between items-center px-4' >
+        <div className='flex items-center' >
+          <img src={borderedCircle} />
+          <SizedBox height={'14px'} width={'14px'} />
+          <div>
+            <SemiBold1421 text={'Matching Ratio'} />
+            <Medium1014
+              text={'Your resources mathing ratio is 67% Add more developer to get better chance for onboardings'}
+              style={{ color: colors.BLACK_500 }}
+            />
+          </div>
+        </div>
+        <ButtonOutlined
+          label={'Apply'}
+          onClick={() => onApplyClick(_id)}
+          style={{ height: '40px', paddingInline: '64px' }}
+          medium
+        />
+      </div>
+
+      <SizedBox height={'30px'} />
+      <div
+        style={{ background: 'linear-gradient(90deg, #A1C4FD 0%, #C2E9FB 100%)' }}
+        className={'h-9 rounded-b-md items-center flex px-8'}
+      >
+        <img src={Images.halfFilledSuitcase} />
+        <SizedBox height={'10px'} width={'10px'} />
+        <SemiBold1421 text={'56+ Agencies Review This gig'} />
+      </div>
+
+      {/* <Modal
         classNames={{
           modal: 'modalRoot'
         }}
@@ -191,7 +226,7 @@ export default function RequirementsList(props) {
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
       {showToggle &&
         <div className='requirementSwitch' >
           <Switch checked={isVisible} onClick={() => handleSwitch(_id, isVisible)} size="small" />

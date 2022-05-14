@@ -30,7 +30,7 @@ function BottomSidebar(props) {
             .then((response) => {
                 setNotificationData(response);
             })
-            .catch((err) => {});
+            .catch((err) => { });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -44,9 +44,9 @@ function BottomSidebar(props) {
 
     const handleDashboard = () => {
         if (Role === 'Agency') {
-            routerHistory.push(AGENCYROUTES.DASHBOARD);
+            routerHistory.push(AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST);
         } else {
-            routerHistory.push(CLIENTROUTES.DASHBOARD);
+            routerHistory.push(CLIENTROUTES.DEVELOPER_REQUESTS);
         }
     };
 
@@ -77,9 +77,9 @@ function BottomSidebar(props) {
                             style={{
                                 filter:
                                     (props.location.pathname ===
-                                        CLIENTROUTES.DASHBOARD ||
+                                        CLIENTROUTES.DEVELOPER_REQUESTS ||
                                         props.location.pathname ===
-                                            AGENCYROUTES.DASHBOARD) &&
+                                        AGENCYROUTES.DEVELOPER_REQUIREMENT_LIST) &&
                                     'invert(8%) sepia(100%) saturate(7445%) hue-rotate(248deg) brightness(95%) contrast(144%)'
                             }}
                             src={dashboardIcon}

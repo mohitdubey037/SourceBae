@@ -3,6 +3,12 @@ export const submit = 'Submit'
 export const dragAndDrop = 'Drag & Drop File Here'
 export const chooseFile = 'Choose File'
 
+export const headerStrs = {
+  activeRequirement: 'Active Requirement',
+  addDeveloper: 'Add Developer',
+  addPortfolio: 'Add Portfolio',
+  fullTimeHiring: 'Full Time Hiring'
+}
 
 export const passwordResetStrs = {
   heading: 'Set New Password',
