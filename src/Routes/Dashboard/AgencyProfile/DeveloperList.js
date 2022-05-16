@@ -30,8 +30,9 @@ const AntSwitch = withStyles((theme) => ({
         padding: 2,
         top: -2,
         left: -2,
-        color: 'green',
-        border: '1px solid #EBF5FB',
+        // color: 'green',
+        color: 'blue',
+        // border: '1px solid #EBF5FB',
         '&$checked': {
             transform: 'translateX(14px)',
             color: '#FF0000',
@@ -40,7 +41,7 @@ const AntSwitch = withStyles((theme) => ({
                 backgroundColor: 'blue'
                 // border: '2px solid #FF0000',
             },
-            border: '1px solid #FF0000'
+            // border: '1px solid #FF0000'
         }
     },
     thumb: {

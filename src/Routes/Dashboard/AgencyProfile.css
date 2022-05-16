@@ -637,7 +637,7 @@ button {
 .select_div {
     width: 30%;
     /* border: 1px solid black; */
-    height: 40rem;
+    height: 46rem;
     background: #FFFFFF;
     box-shadow: 0px 25px 35px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
@@ -645,6 +645,12 @@ button {
 
 .accordian_ul {
     padding-left: 0 !important;
+    font-family: 'Segoe UI';
+    font-size: 1.2rem;
+}
+
+.accordian_ul li a {
+    color: #5396FF;
 }
 
 .innerQuotation_agencyProfile {

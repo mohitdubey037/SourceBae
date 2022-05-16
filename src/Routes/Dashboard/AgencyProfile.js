@@ -725,15 +725,15 @@ function AgencyProfile(props) {
                                         Agency Document
                                     </Typography>
                                 </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography className={classes.typography}>
-                                        <ul className='accordian_ul'>
-                                            <li><a href={link}>hiii</a></li>
-                                            <li><a href={link}>hiii</a></li>
-                                            <li><a href={link}>hiii</a></li>
-                                        </ul>
+                                <AccordionDetails style={{ paddingLeft: '0rem' }} className={classes.accordianDetails}>
+                                    {/* <Typography  className={classes.typography}> */}
+                                    <ul className='accordian_ul'>
+                                        <li><a href={link}>Registration Certificate</a></li>
+                                        <li><a href={link}>Brochure</a></li>
+                                        <li><a href={link}>Pancard</a></li>
+                                    </ul>
 
-                                    </Typography>
+                                    {/* </Typography> */}
                                 </AccordionDetails>
                             </Accordion>
                             <div className={'profileViewTypography'}>
