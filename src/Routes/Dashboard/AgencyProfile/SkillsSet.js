@@ -3,6 +3,7 @@ import './SkillsSet.css';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import instance from '../../../Constants/axiosConstants';
+import editIcon from '../../../assets/images/AgencyProfile/edit.svg'
 
 function SkillsSet(props) {
     const Role = localStorage.getItem('role');
@@ -250,7 +251,7 @@ function SkillsSet(props) {
                     return tech.id;
                 })
             })
-            .then((resp) => {});
+            .then((resp) => { });
     };
 
     useEffect(() => {
@@ -294,17 +295,18 @@ function SkillsSet(props) {
                 <div className="innerSkillsSet">
                     {Role !== 'client'
                         ? props.data.isAgencyVerified && (
-                              <div className="skill-set_parent_parent">
-                                  <div className="skill-set_parent">
-                                      <p>SKILL SET</p>
-                                  </div>
-                                  <i
+                            <div className="skill-set_parent_parent">
+                                <div className="skill-set_parent">
+                                    <p>Skill Set</p>
+                                </div>
+                                {/* <i
                                       onClick={() => handleEdit(true)}
                                       className="fa fa-pencil-square-o Edit-icon_information"
                                       aria-hidden="true"
-                                  ></i>
-                              </div>
-                          )
+                                  ></i> */}
+                                <img onClick={() => handleEdit(true)} className='Edit-icon_information' src={editIcon} alt="editIcon" />
+                            </div>
+                        )
                         : null}
 
                     <div className="skillsSetsContent">
@@ -324,7 +326,7 @@ function SkillsSet(props) {
                                     {editStatus &&
                                         value.title !== 'Language of Content' &&
                                         value.title !==
-                                            'Relevant Exp In Industry' &&
+                                        'Relevant Exp In Industry' &&
                                         value.title !== 'Expertise' && (
                                             <div className="editButtons">
                                                 <div className={value?.title}>
@@ -332,12 +334,12 @@ function SkillsSet(props) {
                                                         style={{
                                                             cursor:
                                                                 value?.title ===
-                                                                    'Industry' &&
+                                                                'Industry' &&
                                                                 'auto'
                                                         }}
                                                         disabled={
                                                             value?.title ===
-                                                                'Industry' &&
+                                                            'Industry' &&
                                                             true
                                                         }
                                                         onClick={() => {

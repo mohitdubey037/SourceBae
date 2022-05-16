@@ -492,7 +492,7 @@
 
 .MuiButtonBase-root {
     font-family: 'Open Sans', sans-serif !important;
-    border: none !important;
+    /* border: none !important; */
 }
 
 .mainAddingDeveloper .MuiInputBase-root {

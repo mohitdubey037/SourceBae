@@ -14,7 +14,10 @@ import {
 } from '@material-ui/core';
 import { AGENCYROUTES } from '../../../Navigation/CONSTANTS';
 import { experienceRange } from '../../../shared/helper';
-import editImage from '../../../assets/images/OtherIcons/edit.png'
+// import editImage from '../../../assets/images/OtherIcons/edit.png';
+import editImage from '../../../assets/images/AgencyProfile/Group.svg';
+import greenCheck from '../../../assets/images/AgencyProfile/greenCheck.svg';
+import deleteIcon from '../../../assets/images/AgencyProfile/delete.svg';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -51,7 +54,7 @@ const AntSwitch = withStyles((theme) => ({
     },
     track: {
         borderRadius: 78 / 2,
-        backgroundColor: 'blue',
+        backgroundColor: 'green',
         opacity: 0.82
     },
     checked: {}
@@ -70,7 +73,6 @@ function DeveloperList(props) {
     const [state, setState] = useState({
         checked: false
     });
-
 
 
     const getAgencyDevelopers = () => {
@@ -151,211 +153,223 @@ function DeveloperList(props) {
     }
 
     return (
-        <div style={{ height: '600px', overflowY: 'scroll' }}>
-            <div className="mainDeveloperList">
-                <div
-                    className="innerDeveloperList"
-                    style={{ backgroundColor: err && 'white' }}
-                >
-                    {developers.map((developer, index) => {
-                        return (
-                            <>
-                                <div className="developerCard">
-                                    <div
-                                        className="cross-icon"
-                                        onClick={() =>
-                                            deleteFunctionality(developer._id)
-                                        }
-                                    >
-                                        <img src={TrashIcon} alt="trash" />
-                                    </div>
-                                    <div className="developerNameExp">
-                                        <div className="developerName">
-                                            <div style={{ display: 'flex', alignItems: 'center' }} >
-                                                <h2>{`${developer.firstName
+        <div className='mainDeveloper_list' style={{ height: '600px', overflowY: 'scroll' }}>
+            {/* <div className="mainDeveloperList"> */}
+            <div
+                className="innerDeveloperList"
+                style={{ backgroundColor: err && 'white' }}
+            >
+                {developers.map((developer, index) => {
+                    return (
+                        <>
+                            <div className="developerCard">
+                                <div
+                                    className="cross-icon"
+                                    onClick={() =>
+                                        deleteFunctionality(developer._id)
+                                    }
+                                >
+                                    <img src={deleteIcon} alt="trash" />
+                                </div>
+                                <div
+                                    className="group-icon"
+                                    onClick={() =>
+                                        editDeveloper(developer._id)
+                                    }
+                                >
+                                    <img src={editImage} alt="edit" />
+                                </div>
+                                <div className="developerNameExp">
+                                    <div className="developerName">
+                                        <div style={{ display: 'flex', alignItems: 'center' }} >
+                                            <h2>{`${developer.firstName
+                                                .charAt(0)
+                                                .toUpperCase() +
+                                                developer.firstName.slice(1)
+                                                } ${developer.lastName
                                                     .charAt(0)
                                                     .toUpperCase() +
-                                                    developer.firstName.slice(1)
-                                                    } ${developer.lastName
-                                                        .charAt(0)
-                                                        .toUpperCase() +
-                                                    developer.lastName.slice(1)
-                                                    }`}</h2>
-                                                <img
-                                                    src={editImage}
-                                                    onClick={() =>
-                                                        editDeveloper(developer._id)
-                                                    }
-                                                    style={{ height: '20px', width: '20px', marginLeft: '14px', cursor: 'pointer' }}
-                                                />
-                                            </div>
-                                            <div
-                                                className={`rounded_developerList ${toggleIndexes[index] &&
-                                                    'conditionalColor'
-                                                    }`}
-                                            ></div>
-                                        </div>
-                                        <div className="developerExp">
-                                            {toggleIndexes[index] ? (
-                                                <p
-                                                    style={{
-                                                        color: '#FF0000'
-                                                    }}
-                                                >
-                                                    Unavailable
-                                                </p>
-                                            ) : (
-                                                <p>Available</p>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div className="developerTech">
-                                        <h6 style={{ color: '#000' }} >Techstack</h6>
-                                        <div className="developerTechNames">
-                                            {developer.developerTechnologies.map(
-                                                (tech) => {
-                                                    return (
-                                                        <p>
-                                                            {
-                                                                tech.technologyName
-                                                            }
-                                                        </p>
-                                                    );
-                                                }
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div className="developerBudgetResume">
-                                        <div className="developerBudget">
-                                            <div className="developer-detail">
-                                                <div>
-                                                    <p style={{ color: '#000' }} >Experience</p>
-                                                    <h6>{experienceRange(developer.developerExperience)}</h6>
-                                                </div>
-
-                                                <div>
-                                                    <p style={{ color: '#000' }} >Timeline</p>
-                                                    <h6>
-                                                        {parseInt(
-                                                            developer.developerAvailability
-                                                        ) === 0
-                                                            ? `Immediately Available`
-                                                            : `${developer.developerAvailability} Weeks`}
-                                                    </h6>
-                                                </div>
-                                                <div>
-                                                    <div style={{ display: 'flex', alignItems: 'center' }} ><p style={{ color: '#000' }} >Budget</p><p style={{ fontSize: '10px', marginLeft: '4px' }} >(monthly)</p></div>
-                                                    <h6>
-                                                        ${developer?.developerPriceRange}
-                                                        {' '}-{' '}
-                                                        ${developer?.developerPriceRange + ((developer?.developerPriceRange / 100) * 20)}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="developers_content">
-                                            <div
-                                                className="developers-status_parent"
+                                                developer.lastName.slice(1)
+                                                }`}</h2>
+                                            {/* <img
+                                                src={editImage}
                                                 onClick={() =>
-                                                    IndexSetter(index)
+                                                    editDeveloper(developer._id)
                                                 }
+                                                style={{ height: '20px', width: '20px', marginLeft: '14px', cursor: 'pointer' }}
+                                            /> */}
+                                        </div>
+
+                                        <img src={greenCheck} className='rounded_developerList' alt="" />
+                                        {/* <div
+                                            className={`rounded_developerList ${toggleIndexes[index] &&
+                                                'conditionalColor'
+                                                }`}
+                                        ></div> */}
+                                    </div>
+                                    <div className="developerExp">
+                                        <span style={{ marginRight: '5px' }}><p>Status-</p></span>
+                                        {toggleIndexes[index] ? (
+
+                                            <p
+                                            // style={{
+                                            //     color: '#FF0000'
+                                            // }}
                                             >
-                                                <div className="developer-status_developerList">
-                                                    <p style={{ color: '#000' }} >Developer Status</p>
-                                                </div>
-                                                <div
-                                                    style={{
-                                                        display:
-                                                            open &&
-                                                            toggleIndexes ===
-                                                            index &&
-                                                            'none'
-                                                    }}
-                                                    className="availability_toggle"
-                                                >
-                                                    <FormGroup>
-                                                        <Typography component="div">
-                                                            <Grid
-                                                                component="label"
-                                                                container
-                                                                alignItems="center"
-                                                                spacing={1}
-                                                            >
-                                                                <Grid
-                                                                    item
-                                                                    className="statusLabel"
-                                                                >
-                                                                    Available
-                                                                </Grid>
-                                                                <Grid item>
-                                                                    <AntSwitch
-                                                                        checked={
-                                                                            !!toggleIndexes[
-                                                                            index
-                                                                            ]
-                                                                        }
-                                                                        onChange={(
-                                                                            event
-                                                                        ) =>
-                                                                            handleChangeToggle(
-                                                                                event,
-                                                                                index
-                                                                            )
-                                                                        }
-                                                                        name="checked"
-                                                                    />
-                                                                </Grid>
-                                                                <Grid
-                                                                    item
-                                                                    className="statusLabel"
-                                                                >
-                                                                    Unavailable
-                                                                </Grid>
-                                                            </Grid>
-                                                        </Typography>
-                                                    </FormGroup>
-                                                </div>
+                                                Unavailable
+                                            </p>
+                                        ) : (
+                                            <p>Available</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="developerTech">
+                                    <h6 style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Techstack</h6>
+                                    <div className="developerTechNames">
+                                        {developer.developerTechnologies.map(
+                                            (tech) => {
+                                                return (
+                                                    <p>
+                                                        {
+                                                            tech.technologyName
+                                                        }
+                                                    </p>
+                                                );
+                                            }
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="developerBudgetResume">
+                                    <div className="developerBudget">
+                                        <div className="developer-detail">
+                                            <div>
+                                                <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Experience</p>
+                                                <h6>{experienceRange(developer.developerExperience)}</h6>
                                             </div>
-                                            <div className="developerResume">
-                                                <button
-                                                    onClick={() =>
-                                                        window.open(
-                                                            `${developer.developerDocuments[0].documentLink}`,
-                                                            '_blank'
-                                                        )
-                                                    }
-                                                >
-                                                    Download
-                                                </button>
+
+                                            <div>
+                                                <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Timeline</p>
+                                                <h6>
+                                                    {parseInt(
+                                                        developer.developerAvailability
+                                                    ) === 0
+                                                        ? `Immediately Available`
+                                                        : `${developer.developerAvailability} Weeks`}
+                                                </h6>
+                                            </div>
+                                            <div>
+                                                <div style={{ display: 'flex', alignItems: 'center' }} ><p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Budget</p></div>
+                                                <h6>
+                                                    ${developer?.developerPriceRange}
+                                                    {' '}-{' '}
+                                                    ${developer?.developerPriceRange + ((developer?.developerPriceRange / 100) * 20)}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="developers_content">
+                                        <div
+                                            className="developers-status_parent"
+                                            onClick={() =>
+                                                IndexSetter(index)
+                                            }
+                                        >
+                                            <div className="developer-status_developerList">
+                                                <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Developer Status</p>
+                                            </div>
+                                            <div
+                                                style={{
+                                                    display:
+                                                        open &&
+                                                        toggleIndexes ===
+                                                        index &&
+                                                        'none'
+                                                }}
+                                                className="availability_toggle"
+                                            >
+                                                <FormGroup>
+                                                    <Typography component="div">
+                                                        <Grid
+                                                            component="label"
+                                                            container
+                                                            alignItems="center"
+                                                            spacing={1}
+                                                        >
+                                                            <Grid
+                                                                item
+                                                                className="statusLabel"
+                                                            >
+                                                                Available
+                                                            </Grid>
+                                                            <Grid item>
+                                                                <AntSwitch
+                                                                    checked={
+                                                                        !!toggleIndexes[
+                                                                        index
+                                                                        ]
+                                                                    }
+                                                                    onChange={(
+                                                                        event
+                                                                    ) =>
+                                                                        handleChangeToggle(
+                                                                            event,
+                                                                            index
+                                                                        )
+                                                                    }
+                                                                    name="checked"
+                                                                />
+                                                            </Grid>
+                                                            <Grid
+                                                                item
+                                                                className="statusLabel"
+                                                            >
+                                                                Unavailable
+                                                            </Grid>
+                                                        </Grid>
+                                                    </Typography>
+                                                </FormGroup>
+                                                <div className="developerResume">
+                                                    <button
+                                                        onClick={() =>
+                                                            window.open(
+                                                                `${developer.developerDocuments[0].documentLink}`,
+                                                                '_blank'
+                                                            )
+                                                        }
+                                                    >
+                                                        Download
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </>
-                        );
-                    })}
+                            </div>
+                        </>
+                    );
+                })}
 
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}
-                        className="developerCard"
-                        onClick={() =>
-                            routerHistory.push(AGENCYROUTES.ADD_DEVELOPER)
-                        }
-                    >
-                        <div className="add-developer_parent">
-                            <img src={developerImage} alt="developerImage" />
-                            <h6 className="addDeveloperText">Add Developer</h6>
-                        </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
+                    className="developerCard"
+                    onClick={() =>
+                        routerHistory.push(AGENCYROUTES.ADD_DEVELOPER)
+                    }
+                >
+                    <div className="add-developer_parent">
+                        <img src={developerImage} alt="developerImage" />
+                        <h6 className="addDeveloperText">Add Developer</h6>
                     </div>
-                    {/* : null */}
-                    {/* } */}
                 </div>
+                {/* : null */}
+                {/* } */}
+                {/* </div> */}
             </div>
 
             <Modal

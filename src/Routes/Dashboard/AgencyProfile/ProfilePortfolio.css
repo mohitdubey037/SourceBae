@@ -30,11 +30,15 @@
 
 .mainPortfolioDiv {
     display: flex;
-    padding: 1rem;
+    /* padding: 1rem; */
     /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
     border-radius: 20px;
     /* background-color: #ffffff; */
     flex-direction: column;
+
+    width: 100%;
+    box-shadow: 0px 25px 35px rgba(0, 0, 0, 0.05);
+    padding: 1.4rem;
 }
 
 .logoPortfolio {
@@ -67,12 +71,23 @@
 }
 
 .portfolioHeading {
-    width: 100%;
+    /* width: 100%;
     display: flex;
     border-radius: 23px;
     background: #EEF0FF;
     margin-bottom: 1%;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    width: max-content; */
+
+    width: 100%;
+    width: max-content;
+    padding: 0.5rem 0.9rem;
+    display: flex;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    /* background: #eef0ff; */
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+
 }
 
 .portfolioParent {
@@ -84,12 +99,12 @@
 }
 
 .portfolioHeading p {
-    font-family: 'Segoe UI Bold';
-    font-size: 14px;
+    font-family: 'Segoe UI Semibold';
+    font-size: 17px;
     text-transform: capitalize;
-    color: #5C6DFF;
-    padding: 8px 0px;
-    margin-left: 2rem;
+    /* color: #5C6DFF;
+    padding: 8px 16px; */
+    /* margin-left: 2rem; */
 }
 
 .No_portfolio {

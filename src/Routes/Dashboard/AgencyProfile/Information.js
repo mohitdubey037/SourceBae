@@ -9,6 +9,8 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@material-ui/core/TextField';
+import editIcon from '../../../assets/images/AgencyProfile/edit.svg'
+
 function Information(props) {
     const Role = localStorage.getItem('role');
     const day = moment(props?.data?.incorporationDate).format(
@@ -145,13 +147,14 @@ function Information(props) {
                             <div className="editableBtn">
                                 <div className="information_parent">
                                     {/* <img src={Information_edit} alt="information_edit" /> */}
-                                    <p>INFORMATION</p>
+                                    <p>Information</p>
                                 </div>
-                                <i
+                                <img onClick={handleDisabled} src={editIcon} className='Edit-icon_information' alt="edit" />
+                                {/* <i
                                     onClick={handleDisabled}
                                     class="fa fa-pencil-square-o Edit-icon_information"
                                     aria-hidden="true"
-                                ></i>
+                                ></i> */}
                             </div>
                         )
                         : null}

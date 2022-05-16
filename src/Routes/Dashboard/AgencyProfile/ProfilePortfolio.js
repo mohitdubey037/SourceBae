@@ -19,14 +19,13 @@ function AgencyPortfolio(props) {
     const getAgencyPortfolio = (profileviewStatus) => {
         instance
             .get(
-                `api/${Role}/portfolios/all?agencyId=${
-                    Role === AGENCY ? agencyId : propsAgencyId
+                `api/${Role}/portfolios/all?agencyId=${Role === AGENCY ? agencyId : propsAgencyId
                 }`
             )
             .then(function (response) {
                 setAgencyPortfoliodata(response);
             })
-            .catch((err) => {});
+            .catch((err) => { });
     };
 
     useEffect(() => {
@@ -38,7 +37,7 @@ function AgencyPortfolio(props) {
             <div className="mainPortfolioDiv">
                 <div className="portfolioHeading">
                     <p>
-                        PORTFOLIO{agencyPortfoliodata.length > 0 ? "'S" : ''} (
+                        Portfolio{agencyPortfoliodata.length > 0 ? "'S" : ''} (
                         {agencyPortfoliodata.length})
                     </p>
                 </div>

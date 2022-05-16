@@ -5,12 +5,12 @@ button {
     margin-bottom: 0;
 }
 
-.mainProfileHeaderImage {
+/* .mainProfileHeaderImage {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .conditionalGradient {
     background-image: linear-gradient(284deg,
@@ -18,30 +18,104 @@ button {
             rgb(1, 48, 77) 100%) !important;
 }
 
-.Image2_AgencyProfile {
+.profile_img_main {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.profile_img {
+    /* width: 30%; */
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile_img img {
+    /* border-radius: 50%; */
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.statement_div {
+    margin-top: 1rem;
+}
+
+.statements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.design_statement {
+   display: flex;
+   justify-content: space-between;
+   width: 57%;
+   align-items: center;
+   /* margin: 0.3rem 0; */
+}
+
+.design_statement p {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.design_com {
+    margin: 0.3rem 0;
+    font-weight: 300;
+    color: rgba(29, 36, 52, 0.5);
+}
+
+.location_div {
+    display: flex;
+    justify-content: space-between;
+    width: 24%;
+    margin: 0.8rem 0;
+}
+
+.location_div p {
+    color: rgba(29, 36, 52, 0.5);
+    font-weight: 300;
+}
+
+/* .horizontal {
+    height: 1px;
+    color: black;
+    width: 11rem;
+    margin-top: 0.5rem;
+} */
+
+/* .statement_div {
+
+} */
+
+/* .Image2_AgencyProfile {
     right: -6rem;
     position: fixed;
     bottom: -3rem;
     width: 34rem;
     z-index: 0;
-}
+} */
 
 .mainInformation {
     background-color: #ffffff;
     margin-bottom: 4rem;
 }
 
-.question_icon {
+/* .question_icon {
     position: absolute;
     right: 1rem;
     margin-top: 2rem;
-}
+} */
 
 /* .profileButton {
   margin-top: 2rem;
 } */
 
-.innerProfileHeaderImage {
+/* .innerProfileHeaderImage {
     width: 100%;
     height: 25vh;
     background-size: cover;
@@ -49,9 +123,9 @@ button {
     display: flex;
     background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%);
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-}
+} */
 
-.backButtonAgencyProfile {
+/* .backButtonAgencyProfile {
     width: 7%;
     display: flex;
     position: absolute;
@@ -59,9 +133,9 @@ button {
     top: 15px;
     align-items: center;
     height: 50px;
-}
+} */
 
-.backButtonAgencyProfile i {
+/* .backButtonAgencyProfile i {
     margin-right: 10px;
     width: 26px;
     height: 26px;
@@ -71,19 +145,19 @@ button {
     background-color: #fff;
     border-radius: 13px;
     cursor: pointer;
-}
+} */
 
-.backButtonAgencyProfile h6 {
+/* .backButtonAgencyProfile h6 {
     color: #fff;
     cursor: pointer;
     color: #5c6dff;
-}
+} */
 
-.innerProfileHeaderImage img {
+/* .innerProfileHeaderImage img {
     width: 22px;
-}
+} */
 
-.backButton-child {
+/* .backButton-child {
     align-items: center;
     display: flex;
     background-color: white;
@@ -93,9 +167,9 @@ button {
     height: 40px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     cursor: pointer;
-}
+} */
 
-.innerProfileHeaderImage div p {
+/* .innerProfileHeaderImage div p {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     text-decoration: underline;
@@ -104,9 +178,9 @@ button {
 
 .innerProfileHeaderImage div p i {
     margin-right: 10px;
-}
+} */
 
-.innerProfileHeaderImage button {
+/* .innerProfileHeaderImage button {
     position: absolute;
     margin-top: 8.5rem;
     max-width: 200px;
@@ -125,13 +199,13 @@ button {
     justify-content: space-evenly;
     align-items: center;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-}
+} */
 
-.innerProfileHeaderImage button i {
+/* .innerProfileHeaderImage button i {
     margin-left: 10px;
-}
+} */
 
-.innerProfileHeaderImage span {
+/* .innerProfileHeaderImage span {
     top: 7rem;
     color: #fff;
     font-family: 'Segoe UI';
@@ -139,9 +213,9 @@ button {
     position: absolute;
     right: 0.3rem;
     font-size: 0.7rem;
-}
+} */
 
-.mainAskQuestion {
+/* .mainAskQuestion {
     width: 100%;
 }
 
@@ -153,9 +227,9 @@ button {
 
 .mainAskQuestion h3 {
     font-family: 'Segoe UI Semibold';
-}
+} */
 
-.questionFields input {
+/* .questionFields input {
     width: 100%;
     height: 50px;
     padding-left: 10px;
@@ -174,9 +248,9 @@ button {
     border-radius: 999px;
     outline: none;
     border: none;
-}
+} */
 
-.recetlyAskedQuestion {
+/* .recetlyAskedQuestion {
     margin-top: 5%;
     padding: 1rem;
 }
@@ -202,7 +276,7 @@ button {
     font-family: 'Open Sans', sans-serif;
     color: #000;
     font-weight: bold;
-}
+} */
 
 .customOverlay {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -221,12 +295,12 @@ button {
     align-items: center;
 }
 
-.innerAgencyProfileInfo {
+/* .innerAgencyProfileInfo {
     width: 90%;
     display: flex;
-}
+} */
 
-.mainAgencyProfileLogo {
+/* .mainAgencyProfileLogo {
     width: 200px;
     height: 200px;
     display: flex;
@@ -236,9 +310,9 @@ button {
     transform: translateY(-50px);
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     background-color: #fff;
-}
+} */
 
-.innerAgencyProfileLogo {
+/* .innerAgencyProfileLogo {
     width: 80%;
     height: 80%;
     display: flex;
@@ -251,34 +325,34 @@ button {
     width: 100%;
     width: -webkit-fill-available;
     mix-blend-mode: multiply;
-}
+} */
 
 .mainAgencyProfileContent {
     margin-top: 2%;
     width: 80%;
 }
 
-.agencyName {
+/* .agencyName {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     width: 100%;
     padding-bottom: 5px;
-}
+} */
 
-.agencyNameURL {
+/* .agencyNameURL {
     display: flex;
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
     position: relative;
-}
+} */
 
-.agencyNameURL .agencyDEtails {
+/* .agencyNameURL .agencyDEtails {
     width: 100%;
     margin-bottom: 1%;
     margin-top: -3%;
-}
+} */
 
 .verifiedStatus {
     display: flex;
@@ -318,7 +392,7 @@ button {
     margin-left: 8px;
 }
 
-.agencyName h2 {
+/* .agencyName h2 {
     font-family: 'Segoe UI Bold';
     color: #5c6dff;
     font-size: 1.5rem;
@@ -328,7 +402,7 @@ button {
     font-family: 'Segoe UI Semibold';
     font-size: 0.9rem;
     color: #707070;
-}
+} */
 
 .agencyProfileConstantPoints {
     display: flex;
@@ -407,29 +481,29 @@ button {
     color: white;
 }
 
-.mainAgencyProfileDesc {
+/* .mainAgencyProfileDesc {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-}
+} */
 
-.innerAgencyProfileDesc {
+/* .innerAgencyProfileDesc {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding-right: 2rem;
-}
+} */
 
-.leftAgencyProfileDesc {
+/* .leftAgencyProfileDesc {
     width: 75%;
     display: flex;
     justify-content: space-between;
-}
+} */
 
-.aboutUs_parent {
+/* .aboutUs_parent {
     font-family: 'Segoe UI Bold';
     color: #555;
     font-size: 1rem;
@@ -444,7 +518,7 @@ button {
     position: relative;
     right: 100px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-}
+} */
 
 .innerAgencyProfileDesc h2 {
     margin-bottom: 0;
@@ -452,21 +526,21 @@ button {
     padding-right: 1rem;
 }
 
-.leftAgencyProfileDesc p {
+/* .leftAgencyProfileDesc p {
     font-family: 'Segoe UI';
     color: #555;
     margin-right: 0.5rem;
     font-size: 14px;
-}
+} */
 
-.agencyProfileIndustry {
+/* .agencyProfileIndustry {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     margin-top: 2%;
-}
+} */
 
-.agencyProfileIndustry p {
+/* .agencyProfileIndustry p {
     background-color: #f5f5f5;
     margin-right: 5%;
     display: flex;
@@ -478,16 +552,16 @@ button {
     border-radius: 27px;
     font-size: 12px;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-}
+} */
 
-.rightAgencyProfileDesc {
+/* .rightAgencyProfileDesc {
     width: 40%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
-.monthyView {
+/* .monthyView {
     width: 48%;
     border: 1px solid #5C6DFF;
     height: 137px;
@@ -501,13 +575,13 @@ button {
     align-items: center;
     box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
     background-color: white;
-}
+} */
 
-.monthyView.agencyProfile {
+/* .monthyView.agencyProfile {
     margin-right: 0;
-}
+} */
 
-.monthyView h3 {
+/* .monthyView h3 {
     font-family: 'Segoe UI';
     color: #5c6dff;
     font-size: 0.8rem;
@@ -518,7 +592,7 @@ button {
     font-size: 2rem;
     font-family: 'Segoe UI Bold';
     color: #707070;
-}
+} */
 
 .profile_count {
     transform: translateY(-23px);
@@ -555,31 +629,47 @@ button {
     outline: none;
 }
 
-.innerQuotation_agencyProfile {
-    width: 100%;
-    margin-top: 0;
-    position: relative;
+.mainQuotation_agencyProfile {
+    display: flex;
+    justify-content: space-around;
 }
 
-.innerQuotation_agencyProfile .nav {
-    display: block;
+.select_div {
+    width: 30%;
+    /* border: 1px solid black; */
+    height: 200rem;
+    background: #FFFFFF;
+    box-shadow: 0px 25px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
 }
+
+.innerQuotation_agencyProfile {
+    width: 65%;
+    margin-top: 0;
+    position: relative;
+    /* border: 1px solid red; */
+}
+
+/* .innerQuotation_agencyProfile .nav {
+    display: block;
+} */
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button {
     background-color: transparent !important;
     border: none !important;
     outline: none !important;
-    margin-right: 4%;
+    /* margin-right: 4%; */
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link {
-    border-top-left-radius: 0rem;
-    border-top-right-radius: 0rem;
-    border-radius: 15px;
+    border-top-left-radius: 0rem; 
+    /* border-top-right-radius: 0rem; */
+    /* border-radius: 15px; */
     border: none;
-    width: 100px;
-    height: 100px;
+    /* width: 100px; */
+    /* height: 100px; */
     margin-left: 4%;
+    padding:  0.7rem 0.2rem 0.8rem 0.2rem !important;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link .nav-button img {
@@ -590,11 +680,13 @@ button {
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active {
     border: none;
-    background: linear-gradient(262deg, #45a4e4 0%, #5c6dff 100%) !important;
+    border-bottom: 2px solid #9E06FF;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active button {
-    color: white !important;
+    /* color: white !important; */
+    border-bottom: 1px solid #9E06FF;
+    color: black;
 }
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link.active img {
@@ -604,11 +696,12 @@ button {
 
 .innerQuotation_agencyProfile .nav-tabs .nav-link:hover {
     border: none;
+    border-bottom: 2px solid #9E06FF;
 }
 
-.nav-tabs_agencyProfile>#nav-home-tab {
+/* .nav-tabs_agencyProfile>#nav-home-tab {
     margin-top: 10px;
-}
+} */
 
 .nav-tabs_agencyProfile>div {
     border-top-left-radius: 0rem;
@@ -617,26 +710,26 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #fefefe;
-    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
-    width: 120px;
-    height: 123px;
-    margin-left: 20px;
-    margin-bottom: 12px !important;
+    /* background: #fefefe; */
+    /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
+    /* width: 120px; */
+    /* margin-bottom: 12px !important; */
 }
 
 .innerQuotation_agencyProfile .nav.nav-tabs {
     border-bottom: none;
+    margin-bottom: 2rem;
 }
 
 .innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile {
-    font-size: 10px;
-    font-family: 'Segoe UI Bold';
+    font-size: 17px;
+    /* font-family: 'Segoe UI Bold'; */
+    font-family: 'Segoe UI Semibold';
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #a8a8a8;
     margin-right: 0;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .innerQuotation_agencyProfile .nav-button.nav-link_agencyProfile:hover,
@@ -646,8 +739,22 @@ button {
 }
 
 .innerQuotation_agencyProfile #nav-tabContent {
-    width: 80%;
-    position: absolute;
+    /* width: 80%; */
+    /* position: absolute; */
     top: 4%;
     left: 193px;
+}
+
+.accordians {
+    padding: 1rem 2rem;
+    padding-top: 0rem;
+    /* margin-top: 1rem; */
+}
+
+.profileViewTypography {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #B5B5B5;
+    padding: 10px 0px;
 }

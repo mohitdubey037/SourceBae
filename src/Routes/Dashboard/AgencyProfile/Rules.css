@@ -1,9 +1,9 @@
 .mainRules {
     width: 100%;
     margin: auto;
-    padding: 1rem;
+    /* padding: 1rem; */
     margin-bottom: 1rem;
-    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    /* box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
     border-radius: 20px;
     background-color: #ffffff;
 }
@@ -12,16 +12,22 @@
     justify-content: center;
     display: flex;
     align-items: center;
-    width: 13%;
-    padding: 8px 0px;
+    /* width: 13%;
+    padding: 8px 0px; */
     margin-left: 6px;
 }
 
 .rules_parent p {
-    font-family: 'Segoe UI Bold';
-    font-size: 14px;
+    font-family: 'Segoe UI Semibold';
+    font-size: 17px;
     text-transform: capitalize;
-    color: #5c6dff;
+    /* color: #5c6dff; */
+}
+
+.innerRules {
+    width: 100%;
+    box-shadow: 0px 25px 35px rgba(0, 0, 0, 0.05);
+    padding: 1.4rem;
 }
 
 .rulesCard {
@@ -33,27 +39,34 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0 1rem;
-}
-
-.rulesUpper h4 {
-    font-family: 'Segoe UI';
-    font-size: 1rem;
-    color: #5c6dff;
-    margin-top: 1rem;
+    padding: 1rem 1rem;
+    background: #FAFAFB;
+    box-shadow: 0px 25px 35px rgba(3, 3, 3, 0.12);
+    border-radius: 6px;
 }
 
 .rulesUpper p {
-    font-family: 'Segoe UI Semibold';
-    font-size: 1rem;
-    margin-top: 1rem;
+    font-family: 'Segoe UI';
+    font-size: 1.2rem;
+    
+    /* color: #252525; */
+    /* margin-top: 1rem; */
 }
 
-.openTiming i,
+.timing {
+    font-family: 'Segoe UI';
+    font-size: 1.1rem !important;
+}
+
+/* .rulesUpper p {
+    font-family: 'Segoe UI Semibold';
+} */
+
+/* .openTiming i,
 .weekendOpening i {
     margin-right: 4px;
     color: #000;
-}
+} */
 
 .questionPart {
     display: flex;
@@ -64,12 +77,25 @@
 }
 
 .date_parent {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    width: 100%;
-    gap: 1rem;
     align-items: center;
+    margin-top: 0.4rem; */
+    
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.8rem;
+    color: #5396FF;
+    font-family: 'Segoe UI';
 }
+
+/* .weekendOpening p {
+    font-family: 'Segoe UI';
+    font-size: 1.2rem;
+    color: #252525;
+} */
 
 .leftQuestion {
     width: 70%;
@@ -114,12 +140,20 @@
 }
 
 .editableBtn_rules {
-    width: 100%;
+    /* width: 100%;
     display: flex;
     border-radius: 23px;
     background: #eef0ff;
     margin-bottom: 1%;
-    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 18%); */
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 12%);
+    border-radius: 7px;
+    width: max-content;
+    padding: 0.5rem 0.9rem;
+    display: flex;
+    margin-bottom: 2%;
 }
 
 .rulesMark img {

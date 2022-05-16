@@ -35,6 +35,16 @@ import instance from '../../Constants/axiosConstants';
 import Spinner from '../../Components/Spinner/Spinner';
 import Moment from 'react-moment';
 import { AGENCYROUTES, CLIENTROUTES } from '../../Navigation/CONSTANTS';
+import Header from '../../Components/Header/Header';
+import doneIcon from '../../assets/images/AgencyProfile/done.svg';
+import location from '../../assets/images/AgencyProfile/location.svg';
+
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { typography } from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -55,7 +65,38 @@ const useStyles = makeStyles((theme) => ({
     radioBox: {
         borderWidth: 1,
         borderColor: '#000'
+    },
+    noBorderAccordian: {
+        boxShadow: 'none',
+        margin: '0px !important',
+        marginBottom: '0px',
+    },
+    noPadding: {
+        padding: '0',
+        margin: '0px',
+        borderBottom: '1px solid #B5B5B5',
+        '& .MuiTypography-root': {
+            fontFamily: 'Segoe UI',
+            color: '#1D2434',
+            fontSize: '1.2rem'
+        }
+    },
+    typography: {
+        fontFamily: 'Segoe UI',
+        fontSize: '1.2rem'
+    },
+    typography2: {
+        fontSize: 'Segoe UI',
+        fontSize: '1rem',
+        display: 'flex',
+        justifyContent: 'space-between'
+    },
+    accordianDetails: {
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '10px 7px',
     }
+
 }));
 
 function AgencyProfile(props) {
@@ -72,6 +113,12 @@ function AgencyProfile(props) {
 
     const [hoverModal, setHoverModal] = useState(false);
     const onCloseModal = () => setOpen(false);
+
+    const [expanded, setExpanded] = useState(false);
+
+    const handleChanges = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
 
     const [agencyProfileData, setAgencyProfileData] = useState({
         ownerName: '',
@@ -125,7 +172,8 @@ function AgencyProfile(props) {
     const [link, setLink] = useState('');
 
     const handleChange = (event) => {
-        setLink(event.target.value);
+        // setLink(event.target.value);
+        console.log('hii');
     };
 
     useEffect(() => {
@@ -162,16 +210,18 @@ function AgencyProfile(props) {
 
     return (
         <>
-            {loading ? (
+            {/* {loading ? (
                 <Spinner />
-            ) : agencyProfileData._id !== '' ? (
-                <div className="agnecyProfilemainDiv">
-                    <img
+            ) 
+            : agencyProfileData._id !== '' ? ( */}
+            <div className="agnecyProfilemainDiv">
+                <Header />
+                {/* <img
                         className="Image2_AgencyProfile"
                         src={DownImage}
                         alt="downImage"
-                    />
-                    <div className="mainProfileHeaderImage">
+                    /> */}
+                {/* <div className="mainProfileHeaderImage">
                         <div
                             className={`innerProfileHeaderImage ${role === 'Client' && 'conditionalGradient'
                                 }`}
@@ -294,85 +344,85 @@ function AgencyProfile(props) {
                                 </>
                             )}
                         </div>
-                    </div>
+                    </div> */}
 
-                    <Modal
-                        open={open}
-                        classNames={{
-                            overlay: 'customOverlay',
-                            modal: 'customModal'
-                        }}
-                        onClose={onCloseModal}
-                        center
-                        styles={{
-                            closeButton: { outline: 'none' }
-                        }}
-                    >
-                        <div className="mainAskQuestion">
-                            <div className="innerAskQuestion">
-                                <div className="questionAsking">
-                                    <h1>Have Any Queries..??</h1>
-                                    <div className="questionFields">
-                                        <input
-                                            placeholder="Your Question here"
-                                            type="text"
-                                            name=""
-                                            id=""
-                                        />
-                                        <button>Ask Question</button>
-                                    </div>
-                                </div>
-
-                                <div className="recetlyAskedQuestion">
-                                    <h2>Recently Asked Questions</h2>
-                                    <div>
-                                        <h3>
-                                            Are your developers willing to work
-                                            remotely?
-                                        </h3>
-                                        <p>Yes.</p>
-                                    </div>
-                                    <div>
-                                        <h3>
-                                            Are your developers willing to work
-                                            remotely?
-                                        </h3>
-                                        <p>Yes.</p>
-                                    </div>
-                                    <div>
-                                        <h3>
-                                            Are your developers willing to work
-                                            remotely?
-                                        </h3>
-                                        <p>Yes.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </Modal>
-
-                    <Modal
-                        open={hoverModal}
-                        classNames={{
-                            overlay: 'customOverlay',
-                            modal: 'customModal'
-                        }}
-                        onClose={() => setHoverModal(false)}
-                        styles={{
-                            closeButton: { outline: 'none' }
-                        }}
-                        center
-                    >
-                        <div className="mainAskQuestion">
+                <Modal
+                    open={open}
+                    classNames={{
+                        overlay: 'customOverlay',
+                        modal: 'customModal'
+                    }}
+                    onClose={onCloseModal}
+                    center
+                    styles={{
+                        closeButton: { outline: 'none' }
+                    }}
+                >
+                    <div className="mainAskQuestion">
+                        <div className="innerAskQuestion">
                             <div className="questionAsking">
-                                <h3>For any Help:</h3>
-                                <h5>Support Email: connect@SourceBae.in</h5>
-                                <h5>Support Number: +91 95755 17047</h5>
+                                <h1>Have Any Queries..??</h1>
+                                <div className="questionFields">
+                                    <input
+                                        placeholder="Your Question here"
+                                        type="text"
+                                        name=""
+                                        id=""
+                                    />
+                                    <button>Ask Question</button>
+                                </div>
+                            </div>
+
+                            <div className="recetlyAskedQuestion">
+                                <h2>Recently Asked Questions</h2>
+                                <div>
+                                    <h3>
+                                        Are your developers willing to work
+                                        remotely?
+                                    </h3>
+                                    <p>Yes.</p>
+                                </div>
+                                <div>
+                                    <h3>
+                                        Are your developers willing to work
+                                        remotely?
+                                    </h3>
+                                    <p>Yes.</p>
+                                </div>
+                                <div>
+                                    <h3>
+                                        Are your developers willing to work
+                                        remotely?
+                                    </h3>
+                                    <p>Yes.</p>
+                                </div>
                             </div>
                         </div>
-                    </Modal>
+                    </div>
+                </Modal>
 
-                    <div className="mainAgencyProfileInfo">
+                <Modal
+                    open={hoverModal}
+                    classNames={{
+                        overlay: 'customOverlay',
+                        modal: 'customModal'
+                    }}
+                    onClose={() => setHoverModal(false)}
+                    styles={{
+                        closeButton: { outline: 'none' }
+                    }}
+                    center
+                >
+                    <div className="mainAskQuestion">
+                        <div className="questionAsking">
+                            <h3>For any Help:</h3>
+                            <h5>Support Email: connect@SourceBae.in</h5>
+                            <h5>Support Number: +91 95755 17047</h5>
+                        </div>
+                    </div>
+                </Modal>
+
+                {/* <div className="mainAgencyProfileInfo">
                         <div className="innerAgencyProfileInfo">
                             <div className="mainAgencyProfileLogo">
                                 <div className="innerAgencyProfileLogo">
@@ -435,13 +485,13 @@ function AgencyProfile(props) {
                                 )}
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div
-                        className="mainAgencyProfileInfo"
-                        style={{ marginBottom: '5%' }}
-                    >
-                        <div className="innerAgencyProfileInfo">
+                <div
+                    className="mainAgencyProfileInfo"
+                    style={{ marginBottom: '5%' }}
+                >
+                    {/* <div className="innerAgencyProfileInfo">
                             <div className="agencyName">
                                 <div className="agencyNameURL">
                                     <div className="agencyDEtails">
@@ -456,10 +506,10 @@ function AgencyProfile(props) {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> */}
+                </div>
 
-                    <div className="mainAgencyProfileDesc">
+                {/* <div className="mainAgencyProfileDesc">
                         <div className="innerAgencyProfileDesc">
                             <div className="leftAgencyProfileDesc">
                                 <div
@@ -521,7 +571,7 @@ function AgencyProfile(props) {
                                                 id="demo-simple-select-standard"
                                                 value={link}
                                                 onChange={(event) =>
-                                                    handleChange(event)
+                                                    handleChanges(event)
                                                 }
                                                 displayEmpty
                                                 className={clsx(
@@ -599,184 +649,276 @@ function AgencyProfile(props) {
                                 </div>
                             )}
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="mainQuotation_agencyProfile">
-                        <div className="innerQuotation_agencyProfile">
-                            <div
-                                class="nav nav-tabs nav-tabs_agencyProfile"
-                                id="nav-tab"
-                                role="tablist"
-                            >
-                                <div
-                                    id="nav-home-tab"
-                                    className="nav-link active"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#nav-home"
-                                    type="button"
-                                    role="tab"
-                                    aria-controls="nav-home"
-                                    aria-selected="true"
-                                >
-                                    <img src={iicon} alt="information" />
-                                    <button class="nav-button nav-link_agencyProfile">
-                                        Information
-                                    </button>
-                                </div>
-
-                                <div
-                                    id="nav-profile-tab"
-                                    className="nav-link"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#nav-profile"
-                                    type="button"
-                                    role="tab"
-                                    aria-controls="nav-profile"
-                                    aria-selected="false"
-                                >
-                                    <img src={skillImage} alt="skills" />
-                                    <button class="nav-button nav-link_agencyProfile">
-                                        Skills Set
-                                    </button>
-                                </div>
-
-                                <div
-                                    id="nav-contact-tab"
-                                    className="nav-link"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#nav-contact"
-                                    type="button"
-                                    role="tab"
-                                    aria-controls="nav-contact"
-                                    aria-selected="false"
-                                >
-                                    <img src={iicon} alt="rules" />
-                                    <button class="nav-button nav-link_agencyProfile">
-                                        Agency Rules
-                                    </button>
-                                </div>
-
-                                <div
-                                    id="nav-portfolio-tab"
-                                    className="nav-link"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#nav-portfolio"
-                                    type="button"
-                                    role="tab"
-                                    aria-controls="nav-portfolio"
-                                    aria-selected="false"
-                                    ref={inputPort}
-                                >
-                                    <img src={iicon} alt="Portfolio" />
-                                    <button class="nav-button nav-link_agencyProfile">
-                                        Agency Portfolio
-                                    </button>
-                                </div>
-
-                                {role === AGENCY && (
-                                    <div
-                                        id="nav-developer-tab"
-                                        className="nav-link"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#nav-developer"
-                                        type="button"
-                                        role="tab"
-                                        aria-controls="nav-developer"
-                                        aria-selected="false"
-                                        ref={inputEl}
-                                    >
-                                        <img src={iicon} alt="dev" />
-                                        <button class="nav-button nav-link_agencyProfile">
-                                            Developers
-                                        </button>
-                                    </div>
-                                )}
+                <div className="mainQuotation_agencyProfile">
+                    <div className='select_div'>
+                        <div className='profile_img_main'>
+                            <div className='profile_img'>
+                                <img src={agencyProfileData.agencyLogo} alt="" />
                             </div>
-                            <div class="tab-content" id="nav-tabContent">
-                                <div
-                                    class="tab-pane fade show active"
-                                    id="nav-home"
-                                    role="tabpanel"
-                                    aria-labelledby="nav-home-tab"
-                                >
-                                    <Information
-                                        data={agencyProfileData}
-                                        id={id}
-                                    />
+                        </div>
+                        <div className='statement_div'>
+                            <div className='statements'>
+                                <div className='design_statement'>
+                                    <p>Design Chocolate</p>
+                                    <img src={doneIcon} alt="location" />
                                 </div>
-                                <div
-                                    class="tab-pane fade"
-                                    id="nav-profile"
-                                    role="tabpanel"
-                                    aria-labelledby="nav-profile-tab"
-                                >
-                                    <SkillsSet
-                                        data={agencyProfileData}
-                                        id={id}
-                                    />
+                                <p className='design_com'>www.design.com</p>
+                                <div className='location_div'>
+                                    <img src={location} alt="location" />
+                                    <p>indore,</p>
+                                    <p>india</p>
                                 </div>
-                                <div
-                                    class="tab-pane fade"
-                                    id="nav-contact"
-                                    role="tabpanel"
-                                    aria-labelledby="nav-contact-tab"
+                                <hr className='horizontal'></hr>
+                            </div>
+                        </div>
+                        <div className='accordians'>
+
+                            <Accordion style={{ borderTop: '1px solid #B5B5B5' }} className={classes.noBorderAccordian} expanded={expanded === 'panel1'} onChange={handleChanges('panel1')}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1bh-content"
+                                    id="panel1bh-header"
+                                    className={classes.noPadding}
                                 >
-                                    <Rules data={agencyProfileData} id={id} />
-                                </div>
-                                <div
-                                    class="tab-pane fade"
-                                    id="nav-developer"
-                                    role="tabpanel"
-                                    aria-labelledby="nav-developer-tab"
+                                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                                        Detail
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography className={classes.typography}>
+                                        Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
+                                        Aliquam eget maximus est, id dignissim quam.
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+
+                            <Accordion className={classes.noBorderAccordian} expanded={expanded === 'panel2'} onChange={handleChanges('panel2')}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel2bh-content"
+                                    id="panel2bh-header"
+                                    className={classes.noPadding}
                                 >
-                                    <DeveloperList
-                                        data={agencyProfileData}
-                                        id={id}
-                                    />
-                                </div>
-                                <div
-                                    class="tab-pane fade"
-                                    id="nav-portfolio"
-                                    role="tabpanel"
-                                    aria-labelledby="nav-portfolio-tab"
+                                    <Typography sx={{ width: '33%', flexShrink: 0 }}>AboutUs</Typography>
+
+                                </AccordionSummary>
+                                <AccordionDetails className={classes.accordianDetails}>
+                                    <Typography variant="h5" className={classes.typography2}>
+                                        Email: <span>connect@SourceBae.in</span>
+                                    </Typography>
+                                    <Typography style={{ marginTop: '1rem' }} variant="h5" className={classes.typography2}>
+                                        Support Number: <span>+91 95755 17047</span>
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+
+                            <Accordion className={classes.noBorderAccordian} expanded={expanded === 'panel3'} onChange={handleChanges('panel3')}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel3bh-content"
+                                    id="panel3bh-header"
+                                    className={classes.noPadding}
                                 >
-                                    <ProfilePortfolio id={id} />
-                                </div>
+                                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                                        Agency Document
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography className={classes.typography}>
+                                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
+                                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                            <div className={'profileViewTypography'}>
+                                <Typography className={classes.typography}>
+                                    Total profile view
+                                </Typography>
+                                <Typography className={classes.typography} style={{ marginRight: '7px' }}>
+                                    {agencyProfileData.agencyProfileViewCount}
+                                </Typography>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="innerQuotation_agencyProfile">
+                        <div
+                            class="nav nav-tabs nav-tabs_agencyProfile"
+                            id="nav-tab"
+                            role="tablist"
+                        >
+                            <div
+                                style={{ marginLeft: '0' }}
+                                id="nav-home-tab"
+                                className="nav-link active"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-home"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-home"
+                                aria-selected="true"
+                            >
+                                {/* <img src={iicon} alt="information" /> */}
+                                <button class="nav-button nav-link_agencyProfile">
+                                    Information
+                                </button>
+                            </div>
+
+                            <div
+                                id="nav-profile-tab"
+                                className="nav-link"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-profile"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-profile"
+                                aria-selected="false"
+                            >
+                                {/* <img src={skillImage} alt="skills" /> */}
+                                <button class="nav-button nav-link_agencyProfile">
+                                    Skills Set
+                                </button>
+                            </div>
+
+                            <div
+                                id="nav-contact-tab"
+                                className="nav-link"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-contact"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-contact"
+                                aria-selected="false"
+                            >
+                                {/* <img src={iicon} alt="rules" /> */}
+                                <button class="nav-button nav-link_agencyProfile">
+                                    Agency Rules
+                                </button>
+                            </div>
+
+                            <div
+                                id="nav-portfolio-tab"
+                                className="nav-link"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-portfolio"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-portfolio"
+                                aria-selected="false"
+                                ref={inputPort}
+                            >
+                                {/* <img src={iicon} alt="Portfolio" /> */}
+                                <button class="nav-button nav-link_agencyProfile">
+                                    Agency Portfolio
+                                </button>
+                            </div>
+
+                            {role === AGENCY && (
                                 <div
-                                    class="tab-pane fade"
-                                    id="nav-review"
-                                    role="tabpanel"
-                                    aria-labelledby="nav-review-tab"
+                                    id="nav-developer-tab"
+                                    className="nav-link"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#nav-developer"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="nav-developer"
+                                    aria-selected="false"
+                                    ref={inputEl}
                                 >
-                                    <DeveloperList
-                                        data={agencyProfileData}
-                                        id={id}
-                                    />
+                                    {/* <img src={iicon} alt="dev" /> */}
+                                    <button class="nav-button nav-link_agencyProfile">
+                                        Developers
+                                    </button>
                                 </div>
-                                <div
-                                    class="tab-pane fade"
-                                    id="nav-question"
-                                    role="tabpanel"
-                                    aria-labelledby="nav-question-tab"
-                                >
-                                    <FeatureLink id={id} />
-                                </div>
+                            )}
+                        </div>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div
+                                class="tab-pane fade show active"
+                                id="nav-home"
+                                role="tabpanel"
+                                aria-labelledby="nav-home-tab"
+                            >
+                                <Information
+                                    data={agencyProfileData}
+                                    id={id}
+                                />
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="nav-profile"
+                                role="tabpanel"
+                                aria-labelledby="nav-profile-tab"
+                            >
+                                <SkillsSet
+                                    data={agencyProfileData}
+                                    id={id}
+                                />
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="nav-contact"
+                                role="tabpanel"
+                                aria-labelledby="nav-contact-tab"
+                            >
+                                <Rules data={agencyProfileData} id={id} />
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="nav-developer"
+                                role="tabpanel"
+                                aria-labelledby="nav-developer-tab"
+                            >
+                                <DeveloperList
+                                    data={agencyProfileData}
+                                    id={id}
+                                />
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="nav-portfolio"
+                                role="tabpanel"
+                                aria-labelledby="nav-portfolio-tab"
+                            >
+                                <ProfilePortfolio id={id} />
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="nav-review"
+                                role="tabpanel"
+                                aria-labelledby="nav-review-tab"
+                            >
+                                <DeveloperList
+                                    data={agencyProfileData}
+                                    id={id}
+                                />
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="nav-question"
+                                role="tabpanel"
+                                aria-labelledby="nav-question-tab"
+                            >
+                                <FeatureLink id={id} />
                             </div>
                         </div>
                     </div>
                 </div>
-            ) : (
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: '80vh'
-                    }}
-                >
-                    <h1> No agency found with this ID. </h1>
-                </div>
-            )}
+            </div>
+            {/* )
+            : (
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '80vh'
+                }}
+            >
+                <h1> No agency found with this ID. </h1>
+            </div>
+            )} */}
         </>
     );
 }

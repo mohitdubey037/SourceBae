@@ -1,8 +1,8 @@
 .mainSkillsSet {
   width: 100%;
-  margin: auto;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
+  /* margin: auto; */
+  /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
+  /* padding: 1rem; */
   margin-bottom: 1rem;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
   border-radius: 8px;
@@ -12,15 +12,20 @@
 
 .innerSkillsSet {
   width: 100%;
+  box-shadow: 0px 25px 35px rgba(0, 0, 0, 0.05);
+  padding: 1.4rem;
 }
 
 .skill-set_parent_parent {
-  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgb(0 0 0 / 12%);
+  border-radius: 7px;
+  /* width: 100%; */
+  width: max-content;
+  padding: 0.5rem 0.9rem;
   display: flex;
-  border-radius: 23px;
-  background: #EEF0FF;
-  margin-bottom: 1%;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 18%);
+  margin-bottom: 2%;
+
 }
 
 .plusIcon_skillSet {
@@ -70,9 +75,9 @@
   font-size: 1.2rem;
   margin-bottom: 0;
   font-family: 'Segoe UI';
-  font-size: 18px;
+  font-size: 19px;
   text-transform: capitalize;
-  color: #707070;
+  color: #1D2434;
 }
 
 .skillsSetTableContent {
@@ -84,24 +89,25 @@
   justify-content: center;
   display: flex;
   align-items: center;
-  width: 10%;
-  padding: 8px 0px;
+  /* width: 10%; */
+  /* padding: 8px 0px; */
 }
 
 .skill-set_parent p {
-  font-family: 'Segoe UI Bold';
-  font-size: 14px;
+  font-family: 'Segoe UI Semibold';
+  font-size: 17px;
   text-transform: capitalize;
-  color: #5C6DFF;
+  /* color: #5C6DFF; */
 }
 
 .skillsSetTableContent p {
   font-family: 'Segoe UI';
+  border-radius: 5px;
   color: #707070;
   padding: 0.3rem 1rem;
   border: 1px solid #707070;
-  border-radius: 999px;
-  margin-bottom: 3px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
   margin-right: 20px;
   box-shadow: 0px 0px 1px rgb(0 0 0 / 18%);
 }

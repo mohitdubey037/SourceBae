@@ -11,6 +11,7 @@ import cancel from '../../../assets/images/Newestdashboard/Agency-Profile/cancel
 import TimePicker from '@mui/lab/TimePicker';
 import TextField from '@mui/material/TextField';
 import DateAdapter from '@mui/lab/AdapterMoment';
+import editIcon from '../../../assets/images/AgencyProfile/edit.svg'
 
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
@@ -113,28 +114,33 @@ function Rules(props) {
                         ? agencyProfiledata.isAgencyVerified && (
                             <div className="editableBtn_rules">
                                 <div className="rules_parent">
-                                    <p>AGENCY RULES</p>
+                                    <p>Agency Rules</p>
                                 </div>
-                                <i
+                                <img onClick={() => {
+                                    setEditRules(true);
+                                }}
+                                    src={editIcon}
+                                    className='Edit-icon_information' alt="rules" />
+                                {/* <i
                                     onClick={() => {
                                         setEditRules(true);
                                     }}
                                     class="fa fa-pencil-square-o Edit-icon_information"
                                     aria-hidden="true"
-                                ></i>
+                                ></i> */}
                             </div>
                         )
                         : null}
                     <div className="rulesCard">
                         <div className="rulesUpper">
                             <div className="openTiming">
-                                <h4 style={{ color: '#000', fontWeight: "bold" }} >
-                                    <i
+                                <p>
+                                    {/* <i
                                         class="fa fa-clock-o"
                                         aria-hidden="true"
-                                    />
+                                    /> */}
                                     Default Opening & Closing Time
-                                </h4>
+                                </p>
                                 <div className="date_parent">
                                     {editRules ? (
                                         <LocalizationProvider
@@ -156,9 +162,10 @@ function Rules(props) {
                                             />
                                         </LocalizationProvider>
                                     ) : (
-                                        form.agencyTiming.startTime
+                                        <p className='timing'>{form.agencyTiming.startTime}</p>
+
                                     )}
-                                    <p style={{ marginTop: '0' }}>To</p>
+                                    <p className='timing'>to</p>
                                     {editRules ? (
                                         <LocalizationProvider
                                             dateAdapter={DateAdapter}
@@ -178,18 +185,18 @@ function Rules(props) {
                                             />
                                         </LocalizationProvider>
                                     ) : (
-                                        form.agencyTiming.endTime
+                                        <p className='timing'>{form.agencyTiming.endTime}</p>
                                     )}
                                 </div>
                             </div>
                             <div className="weekendOpening">
-                                <h4 style={{ color: '#000', fontWeight: 'bold' }} >
-                                    <i
+                                <p>
+                                    {/* <i
                                         class="fa fa-calendar"
                                         aria-hidden="true"
-                                    ></i>
+                                    ></i> */}
                                     Weekend Open
-                                </h4>
+                                </p>
                                 {editRules ? (
                                     <FormControl component="fieldset">
                                         <RadioGroup
@@ -220,7 +227,7 @@ function Rules(props) {
                                         </RadioGroup>
                                     </FormControl>
                                 ) : (
-                                    <p>
+                                    <p style={{ color: '#5396FF', textAlign: 'center', marginTop: '0.8rem' }} className='timing'>
                                         {form.agencyTiming.weekendOpen === true
                                             ? 'Yes'
                                             : 'No'}
