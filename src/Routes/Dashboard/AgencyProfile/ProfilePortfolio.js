@@ -54,6 +54,16 @@ function AgencyPortfolio(props) {
                                     </div>
                                     <div className="detialPortfolio">
                                         <p>{data.projectName}</p>
+                                        <div className="profile_link">
+                                            <a
+
+                                                target="_blank"
+                                                href={`//${data.projectLink}`}
+                                                rel="noreferrer"
+                                            >
+                                                {data.projectLink}
+                                            </a>
+                                        </div>
                                         <div className="PortfolioPriceAndTimeline">
                                             {/* <div>price</div> */}
                                             <p
@@ -68,7 +78,7 @@ function AgencyPortfolio(props) {
                                                 {data.projectTimeline} days
                                             </p>
                                         </div>
-                                        <div className="profile_link">
+                                        {/* <div className="profile_link">
                                             <a
                                                 target="_blank"
                                                 href={`//${data.projectLink}`}
@@ -76,12 +86,12 @@ function AgencyPortfolio(props) {
                                             >
                                                 {data.projectLink}
                                             </a>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
-                                <div className="ProjectDescriptionPortfolio">
+                                {/* <div className="ProjectDescriptionPortfolio">
                                     <p>{data.projectDescription}</p>
-                                </div>
+                                </div> */}
                             </div>
                         );
                     })}

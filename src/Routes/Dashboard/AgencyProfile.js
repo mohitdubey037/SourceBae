@@ -727,8 +727,12 @@ function AgencyProfile(props) {
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Typography className={classes.typography}>
-                                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                                        <ul className='accordian_ul'>
+                                            <li><a href={link}>hiii</a></li>
+                                            <li><a href={link}>hiii</a></li>
+                                            <li><a href={link}>hiii</a></li>
+                                        </ul>
+
                                     </Typography>
                                 </AccordionDetails>
                             </Accordion>
