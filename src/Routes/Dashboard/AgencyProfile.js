@@ -790,7 +790,7 @@ function AgencyProfile(props) {
                             role="tablist"
                         >
                             <div
-                                style={{ marginLeft: '0' }}
+                                style={{ marginLeft: '20px' }}
                                 id="nav-home-tab"
                                 className="nav-link active"
                                 data-bs-toggle="tab"

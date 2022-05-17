@@ -161,6 +161,22 @@ function DeveloperList(props) {
                 className="innerDeveloperList"
                 style={{ backgroundColor: err && 'white' }}
             >
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
+                    className="developerCard"
+                    onClick={() =>
+                        routerHistory.push(AGENCYROUTES.ADD_DEVELOPER)
+                    }
+                >
+                    <div className="add-developer_parent">
+                        <img src={developerImage} alt="developerImage" />
+                        <h6 className="addDeveloperText">Add Developer</h6>
+                    </div>
+                </div>
                 {developers.map((developer, index) => {
                     return (
                         <>
@@ -386,22 +402,6 @@ function DeveloperList(props) {
                     );
                 })}
 
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}
-                    className="developerCard"
-                    onClick={() =>
-                        routerHistory.push(AGENCYROUTES.ADD_DEVELOPER)
-                    }
-                >
-                    <div className="add-developer_parent">
-                        <img src={developerImage} alt="developerImage" />
-                        <h6 className="addDeveloperText">Add Developer</h6>
-                    </div>
-                </div>
                 {/* : null */}
                 {/* } */}
                 {/* </div> */}
