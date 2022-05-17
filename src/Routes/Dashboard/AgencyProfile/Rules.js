@@ -17,6 +17,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import './Rules.css';
 import moment from 'moment';
+import { SemiBold1624 } from '../../../Components/Text/Texts';
 
 function Rules(props) {
     const Role = localStorage.getItem('role');
@@ -114,7 +115,8 @@ function Rules(props) {
                         ? agencyProfiledata.isAgencyVerified && (
                             <div className="editableBtn_rules">
                                 <div className="rules_parent">
-                                    <p>Agency Rules</p>
+                                    {/* <p>Agency Rules</p> */}
+                                    <SemiBold1624 text={'Agency Rules'} />
                                 </div>
                                 <img onClick={() => {
                                     setEditRules(true);
@@ -134,13 +136,14 @@ function Rules(props) {
                     <div className="rulesCard">
                         <div className="rulesUpper">
                             <div className="openTiming">
-                                <p>
-                                    {/* <i
+                                <SemiBold1624 text={'Default Opening & Closing Time'} style={{ color: '#252525' }} />
+                                {/* <p>
+                                    <i
                                         class="fa fa-clock-o"
                                         aria-hidden="true"
-                                    /> */}
+                                    />
                                     Default Opening & Closing Time
-                                </p>
+                                </p> */}
                                 <div className="date_parent">
                                     {editRules ? (
                                         <LocalizationProvider
@@ -162,10 +165,10 @@ function Rules(props) {
                                             />
                                         </LocalizationProvider>
                                     ) : (
-                                        <p className='timing'>{form.agencyTiming.startTime}</p>
-
+                                        // <p className='timing'>{form.agencyTiming.startTime}</p>
+                                        <SemiBold1624 text={form.agencyTiming.startTime} style={{ color: '#5396FF' }} />
                                     )}
-                                    <p className='timing'>to</p>
+                                    <SemiBold1624 text="to" style={{ color: '#5396FF' }} />
                                     {editRules ? (
                                         <LocalizationProvider
                                             dateAdapter={DateAdapter}
@@ -185,18 +188,13 @@ function Rules(props) {
                                             />
                                         </LocalizationProvider>
                                     ) : (
-                                        <p className='timing'>{form.agencyTiming.endTime}</p>
+                                        <SemiBold1624 text={form.agencyTiming.endTime} style={{ color: '#5396FF' }} />
                                     )}
                                 </div>
                             </div>
                             <div className="weekendOpening">
-                                <p>
-                                    {/* <i
-                                        class="fa fa-calendar"
-                                        aria-hidden="true"
-                                    ></i> */}
-                                    Weekend Open
-                                </p>
+                                {/* <p */}
+                                <SemiBold1624 text={"Weekend Open"} />
                                 {editRules ? (
                                     <FormControl component="fieldset">
                                         <RadioGroup
@@ -227,11 +225,12 @@ function Rules(props) {
                                         </RadioGroup>
                                     </FormControl>
                                 ) : (
-                                    <p style={{ color: '#5396FF', textAlign: 'center', marginTop: '0.8rem' }} className='timing'>
-                                        {form.agencyTiming.weekendOpen === true
-                                            ? 'Yes'
-                                            : 'No'}
-                                    </p>
+                                    <SemiBold1624 text={form.agencyTiming.weekendOpen ? "Yes" : "No"} style={{ color: '#5396FF', textAlign: 'center', width: '100%', marginTop: '0.8rem' }} />
+                                    // <p style={{ color: '#5396FF', textAlign: 'center', marginTop: '0.8rem' }} className='timing'>
+                                    //     {form.agencyTiming.weekendOpen === true
+                                    //         ? 'Yes'
+                                    //         : 'No'}
+                                    // </p>
                                 )}
                             </div>
                         </div>
@@ -249,7 +248,8 @@ function Rules(props) {
                                                 }`}
                                         >
                                             <div className="leftQuestion">
-                                                <p>{value.ruleId.rule}</p>
+                                                {/* <p>{value.ruleId.rule}</p> */}
+                                                <SemiBold1624 text={value.ruleId.rule} style={{ color: '#252525' }} />
                                             </div>
 
                                             {!editRules && (

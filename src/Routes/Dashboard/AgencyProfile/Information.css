@@ -34,13 +34,13 @@
     padding-left: 0rem !important;
 }
 
-.information_parent p {
-    font-family: 'Segoe UI Semibold';
-    font-size: 17px;
-    text-transform: capitalize;
+/* .information_parent p { */
+    /* font-family: 'Segoe UI Semibold'; */
+    /* font-size: 17px; */
+    /* text-transform: capitalize; */
     /* color: #5c6dff; */
-    color: black;
-}
+    /* color: black; */
+/* } */
 
 .editableBtn {
     background: #FFFFFF;
@@ -111,7 +111,7 @@
     width: 40%;
 }
 
-.informationInputForm div {
+.informationInputForm > div {
     width: 93%;
     display: flex;
     justify-content: space-between;
@@ -125,16 +125,26 @@
     padding: 0.4rem;
 }
 
-.informationInputForm div p {
+/* .informationInputForm div p {
     margin-top: 16px;
     font-size: 1.1rem;
     color: #999;
+} */
+
+.informationTitle .MuiFormControl-root {
+    width: 33rem;
+}
+
+.informationTitle .MuiFormControl .MuiInputBase-root {
+    width: 22%;
 }
 
 .informationInputForm div input {
     width: 50%;
     height: 40px;
-    font-family: 'Segoe UI';
+    /* font-family: 'Segoe UI'; */
+    font-family: 'MulishRegular';
+    font-weight: 400;
     /* padding-left: 10px; */
     font-size: 1.1rem;
     outline: none;
@@ -232,7 +242,7 @@
     outline: none;
     border: none;
     padding: 0.5rem 2rem;
-    border-radius: 15px;
+    border-radius: 7px;
     font-size: 0.8rem;
     font-family: 'Segoe UI Semibold';
 }
@@ -243,7 +253,7 @@
     outline: none;
     border: none;
     padding: 0.5rem 2rem;
-    border-radius: 15px;
+    border-radius: 7px;
     font-size: 0.8rem;
     font-family: 'Segoe UI Semibold';
 }
@@ -263,4 +273,6 @@
 .handleButtons {
     display: flex;
     justify-content: space-between;
+    width: 93%;
+    margin-top: 1rem;
 }

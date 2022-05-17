@@ -10,6 +10,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@material-ui/core/TextField';
 import editIcon from '../../../assets/images/AgencyProfile/edit.svg'
+import { SemiBold1624 } from '../../../Components/Text/Texts';
 
 function Information(props) {
     const Role = localStorage.getItem('role');
@@ -147,7 +148,8 @@ function Information(props) {
                             <div className="editableBtn">
                                 <div className="information_parent">
                                     {/* <img src={Information_edit} alt="information_edit" /> */}
-                                    <p>Information</p>
+                                    {/* <p>Information</p> */}
+                                    <SemiBold1624 text={'Information'} />
                                 </div>
                                 <img onClick={handleDisabled} src={editIcon} className='Edit-icon_information' alt="edit" />
                                 {/* <i
@@ -169,7 +171,10 @@ function Information(props) {
                                             key={index}
                                         >
                                             <ul>
-                                                <li>{value?.title}</li>
+                                                <li>
+                                                    {/* {value?.title} */}
+                                                    <SemiBold1624 text={value?.title} style={{ color: '#999' }} />
+                                                </li>
                                             </ul>
                                             {value.title ===
                                                 'Date of Incorporation' &&
@@ -241,27 +246,27 @@ function Information(props) {
                             })}
                         </div>
                     </div>
+                    {isDisabled ? null : (
+                        <div className="handleButtons">
+                            <div className="information_save_parent">
+                                <div
+                                    onClick={handleDisabledCancel}
+                                    className="information_cancel"
+                                >
+                                    <p>Cancel</p>
+                                </div>
+                            </div>
+                            <div className="information_save_parent">
+                                <div
+                                    onClick={handleDisabledSave}
+                                    className="information_save"
+                                >
+                                    <p>Submit</p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
-                {isDisabled ? null : (
-                    <div className="handleButtons">
-                        <div className="information_save_parent">
-                            <div
-                                onClick={handleDisabledCancel}
-                                className="information_cancel"
-                            >
-                                <p>Cancel</p>
-                            </div>
-                        </div>
-                        <div className="information_save_parent">
-                            <div
-                                onClick={handleDisabledSave}
-                                className="information_save"
-                            >
-                                <p>Submit</p>
-                            </div>
-                        </div>
-                    </div>
-                )}
             </div>
         </>
     );

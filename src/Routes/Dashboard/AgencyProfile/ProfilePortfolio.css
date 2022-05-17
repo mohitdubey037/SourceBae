@@ -30,6 +30,7 @@
 
 .profile_link a {
     color: #5396FF;
+    font-family: 'MulishSemibold';
 }
 
 .PortfolioPriceAndTimeline {
@@ -66,19 +67,19 @@
     border-radius: 1rem;
 }
 
-.detialPortfolio p {
-    word-break: break-all;
-    font-family: 'Segoe UI Semibold';
+/* .detialPortfolio p { */
+    /* word-break: break-all; */
+    /* font-family: 'Segoe UI Semibold'; */
     /* color: #45a4ea; */
-    font-size: 1.5rem;
-}
+    /* font-size: 1.5rem; */
+/* } */
 
 .PortfolioPriceAndTimeline p {
-    font-family: 'Segoe UI';
-    font-size: 14px;
+    /* font-family: 'Segoe UI'; */
+    /* font-size: 14px; */
     color: #707070;
     /* background-color: #ababab2e; */
-    padding: 0px 15px;
+    /* padding: 0px 15px; */
     border-radius: 1rem;
 }
 
@@ -118,14 +119,11 @@
     background-color: #ffffff;
 }
 
-.portfolioHeading p {
+/* .portfolioHeading p {
     font-family: 'Segoe UI Semibold';
     font-size: 17px;
     text-transform: capitalize;
-    /* color: #5C6DFF;
-    padding: 8px 16px; */
-    /* margin-left: 2rem; */
-}
+} */
 
 .No_portfolio {
     display: flex;

@@ -93,12 +93,12 @@
   /* padding: 8px 0px; */
 }
 
-.skill-set_parent p {
+/* .skill-set_parent p {
   font-family: 'Segoe UI Semibold';
   font-size: 17px;
   text-transform: capitalize;
-  /* color: #5C6DFF; */
-}
+  color: #5C6DFF; 
+} */
 
 .skillsSetTableContent p {
   font-family: 'Segoe UI';

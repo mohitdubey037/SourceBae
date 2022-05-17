@@ -12,6 +12,16 @@ button {
     align-items: center;
 } */
 
+.mainBack {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 17%;
+    margin: 3rem 0;
+    padding: 0 1.4rem;
+    cursor: pointer;
+}
+
 .conditionalGradient {
     background-image: linear-gradient(284deg,
             rgb(3, 118, 186) 0%,
@@ -53,7 +63,7 @@ button {
 .design_statement {
    display: flex;
    justify-content: space-between;
-   width: 57%;
+   width: 68%;
    align-items: center;
    /* margin: 0.3rem 0; */
 }
@@ -64,7 +74,7 @@ button {
 }
 
 .design_com {
-    margin: 0.3rem 0;
+    margin: 1rem 0;
     font-weight: 300;
     color: rgba(29, 36, 52, 0.5);
 }
@@ -73,7 +83,7 @@ button {
     display: flex;
     justify-content: space-between;
     width: 24%;
-    margin: 0.8rem 0;
+    margin: 0rem 0 0.8rem 0;
 }
 
 .location_div p {
@@ -645,8 +655,8 @@ button {
 
 .accordian_ul {
     padding-left: 0 !important;
-    font-family: 'Segoe UI';
-    font-size: 1.2rem;
+    font-family: 'MulishRegular';
+    font-size: 1rem;
 }
 
 .accordian_ul li a {

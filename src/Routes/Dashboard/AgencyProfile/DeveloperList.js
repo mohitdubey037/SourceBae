@@ -18,6 +18,7 @@ import { experienceRange } from '../../../shared/helper';
 import editImage from '../../../assets/images/AgencyProfile/Group.svg';
 import greenCheck from '../../../assets/images/AgencyProfile/greenCheck.svg';
 import deleteIcon from '../../../assets/images/AgencyProfile/delete.svg';
+import { Regular1421, SemiBold1624, SemiBold2030 } from '../../../Components/Text/Texts';
 
 const AntSwitch = withStyles((theme) => ({
     root: {
@@ -183,7 +184,7 @@ function DeveloperList(props) {
                                 <div className="developerNameExp">
                                     <div className="developerName">
                                         <div style={{ display: 'flex', alignItems: 'center' }} >
-                                            <h2>{`${developer.firstName
+                                            <SemiBold2030 text={`${developer.firstName
                                                 .charAt(0)
                                                 .toUpperCase() +
                                                 developer.firstName.slice(1)
@@ -191,7 +192,16 @@ function DeveloperList(props) {
                                                     .charAt(0)
                                                     .toUpperCase() +
                                                 developer.lastName.slice(1)
-                                                }`}</h2>
+                                                }`} />
+                                            {/* <h2>{`${developer.firstName
+                                                .charAt(0)
+                                                .toUpperCase() +
+                                                developer.firstName.slice(1)
+                                                } ${developer.lastName
+                                                    .charAt(0)
+                                                    .toUpperCase() +
+                                                developer.lastName.slice(1)
+                                                }`}</h2> */}
                                             {/* <img
                                                 src={editImage}
                                                 onClick={() =>
@@ -209,8 +219,11 @@ function DeveloperList(props) {
                                         ></div> */}
                                     </div>
                                     <div className="developerExp">
-                                        <span style={{ marginRight: '5px' }}><p>Status-</p></span>
-                                        {toggleIndexes[index] ? (
+                                        {/* <span style={{ marginRight: '5px' }}><p>Status-</p></span> */}
+
+                                        <SemiBold1624 text={'Status-'} style={{ color: '#BC53FF' }} />
+                                        <SemiBold1624 text={toggleIndexes[index] ? "Unavailable" : "Available"} style={{ color: '#BC53FF' }} />
+                                        {/* {toggleIndexes[index] ? (
 
                                             <p
                                             // style={{
@@ -221,21 +234,23 @@ function DeveloperList(props) {
                                             </p>
                                         ) : (
                                             <p>Available</p>
-                                        )}
+                                        )} */}
                                     </div>
                                 </div>
 
                                 <div className="developerTech">
-                                    <h6 style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Techstack</h6>
+                                    {/* <h6 style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Techstack</h6> */}
+                                    <SemiBold1624 text={'Techstack'} style={{ color: 'rgba(29, 36, 52, 0.5)', marginBottom: '10px' }} />
                                     <div className="developerTechNames">
                                         {developer.developerTechnologies.map(
                                             (tech) => {
                                                 return (
-                                                    <p>
-                                                        {
-                                                            tech.technologyName
-                                                        }
-                                                    </p>
+                                                    // <p>
+                                                    //     {
+                                                    //         tech.technologyName
+                                                    //     }
+                                                    // </p>
+                                                    <SemiBold1624 text={tech.technologyName} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
                                                 );
                                             }
                                         )}
@@ -246,27 +261,40 @@ function DeveloperList(props) {
                                     <div className="developerBudget">
                                         <div className="developer-detail">
                                             <div>
-                                                <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Experience</p>
+                                                {/* <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Experience</p> */}
+                                                <SemiBold1624 text={'Experience'} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+                                                {/* <Regular1421 text={{experienceRange(developer.developerExperience)}}/> */}
                                                 <h6>{experienceRange(developer.developerExperience)}</h6>
                                             </div>
 
                                             <div>
-                                                <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Timeline</p>
-                                                <h6>
+                                                {/* <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Timeline</p> */}
+                                                <SemiBold1624 text={'Timeline'} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+                                                {/* <h6>
                                                     {parseInt(
                                                         developer.developerAvailability
                                                     ) === 0
                                                         ? `Immediately Available`
                                                         : `${developer.developerAvailability} Weeks`}
-                                                </h6>
+                                                </h6> */}
+                                                <Regular1421 text={parseInt(
+                                                    developer.developerAvailability
+                                                ) === 0
+                                                    ? `Immediately Available`
+                                                    : `${developer.developerAvailability} Weeks`} style={{ color: 'rgba(29, 36, 52, 0.5)', marginTop: '10px' }} />
                                             </div>
                                             <div>
-                                                <div style={{ display: 'flex', alignItems: 'center' }} ><p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Budget</p></div>
-                                                <h6>
+                                                <div style={{ display: 'flex', alignItems: 'center' }} >
+                                                    {/* <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Budget</p> */}
+                                                    <SemiBold1624 text={'Budget'} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+                                                </div>
+
+                                                <Regular1421 text={`
                                                     ${developer?.developerPriceRange}
-                                                    {' '}-{' '}
+                                                    -
                                                     ${developer?.developerPriceRange + ((developer?.developerPriceRange / 100) * 20)}
-                                                </h6>
+                                                `} style={{ color: 'rgba(29, 36, 52, 0.5)', marginTop: '10px' }} />
+
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +306,9 @@ function DeveloperList(props) {
                                             }
                                         >
                                             <div className="developer-status_developerList">
-                                                <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Developer Status</p>
+                                                {/* <p style={{ color: 'rgba(29, 36, 52, 0.7)' }} >Developer Status</p> */}
+                                                <SemiBold1624 text={'Developer Status'} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+
                                             </div>
                                             <div
                                                 style={{
@@ -302,7 +332,9 @@ function DeveloperList(props) {
                                                                 item
                                                                 className="statusLabel"
                                                             >
-                                                                Available
+                                                                <Regular1421 text={'Available'} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+
+                                                                {/* Available */}
                                                             </Grid>
                                                             <Grid item>
                                                                 <AntSwitch
@@ -326,7 +358,8 @@ function DeveloperList(props) {
                                                                 item
                                                                 className="statusLabel"
                                                             >
-                                                                Unavailable
+                                                                <Regular1421 text={'Unavailable'} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+                                                                {/* Unavailable */}
                                                             </Grid>
                                                         </Grid>
                                                     </Typography>
@@ -340,7 +373,8 @@ function DeveloperList(props) {
                                                             )
                                                         }
                                                     >
-                                                        Download
+                                                        <SemiBold1624 text={'Download'} style={{ color: 'blue' }} />
+                                                        {/* <SemiBold1624 */}
                                                     </button>
                                                 </div>
                                             </div>

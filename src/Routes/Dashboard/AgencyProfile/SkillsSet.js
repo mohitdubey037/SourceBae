@@ -4,6 +4,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import instance from '../../../Constants/axiosConstants';
 import editIcon from '../../../assets/images/AgencyProfile/edit.svg'
+import { SemiBold1624 } from '../../../Components/Text/Texts';
 
 function SkillsSet(props) {
     const Role = localStorage.getItem('role');
@@ -297,7 +298,8 @@ function SkillsSet(props) {
                         ? props.data.isAgencyVerified && (
                             <div className="skill-set_parent_parent">
                                 <div className="skill-set_parent">
-                                    <p>Skill Set</p>
+                                    {/* <p>Skill Set</p> */}
+                                    <SemiBold1624 text={'Skill Set'} />
                                 </div>
                                 {/* <i
                                       onClick={() => handleEdit(true)}
@@ -315,7 +317,9 @@ function SkillsSet(props) {
                                 <div className="skillsSetTable">
                                     <div className="skillsSetTableHeading">
                                         <ul>
-                                            <li>{value?.title}</li>
+                                            <li>
+                                                <SemiBold1624 text={value?.title} />
+                                            </li>
                                         </ul>
                                     </div>
                                     <div className="skillsSetTableContent">

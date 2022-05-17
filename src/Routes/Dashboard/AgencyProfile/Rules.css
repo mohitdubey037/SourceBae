@@ -17,12 +17,11 @@
     margin-left: 6px;
 }
 
-.rules_parent p {
+/* .rules_parent p {
     font-family: 'Segoe UI Semibold';
     font-size: 17px;
     text-transform: capitalize;
-    /* color: #5c6dff; */
-}
+} */
 
 .innerRules {
     width: 100%;
@@ -45,13 +44,11 @@
     border-radius: 6px;
 }
 
-.rulesUpper p {
+/* .rulesUpper p {
     font-family: 'Segoe UI';
     font-size: 1.2rem;
     
-    /* color: #252525; */
-    /* margin-top: 1rem; */
-}
+} */
 
 .timing {
     font-family: 'Segoe UI';
@@ -93,7 +90,7 @@
     align-items: center;
     margin-top: 0.8rem;
     color: #5396FF;
-    font-family: 'Segoe UI';
+    /* font-family: 'Segoe UI'; */
 }
 
 /* .weekendOpening p {
@@ -107,7 +104,7 @@
 }
 
 .rulesMark {
-    width: 40%;
+    width: 11%;
     padding-left: 40px;
     /* margin-top: -4px; */
 }
@@ -141,7 +138,7 @@
 }
 
 .conditionalPadding {
-    padding: 10px;
+    padding: 15px;
 }
 
 .editableBtn_rules {

@@ -45,6 +45,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { typography } from '@mui/system';
+import MainBackImage from '../../assets/images/AgencyProfile/ProfileBack.svg';
+import { Bold1827, Bold2024, Bold4265, Bold1619, SemiBold1421, SemiBold1624, SemiBold2030 } from '../../Components/Text/Texts';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -489,7 +491,6 @@ function AgencyProfile(props) {
 
                 <div
                     className="mainAgencyProfileInfo"
-                    style={{ marginBottom: '5%' }}
                 >
                     {/* <div className="innerAgencyProfileInfo">
                             <div className="agencyName">
@@ -651,6 +652,12 @@ function AgencyProfile(props) {
                         </div>
                     </div> */}
 
+                <div onClick={handleBackOnProfile} className='mainBack'>
+                    <img src={MainBackImage} alt="main_back_image" />
+                    {/* <p>Agency Profile Page</p> */}
+                    <Bold1827 text={'Agency Profile Page'} style={{ width: '100%', textAlign: 'center' }} />
+                </div>
+
                 <div className="mainQuotation_agencyProfile">
                     <div className='select_div'>
                         <div className='profile_img_main'>
@@ -661,14 +668,18 @@ function AgencyProfile(props) {
                         <div className='statement_div'>
                             <div className='statements'>
                                 <div className='design_statement'>
-                                    <p>Design Chocolate</p>
+                                    {/* <p>Design Chocolate</p> */}
+                                    <Bold2024 text={'Agency Profile Page'} style={{ width: '100%', textAlign: 'center' }} />
                                     <img src={doneIcon} alt="location" />
                                 </div>
-                                <p className='design_com'>www.design.com</p>
+                                {/* <p className='design_com'>www.design.com</p> */}
+                                <SemiBold1624 text={'design_com'} style={{ width: '100%', textAlign: 'center', color: 'rgba(29, 36, 52, 0.5)', margin: '1rem 0' }} />
                                 <div className='location_div'>
                                     <img src={location} alt="location" />
-                                    <p>indore,</p>
-                                    <p>india</p>
+                                    <SemiBold1624 text={'indore'} style={{ width: '100%', textAlign: 'center' }} />
+                                    <SemiBold1624 text={'india'} style={{ width: '100%', textAlign: 'center' }} />
+                                    {/* <p>indore,</p>
+                                    <p>india</p> */}
                                 </div>
                                 <hr className='horizontal'></hr>
                             </div>
@@ -682,15 +693,31 @@ function AgencyProfile(props) {
                                     id="panel1bh-header"
                                     className={classes.noPadding}
                                 >
-                                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                                        Detail
-                                    </Typography>
+                                    <SemiBold2030 text={'Domain'} />
+
+                                    {/* <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                                        Domain
+                                    </Typography> */}
                                 </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography className={classes.typography}>
+                                <AccordionDetails style={{ paddingLeft: '0px' }}>
+                                    {agencyProfileData &&
+                                        agencyProfileData?.agencyDomains?.map(
+                                            (domain) => {
+                                                return (
+                                                    // <Typography style={{ paddingLeft: '0px' }} className={classes.typography}>{domain.domainId.domainName}</Typography>
+                                                    <SemiBold1624 text={domain?.domainId.domainName} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+
+                                                    // <p>{`${domain?.domainId
+                                                    //     ?.domainName ||
+                                                    //     ''
+                                                    //     }`}</p>
+                                                );
+                                            }
+                                        )}
+                                    {/* <Typography className={classes.typography}>
                                         Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
                                         Aliquam eget maximus est, id dignissim quam.
-                                    </Typography>
+                                    </Typography> */}
                                 </AccordionDetails>
                             </Accordion>
 
@@ -701,16 +728,22 @@ function AgencyProfile(props) {
                                     id="panel2bh-header"
                                     className={classes.noPadding}
                                 >
-                                    <Typography sx={{ width: '33%', flexShrink: 0 }}>AboutUs</Typography>
+                                    <SemiBold2030 text={'Description'} />
+                                    {/* <Typography sx={{ width: '33%', flexShrink: 0 }}>Description</Typography> */}
 
                                 </AccordionSummary>
-                                <AccordionDetails className={classes.accordianDetails}>
-                                    <Typography variant="h5" className={classes.typography2}>
+                                <AccordionDetails style={{ paddingLeft: '0px' }} className={classes.accordianDetails}>
+
+                                    {/* <Typography variant='h5' className={classes.typography}>
+                                        {agencyProfileData.agencyDescription}
+                                    </Typography> */}
+                                    <SemiBold1624 text={agencyProfileData.agencyDescription} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+                                    {/* <Typography variant="h5" className={classes.typography2}>
                                         Email: <span>connect@SourceBae.in</span>
                                     </Typography>
                                     <Typography style={{ marginTop: '1rem' }} variant="h5" className={classes.typography2}>
                                         Support Number: <span>+91 95755 17047</span>
-                                    </Typography>
+                                    </Typography> */}
                                 </AccordionDetails>
                             </Accordion>
 
@@ -721,9 +754,10 @@ function AgencyProfile(props) {
                                     id="panel3bh-header"
                                     className={classes.noPadding}
                                 >
-                                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                                    {/* <Typography sx={{ width: '33%', flexShrink: 0 }}>
                                         Agency Document
-                                    </Typography>
+                                    </Typography> */}
+                                    <SemiBold2030 text={'Agency Document'} />
                                 </AccordionSummary>
                                 <AccordionDetails style={{ paddingLeft: '0rem' }} className={classes.accordianDetails}>
                                     {/* <Typography  className={classes.typography}> */}
@@ -737,12 +771,15 @@ function AgencyProfile(props) {
                                 </AccordionDetails>
                             </Accordion>
                             <div className={'profileViewTypography'}>
-                                <Typography className={classes.typography}>
+                                <SemiBold2030 text={'Total profile view'} />
+                                <SemiBold2030 text={agencyProfileData.agencyProfileViewCount} style={{ paddingRight: '5px' }} />
+
+                                {/* <Typography className={classes.typography}>
                                     Total profile view
-                                </Typography>
-                                <Typography className={classes.typography} style={{ marginRight: '7px' }}>
+                                </Typography> */}
+                                {/* <Typography className={classes.typography} style={{ marginRight: '7px' }}>
                                     {agencyProfileData.agencyProfileViewCount}
-                                </Typography>
+                                </Typography> */}
                             </div>
                         </div>
                     </div>
@@ -765,7 +802,7 @@ function AgencyProfile(props) {
                             >
                                 {/* <img src={iicon} alt="information" /> */}
                                 <button class="nav-button nav-link_agencyProfile">
-                                    Information
+                                    <SemiBold2030 text={'Information'} />
                                 </button>
                             </div>
 
@@ -781,7 +818,7 @@ function AgencyProfile(props) {
                             >
                                 {/* <img src={skillImage} alt="skills" /> */}
                                 <button class="nav-button nav-link_agencyProfile">
-                                    Skills Set
+                                    <SemiBold2030 text={'Skill Set'} />
                                 </button>
                             </div>
 
@@ -797,7 +834,8 @@ function AgencyProfile(props) {
                             >
                                 {/* <img src={iicon} alt="rules" /> */}
                                 <button class="nav-button nav-link_agencyProfile">
-                                    Agency Rules
+                                    {/* Agency Rules */}
+                                    <SemiBold2030 text={'Agency Rules'} />
                                 </button>
                             </div>
 
@@ -814,7 +852,8 @@ function AgencyProfile(props) {
                             >
                                 {/* <img src={iicon} alt="Portfolio" /> */}
                                 <button class="nav-button nav-link_agencyProfile">
-                                    Agency Portfolio
+                                    {/* Agency Portfolio */}
+                                    <SemiBold2030 text={'Agency Portfolio'} />
                                 </button>
                             </div>
 
@@ -832,7 +871,8 @@ function AgencyProfile(props) {
                                 >
                                     {/* <img src={iicon} alt="dev" /> */}
                                     <button class="nav-button nav-link_agencyProfile">
-                                        Developers
+                                        {/* Developers */}
+                                        <SemiBold2030 text={'Developers'} />
                                     </button>
                                 </div>
                             )}

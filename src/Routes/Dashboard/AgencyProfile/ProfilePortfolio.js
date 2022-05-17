@@ -7,6 +7,7 @@ import { AGENCY } from '../../../shared/constants';
 
 // import "agency" from "../../../shared/constants";
 import './Rules.css';
+import { SemiBold1624, SemiBold2030 } from '../../../Components/Text/Texts';
 
 function AgencyPortfolio(props) {
     const routerHistory = useHistory();
@@ -36,10 +37,11 @@ function AgencyPortfolio(props) {
         <>
             <div className="mainPortfolioDiv">
                 <div className="portfolioHeading">
-                    <p>
+                    <SemiBold1624 text={`Portfolios ${agencyPortfoliodata.length}`} />
+                    {/* <p>
                         Portfolio{agencyPortfoliodata.length > 0 ? "'S" : ''} (
                         {agencyPortfoliodata.length})
-                    </p>
+                    </p> */}
                 </div>
                 <div className="portfolioParent">
                     {agencyPortfoliodata.map((data) => {
@@ -53,7 +55,8 @@ function AgencyPortfolio(props) {
                                         />
                                     </div>
                                     <div className="detialPortfolio">
-                                        <p>{data.projectName}</p>
+                                        {/* <p>{data.projectName}</p> */}
+                                        <SemiBold2030 text={data.projectName} />
                                         <div className="profile_link">
                                             <a
 
@@ -66,17 +69,20 @@ function AgencyPortfolio(props) {
                                         </div>
                                         <div className="PortfolioPriceAndTimeline">
                                             {/* <div>price</div> */}
-                                            <p
+                                            {/* <p
                                                 style={{
                                                     backgroundColor: '#ffffff',
                                                     padding: '0'
                                                 }}
                                             >
                                                 Project Timeline
-                                            </p>
-                                            <p style={{ marginLeft: '15px' }}>
+                                            </p> */}
+                                            <SemiBold1624 text={'Project Timeline'} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+                                            <SemiBold1624 text={`${data.projectTimeline} days`} style={{ color: 'rgba(29, 36, 52, 0.5)' }} />
+
+                                            {/* <p style={{ marginLeft: '15px' }}>
                                                 {data.projectTimeline} days
-                                            </p>
+                                            </p> */}
                                         </div>
                                         {/* <div className="profile_link">
                                             <a
